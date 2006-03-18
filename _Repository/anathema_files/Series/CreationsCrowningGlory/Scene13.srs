@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Scene repositoryId="Scene13" repositoryPrintName="Dawn of the Future">
+  <Name><![CDATA[Dawn of the Future]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Das Geplänkel endet und man beginnt den Kampf voranzutreiben ? bis Vedia Telperion plötzlich von einem Funken, der zwischen Beider Klingen entsprungen ist, in goldenes Feuer gehüllt wird und zum Monster aus der Vergangenheit exaltiert.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Gerade ist er wieder bewusst im Diesseits, da erreichen Ledaal Toret und die Soldaten der Wyld Hunt die Lichtung, und ein Kampf beginnt, in dem schnell klar wird, dass die Krieger keine Rücksicht nehmen werden darauf, dass sie gegen ihren eigenen Prinzen kämpfen.]]></Text>
+    </Part>
+  </Summary>
+</Scene>

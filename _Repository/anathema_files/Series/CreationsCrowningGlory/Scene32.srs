@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Scene repositoryId="Scene32" repositoryPrintName="Oh Brother, When Com'st Thou">
+  <Name><![CDATA[Oh Brother, When Com'st Thou]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Telperion erhält von einem Offizier - Small Gift - eine Nachricht, die angeblich ein Bote im Lager abgegeben hat. Telperion wird darin gebeten, den Absender in der nächsten Nacht in einer Halb-Ruine zu treffen. Die Nachricht ist nicht unterzeichnet, nur ein D. ist in Roter Tinte darunter geschrieben in einer Schrift, die der seines Bruders zum Verwechseln ähnlich sieht.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Das Treffen findet statt, wenn Telperion willens ist, und er trifft Delaron, kann mit ihm ungestört sprechen ? einmal hört er ein Geräusch ohne Quelle.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Delaron will wissen, was mit ihm geschehen ist, wieso er noch am Leben ist, warum er auf Seite des Feindes kämpft, obwohl er anderes versprochen hat, ihn überreden, dem falschen Zweck zu entsagen.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Irgendwann tritt Ledaal Toret auf den Plan mitsamt einer Horde Soldaten, und greift nach kurzem Intermezzo an, um Telperion zu töten. Delaron stellt sich auf die Seite seines Bruders.]]></Text>
+    </Part>
+  </Summary>
+</Scene>

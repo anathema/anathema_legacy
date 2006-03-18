@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ExaltedCharacter repositoryId="AmberQuaint" repositoryPrintName="Amber Quaint">
+  <Description>
+    <CharacterName><![CDATA[Amber Quaint]]></CharacterName>
+    <PhysicalDescription><![CDATA[eisblaues langes Haar]]></PhysicalDescription>
+  </Description>
+  <Statistics experienced="true">
+    <Rules>
+      <RuleSet name="PowerCombat"/>
+    </Rules>
+    <CharacterType subtype="TemplateType.Default">Solar</CharacterType>
+    <CharacterConcept>
+      <Caste type="Twilight"/>
+      <Nature type="Rebel"/>
+      <Concept>Erudite Princess</Concept>
+    </CharacterConcept>
+    <Essence creationValue="3" experiencedValue="4"/>
+    <Willpower creationValue="7"/>
+    <Virtues>
+      <Compassion creationValue="3"/>
+      <Conviction creationValue="3"/>
+      <Temperance creationValue="2"/>
+      <Valor creationValue="1" experiencedValue="2"/>
+    </Virtues>
+    <VirtueFlaw>
+      <RootVirtue name="Compassion"/>
+      <Name><![CDATA[Vicious Disenchantment]]></Name>
+      <LimitBreak><![CDATA[Harm an individual in the name of Conviction or Compassion.]]></LimitBreak>
+      <Description><![CDATA[Overcome by anger at the individuals miserable existence, she seeks to utterly annihilate not only the object of his pain or loss, but also to free him from the very concept that made the situation possible.]]></Description>
+    </VirtueFlaw>
+    <Attributes>
+      <Physical>
+        <Strength creationValue="3"/>
+        <Dexterity creationValue="3" experiencedValue="4"/>
+        <Stamina creationValue="3"/>
+      </Physical>
+      <Social>
+        <Charisma creationValue="4"/>
+        <Manipulation creationValue="2"/>
+        <Appearance creationValue="5"/>
+      </Social>
+      <Mental>
+        <Perception creationValue="2" experiencedValue="3"/>
+        <Intelligence creationValue="4"/>
+        <Wits creationValue="1" experiencedValue="2"/>
+      </Mental>
+    </Attributes>
+    <Abilities>
+      <Archery creationValue="0"/>
+      <Brawl creationValue="0"/>
+      <MartialArts creationValue="0" experiencedValue="3"/>
+      <Melee creationValue="5" favored="true"/>
+      <Thrown creationValue="0"/>
+      <Endurance creationValue="2" experiencedValue="3"/>
+      <Performance creationValue="1"/>
+      <Presence creationValue="1"/>
+      <Resistance creationValue="1" experiencedValue="2"/>
+      <Survival creationValue="0" experiencedValue="1"/>
+      <Craft creationValue="0" experiencedValue="2"/>
+      <Investigation creationValue="1" experiencedValue="3"/>
+      <Lore creationValue="3"/>
+      <Medicine creationValue="3"/>
+      <Occult creationValue="4" experiencedValue="5">
+        <Specialty creationValue="0" experiencedValue="3" name="Sidereals"/>
+      </Occult>
+      <Athletics creationValue="1" experiencedValue="3" favored="true"/>
+      <Awareness creationValue="1" experiencedValue="2"/>
+      <Dodge creationValue="0" experiencedValue="3"/>
+      <Larceny creationValue="1" experiencedValue="2" favored="true"/>
+      <Stealth creationValue="1" experiencedValue="3" favored="true"/>
+      <Bureaucracy creationValue="0"/>
+      <Linguistics creationValue="2" favored="true"/>
+      <Ride creationValue="1"/>
+      <Sail creationValue="0"/>
+      <Socialize creationValue="1"/>
+    </Abilities>
+    <Backgrounds>
+      <Manse creationValue="4"/>
+      <Artifact creationValue="3"/>
+      <Knowledge creationValue="1"/>
+    </Backgrounds>
+    <Charms>
+      <CharmGroup name="Lore" type="Solar">
+        <Charm name="Solar.Integrity-ProtectingPrana" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Melee" type="Solar">
+        <Charm name="Solar.BulwarkStance" experienceLearned="false"/>
+        <Charm name="Solar.DippingSwallowDefense" experienceLearned="false"/>
+        <Charm name="Solar.GoldenEssenceBlock" experienceLearned="false"/>
+        <Charm name="Solar.FivefoldBulwarkStance" experienceLearned="false"/>
+        <Charm name="Solar.SolarCounterattack" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Athletics" type="Solar">
+        <Charm name="Solar.MonkeyLeapTechnique" experienceLearned="true"/>
+        <Charm name="Solar.GracefulCraneStance" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Endurance" type="Solar">
+        <Charm name="Solar.Ox-BodyTechnique" experienceLearned="false">
+          <Special>
+            <Categories>
+              <Category.-0 creationValue="0"/>
+              <Category.-1x2 creationValue="1"/>
+              <Category.-1-2x2 creationValue="0"/>
+            </Categories>
+          </Special>
+        </Charm>
+        <Charm name="Solar.UnsleepingWatchmanTechnique" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Investigation" type="Solar">
+        <Charm name="Solar.TenMagistrateEyes" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Occult" type="Solar">
+        <Charm name="Solar.TerrestrialCircleSorcery" experienceLearned="false"/>
+        <Charm name="Solar.CelestialCircleSorcery" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Medicine" type="Solar">
+        <Charm name="Solar.Body-MendingMeditation" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="CelestialMonkeyStyle" type="Solar">
+        <Charm name="Solar.MonkeyTailDistractionStrike" experienceLearned="true"/>
+      </CharmGroup>
+      <Combos/>
+    </Charms>
+    <Spells>
+      <Spell name="Terrestrial.DeathObsidianButterflies" experienceLearned="false"/>
+      <Spell name="Terrestrial.EmeraldCountermagic" experienceLearned="false"/>
+      <Spell name="Terrestrial.Magician'sPleasantPath" experienceLearned="false"/>
+      <Spell name="Terrestrial.BetweenCandleAndFlame" experienceLearned="true"/>
+      <Spell name="Celestial.DemonSecondCircle" experienceLearned="true"/>
+      <Spell name="Terrestrial.ConjuringAzureChariot" experienceLearned="true"/>
+    </Spells>
+    <Experience>
+      <Entry points="73">
+        <Description><![CDATA[bis Ende Kapitel 2]]></Description>
+      </Entry>
+      <Entry points="8">
+        <Description><![CDATA[3.1 Gateways, Memories and Dust]]></Description>
+      </Entry>
+      <Entry points="6">
+        <Description><![CDATA[3.2 Worse Means, Better Endings]]></Description>
+      </Entry>
+      <Entry points="4">
+        <Description><![CDATA[3.3 Mediocrity In Between]]></Description>
+      </Entry>
+      <Entry points="5">
+        <Description><![CDATA[3.4 Presence and Absence]]></Description>
+      </Entry>
+      <Entry points="5">
+        <Description><![CDATA[3.5 Return Back Home]]></Description>
+      </Entry>
+      <Entry points="8">
+        <Description><![CDATA[3.6 Echoes and Mirages]]></Description>
+      </Entry>
+      <Entry points="7">
+        <Description><![CDATA[4.1 Adamant Hearts]]></Description>
+      </Entry>
+      <Entry points="100">
+        <Description><![CDATA[1. Downtime]]></Description>
+      </Entry>
+    </Experience>
+  </Statistics>
+</ExaltedCharacter>

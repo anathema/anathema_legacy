@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ExaltedCharacter repositoryId="VediaTelperion" repositoryPrintName="Vedia Telperion">
+  <Description>
+    <CharacterName><![CDATA[Vedia Telperion]]></CharacterName>
+    <PhysicalDescription><![CDATA[Languages Riverspeak, High Realm
+]]></PhysicalDescription>
+  </Description>
+  <Statistics experienced="true">
+    <CharacterType>Solar</CharacterType>
+    <CharacterConcept>
+      <Caste type="Dawn"/>
+      <Nature type="Leader"/>
+      <Concept>General</Concept>
+    </CharacterConcept>
+    <Essence creationValue="3" experiencedValue="4"/>
+    <Willpower creationValue="5"/>
+    <Virtues>
+      <Compassion creationValue="2"/>
+      <Conviction creationValue="2"/>
+      <Temperance creationValue="2"/>
+      <Valor creationValue="3"/>
+    </Virtues>
+    <VirtueFlaw>
+      <RootVirtue name="Valor"/>
+      <LimitBreak><![CDATA[not being properly commended for a deed well done.]]></LimitBreak>
+    </VirtueFlaw>
+    <Attributes>
+      <Physical>
+        <Strength creationValue="4"/>
+        <Dexterity creationValue="4"/>
+        <Stamina creationValue="3"/>
+      </Physical>
+      <Social>
+        <Charisma creationValue="3"/>
+        <Manipulation creationValue="4"/>
+        <Appearance creationValue="2"/>
+      </Social>
+      <Mental>
+        <Perception creationValue="2"/>
+        <Intelligence creationValue="3"/>
+        <Wits creationValue="2"/>
+      </Mental>
+    </Attributes>
+    <Abilities>
+      <Archery creationValue="2" experiencedValue="4"/>
+      <Brawl creationValue="2"/>
+      <MartialArts creationValue="0"/>
+      <Melee creationValue="5">
+        <Specialty creationValue="2" name="Swords"/>
+      </Melee>
+      <Thrown creationValue="0"/>
+      <Endurance creationValue="2" experiencedValue="3" favored="true"/>
+      <Performance creationValue="4" favored="true"/>
+      <Presence creationValue="1"/>
+      <Resistance creationValue="2" favored="true"/>
+      <Survival creationValue="0"/>
+      <Craft creationValue="0"/>
+      <Investigation creationValue="0"/>
+      <Lore creationValue="1"/>
+      <Medicine creationValue="2"/>
+      <Occult creationValue="0"/>
+      <Athletics creationValue="2" experiencedValue="3" favored="true"/>
+      <Awareness creationValue="0"/>
+      <Dodge creationValue="2"/>
+      <Larceny creationValue="0"/>
+      <Stealth creationValue="0"/>
+      <Bureaucracy creationValue="0"/>
+      <Linguistics creationValue="1"/>
+      <Ride creationValue="2" experiencedValue="3" favored="true"/>
+      <Sail creationValue="0"/>
+      <Socialize creationValue="0"/>
+    </Abilities>
+    <Backgrounds>
+      <Allies creationValue="2"/>
+      <Artifact creationValue="3"/>
+      <Resources creationValue="3"/>
+    </Backgrounds>
+    <Charms>
+      <CharmGroup name="Performance">
+        <Charm name="Solar.RespectCommandingAttitude" experienceLearned="false"/>
+        <Charm name="Solar.Heroism-EncouragingPresence" experienceLearned="false"/>
+        <Charm name="Solar.UnrulyMobDispersingRebuke" experienceLearned="false"/>
+        <Charm name="Solar.FuryIncitingPresence" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Endurance">
+        <Charm name="Solar.Ox-BodyTechnique" experienceLearned="false">
+          <Special>
+            <Categories>
+              <Category.-0 creationValue="0"/>
+              <Category.-1x2 creationValue="0"/>
+              <Category.-1-2x2 creationValue="1"/>
+            </Categories>
+          </Special>
+        </Charm>
+        <Charm name="Solar.ArmoredScout'sInvigoration" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Archery">
+        <Charm name="Solar.PhantomArrowTechnique" experienceLearned="true"/>
+        <Charm name="Solar.ImmaculateGoldenBow" experienceLearned="true"/>
+        <Charm name="Solar.FieryArrowTechnique" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Lore">
+        <Charm name="Solar.Integrity-ProtectingPrana" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Melee">
+        <Charm name="Solar.ExcellentStrike" experienceLearned="false"/>
+        <Charm name="Solar.FireandStonesStrike" experienceLearned="false"/>
+        <Charm name="Solar.WhirlwindSearingBlows" experienceLearned="false"/>
+        <Charm name="Solar.HungryTigerTechnique" experienceLearned="false"/>
+        <Charm name="Solar.GoldenEssenceBlock" experienceLearned="false"/>
+        <Charm name="Solar.IronRaptorTechnique" experienceLearned="true"/>
+        <Charm name="Solar.DippingSwallowDefense" experienceLearned="true"/>
+        <Charm name="Solar.Sandstorm-WindAttack" experienceLearned="true"/>
+        <Charm name="Solar.RetrieveFallenWeapon" experienceLearned="true"/>
+      </CharmGroup>
+      <Combos>
+        <Combo experienceLearned="false">
+          <Name><![CDATA[Proling Telperion]]></Name>
+          <Charm name="Solar.ExcellentStrike"/>
+          <Charm name="Solar.FireandStonesStrike"/>
+          <Charm name="Solar.HungryTigerTechnique"/>
+        </Combo>
+      </Combos>
+    </Charms>
+    <Spells/>
+    <Experience>
+      <Entry points="96">
+        <Description><![CDATA[Bis "Protektorat Netherless"]]></Description>
+      </Entry>
+      <Entry points="5">
+        <Description><![CDATA[Protektorat Netherless]]></Description>
+      </Entry>
+      <Entry points="8">
+        <Description><![CDATA[3.6 Echoes and Mirages]]></Description>
+      </Entry>
+    </Experience>
+  </Statistics>
+</ExaltedCharacter>

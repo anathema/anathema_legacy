@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Story repositoryId="Story1" repositoryPrintName="Anmerkungen/Anathema-Bedienung">
+  <Name><![CDATA[Anmerkungen/Anathema-Bedienung]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="true" fontStyle="Plain"/>
+      <Text><![CDATA[Gut-zu-haben]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Tabulator-Größe sollte einstellbar sein in Textfeldern.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Save-Button Enabled/Disabled je nach Änderungszustand des Items
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Statusleiste (Saving...Saved?)
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Aufzählungs-Items im Text
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="true" fontStyle="Plain"/>
+      <Text><![CDATA[Ideen
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Verschiebbare Fenster mit verschiedenen Standard-Kategorien für das Szenen-Management
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[  (Angelehnt an B5-Lurkers-Guide-Analysen: Beschreibung, Cast, Handlung, Fragen)]]></Text>
+    </Part>
+  </Summary>
+</Story>

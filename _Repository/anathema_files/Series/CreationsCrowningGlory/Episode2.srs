@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Episode repositoryId="Episode2" repositoryPrintName="Runaway Bride">
+  <Name><![CDATA[Runaway Bride]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[~Das weitere Geschehen im Herrscherhaus von Netherless~]]></Text>
+    </Part>
+  </Summary>
+</Episode>

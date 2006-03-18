@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Scene repositoryId="Scene1" repositoryPrintName="On the Brim of Civilization">
+  <Name><![CDATA[On the Brim of Civilization]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[- entgegen aller Warnungen zieht das zu schwache Kind in der Hitze des Tages immer aus, um ihren Anteil am Überleben zu leisten
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[- erfolgreicher Beutezug in den Palast: Nahrung, Wasserperlen
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[- Trifft erneut auf den Orangenbettler, der sie warnt in ihr Lager zurückzukehren, 
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[  - die Mutter sei längst tot
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[  - ihre einzige Chance sei eine Flucht in die Wüste
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[- Mutter stirbt bei einem Angriff auf
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[- Pflanze vom Vater]]></Text>
+    </Part>
+  </Summary>
+</Scene>

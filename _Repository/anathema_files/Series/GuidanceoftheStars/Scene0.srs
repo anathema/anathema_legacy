@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Scene repositoryId="Scene0" repositoryPrintName="Meeting the Princess">
+  <Name><![CDATA[Meeting the Princess]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[- Bordell: Glänzende Feigenblüte
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[- zum Markt der fünf Farben (Sklavenmarkt)
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[- Glatzköpfiger Mann mit silbernen Runentätowierungen
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[- Treffen mit der Prinzessin
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[  - Gerüchte über eine Krankheit im Osten und ausbleibende Karawanen
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[- Begegnung mit einem alten Bettler über dessen Füße sie stolpert
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[  - schenkt ihm eine Orange]]></Text>
+    </Part>
+  </Summary>
+</Scene>

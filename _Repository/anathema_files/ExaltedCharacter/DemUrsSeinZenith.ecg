@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ExaltedCharacter repositoryId="DemUrsSeinZenith" repositoryPrintName="Thespis Evenfall">
+  <Description>
+    <CharacterName><![CDATA[Thespis Evenfall]]></CharacterName>
+  </Description>
+  <Statistics experienced="false">
+    <Rules>
+      <RuleSet name="PowerCombat"/>
+    </Rules>
+    <CharacterType subtype="TemplateType.Default">Solar</CharacterType>
+    <CharacterConcept>
+      <Caste type="Zenith"/>
+      <Nature/>
+      <Concept>Noble Barbarian</Concept>
+    </CharacterConcept>
+    <Essence creationValue="3"/>
+    <Willpower creationValue="7"/>
+    <Virtues>
+      <Compassion creationValue="2"/>
+      <Conviction creationValue="4"/>
+      <Temperance creationValue="1"/>
+      <Valor creationValue="3"/>
+    </Virtues>
+    <Attributes>
+      <Physical>
+        <Strength creationValue="3"/>
+        <Dexterity creationValue="4"/>
+        <Stamina creationValue="2"/>
+      </Physical>
+      <Social>
+        <Charisma creationValue="4"/>
+        <Manipulation creationValue="3"/>
+        <Appearance creationValue="4"/>
+      </Social>
+      <Mental>
+        <Perception creationValue="3"/>
+        <Intelligence creationValue="1"/>
+        <Wits creationValue="3"/>
+      </Mental>
+    </Attributes>
+    <Abilities>
+      <Archery creationValue="0"/>
+      <Brawl creationValue="0"/>
+      <MartialArts creationValue="0"/>
+      <Melee creationValue="4" favored="true"/>
+      <Thrown creationValue="3" favored="true"/>
+      <Endurance creationValue="0"/>
+      <Performance creationValue="3"/>
+      <Presence creationValue="3"/>
+      <Resistance creationValue="2"/>
+      <Survival creationValue="2"/>
+      <Craft creationValue="0"/>
+      <Investigation creationValue="0"/>
+      <Lore creationValue="1"/>
+      <Medicine creationValue="0"/>
+      <Occult creationValue="0"/>
+      <Athletics creationValue="3" favored="true"/>
+      <Awareness creationValue="0"/>
+      <Dodge creationValue="3" favored="true"/>
+      <Larceny creationValue="0"/>
+      <Stealth creationValue="0"/>
+      <Bureaucracy creationValue="0"/>
+      <Linguistics creationValue="2"/>
+      <Ride creationValue="0"/>
+      <Sail creationValue="0"/>
+      <Socialize creationValue="1" favored="true"/>
+    </Abilities>
+    <Backgrounds>
+      <Background creationValue="3"><![CDATA[Artifact]]></Background>
+      <Background creationValue="1"><![CDATA[Influence]]></Background>
+      <Background creationValue="2"><![CDATA[Resources]]></Background>
+      <Background creationValue="1"><![CDATA[Followers]]></Background>
+    </Backgrounds>
+    <Charms>
+      <CharmGroup name="Melee" type="Solar">
+        <Charm name="Solar.OneWeapon,TwoBlows" experienceLearned="false"/>
+        <Charm name="Solar.ExcellentStrike" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Athletics" type="Solar">
+        <Charm name="Solar.GracefulCraneStance" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Thrown" type="Solar">
+        <Charm name="Solar.CascadeCuttingTerror" experienceLearned="false"/>
+        <Charm name="Solar.Triple-DistanceAttackTechnique" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Dodge" type="Solar">
+        <Charm name="Solar.ReedinWind" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Presence" type="Solar">
+        <Charm name="Solar.HarmoniousPresenceMeditation" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Performance" type="Solar">
+        <Charm name="Solar.RespectCommandingAttitude" experienceLearned="false"/>
+        <Charm name="Solar.Phantom-ConjuringPerformance" experienceLearned="false"/>
+        <Charm name="Solar.MasterfulPerformanceExercise" experienceLearned="false"/>
+      </CharmGroup>
+      <Combos>
+        <Combo experienceLearned="false">
+          <Name><![CDATA[Advent of Excellence]]></Name>
+          <Description><![CDATA[Essence gathers around the weapon, while the body evades the enemies assault. Slowly but surely, two marks manifest on the enemies body, indicating where the weapon will strike. Once ready, lightning guides the blows to the target, unfailingly piercing armor, flesh and ultimately bone.]]></Description>
+          <Charm name="Solar.OneWeapon,TwoBlows" type="Solar"/>
+          <Charm name="Solar.ExcellentStrike" type="Solar"/>
+          <Charm name="Solar.ReedinWind" type="Solar"/>
+        </Combo>
+      </Combos>
+    </Charms>
+    <Spells/>
+    <Experience/>
+    <AdditionalModels>
+      <Model templateId="SolarVirtueFlaw">
+        <Content>
+          <VirtueFlaw>
+            <RootVirtue name="Conviction"/>
+            <Name><![CDATA[All or Nothing]]></Name>
+            <LimitBreak><![CDATA[A proposed course of action is deemed "too risky" by others.]]></LimitBreak>
+            <Description><![CDATA[The character ignores whatever voice of sanity is speaking and commits to the most rewarding (and possibly risky) path available. The condition lasts for (Essence) days or until the path is walked to it's utter end.]]></Description>
+          </VirtueFlaw>
+        </Content>
+      </Model>
+      <Model templateId="MeritsAndFlaws">
+        <Content>
+          <meritsFlaws/>
+        </Content>
+      </Model>
+    </AdditionalModels>
+  </Statistics>
+</ExaltedCharacter>

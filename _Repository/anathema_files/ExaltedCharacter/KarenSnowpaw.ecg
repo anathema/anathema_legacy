@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ExaltedCharacter repositoryId="KarenSnowpaw" repositoryPrintName="Karen Snowpaw">
+  <Description>
+    <CharacterName><![CDATA[Karen Snowpaw]]></CharacterName>
+  </Description>
+  <Statistics experienced="false">
+    <Rules>
+      <RuleSet name="PowerCombat"/>
+    </Rules>
+    <CharacterType subtype="TemplateType.Default">Lunar</CharacterType>
+    <CharacterConcept>
+      <Caste type="NoMoon"/>
+      <Nature type="Paragon"/>
+      <Concept>Herimit Sorceress</Concept>
+    </CharacterConcept>
+    <Essence creationValue="3"/>
+    <Willpower creationValue="9"/>
+    <Virtues>
+      <Compassion creationValue="5"/>
+      <Conviction creationValue="2"/>
+      <Temperance creationValue="1"/>
+      <Valor creationValue="4"/>
+    </Virtues>
+    <Attributes>
+      <Physical>
+        <Strength creationValue="2"/>
+        <Dexterity creationValue="5"/>
+        <Stamina creationValue="3"/>
+      </Physical>
+      <Social>
+        <Charisma creationValue="3"/>
+        <Manipulation creationValue="2"/>
+        <Appearance creationValue="3"/>
+      </Social>
+      <Mental>
+        <Perception creationValue="4"/>
+        <Intelligence creationValue="3"/>
+        <Wits creationValue="5"/>
+      </Mental>
+    </Attributes>
+    <Abilities>
+      <Archery creationValue="3"/>
+      <Brawl creationValue="0"/>
+      <MartialArts creationValue="1"/>
+      <Melee creationValue="0"/>
+      <Thrown creationValue="0"/>
+      <Endurance creationValue="0"/>
+      <Performance creationValue="1"/>
+      <Presence creationValue="1" favored="true"/>
+      <Resistance creationValue="1"/>
+      <Survival creationValue="2" favored="true"/>
+      <Craft creationValue="0"/>
+      <Investigation creationValue="2"/>
+      <Lore creationValue="2" favored="true"/>
+      <Medicine creationValue="0"/>
+      <Occult creationValue="5" favored="true">
+        <Specialty creationValue="2" name="Sorcery"/>
+      </Occult>
+      <Athletics creationValue="3"/>
+      <Awareness creationValue="2" favored="true"/>
+      <Dodge creationValue="0"/>
+      <Larceny creationValue="0"/>
+      <Stealth creationValue="0"/>
+      <Bureaucracy creationValue="0"/>
+      <Linguistics creationValue="1"/>
+      <Ride creationValue="0"/>
+      <Sail creationValue="0"/>
+      <Socialize creationValue="1"/>
+    </Abilities>
+    <Backgrounds/>
+    <Charms>
+      <CharmGroup name="Sorcery" type="Lunar">
+        <Charm name="Lunar.TerrestrialCircleSorcery" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Shapechanging" type="Lunar">
+        <Charm name="Lunar.FindingTheSpiritsShape" experienceLearned="false"/>
+        <Charm name="Lunar.ShapingIdealForm" experienceLearned="false"/>
+        <Charm name="Lunar.DeadlyBeastmanTransformation" experienceLearned="false">
+          <Special>
+            <LearnCount creationValue="3"/>
+          </Special>
+        </Charm>
+      </CharmGroup>
+      <Combos/>
+    </Charms>
+    <Spells>
+      <Spell name="Terrestrial.SpiritSword" experienceLearned="false"/>
+      <Spell name="Terrestrial.StingIceHornet" experienceLearned="false"/>
+    </Spells>
+    <Experience/>
+    <AdditionalModels>
+      <Model templateId="Lunar.DeadlyBeastmanTransformation.Template">
+        <Content>
+          <Beastform>
+            <BeastAttributes>
+              <Strength creationValue="6"/>
+              <Dexterity creationValue="5"/>
+              <Stamina creationValue="3"/>
+            </BeastAttributes>
+            <Gifts>
+              <Gift id="RuggedHide" value="1" creationActive="true" experienceActive="true">
+                <categorization type="Gift"/>
+              </Gift>
+              <Gift id="ResilienceNature" value="1" creationActive="true" experienceActive="true">
+                <categorization type="Gift"/>
+              </Gift>
+            </Gifts>
+          </Beastform>
+        </Content>
+      </Model>
+      <Model templateId="Lunar.HeartsBlood.Template">
+        <Content>
+          <HeartsBlood/>
+        </Content>
+      </Model>
+      <Model templateId="Lunar.Renown.Template">
+        <Content>
+          <Renown>
+            <RenownTrait creationValue="0"/>
+            <RenownTrait creationValue="0"/>
+            <RenownTrait creationValue="0"/>
+            <RenownTrait creationValue="0"/>
+          </Renown>
+          <FaceTrait creationValue="0"/>
+        </Content>
+      </Model>
+      <Model templateId="MeritsAndFlaws">
+        <Content>
+          <meritsFlaws>
+            <perk id="Mute" value="2" creationActive="true" experienceActive="true">
+              <categorization type="Flaw" category="Physical"/>
+            </perk>
+          </meritsFlaws>
+        </Content>
+      </Model>
+    </AdditionalModels>
+  </Statistics>
+</ExaltedCharacter>

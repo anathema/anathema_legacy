@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Scene repositoryId="Scene18" repositoryPrintName="Taverne">
+  <Name><![CDATA[Taverne]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Die Grenze nach Fair ist unbeschadet überschritten und zwei Tage der Reise sind vergangen. Wie schon am vorhergehenden Abend sind Amber und Telperion in einem der Straßenhäuser eingekehrt, die Händlern und Reisenden Unterschlupf und Erholung bieten. Hier erfahren sie in einem Gespräch mit einem Händler aus erster Hand das Gottvertrauen der Menschen und die Zuversicht trotz der anhaltenden Gerüchte vom drohenden Krieg. Der Tod des Custodian hat sich noch nicht bis hierher herumgesprochen.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Später am Abend, der Händler hat sich zu seinen Mitreisenden zurückgezogen, um zu spielen, tritt ein Reisender der bislang schweigend an einem einzelnen Tisch gesessen hatte, an Telperion und Amber heran: Kenful Just hat die beiden Aufgespürt und berichtet Amber vom Schicksal, dass Emerald ereilt hat, gepaart mit der Bitte, einen Weg zu finden, ihn zu befreien. 
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Natürlich willigt die Prinzessin ohne langes Zögern ein, und Telperion begleitet sie, weniger aus Sorge um den Mann, als um den Krieg zu verhindern.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="true" fontStyle="Plain"/>
+      <Text><![CDATA[Zwischenspiel: Silverplaine]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Einige Tage erreichen die beiden Reisenden die Hauptstadt Fairs ? beide waren sie noch nie zuvor in der Silbernen Stadt, die inmitten der Silbernen Ebenen liegt. Während nach des Palasts inmitten der Stadt eine Unterkunft finden, beobachten wir erneut Emerald:]]></Text>
+    </Part>
+  </Summary>
+</Scene>

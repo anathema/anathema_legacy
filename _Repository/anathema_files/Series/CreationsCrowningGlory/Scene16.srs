@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Scene repositoryId="Scene16" repositoryPrintName="Imprisoned">
+  <Name><![CDATA[Imprisoned]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Nach Tagen der Ungewissheit, mit nicht mehr als einem Heiler als Stütze, wird Emerald Flux endlich von Kenful Just besucht. Emerald lehnt alle Angebote der Unterstützung ab, lediglich KJs Vorschlag, nach Amber zu sehen und sie zu bitten, nach Silverplaine zu reisen, findet Anklang.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="true" fontStyle="Plain"/>
+      <Text><![CDATA[Zwischenspiel: Toret]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Ledaal Toret erreicht Fethan, und überdenkt sein Schicksal, als er durch die Stadt zur Festung der Kaiser reitet.]]></Text>
+    </Part>
+  </Summary>
+</Scene>

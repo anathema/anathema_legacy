@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ExaltedCharacter repositoryId="MorayDarktide" repositoryPrintName="Moray Darktide">
+  <Description>
+    <CharacterName><![CDATA[Moray Darktide]]></CharacterName>
+    <Periphrase><![CDATA[Free-Booting Child of the Sun, Loyal to Darkness]]></Periphrase>
+  </Description>
+  <Statistics experienced="true">
+    <Rules>
+      <RuleSet name="PowerCombat"/>
+    </Rules>
+    <CharacterType subtype="TemplateType.Default">Solar</CharacterType>
+    <CharacterConcept>
+      <Caste type="Dawn"/>
+      <Nature type="Follower"/>
+      <Concept>Pirate Captain</Concept>
+    </CharacterConcept>
+    <Essence creationValue="3"/>
+    <Willpower creationValue="7"/>
+    <Virtues>
+      <Compassion creationValue="3"/>
+      <Conviction creationValue="2"/>
+      <Temperance creationValue="2"/>
+      <Valor creationValue="2"/>
+    </Virtues>
+    <Attributes>
+      <Physical>
+        <Strength creationValue="4"/>
+        <Dexterity creationValue="4"/>
+        <Stamina creationValue="3"/>
+      </Physical>
+      <Social>
+        <Charisma creationValue="3"/>
+        <Manipulation creationValue="2"/>
+        <Appearance creationValue="4"/>
+      </Social>
+      <Mental>
+        <Perception creationValue="3"/>
+        <Intelligence creationValue="1"/>
+        <Wits creationValue="3"/>
+      </Mental>
+    </Attributes>
+    <Abilities>
+      <Archery creationValue="0"/>
+      <Brawl creationValue="0"/>
+      <MartialArts creationValue="0"/>
+      <Melee creationValue="4"/>
+      <Thrown creationValue="0" experiencedValue="3"/>
+      <Endurance creationValue="4"/>
+      <Performance creationValue="3" favored="true"/>
+      <Presence creationValue="2"/>
+      <Resistance creationValue="3"/>
+      <Survival creationValue="2"/>
+      <Craft creationValue="0"/>
+      <Investigation creationValue="0"/>
+      <Lore creationValue="1" experiencedValue="3" favored="true"/>
+      <Medicine creationValue="0"/>
+      <Occult creationValue="0" experiencedValue="3"/>
+      <Athletics creationValue="2" experiencedValue="4" favored="true"/>
+      <Awareness creationValue="2" experiencedValue="3" favored="true"/>
+      <Dodge creationValue="0"/>
+      <Larceny creationValue="1"/>
+      <Stealth creationValue="0"/>
+      <Bureaucracy creationValue="1"/>
+      <Linguistics creationValue="0"/>
+      <Ride creationValue="0"/>
+      <Sail creationValue="3" favored="true"/>
+      <Socialize creationValue="0"/>
+    </Abilities>
+    <Backgrounds>
+      <Background creationValue="3"><![CDATA[Backing]]></Background>
+      <Background creationValue="2"><![CDATA[Followers]]></Background>
+      <Background creationValue="2"><![CDATA[Resources]]></Background>
+    </Backgrounds>
+    <Charms>
+      <CharmGroup name="Awareness" type="Solar">
+        <Charm name="Solar.PiercingNight'sVeilPractice" experienceLearned="true"/>
+        <Charm name="Solar.SensoryAcuityPrana" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Melee" type="Solar">
+        <Charm name="Solar.DippingSwallowDefense" experienceLearned="false"/>
+        <Charm name="Solar.SolarCounterattack" experienceLearned="false"/>
+        <Charm name="Solar.TwoSwordsTechnique" experienceLearned="false"/>
+        <Charm name="Solar.Sun-and-MoonMethod" experienceLearned="false"/>
+        <Charm name="Solar.GoldenEssenceBlock" experienceLearned="false"/>
+        <Charm name="Solar.DualSlayingStance" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Performance" type="Solar">
+        <Charm name="Solar.Phantom-ConjuringPerformance" experienceLearned="false"/>
+        <Charm name="Solar.MasterfulPerformanceExercise" experienceLearned="false"/>
+        <Charm name="Solar.RespectCommandingAttitude" experienceLearned="false"/>
+        <Charm name="Solar.UnrulyMobDispersingRebuke" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Athletics" type="Solar">
+        <Charm name="Solar.GracefulCraneStance" experienceLearned="false"/>
+        <Charm name="Solar.LeapingTigerAttack" experienceLearned="true"/>
+        <Charm name="Solar.LightningSpeed" experienceLearned="true"/>
+        <Charm name="Solar.Foe-VaultingStyle" experienceLearned="true"/>
+        <Charm name="Solar.MonkeyLeapTechnique" experienceLearned="true"/>
+      </CharmGroup>
+      <Combos/>
+    </Charms>
+    <Spells/>
+    <Experience/>
+    <AdditionalModels>
+      <Model templateId="SolarVirtueFlaw">
+        <Content>
+          <VirtueFlaw/>
+        </Content>
+      </Model>
+      <Model templateId="MeritsAndFlaws">
+        <Content>
+          <meritsFlaws/>
+        </Content>
+      </Model>
+    </AdditionalModels>
+  </Statistics>
+</ExaltedCharacter>

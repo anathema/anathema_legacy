@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Scene repositoryId="Scene42" repositoryPrintName="Telperion und Kem">
+  <Name><![CDATA[Telperion und Kem]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Kem
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    Während Nuba und Kazu sich streiten, ziehen Amber, Telperion und Kem weiter.
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    Kem interessiert sich für Telperions Aktivität seit dem letzten Treffen in Thorns.   
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[    Hat keinen Plan, wie er mit YS weitermachen soll
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Musik:  FF VI - Slam Shuffle oder Kingdom Hearts - This is Halloween]]></Text>
+    </Part>
+  </Summary>
+</Scene>

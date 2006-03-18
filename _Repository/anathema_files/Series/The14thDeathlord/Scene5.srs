@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Scene repositoryId="Scene5" repositoryPrintName="The Eve of Life">
+  <Name><![CDATA[The Eve of Life]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Rückkehr in ein zerstörtes Dorf]]></Text>
+    </Part>
+  </Summary>
+</Scene>

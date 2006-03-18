@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<Scene repositoryId="Scene4" repositoryPrintName="A (Wo)man's Toil">
+  <Name><![CDATA[A (Wo)man's Toil]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[Das Leben eines Soldaten in Lookshy. Krieg gegen die Mask of Winters?]]></Text>
+    </Part>
+  </Summary>
+</Scene>
