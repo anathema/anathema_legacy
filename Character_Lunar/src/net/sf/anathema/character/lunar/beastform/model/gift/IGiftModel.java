@@ -1,0 +1,13 @@
+package net.sf.anathema.character.lunar.beastform.model.gift;
+
+import net.sf.anathema.character.library.quality.presenter.IQualityModel;
+import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
+
+public interface IGiftModel extends IQualityModel<IGift> {
+
+  public int getAllowedPicks();
+
+  public IGift getGiftById(String giftId);
+
+  public boolean isCreationLearnedSelectionInExperiencedCharacter(IQualitySelection<IGift> selection);
+}

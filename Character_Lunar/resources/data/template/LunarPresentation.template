@@ -1,0 +1,8 @@
+<presentation>
+  <color red="240" green="248" blue="255" />
+  <ballResource type="Lunar" />
+  <newResources>
+    <newAction>CharacterGenerator.NewCharacter.Lunar.Name</newAction>
+  </newResources>
+  <charmPresentation uses="template/LunarCharmPresentation.template"/>
+</presentation>

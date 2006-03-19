@@ -1,0 +1,6 @@
+<magicTemplate>
+	<freePicksPredicate type="Default"/>
+	<favoringTraitType type="AttributeType"/>
+	<charmTemplate martialArtsLevel="Terrestrial" highLevelMartialArts="true" charmType="Lunar"/>
+	<spellTemplate maximumSorceryCircle="Celestial" maximumNecromancyCircle="Shadowlands"/>
+</magicTemplate>		
