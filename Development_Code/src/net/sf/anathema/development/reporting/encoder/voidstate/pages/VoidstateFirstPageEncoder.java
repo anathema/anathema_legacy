@@ -22,6 +22,7 @@ import net.sf.anathema.development.reporting.encoder.voidstate.traits.VoidStateA
 import net.sf.anathema.development.reporting.encoder.voidstate.util.HealthRectangleEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.util.SlashSeparatedLineEncoder;
 import net.sf.anathema.development.reporting.util.HeaderData;
+import net.sf.anathema.development.reporting.util.ParameterUtilities;
 import net.sf.anathema.development.reporting.util.TraitEncoder;
 import net.sf.anathema.framework.reporting.encoding.TextEncoding;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
@@ -694,7 +695,7 @@ public class VoidstateFirstPageEncoder extends AbstractVoidstatePageEncoder {
     HeaderDataEncoder headerDataEncoder = new HeaderDataEncoder(basicsEncoder.getTextLineEncoder(), LINE_HEIGHT);
     HeaderData[] headerData = getHeaderData();
     Rectangle boxRectangle = basicsEncoder.createTwoColumnBoxBoundsWithoutTitle(2, 1, new Point(0, 0));
-    Rectangle textRectangle = basicsEncoder.encodeBoxAndQuotifyHeader(bandElement, boxRectangle, "Personal Info");
+    Rectangle textRectangle = basicsEncoder.encodeBox(bandElement, boxRectangle, ParameterUtilities.parameterString(ICharacterReportConstants.CHARACTER_NAME));
     textRectangle.height += 8;
     headerDataEncoder.encode(bandElement, textRectangle, headerData);
     return boxRectangle.height;
@@ -706,7 +707,7 @@ public class VoidstateFirstPageEncoder extends AbstractVoidstatePageEncoder {
 
   protected HeaderData[] getHeaderData() {
     return new HeaderData[] {
-        new HeaderData("Name", ICharacterReportConstants.CHARACTER_NAME),
+        new HeaderData("Rules", ICharacterReportConstants.RULESET),
         new HeaderData("Player"),
         new HeaderData("Concept", ICharacterReportConstants.CONCEPT),
         new HeaderData("Campaign"),
