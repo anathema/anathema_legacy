@@ -1,0 +1,83 @@
+The asterisk (*) indicates possible language content.
+(In other words: "Warning: Contains Language")
+
+_Repository
+	Hold characters and data from an example campaign. 
+	A common reference point for the persistence system.
+
+Acceptance_Tests
+	Old acceptance tests, partially based on JUnit.
+
+*Anathema
+	Anathema Main class, some initialization-related files.
+
+Anathema_Acceptance_Tests
+	FitNesse-based acceptance tests
+
+Anathema_Dist
+	Distribution files and the icon.
+
+*Anathema_Namegenerator
+	Files concerning name generation.
+
+*Campaign
+	Series management module.
+
+*Campaign_Music
+	Presenter components and Model/View-Interfaces for the music module
+
+*Campaign_Music_Impl
+	Model/View implementations for the music module
+	
+Character_Generic
+	Interfaces and abstract classes needed by all the character-related modules.
+
+Character_Generic_Impl
+	Implementations of said interfaces.
+
+Character_Generic_Framework
+	Shared Components, independent of the Exalted-context.
+
+*Character_Core
+	Lower level character classes, mostly those that are also needed by the Charm Cascades.
+
+*Character
+	Higher level character classes, the stuff actually needed to create and maintain a character.
+
+*Character_[TYPE]
+	Files relating to a certain charactertype.
+	
+*Character_Merits_Flaws
+	Files regarding M&F-management
+
+*CharmTree
+	The core files for the charm tree view and the SVG graphics themselves. 
+	Used by the character modules and by the charmcascades.
+
+*CharmCascades
+	The stand alone charm viewing module.
+
+*CharmEntry
+	The not-yet-completed charm entry module.
+
+Development
+	Notes, ToDos, Annotations, Eclipse settings, extracts of mails thought worthy of putting in there. 
+	Content is partially in german.
+
+DevelopmentEnvironment
+	Stuff that's not needed by users. Stand alone programs used to create the charm database, character sheets, manage "properties" files.
+	
+*Documentation
+	Documentation efforts.
+	
+Framework
+	Core files of the Anathema system. Used in many a module and to boot up the whole system.
+
+Lib/Lib_Gui/Lib_Workflow
+	Basic stuff, but nothing proprietary to the Anathema system.
+
+Thirdparty
+	Third party libraries.
+
+Website
+	Project website

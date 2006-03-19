@@ -1,0 +1,13 @@
+Character
+=========
+- Reduce Willpower to new default when lowering Virtues
+- Deselect Charms with prerequisites > current values
+- Rekursives Charmlernen und -vergessen: An/Aus
+- Pop-Up zum Background-Löschen bei Wert auf 0: An/Aus
+- Ox-Body-Technique: Entlernen beim Abwählen über Baum?
+- Allow experienced Background buy
+- Eclipse Cost Konfigurieren
+
+Music
+=========
+- Reparse libraries upon location change

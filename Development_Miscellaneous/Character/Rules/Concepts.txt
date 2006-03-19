@@ -1,0 +1,209 @@
+##Solar
+
+Craftsman
+Carpenter
+Swordsmith
+Cobbler
+
+Criminal
+Bandit Lord
+Pirate
+Con Artist
+
+Drifter
+Nomadic Tribesman
+Scavenger
+Gambler
+
+Entertainer
+Professional Courtesan
+Musician
+Gladiator
+
+Merchant
+Caravan Owner
+Slave Trader
+Money Lender
+
+Politician
+Barbarian Prince
+Town Magistrate
+Vizier
+
+Priest
+Shaman
+Initiate of the Order of the Immaculate Dragons
+Monk
+
+Scholar
+Royal Historian
+Healer
+Engineer
+
+Soldier
+City Guardsman
+Mercenary
+Barbarian Warrior
+
+Worker
+Farmer
+Manservant
+Dock Worker
+
+##Dawn
+Mercenary Prince
+City Guardsman
+Warrior-Scholar
+Grizzled Veteran
+Daring Young Farm Boy
+Famous Pit Fighter
+Heroic Bandit
+Barbarian Raider
+Swordsmith
+Mercenary
+Barbarian Warlord
+Commando
+Wandering Boxer
+Fanatic
+Pirate Captain
+Infamous Assassin
+Warden
+Patient Slave
+
+##Zenith
+Former Priest or Shaman of another God
+Brilliant Astrologer
+Two-Fisted Laborer
+Wandering Tinker
+Desert Hermit
+Physician
+Peasant Rebel
+Tax Collector
+Pirate
+Old Man on the Mountain
+Runaway Slave
+Pit Fighter
+Robin Hood
+Caravan Guard
+Retired General
+Monk
+Priest of the Unconquered Sun
+Deathknight's Servant
+Village Hetman
+Wyld Lunatic
+Powerful Witch
+
+##Twilight
+Elderly Scholar
+Warrior-Sage
+Cunning Courtier
+Slave on the Run
+Destitute Student
+Child Prodigy
+Ambitious Courtesan
+Educated Merchant
+Village Wise Woman
+Cunning Tailor
+Traveling Healer
+Town Constable
+Optimistic Young Scavenger
+Blacksmith
+Smith
+Avatar
+Witch
+Scholar
+Sorceress
+Mountebank
+Beast Tribe Hunter
+Pearl Diver
+High-Ranking Courtesan
+Jungle Child
+
+##Night
+Troubleshooter for Hire
+Bounty Hunter
+Neglected Youngest Sister
+Escaped Fugitive
+King of Thieves
+Nobleman's Mistress
+Gang Leader
+Crafty Merchant
+Highwayman
+Wandering Killer
+Crimefighter
+Spy
+Assassin
+Hunter of the Dead
+Syndicate Man
+Acrobat-Thief
+Hawkrider
+Agent of the All-Seeing Eye
+Tya Sailor
+
+##Eclipse
+Elderly Social Matron
+Ambitious Young Noble
+Professional Diplomat
+Trade Intermediary
+Village Shaman
+Careful Spy
+Ambitious Courtier
+Professional Messenger
+Adventurous Sailor
+Army Quartermaster
+Farmstead Girl
+Youth Gang Leader
+Dutiful Shaman
+Poet of Paragon
+Storm Mother's Child
+Merchant
+Revolutionary Actor
+Horse Messenger
+Emissary
+Young Diplomat
+
+##Abyssal
+##Dusk
+Amoral General
+Brooding Swordsman
+Mercenary Assassin
+Mercy Killer
+Murder Cultist
+Deathlord's Living Weapon
+La Belle Dame Sans Merci
+
+##Midnight
+Death-Cult Leader
+Physician
+Deathlord's Strong Right Hand
+Voice of the Malfeans
+Deranged Hermit
+Dark Herald
+Spiritual Advisor
+
+##Daybreak
+Fallen Shaman
+Artificer
+Obsessed Scholar
+Death Witch
+Military Engineer
+Deathlord's Interrogator
+Plague Bringer
+
+##Day
+Deathlord's Quisling
+Prostitute Turned Assassin
+Spy Master
+Heretical Cult Leader
+Master Inquisitor
+Power Behind A Corrupt Throne
+Nihilistic Revolutionary
+
+##Moonshadow
+Merchant Prince
+Scheming Socialite
+Actor Turned Deathlord Agent
+Political Troubleshooter
+Self-Serving Seneschal
+Honey-Tongued Courtesan
+Sower of Discord

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><templates><template context="java" deleted="false" description="" enabled="true" name="listener">private final List &lt;I${listenerClass}&gt; ${listenerClass} = new ArrayList&lt;I${listenerClass}&gt; ();&#13;
+&#13;
+public synchronized void add${listenerClass}(I${listenerClass} listener) {&#13;
+  ${listenerClass}.add(listener);&#13;
+}&#13;
+&#13;
+public synchronized void remove${listenerClass}(I${listenerClass} listener) {&#13;
+  ${listenerClass}.remove(listener);&#13;
+}&#13;
+&#13;
+private synchronized void fire${methodName}(${args}) {&#13;
+  List &lt;I${listenerClass}&gt; clonedListeners = new ArrayList&lt;I${listenerClass}&gt; (${listenerClass});&#13;
+  for (I${listenerClass} listener : clonedListeners) {&#13;
+    listener.${methodName}(${args});&#13;
+  }&#13;
+}</template></templates>

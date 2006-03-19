@@ -1,0 +1,14 @@
+Charm-Colors:
+Dragonblooded	"darkred" 	rgb(139, 0, 0) 
+Solar			"gold" 		rgb(255, 215, 0) 
+Raksha 			"forestgreen" rgb( 34, 139, 34) 
+Lunar 			"aliceblue" rgb(240, 248, 255) 
+Abyssal			"darkgrey" 	rgb(169, 169, 169)
+Sidereal		"mediumpurple" rgb(147, 112, 219) 
+Mortal						rgb (177,177,253)
+
+Charm-Dimension:
+Solar: new Dimension(190, 72);
+Sidereal: new Dimension(180, 85);
+Dragonblooded: new Dimension(190, 76);
+Abyssal: new Dimension(200, 90);

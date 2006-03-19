@@ -1,0 +1,88 @@
+CharacterType
+	|=>Mortal	
+	|	|=>Mortal 
+	|	|=>Heroic Mortal
+	|	\=>Thaumaturge (!)
+	|
+	|=>Dragon King	!*
+	|	|=>Modern Dragon-King
+	|	\=>Ancient Dragon-King
+	|
+	|=>Exalted	!
+	|	|=>Terrestrial
+	|	|	|=>Realm
+	|	|	|	|=>Dynastic
+	|	|	|	\=>Immaculate Monk
+	|	|	|
+	|	|	|=>Lookshy
+	|	|	|	|=>Lookshy Immigrant
+	|	|	|	|=>Lookshy Native
+	|	|	|	\=>Lookshy Defactor
+	|	|	|
+	|	|	\=>Outcaste
+	|	|		|=>Threshold Outcaste	T
+	|	|		|=>Realm Outcaste
+	|	|		|	|=>Generic Realm Outcaste
+	|	|		|	|=>Imperial Graduate
+	|	|		|	\=>Patrician
+	|	|		|	
+	|	|		|=>Eos and Ossisa Outcaste
+	|	|		|	|=>Non-Dynastic Character
+	|	|		|	|=>Ex-Dynast
+	|	|		|	\=>Ex-Immaculate
+	|	|		|
+	|	|		\=>Forest Witch
+	|	|			|=>Non-Dynastic Character
+	|	|			|=>Ex-Dynast
+	|	|			|=>Ex-Immaculate
+	|	|			\=>Numen
+	|	|	
+	|	\=>Celestial
+	|		|=>Lunar
+	|		|=>Sidereal *
+	|		|	|=>Ronin
+	|		|	\=>Loyal
+	|		|
+	|		|=>Abyssal +#(Moonshadow)
+	|		|	|=>Renegade
+	|		|	\=>Loyal
+	|		|
+	|		|=>Alchemical	N
+	|		|=>Infernal	N
+	|		\=>Solar	T#(Eclipse, Twilight)
+	|			|=>"Core Rules Solar"
+	|			\=>Immaculate Solar
+	|
+	|=>God-Blooded	!
+	|	|=>God-Blooded
+	|	|	|=>Divine God-Blooded
+	|	|	\=>Elemental God-Blooded
+	|	|
+	|	|=>Demon-Blooded
+	|	|=>Ghost-Blooded (+)
+	|	|=>Fae Blooded
+	|	|=>Half-Caste
+	|		|=>Solar Half-Caste
+	|		|=>Abyssal Half-Caste
+	|		\=>Beastmen
+	|
+	|=>Fair Folk	!
+	|	|=>Mountain Folk
+	|	|	|=>Unenlightened
+	|	|	\=>Enlightened
+	|	|	
+	|	\=>Raksha
+	|		|=>Commoner
+	|		|=>Heroic Commoner
+	|		|=>Noble
+	|		\=>Unformed	N
+	|
+	\=>Spirits	!N
+		|=>Ghosts	+	
+		\=>"True" Spirits
+					|=>Gods
+					|=>Demons
+					\=>Elementals
+		
++: Underworld Dweller	*: Yu-Shan Dweller	T: Threshold Dweller 
+#: Caste Specialties	!: Essence User		N: Non-Playable	
