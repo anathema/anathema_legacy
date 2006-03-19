@@ -1,0 +1,70 @@
+package net.sf.anathema.character.sidereal.colleges.view;
+
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
+
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.sf.anathema.character.library.intvalue.IFavorableIntValueView;
+import net.sf.anathema.character.library.intvalue.IFavorableIntViewProperties;
+import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.character.library.trait.view.FavorableTraitView;
+import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeOverview;
+import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeView;
+import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeViewProperties;
+import net.sf.anathema.framework.presenter.view.ISimpleTabView;
+import net.sf.anathema.lib.gui.dialogcomponent.grouped.GroupedGridDialogPanel;
+
+public class SiderealCollegeView implements ISimpleTabView, ISiderealCollegeView {
+
+  private GroupedGridDialogPanel collegeGroupPanel = new GroupedGridDialogPanel(3);
+  private JPanel content;
+  private JPanel overviewPanel = new JPanel();
+  private final ISiderealCollegeViewProperties properties;
+
+  public SiderealCollegeView(ISiderealCollegeViewProperties properties) {
+    this.properties = properties;
+  }
+
+  public void startGroup(String groupLabel) {
+    collegeGroupPanel.startNewGroup(groupLabel);
+  }
+
+  public JComponent getComponent() {
+    if (content == null) {
+      content = new JPanel(new GridDialogLayout(1, false));
+      addCollegePanel();
+      overviewPanel.setBorder(new TitledBorder(properties.getOverviewString()));
+      content.add(overviewPanel);
+    }
+    return content;
+  }
+
+  private void addCollegePanel() {
+    JPanel collegePanel = new JPanel();
+    collegePanel.setBorder(new TitledBorder(properties.getCollegeString()));
+    collegeGroupPanel.addOverallView(collegePanel);
+    content.add(collegePanel);
+  }
+
+  public IFavorableIntValueView addIntValueView(
+      String label,
+      IIntValueDisplayFactory factory,
+      IFavorableIntViewProperties viewProperties,
+      int value,
+      int maxValue,
+      boolean selected) {
+    FavorableTraitView traitView = new FavorableTraitView(factory, viewProperties, label, value, maxValue, selected);
+    collegeGroupPanel.addEntry(traitView);
+    return traitView;
+  }
+
+  public boolean needsScrollbar() {
+    return false;
+  }
+
+  public void setOverview(ISiderealCollegeOverview overview) {
+    overviewPanel.removeAll();
+    overviewPanel.add(overview.getContent());
+  }
+}
