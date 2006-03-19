@@ -58,6 +58,9 @@ public class RenownPresenter extends AbstractTraitPresenter {
     if (totalRenown > allowedRenown) {
       overviewView.setTextColor(LegalityColorProvider.COLOR_HIGH);
     }
+    else {
+      overviewView.setTextColor(LegalityColorProvider.COLOR_OKAY);
+    }
   }
 
   private ILabelledAlotmentView initOverviewPresentation() {
