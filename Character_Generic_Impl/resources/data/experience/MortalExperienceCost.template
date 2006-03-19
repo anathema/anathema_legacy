@@ -1,0 +1,7 @@
+<experiencePointCost uses="experience/DefaultExperienceCost.template">
+  <advantages>
+    <essence>
+      <currentRating multiplier="20" />
+    </essence>
+  </advantages>
+</experiencePointCost>

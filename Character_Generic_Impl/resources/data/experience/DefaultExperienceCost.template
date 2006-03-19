@@ -1,0 +1,32 @@
+<experiencePointCost>
+  <attributes>
+    <generalCosts>
+      <currentRating multiplier="4" />
+    </generalCosts>
+  </attributes>
+  <abilities>
+    <generalCosts>
+      <currentRating multiplier="2" initialCosts="3"/>
+    </generalCosts>
+    <favoredCosts>
+      <currentRating multiplier="2" summand="-1" initialCosts="3"/>
+    </favoredCosts>
+    <specialties>
+      <fixedCost cost="3" />
+    </specialties>
+  </abilities>
+  <advantages>
+    <willpower>
+      <currentRating multiplier="2" />
+    </willpower>
+    <virtues>
+      <currentRating multiplier="3" />
+    </virtues>
+    <essence>
+      <currentRating multiplier="8" />
+    </essence>
+  </advantages>
+  <magic>
+    <charms favored="8" general="10" />
+  </magic>
+</experiencePointCost>

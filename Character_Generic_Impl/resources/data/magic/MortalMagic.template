@@ -1,0 +1,5 @@
+<magicTemplate>
+	<freePicksPredicate type="Default"/>
+	<charmTemplate martialArtsLevel="Mortal" charmType="None"/>
+	<spellTemplate maximumSorceryCircle="None" maximumNecromancyCircle="None"/>
+</magicTemplate>		
