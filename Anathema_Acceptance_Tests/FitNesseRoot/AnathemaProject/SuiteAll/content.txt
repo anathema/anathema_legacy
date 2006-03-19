@@ -17,7 +17,7 @@
 !path ../Character_Lunar/build/classes
 !path ../Character_Solar/build/classes
 !path ../Character_Sidereal/build/classes
-!path ../Character_Merits_Flaws/build/classes
+!path ../Character_MeritsFlaws/build/classes
 !path ../Charm_Tree/build/classes
 !path ../Charm_Cascades/build/classes
 !path ../Platform/build/classes
