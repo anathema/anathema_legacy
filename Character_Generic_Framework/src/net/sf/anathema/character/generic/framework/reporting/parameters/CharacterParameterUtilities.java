@@ -7,6 +7,8 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.reporting.ICharacterReportConstants;
 import net.sf.anathema.character.generic.framework.reporting.datasource.SpecialtiesDataSource;
+import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -92,6 +94,17 @@ public class CharacterParameterUtilities {
         .getTemplateType()
         .getCharacterType()
         .getId());
+    final String[] ruleString = new String[1];
+    character.getRules().accept(new IRuleSetVisitor() {
+      public void visitCoreRules(IExaltedRuleSet set) {
+        ruleString[0] = "1st Edition / Core Rules";
+      }
+
+      public void visitPowerCombat(IExaltedRuleSet set) {
+        ruleString[0] = "1st Edition / Power Combat";
+      }
+    });
+    parameters.put(ICharacterReportConstants.RULESET, ruleString[0]);
   }
 
   public static final void fillInConcept(IGenericCharacter character, Map<Object, Object> parameters) {
