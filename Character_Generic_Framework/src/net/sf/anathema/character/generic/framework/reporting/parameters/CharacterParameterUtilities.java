@@ -82,11 +82,12 @@ public class CharacterParameterUtilities {
     parameterClassesByName.put(ICharacterReportConstants.NATURE_WILLPOWER_CONDITION, String.class.getName());
   }
 
-  public static void addCharacterTypeParameterClass(Map<String, String> parameterClassesByName) {
+  public static void addTemplateParameterClass(Map<String, String> parameterClassesByName) {
     parameterClassesByName.put(ICharacterReportConstants.CHARACTER_TYPE, String.class.getName());
+    parameterClassesByName.put(ICharacterReportConstants.RULESET, String.class.getName());
   }
 
-  public static final void fillInCharacterType(IGenericCharacter character, Map<Object, Object> parameters) {
+  public static final void fillInTemplate(IGenericCharacter character, Map<Object, Object> parameters) {
     parameters.put(ICharacterReportConstants.CHARACTER_TYPE, character.getTemplate()
         .getTemplateType()
         .getCharacterType()
