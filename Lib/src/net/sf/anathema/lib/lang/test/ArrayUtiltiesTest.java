@@ -1,0 +1,21 @@
+package net.sf.anathema.lib.lang.test;
+
+import java.util.Arrays;
+
+import net.sf.anathema.lib.lang.ArrayUtilities;
+import net.sf.anathema.lib.testing.BasicTestCase;
+
+public class ArrayUtiltiesTest extends BasicTestCase {
+
+  public void testMoveToGreaterIndex() throws Exception {
+    String[] allStrings = new String[] { "1", "2", "3", "4" }; //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$//$NON-NLS-4$
+    ArrayUtilities.moveObject(allStrings, 1, 3);
+    assertTrue(Arrays.equals(new String[] { "1", "3", "4", "2" }, allStrings)); //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$//$NON-NLS-4$
+  }
+
+  public void testMoveToLowerIndex() throws Exception {
+    String[] allStrings = new String[] { "1", "2", "3", "4" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+    ArrayUtilities.moveObject(allStrings, 2, 1);
+    assertTrue(Arrays.equals(new String[] { "1", "3", "2", "4" }, allStrings)); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+  }
+}
