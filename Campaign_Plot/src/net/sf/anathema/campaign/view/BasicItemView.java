@@ -1,0 +1,33 @@
+package net.sf.anathema.campaign.view;
+
+import javax.swing.Icon;
+import javax.swing.JComponent;
+
+import net.disy.commons.core.util.Ensure;
+import net.sf.anathema.campaign.presenter.view.IBasicItemDescriptionView;
+import net.sf.anathema.campaign.presenter.view.IBasicItemView;
+import net.sf.anathema.framework.view.item.AbstractItemView;
+
+public class BasicItemView extends AbstractItemView implements IBasicItemView {
+
+  private BasicItemDescriptionView descriptionView;
+
+  public BasicItemView(String name, Icon icon) {
+    super(name, icon);
+  }
+
+  @Override
+  public void dispose() {
+    // Nothing to do
+  }
+
+  public IBasicItemDescriptionView addDescriptionView(String title) {
+    Ensure.ensureNull("Only one description view allowed.", descriptionView); //$NON-NLS-1$
+    descriptionView = new BasicItemDescriptionView(title);
+    return descriptionView;
+  }
+
+  public JComponent getComponent() {
+    return descriptionView.getComponent();
+  }
+}
