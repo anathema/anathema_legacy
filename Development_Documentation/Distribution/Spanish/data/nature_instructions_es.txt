@@ -1,0 +1,78 @@
+Instrucciones de la Customizacion de la Lista de Naturalezas
+(C) 2004,2005 por Sandra Sieroux y Urs Reupke
+Exalted (C) 2001-2005 by White Wolf Publishing, Inc.
+http://anathema.sf.net
+
+===------------------------------------------------------------------------------===
+	            Acerca de este Archivo
+===------------------------------------------------------------------------------===
+Este archivo detalla el proceso de customizar la lista de naturalezas disponibles para 
+uso con Anathema. Para instrucciones generales de uso, ve el readme_es.txt acompañado y 
+la documentacion provista en la pagina del proyecto.
+(http://sourceforge.net/docman/?group_id=122320)
+
+===------------------------------------------------------------------------------===
+	            Customizando Naturalezas
+===------------------------------------------------------------------------------===
+Desde la version 0.5 "Eagle's Launch", Anathema toma un acercamiento editable de usuario
+a las naturalezas.
+El programa viene completo con todas las naturalezas del libro principal de Exaltado,
+pero por razones de copyright permiten la inclusion de las condiciones en la distribucion
+de archivos. ¡Te animamos mucho a que remplaces las descripciones con las que te proveemos
+por unas mas utiles! 
+
+Una naturaleza en Anathema es representada por tres partes: Un unico ID para propositos de 
+identificacion, el nombre de la naturaleza como aparece en el programa y en las hojas de
+personaje y la condicion opcional de recuperacion de la Fuerza de Voluntad. Para las
+naturalezas basicas ya incluidas, ID y Name las dos son el nombre de la naturaleza como
+en el libro principal, mientras que las condiciones solo te muestra la pagina donde buscar
+la descripcion completa.
+
+El primer paso en cambiar las naturalezas existentes asi como crear nuevas es crear un nuevo
+archivo llamado "natures.xml" en el subdirectorio de "data", despues editar el contenido de
+este archivo.
+El archivo de naturalezas tiene que empezar con un elemento raiz llamado "<naturelist>" y
+despues especificar el numero de entradas de "nature", antes de terminar con el final
+"</naturelist>".
+
+Cada elemento "<nature>" tiene su id y name guardado en atributos, asi es que un muy simple
+archivo podria ser:
+//Ejemplo 1:
+<naturelist>
+	<nature id="NaturalezaAnathemaCustomizada" name="MiNaturaleza">
+	</nature>
+</naturelist>
+
+Ester archivo es leido durante el proceso de lanzamiento de Anathema y sus contendiso son
+agregados a la lista de naturalezas. Nuestra nueva naturaleza creada mostraria "MiNaturaleza"
+en la pantalla de concepto de personaje.
+Para crear una naturaleza con la condicion de recuperar Fuerza de Voluntad, el elemento
+nature es extendido con un subelemento "<willpower>", con un atributo "text" dando el texto
+de las condiciones:
+//Ejemplo 2:
+<naturelist>
+	<nature id="NaturalezaAnathemaCustomizada" name="MiNaturaleza">
+		<willpower text="cuando una nueva naturaleza es creada.">
+		</willpower>
+	</nature>
+</naturelist>
+
+NOTA: "Ganas Voluntad" siempre es incluido en frente del texto, asi es que solo tienes que
+poner una frase condicional ("cuando...", "cada vez...").
+
+Si el ID de una naturaleza especificada por el usuario es identica a una de las naturalezas
+pre-definidas (nota la correcta capitalizacion), la especificada por el usuario toma precedencia
+y la naturaleza predefinida es quitada de la lista.
+Esto incluye la condicion de recuperacion de Fuerza de Voluntad, asi es que si tu nature.xml
+tiene una entrada
+//Ejemplo 3:
+<naturelist>
+	<nature id="Rebel" name="Naturaleza Revoltosa">
+	</nature>
+</naturelist>
+
+la naturaleza Rebelde ni siquiera se mostraria en la pagina de referencia de la condicion
+de recuperacion.
+
+Por otra parte, si tu neva entrada incluye el texto correcto de recuperacion, de ahora en
+adelante se mostraria en Anathema.

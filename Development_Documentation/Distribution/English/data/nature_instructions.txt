@@ -1,0 +1,69 @@
+Nature List Customization Instructions
+(C) 2004,2005 by Sandra Sieroux and Urs Reupke
+Exalted (C) 2001-2005 by White Wolf Publishing, Inc.
+http://anathema.sf.net
+
+===------------------------------------------------------------------------------===
+	            About this File
+===------------------------------------------------------------------------------===
+This file details the process of customizing the list of available natures for use with
+Anathema. For general usage instructions, see the accompanying readme.txt and the 
+documenentation provided at the project page.
+(http://sourceforge.net/docman/?group_id=122320)
+
+===------------------------------------------------------------------------------===
+	            Customizing Natures
+===------------------------------------------------------------------------------===
+As of version 0.5 "Eagle's Launch", Anathema takes an user editable approach to natures. 
+The program comes complete with all natures from the Exalted core rulebook, 
+but copyright reasons permit the inclusion of the conditions from the distribution
+archives. You are highly encouraged to replace the stub descriptions we provide by
+more useful ones!
+
+A nature in Anathema is represented by three parts: An unique ID for identification purposes,
+the nature's name as it appears in the program and on character sheets and an optional 
+willpower recovery condition. For the core natures already included, ID and Name are both 
+set to the nature's name as given in the core rulebook, while the condition only states 
+the page to look for a complete description.
+
+The first step in changing existing natures as well as creating new ones is to create a 
+new file "natures.xml" in the subdirectory "data", then editing the content of this file.
+The nature file must begin with a root element "<naturelist>" and then specify any number of
+"nature" entries, before ending with a final "</naturelist>".
+Each "<nature>" element has it's id and name stored in attributes, so a very simple file could look
+like:
+//Example 1:
+<naturelist>
+	<nature id="CustomAnathemaNature" name="MyNature">
+	</nature>
+</naturelist>
+
+This file is read during the Anathema launch process and it's contents are added to the
+nature list. Our newly created nature would show as "MyNature" in the character concept screen.
+To create a nature with a willpower recovery condition, the nature element is extended with a 
+subelement "<willpower>", with a "text" attribute giving the conditions text:
+//Example 2:
+<naturelist>
+	<nature id="CustomAnathemaNature" name="MyNature">
+		<willpower text="whenever a new nature is created.">
+		</willpower>
+	</nature>
+</naturelist>
+
+NOTE: "Gain Willpower" is always included in front of the text, so you only enter the conditional
+phrase ("when...", "any time...").
+
+If the ID of an user specified nature is identical to one of the pre-defined natures (note correct
+capitalization), the user specified one takes precedence and the predefined nature is dropped from 
+the list.
+This includes the willpower recovery condition, so if your nature.xml had an entry
+//Example 3:
+<naturelist>
+	<nature id="Rebel" name="Rebellious Nature">
+	</nature>
+</naturelist>
+
+the Rebel nature would not even show the page reference for the recovery condition.
+
+On the other hand, if your new entry included the correct recovery text, it would from now on
+be shown in Anathema.
