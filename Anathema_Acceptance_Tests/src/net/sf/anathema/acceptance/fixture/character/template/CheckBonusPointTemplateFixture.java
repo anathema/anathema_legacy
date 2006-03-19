@@ -1,6 +1,5 @@
 package net.sf.anathema.acceptance.fixture.character.template;
 
-import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
 
 public class CheckBonusPointTemplateFixture extends AbstractTemplateColumnFixture {
 
