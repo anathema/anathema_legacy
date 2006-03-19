@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="/Anathema"/>
+	<classpathentry kind="src" path="/Character_Main"/>
+	<classpathentry kind="src" path="/Charm_Tree"/>
+	<classpathentry kind="src" path="/Platform"/>
+	<classpathentry kind="src" path="/Lib"/>
+	<classpathentry kind="src" path="/Lib_Gui"/>
+	<classpathentry kind="lib" path="/Thirdparty/Commons/commons-io.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/Commons/commons-io-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/Reporting/itext-1.01.jar"/>
+	<classpathentry sourcepath="/Thirdparty/Reporting/jasperreport-src.zip" kind="lib" path="/Thirdparty/Reporting/jasperreports-0.6.2.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/Reporting/jasperreport-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/XML/dom4j-1.5.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/XML/xalan.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/XML/xercesImpl-2.6.2.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/XML/xml-apis-2.0.2.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-awt-util.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-bridge.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-css.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-dom.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-ext.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-gvt.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-parser.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-script.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-svg-dom.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-swing.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-util.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-xml.jar"/>
+	<classpathentry kind="src" path="/Character_Generic_Impl"/>
+	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-layout_src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
