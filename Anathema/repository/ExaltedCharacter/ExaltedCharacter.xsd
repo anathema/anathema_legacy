@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Reupke (-) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ExaltedCharacter">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Description">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CharacterName"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Statistics">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CharacterType"/>
+							<xs:element name="CharacterConcept">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Concept"/>
+										<xs:element name="Nature"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Essence"/>
+							<xs:element name="Willpower"/>
+							<xs:element name="Virtues">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Valor"/>
+										<xs:element name="Conviction">
+											<xs:complexType/>
+										</xs:element>
+										<xs:element name="Compassion"/>
+										<xs:element name="Temperance"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="VirtueFlaw">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="RootVirtue"/>
+										<xs:element name="Name"/>
+										<xs:element name="LimitBreak"/>
+										<xs:element name="Description"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Attributes">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Physical">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Strength"/>
+													<xs:element name="Dexterity"/>
+													<xs:element name="Stamina"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Social">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Charisma"/>
+													<xs:element name="Manipulation"/>
+													<xs:element name="Appearance"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Mental">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Perception"/>
+													<xs:element name="Intelligence"/>
+													<xs:element name="Wits"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Abilities">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="BlaBlaAbility01"/>
+										<xs:element name="BlaBlaAbility25"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Backgrounds">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Background"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Charms">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Charm"/>
+										<xs:element name="Combo"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

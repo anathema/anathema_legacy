@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="/Lib_Gui"/>
+	<classpathentry kind="src" path="/Lib"/>
+	<classpathentry kind="src" path="/Character_Main"/>
+	<classpathentry kind="src" path="/Platform"/>
+	<classpathentry kind="src" path="resources"/>
+	<classpathentry kind="src" path="/Charm_Tree"/>
+	<classpathentry sourcepath="/Thirdparty/Swing/l2fprod-common-tasks-src.zip" kind="lib" path="/Thirdparty/Swing/l2fprod-common-tasks.jar"/>
+	<classpathentry kind="src" path="/Charm_Cascades"/>
+	<classpathentry kind="src" path="/Campaign_Plot"/>
+	<classpathentry kind="lib" path="/Thirdparty/Reporting/itext-1.01.jar"/>
+	<classpathentry sourcepath="/Thirdparty/Commons/commons-io-src.zip" kind="lib" path="/Thirdparty/Commons/commons-io.jar"/>
+	<classpathentry kind="src" path="/Character_Abyssal"/>
+	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
+	<classpathentry kind="src" path="/Character_Generic"/>
+	<classpathentry kind="src" path="/Character_Generic_Impl"/>
+	<classpathentry kind="src" path="/Character_Solar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Db"/>
+	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-core-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
+	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
+	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-dialog-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-dialog.jar"/>
+	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-layout_src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Sidereal"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Framework"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Campaign_Music"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Campaign_Music_Impl"/>
+	<classpathentry sourcepath="/Thirdparty/Commons/commons-logging-api.src.zip" kind="lib" path="/Thirdparty/Commons/commons-logging-api.jar"/>
+	<classpathentry kind="src" path="/Character_MeritsFlaws"/>
+	<classpathentry kind="src" path="/Namegenerator"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Library"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Lunar"/>
+	<classpathentry kind="src" path="/Charm_Entry"/>
+	<classpathentry kind="src" path="/Character_Main_Impl"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
