@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Impl"/>
+	<classpathentry kind="src" path="/Platform"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Lib"/>
+	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-layout_src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Gui"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
+	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-core-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
+	<classpathentry sourcepath="/Thirdparty/XML/dom4j-src.zip" kind="lib" path="/Thirdparty/XML/dom4j-1.5.jar"/>
+	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
+	<classpathentry sourcepath="/Thirdparty/Reporting/jasperreport-src.zip" kind="lib" path="/Thirdparty/Reporting/jasperreports-0.6.2.jar"/>
+	<classpathentry kind="src" path="resources"/>
+	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
+	<classpathentry sourcepath="/Thirdparty/Commons/commons-lang-2.1-src.zip" kind="lib" path="/Thirdparty/Commons/commons-lang-2.1.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
