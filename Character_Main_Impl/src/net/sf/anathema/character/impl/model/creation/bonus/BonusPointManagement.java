@@ -1,0 +1,287 @@
+package net.sf.anathema.character.impl.model.creation.bonus;
+
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
+import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
+import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
+import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
+import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.impl.model.creation.bonus.ability.AbilityCostCalculator;
+import net.sf.anathema.character.impl.model.creation.bonus.additional.AdditionalBonusPointPoolManagement;
+import net.sf.anathema.character.impl.model.creation.bonus.attribute.AttributeCostCalculator;
+import net.sf.anathema.character.impl.model.creation.bonus.backgrounds.BackgroundBonusPointCostCalculator;
+import net.sf.anathema.character.impl.model.creation.bonus.magic.MagicCostCalculator;
+import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueCostCalculator;
+import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
+import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.character.model.charm.ICombo;
+import net.sf.anathema.character.model.charm.IComboConfiguration;
+import net.sf.anathema.character.model.creation.IBonusPointManagement;
+import net.sf.anathema.character.model.generic.GenericCharacter;
+
+public class BonusPointManagement implements IBonusPointManagement {
+
+  private final IAdditionalMagicLearnPointManagement magicAdditionalPools;
+  private final AdditionalBonusPointPoolManagement bonusAdditionalPools;
+  private final AbilityCostCalculator abilityCalculator;
+  private final AttributeCostCalculator attributeCalculator;
+  private final VirtueCostCalculator virtueCalculator;
+  private final BackgroundBonusPointCostCalculator backgroundCalculator;
+  private MagicCostCalculator magicCalculator;
+  private final ITrait willpower;
+  private final IBonusPointCosts cost;
+  private IComboConfiguration combos;
+  private int willpowerBonusPoints;
+  private int comboBonusPoints;
+  private ITrait essence;
+  private int essenceBonusPoints;
+  private List<IAdditionalModelBonusPointCalculator> additionalCalculators = new ArrayList<IAdditionalModelBonusPointCalculator>();
+
+  public BonusPointManagement(ICharacterStatistics statistics) {
+    for (IAdditionalModel model : statistics.getExtendedConfiguration().getAdditionalModels()) {
+      additionalCalculators.add(model.getBonusPointCalculator());
+    }
+    bonusAdditionalPools = new AdditionalBonusPointPoolManagement(statistics);
+    this.cost = statistics.getCharacterTemplate().getBonusPointCosts();
+    ICharacterTemplate characterTemplate = statistics.getCharacterTemplate();
+    GenericCharacter characterAbstraction = GenericCharacterUtilities.createGenericCharacter(statistics);
+    this.abilityCalculator = new AbilityCostCalculator(
+        statistics.getTraitConfiguration(),
+        characterTemplate.getCreationPoints().getAbilityCreationPoints(),
+        cost,
+        bonusAdditionalPools);
+    this.attributeCalculator = new AttributeCostCalculator(
+        statistics.getTraitConfiguration(),
+        characterTemplate.getCreationPoints().getAttributeCreationPoints(),
+        cost);
+    this.backgroundCalculator = new BackgroundBonusPointCostCalculator(
+        bonusAdditionalPools,
+        statistics.getTraitConfiguration().getBackgrounds(),
+        cost,
+        characterTemplate.getCreationPoints().getBackgroundPointCount(),
+        characterTemplate.getAdditionalRules());
+    this.virtueCalculator = new VirtueCostCalculator(
+        statistics.getTraitConfiguration().getTraits(VirtueType.values()),
+        characterTemplate.getCreationPoints().getVirtueCreationPoints(),
+        cost);
+    magicAdditionalPools = new AdditionalMagicLearnPointManagement(characterTemplate.getAdditionalRules()
+        .getAdditionalMagicLearnPools(), characterAbstraction);
+    this.magicCalculator = new MagicCostCalculator(
+        characterTemplate.getMagicTemplate(),
+        statistics.getCharms(),
+        statistics.getSpells(),
+        characterTemplate.getCreationPoints().getFavoredCreationCharmCount(),
+        characterTemplate.getCreationPoints().getDefaultCreationCharmCount(),
+        cost,
+        bonusAdditionalPools,
+        magicAdditionalPools,
+        statistics.getCharacterContext().getBasicCharacterContext(),
+        statistics.getCharacterContext().getTraitCollection());
+    this.combos = statistics.getCombos();
+    this.willpower = statistics.getTraitConfiguration().getTrait(OtherTraitType.Willpower);
+    this.essence = statistics.getTraitConfiguration().getTrait(OtherTraitType.Essence);
+  }
+
+  public void recalculate() {
+    bonusAdditionalPools.reset();
+    backgroundCalculator.calculateBonusPoints();
+    abilityCalculator.calculateCosts();
+    attributeCalculator.calculateAttributeCosts();
+    virtueCalculator.calculateVirtuePoints();
+    magicCalculator.calculateMagicCosts();
+    comboBonusPoints = calculateComboPoints();
+    willpowerBonusPoints = calculateWillpowerPoints();
+    essenceBonusPoints = calculateEssencePoints();
+    for (IAdditionalModelBonusPointCalculator calculator : additionalCalculators) {
+      calculator.recalculate();
+    }
+  }
+
+  private int calculateEssencePoints() {
+    return (essence.getCreationValue() - essence.getZeroCalculationValue()) * cost.getEssenceCost();
+  }
+
+  private int calculateWillpowerPoints() {
+    return (willpower.getCreationValue() - willpower.getMinimalValue()) * cost.getWillpowerCosts();
+  }
+
+  private int calculateComboPoints() {
+    int bonusPoints = 0;
+    for (ICombo combo : combos.getCreationCombos()) {
+      bonusPoints += combo.getCharms().length;
+    }
+    return bonusPoints;
+  }
+
+  public int getAbilityBonusPointCosts() {
+    return abilityCalculator.getBonusPointsSpent();
+  }
+
+  public int getSpecialtyBonusPointCosts() {
+    return abilityCalculator.getSpecialtyBonusPointCosts();
+  }
+
+  public int getFavoredAbilityDotsSpent() {
+    return abilityCalculator.getFreePointsSpent(true);
+  }
+
+  public int getDefaultAbilityDotsSpent() {
+    return abilityCalculator.getFreePointsSpent(false);
+  }
+
+  public int getAttributeBonusPoints() {
+    return attributeCalculator.getBonusPoints();
+  }
+
+  public int getAttributeDotsSpent(AttributeGroupPriority priority) {
+    return attributeCalculator.getAttributePoints(priority).getDotsSpent();
+  }
+
+  public int getAttributeBonusPointsSpent(AttributeGroupPriority priority) {
+    return attributeCalculator.getAttributePoints(priority).getBonusPointsSpent();
+  }
+
+  public int getBackgroundBonusPointsSpent() {
+    return backgroundCalculator.getBonusPointSpent();
+  }
+
+  public int getBackgroundDotsSpent() {
+    return backgroundCalculator.getSpentDots();
+  }
+
+  public int getVirtueBonusPointsSpent() {
+    return virtueCalculator.getBonusPointsSpent();
+  }
+
+  public int getFavoredCharmPicksSpent() {
+    return magicCalculator.getFavoredCharmPicksSpent();
+  }
+
+  public int getDefaultCharmPicksSpent() {
+    return magicCalculator.getGeneralCharmPicksSpent();
+  }
+
+  public int getCharmBonusPointsSpent() {
+    if (magicCalculator == null) {
+      return 0;
+    }
+    return magicCalculator.getBonusPointsSpentForCharms();
+  }
+
+  public int getSpellBonusPointsSpent() {
+    if (magicCalculator == null) {
+      return 0;
+    }
+    return magicCalculator.getBonusPointsSpentForSpells();
+  }
+
+  public int getVirtueDotsSpent() {
+    return virtueCalculator.getVirtueDotsSpent();
+  }
+
+  public int getWillpowerBonusPointsSpent() {
+    return willpowerBonusPoints;
+  }
+
+  public int getComboBonusPointsSpent() {
+    return comboBonusPoints;
+  }
+
+  public int getEssenceBonusPointsSpent() {
+    return essenceBonusPoints;
+  }
+
+  public void dump(PrintStream printStream) {
+    printStream.println("Dots"); //$NON-NLS-1$
+    printStream.println("   Primary Attributes: " + getAttributeDotsSpent(AttributeGroupPriority.Primary)); //$NON-NLS-1$
+    printStream.println("   Secondary Attributes: " + getAttributeDotsSpent(AttributeGroupPriority.Secondary)); //$NON-NLS-1$
+    printStream.println("   Tertiary Attributes: " + getAttributeDotsSpent(AttributeGroupPriority.Tertiary)); //$NON-NLS-1$
+    printStream.println("   Favored Abilities:" + getFavoredAbilityDotsSpent()); //$NON-NLS-1$
+    printStream.println("   General Abilities:" + getDefaultAbilityDotsSpent()); //$NON-NLS-1$
+    printStream.println("   Virtues:" + getVirtueDotsSpent()); //$NON-NLS-1$
+    printStream.println("   Backgrounds:" + getBackgroundDotsSpent()); //$NON-NLS-1$
+    printStream.println("Magic Picks"); //$NON-NLS-1$
+    printStream.println("   Favored Picks:" + getFavoredCharmPicksSpent()); //$NON-NLS-1$
+    printStream.println("   Default Picks:" + getDefaultCharmPicksSpent()); //$NON-NLS-1$
+    printStream.println("Bonus Points"); //$NON-NLS-1$
+    printStream.println("   Primary Attributes: " + getAttributeBonusPointsSpent(AttributeGroupPriority.Primary)); //$NON-NLS-1$
+    printStream.println("   Secondary Attributes: " + getAttributeBonusPointsSpent(AttributeGroupPriority.Secondary)); //$NON-NLS-1$
+    printStream.println("   Tertiary Attributes: " + getAttributeBonusPointsSpent(AttributeGroupPriority.Tertiary)); //$NON-NLS-1$
+    printStream.println("   Abilities:" + getAbilityBonusPointCosts()); //$NON-NLS-1$
+    printStream.println("   Specialties:" + getSpecialtyBonusPointCosts()); //$NON-NLS-1$
+    printStream.println("   Virtues:" + getVirtueBonusPointsSpent()); //$NON-NLS-1$
+    printStream.println("   Willpower:" + getWillpowerBonusPointsSpent()); //$NON-NLS-1$
+    printStream.println("   Backgrounds:" + getBackgroundBonusPointsSpent()); //$NON-NLS-1$
+    printStream.println("   Essence:" + getEssenceBonusPointsSpent()); //$NON-NLS-1$
+    printStream.println("   Charms:" + getCharmBonusPointsSpent()); //$NON-NLS-1$
+    printStream.println("   Combos:" + getComboBonusPointsSpent()); //$NON-NLS-1$
+    printStream.println("Additional Bonus Points"); //$NON-NLS-1$
+    printStream.println("   Amount: " + getAdditionalBonusPointAmount()); //$NON-NLS-1$
+    printStream.println("   Spent: " + getAdditionalBonusPointSpent()); //$NON-NLS-1$
+    printStream.println("Additional Magic Points"); //$NON-NLS-1$
+    printStream.println("   Amount: " + getAdditionalMagicPointsAmount()); //$NON-NLS-1$
+    printStream.println("   Spent: " + getAdditionalMagicPointsSpent()); //$NON-NLS-1$
+
+  }
+
+  public int getAdditionalBonusPointSpent() {
+    return bonusAdditionalPools.getPointSpent();
+  }
+
+  public int getAdditionalBonusPointAmount() {
+    return bonusAdditionalPools.getAmount();
+  }
+
+  public int getFavoredAbilityPicksSpent() {
+    return abilityCalculator.getFavoredPicksSpent();
+  }
+
+  public int getStandardBonusPointsSpent() {
+    return getTotalBonusPointsSpent() - getAdditionalBonusPointSpent();
+  }
+
+  public int getTotalBonusPointsSpent() {
+    return getAttributeBonusPoints()
+        + getAbilityBonusPointCosts()
+        + getSpecialtyBonusPointCosts()
+        + getCharmBonusPointsSpent()
+        + getComboBonusPointsSpent()
+        + getSpellBonusPointsSpent()
+        + getBackgroundBonusPointsSpent()
+        + getVirtueBonusPointsSpent()
+        + getWillpowerBonusPointsSpent()
+        + getEssenceBonusPointsSpent()
+        + getAdditionalModelTotalValue();
+  }
+
+  public int getAdditionalMagicPointsSpent() {
+    return magicCalculator.getAdditionalPointsSpent();
+  }
+
+  public int getAdditionalMagicPointsAmount() {
+    return magicAdditionalPools.getAdditionalPointsAmount();
+  }
+
+  public int getAdditionalModelTotalValue() {
+    int additionalSpent = 0;
+    for (IAdditionalModelBonusPointCalculator calculator : additionalCalculators) {
+      additionalSpent += calculator.getBonusPointCost();
+    }
+    return additionalSpent;
+  }
+
+  /** Return the amount of unrestricted bonus points granted by additional models */
+  public int getAdditionalGeneralBonusPoints() {
+    int additionalGranted = 0;
+    for (IAdditionalModelBonusPointCalculator calculator : additionalCalculators) {
+      additionalGranted += calculator.getBonusPointsGranted();
+    }
+    return additionalGranted;
+  }
+}

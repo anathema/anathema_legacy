@@ -1,0 +1,79 @@
+package net.sf.anathema.character.impl.model.creation.bonus.ability;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
+import net.sf.anathema.character.generic.template.experience.IAbilityPointCosts;
+import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
+import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalBonusPointManagment;
+import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalSpecialtyBonusPointManagement;
+import net.sf.anathema.character.library.ITraitFavorization;
+import net.sf.anathema.character.library.trait.AbstractFavorableTraitCostCalculator;
+import net.sf.anathema.character.library.trait.IFavorableTrait;
+import net.sf.anathema.character.library.trait.specialty.ISpecialty;
+import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
+
+public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator implements IAbilityCostCalculator {
+
+  private final IAbilityPointCosts costs;
+  private final IFavorableTrait[] abilities;
+  private int specialtyBonusPointCosts;
+  private SpecialtyCalculator specialtyCalculator;
+  private final IAdditionalSpecialtyBonusPointManagement additionalPools;
+
+  public AbilityCostCalculator(
+      ICoreTraitConfiguration traitConfiguration,
+      IFavorableTraitCreationPoints points,
+      IAbilityPointCosts costs,
+      IAdditionalBonusPointManagment additionalPools) {
+    super(additionalPools, points, traitConfiguration.getFavorableTraits(AbilityType.values()));
+    this.abilities = traitConfiguration.getFavorableTraits(AbilityType.values());
+    this.costs = costs;
+    this.additionalPools = additionalPools;
+    this.specialtyCalculator = new SpecialtyCalculator(traitConfiguration);
+  }
+
+  @Override
+  public void calculateCosts() {
+    super.calculateCosts();
+    calculateSpecialtyCosts();
+  }
+
+  @Override
+  protected int getCostFactor(IFavorableTrait ability) {
+    ITraitFavorization favorization = ability.getFavorization();
+    int costFactor = costs.getAbilityCosts(favorization.isCasteOrFavored()).getRatingCosts(
+        ability.getCalculationValue());
+    return costFactor;
+  }
+
+  private void calculateSpecialtyCosts() {
+    IGenericSpecialty[] specialties = createGenericSpecialties();
+    specialtyBonusPointCosts = specialtyCalculator.getSpecialtyCosts(specialties);
+    additionalPools.spendOn(specialties, costs);
+  }
+
+  private IGenericSpecialty[] createGenericSpecialties() {
+    List<IGenericSpecialty> specialties = new ArrayList<IGenericSpecialty>();
+    for (IFavorableTrait ability : abilities) {
+      for (ISpecialty specialty : ability.getSpecialtiesContainer().getSpecialties()) {
+        for (int index = 0; index < specialty.getCalculationValue(); index++) {
+          specialties.add(new GenericSpecialty(ability));
+        }
+      }
+    }
+    return specialties.toArray(new IGenericSpecialty[0]);
+  }
+
+  @Override
+  protected void clear() {
+    super.clear();
+    specialtyBonusPointCosts = 0;
+  }
+
+  public int getSpecialtyBonusPointCosts() {
+    return specialtyBonusPointCosts;
+  }
+}

@@ -1,0 +1,117 @@
+package net.sf.anathema.character.impl.model.traits.backgrounds;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import net.disy.commons.core.util.Ensure;
+import net.disy.commons.core.util.ObjectUtilities;
+import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
+import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
+import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTemplate;
+import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
+import net.sf.anathema.character.generic.template.TemplateType;
+import net.sf.anathema.character.generic.traits.ITraitTemplate;
+import net.sf.anathema.character.library.trait.DefaultTrait;
+import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
+import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.rules.TraitRules;
+import net.sf.anathema.character.model.background.IBackgroundConfiguration;
+import net.sf.anathema.character.model.background.IBackgroundListener;
+import net.sf.anathema.lib.collection.Predicate;
+import net.sf.anathema.lib.registry.IIdentificateRegistry;
+
+public class BackgroundConfiguration implements IBackgroundConfiguration {
+
+  private final List<ITrait> backgrounds = new ArrayList<ITrait>();
+  private final List<IBackgroundListener> listeners = new ArrayList<IBackgroundListener>();
+  private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
+  private final IAdditionalRules additionalRules;
+  private final ITraitTemplateCollection traitTemplates;
+  private final ITraitContext context;
+  private final TemplateType templateType;
+
+  public BackgroundConfiguration(
+      TemplateType templateType,
+      IAdditionalRules additionalRules,
+      ITraitTemplateCollection traitTemplates,
+      ITraitContext context,
+      IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
+    this.templateType = templateType;
+    this.context = context;
+    this.backgroundRegistry = backgroundRegistry;
+    this.additionalRules = additionalRules;
+    this.traitTemplates = traitTemplates;
+  }
+
+  public IBackgroundTemplate[] getAllAvailableBackgroundTemplates() {
+    List<IBackgroundTemplate> backgroundList = new ArrayList<IBackgroundTemplate>();
+    for (IBackgroundTemplate backgroundTemplate : backgroundRegistry.getAll()) {
+      if (backgroundTemplate.acceptsTemplate(templateType) && !additionalRules.isRejected(backgroundTemplate)) {
+        backgroundList.add(backgroundTemplate);
+      }
+    }
+    return backgroundList.toArray(new IBackgroundTemplate[backgroundList.size()]);
+  }
+
+  public ITrait addBackground(String customBackgroundName) {
+    Ensure.ensureNotNull(customBackgroundName);
+    return addBackground(new CustomizedBackgroundTemplate(customBackgroundName));
+  }
+
+  public ITrait addBackground(final IBackgroundTemplate backgroundType) {
+    Ensure.ensureNotNull(backgroundType);
+    ITrait foundBackground = new Predicate<ITrait>() {
+      @Override
+      public boolean evaluate(ITrait listBackground) {
+        return ObjectUtilities.equals(backgroundType, listBackground.getType());
+      }
+    }.find(backgrounds);
+    if (foundBackground != null) {
+      return null;
+    }
+    ITraitTemplate traitTemplate = traitTemplates.getTraitTemplate(backgroundType);
+    TraitRules rules = new TraitRules(backgroundType, traitTemplate, context.getLimitationContext());
+    ITrait background = new DefaultTrait(rules, context.getTraitValueStrategy(), new FriendlyValueChangeChecker());
+    backgrounds.add(background);
+    fireBackgroundAddedEvent(background);
+    return background;
+  }
+
+  public ITrait[] getBackgrounds() {
+    return backgrounds.toArray(new ITrait[backgrounds.size()]);
+  }
+
+  public synchronized void addBackgroundListener(IBackgroundListener listener) {
+    listeners.add(listener);
+  }
+
+  private synchronized void fireBackgroundAddedEvent(ITrait background) {
+    List<IBackgroundListener> cloneListeners = new ArrayList<IBackgroundListener>(listeners);
+    for (IBackgroundListener listener : cloneListeners) {
+      listener.backgroundAdded(background);
+    }
+  }
+
+  public void removeBackground(ITrait background) {
+    backgrounds.remove(background);
+    fireBackgroundRemovedEvent(background);
+  }
+
+  private synchronized void fireBackgroundRemovedEvent(ITrait background) {
+    List<IBackgroundListener> cloneListeners = new ArrayList<IBackgroundListener>(listeners);
+    for (IBackgroundListener listener : cloneListeners) {
+      listener.backgroundRemoved(background);
+    }
+  }
+
+  public ITrait getBackgroundByTemplate(IBackgroundTemplate type) {
+    Ensure.ensureNotNull("Background type must not be null.", type); //$NON-NLS-1$
+    for (ITrait background : getBackgrounds()) {
+      if (type.equals(background.getType())) {
+        return background;
+      }
+    }
+    return null;
+  }
+}

@@ -1,0 +1,69 @@
+package net.sf.anathema.character.impl.model.creation.bonus.test;
+
+import net.sf.anathema.character.generic.IBasicCharacterData;
+import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
+import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
+import net.sf.anathema.character.generic.impl.traits.ExaltTraitTemplateFactory;
+import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
+import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.template.TemplateType;
+import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
+import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactory;
+import net.sf.anathema.character.impl.testing.BasicCharacterTestCase;
+import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
+import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
+import net.sf.anathema.character.library.trait.favorable.test.DummyCasteType;
+
+public abstract class AbstractBonusPointTestCase extends BasicCharacterTestCase {
+
+  protected final static void addAbilityAndEssence(DummyCoreTraitConfiguration coreTraits) {
+    NullAdditionalRules additionalRules = new NullAdditionalRules();
+    TraitTemplateCollection templateCollection = new TraitTemplateCollection(new ExaltTraitTemplateFactory());
+    DummyTraitContext traitContext = new DummyTraitContext(coreTraits);
+    DefaultTraitFactory traitFactory = new DefaultTraitFactory(traitContext, templateCollection, additionalRules);
+    coreTraits.addTestTrait(traitFactory.createTrait(OtherTraitType.Essence));
+    FavorableTraitFactory favorableTraitFactory = new FavorableTraitFactory(
+        traitContext,
+        templateCollection,
+        new NullAdditionalRules(),
+        new IBasicCharacterData() {
+          public ICasteType getCasteType() {
+            return new DummyCasteType();
+          }
+
+          public CharacterType getCharacterType() {
+            return getTemplateType().getCharacterType();
+          }
+
+          public boolean isExperienced() {
+            return false;
+          }
+
+          public IExaltedRuleSet getRuleSet() {
+            return ExaltedRuleSet.CoreRules;
+          }
+
+          public TemplateType getTemplateType() {
+            return new TemplateType(CharacterType.SOLAR);
+          }
+        },
+        new ICharacterListening() {
+          public void addChangeListener(ICharacterChangeListener changeListener) {
+            //Nothing to do
+          }
+        });
+    IIncrementChecker friendlyIncrementChecker = new FriendlyIncrementChecker();
+    for (AbilityType traitType : AbilityType.values()) {
+      coreTraits.addTestTrait(favorableTraitFactory.createTrait(
+          traitType,
+          new DummyCasteType(),
+          friendlyIncrementChecker));
+    }
+  }
+}
