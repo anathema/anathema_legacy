@@ -1,0 +1,46 @@
+!3 Prepare
+Set a caste so some attributes are favored.
+!|Set Concept|
+|caste|
+|NoMoon|
+
+Spend all free points for the relevant categories.
+
+!|Set Attributes|
+|traitType|value|
+|Strength|5|
+|Dexterity|5|
+|Stamina|2|
+
+!|Set Attributes|
+|traitType|value|
+|Wits|4|
+|Intelligence|5|
+
+!|Check Attribute Points|
+|primaryDotsSpent?|secondaryDotsSpent?|
+|9|7|
+
+!|Check Bonus Points|
+|regularSpent?|
+|0|
+
+!3 Check general Attribute
+Assert general attributes cost 4 per dot.
+!|Set Attributes|
+|traitType|value|
+|Stamina|3|
+
+!|Check Bonus Points|
+|regularSpent?|
+|4|
+
+!3 Check favored Attribute
+Assert favored attributes cost 3 per dot.
+!|Set Attributes|
+|traitType|value|
+|Wits|5|
+
+!|Check Bonus Points|
+|regularSpent?|
+|7|

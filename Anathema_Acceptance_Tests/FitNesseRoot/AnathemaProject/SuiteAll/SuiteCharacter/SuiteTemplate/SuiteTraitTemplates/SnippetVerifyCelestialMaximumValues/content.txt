@@ -1,0 +1,45 @@
+!3 Attributes
+
+!|CheckAttributeTemplate|
+|traitType|absoluteMaximumValue?|
+|Strength|7|
+|Dexterity|7|
+|Stamina|7|
+|Charisma|7|
+|Manipulation|7|
+|Appearance|7|
+|Perception|7|
+|Intelligence|7|
+|Wits|7|
+
+!3 Abilities
+
+!|CheckAbilityTemplate|
+|traitType|absoluteMaximumValue?|
+|Archery|7|
+|Athletics|7|
+|Awareness|7|
+|Brawl|7|
+|Bureaucracy|7|
+|Craft|7|
+|Dodge|7|
+|Endurance|7|
+|Investigation|7|
+|Larceny|7|
+|Linguistics|7|
+|Lore|7|
+|MartialArts|7|
+|Medicine|7|
+|Melee|7|
+|Occult|7|
+|Performance|7|
+|Presence|7|
+|Resistance|7|
+|Ride|7|
+|Sail|7|
+|Socialize|7|
+|Stealth|7|
+|Survival|7|
+|Thrown|7|
+
+!include SnippetVerifyVirtueMaximumValues

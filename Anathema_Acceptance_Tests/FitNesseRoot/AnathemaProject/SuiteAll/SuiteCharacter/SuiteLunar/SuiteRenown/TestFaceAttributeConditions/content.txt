@@ -1,0 +1,46 @@
+This will test the attribute conditions only (Rank 8 needs all attributes at 4, 5 all at 3).
+
+Rank 8: 280 points, all attributes 4 or higher.
+
+!|Set Renown|
+|id|value|
+|Mettle|70|
+|Succor|70|
+|Glory|70|
+|Cunning|70|
+
+!|Set Attributes|
+|traitType|value|
+|Strength|4|
+|Stamina|4|
+|Dexterity|4|
+|Charisma|4|
+|Appearance|4|
+|Manipulation|4|
+|Wits|4|
+|Intelligence|4|
+|Perception|4|
+
+!|Check Face|
+|getMaximumRankAllowed?|
+|8|
+
+A single trait below four should drop the level to 7.
+
+!|Set Attributes|
+|traitType|value|
+|Strength|3|
+
+!|Check Face|
+|getMaximumRankAllowed?|
+|7|
+
+Going even lower resets to 4.
+
+!|Set Attributes|
+|traitType|value|
+|Strength|2|
+
+!|Check Face|
+|getMaximumRankAllowed?|
+|4|

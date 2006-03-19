@@ -1,0 +1,3 @@
+!|Check Attributes|
+|traitType|value?|
+|Charisma|2|

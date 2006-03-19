@@ -1,0 +1,25 @@
+An Abyssal with Essence five may have appearance zero or any value greater than three.
+
+!|Check Attribute Allowed|
+|essenceValue|appearanceValue|isAppearanceValueAllowed?|
+|5|0|true|
+
+!|Check Attribute Allowed|
+|essenceValue|appearanceValue|isAppearanceValueAllowed?|
+|5|1|false|
+
+!|Check Attribute Allowed|
+|essenceValue|appearanceValue|isAppearanceValueAllowed?|
+|5|2|false|
+
+!|Check Attribute Allowed|
+|essenceValue|appearanceValue|isAppearanceValueAllowed?|
+|5|3|false|
+
+!|Check Attribute Allowed|
+|essenceValue|appearanceValue|isAppearanceValueAllowed?|
+|5|4|true|
+
+!|Check Attribute Allowed|
+|essenceValue|appearanceValue|isAppearanceValueAllowed?|
+|5|5|true|

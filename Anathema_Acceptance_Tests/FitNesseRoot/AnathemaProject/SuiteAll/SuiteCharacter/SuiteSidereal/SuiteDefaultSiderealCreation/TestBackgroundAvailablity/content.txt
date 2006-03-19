@@ -1,0 +1,20 @@
+The forbidden backgrounds...
+
+!|Check Background|
+|Background Type|isAvailable?|
+|Contacts|false|
+|Followers|false|
+|Influence|false|
+|Mentor|false|
+|Resources|false|
+
+... and the new ones.
+
+!|Check Background|
+|Background Type|isAvailable?|
+|Acquaintances|true|
+|CelestialManse|true|
+|Connections|true|
+|Salary|true|
+|Savant|true|
+|Sifu|true|

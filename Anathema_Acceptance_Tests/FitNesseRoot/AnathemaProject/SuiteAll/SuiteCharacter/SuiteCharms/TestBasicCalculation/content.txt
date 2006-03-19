@@ -1,0 +1,27 @@
+!3 Set Prerequisites
+
+!|Set Abilities|
+|traitType|value|
+|Melee|3|
+
+!include SnippetEnsureNoPointsSpent
+
+!3 Learn a non-favored charm
+
+!|Toggle Charm Learned|
+|id|
+|Solar.GoldenEssenceBlock|
+
+!|Check Charm Points|
+|getFavoredPicksSpent?|getGeneralPicksSpent?|getBonusPointsSpent?|
+|0|1|0|
+
+!3 Make the Ability favored
+
+!|SetAbilitiesFavored|
+|abilityType|
+|Melee|
+
+!|Check Charm Points|
+|getFavoredPicksSpent?|getGeneralPicksSpent?|getBonusPointsSpent?|
+|1|0|0|

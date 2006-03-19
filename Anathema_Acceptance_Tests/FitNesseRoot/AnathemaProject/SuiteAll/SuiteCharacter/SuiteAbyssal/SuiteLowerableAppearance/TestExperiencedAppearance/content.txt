@@ -1,0 +1,52 @@
+This test will ensure that Appearance is lowerable, but does not grant experience points
+
+!3 Raise Appearance to 3
+!|Set Attributes|
+|traitType|value|
+|Appearance|3|
+
+!|Check Attributes|
+|traitType|value?|
+|Appearance|3|
+
+!3 Set Experienced
+!|Set Experienced|
+
+!3 Ensure that lowering succeeds.
+!|Set Attributes|
+|traitType|value|
+|Appearance|1|
+
+!|Check Attributes|
+|traitType|value?|
+|Appearance|1|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|0|
+
+!3 Ensure that value 0 is possible
+!|Set Attributes|
+|traitType|value|
+|Appearance|0|
+
+!|Check Attributes|
+|traitType|value?|
+|Appearance|0|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|0|
+
+!3 Ensure that the original value is still used as base for XP-Calculation
+!|Set Attributes|
+|traitType|value|
+|Appearance|4|
+
+!|Check Attributes|
+|traitType|value?|
+|Appearance|4|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|12|

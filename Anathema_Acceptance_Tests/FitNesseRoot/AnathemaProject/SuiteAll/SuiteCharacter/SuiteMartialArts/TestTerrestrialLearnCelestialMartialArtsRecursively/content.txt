@@ -1,0 +1,25 @@
+!include SnippetPrepareMartialArtsImmaculate
+
+!3 Prepare Learning Celestial Martial Arts
+
+!|Toggle Charm Learned|
+|id|
+|Dragon-Blooded.SpiritSight|
+|Dragon-Blooded.SpiritWalking|
+
+!3 Learn a Charm on the Cascade's second level
+
+!|Toggle Charm Learned|
+|id|
+|Dragon-Blooded.EarthDragonForm|
+
+!|Check Charm|
+|id|isLearned?|
+|Dragon-Blooded.EarthDragonForm|true|
+
+!3 Ensure all the Charms are learned
+2 Prerequisite Charms + 3 First Level Charms + 1 Second Level Charm = 5 General Picks and 10 Bonus Points
+
+!|Check Charm Points|
+|getFavoredPicksSpent?|getGeneralPicksSpent?|getBonusPointsSpent?|
+|0|5|10|

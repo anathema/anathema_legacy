@@ -1,0 +1,7 @@
+!3 No Combos allowed
+
+Ensure that Celestial Circle Sorcery might not be comboed at all.
+
+!|Check Combo Rules|
+|id|isComboable?|
+|Sidereal.CelestialCircleSorcery|false|

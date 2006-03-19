@@ -1,0 +1,30 @@
+!3 Set a caste
+
+!|SetConcept|
+|caste|
+|Journeys|
+
+!3 Spend Free Points
+Four points granted, let's spend them. 
+
+!|SetSiderealColleges|
+|traitType|value|
+|Captain|3|
+|Mast|1|
+
+No values are greater 3, so no Bonus Points should be spent.
+
+!|CheckBonusPoints|
+|regularSpent?|
+|0|
+
+!3 Spend another dot
+There should be not BP expended - favored dots flow over to general.
+
+!|SetSiderealColleges|
+|traitType|value|
+|Gull|1|
+
+!|CheckBonusPoints|
+|regularSpent?|
+|0|

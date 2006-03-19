@@ -1,0 +1,21 @@
+Check Unrestricted charms
+
+!include SnippetPrepareMartialArtsDragonBlooded
+
+!|check charm|
+|id|attributeName|hasAttribute?|
+|Dragon-Blooded.Tiger-and-Bear-Awareness|Unrestricted|true|
+|Dragon-Blooded.Tiger-and-Bear-Awareness|NoStyle|true|
+|Dragon-Blooded.Tiger-and-BearUnity|Unrestricted|true|
+|Dragon-Blooded.Tiger-and-BearUnity|NoStyle|true|
+|Dragon-Blooded.Tiger-and-BearUnity|AllowsCelestial|true|
+|Dragon-Blooded.SpiritSight|Unrestricted|true|
+|Dragon-Blooded.SpiritSight|NoStyle|true|
+|Dragon-Blooded.SpiritWalking|Unrestricted|true|
+|Dragon-Blooded.SpiritWalking|NoStyle|true|
+|Dragon-Blooded.SpiritWalking|AllowsCelestial|true|
+|Dragon-Blooded.Walker-Among-IrisesPerception|Unrestricted|true|
+|Dragon-Blooded.Walker-Among-IrisesPerception|NoStyle|true|
+|Dragon-Blooded.Iris-BulbDiscourse|Unrestricted|true|
+|Dragon-Blooded.Iris-BulbDiscourse|NoStyle|true|
+|Dragon-Blooded.Iris-BulbDiscourse|AllowsCelestial|true|

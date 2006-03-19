@@ -1,0 +1,4 @@
+!3 Assert that absolutely no Merits or Flaws are learned.
+!|Check Merits Flaws|
+|meritsFlawsSelected?|getBonusPointsSpent?|getBonusPointsGranted?|
+|0|0|0|

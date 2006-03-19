@@ -1,0 +1,5 @@
+!|SetTemplate|
+|characterType|subtemplate|
+|Dragon-Blooded|blank|
+
+!include SnippetVerifyTerrestrialMaximumValues

@@ -1,0 +1,27 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SnippetCreateDefaultSolar
+
+!3 Fulfill Prerequisites
+
+!|Set Abilities|
+|traitType|value|
+|MartialArts|5|
+
+!|Set Other Traits|
+|traitType|value|
+|Essence|5|
+
+!3 Newly created Character shan't learn Sidereal Martial Arts
+
+!|Check Charm|
+|id|isLearnable?|
+|Sidereal.UnnaturalMany-StepStride|false|
+
+!3 Set Character to Experienced
+
+!|Set Experienced|
+
+!3 Now learning the Charm is alright
+
+!|Check Charm|
+|id|isLearnable?|
+|Sidereal.UnnaturalMany-StepStride|true|

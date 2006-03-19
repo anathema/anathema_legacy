@@ -1,0 +1,5 @@
+!3 Regular Bonus Points Spent
+
+!|Check Bonus Points|
+|Additional Spent?|Regular Spent?|
+|0|2|

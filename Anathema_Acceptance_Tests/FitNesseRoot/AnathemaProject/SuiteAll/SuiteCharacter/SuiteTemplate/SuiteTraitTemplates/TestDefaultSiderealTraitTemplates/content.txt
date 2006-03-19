@@ -1,0 +1,5 @@
+!|SetTemplate|
+|characterType|subtemplate|
+|Sidereal|blank|
+
+!include SnippetVerifyCelestialMaximumValues

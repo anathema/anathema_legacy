@@ -1,0 +1,17 @@
+package net.sf.anathema.acceptance.fixture.character.template;
+
+import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import fitnesse.fixtures.RowEntryFixture;
+
+public class SetTemplateFixture extends RowEntryFixture {
+
+  public String characterType;
+  public String subtemplate;
+
+  @Override
+  public void enterRow() throws Exception {
+    CharacterTemplateSummary templateSummary = new CharacterTemplateSummary(summary);
+    ICharacterTemplate template = templateSummary.createTemplate(characterType, subtemplate);
+    templateSummary.setCharacterTemplate(template);
+  }
+}

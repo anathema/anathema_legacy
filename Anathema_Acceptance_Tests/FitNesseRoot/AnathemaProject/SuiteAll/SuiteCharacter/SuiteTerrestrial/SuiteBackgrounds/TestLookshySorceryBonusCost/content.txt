@@ -1,0 +1,25 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreateLookshyNative
+
+Lookshy Terrestrials purchase Sorcery at standard cost.
+
+!include SnippetCheckStandardSorcery
+
+!3 Check Sorcery 4
+
+!|Set Background|
+|traitType|value|
+|Sorcery|4|
+
+!|Check Bonus Points|
+|regularSpent?|
+|2|
+
+!3 Check Sorcery 5
+
+!|Set Background|
+|traitType|value|
+|Sorcery|5|
+
+!|Check Bonus Points|
+|regularSpent?|
+|4|

@@ -1,0 +1,64 @@
+This is to ensure the correct number of additional magic picks granted by the Abyssal Necromancy Background.
+It does not test whether a given magic is an allowed pick.
+
+!3 Check Necromancy 0
+
+!|Set Background|
+|traitType|value|
+|Necromancy|0|
+
+!|Check Charm Points|
+|getAdditionalPicksGranted?|
+|0|
+
+!3 Check Necromancy 1
+
+!|Set Background|
+|traitType|value|
+|Necromancy|1|
+
+!|Check Charm Points|
+|getAdditionalPicksGranted?|
+|1|
+
+!3 Check Necromancy 2
+
+!|Set Background|
+|traitType|value|
+|Necromancy|2|
+
+!|Check Charm Points|
+|getAdditionalPicksGranted?|
+|2|
+
+!3 Check Necromancy 3
+
+!|Set Background|
+|traitType|value|
+|Necromancy|3|
+
+!|Check Charm Points|
+|getAdditionalPicksGranted?|
+|3|
+
+!3 Check Necromancy 4
+
+!|Set Background|
+|traitType|value|
+|Necromancy|4|
+
+!|Check Charm Points|
+|getAdditionalPicksGranted?|
+|5|
+
+!3 Check Necromancy 5
+
+!|Set Background|
+|traitType|value|
+|Necromancy|5|
+
+!|Check Charm Points|
+|getAdditionalPicksGranted?|
+|7|
+
+

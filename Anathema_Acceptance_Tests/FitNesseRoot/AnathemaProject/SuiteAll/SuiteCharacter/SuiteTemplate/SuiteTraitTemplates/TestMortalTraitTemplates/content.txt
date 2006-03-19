@@ -1,0 +1,5 @@
+!|SetTemplate|
+|characterType|subtemplate|
+|Mortal|blank|
+
+!include SnippetVerifyMortalMaximumValues

@@ -1,0 +1,8 @@
+!3 Liege To Value 4
+
+!|Set Background|
+|trait type|value|
+|Liege|4|
+
+!include SnippetTwoRegularBonusPointsSpent
+

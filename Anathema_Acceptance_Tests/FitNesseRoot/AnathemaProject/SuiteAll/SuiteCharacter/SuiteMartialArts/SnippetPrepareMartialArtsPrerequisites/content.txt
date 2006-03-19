@@ -1,0 +1,9 @@
+Prepare the prerequisites.
+
+!|Set Abilities|
+|traitType|value|
+|MartialArts|5|
+
+!|Set Other Traits|
+|traitType|value|
+|Essence|5|

@@ -1,0 +1,6 @@
+!|Check Additional Templates|
+|id|isTemplateRegistered?|
+|Lunar.DeadlyBeastmanTransformation.Template|true|
+|Lunar.HeartsBlood.Template|true|
+|Lunar.Renown.Template|true|
+|Lunar.VirtueFlaw.Template|true|

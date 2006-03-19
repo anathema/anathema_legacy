@@ -1,0 +1,9 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SnippetCheckDefaultVirtues
+
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SnippetCheckDefaultOtherTraits
+
+!|Check Essence Pools|
+|personal pool?|peripheral pool?|
+|6|18|
+
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SnippetCheckNoMagicLearned

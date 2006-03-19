@@ -1,0 +1,7 @@
+All new Backgrounds present:
+
+!|Check Background|
+|Background Type|isAvailable?|
+|Cult|true|
+|HeartsBlood|true|
+|Renown|true|

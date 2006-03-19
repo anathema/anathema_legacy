@@ -1,0 +1,27 @@
+!|Check Abilities|
+|Trait Type|value?|isFavored?|isCaste?|
+|Archery|0|false|false|
+|Athletics|0|false|false|
+|Awareness|0|false|false|
+|Brawl|0|false|false|
+|Bureaucracy|0|false|false|
+|Craft|0|false|false|
+|Dodge|0|false|false|
+|Endurance|0|false|false|
+|Investigation|0|false|false|
+|Larceny|0|false|false|
+|Linguistics|0|false|false|
+|Lore|0|false|false|
+|MartialArts|0|false|false|
+|Medicine|0|false|false|
+|Melee|0|false|false|
+|Occult|0|false|false|
+|Performance|0|false|false|
+|Presence|0|false|false|
+|Resistance|0|false|false|
+|Ride|0|false|false|
+|Sail|0|false|false|
+|Socialize|0|false|false|
+|Stealth|0|false|false|
+|Survival|0|false|false|
+|Thrown|0|false|false|

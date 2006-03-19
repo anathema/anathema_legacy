@@ -1,0 +1,22 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SnippetCreateDefaultSolar
+
+Add some arbitrary backgrounds.
+
+!|Set Background|
+|trait type|value|
+|Artifact|3|
+|Manse|5|
+|Followers|2|
+
+And verify that after saving and loading the character ...
+
+!|Save And Load Character|
+
+... the available background list is the same.
+
+!|Background List|
+|name|value|
+|Artifact|3|
+|Manse|5|
+|Followers|2|
+

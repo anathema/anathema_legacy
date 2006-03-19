@@ -1,0 +1,15 @@
+!include SnippetPrepareMartialArtsSidereal
+
+Although the Charms that enable Dragon-Blooded to learn Celestial Level Martial Arts are of the Celestial level themselves, they are not considered a "style" for the purposes of enabling Celestial Exalts to learn Sidereal Level Martial Arts.
+
+This test will ensure that the rule holds.
+
+!include SnippetCheckNoCelestialTreeCompleted
+
+!|Toggle Charm Learned|
+|id|
+|Dragon-Blooded.SpiritWalking|
+|Dragon-Blooded.Iris-BulbDiscourse|
+|Dragon-Blooded.Tiger-and-BearUnity|
+
+!include SnippetCheckNoCelestialTreeCompleted

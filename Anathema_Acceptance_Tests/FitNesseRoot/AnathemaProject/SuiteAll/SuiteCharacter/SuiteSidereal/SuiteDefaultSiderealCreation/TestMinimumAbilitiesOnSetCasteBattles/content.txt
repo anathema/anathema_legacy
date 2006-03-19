@@ -1,0 +1,73 @@
+!3 Setting the caste
+
+Set the caste Battles...
+
+!|Set Concept|
+|caste|
+|Battles|
+
+... and check on the abilities:
+
+!3 Caste ablilities
+
+!|Check Abilities|
+|Trait Type|isCaste?|
+|Archery|true|
+|Brawl|true|
+|Melee|true|
+|Presence|true|
+|Resistance|true|
+
+!3 New Minimum Ablilities
+
+Check their initial state.
+
+!|Check Abilities|
+|Trait Type|value?|
+|Archery|3|
+|Athletics|2|
+|Dodge|2|
+|Presence|2|
+|Resistance|2|
+
+Check that the new minimum abilities may not be lowered any more.
+
+!|Set Abilities|
+|Trait Type|value|
+|Archery|2|
+|Athletics|1|
+|Dodge|1|
+|Presence|1|
+|Resistance|1|
+
+!|Check Abilities|
+|Trait Type|value?|
+|Archery|3|
+|Athletics|2|
+|Dodge|2|
+|Presence|2|
+|Resistance|2|
+
+!3 Alternative Requirements Archery and Melee
+
+'''Archery''' and '''Melee''' are alternative requirements. So if Melee is set to 3 Archery may be lowered:
+
+!|Set Abilities|
+|Trait Type|value|
+|Melee|3|
+|Archery|0|
+
+!|Check Abilities|
+|Trait Type|value?|
+|Melee|3|
+|Archery|0|
+
+But now Melee might no longer be lowered:
+
+!|Set Abilities|
+|Trait Type|value|
+|Melee|2|
+
+!|Check Abilities|
+|Trait Type|value?|
+|Melee|3|

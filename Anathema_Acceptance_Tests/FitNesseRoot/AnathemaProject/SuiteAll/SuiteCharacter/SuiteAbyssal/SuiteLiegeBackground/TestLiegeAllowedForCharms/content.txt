@@ -1,0 +1,21 @@
+!include SnippetSetLiegeToThree
+
+!include SnippetLearnFiveNonFavoredCharms
+
+No bonus points should be spent so far.
+
+!|Check Bonus Points|
+|Additional Spent?|Regular Spent?|
+|0|0|
+
+!3 Learn Charm Via Bonus Points
+
+!|Toggle Charm Learned|
+|id|
+|Abyssal.ShadowRacesLight|
+
+A charm costs 5 bonus points for an Abyssal which shall be paid from the additional liege pool.
+
+!|Check Bonus Points|
+|Additional Spent?|Regular Spent?|
+|5|0|

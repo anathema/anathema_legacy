@@ -1,0 +1,23 @@
+!include SnippetNoCreationMeritsFlawsLearned
+!include SnippetNoExperiencedMeritsFlawsLearned
+
+!3 Learn some Flaws at Creation
+!|Learn Merits Flaws|
+|id|category|type|value|
+|Small|Physical|Flaw|3|
+|DarkFate|Supernatural|Flaw|4|
+
+!|Check Merits Flaws|
+|getCreationFlawPointsSelected?|getBonusPointsGranted?|
+|7|7|
+
+!include SnippetSetExperienced
+
+!3 Learn a Flaw
+!|Learn Merits Flaws|
+|id|category|type|value|
+|Sun-Seared|Physical|Flaw|6|
+
+!|Check Merits Flaws|
+|getCreationFlawPointsSelected?|getExperienceFlawPointsSelected?|getExperiencePointsGained?|
+|7|6|6|

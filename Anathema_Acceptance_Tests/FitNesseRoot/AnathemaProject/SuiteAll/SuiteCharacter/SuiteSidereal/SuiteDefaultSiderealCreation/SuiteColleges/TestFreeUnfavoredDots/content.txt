@@ -1,0 +1,25 @@
+!3 Spend General Dot Allotment
+There are no caste colleges. Setting any should spent the (3) free general dots.
+
+!|SetSiderealColleges|
+|traitType|value|
+|Sword|3|
+
+No Bonus Points should be spent.
+
+!|CheckBonusPoints|
+|regularSpent?|
+|0|
+
+!3 Assign Another Dot
+Any further dots spent break the alloted limit.
+
+!|SetSiderealColleges|
+|traitType|value|
+|Mask|1|
+
+So we need to expend Bonus Points (8 for a non-caste college).
+
+!|CheckBonusPoints|
+|regularSpent?|
+|8|

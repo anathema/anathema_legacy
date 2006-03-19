@@ -1,0 +1,10 @@
+!3 Calculate the Solar Template's Essence Pools for some random values.
+Calculation is 3xEssence + Willpower for the personal,
+7xEssence+Virtues+Willpower for peripheral pool.
+
+!|CheckEssenceTemplate|
+|willpower|compassion|conviction|essence|peripheralPool?|personalPool?|
+|6|5|0|2|25|12|
+|6|5|1|2|26|12|
+|7|5|1|2|27|13|
+|7|5|1|3|34|16|

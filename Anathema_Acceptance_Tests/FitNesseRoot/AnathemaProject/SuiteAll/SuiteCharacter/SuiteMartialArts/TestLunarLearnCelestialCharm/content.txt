@@ -1,0 +1,4 @@
+!include SnippetCreateMartialArtsLunar
+
+Lunars may learn Celestial Charms at creation.
+!include SnippetCompleteCelestialStyle

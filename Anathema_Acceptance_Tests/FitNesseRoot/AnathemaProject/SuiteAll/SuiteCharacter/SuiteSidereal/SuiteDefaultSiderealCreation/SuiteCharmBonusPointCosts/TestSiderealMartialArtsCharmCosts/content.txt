@@ -1,0 +1,93 @@
+Welcome back to our merry go round of Sidereal charm costs.
+This time, it's the cost for Sidereal level martial arts, bought at character creation.
+
+Before we begin, let's pump the ability and essence score to reasonable levels.
+
+!3 Set Prerequisites
+
+!|Set Abilities|
+|traitType|value|
+|MartialArts|5|
+
+!|Set Other Traits|
+|traitType|value|
+|Essence|5|
+
+!|Check Bonus Points|
+|regularSpent?|
+|34|
+
+!3 Spend the General Picks on Sidereal Martial Arts
+
+We will carefully select seven Charms to spend our general picks on.
+All of them have to be below-form sidereal-level martial arts Charms.
+
+!|Toggle Charm Learned|
+|id|
+|Sidereal.DeadlyStarmetalOffensive|
+|Sidereal.OrichalcumSheathingStance|
+|Sidereal.FlickeringMoonsilverApproach|
+|Sidereal.FiveJadeFury|
+|Sidereal.DemesneEmulationPractice|
+|Sidereal.CharmRedirectionTechnique|
+|Sidereal.Spell-ShatteringPalm|
+
+!|Magic Overview|
+|charmsLearned?|
+|7|
+
+!3 Learn another Sidereal Martial Arts Charm
+Now, with any eighth Sidereal martial arts Charm learned, 8 bonus points should be spent.
+
+
+!|Toggle Charm Learned|
+|id|
+|Sidereal.AstrologyInterruptionMethod|
+
+!|Magic Overview|
+|charmsLearned?|
+|8|
+
+!|Check Bonus Points|
+|regularSpent?|
+|42|
+
+Next, let's repeat the exercise with Martial Arts as a favored ability.
+
+!3 Set Martial Arts Favored
+
+!|Set Abilities Favored|
+|abilityType|
+|MartialArts|
+
+
+!|Check Bonus Points|
+|regularSpent?|
+|32|
+
+!3 Spend favored picks on Sidereal Martial Arts
+
+Same as before - another four picks have to be spent.
+
+!|Toggle Charm Learned|
+|id|
+|Sidereal.RainUnseenThreads|
+|Sidereal.NestLivingStrands|
+|Sidereal.UnnaturalMany-StepStride|
+|Sidereal.DanceHungrySpider|
+
+!|Magic Overview|
+|charmsLearned?|
+|12|
+
+!3 Learn another Sidereal Charm
+
+This one should break any freebie limits and expend six bonus points.
+
+!|Toggle Charm Learned|
+|id|
+|Sidereal.GodWays|
+
+!|Check Bonus Points|
+|regularSpent?|
+|38|

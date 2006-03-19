@@ -1,0 +1,61 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteLunar.SnippetCreateLunarSorcerer
+
+!|Check Bonus Points|
+|regularSpent?|
+|10|
+
+!3 Learn 3 Spells to spend all of the general picks
+!|Learn Spell Magic|
+|id|
+|Terrestrial.Magician'sPleasantPath|
+|Terrestrial.MaledictionDistortedCompass|
+|Terrestrial.DeathObsidianButterflies|
+
+Bonus points should be unchanged.
+!|Check Bonus Points|
+|regularSpent?|
+|10|
+
+!3 Test unfavored cost
+!|Learn Spell Magic|
+|id|
+|Terrestrial.EmeraldCountermagic|
+
+Bonus points should be unchanged.
+!|Check Bonus Points|
+|regularSpent?|
+|17|
+
+!3 Test favored cost
+Set caste to No Moon, so Intelligence is favored.
+!|Set Concept|
+|caste|
+|NoMoon|
+
+Bonus points should be back at 10.
+!|Check Bonus Points|
+|regularSpent?|
+|10|
+
+Learn three more spells, now favored by the No Moon Caste, so everything is spent.
+!|Learn Spell Magic|
+|id|
+|Terrestrial.DemonFirstCircle|
+|Terrestrial.ImpenetrableFrostBarrier|
+|Terrestrial.InfallibleMessenger|
+
+We expect BP to remain at 10 since everything is covered by free picks.
+!|Check Bonus Points|
+|regularSpent?|
+|10|
+
+Learn another one, this time with bonus points.
+!|Learn Spell Magic|
+|id|
+|Terrestrial.InvulnerableSkinBronze|
+
+Spells are favored, so only 5 points are spent.
+!|Check Bonus Points|
+|regularSpent?|
+|15|
+

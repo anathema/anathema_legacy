@@ -1,0 +1,18 @@
+!3 Set Charm Prerequisites Without Bonus Points
+
+!|Set Abilities|
+|traitType|value|
+|Performance|3|
+|Athletics|3|
+
+!3 Set The Free Amount of Non-Favored Charms
+
+Abyssals may learn 5 non-favored charms for free. The following charms are from the non-favored abilities Performance and Athletics:
+
+!|Toggle Charm Learned|
+|id|
+|Abyssal.HauntingInflectionTechnique|
+|Abyssal.WitheringDirge|
+|Abyssal.MorbidFascinationStyle|
+|Abyssal.Raiton'sNimblePerch|
+|Abyssal.SpiderPounceTechnique|

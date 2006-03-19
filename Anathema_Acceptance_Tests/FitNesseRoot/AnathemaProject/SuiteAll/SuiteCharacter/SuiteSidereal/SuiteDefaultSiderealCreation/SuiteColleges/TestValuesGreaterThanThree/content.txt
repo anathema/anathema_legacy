@@ -1,0 +1,31 @@
+!3 Set A Caste
+There are only three general dots in the default Sidereal template, so no testing there.
+Pick any caste, so there are favored colleges and we can spend up to 4 dots.
+
+!|Set Concept|
+|caste|
+|Battles|
+
+!3 Set A Caste College To 3
+Values up to three don't cost Bonus Points, as long as free points are available.
+
+!|Set Sidereal Colleges|
+|traitType|value|
+|Spear|3|
+
+!|Check Bonus Points|
+|regularSpent?|
+|0|
+
+!3 Set The Caste College To 4
+Value of four or above cost Bonus Points, no matter what free points are still unspent.
+
+!|Set Sidereal Colleges|
+|traitType|value|
+|Spear|4|
+
+Luckily, caste colleges are discounted (6 per dot).
+
+!|Check Bonus Points|
+|regularSpent?|
+|6|

@@ -1,0 +1,25 @@
+An Abyssal with Essence four may have any appearance - except two.
+
+!|Check Attribute Allowed|
+|essenceValue|appearanceValue|isAppearanceValueAllowed?|
+|4|0|true|
+
+!|Check Attribute Allowed|
+|essenceValue|appearanceValue|isAppearanceValueAllowed?|
+|4|1|true|
+
+!|Check Attribute Allowed|
+|essenceValue|appearanceValue|isAppearanceValueAllowed?|
+|4|2|false|
+
+!|Check Attribute Allowed|
+|essenceValue|appearanceValue|isAppearanceValueAllowed?|
+|4|3|true|
+
+!|Check Attribute Allowed|
+|essenceValue|appearanceValue|isAppearanceValueAllowed?|
+|4|4|true|
+
+!|Check Attribute Allowed|
+|essenceValue|appearanceValue|isAppearanceValueAllowed?|
+|4|5|true|

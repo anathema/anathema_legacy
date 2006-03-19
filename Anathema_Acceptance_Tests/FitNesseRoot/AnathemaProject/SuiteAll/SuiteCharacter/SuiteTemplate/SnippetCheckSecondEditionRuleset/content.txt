@@ -1,0 +1,5 @@
+!|Check Rulesets|
+|id|isAvailable?|
+|CoreRules|false|
+|PowerCombat|false|
+|2ndEdition|true|

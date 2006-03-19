@@ -1,0 +1,4 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SetUp
+
+!3 Create a new default Sidereal
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteSidereal.SnippetCreateNewDefaultSidereal

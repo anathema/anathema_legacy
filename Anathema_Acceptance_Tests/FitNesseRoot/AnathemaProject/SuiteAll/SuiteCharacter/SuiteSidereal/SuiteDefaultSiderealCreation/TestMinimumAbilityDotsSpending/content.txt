@@ -1,0 +1,30 @@
+!3 Initial Dot spending 
+
+Initially, a Sidereal Exalt has 15 dots spent for abilities.
+
+!|Check Ability Points|
+|getGeneralDotsSpent?|
+|15|
+
+!3 Free Restricted Ability
+
+Melee is raised to 1, to lift the limitation on Archery.
+
+!|Set Abilities|
+|traitType|value|
+|Melee|1|
+
+!|Check Ability Points|
+|getGeneralDotsSpent?|
+|16|
+
+!3 Reduce Former Restricted Ability
+Now, Archery is reduced - point spendings should be reduced, too.
+
+!|Set Abilities|
+|traitType|value|
+|Archery|0|
+
+!|Check Ability Points|
+|getGeneralDotsSpent?|
+|15|

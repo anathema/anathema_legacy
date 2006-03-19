@@ -1,0 +1,30 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreateDefaultTerrestrial
+
+According to Outcaste, page 60something, Dynastic Dragon-Blooded have to pay additional bonus points for high ranks for "Sorcery".
+
+Sorcery 0 - 3 are as always.
+Sorcery 4 and 5 are special.
+
+!include SnippetCheckStandardSorcery
+
+!3 Check Sorcery 4
+Sorcery 4 costs a total of 4 Background points, instead of the ususal 2.
+
+!|Set Background|
+|traitType|value|
+|Sorcery|4|
+
+!|Check Bonus Points|
+|regularSpent?|
+|4|
+
+!3 Check Sorcery 5
+Sorcery 5 costs a total of 8 Background points, instead of the ususal 4.
+
+!|Set Background|
+|traitType|value|
+|Sorcery|5|
+
+!|Check Bonus Points|
+|regularSpent?|
+|8|

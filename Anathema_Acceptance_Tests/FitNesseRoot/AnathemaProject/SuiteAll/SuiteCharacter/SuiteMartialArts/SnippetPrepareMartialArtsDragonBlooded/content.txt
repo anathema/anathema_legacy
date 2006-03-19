@@ -1,0 +1,5 @@
+!|Create Character|
+|characterType|subtemplate|
+|Dragon-Blooded|blank|
+
+!include SnippetPrepareMartialArtsPrerequisites

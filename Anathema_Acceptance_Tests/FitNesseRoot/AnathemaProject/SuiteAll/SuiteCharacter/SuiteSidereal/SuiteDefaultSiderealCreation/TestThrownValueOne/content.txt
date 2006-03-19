@@ -1,0 +1,79 @@
+!include SnippetAlternativeMinimumAblilityTestSetup
+
+Now we set thrown to value one.
+
+!|Set Abilities|
+|Trait Type|value|
+|Thrown|1|
+
+!|Check Abilities|
+|Trait Type|value?|
+|Thrown|1|
+|Archery|1|
+|Melee|0|
+
+!3 Archery is free.
+
+The archery value can be increased ... 
+
+!|Set Abilities|
+|Trait Type|value|
+|Archery|2|
+
+!|Check Abilities|
+|Trait Type|value?|
+|Thrown|1|
+|Archery|2|
+|Melee|0|
+
+... and decreased to zero again.
+
+!|Set Abilities|
+|Trait Type|value|
+|Archery|0|
+
+!|Check Abilities|
+|Trait Type|value?|
+|Thrown|1|
+|Archery|0|
+|Melee|0|
+
+!3 Thrown is restricted.
+
+Thrown is the now only of the three abilities set to one and cannot be reduced.
+
+!|Set Abilities|
+|Trait Type|value|
+|Thrown|0|
+
+!|Check Abilities|
+|Trait Type|value?|
+|Thrown|1|
+|Archery|0|
+|Melee|0|
+
+!3 Melee is free.
+
+The melee value can be increased ... 
+
+!|Set Abilities|
+|Trait Type|value|
+|Melee|1|
+
+!|Check Abilities|
+|Trait Type|value?|
+|Thrown|1|
+|Archery|0|
+|Melee|1|
+
+... and set it to zero again.
+
+!|Set Abilities|
+|Trait Type|value|
+|Melee|0|
+
+!|Check Abilities|
+|Trait Type|value?|
+|Thrown|1|
+|Archery|0|
+|Melee|0|

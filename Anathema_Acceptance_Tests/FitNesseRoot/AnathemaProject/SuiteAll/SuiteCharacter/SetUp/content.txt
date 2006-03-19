@@ -1,0 +1,3 @@
+!include .AnathemaProject.SuiteAll.SetUp
+
+!|Setup Character Platform|

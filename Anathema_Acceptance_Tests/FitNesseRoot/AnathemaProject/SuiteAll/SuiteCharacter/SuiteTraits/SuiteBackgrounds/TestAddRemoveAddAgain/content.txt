@@ -1,0 +1,36 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SnippetCreateDefaultSolar
+
+This test is to ensure basic operation of Backgrounds.
+
+!3 Add a Background
+
+!|Set Background|
+|traitType|value|
+|Allies|3|
+
+!|Check Background Points|
+|getBackgroundDotsSpent?|
+|3|
+
+!3 Remove the Background
+
+!|Remove Background|
+|traitType|
+|Allies|
+
+!|Check Background Points|
+|getBackgroundDotsSpent?|
+|0|
+
+A problem was reported with re-learning forgotten backgrounds, so we should make sure it is working.
+Unfortunately, current fixtures recalculate Bonus Points every time they're called, so the test below doesn't cover it.
+
+!3 Learn the Background again
+
+!|Set Background|
+|traitType|value|
+|Allies|3|
+
+!|Check Background Points|
+|getBackgroundDotsSpent?|
+|3|

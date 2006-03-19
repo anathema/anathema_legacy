@@ -1,0 +1,51 @@
+This test will ensure that Charm Picks are spent on the most expensive Charm Type first (General instead of Favored) to save on Bonus Points.
+
+!3 Set the prerequisites
+
+!|Set Abilities|
+|traitType|value|
+|Melee|3|
+|Thrown|3|
+
+!|Set Abilities Favored|
+|abilityType|
+|Melee|
+
+!include SnippetEnsureNoPointsSpent
+
+!3 Learn a full set of Favored Charms
+
+!|Toggle Charm Learned|
+|id|
+|Solar.RetrieveFallenWeapon|
+|Solar.CallBlade|
+|Solar.GloriousSolarSaber|
+|Solar.SummoningLoyalSteel|
+|Solar.IronRaptorTechnique|
+
+!|Check Charm Points|
+|getFavoredPicksSpent?|getGeneralPicksSpent?|getBonusPointsSpent?|
+|5|0|0|
+
+!3 Learn a full set of General Charms
+!|Toggle Charm Learned|
+|id|
+|Solar.Triple-DistanceAttackTechnique|
+|Solar.PrecisionStrikingRaptor|
+|Solar.Joint-WoundingAttack|
+|Solar.Observer-DeceivingAttack|
+|Solar.ReturningWeaponConcentration|
+
+!|Check Charm Points|
+|getFavoredPicksSpent?|getGeneralPicksSpent?|getBonusPointsSpent?|
+|5|5|0|
+
+!3 Learn another favored Charm
+!|Toggle Charm Learned|
+|id|
+|Solar.ExcellentStrike|
+
+!3 Observe that bonus points are spent for the favored Charm
+!|Check Charm Points|
+|getFavoredPicksSpent?|getGeneralPicksSpent?|getBonusPointsSpent?|
+|5|5|4|

@@ -1,0 +1,29 @@
+!3 During character creation, Virtues dictate the minimum value for Willpower.
+!|Set Virtues|
+|traitType|value|
+|Conviction|3|
+|Compassion|3|
+
+!|Check Other Traits|
+|traitType|value?|
+|Willpower|6|
+
+!|Check Other Traits|
+|traitType|minimumValue?|
+|Willpower|6|
+
+!3 When experienced, this is not true any more.
+!|Set Experienced|
+
+!|Set Virtues|
+|traitType|value|
+|Conviction|4|
+|Compassion|3|
+
+!|Check Other Traits|
+|traitType|value?|
+|Willpower|6|
+
+!|Check Other Traits|
+|traitType|minimumValue?|
+|Willpower|6|

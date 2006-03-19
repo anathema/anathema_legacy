@@ -1,0 +1,60 @@
+First set the relevant traits.
+
+!|Set Attributes|
+|traitType|value|
+|Strength|5|
+|Dexterity|5|
+|Stamina|2|
+
+!|Set Attributes|
+|traitType|value|
+|Wits|4|
+|Perception|5|
+
+!|Check Attribute Points|
+|primaryDotsSpent?|secondaryDotsSpent?|
+|9|7|
+
+!|Check Bonus Points|
+|regularSpent?|
+|0|
+
+Then, learn 4 general charms.
+!|Toggle Charm Learned|
+|id|
+|Lunar.HydraHeadAttack|
+
+!3 Check general charm cost
+
+Now, learn another Charm and check bonus points expenditure.
+
+!|Toggle Charm Learned|
+|id|
+|Lunar.SnakeBodyTechnique|
+
+!|Check Bonus Points|
+|regularSpent?|
+|7|
+
+!3 Check favored charm cost.
+
+Set a caste so some attributes are favored.
+!|Set Concept|
+|caste|
+|NoMoon|
+
+Learn four favored charms.
+
+!|Toggle Charm Learned|
+|id|
+|Lunar.SkillfulRicochetAttack|
+ 
+Learn another charm and check the bonus points spent.
+
+!|Toggle Charm Learned|
+|id|
+|Lunar.FindingNeedle'sEye|
+
+!|Check Bonus Points|
+|regularSpent?|
+|12|

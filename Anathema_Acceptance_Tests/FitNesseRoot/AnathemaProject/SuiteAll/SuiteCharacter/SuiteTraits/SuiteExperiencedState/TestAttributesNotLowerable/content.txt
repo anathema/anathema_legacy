@@ -1,0 +1,39 @@
+This test will ensure that attributes are not lowerable.
+
+!3 Raise Attribute to 3
+!|Set Attributes|
+|traitType|value|
+|Strength|3|
+
+!|Check Attributes|
+|traitType|value?|
+|Strength|3|
+
+!3 Set Experienced
+!|Set Experienced|
+
+!3 Ensure that lowering fails.
+!|Set Attributes|
+|traitType|value|
+|Strength|1|
+
+!|Check Attributes|
+|traitType|value?|
+|Strength|3|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|0|
+
+!3 Ensure that raising succeeds
+!|Set Attributes|
+|traitType|value|
+|Strength|4|
+
+!|Check Attributes|
+|traitType|value?|
+|Strength|4|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|12|

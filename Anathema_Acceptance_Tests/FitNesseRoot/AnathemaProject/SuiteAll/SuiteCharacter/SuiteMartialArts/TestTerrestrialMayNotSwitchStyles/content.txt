@@ -1,0 +1,42 @@
+!include SnippetPrepareMartialArtsDragonBlooded
+
+!3 Prepare Learning Celestial Martial Arts
+
+!|Set Experienced|
+
+!|Toggle Charm Learned|
+|id|
+|Dragon-Blooded.SpiritSight|
+|Dragon-Blooded.SpiritWalking|
+
+!3 Start Learning a Celestial Style
+
+!|Toggle Charm Learned|
+|id|
+|Solar.LeapingMantisTechnique|
+
+!|Check Charm|
+|id|isLearned?|
+|Solar.LeapingMantisTechnique|true|
+
+!3 Ensure another Style cannot be learned
+
+!|Check Charm|
+|id|isLearnable?|
+|Solar.ImageDeathTechnique|false|
+
+!3 Complete the first Style
+
+!|Toggle Charm Learned|
+|id|
+|Solar.UnfoldingRetributionStance|
+
+!|Check Charm|
+|id|isLearned?|
+|Solar.UnfoldingRetributionStance|true|
+
+!3 Try learning the second Style again
+
+!|Check Charm|
+|id|isLearnable?|
+|Solar.ImageDeathTechnique|true|

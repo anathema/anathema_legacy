@@ -1,0 +1,6 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SetUp
+
+!|Set Template|
+|characterType|subtemplate|
+|Solar|blank|
+

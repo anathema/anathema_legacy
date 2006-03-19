@@ -1,0 +1,5 @@
+!3 Assure no points are spent
+
+!|Check Charm Points|
+|getFavoredPicksSpent?|getGeneralPicksSpent?|getBonusPointsSpent?|
+|0|0|0|

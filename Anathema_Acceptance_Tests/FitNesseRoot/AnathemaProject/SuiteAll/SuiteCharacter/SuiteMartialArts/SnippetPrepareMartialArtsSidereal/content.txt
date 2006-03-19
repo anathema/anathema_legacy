@@ -1,0 +1,5 @@
+!|Create Character|
+|characterType|subtemplate|
+|Sidereal|blank|
+
+!include SnippetPrepareMartialArtsPrerequisites

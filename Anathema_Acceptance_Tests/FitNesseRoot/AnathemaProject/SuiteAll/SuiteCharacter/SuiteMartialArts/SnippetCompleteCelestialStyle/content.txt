@@ -1,0 +1,12 @@
+!3 Complete a celestial tree
+Since 'Essence Venom Strike' is final charm in the celestial 'Snake Style' tree, it should be complete when learning 'Essence Vemom Strike'.
+
+!|Toggle Charm Learned|
+|id|
+|Solar.EssenceVenomStrike|
+
+... check that the tree is regarded as completely learned.
+
+!|Magic Overview|
+|isCelestialMartialArtsTreeCompleted?|
+|true|

@@ -1,0 +1,19 @@
+!3 Learn Prerequisites
+
+!|Set Abilities|
+|traitType|value|
+|MartialArts|5|
+
+!|Set Other Traits|
+|traitType|value|
+|Essence|5|
+
+!3 Set to Experienced
+
+!|Set Experienced|
+
+!3 Learn Charm
+
+!|Toggle Charm Learned|
+|id|
+|Sidereal.UnnaturalMany-StepStride|

@@ -1,0 +1,113 @@
+!3 Spend the Free General Picks
+Default Sidereals get 5 favored and 7 general picks.
+
+Sidereal Craft has exactly 7 Charms, so it's perfectly suited for spending the general picks.
+
+First, spend 24 BP on prerequisites.
+
+!|SetAbilities|
+|traitType|value|
+|Craft|5|
+
+!|SetOtherTraits|
+|traitType|value|
+|Essence|4|
+
+!|CheckBonusPoints|
+|regularSpent?|
+|24|
+
+Learn the 7 charms.
+
+!|ToggleCharmLearned|
+|id|
+|Sidereal.ImplicitConstructionMethodology|
+
+!|MagicOverviewFixture|
+|charmsLearned?|
+|7|
+
+!3 Ensure No Bonus Points Are Spent On Charms
+
+!|CheckBonusPoints|
+|regularSpent?|
+|24|
+
+Any further general charm picks should be paid for with bonus points.
+
+!3 Learn a general Charm
+
+Set Prerequisites.
+
+!|SetAbilities|
+|traitType|value|
+|Stealth|3|
+
+Learn, Check BP, and unlearn once more.
+
+
+
+!|ToggleCharmLearned|
+|id|
+|Sidereal.BlindingBoar|
+
+!|CheckBonusPoints|
+|regularSpent?|
+|31|
+
+!|ToggleCharmLearned|
+|id|
+|Sidereal.BlindingBoar|
+
+
+!3 Spend the favored picks
+
+Thrown features 5 Charms, so it's good for favored.
+
+!|SetAbilitiesFavored|
+|abilityType|
+|Thrown|
+
+Spend 2 BP on prerequisites.
+
+!|SetAbilities|
+|traitType|value|
+|Thrown|5|
+
+!|CheckBonusPoints|
+|regularSpent?|
+|26|
+
+!|ToggleCharmLearned|
+|id|
+|Sidereal.UnrelentingTormentTechnique|
+
+!|MagicOverviewFixture|
+|charmsLearned?|
+|12|
+
+!3 Learn a favored Charm
+First, we need another favored ability.
+
+!|SetAbilitiesFavored|
+|abilityType|
+|Dodge|
+
+!|SetAbilities|
+|traitType|value|
+|Dodge|2|
+
+Now, learn the charm, check the points, unlearn once more.
+
+!|ToggleCharmLearned|
+|id|
+|Sidereal.Absence|
+
+!|CheckBonusPoints|
+|regularSpent?|
+|31|
+
+!|ToggleCharmLearned|
+|id|
+|Sidereal.Absence|
+

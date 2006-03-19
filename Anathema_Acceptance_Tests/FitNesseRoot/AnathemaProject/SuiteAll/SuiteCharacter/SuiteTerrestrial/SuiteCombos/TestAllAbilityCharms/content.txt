@@ -1,0 +1,10 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreateDefaultTerrestrial
+!3 All Charms in the table should register as "Combos with all abilities"
+Source: Dragon Blooded Charm Section, various pages.
+!|Check Combo Rules|
+|id|isAllAbilities?|
+|Dragon-Blooded.FallingStarManeuver|true|
+|Dragon-Blooded.DreadInfectionStrike|true|
+|Dragon-Blooded.Spirit-ChainingStrike|true|
+|Dragon-Blooded.Spirit-ShreddingAttack|true|
+|Dragon-Blooded.EbonySpurTechnique|true|

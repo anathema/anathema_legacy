@@ -1,0 +1,19 @@
+!include SnippetPrepareMartialArtsDragonBlooded
+
+At creation, no celestial martial arts charms may be learned.
+
+!|Check Charm|
+|id|isLearnable?|
+|Dragon-Blooded.Tiger-and-Bear-Awareness|false|
+
+The introductory charms should be free for all experienced characters.
+
+!|Set Experienced|
+
+!|Toggle Charm Learned|
+|id|
+|Dragon-Blooded.Tiger-and-Bear-Awareness|
+
+!|Check Charm|
+|id|isLearned?|
+|Dragon-Blooded.Tiger-and-Bear-Awareness|true|
