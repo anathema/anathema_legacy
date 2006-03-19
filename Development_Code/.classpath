@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="/Character_Main"/>
+	<classpathentry kind="src" path="/Charm_Cascades"/>
+	<classpathentry kind="src" path="/Charm_Tree"/>
+	<classpathentry kind="src" path="/Platform"/>
+	<classpathentry kind="src" path="/Lib"/>
+	<classpathentry kind="src" path="/Lib_Gui"/>
+	<classpathentry sourcepath="/Thirdparty/XML/dom4j-src.zip" kind="lib" path="/Thirdparty/XML/dom4j-1.5.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/CSV/ostermillerutils_1_04_03.jar"/>
+	<classpathentry sourcepath="/Thirdparty/Reporting/jasperreport-src.zip" kind="lib" path="/Thirdparty/Reporting/jasperreports-0.6.2.jar"/>
+	<classpathentry sourcepath="/Thirdparty/Development/commons-colllections-3.1-src.zip" kind="lib" path="/Thirdparty/Development/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/Development/commons-beanutils-1.5.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/Development/commons-digester-1.6.jar"/>
+	<classpathentry kind="src" path="/Character_Generic"/>
+	<classpathentry kind="src" path="/Character_Generic_Impl"/>
+	<classpathentry kind="src" path="/Character_Abyssal"/>
+	<classpathentry kind="src" path="/Character_Solar"/>
+	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
+	<classpathentry sourcepath="/Thirdparty/Database/db4o-4.5-src.zip" kind="lib" path="/Thirdparty/Database/db4o-4.5-java1.4.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Db"/>
+	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
+	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Framework"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Sidereal"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Library"/>
+	<classpathentry sourcepath="/Thirdparty/Commons/commons-logging-api.src.zip" kind="lib" path="/Thirdparty/Commons/commons-logging-api.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/Reporting/itext-1.01.jar"/>
+	<classpathentry sourcepath="JDEMO_HOME/jdemo_src.zip" kind="var" path="JDEMO_HOME/jdemo_core.jar"/>
+	<classpathentry kind="src" path="/Charm_Entry"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-awt-util.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-bridge.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-css.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-dom.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-ext.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-gui-util.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-gvt.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-parser.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-script.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-svg-dom.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-swing.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-util.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-xml.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Lunar"/>
+	<classpathentry kind="src" path="/Character_Main_Impl"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
