@@ -5,7 +5,7 @@
       <minimum value="1"/>
     </defaultTrait>
     <specialTrait id="Charisma" startValue="2" lowerableState="Default" 
-      zeroLevel="0" isRequiredFavored="false">
+      zeroLevel="1" isRequiredFavored="false">
       <limitation type="Essence"/>
       <minimum value="2"/>
     </specialTrait>
