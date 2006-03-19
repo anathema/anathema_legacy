@@ -1,32 +1,27 @@
-The asterisk (*) indicates possible language content.
-(In other words: "Warning: Contains Language")
+=== Active Modules ===
+Being a listing of those modules in the SVN-System that are
+required to run Anathema or are at least considered "active" by the
+team.
 
-_Repository
+Module names in parentheses are optional.
+
+(_Repository)
 	Hold characters and data from an example campaign. 
 	A common reference point for the persistence system.
 
-Acceptance_Tests
-	Old acceptance tests, partially based on JUnit.
-
-*Anathema
+Anathema
 	Anathema Main class, some initialization-related files.
 
-Anathema_Acceptance_Tests
+(Anathema_Acceptance_Tests)
 	FitNesse-based acceptance tests
 
-Anathema_Dist
-	Distribution files and the icon.
-
-*Anathema_Namegenerator
-	Files concerning name generation.
-
-*Campaign
+Campaign_Plot
 	Series management module.
 
-*Campaign_Music
+Campaign_Music
 	Presenter components and Model/View-Interfaces for the music module
 
-*Campaign_Music_Impl
+Campaign_Music_Impl
 	Model/View implementations for the music module
 	
 Character_Generic
@@ -38,39 +33,48 @@ Character_Generic_Impl
 Character_Generic_Framework
 	Shared Components, independent of the Exalted-context.
 
-*Character_Core
-	Lower level character classes, mostly those that are also needed by the Charm Cascades.
-
-*Character
-	Higher level character classes, the stuff actually needed to create and maintain a character.
-
-*Character_[TYPE]
+Character_Main
+	Presenter components and Model/View-Interfaces for the character module.
+	
+Character_Main_Impl
+	The mainstay of character management.
+	
+Character_[TYPE]
 	Files relating to a certain charactertype.
 	
-*Character_Merits_Flaws
+Character_MeritsFlaws
 	Files regarding M&F-management
 
-*CharmTree
-	The core files for the charm tree view and the SVG graphics themselves. 
+Charm_Tree
+	The core files for the charm tree view. 
 	Used by the character modules and by the charmcascades.
 
-*CharmCascades
+Charm_Cascades
 	The stand alone charm viewing module.
 
-*CharmEntry
+Charm_Entry
 	The not-yet-completed charm entry module.
 
-Development
+(Development_Miscellaneous)
 	Notes, ToDos, Annotations, Eclipse settings, extracts of mails thought worthy of putting in there. 
 	Content is partially in german.
 
-DevelopmentEnvironment
+(Development_Code)
 	Stuff that's not needed by users. Stand alone programs used to create the charm database, character sheets, manage "properties" files.
 	
-*Documentation
+(Development_Documentation)
 	Documentation efforts.
 	
-Framework
+(Development_Distribution)
+	Distribution files and the icon.
+
+(Development_Website)
+	Files for the project website.
+
+Namegenerator
+	Files concerning name generation.
+	
+Platform
 	Core files of the Anathema system. Used in many a module and to boot up the whole system.
 
 Lib/Lib_Gui/Lib_Workflow
@@ -78,6 +82,3 @@ Lib/Lib_Gui/Lib_Workflow
 
 Thirdparty
 	Third party libraries.
-
-Website
-	Project website
