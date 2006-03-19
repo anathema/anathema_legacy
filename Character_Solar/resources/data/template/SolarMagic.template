@@ -1,0 +1,5 @@
+<magicTemplate>
+	<freePicksPredicate type="Default"/>
+	<charmTemplate martialArtsLevel="Celestial" highLevelMartialArts="false" charmType="Solar"/>
+	<spellTemplate maximumSorceryCircle="Solar" maximumNecromancyCircle="Labyrinth"/>
+</magicTemplate>		
