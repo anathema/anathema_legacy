@@ -1,0 +1,45 @@
+Two-in-One-Testing Technique:
+Solar Charm cost and special cost for Sidereal Martial Arts.
+
+!|Set Abilities|
+|traitType|value|
+|Ride|5|
+|MartialArts|5|
+
+!|Set Other Traits|
+|traitType|value|
+|Essence|5|
+
+!|Set Experienced|
+
+!|Toggle Charm Learned|
+|id|
+|Solar.MasterHorseman'sEye|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|10|
+
+!|Set Abilities Favored|
+|abilityType|
+|Ride|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|8|
+
+!|Toggle Charm Learned|
+|id|
+|Sidereal.UnnaturalMany-StepStride|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|23|
+
+!|Set Abilities Favored|
+|abilityType|
+|MartialArts|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|21|

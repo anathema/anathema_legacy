@@ -1,0 +1,33 @@
+!|Set Experienced|
+
+!|Set Abilities|
+|traitType|value|
+|Performance|1|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|3|
+
+!|Set Abilities|
+|traitType|value|
+|Performance|2|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|5|
+
+!|Set Abilities|
+|traitType|value|
+|Performance|3|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|9|
+
+!|Set Abilities Favored|
+|abilityType|
+|Performance|
+
+!|Check Experience Points|
+|getExperiencePointsSpent?|
+|7|
