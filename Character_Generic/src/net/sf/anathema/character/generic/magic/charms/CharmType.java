@@ -3,7 +3,31 @@ package net.sf.anathema.character.generic.magic.charms;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public enum CharmType implements IIdentificate {
-  Simple, ExtraAction, Reflexive, Supplemental, Special;
+  Simple() {
+    public void accept(ICharmTypeVisitor visitor) {
+      visitor.visitSimple(this);
+    }
+  },
+  ExtraAction() {
+    public void accept(ICharmTypeVisitor visitor) {
+      visitor.visitExtraAction(this);
+    }
+  },
+  Reflexive() {
+    public void accept(ICharmTypeVisitor visitor) {
+      visitor.visitReflexive(this);
+    }
+  },
+  Supplemental() {
+    public void accept(ICharmTypeVisitor visitor) {
+      visitor.visitSupplemental(this);
+    }
+  },
+  Special() {
+    public void accept(ICharmTypeVisitor visitor) {
+      visitor.visitSpecial(this);
+    }
+  };
 
   public String getId() {
     return name();
@@ -13,4 +37,6 @@ public enum CharmType implements IIdentificate {
   public String toString() {
     return getId();
   }
+
+  public abstract void accept(ICharmTypeVisitor visitor);
 }
