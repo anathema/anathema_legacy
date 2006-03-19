@@ -13,7 +13,7 @@ CharacterType
 	|	|							\=>Numen
 	|	|	
 	|	\=>Celestial
-	|		|=>Lunar
+	|		|=>Lunar=>Casteless
 	|		|=>Sidereal=>Ronin
 	|		|
 	|		|=>Alchemical	N
