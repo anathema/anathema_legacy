@@ -3,6 +3,7 @@ package net.sf.anathema.charmentry.model.test;
 import net.disy.commons.core.testing.ExceptionConvertingBlock;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.impl.magic.test.DummyMartialArtsCharm;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.charms.CharmType;
@@ -206,7 +207,7 @@ public class CharmEntryModelTest extends BasicTestCase {
 
   public void testGetLegalPrimaryPrerequisitesForAttributeBasedExalt() throws Exception {
     model.setCharacterType(CharacterType.LUNAR);
-    assertEquals(AttributeType.values(), model.getLegalPrimaryPrerequisiteTypes());
+    assertEquals(AbilityType.getAbilityTypes(ExaltedRuleSet.CoreRules), model.getLegalPrimaryPrerequisiteTypes());
   }
 
   public void testSetPrimaryPrerequisiteSetsGroupId() throws Exception {

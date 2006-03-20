@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import net.disy.commons.core.util.StringUtilities;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.charms.CharmType;
@@ -196,7 +197,7 @@ public class CharmEntryModel {
     if (charmData.getCharacterType() == CharacterType.LUNAR) {
       return AttributeType.values();
     }
-    return AbilityType.values();
+    return AbilityType.getAbilityTypes(ExaltedRuleSet.CoreRules);
   }
 
   public void addPrimaryPrerequisiteListener(ITraitSelectionChangedListener listener) {
