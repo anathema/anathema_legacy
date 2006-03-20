@@ -1,5 +1,6 @@
 package net.sf.anathema.character.impl.testing;
 
+import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMartialArtsCharm;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
@@ -36,5 +37,9 @@ public class DummyCharmTemplate implements ICharmTemplate {
 
   public void setMartialArtsLevel(MartialArtsLevel martialArtsLevel) {
     this.martialArtsLevel = martialArtsLevel;
+  }
+
+  public boolean isAllowedAlienCharms(ICasteType caste) {
+    return false;
   }
 }

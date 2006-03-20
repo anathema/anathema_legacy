@@ -2,6 +2,7 @@ package net.sf.anathema.character.impl.model.traits.test;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
+import net.sf.anathema.character.generic.framework.xml.magic.test.DummyCasteType;
 import net.sf.anathema.character.generic.impl.testing.DummyGenericTrait;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
@@ -17,7 +18,6 @@ import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
-import net.sf.anathema.character.library.trait.favorable.test.DummyCasteType;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.specialty.ISpecialty;

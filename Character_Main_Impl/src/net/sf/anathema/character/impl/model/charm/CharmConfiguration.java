@@ -374,7 +374,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   public final boolean isLearnable(ICharm charm) {
     if (isAlienCharm(charm)) {
       ICasteType casteType = getModelContext().getBasicCharacterContext().getCasteType();
-      if (!getModelContext().getAdditionalRules().isAllowedAlienCharms(casteType)) {
+      if (!getCharmTemplate(getNativeCharacterType()).isAllowedAlienCharms(casteType)) {
         return false;
       }
       if (charm.hasAttribute(Charm.NOT_ALIEN_LEARNABLE)) {

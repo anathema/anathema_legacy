@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
+import net.sf.anathema.character.generic.framework.xml.magic.test.DummyCasteType;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.impl.traits.ExaltTraitTemplateFactory;
@@ -18,7 +19,6 @@ import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactor
 import net.sf.anathema.character.impl.testing.BasicCharacterTestCase;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
-import net.sf.anathema.character.library.trait.favorable.test.DummyCasteType;
 
 public abstract class AbstractBonusPointTestCase extends BasicCharacterTestCase {
 

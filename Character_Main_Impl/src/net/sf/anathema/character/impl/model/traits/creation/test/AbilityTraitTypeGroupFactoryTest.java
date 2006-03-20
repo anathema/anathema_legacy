@@ -2,6 +2,7 @@ package net.sf.anathema.character.impl.model.traits.creation.test;
 
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.framework.xml.magic.test.DummyCasteType;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.template.abilities.AbilityGroupType;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
@@ -10,7 +11,6 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.impl.model.traits.creation.AbilityTypeGroupFactory;
-import net.sf.anathema.character.library.trait.favorable.test.DummyCasteType;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
 public class AbilityTraitTypeGroupFactoryTest extends BasicTestCase {
