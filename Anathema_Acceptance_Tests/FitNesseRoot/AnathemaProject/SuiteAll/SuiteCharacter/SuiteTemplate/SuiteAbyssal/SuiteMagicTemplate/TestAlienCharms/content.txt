@@ -1,0 +1,7 @@
+!|Check Alien Charms|
+|caste|isAllowedAlienCharms?|
+|Dusk|false|
+|Midnight|false|
+|Daybreak|false|
+|Day|false|
+|Moonshadow|true|
