@@ -20,6 +20,7 @@ Checking that the ability groups are grouped into Solar Castes.
 |Medicine|Twilight|
 |Occult|Twilight|
 |Athletics|Night|
+|Awareness|Night|
 |Dodge|Night|
 |Larceny|Night|
 |Stealth|Night|
