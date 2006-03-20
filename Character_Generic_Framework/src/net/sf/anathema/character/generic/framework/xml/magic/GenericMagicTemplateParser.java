@@ -1,5 +1,7 @@
 package net.sf.anathema.character.generic.framework.xml.magic;
 
+import java.util.List;
+
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
@@ -32,6 +34,8 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
   private static final String ATTRIB_MAXIMUM_SORCERY_CIRCLE = "maximumSorceryCircle"; //$NON-NLS-1$
   private static final String TAG_FAVORING_TRAIT_TYPE = "favoringTraitType"; //$NON-NLS-1$
   private static final String ATTRIB_MAXIMUM_NECROMANCY_CIRCLE = "maximumNecromancyCircle"; //$NON-NLS-1$
+  private static final String TAG_CASTE = "caste"; //$NON-NLS-1$
+  private static final String TAG_ALIEN_CHARMS = "alienCharms"; //$NON-NLS-1$
 
   public GenericMagicTemplateParser(IXmlTemplateRegistry<GenericMagicTemplate> templateRegistry) {
     super(templateRegistry);
@@ -104,7 +108,21 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
     else {
       charmSet = CharmSet.createRegularCharmSet(CharmCache.getInstance(), CharacterType.getById(charmType));
     }
-    basicTemplate.setCharmTemplate(new CharmTemplate(level, highLevelAtCreation, charmSet));
+    CharmTemplate charmTemplate = new CharmTemplate(level, highLevelAtCreation, charmSet);
+    setAlienAllowedCastes(charmTemplate, charmTemplateElement);
+    basicTemplate.setCharmTemplate(charmTemplate);
+  }
+
+  private void setAlienAllowedCastes(CharmTemplate charmTemplate, Element charmTemplateElement)
+      throws PersistenceException {
+    Element alienCharmsElement = charmTemplateElement.element(TAG_ALIEN_CHARMS);
+    if (alienCharmsElement == null) {
+      return;
+    }
+    List<Element> casteElements = ElementUtilities.elements(alienCharmsElement, TAG_CASTE);
+    for (Element casteElement : casteElements) {
+      charmTemplate.setCasteAlienAllowed(ElementUtilities.getRequiredAttrib(casteElement, ATTRIB_TYPE));
+    }
   }
 
   private void setFreePicksPredicate(GenericMagicTemplate basicTemplate, Element element) throws PersistenceException {

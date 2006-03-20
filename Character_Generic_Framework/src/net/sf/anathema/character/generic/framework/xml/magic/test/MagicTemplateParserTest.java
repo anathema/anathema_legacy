@@ -95,4 +95,14 @@ public class MagicTemplateParserTest extends BasicTestCase {
     assertEquals(FavoringTraitType.AttributeType, template.getFavoringTraitType());
   }
 
+  public void testAlienCharmsAllowed() throws Exception {
+    String typeXml = "<magicTemplate>" //$NON-NLS-1$
+        + "<charmTemplate martialArtsLevel=\"Celestial\" highLevelMartialArts=\"false\" charmType=\"None\">" //$NON-NLS-1$
+        + " <alienCharms> <caste type=\"DummyCaste\"/></alienCharms>" //$NON-NLS-1$
+        + "</charmTemplate>" //$NON-NLS-1$
+        + "</magicTemplate>"; //$NON-NLS-1$
+    Element templateElement = DocumentUtilities.read(typeXml).getRootElement();
+    GenericMagicTemplate template = parser.parseTemplate(templateElement);
+    assertTrue(template.getCharmTemplate().isAllowedAlienCharms(new DummyCasteType("DummyCaste"))); //$NON-NLS-1$
+  }
 }
