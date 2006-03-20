@@ -4,10 +4,10 @@
       <ruleset>CoreRules</ruleset>
       <ruleset>PowerCombat</ruleset>
     </rulesets>
-    <abilityGroups uses="trait/SolarAbilityGroup.template" />
-    <attributeGroups uses="template/DefaultAttributeGroup.template"/>
-    <essence uses="template/DefaultEssence.template" />
-    <traitCollection uses="template/DefaultTraitCollection.template"/>
+    <abilityGroups uses="template/SolarAbilityGroup.template" />
+    <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
+    <essence uses="DefaultEssence.template" />
+    <traitCollection uses="trait/DefaultTraitCollection.template"/>
     <magicTemplate uses="template/SolarMagic.template"/>
     <presentation uses="template/SolarPresentation.template"/>
     <additionalTemplates>
@@ -18,7 +18,7 @@
     </healthTemplate>
   </general>
   <creation>
-    <bonusPointCosts uses="template/DefaultBonusPointCost.template" />
+    <bonusPointCosts uses="DefaultBonusPointCost.template" />
     <creationPoints>
       <attributeDots primary="8" secondary="6" tertiary="4" />
       <abilityDots general="15" favored="10" favoredPicks="5" />
@@ -29,6 +29,6 @@
     </creationPoints>
   </creation>
   <experience>
-    <experiencePointCost uses="template/DefaultExperienceCost.template" />
+    <experiencePointCost uses="experience/DefaultExperienceCost.template" />
   </experience>
 </exaltedCharacterTemplate>

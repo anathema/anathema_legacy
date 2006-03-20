@@ -1,37 +1,37 @@
 <abilityGroups>
   <group id="Dawn">
-    <ability type="Archery" />
-    <ability type="Brawl" />
-    <ability type="MartialArts" />
-    <ability type="Melee" />
-    <ability type="Thrown" />
+    <trait type="Archery" />
+    <trait type="Brawl" />
+    <trait type="MartialArts" />
+    <trait type="Melee" />
+    <trait type="Thrown" />
   </group>
   <group id="Zenith">
-    <ability type="Endurance" />
-    <ability type="Performance" />
-    <ability type="Presence" />
-    <ability type="Resistance" />
-    <ability type="Survival" />
+    <trait type="Endurance" />
+    <trait type="Performance" />
+    <trait type="Presence" />
+    <trait type="Resistance" />
+    <trait type="Survival" />
   </group>
   <group id="Twilight">
-    <ability type="Craft" />
-    <ability type="Investigation" />
-    <ability type="Lore" />
-    <ability type="Medicine" />
-    <ability type="Occult" />
+    <trait type="Craft" />
+    <trait type="Investigation" />
+    <trait type="Lore" />
+    <trait type="Medicine" />
+    <trait type="Occult" />
   </group>
   <group id="Night">
-    <ability type="Athletics" />
-    <ability type="Awareness" />
-    <ability type="Dodge" />
-    <ability type="Larceny" />
-    <ability type="Stealth" />
+    <trait type="Athletics" />
+    <trait type="Awareness" />
+    <trait type="Dodge" />
+    <trait type="Larceny" />
+    <trait type="Stealth" />
   </group>
   <group id="Eclipse">
-    <ability type="Bureaucracy" />
-    <ability type="Linguistics" />  
-    <ability type="Ride" />
-    <ability type="Sail" />
-    <ability type="Socialize" />
+    <trait type="Bureaucracy" />
+    <trait type="Linguistics" />  
+    <trait type="Ride" />
+    <trait type="Sail" />
+    <trait type="Socialize" />
   </group> 
 </abilityGroups>
