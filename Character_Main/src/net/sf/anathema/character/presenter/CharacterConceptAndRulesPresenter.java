@@ -129,7 +129,7 @@ public class CharacterConceptAndRulesPresenter {
 
   private void addRulesPresentation() {
     characterConceptView.addRulesLabel(resources.getString("CharacterType.TextLabel.Intro") + " " + resources.getString(statistics.getCharacterTemplate().getPresentationProperties().getNewActionResource()) + "."); //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$
-    characterConceptView.addRulesLabel(resources.getString("Ruleset.TextLabel.UseIntro") + " " + resources.getString("Ruleset.TextLabel." + statistics.getRules().getId())); //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$    
+    characterConceptView.addRulesLabel(resources.getString("Ruleset.TextLabel.UseIntro") + " " + resources.getString("Ruleset." + statistics.getRules().getId()) + "."); //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$ //$NON-NLS-4$    
   }
 
   private void updateNature(
