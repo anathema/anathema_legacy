@@ -19,7 +19,7 @@ public class GroupedTraitType implements IGroupedTraitType {
     this.casteId = casteId;
   }
 
-  public ITraitType geTraitType() {
+  public ITraitType getTraitType() {
     return type;
   }
 
