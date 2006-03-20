@@ -7,12 +7,11 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.reporting.ICharacterReportConstants;
 import net.sf.anathema.character.generic.framework.reporting.datasource.SpecialtiesDataSource;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.framework.reporting.IReportDataSource;
+import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterParameterUtilities {
 
@@ -89,22 +88,16 @@ public class CharacterParameterUtilities {
     parameterClassesByName.put(ICharacterReportConstants.RULESET, String.class.getName());
   }
 
-  public static final void fillInTemplate(IGenericCharacter character, Map<Object, Object> parameters) {
+  public static final void fillInTemplate(
+      IGenericCharacter character,
+      Map<Object, Object> parameters,
+      IResources resources) {
     parameters.put(ICharacterReportConstants.CHARACTER_TYPE, character.getTemplate()
         .getTemplateType()
         .getCharacterType()
         .getId());
-    final String[] ruleString = new String[1];
-    character.getRules().accept(new IRuleSetVisitor() {
-      public void visitCoreRules(IExaltedRuleSet set) {
-        ruleString[0] = "1st Edition / Core Rules";
-      }
-
-      public void visitPowerCombat(IExaltedRuleSet set) {
-        ruleString[0] = "1st Edition / Power Combat";
-      }
-    });
-    parameters.put(ICharacterReportConstants.RULESET, ruleString[0]);
+    String ruleString = resources.getString("Ruleset." + character.getRules().getId()); //$NON-NLS-1$
+    parameters.put(ICharacterReportConstants.RULESET, ruleString);
   }
 
   public static final void fillInConcept(IGenericCharacter character, Map<Object, Object> parameters) {
