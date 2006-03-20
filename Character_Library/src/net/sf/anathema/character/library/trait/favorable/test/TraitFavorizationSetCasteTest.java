@@ -1,5 +1,6 @@
 package net.sf.anathema.character.library.trait.favorable.test;
 
+import net.sf.anathema.character.generic.framework.xml.magic.test.DummyCasteType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.IModifiableGenericTrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
