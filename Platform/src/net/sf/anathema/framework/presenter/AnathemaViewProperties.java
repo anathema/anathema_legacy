@@ -19,14 +19,8 @@ public class AnathemaViewProperties {
   }
 
   public Icon getSplashImage() {
-    int random = new Random().nextInt(3);
-    if (random == 2) {
-      return resources.getImageIcon("core/AnathemaSplash5.png"); //$NON-NLS-1$
-    }
-    if (random == 1) {
-      return resources.getImageIcon("core/AnathemaSplash4.png"); //$NON-NLS-1$
-    }
-    return resources.getImageIcon("core/AnathemaSplash3.png"); //$NON-NLS-1$
+    int random = new Random().nextInt(4);
+    return resources.getImageIcon("core/AnathemaSplash" + (random + 3) + ".png"); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   public String getDefaultFrameTitle() {
