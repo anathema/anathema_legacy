@@ -38,7 +38,9 @@
 	    </p>	
 	    <h3>Software</h3>
 	    <p>
-	    	<a href="http://www.java.com/">Java Runtime Environment</a>
+	    	<a href="http://java.com/java/download/index.jsp?cid=jdp76178">
+				<img alt="Get Java!" title="Get Java!" src="http://java.com/en/img/everywhere/getjava_med.gif?cid=jdp76178">
+			</a>
 	    <p>
 			<a href="http://www.adobe.com/products/acrobat/readstep2.html">
 				<img alt="Get Adobe Reader!" title="Get Adobe Reader!" src="images/adobe.gif"/>

@@ -3,9 +3,9 @@
 	You can always download the latest public version of Anathema via the sourceforge.net 
 	<a href="http://sourceforge.net/project/showfiles.php?group_id=122320">
 	download system</a>.
-	Anathema is programmed in Java and will run on any system with a compatible Java Virtual Machine.<br/>
+	Anathema is written in Java and will run on any system with a compatible Java Virtual Machine.<br/>
 	Note that at least <a href="http://java.sun.com">Java Runtime Environment</a> 5.0 is required to run the program.<br/>
-	Note also that Anathema is by no means feature complete and that all packages should only be considered preview release.
+	Note also that Anathema is not yet feature complete and that all packages should only be considered preview release.
 </p>
 <p>	
 	Releases come in two flavors, regular, indicated by some Exalted-related name, and patches,
