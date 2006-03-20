@@ -10,7 +10,6 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
 import net.sf.anathema.character.generic.additionalrules.ITraitCostModifier;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
-import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 
 public class DefaultAdditionalRules implements IAdditionalRules {
@@ -56,10 +55,6 @@ public class DefaultAdditionalRules implements IAdditionalRules {
 
   public IAdditionalEssencePool[] getAdditionalEssencePools() {
     return additonalEssencePools.toArray(new IAdditionalEssencePool[additonalEssencePools.size()]);
-  }
-
-  public boolean isAllowedAlienCharms(ICasteType type) {
-    return false;
   }
 
   public ITraitCostModifier getCostModifier(ITraitType type) {
