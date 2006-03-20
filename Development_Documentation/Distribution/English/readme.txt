@@ -123,19 +123,20 @@ The full extent of these options is described in the Anathema installation guide
 		VI - Bugs
 ===------------------------------------------------------------------------------===
 
-Despite our efforts to the contrary, it's most probable that
-Anathema isn't entirely free of bugs. If you should
-encounter any problems, please drop us a note 
-(see Section V - Contact for details) or report it via the
-Sourceforge project site, using the "Bugs" tracker. 
+Despite our efforts to the contrary, it's most probable that Anathema isn't entirely 
+free of bugs. If you should encounter any problems, please drop us a note 
+(see Section V - Contact for details) or report it via the Sourceforge project site, 
+using the "Bugs" tracker. 
 Thanks for helping us improve!
 
 Known Issues:
 ---------------------
-The "merits and flaws" tab changes size when items are selected.
+The Combo rules for Lunar illegally allow for Martial Arts Charms to be comboed with attribute based Charms.
+This will be fixed in the next version.
 
-The Dragon-Blooded "Connections" Background is presently not available in the selection
-box. You can enter it manually, though.
+Sidereals still lack the "Connections" background.
+
+The "Mrits and Flaws" tab changes size when items are selected.
 
 A problem has been reported with re-loading characters after closing them,
 but it seems quite elusive. Please contact us should you encounter this bug.
@@ -189,22 +190,26 @@ can more easily participate.
 		IX - Thank you
 ===------------------------------------------------------------------------------===
 
-Thanks to the cool people pointing out all the large and small bugs.
+Thanks to the everyone pointing out bugs, be they large or small.
 
-Praises go to uteck for his User's Guide, and again to Xanatos for the nice icon.
-Thanks to Weltenreiter and Bluerps, our avid Comma-Monkeys.
+Praises go to Xanatos for the nice icon.
+Kudos to uteck for providing submitting the draft for the User's Guide and his 
+wife for beta testing.
 
 Philip "The_Burrito" Markus provided much of the Necromancy spell and Lunar Charm data.
 Patches did the same for the Dragon Kings.
+Thanks to Weltenreiter and Bluerps who long ago helped organizing the data.
 
 We extend a huge "Thank you" to Mr. Ricardo Rodriguez and Ms. Rafaela Lombardo, 
 who has translated the program and the website, respectively, to spanish.
+Ricardo also deserves to be mentioned for finding innummerable errors & typos within
+both code and database. As I said before: You rock!
 
 At http://hd42.de you can visit Mr. Daniel Hohenberger, who first wrote software to 
 generate charm tree images. Thank you, you saved us lots of work and inspired us to 
 create the fully automated system.
 
-If you are interested in the original version of our advanced character sheets, please
+If you are interested in the original version of our character sheets, please
 visit voidstate at http://www.voidstate.com. Praises to him, too.
 
 

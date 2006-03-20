@@ -9,8 +9,11 @@ http://anathema.sf.net
 ===------------------------------------------------------------------------------===
 
 -- ATTENTION --
-The prerequisite Charms for the Dragon-Blooded Brawl Charm "Bonds of Unbreakable Ice Technique" 
-now correctly include "Riptide Method". This might render previously saved characters invalid.
+There are two issues that might prevent your previously saved character from loading with this version:
+- The prerequisite Charms for the Dragon-Blooded Brawl Charm "Bonds of Unbreakable Ice Technique" 
+now correctly include "Riptide Method". 
+- The combo rules have been corrected and now check whether comboed Extra Action and Supplemental Charms 
+use the same Ability.
 Please contact us if you encounter any problems, we will fix your character file.
 
 -- Features --
@@ -40,6 +43,7 @@ Please contact us if you encounter any problems, we will fix your character file
 * Fixed a problem with the priorization of Attributes with Abyssal Exalted.
 * Abbreviated "Book of Bone & Ebony" to "Bone & Ebony" due to problems with the title's length.
 * Fixed the odd "jumping" in the Sidereal college view.
+* Combo rules fixed: Extra Action and Supplemental Charm must be of the same ability.
 
 -- Charms Fixed (so many they get a category of their own)-- 
 * Artful Maiming Onslaught: Charm Type is  Supplemental. (Bug Report 1421735)
