@@ -20,7 +20,7 @@ public class SpecialtiesDataSource implements IReportDataSource {
 
   public SpecialtiesDataSource(IGenericCharacter character) {
     for (IGroupedTraitType abilityGroup : character.getTemplate().getAbilityGroups()) {
-      ITraitType type = abilityGroup.geTraitType();
+      ITraitType type = abilityGroup.getTraitType();
       for (INamedGenericTrait specialty : character.getSpecialties(type)) {
         if (specialty.getCurrentValue() != 0) {
           abilityTypeBySpecialty.put(specialty, type);
