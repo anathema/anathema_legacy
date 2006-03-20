@@ -5,8 +5,10 @@ import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplat
 import net.sf.anathema.character.generic.framework.xml.registry.test.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.generic.impl.magic.test.DummyMartialArtsCharm;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
+import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
+import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 
@@ -46,6 +48,17 @@ public class MagicTemplateParserTest extends BasicTestCase {
     Element templateElement = DocumentUtilities.read(xml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
     assertFalse(template.getSpellMagic().knowsSpellMagic());
+  }
+
+  public void testParsesMaximumNecromancyCircle() throws Exception {
+    String celestialXml = "<magicTemplate>" + //$NON-NLS-1$
+        "<spellTemplate maximumSorceryCircle=\"Solar\" maximumNecromancyCircle=\"Labyrinth\"/>" //$NON-NLS-1$
+        + "</magicTemplate>"; //$NON-NLS-1$
+    Element templateElement = DocumentUtilities.read(celestialXml).getRootElement();
+    GenericMagicTemplate template = parser.parseTemplate(templateElement);
+    assertTrue(ArrayUtilities.contains(template.getSpellMagic().getNecromancyCircles(), CircleType.Shadowlands));
+    assertTrue(ArrayUtilities.contains(template.getSpellMagic().getNecromancyCircles(), CircleType.Labyrinth));
+    assertFalse(ArrayUtilities.contains(template.getSpellMagic().getNecromancyCircles(), CircleType.Void));
   }
 
   public void testHighLevelSettingUnmodified() throws Exception {

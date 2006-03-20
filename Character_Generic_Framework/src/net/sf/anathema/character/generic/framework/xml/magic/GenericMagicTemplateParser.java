@@ -31,6 +31,7 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
   private static final String TAG_SPELL_TEMPLATE = "spellTemplate"; //$NON-NLS-1$
   private static final String ATTRIB_MAXIMUM_SORCERY_CIRCLE = "maximumSorceryCircle"; //$NON-NLS-1$
   private static final String TAG_FAVORING_TRAIT_TYPE = "favoringTraitType"; //$NON-NLS-1$
+  private static final String ATTRIB_MAXIMUM_NECROMANCY_CIRCLE = "maximumNecromancyCircle"; //$NON-NLS-1$
 
   public GenericMagicTemplateParser(IXmlTemplateRegistry<GenericMagicTemplate> templateRegistry) {
     super(templateRegistry);
@@ -74,7 +75,7 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
     }
     String maximumNecromancyCircleId = ElementUtilities.getRequiredAttrib(
         spellTemplateElement,
-        ATTRIB_MAXIMUM_SORCERY_CIRCLE);
+        ATTRIB_MAXIMUM_NECROMANCY_CIRCLE);
     CircleType maximumNecromancyCircle = null;
     if (!(maximumNecromancyCircleId.equals(VALUE_NONE))) {
       maximumNecromancyCircle = CircleType.valueOf(maximumNecromancyCircleId);
