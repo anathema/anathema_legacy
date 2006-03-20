@@ -28,7 +28,7 @@ public abstract class AbstractTraitTypeGroupFactory {
       if (!groupIds.contains(groupId)) {
         groupIds.add(groupId);
       }
-      traitTypesByGroupId.add(type.getGroupId(), type.geTraitType());
+      traitTypesByGroupId.add(type.getGroupId(), type.getTraitType());
     }
     IIdentifiedCasteTraitTypeGroup[] groups = new IIdentifiedCasteTraitTypeGroup[groupIds.size()];
     for (int groupIndex = 0; groupIndex < groups.length; groupIndex++) {
