@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.template.magic;
 
+import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMartialArtsCharm;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
@@ -19,4 +20,6 @@ public interface ICharmTemplate {
       IMartialArtsCharm martialArtsCharm,
       IGenericCharmConfiguration charmConfiguration,
       boolean isExperienced);
+
+  public boolean isAllowedAlienCharms(ICasteType caste);
 }
