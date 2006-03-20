@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.framework.reporting.datasource;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.framework.reporting.IReportDataSource;
+import net.sf.anathema.lib.resources.IResources;
 
 public class BackgroundsDataSource implements IReportDataSource, ITraitDataSource {
 
@@ -10,8 +11,12 @@ public class BackgroundsDataSource implements IReportDataSource, ITraitDataSourc
 
   private final IGenericTrait[] backgrounds;
 
-  public BackgroundsDataSource(IGenericCharacter character) {
-    this.backgrounds = character.getBackgrounds();
+  public BackgroundsDataSource(IGenericCharacter character, IResources resources) {
+    IGenericTrait[] backgrounds = character.getBackgrounds();
+    IGenericTrait[] sortedBackgrounds = new IGenericTrait[backgrounds.length];
+    I18nedGenericTraitSorter<IGenericTrait> sorter = new I18nedGenericTraitSorter<IGenericTrait>();
+    sorter.sortAscending(backgrounds, sortedBackgrounds, resources);
+    this.backgrounds = sortedBackgrounds;
   }
 
   public int getRowCount() {

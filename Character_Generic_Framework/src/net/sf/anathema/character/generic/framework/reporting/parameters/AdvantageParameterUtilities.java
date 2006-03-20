@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.framework.reporting.IReportDataSource;
+import net.sf.anathema.lib.resources.IResources;
 
 public class AdvantageParameterUtilities {
 
@@ -60,7 +61,7 @@ public class AdvantageParameterUtilities {
     parameters.put(ICharacterReportConstants.ESSENCE_PERSONAL_POOL, character.getPersonalPool());
   }
 
-  public static void fillInBackgrounds(IGenericCharacter character, Map<Object, Object> parameters) {
-    parameters.put(ICharacterReportConstants.BACKGROUND_DATA_SOURCE, new BackgroundsDataSource(character));
+  public static void fillInBackgrounds(IGenericCharacter character, Map<Object, Object> parameters, IResources resources) {
+    parameters.put(ICharacterReportConstants.BACKGROUND_DATA_SOURCE, new BackgroundsDataSource(character, resources));
   }
 }

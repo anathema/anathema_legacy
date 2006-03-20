@@ -53,7 +53,7 @@ public abstract class AbstractStattedCharacterReportTemplate extends AbstractCha
       IGenericCharacter character,
       IGenericDescription description) throws ReportException {
     super.fillInParameters(parameters, character, description);
-    AdvantageParameterUtilities.fillInBackgrounds(character, parameters);
+    AdvantageParameterUtilities.fillInBackgrounds(character, parameters, getResources());
     AdvantageParameterUtilities.fillInEssence(character, parameters);
     AdvantageParameterUtilities.fillInEssencePools(character, parameters);
     AdvantageParameterUtilities.fillInWillpower(character, parameters);
