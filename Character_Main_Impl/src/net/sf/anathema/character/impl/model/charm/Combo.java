@@ -19,7 +19,6 @@ import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
 public class Combo implements ICombo {
-
   private final List<ICharm> charmList = new ArrayList<ICharm>();
   private final List<IComboModelListener> comboModelListeners = new ArrayList<IComboModelListener>();
   private ICharm extraActionCharm = null;
@@ -93,19 +92,15 @@ public class Combo implements ICombo {
       }
       if (extraActionCharm != null) {
         if (!combosAbilityAndAttribute(addedCharm, extraActionCharm)
+            && !combosAttributes(addedCharm, extraActionCharm)
             && !addedComboRules.combosAllAbilities()
             && !extraActionCharm.getComboRules().combosAllAbilities()
             && ofDifferentPrimaryPrerequisite(addedCharm, extraActionCharm)) {
           return false;
         }
       }
-      for (ICharm charm : charmList) {
-        if (charm.getCharmType() == CharmType.Supplemental
-            && !addedComboRules.combosAllAbilities()
-            && !charm.getComboRules().combosAllAbilities()
-            && ofDifferentPrimaryPrerequisite(addedCharm, charm)) {
-          return false;
-        }
+      if (!samePrerequisiteAsSupplementalCharms(addedCharm)) {
+        return false;
       }
     }
     if (addedCharmType == CharmType.ExtraAction) {
@@ -114,28 +109,63 @@ public class Combo implements ICombo {
       }
       if (simpleCharm != null) {
         if (!combosAbilityAndAttribute(addedCharm, simpleCharm)
+            && !combosAttributes(addedCharm, simpleCharm)
             && !addedComboRules.combosAllAbilities()
             && !simpleCharm.getComboRules().combosAllAbilities()
             && ofDifferentPrimaryPrerequisite(addedCharm, simpleCharm)) {
           return false;
         }
       }
+      if (!samePrerequisiteAsSupplementalCharms(addedCharm)) {
+        return false;
+      }
     }
     if (addedCharmType == CharmType.Supplemental) {
       if (simpleCharm != null) {
-        if (!addedComboRules.combosAllAbilities()
+        if (!combosAttributes(addedCharm, simpleCharm)
+            && !addedComboRules.combosAllAbilities()
             && !simpleCharm.getComboRules().combosAllAbilities()
             && ofDifferentPrimaryPrerequisite(addedCharm, simpleCharm)) {
+          return false;
+        }
+      }
+      if (extraActionCharm != null) {
+        if (!combosAbilityAndAttribute(addedCharm, extraActionCharm)
+            && !combosAttributes(addedCharm, extraActionCharm)
+            && !addedComboRules.combosAllAbilities()
+            && !extraActionCharm.getComboRules().combosAllAbilities()
+            && ofDifferentPrimaryPrerequisite(addedCharm, extraActionCharm)) {
           return false;
         }
       }
       for (ICharm charm : charmList) {
         if (charm.getCharmType() == CharmType.Supplemental
+            && !combosAttributes(addedCharm, charm)
             && !addedComboRules.combosAllAbilities()
             && !charm.getComboRules().combosAllAbilities()
             && ofDifferentPrimaryPrerequisite(addedCharm, charm)) {
           return false;
         }
+      }
+    }
+    return true;
+  }
+
+  private boolean combosAttributes(ICharm addedCharm, ICharm presentCharm) {
+    ITraitType addedType = addedCharm.getPrerequisites()[0].getType();
+    ITraitType existingType = presentCharm.getPrerequisites()[0].getType();
+    return (addedType instanceof AttributeType && existingType instanceof AttributeType);
+  }
+
+  private boolean samePrerequisiteAsSupplementalCharms(ICharm addedCharm) {
+    for (ICharm charm : charmList) {
+      if (charm.getCharmType() == CharmType.Supplemental
+          && !combosAttributes(addedCharm, charm)
+          && !combosAbilityAndAttribute(addedCharm, charm)
+          && !addedCharm.getComboRules().combosAllAbilities()
+          && !charm.getComboRules().combosAllAbilities()
+          && ofDifferentPrimaryPrerequisite(addedCharm, charm)) {
+        return false;
       }
     }
     return true;

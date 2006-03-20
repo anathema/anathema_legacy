@@ -59,7 +59,7 @@ public class ComboTest extends BasicTestCase {
     assertFalse(combo.isComboLegal(charm));
   }
 
-  public void testIsLegalDurationType() throws Exception {
+  public void testOnlyInstantDurationCombos() throws Exception {
     assertTrue(combo.isComboLegal(new DummyMartialArtsCharm(DurationType.Instant, CharmType.Reflexive)));
     assertFalse(combo.isComboLegal(new DummyMartialArtsCharm(DurationType.Other, CharmType.Reflexive)));
   }
@@ -94,15 +94,72 @@ public class ComboTest extends BasicTestCase {
     assertTrue(combo.isComboLegal(createCharm(CharmType.Simple, new ValuedTraitType(AttributeType.Appearance, 3))));
   }
 
-  public void testAttributeExtraActionCombosWithAbilitySimpleCharm() throws Exception {
-    combo.addCharm(createCharm(CharmType.Simple, new ValuedTraitType(AbilityType.Archery, 3)));
-    assertTrue(combo.isComboLegal(createCharm(CharmType.ExtraAction, new ValuedTraitType(AttributeType.Dexterity, 3))));
+  public void testAbilitySimpleCharmCombosWithAttributeExtraAction() throws Exception {
+    combo.addCharm(createCharm(CharmType.ExtraAction, new ValuedTraitType(AttributeType.Appearance, 3)));
+    assertTrue(combo.isComboLegal(createCharm(CharmType.Simple, new ValuedTraitType(AbilityType.Archery, 3))));
   }
 
   public void testExtraActionCharmOfSamePrimaryPrerequisiteAsSimple() throws Exception {
     combo.addCharm(createCharm(CharmType.Simple, new ValuedTraitType(AbilityType.Archery, 3)));
     assertTrue(combo.isComboLegal(createCharm(CharmType.ExtraAction, new ValuedTraitType(AbilityType.Archery, 3))));
     assertFalse(combo.isComboLegal(createCharm(CharmType.ExtraAction, new ValuedTraitType(AbilityType.Athletics, 3))));
+  }
+
+  public void testAttributeExtraActionCombosWithAbilitySimpleCharm() throws Exception {
+    combo.addCharm(createCharm(CharmType.Simple, new ValuedTraitType(AbilityType.Archery, 3)));
+    assertTrue(combo.isComboLegal(createCharm(CharmType.ExtraAction, new ValuedTraitType(AttributeType.Dexterity, 3))));
+  }
+
+  public void testExtraActionOfSamePrimaryPrerequisiteAsSupplemental() throws Exception {
+    combo.addCharm(createCharm(CharmType.Supplemental, new ValuedTraitType(AbilityType.Archery, 3)));
+    assertTrue(combo.isComboLegal(createCharm(CharmType.ExtraAction, new ValuedTraitType(AbilityType.Archery, 3))));
+    assertFalse(combo.isComboLegal(createCharm(CharmType.ExtraAction, new ValuedTraitType(AbilityType.Athletics, 3))));
+  }
+
+  public void testAttributeExtraActionCombosWithAbilitySupplemental() throws Exception {
+    combo.addCharm(createCharm(CharmType.Supplemental, new ValuedTraitType(AbilityType.Archery, 3)));
+    assertTrue(combo.isComboLegal(createCharm(CharmType.ExtraAction, new ValuedTraitType(AttributeType.Perception, 3))));
+  }
+
+  public void testSupplementalOfSamePrimaryPrerequisiteAsExtraAction() throws Exception {
+    combo.addCharm(createCharm(CharmType.ExtraAction, new ValuedTraitType(AbilityType.Archery, 3)));
+    assertTrue(combo.isComboLegal(createCharm(CharmType.Supplemental, new ValuedTraitType(AbilityType.Archery, 3))));
+    assertFalse(combo.isComboLegal(createCharm(CharmType.Supplemental, new ValuedTraitType(AbilityType.Athletics, 3))));
+  }
+
+  public void testAbilitySupplementalCombosWithAttributeExtraAction() throws Exception {
+    combo.addCharm(createCharm(CharmType.ExtraAction, new ValuedTraitType(AttributeType.Wits, 3)));
+    assertTrue(combo.isComboLegal(createCharm(CharmType.Supplemental, new ValuedTraitType(AbilityType.Awareness, 3))));
+  }
+
+  public void testAttributeSimpleCombosWithAttributeExtraAction() throws Exception {
+    combo.addCharm(createCharm(CharmType.ExtraAction, new ValuedTraitType(AttributeType.Wits, 3)));
+    assertTrue(combo.isComboLegal(createCharm(CharmType.Simple, new ValuedTraitType(AttributeType.Strength, 3))));
+  }
+
+  public void testAttributeExtraActionCombosWithAttributeSimple() throws Exception {
+    combo.addCharm(createCharm(CharmType.Simple, new ValuedTraitType(AttributeType.Strength, 3)));
+    assertTrue(combo.isComboLegal(createCharm(CharmType.ExtraAction, new ValuedTraitType(AttributeType.Dexterity, 3))));
+  }
+
+  public void testAttributeExtraActionCombosWithAttributeSupplemental() throws Exception {
+    combo.addCharm(createCharm(CharmType.Supplemental, new ValuedTraitType(AttributeType.Strength, 3)));
+    assertTrue(combo.isComboLegal(createCharm(CharmType.ExtraAction, new ValuedTraitType(AttributeType.Dexterity, 3))));
+  }
+
+  public void testAttributeSupplementalCombosWithAttributeExtraAction() throws Exception {
+    combo.addCharm(createCharm(CharmType.ExtraAction, new ValuedTraitType(AttributeType.Wits, 3)));
+    assertTrue(combo.isComboLegal(createCharm(CharmType.Supplemental, new ValuedTraitType(AttributeType.Strength, 3))));
+  }
+
+  public void testAttributeSimpleCombosWithAttributeSupplemental() throws Exception {
+    combo.addCharm(createCharm(CharmType.Supplemental, new ValuedTraitType(AttributeType.Strength, 3)));
+    assertTrue(combo.isComboLegal(createCharm(CharmType.Simple, new ValuedTraitType(AttributeType.Dexterity, 3))));
+  }
+
+  public void testAttributeSupplementalCombosWithAttributeSimple() throws Exception {
+    combo.addCharm(createCharm(CharmType.Simple, new ValuedTraitType(AttributeType.Wits, 3)));
+    assertTrue(combo.isComboLegal(createCharm(CharmType.Supplemental, new ValuedTraitType(AttributeType.Strength, 3))));
   }
 
   public void testExtraActionRestriction() throws Exception {
