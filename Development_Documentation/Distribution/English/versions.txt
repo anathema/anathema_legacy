@@ -3,6 +3,12 @@ Anathema Version History
 Exalted (C) 2001-2005 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
+===------------------------------------------------------------------------------===
+			Release 0.11 "Kether Rock" (Upcoming)
+===------------------------------------------------------------------------------===
+
+-- Miscellaneous --
++ The character's ruleset is now included on the voidstate sheet.
 
 ===------------------------------------------------------------------------------===
 			Release 0.10 "Juche" (19/03/06)
