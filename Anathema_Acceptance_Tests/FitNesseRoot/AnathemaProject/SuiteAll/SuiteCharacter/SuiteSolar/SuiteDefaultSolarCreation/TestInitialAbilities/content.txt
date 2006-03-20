@@ -1,3 +1,0 @@
-Solars have initially value 0 in all abilities.
-
-!include .AnathemaProject.SuiteAll.SuiteCharacter.SnippetCheckDefaultAbilities
