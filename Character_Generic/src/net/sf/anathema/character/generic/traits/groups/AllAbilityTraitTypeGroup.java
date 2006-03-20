@@ -3,8 +3,8 @@ package net.sf.anathema.character.generic.traits.groups;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 
 public class AllAbilityTraitTypeGroup extends TraitTypeGroup {
-  
-  static AllAbilityTraitTypeGroup instance = new AllAbilityTraitTypeGroup();
+
+  private static AllAbilityTraitTypeGroup instance = new AllAbilityTraitTypeGroup();
 
   public static AllAbilityTraitTypeGroup getInstance() {
     return instance;
