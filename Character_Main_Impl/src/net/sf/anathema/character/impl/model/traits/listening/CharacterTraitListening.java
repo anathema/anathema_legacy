@@ -1,6 +1,11 @@
 package net.sf.anathema.character.impl.model.traits.listening;
 
-import net.sf.anathema.character.generic.traits.types.AbilityType;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
@@ -23,7 +28,7 @@ public class CharacterTraitListening {
     this.traitConfiguration = traitConfiguration;
     this.listening = listening;
   }
-  
+
   public void initListening() {
     for (ITrait attribute : traitConfiguration.getTraits(AttributeType.values())) {
       listening.addTraitListening(attribute);
@@ -52,7 +57,11 @@ public class CharacterTraitListening {
   }
 
   private void initAbilityListening() {
-    for (IFavorableTrait ability : traitConfiguration.getFavorableTraits(AbilityType.values())) {
+    List<ITraitType> abilityTypes = new ArrayList<ITraitType>();
+    for (IIdentifiedTraitTypeGroup group : traitConfiguration.getAbilityTypeGroups()) {
+      Collections.addAll(abilityTypes, group.getAllGroupTypes());
+    }
+    for (IFavorableTrait ability : traitConfiguration.getFavorableTraits(abilityTypes.toArray(new ITraitType[abilityTypes.size()]))) {
       listening.addTraitListening(ability);
       ability.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
         public void favorableStateChanged(FavorableState state) {

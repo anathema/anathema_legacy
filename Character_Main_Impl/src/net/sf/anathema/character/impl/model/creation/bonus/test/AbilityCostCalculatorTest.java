@@ -85,6 +85,10 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     }
   }
 
+  private IFavorableTrait[] getAllAbilities() {
+    return traitConfiguration.getAllAbilities();
+  }
+
   public void testPreferFavoredForBonusPoint() throws Exception {
     IFavorableTraitCreationPoints abilityCreationPoints = new FavorableTraitCreationPoints(2, 3, 2);
     IFavorableTrait firstFavored = setFavoredAbilityTo(AbilityType.Melee, 3);
@@ -116,10 +120,6 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
         assertEmptyCosts(calculator, ability);
       }
     }
-  }
-
-  private IFavorableTrait[] getAllAbilities() {
-    return traitConfiguration.getFavorableTraits(AbilityType.values());
   }
 
   public void testGeneralDotsUsedForFavoredAbiltiesOverFavoredDots() throws Exception {

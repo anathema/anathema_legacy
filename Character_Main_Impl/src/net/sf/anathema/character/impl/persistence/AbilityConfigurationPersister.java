@@ -22,7 +22,7 @@ public class AbilityConfigurationPersister extends AbstractCharacterPersister {
 
   public void save(Element parent, ICoreTraitConfiguration configuration) {
     Element abilitiesElement = parent.addElement(TAG_ABILITIES);
-    for (IFavorableTrait ability : configuration.getFavorableTraits(AbilityType.values())) {
+    for (IFavorableTrait ability : configuration.getAllAbilities()) {
       saveAbility(abilitiesElement, ability);
     }
   }

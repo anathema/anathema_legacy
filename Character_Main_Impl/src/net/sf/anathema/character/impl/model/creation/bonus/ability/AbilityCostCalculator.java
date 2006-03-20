@@ -1,12 +1,14 @@
 package net.sf.anathema.character.impl.model.creation.bonus.ability;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.generic.template.experience.IAbilityPointCosts;
 import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalBonusPointManagment;
 import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalSpecialtyBonusPointManagement;
 import net.sf.anathema.character.library.ITraitFavorization;
@@ -16,6 +18,14 @@ import net.sf.anathema.character.library.trait.specialty.ISpecialty;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator implements IAbilityCostCalculator {
+
+  private static IFavorableTrait[] getAllAbilities(ICoreTraitConfiguration traitConfiguration) {
+    List<ITraitType> abilityTypes = new ArrayList<ITraitType>();
+    for (IIdentifiedTraitTypeGroup group : traitConfiguration.getAbilityTypeGroups()) {
+      Collections.addAll(abilityTypes, group.getAllGroupTypes());
+    }
+    return traitConfiguration.getFavorableTraits(abilityTypes.toArray(new ITraitType[abilityTypes.size()]));
+  }
 
   private final IAbilityPointCosts costs;
   private final IFavorableTrait[] abilities;
@@ -28,8 +38,8 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
       IFavorableTraitCreationPoints points,
       IAbilityPointCosts costs,
       IAdditionalBonusPointManagment additionalPools) {
-    super(additionalPools, points, traitConfiguration.getFavorableTraits(AbilityType.values()));
-    this.abilities = traitConfiguration.getFavorableTraits(AbilityType.values());
+    super(additionalPools, points, getAllAbilities(traitConfiguration));
+    this.abilities = getAllAbilities(traitConfiguration);
     this.costs = costs;
     this.additionalPools = additionalPools;
     this.specialtyCalculator = new SpecialtyCalculator(traitConfiguration);

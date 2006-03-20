@@ -1,10 +1,15 @@
 package net.sf.anathema.character.impl.model.advance;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
@@ -33,7 +38,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
 
   public int getAbilityCosts() {
     int experienceCosts = 0;
-    for (IFavorableTrait ability : traitConfiguration.getFavorableTraits(AbilityType.values())) {
+    for (IFavorableTrait ability : getAllAbilities()) {
       experienceCosts += calculator.getAbilityCosts(ability, ability.getFavorization().isCaste()
           || ability.getFavorization().isFavored());
     }
@@ -145,11 +150,19 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
 
   public int getSpecialtyCosts() {
     int experienceCosts = 0;
-    for (IFavorableTrait ability : traitConfiguration.getFavorableTraits(AbilityType.values())) {
+    for (IFavorableTrait ability : getAllAbilities()) {
       experienceCosts += ability.getSpecialtiesContainer().getExperienceLearnedSpecialtyCount()
           * calculator.getSpecialtyCosts(ability.getFavorization().isCasteOrFavored());
     }
     return experienceCosts;
+  }
+
+  private IFavorableTrait[] getAllAbilities() {
+    List<ITraitType> abilityTypes = new ArrayList<ITraitType>();
+    for (IGroupedTraitType type : statistics.getCharacterTemplate().getAbilityGroups()) {
+      abilityTypes.add(type.getTraitType());
+    }
+    return traitConfiguration.getFavorableTraits(AbilityType.values());
   }
 
   @Override
