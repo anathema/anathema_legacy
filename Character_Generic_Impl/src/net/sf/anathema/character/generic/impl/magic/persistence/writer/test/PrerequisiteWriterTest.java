@@ -43,7 +43,7 @@ public class PrerequisiteWriterTest extends BasicTestCase {
     assertEquals(4, ElementUtilities.getRequiredIntAttrib(element.element("prerequisite").element("essence"), "value")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
   }
 
-  public void testTraitPrerquisites() throws Exception {
+  public void testTraitPrerequisites() throws Exception {
     charm.setEssence(new ValuedTraitType(OtherTraitType.Essence, 4));
     charm.setPrerequisites(new ValuedTraitType[] {
         new ValuedTraitType(AbilityType.Archery, 2),
