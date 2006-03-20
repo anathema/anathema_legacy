@@ -12,10 +12,13 @@ public class BackgroundsDataSource implements IReportDataSource, ITraitDataSourc
   private final IGenericTrait[] backgrounds;
 
   public BackgroundsDataSource(IGenericCharacter character, IResources resources) {
-    IGenericTrait[] backgrounds = character.getBackgrounds();
-    IGenericTrait[] sortedBackgrounds = new IGenericTrait[backgrounds.length];
-    I18nedGenericTraitSorter<IGenericTrait> sorter = new I18nedGenericTraitSorter<IGenericTrait>();
-    sorter.sortAscending(backgrounds, sortedBackgrounds, resources);
+    IGenericTrait[] unsortedBackgrounds = character.getBackgrounds();
+    int backgroundCount = unsortedBackgrounds.length;
+    IGenericTrait[] sortedBackgrounds = new IGenericTrait[backgroundCount];
+    if (backgroundCount > 0) {
+      I18nedGenericTraitSorter<IGenericTrait> sorter = new I18nedGenericTraitSorter<IGenericTrait>();
+      sorter.sortAscending(unsortedBackgrounds, sortedBackgrounds, resources);
+    }
     this.backgrounds = sortedBackgrounds;
   }
 
