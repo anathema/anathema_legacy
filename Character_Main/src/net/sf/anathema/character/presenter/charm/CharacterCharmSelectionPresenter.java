@@ -71,7 +71,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   public TabContent init(IMagicViewFactory viewFactory) {
     final ICharmConfiguration charms = getCharmConfiguration();
     final ICharmSelectionView selectionView = viewFactory.createCharmSelectionView(viewProperties);
-    boolean alienCharms = statistics.getCharacterTemplate().getAdditionalRules().isAllowedAlienCharms(
+    boolean alienCharms = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().isAllowedAlienCharms(
         statistics.getCharacterConcept().getCaste().getType());
     createCharmTypeSelector(getCurrentCharmTypes(alienCharms), selectionView, "CharmTreeView.GUI.CharmType"); //$NON-NLS-1$
     this.charmSelectionChangeListener = new CharacterCharmGroupChangeListener(
@@ -118,8 +118,10 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     final ITypedDescription<ICasteType> caste = statistics.getCharacterConcept().getCaste();
     caste.addTypeListener(new IObjectValueChangedListener<ITypedDescriptionType>() {
       public void valueChanged(ITypedDescriptionType oldValue, ITypedDescriptionType newValue) {
-        boolean alienCharms = statistics.getCharacterTemplate().getAdditionalRules().isAllowedAlienCharms(
-            caste.getType());
+        boolean alienCharms = statistics.getCharacterTemplate()
+            .getMagicTemplate()
+            .getCharmTemplate()
+            .isAllowedAlienCharms(caste.getType());
         ICharmConfiguration charmConfiguration = getCharmConfiguration();
         if (!alienCharms) {
           charmConfiguration.unlearnAllAlienCharms();
