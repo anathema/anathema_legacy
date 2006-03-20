@@ -13,7 +13,6 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
 
 public interface IGenericCharacter extends ILimitationContext, IMagicCollection {
 
@@ -27,7 +26,7 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection 
 
   public IGenericTrait[] getBackgrounds();
 
-  public INamedGenericTrait[] getSpecialties(AbilityType abilityType);
+  public INamedGenericTrait[] getSpecialties(ITraitType traitType);
 
   public ICharacterPoints getCharacterPoints();
 
