@@ -1,4 +1,4 @@
-package net.sf.anathema.character.impl.model.charm.test;
+package net.sf.anathema.character.impl.model.charm.combo.test;
 
 import net.sf.anathema.character.generic.impl.magic.test.DummyMartialArtsCharm;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -7,7 +7,8 @@ import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.DurationType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
-import net.sf.anathema.character.impl.model.charm.ComboRules;
+import net.sf.anathema.character.impl.model.charm.combo.ComboRules;
+import net.sf.anathema.character.impl.model.charm.test.DummyCharmUtilities;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
 public class ComboRulesTest extends BasicTestCase {

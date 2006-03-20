@@ -11,6 +11,7 @@ public class AllCharacterImplTests {
     suite.addTest(net.sf.anathema.character.impl.model.creation.bonus.test.AllTests.suite());
     suite.addTest(net.sf.anathema.character.impl.model.creation.bonus.basic.test.AllTests.suite());
     suite.addTest(net.sf.anathema.character.impl.model.charm.test.AllTests.suite());
+    suite.addTest(net.sf.anathema.character.impl.model.charm.combo.test.AllTests.suite());
     suite.addTest(net.sf.anathema.character.model.traits.attributes.test.AllTests.suite());
     suite.addTest(net.sf.anathema.character.impl.model.traits.creation.test.AllTests.suite());
     suite.addTest(net.sf.anathema.character.impl.model.traits.test.AllTests.suite());
