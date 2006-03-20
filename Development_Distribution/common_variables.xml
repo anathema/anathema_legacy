@@ -4,7 +4,7 @@
 	</description>
 
 	<property name="version" value="0.10" />
-	<property name="name" value="Juche (Pre-Release)" />
+	<property name="name" value="Juche" />
 
 	<property name="dist" value="./dist" />
 	<property name="lib" value="./lib" />
