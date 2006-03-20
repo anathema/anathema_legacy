@@ -12,6 +12,7 @@ public class CharacterTemplateResourceProvider implements ICharacterTemplateReso
     {
       put(CharacterType.MORTAL, IIconConstants.MORTAL_BALL);
       put(CharacterType.LUNAR, IIconConstants.LUNAR_BALL);
+      put(CharacterType.SOLAR, IIconConstants.SOLAR_BALL);
     }
   };
 
