@@ -5,11 +5,13 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditiona
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.CharacterGenericsModuleAdapter;
+import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.solar.additional.AdditionalSolarRules;
+import net.sf.anathema.character.solar.caste.SolarCaste;
 import net.sf.anathema.character.solar.reporting.SolarVoidStateReportTemplate;
 import net.sf.anathema.character.solar.template.ISolarSpecialCharms;
 import net.sf.anathema.character.solar.template.SolarTemplate;
@@ -32,12 +34,19 @@ public class SolarCharacterModule extends CharacterGenericsModuleAdapter {
     characterGenerics.getCharmProvider().setSpecialCharms(
         CharacterType.SOLAR,
         new ISpecialCharm[] { ISolarSpecialCharms.OX_BODY_TECHNIQUE });
+    characterGenerics.getAdditionalTemplateParserRegistry().register(
+        SolarVirtueFlawTemplate.ID,
+        new SolarVirtueFlawParser());
+    characterGenerics.getCasteCollectionRegistry().register(
+        CharacterType.SOLAR,
+        new CasteCollection(SolarCaste.values()));
   }
 
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
-    CharmCache charmProvider = CharmCache.getInstance();
-    registerSolarTemplate(characterGenerics.getTemplateRegistry(), charmProvider);
+    registerParsedTemplate(characterGenerics, "template/Solar.template"); //$NON-NLS-1$
+    // CharmCache charmProvider = CharmCache.getInstance();
+    // registerSolarTemplate(characterGenerics.getTemplateRegistry(), charmProvider);
   }
 
   private void registerSolarTemplate(ITemplateRegistry templateRegistry, CharmCache charmProvider) {
