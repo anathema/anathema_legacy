@@ -25,7 +25,6 @@ import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.library.trait.IFavorableTrait;
 import net.sf.anathema.character.library.trait.ITrait;
@@ -95,8 +94,8 @@ public class GenericCharacter implements IGenericCharacter {
     return statistics.getCharacterTemplate();
   }
 
-  public INamedGenericTrait[] getSpecialties(AbilityType abilityType) {
-    return statistics.getTraitConfiguration().getTrait(abilityType).getSpecialtiesContainer().getSpecialties();
+  public INamedGenericTrait[] getSpecialties(ITraitType traitType) {
+    return statistics.getTraitConfiguration().getTrait(traitType).getSpecialtiesContainer().getSpecialties();
   }
 
   public ICasteType getCasteType() {
