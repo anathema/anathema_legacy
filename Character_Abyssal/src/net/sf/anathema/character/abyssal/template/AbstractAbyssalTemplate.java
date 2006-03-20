@@ -21,7 +21,6 @@ import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
-import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -38,7 +37,8 @@ public abstract class AbstractAbyssalTemplate extends AbstractCharacterTemplate 
 
   public AbstractAbyssalTemplate(ICharmCache charmProvider, IAdditionalRules additionalRules)
       throws PersistenceException {
-    ICharmTemplate charmTemplate = new CharmTemplate(MartialArtsLevel.Celestial, charmProvider, CharacterType.ABYSSAL);
+    CharmTemplate charmTemplate = new CharmTemplate(MartialArtsLevel.Celestial, charmProvider, CharacterType.ABYSSAL);
+    charmTemplate.setCasteAlienAllowed(AbyssalCaste.Moonshadow.getId());
     ISpellMagicTemplate spellMagic = new SpellMagicTemplate(new CircleType[] {
         CircleType.Terrestrial,
         CircleType.Celestial }, CircleType.getNecromancyCircles());
