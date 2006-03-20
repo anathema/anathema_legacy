@@ -1,8 +1,11 @@
 package net.sf.anathema.character.impl.model.traits.creation;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
@@ -17,7 +20,14 @@ public class FavoredIncrementChecker implements IIncrementChecker {
       ICharacterTemplate template,
       ICoreTraitConfiguration traitConfiguration) {
     int maxFavoredAbilityCount = template.getCreationPoints().getAbilityCreationPoints().getFavorableTraitCount();
-    return new FavoredIncrementChecker(maxFavoredAbilityCount, AbilityType.values(), traitConfiguration);
+    List<ITraitType> abilityTypes = new ArrayList<ITraitType>();
+    for (IGroupedTraitType traitType : template.getAbilityGroups()) {
+      abilityTypes.add(traitType.getTraitType());
+    }
+    return new FavoredIncrementChecker(
+        maxFavoredAbilityCount,
+        abilityTypes.toArray(new ITraitType[abilityTypes.size()]),
+        traitConfiguration);
   }
 
   public FavoredIncrementChecker(
@@ -31,8 +41,8 @@ public class FavoredIncrementChecker implements IIncrementChecker {
 
   public boolean isValidIncrement(int increment) {
     int count = 0;
-    for (IFavorableTrait ability : getAllTraits()) {
-      if (ability.getFavorization().isFavored()) {
+    for (IFavorableTrait trait : getAllTraits()) {
+      if (trait.getFavorization().isFavored()) {
         count++;
       }
     }
