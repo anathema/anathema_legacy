@@ -15,13 +15,10 @@ import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawModelFactory;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawPersisterFactory;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawViewFactory;
-import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SolarCharacterModule extends CharacterGenericsModuleAdapter {
-
-  private final Logger logger = Logger.getLogger(SolarCharacterModule.class);
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
