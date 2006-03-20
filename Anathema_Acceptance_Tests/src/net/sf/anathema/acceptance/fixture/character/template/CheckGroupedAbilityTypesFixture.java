@@ -15,7 +15,7 @@ public class CheckGroupedAbilityTypesFixture extends AbstractTemplateColumnFixtu
     IGroupedTraitType foundType = ArrayUtilities.find(new Predicate<IGroupedTraitType>() {
       @Override
       public boolean evaluate(IGroupedTraitType input) {
-        return input.geTraitType() == type;
+        return input.getTraitType() == type;
       }
     }, types);
     return foundType.getGroupId();
