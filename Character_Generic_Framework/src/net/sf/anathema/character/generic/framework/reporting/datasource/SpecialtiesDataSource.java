@@ -6,22 +6,24 @@ import java.util.List;
 import java.util.Map;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.framework.reporting.IReportDataSource;
 
 public class SpecialtiesDataSource implements IReportDataSource {
 
   public static final String COLUMN_PRINT_NAME = "PRINT_NAME"; //$NON-NLS-1$
   public static final String COLUMN_VALUE = "VALUE"; //$NON-NLS-1$
-  private final Map<INamedGenericTrait, AbilityType> abilityTypeBySpecialty = new HashMap<INamedGenericTrait, AbilityType>();
+  private final Map<INamedGenericTrait, ITraitType> abilityTypeBySpecialty = new HashMap<INamedGenericTrait, ITraitType>();
   private final List<INamedGenericTrait> specialtyList = new ArrayList<INamedGenericTrait>();
 
   public SpecialtiesDataSource(IGenericCharacter character) {
-    for (AbilityType abilityType : AbilityType.values()) {
-      for (INamedGenericTrait specialty : character.getSpecialties(abilityType)) {
+    for (IGroupedTraitType abilityGroup : character.getTemplate().getAbilityGroups()) {
+      ITraitType type = abilityGroup.geTraitType();
+      for (INamedGenericTrait specialty : character.getSpecialties(type)) {
         if (specialty.getCurrentValue() != 0) {
-          abilityTypeBySpecialty.put(specialty, abilityType);
+          abilityTypeBySpecialty.put(specialty, type);
           specialtyList.add(specialty);
         }
       }
