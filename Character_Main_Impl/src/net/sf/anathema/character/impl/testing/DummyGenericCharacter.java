@@ -24,7 +24,6 @@ import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
 
 public class DummyGenericCharacter implements IGenericCharacter {
 
@@ -63,7 +62,7 @@ public class DummyGenericCharacter implements IGenericCharacter {
     return template;
   }
 
-  public INamedGenericTrait[] getSpecialties(AbilityType abilityType) {
+  public INamedGenericTrait[] getSpecialties(ITraitType type) {
     return new INamedGenericTrait[0];
   }
 
