@@ -24,7 +24,7 @@ public class CharacterParameterUtilities {
   }
 
   public final static void fillInAbilities(IGenericCharacter character, Map<Object, Object> parameters) {
-    for (AbilityType abilityType : AbilityType.values()) {
+    for (AbilityType abilityType : AbilityType.getAbilityTypes(character.getRules())) {
       CharacterParameterUtilities.fillInTrait(character.getTrait(abilityType), parameters);
       Boolean marked = character.isFavoredOrCasteTrait(abilityType);
       parameters.put(abilityType.getId() + "_boolean", marked); //$NON-NLS-1$
