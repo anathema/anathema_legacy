@@ -37,6 +37,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class LunarCharacterModule extends CharacterGenericsModuleAdapter {
 
   public static final String BACKGROUND_ID_HEARTS_BLOOD = "HeartsBlood"; //$NON-NLS-1$
+  public static final String BACKGROUND_ID_HEARTS_BLOOD_HUMAN = "HeartsBloodHuman"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_RENOWN = "Renown"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_CULT = "Cult"; //$NON-NLS-1$
   private static final TemplateType[] lunarTemplateType = new TemplateType[] { new TemplateType(CharacterType.LUNAR) };
@@ -72,6 +73,7 @@ public class LunarCharacterModule extends CharacterGenericsModuleAdapter {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_CULT, lunarTemplateType));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_HEARTS_BLOOD, lunarTemplateType));
+    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_HEARTS_BLOOD_HUMAN, lunarTemplateType));
     backgroundRegistry.add(RENOWN_BACKGROUND_TYPE);
   }
 
