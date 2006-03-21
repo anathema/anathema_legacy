@@ -1,4 +1,4 @@
-package net.sf.anathema.development.reporting.encoder.voidstate.subreports.description;
+package net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability;
 
 import java.util.Map;
 
@@ -9,28 +9,28 @@ import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidState
 import net.sf.anathema.development.reporting.encoder.voidstate.format.VoidstateBasicsEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.util.SubreportUtilities;
 
-public class VoidstateDefaultDescriptionSubreportEncoder extends AbstractPagedCharacterSheetEncoder implements
+public class VoidstateAbilitySetSubreportEncoder extends AbstractPagedCharacterSheetEncoder implements
     IVoidStateFormatConstants {
 
   private final VoidstateBasicsEncoder basicsEncoder;
 
-  public VoidstateDefaultDescriptionSubreportEncoder(VoidstateBasicsEncoder basicsEncoder) {
-    super(SubreportUtilities.createPageFormat(AbstractVoidstateDescriptionPageEncoder.calculateExtents(basicsEncoder)));
+  public VoidstateAbilitySetSubreportEncoder(VoidstateBasicsEncoder basicsEncoder) {
+    super(SubreportUtilities.createPageFormat(VoidstateAbilitySetPageEncoder.calculateExtents(basicsEncoder)));
     this.basicsEncoder = basicsEncoder;
   }
 
   @Override
   protected ICharacterSheetPageEncoder[] getPageEncoders() {
-    return new ICharacterSheetPageEncoder[] { new VoidstateDefaultDescriptionPageEncoder(basicsEncoder) };
+    return new ICharacterSheetPageEncoder[] { new VoidstateAbilitySetPageEncoder(basicsEncoder) };
   }
 
   @Override
   protected void addParameterClasses(Map<String, String> parameterClasses) {
-    AbilityParameterUtilities.addAbilityParameterClasses(parameterClasses);
+    AbilityParameterUtilities.addRevisedAbilityParameterClasses(parameterClasses);
   }
 
   @Override
   protected String getReportName() {
-    return "VoidstateDefaultDescriptionSubreport";
+    return "VoidstateAbilitySetSubreport";
   }
 }

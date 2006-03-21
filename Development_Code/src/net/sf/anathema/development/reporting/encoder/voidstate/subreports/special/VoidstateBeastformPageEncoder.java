@@ -40,7 +40,7 @@ public class VoidstateBeastformPageEncoder extends VoidstateFirstPageEncoder {
       fillInBeastFormParameter(subreportParameterMap, attributeType.getId());
     }
     String subreportParameterName = ExaltVoidstateReportTemplate.PARAM_LUNAR_ATTRIBUTE_SUBREPORT;
-    encodeSubreport(bandElement, boxRectangle, subreportParameterName, null, subreportParameterMap);
+    encodeSubreportWithParameters(bandElement, boxRectangle, subreportParameterName, null, subreportParameterMap);
     return boxRectangle.height;
   }
 
@@ -52,7 +52,7 @@ public class VoidstateBeastformPageEncoder extends VoidstateFirstPageEncoder {
     fillInBeastFormParameter(subreportParameterMap, HealthParameterUtilities.getSoakParameter(HealthType.Bashing));
     fillInBeastFormParameter(subreportParameterMap, HealthParameterUtilities.getSoakParameter(HealthType.Lethal));
     String subreportParameterName = ExaltVoidstateReportTemplate.PARAM_HEALTH_SUBREPORT;
-    encodeSubreport(bandElement, subreportRectangle, subreportParameterName, null, subreportParameterMap);
+    encodeSubreportWithParameters(bandElement, subreportRectangle, subreportParameterName, null, subreportParameterMap);
     return boxRectangle.height;
   }
 
@@ -64,7 +64,7 @@ public class VoidstateBeastformPageEncoder extends VoidstateFirstPageEncoder {
       fillInBeastFormParameter(subreportParameterMap, parameter);
     }
     String subreportParameterName = ExaltVoidstateReportTemplate.PARAM_COMBAT_STATS_SUBREPORT;
-    encodeSubreport(bandElement, boxRectangle, subreportParameterName, null, subreportParameterMap);
+    encodeSubreportWithParameters(bandElement, boxRectangle, subreportParameterName, null, subreportParameterMap);
     return boxRectangle.height;
   }
 
@@ -74,7 +74,7 @@ public class VoidstateBeastformPageEncoder extends VoidstateFirstPageEncoder {
     subreportParameterMap.put(
         ExaltVoidstateReportTemplate.PARAM_BEASTFORM_BRAWL_DATA_SOURCE,
         AbstractMagicUserCharacterReportTemplate.MELEE_WEAPON_DATA_SOURCE);
-    encodeSubreport(parent, bounds, ExaltVoidstateReportTemplate.PARAM_BRAWL_SUBREPORT, null, subreportParameterMap);
+    encodeSubreportWithParameters(parent, bounds, ExaltVoidstateReportTemplate.PARAM_BRAWL_SUBREPORT, null, subreportParameterMap);
   }
 
   private void fillInBeastFormParameter(Map<String, String> subreportParameterMap, String parameter) {

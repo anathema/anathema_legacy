@@ -3,7 +3,7 @@ package net.sf.anathema.development.reporting.encoder.voidstate.subreports.abili
 import java.awt.Point;
 import java.util.Map;
 
-import net.sf.anathema.character.generic.framework.reporting.parameters.CharacterParameterUtilities;
+import net.sf.anathema.character.generic.framework.reporting.parameters.AbilityParameterUtilities;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.development.reporting.encoder.AbstractPagedCharacterSheetEncoder;
 import net.sf.anathema.development.reporting.encoder.ICharacterSheetPageEncoder;
@@ -30,7 +30,7 @@ public class VoidstateAbilitySubreportEncoder extends AbstractPagedCharacterShee
 
   @Override
   protected void addParameterClasses(Map<String, String> parameterClasses) {
-    CharacterParameterUtilities.addAbilityParameterClasses(parameterClasses);
+    AbilityParameterUtilities.addAbilityParameterClasses(parameterClasses);
   }
 
   @Override

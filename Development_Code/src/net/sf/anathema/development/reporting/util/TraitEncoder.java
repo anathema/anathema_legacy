@@ -122,7 +122,7 @@ public class TraitEncoder extends AbstractJasperEncoder {
     return height;
   }
 
-  private int calculateVoidstateDotWidth(int dotCount) {
+  public int calculateVoidstateDotWidth(int dotCount) {
     return (dotsSize + 1) * (dotCount + 2) + PADDING + ((dotCount / 5) + 1) * (dotsSize / 2);
   }
 
@@ -228,7 +228,7 @@ public class TraitEncoder extends AbstractJasperEncoder {
     addShape(parent, TAG_ELLIPSE, VALUE_COLOR_WHITE, x, y, dotsSize, parameterValueString + "<=" + value); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
-  private void addRectanglePair(Element parent, int x, int y, String parameterName) {
+  public void addRectanglePair(Element parent, int x, int y, String parameterName) {
     String parameterValueString = "$P{" + parameterName + "}.booleanValue()"; //$NON-NLS-1$ //$NON-NLS-2$
     addShape(parent, TAG_RECTANGLE, VALUE_COLOR_BLACK, x, y, dotsSize, parameterValueString); //$NON-NLS-1$ //$NON-NLS-2$
     addShape(parent, TAG_RECTANGLE, VALUE_COLOR_WHITE, x, y, dotsSize, "!" + parameterValueString); //$NON-NLS-1$ //$NON-NLS-2$

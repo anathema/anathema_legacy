@@ -3,11 +3,13 @@ package net.sf.anathema.development.reporting.encoder.voidstate.traits;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+import net.sf.anathema.character.generic.framework.reporting.IAbilityReportConstants;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.impl.model.traits.creation.AbilityTypeGroupFactory;
 import net.sf.anathema.development.reporting.encoder.voidstate.columns.IOneColumnEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants;
+import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateAbilitySetPageEncoder;
 import net.sf.anathema.development.reporting.util.AbilitiesEncoder;
 import net.sf.anathema.development.reporting.util.AbstractJasperEncoder;
 import net.sf.anathema.development.reporting.util.TraitEncoder;
@@ -28,22 +30,19 @@ public class VoidStateAbilityEncoder extends AbstractJasperEncoder implements IV
   }
 
   private IIdentifiedTraitTypeGroup[] createAbilityGroups(ICharacterTemplate template) {
-    return new AbilityTypeGroupFactory().createTraitGroups(
-        template.getCasteCollection(),
-        template.getAbilityGroups());
+    return new AbilityTypeGroupFactory().createTraitGroups(template.getCasteCollection(), template.getAbilityGroups());
   }
 
   public int encodeAbilites(Element bandElement, ICharacterTemplate template, Point position) {
     Rectangle boxRectangle = calculateAbilityExtents(position);
     Rectangle textRectangle = basicsEncoder.encodeBoxAndQuotifyHeader(bandElement, boxRectangle, "Abilities");
-    int abilityHeight = 0;
-    for (IIdentifiedTraitTypeGroup abilityGroup : createAbilityGroups(template)) {
-      if (abilityHeight != 0) {
-        abilityHeight += TEXT_PADDING;
-      }
-      abilityHeight += encodeAbilityGroup(bandElement, textRectangle, abilityHeight, abilityGroup);
-    }
-    abilityHeight += TEXT_PADDING;
+
+    Rectangle abilityRectangle = VoidstateAbilitySetPageEncoder.calculateExtents(basicsEncoder);
+    abilityRectangle.y = textRectangle.y;
+    String subreportParameterName = IAbilityReportConstants.SUBREPORT_ABILITY_SET;
+    encodeSubreport(bandElement, abilityRectangle, subreportParameterName);
+    int abilityHeight = abilityRectangle.height;
+    // abilityHeight += TEXT_PADDING;
     abilityHeight += encodeSpecialties(bandElement, textRectangle, abilityHeight);
     encodeCrossComment(bandElement, textRectangle, abilityHeight);
     return boxRectangle.height;

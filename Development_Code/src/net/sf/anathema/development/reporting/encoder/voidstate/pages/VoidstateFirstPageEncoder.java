@@ -687,7 +687,7 @@ public class VoidstateFirstPageEncoder extends AbstractVoidstatePageEncoder {
     for (AttributeType attributeType : AttributeType.values()) {
       subreportParameterMap.put(attributeType.getId(), attributeType.getId());
     }
-    encodeSubreport(bandElement, boxRectangle, subreportParameterName, null, subreportParameterMap);
+    encodeSubreportWithParameters(bandElement, boxRectangle, subreportParameterName, null, subreportParameterMap);
     return boxRectangle.height;
   }
 

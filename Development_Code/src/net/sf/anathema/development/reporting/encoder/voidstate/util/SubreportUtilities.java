@@ -4,10 +4,10 @@ import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.Rectangle;
 
-import org.dom4j.Element;
-
 import net.sf.anathema.development.reporting.encoder.page.IPageFormat;
 import net.sf.anathema.development.reporting.util.ParameterUtilities;
+
+import org.dom4j.Element;
 
 public class SubreportUtilities {
 
@@ -37,9 +37,13 @@ public class SubreportUtilities {
   private static final String TAG_SUBREPORT_PARAMETER_EXPRESSION = "subreportParameterExpression";
 
   public static void addSubreportParameter(Element subreportElement, String originalParameter, String subreportParameter) {
+    addSubreportExpression(subreportElement, ParameterUtilities.parameterString(originalParameter), subreportParameter);
+  }
+
+  public static void addSubreportExpression(Element subreportElement, String expression, String subreportParameter) {
     Element element = subreportElement.addElement(TAG_SUBREPORT_PARAMETER);
     element.addAttribute(ATTRIB_SUBREPORT_PARAMETER_NAME, subreportParameter);
     Element expressionElement = element.addElement(TAG_SUBREPORT_PARAMETER_EXPRESSION);
-    expressionElement.addCDATA(ParameterUtilities.parameterString(originalParameter));
+    expressionElement.addCDATA(expression);
   }
 }

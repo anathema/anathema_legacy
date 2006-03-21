@@ -281,10 +281,10 @@ public class AbstractJasperEncoder implements IJasperXmlConstants {
       Rectangle bounds,
       String subreportParameterName,
       String dataSourceName) {
-    encodeSubreport(bandElement, bounds, subreportParameterName, dataSourceName, null);
+    encodeSubreportWithParameters(bandElement, bounds, subreportParameterName, dataSourceName, null);
   }
 
-  protected final void encodeSubreport(
+  protected final void encodeSubreportWithParameters(
       Element bandElement,
       Rectangle bounds,
       String subreportParameterName,
@@ -296,6 +296,32 @@ public class AbstractJasperEncoder implements IJasperXmlConstants {
     if (subreportParameterMap != null) {
       for (String originalKey : subreportParameterMap.keySet()) {
         SubreportUtilities.addSubreportParameter(subreportElement, originalKey, subreportParameterMap.get(originalKey));
+      }
+    }
+    if (dataSourceName != null) {
+      Element dataSourceElement = subreportElement.addElement("dataSourceExpression");
+      dataSourceElement.addCDATA(ParameterUtilities.parameterString(dataSourceName));
+    }
+    Element subreportExpression = subreportElement.addElement("subreportExpression");
+    subreportExpression.addAttribute(ATTRIB_CLASS, JasperReport.class.getName());
+    subreportExpression.addCDATA(ParameterUtilities.parameterString(subreportParameterName));
+  }
+
+  protected final void encodeSubreportWithExpressions(
+      Element bandElement,
+      Rectangle bounds,
+      String subreportParameterName,
+      String dataSourceName,
+      Map<String, String> subreportExpressionMap) {
+    Element subreportElement = bandElement.addElement("subreport");
+    addReportElement(subreportElement, bounds);
+    subreportElement.addElement("parametersMapExpression").addCDATA("new HashMap($P{REPORT_PARAMETERS_MAP})");
+    if (subreportExpressionMap != null) {
+      for (String originalKey : subreportExpressionMap.keySet()) {
+        SubreportUtilities.addSubreportExpression(
+            subreportElement,
+            originalKey,
+            subreportExpressionMap.get(originalKey));
       }
     }
     if (dataSourceName != null) {
