@@ -46,6 +46,12 @@ public class LunarVoidstateSubreports extends DefaultVoidstateSubreports {
     return loadSystemResource(abilitySubreportResourceLocation);
   }
 
+  @Override
+  public InputStream loadAbilitySetSubreport() {
+    String abilitySubreportResourceLocation = FILE_BASE + "VoidstateThreeGroupAbilitySetSubreport.jasper"; //$NON-NLS-1$
+    return loadSystemResource(abilitySubreportResourceLocation);
+  }
+
   public InputStream loadLunarAttributeSubreport() {
     String subreportResourceLocation = FILE_BASE + "VoidstateBeastformAttributeSubreport.jasper"; //$NON-NLS-1$;
     return loadSystemResource(subreportResourceLocation);
