@@ -11,9 +11,12 @@ import net.sf.anathema.development.reporting.encoder.page.IPageFormat;
 import net.sf.anathema.development.reporting.encoder.page.PageFormat;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.VoidstateBasicsEncoder;
-import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateAbilityGroupSubreportEncoder;
-import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateAbilitySetSubreportEncoder;
+import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateAbilitySubreportEncoder;
+import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateFiveAbilityGroupSubreportEncoder;
+import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateFiveGroupAbilitySetSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateSingleAbilitySubreportEncoder;
+import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateTenAbilityGroupSubreportEncoder;
+import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateThreeGroupAbilitySetSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.anima.VoidstateAbyssalAnimaSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.anima.VoidstateDbAnimaSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.anima.VoidstateLunarAnimaSubreportEncoder;
@@ -38,6 +41,7 @@ import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middle
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middlecolumn.virtues.VoidstateVirtuesSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middlecolumn.willpower.VoidstateBeastformWillpowerSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middlecolumn.willpower.VoidstateDefaultWillpowerSubreportEncoder;
+import net.sf.anathema.development.reporting.encoder.voidstate.traits.VoidStateAbilityEncoder;
 import net.sf.anathema.development.reporting.util.TraitEncoder;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 
@@ -54,7 +58,7 @@ public class ReportBuilder {
       IVoidStateFormatConstants.FONT_SIZE);
 
   public static void main(String[] args) {
-//    buildReportDesign(new File("VoidStateCharacterSheet.xml"), new VoidstateSheetEncoder()); //$NON-NLS-1$
+    // buildReportDesign(new File("VoidStateCharacterSheet.xml"), new VoidstateSheetEncoder()); //$NON-NLS-1$
     // buildReportDesign(new File("VoidstateNullPage.xml"), new VoidstateNullPageSubreportEncoder()); //$NON-NLS-1$
     // buildReportDesign(new File("VoidstateBeastformPage.xml"), new VoidstateBeastformSubreportEncoder());
     // //$NON-NLS-1$
@@ -150,30 +154,22 @@ public class ReportBuilder {
   }
 
   private static void createAbilitySubreports() {
-//    VoidStateAbilityEncoder abiltyEncoder = new VoidStateAbilityEncoder(basicsEncoder, traitEncoder);
-//    buildReportDesign(new File("VoidStateSolarAbilitySubreport.xml"), new VoidstateAbilitySubreportEncoder(
-//        CharacterType.SOLAR,
-//        abiltyEncoder)); //$NON-NLS-1$
-    // buildReportDesign(new File("VoidStateDbAbilitySubreport.xml"), new VoidstateAbilitySubreportEncoder(
-    // CharacterType.DB,
-    // abiltyEncoder)); //$NON-NLS-1$
-    // buildReportDesign(new File("VoidStateLunarAbilitySubreport.xml"), new VoidstateAbilitySubreportEncoder(
-    // CharacterType.LUNAR,
-    // abiltyEncoder)); //$NON-NLS-1$
-    // buildReportDesign(new File("VoidStateAbyssalAbilitySubreport.xml"), new VoidstateAbilitySubreportEncoder(
-    // CharacterType.ABYSSAL,
-    // abiltyEncoder)); //$NON-NLS-1$
-    // buildReportDesign(new File("VoidStateSiderealAbilitySubreport.xml"), new VoidstateAbilitySubreportEncoder(
-    // CharacterType.SIDEREAL,
-    // abiltyEncoder)); //$NON-NLS-1$
+    VoidStateAbilityEncoder abilityEncoder = new VoidStateAbilityEncoder(basicsEncoder, traitEncoder);
+    buildReportDesign(new File("VoidstateAbilitySubreport.xml"), new VoidstateAbilitySubreportEncoder(abilityEncoder)); //$NON-NLS-1$
     buildReportDesign(new File("VoidstateSingleAbilitySubreport.xml"), new VoidstateSingleAbilitySubreportEncoder(
         basicsEncoder,
         traitEncoder)); //$NON-NLS-1$
-     buildReportDesign(new File("VoidstateAbilityGroupSubreport.xml"), new VoidstateAbilityGroupSubreportEncoder(
+    buildReportDesign(
+        new File("VoidstateFiveAbilityGroupSubreport.xml"),
+        new VoidstateFiveAbilityGroupSubreportEncoder(basicsEncoder)); //$NON-NLS-1$
+    buildReportDesign(new File("VoidstateTenAbilityGroupSubreport.xml"), new VoidstateTenAbilityGroupSubreportEncoder(
         basicsEncoder)); //$NON-NLS-1$
-    buildReportDesign(new File("VoidstateAbilitySetSubreport.xml"), new VoidstateAbilitySetSubreportEncoder(
-        basicsEncoder)); //$NON-NLS-1$
-
+    buildReportDesign(
+        new File("VoidstateThreeGroupAbilitySetSubreport.xml"),
+        new VoidstateThreeGroupAbilitySetSubreportEncoder(basicsEncoder)); //$NON-NLS-1$
+    buildReportDesign(
+        new File("VoidstateFiveGroupAbilitySetSubreport.xml"),
+        new VoidstateFiveGroupAbilitySetSubreportEncoder(basicsEncoder)); //$NON-NLS-1$
   }
 
   private static void buildReportDesign(File file, IReportEncoder encoder) {

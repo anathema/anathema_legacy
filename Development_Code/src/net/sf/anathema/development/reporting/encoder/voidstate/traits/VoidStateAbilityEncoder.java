@@ -4,16 +4,12 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 import net.sf.anathema.character.generic.framework.reporting.IAbilityReportConstants;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.impl.model.traits.creation.AbilityTypeGroupFactory;
 import net.sf.anathema.development.reporting.encoder.voidstate.columns.IOneColumnEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants;
-import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateAbilitySetPageEncoder;
+import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateFiveGroupAbilitySetPageEncoder;
 import net.sf.anathema.development.reporting.util.AbilitiesEncoder;
 import net.sf.anathema.development.reporting.util.AbstractJasperEncoder;
 import net.sf.anathema.development.reporting.util.TraitEncoder;
-import net.sf.anathema.framework.reporting.encoding.TextEncoding;
 
 import org.dom4j.Element;
 
@@ -29,16 +25,15 @@ public class VoidStateAbilityEncoder extends AbstractJasperEncoder implements IV
     this.abilitiesEncoder = new AbilitiesEncoder(traitEncoder);
   }
 
-  public int encodeAbilites(Element bandElement, ICharacterTemplate template, Point position) {
+  public int encodeAbilites(Element bandElement, Point position) {
     Rectangle boxRectangle = calculateAbilityExtents(position);
     Rectangle textRectangle = basicsEncoder.encodeBoxAndQuotifyHeader(bandElement, boxRectangle, "Abilities");
 
-    Rectangle abilityRectangle = VoidstateAbilitySetPageEncoder.calculateExtents(basicsEncoder);
+    Rectangle abilityRectangle = VoidstateFiveGroupAbilitySetPageEncoder.calculateExtents(basicsEncoder);
     abilityRectangle.y = textRectangle.y;
     String subreportParameterName = IAbilityReportConstants.SUBREPORT_ABILITY_SET;
     encodeSubreport(bandElement, abilityRectangle, subreportParameterName);
     int abilityHeight = abilityRectangle.height;
-    // abilityHeight += TEXT_PADDING;
     abilityHeight += encodeSpecialties(bandElement, textRectangle, abilityHeight);
     encodeCrossComment(bandElement, textRectangle, abilityHeight);
     return boxRectangle.height;
@@ -46,24 +41,6 @@ public class VoidStateAbilityEncoder extends AbstractJasperEncoder implements IV
 
   public Rectangle calculateAbilityExtents(Point position) {
     return basicsEncoder.createOneColumnBoxBoundsWithTitle(30, 5, position);
-  }
-
-  private int encodeAbilityGroup(
-      Element bandElement,
-      Rectangle textBounds,
-      int yOffset,
-      IIdentifiedTraitTypeGroup abilityGroup) {
-    int originalYOffset = yOffset;
-    Point groupPosition = new Point(textBounds.x + LINE_HEIGHT, textBounds.y + yOffset);
-    int groupWidth = textBounds.width - LINE_HEIGHT;
-    int groupHeight = abilitiesEncoder.encodeAbilityGroup(bandElement, abilityGroup, groupPosition, groupWidth, true);
-    Element textField = TextEncoding.addTextFieldElement(bandElement);
-    addReportElement(textField, textBounds.x, textBounds.y + yOffset, LINE_HEIGHT, groupHeight);
-    TextEncoding.addVerticalTextElement(textField, FONT_SIZE, VALUE_CENTER);
-    // NOTE: Größere Fontsize wirft den gesamten Bogen durcheinander. Warum?
-    TextEncoding.addTextFieldExpression(textField, quotify((abilityGroup.getGroupId().getId())));
-    yOffset += groupHeight;
-    return yOffset - originalYOffset;
   }
 
   private int encodeCrossComment(Element bandElement, Rectangle textBounds, int yOffset) {

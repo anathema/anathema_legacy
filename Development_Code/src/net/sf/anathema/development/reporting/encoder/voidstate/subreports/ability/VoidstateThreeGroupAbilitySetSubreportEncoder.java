@@ -9,19 +9,19 @@ import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidState
 import net.sf.anathema.development.reporting.encoder.voidstate.format.VoidstateBasicsEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.util.SubreportUtilities;
 
-public class VoidstateAbilitySetSubreportEncoder extends AbstractPagedCharacterSheetEncoder implements
+public class VoidstateThreeGroupAbilitySetSubreportEncoder extends AbstractPagedCharacterSheetEncoder implements
     IVoidStateFormatConstants {
 
   private final VoidstateBasicsEncoder basicsEncoder;
 
-  public VoidstateAbilitySetSubreportEncoder(VoidstateBasicsEncoder basicsEncoder) {
-    super(SubreportUtilities.createPageFormat(VoidstateAbilitySetPageEncoder.calculateExtents(basicsEncoder)));
+  public VoidstateThreeGroupAbilitySetSubreportEncoder(VoidstateBasicsEncoder basicsEncoder) {
+    super(SubreportUtilities.createPageFormat(AbstractVoidstateAbilitySetPageEncoder.calculateExtents(basicsEncoder)));
     this.basicsEncoder = basicsEncoder;
   }
 
   @Override
   protected ICharacterSheetPageEncoder[] getPageEncoders() {
-    return new ICharacterSheetPageEncoder[] { new VoidstateAbilitySetPageEncoder(basicsEncoder) };
+    return new ICharacterSheetPageEncoder[] { new VoidstateThreeGroupAbilitySetPageEncoder(basicsEncoder) };
   }
 
   @Override
@@ -31,6 +31,6 @@ public class VoidstateAbilitySetSubreportEncoder extends AbstractPagedCharacterS
 
   @Override
   protected String getReportName() {
-    return "VoidstateAbilitySetSubreport";
+    return "VoidstateThreeGroupAbilitySetSubreport";
   }
 }

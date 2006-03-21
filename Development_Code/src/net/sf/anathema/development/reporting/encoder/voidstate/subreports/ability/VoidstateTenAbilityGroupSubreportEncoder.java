@@ -11,19 +11,19 @@ import net.sf.anathema.development.reporting.encoder.voidstate.util.SubreportUti
 import net.sf.anathema.framework.reporting.IReportDataSource;
 import net.sf.jasperreports.engine.JasperReport;
 
-public class VoidstateAbilityGroupSubreportEncoder extends AbstractPagedCharacterSheetEncoder implements
+public class VoidstateTenAbilityGroupSubreportEncoder extends AbstractPagedCharacterSheetEncoder implements
     IVoidStateFormatConstants {
 
   private final VoidstateBasicsEncoder basicsEncoder;
 
-  public VoidstateAbilityGroupSubreportEncoder(VoidstateBasicsEncoder basicsEncoder) {
-    super(SubreportUtilities.createPageFormat(VoidstateAbilityGroupPageEncoder.calculateExtents(basicsEncoder, 5)));
+  public VoidstateTenAbilityGroupSubreportEncoder(VoidstateBasicsEncoder basicsEncoder) {
+    super(SubreportUtilities.createPageFormat(VoidstateTenAbilityGroupPageEncoder.calculateExtents(basicsEncoder)));
     this.basicsEncoder = basicsEncoder;
   }
 
   @Override
   protected ICharacterSheetPageEncoder[] getPageEncoders() {
-    return new ICharacterSheetPageEncoder[] { new VoidstateAbilityGroupPageEncoder(basicsEncoder, 5) };
+    return new ICharacterSheetPageEncoder[] { new VoidstateTenAbilityGroupPageEncoder(basicsEncoder) };
   }
 
   @Override
@@ -35,6 +35,6 @@ public class VoidstateAbilityGroupSubreportEncoder extends AbstractPagedCharacte
 
   @Override
   protected String getReportName() {
-    return "VoidstateAbilityGroupSubreport";
+    return "VoidstateTenAbilityGroupSubreport";
   }
 }

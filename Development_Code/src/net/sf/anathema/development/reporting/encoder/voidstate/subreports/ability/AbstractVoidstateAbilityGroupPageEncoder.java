@@ -15,13 +15,13 @@ import net.sf.anathema.framework.reporting.encoding.TextEncoding;
 
 import org.dom4j.Element;
 
-public class VoidstateAbilityGroupPageEncoder extends AbstractCharacterSheetPageEncoder implements
+public abstract class AbstractVoidstateAbilityGroupPageEncoder extends AbstractCharacterSheetPageEncoder implements
     IVoidStateFormatConstants {
 
   private final VoidstateBasicsEncoder encoder;
   private final int abilityCount;
 
-  public VoidstateAbilityGroupPageEncoder(VoidstateBasicsEncoder basicsEncoder, int abilityCount) {
+  public AbstractVoidstateAbilityGroupPageEncoder(VoidstateBasicsEncoder basicsEncoder, int abilityCount) {
     this.encoder = basicsEncoder;
     this.abilityCount = abilityCount;
   }
@@ -65,11 +65,7 @@ public class VoidstateAbilityGroupPageEncoder extends AbstractCharacterSheetPage
         + methodCall("getValue", new Object[] { currentRow, quotify(columnName) });
   }
 
-  public String getGroupName() {
-    return "VoidstateAbilityGroupSubreport";
-  }
-
-  public static Rectangle calculateExtents(VoidstateBasicsEncoder basicsEncoder, int abilityCount) {
+  protected static Rectangle calculateExtents(VoidstateBasicsEncoder basicsEncoder, int abilityCount) {
     return new Rectangle(basicsEncoder.getSingleColumnWidth() - 2 * VoidStateBoxEncoder.TEXT_INSET, LINE_HEIGHT
         * abilityCount);
   }
