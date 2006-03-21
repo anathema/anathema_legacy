@@ -169,8 +169,12 @@ public class ExaltVoidstateReportTemplate extends DefaultExaltCharacterReportTem
         subreports.loadAbilitySetSubreport());
     addSubreportParameter(
         parameters,
-        IAbilityReportConstants.SUBREPORT_ABILITY_GROUP,
-        subreports.loadAbilityGroupSubreport());
+        IAbilityReportConstants.SUBREPORT_FIVE_ABILITY_GROUP,
+        subreports.loadFiveAbilityGroupSubreport());
+    addSubreportParameter(
+        parameters,
+        IAbilityReportConstants.SUBREPORT_TEN_ABILITY_GROUP,
+        subreports.loadTenAbilityGroupSubreport());
     addSubreportParameter(
         parameters,
         IAbilityReportConstants.SUBREPORT_SINGLE_ABILITY,

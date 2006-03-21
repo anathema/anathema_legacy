@@ -22,7 +22,8 @@ public class AbilityParameterUtilities {
   public static void addRevisedAbilityParameterClasses(Map<String, String> parameterClassesByName) {
     parameterClassesByName.put(IAbilityReportConstants.PARAM_ABILITYSET_DATASOURCE, IReportDataSource.class.getName());
     parameterClassesByName.put(IAbilityReportConstants.SUBREPORT_ABILITY_SET, JasperReport.class.getName());
-    parameterClassesByName.put(IAbilityReportConstants.SUBREPORT_ABILITY_GROUP, JasperReport.class.getName());
+    parameterClassesByName.put(IAbilityReportConstants.SUBREPORT_FIVE_ABILITY_GROUP, JasperReport.class.getName());
+    parameterClassesByName.put(IAbilityReportConstants.SUBREPORT_TEN_ABILITY_GROUP, JasperReport.class.getName());
     parameterClassesByName.put(IAbilityReportConstants.SUBREPORT_SINGLE_ABILITY, JasperReport.class.getName());
   }
 

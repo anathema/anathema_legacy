@@ -12,6 +12,7 @@ public interface IAbilityReportConstants {
   public static final String PARAM_ABILITYSET_DATASOURCE = "Abilityset_Datasource"; //$NON-NLS-1$
 
   public static final String SUBREPORT_SINGLE_ABILITY = "Single_Ability_Subreport"; //$NON-NLS-1$
-  public static final String SUBREPORT_ABILITY_GROUP = "Ability_Group_Subreport"; //$NON-NLS-1$
+  public static final String SUBREPORT_FIVE_ABILITY_GROUP = "Five_Ability_Group_Subreport"; //$NON-NLS-1$
+  public static final String SUBREPORT_TEN_ABILITY_GROUP = "Ten_Ability_Group_Subreport"; //$NON-NLS-1$
   public static final String SUBREPORT_ABILITY_SET = "Ability_Set_Subreport"; //$NON-NLS-1$
 }

@@ -11,7 +11,9 @@ public interface IVoidstateSubreports {
 
   public InputStream loadAbilitySetSubreport();
 
-  public InputStream loadAbilityGroupSubreport();
+  public InputStream loadFiveAbilityGroupSubreport();
+
+  public InputStream loadTenAbilityGroupSubreport();
 
   public InputStream loadSingleAbilitySubreport();
 

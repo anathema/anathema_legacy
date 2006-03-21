@@ -24,18 +24,22 @@ public class DefaultVoidstateSubreports implements IVoidstateSubreports {
   }
 
   public InputStream loadAbilitySubreport() {
-    String abilitySubreportResourceLocation = FILE_BASE
-        + "VoidState" + getCharacterTypeName() + "AbilitySubreport.jasper"; //$NON-NLS-1$ //$NON-NLS-2$
+    String abilitySubreportResourceLocation = FILE_BASE + "VoidstateAbilitySubreport.jasper"; //$NON-NLS-1$
     return loadSystemResource(abilitySubreportResourceLocation);
   }
 
   public InputStream loadAbilitySetSubreport() {
-    String abilitySubreportResourceLocation = FILE_BASE + "VoidstateAbilitySetSubreport.jasper"; //$NON-NLS-1$
+    String abilitySubreportResourceLocation = FILE_BASE + "VoidstateFiveGroupAbilitySetSubreport.jasper"; //$NON-NLS-1$
     return loadSystemResource(abilitySubreportResourceLocation);
   }
 
-  public InputStream loadAbilityGroupSubreport() {
-    String abilitySubreportResourceLocation = FILE_BASE + "VoidstateAbilityGroupSubreport.jasper"; //$NON-NLS-1$
+  public InputStream loadFiveAbilityGroupSubreport() {
+    String abilitySubreportResourceLocation = FILE_BASE + "VoidstateFiveAbilityGroupSubreport.jasper"; //$NON-NLS-1$
+    return loadSystemResource(abilitySubreportResourceLocation);
+  }
+
+  public InputStream loadTenAbilityGroupSubreport() {
+    String abilitySubreportResourceLocation = FILE_BASE + "VoidstateTenAbilityGroupSubreport.jasper"; //$NON-NLS-1$
     return loadSystemResource(abilitySubreportResourceLocation);
   }
 
