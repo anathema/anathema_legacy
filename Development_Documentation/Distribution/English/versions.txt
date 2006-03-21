@@ -9,8 +9,11 @@ http://anathema.sf.net
 
 -- Miscellaneous --
 + The character's ruleset is now included on the voidstate sheet.
+* Fixed calculation for Lunar attribute points.
+* Fixed printing, was broken for all character types but Lunars (1453475:Problem with pdf export)
 * Backgrounds are sorted alphabetically on the character sheets.
-* Lunars are able to learn Shadowlands circle Necromancy
+* Lunars are able to learn Shadowlands circle Necromancy.
+
 
 ===------------------------------------------------------------------------------===
 			Release 0.10 "Juche" (19/03/06)
