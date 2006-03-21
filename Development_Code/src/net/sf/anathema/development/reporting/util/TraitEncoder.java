@@ -1,13 +1,11 @@
 package net.sf.anathema.development.reporting.util;
 
-import java.awt.Point;
 import java.awt.Rectangle;
 
 import net.sf.anathema.character.generic.framework.reporting.ICharacterReportConstants;
 import net.sf.anathema.character.generic.framework.reporting.datasource.BackgroundsDataSource;
 import net.sf.anathema.character.generic.framework.reporting.datasource.ITraitDataSource;
 import net.sf.anathema.character.generic.framework.reporting.datasource.SpecialtiesDataSource;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
 
 import org.dom4j.Element;
 
@@ -97,39 +95,15 @@ public class TraitEncoder extends AbstractJasperEncoder {
     return height;
   }
 
-  public int encodeWithRectangleAndStar(
-      Element parent,
-      String booleanParameterName,
-      String intParameterName,
-      Point position,
-      int width,
-      int dotCount) {
-    int x = position.x;
-    int y = position.y;
-    int textWidth = width - calculateVoidstateDotWidth(dotCount);
-    if (intParameterName.equals(AbilityType.Larceny.getId())
-        || intParameterName.equals(AbilityType.Athletics.getId())
-        || intParameterName.equals(AbilityType.Stealth.getId())
-        || intParameterName.equals(AbilityType.Dodge.getId())
-        || intParameterName.equals(AbilityType.Ride.getId())) {
-      addCross(parent, x, (height - dotsSize - 1) + y);
-    }
-    x += dotsSize + 2;
-    addRectanglePair(parent, x, (height - dotsSize - 1) + y, booleanParameterName);
-    x += dotsSize + 2;
-    addTextElement(parent, quotify(intParameterName), fontSize, VALUE_LEFT, x, y, textWidth, height); //$NON-NLS-1$
-    encodeWithoutText(parent, intParameterName, x + textWidth + PADDING - 2, y, dotCount, true);
-    return height;
-  }
-
   public int calculateVoidstateDotWidth(int dotCount) {
     return (dotsSize + 1) * (dotCount + 2) + PADDING + ((dotCount / 5) + 1) * (dotsSize / 2);
   }
 
-  public void addCross(Element parent, int x, int y) {
+  public Element[] encodeCross(Element parent, int x, int y) {
     Element[] star = new Element[2];
     star[0] = addNormalLineElement(parent, new Rectangle(x + 1, y + dotsSize / 2, dotsSize - 2, 0));
     star[1] = addNormalLineElement(parent, new Rectangle(x + dotsSize / 2, y + 1, 0, dotsSize - 2));
+    return star;
   }
 
   public int encodeSpecialtyRow(Element parent, int currentRow, int x, int y, int width, int dotCount) {

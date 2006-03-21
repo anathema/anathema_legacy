@@ -52,14 +52,11 @@ public class VoidstateSingleAbilityPageEncoder extends AbstractCharacterSheetPag
   }
 
   public void addCross(Element parent, int x, int y) {
-    int dotsSize = traitEncoder.getDotSize();
-    Element[] star = new Element[2];
-    star[0] = addNormalLineElement(parent, new Rectangle(x + 1, y + dotsSize / 2, dotsSize - 2, 0));
-    star[1] = addNormalLineElement(parent, new Rectangle(x + dotsSize / 2, y + 1, 0, dotsSize - 2));
-    for (Element starElement : star) {
+    Element[] cross = traitEncoder.encodeCross(parent, x, y);
+    for (Element crossElement : cross) {
       String printWhenExpression = ParameterUtilities.parameterString(IAbilityReportConstants.PARAM_PRINT_CROSS)
           + methodCall("booleanValue");
-      addPrintWhenExpression(starElement, printWhenExpression);
+      addPrintWhenExpression(crossElement, printWhenExpression);
     }
   }
 

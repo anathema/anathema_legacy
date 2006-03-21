@@ -6,7 +6,7 @@ import java.awt.Rectangle;
 import net.sf.anathema.character.generic.framework.reporting.IAbilityReportConstants;
 import net.sf.anathema.development.reporting.encoder.voidstate.columns.IOneColumnEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants;
-import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateFiveGroupAbilitySetPageEncoder;
+import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.AbstractVoidstateAbilitySetPageEncoder;
 import net.sf.anathema.development.reporting.util.AbilitiesEncoder;
 import net.sf.anathema.development.reporting.util.AbstractJasperEncoder;
 import net.sf.anathema.development.reporting.util.TraitEncoder;
@@ -28,8 +28,7 @@ public class VoidStateAbilityEncoder extends AbstractJasperEncoder implements IV
   public int encodeAbilites(Element bandElement, Point position) {
     Rectangle boxRectangle = calculateAbilityExtents(position);
     Rectangle textRectangle = basicsEncoder.encodeBoxAndQuotifyHeader(bandElement, boxRectangle, "Abilities");
-
-    Rectangle abilityRectangle = VoidstateFiveGroupAbilitySetPageEncoder.calculateExtents(basicsEncoder);
+    Rectangle abilityRectangle = AbstractVoidstateAbilitySetPageEncoder.calculateExtents(basicsEncoder);
     abilityRectangle.y = textRectangle.y;
     String subreportParameterName = IAbilityReportConstants.SUBREPORT_ABILITY_SET;
     encodeSubreport(bandElement, abilityRectangle, subreportParameterName);
@@ -44,7 +43,7 @@ public class VoidStateAbilityEncoder extends AbstractJasperEncoder implements IV
   }
 
   private int encodeCrossComment(Element bandElement, Rectangle textBounds, int yOffset) {
-    traitEncoder.addCross(bandElement, textBounds.x, textBounds.y + yOffset + 4);
+    traitEncoder.encodeCross(bandElement, textBounds.x, textBounds.y + yOffset + 4);
     String comment = quotify(": This ability is commonly affected by mobility penalty");
     Rectangle commentBounds = new Rectangle(textBounds.x + 7, textBounds.y + yOffset, textBounds.width, LINE_HEIGHT);
     addTextElement(bandElement, comment, FONT_SIZE - 2, VALUE_LEFT, commentBounds);

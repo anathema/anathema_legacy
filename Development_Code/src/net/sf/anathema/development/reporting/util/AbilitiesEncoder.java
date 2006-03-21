@@ -19,31 +19,15 @@ public class AbilitiesEncoder extends AbstractJasperEncoder {
     this.traitEncoder = encoder;
   }
 
-  public int encodeAbilityGroup(
-      Element parent,
-      IIdentifiedTraitTypeGroup group,
-      Point position,
-      int width,
-      boolean showMobilityStar) {
+  public int encodeAbilityGroup(Element parent, IIdentifiedTraitTypeGroup group, Point position, int width) {
     int height = 0;
     ITraitType[] traitTypes = group.getAllGroupTypes();
     for (int index = 0; index < traitTypes.length; index++) {
       String id = traitTypes[index].getId();
       Point traitPosition = new Point(position.x, position.y + (index * traitEncoder.getLineHeight()));
-      if (showMobilityStar) {
-        height += traitEncoder.encodeWithRectangleAndStar(
-            parent,
-            id + "_boolean",
-            id,
-            traitPosition,
-            width,
-            TraitEncoder.MAX_DOT_COUNT);
-      }
-      else {
-        height += traitEncoder.encodeWithRectangle(
-            parent,
-            id + "_boolean", id, traitPosition.x, traitPosition.y, width, TraitEncoder.MAX_DOT_COUNT); //$NON-NLS-1$
-      }
+      height += traitEncoder.encodeWithRectangle(
+          parent,
+          id + "_boolean", id, traitPosition.x, traitPosition.y, width, TraitEncoder.MAX_DOT_COUNT); //$NON-NLS-1$
     }
     return height;
   }
@@ -59,7 +43,7 @@ public class AbilitiesEncoder extends AbstractJasperEncoder {
     addTextElement(parent, quotify(group.getGroupId().getId()), 8, VALUE_CENTER, x, y, width, headerHeight);
     height += headerHeight;
     y += headerHeight;
-    height += encodeAbilityGroup(parent, group, new Point(x, y), width, false);
+    height += encodeAbilityGroup(parent, group, new Point(x, y), width);
     return height;
   }
 
