@@ -68,8 +68,5 @@ Charms
 
 PRIO 3:
 - Concepts and Campaigns may have CharacterSettings
-- Guide user upon changing castes during character creation
-  => Remove excess Favoreds // "Smart chosing of Favoreds"
 - Change-Delta-Log 
 - Kapselung der Erzeugung von Cardview und Overview in eine Methode
-- Empty Character Sheet erzeugen

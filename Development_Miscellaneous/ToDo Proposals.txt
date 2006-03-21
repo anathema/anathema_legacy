@@ -1,7 +1,7 @@
 Ricardo
 -Allow selection of favored character type
 -Forest witches
--Character type / rules on the sheet
+-Character type on the sheet
 -Restrict the charmgroups in the charms section to those with charms available / ability learned
 -In load screen, display type or even the concept
 -i18n for sourcebooks / pages differ by national settings
