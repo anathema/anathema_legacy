@@ -94,7 +94,7 @@ public class DefaultVoidstateSubreports implements IVoidstateSubreports {
   }
 
   public InputStream loadDescriptionSubreport() {
-    String descriptionSubreportResourceLocation = FILE_BASE + "VoidStateDefaultDescriptionSubreport.jasper"; //$NON-NLS-1$;
+    String descriptionSubreportResourceLocation = FILE_BASE + "VoidstateDefaultDescriptionSubreport.jasper"; //$NON-NLS-1$;
     return loadSystemResource(descriptionSubreportResourceLocation);
   }
 
