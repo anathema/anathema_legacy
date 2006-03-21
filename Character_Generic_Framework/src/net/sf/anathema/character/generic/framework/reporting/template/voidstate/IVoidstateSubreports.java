@@ -9,6 +9,12 @@ public interface IVoidstateSubreports {
 
   public InputStream loadAbilitySubreport();
 
+  public InputStream loadAbilitySetSubreport();
+
+  public InputStream loadAbilityGroupSubreport();
+
+  public InputStream loadSingleAbilitySubreport();
+
   public InputStream loadFlawSubreport();
 
   public InputStream loadAnimaSubreport();

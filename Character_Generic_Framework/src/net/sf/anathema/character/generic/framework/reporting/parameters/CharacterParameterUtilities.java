@@ -6,31 +6,11 @@ import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.reporting.ICharacterReportConstants;
-import net.sf.anathema.character.generic.framework.reporting.datasource.SpecialtiesDataSource;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.framework.reporting.IReportDataSource;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterParameterUtilities {
-
-  public static void addAbilityParameterClasses(Map<String, String> parameterClassesByName) {
-    for (AbilityType abilityType : AbilityType.values()) {
-      parameterClassesByName.put(abilityType.getId(), Integer.class.getName());
-      parameterClassesByName.put(abilityType.getId() + "_boolean", Boolean.class.getName()); //$NON-NLS-1$
-    }
-    parameterClassesByName.put(ICharacterReportConstants.SPECIALTIES_DATA_SOURCE, IReportDataSource.class.getName());
-  }
-
-  public final static void fillInAbilities(IGenericCharacter character, Map<Object, Object> parameters) {
-    for (AbilityType abilityType : AbilityType.getAbilityTypes(character.getRules())) {
-      CharacterParameterUtilities.fillInTrait(character.getTrait(abilityType), parameters);
-      Boolean marked = character.isFavoredOrCasteTrait(abilityType);
-      parameters.put(abilityType.getId() + "_boolean", marked); //$NON-NLS-1$
-    }
-    parameters.put(ICharacterReportConstants.SPECIALTIES_DATA_SOURCE, new SpecialtiesDataSource(character));
-  }
 
   public final static void fillInTrait(IGenericTrait trait, Map<Object, Object> parameters) {
     parameters.put(trait.getType().getId(), new Integer(trait.getCurrentValue()));

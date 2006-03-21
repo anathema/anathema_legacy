@@ -33,6 +33,6 @@ public interface ICharacterReportConstants {
   public static final String PAIN_TOLERANCE_4 = "painTolerance_at_4"; //$NON-NLS-1$
   public static final String CHARACTER_TYPE = "characterType"; //$NON-NLS-1$
   public static final String PRINT_SPECIAL_PAGE = "printSpecialPage"; //$NON-NLS-1$
-  public static final String RULESET = "ruleSet";
+  public static final String RULESET = "ruleSet"; //$NON-NLS-1$
 
 }

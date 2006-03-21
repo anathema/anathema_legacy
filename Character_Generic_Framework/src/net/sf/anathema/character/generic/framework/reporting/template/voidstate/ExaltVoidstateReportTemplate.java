@@ -6,6 +6,7 @@ import java.util.Map;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.IWeaponType;
+import net.sf.anathema.character.generic.framework.reporting.IAbilityReportConstants;
 import net.sf.anathema.character.generic.framework.reporting.ICharacterReportConstants;
 import net.sf.anathema.character.generic.framework.reporting.datasource.MeleeWeaponDataSource;
 import net.sf.anathema.character.generic.framework.reporting.parameters.CombatParameterUtilities;
@@ -161,6 +162,20 @@ public class ExaltVoidstateReportTemplate extends DefaultExaltCharacterReportTem
       throws ReportException {
     super.fillInExtendedParameters(parameters, character);
     addSubreportParameter(parameters, PARAM_ATTRIBUTE_SUBREPORT, subreports.loadAttributeSubreport());
+    addSubreportParameter(parameters, PARAM_ABILITY_SUBREPORT, subreports.loadAbilitySubreport());
+    addSubreportParameter(
+        parameters,
+        IAbilityReportConstants.SUBREPORT_ABILITY_SET,
+        subreports.loadAbilitySetSubreport());
+    addSubreportParameter(
+        parameters,
+        IAbilityReportConstants.SUBREPORT_ABILITY_GROUP,
+        subreports.loadAbilityGroupSubreport());
+    addSubreportParameter(
+        parameters,
+        IAbilityReportConstants.SUBREPORT_SINGLE_ABILITY,
+        subreports.loadSingleAbilitySubreport());
+    addSubreportParameter(parameters, PARAM_ABILITY_SUBREPORT, subreports.loadAbilitySubreport());
     addSubreportParameter(parameters, PARAM_ABILITY_SUBREPORT, subreports.loadAbilitySubreport());
     addSubreportParameter(parameters, PARAM_COMBAT_STATS_SUBREPORT, subreports.loadCombatStatsSubreport());
     addSubreportParameter(parameters, PARAM_MIDDLECOLUMN_SUBREPORT, subreports.loadMiddleColumnSubreport());

@@ -5,6 +5,7 @@ import java.util.Map;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.reporting.datasource.MeritsAndFlawsDataSource;
+import net.sf.anathema.character.generic.framework.reporting.parameters.AbilityParameterUtilities;
 import net.sf.anathema.character.generic.framework.reporting.parameters.AdvantageParameterUtilities;
 import net.sf.anathema.character.generic.framework.reporting.parameters.CharacterParameterUtilities;
 import net.sf.anathema.character.generic.framework.reporting.parameters.CombatParameterUtilities;
@@ -30,7 +31,7 @@ public abstract class AbstractStattedCharacterReportTemplate extends AbstractCha
     AdvantageParameterUtilities.addEssencePoolParameterClasses(parameterClassesByName);
     AdvantageParameterUtilities.addWillpowerParameterClasses(parameterClassesByName);
     AdvantageParameterUtilities.addVirtueParameterClasses(parameterClassesByName);
-    CharacterParameterUtilities.addAbilityParameterClasses(parameterClassesByName);
+    AbilityParameterUtilities.addAbilityParameterClasses(parameterClassesByName);
     CharacterParameterUtilities.addAttributeParameterClasses(parameterClassesByName);
     CombatParameterUtilities.addCombatStatsParameterClasses(parameterClassesByName);
     CharacterParameterUtilities.addExperienceParameterClasses(parameterClassesByName);
@@ -58,7 +59,7 @@ public abstract class AbstractStattedCharacterReportTemplate extends AbstractCha
     AdvantageParameterUtilities.fillInEssencePools(character, parameters);
     AdvantageParameterUtilities.fillInWillpower(character, parameters);
     AdvantageParameterUtilities.fillInVirtues(character, parameters);
-    CharacterParameterUtilities.fillInAbilities(character, parameters);
+    AbilityParameterUtilities.fillInAbilities(character, parameters, getResources());
     CharacterParameterUtilities.fillInAttributes(character, parameters);
     CombatParameterUtilities.fillInCombatStats(character, character.getRules(), parameters);
     CharacterParameterUtilities.fillExperienceParameters(parameters, character);
