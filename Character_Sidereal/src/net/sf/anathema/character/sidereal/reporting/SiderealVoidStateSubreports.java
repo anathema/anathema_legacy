@@ -13,7 +13,7 @@ public class SiderealVoidStateSubreports extends DefaultVoidstateSubreports {
 
   @Override
   public InputStream loadDescriptionSubreport() {
-    String descriptionSubreportResourceLocation = FILE_BASE + "VoidStateSIDEREALDescriptionSubreport.jasper"; //$NON-NLS-1$
+    String descriptionSubreportResourceLocation = FILE_BASE + "VoidstateSiderealDescriptionSubreport.jasper"; //$NON-NLS-1$
     return loadSystemResource(descriptionSubreportResourceLocation);
   }
 }
