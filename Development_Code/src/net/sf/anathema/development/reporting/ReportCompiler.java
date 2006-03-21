@@ -13,14 +13,14 @@ public class ReportCompiler {
     // xmlFiles.add(new File("BasicMortalCharacterSheet.xml"));
     // xmlFiles.add(new File("BasicSolarCharacterSheet.xml"));
 
-    xmlFiles.add(new File("VoidStateCharacterSheet.xml"));
+    // xmlFiles.add(new File("VoidStateCharacterSheet.xml"));
     // xmlFiles.add(new File("VoidstateNullPage.xml"));
     // xmlFiles.add(new File("VoidstateBeastformPage.xml"));
     // xmlFiles.add(new File("VoidstateVirtuesSubreport.xml"));
     // xmlFiles.add(new File("VoidstateDefaultAttributeSubreport.xml"));
-    // xmlFiles.add(new File("VoidstateSingleAbilitySubreport.xml"));
+    xmlFiles.add(new File("VoidstateSingleAbilitySubreport.xml"));
     xmlFiles.add(new File("VoidstateAbilityGroupSubreport.xml"));
-    // xmlFiles.add(new File("VoidstateAbilitySetSubreport.xml"));
+    xmlFiles.add(new File("VoidstateAbilitySetSubreport.xml"));
     // xmlFiles.add(new File("VoidstateBeastformAttributeSubreport.xml"));
     // xmlFiles.add(new File("VoidstateDefaultWillpowerSubreport.xml"));
     // xmlFiles.add(new File("VoidstateDefaultWillpowerSubreport.xml"));
@@ -55,7 +55,7 @@ public class ReportCompiler {
     // xmlFiles.add(new File("VoidstateLunarHealthSubreport.xml"));
     // xmlFiles.add(new File("VoidstateLunarDescriptionSubreport.xml"));
 
-    xmlFiles.add(new File("VoidStateSolarAbilitySubreport.xml"));
+    // xmlFiles.add(new File("VoidStateSolarAbilitySubreport.xml"));
     // xmlFiles.add(new File("VoidStateSolarAnimaSubreport.xml"));
     // xmlFiles.add(new File("VoidStateSolarFlawSubreport.xml"));
     // File[] xmlFiles = new File(".").listFiles(new XMLFilter(false));

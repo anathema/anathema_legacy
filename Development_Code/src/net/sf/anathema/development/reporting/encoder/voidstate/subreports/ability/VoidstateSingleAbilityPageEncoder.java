@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.framework.reporting.IAbilityReportConst
 import net.sf.anathema.development.reporting.encoder.AbstractCharacterSheetPageEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.VoidstateBasicsEncoder;
+import net.sf.anathema.development.reporting.encoder.voidstate.util.VoidStateBoxEncoder;
 import net.sf.anathema.development.reporting.util.ParameterUtilities;
 import net.sf.anathema.development.reporting.util.TraitEncoder;
 
@@ -28,7 +29,7 @@ public class VoidstateSingleAbilityPageEncoder extends AbstractCharacterSheetPag
     int x = 0;
     int y = 0;
     int dotsSize = traitEncoder.getDotSize();
-    int width = calculateExtents(encoder).width;
+    int width = calculateExtents(encoder).width - 2;
     int textWidth = width - traitEncoder.calculateVoidstateDotWidth(dotCount);
     addCross(bandElement, x, (LINE_HEIGHT - dotsSize - 1) + y);
     x += dotsSize + 2;
@@ -67,6 +68,8 @@ public class VoidstateSingleAbilityPageEncoder extends AbstractCharacterSheetPag
   }
 
   public static Rectangle calculateExtents(VoidstateBasicsEncoder basicsEncoder) {
-    return new Rectangle(basicsEncoder.getSingleColumnWidth() - LINE_HEIGHT, LINE_HEIGHT);
+    return new Rectangle(
+        basicsEncoder.getSingleColumnWidth() - LINE_HEIGHT - 2 * VoidStateBoxEncoder.TEXT_INSET,
+        LINE_HEIGHT);
   }
 }

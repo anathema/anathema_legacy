@@ -12,6 +12,8 @@ import net.sf.anathema.development.reporting.encoder.page.PageFormat;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.VoidstateBasicsEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateAbilityGroupSubreportEncoder;
+import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateAbilitySetSubreportEncoder;
+import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateSingleAbilitySubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.anima.VoidstateAbyssalAnimaSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.anima.VoidstateDbAnimaSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.anima.VoidstateLunarAnimaSubreportEncoder;
@@ -164,13 +166,13 @@ public class ReportBuilder {
     // buildReportDesign(new File("VoidStateSiderealAbilitySubreport.xml"), new VoidstateAbilitySubreportEncoder(
     // CharacterType.SIDEREAL,
     // abiltyEncoder)); //$NON-NLS-1$
-//    buildReportDesign(new File("VoidstateSingleAbilitySubreport.xml"), new VoidstateSingleAbilitySubreportEncoder(
-//        basicsEncoder,
-//        traitEncoder)); //$NON-NLS-1$
-    buildReportDesign(new File("VoidstateAbilityGroupSubreport.xml"), new VoidstateAbilityGroupSubreportEncoder(
+    buildReportDesign(new File("VoidstateSingleAbilitySubreport.xml"), new VoidstateSingleAbilitySubreportEncoder(
+        basicsEncoder,
+        traitEncoder)); //$NON-NLS-1$
+     buildReportDesign(new File("VoidstateAbilityGroupSubreport.xml"), new VoidstateAbilityGroupSubreportEncoder(
         basicsEncoder)); //$NON-NLS-1$
-    // buildReportDesign(new File("VoidstateAbilitySetSubreport.xml"), new VoidstateAbilitySetSubreportEncoder(
-    // basicsEncoder)); //$NON-NLS-1$
+    buildReportDesign(new File("VoidstateAbilitySetSubreport.xml"), new VoidstateAbilitySetSubreportEncoder(
+        basicsEncoder)); //$NON-NLS-1$
 
   }
 

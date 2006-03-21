@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.framework.reporting.datasource.AbilityG
 import net.sf.anathema.development.reporting.encoder.AbstractCharacterSheetPageEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.VoidstateBasicsEncoder;
+import net.sf.anathema.development.reporting.encoder.voidstate.util.VoidStateBoxEncoder;
 import net.sf.anathema.development.reporting.util.ParameterUtilities;
 import net.sf.anathema.framework.reporting.encoding.TextEncoding;
 
@@ -69,6 +70,7 @@ public class VoidstateAbilityGroupPageEncoder extends AbstractCharacterSheetPage
   }
 
   public static Rectangle calculateExtents(VoidstateBasicsEncoder basicsEncoder, int abilityCount) {
-    return new Rectangle(basicsEncoder.getSingleColumnWidth(), LINE_HEIGHT * abilityCount);
+    return new Rectangle(basicsEncoder.getSingleColumnWidth() - 2 * VoidStateBoxEncoder.TEXT_INSET, LINE_HEIGHT
+        * abilityCount);
   }
 }

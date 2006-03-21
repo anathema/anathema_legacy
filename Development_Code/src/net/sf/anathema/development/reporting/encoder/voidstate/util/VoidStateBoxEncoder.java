@@ -8,7 +8,7 @@ import org.dom4j.Element;
 
 public class VoidStateBoxEncoder extends AbstractJasperEncoder {
 
-  private static final int TEXT_INSET = 5;
+  public static final int TEXT_INSET = 5;
   private final int radius;
   private int titleHeight;
 
@@ -20,7 +20,7 @@ public class VoidStateBoxEncoder extends AbstractJasperEncoder {
   public Rectangle encodeWithTitle(Element bandElement, Rectangle bounds, String titleText) {
     Rectangle rectangle = encodeWithoutTitle(bandElement, bounds);
     encodeTitle(bandElement, bounds, titleText);
-    return rectangle; 
+    return rectangle;
   }
 
   public Rectangle encodeWithoutTitle(Element bandElement, Rectangle bounds) {

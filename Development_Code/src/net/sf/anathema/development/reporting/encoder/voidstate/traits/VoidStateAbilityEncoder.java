@@ -29,10 +29,6 @@ public class VoidStateAbilityEncoder extends AbstractJasperEncoder implements IV
     this.abilitiesEncoder = new AbilitiesEncoder(traitEncoder);
   }
 
-  private IIdentifiedTraitTypeGroup[] createAbilityGroups(ICharacterTemplate template) {
-    return new AbilityTypeGroupFactory().createTraitGroups(template.getCasteCollection(), template.getAbilityGroups());
-  }
-
   public int encodeAbilites(Element bandElement, ICharacterTemplate template, Point position) {
     Rectangle boxRectangle = calculateAbilityExtents(position);
     Rectangle textRectangle = basicsEncoder.encodeBoxAndQuotifyHeader(bandElement, boxRectangle, "Abilities");

@@ -11,6 +11,7 @@ import net.sf.anathema.development.reporting.encoder.AbstractCharacterSheetPageE
 import net.sf.anathema.development.reporting.encoder.voidstate.columns.IOneColumnEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.VoidstateBasicsEncoder;
+import net.sf.anathema.development.reporting.encoder.voidstate.util.VoidStateBoxEncoder;
 import net.sf.anathema.development.reporting.util.ParameterUtilities;
 
 import org.dom4j.Element;
@@ -27,7 +28,7 @@ public class VoidstateAbilitySetPageEncoder extends AbstractCharacterSheetPageEn
   public int encodeBand(Element bandElement) {
     Rectangle boxRectangle = calculateExtents(encoder);
     Rectangle abilityRect = VoidstateAbilityGroupPageEncoder.calculateExtents(encoder, 5);
-    abilityRect.x = boxRectangle.x;
+    abilityRect.x = boxRectangle.x + VoidStateBoxEncoder.TEXT_INSET;
     int abilityHeight = 0;
     for (int currentGroup = 0; currentGroup < 5; currentGroup++) {
       abilityRect.y = abilityHeight;
