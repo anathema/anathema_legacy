@@ -30,7 +30,7 @@ public class CharmDataSource implements IReportDataSource {
   private final IGenericCharacter character;
   private final IMagicInfoStringBuilder costStringBuilder;
 
-  public CharmDataSource(IResources resources, IGenericCharacter character) {
+  public CharmDataSource(final IResources resources, final IGenericCharacter character) {
     this.resources = resources;
     CostStringBuilder essenceBuilder = new CostStringBuilder(resources, "CharacterSheet.Charm.Mote"); //$NON-NLS-1$
     CostStringBuilder willpowerBuilder = new CostStringBuilder(resources, "CharacterSheet.Charm.Willpower"); //$NON-NLS-1$
@@ -44,6 +44,20 @@ public class CharmDataSource implements IReportDataSource {
         experienceBuilder);
     this.character = character;
     this.magicList = character.getAllLearnedMagic();
+    // CharmOrderType preferredOrderType = CharmOrderType.valueOf(CHARACTER_PREFERENCES.get(
+    // CHARMORDER_PREFERENCE,
+    // DEFAULT_CHARMORDER));
+    // final Comparator[] charmComparator = new Comparator[1];
+    // preferredOrderType.accept(new ICharmOrderTypeVisitor() {
+    // public void visitAlphabet(CharmOrderType type) {
+    // charmComparator[0] = new I18nedIdentificateComparator(resources);
+    // }
+    //
+    // public void visitTreeOrder(CharmOrderType type) {
+    // charmComparator[0] = new MagicComparator(character.getTemplate().getTemplateType().getCharacterType());
+    // }
+    // });
+    // Collections.sort(magicList, charmComparator[0]);
     Collections.sort(magicList, new MagicComparator(character.getTemplate().getTemplateType().getCharacterType()));
   }
 
@@ -93,7 +107,7 @@ public class CharmDataSource implements IReportDataSource {
           type[0] = spell.getCircleType().getId();
         }
       });
-      return type[0];
+      return resources.getString(type[0]);
     }
     if (COLUMN_SOURCE.equals(columnName)) {
       if (magic.getSource() == null) {
