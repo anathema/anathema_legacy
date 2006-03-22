@@ -15,7 +15,7 @@ public class DbParameterUtilities {
         parameters.put(ICharacterReportConstants.BREEDING_VALUE, background.getCurrentValue());
         return;
       }
-      parameters.put(ICharacterReportConstants.BREEDING_VALUE, 0);
     }
+    parameters.put(ICharacterReportConstants.BREEDING_VALUE, 0);
   }
 }
