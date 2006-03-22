@@ -52,14 +52,12 @@ public final class DbPresentationProperties extends AbstractPresentationProperti
     return new Color(139, 0, 0);
   }
 
-  @Override
   public String getCasteResourceBase() {
-    return getCharacterTypeId() + ".Aspect."; //$NON-NLS-1$
+    return "Dragon-Blooded.Caste."; //$NON-NLS-1$
   }
 
-  @Override
   public String getCasteLabelResource() {
-    return "Label.Aspect"; //$NON-NLS-1$
+    return getCasteResourceBase() + "Label"; //$NON-NLS-1$;
   }
 
   @Override
