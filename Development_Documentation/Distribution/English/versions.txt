@@ -8,11 +8,16 @@ http://anathema.sf.net
 ===------------------------------------------------------------------------------===
 
 -- Miscellaneous --
-+ The character's ruleset is now included on the voidstate sheet.
 * Fixed calculation for Lunar attribute points.
+* Lunars are able to learn Shadowlands circle Necromancy.
+
+-- Reporting --
++ The character's ruleset is now included on the voidstate sheet.
 * Fixed printing, was broken for all character types but Lunars (1453475:Problem with pdf export)
 * Backgrounds are sorted alphabetically on the character sheets.
-* Lunars are able to learn Shadowlands circle Necromancy.
+* "Extra Action" and "Martial Arts" are two words on the character sheets.
+* Caste / Aspect names are internationalized on the character sheets.
+* Dragon-Blooded without any Backgrounds whatsoever have their Anima table filled out anyway.
 
 
 ===------------------------------------------------------------------------------===
