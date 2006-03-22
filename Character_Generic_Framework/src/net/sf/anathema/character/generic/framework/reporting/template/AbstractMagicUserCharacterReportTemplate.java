@@ -35,14 +35,22 @@ public abstract class AbstractMagicUserCharacterReportTemplate extends AbstractS
   @Override
   protected void fillInExtendedParameters(Map<Object, Object> parameters, IGenericCharacter character)
       throws ReportException {
-    parameters.put(CASTE, getResources().getString(
-        character.getTemplate().getTemplateType().getCharacterType() + ".Caste." //$NON-NLS-1$
-            + character.getConcept().getCasteType().getId()));
+    fillInCaste(parameters, character);
     CharmDataSource charmDataSource = new CharmDataSource(getResources(), character);
     parameters.put(CHARM_DATA_SOURCE, charmDataSource);
     parameters.put(ExaltVoidstateReportTemplate.CHARMPAGE_DATASOURCE, new ReportDataSourceAdapter(charmDataSource, 29));
     parameters.put(COMBO_STYLED_CDATA, new ComboTextPartDataSource(getResources(), character).getStyledCData());
     fillInCharacterTypeSpecificParameters(parameters, character);
+  }
+
+  private void fillInCaste(Map<Object, Object> parameters, IGenericCharacter character) {
+    String casteId = character.getConcept().getCasteType().getId();
+    String printName = null;
+    if (casteId != null) {
+      printName = getResources().getString(
+          character.getTemplate().getTemplateType().getCharacterType() + ".Caste." + casteId); //$NON-NLS-1$
+    }
+    parameters.put(CASTE, printName);
   }
 
   protected abstract void fillInCharacterTypeSpecificParameters(
