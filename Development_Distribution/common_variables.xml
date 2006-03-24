@@ -18,7 +18,7 @@
 	<property name="dist_data" value="${dist}/data" />
 
 
-	<property name="documentation" value="../Documentation/Distribution" />
+	<property name="documentation" value="../Development_Documentation/Distribution" />
 
 	<property name="srcDir" value="src" />
 	<property name="resourceDir" value="resources" />

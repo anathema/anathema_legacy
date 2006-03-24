@@ -6,27 +6,27 @@
 
 	<target name="Copy Core Projects" depends="Prepare" description="Copy core project files">
 		<copyProjectFiles project="Anathema" subdirectory="core" />
-		<copyProjectFiles project="Anathema_Namegenerator" subdirectory="core" />
-		<copyProjectFiles project="Campaign" subdirectory="core" />
-		<copyProjectFiles project="Character" subdirectory="core" />
+		<copyProjectFiles project="Campaign_Plot" subdirectory="core" />
 		<copyProjectFiles project="Character_Abyssal" subdirectory="core" />
-		<copyProjectFiles project="Character_Core" subdirectory="core" />
 		<copyProjectFiles project="Character_Db" subdirectory="core" />
 		<copyProjectFiles project="Character_Generic" subdirectory="core" />
 		<copyProjectFiles project="Character_Generic_Framework" subdirectory="core" />
 		<copyProjectFiles project="Character_Generic_Impl" subdirectory="core" />
 		<copyProjectFiles project="Character_Library" subdirectory="core" />
 		<copyProjectFiles project="Character_Lunar" subdirectory="core" />
-		<copyProjectFiles project="Character_Merits_Flaws" subdirectory="core" />
+		<copyProjectFiles project="Character_Main" subdirectory="core" />
+		<copyProjectFiles project="Character_Main_Impl" subdirectory="core" />
+		<copyProjectFiles project="Character_MeritsFlaws" subdirectory="core" />
 		<copyProjectFiles project="Character_Sidereal" subdirectory="core" />
 		<copyProjectFiles project="Character_Solar" subdirectory="core" />
-		<copyProjectFiles project="CharmCascades" subdirectory="core" />
-		<copyProjectFiles project="CharmEntry" subdirectory="core" />
-		<copyProjectFiles project="CharmTree" subdirectory="core" />
-		<copyProjectFiles project="Framework" subdirectory="core" />
+		<copyProjectFiles project="Charm_Cascades" subdirectory="core" />
+		<copyProjectFiles project="Charm_Entry" subdirectory="core" />
+		<copyProjectFiles project="Charm_Tree" subdirectory="core" />
 		<copyProjectFiles project="Lib" subdirectory="core" />
 		<copyProjectFiles project="Lib_Gui" subdirectory="core" />
 		<copyProjectFiles project="Lib_Workflow" subdirectory="core" />
+		<copyProjectFiles project="Namegenerator" subdirectory="core" />
+		<copyProjectFiles project="Platform" subdirectory="core" />
 	</target>
 
 	<target name="Copy Core Thirdparty" depends="Prepare" description="Copy common third party packages">
@@ -64,8 +64,9 @@
 		</copy>
 	</target>
 
-	<target name="copyIcon" depends="Prepare" description="Copy Anathema icon">
+	<target name="copyExtras" depends="Prepare" description="Copy Anathema icon">
 		<copy todir="${dist_misc}" file="anathema.ico" />
+		<copy todir="${dist_misc}" file="anathema.sh" />
 	</target>
 
 	<target name="copyNatureExample" depends="Prepare" description="Copy example nature files">

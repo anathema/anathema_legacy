@@ -9,7 +9,7 @@
 	<import file="build_core.xml" />
 	<import file="build_music.xml" />
 
-	<target name="dist_upgrade" depends="Prepare, Build Core JAR, copyText, copyIcon, copyNatureExample,copyModulesInstructions" description="Build the binary archive">
+	<target name="dist_upgrade" depends="Prepare, Build Core JAR, copyText, copyExtras, copyNatureExample,copyModulesInstructions" description="Build the binary archive">
 		<zip destfile="anathema_upgrade_v${version}.zip">
 			<fileset dir="${dist}" includes="anathema.jar" />
 			<fileset dir="${dist_misc}" includes="*.*" />
@@ -19,7 +19,7 @@
 		</zip>
 	</target>
 
-	<target name="dist_user" depends="Build Core JAR, Build Music JAR, copyText, copyIcon, copyNatureExample,copyModulesInstructions" description="Build out-of-the-box archive">
+	<target name="dist_user" depends="Build Core JAR, Build Music JAR, copyText, copyExtras, copyNatureExample,copyModulesInstructions" description="Build out-of-the-box archive">
 		<zip destfile="anathema_user_v${version}.zip">
 			<fileset dir="${dist}" includes="anathema.jar" />
 			<fileset dir="${dist_misc}" includes="*.*" />
@@ -35,7 +35,7 @@
 	</target>
 
 
-	<target name="dist_developer" depends="Prepare, Build Core JAR, Build Music JAR, copyText, copyIcon, Add License To Sources, copyNatureExample,copyModulesInstructions" description="Build out-of-the-box archive with sources">
+	<target name="dist_developer" depends="Prepare, Build Core JAR, Build Music JAR, copyText, copyExtras, Add License To Sources, copyNatureExample,copyModulesInstructions" description="Build out-of-the-box archive with sources">
 		<zip destfile="anathema_developer_v${version}.zip">
 			<fileset dir="${dist}" includes="anathema.jar" />
 			<fileset dir="${dist_misc}" includes="*.*" />
@@ -47,7 +47,7 @@
 		</zip>
 	</target>
 
-	<target name="patch_user" depends="Prepare, Copy Thirdparty, Build Core JAR, copyText, copyIcon, copyNatureExample,copyModulesInstructions" description="Build out-of-the-box archive">
+	<target name="patch_user" depends="Prepare, Copy Thirdparty, Build Core JAR, copyText, copyExtras, copyNatureExample,copyModulesInstructions" description="Build out-of-the-box archive">
 		<zip destfile="anathema_user_patch_v${version}.zip">
 			<fileset dir="${dist}" includes="anathema.jar" />
 			<fileset dir="${dist_misc}" includes="*.*" />
@@ -57,7 +57,7 @@
 		</zip>
 	</target>
 
-	<target name="patch_developer" depends="Prepare, Copy Thirdparty, Build Core JAR, copyText, copyIcon, Add License To Sources, copyNatureExample,copyModulesInstructions" description="Build out-of-the-box archive with sources">
+	<target name="patch_developer" depends="Prepare, Copy Thirdparty, Build Core JAR, copyText, copyExtras, Add License To Sources, copyNatureExample,copyModulesInstructions" description="Build out-of-the-box archive with sources">
 		<zip destfile="anathema_developer_patch_v${version}.zip">
 			<fileset dir="${dist}" includes="anathema.jar" />
 			<fileset dir="${dist_misc}" includes="*.*" />
