@@ -58,6 +58,8 @@ public class CharacterModule extends AbstractAnathemaModule {
     super.fillPresentationExtensionPoints(extensionPointRegistry, model, resources, view);
     PreferencesElementsExtensionPoint preferencesPoint = (PreferencesElementsExtensionPoint) extensionPointRegistry.get(PreferencesElementsExtensionPoint.ID);
     preferencesPoint.register(ICharacterPreferencesConstants.RULESET_PREFERENCE, new RulesetPreferenceElement());
+    // preferencesPoint.register(ICharacterPreferencesConstants.CHARMORDER_PREFERENCE, new
+    // CharmOrderPreferenceElement());
   }
 
   private final ICharacterGenerics getCharacterGenerics(IAnathemaModel anathemaModel) {
