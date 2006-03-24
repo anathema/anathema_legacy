@@ -4,10 +4,11 @@ Exalted (C) 2001-2006 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
 ===------------------------------------------------------------------------------===
-			Release 0.11 "Kether Rock" (Upcoming)
+			Release 0.10 Patch 1 (26/03/06)
 ===------------------------------------------------------------------------------===
 
 -- Miscellaneous --
++ Added a Linux launch script (provided by the illustrious Cerebral) to the distribution.
 * Fixed calculation for Lunar attribute points.
 * Lunars are able to learn Shadowlands circle Necromancy.
 
