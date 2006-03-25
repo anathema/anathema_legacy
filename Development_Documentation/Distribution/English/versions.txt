@@ -11,6 +11,7 @@ http://anathema.sf.net
 + Added a Linux launch script (provided by the illustrious Cerebral) to the distribution.
 * Fixed calculation for Lunar attribute points.
 * Lunars are able to learn Shadowlands circle Necromancy.
+* Changed Lunars' charm selection color
 
 -- Reporting --
 + The character's ruleset is now included on the voidstate sheet.
