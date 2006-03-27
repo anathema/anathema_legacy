@@ -1,6 +1,7 @@
 package net.sf.anathema.character.lunar.reporting;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -13,8 +14,9 @@ import net.sf.anathema.character.generic.framework.reporting.parameters.HealthPa
 import net.sf.anathema.character.generic.framework.reporting.template.voidstate.ExaltVoidstateReportTemplate;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.impl.CombatStatisticsConfiguration;
+import net.sf.anathema.character.generic.impl.equipment.IEquippedWeapon;
+import net.sf.anathema.character.generic.impl.equipment.WeaponStatisticsCalculator;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
@@ -77,7 +79,7 @@ public class LunarVoidstateReportTemplate extends ExaltVoidstateReportTemplate {
     fillInGifts(parameters, beastformModel);
     IExaltedRuleSet rules = character.getRules();
     fillInCombatStats(parameters, traitCollection, rules);
-    fillInBrawlWeapons(parameters, traitCollection, rules, beastformModel.getGiftModel());
+    fillInBeastformBrawlWeapons(parameters, traitCollection, rules, beastformModel.getGiftModel());
   }
 
   private void fillInVirtueFlaw(Map<Object, Object> parameters, IGenericCharacter character) {
@@ -104,33 +106,28 @@ public class LunarVoidstateReportTemplate extends ExaltVoidstateReportTemplate {
     parameters.put(PARAM_FACE, faceRank + ": " + resources.getString("Lunar.Renown.Rank." + faceRank)); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
-  private void fillInBrawlWeapons(
+  private void fillInBeastformBrawlWeapons(
       Map<Object, Object> parameters,
       IGenericTraitCollection traitCollection,
       IExaltedRuleSet rules,
       final IGiftModel model) {
-    final List<IWeaponType> weapons = new ArrayList<IWeaponType>();
-    rules.accept(new IRuleSetVisitor() {
-      public void visitCoreRules(IExaltedRuleSet set) {
-        subreports.buildBeastformCoreRulesBrawlWeaponList(weapons, model);
-      }
-
-      public void visitPowerCombat(IExaltedRuleSet set) {
-        subreports.buildBeastformPowerCombatBrawlWeaponList(weapons, model);
-      }
-    });
+    IWeaponType[] brawlWeaponList = new BeastformBrawlEquipmentConfiguration(model, rules).getBrawlWeaponList();
+    WeaponStatisticsCalculator weaponStatisticsCalculator = new WeaponStatisticsCalculator(traitCollection, rules, true);
+    final List<IEquippedWeapon> weapons = new ArrayList<IEquippedWeapon>();
+    for (IWeaponType weapon : brawlWeaponList) {
+      IEquippedWeapon[] finalWeaponStatistics = weaponStatisticsCalculator.calculateWeaponStatistics(weapon);
+      Collections.addAll(weapons, finalWeaponStatistics);
+    }
     parameters.put(PARAM_BEASTFORM_BRAWL_DATA_SOURCE, new MeleeWeaponDataSource(
         getResources(),
-        traitCollection,
-        rules,
-        weapons.toArray(new IWeaponType[weapons.size()])));
+        weapons.toArray(new IEquippedWeapon[weapons.size()])));
   }
 
   private void fillInCombatStats(
       Map<Object, Object> parameters,
       IGenericTraitCollection traitCollection,
       IExaltedRuleSet rules) {
-    CombatStatisticsConfiguration configuration = new CombatStatisticsConfiguration(traitCollection, rules);
+    CombatStatisticsConfiguration configuration = new CombatStatisticsConfiguration(traitCollection, rules, true);
     parameters.put(getBeastFormParameter(ICharacterReportConstants.INTITIATIVE), configuration.getBaseInitiative());
     parameters.put(getBeastFormParameter(ICharacterReportConstants.DODGE), configuration.getDodgePool());
     parameters.put(getBeastFormParameter(ICharacterReportConstants.KNOCKDOWN), configuration.getKnockdownResistance());
@@ -153,10 +150,7 @@ public class LunarVoidstateReportTemplate extends ExaltVoidstateReportTemplate {
     }
   }
 
-  private void addSoakParameter(
-      Map<Object, Object> parameters,
-      BeastformModel beastformModel,
-      HealthType healthType) {
+  private void addSoakParameter(Map<Object, Object> parameters, BeastformModel beastformModel, HealthType healthType) {
     parameters.put(
         getBeastFormParameter(HealthParameterUtilities.getSoakParameter(healthType)),
         String.valueOf(beastformModel.getCurrentSoakValue(healthType) + "(" //$NON-NLS-1$

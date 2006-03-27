@@ -15,8 +15,6 @@ import net.sf.anathema.character.library.quality.model.QualityPrerequisite;
 
 public class GiftProvider {
 
-  // TODO: Rest
-
   public static IGift[] getAllGifts() {
     List<IGift> gifts = new ArrayList<IGift>();
     Gift horrifyingFirst = new AttributePointsProvidingGift("HorrifyingMightFirst", 2);//$NON-NLS-1$
@@ -119,6 +117,10 @@ public class GiftProvider {
               -1,
               2));
         }
+
+        public void visitSecondEdition(IExaltedRuleSet set) {
+          // Nothing to do yet
+        }
       });
     }
     gifts.add(beastClaws);
@@ -161,6 +163,10 @@ public class GiftProvider {
               HealthType.Lethal,
               0,
               2));
+        }
+
+        public void visitSecondEdition(IExaltedRuleSet set) {
+          // Nothing to do yet
         }
       });
     }
