@@ -235,6 +235,10 @@ public enum AbilityType implements ITraitType {
       public void visitPowerCombat(IExaltedRuleSet set) {
         types[0] = getFirstEditionAbilities();
       }
+
+      public void visitSecondEdition(IExaltedRuleSet set) {
+        types[0] = getSecondEditionAbilities();
+      }
     });
     return types[0];
   }
