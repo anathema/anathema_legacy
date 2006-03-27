@@ -27,7 +27,6 @@ if [ $JAVAMAJOR -lt 1 -o \( $JAVAMAJOR -eq 1 -a $JAVAMINOR -lt 5 \) ]; then
 fi
 
 echo "Running Anathema from $ANATHEMA_DIR with repository $REPO_DIR"
-exit 1
 
 cd $ANATHEMA_DIR
 $JAVA_BIN -Drepository="${REPO_DIR}" -jar anathema.jar
