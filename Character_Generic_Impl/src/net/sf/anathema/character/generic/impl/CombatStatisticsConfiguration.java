@@ -12,10 +12,12 @@ public class CombatStatisticsConfiguration implements ICombatStatisticsConfigura
 
   private final IExaltedRuleSet rules;
   private final IGenericTraitCollection collection;
+  private final boolean isExalted;
 
-  public CombatStatisticsConfiguration(IGenericTraitCollection collection, IExaltedRuleSet rules) {
+  public CombatStatisticsConfiguration(IGenericTraitCollection collection, IExaltedRuleSet rules, boolean isExalted) {
     this.collection = collection;
     this.rules = rules;
+    this.isExalted = isExalted;
   }
 
   public int getBaseInitiative() {
@@ -37,6 +39,16 @@ public class CombatStatisticsConfiguration implements ICombatStatisticsConfigura
         if (permanentEssence > 1) {
           dodgePool[0] = dodgePool[0] + permanentEssence;
         }
+      }
+
+      public void visitSecondEdition(IExaltedRuleSet set) {
+        int permanentEssence = collection.getTrait(OtherTraitType.Essence).getCurrentValue();
+        double dodgeDefense = dodgePool[0];
+        if (permanentEssence > 1) {
+          dodgeDefense += permanentEssence;
+        }
+        dodgeDefense /= 2;
+        dodgePool[0] = (int) (isExalted ? Math.ceil(dodgeDefense) : Math.floor(dodgeDefense));
       }
     });
     return dodgePool[0];
@@ -70,6 +82,10 @@ public class CombatStatisticsConfiguration implements ICombatStatisticsConfigura
       }
 
       public void visitPowerCombat(IExaltedRuleSet set) {
+        damage[0] = collection.getTrait(OtherTraitType.Essence).getCurrentValue();
+      }
+
+      public void visitSecondEdition(IExaltedRuleSet set) {
         damage[0] = collection.getTrait(OtherTraitType.Essence).getCurrentValue();
       }
     });

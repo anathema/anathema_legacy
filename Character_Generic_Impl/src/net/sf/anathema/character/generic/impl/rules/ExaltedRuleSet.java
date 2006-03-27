@@ -14,6 +14,11 @@ public enum ExaltedRuleSet implements IExaltedRuleSet {
     public void accept(IRuleSetVisitor visitor) {
       visitor.visitPowerCombat(this);
     }
+  },
+  SecondEdition {
+    public void accept(IRuleSetVisitor visitor) {
+      visitor.visitSecondEdition(this);
+    }
   };
 
   public String getId() {
