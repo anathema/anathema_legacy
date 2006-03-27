@@ -5,11 +5,11 @@ import net.sf.anathema.character.generic.impl.traits.alternate.AlternateRequirem
 import net.sf.anathema.character.generic.impl.traits.caste.CasteRangeTraitTemplate;
 import net.sf.anathema.character.generic.impl.traits.caste.ICasteTraitMinimum;
 import net.sf.anathema.character.generic.impl.traits.caste.StaticCasteMinimum;
+import net.sf.anathema.character.generic.impl.traits.types.FirstEditionAbilityTypeVisitor;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.generic.traits.types.IAbilityTypeVisitor;
 import net.sf.anathema.character.sidereal.caste.SiderealCaste;
 
-public class SiderealAbilityTemplateCreationVisitor implements IAbilityTypeVisitor {
+public class SiderealAbilityTemplateCreationVisitor extends FirstEditionAbilityTypeVisitor {
 
   private final BattlesAbilityAlternative battlesAlternative = new BattlesAbilityAlternative();
   private final DefaultAbilityAlternative defaultAlternative = new DefaultAbilityAlternative();
