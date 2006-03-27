@@ -18,6 +18,8 @@ public interface IAbilityTypeVisitor {
 
   public void visitEndurance();
 
+  public void visitIntegrity();
+
   public void visitInvestigation();
 
   public void visitLarceny();
@@ -51,4 +53,6 @@ public interface IAbilityTypeVisitor {
   public void visitSurvival();
 
   public void visitThrown();
+
+  public void visitWar();
 }

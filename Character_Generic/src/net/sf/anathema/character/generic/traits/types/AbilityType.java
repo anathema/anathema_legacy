@@ -35,10 +35,22 @@ public enum AbilityType implements ITraitType {
       visitor.visitThrown();
     }
   },
+  War {
+    @Override
+    public void accept(IAbilityTypeVisitor visitor) {
+      visitor.visitWar();
+    }
+  },
   Endurance {
     @Override
     public void accept(IAbilityTypeVisitor visitor) {
       visitor.visitEndurance();
+    }
+  },
+  Integrity {
+    @Override
+    public void accept(IAbilityTypeVisitor visitor) {
+      visitor.visitIntegrity();
     }
   },
   Performance {
@@ -201,9 +213,13 @@ public enum AbilityType implements ITraitType {
   }
 
   private static AbilityType[] getSecondEditionAbilities() {
-    return new AbilityType[] { Archery, MartialArts, Melee, Thrown,
-    // War,
-        // Integrity,
+    return new AbilityType[] {
+        Archery,
+        MartialArts,
+        Melee,
+        Thrown,
+        War,
+        Integrity,
         Performance,
         Presence,
         Resistance,
