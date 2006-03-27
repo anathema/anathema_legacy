@@ -1,9 +1,6 @@
 package net.sf.anathema.character.generic.framework.reporting.template.voidstate;
 
 import java.io.InputStream;
-import java.util.List;
-
-import net.sf.anathema.character.generic.equipment.IWeaponType;
 
 public interface IVoidstateSubreports {
 
@@ -26,10 +23,6 @@ public interface IVoidstateSubreports {
   public InputStream loadSequenceSubreport();
 
   public InputStream loadDescriptionSubreport();
-
-  public void buildPowerCombatBrawlWeaponList(List<IWeaponType> weapons);
-
-  public void buildCoreRulesBrawlWeaponList(List<IWeaponType> weapons);
 
   public InputStream loadCharmpageSubreport();
 

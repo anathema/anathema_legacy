@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.framework.reporting.template.voidstate;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -13,8 +14,9 @@ import net.sf.anathema.character.generic.framework.reporting.parameters.CombatPa
 import net.sf.anathema.character.generic.framework.reporting.parameters.HealthParameterUtilities;
 import net.sf.anathema.character.generic.framework.reporting.template.DefaultExaltCharacterReportTemplate;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
+import net.sf.anathema.character.generic.impl.equipment.BrawlWeaponConfiguration;
+import net.sf.anathema.character.generic.impl.equipment.IEquippedWeapon;
+import net.sf.anathema.character.generic.impl.equipment.WeaponStatisticsCalculator;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.framework.reporting.IReportDataSource;
@@ -194,21 +196,23 @@ public class ExaltVoidstateReportTemplate extends DefaultExaltCharacterReportTem
     addSubreportParameter(parameters, PARAM_SPECIALPAGE_SUBREPORT, subreports.loadSpecialpageSubreport());
     parameters.put(ICharacterReportConstants.PRINT_SPECIAL_PAGE, getSpecialPageParameter());
     addSubreportParameter(parameters, PARAM_CHARMPAGE_SUBREPORT, subreports.loadCharmpageSubreport());
-    final List<IWeaponType> weapons = new ArrayList<IWeaponType>();
-    character.getRules().accept(new IRuleSetVisitor() {
-      public void visitCoreRules(IExaltedRuleSet set) {
-        subreports.buildCoreRulesBrawlWeaponList(weapons);
-      }
+    fillInBrawlWeapons(parameters, character);
+  }
 
-      public void visitPowerCombat(IExaltedRuleSet set) {
-        subreports.buildPowerCombatBrawlWeaponList(weapons);
-      }
-    });
-    parameters.put(MELEE_WEAPON_DATA_SOURCE, new MeleeWeaponDataSource(
-        getResources(),
+  protected void fillInBrawlWeapons(final Map<Object, Object> parameters, final IGenericCharacter character) {
+    IWeaponType[] brawlWeaponList = new BrawlWeaponConfiguration(character.getRules()).getBrawlWeaponList();
+    WeaponStatisticsCalculator weaponStatisticsCalculator = new WeaponStatisticsCalculator(
         character,
         character.getRules(),
-        weapons.toArray(new IWeaponType[weapons.size()])));
+        isExalted(character));
+    final List<IEquippedWeapon> weapons = new ArrayList<IEquippedWeapon>();
+    for (IWeaponType weapon : brawlWeaponList) {
+      IEquippedWeapon[] finalWeaponStatistics = weaponStatisticsCalculator.calculateWeaponStatistics(weapon);
+      Collections.addAll(weapons, finalWeaponStatistics);
+    }
+    parameters.put(MELEE_WEAPON_DATA_SOURCE, new MeleeWeaponDataSource(
+        getResources(),
+        weapons.toArray(new IEquippedWeapon[weapons.size()])));
   }
 
   protected Boolean getSpecialPageParameter() {

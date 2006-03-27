@@ -26,8 +26,9 @@ public class CombatParameterUtilities {
   public static void fillInCombatStats(
       final IGenericTraitCollection collection,
       final IExaltedRuleSet rules,
+      boolean isExalted,
       Map<Object, Object> parameters) {
-    CombatStatisticsConfiguration configuration = new CombatStatisticsConfiguration(collection, rules);
+    CombatStatisticsConfiguration configuration = new CombatStatisticsConfiguration(collection, rules, isExalted);
     parameters.put(ICharacterReportConstants.INTITIATIVE, configuration.getBaseInitiative());
     parameters.put(ICharacterReportConstants.DODGE, configuration.getDodgePool());
     parameters.put(ICharacterReportConstants.KNOCKDOWN, configuration.getKnockdownResistance());

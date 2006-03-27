@@ -11,6 +11,7 @@ import net.sf.anathema.character.generic.framework.reporting.parameters.Characte
 import net.sf.anathema.character.generic.framework.reporting.parameters.CombatParameterUtilities;
 import net.sf.anathema.character.generic.framework.reporting.parameters.HealthParameterUtilities;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.framework.reporting.IReportDataSource;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.lib.resources.IResources;
@@ -61,7 +62,7 @@ public abstract class AbstractStattedCharacterReportTemplate extends AbstractCha
     AdvantageParameterUtilities.fillInVirtues(character, parameters);
     AbilityParameterUtilities.fillInAbilities(character, parameters, getResources());
     CharacterParameterUtilities.fillInAttributes(character, parameters);
-    CombatParameterUtilities.fillInCombatStats(character, character.getRules(), parameters);
+    CombatParameterUtilities.fillInCombatStats(character, character.getRules(), isExalted(character), parameters);
     CharacterParameterUtilities.fillExperienceParameters(parameters, character);
     CharacterParameterUtilities.fillInConcept(character, parameters);
     CharacterParameterUtilities.fillInNature(character, parameters);
@@ -70,6 +71,10 @@ public abstract class AbstractStattedCharacterReportTemplate extends AbstractCha
     HealthParameterUtilities.fillInSoak(character.getTrait(AttributeType.Stamina).getCurrentValue(), parameters);
     parameters.put(MERIT_AND_FLAW_DATA_SOURCE, new MeritsAndFlawsDataSource());
     fillInExtendedParameters(parameters, character);
+  }
+
+  protected boolean isExalted(IGenericCharacter character) {
+    return character.getTemplate().getTemplateType().getCharacterType() != CharacterType.MORTAL;
   }
 
   protected abstract void fillInExtendedParameters(Map<Object, Object> parameters, IGenericCharacter character)

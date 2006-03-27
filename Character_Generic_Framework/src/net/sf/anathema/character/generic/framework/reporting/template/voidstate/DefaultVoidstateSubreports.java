@@ -1,12 +1,7 @@
 package net.sf.anathema.character.generic.framework.reporting.template.voidstate;
 
 import java.io.InputStream;
-import java.util.List;
 
-import net.sf.anathema.character.generic.equipment.IWeaponType;
-import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.character.generic.impl.equipment.MeleeWeaponType;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.CharacterType;
 
 public class DefaultVoidstateSubreports implements IVoidstateSubreports {
@@ -104,18 +99,6 @@ public class DefaultVoidstateSubreports implements IVoidstateSubreports {
 
   protected final String getCharacterTypeName() {
     return characterType.name();
-  }
-
-  public void buildPowerCombatBrawlWeaponList(List<IWeaponType> weapons) {
-    weapons.add(new MeleeWeaponType("Weapons.Brawl.Fist", AbilityType.Brawl, 0, 1, 0, HealthType.Bashing, 2, 5)); //$NON-NLS-1$
-    weapons.add(new MeleeWeaponType("Weapons.Brawl.Clinch", AbilityType.Brawl, -6, 0, 2, HealthType.Bashing, 0, 1)); //$NON-NLS-1$
-    weapons.add(new MeleeWeaponType("Weapons.Brawl.Kick", AbilityType.Brawl, -3, 1, 3, HealthType.Bashing, -3, 3)); //$NON-NLS-1$
-  }
-
-  public void buildCoreRulesBrawlWeaponList(List<IWeaponType> weapons) {
-    weapons.add(new MeleeWeaponType("Weapons.Brawl.Fist", AbilityType.Brawl, 0, 0, 0, HealthType.Bashing, 0, null)); //$NON-NLS-1$
-    weapons.add(new MeleeWeaponType("Weapons.Brawl.Clinch", AbilityType.Brawl, 0, 0, 2, HealthType.Bashing, 0, null)); //$NON-NLS-1$
-    weapons.add(new MeleeWeaponType("Weapons.Brawl.Kick", AbilityType.Brawl, -3, -1, 2, HealthType.Bashing, -1, null)); //$NON-NLS-1$
   }
 
   public InputStream loadCharmpageSubreport() {
