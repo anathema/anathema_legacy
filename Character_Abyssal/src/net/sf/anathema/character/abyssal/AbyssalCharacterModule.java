@@ -3,13 +3,12 @@ package net.sf.anathema.character.abyssal;
 import net.sf.anathema.character.abyssal.additional.AdditionalAbyssalRules;
 import net.sf.anathema.character.abyssal.additional.AdditionalLoyalAbyssalRules;
 import net.sf.anathema.character.abyssal.caste.IAbyssalSpecialCharms;
-import net.sf.anathema.character.abyssal.reporting.AbyssalVoidStateSubreports;
+import net.sf.anathema.character.abyssal.reporting.AbyssalVoidstateReportTemplate;
 import net.sf.anathema.character.abyssal.template.LoyalAbyssalTemplate;
 import net.sf.anathema.character.abyssal.template.RenegadeAbyssalTemplate;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.CharacterGenericsModuleAdapter;
-import net.sf.anathema.character.generic.framework.reporting.template.voidstate.ExaltVoidstateReportTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
@@ -96,7 +95,6 @@ public class AbyssalCharacterModule extends CharacterGenericsModuleAdapter {
 
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    generics.getReportTemplateRegistry().add(
-        new ExaltVoidstateReportTemplate(CharacterType.ABYSSAL, resources, new AbyssalVoidStateSubreports()));
+    generics.getReportTemplateRegistry().add(new AbyssalVoidstateReportTemplate(resources));
   }
 }
