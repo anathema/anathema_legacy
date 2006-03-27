@@ -11,7 +11,6 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfi
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.trait.IFavorableTrait;
@@ -162,7 +161,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
     for (IGroupedTraitType type : statistics.getCharacterTemplate().getAbilityGroups()) {
       abilityTypes.add(type.getTraitType());
     }
-    return traitConfiguration.getFavorableTraits(AbilityType.values());
+    return traitConfiguration.getFavorableTraits(abilityTypes.toArray(new ITraitType[abilityTypes.size()]));
   }
 
   @Override
