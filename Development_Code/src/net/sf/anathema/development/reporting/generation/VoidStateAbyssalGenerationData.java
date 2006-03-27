@@ -3,8 +3,8 @@ package net.sf.anathema.development.reporting.generation;
 import java.io.File;
 
 import net.sf.anathema.character.abyssal.caste.AbyssalCaste;
-import net.sf.anathema.character.abyssal.reporting.AbyssalVoidStateSubreports;
 import net.sf.anathema.character.generic.framework.reporting.template.ICharacterReportTemplate;
+import net.sf.anathema.character.generic.framework.reporting.template.voidstate.DefaultVoidstateSubreports;
 import net.sf.anathema.character.generic.framework.reporting.template.voidstate.ExaltVoidstateReportTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
@@ -55,7 +55,7 @@ public class VoidStateAbyssalGenerationData extends AbstractGenerationData {
     ICharacterReportTemplate template = new ExaltVoidstateReportTemplate(
         CharacterType.ABYSSAL,
         resources,
-        new AbyssalVoidStateSubreports());
+        new DefaultVoidstateSubreports(CharacterType.ABYSSAL));
     return new CharacterReport("Voidstate Abyssal Character Sheet", template);
   }
 
