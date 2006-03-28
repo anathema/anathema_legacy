@@ -33,4 +33,6 @@ public interface IComboConfiguration {
   public ICombo[] getExperienceLearnedCombos();
 
   public void finalizeCombo(boolean experienced);
+
+  public void setCrossPrerequisiteTypeComboAllowed(boolean allowed);
 }

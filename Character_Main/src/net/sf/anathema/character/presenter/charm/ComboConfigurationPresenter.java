@@ -10,6 +10,7 @@ import java.util.Map;
 
 import net.disy.commons.core.util.StringUtilities;
 import net.disy.commons.swing.action.SmartAction;
+import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.model.ICharacterStatistics;
@@ -59,13 +60,27 @@ public class ComboConfigurationPresenter implements IMagicSubPresenter {
     initComboModelListening(comboView);
     initComboConfigurationListening(comboView);
     statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
+      @Override
       public void experiencedChanged(boolean experienced) {
         updateComboButtons();
       }
+
+      @Override
+      public void casteChanged() {
+        enableCrossPrerequisiteTypeCombos();
+      }
     });
+    enableCrossPrerequisiteTypeCombos();
     updateComboButtons();
     String header = resources.getString("CardView.CharmConfiguration.ComboCreation.Title"); //$NON-NLS-1$
     return new TabContent(header, comboView);
+  }
+
+  private void enableCrossPrerequisiteTypeCombos() {
+    ICasteType caste = statistics.getCharacterConcept().getCaste().getType();
+    boolean alienCharms = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().isAllowedAlienCharms(
+        caste);
+    comboConfiguration.setCrossPrerequisiteTypeComboAllowed(alienCharms);
   }
 
   private void initComboConfigurationListening(final IComboConfigurationView comboView) {
