@@ -12,7 +12,9 @@ import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfigurationListener;
 import net.sf.anathema.character.model.charm.learn.IComboLearnStrategy;
+import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.IClosure;
 
 public class ComboConfiguration implements IComboConfiguration {
 
@@ -20,7 +22,7 @@ public class ComboConfiguration implements IComboConfiguration {
   private final List<ICombo> experiencedComboList = new ArrayList<ICombo>();
   private final IComboArbitrator rules = new ComboArbitrator();
   private final ICombo editCombo = new Combo();
-  private final List<IComboConfigurationListener> listeners = new ArrayList<IComboConfigurationListener>();
+  private final GenericControl<IComboConfigurationListener> control = new GenericControl<IComboConfigurationListener>();
   private final ICharmConfiguration charmConfiguration;
   private final ComboIdProvider idProvider = new ComboIdProvider();
   private final IComboLearnStrategy learnStrategy;
@@ -56,12 +58,6 @@ public class ComboConfiguration implements IComboConfiguration {
     }
     for (ICombo combo : deletionList) {
       deleteCombo(combo);
-    }
-  }
-
-  private void fireComboChanged(ICombo combo) {
-    for (IComboConfigurationListener listener : new ArrayList<IComboConfigurationListener>(listeners)) {
-      listener.comboChanged(combo);
     }
   }
 
@@ -120,20 +116,48 @@ public class ComboConfiguration implements IComboConfiguration {
     return null;
   }
 
-  public synchronized void addComboConfigurationListener(IComboConfigurationListener listener) {
-    listeners.add(listener);
+  public void addComboConfigurationListener(IComboConfigurationListener listener) {
+    control.addListener(listener);
   }
 
-  private synchronized void fireComboAdded(ICombo combo) {
-    for (IComboConfigurationListener listener : new ArrayList<IComboConfigurationListener>(listeners)) {
-      listener.comboAdded(combo);
-    }
+  private void fireComboAdded(final ICombo combo) {
+    control.forAllDo(new IClosure<IComboConfigurationListener>() {
+      public void execute(IComboConfigurationListener input) {
+        input.comboAdded(combo);
+      }
+    });
   }
 
-  private synchronized void fireComboDeleted(ICombo combo) {
-    for (IComboConfigurationListener listener : new ArrayList<IComboConfigurationListener>(listeners)) {
-      listener.comboDeleted(combo);
-    }
+  private void fireComboDeleted(final ICombo combo) {
+    control.forAllDo(new IClosure<IComboConfigurationListener>() {
+      public void execute(IComboConfigurationListener input) {
+        input.comboDeleted(combo);
+      }
+    });
+  }
+
+  private void fireComboChanged(final ICombo combo) {
+    control.forAllDo(new IClosure<IComboConfigurationListener>() {
+      public void execute(IComboConfigurationListener input) {
+        input.comboChanged(combo);
+      }
+    });
+  }
+
+  private void fireBeginEditEvent(final ICombo combo) {
+    control.forAllDo(new IClosure<IComboConfigurationListener>() {
+      public void execute(IComboConfigurationListener input) {
+        input.editBegun(combo);
+      }
+    });
+  }
+
+  private void fireEndEditEvent() {
+    control.forAllDo(new IClosure<IComboConfigurationListener>() {
+      public void execute(IComboConfigurationListener input) {
+        input.editEnded();
+      }
+    });
   }
 
   public ICombo[] getCurrentCombos() {
@@ -170,18 +194,6 @@ public class ComboConfiguration implements IComboConfiguration {
     editCombo.clear();
     editCombo.getValuesFrom(combo);
     fireBeginEditEvent(combo);
-  }
-
-  private void fireBeginEditEvent(ICombo combo) {
-    for (IComboConfigurationListener listener : new ArrayList<IComboConfigurationListener>(listeners)) {
-      listener.editBegun(combo);
-    }
-  }
-
-  private void fireEndEditEvent() {
-    for (IComboConfigurationListener listener : new ArrayList<IComboConfigurationListener>(listeners)) {
-      listener.editEnded();
-    }
   }
 
   public boolean isLearnedOnCreation(ICombo combo) {
