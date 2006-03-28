@@ -20,6 +20,9 @@ public class ComboRules extends AbstractComboRules {
     if (charm1 == charm2) {
       return false;
     }
+    if (charm1.getComboRules().isRestrictedCharm(charm2) || charm2.getComboRules().isRestrictedCharm(charm1)) {
+      return false;
+    }
     return handleComboRules(charm1, charm2) && handleComboRules(charm2, charm1);
   }
 
