@@ -20,13 +20,13 @@ import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfigurationListener;
-import net.sf.anathema.character.model.charm.IComboModelListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.presenter.TabContent;
 import net.sf.anathema.character.view.magic.IComboConfigurationView;
 import net.sf.anathema.character.view.magic.IComboView;
 import net.sf.anathema.character.view.magic.IComboViewListener;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
@@ -196,8 +196,8 @@ public class ComboConfigurationPresenter implements IMagicSubPresenter {
   }
 
   private void initComboModelListening(final IComboConfigurationView comboView) {
-    comboConfiguration.addComboModelListener(new IComboModelListener() {
-      public void comboChanged() {
+    comboConfiguration.addComboModelListener(new IChangeListener() {
+      public void changeOccured() {
         updateCharmListsInView(comboView);
       }
     });

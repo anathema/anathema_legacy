@@ -1,12 +1,13 @@
 package net.sf.anathema.character.model.charm;
 
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IComboConfiguration {
 
   public void addCharmToCombo(ICharm charm);
 
-  public void addComboModelListener(IComboModelListener listener);
+  public void addComboModelListener(IChangeListener listener);
 
   public void removeCharmsFromCombo(ICharm[] charms);
 

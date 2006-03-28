@@ -1,11 +1,12 @@
 package net.sf.anathema.character.model.charm;
 
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
 
 public interface ICombo extends Cloneable {
 
-  public void addComboModelListener(IComboModelListener listener);
+  public void addComboModelListener(IChangeListener listener);
 
   public void removeCharms(ICharm[] charm);
 
