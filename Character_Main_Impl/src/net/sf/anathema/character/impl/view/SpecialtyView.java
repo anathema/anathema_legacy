@@ -3,8 +3,6 @@ package net.sf.anathema.character.impl.view;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.AbstractAction;
 import javax.swing.Icon;
@@ -16,11 +14,13 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.view.AbstractTraitView;
 import net.sf.anathema.character.view.ISpecialtyView;
+import net.sf.anathema.lib.control.ChangeListenerClosure;
+import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IChangeListener;
 
 public class SpecialtyView extends AbstractTraitView implements ISpecialtyView {
 
-  private final List<IChangeListener> listeners = new ArrayList<IChangeListener>();
+  private final GenericControl<IChangeListener> control = new GenericControl<IChangeListener>();
   private Component abilityLabel;
   private Component separatorLabel = new JLabel("-"); //$NON-NLS-1$
   private Component specialtyLabel;
@@ -57,15 +57,12 @@ public class SpecialtyView extends AbstractTraitView implements ISpecialtyView {
     panel.revalidate();
   }
 
-  public synchronized void addDeleteListener(IChangeListener listener) {
-    listeners.add(listener);
+  public void addDeleteListener(IChangeListener listener) {
+    control.addListener(listener);
   }
 
-  private synchronized void fireDeletionPerformed() {
-    List<IChangeListener> cloneList = new ArrayList<IChangeListener>(listeners);
-    for (IChangeListener listener : cloneList) {
-      listener.changeOccured();
-    }
+  private void fireDeletionPerformed() {
+    control.forAllDo(new ChangeListenerClosure());
   }
 
   public void delete() {

@@ -14,13 +14,13 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.view.AbstractTraitView;
 import net.sf.anathema.character.view.IBackgroundView;
+import net.sf.anathema.lib.control.ChangeListenerClosure;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.IClosure;
 
 public class BackgroundView extends AbstractTraitView implements IBackgroundView {
 
-  private final GenericControl<IChangeListener> listeners = new GenericControl<IChangeListener>();
+  private final GenericControl<IChangeListener> control = new GenericControl<IChangeListener>();
   private Component label;
   private Component button;
   private JPanel traitPanel;
@@ -57,15 +57,11 @@ public class BackgroundView extends AbstractTraitView implements IBackgroundView
   }
 
   public void addDeleteListener(IChangeListener listener) {
-    listeners.addListener(listener);
+    control.addListener(listener);
   }
 
   private void fireDeletionPerformed() {
-    listeners.forAllDo(new IClosure<IChangeListener>() {
-      public void execute(IChangeListener input) {
-        input.changeOccured();
-      }
-    });
+    control.forAllDo(new ChangeListenerClosure());
   }
 
   public Component getComponent() {
