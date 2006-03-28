@@ -19,7 +19,7 @@ public class ComboConfiguration implements IComboConfiguration {
   private final List<ICombo> creationComboList = new ArrayList<ICombo>();
   private final List<ICombo> experiencedComboList = new ArrayList<ICombo>();
   private final IComboArbitrator rules = new ComboArbitrator();
-  private final ICombo editCombo = new Combo(rules);
+  private final ICombo editCombo = new Combo();
   private final List<IComboConfigurationListener> listeners = new ArrayList<IComboConfigurationListener>();
   private final ICharmConfiguration charmConfiguration;
   private final ComboIdProvider idProvider = new ComboIdProvider();
@@ -66,7 +66,12 @@ public class ComboConfiguration implements IComboConfiguration {
   }
 
   public void addCharmToCombo(ICharm charm) {
-    editCombo.addCharm(charm);
+    if (rules.canBeAddedToCombo(getEditCombo(), charm)) {
+      getEditCombo().addCharmNoValidate(charm);
+    }
+    else {
+      throw new IllegalArgumentException("The charm " + charm.getId() + " is illegal in this combo."); //$NON-NLS-1$ //$NON-NLS-2$
+    }
   }
 
   public void addComboModelListener(IComboModelListener listener) {
@@ -144,7 +149,7 @@ public class ComboConfiguration implements IComboConfiguration {
   }
 
   public boolean isComboLegal(ICharm charm) {
-    return getEditCombo().isComboLegal(charm);
+    return rules.canBeAddedToCombo(getEditCombo(), charm);
   }
 
   public void deleteCombo(ICombo combo) {

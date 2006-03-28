@@ -7,7 +7,6 @@ import java.util.List;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmType;
-import net.sf.anathema.character.impl.model.charm.combo.IComboArbitrator;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboModelListener;
 import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
@@ -21,26 +20,12 @@ public class Combo implements ICombo {
   private final ISimpleTextualDescription name = new SimpleTextualDescription();
   private final ISimpleTextualDescription description = new SimpleTextualDescription();
   private Integer id = null;
-  private final IComboArbitrator rules;
-
-  public Combo(IComboArbitrator rules) {
-    this.rules = rules;
-  }
 
   public ICharm[] getCharms() {
     return charmList.toArray(new ICharm[0]);
   }
 
-  public void addCharm(ICharm charm) {
-    if (checkRules(charm)) {
-      addCharmNoValidate(charm);
-    }
-    else {
-      throw new IllegalArgumentException("The charm " + charm.getId() + " is illegal in this combo."); //$NON-NLS-1$ //$NON-NLS-2$
-    }
-  }
-
-  private void addCharmNoValidate(ICharm charm) {
+  public void addCharmNoValidate(ICharm charm) {
     charmList.add(charm);
     if (charm.getCharmType() == CharmType.Simple) {
       simpleCharm = charm;
@@ -55,29 +40,11 @@ public class Combo implements ICombo {
     comboModelListeners.add(listener);
   }
 
-  private boolean checkRules(ICharm addedCharm) {
-    boolean legal = rules.isCharmComboLegal(addedCharm);
-    for (ICharm charm : getCharms()) {
-      legal = legal && rules.isComboLegal(charm, addedCharm);
-    }
-    return legal;
-  }
-
   private synchronized void fireComboChanged() {
     List<IComboModelListener> cloneList = new ArrayList<IComboModelListener>(comboModelListeners);
     for (IComboModelListener listener : cloneList) {
       listener.comboChanged();
     }
-  }
-
-  public ICharm[] getComboLegalCharms(ICharm[] learnedCharms) {
-    List<ICharm> legalCharms = new ArrayList<ICharm>(Arrays.asList(learnedCharms));
-    for (ICharm charm : learnedCharms) {
-      if (!checkRules(charm)) {
-        legalCharms.remove(charm);
-      }
-    }
-    return legalCharms.toArray(new ICharm[0]);
   }
 
   public void removeCharms(ICharm[] charms) {
@@ -94,7 +61,7 @@ public class Combo implements ICombo {
 
   @Override
   public ICombo clone() {
-    Combo clone = new Combo(rules);
+    Combo clone = new Combo();
     copyCombo(this, clone);
     return clone;
   }
@@ -128,10 +95,6 @@ public class Combo implements ICombo {
 
   public ISimpleTextualDescription getDescription() {
     return description;
-  }
-
-  public boolean isComboLegal(ICharm charm) {
-    return checkRules(charm);
   }
 
   public boolean contains(ICharm charm) {

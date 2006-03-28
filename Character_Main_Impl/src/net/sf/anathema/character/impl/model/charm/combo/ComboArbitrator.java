@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.DurationType;
 import net.sf.anathema.character.generic.magic.charms.ICharmTypeVisitor;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
+import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 
 public class ComboArbitrator implements IComboArbitrator {
@@ -24,6 +25,14 @@ public class ComboArbitrator implements IComboArbitrator {
   public boolean isCharmComboLegal(ICharm charm) {
     boolean isLegalDuration = charm.getDuration().getType() == DurationType.Instant;
     return charm.getComboRules().isComboAllowed(isLegalDuration);
+  }
+
+  public boolean canBeAddedToCombo(ICombo combo, ICharm charm) {
+    boolean legal = isCharmComboLegal(charm);
+    for (ICharm comboCharm : combo.getCharms()) {
+      legal = legal && isComboLegal(comboCharm, charm);
+    }
+    return legal;
   }
 
   public boolean isComboLegal(final ICharm charm1, final ICharm charm2) {
