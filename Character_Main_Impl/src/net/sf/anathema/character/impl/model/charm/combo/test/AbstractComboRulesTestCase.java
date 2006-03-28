@@ -21,6 +21,10 @@ public abstract class AbstractComboRulesTestCase extends BasicTestCase {
     this.rules = new ComboRules();
   }
 
+  protected IComboRules getRules() {
+    return rules;
+  }
+
   protected boolean comboSameAbilityCharms(CharmType type1, CharmType type2) {
     ICharm charm1 = DummyCharmUtilities.createCharm(type1, new ValuedTraitType(AbilityType.Archery, 3));
     ICharm charm2 = DummyCharmUtilities.createCharm(type2, new ValuedTraitType(AbilityType.Archery, 3));

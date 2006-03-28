@@ -12,6 +12,14 @@ public class ComboRules extends AbstractComboRules {
   private final IComboRules simpleCharmRules = new SimpleCharmComboRules();
   private final IComboRules extraActionCharmRules = new ExtraActionCharmComboRules();
   private final IComboRules supplementalCharmRules = new SupplementalCharmComboRules();
+  private boolean crossPrerequisite;
+
+  public void setCrossPrerequisiteTypeComboAllowed(boolean allowed) {
+    this.crossPrerequisite = allowed;
+    simpleCharmRules.setCrossPrerequisiteTypeComboAllowed(allowed);
+    extraActionCharmRules.setCrossPrerequisiteTypeComboAllowed(allowed);
+    supplementalCharmRules.setCrossPrerequisiteTypeComboAllowed(allowed);
+  }
 
   public boolean isCharmComboLegal(ICharm charm) {
     boolean isLegalDuration = charm.getDuration().getType() == DurationType.Instant;
@@ -20,6 +28,9 @@ public class ComboRules extends AbstractComboRules {
 
   public boolean isComboLegal(final ICharm charm1, final ICharm charm2) {
     if (charm1 == charm2) {
+      return false;
+    }
+    if (!isCharmComboLegal(charm1) || !isCharmComboLegal(charm2)) {
       return false;
     }
     if (specialRestrictionsApply(charm1, charm2) || specialRestrictionsApply(charm2, charm1)) {
@@ -51,7 +62,9 @@ public class ComboRules extends AbstractComboRules {
       }
 
       public void visitReflexive(CharmType visitedType) {
-        legal[0] = true;
+        legal[0] = haveAbilityPrerequisites(charm1, charm2)
+            || haveAttributePrerequisites(charm1, charm2)
+            || crossPrerequisite;
       }
 
       public void visitSupplemental(CharmType visitedType) {

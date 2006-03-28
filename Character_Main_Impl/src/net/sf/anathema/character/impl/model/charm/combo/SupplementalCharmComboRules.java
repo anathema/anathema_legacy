@@ -5,6 +5,11 @@ import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.ICharmTypeVisitor;
 
 public class SupplementalCharmComboRules extends AbstractComboRules {
+  private boolean crossPrerequisite;
+
+  public void setCrossPrerequisiteTypeComboAllowed(boolean allowed) {
+    this.crossPrerequisite = allowed;
+  }
 
   public boolean isComboLegal(final ICharm supplementalCharm, final ICharm otherCharm) {
     final boolean[] legal = new boolean[1];
@@ -13,14 +18,16 @@ public class SupplementalCharmComboRules extends AbstractComboRules {
         boolean allAbilitiesRule = allAbilitiesRuleApplied(supplementalCharm, otherCharm);
         boolean samePrerequisite = haveSamePrerequisite(supplementalCharm, otherCharm);
         boolean attributePrerequisites = haveAttributePrerequisites(supplementalCharm, otherCharm);
-        legal[0] = allAbilitiesRule || samePrerequisite || attributePrerequisites;
+        boolean abilityAttributeCombo = crossPrerequisite && isAbilityAttributeCombo(supplementalCharm, otherCharm);
+        legal[0] = allAbilitiesRule || samePrerequisite || attributePrerequisites || abilityAttributeCombo;
       }
 
       public void visitExtraAction(CharmType visitedType) {
         boolean allAbilitiesRule = allAbilitiesRuleApplied(supplementalCharm, otherCharm);
         boolean samePrerequisite = haveSamePrerequisite(supplementalCharm, otherCharm);
         boolean attributePrerequisites = haveAttributePrerequisites(supplementalCharm, otherCharm);
-        legal[0] = allAbilitiesRule || samePrerequisite || attributePrerequisites;
+        boolean abilityAttributeCombo = crossPrerequisite && isAbilityAttributeCombo(supplementalCharm, otherCharm);
+        legal[0] = allAbilitiesRule || samePrerequisite || attributePrerequisites || abilityAttributeCombo;
       }
 
       public void visitReflexive(CharmType visitedType) {
@@ -31,7 +38,8 @@ public class SupplementalCharmComboRules extends AbstractComboRules {
         boolean allAbilitiesRule = allAbilitiesRuleApplied(supplementalCharm, otherCharm);
         boolean samePrerequisite = haveSamePrerequisite(supplementalCharm, otherCharm);
         boolean attributePrerequisites = haveAttributePrerequisites(supplementalCharm, otherCharm);
-        legal[0] = allAbilitiesRule || samePrerequisite || attributePrerequisites;
+        boolean abilityAttributeCombo = crossPrerequisite && isAbilityAttributeCombo(supplementalCharm, otherCharm);
+        legal[0] = allAbilitiesRule || samePrerequisite || attributePrerequisites || abilityAttributeCombo;
       }
 
       public void visitSpecial(CharmType visitedType) {

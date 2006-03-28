@@ -5,6 +5,11 @@ import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.ICharmTypeVisitor;
 
 public class SimpleCharmComboRules extends AbstractComboRules {
+  private boolean crossPrerequisite;
+
+  public void setCrossPrerequisiteTypeComboAllowed(boolean allowed) {
+    this.crossPrerequisite = allowed;
+  }
 
   public boolean isComboLegal(final ICharm simpleCharm, final ICharm otherCharm) {
     final boolean[] legal = new boolean[1];
@@ -17,7 +22,8 @@ public class SimpleCharmComboRules extends AbstractComboRules {
         boolean allAbilitiesRule = allAbilitiesRuleApplied(simpleCharm, otherCharm);
         boolean samePrerequisite = haveSamePrerequisite(simpleCharm, otherCharm);
         boolean attributePrerequisites = haveAttributePrerequisites(simpleCharm, otherCharm);
-        legal[0] = allAbilitiesRule || samePrerequisite || attributePrerequisites;
+        boolean abilityAttributeCombo = crossPrerequisite && isAbilityAttributeCombo(simpleCharm, otherCharm);
+        legal[0] = allAbilitiesRule || samePrerequisite || attributePrerequisites || abilityAttributeCombo;
       }
 
       public void visitReflexive(CharmType visitedType) {
@@ -28,7 +34,8 @@ public class SimpleCharmComboRules extends AbstractComboRules {
         boolean allAbilitiesRule = allAbilitiesRuleApplied(simpleCharm, otherCharm);
         boolean samePrerequisite = haveSamePrerequisite(simpleCharm, otherCharm);
         boolean attributePrerequisites = haveAttributePrerequisites(simpleCharm, otherCharm);
-        legal[0] = allAbilitiesRule || samePrerequisite || attributePrerequisites;
+        boolean abilityAttributeCombo = crossPrerequisite && isAbilityAttributeCombo(simpleCharm, otherCharm);
+        legal[0] = allAbilitiesRule || samePrerequisite || attributePrerequisites || abilityAttributeCombo;
       }
 
       public void visitSpecial(CharmType visitedType) {

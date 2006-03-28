@@ -40,8 +40,14 @@ public class SimpleCharmComboRulesTest extends AbstractComboRulesTestCase {
     assertTrue(comboDifferentAttributeCharms(CharmType.Simple, CharmType.Supplemental));
   }
 
-  public void testCharmComboAbilitySimpleCharmCombosWithAttributeSupplemental() throws Exception {
+  public void testCharmComboAbilitySimpleCharmCombosWithAttributeSupplementalAllowed() throws Exception {
+    getRules().setCrossPrerequisiteTypeComboAllowed(true);
     assertTrue(comboAbilityAttributeCharms(CharmType.Simple, CharmType.Supplemental));
+  }
+
+  public void testCharmComboAbilitySimpleCharmCombosWithAttributeSupplementalForbidden() throws Exception {
+    getRules().setCrossPrerequisiteTypeComboAllowed(false);
+    assertFalse(comboAbilityAttributeCharms(CharmType.Simple, CharmType.Supplemental));
   }
 
   public void testCharmComboSimpleCharmWithExtraActionOfSameAbility() throws Exception {
@@ -56,8 +62,14 @@ public class SimpleCharmComboRulesTest extends AbstractComboRulesTestCase {
     assertTrue(comboDifferentAttributeCharms(CharmType.Simple, CharmType.ExtraAction));
   }
 
-  public void testCharmComboAbilitySimpleCharmCombosWithAttributeExtraAction() throws Exception {
+  public void testCharmComboAbilitySimpleCharmCombosWithAttributeExtraActionAllowed() throws Exception {
+    getRules().setCrossPrerequisiteTypeComboAllowed(true);
     assertTrue(comboAbilityAttributeCharms(CharmType.Simple, CharmType.ExtraAction));
+  }
+
+  public void testCharmComboAbilitySimpleCharmCombosWithAttributeExtraActionForbidden() throws Exception {
+    getRules().setCrossPrerequisiteTypeComboAllowed(false);
+    assertFalse(comboAbilityAttributeCharms(CharmType.Simple, CharmType.ExtraAction));
   }
 
   public void testCharmComboRestrictionAllAbilitiesWithExtraActionCharm() throws Exception {

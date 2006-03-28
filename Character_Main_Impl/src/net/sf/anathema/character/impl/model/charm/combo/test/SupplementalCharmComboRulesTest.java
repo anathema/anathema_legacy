@@ -42,7 +42,13 @@ public class SupplementalCharmComboRulesTest extends AbstractComboRulesTestCase 
     assertTrue(comboAllAbilitiesCharmWithAbility(CharmType.Supplemental, CharmType.Supplemental));
   }
 
-  public void testCharmComboAbilityAttributeSupplemental() throws Exception {
+  public void testCharmComboAbilityAttributeSupplementalAllowed() throws Exception {
+    getRules().setCrossPrerequisiteTypeComboAllowed(true);
     assertTrue(comboAbilityAttributeCharms(CharmType.Supplemental, CharmType.Supplemental));
+  }
+
+  public void testCharmComboAbilityAttributeSupplementalForbidden() throws Exception {
+    getRules().setCrossPrerequisiteTypeComboAllowed(false);
+    assertFalse(comboAbilityAttributeCharms(CharmType.Supplemental, CharmType.Supplemental));
   }
 }

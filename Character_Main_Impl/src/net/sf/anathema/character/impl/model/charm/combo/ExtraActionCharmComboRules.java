@@ -6,6 +6,12 @@ import net.sf.anathema.character.generic.magic.charms.ICharmTypeVisitor;
 
 public class ExtraActionCharmComboRules extends AbstractComboRules {
 
+  private boolean crossPrerequisite;
+
+  public void setCrossPrerequisiteTypeComboAllowed(boolean allowed) {
+    this.crossPrerequisite = allowed;
+  }
+
   public boolean isComboLegal(final ICharm extraActionCharm, final ICharm otherCharm) {
     final boolean[] legal = new boolean[1];
     otherCharm.getCharmType().accept(new ICharmTypeVisitor() {
@@ -13,7 +19,8 @@ public class ExtraActionCharmComboRules extends AbstractComboRules {
         boolean allAbilitiesRule = allAbilitiesRuleApplied(extraActionCharm, otherCharm);
         boolean samePrerequisite = haveSamePrerequisite(extraActionCharm, otherCharm);
         boolean attributePrerequisites = haveAttributePrerequisites(extraActionCharm, otherCharm);
-        legal[0] = allAbilitiesRule || samePrerequisite || attributePrerequisites;
+        boolean abilityAttributeCombo = crossPrerequisite && isAbilityAttributeCombo(extraActionCharm, otherCharm);
+        legal[0] = allAbilitiesRule || samePrerequisite || attributePrerequisites || abilityAttributeCombo;
       }
 
       public void visitExtraAction(CharmType visitedType) {
@@ -28,14 +35,13 @@ public class ExtraActionCharmComboRules extends AbstractComboRules {
         boolean allAbilitiesRule = allAbilitiesRuleApplied(extraActionCharm, otherCharm);
         boolean samePrerequisite = haveSamePrerequisite(extraActionCharm, otherCharm);
         boolean attributePrerequisites = haveAttributePrerequisites(extraActionCharm, otherCharm);
-        legal[0] = allAbilitiesRule || samePrerequisite || attributePrerequisites;
+        boolean abilityAttributeCombo = crossPrerequisite && isAbilityAttributeCombo(extraActionCharm, otherCharm);
+        legal[0] = allAbilitiesRule || samePrerequisite || attributePrerequisites || abilityAttributeCombo;
       }
 
       public void visitSpecial(CharmType visitedType) {
         // TODO Auto-generated method stub
-
       }
-
     });
     return legal[0];
   }

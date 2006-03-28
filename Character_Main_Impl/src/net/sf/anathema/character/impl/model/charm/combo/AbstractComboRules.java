@@ -18,16 +18,24 @@ public abstract class AbstractComboRules implements IComboRules {
     return hasAbilityPrerequisite(charm1) && hasAbilityPrerequisite(charm2);
   }
 
-  protected boolean hasAbilityPrerequisite(ICharm charm) {
+  protected final boolean allAbilitiesRuleApplied(ICharm charm1, ICharm charm2) {
+    return (allAbiltiesCombo(charm1, charm2)) || (allAbiltiesCombo(charm2, charm1));
+  }
+
+  protected final boolean isAbilityAttributeCombo(ICharm charm1, ICharm charm2) {
+    return isAbilityAttributeMix(charm1, charm2) || isAbilityAttributeMix(charm2, charm1);
+  }
+
+  private boolean isAbilityAttributeMix(ICharm charm1, ICharm charm2) {
+    return hasAbilityPrerequisite(charm1) && hasAttributePrerequisite(charm2);
+  }
+
+  private boolean hasAbilityPrerequisite(ICharm charm) {
     return charm.getPrerequisites()[0].getType() instanceof AbilityType;
   }
 
   private boolean hasAttributePrerequisite(ICharm charm) {
     return charm.getPrerequisites()[0].getType() instanceof AttributeType;
-  }
-
-  protected boolean allAbilitiesRuleApplied(ICharm charm1, ICharm charm2) {
-    return (allAbiltiesCombo(charm1, charm2)) || (allAbiltiesCombo(charm2, charm1));
   }
 
   private boolean allAbiltiesCombo(ICharm charm1, ICharm charm2) {

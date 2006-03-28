@@ -40,12 +40,24 @@ public class ExtraActionCharmComboRulesTest extends AbstractComboRulesTestCase {
     assertTrue(comboDifferentAttributeCharms(CharmType.ExtraAction, CharmType.Supplemental));
   }
 
-  public void testCharmComboAbilityExtraActionCharmCombosWithAttributeSupplemental() throws Exception {
+  public void testCharmComboAbilityExtraActionCharmCombosWithAttributeSupplementalAllowed() throws Exception {
+    getRules().setCrossPrerequisiteTypeComboAllowed(true);
     assertTrue(comboAbilityAttributeCharms(CharmType.ExtraAction, CharmType.Supplemental));
   }
 
-  public void testCharmComboAbilityExtraActionCharmCombosWithAttributeSimple() throws Exception {
+  public void testCharmComboAbilityExtraActionCharmCombosWithAttributeSupplementalForbidden() throws Exception {
+    getRules().setCrossPrerequisiteTypeComboAllowed(false);
+    assertFalse(comboAbilityAttributeCharms(CharmType.ExtraAction, CharmType.Supplemental));
+  }
+
+  public void testCharmComboAbilityExtraActionCharmCombosWithAttributeSimpleAllowed() throws Exception {
+    getRules().setCrossPrerequisiteTypeComboAllowed(true);
     assertTrue(comboAbilityAttributeCharms(CharmType.ExtraAction, CharmType.Simple));
+  }
+
+  public void testCharmComboAbilityExtraActionCharmCombosWithAttributeSimpleForbidden() throws Exception {
+    getRules().setCrossPrerequisiteTypeComboAllowed(false);
+    assertFalse(comboAbilityAttributeCharms(CharmType.ExtraAction, CharmType.Simple));
   }
 
   public void testCharmComboExtraActionCharmWithSimpleOfSameAbility() throws Exception {
