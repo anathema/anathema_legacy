@@ -1,12 +1,9 @@
 package net.sf.anathema.character.impl.model.traits.essence;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
-import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.essence.FactorizedTrait;
@@ -16,11 +13,13 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.model.traits.essence.IEssencePoolStrategy;
-import net.sf.anathema.character.model.traits.essence.IPoolValueListener;
+import net.sf.anathema.lib.control.ChangeListenerClosure;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public class EssencePoolStrategy implements IEssencePoolStrategy {
 
-  private final List<IPoolValueListener> poolListeners = new ArrayList<IPoolValueListener>();
+  private final GenericControl<IChangeListener> control = new GenericControl<IChangeListener>();
   private final IEssenceTemplate essenceTemplate;
   private final IAdditionalRules additionalRules;
   private final IGenericTraitCollection traitCollection;
@@ -45,14 +44,11 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
   }
 
   private void firePoolsChanged() {
-    List<IPoolValueListener> cloneList = new ArrayList<IPoolValueListener>(poolListeners);
-    for (IPoolValueListener listener : cloneList) {
-      listener.poolsChanged();
-    }
+    control.forAllDo(new ChangeListenerClosure());
   }
 
-  public void addPoolListener(IPoolValueListener listener) {
-    poolListeners.add(listener);
+  public void addPoolChangeListener(IChangeListener listener) {
+    control.addListener(listener);
   }
 
   public int getExtendedPersonalPool() {

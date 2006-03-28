@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.model.traits.essence.IEssencePoolConfiguration;
 import net.sf.anathema.character.model.traits.essence.IEssencePoolStrategy;
-import net.sf.anathema.character.model.traits.essence.IPoolValueListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public class EssencePoolConfiguration implements IEssencePoolConfiguration {
 
@@ -55,7 +55,7 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
     return isEssenceUser() && poolStrategy.getExtendedPeripheralPool() != 0;
   }
 
-  public void addPoolListener(IPoolValueListener listener) {
-    poolStrategy.addPoolListener(listener);
+  public void addPoolChangeListener(IChangeListener listener) {
+    poolStrategy.addPoolChangeListener(listener);
   }
 }
