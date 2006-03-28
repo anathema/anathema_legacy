@@ -44,6 +44,19 @@ public class ComboRulesTest extends AbstractComboRulesTestCase {
     assertFalse(rules.isComboLegal(charm1, charm2));
   }
 
+  public void testRestrictionById() throws Exception {
+    ComboRestrictions restrictions = new ComboRestrictions();
+    restrictions.addRestrictedCharmId("DummyCharm"); //$NON-NLS-1$
+    ICharm charm1 = DummyCharmUtilities.createCharm(CharmType.Supplemental, restrictions, new ValuedTraitType(
+        AbilityType.Archery,
+        3));
+    DummyMartialArtsCharm charm2 = (DummyMartialArtsCharm) DummyCharmUtilities.createCharm(
+        CharmType.ExtraAction,
+        new ValuedTraitType(AbilityType.Archery, 3));
+    charm2.setId("DummyCharm");
+    assertFalse(rules.isComboLegal(charm1, charm2));
+  }
+
   public void testCharmComboSelf() throws Exception {
     ICharm charm1 = DummyCharmUtilities.createCharm(CharmType.Reflexive);
     assertFalse(rules.isComboLegal(charm1, charm1));
