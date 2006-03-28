@@ -1,9 +1,7 @@
 package net.sf.anathema.character.impl.model.charm;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -17,12 +15,14 @@ import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ICharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 
 public class LearningCharmGroup extends CharmGroup implements ILearningCharmGroup {
 
   private final Set<ICharm> charmsLearnedOnCreation = new HashSet<ICharm>();
   private final Set<ICharm> charmsLearnedWithExperience = new HashSet<ICharm>();
-  private final List<ICharmLearnListener> learnListeners = new ArrayList<ICharmLearnListener>();
+  private final GenericControl<ICharmLearnListener> control = new GenericControl<ICharmLearnListener>();
   private final Map<ICharm, ISpecialCharmConfiguration> specialConfigurationsByCharm = new HashMap<ICharm, ISpecialCharmConfiguration>();
   private final ICharmLearnableArbitrator learnArbitrator;
   private final ICharmLearnStrategy learnStrategy;
@@ -138,43 +138,48 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
     }
   }
 
-  private void fireCharmLearned(ICharm charm) {
-    List<ICharmLearnListener> cloneList = new ArrayList<ICharmLearnListener>(learnListeners);
-    for (ICharmLearnListener listener : cloneList) {
-      listener.charmLearned(charm);
-    }
+  private void fireCharmLearned(final ICharm charm) {
+    control.forAllDo(new IClosure<ICharmLearnListener>() {
+      public void execute(ICharmLearnListener input) {
+        input.charmLearned(charm);
+      }
+    });
   }
 
-  private synchronized void fireCharmForgotten(ICharm charm) {
-    List<ICharmLearnListener> cloneList = new ArrayList<ICharmLearnListener>(learnListeners);
-    for (ICharmLearnListener listener : cloneList) {
-      listener.charmForgotten(charm);
-    }
+  private void fireCharmForgotten(final ICharm charm) {
+    control.forAllDo(new IClosure<ICharmLearnListener>() {
+      public void execute(ICharmLearnListener input) {
+        input.charmForgotten(charm);
+      }
+    });
   }
 
-  private synchronized void fireNotLearnableEvent(ICharm charm) {
-    List<ICharmLearnListener> cloneList = new ArrayList<ICharmLearnListener>(learnListeners);
-    for (ICharmLearnListener listener : cloneList) {
-      listener.charmNotLearnable(charm);
-    }
+  private void fireNotLearnableEvent(final ICharm charm) {
+    control.forAllDo(new IClosure<ICharmLearnListener>() {
+      public void execute(ICharmLearnListener input) {
+        input.charmNotLearnable(charm);
+      }
+    });
   }
 
-  private synchronized void fireNotUnlearnableEvent(ICharm charm) {
-    List<ICharmLearnListener> cloneList = new ArrayList<ICharmLearnListener>(learnListeners);
-    for (ICharmLearnListener listener : cloneList) {
-      listener.charmNotUnlearnable(charm);
-    }
+  private void fireNotUnlearnableEvent(final ICharm charm) {
+    control.forAllDo(new IClosure<ICharmLearnListener>() {
+      public void execute(ICharmLearnListener input) {
+        input.charmNotUnlearnable(charm);
+      }
+    });
   }
 
-  private synchronized void fireRecalculateRequested() {
-    List<ICharmLearnListener> cloneList = new ArrayList<ICharmLearnListener>(learnListeners);
-    for (ICharmLearnListener listener : cloneList) {
-      listener.recalculateRequested();
-    }
+  private void fireRecalculateRequested() {
+    control.forAllDo(new IClosure<ICharmLearnListener>() {
+      public void execute(ICharmLearnListener input) {
+        input.recalculateRequested();
+      }
+    });
   }
 
-  public synchronized void addCharmLearnListener(ICharmLearnListener listener) {
-    learnListeners.add(listener);
+  public void addCharmLearnListener(ICharmLearnListener listener) {
+    control.addListener(listener);
   }
 
   public ICharm[] getCreationLearnedCharms() {
