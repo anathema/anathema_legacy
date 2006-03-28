@@ -11,16 +11,19 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.impl.model.charm.Combo;
+import net.sf.anathema.character.impl.model.charm.combo.ComboArbitrator;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
 public class ComboTest extends BasicTestCase {
 
   private Combo combo;
+  private ComboArbitrator comboRules;
 
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    this.combo = new Combo();
+    this.comboRules = new ComboArbitrator();
+    this.combo = new Combo(comboRules);
   }
 
   protected final static ICharm createCharm(CharmType charmType) {
@@ -70,17 +73,17 @@ public class ComboTest extends BasicTestCase {
   }
 
   public void testOnlyOneExtraActionCharm() {
-    ICharm extraActionCharm = createCharm(CharmType.ExtraAction);
+    ICharm extraActionCharm = createCharm(CharmType.ExtraAction, new ValuedTraitType(AbilityType.Archery, 3));
     assertTrue(combo.isComboLegal(extraActionCharm));
     combo.addCharm(extraActionCharm);
-    assertFalse(combo.isComboLegal(createCharm(CharmType.ExtraAction)));
+    assertFalse(combo.isComboLegal(createCharm(CharmType.ExtraAction, new ValuedTraitType(AbilityType.Archery, 3))));
   }
 
   public void testOnlyOneSimpleCharm() {
-    ICharm simpleCharm = createCharm(CharmType.Simple);
+    ICharm simpleCharm = createCharm(CharmType.Simple, new ValuedTraitType(AbilityType.Archery, 3));
     assertTrue(combo.isComboLegal(simpleCharm));
     combo.addCharm(simpleCharm);
-    assertFalse(combo.isComboLegal(createCharm(CharmType.Simple)));
+    assertFalse(combo.isComboLegal(createCharm(CharmType.Simple, new ValuedTraitType(AbilityType.Archery, 3))));
   }
 
   public void testSimpleCharmOfSamePrimaryPrerequisiteAsExtraAction() throws Exception {
@@ -90,11 +93,13 @@ public class ComboTest extends BasicTestCase {
   }
 
   public void testAttributeSimpleCharmsCombosWithAbilityExtraAction() throws Exception {
+    comboRules.setCrossPrerequisiteTypeComboAllowed(true);
     combo.addCharm(createCharm(CharmType.ExtraAction, new ValuedTraitType(AbilityType.Archery, 3)));
     assertTrue(combo.isComboLegal(createCharm(CharmType.Simple, new ValuedTraitType(AttributeType.Appearance, 3))));
   }
 
   public void testAbilitySimpleCharmCombosWithAttributeExtraAction() throws Exception {
+    comboRules.setCrossPrerequisiteTypeComboAllowed(true);
     combo.addCharm(createCharm(CharmType.ExtraAction, new ValuedTraitType(AttributeType.Appearance, 3)));
     assertTrue(combo.isComboLegal(createCharm(CharmType.Simple, new ValuedTraitType(AbilityType.Archery, 3))));
   }
@@ -106,6 +111,7 @@ public class ComboTest extends BasicTestCase {
   }
 
   public void testAttributeExtraActionCombosWithAbilitySimpleCharm() throws Exception {
+    comboRules.setCrossPrerequisiteTypeComboAllowed(true);
     combo.addCharm(createCharm(CharmType.Simple, new ValuedTraitType(AbilityType.Archery, 3)));
     assertTrue(combo.isComboLegal(createCharm(CharmType.ExtraAction, new ValuedTraitType(AttributeType.Dexterity, 3))));
   }
@@ -117,6 +123,7 @@ public class ComboTest extends BasicTestCase {
   }
 
   public void testAttributeExtraActionCombosWithAbilitySupplemental() throws Exception {
+    comboRules.setCrossPrerequisiteTypeComboAllowed(true);
     combo.addCharm(createCharm(CharmType.Supplemental, new ValuedTraitType(AbilityType.Archery, 3)));
     assertTrue(combo.isComboLegal(createCharm(CharmType.ExtraAction, new ValuedTraitType(AttributeType.Perception, 3))));
   }
@@ -128,6 +135,7 @@ public class ComboTest extends BasicTestCase {
   }
 
   public void testAbilitySupplementalCombosWithAttributeExtraAction() throws Exception {
+    comboRules.setCrossPrerequisiteTypeComboAllowed(true);
     combo.addCharm(createCharm(CharmType.ExtraAction, new ValuedTraitType(AttributeType.Wits, 3)));
     assertTrue(combo.isComboLegal(createCharm(CharmType.Supplemental, new ValuedTraitType(AbilityType.Awareness, 3))));
   }

@@ -7,17 +7,17 @@ import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.DurationType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
-import net.sf.anathema.character.impl.model.charm.combo.ComboRules;
+import net.sf.anathema.character.impl.model.charm.combo.ComboArbitrator;
 import net.sf.anathema.character.impl.model.charm.test.DummyCharmUtilities;
 
 public class ComboRulesTest extends AbstractComboRulesTestCase {
 
-  private ComboRules rules;
+  private ComboArbitrator rules;
 
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    this.rules = new ComboRules();
+    this.rules = new ComboArbitrator();
   }
 
   public void testDurationComboLegal() throws Exception {

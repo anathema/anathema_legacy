@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
-import net.sf.anathema.character.impl.model.charm.combo.ComboRules;
+import net.sf.anathema.character.impl.model.charm.combo.ComboArbitrator;
 import net.sf.anathema.character.impl.model.charm.combo.IComboRules;
 import net.sf.anathema.character.impl.model.charm.test.DummyCharmUtilities;
 import net.sf.anathema.lib.testing.BasicTestCase;
@@ -18,7 +18,7 @@ public abstract class AbstractComboRulesTestCase extends BasicTestCase {
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    this.rules = new ComboRules();
+    this.rules = new ComboArbitrator();
   }
 
   protected IComboRules getRules() {

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.impl.model.charm.combo.ComboArbitrator;
+import net.sf.anathema.character.impl.model.charm.combo.IComboArbitrator;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
@@ -16,7 +18,8 @@ public class ComboConfiguration implements IComboConfiguration {
 
   private final List<ICombo> creationComboList = new ArrayList<ICombo>();
   private final List<ICombo> experiencedComboList = new ArrayList<ICombo>();
-  private final ICombo editCombo = new Combo();
+  private final IComboArbitrator rules = new ComboArbitrator();
+  private final ICombo editCombo = new Combo(rules);
   private final List<IComboConfigurationListener> listeners = new ArrayList<IComboConfigurationListener>();
   private final ICharmConfiguration charmConfiguration;
   private final ComboIdProvider idProvider = new ComboIdProvider();
