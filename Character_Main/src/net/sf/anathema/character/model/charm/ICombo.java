@@ -28,5 +28,5 @@ public interface ICombo extends Cloneable {
 
   public void getValuesFrom(ICombo combo);
 
-  public void addCharmNoValidate(ICharm charm);
+  public void addCharm(ICharm charm);
 }
