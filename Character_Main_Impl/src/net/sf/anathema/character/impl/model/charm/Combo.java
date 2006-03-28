@@ -28,7 +28,7 @@ public class Combo implements ICombo {
     return charmList.toArray(new ICharm[0]);
   }
 
-  public void addCharmNoValidate(ICharm charm) {
+  public void addCharm(ICharm charm) {
     charmList.add(charm);
     if (charm.getCharmType() == CharmType.Simple) {
       simpleCharm = charm;
@@ -73,7 +73,7 @@ public class Combo implements ICombo {
 
   private void copyCombo(ICombo source, Combo destination) {
     for (ICharm charm : source.getCharms()) {
-      destination.addCharmNoValidate(charm);
+      destination.addCharm(charm);
     }
     if (source.getId() != null) {
       destination.setId(source.getId());

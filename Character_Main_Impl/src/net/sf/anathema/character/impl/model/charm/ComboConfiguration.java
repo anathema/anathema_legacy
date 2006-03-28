@@ -63,7 +63,7 @@ public class ComboConfiguration implements IComboConfiguration {
 
   public void addCharmToCombo(ICharm charm) {
     if (rules.canBeAddedToCombo(getEditCombo(), charm)) {
-      getEditCombo().addCharmNoValidate(charm);
+      getEditCombo().addCharm(charm);
     }
     else {
       throw new IllegalArgumentException("The charm " + charm.getId() + " is illegal in this combo."); //$NON-NLS-1$ //$NON-NLS-2$
