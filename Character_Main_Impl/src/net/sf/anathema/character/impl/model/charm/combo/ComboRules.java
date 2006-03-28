@@ -4,6 +4,8 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.DurationType;
 import net.sf.anathema.character.generic.magic.charms.ICharmTypeVisitor;
+import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
+import net.sf.anathema.lib.lang.ArrayUtilities;
 
 public class ComboRules extends AbstractComboRules {
 
@@ -20,10 +22,21 @@ public class ComboRules extends AbstractComboRules {
     if (charm1 == charm2) {
       return false;
     }
-    if (charm1.getComboRules().isRestrictedCharm(charm2) || charm2.getComboRules().isRestrictedCharm(charm1)) {
+    if (specialRestrictionsApply(charm1, charm2) || specialRestrictionsApply(charm2, charm1)) {
       return false;
     }
     return handleComboRules(charm1, charm2) && handleComboRules(charm2, charm1);
+  }
+
+  private boolean specialRestrictionsApply(ICharm charm1, ICharm charm2) {
+    IComboRestrictions comboRules = charm1.getComboRules();
+    if (comboRules.isRestrictedCharm(charm2)) {
+      return true;
+    }
+    if (ArrayUtilities.contains(comboRules.getRestrictedTraitTypes(), charm2.getPrerequisites()[0].getType())) {
+      return true;
+    }
+    return false;
   }
 
   private boolean handleComboRules(final ICharm charm1, final ICharm charm2) {
