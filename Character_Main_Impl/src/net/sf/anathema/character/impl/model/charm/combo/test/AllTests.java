@@ -12,6 +12,7 @@ public class AllTests {
     suite.addTestSuite(ComboRulesTest.class);
     suite.addTestSuite(ExtraActionCharmComboRulesTest.class);
     suite.addTestSuite(SimpleCharmComboRulesTest.class);
+    suite.addTestSuite(ReflexiveCharmComboRulesTest.class);
     //$JUnit-END$
     return suite;
   }

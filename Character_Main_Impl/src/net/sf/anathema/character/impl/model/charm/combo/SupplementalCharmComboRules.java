@@ -43,7 +43,7 @@ public class SupplementalCharmComboRules extends AbstractComboRules {
       }
 
       public void visitSpecial(CharmType visitedType) {
-        // TODO Auto-generated method stub
+        legal[0] = false;
       }
     });
     return legal[0];

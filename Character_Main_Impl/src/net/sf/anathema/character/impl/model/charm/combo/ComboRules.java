@@ -12,13 +12,13 @@ public class ComboRules extends AbstractComboRules {
   private final IComboRules simpleCharmRules = new SimpleCharmComboRules();
   private final IComboRules extraActionCharmRules = new ExtraActionCharmComboRules();
   private final IComboRules supplementalCharmRules = new SupplementalCharmComboRules();
-  private boolean crossPrerequisite;
+  private final IComboRules reflexiveCharmRules = new ReflexiveCharmComboRules();
 
   public void setCrossPrerequisiteTypeComboAllowed(boolean allowed) {
-    this.crossPrerequisite = allowed;
     simpleCharmRules.setCrossPrerequisiteTypeComboAllowed(allowed);
     extraActionCharmRules.setCrossPrerequisiteTypeComboAllowed(allowed);
     supplementalCharmRules.setCrossPrerequisiteTypeComboAllowed(allowed);
+    reflexiveCharmRules.setCrossPrerequisiteTypeComboAllowed(allowed);
   }
 
   public boolean isCharmComboLegal(ICharm charm) {
@@ -62,9 +62,7 @@ public class ComboRules extends AbstractComboRules {
       }
 
       public void visitReflexive(CharmType visitedType) {
-        legal[0] = haveAbilityPrerequisites(charm1, charm2)
-            || haveAttributePrerequisites(charm1, charm2)
-            || crossPrerequisite;
+        legal[0] = reflexiveCharmRules.isComboLegal(charm1, charm2);
       }
 
       public void visitSupplemental(CharmType visitedType) {
@@ -72,7 +70,7 @@ public class ComboRules extends AbstractComboRules {
       }
 
       public void visitSpecial(CharmType visitedType) {
-        legal[0] = true;
+        legal[0] = false;
       }
     });
     return legal[0];

@@ -74,14 +74,4 @@ public class ComboRulesTest extends AbstractComboRulesTestCase {
     ICharm charm1 = DummyCharmUtilities.createCharm(CharmType.Reflexive);
     assertFalse(rules.isComboLegal(charm1, charm1));
   }
-
-  public void testCharmComboAttributeAbilityReflexiveForbidden() throws Exception {
-    getRules().setCrossPrerequisiteTypeComboAllowed(false);
-    assertFalse(comboAbilityAttributeCharms(CharmType.Reflexive, CharmType.Reflexive));
-  }
-
-  public void testCharmComboAttributeAbilityReflexiveAllowed() throws Exception {
-    getRules().setCrossPrerequisiteTypeComboAllowed(true);
-    assertTrue(comboAbilityAttributeCharms(CharmType.Reflexive, CharmType.Reflexive));
-  }
 }
