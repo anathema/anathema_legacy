@@ -36,6 +36,10 @@ public class ComboConfiguration implements IComboConfiguration {
     });
   }
 
+  public void setCrossPrerequisiteTypeComboAllowed(boolean allowed) {
+    rules.setCrossPrerequisiteTypeComboAllowed(allowed);
+  }
+
   private void checkCombos(ICharm charm) {
     List<ICombo> deletionList = new ArrayList<ICombo>();
     for (ICombo combo : creationComboList) {
