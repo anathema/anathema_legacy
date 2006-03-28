@@ -8,13 +8,16 @@ import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.model.charm.ICombo;
-import net.sf.anathema.character.model.charm.IComboModelListener;
+import net.sf.anathema.lib.control.ChangeListenerClosure;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
 public class Combo implements ICombo {
+
+  private final GenericControl<IChangeListener> control = new GenericControl<IChangeListener>();
   private final List<ICharm> charmList = new ArrayList<ICharm>();
-  private final List<IComboModelListener> comboModelListeners = new ArrayList<IComboModelListener>();
   private ICharm extraActionCharm = null;
   private ICharm simpleCharm = null;
   private final ISimpleTextualDescription name = new SimpleTextualDescription();
@@ -36,15 +39,12 @@ public class Combo implements ICombo {
     fireComboChanged();
   }
 
-  public synchronized void addComboModelListener(IComboModelListener listener) {
-    comboModelListeners.add(listener);
+  public void addComboModelListener(IChangeListener listener) {
+    control.addListener(listener);
   }
 
-  private synchronized void fireComboChanged() {
-    List<IComboModelListener> cloneList = new ArrayList<IComboModelListener>(comboModelListeners);
-    for (IComboModelListener listener : cloneList) {
-      listener.comboChanged();
-    }
+  private void fireComboChanged() {
+    control.forAllDo(new ChangeListenerClosure());
   }
 
   public void removeCharms(ICharm[] charms) {
@@ -108,10 +108,6 @@ public class Combo implements ICombo {
   public void setId(Integer id) {
     Ensure.ensureNull("Id already set.", this.id); //$NON-NLS-1$
     Ensure.ensureNotNull("Id must not be null.", id); //$NON-NLS-1$
-    setIdNoValidate(id);
-  }
-
-  private void setIdNoValidate(Integer id) {
     this.id = id;
   }
 }

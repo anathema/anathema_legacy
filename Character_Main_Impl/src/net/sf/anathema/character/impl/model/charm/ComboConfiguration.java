@@ -11,8 +11,8 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfigurationListener;
-import net.sf.anathema.character.model.charm.IComboModelListener;
 import net.sf.anathema.character.model.charm.learn.IComboLearnStrategy;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public class ComboConfiguration implements IComboConfiguration {
 
@@ -74,7 +74,7 @@ public class ComboConfiguration implements IComboConfiguration {
     }
   }
 
-  public void addComboModelListener(IComboModelListener listener) {
+  public void addComboModelListener(IChangeListener listener) {
     editCombo.addComboModelListener(listener);
   }
 
