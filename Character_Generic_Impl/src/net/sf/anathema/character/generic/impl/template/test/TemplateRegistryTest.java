@@ -56,4 +56,26 @@ public class TemplateRegistryTest extends BasicTestCase {
     assertTrue(ArrayUtilities.contains(allSupportedTemplates, otherTemplate));
     assertFalse(ArrayUtilities.contains(allSupportedTemplates, unsupportedTemplate));
   }
+
+  public void testRegisterAndRetrieveByRuleset() throws Exception {
+    SimpleDummyCharacterTemplate firstTemplate = new SimpleDummyCharacterTemplate(
+        CharacterType.MORTAL,
+        null,
+        ExaltedRuleSet.getFirstEditionSets());
+    SimpleDummyCharacterTemplate secondTemplate = new SimpleDummyCharacterTemplate(
+        CharacterType.MORTAL,
+        null,
+        ExaltedRuleSet.getSecondEditionSets());
+    registry.register(firstTemplate);
+    registry.register(secondTemplate);
+    fail();
+    // assertEquals(firstTemplate, registry.getTemplate(new TemplateType(CharacterType.MORTAL),
+    // ExaltedRuleSet.CoreRules));
+    // assertEquals(
+    // firstTemplate,
+    // registry.getTemplate(new TemplateType(CharacterType.MORTAL), ExaltedRuleSet.PowerCombat));
+    // assertEquals(secondTemplate, registry.getTemplate(
+    // new TemplateType(CharacterType.MORTAL),
+    // ExaltedRuleSet.SecondEdition));
+  }
 }
