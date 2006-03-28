@@ -1,11 +1,11 @@
 package net.sf.anathema.character.view;
 
-import net.sf.anathema.character.model.traits.IDeleteListener;
 import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public interface ISpecialtyView extends IIntValueView {
 
-  public void addDeleteListener(IDeleteListener listener);
+  public void addDeleteListener(IChangeListener listener);
 
   public void delete();
 

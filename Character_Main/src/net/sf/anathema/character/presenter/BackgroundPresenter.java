@@ -17,7 +17,6 @@ import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.background.IBackgroundListener;
-import net.sf.anathema.character.model.traits.IDeleteListener;
 import net.sf.anathema.character.presenter.util.I18nComparator;
 import net.sf.anathema.character.presenter.util.ProxyComboBoxEditor;
 import net.sf.anathema.character.view.IBackgroundView;
@@ -25,6 +24,7 @@ import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
 import net.sf.anathema.lib.collection.IdentityMapping;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -139,8 +139,8 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
         background.getMaximalValue());
     addModelValueListener(background, backgroundView);
     addViewValueListener(backgroundView, background);
-    backgroundView.addDeleteListener(new IDeleteListener() {
-      public void deletionPerformed() {
+    backgroundView.addDeleteListener(new IChangeListener() {
+      public void changeOccured() {
         configuration.removeBackground(background);
       }
     });

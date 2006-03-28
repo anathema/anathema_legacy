@@ -10,11 +10,11 @@ import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
 import net.sf.anathema.character.library.trait.specialty.ISpecialty;
 import net.sf.anathema.character.library.trait.specialty.ISpecialtyListener;
-import net.sf.anathema.character.model.traits.IDeleteListener;
 import net.sf.anathema.character.view.ISpecialtyView;
 import net.sf.anathema.character.view.basic.IButtonControlledComboEditView;
 import net.sf.anathema.framework.view.AbstractSelectCellRenderer;
 import net.sf.anathema.lib.collection.IdentityMapping;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.ITwoObjectsValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -143,8 +143,8 @@ public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
         specialty.getMaximalValue());
     addModelValueListener(specialty, specialtyView);
     addViewValueListener(specialtyView, specialty);
-    specialtyView.addDeleteListener(new IDeleteListener() {
-      public void deletionPerformed() {
+    specialtyView.addDeleteListener(new IChangeListener() {
+      public void changeOccured() {
         specialty.getBasicTrait().getSpecialtiesContainer().removeSpecialty(specialty);
       }
     });
