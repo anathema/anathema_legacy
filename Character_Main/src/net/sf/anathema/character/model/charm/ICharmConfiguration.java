@@ -6,10 +6,11 @@ import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public interface ICharmConfiguration extends ICharmLearnableArbitrator {
 
-  public void addLearnableListener(ILearnableListener listener);
+  public void addLearnableListener(IChangeListener listener);
 
   public ILearningCharmGroup[] getAllGroups();
 

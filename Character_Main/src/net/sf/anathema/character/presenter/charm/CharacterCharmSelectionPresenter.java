@@ -23,7 +23,6 @@ import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
-import net.sf.anathema.character.model.charm.ILearnableListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
@@ -37,6 +36,7 @@ import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.charmtree.presenter.view.IDocumentLoadedListener;
 import net.sf.anathema.charmtree.presenter.view.IExaltTypeChangedListener;
 import net.sf.anathema.charmtree.presenter.view.ISVGMultiLearnableCharmView;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -104,8 +104,8 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
         showSpecialViews(selectionView, charmGroup);
       }
     });
-    charms.addLearnableListener(new ILearnableListener() {
-      public void learnConditionsChanged() {
+    charms.addLearnableListener(new IChangeListener() {
+      public void changeOccured() {
         setCharmVisuals(charmSelectionChangeListener.getSelectedLearnCharmGroup(), selectionView);
       }
     });
