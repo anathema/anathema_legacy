@@ -15,12 +15,12 @@ import javax.swing.JPanel;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.view.AbstractTraitView;
-import net.sf.anathema.character.model.traits.IDeleteListener;
 import net.sf.anathema.character.view.ISpecialtyView;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public class SpecialtyView extends AbstractTraitView implements ISpecialtyView {
 
-  private final List<IDeleteListener> listeners = new ArrayList<IDeleteListener>();
+  private final List<IChangeListener> listeners = new ArrayList<IChangeListener>();
   private Component abilityLabel;
   private Component separatorLabel = new JLabel("-"); //$NON-NLS-1$
   private Component specialtyLabel;
@@ -57,14 +57,14 @@ public class SpecialtyView extends AbstractTraitView implements ISpecialtyView {
     panel.revalidate();
   }
 
-  public synchronized void addDeleteListener(IDeleteListener listener) {
+  public synchronized void addDeleteListener(IChangeListener listener) {
     listeners.add(listener);
   }
 
   private synchronized void fireDeletionPerformed() {
-    List<IDeleteListener> cloneList = new ArrayList<IDeleteListener>(listeners);
-    for (IDeleteListener listener : cloneList) {
-      listener.deletionPerformed();
+    List<IChangeListener> cloneList = new ArrayList<IChangeListener>(listeners);
+    for (IChangeListener listener : cloneList) {
+      listener.changeOccured();
     }
   }
 
