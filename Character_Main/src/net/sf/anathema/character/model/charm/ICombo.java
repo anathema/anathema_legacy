@@ -5,11 +5,7 @@ import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription
 
 public interface ICombo extends Cloneable {
 
-  public void addCharm(ICharm charm);
-
   public void addComboModelListener(IComboModelListener listener);
-
-  public ICharm[] getComboLegalCharms(ICharm[] learnedCharms);
 
   public void removeCharms(ICharm[] charm);
 
@@ -23,8 +19,6 @@ public interface ICombo extends Cloneable {
 
   public ICharm[] getCharms();
 
-  public boolean isComboLegal(ICharm charm);
-
   public boolean contains(ICharm charm);
 
   public Integer getId();
@@ -32,4 +26,6 @@ public interface ICombo extends Cloneable {
   public void setId(Integer id);
 
   public void getValuesFrom(ICombo combo);
+
+  public void addCharmNoValidate(ICharm charm);
 }
