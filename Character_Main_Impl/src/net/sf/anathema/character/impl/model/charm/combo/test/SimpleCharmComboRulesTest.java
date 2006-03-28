@@ -40,6 +40,10 @@ public class SimpleCharmComboRulesTest extends AbstractComboRulesTestCase {
     assertTrue(comboDifferentAttributeCharms(CharmType.Simple, CharmType.Supplemental));
   }
 
+  public void testCharmComboAbilitySimpleCharmCombosWithAttributeSupplemental() throws Exception {
+    assertTrue(comboAbilityAttributeCharms(CharmType.Simple, CharmType.Supplemental));
+  }
+
   public void testCharmComboSimpleCharmWithExtraActionOfSameAbility() throws Exception {
     assertTrue(comboSameAbilityCharms(CharmType.Simple, CharmType.ExtraAction));
   }
@@ -54,5 +58,13 @@ public class SimpleCharmComboRulesTest extends AbstractComboRulesTestCase {
 
   public void testCharmComboAbilitySimpleCharmCombosWithAttributeExtraAction() throws Exception {
     assertTrue(comboAbilityAttributeCharms(CharmType.Simple, CharmType.ExtraAction));
+  }
+
+  public void testCharmComboRestrictionAllAbilitiesWithExtraActionCharm() throws Exception {
+    assertTrue(comboAllAbilitiesCharmWithAbility(CharmType.Simple, CharmType.ExtraAction));
+  }
+
+  public void testCharmComboRestrictionAllAbilitiesWithSupplementalCharm() throws Exception {
+    assertTrue(comboAllAbilitiesCharmWithAbility(CharmType.Simple, CharmType.Supplemental));
   }
 }

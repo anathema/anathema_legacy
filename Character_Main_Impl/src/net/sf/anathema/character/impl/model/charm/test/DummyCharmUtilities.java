@@ -30,4 +30,14 @@ public class DummyCharmUtilities {
     return new DummyMartialArtsCharm(durationType, CharmType.Reflexive, restrictions);
   }
 
+  public final static ICharm createCharm(
+      CharmType charmType,
+      IComboRestrictions restrictions,
+      IGenericTrait prerequisite) {
+    return new DummyMartialArtsCharm(
+        DurationType.Instant,
+        charmType,
+        restrictions,
+        new IGenericTrait[] { prerequisite });
+  }
 }

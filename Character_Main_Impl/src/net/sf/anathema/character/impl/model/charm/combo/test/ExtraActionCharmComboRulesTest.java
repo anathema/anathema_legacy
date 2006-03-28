@@ -28,6 +28,22 @@ public class ExtraActionCharmComboRulesTest extends AbstractComboRulesTestCase {
     assertTrue(rules.isComboLegal(charm1, charm2));
   }
 
+  public void testCharmComboExtraActionCharmWithSupplementalOfSameAbility() throws Exception {
+    assertTrue(comboSameAbilityCharms(CharmType.ExtraAction, CharmType.Supplemental));
+  }
+
+  public void testCharmComboExtraActionCharmWithSupplementalOfDifferentAbility() throws Exception {
+    assertFalse(comboDifferentAbilityCharms(CharmType.ExtraAction, CharmType.Supplemental));
+  }
+
+  public void testCharmComboExtraActionCharmWithSupplementalOfDifferentAttribute() throws Exception {
+    assertTrue(comboDifferentAttributeCharms(CharmType.ExtraAction, CharmType.Supplemental));
+  }
+
+  public void testCharmComboAbilityExtraActionCharmCombosWithAttributeSupplemental() throws Exception {
+    assertTrue(comboAbilityAttributeCharms(CharmType.ExtraAction, CharmType.Supplemental));
+  }
+
   public void testCharmComboAbilityExtraActionCharmCombosWithAttributeSimple() throws Exception {
     assertTrue(comboAbilityAttributeCharms(CharmType.ExtraAction, CharmType.Simple));
   }
@@ -42,5 +58,13 @@ public class ExtraActionCharmComboRulesTest extends AbstractComboRulesTestCase {
 
   public void testCharmComboExtraActionCharmWithSimpleOfDifferentAttribute() throws Exception {
     assertTrue(comboDifferentAttributeCharms(CharmType.ExtraAction, CharmType.Simple));
+  }
+
+  public void testCharmComboRestrictionAllAbilitiesWithSimpleCharm() throws Exception {
+    assertTrue(comboAllAbilitiesCharmWithAbility(CharmType.ExtraAction, CharmType.Simple));
+  }
+
+  public void testCharmComboRestrictionAllAbilitiesWithSupplementalCharm() throws Exception {
+    assertTrue(comboAllAbilitiesCharmWithAbility(CharmType.ExtraAction, CharmType.Supplemental));
   }
 }

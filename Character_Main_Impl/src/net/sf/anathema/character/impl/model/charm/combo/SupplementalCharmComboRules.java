@@ -10,11 +10,17 @@ public class SupplementalCharmComboRules extends AbstractComboRules {
     final boolean[] legal = new boolean[1];
     otherCharm.getCharmType().accept(new ICharmTypeVisitor() {
       public void visitSimple(CharmType visitedType) {
-        legal[0] = false;
+        boolean allAbilitiesRule = allAbilitiesRuleApplied(supplementalCharm, otherCharm);
+        boolean samePrerequisite = haveSamePrerequisite(supplementalCharm, otherCharm);
+        boolean attributePrerequisites = haveAttributePrerequisites(supplementalCharm, otherCharm);
+        legal[0] = allAbilitiesRule || samePrerequisite || attributePrerequisites;
       }
 
       public void visitExtraAction(CharmType visitedType) {
-        legal[0] = false;
+        boolean allAbilitiesRule = allAbilitiesRuleApplied(supplementalCharm, otherCharm);
+        boolean samePrerequisite = haveSamePrerequisite(supplementalCharm, otherCharm);
+        boolean attributePrerequisites = haveAttributePrerequisites(supplementalCharm, otherCharm);
+        legal[0] = allAbilitiesRule || samePrerequisite || attributePrerequisites;
       }
 
       public void visitReflexive(CharmType visitedType) {
@@ -22,9 +28,10 @@ public class SupplementalCharmComboRules extends AbstractComboRules {
       }
 
       public void visitSupplemental(CharmType visitedType) {
+        boolean allAbilitiesRule = allAbilitiesRuleApplied(supplementalCharm, otherCharm);
         boolean samePrerequisite = haveSamePrerequisite(supplementalCharm, otherCharm);
         boolean attributePrerequisites = haveAttributePrerequisites(supplementalCharm, otherCharm);
-        legal[0] = samePrerequisite || attributePrerequisites;
+        legal[0] = allAbilitiesRule || samePrerequisite || attributePrerequisites;
       }
 
       public void visitSpecial(CharmType visitedType) {
