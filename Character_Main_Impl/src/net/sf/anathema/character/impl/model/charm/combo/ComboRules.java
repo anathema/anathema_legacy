@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmTypeVisitor;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 
-public class ComboRules extends AbstractComboRules {
+public class ComboRules implements IComboRules {
 
   private final IComboRules simpleCharmRules = new SimpleCharmComboRules();
   private final IComboRules extraActionCharmRules = new ExtraActionCharmComboRules();
