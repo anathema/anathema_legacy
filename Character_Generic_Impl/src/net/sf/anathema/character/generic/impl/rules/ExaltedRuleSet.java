@@ -29,6 +29,10 @@ public enum ExaltedRuleSet implements IExaltedRuleSet {
     return new IExaltedRuleSet[] { CoreRules, PowerCombat };
   }
 
+  public static IExaltedRuleSet[] getSecondEditionSets() {
+    return new IExaltedRuleSet[] { SecondEdition };
+  }
+
   @Override
   public String toString() {
     return getId();
