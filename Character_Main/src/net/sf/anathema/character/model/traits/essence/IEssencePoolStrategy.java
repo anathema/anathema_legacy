@@ -1,5 +1,6 @@
 package net.sf.anathema.character.model.traits.essence;
 
+import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IEssencePoolStrategy {
 
@@ -10,6 +11,6 @@ public interface IEssencePoolStrategy {
   public int getStandardPersonalPool();
 
   public int getStandardPeripheralPool();
-  
-  public void addPoolListener(IPoolValueListener listener);
+
+  public void addPoolChangeListener(IChangeListener listener);
 }

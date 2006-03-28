@@ -5,9 +5,9 @@ import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.model.traits.essence.IEssencePoolConfiguration;
-import net.sf.anathema.character.model.traits.essence.IPoolValueListener;
 import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
 
@@ -40,16 +40,16 @@ public class EssenceConfigurationPresenter extends AbstractTraitPresenter implem
       if (essence.hasPeripheralPool()) {
         final ILabelledValueView<String> peripheralView = view.addPoolView(
             resources.getString("EssencePool.Name.Peripheral"), essence.getPeripheralPool()); //$NON-NLS-1$
-        essence.addPoolListener(new IPoolValueListener() {
-          public void poolsChanged() {
+        essence.addPoolChangeListener(new IChangeListener() {
+          public void changeOccured() {
             personalView.setValue(essence.getPersonalPool());
             peripheralView.setValue(essence.getPeripheralPool());
           }
         });
       }
       else {
-        essence.addPoolListener(new IPoolValueListener() {
-          public void poolsChanged() {
+        essence.addPoolChangeListener(new IChangeListener() {
+          public void changeOccured() {
             personalView.setValue(essence.getPersonalPool());
           }
         });

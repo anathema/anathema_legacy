@@ -1,5 +1,7 @@
 package net.sf.anathema.character.model.traits.essence;
 
+import net.sf.anathema.lib.control.IChangeListener;
+
 public interface IEssencePoolConfiguration {
 
   public String getPersonalPool();
@@ -10,5 +12,5 @@ public interface IEssencePoolConfiguration {
 
   public boolean hasPeripheralPool();
 
-  public void addPoolListener(IPoolValueListener listener);
+  public void addPoolChangeListener(IChangeListener listener);
 }
