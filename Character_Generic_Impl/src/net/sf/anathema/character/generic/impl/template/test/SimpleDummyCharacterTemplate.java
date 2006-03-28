@@ -28,7 +28,6 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
     this.type = type;
     this.subtype = subtype;
     this.rulesets = rulesets;
-
   }
 
   public IGroupedTraitType[] getAbilityGroups() {
