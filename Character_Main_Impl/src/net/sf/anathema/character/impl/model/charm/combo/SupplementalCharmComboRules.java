@@ -4,9 +4,9 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.ICharmTypeVisitor;
 
-public class SimpleCharmComboRules extends AbstractComboRules {
+public class SupplementalCharmComboRules extends AbstractComboRules {
 
-  public boolean isComboLegal(final ICharm simpleCharm, final ICharm otherCharm) {
+  public boolean isComboLegal(final ICharm supplementalCharm, final ICharm otherCharm) {
     final boolean[] legal = new boolean[1];
     otherCharm.getCharmType().accept(new ICharmTypeVisitor() {
       public void visitSimple(CharmType visitedType) {
@@ -14,9 +14,7 @@ public class SimpleCharmComboRules extends AbstractComboRules {
       }
 
       public void visitExtraAction(CharmType visitedType) {
-        boolean samePrerequisite = haveSamePrerequisite(simpleCharm, otherCharm);
-        boolean attributePrerequisites = haveAttributePrerequisites(simpleCharm, otherCharm);
-        legal[0] = samePrerequisite || attributePrerequisites;
+        legal[0] = false;
       }
 
       public void visitReflexive(CharmType visitedType) {
@@ -24,8 +22,8 @@ public class SimpleCharmComboRules extends AbstractComboRules {
       }
 
       public void visitSupplemental(CharmType visitedType) {
-        boolean samePrerequisite = haveSamePrerequisite(simpleCharm, otherCharm);
-        boolean attributePrerequisites = haveAttributePrerequisites(simpleCharm, otherCharm);
+        boolean samePrerequisite = haveSamePrerequisite(supplementalCharm, otherCharm);
+        boolean attributePrerequisites = haveAttributePrerequisites(supplementalCharm, otherCharm);
         legal[0] = samePrerequisite || attributePrerequisites;
       }
 

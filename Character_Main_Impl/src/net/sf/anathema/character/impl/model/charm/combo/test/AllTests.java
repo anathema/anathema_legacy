@@ -8,7 +8,10 @@ public class AllTests {
   public static Test suite() {
     TestSuite suite = new TestSuite("Test for net.sf.anathema.character.impl.model.charm.combo.test"); //$NON-NLS-1$
     //$JUnit-BEGIN$
+    suite.addTestSuite(SupplementalCharmComboRulesTest.class);
     suite.addTestSuite(ComboRulesTest.class);
+    suite.addTestSuite(ExtraActionCharmComboRulesTest.class);
+    suite.addTestSuite(SimpleCharmComboRulesTest.class);
     //$JUnit-END$
     return suite;
   }

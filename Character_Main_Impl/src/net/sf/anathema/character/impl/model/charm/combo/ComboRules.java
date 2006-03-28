@@ -5,9 +5,11 @@ import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.DurationType;
 import net.sf.anathema.character.generic.magic.charms.ICharmTypeVisitor;
 
-public class ComboRules implements IComboRules {
+public class ComboRules extends AbstractComboRules {
 
   private final IComboRules simpleCharmRules = new SimpleCharmComboRules();
+  private final IComboRules extraActionCharmRules = new ExtraActionCharmComboRules();
+  private final IComboRules supplementalCharmRules = new SupplementalCharmComboRules();
 
   public boolean isCharmComboLegal(ICharm charm) {
     boolean isLegalDuration = charm.getDuration().getType() == DurationType.Instant;
@@ -18,6 +20,10 @@ public class ComboRules implements IComboRules {
     if (charm1 == charm2) {
       return false;
     }
+    return handleComboRules(charm1, charm2) && handleComboRules(charm2, charm1);
+  }
+
+  private boolean handleComboRules(final ICharm charm1, final ICharm charm2) {
     final boolean[] legal = new boolean[1];
     charm1.getCharmType().accept(new ICharmTypeVisitor() {
       public void visitSimple(CharmType visitedType) {
@@ -25,7 +31,7 @@ public class ComboRules implements IComboRules {
       }
 
       public void visitExtraAction(CharmType visitedType) {
-        legal[0] = charm2.getCharmType() != visitedType;
+        legal[0] = extraActionCharmRules.isComboLegal(charm1, charm2);
       }
 
       public void visitReflexive(CharmType visitedType) {
@@ -33,7 +39,7 @@ public class ComboRules implements IComboRules {
       }
 
       public void visitSupplemental(CharmType visitedType) {
-        legal[0] = true;
+        legal[0] = supplementalCharmRules.isComboLegal(charm1, charm2);
       }
 
       public void visitSpecial(CharmType visitedType) {
