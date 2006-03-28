@@ -11,7 +11,8 @@ public class AllCharacterGenericImplTests {
     suite.addTest(net.sf.anathema.character.generic.impl.magic.persistence.builder.test.AllTests.suite());
     suite.addTest(net.sf.anathema.character.generic.impl.magic.persistence.writer.test.AllTests.suite());
     suite.addTest(net.sf.anathema.character.generic.impl.template.points.test.AllTests.suite());
-    suite.addTest(net.sf.anathema.character.generic.impl.magic.test.AllTests.suite());    
+    suite.addTest(net.sf.anathema.character.generic.impl.magic.test.AllTests.suite());
+    suite.addTest(net.sf.anathema.character.generic.impl.template.test.AllTests.suite());
     // $JUnit-BEGIN$
     // $JUnit-END$
     return suite;
