@@ -8,8 +8,8 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfi
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
-import net.sf.anathema.character.model.charm.ILearnableListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 public class DummyCharmConfiguration implements ICharmConfiguration {
@@ -17,7 +17,7 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
   private ICharm[] charms = new ICharm[0];
   private ISpecialCharmConfiguration specialCharmConfiguration;
 
-  public void addLearnableListener(ILearnableListener listener) {
+  public void addLearnableListener(IChangeListener listener) {
     throw new NotYetImplementedException();
   }
 

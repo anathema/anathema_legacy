@@ -46,10 +46,12 @@ import net.sf.anathema.character.impl.model.charm.special.OxBodyTechniqueConfigu
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
-import net.sf.anathema.character.model.charm.ILearnableListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.character.model.health.IPainToleranceProvider;
+import net.sf.anathema.lib.control.ChangeListenerClosure;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 
 public class CharmConfiguration implements ICharmConfiguration {
@@ -67,7 +69,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   private ILearningCharmGroup[] martialArtsGroups;
   private final ICharacterModelContext context;
   private final IHealthConfiguration health;
-  private final List<ILearnableListener> learnableListeners = new ArrayList<ILearnableListener>();
+  private final GenericControl<IChangeListener> control = new GenericControl<IChangeListener>();
   private final ICharmProvider provider;
 
   private final ICharmLearnListener learnableListener = new CharmLearnAdapter() {
@@ -332,8 +334,8 @@ public class CharmConfiguration implements ICharmConfiguration {
     return prerequisiteSetBuilder.getAllPrerequisites();
   }
 
-  public synchronized void addLearnableListener(ILearnableListener listener) {
-    learnableListeners.add(listener);
+  public void addLearnableListener(IChangeListener listener) {
+    control.addListener(listener);
   }
 
   private void addSpecialCharmConfiguration(
@@ -343,11 +345,8 @@ public class CharmConfiguration implements ICharmConfiguration {
     group.addSpecialCharmConfiguration(charm, configuration);
   }
 
-  private synchronized void fireLearnConditionsChanged() {
-    List<ILearnableListener> cloneList = new ArrayList<ILearnableListener>(learnableListeners);
-    for (ILearnableListener listener : cloneList) {
-      listener.learnConditionsChanged();
-    }
+  private void fireLearnConditionsChanged() {
+    control.forAllDo(new ChangeListenerClosure());
   }
 
   private final ICharmLearnStrategy getLearnStrategy() {
