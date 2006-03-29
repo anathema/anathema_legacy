@@ -10,6 +10,7 @@ import net.sf.anathema.cascades.module.CharmCascadeModuleView;
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
@@ -54,7 +55,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     List<IIdentificate> supportedCharmTypes = new ArrayList<IIdentificate>();
     List<ICharmGroup> allCharmGroups = new ArrayList<ICharmGroup>();
     for (CharacterType type : CharacterType.values()) {
-      ICharacterTemplate defaultTemplate = getTemplateRegistry().getDefaultTemplate(type);
+      ICharacterTemplate defaultTemplate = getTemplateRegistry().getDefaultTemplate(type, ExaltedEdition.FirstEdition);
       if (defaultTemplate.getMagicTemplate().getCharmTemplate().knowsCharms()) {
         for (IExaltedRuleSet ruleSet : ExaltedRuleSet.values()) {
           CharmTree charmTree = new CharmTree(defaultTemplate.getMagicTemplate().getCharmTemplate(), ruleSet);
@@ -64,7 +65,9 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
         supportedCharmTypes.add(type);
       }
     }
-    ICharacterTemplate siderealTemplate = getTemplateRegistry().getDefaultTemplate(CharacterType.SIDEREAL);
+    ICharacterTemplate siderealTemplate = getTemplateRegistry().getDefaultTemplate(
+        CharacterType.SIDEREAL,
+        ExaltedEdition.FirstEdition);
     for (IExaltedRuleSet ruleSet : ExaltedRuleSet.values()) {
       ICharmTree martialArtsTree = new MartialArtsCharmTree(
           siderealTemplate.getMagicTemplate().getCharmTemplate(),

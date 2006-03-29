@@ -5,6 +5,7 @@ import java.awt.SystemColor;
 
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -31,11 +32,12 @@ public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeLis
   }
 
   @Override
-  protected final void modifyCharmVisuals(IIdentificate type) {
+  protected final void modifyCharmVisuals(IIdentificate type, IExaltedEdition edition) {
     viewProperties.setCharmTree(presenter.getCharmTree(type));
     if (type instanceof CharacterType) {
-      IPresentationProperties presentationProperties = templateRegistry.getDefaultTemplate((CharacterType) type)
-          .getPresentationProperties();
+      IPresentationProperties presentationProperties = templateRegistry.getDefaultTemplate(
+          (CharacterType) type,
+          edition).getPresentationProperties();
       cascadeView.setBackgroundColor(presentationProperties.getColor());
     }
     else {
