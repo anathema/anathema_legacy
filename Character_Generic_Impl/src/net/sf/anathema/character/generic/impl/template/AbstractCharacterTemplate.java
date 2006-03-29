@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
@@ -31,7 +32,7 @@ public abstract class AbstractCharacterTemplate implements ICharacterTemplate {
   public final ICasteCollection getCasteCollection() {
     return new CasteCollection(getAllCasteTypes());
   }
-  
+
   protected abstract ICasteType[] getAllCasteTypes();
 
   public ITraitType getToughnessControllingTraitType() {
@@ -43,9 +44,9 @@ public abstract class AbstractCharacterTemplate implements ICharacterTemplate {
   }
 
   public IExaltedRuleSet[] getRuleSets() {
-    return ExaltedRuleSet.getFirstEditionSets();
+    return ExaltedRuleSet.getRuleSetsByEdition(ExaltedEdition.FirstEdition);
   }
-  
+
   public IGroupedTraitType[] getAttributeGroups() {
     return new IGroupedTraitType[] {
         new GroupedTraitType(AttributeType.Strength, AttributeGroupType.Physical.getId(), null),
@@ -56,7 +57,6 @@ public abstract class AbstractCharacterTemplate implements ICharacterTemplate {
         new GroupedTraitType(AttributeType.Appearance, AttributeGroupType.Social.getId(), null),
         new GroupedTraitType(AttributeType.Perception, AttributeGroupType.Mental.getId(), null),
         new GroupedTraitType(AttributeType.Intelligence, AttributeGroupType.Mental.getId(), null),
-        new GroupedTraitType(AttributeType.Wits, AttributeGroupType.Mental.getId(), null),
-    };
+        new GroupedTraitType(AttributeType.Wits, AttributeGroupType.Mental.getId(), null), };
   }
 }
