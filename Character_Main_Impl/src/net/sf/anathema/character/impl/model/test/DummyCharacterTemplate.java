@@ -13,7 +13,7 @@ import net.sf.anathema.character.generic.impl.traits.ExaltTraitTemplateFactory;
 import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.template.TemplateType;
@@ -165,8 +165,8 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
     this.experienceCosts = experienceCosts;
   }
 
-  public IExaltedRuleSet[] getRuleSets() {
-    return ExaltedRuleSet.getRuleSetsByEdition(ExaltedEdition.FirstEdition);
+  public IExaltedEdition getEdition() {
+    return ExaltedEdition.FirstEdition;
   }
 
   public IGroupedTraitType[] getAttributeGroups() {

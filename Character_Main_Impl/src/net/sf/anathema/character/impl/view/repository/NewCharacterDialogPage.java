@@ -14,6 +14,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.message.BasicMessage;
 import net.disy.commons.swing.message.IBasicMessage;
 import net.disy.commons.swing.message.MessageType;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.view.repository.ICharacterTemplateTree;
 import net.sf.anathema.lib.resources.IResources;
@@ -61,7 +62,8 @@ public class NewCharacterDialogPage extends AbstractDialogPage {
       public void valueChanged(TreeSelectionEvent e) {
         getCheckInputValidListener().valueChanged(e);
         if (characterTemplateTree.isTemplateSelected()) {
-          IExaltedRuleSet[] supportedRuleSets = characterTemplateTree.getSelectedTemplate().getRuleSets();
+          IExaltedRuleSet[] supportedRuleSets = ExaltedRuleSet.getRuleSetsByEdition(characterTemplateTree.getSelectedTemplate()
+              .getEdition());
           rulesView.setAvailableRulesets(supportedRuleSets);
         }
       }
