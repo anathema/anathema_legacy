@@ -1,9 +1,6 @@
 <exaltedCharacterTemplate characterType="Solar" subtemplate="default">
   <general>
-    <rulesets>
-      <ruleset>CoreRules</ruleset>
-      <ruleset>PowerCombat</ruleset>
-    </rulesets>
+    <edition edition="FirstEdition"/>
     <abilityGroups uses="template/SolarAbilityGroup.template" />
     <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
     <essence uses="DefaultEssence.template" />
