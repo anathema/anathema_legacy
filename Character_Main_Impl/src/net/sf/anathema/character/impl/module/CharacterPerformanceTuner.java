@@ -2,6 +2,7 @@ package net.sf.anathema.character.impl.module;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -93,6 +94,6 @@ public class CharacterPerformanceTuner {
   }
 
   private ICharacterTemplate createTemplate(ICharacterGenerics characterGenerics) {
-    return characterGenerics.getTemplateRegistry().getDefaultTemplate(CharacterType.SOLAR);
+    return characterGenerics.getTemplateRegistry().getDefaultTemplate(CharacterType.SOLAR, ExaltedEdition.FirstEdition);
   }
 }

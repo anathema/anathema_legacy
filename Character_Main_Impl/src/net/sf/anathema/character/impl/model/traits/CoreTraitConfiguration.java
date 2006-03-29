@@ -69,7 +69,8 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
         template.getAdditionalRules(),
         template.getTraitTemplateCollection(),
         modelContext.getTraitContext(),
-        backgroundRegistry);
+        backgroundRegistry,
+        modelContext.getBasicCharacterContext().getRuleSet().getEdition());
   }
 
   private void addAttributes() {

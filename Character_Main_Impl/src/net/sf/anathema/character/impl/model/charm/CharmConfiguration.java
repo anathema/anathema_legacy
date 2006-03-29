@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ConfigurableCharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
@@ -104,9 +105,10 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   private ICharmTemplate getNativeCharmTemplate(ITemplateRegistry registry) {
-    return registry.getTemplate(context.getBasicCharacterContext().getTemplateType())
-        .getMagicTemplate()
-        .getCharmTemplate();
+    IBasicCharacterData basicCharacterContext = context.getBasicCharacterContext();
+    return registry.getTemplate(
+        basicCharacterContext.getTemplateType(),
+        basicCharacterContext.getRuleSet().getEdition()).getMagicTemplate().getCharmTemplate();
   }
 
   public void addCharmLearnListener(ICharmLearnListener listener) {
@@ -270,7 +272,9 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   private ICharmTemplate getCharmTemplate(ITemplateRegistry registry, CharacterType type) {
-    ICharacterTemplate defaultTemplate = registry.getDefaultTemplate(type);
+    ICharacterTemplate defaultTemplate = registry.getDefaultTemplate(type, context.getBasicCharacterContext()
+        .getRuleSet()
+        .getEdition());
     if (defaultTemplate == null || defaultTemplate instanceof IUnsupportedTemplate) {
       return null;
     }

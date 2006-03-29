@@ -89,8 +89,8 @@ public class CharacterStatisticPersister {
       }
       TemplateType templateType = loadTemplateType(statisticsElement);
       boolean experienced = ElementUtilities.getBooleanAttribute(statisticsElement, ATTRIB_EXPERIENCED, false);
-      ICharacterTemplate template = generics.getTemplateRegistry().getTemplate(templateType);
       IExaltedRuleSet rules = rulesPersister.load(statisticsElement);
+      ICharacterTemplate template = generics.getTemplateRegistry().getTemplate(templateType, rules.getEdition());
       ICharacterStatistics statistics = character.createCharacterStatistics(template, generics, rules);
       ICasteCollection casteCollection = template.getCasteCollection();
       characterConceptPersister.load(statisticsElement, statistics.getCharacterConcept(), casteCollection);

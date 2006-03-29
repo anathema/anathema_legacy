@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTemplate;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
@@ -30,24 +31,27 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
   private final ITraitTemplateCollection traitTemplates;
   private final ITraitContext context;
   private final TemplateType templateType;
+  private final IExaltedEdition edition;
 
   public BackgroundConfiguration(
       TemplateType templateType,
       IAdditionalRules additionalRules,
       ITraitTemplateCollection traitTemplates,
       ITraitContext context,
-      IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
+      IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry,
+      IExaltedEdition edition) {
     this.templateType = templateType;
     this.context = context;
     this.backgroundRegistry = backgroundRegistry;
     this.additionalRules = additionalRules;
     this.traitTemplates = traitTemplates;
+    this.edition = edition;
   }
 
   public IBackgroundTemplate[] getAllAvailableBackgroundTemplates() {
     List<IBackgroundTemplate> backgroundList = new ArrayList<IBackgroundTemplate>();
     for (IBackgroundTemplate backgroundTemplate : backgroundRegistry.getAll()) {
-      if (backgroundTemplate.acceptsTemplate(templateType) && !additionalRules.isRejected(backgroundTemplate)) {
+      if (backgroundTemplate.acceptsTemplate(templateType, edition) && !additionalRules.isRejected(backgroundTemplate)) {
         backgroundList.add(backgroundTemplate);
       }
     }
