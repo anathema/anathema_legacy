@@ -1,5 +1,6 @@
 package net.sf.anathema.character.presenter.charm;
 
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.charmtree.presenter.view.AbstractCharmGroupChangeListener;
@@ -23,7 +24,7 @@ public class CharacterCharmGroupChangeListener extends AbstractCharmGroupChangeL
   }
 
   @Override
-  protected void modifyCharmVisuals(IIdentificate type) {
+  protected void modifyCharmVisuals(IIdentificate type, IExaltedEdition edition) {
     // Nothing to do
   }
 
