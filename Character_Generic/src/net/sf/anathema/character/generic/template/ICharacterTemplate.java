@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.template;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
@@ -43,5 +43,5 @@ public interface ICharacterTemplate {
 
   public IMagicTemplate getMagicTemplate();
 
-  public IExaltedRuleSet[] getRuleSets();
+  public IExaltedEdition getEdition();
 }
