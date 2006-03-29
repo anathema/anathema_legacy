@@ -6,8 +6,7 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
@@ -43,8 +42,8 @@ public abstract class AbstractCharacterTemplate implements ICharacterTemplate {
     return new IAdditionalTemplate[0];
   }
 
-  public IExaltedRuleSet[] getRuleSets() {
-    return ExaltedRuleSet.getRuleSetsByEdition(ExaltedEdition.FirstEdition);
+  public IExaltedEdition getEdition() {
+    return ExaltedEdition.FirstEdition;
   }
 
   public IGroupedTraitType[] getAttributeGroups() {

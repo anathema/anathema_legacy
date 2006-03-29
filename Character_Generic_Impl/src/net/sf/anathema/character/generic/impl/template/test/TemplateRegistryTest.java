@@ -1,9 +1,7 @@
 package net.sf.anathema.character.generic.impl.template.test;
 
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.impl.template.TemplateRegistry;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -24,7 +22,7 @@ public class TemplateRegistryTest extends BasicTestCase {
     SimpleDummyCharacterTemplate template = new SimpleDummyCharacterTemplate(
         CharacterType.MORTAL,
         null,
-        ExaltedRuleSet.getRuleSetsByEdition(ExaltedEdition.FirstEdition));
+        ExaltedEdition.FirstEdition);
     registry.register(template);
     assertEquals(template, registry.get(new TemplateType(CharacterType.MORTAL)));
   }
@@ -33,9 +31,9 @@ public class TemplateRegistryTest extends BasicTestCase {
     SimpleDummyCharacterTemplate defaultTemplate = new SimpleDummyCharacterTemplate(
         CharacterType.MORTAL,
         null,
-        ExaltedRuleSet.getRuleSetsByEdition(ExaltedEdition.FirstEdition));
+        ExaltedEdition.FirstEdition);
     SimpleDummyCharacterTemplate otherTemplate = new SimpleDummyCharacterTemplate(CharacterType.MORTAL, "Second", //$NON-NLS-1$
-        ExaltedRuleSet.getRuleSetsByEdition(ExaltedEdition.FirstEdition));
+        ExaltedEdition.FirstEdition);
     registry.register(defaultTemplate);
     registry.register(otherTemplate);
     assertEquals(defaultTemplate, registry.getDefaultTemplate(CharacterType.MORTAL));
@@ -45,11 +43,11 @@ public class TemplateRegistryTest extends BasicTestCase {
     ICharacterTemplate defaultTemplate = new SimpleDummyCharacterTemplate(
         CharacterType.MORTAL,
         null,
-        ExaltedRuleSet.getRuleSetsByEdition(ExaltedEdition.FirstEdition));
+        ExaltedEdition.FirstEdition);
     ICharacterTemplate otherTemplate = new SimpleDummyCharacterTemplate(CharacterType.MORTAL, "Second", //$NON-NLS-1$
-        ExaltedRuleSet.getRuleSetsByEdition(ExaltedEdition.FirstEdition));
+        ExaltedEdition.FirstEdition);
     ICharacterTemplate unsupportedTemplate = new DummyUnsupportedTemplate(CharacterType.MORTAL, "Third", //$NON-NLS-1$
-        ExaltedRuleSet.getRuleSetsByEdition(ExaltedEdition.FirstEdition));
+        ExaltedEdition.FirstEdition);
     registry.register(defaultTemplate);
     registry.register(otherTemplate);
     registry.register(unsupportedTemplate);
@@ -63,11 +61,11 @@ public class TemplateRegistryTest extends BasicTestCase {
     SimpleDummyCharacterTemplate firstTemplate = new SimpleDummyCharacterTemplate(
         CharacterType.MORTAL,
         null,
-        ExaltedRuleSet.getRuleSetsByEdition(ExaltedEdition.FirstEdition));
+        ExaltedEdition.FirstEdition);
     SimpleDummyCharacterTemplate secondTemplate = new SimpleDummyCharacterTemplate(
         CharacterType.MORTAL,
         null,
-        new IExaltedRuleSet[] { ExaltedRuleSet.SecondEdition });
+        ExaltedEdition.SecondEdition);
     registry.register(firstTemplate);
     registry.register(secondTemplate);
     //     assertEquals(firstTemplate, registry.getTemplate(new TemplateType(CharacterType.MORTAL), ExaltedRuleSet.CoreRules));

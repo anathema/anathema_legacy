@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.impl.template.test;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.template.TemplateType;
@@ -22,12 +22,12 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
 
   private final String subtype;
   private final CharacterType type;
-  private final IExaltedRuleSet[] rulesets;
+  private final IExaltedEdition edition;
 
-  public SimpleDummyCharacterTemplate(CharacterType type, String subtype, IExaltedRuleSet[] rulesets) {
+  public SimpleDummyCharacterTemplate(CharacterType type, String subtype, IExaltedEdition edition) {
     this.type = type;
     this.subtype = subtype;
-    this.rulesets = rulesets;
+    this.edition = edition;
   }
 
   public IGroupedTraitType[] getAbilityGroups() {
@@ -102,7 +102,7 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
     return null;
   }
 
-  public IExaltedRuleSet[] getRuleSets() {
-    return rulesets;
+  public IExaltedEdition getEdition() {
+    return edition;
   }
 }

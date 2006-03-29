@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.impl.template.test;
 
 import net.sf.anathema.character.generic.impl.exalt.AbstractUnsupportedExaltTemplate;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
@@ -14,12 +14,12 @@ public class DummyUnsupportedTemplate extends AbstractUnsupportedExaltTemplate {
 
   private final String subtype;
   private final CharacterType type;
-  private final IExaltedRuleSet[] rulesets;
+  private final IExaltedEdition edition;
 
-  public DummyUnsupportedTemplate(CharacterType type, String subtype, IExaltedRuleSet[] rulesets) {
+  public DummyUnsupportedTemplate(CharacterType type, String subtype, IExaltedEdition edition) {
     this.type = type;
     this.subtype = subtype;
-    this.rulesets = rulesets;
+    this.edition = edition;
   }
 
   public IGroupedTraitType[] getAbilityGroups() {
@@ -38,8 +38,8 @@ public class DummyUnsupportedTemplate extends AbstractUnsupportedExaltTemplate {
   }
 
   @Override
-  public IExaltedRuleSet[] getRuleSets() {
-    return rulesets;
+  public IExaltedEdition getEdition() {
+    return edition;
   }
 
   public IMagicTemplate getMagicTemplate() {
