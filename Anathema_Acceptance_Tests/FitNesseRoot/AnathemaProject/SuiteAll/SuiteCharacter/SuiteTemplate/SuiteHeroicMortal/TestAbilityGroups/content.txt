@@ -1,1 +1,1 @@
-!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTemplate.SnippetCheckDefaultAbilityGroups
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTemplate.SnippetCheckDefaultFirstAbilityGroups

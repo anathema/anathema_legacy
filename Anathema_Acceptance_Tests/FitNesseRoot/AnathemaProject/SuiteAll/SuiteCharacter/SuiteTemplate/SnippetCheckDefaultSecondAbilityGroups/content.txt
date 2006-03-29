@@ -1,0 +1,30 @@
+!3 Checking Ability Groups
+
+Checking that the ability groups are default with groups war, life and wisdom.
+
+!|Check Grouped Ability Types Fixture|
+|abilityTypeId|getGroupId?|
+|Archery|War|
+|Athletics|War|
+|Dodge|War|
+|Integrity|War|
+|MartialArts|War|
+|Melee|War|
+|Resistance|War|
+|Thrown|War|
+|War|War|
+|Craft|Life|
+|Larceny|Life|
+|Linguistics|Life|
+|Performance|Life|
+|Presence|Life|
+|Ride|Life|
+|Sail|Life|
+|Socialize|Life|
+|Stealth|Life|
+|Survival|Life|
+|Bureaucracy|Wisdom|
+|Investigation|Wisdom|
+|Lore|Wisdom|
+|Medicine|Wisdom|
+|Occult|Wisdom|
