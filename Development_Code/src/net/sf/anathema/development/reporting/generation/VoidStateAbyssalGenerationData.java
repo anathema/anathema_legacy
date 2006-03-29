@@ -6,6 +6,7 @@ import net.sf.anathema.character.abyssal.caste.AbyssalCaste;
 import net.sf.anathema.character.generic.framework.reporting.template.ICharacterReportTemplate;
 import net.sf.anathema.character.generic.framework.reporting.template.voidstate.DefaultVoidstateSubreports;
 import net.sf.anathema.character.generic.framework.reporting.template.voidstate.ExaltVoidstateReportTemplate;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -46,7 +47,8 @@ public class VoidStateAbyssalGenerationData extends AbstractGenerationData {
   private ExaltedCharacter createEmptyAbyssal() throws Exception {
     ExaltedCharacter emptyCharacter = createEmptyCharacter();
     ICharacterTemplate defaultTemplate = container.getCharacterGenerics().getTemplateRegistry().getDefaultTemplate(
-        CharacterType.ABYSSAL);
+        CharacterType.ABYSSAL,
+        ExaltedEdition.FirstEdition);
     createStatistics(emptyCharacter, defaultTemplate);
     return emptyCharacter;
   }

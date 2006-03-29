@@ -1,6 +1,7 @@
 package net.sf.anathema.development.reporting.generation;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -21,7 +22,7 @@ public abstract class AbstractSiderealGenerationData extends AbstractGenerationD
   private IItem createEmptySidereal() throws Exception {
     ExaltedCharacter emptyCharacter = createEmptyCharacter();
     ICharacterTemplate defaultTemplate = container.getCharacterGenerics().getTemplateRegistry().getDefaultTemplate(
-        CharacterType.SIDEREAL);
+        CharacterType.SIDEREAL,ExaltedEdition.FirstEdition);
     createStatistics(emptyCharacter, defaultTemplate);
     return createItem(emptyCharacter);
   }

@@ -1,5 +1,6 @@
 package net.sf.anathema.development.reporting.generation;
 
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
@@ -22,7 +23,7 @@ public abstract class AbstractSolarGenerationData extends AbstractGenerationData
   private IItem createEmptySolar() throws Exception {
     ExaltedCharacter emptyCharacter = createEmptyCharacter();
     ICharacterTemplate defaultTemplate = container.getCharacterGenerics().getTemplateRegistry().getDefaultTemplate(
-        CharacterType.SOLAR);
+        CharacterType.SOLAR,ExaltedEdition.FirstEdition);
     createStatistics(emptyCharacter, defaultTemplate);
     return createItem(emptyCharacter);
   }

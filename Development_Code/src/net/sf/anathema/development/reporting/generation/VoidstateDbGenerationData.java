@@ -5,6 +5,7 @@ import java.io.File;
 import net.sf.anathema.character.db.aspect.DBAspect;
 import net.sf.anathema.character.generic.framework.reporting.template.ICharacterReportTemplate;
 import net.sf.anathema.character.generic.framework.reporting.template.voidstate.ExaltVoidstateReportTemplate;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
@@ -32,24 +33,25 @@ public class VoidstateDbGenerationData extends AbstractGenerationData implements
     statistics.getCharacterConcept().getCaste().setType(DBAspect.Earth);
     statistics.getTraitConfiguration().getTrait(AbilityType.MartialArts).setCurrentValue(5);
     statistics.getTraitConfiguration().getTrait(OtherTraitType.Essence).setCurrentValue(4);
-//    ICharmConfiguration charmConfiguration = statistics.getCharms();
-//    ILearningCharmGroup woodDragonGroup = charmConfiguration.getGroupById("WoodDragonStyle");
-//    ICharm charm = charmConfiguration.getCharmTree().getCharmByID("Dragon-Blooded.SoulMastery");
-//    woodDragonGroup.toggleLearned(charm);
+    //    ICharmConfiguration charmConfiguration = statistics.getCharms();
+    //    ILearningCharmGroup woodDragonGroup = charmConfiguration.getGroupById("WoodDragonStyle");
+    //    ICharm charm = charmConfiguration.getCharmTree().getCharmByID("Dragon-Blooded.SoulMastery");
+    //    woodDragonGroup.toggleLearned(charm);
     return createItem(character);
   }
 
   private ExaltedCharacter createEmptyDb() throws Exception {
     ExaltedCharacter emptyCharacter = createEmptyCharacter();
     ICharacterTemplate defaultTemplate = container.getCharacterGenerics().getTemplateRegistry().getDefaultTemplate(
-        CharacterType.DB);
+        CharacterType.DB,
+        ExaltedEdition.FirstEdition);
     createStatistics(emptyCharacter, defaultTemplate);
     return emptyCharacter;
   }
 
   public IReport createReport() {
     ICharacterReportTemplate template = new ExaltVoidstateReportTemplate(CharacterType.DB, resources);
-    return new CharacterReport("Voidstate Db Character Sheet", template );
+    return new CharacterReport("Voidstate Db Character Sheet", template);
   }
 
   public File createFile() {

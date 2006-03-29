@@ -3,6 +3,7 @@ package net.sf.anathema.development.reporting.generation;
 import java.io.File;
 
 import net.sf.anathema.character.generic.framework.reporting.template.ICharacterReportTemplate;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
@@ -22,7 +23,8 @@ public class VoidstateLunarGenerationData extends AbstractGenerationData {
   public IItem createFilledCharacter() throws Exception {
     ExaltedCharacter emptyCharacter = createEmptyCharacter();
     ICharacterTemplate defaultTemplate = container.getCharacterGenerics().getTemplateRegistry().getDefaultTemplate(
-        CharacterType.LUNAR);
+        CharacterType.LUNAR,
+        ExaltedEdition.FirstEdition);
     createStatistics(emptyCharacter, defaultTemplate);
     return createItem(emptyCharacter);
   }

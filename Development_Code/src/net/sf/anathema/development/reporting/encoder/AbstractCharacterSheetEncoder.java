@@ -2,6 +2,7 @@ package net.sf.anathema.development.reporting.encoder;
 
 import net.sf.anathema.character.generic.framework.CharacterModuleContainerInitializer;
 import net.sf.anathema.character.generic.framework.module.CharacterModuleContainer;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.development.reporting.AbstractReportEncoder;
@@ -18,6 +19,8 @@ public abstract class AbstractCharacterSheetEncoder extends AbstractReportEncode
   private static final CharacterModuleContainer container = new CharacterModuleContainerInitializer().initContainer(new AnathemaResources());
 
   protected final ICharacterTemplate getDefaultTemplate(CharacterType characterType) {
-    return container.getCharacterGenerics().getTemplateRegistry().getDefaultTemplate(characterType);
+    return container.getCharacterGenerics().getTemplateRegistry().getDefaultTemplate(
+        characterType,
+        ExaltedEdition.FirstEdition);
   }
 }
