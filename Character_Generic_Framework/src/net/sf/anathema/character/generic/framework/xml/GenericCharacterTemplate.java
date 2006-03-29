@@ -17,6 +17,7 @@ import net.sf.anathema.character.generic.framework.xml.presentation.GenericPrese
 import net.sf.anathema.character.generic.framework.xml.rules.GenericAdditionalRules;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
@@ -128,7 +129,7 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable 
   }
 
   public IExaltedRuleSet[] getRuleSets() {
-    return ExaltedRuleSet.getFirstEditionSets();
+    return ExaltedRuleSet.getRuleSetsByEdition(ExaltedEdition.FirstEdition);
   }
 
   public void setTraitFactory(GenericTraitTemplateFactory factory) {
