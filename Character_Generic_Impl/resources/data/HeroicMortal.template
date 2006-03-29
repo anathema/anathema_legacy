@@ -1,9 +1,6 @@
 <exaltedCharacterTemplate characterType="Mortal" subtemplate="HeroicMortal">
   <general>
-    <rulesets>
-      <ruleset>CoreRules</ruleset>
-      <ruleset>PowerCombat</ruleset>
-    </rulesets>
+    <edition edition="FirstEdition"/>
     <abilityGroups uses="trait/DefaultAbilityGroup.template" />
     <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
     <essence uses="MortalEssence.template" />
