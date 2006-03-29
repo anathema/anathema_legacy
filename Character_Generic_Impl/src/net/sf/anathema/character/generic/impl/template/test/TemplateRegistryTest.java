@@ -25,7 +25,7 @@ public class TemplateRegistryTest extends BasicTestCase {
         null,
         ExaltedEdition.FirstEdition);
     registry.register(template);
-    assertEquals(template, registry.getTemplate(new TemplateType(CharacterType.MORTAL)));
+    assertEquals(template, registry.getTemplate(new TemplateType(CharacterType.MORTAL), ExaltedEdition.FirstEdition));
   }
 
   public void testRegisterAndRetrieveDefaultTemplate() throws Exception {
@@ -37,7 +37,8 @@ public class TemplateRegistryTest extends BasicTestCase {
         ExaltedEdition.FirstEdition);
     registry.register(defaultTemplate);
     registry.register(otherTemplate);
-    assertEquals(defaultTemplate, registry.getDefaultTemplate(CharacterType.MORTAL));
+    assertEquals(defaultTemplate, registry.getDefaultTemplate(CharacterType.MORTAL, ExaltedEdition.FirstEdition));
+    assertNotSame(otherTemplate, registry.getDefaultTemplate(CharacterType.MORTAL, ExaltedEdition.FirstEdition));
   }
 
   public void testRegisterAndRetrieveAllSupportedTemplates() throws Exception {
@@ -59,21 +60,21 @@ public class TemplateRegistryTest extends BasicTestCase {
   }
 
   public void testRegisterAndRetrieveByRuleset() throws Exception {
-//    SimpleDummyCharacterTemplate firstTemplate = new SimpleDummyCharacterTemplate(
-//        CharacterType.MORTAL,
-//        null,
-//        ExaltedEdition.FirstEdition);
-//    SimpleDummyCharacterTemplate secondTemplate = new SimpleDummyCharacterTemplate(
-//        CharacterType.MORTAL,
-//        null,
-//        ExaltedEdition.SecondEdition);
-//    registry.register(firstTemplate);
-//    registry.register(secondTemplate);
-//    assertEquals(firstTemplate, registry.getTemplate(
-//        new TemplateType(CharacterType.MORTAL),
-//        ExaltedEdition.FirstEdition));
-//    assertEquals(secondTemplate, registry.getTemplate(
-//        new TemplateType(CharacterType.MORTAL),
-//        ExaltedEdition.SecondEdition));
+    SimpleDummyCharacterTemplate firstTemplate = new SimpleDummyCharacterTemplate(
+        CharacterType.MORTAL,
+        null,
+        ExaltedEdition.FirstEdition);
+    SimpleDummyCharacterTemplate secondTemplate = new SimpleDummyCharacterTemplate(
+        CharacterType.MORTAL,
+        null,
+        ExaltedEdition.SecondEdition);
+    registry.register(firstTemplate);
+    registry.register(secondTemplate);
+    assertEquals(firstTemplate, registry.getTemplate(
+        new TemplateType(CharacterType.MORTAL),
+        ExaltedEdition.FirstEdition));
+    assertEquals(secondTemplate, registry.getTemplate(
+        new TemplateType(CharacterType.MORTAL),
+        ExaltedEdition.SecondEdition));
   }
 }

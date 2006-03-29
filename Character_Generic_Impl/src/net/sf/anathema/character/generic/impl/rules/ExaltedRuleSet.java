@@ -7,21 +7,31 @@ import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
 
 public enum ExaltedRuleSet implements IExaltedRuleSet {
 
-  CoreRules {
+  CoreRules(ExaltedEdition.FirstEdition) {
     public void accept(IRuleSetVisitor visitor) {
       visitor.visitCoreRules(this);
     }
   },
-  PowerCombat {
+  PowerCombat(ExaltedEdition.FirstEdition) {
     public void accept(IRuleSetVisitor visitor) {
       visitor.visitPowerCombat(this);
     }
   },
-  SecondEdition {
+  SecondEdition(ExaltedEdition.SecondEdition) {
     public void accept(IRuleSetVisitor visitor) {
       visitor.visitSecondEdition(this);
     }
   };
+
+  private final IExaltedEdition edition;
+
+  private ExaltedRuleSet(IExaltedEdition edition) {
+    this.edition = edition;
+  }
+
+  public IExaltedEdition getEdition() {
+    return edition;
+  }
 
   public String getId() {
     return name();

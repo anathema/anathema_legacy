@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.impl.backgrounds;
 
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.lib.lang.ArrayUtilities;
@@ -23,7 +24,7 @@ public class TemplateTypeBackgroundTemplate extends AbstractBackgroundTemplate {
     this.experiencedState = experiencedState;
   }
 
-  public boolean acceptsTemplate(TemplateType templateType) {
+  public boolean acceptsTemplate(TemplateType templateType, IExaltedEdition edition) {
     return ArrayUtilities.contains(types, templateType);
   }
 

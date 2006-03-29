@@ -4,12 +4,12 @@ import net.sf.anathema.character.generic.rules.IEditionVisitor;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 
 public enum ExaltedEdition implements IExaltedEdition {
-  FirstEdition() {
+  FirstEdition {
     public void accept(IEditionVisitor visitor) {
       visitor.visitFirstEdition(this);
     }
   },
-  SecondEdition() {
+  SecondEdition {
     public void accept(IEditionVisitor visitor) {
       visitor.visitSecondEdition(this);
     }
