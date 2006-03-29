@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.impl.template.essence.NullEssenceTemplate;
 import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
@@ -165,7 +166,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
   }
 
   public IExaltedRuleSet[] getRuleSets() {
-    return ExaltedRuleSet.getFirstEditionSets();
+    return ExaltedRuleSet.getRuleSetsByEdition(ExaltedEdition.FirstEdition);
   }
 
   public IGroupedTraitType[] getAttributeGroups() {
