@@ -7,6 +7,7 @@ import java.util.Set;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.presentation.ICharmPresentationProperties;
 import net.sf.anathema.charmtree.provider.CharmTreeProvider;
@@ -38,10 +39,10 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     this.templateRegistry = templateRegistry;
   }
 
-  public final void valueChanged(Object cascade, IIdentificate type) {
+  public final void valueChanged(Object cascade, IIdentificate type, IExaltedEdition edition) {
     charmTreeView.getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     try {
-      loadCharmTree((ICharmGroup) cascade, type);
+      loadCharmTree((ICharmGroup) cascade, type, edition);
       return;
     }
     catch (DocumentException e) {
@@ -66,16 +67,17 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     return charmsToDisplay;
   }
 
-  private void loadCharmTree(ICharmGroup charmGroup, IIdentificate type) throws DocumentException {
+  private void loadCharmTree(ICharmGroup charmGroup, IIdentificate type, IExaltedEdition edition) throws DocumentException {
     currentGroup = charmGroup;
-    modifyCharmVisuals(type);
+    modifyCharmVisuals(type, edition);
     if (charmGroup == null) {
       charmTreeView.loadCascade(null);
     }
     else {
       Set<ICharm> displayCharms = getDisplayCharms(charmGroup);
       ICharmPresentationProperties presentationProperties = templateRegistry.getDefaultTemplate(
-          charmGroup.getCharacterType()).getPresentationProperties().getCharmPresentationProperties();
+          charmGroup.getCharacterType(),
+          edition).getPresentationProperties().getCharmPresentationProperties();
       Dimension dimension = presentationProperties.getCharmDimension();
       viewProperties.setDimension(dimension);
       charmTreeView.setProperties(viewProperties);
@@ -91,7 +93,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     return currentGroup;
   }
 
-  protected abstract void modifyCharmVisuals(IIdentificate type);
+  protected abstract void modifyCharmVisuals(IIdentificate type, IExaltedEdition edition);
 
   public abstract void updateColors();
 }
