@@ -18,9 +18,8 @@ import net.sf.anathema.character.generic.framework.xml.rules.GenericAdditionalRu
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.template.TemplateType;
@@ -128,8 +127,8 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable 
     this.experienceCosts = experienceCosts;
   }
 
-  public IExaltedRuleSet[] getRuleSets() {
-    return ExaltedRuleSet.getRuleSetsByEdition(ExaltedEdition.FirstEdition);
+  public IExaltedEdition getEdition() {
+    return ExaltedEdition.FirstEdition;
   }
 
   public void setTraitFactory(GenericTraitTemplateFactory factory) {
