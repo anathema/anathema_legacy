@@ -57,7 +57,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     for (CharacterType type : CharacterType.values()) {
       ICharacterTemplate defaultTemplate = getTemplateRegistry().getDefaultTemplate(type, ExaltedEdition.FirstEdition);
       if (defaultTemplate.getMagicTemplate().getCharmTemplate().knowsCharms()) {
-        for (IExaltedRuleSet ruleSet : ExaltedRuleSet.values()) {
+        for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(ExaltedEdition.FirstEdition)) {
           CharmTree charmTree = new CharmTree(defaultTemplate.getMagicTemplate().getCharmTemplate(), ruleSet);
           getCharmTreeMap(ruleSet).put(type, charmTree);
           allCharmGroups.addAll(Arrays.asList(charmTree.getAllCharmGroups()));
@@ -68,7 +68,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     ICharacterTemplate siderealTemplate = getTemplateRegistry().getDefaultTemplate(
         CharacterType.SIDEREAL,
         ExaltedEdition.FirstEdition);
-    for (IExaltedRuleSet ruleSet : ExaltedRuleSet.values()) {
+    for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(ExaltedEdition.FirstEdition)) {
       ICharmTree martialArtsTree = new MartialArtsCharmTree(
           siderealTemplate.getMagicTemplate().getCharmTemplate(),
           ruleSet);
@@ -95,7 +95,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
 
   private void initRules(ICascadeView view) {
     IChangeableJComboBox<IExaltedRuleSet> rulesComboBox = new ChangeableJComboBox<IExaltedRuleSet>(
-        ExaltedRuleSet.values(),
+        ExaltedRuleSet.getRuleSetsByEdition(ExaltedEdition.FirstEdition),
         false);
     rulesComboBox.setRenderer(new IdentificateSelectCellRenderer("Ruleset.", getResources())); //$NON-NLS-1$
     view.addRuleSetComponent(rulesComboBox.getComponent(), getResources().getString("CharmCascades.RuleSetBox.Title")); //$NON-NLS-1$
