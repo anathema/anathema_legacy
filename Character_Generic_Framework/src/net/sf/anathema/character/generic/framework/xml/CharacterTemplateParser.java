@@ -28,6 +28,7 @@ import net.sf.anathema.character.generic.framework.xml.rules.AdditionalRulesTemp
 import net.sf.anathema.character.generic.framework.xml.rules.GenericAdditionalRules;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactoryParser;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.traits.groups.AllAbilityTraitTypeGroup;
@@ -57,6 +58,8 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   private static final String ATTRIB_ID = "id"; //$NON-NLS-1$
   private static final String TAG_HEALTH_TEMPLATE = "healthTemplate"; //$NON-NLS-1$
   private static final String TAG_ADDITIONAL_RULES = "additionalRules"; //$NON-NLS-1$
+  private static final String TAG_EDITION = "edition"; //$NON-NLS-1$
+  private static final String ATTRIB_EDITION = "edition"; //$NON-NLS-1$
 
   private final ICharacterTemplateRegistryCollection registryCollection;
   private final IRegistry<CharacterType, ICasteCollection> casteCollectionRegistry;
@@ -196,6 +199,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     if (generalElement == null) {
       return;
     }
+    setEdition(generalElement, characterTemplate);
     setAbilityGroups(generalElement, characterTemplate);
     setAttributeGroups(generalElement, characterTemplate);
     setEssenceTemplate(generalElement, characterTemplate);
@@ -205,6 +209,15 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     setAdditionalModelTemplates(generalElement, characterTemplate);
     setAdditionalRules(generalElement, characterTemplate);
     setToughnessControllingTrait(generalElement, characterTemplate);
+  }
+
+  private void setEdition(Element generalElement, GenericCharacterTemplate characterTemplate) {
+    Element element = generalElement.element(TAG_EDITION);
+    if (element == null) {
+      return;
+    }
+    String edition = element.attributeValue(ATTRIB_EDITION);
+    characterTemplate.setEdition(ExaltedEdition.valueOf(edition));
   }
 
   private void setAdditionalRules(Element generalElement, GenericCharacterTemplate characterTemplate)

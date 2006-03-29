@@ -17,7 +17,6 @@ import net.sf.anathema.character.generic.framework.xml.presentation.GenericPrese
 import net.sf.anathema.character.generic.framework.xml.rules.GenericAdditionalRules;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
@@ -50,6 +49,7 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable 
   private ICasteCollection casteCollection = new CasteCollection(new ICasteType[0]);
   private final List<IAdditionalTemplate> additionalTemplates = new ArrayList<IAdditionalTemplate>();
   private IHealthTemplate healthTemplate = new GenericHealthTemplate();
+  private IExaltedEdition edition;
 
   public IGroupedTraitType[] getAbilityGroups() {
     return abilityGroups;
@@ -128,7 +128,7 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable 
   }
 
   public IExaltedEdition getEdition() {
-    return ExaltedEdition.FirstEdition;
+    return edition;
   }
 
   public void setTraitFactory(GenericTraitTemplateFactory factory) {
@@ -196,5 +196,9 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable 
 
   public void setAdditionalRules(GenericAdditionalRules rules) {
     this.additionalRules = rules;
+  }
+
+  public void setEdition(IExaltedEdition edition) {
+    this.edition = edition;
   }
 }
