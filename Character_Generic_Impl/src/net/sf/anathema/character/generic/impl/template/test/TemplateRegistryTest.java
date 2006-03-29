@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.impl.template.test;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.template.TemplateRegistry;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.lang.ArrayUtilities;
@@ -10,7 +11,7 @@ import net.sf.anathema.lib.testing.BasicTestCase;
 
 public class TemplateRegistryTest extends BasicTestCase {
 
-  private TemplateRegistry registry;
+  private ITemplateRegistry registry;
 
   @Override
   protected void setUp() throws Exception {
@@ -24,7 +25,7 @@ public class TemplateRegistryTest extends BasicTestCase {
         null,
         ExaltedEdition.FirstEdition);
     registry.register(template);
-    assertEquals(template, registry.get(new TemplateType(CharacterType.MORTAL)));
+    assertEquals(template, registry.getTemplate(new TemplateType(CharacterType.MORTAL)));
   }
 
   public void testRegisterAndRetrieveDefaultTemplate() throws Exception {
@@ -58,22 +59,21 @@ public class TemplateRegistryTest extends BasicTestCase {
   }
 
   public void testRegisterAndRetrieveByRuleset() throws Exception {
-    SimpleDummyCharacterTemplate firstTemplate = new SimpleDummyCharacterTemplate(
-        CharacterType.MORTAL,
-        null,
-        ExaltedEdition.FirstEdition);
-    SimpleDummyCharacterTemplate secondTemplate = new SimpleDummyCharacterTemplate(
-        CharacterType.MORTAL,
-        null,
-        ExaltedEdition.SecondEdition);
-    registry.register(firstTemplate);
-    registry.register(secondTemplate);
-    //     assertEquals(firstTemplate, registry.getTemplate(new TemplateType(CharacterType.MORTAL), ExaltedRuleSet.CoreRules));
-    //    assertEquals(
-    //        firstTemplate,
-    //        registry.getTemplate(new TemplateType(CharacterType.MORTAL), ExaltedRuleSet.PowerCombat));
-    //    assertEquals(secondTemplate, registry.getTemplate(
-    //        new TemplateType(CharacterType.MORTAL),
-    //        ExaltedRuleSet.SecondEdition));
+//    SimpleDummyCharacterTemplate firstTemplate = new SimpleDummyCharacterTemplate(
+//        CharacterType.MORTAL,
+//        null,
+//        ExaltedEdition.FirstEdition);
+//    SimpleDummyCharacterTemplate secondTemplate = new SimpleDummyCharacterTemplate(
+//        CharacterType.MORTAL,
+//        null,
+//        ExaltedEdition.SecondEdition);
+//    registry.register(firstTemplate);
+//    registry.register(secondTemplate);
+//    assertEquals(firstTemplate, registry.getTemplate(
+//        new TemplateType(CharacterType.MORTAL),
+//        ExaltedEdition.FirstEdition));
+//    assertEquals(secondTemplate, registry.getTemplate(
+//        new TemplateType(CharacterType.MORTAL),
+//        ExaltedEdition.SecondEdition));
   }
 }
