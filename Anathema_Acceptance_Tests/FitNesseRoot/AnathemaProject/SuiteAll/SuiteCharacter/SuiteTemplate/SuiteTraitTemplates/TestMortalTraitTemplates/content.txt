@@ -1,5 +1,2 @@
-!|SetTemplate|
-|characterType|subtemplate|
-|Mortal|blank|
-
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTemplate.SuiteMortal.SnippetSetMortalTemplate
 !include SnippetVerifyMortalMaximumValues

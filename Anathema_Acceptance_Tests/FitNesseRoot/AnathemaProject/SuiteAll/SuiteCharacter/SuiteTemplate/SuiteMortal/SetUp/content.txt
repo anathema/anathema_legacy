@@ -1,5 +1,3 @@
 !include .AnathemaProject.SuiteAll.SuiteCharacter.SetUp
 
-!|Set Template|
-|characterType|subtemplate|
-|Mortal|blank|
+!include SnippetSetMortalTemplate

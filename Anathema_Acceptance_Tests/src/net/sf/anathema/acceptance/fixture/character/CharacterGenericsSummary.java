@@ -5,6 +5,7 @@ import java.util.Map;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.CharacterModuleContainer;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -34,13 +35,14 @@ public class CharacterGenericsSummary {
     return getCharacterModuleContainer().getCharacterGenerics();
   }
 
-  public ICharacterTemplate createTemplate(String characterType, String subtemplate) {
+  public ICharacterTemplate createTemplate(String characterType, String subtemplate, String edition) {
     CharacterType characterTypeObject = CharacterType.getById(characterType);
+    ExaltedEdition editionType = ExaltedEdition.valueOf(edition);
     if (StringUtilities.isNullOrEmpty(subtemplate)) {
-      return getCharacterGenerics().getTemplateRegistry().getDefaultTemplate(characterTypeObject);
+      return getCharacterGenerics().getTemplateRegistry().getDefaultTemplate(characterTypeObject, editionType);
     }
     IIdentificate subtype = new Identificate(subtemplate);
     TemplateType templateType = new TemplateType(characterTypeObject, subtype);
-    return getCharacterGenerics().getTemplateRegistry().getTemplate(templateType);
+    return getCharacterGenerics().getTemplateRegistry().getTemplate(templateType, editionType);
   }
 }

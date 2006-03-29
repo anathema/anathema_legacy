@@ -1,3 +1,3 @@
 !|Create Character|
-|character type|subtemplate|
-|Abyssal|blank|
+|character type|subtemplate|edition|
+|Abyssal|blank|FirstEdition|

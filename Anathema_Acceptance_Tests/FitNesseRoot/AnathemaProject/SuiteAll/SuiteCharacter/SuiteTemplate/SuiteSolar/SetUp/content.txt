@@ -1,6 +1,4 @@
 !include .AnathemaProject.SuiteAll.SuiteCharacter.SetUp
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTemplate.SuiteSolar.SnippetSetSolarTemplate
 
-!|Set Template|
-|characterType|subtemplate|
-|Solar|blank|
 

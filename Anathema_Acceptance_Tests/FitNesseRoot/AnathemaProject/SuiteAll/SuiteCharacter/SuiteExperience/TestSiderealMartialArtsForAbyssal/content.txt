@@ -1,6 +1,4 @@
-!|Create Character|
-|character type|subtemplate|
-|Abyssal|blank|
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteAbyssal.SnippetCreateLoyalAbyssal
 
 !|Set Attributes|
 |traitType|value|

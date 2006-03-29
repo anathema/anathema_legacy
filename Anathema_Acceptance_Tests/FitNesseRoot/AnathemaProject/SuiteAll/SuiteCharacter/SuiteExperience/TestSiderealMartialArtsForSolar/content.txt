@@ -1,4 +1,4 @@
-!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteExperience.SnippetCreateDefaultSolar
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SnippetCreateDefaultSolar
 
 !include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteExperience.SnippetLearnSiderealMartialArtsCharm
 

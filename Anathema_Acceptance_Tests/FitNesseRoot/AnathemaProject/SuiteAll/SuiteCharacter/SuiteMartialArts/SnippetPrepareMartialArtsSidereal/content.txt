@@ -1,5 +1,3 @@
-!|Create Character|
-|characterType|subtemplate|
-|Sidereal|blank|
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteSidereal.SnippetCreateNewDefaultSidereal 
 
 !include SnippetPrepareMartialArtsPrerequisites

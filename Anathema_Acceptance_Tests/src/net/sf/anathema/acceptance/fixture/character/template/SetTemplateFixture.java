@@ -7,11 +7,12 @@ public class SetTemplateFixture extends RowEntryFixture {
 
   public String characterType;
   public String subtemplate;
+  public String edition;
 
   @Override
   public void enterRow() throws Exception {
     CharacterTemplateSummary templateSummary = new CharacterTemplateSummary(summary);
-    ICharacterTemplate template = templateSummary.createTemplate(characterType, subtemplate);
+    ICharacterTemplate template = templateSummary.createTemplate(characterType, subtemplate, edition);
     templateSummary.setCharacterTemplate(template);
   }
 }

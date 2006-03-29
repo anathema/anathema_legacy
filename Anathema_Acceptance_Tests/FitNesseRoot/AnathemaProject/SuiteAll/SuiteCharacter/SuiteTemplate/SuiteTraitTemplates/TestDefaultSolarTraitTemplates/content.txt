@@ -1,5 +1,2 @@
-!|SetTemplate|
-|characterType|subtemplate|
-|Solar|blank|
-
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTemplate.SuiteSolar.SnippetSetSolarTemplate 
 !include SnippetVerifyCelestialMaximumValues

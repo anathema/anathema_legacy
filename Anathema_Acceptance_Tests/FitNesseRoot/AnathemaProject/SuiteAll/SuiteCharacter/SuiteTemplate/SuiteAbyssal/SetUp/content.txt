@@ -1,5 +1,2 @@
 !include .AnathemaProject.SuiteAll.SuiteCharacter.SetUp
-
-!|Set Template|
-|characterType|subtemplate|
-|Abyssal|blank|
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTemplate.SuiteAbyssal.SnippetSetLoyalAbyssalTemplate

@@ -1,8 +1,5 @@
 !3 Override the default character type
-
-!|Create Character|
-|character type|subtemplate|
-|Abyssal|blank|
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteAbyssal.SnippetCreateLoyalAbyssal
 
 !3 Set the Prerequisites
 

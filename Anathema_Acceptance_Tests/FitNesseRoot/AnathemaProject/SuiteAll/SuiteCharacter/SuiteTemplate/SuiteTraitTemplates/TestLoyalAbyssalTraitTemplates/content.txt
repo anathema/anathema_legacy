@@ -1,5 +1,3 @@
-!|SetTemplate|
-|characterType|subtemplate|
-|Abyssal|blank|
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTemplate.SuiteAbyssal.SnippetSetLoyalAbyssalTemplate 
 
 !include SnippetVerifyCelestialMaximumValues

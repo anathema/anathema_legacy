@@ -1,5 +1,2 @@
-!|Create Character|
-|characterType|subtemplate|
-|Dragon-Blooded|ImmaculateSubtype|
-
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreateImmaculateMonk 
 !include SnippetPrepareMartialArtsPrerequisites

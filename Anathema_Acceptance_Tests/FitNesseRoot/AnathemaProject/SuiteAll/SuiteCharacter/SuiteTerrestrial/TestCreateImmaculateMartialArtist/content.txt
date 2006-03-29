@@ -1,6 +1,6 @@
 !|Create Character|
-|characterType|subtemplate|
-|Dragon-Blooded|ImmaculateSubtype|
+|characterType|subtemplate|edition|
+|Dragon-Blooded|ImmaculateSubtype|FirstEdition|
 
 This test will ensure that the Immaculates' specialties are treated correctly.
 

@@ -1,5 +1,3 @@
-!|Create Character|
-|characterType|subtemplate|
-|Dragon-Blooded|blank|
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreateDefaultTerrestrial 
 
 !include SnippetPrepareMartialArtsPrerequisites

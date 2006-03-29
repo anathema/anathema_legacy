@@ -1,4 +1,4 @@
-!include SnippetCreateDefaultSolar
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SnippetCreateDefaultSolar
 
 !3 Set Character to 'Experienced'...
 
