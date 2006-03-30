@@ -1,6 +1,7 @@
 package net.sf.anathema.character.impl.view.repository;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,17 +23,18 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.view.repository.ICharacterTemplateTree;
+import net.sf.anathema.character.view.repository.IRuleSetSelectionView;
 import net.sf.anathema.lib.resources.IResources;
 
 public class NewCharacterDialogPage extends AbstractDialogPage {
 
   private final ICharacterTemplateTree characterTemplateTree;
-  private final RuleSetSelectionView rulesView;
+  private final IRuleSetSelectionView rulesView;
   private final IResources resources;
 
   public NewCharacterDialogPage(
       ICharacterTemplateTree characterTemplateTree,
-      RuleSetSelectionView rulesView,
+      IRuleSetSelectionView rulesView,
       IResources resources) {
     super(new BasicMessage(resources.getString("CharacterDialog.Message.Select"), MessageType.ERROR)); //$NON-NLS-1$
     this.characterTemplateTree = characterTemplateTree;
@@ -71,7 +73,9 @@ public class NewCharacterDialogPage extends AbstractDialogPage {
           for (IExaltedEdition edition : characterTemplateTree.getSelectedTemplate().getSupportedEditions()) {
             Collections.addAll(rules, ExaltedRuleSet.getRuleSetsByEdition(edition));
           }
-          rulesView.setAvailableRulesets(rules.toArray(new IExaltedRuleSet[rules.size()]));
+          IExaltedRuleSet[] ruleSets = rules.toArray(new IExaltedRuleSet[rules.size()]);
+          Arrays.sort(ruleSets);
+          rulesView.setAvailableRulesets(ruleSets);
         }
       }
     });

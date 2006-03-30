@@ -5,11 +5,12 @@ import javax.swing.JComponent;
 import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.view.repository.IRuleSetSelectionView;
 import net.sf.anathema.framework.presenter.view.ObjectSelectionView;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.resources.IResources;
 
-public class RuleSetSelectionView {
+public class RuleSetSelectionView implements IRuleSetSelectionView {
 
   private GridDialogPanel rulesSelectionPanel;
   private ObjectSelectionView selectionView;
