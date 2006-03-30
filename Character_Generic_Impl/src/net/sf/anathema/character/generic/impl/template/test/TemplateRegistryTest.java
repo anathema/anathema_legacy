@@ -2,6 +2,7 @@ package net.sf.anathema.character.generic.impl.template.test;
 
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.template.TemplateRegistry;
+import net.sf.anathema.character.generic.template.ICharacterExternalsTemplate;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.TemplateType;
@@ -53,7 +54,7 @@ public class TemplateRegistryTest extends BasicTestCase {
     registry.register(defaultTemplate);
     registry.register(otherTemplate);
     registry.register(unsupportedTemplate);
-    ICharacterTemplate[] allSupportedTemplates = registry.getAllSupportedTemplates(CharacterType.MORTAL);
+    ICharacterExternalsTemplate[] allSupportedTemplates = registry.getAllSupportedTemplates(CharacterType.MORTAL);
     assertTrue(ArrayUtilities.contains(allSupportedTemplates, defaultTemplate));
     assertTrue(ArrayUtilities.contains(allSupportedTemplates, otherTemplate));
     assertFalse(ArrayUtilities.contains(allSupportedTemplates, unsupportedTemplate));
