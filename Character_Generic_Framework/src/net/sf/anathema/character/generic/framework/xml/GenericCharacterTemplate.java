@@ -20,8 +20,8 @@ import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
-import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
@@ -36,7 +36,7 @@ import net.sf.anathema.lib.lang.clone.ICloneable;
 public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable {
 
   private IAdditionalRules additionalRules = new GenericAdditionalRules();
-  private TemplateType templateType;
+  private ITemplateType templateType;
   private ITraitTemplateCollection traitTemplateCollection;
   private GenericMagicTemplate magicTemplate;
   private GenericExperiencePointCosts experienceCosts;
@@ -87,7 +87,7 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable 
     return presentationTemplate;
   }
 
-  public TemplateType getTemplateType() {
+  public ITemplateType getTemplateType() {
     return templateType;
   }
 
@@ -146,7 +146,7 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable 
     }
   }
 
-  public void setTemplateType(TemplateType templateType) {
+  public void setTemplateType(ITemplateType templateType) {
     this.templateType = templateType;
   }
 

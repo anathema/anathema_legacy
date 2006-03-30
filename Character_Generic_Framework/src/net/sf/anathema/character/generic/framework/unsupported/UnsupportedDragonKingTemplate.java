@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmSet;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.abilities.GenericAbilityUtilities;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
@@ -37,7 +38,7 @@ public class UnsupportedDragonKingTemplate extends AbstractUnsupportedExaltTempl
     return presentationProperties;
   }
 
-  public TemplateType getTemplateType() {
+  public ITemplateType getTemplateType() {
     return new TemplateType(CharacterType.DRAGON_KING);
   }
 

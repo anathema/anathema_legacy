@@ -29,7 +29,7 @@ import net.sf.anathema.character.generic.framework.xml.rules.GenericAdditionalRu
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactoryParser;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.template.TemplateType;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.traits.groups.AllAbilityTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.AllAttributeTraitTypeGroup;
@@ -108,7 +108,7 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
 
   private void updateTemplateType(Element element, GenericCharacterTemplate characterTemplate)
       throws PersistenceException {
-    TemplateType templateType = new TemplateTypeParser().parse(element);
+    ITemplateType templateType = new TemplateTypeParser().parse(element);
     characterTemplate.setTemplateType(templateType);
     ICasteCollection casteCollection = casteCollectionRegistry.get(templateType.getCharacterType());
     if (casteCollection != null) {
