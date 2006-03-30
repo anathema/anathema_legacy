@@ -47,9 +47,48 @@ public class CharacterConceptAndRulesPresenter {
   }
 
   public void init() {
-    addRulesPresentation();
+    initRulesPresentation();
+    initCastePresentation();
+    initNaturePresentation();
+    initConceptPresentation();
+    initExperienceListening();
+  }
+
+  private void initExperienceListening() {
+    statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
+      public void experiencedChanged(boolean experienced) {
+        characterConceptView.setEnabled(!experienced);
+      }
+    });
+    characterConceptView.setEnabled(!statistics.isExperienced());
+  }
+
+  private void initConceptPresentation() {
+    final ILabelTextView conceptView = characterConceptView.addLabelTextView(resources.getString("Label.Concept")); //$NON-NLS-1$
+    final ISimpleTextualDescription concept = statistics.getCharacterConcept().getConcept();
+    conceptView.addTextChangedListener(new IStringValueChangedListener() {
+      public void valueChanged(String newValue) {
+        concept.setText(newValue);
+      }
+    });
+    concept.addTextChangedListener(new IStringValueChangedListener() {
+      public void valueChanged(String newValue) {
+        conceptView.setText(newValue);
+      }
+    });
+    conceptView.setText(concept.getText());
+    characterConceptView.initGui(new ICharacterConceptAndRulesViewProperties() {
+      public String getConceptTitle() {
+        return resources.getString("CardView.CharacterConcept.Concept"); //$NON-NLS-1$
+      }
+
+      public String getRulesTitle() {
+        return resources.getString("CardView.CharacterConcept.Rules");} //$NON-NLS-1$
+    });
+  }
+
+  private void initNaturePresentation() {
     INatureType[] natures = natureProvider.getAllSorted();
-    addCastePresentation();
     final IObjectSelectionView natureView = characterConceptView.addConceptObjectSelectionView(
         resources.getString("Label.Nature"), //$NON-NLS-1$
         natures,
@@ -86,9 +125,8 @@ public class CharacterConceptAndRulesPresenter {
     final JTextComponent willpowerConditionLabel = characterConceptView.addWillpowerConditionView(resources.getString("CharacterConcept.GainWillpower")); //$NON-NLS-1$
     natureView.addObjectSelectionChangedListener(new IObjectValueChangedListener() {
       public void valueChanged(Object oldValue, Object newValue) {
-        INatureType natureType = getNatureType(newValue);
-        if (natureType != null) {
-          nature.setType(natureType);
+        if (newValue instanceof INatureType) {
+          nature.setType((INatureType) newValue);
         }
       }
     });
@@ -98,36 +136,9 @@ public class CharacterConceptAndRulesPresenter {
       }
     });
     updateNature(natureView, willpowerConditionLabel, statistics.getCharacterConcept().getNature().getType());
-    final ILabelTextView conceptView = characterConceptView.addLabelTextView(resources.getString("Label.Concept")); //$NON-NLS-1$
-    final ISimpleTextualDescription concept = statistics.getCharacterConcept().getConcept();
-    conceptView.addTextChangedListener(new IStringValueChangedListener() {
-      public void valueChanged(String newValue) {
-        concept.setText(newValue);
-      }
-    });
-    concept.addTextChangedListener(new IStringValueChangedListener() {
-      public void valueChanged(String newValue) {
-        conceptView.setText(newValue);
-      }
-    });
-    conceptView.setText(concept.getText());
-    characterConceptView.initGui(new ICharacterConceptAndRulesViewProperties() {
-      public String getConceptTitle() {
-        return resources.getString("CardView.CharacterConcept.Concept"); //$NON-NLS-1$
-      }
-
-      public String getRulesTitle() {
-        return resources.getString("CardView.CharacterConcept.Rules");} //$NON-NLS-1$
-    });
-    statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
-      public void experiencedChanged(boolean experienced) {
-        characterConceptView.setEnabled(!experienced);
-      }
-    });
-    characterConceptView.setEnabled(!statistics.isExperienced());
   }
 
-  private void addRulesPresentation() {
+  private void initRulesPresentation() {
     characterConceptView.addRulesLabel(resources.getString("CharacterType.TextLabel.Intro") + " " + resources.getString(statistics.getCharacterTemplate().getPresentationProperties().getNewActionResource()) + "."); //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$
     characterConceptView.addRulesLabel(resources.getString("Ruleset.TextLabel.UseIntro") + " " + resources.getString("Ruleset." + statistics.getRules().getId()) + "."); //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$ //$NON-NLS-4$    
   }
@@ -149,7 +160,7 @@ public class CharacterConceptAndRulesPresenter {
     willpowerConditionLabel.setText(willpowerCondition);
   }
 
-  private void addCastePresentation() {
+  private void initCastePresentation() {
     final ICharacterTemplate template = statistics.getCharacterTemplate();
     if (template.getCasteCollection().getAllCasteTypes().length <= 0) {
       return;
@@ -180,12 +191,5 @@ public class CharacterConceptAndRulesPresenter {
         casteView.setSelectedObject(newValue);
       }
     });
-  }
-
-  private INatureType getNatureType(Object anObject) {
-    if (anObject instanceof INatureType) {
-      return (INatureType) anObject;
-    }
-    return null;
   }
 }
