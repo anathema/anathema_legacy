@@ -6,16 +6,19 @@ import java.util.List;
 import java.util.Set;
 
 import net.disy.commons.core.util.Ensure;
+import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 
 public class Table<K1, K2, V> {
 
   private final MultiEntryMap<K1, V> rowMap = new MultiEntryMap<K1, V>();
   private final MultiEntryMap<K2, V> columnMap = new MultiEntryMap<K2, V>();
+  private final Set<K1> primaryKeys = new ListOrderedSet<K1>();
 
   public void add(K1 key1, K2 key2, V value) {
     rowMap.add(key1, value);
     columnMap.add(key2, value);
+    primaryKeys.add(key1);
   }
 
   public V get(K1 key1, K2 key2) {
@@ -38,6 +41,6 @@ public class Table<K1, K2, V> {
   }
 
   public Set<K1> getPrimaryKeys() {
-    return Collections.unmodifiableSet(rowMap.keySet());
+    return Collections.unmodifiableSet(primaryKeys);
   }
 }
