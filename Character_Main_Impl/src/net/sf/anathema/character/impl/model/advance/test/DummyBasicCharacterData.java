@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.model.advance.test;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.template.TemplateType;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
 
 public class DummyBasicCharacterData implements IBasicCharacterData {
@@ -45,7 +45,7 @@ public class DummyBasicCharacterData implements IBasicCharacterData {
     this.ruleSet = ruleSet;
   }
 
-  public TemplateType getTemplateType() {
+  public ITemplateType getTemplateType() {
     return null;
   }
 }

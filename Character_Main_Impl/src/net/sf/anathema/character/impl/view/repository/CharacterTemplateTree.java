@@ -179,7 +179,8 @@ public class CharacterTemplateTree implements ICharacterTemplateTree {
       }
       DefaultMutableTreeNode node = new DefaultMutableTreeNode(type);
       treeModel.insertNodeInto(node, root, root.getChildCount());
-
+      
+      
       for (ICharacterTemplate template : templates) {
         DefaultMutableTreeNode templateNode = new DefaultMutableTreeNode(template);
         treeModel.insertNodeInto(templateNode, node, node.getChildCount());

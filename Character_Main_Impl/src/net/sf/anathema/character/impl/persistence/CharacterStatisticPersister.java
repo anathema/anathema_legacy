@@ -14,6 +14,7 @@ import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
@@ -87,7 +88,7 @@ public class CharacterStatisticPersister {
       if (statisticsElement == null) {
         return;
       }
-      TemplateType templateType = loadTemplateType(statisticsElement);
+      ITemplateType templateType = loadTemplateType(statisticsElement);
       boolean experienced = ElementUtilities.getBooleanAttribute(statisticsElement, ATTRIB_EXPERIENCED, false);
       IExaltedRuleSet rules = rulesPersister.load(statisticsElement);
       ICharacterTemplate template = generics.getTemplateRegistry().getTemplate(templateType, rules.getEdition());
@@ -116,7 +117,7 @@ public class CharacterStatisticPersister {
     }
   }
 
-  private TemplateType loadTemplateType(Element parent) throws PersistenceException {
+  private ITemplateType loadTemplateType(Element parent) throws PersistenceException {
     String typeId = ElementUtilities.getRequiredText(parent, TAG_CHARACTER_TYPE);
     CharacterType characterType;
     String subTypeValue;

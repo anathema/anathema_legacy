@@ -15,6 +15,7 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
@@ -60,7 +61,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
     return abilityTypes;
   }
 
-  public TemplateType getTemplateType() {
+  public ITemplateType getTemplateType() {
     return new TemplateType(CharacterType.MORTAL);
   }
 

@@ -10,8 +10,8 @@ import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTemplate;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
-import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
@@ -30,11 +30,11 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
   private final IAdditionalRules additionalRules;
   private final ITraitTemplateCollection traitTemplates;
   private final ITraitContext context;
-  private final TemplateType templateType;
+  private final ITemplateType templateType;
   private final IExaltedEdition edition;
 
   public BackgroundConfiguration(
-      TemplateType templateType,
+      ITemplateType templateType,
       IAdditionalRules additionalRules,
       ITraitTemplateCollection traitTemplates,
       ITraitContext context,

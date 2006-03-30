@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.impl.traits.ExaltTraitTemplateFactory;
 import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
@@ -49,7 +50,7 @@ public abstract class AbstractBonusPointTestCase extends BasicCharacterTestCase 
             return ExaltedRuleSet.CoreRules;
           }
 
-          public TemplateType getTemplateType() {
+          public ITemplateType getTemplateType() {
             return new TemplateType(CharacterType.SOLAR);
           }
         },

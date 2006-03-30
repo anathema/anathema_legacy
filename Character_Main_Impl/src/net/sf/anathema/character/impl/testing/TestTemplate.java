@@ -13,6 +13,7 @@ import net.sf.anathema.character.generic.impl.template.presentation.MortalPresen
 import net.sf.anathema.character.generic.impl.traits.ExaltTraitTemplateFactory;
 import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.abilities.GenericAbilityUtilities;
@@ -30,7 +31,7 @@ import net.sf.anathema.character.generic.type.CharacterType;
 public class TestTemplate extends AbstractCharacterTemplate {
 
   private static final GenericCharacterTemplate MORTAL_TEMPLATE = new GenericCharacterTemplate();
-  public static final TemplateType TEMPLATE_TYPE = new TemplateType(CharacterType.SOLAR);
+  public static final ITemplateType TEMPLATE_TYPE = new TemplateType(CharacterType.SOLAR);
   private final IBonusPointCosts bonusCosts = new DefaultBonusPointCosts();
   private final IAdditionalRules additionalRules = new DummyAdditionalRules();
   private final ICreationPoints creationPoints = new TestCreationPoints();
@@ -53,7 +54,7 @@ public class TestTemplate extends AbstractCharacterTemplate {
     return magicTemplate;
   }
 
-  public TemplateType getTemplateType() {
+  public ITemplateType getTemplateType() {
     return new TemplateType(CharacterType.SOLAR);
   }
 
