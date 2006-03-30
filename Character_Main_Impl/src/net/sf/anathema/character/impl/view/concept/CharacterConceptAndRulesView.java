@@ -1,4 +1,4 @@
-package net.sf.anathema.character.impl.view;
+package net.sf.anathema.character.impl.view.concept;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -7,17 +7,16 @@ import java.awt.Container;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.ListCellRenderer;
 import javax.swing.border.TitledBorder;
+import javax.swing.text.JTextComponent;
 
-import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.generic.framework.util.ExperienceUtilities;
-import net.sf.anathema.character.view.ICharacterConceptAndRulesView;
-import net.sf.anathema.character.view.ICharacterConceptAndRulesViewProperties;
+import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
+import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
 import net.sf.anathema.framework.presenter.view.AbstractTabView;
 import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.ObjectSelectionView;
@@ -86,32 +85,10 @@ public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConc
     });
   }
 
-  public JTextArea addWillpowerConditionView(final String headerLabelText) {
-    final JTextArea conditionLabel = new JTextArea(2, 45);
-    conditionLabel.setEditable(false);
-    conditionLabel.setWrapStyleWord(true);
-    conditionLabel.setLineWrap(true);
-    conditionLabel.setDisabledTextColor(Color.DARK_GRAY);
-    JLabel label = new JLabel();
-    conditionLabel.setFont(label.getFont());
-    conditionLabel.setBackground(label.getBackground());
-    characterConceptPanel.add(new IDialogComponent() {
-      public int getColumnCount() {
-        return 2;
-      }
-
-      public void fillInto(JPanel panel, int columnCount) {
-        GridDialogLayoutData labelLayoutData = new GridDialogLayoutData();
-        labelLayoutData.setHorizontalAlignment(GridAlignment.BEGINNING);
-        labelLayoutData.setVerticalAlignment(GridAlignment.BEGINNING);
-        panel.add(new JLabel(headerLabelText), labelLayoutData);
-        GridDialogLayoutData contentData = new GridDialogLayoutData();
-        contentData.setHorizontalAlignment(GridAlignment.FILL);
-        contentData.setVerticalAlignment(GridAlignment.FILL);
-        panel.add(conditionLabel, contentData);
-      }
-    });
-    return conditionLabel;
+  public JTextComponent addWillpowerConditionView(final String headerLabelText) {
+    WillpowerConditionView view = new WillpowerConditionView(headerLabelText);
+    view.addComponents(characterConceptPanel);
+    return view.getTextComponent();
   }
 
   public void setEnabled(boolean enabled) {
