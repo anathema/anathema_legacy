@@ -4,6 +4,7 @@ import net.sf.anathema.character.db.template.AbstractDbTemplate;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.traits.ExaltTraitTemplateFactory;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -17,13 +18,13 @@ public class ThresholdOutcasteDbTemplate extends AbstractDbTemplate {
   }
 
   public static Identificate THRESHOLD_OUTCASTE_SUB_TYPE = new Identificate("ThresholdOutcasteSubtype"); //$NON-NLS-1$
-  public static final TemplateType TEMPLATE_TYPE = new TemplateType(CharacterType.DB, THRESHOLD_OUTCASTE_SUB_TYPE);
+  public static final ITemplateType TEMPLATE_TYPE = new TemplateType(CharacterType.DB, THRESHOLD_OUTCASTE_SUB_TYPE);
 
   public ICreationPoints getCreationPoints() {
     return new ThresholdOutcasteDbCreationPoints();
   }
 
-  public TemplateType getTemplateType() {
+  public ITemplateType getTemplateType() {
     return TEMPLATE_TYPE;
   }
 }

@@ -5,6 +5,7 @@ import net.sf.anathema.character.db.template.TerrestrialMartialArtistCharmTempla
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
@@ -15,9 +16,9 @@ import net.sf.anathema.lib.util.Identificate;
 
 public class SequesteredTabernacleDbTemplate extends AbstractDbTemplate {
   public static final IIdentificate SEQUESTERED_TABERNACLE_SUBTYPE = new Identificate("SequesteredTabernacleSubtype"); //$NON-NLS-1$
-  public static final TemplateType TEMPLATE_TYPE = new TemplateType(CharacterType.DB, SEQUESTERED_TABERNACLE_SUBTYPE);
+  public static final ITemplateType TEMPLATE_TYPE = new TemplateType(CharacterType.DB, SEQUESTERED_TABERNACLE_SUBTYPE);
 
-  public TemplateType getTemplateType() {
+  public ITemplateType getTemplateType() {
     return TEMPLATE_TYPE;
   }
 

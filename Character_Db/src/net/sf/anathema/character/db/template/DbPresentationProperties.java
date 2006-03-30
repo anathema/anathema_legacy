@@ -6,14 +6,14 @@ import net.sf.anathema.character.db.aspect.DBAspect;
 import net.sf.anathema.character.db.aspect.IDBAspectVisitor;
 import net.sf.anathema.character.generic.impl.IIconConstants;
 import net.sf.anathema.character.generic.impl.template.presentation.AbstractPresentationProperties;
-import net.sf.anathema.character.generic.template.TemplateType;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.presentation.ICharmPresentationProperties;
 
 public final class DbPresentationProperties extends AbstractPresentationProperties {
 
   private final ICharmPresentationProperties charmPresentationProperties = new DbCharmPresentationProperties();
 
-  public DbPresentationProperties(TemplateType templateType) {
+  public DbPresentationProperties(ITemplateType templateType) {
     super(templateType);
   }
 

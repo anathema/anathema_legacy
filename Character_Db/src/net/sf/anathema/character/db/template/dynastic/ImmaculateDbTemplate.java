@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.template.magic.CustomizableMagicTemplate;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
@@ -17,10 +18,10 @@ import net.sf.anathema.lib.util.Identificate;
 
 public class ImmaculateDbTemplate extends DynasticDbTemplate {
   public static final IIdentificate IMMACULATE_SUBTYPE = new Identificate("ImmaculateSubtype"); //$NON-NLS-1$
-  public static final TemplateType IMMACULATE_TEMPLATE_TYPE = new TemplateType(CharacterType.DB, IMMACULATE_SUBTYPE);
+  public static final ITemplateType IMMACULATE_TEMPLATE_TYPE = new TemplateType(CharacterType.DB, IMMACULATE_SUBTYPE);
 
   @Override
-  public TemplateType getTemplateType() {
+  public ITemplateType getTemplateType() {
     return IMMACULATE_TEMPLATE_TYPE;
   }
 

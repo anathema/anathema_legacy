@@ -28,7 +28,7 @@ import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackground
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
-import net.sf.anathema.character.generic.template.TemplateType;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -72,7 +72,7 @@ public class DbCharacterModule extends CharacterGenericsModuleAdapter {
   @Override
   public void addBackgroundTemplates(ICharacterGenerics generics) {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
-    TemplateType[] allDbTemplateType = new TemplateType[] {
+    ITemplateType[] allDbTemplateType = new ITemplateType[] {
         DynasticDbTemplate.TEMPLATE_TYPE,
         PatricianOutcasteDBTemplate.TEMPLATE_TYPE,
         LowerClassOutcasteDbTemplate.TEMPLATE_TYPE,
@@ -94,7 +94,7 @@ public class DbCharacterModule extends CharacterGenericsModuleAdapter {
     realmLookshyDbRules.addBreedingRules(breedingTemplate);
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_COMMAND, allDbTemplateType));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_CONNECTIONS, allDbTemplateType));
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_FAMILY, new TemplateType[] {
+    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_FAMILY, new ITemplateType[] {
         DynasticDbTemplate.TEMPLATE_TYPE,
         LookshyDbTemplate.TEMPLATE_TYPE,
         LookshyRealmDbTemplate.TEMPLATE_TYPE }));
@@ -106,7 +106,7 @@ public class DbCharacterModule extends CharacterGenericsModuleAdapter {
   }
 
   private void addCultBackgrounds(IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
-    TemplateType[] cultTemplates = new TemplateType[] {
+    ITemplateType[] cultTemplates = new ITemplateType[] {
         KetherRockDbTemplate.TEMPLATE_TYPE,
         SequesteredTabernacleDbTemplate.TEMPLATE_TYPE };
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_ILLUMINATION, cultTemplates));
@@ -115,7 +115,7 @@ public class DbCharacterModule extends CharacterGenericsModuleAdapter {
   private void addSorcery(IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
     TemplateTypeBackgroundTemplate sorceryBackground = new TemplateTypeBackgroundTemplate(
         BACKGROUND_ID_SORCERY,
-        new TemplateType[] {
+        new ITemplateType[] {
             DynasticDbTemplate.TEMPLATE_TYPE,
             LookshyDbTemplate.TEMPLATE_TYPE,
             LookshyOutcasteDbTemplate.TEMPLATE_TYPE,
@@ -132,7 +132,7 @@ public class DbCharacterModule extends CharacterGenericsModuleAdapter {
   }
 
   private void addLookshyBackgrounds(IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
-    TemplateType[] lookshyTemplateTypes = new TemplateType[] {
+    ITemplateType[] lookshyTemplateTypes = new ITemplateType[] {
         LookshyDbTemplate.TEMPLATE_TYPE,
         LookshyOutcasteDbTemplate.TEMPLATE_TYPE,
         LookshyRealmDbTemplate.TEMPLATE_TYPE };
