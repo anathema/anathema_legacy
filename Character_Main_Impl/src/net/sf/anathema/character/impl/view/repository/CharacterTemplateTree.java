@@ -1,9 +1,7 @@
 package net.sf.anathema.character.impl.view.repository;
 
 import java.awt.Component;
-import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.List;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
@@ -24,12 +22,14 @@ import net.sf.anathema.character.generic.type.AbstractSupportedCharacterTypeVisi
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.view.repository.ICharacterTemplateTree;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterTemplateTree implements ICharacterTemplateTree {
 
   private JTree templateTree;
-  private List<TreeSelectionListener> listeners = new ArrayList<TreeSelectionListener>();
+  private GenericControl<TreeSelectionListener> control = new GenericControl<TreeSelectionListener>();
   private final ICharacterGenerics generics;
   private final IResources resources;
 
@@ -43,8 +43,8 @@ public class CharacterTemplateTree implements ICharacterTemplateTree {
     this.templateTree = new JTree(treeModel);
     templateTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
     templateTree.addTreeSelectionListener(new TreeSelectionListener() {
-      public void valueChanged(TreeSelectionEvent e) {
-        fireValueChangedEvent(e);
+      public void valueChanged(TreeSelectionEvent event) {
+        fireValueChangedEvent(event);
       }
     });
     templateTree.setCellRenderer(createRenderer());
@@ -189,11 +189,12 @@ public class CharacterTemplateTree implements ICharacterTemplateTree {
     return treeModel;
   }
 
-  private synchronized void fireValueChangedEvent(TreeSelectionEvent e) {
-    List<TreeSelectionListener> cloneList = new ArrayList<TreeSelectionListener>(listeners);
-    for (TreeSelectionListener listener : cloneList) {
-      listener.valueChanged(e);
-    }
+  private void fireValueChangedEvent(final TreeSelectionEvent event) {
+    control.forAllDo(new IClosure<TreeSelectionListener>() {
+      public void execute(TreeSelectionListener input) {
+        input.valueChanged(event);
+      }
+    });
   }
 
   public JComponent getComponent() {
@@ -205,7 +206,7 @@ public class CharacterTemplateTree implements ICharacterTemplateTree {
   }
 
   public void addTreeSelectionListener(TreeSelectionListener listener) {
-    listeners.add(listener);
+    control.addListener(listener);
   }
 
   public ITemplateTypeAggregation getSelectedTemplate() {
