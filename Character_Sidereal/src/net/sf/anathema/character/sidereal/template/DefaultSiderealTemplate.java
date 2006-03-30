@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.impl.template.magic.SpellMagicTemplate;
 import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
@@ -33,7 +34,7 @@ import net.sf.anathema.lib.exception.PersistenceException;
 
 public class DefaultSiderealTemplate extends AbstractCharacterTemplate {
 
-  public static final TemplateType TEMPLATE_TYPE = new TemplateType(CharacterType.SIDEREAL);
+  public static final ITemplateType TEMPLATE_TYPE = new TemplateType(CharacterType.SIDEREAL);
   private final SiderealCreationPoints creationPoints = new SiderealCreationPoints();
   private final SiderealBonusPointCosts bonusPointCosts = new SiderealBonusPointCosts();
   private final SiderealExperienceCosts experienceCosts = new SiderealExperienceCosts();
@@ -88,7 +89,7 @@ public class DefaultSiderealTemplate extends AbstractCharacterTemplate {
     return presentationProperties;
   }
 
-  public TemplateType getTemplateType() {
+  public ITemplateType getTemplateType() {
     return TEMPLATE_TYPE;
   }
 
