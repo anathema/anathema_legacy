@@ -67,7 +67,9 @@ public class AddNewFullCharacterAction extends AbstractAddNewItemAction<Characte
       return null;
     }
     IExaltedRuleSet ruleSet = rulesView.getSelectedRules();
-    ICharacterTemplate template = tree.getSelectedTemplate();
+    ICharacterTemplate template = generics.getTemplateRegistry().getTemplate(
+        tree.getSelectedTemplate().getTemplateType(),
+        ruleSet.getEdition());
     return new CharacterStatisticsConfiguration(template, ruleSet);
   }
 

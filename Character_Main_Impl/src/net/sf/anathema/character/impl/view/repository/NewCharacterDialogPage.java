@@ -1,5 +1,9 @@
 package net.sf.anathema.character.impl.view.repository;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,6 +19,7 @@ import net.disy.commons.swing.message.BasicMessage;
 import net.disy.commons.swing.message.IBasicMessage;
 import net.disy.commons.swing.message.MessageType;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.view.repository.ICharacterTemplateTree;
 import net.sf.anathema.lib.resources.IResources;
@@ -38,7 +43,7 @@ public class NewCharacterDialogPage extends AbstractDialogPage {
   }
 
   public IBasicMessage createCurrentMessage() {
-    if (characterTemplateTree.isTemplateSelected()) {
+    if (characterTemplateTree.isTemplateTypeSelected()) {
       return new BasicMessage(resources.getString("CharacterDialog.Message.Confirm"), MessageType.INFORMATION); //$NON-NLS-1$
     }
     return new BasicMessage(resources.getString("CharacterDialog.Message.Select"), MessageType.ERROR); //$NON-NLS-1$
@@ -61,10 +66,12 @@ public class NewCharacterDialogPage extends AbstractDialogPage {
     characterTemplateTree.addTreeSelectionListener(new TreeSelectionListener() {
       public void valueChanged(TreeSelectionEvent e) {
         getCheckInputValidListener().valueChanged(e);
-        if (characterTemplateTree.isTemplateSelected()) {
-          IExaltedRuleSet[] supportedRuleSets = ExaltedRuleSet.getRuleSetsByEdition(characterTemplateTree.getSelectedTemplate()
-              .getEdition());
-          rulesView.setAvailableRulesets(supportedRuleSets);
+        if (characterTemplateTree.isTemplateTypeSelected()) {
+          List<IExaltedRuleSet> rules = new ArrayList<IExaltedRuleSet>();
+          for (IExaltedEdition edition : characterTemplateTree.getSelectedTemplate().getSupportedEditions()) {
+            Collections.addAll(rules, ExaltedRuleSet.getRuleSetsByEdition(edition));
+          }
+          rulesView.setAvailableRulesets(rules.toArray(new IExaltedRuleSet[rules.size()]));
         }
       }
     });

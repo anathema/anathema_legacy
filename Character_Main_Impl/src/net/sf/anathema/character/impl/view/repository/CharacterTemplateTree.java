@@ -20,10 +20,10 @@ import javax.swing.tree.TreeSelectionModel;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.impl.IIconConstants;
-import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.type.AbstractSupportedCharacterTypeVisitor;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.view.repository.ICharacterTemplateTree;
+import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterTemplateTree implements ICharacterTemplateTree {
@@ -72,7 +72,8 @@ public class CharacterTemplateTree implements ICharacterTemplateTree {
         if (object instanceof CharacterType) {
           CharacterType characterType = (CharacterType) object;
           String characterTypeString = resources.getString("CharacterGenerator.NewCharacter." //$NON-NLS-1$
-              + (characterType).getId() + ".Name"); //$NON-NLS-1$
+              + (characterType).getId()
+              + ".Name"); //$NON-NLS-1$
           Component renderComponent = super.getTreeCellRendererComponent(
               tree,
               characterTypeString,
@@ -84,8 +85,8 @@ public class CharacterTemplateTree implements ICharacterTemplateTree {
           setIcon(getCharacterTypeIcon(characterType));
           return renderComponent;
         }
-        if (object instanceof ICharacterTemplate) {
-          ICharacterTemplate template = (ICharacterTemplate) object;
+        if (object instanceof ITemplateTypeAggregation) {
+          ITemplateTypeAggregation template = (ITemplateTypeAggregation) object;
           String templateString = resources.getString(template.getPresentationProperties().getNewActionResource());
           Component renderComponent = super.getTreeCellRendererComponent(
               tree,
@@ -161,7 +162,7 @@ public class CharacterTemplateTree implements ICharacterTemplateTree {
       }
 
       public void visitLunar(CharacterType type) {
-        typeIcon[0] = resources.getImageIcon(IIconConstants.LUNAR_ICON_TINY); 
+        typeIcon[0] = resources.getImageIcon(IIconConstants.LUNAR_ICON_TINY);
       }
     });
     return typeIcon[0];
@@ -172,18 +173,17 @@ public class CharacterTemplateTree implements ICharacterTemplateTree {
         resources.getString("CharacterDialog.TemplateTree.RootNode"), //$NON-NLS-1$
         true);
     DefaultTreeModel treeModel = new DefaultTreeModel(root);
+    TemplateTypeAggregator aggregator = new TemplateTypeAggregator(generics.getTemplateRegistry());
     for (CharacterType type : CharacterType.values()) {
-      ICharacterTemplate[] templates = generics.getTemplateRegistry().getAllSupportedTemplates(type);
-      if (templates.length == 0) {
+      ITemplateTypeAggregation[] aggregations = aggregator.aggregateTemplates(type);
+      if (aggregations.length == 0) {
         continue;
       }
       DefaultMutableTreeNode node = new DefaultMutableTreeNode(type);
       treeModel.insertNodeInto(node, root, root.getChildCount());
-      
-      
-      for (ICharacterTemplate template : templates) {
-        DefaultMutableTreeNode templateNode = new DefaultMutableTreeNode(template);
-        treeModel.insertNodeInto(templateNode, node, node.getChildCount());
+      for (ITemplateTypeAggregation aggregation : aggregations) {
+        DefaultMutableTreeNode aggregationNode = new DefaultMutableTreeNode(aggregation);
+        treeModel.insertNodeInto(aggregationNode, node, node.getChildCount());
       }
     }
     return treeModel;
@@ -200,24 +200,24 @@ public class CharacterTemplateTree implements ICharacterTemplateTree {
     return templateTree;
   }
 
-  public boolean isTemplateSelected() {
+  public boolean isTemplateTypeSelected() {
     return getSelectedTemplate() != null;
   }
 
-  public ICharacterTemplate getSelectedTemplate() {
+  public void addTreeSelectionListener(TreeSelectionListener listener) {
+    listeners.add(listener);
+  }
+
+  public ITemplateTypeAggregation getSelectedTemplate() {
     TreePath selectionPath = templateTree.getSelectionModel().getSelectionPath();
     if (selectionPath == null) {
       return null;
     }
     DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) selectionPath.getLastPathComponent();
     Object userObject = selectedNode.getUserObject();
-    if (userObject instanceof ICharacterTemplate) {
-      return (ICharacterTemplate) userObject;
+    if (userObject instanceof ITemplateTypeAggregation) {
+      return (ITemplateTypeAggregation) userObject;
     }
     return null;
-  }
-
-  public void addTreeSelectionListener(TreeSelectionListener listener) {
-    listeners.add(listener);
   }
 }
