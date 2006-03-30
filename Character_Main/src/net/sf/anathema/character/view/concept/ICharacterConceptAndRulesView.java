@@ -1,4 +1,4 @@
-package net.sf.anathema.character.view;
+package net.sf.anathema.character.view.concept;
 
 import javax.swing.ListCellRenderer;
 import javax.swing.text.JTextComponent;

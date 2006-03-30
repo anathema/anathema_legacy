@@ -1,4 +1,4 @@
-package net.sf.anathema.character.view;
+package net.sf.anathema.character.view.concept;
 
 public interface ICharacterConceptAndRulesViewProperties {
 
