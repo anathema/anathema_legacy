@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.framework.module.CharacterGenericsModul
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
@@ -40,7 +41,7 @@ public class LunarCharacterModule extends CharacterGenericsModuleAdapter {
   public static final String BACKGROUND_ID_HEARTS_BLOOD_HUMAN = "HeartsBloodHuman"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_RENOWN = "Renown"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_CULT = "Cult"; //$NON-NLS-1$
-  private static final TemplateType[] lunarTemplateType = new TemplateType[] { new TemplateType(CharacterType.LUNAR) };
+  private static final ITemplateType[] lunarTemplateType = new ITemplateType[] { new TemplateType(CharacterType.LUNAR) };
   public static final IBackgroundTemplate RENOWN_BACKGROUND_TYPE = new TemplateTypeBackgroundTemplate(
       BACKGROUND_ID_RENOWN,
       lunarTemplateType);
