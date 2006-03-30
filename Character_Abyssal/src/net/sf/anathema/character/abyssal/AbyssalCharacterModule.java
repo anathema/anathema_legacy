@@ -15,7 +15,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
-import net.sf.anathema.character.generic.template.TemplateType;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -71,8 +71,8 @@ public class AbyssalCharacterModule extends CharacterGenericsModuleAdapter {
   @Override
   public void addBackgroundTemplates(ICharacterGenerics generics) {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
-    TemplateType[] loyalAbyssalTemplateType = new TemplateType[] { LoyalAbyssalTemplate.TEMPLATE_TYPE };
-    TemplateType[] allAbyssalTemplateType = new TemplateType[] {
+    ITemplateType[] loyalAbyssalTemplateType = new ITemplateType[] { LoyalAbyssalTemplate.TEMPLATE_TYPE };
+    ITemplateType[] allAbyssalTemplateType = new ITemplateType[] {
         LoyalAbyssalTemplate.TEMPLATE_TYPE,
         RenegadeAbyssalTemplate.TEMPLATE_TYPE };
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_ABYSSAL_COMMAND, allAbyssalTemplateType));

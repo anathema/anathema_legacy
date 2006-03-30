@@ -3,6 +3,7 @@ package net.sf.anathema.character.abyssal.template;
 import net.sf.anathema.character.abyssal.template.creation.RenegadeAbyssalCreationPoints;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
@@ -14,7 +15,7 @@ import net.sf.anathema.lib.util.Identificate;
 public class RenegadeAbyssalTemplate extends AbstractAbyssalTemplate {
 
   public static final IIdentificate RENEGADE_SUBTYPE = new Identificate("RenegadeAbyssal"); //$NON-NLS-1$
-  public static final TemplateType TEMPLATE_TYPE = new TemplateType(CharacterType.ABYSSAL, RENEGADE_SUBTYPE);
+  public static final ITemplateType TEMPLATE_TYPE = new TemplateType(CharacterType.ABYSSAL, RENEGADE_SUBTYPE);
   private final ICreationPoints creationPoints = new RenegadeAbyssalCreationPoints();
   private final AbyssalPresentationProperties abyssalPresentationProperties;
 
@@ -25,7 +26,7 @@ public class RenegadeAbyssalTemplate extends AbstractAbyssalTemplate {
         "CharacterGenerator.NewCharacter.Abyssal.Renegade.Name"); //$NON-NLS-1$
   }
 
-  public TemplateType getTemplateType() {
+  public ITemplateType getTemplateType() {
     return TEMPLATE_TYPE;
   }
 

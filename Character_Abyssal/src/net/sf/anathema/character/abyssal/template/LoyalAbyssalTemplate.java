@@ -3,6 +3,7 @@ package net.sf.anathema.character.abyssal.template;
 import net.sf.anathema.character.abyssal.template.creation.LoyalAbyssalCreationPoints;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
@@ -11,7 +12,7 @@ import net.sf.anathema.lib.exception.PersistenceException;
 
 public class LoyalAbyssalTemplate extends AbstractAbyssalTemplate {
 
-  public static final TemplateType TEMPLATE_TYPE = new TemplateType(CharacterType.ABYSSAL);
+  public static final ITemplateType TEMPLATE_TYPE = new TemplateType(CharacterType.ABYSSAL);
   private final ICreationPoints creationPoints = new LoyalAbyssalCreationPoints();
   private final AbyssalPresentationProperties presentationProperties;
 
@@ -21,7 +22,7 @@ public class LoyalAbyssalTemplate extends AbstractAbyssalTemplate {
     presentationProperties = new AbyssalPresentationProperties("CharacterGenerator.NewCharacter.Abyssal.Loyal.Name"); //$NON-NLS-1$;
   }
 
-  public TemplateType getTemplateType() {
+  public ITemplateType getTemplateType() {
     return TEMPLATE_TYPE;
   }
 
