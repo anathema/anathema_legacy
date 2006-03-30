@@ -33,7 +33,7 @@ public interface ICharacterTemplate {
 
   public IPresentationProperties getPresentationProperties();
 
-  public TemplateType getTemplateType();
+  public ITemplateType getTemplateType();
 
   public ITraitTemplateCollection getTraitTemplateCollection();
 

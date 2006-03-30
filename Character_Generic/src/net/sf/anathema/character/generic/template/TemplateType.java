@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-public final class TemplateType {
+public final class TemplateType implements ITemplateType {
 
   public static final IIdentificate DEFAULT_SUB_TYPE = new Identificate("TemplateType.Default"); //$NON-NLS-1$
 
@@ -33,7 +33,7 @@ public final class TemplateType {
     if (!(obj instanceof TemplateType)) {
       return false;
     }
-    TemplateType otherType = (TemplateType) obj;
+    ITemplateType otherType = (ITemplateType) obj;
     return getCharacterType().getId().equals(otherType.getCharacterType().getId())
         && getSubType().getId().equals(otherType.getSubType().getId());
   }

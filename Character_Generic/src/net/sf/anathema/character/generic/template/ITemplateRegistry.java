@@ -9,7 +9,7 @@ public interface ITemplateRegistry {
 
   public void register(ICharacterTemplate template);
 
-  public ICharacterTemplate getTemplate(TemplateType type, IExaltedEdition edition);
+  public ICharacterTemplate getTemplate(ITemplateType type, IExaltedEdition edition);
 
   public ICharacterTemplate getDefaultTemplate(CharacterType type, IExaltedEdition edition);
 }
