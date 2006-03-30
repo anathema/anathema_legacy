@@ -15,6 +15,7 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointConfiguration;
 import net.sf.anathema.character.impl.model.charm.CharmConfiguration;
 import net.sf.anathema.character.impl.model.charm.ComboConfiguration;
+import net.sf.anathema.character.impl.model.concept.CharacterConcept;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
 import net.sf.anathema.character.impl.model.traits.CoreTraitConfiguration;
