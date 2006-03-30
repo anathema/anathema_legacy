@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.CharacterModuleContainer;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -42,7 +43,7 @@ public class CharacterGenericsSummary {
       return getCharacterGenerics().getTemplateRegistry().getDefaultTemplate(characterTypeObject, editionType);
     }
     IIdentificate subtype = new Identificate(subtemplate);
-    TemplateType templateType = new TemplateType(characterTypeObject, subtype);
+    ITemplateType templateType = new TemplateType(characterTypeObject, subtype);
     return getCharacterGenerics().getTemplateRegistry().getTemplate(templateType, editionType);
   }
 }
