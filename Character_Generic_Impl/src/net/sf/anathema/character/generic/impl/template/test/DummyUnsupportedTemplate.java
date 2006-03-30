@@ -2,6 +2,7 @@ package net.sf.anathema.character.generic.impl.template.test;
 
 import net.sf.anathema.character.generic.impl.exalt.AbstractUnsupportedExaltTemplate;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
@@ -30,7 +31,7 @@ public class DummyUnsupportedTemplate extends AbstractUnsupportedExaltTemplate {
     throw new NotYetImplementedException();
   }
 
-  public TemplateType getTemplateType() {
+  public ITemplateType getTemplateType() {
     if (subtype == null) {
       return new TemplateType(type);
     }

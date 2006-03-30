@@ -3,12 +3,12 @@ package net.sf.anathema.character.generic.impl.template.presentation;
 import java.awt.Color;
 
 import net.sf.anathema.character.generic.impl.IIconConstants;
-import net.sf.anathema.character.generic.template.TemplateType;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.presentation.ICharmPresentationProperties;
 
 public abstract class MortalPresentationProperties extends AbstractPresentationProperties {
 
-  public MortalPresentationProperties(TemplateType type) {
+  public MortalPresentationProperties(ITemplateType type) {
     super(type);
   }
 

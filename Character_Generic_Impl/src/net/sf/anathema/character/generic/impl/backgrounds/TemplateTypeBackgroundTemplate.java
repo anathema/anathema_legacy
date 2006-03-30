@@ -1,30 +1,30 @@
 package net.sf.anathema.character.generic.impl.backgrounds;
 
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.generic.template.TemplateType;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 
 public class TemplateTypeBackgroundTemplate extends AbstractBackgroundTemplate {
 
-  private TemplateType[] types;
+  private ITemplateType[] types;
   private final LowerableState experiencedState;
 
-  public TemplateTypeBackgroundTemplate(String id, TemplateType templateType) {
-    this(id, new TemplateType[] { templateType });
+  public TemplateTypeBackgroundTemplate(String id, ITemplateType templateType) {
+    this(id, new ITemplateType[] { templateType });
   }
 
-  public TemplateTypeBackgroundTemplate(String id, TemplateType[] types) {
+  public TemplateTypeBackgroundTemplate(String id, ITemplateType[] types) {
     this(id, types, LowerableState.LowerableRegain);
   }
 
-  public TemplateTypeBackgroundTemplate(String id, TemplateType[] types, LowerableState experiencedState) {
+  public TemplateTypeBackgroundTemplate(String id, ITemplateType[] types, LowerableState experiencedState) {
     super(id);
     this.types = types;
     this.experiencedState = experiencedState;
   }
 
-  public boolean acceptsTemplate(TemplateType templateType, IExaltedEdition edition) {
+  public boolean acceptsTemplate(ITemplateType templateType, IExaltedEdition edition) {
     return ArrayUtilities.contains(types, templateType);
   }
 

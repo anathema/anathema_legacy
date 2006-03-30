@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.impl.backgrounds;
 
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.generic.template.TemplateType;
+import net.sf.anathema.character.generic.template.ITemplateType;
 
 public final class SimpleBackgroundTemplate extends CalculatedLowerableBackground {
 
@@ -9,7 +9,7 @@ public final class SimpleBackgroundTemplate extends CalculatedLowerableBackgroun
     super(id);
   }
 
-  public boolean acceptsTemplate(TemplateType templateType, IExaltedEdition edition) {
+  public boolean acceptsTemplate(ITemplateType templateType, IExaltedEdition edition) {
     return true;
   }
 }

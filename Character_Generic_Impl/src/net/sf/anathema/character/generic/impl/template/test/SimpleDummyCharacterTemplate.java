@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
@@ -75,7 +76,7 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
     return null;
   }
 
-  public TemplateType getTemplateType() {
+  public ITemplateType getTemplateType() {
     if (subtype == null) {
       return new TemplateType(type);
     }

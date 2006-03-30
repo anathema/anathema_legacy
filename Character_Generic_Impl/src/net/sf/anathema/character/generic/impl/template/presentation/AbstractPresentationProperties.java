@@ -1,13 +1,13 @@
 package net.sf.anathema.character.generic.impl.template.presentation;
 
-import net.sf.anathema.character.generic.template.TemplateType;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 
 public abstract class AbstractPresentationProperties implements IPresentationProperties {
 
-  private final TemplateType templateType;
+  private final ITemplateType templateType;
 
-  public AbstractPresentationProperties(TemplateType templateType) {
+  public AbstractPresentationProperties(ITemplateType templateType) {
     this.templateType = templateType;
   }
 
@@ -27,7 +27,7 @@ public abstract class AbstractPresentationProperties implements IPresentationPro
     return getCharacterTypeId() + ".Caste."; //$NON-NLS-1$
   }
 
-  protected final TemplateType getTemplateType() {
+  protected final ITemplateType getTemplateType() {
     return templateType;
   }
 }

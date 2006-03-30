@@ -7,22 +7,23 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
+import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.IUnsupportedTemplate;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
 
 public class TemplateRegistry implements ITemplateRegistry {
 
-  private final Table<TemplateType, IExaltedEdition, ICharacterTemplate> table = new Table<TemplateType, IExaltedEdition, ICharacterTemplate>();
+  private final Table<ITemplateType, IExaltedEdition, ICharacterTemplate> table = new Table<ITemplateType, IExaltedEdition, ICharacterTemplate>();
 
   public ICharacterTemplate getDefaultTemplate(CharacterType type, IExaltedEdition edition) {
-    TemplateType templateType = new TemplateType(type);
+    ITemplateType templateType = new TemplateType(type);
     return getTemplate(templateType, edition);
   }
 
   public ICharacterTemplate[] getAllSupportedTemplates(CharacterType type) {
     List<ICharacterTemplate> typeTemplates = new ArrayList<ICharacterTemplate>();
-    for (TemplateType templateType : table.getPrimaryKeys()) {
+    for (ITemplateType templateType : table.getPrimaryKeys()) {
       if (templateType.getCharacterType().equals(type)) {
         for (IExaltedEdition edition : ExaltedEdition.values()) {
           ICharacterTemplate template = getTemplate(templateType, edition);
@@ -39,7 +40,7 @@ public class TemplateRegistry implements ITemplateRegistry {
     table.add(template.getTemplateType(), template.getEdition(), template);
   }
 
-  public ICharacterTemplate getTemplate(TemplateType type, IExaltedEdition edition) {
+  public ICharacterTemplate getTemplate(ITemplateType type, IExaltedEdition edition) {
     return table.get(type, edition);
   }
 }
