@@ -12,7 +12,7 @@ import net.sf.anathema.character.generic.impl.template.TemplateRegistry;
 import net.sf.anathema.character.generic.impl.template.magic.CharmProvider;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
-import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
+import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.registry.CollectionRegistry;
 import net.sf.anathema.lib.registry.ICollectionRegistry;
@@ -28,7 +28,7 @@ public class CharacterGenerics implements ICharacterGenerics {
   private final IRegistry<String, IAdditionalModelFactory> additionalModelRegistry = new Registry<String, IAdditionalModelFactory>();
   private final IRegistry<String, IAdditionalViewFactory> additionalViewRegistry = new Registry<String, IAdditionalViewFactory>();
   private final IRegistry<String, IAdditionalPersisterFactory> additionalPersisterRegistry = new Registry<String, IAdditionalPersisterFactory>();
-  private final ICollectionRegistry<IAdditionalTemplate> additionalTemplateRegistry = new CollectionRegistry<IAdditionalTemplate>();
+  private final ICollectionRegistry<IGlobalAdditionalTemplate> additionalTemplateRegistry = new CollectionRegistry<IGlobalAdditionalTemplate>();
   private final ICollectionRegistry<ICharacterReportTemplate> reportTemplateRegistry = new CollectionRegistry<ICharacterReportTemplate>();
   private final ICharacterTemplateRegistryCollection templateRegistries = new CharacterTemplateRegistryCollection();
   private final IRegistry<CharacterType, ICasteCollection> casteCollectionRegistry = new Registry<CharacterType, ICasteCollection>();
@@ -59,7 +59,7 @@ public class CharacterGenerics implements ICharacterGenerics {
     return reportTemplateRegistry;
   }
 
-  public ICollectionRegistry<IAdditionalTemplate> getGlobalAdditionalTemplateRegistry() {
+  public ICollectionRegistry<IGlobalAdditionalTemplate> getGlobalAdditionalTemplateRegistry() {
     return additionalTemplateRegistry;
   }
 
@@ -74,7 +74,7 @@ public class CharacterGenerics implements ICharacterGenerics {
   public IRegistry<String, IAdditionalTemplateParser> getAdditionalTemplateParserRegistry() {
     return additionalTemplateParserRegistry;
   }
-  
+
   public ICharmProvider getCharmProvider() {
     return charmProvider;
   }
