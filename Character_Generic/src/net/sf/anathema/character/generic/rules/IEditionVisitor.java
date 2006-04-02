@@ -1,11 +1,8 @@
 package net.sf.anathema.character.generic.rules;
 
-
-
 public interface IEditionVisitor {
 
-  void visitFirstEdition(IExaltedEdition edition);
+  void visitFirstEdition(IExaltedEdition visitedEdition);
 
-  void visitSecondEdition(IExaltedEdition edition);
-
+  void visitSecondEdition(IExaltedEdition visitedEdition);
 }
