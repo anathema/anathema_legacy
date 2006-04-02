@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.IUnsupportedTemplate;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
+import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterDescription;
 import net.sf.anathema.character.model.ICharacterStatistics;
@@ -43,7 +44,11 @@ public class ExaltedCharacter implements ICharacter, IItemData {
     Ensure.ensureArgumentNotNull("RuleSet must not be null.", rules); //$NON-NLS-1$
     this.statistics = new CharacterStatistics(template, generics, rules);
     addAdditionalModels(generics, template.getAdditionalTemplates());
-    addAdditionalModels(generics, generics.getGlobalAdditionalTemplateRegistry().getAll().toArray(new IAdditionalTemplate[0]));
+    for (IGlobalAdditionalTemplate globalTemplate : generics.getGlobalAdditionalTemplateRegistry().getAll()) {
+      if (globalTemplate.supportsEdition(rules.getEdition())) {
+        addAdditionalModels(generics, new IAdditionalTemplate[] { globalTemplate });
+      }
+    }
     addCompulsiveCharms(template);
     return statistics;
   }
