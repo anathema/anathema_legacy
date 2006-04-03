@@ -2,7 +2,6 @@ package net.sf.anathema.character.view;
 
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
-import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.overview.ICreationOverviewView;
 import net.sf.anathema.character.view.overview.IExperienceOverviewView;
@@ -15,8 +14,6 @@ public interface ICharacterView extends IItemView {
   public IGroupedFavorableTraitConfigurationView addGroupedFavorableTraitConfigurationView(
       String header,
       int columnCount);
-
-  public ICharacterConceptAndRulesView addCharacterConceptView(String header);
 
   public ICharacterDescriptionView addCharacterDescriptionView(String header);
 
@@ -32,9 +29,11 @@ public interface ICharacterView extends IItemView {
 
   public IIntValueDisplayFactory getIntValueDisplayFactory();
 
-  public IMagicViewFactory createMagicViewFactory();
-
   public void addDisposable(IDisposable disposable);
 
+  public ICharacterConceptAndRulesViewFactory createConceptViewFactory();
+
   public IAdvantageViewFactory createAdvantageViewFactory();
+
+  public IMagicViewFactory createMagicViewFactory();
 }

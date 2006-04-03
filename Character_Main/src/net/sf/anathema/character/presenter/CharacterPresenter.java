@@ -15,12 +15,11 @@ import net.sf.anathema.character.presenter.advance.ExperienceConfigurationPresen
 import net.sf.anathema.character.presenter.charm.MagicPresenter;
 import net.sf.anathema.character.presenter.overview.CreationOverviewPresenter;
 import net.sf.anathema.character.presenter.overview.ExperiencedOverviewPresenter;
+import net.sf.anathema.character.view.ICharacterConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.character.view.ICharacterView;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
-import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
-import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.overview.ICreationOverviewView;
 import net.sf.anathema.character.view.overview.IExperienceOverviewView;
 import net.sf.anathema.framework.presenter.view.IMultiTabView;
@@ -132,10 +131,9 @@ public class CharacterPresenter {
       return;
     }
     String magicViewHeader = getString("CardView.CharmConfiguration.Title"); //$NON-NLS-1$
-    IMagicViewFactory magicView = characterView.createMagicViewFactory();
     TabContent[] basicMagicViews = new MagicPresenter(
         getStatistics(),
-        magicView,
+        characterView.createMagicViewFactory(),
         resources,
         generics.getTemplateRegistry(),
         generics.getCharmProvider()).init();
@@ -153,8 +151,14 @@ public class CharacterPresenter {
   }
 
   private void initCharacterConceptPresentation() {
-    ICharacterConceptAndRulesView characterConceptView = characterView.addCharacterConceptView(getString("CardView.CharacterConcept.Title")); //$NON-NLS-1$
-    new CharacterConceptAndRulesPresenter(getStatistics(), characterConceptView, resources, natureProvider).init();
+    String viewTitle = getString("CardView.CharacterConcept.Title"); //$NON-NLS-1$
+    ICharacterConceptAndRulesViewFactory characterConceptView = characterView.createConceptViewFactory();
+    TabContent[] conceptViews = new CharacterConceptAndRulesPresenter(
+        getStatistics(),
+        characterConceptView,
+        resources,
+        natureProvider).init();
+    initMultiTabViewPresentation(viewTitle, conceptViews, AdditionalModelType.Concept);
   }
 
   public void initAttributePresentation() {

@@ -17,6 +17,7 @@ import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.nature.INatureProvider;
 import net.sf.anathema.character.model.nature.INatureType;
+import net.sf.anathema.character.view.ICharacterConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
 import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
@@ -30,41 +31,43 @@ import net.sf.anathema.lib.workflow.textualdescription.view.ILabelTextView;
 
 public class CharacterConceptAndRulesPresenter {
 
-  private final ICharacterConceptAndRulesView characterConceptView;
+  private final ICharacterConceptAndRulesView view;
   private final ICharacterStatistics statistics;
   private final INatureProvider natureProvider;
   private final IResources resources;
 
   public CharacterConceptAndRulesPresenter(
       ICharacterStatistics statstics,
-      ICharacterConceptAndRulesView characterConceptView,
+      ICharacterConceptAndRulesViewFactory viewFactory,
       IResources resources,
       INatureProvider natureProvider) {
     this.statistics = statstics;
-    this.characterConceptView = characterConceptView;
+    this.view = viewFactory.createCharacterConceptView();
     this.resources = resources;
     this.natureProvider = natureProvider;
   }
 
-  public void init() {
+  public TabContent[] init() {
     initRulesPresentation();
     initCastePresentation();
     initNaturePresentation();
     initConceptPresentation();
     initExperienceListening();
+    initGui();
+    return new TabContent[] { new TabContent(resources.getString("CardView.CharacterConcept.Title"), view) }; //$NON-NLS-1$
   }
 
   private void initExperienceListening() {
     statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
       public void experiencedChanged(boolean experienced) {
-        characterConceptView.setEnabled(!experienced);
+        view.setEnabled(!experienced);
       }
     });
-    characterConceptView.setEnabled(!statistics.isExperienced());
+    view.setEnabled(!statistics.isExperienced());
   }
 
   private void initConceptPresentation() {
-    final ILabelTextView conceptView = characterConceptView.addLabelTextView(resources.getString("Label.Concept")); //$NON-NLS-1$
+    final ILabelTextView conceptView = view.addLabelTextView(resources.getString("Label.Concept")); //$NON-NLS-1$
     final ISimpleTextualDescription concept = statistics.getCharacterConcept().getConcept();
     conceptView.addTextChangedListener(new IStringValueChangedListener() {
       public void valueChanged(String newValue) {
@@ -77,7 +80,10 @@ public class CharacterConceptAndRulesPresenter {
       }
     });
     conceptView.setText(concept.getText());
-    characterConceptView.initGui(new ICharacterConceptAndRulesViewProperties() {
+  }
+
+  private void initGui() {
+    view.initGui(new ICharacterConceptAndRulesViewProperties() {
       public String getConceptTitle() {
         return resources.getString("CardView.CharacterConcept.Concept"); //$NON-NLS-1$
       }
@@ -89,8 +95,7 @@ public class CharacterConceptAndRulesPresenter {
 
   private void initNaturePresentation() {
     INatureType[] natures = natureProvider.getAllSorted();
-    final IObjectSelectionView natureView = characterConceptView.addConceptObjectSelectionView(
-        resources.getString("Label.Nature"), //$NON-NLS-1$
+    final IObjectSelectionView natureView = view.addConceptObjectSelectionView(resources.getString("Label.Nature"), //$NON-NLS-1$
         natures,
         new DefaultListCellRenderer() {
 
@@ -122,7 +127,7 @@ public class CharacterConceptAndRulesPresenter {
         false);
     final ITypedDescription<INatureType> nature = statistics.getCharacterConcept().getNature();
     natureView.setSelectedObject(nature.getType());
-    final JTextComponent willpowerConditionLabel = characterConceptView.addWillpowerConditionView(resources.getString("CharacterConcept.GainWillpower")); //$NON-NLS-1$
+    final JTextComponent willpowerConditionLabel = view.addWillpowerConditionView(resources.getString("CharacterConcept.GainWillpower")); //$NON-NLS-1$
     natureView.addObjectSelectionChangedListener(new IObjectValueChangedListener() {
       public void valueChanged(Object oldValue, Object newValue) {
         if (newValue instanceof INatureType) {
@@ -139,8 +144,8 @@ public class CharacterConceptAndRulesPresenter {
   }
 
   private void initRulesPresentation() {
-    characterConceptView.addRulesLabel(resources.getString("CharacterType.TextLabel.Intro") + " " + resources.getString(statistics.getCharacterTemplate().getPresentationProperties().getNewActionResource()) + "."); //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$
-    characterConceptView.addRulesLabel(resources.getString("Ruleset.TextLabel.UseIntro") + " " + resources.getString("Ruleset." + statistics.getRules().getId()) + "."); //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$ //$NON-NLS-4$    
+    view.addRulesLabel(resources.getString("CharacterType.TextLabel.Intro") + " " + resources.getString(statistics.getCharacterTemplate().getPresentationProperties().getNewActionResource()) + "."); //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$
+    view.addRulesLabel(resources.getString("Ruleset.TextLabel.UseIntro") + " " + resources.getString("Ruleset." + statistics.getRules().getId()) + "."); //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$ //$NON-NLS-4$    
   }
 
   private void updateNature(
@@ -174,7 +179,7 @@ public class CharacterConceptAndRulesPresenter {
         return getResources().getImageIcon(characterType.getId() + "Button" + value.getId() + "16.png"); //$NON-NLS-1$ //$NON-NLS-2$
       }
     };
-    final IObjectSelectionView casteView = characterConceptView.addConceptObjectSelectionView(
+    final IObjectSelectionView casteView = view.addConceptObjectSelectionView(
         resources.getString(casteLabelResourceKey),
         template.getCasteCollection().getAllCasteTypes(),
         new ObjectUiListCellRenderer(casteUi),
