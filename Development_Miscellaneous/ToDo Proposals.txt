@@ -1,3 +1,6 @@
+Import Custom Charms from Ed
+Human Form Lunars Heartsblood
+
 Ricardo
 -Allow selection of favored character type
 -Forest witches
