@@ -20,7 +20,7 @@ public class HeartsBloodPersister implements IAdditionalPersister {
   public void save(Element parent, IAdditionalModel model) {
     Element element = parent.addElement(TAG_HEARTS_BLOOD);
     IHeartsBloodModel heartsBloodModel = (IHeartsBloodModel) model;
-    for (IAnimalForm form : heartsBloodModel.getAnimalForms()) {
+    for (IAnimalForm form : heartsBloodModel.getEntries()) {
       saveAnimalForm(element, form);
     }
   }
@@ -39,7 +39,10 @@ public class HeartsBloodPersister implements IAdditionalPersister {
       String name = ElementUtilities.getRequiredAttrib(formElement, ATTRIB_NAME);
       int strength = ElementUtilities.getRequiredIntAttrib(formElement, ATTRIB_STRENGTH_VALUE);
       int stamina = ElementUtilities.getRequiredIntAttrib(formElement, ATTRIB_STAMINA_VALUE);
-      heartsBloodModel.addAnimalForm(name, strength, stamina);
+      heartsBloodModel.setCurrentName(name);
+      heartsBloodModel.setCurrentStrength(strength);
+      heartsBloodModel.setCurrentStamina(stamina);
+      heartsBloodModel.commitSelection();
     }
   }
 }

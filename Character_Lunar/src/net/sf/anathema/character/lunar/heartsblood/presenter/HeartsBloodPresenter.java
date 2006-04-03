@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
+import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
 import net.sf.anathema.character.lunar.heartsblood.view.HeartsBloodView;
 import net.sf.anathema.character.lunar.heartsblood.view.IAnimalFormSelectionView;
 import net.sf.anathema.character.lunar.heartsblood.view.IRemovableStringView;
@@ -39,7 +40,7 @@ public class HeartsBloodPresenter {
         animalStaminaString);
     initSelectionViewListening(selectionView);
     initModelListening(basicUi, selectionView);
-    for (IAnimalForm form : model.getAnimalForms()) {
+    for (IAnimalForm form : model.getEntries()) {
       addAnimalFormView(basicUi, form);
     }
 
@@ -75,19 +76,19 @@ public class HeartsBloodPresenter {
     viewsByForm.put(form, formView);
     formView.addRemoveButtonListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        model.removeSelection(form);
+        model.removeEntry(form);
       }
     });
   }
 
   private void initModelListening(final BasicUi basicUi, final IAnimalFormSelectionView selectionView) {
-    model.addModelChangeListener(new IHeartsBloodModelListener() {
-      public void fireSelectionAdded(final IAnimalForm form) {
+    model.addModelChangeListener(new IRemovableEntryListener<IAnimalForm>() {
+      public void entryAdded(final IAnimalForm form) {
         addAnimalFormView(basicUi, form);
         reset(selectionView);
       }
 
-      public void fireSelectionRemoved(IAnimalForm form) {
+      public void entryRemoved(IAnimalForm form) {
         IRemovableStringView removableView = viewsByForm.get(form);
         view.removeSelection(removableView);
       }

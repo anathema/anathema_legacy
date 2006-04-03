@@ -16,14 +16,14 @@ public class HeartsBloodDataSource implements IReportDataSource {
   }
 
   public int getRowCount() {
-    return model.getAnimalForms().length;
+    return model.getEntries().size();
   }
 
   public Object getValue(int currentRow, String columnName) {
     if (currentRow >= getRowCount()) {
       return ""; //$NON-NLS-1$
     }
-    IAnimalForm animalForm = model.getAnimalForms()[currentRow];
+    IAnimalForm animalForm = model.getEntries().get(currentRow);
     if (columnName.equals(COLUMN_PRINT_NAME)) {
       return animalForm.getName();
     }

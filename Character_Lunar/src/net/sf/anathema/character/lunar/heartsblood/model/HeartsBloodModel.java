@@ -1,37 +1,34 @@
 package net.sf.anathema.character.lunar.heartsblood.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.event.ChangeListener;
 
+import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
+import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
+import net.sf.anathema.character.library.removableentry.model.AbstractRemovableEntryModel;
 import net.sf.anathema.character.lunar.heartsblood.HeartsBloodTemplate;
 import net.sf.anathema.character.lunar.heartsblood.presenter.IAnimalForm;
 import net.sf.anathema.character.lunar.heartsblood.presenter.IHeartsBloodModel;
-import net.sf.anathema.character.lunar.heartsblood.presenter.IHeartsBloodModelListener;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
 
-public class HeartsBloodModel implements IHeartsBloodModel {
+public class HeartsBloodModel extends AbstractRemovableEntryModel<IAnimalForm> implements
+    IAdditionalModel,
+    IHeartsBloodModel {
 
   private String currentName;
   private int currentStrength;
   private int currentStamina;
-  private final GenericControl<IHeartsBloodModelListener> control = new GenericControl<IHeartsBloodModelListener>();
-  private final List<IAnimalForm> forms = new ArrayList<IAnimalForm>();
   private final ICharacterModelContext context;
 
   public HeartsBloodModel(ICharacterModelContext context) {
     this.context = context;
   }
-  
+
   public String getTemplateId() {
     return HeartsBloodTemplate.TEMPLATE_ID;
   }
@@ -45,7 +42,7 @@ public class HeartsBloodModel implements IHeartsBloodModel {
   }
 
   public void addBonusPointsChangeListener(ChangeListener listener) {
-    //Nothing to do
+    // Nothing to do
   }
 
   public IAdditionalModelExperienceCalculator getExperienceCalculator() {
@@ -54,11 +51,7 @@ public class HeartsBloodModel implements IHeartsBloodModel {
 
   public void setCurrentName(String newValue) {
     this.currentName = newValue;
-    control.forAllDo(new IClosure<IHeartsBloodModelListener>() {
-      public void execute(IHeartsBloodModelListener input) {
-        input.entryComplete(currentName != null);
-      }
-    });
+    fireEntryComplete();
   }
 
   public void setCurrentStrength(int newValue) {
@@ -69,40 +62,17 @@ public class HeartsBloodModel implements IHeartsBloodModel {
     this.currentStamina = newValue;
   }
 
-  public void commitSelection() {
-    final IAnimalForm form = addAnimalForm(currentName, currentStrength, currentStamina);
-    control.forAllDo(new IClosure<IHeartsBloodModelListener>() {
-      public void execute(IHeartsBloodModelListener input) {
-        input.fireSelectionAdded(form);
-      }
-    });
+  protected boolean isEntryComplete() {
+    return StringUtilities.isNullOrEmpty(currentName);
   }
 
-  public void addModelChangeListener(IHeartsBloodModelListener listener) {
-    control.addListener(listener);
-  }
-
-  public void removeSelection(final IAnimalForm form) {
-    forms.remove(form);
-    control.forAllDo(new IClosure<IHeartsBloodModelListener>() {
-      public void execute(IHeartsBloodModelListener input) {
-        input.fireSelectionRemoved(form);
-      }
-    });
-  }
-
-  public IAnimalForm[] getAnimalForms() {
-    return forms.toArray(new IAnimalForm[forms.size()]);
-  }
-
-  public IAnimalForm addAnimalForm(String name, int strength, int stamina) {
-    final IAnimalForm form = new AnimalForm(name, strength, stamina, context.getBasicCharacterContext().isExperienced());
-    forms.add(form);
-    return form;
+  @Override
+  protected IAnimalForm createEntry() {
+    return new AnimalForm(currentName, currentStrength, currentStamina, context.getBasicCharacterContext()
+        .isExperienced());
   }
 
   public void addCharacterChangeListener(ICharacterChangeListener listener) {
     context.getCharacterListening().addChangeListener(listener);
   }
-
 }
