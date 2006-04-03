@@ -6,18 +6,18 @@ import java.util.List;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 
-import net.sf.anathema.character.impl.view.concept.CharacterConceptAndRulesView;
+import net.sf.anathema.character.impl.view.concept.CharacterConceptAndRulesViewFactory;
 import net.sf.anathema.character.impl.view.magic.MagicViewFactory;
 import net.sf.anathema.character.impl.view.overview.AbstractOverviewView;
 import net.sf.anathema.character.impl.view.overview.CreationOverviewView;
 import net.sf.anathema.character.impl.view.overview.ExperienceOverviewView;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.view.IAdvantageViewFactory;
+import net.sf.anathema.character.view.ICharacterConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.character.view.ICharacterView;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
-import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.overview.ICreationOverviewView;
 import net.sf.anathema.character.view.overview.IExperienceOverviewView;
@@ -50,12 +50,6 @@ public class CharacterView extends AbstractTabbedItemView implements ICharacterV
     return groupedConfigurationView;
   }
 
-  public ICharacterConceptAndRulesView addCharacterConceptView(String header) {
-    ICharacterConceptAndRulesView characterConceptView = new CharacterConceptAndRulesView(header);
-    addTab(characterConceptView, header);
-    return characterConceptView;
-  }
-
   public ICharacterDescriptionView addCharacterDescriptionView(String header) {
     ICharacterDescriptionView descriptionView = new CharacterDescriptionView(header);
     addTab(descriptionView, header);
@@ -63,9 +57,9 @@ public class CharacterView extends AbstractTabbedItemView implements ICharacterV
   }
 
   public IMultiTabView addMultiTabView(String header) {
-    IMultiTabView miscellaneousView = new MultiTabView(header);
-    addTab(miscellaneousView, header);
-    return miscellaneousView;
+    IMultiTabView multiTabView = new MultiTabView(null);
+    addTab(multiTabView, header);
+    return multiTabView;
   }
 
   public ICreationOverviewView addCreationOverviewView() {
@@ -116,6 +110,10 @@ public class CharacterView extends AbstractTabbedItemView implements ICharacterV
 
   public IAdvantageViewFactory createAdvantageViewFactory() {
     return new AdvantageViewFactory(intValueDisplayFactory);
+  }
+
+  public ICharacterConceptAndRulesViewFactory createConceptViewFactory() {
+    return new CharacterConceptAndRulesViewFactory();
   }
 
   public void addDisposable(IDisposable disposable) {

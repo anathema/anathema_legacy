@@ -31,8 +31,8 @@ public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConc
   private GridDialogPanel characterConceptPanel = new GridDialogPanel(false);
   private GridDialogPanel rulesPanel = new GridDialogPanel(false);
 
-  public CharacterConceptAndRulesView(String header) {
-    super(header);
+  public CharacterConceptAndRulesView() {
+    super(null);
   }
 
   @Override
