@@ -1,13 +1,10 @@
 package net.sf.anathema.character.generic.impl.backgrounds;
 
-import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
-import net.sf.anathema.character.generic.traits.types.ITraitTypeVisitor;
-import net.sf.anathema.lib.util.Identificate;
 
-public class CustomizedBackgroundTemplate extends Identificate implements IBackgroundTemplate {
+public class CustomizedBackgroundTemplate extends AbstractBackgroundTemplate {
 
   public CustomizedBackgroundTemplate(String name) {
     super(name);
@@ -15,10 +12,6 @@ public class CustomizedBackgroundTemplate extends Identificate implements IBackg
 
   public boolean acceptsTemplate(ITemplateType templateType, IExaltedEdition edition) {
     return true;
-  }
-
-  public void accept(ITraitTypeVisitor visitor) {
-    visitor.visitBackground(this);
   }
 
   @Override
