@@ -2,9 +2,8 @@
 ----
 
 !*> Classpath
-!path lib/fitnesse.jar
 !path build/classes
-!path ../Acceptance_Tests/build/classes
+!path ../Thirdparty/Testing/fitnesse.jar
 !path ../Campaign/build/classes
 !path ../Character_Main/build/classes
 !path ../Character_Main_Impl/build/classes
