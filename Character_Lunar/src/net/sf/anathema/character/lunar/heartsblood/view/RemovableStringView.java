@@ -14,8 +14,8 @@ import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntr
 public class RemovableStringView implements IRemovableEntryView {
 
   private final JButton button;
-  private JPanel contentPanel;
   private final JLabel label;
+  private JPanel contentPanel;
 
   public RemovableStringView(Icon removeIcon, String string) {
     this.label = new JLabel(string);
