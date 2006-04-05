@@ -7,9 +7,9 @@ import java.util.Map;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
+import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.lunar.heartsblood.view.HeartsBloodView;
 import net.sf.anathema.character.lunar.heartsblood.view.IAnimalFormSelectionView;
-import net.sf.anathema.character.lunar.heartsblood.view.IRemovableStringView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
@@ -20,7 +20,7 @@ public class HeartsBloodPresenter {
   private final IHeartsBloodModel model;
   private final HeartsBloodView view;
   private final IResources resources;
-  private final Map<IAnimalForm, IRemovableStringView> viewsByForm = new HashMap<IAnimalForm, IRemovableStringView>();
+  private final Map<IAnimalForm, IRemovableEntryView> viewsByForm = new HashMap<IAnimalForm, IRemovableEntryView>();
 
   public HeartsBloodPresenter(IHeartsBloodModel model, HeartsBloodView view, IResources resources) {
     this.model = model;
@@ -71,7 +71,7 @@ public class HeartsBloodPresenter {
   }
 
   private void addAnimalFormView(final BasicUi basicUi, final IAnimalForm form) {
-    IRemovableStringView formView = view.addAnimalFormView(basicUi.getMediumRemoveIcon(), form.getName()
+    IRemovableEntryView formView = view.addEntryView(basicUi.getMediumRemoveIcon(), form.getName()
         + " (" + form.getStrength() + "/" + form.getStamina() + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     viewsByForm.put(form, formView);
     formView.addRemoveButtonListener(new ActionListener() {
@@ -89,8 +89,8 @@ public class HeartsBloodPresenter {
       }
 
       public void entryRemoved(IAnimalForm form) {
-        IRemovableStringView removableView = viewsByForm.get(form);
-        view.removeSelection(removableView);
+        IRemovableEntryView removableView = viewsByForm.get(form);
+        view.removeEntryView(removableView);
       }
 
       public void entryComplete(boolean complete) {
@@ -102,7 +102,7 @@ public class HeartsBloodPresenter {
       public void experiencedChanged(boolean experienced) {
         for (IAnimalForm form : viewsByForm.keySet()) {
           if (form.isCreationLearned()) {
-            IRemovableStringView formView = viewsByForm.get(form);
+            IRemovableEntryView formView = viewsByForm.get(form);
             formView.setDeleteEnabled(!experienced);
           }
         }

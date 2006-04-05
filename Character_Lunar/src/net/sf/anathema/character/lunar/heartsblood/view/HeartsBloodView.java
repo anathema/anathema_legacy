@@ -6,9 +6,10 @@ import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.sf.anathema.framework.presenter.view.ISimpleTabView;
+import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
+import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
 
-public class HeartsBloodView implements ISimpleTabView {
+public class HeartsBloodView extends AbstractRemovableEntryView<IRemovableEntryView> {
 
   private final JPanel content = new JPanel(new GridDialogLayout(1, false));
   private final JPanel selectionPanel = new JPanel(new GridDialogLayout(2, false));
@@ -36,14 +37,10 @@ public class HeartsBloodView implements ISimpleTabView {
     return view;
   }
 
-  public IRemovableStringView addAnimalFormView(Icon removeIcon, String string) {
+  public IRemovableEntryView addEntryView(Icon removeIcon, String string) {
     RemovableStringView view = new RemovableStringView(removeIcon, string);
     view.addContent(selectionPanel);
     content.revalidate();
     return view;
-  }
-
-  public void removeSelection(IRemovableStringView removableView) {
-    removableView.delete();
   }
 }

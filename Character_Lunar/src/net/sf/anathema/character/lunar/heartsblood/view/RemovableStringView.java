@@ -9,8 +9,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 
-public class RemovableStringView implements IRemovableStringView {
+public class RemovableStringView implements IRemovableEntryView {
 
   private final JButton button;
   private JPanel contentPanel;
