@@ -14,9 +14,10 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.sf.anathema.character.impl.view.advantage.EssencePanelView;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.character.library.intvalue.IRemovableIntValueView;
+import net.sf.anathema.character.library.trait.view.RemovableTraitView;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.view.IAdvantageViewProperties;
-import net.sf.anathema.character.view.IBackgroundView;
 import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.framework.presenter.view.AbstractTabView;
 import net.sf.anathema.framework.presenter.view.ButtonControlledObjectSelectionView;
@@ -98,7 +99,7 @@ public class BasicAdvantageView extends AbstractTabView<IAdvantageViewProperties
     return objectSelectionView;
   }
 
-  public IBackgroundView addBackgroundView(Icon deleteIcon, String labelText, int value, int maxValue) {
+  public IRemovableIntValueView addBackgroundView(Icon deleteIcon, String labelText, int value, int maxValue) {
     RemovableTraitView backgroundView = new RemovableTraitView(guiConfiguration, labelText, deleteIcon, value, maxValue);
     backgroundView.addComponents(backgroundDisplayPanel);
     return backgroundView;
