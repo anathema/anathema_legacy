@@ -4,6 +4,7 @@ import javax.swing.ComboBoxEditor;
 import javax.swing.Icon;
 import javax.swing.ListCellRenderer;
 
+import net.sf.anathema.character.library.intvalue.IRemovableIntValueView;
 import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.ITabView;
 import net.sf.anathema.framework.value.IIntValueView;
@@ -22,7 +23,7 @@ public interface IBasicAdvantageView extends ITabView<IAdvantageViewProperties> 
       ListCellRenderer renderer,
       Icon addIcon);
 
-  public IBackgroundView addBackgroundView(Icon deleteIcon, String labelText, int creationValue, int maxValue);
+  public IRemovableIntValueView addBackgroundView(Icon deleteIcon, String labelText, int creationValue, int maxValue);
 
   public abstract IIntValueView addEssenceView(String labelText, int value, int maxValue);
 
