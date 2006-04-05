@@ -1,17 +1,8 @@
 package net.sf.anathema.character.view;
 
-import java.awt.Component;
-
+import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.lib.control.IChangeListener;
 
-public interface IBackgroundView extends IIntValueView {
-
-  public void addDeleteListener(IChangeListener listener);
-
-  public void delete();
-
-  public Component getComponent();
-
-  public void setDeleteEnabled(boolean enabled);
+public interface IBackgroundView extends IIntValueView, IRemovableEntryView {
+  // Nothing to do
 }
