@@ -99,7 +99,7 @@ public class BasicAdvantageView extends AbstractTabView<IAdvantageViewProperties
   }
 
   public IBackgroundView addBackgroundView(Icon deleteIcon, String labelText, int value, int maxValue) {
-    BackgroundView backgroundView = new BackgroundView(guiConfiguration, labelText, deleteIcon, value, maxValue);
+    RemovableTraitView backgroundView = new RemovableTraitView(guiConfiguration, labelText, deleteIcon, value, maxValue);
     backgroundView.addComponents(backgroundDisplayPanel);
     return backgroundView;
   }
