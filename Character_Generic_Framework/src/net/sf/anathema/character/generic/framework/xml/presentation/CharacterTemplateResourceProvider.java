@@ -4,17 +4,42 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.sf.anathema.character.generic.impl.IIconConstants;
+import net.sf.anathema.character.generic.type.AbstractSupportedCharacterTypeVisitor;
 import net.sf.anathema.character.generic.type.CharacterType;
 
 public class CharacterTemplateResourceProvider implements ICharacterTemplateResourceProvider {
 
-  private final Map<CharacterType, String> resourcesByCharacterType = new HashMap<CharacterType, String>() {
-    {
-      put(CharacterType.MORTAL, IIconConstants.MORTAL_BALL);
-      put(CharacterType.LUNAR, IIconConstants.LUNAR_BALL);
-      put(CharacterType.SOLAR, IIconConstants.SOLAR_BALL);
+  private final Map<CharacterType, String> resourcesByCharacterType = new HashMap<CharacterType, String>();
+
+  public CharacterTemplateResourceProvider() {
+    for (CharacterType type : CharacterType.values()) {
+      type.accept(new AbstractSupportedCharacterTypeVisitor() {
+        public void visitAbyssal(CharacterType visitedType) {
+          resourcesByCharacterType.put(visitedType, IIconConstants.ABYSSAL_BALL);
+        }
+
+        public void visitDB(CharacterType visitedType) {
+          resourcesByCharacterType.put(visitedType, IIconConstants.DB_BALL);
+        }
+
+        public void visitLunar(CharacterType visitedType) {
+          resourcesByCharacterType.put(visitedType, IIconConstants.LUNAR_BALL);
+        }
+
+        public void visitMortal(CharacterType visitedType) {
+          resourcesByCharacterType.put(visitedType, IIconConstants.MORTAL_BALL);
+        }
+
+        public void visitSidereal(CharacterType visitedType) {
+          resourcesByCharacterType.put(visitedType, IIconConstants.SIDEREAL_BALL);
+        }
+
+        public void visitSolar(CharacterType visitedType) {
+          resourcesByCharacterType.put(visitedType, IIconConstants.SOLAR_BALL);
+        }
+      });
     }
-  };
+  }
 
   public String getBallResource(CharacterType characterType) {
     return resourcesByCharacterType.get(characterType);
