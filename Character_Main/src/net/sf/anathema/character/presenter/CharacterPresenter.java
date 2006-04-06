@@ -121,7 +121,9 @@ public class CharacterPresenter {
     for (IAdditionalModel model : additionalModels) {
       IAdditionalViewFactory viewFactory = factoryRegistry.get(model.getTemplateId());
       String tabName = getString("AdditionalTemplateView.TabName." + model.getTemplateId()); //$NON-NLS-1$
-      multiTabView.addTabView(viewFactory.createView(model, resources), tabName);
+      multiTabView.addTabView(viewFactory.createView(model, resources, getStatistics().getCharacterTemplate()
+          .getTemplateType()
+          .getCharacterType()), tabName);
     }
     multiTabView.initGui(null);
   }
