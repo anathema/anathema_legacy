@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface IRemovableEntryModel<E> {
 
-  public void commitSelection();
+  public E commitSelection();
 
   public List<E> getEntries();
 

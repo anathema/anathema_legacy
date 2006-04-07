@@ -14,7 +14,7 @@ public abstract class AbstractRemovableEntryModel<E> implements IRemovableEntryM
   private final List<E> entries = new ArrayList<E>();
   private final GenericControl<IRemovableEntryListener<E>> control = new GenericControl<IRemovableEntryListener<E>>();
 
-  public void commitSelection() {
+  public E commitSelection() {
     final E entry = createEntry();
     entries.add(entry);
     control.forAllDo(new IClosure<IRemovableEntryListener<E>>() {
@@ -22,6 +22,7 @@ public abstract class AbstractRemovableEntryModel<E> implements IRemovableEntryM
         input.entryAdded(entry);
       }
     });
+    return entry;
   }
 
   protected abstract E createEntry();
