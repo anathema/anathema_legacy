@@ -7,7 +7,9 @@ import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.library.intvalue.IRemovableIntValueView;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
@@ -29,8 +31,10 @@ public class RearButtonTraitViewWrapper implements IRemovableIntValueView, ITrai
     this.traitViewPanel = panel;
     this.innerViewPanel = new JPanel(new GridDialogLayout(2, false));
     view.addComponents(innerViewPanel);
-    panel.add(innerViewPanel);
-    panel.add(button);
+    panel.add(innerViewPanel, GridDialogLayoutData.FILL_HORIZONTAL);
+    GridDialogLayoutData data = new GridDialogLayoutData();
+    data.setHorizontalAlignment(GridAlignment.END);
+    panel.add(button, data);
     panel.revalidate();
   }
 

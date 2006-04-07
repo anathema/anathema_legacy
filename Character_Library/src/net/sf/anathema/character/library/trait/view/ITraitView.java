@@ -9,5 +9,4 @@ public interface ITraitView extends IIntValueView {
   public void addComponents(JPanel viewPanel);
 
   public void delete();
-
 }
