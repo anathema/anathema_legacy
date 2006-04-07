@@ -20,6 +20,7 @@ public class CharacterModuleContainerInitializer {
       add("net.sf.anathema.character.solar.SolarCharacterModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.sidereal.SiderealCharacterModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.meritsflaws.MeritsFlawsModule"); //$NON-NLS-1$
+      add("net.sf.anathema.character.intimacies.IntimaciesModule"); //$NON-NLS-1$
     }
   };
 
