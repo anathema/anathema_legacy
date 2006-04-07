@@ -81,7 +81,8 @@ public class BasicAdvantageView extends AbstractTabView<IAdvantageViewProperties
     SimpleTraitView willpowerView = new SimpleTraitView(guiConfiguration, labelText, value, maxValue);
     GridDialogLayoutData layoutData = new GridDialogLayoutData(GridDialogLayoutData.RIGHT);
     layoutData.setGrabExcessHorizontalSpace(true);
-    willpowerView.addComponents(willpowerPanel, layoutData);
+    willpowerView.setDotLayoutData(layoutData);
+    willpowerView.addComponents(willpowerPanel);
     return willpowerView;
   }
 
