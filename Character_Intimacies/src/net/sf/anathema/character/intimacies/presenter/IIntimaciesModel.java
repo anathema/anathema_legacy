@@ -8,4 +8,6 @@ public interface IIntimaciesModel extends IRemovableEntryModel<IIntimacy> {
   public int getFreeIntimacies();
 
   public void setCurrentName(String name);
+
+  public int getMaximalConvictionValue();
 }

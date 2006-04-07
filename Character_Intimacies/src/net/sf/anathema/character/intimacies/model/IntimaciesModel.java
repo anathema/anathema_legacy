@@ -11,6 +11,7 @@ import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelE
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.VirtueChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
+import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.library.removableentry.model.AbstractRemovableEntryModel;
@@ -85,16 +86,23 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
 
   @Override
   protected IIntimacy createEntry() {
-    Intimacy intimacy = new Intimacy(name, getIntialValue(), context.getTraitCollection().getTrait(
-        VirtueType.Conviction), context.getTraitContext());
+    Intimacy intimacy = new Intimacy(name, getIntialValue(), getConviction(), context.getTraitContext());
     return intimacy;
+  }
+
+  public int getMaximalConvictionValue() {
+    return 5;
+  }
+
+  private IGenericTrait getConviction() {
+    return context.getTraitCollection().getTrait(VirtueType.Conviction);
   }
 
   private Integer getIntialValue() {
     if (context.getBasicCharacterContext().isExperienced()) {
       return 0;
     }
-    return context.getTraitCollection().getTrait(VirtueType.Conviction).getCurrentValue();
+    return getConviction().getCurrentValue();
   }
 
   @Override

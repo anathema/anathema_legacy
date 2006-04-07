@@ -60,7 +60,7 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
 
   private void addIntimacyView(final BasicUi basicUi, final IIntimacy intimacy) {
     IRemovableTraitView intimacyView = view.addEntryView(basicUi.getMediumRemoveIcon(), intimacy.getName());
-    intimacyView.setMaximum(intimacy.getTrait().getMaximalValue());
+    intimacyView.setMaximum(model.getMaximalConvictionValue());
     intimacyView.setValue(intimacy.getTrait().getCurrentValue());
     addModelValueListener(intimacy.getTrait(), intimacyView);
     addViewValueListener(intimacyView, intimacy.getTrait());
