@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.sf.anathema.character.library.intvalue.IFavorableIntValueView;
+import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.view.FrontToggleButtonTraitViewWrapper;
@@ -48,7 +48,7 @@ public class SiderealCollegeView implements ISimpleTabView, ISiderealCollegeView
     content.add(collegePanel);
   }
 
-  public IFavorableIntValueView addIntValueView(
+  public IToggleButtonTraitView addIntValueView(
       String label,
       IIntValueDisplayFactory factory,
       IIconToggleButtonProperties viewProperties,

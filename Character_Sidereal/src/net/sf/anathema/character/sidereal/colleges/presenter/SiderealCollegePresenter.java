@@ -6,7 +6,7 @@ import javax.swing.event.ChangeListener;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.impl.IIconConstants;
-import net.sf.anathema.character.library.intvalue.IFavorableIntValueView;
+import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
@@ -56,7 +56,7 @@ public class SiderealCollegePresenter extends AbstractTraitPresenter {
             return resources.getImageIcon(SiderealPresentationProperties.getSideralCasteIconResource(house.getId()));
           }
         };
-        final IFavorableIntValueView collegeView = view.addIntValueView(
+        final IToggleButtonTraitView collegeView = view.addIntValueView(
             collegeName,
             factory,
             properties,
