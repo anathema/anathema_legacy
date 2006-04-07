@@ -57,4 +57,8 @@ public class IconToggleButton {
   public boolean isSelected() {
     return selected;
   }
+
+  public void setToolTipText(String text) {
+    button.setToolTipText(text);
+  }
 }
