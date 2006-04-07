@@ -7,7 +7,7 @@ import javax.swing.event.ChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.impl.IIconConstants;
 import net.sf.anathema.character.library.intvalue.IFavorableIntValueView;
-import net.sf.anathema.character.library.intvalue.IFavorableIntViewProperties;
+import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.IFavorableTrait;
@@ -47,7 +47,7 @@ public class SiderealCollegePresenter extends AbstractTraitPresenter {
       view.startGroup(resources.getString("AstrologicalHouses.GroupLabel." + house.getId())); //$NON-NLS-1$
       for (final IFavorableTrait college : house.getColleges()) {
         String collegeName = resources.getString("AstrologicalCollege.Label." + college.getType().getId()); //$NON-NLS-1$
-        IFavorableIntViewProperties properties = new IFavorableIntViewProperties() {
+        IIconToggleButtonProperties properties = new IIconToggleButtonProperties() {
           public Icon createUnselectedIcon() {
             return null;
           }

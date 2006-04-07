@@ -6,9 +6,10 @@ import javax.swing.border.TitledBorder;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.character.library.intvalue.IFavorableIntValueView;
-import net.sf.anathema.character.library.intvalue.IFavorableIntViewProperties;
+import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
-import net.sf.anathema.character.library.trait.view.FavorableTraitView;
+import net.sf.anathema.character.library.trait.view.FrontToggleButtonTraitViewWrapper;
+import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeOverview;
 import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeView;
 import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeViewProperties;
@@ -50,11 +51,12 @@ public class SiderealCollegeView implements ISimpleTabView, ISiderealCollegeView
   public IFavorableIntValueView addIntValueView(
       String label,
       IIntValueDisplayFactory factory,
-      IFavorableIntViewProperties viewProperties,
+      IIconToggleButtonProperties viewProperties,
       int value,
       int maxValue,
       boolean selected) {
-    FavorableTraitView traitView = new FavorableTraitView(factory, viewProperties, label, value, maxValue, selected);
+    SimpleTraitView view = new SimpleTraitView(factory, label, value, maxValue);
+    FrontToggleButtonTraitViewWrapper traitView = new FrontToggleButtonTraitViewWrapper(view, viewProperties, selected);
     collegeGroupPanel.addEntry(traitView);
     return traitView;
   }
