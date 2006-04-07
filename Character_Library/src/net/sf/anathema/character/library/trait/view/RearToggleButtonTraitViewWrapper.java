@@ -2,25 +2,24 @@ package net.sf.anathema.character.library.trait.view;
 
 import javax.swing.JPanel;
 
+import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
-import net.sf.anathema.lib.gui.dialogcomponent.grouped.IGridDialogPanelContent;
+import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 
-public class FrontToggleButtonTraitViewWrapper extends AbstractToggleButtonTraitViewWrapper implements
-    IToggleButtonTraitView,
-    IGridDialogPanelContent {
+public class RearToggleButtonTraitViewWrapper extends AbstractToggleButtonTraitViewWrapper implements
+    IToggleButtonTraitView {
 
-  public FrontToggleButtonTraitViewWrapper(ITraitView view, IIconToggleButtonProperties properties, boolean selected) {
+  public RearToggleButtonTraitViewWrapper(ITraitView view, IIconToggleButtonProperties properties, boolean selected) {
     super(view, properties, selected);
   }
 
   @Override
   public void addComponents(JPanel panel) {
     super.addComponents(panel);
-    GridDialogLayoutData gridLayoutData = new GridDialogLayoutData();
-    gridLayoutData.setHorizontalIndent(5);
-    panel.add(getButton().getComponent(), gridLayoutData);
     addInnerView(panel);
+    GridDialogLayoutData gridLayoutData = new GridDialogLayoutData();
+    gridLayoutData.setHorizontalAlignment(GridAlignment.END);
+    panel.add(getButton().getComponent(), gridLayoutData);
   }
 }
