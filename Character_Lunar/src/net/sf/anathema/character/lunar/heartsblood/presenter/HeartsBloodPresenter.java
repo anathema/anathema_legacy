@@ -74,7 +74,7 @@ public class HeartsBloodPresenter {
     IRemovableEntryView formView = view.addEntryView(basicUi.getMediumRemoveIcon(), form.getName()
         + " (" + form.getStrength() + "/" + form.getStamina() + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     viewsByForm.put(form, formView);
-    formView.addRemoveButtonListener(new ActionListener() {
+    formView.addButtonListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         model.removeEntry(form);
       }
@@ -103,7 +103,7 @@ public class HeartsBloodPresenter {
         for (IAnimalForm form : viewsByForm.keySet()) {
           if (form.isCreationLearned()) {
             IRemovableEntryView formView = viewsByForm.get(form);
-            formView.setDeleteEnabled(!experienced);
+            formView.setButtonEnabled(!experienced);
           }
         }
       }

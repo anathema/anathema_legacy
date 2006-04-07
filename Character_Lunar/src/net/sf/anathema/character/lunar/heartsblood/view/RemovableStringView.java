@@ -30,11 +30,11 @@ public class RemovableStringView implements IRemovableEntryView {
     return panel;
   }
 
-  public void addRemoveButtonListener(ActionListener listener) {
+  public void addButtonListener(ActionListener listener) {
     button.addActionListener(listener);
   }
 
-  public void setDeleteEnabled(boolean enabled) {
+  public void setButtonEnabled(boolean enabled) {
     button.setEnabled(enabled);
   }
 
