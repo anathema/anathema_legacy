@@ -1,5 +1,7 @@
 package net.sf.anathema.character.library.trait.view;
 
+import java.awt.Component;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -9,18 +11,17 @@ import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.lib.gui.dialogcomponent.grouped.IGridDialogPanelContent;
 
-public class SimpleTraitView extends AbstractTraitView implements IGridDialogPanelContent {
+public class SimpleTraitView extends AbstractTraitView implements IGridDialogPanelContent, ITraitView {
 
-  private final int indent;
   private GridDialogLayoutData dotLayoutData = new GridDialogLayoutData();
+  private final JLabel label;
+  private final Component displayComponent;
+  private JPanel traitViewPanel;
 
   public SimpleTraitView(IIntValueDisplayFactory configuration, String labelText, int value, int maxValue) {
-    this(configuration, labelText, value, maxValue, 0);
-  }
-
-  public SimpleTraitView(IIntValueDisplayFactory configuration, String labelText, int value, int maxValue, int indent) {
     super(configuration, labelText, value, maxValue);
-    this.indent = indent;
+    this.label = new JLabel(getLabelText());
+    this.displayComponent = getValueDisplay().getComponent();
   }
 
   public void addComponents(GridDialogPanel dialogPanel) {
@@ -30,19 +31,24 @@ public class SimpleTraitView extends AbstractTraitView implements IGridDialogPan
       }
 
       public void fillInto(JPanel panel, int columnCount) {
-        addToPanel(panel);
+        addComponents(panel);
       }
     });
   }
 
-  private void addToPanel(JPanel panel) {
-    GridDialogLayoutData labelData = new GridDialogLayoutData();
-    labelData.setHorizontalIndent(indent);
-    panel.add(new JLabel(getLabelText()), labelData);
-    panel.add(getValueDisplay().getComponent(), dotLayoutData);
+  public void addComponents(JPanel panel) {
+    this.traitViewPanel = panel;
+    panel.add(label, new GridDialogLayoutData());
+    panel.add(displayComponent, dotLayoutData);
   }
 
   public void setDotLayoutData(GridDialogLayoutData dotLayoutData) {
     this.dotLayoutData = dotLayoutData;
+  }
+
+  public void delete() {
+    traitViewPanel.remove(label);
+    traitViewPanel.remove(displayComponent);
+    traitViewPanel.revalidate();
   }
 }
