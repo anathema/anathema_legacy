@@ -10,10 +10,10 @@ import javax.swing.JPanel;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.sf.anathema.character.library.intvalue.IRemovableIntValueView;
+import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
-public class RearButtonTraitViewWrapper implements IRemovableIntValueView, ITraitView {
+public class RearButtonTraitViewWrapper implements IRemovableTraitView, ITraitView {
 
   private final JButton button;
   private ITraitView view;

@@ -6,6 +6,7 @@ import net.sf.anathema.framework.value.IIntValueView;
 
 public interface ITraitView extends IIntValueView {
 
+  /** Adds 2 components */
   public void addComponents(JPanel viewPanel);
 
   public void delete();
