@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.LowerableState;
+import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
@@ -20,11 +21,11 @@ public class Intimacy implements IIntimacy {
   public Intimacy(String name, Integer initialValue, final IGenericTrait maxValueTrait, ITraitContext context) {
     this.name = name;
     this.maxValueTrait = maxValueTrait;
-    ITraitTemplate template = SimpleTraitTemplate.createStaticLimitedTemplate(
+    ITraitTemplate template = SimpleTraitTemplate.createVirtueLimitedTemplate(
         0,
-        maxValueTrait.getCurrentValue(),
-        LowerableState.LowerableLoss);
-
+        initialValue,
+        LowerableState.LowerableLoss,
+        VirtueType.Conviction);
     traitRules = new TraitRules(new IntimacyType(name), template, context.getLimitationContext());
     IValueChangeChecker incrementChecker = new IValueChangeChecker() {
       public boolean isValidNewValue(int value) {
@@ -32,7 +33,7 @@ public class Intimacy implements IIntimacy {
       }
     };
     this.trait = new DefaultTrait(traitRules, context.getTraitValueStrategy(), incrementChecker);
-    trait.setCurrentValue(initialValue);
+    // trait.setCurrentValue(initialValue);
   }
 
   public String getName() {
@@ -52,7 +53,5 @@ public class Intimacy implements IIntimacy {
     if (traitValue >= maximumValue) {
       trait.setCurrentValue(maximumValue);
     }
-    // TODO NOW: Implement range changing traits.
-    // resetMaximalValue();
   }
 }
