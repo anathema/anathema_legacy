@@ -84,6 +84,7 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
         intimacyView.getInnerView().setButtonState(newValue, true);
       }
     });
+    intimacyView.getInnerView().setButtonState(intimacy.isComplete(), true);
   }
 
   private void initSelectionViewListening(IIntimaciesSelectionView selectionView) {
