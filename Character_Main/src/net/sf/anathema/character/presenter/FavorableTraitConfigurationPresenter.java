@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.library.intvalue.IFavorableIntValueView;
+import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.trait.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
@@ -27,7 +27,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class FavorableTraitConfigurationPresenter extends AbstractTraitPresenter {
 
   private final IGroupedFavorableTraitConfigurationView configurationView;
-  private final IdentityMapping<IFavorableTrait, IFavorableIntValueView> traitViewsByTrait = new IdentityMapping<IFavorableTrait, IFavorableIntValueView>();
+  private final IdentityMapping<IFavorableTrait, IToggleButtonTraitView> traitViewsByTrait = new IdentityMapping<IFavorableTrait, IToggleButtonTraitView>();
   private final IResources resources;
   private final IIdentifiedTraitTypeGroup[] traitTypeGroups;
   private final ICoreTraitConfiguration traitConfiguration;
@@ -74,7 +74,7 @@ public class FavorableTraitConfigurationPresenter extends AbstractTraitPresenter
 
   private void updateButtons() {
     for (IFavorableTrait trait : getAllTraits()) {
-      IFavorableIntValueView view = traitViewsByTrait.get(trait);
+      IToggleButtonTraitView view = traitViewsByTrait.get(trait);
       boolean disabled = basicCharacterData.isExperienced() || trait.getFavorization().isCaste();
       boolean favored = trait.getFavorization().isCasteOrFavored();
       view.setButtonState(favored, !disabled);
@@ -95,9 +95,9 @@ public class FavorableTraitConfigurationPresenter extends AbstractTraitPresenter
     }
   }
 
-  private IFavorableIntValueView addAbilityView(final IFavorableTrait favorableTrait) {
+  private IToggleButtonTraitView addAbilityView(final IFavorableTrait favorableTrait) {
     String id = favorableTrait.getType().getId();
-    final IFavorableIntValueView abilityView = configurationView.addTraitView(
+    final IToggleButtonTraitView abilityView = configurationView.addTraitView(
         resources.getString(id),
         favorableTrait.getCurrentValue(),
         favorableTrait.getMaximalValue(),
@@ -119,7 +119,7 @@ public class FavorableTraitConfigurationPresenter extends AbstractTraitPresenter
     return abilityView;
   }
 
-  private void updateView(final IFavorableIntValueView abilityView, FavorableState state) {
+  private void updateView(final IToggleButtonTraitView abilityView, FavorableState state) {
     state.accept(new IFavorableStateVisitor() {
       public void visitDefault(FavorableState visitedState) {
         abilityView.setButtonState(false, true);
