@@ -37,7 +37,7 @@ public class FavorableTraitView extends AbstractTraitView implements IFavorableI
   public void addComponents(GridDialogPanel abilityPanel) {
     abilityPanel.add(new IDialogComponent() {
       public int getColumnCount() {
-        return 4;
+        return 3;
       }
 
       public void fillInto(JPanel panel, int columnCount) {
@@ -46,7 +46,6 @@ public class FavorableTraitView extends AbstractTraitView implements IFavorableI
         panel.add(button.getComponent(), gridLayoutData);
         panel.add(new JLabel(getLabelText()));
         panel.add(getValueDisplay().getComponent());
-        panel.add(new JLabel(), GridDialogLayoutData.FILL_BOTH);
       }
     });
   }
