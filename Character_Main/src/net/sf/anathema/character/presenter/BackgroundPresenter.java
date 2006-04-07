@@ -15,7 +15,7 @@ import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTemplate;
-import net.sf.anathema.character.library.intvalue.IRemovableIntValueView;
+import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
@@ -36,7 +36,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
   private final IBackgroundConfiguration configuration;
   private final IBasicAdvantageView configurationView;
   private final IResources resources;
-  private final IdentityMapping<ITrait, IRemovableIntValueView> viewsByBackground = new IdentityMapping<ITrait, IRemovableIntValueView>();
+  private final IdentityMapping<ITrait, IRemovableTraitView> viewsByBackground = new IdentityMapping<ITrait, IRemovableTraitView>();
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
   private final Map<String, IBackgroundTemplate> templatesByDisplayName = new HashMap<String, IBackgroundTemplate>();
 
@@ -133,7 +133,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
 
   private synchronized void addBackgroundView(final ITrait background) {
     Icon deleteIcon = new BasicUi(resources).getMediumRemoveIcon();
-    IRemovableIntValueView backgroundView = configurationView.addBackgroundView(
+    IRemovableTraitView backgroundView = configurationView.addBackgroundView(
         deleteIcon,
         getDisplayObject(background).toString(),
         background.getCurrentValue(),
@@ -149,7 +149,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
   }
 
   private synchronized void removeBackgroundView(ITrait background) {
-    IRemovableIntValueView view = viewsByBackground.get(background);
+    IRemovableTraitView view = viewsByBackground.get(background);
     viewsByBackground.remove(background);
     view.delete();
   }
@@ -169,7 +169,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
   public void allowRemoveCreationBackground(boolean allowed) {
     for (ITrait background : viewsByBackground.getAllKeys()) {
       if (background.isCreationLearned()) {
-        IRemovableIntValueView view = viewsByBackground.get(background);
+        IRemovableTraitView view = viewsByBackground.get(background);
         view.setButtonEnabled(allowed);
       }
     }
