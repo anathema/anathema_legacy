@@ -39,7 +39,7 @@ public abstract class AbstractToggleButtonTraitViewWrapper extends AbstractTrait
   }
 
   public void delete() {
-    getView().delete();
+    getInnerView().delete();
     traitViewPanel.remove(innerViewPanel);
     traitViewPanel.remove(button.getComponent());
     traitViewPanel.revalidate();
@@ -71,7 +71,7 @@ public abstract class AbstractToggleButtonTraitViewWrapper extends AbstractTrait
 
   protected void addInnerView(JPanel panel) {
     this.innerViewPanel = new JPanel(new GridDialogLayout(2, false));
-    getView().addComponents(innerViewPanel);
+    getInnerView().addComponents(innerViewPanel);
     panel.add(innerViewPanel, GridDialogLayoutData.FILL_HORIZONTAL);
   }
 }

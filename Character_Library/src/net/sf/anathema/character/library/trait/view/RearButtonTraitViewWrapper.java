@@ -12,13 +12,14 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 
-public class RearButtonTraitViewWrapper extends AbstractTraitViewWrapper implements IRemovableTraitView {
+public class RearButtonTraitViewWrapper<K extends ITraitView> extends AbstractTraitViewWrapper<K> implements
+    IRemovableTraitView<K> {
 
   private final JButton button;
   private JPanel traitViewPanel;
   private JPanel innerViewPanel;
 
-  public RearButtonTraitViewWrapper(ITraitView view, Icon buttonIcon) {
+  public RearButtonTraitViewWrapper(K view, Icon buttonIcon) {
     super(view);
     this.button = new JButton(buttonIcon);
     button.setPreferredSize(new Dimension(buttonIcon.getIconWidth() + 4, buttonIcon.getIconHeight() + 4));
@@ -27,7 +28,7 @@ public class RearButtonTraitViewWrapper extends AbstractTraitViewWrapper impleme
   public void addComponents(JPanel panel) {
     this.traitViewPanel = panel;
     this.innerViewPanel = new JPanel(new GridDialogLayout(2, false));
-    getView().addComponents(innerViewPanel);
+    getInnerView().addComponents(innerViewPanel);
     panel.add(innerViewPanel, GridDialogLayoutData.FILL_HORIZONTAL);
     GridDialogLayoutData data = new GridDialogLayoutData();
     data.setHorizontalAlignment(GridAlignment.END);
@@ -44,7 +45,7 @@ public class RearButtonTraitViewWrapper extends AbstractTraitViewWrapper impleme
   }
 
   public void delete() {
-    getView().delete();
+    getInnerView().delete();
     traitViewPanel.remove(innerViewPanel);
     traitViewPanel.remove(button);
     traitViewPanel.revalidate();

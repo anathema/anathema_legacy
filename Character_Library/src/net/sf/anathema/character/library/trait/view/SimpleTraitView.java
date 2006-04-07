@@ -49,4 +49,8 @@ public class SimpleTraitView extends AbstractTraitView implements IGridDialogPan
     traitViewPanel.remove(displayComponent);
     traitViewPanel.revalidate();
   }
+
+  public ITraitView getInnerView() {
+    return this;
+  }
 }

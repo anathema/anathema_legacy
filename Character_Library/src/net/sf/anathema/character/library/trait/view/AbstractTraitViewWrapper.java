@@ -2,11 +2,11 @@ package net.sf.anathema.character.library.trait.view;
 
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
-public abstract class AbstractTraitViewWrapper implements ITraitView {
+public abstract class AbstractTraitViewWrapper<K extends ITraitView> implements ITraitView<K> {
 
-  private final ITraitView view;
+  private final K view;
 
-  public AbstractTraitViewWrapper(ITraitView view) {
+  public AbstractTraitViewWrapper(K view) {
     this.view = view;
   }
 
@@ -26,7 +26,7 @@ public abstract class AbstractTraitViewWrapper implements ITraitView {
     view.addIntValueChangedListener(listener);
   }
 
-  protected ITraitView getView() {
+  public K getInnerView() {
     return view;
   }
 }
