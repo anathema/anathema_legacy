@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.sf.anathema.character.generic.impl.IIconConstants;
-import net.sf.anathema.character.generic.type.AbstractSupportedCharacterTypeVisitor;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterTypeVisitor;
 
 public class CharacterTemplateResourceProvider implements ICharacterTemplateResourceProvider {
 
@@ -13,7 +13,7 @@ public class CharacterTemplateResourceProvider implements ICharacterTemplateReso
 
   public CharacterTemplateResourceProvider() {
     for (CharacterType type : CharacterType.values()) {
-      type.accept(new AbstractSupportedCharacterTypeVisitor() {
+      type.accept(new ICharacterTypeVisitor() {
         public void visitAbyssal(CharacterType visitedType) {
           resourcesByCharacterType.put(visitedType, IIconConstants.ABYSSAL_BALL);
         }
@@ -36,6 +36,10 @@ public class CharacterTemplateResourceProvider implements ICharacterTemplateReso
 
         public void visitSolar(CharacterType visitedType) {
           resourcesByCharacterType.put(visitedType, IIconConstants.SOLAR_BALL);
+        }
+
+        public void visitDragonKing(CharacterType type) {
+          // Nothing to do
         }
       });
     }
