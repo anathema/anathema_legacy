@@ -67,8 +67,12 @@ public class BasicUi {
   public Icon getMediumClearIcon() {
     return resources.getImageIcon("RemoveAll20.png"); //$NON-NLS-1$
   }
-  
+
   public Icon getReplaceToLeftIcon() {
     return resources.getImageIcon("GreenArrowLeftWithRedX20.png"); //$NON-NLS-1$
+  }
+
+  public Icon getMediumLockIcon() {
+    return resources.getImageIcon("Lock20.png"); //$NON-NLS-1$
   }
 }
