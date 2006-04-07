@@ -7,4 +7,6 @@ public interface IIconToggleButtonProperties {
   public Icon createStandardIcon();
 
   public Icon createUnselectedIcon();
+
+  public String getToolTipText();
 }
