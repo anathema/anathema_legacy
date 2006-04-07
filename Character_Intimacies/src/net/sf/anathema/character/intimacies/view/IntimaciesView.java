@@ -7,11 +7,13 @@ import javax.swing.JPanel;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesView;
+import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
 import net.sf.anathema.character.library.trait.view.ITraitView;
 import net.sf.anathema.character.library.trait.view.RearButtonTraitViewWrapper;
+import net.sf.anathema.character.library.trait.view.RearToggleButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 
 public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitView> implements IIntimaciesView {
@@ -19,9 +21,11 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
   private final JPanel content = new JPanel(new GridDialogLayout(1, false));
   private final JPanel entryPanel = new JPanel(new GridDialogLayout(2, false));
   private final IIntValueDisplayFactory factory;
+  private final IIconToggleButtonProperties properties;
 
-  public IntimaciesView(IIntValueDisplayFactory factory) {
+  public IntimaciesView(IIntValueDisplayFactory factory, IIconToggleButtonProperties properties) {
     this.factory = factory;
+    this.properties = properties;
   }
 
   public JComponent getComponent() {
@@ -41,7 +45,7 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
 
   public IRemovableTraitView addEntryView(Icon removeIcon, String string) {
     ITraitView view = new SimpleTraitView(factory, string, 0, 5);
-    RearButtonTraitViewWrapper oneButtonView = new RearButtonTraitViewWrapper(view, removeIcon);
+    RearToggleButtonTraitViewWrapper oneButtonView = new RearToggleButtonTraitViewWrapper(view, properties, false);
     RearButtonTraitViewWrapper twoButtonView = new RearButtonTraitViewWrapper(oneButtonView, removeIcon);
     twoButtonView.addComponents(entryPanel);
     content.revalidate();
