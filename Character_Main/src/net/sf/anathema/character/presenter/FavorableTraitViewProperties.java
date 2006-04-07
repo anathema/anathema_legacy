@@ -7,12 +7,12 @@ import javax.swing.Icon;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
-import net.sf.anathema.character.library.intvalue.IFavorableIntViewProperties;
+import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.trait.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.lib.resources.IResources;
 
-public class FavorableTraitViewProperties implements IFavorableIntViewProperties {
+public class FavorableTraitViewProperties implements IIconToggleButtonProperties {
 
   private final IResources resources;
   private final IFavorableTrait ability;

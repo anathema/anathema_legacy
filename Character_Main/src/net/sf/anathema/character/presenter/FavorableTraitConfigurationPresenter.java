@@ -73,7 +73,12 @@ public class FavorableTraitConfigurationPresenter extends AbstractTraitPresenter
   }
 
   private void updateButtons() {
-    updateFavoredAbilityButtons();
+    for (IFavorableTrait trait : getAllTraits()) {
+      IFavorableIntValueView view = traitViewsByTrait.get(trait);
+      boolean disabled = basicCharacterData.isExperienced() || trait.getFavorization().isCaste();
+      boolean favored = trait.getFavorization().isCasteOrFavored();
+      view.setButtonState(favored, !disabled);
+    }
   }
 
   private IFavorableTrait[] getAllTraits() {
@@ -82,14 +87,6 @@ public class FavorableTraitConfigurationPresenter extends AbstractTraitPresenter
       Collections.addAll(traitTypes, group.getAllGroupTypes());
     }
     return traitConfiguration.getFavorableTraits(traitTypes.toArray(new ITraitType[traitTypes.size()]));
-  }
-
-  private void updateFavoredAbilityButtons() {
-    for (IFavorableTrait trait : getAllTraits()) {
-      IFavorableIntValueView view = traitViewsByTrait.get(trait);
-      boolean disabled = basicCharacterData.isExperienced() || trait.getFavorization().isCaste();
-      view.setFavoredButtonEnabled(!disabled);
-    }
   }
 
   private void addAbilityViews(final IFavorableTrait[] abilityGroup) {
