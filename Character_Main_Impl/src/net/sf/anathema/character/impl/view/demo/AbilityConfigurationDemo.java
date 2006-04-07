@@ -25,10 +25,15 @@ public class AbilityConfigurationDemo extends BasicCharacterDemoCase {
           public Icon createUnselectedIcon() {
             return null;
           }
+
+          public String getToolTipText() {
+            return null;
+          }
         });
     configurationView.addSpecialtySelectionView("Specialties", //$NON-NLS-1$
         new Object[] { "Ability1 ganz lang", "Ability2 jawoll" }, //$NON-NLS-1$ //$NON-NLS-2$
-        new DefaultListCellRenderer(), resources.getImageIcon("Green+20.png")); //$NON-NLS-1$
+        new DefaultListCellRenderer(),
+        resources.getImageIcon("Green+20.png")); //$NON-NLS-1$
     configurationView.initGui(null);
     show(configurationView.getComponent());
   }

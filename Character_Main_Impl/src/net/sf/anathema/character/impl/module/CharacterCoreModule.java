@@ -30,6 +30,7 @@ public class CharacterCoreModule extends AbstractAnathemaModule {
       return;
     }
     this.anathemaResources = resources;
+    // TODO: Resource-Registrierung in die jeweiligen Module auslagern?
     resources.addStringResourceHandler(createStringProvider("Abyssal", resources.getLocale())); //$NON-NLS-1$
     resources.addStringResourceHandler(createStringProvider("Charms_Abyssal", resources.getLocale())); //$NON-NLS-1$
     resources.addStringResourceHandler(createStringProvider("Dragon-Blooded", resources.getLocale())); //$NON-NLS-1$
@@ -46,5 +47,6 @@ public class CharacterCoreModule extends AbstractAnathemaModule {
     resources.addStringResourceHandler(createStringProvider("Cascades", resources.getLocale())); //$NON-NLS-1$
     resources.addStringResourceHandler(createStringProvider("CharmTreeView", resources.getLocale())); //$NON-NLS-1$
     resources.addStringResourceHandler(createStringProvider("MeritsFlaws", resources.getLocale())); //$NON-NLS-1$
+    resources.addStringResourceHandler(createStringProvider("Intimacies", resources.getLocale())); //$NON-NLS-1$
   }
 }
