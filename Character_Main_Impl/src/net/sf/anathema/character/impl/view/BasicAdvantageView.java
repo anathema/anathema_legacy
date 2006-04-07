@@ -15,7 +15,7 @@ import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.sf.anathema.character.impl.view.advantage.EssencePanelView;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IRemovableIntValueView;
-import net.sf.anathema.character.library.trait.view.RemovableTraitView;
+import net.sf.anathema.character.library.trait.view.RearButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.view.IAdvantageViewProperties;
 import net.sf.anathema.character.view.IBasicAdvantageView;
@@ -31,8 +31,8 @@ public class BasicAdvantageView extends AbstractTabView<IAdvantageViewProperties
   private final GridDialogPanel virtuePanel = new GridDialogPanel(false);
   private final GridDialogPanel willpowerPanel = new GridDialogPanel(false);
   private final GridDialogPanel backgroundSelectionPanel = new GridDialogPanel(false);
+  private final JPanel backgroundDisplayPanel = new JPanel(new GridDialogLayout(2, false));
   private final EssencePanelView essencePanelView;
-  private final JPanel backgroundDisplayPanel = new JPanel(new GridDialogLayout(3, false));
   private final IIntValueDisplayFactory guiConfiguration;
   private JPanel backgroundPanel;
 
@@ -101,7 +101,8 @@ public class BasicAdvantageView extends AbstractTabView<IAdvantageViewProperties
   }
 
   public IRemovableIntValueView addBackgroundView(Icon deleteIcon, String labelText, int value, int maxValue) {
-    RemovableTraitView backgroundView = new RemovableTraitView(guiConfiguration, labelText, deleteIcon, value, maxValue);
+    SimpleTraitView view = new SimpleTraitView(guiConfiguration, labelText, value, maxValue);
+    RearButtonTraitViewWrapper backgroundView = new RearButtonTraitViewWrapper(view, deleteIcon);
     backgroundView.addComponents(backgroundDisplayPanel);
     return backgroundView;
   }
