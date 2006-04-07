@@ -10,13 +10,15 @@ import net.sf.anathema.character.intimacies.presenter.IIntimaciesView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
+import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
 import net.sf.anathema.character.library.trait.view.ITraitView;
 import net.sf.anathema.character.library.trait.view.RearButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.RearToggleButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 
-public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitView> implements IIntimaciesView {
+public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitView<IToggleButtonTraitView>> implements
+    IIntimaciesView {
 
   private final JPanel content = new JPanel(new GridDialogLayout(1, false));
   private final JPanel entryPanel = new JPanel(new GridDialogLayout(2, false));
@@ -43,10 +45,12 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
     return view;
   }
 
-  public IRemovableTraitView addEntryView(Icon removeIcon, String string) {
+  public IRemovableTraitView<IToggleButtonTraitView> addEntryView(Icon removeIcon, String string) {
     ITraitView view = new SimpleTraitView(factory, string, 0, 5);
     RearToggleButtonTraitViewWrapper oneButtonView = new RearToggleButtonTraitViewWrapper(view, properties, false);
-    RearButtonTraitViewWrapper twoButtonView = new RearButtonTraitViewWrapper(oneButtonView, removeIcon);
+    RearButtonTraitViewWrapper<IToggleButtonTraitView> twoButtonView = new RearButtonTraitViewWrapper<IToggleButtonTraitView>(
+        oneButtonView,
+        removeIcon);
     twoButtonView.addComponents(entryPanel);
     content.revalidate();
     return twoButtonView;

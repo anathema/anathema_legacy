@@ -10,6 +10,8 @@ import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
+import net.sf.anathema.lib.control.booleanvalue.BooleanValueControl;
+import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 
 public class Intimacy implements IIntimacy {
 
@@ -17,6 +19,8 @@ public class Intimacy implements IIntimacy {
   private final ITrait trait;
   private TraitRules traitRules;
   private final IGenericTrait maxValueTrait;
+  private boolean complete;
+  private final BooleanValueControl control = new BooleanValueControl();
 
   public Intimacy(String name, Integer initialValue, final IGenericTrait maxValueTrait, ITraitContext context) {
     this.name = name;
@@ -29,11 +33,14 @@ public class Intimacy implements IIntimacy {
     traitRules = new TraitRules(new IntimacyType(name), template, context.getLimitationContext());
     IValueChangeChecker incrementChecker = new IValueChangeChecker() {
       public boolean isValidNewValue(int value) {
-        return value <= maxValueTrait.getCurrentValue();
+        int currentMaximum = maxValueTrait.getCurrentValue();
+        if (value == currentMaximum) {
+          return true;
+        }
+        return !complete && value < currentMaximum;
       }
     };
     this.trait = new DefaultTrait(traitRules, context.getTraitValueStrategy(), incrementChecker);
-    // trait.setCurrentValue(initialValue);
   }
 
   public String getName() {
@@ -45,13 +52,18 @@ public class Intimacy implements IIntimacy {
   }
 
   public void resetCurrentValue() {
-    int traitValue = trait.getCurrentValue();
-    int maximumValue = maxValueTrait.getCurrentValue();
-    if (traitValue < maximumValue) {
-      return;
+    if (complete) {
+      trait.setCurrentValue(maxValueTrait.getCurrentValue());
     }
-    if (traitValue >= maximumValue) {
-      trait.setCurrentValue(maximumValue);
-    }
+  }
+
+  public void setComplete(boolean complete) {
+    this.complete = complete;
+    resetCurrentValue();
+    control.fireValueChangedEvent(this.complete);
+  }
+
+  public void addCompletionListener(IBooleanValueChangedListener listener) {
+    control.addValueChangeListener(listener);
   }
 }

@@ -8,10 +8,12 @@ import java.util.Map;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
 import net.sf.anathema.character.intimacies.view.IIntimaciesSelectionView;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
+import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
+import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -59,7 +61,9 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
   }
 
   private void addIntimacyView(final BasicUi basicUi, final IIntimacy intimacy) {
-    IRemovableTraitView intimacyView = view.addEntryView(basicUi.getMediumRemoveIcon(), intimacy.getName());
+    final IRemovableTraitView<IToggleButtonTraitView> intimacyView = view.addEntryView(
+        basicUi.getMediumRemoveIcon(),
+        intimacy.getName());
     intimacyView.setMaximum(model.getMaximalConvictionValue());
     intimacyView.setValue(intimacy.getTrait().getCurrentValue());
     addModelValueListener(intimacy.getTrait(), intimacyView);
@@ -68,6 +72,16 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
     intimacyView.addButtonListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         model.removeEntry(intimacy);
+      }
+    });
+    intimacyView.getInnerView().addButtonSelectedListener(new IBooleanValueChangedListener() {
+      public void valueChanged(boolean newValue) {
+        intimacy.setComplete(newValue);
+      }
+    });
+    intimacy.addCompletionListener(new IBooleanValueChangedListener() {
+      public void valueChanged(boolean newValue) {
+        intimacyView.getInnerView().setButtonState(newValue, true);
       }
     });
   }
