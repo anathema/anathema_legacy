@@ -20,7 +20,6 @@ public class RearButtonTraitViewWrapper implements IRemovableIntValueView, ITrai
   private JPanel traitViewPanel;
   private JPanel innerViewPanel;
 
-  // Blatant abuse of labelText
   public RearButtonTraitViewWrapper(ITraitView view, Icon buttonIcon) {
     this.view = view;
     this.button = new JButton(buttonIcon);
