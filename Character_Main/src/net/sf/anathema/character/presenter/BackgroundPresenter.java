@@ -140,7 +140,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
         background.getMaximalValue());
     addModelValueListener(background, backgroundView);
     addViewValueListener(backgroundView, background);
-    backgroundView.addRemoveButtonListener(new ActionListener() {
+    backgroundView.addButtonListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         configuration.removeBackground(background);
       }
@@ -170,7 +170,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
     for (ITrait background : viewsByBackground.getAllKeys()) {
       if (background.isCreationLearned()) {
         IRemovableIntValueView view = viewsByBackground.get(background);
-        view.setDeleteEnabled(allowed);
+        view.setButtonEnabled(allowed);
       }
     }
   }
