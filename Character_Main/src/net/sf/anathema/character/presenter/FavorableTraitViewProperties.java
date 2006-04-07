@@ -57,4 +57,8 @@ public class FavorableTraitViewProperties implements IIconToggleButtonProperties
   public Icon createUnselectedIcon() {
     return null;
   }
+
+  public String getToolTipText() {
+    return null;
+  }
 }
