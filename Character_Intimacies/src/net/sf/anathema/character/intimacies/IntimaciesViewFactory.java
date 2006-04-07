@@ -27,6 +27,10 @@ public class IntimaciesViewFactory implements IAdditionalViewFactory {
       public Icon createUnselectedIcon() {
         return null;
       }
+
+      public String getToolTipText() {
+        return resources.getString("Intimacies.LockButton.Tooltip"); //$NON-NLS-1$
+      }
     };
     IntimaciesView view = new IntimaciesView(
         new IntValueDisplayFactory(resources, resources.getImageIcon(ballResource)),

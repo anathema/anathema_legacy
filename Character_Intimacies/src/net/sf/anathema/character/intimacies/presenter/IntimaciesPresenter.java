@@ -31,7 +31,7 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
   }
 
   public void initPresentation() {
-    String labelText = resources.getString("Intimacies.AddIntimacy");
+    String labelText = resources.getString("Intimacies.SelectionLabel"); //$NON-NLS-1$
     BasicUi basicUi = new BasicUi(resources);
     IIntimaciesSelectionView selectionView = view.addSelectionView(labelText, basicUi.getMediumAddIcon());
     initSelectionViewListening(selectionView);
