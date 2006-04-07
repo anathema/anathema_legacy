@@ -43,7 +43,6 @@ public class HeartsBloodPresenter {
     for (IAnimalForm form : model.getEntries()) {
       addAnimalFormView(basicUi, form);
     }
-
     reset(selectionView);
   }
 
