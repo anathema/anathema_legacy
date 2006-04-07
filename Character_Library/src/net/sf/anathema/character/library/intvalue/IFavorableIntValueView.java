@@ -8,7 +8,4 @@ public interface IFavorableIntValueView extends IIntValueView {
   public void addButtonSelectedListener(IBooleanValueChangedListener listener);
 
   public void setButtonState(boolean selected, boolean enabled);
-
-  public void setFavoredButtonEnabled(boolean enabled);
-
 }

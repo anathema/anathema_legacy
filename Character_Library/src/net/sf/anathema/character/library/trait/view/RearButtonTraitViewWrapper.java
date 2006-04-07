@@ -11,17 +11,15 @@ import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
-public class RearButtonTraitViewWrapper implements IRemovableTraitView, ITraitView {
+public class RearButtonTraitViewWrapper extends AbstractTraitViewWrapper implements IRemovableTraitView {
 
   private final JButton button;
-  private ITraitView view;
   private JPanel traitViewPanel;
   private JPanel innerViewPanel;
 
   public RearButtonTraitViewWrapper(ITraitView view, Icon buttonIcon) {
-    this.view = view;
+    super(view);
     this.button = new JButton(buttonIcon);
     button.setPreferredSize(new Dimension(buttonIcon.getIconWidth() + 4, buttonIcon.getIconHeight() + 4));
   }
@@ -29,7 +27,7 @@ public class RearButtonTraitViewWrapper implements IRemovableTraitView, ITraitVi
   public void addComponents(JPanel panel) {
     this.traitViewPanel = panel;
     this.innerViewPanel = new JPanel(new GridDialogLayout(2, false));
-    view.addComponents(innerViewPanel);
+    getView().addComponents(innerViewPanel);
     panel.add(innerViewPanel, GridDialogLayoutData.FILL_HORIZONTAL);
     GridDialogLayoutData data = new GridDialogLayoutData();
     data.setHorizontalAlignment(GridAlignment.END);
@@ -46,25 +44,9 @@ public class RearButtonTraitViewWrapper implements IRemovableTraitView, ITraitVi
   }
 
   public void delete() {
-    view.delete();
+    getView().delete();
     traitViewPanel.remove(innerViewPanel);
     traitViewPanel.remove(button);
     traitViewPanel.revalidate();
-  }
-
-  public void addIntValueChangedListener(IIntValueChangedListener listener) {
-    view.addIntValueChangedListener(listener);
-  }
-
-  public void removeIntValueChangedListener(IIntValueChangedListener listener) {
-    view.removeIntValueChangedListener(listener);
-  }
-
-  public void setMaximum(int maximalValue) {
-    view.setMaximum(maximalValue);
-  }
-
-  public void setValue(int newValue) {
-    view.setValue(newValue);
   }
 }

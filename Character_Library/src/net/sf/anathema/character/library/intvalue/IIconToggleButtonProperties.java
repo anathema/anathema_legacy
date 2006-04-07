@@ -2,7 +2,7 @@ package net.sf.anathema.character.library.intvalue;
 
 import javax.swing.Icon;
 
-public interface IFavorableIntViewProperties {
+public interface IIconToggleButtonProperties {
 
   public Icon createStandardIcon();
 
