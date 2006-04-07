@@ -10,9 +10,10 @@ import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.impl.view.basic.ButtonControlledComboEditView;
 import net.sf.anathema.character.library.intvalue.IFavorableIntValueView;
-import net.sf.anathema.character.library.intvalue.IFavorableIntViewProperties;
+import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
-import net.sf.anathema.character.library.trait.view.FavorableTraitView;
+import net.sf.anathema.character.library.trait.view.FrontToggleButtonTraitViewWrapper;
+import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.view.ISpecialtyView;
 import net.sf.anathema.character.view.basic.IButtonControlledComboEditView;
@@ -57,14 +58,9 @@ public class GroupedFavorableTraitConfigurationView extends AbstractTabView<Obje
       int value,
       int maxValue,
       boolean selected,
-      IFavorableIntViewProperties properties) {
-    FavorableTraitView abilityView = new FavorableTraitView(
-        intValueDisplayFactory,
-        properties,
-        labelText,
-        value,
-        maxValue,
-        selected);
+      IIconToggleButtonProperties properties) {
+    SimpleTraitView view = new SimpleTraitView(intValueDisplayFactory, labelText, value, maxValue);
+    FrontToggleButtonTraitViewWrapper abilityView = new FrontToggleButtonTraitViewWrapper(view, properties, selected);
     groupedTraitView.addEntry(abilityView);
     return abilityView;
   }
