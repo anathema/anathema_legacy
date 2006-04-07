@@ -6,9 +6,9 @@ import javax.swing.event.ChangeListener;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.impl.IIconConstants;
-import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
@@ -55,6 +55,10 @@ public class SiderealCollegePresenter extends AbstractTraitPresenter {
           public Icon createStandardIcon() {
             return resources.getImageIcon(SiderealPresentationProperties.getSideralCasteIconResource(house.getId()));
           }
+
+          public String getToolTipText() {
+            return null;
+          }
         };
         final IToggleButtonTraitView collegeView = view.addIntValueView(
             collegeName,
@@ -80,6 +84,7 @@ public class SiderealCollegePresenter extends AbstractTraitPresenter {
     }
     setOverviewData();
     model.addCharacterChangeListener(new DedicatedCharacterChangeAdapter() {
+      @Override
       public void experiencedChanged(boolean experienced) {
         if (experienced) {
           view.setOverview(experiencedOverview);
