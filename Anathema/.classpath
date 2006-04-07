@@ -34,5 +34,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Lunar"/>
 	<classpathentry kind="src" path="/Charm_Entry"/>
 	<classpathentry kind="src" path="/Character_Main_Impl"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Intimacies"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
