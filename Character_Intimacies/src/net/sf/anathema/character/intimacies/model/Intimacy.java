@@ -66,4 +66,8 @@ public class Intimacy implements IIntimacy {
   public void addCompletionListener(IBooleanValueChangedListener listener) {
     control.addValueChangeListener(listener);
   }
+
+  public boolean isComplete() {
+    return complete;
+  }
 }

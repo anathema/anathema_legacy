@@ -13,5 +13,7 @@ public interface IIntimacy {
 
   public void setComplete(boolean complete);
 
+  public boolean isComplete();
+
   public void addCompletionListener(IBooleanValueChangedListener listener);
 }
