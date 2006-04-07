@@ -9,7 +9,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.impl.view.basic.ButtonControlledComboEditView;
-import net.sf.anathema.character.library.intvalue.IFavorableIntValueView;
+import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.view.FrontToggleButtonTraitViewWrapper;
@@ -53,7 +53,7 @@ public class GroupedFavorableTraitConfigurationView extends AbstractTabView<Obje
     return specialtyView;
   }
 
-  public IFavorableIntValueView addTraitView(
+  public IToggleButtonTraitView addTraitView(
       String labelText,
       int value,
       int maxValue,
