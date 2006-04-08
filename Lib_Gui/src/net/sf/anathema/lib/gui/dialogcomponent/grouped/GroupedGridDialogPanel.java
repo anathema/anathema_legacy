@@ -6,18 +6,19 @@ import javax.swing.JPanel;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.layout.SingleOverallComponent;
 
 public class GroupedGridDialogPanel {
 
-  private final GridDialogPanel[] columns;
+  private final IGridDialogPanel[] columns;
   private int columnIndex = -1;
 
   public GroupedGridDialogPanel(int columnCount) {
-    columns = new GridDialogPanel[columnCount];
+    columns = new DefaultGridDialogPanel[columnCount];
     for (int i = 0; i < columns.length; i++) {
-      columns[i] = new GridDialogPanel(false);
+      columns[i] = new DefaultGridDialogPanel(false);
     }
   }
 
@@ -35,7 +36,7 @@ public class GroupedGridDialogPanel {
     }
   }
 
-  private GridDialogPanel getCurrentColumn() {
+  private IGridDialogPanel getCurrentColumn() {
     return columns[columnIndex];
   }
 
@@ -47,7 +48,7 @@ public class GroupedGridDialogPanel {
     GridDialogLayout layout = new GridDialogLayout(columns.length, false);
     layout.setHorizontalSpacing(15);
     container.setLayout(layout);
-    for (GridDialogPanel column : columns) {
+    for (IGridDialogPanel column : columns) {
       GridDialogLayoutData data = new GridDialogLayoutData();
       data.setVerticalAlignment(GridAlignment.BEGINNING);
       container.add(column.getContent(), data);

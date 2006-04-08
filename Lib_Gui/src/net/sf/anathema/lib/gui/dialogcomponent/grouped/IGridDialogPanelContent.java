@@ -1,8 +1,8 @@
 package net.sf.anathema.lib.gui.dialogcomponent.grouped;
 
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 
 public interface IGridDialogPanelContent {
 
-  public void addComponents(GridDialogPanel dialogPanel);
+  public void addComponents(IGridDialogPanel dialogPanel);
 }
