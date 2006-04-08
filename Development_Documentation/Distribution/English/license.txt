@@ -100,9 +100,11 @@ Anathema includes software developed by
 -db4Objects, Inc (http://www.db4o.com).
 -the Tritonus project (http://www.tritonus.org).
 -the Javazoom team (http://www.javazoom.net).
+-disy Informationssysteme GmbH (http://www.disy.net)
 
 The "Print to PDF" icon was created by Wolfgang Bartelme (http://www.bartelme.at/) and is used with permission.
 Some of the other images are taken with permission from the archives at http://www.wolf-spoor.org.
+
 GISterm is a product of disy Informationssysteme GmbH (http://www.disy.net) and is used under an exclusive license.
 The GISterm libraries included are NOT for public reuse.
 
