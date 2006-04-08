@@ -35,7 +35,7 @@ public class IntimaciesViewFactory implements IAdditionalViewFactory {
     IntimaciesView view = new IntimaciesView(
         new IntValueDisplayFactory(resources, resources.getImageIcon(ballResource)),
         properties);
-    new IntimaciesPresenter((IIntimaciesModel) model, view, resources).initPresentation();
+    new IntimaciesPresenter((IIntimaciesModel) model, model, view, resources).initPresentation();
     return view;
   }
 }

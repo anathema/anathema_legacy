@@ -8,14 +8,19 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelExperienceCalculator;
+import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ConfigurableCharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.VirtueChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.library.removableentry.model.AbstractRemovableEntryModel;
 import net.sf.anathema.lib.control.ChangeControl;
+import net.sf.anathema.lib.control.ChangeListenerClosure;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> implements
     IAdditionalModel,
@@ -23,6 +28,7 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
 
   private final IAdditionalTemplate additionalTemplate;
   private final ChangeControl bonusPointControl = new ChangeControl(this);
+  private final GenericControl<IChangeListener> changeControl = new GenericControl<IChangeListener>();
   private final ICharacterModelContext context;
   private String name;
 
@@ -41,18 +47,20 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
         for (IIntimacy entry : getEntries()) {
           entry.resetCurrentValue();
         }
+        fireModelChangedEvent();
       }
     };
     convictionListener.addTraitType(VirtueType.Conviction);
-    VirtueChangeListener compassionListener = new VirtueChangeListener() {
+    ConfigurableCharacterChangeListener maximumListener = new ConfigurableCharacterChangeListener() {
       @Override
       public void configuredChangeOccured() {
-        // TODO Auto-generated method stub
+        changeControl.forAllDo(new ChangeListenerClosure());
       }
     };
-    compassionListener.addTraitType(VirtueType.Compassion);
+    maximumListener.addTraitType(VirtueType.Compassion);
+    maximumListener.addTraitType(OtherTraitType.Willpower);
     context.getCharacterListening().addChangeListener(convictionListener);
-    context.getCharacterListening().addChangeListener(compassionListener);
+    context.getCharacterListening().addChangeListener(maximumListener);
   }
 
   public String getTemplateId() {
@@ -76,6 +84,10 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
   }
 
   public int getFreeIntimacies() {
+    return getCompassionValue();
+  }
+
+  private int getCompassionValue() {
     return context.getTraitCollection().getTrait(VirtueType.Compassion).getCurrentValue();
   }
 
@@ -90,12 +102,20 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
     return intimacy;
   }
 
-  public int getMaximalConvictionValue() {
+  private void fireModelChangedEvent() {
+    changeControl.forAllDo(new ChangeListenerClosure());
+  }
+
+  public int getCompletionValue() {
     return 5;
   }
 
   private IGenericTrait getConviction() {
     return context.getTraitCollection().getTrait(VirtueType.Conviction);
+  }
+
+  public int getIntimaciesLimit() {
+    return getCompassionValue() + context.getTraitCollection().getTrait(OtherTraitType.Willpower).getCurrentValue();
   }
 
   private Integer getIntialValue() {
@@ -108,5 +128,9 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
   @Override
   protected boolean isEntryComplete() {
     return !StringUtilities.isNullOrEmpty(name);
+  }
+
+  public void addModelChangeListener(IChangeListener listener) {
+    changeControl.addListener(listener);
   }
 }

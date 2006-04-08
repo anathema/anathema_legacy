@@ -4,6 +4,7 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesView;
@@ -20,10 +21,12 @@ import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitView<IToggleButtonTraitView>> implements
     IIntimaciesView {
 
-  private final JPanel content = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel content = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
   private final JPanel entryPanel = new JPanel(new GridDialogLayout(2, false));
   private final IIntValueDisplayFactory factory;
   private final IIconToggleButtonProperties properties;
+  private OverviewView overviewView;
 
   public IntimaciesView(IIntValueDisplayFactory factory, IIconToggleButtonProperties properties) {
     this.factory = factory;
@@ -31,7 +34,14 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
   }
 
   public JComponent getComponent() {
-    content.add(entryPanel, GridDialogLayoutData.FILL_HORIZONTAL);
+    GridDialogLayoutData data = new GridDialogLayoutData();
+    data.setHorizontalAlignment(GridAlignment.FILL);
+    data.setVerticalAlignment(GridAlignment.BEGINNING);
+    mainPanel.add(entryPanel, data);
+    GridDialogLayoutData mainData = new GridDialogLayoutData();
+    mainData.setVerticalAlignment(GridAlignment.BEGINNING);
+    content.add(mainPanel, mainData);
+    content.add(overviewView.getComponent(), data);
     return content;
   }
 
@@ -41,7 +51,7 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
 
   public IIntimaciesSelectionView addSelectionView(String labelText, Icon addIcon) {
     IntimaciesSelectionView view = new IntimaciesSelectionView(labelText, addIcon);
-    content.add(view.getComponent());
+    mainPanel.add(view.getComponent());
     return view;
   }
 
@@ -52,7 +62,11 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
         oneButtonView,
         removeIcon);
     twoButtonView.addComponents(entryPanel);
-    content.revalidate();
     return twoButtonView;
+  }
+
+  public IOverviewView addOverview(String borderLabel) {
+    this.overviewView = new OverviewView(borderLabel);
+    return overviewView;
   }
 }
