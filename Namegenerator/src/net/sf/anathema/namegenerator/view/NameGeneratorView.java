@@ -18,8 +18,8 @@ import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import net.sf.anathema.namegenerator.presenter.view.INameGeneratorView;
 

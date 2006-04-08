@@ -3,8 +3,8 @@ package net.sf.anathema.namegenerator.anathema;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 
-import net.disy.commons.swing.component.IView;
 import net.sf.anathema.framework.view.item.AbstractItemView;
+import net.sf.anathema.lib.gui.IView;
 
 public class DelegatingItemView extends AbstractItemView {
 
