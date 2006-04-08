@@ -14,11 +14,12 @@ import javax.swing.table.TableColumn;
 
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewListener;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewProperties;
 import net.sf.anathema.framework.presenter.view.AbstractTabView;
+import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.table.SmartTable;
 import net.sf.anathema.lib.gui.table.actions.ITableActionFactory;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;
@@ -72,7 +73,7 @@ public class ExperienceConfigurationView extends AbstractTabView<IExperienceConf
     descriptionColumn.setPreferredWidth(500);
     descriptionColumn.setWidth(descriptionColumn.getPreferredWidth());
     setRemoveButtonEnabled(false);
-    GridDialogPanel totalPanel = new GridDialogPanel();
+    IGridDialogPanel totalPanel = new DefaultGridDialogPanel();
     labelledIntValueView = new LabelledIntegerValueView(properties.getTotalString(), 0, false, 7);
     labelledIntValueView.addComponents(totalPanel);
     labelledIntValueView.getValueLabel().setHorizontalAlignment(SwingConstants.RIGHT);

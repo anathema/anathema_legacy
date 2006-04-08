@@ -1,19 +1,20 @@
 package net.sf.anathema.character.impl.view.overview;
 
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.sf.anathema.character.impl.view.LabelledOverviewStringValueView;
 import net.sf.anathema.character.view.overview.ICreationOverviewView;
 import net.sf.anathema.character.view.overview.IOverviewViewProperties;
+import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
 
 public class CreationOverviewView extends AbstractOverviewView implements ICreationOverviewView {
-  private final GridDialogPanel abilityCategoryPanel = new GridDialogPanel(false);
-  private final GridDialogPanel advantageCategoryPanel = new GridDialogPanel(false);
-  private final GridDialogPanel attributeCategoryPanel = new GridDialogPanel(false);
-  private final GridDialogPanel bonusPointOverviewPanel = new GridDialogPanel(false);
-  private final GridDialogPanel characterConceptPanel = new GridDialogPanel(false);
-  private final GridDialogPanel charmCategoryPanel = new GridDialogPanel(false);
+  private final IGridDialogPanel abilityCategoryPanel = new DefaultGridDialogPanel(false);
+  private final IGridDialogPanel advantageCategoryPanel = new DefaultGridDialogPanel(false);
+  private final IGridDialogPanel attributeCategoryPanel = new DefaultGridDialogPanel(false);
+  private final IGridDialogPanel bonusPointOverviewPanel = new DefaultGridDialogPanel(false);
+  private final IGridDialogPanel characterConceptPanel = new DefaultGridDialogPanel(false);
+  private final IGridDialogPanel charmCategoryPanel = new DefaultGridDialogPanel(false);
 
   public ILabelledAlotmentView addAbilityCreationCategory(String labelText) {
     return addCategoryView(labelText, 0, 0, abilityCategoryPanel);
@@ -47,7 +48,7 @@ public class CreationOverviewView extends AbstractOverviewView implements ICreat
     return addStringValueView(advantageCategoryPanel, titleText, ""); //$NON-NLS-1$
   }
 
-  private ILabelledValueView<String> addStringValueView(GridDialogPanel panel, String titleText, String valueText) {
+  private ILabelledValueView<String> addStringValueView(IGridDialogPanel panel, String titleText, String valueText) {
     LabelledOverviewStringValueView flawView = new LabelledOverviewStringValueView(titleText, valueText);
     flawView.addComponents(panel);
     return flawView;

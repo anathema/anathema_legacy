@@ -12,7 +12,6 @@ import javax.swing.border.TitledBorder;
 import javax.swing.text.JTextComponent;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.generic.framework.util.ExperienceUtilities;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
@@ -21,6 +20,8 @@ import net.sf.anathema.framework.presenter.view.AbstractTabView;
 import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.ObjectSelectionView;
 import net.sf.anathema.lib.gui.GuiUtilities;
+import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.textualdescription.view.ILabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
@@ -28,8 +29,8 @@ import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConceptAndRulesViewProperties> implements
     ICharacterConceptAndRulesView {
 
-  private GridDialogPanel characterConceptPanel = new GridDialogPanel(false);
-  private GridDialogPanel rulesPanel = new GridDialogPanel(false);
+  private IGridDialogPanel characterConceptPanel = new DefaultGridDialogPanel(false);
+  private IGridDialogPanel rulesPanel = new DefaultGridDialogPanel(false);
 
   public CharacterConceptAndRulesView() {
     super(null);
@@ -57,7 +58,7 @@ public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConc
       Object[] objects,
       ListCellRenderer renderer,
       boolean editable,
-      GridDialogPanel panel) {
+      IGridDialogPanel panel) {
     ObjectSelectionView selectionView = new ObjectSelectionView(objects, editable);
     selectionView.getComboBox().getEditor().getEditorComponent().setEnabled(true);
     selectionView.addTo(labelText, renderer, panel, GridDialogLayoutData.FILL_HORIZONTAL);

@@ -9,9 +9,9 @@ import javax.swing.text.JTextComponent;
 
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.lib.gui.dialogcomponent.grouped.IGridDialogPanelContent;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 
 public class WillpowerConditionView implements IGridDialogPanelContent {
   private final JTextArea conditionLabel;
@@ -29,7 +29,7 @@ public class WillpowerConditionView implements IGridDialogPanelContent {
     this.headerLabel = new JLabel(labelText);
   }
 
-  public void addComponents(GridDialogPanel dialogPanel) {
+  public void addComponents(IGridDialogPanel dialogPanel) {
     dialogPanel.add(new IDialogComponent() {
       public int getColumnCount() {
         return 2;

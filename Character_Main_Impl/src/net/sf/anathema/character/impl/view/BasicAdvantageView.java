@@ -11,7 +11,6 @@ import javax.swing.border.TitledBorder;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.sf.anathema.character.impl.view.advantage.EssencePanelView;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
@@ -24,13 +23,15 @@ import net.sf.anathema.framework.presenter.view.ButtonControlledObjectSelectionV
 import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.GuiUtilities;
+import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
 
 public class BasicAdvantageView extends AbstractTabView<IAdvantageViewProperties> implements IBasicAdvantageView {
 
-  private final GridDialogPanel virtuePanel = new GridDialogPanel(false);
-  private final GridDialogPanel willpowerPanel = new GridDialogPanel(false);
-  private final GridDialogPanel backgroundSelectionPanel = new GridDialogPanel(false);
+  private final IGridDialogPanel virtuePanel = new DefaultGridDialogPanel(false);
+  private final IGridDialogPanel willpowerPanel = new DefaultGridDialogPanel(false);
+  private final IGridDialogPanel backgroundSelectionPanel = new DefaultGridDialogPanel(false);
   private final JPanel backgroundDisplayPanel = new JPanel(new GridDialogLayout(2, false));
   private final EssencePanelView essencePanelView;
   private final IIntValueDisplayFactory guiConfiguration;

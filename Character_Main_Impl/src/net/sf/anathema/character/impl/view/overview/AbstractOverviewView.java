@@ -8,8 +8,8 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.TitledBorder;
 
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.sf.anathema.character.view.overview.IOverviewView;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.AbstractLabelledValueView;
@@ -28,7 +28,7 @@ public abstract class AbstractOverviewView implements IOverviewView {
       String categoryName,
       int currentValue,
       int maxValue,
-      GridDialogPanel overviewPanel) {
+      IGridDialogPanel overviewPanel) {
     return addCategoryView(categoryName, currentValue, maxValue, overviewPanel, 2);
   }
 
@@ -36,7 +36,7 @@ public abstract class AbstractOverviewView implements IOverviewView {
       String categoryName,
       int currentValue,
       int maxValue,
-      GridDialogPanel overviewPanel,
+      IGridDialogPanel overviewPanel,
       int maxValueLength) {
     LabelledAlotmentView categoryView = new LabelledAlotmentView(categoryName, currentValue, maxValue, maxValueLength);
     categoryView.addComponents(overviewPanel);
@@ -46,14 +46,14 @@ public abstract class AbstractOverviewView implements IOverviewView {
   protected final ILabelledValueView<Integer> addDerivedView(
       String labelText,
       int currentPoints,
-      GridDialogPanel containerPanel) {
+      IGridDialogPanel containerPanel) {
     return this.addDerivedView(labelText, currentPoints, containerPanel, 2);
   }
 
   protected final ILabelledValueView<Integer> addDerivedView(
       String labelText,
       int currentPoints,
-      GridDialogPanel containerPanel,
+      IGridDialogPanel containerPanel,
       int maxValueLength) {
     LabelledIntegerValueView derivedView = new LabelledIntegerValueView(labelText, currentPoints, true, maxValueLength);
     derivedView.addComponents(containerPanel);
@@ -68,7 +68,7 @@ public abstract class AbstractOverviewView implements IOverviewView {
     return panel;
   }
 
-  protected final void addOverviewPanel(String title, GridDialogPanel overviewPanel) {
+  protected final void addOverviewPanel(String title, IGridDialogPanel overviewPanel) {
     JPanel newPanel = overviewPanel.getContent();
     TitledBorder titledBorder = new TitledBorder(title);
     titledBorder.setTitleFont(AbstractLabelledValueView.deriveSmallerFont(titledBorder.getTitleFont()));

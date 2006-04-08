@@ -9,12 +9,12 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import net.disy.commons.swing.action.SmartAction;
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
-import net.disy.commons.swing.layout.grid.IGridDialogPanel;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.framework.presenter.view.AbstractTabView;
 import net.sf.anathema.framework.value.IconToggleButton;
+import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
@@ -23,7 +23,7 @@ import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 public class CharacterDescriptionView extends AbstractTabView<Object> implements ICharacterDescriptionView {
 
   private static class EditButtonDialogPanel implements IGridDialogPanel {
-    private final IGridDialogPanel dialogPanel = new GridDialogPanel();
+    private final IGridDialogPanel dialogPanel = new DefaultGridDialogPanel();
     private final Map<Integer, JPanel> editPanelsByRow = new HashMap<Integer, JPanel>();
     private int currentRow = 0;
 

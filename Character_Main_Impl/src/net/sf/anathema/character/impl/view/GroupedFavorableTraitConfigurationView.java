@@ -20,6 +20,7 @@ import net.sf.anathema.character.view.basic.IButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.view.AbstractTabView;
 import net.sf.anathema.lib.gui.dialogcomponent.grouped.GroupedGridDialogPanel;
 import net.sf.anathema.lib.gui.dialogcomponent.grouped.IGridDialogPanelContent;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 
 public class GroupedFavorableTraitConfigurationView extends AbstractTabView<Object> implements
     IGroupedFavorableTraitConfigurationView {
@@ -76,7 +77,7 @@ public class GroupedFavorableTraitConfigurationView extends AbstractTabView<Obje
 
   private IGridDialogPanelContent createSpecialtyDialogComponent() {
     return new IGridDialogPanelContent() {
-      public void addComponents(GridDialogPanel abilityPanel) {
+      public void addComponents(IGridDialogPanel abilityPanel) {
         abilityPanel.add(new IDialogComponent() {
           public int getColumnCount() {
             return 1;

@@ -1,15 +1,16 @@
 package net.sf.anathema.character.impl.view.advantage;
 
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.sf.anathema.character.impl.view.LabelledOverviewStringValueView;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
 
 public class EssencePanelView {
 
-  private final GridDialogPanel essencePanel = new GridDialogPanel(false);
+  private final IGridDialogPanel essencePanel = new DefaultGridDialogPanel(false);
   private final IIntValueDisplayFactory guiConfiguration;
   
   public EssencePanelView(IIntValueDisplayFactory guiConfiguration) {
@@ -28,7 +29,7 @@ public class EssencePanelView {
     return poolView;
   }
 
-  public GridDialogPanel getPanel() {
+  public IGridDialogPanel getPanel() {
     return essencePanel;
   }
 }
