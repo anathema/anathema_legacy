@@ -4,9 +4,10 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeExperiencedOverview;
 import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeViewProperties;
+import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;
 
 public class SiderealCollegeExperiencedOverview implements ISiderealCollegeExperiencedOverview {
@@ -27,7 +28,7 @@ public class SiderealCollegeExperiencedOverview implements ISiderealCollegeExper
 
   private JPanel createContent() {
     JPanel overview = new JPanel(new GridDialogLayout(2, false));
-    GridDialogPanel panel = new GridDialogPanel();
+    IGridDialogPanel panel = new DefaultGridDialogPanel();
     view.addComponents(panel);
     overview.add(panel.getContent());
     return overview;

@@ -4,9 +4,10 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeCreationOverview;
 import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeViewProperties;
+import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;
 
@@ -31,7 +32,7 @@ public class SiderealCollegeCreationOverview implements ISiderealCollegeCreation
 
   private JPanel createContent() {
     JPanel overview = new JPanel(new GridDialogLayout(2, false));
-    GridDialogPanel panel = new GridDialogPanel();
+    IGridDialogPanel panel = new DefaultGridDialogPanel();
     favoredDotsView = new LabelledAlotmentView(properties.getFavoredCollegeDotsString(), 0, 0);
     generalDotsView = new LabelledAlotmentView(properties.getGeneralCollegeDotsString(), 0, 0);
     bonusPointsView = new LabelledIntegerValueView(properties.getCollegeBonusPointsString(), 0, true, 2);
