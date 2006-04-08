@@ -55,6 +55,7 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
       @Override
       public void configuredChangeOccured() {
         changeControl.forAllDo(new ChangeListenerClosure());
+        fireEntryChanged();
       }
     };
     maximumListener.addTraitType(VirtueType.Compassion);
@@ -93,7 +94,7 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
 
   public void setCurrentName(String name) {
     this.name = name;
-    fireEntryComplete();
+    fireEntryChanged();
   }
 
   @Override
@@ -126,8 +127,8 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
   }
 
   @Override
-  protected boolean isEntryComplete() {
-    return !StringUtilities.isNullOrEmpty(name);
+  protected boolean isEntryAllowed() {
+    return getEntries().size() < getIntimaciesLimit() && !StringUtilities.isNullOrEmpty(name);
   }
 
   public void addModelChangeListener(IChangeListener listener) {

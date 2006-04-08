@@ -18,6 +18,7 @@ import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.legality.LegalityFontProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;
 import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
@@ -75,7 +76,7 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
         recalculateOverview(freeIntimaciesView, totalIntimaciesView, bonusPointsView);
       }
 
-      public void entryComplete(boolean complete) {
+      public void entryAllowed(boolean complete) {
         // Nothing to do
       }
 
@@ -90,8 +91,8 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
       final ILabelledAlotmentView freeIntimaciesView,
       final ILabelledAlotmentView totalIntimaciesView,
       final ILabelledValueView<Integer> bonusPointsView) {
-    adjustOverview(freeIntimaciesView, model.getEntries().size(), model.getFreeIntimacies());
-    adjustOverview(totalIntimaciesView, model.getEntries().size(), model.getIntimaciesLimit());
+    adjustBonusPointsOverview(freeIntimaciesView, model.getEntries().size(), model.getFreeIntimacies());
+    adjustTotalOverview(totalIntimaciesView, model.getEntries().size(), model.getIntimaciesLimit());
     adjustOverview(bonusPointsView);
   }
 
@@ -101,13 +102,18 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
     valueView.setValue(bonusPointCalculator.getBonusPointCost());
   }
 
-  private void adjustOverview(final ILabelledAlotmentView alotmentView, int currentValue, int maxValue) {
+  private void adjustTotalOverview(final ILabelledAlotmentView alotmentView, int currentValue, int maxValue) {
+    alotmentView.setValue(currentValue);
+    alotmentView.setAlotment(maxValue);
+    ValueLegalityState state = currentValue > maxValue ? ValueLegalityState.High : ValueLegalityState.Okay;
+    alotmentView.setTextColor(new LegalityColorProvider().getTextColor(state));
+  }
+
+  private void adjustBonusPointsOverview(final ILabelledAlotmentView alotmentView, int currentValue, int maxValue) {
     alotmentView.setValue(Math.min(currentValue, maxValue));
     alotmentView.setAlotment(maxValue);
-    ValueLegalityState fontStyleState = currentValue > maxValue
-        ? ValueLegalityState.Increased
-        : ValueLegalityState.Okay;
-    alotmentView.setFontStyle(new LegalityFontProvider().getFontStyle(fontStyleState));
+    ValueLegalityState state = currentValue > maxValue ? ValueLegalityState.Increased : ValueLegalityState.Okay;
+    alotmentView.setFontStyle(new LegalityFontProvider().getFontStyle(state));
   }
 
   private void initModelListening(final BasicUi basicUi, final IIntimaciesSelectionView selectionView) {
@@ -122,7 +128,7 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
         view.removeEntryView(removableView);
       }
 
-      public void entryComplete(boolean complete) {
+      public void entryAllowed(boolean complete) {
         selectionView.setAddButtonEnabled(complete);
       }
     });
