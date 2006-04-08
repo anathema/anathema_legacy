@@ -1,6 +1,6 @@
 package net.sf.anathema.development.reporting.encoder.voidstate.format;
 
-import net.disy.commons.core.graphics.font.FontStyle;
+import net.disy.commons.core.text.font.FontStyle;
 import net.sf.anathema.framework.styledtext.presentation.TextFormat;
 
 public interface IVoidStateFormatConstants {

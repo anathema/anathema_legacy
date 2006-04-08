@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.disy.commons.core.graphics.font.FontStyle;
+import net.disy.commons.core.text.font.FontStyle;
 import net.sf.anathema.character.generic.framework.reporting.ICharacterReportConstants;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.development.reporting.encoder.voidstate.columns.IOneColumnEncoder;

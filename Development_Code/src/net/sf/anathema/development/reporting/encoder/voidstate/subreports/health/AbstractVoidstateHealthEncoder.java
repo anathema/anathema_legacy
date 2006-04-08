@@ -2,9 +2,7 @@ package net.sf.anathema.development.reporting.encoder.voidstate.subreports.healt
 
 import java.awt.Rectangle;
 
-import org.dom4j.Element;
-
-import net.disy.commons.core.graphics.font.FontStyle;
+import net.disy.commons.core.text.font.FontStyle;
 import net.sf.anathema.character.generic.framework.reporting.ICharacterReportConstants;
 import net.sf.anathema.character.generic.framework.reporting.parameters.HealthParameterUtilities;
 import net.sf.anathema.character.generic.health.HealthLevelType;
@@ -18,6 +16,8 @@ import net.sf.anathema.development.reporting.util.ParameterUtilities;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.framework.styledtext.presentation.TextFormat;
 import net.sf.anathema.framework.styledtext.presentation.TextPart;
+
+import org.dom4j.Element;
 
 public abstract class AbstractVoidstateHealthEncoder extends AbstractCharacterSheetPageEncoder implements
     IVoidStateFormatConstants {
