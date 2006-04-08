@@ -6,8 +6,8 @@ import javax.swing.JPanel;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
-import net.disy.commons.swing.layout.grid.IGridDialogPanel;
 import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.widgets.RevalidatingScrollPane;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 

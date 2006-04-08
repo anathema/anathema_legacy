@@ -8,8 +8,8 @@ import javax.swing.SwingConstants;
 
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.layout.AnathemaLayoutUtilities;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 
@@ -33,7 +33,7 @@ public class LabelledAlotmentView extends AbstractLabelledIntegerValueView imple
   }
 
   @Override
-  public void addComponents(GridDialogPanel dialogPanel) {
+  public void addComponents(IGridDialogPanel dialogPanel) {
     dialogPanel.add(new IDialogComponent() {
       public int getColumnCount() {
         return 4;

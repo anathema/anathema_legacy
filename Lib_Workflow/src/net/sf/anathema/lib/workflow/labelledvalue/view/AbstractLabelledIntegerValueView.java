@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.workflow.labelledvalue.view;
 
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
 
 public abstract class AbstractLabelledIntegerValueView extends AbstractLabelledValueView implements
@@ -22,7 +22,7 @@ public abstract class AbstractLabelledIntegerValueView extends AbstractLabelledV
     super(labelText, String.valueOf(value), sizeText, adjustFontSize);
   }
 
-  public abstract void addComponents(GridDialogPanel dialogPanel);
+  public abstract void addComponents(IGridDialogPanel dialogPanel);
 
   public void setValue(Integer value) {
     setText(String.valueOf(value));

@@ -7,8 +7,8 @@ import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.layout.AnathemaLayoutUtilities;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
 
@@ -22,7 +22,7 @@ public class LabelledStringValueView implements ILabelledValueView<String> {
     this.valueLabel = new JLabel();
   }
 
-  public void addComponents(GridDialogPanel dialogPanel) {
+  public void addComponents(IGridDialogPanel dialogPanel) {
     dialogPanel.add(new IDialogComponent() {
       public int getColumnCount() {
         return 2;
