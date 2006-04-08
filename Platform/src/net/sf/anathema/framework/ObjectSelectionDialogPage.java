@@ -6,8 +6,8 @@ import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.userdialog.AbstractDialogPage;
-import net.disy.commons.swing.message.IBasicMessage;
 import net.sf.anathema.framework.repository.IObjectSelectionProperties;
 
 public class ObjectSelectionDialogPage extends AbstractDialogPage {

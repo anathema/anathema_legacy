@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.StyledDocument;
 
-import net.disy.commons.core.graphics.font.FontStyle;
+import net.disy.commons.core.text.font.FontStyle;
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.styledtext.TextEditor;
 import net.sf.anathema.framework.styledtext.model.ITextPart;

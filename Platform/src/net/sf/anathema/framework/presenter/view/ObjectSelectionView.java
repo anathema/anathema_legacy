@@ -6,10 +6,10 @@ import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 
@@ -30,14 +30,14 @@ public class ObjectSelectionView implements IObjectSelectionView {
     setSelectedObject(null);
   }
 
-  public void addTo(final String labelString, final ListCellRenderer renderer, GridDialogPanel panel) {
+  public void addTo(final String labelString, final ListCellRenderer renderer, IGridDialogPanel panel) {
     addTo(labelString, renderer, panel, new GridDialogLayoutData());
   }
 
   public void addTo(
       final String labelString,
       final ListCellRenderer renderer,
-      GridDialogPanel panel,
+      IGridDialogPanel panel,
       final IGridDialogLayoutData selectionData) {
     panel.add(new IDialogComponent() {
       public int getColumnCount() {

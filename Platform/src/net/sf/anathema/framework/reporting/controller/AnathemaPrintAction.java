@@ -10,13 +10,13 @@ import javax.swing.Action;
 import javax.swing.JOptionPane;
 
 import net.disy.commons.core.io.IOUtilities;
+import net.disy.commons.core.message.BasicMessage;
+import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.core.progress.IProgressMonitor;
 import net.disy.commons.core.progress.IRunnableWithProgress;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.progress.ProgressMonitorDialog;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
-import net.disy.commons.swing.message.BasicMessage;
-import net.disy.commons.swing.message.IBasicMessage;
 import net.disy.commons.swing.message.Message;
 import net.disy.commons.swing.message.MessageType;
 import net.sf.anathema.framework.IAnathemaModel;

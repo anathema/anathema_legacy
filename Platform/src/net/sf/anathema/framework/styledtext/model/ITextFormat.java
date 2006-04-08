@@ -2,7 +2,7 @@ package net.sf.anathema.framework.styledtext.model;
 
 import java.awt.Color;
 
-import net.disy.commons.core.graphics.font.FontStyle;
+import net.disy.commons.core.text.font.FontStyle;
 
 public interface ITextFormat {
 

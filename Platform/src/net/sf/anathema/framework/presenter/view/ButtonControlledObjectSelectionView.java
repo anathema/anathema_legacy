@@ -14,9 +14,9 @@ import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.widgets.ColoredJComboBox;
 
 public class ButtonControlledObjectSelectionView implements IObjectSelectionView {
@@ -35,7 +35,7 @@ public class ButtonControlledObjectSelectionView implements IObjectSelectionView
   public void addTo(
       final String labelText,
       final ListCellRenderer renderer,
-      GridDialogPanel panel) {
+      IGridDialogPanel panel) {
     panel.add(new IDialogComponent() {
 
       public int getColumnCount() {

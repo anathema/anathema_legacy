@@ -6,6 +6,7 @@ import javax.swing.border.TitledBorder;
 
 import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 
 public abstract class AbstractTabView<P> implements ITabView<P> {
 
@@ -49,7 +50,7 @@ public abstract class AbstractTabView<P> implements ITabView<P> {
   protected final JPanel addTitledPanel(
       String title,
       JPanel container,
-      GridDialogPanel contentPanel,
+      IGridDialogPanel contentPanel,
       IGridDialogLayoutData constraint) {
     JPanel newPanel = contentPanel.getContent();
     newPanel.setBorder(new TitledBorder(title));

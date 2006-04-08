@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.reporting.encoding;
 
-import net.disy.commons.core.graphics.font.FontStyle;
+import net.disy.commons.core.text.font.FontStyle;
 import net.sf.anathema.framework.styledtext.model.ITextFormat;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.lib.awt.ColorUtilities;

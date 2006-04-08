@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.repository.filechooser;
 
-import net.disy.commons.swing.message.BasicMessage;
-import net.disy.commons.swing.message.IBasicMessage;
+import net.disy.commons.core.message.BasicMessage;
+import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.message.MessageType;
 import net.sf.anathema.framework.extension.IExtensionPoint;
 import net.sf.anathema.framework.item.IItemType;
