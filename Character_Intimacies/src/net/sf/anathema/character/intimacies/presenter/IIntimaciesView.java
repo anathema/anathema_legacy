@@ -12,5 +12,7 @@ public interface IIntimaciesView extends IRemovableEntryTabView<IRemovableTraitV
 
   public IIntimaciesSelectionView addSelectionView(String labelText, Icon addIcon);
 
-  public IOverviewView addOverview(String borderLabel);
+  public IOverviewView createOverview(String borderLabel);
+
+  public void setOverview(IOverviewView overviewView);
 }

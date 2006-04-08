@@ -24,9 +24,9 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
   private final JPanel content = new JPanel(new GridDialogLayout(2, false));
   private final JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
   private final JPanel entryPanel = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel overviewPanel = new JPanel(new GridDialogLayout(1, false));
   private final IIntValueDisplayFactory factory;
   private final IIconToggleButtonProperties properties;
-  private OverviewView overviewView;
 
   public IntimaciesView(IIntValueDisplayFactory factory, IIconToggleButtonProperties properties) {
     this.factory = factory;
@@ -41,7 +41,7 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
     GridDialogLayoutData mainData = new GridDialogLayoutData();
     mainData.setVerticalAlignment(GridAlignment.BEGINNING);
     content.add(mainPanel, mainData);
-    content.add(overviewView.getComponent(), data);
+    content.add(overviewPanel, data);
     return content;
   }
 
@@ -65,8 +65,12 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
     return twoButtonView;
   }
 
-  public IOverviewView addOverview(String borderLabel) {
-    this.overviewView = new OverviewView(borderLabel);
-    return overviewView;
+  public IOverviewView createOverview(String borderLabel) {
+    return new OverviewView(borderLabel);
+  }
+
+  public void setOverview(IOverviewView overviewView) {
+    overviewPanel.removeAll();
+    overviewPanel.add(overviewView.getComponent());
   }
 }

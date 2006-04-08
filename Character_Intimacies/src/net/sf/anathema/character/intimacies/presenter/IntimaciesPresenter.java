@@ -7,6 +7,7 @@ import java.util.Map;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
+import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
 import net.sf.anathema.character.intimacies.view.IIntimaciesSelectionView;
 import net.sf.anathema.character.intimacies.view.IOverviewView;
@@ -59,21 +60,25 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
   }
 
   private void initOverviewView() {
-    IOverviewView overviewView = view.addOverview(resources.getString("Intimacies.Overview.BorderLabel")); //$NON-NLS-1$
-    final ILabelledAlotmentView freeIntimaciesView = overviewView.addAlotmentView(
+    final IOverviewView creationOverview = view.createOverview(resources.getString("Intimacies.Overview.BorderLabel")); //$NON-NLS-1$    
+    final ILabelledAlotmentView freeIntimaciesView = creationOverview.addAlotmentView(
         resources.getString("Intimacies.Overview.Free"), 2); //$NON-NLS-1$
-    final ILabelledAlotmentView totalIntimaciesView = overviewView.addAlotmentView(
+    final ILabelledAlotmentView totalIntimaciesView = creationOverview.addAlotmentView(
         resources.getString("Intimacies.Overview.Maximum"), 2); //$NON-NLS-1$    
-    final ILabelledValueView<Integer> bonusPointsView = overviewView.addValueView(
+    final ILabelledValueView<Integer> bonusPointsView = creationOverview.addValueView(
         resources.getString("Intimacies.Overview.BonusPoints"), 2); //$NON-NLS-1$
+    view.setOverview(creationOverview);
+    final IOverviewView experienceOverview = view.createOverview(resources.getString("Intimacies.Overview.BorderLabel")); //$NON-NLS-1$    
+    final ILabelledAlotmentView experienceMaximumView = experienceOverview.addAlotmentView(
+        resources.getString("Intimacies.Overview.Maximum"), 2); //$NON-NLS-1$
     model.addModelChangeListener(new IChangeListener() {
       public void changeOccured() {
-        recalculateOverview(freeIntimaciesView, totalIntimaciesView, bonusPointsView);
+        recalculateOverview(freeIntimaciesView, totalIntimaciesView, bonusPointsView, experienceMaximumView);
       }
     });
     model.addModelChangeListener(new IRemovableEntryListener<IIntimacy>() {
       public void entryAdded(IIntimacy entry) {
-        recalculateOverview(freeIntimaciesView, totalIntimaciesView, bonusPointsView);
+        recalculateOverview(freeIntimaciesView, totalIntimaciesView, bonusPointsView, experienceMaximumView);
       }
 
       public void entryAllowed(boolean complete) {
@@ -81,18 +86,32 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
       }
 
       public void entryRemoved(IIntimacy entry) {
-        recalculateOverview(freeIntimaciesView, totalIntimaciesView, bonusPointsView);
+        recalculateOverview(freeIntimaciesView, totalIntimaciesView, bonusPointsView, experienceMaximumView);
       }
     });
-    recalculateOverview(freeIntimaciesView, totalIntimaciesView, bonusPointsView);
+    model.addCharacterChangeListener(new DedicatedCharacterChangeAdapter() {
+      @Override
+      public void experiencedChanged(boolean experienced) {
+        if (experienced) {
+          view.setOverview(experienceOverview);
+        }
+        else {
+          view.setOverview(creationOverview);
+        }
+      }
+    });
+
+    recalculateOverview(freeIntimaciesView, totalIntimaciesView, bonusPointsView, experienceMaximumView);
   }
 
   private void recalculateOverview(
       final ILabelledAlotmentView freeIntimaciesView,
       final ILabelledAlotmentView totalIntimaciesView,
-      final ILabelledValueView<Integer> bonusPointsView) {
+      final ILabelledValueView<Integer> bonusPointsView,
+      ILabelledAlotmentView experienceMaximumView) {
     adjustBonusPointsOverview(freeIntimaciesView, model.getEntries().size(), model.getFreeIntimacies());
     adjustTotalOverview(totalIntimaciesView, model.getEntries().size(), model.getIntimaciesLimit());
+    adjustTotalOverview(experienceMaximumView, model.getEntries().size(), model.getIntimaciesLimit());
     adjustOverview(bonusPointsView);
   }
 

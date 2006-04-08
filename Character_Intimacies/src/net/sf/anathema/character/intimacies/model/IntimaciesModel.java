@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonu
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ConfigurableCharacterChangeListener;
+import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.VirtueChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
@@ -133,5 +134,9 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
 
   public void addModelChangeListener(IChangeListener listener) {
     changeControl.addListener(listener);
+  }
+
+  public void addCharacterChangeListener(ICharacterChangeListener listener) {
+    context.getCharacterListening().addChangeListener(listener);
   }
 }
