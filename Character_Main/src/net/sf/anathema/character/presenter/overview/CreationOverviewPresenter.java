@@ -10,10 +10,10 @@ import net.sf.anathema.character.generic.template.points.IFavorableTraitCreation
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.model.nature.INatureType;
-import net.sf.anathema.character.presenter.legality.LegalityFontProvider;
 import net.sf.anathema.character.view.overview.ICreationOverviewView;
 import net.sf.anathema.character.view.overview.IOverviewViewProperties;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
+import net.sf.anathema.lib.control.legality.LegalityFontProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
