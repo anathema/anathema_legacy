@@ -10,13 +10,14 @@ import javax.swing.text.StyledDocument;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.campaign.presenter.view.IBasicItemDescriptionView;
 import net.sf.anathema.framework.presenter.view.AbstractTabView;
 import net.sf.anathema.framework.styledtext.IStyledTextView;
 import net.sf.anathema.framework.styledtext.ITextEditorProperties;
 import net.sf.anathema.framework.styledtext.TextEditor;
+import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
@@ -28,7 +29,7 @@ public class BasicItemDescriptionView extends AbstractTabView<Object> implements
   }
 
   private static final int COLUMN_COUNT = 45;
-  private GridDialogPanel descriptionPanel = new GridDialogPanel(false);
+  private IGridDialogPanel descriptionPanel = new DefaultGridDialogPanel(false);
 
   public ITextView addLineTextView(final String labelName) {
     return addLabeledTextView(labelName, new LineTextView(COLUMN_COUNT), false);
