@@ -51,7 +51,7 @@ public class HeartsBloodModel extends AbstractRemovableEntryModel<IAnimalForm> i
 
   public void setCurrentName(String newValue) {
     this.currentName = newValue;
-    fireEntryComplete();
+    fireEntryChanged();
   }
 
   public void setCurrentStrength(int newValue) {
@@ -62,7 +62,8 @@ public class HeartsBloodModel extends AbstractRemovableEntryModel<IAnimalForm> i
     this.currentStamina = newValue;
   }
 
-  protected boolean isEntryComplete() {
+  @Override
+  protected boolean isEntryAllowed() {
     return StringUtilities.isNullOrEmpty(currentName);
   }
 

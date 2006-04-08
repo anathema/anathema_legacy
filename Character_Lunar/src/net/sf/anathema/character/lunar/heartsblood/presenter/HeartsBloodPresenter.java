@@ -92,7 +92,7 @@ public class HeartsBloodPresenter {
         view.removeEntryView(removableView);
       }
 
-      public void entryComplete(boolean complete) {
+      public void entryAllowed(boolean complete) {
         selectionView.setAddButtonEnabled(complete);
       }
     });
