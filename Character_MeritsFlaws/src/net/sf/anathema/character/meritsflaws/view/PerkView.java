@@ -18,7 +18,6 @@ import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.sf.anathema.character.meritsflaws.presenter.IMeritsFlawsViewProperties;
 import net.sf.anathema.character.meritsflaws.presenter.IPerkListener;
 import net.sf.anathema.character.meritsflaws.presenter.view.IPerkDetailsView;
@@ -27,6 +26,8 @@ import net.sf.anathema.framework.presenter.view.ObjectSelectionView;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.list.SmartJList;
 import net.sf.anathema.lib.gui.list.actionview.ActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.SingleSelectionActionAddableListView;
@@ -57,8 +58,8 @@ public class PerkView implements IPerkView {
     return content;
   }
 
-  private GridDialogPanel createFilterPanel() {
-    GridDialogPanel panel = new GridDialogPanel();
+  private IGridDialogPanel createFilterPanel() {
+    IGridDialogPanel panel = new DefaultGridDialogPanel();
     typeFilterView = new ObjectSelectionView(properties.getTypeFilters());
     categoryFilterView = new ObjectSelectionView(properties.getCategoryFilters());
     typeFilterView.addTo(
