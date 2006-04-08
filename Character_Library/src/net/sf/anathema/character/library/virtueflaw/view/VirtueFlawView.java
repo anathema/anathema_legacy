@@ -13,18 +13,19 @@ import javax.swing.ListCellRenderer;
 
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.generic.framework.util.ExperienceUtilities;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawView;
 import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.ObjectSelectionView;
 import net.sf.anathema.lib.gui.GuiUtilities;
+import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
 public class VirtueFlawView implements IVirtueFlawView {
-  private final GridDialogPanel virtueFlawPanel = new GridDialogPanel(false);
+  private final IGridDialogPanel virtueFlawPanel = new DefaultGridDialogPanel(false);
   private List<ITextView> textViews = new ArrayList<ITextView>();
 
   public ITextView addTextView(final String labelText, int columns) {
@@ -75,7 +76,7 @@ public class VirtueFlawView implements IVirtueFlawView {
     return true;
   }
 
-  protected GridDialogPanel getVirtueFlawPanel() {
+  protected IGridDialogPanel getVirtueFlawPanel() {
     return virtueFlawPanel;
   }
 
