@@ -101,6 +101,8 @@ Anathema includes software developed by
 -the Tritonus project (http://www.tritonus.org).
 -the Javazoom team (http://www.javazoom.net).
 -disy Informationssysteme GmbH (http://www.disy.net)
+-the Geotools Project(http://www.geotools.org)
+-the JTS Project (http://www.vividsolutions.com/jts/jtshome.htm)
 
 The "Print to PDF" icon was created by Wolfgang Bartelme (http://www.bartelme.at/) and is used with permission.
 Some of the other images are taken with permission from the archives at http://www.wolf-spoor.org.
@@ -120,7 +122,9 @@ GNU LGPL (See /lib/LGPL.txt for details.)
 Tritonus is published under the LGPL. 
 MP3SPI is published under the LGPL. 
 jlGui is published under the LGPL. 
-JLayer is published under the LGPL. 
+JLayer is published under the LGPL.
+JTS is published unter the LGPL.
+Geotools is published unter der LGPL.
 Note that Anathema contains only part of this library in order not to infringe the MP3 copyrights held by Fraunhofer/Thompson.
 
 GNU GPL (This file)
