@@ -11,30 +11,29 @@ import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicLearnView;
 import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformView;
 import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.ILabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 
 public class BeastformView implements IBeastformView {
 
-  private final GridDialogPanel baseContentPanel = new GridDialogPanel();
-  private final GridDialogPanel attributePanel = new GridDialogPanel();
+  private final IGridDialogPanel baseContentPanel = new DefaultGridDialogPanel();
+  private final IGridDialogPanel attributePanel = new DefaultGridDialogPanel();
   private final JPanel giftPanel = new JPanel(new GridDialogLayout(4, false));
   private final IntValueDisplayFactory intValueDisplayFactory;
   private final JPanel content = new JPanel(new GridDialogLayout(2, false));
   private final JPanel overviewPanel = new JPanel();
   private final IBeastformViewProperties properties;
 
-  public BeastformView(
-      IntValueDisplayFactory intValueDisplayFactory,
-      IBeastformViewProperties properties) {
+  public BeastformView(IntValueDisplayFactory intValueDisplayFactory, IBeastformViewProperties properties) {
     this.intValueDisplayFactory = intValueDisplayFactory;
     this.properties = properties;
   }
@@ -93,10 +92,8 @@ public class BeastformView implements IBeastformView {
     return learnView;
   }
 
-  public IBeastformOverviewView addOverviewView(
-      IBeastformOverviewViewProperties overviewProperties) {
-    BeastformOverviewView overviewView = new BeastformOverviewView(
-        overviewProperties);
+  public IBeastformOverviewView addOverviewView(IBeastformOverviewViewProperties overviewProperties) {
+    BeastformOverviewView overviewView = new BeastformOverviewView(overviewProperties);
     overviewPanel.add(overviewView.getContent());
     return overviewView;
   }

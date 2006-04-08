@@ -8,10 +8,11 @@ import javax.swing.border.TitledBorder;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.widgets.HorizontalLine;
 import net.sf.anathema.framework.presenter.view.ISimpleTabView;
 import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledAlotmentView;
@@ -22,9 +23,9 @@ public class RenownView implements ISimpleTabView {
   private final JPanel content = new JPanel(new GridDialogLayout(2, false));
   private final JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
   private final JPanel overviewPanel = new JPanel(new GridDialogLayout(1, false));
-  private final GridDialogPanel renownPanel = new GridDialogPanel();
-  private final GridDialogPanel totalPanel = new GridDialogPanel();
-  private final GridDialogPanel facePanel = new GridDialogPanel();
+  private final IGridDialogPanel renownPanel = new DefaultGridDialogPanel();
+  private final IGridDialogPanel totalPanel = new DefaultGridDialogPanel();
+  private final IGridDialogPanel facePanel = new DefaultGridDialogPanel();
 
   public JComponent getComponent() {
     mainPanel.add(renownPanel.getContent());
@@ -62,7 +63,7 @@ public class RenownView implements ISimpleTabView {
 
   public ILabelledAlotmentView addOverview(String borderLabel, String categoryLabel) {
     overviewPanel.setBorder(new TitledBorder(borderLabel));
-    GridDialogPanel panel = new GridDialogPanel();
+    IGridDialogPanel panel = new DefaultGridDialogPanel();
     LabelledAlotmentView renownPointsView = new LabelledAlotmentView(categoryLabel, 0, 0);
     renownPointsView.addComponents(panel);
     overviewPanel.add(panel.getContent());

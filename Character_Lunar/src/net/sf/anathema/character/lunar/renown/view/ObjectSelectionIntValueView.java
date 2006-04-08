@@ -5,12 +5,12 @@ import java.util.Map;
 
 import javax.swing.ListCellRenderer;
 
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.sf.anathema.framework.presenter.view.ObjectSelectionView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 
 public class ObjectSelectionIntValueView implements IIntValueView {
 
@@ -55,7 +55,7 @@ public class ObjectSelectionIntValueView implements IIntValueView {
     return ranks;
   }
 
-  public void addTo(GridDialogPanel facePanel) {
+  public void addTo(IGridDialogPanel facePanel) {
     view.addTo(label, renderer, facePanel);
   }
 }

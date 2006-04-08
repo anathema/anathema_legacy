@@ -4,7 +4,8 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledAlotmentView;
 
@@ -27,7 +28,7 @@ public class BeastformOverviewView implements IBeastformOverviewView {
 
   private JPanel createContent() {
     JPanel overview = new JPanel(new GridDialogLayout(2, false));
-    GridDialogPanel panel = new GridDialogPanel();
+    IGridDialogPanel panel = new DefaultGridDialogPanel();
     attributeView = new LabelledAlotmentView(properties.getAttributeDotsString(), 0, 0);
     attributeView.addComponents(panel);
     giftView = new LabelledAlotmentView(properties.getGiftPicksString(), 0, 0);
