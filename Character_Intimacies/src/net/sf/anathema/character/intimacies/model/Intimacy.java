@@ -52,8 +52,9 @@ public class Intimacy implements IIntimacy {
   }
 
   public void resetCurrentValue() {
-    if (complete) {
-      trait.setCurrentValue(maxValueTrait.getCurrentValue());
+    int maximumValue = maxValueTrait.getCurrentValue();
+    if (complete || trait.getCurrentValue() > maximumValue) {
+      trait.setCurrentValue(maximumValue);
     }
   }
 
