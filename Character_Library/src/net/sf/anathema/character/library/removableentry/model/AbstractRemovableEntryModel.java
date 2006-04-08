@@ -40,15 +40,15 @@ public abstract class AbstractRemovableEntryModel<E> implements IRemovableEntryM
     return Collections.unmodifiableList(entries);
   }
 
-  protected void fireEntryComplete() {
+  protected void fireEntryChanged() {
     control.forAllDo(new IClosure<IRemovableEntryListener<E>>() {
       public void execute(IRemovableEntryListener<E> input) {
-        input.entryComplete(isEntryComplete());
+        input.entryAllowed(isEntryAllowed());
       }
     });
   }
 
-  protected abstract boolean isEntryComplete();
+  protected abstract boolean isEntryAllowed();
 
   public void addModelChangeListener(IRemovableEntryListener<E> listener) {
     control.addListener(listener);

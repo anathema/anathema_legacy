@@ -6,5 +6,5 @@ public interface IRemovableEntryListener<E> {
 
   public void entryRemoved(E entry);
 
-  public void entryComplete(boolean complete);
+  public void entryAllowed(boolean complete);
 }
