@@ -9,9 +9,9 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
-import net.disy.commons.swing.layout.grid.IGridDialogPanel;
 import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
+import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
@@ -29,7 +29,7 @@ public class IntimaciesSelectionView implements IIntimaciesSelectionView {
 
   public JComponent getComponent() {
     JPanel panel = new JPanel(new GridDialogLayout(2, false));
-    IGridDialogPanel dialogPanel = new GridDialogPanel();
+    IGridDialogPanel dialogPanel = new DefaultGridDialogPanel();
     labelTextView.addTo(dialogPanel);
     panel.add(dialogPanel.getContent());
     panel.add(button);

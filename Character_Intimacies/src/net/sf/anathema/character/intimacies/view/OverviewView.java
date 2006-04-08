@@ -4,7 +4,8 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledAlotmentView;
@@ -12,7 +13,7 @@ import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;
 
 public class OverviewView implements IOverviewView {
 
-  private final GridDialogPanel panel = new GridDialogPanel();
+  private final IGridDialogPanel panel = new DefaultGridDialogPanel();
   private JPanel content;
   private final String borderTitle;
 
