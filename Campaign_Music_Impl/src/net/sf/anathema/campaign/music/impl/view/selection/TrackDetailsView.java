@@ -10,12 +10,13 @@ import javax.swing.border.TitledBorder;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.sf.anathema.campaign.music.impl.view.categorization.MusicCategorizationView;
 import net.sf.anathema.campaign.music.presenter.ITrackDetailsProperties;
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationProperties;
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationView;
 import net.sf.anathema.campaign.music.view.selection.ITrackDetailsView;
+import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledStringValueView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
@@ -74,7 +75,7 @@ public class TrackDetailsView implements ITrackDetailsView {
     albumView = new LabelledStringValueView(properties.getAlbumLabel() + ":"); //$NON-NLS-1$
     trackNumberView = new LabelledStringValueView(properties.getTrackNumberLabel() + ":"); //$NON-NLS-1$
     artistView = new LabelledStringValueView(properties.getArtistLabel() + ":"); //$NON-NLS-1$
-    GridDialogPanel dialogPanel = new GridDialogPanel();
+    IGridDialogPanel dialogPanel = new DefaultGridDialogPanel();
     new LabelTextView(properties.getGivenNameLabel() + ":", givenNameView).addTo(dialogPanel); //$NON-NLS-1$
     titleView.addComponents(dialogPanel);
     artistView.addComponents(dialogPanel);
