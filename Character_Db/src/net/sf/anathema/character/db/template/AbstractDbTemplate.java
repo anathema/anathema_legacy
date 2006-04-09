@@ -41,6 +41,7 @@ public abstract class AbstractDbTemplate extends AbstractCharacterTemplate {
     return rules;
   }
 
+  @Override
   public ICasteType[] getAllCasteTypes() {
     return DBAspect.values();
   }
