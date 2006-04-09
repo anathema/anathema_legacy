@@ -5,12 +5,13 @@ import javax.swing.JPanel;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
+import net.sf.anathema.lib.gui.dialogcomponent.grouped.IGridDialogPanelContent;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.layout.AnathemaLayoutUtilities;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.AbstractLabelledValueView;
 
-public class LabelledOverviewStringValueView extends AbstractLabelledValueView implements IValueView<String> {
+public class LabelledOverviewStringValueView extends AbstractLabelledValueView implements IValueView<String>, IGridDialogPanelContent {
 
   public LabelledOverviewStringValueView(String titleText, String valueText) {
     this(titleText, valueText, "Moonshadow"); //$NON-NLS-1$

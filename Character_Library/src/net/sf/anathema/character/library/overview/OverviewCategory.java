@@ -4,6 +4,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
+import net.sf.anathema.lib.gui.dialogcomponent.grouped.IGridDialogPanelContent;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
@@ -50,7 +51,11 @@ public class OverviewCategory implements IOverviewCategory {
 
   public IValueView<String> addStringValueView(String labelText) {
     LabelledOverviewStringValueView view = new LabelledOverviewStringValueView(labelText, ""); //$NON-NLS-1$
-    view.addComponents(panel);
+    addComponent(view);
     return view;
+  }
+
+  private void addComponent(IGridDialogPanelContent view) {
+    view.addComponents(panel);
   }
 }
