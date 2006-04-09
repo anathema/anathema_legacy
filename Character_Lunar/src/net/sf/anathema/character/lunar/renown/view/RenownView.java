@@ -3,19 +3,18 @@ package net.sf.anathema.character.lunar.renown.view;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
-import javax.swing.border.TitledBorder;
 
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.widgets.HorizontalLine;
+import net.sf.anathema.character.library.overview.OverviewCategory;
 import net.sf.anathema.framework.presenter.view.ISimpleTabView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
-import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;
 
 public class RenownView implements ISimpleTabView {
@@ -62,12 +61,10 @@ public class RenownView implements ISimpleTabView {
   }
 
   public ILabelledAlotmentView addOverview(String borderLabel, String categoryLabel) {
-    overviewPanel.setBorder(new TitledBorder(borderLabel));
-    IGridDialogPanel panel = new DefaultGridDialogPanel();
-    LabelledAlotmentView renownPointsView = new LabelledAlotmentView(categoryLabel, 0, 0);
-    renownPointsView.addComponents(panel);
-    overviewPanel.add(panel.getContent());
-    return renownPointsView;
+    OverviewCategory category = new OverviewCategory(borderLabel, false);
+    ILabelledAlotmentView view = category.addAlotmentView(categoryLabel, 2);
+    overviewPanel.add(category.getComponent());
+    return view;
   }
 
   public void showOverview(boolean show) {
