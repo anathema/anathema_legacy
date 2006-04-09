@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.event.ChangeListener;
-
 import net.sf.anathema.campaign.music.impl.persistence.MusicDatabasePersister;
 import net.sf.anathema.campaign.music.impl.persistence.search.AbstractArrayFieldSearchParameter;
 import net.sf.anathema.campaign.music.impl.persistence.search.IExtendedSearchParameter;
@@ -18,13 +16,14 @@ import net.sf.anathema.campaign.music.presenter.IMusicSearchControl;
 import net.sf.anathema.campaign.music.presenter.IMusicTheme;
 import net.sf.anathema.campaign.music.presenter.ISearchParameter;
 import net.sf.anathema.lib.control.ChangeControl;
+import net.sf.anathema.lib.control.IChangeListener;
 
 import com.db4o.query.Candidate;
 
 public class MusicSearchControl implements IMusicSearchControl {
 
   private final MusicDatabasePersister persister;
-  private final ChangeControl searchControl = new ChangeControl(this);
+  private final ChangeControl searchControl = new ChangeControl();
   private final IMusicCategorizationModel musicCategorizationModel;
   private IMp3Track[] searchResult;
 
@@ -86,7 +85,7 @@ public class MusicSearchControl implements IMusicSearchControl {
     searchControl.fireChangedEvent();
   }
 
-  public void addSearchResultChangedListener(ChangeListener listener) {
+  public void addSearchResultChangedListener(IChangeListener listener) {
     searchControl.addChangeListener(listener);
   }
 

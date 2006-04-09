@@ -2,8 +2,6 @@ package net.sf.anathema.campaign.music.impl.model.selection;
 
 import java.util.Arrays;
 
-import javax.swing.event.ChangeListener;
-
 import net.sf.anathema.campaign.music.impl.persistence.DbMp3Track;
 import net.sf.anathema.campaign.music.impl.persistence.ITrackDeletionListener;
 import net.sf.anathema.campaign.music.impl.persistence.MusicDatabasePersister;
@@ -12,13 +10,14 @@ import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.campaign.music.model.selection.ITrackDetailModel;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.lib.control.ChangeControl;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public class MusicSelectionModel implements IMusicSelectionModel {
   private IMusicSelection currentSelection = new MusicSelection();
   private IMp3Track[] markedTracks = new IMp3Track[0];
   private final MusicDatabasePersister persister;
-  private final ChangeControl selectionChangeControl = new ChangeControl(this);
-  private final ChangeControl currentSelectionControl = new ChangeControl(this);
+  private final ChangeControl selectionChangeControl = new ChangeControl();
+  private final ChangeControl currentSelectionControl = new ChangeControl();
   private final TrackDetailModel trackDetailModel;
 
   public MusicSelectionModel(final MusicDatabasePersister persister) {
@@ -45,7 +44,7 @@ public class MusicSelectionModel implements IMusicSelectionModel {
     selectionChangeControl.fireChangedEvent();
   }
 
-  public void addSelectionsChangeListener(ChangeListener listener) {
+  public void addSelectionsChangeListener(IChangeListener listener) {
     selectionChangeControl.addChangeListener(listener);
   }
 
@@ -112,7 +111,7 @@ public class MusicSelectionModel implements IMusicSelectionModel {
     return markedTracks.length == 0 ? null : markedTracks[0];
   }
 
-  public void addCurrentSelectionChangeListener(ChangeListener listener) {
+  public void addCurrentSelectionChangeListener(IChangeListener listener) {
     currentSelectionControl.addChangeListener(listener);
   }
 

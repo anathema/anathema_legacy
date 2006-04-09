@@ -1,29 +1,28 @@
 package net.sf.anathema.campaign.music.impl.model.selection;
 
-import javax.swing.event.ChangeListener;
-
 import net.sf.anathema.campaign.music.model.selection.ITrackDetailModel;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.presenter.IMusicEvent;
 import net.sf.anathema.campaign.music.presenter.IMusicMood;
 import net.sf.anathema.campaign.music.presenter.IMusicTheme;
 import net.sf.anathema.lib.control.ChangeControl;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public abstract class AbstractTrackDetailModel implements ITrackDetailModel {
 
-  private final ChangeControl givenNameChangeControl = new ChangeControl(this);
-  private final ChangeControl trackChangeControl = new ChangeControl(this);
+  private final ChangeControl givenNameChangeControl = new ChangeControl();
+  private final ChangeControl trackChangeControl = new ChangeControl();
   private IMp3Track selectedTrack;
 
   protected final void fireGivenNamesChangedEvent() {
     givenNameChangeControl.fireChangedEvent();
   }
 
-  public final void addChangeDetailListener(ChangeListener changeListener) {
+  public final void addChangeDetailListener(IChangeListener changeListener) {
     givenNameChangeControl.addChangeListener(changeListener);
   }
 
-  public final void addTrackChangeListener(ChangeListener tracklistener) {
+  public final void addTrackChangeListener(IChangeListener tracklistener) {
     trackChangeControl.addChangeListener(tracklistener);
   }
 
