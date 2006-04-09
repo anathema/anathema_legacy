@@ -1,7 +1,5 @@
 package net.sf.anathema.character.library.overview;
 
-import java.awt.Color;
-
 import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridAlignment;
@@ -43,16 +41,6 @@ public class LabelledOverviewStringValueView extends AbstractLabelledValueView i
         panel.add(valueLabel, endData);
       }
     });
-  }
-
-  public void setTextColor(Color color) {
-    titleLabel.setForeground(color);
-    valueLabel.setForeground(color);
-  }
-
-  public void setFontStyle(int style) {
-    titleLabel.setFont(titleLabel.getFont().deriveFont(style));
-    valueLabel.setFont(valueLabel.getFont().deriveFont(style));
   }
 
   public void setValue(String value) {
