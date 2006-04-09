@@ -25,7 +25,7 @@ import net.sf.anathema.lib.control.legality.ValueLegalityState;
 import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
-import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
+import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 public class IntimaciesPresenter extends AbstractTraitPresenter {
 
@@ -65,7 +65,7 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
         resources.getString("Intimacies.Overview.Free"), 2); //$NON-NLS-1$
     final ILabelledAlotmentView totalIntimaciesView = creationOverview.addAlotmentView(
         resources.getString("Intimacies.Overview.Maximum"), 2); //$NON-NLS-1$    
-    final ILabelledValueView<Integer> bonusPointsView = creationOverview.addIntegerValueView(
+    final IValueView<Integer> bonusPointsView = creationOverview.addIntegerValueView(
         resources.getString("Intimacies.Overview.BonusPoints"), 2); //$NON-NLS-1$
     view.setOverview(creationOverview);
     final IOverviewCategory experienceOverview = view.createOverview(resources.getString("Intimacies.Overview.BorderLabel")); //$NON-NLS-1$    
@@ -107,7 +107,7 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
   private void recalculateOverview(
       final ILabelledAlotmentView freeIntimaciesView,
       final ILabelledAlotmentView totalIntimaciesView,
-      final ILabelledValueView<Integer> bonusPointsView,
+      final IValueView<Integer> bonusPointsView,
       ILabelledAlotmentView experienceMaximumView) {
     adjustBonusPointsOverview(freeIntimaciesView, model.getEntries().size(), model.getFreeIntimacies());
     adjustTotalOverview(totalIntimaciesView, model.getEntries().size(), model.getIntimaciesLimit());
@@ -115,7 +115,7 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
     adjustOverview(bonusPointsView);
   }
 
-  private void adjustOverview(final ILabelledValueView<Integer> valueView) {
+  private void adjustOverview(final IValueView<Integer> valueView) {
     IAdditionalModelBonusPointCalculator bonusPointCalculator = additionalModel.getBonusPointCalculator();
     bonusPointCalculator.recalculate();
     valueView.setValue(bonusPointCalculator.getBonusPointCost());
