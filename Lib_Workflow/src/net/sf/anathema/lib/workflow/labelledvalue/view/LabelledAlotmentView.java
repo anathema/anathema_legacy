@@ -10,11 +10,12 @@ import javax.swing.SwingConstants;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
+import net.sf.anathema.lib.gui.dialogcomponent.grouped.IGridDialogPanelContent;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.layout.AnathemaLayoutUtilities;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 
-public class LabelledAlotmentView extends AbstractLabelledIntegerValueView implements ILabelledAlotmentView {
+public class LabelledAlotmentView extends AbstractLabelledIntegerValueView implements ILabelledAlotmentView, IGridDialogPanelContent {
 
   private final JLabel seperatorLabel;
   private final JLabel maxPointLabel;
