@@ -18,6 +18,7 @@ public class SolarVirtueFlawPersister extends VirtueFlawPersister {
     saveTextualDescription(flawElement, TAG_DESCRIPTION, solarFlaw.getDescription());
   }
 
+  @Override
   protected void loadAdditionalData(Element flawElement, IVirtueFlaw virtueFlaw) {
     ISolarVirtueFlaw solarFlaw = (ISolarVirtueFlaw) virtueFlaw;
     restoreTextualDescription(flawElement, TAG_LIMIT_BREAK, solarFlaw.getLimitBreak());
