@@ -8,9 +8,7 @@ import javax.swing.JComponent;
 
 import net.sf.anathema.character.impl.view.concept.CharacterConceptAndRulesViewFactory;
 import net.sf.anathema.character.impl.view.magic.MagicViewFactory;
-import net.sf.anathema.character.impl.view.overview.AbstractOverviewView;
-import net.sf.anathema.character.impl.view.overview.CreationOverviewView;
-import net.sf.anathema.character.impl.view.overview.ExperienceOverviewView;
+import net.sf.anathema.character.impl.view.overview.OverviewView;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.view.IAdvantageViewFactory;
 import net.sf.anathema.character.view.ICharacterConceptAndRulesViewFactory;
@@ -19,7 +17,6 @@ import net.sf.anathema.character.view.ICharacterView;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
-import net.sf.anathema.character.view.overview.IExperienceOverviewView;
 import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.framework.presenter.view.IMultiTabView;
 import net.sf.anathema.framework.presenter.view.MultiTabView;
@@ -29,9 +26,9 @@ import net.sf.anathema.lib.gui.IDisposable;
 public class CharacterView extends AbstractTabbedItemView implements ICharacterView {
 
   private final IIntValueDisplayFactory intValueDisplayFactory;
-  private CreationOverviewView creationOverviewView;
-  private ExperienceOverviewView experienceOverviewView;
-  private AbstractOverviewView overviewView;
+  private OverviewView creationOverviewView;
+  private OverviewView experienceOverviewView;
+  private OverviewView overviewView;
   private final List<IDisposable> disposables = new ArrayList<IDisposable>();
 
   public CharacterView(IIntValueDisplayFactory factory, String name, Icon icon) {
@@ -63,7 +60,7 @@ public class CharacterView extends AbstractTabbedItemView implements ICharacterV
   }
 
   public IOverviewView addCreationOverviewView() {
-    CreationOverviewView newView = new CreationOverviewView();
+    OverviewView newView = new OverviewView();
     this.creationOverviewView = newView;
     return newView;
   }
@@ -94,8 +91,8 @@ public class CharacterView extends AbstractTabbedItemView implements ICharacterV
     setTabAreaComponents(getTabAreaComponents());
   }
 
-  public IExperienceOverviewView addExperienceOverviewView() {
-    ExperienceOverviewView newView = new ExperienceOverviewView();
+  public IOverviewView addExperienceOverviewView() {
+    OverviewView newView = new OverviewView();
     this.experienceOverviewView = newView;
     return newView;
   }
