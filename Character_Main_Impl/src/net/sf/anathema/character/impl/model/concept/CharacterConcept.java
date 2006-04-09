@@ -11,7 +11,7 @@ import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescri
 public class CharacterConcept implements ICharacterConcept {
 
   private final ITypedDescription<INatureType> nature = new TypedDescription<INatureType>();
-  private final ITypedDescription<ICasteType> caste = new Caste();
+  private final ITypedDescription<ICasteType> caste = new TypedDescription<ICasteType>(ICasteType.NULL_CASTE_TYPE);
   private final ISimpleTextualDescription concept = new SimpleTextualDescription();
 
   public ITypedDescription<INatureType> getNature() {
