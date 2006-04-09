@@ -4,26 +4,31 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public enum CharmType implements IIdentificate {
   Simple() {
+    @Override
     public void accept(ICharmTypeVisitor visitor) {
       visitor.visitSimple(this);
     }
   },
   ExtraAction() {
+    @Override
     public void accept(ICharmTypeVisitor visitor) {
       visitor.visitExtraAction(this);
     }
   },
   Reflexive() {
+    @Override
     public void accept(ICharmTypeVisitor visitor) {
       visitor.visitReflexive(this);
     }
   },
   Supplemental() {
+    @Override
     public void accept(ICharmTypeVisitor visitor) {
       visitor.visitSupplemental(this);
     }
   },
   Special() {
+    @Override
     public void accept(ICharmTypeVisitor visitor) {
       visitor.visitSpecial(this);
     }

@@ -5,11 +5,13 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public enum FavoringTraitType implements IIdentificate {
   AbilityType() {
+    @Override
     public void accept(IFavoringTraitTypeVisitor visitor) {
       visitor.visitAbilityType(this);
     }
   },
   AttributeType() {
+    @Override
     public void accept(IFavoringTraitTypeVisitor visitor) {
       visitor.visitAttributeType(this);
     }
