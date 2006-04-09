@@ -80,6 +80,7 @@ public abstract class AbstractAbyssalTemplate extends AbstractCharacterTemplate 
     return additionalRules;
   }
 
+  @Override
   public final ICasteType[] getAllCasteTypes() {
     return AbyssalCaste.values();
   }
