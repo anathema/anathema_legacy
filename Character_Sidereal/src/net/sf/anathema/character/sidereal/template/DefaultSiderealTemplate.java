@@ -93,6 +93,7 @@ public class DefaultSiderealTemplate extends AbstractCharacterTemplate {
     return TEMPLATE_TYPE;
   }
 
+  @Override
   public ICasteType[] getAllCasteTypes() {
     return SiderealCaste.values();
   }
