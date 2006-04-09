@@ -10,9 +10,9 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonu
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
 import net.sf.anathema.character.intimacies.view.IIntimaciesSelectionView;
-import net.sf.anathema.character.intimacies.view.IOverviewView;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
+import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
@@ -60,7 +60,7 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
   }
 
   private void initOverviewView() {
-    final IOverviewView creationOverview = view.createOverview(resources.getString("Intimacies.Overview.BorderLabel")); //$NON-NLS-1$    
+    final IOverviewCategory creationOverview = view.createOverview(resources.getString("Intimacies.Overview.BorderLabel")); //$NON-NLS-1$    
     final ILabelledAlotmentView freeIntimaciesView = creationOverview.addAlotmentView(
         resources.getString("Intimacies.Overview.Free"), 2); //$NON-NLS-1$
     final ILabelledAlotmentView totalIntimaciesView = creationOverview.addAlotmentView(
@@ -68,7 +68,7 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
     final ILabelledValueView<Integer> bonusPointsView = creationOverview.addValueView(
         resources.getString("Intimacies.Overview.BonusPoints"), 2); //$NON-NLS-1$
     view.setOverview(creationOverview);
-    final IOverviewView experienceOverview = view.createOverview(resources.getString("Intimacies.Overview.BorderLabel")); //$NON-NLS-1$    
+    final IOverviewCategory experienceOverview = view.createOverview(resources.getString("Intimacies.Overview.BorderLabel")); //$NON-NLS-1$    
     final ILabelledAlotmentView experienceMaximumView = experienceOverview.addAlotmentView(
         resources.getString("Intimacies.Overview.Maximum"), 2); //$NON-NLS-1$
     model.addModelChangeListener(new IChangeListener() {

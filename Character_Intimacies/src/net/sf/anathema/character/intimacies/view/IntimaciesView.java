@@ -12,6 +12,8 @@ import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
+import net.sf.anathema.character.library.overview.IOverviewCategory;
+import net.sf.anathema.character.library.overview.OverviewCategory;
 import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
 import net.sf.anathema.character.library.trait.view.ITraitView;
 import net.sf.anathema.character.library.trait.view.RearButtonTraitViewWrapper;
@@ -65,11 +67,11 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
     return twoButtonView;
   }
 
-  public IOverviewView createOverview(String borderLabel) {
-    return new OverviewView(borderLabel);
+  public IOverviewCategory createOverview(String borderLabel) {
+    return new OverviewCategory(borderLabel);
   }
 
-  public void setOverview(IOverviewView overviewView) {
+  public void setOverview(IOverviewCategory overviewView) {
     overviewPanel.removeAll();
     overviewPanel.add(overviewView.getComponent());
   }
