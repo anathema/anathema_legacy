@@ -27,6 +27,7 @@ public class MeritsFlawsPersister extends AbstractQualityPersister<IPerk> {
   private static final String TAG_PERK = "perk"; //$NON-NLS-1$
   private static final String ATTRIB_CATEGORY = "category"; //$NON-NLS-1$
 
+  @Override
   protected void saveSpecials(Element parent, IPerk perk) {
     Element categorizationElement = parent.element(TAG_CATEGORIZATION);
     categorizationElement.addAttribute(ATTRIB_CATEGORY, perk.getCategory().getId());

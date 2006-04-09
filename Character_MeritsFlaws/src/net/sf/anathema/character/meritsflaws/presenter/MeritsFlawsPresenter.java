@@ -85,6 +85,7 @@ public class MeritsFlawsPresenter {
       }
     });
     model.addCharacterChangeListener(new GlobalCharacterChangeAdapter() {
+      @Override
       public void characterChanged() {
         createDetailsView(meritsView, model.getCurrentQuality());
       }
@@ -110,6 +111,7 @@ public class MeritsFlawsPresenter {
 
   private I18nedIdentificateSorter<IPerk> createSorter() {
     I18nedIdentificateSorter<IPerk> sorter = new I18nedIdentificateSorter<IPerk>() {
+      @Override
       protected String getString(final IResources sorterResources, IPerk perk) {
         return sorterResources.getString(perk.getType().getId() + "." //$NON-NLS-1$
             + perk.getCategory().getId()
