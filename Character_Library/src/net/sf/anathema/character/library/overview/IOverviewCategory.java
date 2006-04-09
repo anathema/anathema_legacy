@@ -11,5 +11,7 @@ public interface IOverviewCategory {
 
   public ILabelledValueView<Integer> addValueView(String labelText, int maxValueLength);
 
+  public ILabelledValueView<String> addStringValueView(String labelText);
+
   public Component getComponent();
 }
