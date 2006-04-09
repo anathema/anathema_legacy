@@ -1,18 +1,8 @@
 package net.sf.anathema.character.impl.model.charm.combo.test;
 
 import net.sf.anathema.character.generic.magic.charms.CharmType;
-import net.sf.anathema.character.impl.model.charm.combo.IComboRules;
-import net.sf.anathema.character.impl.model.charm.combo.SupplementalCharmComboRules;
 
 public class SupplementalCharmComboRulesTest extends AbstractComboRulesTestCase {
-
-  private IComboRules rules;
-
-  @Override
-  protected void setUp() throws Exception {
-    super.setUp();
-    this.rules = new SupplementalCharmComboRules();
-  }
 
   public void testCharmComboSupplementalCharmWithReflexiveOfDifferentAbility() throws Exception {
     assertTrue(comboDifferentAbilityCharms(CharmType.Supplemental, CharmType.Reflexive));
