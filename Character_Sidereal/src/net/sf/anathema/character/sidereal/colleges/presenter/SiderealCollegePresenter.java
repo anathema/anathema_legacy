@@ -39,10 +39,10 @@ public class SiderealCollegePresenter extends AbstractTraitPresenter {
         resources.getString("Astrology.Overview.FavoredDots"), 2); //$NON-NLS-1$
     final ILabelledAlotmentView generalView = creationOverview.addAlotmentView(
         resources.getString("Astrology.Overview.GeneralDots"), 2); //$NON-NLS-1$
-    final ILabelledValueView<Integer> bonusView = creationOverview.addValueView(
+    final ILabelledValueView<Integer> bonusView = creationOverview.addIntegerValueView(
         resources.getString("Astrology.Overview.BonusPoints"), 2); //$NON-NLS-1$
     final IOverviewCategory experienceOverview = view.createOverview(resources.getString("Overview.Title")); //$NON-NLS-1$
-    final ILabelledValueView<Integer> experienceView = experienceOverview.addValueView(
+    final ILabelledValueView<Integer> experienceView = experienceOverview.addIntegerValueView(
         resources.getString("Astrology.Overview.Experience"), 3); //$NON-NLS-1$
 
     Icon siderealBall = resources.getImageIcon(IIconConstants.SIDEREAL_BALL);
