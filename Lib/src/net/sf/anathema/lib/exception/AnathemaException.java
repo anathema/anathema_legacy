@@ -1,6 +1,5 @@
 package net.sf.anathema.lib.exception;
 
-
 public class AnathemaException extends Exception {
 
   public AnathemaException() {
@@ -18,5 +17,4 @@ public class AnathemaException extends Exception {
   public AnathemaException(Throwable cause) {
     super(cause);
   }
-
 }

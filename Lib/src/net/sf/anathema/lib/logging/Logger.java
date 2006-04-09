@@ -104,4 +104,12 @@ public class Logger {
     }
     printMessage(WARN_PREFIX, message);
   }
+
+  public void warn(String message, Throwable exception) {
+    if (!isWarn()) {
+      return;
+    }
+    printMessage(WARN_PREFIX, message);
+    printThrowable(WARN_PREFIX, exception);
+  }
 }
