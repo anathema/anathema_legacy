@@ -1,7 +1,8 @@
 package net.sf.anathema.lib.workflow.labelledvalue.view;
 
-import java.awt.Color;
+import java.util.Collection;
 
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -48,18 +49,12 @@ public class LabelledAlotmentView extends AbstractLabelledIntegerValueView imple
     });
   }
 
-  public void setTextColor(Color color) {
-    titleLabel.setForeground(color);
-    valueLabel.setForeground(color);
-    seperatorLabel.setForeground(color);
-    maxPointLabel.setForeground(color);
-  }
-
-  public void setFontStyle(int style) {
-    titleLabel.setFont(titleLabel.getFont().deriveFont(style));
-    valueLabel.setFont(valueLabel.getFont().deriveFont(style));
-    seperatorLabel.setFont(seperatorLabel.getFont().deriveFont(style));
-    maxPointLabel.setFont(maxPointLabel.getFont().deriveFont(style));
+  @Override
+  protected Collection<JComponent> getComponents() {
+    Collection<JComponent> collection = super.getComponents();
+    collection.add(seperatorLabel);
+    collection.add(maxPointLabel);
+    return collection;
   }
 
   public void setAlotment(int value) {

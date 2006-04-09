@@ -1,7 +1,5 @@
 package net.sf.anathema.lib.workflow.labelledvalue.view;
 
-import java.awt.Color;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -39,15 +37,5 @@ public class LabelledIntegerValueView extends AbstractLabelledIntegerValueView {
 
   public JLabel getTitleLabel() {
     return titleLabel;
-  }
-
-  public void setTextColor(Color color) {
-    titleLabel.setForeground(color);
-    valueLabel.setForeground(color);
-  }
-
-  public void setFontStyle(int style) {
-    titleLabel.setFont(titleLabel.getFont().deriveFont(style));
-    valueLabel.setFont(valueLabel.getFont().deriveFont(style));
   }
 }

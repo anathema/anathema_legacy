@@ -1,9 +1,14 @@
 package net.sf.anathema.lib.workflow.labelledvalue.view;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
@@ -49,11 +54,7 @@ public abstract class AbstractLabelledValueView {
     this(labelText, String.valueOf(value), "20", adjustFontSize); //$NON-NLS-1$
   }
 
-  protected AbstractLabelledValueView(
-      String labelText,
-      String value,
-      String valueLabelSizeText,
-      boolean adjustFontSize) {
+  protected AbstractLabelledValueView(String labelText, String value, String valueLabelSizeText, boolean adjustFontSize) {
     this.titleLabel = createLabel(labelText, labelText, SwingConstants.LEFT, adjustFontSize);
     this.valueLabel = createLabel(value, valueLabelSizeText, SwingConstants.RIGHT, adjustFontSize);
     setText(value);
@@ -61,5 +62,24 @@ public abstract class AbstractLabelledValueView {
 
   protected final void setText(String value) {
     valueLabel.setText(value);
+  }
+
+  public void setTextColor(Color color) {
+    for (JComponent component : getComponents()) {
+      component.setForeground(color);
+    }
+  }
+
+  public void setFontStyle(int style) {
+    for (JComponent component : getComponents()) {
+      component.setFont(component.getFont().deriveFont(style));
+    }
+  }
+
+  protected Collection<JComponent> getComponents() {
+    List<JComponent> components = new ArrayList<JComponent>();
+    components.add(titleLabel);
+    components.add(valueLabel);
+    return components;
   }
 }
