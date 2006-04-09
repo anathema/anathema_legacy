@@ -71,9 +71,7 @@ public class CharacterStatistics implements ICharacterStatistics {
     Ensure.ensureArgumentNotNull(rules);
     this.rules = rules;
     this.characterTemplate = template;
-    this.concept = new CharacterConcept();
-    concept.getCaste().addTypeListener(casteChangeListener);
-    concept.getNature().addTypeListener(natureChangeListener);
+    this.concept = initConcept();
     traitConfiguration = new CoreTraitConfiguration(template, context, generics.getBackgroundRegistry());
     new CharacterTraitListening(traitConfiguration, context.getCharacterListening()).initListening();
     ITrait toughnessTrait = getTraitConfiguration().getTrait(template.getToughnessControllingTraitType());
@@ -120,6 +118,13 @@ public class CharacterStatistics implements ICharacterStatistics {
         context.getCharacterListening().fireCharacterChanged();
       }
     });
+  }
+
+  private CharacterConcept initConcept() {
+    CharacterConcept characterConcept = new CharacterConcept();
+    concept.getCaste().addTypeListener(casteChangeListener);
+    concept.getNature().addTypeListener(natureChangeListener);
+    return characterConcept;
   }
 
   private void initCharmListening(ICharmConfiguration charmConfiguration) {
