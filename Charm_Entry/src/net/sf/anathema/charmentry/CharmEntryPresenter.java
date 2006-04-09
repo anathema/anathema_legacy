@@ -10,8 +10,6 @@ import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JList;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.framework.magic.compare.MagicComparator;
@@ -36,6 +34,7 @@ import net.sf.anathema.charmentry.view.ISourceSelectionView;
 import net.sf.anathema.framework.presenter.view.IdentificateListCellRenderer;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -149,8 +148,8 @@ public class CharmEntryPresenter {
     }
 
     );
-    prerequisiteView.addSelectionChangeListener(new ChangeListener() {
-      public void stateChanged(ChangeEvent e) {
+    prerequisiteView.addSelectionChangeListener(new IChangeListener() {
+      public void changeOccured() {
         Object[] selectedValues = prerequisiteView.getSelectedValues();
         ICharm[] charms = new ICharm[selectedValues.length];
         net.sf.anathema.lib.lang.ArrayUtilities.copyAll(selectedValues, charms);
