@@ -12,7 +12,6 @@ import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.model.nature.INatureType;
 import net.sf.anathema.character.view.overview.IOverviewView;
-import net.sf.anathema.character.view.overview.IOverviewViewProperties;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.legality.LegalityFontProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;
@@ -69,11 +68,7 @@ public class CreationOverviewPresenter {
     initAdvantages();
     initCharms();
     initTotal();
-    view.initGui(new IOverviewViewProperties() {
-      public String getExperienceTitle() {
-        return getString("Overview.Experience.Title"); //$NON-NLS-1$
-      }
-    });
+    view.initGui();
     updateOverview();
   }
 

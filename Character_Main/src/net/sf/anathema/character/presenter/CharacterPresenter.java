@@ -20,7 +20,6 @@ import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.character.view.ICharacterView;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
-import net.sf.anathema.character.view.overview.IExperienceOverviewView;
 import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.framework.presenter.view.IMultiTabView;
 import net.sf.anathema.lib.gui.IDisposable;
@@ -84,7 +83,7 @@ public class CharacterPresenter {
   private void initOverviewPresentation() {
     IOverviewView creationPointView = characterView.addCreationOverviewView();
     new CreationOverviewPresenter(resources, getStatistics(), creationPointView, bonusPointManagement).init();
-    IExperienceOverviewView experiencePointView = characterView.addExperienceOverviewView();
+    IOverviewView experiencePointView = characterView.addExperienceOverviewView();
     new ExperiencedOverviewPresenter(resources, getStatistics(), experiencePointView, experiencePointManagement).init();
     setOverviewView(getStatistics().isExperienced());
   }

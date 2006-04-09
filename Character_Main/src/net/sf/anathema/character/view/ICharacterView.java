@@ -3,7 +3,6 @@ package net.sf.anathema.character.view;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
-import net.sf.anathema.character.view.overview.IExperienceOverviewView;
 import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.framework.presenter.view.IMultiTabView;
 import net.sf.anathema.framework.view.IItemView;
@@ -19,7 +18,7 @@ public interface ICharacterView extends IItemView {
 
   public IOverviewView addCreationOverviewView();
 
-  public IExperienceOverviewView addExperienceOverviewView();
+  public IOverviewView addExperienceOverviewView();
 
   public IExperienceConfigurationView addExperienceConfigurationView(String header);
 

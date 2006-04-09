@@ -1,12 +1,12 @@
 package net.sf.anathema.character.presenter.overview;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
+import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.advance.IExperiencePointConfigurationListener;
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
-import net.sf.anathema.character.view.overview.IExperienceOverviewView;
-import net.sf.anathema.character.view.overview.IOverviewViewProperties;
+import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
@@ -15,7 +15,7 @@ import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
 public class ExperiencedOverviewPresenter {
 
   private final IExperiencePointManagement management;
-  private final IExperienceOverviewView view;
+  private final IOverviewView view;
   private final ICharacterStatistics statistics;
 
   private ILabelledValueView<Integer> attributeView;
@@ -34,7 +34,7 @@ public class ExperiencedOverviewPresenter {
   public ExperiencedOverviewPresenter(
       IResources resources,
       final ICharacterStatistics statistics,
-      IExperienceOverviewView experiencePointView,
+      IOverviewView experiencePointView,
       IExperiencePointManagement management) {
     this.resources = resources;
     this.statistics = statistics;
@@ -51,30 +51,27 @@ public class ExperiencedOverviewPresenter {
   }
 
   public void init() {
-    initAttributes();
-    initAbilities();
-    initCharms();
-    initCombos();
-    initSpells();
-    initVirtues();
-    initWillpower();
-    initEssence();
-    initMisc();
-    initTotal();
+    IOverviewCategory category = view.addOverviewCategory(getString("Overview.Experience.Title")); //$NON-NLS-1$
+    initAttributes(category);
+    initAbilities(category);
+    initCharms(category);
+    initCombos(category);
+    initSpells(category);
+    initVirtues(category);
+    initWillpower(category);
+    initEssence(category);
+    initMisc(category);
+    initTotal(category);
     calculateXPCost();
-    view.initGui(new IOverviewViewProperties() {
-      public String getExperienceTitle() {
-        return getString("Overview.Experience.Title"); //$NON-NLS-1$
-      }
-    });
+    view.initGui();
   }
 
-  private void initMisc() {
-    miscView = view.addExperiencePointCategory(getString("Overview.MiscPointsCategory")); //$NON-NLS-1$
+  private void initMisc(IOverviewCategory category) {
+    miscView = category.addValueView(getString("Overview.MiscPointsCategory"), 2); //$NON-NLS-1$
   }
 
-  private void initTotal() {
-    totalView = view.addTotalExperienceOverviewCategory(getString("Experience.Total")); //$NON-NLS-1$
+  private void initTotal(IOverviewCategory category) {
+    totalView = category.addAlotmentView(getString("Experience.Total"), 4); //$NON-NLS-1$
     statistics.getExperiencePoints().addExperiencePointConfigurationListener(
         new IExperiencePointConfigurationListener() {
           public void entryAdded(IExperiencePointEntry entry) {
@@ -101,46 +98,46 @@ public class ExperiencedOverviewPresenter {
     return statistics.getExperiencePoints().getTotalExperiencePoints() + management.getMiscGain();
   }
 
-  private void initEssence() {
-    essenceView = view.addExperiencePointCategory(getString("Essence.Name")); //$NON-NLS-1$
+  private void initEssence(IOverviewCategory category) {
+    essenceView = category.addValueView(getString("Essence.Name"), 2); //$NON-NLS-1$
   }
 
-  private void initWillpower() {
-    willpowerView = view.addExperiencePointCategory(getString("WillpowerType.Name")); //$NON-NLS-1$
+  private void initWillpower(IOverviewCategory category) {
+    willpowerView = category.addValueView(getString("WillpowerType.Name"), 2); //$NON-NLS-1$
   }
 
-  private void initVirtues() {
-    virtueView = view.addExperiencePointCategory(getString("Overview.VirtueCategory")); //$NON-NLS-1$
+  private void initVirtues(IOverviewCategory category) {
+    virtueView = category.addValueView(getString("Overview.VirtueCategory"), 2); //$NON-NLS-1$
   }
 
-  private void initSpells() {
+  private void initSpells(IOverviewCategory category) {
     if (!statistics.getCharacterTemplate().getMagicTemplate().getSpellMagic().knowsSpellMagic()) {
       return;
     }
-    spellView = view.addExperiencePointCategory(getString("Overview.Experience.Spells")); //$NON-NLS-1$
+    spellView = category.addValueView(getString("Overview.Experience.Spells"), 2); //$NON-NLS-1$
   }
 
-  private void initCombos() {
+  private void initCombos(IOverviewCategory category) {
     if (!statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().knowsCharms()) {
       return;
     }
-    comboView = view.addExperiencePointCategory(getString("Overview.Experience.Combos")); //$NON-NLS-1$
+    comboView = category.addValueView(getString("Overview.Experience.Combos"), 2); //$NON-NLS-1$
   }
 
-  private void initCharms() {
+  private void initCharms(IOverviewCategory category) {
     if (!statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().knowsCharms()) {
       return;
     }
-    charmView = view.addExperiencePointCategory(getString("Overview.Charms.Title")); //$NON-NLS-1$
+    charmView = category.addValueView(getString("Overview.Charms.Title"), 2); //$NON-NLS-1$
   }
 
-  private void initAbilities() {
-    abilityView = view.addExperiencePointCategory(getString("Overview.Abilities.Title")); //$NON-NLS-1$
-    specialtyView = view.addExperiencePointCategory(getString("Overview.Experience.Specialties")); //$NON-NLS-1$
+  private void initAbilities(IOverviewCategory category) {
+    abilityView = category.addValueView(getString("Overview.Abilities.Title"), 2); //$NON-NLS-1$
+    specialtyView = category.addValueView(getString("Overview.Experience.Specialties"), 2); //$NON-NLS-1$
   }
 
-  private void initAttributes() {
-    attributeView = view.addExperiencePointCategory(getString("Overview.Attributes.Title")); //$NON-NLS-1$
+  private void initAttributes(IOverviewCategory category) {
+    attributeView = category.addValueView(getString("Overview.Attributes.Title"), 2); //$NON-NLS-1$
   }
 
   private void calculateXPCost() {
