@@ -31,10 +31,7 @@ public class BeastformPresenter extends AbstractTraitPresenter {
   private IBeastformOverviewView overView;
   private final LegalityColorProvider provider = new LegalityColorProvider();
 
-  public BeastformPresenter(
-      IResources resources,
-      IBeastformView view,
-      IBeastformModel model) {
+  public BeastformPresenter(IResources resources, IBeastformView view, IBeastformModel model) {
     this.resources = resources;
     this.view = view;
     this.model = model;
@@ -104,6 +101,7 @@ public class BeastformPresenter extends AbstractTraitPresenter {
 
   private I18nedIdentificateSorter<IGift> createSorter() {
     I18nedIdentificateSorter<IGift> sorter = new I18nedIdentificateSorter<IGift>() {
+      @Override
       protected String getString(final IResources sorterResources, IGift gift) {
         return sorterResources.getString("DeadlyBeastmanTransformation.Gift." //$NON-NLS-1$
             + gift.getId());
