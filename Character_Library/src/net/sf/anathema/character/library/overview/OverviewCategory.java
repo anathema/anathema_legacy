@@ -7,7 +7,7 @@ import javax.swing.border.TitledBorder;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
-import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
+import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.AbstractLabelledValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;
@@ -42,13 +42,13 @@ public class OverviewCategory implements IOverviewCategory {
     return view;
   }
 
-  public ILabelledValueView<Integer> addIntegerValueView(String labelText, int maxValueLength) {
+  public IValueView<Integer> addIntegerValueView(String labelText, int maxValueLength) {
     LabelledIntegerValueView view = new LabelledIntegerValueView(labelText, 0, true, maxValueLength);
     view.addComponents(panel);
     return view;
   }
 
-  public ILabelledValueView<String> addStringValueView(String labelText) {
+  public IValueView<String> addStringValueView(String labelText) {
     LabelledOverviewStringValueView view = new LabelledOverviewStringValueView(labelText, ""); //$NON-NLS-1$
     view.addComponents(panel);
     return view;
