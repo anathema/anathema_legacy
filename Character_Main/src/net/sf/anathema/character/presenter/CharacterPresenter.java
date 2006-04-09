@@ -154,10 +154,10 @@ public class CharacterPresenter {
 
   private void initCharacterConceptPresentation() {
     String viewTitle = getString("CardView.CharacterConcept.Title"); //$NON-NLS-1$
-    ICharacterConceptAndRulesViewFactory characterConceptView = characterView.createConceptViewFactory();
+    ICharacterConceptAndRulesViewFactory viewFactory = characterView.createConceptViewFactory();
     TabContent[] conceptViews = new CharacterConceptAndRulesPresenter(
         getStatistics(),
-        characterConceptView,
+        viewFactory,
         resources,
         natureProvider).init();
     initMultiTabViewPresentation(viewTitle, conceptViews, AdditionalModelType.Concept);
