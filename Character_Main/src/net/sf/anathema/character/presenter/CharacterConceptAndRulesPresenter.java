@@ -160,8 +160,7 @@ public class CharacterConceptAndRulesPresenter {
     }
     String willpowerCondition = natureType.getWillpowerCondition();
     if (willpowerCondition == null) {
-      willpowerConditionLabel.setText(resources.getString("CharacterConcept.WillpowerCondition.NotSpecified")); //$NON-NLS-1$
-      return;
+      willpowerCondition = resources.getString("CharacterConcept.WillpowerCondition.NotSpecified"); //$NON-NLS-1$
     }
     willpowerConditionLabel.setText(willpowerCondition);
   }
