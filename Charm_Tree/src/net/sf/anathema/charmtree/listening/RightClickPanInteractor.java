@@ -17,6 +17,7 @@ public class RightClickPanInteractor extends InteractorAdapter {
     this.calculator = calculator;
   }
 
+  @Override
   public boolean endInteraction() {
     return true;
   }

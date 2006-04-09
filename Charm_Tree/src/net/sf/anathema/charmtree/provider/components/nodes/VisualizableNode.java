@@ -50,6 +50,7 @@ public class VisualizableNode extends AbstractSingleVisualizableNode {
     }
   }
 
+  @Override
   protected IIdentifiedRegularNode getContentNode() {
     return (IIdentifiedRegularNode) super.getContentNode();
   }

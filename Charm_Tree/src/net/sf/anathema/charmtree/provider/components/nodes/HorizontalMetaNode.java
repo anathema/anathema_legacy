@@ -55,6 +55,7 @@ public class HorizontalMetaNode extends AbstractMetaNode {
     return width + gapDimension.width * (contentNodes.size() - 1);
   }
 
+  @Override
   protected void positionInnerNodes() {
     IVisualizableNode[] innerNodes = getInnerNodes();
     int nodePosition = getLeftSide() + innerNodes[0].getWidth() / 2;
@@ -67,6 +68,7 @@ public class HorizontalMetaNode extends AbstractMetaNode {
     }
   }
 
+  @Override
   public boolean isOfSameLeafGroup(IVisualizableNode node) {
     for (IVisualizableNode visualizableNode : getInnerNodes()) {
       if (visualizableNode.isOfSameLeafGroup(node)) {
@@ -80,6 +82,7 @@ public class HorizontalMetaNode extends AbstractMetaNode {
     visitor.visitHorizontalMetaNode(this);
   }
 
+  @Override
   public IVisualizableNode[] getInnerNodes() {
     List<IVisualizableNode> innerVisualizableNodes = new ArrayList<IVisualizableNode>();
     for (ISimpleNode node : contentNodes) {
@@ -96,6 +99,7 @@ public class HorizontalMetaNode extends AbstractMetaNode {
     super.setLayer(layer);
   }
 
+  @Override
   protected void refreshContentMap() {
     Map<ISimpleNode, IVisualizableNode> contentNodeMap = getContentNodeMap();
     for (ISimpleNode node : contentNodes) {
