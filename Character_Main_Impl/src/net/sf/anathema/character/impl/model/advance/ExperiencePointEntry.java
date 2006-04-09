@@ -1,23 +1,33 @@
 package net.sf.anathema.character.impl.model.advance;
 
+import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
-import net.sf.anathema.lib.control.ChangeControl;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
 import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
 public class ExperiencePointEntry implements IExperiencePointEntry {
 
-  private final ChangeControl changeControl = new ChangeControl(this);
+  private final GenericControl<ChangeListener> changeControl = new GenericControl<ChangeListener>();
   private final ISimpleTextualDescription description = new SimpleTextualDescription();
   private int experiencePoints = 0;
 
   public ExperiencePointEntry() {
     description.addTextChangedListener(new IStringValueChangedListener() {
       public void valueChanged(String newValue) {
-        changeControl.fireChangedEvent();
+        fireChangeEvent();
+      }
+    });
+  }
+
+  private void fireChangeEvent() {
+    changeControl.forAllDo(new IClosure<ChangeListener>() {
+      public void execute(ChangeListener input) {
+        input.stateChanged(new ChangeEvent(this));
       }
     });
   }
@@ -31,7 +41,7 @@ public class ExperiencePointEntry implements IExperiencePointEntry {
       return;
     }
     this.experiencePoints = value;
-    changeControl.fireChangedEvent();
+    fireChangeEvent();
   }
 
   public ISimpleTextualDescription getTextualDescription() {
@@ -39,10 +49,10 @@ public class ExperiencePointEntry implements IExperiencePointEntry {
   }
 
   public void addChangeListener(ChangeListener listener) {
-    changeControl.addChangeListener(listener);
+    changeControl.addListener(listener);
   }
 
   public void removeChangeListener(ChangeListener listener) {
-    changeControl.removeChangeListener(listener);
+    changeControl.removeListener(listener);
   }
 }

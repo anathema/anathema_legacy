@@ -1,8 +1,5 @@
 package net.sf.anathema.character.impl.model;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.caste.ITypedDescriptionType;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
@@ -36,6 +33,7 @@ import net.sf.anathema.character.model.generic.GenericCharacter;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.model.traits.essence.IEssencePoolConfiguration;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
 public class CharacterStatistics implements ICharacterStatistics {
@@ -113,8 +111,8 @@ public class CharacterStatistics implements ICharacterStatistics {
         context.getCharacterListening().fireCharacterChanged();
       }
     });
-    extendedConfiguration.addBonusPointsChangeListener(new ChangeListener() {
-      public void stateChanged(ChangeEvent e) {
+    extendedConfiguration.addBonusPointsChangeListener(new IChangeListener() {
+      public void changeOccured() {
         context.getCharacterListening().fireCharacterChanged();
       }
     });
