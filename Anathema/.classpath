@@ -35,9 +35,6 @@
 	<classpathentry kind="src" path="/Charm_Entry"/>
 	<classpathentry kind="src" path="/Character_Main_Impl"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Intimacies"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Main"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Main_Impl"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Platform"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/commons-collections-3.1.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/disy-commons-fontchooser.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/disy-commons-swing-filechooser.jar"/>
@@ -48,5 +45,8 @@
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/gisterm-lib.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/gisterm-visualizer.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/jts.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Main"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Main_Impl"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Platform"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
