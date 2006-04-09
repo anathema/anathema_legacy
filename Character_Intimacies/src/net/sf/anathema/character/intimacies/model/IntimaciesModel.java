@@ -17,8 +17,6 @@ import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.library.removableentry.model.AbstractRemovableEntryModel;
 import net.sf.anathema.lib.control.ChangeControl;
-import net.sf.anathema.lib.control.ChangeListenerClosure;
-import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IChangeListener;
 
 public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> implements
@@ -27,7 +25,7 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
 
   private final IAdditionalTemplate additionalTemplate;
   private final ChangeControl bonusPointControl = new ChangeControl();
-  private final GenericControl<IChangeListener> changeControl = new GenericControl<IChangeListener>();
+  private final ChangeControl changeControl = new ChangeControl();
   private final ICharacterModelContext context;
   private String name;
 
@@ -53,7 +51,7 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
     ConfigurableCharacterChangeListener maximumListener = new ConfigurableCharacterChangeListener() {
       @Override
       public void configuredChangeOccured() {
-        changeControl.forAllDo(new ChangeListenerClosure());
+        changeControl.fireChangedEvent();
         fireEntryChanged();
       }
     };
@@ -103,7 +101,7 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
   }
 
   private void fireModelChangedEvent() {
-    changeControl.forAllDo(new ChangeListenerClosure());
+    changeControl.fireChangedEvent();
   }
 
   public int getCompletionValue() {
@@ -131,7 +129,7 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
   }
 
   public void addModelChangeListener(IChangeListener listener) {
-    changeControl.addListener(listener);
+    changeControl.addChangeListener(listener);
   }
 
   public void addCharacterChangeListener(ICharacterChangeListener listener) {
