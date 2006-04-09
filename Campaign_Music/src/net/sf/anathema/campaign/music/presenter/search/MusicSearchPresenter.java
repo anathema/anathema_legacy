@@ -4,9 +4,6 @@ import java.awt.Component;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.campaign.music.model.IMusicDatabase;
 import net.sf.anathema.campaign.music.presenter.IMusicSearchControl;
@@ -14,6 +11,7 @@ import net.sf.anathema.campaign.music.presenter.ISearchParameter;
 import net.sf.anathema.campaign.music.presenter.util.MusicCategorizationPresenter;
 import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
 import net.sf.anathema.campaign.music.view.search.ISearchComponent;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 
 public class MusicSearchPresenter {
@@ -56,8 +54,8 @@ public class MusicSearchPresenter {
   }
 
   private void initListening() {
-    searchControl.addSearchResultChangedListener(new ChangeListener() {
-      public void stateChanged(ChangeEvent e) {
+    searchControl.addSearchResultChangedListener(new IChangeListener() {
+      public void changeOccured() {
         controlView.getTrackListView().setListItems(searchControl.getSearchResult());
         controlView.getTrackListView().setListTitle(
             resources.getString("Music.Labels.LibraryTrackView.SearchResultsTitle")); //$NON-NLS-1$

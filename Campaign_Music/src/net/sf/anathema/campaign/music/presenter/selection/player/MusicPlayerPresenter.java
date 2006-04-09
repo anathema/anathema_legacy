@@ -12,6 +12,7 @@ import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.campaign.music.model.selection.ITrackDetailModel;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.framework.message.MessageUtilities;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -43,8 +44,8 @@ public class MusicPlayerPresenter {
       return;
     }
     final ITrackDetailModel trackDetailModel = selectionModel.getTrackDetailModel();
-    trackDetailModel.addTrackChangeListener(new ChangeListener() {
-      public void stateChanged(ChangeEvent e) {
+    trackDetailModel.addTrackChangeListener(new IChangeListener() {
+      public void changeOccured() {
         IMp3Track selectedTrack = trackDetailModel.getSelectedTrack();
         if (selectedTrack != null) {
           try {
@@ -102,17 +103,17 @@ public class MusicPlayerPresenter {
     view.setPlayAction(playAction);
 
     view.setStopAction(new SmartAction(resources.getImageIcon("StopButton20.png")) { //$NON-NLS-1$
-          @Override
-          protected void execute(Component parentComponent) {
-            try {
-              playerModel.stopPlayback();
-            }
-            catch (AnathemaException e) {
-              Message message = new Message(errorString, e);
-              MessageUtilities.indicateMessage(MusicPlayerPresenter.class, parentComponent, message);
-            }
-          }
-        });
+      @Override
+      protected void execute(Component parentComponent) {
+        try {
+          playerModel.stopPlayback();
+        }
+        catch (AnathemaException e) {
+          Message message = new Message(errorString, e);
+          MessageUtilities.indicateMessage(MusicPlayerPresenter.class, parentComponent, message);
+        }
+      }
+    });
     view.addPositionChangeListener(new ChangeListener() {
       public void stateChanged(ChangeEvent event) {
         JSlider slider = (JSlider) event.getSource();

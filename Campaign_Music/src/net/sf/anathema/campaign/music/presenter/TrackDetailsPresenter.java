@@ -1,12 +1,10 @@
 package net.sf.anathema.campaign.music.presenter;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.campaign.music.model.selection.ITrackDetailModel;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.view.selection.ITrackDetailsView;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.container.SelectionContainerPresenter;
@@ -27,8 +25,8 @@ public class TrackDetailsPresenter {
   }
 
   public void initPresentation() {
-    trackDetailModel.addTrackChangeListener(new ChangeListener() {
-      public void stateChanged(ChangeEvent e) {
+    trackDetailModel.addTrackChangeListener(new IChangeListener() {
+      public void changeOccured() {
         updateTrackInfo(trackDetailModel.getSelectedTrack());
       }
     });

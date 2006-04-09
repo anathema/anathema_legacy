@@ -11,6 +11,7 @@ import javax.swing.event.ListSelectionListener;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.view.selection.IMusicSelectionView;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.IMultiSelectionActionAddableListView;
 import net.sf.anathema.lib.resources.IResources;
@@ -31,18 +32,18 @@ public class MusicSelectionPresenter {
   }
 
   public void initPresentation() {
-    selectionModel.addCurrentSelectionChangeListener(new ChangeListener() {
-      public void stateChanged(ChangeEvent e) {
+    selectionModel.addCurrentSelectionChangeListener(new IChangeListener() {
+      public void changeOccured() {
         updateTrackList();
       }
     });
-    selectionModel.getTrackDetailModel().addChangeDetailListener(new ChangeListener() {
-      public void stateChanged(ChangeEvent e) {
+    selectionModel.getTrackDetailModel().addChangeDetailListener(new IChangeListener() {
+      public void changeOccured() {
         refreshTrackList();
       }
     });
-    selectionModel.addSelectionsChangeListener(new ChangeListener() {
-      public void stateChanged(ChangeEvent e) {
+    selectionModel.addSelectionsChangeListener(new IChangeListener() {
+      public void changeOccured() {
         updateSelectionList();
       }
     });

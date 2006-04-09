@@ -1,16 +1,15 @@
 package net.sf.anathema.campaign.music.model.selection;
 
-import javax.swing.event.ChangeListener;
-
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IMusicSelectionModel {
 
-  public void addCurrentSelectionChangeListener(ChangeListener listener);
+  public void addCurrentSelectionChangeListener(IChangeListener listener);
 
   public void addNewSelection(String unnamedSelectionBase);
 
-  public void addSelectionsChangeListener(ChangeListener listener);
+  public void addSelectionsChangeListener(IChangeListener listener);
 
   public void addToCurrentSelection(IMp3Track[] tracks);
 
