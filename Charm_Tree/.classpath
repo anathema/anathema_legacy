@@ -28,7 +28,6 @@
 	<classpathentry kind="lib" path="/Thirdparty/XML/xml-apis-2.0.2.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Development/commons-colllections-3.1-src.zip" kind="lib" path="/Thirdparty/Development/commons-collections-3.1.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Framework"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
