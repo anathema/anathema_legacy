@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.specialty.ISpecialtiesContainer;
 import net.sf.anathema.character.library.trait.specialty.SpecialtiesContainer;
-import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.ChangeControl;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
@@ -15,7 +15,7 @@ public class DefaultTrait implements ITrait {
 
   private final IntValueControl creationPointControl = new IntValueControl();
   private final IntValueControl currentValueControl = new IntValueControl();
-  private final GenericControl<IChangeListener> rangeControl = new GenericControl<IChangeListener>();
+  private final ChangeControl rangeControl = new ChangeControl();
   private int creationValue;
   private int experiencedValue = ITraitRules.UNEXPERIENCED;
   private final IValueChangeChecker checker;
@@ -70,7 +70,7 @@ public class DefaultTrait implements ITrait {
   }
 
   public final void addRangeListener(IChangeListener listener) {
-    rangeControl.addListener(listener);
+    rangeControl.addChangeListener(listener);
   }
 
   public final void removeCurrentValueListener(IIntValueChangedListener listener) {
