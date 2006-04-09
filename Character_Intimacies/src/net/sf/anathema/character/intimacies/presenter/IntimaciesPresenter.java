@@ -65,7 +65,7 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
         resources.getString("Intimacies.Overview.Free"), 2); //$NON-NLS-1$
     final ILabelledAlotmentView totalIntimaciesView = creationOverview.addAlotmentView(
         resources.getString("Intimacies.Overview.Maximum"), 2); //$NON-NLS-1$    
-    final ILabelledValueView<Integer> bonusPointsView = creationOverview.addValueView(
+    final ILabelledValueView<Integer> bonusPointsView = creationOverview.addIntegerValueView(
         resources.getString("Intimacies.Overview.BonusPoints"), 2); //$NON-NLS-1$
     view.setOverview(creationOverview);
     final IOverviewCategory experienceOverview = view.createOverview(resources.getString("Intimacies.Overview.BorderLabel")); //$NON-NLS-1$    
