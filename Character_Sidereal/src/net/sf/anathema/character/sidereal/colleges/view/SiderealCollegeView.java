@@ -5,12 +5,13 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
+import net.sf.anathema.character.library.overview.IOverviewCategory;
+import net.sf.anathema.character.library.overview.OverviewCategory;
 import net.sf.anathema.character.library.trait.view.FrontToggleButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
-import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeOverview;
 import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeView;
 import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeViewProperties;
 import net.sf.anathema.framework.presenter.view.ISimpleTabView;
@@ -35,7 +36,6 @@ public class SiderealCollegeView implements ISimpleTabView, ISiderealCollegeView
     if (content == null) {
       content = new JPanel(new GridDialogLayout(1, false));
       addCollegePanel();
-      overviewPanel.setBorder(new TitledBorder(properties.getOverviewString()));
       content.add(overviewPanel);
     }
     return content;
@@ -65,8 +65,12 @@ public class SiderealCollegeView implements ISimpleTabView, ISiderealCollegeView
     return false;
   }
 
-  public void setOverview(ISiderealCollegeOverview overview) {
+  public IOverviewCategory createOverview(String borderLabel) {
+    return new OverviewCategory(borderLabel, false);
+  }
+
+  public void setOverview(IOverviewCategory overview) {
     overviewPanel.removeAll();
-    overviewPanel.add(overview.getContent());
+    overviewPanel.add(overview.getComponent());
   }
 }

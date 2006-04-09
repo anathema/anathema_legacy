@@ -10,6 +10,7 @@ import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
+import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.trait.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
@@ -17,30 +18,33 @@ import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
 import net.sf.anathema.character.sidereal.colleges.model.CollegeModelBonusPointCalculator;
 import net.sf.anathema.character.sidereal.presentation.SiderealPresentationProperties;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
+import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
 
 public class SiderealCollegePresenter extends AbstractTraitPresenter {
 
   private final IResources resources;
   private final ISiderealCollegeView view;
   private final ISiderealCollegeModel model;
-  private final ISiderealCollegeCreationOverview creationOverview;
-  private final ISiderealCollegeExperiencedOverview experiencedOverview;
 
-  public SiderealCollegePresenter(
-      IResources resources,
-      ISiderealCollegeView view,
-      ISiderealCollegeCreationOverview creationOverview,
-      ISiderealCollegeExperiencedOverview experiencedOverview,
-      ISiderealCollegeModel model) {
+  public SiderealCollegePresenter(IResources resources, ISiderealCollegeView view, ISiderealCollegeModel model) {
     this.resources = resources;
     this.view = view;
-    this.creationOverview = creationOverview;
-    this.experiencedOverview = experiencedOverview;
     this.model = model;
   }
 
   public void initPresentation() {
-    view.setOverview(creationOverview);
+    final IOverviewCategory creationOverview = view.createOverview(resources.getString("Overview.Title")); //$NON-NLS-1$
+    final ILabelledAlotmentView favoredView = creationOverview.addAlotmentView(
+        resources.getString("Astrology.Overview.FavoredDots"), 2); //$NON-NLS-1$
+    final ILabelledAlotmentView generalView = creationOverview.addAlotmentView(
+        resources.getString("Astrology.Overview.GeneralDots"), 2); //$NON-NLS-1$
+    final ILabelledValueView<Integer> bonusView = creationOverview.addValueView(
+        resources.getString("Astrology.Overview.BonusPoints"), 2); //$NON-NLS-1$
+    final IOverviewCategory experienceOverview = view.createOverview(resources.getString("Overview.Title")); //$NON-NLS-1$
+    final ILabelledValueView<Integer> experienceView = experienceOverview.addValueView(
+        resources.getString("Astrology.Overview.Experience"), 3); //$NON-NLS-1$
+
     Icon siderealBall = resources.getImageIcon(IIconConstants.SIDEREAL_BALL);
     IIntValueDisplayFactory factory = new IntValueDisplayFactory(resources, siderealBall);
     for (final IAstrologicalHouse house : model.getAllHouses()) {
@@ -78,16 +82,17 @@ public class SiderealCollegePresenter extends AbstractTraitPresenter {
       }
       house.addChangeListener(new ChangeListener() {
         public void stateChanged(ChangeEvent e) {
-          setOverviewData();
+          setOverviewData(favoredView, generalView, bonusView, experienceView);
         }
       });
     }
-    setOverviewData();
+    view.setOverview(creationOverview);
+    setOverviewData(favoredView, generalView, bonusView, experienceView);
     model.addCharacterChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
       public void experiencedChanged(boolean experienced) {
         if (experienced) {
-          view.setOverview(experiencedOverview);
+          view.setOverview(experienceOverview);
         }
         else {
           view.setOverview(creationOverview);
@@ -96,12 +101,18 @@ public class SiderealCollegePresenter extends AbstractTraitPresenter {
     });
   }
 
-  private void setOverviewData() {
+  private void setOverviewData(
+      ILabelledAlotmentView favoredView,
+      ILabelledAlotmentView generalView,
+      ILabelledValueView<Integer> bonusView,
+      ILabelledValueView<Integer> experienceView) {
     CollegeModelBonusPointCalculator bonusPointCalculator = (CollegeModelBonusPointCalculator) model.getBonusPointCalculator();
     bonusPointCalculator.recalculate();
-    creationOverview.setFavoredDotsOverview(bonusPointCalculator.getFavoredDotsSpent(), model.getTotalFavoredDotCount());
-    creationOverview.setGeneralDotsOverview(bonusPointCalculator.getGeneralDotsSpent(), model.getTotalGeneralDotCount());
-    creationOverview.setBonusPointsOverview(bonusPointCalculator.getBonusPointCost());
-    experiencedOverview.setExperiencePointsSpent(model.getExperienceCalculator().calculateCost());
+    favoredView.setValue(bonusPointCalculator.getFavoredDotsSpent());
+    favoredView.setAlotment(model.getTotalFavoredDotCount());
+    generalView.setValue(bonusPointCalculator.getGeneralDotsSpent());
+    generalView.setAlotment(model.getTotalGeneralDotCount());
+    bonusView.setValue(bonusPointCalculator.getBonusPointCost());
+    experienceView.setValue(model.getExperienceCalculator().calculateCost());
   }
 }

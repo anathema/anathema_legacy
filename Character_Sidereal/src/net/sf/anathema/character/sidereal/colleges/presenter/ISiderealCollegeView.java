@@ -3,6 +3,7 @@ package net.sf.anathema.character.sidereal.colleges.presenter;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.character.library.overview.IOverviewCategory;
 
 public interface ISiderealCollegeView {
 
@@ -16,5 +17,7 @@ public interface ISiderealCollegeView {
       int maxValue,
       boolean selected);
 
-  public void setOverview(ISiderealCollegeOverview overview);
+  public void setOverview(IOverviewCategory overview);
+
+  public IOverviewCategory createOverview(String borderLabel);
 }
