@@ -14,7 +14,7 @@ import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
-import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
+import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;
 
 public class RenownView implements ISimpleTabView {
@@ -48,7 +48,7 @@ public class RenownView implements ISimpleTabView {
     return view;
   }
 
-  public ILabelledValueView<Integer> addTotalView(String string) {
+  public IValueView<Integer> addTotalView(String string) {
     LabelledIntegerValueView view = new LabelledIntegerValueView(string, 0, false, 4);
     view.addComponents(totalPanel);
     return view;

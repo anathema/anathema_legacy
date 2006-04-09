@@ -10,7 +10,7 @@ import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.gui.list.LegalityCheckListCellRenderer;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
-import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
+import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 public class RenownPresenter extends AbstractTraitPresenter {
 
@@ -25,7 +25,7 @@ public class RenownPresenter extends AbstractTraitPresenter {
   }
 
   public void initPresentation() {
-    final ILabelledValueView<Integer> totalView = view.addTotalView(resources.getString("Lunar.Renown.RenownTotal")); //$NON-NLS-1$
+    final IValueView<Integer> totalView = view.addTotalView(resources.getString("Lunar.Renown.RenownTotal")); //$NON-NLS-1$
     initTraitPresentation(totalView);
     initFacePresentation();
     final ILabelledAlotmentView overviewView = initOverviewPresentation();
@@ -91,7 +91,7 @@ public class RenownPresenter extends AbstractTraitPresenter {
     addViewValueListener(faceView, model.getFace());
   }
 
-  private void initTraitPresentation(final ILabelledValueView<Integer> totalView) {
+  private void initTraitPresentation(final IValueView<Integer> totalView) {
     for (ITrait trait : model.getAllTraits()) {
       final IIntValueView renownView = view.addIntValueView(resources.getString("Lunar.Renown." + trait.getType().getId())); //$NON-NLS-1$
       addModelValueListener(trait, renownView);
