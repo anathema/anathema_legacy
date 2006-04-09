@@ -1,6 +1,6 @@
 package net.sf.anathema.character.library.quality.presenter;
 
-import javax.swing.event.ChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IQualityModel<Q extends IQuality> {
 
@@ -20,7 +20,7 @@ public interface IQualityModel<Q extends IQuality> {
 
   public boolean isCharacterExperienced();
 
-  public void addModelChangeListener(ChangeListener listener);
+  public void addModelChangeListener(IChangeListener listener);
 
   public Q[] getAvailableQualities();
 }

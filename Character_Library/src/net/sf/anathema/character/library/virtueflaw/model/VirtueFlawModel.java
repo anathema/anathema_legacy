@@ -1,7 +1,5 @@
 package net.sf.anathema.character.library.virtueflaw.model;
 
-import javax.swing.event.ChangeListener;
-
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
@@ -12,6 +10,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.listening.
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 
 public abstract class VirtueFlawModel implements IVirtueFlawModel {
@@ -41,7 +40,7 @@ public abstract class VirtueFlawModel implements IVirtueFlawModel {
     return AdditionalModelType.Advantages;
   }
 
-  public void addBonusPointsChangeListener(ChangeListener listener) {
+  public void addBonusPointsChangeListener(IChangeListener listener) {
     // Nothing to do
   }
 

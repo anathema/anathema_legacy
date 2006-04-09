@@ -3,19 +3,18 @@ package net.sf.anathema.character.library.quality.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.event.ChangeListener;
-
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.library.quality.presenter.IQuality;
 import net.sf.anathema.character.library.quality.presenter.IQualityModel;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
 import net.sf.anathema.lib.control.ChangeControl;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public abstract class AbstractQualityModel<Q extends IQuality> implements IQualityModel<Q> {
 
   private Q currentQuality;
   private final ICharacterModelContext context;
-  private final ChangeControl control = new ChangeControl(this);
+  private final ChangeControl control = new ChangeControl();
   private final List<IQualitySelection<Q>> selectedQualities = new ArrayList<IQualitySelection<Q>>();
 
   public AbstractQualityModel(ICharacterModelContext context) {
@@ -61,7 +60,7 @@ public abstract class AbstractQualityModel<Q extends IQuality> implements IQuali
     control.fireChangedEvent();
   }
 
-  public final void addModelChangeListener(ChangeListener listener) {
+  public final void addModelChangeListener(IChangeListener listener) {
     control.addChangeListener(listener);
   }
 
