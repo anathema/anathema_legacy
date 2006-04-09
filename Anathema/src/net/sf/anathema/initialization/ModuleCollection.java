@@ -38,6 +38,7 @@ public class ModuleCollection implements IModuleCollection {
         CharacterModule.class.getName(),
         CampaignModule.class.getName(),
         CharmCascadesModule.class.getName(),
+        "net.sf.anathema.gis.platform.GisModule", //$NON-NLS-1$
         "net.sf.anathema.campaign.music.impl.module.MusicDatabaseModule", //$NON-NLS-1$
         "net.sf.anathema.namegenerator.anathema.NameGeneratorModule" }; //$NON-NLS-1$
     List<IAnathemaModule> installedModules = new ArrayList<IAnathemaModule>();
