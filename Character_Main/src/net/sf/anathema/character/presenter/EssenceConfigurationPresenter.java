@@ -9,7 +9,7 @@ import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
+import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 public class EssenceConfigurationPresenter extends AbstractTraitPresenter implements IAdvantageSubPresenter {
 
@@ -35,10 +35,10 @@ public class EssenceConfigurationPresenter extends AbstractTraitPresenter implem
         essenceTrait.getCurrentValue(),
         essenceTrait.getMaximalValue());
     if (essence.isEssenceUser()) {
-      final ILabelledValueView<String> personalView = view.addPoolView(
+      final IValueView<String> personalView = view.addPoolView(
           resources.getString("EssencePool.Name.Personal"), essence.getPersonalPool()); //$NON-NLS-1$      
       if (essence.hasPeripheralPool()) {
-        final ILabelledValueView<String> peripheralView = view.addPoolView(
+        final IValueView<String> peripheralView = view.addPoolView(
             resources.getString("EssencePool.Name.Peripheral"), essence.getPeripheralPool()); //$NON-NLS-1$
         essence.addPoolChangeListener(new IChangeListener() {
           public void changeOccured() {

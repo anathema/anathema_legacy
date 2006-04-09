@@ -17,7 +17,7 @@ import net.sf.anathema.lib.control.legality.LegalityFontProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
-import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
+import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 public class CreationOverviewPresenter {
 
@@ -26,7 +26,7 @@ public class CreationOverviewPresenter {
   private final IBonusPointManagement management;
 
   private ILabelledAlotmentView virtueView;
-  private ILabelledValueView<String> totalView;
+  private IValueView<String> totalView;
   private ILabelledAlotmentView primaryAttributeView;
   private ILabelledAlotmentView secondaryAttributeView;
   private ILabelledAlotmentView tertiaryAttributeView;
@@ -35,12 +35,12 @@ public class CreationOverviewPresenter {
   private ILabelledAlotmentView favoredAbiltyDotView;
   private ILabelledAlotmentView defaultAbilityDotView;
   private ILabelledAlotmentView backgroundView;
-  private ILabelledValueView<String> favoredCharmView;
-  private ILabelledValueView<String> defaultCharmView;
-  private ILabelledValueView<String> casteView;
-  private ILabelledValueView<String> natureView;
+  private IValueView<String> favoredCharmView;
+  private IValueView<String> defaultCharmView;
+  private IValueView<String> casteView;
+  private IValueView<String> natureView;
   private final IResources resources;
-  private ILabelledValueView<String> miscView;
+  private IValueView<String> miscView;
 
   public CreationOverviewPresenter(
       IResources resources,
@@ -266,7 +266,7 @@ public class CreationOverviewPresenter {
     setFontParameters(alotmentView, value, alotment, bonusPointsSpent);
   }
 
-  private void setFontParameters(final ILabelledValueView valueView, int value, int alotment, int bonusPointsSpent) {
+  private void setFontParameters(final IValueView valueView, int value, int alotment, int bonusPointsSpent) {
     LegalityFontProvider legalityFontProvider = new LegalityFontProvider();
     ValueLegalityState fontStyleState = bonusPointsSpent > 0 ? ValueLegalityState.Increased : ValueLegalityState.Okay;
     valueView.setFontStyle(legalityFontProvider.getFontStyle(fontStyleState));

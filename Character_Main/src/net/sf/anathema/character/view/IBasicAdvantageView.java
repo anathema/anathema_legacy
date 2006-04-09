@@ -8,7 +8,7 @@ import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.ITabView;
 import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
+import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 public interface IBasicAdvantageView extends ITabView<IAdvantageViewProperties> {
 
@@ -27,7 +27,7 @@ public interface IBasicAdvantageView extends ITabView<IAdvantageViewProperties> 
 
   public abstract IIntValueView addEssenceView(String labelText, int value, int maxValue);
 
-  public ILabelledValueView<String> addPoolView(String labelText, String value);
+  public IValueView<String> addPoolView(String labelText, String value);
 
   public void setBackgroundPanelEnabled(boolean enabled);
 }

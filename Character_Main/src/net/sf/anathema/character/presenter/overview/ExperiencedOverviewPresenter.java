@@ -10,7 +10,7 @@ import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
-import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
+import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 public class ExperiencedOverviewPresenter {
 
@@ -18,18 +18,18 @@ public class ExperiencedOverviewPresenter {
   private final IOverviewView view;
   private final ICharacterStatistics statistics;
 
-  private ILabelledValueView<Integer> attributeView;
-  private ILabelledValueView<Integer> abilityView;
-  private ILabelledValueView<Integer> specialtyView;
-  private ILabelledValueView<Integer> charmView;
-  private ILabelledValueView<Integer> comboView;
-  private ILabelledValueView<Integer> spellView;
-  private ILabelledValueView<Integer> virtueView;
-  private ILabelledValueView<Integer> willpowerView;
-  private ILabelledValueView<Integer> essenceView;
+  private IValueView<Integer> attributeView;
+  private IValueView<Integer> abilityView;
+  private IValueView<Integer> specialtyView;
+  private IValueView<Integer> charmView;
+  private IValueView<Integer> comboView;
+  private IValueView<Integer> spellView;
+  private IValueView<Integer> virtueView;
+  private IValueView<Integer> willpowerView;
+  private IValueView<Integer> essenceView;
   private ILabelledAlotmentView totalView;
   private final IResources resources;
-  private ILabelledValueView<Integer> miscView;
+  private IValueView<Integer> miscView;
 
   public ExperiencedOverviewPresenter(
       IResources resources,
