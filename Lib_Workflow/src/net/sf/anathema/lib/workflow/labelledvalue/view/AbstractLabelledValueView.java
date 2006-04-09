@@ -59,7 +59,7 @@ public abstract class AbstractLabelledValueView {
     setText(value);
   }
 
-  public final void setText(String value) {
+  protected final void setText(String value) {
     valueLabel.setText(value);
   }
 }
