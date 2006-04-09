@@ -9,7 +9,7 @@ public interface IOverviewCategory {
 
   public ILabelledAlotmentView addAlotmentView(String labelText, int maxValueLength);
 
-  public ILabelledValueView<Integer> addValueView(String labelText, int maxValueLength);
+  public ILabelledValueView<Integer> addIntegerValueView(String labelText, int maxValueLength);
 
   public ILabelledValueView<String> addStringValueView(String labelText);
 

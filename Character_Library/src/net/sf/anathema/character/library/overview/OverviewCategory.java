@@ -42,7 +42,7 @@ public class OverviewCategory implements IOverviewCategory {
     return view;
   }
 
-  public ILabelledValueView<Integer> addValueView(String labelText, int maxValueLength) {
+  public ILabelledValueView<Integer> addIntegerValueView(String labelText, int maxValueLength) {
     LabelledIntegerValueView view = new LabelledIntegerValueView(labelText, 0, true, maxValueLength);
     view.addComponents(panel);
     return view;
