@@ -67,7 +67,7 @@ public class ExperiencedOverviewPresenter {
   }
 
   private void initMisc(IOverviewCategory category) {
-    miscView = category.addValueView(getString("Overview.MiscPointsCategory"), 2); //$NON-NLS-1$
+    miscView = category.addIntegerValueView(getString("Overview.MiscPointsCategory"), 2); //$NON-NLS-1$
   }
 
   private void initTotal(IOverviewCategory category) {
@@ -99,45 +99,45 @@ public class ExperiencedOverviewPresenter {
   }
 
   private void initEssence(IOverviewCategory category) {
-    essenceView = category.addValueView(getString("Essence.Name"), 2); //$NON-NLS-1$
+    essenceView = category.addIntegerValueView(getString("Essence.Name"), 2); //$NON-NLS-1$
   }
 
   private void initWillpower(IOverviewCategory category) {
-    willpowerView = category.addValueView(getString("WillpowerType.Name"), 2); //$NON-NLS-1$
+    willpowerView = category.addIntegerValueView(getString("WillpowerType.Name"), 2); //$NON-NLS-1$
   }
 
   private void initVirtues(IOverviewCategory category) {
-    virtueView = category.addValueView(getString("Overview.VirtueCategory"), 2); //$NON-NLS-1$
+    virtueView = category.addIntegerValueView(getString("Overview.VirtueCategory"), 2); //$NON-NLS-1$
   }
 
   private void initSpells(IOverviewCategory category) {
     if (!statistics.getCharacterTemplate().getMagicTemplate().getSpellMagic().knowsSpellMagic()) {
       return;
     }
-    spellView = category.addValueView(getString("Overview.Experience.Spells"), 2); //$NON-NLS-1$
+    spellView = category.addIntegerValueView(getString("Overview.Experience.Spells"), 2); //$NON-NLS-1$
   }
 
   private void initCombos(IOverviewCategory category) {
     if (!statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().knowsCharms()) {
       return;
     }
-    comboView = category.addValueView(getString("Overview.Experience.Combos"), 2); //$NON-NLS-1$
+    comboView = category.addIntegerValueView(getString("Overview.Experience.Combos"), 2); //$NON-NLS-1$
   }
 
   private void initCharms(IOverviewCategory category) {
     if (!statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().knowsCharms()) {
       return;
     }
-    charmView = category.addValueView(getString("Overview.Charms.Title"), 2); //$NON-NLS-1$
+    charmView = category.addIntegerValueView(getString("Overview.Charms.Title"), 2); //$NON-NLS-1$
   }
 
   private void initAbilities(IOverviewCategory category) {
-    abilityView = category.addValueView(getString("Overview.Abilities.Title"), 2); //$NON-NLS-1$
-    specialtyView = category.addValueView(getString("Overview.Experience.Specialties"), 2); //$NON-NLS-1$
+    abilityView = category.addIntegerValueView(getString("Overview.Abilities.Title"), 2); //$NON-NLS-1$
+    specialtyView = category.addIntegerValueView(getString("Overview.Experience.Specialties"), 2); //$NON-NLS-1$
   }
 
   private void initAttributes(IOverviewCategory category) {
-    attributeView = category.addValueView(getString("Overview.Attributes.Title"), 2); //$NON-NLS-1$
+    attributeView = category.addIntegerValueView(getString("Overview.Attributes.Title"), 2); //$NON-NLS-1$
   }
 
   private void calculateXPCost() {
