@@ -8,15 +8,14 @@ import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.model.charm.ICombo;
-import net.sf.anathema.lib.control.ChangeListenerClosure;
-import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.ChangeControl;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
 public class Combo implements ICombo {
 
-  private final GenericControl<IChangeListener> control = new GenericControl<IChangeListener>();
+  private final ChangeControl control = new ChangeControl();
   private final List<ICharm> charmList = new ArrayList<ICharm>();
   private ICharm extraActionCharm = null;
   private ICharm simpleCharm = null;
@@ -40,11 +39,11 @@ public class Combo implements ICombo {
   }
 
   public void addComboModelListener(IChangeListener listener) {
-    control.addListener(listener);
+    control.addChangeListener(listener);
   }
 
   private void fireComboChanged() {
-    control.forAllDo(new ChangeListenerClosure());
+    control.fireChangedEvent();
   }
 
   public void removeCharms(ICharm[] charms) {

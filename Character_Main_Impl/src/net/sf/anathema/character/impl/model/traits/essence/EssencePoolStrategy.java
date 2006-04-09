@@ -13,13 +13,12 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.model.traits.essence.IEssencePoolStrategy;
-import net.sf.anathema.lib.control.ChangeListenerClosure;
-import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.ChangeControl;
 import net.sf.anathema.lib.control.IChangeListener;
 
 public class EssencePoolStrategy implements IEssencePoolStrategy {
 
-  private final GenericControl<IChangeListener> control = new GenericControl<IChangeListener>();
+  private final ChangeControl control = new ChangeControl();
   private final IEssenceTemplate essenceTemplate;
   private final IAdditionalRules additionalRules;
   private final IGenericTraitCollection traitCollection;
@@ -44,11 +43,11 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
   }
 
   private void firePoolsChanged() {
-    control.forAllDo(new ChangeListenerClosure());
+    control.fireChangedEvent();
   }
 
   public void addPoolChangeListener(IChangeListener listener) {
-    control.addListener(listener);
+    control.addChangeListener(listener);
   }
 
   public int getExtendedPersonalPool() {

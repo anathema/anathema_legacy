@@ -50,8 +50,7 @@ import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.character.model.health.IPainToleranceProvider;
-import net.sf.anathema.lib.control.ChangeListenerClosure;
-import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.ChangeControl;
 import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 
@@ -70,7 +69,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   private ILearningCharmGroup[] martialArtsGroups;
   private final ICharacterModelContext context;
   private final IHealthConfiguration health;
-  private final GenericControl<IChangeListener> control = new GenericControl<IChangeListener>();
+  private final ChangeControl control = new ChangeControl();
   private final ICharmProvider provider;
 
   private final ICharmLearnListener learnableListener = new CharmLearnAdapter() {
@@ -339,7 +338,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   public void addLearnableListener(IChangeListener listener) {
-    control.addListener(listener);
+    control.addChangeListener(listener);
   }
 
   private void addSpecialCharmConfiguration(
@@ -350,7 +349,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   private void fireLearnConditionsChanged() {
-    control.forAllDo(new ChangeListenerClosure());
+    control.fireChangedEvent();
   }
 
   private final ICharmLearnStrategy getLearnStrategy() {

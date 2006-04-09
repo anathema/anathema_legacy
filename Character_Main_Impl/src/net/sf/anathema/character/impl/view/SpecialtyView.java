@@ -14,13 +14,12 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.view.AbstractTraitView;
 import net.sf.anathema.character.view.ISpecialtyView;
-import net.sf.anathema.lib.control.ChangeListenerClosure;
-import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.ChangeControl;
 import net.sf.anathema.lib.control.IChangeListener;
 
 public class SpecialtyView extends AbstractTraitView implements ISpecialtyView {
 
-  private final GenericControl<IChangeListener> control = new GenericControl<IChangeListener>();
+  private final ChangeControl control = new ChangeControl();
   private Component abilityLabel;
   private Component separatorLabel = new JLabel("-"); //$NON-NLS-1$
   private Component specialtyLabel;
@@ -58,11 +57,11 @@ public class SpecialtyView extends AbstractTraitView implements ISpecialtyView {
   }
 
   public void addDeleteListener(IChangeListener listener) {
-    control.addListener(listener);
+    control.addChangeListener(listener);
   }
 
   private void fireDeletionPerformed() {
-    control.forAllDo(new ChangeListenerClosure());
+    control.fireChangedEvent();
   }
 
   public void delete() {
