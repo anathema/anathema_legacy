@@ -11,7 +11,6 @@
 	<classpathentry sourcepath="/Thirdparty/XML/dom4j-src.zip" kind="lib" path="/Thirdparty/XML/dom4j-1.5.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/CSV/ostermillerutils_1_04_03.jar"/>
 	<classpathentry sourcepath="/Thirdparty/Reporting/jasperreport-src.zip" kind="lib" path="/Thirdparty/Reporting/jasperreports-0.6.2.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Development/commons-colllections-3.1-src.zip" kind="lib" path="/Thirdparty/Development/commons-collections-3.1.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/Development/commons-beanutils-1.5.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/Development/commons-digester-1.6.jar"/>
 	<classpathentry kind="src" path="/Character_Generic"/>
@@ -47,5 +46,6 @@
 	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-xml.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Lunar"/>
 	<classpathentry kind="src" path="/Character_Main_Impl"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/commons-collections-3.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
