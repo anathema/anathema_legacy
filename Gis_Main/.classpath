@@ -3,7 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry sourcepath="JDEMO_HOME/jdemo_src.zip" kind="var" path="JDEMO_HOME/jdemo_core.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Development/commons-colllections-3.1-src.zip" kind="lib" path="/Thirdparty/Development/commons-collections-3.1.jar"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-core-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-layout_src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
@@ -18,5 +17,10 @@
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/gisterm-visualizer.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/jts.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/commons-colllections-3.1-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/jai_codec.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/jai_core.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/jai_imageio.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
