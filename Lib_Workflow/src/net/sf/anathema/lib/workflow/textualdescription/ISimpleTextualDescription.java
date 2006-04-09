@@ -11,7 +11,5 @@ public interface ISimpleTextualDescription extends ITextualDescription {
 
   public void addTextChangedListener(IStringValueChangedListener listener);
 
-  public void removeTextChangedListener(IStringValueChangedListener listener);
-
   public boolean isEmpty();
 }
