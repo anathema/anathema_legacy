@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.view.advantage;
 
-import net.sf.anathema.character.impl.view.LabelledOverviewStringValueView;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.character.library.overview.LabelledOverviewStringValueView;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
