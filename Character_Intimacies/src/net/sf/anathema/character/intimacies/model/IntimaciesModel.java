@@ -1,7 +1,5 @@
 package net.sf.anathema.character.intimacies.model;
 
-import javax.swing.event.ChangeListener;
-
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
@@ -28,7 +26,7 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
     IIntimaciesModel {
 
   private final IAdditionalTemplate additionalTemplate;
-  private final ChangeControl bonusPointControl = new ChangeControl(this);
+  private final ChangeControl bonusPointControl = new ChangeControl();
   private final GenericControl<IChangeListener> changeControl = new GenericControl<IChangeListener>();
   private final ICharacterModelContext context;
   private String name;
@@ -36,10 +34,10 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
   public IntimaciesModel(
       IAdditionalTemplate additionalTemplate,
       final ICharacterModelContext context,
-      ChangeListener[] listeners) {
+      IChangeListener[] listeners) {
     this.additionalTemplate = additionalTemplate;
     this.context = context;
-    for (ChangeListener listener : listeners) {
+    for (IChangeListener listener : listeners) {
       addBonusPointsChangeListener(listener);
     }
     VirtueChangeListener convictionListener = new VirtueChangeListener() {
@@ -77,7 +75,7 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
     return new IntimaciesBonusPointCalculator(this);
   }
 
-  public void addBonusPointsChangeListener(ChangeListener listener) {
+  public void addBonusPointsChangeListener(IChangeListener listener) {
     bonusPointControl.addChangeListener(listener);
   }
 
