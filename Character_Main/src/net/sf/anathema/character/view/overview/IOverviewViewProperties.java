@@ -2,10 +2,6 @@ package net.sf.anathema.character.view.overview;
 
 public interface IOverviewViewProperties {
 
-  public String getConceptTitle();
-
-  public String getAttributeTitle();
-
   public String getAbilitiesTtile();
 
   public boolean showCharms();

@@ -7,10 +7,11 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
 import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
+import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.model.nature.INatureType;
-import net.sf.anathema.character.view.overview.ICreationOverviewView;
+import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.character.view.overview.IOverviewViewProperties;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.legality.LegalityFontProvider;
@@ -21,7 +22,7 @@ import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
 
 public class CreationOverviewPresenter {
 
-  private final ICreationOverviewView view;
+  private final IOverviewView view;
   private final ICharacterStatistics statistics;
   private final IBonusPointManagement management;
 
@@ -45,7 +46,7 @@ public class CreationOverviewPresenter {
   public CreationOverviewPresenter(
       IResources resources,
       ICharacterStatistics statistics,
-      ICreationOverviewView bonusPointView,
+      IOverviewView bonusPointView,
       IBonusPointManagement management) {
     this.management = management;
     this.resources = resources;
@@ -69,13 +70,6 @@ public class CreationOverviewPresenter {
     initCharms();
     initTotal();
     view.initGui(new IOverviewViewProperties() {
-      public String getConceptTitle() {
-        return getString("Overview.Concept.Title"); //$NON-NLS-1$
-      }
-
-      public String getAttributeTitle() {
-        return getString("Overview.Attributes.Title"); //$NON-NLS-1$
-      }
 
       public String getAbilitiesTtile() {
         return getString("Overview.Abilities.Title"); //$NON-NLS-1$
@@ -109,49 +103,48 @@ public class CreationOverviewPresenter {
   }
 
   private void initTotal() {
+    IOverviewCategory category = view.addOverviewCategory(getString("Overview.BonusPoints.Title")); //$NON-NLS-1$
     if (statistics.getExtendedConfiguration().getAdditionalModels().length > 0) {
-      miscView = view.addBonusOverviewCategory(getString("Overview.MiscPointsCategory")); //$NON-NLS-1$
+      miscView = category.addStringValueView(getString("Overview.MiscPointsCategory")); //$NON-NLS-1$
     }
-    totalView = view.addBonusOverviewCategory(getString("Overview.BonusPointsCategory")); //$NON-NLS-1$
+    totalView = category.addStringValueView(getString("Overview.BonusPointsCategory")); //$NON-NLS-1$
   }
 
   private void initConcept() {
+    IOverviewCategory category = view.addOverviewCategory(getString("Overview.Concept.Title")); //$NON-NLS-1$
     if (!template.getCasteCollection().isEmpty()) {
-      casteView = view.addCharacterConceptCategory(getString(template.getPresentationProperties()
-          .getCasteLabelResource()));
+      casteView = category.addStringValueView(getString(template.getPresentationProperties().getCasteLabelResource()));
     }
-    natureView = view.addCharacterConceptCategory(getString("CharacterConcept.Nature")); //$NON-NLS-1$
+    natureView = category.addStringValueView(getString("CharacterConcept.Nature")); //$NON-NLS-1$
   }
 
   private void initAdvantages() {
-    virtueView = view.addAdvantageCreationCategory(getString("Overview.VirtueCategory")); //$NON-NLS-1$
-    backgroundView = view.addAdvantageCreationCategory(getString("Overview.BackgroundCategory")); //$NON-NLS-1$
+    IOverviewCategory category = view.addOverviewCategory(getString("Overview.Advantages.Title")); //$NON-NLS-1$
+    virtueView = category.addAlotmentView(getString("Overview.VirtueCategory"), 2); //$NON-NLS-1$
+    backgroundView = category.addAlotmentView(getString("Overview.BackgroundCategory"), 2); //$NON-NLS-1$
   }
 
   private void initCharms() {
     if (!statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().knowsCharms()) {
       return;
     }
-    favoredCharmView = view.addCharmCreationCategory(getString("Overview.FavoredCharmCategory")); //$NON-NLS-1$
-    IAdditionalRules additionalRules = template.getAdditionalRules();
-    if (additionalRules == null || additionalRules.getAdditionalMagicLearnPools().length == 0) {
-      defaultCharmView = view.addCharmCreationCategory(getString("Overview.GeneralCharmCategory")); //$NON-NLS-1$
-    }
-    else {
-      defaultCharmView = view.addCharmCreationCategory(getString("Overview.GeneralCharmCategory")); //$NON-NLS-1$
-    }
+    IOverviewCategory category = view.addOverviewCategory(getString("Overview.Charms.Title")); //$NON-NLS-1$
+    favoredCharmView = category.addStringValueView(getString("Overview.FavoredCharmCategory")); //$NON-NLS-1$
+    defaultCharmView = category.addStringValueView(getString("Overview.GeneralCharmCategory")); //$NON-NLS-1$
   }
 
   private void initAbilities() {
-    favoredAbilityPickView = view.addAbilityCreationCategory(getString("Overview.FavoredAbilityCategory")); //$NON-NLS-1$
-    favoredAbiltyDotView = view.addAbilityCreationCategory(getString("Overview.FavoredAbilityDotCategory")); //$NON-NLS-1$
-    defaultAbilityDotView = view.addAbilityCreationCategory(getString("Overview.GeneralAbilityDotCategory")); //$NON-NLS-1$
+    IOverviewCategory category = view.addOverviewCategory(getString("Overview.Abilities.Title")); //$NON-NLS-1$
+    favoredAbilityPickView = category.addAlotmentView(getString("Overview.FavoredAbilityCategory"), 2);//$NON-NLS-1$
+    favoredAbiltyDotView = category.addAlotmentView(getString("Overview.FavoredAbilityDotCategory"), 2); //$NON-NLS-1$
+    defaultAbilityDotView = category.addAlotmentView(getString("Overview.GeneralAbilityDotCategory"), 2); //$NON-NLS-1$
   }
 
   private void initAttributes() {
-    primaryAttributeView = view.addAttributeCreationCategory(getString("Overview.PrimaryAttributeCategory")); //$NON-NLS-1$
-    secondaryAttributeView = view.addAttributeCreationCategory(getString("Overview.SecondaryAttributeCategory")); //$NON-NLS-1$
-    tertiaryAttributeView = view.addAttributeCreationCategory(getString("Overview.TertiaryAttributeCategory")); //$NON-NLS-1$
+    IOverviewCategory category = view.addOverviewCategory(getString("Overview.Attributes.Title")); //$NON-NLS-1$
+    primaryAttributeView = category.addAlotmentView(getString("Overview.PrimaryAttributeCategory"), 2); //$NON-NLS-1$
+    secondaryAttributeView = category.addAlotmentView(getString("Overview.SecondaryAttributeCategory"), 2); //$NON-NLS-1$
+    tertiaryAttributeView = category.addAlotmentView(getString("Overview.TertiaryAttributeCategory"), 2); //$NON-NLS-1$
   }
 
   private void updateOverview() {
