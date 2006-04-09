@@ -13,10 +13,6 @@ public class TypedDescription<T extends ITypedDescriptionType> implements ITyped
   private final List<IObjectValueChangedListener<ITypedDescriptionType>> typeListeners = new ArrayList<IObjectValueChangedListener<ITypedDescriptionType>>();
   private T type;
 
-  public TypedDescription() {
-    this(null);
-  }
-
   public TypedDescription(T type) {
     this.type = type;
   }
