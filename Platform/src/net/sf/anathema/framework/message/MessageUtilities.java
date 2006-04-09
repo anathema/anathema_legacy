@@ -3,8 +3,8 @@ package net.sf.anathema.framework.message;
 import java.awt.Component;
 
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
+import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
-import net.disy.commons.swing.message.Message;
 import net.sf.anathema.lib.logging.Logger;
 
 public class MessageUtilities {
