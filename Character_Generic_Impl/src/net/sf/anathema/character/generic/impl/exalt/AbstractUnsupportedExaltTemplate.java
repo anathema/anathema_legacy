@@ -50,6 +50,7 @@ public abstract class AbstractUnsupportedExaltTemplate extends AbstractCharacter
     return traitTemplateCollection;
   }
 
+  @Override
   public ICasteType[] getAllCasteTypes() {
     return new ICasteType[0];
   }

@@ -6,10 +6,10 @@ import junit.framework.TestSuite;
 public class AllTests {
 
   public static Test suite() {
-    TestSuite suite = new TestSuite("Test for net.sf.anathema.character.generic.impl.template.test");
-    //$JUnit-BEGIN$
+    TestSuite suite = new TestSuite("Test for net.sf.anathema.character.generic.impl.template.test"); //$NON-NLS-1$
+    // $JUnit-BEGIN$
     suite.addTestSuite(TemplateRegistryTest.class);
-    //$JUnit-END$
+    // $JUnit-END$
     return suite;
   }
 

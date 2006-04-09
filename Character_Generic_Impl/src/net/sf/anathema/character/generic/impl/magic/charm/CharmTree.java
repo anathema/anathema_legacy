@@ -27,6 +27,7 @@ public class CharmTree extends AbstractCharmTree<ICharm> {
     return charmById.get(charmID);
   }
 
+  @Override
   protected boolean isLearnableCharm(ICharm charm) {
     return true;
   }
