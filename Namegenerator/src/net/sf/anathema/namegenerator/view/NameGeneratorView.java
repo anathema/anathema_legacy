@@ -17,9 +17,8 @@ import javax.swing.JRadioButton;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.ChangeControl;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import net.sf.anathema.namegenerator.presenter.view.INameGeneratorView;
 
@@ -31,15 +30,11 @@ public class NameGeneratorView implements INameGeneratorView {
   private final AreaTextView resultTextView = new AreaTextView(5, 25);
   private final Map<JRadioButton, Object> generatorsByButton = new HashMap<JRadioButton, Object>();
   private final Map<Object, JRadioButton> buttonsByGenerator = new HashMap<Object, JRadioButton>();
-  private final GenericControl<IChangeListener> generatorListeners = new GenericControl<IChangeListener>();
+  private final ChangeControl generatorListeners = new ChangeControl();
   private final JPanel generateButtonPanel = new JPanel(new GridLayout());
   private final ActionListener generatorButtonListener = new ActionListener() {
     public void actionPerformed(ActionEvent e) {
-      generatorListeners.forAllDo(new IClosure<IChangeListener>() {
-        public void execute(IChangeListener input) {
-          input.changeOccured();
-        }
-      });
+      generatorListeners.fireChangedEvent();
     }
   };
 
@@ -88,7 +83,7 @@ public class NameGeneratorView implements INameGeneratorView {
   }
 
   public void addGeneratorTypeChangeListener(IChangeListener listener) {
-    generatorListeners.addListener(listener);
+    generatorListeners.addChangeListener(listener);
   }
 
   public void setSelectedGeneratorType(Object generatorType) {

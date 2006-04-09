@@ -4,9 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.disy.commons.core.util.ObjectUtilities;
-import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.ChangeControl;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.ValueChangeEventClosure;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 import net.sf.anathema.namegenerator.domain.INameGenerator;
@@ -21,7 +20,7 @@ public class ExaltedNameGeneratorModel implements INameGeneratorModel {
   private final IIdentificate[] nameGeneratorTypes = new IIdentificate[] { new Identificate("Realm"), THRESHOLD_ID }; //$NON-NLS-1$
   private final Map<IIdentificate, IGeneratorTypeModel> typeModelsByType = new HashMap<IIdentificate, IGeneratorTypeModel>();
   private IIdentificate selectedGeneratorType = nameGeneratorTypes[1];
-  private GenericControl<IChangeListener> selectedGeneratorTypeListeners = new GenericControl<IChangeListener>();
+  private ChangeControl selectedGeneratorTypeListeners = new ChangeControl();
   private Map<IIdentificate, INameGenerator> generatorsByIdentificate = new HashMap<IIdentificate, INameGenerator>();
 
   public ExaltedNameGeneratorModel() {
@@ -38,7 +37,7 @@ public class ExaltedNameGeneratorModel implements INameGeneratorModel {
   }
 
   public void addGeneratorTypeChangeListener(IChangeListener listener) {
-    selectedGeneratorTypeListeners.addListener(listener);
+    selectedGeneratorTypeListeners.addChangeListener(listener);
   }
 
   public IIdentificate getSelectedGeneratorType() {
@@ -50,7 +49,7 @@ public class ExaltedNameGeneratorModel implements INameGeneratorModel {
       return;
     }
     this.selectedGeneratorType = selectedGeneratorType;
-    selectedGeneratorTypeListeners.forAllDo(new ValueChangeEventClosure());
+    selectedGeneratorTypeListeners.fireChangedEvent();
   }
 
   public String[] generateNames(int count) {
