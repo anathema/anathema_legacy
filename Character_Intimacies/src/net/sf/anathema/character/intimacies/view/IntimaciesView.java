@@ -68,7 +68,7 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
   }
 
   public IOverviewCategory createOverview(String borderLabel) {
-    return new OverviewCategory(borderLabel);
+    return new OverviewCategory(borderLabel, false);
   }
 
   public void setOverview(IOverviewCategory overviewView) {
