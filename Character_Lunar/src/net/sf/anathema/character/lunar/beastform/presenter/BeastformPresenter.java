@@ -1,8 +1,5 @@
 package net.sf.anathema.character.lunar.beastform.presenter;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import net.sf.anathema.character.generic.framework.magic.view.IMagicLearnView;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
 import net.sf.anathema.character.library.quality.model.QualitySelection;
@@ -17,6 +14,7 @@ import net.sf.anathema.character.lunar.beastform.view.IBeastformOverviewView;
 import net.sf.anathema.character.lunar.beastform.view.IBeastformOverviewViewProperties;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;
@@ -71,8 +69,8 @@ public class BeastformPresenter extends AbstractTraitPresenter {
         giftModel.addQualitySelection(selection);
       }
     });
-    giftModel.addModelChangeListener(new ChangeListener() {
-      public void stateChanged(ChangeEvent e) {
+    giftModel.addModelChangeListener(new IChangeListener() {
+      public void changeOccured() {
         updateGiftViews(giftModel, giftView);
       }
     });

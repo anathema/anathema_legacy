@@ -1,19 +1,18 @@
 package net.sf.anathema.character.lunar.virtueflaw;
 
-import javax.swing.event.ChangeListener;
-
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.lunar.virtueflaw.model.LunarVirtueFlawModel;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public class LunarVirtueFlawModelFactory implements IAdditionalModelFactory {
 
   public IAdditionalModel createModel(
       IAdditionalTemplate additionalTemplate,
       ICharacterModelContext context,
-      ChangeListener[] listeners) {
+      IChangeListener[] listeners) {
     return new LunarVirtueFlawModel(context, additionalTemplate);
   }
 }

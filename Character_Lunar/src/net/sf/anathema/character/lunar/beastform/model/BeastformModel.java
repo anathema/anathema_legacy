@@ -3,8 +3,6 @@ package net.sf.anathema.character.lunar.beastform.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.event.ChangeListener;
-
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
@@ -29,6 +27,7 @@ import net.sf.anathema.character.lunar.beastform.model.gift.SoakProvidingGift;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformAttribute;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.lunar.template.ILunarSpecialCharms;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
 
@@ -48,10 +47,7 @@ public class BeastformModel implements IBeastformModel {
     this.collection = new BeastformTraitCollection();
     this.cost = new BeastformGroupCost(collection, this);
     createAttributes();
-    this.allTraitsCollection = new BeastformGenericTraitCollection(
-        context.getTraitCollection(),
-        collection,
-        giftModel);
+    this.allTraitsCollection = new BeastformGenericTraitCollection(context.getTraitCollection(), collection, giftModel);
     context.getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
       @Override
       public void characterChanged() {
@@ -64,12 +60,21 @@ public class BeastformModel implements IBeastformModel {
   private void createAttributes() {
     List<IBeastformAttribute> attributes = new ArrayList<IBeastformAttribute>();
     ITraitContext traitContext = context.getTraitContext();
-    attributes.add(new BeastformAttribute(context.getTraitCollection().getTrait(
-        AttributeType.Strength), traitContext, 1, cost));
-    attributes.add(new BeastformAttribute(context.getTraitCollection().getTrait(
-        AttributeType.Dexterity), traitContext, 2, cost));
-    attributes.add(new BeastformAttribute(context.getTraitCollection().getTrait(
-        AttributeType.Stamina), traitContext, 1, cost));
+    attributes.add(new BeastformAttribute(
+        context.getTraitCollection().getTrait(AttributeType.Strength),
+        traitContext,
+        1,
+        cost));
+    attributes.add(new BeastformAttribute(
+        context.getTraitCollection().getTrait(AttributeType.Dexterity),
+        traitContext,
+        2,
+        cost));
+    attributes.add(new BeastformAttribute(
+        context.getTraitCollection().getTrait(AttributeType.Stamina),
+        traitContext,
+        1,
+        cost));
     for (IBeastformAttribute attribute : attributes) {
       collection.addBeastFormAttribute(attribute);
     }
@@ -118,7 +123,7 @@ public class BeastformModel implements IBeastformModel {
     return new NullAdditionalModelBonusPointCalculator();
   }
 
-  public void addBonusPointsChangeListener(ChangeListener listener) {
+  public void addBonusPointsChangeListener(IChangeListener listener) {
     // Nothing to do
   }
 

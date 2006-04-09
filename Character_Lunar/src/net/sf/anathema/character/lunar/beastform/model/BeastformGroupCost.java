@@ -1,8 +1,5 @@
 package net.sf.anathema.character.lunar.beastform.model;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -13,6 +10,7 @@ import net.sf.anathema.character.lunar.beastform.model.gift.GiftVisitorAdapter;
 import net.sf.anathema.character.lunar.beastform.model.gift.IGift;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformAttribute;
 import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
@@ -24,8 +22,8 @@ public class BeastformGroupCost implements IBeastformGroupCost {
 
   public BeastformGroupCost(IBeastformTraitCollection collection, final BeastformModel model) {
     this.collection = collection;
-    model.getGiftModel().addModelChangeListener(new ChangeListener() {
-      public void stateChanged(ChangeEvent e) {
+    model.getGiftModel().addModelChangeListener(new IChangeListener() {
+      public void changeOccured() {
         calculateDots(model.getGiftModel(), model.getCharmValue());
       }
     });

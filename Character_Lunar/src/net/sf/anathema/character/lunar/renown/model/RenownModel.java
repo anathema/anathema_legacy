@@ -1,7 +1,5 @@
 package net.sf.anathema.character.lunar.renown.model;
 
-import javax.swing.event.ChangeListener;
-
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
@@ -27,6 +25,7 @@ import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.character.lunar.LunarCharacterModule;
 import net.sf.anathema.character.lunar.renown.RenownTemplate;
 import net.sf.anathema.character.lunar.renown.presenter.IRenownModel;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
 
@@ -120,7 +119,7 @@ public class RenownModel implements IRenownModel {
     return new NullAdditionalModelBonusPointCalculator();
   }
 
-  public void addBonusPointsChangeListener(ChangeListener listener) {
+  public void addBonusPointsChangeListener(IChangeListener listener) {
     // Nothing to do
   }
 
