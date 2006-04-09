@@ -17,10 +17,10 @@ import net.sf.anathema.lib.resources.IResources;
 
 public final class GisItemTypeConfiguration extends AbstractNonPersistableItemTypeConfiguration {
 
-  public static final String CHARM_ENTRY_ITEM_TYPE_ID = "CharmEntry"; //$NON-NLS-1$
+  public static final String GIS_ITEM_TYPE_ID = "Gis.ItemType"; //$NON-NLS-1$
 
   public GisItemTypeConfiguration() {
-    super(new ItemType(CHARM_ENTRY_ITEM_TYPE_ID, null));
+    super(new ItemType(GIS_ITEM_TYPE_ID, null));
   }
 
   @Override
@@ -38,11 +38,11 @@ public final class GisItemTypeConfiguration extends AbstractNonPersistableItemTy
 
   @Override
   protected String getPrintNameKey() {
-    return "ItemType.Map.PrintName"; //$NON-NLS-1$
+    return "ItemType.Gis.PrintName"; //$NON-NLS-1$
   }
-
-  @Override
+  
+    @Override
   protected IMenuItem[] createAddMenuEntries(IAnathemaView view, IAnathemaModel anathemaModel, IResources resources) {
-    return new IMenuItem[] { new ActionMenuItem(ShowCharmEntryAction.createMenuAction(resources, anathemaModel)) };
+    return new IMenuItem[] { new ActionMenuItem(ShowGisAction.createMenuAction(resources, anathemaModel)) };
   }
 }

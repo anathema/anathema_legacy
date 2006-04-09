@@ -6,15 +6,15 @@ import net.sf.anathema.framework.resources.IAnathemaResources;
 
 public class GisModule extends AbstractAnathemaModule {
 
-  private AbstractItemTypeConfiguration mapConfiguration = new GisItemTypeConfiguration();
+  private AbstractItemTypeConfiguration gisItemConfiguration = new GisItemTypeConfiguration();
 
   public GisModule() {
-    addItemTypeConfiguration(mapConfiguration);
+    addItemTypeConfiguration(gisItemConfiguration);
   }
 
   @Override
   public void initAnathemaResources(IAnathemaResources resources) {
     super.initAnathemaResources(resources);
-    resources.addStringResourceHandler(createStringProvider("CharmEntry", resources.getLocale())); //$NON-NLS-1$    
+    //resources.addStringResourceHandler(createStringProvider("Gis", resources.getLocale())); //$NON-NLS-1$    
   }
 }

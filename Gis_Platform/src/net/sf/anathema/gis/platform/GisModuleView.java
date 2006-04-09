@@ -1,16 +1,19 @@
 package net.sf.anathema.gis.platform;
 
+import java.awt.BorderLayout;
+
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import net.sf.anathema.framework.view.IItemView;
+import net.sf.anathema.gis.main.impl.view.AnathemaGisView;
 import net.sf.anathema.gis.main.view.IAnathemaGisView;
 import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
 
 public class GisModuleView implements IItemView {
 
-  private final JPanel panel = new JPanel();
+  private final JPanel panel = new JPanel(new BorderLayout());
   private final String printName;
 
   public GisModuleView(String printName) {
@@ -46,7 +49,8 @@ public class GisModuleView implements IItemView {
   }
 
   public IAnathemaGisView addGisView() {
-    // todo vom (08.04.2006) (sieroux): Hier muss die GisView eingefügt werden
-    return null;
+    AnathemaGisView anathemaGisView = new AnathemaGisView();
+    panel.add(anathemaGisView.getContent());
+    return anathemaGisView;
   }
 }
