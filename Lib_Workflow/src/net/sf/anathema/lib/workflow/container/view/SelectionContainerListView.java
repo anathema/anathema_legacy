@@ -2,18 +2,18 @@ package net.sf.anathema.lib.workflow.container.view;
 
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
-import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import net.sf.anathema.lib.control.ChangeControl;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.gui.list.SmartJList;
 import net.sf.anathema.lib.workflow.container.ISelectionContainerView;
 
 public class SelectionContainerListView implements ISelectionContainerView {
 
   private final SmartJList smartList = new SmartJList();
-  private final ChangeControl changeControl = new ChangeControl(this);
+  private final ChangeControl changeControl = new ChangeControl();
 
   public SelectionContainerListView() {
     smartList.addListSelectionListener(new ListSelectionListener() {
@@ -38,7 +38,7 @@ public class SelectionContainerListView implements ISelectionContainerView {
     return smartList;
   }
 
-  public void addSelectionChangeListener(ChangeListener listener) {
+  public void addSelectionChangeListener(IChangeListener listener) {
     changeControl.addChangeListener(listener);
   }
 

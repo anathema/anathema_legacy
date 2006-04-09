@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.workflow.container;
 
-import javax.swing.event.ChangeListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public interface ISelectionContainerModel<V> {
 
@@ -10,7 +10,7 @@ public interface ISelectionContainerModel<V> {
 
   public V[] getSelectedValues();
 
-  public void addChangeListener(ChangeListener listener);
+  public void addChangeListener(IChangeListener listener);
 
-  public void removeChangeListener(ChangeListener listener);
+  public void removeChangeListener(IChangeListener listener);
 }

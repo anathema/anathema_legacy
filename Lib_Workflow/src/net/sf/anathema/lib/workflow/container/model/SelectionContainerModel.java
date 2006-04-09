@@ -2,11 +2,10 @@ package net.sf.anathema.lib.workflow.container.model;
 
 import java.util.Arrays;
 
-import javax.swing.event.ChangeListener;
-
 import net.sf.anathema.lib.container.DefaultSelectionContainer;
 import net.sf.anathema.lib.container.IGenericSelectionContainer;
 import net.sf.anathema.lib.control.ChangeControl;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.workflow.container.ISelectionContainerModel;
 
 public class SelectionContainerModel<V> implements ISelectionContainerModel<V> {
@@ -15,7 +14,7 @@ public class SelectionContainerModel<V> implements ISelectionContainerModel<V> {
     return new SelectionContainerModel<V>(new DefaultSelectionContainer<V>(componentType, availableValues));
   }
 
-  private final ChangeControl changeControl = new ChangeControl(this);
+  private final ChangeControl changeControl = new ChangeControl();
   private final IGenericSelectionContainer<V> container;
 
   public SelectionContainerModel(IGenericSelectionContainer<V> container) {
@@ -34,11 +33,11 @@ public class SelectionContainerModel<V> implements ISelectionContainerModel<V> {
     return container.getValues();
   }
 
-  public void addChangeListener(ChangeListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     changeControl.addChangeListener(listener);
   }
 
-  public void removeChangeListener(ChangeListener listener) {
+  public void removeChangeListener(IChangeListener listener) {
     changeControl.removeChangeListener(listener);
   }
 

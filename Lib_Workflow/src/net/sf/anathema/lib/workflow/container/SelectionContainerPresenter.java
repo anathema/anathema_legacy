@@ -1,8 +1,6 @@
 package net.sf.anathema.lib.workflow.container;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.lang.ArrayFactory;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.lang.IArrayFactory;
@@ -23,16 +21,16 @@ public class SelectionContainerPresenter<V> {
   }
 
   public void initPresentation() {
-    view.addSelectionChangeListener(new ChangeListener() {
-      public void stateChanged(ChangeEvent e) {
+    view.addSelectionChangeListener(new IChangeListener() {
+      public void changeOccured() {
         Object[] selectedValues = view.getSelectedValues();
         V[] valueArray = arrayFactory.createArray(selectedValues.length);
         ArrayUtilities.copyAll(selectedValues, valueArray);
         model.setSelectedValues(valueArray);
       }
     });
-    model.addChangeListener(new ChangeListener() {
-      public void stateChanged(ChangeEvent e) {
+    model.addChangeListener(new IChangeListener() {
+      public void changeOccured() {
         V[] values = model.getSelectedValues();
         if (values == null) {
           values = arrayFactory.createArray(0);
@@ -41,7 +39,6 @@ public class SelectionContainerPresenter<V> {
       }
     });
     view.populate(model.getAllAvailableValues());
-    
-    
+
   }
 }
