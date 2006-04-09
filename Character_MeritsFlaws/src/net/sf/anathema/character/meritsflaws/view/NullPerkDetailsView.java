@@ -2,9 +2,9 @@ package net.sf.anathema.character.meritsflaws.view;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.event.ChangeListener;
 
 import net.sf.anathema.character.meritsflaws.presenter.view.IPerkDetailsView;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public class NullPerkDetailsView implements IPerkDetailsView {
 
@@ -22,7 +22,7 @@ public class NullPerkDetailsView implements IPerkDetailsView {
     return false;
   }
 
-  public void addChangeListener(ChangeListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     // Nothing to do
   }
 

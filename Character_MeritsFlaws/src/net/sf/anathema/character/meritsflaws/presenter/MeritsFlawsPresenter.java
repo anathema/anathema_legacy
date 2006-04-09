@@ -1,8 +1,5 @@
 package net.sf.anathema.character.meritsflaws.presenter;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.library.quality.model.QualitySelection;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
@@ -17,6 +14,7 @@ import net.sf.anathema.character.meritsflaws.view.MeritsFlawsTabView;
 import net.sf.anathema.character.meritsflaws.view.MultiValuePerkDetailsView;
 import net.sf.anathema.character.meritsflaws.view.NullPerkDetailsView;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 
 public class MeritsFlawsPresenter {
@@ -75,8 +73,8 @@ public class MeritsFlawsPresenter {
         meritsView.setRemoveEnabled(perkSelection != null);
       }
     });
-    model.addModelChangeListener(new ChangeListener() {
-      public void stateChanged(ChangeEvent e) {
+    model.addModelChangeListener(new IChangeListener() {
+      public void changeOccured() {
         IQualitySelection<IPerk>[] selectedPerks = model.getSelectedQualities();
         setAvailablePerks(meritsView);
         meritsView.setSelectedPerks(selectedPerks);
@@ -143,8 +141,8 @@ public class MeritsFlawsPresenter {
   }
 
   private void setDetailsView(final IPerkView meritsView, final IPerkDetailsView detailsView) {
-    detailsView.addChangeListener(new ChangeListener() {
-      public void stateChanged(ChangeEvent e) {
+    detailsView.addChangeListener(new IChangeListener() {
+      public void changeOccured() {
         meritsView.setAddEnabled(detailsView.isComplete());
       }
     });

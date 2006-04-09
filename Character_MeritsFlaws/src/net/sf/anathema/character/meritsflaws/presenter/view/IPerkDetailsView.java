@@ -1,7 +1,8 @@
 package net.sf.anathema.character.meritsflaws.presenter.view;
 
 import javax.swing.JComponent;
-import javax.swing.event.ChangeListener;
+
+import net.sf.anathema.lib.control.IChangeListener;
 
 public interface IPerkDetailsView {
 
@@ -9,7 +10,7 @@ public interface IPerkDetailsView {
 
   public boolean isComplete();
 
-  public void addChangeListener(ChangeListener listener);
+  public void addChangeListener(IChangeListener listener);
 
   public int getSelectedValue();
 }

@@ -7,18 +7,18 @@ import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.event.ChangeListener;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.character.meritsflaws.presenter.view.IPerkDetailsView;
 import net.sf.anathema.lib.control.ChangeControl;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public class MultiValuePerkDetailsView implements IPerkDetailsView {
 
   private final Integer[] values;
   private JPanel content;
   private final String pointValueLabel;
-  private final ChangeControl changeControl = new ChangeControl(this);
+  private final ChangeControl changeControl = new ChangeControl();
   private JComboBox pointBox;
 
   public MultiValuePerkDetailsView(Integer[] values, String label) {
@@ -50,7 +50,7 @@ public class MultiValuePerkDetailsView implements IPerkDetailsView {
     return pointBox.getSelectedItem() != null;
   }
 
-  public void addChangeListener(ChangeListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     changeControl.addChangeListener(listener);
   }
 

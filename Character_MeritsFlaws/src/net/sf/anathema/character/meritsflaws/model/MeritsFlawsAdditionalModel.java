@@ -1,7 +1,5 @@
 package net.sf.anathema.character.meritsflaws.model;
 
-import javax.swing.event.ChangeListener;
-
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
@@ -9,6 +7,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.meritsflaws.presenter.IMeritsFlawsAdditionalModel;
 import net.sf.anathema.character.meritsflaws.presenter.IMeritsFlawsModel;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public class MeritsFlawsAdditionalModel implements IMeritsFlawsAdditionalModel {
 
@@ -18,10 +17,10 @@ public class MeritsFlawsAdditionalModel implements IMeritsFlawsAdditionalModel {
   public MeritsFlawsAdditionalModel(
       IAdditionalTemplate additionalTemplate,
       ICharacterModelContext context,
-      ChangeListener[] listeners) {
+      IChangeListener[] listeners) {
     this.additionalTemplate = additionalTemplate;
     this.model = new MeritsFlawsModel(context);
-    for (ChangeListener listener : listeners) {
+    for (IChangeListener listener : listeners) {
       model.addModelChangeListener(listener);
     }
   }
@@ -42,7 +41,7 @@ public class MeritsFlawsAdditionalModel implements IMeritsFlawsAdditionalModel {
     return new MeritsFlawsBonusPointCalculator(model);
   }
 
-  public void addBonusPointsChangeListener(ChangeListener listener) {
+  public void addBonusPointsChangeListener(IChangeListener listener) {
     model.addModelChangeListener(listener);
   }
 
