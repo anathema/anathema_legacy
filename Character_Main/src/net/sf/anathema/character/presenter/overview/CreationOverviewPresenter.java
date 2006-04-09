@@ -70,31 +70,6 @@ public class CreationOverviewPresenter {
     initCharms();
     initTotal();
     view.initGui(new IOverviewViewProperties() {
-
-      public String getAbilitiesTtile() {
-        return getString("Overview.Abilities.Title"); //$NON-NLS-1$
-      }
-
-      public String getCharmsTitle() {
-        return getString("Overview.Charms.Title"); //$NON-NLS-1$
-      }
-
-      public String getAdvantagesTitle() {
-        return getString("Overview.Advantages.Title"); //$NON-NLS-1$
-      }
-
-      public String getEssenceTitle() {
-        return getString("Overview.Essence.Title"); //$NON-NLS-1$
-      }
-
-      public String getBonusPointsTitle() {
-        return getString("Overview.BonusPoints.Title"); //$NON-NLS-1$
-      }
-
-      public boolean showCharms() {
-        return template.getMagicTemplate().getCharmTemplate().knowsCharms();
-      }
-
       public String getExperienceTitle() {
         return getString("Overview.Experience.Title"); //$NON-NLS-1$
       }

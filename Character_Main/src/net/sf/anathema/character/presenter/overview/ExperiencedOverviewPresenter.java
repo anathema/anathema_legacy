@@ -63,38 +63,6 @@ public class ExperiencedOverviewPresenter {
     initTotal();
     calculateXPCost();
     view.initGui(new IOverviewViewProperties() {
-      public String getConceptTitle() {
-        throw new UnsupportedOperationException("Should not be called by ExperienceOverviewPresenter"); //$NON-NLS-1$
-      }
-
-      public String getAttributeTitle() {
-        throw new UnsupportedOperationException("Should not be called by ExperienceOverviewPresenter"); //$NON-NLS-1$
-      }
-
-      public String getAbilitiesTtile() {
-        throw new UnsupportedOperationException("Should not be called by ExperienceOverviewPresenter"); //$NON-NLS-1$      
-      }
-
-      public boolean showCharms() {
-        throw new UnsupportedOperationException("Should not be called by ExperienceOverviewPresenter"); //$NON-NLS-1$     
-      }
-
-      public String getCharmsTitle() {
-        throw new UnsupportedOperationException("Should not be called by ExperienceOverviewPresenter"); //$NON-NLS-1$
-      }
-
-      public String getAdvantagesTitle() {
-        throw new UnsupportedOperationException("Should not be called by ExperienceOverviewPresenter"); //$NON-NLS-1$
-      }
-
-      public String getEssenceTitle() {
-        throw new UnsupportedOperationException("Should not be called by ExperienceOverviewPresenter"); //$NON-NLS-1$
-      }
-
-      public String getBonusPointsTitle() {
-        throw new UnsupportedOperationException("Should not be called by ExperienceOverviewPresenter"); //$NON-NLS-1$
-      }
-
       public String getExperienceTitle() {
         return getString("Overview.Experience.Title"); //$NON-NLS-1$
       }
