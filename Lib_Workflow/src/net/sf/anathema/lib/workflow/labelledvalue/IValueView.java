@@ -2,7 +2,7 @@ package net.sf.anathema.lib.workflow.labelledvalue;
 
 import java.awt.Color;
 
-public interface ILabelledValueView<E> {
+public interface IValueView<E> {
 
   public void setTextColor(Color color);
 

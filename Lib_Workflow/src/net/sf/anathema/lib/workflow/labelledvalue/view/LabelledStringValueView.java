@@ -10,9 +10,9 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.layout.AnathemaLayoutUtilities;
-import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
+import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-public class LabelledStringValueView implements ILabelledValueView<String> {
+public class LabelledStringValueView implements IValueView<String> {
 
   protected final JLabel titleLabel;
   protected final JLabel valueLabel;
