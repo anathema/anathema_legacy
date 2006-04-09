@@ -1,8 +1,6 @@
 package net.sf.anathema.character.sidereal.colleges.presenter;
 
 import javax.swing.Icon;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.impl.IIconConstants;
@@ -17,6 +15,7 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedL
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
 import net.sf.anathema.character.sidereal.colleges.model.CollegeModelBonusPointCalculator;
 import net.sf.anathema.character.sidereal.presentation.SiderealPresentationProperties;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
@@ -80,8 +79,8 @@ public class SiderealCollegePresenter extends AbstractTraitPresenter {
         });
         collegeView.setButtonState(college.getFavorization().isCasteOrFavored(), false);
       }
-      house.addChangeListener(new ChangeListener() {
-        public void stateChanged(ChangeEvent e) {
+      house.addChangeListener(new IChangeListener() {
+        public void changeOccured() {
           setOverviewData(favoredView, generalView, bonusView, experienceView);
         }
       });

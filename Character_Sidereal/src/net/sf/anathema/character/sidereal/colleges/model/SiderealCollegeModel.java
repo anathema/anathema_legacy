@@ -1,8 +1,5 @@
 package net.sf.anathema.character.sidereal.colleges.model;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
@@ -15,6 +12,7 @@ import net.sf.anathema.character.sidereal.colleges.SiderealCollegeTemplate;
 import net.sf.anathema.character.sidereal.colleges.presenter.IAstrologicalHouse;
 import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeModel;
 import net.sf.anathema.lib.control.ChangeControl;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public class SiderealCollegeModel implements ISiderealCollegeModel {
 
@@ -31,10 +29,10 @@ public class SiderealCollegeModel implements ISiderealCollegeModel {
 
   private final IAstrologicalHouse[] allHouses;
   private final SiderealCollegeTemplate template;
-  private final ChangeControl bonusControl = new ChangeControl(this);
+  private final ChangeControl bonusControl = new ChangeControl();
 
-  private final ChangeListener houseChangeListener = new ChangeListener() {
-    public void stateChanged(ChangeEvent e) {
+  private final IChangeListener houseChangeListener = new IChangeListener() {
+    public void changeOccured() {
       bonusControl.fireChangedEvent();
     }
   };
@@ -71,7 +69,7 @@ public class SiderealCollegeModel implements ISiderealCollegeModel {
     return new CollegeModelBonusPointCalculator(allHouses, template.getBonusCosts(), template.getPoints());
   }
 
-  public void addBonusPointsChangeListener(ChangeListener listener) {
+  public void addBonusPointsChangeListener(IChangeListener listener) {
     bonusControl.addChangeListener(listener);
   }
 

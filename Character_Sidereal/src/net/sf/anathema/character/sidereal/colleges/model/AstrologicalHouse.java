@@ -3,8 +3,6 @@ package net.sf.anathema.character.sidereal.colleges.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.event.ChangeListener;
-
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
@@ -21,6 +19,7 @@ import net.sf.anathema.character.sidereal.caste.ISiderealCasteVisitor;
 import net.sf.anathema.character.sidereal.caste.SiderealCaste;
 import net.sf.anathema.character.sidereal.colleges.presenter.IAstrologicalHouse;
 import net.sf.anathema.lib.control.ChangeControl;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.util.Identificate;
 
@@ -75,7 +74,7 @@ public class AstrologicalHouse extends Identificate implements IAstrologicalHous
   }
 
   private IFavorableTrait[] colleges;
-  private final ChangeControl collegeValueChangeControl = new ChangeControl(this);
+  private final ChangeControl collegeValueChangeControl = new ChangeControl();
   private final IIntValueChangedListener collegeValueChangeListener = new IIntValueChangedListener() {
     public void valueChanged(int newValue) {
       collegeValueChangeControl.fireChangedEvent();
@@ -93,7 +92,10 @@ public class AstrologicalHouse extends Identificate implements IAstrologicalHous
     for (int index = 0; index < collegeTypes.length; index++) {
       ITraitContext traitContext = context.getTraitContext();
       ITraitTemplate houseTemplate = SimpleTraitTemplate.createEssenceLimitedTemplate(0);
-      FavorableTraitRules rules = new FavorableTraitRules(collegeTypes[index], houseTemplate, traitContext.getLimitationContext());
+      FavorableTraitRules rules = new FavorableTraitRules(
+          collegeTypes[index],
+          houseTemplate,
+          traitContext.getLimitationContext());
       colleges[index] = new FavorableTrait(
           rules,
           casteType,
@@ -111,7 +113,7 @@ public class AstrologicalHouse extends Identificate implements IAstrologicalHous
     return colleges;
   }
 
-  public void addChangeListener(ChangeListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     collegeValueChangeControl.addChangeListener(listener);
   }
 }
