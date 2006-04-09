@@ -16,14 +16,17 @@ public class AbilityPoolParser extends AbstractPoolTemplateParser {
     super(poolTemplateRegistry, templateFactory);
   }
 
+  @Override
   protected String getTagName() {
     return TAG_ABILITIES;
   }
 
+  @Override
   protected TraitTypeGroup getTraitTypeGroup() {
     return AllAbilityTraitTypeGroup.getInstance();
   }
 
+  @Override
   protected void executeResult(final GenericTraitTemplatePool traitPool) {
     templateFactory.setAbilitiesPool(traitPool);
   }

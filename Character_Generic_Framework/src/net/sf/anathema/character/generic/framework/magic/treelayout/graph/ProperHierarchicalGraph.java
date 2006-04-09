@@ -136,6 +136,7 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph {
     return crossCount;
   }
 
+  @Override
   public ProperHierarchicalGraph clone() {
     return new ProperHierarchicalGraph(allNodes, deepestLayer, type);
   }

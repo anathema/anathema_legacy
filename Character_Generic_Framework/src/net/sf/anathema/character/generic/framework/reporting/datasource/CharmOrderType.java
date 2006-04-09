@@ -4,11 +4,13 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public enum CharmOrderType implements IIdentificate {
   TreeOrder() {
+    @Override
     public void accept(ICharmOrderTypeVisitor visitor) {
       visitor.visitTreeOrder(this);
     }
   },
   Alphabet() {
+    @Override
     public void accept(ICharmOrderTypeVisitor visitor) {
       visitor.visitAlphabet(this);
     }

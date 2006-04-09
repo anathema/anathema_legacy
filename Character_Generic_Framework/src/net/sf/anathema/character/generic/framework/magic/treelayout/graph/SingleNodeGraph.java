@@ -8,6 +8,7 @@ public class SingleNodeGraph implements IProperHierarchicalGraph {
 
   private final ISimpleNode node;
 
+  @Override
   public SingleNodeGraph clone() {
     return new SingleNodeGraph(node);
   }

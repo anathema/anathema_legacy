@@ -13,6 +13,7 @@ public class CostStringBuilder extends AbstractCostStringBuilder<ICost> {
     super(resources, singularKey, pluralKey);
   }
 
+  @Override
   protected String getQualifiedValueString(ICost cost) {
     int intValue = Integer.parseInt(cost.getCost());
     return intValue

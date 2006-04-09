@@ -6,6 +6,7 @@ import net.sf.anathema.lib.lang.clone.test.AbstractDeepCloneableTest;
 
 public class GenericBonusPointCostsTest extends AbstractDeepCloneableTest {
 
+  @Override
   protected ICloneable createObjectUnderTest() {
     return new GenericBonusPointCosts();
   }
