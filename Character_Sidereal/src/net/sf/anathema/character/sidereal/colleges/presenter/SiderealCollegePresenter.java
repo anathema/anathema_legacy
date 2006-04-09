@@ -19,7 +19,7 @@ import net.sf.anathema.character.sidereal.colleges.model.CollegeModelBonusPointC
 import net.sf.anathema.character.sidereal.presentation.SiderealPresentationProperties;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
-import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
+import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 public class SiderealCollegePresenter extends AbstractTraitPresenter {
 
@@ -39,10 +39,10 @@ public class SiderealCollegePresenter extends AbstractTraitPresenter {
         resources.getString("Astrology.Overview.FavoredDots"), 2); //$NON-NLS-1$
     final ILabelledAlotmentView generalView = creationOverview.addAlotmentView(
         resources.getString("Astrology.Overview.GeneralDots"), 2); //$NON-NLS-1$
-    final ILabelledValueView<Integer> bonusView = creationOverview.addIntegerValueView(
+    final IValueView<Integer> bonusView = creationOverview.addIntegerValueView(
         resources.getString("Astrology.Overview.BonusPoints"), 2); //$NON-NLS-1$
     final IOverviewCategory experienceOverview = view.createOverview(resources.getString("Overview.Title")); //$NON-NLS-1$
-    final ILabelledValueView<Integer> experienceView = experienceOverview.addIntegerValueView(
+    final IValueView<Integer> experienceView = experienceOverview.addIntegerValueView(
         resources.getString("Astrology.Overview.Experience"), 3); //$NON-NLS-1$
 
     Icon siderealBall = resources.getImageIcon(IIconConstants.SIDEREAL_BALL);
@@ -104,8 +104,8 @@ public class SiderealCollegePresenter extends AbstractTraitPresenter {
   private void setOverviewData(
       ILabelledAlotmentView favoredView,
       ILabelledAlotmentView generalView,
-      ILabelledValueView<Integer> bonusView,
-      ILabelledValueView<Integer> experienceView) {
+      IValueView<Integer> bonusView,
+      IValueView<Integer> experienceView) {
     CollegeModelBonusPointCalculator bonusPointCalculator = (CollegeModelBonusPointCalculator) model.getBonusPointCalculator();
     bonusPointCalculator.recalculate();
     favoredView.setValue(bonusPointCalculator.getFavoredDotsSpent());
