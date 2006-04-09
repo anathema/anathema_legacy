@@ -3,33 +3,25 @@ package net.sf.anathema.lib.control;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 public class ChangeControl {
 
-  private final List<ChangeListener> listeners = new ArrayList<ChangeListener>();
-  private final Object source;
+  private final List<IChangeListener> listeners = new ArrayList<IChangeListener>();
 
-  public ChangeControl(Object source) {
-    this.source = source;
+  private synchronized List<IChangeListener> cloneListeners() {
+    return new ArrayList<IChangeListener>(listeners);
   }
 
-  private synchronized List<ChangeListener> cloneListeners(){
-    return new ArrayList<ChangeListener>(listeners);
-  }
-  
   public void fireChangedEvent() {
-    for (ChangeListener listener:cloneListeners()) {
-      listener.stateChanged(new ChangeEvent(source));
+    for (IChangeListener listener : cloneListeners()) {
+      listener.changeOccured();
     }
   }
 
-  public void addChangeListener(ChangeListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     listeners.add(listener);
   }
 
-  public void removeChangeListener(ChangeListener listener) {
-    listeners.remove(listener);    
+  public void removeChangeListener(IChangeListener listener) {
+    listeners.remove(listener);
   }
 }
