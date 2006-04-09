@@ -6,7 +6,7 @@ import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
-import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
+import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 public class EssencePanelView {
 
@@ -23,7 +23,7 @@ public class EssencePanelView {
     return essenceView;
   }
 
-  public ILabelledValueView<String> addPoolView(String labelText, String value) {
+  public IValueView<String> addPoolView(String labelText, String value) {
     LabelledOverviewStringValueView poolView = new LabelledOverviewStringValueView(labelText, value, false);
     poolView.addComponents(essencePanel);
     return poolView;

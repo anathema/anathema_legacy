@@ -25,7 +25,7 @@ import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.GuiUtilities;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
-import net.sf.anathema.lib.workflow.labelledvalue.ILabelledValueView;
+import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 public class BasicAdvantageView extends AbstractTabView<IAdvantageViewProperties> implements IBasicAdvantageView {
 
@@ -109,7 +109,7 @@ public class BasicAdvantageView extends AbstractTabView<IAdvantageViewProperties
     return essencePanelView.addEssenceView(labelText, value, maxValue);
   }
 
-  public ILabelledValueView<String> addPoolView(String labelText, String value) {
+  public IValueView<String> addPoolView(String labelText, String value) {
     return essencePanelView.addPoolView(labelText, value);
   }
 
