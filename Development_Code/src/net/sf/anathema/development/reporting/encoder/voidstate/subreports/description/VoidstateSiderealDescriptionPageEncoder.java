@@ -22,10 +22,12 @@ public class VoidstateSiderealDescriptionPageEncoder extends AbstractVoidstateDu
     this.traitEncoder = traitEncoder;
   }
 
+  @Override
   protected void encodeSecondBox(Element bandElement, Rectangle secondBoxBounds) {
     encodeColleges(bandElement, secondBoxBounds);
   }
 
+  @Override
   protected void encodeFirstBox(Element bandElement, Rectangle firstBoxBounds) {
     encodeResplendentDestinies(bandElement, firstBoxBounds);
   }

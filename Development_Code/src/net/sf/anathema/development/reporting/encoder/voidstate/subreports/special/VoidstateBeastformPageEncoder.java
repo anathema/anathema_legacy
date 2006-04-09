@@ -56,6 +56,7 @@ public class VoidstateBeastformPageEncoder extends VoidstateFirstPageEncoder {
     return boxRectangle.height;
   }
 
+  @Override
   protected int encodeCombatStats(int y, Element bandElement) {
     Rectangle boxRectangle = VoidstateCombatStatsPageEncoder.calculateExtents(basicsEncoder);
     boxRectangle.setLocation(basicsEncoder.getFirstColumnX(), y);
@@ -68,13 +69,19 @@ public class VoidstateBeastformPageEncoder extends VoidstateFirstPageEncoder {
     return boxRectangle.height;
   }
 
+  @Override
   protected void addBrawlWeapons(Element parent, Rectangle textRect, int yOffset) {
     Rectangle bounds = new Rectangle(textRect.x, textRect.y + yOffset, textRect.width, textRect.height - yOffset);
     Map<String, String> subreportParameterMap = new HashMap<String, String>();
     subreportParameterMap.put(
         ExaltVoidstateReportTemplate.PARAM_BEASTFORM_BRAWL_DATA_SOURCE,
         AbstractMagicUserCharacterReportTemplate.MELEE_WEAPON_DATA_SOURCE);
-    encodeSubreportWithParameters(parent, bounds, ExaltVoidstateReportTemplate.PARAM_BRAWL_SUBREPORT, null, subreportParameterMap);
+    encodeSubreportWithParameters(
+        parent,
+        bounds,
+        ExaltVoidstateReportTemplate.PARAM_BRAWL_SUBREPORT,
+        null,
+        subreportParameterMap);
   }
 
   private void fillInBeastFormParameter(Map<String, String> subreportParameterMap, String parameter) {
