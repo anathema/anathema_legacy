@@ -6,6 +6,7 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public class AbilityTypeGroupFactory extends AbstractTraitTypeGroupFactory {
 
+  @Override
   protected IIdentificate getGroupIdentifier(ICasteCollection casteCollection, String groupId) {
     return casteCollection.containsCasteType(groupId)
         ? casteCollection.getById(groupId)

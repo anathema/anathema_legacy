@@ -84,6 +84,7 @@ public class TestTemplate extends AbstractCharacterTemplate {
     };
   }
 
+  @Override
   public ICasteType[] getAllCasteTypes() {
     return new ICasteType[0];
   }

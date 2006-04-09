@@ -40,14 +40,6 @@ public class CreationOverviewView extends AbstractOverviewView implements ICreat
     return addStringValueView(charmCategoryPanel, labelText, ""); //$NON-NLS-1$
   }
 
-  public ILabelledValueView<Integer> addDerivedAdvantageCreationCategory(String labelText) {
-    return addDerivedView(labelText, 0, advantageCategoryPanel);
-  }
-
-  public ILabelledValueView<String> addVirtueFlawCategory(String titleText) {
-    return addStringValueView(advantageCategoryPanel, titleText, ""); //$NON-NLS-1$
-  }
-
   private ILabelledValueView<String> addStringValueView(IGridDialogPanel panel, String titleText, String valueText) {
     LabelledOverviewStringValueView flawView = new LabelledOverviewStringValueView(titleText, valueText);
     flawView.addComponents(panel);
