@@ -73,6 +73,7 @@ public class CharacterPresenter {
     initExperiencePointPresentation(getStatistics().isExperienced());
     getStatistics().getCharacterContext().getCharacterListening().addChangeListener(
         new DedicatedCharacterChangeAdapter() {
+          @Override
           public void experiencedChanged(boolean experienced) {
             initExperiencePointPresentation(experienced);
             setOverviewView(experienced);

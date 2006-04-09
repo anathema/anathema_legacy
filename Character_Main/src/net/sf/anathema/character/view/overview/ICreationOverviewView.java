@@ -16,10 +16,4 @@ public interface ICreationOverviewView extends IOverviewView {
   public ILabelledValueView<String> addCharacterConceptCategory(String titleText);
 
   public ILabelledValueView<String> addCharmCreationCategory(String labelText);
-
-  public ILabelledValueView<Integer> addDerivedAdvantageCreationCategory(String labelText);
-
-  public void initGui(IOverviewViewProperties properties);
-
-  public ILabelledValueView<String> addVirtueFlawCategory(String titleText);
 }

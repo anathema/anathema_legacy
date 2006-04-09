@@ -60,6 +60,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
       }
     });
     context.getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
+      @Override
       public void experiencedChanged(boolean experienced) {
         allowRemoveCreationBackground(!experienced);
       }

@@ -97,6 +97,7 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
       }
     });
     statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
+      @Override
       public void experiencedChanged(boolean experienced) {
         view.clearSelection();
       }
