@@ -17,7 +17,7 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterDescription;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
-import net.sf.anathema.character.model.nature.NatureType;
+import net.sf.anathema.character.model.concept.NatureType;
 import net.sf.anathema.framework.repository.AnathemaItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.resources.AnathemaResources;
