@@ -22,9 +22,8 @@ import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener
 import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
 import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.character.view.magic.ISpellViewProperties;
-import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.objectvalue.ObjectValueControl;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public class SpellView implements ISpellView {
@@ -34,7 +33,7 @@ public class SpellView implements ISpellView {
 
   private JScrollPane content;
   private JComboBox circleComboBox;
-  private final GenericControl<IObjectValueChangedListener> circleControl = new GenericControl<IObjectValueChangedListener>();
+  private final ObjectValueControl circleControl = new ObjectValueControl();
   private JPanel detailsPanel;
   private JLabel nameLabel;
   private JLabel circleLabel;
@@ -59,13 +58,8 @@ public class SpellView implements ISpellView {
     circleComboBox = new JComboBox(circles);
     circleComboBox.setRenderer(properties.getCircleSelectionRenderer());
     circleComboBox.addActionListener(new ActionListener() {
-      @SuppressWarnings("unchecked")
       public void actionPerformed(ActionEvent e) {
-        circleControl.forAllDo(new IClosure<IObjectValueChangedListener>() {
-          public void execute(IObjectValueChangedListener input) {
-            input.valueChanged(null, circleComboBox.getSelectedItem());
-          }
-        });
+        circleControl.fireValueChangedEvent(null, circleComboBox.getSelectedItem());
       }
     });
     filterPanel.add(circleComboBox);
@@ -118,7 +112,7 @@ public class SpellView implements ISpellView {
   }
 
   public synchronized void addCircleSelectionListener(IObjectValueChangedListener listener) {
-    circleControl.addListener(listener);
+    circleControl.addObjectValueChangeListener(listener);
   }
 
   public synchronized void addSpellSelectionListener(ListSelectionListener listener) {
