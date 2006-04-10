@@ -1,17 +1,15 @@
 package net.sf.anathema.framework.view.item;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.Icon;
 
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
+import net.sf.anathema.lib.control.stringvalue.StringValueControl;
 
 public abstract class AbstractItemView implements IItemView {
 
   private String name;
-  private List<IStringValueChangedListener> nameListeners = new ArrayList<IStringValueChangedListener>();
+  private final StringValueControl control = new StringValueControl();
   private final Icon icon;
 
   protected AbstractItemView(String name, Icon icon) {
@@ -35,19 +33,16 @@ public abstract class AbstractItemView implements IItemView {
     return icon;
   }
 
-  public synchronized final void addNameChangedListener(IStringValueChangedListener nameListener) {
-    nameListeners.add(nameListener);
+  public void addNameChangedListener(IStringValueChangedListener nameListener) {
+    control.addStringValueChangeListener(nameListener);
   }
 
-  public synchronized final void removeNameChangedListener(IStringValueChangedListener nameListener) {
-    nameListeners.remove(nameListener);
+  public void removeNameChangedListener(IStringValueChangedListener nameListener) {
+    control.removeStringValueChangeListener(nameListener);
   }
 
-  public synchronized final void fireNameChangedEvent(String newName) {
-    List<IStringValueChangedListener> clonedListeners = new ArrayList<IStringValueChangedListener>(nameListeners);
-    for (IStringValueChangedListener listener : clonedListeners) {
-      listener.valueChanged(newName);
-    }
+  public void fireNameChangedEvent(String newName) {
+    control.fireValueChangedEvent(newName);
   }
 
   public void dispose() {
