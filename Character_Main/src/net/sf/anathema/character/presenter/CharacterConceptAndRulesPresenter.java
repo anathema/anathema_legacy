@@ -107,13 +107,12 @@ public class CharacterConceptAndRulesPresenter {
               int index,
               boolean isSelected,
               boolean cellHasFocus) {
-            INatureType natureType = (INatureType) value;
             String printName;
             if (value == null) {
               printName = resources.getString("ComboBox.SelectLabel"); //$NON-NLS-1$
             }
             else {
-              printName = natureType.getName();
+              printName = ((INatureType) value).getName();
             }
             return super.getListCellRendererComponent(list, printName, index, isSelected, cellHasFocus);
           }
