@@ -1,8 +1,6 @@
 package net.sf.anathema.campaign.music.presenter.library;
 
 import javax.swing.Action;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import net.sf.anathema.campaign.music.model.IMusicDatabase;
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
