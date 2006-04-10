@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.framework.additionaltemplate.model;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public interface IAdditionalModelFactory {
 
