@@ -3,8 +3,6 @@ package net.sf.anathema.character.impl.view.magic;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -24,6 +22,8 @@ import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener
 import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
 import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.character.view.magic.ISpellViewProperties;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.util.IIdentificate;
 
@@ -34,7 +34,7 @@ public class SpellView implements ISpellView {
 
   private JScrollPane content;
   private JComboBox circleComboBox;
-  private final List<IObjectValueChangedListener> circleListeners = new ArrayList<IObjectValueChangedListener>();
+  private final GenericControl<IObjectValueChangedListener> circleControl = new GenericControl<IObjectValueChangedListener>();
   private JPanel detailsPanel;
   private JLabel nameLabel;
   private JLabel circleLabel;
@@ -61,9 +61,11 @@ public class SpellView implements ISpellView {
     circleComboBox.addActionListener(new ActionListener() {
       @SuppressWarnings("unchecked")
       public void actionPerformed(ActionEvent e) {
-        for (IObjectValueChangedListener listener : new ArrayList<IObjectValueChangedListener>(circleListeners)) {
-          listener.valueChanged(null, circleComboBox.getSelectedItem());
-        }
+        circleControl.forAllDo(new IClosure<IObjectValueChangedListener>() {
+          public void execute(IObjectValueChangedListener input) {
+            input.valueChanged(null, circleComboBox.getSelectedItem());
+          }
+        });
       }
     });
     filterPanel.add(circleComboBox);
@@ -116,7 +118,7 @@ public class SpellView implements ISpellView {
   }
 
   public synchronized void addCircleSelectionListener(IObjectValueChangedListener listener) {
-    circleListeners.add(listener);
+    circleControl.addListener(listener);
   }
 
   public synchronized void addSpellSelectionListener(ListSelectionListener listener) {
