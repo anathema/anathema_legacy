@@ -2,8 +2,8 @@ package net.sf.anathema.character.model.generic;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IConcept;
-import net.sf.anathema.character.model.ICharacterConcept;
-import net.sf.anathema.character.model.nature.INatureType;
+import net.sf.anathema.character.model.concept.ICharacterConcept;
+import net.sf.anathema.character.model.concept.INatureType;
 
 public class GenericConcept implements IConcept {
 

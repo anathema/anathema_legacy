@@ -1,4 +1,4 @@
-package net.sf.anathema.character.model.nature;
+package net.sf.anathema.character.model.concept;
 
 import java.io.File;
 import java.io.FileInputStream;

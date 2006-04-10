@@ -9,8 +9,8 @@ import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
+import net.sf.anathema.character.model.concept.INatureProvider;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
-import net.sf.anathema.character.model.nature.INatureProvider;
 import net.sf.anathema.character.presenter.advance.ExperienceConfigurationPresenter;
 import net.sf.anathema.character.presenter.charm.MagicPresenter;
 import net.sf.anathema.character.presenter.overview.CreationOverviewPresenter;

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.model.nature;
+package net.sf.anathema.character.model.concept;
 
 import net.sf.anathema.lib.exception.AnathemaException;
 
