@@ -2,9 +2,9 @@ package net.sf.anathema.character.impl.model.concept;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.impl.model.TypedDescription;
-import net.sf.anathema.character.model.ICharacterConcept;
 import net.sf.anathema.character.model.ITypedDescription;
-import net.sf.anathema.character.model.nature.INatureType;
+import net.sf.anathema.character.model.concept.ICharacterConcept;
+import net.sf.anathema.character.model.concept.INatureType;
 import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 

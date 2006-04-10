@@ -8,7 +8,7 @@ import java.io.OutputStream;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.model.nature.INatureProvider;
+import net.sf.anathema.character.model.concept.INatureProvider;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.AbstractSingleFileItemPersister;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;

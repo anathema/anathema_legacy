@@ -22,7 +22,7 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.persistence.charm.CharmConfigurationPersister;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterStatistics;
-import net.sf.anathema.character.model.nature.INatureProvider;
+import net.sf.anathema.character.model.concept.INatureProvider;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
