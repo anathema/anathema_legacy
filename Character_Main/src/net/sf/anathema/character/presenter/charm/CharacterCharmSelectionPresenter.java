@@ -36,7 +36,6 @@ import net.sf.anathema.charmtree.presenter.view.IDocumentLoadedListener;
 import net.sf.anathema.charmtree.presenter.view.IExaltTypeChangedListener;
 import net.sf.anathema.charmtree.presenter.view.ISVGMultiLearnableCharmView;
 import net.sf.anathema.lib.control.IChangeListener;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
@@ -115,8 +114,8 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
 
   private void initCasteListening(final ICharmSelectionView selectionView) {
     final ITypedDescription<ICasteType> caste = statistics.getCharacterConcept().getCaste();
-    caste.addTypeListener(new IObjectValueChangedListener<ICasteType>() {
-      public void valueChanged(ICasteType oldValue, ICasteType newValue) {
+    caste.addChangeListener(new IChangeListener() {
+      public void changeOccured() {
         boolean alienCharms = statistics.getCharacterTemplate()
             .getMagicTemplate()
             .getCharmTemplate()

@@ -22,6 +22,7 @@ import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
 import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
 import net.sf.anathema.framework.view.renderer.IdentificateObjectUi;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
@@ -127,9 +128,9 @@ public class CharacterConceptAndRulesPresenter {
         }
       }
     });
-    nature.addTypeListener(new IObjectValueChangedListener<INatureType>() {
-      public void valueChanged(INatureType oldValue, INatureType newValue) {
-        updateNature(natureView, willpowerConditionLabel, newValue);
+    nature.addChangeListener(new IChangeListener() {
+      public void changeOccured() {
+        updateNature(natureView, willpowerConditionLabel, nature.getType());
       }
     });
     updateNature(natureView, willpowerConditionLabel, nature.getType());
@@ -182,9 +183,9 @@ public class CharacterConceptAndRulesPresenter {
         caste.setType((ICasteType) newValue);
       }
     });
-    caste.addTypeListener(new IObjectValueChangedListener<ICasteType>() {
-      public void valueChanged(ICasteType oldValue, ICasteType newValue) {
-        casteView.setSelectedObject(newValue);
+    caste.addChangeListener(new IChangeListener() {
+      public void changeOccured() {
+        casteView.setSelectedObject(caste.getType());
       }
     });
   }
