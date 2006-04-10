@@ -81,10 +81,6 @@ public class NatureProvider implements INatureProvider {
     return new NatureType(element.attributeValue(ATTRIB_ID), element.attributeValue(ATTRIB_NAME), condition);
   }
 
-  public INatureType[] getAll() {
-    return natures.toArray(new INatureType[natures.size()]);
-  }
-
   public INatureType[] getAllSorted() {
     if (sortedNatures != null) {
       return sortedNatures.toArray(new INatureType[sortedNatures.size()]);
