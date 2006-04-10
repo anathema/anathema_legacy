@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 import net.sf.anathema.lib.container.DefaultSelectionContainer;
 import net.sf.anathema.lib.container.IGenericSelectionContainer;
-import net.sf.anathema.lib.control.ChangeControl;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.ChangeControl;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.workflow.container.ISelectionContainerModel;
 
 public class SelectionContainerModel<V> implements ISelectionContainerModel<V> {
