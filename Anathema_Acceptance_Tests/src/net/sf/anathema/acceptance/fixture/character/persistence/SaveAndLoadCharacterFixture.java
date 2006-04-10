@@ -7,7 +7,7 @@ import net.sf.anathema.acceptance.fixture.character.CharacterSummary;
 import net.sf.anathema.character.impl.module.ExaltedCharacterItemTypeConfiguration;
 import net.sf.anathema.character.impl.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.model.nature.NatureProvider;
+import net.sf.anathema.character.model.concept.NatureProvider;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.repository.AnathemaItem;

@@ -2,8 +2,8 @@ package net.sf.anathema.acceptance.fixture.character.miscellaneous;
 
 import net.sf.anathema.acceptance.fixture.character.util.AbstractCharacterColumnFixture;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.model.ICharacterConcept;
-import net.sf.anathema.character.model.nature.INatureType;
+import net.sf.anathema.character.model.concept.ICharacterConcept;
+import net.sf.anathema.character.model.concept.INatureType;
 
 public class CheckConceptFixture extends AbstractCharacterColumnFixture {
 
