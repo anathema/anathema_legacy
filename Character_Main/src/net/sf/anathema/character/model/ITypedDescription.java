@@ -1,7 +1,7 @@
 package net.sf.anathema.character.model;
 
 import net.sf.anathema.character.generic.caste.ITypedDescriptionType;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public interface ITypedDescription<T extends ITypedDescriptionType> {
 

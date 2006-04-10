@@ -1,6 +1,6 @@
 package net.sf.anathema.character.model.traits.essence;
 
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public interface IEssencePoolConfiguration {
 
