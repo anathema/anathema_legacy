@@ -11,7 +11,7 @@ import javax.swing.event.ListSelectionListener;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.view.selection.IMusicSelectionView;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.IMultiSelectionActionAddableListView;
 import net.sf.anathema.lib.resources.IResources;

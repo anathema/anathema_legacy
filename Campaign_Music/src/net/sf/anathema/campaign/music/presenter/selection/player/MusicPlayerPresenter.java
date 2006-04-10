@@ -12,7 +12,7 @@ import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.campaign.music.model.selection.ITrackDetailModel;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.framework.message.MessageUtilities;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
 

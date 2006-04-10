@@ -4,7 +4,7 @@ import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.campaign.music.model.selection.ITrackDetailModel;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.view.selection.ITrackDetailsView;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.container.SelectionContainerPresenter;

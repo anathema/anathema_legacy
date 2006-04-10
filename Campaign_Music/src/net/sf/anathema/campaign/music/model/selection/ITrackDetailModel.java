@@ -2,7 +2,7 @@ package net.sf.anathema.campaign.music.model.selection;
 
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.model.util.IMusicCategorizationModel;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public interface ITrackDetailModel extends IMusicCategorizationModel {
 

@@ -14,7 +14,7 @@ import net.sf.anathema.campaign.music.presenter.library.control.AddLibraryAction
 import net.sf.anathema.campaign.music.presenter.library.control.DeleteLibraryAction;
 import net.sf.anathema.campaign.music.presenter.library.control.LibrarySelectionListener;
 import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.resources.IResources;
 

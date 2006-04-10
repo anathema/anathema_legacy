@@ -11,7 +11,7 @@ import net.sf.anathema.campaign.music.presenter.ISearchParameter;
 import net.sf.anathema.campaign.music.presenter.util.MusicCategorizationPresenter;
 import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
 import net.sf.anathema.campaign.music.view.search.ISearchComponent;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 
 public class MusicSearchPresenter {
