@@ -3,7 +3,6 @@ package net.sf.anathema.lib.control.intvalue;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class IntValueControl {
 
   private final List<IIntValueChangedListener> listeners = new ArrayList<IIntValueChangedListener>();
