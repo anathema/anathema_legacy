@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.model;
 
 import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.character.generic.caste.ITypedDescriptionType;
+import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
@@ -29,6 +29,7 @@ import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfigurationListener;
 import net.sf.anathema.character.model.concept.ICharacterConcept;
+import net.sf.anathema.character.model.concept.INatureType;
 import net.sf.anathema.character.model.generic.GenericCharacter;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
@@ -49,13 +50,13 @@ public class CharacterStatistics implements ICharacterStatistics {
   private final IExperiencePointConfiguration experiencePoints = new ExperiencePointConfiguration();
   private final IExaltedRuleSet rules;
   private boolean experienced = false;
-  private final IObjectValueChangedListener<ITypedDescriptionType> natureChangeListener = new IObjectValueChangedListener<ITypedDescriptionType>() {
-    public void valueChanged(ITypedDescriptionType oldValue, ITypedDescriptionType newValue) {
+  private final IObjectValueChangedListener<INatureType> natureChangeListener = new IObjectValueChangedListener<INatureType>() {
+    public void valueChanged(INatureType oldValue, INatureType newValue) {
       context.getCharacterListening().fireCharacterChanged();
     }
   };
-  private final IObjectValueChangedListener<ITypedDescriptionType> casteChangeListener = new IObjectValueChangedListener<ITypedDescriptionType>() {
-    public void valueChanged(ITypedDescriptionType oldValue, ITypedDescriptionType newValue) {
+  private final IObjectValueChangedListener<ICasteType> casteChangeListener = new IObjectValueChangedListener<ICasteType>() {
+    public void valueChanged(ICasteType oldValue, ICasteType newValue) {
       context.getCharacterListening().fireCasteChanged();
     }
   };
@@ -120,8 +121,8 @@ public class CharacterStatistics implements ICharacterStatistics {
 
   private CharacterConcept initConcept() {
     CharacterConcept characterConcept = new CharacterConcept();
-    concept.getCaste().addTypeListener(casteChangeListener);
-    concept.getNature().addTypeListener(natureChangeListener);
+    characterConcept.getCaste().addTypeListener(casteChangeListener);
+    characterConcept.getNature().addTypeListener(natureChangeListener);
     return characterConcept;
   }
 

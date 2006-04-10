@@ -10,7 +10,7 @@ import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
 public class TypedDescription<T extends ITypedDescriptionType> implements ITypedDescription<T> {
 
-  private final List<IObjectValueChangedListener<ITypedDescriptionType>> typeListeners = new ArrayList<IObjectValueChangedListener<ITypedDescriptionType>>();
+  private final List<IObjectValueChangedListener<T>> typeListeners = new ArrayList<IObjectValueChangedListener<T>>();
   private T type;
 
   public TypedDescription(T type) {
@@ -31,14 +31,13 @@ public class TypedDescription<T extends ITypedDescriptionType> implements ITyped
     fireTypeChangedEvent(oldType, type);
   }
 
-  public final synchronized void addTypeListener(IObjectValueChangedListener<ITypedDescriptionType> listener) {
+  public final synchronized void addTypeListener(IObjectValueChangedListener<T> listener) {
     typeListeners.add(listener);
   }
 
   protected final synchronized void fireTypeChangedEvent(final T oldValue, final T newType) {
-    ArrayList<IObjectValueChangedListener<ITypedDescriptionType>> clonedList = new ArrayList<IObjectValueChangedListener<ITypedDescriptionType>>(
-        typeListeners);
-    for (IObjectValueChangedListener<ITypedDescriptionType> listener : clonedList) {
+    ArrayList<IObjectValueChangedListener<T>> clonedList = new ArrayList<IObjectValueChangedListener<T>>(typeListeners);
+    for (IObjectValueChangedListener<T> listener : clonedList) {
       listener.valueChanged(oldValue, newType);
     }
   }
