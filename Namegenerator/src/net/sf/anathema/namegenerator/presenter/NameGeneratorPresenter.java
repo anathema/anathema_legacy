@@ -5,7 +5,7 @@ import java.awt.Component;
 import javax.swing.JComponent;
 
 import net.disy.commons.swing.action.SmartAction;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
