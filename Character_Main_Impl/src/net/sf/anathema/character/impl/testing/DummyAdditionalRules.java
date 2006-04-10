@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
 import net.sf.anathema.character.generic.additionalrules.ITraitCostModifier;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
-import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.impl.additional.DefaultTraitCostModifier;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
@@ -28,10 +27,6 @@ public final class DummyAdditionalRules implements IAdditionalRules, IAdditional
   }
 
   public boolean isRejected(IBackgroundTemplate backgroundTemplate) {
-    return false;
-  }
-
-  public boolean isAllowedAlienCharms(ICasteType type) {
     return false;
   }
 
