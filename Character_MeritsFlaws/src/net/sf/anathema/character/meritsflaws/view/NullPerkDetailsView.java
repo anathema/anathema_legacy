@@ -4,7 +4,7 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 
 import net.sf.anathema.character.meritsflaws.presenter.view.IPerkDetailsView;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class NullPerkDetailsView implements IPerkDetailsView {
 

@@ -14,7 +14,7 @@ import net.sf.anathema.character.meritsflaws.view.MeritsFlawsTabView;
 import net.sf.anathema.character.meritsflaws.view.MultiValuePerkDetailsView;
 import net.sf.anathema.character.meritsflaws.view.NullPerkDetailsView;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 
 public class MeritsFlawsPresenter {

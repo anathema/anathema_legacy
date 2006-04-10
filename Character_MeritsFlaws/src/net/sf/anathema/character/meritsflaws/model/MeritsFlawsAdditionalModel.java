@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.meritsflaws.presenter.IMeritsFlawsAdditionalModel;
 import net.sf.anathema.character.meritsflaws.presenter.IMeritsFlawsModel;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class MeritsFlawsAdditionalModel implements IMeritsFlawsAdditionalModel {
 

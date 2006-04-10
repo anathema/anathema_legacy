@@ -2,7 +2,7 @@ package net.sf.anathema.character.meritsflaws.presenter.view;
 
 import javax.swing.JComponent;
 
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public interface IPerkDetailsView {
 
