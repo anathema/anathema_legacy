@@ -6,11 +6,11 @@ import java.util.List;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.caste.ITypedDescriptionType;
 import net.sf.anathema.character.model.ITypedDescription;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.IChangeListener;
 
 public class TypedDescription<T extends ITypedDescriptionType> implements ITypedDescription<T> {
 
-  private final List<IObjectValueChangedListener<T>> typeListeners = new ArrayList<IObjectValueChangedListener<T>>();
+  private final List<IChangeListener> typeListeners = new ArrayList<IChangeListener>();
   private T type;
 
   public TypedDescription(T type) {
@@ -26,19 +26,18 @@ public class TypedDescription<T extends ITypedDescriptionType> implements ITyped
     if (this.type == type) {
       return;
     }
-    T oldType = this.type;
     this.type = type;
-    fireTypeChangedEvent(oldType, type);
+    fireTypeChangedEvent();
   }
 
-  public final synchronized void addTypeListener(IObjectValueChangedListener<T> listener) {
+  public final synchronized void addChangeListener(IChangeListener listener) {
     typeListeners.add(listener);
   }
 
-  protected final synchronized void fireTypeChangedEvent(final T oldValue, final T newType) {
-    ArrayList<IObjectValueChangedListener<T>> clonedList = new ArrayList<IObjectValueChangedListener<T>>(typeListeners);
-    for (IObjectValueChangedListener<T> listener : clonedList) {
-      listener.valueChanged(oldValue, newType);
+  protected final synchronized void fireTypeChangedEvent() {
+    ArrayList<IChangeListener> clonedList = new ArrayList<IChangeListener>(typeListeners);
+    for (IChangeListener listener : clonedList) {
+      listener.changeOccured();
     }
   }
 }
