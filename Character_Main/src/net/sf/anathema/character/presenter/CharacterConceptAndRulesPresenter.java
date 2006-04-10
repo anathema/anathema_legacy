@@ -107,22 +107,15 @@ public class CharacterConceptAndRulesPresenter {
               int index,
               boolean isSelected,
               boolean cellHasFocus) {
-            INatureType valueIdentificate = (INatureType) value;
-            Component component;
+            INatureType natureType = (INatureType) value;
+            String printName;
             if (value == null) {
-              component = super.getListCellRendererComponent(
-                  list,
-                  resources.getString("ComboBox.SelectLabel"), index, isSelected, cellHasFocus); //$NON-NLS-1$
+              printName = resources.getString("ComboBox.SelectLabel"); //$NON-NLS-1$
             }
             else {
-              component = super.getListCellRendererComponent(
-                  list,
-                  valueIdentificate.getName(),
-                  index,
-                  isSelected,
-                  cellHasFocus);
+              printName = natureType.getName();
             }
-            return component;
+            return super.getListCellRendererComponent(list, printName, index, isSelected, cellHasFocus);
           }
         },
         false);
