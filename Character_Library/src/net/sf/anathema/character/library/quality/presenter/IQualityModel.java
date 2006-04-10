@@ -1,6 +1,6 @@
 package net.sf.anathema.character.library.quality.presenter;
 
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public interface IQualityModel<Q extends IQuality> {
 

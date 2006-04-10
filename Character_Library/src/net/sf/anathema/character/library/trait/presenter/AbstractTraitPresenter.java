@@ -2,7 +2,7 @@ package net.sf.anathema.character.library.trait.presenter;
 
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
 public abstract class AbstractTraitPresenter {

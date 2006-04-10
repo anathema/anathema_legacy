@@ -2,7 +2,7 @@ package net.sf.anathema.character.library.trait;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IBasicTrait;
 import net.sf.anathema.character.library.trait.specialty.ISpecialtiesContainer;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
 public interface ITrait extends IBasicTrait, IModifiableGenericTrait {
