@@ -10,7 +10,6 @@ import javax.swing.text.JTextComponent;
 import net.disy.commons.swing.ui.IObjectUi;
 import net.disy.commons.swing.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.caste.ITypedDescriptionType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -128,9 +127,9 @@ public class CharacterConceptAndRulesPresenter {
         }
       }
     });
-    nature.addTypeListener(new IObjectValueChangedListener<ITypedDescriptionType>() {
-      public void valueChanged(ITypedDescriptionType oldValue, ITypedDescriptionType newValue) {
-        updateNature(natureView, willpowerConditionLabel, (INatureType) newValue);
+    nature.addTypeListener(new IObjectValueChangedListener<INatureType>() {
+      public void valueChanged(INatureType oldValue, INatureType newValue) {
+        updateNature(natureView, willpowerConditionLabel, newValue);
       }
     });
     updateNature(natureView, willpowerConditionLabel, nature.getType());
@@ -183,8 +182,8 @@ public class CharacterConceptAndRulesPresenter {
         caste.setType((ICasteType) newValue);
       }
     });
-    caste.addTypeListener(new IObjectValueChangedListener<ITypedDescriptionType>() {
-      public void valueChanged(ITypedDescriptionType oldValue, ITypedDescriptionType newValue) {
+    caste.addTypeListener(new IObjectValueChangedListener<ICasteType>() {
+      public void valueChanged(ICasteType oldValue, ICasteType newValue) {
         casteView.setSelectedObject(newValue);
       }
     });

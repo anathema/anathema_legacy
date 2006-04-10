@@ -9,5 +9,5 @@ public interface ITypedDescription<T extends ITypedDescriptionType> {
 
   public void setType(T type);
 
-  public void addTypeListener(IObjectValueChangedListener<ITypedDescriptionType> listener);
+  public void addTypeListener(IObjectValueChangedListener<T> listener);
 }
