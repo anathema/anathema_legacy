@@ -17,8 +17,8 @@ import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntr
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.legality.LegalityFontProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;
