@@ -4,7 +4,7 @@ import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawView;
 import net.sf.anathema.character.library.virtueflaw.presenter.VirtueFlawPresenter;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 

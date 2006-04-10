@@ -10,8 +10,8 @@ import net.sf.anathema.character.lunar.beastform.model.gift.GiftVisitorAdapter;
 import net.sf.anathema.character.lunar.beastform.model.gift.IGift;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformAttribute;
 import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IClosure;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
 public class BeastformGroupCost implements IBeastformGroupCost {

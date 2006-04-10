@@ -14,7 +14,7 @@ import net.sf.anathema.character.lunar.beastform.view.IBeastformOverviewView;
 import net.sf.anathema.character.lunar.beastform.view.IBeastformOverviewViewProperties;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;

@@ -25,7 +25,7 @@ import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.character.lunar.LunarCharacterModule;
 import net.sf.anathema.character.lunar.renown.RenownTemplate;
 import net.sf.anathema.character.lunar.renown.presenter.IRenownModel;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
 
