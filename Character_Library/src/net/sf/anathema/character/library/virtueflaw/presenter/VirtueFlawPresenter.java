@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
 import net.sf.anathema.framework.view.AbstractSelectCellRenderer;
+import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
@@ -68,9 +69,9 @@ public class VirtueFlawPresenter {
             return listCellRendererComponent;
           }
         });
-    virtueFlaw.addRootListener(new IObjectValueChangedListener<VirtueType>() {
-      public void valueChanged(VirtueType oldValue, VirtueType newValue) {
-        rootView.setSelectedObject(newValue);
+    virtueFlaw.addRootChangeListener(new IChangeListener() {
+      public void changeOccured() {
+        rootView.setSelectedObject(virtueFlaw.getRoot());
       }
     });
     rootView.addObjectSelectionChangedListener(new IObjectValueChangedListener() {
