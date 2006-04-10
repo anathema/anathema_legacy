@@ -4,6 +4,7 @@ import java.awt.Component;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.Icon;
+import javax.swing.JList;
 import javax.swing.text.JTextComponent;
 
 import net.disy.commons.swing.ui.IObjectUi;
@@ -99,10 +100,9 @@ public class CharacterConceptAndRulesPresenter {
     final IObjectSelectionView natureView = view.addConceptObjectSelectionView(resources.getString("Label.Nature"), //$NON-NLS-1$
         natures,
         new DefaultListCellRenderer() {
-
           @Override
-          public java.awt.Component getListCellRendererComponent(
-              javax.swing.JList list,
+          public Component getListCellRendererComponent(
+              JList list,
               Object value,
               int index,
               boolean isSelected,
