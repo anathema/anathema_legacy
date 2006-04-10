@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.control;
+package net.sf.anathema.lib.control.change;
 
 import java.util.EventListener;
 

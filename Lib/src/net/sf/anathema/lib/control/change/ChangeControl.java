@@ -1,7 +1,8 @@
-package net.sf.anathema.lib.control;
+package net.sf.anathema.lib.control.change;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class ChangeControl {
 
