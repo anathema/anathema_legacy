@@ -28,24 +28,20 @@ public class ButtonControlledObjectSelectionView implements IObjectSelectionView
     this.comboBox = new ColoredJComboBox(new DefaultComboBoxModel(objects));
     this.comboBox.setEditable(true);
     this.comboBox.setEditor(editor);
-    addButton=new JButton(null,addIcon);
-    addButton.setPreferredSize(new Dimension(addIcon.getIconWidth()+4,addIcon.getIconHeight()+4));
+    addButton = new JButton(null, addIcon);
+    addButton.setPreferredSize(new Dimension(addIcon.getIconWidth() + 4, addIcon.getIconHeight() + 4));
   }
 
-  public void addTo(
-      final String labelText,
-      final ListCellRenderer renderer,
-      IGridDialogPanel panel) {
+  public void addTo(final String labelText, final ListCellRenderer renderer, IGridDialogPanel panel) {
     panel.add(new IDialogComponent() {
-
       public int getColumnCount() {
         return 3;
       }
 
       public void fillInto(JPanel layoutPanel, int columnCount) {
         layoutPanel.add(new JLabel(labelText));
-        comboBox.setRenderer(renderer);        
-        layoutPanel.add(comboBox,GridDialogLayoutData.FILL_HORIZONTAL);
+        comboBox.setRenderer(renderer);
+        layoutPanel.add(comboBox, GridDialogLayoutData.FILL_HORIZONTAL);
         layoutPanel.add(addButton);
       }
     });
@@ -57,7 +53,6 @@ public class ButtonControlledObjectSelectionView implements IObjectSelectionView
 
   public void addObjectSelectionChangedListener(final IObjectValueChangedListener listener) {
     addButton.addActionListener(new ActionListener() {
-
       public void actionPerformed(ActionEvent e) {
         listener.valueChanged(null, comboBox.getSelectedItem());
       }
