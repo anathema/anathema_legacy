@@ -141,7 +141,7 @@ public class CharacterConceptAndRulesPresenter {
         updateNature(natureView, willpowerConditionLabel, (INatureType) newValue);
       }
     });
-    updateNature(natureView, willpowerConditionLabel, statistics.getCharacterConcept().getNature().getType());
+    updateNature(natureView, willpowerConditionLabel, nature.getType());
   }
 
   private void initRulesPresentation() {
