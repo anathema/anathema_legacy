@@ -11,7 +11,7 @@ public class StringValueControl {
     this.listeners.add(listener);
   }
 
-  public synchronized void removeIntValueChangeListener(IStringValueChangedListener listener) {
+  public synchronized void removeStringValueChangeListener(IStringValueChangedListener listener) {
     this.listeners.remove(listener);
   }
 
