@@ -18,8 +18,8 @@ import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.sidereal.caste.ISiderealCasteVisitor;
 import net.sf.anathema.character.sidereal.caste.SiderealCaste;
 import net.sf.anathema.character.sidereal.colleges.presenter.IAstrologicalHouse;
-import net.sf.anathema.lib.control.ChangeControl;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.ChangeControl;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.util.Identificate;
 
