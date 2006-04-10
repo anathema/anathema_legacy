@@ -32,7 +32,7 @@ import net.sf.anathema.character.model.generic.GenericCharacter;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.model.traits.essence.IEssencePoolConfiguration;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class CharacterStatistics implements ICharacterStatistics {
 

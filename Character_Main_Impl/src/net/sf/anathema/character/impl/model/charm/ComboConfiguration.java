@@ -13,8 +13,8 @@ import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfigurationListener;
 import net.sf.anathema.character.model.charm.learn.IComboLearnStrategy;
 import net.sf.anathema.lib.control.GenericControl;
-import net.sf.anathema.lib.control.IChangeListener;
 import net.sf.anathema.lib.control.IClosure;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class ComboConfiguration implements IComboConfiguration {
 

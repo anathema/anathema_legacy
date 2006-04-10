@@ -13,8 +13,8 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.model.traits.essence.IEssencePoolStrategy;
-import net.sf.anathema.lib.control.ChangeControl;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.ChangeControl;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class EssencePoolStrategy implements IEssencePoolStrategy {
 

@@ -14,8 +14,8 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.view.AbstractTraitView;
 import net.sf.anathema.character.view.ISpecialtyView;
-import net.sf.anathema.lib.control.ChangeControl;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.ChangeControl;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class SpecialtyView extends AbstractTraitView implements ISpecialtyView {
 
