@@ -5,8 +5,8 @@ import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.presenter.IMusicEvent;
 import net.sf.anathema.campaign.music.presenter.IMusicMood;
 import net.sf.anathema.campaign.music.presenter.IMusicTheme;
-import net.sf.anathema.lib.control.ChangeControl;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.ChangeControl;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public abstract class AbstractTrackDetailModel implements ITrackDetailModel {
 

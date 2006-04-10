@@ -15,8 +15,8 @@ import net.sf.anathema.campaign.music.presenter.IMusicMood;
 import net.sf.anathema.campaign.music.presenter.IMusicSearchControl;
 import net.sf.anathema.campaign.music.presenter.IMusicTheme;
 import net.sf.anathema.campaign.music.presenter.ISearchParameter;
-import net.sf.anathema.lib.control.ChangeControl;
-import net.sf.anathema.lib.control.IChangeListener;
+import net.sf.anathema.lib.control.change.ChangeControl;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 import com.db4o.query.Candidate;
 
