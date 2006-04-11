@@ -32,15 +32,13 @@ public class CreationOverviewPresenter {
   private final ICharacterTemplate template;
   private final List<IOverviewSubPresenter> presenters = new ArrayList<IOverviewSubPresenter>();
 
-  private IValueView<String> totalView;
   private IValueView<String> casteView;
   private IValueView<String> willpowerView;
-  private IValueView<String> miscView;
 
   public CreationOverviewPresenter(
       IResources resources,
       ICharacterStatistics statistics,
-      IOverviewView bonusPointView,
+      IOverviewView overviewView,
       IBonusPointManagement management) {
     this.management = management;
     this.resources = resources;
@@ -52,7 +50,7 @@ public class CreationOverviewPresenter {
         updateOverview();
       }
     });
-    this.view = bonusPointView;
+    this.view = overviewView;
   }
 
   public void init() {
@@ -70,9 +68,26 @@ public class CreationOverviewPresenter {
   private void initTotal() {
     IOverviewCategory category = view.addOverviewCategory(getString("Overview.BonusPoints.Title")); //$NON-NLS-1$
     if (statistics.getExtendedConfiguration().getAdditionalModels().length > 0) {
-      miscView = category.addStringValueView(getString("Overview.MiscPointsCategory")); //$NON-NLS-1$
+      IValueView<Integer> miscView = category.addIntegerValueView(getString("Overview.MiscPointsCategory"), 2); //$NON-NLS-1$
+      presenters.add(new ValueSubPresenter(management.getAdditionalModelModel(), miscView));
     }
-    totalView = category.addStringValueView(getString("Overview.BonusPointsCategory")); //$NON-NLS-1$
+    IAdditionalRules additionalRules = template.getAdditionalRules();
+    if (additionalRules == null || additionalRules.getAdditionalBonusPointPools().length == 0) {
+      ILabelledAlotmentView totalView = category.addAlotmentView(getString("Overview.BonusPointsCategory"), 2); //$NON-NLS-1$
+      presenters.add(new AlotmentSubPresenter(
+          management.getTotalModel(),
+          totalView,
+          getCreationPoints().getBonusPointCount()));
+    }
+    else {
+      IAdditionalAlotmentView totalView = category.addAdditionalAlotmentView(
+          getString("Overview.BonusPointsCategory"), 5); //$NON-NLS-1$
+      presenters.add(new AdditionalAlotmentSubPresenter(
+          management.getTotalModel(),
+          totalView,
+          getCreationPoints().getBonusPointCount()));
+
+    }
   }
 
   private void initConcept() {
@@ -180,15 +195,6 @@ public class CreationOverviewPresenter {
     for (IOverviewSubPresenter presenter : presenters) {
       presenter.update();
     }
-    updateMiscView();
-    updateTotalView();
-  }
-
-  private void updateMiscView() {
-    if (miscView == null) {
-      return;
-    }
-    miscView.setValue(String.valueOf(management.getAdditionalModelTotalValue()));
   }
 
   private ICreationPoints getCreationPoints() {
@@ -235,25 +241,6 @@ public class CreationOverviewPresenter {
       return null;
     }
     return template.getPresentationProperties().getCasteResourceBase() + casteType.getId();
-  }
-
-  private void updateTotalView() {
-    int bonusPointCount = getCreationPoints().getBonusPointCount() + management.getAdditionalGeneralBonusPoints();
-    IAdditionalRules additionalRules = template.getAdditionalRules();
-    if (additionalRules == null || additionalRules.getAdditionalBonusPointPools().length == 0) {
-      totalView.setValue(management.getTotalBonusPointsSpent() + " / " + bonusPointCount); //$NON-NLS-1$
-    }
-    else {
-      totalView.setValue(management.getStandardBonusPointsSpent() + "+" //$NON-NLS-1$
-          + management.getAdditionalBonusPointSpent()
-          + " / " //$NON-NLS-1$
-          + bonusPointCount
-          + "+" //$NON-NLS-1$
-          + management.getAdditionalBonusPointAmount());
-    }
-    int pointsSpent = management.getStandardBonusPointsSpent();
-    boolean overspent = pointsSpent > bonusPointCount;
-    totalView.setTextColor(overspent ? LegalityColorProvider.COLOR_HIGH : LegalityColorProvider.COLOR_OKAY);
   }
 
   private String getString(String string) {

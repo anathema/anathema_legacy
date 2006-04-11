@@ -1,8 +1,6 @@
 package net.sf.anathema.character.presenter.overview;
 
-public interface ISpendingModel {
-
-  public int getValue();
+public interface ISpendingModel extends IValueSpendingModel {
 
   public int getSpentBonusPoints();
 }

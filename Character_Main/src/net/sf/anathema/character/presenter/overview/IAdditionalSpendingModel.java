@@ -4,5 +4,7 @@ public interface IAdditionalSpendingModel extends ISpendingModel {
 
   public int getAdditionalValue();
 
-  public int getAdditionalAlotment();
+  public int getAdditionalRestrictedAlotment();
+
+  public int getAdditionalUnrestrictedAlotment();
 }
