@@ -12,7 +12,7 @@ public class CharacterConcept implements ICharacterConcept {
 
   private final ITypedDescription<ICasteType> caste = new TypedDescription<ICasteType>(ICasteType.NULL_CASTE_TYPE);
   private final ISimpleTextualDescription concept = new SimpleTextualDescription();
-  private final IWillpowerRegainingConcept willpowerRegaining = new Nature();
+  private IWillpowerRegainingConcept willpowerRegaining;
 
   public ITypedDescription<ICasteType> getCaste() {
     return caste;
@@ -20,6 +20,10 @@ public class CharacterConcept implements ICharacterConcept {
 
   public ISimpleTextualDescription getConcept() {
     return concept;
+  }
+
+  public CharacterConcept(IWillpowerRegainingConcept willpowerRegaining) {
+    this.willpowerRegaining = willpowerRegaining;
   }
 
   public IWillpowerRegainingConcept getWillpowerRegainingConcept() {

@@ -12,6 +12,7 @@ import net.sf.anathema.character.impl.model.advance.ExperiencePointConfiguration
 import net.sf.anathema.character.impl.model.charm.CharmConfiguration;
 import net.sf.anathema.character.impl.model.charm.ComboConfiguration;
 import net.sf.anathema.character.impl.model.concept.CharacterConcept;
+import net.sf.anathema.character.impl.model.concept.Nature;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
 import net.sf.anathema.character.impl.model.traits.CoreTraitConfiguration;
@@ -119,7 +120,7 @@ public class CharacterStatistics implements ICharacterStatistics {
   }
 
   private CharacterConcept initConcept() {
-    CharacterConcept characterConcept = new CharacterConcept();
+    CharacterConcept characterConcept = new CharacterConcept(new Nature());
     characterConcept.getCaste().addChangeListener(casteChangeListener);
     characterConcept.getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
       public void accept(INature nature) {
