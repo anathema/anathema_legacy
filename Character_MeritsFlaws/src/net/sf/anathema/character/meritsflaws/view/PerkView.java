@@ -141,7 +141,7 @@ public class PerkView implements IPerkView {
     });
 
     IObjectValueChangedListener<Object> filterListener = new IObjectValueChangedListener<Object>() {
-      public void valueChanged(Object oldValue, Object newValue) {
+      public void valueChanged(Object newValue) {
         control.forAllDo(new IClosure<IPerkListener>() {
           public void execute(IPerkListener input) {
             input.filterChanged(typeFilterView.getComboBox().getSelectedItem(), categoryFilterView.getComboBox()
