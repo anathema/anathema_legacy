@@ -140,7 +140,7 @@ public class PerkView implements IPerkView {
       }
     });
 
-    IObjectValueChangedListener<Object> filterListener = new IObjectValueChangedListener<Object>() {
+    IObjectValueChangedListener filterListener = new IObjectValueChangedListener() {
       public void valueChanged(Object newValue) {
         control.forAllDo(new IClosure<IPerkListener>() {
           public void execute(IPerkListener input) {
