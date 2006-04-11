@@ -11,7 +11,7 @@ public class ObjectValueControl<T> {
     this.listeners.add(listener);
   }
 
-  public synchronized void removeIntValueChangeListener(IObjectValueChangedListener<T> listener) {
+  public synchronized void removeObjectValueChangeListener(IObjectValueChangedListener<T> listener) {
     this.listeners.remove(listener);
   }
 
