@@ -7,15 +7,15 @@ public class CheckCharmPointsFixture extends AbstractCheckPointsFixture {
   }
 
   public int getGeneralPicksSpent() {
-    return createManagement().getDefaultCharmPicksSpent();
+    return createManagement().getDefaultCharmModel().getValue();
   }
 
   public int getBonusPointsSpent() {
-    return createManagement().getCharmBonusPointsSpent();
+    return createManagement().getDefaultCharmModel().getSpentBonusPoints();
   }
 
   public int getAdditionalPicksGranted() {
-    return createManagement().getAdditionalMagicPointsAmount();
+    return createManagement().getDefaultCharmModel().getAdditionalRestrictedAlotment();
   }
 
   public int getFavoredPicksGranted() {

@@ -1,6 +1,5 @@
 package net.sf.anathema.acceptance.fixture.character.costs;
 
-
 public class CheckBonusPointsFixture extends AbstractCheckPointsFixture {
 
   public boolean hasAdditionalPool() {
@@ -8,11 +7,11 @@ public class CheckBonusPointsFixture extends AbstractCheckPointsFixture {
   }
 
   public int additionalAmount() {
-    return createManagement().getAdditionalBonusPointAmount();
+    return createManagement().getTotalModel().getAdditionalRestrictedAlotment();
   }
 
   public int additionalSpent() {
-    return createManagement().getAdditionalBonusPointSpent();
+    return createManagement().getTotalModel().getAdditionalValue();
   }
 
   public int regularAmount() {
@@ -20,6 +19,6 @@ public class CheckBonusPointsFixture extends AbstractCheckPointsFixture {
   }
 
   public int regularSpent() {
-    return createManagement().getStandardBonusPointsSpent();
+    return createManagement().getTotalModel().getValue();
   }
 }
