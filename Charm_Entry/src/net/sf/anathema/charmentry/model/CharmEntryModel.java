@@ -267,7 +267,7 @@ public class CharmEntryModel {
   }
 
   private void fireGroupChanged() {
-    groupControl.fireValueChangedEvent(null, charmData.getGroupId());
+    groupControl.fireValueChangedEvent(charmData.getGroupId());
   }
 
   public void addCharmGroupIdListener(IObjectValueChangedListener<String> listener) {
