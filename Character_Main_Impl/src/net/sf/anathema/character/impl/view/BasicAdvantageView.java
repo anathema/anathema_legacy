@@ -50,12 +50,16 @@ public class BasicAdvantageView extends AbstractTabView<IAdvantageViewProperties
     virtueData.setVerticalSpan(2);
     virtueData.setVerticalAlignment(GridAlignment.FILL);
     addTitledPanel(properties.getVirtueTitle(), panel, virtuePanel, virtueData);
-    addTitledPanel(properties.getWillpowerTitle(), panel, willpowerPanel, GridDialogLayoutData.FILL_HORIZONTAL);
-    addTitledPanel(
-        properties.getEssenceTitle(),
-        panel,
-        essencePanelView.getPanel(),
-        GridDialogLayoutData.FILL_HORIZONTAL);
+    GridDialogLayoutData willpowerData = new GridDialogLayoutData();
+    willpowerData.setHorizontalAlignment(GridAlignment.FILL);
+    willpowerData.setGrabExcessHorizontalSpace(true);
+    willpowerData.setVerticalAlignment(GridAlignment.BEGINNING);
+    addTitledPanel(properties.getWillpowerTitle(), panel, willpowerPanel, willpowerData);
+    GridDialogLayoutData essenceData = new GridDialogLayoutData();
+    essenceData.setHorizontalAlignment(GridAlignment.FILL);
+    essenceData.setGrabExcessHorizontalSpace(true);
+    essenceData.setVerticalAlignment(GridAlignment.END);
+    addTitledPanel(properties.getEssenceTitle(), panel, essencePanelView.getPanel(), essenceData);
     GridDialogLayoutData fullSpanData = new GridDialogLayoutData();
     fullSpanData.setHorizontalSpan(2);
     fullSpanData.setGrabExcessHorizontalSpace(true);
