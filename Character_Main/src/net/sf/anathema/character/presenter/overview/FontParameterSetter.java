@@ -3,15 +3,15 @@ package net.sf.anathema.character.presenter.overview;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.legality.LegalityFontProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;
-import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
+import net.sf.anathema.lib.workflow.labelledvalue.IStyleableView;
 
 public class FontParameterSetter {
 
   private final int alotment;
-  private final ILabelledAlotmentView view;
+  private final IStyleableView view;
   private final ISpendingModel model;
 
-  public FontParameterSetter(ISpendingModel model, ILabelledAlotmentView view, int alotment) {
+  public FontParameterSetter(ISpendingModel model, IStyleableView view, int alotment) {
     this.model = model;
     this.view = view;
     this.alotment = alotment;

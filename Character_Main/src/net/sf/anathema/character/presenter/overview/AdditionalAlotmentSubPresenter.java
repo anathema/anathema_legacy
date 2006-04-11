@@ -21,5 +21,4 @@ public class AdditionalAlotmentSubPresenter implements IOverviewSubPresenter {
     view.setAlotment(alotment, model.getAdditionalAlotment());
     setter.setFontParameters();
   }
-
 }
