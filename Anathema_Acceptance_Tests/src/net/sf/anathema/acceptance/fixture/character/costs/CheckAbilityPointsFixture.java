@@ -3,14 +3,14 @@ package net.sf.anathema.acceptance.fixture.character.costs;
 public class CheckAbilityPointsFixture extends AbstractCheckPointsFixture {
 
   public int getFavoredPicksSpent() {
-    return createManagement().getFavoredAbilityPicksSpent();
+    return createManagement().getFavoredAbilityPickModel().getValue();
   }
-  
+
   public int getFavoredDotsSpent() {
-    return createManagement().getFavoredAbilityDotsSpent();
+    return createManagement().getFavoredAbilityModel().getValue();
   }
-  
+
   public int getGeneralDotsSpent() {
-    return createManagement().getDefaultAbilityDotsSpent();
+    return createManagement().getDefaultAbilityModel().getValue();
   }
 }
