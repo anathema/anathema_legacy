@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
 import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.character.model.concept.IMotivation;
 import net.sf.anathema.character.model.concept.INature;
 import net.sf.anathema.character.model.concept.INatureType;
 import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
@@ -87,7 +88,17 @@ public class CreationOverviewPresenter {
     if (!template.getCasteCollection().isEmpty()) {
       casteView = category.addStringValueView(getString(template.getPresentationProperties().getCasteLabelResource()));
     }
-    natureView = category.addStringValueView(getString("CharacterConcept.Nature")); //$NON-NLS-1$
+    final String[] resourcekey = new String[1];
+    statistics.getCharacterConcept().getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
+      public void accept(INature nature) {
+        resourcekey[0] = "CharacterConcept.Nature"; //$NON-NLS-1$
+      }
+
+      public void accept(IMotivation motivation) {
+        resourcekey[0] = "CharacterConcept.Motivation"; //$NON-NLS-1$
+      }
+    });
+    natureView = category.addStringValueView(getString(resourcekey[0]));
   }
 
   private void initAdvantages() {
@@ -221,6 +232,12 @@ public class CreationOverviewPresenter {
         INatureType natureType = nature.getDescription().getType();
         if (natureType != null) {
           value[0] = natureType.getName();
+        }
+      }
+
+      public void accept(IMotivation motivation) {
+        if (motivation.getDescription().getText() != null) {
+          value[0] = resources.getString("Overview.Motivation.Selected"); //$NON-NLS-1$
         }
       }
     });

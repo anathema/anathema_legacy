@@ -3,6 +3,7 @@ package net.sf.anathema.character.model.generic;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.model.concept.ICharacterConcept;
+import net.sf.anathema.character.model.concept.IMotivation;
 import net.sf.anathema.character.model.concept.INature;
 import net.sf.anathema.character.model.concept.INatureType;
 import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
@@ -19,24 +20,34 @@ public class GenericConcept implements IConcept {
     return characterConcept.getConcept().getText();
   }
 
-  public String getNatureName() {
-    INatureType natureType = getNatureType();
-    return natureType == null ? null : natureType.getName();
-  }
-
-  private INatureType getNatureType() {
-    final INatureType[] natureType = new INatureType[1];
+  public String getWillpowerRegainingConceptName() {
+    final String[] conceptName = new String[1];
     characterConcept.getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
       public void accept(INature nature) {
-        natureType[0] = nature.getDescription().getType();
+        INatureType natureType = nature.getDescription().getType();
+        conceptName[0] = natureType == null ? null : natureType.getName();
+      }
+
+      public void accept(IMotivation motivation) {
+        conceptName[0] = motivation.getDescription().getText();
       }
     });
-    INatureType type = natureType[0];
-    return type;
+    return conceptName[0];
   }
 
   public String getWillpowerCondition() {
-    INatureType natureType = getNatureType();
+    final INatureType[] natureType1 = new INatureType[1];
+    characterConcept.getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
+      public void accept(INature nature) {
+        natureType1[0] = nature.getDescription().getType();
+      }
+
+      public void accept(IMotivation motivation) {
+        throw new UnsupportedOperationException("No willpower condition for 2nd Edition characters."); //$NON-NLS-1$
+      }
+    });
+    INatureType type = natureType1[0];
+    INatureType natureType = type;
     return natureType == null ? null : natureType.getWillpowerCondition();
   }
 

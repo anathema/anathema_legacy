@@ -15,6 +15,7 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.ITypedDescription;
+import net.sf.anathema.character.model.concept.IMotivation;
 import net.sf.anathema.character.model.concept.INature;
 import net.sf.anathema.character.model.concept.INatureProvider;
 import net.sf.anathema.character.model.concept.INatureType;
@@ -57,6 +58,10 @@ public class CharacterConceptAndRulesPresenter {
       public void accept(INature nature) {
         initNaturePresentation(nature);
       }
+
+      public void accept(IMotivation motivation) {
+        initMotivationPresentation(motivation);
+      }
     });
     initConceptPresentation();
     initExperienceListening();
@@ -74,20 +79,27 @@ public class CharacterConceptAndRulesPresenter {
     view.setEnabled(!statistics.isExperienced());
   }
 
+  private void initMotivationPresentation(IMotivation motivation) {
+    initTextualDescriptionPresentation(motivation.getDescription(), "Label.Motivation"); //$NON-NLS-1$
+  }
+
   private void initConceptPresentation() {
-    final ILabelTextView conceptView = view.addLabelTextView(resources.getString("Label.Concept")); //$NON-NLS-1$
-    final ISimpleTextualDescription concept = statistics.getCharacterConcept().getConcept();
+    initTextualDescriptionPresentation(statistics.getCharacterConcept().getConcept(), "Label.Concept"); //$NON-NLS-1$
+  }
+
+  private void initTextualDescriptionPresentation(final ISimpleTextualDescription description, String resourceKey) {
+    final ILabelTextView conceptView = view.addLabelTextView(resources.getString(resourceKey));
     conceptView.addTextChangedListener(new IStringValueChangedListener() {
       public void valueChanged(String newValue) {
-        concept.setText(newValue);
+        description.setText(newValue);
       }
     });
-    concept.addTextChangedListener(new IStringValueChangedListener() {
+    description.addTextChangedListener(new IStringValueChangedListener() {
       public void valueChanged(String newValue) {
         conceptView.setText(newValue);
       }
     });
-    conceptView.setText(concept.getText());
+    conceptView.setText(description.getText());
   }
 
   private void initGui() {
