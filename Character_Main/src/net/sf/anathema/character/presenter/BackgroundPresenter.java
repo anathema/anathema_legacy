@@ -108,7 +108,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
         },
         addIcon);
     view.addObjectSelectionChangedListener(new IObjectValueChangedListener() {
-      public void valueChanged(Object oldValue, Object newValue) {
+      public void valueChanged(Object newValue) {
         IBackgroundTemplate backgroundType = getBackgroundType(newValue);
         if (backgroundType == null) {
           configuration.addBackground(newValue.toString());

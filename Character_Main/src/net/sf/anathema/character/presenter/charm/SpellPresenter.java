@@ -75,7 +75,7 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
       }
     });
     view.addCircleSelectionListener(new IObjectValueChangedListener() {
-      public void valueChanged(Object oldValue, Object newValue) {
+      public void valueChanged(Object newValue) {
         if (newValue instanceof CircleType) {
           circle = (CircleType) newValue;
         }

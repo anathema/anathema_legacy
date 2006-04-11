@@ -122,7 +122,7 @@ public class CharacterConceptAndRulesPresenter {
     natureView.setSelectedObject(nature.getType());
     final JTextComponent willpowerConditionLabel = view.addWillpowerConditionView(resources.getString("CharacterConcept.GainWillpower")); //$NON-NLS-1$
     natureView.addObjectSelectionChangedListener(new IObjectValueChangedListener() {
-      public void valueChanged(Object oldValue, Object newValue) {
+      public void valueChanged(Object newValue) {
         if (newValue instanceof INatureType) {
           nature.setType((INatureType) newValue);
         }
@@ -179,7 +179,7 @@ public class CharacterConceptAndRulesPresenter {
     final ITypedDescription<ICasteType> caste = statistics.getCharacterConcept().getCaste();
     casteView.setSelectedObject(caste.getType());
     casteView.addObjectSelectionChangedListener(new IObjectValueChangedListener() {
-      public void valueChanged(Object oldValue, Object newValue) {
+      public void valueChanged(Object newValue) {
         caste.setType((ICasteType) newValue);
       }
     });
