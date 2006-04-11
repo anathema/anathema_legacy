@@ -28,6 +28,8 @@ import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfigurationListener;
 import net.sf.anathema.character.model.concept.ICharacterConcept;
+import net.sf.anathema.character.model.concept.INature;
+import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
 import net.sf.anathema.character.model.generic.GenericCharacter;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
@@ -119,7 +121,11 @@ public class CharacterStatistics implements ICharacterStatistics {
   private CharacterConcept initConcept() {
     CharacterConcept characterConcept = new CharacterConcept();
     characterConcept.getCaste().addChangeListener(casteChangeListener);
-    characterConcept.getNature().addChangeListener(natureChangeListener);
+    characterConcept.getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
+      public void accept(INature nature) {
+        nature.getDescription().addChangeListener(natureChangeListener);
+      }
+    });
     return characterConcept;
   }
 

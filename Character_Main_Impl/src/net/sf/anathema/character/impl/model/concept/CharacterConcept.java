@@ -4,19 +4,15 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.impl.model.TypedDescription;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.concept.ICharacterConcept;
-import net.sf.anathema.character.model.concept.INatureType;
+import net.sf.anathema.character.model.concept.IWillpowerRegainingConcept;
 import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
 public class CharacterConcept implements ICharacterConcept {
 
-  private final ITypedDescription<INatureType> nature = new TypedDescription<INatureType>(null);
   private final ITypedDescription<ICasteType> caste = new TypedDescription<ICasteType>(ICasteType.NULL_CASTE_TYPE);
   private final ISimpleTextualDescription concept = new SimpleTextualDescription();
-
-  public ITypedDescription<INatureType> getNature() {
-    return nature;
-  }
+  private final IWillpowerRegainingConcept willpowerRegaining = new Nature();
 
   public ITypedDescription<ICasteType> getCaste() {
     return caste;
@@ -24,5 +20,9 @@ public class CharacterConcept implements ICharacterConcept {
 
   public ISimpleTextualDescription getConcept() {
     return concept;
+  }
+
+  public IWillpowerRegainingConcept getWillpowerRegainingConcept() {
+    return willpowerRegaining;
   }
 }

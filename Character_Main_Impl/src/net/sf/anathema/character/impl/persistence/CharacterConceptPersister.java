@@ -5,14 +5,15 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CHARACTER_CONCEPT;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CONCEPT;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_NATURE;
-
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.concept.ICharacterConcept;
+import net.sf.anathema.character.model.concept.INature;
 import net.sf.anathema.character.model.concept.INatureProvider;
 import net.sf.anathema.character.model.concept.INatureType;
+import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -28,9 +29,13 @@ public class CharacterConceptPersister {
   }
 
   public void save(Element parent, ICharacterConcept characterConcept) {
-    Element characterConceptElement = parent.addElement(TAG_CHARACTER_CONCEPT);
+    final Element characterConceptElement = parent.addElement(TAG_CHARACTER_CONCEPT);
     saveCaste(characterConceptElement, characterConcept.getCaste());
-    saveNature(characterConceptElement, characterConcept.getNature());
+    characterConcept.getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
+      public void accept(INature nature) {
+        saveNature(characterConceptElement, nature);
+      }
+    });
     saveConcept(characterConceptElement, characterConcept.getConcept());
   }
 
@@ -51,9 +56,9 @@ public class CharacterConceptPersister {
     }
   }
 
-  private void saveNature(Element parent, ITypedDescription<INatureType> nature) {
+  private void saveNature(Element parent, INature nature) {
     Element natureElement = parent.addElement(TAG_NATURE);
-    INatureType natureType = nature.getType();
+    INatureType natureType = nature.getDescription().getType();
     if (natureType != null) {
       natureElement.addAttribute(ATTRIB_TYPE, natureType.getId());
     }
@@ -61,9 +66,13 @@ public class CharacterConceptPersister {
 
   public void load(Element parent, ICharacterConcept characterConcept, ICasteCollection casteCollection)
       throws PersistenceException {
-    Element conceptElement = parent.element(TAG_CHARACTER_CONCEPT);
+    final Element conceptElement = parent.element(TAG_CHARACTER_CONCEPT);
     loadCaste(conceptElement, characterConcept, casteCollection);
-    loadNature(conceptElement, characterConcept);
+    characterConcept.getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
+      public void accept(INature nature) {
+        loadNature(conceptElement, nature);
+      }
+    });
     loadConcept(conceptElement, characterConcept);
   }
 
@@ -75,14 +84,14 @@ public class CharacterConceptPersister {
     }
   }
 
-  private void loadNature(Element parent, ICharacterConcept characterConcept) {
+  private void loadNature(Element parent, INature nature) {
     Element natureElement = parent.element(TAG_NATURE);
     if (natureElement == null) {
       return;
     }
     String natureTypeId = natureElement.attributeValue(ATTRIB_TYPE);
     if (natureTypeId != null) {
-      characterConcept.getNature().setType(natureProvider.getById(natureTypeId));
+      nature.getDescription().setType(natureProvider.getById(natureTypeId));
     }
   }
 
