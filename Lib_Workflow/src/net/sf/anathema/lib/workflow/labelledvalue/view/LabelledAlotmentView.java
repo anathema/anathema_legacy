@@ -22,10 +22,6 @@ public class LabelledAlotmentView extends AbstractLabelledIntegerValueView imple
   private final JLabel seperatorLabel;
   protected final JLabel maxPointLabel;
 
-  public LabelledAlotmentView(String labelText, int currentPoints, int maxPoints) {
-    this(labelText, currentPoints, maxPoints, 2);
-  }
-
   public LabelledAlotmentView(String labelText, int currentPoints, int maxPoints, int maxValueLength) {
     super(labelText, createLengthString(maxValueLength), currentPoints, true);
     this.maxPointLabel = createLabel(
