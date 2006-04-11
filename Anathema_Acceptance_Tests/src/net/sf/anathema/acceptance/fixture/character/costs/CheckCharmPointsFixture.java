@@ -3,7 +3,7 @@ package net.sf.anathema.acceptance.fixture.character.costs;
 public class CheckCharmPointsFixture extends AbstractCheckPointsFixture {
 
   public int getFavoredPicksSpent() {
-    return createManagement().getFavoredCharmPicksSpent();
+    return createManagement().getFavoredCharmModel().getValue();
   }
 
   public int getGeneralPicksSpent() {
