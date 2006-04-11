@@ -42,7 +42,6 @@ public class CreationOverviewPresenter {
   private ILabelledAlotmentView primaryAttributeView;
   private ILabelledAlotmentView secondaryAttributeView;
   private ILabelledAlotmentView tertiaryAttributeView;
-  private ILabelledAlotmentView favoredAbilityPickView;
 
   public CreationOverviewPresenter(
       IResources resources,
@@ -125,7 +124,8 @@ public class CreationOverviewPresenter {
 
   private void initAbilities() {
     IOverviewCategory category = view.addOverviewCategory(getString("Overview.Abilities.Title")); //$NON-NLS-1$
-    favoredAbilityPickView = category.addAlotmentView(getString("Overview.FavoredAbilityCategory"), 2);//$NON-NLS-1$
+    ILabelledAlotmentView favoredAbilityPickView = category.addAlotmentView(
+        getString("Overview.FavoredAbilityCategory"), 2);//$NON-NLS-1$
     presenters.add(new AlotmentSubPresenter(
         management.getFavoredAbilityPickModel(),
         favoredAbilityPickView,
