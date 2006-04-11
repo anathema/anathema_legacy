@@ -49,7 +49,7 @@ public class ChangeableJComboBox<T> implements IChangeableJComboBox<T> {
   public void addObjectSelectionChangedListener(final IObjectValueChangedListener listener) {
     ItemListener itemListener = new ItemListener() {
       public void itemStateChanged(ItemEvent e) {
-        listener.valueChanged(null, e.getItem());
+        listener.valueChanged(e.getItem());
       }
     };
     comboBox.addItemListener(itemListener);
