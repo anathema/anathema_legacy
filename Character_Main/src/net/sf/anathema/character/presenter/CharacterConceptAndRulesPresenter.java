@@ -27,7 +27,6 @@ import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
 import net.sf.anathema.framework.view.renderer.IdentificateObjectUi;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
@@ -89,12 +88,12 @@ public class CharacterConceptAndRulesPresenter {
 
   private void initTextualDescriptionPresentation(final ISimpleTextualDescription description, String resourceKey) {
     final ILabelTextView conceptView = view.addLabelTextView(resources.getString(resourceKey));
-    conceptView.addTextChangedListener(new IStringValueChangedListener() {
+    conceptView.addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         description.setText(newValue);
       }
     });
-    description.addTextChangedListener(new IStringValueChangedListener() {
+    description.addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         conceptView.setText(newValue);
       }
