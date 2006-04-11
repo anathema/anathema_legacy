@@ -3,6 +3,7 @@ package net.sf.anathema.character.model.creation;
 import java.io.PrintStream;
 
 import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
+import net.sf.anathema.character.presenter.overview.IAlotmentModel;
 
 public interface IBonusPointManagement {
 
@@ -26,8 +27,6 @@ public interface IBonusPointManagement {
 
   public int getBackgroundDotsSpent();
 
-  public int getVirtueBonusPointsSpent();
-
   public int getFavoredCharmPicksSpent();
 
   public int getDefaultCharmPicksSpent();
@@ -35,8 +34,6 @@ public interface IBonusPointManagement {
   public int getCharmBonusPointsSpent();
 
   public int getSpellBonusPointsSpent();
-
-  public int getVirtueDotsSpent();
 
   public int getWillpowerBonusPointsSpent();
 
@@ -64,5 +61,7 @@ public interface IBonusPointManagement {
 
   /** Return the amount of unrestricted bonus points granted by additional models */
   public int getAdditionalGeneralBonusPoints();
+
+  public IAlotmentModel getVirtueModel();
 
 }

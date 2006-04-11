@@ -1,5 +1,8 @@
 package net.sf.anathema.character.presenter.overview;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
@@ -27,6 +30,7 @@ public class CreationOverviewPresenter {
   private final IOverviewView view;
   private final ICharacterStatistics statistics;
   private final IBonusPointManagement management;
+  private final List<IOverviewSubPresenter> presenters = new ArrayList<IOverviewSubPresenter>();
 
   private ILabelledAlotmentView virtueView;
   private IValueView<String> totalView;
@@ -104,6 +108,10 @@ public class CreationOverviewPresenter {
   private void initAdvantages() {
     IOverviewCategory category = view.addOverviewCategory(getString("Overview.Advantages.Title")); //$NON-NLS-1$
     virtueView = category.addAlotmentView(getString("Overview.VirtueCategory"), 2); //$NON-NLS-1$
+    presenters.add(new AlotmentSubPresenter(
+        management.getVirtueModel(),
+        virtueView,
+        getCreationPoints().getVirtueCreationPoints()));
     backgroundView = category.addAlotmentView(getString("Overview.BackgroundCategory"), 2); //$NON-NLS-1$
   }
 
@@ -136,11 +144,9 @@ public class CreationOverviewPresenter {
     updateWillpowerRegainingConcept();
     updateAttributes();
     updateAbilities();
-    updateView(
-        virtueView,
-        management.getVirtueDotsSpent(),
-        getCreationPoints().getVirtueCreationPoints(),
-        management.getVirtueBonusPointsSpent());
+    for (IOverviewSubPresenter presenter : presenters) {
+      presenter.update();
+    }
     updateView(
         backgroundView,
         management.getBackgroundDotsSpent(),
