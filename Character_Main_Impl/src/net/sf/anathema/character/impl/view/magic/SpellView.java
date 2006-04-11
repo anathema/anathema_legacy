@@ -59,7 +59,7 @@ public class SpellView implements ISpellView {
     circleComboBox.setRenderer(properties.getCircleSelectionRenderer());
     circleComboBox.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        circleControl.fireValueChangedEvent(null, circleComboBox.getSelectedItem());
+        circleControl.fireValueChangedEvent(circleComboBox.getSelectedItem());
       }
     });
     filterPanel.add(circleComboBox);
