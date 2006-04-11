@@ -34,7 +34,6 @@ public class CreationOverviewPresenter {
   private final List<IOverviewSubPresenter> presenters = new ArrayList<IOverviewSubPresenter>();
 
   private IValueView<String> totalView;
-  private IValueView<String> favoredCharmView;
   private IValueView<String> defaultCharmView;
   private IValueView<String> casteView;
   private IValueView<String> natureView;
@@ -115,7 +114,11 @@ public class CreationOverviewPresenter {
       return;
     }
     IOverviewCategory category = view.addOverviewCategory(getString("Overview.Charms.Title")); //$NON-NLS-1$
-    favoredCharmView = category.addStringValueView(getString("Overview.FavoredCharmCategory")); //$NON-NLS-1$
+    ILabelledAlotmentView favoredCharmView = category.addAlotmentView(getString("Overview.FavoredCharmCategory"), 2); //$NON-NLS-1$
+    presenters.add(new AlotmentSubPresenter(
+        management.getFavoredCharmModel(),
+        favoredCharmView,
+        template.getCreationPoints().getFavoredCreationCharmCount()));
     defaultCharmView = category.addStringValueView(getString("Overview.GeneralCharmCategory")); //$NON-NLS-1$
   }
 
@@ -184,11 +187,6 @@ public class CreationOverviewPresenter {
     if (!statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().knowsCharms()) {
       return;
     }
-    int favoredSpent = management.getFavoredCharmPicksSpent();
-    int favoredTotal = template.getCreationPoints().getFavoredCreationCharmCount();
-    favoredCharmView.setValue(favoredSpent + " / " //$NON-NLS-1$
-        + favoredTotal);
-    setFontParameters(favoredCharmView, favoredSpent, favoredTotal, 0);
     IAdditionalRules additionalRules = template.getAdditionalRules();
     int defaultSpent = management.getDefaultCharmPicksSpent();
     int defaultTotal = template.getCreationPoints().getDefaultCreationCharmCount();
