@@ -36,7 +36,7 @@ public class CreationOverviewPresenter {
   private IValueView<String> totalView;
   private IValueView<String> defaultCharmView;
   private IValueView<String> casteView;
-  private IValueView<String> natureView;
+  private IValueView<String> willpowerView;
   private IValueView<String> miscView;
 
   public CreationOverviewPresenter(
@@ -92,7 +92,7 @@ public class CreationOverviewPresenter {
         resourcekey[0] = "CharacterConcept.Motivation"; //$NON-NLS-1$
       }
     });
-    natureView = category.addStringValueView(getString(resourcekey[0]));
+    willpowerView = category.addStringValueView(getString(resourcekey[0]));
   }
 
   private void initAdvantages() {
@@ -208,8 +208,8 @@ public class CreationOverviewPresenter {
 
   private void updateWillpowerRegainingConcept() {
     String natureValue = getWillpowerRegainingConceptValue();
-    natureView.setValue(natureValue == null ? "" : natureValue); //$NON-NLS-1$
-    natureView.setTextColor(natureValue == null ? LegalityColorProvider.COLOR_LOW : LegalityColorProvider.COLOR_OKAY);
+    willpowerView.setValue(natureValue == null ? "" : natureValue); //$NON-NLS-1$
+    willpowerView.setTextColor(natureValue == null ? LegalityColorProvider.COLOR_LOW : LegalityColorProvider.COLOR_OKAY);
   }
 
   private String getWillpowerRegainingConceptValue() {
