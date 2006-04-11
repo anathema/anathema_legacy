@@ -13,5 +13,7 @@ public interface IOverviewCategory {
 
   public IValueView<String> addStringValueView(String labelText);
 
+  public IAdditionalAlotmentView addAdditionalAlotmentView(String labelText, int maxValueLength);
+
   public Component getComponent();
 }
