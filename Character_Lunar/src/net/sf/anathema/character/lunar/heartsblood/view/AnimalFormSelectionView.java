@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
-import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
@@ -61,7 +61,7 @@ public class AnimalFormSelectionView implements IAnimalFormSelectionView {
     return panel;
   }
 
-  public void addNameListener(IStringValueChangedListener listener) {
+  public void addNameListener(IObjectValueChangedListener<String> listener) {
     textField.addTextChangedListener(listener);
   }
 

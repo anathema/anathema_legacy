@@ -12,7 +12,7 @@ import net.sf.anathema.character.lunar.heartsblood.view.HeartsBloodView;
 import net.sf.anathema.character.lunar.heartsblood.view.IAnimalFormSelectionView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
-import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 
 public class HeartsBloodPresenter {
@@ -47,7 +47,7 @@ public class HeartsBloodPresenter {
   }
 
   private void initSelectionViewListening(IAnimalFormSelectionView selectionView) {
-    selectionView.addNameListener(new IStringValueChangedListener() {
+    selectionView.addNameListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         model.setCurrentName(newValue);
       }

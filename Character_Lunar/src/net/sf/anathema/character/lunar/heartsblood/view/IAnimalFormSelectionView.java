@@ -3,11 +3,11 @@ package net.sf.anathema.character.lunar.heartsblood.view;
 import java.awt.event.ActionListener;
 
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
-import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
 public interface IAnimalFormSelectionView {
 
-  public void addNameListener(IStringValueChangedListener listener);
+  public void addNameListener(IObjectValueChangedListener<String> listener);
 
   public void addStrengthListener(IIntValueChangedListener listener);
 
