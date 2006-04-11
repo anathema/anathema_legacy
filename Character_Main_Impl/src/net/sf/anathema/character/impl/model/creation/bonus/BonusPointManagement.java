@@ -24,7 +24,8 @@ import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.model.generic.GenericCharacter;
-import net.sf.anathema.character.presenter.overview.IAlotmentModel;
+import net.sf.anathema.character.presenter.overview.IAdditionalSpendingModel;
+import net.sf.anathema.character.presenter.overview.ISpendingModel;
 
 public class BonusPointManagement implements IBonusPointManagement {
 
@@ -238,8 +239,8 @@ public class BonusPointManagement implements IBonusPointManagement {
     return additionalGranted;
   }
 
-  public IAlotmentModel getVirtueModel() {
-    return new IAlotmentModel() {
+  public ISpendingModel getVirtueModel() {
+    return new ISpendingModel() {
       public int getValue() {
         return virtueCalculator.getVirtueDotsSpent();
       }
@@ -250,8 +251,8 @@ public class BonusPointManagement implements IBonusPointManagement {
     };
   }
 
-  public IAlotmentModel getBackgroundModel() {
-    return new IAlotmentModel() {
+  public ISpendingModel getBackgroundModel() {
+    return new ISpendingModel() {
       public int getValue() {
         return backgroundCalculator.getSpentDots();
       }
@@ -262,8 +263,8 @@ public class BonusPointManagement implements IBonusPointManagement {
     };
   }
 
-  public IAlotmentModel getDefaultAbilityModel() {
-    return new IAlotmentModel() {
+  public ISpendingModel getDefaultAbilityModel() {
+    return new ISpendingModel() {
       public int getValue() {
         return abilityCalculator.getFreePointsSpent(false);
       }
@@ -274,8 +275,8 @@ public class BonusPointManagement implements IBonusPointManagement {
     };
   }
 
-  public IAlotmentModel getFavoredAbilityModel() {
-    return new IAlotmentModel() {
+  public ISpendingModel getFavoredAbilityModel() {
+    return new ISpendingModel() {
       public int getValue() {
         return abilityCalculator.getFreePointsSpent(true);
       }
@@ -286,8 +287,8 @@ public class BonusPointManagement implements IBonusPointManagement {
     };
   }
 
-  public IAlotmentModel getFavoredAbilityPickModel() {
-    return new IAlotmentModel() {
+  public ISpendingModel getFavoredAbilityPickModel() {
+    return new ISpendingModel() {
       public int getSpentBonusPoints() {
         return 0;
       }
@@ -298,8 +299,8 @@ public class BonusPointManagement implements IBonusPointManagement {
     };
   }
 
-  public IAlotmentModel getAttributeModel(final AttributeGroupPriority priority) {
-    return new IAlotmentModel() {
+  public ISpendingModel getAttributeModel(final AttributeGroupPriority priority) {
+    return new ISpendingModel() {
       public int getSpentBonusPoints() {
         return attributeCalculator.getAttributePoints(priority).getBonusPointsSpent();
       }
@@ -310,14 +311,34 @@ public class BonusPointManagement implements IBonusPointManagement {
     };
   }
 
-  public IAlotmentModel getFavoredCharmModel() {
-    return new IAlotmentModel() {
+  public ISpendingModel getFavoredCharmModel() {
+    return new ISpendingModel() {
       public int getSpentBonusPoints() {
         return 0;
       }
 
       public int getValue() {
         return magicCalculator.getFavoredCharmPicksSpent();
+      }
+    };
+  }
+
+  public IAdditionalSpendingModel getDefaultCharmModel() {
+    return new IAdditionalSpendingModel() {
+      public int getAdditionalAlotment() {
+        return getAdditionalMagicPointsAmount();
+      }
+
+      public int getAdditionalValue() {
+        return getAdditionalMagicPointsSpent();
+      }
+
+      public int getSpentBonusPoints() {
+        return getCharmBonusPointsSpent() + getSpellBonusPointsSpent();
+      }
+
+      public int getValue() {
+        return getDefaultCharmPicksSpent();
       }
     };
   }
