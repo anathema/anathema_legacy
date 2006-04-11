@@ -26,6 +26,7 @@ import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.model.generic.GenericCharacter;
 import net.sf.anathema.character.presenter.overview.IAdditionalSpendingModel;
 import net.sf.anathema.character.presenter.overview.ISpendingModel;
+import net.sf.anathema.character.presenter.overview.IValueSpendingModel;
 
 public class BonusPointManagement implements IBonusPointManagement {
 
@@ -325,7 +326,7 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   public IAdditionalSpendingModel getDefaultCharmModel() {
     return new IAdditionalSpendingModel() {
-      public int getAdditionalAlotment() {
+      public int getAdditionalRestrictedAlotment() {
         return getAdditionalMagicPointsAmount();
       }
 
@@ -339,6 +340,42 @@ public class BonusPointManagement implements IBonusPointManagement {
 
       public int getValue() {
         return getDefaultCharmPicksSpent();
+      }
+
+      public int getAdditionalUnrestrictedAlotment() {
+        return 0;
+      }
+    };
+  }
+
+  public IValueSpendingModel getAdditionalModelModel() {
+    return new IValueSpendingModel() {
+      public int getValue() {
+        return getAdditionalModelTotalValue();
+      }
+    };
+  }
+
+  public IAdditionalSpendingModel getTotalModel() {
+    return new IAdditionalSpendingModel() {
+      public int getAdditionalRestrictedAlotment() {
+        return getAdditionalBonusPointAmount();
+      }
+
+      public int getAdditionalValue() {
+        return getAdditionalBonusPointSpent();
+      }
+
+      public int getSpentBonusPoints() {
+        return 0;
+      }
+
+      public int getValue() {
+        return getStandardBonusPointsSpent();
+      }
+
+      public int getAdditionalUnrestrictedAlotment() {
+        return getAdditionalGeneralBonusPoints();
       }
     };
   }
