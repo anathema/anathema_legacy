@@ -100,7 +100,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     rulesComboBox.setRenderer(new IdentificateSelectCellRenderer("Ruleset.", getResources())); //$NON-NLS-1$
     view.addRuleSetComponent(rulesComboBox.getComponent(), getResources().getString("CharmCascades.RuleSetBox.Title")); //$NON-NLS-1$
     rulesComboBox.addObjectSelectionChangedListener(new IObjectValueChangedListener() {
-      public void valueChanged(Object oldValue, Object newValue) {
+      public void valueChanged(Object newValue) {
         selectedRuleset = (IExaltedRuleSet) newValue;
         viewProperties.setCharmTree(getCharmTree(selectedType));
       }
