@@ -75,7 +75,7 @@ public class VirtueFlawPresenter {
       }
     });
     rootView.addObjectSelectionChangedListener(new IObjectValueChangedListener() {
-      public void valueChanged(Object oldValue, Object newValue) {
+      public void valueChanged(Object newValue) {
         virtueFlaw.setRoot((VirtueType) newValue);
       }
     });
