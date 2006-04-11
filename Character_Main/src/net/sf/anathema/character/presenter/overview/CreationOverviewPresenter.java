@@ -9,7 +9,9 @@ import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
 import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.character.model.concept.INature;
 import net.sf.anathema.character.model.concept.INatureType;
+import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
@@ -120,7 +122,7 @@ public class CreationOverviewPresenter {
   private void updateOverview() {
     this.management.recalculate();
     updateCaste();
-    updateNature();
+    updateWillpowerRegainingConcept();
     updateAttributes();
     updateAbilities();
     updateView(
@@ -206,18 +208,23 @@ public class CreationOverviewPresenter {
         management.getAttributeBonusPointsSpent(priority));
   }
 
-  private void updateNature() {
-    String natureValue = getNatureValue();
+  private void updateWillpowerRegainingConcept() {
+    String natureValue = getWillpowerRegainingConceptValue();
     natureView.setValue(natureValue == null ? "" : natureValue); //$NON-NLS-1$
     natureView.setTextColor(natureValue == null ? LegalityColorProvider.COLOR_LOW : LegalityColorProvider.COLOR_OKAY);
   }
 
-  private String getNatureValue() {
-    INatureType natureType = statistics.getCharacterConcept().getNature().getType();
-    if (natureType == null) {
-      return null;
-    }
-    return natureType.getName();
+  private String getWillpowerRegainingConceptValue() {
+    final String[] value = new String[1];
+    statistics.getCharacterConcept().getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
+      public void accept(INature nature) {
+        INatureType natureType = nature.getDescription().getType();
+        if (natureType != null) {
+          value[0] = natureType.getName();
+        }
+      }
+    });
+    return value[0];
   }
 
   private void updateCaste() {

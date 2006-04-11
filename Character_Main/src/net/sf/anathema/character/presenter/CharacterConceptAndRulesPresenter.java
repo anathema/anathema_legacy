@@ -15,8 +15,10 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.ITypedDescription;
+import net.sf.anathema.character.model.concept.INature;
 import net.sf.anathema.character.model.concept.INatureProvider;
 import net.sf.anathema.character.model.concept.INatureType;
+import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
 import net.sf.anathema.character.view.ICharacterConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
@@ -51,7 +53,11 @@ public class CharacterConceptAndRulesPresenter {
   public TabContent[] init() {
     initRulesPresentation();
     initCastePresentation();
-    initNaturePresentation();
+    statistics.getCharacterConcept().getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
+      public void accept(INature nature) {
+        initNaturePresentation(nature);
+      }
+    });
     initConceptPresentation();
     initExperienceListening();
     initGui();
@@ -95,7 +101,7 @@ public class CharacterConceptAndRulesPresenter {
     });
   }
 
-  private void initNaturePresentation() {
+  private void initNaturePresentation(INature nature) {
     INatureType[] natures = natureProvider.getAllSorted();
     final IObjectSelectionView natureView = view.addConceptObjectSelectionView(resources.getString("Label.Nature"), //$NON-NLS-1$
         natures,
@@ -118,22 +124,22 @@ public class CharacterConceptAndRulesPresenter {
           }
         },
         false);
-    final ITypedDescription<INatureType> nature = statistics.getCharacterConcept().getNature();
-    natureView.setSelectedObject(nature.getType());
+    final ITypedDescription<INatureType> natureType = nature.getDescription();
+    natureView.setSelectedObject(natureType.getType());
     final JTextComponent willpowerConditionLabel = view.addWillpowerConditionView(resources.getString("CharacterConcept.GainWillpower")); //$NON-NLS-1$
     natureView.addObjectSelectionChangedListener(new IObjectValueChangedListener() {
       public void valueChanged(Object newValue) {
         if (newValue instanceof INatureType) {
-          nature.setType((INatureType) newValue);
+          natureType.setType((INatureType) newValue);
         }
       }
     });
-    nature.addChangeListener(new IChangeListener() {
+    natureType.addChangeListener(new IChangeListener() {
       public void changeOccured() {
-        updateNature(natureView, willpowerConditionLabel, nature.getType());
+        updateNature(natureView, willpowerConditionLabel, natureType.getType());
       }
     });
-    updateNature(natureView, willpowerConditionLabel, nature.getType());
+    updateNature(natureView, willpowerConditionLabel, natureType.getType());
   }
 
   private void initRulesPresentation() {

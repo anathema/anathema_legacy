@@ -5,10 +5,10 @@ import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
 
 public interface ICharacterConcept {
+  
+  public IWillpowerRegainingConcept getWillpowerRegainingConcept();
 
   public ITypedDescription<ICasteType> getCaste();
-
-  public ITypedDescription<INatureType> getNature();
 
   public ISimpleTextualDescription getConcept();
 }
