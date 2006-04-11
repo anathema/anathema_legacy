@@ -38,7 +38,7 @@ public abstract class AbstractItemView implements IItemView {
   }
 
   public void removeNameChangedListener(IObjectValueChangedListener<String> nameListener) {
-    control.removeIntValueChangeListener(nameListener);
+    control.removeObjectValueChangeListener(nameListener);
   }
 
   public void fireNameChangedEvent(String newName) {
