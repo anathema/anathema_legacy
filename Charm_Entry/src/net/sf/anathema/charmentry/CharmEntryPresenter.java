@@ -50,7 +50,7 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import org.dom4j.DocumentException;
 
 public class CharmEntryPresenter {
-  //TODO: Various exceptions long for handling
+  // TODO: Various exceptions long for handling
 
   private final CharmEntryView view;
   private final IResources resources;
@@ -220,7 +220,7 @@ public class CharmEntryPresenter {
         resources.getString("CharmEntry.Page"), //$NON-NLS-1$
         new IIdentificate[] { new Identificate("Custom") }); //$NON-NLS-1$
     sourceView.addSourceChangeListener(new IObjectValueChangedListener() {
-      public void valueChanged(Object oldValue, Object newValue) {
+      public void valueChanged(Object newValue) {
         String value;
         if (newValue instanceof IIdentificate) {
           value = ((IIdentificate) newValue).getId();
@@ -246,13 +246,13 @@ public class CharmEntryPresenter {
       final ISelectionContainerView prerequisiteCharmView,
       final ITextView groupView) {
     characterTypeView.addObjectSelectionChangedListener(new IObjectValueChangedListener<CharacterType>() {
-      public void valueChanged(CharacterType oldValue, CharacterType newValue) {
+      public void valueChanged(CharacterType newValue) {
         model.setCharacterType(newValue);
         primaryPrerequisiteView.setSelectableTraits(model.getLegalPrimaryPrerequisiteTypes());
       }
     });
     characterTypeView.addObjectSelectionChangedListener(new IObjectValueChangedListener<CharacterType>() {
-      public void valueChanged(CharacterType oldValue, CharacterType newValue) {
+      public void valueChanged(CharacterType newValue) {
         try {
           setCharmsInView(prerequisiteCharmView, newValue);
         }
@@ -262,7 +262,7 @@ public class CharmEntryPresenter {
       }
     });
     characterTypeView.addObjectSelectionChangedListener(new IObjectValueChangedListener<CharacterType>() {
-      public void valueChanged(CharacterType oldValue, CharacterType newValue) {
+      public void valueChanged(CharacterType newValue) {
         groupView.setEnabled(newValue == CharacterType.LUNAR);
       }
     });
@@ -320,7 +320,7 @@ public class CharmEntryPresenter {
         true,
         new IdentificateSelectCellRenderer("", resources)); //$NON-NLS-1$
     box.addObjectSelectionChangedListener(new IObjectValueChangedListener() {
-      public void valueChanged(Object oldValue, Object newValue) {
+      public void valueChanged(Object newValue) {
         String value;
         if (newValue instanceof IIdentificate) {
           value = ((IIdentificate) newValue).getId();
@@ -339,7 +339,7 @@ public class CharmEntryPresenter {
         false,
         new IdentificateSelectCellRenderer("", resources)); //$NON-NLS-1$
     typeBox.addObjectSelectionChangedListener(new IObjectValueChangedListener<CharmType>() {
-      public void valueChanged(CharmType oldValue, CharmType newValue) {
+      public void valueChanged(CharmType newValue) {
         model.setCharmType(newValue);
       }
     });

@@ -32,7 +32,7 @@ public class SelectableTraitView implements ISelectableTraitView {
   public SelectableTraitView(IIntValueDisplayFactory configuration) {
     this.valueDisplay = configuration.createIntValueDisplay(EssenceTemplate.SYSTEM_ESSENCE_MAX, 1);
     traitSelectionBox.addObjectSelectionChangedListener(new IObjectValueChangedListener<IIdentificate>() {
-      public void valueChanged(IIdentificate oldValue, IIdentificate newValue) {
+      public void valueChanged(IIdentificate newValue) {
         fireTraitChangedEvent();
       }
     });
