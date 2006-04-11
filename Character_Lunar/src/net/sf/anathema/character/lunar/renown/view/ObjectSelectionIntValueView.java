@@ -31,7 +31,7 @@ public class ObjectSelectionIntValueView implements IIntValueView {
 
   public void addIntValueChangedListener(final IIntValueChangedListener listener) {
     IObjectValueChangedListener<Integer> changeListener = new IObjectValueChangedListener<Integer>() {
-      public void valueChanged(Integer oldValue, Integer newValue) {
+      public void valueChanged(Integer newValue) {
         listener.valueChanged(newValue);
       }
     };
