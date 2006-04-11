@@ -6,7 +6,7 @@ public interface IConcept {
 
   public String getConceptText();
   
-  public String getNatureName();
+  public String getWillpowerRegainingConceptName();
   
   public String getWillpowerCondition();
 
