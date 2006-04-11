@@ -3,7 +3,7 @@ package net.sf.anathema.framework.view;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 
-import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
 public interface IItemView {
 
@@ -12,12 +12,12 @@ public interface IItemView {
   public void setName(String newName);
 
   public String getName();
-  
+
   public Icon getIcon();
 
-  public void addNameChangedListener(IStringValueChangedListener nameListener);
+  public void addNameChangedListener(IObjectValueChangedListener<String> nameListener);
 
-  public void removeNameChangedListener(IStringValueChangedListener nameListener);
+  public void removeNameChangedListener(IObjectValueChangedListener<String> nameListener);
 
   public void dispose();
 }

@@ -29,13 +29,13 @@ import net.infonode.tabbedpanel.titledtab.TitledTabProperties;
 import net.infonode.util.Direction;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.framework.view.IViewSelectionListener;
-import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
 public class ItemViewManagement implements IItemViewManagement {
 
   private final TabbedPanel tabbedPane = new TabbedPanel();
   private final Map<Component, IItemView> itemViewsByComponent = new HashMap<Component, IItemView>();
-  private final Map<IItemView, IStringValueChangedListener> nameListenersByView = new HashMap<IItemView, IStringValueChangedListener>();
+  private final Map<IItemView, IObjectValueChangedListener<String>> nameListenersByView = new HashMap<IItemView, IObjectValueChangedListener<String>>();
   private final List<IViewSelectionListener> viewSelectionListeners = new ArrayList<IViewSelectionListener>();
   private TitledTabProperties titledTabProperties = new TitledTabProperties();
   private ShapedGradientTheme theme = new ShapedGradientTheme(
@@ -99,13 +99,13 @@ public class ItemViewManagement implements IItemViewManagement {
   }
 
   private void disposeNameListening(final IItemView view) {
-    IStringValueChangedListener listener = nameListenersByView.get(view);
+    IObjectValueChangedListener<String> listener = nameListenersByView.get(view);
     nameListenersByView.remove(view);
     view.removeNameChangedListener(listener);
   }
 
   private void initNameListening(final IItemView view) {
-    IStringValueChangedListener listener = new IStringValueChangedListener() {
+    IObjectValueChangedListener<String> listener = new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         setItemViewName(view, newValue);
       }

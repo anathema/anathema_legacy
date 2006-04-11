@@ -3,13 +3,13 @@ package net.sf.anathema.framework.view.item;
 import javax.swing.Icon;
 
 import net.sf.anathema.framework.view.IItemView;
-import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
-import net.sf.anathema.lib.control.stringvalue.StringValueControl;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.objectvalue.ObjectValueControl;
 
 public abstract class AbstractItemView implements IItemView {
 
   private String name;
-  private final StringValueControl control = new StringValueControl();
+  private final ObjectValueControl<String> control = new ObjectValueControl<String>();
   private final Icon icon;
 
   protected AbstractItemView(String name, Icon icon) {
@@ -33,16 +33,16 @@ public abstract class AbstractItemView implements IItemView {
     return icon;
   }
 
-  public void addNameChangedListener(IStringValueChangedListener nameListener) {
-    control.addStringValueChangeListener(nameListener);
+  public void addNameChangedListener(IObjectValueChangedListener<String> nameListener) {
+    control.addObjectValueChangeListener(nameListener);
   }
 
-  public void removeNameChangedListener(IStringValueChangedListener nameListener) {
-    control.removeStringValueChangeListener(nameListener);
+  public void removeNameChangedListener(IObjectValueChangedListener<String> nameListener) {
+    control.removeIntValueChangeListener(nameListener);
   }
 
   public void fireNameChangedEvent(String newName) {
-    control.fireValueChangedEvent(newName);
+    control.fireValueChangedEvent(null, newName);
   }
 
   public void dispose() {
