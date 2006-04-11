@@ -18,7 +18,7 @@ public class ObjectValueControl<T> {
   public final synchronized void fireValueChangedEvent(final T oldValue, final T newValue) {
     List<IObjectValueChangedListener<T>> cloneList = new ArrayList<IObjectValueChangedListener<T>>(listeners);
     for (IObjectValueChangedListener<T> listener : cloneList) {
-      listener.valueChanged(oldValue, newValue);
+      listener.valueChanged(newValue);
     }
   }
 }
