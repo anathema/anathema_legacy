@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.gis.main.impl.view.AnathemaGisView;
 import net.sf.anathema.gis.main.view.IAnathemaGisView;
-import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
 public class GisModuleView implements IItemView {
 
@@ -36,11 +36,11 @@ public class GisModuleView implements IItemView {
     return null;
   }
 
-  public void addNameChangedListener(IStringValueChangedListener nameListener) {
+  public void addNameChangedListener(IObjectValueChangedListener<String> nameListener) {
     // Nothing to do
   }
 
-  public void removeNameChangedListener(IStringValueChangedListener nameListener) {
+  public void removeNameChangedListener(IObjectValueChangedListener<String> nameListener) {
     // Nothing to do
   }
 
