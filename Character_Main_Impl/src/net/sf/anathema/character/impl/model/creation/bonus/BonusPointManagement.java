@@ -124,10 +124,6 @@ public class BonusPointManagement implements IBonusPointManagement {
     return abilityCalculator.getSpecialtyBonusPointCosts();
   }
 
-  public int getFavoredCharmPicksSpent() {
-    return magicCalculator.getFavoredCharmPicksSpent();
-  }
-
   public int getDefaultCharmPicksSpent() {
     return magicCalculator.getGeneralCharmPicksSpent();
   }
@@ -168,7 +164,7 @@ public class BonusPointManagement implements IBonusPointManagement {
     printStream.println("   Virtues:" + getVirtueModel().getValue()); //$NON-NLS-1$
     printStream.println("   Backgrounds:" + getBackgroundModel().getValue()); //$NON-NLS-1$
     printStream.println("Magic Picks"); //$NON-NLS-1$
-    printStream.println("   Favored Picks:" + getFavoredCharmPicksSpent()); //$NON-NLS-1$
+    printStream.println("   Favored Picks:" + getFavoredCharmModel().getValue()); //$NON-NLS-1$
     printStream.println("   Default Picks:" + getDefaultCharmPicksSpent()); //$NON-NLS-1$
     printStream.println("Bonus Points"); //$NON-NLS-1$
     printStream.println("   Primary Attributes: " + getAttributeModel(AttributeGroupPriority.Primary).getSpentBonusPoints()); //$NON-NLS-1$
@@ -310,6 +306,18 @@ public class BonusPointManagement implements IBonusPointManagement {
 
       public int getValue() {
         return attributeCalculator.getAttributePoints(priority).getDotsSpent();
+      }
+    };
+  }
+
+  public IAlotmentModel getFavoredCharmModel() {
+    return new IAlotmentModel() {
+      public int getSpentBonusPoints() {
+        return 0;
+      }
+
+      public int getValue() {
+        return magicCalculator.getFavoredCharmPicksSpent();
       }
     };
   }
