@@ -120,20 +120,8 @@ public class BonusPointManagement implements IBonusPointManagement {
     return bonusPoints;
   }
 
-  public int getAbilityBonusPointCosts() {
-    return abilityCalculator.getBonusPointsSpent();
-  }
-
   public int getSpecialtyBonusPointCosts() {
     return abilityCalculator.getSpecialtyBonusPointCosts();
-  }
-
-  public int getFavoredAbilityDotsSpent() {
-    return abilityCalculator.getFreePointsSpent(true);
-  }
-
-  public int getDefaultAbilityDotsSpent() {
-    return abilityCalculator.getFreePointsSpent(false);
   }
 
   public int getAttributeBonusPoints() {
@@ -187,8 +175,8 @@ public class BonusPointManagement implements IBonusPointManagement {
     printStream.println("   Primary Attributes: " + getAttributeDotsSpent(AttributeGroupPriority.Primary)); //$NON-NLS-1$
     printStream.println("   Secondary Attributes: " + getAttributeDotsSpent(AttributeGroupPriority.Secondary)); //$NON-NLS-1$
     printStream.println("   Tertiary Attributes: " + getAttributeDotsSpent(AttributeGroupPriority.Tertiary)); //$NON-NLS-1$
-    printStream.println("   Favored Abilities:" + getFavoredAbilityDotsSpent()); //$NON-NLS-1$
-    printStream.println("   General Abilities:" + getDefaultAbilityDotsSpent()); //$NON-NLS-1$
+    printStream.println("   Favored Abilities:" + getFavoredAbilityModel().getValue()); //$NON-NLS-1$
+    printStream.println("   General Abilities:" + getDefaultAbilityModel().getValue()); //$NON-NLS-1$
     printStream.println("   Virtues:" + getVirtueModel().getValue()); //$NON-NLS-1$
     printStream.println("   Backgrounds:" + getBackgroundModel().getValue()); //$NON-NLS-1$
     printStream.println("Magic Picks"); //$NON-NLS-1$
@@ -198,7 +186,7 @@ public class BonusPointManagement implements IBonusPointManagement {
     printStream.println("   Primary Attributes: " + getAttributeBonusPointsSpent(AttributeGroupPriority.Primary)); //$NON-NLS-1$
     printStream.println("   Secondary Attributes: " + getAttributeBonusPointsSpent(AttributeGroupPriority.Secondary)); //$NON-NLS-1$
     printStream.println("   Tertiary Attributes: " + getAttributeBonusPointsSpent(AttributeGroupPriority.Tertiary)); //$NON-NLS-1$
-    printStream.println("   Abilities:" + getAbilityBonusPointCosts()); //$NON-NLS-1$
+    printStream.println("   Abilities:" + getDefaultAbilityModel().getSpentBonusPoints()); //$NON-NLS-1$
     printStream.println("   Specialties:" + getSpecialtyBonusPointCosts()); //$NON-NLS-1$
     printStream.println("   Virtues:" + getVirtueModel().getSpentBonusPoints()); //$NON-NLS-1$
     printStream.println("   Willpower:" + getWillpowerBonusPointsSpent()); //$NON-NLS-1$
@@ -223,17 +211,13 @@ public class BonusPointManagement implements IBonusPointManagement {
     return bonusAdditionalPools.getAmount();
   }
 
-  public int getFavoredAbilityPicksSpent() {
-    return abilityCalculator.getFavoredPicksSpent();
-  }
-
   public int getStandardBonusPointsSpent() {
     return getTotalBonusPointsSpent() - getAdditionalBonusPointSpent();
   }
 
   public int getTotalBonusPointsSpent() {
     return getAttributeBonusPoints()
-        + getAbilityBonusPointCosts()
+        + getDefaultAbilityModel().getSpentBonusPoints()
         + getSpecialtyBonusPointCosts()
         + getCharmBonusPointsSpent()
         + getComboBonusPointsSpent()
@@ -290,6 +274,42 @@ public class BonusPointManagement implements IBonusPointManagement {
 
       public int getSpentBonusPoints() {
         return backgroundCalculator.getBonusPointSpent();
+      }
+    };
+  }
+
+  public IAlotmentModel getDefaultAbilityModel() {
+    return new IAlotmentModel() {
+      public int getValue() {
+        return abilityCalculator.getFreePointsSpent(false);
+      }
+
+      public int getSpentBonusPoints() {
+        return abilityCalculator.getBonusPointsSpent();
+      }
+    };
+  }
+
+  public IAlotmentModel getFavoredAbilityModel() {
+    return new IAlotmentModel() {
+      public int getValue() {
+        return abilityCalculator.getFreePointsSpent(true);
+      }
+
+      public int getSpentBonusPoints() {
+        return 0;
+      }
+    };
+  }
+
+  public IAlotmentModel getFavoredAbilityPickModel() {
+    return new IAlotmentModel() {
+      public int getSpentBonusPoints() {
+        return 0;
+      }
+
+      public int getValue() {
+        return abilityCalculator.getFavoredPicksSpent();
       }
     };
   }
