@@ -28,7 +28,7 @@ import net.sf.anathema.character.view.magic.IComboConfigurationView;
 import net.sf.anathema.character.view.magic.IComboView;
 import net.sf.anathema.character.view.magic.IComboViewListener;
 import net.sf.anathema.character.view.magic.IComboViewProperties;
-import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.GuiUtilities;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
@@ -169,7 +169,7 @@ public class ComboConfigurationView implements IComboConfigurationView {
 
   public ITextView addComboNameView(String viewTitle) {
     ITextView textView = new LineTextView(TEXT_COLUMNS);
-    textView.addTextChangedListener(new IStringValueChangedListener() {
+    textView.addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         isNameEntered = isDescriptionEntered = newValue != null && !newValue.equals(""); //$NON-NLS-1$
         clearButton.setEnabled(isDescriptionEntered || isNameEntered || learnedListModelSize > 0);
@@ -199,7 +199,7 @@ public class ComboConfigurationView implements IComboConfigurationView {
 
   public ITextView addComboDescriptionView(String viewTitle) {
     ITextView textView = new AreaTextView(5, TEXT_COLUMNS);
-    textView.addTextChangedListener(new IStringValueChangedListener() {
+    textView.addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         isDescriptionEntered = newValue != null && !newValue.equals(""); //$NON-NLS-1$
         clearButton.setEnabled(isDescriptionEntered || isNameEntered || learnedListModelSize > 0);

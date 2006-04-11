@@ -6,7 +6,7 @@ import javax.swing.event.ChangeListener;
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
-import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
@@ -17,7 +17,7 @@ public class ExperiencePointEntry implements IExperiencePointEntry {
   private int experiencePoints = 0;
 
   public ExperiencePointEntry() {
-    description.addTextChangedListener(new IStringValueChangedListener() {
+    description.addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         fireChangeEvent();
       }
