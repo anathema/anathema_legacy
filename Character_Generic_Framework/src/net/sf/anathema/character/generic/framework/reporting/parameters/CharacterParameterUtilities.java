@@ -85,7 +85,7 @@ public class CharacterParameterUtilities {
   }
 
   public static final void fillInNature(IGenericCharacter character, Map<Object, Object> parameters) {
-    parameters.put(ICharacterReportConstants.NATURE, character.getConcept().getNatureName());
+    parameters.put(ICharacterReportConstants.NATURE, character.getConcept().getWillpowerRegainingConceptName());
     parameters.put(ICharacterReportConstants.NATURE_WILLPOWER_CONDITION, character.getConcept().getWillpowerCondition());
   }
 
