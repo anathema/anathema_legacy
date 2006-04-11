@@ -112,7 +112,7 @@ public class DummyGenericCharacter implements IGenericCharacter {
         return null;
       }
 
-      public String getNatureName() {
+      public String getWillpowerRegainingConceptName() {
         return null;
       }
 

@@ -4,23 +4,24 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CASTE;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CHARACTER_CONCEPT;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CONCEPT;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_MOTIVATION;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_NATURE;
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.concept.ICharacterConcept;
+import net.sf.anathema.character.model.concept.IMotivation;
 import net.sf.anathema.character.model.concept.INature;
 import net.sf.anathema.character.model.concept.INatureProvider;
 import net.sf.anathema.character.model.concept.INatureType;
 import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
+import net.sf.anathema.framework.persistence.AbstractPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
-public class CharacterConceptPersister {
+public class CharacterConceptPersister extends AbstractPersister {
 
   private final INatureProvider natureProvider;
 
@@ -35,17 +36,12 @@ public class CharacterConceptPersister {
       public void accept(INature nature) {
         saveNature(characterConceptElement, nature);
       }
-    });
-    saveConcept(characterConceptElement, characterConcept.getConcept());
-  }
 
-  private void saveConcept(Element parent, ISimpleTextualDescription concept) {
-    Element conceptElement = parent.addElement(TAG_CONCEPT);
-    String text = concept.getText();
-    if (StringUtilities.isNullOrEmpty(text)) {
-      return;
-    }
-    conceptElement.addText(text);
+      public void accept(IMotivation motivation) {
+        saveTextualDescription(characterConceptElement, TAG_MOTIVATION, motivation.getDescription());
+      }
+    });
+    saveTextualDescription(characterConceptElement, TAG_CONCEPT, characterConcept.getConcept());
   }
 
   private void saveCaste(Element parent, ITypedDescription<ICasteType> caste) {
@@ -72,16 +68,12 @@ public class CharacterConceptPersister {
       public void accept(INature nature) {
         loadNature(conceptElement, nature);
       }
-    });
-    loadConcept(conceptElement, characterConcept);
-  }
 
-  private void loadConcept(Element parent, ICharacterConcept characterConcept) {
-    Element conceptElement = parent.element(TAG_CONCEPT);
-    Element textualElement = conceptElement;
-    if (textualElement != null) {
-      characterConcept.getConcept().setText(textualElement.getText());
-    }
+      public void accept(IMotivation motivation) {
+        restoreTextualDescription(conceptElement, TAG_MOTIVATION, motivation.getDescription());
+      }
+    });
+    restoreTextualDescription(conceptElement, TAG_CONCEPT, characterConcept.getConcept());
   }
 
   private void loadNature(Element parent, INature nature) {

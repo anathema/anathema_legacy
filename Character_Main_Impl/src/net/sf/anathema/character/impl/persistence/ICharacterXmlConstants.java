@@ -28,6 +28,7 @@ public interface ICharacterXmlConstants {
   public static final String TAG_DESCRIPTION = "Description"; //$NON-NLS-1$
   public static final String TAG_ESSENCE = "Essence"; //$NON-NLS-1$
   public static final String TAG_EXALTED_CHARACTER_ROOT = "ExaltedCharacter"; //$NON-NLS-1$
+  public static final String TAG_MOTIVATION = "Motivation"; //$NON-NLS-1$
   public static final String TAG_NAME = "Name"; //$NON-NLS-1$
   public static final String TAG_NATURE = "Nature"; //$NON-NLS-1$
   public static final String TAG_NOTES = "Notes"; //$NON-NLS-1$

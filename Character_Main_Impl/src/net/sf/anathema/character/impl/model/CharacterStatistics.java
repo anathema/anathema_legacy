@@ -5,6 +5,8 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.rules.IEditionVisitor;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -12,6 +14,7 @@ import net.sf.anathema.character.impl.model.advance.ExperiencePointConfiguration
 import net.sf.anathema.character.impl.model.charm.CharmConfiguration;
 import net.sf.anathema.character.impl.model.charm.ComboConfiguration;
 import net.sf.anathema.character.impl.model.concept.CharacterConcept;
+import net.sf.anathema.character.impl.model.concept.Motivation;
 import net.sf.anathema.character.impl.model.concept.Nature;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
@@ -29,13 +32,16 @@ import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfigurationListener;
 import net.sf.anathema.character.model.concept.ICharacterConcept;
+import net.sf.anathema.character.model.concept.IMotivation;
 import net.sf.anathema.character.model.concept.INature;
+import net.sf.anathema.character.model.concept.IWillpowerRegainingConcept;
 import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
 import net.sf.anathema.character.model.generic.GenericCharacter;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.model.traits.essence.IEssencePoolConfiguration;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
 
 public class CharacterStatistics implements ICharacterStatistics {
 
@@ -50,6 +56,11 @@ public class CharacterStatistics implements ICharacterStatistics {
   private final IExperiencePointConfiguration experiencePoints = new ExperiencePointConfiguration();
   private final IExaltedRuleSet rules;
   private boolean experienced = false;
+  private final IStringValueChangedListener motivationChangeListener = new IStringValueChangedListener() {
+    public void valueChanged(String newValue) {
+      context.getCharacterListening().fireCharacterChanged();
+    }
+  };
   private final IChangeListener natureChangeListener = new IChangeListener() {
     public void changeOccured() {
       context.getCharacterListening().fireCharacterChanged();
@@ -120,11 +131,25 @@ public class CharacterStatistics implements ICharacterStatistics {
   }
 
   private CharacterConcept initConcept() {
-    CharacterConcept characterConcept = new CharacterConcept(new Nature());
+    final IWillpowerRegainingConcept[] willpowerConcept = new IWillpowerRegainingConcept[1];
+    rules.getEdition().accept(new IEditionVisitor() {
+      public void visitFirstEdition(IExaltedEdition visitedEdition) {
+        willpowerConcept[0] = new Nature();
+      }
+
+      public void visitSecondEdition(IExaltedEdition visitedEdition) {
+        willpowerConcept[0] = new Motivation();
+      }
+    });
+    CharacterConcept characterConcept = new CharacterConcept(willpowerConcept[0]);
     characterConcept.getCaste().addChangeListener(casteChangeListener);
     characterConcept.getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
       public void accept(INature nature) {
         nature.getDescription().addChangeListener(natureChangeListener);
+      }
+
+      public void accept(IMotivation motivation) {
+        motivation.getDescription().addTextChangedListener(motivationChangeListener);
       }
     });
     return characterConcept;
