@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
-import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.widgets.RevalidatingScrollPane;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -53,7 +53,7 @@ public class LabelTextView implements ILabelTextView {
     textView.setText(text);
   }
 
-  public void addTextChangedListener(final IStringValueChangedListener listener) {
+  public void addTextChangedListener(final IObjectValueChangedListener<String> listener) {
     textView.addTextChangedListener(listener);
   }
 }

@@ -2,13 +2,13 @@ package net.sf.anathema.lib.workflow.textualdescription.model;
 
 import net.disy.commons.core.util.ObjectUtilities;
 import net.disy.commons.core.util.StringUtilities;
-import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
-import net.sf.anathema.lib.control.stringvalue.StringValueControl;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.objectvalue.ObjectValueControl;
 import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
 
 public class SimpleTextualDescription extends AbstractTextualDescription implements ISimpleTextualDescription {
 
-  private final StringValueControl textControl = new StringValueControl();
+  private final ObjectValueControl<String> textControl = new ObjectValueControl<String>();
   private String text;
 
   public SimpleTextualDescription() {
@@ -28,12 +28,12 @@ public class SimpleTextualDescription extends AbstractTextualDescription impleme
       return;
     }
     this.text = text;
-    textControl.fireValueChangedEvent(text);
+    textControl.fireValueChangedEvent(null, text);
     setDirty(true);
   }
 
-  public void addTextChangedListener(IStringValueChangedListener listener) {
-    textControl.addStringValueChangeListener(listener);
+  public void addTextChangedListener(IObjectValueChangedListener<String> listener) {
+    textControl.addObjectValueChangeListener(listener);
   }
 
   public boolean isEmpty() {

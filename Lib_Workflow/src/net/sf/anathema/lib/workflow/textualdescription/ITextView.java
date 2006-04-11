@@ -3,13 +3,13 @@ package net.sf.anathema.lib.workflow.textualdescription;
 import javax.swing.JComponent;
 import javax.swing.text.JTextComponent;
 
-import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
 public interface ITextView {
 
   public void setText(String text);
 
-  public void addTextChangedListener(IStringValueChangedListener listener);
+  public void addTextChangedListener(IObjectValueChangedListener<String> listener);
 
   public JComponent getComponent();
 
