@@ -1,6 +1,6 @@
 package net.sf.anathema.character.presenter.overview;
 
-public interface IAlotmentModel {
+public interface ISpendingModel {
 
   public int getValue();
 

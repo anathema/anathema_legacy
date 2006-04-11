@@ -3,7 +3,8 @@ package net.sf.anathema.character.model.creation;
 import java.io.PrintStream;
 
 import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
-import net.sf.anathema.character.presenter.overview.IAlotmentModel;
+import net.sf.anathema.character.presenter.overview.IAdditionalSpendingModel;
+import net.sf.anathema.character.presenter.overview.ISpendingModel;
 
 public interface IBonusPointManagement {
 
@@ -42,18 +43,20 @@ public interface IBonusPointManagement {
   /** Return the amount of unrestricted bonus points granted by additional models */
   public int getAdditionalGeneralBonusPoints();
 
-  public IAlotmentModel getVirtueModel();
+  public ISpendingModel getVirtueModel();
 
-  public IAlotmentModel getBackgroundModel();
+  public ISpendingModel getBackgroundModel();
 
-  public IAlotmentModel getDefaultAbilityModel();
+  public ISpendingModel getDefaultAbilityModel();
 
-  public IAlotmentModel getFavoredAbilityModel();
+  public ISpendingModel getFavoredAbilityModel();
 
-  public IAlotmentModel getFavoredAbilityPickModel();
+  public ISpendingModel getFavoredAbilityPickModel();
 
-  public IAlotmentModel getAttributeModel(AttributeGroupPriority priority);
+  public ISpendingModel getAttributeModel(AttributeGroupPriority priority);
 
-  public IAlotmentModel getFavoredCharmModel();
+  public ISpendingModel getFavoredCharmModel();
+
+  public IAdditionalSpendingModel getDefaultCharmModel();
 
 }

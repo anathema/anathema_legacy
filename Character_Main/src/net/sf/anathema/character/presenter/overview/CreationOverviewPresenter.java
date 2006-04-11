@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.listening.
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
+import net.sf.anathema.character.library.overview.IAdditionalAlotmentView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.concept.IMotivation;
@@ -18,8 +19,6 @@ import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
-import net.sf.anathema.lib.control.legality.LegalityFontProvider;
-import net.sf.anathema.lib.control.legality.ValueLegalityState;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
@@ -34,7 +33,6 @@ public class CreationOverviewPresenter {
   private final List<IOverviewSubPresenter> presenters = new ArrayList<IOverviewSubPresenter>();
 
   private IValueView<String> totalView;
-  private IValueView<String> defaultCharmView;
   private IValueView<String> casteView;
   private IValueView<String> willpowerView;
   private IValueView<String> miscView;
@@ -119,7 +117,22 @@ public class CreationOverviewPresenter {
         management.getFavoredCharmModel(),
         favoredCharmView,
         template.getCreationPoints().getFavoredCreationCharmCount()));
-    defaultCharmView = category.addStringValueView(getString("Overview.GeneralCharmCategory")); //$NON-NLS-1$
+    IAdditionalRules additionalRules = template.getAdditionalRules();
+    if (additionalRules == null || additionalRules.getAdditionalMagicLearnPools().length == 0) {
+      ILabelledAlotmentView defaultCharmView = category.addAlotmentView(getString("Overview.GeneralCharmCategory"), 2); //$NON-NLS-1$
+      presenters.add(new AlotmentSubPresenter(
+          management.getDefaultCharmModel(),
+          defaultCharmView,
+          template.getCreationPoints().getDefaultCreationCharmCount()));
+    }
+    else {
+      IAdditionalAlotmentView defaultCharmView = category.addAdditionalAlotmentView(
+          getString("Overview.GeneralCharmCategory"), 3); //$NON-NLS-1$
+      presenters.add(new AdditionalAlotmentSubPresenter(
+          management.getDefaultCharmModel(),
+          defaultCharmView,
+          template.getCreationPoints().getDefaultCreationCharmCount()));
+    }
   }
 
   private void initAbilities() {
@@ -167,7 +180,6 @@ public class CreationOverviewPresenter {
     for (IOverviewSubPresenter presenter : presenters) {
       presenter.update();
     }
-    updateCharms();
     updateMiscView();
     updateTotalView();
   }
@@ -181,29 +193,6 @@ public class CreationOverviewPresenter {
 
   private ICreationPoints getCreationPoints() {
     return template.getCreationPoints();
-  }
-
-  private void updateCharms() {
-    if (!statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().knowsCharms()) {
-      return;
-    }
-    IAdditionalRules additionalRules = template.getAdditionalRules();
-    int defaultSpent = management.getDefaultCharmPicksSpent();
-    int defaultTotal = template.getCreationPoints().getDefaultCreationCharmCount();
-    if (additionalRules == null || additionalRules.getAdditionalMagicLearnPools().length == 0) {
-      defaultCharmView.setValue(defaultSpent + " / " + defaultTotal); //$NON-NLS-1$
-    }
-    else {
-      defaultCharmView.setValue(defaultSpent + "+" //$NON-NLS-1$
-          + management.getAdditionalMagicPointsSpent()
-          + " / " //$NON-NLS-1$
-          + defaultTotal
-          + "+" //$NON-NLS-1$
-          + management.getAdditionalMagicPointsAmount());
-
-    }
-    setFontParameters(defaultCharmView, defaultSpent, defaultTotal, management.getCharmBonusPointsSpent()
-        + management.getSpellBonusPointsSpent());
   }
 
   private void updateWillpowerRegainingConcept() {
@@ -269,23 +258,5 @@ public class CreationOverviewPresenter {
 
   private String getString(String string) {
     return resources.getString(string);
-  }
-
-  private void setFontParameters(final IValueView valueView, int value, int alotment, int bonusPointsSpent) {
-    LegalityFontProvider legalityFontProvider = new LegalityFontProvider();
-    ValueLegalityState fontStyleState = bonusPointsSpent > 0 ? ValueLegalityState.Increased : ValueLegalityState.Okay;
-    valueView.setFontStyle(legalityFontProvider.getFontStyle(fontStyleState));
-    LegalityColorProvider legalityColorProvider = new LegalityColorProvider();
-    ValueLegalityState textColorState = null;
-    if (value < alotment) {
-      textColorState = ValueLegalityState.Lowered;
-    }
-    if (value == alotment) {
-      textColorState = ValueLegalityState.Okay;
-    }
-    if (value > alotment) {
-      textColorState = ValueLegalityState.Increased;
-    }
-    valueView.setTextColor(legalityColorProvider.getTextColor(textColorState));
   }
 }
