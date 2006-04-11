@@ -42,7 +42,7 @@ public abstract class AbstractItemView implements IItemView {
   }
 
   public void fireNameChangedEvent(String newName) {
-    control.fireValueChangedEvent(null, newName);
+    control.fireValueChangedEvent(newName);
   }
 
   public void dispose() {
