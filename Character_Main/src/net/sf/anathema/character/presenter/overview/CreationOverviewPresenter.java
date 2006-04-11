@@ -27,25 +27,25 @@ import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 public class CreationOverviewPresenter {
 
+  private final IResources resources;
   private final IOverviewView view;
   private final ICharacterStatistics statistics;
   private final IBonusPointManagement management;
+  private final ICharacterTemplate template;
   private final List<IOverviewSubPresenter> presenters = new ArrayList<IOverviewSubPresenter>();
 
   private IValueView<String> totalView;
-  private ILabelledAlotmentView primaryAttributeView;
-  private ILabelledAlotmentView secondaryAttributeView;
-  private ILabelledAlotmentView tertiaryAttributeView;
-  private ICharacterTemplate template;
-  private ILabelledAlotmentView favoredAbilityPickView;
-  private ILabelledAlotmentView favoredAbiltyDotView;
-  private ILabelledAlotmentView defaultAbilityDotView;
   private IValueView<String> favoredCharmView;
   private IValueView<String> defaultCharmView;
   private IValueView<String> casteView;
   private IValueView<String> natureView;
-  private final IResources resources;
   private IValueView<String> miscView;
+  private ILabelledAlotmentView primaryAttributeView;
+  private ILabelledAlotmentView secondaryAttributeView;
+  private ILabelledAlotmentView tertiaryAttributeView;
+  private ILabelledAlotmentView favoredAbilityPickView;
+  private ILabelledAlotmentView favoredAbiltyDotView;
+  private ILabelledAlotmentView defaultAbilityDotView;
 
   public CreationOverviewPresenter(
       IResources resources,
