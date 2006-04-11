@@ -24,6 +24,7 @@ import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.model.generic.GenericCharacter;
+import net.sf.anathema.character.presenter.overview.IAlotmentModel;
 
 public class BonusPointManagement implements IBonusPointManagement {
 
@@ -155,10 +156,6 @@ public class BonusPointManagement implements IBonusPointManagement {
     return backgroundCalculator.getSpentDots();
   }
 
-  public int getVirtueBonusPointsSpent() {
-    return virtueCalculator.getBonusPointsSpent();
-  }
-
   public int getFavoredCharmPicksSpent() {
     return magicCalculator.getFavoredCharmPicksSpent();
   }
@@ -181,10 +178,6 @@ public class BonusPointManagement implements IBonusPointManagement {
     return magicCalculator.getBonusPointsSpentForSpells();
   }
 
-  public int getVirtueDotsSpent() {
-    return virtueCalculator.getVirtueDotsSpent();
-  }
-
   public int getWillpowerBonusPointsSpent() {
     return willpowerBonusPoints;
   }
@@ -204,7 +197,7 @@ public class BonusPointManagement implements IBonusPointManagement {
     printStream.println("   Tertiary Attributes: " + getAttributeDotsSpent(AttributeGroupPriority.Tertiary)); //$NON-NLS-1$
     printStream.println("   Favored Abilities:" + getFavoredAbilityDotsSpent()); //$NON-NLS-1$
     printStream.println("   General Abilities:" + getDefaultAbilityDotsSpent()); //$NON-NLS-1$
-    printStream.println("   Virtues:" + getVirtueDotsSpent()); //$NON-NLS-1$
+    printStream.println("   Virtues:" + getVirtueModel().getValue()); //$NON-NLS-1$
     printStream.println("   Backgrounds:" + getBackgroundDotsSpent()); //$NON-NLS-1$
     printStream.println("Magic Picks"); //$NON-NLS-1$
     printStream.println("   Favored Picks:" + getFavoredCharmPicksSpent()); //$NON-NLS-1$
@@ -215,7 +208,7 @@ public class BonusPointManagement implements IBonusPointManagement {
     printStream.println("   Tertiary Attributes: " + getAttributeBonusPointsSpent(AttributeGroupPriority.Tertiary)); //$NON-NLS-1$
     printStream.println("   Abilities:" + getAbilityBonusPointCosts()); //$NON-NLS-1$
     printStream.println("   Specialties:" + getSpecialtyBonusPointCosts()); //$NON-NLS-1$
-    printStream.println("   Virtues:" + getVirtueBonusPointsSpent()); //$NON-NLS-1$
+    printStream.println("   Virtues:" + getVirtueModel().getSpentBonusPoints()); //$NON-NLS-1$
     printStream.println("   Willpower:" + getWillpowerBonusPointsSpent()); //$NON-NLS-1$
     printStream.println("   Backgrounds:" + getBackgroundBonusPointsSpent()); //$NON-NLS-1$
     printStream.println("   Essence:" + getEssenceBonusPointsSpent()); //$NON-NLS-1$
@@ -254,7 +247,7 @@ public class BonusPointManagement implements IBonusPointManagement {
         + getComboBonusPointsSpent()
         + getSpellBonusPointsSpent()
         + getBackgroundBonusPointsSpent()
-        + getVirtueBonusPointsSpent()
+        + getVirtueModel().getSpentBonusPoints()
         + getWillpowerBonusPointsSpent()
         + getEssenceBonusPointsSpent()
         + getAdditionalModelTotalValue();
@@ -283,5 +276,17 @@ public class BonusPointManagement implements IBonusPointManagement {
       additionalGranted += calculator.getBonusPointsGranted();
     }
     return additionalGranted;
+  }
+
+  public IAlotmentModel getVirtueModel() {
+    return new IAlotmentModel() {
+      public int getValue() {
+        return virtueCalculator.getVirtueDotsSpent();
+      }
+
+      public int getSpentBonusPoints() {
+        return virtueCalculator.getBonusPointsSpent();
+      }
+    };
   }
 }
