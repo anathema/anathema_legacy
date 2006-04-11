@@ -17,6 +17,7 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterDescription;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
+import net.sf.anathema.character.model.concept.IMotivation;
 import net.sf.anathema.character.model.concept.INature;
 import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
 import net.sf.anathema.character.model.concept.NatureType;
@@ -55,6 +56,10 @@ public abstract class AbstractGenerationData implements IGenerationData {
     statistics.getCharacterConcept().getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
       public void accept(INature nature) {
         nature.getDescription().setType(new NatureType(null, null, null));
+      }
+
+      public void accept(IMotivation motivation) {
+        motivation.getDescription().setText("Scheinbar gar keine.");
       }
     });
     // "Gallant",
