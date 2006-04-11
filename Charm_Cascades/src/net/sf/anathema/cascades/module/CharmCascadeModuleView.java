@@ -9,7 +9,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.cascades.view.CascadeView;
 import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.framework.view.IItemView;
-import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
 public class CharmCascadeModuleView implements IItemView {
   private final JPanel panel = new JPanel(new GridDialogLayout(1, false));
@@ -44,11 +44,11 @@ public class CharmCascadeModuleView implements IItemView {
     return icon;
   }
 
-  public void addNameChangedListener(IStringValueChangedListener nameListener) {
+  public void addNameChangedListener(IObjectValueChangedListener<String> nameListener) {
     // Nothing to do
   }
 
-  public void removeNameChangedListener(IStringValueChangedListener nameListener) {
+  public void removeNameChangedListener(IObjectValueChangedListener<String> nameListener) {
     // Nothing to do
   }
 
