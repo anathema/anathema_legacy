@@ -49,7 +49,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
 
   public void addCharmTypeSelectionListener(final IExaltTypeChangedListener selectionListener) {
     typeComboBox.addObjectSelectionChangedListener(new IObjectValueChangedListener<IIdentificate>() {
-      public void valueChanged(IIdentificate oldValue, IIdentificate newValue) {
+      public void valueChanged(IIdentificate newValue) {
         selectionListener.valueChanged(newValue);
       }
     });
@@ -67,7 +67,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
     groupComboBox.setRenderer(renderer);
     groupComboBox.setPreferredSize(preferredSize);
     groupComboBox.addObjectSelectionChangedListener(new IObjectValueChangedListener() {
-      public void valueChanged(Object oldValue, Object newValue) {
+      public void valueChanged(Object newValue) {
         selectionListener.valueChanged(
             groupComboBox.getSelectedObject(),
             typeComboBox.getSelectedObject(),
