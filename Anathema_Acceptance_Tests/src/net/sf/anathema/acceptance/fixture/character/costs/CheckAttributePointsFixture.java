@@ -4,26 +4,26 @@ import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 
 public class CheckAttributePointsFixture extends AbstractCheckPointsFixture {
-  
+
   public int primaryDotsSpent() {
     IBonusPointManagement management = createManagement();
-    return management.getAttributeDotsSpent(AttributeGroupPriority.Primary);
+    return management.getAttributeModel(AttributeGroupPriority.Primary).getValue();
   }
 
   public int secondaryDotsSpent() {
     IBonusPointManagement management = createManagement();
-    return management.getAttributeDotsSpent(AttributeGroupPriority.Secondary);
+    return management.getAttributeModel(AttributeGroupPriority.Secondary).getValue();
   }
 
   public int tertiaryDotsSpent() {
     IBonusPointManagement management = createManagement();
-    return management.getAttributeDotsSpent(AttributeGroupPriority.Tertiary);
+    return management.getAttributeModel(AttributeGroupPriority.Tertiary).getValue();
   }
 
   public int getTotalDotsSpent() {
     IBonusPointManagement management = createManagement();
-    return management.getAttributeDotsSpent(AttributeGroupPriority.Primary)
-        + management.getAttributeDotsSpent(AttributeGroupPriority.Secondary)
-        + management.getAttributeDotsSpent(AttributeGroupPriority.Tertiary);
+    return management.getAttributeModel(AttributeGroupPriority.Primary).getValue()
+        + management.getAttributeModel(AttributeGroupPriority.Secondary).getValue()
+        + management.getAttributeModel(AttributeGroupPriority.Tertiary).getValue();
   }
 }
