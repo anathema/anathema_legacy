@@ -143,18 +143,14 @@ public class CreationOverviewPresenter {
 
   private void initAttributes() {
     IOverviewCategory category = view.addOverviewCategory(getString("Overview.Attributes.Title")); //$NON-NLS-1$
-    ILabelledAlotmentView primaryAttributeView = category.addAlotmentView(
-        getString("Overview.PrimaryAttributeCategory"), 2); //$NON-NLS-1$
-    initAttributePresentation(primaryAttributeView, AttributeGroupPriority.Primary);
-    ILabelledAlotmentView secondaryAttributeView = category.addAlotmentView(
-        getString("Overview.SecondaryAttributeCategory"), 2); //$NON-NLS-1$
-    initAttributePresentation(secondaryAttributeView, AttributeGroupPriority.Secondary);
-    ILabelledAlotmentView tertiaryAttributeView = category.addAlotmentView(
-        getString("Overview.TertiaryAttributeCategory"), 2); //$NON-NLS-1$
-    initAttributePresentation(tertiaryAttributeView, AttributeGroupPriority.Tertiary);
+    initAttributePresentation(category, AttributeGroupPriority.Primary);
+    initAttributePresentation(category, AttributeGroupPriority.Secondary);
+    initAttributePresentation(category, AttributeGroupPriority.Tertiary);
   }
 
-  private void initAttributePresentation(ILabelledAlotmentView alotmentView, AttributeGroupPriority priority) {
+  private void initAttributePresentation(IOverviewCategory category, AttributeGroupPriority priority) {
+    ILabelledAlotmentView alotmentView = category.addAlotmentView(getString("Overview.AttributeCategory." //$NON-NLS-1$
+        + priority.getId()), 2);
     presenters.add(new AlotmentSubPresenter(
         management.getAttributeModel(priority),
         alotmentView,
