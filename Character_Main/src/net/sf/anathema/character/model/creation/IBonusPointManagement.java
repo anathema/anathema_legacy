@@ -9,13 +9,7 @@ public interface IBonusPointManagement {
 
   public void recalculate();
 
-  public int getAbilityBonusPointCosts();
-
   public int getSpecialtyBonusPointCosts();
-
-  public int getFavoredAbilityDotsSpent();
-
-  public int getDefaultAbilityDotsSpent();
 
   public int getAttributeBonusPoints();
 
@@ -43,8 +37,6 @@ public interface IBonusPointManagement {
 
   public int getAdditionalBonusPointAmount();
 
-  public int getFavoredAbilityPicksSpent();
-
   public int getStandardBonusPointsSpent();
 
   public int getTotalBonusPointsSpent();
@@ -61,5 +53,11 @@ public interface IBonusPointManagement {
   public IAlotmentModel getVirtueModel();
 
   public IAlotmentModel getBackgroundModel();
+
+  public IAlotmentModel getDefaultAbilityModel();
+
+  public IAlotmentModel getFavoredAbilityModel();
+
+  public IAlotmentModel getFavoredAbilityPickModel();
 
 }

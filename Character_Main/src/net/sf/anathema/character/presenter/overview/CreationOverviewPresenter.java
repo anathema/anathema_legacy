@@ -9,7 +9,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.listening.
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
-import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.concept.IMotivation;
@@ -44,8 +43,6 @@ public class CreationOverviewPresenter {
   private ILabelledAlotmentView secondaryAttributeView;
   private ILabelledAlotmentView tertiaryAttributeView;
   private ILabelledAlotmentView favoredAbilityPickView;
-  private ILabelledAlotmentView favoredAbiltyDotView;
-  private ILabelledAlotmentView defaultAbilityDotView;
 
   public CreationOverviewPresenter(
       IResources resources,
@@ -129,8 +126,23 @@ public class CreationOverviewPresenter {
   private void initAbilities() {
     IOverviewCategory category = view.addOverviewCategory(getString("Overview.Abilities.Title")); //$NON-NLS-1$
     favoredAbilityPickView = category.addAlotmentView(getString("Overview.FavoredAbilityCategory"), 2);//$NON-NLS-1$
-    favoredAbiltyDotView = category.addAlotmentView(getString("Overview.FavoredAbilityDotCategory"), 2); //$NON-NLS-1$
-    defaultAbilityDotView = category.addAlotmentView(getString("Overview.GeneralAbilityDotCategory"), 2); //$NON-NLS-1$
+    presenters.add(new AlotmentSubPresenter(
+        management.getFavoredAbilityPickModel(),
+        favoredAbilityPickView,
+        getCreationPoints().getAbilityCreationPoints().getFavorableTraitCount()));
+    ILabelledAlotmentView favoredAbiltyDotView = category.addAlotmentView(
+        getString("Overview.FavoredAbilityDotCategory"), 2); //$NON-NLS-1$
+    presenters.add(new AlotmentSubPresenter(
+        management.getFavoredAbilityModel(),
+        favoredAbiltyDotView,
+        getCreationPoints().getAbilityCreationPoints().getFavoredDotCount()));
+    ILabelledAlotmentView defaultAbilityDotView = category.addAlotmentView(
+        getString("Overview.GeneralAbilityDotCategory"), 2); //$NON-NLS-1$
+    presenters.add(new AlotmentSubPresenter(
+        management.getDefaultAbilityModel(),
+        defaultAbilityDotView,
+        getCreationPoints().getAbilityCreationPoints().getDefaultDotCount()));
+
   }
 
   private void initAttributes() {
@@ -145,7 +157,6 @@ public class CreationOverviewPresenter {
     updateCaste();
     updateWillpowerRegainingConcept();
     updateAttributes();
-    updateAbilities();
     for (IOverviewSubPresenter presenter : presenters) {
       presenter.update();
     }
@@ -191,21 +202,6 @@ public class CreationOverviewPresenter {
     }
     setFontParameters(defaultCharmView, defaultSpent, defaultTotal, management.getCharmBonusPointsSpent()
         + management.getSpellBonusPointsSpent());
-  }
-
-  private void updateAbilities() {
-    IFavorableTraitCreationPoints creationPoints = getCreationPoints().getAbilityCreationPoints();
-    updateView(
-        favoredAbilityPickView,
-        management.getFavoredAbilityPicksSpent(),
-        creationPoints.getFavorableTraitCount(),
-        0);
-    updateView(favoredAbiltyDotView, management.getFavoredAbilityDotsSpent(), creationPoints.getFavoredDotCount(), 0);
-    updateView(
-        defaultAbilityDotView,
-        management.getDefaultAbilityDotsSpent(),
-        creationPoints.getDefaultDotCount(),
-        management.getAbilityBonusPointCosts());
   }
 
   private void updateAttributes() {
