@@ -15,10 +15,12 @@ import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.layout.AnathemaLayoutUtilities;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 
-public class LabelledAlotmentView extends AbstractLabelledIntegerValueView implements ILabelledAlotmentView, IGridDialogPanelContent {
+public class LabelledAlotmentView extends AbstractLabelledIntegerValueView implements
+    ILabelledAlotmentView,
+    IGridDialogPanelContent {
 
   private final JLabel seperatorLabel;
-  private final JLabel maxPointLabel;
+  protected final JLabel maxPointLabel;
 
   public LabelledAlotmentView(String labelText, int currentPoints, int maxPoints) {
     this(labelText, currentPoints, maxPoints, 2);
