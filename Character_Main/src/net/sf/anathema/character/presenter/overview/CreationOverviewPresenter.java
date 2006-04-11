@@ -32,7 +32,6 @@ public class CreationOverviewPresenter {
   private final IBonusPointManagement management;
   private final List<IOverviewSubPresenter> presenters = new ArrayList<IOverviewSubPresenter>();
 
-  private ILabelledAlotmentView virtueView;
   private IValueView<String> totalView;
   private ILabelledAlotmentView primaryAttributeView;
   private ILabelledAlotmentView secondaryAttributeView;
@@ -41,7 +40,6 @@ public class CreationOverviewPresenter {
   private ILabelledAlotmentView favoredAbilityPickView;
   private ILabelledAlotmentView favoredAbiltyDotView;
   private ILabelledAlotmentView defaultAbilityDotView;
-  private ILabelledAlotmentView backgroundView;
   private IValueView<String> favoredCharmView;
   private IValueView<String> defaultCharmView;
   private IValueView<String> casteView;
@@ -107,12 +105,16 @@ public class CreationOverviewPresenter {
 
   private void initAdvantages() {
     IOverviewCategory category = view.addOverviewCategory(getString("Overview.Advantages.Title")); //$NON-NLS-1$
-    virtueView = category.addAlotmentView(getString("Overview.VirtueCategory"), 2); //$NON-NLS-1$
+    ILabelledAlotmentView virtueView = category.addAlotmentView(getString("Overview.VirtueCategory"), 2); //$NON-NLS-1$
     presenters.add(new AlotmentSubPresenter(
         management.getVirtueModel(),
         virtueView,
         getCreationPoints().getVirtueCreationPoints()));
-    backgroundView = category.addAlotmentView(getString("Overview.BackgroundCategory"), 2); //$NON-NLS-1$
+    ILabelledAlotmentView backgroundView = category.addAlotmentView(getString("Overview.BackgroundCategory"), 2); //$NON-NLS-1$
+    presenters.add(new AlotmentSubPresenter(
+        management.getBackgroundModel(),
+        backgroundView,
+        getCreationPoints().getBackgroundPointCount()));
   }
 
   private void initCharms() {
@@ -147,11 +149,6 @@ public class CreationOverviewPresenter {
     for (IOverviewSubPresenter presenter : presenters) {
       presenter.update();
     }
-    updateView(
-        backgroundView,
-        management.getBackgroundDotsSpent(),
-        getCreationPoints().getBackgroundPointCount(),
-        management.getBackgroundBonusPointsSpent());
     updateCharms();
     updateMiscView();
     updateTotalView();

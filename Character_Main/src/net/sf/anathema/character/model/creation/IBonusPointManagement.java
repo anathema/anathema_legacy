@@ -23,10 +23,6 @@ public interface IBonusPointManagement {
 
   public int getAttributeBonusPointsSpent(AttributeGroupPriority priority);
 
-  public int getBackgroundBonusPointsSpent();
-
-  public int getBackgroundDotsSpent();
-
   public int getFavoredCharmPicksSpent();
 
   public int getDefaultCharmPicksSpent();
@@ -63,5 +59,7 @@ public interface IBonusPointManagement {
   public int getAdditionalGeneralBonusPoints();
 
   public IAlotmentModel getVirtueModel();
+
+  public IAlotmentModel getBackgroundModel();
 
 }
