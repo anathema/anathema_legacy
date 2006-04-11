@@ -9,7 +9,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
@@ -36,7 +36,7 @@ public class IntimaciesSelectionView implements IIntimaciesSelectionView {
     return panel;
   }
 
-  public void addTextChangeListener(IStringValueChangedListener listener) {
+  public void addTextChangeListener(IObjectValueChangedListener<String> listener) {
     labelTextView.addTextChangedListener(listener);
   }
 

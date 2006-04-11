@@ -22,7 +22,7 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.legality.LegalityFontProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;
-import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
@@ -181,7 +181,7 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
   }
 
   private void initSelectionViewListening(IIntimaciesSelectionView selectionView) {
-    selectionView.addTextChangeListener(new IStringValueChangedListener() {
+    selectionView.addTextChangeListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         model.setCurrentName(newValue);
       }
