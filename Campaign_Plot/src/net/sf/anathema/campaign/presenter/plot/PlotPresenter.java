@@ -23,7 +23,7 @@ import net.sf.anathema.framework.styledtext.model.IStyledTextChangeListener;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.framework.styledtext.presentation.IStyledTextManager;
 import net.sf.anathema.framework.styledtext.presentation.StyledTextManager;
-import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
@@ -171,7 +171,7 @@ public class PlotPresenter {
   private void initDescriptionViewPresentation(IBasicItemDescriptionView descriptionView) {
     itemNameView = descriptionView.addLineTextView(resources.getString("SeriesPlot.ElementName.Label") + ":"); //$NON-NLS-1$//$NON-NLS-2$
     itemNameView.setEnabled(false);
-    itemNameView.addTextChangedListener(new IStringValueChangedListener() {
+    itemNameView.addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         if (selectedNode == null) {
           return;
@@ -183,7 +183,9 @@ public class PlotPresenter {
     DefaultStyledDocument document = new DefaultStyledDocument();
     itemSummaryViewManager = new StyledTextManager(document);
     itemSummaryView = descriptionView.addStyledTextView(resources.getString("SeriesPlot.ElementSummary.Label") + ":", //$NON-NLS-1$ //$NON-NLS-2$
-        document, new Dimension(200, 400), new TextEditorProperties(resources));
+        document,
+        new Dimension(200, 400),
+        new TextEditorProperties(resources));
     itemSummaryView.setEnabled(false);
     itemSummaryViewManager.addStyledTextListener(new IStyledTextChangeListener() {
       public void textChanged(ITextPart[] newParts) {
@@ -207,8 +209,7 @@ public class PlotPresenter {
         treeModel,
         new PlotTreeCellRenderer(resources),
         resources.getString("SeriesPlot.PlotTree.BorderTitle") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
-    IBasicItemDescriptionView descriptionView = view.initBasicItemDescriptionView(resources
-        .getString("SeriesPlot.ElementContent.BorderTitle") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
+    IBasicItemDescriptionView descriptionView = view.initBasicItemDescriptionView(resources.getString("SeriesPlot.ElementContent.BorderTitle") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
     initDescriptionViewPresentation(descriptionView);
     view.initGui(new PlotViewProperties(resources));
     updateButtons(null);
