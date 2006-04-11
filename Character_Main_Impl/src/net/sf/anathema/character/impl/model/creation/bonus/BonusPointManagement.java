@@ -124,18 +124,6 @@ public class BonusPointManagement implements IBonusPointManagement {
     return abilityCalculator.getSpecialtyBonusPointCosts();
   }
 
-  public int getAttributeBonusPoints() {
-    return attributeCalculator.getBonusPoints();
-  }
-
-  public int getAttributeDotsSpent(AttributeGroupPriority priority) {
-    return attributeCalculator.getAttributePoints(priority).getDotsSpent();
-  }
-
-  public int getAttributeBonusPointsSpent(AttributeGroupPriority priority) {
-    return attributeCalculator.getAttributePoints(priority).getBonusPointsSpent();
-  }
-
   public int getFavoredCharmPicksSpent() {
     return magicCalculator.getFavoredCharmPicksSpent();
   }
@@ -172,9 +160,9 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   public void dump(PrintStream printStream) {
     printStream.println("Dots"); //$NON-NLS-1$
-    printStream.println("   Primary Attributes: " + getAttributeDotsSpent(AttributeGroupPriority.Primary)); //$NON-NLS-1$
-    printStream.println("   Secondary Attributes: " + getAttributeDotsSpent(AttributeGroupPriority.Secondary)); //$NON-NLS-1$
-    printStream.println("   Tertiary Attributes: " + getAttributeDotsSpent(AttributeGroupPriority.Tertiary)); //$NON-NLS-1$
+    printStream.println("   Primary Attributes: " + getAttributeModel(AttributeGroupPriority.Primary).getValue()); //$NON-NLS-1$
+    printStream.println("   Secondary Attributes: " + getAttributeModel(AttributeGroupPriority.Secondary).getValue()); //$NON-NLS-1$
+    printStream.println("   Tertiary Attributes: " + getAttributeModel(AttributeGroupPriority.Tertiary).getValue()); //$NON-NLS-1$
     printStream.println("   Favored Abilities:" + getFavoredAbilityModel().getValue()); //$NON-NLS-1$
     printStream.println("   General Abilities:" + getDefaultAbilityModel().getValue()); //$NON-NLS-1$
     printStream.println("   Virtues:" + getVirtueModel().getValue()); //$NON-NLS-1$
@@ -183,9 +171,9 @@ public class BonusPointManagement implements IBonusPointManagement {
     printStream.println("   Favored Picks:" + getFavoredCharmPicksSpent()); //$NON-NLS-1$
     printStream.println("   Default Picks:" + getDefaultCharmPicksSpent()); //$NON-NLS-1$
     printStream.println("Bonus Points"); //$NON-NLS-1$
-    printStream.println("   Primary Attributes: " + getAttributeBonusPointsSpent(AttributeGroupPriority.Primary)); //$NON-NLS-1$
-    printStream.println("   Secondary Attributes: " + getAttributeBonusPointsSpent(AttributeGroupPriority.Secondary)); //$NON-NLS-1$
-    printStream.println("   Tertiary Attributes: " + getAttributeBonusPointsSpent(AttributeGroupPriority.Tertiary)); //$NON-NLS-1$
+    printStream.println("   Primary Attributes: " + getAttributeModel(AttributeGroupPriority.Primary).getSpentBonusPoints()); //$NON-NLS-1$
+    printStream.println("   Secondary Attributes: " + getAttributeModel(AttributeGroupPriority.Secondary).getSpentBonusPoints()); //$NON-NLS-1$
+    printStream.println("   Tertiary Attributes: " + getAttributeModel(AttributeGroupPriority.Tertiary).getSpentBonusPoints()); //$NON-NLS-1$
     printStream.println("   Abilities:" + getDefaultAbilityModel().getSpentBonusPoints()); //$NON-NLS-1$
     printStream.println("   Specialties:" + getSpecialtyBonusPointCosts()); //$NON-NLS-1$
     printStream.println("   Virtues:" + getVirtueModel().getSpentBonusPoints()); //$NON-NLS-1$
@@ -216,7 +204,7 @@ public class BonusPointManagement implements IBonusPointManagement {
   }
 
   public int getTotalBonusPointsSpent() {
-    return getAttributeBonusPoints()
+    return attributeCalculator.getBonusPoints()
         + getDefaultAbilityModel().getSpentBonusPoints()
         + getSpecialtyBonusPointCosts()
         + getCharmBonusPointsSpent()
@@ -310,6 +298,18 @@ public class BonusPointManagement implements IBonusPointManagement {
 
       public int getValue() {
         return abilityCalculator.getFavoredPicksSpent();
+      }
+    };
+  }
+
+  public IAlotmentModel getAttributeModel(final AttributeGroupPriority priority) {
+    return new IAlotmentModel() {
+      public int getSpentBonusPoints() {
+        return attributeCalculator.getAttributePoints(priority).getBonusPointsSpent();
+      }
+
+      public int getValue() {
+        return attributeCalculator.getAttributePoints(priority).getDotsSpent();
       }
     };
   }
