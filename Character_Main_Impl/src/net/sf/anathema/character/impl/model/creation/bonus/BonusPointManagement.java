@@ -148,14 +148,6 @@ public class BonusPointManagement implements IBonusPointManagement {
     return attributeCalculator.getAttributePoints(priority).getBonusPointsSpent();
   }
 
-  public int getBackgroundBonusPointsSpent() {
-    return backgroundCalculator.getBonusPointSpent();
-  }
-
-  public int getBackgroundDotsSpent() {
-    return backgroundCalculator.getSpentDots();
-  }
-
   public int getFavoredCharmPicksSpent() {
     return magicCalculator.getFavoredCharmPicksSpent();
   }
@@ -198,7 +190,7 @@ public class BonusPointManagement implements IBonusPointManagement {
     printStream.println("   Favored Abilities:" + getFavoredAbilityDotsSpent()); //$NON-NLS-1$
     printStream.println("   General Abilities:" + getDefaultAbilityDotsSpent()); //$NON-NLS-1$
     printStream.println("   Virtues:" + getVirtueModel().getValue()); //$NON-NLS-1$
-    printStream.println("   Backgrounds:" + getBackgroundDotsSpent()); //$NON-NLS-1$
+    printStream.println("   Backgrounds:" + getBackgroundModel().getValue()); //$NON-NLS-1$
     printStream.println("Magic Picks"); //$NON-NLS-1$
     printStream.println("   Favored Picks:" + getFavoredCharmPicksSpent()); //$NON-NLS-1$
     printStream.println("   Default Picks:" + getDefaultCharmPicksSpent()); //$NON-NLS-1$
@@ -210,7 +202,7 @@ public class BonusPointManagement implements IBonusPointManagement {
     printStream.println("   Specialties:" + getSpecialtyBonusPointCosts()); //$NON-NLS-1$
     printStream.println("   Virtues:" + getVirtueModel().getSpentBonusPoints()); //$NON-NLS-1$
     printStream.println("   Willpower:" + getWillpowerBonusPointsSpent()); //$NON-NLS-1$
-    printStream.println("   Backgrounds:" + getBackgroundBonusPointsSpent()); //$NON-NLS-1$
+    printStream.println("   Backgrounds:" + getBackgroundModel().getSpentBonusPoints()); //$NON-NLS-1$
     printStream.println("   Essence:" + getEssenceBonusPointsSpent()); //$NON-NLS-1$
     printStream.println("   Charms:" + getCharmBonusPointsSpent()); //$NON-NLS-1$
     printStream.println("   Combos:" + getComboBonusPointsSpent()); //$NON-NLS-1$
@@ -246,7 +238,7 @@ public class BonusPointManagement implements IBonusPointManagement {
         + getCharmBonusPointsSpent()
         + getComboBonusPointsSpent()
         + getSpellBonusPointsSpent()
-        + getBackgroundBonusPointsSpent()
+        + getBackgroundModel().getSpentBonusPoints()
         + getVirtueModel().getSpentBonusPoints()
         + getWillpowerBonusPointsSpent()
         + getEssenceBonusPointsSpent()
@@ -286,6 +278,18 @@ public class BonusPointManagement implements IBonusPointManagement {
 
       public int getSpentBonusPoints() {
         return virtueCalculator.getBonusPointsSpent();
+      }
+    };
+  }
+
+  public IAlotmentModel getBackgroundModel() {
+    return new IAlotmentModel() {
+      public int getValue() {
+        return backgroundCalculator.getSpentDots();
+      }
+
+      public int getSpentBonusPoints() {
+        return backgroundCalculator.getBonusPointSpent();
       }
     };
   }
