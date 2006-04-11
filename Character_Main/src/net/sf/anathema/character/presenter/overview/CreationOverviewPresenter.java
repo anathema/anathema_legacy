@@ -39,9 +39,6 @@ public class CreationOverviewPresenter {
   private IValueView<String> casteView;
   private IValueView<String> natureView;
   private IValueView<String> miscView;
-  private ILabelledAlotmentView primaryAttributeView;
-  private ILabelledAlotmentView secondaryAttributeView;
-  private ILabelledAlotmentView tertiaryAttributeView;
 
   public CreationOverviewPresenter(
       IResources resources,
@@ -142,21 +139,32 @@ public class CreationOverviewPresenter {
         management.getDefaultAbilityModel(),
         defaultAbilityDotView,
         getCreationPoints().getAbilityCreationPoints().getDefaultDotCount()));
-
   }
 
   private void initAttributes() {
     IOverviewCategory category = view.addOverviewCategory(getString("Overview.Attributes.Title")); //$NON-NLS-1$
-    primaryAttributeView = category.addAlotmentView(getString("Overview.PrimaryAttributeCategory"), 2); //$NON-NLS-1$
-    secondaryAttributeView = category.addAlotmentView(getString("Overview.SecondaryAttributeCategory"), 2); //$NON-NLS-1$
-    tertiaryAttributeView = category.addAlotmentView(getString("Overview.TertiaryAttributeCategory"), 2); //$NON-NLS-1$
+    ILabelledAlotmentView primaryAttributeView = category.addAlotmentView(
+        getString("Overview.PrimaryAttributeCategory"), 2); //$NON-NLS-1$
+    initAttributePresentation(primaryAttributeView, AttributeGroupPriority.Primary);
+    ILabelledAlotmentView secondaryAttributeView = category.addAlotmentView(
+        getString("Overview.SecondaryAttributeCategory"), 2); //$NON-NLS-1$
+    initAttributePresentation(secondaryAttributeView, AttributeGroupPriority.Secondary);
+    ILabelledAlotmentView tertiaryAttributeView = category.addAlotmentView(
+        getString("Overview.TertiaryAttributeCategory"), 2); //$NON-NLS-1$
+    initAttributePresentation(tertiaryAttributeView, AttributeGroupPriority.Tertiary);
+  }
+
+  private void initAttributePresentation(ILabelledAlotmentView alotmentView, AttributeGroupPriority priority) {
+    presenters.add(new AlotmentSubPresenter(
+        management.getAttributeModel(priority),
+        alotmentView,
+        getCreationPoints().getAttributeCreationPoints().getCount(priority)));
   }
 
   private void updateOverview() {
     this.management.recalculate();
     updateCaste();
     updateWillpowerRegainingConcept();
-    updateAttributes();
     for (IOverviewSubPresenter presenter : presenters) {
       presenter.update();
     }
@@ -202,20 +210,6 @@ public class CreationOverviewPresenter {
     }
     setFontParameters(defaultCharmView, defaultSpent, defaultTotal, management.getCharmBonusPointsSpent()
         + management.getSpellBonusPointsSpent());
-  }
-
-  private void updateAttributes() {
-    updateAttributeGroup(primaryAttributeView, AttributeGroupPriority.Primary);
-    updateAttributeGroup(secondaryAttributeView, AttributeGroupPriority.Secondary);
-    updateAttributeGroup(tertiaryAttributeView, AttributeGroupPriority.Tertiary);
-  }
-
-  private void updateAttributeGroup(ILabelledAlotmentView alotmentView, AttributeGroupPriority priority) {
-    updateView(
-        alotmentView,
-        management.getAttributeDotsSpent(priority),
-        getCreationPoints().getAttributeCreationPoints().getCount(priority),
-        management.getAttributeBonusPointsSpent(priority));
   }
 
   private void updateWillpowerRegainingConcept() {

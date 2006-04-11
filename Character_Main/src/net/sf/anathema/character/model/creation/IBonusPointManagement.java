@@ -11,12 +11,6 @@ public interface IBonusPointManagement {
 
   public int getSpecialtyBonusPointCosts();
 
-  public int getAttributeBonusPoints();
-
-  public int getAttributeDotsSpent(AttributeGroupPriority priority);
-
-  public int getAttributeBonusPointsSpent(AttributeGroupPriority priority);
-
   public int getFavoredCharmPicksSpent();
 
   public int getDefaultCharmPicksSpent();
@@ -59,5 +53,7 @@ public interface IBonusPointManagement {
   public IAlotmentModel getFavoredAbilityModel();
 
   public IAlotmentModel getFavoredAbilityPickModel();
+
+  public IAlotmentModel getAttributeModel(AttributeGroupPriority priority);
 
 }
