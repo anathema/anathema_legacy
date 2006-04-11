@@ -273,12 +273,6 @@ public class CreationOverviewPresenter {
     return resources.getString(string);
   }
 
-  private void updateView(final ILabelledAlotmentView alotmentView, int value, int alotment, int bonusPointsSpent) {
-    alotmentView.setValue(value);
-    alotmentView.setAlotment(alotment);
-    setFontParameters(alotmentView, value, alotment, bonusPointsSpent);
-  }
-
   private void setFontParameters(final IValueView valueView, int value, int alotment, int bonusPointsSpent) {
     LegalityFontProvider legalityFontProvider = new LegalityFontProvider();
     ValueLegalityState fontStyleState = bonusPointsSpent > 0 ? ValueLegalityState.Increased : ValueLegalityState.Okay;
