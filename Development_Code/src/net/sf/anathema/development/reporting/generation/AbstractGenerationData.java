@@ -17,6 +17,8 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterDescription;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
+import net.sf.anathema.character.model.concept.INature;
+import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
 import net.sf.anathema.character.model.concept.NatureType;
 import net.sf.anathema.framework.repository.AnathemaItem;
 import net.sf.anathema.framework.repository.IItem;
@@ -50,7 +52,11 @@ public abstract class AbstractGenerationData implements IGenerationData {
     backgrounds.addBackground(new SimpleBackgroundTemplate("Allies")).setCurrentValue(3);
     backgrounds.addBackground("Plot Device").setCurrentValue(4); //$NON-NLS-1$    
     statistics.getCharacterConcept().getConcept().setText("Held"); //$NON-NLS-1$
-    statistics.getCharacterConcept().getNature().setType(new NatureType(null, null, null));
+    statistics.getCharacterConcept().getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
+      public void accept(INature nature) {
+        nature.getDescription().setType(new NatureType(null, null, null));
+      }
+    });
     // "Gallant",
     // "whenever your deeds are particularly impressive, awe-inspiring or likely to land you smack in the
     // center of attention.";
