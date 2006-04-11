@@ -25,8 +25,8 @@ import net.sf.anathema.lib.control.booleanvalue.BooleanValueControl;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
-import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
-import net.sf.anathema.lib.control.stringvalue.StringValueControl;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.objectvalue.ObjectValueControl;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 
 public class CharmEntryModel {
@@ -35,7 +35,7 @@ public class CharmEntryModel {
   private final CharacterType[] legalCharacterTypes = createLegalCharacterTypeArray();
   private final GenericControl<ITraitSelectionChangedListener> control = new GenericControl<ITraitSelectionChangedListener>();
   private final IntValueControl essenceControl = new IntValueControl();
-  private final StringValueControl groupControl = new StringValueControl();
+  private final ObjectValueControl<String> groupControl = new ObjectValueControl<String>();
   private final BooleanValueControl completionControl = new BooleanValueControl();
   private final PrimaryPrerequisiteLegalityChecker checker = new PrimaryPrerequisiteLegalityChecker();
 
@@ -267,11 +267,10 @@ public class CharmEntryModel {
   }
 
   private void fireGroupChanged() {
-    groupControl.fireValueChangedEvent(charmData.getGroupId());
+    groupControl.fireValueChangedEvent(null, charmData.getGroupId());
   }
 
-  public void addCharmGroupIdListener(IStringValueChangedListener listener) {
-    groupControl.addStringValueChangeListener(listener);
+  public void addCharmGroupIdListener(IObjectValueChangedListener<String> listener) {
+    groupControl.addObjectValueChangeListener(listener);
   }
-
 }

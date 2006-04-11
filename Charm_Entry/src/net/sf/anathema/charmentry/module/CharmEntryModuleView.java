@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.charmentry.view.CharmEntryView;
 import net.sf.anathema.framework.view.IItemView;
-import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
 public class CharmEntryModuleView implements IItemView {
 
@@ -43,11 +43,11 @@ public class CharmEntryModuleView implements IItemView {
     return icon;
   }
 
-  public void addNameChangedListener(IStringValueChangedListener nameListener) {
+  public void addNameChangedListener(IObjectValueChangedListener<String> nameListener) {
     // Nothing to do
   }
 
-  public void removeNameChangedListener(IStringValueChangedListener nameListener) {
+  public void removeNameChangedListener(IObjectValueChangedListener<String> nameListener) {
     // Nothing to do
   }
 

@@ -38,7 +38,6 @@ import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.control.stringvalue.IStringValueChangedListener;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import net.sf.anathema.lib.resources.IResources;
@@ -84,12 +83,12 @@ public class CharmEntryPresenter {
 
   private ITextView initCharmGroupPresentation() {
     final ITextView nameView = view.addSingleLineTextView(resources.getString("CharmEntry.CharmGroupId")); //$NON-NLS-1$
-    nameView.addTextChangedListener(new IStringValueChangedListener() {
+    nameView.addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         model.setCharmGroup(newValue);
       }
     });
-    model.addCharmGroupIdListener(new IStringValueChangedListener() {
+    model.addCharmGroupIdListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         nameView.setText(newValue);
       }
@@ -163,12 +162,12 @@ public class CharmEntryPresenter {
     ICostEntryView essenceCostView = view.addCostView(resources.getString("CharmEntry.EssenceCost"), //$NON-NLS-1$
         resources.getString("CharmEntry.CostValue"), //$NON-NLS-1$
         resources.getString("CharmEntry.CostText")); //$NON-NLS-1$
-    essenceCostView.getValueView().addTextChangedListener(new IStringValueChangedListener() {
+    essenceCostView.getValueView().addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         model.setEssenceCostValue(newValue);
       }
     });
-    essenceCostView.getTextView().addTextChangedListener(new IStringValueChangedListener() {
+    essenceCostView.getTextView().addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         model.setEssenceCostText(newValue);
       }
@@ -176,12 +175,12 @@ public class CharmEntryPresenter {
     ICostEntryView willpowerCostView = view.addCostView(resources.getString("CharmEntry.WillpowerCost"), //$NON-NLS-1$
         resources.getString("CharmEntry.CostValue"), //$NON-NLS-1$
         resources.getString("CharmEntry.CostText")); //$NON-NLS-1$
-    willpowerCostView.getValueView().addTextChangedListener(new IStringValueChangedListener() {
+    willpowerCostView.getValueView().addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         model.setWillpowerCostValue(newValue);
       }
     });
-    willpowerCostView.getTextView().addTextChangedListener(new IStringValueChangedListener() {
+    willpowerCostView.getTextView().addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         model.setWillpowerCostText(newValue);
       }
@@ -189,12 +188,12 @@ public class CharmEntryPresenter {
     ICostEntryView healthCostView = view.addCostView(resources.getString("CharmEntry.HealthCost"), //$NON-NLS-1$
         resources.getString("CharmEntry.CostValue"), //$NON-NLS-1$
         resources.getString("CharmEntry.CostText")); //$NON-NLS-1$
-    healthCostView.getValueView().addTextChangedListener(new IStringValueChangedListener() {
+    healthCostView.getValueView().addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         model.setHealthCostValue(newValue);
       }
     });
-    healthCostView.getTextView().addTextChangedListener(new IStringValueChangedListener() {
+    healthCostView.getTextView().addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         model.setHealthCostText(newValue);
       }
@@ -202,12 +201,12 @@ public class CharmEntryPresenter {
     ICostEntryView xpCostView = view.addCostView(resources.getString("CharmEntry.XPCost"), //$NON-NLS-1$
         resources.getString("CharmEntry.CostValue"), //$NON-NLS-1$
         resources.getString("CharmEntry.CostText")); //$NON-NLS-1$
-    xpCostView.getValueView().addTextChangedListener(new IStringValueChangedListener() {
+    xpCostView.getValueView().addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         model.setXpCostValue(newValue);
       }
     });
-    xpCostView.getTextView().addTextChangedListener(new IStringValueChangedListener() {
+    xpCostView.getTextView().addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         model.setXpCostText(newValue);
       }
@@ -348,7 +347,7 @@ public class CharmEntryPresenter {
 
   private void initCharmNamePresentation() {
     ITextView nameView = view.addSingleLineTextView(resources.getString("CharmEntry.CharmName")); //$NON-NLS-1$
-    nameView.addTextChangedListener(new IStringValueChangedListener() {
+    nameView.addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         model.setCharmName(newValue);
       }
