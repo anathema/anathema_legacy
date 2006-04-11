@@ -29,9 +29,9 @@ public class BeastformOverviewView implements IBeastformOverviewView {
   private JPanel createContent() {
     JPanel overview = new JPanel(new GridDialogLayout(2, false));
     IGridDialogPanel panel = new DefaultGridDialogPanel();
-    attributeView = new LabelledAlotmentView(properties.getAttributeDotsString(), 0, 0);
+    attributeView = new LabelledAlotmentView(properties.getAttributeDotsString(), 0, 0, 2);
     attributeView.addComponents(panel);
-    giftView = new LabelledAlotmentView(properties.getGiftPicksString(), 0, 0);
+    giftView = new LabelledAlotmentView(properties.getGiftPicksString(), 0, 0, 2);
     giftView.addComponents(panel);
     overview.add(panel.getContent());
     return overview;
