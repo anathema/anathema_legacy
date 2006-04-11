@@ -21,5 +21,4 @@ public class StringValueControl {
       listener.valueChanged(value);
     }
   }
-
 }
