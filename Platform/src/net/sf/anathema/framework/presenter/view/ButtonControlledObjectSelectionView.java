@@ -54,12 +54,12 @@ public class ButtonControlledObjectSelectionView implements IObjectSelectionView
   public void addObjectSelectionChangedListener(final IObjectValueChangedListener listener) {
     addButton.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        listener.valueChanged(null, comboBox.getSelectedItem());
+        listener.valueChanged(comboBox.getSelectedItem());
       }
     });
     comboBox.getEditor().addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        listener.valueChanged(null, comboBox.getEditor().getItem());
+        listener.valueChanged(comboBox.getEditor().getItem());
       }
     });
   }
