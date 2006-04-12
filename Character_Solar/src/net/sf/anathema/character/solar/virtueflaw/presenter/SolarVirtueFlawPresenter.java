@@ -20,18 +20,19 @@ public class SolarVirtueFlawPresenter extends VirtueFlawPresenter {
   @Override
   protected void initAdditionalPresentation() {
     ISolarVirtueFlaw virtueFlaw = model.getVirtueFlaw();
-    initConditionPresentation(virtueFlaw);
-    initDescriptionPresentation(virtueFlaw);
+    TextualPresentation presentation = new TextualPresentation();
+    initConditionPresentation(virtueFlaw, presentation);
+    initDescriptionPresentation(virtueFlaw, presentation);
   }
 
-  private void initDescriptionPresentation(ISolarVirtueFlaw virtueFlaw) {
+  private void initDescriptionPresentation(ISolarVirtueFlaw virtueFlaw, TextualPresentation textualPresentation) {
     ITextView descriptionView = view.addTextView(getResources().getString("VirtueFlaw.Description.Name"), 30, 3); //$NON-NLS-1$
-    TextualPresentation.initView(descriptionView, virtueFlaw.getDescription());
+    textualPresentation.initView(descriptionView, virtueFlaw.getDescription());
   }
 
-  private void initConditionPresentation(ISolarVirtueFlaw virtueFlaw) {
+  private void initConditionPresentation(ISolarVirtueFlaw virtueFlaw, TextualPresentation textualPresentation) {
     ITextView conditionView = view.addTextView(getResources().getString("VirtueFlaw.LimitBreakCondition.Name"), 30, 2); //$NON-NLS-1$
-    TextualPresentation.initView(conditionView, virtueFlaw.getLimitBreak());
+    textualPresentation.initView(conditionView, virtueFlaw.getLimitBreak());
   }
 
 }
