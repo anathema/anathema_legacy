@@ -27,7 +27,7 @@ public class ExperiencePointEntry implements IExperiencePointEntry {
   private void fireChangeEvent() {
     changeControl.forAllDo(new IClosure<ChangeListener>() {
       public void execute(ChangeListener input) {
-        input.stateChanged(new ChangeEvent(this));
+        input.stateChanged(new ChangeEvent(ExperiencePointEntry.this));
       }
     });
   }
