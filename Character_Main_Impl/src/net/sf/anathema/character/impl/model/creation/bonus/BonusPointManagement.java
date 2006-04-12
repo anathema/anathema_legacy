@@ -26,7 +26,7 @@ import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.model.generic.GenericCharacter;
 import net.sf.anathema.character.presenter.overview.IAdditionalSpendingModel;
 import net.sf.anathema.character.presenter.overview.ISpendingModel;
-import net.sf.anathema.character.presenter.overview.IValueSpendingModel;
+import net.sf.anathema.character.presenter.overview.IValueModel;
 
 public class BonusPointManagement implements IBonusPointManagement {
 
@@ -214,7 +214,7 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   public ISpendingModel getVirtueModel() {
     return new ISpendingModel() {
-      public int getValue() {
+      public Integer getValue() {
         return virtueCalculator.getVirtueDotsSpent();
       }
 
@@ -226,7 +226,7 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   public ISpendingModel getBackgroundModel() {
     return new ISpendingModel() {
-      public int getValue() {
+      public Integer getValue() {
         return backgroundCalculator.getSpentDots();
       }
 
@@ -238,7 +238,7 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   public ISpendingModel getDefaultAbilityModel() {
     return new ISpendingModel() {
-      public int getValue() {
+      public Integer getValue() {
         return abilityCalculator.getFreePointsSpent(false);
       }
 
@@ -250,7 +250,7 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   public ISpendingModel getFavoredAbilityModel() {
     return new ISpendingModel() {
-      public int getValue() {
+      public Integer getValue() {
         return abilityCalculator.getFreePointsSpent(true);
       }
 
@@ -266,7 +266,7 @@ public class BonusPointManagement implements IBonusPointManagement {
         return 0;
       }
 
-      public int getValue() {
+      public Integer getValue() {
         return abilityCalculator.getFavoredPicksSpent();
       }
     };
@@ -278,7 +278,7 @@ public class BonusPointManagement implements IBonusPointManagement {
         return attributeCalculator.getAttributePoints(priority).getBonusPointsSpent();
       }
 
-      public int getValue() {
+      public Integer getValue() {
         return attributeCalculator.getAttributePoints(priority).getDotsSpent();
       }
     };
@@ -290,7 +290,7 @@ public class BonusPointManagement implements IBonusPointManagement {
         return 0;
       }
 
-      public int getValue() {
+      public Integer getValue() {
         return magicCalculator.getFavoredCharmPicksSpent();
       }
     };
@@ -310,7 +310,7 @@ public class BonusPointManagement implements IBonusPointManagement {
         return getCharmBonusPointsSpent() + getSpellBonusPointsSpent();
       }
 
-      public int getValue() {
+      public Integer getValue() {
         return magicCalculator.getGeneralCharmPicksSpent();
       }
 
@@ -320,9 +320,9 @@ public class BonusPointManagement implements IBonusPointManagement {
     };
   }
 
-  public IValueSpendingModel getAdditionalModelModel() {
-    return new IValueSpendingModel() {
-      public int getValue() {
+  public IValueModel<Integer> getAdditionalModelModel() {
+    return new IValueModel<Integer>() {
+      public Integer getValue() {
         return getAdditionalModelTotalValue();
       }
     };
@@ -342,7 +342,7 @@ public class BonusPointManagement implements IBonusPointManagement {
         return 0;
       }
 
-      public int getValue() {
+      public Integer getValue() {
         return getStandardBonusPointsSpent();
       }
 
