@@ -26,16 +26,17 @@ public class CharacterDescriptionPresenter {
   }
 
   public void init() {
-    initNameLineView(0);
-    initAreaView("CharacterDescription.Label.Periphrase", 2, description.getPeriphrase()); //$NON-NLS-1$
-    initAreaView("CharacterDescription.Label.Characterization", 7, description.getCharacterization()); //$NON-NLS-1$
-    initAreaView("CharacterDescription.Label.PhysicalDescription", 5, description.getPhysicalDescription()); //$NON-NLS-1$
-    initAreaView("CharacterDescription.Label.Notes", 5, description.getNotes()); //$NON-NLS-1$
+    TextualPresentation presentation = new TextualPresentation();
+    initNameLineView(0, presentation);
+    initAreaView("CharacterDescription.Label.Periphrase", 2, description.getPeriphrase(), presentation); //$NON-NLS-1$
+    initAreaView("CharacterDescription.Label.Characterization", 7, description.getCharacterization(), presentation); //$NON-NLS-1$
+    initAreaView("CharacterDescription.Label.PhysicalDescription", 5, description.getPhysicalDescription(), presentation); //$NON-NLS-1$
+    initAreaView("CharacterDescription.Label.Notes", 5, description.getNotes(), presentation); //$NON-NLS-1$
     descriptionView.initGui(null);
   }
 
-  private void initNameLineView(int row) {
-    initLineView("CharacterDescription.Label.Name", description.getName()); //$NON-NLS-1$
+  private void initNameLineView(int row, TextualPresentation presentation) {
+    initLineView("CharacterDescription.Label.Name", description.getName(), presentation); //$NON-NLS-1$
     descriptionView.addEditAction(new NameGeneratorAction(
         resources.getImageIcon("util/question-mark-purple.gif"), //$NON-NLS-1$
         resources.getString("CharacterDescription.Tooltip.RealmName"), //$NON-NLS-1$
@@ -48,13 +49,13 @@ public class CharacterDescriptionPresenter {
         new ThresholdNameGenerator()), row);
   }
 
-  private void initLineView(String labelResourceKey, final ISimpleTextualDescription textualDescription) {
+  private void initLineView(String labelResourceKey, final ISimpleTextualDescription textualDescription, TextualPresentation presentation) {
     ITextView textView = descriptionView.addLineView(resources.getString(labelResourceKey));
-    TextualPresentation.initView(textView, textualDescription);
+    presentation.initView(textView, textualDescription);
   }
 
-  private void initAreaView(String labelResourceKey, int rows, final ISimpleTextualDescription textualDescription) {
+  private void initAreaView(String labelResourceKey, int rows, final ISimpleTextualDescription textualDescription, TextualPresentation presentation) {
     ITextView textView = descriptionView.addAreaView(resources.getString(labelResourceKey), rows);
-    TextualPresentation.initView(textView, textualDescription);
+    presentation.initView(textView, textualDescription);
   }
 }

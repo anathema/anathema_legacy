@@ -52,9 +52,10 @@ public class ComboConfigurationPresenter implements IMagicSubPresenter {
     initCharmLearnListening(comboView);
     ITextView nameView = comboView.addComboNameView(resources.getString("CardView.CharmConfiguration.ComboCreation.NameLabel")); //$NON-NLS-1$);
     ICombo editCombo = comboConfiguration.getEditCombo();
-    TextualPresentation.initView(nameView, editCombo.getName());
+    TextualPresentation textualPresentation = new TextualPresentation();
+    textualPresentation.initView(nameView, editCombo.getName());
     ITextView descriptionView = comboView.addComboDescriptionView(resources.getString("CardView.CharmConfiguration.ComboCreation.DescriptionLabel")); //$NON-NLS-1$);
-    TextualPresentation.initView(descriptionView, editCombo.getDescription());
+    textualPresentation.initView(descriptionView, editCombo.getDescription());
     updateCharmListsInView(comboView);
     initViewListening(comboView);
     initComboModelListening(comboView);
