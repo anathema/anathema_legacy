@@ -23,17 +23,7 @@ public class ExperiencedOverviewPresenter {
   private final IResources resources;
   private final List<IOverviewSubPresenter> presenters = new ArrayList<IOverviewSubPresenter>();
 
-  private IValueView<Integer> attributeView;
-  private IValueView<Integer> abilityView;
-  private IValueView<Integer> specialtyView;
-  private IValueView<Integer> charmView;
-  private IValueView<Integer> comboView;
-  private IValueView<Integer> spellView;
-  private IValueView<Integer> virtueView;
-  private IValueView<Integer> willpowerView;
-  private IValueView<Integer> essenceView;
   private ILabelledAlotmentView totalView;
-  private IValueView<Integer> miscView;
 
   public ExperiencedOverviewPresenter(
       IResources resources,
@@ -71,7 +61,7 @@ public class ExperiencedOverviewPresenter {
   }
 
   private void initMisc(IOverviewCategory category) {
-    miscView = category.addIntegerValueView(getString("Overview.MiscPointsCategory"), 2); //$NON-NLS-1$
+    IValueView<Integer> miscView = category.addIntegerValueView(getString("Overview.MiscPointsCategory"), 2); //$NON-NLS-1$
     presenters.add(new ValueSubPresenter(management.getMiscModel(), miscView));
   }
 
@@ -104,17 +94,17 @@ public class ExperiencedOverviewPresenter {
   }
 
   private void initEssence(IOverviewCategory category) {
-    essenceView = category.addIntegerValueView(getString("Essence.Name"), 2); //$NON-NLS-1$
+    IValueView<Integer> essenceView = category.addIntegerValueView(getString("Essence.Name"), 2); //$NON-NLS-1$
     presenters.add(new ValueSubPresenter(management.getEssenceModel(), essenceView));
   }
 
   private void initWillpower(IOverviewCategory category) {
-    willpowerView = category.addIntegerValueView(getString("WillpowerType.Name"), 2); //$NON-NLS-1$
+    IValueView<Integer> willpowerView = category.addIntegerValueView(getString("WillpowerType.Name"), 2); //$NON-NLS-1$
     presenters.add(new ValueSubPresenter(management.getWillpowerModel(), willpowerView));
   }
 
   private void initVirtues(IOverviewCategory category) {
-    virtueView = category.addIntegerValueView(getString("Overview.VirtueCategory"), 2); //$NON-NLS-1$
+    IValueView<Integer> virtueView = category.addIntegerValueView(getString("Overview.VirtueCategory"), 2); //$NON-NLS-1$
     presenters.add(new ValueSubPresenter(management.getVirtueModel(), virtueView));
   }
 
@@ -122,7 +112,7 @@ public class ExperiencedOverviewPresenter {
     if (!statistics.getCharacterTemplate().getMagicTemplate().getSpellMagic().knowsSpellMagic()) {
       return;
     }
-    spellView = category.addIntegerValueView(getString("Overview.Experience.Spells"), 2); //$NON-NLS-1$
+    IValueView<Integer> spellView = category.addIntegerValueView(getString("Overview.Experience.Spells"), 2); //$NON-NLS-1$
     presenters.add(new ValueSubPresenter(management.getSpellModel(), spellView));
   }
 
@@ -130,7 +120,7 @@ public class ExperiencedOverviewPresenter {
     if (!statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().knowsCharms()) {
       return;
     }
-    comboView = category.addIntegerValueView(getString("Overview.Experience.Combos"), 2); //$NON-NLS-1$
+    IValueView<Integer> comboView = category.addIntegerValueView(getString("Overview.Experience.Combos"), 2); //$NON-NLS-1$
     presenters.add(new ValueSubPresenter(management.getComboModel(), comboView));
   }
 
@@ -138,24 +128,24 @@ public class ExperiencedOverviewPresenter {
     if (!statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().knowsCharms()) {
       return;
     }
-    charmView = category.addIntegerValueView(getString("Overview.Charms.Title"), 2); //$NON-NLS-1$
+    IValueView<Integer> charmView = category.addIntegerValueView(getString("Overview.Charms.Title"), 2); //$NON-NLS-1$
     presenters.add(new ValueSubPresenter(management.getCharmModel(), charmView));
   }
 
   private void initAbilities(IOverviewCategory category) {
-    abilityView = category.addIntegerValueView(getString("Overview.Abilities.Title"), 2); //$NON-NLS-1$
+    IValueView<Integer> abilityView = category.addIntegerValueView(getString("Overview.Abilities.Title"), 2); //$NON-NLS-1$
     presenters.add(new ValueSubPresenter(management.getAbilityModel(), abilityView));
-    specialtyView = category.addIntegerValueView(getString("Overview.Experience.Specialties"), 2); //$NON-NLS-1$
+    IValueView<Integer> specialtyView = category.addIntegerValueView(getString("Overview.Experience.Specialties"), 2); //$NON-NLS-1$
     presenters.add(new ValueSubPresenter(management.getSpecialtyModel(), specialtyView));
   }
 
   private void initAttributes(IOverviewCategory category) {
-    attributeView = category.addIntegerValueView(getString("Overview.Attributes.Title"), 2); //$NON-NLS-1$
+    IValueView<Integer> attributeView = category.addIntegerValueView(getString("Overview.Attributes.Title"), 2); //$NON-NLS-1$
     presenters.add(new ValueSubPresenter(management.getAttributeModel(), attributeView));
   }
 
   private void calculateXPCost() {
-    for (IOverviewSubPresenter presenter:presenters) {
+    for (IOverviewSubPresenter presenter : presenters) {
       presenter.update();
     }
     setAlotment();
