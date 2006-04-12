@@ -20,6 +20,7 @@ import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
+import net.sf.anathema.character.presenter.overview.IValueModel;
 
 public class ExperiencePointManagement implements IExperiencePointManagement {
 
@@ -35,7 +36,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
     this.calculator = new ExperiencePointCostCalculator(statistics.getCharacterTemplate().getExperienceCost());
   }
 
-  public int getAbilityCosts() {
+  private int getAbilityCosts() {
     int experienceCosts = 0;
     for (IFavorableTrait ability : getAllAbilities()) {
       experienceCosts += calculator.getAbilityCosts(ability, ability.getFavorization().isCaste()
@@ -44,7 +45,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
     return experienceCosts;
   }
 
-  public int getAttributeCosts() {
+  private int getAttributeCosts() {
     int experienceCosts = 0;
     for (IIdentifiedTraitTypeGroup group : traitConfiguration.getAttributeTypeGroups()) {
       for (ITrait attribute : traitConfiguration.getTraits(group.getAllGroupTypes())) {
@@ -54,7 +55,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
     return experienceCosts;
   }
 
-  public int getBackgroundExperience() {
+  private int getBackgroundExperience() {
     int xpSum = 0;
     for (ITrait background : traitConfiguration.getBackgrounds().getBackgrounds()) {
       int difference = background.getCalculationValue() - background.getCreationValue();
@@ -63,7 +64,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
     return xpSum;
   }
 
-  public int getCharmCosts() {
+  private int getCharmCosts() {
     int experienceCosts = 0;
     ICharmConfiguration charmConfiguration = statistics.getCharms();
     for (ICharm charm : charmConfiguration.getLearnedCharms(true)) {
@@ -93,7 +94,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
     return 0;
   }
 
-  public int getComboCosts() {
+  private int getComboCosts() {
     int experienceCosts = 0;
     for (ICombo combo : statistics.getCombos().getExperienceLearnedCombos()) {
       experienceCosts += calculator.getComboCosts(combo.getCharms());
@@ -101,7 +102,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
     return experienceCosts;
   }
 
-  public int getEssenceCosts() {
+  private int getEssenceCosts() {
     return calculator.getEssenceCosts(traitConfiguration.getTrait(OtherTraitType.Essence));
   }
 
@@ -121,7 +122,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
     return experienceCosts;
   }
 
-  public int getSpellCosts() {
+  private int getSpellCosts() {
     int experienceCosts = 0;
     for (ISpell spell : statistics.getSpells().getLearnedSpells(true)) {
       if (!statistics.getSpells().isLearnedOnCreation(spell)) {
@@ -135,7 +136,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
     return experienceCosts;
   }
 
-  public int getVirtueCosts() {
+  private int getVirtueCosts() {
     int experienceCosts = 0;
     for (ITrait virtue : traitConfiguration.getTraits(VirtueType.values())) {
       experienceCosts += calculator.getVirtueCosts(virtue);
@@ -143,11 +144,11 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
     return experienceCosts;
   }
 
-  public int getWillpowerCosts() {
+  private int getWillpowerCosts() {
     return calculator.getWillpowerCosts(traitConfiguration.getTrait(OtherTraitType.Willpower));
   }
 
-  public int getSpecialtyCosts() {
+  private int getSpecialtyCosts() {
     int experienceCosts = 0;
     for (IFavorableTrait ability : getAllAbilities()) {
       experienceCosts += ability.getSpecialtiesContainer().getExperienceLearnedSpecialtyCount()
@@ -189,7 +190,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
         + "\nOverall: " + getTotalCosts(); //$NON-NLS-1$
   }
 
-  public int getMiscCosts() {
+  private int getMiscCosts() {
     int total = 0;
     for (IAdditionalModel model : statistics.getExtendedConfiguration().getAdditionalModels()) {
       total += model.getExperienceCalculator().calculateCost();
@@ -203,5 +204,85 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
       total += model.getExperienceCalculator().calculateGain();
     }
     return total;
+  }
+
+  public IValueModel<Integer> getAttributeModel() {
+    return new IValueModel<Integer>() {
+      public Integer getValue() {
+        return getAttributeCosts();
+      }
+    };
+  }
+
+  public IValueModel<Integer> getAbilityModel() {
+    return new IValueModel<Integer>() {
+      public Integer getValue() {
+        return getAbilityCosts();
+      }
+    };
+  }
+
+  public IValueModel<Integer> getCharmModel() {
+    return new IValueModel<Integer>() {
+      public Integer getValue() {
+        return getCharmCosts();
+      }
+    };
+  }
+
+  public IValueModel<Integer> getComboModel() {
+    return new IValueModel<Integer>() {
+      public Integer getValue() {
+        return getComboCosts();
+      }
+    };
+  }
+
+  public IValueModel<Integer> getEssenceModel() {
+    return new IValueModel<Integer>() {
+      public Integer getValue() {
+        return getEssenceCosts();
+      }
+    };
+  }
+
+  public IValueModel<Integer> getMiscModel() {
+    return new IValueModel<Integer>() {
+      public Integer getValue() {
+        return getMiscCosts();
+      }
+    };
+  }
+
+  public IValueModel<Integer> getSpecialtyModel() {
+    return new IValueModel<Integer>() {
+      public Integer getValue() {
+        return getSpecialtyCosts();
+      }
+    };
+  }
+
+  public IValueModel<Integer> getSpellModel() {
+    return new IValueModel<Integer>() {
+      public Integer getValue() {
+        return getSpellCosts();
+      }
+    };
+  }
+
+  public IValueModel<Integer> getVirtueModel() {
+    return new IValueModel<Integer>() {
+      public Integer getValue() {
+        return getVirtueCosts();
+      }
+    };
+  }
+
+  public IValueModel<Integer> getWillpowerModel() {
+    return new IValueModel<Integer>() {
+      public Integer getValue() {
+        return getWillpowerCosts();
+      }
+    };
   }
 }
