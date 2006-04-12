@@ -1,5 +1,8 @@
 package net.sf.anathema.character.presenter.overview;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.model.ICharacterStatistics;
@@ -17,6 +20,8 @@ public class ExperiencedOverviewPresenter {
   private final IExperiencePointManagement management;
   private final IOverviewView view;
   private final ICharacterStatistics statistics;
+  private final IResources resources;
+  private final List<IOverviewSubPresenter> presenters = new ArrayList<IOverviewSubPresenter>();
 
   private IValueView<Integer> attributeView;
   private IValueView<Integer> abilityView;
@@ -28,7 +33,6 @@ public class ExperiencedOverviewPresenter {
   private IValueView<Integer> willpowerView;
   private IValueView<Integer> essenceView;
   private ILabelledAlotmentView totalView;
-  private final IResources resources;
   private IValueView<Integer> miscView;
 
   public ExperiencedOverviewPresenter(
@@ -68,6 +72,7 @@ public class ExperiencedOverviewPresenter {
 
   private void initMisc(IOverviewCategory category) {
     miscView = category.addIntegerValueView(getString("Overview.MiscPointsCategory"), 2); //$NON-NLS-1$
+    presenters.add(new ValueSubPresenter(management.getMiscModel(), miscView));
   }
 
   private void initTotal(IOverviewCategory category) {
@@ -100,14 +105,17 @@ public class ExperiencedOverviewPresenter {
 
   private void initEssence(IOverviewCategory category) {
     essenceView = category.addIntegerValueView(getString("Essence.Name"), 2); //$NON-NLS-1$
+    presenters.add(new ValueSubPresenter(management.getEssenceModel(), essenceView));
   }
 
   private void initWillpower(IOverviewCategory category) {
     willpowerView = category.addIntegerValueView(getString("WillpowerType.Name"), 2); //$NON-NLS-1$
+    presenters.add(new ValueSubPresenter(management.getWillpowerModel(), willpowerView));
   }
 
   private void initVirtues(IOverviewCategory category) {
     virtueView = category.addIntegerValueView(getString("Overview.VirtueCategory"), 2); //$NON-NLS-1$
+    presenters.add(new ValueSubPresenter(management.getVirtueModel(), virtueView));
   }
 
   private void initSpells(IOverviewCategory category) {
@@ -115,6 +123,7 @@ public class ExperiencedOverviewPresenter {
       return;
     }
     spellView = category.addIntegerValueView(getString("Overview.Experience.Spells"), 2); //$NON-NLS-1$
+    presenters.add(new ValueSubPresenter(management.getSpellModel(), spellView));
   }
 
   private void initCombos(IOverviewCategory category) {
@@ -122,6 +131,7 @@ public class ExperiencedOverviewPresenter {
       return;
     }
     comboView = category.addIntegerValueView(getString("Overview.Experience.Combos"), 2); //$NON-NLS-1$
+    presenters.add(new ValueSubPresenter(management.getComboModel(), comboView));
   }
 
   private void initCharms(IOverviewCategory category) {
@@ -129,32 +139,25 @@ public class ExperiencedOverviewPresenter {
       return;
     }
     charmView = category.addIntegerValueView(getString("Overview.Charms.Title"), 2); //$NON-NLS-1$
+    presenters.add(new ValueSubPresenter(management.getCharmModel(), charmView));
   }
 
   private void initAbilities(IOverviewCategory category) {
     abilityView = category.addIntegerValueView(getString("Overview.Abilities.Title"), 2); //$NON-NLS-1$
+    presenters.add(new ValueSubPresenter(management.getAbilityModel(), abilityView));
     specialtyView = category.addIntegerValueView(getString("Overview.Experience.Specialties"), 2); //$NON-NLS-1$
+    presenters.add(new ValueSubPresenter(management.getSpecialtyModel(), specialtyView));
   }
 
   private void initAttributes(IOverviewCategory category) {
     attributeView = category.addIntegerValueView(getString("Overview.Attributes.Title"), 2); //$NON-NLS-1$
+    presenters.add(new ValueSubPresenter(management.getAttributeModel(), attributeView));
   }
 
   private void calculateXPCost() {
-    attributeView.setValue(management.getAttributeCosts());
-    abilityView.setValue(management.getAbilityCosts());
-    specialtyView.setValue(management.getSpecialtyCosts());
-    if (statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().knowsCharms()) {
-      charmView.setValue(management.getCharmCosts());
-      comboView.setValue(management.getComboCosts());
+    for (IOverviewSubPresenter presenter:presenters) {
+      presenter.update();
     }
-    if (statistics.getCharacterTemplate().getMagicTemplate().getSpellMagic().knowsSpellMagic()) {
-      spellView.setValue(management.getSpellCosts());
-    }
-    virtueView.setValue(management.getVirtueCosts());
-    willpowerView.setValue(management.getWillpowerCosts());
-    essenceView.setValue(management.getEssenceCosts());
-    miscView.setValue(management.getMiscCosts());
     setAlotment();
     totalView.setValue(management.getTotalCosts());
     setTotalViewColor();

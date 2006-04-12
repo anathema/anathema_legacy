@@ -1,28 +1,30 @@
 package net.sf.anathema.character.model.advance;
 
+import net.sf.anathema.character.presenter.overview.IValueModel;
+
 public interface IExperiencePointManagement {
 
-  public int getAttributeCosts();
-
-  public int getAbilityCosts();
-
-  public int getCharmCosts();
-
-  public int getComboCosts();
+  public int getMiscGain();
 
   public int getTotalCosts();
 
-  public int getEssenceCosts();
+  public IValueModel<Integer> getAttributeModel();
 
-  public int getSpecialtyCosts();
+  public IValueModel<Integer> getMiscModel();
 
-  public int getSpellCosts();
+  public IValueModel<Integer> getEssenceModel();
 
-  public int getVirtueCosts();
+  public IValueModel<Integer> getWillpowerModel();
 
-  public int getWillpowerCosts();
+  public IValueModel<Integer> getVirtueModel();
 
-  public int getMiscCosts();
+  public IValueModel<Integer> getSpellModel();
 
-  public int getMiscGain();
+  public IValueModel<Integer> getComboModel();
+
+  public IValueModel<Integer> getCharmModel();
+
+  public IValueModel<Integer> getAbilityModel();
+
+  public IValueModel<Integer> getSpecialtyModel();
 }
