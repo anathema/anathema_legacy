@@ -24,7 +24,7 @@ public abstract class AbstractBasicItemPresenter {
   public abstract void initPresentation();
 
   protected final void initDescriptionPresentation(String nameLabel, IBasicItemDescriptionView descriptionView) {
-    TextualPresentation.initView(descriptionView.addLineTextView(nameLabel), item.getDescription().getName());
+    new TextualPresentation().initView(descriptionView.addLineTextView(nameLabel), item.getDescription().getName());
     String summaryLabel = resources.getString(getContentLabelKey());
     DefaultStyledDocument document = new DefaultStyledDocument();
     StyledTextManager.initView(new StyledTextManager(document), item.getDescription().getContent());
