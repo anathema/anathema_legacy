@@ -96,7 +96,7 @@ public class VirtueFlawPresenter {
 
   protected ITextView initNamePresentation(IVirtueFlaw virtueFlaw) {
     ITextView titleView = view.addTextView(resources.getString("VirtueFlaw.Name.Name"), 30); //$NON-NLS-1$
-    TextualPresentation.initView(titleView, virtueFlaw.getName());
+    new TextualPresentation().initView(titleView, virtueFlaw.getName());
     return titleView;
   }
 
