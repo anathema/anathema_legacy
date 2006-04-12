@@ -18,7 +18,6 @@ import net.sf.anathema.character.model.concept.INatureType;
 import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.view.overview.IOverviewView;
-import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
@@ -31,9 +30,6 @@ public class CreationOverviewPresenter {
   private final IBonusPointManagement management;
   private final ICharacterTemplate template;
   private final List<IOverviewSubPresenter> presenters = new ArrayList<IOverviewSubPresenter>();
-
-  private IValueView<String> casteView;
-  private IValueView<String> willpowerView;
 
   public CreationOverviewPresenter(
       IResources resources,
@@ -93,7 +89,14 @@ public class CreationOverviewPresenter {
   private void initConcept() {
     IOverviewCategory category = view.addOverviewCategory(getString("Overview.Concept.Title")); //$NON-NLS-1$
     if (!template.getCasteCollection().isEmpty()) {
-      casteView = category.addStringValueView(getString(template.getPresentationProperties().getCasteLabelResource()));
+      IValueView<String> casteView = category.addStringValueView(getString(template.getPresentationProperties()
+          .getCasteLabelResource()));
+      IValueModel<String> casteModel = new IValueModel<String>() {
+        public String getValue() {
+          return getCasteValueResourceKey();
+        }
+      };
+      presenters.add(new StringSubPresenter(casteModel, casteView, resources));
     }
     final String[] resourcekey = new String[1];
     statistics.getCharacterConcept().getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
@@ -105,7 +108,13 @@ public class CreationOverviewPresenter {
         resourcekey[0] = "CharacterConcept.Motivation"; //$NON-NLS-1$
       }
     });
-    willpowerView = category.addStringValueView(getString(resourcekey[0]));
+    IValueView<String> willpowerView = category.addStringValueView(getString(resourcekey[0]));
+    IValueModel<String> willpowerModel = new IValueModel<String>() {
+      public String getValue() {
+        return getWillpowerRegainingConceptValue();
+      }
+    };
+    presenters.add(new StringSubPresenter(willpowerModel, willpowerView, resources));
   }
 
   private void initAdvantages() {
@@ -190,8 +199,6 @@ public class CreationOverviewPresenter {
 
   private void updateOverview() {
     this.management.recalculate();
-    updateCaste();
-    updateWillpowerRegainingConcept();
     for (IOverviewSubPresenter presenter : presenters) {
       presenter.update();
     }
@@ -199,12 +206,6 @@ public class CreationOverviewPresenter {
 
   private ICreationPoints getCreationPoints() {
     return template.getCreationPoints();
-  }
-
-  private void updateWillpowerRegainingConcept() {
-    String natureValue = getWillpowerRegainingConceptValue();
-    willpowerView.setValue(natureValue == null ? "" : natureValue); //$NON-NLS-1$
-    willpowerView.setTextColor(natureValue == null ? LegalityColorProvider.COLOR_LOW : LegalityColorProvider.COLOR_OKAY);
   }
 
   private String getWillpowerRegainingConceptValue() {
@@ -219,20 +220,11 @@ public class CreationOverviewPresenter {
 
       public void accept(IMotivation motivation) {
         if (motivation.getDescription().getText() != null) {
-          value[0] = resources.getString("Overview.Motivation.Selected"); //$NON-NLS-1$
+          value[0] = "Overview.Motivation.Selected"; //$NON-NLS-1$
         }
       }
     });
     return value[0];
-  }
-
-  private void updateCaste() {
-    if (template.getCasteCollection().isEmpty()) {
-      return;
-    }
-    String resourceKey = getCasteValueResourceKey();
-    casteView.setValue(resourceKey == null ? "" : resources.getString(resourceKey)); //$NON-NLS-1$
-    casteView.setTextColor(resourceKey == null ? LegalityColorProvider.COLOR_LOW : LegalityColorProvider.COLOR_OKAY);
   }
 
   private String getCasteValueResourceKey() {
