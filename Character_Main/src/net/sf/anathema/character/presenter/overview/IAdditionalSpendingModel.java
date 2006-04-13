@@ -6,5 +6,5 @@ public interface IAdditionalSpendingModel extends ISpendingModel {
 
   public int getAdditionalRestrictedAlotment();
 
-  public int getAdditionalUnrestrictedAlotment();
+  public boolean isExtensionRequired();
 }

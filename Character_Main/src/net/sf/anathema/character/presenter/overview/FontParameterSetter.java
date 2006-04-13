@@ -7,14 +7,12 @@ import net.sf.anathema.lib.workflow.labelledvalue.IStyleableView;
 
 public class FontParameterSetter {
 
-  private final int alotment;
   private final IStyleableView view;
   private final ISpendingModel model;
 
-  public FontParameterSetter(ISpendingModel model, IStyleableView view, int alotment) {
+  public FontParameterSetter(ISpendingModel model, IStyleableView view) {
     this.model = model;
     this.view = view;
-    this.alotment = alotment;
   }
 
   public void setFontParameters() {
@@ -25,6 +23,7 @@ public class FontParameterSetter {
     view.setFontStyle(legalityFontProvider.getFontStyle(fontStyleState));
     LegalityColorProvider legalityColorProvider = new LegalityColorProvider();
     ValueLegalityState textColorState = null;
+    int alotment = model.getAlotment();
     if (model.getValue() < alotment) {
       textColorState = ValueLegalityState.Lowered;
     }
@@ -32,7 +31,7 @@ public class FontParameterSetter {
       textColorState = ValueLegalityState.Okay;
     }
     if (model.getValue() > alotment) {
-      textColorState = ValueLegalityState.Increased;
+      textColorState = ValueLegalityState.High;
     }
     view.setTextColor(legalityColorProvider.getTextColor(textColorState));
   }

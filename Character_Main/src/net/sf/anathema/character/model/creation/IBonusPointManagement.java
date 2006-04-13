@@ -2,6 +2,7 @@ package net.sf.anathema.character.model.creation;
 
 import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
 import net.sf.anathema.character.presenter.overview.IAdditionalSpendingModel;
+import net.sf.anathema.character.presenter.overview.IOverviewModel;
 import net.sf.anathema.character.presenter.overview.ISpendingModel;
 import net.sf.anathema.character.presenter.overview.IValueModel;
 
@@ -31,5 +32,7 @@ public interface IBonusPointManagement {
   public IValueModel<Integer> getAdditionalModelModel();
 
   public IAdditionalSpendingModel getTotalModel();
+
+  public IOverviewModel[] getAllModels();
 
 }

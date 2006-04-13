@@ -6,19 +6,17 @@ public class AdditionalAlotmentSubPresenter implements IOverviewSubPresenter {
 
   private final IAdditionalAlotmentView view;
   private final IAdditionalSpendingModel model;
-  private final int baseAlotment;
   private final FontParameterSetter setter;
 
-  public AdditionalAlotmentSubPresenter(IAdditionalSpendingModel model, IAdditionalAlotmentView view, int baseAlotment) {
+  public AdditionalAlotmentSubPresenter(IAdditionalSpendingModel model, IAdditionalAlotmentView view) {
     this.model = model;
     this.view = view;
-    this.baseAlotment = baseAlotment;
-    this.setter = new FontParameterSetter(model, view, baseAlotment);
+    this.setter = new FontParameterSetter(model, view);
   }
 
   public void update() {
     view.setValue(model.getValue(), model.getAdditionalValue());
-    view.setAlotment(baseAlotment + model.getAdditionalUnrestrictedAlotment(), model.getAdditionalRestrictedAlotment());
+    view.setAlotment(model.getAlotment(), model.getAdditionalRestrictedAlotment());
     setter.setFontParameters();
   }
 }

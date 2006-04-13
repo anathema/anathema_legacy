@@ -1,14 +1,13 @@
 package net.sf.anathema.character.presenter.overview;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
-import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.generic.template.creation.ICreationPoints;
-import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
 import net.sf.anathema.character.library.overview.IAdditionalAlotmentView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.model.ICharacterStatistics;
@@ -30,6 +29,7 @@ public class CreationOverviewPresenter {
   private final IBonusPointManagement management;
   private final ICharacterTemplate template;
   private final List<IOverviewSubPresenter> presenters = new ArrayList<IOverviewSubPresenter>();
+  private final Map<String, IOverviewCategory> categoriesById = new LinkedHashMap<String, IOverviewCategory>();
 
   public CreationOverviewPresenter(
       IResources resources,
@@ -51,39 +51,69 @@ public class CreationOverviewPresenter {
 
   public void init() {
     this.management.recalculate();
+    IOverviewModel[] allModels = management.getAllModels();
     initConcept();
-    initAttributes();
-    initAbilities();
-    initAdvantages();
-    initCharms();
-    initTotal();
+    initCategories(allModels);
+    for (final IOverviewModel model : allModels) {
+      model.accept(new IOverviewModelVisitor() {
+        public void visitStringValueModel(IValueModel<String> visitedModel) {
+          // TODO Implement
+        }
+
+        public void visitIntegerValueModel(IValueModel<Integer> visitedModel) {
+          IValueView<Integer> valueView = categoriesById.get(visitedModel.getCategoryId()).addIntegerValueView(
+              getLabelString(visitedModel),
+              2);
+          presenters.add(new ValueSubPresenter(visitedModel, valueView));
+        }
+
+        public void visitAlotmentModel(ISpendingModel visitedModel) {
+          ILabelledAlotmentView valueView = categoriesById.get(visitedModel.getCategoryId()).addAlotmentView(
+              getLabelString(visitedModel),
+              2);
+          presenters.add(new AlotmentSubPresenter(visitedModel, valueView));
+        }
+
+        public void visitAdditionalAlotmentModel(IAdditionalSpendingModel visitedModel) {
+          if (visitedModel.isExtensionRequired()) {
+            IAdditionalAlotmentView valueView = categoriesById.get(visitedModel.getCategoryId())
+                .addAdditionalAlotmentView(getLabelString(visitedModel), 3);
+            presenters.add(new AdditionalAlotmentSubPresenter(visitedModel, valueView));
+          }
+          else {
+            visitAlotmentModel(visitedModel);
+          }
+        }
+      });
+    }
     view.initGui();
     updateOverview();
   }
 
-  private void initTotal() {
-    IOverviewCategory category = view.addOverviewCategory(getString("Overview.BonusPoints.Title")); //$NON-NLS-1$
-    if (statistics.getExtendedConfiguration().getAdditionalModels().length > 0) {
-      IValueView<Integer> miscView = category.addIntegerValueView(getString("Overview.MiscPointsCategory"), 2); //$NON-NLS-1$
-      presenters.add(new ValueSubPresenter(management.getAdditionalModelModel(), miscView));
+  private void initCategories(IOverviewModel[] allModels) {
+    for (final IOverviewModel model : allModels) {
+      final String categoryId = model.getCategoryId();
+      IOverviewCategory category = categoriesById.get(categoryId);
+      if (category == null) {
+        category = view.addOverviewCategory(getString("Overview.Creation.Category." + categoryId)); //$NON-NLS-1$
+        categoriesById.put(categoryId, category);
+      }
     }
-    IAdditionalRules additionalRules = template.getAdditionalRules();
-    if (additionalRules == null || additionalRules.getAdditionalBonusPointPools().length == 0) {
-      ILabelledAlotmentView totalView = category.addAlotmentView(getString("Overview.BonusPointsCategory"), 2); //$NON-NLS-1$
-      presenters.add(new AlotmentSubPresenter(
-          management.getTotalModel(),
-          totalView,
-          getCreationPoints().getBonusPointCount()));
-    }
-    else {
-      IAdditionalAlotmentView totalView = category.addAdditionalAlotmentView(
-          getString("Overview.BonusPointsCategory"), 5); //$NON-NLS-1$
-      presenters.add(new AdditionalAlotmentSubPresenter(
-          management.getTotalModel(),
-          totalView,
-          getCreationPoints().getBonusPointCount()));
+  }
 
+  private void updateOverview() {
+    this.management.recalculate();
+    for (IOverviewSubPresenter presenter : presenters) {
+      presenter.update();
     }
+  }
+
+  private String getLabelString(IOverviewModel visitedModel) {
+    return getString("Overview.Creation." + visitedModel.getCategoryId() + "." + visitedModel.getId()); //$NON-NLS-1$ //$NON-NLS-2$
+  }
+
+  private String getString(String string) {
+    return resources.getString(string);
   }
 
   private void initConcept() {
@@ -98,6 +128,14 @@ public class CreationOverviewPresenter {
 
         public String getId() {
           return getString(template.getPresentationProperties().getCasteLabelResource());
+        }
+
+        public void accept(IOverviewModelVisitor visitor) {
+          visitor.visitStringValueModel(this);
+        }
+
+        public String getCategoryId() {
+          return "Concept"; //$NON-NLS-1$
         }
       };
       presenters.add(new StringSubPresenter(casteModel, casteView, resources));
@@ -121,99 +159,16 @@ public class CreationOverviewPresenter {
       public String getId() {
         return resourcekey[0];
       }
+
+      public void accept(IOverviewModelVisitor visitor) {
+        visitor.visitStringValueModel(this);
+      }
+
+      public String getCategoryId() {
+        return "Concept"; //$NON-NLS-1$
+      }
     };
     presenters.add(new StringSubPresenter(willpowerModel, willpowerView, resources));
-  }
-
-  private void initAdvantages() {
-    IOverviewCategory category = view.addOverviewCategory(getString("Overview.Advantages.Title")); //$NON-NLS-1$
-    ILabelledAlotmentView virtueView = category.addAlotmentView(getString("Overview.VirtueCategory"), 2); //$NON-NLS-1$
-    presenters.add(new AlotmentSubPresenter(
-        management.getVirtueModel(),
-        virtueView,
-        getCreationPoints().getVirtueCreationPoints()));
-    ILabelledAlotmentView backgroundView = category.addAlotmentView(getString("Overview.BackgroundCategory"), 2); //$NON-NLS-1$
-    presenters.add(new AlotmentSubPresenter(
-        management.getBackgroundModel(),
-        backgroundView,
-        getCreationPoints().getBackgroundPointCount()));
-  }
-
-  private void initCharms() {
-    if (!statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().knowsCharms()) {
-      return;
-    }
-    IOverviewCategory category = view.addOverviewCategory(getString("Overview.Charms.Title")); //$NON-NLS-1$
-    ILabelledAlotmentView favoredCharmView = category.addAlotmentView(getString("Overview.FavoredCharmCategory"), 2); //$NON-NLS-1$
-    presenters.add(new AlotmentSubPresenter(
-        management.getFavoredCharmModel(),
-        favoredCharmView,
-        template.getCreationPoints().getFavoredCreationCharmCount()));
-    IAdditionalRules additionalRules = template.getAdditionalRules();
-    if (additionalRules == null || additionalRules.getAdditionalMagicLearnPools().length == 0) {
-      ILabelledAlotmentView defaultCharmView = category.addAlotmentView(getString("Overview.GeneralCharmCategory"), 2); //$NON-NLS-1$
-      presenters.add(new AlotmentSubPresenter(
-          management.getDefaultCharmModel(),
-          defaultCharmView,
-          template.getCreationPoints().getDefaultCreationCharmCount()));
-    }
-    else {
-      IAdditionalAlotmentView defaultCharmView = category.addAdditionalAlotmentView(
-          getString("Overview.GeneralCharmCategory"), 3); //$NON-NLS-1$
-      presenters.add(new AdditionalAlotmentSubPresenter(
-          management.getDefaultCharmModel(),
-          defaultCharmView,
-          template.getCreationPoints().getDefaultCreationCharmCount()));
-    }
-  }
-
-  private void initAbilities() {
-    IOverviewCategory category = view.addOverviewCategory(getString("Overview.Abilities.Title")); //$NON-NLS-1$
-    ILabelledAlotmentView favoredAbilityPickView = category.addAlotmentView(
-        getString("Overview.FavoredAbilityCategory"), 2);//$NON-NLS-1$
-    presenters.add(new AlotmentSubPresenter(
-        management.getFavoredAbilityPickModel(),
-        favoredAbilityPickView,
-        getCreationPoints().getAbilityCreationPoints().getFavorableTraitCount()));
-    ILabelledAlotmentView favoredAbiltyDotView = category.addAlotmentView(
-        getString("Overview.FavoredAbilityDotCategory"), 2); //$NON-NLS-1$
-    presenters.add(new AlotmentSubPresenter(
-        management.getFavoredAbilityModel(),
-        favoredAbiltyDotView,
-        getCreationPoints().getAbilityCreationPoints().getFavoredDotCount()));
-    ILabelledAlotmentView defaultAbilityDotView = category.addAlotmentView(
-        getString("Overview.GeneralAbilityDotCategory"), 2); //$NON-NLS-1$
-    presenters.add(new AlotmentSubPresenter(
-        management.getDefaultAbilityModel(),
-        defaultAbilityDotView,
-        getCreationPoints().getAbilityCreationPoints().getDefaultDotCount()));
-  }
-
-  private void initAttributes() {
-    IOverviewCategory category = view.addOverviewCategory(getString("Overview.Attributes.Title")); //$NON-NLS-1$
-    initAttributePresentation(category, AttributeGroupPriority.Primary);
-    initAttributePresentation(category, AttributeGroupPriority.Secondary);
-    initAttributePresentation(category, AttributeGroupPriority.Tertiary);
-  }
-
-  private void initAttributePresentation(IOverviewCategory category, AttributeGroupPriority priority) {
-    ILabelledAlotmentView alotmentView = category.addAlotmentView(getString("Overview.AttributeCategory." //$NON-NLS-1$
-        + priority.getId()), 2);
-    presenters.add(new AlotmentSubPresenter(
-        management.getAttributeModel(priority),
-        alotmentView,
-        getCreationPoints().getAttributeCreationPoints().getCount(priority)));
-  }
-
-  private void updateOverview() {
-    this.management.recalculate();
-    for (IOverviewSubPresenter presenter : presenters) {
-      presenter.update();
-    }
-  }
-
-  private ICreationPoints getCreationPoints() {
-    return template.getCreationPoints();
   }
 
   private String getWillpowerRegainingConceptValue() {
@@ -241,9 +196,5 @@ public class CreationOverviewPresenter {
       return null;
     }
     return template.getPresentationProperties().getCasteResourceBase() + casteType.getId();
-  }
-
-  private String getString(String string) {
-    return resources.getString(string);
   }
 }
