@@ -1,6 +1,5 @@
 package net.sf.anathema.character.impl.model.creation.bonus;
 
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,10 +11,19 @@ import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.impl.model.creation.bonus.ability.AbilityCostCalculator;
+import net.sf.anathema.character.impl.model.creation.bonus.ability.DefaultAbilityBonusModel;
+import net.sf.anathema.character.impl.model.creation.bonus.ability.FavoredAbilityBonusModel;
+import net.sf.anathema.character.impl.model.creation.bonus.ability.FavoredAbilityPickModel;
 import net.sf.anathema.character.impl.model.creation.bonus.additional.AdditionalBonusPointPoolManagement;
+import net.sf.anathema.character.impl.model.creation.bonus.additional.MiscBonusModel;
+import net.sf.anathema.character.impl.model.creation.bonus.attribute.AttributeBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.attribute.AttributeCostCalculator;
+import net.sf.anathema.character.impl.model.creation.bonus.backgrounds.BackgroundBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.backgrounds.BackgroundBonusPointCostCalculator;
+import net.sf.anathema.character.impl.model.creation.bonus.magic.DefaultCharmModel;
+import net.sf.anathema.character.impl.model.creation.bonus.magic.FavoredCharmModel;
 import net.sf.anathema.character.impl.model.creation.bonus.magic.MagicCostCalculator;
+import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueCostCalculator;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.library.trait.ITrait;
@@ -122,53 +130,6 @@ public class BonusPointManagement implements IBonusPointManagement {
     return bonusPoints;
   }
 
-  private int getCharmBonusPointsSpent() {
-    if (magicCalculator == null) {
-      return 0;
-    }
-    return magicCalculator.getBonusPointsSpentForCharms();
-  }
-
-  private int getSpellBonusPointsSpent() {
-    if (magicCalculator == null) {
-      return 0;
-    }
-    return magicCalculator.getBonusPointsSpentForSpells();
-  }
-
-  public void dump(PrintStream printStream) {
-    printStream.println("Dots"); //$NON-NLS-1$
-    printStream.println("   Primary Attributes: " + getAttributeModel(AttributeGroupPriority.Primary).getValue()); //$NON-NLS-1$
-    printStream.println("   Secondary Attributes: " + getAttributeModel(AttributeGroupPriority.Secondary).getValue()); //$NON-NLS-1$
-    printStream.println("   Tertiary Attributes: " + getAttributeModel(AttributeGroupPriority.Tertiary).getValue()); //$NON-NLS-1$
-    printStream.println("   Favored Abilities:" + getFavoredAbilityModel().getValue()); //$NON-NLS-1$
-    printStream.println("   General Abilities:" + getDefaultAbilityModel().getValue()); //$NON-NLS-1$
-    printStream.println("   Virtues:" + getVirtueModel().getValue()); //$NON-NLS-1$
-    printStream.println("   Backgrounds:" + getBackgroundModel().getValue()); //$NON-NLS-1$
-    printStream.println("Magic Picks"); //$NON-NLS-1$
-    printStream.println("   Favored Picks:" + getFavoredCharmModel().getValue()); //$NON-NLS-1$
-    printStream.println("   Default Picks:" + magicCalculator.getGeneralCharmPicksSpent()); //$NON-NLS-1$
-    printStream.println("Bonus Points"); //$NON-NLS-1$
-    printStream.println("   Primary Attributes: " + getAttributeModel(AttributeGroupPriority.Primary).getSpentBonusPoints()); //$NON-NLS-1$
-    printStream.println("   Secondary Attributes: " + getAttributeModel(AttributeGroupPriority.Secondary).getSpentBonusPoints()); //$NON-NLS-1$
-    printStream.println("   Tertiary Attributes: " + getAttributeModel(AttributeGroupPriority.Tertiary).getSpentBonusPoints()); //$NON-NLS-1$
-    printStream.println("   Abilities:" + getDefaultAbilityModel().getSpentBonusPoints()); //$NON-NLS-1$
-    printStream.println("   Specialties:" + abilityCalculator.getSpecialtyBonusPointCosts()); //$NON-NLS-1$
-    printStream.println("   Virtues:" + getVirtueModel().getSpentBonusPoints()); //$NON-NLS-1$
-    printStream.println("   Willpower:" + willpowerBonusPoints); //$NON-NLS-1$
-    printStream.println("   Backgrounds:" + getBackgroundModel().getSpentBonusPoints()); //$NON-NLS-1$
-    printStream.println("   Essence:" + essenceBonusPoints); //$NON-NLS-1$
-    printStream.println("   Charms:" + getCharmBonusPointsSpent()); //$NON-NLS-1$
-    printStream.println("   Combos:" + comboBonusPoints); //$NON-NLS-1$
-    printStream.println("Additional Bonus Points"); //$NON-NLS-1$
-    printStream.println("   Amount: " + getAdditionalBonusPointAmount()); //$NON-NLS-1$
-    printStream.println("   Spent: " + getAdditionalBonusPointSpent()); //$NON-NLS-1$
-    printStream.println("Additional Magic Points"); //$NON-NLS-1$
-    printStream.println("   Amount: " + magicAdditionalPools.getAdditionalPointsAmount()); //$NON-NLS-1$
-    printStream.println("   Spent: " + magicCalculator.getAdditionalPointsSpent()); //$NON-NLS-1$
-
-  }
-
   private int getAdditionalBonusPointSpent() {
     return bonusAdditionalPools.getPointSpent();
   }
@@ -185,22 +146,13 @@ public class BonusPointManagement implements IBonusPointManagement {
     return attributeCalculator.getBonusPoints()
         + getDefaultAbilityModel().getSpentBonusPoints()
         + abilityCalculator.getSpecialtyBonusPointCosts()
-        + getCharmBonusPointsSpent()
+        + getDefaultCharmModel().getSpentBonusPoints()
         + comboBonusPoints
-        + getSpellBonusPointsSpent()
         + getBackgroundModel().getSpentBonusPoints()
         + getVirtueModel().getSpentBonusPoints()
         + willpowerBonusPoints
         + essenceBonusPoints
-        + getAdditionalModelTotalValue();
-  }
-
-  private int getAdditionalModelTotalValue() {
-    int additionalSpent = 0;
-    for (IAdditionalModelBonusPointCalculator calculator : additionalCalculators) {
-      additionalSpent += calculator.getBonusPointCost();
-    }
-    return additionalSpent;
+        + getAdditionalModelModel().getValue();
   }
 
   /** Return the amount of unrestricted bonus points granted by additional models */
@@ -213,155 +165,39 @@ public class BonusPointManagement implements IBonusPointManagement {
   }
 
   public ISpendingModel getVirtueModel() {
-    return new ISpendingModel() {
-      public Integer getValue() {
-        return virtueCalculator.getVirtueDotsSpent();
-      }
-
-      public int getSpentBonusPoints() {
-        return virtueCalculator.getBonusPointsSpent();
-      }
-
-      public String getId() {
-        return "Virtues";
-      }
-    };
+    return new VirtueBonusModel(virtueCalculator);
   }
 
   public ISpendingModel getBackgroundModel() {
-    return new ISpendingModel() {
-      public Integer getValue() {
-        return backgroundCalculator.getSpentDots();
-      }
-
-      public int getSpentBonusPoints() {
-        return backgroundCalculator.getBonusPointSpent();
-      }
-
-      public String getId() {
-        return "Backgrounds";
-      }
-    };
+    return new BackgroundBonusModel(backgroundCalculator);
   }
 
   public ISpendingModel getDefaultAbilityModel() {
-    return new ISpendingModel() {
-      public Integer getValue() {
-        return abilityCalculator.getFreePointsSpent(false);
-      }
-
-      public int getSpentBonusPoints() {
-        return abilityCalculator.getBonusPointsSpent();
-      }
-
-      public String getId() {
-        return "DefaultAbilities";
-      }
-    };
+    return new DefaultAbilityBonusModel(abilityCalculator);
   }
 
   public ISpendingModel getFavoredAbilityModel() {
-    return new ISpendingModel() {
-      public Integer getValue() {
-        return abilityCalculator.getFreePointsSpent(true);
-      }
-
-      public int getSpentBonusPoints() {
-        return 0;
-      }
-
-      public String getId() {
-        return "FavoredAbilties";
-      }
-    };
+    return new FavoredAbilityBonusModel(abilityCalculator);
   }
 
   public ISpendingModel getFavoredAbilityPickModel() {
-    return new ISpendingModel() {
-      public int getSpentBonusPoints() {
-        return 0;
-      }
-
-      public Integer getValue() {
-        return abilityCalculator.getFavoredPicksSpent();
-      }
-
-      public String getId() {
-        return "FavoredAbilityPick";
-      }
-    };
+    return new FavoredAbilityPickModel(abilityCalculator);
   }
 
   public ISpendingModel getAttributeModel(final AttributeGroupPriority priority) {
-    return new ISpendingModel() {
-      public int getSpentBonusPoints() {
-        return attributeCalculator.getAttributePoints(priority).getBonusPointsSpent();
-      }
-
-      public Integer getValue() {
-        return attributeCalculator.getAttributePoints(priority).getDotsSpent();
-      }
-
-      public String getId() {
-        return "Attributes";
-      }
-    };
+    return new AttributeBonusModel(attributeCalculator, priority);
   }
 
   public ISpendingModel getFavoredCharmModel() {
-    return new ISpendingModel() {
-      public int getSpentBonusPoints() {
-        return 0;
-      }
-
-      public Integer getValue() {
-        return magicCalculator.getFavoredCharmPicksSpent();
-      }
-
-      public String getId() {
-        return "FavoredCharm";
-      }
-    };
+    return new FavoredCharmModel(magicCalculator);
   }
 
   public IAdditionalSpendingModel getDefaultCharmModel() {
-    return new IAdditionalSpendingModel() {
-      public int getAdditionalRestrictedAlotment() {
-        return magicAdditionalPools.getAdditionalPointsAmount();
-      }
-
-      public int getAdditionalValue() {
-        return magicCalculator.getAdditionalPointsSpent();
-      }
-
-      public int getSpentBonusPoints() {
-        return getCharmBonusPointsSpent() + getSpellBonusPointsSpent();
-      }
-
-      public Integer getValue() {
-        return magicCalculator.getGeneralCharmPicksSpent();
-      }
-
-      public int getAdditionalUnrestrictedAlotment() {
-        return 0;
-      }
-
-      public String getId() {
-        return "DefaultCharms";
-      }
-    };
+    return new DefaultCharmModel(magicCalculator, magicAdditionalPools);
   }
 
   public IValueModel<Integer> getAdditionalModelModel() {
-    return new IValueModel<Integer>() {
-      public Integer getValue() {
-        return getAdditionalModelTotalValue();
-      }
-
-      public String getId() {
-        return "Miscellaneous";
-      }
-    };
+    return new MiscBonusModel(additionalCalculators);
   }
 
   public IAdditionalSpendingModel getTotalModel() {
