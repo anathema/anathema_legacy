@@ -61,4 +61,8 @@ public class DefaultCharmModel extends AbstractAdditionalSpendingModel {
   public boolean isExtensionRequired() {
     return additionalRules != null && additionalRules.getAdditionalMagicLearnPools().length > 0;
   }
+
+  public int getRequiredSize() {
+    return 3;
+  }
 }

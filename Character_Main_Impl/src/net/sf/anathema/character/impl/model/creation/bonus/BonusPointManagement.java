@@ -237,6 +237,10 @@ public class BonusPointManagement implements IBonusPointManagement {
         IAdditionalRules additionalRules = statistics.getCharacterTemplate().getAdditionalRules();
         return additionalRules != null && additionalRules.getAdditionalBonusPointPools().length > 0;
       }
+
+      public int getRequiredSize() {
+        return 5;
+      }
     };
   }
 
