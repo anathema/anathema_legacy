@@ -163,8 +163,7 @@ public class BonusPointManagement implements IBonusPointManagement {
         + getAdditionalModelModel().getValue();
   }
 
-  /** Return the amount of unrestricted bonus points granted by additional models */
-  public int getAdditionalGeneralBonusPoints() {
+  private int getAdditionalGeneralBonusPoints() {
     int additionalGranted = 0;
     for (IAdditionalModelBonusPointCalculator calculator : additionalCalculators) {
       additionalGranted += calculator.getBonusPointsGranted();
@@ -172,7 +171,7 @@ public class BonusPointManagement implements IBonusPointManagement {
     return additionalGranted;
   }
 
-  public ISpendingModel getVirtueModel() {
+  private ISpendingModel getVirtueModel() {
     return new VirtueBonusModel(virtueCalculator, creationPoints);
   }
 
@@ -205,7 +204,7 @@ public class BonusPointManagement implements IBonusPointManagement {
     return new DefaultCharmModel(magicCalculator, magicAdditionalPools, creationPoints, additionalRules);
   }
 
-  public IValueModel<Integer> getAdditionalModelModel() {
+  private IValueModel<Integer> getAdditionalModelModel() {
     return new MiscBonusModel(additionalCalculators);
   }
 
