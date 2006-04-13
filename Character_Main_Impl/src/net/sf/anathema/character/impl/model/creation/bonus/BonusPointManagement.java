@@ -223,7 +223,7 @@ public class BonusPointManagement implements IBonusPointManagement {
       }
 
       public String getId() {
-        return "Total";
+        return "Total"; //$NON-NLS-1$
       }
     };
   }
