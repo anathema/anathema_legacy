@@ -75,9 +75,9 @@ public class CreationOverviewPresenter {
         }
 
         public void visitAdditionalAlotmentModel(IAdditionalSpendingModel visitedModel) {
-          if (visitedModel.isExtensionRequired()) {
+          if (visitedModel.isExtensionRequired()) {            
             IAdditionalAlotmentView valueView = categoriesById.get(visitedModel.getCategoryId())
-                .addAdditionalAlotmentView(getLabelString(visitedModel), 3);
+                .addAdditionalAlotmentView(getLabelString(visitedModel), visitedModel.getRequiredSize());
             presenters.add(new AdditionalAlotmentSubPresenter(visitedModel, valueView));
           }
           else {
