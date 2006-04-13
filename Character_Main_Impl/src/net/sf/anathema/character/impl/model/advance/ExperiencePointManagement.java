@@ -206,83 +206,137 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
     return total;
   }
 
-  public IValueModel<Integer> getAttributeModel() {
+  private IValueModel<Integer> getAttributeModel() {
     return new IValueModel<Integer>() {
       public Integer getValue() {
         return getAttributeCosts();
       }
+
+      public String getId() {
+        return "Attributes"; //$NON-NLS-1$
+      }
     };
   }
 
-  public IValueModel<Integer> getAbilityModel() {
+  private IValueModel<Integer> getAbilityModel() {
     return new IValueModel<Integer>() {
       public Integer getValue() {
         return getAbilityCosts();
       }
+
+      public String getId() {
+        return "Abilities"; //$NON-NLS-1$
+      }
     };
   }
 
-  public IValueModel<Integer> getCharmModel() {
+  private IValueModel<Integer> getCharmModel() {
     return new IValueModel<Integer>() {
       public Integer getValue() {
         return getCharmCosts();
       }
+
+      public String getId() {
+        return "Charms"; //$NON-NLS-1$
+      }
     };
   }
 
-  public IValueModel<Integer> getComboModel() {
+  private IValueModel<Integer> getComboModel() {
     return new IValueModel<Integer>() {
       public Integer getValue() {
         return getComboCosts();
       }
+
+      public String getId() {
+        return "Combos"; //$NON-NLS-1$
+      }
     };
   }
 
-  public IValueModel<Integer> getEssenceModel() {
+  private IValueModel<Integer> getEssenceModel() {
     return new IValueModel<Integer>() {
       public Integer getValue() {
         return getEssenceCosts();
       }
+
+      public String getId() {
+        return "Essence"; //$NON-NLS-1$
+      }
     };
   }
 
-  public IValueModel<Integer> getMiscModel() {
+  private IValueModel<Integer> getMiscModel() {
     return new IValueModel<Integer>() {
       public Integer getValue() {
         return getMiscCosts();
       }
+
+      public String getId() {
+        return "Miscellaneous"; //$NON-NLS-1$
+      }
     };
   }
 
-  public IValueModel<Integer> getSpecialtyModel() {
+  private IValueModel<Integer> getSpecialtyModel() {
     return new IValueModel<Integer>() {
       public Integer getValue() {
         return getSpecialtyCosts();
       }
+
+      public String getId() {
+        return "Specialties"; //$NON-NLS-1$
+      }
     };
   }
 
-  public IValueModel<Integer> getSpellModel() {
+  private IValueModel<Integer> getSpellModel() {
     return new IValueModel<Integer>() {
       public Integer getValue() {
         return getSpellCosts();
       }
+
+      public String getId() {
+        return "Spells"; //$NON-NLS-1$
+      }
     };
   }
 
-  public IValueModel<Integer> getVirtueModel() {
+  private IValueModel<Integer> getVirtueModel() {
     return new IValueModel<Integer>() {
       public Integer getValue() {
         return getVirtueCosts();
       }
+
+      public String getId() {
+        return "Virtues"; //$NON-NLS-1$
+      }
     };
   }
 
-  public IValueModel<Integer> getWillpowerModel() {
+  private IValueModel<Integer> getWillpowerModel() {
     return new IValueModel<Integer>() {
       public Integer getValue() {
         return getWillpowerCosts();
       }
+
+      public String getId() {
+        return "Willpower"; //$NON-NLS-1$
+      }
     };
+  }
+
+  public IValueModel<Integer>[] getAllModels() {
+    return new IValueModel[] {
+        getAttributeModel(),
+        getAbilityModel(),
+        getSpecialtyModel(),
+        getCharmModel(),
+        getComboModel(),
+        getSpellModel(),
+        getVirtueModel(),
+        getWillpowerModel(),
+        getEssenceModel(),
+        getMiscModel() };
   }
 }

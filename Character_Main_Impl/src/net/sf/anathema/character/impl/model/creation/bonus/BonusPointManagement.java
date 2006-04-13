@@ -221,6 +221,10 @@ public class BonusPointManagement implements IBonusPointManagement {
       public int getSpentBonusPoints() {
         return virtueCalculator.getBonusPointsSpent();
       }
+
+      public String getId() {
+        return "Virtues";
+      }
     };
   }
 
@@ -232,6 +236,10 @@ public class BonusPointManagement implements IBonusPointManagement {
 
       public int getSpentBonusPoints() {
         return backgroundCalculator.getBonusPointSpent();
+      }
+
+      public String getId() {
+        return "Backgrounds";
       }
     };
   }
@@ -245,6 +253,10 @@ public class BonusPointManagement implements IBonusPointManagement {
       public int getSpentBonusPoints() {
         return abilityCalculator.getBonusPointsSpent();
       }
+
+      public String getId() {
+        return "DefaultAbilities";
+      }
     };
   }
 
@@ -256,6 +268,10 @@ public class BonusPointManagement implements IBonusPointManagement {
 
       public int getSpentBonusPoints() {
         return 0;
+      }
+
+      public String getId() {
+        return "FavoredAbilties";
       }
     };
   }
@@ -269,6 +285,10 @@ public class BonusPointManagement implements IBonusPointManagement {
       public Integer getValue() {
         return abilityCalculator.getFavoredPicksSpent();
       }
+
+      public String getId() {
+        return "FavoredAbilityPick";
+      }
     };
   }
 
@@ -281,6 +301,10 @@ public class BonusPointManagement implements IBonusPointManagement {
       public Integer getValue() {
         return attributeCalculator.getAttributePoints(priority).getDotsSpent();
       }
+
+      public String getId() {
+        return "Attributes";
+      }
     };
   }
 
@@ -292,6 +316,10 @@ public class BonusPointManagement implements IBonusPointManagement {
 
       public Integer getValue() {
         return magicCalculator.getFavoredCharmPicksSpent();
+      }
+
+      public String getId() {
+        return "FavoredCharm";
       }
     };
   }
@@ -317,6 +345,10 @@ public class BonusPointManagement implements IBonusPointManagement {
       public int getAdditionalUnrestrictedAlotment() {
         return 0;
       }
+
+      public String getId() {
+        return "DefaultCharms";
+      }
     };
   }
 
@@ -324,6 +356,10 @@ public class BonusPointManagement implements IBonusPointManagement {
     return new IValueModel<Integer>() {
       public Integer getValue() {
         return getAdditionalModelTotalValue();
+      }
+
+      public String getId() {
+        return "Miscellaneous";
       }
     };
   }
@@ -348,6 +384,10 @@ public class BonusPointManagement implements IBonusPointManagement {
 
       public int getAdditionalUnrestrictedAlotment() {
         return getAdditionalGeneralBonusPoints();
+      }
+
+      public String getId() {
+        return "Total";
       }
     };
   }
