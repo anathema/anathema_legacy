@@ -1,16 +1,27 @@
 package net.sf.anathema.character.impl.model.creation.bonus.magic;
 
+import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
+import net.sf.anathema.character.generic.template.creation.ICreationPoints;
+import net.sf.anathema.character.impl.model.advance.models.AbstractAdditionalSpendingModel;
 import net.sf.anathema.character.impl.model.creation.bonus.IAdditionalMagicLearnPointManagement;
-import net.sf.anathema.character.presenter.overview.IAdditionalSpendingModel;
 
-public class DefaultCharmModel implements IAdditionalSpendingModel {
+public class DefaultCharmModel extends AbstractAdditionalSpendingModel {
 
   private final MagicCostCalculator magicCalculator;
   private final IAdditionalMagicLearnPointManagement magicAdditionalPools;
+  private final ICreationPoints creationPoints;
+  private final IAdditionalRules additionalRules;
 
-  public DefaultCharmModel(MagicCostCalculator magicCalculator, IAdditionalMagicLearnPointManagement magicAdditionalPools) {
+  public DefaultCharmModel(
+      MagicCostCalculator magicCalculator,
+      IAdditionalMagicLearnPointManagement magicAdditionalPools,
+      ICreationPoints creationPoints,
+      IAdditionalRules additionalRules) {
+    super("Charms", "General"); //$NON-NLS-1$//$NON-NLS-2$
     this.magicCalculator = magicCalculator;
     this.magicAdditionalPools = magicAdditionalPools;
+    this.creationPoints = creationPoints;
+    this.additionalRules = additionalRules;
   }
 
   public int getAdditionalRestrictedAlotment() {
@@ -29,14 +40,6 @@ public class DefaultCharmModel implements IAdditionalSpendingModel {
     return magicCalculator.getGeneralCharmPicksSpent();
   }
 
-  public int getAdditionalUnrestrictedAlotment() {
-    return 0;
-  }
-
-  public String getId() {
-    return "DefaultCharms"; //$NON-NLS-1$
-  }
-
   private int getCharmBonusPointsSpent() {
     if (magicCalculator == null) {
       return 0;
@@ -49,5 +52,13 @@ public class DefaultCharmModel implements IAdditionalSpendingModel {
       return 0;
     }
     return magicCalculator.getBonusPointsSpentForSpells();
+  }
+
+  public int getAlotment() {
+    return creationPoints.getDefaultCreationCharmCount();
+  }
+
+  public boolean isExtensionRequired() {
+    return additionalRules != null && additionalRules.getAdditionalMagicLearnPools().length > 0;
   }
 }

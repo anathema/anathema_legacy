@@ -9,9 +9,8 @@ import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
 import net.sf.anathema.character.library.trait.IFavorableTrait;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
-import net.sf.anathema.character.presenter.overview.IValueModel;
 
-public class SpecialtyExperienceModel implements IValueModel<Integer> {
+public class SpecialtyExperienceModel extends AbstractIntegerValueModel {
 
   private final IPointCostCalculator calculator;
   private final ICoreTraitConfiguration configuration;
@@ -21,6 +20,7 @@ public class SpecialtyExperienceModel implements IValueModel<Integer> {
       ICoreTraitConfiguration configuration,
       IPointCostCalculator calculator,
       ICharacterStatistics statistics) {
+    super("Experience", "Specialties"); //$NON-NLS-1$//$NON-NLS-2$
     this.configuration = configuration;
     this.calculator = calculator;
     this.statistics = statistics;
@@ -28,10 +28,6 @@ public class SpecialtyExperienceModel implements IValueModel<Integer> {
 
   public Integer getValue() {
     return getSpecialtyCosts();
-  }
-
-  public String getId() {
-    return "Specialties"; //$NON-NLS-1$
   }
 
   private int getSpecialtyCosts() {

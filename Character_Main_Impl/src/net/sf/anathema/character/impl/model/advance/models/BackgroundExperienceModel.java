@@ -2,22 +2,18 @@ package net.sf.anathema.character.impl.model.advance.models;
 
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
-import net.sf.anathema.character.presenter.overview.IValueModel;
 
-public class BackgroundExperienceModel implements IValueModel<Integer> {
+public class BackgroundExperienceModel extends AbstractIntegerValueModel {
 
   private final ICoreTraitConfiguration configuration;
 
   public BackgroundExperienceModel(ICoreTraitConfiguration configuration) {
+    super("Experience", "Backgrounds"); //$NON-NLS-1$ //$NON-NLS-2$
     this.configuration = configuration;
   }
 
   public Integer getValue() {
     return getBackgroundExperience();
-  }
-
-  public String getId() {
-    return "Backgrounds"; //$NON-NLS-1$
   }
 
   private int getBackgroundExperience() {

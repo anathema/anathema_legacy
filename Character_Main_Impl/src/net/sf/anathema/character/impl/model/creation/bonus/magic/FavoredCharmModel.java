@@ -1,12 +1,16 @@
 package net.sf.anathema.character.impl.model.creation.bonus.magic;
 
-import net.sf.anathema.character.presenter.overview.ISpendingModel;
+import net.sf.anathema.character.generic.template.creation.ICreationPoints;
+import net.sf.anathema.character.impl.model.advance.models.AbstractSpendingModel;
 
-public class FavoredCharmModel implements ISpendingModel {
+public class FavoredCharmModel extends AbstractSpendingModel {
   private final MagicCostCalculator magicCalculator;
+  private final ICreationPoints creationPoints;
 
-  public FavoredCharmModel(MagicCostCalculator magicCalculator) {
+  public FavoredCharmModel(MagicCostCalculator magicCalculator, ICreationPoints creationPoints) {
+    super("Charms", "Favored"); //$NON-NLS-1$ //$NON-NLS-2$
     this.magicCalculator = magicCalculator;
+    this.creationPoints = creationPoints;
   }
 
   public int getSpentBonusPoints() {
@@ -17,7 +21,7 @@ public class FavoredCharmModel implements ISpendingModel {
     return magicCalculator.getFavoredCharmPicksSpent();
   }
 
-  public String getId() {
-    return "FavoredCharm"; //$NON-NLS-1$
+  public int getAlotment() {
+    return creationPoints.getFavoredCreationCharmCount();
   }
 }

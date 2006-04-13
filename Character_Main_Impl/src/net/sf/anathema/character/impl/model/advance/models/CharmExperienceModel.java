@@ -7,9 +7,8 @@ import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
-import net.sf.anathema.character.presenter.overview.IValueModel;
 
-public class CharmExperienceModel implements IValueModel<Integer> {
+public class CharmExperienceModel extends AbstractIntegerValueModel {
   private final ICoreTraitConfiguration traitConfiguration;
   private final IPointCostCalculator calculator;
   private final ICharacterStatistics statistics;
@@ -20,10 +19,11 @@ public class CharmExperienceModel implements IValueModel<Integer> {
       IPointCostCalculator calculator,
       ICharacterStatistics statistics,
       IBasicCharacterData basicCharacter) {
-        this.traitConfiguration = traitConfiguration;
-        this.calculator = calculator;
-        this.statistics = statistics;
-        this.basicCharacter = basicCharacter;
+    super("Experience", "Charms"); //$NON-NLS-1$//$NON-NLS-2$
+    this.traitConfiguration = traitConfiguration;
+    this.calculator = calculator;
+    this.statistics = statistics;
+    this.basicCharacter = basicCharacter;
   }
 
   public Integer getValue() {
@@ -58,9 +58,5 @@ public class CharmExperienceModel implements IValueModel<Integer> {
       return charmCost;
     }
     return 0;
-  }
-
-  public String getId() {
-    return "Charms"; //$NON-NLS-1$
   }
 }

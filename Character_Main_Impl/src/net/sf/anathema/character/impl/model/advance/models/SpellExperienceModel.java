@@ -5,9 +5,8 @@ import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
-import net.sf.anathema.character.presenter.overview.IValueModel;
 
-public class SpellExperienceModel implements IValueModel<Integer> {
+public class SpellExperienceModel extends AbstractIntegerValueModel {
   private final ICharacterStatistics statistics;
   private final IPointCostCalculator calculator;
   private final IBasicCharacterData basicCharacter;
@@ -18,6 +17,7 @@ public class SpellExperienceModel implements IValueModel<Integer> {
       IPointCostCalculator calculator,
       IBasicCharacterData basicCharacter,
       ICoreTraitConfiguration traitConfiguration) {
+    super("Experience", "Spells"); //$NON-NLS-1$ //$NON-NLS-2$
     this.statistics = statistics;
     this.calculator = calculator;
     this.basicCharacter = basicCharacter;
@@ -26,10 +26,6 @@ public class SpellExperienceModel implements IValueModel<Integer> {
 
   public Integer getValue() {
     return getSpellCosts();
-  }
-
-  public String getId() {
-    return "Spells"; //$NON-NLS-1$
   }
 
   private int getSpellCosts() {

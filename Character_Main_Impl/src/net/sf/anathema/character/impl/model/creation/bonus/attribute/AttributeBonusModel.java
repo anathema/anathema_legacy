@@ -1,15 +1,22 @@
 package net.sf.anathema.character.impl.model.creation.bonus.attribute;
 
+import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
-import net.sf.anathema.character.presenter.overview.ISpendingModel;
+import net.sf.anathema.character.impl.model.advance.models.AbstractSpendingModel;
 
-public class AttributeBonusModel implements ISpendingModel {
+public class AttributeBonusModel extends AbstractSpendingModel {
   private final AttributeCostCalculator attributeCalculator;
   private final AttributeGroupPriority priority;
+  private final ICreationPoints creationPoints;
 
-  public AttributeBonusModel(AttributeCostCalculator attributeCalculator, AttributeGroupPriority priority) {
+  public AttributeBonusModel(
+      AttributeCostCalculator attributeCalculator,
+      AttributeGroupPriority priority,
+      ICreationPoints creationPoints) {
+    super("Attributes", priority.getId()); //$NON-NLS-1$
     this.attributeCalculator = attributeCalculator;
     this.priority = priority;
+    this.creationPoints = creationPoints;
   }
 
   public int getSpentBonusPoints() {
@@ -20,7 +27,7 @@ public class AttributeBonusModel implements ISpendingModel {
     return attributeCalculator.getAttributePoints(priority).getDotsSpent();
   }
 
-  public String getId() {
-    return "Attributes"; //$NON-NLS-1$
+  public int getAlotment() {
+    return creationPoints.getAttributeCreationPoints().getCount(priority);
   }
 }

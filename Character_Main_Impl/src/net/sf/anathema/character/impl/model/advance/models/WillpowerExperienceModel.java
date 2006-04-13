@@ -3,14 +3,14 @@ package net.sf.anathema.character.impl.model.advance.models;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
-import net.sf.anathema.character.presenter.overview.IValueModel;
 
-public class WillpowerExperienceModel implements IValueModel<Integer> {
+public class WillpowerExperienceModel extends AbstractIntegerValueModel {
 
   private final ICoreTraitConfiguration traitConfiguration;
   private final IPointCostCalculator calculator;
 
   public WillpowerExperienceModel(ICoreTraitConfiguration traitConfiguration, IPointCostCalculator calculator) {
+    super("Experience", "Willpower"); //$NON-NLS-1$ //$NON-NLS-2$
     this.traitConfiguration = traitConfiguration;
     this.calculator = calculator;
   }
@@ -19,12 +19,7 @@ public class WillpowerExperienceModel implements IValueModel<Integer> {
     return getWillpowerCosts();
   }
 
-  public String getId() {
-    return "Willpower"; //$NON-NLS-1$
-  }
-
   private int getWillpowerCosts() {
     return calculator.getWillpowerCosts(traitConfiguration.getTrait(OtherTraitType.Willpower));
   }
-
 }

@@ -3,13 +3,16 @@ package net.sf.anathema.character.impl.model.creation.bonus;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
+import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.impl.model.advance.models.AbstractAdditionalSpendingModel;
 import net.sf.anathema.character.impl.model.creation.bonus.ability.AbilityCostCalculator;
 import net.sf.anathema.character.impl.model.creation.bonus.ability.DefaultAbilityBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.ability.FavoredAbilityBonusModel;
@@ -33,6 +36,7 @@ import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.model.generic.GenericCharacter;
 import net.sf.anathema.character.presenter.overview.IAdditionalSpendingModel;
+import net.sf.anathema.character.presenter.overview.IOverviewModel;
 import net.sf.anathema.character.presenter.overview.ISpendingModel;
 import net.sf.anathema.character.presenter.overview.IValueModel;
 
@@ -52,9 +56,13 @@ public class BonusPointManagement implements IBonusPointManagement {
   private int comboBonusPoints;
   private ITrait essence;
   private int essenceBonusPoints;
-  private List<IAdditionalModelBonusPointCalculator> additionalCalculators = new ArrayList<IAdditionalModelBonusPointCalculator>();
+  private final List<IAdditionalModelBonusPointCalculator> additionalCalculators = new ArrayList<IAdditionalModelBonusPointCalculator>();
+  private final ICreationPoints creationPoints;
+  private final ICharacterStatistics statistics;
 
   public BonusPointManagement(ICharacterStatistics statistics) {
+    this.statistics = statistics;
+    this.creationPoints = statistics.getCharacterTemplate().getCreationPoints();
     for (IAdditionalModel model : statistics.getExtendedConfiguration().getAdditionalModels()) {
       additionalCalculators.add(model.getBonusPointCalculator());
     }
@@ -165,35 +173,36 @@ public class BonusPointManagement implements IBonusPointManagement {
   }
 
   public ISpendingModel getVirtueModel() {
-    return new VirtueBonusModel(virtueCalculator);
+    return new VirtueBonusModel(virtueCalculator, creationPoints);
   }
 
   public ISpendingModel getBackgroundModel() {
-    return new BackgroundBonusModel(backgroundCalculator);
+    return new BackgroundBonusModel(backgroundCalculator, creationPoints);
   }
 
   public ISpendingModel getDefaultAbilityModel() {
-    return new DefaultAbilityBonusModel(abilityCalculator);
+    return new DefaultAbilityBonusModel(abilityCalculator, creationPoints);
   }
 
   public ISpendingModel getFavoredAbilityModel() {
-    return new FavoredAbilityBonusModel(abilityCalculator);
+    return new FavoredAbilityBonusModel(abilityCalculator, creationPoints);
   }
 
   public ISpendingModel getFavoredAbilityPickModel() {
-    return new FavoredAbilityPickModel(abilityCalculator);
+    return new FavoredAbilityPickModel(abilityCalculator, creationPoints);
   }
 
   public ISpendingModel getAttributeModel(final AttributeGroupPriority priority) {
-    return new AttributeBonusModel(attributeCalculator, priority);
+    return new AttributeBonusModel(attributeCalculator, priority, creationPoints);
   }
 
   public ISpendingModel getFavoredCharmModel() {
-    return new FavoredCharmModel(magicCalculator);
+    return new FavoredCharmModel(magicCalculator, creationPoints);
   }
 
   public IAdditionalSpendingModel getDefaultCharmModel() {
-    return new DefaultCharmModel(magicCalculator, magicAdditionalPools);
+    IAdditionalRules additionalRules = statistics.getCharacterTemplate().getAdditionalRules();
+    return new DefaultCharmModel(magicCalculator, magicAdditionalPools, creationPoints, additionalRules);
   }
 
   public IValueModel<Integer> getAdditionalModelModel() {
@@ -201,7 +210,7 @@ public class BonusPointManagement implements IBonusPointManagement {
   }
 
   public IAdditionalSpendingModel getTotalModel() {
-    return new IAdditionalSpendingModel() {
+    return new AbstractAdditionalSpendingModel("Bonus", "Total") { //$NON-NLS-1$ //$NON-NLS-2$
       public int getAdditionalRestrictedAlotment() {
         return getAdditionalBonusPointAmount();
       }
@@ -218,13 +227,44 @@ public class BonusPointManagement implements IBonusPointManagement {
         return getStandardBonusPointsSpent();
       }
 
-      public int getAdditionalUnrestrictedAlotment() {
-        return getAdditionalGeneralBonusPoints();
+      public int getAlotment() {
+        return creationPoints.getBonusPointCount() + getAdditionalGeneralBonusPoints();
       }
 
-      public String getId() {
-        return "Total"; //$NON-NLS-1$
+      public boolean isExtensionRequired() {
+        IAdditionalRules additionalRules = statistics.getCharacterTemplate().getAdditionalRules();
+        return additionalRules != null && additionalRules.getAdditionalBonusPointPools().length > 0;
       }
     };
+  }
+
+  public IOverviewModel[] getAllModels() {
+    List<IOverviewModel> models = new ArrayList<IOverviewModel>();
+    models.add(getAttributeModel(AttributeGroupPriority.Primary));
+    models.add(getAttributeModel(AttributeGroupPriority.Secondary));
+    models.add(getAttributeModel(AttributeGroupPriority.Tertiary));
+    models.add(getFavoredAbilityPickModel());
+    models.add(getFavoredAbilityModel());
+    models.add(getDefaultAbilityModel());
+    addCharmModels(models);
+    models.add(getVirtueModel());
+    models.add(getBackgroundModel());
+    addMiscModel(models);
+    models.add(getTotalModel());
+    return models.toArray(new IOverviewModel[models.size()]);
+  }
+
+  private void addMiscModel(List<IOverviewModel> models) {
+    if (statistics.getExtendedConfiguration().getAdditionalModels().length > 0) {
+      models.add(getAdditionalModelModel());
+    }
+  }
+
+  private void addCharmModels(List<IOverviewModel> models) {
+    if (!statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().knowsCharms()) {
+      return;
+    }
+    models.add(getFavoredCharmModel());
+    models.add(getDefaultCharmModel());
   }
 }

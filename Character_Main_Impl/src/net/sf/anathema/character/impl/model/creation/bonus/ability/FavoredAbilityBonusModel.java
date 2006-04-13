@@ -1,12 +1,16 @@
 package net.sf.anathema.character.impl.model.creation.bonus.ability;
 
-import net.sf.anathema.character.presenter.overview.ISpendingModel;
+import net.sf.anathema.character.generic.template.creation.ICreationPoints;
+import net.sf.anathema.character.impl.model.advance.models.AbstractSpendingModel;
 
-public class FavoredAbilityBonusModel implements ISpendingModel {
+public class FavoredAbilityBonusModel extends AbstractSpendingModel {
   private final AbilityCostCalculator abilityCalculator;
+  private final ICreationPoints creationPoints;
 
-  public FavoredAbilityBonusModel(AbilityCostCalculator abilityCalculator) {
+  public FavoredAbilityBonusModel(AbilityCostCalculator abilityCalculator, ICreationPoints creationPoints) {
+    super("Abilities", "FavoredDot"); //$NON-NLS-1$ //$NON-NLS-2$
     this.abilityCalculator = abilityCalculator;
+    this.creationPoints = creationPoints;
   }
 
   public Integer getValue() {
@@ -17,7 +21,7 @@ public class FavoredAbilityBonusModel implements ISpendingModel {
     return 0;
   }
 
-  public String getId() {
-    return "FavoredAbilties"; //$NON-NLS-1$
+  public int getAlotment() {
+    return creationPoints.getAbilityCreationPoints().getFavoredDotCount();
   }
 }
