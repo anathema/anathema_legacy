@@ -117,7 +117,7 @@ public class CreationOverviewPresenter {
   }
 
   private void initConcept() {
-    IOverviewCategory category = view.addOverviewCategory(getString("Overview.Concept.Title")); //$NON-NLS-1$
+    IOverviewCategory category = view.addOverviewCategory(getString("Overview.Creation.Category.Concept")); //$NON-NLS-1$
     if (!template.getCasteCollection().isEmpty()) {
       IValueView<String> casteView = category.addStringValueView(getString(template.getPresentationProperties()
           .getCasteLabelResource()));
@@ -143,11 +143,11 @@ public class CreationOverviewPresenter {
     final String[] resourcekey = new String[1];
     statistics.getCharacterConcept().getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
       public void accept(INature nature) {
-        resourcekey[0] = "CharacterConcept.Nature"; //$NON-NLS-1$
+        resourcekey[0] = "Overview.Creation.Concept.Nature.Label"; //$NON-NLS-1$
       }
 
       public void accept(IMotivation motivation) {
-        resourcekey[0] = "CharacterConcept.Motivation"; //$NON-NLS-1$
+        resourcekey[0] = "Overview.Creation.Concept.Motivation.Label"; //$NON-NLS-1$
       }
     });
     IValueView<String> willpowerView = category.addStringValueView(getString(resourcekey[0]));
@@ -183,7 +183,7 @@ public class CreationOverviewPresenter {
 
       public void accept(IMotivation motivation) {
         if (motivation.getDescription().getText() != null) {
-          value[0] = "Overview.Motivation.Selected"; //$NON-NLS-1$
+          value[0] = "Overview.Creation.Concept.Motivation.Selected"; //$NON-NLS-1$
         }
       }
     });
