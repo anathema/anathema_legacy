@@ -95,6 +95,10 @@ public class CreationOverviewPresenter {
         public String getValue() {
           return getCasteValueResourceKey();
         }
+
+        public String getId() {
+          return getString(template.getPresentationProperties().getCasteLabelResource());
+        }
       };
       presenters.add(new StringSubPresenter(casteModel, casteView, resources));
     }
@@ -112,6 +116,10 @@ public class CreationOverviewPresenter {
     IValueModel<String> willpowerModel = new IValueModel<String>() {
       public String getValue() {
         return getWillpowerRegainingConceptValue();
+      }
+
+      public String getId() {
+        return resourcekey[0];
       }
     };
     presenters.add(new StringSubPresenter(willpowerModel, willpowerView, resources));

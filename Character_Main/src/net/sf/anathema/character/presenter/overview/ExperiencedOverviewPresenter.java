@@ -46,23 +46,13 @@ public class ExperiencedOverviewPresenter {
 
   public void init() {
     IOverviewCategory category = view.addOverviewCategory(getString("Overview.Experience.Title")); //$NON-NLS-1$
-    initAttributes(category);
-    initAbilities(category);
-    initCharms(category);
-    initCombos(category);
-    initSpells(category);
-    initVirtues(category);
-    initWillpower(category);
-    initEssence(category);
-    initMisc(category);
+    for (IValueModel<Integer> model : management.getAllModels()) {
+      IValueView<Integer> valueView = category.addIntegerValueView(getString("Overview.Experience." + model.getId()), 2); //$NON-NLS-1$
+      presenters.add(new ValueSubPresenter(model, valueView));
+    }
     initTotal(category);
     calculateXPCost();
     view.initGui();
-  }
-
-  private void initMisc(IOverviewCategory category) {
-    IValueView<Integer> miscView = category.addIntegerValueView(getString("Overview.MiscPointsCategory"), 2); //$NON-NLS-1$
-    presenters.add(new ValueSubPresenter(management.getMiscModel(), miscView));
   }
 
   private void initTotal(IOverviewCategory category) {
@@ -91,57 +81,6 @@ public class ExperiencedOverviewPresenter {
 
   private int getTotalXP() {
     return statistics.getExperiencePoints().getTotalExperiencePoints() + management.getMiscGain();
-  }
-
-  private void initEssence(IOverviewCategory category) {
-    IValueView<Integer> essenceView = category.addIntegerValueView(getString("Essence.Name"), 2); //$NON-NLS-1$
-    presenters.add(new ValueSubPresenter(management.getEssenceModel(), essenceView));
-  }
-
-  private void initWillpower(IOverviewCategory category) {
-    IValueView<Integer> willpowerView = category.addIntegerValueView(getString("WillpowerType.Name"), 2); //$NON-NLS-1$
-    presenters.add(new ValueSubPresenter(management.getWillpowerModel(), willpowerView));
-  }
-
-  private void initVirtues(IOverviewCategory category) {
-    IValueView<Integer> virtueView = category.addIntegerValueView(getString("Overview.VirtueCategory"), 2); //$NON-NLS-1$
-    presenters.add(new ValueSubPresenter(management.getVirtueModel(), virtueView));
-  }
-
-  private void initSpells(IOverviewCategory category) {
-    if (!statistics.getCharacterTemplate().getMagicTemplate().getSpellMagic().knowsSpellMagic()) {
-      return;
-    }
-    IValueView<Integer> spellView = category.addIntegerValueView(getString("Overview.Experience.Spells"), 2); //$NON-NLS-1$
-    presenters.add(new ValueSubPresenter(management.getSpellModel(), spellView));
-  }
-
-  private void initCombos(IOverviewCategory category) {
-    if (!statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().knowsCharms()) {
-      return;
-    }
-    IValueView<Integer> comboView = category.addIntegerValueView(getString("Overview.Experience.Combos"), 2); //$NON-NLS-1$
-    presenters.add(new ValueSubPresenter(management.getComboModel(), comboView));
-  }
-
-  private void initCharms(IOverviewCategory category) {
-    if (!statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().knowsCharms()) {
-      return;
-    }
-    IValueView<Integer> charmView = category.addIntegerValueView(getString("Overview.Charms.Title"), 2); //$NON-NLS-1$
-    presenters.add(new ValueSubPresenter(management.getCharmModel(), charmView));
-  }
-
-  private void initAbilities(IOverviewCategory category) {
-    IValueView<Integer> abilityView = category.addIntegerValueView(getString("Overview.Abilities.Title"), 2); //$NON-NLS-1$
-    presenters.add(new ValueSubPresenter(management.getAbilityModel(), abilityView));
-    IValueView<Integer> specialtyView = category.addIntegerValueView(getString("Overview.Experience.Specialties"), 2); //$NON-NLS-1$
-    presenters.add(new ValueSubPresenter(management.getSpecialtyModel(), specialtyView));
-  }
-
-  private void initAttributes(IOverviewCategory category) {
-    IValueView<Integer> attributeView = category.addIntegerValueView(getString("Overview.Attributes.Title"), 2); //$NON-NLS-1$
-    presenters.add(new ValueSubPresenter(management.getAttributeModel(), attributeView));
   }
 
   private void calculateXPCost() {
