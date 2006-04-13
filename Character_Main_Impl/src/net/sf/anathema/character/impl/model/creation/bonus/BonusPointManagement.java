@@ -35,6 +35,7 @@ import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.model.generic.GenericCharacter;
+import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.presenter.overview.IAdditionalSpendingModel;
 import net.sf.anathema.character.presenter.overview.IOverviewModel;
 import net.sf.anathema.character.presenter.overview.ISpendingModel;
@@ -48,17 +49,18 @@ public class BonusPointManagement implements IBonusPointManagement {
   private final AttributeCostCalculator attributeCalculator;
   private final VirtueCostCalculator virtueCalculator;
   private final BackgroundBonusPointCostCalculator backgroundCalculator;
-  private MagicCostCalculator magicCalculator;
+  private final MagicCostCalculator magicCalculator;
   private final ITrait willpower;
   private final IBonusPointCosts cost;
-  private IComboConfiguration combos;
-  private int willpowerBonusPoints;
-  private int comboBonusPoints;
-  private ITrait essence;
-  private int essenceBonusPoints;
+  private final IComboConfiguration combos;
+  private final ITrait essence;
   private final List<IAdditionalModelBonusPointCalculator> additionalCalculators = new ArrayList<IAdditionalModelBonusPointCalculator>();
   private final ICreationPoints creationPoints;
   private final ICharacterStatistics statistics;
+
+  private int essenceBonusPoints;
+  private int willpowerBonusPoints;
+  private int comboBonusPoints;
 
   public BonusPointManagement(ICharacterStatistics statistics) {
     this.statistics = statistics;
@@ -70,24 +72,25 @@ public class BonusPointManagement implements IBonusPointManagement {
     this.cost = statistics.getCharacterTemplate().getBonusPointCosts();
     ICharacterTemplate characterTemplate = statistics.getCharacterTemplate();
     GenericCharacter characterAbstraction = GenericCharacterUtilities.createGenericCharacter(statistics);
+    ICoreTraitConfiguration traitConfiguration = statistics.getTraitConfiguration();
     this.abilityCalculator = new AbilityCostCalculator(
-        statistics.getTraitConfiguration(),
-        characterTemplate.getCreationPoints().getAbilityCreationPoints(),
+        traitConfiguration,
+        creationPoints.getAbilityCreationPoints(),
         cost,
         bonusAdditionalPools);
     this.attributeCalculator = new AttributeCostCalculator(
-        statistics.getTraitConfiguration(),
-        characterTemplate.getCreationPoints().getAttributeCreationPoints(),
+        traitConfiguration,
+        creationPoints.getAttributeCreationPoints(),
         cost);
     this.backgroundCalculator = new BackgroundBonusPointCostCalculator(
         bonusAdditionalPools,
-        statistics.getTraitConfiguration().getBackgrounds(),
+        traitConfiguration.getBackgrounds(),
         cost,
-        characterTemplate.getCreationPoints().getBackgroundPointCount(),
+        creationPoints.getBackgroundPointCount(),
         characterTemplate.getAdditionalRules());
     this.virtueCalculator = new VirtueCostCalculator(
-        statistics.getTraitConfiguration().getTraits(VirtueType.values()),
-        characterTemplate.getCreationPoints().getVirtueCreationPoints(),
+        traitConfiguration.getTraits(VirtueType.values()),
+        creationPoints.getVirtueCreationPoints(),
         cost);
     magicAdditionalPools = new AdditionalMagicLearnPointManagement(characterTemplate.getAdditionalRules()
         .getAdditionalMagicLearnPools(), characterAbstraction);
@@ -95,16 +98,16 @@ public class BonusPointManagement implements IBonusPointManagement {
         characterTemplate.getMagicTemplate(),
         statistics.getCharms(),
         statistics.getSpells(),
-        characterTemplate.getCreationPoints().getFavoredCreationCharmCount(),
-        characterTemplate.getCreationPoints().getDefaultCreationCharmCount(),
+        creationPoints.getFavoredCreationCharmCount(),
+        creationPoints.getDefaultCreationCharmCount(),
         cost,
         bonusAdditionalPools,
         magicAdditionalPools,
         statistics.getCharacterContext().getBasicCharacterContext(),
         statistics.getCharacterContext().getTraitCollection());
     this.combos = statistics.getCombos();
-    this.willpower = statistics.getTraitConfiguration().getTrait(OtherTraitType.Willpower);
-    this.essence = statistics.getTraitConfiguration().getTrait(OtherTraitType.Essence);
+    this.willpower = traitConfiguration.getTrait(OtherTraitType.Willpower);
+    this.essence = traitConfiguration.getTrait(OtherTraitType.Essence);
   }
 
   public void recalculate() {
