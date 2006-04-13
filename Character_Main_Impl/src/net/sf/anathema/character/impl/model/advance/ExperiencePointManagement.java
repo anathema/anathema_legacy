@@ -36,6 +36,7 @@ public class ExperiencePointManagement implements IExperiencePointManagement {
     return new AbilityExperienceModel(traitConfiguration, calculator, statistics);
   }
 
+  @SuppressWarnings("unchecked")
   public IValueModel<Integer>[] getAllModels() {
     return new IValueModel[] {
         getAttributeModel(),
