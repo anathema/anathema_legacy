@@ -93,7 +93,7 @@ public class CharacterStatistics implements ICharacterStatistics {
         template.getAdditionalRules(),
         context);
     charms.initListening();
-    this.combos = new ComboConfiguration(charms, context.getComboLearnStrategy());
+    this.combos = new ComboConfiguration(charms, context.getComboLearnStrategy(), rules.getEdition());
     combos.addComboConfigurationListener(new IComboConfigurationListener() {
 
       public void editEnded() {

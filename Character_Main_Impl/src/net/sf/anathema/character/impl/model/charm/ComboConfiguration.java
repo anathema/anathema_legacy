@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.rules.IEditionVisitor;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.impl.model.charm.combo.ComboArbitrator;
 import net.sf.anathema.character.impl.model.charm.combo.IComboArbitrator;
+import net.sf.anathema.character.impl.model.charm.combo.SecondEditionComboArbitrator;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
@@ -20,14 +23,17 @@ public class ComboConfiguration implements IComboConfiguration {
 
   private final List<ICombo> creationComboList = new ArrayList<ICombo>();
   private final List<ICombo> experiencedComboList = new ArrayList<ICombo>();
-  private final IComboArbitrator rules = new ComboArbitrator();
+  private final IComboArbitrator rules;
   private final ICombo editCombo = new Combo();
   private final GenericControl<IComboConfigurationListener> control = new GenericControl<IComboConfigurationListener>();
   private final ICharmConfiguration charmConfiguration;
   private final ComboIdProvider idProvider = new ComboIdProvider();
   private final IComboLearnStrategy learnStrategy;
 
-  public ComboConfiguration(ICharmConfiguration charmConfiguration, IComboLearnStrategy learnStrategy) {
+  public ComboConfiguration(
+      ICharmConfiguration charmConfiguration,
+      IComboLearnStrategy learnStrategy,
+      IExaltedEdition edition) {
     this.charmConfiguration = charmConfiguration;
     this.learnStrategy = learnStrategy;
     this.charmConfiguration.addCharmLearnListener(new CharmLearnAdapter() {
@@ -36,6 +42,17 @@ public class ComboConfiguration implements IComboConfiguration {
         checkCombos(charm);
       }
     });
+    final IComboArbitrator[] editionRules = new IComboArbitrator[1];
+    edition.accept(new IEditionVisitor() {
+      public void visitFirstEdition(IExaltedEdition visitedEdition) {
+        editionRules[0] = new ComboArbitrator();
+      }
+
+      public void visitSecondEdition(IExaltedEdition visitedEdition) {
+        editionRules[0] = new SecondEditionComboArbitrator();
+      }
+    });
+    this.rules = editionRules[0];
   }
 
   public void setCrossPrerequisiteTypeComboAllowed(boolean allowed) {

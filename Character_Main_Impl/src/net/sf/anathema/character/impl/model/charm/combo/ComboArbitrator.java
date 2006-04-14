@@ -48,7 +48,7 @@ public class ComboArbitrator implements IComboArbitrator {
     return handleComboRules(charm1, charm2) && handleComboRules(charm2, charm1);
   }
 
-  private boolean specialRestrictionsApply(ICharm charm1, ICharm charm2) {
+  protected boolean specialRestrictionsApply(ICharm charm1, ICharm charm2) {
     IComboRestrictions comboRules = charm1.getComboRules();
     if (comboRules.isRestrictedCharm(charm2)) {
       return true;
