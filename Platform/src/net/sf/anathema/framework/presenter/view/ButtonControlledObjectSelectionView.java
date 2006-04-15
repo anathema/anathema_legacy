@@ -26,18 +26,22 @@ public class ButtonControlledObjectSelectionView implements IObjectSelectionView
   private final JButton addButton;
   private final JLabel label;
 
-  public ButtonControlledObjectSelectionView(
-      ComboBoxEditor editor,
-      ListCellRenderer renderer,
-      Icon addIcon,
-      String labelText) {
+  public ButtonControlledObjectSelectionView(ListCellRenderer renderer, Icon addIcon, String labelText) {
     this.comboBox = new ColoredJComboBox(new DefaultComboBoxModel(new Object[0]));
-    this.comboBox.setEditable(true);
-    this.comboBox.setEditor(editor);
     this.label = new JLabel(labelText);
     this.comboBox.setRenderer(renderer);
     addButton = new JButton(addIcon);
     addButton.setPreferredSize(new Dimension(addIcon.getIconWidth() + 4, addIcon.getIconHeight() + 4));
+  }
+
+  public ButtonControlledObjectSelectionView(
+      ListCellRenderer renderer,
+      Icon addIcon,
+      String labelText,
+      ComboBoxEditor editor) {
+    this(renderer, addIcon, labelText);
+    this.comboBox.setEditable(true);
+    this.comboBox.setEditor(editor);
   }
 
   public void addComponents(IGridDialogPanel panel) {
