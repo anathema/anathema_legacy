@@ -10,13 +10,14 @@ import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.charmentry.model.CharmEntryModel;
+import net.sf.anathema.charmentry.model.IConfigurableCharmData;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
-public class KeywordPresenter {
+public class KeywordPresenter implements ICharmEntrySubPresenter {
 
   private final CharmEntryModel model;
   private final IKeywordView view;
@@ -64,5 +65,9 @@ public class KeywordPresenter {
       }
     });
     selectionView.setButtonEnabled(false);
+  }
+
+  public void charmAdded(IConfigurableCharmData charmData) {
+    // Nothing to do
   }
 }

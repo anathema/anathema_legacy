@@ -1,14 +1,10 @@
 package net.sf.anathema.charmentry.presenter;
 
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.JButton;
 import javax.swing.JList;
 
 import net.disy.commons.core.util.StringUtilities;
@@ -28,14 +24,12 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
 import net.sf.anathema.charmentry.model.CharmEntryModel;
 import net.sf.anathema.charmentry.model.IConfigurableCharmData;
-import net.sf.anathema.charmentry.persistence.CharmEntryPropertiesPersister;
 import net.sf.anathema.charmentry.view.BasicDataView;
 import net.sf.anathema.charmentry.view.ICostEntryView;
 import net.sf.anathema.charmentry.view.ISourceSelectionView;
 import net.sf.anathema.framework.presenter.view.IdentificateListCellRenderer;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
-import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -47,9 +41,7 @@ import net.sf.anathema.lib.util.Identificate;
 import net.sf.anathema.lib.workflow.container.ISelectionContainerView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
-import org.dom4j.DocumentException;
-
-public class BasicDataPresenter {
+public class BasicDataPresenter implements ICharmEntrySubPresenter {
   // TODO: Various exceptions long for handling
 
   private final BasicDataView view;
@@ -57,6 +49,7 @@ public class BasicDataPresenter {
   private final CharmEntryModel model;
   private IntValueDisplayFactory intValueDisplayFactory;
   private final Map<String, String> nameMap = new HashMap<String, String>();
+  private ISelectionContainerView prerequisiteCharmView;
 
   public BasicDataPresenter(CharmEntryModel model, BasicDataView view, IResources resources) {
     this.model = model;
@@ -76,11 +69,10 @@ public class BasicDataPresenter {
     initDurationPresentation();
     initCostPresentation();
     ISelectableTraitView primaryPrerequisiteView = initPrimaryPrerequisitePresentation();
-    ISelectionContainerView prerequisiteCharmView = initPrerequisiteCharmPresentation();
-    initCharacterTypeListening(characterTypeView, primaryPrerequisiteView, prerequisiteCharmView, groupView);
+    this.prerequisiteCharmView = initPrerequisiteCharmPresentation();
+    initCharacterTypeListening(characterTypeView, primaryPrerequisiteView, groupView);
     initEssencePrerequisitePresentation();
     initSourcePresentation();
-    initPersistencePresentation(prerequisiteCharmView);
   }
 
   private void initEditionView() {
@@ -109,37 +101,6 @@ public class BasicDataPresenter {
       }
     });
     return nameView;
-  }
-
-  private void initPersistencePresentation(final ISelectionContainerView prerequisiteCharmView) {
-    final JButton button = view.addSaveButton(resources.getString("CharmEntry.Button.Save")); //$NON-NLS-1$
-    button.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        IConfigurableCharmData charmData = model.getCharmData();
-        CharacterType characterType = charmData.getCharacterType();
-        try {
-          CharmCache.getInstance().addCharm(charmData);
-          new CharmEntryPropertiesPersister().addPropertyInternal(characterType, charmData.getId(), charmData.getName());
-          nameMap.put(charmData.getId(), charmData.getName());
-          setCharmsInView(prerequisiteCharmView, characterType);
-        }
-        catch (IOException ex) {
-          ex.printStackTrace();
-        }
-        catch (DocumentException ex) {
-          ex.printStackTrace();
-        }
-        catch (PersistenceException ex) {
-          ex.printStackTrace();
-        }
-      }
-    });
-    model.addCharmCompleteListener(new IBooleanValueChangedListener() {
-      public void valueChanged(boolean newValue) {
-        button.setEnabled(newValue);
-      }
-    });
-    button.setEnabled(false);
   }
 
   private ISelectionContainerView initPrerequisiteCharmPresentation() {
@@ -257,7 +218,6 @@ public class BasicDataPresenter {
   private void initCharacterTypeListening(
       IChangeableJComboBox characterTypeView,
       final ISelectableTraitView primaryPrerequisiteView,
-      final ISelectionContainerView prerequisiteCharmView,
       final ITextView groupView) {
     characterTypeView.addObjectSelectionChangedListener(new IObjectValueChangedListener<CharacterType>() {
       public void valueChanged(CharacterType newValue) {
@@ -376,5 +336,10 @@ public class BasicDataPresenter {
         new IdentificateSelectCellRenderer("", resources)); //$NON-NLS-1$
     typeBox.setObjects(model.getLegalCharacterTypes());
     return typeBox;
+  }
+
+  public void charmAdded(IConfigurableCharmData charmData) throws PersistenceException {
+    nameMap.put(charmData.getId(), charmData.getName());
+    setCharmsInView(prerequisiteCharmView, charmData.getCharacterType());
   }
 }

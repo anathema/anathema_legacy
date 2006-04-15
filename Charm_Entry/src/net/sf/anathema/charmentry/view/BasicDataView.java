@@ -1,6 +1,5 @@
 package net.sf.anathema.charmentry.view;
 
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -125,13 +124,5 @@ public class BasicDataView {
 
   private void addLabel(String labelString) {
     dataPanel.add(new JLabel(labelString));
-  }
-
-  public JButton addSaveButton(String text) {
-    JButton button = new JButton(text);
-    GridDialogLayoutData data = new GridDialogLayoutData();
-    data.setHorizontalAlignment(GridAlignment.END);
-    controlPanel.add(button, data);
-    return button;
   }
 }
