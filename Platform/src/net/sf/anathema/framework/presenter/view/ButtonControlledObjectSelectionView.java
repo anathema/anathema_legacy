@@ -24,8 +24,8 @@ public class ButtonControlledObjectSelectionView implements IObjectSelectionView
   private final JComboBox comboBox;
   private final JButton addButton;
 
-  public ButtonControlledObjectSelectionView(Object[] objects, ComboBoxEditor editor, Icon addIcon) {
-    this.comboBox = new ColoredJComboBox(new DefaultComboBoxModel(objects));
+  public ButtonControlledObjectSelectionView(ComboBoxEditor editor, Icon addIcon) {
+    this.comboBox = new ColoredJComboBox(new DefaultComboBoxModel(new Object[0]));
     this.comboBox.setEditable(true);
     this.comboBox.setEditor(editor);
     addButton = new JButton(null, addIcon);
