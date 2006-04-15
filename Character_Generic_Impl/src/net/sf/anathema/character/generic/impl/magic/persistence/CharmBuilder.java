@@ -134,8 +134,6 @@ public class CharmBuilder {
         prerequisiteListElement,
         id);
     IGenericTrait[] prerequisites = prerequisiteList.getPrerequisites();
-    String[] primaryTrait = prerequisites.length == 0 ? new String[0] : new String[] { prerequisites[0].getType()
-        .getId() };
     Charm charm = new Charm(
         characterType,
         id,
@@ -147,6 +145,8 @@ public class CharmBuilder {
         duration,
         charmType,
         sources.toArray(new IMagicSource[0]));
+    String[] primaryTrait = prerequisites.length == 0 ? new String[0] : new String[] { prerequisites[0].getType()
+        .getId() };
     for (ICharmAttribute attribute : getCharmAttributes(rulesElement, fallBackElement, primaryTrait)) {
       charm.addCharmAttribute(attribute);
     }
