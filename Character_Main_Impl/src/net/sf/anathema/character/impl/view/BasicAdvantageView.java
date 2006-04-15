@@ -21,7 +21,7 @@ import net.sf.anathema.character.view.IAdvantageViewProperties;
 import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.framework.presenter.view.AbstractTabView;
 import net.sf.anathema.framework.presenter.view.ButtonControlledObjectSelectionView;
-import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
+import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.GuiUtilities;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
@@ -89,7 +89,7 @@ public class BasicAdvantageView extends AbstractTabView<IAdvantageViewProperties
     return willpowerView;
   }
 
-  public IObjectSelectionView addBackgroundSelectionView(
+  public IButtonControlledObjectSelectionView addBackgroundSelectionView(
       String labelText,
       ComboBoxEditor editor,
       ListCellRenderer renderer,
