@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
 import net.disy.commons.core.util.Ensure;
+import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMartialArtsCharm;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
@@ -38,7 +39,7 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
     builder.append(IMagicStringBuilderConstants.ColonSpace);
     builder.append(resources.getString(charm.getCharmType().getId()));
     builder.append(HtmlLineBreak);
-    if (charm instanceof IMartialArtsCharm) {
+    if (MartialArtsUtilities.isMartialArtsCharm(charm)) {
       builder.append(createMartialArtsLevelLine((IMartialArtsCharm) charm));
     }
     builder.append(createPrerequisiteLines(charm.getPrerequisites()));
