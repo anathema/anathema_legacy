@@ -91,14 +91,10 @@ public class BasicAdvantageView extends AbstractTabView<IAdvantageViewProperties
 
   public IObjectSelectionView addBackgroundSelectionView(
       String labelText,
-      Object[] selectionObjects,
       ComboBoxEditor editor,
       ListCellRenderer renderer,
       Icon addIcon) {
-    ButtonControlledObjectSelectionView objectSelectionView = new ButtonControlledObjectSelectionView(
-        selectionObjects,
-        editor,
-        addIcon);
+    ButtonControlledObjectSelectionView objectSelectionView = new ButtonControlledObjectSelectionView(editor, addIcon);
     objectSelectionView.addTo(labelText, renderer, backgroundSelectionPanel);
     return objectSelectionView;
   }
