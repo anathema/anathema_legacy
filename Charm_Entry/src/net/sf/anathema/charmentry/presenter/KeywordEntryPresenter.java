@@ -1,5 +1,7 @@
 package net.sf.anathema.charmentry.presenter;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,14 +19,14 @@ import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
-public class KeywordPresenter implements ICharmEntrySubPresenter {
+public class KeywordEntryPresenter implements ICharmEntrySubPresenter {
 
   private final CharmEntryModel model;
   private final IKeywordView view;
   private final IResources resources;
   private final Map<ICharmAttribute, IRemovableEntryView> viewsByAttribute = new HashMap<ICharmAttribute, IRemovableEntryView>();
 
-  public KeywordPresenter(CharmEntryModel model, IKeywordView view, IResources resources) {
+  public KeywordEntryPresenter(CharmEntryModel model, IKeywordView view, IResources resources) {
     this.model = model;
     this.view = view;
     this.resources = resources;
@@ -50,9 +52,14 @@ public class KeywordPresenter implements ICharmEntrySubPresenter {
       }
     });
     model.getKeywordModel().addModelChangeListener(new IRemovableEntryListener<ICharmAttribute>() {
-      public void entryAdded(ICharmAttribute entry) {
+      public void entryAdded(final ICharmAttribute entry) {
         IRemovableEntryView entryView = view.addEntryView(basicUi.getMediumRemoveIcon(), entry.getId());
         viewsByAttribute.put(entry, entryView);
+        entryView.addButtonListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            model.getKeywordModel().removeEntry(entry);
+          }
+        });
       }
 
       public void entryAllowed(boolean complete) {

@@ -33,14 +33,14 @@ public class CharmEntryPresenter {
   public void initPresentation() {
     BasicDataPresenter basicDataPresenter = new BasicDataPresenter(model, view.addBasicDataView(), resources);
     basicDataPresenter.initPresentation();
-    KeywordPresenter keywordPresenter = new KeywordPresenter(model, view.addKeywordView(), resources);
+    KeywordEntryPresenter keywordPresenter = new KeywordEntryPresenter(model, view.addKeywordView(), resources);
     keywordPresenter.initPresentation();
     initPersistencePresentation(basicDataPresenter, keywordPresenter);
   }
 
   private void initPersistencePresentation(
       final BasicDataPresenter basicDataPresenter,
-      final KeywordPresenter keywordPresenter) {
+      final KeywordEntryPresenter keywordPresenter) {
     final JButton button = view.addSaveButton(resources.getString("CharmEntry.Button.Save")); //$NON-NLS-1$
     button.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
