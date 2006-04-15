@@ -28,7 +28,7 @@ public class CharmCache implements ICharmCache {
   private final MultiEntryMap<CharacterType, ICharm> powerCombatCharmsByType = new MultiEntryMap<CharacterType, ICharm>();
   private final List<IMartialArtsCharm> martialArtsCharms = new ArrayList<IMartialArtsCharm>();
   private List<IMartialArtsCharm> powerCombatMartialArtsCharms = new ArrayList<IMartialArtsCharm>();
-  private final CharmIO reader = new CharmIO();
+  private final CharmIO charmIo = new CharmIO();
   private final CharmBuilder builder = new CharmBuilder();
 
   private CharmCache() {
@@ -55,7 +55,7 @@ public class CharmCache implements ICharmCache {
 
   private void buildOfficialCharms(final CharacterType type) throws PersistenceException {
     try {
-      Document charmDocument = reader.readCharms(type);
+      Document charmDocument = charmIo.readCharms(type);
       buildCharmsFromDocument(type, charmDocument);
     }
     catch (DocumentException e) {
@@ -65,7 +65,7 @@ public class CharmCache implements ICharmCache {
 
   private void buildCustomCharms(final CharacterType type) throws PersistenceException {
     try {
-      Document document = reader.readCustomCharms(type);
+      Document document = charmIo.readCustomCharms(type);
       if (document != null) {
         buildCharmsFromDocument(type, document);
       }
@@ -90,7 +90,7 @@ public class CharmCache implements ICharmCache {
     List<IMartialArtsCharm> charmList = getMartialArtsList(powerCombat);
     if (charmList.isEmpty()) {
       try {
-        Document charmDocument = reader.readCharms(new Identificate("MartialArts")); //$NON-NLS-1$
+        Document charmDocument = charmIo.readCharms(new Identificate("MartialArts")); //$NON-NLS-1$
         charmList.addAll(Arrays.asList(builder.buildMartialArtsCharms(charmDocument, powerCombat)));
       }
       catch (DocumentException e) {
@@ -128,6 +128,6 @@ public class CharmCache implements ICharmCache {
   public void addCharm(ICharmData charmData) throws IOException, DocumentException {
     ICharm charm = new Charm(charmData);
     charmsByType.add(charm.getCharacterType(), charm);
-    reader. writeCharmInternal(charm);
+    charmIo.writeCharmInternal(charm);
   }
 }
