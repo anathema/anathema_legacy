@@ -17,6 +17,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmLearnStrategy;
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsCharm;
+import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
@@ -248,7 +249,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     ICharm[] learnedCharms = getLearnedCharms(true);
     Set<String> uncompletedGroups = new HashSet<String>();
     for (ICharm charm : learnedCharms) {
-      if (charm instanceof IMartialArtsCharm) {
+      if (MartialArtsUtilities.isMartialArtsCharm(charm)) {
         IMartialArtsCharm martialArtsCharm = (IMartialArtsCharm) charm;
         boolean groupIsStyle = !charm.hasAttribute(MartialArtsCharm.NO_STYLE_ATTRIBUTE);
         boolean isCelestialLevel = martialArtsCharm.getLevel() == MartialArtsLevel.Celestial;
@@ -386,7 +387,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     if (charm.isBlockedByAlternative(context.getMagicCollection())) {
       return false;
     }
-    if (charm instanceof IMartialArtsCharm) {
+    if (MartialArtsUtilities.isMartialArtsCharm(charm)) {
       IMartialArtsCharm martialArtsCharm = (IMartialArtsCharm) charm;
       boolean isSiderealFormCharm = martialArtsCharm.isFormCharm()
           && martialArtsCharm.getLevel() == MartialArtsLevel.Sidereal;
@@ -485,11 +486,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   public boolean isAlienCharm(ICharm charm) {
-    return !isMartialArtsCharm(charm) && isAlienType(charm.getCharacterType());
-  }
-
-  private boolean isMartialArtsCharm(ICharm charm) {
-    return charm instanceof IMartialArtsCharm;
+    return !MartialArtsUtilities.isMartialArtsCharm(charm) && isAlienType(charm.getCharacterType());
   }
 
   private boolean isAlienType(CharacterType characterType) {

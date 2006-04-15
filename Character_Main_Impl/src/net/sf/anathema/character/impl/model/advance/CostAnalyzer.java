@@ -2,6 +2,7 @@ package net.sf.anathema.character.impl.model.advance;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMartialArtsCharm;
@@ -34,7 +35,7 @@ public class CostAnalyzer implements ICostAnalyzer {
   }
 
   public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
-    if (!(charm instanceof IMartialArtsCharm)) {
+    if (!(MartialArtsUtilities.isMartialArtsCharm(charm))) {
       return null;
     }
     return ((IMartialArtsCharm) charm).getLevel();
