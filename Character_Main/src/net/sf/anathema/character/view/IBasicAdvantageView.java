@@ -18,7 +18,6 @@ public interface IBasicAdvantageView extends ITabView<IAdvantageViewProperties> 
 
   public IObjectSelectionView addBackgroundSelectionView(
       String labelText,
-      Object[] selectionObjects,
       ComboBoxEditor editor,
       ListCellRenderer renderer,
       Icon addIcon);

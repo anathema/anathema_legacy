@@ -87,8 +87,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
   public void init() {
     Icon addIcon = new BasicUi(resources).getMediumAddIcon();
     IObjectSelectionView view = configurationView.addBackgroundSelectionView(
-        resources.getString("BackgroundConfigurationView.SelectionCombo.Label"), //$NON-NLS-1$
-        getSortedBackgrounds(),
+        resources.getString("BackgroundConfigurationView.SelectionCombo.Label"),
         new ProxyComboBoxEditor() {
           @Override
           public void setItem(Object anObject) {
@@ -107,6 +106,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
           }
         },
         addIcon);
+    view.setObjects(getSortedBackgrounds());
     view.addObjectSelectionChangedListener(new IObjectValueChangedListener() {
       public void valueChanged(Object newValue) {
         IBackgroundTemplate backgroundType = getBackgroundType(newValue);
