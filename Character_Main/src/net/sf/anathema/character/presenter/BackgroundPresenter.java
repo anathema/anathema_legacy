@@ -24,7 +24,7 @@ import net.sf.anathema.character.presenter.util.I18nComparator;
 import net.sf.anathema.character.presenter.util.ProxyComboBoxEditor;
 import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
+import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
@@ -86,7 +86,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
 
   public void init() {
     Icon addIcon = new BasicUi(resources).getMediumAddIcon();
-    IObjectSelectionView view = configurationView.addBackgroundSelectionView(
+    IButtonControlledObjectSelectionView view = configurationView.addBackgroundSelectionView(
         resources.getString("BackgroundConfigurationView.SelectionCombo.Label"), //$NON-NLS-1$
         new ProxyComboBoxEditor() {
           @Override
@@ -107,7 +107,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
         },
         addIcon);
     view.setObjects(getSortedBackgrounds());
-    view.addObjectSelectionChangedListener(new IObjectValueChangedListener() {
+    view.addButtonListener(new IObjectValueChangedListener() {
       public void valueChanged(Object newValue) {
         IBackgroundTemplate backgroundType = getBackgroundType(newValue);
         if (backgroundType == null) {

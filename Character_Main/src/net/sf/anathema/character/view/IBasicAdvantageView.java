@@ -5,7 +5,7 @@ import javax.swing.Icon;
 import javax.swing.ListCellRenderer;
 
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
-import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
+import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.ITabView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
@@ -16,7 +16,7 @@ public interface IBasicAdvantageView extends ITabView<IAdvantageViewProperties> 
 
   public IIntValueView addWillpower(String labelText, int value, int maxValue);
 
-  public IObjectSelectionView addBackgroundSelectionView(
+  public IButtonControlledObjectSelectionView addBackgroundSelectionView(
       String labelText,
       ComboBoxEditor editor,
       ListCellRenderer renderer,
