@@ -8,6 +8,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
+import net.sf.anathema.character.library.removableentry.view.RemovableStringView;
 
 public class HeartsBloodView extends AbstractRemovableEntryView<IRemovableEntryView> {
 
@@ -40,7 +41,6 @@ public class HeartsBloodView extends AbstractRemovableEntryView<IRemovableEntryV
   public IRemovableEntryView addEntryView(Icon removeIcon, String string) {
     RemovableStringView view = new RemovableStringView(removeIcon, string);
     view.addContent(selectionPanel);
-    content.revalidate();
     return view;
   }
 }
