@@ -5,7 +5,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.sf.anathema.charmentry.view.CharmEntryView;
+import net.sf.anathema.charmentry.view.BasicDataView;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
@@ -20,8 +20,8 @@ public class CharmEntryModuleView implements IItemView {
     this.icon = icon;
   }
 
-  public CharmEntryView addCharmEntryView() {
-    CharmEntryView view = new CharmEntryView();
+  public BasicDataView addCharmEntryView() {
+    BasicDataView view = new BasicDataView();
     panel.add(view.getContent());
     return view;
   }

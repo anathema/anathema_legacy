@@ -26,7 +26,7 @@ import net.sf.anathema.lib.workflow.container.view.SelectionContainerListView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
-public class CharmEntryView {
+public class BasicDataView {
 
   private final JPanel prerequisitePanel = new JPanel(new GridDialogLayout(1, false));
   private final JPanel dataPanel = new JPanel(new GridDialogLayout(5, false));

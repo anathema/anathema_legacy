@@ -29,7 +29,7 @@ import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
 import net.sf.anathema.charmentry.model.CharmEntryModel;
 import net.sf.anathema.charmentry.model.IConfigurableCharmData;
 import net.sf.anathema.charmentry.persistence.CharmEntryPropertiesPersister;
-import net.sf.anathema.charmentry.view.CharmEntryView;
+import net.sf.anathema.charmentry.view.BasicDataView;
 import net.sf.anathema.charmentry.view.ICostEntryView;
 import net.sf.anathema.charmentry.view.ISourceSelectionView;
 import net.sf.anathema.framework.presenter.view.IdentificateListCellRenderer;
@@ -52,13 +52,13 @@ import org.dom4j.DocumentException;
 public class CharmEntryPresenter {
   // TODO: Various exceptions long for handling
 
-  private final CharmEntryView view;
+  private final BasicDataView view;
   private final IResources resources;
   private final CharmEntryModel model;
   private IntValueDisplayFactory intValueDisplayFactory;
   private final Map<String, String> nameMap = new HashMap<String, String>();
 
-  public CharmEntryPresenter(CharmEntryModel model, CharmEntryView view, IResources resources) {
+  public CharmEntryPresenter(CharmEntryModel model, BasicDataView view, IResources resources) {
     this.model = model;
     this.view = view;
     this.resources = resources;
