@@ -18,6 +18,6 @@ public class CharmEntryPresenter {
 
   public void initPresentation() {
     new BasicDataPresenter(model, view.addBasicDataView(), resources).initPresentation();
-
+    new KeywordPresenter(model, view.addKeywordView(), resources).initPresentation();
   }
 }
