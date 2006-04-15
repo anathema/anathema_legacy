@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.Duration;
@@ -33,6 +34,7 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
   private IConfigurablePermanentCostList permanentCost = new ConfigurablePermanentCostList();
   private IConfigurableMagicSource source = new ConfigurableMagicSource();
   private ITraitType primaryType;
+  private ExaltedEdition edition;
 
   public void setCharacterType(CharacterType type) {
     this.characterType = type;
@@ -164,5 +166,13 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
   public void setParentCharms(ICharm[] charms) {
     parentCharms.clear();
     Collections.addAll(parentCharms, charms);
+  }
+
+  public void setEdition(ExaltedEdition edition) {
+    this.edition = edition;
+  }
+
+  public ExaltedEdition getEdition() {
+    return edition;
   }
 }

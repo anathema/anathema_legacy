@@ -15,6 +15,7 @@ import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.framework.magic.compare.MagicComparator;
 import net.sf.anathema.character.generic.impl.IIconConstants;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmType;
@@ -70,6 +71,7 @@ public class CharmEntryPresenter {
     initCharmNamePresentation();
     ITextView groupView = initCharmGroupPresentation();
     IChangeableJComboBox characterTypeView = initCharacterTypeView();
+    initEditionView();
     initCharmTypePresentation();
     initDurationPresentation();
     initCostPresentation();
@@ -79,6 +81,19 @@ public class CharmEntryPresenter {
     initEssencePrerequisitePresentation();
     initSourcePresentation();
     initPersistencePresentation(prerequisiteCharmView);
+  }
+
+  private void initEditionView() {
+    IChangeableJComboBox<ExaltedEdition> typeBox = view.addObjectSelectionView(
+        resources.getString("CharmEntry.ExaltedEdition"), //$NON-NLS-1$
+        false,
+        new IdentificateSelectCellRenderer("", resources)); //$NON-NLS-1$
+    typeBox.setObjects(ExaltedEdition.values());
+    typeBox.addObjectSelectionChangedListener(new IObjectValueChangedListener<ExaltedEdition>() {
+      public void valueChanged(ExaltedEdition newValue) {
+        model.setEdition(newValue);
+      }
+    });
   }
 
   private ITextView initCharmGroupPresentation() {

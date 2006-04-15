@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import net.disy.commons.core.util.StringUtilities;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
@@ -272,5 +273,9 @@ public class CharmEntryModel {
 
   public void addCharmGroupIdListener(IObjectValueChangedListener<String> listener) {
     groupControl.addObjectValueChangeListener(listener);
+  }
+
+  public void setEdition(ExaltedEdition edition) {
+    charmData.setEdition(edition);
   }
 }
