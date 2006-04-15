@@ -49,7 +49,7 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 import org.dom4j.DocumentException;
 
-public class CharmEntryPresenter {
+public class BasicDataPresenter {
   // TODO: Various exceptions long for handling
 
   private final BasicDataView view;
@@ -58,7 +58,7 @@ public class CharmEntryPresenter {
   private IntValueDisplayFactory intValueDisplayFactory;
   private final Map<String, String> nameMap = new HashMap<String, String>();
 
-  public CharmEntryPresenter(CharmEntryModel model, BasicDataView view, IResources resources) {
+  public BasicDataPresenter(CharmEntryModel model, BasicDataView view, IResources resources) {
     this.model = model;
     this.view = view;
     this.resources = resources;
