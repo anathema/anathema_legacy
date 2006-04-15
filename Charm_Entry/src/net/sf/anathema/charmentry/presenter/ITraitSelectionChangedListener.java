@@ -1,4 +1,4 @@
-package net.sf.anathema.charmentry;
+package net.sf.anathema.charmentry.presenter;
 
 public interface ITraitSelectionChangedListener {
 

@@ -15,7 +15,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
-import net.sf.anathema.charmentry.ISelectableTraitView;
+import net.sf.anathema.charmentry.presenter.ISelectableTraitView;
 import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;

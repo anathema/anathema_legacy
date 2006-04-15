@@ -1,4 +1,4 @@
-package net.sf.anathema.charmentry;
+package net.sf.anathema.charmentry.presenter;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;

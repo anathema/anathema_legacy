@@ -18,7 +18,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.charmentry.ITraitSelectionChangedListener;
+import net.sf.anathema.charmentry.presenter.ITraitSelectionChangedListener;
 import net.sf.anathema.charmentry.util.CharmUtilities;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;

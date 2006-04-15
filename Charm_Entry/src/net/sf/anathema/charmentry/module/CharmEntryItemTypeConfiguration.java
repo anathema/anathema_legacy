@@ -1,7 +1,7 @@
 package net.sf.anathema.charmentry.module;
 
-import net.sf.anathema.charmentry.BasicDataPresenter;
 import net.sf.anathema.charmentry.model.CharmEntryModel;
+import net.sf.anathema.charmentry.presenter.CharmEntryPresenter;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.module.AbstractNonPersistableItemTypeConfiguration;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
@@ -29,7 +29,7 @@ public final class CharmEntryItemTypeConfiguration extends AbstractNonPersistabl
         String printName = item.getDisplayName();
         CharmEntryModuleView entryView = new CharmEntryModuleView(printName, null);
         CharmEntryModel model = new CharmEntryModel();
-        new BasicDataPresenter(model, entryView.addCharmEntryView().addBasicDataView(), resources).initPresentation();
+        new CharmEntryPresenter(model, entryView.addCharmEntryView(), resources).initPresentation();
         return entryView;
       }
     };

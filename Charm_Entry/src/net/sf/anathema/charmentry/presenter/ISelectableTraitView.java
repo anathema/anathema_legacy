@@ -1,4 +1,4 @@
-package net.sf.anathema.charmentry;
+package net.sf.anathema.charmentry.presenter;
 
 import net.sf.anathema.charmentry.view.IContentView;
 
