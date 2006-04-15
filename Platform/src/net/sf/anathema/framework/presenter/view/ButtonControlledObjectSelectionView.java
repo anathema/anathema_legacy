@@ -24,20 +24,19 @@ public class ButtonControlledObjectSelectionView implements IObjectSelectionView
 
   private final JComboBox comboBox;
   private final JButton addButton;
-  private final String labelText;
-  private final ListCellRenderer renderer;
+  private final JLabel label;
 
   public ButtonControlledObjectSelectionView(
       ComboBoxEditor editor,
       ListCellRenderer renderer,
       Icon addIcon,
       String labelText) {
-    this.renderer = renderer;
-    this.labelText = labelText;
     this.comboBox = new ColoredJComboBox(new DefaultComboBoxModel(new Object[0]));
     this.comboBox.setEditable(true);
     this.comboBox.setEditor(editor);
-    addButton = new JButton(null, addIcon);
+    this.label = new JLabel(labelText);
+    this.comboBox.setRenderer(renderer);
+    addButton = new JButton(addIcon);
     addButton.setPreferredSize(new Dimension(addIcon.getIconWidth() + 4, addIcon.getIconHeight() + 4));
   }
 
@@ -48,8 +47,7 @@ public class ButtonControlledObjectSelectionView implements IObjectSelectionView
       }
 
       public void fillInto(JPanel layoutPanel, int columnCount) {
-        layoutPanel.add(new JLabel(labelText));
-        comboBox.setRenderer(renderer);
+        layoutPanel.add(label);
         layoutPanel.add(comboBox, GridDialogLayoutData.FILL_HORIZONTAL);
         layoutPanel.add(addButton);
       }
