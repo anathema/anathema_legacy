@@ -16,15 +16,24 @@ import javax.swing.ListCellRenderer;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.gui.dialogcomponent.grouped.IGridDialogPanelContent;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.widgets.ColoredJComboBox;
 
-public class ButtonControlledObjectSelectionView implements IObjectSelectionView {
+public class ButtonControlledObjectSelectionView implements IObjectSelectionView, IGridDialogPanelContent {
 
   private final JComboBox comboBox;
   private final JButton addButton;
+  private final String labelText;
+  private final ListCellRenderer renderer;
 
-  public ButtonControlledObjectSelectionView(ComboBoxEditor editor, Icon addIcon) {
+  public ButtonControlledObjectSelectionView(
+      ComboBoxEditor editor,
+      ListCellRenderer renderer,
+      Icon addIcon,
+      String labelText) {
+    this.renderer = renderer;
+    this.labelText = labelText;
     this.comboBox = new ColoredJComboBox(new DefaultComboBoxModel(new Object[0]));
     this.comboBox.setEditable(true);
     this.comboBox.setEditor(editor);
@@ -32,7 +41,7 @@ public class ButtonControlledObjectSelectionView implements IObjectSelectionView
     addButton.setPreferredSize(new Dimension(addIcon.getIconWidth() + 4, addIcon.getIconHeight() + 4));
   }
 
-  public void addTo(final String labelText, final ListCellRenderer renderer, IGridDialogPanel panel) {
+  public void addComponents(IGridDialogPanel panel) {
     panel.add(new IDialogComponent() {
       public int getColumnCount() {
         return 3;
