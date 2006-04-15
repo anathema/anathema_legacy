@@ -13,6 +13,7 @@ public class AllTests {
     suite.addTestSuite(HeadDataWriterTest.class);
     suite.addTestSuite(CharmTypeWriterTest.class);
     suite.addTestSuite(PrerequisiteWriterTest.class);
+    suite.addTestSuite(KeywordWriterTest.class);
     suite.addTestSuite(CostWriterTest.class);
     // $JUnit-END$
     return suite;

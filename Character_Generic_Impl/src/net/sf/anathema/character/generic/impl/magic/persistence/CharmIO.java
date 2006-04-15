@@ -6,8 +6,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.List;
 
 import net.sf.anathema.character.generic.magic.ICharmData;
+import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -43,12 +45,14 @@ public class CharmIO {
     return null;
   }
 
-  public void writeCharmInternal(ICharmData charmData) throws IOException, DocumentException {
+  public void writeCharmInternal(ICharmData charmData, List<ICharmAttribute> keywords)
+      throws IOException,
+      DocumentException {
     CharacterType type = charmData.getCharacterType();
     File file = new File("../Character_" + type.getId() + "/resources/data/Charms_" + type.getId() + ".xml"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$;
     Document document = new SAXReader().read(new FileInputStream(file));
     try {
-      new CharmWriter().writeCharm(charmData, document.getRootElement());
+      new CharmWriter().writeCharm(charmData, keywords, document.getRootElement());
     }
     catch (PersistenceException e) {
       throw new IOException(e.getMessage());
