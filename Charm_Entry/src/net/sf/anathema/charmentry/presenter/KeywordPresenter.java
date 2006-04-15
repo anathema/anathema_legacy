@@ -1,6 +1,9 @@
 package net.sf.anathema.charmentry.presenter;
 
+import javax.swing.DefaultListCellRenderer;
+
 import net.sf.anathema.charmentry.model.CharmEntryModel;
+import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.resources.IResources;
 
 public class KeywordPresenter {
@@ -16,8 +19,8 @@ public class KeywordPresenter {
   }
 
   public void initPresentation() {
-    view.addObjectSelectionView(null, null, null, null);
-
+    view.addObjectSelectionView(
+        new DefaultListCellRenderer(),
+        resources.getString("CharmEntry.Keyword"), new BasicUi(resources).getMediumAddIcon()); //$NON-NLS-1$
   }
-
 }

@@ -1,6 +1,5 @@
 package net.sf.anathema.charmentry.view;
 
-import javax.swing.ComboBoxEditor;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -8,6 +7,7 @@ import javax.swing.ListCellRenderer;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
+import net.sf.anathema.character.library.removableentry.view.RemovableStringView;
 import net.sf.anathema.charmentry.presenter.IKeywordView;
 import net.sf.anathema.framework.presenter.view.ButtonControlledObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
@@ -17,13 +17,10 @@ import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 public class KeywordView implements IKeywordView {
 
   private final JPanel dataPanel = new JPanel(new GridDialogLayout(5, false));
+  private final JPanel entryPanel = new JPanel(new GridDialogLayout(2, false));
 
-  public IObjectSelectionView addObjectSelectionView(
-      ComboBoxEditor editor,
-      ListCellRenderer renderer,
-      String label,
-      Icon icon) {
-    ButtonControlledObjectSelectionView view = new ButtonControlledObjectSelectionView(renderer, icon, label, editor);
+  public IObjectSelectionView addObjectSelectionView(ListCellRenderer renderer, String label, Icon icon) {
+    ButtonControlledObjectSelectionView view = new ButtonControlledObjectSelectionView(renderer, icon, label);
     IGridDialogPanel panel = new DefaultGridDialogPanel();
     view.addComponents(panel);
     dataPanel.add(panel.getContent());
@@ -31,23 +28,21 @@ public class KeywordView implements IKeywordView {
   }
 
   public IRemovableEntryView addEntryView(Icon removeIcon, String string) {
-    // TODO Auto-generated method stub
-    return null;
+    RemovableStringView view = new RemovableStringView(removeIcon, string);
+    view.addContent(entryPanel);
+    return view;
   }
 
   public void removeEntryView(IRemovableEntryView removableView) {
-    // TODO Auto-generated method stub
-
+    removableView.delete();
   }
 
   public JComponent getComponent() {
-    // TODO Auto-generated method stub
-    return null;
+    dataPanel.add(entryPanel);
+    return dataPanel;
   }
 
   public boolean needsScrollbar() {
-    // TODO Auto-generated method stub
     return false;
   }
-
 }
