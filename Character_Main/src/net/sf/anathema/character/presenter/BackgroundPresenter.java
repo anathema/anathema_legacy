@@ -87,7 +87,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
   public void init() {
     Icon addIcon = new BasicUi(resources).getMediumAddIcon();
     IObjectSelectionView view = configurationView.addBackgroundSelectionView(
-        resources.getString("BackgroundConfigurationView.SelectionCombo.Label"),
+        resources.getString("BackgroundConfigurationView.SelectionCombo.Label"), //$NON-NLS-1$
         new ProxyComboBoxEditor() {
           @Override
           public void setItem(Object anObject) {
