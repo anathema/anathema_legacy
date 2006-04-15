@@ -5,7 +5,6 @@ import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.impl.magic.test.DummyMartialArtsCharm;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
@@ -28,12 +27,6 @@ public class CharmEntryModelTest extends BasicTestCase {
   protected void setUp() throws Exception {
     super.setUp();
     model = new CharmEntryModel();
-  }
-
-  public void testGetCharm() throws Exception {
-    ICharmData newCharm = model.createNewCharm();
-    ICharmData charm = model.getCharmData();
-    assertEquals(newCharm, charm);
   }
 
   public void testSetCharmName() throws Exception {

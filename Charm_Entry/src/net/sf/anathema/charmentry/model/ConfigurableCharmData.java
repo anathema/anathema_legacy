@@ -1,14 +1,18 @@
 package net.sf.anathema.charmentry.model;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.Duration;
+import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
@@ -18,6 +22,7 @@ import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
+import net.sf.anathema.lib.util.IIdentificate;
 
 public class ConfigurableCharmData implements IConfigurableCharmData {
 
@@ -35,6 +40,7 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
   private IConfigurableMagicSource source = new ConfigurableMagicSource();
   private ITraitType primaryType;
   private ExaltedEdition edition;
+  private final List<ICharmAttribute> keywords = new ArrayList<ICharmAttribute>();
 
   public void setCharacterType(CharacterType type) {
     this.characterType = type;
@@ -174,5 +180,9 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
 
   public ExaltedEdition getEdition() {
     return edition;
+  }
+
+  public void addKeyword(IIdentificate newValue) {
+    keywords.add(new CharmAttribute(newValue.getId(), true));
   }
 }

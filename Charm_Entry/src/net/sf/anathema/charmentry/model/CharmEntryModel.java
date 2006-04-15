@@ -8,7 +8,6 @@ import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
@@ -39,16 +38,13 @@ public class CharmEntryModel {
   private final ObjectValueControl<String> groupControl = new ObjectValueControl<String>();
   private final BooleanValueControl completionControl = new BooleanValueControl();
   private final PrimaryPrerequisiteLegalityChecker checker = new PrimaryPrerequisiteLegalityChecker();
+  private IKeywordEntryModel keywordModel = new KeywordEntryModel();
 
   private CharacterType[] createLegalCharacterTypeArray() {
     List<CharacterType> legalTypes = new ArrayList<CharacterType>();
     Collections.addAll(legalTypes, CharacterType.getAllExaltTypes());
     legalTypes.remove(CharacterType.SIDEREAL);
     return legalTypes.toArray(new CharacterType[legalTypes.size()]);
-  }
-
-  public ICharmData createNewCharm() {
-    return charmData;
   }
 
   public IConfigurableCharmData getCharmData() {
@@ -88,6 +84,7 @@ public class CharmEntryModel {
 
   public void clearCharmData() {
     charmData = new ConfigurableCharmData();
+    keywordModel.clear();
     // TODO!
   }
 
@@ -277,5 +274,9 @@ public class CharmEntryModel {
 
   public void setEdition(ExaltedEdition edition) {
     charmData.setEdition(edition);
+  }
+
+  public IKeywordEntryModel getKeywordModel() {
+    return keywordModel;
   }
 }

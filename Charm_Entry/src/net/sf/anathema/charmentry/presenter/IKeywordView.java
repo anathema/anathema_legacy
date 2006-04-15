@@ -5,10 +5,9 @@ import javax.swing.ListCellRenderer;
 
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryTabView;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
-import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
+import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 
 public interface IKeywordView extends IRemovableEntryTabView<IRemovableEntryView> {
 
-  public IObjectSelectionView addObjectSelectionView(ListCellRenderer renderer, String label, Icon icon);
-
+  public IButtonControlledObjectSelectionView addObjectSelectionView(ListCellRenderer renderer, String label, Icon icon);
 }
