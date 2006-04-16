@@ -1,7 +1,6 @@
 package net.sf.anathema.campaign.reporting;
 
 import net.sf.anathema.framework.reporting.IReportRegistry;
-import net.sf.anathema.framework.reporting.itext.NoteReport;
 
 public class CampaignReportingInitializer {
 
