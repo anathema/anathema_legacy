@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IMartialArtsCharm;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
@@ -38,7 +37,7 @@ public class CharmTemplate implements ICharmTemplate {
     return charmSet.getCharms(rules);
   }
 
-  public final IMartialArtsCharm[] getMartialArtsCharms(IExaltedRuleSet rules) {
+  public final ICharm[] getMartialArtsCharms(IExaltedRuleSet rules) {
     return charmSet.getMartialArtsCharms(rules);
   }
 
@@ -52,7 +51,7 @@ public class CharmTemplate implements ICharmTemplate {
   }
 
   public boolean isMartialArtsCharmAllowed(
-      IMartialArtsCharm martialArtsCharm,
+      ICharm martialArtsCharm,
       IGenericCharmConfiguration charmConfiguration,
       boolean isExperienced) {
     int comparedLevel = MartialArtsUtilities.getLevel(martialArtsCharm).compareTo(getMartialArtsLevel());

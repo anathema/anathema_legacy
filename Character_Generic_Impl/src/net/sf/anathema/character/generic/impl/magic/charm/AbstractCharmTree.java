@@ -8,7 +8,6 @@ import java.util.Set;
 
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IMartialArtsCharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 
@@ -27,14 +26,14 @@ public abstract class AbstractCharmTree<C extends ICharm> implements ICharmTree<
       }
     }
   }
-  
+
   public final ICharmGroup[] getAllCharmGroups() {
     Set<String> charmGroupSet = new HashSet<String>();
     List<ICharmGroup> charmGroups = new ArrayList<ICharmGroup>();
     addCharmGroupsFor(charmGroupSet, charmGroups, getAllCharms());
     return charmGroups.toArray(new ICharmGroup[charmGroups.size()]);
   }
-  
+
   public final List<C> getAllCharmsForGroup(String id) {
     List<C> groupCharms = new ArrayList<C>();
     for (C charm : getAllCharms()) {

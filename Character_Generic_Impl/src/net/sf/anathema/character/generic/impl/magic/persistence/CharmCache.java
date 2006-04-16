@@ -6,10 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.sf.anathema.character.generic.impl.magic.Charm;
-import net.sf.anathema.character.generic.impl.magic.MartialArtsCharm;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
-import net.sf.anathema.character.generic.magic.IMartialArtsCharm;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -27,8 +25,8 @@ public class CharmCache implements ICharmCache {
   private static CharmCache instance = new CharmCache();
   private final MultiEntryMap<CharacterType, ICharm> charmsByType = new MultiEntryMap<CharacterType, ICharm>();
   private final MultiEntryMap<CharacterType, ICharm> powerCombatCharmsByType = new MultiEntryMap<CharacterType, ICharm>();
-  private final List<IMartialArtsCharm> martialArtsCharms = new ArrayList<IMartialArtsCharm>();
-  private List<IMartialArtsCharm> powerCombatMartialArtsCharms = new ArrayList<IMartialArtsCharm>();
+  private final List<ICharm> martialArtsCharms = new ArrayList<ICharm>();
+  private List<ICharm> powerCombatMartialArtsCharms = new ArrayList<ICharm>();
   private final CharmIO charmIo = new CharmIO();
   private final CharmBuilder builder = new CharmBuilder();
 
@@ -87,8 +85,8 @@ public class CharmCache implements ICharmCache {
     }
   }
 
-  public IMartialArtsCharm[] getMartialArtsCharms(boolean powerCombat) throws PersistenceException {
-    List<IMartialArtsCharm> charmList = getMartialArtsList(powerCombat);
+  public ICharm[] getMartialArtsCharms(boolean powerCombat) throws PersistenceException {
+    List<ICharm> charmList = getMartialArtsList(powerCombat);
     if (charmList.isEmpty()) {
       try {
         Document charmDocument = charmIo.readCharms(new Identificate("MartialArts")); //$NON-NLS-1$
@@ -98,10 +96,10 @@ public class CharmCache implements ICharmCache {
         throw new CharmException(e);
       }
     }
-    return charmList.toArray(new MartialArtsCharm[charmList.size()]);
+    return charmList.toArray(new ICharm[charmList.size()]);
   }
 
-  private List<IMartialArtsCharm> getMartialArtsList(boolean powerCombat) {
+  private List<ICharm> getMartialArtsList(boolean powerCombat) {
     if (powerCombat) {
       return powerCombatMartialArtsCharms;
     }

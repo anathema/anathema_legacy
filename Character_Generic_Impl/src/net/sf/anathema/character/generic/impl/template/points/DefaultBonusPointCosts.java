@@ -1,8 +1,8 @@
 package net.sf.anathema.character.generic.impl.template.points;
 
-import net.sf.anathema.character.generic.magic.CharmSpellVisitorAdapter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
+import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
@@ -65,10 +65,9 @@ public class DefaultBonusPointCosts implements IBonusPointCosts {
     return 7;
   }
 
-  // todo vom (31.10.2005) (sieroux): Trennung von MA und regular Charms über Visitor
   public int getMagicCosts(IMagic magic, final ICostAnalyzer analyzer) {
     final int[] cost = new int[1];
-    magic.accept(new CharmSpellVisitorAdapter() {
+    magic.accept(new IMagicVisitor() {
       public void visitCharm(ICharm charm) {
         cost[0] = getCharmCosts(charm, analyzer);
       }
