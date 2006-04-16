@@ -5,14 +5,13 @@ import java.awt.Color;
 import net.disy.commons.core.text.font.FontStyle;
 import net.sf.anathema.framework.styledtext.model.ITextFormat;
 
-import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.FontFactory;
 import com.lowagie.text.Paragraph;
 
 public class ITextReportUtils {
 
-  public Element createNewParagraph(String text, int alignment, int style) {
+  public Paragraph createNewParagraph(String text, int alignment, int style) {
     Font font = createDefaultFont(10, style);
     Paragraph paragraph = new Paragraph(text, font);
     paragraph.setAlignment(alignment);
