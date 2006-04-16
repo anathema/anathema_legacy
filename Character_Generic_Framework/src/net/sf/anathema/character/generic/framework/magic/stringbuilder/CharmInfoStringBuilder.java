@@ -3,7 +3,6 @@ package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IMartialArtsCharm;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.lib.resources.IResources;
@@ -40,7 +39,7 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
     builder.append(resources.getString(charm.getCharmType().getId()));
     builder.append(HtmlLineBreak);
     if (MartialArtsUtilities.isMartialArtsCharm(charm)) {
-      builder.append(createMartialArtsLevelLine((IMartialArtsCharm) charm));
+      builder.append(createMartialArtsLevelLine(charm));
     }
     builder.append(createPrerequisiteLines(charm.getPrerequisites()));
     builder.append(createPrerequisiteLines(new IGenericTrait[] { charm.getEssence() }));
@@ -50,7 +49,7 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
 
   }
 
-  private String createMartialArtsLevelLine(IMartialArtsCharm charm) {
+  private String createMartialArtsLevelLine(ICharm charm) {
     MartialArtsLevel level = MartialArtsUtilities.getLevel(charm);
     String levelString = resources.getString("CharmTreeView.ToolTip.MartialArtsLevel") + IMagicStringBuilderConstants.ColonSpace; //$NON-NLS-1$
     levelString = levelString.concat(resources.getString(level.getId()));

@@ -9,9 +9,9 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.CostStrin
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.HealthCostStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicInfoStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.MagicInfoStringBuilder;
-import net.sf.anathema.character.generic.magic.CharmSpellVisitorAdapter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
+import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.general.IMagicSource;
 import net.sf.anathema.framework.reporting.IReportDataSource;
@@ -85,7 +85,7 @@ public class CharmDataSource implements IReportDataSource {
     }
     if (COLUMN_DURATION.equals(columnName)) {
       final String[] duration = new String[1];
-      magic.accept(new CharmSpellVisitorAdapter() {
+      magic.accept(new IMagicVisitor() {
         public void visitCharm(ICharm charm) {
           duration[0] = charm.getDuration().getText(resources);
         }
@@ -98,7 +98,7 @@ public class CharmDataSource implements IReportDataSource {
     }
     if (COLUMN_TYPE.equals(columnName)) {
       final String[] type = new String[1];
-      magic.accept(new CharmSpellVisitorAdapter() {
+      magic.accept(new IMagicVisitor() {
         public void visitCharm(ICharm charm) {
           type[0] = charm.getCharmType().getId();
         }

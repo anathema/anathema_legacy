@@ -8,11 +8,11 @@ import net.sf.anathema.character.generic.framework.magic.CharmGraphNodeProvider;
 import net.sf.anathema.character.generic.framework.magic.treelayout.layering.TopologyBuilder;
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IRegularNode;
+import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
-import net.sf.anathema.character.generic.magic.IMartialArtsCharm;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -34,11 +34,12 @@ public class MagicComparator implements Comparator<IMagic> {
       }
 
       public void visitCharm(ICharm charm) {
-        compareValue[0] = compareToRegularCharm(charm, magic2);
-      }
-
-      public void visitMartialArtsCharm(IMartialArtsCharm charm) {
-        compareValue[0] = compareToMartialArtsCharm(charm, magic2);
+        if (MartialArtsUtilities.isMartialArtsCharm(charm)) {
+          compareValue[0] = compareToMartialArtsCharm(charm, magic2);
+        }
+        else {
+          compareValue[0] = compareToRegularCharm(charm, magic2);
+        }
       }
     });
     return compareValue[0];
@@ -55,11 +56,12 @@ public class MagicComparator implements Comparator<IMagic> {
       }
 
       public void visitCharm(ICharm charm) {
-        compareValue[0] = 2;
-      }
-
-      public void visitMartialArtsCharm(IMartialArtsCharm charm) {
-        compareValue[0] = 1;
+        if (MartialArtsUtilities.isMartialArtsCharm(charm)) {
+          compareValue[0] = 1;
+        }
+        else {
+          compareValue[0] = 2;
+        }
       }
     });
     return compareValue[0];
@@ -68,37 +70,38 @@ public class MagicComparator implements Comparator<IMagic> {
   private int compareToRegularCharm(final ICharm charm, IMagic magic2) {
     final int[] compareValue = new int[1];
     magic2.accept(new IMagicVisitor() {
-      public void visitMartialArtsCharm(IMartialArtsCharm otherCharm) {
-        compareValue[0] = -1;
-      }
-
       public void visitSpell(ISpell spell) {
         compareValue[0] = -2;
       }
 
       public void visitCharm(ICharm otherCharm) {
-        CharacterType charmCharacterType = charm.getCharacterType();
-        CharacterType otherCharacterType = otherCharm.getCharacterType();
-        if (charmCharacterType != otherCharacterType) {
-          if (charmCharacterType == characterType) {
-            compareValue[0] = -1;
-          }
-          else if (otherCharacterType == characterType) {
-            compareValue[0] = 1;
-          }
-          else {
-            compareValue[0] = charmCharacterType.compareTo(otherCharacterType);
-          }
+        if (MartialArtsUtilities.isMartialArtsCharm(otherCharm)) {
+          compareValue[0] = -1;
         }
         else {
-          ICharm[] charms;
-          // todo vom (31.10.2005) (sieroux): ErrorHandling
-          try {
-            charms = CharmCache.getInstance().getCharms(otherCharacterType, false);
-            compareValue[0] = sortEqualTypeCharms(charm, otherCharm, charms);
+          CharacterType charmCharacterType = charm.getCharacterType();
+          CharacterType otherCharacterType = otherCharm.getCharacterType();
+          if (charmCharacterType != otherCharacterType) {
+            if (charmCharacterType == characterType) {
+              compareValue[0] = -1;
+            }
+            else if (otherCharacterType == characterType) {
+              compareValue[0] = 1;
+            }
+            else {
+              compareValue[0] = charmCharacterType.compareTo(otherCharacterType);
+            }
           }
-          catch (PersistenceException e) {
-            e.printStackTrace();
+          else {
+            ICharm[] charms;
+            // todo vom (31.10.2005) (sieroux): ErrorHandling
+            try {
+              charms = CharmCache.getInstance().getCharms(otherCharacterType, false);
+              compareValue[0] = sortEqualTypeCharms(charm, otherCharm, charms);
+            }
+            catch (PersistenceException e) {
+              e.printStackTrace();
+            }
           }
         }
       }
@@ -134,34 +137,37 @@ public class MagicComparator implements Comparator<IMagic> {
     return charmOrder.get(charm.getId()) - charmOrder.get(otherCharm.getId());
   }
 
-  private int compareToMartialArtsCharm(final IMartialArtsCharm charm, IMagic magic2) {
+  private int compareToMartialArtsCharm(final ICharm charm, IMagic magic2) {
     final int[] compareValue = new int[1];
     magic2.accept(new IMagicVisitor() {
       public void visitCharm(ICharm otherCharm) {
-        if (otherCharm.getCharacterType() == characterType) {
-          compareValue[0] = 1;
+        if (MartialArtsUtilities.isMartialArtsCharm(otherCharm)) {
+          try {
+            handleMartialArtsCharm(charm, otherCharm);
+          }
+          catch (PersistenceException e) {
+            e.printStackTrace();
+          }
         }
         else {
-          compareValue[0] = -1;
+          if (otherCharm.getCharacterType() == characterType) {
+            compareValue[0] = 1;
+          }
+          else {
+            compareValue[0] = -1;
+          }
         }
       }
 
       public void visitSpell(ISpell spell) {
         compareValue[0] = -1;
       }
-
-      public void visitMartialArtsCharm(IMartialArtsCharm otherCharm) {
-        IMartialArtsCharm[] martialArtsCharms;
-        // todo vom (31.10.2005) (sieroux): ErrorHandling
-        try {
-          martialArtsCharms = CharmCache.getInstance().getMartialArtsCharms(false);
-          compareValue[0] = sortEqualTypeCharms(charm, otherCharm, martialArtsCharms);
-        }
-        catch (PersistenceException e) {
-          e.printStackTrace();
-        }
-      }
     });
     return compareValue[0];
+  }
+
+  private int handleMartialArtsCharm(ICharm charm, ICharm otherCharm) throws PersistenceException {
+    ICharm[] martialArtsCharms = CharmCache.getInstance().getMartialArtsCharms(false);
+    return sortEqualTypeCharms(charm, otherCharm, martialArtsCharms);
   }
 }
