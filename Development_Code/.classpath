@@ -28,7 +28,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Sidereal"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Library"/>
 	<classpathentry sourcepath="/Thirdparty/Commons/commons-logging-api.src.zip" kind="lib" path="/Thirdparty/Commons/commons-logging-api.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/Reporting/itext-1.01.jar"/>
 	<classpathentry sourcepath="JDEMO_HOME/jdemo_src.zip" kind="var" path="JDEMO_HOME/jdemo_core.jar"/>
 	<classpathentry kind="src" path="/Charm_Entry"/>
 	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-awt-util.jar"/>
@@ -47,5 +46,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Lunar"/>
 	<classpathentry kind="src" path="/Character_Main_Impl"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/commons-collections-3.1.jar"/>
+	<classpathentry sourcepath="/Thirdparty/Reporting/itext-src-1.4.zip" kind="lib" path="/Thirdparty/Reporting/itext-1.4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
