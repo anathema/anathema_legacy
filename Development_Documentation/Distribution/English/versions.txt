@@ -3,6 +3,17 @@ Anathema Version History
 Exalted (C) 2001-2006 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
+
+===------------------------------------------------------------------------------===
+			Release 0.11 "Kether Rock" (Upcoming)
+===------------------------------------------------------------------------------===
+-- Features --
++ Notes are (finally) printable.
+
+-- Miscellaneous --
+* Fixed an error in the Linux launcher.
+
+
 ===------------------------------------------------------------------------------===
 			Release 0.10 Patch 1 (26/03/06)
 ===------------------------------------------------------------------------------===
