@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.reporting;
 
 import net.sf.anathema.character.generic.framework.reporting.template.ICharacterReportTemplate;
-import net.sf.anathema.framework.reporting.IReport;
+import net.sf.anathema.framework.reporting.IJasperReport;
 import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.lib.registry.ICollectionRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -18,7 +18,7 @@ public class CharacterReportingInitializer {
     }
   }
 
-  private IReport createCharacterReport(String printName, ICharacterReportTemplate template) {
+  private IJasperReport createCharacterReport(String printName, ICharacterReportTemplate template) {
     return new CharacterReport(printName, template);
   }
 }
