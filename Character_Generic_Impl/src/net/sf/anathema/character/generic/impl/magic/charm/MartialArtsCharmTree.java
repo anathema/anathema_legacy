@@ -1,8 +1,5 @@
 package net.sf.anathema.character.generic.impl.magic.charm;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
@@ -10,10 +7,8 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 
-public class MartialArtsCharmTree extends AbstractCharmTree<ICharm> {
+public class MartialArtsCharmTree extends AbstractCharmTree {
 
-  private final ICharm[] martialArtsCharms;
-  private final Map<String, ICharm> martialArtsById = new HashMap<String, ICharm>();
   private final MartialArtsLevel standardLevel;
 
   public MartialArtsCharmTree(ICharmTemplate charmTemplate, IExaltedRuleSet rules) {
@@ -21,19 +16,8 @@ public class MartialArtsCharmTree extends AbstractCharmTree<ICharm> {
   }
 
   public MartialArtsCharmTree(ICharm[] martialArtsCharms, MartialArtsLevel standardLevel) {
-    this.martialArtsCharms = martialArtsCharms;
+    super(martialArtsCharms);
     this.standardLevel = standardLevel;
-    for (ICharm charm : martialArtsCharms) {
-      martialArtsById.put(charm.getId(), charm);
-    }
-  }
-
-  public ICharm[] getAllCharms() {
-    return martialArtsCharms;
-  }
-
-  public ICharm getCharmByID(String id) {
-    return martialArtsById.get(id);
   }
 
   @Override
