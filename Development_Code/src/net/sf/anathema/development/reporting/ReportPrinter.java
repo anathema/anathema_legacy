@@ -16,7 +16,7 @@ import net.sf.anathema.framework.resources.AnathemaResources;
 
 public class ReportPrinter {
 
-  private AnathemaReportPrinter reportCompiler = new AnathemaReportPrinter();
+  private AnathemaReportPrinter printer = new AnathemaReportPrinter();
 
   protected void compileReport(IGenerationData generationData) throws Exception {
     IItem item = generationData.createFilledCharacter();
@@ -26,7 +26,7 @@ public class ReportPrinter {
     OutputStream outputStream = null;
     try {
       outputStream = new FileOutputStream(file);
-      reportCompiler.compileReport(item, report, outputStream);
+      printer.printReport(item, report, outputStream);
     }
     catch (Exception e) {
       e.printStackTrace();
