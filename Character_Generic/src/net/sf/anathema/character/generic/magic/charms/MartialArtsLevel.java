@@ -8,9 +8,4 @@ public enum MartialArtsLevel implements IIdentificate {
   public String getId() {
     return name();
   }
-
-  @Override
-  public String toString() {
-    return getId();
-  }
 }
