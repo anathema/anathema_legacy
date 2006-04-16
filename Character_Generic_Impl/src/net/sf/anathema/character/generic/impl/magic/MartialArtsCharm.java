@@ -5,13 +5,11 @@ import net.sf.anathema.character.generic.magic.IMartialArtsCharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.general.IMagicSource;
-import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
 public class MartialArtsCharm extends Charm implements IMartialArtsCharm {
 
-  public static final IIdentificate FORM_ATTRIBUTE = new Identificate("Form"); //$NON-NLS-1$
   public static final String ALLOWS_CELESTIAL_ATTRIBUTE = "AllowsCelestial"; //$NON-NLS-1$
   public static final IIdentificate UNRESTRICTED_ATTRIBUTE = new Identificate("Unrestricted"); //$NON-NLS-1$
   public static final IIdentificate NO_STYLE_ATTRIBUTE = new Identificate("NoStyle"); //$NON-NLS-1$
@@ -37,10 +35,6 @@ public class MartialArtsCharm extends Charm implements IMartialArtsCharm {
 
   public MartialArtsLevel getLevel() {
     return level;
-  }
-
-  public boolean isFormCharm() {
-    return ArrayUtilities.contains(getAttributes(), FORM_ATTRIBUTE);
   }
 
   @Override

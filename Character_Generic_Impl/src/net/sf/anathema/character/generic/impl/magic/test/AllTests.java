@@ -8,6 +8,7 @@ public class AllTests {
   public static Test suite() {
     TestSuite suite = new TestSuite("Test for net.sf.anathema.character.generic.impl.magic.test"); //$NON-NLS-1$
     //$JUnit-BEGIN$
+    suite.addTestSuite(MartialArtsUtilitiesTest.class);
     suite.addTestSuite(CharmTest.class);
     //$JUnit-END$
     return suite;
