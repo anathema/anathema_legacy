@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.testing.BasicTestCase;
+import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 
 import org.dom4j.Element;
@@ -67,7 +68,13 @@ public class MagicTemplateParserTest extends BasicTestCase {
         + "</magicTemplate>"; //$NON-NLS-1$
     Element templateElement = DocumentUtilities.read(celestialXml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    assertFalse(template.getCharmTemplate().isMartialArtsCharmAllowed(new DummyMartialArtsCharm("Dummy"), null, false)); //$NON-NLS-1$
+    DummyMartialArtsCharm dummyMartialArtsCharm = new DummyMartialArtsCharm("Dummy") { //$NON-NLS-1$
+      @Override
+      public boolean hasAttribute(IIdentificate attribute) {
+        return attribute.getId().equals("MartialArts") || attribute.getId().equals("Celestial"); //$NON-NLS-1$ //$NON-NLS-2$
+      }
+    };
+    assertFalse(template.getCharmTemplate().isMartialArtsCharmAllowed(dummyMartialArtsCharm, null, false));
   }
 
   public void testHighLevelSettingModified() throws Exception {
@@ -76,7 +83,13 @@ public class MagicTemplateParserTest extends BasicTestCase {
         + "</magicTemplate>"; //$NON-NLS-1$
     Element templateElement = DocumentUtilities.read(celestialXml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    assertTrue(template.getCharmTemplate().isMartialArtsCharmAllowed(new DummyMartialArtsCharm("Dummy"), null, false)); //$NON-NLS-1$
+    DummyMartialArtsCharm dummyMartialArtsCharm = new DummyMartialArtsCharm("Dummy") { //$NON-NLS-1$
+      @Override
+      public boolean hasAttribute(IIdentificate attribute) {
+        return attribute.getId().equals("MartialArts") || attribute.getId().equals("Celestial"); //$NON-NLS-1$ //$NON-NLS-2$
+      }
+    };
+    assertTrue(template.getCharmTemplate().isMartialArtsCharmAllowed(dummyMartialArtsCharm, null, false));
   }
 
   public void testFavoringTraitTypeUnmodified() throws Exception {
