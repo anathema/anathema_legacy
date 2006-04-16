@@ -31,15 +31,25 @@
     </Part>
     <Part>
       <Format isUnderline="false" fontStyle="Plain"/>
-      <Text><![CDATA[Except for ]]></Text>
-    </Part>
-    <Part>
-      <Format isUnderline="true" fontStyle="Plain"/>
-      <Text><![CDATA[linebreaks]]></Text>
+      <Text><![CDATA[Except
+]]></Text>
     </Part>
     <Part>
       <Format isUnderline="false" fontStyle="Plain"/>
-      <Text><![CDATA[.
+      <Text><![CDATA[    for
+]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[       ]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="true" fontStyle="Plain"/>
+      <Text><![CDATA[linebreaks?]]></Text>
+    </Part>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[
 ]]></Text>
     </Part>
     <Part>
