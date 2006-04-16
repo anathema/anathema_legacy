@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.framework.reporting.template.ICharacter
 import net.sf.anathema.character.generic.framework.reporting.template.voidstate.ExaltVoidstateReportTemplate;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.reporting.CharacterReport;
-import net.sf.anathema.framework.reporting.IReport;
+import net.sf.anathema.framework.reporting.IJasperReport;
 import net.sf.anathema.lib.resources.IResources;
 
 public class VoidStateSiderealGenerationData extends AbstractSiderealGenerationData {
@@ -17,7 +17,7 @@ public class VoidStateSiderealGenerationData extends AbstractSiderealGenerationD
     this.resources = resources;
   }
 
-  public IReport createReport() {
+  public IJasperReport createReport() {
     ICharacterReportTemplate template = new ExaltVoidstateReportTemplate(CharacterType.SIDEREAL, resources);
     return new CharacterReport("Voidstate Sidereal Character Sheet", template );
   }

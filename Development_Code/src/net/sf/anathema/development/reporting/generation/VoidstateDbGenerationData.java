@@ -13,7 +13,7 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.impl.reporting.CharacterReport;
 import net.sf.anathema.character.model.ICharacterStatistics;
-import net.sf.anathema.framework.reporting.IReport;
+import net.sf.anathema.framework.reporting.IJasperReport;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -49,7 +49,7 @@ public class VoidstateDbGenerationData extends AbstractGenerationData implements
     return emptyCharacter;
   }
 
-  public IReport createReport() {
+  public IJasperReport createReport() {
     ICharacterReportTemplate template = new ExaltVoidstateReportTemplate(CharacterType.DB, resources);
     return new CharacterReport("Voidstate Db Character Sheet", template);
   }

@@ -17,7 +17,7 @@ import net.sf.anathema.character.impl.reporting.CharacterReport;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
-import net.sf.anathema.framework.reporting.IReport;
+import net.sf.anathema.framework.reporting.IJasperReport;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -53,7 +53,7 @@ public class VoidStateAbyssalGenerationData extends AbstractGenerationData {
     return emptyCharacter;
   }
 
-  public IReport createReport() {
+  public IJasperReport createReport() {
     ICharacterReportTemplate template = new ExaltVoidstateReportTemplate(
         CharacterType.ABYSSAL,
         resources,

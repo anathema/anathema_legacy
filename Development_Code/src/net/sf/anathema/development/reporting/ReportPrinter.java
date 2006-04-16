@@ -10,7 +10,7 @@ import net.sf.anathema.development.reporting.generation.IGenerationData;
 import net.sf.anathema.development.reporting.generation.VoidStateSiderealGenerationData;
 import net.sf.anathema.development.reporting.generation.VoidstateLunarGenerationData;
 import net.sf.anathema.framework.reporting.AnathemaReportPrinter;
-import net.sf.anathema.framework.reporting.IReport;
+import net.sf.anathema.framework.reporting.IJasperReport;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.resources.AnathemaResources;
 
@@ -20,7 +20,7 @@ public class ReportPrinter {
 
   protected void compileReport(IGenerationData generationData) throws Exception {
     IItem item = generationData.createFilledCharacter();
-    IReport report = generationData.createReport();
+    IJasperReport report = generationData.createReport();
     File file = generationData.createFile();
     System.err.println("Started Character: " + file.getName()); //$NON-NLS-1$
     OutputStream outputStream = null;

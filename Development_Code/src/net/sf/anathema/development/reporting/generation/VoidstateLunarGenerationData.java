@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.impl.reporting.CharacterReport;
 import net.sf.anathema.character.lunar.reporting.LunarVoidstateReportTemplate;
-import net.sf.anathema.framework.reporting.IReport;
+import net.sf.anathema.framework.reporting.IJasperReport;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -29,7 +29,7 @@ public class VoidstateLunarGenerationData extends AbstractGenerationData {
     return createItem(emptyCharacter);
   }
 
-  public IReport createReport() {
+  public IJasperReport createReport() {
     ICharacterReportTemplate template = new LunarVoidstateReportTemplate(resources);
     return new CharacterReport("Voidstate Lunar Character Sheet", template);
   }
