@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 
-public class MartialArtsCharmTree extends AbstractCharmTree {
+public class MartialArtsCharmTree extends CharmTree {
 
   private final MartialArtsLevel standardLevel;
 

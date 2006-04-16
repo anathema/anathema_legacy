@@ -15,16 +15,16 @@ import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 
-public abstract class AbstractCharmTree implements ICharmTree<ICharm> {
+public class CharmTree implements ICharmTree {
 
   private final Map<String, ICharm> charmById = new HashMap<String, ICharm>();
   private ICharm[] allCharms;
 
-  public AbstractCharmTree(ICharmTemplate charmTemplate, IExaltedRuleSet rules) {
+  public CharmTree(ICharmTemplate charmTemplate, IExaltedRuleSet rules) {
     this(charmTemplate.getCharms(rules));
   }
 
-  public AbstractCharmTree(ICharm[] charms) {
+  public CharmTree(ICharm[] charms) {
     this.allCharms = charms;
     for (ICharm charm : allCharms) {
       charmById.put(charm.getId(), charm);
