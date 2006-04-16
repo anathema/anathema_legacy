@@ -5,7 +5,7 @@ import java.util.Map;
 
 import net.sf.anathema.framework.repository.IItem;
 
-public interface IJasperReport extends IAnathemaReport {
+public interface IJasperReport extends IReport {
 
   public IReportDataSource getDataSource(IItem item);
 
