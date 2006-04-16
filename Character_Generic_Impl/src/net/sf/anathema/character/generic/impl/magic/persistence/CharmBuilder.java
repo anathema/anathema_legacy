@@ -333,15 +333,10 @@ public class CharmBuilder {
       Element charmElement = (Element) charmElementObject;
       Charm temporaryCharm = buildCharm(charmElement, powerCombat);
       String martialArtsLevel = charmElement.element(TAG_MARTIAL_ARTS_LEVEL).attributeValue(ATTRIB_LEVEL);
-      MartialArtsLevel[] allMartialArtsLevels = MartialArtsLevel.values();
-      for (MartialArtsLevel level : allMartialArtsLevels) {
-        if (martialArtsLevel.equals(level.getId())) {
-          MartialArtsCharm charm = new MartialArtsCharm(temporaryCharm, level);
-          allMartialArtsCharms.add(charm);
-          charmsById.put(charm.getId(), charm);
-          break;
-        }
-      }
+      MartialArtsLevel level = MartialArtsLevel.valueOf(martialArtsLevel);
+      MartialArtsCharm charm = new MartialArtsCharm(temporaryCharm, level);
+      allMartialArtsCharms.add(charm);
+      charmsById.put(charm.getId(), charm);
     }
     extractParents(charmsById, allMartialArtsCharms);
     return allMartialArtsCharms.toArray(new MartialArtsCharm[0]);
