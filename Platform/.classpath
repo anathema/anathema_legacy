@@ -19,5 +19,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
 	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/Testing/disy-commons-testing.jar"/>
+	<classpathentry sourcepath="/Thirdparty/Reporting/itext-src-1.4.zip" kind="lib" path="/Thirdparty/Reporting/itext-1.4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

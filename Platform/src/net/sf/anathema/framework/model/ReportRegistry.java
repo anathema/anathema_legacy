@@ -5,7 +5,6 @@ import java.util.List;
 
 import net.sf.anathema.framework.reporting.IReport;
 import net.sf.anathema.framework.reporting.IReportRegistry;
-import net.sf.anathema.framework.reporting.jasper.IJasperReport;
 import net.sf.anathema.framework.repository.IItem;
 
 public class ReportRegistry implements IReportRegistry {
@@ -20,14 +19,13 @@ public class ReportRegistry implements IReportRegistry {
     reports.add(report);
   }
 
-  public IJasperReport[] getReports(IItem item) {
+  public IReport[] getReports(IItem item) {
     List<IReport> supportedReports = new ArrayList<IReport>();
     for (IReport report : reports) {
       if (report.supports(item)) {
         supportedReports.add(report);
       }
     }
-    return supportedReports.toArray(new IJasperReport[supportedReports.size()]);
+    return supportedReports.toArray(new IReport[supportedReports.size()]);
   }
-
 }

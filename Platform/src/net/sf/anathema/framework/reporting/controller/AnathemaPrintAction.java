@@ -27,6 +27,8 @@ import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
 import net.sf.anathema.framework.reporting.IReport;
 import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.reporting.ReportException;
+import net.sf.anathema.framework.reporting.itext.IITextReport;
+import net.sf.anathema.framework.reporting.itext.ITextReportPrinter;
 import net.sf.anathema.framework.reporting.jasper.IJasperReport;
 import net.sf.anathema.framework.reporting.jasper.JasperReportPrinter;
 import net.sf.anathema.framework.repository.AbstractObjectSelectionProperties;
@@ -57,7 +59,8 @@ public class AnathemaPrintAction extends SmartAction {
     }
   }
 
-  private final JasperReportPrinter printer = new JasperReportPrinter();
+  private final JasperReportPrinter jasperPrinter = new JasperReportPrinter();
+  private final ITextReportPrinter itextPrinter = new ITextReportPrinter();
   private final IAnathemaModel anathemaModel;
   private final IResources resources;
 
@@ -145,7 +148,10 @@ public class AnathemaPrintAction extends SmartAction {
     try {
       stream = new FileOutputStream(selectedFile);
       if (selectedReport instanceof IJasperReport) {
-        printer.printReport(item, (IJasperReport) selectedReport, stream);
+        jasperPrinter.printReport(item, (IJasperReport) selectedReport, stream);
+      }
+      if (selectedReport instanceof IITextReport) {
+        itextPrinter.printReport(item, (IITextReport) selectedReport, stream);
       }
     }
     finally {
