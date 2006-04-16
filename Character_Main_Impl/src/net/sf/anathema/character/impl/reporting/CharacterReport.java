@@ -10,9 +10,9 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.generic.GenericCharacter;
 import net.sf.anathema.character.model.generic.GenericDescription;
 import net.sf.anathema.framework.itemdata.IItemData;
-import net.sf.anathema.framework.reporting.IJasperReport;
 import net.sf.anathema.framework.reporting.IReportDataSource;
 import net.sf.anathema.framework.reporting.ReportException;
+import net.sf.anathema.framework.reporting.jasper.IJasperReport;
 import net.sf.anathema.framework.repository.IItem;
 
 public final class CharacterReport implements IJasperReport {
