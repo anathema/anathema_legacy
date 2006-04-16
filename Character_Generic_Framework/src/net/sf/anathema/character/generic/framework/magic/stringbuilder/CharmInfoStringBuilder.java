@@ -51,7 +51,7 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
   }
 
   private String createMartialArtsLevelLine(IMartialArtsCharm charm) {
-    MartialArtsLevel level = charm.getLevel();
+    MartialArtsLevel level = MartialArtsUtilities.getLevel(charm);
     String levelString = resources.getString("CharmTreeView.ToolTip.MartialArtsLevel") + IMagicStringBuilderConstants.ColonSpace; //$NON-NLS-1$
     levelString = levelString.concat(resources.getString(level.getId()));
     levelString = levelString.concat(HtmlLineBreak);
