@@ -70,6 +70,7 @@ public class CharmTree implements ICharmTree {
     return groupCharms;
   }
 
+  @SuppressWarnings("unused")
   protected boolean isLearnableCharm(ICharm charm) {
     return true;
   }
