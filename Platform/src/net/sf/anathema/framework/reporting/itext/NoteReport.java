@@ -28,12 +28,13 @@ public class NoteReport implements IITextReport {
     IItemDescription noteDescription = ((IBasicItemData) item.getItemData()).getDescription();
     ITextPart[] text = noteDescription.getContent().getText();
     try {
+      document.add(createNewParagraph(noteDescription.getName().getText(), Element.ALIGN_CENTER, Font.BOLD));
       MultiColumnText columnText = new MultiColumnText();
       columnText.addRegularColumns(document.left(), document.right(), 10f, 2);
-      columnText.addElement(createNewParagraph(noteDescription.getName().getText(), Element.ALIGN_CENTER, Font.BOLD));
       Paragraph paragraph = new Paragraph();
+      paragraph.setAlignment(Element.ALIGN_JUSTIFIED);
       for (ITextPart textpart : text) {
-        Font font = createDefaultFont(getStyle(textpart.getFormat()));
+        Font font = createDefaultFont(8, getStyle(textpart.getFormat()));
         paragraph.add(new Chunk(textpart.getText(), font));
       }
       columnText.addElement(paragraph);
@@ -70,14 +71,14 @@ public class NoteReport implements IITextReport {
   }
 
   private static Element createNewParagraph(String text, int alignment, int style) {
-    Font font = createDefaultFont(style);
+    Font font = createDefaultFont(10, style);
     Paragraph paragraph = new Paragraph(text, font);
     paragraph.setAlignment(alignment);
     paragraph.setLeading(font.size() * 1.2f);
     return paragraph;
   }
 
-  private static Font createDefaultFont(int style) {
-    return FontFactory.getFont("Helvetica", 10, style, Color.BLACK);
+  private static Font createDefaultFont(int size, int style) {
+    return FontFactory.getFont(FontFactory.TIMES, size, style, Color.BLACK);
   }
 }
