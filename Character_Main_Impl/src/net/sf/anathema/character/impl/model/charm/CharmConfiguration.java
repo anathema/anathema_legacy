@@ -56,7 +56,7 @@ import net.sf.anathema.lib.lang.ArrayUtilities;
 
 public class CharmConfiguration implements ICharmConfiguration {
 
-  private final ICharmTree<ICharm> martialArtsCharmTree;
+  private final ICharmTree martialArtsCharmTree;
   private final Map<CharacterType, ICharmTree> alienTreesByType = new HashMap<CharacterType, ICharmTree>();
   private final Map<CharacterType, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new HashMap<CharacterType, ILearningCharmGroup[]>();
   private final Map<CharacterType, ICharmTemplate> templatesByType = new HashMap<CharacterType, ICharmTemplate>();
