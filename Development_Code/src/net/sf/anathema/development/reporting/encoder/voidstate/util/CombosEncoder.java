@@ -6,8 +6,8 @@ import net.sf.anathema.character.generic.framework.reporting.template.AbstractMa
 import net.sf.anathema.development.reporting.encoder.voidstate.format.VoidstateBasicsEncoder;
 import net.sf.anathema.development.reporting.util.AbstractJasperEncoder;
 import net.sf.anathema.development.reporting.util.ParameterUtilities;
-import net.sf.anathema.framework.reporting.encoding.IJasperXmlConstants;
 import net.sf.anathema.framework.reporting.encoding.TextEncoding;
+import net.sf.anathema.framework.reporting.jasper.IJasperXmlConstants;
 
 import org.dom4j.Element;
 

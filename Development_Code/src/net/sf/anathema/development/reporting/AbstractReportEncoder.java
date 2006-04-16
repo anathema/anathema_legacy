@@ -5,7 +5,7 @@ import java.util.Map;
 
 import net.sf.anathema.development.reporting.encoder.page.IPageFormat;
 import net.sf.anathema.development.reporting.util.AbstractJasperEncoder;
-import net.sf.anathema.framework.reporting.encoding.IJasperXmlConstants;
+import net.sf.anathema.framework.reporting.jasper.IJasperXmlConstants;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;

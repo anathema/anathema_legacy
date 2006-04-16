@@ -6,8 +6,8 @@ import java.net.URL;
 import java.util.Map;
 
 import net.sf.anathema.development.reporting.encoder.voidstate.util.SubreportUtilities;
-import net.sf.anathema.framework.reporting.encoding.IJasperXmlConstants;
 import net.sf.anathema.framework.reporting.encoding.TextEncoding;
+import net.sf.anathema.framework.reporting.jasper.IJasperXmlConstants;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.lib.awt.ColorUtilities;
 import net.sf.jasperreports.engine.JasperReport;

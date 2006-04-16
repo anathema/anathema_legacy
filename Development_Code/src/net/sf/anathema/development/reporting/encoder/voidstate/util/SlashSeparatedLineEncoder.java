@@ -6,7 +6,7 @@ import org.dom4j.Element;
 
 import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.util.AbstractJasperEncoder;
-import net.sf.anathema.framework.reporting.encoding.IJasperXmlConstants;
+import net.sf.anathema.framework.reporting.jasper.IJasperXmlConstants;
 
 public class SlashSeparatedLineEncoder extends AbstractJasperEncoder implements
     IVoidStateFormatConstants,

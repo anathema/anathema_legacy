@@ -10,7 +10,7 @@ import net.sf.anathema.development.reporting.encoder.voidstate.pages.VoidstateSe
 import net.sf.anathema.development.reporting.util.DataSourceColumn;
 import net.sf.anathema.development.reporting.util.ReportDataSourceEncoder;
 import net.sf.anathema.development.reporting.util.TraitEncoder;
-import net.sf.anathema.framework.reporting.encoding.IJasperXmlConstants;
+import net.sf.anathema.framework.reporting.jasper.IJasperXmlConstants;
 
 import org.dom4j.Element;
 

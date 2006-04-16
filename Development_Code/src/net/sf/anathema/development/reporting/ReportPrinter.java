@@ -9,14 +9,14 @@ import net.sf.anathema.character.impl.module.CharacterModule;
 import net.sf.anathema.development.reporting.generation.IGenerationData;
 import net.sf.anathema.development.reporting.generation.VoidStateSiderealGenerationData;
 import net.sf.anathema.development.reporting.generation.VoidstateLunarGenerationData;
-import net.sf.anathema.framework.reporting.AnathemaReportPrinter;
-import net.sf.anathema.framework.reporting.IJasperReport;
+import net.sf.anathema.framework.reporting.jasper.IJasperReport;
+import net.sf.anathema.framework.reporting.jasper.JasperReportPrinter;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.resources.AnathemaResources;
 
 public class ReportPrinter {
 
-  private AnathemaReportPrinter printer = new AnathemaReportPrinter();
+  private JasperReportPrinter printer = new JasperReportPrinter();
 
   protected void compileReport(IGenerationData generationData) throws Exception {
     IItem item = generationData.createFilledCharacter();

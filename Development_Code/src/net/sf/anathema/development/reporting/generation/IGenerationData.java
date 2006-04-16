@@ -2,7 +2,7 @@ package net.sf.anathema.development.reporting.generation;
 
 import java.io.File;
 
-import net.sf.anathema.framework.reporting.IJasperReport;
+import net.sf.anathema.framework.reporting.jasper.IJasperReport;
 import net.sf.anathema.framework.repository.IItem;
 
 public interface IGenerationData {

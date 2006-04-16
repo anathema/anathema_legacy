@@ -1,7 +1,7 @@
 package net.sf.anathema.development.reporting.util;
 
 import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.framework.reporting.encoding.IJasperXmlConstants;
+import net.sf.anathema.framework.reporting.jasper.IJasperXmlConstants;
 
 public class DataSourceColumn {
 
