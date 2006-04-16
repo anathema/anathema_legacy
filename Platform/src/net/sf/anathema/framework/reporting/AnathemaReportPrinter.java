@@ -1,18 +1,14 @@
 package net.sf.anathema.framework.reporting;
 
-import java.io.InputStream;
 import java.io.OutputStream;
 
 import net.sf.anathema.framework.reporting.jasper.datasource.ReportDataSourceAdapter;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JRReport;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
 
 public class AnathemaReportPrinter {
 
@@ -28,10 +24,5 @@ public class AnathemaReportPrinter {
     catch (JRException e) {
       throw new ReportException(e);
     }
-  }
-
-  public JRReport createSubReport(String filePath) throws JRException {
-    InputStream inputStream = AnathemaReportPrinter.class.getClassLoader().getResourceAsStream(filePath);
-    return (JasperReport) JRLoader.loadObject(inputStream);
   }
 }
