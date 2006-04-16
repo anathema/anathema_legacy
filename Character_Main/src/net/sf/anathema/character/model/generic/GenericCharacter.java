@@ -10,10 +10,10 @@ import net.sf.anathema.character.generic.character.ICharacterPoints;
 import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.health.HealthLevelType;
-import net.sf.anathema.character.generic.magic.CharmSpellVisitorAdapter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.generic.magic.IMagic;
+import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
@@ -74,7 +74,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   public boolean isLearned(IMagic magic) {
     final boolean[] isLearned = new boolean[1];
-    magic.accept(new CharmSpellVisitorAdapter() {
+    magic.accept(new IMagicVisitor() {
       public void visitSpell(ISpell spell) {
         isLearned[0] = statistics.getSpells().isLearned(spell);
       }
