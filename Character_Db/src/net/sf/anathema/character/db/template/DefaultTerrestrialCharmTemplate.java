@@ -3,6 +3,7 @@ package net.sf.anathema.character.db.template;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsCharm;
+import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
 import net.sf.anathema.character.generic.magic.IMartialArtsCharm;
@@ -27,7 +28,7 @@ public class DefaultTerrestrialCharmTemplate extends CharmTemplate {
       IMartialArtsCharm martialArtsCharm,
       IGenericCharmConfiguration charmConfiguration,
       boolean isExperienced) {
-    MartialArtsLevel level = martialArtsCharm.getLevel();
+    MartialArtsLevel level = MartialArtsUtilities.getLevel(martialArtsCharm);
     if (level == MartialArtsLevel.Terrestrial) {
       return true;
     }
