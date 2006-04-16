@@ -25,7 +25,7 @@ import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.module.preferences.OpenPdfPreferencesElement;
 import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
 import net.sf.anathema.framework.reporting.AnathemaReportPrinter;
-import net.sf.anathema.framework.reporting.IReport;
+import net.sf.anathema.framework.reporting.IJasperReport;
 import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.repository.AbstractObjectSelectionProperties;
@@ -51,7 +51,7 @@ public class AnathemaPrintAction extends SmartAction {
 
     @Override
     public void itemSelected(IItem item) {
-      IReport[] reports = reportRegistry.getReports(item);
+      IJasperReport[] reports = reportRegistry.getReports(item);
       action.setEnabled(reports.length > 0);
     }
   }
@@ -87,7 +87,7 @@ public class AnathemaPrintAction extends SmartAction {
     if (item == null) {
       return;
     }
-    final IReport selectedReport = selectReport(parentComponent, item);
+    final IJasperReport selectedReport = selectReport(parentComponent, item);
     if (selectedReport == null) {
       return;
     }
@@ -135,7 +135,7 @@ public class AnathemaPrintAction extends SmartAction {
         || JOptionPane.showConfirmDialog(parentComponent, message, title, JOptionPane.YES_NO_OPTION) != 1;
   }
 
-  private void performPrint(IProgressMonitor monitor, IItem item, IReport selectedReport, File selectedFile)
+  private void performPrint(IProgressMonitor monitor, IItem item, IJasperReport selectedReport, File selectedFile)
       throws IOException,
       ReportException {
     monitor.beginTask(resources.getString("Anathema.Reporting.Print.Progress.Task"), IProgressMonitor.UNKNOWN); //$NON-NLS-1$
@@ -149,16 +149,16 @@ public class AnathemaPrintAction extends SmartAction {
     }
   }
 
-  private IReport selectReport(Component parentComponent, IItem item) {
+  private IJasperReport selectReport(Component parentComponent, IItem item) {
     IReportRegistry reportRegistry = anathemaModel.getReportRegistry();
-    IReport[] reports = reportRegistry.getReports(item);
+    IJasperReport[] reports = reportRegistry.getReports(item);
     if (reports.length == 1) {
       return reports[0];
     }
     return selectReport(parentComponent, reports);
   }
 
-  private IReport selectReport(Component parentComponent, IReport[] reports) {
+  private IJasperReport selectReport(Component parentComponent, IJasperReport[] reports) {
     IObjectSelectionProperties properties = new AbstractObjectSelectionProperties(resources) {
       public String getTitle() {
         return getResources().getString("Anathema.Reporting.PrintSelection.Title"); //$NON-NLS-1$
@@ -175,6 +175,6 @@ public class AnathemaPrintAction extends SmartAction {
     if (userDialog.isCanceled()) {
       return null;
     }
-    return (IReport) dialogPage.getSelectedObject();
+    return (IJasperReport) dialogPage.getSelectedObject();
   }
 }

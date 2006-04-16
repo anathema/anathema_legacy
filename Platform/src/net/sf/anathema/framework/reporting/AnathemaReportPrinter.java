@@ -12,7 +12,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 
 public class AnathemaReportPrinter {
 
-  public void printReport(IItem item, IReport report, OutputStream outputStream) throws ReportException {
+  public void printReport(IItem item, IJasperReport report, OutputStream outputStream) throws ReportException {
     try {
       JRDataSource jasperDataSource = new ReportDataSourceAdapter(report.getDataSource(item));
       JasperPrint print = JasperFillManager.fillReport(

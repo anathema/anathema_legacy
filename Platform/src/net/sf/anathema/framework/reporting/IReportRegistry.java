@@ -4,8 +4,8 @@ import net.sf.anathema.framework.repository.IItem;
 
 public interface IReportRegistry {
 
-  public void addReport(IReport reporter);
+  public void addReport(IJasperReport reporter);
 
-  public IReport[] getReports(IItem item);
+  public IJasperReport[] getReports(IItem item);
 
 }
