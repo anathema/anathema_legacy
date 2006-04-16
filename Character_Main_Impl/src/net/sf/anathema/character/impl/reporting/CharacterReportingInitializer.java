@@ -2,6 +2,7 @@ package net.sf.anathema.character.impl.reporting;
 
 import net.sf.anathema.character.generic.framework.reporting.template.ICharacterReportTemplate;
 import net.sf.anathema.framework.reporting.IReportRegistry;
+import net.sf.anathema.framework.reporting.itext.NoteReport;
 import net.sf.anathema.framework.reporting.jasper.IJasperReport;
 import net.sf.anathema.lib.registry.ICollectionRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -16,6 +17,7 @@ public class CharacterReportingInitializer {
       String printName = resources.getString("CharacterModule.Reporting." + template.getType().getId() + ".Name"); //$NON-NLS-1$ //$NON-NLS-2$
       reportRegistry.addReport(createCharacterReport(printName, template));
     }
+    reportRegistry.addReport(new NoteReport());
   }
 
   private IJasperReport createCharacterReport(String printName, ICharacterReportTemplate template) {
