@@ -1,12 +1,10 @@
 package net.sf.anathema.framework.reporting;
 
-import net.sf.anathema.framework.reporting.jasper.IJasperReport;
 import net.sf.anathema.framework.repository.IItem;
 
 public interface IReportRegistry {
 
-  public void addReport(IJasperReport reporter);
+  public void addReport(IReport reporter);
 
-  public IJasperReport[] getReports(IItem item);
-
+  public IReport[] getReports(IItem item);
 }

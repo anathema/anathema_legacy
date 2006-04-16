@@ -3,25 +3,26 @@ package net.sf.anathema.framework.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.framework.reporting.IReport;
 import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.reporting.jasper.IJasperReport;
 import net.sf.anathema.framework.repository.IItem;
 
 public class ReportRegistry implements IReportRegistry {
 
-  private final List<IJasperReport> reports = new ArrayList<IJasperReport>();
+  private final List<IReport> reports = new ArrayList<IReport>();
 
   public ReportRegistry() {
     super();
   }
 
-  public void addReport(IJasperReport report) {
+  public void addReport(IReport report) {
     reports.add(report);
   }
 
   public IJasperReport[] getReports(IItem item) {
-    List<IJasperReport> supportedReports = new ArrayList<IJasperReport>();
-    for (IJasperReport report : reports) {
+    List<IReport> supportedReports = new ArrayList<IReport>();
+    for (IReport report : reports) {
       if (report.supports(item)) {
         supportedReports.add(report);
       }
