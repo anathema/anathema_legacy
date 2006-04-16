@@ -2,7 +2,6 @@ package net.sf.anathema.character.db.template;
 
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
-import net.sf.anathema.character.generic.impl.magic.MartialArtsCharm;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
@@ -16,7 +15,7 @@ import net.sf.anathema.lib.exception.PersistenceException;
 public class DefaultTerrestrialCharmTemplate extends CharmTemplate {
 
   private ICharmAttributeRequirement celestialAttributeRequirement = new CharmAttributeRequirement(new CharmAttribute(
-      MartialArtsCharm.ALLOWS_CELESTIAL_ATTRIBUTE,
+      IMartialArtsCharm.ALLOWS_CELESTIAL_ATTRIBUTE,
       false), 1);
 
   public DefaultTerrestrialCharmTemplate(ICharmCache charmProvider) throws PersistenceException {
@@ -36,7 +35,7 @@ public class DefaultTerrestrialCharmTemplate extends CharmTemplate {
       if (!mayLearnHighLevelAtCreation() && !isExperienced) {
         return false;
       }
-      if (martialArtsCharm.hasAttribute(MartialArtsCharm.UNRESTRICTED_ATTRIBUTE)) {
+      if (martialArtsCharm.hasAttribute(IMartialArtsCharm.UNRESTRICTED_ATTRIBUTE)) {
         return true;
       }
       if (charmConfiguration.isRequirementFulfilled(celestialAttributeRequirement)) {
