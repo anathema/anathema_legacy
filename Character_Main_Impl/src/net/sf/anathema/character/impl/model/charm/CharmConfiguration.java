@@ -16,7 +16,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.listening.
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmLearnStrategy;
 import net.sf.anathema.character.generic.impl.magic.Charm;
-import net.sf.anathema.character.generic.impl.magic.MartialArtsCharm;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
@@ -251,7 +250,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     for (ICharm charm : learnedCharms) {
       if (MartialArtsUtilities.isMartialArtsCharm(charm)) {
         IMartialArtsCharm martialArtsCharm = (IMartialArtsCharm) charm;
-        boolean groupIsStyle = !charm.hasAttribute(MartialArtsCharm.NO_STYLE_ATTRIBUTE);
+        boolean groupIsStyle = !charm.hasAttribute(IMartialArtsCharm.NO_STYLE_ATTRIBUTE);
         boolean isCelestialLevel = MartialArtsUtilities.hasLevel(MartialArtsLevel.Celestial, charm);
         boolean groupIsIncomplete = !getGroup(martialArtsCharm).isCompleted();
         if (groupIsStyle && isCelestialLevel && groupIsIncomplete) {
@@ -501,7 +500,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   public final boolean isCelestialMartialArtsGroupCompleted() {
     for (ILearningCharmGroup group : getMartialArtsGroups()) {
       IMartialArtsCharm martialArtsCharm = (IMartialArtsCharm) group.getAllCharms()[0];
-      if (!martialArtsCharm.hasAttribute(MartialArtsCharm.NO_STYLE_ATTRIBUTE)
+      if (!martialArtsCharm.hasAttribute(IMartialArtsCharm.NO_STYLE_ATTRIBUTE)
           && MartialArtsUtilities.hasLevel(MartialArtsLevel.Celestial, martialArtsCharm)
           && group.isCompleted()) {
         return true;
