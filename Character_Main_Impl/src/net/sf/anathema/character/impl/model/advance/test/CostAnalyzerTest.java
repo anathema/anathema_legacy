@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.impl.model.advance.CostAnalyzer;
 import net.sf.anathema.character.impl.model.creation.bonus.test.DummyCoreTraitConfiguration;
 import net.sf.anathema.lib.testing.BasicTestCase;
+import net.sf.anathema.lib.util.IIdentificate;
 
 import org.easymock.MockControl;
 
@@ -51,6 +52,11 @@ public class CostAnalyzerTest extends BasicTestCase {
       @Override
       public MartialArtsLevel getLevel() {
         return MartialArtsLevel.Terrestrial;
+      }
+
+      @Override
+      public boolean hasAttribute(IIdentificate attribute) {
+        return attribute.getId().equals("MartialArts"); //$NON-NLS-1$
       }
     }));
   }

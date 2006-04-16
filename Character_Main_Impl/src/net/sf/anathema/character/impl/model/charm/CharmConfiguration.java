@@ -389,7 +389,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     }
     if (MartialArtsUtilities.isMartialArtsCharm(charm)) {
       IMartialArtsCharm martialArtsCharm = (IMartialArtsCharm) charm;
-      boolean isSiderealFormCharm = martialArtsCharm.isFormCharm()
+      boolean isSiderealFormCharm = MartialArtsUtilities.isFormCharm(charm)
           && martialArtsCharm.getLevel() == MartialArtsLevel.Sidereal;
       if (isSiderealFormCharm && !isCelestialMartialArtsGroupCompleted()) {
         return false;
