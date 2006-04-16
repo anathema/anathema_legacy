@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.impl.magic.charm;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.IMartialArtsCharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
@@ -37,7 +38,7 @@ public class MartialArtsCharmTree extends AbstractCharmTree<IMartialArtsCharm> {
 
   @Override
   protected boolean isLearnableCharm(IMartialArtsCharm charm) {
-    return charm.getLevel().compareTo(standardLevel) <= 1;
+    return MartialArtsUtilities.getLevel(charm).compareTo(standardLevel) <= 1;
   }
 
   public ICharmGroup[] getAllNonMartialArtsCharmGroups() {

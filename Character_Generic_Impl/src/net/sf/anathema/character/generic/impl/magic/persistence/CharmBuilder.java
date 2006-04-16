@@ -335,6 +335,7 @@ public class CharmBuilder {
       String martialArtsLevel = charmElement.element(TAG_MARTIAL_ARTS_LEVEL).attributeValue(ATTRIB_LEVEL);
       MartialArtsLevel level = MartialArtsLevel.valueOf(martialArtsLevel);
       MartialArtsCharm charm = new MartialArtsCharm(temporaryCharm, level);
+      charm.addCharmAttribute(new CharmAttribute(level.getId(), false));
       allMartialArtsCharms.add(charm);
       charmsById.put(charm.getId(), charm);
     }

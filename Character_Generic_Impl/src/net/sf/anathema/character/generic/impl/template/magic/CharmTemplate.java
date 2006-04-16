@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -54,7 +55,7 @@ public class CharmTemplate implements ICharmTemplate {
       IMartialArtsCharm martialArtsCharm,
       IGenericCharmConfiguration charmConfiguration,
       boolean isExperienced) {
-    int comparedLevel = martialArtsCharm.getLevel().compareTo(getMartialArtsLevel());
+    int comparedLevel = MartialArtsUtilities.getLevel(martialArtsCharm).compareTo(getMartialArtsLevel());
     if (comparedLevel <= 0) {
       return true;
     }
