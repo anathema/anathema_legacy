@@ -56,7 +56,7 @@ public class AnathemaPrintAction extends SmartAction {
     }
   }
 
-  private final AnathemaReportPrinter reportCompiler = new AnathemaReportPrinter();
+  private final AnathemaReportPrinter printer = new AnathemaReportPrinter();
   private final IAnathemaModel anathemaModel;
   private final IResources resources;
 
@@ -142,7 +142,7 @@ public class AnathemaPrintAction extends SmartAction {
     FileOutputStream stream = null;
     try {
       stream = new FileOutputStream(selectedFile);
-      reportCompiler.compileReport(item, selectedReport, stream);
+      printer.printReport(item, selectedReport, stream);
     }
     finally {
       IOUtilities.close(stream);
