@@ -24,10 +24,10 @@ import net.sf.anathema.framework.ObjectSelectionDialogPage;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.module.preferences.OpenPdfPreferencesElement;
 import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
-import net.sf.anathema.framework.reporting.AnathemaReportPrinter;
-import net.sf.anathema.framework.reporting.IJasperReport;
 import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.reporting.ReportException;
+import net.sf.anathema.framework.reporting.jasper.IJasperReport;
+import net.sf.anathema.framework.reporting.jasper.JasperReportPrinter;
 import net.sf.anathema.framework.repository.AbstractObjectSelectionProperties;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IObjectSelectionProperties;
@@ -56,7 +56,7 @@ public class AnathemaPrintAction extends SmartAction {
     }
   }
 
-  private final AnathemaReportPrinter printer = new AnathemaReportPrinter();
+  private final JasperReportPrinter printer = new JasperReportPrinter();
   private final IAnathemaModel anathemaModel;
   private final IResources resources;
 

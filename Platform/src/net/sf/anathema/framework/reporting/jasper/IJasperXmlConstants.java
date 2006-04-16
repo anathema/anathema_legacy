@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.reporting.encoding;
+package net.sf.anathema.framework.reporting.jasper;
 
 public interface IJasperXmlConstants {
   public static final String ATTRIB_BACKCOLOR = "backcolor"; //$NON-NLS-1$

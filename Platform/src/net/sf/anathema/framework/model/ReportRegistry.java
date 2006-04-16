@@ -3,8 +3,8 @@ package net.sf.anathema.framework.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.framework.reporting.IJasperReport;
 import net.sf.anathema.framework.reporting.IReportRegistry;
+import net.sf.anathema.framework.reporting.jasper.IJasperReport;
 import net.sf.anathema.framework.repository.IItem;
 
 public class ReportRegistry implements IReportRegistry {

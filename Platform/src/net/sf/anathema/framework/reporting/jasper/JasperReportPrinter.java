@@ -1,8 +1,8 @@
-package net.sf.anathema.framework.reporting;
+package net.sf.anathema.framework.reporting.jasper;
 
 import java.io.OutputStream;
 
-import net.sf.anathema.framework.reporting.jasper.datasource.ReportDataSourceAdapter;
+import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
@@ -10,7 +10,7 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 
-public class AnathemaReportPrinter {
+public class JasperReportPrinter {
 
   public void printReport(IItem item, IJasperReport report, OutputStream outputStream) throws ReportException {
     try {

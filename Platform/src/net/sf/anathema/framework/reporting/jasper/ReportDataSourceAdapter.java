@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.reporting.jasper.datasource;
+package net.sf.anathema.framework.reporting.jasper;
 
 import net.sf.anathema.framework.reporting.IReportDataSource;
 import net.sf.jasperreports.engine.JRDataSource;
