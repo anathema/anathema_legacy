@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.framework.reporting.datasource.ComboTex
 import net.sf.anathema.character.generic.framework.reporting.template.voidstate.ExaltVoidstateReportTemplate;
 import net.sf.anathema.framework.reporting.IReportDataSource;
 import net.sf.anathema.framework.reporting.ReportException;
-import net.sf.anathema.framework.reporting.jasper.datasource.ReportDataSourceAdapter;
+import net.sf.anathema.framework.reporting.jasper.ReportDataSourceAdapter;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractMagicUserCharacterReportTemplate extends AbstractStattedCharacterReportTemplate {
