@@ -5,7 +5,8 @@ import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
-import net.sf.anathema.character.generic.magic.IMartialArtsCharm;
+import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
@@ -15,7 +16,7 @@ import net.sf.anathema.lib.exception.PersistenceException;
 public class DefaultTerrestrialCharmTemplate extends CharmTemplate {
 
   private ICharmAttributeRequirement celestialAttributeRequirement = new CharmAttributeRequirement(new CharmAttribute(
-      IMartialArtsCharm.ALLOWS_CELESTIAL_ATTRIBUTE,
+      ICharmData.ALLOWS_CELESTIAL_ATTRIBUTE,
       false), 1);
 
   public DefaultTerrestrialCharmTemplate(ICharmCache charmProvider) throws PersistenceException {
@@ -24,7 +25,7 @@ public class DefaultTerrestrialCharmTemplate extends CharmTemplate {
 
   @Override
   public boolean isMartialArtsCharmAllowed(
-      IMartialArtsCharm martialArtsCharm,
+      ICharm martialArtsCharm,
       IGenericCharmConfiguration charmConfiguration,
       boolean isExperienced) {
     MartialArtsLevel level = MartialArtsUtilities.getLevel(martialArtsCharm);
@@ -35,7 +36,7 @@ public class DefaultTerrestrialCharmTemplate extends CharmTemplate {
       if (!mayLearnHighLevelAtCreation() && !isExperienced) {
         return false;
       }
-      if (martialArtsCharm.hasAttribute(IMartialArtsCharm.UNRESTRICTED_ATTRIBUTE)) {
+      if (martialArtsCharm.hasAttribute(ICharmData.UNRESTRICTED_ATTRIBUTE)) {
         return true;
       }
       if (charmConfiguration.isRequirementFulfilled(celestialAttributeRequirement)) {
