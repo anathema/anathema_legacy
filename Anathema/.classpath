@@ -11,7 +11,6 @@
 	<classpathentry sourcepath="/Thirdparty/Swing/l2fprod-common-tasks-src.zip" kind="lib" path="/Thirdparty/Swing/l2fprod-common-tasks.jar"/>
 	<classpathentry kind="src" path="/Charm_Cascades"/>
 	<classpathentry kind="src" path="/Campaign_Plot"/>
-	<classpathentry kind="lib" path="/Thirdparty/Reporting/itext-1.01.jar"/>
 	<classpathentry sourcepath="/Thirdparty/Commons/commons-io-src.zip" kind="lib" path="/Thirdparty/Commons/commons-io.jar"/>
 	<classpathentry kind="src" path="/Character_Abyssal"/>
 	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
