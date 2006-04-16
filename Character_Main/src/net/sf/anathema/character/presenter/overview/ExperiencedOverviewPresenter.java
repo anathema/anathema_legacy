@@ -56,7 +56,7 @@ public class ExperiencedOverviewPresenter {
   }
 
   private void initTotal(IOverviewCategory category) {
-    totalView = category.addAlotmentView(getString("Experience.Total"), 4); //$NON-NLS-1$
+    totalView = category.addAlotmentView(getString("Overview.Experience.Total"), 4); //$NON-NLS-1$
     statistics.getExperiencePoints().addExperiencePointConfigurationListener(
         new IExperiencePointConfigurationListener() {
           public void entryAdded(IExperiencePointEntry entry) {
