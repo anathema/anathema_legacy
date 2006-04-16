@@ -2,7 +2,6 @@ package net.sf.anathema.character.impl.testing;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IMartialArtsCharm;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
@@ -16,8 +15,8 @@ public class DummyCharmTemplate implements ICharmTemplate {
     return new ICharm[0];
   }
 
-  public IMartialArtsCharm[] getMartialArtsCharms(IExaltedRuleSet rules) {
-    return new IMartialArtsCharm[0];
+  public ICharm[] getMartialArtsCharms(IExaltedRuleSet rules) {
+    return new ICharm[0];
   }
 
   public MartialArtsLevel getMartialArtsLevel() {
@@ -29,7 +28,7 @@ public class DummyCharmTemplate implements ICharmTemplate {
   }
 
   public boolean isMartialArtsCharmAllowed(
-      IMartialArtsCharm martialArtsCharm,
+      ICharm martialArtsCharm,
       IGenericCharmConfiguration charmConfiguration,
       boolean isExperienced) {
     return false;

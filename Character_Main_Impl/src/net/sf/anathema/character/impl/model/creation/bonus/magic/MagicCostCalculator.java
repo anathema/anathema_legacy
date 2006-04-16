@@ -6,9 +6,9 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.magic.CharmSpellVisitorAdapter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
+import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
@@ -79,7 +79,7 @@ public class MagicCostCalculator {
   private void handleMagic(IMagic magic, boolean favored) {
     final int bonusPointFactor = costs.getMagicCosts(magic, analyzer);
     final int[] learnCount = new int[1];
-    magic.accept(new CharmSpellVisitorAdapter() {
+    magic.accept(new IMagicVisitor() {
       public void visitCharm(ICharm charm) {
         learnCount[0] = determineLearnCount(charm);
       }
@@ -154,7 +154,7 @@ public class MagicCostCalculator {
     }
     else {
       bonusPools.spendOn(magic, bonusPointFactor);
-      magic.accept(new CharmSpellVisitorAdapter() {
+      magic.accept(new IMagicVisitor() {
         public void visitCharm(ICharm charm) {
           bonusPointsSpentForCharms += bonusPointFactor;
         }

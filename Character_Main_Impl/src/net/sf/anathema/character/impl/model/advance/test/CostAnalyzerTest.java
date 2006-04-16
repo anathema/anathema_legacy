@@ -50,11 +50,6 @@ public class CostAnalyzerTest extends BasicTestCase {
   public void testGetMartialArtsLevelFromMartialArtsCharm() throws Exception {
     assertEquals(MartialArtsLevel.Terrestrial, costAnalyzer.getMartialArtsLevel(new DummyMartialArtsCharm(CHARM_ID) {
       @Override
-      public MartialArtsLevel getLevel() {
-        return MartialArtsLevel.Terrestrial;
-      }
-
-      @Override
       public boolean hasAttribute(IIdentificate attribute) {
         return attribute.getId().equals("MartialArts") || attribute.getId().equals("Terrestrial"); //$NON-NLS-1$ //$NON-NLS-2$
       }

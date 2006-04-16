@@ -21,7 +21,7 @@ import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IMartialArtsCharm;
+import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
@@ -56,7 +56,7 @@ import net.sf.anathema.lib.lang.ArrayUtilities;
 
 public class CharmConfiguration implements ICharmConfiguration {
 
-  private final ICharmTree<IMartialArtsCharm> martialArtsCharmTree;
+  private final ICharmTree<ICharm> martialArtsCharmTree;
   private final Map<CharacterType, ICharmTree> alienTreesByType = new HashMap<CharacterType, ICharmTree>();
   private final Map<CharacterType, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new HashMap<CharacterType, ILearningCharmGroup[]>();
   private final Map<CharacterType, ICharmTemplate> templatesByType = new HashMap<CharacterType, ICharmTemplate>();
@@ -192,7 +192,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   public ICharm getCharmById(String charmId) {
-    IMartialArtsCharm martialArtsCharm = martialArtsCharmTree.getCharmByID(charmId);
+    ICharm martialArtsCharm = martialArtsCharmTree.getCharmByID(charmId);
     if (martialArtsCharm != null) {
       return martialArtsCharm;
     }
@@ -249,12 +249,11 @@ public class CharmConfiguration implements ICharmConfiguration {
     Set<String> uncompletedGroups = new HashSet<String>();
     for (ICharm charm : learnedCharms) {
       if (MartialArtsUtilities.isMartialArtsCharm(charm)) {
-        IMartialArtsCharm martialArtsCharm = (IMartialArtsCharm) charm;
-        boolean groupIsStyle = !charm.hasAttribute(IMartialArtsCharm.NO_STYLE_ATTRIBUTE);
+        boolean groupIsStyle = !charm.hasAttribute(ICharmData.NO_STYLE_ATTRIBUTE);
         boolean isCelestialLevel = MartialArtsUtilities.hasLevel(MartialArtsLevel.Celestial, charm);
-        boolean groupIsIncomplete = !getGroup(martialArtsCharm).isCompleted();
+        boolean groupIsIncomplete = !getGroup(charm).isCompleted();
         if (groupIsStyle && isCelestialLevel && groupIsIncomplete) {
-          uncompletedGroups.add(martialArtsCharm.getGroupId());
+          uncompletedGroups.add(charm.getGroupId());
         }
       }
     }
@@ -387,14 +386,13 @@ public class CharmConfiguration implements ICharmConfiguration {
       return false;
     }
     if (MartialArtsUtilities.isMartialArtsCharm(charm)) {
-      IMartialArtsCharm martialArtsCharm = (IMartialArtsCharm) charm;
       boolean isSiderealFormCharm = MartialArtsUtilities.isFormCharm(charm)
           && MartialArtsUtilities.hasLevel(MartialArtsLevel.Sidereal, charm);
       if (isSiderealFormCharm && !isCelestialMartialArtsGroupCompleted()) {
         return false;
       }
       if (!getCharmTemplate(getNativeCharacterType()).isMartialArtsCharmAllowed(
-          martialArtsCharm,
+          charm,
           getModelContext().getCharmContext(),
           getModelContext().getBasicCharacterContext().isExperienced())) {
         return false;
@@ -499,8 +497,8 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   public final boolean isCelestialMartialArtsGroupCompleted() {
     for (ILearningCharmGroup group : getMartialArtsGroups()) {
-      IMartialArtsCharm martialArtsCharm = (IMartialArtsCharm) group.getAllCharms()[0];
-      if (!martialArtsCharm.hasAttribute(IMartialArtsCharm.NO_STYLE_ATTRIBUTE)
+      ICharm martialArtsCharm = group.getAllCharms()[0];
+      if (!martialArtsCharm.hasAttribute(ICharmData.NO_STYLE_ATTRIBUTE)
           && MartialArtsUtilities.hasLevel(MartialArtsLevel.Celestial, martialArtsCharm)
           && group.isCompleted()) {
         return true;
