@@ -38,7 +38,7 @@ public class CharacterTemplateResourceProvider implements ICharacterTemplateReso
           resourcesByCharacterType.put(visitedType, IIconConstants.SOLAR_BALL);
         }
 
-        public void visitDragonKing(CharacterType type) {
+        public void visitDragonKing(CharacterType visitedType) {
           // Nothing to do
         }
       });
