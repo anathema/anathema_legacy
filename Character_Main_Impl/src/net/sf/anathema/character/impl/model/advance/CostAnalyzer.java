@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.magic.IMartialArtsCharm;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
@@ -35,9 +34,6 @@ public class CostAnalyzer implements ICostAnalyzer {
   }
 
   public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
-    if (!(MartialArtsUtilities.isMartialArtsCharm(charm))) {
-      return null;
-    }
-    return ((IMartialArtsCharm) charm).getLevel();
+    return MartialArtsUtilities.getLevel(charm);
   }
 }

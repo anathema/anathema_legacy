@@ -252,7 +252,7 @@ public class CharmConfiguration implements ICharmConfiguration {
       if (MartialArtsUtilities.isMartialArtsCharm(charm)) {
         IMartialArtsCharm martialArtsCharm = (IMartialArtsCharm) charm;
         boolean groupIsStyle = !charm.hasAttribute(MartialArtsCharm.NO_STYLE_ATTRIBUTE);
-        boolean isCelestialLevel = martialArtsCharm.getLevel() == MartialArtsLevel.Celestial;
+        boolean isCelestialLevel = MartialArtsUtilities.hasLevel(MartialArtsLevel.Celestial, charm);
         boolean groupIsIncomplete = !getGroup(martialArtsCharm).isCompleted();
         if (groupIsStyle && isCelestialLevel && groupIsIncomplete) {
           uncompletedGroups.add(martialArtsCharm.getGroupId());
@@ -390,7 +390,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     if (MartialArtsUtilities.isMartialArtsCharm(charm)) {
       IMartialArtsCharm martialArtsCharm = (IMartialArtsCharm) charm;
       boolean isSiderealFormCharm = MartialArtsUtilities.isFormCharm(charm)
-          && martialArtsCharm.getLevel() == MartialArtsLevel.Sidereal;
+          && MartialArtsUtilities.hasLevel(MartialArtsLevel.Sidereal, charm);
       if (isSiderealFormCharm && !isCelestialMartialArtsGroupCompleted()) {
         return false;
       }
@@ -502,7 +502,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     for (ILearningCharmGroup group : getMartialArtsGroups()) {
       IMartialArtsCharm martialArtsCharm = (IMartialArtsCharm) group.getAllCharms()[0];
       if (!martialArtsCharm.hasAttribute(MartialArtsCharm.NO_STYLE_ATTRIBUTE)
-          && martialArtsCharm.getLevel() == MartialArtsLevel.Celestial
+          && MartialArtsUtilities.hasLevel(MartialArtsLevel.Celestial, martialArtsCharm)
           && group.isCompleted()) {
         return true;
       }

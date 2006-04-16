@@ -56,7 +56,7 @@ public class CostAnalyzerTest extends BasicTestCase {
 
       @Override
       public boolean hasAttribute(IIdentificate attribute) {
-        return attribute.getId().equals("MartialArts"); //$NON-NLS-1$
+        return attribute.getId().equals("MartialArts") || attribute.getId().equals("Terrestrial"); //$NON-NLS-1$ //$NON-NLS-2$
       }
     }));
   }
