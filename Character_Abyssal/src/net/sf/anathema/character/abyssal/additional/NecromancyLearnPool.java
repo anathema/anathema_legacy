@@ -3,9 +3,9 @@ package net.sf.anathema.character.abyssal.additional;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.magic.CharmSpellVisitorAdapter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
+import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
@@ -24,7 +24,7 @@ public class NecromancyLearnPool implements IAdditionalMagicLearnPool {
       return false;
     }
     final boolean[] isAllowed = new boolean[1];
-    magic.accept(new CharmSpellVisitorAdapter() {
+    magic.accept(new IMagicVisitor() {
       public void visitSpell(ISpell spell) {
         if (spell.getCircleType() == CircleType.Shadowlands) {
           isAllowed[0] = true;
