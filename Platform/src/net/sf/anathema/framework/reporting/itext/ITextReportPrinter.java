@@ -18,7 +18,7 @@ public class ITextReportPrinter {
       writer.setViewerPreferences(PdfWriter.DisplayDocTitle);
       document.addTitle(item.getDisplayName());
       document.open();
-      report.performPrint(item, document);
+      report.performPrint(item, document, writer);
 
     }
     catch (DocumentException de) {
