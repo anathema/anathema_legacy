@@ -21,11 +21,13 @@ import com.lowagie.text.ListItem;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.Section;
 import com.lowagie.text.TextElementArray;
+import com.lowagie.text.pdf.PdfOutline;
+import com.lowagie.text.pdf.PdfWriter;
 
 public class SeriesReport implements IITextReport {
   private final ITextReportUtils reportUtils = new ITextReportUtils();
 
-  public void performPrint(IItem item, Document document) throws ReportException {
+  public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     if (!supports(item)) {
       throw new IllegalArgumentException("Item not supported: " + item.getDisplayName()); //$NON-NLS-1$
     }
@@ -52,6 +54,11 @@ public class SeriesReport implements IITextReport {
         chapter.add(createContentParagraph(story.getDescription()));
         addSubsections(story, chapter, 11);
         document.add(chapter);
+      }
+      PdfOutline rootOutline = writer.getDirectContent().getRootOutline();
+      for (Object kidObject : rootOutline.getKids()) {
+        PdfOutline outline = (PdfOutline) kidObject;
+
       }
     }
     catch (DocumentException e) {

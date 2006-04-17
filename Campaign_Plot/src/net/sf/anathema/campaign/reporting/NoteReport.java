@@ -14,12 +14,13 @@ import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.MultiColumnText;
+import com.lowagie.text.pdf.PdfWriter;
 
 public class NoteReport implements IITextReport {
 
   private final ITextReportUtils reportUtils = new ITextReportUtils();
 
-  public void performPrint(IItem item, Document document) throws ReportException {
+  public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     if (!supports(item)) {
       throw new IllegalArgumentException("Item not supported: " + item.getDisplayName()); //$NON-NLS-1$
     }
