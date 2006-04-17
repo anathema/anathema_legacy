@@ -14,6 +14,8 @@ import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
 import com.lowagie.text.Font;
+import com.lowagie.text.List;
+import com.lowagie.text.ListItem;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.TextElementArray;
 import com.lowagie.text.pdf.MultiColumnText;
@@ -38,7 +40,10 @@ public class SeriesReport implements IITextReport {
       columnText.addRegularColumns(document.left(), document.right(), 10f, 2);
       TextElementArray rootContentArray = createContentParagraph(rootElement.getDescription());
       columnText.addElement(rootContentArray);
-      columnText.addElement(createChildrenParagraphs(rootElement, 14));
+      List list = new List(true, 10);
+      list.setListSymbol(new Chunk("", reportUtils.createDefaultFont(12, Font.BOLD))); //$NON-NLS-1$
+      createChildrenParagraphs(rootElement, 12, list);
+      columnText.addElement(list);
       document.add(columnText);
     }
     catch (DocumentException e) {
@@ -46,13 +51,11 @@ public class SeriesReport implements IITextReport {
     }
   }
 
-  private Paragraph createChildrenParagraphs(IPlotElement plotElement, int headerSize) {
-    Paragraph container = new Paragraph();
+  private void createChildrenParagraphs(IPlotElement plotElement, int headerSize, List list) {
     for (IPlotElement childElement : plotElement.getChildren()) {
-      Paragraph childParagraph = addToReport(childElement, headerSize - 2);
-      container.add(childParagraph);
+      Paragraph childParagraph = addToReport(childElement, headerSize);
+      list.add(new ListItem(childParagraph));
     }
-    return container;
   }
 
   private Paragraph addToReport(IPlotElement plotElement, int headerSize) {
@@ -61,12 +64,17 @@ public class SeriesReport implements IITextReport {
     Paragraph titleParagraph = createTitleParagraph(description, headerSize);
     container.add(titleParagraph);
     if ((!description.getContent().isEmpty())) {
-      container.add(createContentParagraph(description));
+      TextElementArray contentParagraph = createContentParagraph(description);
+      contentParagraph.add("\n"); //$NON-NLS-1$
+      container.add(contentParagraph);
     }
     else {
       titleParagraph.setSpacingAfter(0);
     }
-    container.add(createChildrenParagraphs(plotElement, headerSize));
+    List list = new List(false, true, 10);
+    list.setListSymbol(new Chunk("", reportUtils.createDefaultFont(headerSize - 2, Font.BOLD))); //$NON-NLS-1$
+    createChildrenParagraphs(plotElement, headerSize - 2, list);
+    container.add(list);
     return container;
   }
 
