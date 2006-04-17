@@ -39,7 +39,7 @@ public class SeriesReport implements IITextReport {
       TextElementArray rootContentArray = createContentParagraph(rootElement.getDescription());
       columnText.addElement(rootContentArray);
       Paragraph subParagraph = new Paragraph();
-      TextElementArray childrenArray = createChildrenParagrah(rootElement, 12);
+      TextElementArray childrenArray = createChildrenParagraphs(rootElement, 14);
       subParagraph.add(childrenArray);
       columnText.addElement(subParagraph);
       document.add(columnText);
@@ -49,27 +49,29 @@ public class SeriesReport implements IITextReport {
     }
   }
 
-  private Paragraph createChildrenParagrah(IPlotElement plotElement, int headerSize) {
+  private Paragraph createChildrenParagraphs(IPlotElement plotElement, int headerSize) {
     Paragraph subParagraph = new Paragraph();
     for (IPlotElement childElement : plotElement.getChildren()) {
-      addToReport(childElement, headerSize - 1, subParagraph);
+      addToReport(childElement, headerSize - 2, subParagraph);
     }
     return subParagraph;
   }
 
   private void addToReport(IPlotElement plotElement, int headerSize, TextElementArray textElement) {
     IItemDescription description = plotElement.getDescription();
-    boolean hasContent = !description.getContent().isEmpty();
+    Paragraph container = new Paragraph();
     TextElementArray titleParagraph = createTitleParagraph(description, headerSize);
-    textElement.add(titleParagraph);
+    container.add(titleParagraph);
+    boolean hasContent = !description.getContent().isEmpty();
     if (hasContent) {
-      textElement.add(createContentParagraph(description));
+      container.add(createContentParagraph(description));
     }
-    Paragraph childParagraph = createChildrenParagrah(plotElement, headerSize);
+    Paragraph childParagraph = createChildrenParagraphs(plotElement, headerSize);
     if (!hasContent) {
       childParagraph.setSpacingBefore(0);
     }
-    textElement.add(childParagraph);
+    container.add(childParagraph);
+    textElement.add(container);
   }
 
   private TextElementArray createTitleParagraph(IItemDescription description, int headerSize) {
