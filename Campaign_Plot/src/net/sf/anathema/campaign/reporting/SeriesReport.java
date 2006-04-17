@@ -38,9 +38,7 @@ public class SeriesReport implements IITextReport {
       columnText.addRegularColumns(document.left(), document.right(), 10f, 2);
       TextElementArray rootContentArray = createContentParagraph(rootElement.getDescription());
       columnText.addElement(rootContentArray);
-      Paragraph subParagraph = new Paragraph();
-      subParagraph.add(createChildrenParagraphs(rootElement, 14));
-      columnText.addElement(subParagraph);
+      columnText.addElement(createChildrenParagraphs(rootElement, 14));
       document.add(columnText);
     }
     catch (DocumentException e) {
@@ -49,14 +47,15 @@ public class SeriesReport implements IITextReport {
   }
 
   private Paragraph createChildrenParagraphs(IPlotElement plotElement, int headerSize) {
-    Paragraph subParagraph = new Paragraph();
+    Paragraph container = new Paragraph();
     for (IPlotElement childElement : plotElement.getChildren()) {
-      addToReport(childElement, headerSize - 2, subParagraph);
+      Paragraph childParagraph = addToReport(childElement, headerSize - 2);
+      container.add(childParagraph);
     }
-    return subParagraph;
+    return container;
   }
 
-  private void addToReport(IPlotElement plotElement, int headerSize, TextElementArray textElement) {
+  private Paragraph addToReport(IPlotElement plotElement, int headerSize) {
     IItemDescription description = plotElement.getDescription();
     Paragraph container = new Paragraph();
     Paragraph titleParagraph = createTitleParagraph(description, headerSize);
@@ -68,7 +67,7 @@ public class SeriesReport implements IITextReport {
       titleParagraph.setSpacingAfter(0);
     }
     container.add(createChildrenParagraphs(plotElement, headerSize));
-    textElement.add(container);
+    return container;
   }
 
   private Paragraph createTitleParagraph(IItemDescription description, int headerSize) {
