@@ -10,7 +10,6 @@ import net.sf.anathema.framework.reporting.itext.IITextReport;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 
-import com.lowagie.text.Chapter;
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
@@ -21,15 +20,27 @@ import com.lowagie.text.ListItem;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.Section;
 import com.lowagie.text.TextElementArray;
+import com.lowagie.text.pdf.PdfAction;
+import com.lowagie.text.pdf.PdfOutline;
 import com.lowagie.text.pdf.PdfWriter;
 
-public class SeriesReport implements IITextReport {
+public class MultiColumnSeriesReport implements IITextReport {
+
   private final ITextReportUtils reportUtils = new ITextReportUtils();
 
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     if (!supports(item)) {
       throw new IllegalArgumentException("Item not supported: " + item.getDisplayName()); //$NON-NLS-1$
     }
+    // writer.setPageEvent(new PdfPageEventHelper() {
+    // @Override
+    // public void onParagraph(PdfWriter writer, Document document, float paragraphPosition) {
+    // PdfContentByte directContent = writer.getDirectContent();
+    // PdfOutline rootOutline = directContent.getRootOutline();
+    // PdfDestination destination = new PdfDestination(PdfDestination.XYZ, -1, paragraphPosition, 0);
+    // rootOutline.addKid(new PdfOutline(rootOutline, destination, "Test"));
+    // }
+    // });
     IPlotModel plotModel = ((ISeries) item.getItemData()).getPlot();
     IPlotElement rootElement = plotModel.getRootElement();
     try {
@@ -42,18 +53,26 @@ public class SeriesReport implements IITextReport {
       document.add(new Paragraph("Synopsis:", reportUtils.createDefaultFont(8, Font.BOLD))); //$NON-NLS-1$
       document.add(createContentParagraph(rootElement.getDescription()));
       document.add(new Paragraph("Contents:", reportUtils.createDefaultFont(8, Font.BOLD))); //$NON-NLS-1$
-      List tableOfContents = new List(true, false, 15);
-      tableOfContents.setListSymbol(new Chunk("", reportUtils.createDefaultFont(8, Font.NORMAL))); //$NON-NLS-1$
-      createTableOfContents(rootElement, tableOfContents);
-      document.add(tableOfContents);
+      // List tableOfContents = new List(true, false, 15);
+      // tableOfContents.setListSymbol(new Chunk("", reportUtils.createDefaultFont(8, Font.NORMAL))); //$NON-NLS-1$
+      // createTableOfContents(rootElement, tableOfContents);
+      // document.add(tableOfContents);
+      PdfOutline rootOutline = writer.getDirectContent().getRootOutline();
       int chapterNumber = 1;
       for (IPlotElement story : rootElement.getChildren()) {
-        Paragraph title = createTitleParagraph(story.getDescription(), 13);
-        Chapter chapter = new Chapter(title, chapterNumber);
-        chapterNumber++;
-        chapter.add(createContentParagraph(story.getDescription()));
-        addSubsections(story, chapter, 11);
-        document.add(chapter);
+        document.newPage();
+        String storyTitle = createSectionTitle(story.getDescription(), new int[] { chapterNumber++ });
+        Paragraph chapterTitleParagraph = createTitleParagraph(storyTitle, 13);
+        document.add(chapterTitleParagraph);
+        PdfAction action = PdfAction.gotoLocalPage(storyTitle, false);
+        new PdfOutline(rootOutline, action, storyTitle);
+
+        // Paragraph title = createTitleParagraph(story.getDescription(), 13);
+        // Chapter chapter = new Chapter(title, chapterNumber);
+        // chapterNumber++;
+        // chapter.add(createContentParagraph(story.getDescription()));
+        // addSubsections(story, chapter, 11);
+        // document.add(chapter);
       }
     }
     catch (DocumentException e) {
@@ -86,14 +105,27 @@ public class SeriesReport implements IITextReport {
     }
   }
 
-  private Paragraph createTitleParagraph(IItemDescription description, int headerSize) {
+  private Paragraph createTitleParagraph(String titleString, int headerSize) {
     Font font = reportUtils.createDefaultFont(headerSize, Font.BOLD);
-    Chunk title = new Chunk(description.getName().getText(), font);
-    title.setLocalDestination(description.getName().getText());
+    Chunk title = new Chunk(titleString, font);
+    title.setLocalDestination(titleString);
     Paragraph paragraph = new Paragraph(title);
     paragraph.setAlignment(Element.ALIGN_JUSTIFIED);
     paragraph.setLeading(font.size() * 1.2f);
     return paragraph;
+  }
+
+  private String createSectionTitle(IItemDescription description, int[] sectionMarking) {
+    String prepend = new String();
+    for (int mark : sectionMarking) {
+      prepend = prepend.concat(mark + "."); //$NON-NLS-1$
+    }
+    String finalTitle = prepend + " " + description.getName().getText(); //$NON-NLS-1$
+    return finalTitle;
+  }
+
+  private Paragraph createTitleParagraph(IItemDescription description, int headerSize) {
+    return createTitleParagraph(description.getName().getText(), headerSize);
   }
 
   private TextElementArray createContentParagraph(IItemDescription description) {
