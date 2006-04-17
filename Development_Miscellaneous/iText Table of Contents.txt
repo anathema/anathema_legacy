@@ -1,0 +1,41 @@
+Just as a follow-up for other users:
+
+I never really figured out how to use PdfStamper as Paolo suggested in his 
+last posting on this subject.  Instead, I realized that I could use a normal 
+PdfWriter instead of PdfCopy to append the body contents.  So, the steps I 
+followed were somethng like this:
+
+Create ToC and body in separate documents.  As I do this, I save an ArrayList 
+of data structures that represents the ToC entries, so that I can easily 
+regenerate it.  This data structure contains the text that should go in the 
+ToC, the page number that it points to, and a unique "destination name" that 
+is really just the page number (this will come into play later).
+
+After finishing the ToC and body, I make a note of how many pages are in the 
+ToC.  I next create a new document with PdfWriter.  This will be my 
+consolidated document. Based on my ToC data structure, I reacreate the ToC in 
+this new document, adjusting the page numbers by the number of pages in the 
+original ToC.  As I create each ToC entry this time, I make them act as links 
+to the relevant pages (which don't exist yet) by using chunk.setLocalGoto(), 
+passing in the "destination name" of the ToC entry data structure.  It seems 
+to be fine to set a local goto with a named destination that does not exist, 
+as long as the destination does exist before you try to close the document.
+
+Next, I use a PdfReader and loop through the pages of the body document, using 
+PdfWriter.getImportedPage() and PdfWriter.addTemplate() to add each page to my 
+consolidated document.  Based on my ToC data structure, I will know when I 
+have imported a page that the ToC should point to.  When this happens, I 
+create a PdfDestination using PdfDestination(PdfDestination.XYZ, -1, -1, 0).  
+Then I give this destination the same name as the "destination name" that I 
+passed into chunk.setLocalGoto() earlier when creating the ToC.  To do this, I 
+use the consolidated writer's DirectContent.LocalDestination() method (it took 
+me a while to find that one).
+
+Everything is working well for me, at least so far.  I do not need any reply 
+to this posting, it was just intended to wrap up the thread and perhaps help 
+out other people who need to do what I needed to do.  Of course, if the iText 
+gurus feel that I am setting a bad example for other users by doing things in 
+this way, they are free to comment.
+
+Thanks,
+Jason
