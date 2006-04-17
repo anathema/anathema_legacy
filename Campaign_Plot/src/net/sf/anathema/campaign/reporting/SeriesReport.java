@@ -1,5 +1,6 @@
 package net.sf.anathema.campaign.reporting;
 
+import net.sf.anathema.campaign.concrete.plot.PlotModel;
 import net.sf.anathema.campaign.model.ISeries;
 import net.sf.anathema.campaign.model.plot.IPlotElement;
 import net.sf.anathema.campaign.model.plot.IPlotModel;
@@ -21,7 +22,7 @@ import com.lowagie.text.TextElementArray;
 import com.lowagie.text.pdf.MultiColumnText;
 
 public class SeriesReport implements IITextReport {
-  ITextReportUtils reportUtils = new ITextReportUtils();
+  private final ITextReportUtils reportUtils = new ITextReportUtils();
 
   public void performPrint(IItem item, Document document) throws ReportException {
     if (!supports(item)) {
@@ -36,10 +37,16 @@ public class SeriesReport implements IITextReport {
           Font.BOLD);
       headerParagraph.font().setSize(15);
       document.add(headerParagraph);
+      document.add(new Paragraph("Synopsis:", reportUtils.createDefaultFont(8, Font.BOLD))); //$NON-NLS-1$
+      document.add(createContentParagraph(rootElement.getDescription()));
+      document.add(new Paragraph("Content:", reportUtils.createDefaultFont(8, Font.BOLD))); //$NON-NLS-1$
+      List tableOfContents = new List(true, false, 15);
+      tableOfContents.setListSymbol(new Chunk("", reportUtils.createDefaultFont(8, Font.NORMAL))); //$NON-NLS-1$
+      createTableOfContents(rootElement, tableOfContents);
+      document.add(tableOfContents);
+      document.newPage();
       MultiColumnText columnText = new MultiColumnText();
       columnText.addRegularColumns(document.left(), document.right(), 10f, 2);
-      TextElementArray rootContentArray = createContentParagraph(rootElement.getDescription());
-      columnText.addElement(rootContentArray);
       List list = new List(true, 10);
       list.setListSymbol(new Chunk("", reportUtils.createDefaultFont(12, Font.BOLD))); //$NON-NLS-1$
       createChildrenParagraphs(rootElement, 12, list);
@@ -48,6 +55,20 @@ public class SeriesReport implements IITextReport {
     }
     catch (DocumentException e) {
       e.printStackTrace();
+    }
+  }
+
+  private void createTableOfContents(IPlotElement rootElement, List tableOfContents) {
+    for (IPlotElement element : rootElement.getChildren()) {
+      String text = element.getDescription().getName().getText();
+      Font tableOfContentsFont = tableOfContents.symbol().font();
+      tableOfContents.add(new ListItem(text, tableOfContentsFont));
+      if (element.getTimeUnit().getId().equals(PlotModel.ID_STORY)) {
+        List subContents = new List(true, true, 15);
+        subContents.setListSymbol(new Chunk("", tableOfContentsFont)); //$NON-NLS-1$
+        createTableOfContents(element, subContents);
+        tableOfContents.add(subContents);
+      }
     }
   }
 
