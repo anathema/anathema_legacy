@@ -28,10 +28,19 @@ public class SeriesReport implements IITextReport {
     IPlotModel plotModel = ((ISeries) item.getItemData()).getPlot();
     IPlotElement rootElement = plotModel.getRootElement();
     try {
+      Paragraph headerParagraph = reportUtils.createNewParagraph(
+          rootElement.getDescription().getName().getText(),
+          Element.ALIGN_CENTER,
+          Font.BOLD);
+      headerParagraph.font().setSize(15);
+      document.add(headerParagraph);
       MultiColumnText columnText = new MultiColumnText();
       columnText.addRegularColumns(document.left(), document.right(), 10f, 2);
+      TextElementArray rootContentArray = createContentParagraph(rootElement.getDescription());
+      columnText.addElement(rootContentArray);
       Paragraph subParagraph = new Paragraph();
-      addToReport(rootElement, 12, subParagraph);
+      TextElementArray childrenArray = createChildrenParagrah(rootElement, 12);
+      subParagraph.add(childrenArray);
       columnText.addElement(subParagraph);
       document.add(columnText);
     }
@@ -40,25 +49,46 @@ public class SeriesReport implements IITextReport {
     }
   }
 
+  private Paragraph createChildrenParagrah(IPlotElement plotElement, int headerSize) {
+    Paragraph subParagraph = new Paragraph();
+    for (IPlotElement childElement : plotElement.getChildren()) {
+      addToReport(childElement, headerSize - 1, subParagraph);
+    }
+    return subParagraph;
+  }
+
   private void addToReport(IPlotElement plotElement, int headerSize, TextElementArray textElement) {
     IItemDescription description = plotElement.getDescription();
+    boolean hasContent = !description.getContent().isEmpty();
+    TextElementArray titleParagraph = createTitleParagraph(description, headerSize);
+    textElement.add(titleParagraph);
+    if (hasContent) {
+      textElement.add(createContentParagraph(description));
+    }
+    Paragraph childParagraph = createChildrenParagrah(plotElement, headerSize);
+    if (!hasContent) {
+      childParagraph.setSpacingBefore(0);
+    }
+    textElement.add(childParagraph);
+  }
+
+  private TextElementArray createTitleParagraph(IItemDescription description, int headerSize) {
     String title = description.getName().getText();
-    ITextPart[] content = description.getContent().getText();
     Paragraph paragraph = reportUtils.createNewParagraph(title, Element.ALIGN_CENTER, Font.BOLD);
+    paragraph.setLeading(paragraph.font().size() * 1.2f);
     paragraph.font().setSize(headerSize);
     paragraph.setAlignment(Element.ALIGN_JUSTIFIED);
+    return paragraph;
+  }
+
+  private TextElementArray createContentParagraph(IItemDescription description) {
+    ITextPart[] content = description.getContent().getText();
     Paragraph contentParagraph = new Paragraph();
     for (ITextPart textpart : content) {
       Font font = reportUtils.createDefaultFont(8, reportUtils.getStyle(textpart.getFormat()));
       contentParagraph.add(new Chunk(textpart.getText(), font));
     }
-    textElement.add(paragraph);
-    textElement.add(contentParagraph);
-    for (IPlotElement childElement : plotElement.getChildren()) {
-      Paragraph subParagraph = new Paragraph();
-      addToReport(childElement, headerSize - 1, subParagraph);
-      textElement.add(subParagraph);
-    }
+    return contentParagraph;
   }
 
   public boolean supports(IItem item) {
