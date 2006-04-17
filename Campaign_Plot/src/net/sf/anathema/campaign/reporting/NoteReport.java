@@ -17,7 +17,7 @@ import com.lowagie.text.pdf.MultiColumnText;
 
 public class NoteReport implements IITextReport {
 
-  ITextReportUtils reportUtils = new ITextReportUtils();
+  private final ITextReportUtils reportUtils = new ITextReportUtils();
 
   public void performPrint(IItem item, Document document) throws ReportException {
     if (!supports(item)) {
