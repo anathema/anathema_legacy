@@ -10,6 +10,7 @@ import net.sf.anathema.framework.reporting.itext.IITextReport;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 
+import com.lowagie.text.Chapter;
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
@@ -18,8 +19,8 @@ import com.lowagie.text.Font;
 import com.lowagie.text.List;
 import com.lowagie.text.ListItem;
 import com.lowagie.text.Paragraph;
+import com.lowagie.text.Section;
 import com.lowagie.text.TextElementArray;
-import com.lowagie.text.pdf.MultiColumnText;
 
 public class SeriesReport implements IITextReport {
   private final ITextReportUtils reportUtils = new ITextReportUtils();
@@ -44,17 +45,26 @@ public class SeriesReport implements IITextReport {
       tableOfContents.setListSymbol(new Chunk("", reportUtils.createDefaultFont(8, Font.NORMAL))); //$NON-NLS-1$
       createTableOfContents(rootElement, tableOfContents);
       document.add(tableOfContents);
-      document.newPage();
-      MultiColumnText columnText = new MultiColumnText();
-      columnText.addRegularColumns(document.left(), document.right(), 10f, 2);
-      List list = new List(true, 10);
-      list.setListSymbol(new Chunk("", reportUtils.createDefaultFont(12, Font.BOLD))); //$NON-NLS-1$
-      createChildrenParagraphs(rootElement, 12, list);
-      columnText.addElement(list);
-      document.add(columnText);
+      int chapterNumber = 1;
+      for (IPlotElement story : rootElement.getChildren()) {
+        Paragraph title = createTitleParagraph(story.getDescription(), 13);
+        Chapter chapter = new Chapter(title, chapterNumber++);
+        chapter.add(createContentParagraph(story.getDescription()));
+        addSubsections(story, chapter, 11);
+        document.add(chapter);
+      }
     }
     catch (DocumentException e) {
       e.printStackTrace();
+    }
+  }
+
+  private void addSubsections(IPlotElement story, Section superSection, int titleSize) {
+    for (IPlotElement episode : story.getChildren()) {
+      Paragraph episodeTitle = createTitleParagraph(episode.getDescription(), titleSize);
+      Section section = superSection.addSection(episodeTitle);
+      section.add(createContentParagraph(episode.getDescription()));
+      addSubsections(episode, section, titleSize - 2);
     }
   }
 
@@ -72,33 +82,6 @@ public class SeriesReport implements IITextReport {
         tableOfContents.add(subContents);
       }
     }
-  }
-
-  private void createChildrenParagraphs(IPlotElement plotElement, int headerSize, List list) {
-    for (IPlotElement childElement : plotElement.getChildren()) {
-      Paragraph childParagraph = addToReport(childElement, headerSize);
-      list.add(new ListItem(childParagraph));
-    }
-  }
-
-  private Paragraph addToReport(IPlotElement plotElement, int headerSize) {
-    IItemDescription description = plotElement.getDescription();
-    Paragraph container = new Paragraph();
-    Paragraph titleParagraph = createTitleParagraph(description, headerSize);
-    container.add(titleParagraph);
-    if ((!description.getContent().isEmpty())) {
-      TextElementArray contentParagraph = createContentParagraph(description);
-      contentParagraph.add("\n"); //$NON-NLS-1$
-      container.add(contentParagraph);
-    }
-    else {
-      titleParagraph.setSpacingAfter(0);
-    }
-    List list = new List(false, true, 10);
-    list.setListSymbol(new Chunk("", reportUtils.createDefaultFont(headerSize - 2, Font.BOLD))); //$NON-NLS-1$
-    createChildrenParagraphs(plotElement, headerSize - 2, list);
-    container.add(list);
-    return container;
   }
 
   private Paragraph createTitleParagraph(IItemDescription description, int headerSize) {
