@@ -39,7 +39,7 @@ public class SeriesReport implements IITextReport {
       document.add(headerParagraph);
       document.add(new Paragraph("Synopsis:", reportUtils.createDefaultFont(8, Font.BOLD))); //$NON-NLS-1$
       document.add(createContentParagraph(rootElement.getDescription()));
-      document.add(new Paragraph("Content:", reportUtils.createDefaultFont(8, Font.BOLD))); //$NON-NLS-1$
+      document.add(new Paragraph("Contents:", reportUtils.createDefaultFont(8, Font.BOLD))); //$NON-NLS-1$
       List tableOfContents = new List(true, false, 15);
       tableOfContents.setListSymbol(new Chunk("", reportUtils.createDefaultFont(8, Font.NORMAL))); //$NON-NLS-1$
       createTableOfContents(rootElement, tableOfContents);
@@ -60,9 +60,11 @@ public class SeriesReport implements IITextReport {
 
   private void createTableOfContents(IPlotElement rootElement, List tableOfContents) {
     for (IPlotElement element : rootElement.getChildren()) {
-      String text = element.getDescription().getName().getText();
       Font tableOfContentsFont = tableOfContents.symbol().font();
-      tableOfContents.add(new ListItem(text, tableOfContentsFont));
+      String title = element.getDescription().getName().getText();
+      Chunk contentChunk = new Chunk(title, tableOfContentsFont);
+      contentChunk.setLocalGoto(title);
+      tableOfContents.add(new ListItem(contentChunk));
       if (element.getTimeUnit().getId().equals(PlotModel.ID_STORY)) {
         List subContents = new List(true, true, 15);
         subContents.setListSymbol(new Chunk("", tableOfContentsFont)); //$NON-NLS-1$
@@ -100,11 +102,12 @@ public class SeriesReport implements IITextReport {
   }
 
   private Paragraph createTitleParagraph(IItemDescription description, int headerSize) {
-    String title = description.getName().getText();
-    Paragraph paragraph = reportUtils.createNewParagraph(title, Element.ALIGN_CENTER, Font.BOLD);
-    paragraph.setLeading(paragraph.font().size() * 1.2f);
-    paragraph.font().setSize(headerSize);
+    Font font = reportUtils.createDefaultFont(headerSize, Font.BOLD);
+    Chunk title = new Chunk(description.getName().getText(), font);
+    title.setLocalDestination(description.getName().getText());
+    Paragraph paragraph = new Paragraph(title);
     paragraph.setAlignment(Element.ALIGN_JUSTIFIED);
+    paragraph.setLeading(font.size() * 1.2f);
     return paragraph;
   }
 
