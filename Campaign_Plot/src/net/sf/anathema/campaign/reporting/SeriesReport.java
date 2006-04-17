@@ -39,8 +39,7 @@ public class SeriesReport implements IITextReport {
       TextElementArray rootContentArray = createContentParagraph(rootElement.getDescription());
       columnText.addElement(rootContentArray);
       Paragraph subParagraph = new Paragraph();
-      TextElementArray childrenArray = createChildrenParagraphs(rootElement, 14);
-      subParagraph.add(childrenArray);
+      subParagraph.add(createChildrenParagraphs(rootElement, 14));
       columnText.addElement(subParagraph);
       document.add(columnText);
     }
@@ -60,21 +59,19 @@ public class SeriesReport implements IITextReport {
   private void addToReport(IPlotElement plotElement, int headerSize, TextElementArray textElement) {
     IItemDescription description = plotElement.getDescription();
     Paragraph container = new Paragraph();
-    TextElementArray titleParagraph = createTitleParagraph(description, headerSize);
+    Paragraph titleParagraph = createTitleParagraph(description, headerSize);
     container.add(titleParagraph);
-    boolean hasContent = !description.getContent().isEmpty();
-    if (hasContent) {
+    if ((!description.getContent().isEmpty())) {
       container.add(createContentParagraph(description));
     }
-    Paragraph childParagraph = createChildrenParagraphs(plotElement, headerSize);
-    if (!hasContent) {
-      childParagraph.setSpacingBefore(0);
+    else {
+      titleParagraph.setSpacingAfter(0);
     }
-    container.add(childParagraph);
+    container.add(createChildrenParagraphs(plotElement, headerSize));
     textElement.add(container);
   }
 
-  private TextElementArray createTitleParagraph(IItemDescription description, int headerSize) {
+  private Paragraph createTitleParagraph(IItemDescription description, int headerSize) {
     String title = description.getName().getText();
     Paragraph paragraph = reportUtils.createNewParagraph(title, Element.ALIGN_CENTER, Font.BOLD);
     paragraph.setLeading(paragraph.font().size() * 1.2f);
