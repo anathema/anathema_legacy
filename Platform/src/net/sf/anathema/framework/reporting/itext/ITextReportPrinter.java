@@ -14,9 +14,12 @@ public class ITextReportPrinter {
   public void printReport(IItem item, IITextReport report, OutputStream outputStream) throws ReportException {
     Document document = new Document();
     try {
-      PdfWriter.getInstance(document, outputStream);
+      PdfWriter writer = PdfWriter.getInstance(document, outputStream);
+      writer.setViewerPreferences(PdfWriter.DisplayDocTitle);
+      document.addTitle(item.getDisplayName());
       document.open();
       report.performPrint(item, document);
+
     }
     catch (DocumentException de) {
       throw new ReportException(de);
