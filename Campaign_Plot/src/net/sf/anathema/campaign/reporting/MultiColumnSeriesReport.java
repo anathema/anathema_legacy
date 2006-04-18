@@ -52,7 +52,7 @@ public class MultiColumnSeriesReport implements IITextReport {
         Paragraph storyTitleParagraph = createTitleParagraph(storyTitle, 13);
         document.add(storyTitleParagraph);
         PdfOutline storyOutline = addOutline(rootOutline, storyTitle);
-        MultiColumnText columnText = new MultiColumnText(/* document.top() - document.bottom() */);
+        MultiColumnText columnText = new MultiColumnText(/* document.top() - document.bottom() - 15 */);
         columnText.addRegularColumns(document.left(), document.right(), 20, 2);
         addTextAndChildren(columnText, story, storyOutline, new int[] { storyNumber });
         document.add(columnText);
@@ -143,7 +143,7 @@ public class MultiColumnSeriesReport implements IITextReport {
   private TextElementArray createContentParagraph(IItemDescription description) {
     ITextPart[] content = description.getContent().getText();
     Paragraph contentParagraph = new Paragraph();
-    contentParagraph.setLeading(0, 1.3f);
+    contentParagraph.setLeading(0, 1.4f);
     contentParagraph.setAlignment(Element.ALIGN_JUSTIFIED);
     for (ITextPart textpart : content) {
       Font font = reportUtils.createDefaultFont(8, reportUtils.getStyle(textpart.getFormat()));
