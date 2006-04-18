@@ -3,7 +3,6 @@ package net.sf.anathema.campaign.reporting;
 import net.sf.anathema.campaign.concrete.plot.PlotModel;
 import net.sf.anathema.campaign.model.ISeries;
 import net.sf.anathema.campaign.model.plot.IPlotElement;
-import net.sf.anathema.campaign.model.plot.IPlotModel;
 import net.sf.anathema.framework.itemdata.IItemDescription;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.itext.IITextReport;
@@ -18,8 +17,8 @@ import com.lowagie.text.Font;
 import com.lowagie.text.List;
 import com.lowagie.text.ListItem;
 import com.lowagie.text.Paragraph;
-import com.lowagie.text.Section;
 import com.lowagie.text.TextElementArray;
+import com.lowagie.text.pdf.MultiColumnText;
 import com.lowagie.text.pdf.PdfAction;
 import com.lowagie.text.pdf.PdfOutline;
 import com.lowagie.text.pdf.PdfWriter;
@@ -32,47 +31,31 @@ public class MultiColumnSeriesReport implements IITextReport {
     if (!supports(item)) {
       throw new IllegalArgumentException("Item not supported: " + item.getDisplayName()); //$NON-NLS-1$
     }
-    // writer.setPageEvent(new PdfPageEventHelper() {
-    // @Override
-    // public void onParagraph(PdfWriter writer, Document document, float paragraphPosition) {
-    // PdfContentByte directContent = writer.getDirectContent();
-    // PdfOutline rootOutline = directContent.getRootOutline();
-    // PdfDestination destination = new PdfDestination(PdfDestination.XYZ, -1, paragraphPosition, 0);
-    // rootOutline.addKid(new PdfOutline(rootOutline, destination, "Test"));
-    // }
-    // });
-    IPlotModel plotModel = ((ISeries) item.getItemData()).getPlot();
-    IPlotElement rootElement = plotModel.getRootElement();
+    writer.setSpaceCharRatio(PdfWriter.NO_SPACE_CHAR_RATIO);
+    writer.setViewerPreferences(PdfWriter.PageModeUseOutlines);
+    PdfOutline rootOutline = writer.getDirectContent().getRootOutline();
+    IPlotElement rootElement = ((ISeries) item.getItemData()).getPlot().getRootElement();
     try {
-      Paragraph headerParagraph = reportUtils.createNewParagraph(
-          rootElement.getDescription().getName().getText(),
-          Element.ALIGN_CENTER,
-          Font.BOLD);
+      String seriesTitle = rootElement.getDescription().getName().getText();
+      Paragraph headerParagraph = reportUtils.createNewParagraph(seriesTitle, Element.ALIGN_CENTER, Font.BOLD);
+      new PdfOutline(rootOutline, new PdfAction(PdfAction.FIRSTPAGE), seriesTitle);
       headerParagraph.font().setSize(15);
       document.add(headerParagraph);
-      document.add(new Paragraph("Synopsis:", reportUtils.createDefaultFont(8, Font.BOLD))); //$NON-NLS-1$
+      Paragraph paragraph = new Paragraph("Synopsis:", reportUtils.createDefaultFont(8, Font.BOLD)); //$NON-NLS-1$
+      paragraph.setSpacingAfter(12);
+      document.add(paragraph);
       document.add(createContentParagraph(rootElement.getDescription()));
-      document.add(new Paragraph("Contents:", reportUtils.createDefaultFont(8, Font.BOLD))); //$NON-NLS-1$
-      // List tableOfContents = new List(true, false, 15);
-      // tableOfContents.setListSymbol(new Chunk("", reportUtils.createDefaultFont(8, Font.NORMAL))); //$NON-NLS-1$
-      // createTableOfContents(rootElement, tableOfContents);
-      // document.add(tableOfContents);
-      PdfOutline rootOutline = writer.getDirectContent().getRootOutline();
-      int chapterNumber = 1;
+      int storyNumber = 1;
       for (IPlotElement story : rootElement.getChildren()) {
-        document.newPage();
-        String storyTitle = createSectionTitle(story.getDescription(), new int[] { chapterNumber++ });
-        Paragraph chapterTitleParagraph = createTitleParagraph(storyTitle, 13);
-        document.add(chapterTitleParagraph);
-        PdfAction action = PdfAction.gotoLocalPage(storyTitle, false);
-        new PdfOutline(rootOutline, action, storyTitle);
-
-        // Paragraph title = createTitleParagraph(story.getDescription(), 13);
-        // Chapter chapter = new Chapter(title, chapterNumber);
-        // chapterNumber++;
-        // chapter.add(createContentParagraph(story.getDescription()));
-        // addSubsections(story, chapter, 11);
-        // document.add(chapter);
+        createNewPage(document);
+        String storyTitle = createSectionTitle(story.getDescription(), new int[] { storyNumber++ });
+        Paragraph storyTitleParagraph = createTitleParagraph(storyTitle, 13);
+        document.add(storyTitleParagraph);
+        PdfOutline storyOutline = addOutline(rootOutline, storyTitle);
+        MultiColumnText columnText = new MultiColumnText(/* document.top() - document.bottom() */);
+        columnText.addRegularColumns(document.left(), document.right(), 20, 2);
+        addTextAndChildren(columnText, story, storyOutline, new int[] { storyNumber });
+        document.add(columnText);
       }
     }
     catch (DocumentException e) {
@@ -80,13 +63,46 @@ public class MultiColumnSeriesReport implements IITextReport {
     }
   }
 
-  private void addSubsections(IPlotElement story, Section superSection, int titleSize) {
-    for (IPlotElement episode : story.getChildren()) {
-      Paragraph episodeTitle = createTitleParagraph(episode.getDescription(), titleSize);
-      Section section = superSection.addSection(episodeTitle);
-      section.add(createContentParagraph(episode.getDescription()));
-      addSubsections(episode, section, titleSize - 2);
+  private void addTextAndChildren(
+      MultiColumnText columnText,
+      IPlotElement element,
+      PdfOutline elementOutline,
+      int[] elementTitleNumbers) throws DocumentException {
+    columnText.addElement(createContentParagraph(element.getDescription()));
+    int episodeNumber = 1;
+    for (IPlotElement episode : element.getChildren()) {
+      addSubElement(columnText, episode, elementOutline, elementTitleNumbers, episodeNumber++);
     }
+  }
+
+  private void addSubElement(
+      MultiColumnText columnText,
+      IPlotElement element,
+      PdfOutline parentOutline,
+      int[] superElementNumbers,
+      int thisElementNumber) throws DocumentException {
+    int[] titleNumbers = extendArray(superElementNumbers, thisElementNumber);
+    String elementTitle = createSectionTitle(element.getDescription(), titleNumbers);
+    Paragraph elementTitleParagraph = createTitleParagraph(elementTitle, 9);
+    PdfOutline outline = addOutline(parentOutline, elementTitle);
+    columnText.addElement(elementTitleParagraph);
+    addTextAndChildren(columnText, element, outline, titleNumbers);
+  }
+
+  private int[] extendArray(int[] array, int extension) {
+    int[] newArray = new int[array.length + 1];
+    System.arraycopy(array, 0, newArray, 0, array.length);
+    newArray[array.length] = extension;
+    return newArray;
+  }
+
+  private PdfOutline addOutline(PdfOutline parentOutline, String outlineTitle) {
+    PdfAction episodeAction = PdfAction.gotoLocalPage(outlineTitle, false);
+    return new PdfOutline(parentOutline, episodeAction, outlineTitle);
+  }
+
+  private void createNewPage(Document document) throws DocumentException {
+    document.newPage();
   }
 
   private void createTableOfContents(IPlotElement rootElement, List tableOfContents) {
@@ -124,16 +140,17 @@ public class MultiColumnSeriesReport implements IITextReport {
     return finalTitle;
   }
 
-  private Paragraph createTitleParagraph(IItemDescription description, int headerSize) {
-    return createTitleParagraph(description.getName().getText(), headerSize);
-  }
-
   private TextElementArray createContentParagraph(IItemDescription description) {
     ITextPart[] content = description.getContent().getText();
     Paragraph contentParagraph = new Paragraph();
+    contentParagraph.setLeading(0, 1.3f);
+    contentParagraph.setAlignment(Element.ALIGN_JUSTIFIED);
     for (ITextPart textpart : content) {
       Font font = reportUtils.createDefaultFont(8, reportUtils.getStyle(textpart.getFormat()));
       contentParagraph.add(new Chunk(textpart.getText(), font));
+    }
+    if (content.length > 0) {
+      contentParagraph.setSpacingAfter(12);
     }
     return contentParagraph;
   }
@@ -145,3 +162,16 @@ public class MultiColumnSeriesReport implements IITextReport {
     return item.getItemData() instanceof ISeries;
   }
 }
+
+// List tableOfContents = new List(true, false, 15);
+// tableOfContents.setListSymbol(new Chunk("", reportUtils.createDefaultFont(8, Font.NORMAL))); //$NON-NLS-1$
+// createTableOfContents(rootElement, tableOfContents);
+// document.add(tableOfContents);
+
+// For some reason, this breaks printing (See: http: //
+// itextdocs.lowagie.com/tutorial/objects/columns/index.html)
+// do {
+// document.add(columnText);
+// columnText.nextColumn();
+// createNewPage(document);
+// }
