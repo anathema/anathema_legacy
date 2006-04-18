@@ -15,8 +15,10 @@ public class ITextReportPrinter {
     Document document = new Document();
     try {
       PdfWriter writer = PdfWriter.getInstance(document, outputStream);
+      writer.setPdfVersion(PdfWriter.VERSION_1_5);
       writer.setViewerPreferences(PdfWriter.DisplayDocTitle);
       document.addTitle(item.getDisplayName());
+      document.addCreator("Anathema"); //$NON-NLS-1$
       document.open();
       report.performPrint(item, document, writer);
 
