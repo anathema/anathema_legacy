@@ -17,13 +17,13 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Paragraph;
-import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.TextElementArray;
 import com.lowagie.text.pdf.MultiColumnText;
 import com.lowagie.text.pdf.PdfAction;
 import com.lowagie.text.pdf.PdfOutline;
 import com.lowagie.text.pdf.PdfPageEventHelper;
+import com.lowagie.text.pdf.PdfPageLabels;
 import com.lowagie.text.pdf.PdfWriter;
 
 public class MultiColumnSeriesReport implements IITextReport {
@@ -37,6 +37,7 @@ public class MultiColumnSeriesReport implements IITextReport {
     }
     writer.setSpaceCharRatio(PdfWriter.NO_SPACE_CHAR_RATIO);
     writer.setViewerPreferences(PdfWriter.PageModeUseOutlines);
+    writer.setLinearPageMode();
     writer.setPageEvent(new PdfPageEventHelper() {
       @Override
       public void onGenericTag(PdfWriter currentWriter, Document currentDocument, Rectangle rect, String text) {
@@ -47,24 +48,17 @@ public class MultiColumnSeriesReport implements IITextReport {
     IPlotElement rootElement = ((ISeries) item.getItemData()).getPlot().getRootElement();
     try {
       String seriesTitle = rootElement.getDescription().getName().getText();
-      Paragraph headerParagraph = reportUtils.createNewParagraph(seriesTitle, Element.ALIGN_CENTER, Font.BOLD);
       new PdfOutline(rootOutline, new PdfAction(PdfAction.FIRSTPAGE), seriesTitle);
-      headerParagraph.font().setSize(15);
-      document.add(headerParagraph);
-      Paragraph paragraph = new Paragraph("Synopsis:", reportUtils.createDefaultFont(8, Font.BOLD)); //$NON-NLS-1$
-      paragraph.setSpacingAfter(12);
-      document.add(paragraph);
-      document.add(createContentParagraph(rootElement.getDescription()));
       int storyNumber = 1;
       for (IPlotElement story : rootElement.getChildren()) {
         createNewPage(document);
-        String storyTitle = createSectionTitle(story.getDescription(), new int[] { storyNumber++ });
+        String storyTitle = createSectionTitle(story.getDescription(), new int[] { storyNumber });
         Paragraph storyTitleParagraph = createTitleParagraph(storyTitle, 13);
         document.add(storyTitleParagraph);
         PdfOutline storyOutline = addOutline(rootOutline, storyTitle);
         MultiColumnText columnText = new MultiColumnText(document.top() - document.bottom() - 15);
         columnText.addRegularColumns(document.left(), document.right(), 20, 2);
-        addTextAndChildren(columnText, story, storyOutline, new int[] { storyNumber });
+        addTextAndChildren(columnText, story, storyOutline, new int[] { storyNumber++ });
         do {
           document.add(columnText);
           columnText.nextColumn();
@@ -121,6 +115,7 @@ public class MultiColumnSeriesReport implements IITextReport {
   }
 
   private void createTableOfContents(Document document, PdfWriter writer, String seriesTitle) throws DocumentException {
+    int lastContentPage = writer.getPageNumber();
     Paragraph titleParagraph = reportUtils.createNewParagraph(seriesTitle, Element.ALIGN_CENTER, Font.BOLD);
     new PdfOutline(writer.getRootOutline(), new PdfAction(PdfAction.FIRSTPAGE), seriesTitle);
     titleParagraph.font().setSize(15);
@@ -142,17 +137,20 @@ public class MultiColumnSeriesReport implements IITextReport {
         yCoordinate = document.top() - 15;
       }
     }
-        int totalPages = writer.getPageNumber() - 1;
+    document.newPage();
+    int totalPages = writer.getPageNumber() - 1;
+    int tocPageLength = totalPages - lastContentPage;
     int reorder[] = new int[totalPages];
-    for (int k = split; k <= totalPages; ++k)
-      reorder[k - split] = k;
-    int off = totalPages - split;
-    for (int k = 1; k < split; ++k)
-      reorder[off + k] = k;
+    for (int index = 0; index < tocPageLength; ++index) {
+      reorder[index] = lastContentPage + index+1;
+    }
+    for (int index = 0; index < lastContentPage; ++index) {
+      reorder[tocPageLength + index] = index+1;
+    }
     writer.reorderPages(reorder);
     PdfPageLabels pageLabels = new PdfPageLabels();
     pageLabels.addPageLabel(1, PdfPageLabels.LOWERCASE_ROMAN_NUMERALS);
-    pageLabels.addPageLabel(totalPages - split + 2, PdfPageLabels.DECIMAL_ARABIC_NUMERALS);
+    pageLabels.addPageLabel(totalPages - lastContentPage + 1, PdfPageLabels.DECIMAL_ARABIC_NUMERALS);
     writer.setPageLabels(pageLabels);
   }
 
@@ -198,16 +196,3 @@ public class MultiColumnSeriesReport implements IITextReport {
     return item.getItemData() instanceof ISeries;
   }
 }
-
-// List tableOfContents = new List(true, false, 15);
-// tableOfContents.setListSymbol(new Chunk("", reportUtils.createDefaultFont(8, Font.NORMAL))); //$NON-NLS-1$
-// createTableOfContents(rootElement, tableOfContents);
-// document.add(tableOfContents);
-
-// For some reason, this breaks printing (See: http: //
-// itextdocs.lowagie.com/tutorial/objects/columns/index.html)
-// do {
-// document.add(columnText);
-// columnText.nextColumn();
-// createNewPage(document);
-// }
