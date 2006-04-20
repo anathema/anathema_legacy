@@ -1,6 +1,8 @@
 package net.sf.anathema.campaign.reporting;
 
-import net.sf.anathema.campaign.concrete.plot.PlotModel;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import net.sf.anathema.campaign.model.ISeries;
 import net.sf.anathema.campaign.model.plot.IPlotElement;
 import net.sf.anathema.framework.itemdata.IItemDescription;
@@ -14,25 +16,33 @@ import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
 import com.lowagie.text.Font;
-import com.lowagie.text.List;
-import com.lowagie.text.ListItem;
 import com.lowagie.text.Paragraph;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.Rectangle;
 import com.lowagie.text.TextElementArray;
 import com.lowagie.text.pdf.MultiColumnText;
 import com.lowagie.text.pdf.PdfAction;
 import com.lowagie.text.pdf.PdfOutline;
+import com.lowagie.text.pdf.PdfPageEventHelper;
 import com.lowagie.text.pdf.PdfWriter;
 
 public class MultiColumnSeriesReport implements IITextReport {
 
   private final ITextReportUtils reportUtils = new ITextReportUtils();
+  private final Map<String, Integer> tableOfContents = new LinkedHashMap<String, Integer>();
 
-  public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
+  public void performPrint(IItem item, final Document document, final PdfWriter writer) throws ReportException {
     if (!supports(item)) {
       throw new IllegalArgumentException("Item not supported: " + item.getDisplayName()); //$NON-NLS-1$
     }
     writer.setSpaceCharRatio(PdfWriter.NO_SPACE_CHAR_RATIO);
     writer.setViewerPreferences(PdfWriter.PageModeUseOutlines);
+    writer.setPageEvent(new PdfPageEventHelper() {
+      @Override
+      public void onGenericTag(PdfWriter currentWriter, Document currentDocument, Rectangle rect, String text) {
+        tableOfContents.put(text, currentWriter.getPageNumber());
+      }
+    });
     PdfOutline rootOutline = writer.getDirectContent().getRootOutline();
     IPlotElement rootElement = ((ISeries) item.getItemData()).getPlot().getRootElement();
     try {
@@ -52,11 +62,16 @@ public class MultiColumnSeriesReport implements IITextReport {
         Paragraph storyTitleParagraph = createTitleParagraph(storyTitle, 13);
         document.add(storyTitleParagraph);
         PdfOutline storyOutline = addOutline(rootOutline, storyTitle);
-        MultiColumnText columnText = new MultiColumnText(/* document.top() - document.bottom() - 15 */);
+        MultiColumnText columnText = new MultiColumnText(document.top() - document.bottom() - 15);
         columnText.addRegularColumns(document.left(), document.right(), 20, 2);
         addTextAndChildren(columnText, story, storyOutline, new int[] { storyNumber });
-        document.add(columnText);
+        do {
+          document.add(columnText);
+          columnText.nextColumn();
+        }
+        while (columnText.isOverflow());
       }
+      createTableOfContents(document, writer, seriesTitle);
     }
     catch (DocumentException e) {
       e.printStackTrace();
@@ -105,26 +120,47 @@ public class MultiColumnSeriesReport implements IITextReport {
     document.newPage();
   }
 
-  private void createTableOfContents(IPlotElement rootElement, List tableOfContents) {
-    for (IPlotElement element : rootElement.getChildren()) {
-      Font tableOfContentsFont = tableOfContents.symbol().font();
-      String title = element.getDescription().getName().getText();
-      Chunk contentChunk = new Chunk(title, tableOfContentsFont);
-      contentChunk.setLocalGoto(title);
-      tableOfContents.add(new ListItem(contentChunk));
-      if (element.getTimeUnit().getId().equals(PlotModel.ID_STORY)) {
-        List subContents = new List(true, true, 15);
-        subContents.setListSymbol(new Chunk("", tableOfContentsFont)); //$NON-NLS-1$
-        createTableOfContents(element, subContents);
-        tableOfContents.add(subContents);
+  private void createTableOfContents(Document document, PdfWriter writer, String seriesTitle) throws DocumentException {
+    Paragraph titleParagraph = reportUtils.createNewParagraph(seriesTitle, Element.ALIGN_CENTER, Font.BOLD);
+    new PdfOutline(writer.getRootOutline(), new PdfAction(PdfAction.FIRSTPAGE), seriesTitle);
+    titleParagraph.font().setSize(15);
+    document.add(titleParagraph);
+    Paragraph tocParagraph = reportUtils.createNewParagraph("Table of Contents", Element.ALIGN_CENTER, Font.BOLD);
+    tocParagraph.font().setSize(13);
+    document.add(tocParagraph);
+    float yCoordinate = document.top() - 35;
+    yCoordinate -= 15;
+    for (String entry : tableOfContents.keySet()) {
+      reportUtils.textLine(writer.getDirectContent(), yCoordinate, document.left(), document.right(), ".", //$NON-NLS-1$
+          reportUtils.createDefaultFont(11, Font.NORMAL),
+          entry,
+          String.valueOf(tableOfContents.get(entry)),
+          PdfAction.gotoLocalPage(entry, false));
+      yCoordinate -= 15;
+      if (yCoordinate < document.bottom()) {
+        document.newPage();
+        yCoordinate = document.top() - 15;
       }
     }
+        int totalPages = writer.getPageNumber() - 1;
+    int reorder[] = new int[totalPages];
+    for (int k = split; k <= totalPages; ++k)
+      reorder[k - split] = k;
+    int off = totalPages - split;
+    for (int k = 1; k < split; ++k)
+      reorder[off + k] = k;
+    writer.reorderPages(reorder);
+    PdfPageLabels pageLabels = new PdfPageLabels();
+    pageLabels.addPageLabel(1, PdfPageLabels.LOWERCASE_ROMAN_NUMERALS);
+    pageLabels.addPageLabel(totalPages - split + 2, PdfPageLabels.DECIMAL_ARABIC_NUMERALS);
+    writer.setPageLabels(pageLabels);
   }
 
   private Paragraph createTitleParagraph(String titleString, int headerSize) {
     Font font = reportUtils.createDefaultFont(headerSize, Font.BOLD);
     Chunk title = new Chunk(titleString, font);
     title.setLocalDestination(titleString);
+    title.getAttributes().put(Chunk.GENERICTAG, titleString);
     Paragraph paragraph = new Paragraph(title);
     paragraph.setAlignment(Element.ALIGN_JUSTIFIED);
     paragraph.setLeading(font.size() * 1.2f);
