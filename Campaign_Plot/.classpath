@@ -13,6 +13,6 @@
 	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
-	<classpathentry sourcepath="/Thirdparty/Reporting/itext-src-1.4.zip" kind="lib" path="/Thirdparty/Reporting/itext-1.4.jar"/>
+	<classpathentry sourcepath="/Thirdparty/Reporting/itext-1.4-src.zip" kind="lib" path="/Thirdparty/Reporting/itext-1.4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
