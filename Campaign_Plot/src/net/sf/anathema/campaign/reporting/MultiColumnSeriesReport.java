@@ -117,7 +117,6 @@ public class MultiColumnSeriesReport implements IITextReport {
   private void createTableOfContents(Document document, PdfWriter writer, String seriesTitle) throws DocumentException {
     int lastContentPage = writer.getPageNumber();
     Paragraph titleParagraph = reportUtils.createNewParagraph(seriesTitle, Element.ALIGN_CENTER, Font.BOLD);
-    new PdfOutline(writer.getRootOutline(), new PdfAction(PdfAction.FIRSTPAGE), seriesTitle);
     titleParagraph.font().setSize(15);
     document.add(titleParagraph);
     Paragraph tocParagraph = reportUtils.createNewParagraph("Table of Contents", Element.ALIGN_CENTER, Font.BOLD);
