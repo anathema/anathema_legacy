@@ -57,7 +57,16 @@ public class MultiColumnSeriesReport implements IITextReport {
     IPlotElement rootElement = ((ISeries) item.getItemData()).getPlot().getRootElement();
     try {
       String seriesTitle = rootElement.getDescription().getName().getText();
-      new PdfOutline(rootOutline, new PdfAction(PdfAction.FIRSTPAGE), seriesTitle);
+      new PdfOutline(rootOutline, new PdfAction(PdfAction.FIRSTPAGE), "Table of Contents");
+      createNewPage(document);
+      Paragraph synopsisParagraph = createTitleParagraph("Synopsis", 13);
+      document.add(synopsisParagraph);
+      addOutline(rootOutline, "Synopsis");
+      MultiColumnText synopsisColumnText = new MultiColumnText(document.top() - document.bottom() - 15);
+      synopsisColumnText.addRegularColumns(document.left(), document.right(), 20, 2);
+      synopsisColumnText.addElement(createContentParagraph(rootElement.getDescription()));
+      writeColumnText(document, synopsisColumnText);
+
       int storyNumber = 1;
       for (IPlotElement story : rootElement.getChildren()) {
         createNewPage(document);
@@ -68,17 +77,21 @@ public class MultiColumnSeriesReport implements IITextReport {
         MultiColumnText columnText = new MultiColumnText(document.top() - document.bottom() - 15);
         columnText.addRegularColumns(document.left(), document.right(), 20, 2);
         addTextAndChildren(columnText, story, storyOutline, new int[] { storyNumber++ });
-        do {
-          document.add(columnText);
-          columnText.nextColumn();
-        }
-        while (columnText.isOverflow());
+        writeColumnText(document, columnText);
       }
       createTableOfContents(document, writer, seriesTitle);
     }
     catch (DocumentException e) {
       e.printStackTrace();
     }
+  }
+
+  private void writeColumnText(Document document, MultiColumnText columnText) throws DocumentException {
+    do {
+      document.add(columnText);
+      columnText.nextColumn();
+    }
+    while (columnText.isOverflow());
   }
 
   private void addTextAndChildren(
