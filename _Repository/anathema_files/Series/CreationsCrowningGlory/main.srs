@@ -2,6 +2,12 @@
 
 <Series repositoryId="CreationsCrowningGlory" repositoryPrintName="Creations Crowning Glory">
   <Name><![CDATA[Creations Crowning Glory]]></Name>
+  <Summary>
+    <Part>
+      <Format isUnderline="false" fontStyle="Plain"/>
+      <Text><![CDATA[The story of two valiant youth, exalted by the Sun Unconquered, striving to bring peace to a wartorn world.]]></Text>
+    </Part>
+  </Summary>
   <Content/>
   <Plot>
     <Story repositoryId="Story0">

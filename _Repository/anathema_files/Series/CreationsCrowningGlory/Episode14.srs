@@ -129,11 +129,6 @@
 ]]></Text>
     </Part>
     <Part>
-      <Format isUnderline="false" fontStyle="Plain"/>
-      <Text><![CDATA[
-]]></Text>
-    </Part>
-    <Part>
       <Format isUnderline="true" fontStyle="Plain"/>
       <Text><![CDATA[Sijan]]></Text>
     </Part>
