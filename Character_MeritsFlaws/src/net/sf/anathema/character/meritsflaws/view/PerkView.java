@@ -68,8 +68,8 @@ public class PerkView implements IPerkView {
         properties.getCategoryString(),
         properties.getCategoryFilterListRenderer(),
         properties.getCategoryFilters());
-    typeFilterView.addTo(panel, GridDialogLayoutData.FILL_HORIZONTAL);
-    categoryFilterView.addTo(panel, GridDialogLayoutData.FILL_HORIZONTAL);
+    typeFilterView.addComponents(panel, GridDialogLayoutData.FILL_HORIZONTAL);
+    categoryFilterView.addComponents(panel, GridDialogLayoutData.FILL_HORIZONTAL);
     return panel;
   }
 
