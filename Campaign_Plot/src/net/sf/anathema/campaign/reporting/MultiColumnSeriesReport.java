@@ -14,23 +14,19 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Paragraph;
-import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.TextElementArray;
-import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.MultiColumnText;
 import com.lowagie.text.pdf.PdfAction;
-import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfOutline;
 import com.lowagie.text.pdf.PdfPageEventHelper;
-import com.lowagie.text.pdf.PdfPageLabels;
-import com.lowagie.text.pdf.PdfTemplate;
 import com.lowagie.text.pdf.PdfWriter;
 
 public class MultiColumnSeriesReport implements IITextReport {
 
   private final ITextReportUtils reportUtils = new ITextReportUtils();
-  private final TableOfContents contentTable = new TableOfContents();
+  private final SeriesReportUtils seriesUtils = new SeriesReportUtils();
+  private final TableOfContentsPrinter contentTable = new TableOfContentsPrinter();
 
   public void performPrint(IItem item, final Document document, final PdfWriter writer) throws ReportException {
     if (!supports(item)) {
@@ -47,7 +43,7 @@ public class MultiColumnSeriesReport implements IITextReport {
 
       @Override
       public void onEndPage(PdfWriter currentWriter, Document currentDocument) {
-        printPageNumber(currentWriter, currentDocument, String.valueOf(currentWriter.getPageNumber()));
+        seriesUtils.printPageNumber(currentWriter, currentDocument, String.valueOf(currentWriter.getPageNumber()));
       }
     });
     PdfOutline rootOutline = writer.getDirectContent().getRootOutline();
@@ -133,65 +129,8 @@ public class MultiColumnSeriesReport implements IITextReport {
     document.newPage();
   }
 
-  private void printPageNumber(PdfWriter writer, Document document, String pageNumber) {
-    PdfContentByte directContent = writer.getDirectContent();
-    PdfTemplate template = directContent.createTemplate(document.getPageSize().width(), document.getPageSize().height());
-    template.moveTo(document.left(), document.bottom() - 11);
-    template.lineTo(document.right(), document.bottom() - 11);
-    template.stroke();
-    directContent.addTemplate(template, 0, 0);
-    ColumnText.showTextAligned(directContent, Element.ALIGN_CENTER, new Phrase(
-        pageNumber,
-        reportUtils.createDefaultFont(8, Font.NORMAL)), document.getPageSize().width() / 2, document.bottom() - 20, 0);
-  }
-
   private void createTableOfContents(Document document, PdfWriter writer, String seriesTitle) throws DocumentException {
-    final int lastContentPage = writer.getPageNumber();
-    writer.setPageEvent(null);
-    writer.setPageEvent(new PdfPageEventHelper() {
-      @Override
-      public void onEndPage(PdfWriter currentWriter, Document currentDocument) {
-        printPageNumber(
-            currentWriter,
-            currentDocument,
-            new RomanNumber(currentWriter.getPageNumber() - lastContentPage).getLowerCaseRoman());
-      }
-    });
-    Paragraph titleParagraph = reportUtils.createNewParagraph(seriesTitle, Element.ALIGN_CENTER, Font.BOLD);
-    titleParagraph.font().setSize(15);
-    document.add(titleParagraph);
-    Paragraph tocParagraph = reportUtils.createNewParagraph("Table of Contents", Element.ALIGN_CENTER, Font.BOLD);
-    tocParagraph.font().setSize(13);
-    document.add(tocParagraph);
-    float yCoordinate = document.top() - 35;
-    yCoordinate -= 15;
-    for (ContentEntry entry : contentTable.getEntries()) {
-      reportUtils.textLine(writer.getDirectContent(), yCoordinate, document.left(), document.right(), ".", //$NON-NLS-1$
-          reportUtils.createDefaultFont(11, Font.NORMAL),
-          entry.getText(),
-          entry.getPageAsString(),
-          PdfAction.gotoLocalPage(entry.getText(), false));
-      yCoordinate -= 15;
-      if (yCoordinate < document.bottom()) {
-        document.newPage();
-        yCoordinate = document.top() - 15;
-      }
-    }
-    document.newPage();
-    int totalPages = writer.getPageNumber() - 1;
-    int tocPageLength = totalPages - lastContentPage;
-    int reorder[] = new int[totalPages];
-    for (int index = 0; index < tocPageLength; ++index) {
-      reorder[index] = lastContentPage + index + 1;
-    }
-    for (int index = 0; index < lastContentPage; ++index) {
-      reorder[tocPageLength + index] = index + 1;
-    }
-    writer.reorderPages(reorder);
-    PdfPageLabels pageLabels = new PdfPageLabels();
-    pageLabels.addPageLabel(1, PdfPageLabels.LOWERCASE_ROMAN_NUMERALS);
-    pageLabels.addPageLabel(totalPages - lastContentPage + 1, PdfPageLabels.DECIMAL_ARABIC_NUMERALS);
-    writer.setPageLabels(pageLabels);
+    contentTable.performPrint(seriesTitle, document, writer);
   }
 
   private Paragraph createTitleParagraph(String titleString, int headerSize) {
