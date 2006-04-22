@@ -5,7 +5,6 @@ import java.awt.Component;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
@@ -17,8 +16,9 @@ public class CharmEntryView {
 
   public BasicDataView addBasicDataView() {
     BasicDataView view = new BasicDataView();
-    content.add(view.getContent());
-    content.add(new EndOfLineMarkerComponent());
+    GridDialogLayoutData data = new GridDialogLayoutData();
+    data.setHorizontalSpan(2);
+    content.add(view.getContent(), data);
     return view;
   }
 
