@@ -85,8 +85,8 @@ public class VirtueFlawView implements IVirtueFlawView {
   }
 
   public IObjectSelectionView addVirtueFlawRootSelectionView(final String labelText, ListCellRenderer renderer) {
-    final ObjectSelectionView rootSelectionView = new ObjectSelectionView(new Object[0]);
-    rootSelectionView.addTo(labelText, renderer, getVirtueFlawPanel(), GridDialogLayoutData.FILL_HORIZONTAL);
+    final ObjectSelectionView rootSelectionView = new ObjectSelectionView(labelText, renderer, new Object[0]);
+    rootSelectionView.addTo(getVirtueFlawPanel(), GridDialogLayoutData.FILL_HORIZONTAL);
     return rootSelectionView;
   }
 }
