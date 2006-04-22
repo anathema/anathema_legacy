@@ -52,6 +52,10 @@ public class TableOfContentsPrinter {
         yCoordinate = document.top() - 15;
       }
     }
+    reorderPages(document, writer, lastContentPage);
+  }
+
+  private void reorderPages(Document document, PdfWriter writer, final int lastContentPage) throws DocumentException {
     document.newPage();
     int totalPages = writer.getPageNumber() - 1;
     int tocPageLength = totalPages - lastContentPage;
