@@ -35,4 +35,11 @@ public class SimpleCharmSpecialsView {
     view.addComponents(gridPanel);
     panel.add(gridPanel.getContent());
   }
+
+  public void setEnabled(boolean enabled) {
+    mainLabel.setEnabled(enabled);
+    speedView.setEnabled(enabled);
+    dvView.setEnabled(enabled);
+    defaultButton.setEnabled(enabled);
+  }
 }

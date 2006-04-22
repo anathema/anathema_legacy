@@ -44,4 +44,12 @@ public class ReflexiveCharmSpecialsView {
     view.addComponents(gridPanel);
     panel.add(gridPanel.getContent());
   }
+
+  public void setEnabled(boolean enabled) {
+    mainLabel.setEnabled(enabled);
+    stepView.setEnabled(enabled);
+    defenderView.setEnabled(enabled);
+    splitBox.setEnabled(enabled);
+    defaultButton.setEnabled(enabled);
+  }
 }

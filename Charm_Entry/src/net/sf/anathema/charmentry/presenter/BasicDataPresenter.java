@@ -79,8 +79,14 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
   }
 
   private void initSecondEditionTypeDependentSpecialsPresentation() {
-    SimpleCharmSpecialsView subView = view.addSimpleCharmSpecialsView();
-    ReflexiveCharmSpecialsView subView2 = view.addReflexiveCharmSpecialsView();
+    final SimpleCharmSpecialsView subView = view.addSimpleCharmSpecialsView();
+    final ReflexiveCharmSpecialsView subView2 = view.addReflexiveCharmSpecialsView();
+    model.addAvailableSpecialsListener(new IChangeListener() {
+      public void changeOccured() {
+        subView.setEnabled(model.isSimpleSpecialsAvailable());
+        subView2.setEnabled(model.isReflexiveSpecialsAvailable());
+      }
+    });
   }
 
   private void initEditionPresentation() {

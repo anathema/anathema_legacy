@@ -23,6 +23,8 @@ import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.booleanvalue.BooleanValueControl;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.change.ChangeControl;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -34,6 +36,7 @@ public class CharmEntryModel {
   private ConfigurableCharmData charmData = new ConfigurableCharmData();
   private final CharacterType[] legalCharacterTypes = createLegalCharacterTypeArray();
   private final GenericControl<ITraitSelectionChangedListener> control = new GenericControl<ITraitSelectionChangedListener>();
+  private final ChangeControl specialsControl = new ChangeControl();
   private final IntValueControl essenceControl = new IntValueControl();
   private final ObjectValueControl<String> groupControl = new ObjectValueControl<String>();
   private final BooleanValueControl completionControl = new BooleanValueControl();
@@ -128,6 +131,7 @@ public class CharmEntryModel {
   public void setCharmType(CharmType type) {
     charmData.setCharmType(type);
     checkCompletion();
+    specialsControl.fireChangedEvent();
   }
 
   public void setDuration(Duration duration) {
@@ -274,9 +278,22 @@ public class CharmEntryModel {
 
   public void setEdition(ExaltedEdition edition) {
     charmData.setEdition(edition);
+    specialsControl.fireChangedEvent();
   }
 
   public IKeywordEntryModel getKeywordModel() {
     return keywordModel;
+  }
+
+  public void addAvailableSpecialsListener(IChangeListener listener) {
+    specialsControl.addChangeListener(listener);
+  }
+
+  public boolean isReflexiveSpecialsAvailable() {
+    return charmData.getEdition() == ExaltedEdition.SecondEdition && charmData.getCharmType() == CharmType.Reflexive;
+  }
+
+  public boolean isSimpleSpecialsAvailable() {
+    return charmData.getEdition() == ExaltedEdition.SecondEdition && charmData.getCharmType() == CharmType.Simple;
   }
 }
