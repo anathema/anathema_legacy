@@ -18,4 +18,14 @@ public class ArrayUtiltiesTest extends BasicTestCase {
     ArrayUtilities.moveObject(allStrings, 2, 1);
     assertTrue(Arrays.equals(new String[] { "1", "3", "2", "4" }, allStrings)); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
   }
+
+  public void testCreateIntegerArray() throws Exception {
+    Integer[] integers = ArrayUtilities.createIntegerArray(3);
+    assertEquals(new Integer[] { 0, 1, 2, 3 }, integers);
+  }
+
+  public void testCreateNegativeIntegerArray() throws Exception {
+    Integer[] integers = ArrayUtilities.createIntegerArray(-3);
+    assertEquals(new Integer[] { -0, -1, -2, -3 }, integers);
+  }
 }

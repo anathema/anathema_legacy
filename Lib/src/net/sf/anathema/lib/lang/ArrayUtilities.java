@@ -86,6 +86,14 @@ public class ArrayUtilities {
     }
   }
 
+  public static Integer[] createIntegerArray(int maximalValue) {
+    Integer[] ranks = new Integer[Math.abs(maximalValue) + 1];
+    for (int index = 0; index < ranks.length; index++) {
+      ranks[index] = Integer.signum(maximalValue) * index;
+    }
+    return ranks;
+  }
+
   public static int[] createIndexArray(int length) {
     int[] indexArray = new int[length];
     for (int index = 0; index < length; index++) {
