@@ -33,6 +33,7 @@ import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.IdentificateListCellRenderer;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
+import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -79,24 +80,30 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
   }
 
   private void initSecondEditionTypeDependentSpecialsPresentation() {
-    final SimpleCharmSpecialsView subView = view.addSimpleCharmSpecialsView();
-    final ReflexiveCharmSpecialsView subView2 = view.addReflexiveCharmSpecialsView();
+    final SimpleCharmSpecialsView simpleView = view.addSimpleCharmSpecialsView();
+    final ReflexiveCharmSpecialsView reflexiveView = view.addReflexiveCharmSpecialsView();
     model.addAvailableSpecialsListener(new IChangeListener() {
       public void changeOccured() {
-        subView.setEnabled(model.isSimpleSpecialsAvailable());
-        subView2.setEnabled(model.isReflexiveSpecialsAvailable());
+        simpleView.setEnabled(model.isSimpleSpecialsAvailable());
+        reflexiveView.setEnabled(model.isReflexiveSpecialsAvailable());
       }
     });
-    subView.addSpeedValueChangedListener(new IIntValueChangedListener() {
+    simpleView.addSpeedValueChangedListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
         model.setSimpleCharmSpeedValue(newValue);
       }
     });
-    subView.addDefenseValueChangedListener(new IIntValueChangedListener() {
+    simpleView.addDefenseValueChangedListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
         model.setSimpleCharmDefenseValue(newValue);
       }
     });
+    reflexiveView.addSplitListener(new IBooleanValueChangedListener() {
+      public void valueChanged(boolean splitEnabled) {
+        reflexiveView.setSplitEnabled(splitEnabled);
+      }
+    });
+    reflexiveView.setSplitEnabled(false);
   }
 
   private void initEditionPresentation() {

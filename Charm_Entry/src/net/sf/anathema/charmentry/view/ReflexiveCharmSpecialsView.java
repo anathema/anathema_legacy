@@ -1,5 +1,8 @@
 package net.sf.anathema.charmentry.view;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -7,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import net.sf.anathema.framework.presenter.view.ObjectSelectionIntValueView;
+import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 
@@ -51,5 +55,17 @@ public class ReflexiveCharmSpecialsView {
     defenderView.setEnabled(enabled);
     splitBox.setEnabled(enabled);
     defaultButton.setEnabled(enabled);
+  }
+
+  public void addSplitListener(final IBooleanValueChangedListener listener) {
+    splitBox.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        listener.valueChanged(splitBox.isSelected());
+      }
+    });
+  }
+
+  public void setSplitEnabled(boolean splitEnabled) {
+    defenderView.setEnabled(splitEnabled);
   }
 }
