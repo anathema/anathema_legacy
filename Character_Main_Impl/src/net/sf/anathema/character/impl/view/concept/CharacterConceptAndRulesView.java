@@ -59,9 +59,9 @@ public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConc
       ListCellRenderer renderer,
       boolean editable,
       IGridDialogPanel panel) {
-    ObjectSelectionView selectionView = new ObjectSelectionView(objects, editable);
+    ObjectSelectionView selectionView = new ObjectSelectionView(labelText, renderer, objects, editable);
     selectionView.getComboBox().getEditor().getEditorComponent().setEnabled(true);
-    selectionView.addTo(labelText, renderer, panel, GridDialogLayoutData.FILL_HORIZONTAL);
+    selectionView.addTo(panel, GridDialogLayoutData.FILL_HORIZONTAL);
     return selectionView;
   }
 

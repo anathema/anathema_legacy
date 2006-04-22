@@ -25,10 +25,11 @@ public class RuleSetSelectionView implements IRuleSetSelectionView {
 
   public void initRulesSelectionView() {
     rulesSelectionPanel = new DefaultGridDialogPanel(false);
-    selectionView = new ObjectSelectionView(ExaltedRuleSet.values(), false);
+    String label = resources.getString("CharacterDialog.Ruleset.Select.Label");
+    IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer("Ruleset.", resources);
+    selectionView = new ObjectSelectionView(label, renderer, ExaltedRuleSet.values(), false);
     selectionView.setSelectedObject(preferredRuleSet);
-    selectionView.addTo(resources.getString("CharacterDialog.Ruleset.Select.Label"), //$NON-NLS-1$
-        new IdentificateSelectCellRenderer("Ruleset.", resources), rulesSelectionPanel); //$NON-NLS-1$
+    selectionView.addComponents(rulesSelectionPanel);
   }
 
   public JComponent getComponent() {
