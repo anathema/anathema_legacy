@@ -21,7 +21,6 @@ public class ITextReportPrinter {
       document.addCreator("Anathema"); //$NON-NLS-1$
       document.open();
       report.performPrint(item, document, writer);
-
     }
     catch (DocumentException de) {
       throw new ReportException(de);
