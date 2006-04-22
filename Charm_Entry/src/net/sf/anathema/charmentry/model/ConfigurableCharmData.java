@@ -41,6 +41,8 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
   private ITraitType primaryType;
   private ExaltedEdition edition;
   private final List<ICharmAttribute> keywords = new ArrayList<ICharmAttribute>();
+  private int speed;
+  private int defense;
 
   public void setCharacterType(CharacterType type) {
     this.characterType = type;
@@ -184,5 +186,13 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
 
   public void addKeyword(IIdentificate newValue) {
     keywords.add(new CharmAttribute(newValue.getId(), true));
+  }
+
+  public void setSpeedValue(int speed) {
+    this.speed = speed;
+  }
+
+  public void setDefenseValue(int defense) {
+    this.defense = defense;
   }
 }

@@ -87,6 +87,16 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
         subView2.setEnabled(model.isReflexiveSpecialsAvailable());
       }
     });
+    subView.addSpeedValueChangedListener(new IIntValueChangedListener() {
+      public void valueChanged(int newValue) {
+        model.setSimpleCharmSpeedValue(newValue);
+      }
+    });
+    subView.addDefenseValueChangedListener(new IIntValueChangedListener() {
+      public void valueChanged(int newValue) {
+        model.setSimpleCharmDefenseValue(newValue);
+      }
+    });
   }
 
   private void initEditionPresentation() {

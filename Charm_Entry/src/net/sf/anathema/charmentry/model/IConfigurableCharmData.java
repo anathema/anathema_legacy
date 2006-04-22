@@ -1,9 +1,9 @@
 package net.sf.anathema.charmentry.model;
 
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.magic.ICharmData;
+import net.sf.anathema.character.generic.magic.IExtendedCharmData;
 
-public interface IConfigurableCharmData extends ICharmData {
+public interface IConfigurableCharmData extends IExtendedCharmData {
 
   public String getName();
 

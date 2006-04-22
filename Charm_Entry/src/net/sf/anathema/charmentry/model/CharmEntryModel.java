@@ -296,4 +296,22 @@ public class CharmEntryModel {
   public boolean isSimpleSpecialsAvailable() {
     return charmData.getEdition() == ExaltedEdition.SecondEdition && charmData.getCharmType() == CharmType.Simple;
   }
+
+  public void setSimpleCharmSpeedValue(int newValue) {
+    if (isSimpleSpecialsAvailable()) {
+      charmData.setSpeedValue(newValue);
+    }
+    else {
+      throw new IllegalStateException("Attempt to set speed value on a non-simple/non-2nd Charm."); //$NON-NLS-1$
+    }
+  }
+
+  public void setSimpleCharmDefenseValue(int newValue) {
+    if (isSimpleSpecialsAvailable()) {
+      charmData.setDefenseValue(newValue);
+    }
+    else {
+      throw new IllegalStateException("Attempt to set DV on a non-simple/non-2nd Charm."); //$NON-NLS-1$
+    }
+  }
 }
