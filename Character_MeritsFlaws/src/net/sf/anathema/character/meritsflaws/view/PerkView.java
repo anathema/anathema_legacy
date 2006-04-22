@@ -60,18 +60,16 @@ public class PerkView implements IPerkView {
 
   private IGridDialogPanel createFilterPanel() {
     IGridDialogPanel panel = new DefaultGridDialogPanel();
-    typeFilterView = new ObjectSelectionView(properties.getTypeFilters());
-    categoryFilterView = new ObjectSelectionView(properties.getCategoryFilters());
-    typeFilterView.addTo(
+    typeFilterView = new ObjectSelectionView(
         properties.getTypeString(),
         properties.getTypeFilterListRenderer(),
-        panel,
-        GridDialogLayoutData.FILL_HORIZONTAL);
-    categoryFilterView.addTo(
+        properties.getTypeFilters());
+    categoryFilterView = new ObjectSelectionView(
         properties.getCategoryString(),
         properties.getCategoryFilterListRenderer(),
-        panel,
-        GridDialogLayoutData.FILL_HORIZONTAL);
+        properties.getCategoryFilters());
+    typeFilterView.addTo(panel, GridDialogLayoutData.FILL_HORIZONTAL);
+    categoryFilterView.addTo(panel, GridDialogLayoutData.FILL_HORIZONTAL);
     return panel;
   }
 
