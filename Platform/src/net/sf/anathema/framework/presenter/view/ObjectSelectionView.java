@@ -35,10 +35,10 @@ public class ObjectSelectionView implements IObjectSelectionView, IGridDialogPan
   }
 
   public void addComponents(IGridDialogPanel dialogPanel) {
-    addTo(dialogPanel, new GridDialogLayoutData());
+    addComponents(dialogPanel, new GridDialogLayoutData());
   }
 
-  public void addTo(IGridDialogPanel panel, final IGridDialogLayoutData selectionData) {
+  public void addComponents(IGridDialogPanel panel, final IGridDialogLayoutData selectionData) {
     panel.add(new IDialogComponent() {
       public int getColumnCount() {
         return 2;
@@ -49,6 +49,12 @@ public class ObjectSelectionView implements IObjectSelectionView, IGridDialogPan
         layoutPanel.add(comboBox.getComponent(), selectionData);
       }
     });
+  }
+
+  /** Requires two colums */
+  public void addTo(JPanel panel, IGridDialogLayoutData data) {
+    panel.add(label);
+    panel.add(comboBox.getComponent(), data);
   }
 
   public void setSelectedObject(Object object) {
