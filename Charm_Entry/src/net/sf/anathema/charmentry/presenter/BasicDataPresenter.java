@@ -64,7 +64,7 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
     initCharmNamePresentation();
     ITextView groupView = initCharmGroupPresentation();
     IChangeableJComboBox characterTypeView = initCharacterTypeView();
-    initEditionView();
+    initEditionPresentation();
     initCharmTypePresentation();
     initDurationPresentation();
     initCostPresentation();
@@ -75,7 +75,7 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
     initSourcePresentation();
   }
 
-  private void initEditionView() {
+  private void initEditionPresentation() {
     IChangeableJComboBox<ExaltedEdition> typeBox = view.addObjectSelectionView(
         resources.getString("CharmEntry.ExaltedEdition"), //$NON-NLS-1$
         false,
