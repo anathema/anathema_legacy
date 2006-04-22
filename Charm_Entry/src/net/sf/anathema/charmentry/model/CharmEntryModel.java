@@ -17,6 +17,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.charmentry.presenter.ISimpleCharmSpecialsModel;
 import net.sf.anathema.charmentry.presenter.ITraitSelectionChangedListener;
 import net.sf.anathema.charmentry.util.CharmUtilities;
 import net.sf.anathema.lib.control.GenericControl;
@@ -31,7 +32,7 @@ import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.ObjectValueControl;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 
-public class CharmEntryModel {
+public class CharmEntryModel implements ISimpleSpecialsArbitrator, IReflexiveSpecialsArbitrator {
 
   private ConfigurableCharmData charmData = new ConfigurableCharmData();
   private final CharacterType[] legalCharacterTypes = createLegalCharacterTypeArray();
@@ -42,6 +43,8 @@ public class CharmEntryModel {
   private final BooleanValueControl completionControl = new BooleanValueControl();
   private final PrimaryPrerequisiteLegalityChecker checker = new PrimaryPrerequisiteLegalityChecker();
   private IKeywordEntryModel keywordModel = new KeywordEntryModel();
+  private final SimpleCharmSpecialsModel simpleCharmSpecials = new SimpleCharmSpecialsModel(this);
+  private final ReflexiveCharmSpecialsModel reflexiveCharmSpecials = new ReflexiveCharmSpecialsModel(this);
 
   private CharacterType[] createLegalCharacterTypeArray() {
     List<CharacterType> legalTypes = new ArrayList<CharacterType>();
@@ -285,7 +288,7 @@ public class CharmEntryModel {
     return keywordModel;
   }
 
-  public void addAvailableSpecialsListener(IChangeListener listener) {
+  public void addSpecialsChangeListener(IChangeListener listener) {
     specialsControl.addChangeListener(listener);
   }
 
@@ -297,21 +300,11 @@ public class CharmEntryModel {
     return charmData.getEdition() == ExaltedEdition.SecondEdition && charmData.getCharmType() == CharmType.Simple;
   }
 
-  public void setSimpleCharmSpeedValue(int newValue) {
-    if (isSimpleSpecialsAvailable()) {
-      charmData.setSpeedValue(newValue);
-    }
-    else {
-      throw new IllegalStateException("Attempt to set speed value on a non-simple/non-2nd Charm."); //$NON-NLS-1$
-    }
+  public ISimpleCharmSpecialsModel getSimpleCharmSpecialsModel() {
+    return simpleCharmSpecials;
   }
 
-  public void setSimpleCharmDefenseValue(int newValue) {
-    if (isSimpleSpecialsAvailable()) {
-      charmData.setDefenseValue(newValue);
-    }
-    else {
-      throw new IllegalStateException("Attempt to set DV on a non-simple/non-2nd Charm."); //$NON-NLS-1$
-    }
+  public IReflexiveCharmModel getReflexiveCharmSpecialsModel() {
+    return reflexiveCharmSpecials;
   }
 }

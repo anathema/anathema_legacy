@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import net.sf.anathema.framework.presenter.view.ObjectSelectionIntValueView;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 
@@ -67,5 +68,26 @@ public class ReflexiveCharmSpecialsView {
 
   public void setSplitEnabled(boolean splitEnabled) {
     defenderView.setEnabled(splitEnabled);
+    splitBox.setSelected(splitEnabled);
+  }
+
+  public void setDefaultStepValue(int step) {
+    stepView.setValue(step);
+  }
+
+  public void setDefenseStepValue(int defenseStep) {
+    defenderView.setValue(defenseStep);
+  }
+
+  public void addStepListener(IIntValueChangedListener listener) {
+    stepView.addIntValueChangedListener(listener);
+  }
+
+  public void addDefenseStepListener(IIntValueChangedListener listener) {
+    defenderView.addIntValueChangedListener(listener);
+  }
+
+  public void addDefaultButtonListener(ActionListener listener) {
+    defaultButton.addActionListener(listener);
   }
 }

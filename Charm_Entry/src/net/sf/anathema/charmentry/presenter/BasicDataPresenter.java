@@ -1,6 +1,8 @@
 package net.sf.anathema.charmentry.presenter;
 
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +26,7 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
 import net.sf.anathema.charmentry.model.CharmEntryModel;
 import net.sf.anathema.charmentry.model.IConfigurableCharmData;
+import net.sf.anathema.charmentry.model.IReflexiveCharmModel;
 import net.sf.anathema.charmentry.view.BasicDataView;
 import net.sf.anathema.charmentry.view.ICostEntryView;
 import net.sf.anathema.charmentry.view.ISourceSelectionView;
@@ -81,29 +84,62 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
 
   private void initSecondEditionTypeDependentSpecialsPresentation() {
     final SimpleCharmSpecialsView simpleView = view.addSimpleCharmSpecialsView();
-    final ReflexiveCharmSpecialsView reflexiveView = view.addReflexiveCharmSpecialsView();
-    model.addAvailableSpecialsListener(new IChangeListener() {
+    final ISimpleCharmSpecialsModel simpleModel = model.getSimpleCharmSpecialsModel();
+    simpleModel.addChangeListener(new IChangeListener() {
       public void changeOccured() {
         simpleView.setEnabled(model.isSimpleSpecialsAvailable());
-        reflexiveView.setEnabled(model.isReflexiveSpecialsAvailable());
+        simpleView.setSpeedValue(simpleModel.getSpeed());
+        simpleView.setDefenseValue(simpleModel.getDefenseValue());
       }
     });
     simpleView.addSpeedValueChangedListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
-        model.setSimpleCharmSpeedValue(newValue);
+        simpleModel.setSpeed(newValue);
       }
     });
     simpleView.addDefenseValueChangedListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
-        model.setSimpleCharmDefenseValue(newValue);
+        simpleModel.setDefenseValue(newValue);
+      }
+    });
+    simpleView.addDefaultButtonListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        simpleModel.reset();
+      }
+    });
+    final ReflexiveCharmSpecialsView reflexiveView = view.addReflexiveCharmSpecialsView();
+    final IReflexiveCharmModel reflexiveModel = model.getReflexiveCharmSpecialsModel();
+    reflexiveModel.addChangeListener(new IChangeListener() {
+      public void changeOccured() {
+        reflexiveView.setEnabled(model.isReflexiveSpecialsAvailable());
+        reflexiveView.setDefaultStepValue(reflexiveModel.getStep());
+        reflexiveView.setDefenseStepValue(reflexiveModel.getDefenseStep());
+        reflexiveView.setSplitEnabled(reflexiveModel.isSplitEnabled());
+      }
+    });
+    reflexiveView.addStepListener(new IIntValueChangedListener() {
+      public void valueChanged(int newValue) {
+        reflexiveModel.setStep(newValue);
+      }
+    });
+    reflexiveView.addDefenseStepListener(new IIntValueChangedListener() {
+      public void valueChanged(int newValue) {
+        reflexiveModel.setDefenseStep(newValue);
       }
     });
     reflexiveView.addSplitListener(new IBooleanValueChangedListener() {
       public void valueChanged(boolean splitEnabled) {
-        reflexiveView.setSplitEnabled(splitEnabled);
+        reflexiveModel.setSplitEnabled(splitEnabled);
       }
     });
-    reflexiveView.setSplitEnabled(false);
+    reflexiveView.addDefaultButtonListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        reflexiveModel.reset();
+      }
+    });
+    simpleView.setEnabled(model.isSimpleSpecialsAvailable());
+    reflexiveView.setEnabled(model.isReflexiveSpecialsAvailable());
+    reflexiveView.setSplitEnabled(reflexiveModel.isSplitEnabled());
   }
 
   private void initEditionPresentation() {

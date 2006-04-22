@@ -57,4 +57,12 @@ public class SimpleCharmSpecialsView {
   public void addDefaultButtonListener(ActionListener listener) {
     defaultButton.addActionListener(listener);
   }
+
+  public void setSpeedValue(int speed) {
+    speedView.setValue(speed);
+  }
+
+  public void setDefenseValue(int defenseValue) {
+    dvView.setValue(defenseValue);
+  }
 }
