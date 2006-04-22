@@ -11,6 +11,7 @@ import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.gui.dialogcomponent.grouped.IGridDialogPanelContent;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
+import net.sf.anathema.lib.lang.ArrayUtilities;
 
 public class ObjectSelectionIntValueView implements IIntValueView, IGridDialogPanelContent {
 
@@ -18,7 +19,7 @@ public class ObjectSelectionIntValueView implements IIntValueView, IGridDialogPa
   private final Map<IIntValueChangedListener, IObjectValueChangedListener<Integer>> listenerMap = new HashMap<IIntValueChangedListener, IObjectValueChangedListener<Integer>>();
 
   public ObjectSelectionIntValueView(String label, ListCellRenderer renderer, int maximum) {
-    this.view = new ObjectSelectionView(label, renderer, createIntegerArray(maximum));
+    this.view = new ObjectSelectionView(label, renderer, ArrayUtilities.createIntegerArray(maximum));
   }
 
   public void setValue(int newValue) {
@@ -41,14 +42,6 @@ public class ObjectSelectionIntValueView implements IIntValueView, IGridDialogPa
 
   public void setMaximum(int maximalValue) {
     throw new NotYetImplementedException();
-  }
-
-  private Integer[] createIntegerArray(int maximalValue) {
-    Integer[] ranks = new Integer[Math.abs(maximalValue) + 1];
-    for (int index = 0; index < ranks.length; index++) {
-      ranks[index] = Integer.signum(maximalValue) * index;
-    }
-    return ranks;
   }
 
   public void addComponents(IGridDialogPanel gridPanel) {
