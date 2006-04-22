@@ -68,4 +68,9 @@ public class ObjectSelectionView implements IObjectSelectionView, IGridDialogPan
   public void addObjectSelectionChangedListener(final IObjectValueChangedListener listener) {
     comboBox.addObjectSelectionChangedListener(listener);
   }
+
+  public void setEnabled(boolean enabled) {
+    label.setEnabled(enabled);
+    comboBox.getComponent().setEnabled(enabled);
+  }
 }

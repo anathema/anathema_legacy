@@ -54,4 +54,8 @@ public class ObjectSelectionIntValueView implements IIntValueView, IGridDialogPa
   public void addComponents(IGridDialogPanel gridPanel) {
     view.addComponents(gridPanel);
   }
+
+  public void setEnabled(boolean enabled) {
+    view.setEnabled(enabled);
+  }
 }
