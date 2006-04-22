@@ -10,6 +10,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.widgets.HorizontalLine;
 import net.sf.anathema.character.library.overview.OverviewCategory;
 import net.sf.anathema.framework.presenter.view.ISimpleTabView;
+import net.sf.anathema.framework.presenter.view.ObjectSelectionIntValueView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
