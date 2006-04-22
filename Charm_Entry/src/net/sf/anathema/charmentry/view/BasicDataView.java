@@ -19,8 +19,6 @@ import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.ObjectSelectionView;
 import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.workflow.container.ISelectionContainerView;
 import net.sf.anathema.lib.workflow.container.view.SelectionContainerListView;
@@ -32,7 +30,6 @@ public class BasicDataView {
   private final JPanel prerequisitePanel = new JPanel(new GridDialogLayout(1, false));
   private final JPanel dataPanel = new JPanel(new GridDialogLayout(5, false));
   private final JPanel controlPanel = new JPanel(new GridDialogLayout(1, false));
-  private final IGridDialogPanel objectSelectionPanel = new DefaultGridDialogPanel();
 
   public JComponent getContent() {
     dataPanel.setBorder(new TitledBorder("Basic Data"));
@@ -61,6 +58,13 @@ public class BasicDataView {
   public IObjectSelectionView addObjectSelectionView(String label, boolean editable, ListCellRenderer renderer) {
     ObjectSelectionView view = new ObjectSelectionView(label, renderer, new Object[0], editable);
     view.addTo(dataPanel, GridDialogLayoutData.FILL_HORIZONTAL);
+    dataPanel.add(new EndOfLineMarkerComponent());
+    return view;
+  }
+
+  public CharmTypeSpecialsView addCharmTypeSpecialsView() {
+    CharmTypeSpecialsView view = new CharmTypeSpecialsView("Speed", "DV", "Step");
+    view.addTo(dataPanel);
     dataPanel.add(new EndOfLineMarkerComponent());
     return view;
   }

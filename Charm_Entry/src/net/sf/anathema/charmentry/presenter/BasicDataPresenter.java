@@ -66,6 +66,7 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
     IObjectSelectionView characterTypeView = initCharacterTypeView();
     initEditionPresentation();
     initCharmTypePresentation();
+    view.addCharmTypeSpecialsView();
     initDurationPresentation();
     initCostPresentation();
     ISelectableTraitView primaryPrerequisiteView = initPrimaryPrerequisitePresentation();
