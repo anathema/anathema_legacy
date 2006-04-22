@@ -62,8 +62,20 @@ public class BasicDataView {
     return view;
   }
 
-  public CharmTypeSpecialsView addCharmTypeSpecialsView() {
-    CharmTypeSpecialsView view = new CharmTypeSpecialsView("Speed", "DV", "Step");
+  public SimpleCharmSpecialsView addSimpleCharmSpecialsView() {
+    SimpleCharmSpecialsView view = new SimpleCharmSpecialsView("Modifiers (Simple)", "Speed", "DV", "Reset");
+    view.addTo(dataPanel);
+    dataPanel.add(new EndOfLineMarkerComponent());
+    return view;
+  }
+
+  public ReflexiveCharmSpecialsView addReflexiveCharmSpecialsView() {
+    ReflexiveCharmSpecialsView view = new ReflexiveCharmSpecialsView(
+        "Step (Reflexive)",
+        "Default/Offensive",
+        "Defensive",
+        "Split Offense/Defense",
+        "Reset");
     view.addTo(dataPanel);
     dataPanel.add(new EndOfLineMarkerComponent());
     return view;

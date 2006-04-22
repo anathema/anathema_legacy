@@ -27,6 +27,8 @@ import net.sf.anathema.charmentry.model.IConfigurableCharmData;
 import net.sf.anathema.charmentry.view.BasicDataView;
 import net.sf.anathema.charmentry.view.ICostEntryView;
 import net.sf.anathema.charmentry.view.ISourceSelectionView;
+import net.sf.anathema.charmentry.view.ReflexiveCharmSpecialsView;
+import net.sf.anathema.charmentry.view.SimpleCharmSpecialsView;
 import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.IdentificateListCellRenderer;
 import net.sf.anathema.framework.value.IIntValueView;
@@ -66,7 +68,7 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
     IObjectSelectionView characterTypeView = initCharacterTypeView();
     initEditionPresentation();
     initCharmTypePresentation();
-    view.addCharmTypeSpecialsView();
+    initSecondEditionTypeDependentSpecialsPresentation();
     initDurationPresentation();
     initCostPresentation();
     ISelectableTraitView primaryPrerequisiteView = initPrimaryPrerequisitePresentation();
@@ -74,6 +76,11 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
     initCharacterTypeListening(characterTypeView, primaryPrerequisiteView, groupView);
     initEssencePrerequisitePresentation();
     initSourcePresentation();
+  }
+
+  private void initSecondEditionTypeDependentSpecialsPresentation() {
+    SimpleCharmSpecialsView subView = view.addSimpleCharmSpecialsView();
+    ReflexiveCharmSpecialsView subView2 = view.addReflexiveCharmSpecialsView();
   }
 
   private void initEditionPresentation() {
