@@ -15,10 +15,12 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
 import net.sf.anathema.charmentry.presenter.ISelectableTraitView;
+import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
+import net.sf.anathema.framework.presenter.view.ObjectSelectionView;
 import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
-import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
+import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.workflow.container.ISelectionContainerView;
 import net.sf.anathema.lib.workflow.container.view.SelectionContainerListView;
@@ -30,6 +32,7 @@ public class BasicDataView {
   private final JPanel prerequisitePanel = new JPanel(new GridDialogLayout(1, false));
   private final JPanel dataPanel = new JPanel(new GridDialogLayout(5, false));
   private final JPanel controlPanel = new JPanel(new GridDialogLayout(1, false));
+  private final IGridDialogPanel objectSelectionPanel = new DefaultGridDialogPanel();
 
   public JComponent getContent() {
     dataPanel.setBorder(new TitledBorder("Basic Data"));
@@ -55,14 +58,11 @@ public class BasicDataView {
     return textView;
   }
 
-  public IChangeableJComboBox addObjectSelectionView(String label, boolean editable, ListCellRenderer renderer) {
-    addLabel(label);
-    ChangeableJComboBox<Object> box = new ChangeableJComboBox<Object>(null, editable);
-    box.setRenderer(renderer);
-    GridDialogLayoutData data = createHorizontallySpanningData(2);
-    dataPanel.add(box.getComponent(), data);
+  public IObjectSelectionView addObjectSelectionView(String label, boolean editable, ListCellRenderer renderer) {
+    ObjectSelectionView view = new ObjectSelectionView(label, renderer, new Object[0], editable);
+    view.addTo(dataPanel, GridDialogLayoutData.FILL_HORIZONTAL);
     dataPanel.add(new EndOfLineMarkerComponent());
-    return box;
+    return view;
   }
 
   public ISelectableTraitView addPrimaryPrerequisiteSelectionView(String string, IIntValueDisplayFactory factory) {

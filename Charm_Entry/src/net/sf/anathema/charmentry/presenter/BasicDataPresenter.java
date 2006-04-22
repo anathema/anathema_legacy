@@ -27,6 +27,7 @@ import net.sf.anathema.charmentry.model.IConfigurableCharmData;
 import net.sf.anathema.charmentry.view.BasicDataView;
 import net.sf.anathema.charmentry.view.ICostEntryView;
 import net.sf.anathema.charmentry.view.ISourceSelectionView;
+import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.IdentificateListCellRenderer;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
@@ -34,7 +35,6 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
@@ -63,7 +63,7 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
   public void initPresentation() {
     initCharmNamePresentation();
     ITextView groupView = initCharmGroupPresentation();
-    IChangeableJComboBox characterTypeView = initCharacterTypeView();
+    IObjectSelectionView characterTypeView = initCharacterTypeView();
     initEditionPresentation();
     initCharmTypePresentation();
     initDurationPresentation();
@@ -76,8 +76,7 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
   }
 
   private void initEditionPresentation() {
-    IChangeableJComboBox<ExaltedEdition> typeBox = view.addObjectSelectionView(
-        resources.getString("CharmEntry.ExaltedEdition"), //$NON-NLS-1$
+    IObjectSelectionView typeBox = view.addObjectSelectionView(resources.getString("CharmEntry.ExaltedEdition"), //$NON-NLS-1$
         false,
         new IdentificateSelectCellRenderer("", resources)); //$NON-NLS-1$
     typeBox.setObjects(ExaltedEdition.values());
@@ -216,7 +215,7 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
   }
 
   private void initCharacterTypeListening(
-      IChangeableJComboBox characterTypeView,
+      IObjectSelectionView characterTypeView,
       final ISelectableTraitView primaryPrerequisiteView,
       final ITextView groupView) {
     characterTypeView.addObjectSelectionChangedListener(new IObjectValueChangedListener<CharacterType>() {
@@ -290,7 +289,7 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
   }
 
   private void initDurationPresentation() {
-    IChangeableJComboBox box = view.addObjectSelectionView(resources.getString("CharmEntry.Duration"), //$NON-NLS-1$
+    IObjectSelectionView box = view.addObjectSelectionView(resources.getString("CharmEntry.Duration"), //$NON-NLS-1$
         true,
         new IdentificateSelectCellRenderer("", resources)); //$NON-NLS-1$
     box.addObjectSelectionChangedListener(new IObjectValueChangedListener() {
@@ -309,7 +308,7 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
   }
 
   private void initCharmTypePresentation() {
-    IChangeableJComboBox<CharmType> typeBox = view.addObjectSelectionView(resources.getString("CharmEntry.CharmType"), //$NON-NLS-1$
+    IObjectSelectionView typeBox = view.addObjectSelectionView(resources.getString("CharmEntry.CharmType"), //$NON-NLS-1$
         false,
         new IdentificateSelectCellRenderer("", resources)); //$NON-NLS-1$
     typeBox.addObjectSelectionChangedListener(new IObjectValueChangedListener<CharmType>() {
@@ -329,9 +328,8 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
     });
   }
 
-  private IChangeableJComboBox initCharacterTypeView() {
-    IChangeableJComboBox<CharacterType> typeBox = view.addObjectSelectionView(
-        resources.getString("CharmEntry.CharacterType"), //$NON-NLS-1$
+  private IObjectSelectionView initCharacterTypeView() {
+    IObjectSelectionView typeBox = view.addObjectSelectionView(resources.getString("CharmEntry.CharacterType"), //$NON-NLS-1$
         false,
         new IdentificateSelectCellRenderer("", resources)); //$NON-NLS-1$
     typeBox.setObjects(model.getLegalCharacterTypes());
