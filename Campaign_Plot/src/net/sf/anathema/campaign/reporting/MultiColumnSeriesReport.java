@@ -51,7 +51,7 @@ public class MultiColumnSeriesReport implements IITextReport {
     try {
       String seriesTitle = rootElement.getDescription().getName().getText();
       new PdfOutline(rootOutline, new PdfAction(PdfAction.FIRSTPAGE), "Table of Contents");
-      createNewPage(document);
+      document.newPage();
       Paragraph synopsisParagraph = createTitleParagraph("Synopsis", 13);
       document.add(synopsisParagraph);
       addOutline(rootOutline, "Synopsis");
@@ -62,7 +62,7 @@ public class MultiColumnSeriesReport implements IITextReport {
 
       int storyNumber = 1;
       for (IPlotElement story : rootElement.getChildren()) {
-        createNewPage(document);
+        document.newPage();
         String storyTitle = createSectionTitle(story.getDescription(), new int[] { storyNumber });
         Paragraph storyTitleParagraph = createTitleParagraph(storyTitle, 13);
         document.add(storyTitleParagraph);
@@ -72,7 +72,7 @@ public class MultiColumnSeriesReport implements IITextReport {
         addTextAndChildren(columnText, story, storyOutline, new int[] { storyNumber++ });
         writeColumnText(document, columnText);
       }
-      createTableOfContents(document, writer, seriesTitle);
+      contentTable.performPrint(seriesTitle, document, writer);
     }
     catch (DocumentException e) {
       e.printStackTrace();
@@ -123,14 +123,6 @@ public class MultiColumnSeriesReport implements IITextReport {
   private PdfOutline addOutline(PdfOutline parentOutline, String outlineTitle) {
     PdfAction episodeAction = PdfAction.gotoLocalPage(outlineTitle, false);
     return new PdfOutline(parentOutline, episodeAction, outlineTitle);
-  }
-
-  private void createNewPage(Document document) throws DocumentException {
-    document.newPage();
-  }
-
-  private void createTableOfContents(Document document, PdfWriter writer, String seriesTitle) throws DocumentException {
-    contentTable.performPrint(seriesTitle, document, writer);
   }
 
   private Paragraph createTitleParagraph(String titleString, int headerSize) {
