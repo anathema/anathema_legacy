@@ -56,7 +56,7 @@ public class RenownView implements ISimpleTabView {
 
   public IIntValueView addFaceSelectionView(String label, ListCellRenderer renderer, int maximum) {
     ObjectSelectionIntValueView view = new ObjectSelectionIntValueView(label, renderer, maximum);
-    view.addTo(facePanel);
+    view.addComponents(facePanel);
     return view;
   }
 

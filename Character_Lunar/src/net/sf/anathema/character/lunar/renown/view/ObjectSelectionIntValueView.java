@@ -10,19 +10,16 @@ import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
+import net.sf.anathema.lib.gui.dialogcomponent.grouped.IGridDialogPanelContent;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 
-public class ObjectSelectionIntValueView implements IIntValueView {
+public class ObjectSelectionIntValueView implements IIntValueView, IGridDialogPanelContent {
 
   private final ObjectSelectionView view;
   private final Map<IIntValueChangedListener, IObjectValueChangedListener<Integer>> listenerMap = new HashMap<IIntValueChangedListener, IObjectValueChangedListener<Integer>>();
-  private final String label;
-  private final ListCellRenderer renderer;
 
   public ObjectSelectionIntValueView(String label, ListCellRenderer renderer, int maximum) {
-    this.label = label;
-    this.renderer = renderer;
-    this.view = new ObjectSelectionView(createIntegerArray(maximum));
+    this.view = new ObjectSelectionView(label, renderer, createIntegerArray(maximum));
   }
 
   public void setValue(int newValue) {
@@ -55,7 +52,7 @@ public class ObjectSelectionIntValueView implements IIntValueView {
     return ranks;
   }
 
-  public void addTo(IGridDialogPanel facePanel) {
-    view.addTo(label, renderer, facePanel);
+  public void addComponents(IGridDialogPanel facePanel) {
+    view.addComponents(facePanel);
   }
 }
