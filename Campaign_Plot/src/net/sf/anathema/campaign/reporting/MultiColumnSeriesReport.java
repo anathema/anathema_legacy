@@ -1,8 +1,5 @@
 package net.sf.anathema.campaign.reporting;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import net.sf.anathema.campaign.model.ISeries;
 import net.sf.anathema.campaign.model.plot.IPlotElement;
 import net.sf.anathema.framework.itemdata.IItemDescription;
@@ -33,7 +30,7 @@ import com.lowagie.text.pdf.PdfWriter;
 public class MultiColumnSeriesReport implements IITextReport {
 
   private final ITextReportUtils reportUtils = new ITextReportUtils();
-  private final Map<String, Integer> tableOfContents = new LinkedHashMap<String, Integer>();
+  private final TableOfContents contentTable = new TableOfContents();
 
   public void performPrint(IItem item, final Document document, final PdfWriter writer) throws ReportException {
     if (!supports(item)) {
@@ -45,7 +42,7 @@ public class MultiColumnSeriesReport implements IITextReport {
     writer.setPageEvent(new PdfPageEventHelper() {
       @Override
       public void onGenericTag(PdfWriter currentWriter, Document currentDocument, Rectangle rect, String text) {
-        tableOfContents.put(text, currentWriter.getPageNumber());
+        contentTable.addEntry(text, currentWriter.getPageNumber());
       }
 
       @Override
@@ -168,12 +165,12 @@ public class MultiColumnSeriesReport implements IITextReport {
     document.add(tocParagraph);
     float yCoordinate = document.top() - 35;
     yCoordinate -= 15;
-    for (String entry : tableOfContents.keySet()) {
+    for (ContentEntry entry : contentTable.getEntries()) {
       reportUtils.textLine(writer.getDirectContent(), yCoordinate, document.left(), document.right(), ".", //$NON-NLS-1$
           reportUtils.createDefaultFont(11, Font.NORMAL),
-          entry,
-          String.valueOf(tableOfContents.get(entry)),
-          PdfAction.gotoLocalPage(entry, false));
+          entry.getText(),
+          entry.getPageAsString(),
+          PdfAction.gotoLocalPage(entry.getText(), false));
       yCoordinate -= 15;
       if (yCoordinate < document.bottom()) {
         document.newPage();
