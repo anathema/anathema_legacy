@@ -14,6 +14,7 @@ import net.sf.anathema.character.generic.framework.magic.compare.MagicComparator
 import net.sf.anathema.character.generic.impl.IIconConstants;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmType;
@@ -310,7 +311,7 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
 
   private void setCharmsInView(final ISelectionContainerView prerequisiteCharmView, CharacterType newValue)
       throws PersistenceException {
-    ICharm[] charms = CharmCache.getInstance().getCharms(newValue, false);
+    ICharm[] charms = CharmCache.getInstance().getCharms(newValue, ExaltedRuleSet.CoreRules);
     Arrays.sort(charms, new MagicComparator(newValue));
     prerequisiteCharmView.populate(charms);
   }
