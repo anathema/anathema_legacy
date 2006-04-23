@@ -75,8 +75,8 @@ public class CharmCache implements ICharmCache {
   }
 
   private void buildCharmsFromDocument(final CharacterType type, Document charmDocument) throws PersistenceException {
-    ICharm[] coreRulesCharmArray = builder.buildCoreRulesCharms(charmDocument);
-    ICharm[] powerCombatCharmArray = builder.buildPowerCombatCharms(charmDocument);
+    ICharm[] coreRulesCharmArray = builder.buildCharms(charmDocument, false);
+    ICharm[] powerCombatCharmArray = builder.buildCharms(charmDocument, true);
     for (ICharm charm : coreRulesCharmArray) {
       charmsByType.add(type, charm);
     }

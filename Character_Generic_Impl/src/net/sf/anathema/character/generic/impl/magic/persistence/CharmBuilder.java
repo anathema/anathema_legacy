@@ -72,14 +72,8 @@ import org.dom4j.Element;
 public class CharmBuilder {
 
   private final ICostListBuilder costListBuilder = new CostListBuilder();
-  private final TraitTypeUtils traitUtils = new TraitTypeUtils();
   private final DurationBuilder durationBuilder = new DurationBuilder();
-
-  private void ensureNotNull(Object object, String message) throws CharmException {
-    if (object == null) {
-      throw new CharmException(message);
-    }
-  }
+  private final TraitTypeUtils traitUtils = new TraitTypeUtils();
 
   public Charm buildCharm(Element charmElement, boolean powerCombat) throws PersistenceException {
     Element rulesElement = charmElement;
@@ -152,27 +146,50 @@ public class CharmBuilder {
     return charm;
   }
 
-  private void loadSpecialLearning(Element charmElement, Charm charm) {
-    Element learningElement = charmElement.element(ICharmXMLConstants.TAG_LEARNING);
-    if (learningElement == null) {
-      return;
+  public ICharm[] buildCharms(Document charmDoc, boolean powerCombat) throws PersistenceException {
+    Set<Charm> allCharms = new HashSet<Charm>();
+    Map<String, Charm> charmsById = new HashMap<String, Charm>();
+    Element charmListElement = charmDoc.getRootElement();
+    for (Object charmElementObject : charmListElement.elements(TAG_CHARM)) {
+      Element charmElement = (Element) charmElementObject;
+      Charm newCharm = buildCharm(charmElement, powerCombat);
+      allCharms.add(newCharm);
+      if (!charmsById.containsKey(newCharm.getId())) {
+        charmsById.put(newCharm.getId(), newCharm);
+      }
     }
-    for (Element favoredElement : ElementUtilities.elements(learningElement, ICharmXMLConstants.ATTRB_FAVORED)) {
-      String casteId = favoredElement.attributeValue(ICharmXMLConstants.TAG_CASTE);
-      charm.addFavoredCasteId(casteId);
+    extractParents(charmsById, allCharms);
+    readAlternatives(charmsById, charmListElement);
+    return allCharms.toArray(new ICharm[allCharms.size()]);
+  }
+
+  public ICharm[] buildMartialArtsCharms(Document charmDocument, boolean powerCombat) throws PersistenceException {
+    Set<Charm> allMartialArtsCharms = new HashSet<Charm>();
+    Map<String, Charm> charmsById = new HashMap<String, Charm>();
+    Element charmListElement = charmDocument.getRootElement();
+    for (Object charmElementObject : charmListElement.elements(TAG_CHARM)) {
+      Element charmElement = (Element) charmElementObject;
+      Charm charm = buildCharm(charmElement, powerCombat);
+      String martialArtsLevel = charmElement.element(TAG_MARTIAL_ARTS_LEVEL).attributeValue(ATTRIB_LEVEL);
+      MartialArtsLevel level = MartialArtsLevel.valueOf(martialArtsLevel);
+      charm.addCharmAttribute(new CharmAttribute(level.getId(), false));
+      allMartialArtsCharms.add(charm);
+      charmsById.put(charm.getId(), charm);
+    }
+    extractParents(charmsById, allMartialArtsCharms);
+    return allMartialArtsCharms.toArray(new ICharm[0]);
+  }
+
+  private void ensureNotNull(Object object, String message) throws CharmException {
+    if (object == null) {
+      throw new CharmException(message);
     }
   }
 
-  private String getCharmGroupId(Element charmElement, String id) throws CharmException {
-    String group = charmElement.attributeValue(ATTRIB_GROUP);
-    ensureNotNull(group, "Cannot process Charm without group id:" + id); //$NON-NLS-1$
-    return group;
-  }
-
-  private Element getPrerequisiteListElement(Element charmElement) throws CharmException {
-    Element prerequisiteListElement = charmElement.element(TAG_PREREQUISITE_LIST);
-    ensureNotNull(prerequisiteListElement, "Required element 'prerequisite' is missing in Charm."); //$NON-NLS-1$    
-    return prerequisiteListElement;
+  private void extractParents(Map<String, ? extends Charm> charmsById, Set< ? extends Charm> allCharms) {
+    for (Charm charm : allCharms) {
+      charm.extractParentCharms(charmsById);
+    }
   }
 
   private ICharmAttribute[] getCharmAttributes(
@@ -189,6 +206,12 @@ public class CharmBuilder {
       attributes.add(new CharmAttribute(attributeString, false));
     }
     return attributes.toArray(new ICharmAttribute[attributes.size()]);
+  }
+
+  private String getCharmGroupId(Element charmElement, String id) throws CharmException {
+    String group = charmElement.attributeValue(ATTRIB_GROUP);
+    ensureNotNull(group, "Cannot process Charm without group id:" + id); //$NON-NLS-1$
+    return group;
   }
 
   private CharmType getCharmType(Element rulesElement, Element fallBackElement, String id) throws CharmException {
@@ -266,44 +289,20 @@ public class CharmBuilder {
     return elements.toArray(new Element[elements.size()]);
   }
 
-  public ICharm[] buildCoreRulesCharms(Document charmDoc) throws PersistenceException {
-    return buildCharms(charmDoc, false);
+  private Element getPrerequisiteListElement(Element charmElement) throws CharmException {
+    Element prerequisiteListElement = charmElement.element(TAG_PREREQUISITE_LIST);
+    ensureNotNull(prerequisiteListElement, "Required element 'prerequisite' is missing in Charm."); //$NON-NLS-1$    
+    return prerequisiteListElement;
   }
 
-  public ICharm[] buildPowerCombatCharms(Document charmDoc) throws PersistenceException {
-    return buildCharms(charmDoc, true);
-  }
-
-  public ICharm[] buildCharms(Document charmDoc, boolean powerCombat) throws PersistenceException {
-    Set<Charm> allCharms = new HashSet<Charm>();
-    Map<String, Charm> charmsById = new HashMap<String, Charm>();
-    Element charmListElement = charmDoc.getRootElement();
-    for (Object charmElementObject : charmListElement.elements(TAG_CHARM)) {
-      Element charmElement = (Element) charmElementObject;
-      Charm newCharm = buildCharm(charmElement, powerCombat);
-      allCharms.add(newCharm);
-      if (!charmsById.containsKey(newCharm.getId())) {
-        charmsById.put(newCharm.getId(), newCharm);
-      }
-    }
-    extractParents(charmsById, allCharms);
-    readAlternatives(charmsById, charmListElement);
-    return allCharms.toArray(new ICharm[allCharms.size()]);
-  }
-
-  private void extractParents(Map<String, ? extends Charm> charmsById, Set< ? extends Charm> allCharms) {
-    for (Charm charm : allCharms) {
-      charm.extractParentCharms(charmsById);
-    }
-  }
-
-  private void readAlternatives(Map<String, Charm> charmsById, Element charmListElement) {
-    Element alternativesElement = charmListElement.element(TAG_ALTERNATIVES);
-    if (alternativesElement == null) {
+  private void loadSpecialLearning(Element charmElement, Charm charm) {
+    Element learningElement = charmElement.element(ICharmXMLConstants.TAG_LEARNING);
+    if (learningElement == null) {
       return;
     }
-    for (Element alternativeElement : ElementUtilities.elements(alternativesElement, TAG_ALTERNATIVE)) {
-      readAlternative(alternativeElement, charmsById);
+    for (Element favoredElement : ElementUtilities.elements(learningElement, ICharmXMLConstants.ATTRB_FAVORED)) {
+      String casteId = favoredElement.attributeValue(ICharmXMLConstants.TAG_CASTE);
+      charm.addFavoredCasteId(casteId);
     }
   }
 
@@ -322,20 +321,13 @@ public class CharmBuilder {
     }
   }
 
-  public ICharm[] buildMartialArtsCharms(Document charmDocument, boolean powerCombat) throws PersistenceException {
-    Set<Charm> allMartialArtsCharms = new HashSet<Charm>();
-    Map<String, Charm> charmsById = new HashMap<String, Charm>();
-    Element charmListElement = charmDocument.getRootElement();
-    for (Object charmElementObject : charmListElement.elements(TAG_CHARM)) {
-      Element charmElement = (Element) charmElementObject;
-      Charm charm = buildCharm(charmElement, powerCombat);
-      String martialArtsLevel = charmElement.element(TAG_MARTIAL_ARTS_LEVEL).attributeValue(ATTRIB_LEVEL);
-      MartialArtsLevel level = MartialArtsLevel.valueOf(martialArtsLevel);
-      charm.addCharmAttribute(new CharmAttribute(level.getId(), false));
-      allMartialArtsCharms.add(charm);
-      charmsById.put(charm.getId(), charm);
+  private void readAlternatives(Map<String, Charm> charmsById, Element charmListElement) {
+    Element alternativesElement = charmListElement.element(TAG_ALTERNATIVES);
+    if (alternativesElement == null) {
+      return;
     }
-    extractParents(charmsById, allMartialArtsCharms);
-    return allMartialArtsCharms.toArray(new ICharm[0]);
+    for (Element alternativeElement : ElementUtilities.elements(alternativesElement, TAG_ALTERNATIVE)) {
+      readAlternative(alternativeElement, charmsById);
+    }
   }
 }
