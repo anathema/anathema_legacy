@@ -37,6 +37,7 @@ import java.util.Map;
 import java.util.Set;
 
 import net.disy.commons.core.util.Ensure;
+import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
@@ -83,8 +84,7 @@ public class CharmBuilder {
       }
     }
     String id = charmElement.attributeValue(ATTRIB_ID);
-    ensureNotNull(id, "Cannot process Charms without id."); //$NON-NLS-1$
-    if (id == "") { //$NON-NLS-1$
+    if (StringUtilities.isNullOrTrimEmpty(id)) {
       throw new CharmException("Cannot process Charms without id."); //$NON-NLS-1$
     }
     String typeAttribute = charmElement.attributeValue(ATTRIB_EXALT);
@@ -95,10 +95,10 @@ public class CharmBuilder {
     catch (IllegalArgumentException e) {
       throw new CharmException("No chararacter type given for Charm: " + id, e); //$NON-NLS-1$
     }
-    String group = getCharmGroupId(charmElement, id);
+    String group = getCharmGroupId(charmElement);
 
     Element costElement = getElementFromRules(rulesElement, fallBackElement, TAG_COST);
-    ensureNotNull(costElement, "No cost specified for Charm: " + id); //$NON-NLS-1$
+    Ensure.ensureArgumentNotNull("No cost specified for Charm: " + id, costElement); //$NON-NLS-1$
     ICostList temporaryCost = costListBuilder.buildTemporaryCostList(costElement.element(TAG_TEMPORARY));
     IPermanentCostList permanentCost = costListBuilder.buildPermanentCostList(costElement.element(TAG_PERMANENT));
     IComboRestrictions comboRules = getComboRules(rulesElement, fallBackElement, id);
@@ -160,12 +160,6 @@ public class CharmBuilder {
     return allCharms.toArray(new ICharm[allCharms.size()]);
   }
 
-  private void ensureNotNull(Object object, String message) throws CharmException {
-    if (object == null) {
-      throw new CharmException(message);
-    }
-  }
-
   private void extractParents(Map<String, ? extends Charm> charmsById, Set< ? extends Charm> allCharms) {
     for (Charm charm : allCharms) {
       charm.extractParentCharms(charmsById);
@@ -188,9 +182,11 @@ public class CharmBuilder {
     return attributes.toArray(new ICharmAttribute[attributes.size()]);
   }
 
-  private String getCharmGroupId(Element charmElement, String id) throws CharmException {
+  private String getCharmGroupId(Element charmElement) throws CharmException {
     String group = charmElement.attributeValue(ATTRIB_GROUP);
-    ensureNotNull(group, "Cannot process Charm without group id:" + id); //$NON-NLS-1$
+    if (StringUtilities.isNullOrTrimEmpty(group)) {
+      throw new CharmException("No group specified for charm."); //$NON-NLS-1$
+    }
     return group;
   }
 
@@ -269,9 +265,9 @@ public class CharmBuilder {
     return elements.toArray(new Element[elements.size()]);
   }
 
-  private Element getPrerequisiteListElement(Element charmElement) throws CharmException {
+  private Element getPrerequisiteListElement(Element charmElement) {
     Element prerequisiteListElement = charmElement.element(TAG_PREREQUISITE_LIST);
-    ensureNotNull(prerequisiteListElement, "Required element 'prerequisite' is missing in Charm."); //$NON-NLS-1$    
+    Ensure.ensureArgumentNotNull("Required element 'prerequisite' is missing in Charm.", prerequisiteListElement); //$NON-NLS-1$
     return prerequisiteListElement;
   }
 

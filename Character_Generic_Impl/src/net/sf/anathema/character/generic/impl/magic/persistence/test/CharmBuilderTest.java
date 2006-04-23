@@ -108,7 +108,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
       charmBuilder.buildCharm(charmElement, false);
       fail();
     }
-    catch (CharmException e) {
+    catch (IllegalArgumentException e) {
       // nothing to do
     }
   }
