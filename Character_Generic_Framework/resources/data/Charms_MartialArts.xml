@@ -11,9 +11,9 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
+    <charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Eclipse" page="74"/>
   </charm>
   <charm id="Solar.Iron-ArmBlock" exalt="Solar" group="MantisStyle">
@@ -27,9 +27,9 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Eclipse" page="74"/>
   </charm>
   <charm id="Solar.MantisForm" exalt="Solar" group="MantisStyle">
@@ -43,10 +43,10 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
+  	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Eclipse" page="74"/>
     <ruleset name="PowerCombat">
       <source source="Player's Guide" page="208"/>
@@ -63,9 +63,9 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
+   	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Eclipse" page="75"/>
   </charm>
   <charm id="Solar.Joint-LockingTechnique" exalt="Solar" group="MantisStyle">
@@ -79,9 +79,9 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="One turn or one hold"/>
     <charmtype type="Reflexive"/>
+   	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Eclipse" page="75"/>
     <ruleset name="PowerCombat">
       <source source="Player's Guide" page="208"/>
@@ -101,9 +101,9 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
+   	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Eclipse" page="75"/>
   </charm>
   <charm id="Solar.CrushingClawTechnique" exalt="Solar" group="MantisStyle">
@@ -117,9 +117,9 @@
         <essence cost="3" text="per turn"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
+   	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Eclipse" page="75"/>
     <ruleset name="PowerCombat">
       <source source="Player's Guide" page="208"/>
@@ -136,9 +136,9 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
+   	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Eclipse" page="75"/>
   </charm>
   <charm id="Solar.Joint-BreakingAttack" exalt="Solar" group="MantisStyle">
@@ -152,9 +152,9 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
+   	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Eclipse" page="75"/>
   </charm>
   <charm id="Solar.GraspingMantisDefense" exalt="Solar" group="MantisStyle">
@@ -168,9 +168,9 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
+   	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Eclipse" page="75"/>
   </charm>
   <charm id="Solar.ImageDeathTechnique" exalt="Solar" group="EbonShadowStyle">
@@ -183,9 +183,9 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="One day"/>
     <charmtype type="Simple"/>
+	<charmAttribute attribute="Celestial"/>    
     <source source="Caste Book: Night" page="67"/>
   </charm>
   <charm id="Solar.WallClimbingTechnique" exalt="Solar" group="EbonShadowStyle">
@@ -199,9 +199,9 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="One turn"/>
     <charmtype type="Reflexive"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Night" page="67"/>
   </charm>
   <charm id="Solar.DistractingFinger-GestureAttack" exalt="Solar" group="EbonShadowStyle">
@@ -215,9 +215,9 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Night" page="68"/>
   </charm>
   <charm id="Solar.EbonShadowForm" exalt="Solar" group="EbonShadowStyle">
@@ -231,9 +231,9 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
+	<charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Form"/>
     <source source="Caste Book: Night" page="68"/>
   </charm>
@@ -248,9 +248,9 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Night" page="68"/>
   </charm>
   <charm id="Solar.ElusiveFlickerEvasion" exalt="Solar" group="EbonShadowStyle">
@@ -264,9 +264,9 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="One turn"/>
     <charmtype type="Reflexive"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Night" page="69"/>
   </charm>
   <charm id="Solar.Limb-ImmobilizingMethod" exalt="Solar" group="EbonShadowStyle">
@@ -280,9 +280,9 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Night" page="69"/>
   </charm>
   <charm id="Solar.Blow-ConcealingGestureTechnique" exalt="Solar" group="EbonShadowStyle">
@@ -297,10 +297,10 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Night" page="69"/>
   </charm>
   <charm id="Solar.ParalyzingTouchAttack" exalt="Solar" group="EbonShadowStyle">
@@ -315,9 +315,9 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Night" page="69"/>
   </charm>
   <charm id="Solar.Shadow-BodyStyle" exalt="Solar" group="EbonShadowStyle">
@@ -332,9 +332,9 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Reflexive"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Night" page="69"/>
   </charm>
   <charm id="Solar.Shadow-SteppingMotion" exalt="Solar" group="EbonShadowStyle">
@@ -350,9 +350,9 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Night" page="70"/>
   </charm>
   <charm id="Solar.CrimsonLeapingCatTechnique" exalt="Solar" group="TigerStyle">
@@ -365,9 +365,9 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="One turn"/>
     <charmtype type="Supplemental"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Dawn" page="73"/>
   </charm>
   <charm id="Solar.StrikingFuryClawsAttack" exalt="Solar" group="TigerStyle">
@@ -381,9 +381,9 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Dawn" page="73"/>
   </charm>
   <charm id="Solar.RagingTigerPounce" exalt="Solar" group="TigerStyle">
@@ -397,9 +397,9 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="One turn"/>
     <charmtype type="Supplemental"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Dawn" page="73"/>
   </charm>
   <charm id="Solar.TigerForm" exalt="Solar" group="TigerStyle">
@@ -413,10 +413,10 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Dawn" page="73"/>
   </charm>
   <charm id="Solar.StalkingCatMovementMeditation" exalt="Solar" group="TigerStyle">
@@ -430,9 +430,9 @@
         <essence cost="3" text="+ 1 per die"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Dawn" page="73"/>
   </charm>
   <charm id="Solar.SpineShatteringBite" exalt="Solar" group="TigerStyle">
@@ -446,9 +446,9 @@
         <essence cost="3" text="+1 per die"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Dawn" page="73"/>
   </charm>
   <charm id="Solar.CelestialTigerHide" exalt="Solar" group="TigerStyle">
@@ -463,9 +463,9 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Dawn" page="74"/>
   </charm>
   <charm id="Solar.LeapfromCloakingShadowsAttack" exalt="Solar" group="TigerStyle">
@@ -479,9 +479,9 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Dawn" page="74"/>
   </charm>
   <charm id="Solar.AngryPredatorFrenzyStyle" exalt="Solar" group="TigerStyle">
@@ -498,9 +498,9 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="ExtraAction"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Caste Book: Dawn" page="74"/>
   </charm>
   <charm id="Solar.StrikingCobraTechnique" exalt="Solar" group="SnakeStyle">
@@ -513,9 +513,9 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Exalted" page="160"/>
   </charm>
   <charm id="Solar.SerpentineEvasion" exalt="Solar" group="SnakeStyle">
@@ -529,9 +529,9 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Exalted" page="160"/>
   </charm>
   <charm id="Solar.EssenceFangsandScalesTechnique" exalt="Solar" group="SnakeStyle">
@@ -545,9 +545,9 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Exalted" page="160"/>
     <ruleset name="PowerCombat">
       <source source="Player's Guide" page="208"/>
@@ -564,10 +564,10 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Exalted" page="160"/>
   </charm>
   <charm id="Solar.Armor-PenetratingFangStrike" exalt="Solar" group="SnakeStyle">
@@ -582,9 +582,9 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Exalted" page="161"/>
     <ruleset name="PowerCombat">
       <cost>
@@ -607,9 +607,9 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Exalted" page="161"/>
   </charm>
   <charm id="Solar.SnakeStrikesHeel" exalt="Solar" group="SnakeStyle">
@@ -623,9 +623,9 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Exalted" page="161"/>
   </charm>
   <charm id="Solar.UncoilingSerpentPrana" exalt="Solar" group="SnakeStyle">
@@ -639,9 +639,9 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Exalted" page="161"/>
   </charm>
   <charm id="Solar.EssenceVenomStrike" exalt="Solar" group="SnakeStyle">
@@ -659,9 +659,9 @@
         <health cost="1" type="Lethal"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Exalted" page="162"/>
     <ruleset name="PowerCombat">
       <cost>
@@ -685,9 +685,9 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="Exalted" page="162"/>
     <ruleset name="PowerCombat">
       <cost>
@@ -706,9 +706,9 @@
     <cost>
       <temporary/>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Permanent"/>
     <charmtype type="Special"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="The Sidereals" page="179"/>
   </charm>
   <charm id="Sidereal.FlightMercury" exalt="Sidereal" group="VioletBierSorrowsStyle">
@@ -722,9 +722,9 @@
         <essence cost="1" text="per initiative bonus"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Reflexive"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="The Sidereals" page="179"/>
   </charm>
   <charm id="Sidereal.BladeBattleMaiden" exalt="Sidereal" group="VioletBierSorrowsStyle">
@@ -739,9 +739,9 @@
         <willpower cost="2"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Reflexive"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="The Sidereals" page="180"/>
   </charm>
   <charm id="Sidereal.JoyinAdversityStance" exalt="Sidereal" group="VioletBierSorrowsStyle">
@@ -755,9 +755,9 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Reflexive"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="The Sidereals" page="180"/>
   </charm>
   <charm id="Sidereal.VioletBierSorrowsForm" exalt="Sidereal" group="VioletBierSorrowsStyle">
@@ -773,10 +773,10 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="The Sidereals" page="181"/>
   </charm>
   <charm id="Sidereal.Death-ParryingStroke" exalt="Sidereal" group="VioletBierSorrowsStyle">
@@ -790,9 +790,9 @@
         <essence cost="2" text="per health level"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="The Sidereals" page="181"/>
   </charm>
   <charm id="Sidereal.Life-SeveringBlow" exalt="Sidereal" group="VioletBierSorrowsStyle">
@@ -806,9 +806,9 @@
         <essence cost="2" text="per health level"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="The Sidereals" page="181"/>
   </charm>
   <charm id="Sidereal.MetalStorm" exalt="Sidereal" group="VioletBierSorrowsStyle">
@@ -822,9 +822,9 @@
         <essence cost="3" text="per attack"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="The Sidereals" page="181"/>
   </charm>
   <charm id="Sidereal.Conclusion-PursuingApproach" exalt="Sidereal" group="VioletBierSorrowsStyle">
@@ -840,10 +840,10 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
-    <attribute attribute="PrayerStrip"/>
+    <charmAttribute attribute="PrayerStrip"/>
+	<charmAttribute attribute="Celestial"/>
     <source source="The Sidereals" page="181"/>
   </charm>
   <charm id="Sidereal.UnnaturalMany-StepStride" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
@@ -857,9 +857,9 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="184"/>
   </charm>
   <charm id="Sidereal.DanceHungrySpider" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
@@ -873,9 +873,9 @@
         <essence cost="8"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="Five turns"/>
     <charmtype type="Reflexive"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="185"/>
   </charm>
   <charm id="Sidereal.MawDrippingVenom" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
@@ -888,9 +888,9 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="186"/>
   </charm>
   <charm id="Sidereal.NestLivingStrands" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
@@ -905,9 +905,9 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="186"/>
   </charm>
   <charm id="Sidereal.RainUnseenThreads" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
@@ -920,9 +920,9 @@
         <essence cost="8"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="186"/>
   </charm>
   <charm id="Sidereal.CharcoalMarchSpidersForm" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
@@ -938,10 +938,10 @@
         <essence cost="12"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="187"/>
   </charm>
   <charm id="Sidereal.CannibalisticHeritageTechnique" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
@@ -956,9 +956,9 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="187"/>
   </charm>
   <charm id="Sidereal.ThumbnailSpiderMarch" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
@@ -973,9 +973,9 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="187"/>
   </charm>
   <charm id="Sidereal.JumpingSpiderStrike" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
@@ -990,9 +990,9 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="188"/>
   </charm>
   <charm id="Sidereal.WaterSpiderBite" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
@@ -1007,9 +1007,9 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="188"/>
   </charm>
   <charm id="Sidereal.PatternSpiderTouch" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
@@ -1026,9 +1026,9 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="189"/>
   </charm>
   <charm id="Sidereal.GrandmotherSpiderMastery" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
@@ -1043,9 +1043,9 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="One turn"/>
     <charmtype type="Simple"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="189"/>
   </charm>
   <charm id="Sidereal.DeadlyStarmetalOffensive" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
@@ -1058,9 +1058,9 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="Five turns"/>
     <charmtype type="Simple"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="189"/>
   </charm>
   <charm id="Sidereal.OrichalcumSheathingStance" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
@@ -1074,9 +1074,9 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="Five turns"/>
     <charmtype type="Reflexive"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="190"/>
   </charm>
   <charm id="Sidereal.FlickeringMoonsilverApproach" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
@@ -1089,9 +1089,9 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="Five turns"/>
     <charmtype type="Reflexive"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="190"/>
   </charm>
   <charm id="Sidereal.FiveJadeFury" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
@@ -1104,9 +1104,9 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="Five turns"/>
     <charmtype type="Reflexive"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="191"/>
   </charm>
   <charm id="Sidereal.FourMagicalMaterialsForm" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
@@ -1123,10 +1123,10 @@
         <essence cost="15"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="191"/>
   </charm>
   <charm id="Sidereal.CharmRedirectionTechnique" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
@@ -1139,9 +1139,9 @@
         <essence cost="7"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="191"/>
   </charm>
   <charm id="Sidereal.SequentialCharmDisruption" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
@@ -1156,9 +1156,9 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="192"/>
   </charm>
   <charm id="Sidereal.Spell-ShatteringPalm" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
@@ -1171,9 +1171,9 @@
         <essence cost="12"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="192"/>
   </charm>
   <charm id="Sidereal.AstrologyInterruptionMethod" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
@@ -1187,9 +1187,9 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="192"/>
   </charm>
   <charm id="Sidereal.SoulFireShaperForm" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
@@ -1205,10 +1205,10 @@
         <essence cost="15"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="193"/>
   </charm>
   <charm id="Sidereal.GodWays" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
@@ -1221,9 +1221,9 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="193"/>
   </charm>
   <charm id="Sidereal.(Type)ExaltWays" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
@@ -1237,9 +1237,9 @@
         <health cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="Five turns"/>
     <charmtype type="Simple"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="193"/>
   </charm>
   <charm id="Sidereal.GameDivinityForm" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
@@ -1255,10 +1255,10 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="194"/>
   </charm>
   <charm id="Sidereal.DemesneEmulationPractice" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
@@ -1273,9 +1273,9 @@
         <health cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
+   	<charmAttribute attribute="Sidereal"/>
     <source source="The Sidereals" page="194"/>
   </charm>
   <charm id="Sidereal.DesmeneandManseForm" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
@@ -1289,7 +1289,8 @@
         <essence cost="12"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
+    <charmAttribute attribute="Sidereal"/>
+       	<charmAttribute attribute="Sidereal"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
@@ -1310,7 +1311,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
+    <charmAttribute attribute="Sidereal"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
@@ -1326,7 +1327,7 @@
         <essence cost="7"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
+    <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="The Sidereals" page="197"/>
@@ -1341,7 +1342,7 @@
         <essence cost="12"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
+    <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="The Sidereals" page="197"/>
@@ -1357,7 +1358,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
+    <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="The Sidereals" page="198"/>
@@ -1376,7 +1377,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
+    <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="The Sidereals" page="198"/>
@@ -1395,7 +1396,7 @@
         <experience cost="1"/>
       </permanent>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
+    <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="The Sidereals" page="198"/>
@@ -1411,7 +1412,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
+    <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="The Sidereals" page="199"/>
@@ -1428,7 +1429,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
+    <charmAttribute attribute="Sidereal"/>
     <duration duration="One turn"/>
     <charmtype type="Reflexive"/>
     <source source="The Sidereals" page="199"/>
@@ -1445,7 +1446,7 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
+    <charmAttribute attribute="Sidereal"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="The Sidereals" page="199"/>
@@ -1464,7 +1465,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
+    <charmAttribute attribute="Sidereal"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
@@ -1481,7 +1482,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
+    <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="The Sidereals" page="200"/>
@@ -1498,7 +1499,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
+    <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="The Sidereals" page="200"/>
@@ -1515,7 +1516,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
+    <charmAttribute attribute="Sidereal"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="The Sidereals" page="201"/>
@@ -1533,7 +1534,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Sidereal"/>
+    <charmAttribute attribute="Sidereal"/>
     <duration duration="One turn"/>
     <charmtype type="Simple"/>
     <source source="The Sidereals" page="201"/>
@@ -1548,7 +1549,7 @@
         <essence cost="1" text="per 2B or 1L"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="The Dragon-Blooded" page="197"/>
@@ -1565,7 +1566,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="197"/>
@@ -1580,7 +1581,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="198"/>
@@ -1596,7 +1597,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="198"/>
@@ -1613,7 +1614,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
@@ -1632,7 +1633,7 @@
         <health cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="199"/>
@@ -1649,7 +1650,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="The Dragon-Blooded" page="199"/>
@@ -1667,7 +1668,7 @@
         <health cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
     <source source="The Dragon-Blooded" page="199"/>
@@ -1682,7 +1683,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="243"/>
@@ -1698,7 +1699,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="The Dragon-Blooded" page="243"/>
@@ -1714,7 +1715,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Martial Arts turns"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="243"/>
@@ -1730,7 +1731,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Martial Arts turns"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="244"/>
@@ -1748,7 +1749,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
@@ -1765,7 +1766,7 @@
         <essence cost="4" text="per attack"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
     <source source="The Dragon-Blooded" page="245"/>
@@ -1781,7 +1782,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="245"/>
@@ -1798,7 +1799,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="245"/>
@@ -1814,7 +1815,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="MartialArts turns"/>
     <charmtype type="Reflexive"/>
     <source source="The Dragon-Blooded" page="246"/>
@@ -1830,7 +1831,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="247"/>
@@ -1847,7 +1848,7 @@
         <health cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="MartialArts turns"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="247"/>
@@ -1866,7 +1867,7 @@
         <health cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="MartialArts turns"/>
     <charmtype type="Reflexive"/>
     <source source="The Dragon-Blooded" page="247"/>
@@ -1881,7 +1882,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="247"/>
@@ -1896,7 +1897,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="MartialArts minutes"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="248"/>
@@ -1911,7 +1912,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One turn"/>
     <charmtype type="Reflexive"/>
     <source source="The Dragon-Blooded" page="249"/>
@@ -1929,7 +1930,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
@@ -1946,7 +1947,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="MartialArts in turns"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="249"/>
@@ -1963,7 +1964,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="The Dragon-Blooded" page="249"/>
@@ -1979,7 +1980,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Special"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="250"/>
@@ -1995,7 +1996,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Special"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="250"/>
@@ -2011,7 +2012,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="250"/>
@@ -2028,7 +2029,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="250"/>
@@ -2047,7 +2048,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="251"/>
@@ -2064,7 +2065,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="252"/>
@@ -2082,7 +2083,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="The Dragon-Blooded" page="252"/>
@@ -2098,7 +2099,7 @@
         <essence cost="1" text="per +1 difficulty"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One turn"/>
     <charmtype type="Reflexive"/>
     <source source="The Dragon-Blooded" page="252"/>
@@ -2113,7 +2114,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One turn"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="252"/>
@@ -2129,7 +2130,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="The Dragon-Blooded" page="252"/>
@@ -2146,7 +2147,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
@@ -2163,7 +2164,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="254"/>
@@ -2179,7 +2180,7 @@
         <essence cost="1" text="per Essence lethal damage"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="254"/>
@@ -2196,7 +2197,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="253"/>
@@ -2212,7 +2213,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Until abandoned"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="255"/>
@@ -2228,7 +2229,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Varies"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="255"/>
@@ -2246,7 +2247,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="255"/>
@@ -2261,7 +2262,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Essence turns"/>
     <charmtype type="Reflexive"/>
     <source source="The Dragon-Blooded" page="255"/>
@@ -2277,7 +2278,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="256"/>
@@ -2293,7 +2294,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="256"/>
@@ -2309,7 +2310,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="257"/>
@@ -2326,7 +2327,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
@@ -2344,7 +2345,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="257"/>
@@ -2361,7 +2362,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Until abandoned"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="257"/>
@@ -2377,7 +2378,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="258"/>
@@ -2393,7 +2394,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
     <source source="The Dragon-Blooded" page="258"/>
@@ -2411,7 +2412,7 @@
         <health cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One turn"/>
     <charmtype type="Reflexive"/>
     <source source="The Dragon-Blooded" page="259"/>
@@ -2437,7 +2438,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Varies"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="259"/>
@@ -2455,7 +2456,7 @@
         <health cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="259"/>
@@ -2470,7 +2471,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Five turns or until used"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="259"/>
@@ -2486,7 +2487,7 @@
         <essence cost="2" text="per health level"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="260"/>
@@ -2502,7 +2503,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One turn"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="261"/>
@@ -2518,7 +2519,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="261"/>
@@ -2534,7 +2535,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
@@ -2551,7 +2552,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Until abandoned"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="261"/>
@@ -2567,7 +2568,7 @@
         <essence cost="3" text="per health level"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="263"/>
@@ -2584,7 +2585,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="262"/>
@@ -2601,7 +2602,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="262"/>
@@ -2618,7 +2619,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="263"/>
@@ -2635,7 +2636,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="261"/>
@@ -2654,7 +2655,7 @@
         <health cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Essence turns or until discharged"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="263"/>
@@ -2670,7 +2671,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="The Abyssals" page="162"/>
@@ -2685,7 +2686,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="162"/>
@@ -2701,7 +2702,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
@@ -2719,7 +2720,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
@@ -2736,7 +2737,7 @@
         <essence cost="1+"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="The Abyssals" page="163"/>
@@ -2752,7 +2753,7 @@
         <essence cost="1" text="per 2L"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="The Abyssals" page="164"/>
@@ -2768,7 +2769,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="The Abyssals" page="165"/>
@@ -2785,7 +2786,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
     <source source="The Abyssals" page="165"/>
@@ -2802,7 +2803,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="The Abyssals" page="165"/>
@@ -2822,7 +2823,7 @@
         <health cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="165"/>
@@ -2840,7 +2841,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="Cult of the Illuminated" page="103"/>
@@ -2856,7 +2857,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="One Turn"/>
     <charmtype type="Reflexive"/>
     <source source="Cult of the Illuminated" page="103"/>
@@ -2874,7 +2875,7 @@
         <health cost="1" text="per die"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="Cult of the Illuminated" page="103"/>
@@ -2891,7 +2892,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
@@ -2912,7 +2913,7 @@
         <experience cost="1"/>
       </permanent>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="Cult of the Illuminated" page="104"/>
@@ -2929,7 +2930,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="Cult of the Illuminated" page="104"/>
@@ -2946,7 +2947,7 @@
         <essence cost="15"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="One day"/>
     <charmtype type="Simple"/>
     <source source="Cult of the Illuminated" page="104"/>
@@ -2961,7 +2962,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="Players Guide" page="241"/>
@@ -2977,7 +2978,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="Players Guide" page="242"/>
@@ -2993,7 +2994,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
@@ -3010,7 +3011,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="One scene"/>
     <charmtype type="Reflexive"/>
     <source source="Players Guide" page="242"/>
@@ -3026,7 +3027,7 @@
  				<essence cost="Varies"/>
  			</temporary>
 		</cost>
- 		<martialArtsLevel level="Terrestrial"/>
+ 		<charmAttribute attribute="Terrestrial"/>
 		<duration duration="Varies"/>
  		<charmtype type="Varies"/>
 		<source source="Players Guide" page="242"/>
@@ -3042,7 +3043,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="Players Guide" page="243"/>
@@ -3058,7 +3059,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="Players Guide" page="244"/>
@@ -3074,7 +3075,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="Players Guide" page="244"/>
@@ -3091,7 +3092,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="Players Guide" page="244"/>
@@ -3108,7 +3109,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="Players Guide" page="244"/>
@@ -3124,7 +3125,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="Until next turn"/>
     <charmtype type="Reflexive"/>
     <source source="Players Guide" page="245"/>
@@ -3141,7 +3142,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="One scene"/>
     <charmtype type="ExtraAction"/>
     <source source="Players Guide" page="245"/>
@@ -3158,7 +3159,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="One day"/>
     <charmtype type="Simple"/>
     <source source="Players Guide" page="246"/>
@@ -3179,7 +3180,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
     <source source="Players Guide" page="246"/>
@@ -3194,7 +3195,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="Players Guide" page="246"/>
@@ -3210,7 +3211,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="Players Guide" page="247"/>
@@ -3225,7 +3226,7 @@
         <essence cost="4" text="per point of Strength / Stamina, 6 motes per point of Dexterity"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="Players Guide" page="247"/>
@@ -3242,7 +3243,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="Players Guide" page="247"/>
@@ -3259,7 +3260,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
@@ -3280,7 +3281,7 @@
         <experience cost="2"/>
       </permanent>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="Players Guide" page="248"/>
@@ -3297,7 +3298,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="Players Guide" page="248"/>
@@ -3314,7 +3315,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Reflexive"/>
     <source source="Players Guide" page="249"/>
@@ -3330,7 +3331,7 @@
         <essence cost="None"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Permanent"/>
     <charmtype type="Special"/>
     <source source="Players Guide" page="249"/>
@@ -3345,7 +3346,7 @@
         <essence cost="1" text="per die"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="Players Guide" page="254"/>
@@ -3361,7 +3362,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="Players Guide" page="255"/>
@@ -3377,7 +3378,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="Players Guide" page="255"/>
@@ -3393,7 +3394,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Until fired"/>
     <charmtype type="Simple"/>
     <source source="Players Guide" page="255"/>
@@ -3409,7 +3410,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="Players Guide" page="255"/>
@@ -3426,7 +3427,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
@@ -3443,7 +3444,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="Players Guide" page="256"/>
@@ -3460,7 +3461,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="Players Guide" page="256"/>
@@ -3476,7 +3477,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Reflexive"/>
     <source source="Players Guide" page="257"/>
@@ -3493,7 +3494,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
     <source source="Players Guide" page="257"/>
@@ -3509,7 +3510,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="Players Guide" page="257"/>
@@ -3526,7 +3527,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Varies"/>
     <charmtype type="Supplemental"/>
     <source source="Players Guide" page="257"/>
@@ -3541,7 +3542,7 @@
         <essence cost="1" text="+"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="Aspect Book: Earth" page="75"/>
@@ -3558,7 +3559,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Earth" page="75"/>
@@ -3573,7 +3574,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="Until Released"/>
     <charmtype type="Supplemental"/>
     <source source="Aspect Book: Earth" page="75"/>
@@ -3590,7 +3591,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="Aspect Book: Earth" page="76"/>
@@ -3607,7 +3608,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
@@ -3624,7 +3625,7 @@
         <essence cost="1" text="per 2B or 1L"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="Aspect Book: Earth" page="76"/>
@@ -3641,7 +3642,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Terrestrial"/>
+    <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Earth" page="76"/>
@@ -3658,7 +3659,7 @@
     </cost>
     <charmAttribute attribute="Unrestricted"/>
     <charmAttribute attribute="NoStyle"/>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Reflexive"/>
     <source source="The Dragon-Blooded" page="241"/>
@@ -3678,7 +3679,7 @@
     <charmAttribute attribute="Unrestricted"/>
     <charmAttribute attribute="AllowsCelestial"/>
     <charmAttribute attribute="NoStyle"/>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="242"/>
@@ -3695,7 +3696,7 @@
     </cost>
     <charmAttribute attribute="Unrestricted"/>
     <charmAttribute attribute="NoStyle"/>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="Players Guide" page="236"/>
@@ -3715,7 +3716,7 @@
     <charmAttribute attribute="Unrestricted"/>
     <charmAttribute attribute="AllowsCelestial"/>
     <charmAttribute attribute="NoStyle"/>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Reflexive"/>
     <source source="Players Guide" page="236"/>
@@ -3732,7 +3733,7 @@
     </cost>
     <charmAttribute attribute="Unrestricted"/>
     <charmAttribute attribute="NoStyle"/>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Reflexive"/>
     <source source="Players Guide" page="237"/>
@@ -3752,7 +3753,7 @@
     <charmAttribute attribute="Unrestricted"/>
     <charmAttribute attribute="AllowsCelestial"/>
     <charmAttribute attribute="NoStyle"/>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="Players Guide" page="236"/>
@@ -3767,7 +3768,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="Players Guide" page="250"/>
@@ -3782,7 +3783,7 @@
         <essence cost="1" text="1L/2B soak"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="Players Guide" page="250"/>
@@ -3797,7 +3798,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="Players Guide" page="250"/>
@@ -3815,7 +3816,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="Players Guide" page="250"/>
@@ -3831,7 +3832,7 @@
         <essence cost="2" text="per weapon"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="Players Guide" page="251"/>
@@ -3847,7 +3848,7 @@
         <essence cost="3" text="per turn"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Varies"/>
     <charmtype type="Reflexive"/>
     <source source="Players Guide" page="251"/>
@@ -3864,7 +3865,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="Players Guide" page="251"/>
@@ -3881,7 +3882,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Until disturbed"/>
     <charmtype type="Simple"/>
     <source source="Players Guide" page="252"/>
@@ -3898,7 +3899,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="Players Guide" page="253"/>
@@ -3918,7 +3919,7 @@
         <willpower cost="1" text="+1 Willpower to end the Charm"/>
       </temporary>
     </cost>
-    <martialArtsLevel level="Celestial"/>
+    <charmAttribute attribute="Celestial"/>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
     <source source="Players Guide" page="253"/>
