@@ -20,7 +20,6 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TA
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_COMBO;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_COST;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_DURATION;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_MARTIAL_ARTS_LEVEL;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_PERMANENT;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_PREREQUISITE_LIST;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_RESTRICTIONS;
@@ -42,7 +41,6 @@ import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
 import net.sf.anathema.character.generic.impl.magic.MagicSource;
-import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmPrerequisiteListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CostListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.DurationBuilder;
@@ -160,26 +158,6 @@ public class CharmBuilder {
     extractParents(charmsById, allCharms);
     readAlternatives(charmsById, charmListElement);
     return allCharms.toArray(new ICharm[allCharms.size()]);
-  }
-
-  public ICharm[] buildMartialArtsCharms(Document charmDocument, boolean powerCombat) throws PersistenceException {
-    Set<Charm> allMartialArtsCharms = new HashSet<Charm>();
-    Map<String, Charm> charmsById = new HashMap<String, Charm>();
-    Element charmListElement = charmDocument.getRootElement();
-    for (Object charmElementObject : charmListElement.elements(TAG_CHARM)) {
-      Element charmElement = (Element) charmElementObject;
-      Charm charm = buildCharm(charmElement, powerCombat);
-      if (charmElement.element(TAG_MARTIAL_ARTS_LEVEL) != null) {
-        System.out.println("Error in charm" + charm.getId());
-      }
-      if (MartialArtsUtilities.getLevel(charm) == null) {
-        System.out.println("Error in charm" + charm.getId());
-      }
-      allMartialArtsCharms.add(charm);
-      charmsById.put(charm.getId(), charm);
-    }
-    extractParents(charmsById, allMartialArtsCharms);
-    return allMartialArtsCharms.toArray(new ICharm[0]);
   }
 
   private void ensureNotNull(Object object, String message) throws CharmException {

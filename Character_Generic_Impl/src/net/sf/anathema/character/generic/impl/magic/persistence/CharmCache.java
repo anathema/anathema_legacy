@@ -90,7 +90,7 @@ public class CharmCache implements ICharmCache {
     if (charmList.isEmpty()) {
       try {
         Document charmDocument = charmIo.readCharms(new Identificate("MartialArts")); //$NON-NLS-1$
-        charmList.addAll(Arrays.asList(builder.buildMartialArtsCharms(charmDocument, powerCombat)));
+        charmList.addAll(Arrays.asList(builder.buildCharms(charmDocument, powerCombat)));
       }
       catch (DocumentException e) {
         throw new CharmException(e);
