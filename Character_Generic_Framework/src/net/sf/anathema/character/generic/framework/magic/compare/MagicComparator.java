@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IIdent
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IRegularNode;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
@@ -96,7 +97,7 @@ public class MagicComparator implements Comparator<IMagic> {
             ICharm[] charms;
             // todo vom (31.10.2005) (sieroux): ErrorHandling
             try {
-              charms = CharmCache.getInstance().getCharms(otherCharacterType, false);
+              charms = CharmCache.getInstance().getCharms(otherCharacterType, ExaltedRuleSet.CoreRules);
               compareValue[0] = sortEqualTypeCharms(charm, otherCharm, charms);
             }
             catch (PersistenceException e) {
@@ -167,7 +168,7 @@ public class MagicComparator implements Comparator<IMagic> {
   }
 
   private int handleMartialArtsCharm(ICharm charm, ICharm otherCharm) throws PersistenceException {
-    ICharm[] martialArtsCharms = CharmCache.getInstance().getMartialArtsCharms(false);
+    ICharm[] martialArtsCharms = CharmCache.getInstance().getMartialArtsCharms(ExaltedRuleSet.CoreRules);
     return sortEqualTypeCharms(charm, otherCharm, martialArtsCharms);
   }
 }
