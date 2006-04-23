@@ -28,14 +28,14 @@ public class CharmCache implements ICharmCache {
 
   private static CharmCache instance = new CharmCache();
   private final Map<IExaltedRuleSet, MultiEntryMap<CharacterType, ICharm>> charmSetsByRuleSet = new HashMap<IExaltedRuleSet, MultiEntryMap<CharacterType, ICharm>>();
-  private final List<ICharm> martialArtsCharms = new ArrayList<ICharm>();
-  private List<ICharm> powerCombatMartialArtsCharms = new ArrayList<ICharm>();
+  private final Map<IExaltedRuleSet, List<ICharm>> martialArtsCharmsByRuleSet = new HashMap<IExaltedRuleSet, List<ICharm>>();
   private final CharmIO charmIo = new CharmIO();
   private final CharmBuilder builder = new CharmBuilder();
 
   private CharmCache() {
     for (IExaltedRuleSet ruleset : ExaltedRuleSet.values()) {
       charmSetsByRuleSet.put(ruleset, new MultiEntryMap<CharacterType, ICharm>());
+      martialArtsCharmsByRuleSet.put(ruleset, new ArrayList<ICharm>());
     }
   }
 
@@ -95,7 +95,7 @@ public class CharmCache implements ICharmCache {
   }
 
   public ICharm[] getMartialArtsCharms(IExaltedRuleSet ruleset) throws PersistenceException {
-    List<ICharm> charmList = getMartialArtsList(ruleset);
+    List<ICharm> charmList = martialArtsCharmsByRuleSet.get(ruleset);
     if (charmList.isEmpty()) {
       try {
         Document charmDocument = charmIo.readCharms(new Identificate("MartialArts")); //$NON-NLS-1$
@@ -106,13 +106,6 @@ public class CharmCache implements ICharmCache {
       }
     }
     return charmList.toArray(new ICharm[charmList.size()]);
-  }
-
-  private List<ICharm> getMartialArtsList(IExaltedRuleSet ruleset) {
-    if (ruleset == ExaltedRuleSet.PowerCombat) {
-      return powerCombatMartialArtsCharms;
-    }
-    return martialArtsCharms;
   }
 
   public Charm searchCharm(final String charmId) {
