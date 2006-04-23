@@ -12,6 +12,7 @@ http://anathema.sf.net
 
 -- Miscellaneous --
 * Fixed an error in the Linux launcher.
+* Violet Bier of Sorrows' "Conclusion Pursuing Approach" is now attributed as "Prayer Strip".
 
 
 ===------------------------------------------------------------------------------===
