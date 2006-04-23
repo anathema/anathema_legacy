@@ -57,7 +57,7 @@ public class MultiEntryMap<K, V> {
     return Collections.unmodifiableList(getList(key));
   }
 
-  private List<V> getList(Object key) {
+  private List<V> getList(K key) {
     return map.get(key);
   }
 
@@ -70,5 +70,12 @@ public class MultiEntryMap<K, V> {
       return 0;
     }
     return getList(key).size();
+  }
+
+  public void removeValue(K key, V value) {
+    if (!containsKey(key)) {
+      return;
+    }
+    getList(key).remove(value);
   }
 }
