@@ -8,5 +8,4 @@ public interface IXmlTemplateRegistry<T> {
   public abstract void setTemplateParser(ITemplateParser<T> templateParser);
 
   public abstract T get(String id) throws PersistenceException;
-
 }
