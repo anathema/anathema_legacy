@@ -6,7 +6,6 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.AT
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_EXALT;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_GROUP;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ID;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_LEVEL;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_NAME;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_PAGE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_SOURCE;
@@ -43,6 +42,7 @@ import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
 import net.sf.anathema.character.generic.impl.magic.MagicSource;
+import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmPrerequisiteListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CostListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.DurationBuilder;
@@ -57,7 +57,6 @@ import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.ICharmAlternative;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
-import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.magic.general.IMagicSource;
 import net.sf.anathema.character.generic.magic.general.IPermanentCostList;
@@ -170,9 +169,12 @@ public class CharmBuilder {
     for (Object charmElementObject : charmListElement.elements(TAG_CHARM)) {
       Element charmElement = (Element) charmElementObject;
       Charm charm = buildCharm(charmElement, powerCombat);
-      String martialArtsLevel = charmElement.element(TAG_MARTIAL_ARTS_LEVEL).attributeValue(ATTRIB_LEVEL);
-      MartialArtsLevel level = MartialArtsLevel.valueOf(martialArtsLevel);
-      charm.addCharmAttribute(new CharmAttribute(level.getId(), false));
+      if (charmElement.element(TAG_MARTIAL_ARTS_LEVEL) != null) {
+        System.out.println("Error in charm" + charm.getId());
+      }
+      if (MartialArtsUtilities.getLevel(charm) == null) {
+        System.out.println("Error in charm" + charm.getId());
+      }
       allMartialArtsCharms.add(charm);
       charmsById.put(charm.getId(), charm);
     }
