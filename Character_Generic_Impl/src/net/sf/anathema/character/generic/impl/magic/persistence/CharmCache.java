@@ -6,10 +6,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.sf.anathema.character.generic.impl.magic.Charm;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
+import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.collection.Predicate;
@@ -25,6 +27,8 @@ public class CharmCache implements ICharmCache {
   private static CharmCache instance = new CharmCache();
   private final MultiEntryMap<CharacterType, ICharm> charmsByType = new MultiEntryMap<CharacterType, ICharm>();
   private final MultiEntryMap<CharacterType, ICharm> powerCombatCharmsByType = new MultiEntryMap<CharacterType, ICharm>();
+  // private final Map<IExaltedRuleSet, MultiEntryMap<CharacterType, ICharm>> charmSetsByRuleSet = new
+  // HashMap<IExaltedRuleSet, MultiEntryMap<CharacterType, ICharm>>();
   private final List<ICharm> martialArtsCharms = new ArrayList<ICharm>();
   private List<ICharm> powerCombatMartialArtsCharms = new ArrayList<ICharm>();
   private final CharmIO charmIo = new CharmIO();
@@ -38,17 +42,19 @@ public class CharmCache implements ICharmCache {
     return instance;
   }
 
-  public ICharm[] getCharms(final CharacterType type, boolean powerCombat) throws PersistenceException {
+  public ICharm[] getCharms(final CharacterType type, IExaltedRuleSet ruleset) throws PersistenceException {
     if (charmsByType.containsKey(type)) {
-      return getCharmArray(type, powerCombat);
+      return getCharmArray(type, ruleset);
     }
     buildOfficialCharms(type);
     buildCustomCharms(type);
-    return getCharmArray(type, powerCombat);
+    return getCharmArray(type, ruleset);
   }
 
-  private ICharm[] getCharmArray(final CharacterType type, boolean powerCombat) {
-    List<ICharm> charmList = powerCombat ? powerCombatCharmsByType.get(type) : charmsByType.get(type);
+  private ICharm[] getCharmArray(final CharacterType type, IExaltedRuleSet ruleset) {
+    List<ICharm> charmList = ruleset == ExaltedRuleSet.PowerCombat
+        ? powerCombatCharmsByType.get(type)
+        : charmsByType.get(type);
     return charmList.toArray(new ICharm[charmList.size()]);
   }
 
@@ -85,12 +91,12 @@ public class CharmCache implements ICharmCache {
     }
   }
 
-  public ICharm[] getMartialArtsCharms(boolean powerCombat) throws PersistenceException {
-    List<ICharm> charmList = getMartialArtsList(powerCombat);
+  public ICharm[] getMartialArtsCharms(IExaltedRuleSet ruleset) throws PersistenceException {
+    List<ICharm> charmList = getMartialArtsList(ruleset);
     if (charmList.isEmpty()) {
       try {
         Document charmDocument = charmIo.readCharms(new Identificate("MartialArts")); //$NON-NLS-1$
-        charmList.addAll(Arrays.asList(builder.buildCharms(charmDocument, powerCombat)));
+        charmList.addAll(Arrays.asList(builder.buildCharms(charmDocument, ruleset == ExaltedRuleSet.PowerCombat)));
       }
       catch (DocumentException e) {
         throw new CharmException(e);
@@ -99,8 +105,8 @@ public class CharmCache implements ICharmCache {
     return charmList.toArray(new ICharm[charmList.size()]);
   }
 
-  private List<ICharm> getMartialArtsList(boolean powerCombat) {
-    if (powerCombat) {
+  private List<ICharm> getMartialArtsList(IExaltedRuleSet ruleset) {
+    if (ruleset == ExaltedRuleSet.PowerCombat) {
       return powerCombatMartialArtsCharms;
     }
     return martialArtsCharms;
@@ -110,7 +116,7 @@ public class CharmCache implements ICharmCache {
     try {
       String[] idParts = charmId.split("\\."); //$NON-NLS-1$
       CharacterType characterTypeId = CharacterType.getById(idParts[0]);
-      ICharm[] charms = getCharms(characterTypeId, false);
+      ICharm[] charms = getCharms(characterTypeId, ExaltedRuleSet.CoreRules);
       ICharm parentCharm = ArrayUtilities.find(new Predicate<ICharm>() {
         @Override
         public boolean evaluate(ICharm t) {

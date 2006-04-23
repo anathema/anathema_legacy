@@ -19,8 +19,8 @@ public class CharmSet implements ICharmSet {
       throws PersistenceException {
     Map<IExaltedRuleSet, ICharm[]> charmMap = createCharmTreeMap(charmProvider, characterType);
     Map<IExaltedRuleSet, ICharm[]> martialArtsCharmMap = new HashMap<IExaltedRuleSet, ICharm[]>();
-    martialArtsCharmMap.put(ExaltedRuleSet.CoreRules, charmProvider.getMartialArtsCharms(false));
-    martialArtsCharmMap.put(ExaltedRuleSet.PowerCombat, charmProvider.getMartialArtsCharms(true));
+    martialArtsCharmMap.put(ExaltedRuleSet.CoreRules, charmProvider.getMartialArtsCharms(ExaltedRuleSet.CoreRules));
+    martialArtsCharmMap.put(ExaltedRuleSet.PowerCombat, charmProvider.getMartialArtsCharms(ExaltedRuleSet.PowerCombat));
     return new CharmSet(charmMap, martialArtsCharmMap);
   }
 
@@ -28,8 +28,8 @@ public class CharmSet implements ICharmSet {
       ICharmCache charmProvider,
       CharacterType characterType) throws PersistenceException {
     Map<IExaltedRuleSet, ICharm[]> charmMap = new HashMap<IExaltedRuleSet, ICharm[]>();
-    charmMap.put(ExaltedRuleSet.CoreRules, charmProvider.getCharms(characterType, false));
-    charmMap.put(ExaltedRuleSet.PowerCombat, charmProvider.getCharms(characterType, true));
+    charmMap.put(ExaltedRuleSet.CoreRules, charmProvider.getCharms(characterType, ExaltedRuleSet.CoreRules));
+    charmMap.put(ExaltedRuleSet.PowerCombat, charmProvider.getCharms(characterType, ExaltedRuleSet.PowerCombat));
     return charmMap;
   }
 
