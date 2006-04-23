@@ -84,15 +84,22 @@ public class CharmCache implements ICharmCache {
   }
 
   private void buildCharmsFromDocument(final CharacterType type, Document charmDocument) throws PersistenceException {
-    ICharm[] coreRulesCharmArray = builder.buildCharms(charmDocument, false);
-    ICharm[] powerCombatCharmArray = builder.buildCharms(charmDocument, true);
-    MultiEntryMap<CharacterType, ICharm> coreRulesCharms = getRulesetCharms(ExaltedRuleSet.CoreRules);
-    for (ICharm charm : coreRulesCharmArray) {
-      storeCharm(type, charm, coreRulesCharms);
+    buildRulesetCharms(type, charmDocument, ExaltedRuleSet.CoreRules);
+    buildRulesetCharms(type, charmDocument, ExaltedRuleSet.PowerCombat);
+  }
+
+  private void buildRulesetCharms(final CharacterType type, Document charmDocument, IExaltedRuleSet set)
+      throws PersistenceException {
+    String baseRules = charmIo.getBaseRules(charmDocument);
+    MultiEntryMap<CharacterType, ICharm> ruleSetCharms = getRulesetCharms(set);
+    if (baseRules != null) {
+      for (ICharm charm : getCharms(type, ExaltedRuleSet.valueOf(baseRules))) {
+        ruleSetCharms.add(type, charm);
+      }
     }
-    MultiEntryMap<CharacterType, ICharm> powerCombatCharms = getRulesetCharms(ExaltedRuleSet.PowerCombat);
-    for (ICharm charm : powerCombatCharmArray) {
-      storeCharm(type, charm, powerCombatCharms);
+    ICharm[] charmArray = builder.buildCharms(charmDocument, set == ExaltedRuleSet.PowerCombat);
+    for (ICharm charm : charmArray) {
+      storeCharm(type, charm, ruleSetCharms);
     }
   }
 

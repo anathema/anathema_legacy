@@ -21,6 +21,8 @@ import org.dom4j.io.SAXReader;
 
 public class CharmIO {
 
+  private static final String ATTRIBUTE_BASE_RULES = "baseRules"; //$NON-NLS-1$
+
   public Document readCharms(final IIdentificate type) throws DocumentException {
     String urlString = "data/Charms_" + type.getId() + ".xml"; //$NON-NLS-1$ //$NON-NLS-2$;
     final URL charmURL = type.getClass().getClassLoader().getResource(urlString);
@@ -59,5 +61,9 @@ public class CharmIO {
     }
     DocumentUtilities.save(document, file);
     System.err.println("Charm written in development file."); //$NON-NLS-1$
+  }
+
+  public String getBaseRules(Document charmDocument) {
+    return charmDocument.getRootElement().attributeValue(ATTRIBUTE_BASE_RULES);
   }
 }
