@@ -3,7 +3,9 @@ package net.sf.anathema.character.generic.impl.magic.persistence;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
@@ -25,25 +27,28 @@ import org.dom4j.DocumentException;
 public class CharmCache implements ICharmCache {
 
   private static CharmCache instance = new CharmCache();
-  private final MultiEntryMap<CharacterType, ICharm> charmsByType = new MultiEntryMap<CharacterType, ICharm>();
-  private final MultiEntryMap<CharacterType, ICharm> powerCombatCharmsByType = new MultiEntryMap<CharacterType, ICharm>();
-  // private final Map<IExaltedRuleSet, MultiEntryMap<CharacterType, ICharm>> charmSetsByRuleSet = new
-  // HashMap<IExaltedRuleSet, MultiEntryMap<CharacterType, ICharm>>();
+  private final Map<IExaltedRuleSet, MultiEntryMap<CharacterType, ICharm>> charmSetsByRuleSet = new HashMap<IExaltedRuleSet, MultiEntryMap<CharacterType, ICharm>>();
   private final List<ICharm> martialArtsCharms = new ArrayList<ICharm>();
   private List<ICharm> powerCombatMartialArtsCharms = new ArrayList<ICharm>();
   private final CharmIO charmIo = new CharmIO();
   private final CharmBuilder builder = new CharmBuilder();
 
   private CharmCache() {
-    // Nothing to do
+    for (IExaltedRuleSet ruleset : ExaltedRuleSet.values()) {
+      charmSetsByRuleSet.put(ruleset, new MultiEntryMap<CharacterType, ICharm>());
+    }
   }
 
   public static CharmCache getInstance() {
     return instance;
   }
 
+  private MultiEntryMap<CharacterType, ICharm> getRulesetCharms(IExaltedRuleSet ruleset) {
+    return charmSetsByRuleSet.get(ruleset);
+  }
+
   public ICharm[] getCharms(final CharacterType type, IExaltedRuleSet ruleset) throws PersistenceException {
-    if (charmsByType.containsKey(type)) {
+    if (getRulesetCharms(ruleset).containsKey(type)) {
       return getCharmArray(type, ruleset);
     }
     buildOfficialCharms(type);
@@ -52,9 +57,7 @@ public class CharmCache implements ICharmCache {
   }
 
   private ICharm[] getCharmArray(final CharacterType type, IExaltedRuleSet ruleset) {
-    List<ICharm> charmList = ruleset == ExaltedRuleSet.PowerCombat
-        ? powerCombatCharmsByType.get(type)
-        : charmsByType.get(type);
+    List<ICharm> charmList = getRulesetCharms(ruleset).get(type);
     return charmList.toArray(new ICharm[charmList.size()]);
   }
 
@@ -84,10 +87,10 @@ public class CharmCache implements ICharmCache {
     ICharm[] coreRulesCharmArray = builder.buildCharms(charmDocument, false);
     ICharm[] powerCombatCharmArray = builder.buildCharms(charmDocument, true);
     for (ICharm charm : coreRulesCharmArray) {
-      charmsByType.add(type, charm);
+      getRulesetCharms(ExaltedRuleSet.CoreRules).add(type, charm);
     }
     for (ICharm charm : powerCombatCharmArray) {
-      powerCombatCharmsByType.add(type, charm);
+      getRulesetCharms(ExaltedRuleSet.PowerCombat).add(type, charm);
     }
   }
 
@@ -132,7 +135,7 @@ public class CharmCache implements ICharmCache {
 
   public void addCharm(ICharmData charmData, List<ICharmAttribute> keywords) throws IOException, DocumentException {
     ICharm charm = new Charm(charmData);
-    charmsByType.add(charm.getCharacterType(), charm);
+    getRulesetCharms(ExaltedRuleSet.CoreRules).add(charm.getCharacterType(), charm);
     charmIo.writeCharmInternal(charm, keywords);
   }
 }
