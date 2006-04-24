@@ -30,7 +30,7 @@ public class CharmCache implements ICharmCache {
   private final Map<IExaltedRuleSet, MultiEntryMap<CharacterType, ICharm>> charmSetsByRuleSet = new HashMap<IExaltedRuleSet, MultiEntryMap<CharacterType, ICharm>>();
   private final Map<IExaltedRuleSet, List<ICharm>> martialArtsCharmsByRuleSet = new HashMap<IExaltedRuleSet, List<ICharm>>();
   private final CharmIO charmIo = new CharmIO();
-  private final CharmBuilder builder = new CharmBuilder();
+  private final ICharmSetBuilder builder = new CharmSetBuilder();
 
   private CharmCache() {
     for (IExaltedRuleSet ruleset : ExaltedRuleSet.values()) {

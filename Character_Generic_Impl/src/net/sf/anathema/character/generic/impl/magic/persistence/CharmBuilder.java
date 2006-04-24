@@ -11,12 +11,9 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.AT
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_SOURCE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_TYPE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_VISUALIZE;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_ALTERNATIVE;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_ALTERNATIVES;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_ATTRIBUTE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARMTYPE;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM_REFERENCE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_COMBO;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_COST;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_DURATION;
@@ -30,11 +27,7 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TA
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.VALUE_POWERCOMBAT;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import net.disy.commons.core.util.Ensure;
 import net.disy.commons.core.util.StringUtilities;
@@ -48,12 +41,10 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.Duration
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ICostListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.impl.traits.TraitTypeUtils;
-import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.Duration;
-import net.sf.anathema.character.generic.magic.charms.ICharmAlternative;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.magic.general.ICostList;
@@ -64,10 +55,9 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
-import org.dom4j.Document;
 import org.dom4j.Element;
 
-public class CharmBuilder {
+public class CharmBuilder implements ICharmBuilder {
 
   private final ICostListBuilder costListBuilder = new CostListBuilder();
   private final DurationBuilder durationBuilder = new DurationBuilder();
@@ -141,29 +131,6 @@ public class CharmBuilder {
     }
     loadSpecialLearning(charmElement, charm);
     return charm;
-  }
-
-  public ICharm[] buildCharms(Document charmDoc, boolean powerCombat) throws PersistenceException {
-    Set<Charm> allCharms = new HashSet<Charm>();
-    Map<String, Charm> charmsById = new HashMap<String, Charm>();
-    Element charmListElement = charmDoc.getRootElement();
-    for (Object charmElementObject : charmListElement.elements(TAG_CHARM)) {
-      Element charmElement = (Element) charmElementObject;
-      Charm newCharm = buildCharm(charmElement, powerCombat);
-      allCharms.add(newCharm);
-      if (!charmsById.containsKey(newCharm.getId())) {
-        charmsById.put(newCharm.getId(), newCharm);
-      }
-    }
-    extractParents(charmsById, allCharms);
-    readAlternatives(charmsById, charmListElement);
-    return allCharms.toArray(new ICharm[allCharms.size()]);
-  }
-
-  private void extractParents(Map<String, ? extends Charm> charmsById, Set< ? extends Charm> allCharms) {
-    for (Charm charm : allCharms) {
-      charm.extractParentCharms(charmsById);
-    }
   }
 
   private ICharmAttribute[] getCharmAttributes(
@@ -279,31 +246,6 @@ public class CharmBuilder {
     for (Element favoredElement : ElementUtilities.elements(learningElement, ICharmXMLConstants.ATTRB_FAVORED)) {
       String casteId = favoredElement.attributeValue(ICharmXMLConstants.TAG_CASTE);
       charm.addFavoredCasteId(casteId);
-    }
-  }
-
-  private void readAlternative(Element alternativeElement, Map<String, Charm> charmsById) {
-    List<Element> charmReferences = ElementUtilities.elements(alternativeElement, TAG_CHARM_REFERENCE);
-    Charm[] charms = new Charm[charmReferences.size()];
-    for (int index = 0; index < charms.length; index++) {
-      String charmId = charmReferences.get(index).attributeValue(ATTRIB_ID);
-      Charm charm = charmsById.get(charmId);
-      Ensure.ensureNotNull("Charm not found " + charmId, charm); //$NON-NLS-1$
-      charms[index] = charm;
-    }
-    ICharmAlternative charmAlternative = new CharmAlternative(charms);
-    for (Charm charm : charms) {
-      charm.addAlternative(charmAlternative);
-    }
-  }
-
-  private void readAlternatives(Map<String, Charm> charmsById, Element charmListElement) {
-    Element alternativesElement = charmListElement.element(TAG_ALTERNATIVES);
-    if (alternativesElement == null) {
-      return;
-    }
-    for (Element alternativeElement : ElementUtilities.elements(alternativesElement, TAG_ALTERNATIVE)) {
-      readAlternative(alternativeElement, charmsById);
     }
   }
 }
