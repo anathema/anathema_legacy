@@ -82,7 +82,7 @@ public abstract class AbstractItemTypeConfiguration {
   protected boolean isPersistable() {
     return true;
   }
-
+  
   public final IItemType getItemType() {
     return type;
   }
