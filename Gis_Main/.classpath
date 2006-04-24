@@ -21,6 +21,6 @@
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/commons-colllections-3.1-src.zip"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/jai_codec.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/jai_core.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/GISterm/jai_imageio.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/gisterm-shapeexport.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
