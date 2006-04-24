@@ -1,0 +1,2322 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<charmlist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ComplexCharms.xsd">
+  <charm id="Sidereal.Ox-BodyTechnique" exalt="Sidereal" group="Endurance">
+    <prerequisite>
+      <trait id="Endurance" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Special"/>
+    <source source="The Sidereals" page="132"/>
+  </charm>
+  <charm id="Sidereal.UnsweringJuggernautPrinciple" exalt="Sidereal" group="Endurance">
+    <prerequisite>
+      <trait id="Endurance" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="132"/>
+  </charm>
+  <charm id="Sidereal.Forward-ThinkingTechnique" exalt="Sidereal" group="Endurance">
+    <prerequisite>
+      <trait id="Endurance" value="3"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.UnsweringJuggernautPrinciple"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="133"/>
+  </charm>
+  <charm id="Sidereal.OptimisticSecurityPractice" exalt="Sidereal" group="Endurance">
+    <prerequisite>
+      <trait id="Endurance" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="133"/>
+  </charm>
+  <charm id="Sidereal.UnwaveringWell-BeingMeditation" exalt="Sidereal" group="Endurance">
+    <prerequisite>
+      <trait id="Endurance" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Sidereals" page="133"/>
+  </charm>
+  <charm id="Sidereal.HeartlessMaidenTrance" exalt="Sidereal" group="Endurance">
+    <prerequisite>
+      <trait id="Endurance" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.UnwaveringWell-BeingMeditation"/>
+      <charmReference id="Sidereal.OptimisticSecurityPractice"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="133"/>
+  </charm>
+  <charm id="Sidereal.OneDirectionInvocation" exalt="Sidereal" group="Endurance">
+    <prerequisite>
+      <trait id="Endurance" value="5"/>
+      <essence value="4"/>
+      <charmReference id="Sidereal.HeartlessMaidenTrance"/>
+      <charmReference id="Sidereal.Forward-ThinkingTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="16"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="133"/>
+  </charm>
+  <charm id="Sidereal.OrdainedBriddleMercury" exalt="Sidereal" group="Ride">
+    <prerequisite>
+      <trait id="Ride" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+      <permanent>
+        <experience cost="1"/>
+      </permanent>
+    </cost>
+    <duration duration="Until the character applies Mercury's bridle"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="134"/>
+  </charm>
+  <charm id="Sidereal.Spirit-ShapeCompanion" exalt="Sidereal" group="Ride">
+    <prerequisite>
+      <trait id="Ride" value="3"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.OrdainedBriddleMercury"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+      <permanent>
+        <experience cost="1"/>
+      </permanent>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="135"/>
+  </charm>
+  <charm id="Sidereal.GodlyCompanion" exalt="Sidereal" group="Ride">
+    <prerequisite>
+      <trait id="Ride" value="4"/>
+      <essence value="4"/>
+      <charmReference id="Sidereal.Spirit-ShapeCompanion"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="20"/>
+        <willpower cost="1"/>
+      </temporary>
+      <permanent>
+        <experience cost="5"/>
+      </permanent>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="135"/>
+  </charm>
+  <charm id="Sidereal.BreakingWildMortal" exalt="Sidereal" group="Ride">
+    <prerequisite>
+      <trait id="Ride" value="2"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.OrdainedBriddleMercury"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+      <permanent>
+        <experience cost="1"/>
+      </permanent>
+    </cost>
+    <duration duration="Until the character applies Mercury's bit"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="136"/>
+  </charm>
+  <charm id="Sidereal.YellowPath" exalt="Sidereal" group="Ride">
+    <prerequisite>
+      <trait id="Ride" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="One journey"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="136"/>
+  </charm>
+  <charm id="Sidereal.GloryPath" exalt="Sidereal" group="Ride">
+    <prerequisite>
+      <trait id="Ride" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.YellowPath"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8"/>
+      </temporary>
+    </cost>
+    <duration duration="5 Minutes"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="136"/>
+  </charm>
+  <charm id="Sidereal.RidingDragon" exalt="Sidereal" group="Ride">
+    <prerequisite>
+      <trait id="Ride" value="5"/>
+      <essence value="4"/>
+      <charmReference id="Sidereal.GloryPath"/>
+      <charmReference id="Sidereal.BreakingWildMortal"/>
+      <charmReference id="Sidereal.GodlyCompanion"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="20"/>
+        <willpower cost="1"/>
+        <health cost="1" type="Lethal"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="136"/>
+  </charm>
+  <charm id="Sidereal.SaltintoAshSleight" exalt="Sidereal" group="Sail">
+    <prerequisite>
+      <trait id="Sail" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2" text="+2 motes per target number reduction"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="137"/>
+  </charm>
+  <charm id="Sidereal.StoneSkipppingSpirit" exalt="Sidereal" group="Sail">
+    <prerequisite>
+      <trait id="Sail" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="137"/>
+  </charm>
+  <charm id="Sidereal.MirrorShatteringMethod" exalt="Sidereal" group="Sail">
+    <prerequisite>
+      <trait id="Sail" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.StoneSkipppingSpirit"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Five days"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="138"/>
+  </charm>
+  <charm id="Sidereal.FiveOrdealsOdyssey" exalt="Sidereal" group="Sail">
+    <prerequisite>
+      <trait id="Sail" value="4"/>
+      <essence value="4"/>
+      <charmReference id="Sidereal.MirrorShatteringMethod"/>
+      <charmReference id="Sidereal.SaltintoAshSleight"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+        <health cost="1" type="Lethal"/>
+      </temporary>
+    </cost>
+    <duration duration="One hazard"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="139"/>
+  </charm>
+  <charm id="Sidereal.BecomingWilderness" exalt="Sidereal" group="Survival">
+    <prerequisite>
+      <trait id="Survival" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per target number reduction"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="140"/>
+  </charm>
+  <charm id="Sidereal.AdoptingUntamedFace" exalt="Sidereal" group="Survival">
+    <prerequisite>
+      <trait id="Survival" value="2"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.BecomingWilderness"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="140"/>
+  </charm>
+  <charm id="Sidereal.DreamingWildLands" exalt="Sidereal" group="Survival">
+    <prerequisite>
+      <trait id="Survival" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.AdoptingUntamedFace"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Five days"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="140"/>
+  </charm>
+  <charm id="Sidereal.SkyandRainMantra" exalt="Sidereal" group="Survival">
+    <prerequisite>
+      <trait id="Survival" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="140"/>
+  </charm>
+  <charm id="Sidereal.SkySpiritDemand" exalt="Sidereal" group="Survival">
+    <prerequisite>
+      <trait id="Survival" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.SkyandRainMantra"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="140"/>
+  </charm>
+  <charm id="Sidereal.Wilderness-CommandingPractice" exalt="Sidereal" group="Survival">
+    <prerequisite>
+      <trait id="Survival" value="5"/>
+      <essence value="4"/>
+      <charmReference id="Sidereal.SkySpiritDemand"/>
+      <charmReference id="Sidereal.DreamingWildLands"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Five days"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="140"/>
+  </charm>
+  <charm id="Sidereal.WillfulWeaponMethod" exalt="Sidereal" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Sidereals" page="141"/>
+  </charm>
+  <charm id="Sidereal.LifeGetsWorseApproach" exalt="Sidereal" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Sidereals" page="142"/>
+  </charm>
+  <charm id="Sidereal.EssenceThornPractice" exalt="Sidereal" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.LifeGetsWorseApproach"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="142"/>
+  </charm>
+  <charm id="Sidereal.PainAmplificationStratagem" exalt="Sidereal" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Sidereals" page="142"/>
+  </charm>
+  <charm id="Sidereal.UnrelentingTormentTechnique" exalt="Sidereal" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="5"/>
+      <essence value="4"/>
+      <charmReference id="Sidereal.WillfulWeaponMethod"/>
+      <charmReference id="Sidereal.EssenceThornPractice"/>
+      <charmReference id="Sidereal.PainAmplificationStratagem"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+        <health cost="1" type="Lethal"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="142"/>
+  </charm>
+  <charm id="Sidereal.ElegantPatternsFate" exalt="Sidereal" group="Craft">
+    <prerequisite>
+      <trait id="Craft" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2" text="per die"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Sidereals" page="143"/>
+  </charm>
+  <charm id="Sidereal.ExcellentImplementationObjectives" exalt="Sidereal" group="Craft">
+    <prerequisite>
+      <trait id="Craft" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.ElegantPatternsFate"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8" text="+1 mote per target number reduction"/>
+      </temporary>
+    </cost>
+    <duration duration="Varies"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Sidereals" page="144"/>
+  </charm>
+  <charm id="Sidereal.World-ShapingArtisticVision" exalt="Sidereal" group="Craft">
+    <prerequisite>
+      <trait id="Craft" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Special"/>
+    <source source="The Sidereals" page="144"/>
+  </charm>
+  <charm id="Sidereal.Destiny-KnittingEntanglement" exalt="Sidereal" group="Craft">
+    <prerequisite>
+      <trait id="Craft" value="3"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.World-ShapingArtisticVision"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Sidereals" page="144"/>
+  </charm>
+  <charm id="Sidereal.ElementalVision" exalt="Sidereal" group="Craft">
+    <prerequisite>
+      <trait id="Craft" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Special"/>
+    <source source="The Sidereals" page="144"/>
+  </charm>
+  <charm id="Sidereal.MendingWarpedDesigns" exalt="Sidereal" group="Craft">
+    <prerequisite>
+      <trait id="Craft" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="145"/>
+  </charm>
+  <charm id="Sidereal.ImplicitConstructionMethodology" exalt="Sidereal" group="Craft">
+    <prerequisite>
+      <trait id="Craft" value="4"/>
+      <essence value="4"/>
+      <charmReference id="Sidereal.MendingWarpedDesigns"/>
+      <charmReference id="Sidereal.ElementalVision"/>
+      <charmReference id="Sidereal.Destiny-KnittingEntanglement"/>
+      <charmReference id="Sidereal.ExcellentImplementationObjectives"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="20"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Varies"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="145"/>
+  </charm>
+  <charm id="Sidereal.Absence" exalt="Sidereal" group="Dodge">
+    <prerequisite>
+      <trait id="Dodge" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per target number reduction"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Sidereals" page="145"/>
+  </charm>
+  <charm id="Sidereal.DuckFate" exalt="Sidereal" group="Dodge">
+    <prerequisite>
+      <trait id="Dodge" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.Absence"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Sidereals" page="145"/>
+  </charm>
+  <charm id="Sidereal.AvoidanceKata" exalt="Sidereal" group="Dodge">
+    <prerequisite>
+      <trait id="Dodge" value="3"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.DuckFate"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Sidereals" page="146"/>
+  </charm>
+  <charm id="Sidereal.TroubleReductionStrategy" exalt="Sidereal" group="Dodge">
+    <prerequisite>
+      <trait id="Dodge" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.DuckFate"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="146"/>
+  </charm>
+  <charm id="Sidereal.NeighborhoodRelocationScheme" exalt="Sidereal" group="Dodge">
+    <prerequisite>
+      <trait id="Dodge" value="5"/>
+      <essence value="4"/>
+      <charmReference id="Sidereal.TroubleReductionStrategy"/>
+      <charmReference id="Sidereal.AvoidanceKata"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="146"/>
+  </charm>
+  <charm id="Sidereal.FavorableInflectionProcedure" exalt="Sidereal" group="Linguistics">
+    <prerequisite>
+      <trait id="Linguistics" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="148"/>
+  </charm>
+  <charm id="Sidereal.BlueVervainBinding" exalt="Sidereal" group="Linguistics">
+    <prerequisite>
+      <trait id="Linguistics" value="3"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+      <permanent>
+        <experience cost="1"/>
+      </permanent>
+    </cost>
+    <duration duration="One minute"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="148"/>
+  </charm>
+  <charm id="Sidereal.IceandFireBinding" exalt="Sidereal" group="Linguistics">
+    <prerequisite>
+      <trait id="Linguistics" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+      </temporary>
+    </cost>
+    <duration duration="One hour"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="148"/>
+  </charm>
+  <charm id="Sidereal.Lover'sOath" exalt="Sidereal" group="Linguistics">
+    <prerequisite>
+      <trait id="Linguistics" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.IceandFireBinding"/>
+      <charmReference id="Sidereal.FavorableInflectionProcedure"/>
+      <charmReference id="Sidereal.BlueVervainBinding"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="20"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="149"/>
+  </charm>
+  <charm id="Sidereal.CompassionateEssenceReplenishment" exalt="Sidereal" group="Performance">
+    <prerequisite>
+      <trait id="Performance" value="1"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Special"/>
+    <source source="The Sidereals" page="149"/>
+  </charm>
+  <charm id="Sidereal.PerfectioninLife" exalt="Sidereal" group="Performance">
+    <prerequisite>
+      <trait id="Performance" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="149"/>
+  </charm>
+  <charm id="Sidereal.DefenseShiningJoy" exalt="Sidereal" group="Performance">
+    <prerequisite>
+      <trait id="Performance" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.PerfectioninLife"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="150"/>
+  </charm>
+  <charm id="Sidereal.SongSpiritPersuasion" exalt="Sidereal" group="Performance">
+    <prerequisite>
+      <trait id="Performance" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.PerfectioninLife"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="150"/>
+  </charm>
+  <charm id="Sidereal.FautlessCeremony" exalt="Sidereal" group="Performance">
+    <prerequisite>
+      <trait id="Performance" value="3"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="+1 mote per target number reduction"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="150"/>
+  </charm>
+  <charm id="Sidereal.Heart-BrighteningPresentationStyle" exalt="Sidereal" group="Performance">
+    <prerequisite>
+      <trait id="Performance" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2" text="per die"/>
+      </temporary>
+    </cost>
+    <combo allAbilities="true"/>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="151"/>
+  </charm>
+  <charm id="Sidereal.HarmonicCompletion" exalt="Sidereal" group="Performance">
+    <prerequisite>
+      <trait id="Performance" value="5"/>
+      <essence value="4"/>
+      <charmReference id="Sidereal.DefenseShiningJoy"/>
+      <charmReference id="Sidereal.SongSpiritPersuasion"/>
+      <charmReference id="Sidereal.FautlessCeremony"/>
+      <charmReference id="Sidereal.Heart-BrighteningPresentationStyle"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="16"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Five days"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="151"/>
+  </charm>
+  <charm id="Sidereal.SternEssenceReplenishment" exalt="Sidereal" group="Socialize">
+    <prerequisite>
+      <trait id="Socialize" value="1"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Special"/>
+    <source source="The Sidereals" page="151"/>
+  </charm>
+  <charm id="Sidereal.ShunTheSmilingLady" exalt="Sidereal" group="Socialize">
+    <prerequisite>
+      <trait id="Socialize" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="7"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="151"/>
+  </charm>
+  <charm id="Sidereal.CashandMurderGames" exalt="Sidereal" group="Socialize">
+    <prerequisite>
+      <trait id="Socialize" value="3"/>
+      <essence value="1"/>
+      <charmReference id="Sidereal.ShunTheSmilingLady"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="152"/>
+  </charm>
+  <charm id="Sidereal.LifeWithoutCompunction" exalt="Sidereal" group="Socialize">
+    <prerequisite>
+      <trait id="Socialize" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.CashandMurderGames"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="152"/>
+  </charm>
+  <charm id="Sidereal.YouandYoursStance" exalt="Sidereal" group="Socialize">
+    <prerequisite>
+      <trait id="Socialize" value="3"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.ShunTheSmilingLady"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="152"/>
+  </charm>
+  <charm id="Sidereal.Hot-EyedSnakeWhispering" exalt="Sidereal" group="Socialize">
+    <prerequisite>
+      <trait id="Socialize" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per target number reduction"/>
+      </temporary>
+    </cost>
+    <combo allAbilities="true"/>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Sidereals" page="153"/>
+  </charm>
+  <charm id="Sidereal.WantingandFearingPrayer" exalt="Sidereal" group="Socialize">
+    <prerequisite>
+      <trait id="Socialize" value="5"/>
+      <essence value="4"/>
+      <charmReference id="Sidereal.Hot-EyedSnakeWhispering"/>
+      <charmReference id="Sidereal.YouandYoursStance"/>
+      <charmReference id="Sidereal.LifeWithoutCompunction"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="153"/>
+  </charm>
+  <charm id="Sidereal.GeneralizedAmmunitionTechnique" exalt="Sidereal" group="Archery">
+    <prerequisite>
+      <trait id="Archery" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Sidereals" page="153"/>
+  </charm>
+  <charm id="Sidereal.AnyDirectionArrow" exalt="Sidereal" group="Archery">
+    <prerequisite>
+      <trait id="Archery" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="+1 mote per die"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Sidereals" page="153"/>
+  </charm>
+  <charm id="Sidereal.EveryDirectionArrow" exalt="Sidereal" group="Archery">
+    <prerequisite>
+      <trait id="Archery" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.AnyDirectionArrow"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3" text="per extra arrow"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="ExtraAction"/>
+    <source source="The Sidereals" page="154"/>
+  </charm>
+  <charm id="Sidereal.OpportuneShot" exalt="Sidereal" group="Archery">
+    <prerequisite>
+      <trait id="Archery" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Sidereals" page="154"/>
+  </charm>
+  <charm id="Sidereal.FiveSeasonApproach" exalt="Sidereal" group="Archery">
+    <prerequisite>
+      <trait id="Archery" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.OpportuneShot"/>
+      <charmReference id="Sidereal.EveryDirectionArrow"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2" text="per target number reduction"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Sidereals" page="154"/>
+  </charm>
+  <charm id="Sidereal.ManyMissilesBowTechnique" exalt="Sidereal" group="Archery">
+    <prerequisite>
+      <trait id="Archery" value="5"/>
+      <essence value="4"/>
+      <charmReference id="Sidereal.GeneralizedAmmunitionTechnique"/>
+      <charmReference id="Sidereal.FiveSeasonApproach"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="154"/>
+  </charm>
+  <charm id="Sidereal.UnobstructedBlow" exalt="Sidereal" group="Brawl">
+    <prerequisite>
+      <trait id="Brawl" value="4"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Sidereals" page="155"/>
+  </charm>
+  <charm id="Sidereal.TolerantStrife" exalt="Sidereal" group="Brawl">
+    <prerequisite>
+      <trait id="Brawl" value="3"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3" text="+1 mote per die"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Sidereals" page="155"/>
+  </charm>
+  <charm id="Sidereal.HorrificWreath" exalt="Sidereal" group="Brawl">
+    <prerequisite>
+      <trait id="Brawl" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Five turns"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="155"/>
+  </charm>
+  <charm id="Sidereal.CrimsonPalmCounterstrike" exalt="Sidereal" group="Brawl">
+    <prerequisite>
+      <trait id="Brawl" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.HorrificWreath"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Sidereals" page="155"/>
+  </charm>
+  <charm id="Sidereal.EasilyAcceptedPropositionStance" exalt="Sidereal" group="Brawl">
+    <prerequisite>
+      <trait id="Brawl" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.CrimsonPalmCounterstrike"/>
+      <charmReference id="Sidereal.TolerantStrife"/>
+      <charmReference id="Sidereal.UnobstructedBlow"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="12"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One battle"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="156"/>
+  </charm>
+  <charm id="Sidereal.HarmonyBlows" exalt="Sidereal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8"/>
+      </temporary>
+    </cost>
+    <combo allAbilities="true"/>
+    <duration duration="Instant"/>
+    <charmtype type="ExtraAction"/>
+    <source source="The Sidereals" page="156"/>
+  </charm>
+  <charm id="Sidereal.MeditationonWar" exalt="Sidereal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.HarmonyBlows"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per die + 1 mote per dice pool penalty cancelled"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Sidereals" page="157"/>
+  </charm>
+  <charm id="Sidereal.OrchestrationConflict" exalt="Sidereal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.HarmonyBlows"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2" text="per target number reduction"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Sidereals" page="157"/>
+  </charm>
+  <charm id="Sidereal.ImpedingFlow" exalt="Sidereal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Sidereals" page="157"/>
+  </charm>
+  <charm id="Sidereal.SerenityinBlood" exalt="Sidereal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.ImpedingFlow"/>
+      <charmReference id="Sidereal.HarmonyBlows"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Sidereals" page="157"/>
+  </charm>
+  <charm id="Sidereal.SmilingatDamned" exalt="Sidereal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="4"/>
+      <essence value="3"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="158"/>
+  </charm>
+  <charm id="Sidereal.PerfectionVisionaryWarrior" exalt="Sidereal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.SmilingatDamned"/>
+      <charmReference id="Sidereal.SerenityinBlood"/>
+      <charmReference id="Sidereal.OrchestrationConflict"/>
+      <charmReference id="Sidereal.MeditationonWar"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="158"/>
+  </charm>
+  <charm id="Sidereal.HeroicEssenceReplenishment" exalt="Sidereal" group="Presence">
+    <prerequisite>
+      <trait id="Presence" value="1"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Special"/>
+    <source source="The Sidereals" page="158"/>
+  </charm>
+  <charm id="Sidereal.PresenceinAbscenceTechnique" exalt="Sidereal" group="Presence">
+    <prerequisite>
+      <trait id="Presence" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="159"/>
+  </charm>
+  <charm id="Sidereal.ImposeNature" exalt="Sidereal" group="Presence">
+    <prerequisite>
+      <trait id="Presence" value="4"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="159"/>
+  </charm>
+  <charm id="Sidereal.ForceDecision" exalt="Sidereal" group="Presence">
+    <prerequisite>
+      <trait id="Presence" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.ImposeNature"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="159"/>
+  </charm>
+  <charm id="Sidereal.PredestinedTriumphPractice" exalt="Sidereal" group="Presence">
+    <prerequisite>
+      <trait id="Presence" value="4"/>
+      <essence value="3"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One battle"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="160"/>
+  </charm>
+  <charm id="Sidereal.Essence-DrainingBattlePattern" exalt="Sidereal" group="Presence">
+    <prerequisite>
+      <trait id="Presence" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.PredestinedTriumphPractice"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8"/>
+      </temporary>
+    </cost>
+    <duration duration="Until the relevant battle ends"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="160"/>
+  </charm>
+  <charm id="Sidereal.Demon-BlockingPattern" exalt="Sidereal" group="Presence">
+    <prerequisite>
+      <trait id="Presence" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.PredestinedTriumphPractice"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8"/>
+      </temporary>
+    </cost>
+    <duration duration="Until the relevant battle ends"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="160"/>
+  </charm>
+  <charm id="Sidereal.Spirit-BindingPattern" exalt="Sidereal" group="Presence">
+    <prerequisite>
+      <trait id="Presence" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.Demon-BlockingPattern"/>
+      <charmReference id="Sidereal.Essence-DrainingBattlePattern"/>
+      <charmReference id="Sidereal.ForceDecision"/>
+      <charmReference id="Sidereal.PresenceinAbscenceTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Until the relevant battle ends"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="160"/>
+  </charm>
+  <charm id="Sidereal.RedHaze" exalt="Sidereal" group="Resistance">
+    <prerequisite>
+      <trait id="Resistance" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Five days"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="161"/>
+  </charm>
+  <charm id="Sidereal.SomeoneElse'sDestiny" exalt="Sidereal" group="Resistance">
+    <prerequisite>
+      <trait id="Resistance" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4" text="+1 mote per die"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Sidereals" page="162"/>
+  </charm>
+  <charm id="Sidereal.WaterandFireLegion" exalt="Sidereal" group="Resistance">
+    <prerequisite>
+      <trait id="Resistance" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Until Calibration"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Sidereals" page="162"/>
+  </charm>
+  <charm id="Sidereal.ShieldMars" exalt="Sidereal" group="Resistance">
+    <prerequisite>
+      <trait id="Resistance" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Sidereals" page="162"/>
+  </charm>
+  <charm id="Sidereal.Storm'sEyeStance" exalt="Sidereal" group="Resistance">
+    <prerequisite>
+      <trait id="Resistance" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.ShieldMars"/>
+      <charmReference id="Sidereal.WaterandFireLegion"/>
+      <charmReference id="Sidereal.SomeoneElse'sDestiny"/>
+      <charmReference id="Sidereal.RedHaze"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="162"/>
+  </charm>
+  <charm id="Sidereal.AuspiciousProspectforJourneys" exalt="Sidereal" group="Investigation">
+    <prerequisite>
+      <trait id="Investigation" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <learning>
+      <favored caste="Journeys"/>
+    </learning>
+    <source source="The Sidereals" page="163"/>
+  </charm>
+  <charm id="Sidereal.AuspiciousProspectforSerenity" exalt="Sidereal" group="Investigation">
+    <prerequisite>
+      <trait id="Investigation" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <learning>
+      <favored caste="Serenity"/>
+    </learning>
+    <source source="The Sidereals" page="163"/>
+  </charm>
+  <charm id="Sidereal.AuspiciousProspectforBattles" exalt="Sidereal" group="Investigation">
+    <prerequisite>
+      <trait id="Investigation" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <learning>
+      <favored caste="Battles"/>
+    </learning>
+    <source source="The Sidereals" page="163"/>
+  </charm>
+  <charm id="Sidereal.AuspiciousProspectforFate" exalt="Sidereal" group="Investigation">
+    <prerequisite>
+      <trait id="Investigation" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="163"/>
+  </charm>
+  <charm id="Sidereal.AuspiciousProspectforEndings" exalt="Sidereal" group="Investigation">
+    <prerequisite>
+      <trait id="Investigation" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <learning>
+      <favored caste="Endings"/>
+    </learning>
+    <source source="The Sidereals" page="163"/>
+  </charm>
+  <charm id="Sidereal.MarvelousInclusionDetails" exalt="Sidereal" group="Investigation">
+    <prerequisite>
+      <trait id="Investigation" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per success"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="163"/>
+  </charm>
+  <charm id="Sidereal.EfficientSecretaryTechnique" exalt="Sidereal" group="Investigation">
+    <prerequisite>
+      <trait id="Investigation" value="1"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="One turn"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="163"/>
+  </charm>
+  <charm id="Sidereal.ResearchAssistantInvocation" exalt="Sidereal" group="Investigation">
+    <prerequisite>
+      <trait id="Investigation" value="2"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.EfficientSecretaryTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Five Days"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="164"/>
+  </charm>
+  <charm id="Sidereal.EmbracingLifeMethod" exalt="Sidereal" group="Investigation">
+    <prerequisite>
+      <trait id="Investigation" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.ResearchAssistantInvocation"/>
+      <charmReference id="Sidereal.MarvelousInclusionDetails"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Five days"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="164"/>
+  </charm>
+  <charm id="Sidereal.CreationSmugglingProcedures" exalt="Sidereal" group="Larceny">
+    <prerequisite>
+      <trait id="Larceny" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="165"/>
+  </charm>
+  <charm id="Sidereal.SiderealShellGames" exalt="Sidereal" group="Larceny">
+    <prerequisite>
+      <trait id="Larceny" value="3"/>
+      <essence value="1"/>
+      <charmReference id="Sidereal.CreationSmugglingProcedures"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="+2 motes per level or die stolen"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="165"/>
+  </charm>
+  <charm id="Sidereal.NamePilferingPractices" exalt="Sidereal" group="Larceny">
+    <prerequisite>
+      <trait id="Larceny" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="165"/>
+  </charm>
+  <charm id="Sidereal.DreamConfiscationApproach" exalt="Sidereal" group="Larceny">
+    <prerequisite>
+      <trait id="Larceny" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.NamePilferingPractices"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="165"/>
+  </charm>
+  <charm id="Sidereal.HonorableThiefSpirit" exalt="Sidereal" group="Larceny">
+    <prerequisite>
+      <trait id="Larceny" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per target number reduction"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="166"/>
+  </charm>
+  <charm id="Sidereal.ConningChaosTechnique" exalt="Sidereal" group="Larceny">
+    <prerequisite>
+      <trait id="Larceny" value="5"/>
+      <essence value="4"/>
+      <charmReference id="Sidereal.HonorableThiefSpirit"/>
+      <charmReference id="Sidereal.DreamConfiscationApproach"/>
+      <charmReference id="Sidereal.SiderealShellGames"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Varies"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="166"/>
+  </charm>
+  <charm id="Sidereal.SystematicUnderstandingEverything" exalt="Sidereal" group="Lore">
+    <prerequisite>
+      <trait id="Lore" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Until the character sleeps"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="166"/>
+  </charm>
+  <charm id="Sidereal.TheMethodologySecrets" exalt="Sidereal" group="Lore">
+    <prerequisite>
+      <trait id="Lore" value="2"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.SystematicUnderstandingEverything"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Until the character sleeps"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Sidereals" page="167"/>
+  </charm>
+  <charm id="Sidereal.OfTruthsBestUnspoken" exalt="Sidereal" group="Lore">
+    <prerequisite>
+      <trait id="Lore" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.SystematicUnderstandingEverything"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Three hours"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="167"/>
+  </charm>
+  <charm id="Sidereal.OfThingsDesiredandFeared" exalt="Sidereal" group="Lore">
+    <prerequisite>
+      <trait id="Lore" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.SystematicUnderstandingEverything"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+      </temporary>
+    </cost>
+    <duration duration="Three hours"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="168"/>
+  </charm>
+  <charm id="Sidereal.OfTheShapeWorld" exalt="Sidereal" group="Lore">
+    <prerequisite>
+      <trait id="Lore" value="3"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.SystematicUnderstandingEverything"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3" text="per target number reduction"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Sidereals" page="168"/>
+  </charm>
+  <charm id="Sidereal.OfHorrorsBestUnknown" exalt="Sidereal" group="Lore">
+    <prerequisite>
+      <trait id="Lore" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.OfTheShapeWorld"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="168"/>
+  </charm>
+  <charm id="Sidereal.OfSecretsYetUntold" exalt="Sidereal" group="Lore">
+    <prerequisite>
+      <trait id="Lore" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.SystematicUnderstandingEverything"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="168"/>
+  </charm>
+  <charm id="Sidereal.AvoidingTruthTechnique" exalt="Sidereal" group="Lore">
+    <prerequisite>
+      <trait id="Lore" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <combo allAbilities="true"/>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Sidereals" page="169"/>
+  </charm>
+  <charm id="Sidereal.TranscendantHatchetFate" exalt="Sidereal" group="Lore">
+    <prerequisite>
+      <trait id="Lore" value="5"/>
+      <essence value="4"/>
+      <charmReference id="Sidereal.AvoidingTruthTechnique"/>
+      <charmReference id="Sidereal.OfSecretsYetUntold"/>
+      <charmReference id="Sidereal.OfHorrorsBestUnknown"/>
+      <charmReference id="Sidereal.OfThingsDesiredandFeared"/>
+      <charmReference id="Sidereal.OfTruthsBestUnspoken"/>
+      <charmReference id="Sidereal.TheMethodologySecrets"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="16"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Until used"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="169"/>
+  </charm>
+  <charm id="Sidereal.MarkExaltation" exalt="Sidereal" group="Occult">
+    <prerequisite>
+      <trait id="Occult" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="170"/>
+  </charm>
+  <charm id="Sidereal.Tell-TaleSymphony" exalt="Sidereal" group="Occult">
+    <prerequisite>
+      <trait id="Occult" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.MarkExaltation"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="170"/>
+  </charm>
+  <charm id="Sidereal.InciteDecorum" exalt="Sidereal" group="Occult">
+    <prerequisite>
+      <trait id="Occult" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="170"/>
+  </charm>
+  <charm id="Sidereal.InnocuousManeuver" exalt="Sidereal" group="Occult">
+    <prerequisite>
+      <trait id="Occult" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.InciteDecorum"/>
+      <charmReference id="Sidereal.MarkExaltation"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="171"/>
+  </charm>
+  <charm id="Sidereal.UnweavingMethod" exalt="Sidereal" group="Occult">
+    <prerequisite>
+      <trait id="Occult" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.InnocuousManeuver"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="171"/>
+  </charm>
+  <charm id="Sidereal.TerrestrialCircleSorcery" exalt="Sidereal" group="Occult">
+    <prerequisite>
+      <trait id="Occult" value="3"/>
+      <essence value="3"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="Spell's"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <combo comboable="false"/>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="171"/>
+  </charm>
+  <charm id="Sidereal.CelestialCircleSorcery" exalt="Sidereal" group="Occult">
+    <prerequisite>
+      <trait id="Occult" value="4"/>
+      <essence value="4"/>
+      <charmReference id="Sidereal.TerrestrialCircleSorcery"/>
+      <charmAttributeRequirement attribute="PrayerStrip" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="Spell's"/>
+        <willpower cost="2"/>
+      </temporary>
+    </cost>
+    <combo comboable="false"/>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="171"/>
+  </charm>
+  <charm id="Sidereal.SoftPresencePractice" exalt="Sidereal" group="Stealth">
+    <prerequisite>
+      <trait id="Stealth" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per target number reduction"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="172"/>
+  </charm>
+  <charm id="Sidereal.WalkingOutsideFate" exalt="Sidereal" group="Stealth">
+    <prerequisite>
+      <trait id="Stealth" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.SoftPresencePractice"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="172"/>
+  </charm>
+  <charm id="Sidereal.SubordinateInspirationTechnique" exalt="Sidereal" group="Stealth">
+    <prerequisite>
+      <trait id="Stealth" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.WalkingOutsideFate"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One minute"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="172"/>
+  </charm>
+  <charm id="Sidereal.BlindingBoar" exalt="Sidereal" group="Stealth">
+    <prerequisite>
+      <trait id="Stealth" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Five turns"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="172"/>
+  </charm>
+  <charm id="Sidereal.CeasingtoExistApproach" exalt="Sidereal" group="Stealth">
+    <prerequisite>
+      <trait id="Stealth" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.BlindingBoar"/>
+      <charmReference id="Sidereal.SubordinateInspirationTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="3"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="173"/>
+  </charm>
+  <charm id="Sidereal.BurnLife" exalt="Sidereal" group="Athletics">
+    <prerequisite>
+      <trait id="Athletics" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3" text="per dot"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="174"/>
+  </charm>
+  <charm id="Sidereal.HungryTouch" exalt="Sidereal" group="Athletics">
+    <prerequisite>
+      <trait id="Athletics" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.BurnLife"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per target number reduction or damage point"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="174"/>
+  </charm>
+  <charm id="Sidereal.ForgottenEarth" exalt="Sidereal" group="Athletics">
+    <prerequisite>
+      <trait id="Athletics" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Sidereals" page="175"/>
+  </charm>
+  <charm id="Sidereal.InexorableAdvance" exalt="Sidereal" group="Athletics">
+    <prerequisite>
+      <trait id="Athletics" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Five turns"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="175"/>
+  </charm>
+  <charm id="Sidereal.InvisibleMotion" exalt="Sidereal" group="Athletics">
+    <prerequisite>
+      <trait id="Athletics" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.HungryTouch"/>
+      <charmReference id="Sidereal.ForgottenEarth"/>
+      <charmReference id="Sidereal.InexorableAdvance"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="175"/>
+  </charm>
+  <charm id="Sidereal.PriorWarning" exalt="Sidereal" group="Awareness">
+    <prerequisite>
+      <trait id="Awareness" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+      </temporary>
+    </cost>
+    <duration duration="Five minutes"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="175"/>
+  </charm>
+  <charm id="Sidereal.ExpectedPain" exalt="Sidereal" group="Awareness">
+    <prerequisite>
+      <trait id="Awareness" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.PriorWarning"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Sidereals" page="175"/>
+  </charm>
+  <charm id="Sidereal.SupernalAwareness" exalt="Sidereal" group="Awareness">
+    <prerequisite>
+      <trait id="Awareness" value="3"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.ExpectedPain"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="176"/>
+  </charm>
+  <charm id="Sidereal.WiseChoice" exalt="Sidereal" group="Awareness">
+    <prerequisite>
+      <trait id="Awareness" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="176"/>
+  </charm>
+  <charm id="Sidereal.InevitablePursuit" exalt="Sidereal" group="Awareness">
+    <prerequisite>
+      <trait id="Awareness" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="176"/>
+  </charm>
+  <charm id="Sidereal.ConclusiveWisdom" exalt="Sidereal" group="Awareness">
+    <prerequisite>
+      <trait id="Awareness" value="5"/>
+      <essence value="4"/>
+      <charmReference id="Sidereal.SupernalAwareness"/>
+      <charmReference id="Sidereal.WiseChoice"/>
+      <charmReference id="Sidereal.InevitablePursuit"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="20"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="177"/>
+  </charm>
+  <charm id="Sidereal.SlickEssenceReplenishment" exalt="Sidereal" group="Bureaucracy">
+    <prerequisite>
+      <trait id="Bureaucracy" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Special"/>
+    <source source="The Sidereals" page="177"/>
+  </charm>
+  <charm id="Sidereal.IcyHand" exalt="Sidereal" group="Bureaucracy">
+    <prerequisite>
+      <trait id="Bureaucracy" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Five days"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Sidereals" page="178"/>
+  </charm>
+  <charm id="Sidereal.TerminalSanction" exalt="Sidereal" group="Bureaucracy">
+    <prerequisite>
+      <trait id="Bureaucracy" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.IcyHand"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="178"/>
+  </charm>
+  <charm id="Sidereal.UnderlingInvisibilityPractice" exalt="Sidereal" group="Bureaucracy">
+    <prerequisite>
+      <trait id="Bureaucracy" value="4"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="178"/>
+  </charm>
+  <charm id="Sidereal.EndDebate" exalt="Sidereal" group="Bureaucracy">
+    <prerequisite>
+      <trait id="Bureaucracy" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.TerminalSanction"/>
+      <charmReference id="Sidereal.UnderlingInvisibilityPractice"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="179"/>
+  </charm>
+  <charm id="Sidereal.SmoothTransition" exalt="Sidereal" group="Medicine">
+    <prerequisite>
+      <trait id="Medicine" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="182"/>
+  </charm>
+  <charm id="Sidereal.PeaceableConclusion" exalt="Sidereal" group="Medicine">
+    <prerequisite>
+      <trait id="Medicine" value="3"/>
+      <essence value="1"/>
+      <charmReference id="Sidereal.SmoothTransition"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="182"/>
+  </charm>
+  <charm id="Sidereal.InvocationStorm-FollowingSilence" exalt="Sidereal" group="Medicine">
+    <prerequisite>
+      <trait id="Medicine" value="2"/>
+      <essence value="2"/>
+      <charmReference id="Sidereal.SmoothTransition"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="183"/>
+  </charm>
+  <charm id="Sidereal.TerminateIllness" exalt="Sidereal" group="Medicine">
+    <prerequisite>
+      <trait id="Medicine" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Sidereals" page="183"/>
+  </charm>
+  <charm id="Sidereal.EarthandSkyBargain" exalt="Sidereal" group="Medicine">
+    <prerequisite>
+      <trait id="Medicine" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Sidereal.PeaceableConclusion"/>
+      <charmReference id="Sidereal.InvocationStorm-FollowingSilence"/>
+      <charmReference id="Sidereal.TerminateIllness"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="PrayerStrip"/>
+    <source source="The Sidereals" page="183"/>
+  </charm>
+  <charm id="Sidereal.ShadowlandsCircleNecromancy" exalt="Sidereal" group="Occult">
+    <prerequisite>
+      <trait id="Occult" value="3"/>
+      <essence value="3"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="Spell's" text="essence cost"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <combo comboable="false"/>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="197"/>
+  </charm>
+</charmlist>
