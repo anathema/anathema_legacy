@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<charmlist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ComplexCharms.xsd">
+	<charm id="DragonKing.PiercingCelestialVeil" exalt="DragonKing" group="Air">
+		<prerequisite>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="2"/>
+			</temporary>
+		</cost>
+		<duration duration="One Scene"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="178"/>
+	</charm>
+	<charm id="DragonKing.TouchCelestialForm" exalt="DragonKing" group="Air">
+		<prerequisite>
+			<essence value="2"/>
+			<charmReference id="DragonKing.PiercingCelestialVeil"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="3" text="or 3 motes and 1 WP"/>
+			</temporary>
+		</cost>
+		<duration duration="Instant or One Scene"/>
+		<combo comboable="true"/>
+		<charmtype type="Supplemental"/>
+		<source source="Player's Guide" page="178"/>
+	</charm>
+	<charm id="DragonKing.OpenCelestialDoorway" exalt="DragonKing" group="Air">
+		<prerequisite>
+			<essence value="2"/>
+			<charmReference id="DragonKing.TouchCelestialForm"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="5"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="178"/>
+	</charm>
+	<charm id="DragonKing.SummonCelestialServant" exalt="DragonKing" group="Air">
+		<prerequisite>
+			<essence value="3"/>
+			<charmReference id="DragonKing.OpenCelestialDoorway"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="10+"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="Indefinite"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="178"/>
+	</charm>
+	<charm id="DragonKing.WalkCelestialRoad" exalt="DragonKing" group="Air">
+		<prerequisite>
+			<essence value="3"/>
+			<charmReference id="DragonKing.SummonCelestialServant"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="" text="Half temporary Essence (round down)"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="Indefinite"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="179"/>
+	</charm>
+	<charm id="DragonKing.BarDoorwayGods" exalt="DragonKing" group="Air">
+		<prerequisite>
+			<essence value="6"/>
+			<charmReference id="DragonKing.WalkCelestialRoad"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="15"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="Indefinite"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="179"/>
+	</charm>
+	<charm id="DragonKing.ClaritySense" exalt="DragonKing" group="Air">
+		<prerequisite>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="2"/>
+			</temporary>
+		</cost>
+		<duration duration="One Scene"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="180"/>
+	</charm>
+	<charm id="DragonKing.SeeWindsEssence" exalt="DragonKing" group="Air">
+		<prerequisite>
+			<essence value="2"/>		
+			<charmReference id="DragonKing.ClaritySense"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="4"/>
+			</temporary>
+		</cost>
+		<duration duration="One Scene"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="180"/>
+	</charm>
+	<charm id="DragonKing.VisionsAttackAndDefense" exalt="DragonKing" group="Air">
+		<prerequisite>
+			<essence value="2"/>		
+			<charmReference id="DragonKing.SeeWindsEssence"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="4"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="Path level in turns"/>
+		<charmtype type="Reflexive"/>
+		<source source="Player's Guide" page="180"/>
+	</charm>
+	<charm id="DragonKing.PerceptionSubtleFlaws" exalt="DragonKing" group="Air">
+		<prerequisite>
+			<essence value="3"/>			
+			<charmReference id="DragonKing.VisionsAttackAndDefense"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="4"/>
+			</temporary>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Supplemental"/>
+		<source source="Player's Guide" page="180"/>
+	</charm>
+	<charm id="DragonKing.AncientUnderstanding" exalt="DragonKing" group="Air">
+		<prerequisite>
+			<essence value="3"/>			
+			<charmReference id="DragonKing.PerceptionSubtleFlaws"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="5"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="180"/>
+	</charm>
+	<charm id="DragonKing.InhumanClarityPerceptionTechnique" exalt="DragonKing" group="Air">
+		<prerequisite>
+			<essence value="6"/>			
+			<charmReference id="DragonKing.AncientUnderstanding"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="7"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="Day"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="180"/>
+	</charm>
+	<charm id="DragonKing.LithicUnderstanding" exalt="DragonKing" group="Earth">
+		<prerequisite>
+			<essence value="1"/>			
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="5"/>
+			</temporary>
+		</cost>
+		<duration duration="One Scene"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="181"/>
+	</charm>
+	<charm id="DragonKing.ShapeEarth" exalt="DragonKing" group="Earth">
+		<prerequisite>
+			<essence value="2"/>		
+			<charmReference id="DragonKing.LithicUnderstanding"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="4"/>
+			</temporary>
+		</cost>
+		<duration duration="One Scene"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="181"/>
+	</charm>
+	<charm id="DragonKing.EmpowerCrystal" exalt="DragonKing" group="Earth">
+		<prerequisite>
+			<essence value="2"/>		
+			<charmReference id="DragonKing.ShapeEarth"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="6"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="Varies"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="181"/>
+	</charm>
+	<charm id="DragonKing.BecomeStone" exalt="DragonKing" group="Earth">
+		<prerequisite>
+			<essence value="3"/>			
+			<charmReference id="DragonKing.EmpowerCrystal"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="4"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="One Day"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="181"/>
+	</charm>
+	<charm id="DragonKing.CommandEarth" exalt="DragonKing" group="Earth">
+		<prerequisite>
+			<essence value="3"/>			
+			<charmReference id="DragonKing.BecomeStone"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="7"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="182"/>
+	</charm>
+	<charm id="DragonKing.UnityWithEarthAndStone" exalt="DragonKing" group="Earth">
+		<prerequisite>
+			<essence value="6"/>		
+			<charmReference id="DragonKing.CommandEarth"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="5"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="One Scene"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="182"/>
+	</charm>
+	<charm id="DragonKing.BalmHealth" exalt="DragonKing" group="Earth">
+		<prerequisite>
+			<essence value="1"/>			
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="3"/>
+			</temporary>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="182"/>
+	</charm>
+	<charm id="DragonKing.Repair" exalt="DragonKing" group="Earth">
+		<prerequisite>
+			<essence value="2"/>			
+			<charmReference id="DragonKing.BalmHealth"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="3"/>
+			</temporary>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="182"/>
+	</charm>
+	<charm id="DragonKing.SpeedHealing" exalt="DragonKing" group="Earth">
+		<prerequisite>
+			<essence value="2"/>			
+			<charmReference id="DragonKing.Repair"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="3"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="182"/>
+	</charm>
+	<charm id="DragonKing.Restore" exalt="DragonKing" group="Earth">
+		<prerequisite>
+			<essence value="3"/>			
+			<charmReference id="DragonKing.SpeedHealing"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="3"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="182"/>
+	</charm>
+	<charm id="DragonKing.EmpowerHealing" exalt="DragonKing" group="Earth">
+		<prerequisite>
+			<essence value="3"/>		
+			<charmReference id="DragonKing.Restore"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="5" text="per health level healed"/>
+				<willpower cost="1" text="per health level healed"/>
+			</temporary>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="183"/>
+	</charm>
+	<charm id="DragonKing.RegainGloryPast" exalt="DragonKing" group="Earth">
+		<prerequisite>
+			<essence value="6"/>			
+			<charmReference id="DragonKing.EmpowerHealing"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="10"/>
+				<willpower cost="1"/>
+			</temporary>
+			<permanent>
+				<experience cost="1" text="per level of Artifact"/>
+			</permanent>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="183"/>
+	</charm>
+	<charm id="DragonKing.FirstLight" exalt="DragonKing" group="Fire">
+		<prerequisite>
+			<essence value="1"/>			
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="3"/>
+			</temporary>
+		</cost>
+		<duration duration="One Scene"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="183"/>
+	</charm>
+	<charm id="DragonKing.LesserConjurationFlame" exalt="DragonKing" group="Fire">
+		<prerequisite>
+			<essence value="2"/>			
+			<charmReference id="DragonKing.FirstLight"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="3"/>
+			</temporary>
+		</cost>
+		<duration duration="One scene or until extinguished"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="183"/>
+	</charm>
+	<charm id="DragonKing.BoltFire" exalt="DragonKing" group="Fire">
+		<prerequisite>
+			<essence value="2"/>			
+			<charmReference id="DragonKing.LesserConjurationFlame"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="1" text="per 1L damage"/>
+			</temporary>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="183"/>
+	</charm>
+	<charm id="DragonKing.CommandFire" exalt="DragonKing" group="Fire">
+		<prerequisite>
+			<essence value="3"/>			
+			<charmReference id="DragonKing.BoltFire"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="4"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="183"/>
+	</charm>
+	<charm id="DragonKing.Immolation" exalt="DragonKing" group="Fire">
+		<prerequisite>
+			<essence value="3"/>			
+			<charmReference id="DragonKing.CommandFire"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="4"/>
+			</temporary>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="184"/>
+	</charm>
+	<charm id="DragonKing.TouchBlazingFire" exalt="DragonKing" group="Fire">
+		<prerequisite>
+			<essence value="6"/>			
+			<charmReference id="DragonKing.Immolation"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="7"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="184"/>
+	</charm>
+	<charm id="DragonKing.FlashingAgility" exalt="DragonKing" group="Fire">
+		<prerequisite>
+			<essence value="1"/>		
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="2"/>
+			</temporary>
+		</cost>
+		<duration duration="(Essence) hours"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="185"/>
+	</charm>
+	<charm id="DragonKing.FieryProwess" exalt="DragonKing" group="Fire">
+		<prerequisite>
+			<essence value="2"/>
+			<charmReference id="DragonKing.FlashingAgility"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="3"/>
+			</temporary>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Reflexive"/>
+		<source source="Player's Guide" page="185"/>
+	</charm>
+	<charm id="DragonKing.OneFireManyFlames" exalt="DragonKing" group="Fire">
+		<prerequisite>
+			<essence value="2"/>		
+			<charmReference id="DragonKing.FieryProwess"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="3" text="per additional action"/>
+			</temporary>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="ExtraAction"/>
+		<source source="Player's Guide" page="185"/>
+	</charm>
+	<charm id="DragonKing.SpeedFlame" exalt="DragonKing" group="Fire">
+		<prerequisite>
+			<essence value="3"/>			
+			<charmReference id="DragonKing.OneFireManyFlames"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="3"/>
+			</temporary>
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="185"/>
+	</charm>
+	<charm id="DragonKing.Twice-FlickeringFlame" exalt="DragonKing" group="Fire">
+		<prerequisite>
+			<essence value="3"/>		
+			<charmReference id="DragonKing.SpeedFlame"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="5"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="185"/>
+	</charm>
+	<charm id="DragonKing.PerfectionMovement" exalt="DragonKing" group="Fire">
+		<prerequisite>
+			<essence value="6"/>			
+			<charmReference id="DragonKing.Twice-FlickeringFlame"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="5"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="185"/>
+	</charm>
+	<charm id="DragonKing.ClingingPuddleStyle" exalt="DragonKing" group="Water">
+		<prerequisite>
+			<essence value="1"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="2"/>
+			</temporary>
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Reflexive"/>
+		<source source="Player's Guide" page="186"/>
+	</charm>
+	<charm id="DragonKing.AirWalkingStyle" exalt="DragonKing" group="Water">
+		<prerequisite>
+			<essence value="2"/>
+			<charmReference id="DragonKing.ClingingPuddleStyle"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="4"/>
+			</temporary>
+		</cost>
+		<duration duration="Path level in turns"/>
+		<charmtype type="Reflexive"/>
+		<source source="Player's Guide" page="186"/>
+	</charm>
+	<charm id="DragonKing.Vault-BreachingMethod" exalt="DragonKing" group="Water">
+		<prerequisite>
+			<essence value="2"/>			
+			<charmReference id="DragonKing.AirWalkingStyle"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="6"/>
+			</temporary>
+		</cost>
+		<duration duration="One turn"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="186"/>
+	</charm>
+	<charm id="DragonKing.Barrier-BreachingMethod" exalt="DragonKing" group="Water">
+		<prerequisite>
+			<essence value="3"/>		
+			<charmReference id="DragonKing.Vault-BreachingMethod"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="3"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Reflexive"/>
+		<source source="Player's Guide" page="186"/>
+	</charm>
+	<charm id="DragonKing.DistanceIgnoringTechnique" exalt="DragonKing" group="Water">
+		<prerequisite>
+			<essence value="3"/>			
+			<charmReference id="DragonKing.Barrier-BreachingMethod"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="5"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Reflexive"/>
+		<source source="Player's Guide" page="186"/>
+	</charm>
+	<charm id="DragonKing.CreateGateway" exalt="DragonKing" group="Water">
+		<prerequisite>
+			<essence value="6"/>			
+			<charmReference id="DragonKing.DistanceIgnoringTechnique"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="10"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="One turn"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="186"/>
+	</charm>
+	<charm id="DragonKing.AvertingEyes" exalt="DragonKing" group="Water">
+		<prerequisite>
+			<essence value="1"/>			
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="1" text="per +1 in difficulty"/>
+			</temporary>
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="187"/>
+	</charm>
+	<charm id="DragonKing.VisageAnotherFace" exalt="DragonKing" group="Water">
+		<prerequisite>
+			<essence value="2"/>			
+			<charmReference id="DragonKing.AvertingEyes"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="3"/>
+			</temporary>
+		</cost>
+		<duration duration="One day"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="187"/>
+	</charm>
+	<charm id="DragonKing.GuiseNewForm" exalt="DragonKing" group="Water">
+		<prerequisite>
+			<essence value="2"/>			
+			<charmReference id="DragonKing.VisageAnotherFace"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="3"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="(Essence) hours"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="187"/>
+	</charm>
+	<charm id="DragonKing.UnseenFormTechnique" exalt="DragonKing" group="Water">
+		<prerequisite>
+			<essence value="3"/>			
+			<charmReference id="DragonKing.GuiseNewForm"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="5"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="Path level in minutes"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="188"/>
+	</charm>
+	<charm id="DragonKing.VeilDeception" exalt="DragonKing" group="Water">
+		<prerequisite>
+			<essence value="3"/>		
+			<charmReference id="DragonKing.UnseenFormTechnique"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="6"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="188"/>
+	</charm>
+	<charm id="DragonKing.PerfectionIllusion" exalt="DragonKing" group="Water">
+		<prerequisite>
+			<essence value="6"/>			
+			<charmReference id="DragonKing.VeilDeception"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="7"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="Willpower in turn"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="189"/>
+	</charm>
+	<charm id="DragonKing.VerdantUnderstanding" exalt="DragonKing" group="Wood">
+		<prerequisite>
+			<essence value="1"/>			
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="5"/>
+			</temporary>
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="189"/>
+	</charm>
+	<charm id="DragonKing.EmpowerCultivation" exalt="DragonKing" group="Wood">
+		<prerequisite>
+			<essence value="2"/>		
+			<charmReference id="DragonKing.VerdantUnderstanding"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="3"/>
+			</temporary>
+		</cost>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="189"/>
+	</charm>
+	<charm id="DragonKing.EmpowerPlants" exalt="DragonKing" group="Wood">
+		<prerequisite>
+			<essence value="2"/>			
+			<charmReference id="DragonKing.EmpowerCultivation"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="3"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="Indefinite"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="189"/>
+	</charm>
+	<charm id="DragonKing.ShapePlants" exalt="DragonKing" group="Wood">
+		<prerequisite>
+			<essence value="3"/>			
+			<charmReference id="DragonKing.EmpowerPlants"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<willpower cost="5"/>
+			</temporary>
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="189"/>
+	</charm>
+	<charm id="DragonKing.AlterPlants" exalt="DragonKing" group="Wood">
+		<prerequisite>
+			<essence value="3"/>			
+			<charmReference id="DragonKing.ShapePlants"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="5"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="190"/>
+	</charm>
+	<charm id="DragonKing.PlantWalk" exalt="DragonKing" group="Wood">
+		<prerequisite>
+			<essence value="6"/>		
+			<charmReference id="DragonKing.AlterPlants"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="5"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="190"/>
+	</charm>
+	<charm id="DragonKing.ShapingBark" exalt="DragonKing" group="Wood">
+		<prerequisite>
+			<essence value="1"/>			
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="3" text="and an additional mote to remove"/>
+			</temporary>
+		</cost>
+		<duration duration="Indefinite"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="190"/>
+	</charm>
+	<charm id="DragonKing.AlterTrunk" exalt="DragonKing" group="Wood">
+		<prerequisite>
+			<essence value="2"/>		
+			<charmReference id="DragonKing.ShapingBark"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="3"/>
+			</temporary>
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="190"/>
+	</charm>
+	<charm id="DragonKing.Adaptation" exalt="DragonKing" group="Wood">
+		<prerequisite>
+			<essence value="2"/>			
+			<charmReference id="DragonKing.AlterTrunk"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="3"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="One day"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="190"/>
+	</charm>
+	<charm id="DragonKing.FormAnotherBreed" exalt="DragonKing" group="Wood">
+		<prerequisite>
+			<essence value="3"/>			
+			<charmReference id="DragonKing.Adaptation"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="5"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="190"/>
+	</charm>
+	<charm id="DragonKing.FormTerribleAncestors" exalt="DragonKing" group="Wood">
+		<prerequisite>
+			<essence value="3"/>			
+			<charmReference id="DragonKing.FormAnotherBreed"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="5"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="191"/>
+	</charm>
+	<charm id="DragonKing.TransformationNewForm" exalt="DragonKing" group="Wood">
+		<prerequisite>
+			<essence value="6"/>			
+			<charmReference id="DragonKing.FormTerribleAncestors"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="10"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<duration duration="One scene"/>
+		<charmtype type="Simple"/>
+		<source source="Player's Guide" page="191"/>
+	</charm>
+		<charm id="DragonKing.TerrestrialCircleSorcery" exalt="DragonKing" group="Sorcery">
+		<prerequisite>
+			<trait id="Occult" value="3"/>
+			<essence value="3"/>
+		</prerequisite>
+		<cost>
+			<temporary>
+				<essence cost="Varies"/>
+				<willpower cost="1"/>
+			</temporary>
+		</cost>
+		<combo comboable="false"/>
+		<duration duration="Instant"/>
+		<charmtype type="Simple"/>
+		<source source="Exalted" page="191"/>
+	</charm>	
+</charmlist>
