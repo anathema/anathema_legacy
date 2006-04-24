@@ -22,7 +22,7 @@
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/gisterm-visualizer.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/jai_codec.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/jai_core.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/GISterm/jai_imageio.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/jts.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/gisterm-shapeexport.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

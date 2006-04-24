@@ -29,7 +29,7 @@ public final class GisItemTypeConfiguration extends AbstractNonPersistableItemTy
       public IItemView createView(IItem item) throws AnathemaException {
         String printName = item.getDisplayName();
         GisModuleView anathemaGisView = new GisModuleView(printName);
-        IGisModel model = new GisModel();
+        IGisModel model = new GisModel(anathemaModel.getRepository().getRepositoryFolder());
         new GisPresenter(model, anathemaGisView.addGisView(), resources).initPresentation();
         return anathemaGisView;
       }
