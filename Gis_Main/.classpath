@@ -22,5 +22,6 @@
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/jai_codec.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/jai_core.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/gisterm-shapeexport.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Platform"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
