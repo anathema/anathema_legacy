@@ -90,10 +90,10 @@ public class CharmCache implements ICharmCache {
 
   private void buildRulesetCharms(final CharacterType type, Document charmDocument, IExaltedRuleSet set)
       throws PersistenceException {
-    String baseRules = charmIo.getBaseRules(charmDocument);
     MultiEntryMap<CharacterType, ICharm> ruleSetCharms = getRulesetCharms(set);
-    if (baseRules != null) {
-      for (ICharm charm : getCharms(type, ExaltedRuleSet.valueOf(baseRules))) {
+    final IExaltedRuleSet basicRules = set.getBasicRuleset();
+    if (basicRules != null) {
+      for (ICharm charm : getCharms(type, basicRules)) {
         ruleSetCharms.add(type, charm);
       }
     }

@@ -11,15 +11,27 @@ public enum ExaltedRuleSet implements IExaltedRuleSet {
     public void accept(IRuleSetVisitor visitor) {
       visitor.visitCoreRules(this);
     }
+
+    public IExaltedRuleSet getBasicRuleset() {
+      return null;
+    }
   },
   PowerCombat(ExaltedEdition.FirstEdition) {
     public void accept(IRuleSetVisitor visitor) {
       visitor.visitPowerCombat(this);
     }
+
+    public IExaltedRuleSet getBasicRuleset() {
+      return CoreRules;
+    }
   },
   SecondEdition(ExaltedEdition.SecondEdition) {
     public void accept(IRuleSetVisitor visitor) {
       visitor.visitSecondEdition(this);
+    }
+
+    public IExaltedRuleSet getBasicRuleset() {
+      return null;
     }
   };
 
