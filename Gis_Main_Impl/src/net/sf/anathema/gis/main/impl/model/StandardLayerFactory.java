@@ -15,10 +15,13 @@ import de.disy.gis.gisterm.imagecatalog.ImageCatalogQuery;
 import de.disy.gis.gisterm.imagecatalog.layer.IImageCatalogLayerCreationStrategy;
 import de.disy.gis.gisterm.imagecatalog.layer.IImageCatalogProperties;
 import de.disy.gis.gisterm.imagecatalog.layer.ImageCatalogLayerCreationStrategy;
+import de.disy.gis.gisterm.map.layer.edit.ILayerGraphicsEditStrategy;
+import de.disy.gis.gisterm.map.layer.sketch.SketchLayer;
 import de.disy.gis.gisterm.map.scale.IScaleRange;
 import de.disy.gis.gisterm.map.theme.ITheme;
 import de.disy.gis.gisterm.pro.map.layer.ILayerPopupFactoryExtension;
 import de.disy.gis.gisterm.pro.map.layer.popup.IMapLayerPopupMenuContext;
+import de.disy.gisterm.pro.sketchlayer.edit.SketchLayerGraphicsEditStrategy;
 
 public class StandardLayerFactory implements IStandardLayerFactory {
   private final File repositoryFolder;
@@ -82,5 +85,15 @@ public class StandardLayerFactory implements IStandardLayerFactory {
     rasterDataProvider.setQuery(query);
     catalogLayer.setName(properties.getCatalogName());
     return catalogLayer;
+  }
+
+  public GenericLayer createSketchLayer() {
+    return new SketchLayer() {
+      @Override
+      protected void initEditStrategy() {
+        ILayerGraphicsEditStrategy editStrategy = new SketchLayerGraphicsEditStrategy(getGraphicsObjectList());
+        setGraphicsEditStrategy(editStrategy);
+      }
+    };
   }
 }

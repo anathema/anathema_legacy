@@ -25,5 +25,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Gui"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/gisterm-shapeexport.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Platform"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
