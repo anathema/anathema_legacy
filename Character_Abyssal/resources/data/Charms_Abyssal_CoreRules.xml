@@ -1,0 +1,3546 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<charmlist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ComplexCharms.xsd">
+  <charm id="Abyssal.BloodthirstyArrow" exalt="Abyssal" group="Archery">
+    <prerequisite>
+      <trait id="Archery" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per die"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="157"/>
+  </charm>
+  <charm id="Abyssal.TwistingSpitefulShaft" exalt="Abyssal" group="Archery">
+    <prerequisite>
+      <trait id="Archery" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.BloodthirstyArrow"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="157"/>
+  </charm>
+  <charm id="Abyssal.RelicArrowMethod" exalt="Abyssal" group="Archery">
+    <prerequisite>
+      <trait id="Archery" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.IronSleetAttack"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per arrow"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="158"/>
+  </charm>
+  <charm id="Abyssal.IronSleetAttack" exalt="Abyssal" group="Archery">
+    <prerequisite>
+      <trait id="Archery" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="158"/>
+  </charm>
+  <charm id="Abyssal.HundredPacesBite" exalt="Abyssal" group="Archery">
+    <prerequisite>
+      <trait id="Archery" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.TwistingSpitefulShaft"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="158"/>
+  </charm>
+  <charm id="Abyssal.PulsePrey" exalt="Abyssal" group="Archery">
+    <prerequisite>
+      <trait id="Archery" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.BloodthirstyArrow"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="158"/>
+  </charm>
+  <charm id="Abyssal.WitheringFeatheredMaelstrom" exalt="Abyssal" group="Archery">
+    <prerequisite>
+      <trait id="Archery" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.FlawlessArcherDiscipline"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="ExtraAction"/>
+    <source source="The Abyssals" page="158"/>
+  </charm>
+  <charm id="Abyssal.FlawlessArcherDiscipline" exalt="Abyssal" group="Archery">
+    <prerequisite>
+      <trait id="Archery" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.PulsePrey"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="158"/>
+  </charm>
+  <charm id="Abyssal.SplinterVoid" exalt="Abyssal" group="Archery">
+    <prerequisite>
+      <trait id="Archery" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.RelicArrowMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per 2L"/>
+      </temporary>
+    </cost>
+    <combo>
+      <restrictions>
+        <!--No Arrow Enhancing Charms-->
+        <charm id="Solar.FieryArrow"/>
+        <charm id="Solar.RainFeatheredDeath"/>
+        <charm id="Solar.DazzlingFlare"/>
+        <charm id="Abyssal.BloodthirstyArrow"/>
+        <charm id="Abyssal.HundredPacesBite"/>
+        <charm id="Abyssal.IronSleetAttack"/>
+        <charm id="Dragon-Blooded.Life-SwellingSapStrike"/>
+        <charm id="Dragon-Blooded.SparrowDivesAtHawk"/>
+      </restrictions>
+    </combo>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="159"/>
+  </charm>
+  <charm id="Abyssal.ExquisiteRelicBow" exalt="Abyssal" group="Archery">
+    <prerequisite>
+      <trait id="Archery" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.RelicArrowMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="159"/>
+  </charm>
+  <charm id="Abyssal.PiercingGhostBarb" exalt="Abyssal" group="Archery">
+    <prerequisite>
+      <trait id="Archery" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.SplinterVoid"/>
+      <charmReference id="Abyssal.PulsePrey"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="159"/>
+  </charm>
+  <charm id="Abyssal.DeadMan'sGrasp" exalt="Abyssal" group="Brawl">
+    <prerequisite>
+      <trait id="Brawl" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per turn"/>
+      </temporary>
+    </cost>
+    <duration duration="Until released"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="160"/>
+  </charm>
+  <charm id="Abyssal.InescapableIronGrip" exalt="Abyssal" group="Brawl">
+    <prerequisite>
+      <trait id="Brawl" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.DeadMan'sGrasp"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Until released"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="160"/>
+  </charm>
+  <charm id="Abyssal.RapaciousLampreyTechnique" exalt="Abyssal" group="Brawl">
+    <prerequisite>
+      <trait id="Brawl" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.DeadMan'sGrasp"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="One turn"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="160"/>
+  </charm>
+  <charm id="Abyssal.RavagingStrike" exalt="Abyssal" group="Brawl">
+    <prerequisite>
+      <trait id="Brawl" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="161"/>
+  </charm>
+  <charm id="Abyssal.ScouringErosionMethod" exalt="Abyssal" group="Brawl">
+    <prerequisite>
+      <trait id="Brawl" value="2"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.RavagingStrike"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per 1 or 2 soak reduction"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="161"/>
+  </charm>
+  <charm id="Abyssal.LashingTempestAttack" exalt="Abyssal" group="Brawl">
+    <prerequisite>
+      <trait id="Brawl" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.RavagingStrike"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per 2 yards"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="161"/>
+  </charm>
+  <charm id="Abyssal.OwlSeizesMouse" exalt="Abyssal" group="Brawl">
+    <prerequisite>
+      <trait id="Brawl" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.InescapableIronGrip"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="161"/>
+  </charm>
+  <charm id="Abyssal.FiveKnifeStrike" exalt="Abyssal" group="Brawl">
+    <prerequisite>
+      <trait id="Brawl" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.LashingTempestAttack"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="162"/>
+  </charm>
+  <charm id="Abyssal.Bone-ShatteringBlow" exalt="Abyssal" group="Brawl">
+    <prerequisite>
+      <trait id="Brawl" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.LashingTempestAttack"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="162"/>
+  </charm>
+  <charm id="Abyssal.Blood-DrinkingPalm" exalt="Abyssal" group="Brawl">
+    <prerequisite>
+      <trait id="Brawl" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.FiveKnifeStrike"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="162"/>
+  </charm>
+  <charm id="Abyssal.WrithingBloodChainTechnique" exalt="Abyssal" group="Brawl">
+    <prerequisite>
+      <trait id="Brawl" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.Blood-DrinkingPalm"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <combo>
+      <restrictions>
+        <charmtype type="ExtraAction"/>
+      </restrictions>
+    </combo>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="162"/>
+  </charm>
+  <charm id="Abyssal.FuriousBlade" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per die"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="165"/>
+  </charm>
+  <charm id="Abyssal.SavageShadeStyle" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="2"/>
+      <essence value="1"/>
+      <charmReference id="Abyssal.FuriousBlade"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="166"/>
+  </charm>
+  <charm id="Abyssal.SlashingGhostTalon" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="2"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.FuriousBlade"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="166"/>
+  </charm>
+  <charm id="Abyssal.ArtfulMaimingOnslaught" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.SavageShadeStyle"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="166"/>
+  </charm>
+  <charm id="Abyssal.FiveShadowFeint" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="2"/>
+      <essence value="1"/>
+      <charmReference id="Abyssal.FuriousBlade"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per die"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="167"/>
+  </charm>
+  <charm id="Abyssal.Soul-SearingBlow" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.SlashingGhostTalon"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2+"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="167"/>
+  </charm>
+  <charm id="Abyssal.CrimsonBanquetMethod" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.SlashingGhostTalon"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="167"/>
+  </charm>
+  <charm id="Abyssal.ReaperMen" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.CrimsonBanquetMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="167"/>
+  </charm>
+  <charm id="Abyssal.Soul-CleavingStrike" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="5"/>
+      <essence value="4"/>
+      <charmReference id="Abyssal.ReaperMen"/>
+      <charmReference id="Abyssal.Soul-SearingBlow"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="167"/>
+  </charm>
+  <charm id="Abyssal.Blade-SummoningGesture" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="168"/>
+  </charm>
+  <charm id="Abyssal.UnfurlingIronLotus" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.FiveShadowFeint"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3" text="per attack"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="ExtraAction"/>
+    <source source="The Abyssals" page="168"/>
+  </charm>
+  <charm id="Abyssal.EbonLightningPrana" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.FiveShadowFeint"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="168"/>
+  </charm>
+  <charm id="Abyssal.GloriousCarnageTyphoon" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.UnfurlingIronLotus"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="ExtraAction"/>
+    <source source="The Abyssals" page="168"/>
+  </charm>
+  <charm id="Abyssal.VoidSheathTechnique" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Blade-SummoningGesture"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="169"/>
+  </charm>
+  <charm id="Abyssal.ThievingRaitonClaws" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Blade-SummoningGesture"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="169"/>
+  </charm>
+  <charm id="Abyssal.ResplendentShadowBlade" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.VoidSheathTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="169"/>
+  </charm>
+  <charm id="Abyssal.ElegantFlowingDeflection" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per 2 dice"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="170"/>
+  </charm>
+  <charm id="Abyssal.VengefulRiposte" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="2"/>
+      <essence value="1"/>
+      <charmReference id="Abyssal.ElegantFlowingDeflection"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="170"/>
+  </charm>
+  <charm id="Abyssal.FlutheringMothDefense" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.ElegantFlowingDeflection"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="171"/>
+  </charm>
+  <charm id="Abyssal.CorrossiveParry" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.VengefulRiposte"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="" text="Weapon damage + 1 mote"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="171"/>
+  </charm>
+  <charm id="Abyssal.IncomparableSentinelStance" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.HundredRazorCircle"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="171"/>
+  </charm>
+  <charm id="Abyssal.HundredRazorCircle" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.FlutheringMothDefense"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One turn"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="171"/>
+  </charm>
+  <charm id="Abyssal.Attunment-ShatteringBlock" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.CorrossiveParry"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="171"/>
+  </charm>
+  <charm id="Abyssal.EyeTempest" exalt="Abyssal" group="Melee">
+    <prerequisite>
+      <trait id="Melee" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.HundredRazorCircle"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="171"/>
+  </charm>
+  <charm id="Abyssal.HungryMissileTechnique" exalt="Abyssal" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per die"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="172"/>
+  </charm>
+  <charm id="Abyssal.IncomparableAssassinMethod" exalt="Abyssal" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.HungryMissileTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="172"/>
+  </charm>
+  <charm id="Abyssal.LightningClutchRaptor" exalt="Abyssal" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.HungryMissileTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="(4 against area attacks)"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="172"/>
+  </charm>
+  <charm id="Abyssal.AidIllWind" exalt="Abyssal" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2+"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="173"/>
+  </charm>
+  <charm id="Abyssal.IvorySpineAttack" exalt="Abyssal" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.AidIllWind"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per needle"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="173"/>
+  </charm>
+  <charm id="Abyssal.PitilessScythingRazor" exalt="Abyssal" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.IncomparableAssassinMethod"/>
+      <charmReference id="Abyssal.AidIllWind"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="7"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="ExtraAction"/>
+    <source source="The Abyssals" page="173"/>
+  </charm>
+  <charm id="Abyssal.ThousandNeedleTorrent" exalt="Abyssal" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.IvorySpineAttack"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="12"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="173"/>
+  </charm>
+  <charm id="Abyssal.BurrowingBoneMaggot" exalt="Abyssal" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.IvorySpineAttack"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Varies"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="173"/>
+  </charm>
+  <charm id="Abyssal.Ox-BodyTechnique" exalt="Abyssal" group="Endurance">
+    <prerequisite>
+      <trait id="Endurance" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="None"/>
+      </temporary>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Special"/>
+    <source source="The Abyssals" page="174"/>
+  </charm>
+  <charm id="Abyssal.GhostArmorPrana" exalt="Abyssal" group="Endurance">
+    <prerequisite>
+      <trait id="Endurance" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3" text="per point"/>
+      </temporary>
+    </cost>
+    <duration duration="One hour"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="174"/>
+  </charm>
+  <charm id="Abyssal.RaveningCrimsonChakram" exalt="Abyssal" group="Thrown">
+    <prerequisite>
+      <trait id="Thrown" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.PitilessScythingRazor"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="ExtraAction"/>
+    <source source="The Abyssals" page="174"/>
+  </charm>
+  <charm id="Abyssal.Pain-EatingFocus" exalt="Abyssal" group="Endurance">
+    <prerequisite>
+      <trait id="Endurance" value="1"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="175"/>
+  </charm>
+  <charm id="Abyssal.InsensibleCorpseTechniqueTemporary" exalt="Abyssal" group="Endurance">
+    <prerequisite>
+      <trait id="Endurance" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Pain-EatingFocus"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per -1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="175"/>
+  </charm>
+  <charm id="Abyssal.InsensibleCorpseTechniquePermanent" exalt="Abyssal" group="Endurance">
+    <prerequisite>
+      <trait id="Endurance" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Pain-EatingFocus"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="None"/>
+      </temporary>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Special"/>
+    <source source="The Abyssals" page="175"/>
+  </charm>
+  <charm id="Abyssal.TirelessSentinelTechnique" exalt="Abyssal" group="Endurance">
+    <prerequisite>
+      <trait id="Endurance" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.GhostArmorPrana"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="175"/>
+  </charm>
+  <charm id="Abyssal.RelentlessRevenantSpirit" exalt="Abyssal" group="Endurance">
+    <prerequisite>
+      <trait id="Endurance" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.TirelessSentinelTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="None"/>
+      </temporary>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Special"/>
+    <source source="The Abyssals" page="175"/>
+  </charm>
+  <charm id="Abyssal.Agony-SavoringSpirit" exalt="Abyssal" group="Endurance">
+    <prerequisite>
+      <trait id="Endurance" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Pain-EatingFocus"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="None"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="176"/>
+  </charm>
+  <charm id="Abyssal.HauntingInflectionTechnique" exalt="Abyssal" group="Performance">
+    <prerequisite>
+      <trait id="Performance" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per 2 dice"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="176"/>
+  </charm>
+  <charm id="Abyssal.WitheringDirge" exalt="Abyssal" group="Performance">
+    <prerequisite>
+      <trait id="Performance" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.HauntingInflectionTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2" text="per 1L damage"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="176"/>
+  </charm>
+  <charm id="Abyssal.MorbidFascinationStyle" exalt="Abyssal" group="Performance">
+    <prerequisite>
+      <trait id="Performance" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="177"/>
+  </charm>
+  <charm id="Abyssal.ElegyforFallen" exalt="Abyssal" group="Performance">
+    <prerequisite>
+      <trait id="Performance" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.HauntingInflectionTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Special"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="177"/>
+  </charm>
+  <charm id="Abyssal.Heart-SculptingOration" exalt="Abyssal" group="Performance">
+    <prerequisite>
+      <trait id="Performance" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.HauntingInflectionTechnique"/>
+      <charmReference id="Abyssal.MorbidFascinationStyle"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="177"/>
+  </charm>
+  <charm id="Abyssal.LamentingGhostTechnique" exalt="Abyssal" group="Performance">
+    <prerequisite>
+      <trait id="Performance" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.WitheringDirge"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per 1L damage"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="177"/>
+  </charm>
+  <charm id="Abyssal.HardenedKillerTrainingStyle" exalt="Abyssal" group="Performance">
+    <prerequisite>
+      <trait id="Performance" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.Morale-ShatteringMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One week"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="178"/>
+  </charm>
+  <charm id="Abyssal.Morale-ShatteringMethod" exalt="Abyssal" group="Performance">
+    <prerequisite>
+      <trait id="Performance" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.WitheringDirge"/>
+      <charmReference id="Abyssal.Heart-SculptingOration"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="178"/>
+  </charm>
+  <charm id="Abyssal.ElegantTyrant'sMajesty" exalt="Abyssal" group="Presence">
+    <prerequisite>
+      <trait id="Presence" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+      </temporary>
+    </cost>
+    <duration duration="One hour"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="179"/>
+  </charm>
+  <charm id="Abyssal.CommandDead" exalt="Abyssal" group="Presence">
+    <prerequisite>
+      <trait id="Presence" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.ElegantTyrant'sMajesty"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5/10" text="+ 1/3 motes per target"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="179"/>
+  </charm>
+  <charm id="Abyssal.SkeletonSummoningGesture" exalt="Abyssal" group="Presence">
+    <prerequisite>
+      <trait id="Presence" value="3"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.CommandDead"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="179"/>
+  </charm>
+  <charm id="Abyssal.Soul-FlayingGaze" exalt="Abyssal" group="Presence">
+    <prerequisite>
+      <trait id="Presence" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.ElegantTyrant'sMajesty"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One turn"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="180"/>
+  </charm>
+  <charm id="Abyssal.Heart-StoppingMien" exalt="Abyssal" group="Presence">
+    <prerequisite>
+      <trait id="Presence" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.Soul-FlayingGaze"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="180"/>
+  </charm>
+  <charm id="Abyssal.CompellingWhisperTechnique" exalt="Abyssal" group="Presence">
+    <prerequisite>
+      <trait id="Presence" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.Soul-FlayingGaze"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Special"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="180"/>
+  </charm>
+  <charm id="Abyssal.IrresistibleSuccubusStyle" exalt="Abyssal" group="Presence">
+    <prerequisite>
+      <trait id="Presence" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.ElegantTyrant'sMajesty"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="180"/>
+  </charm>
+  <charm id="Abyssal.Spirit-HardenedFrame" exalt="Abyssal" group="Resistance">
+    <prerequisite>
+      <trait id="Resistance" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2+"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="181"/>
+  </charm>
+  <charm id="Abyssal.IvoryBlossomCarapace" exalt="Abyssal" group="Resistance">
+    <prerequisite>
+      <trait id="Resistance" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Spirit-HardenedFrame"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per 1B/1L"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="181"/>
+  </charm>
+  <charm id="Abyssal.PlagueKnowsItsMaster" exalt="Abyssal" group="Resistance">
+    <prerequisite>
+      <trait id="Resistance" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Spirit-HardenedFrame"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="None"/>
+      </temporary>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Special"/>
+    <source source="The Abyssals" page="182"/>
+  </charm>
+  <charm id="Abyssal.BoneArsenalMethod" exalt="Abyssal" group="Resistance">
+    <prerequisite>
+      <trait id="Resistance" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.IvoryBlossomCarapace"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="Varies"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="182"/>
+  </charm>
+  <charm id="Abyssal.FlowingWoundDefense" exalt="Abyssal" group="Resistance">
+    <prerequisite>
+      <trait id="Resistance" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.CrimsonPetalArmor"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="182"/>
+  </charm>
+  <charm id="Abyssal.CrimsonPetalArmor" exalt="Abyssal" group="Resistance">
+    <prerequisite>
+      <trait id="Resistance" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.IvoryBlossomCarapace"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per 1B/1L"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="182"/>
+  </charm>
+  <charm id="Abyssal.Armor-CallingKata" exalt="Abyssal" group="Resistance">
+    <prerequisite>
+      <trait id="Resistance" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One turn"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="183"/>
+  </charm>
+  <charm id="Abyssal.SnakeBitesItsTail" exalt="Abyssal" group="Resistance">
+    <prerequisite>
+      <trait id="Resistance" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Spirit-HardenedFrame"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="183"/>
+  </charm>
+  <charm id="Abyssal.ScarletVenomTechnique" exalt="Abyssal" group="Resistance">
+    <prerequisite>
+      <trait id="Resistance" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.SnakeBitesItsTail"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="None"/>
+      </temporary>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Special"/>
+    <source source="The Abyssals" page="183"/>
+  </charm>
+  <charm id="Abyssal.Void-BanishedMail" exalt="Abyssal" group="Resistance">
+    <prerequisite>
+      <trait id="Resistance" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.Armor-CallingKata"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3" text="to summon or banish"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="183"/>
+  </charm>
+  <charm id="Abyssal.InauspiciousShadowPlate" exalt="Abyssal" group="Resistance">
+    <prerequisite>
+      <trait id="Resistance" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.Void-BanishedMail"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="184"/>
+  </charm>
+  <charm id="Abyssal.EssenceEngorgementTechnique" exalt="Abyssal" group="Survival">
+    <prerequisite>
+      <trait id="Survival" value="1"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="None"/>
+      </temporary>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Special"/>
+    <source source="The Abyssals" page="184"/>
+  </charm>
+  <charm id="Abyssal.SuperiorPredatorStyle" exalt="Abyssal" group="Survival">
+    <prerequisite>
+      <trait id="Survival" value="1"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="184"/>
+  </charm>
+  <charm id="Abyssal.BloodFeastingTechnique" exalt="Abyssal" group="Survival">
+    <prerequisite>
+      <trait id="Survival" value="2"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.EssenceEngorgementTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="None"/>
+      </temporary>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Special"/>
+    <source source="The Abyssals" page="184"/>
+  </charm>
+  <charm id="Abyssal.FetterBeast" exalt="Abyssal" group="Survival">
+    <prerequisite>
+      <trait id="Survival" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.SuperiorPredatorStyle"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="185"/>
+  </charm>
+  <charm id="Abyssal.EnduringHuntsmanMethod" exalt="Abyssal" group="Survival">
+    <prerequisite>
+      <trait id="Survival" value="3"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="186"/>
+  </charm>
+  <charm id="Abyssal.HunterBecomesPrey" exalt="Abyssal" group="Survival">
+    <prerequisite>
+      <trait id="Survival" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.SuperiorPredatorStyle"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="None"/>
+      </temporary>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Special"/>
+    <source source="The Abyssals" page="186"/>
+  </charm>
+  <charm id="Abyssal.UnderworldForagingTechnique" exalt="Abyssal" group="Survival">
+    <prerequisite>
+      <trait id="Survival" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.EnduringHuntsmanMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One hour"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="186"/>
+  </charm>
+  <charm id="Abyssal.ShelteringIntermentPrana" exalt="Abyssal" group="Survival">
+    <prerequisite>
+      <trait id="Survival" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.EnduringHuntsmanMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3" text="per hour"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Until released"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="186"/>
+  </charm>
+  <charm id="Abyssal.WoodWitheringMethod" exalt="Abyssal" group="Craft">
+    <prerequisite>
+      <trait id="Craft" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Fault-FindingScrutiny"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="187"/>
+  </charm>
+  <charm id="Abyssal.MetalWitheringMethod" exalt="Abyssal" group="Craft">
+    <prerequisite>
+      <trait id="Craft" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Fault-FindingScrutiny"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="187"/>
+  </charm>
+  <charm id="Abyssal.StoneWitheringMethod" exalt="Abyssal" group="Craft">
+    <prerequisite>
+      <trait id="Craft" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Fault-FindingScrutiny"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="187"/>
+  </charm>
+  <charm id="Abyssal.Fault-FindingScrutiny" exalt="Abyssal" group="Craft">
+    <prerequisite>
+      <trait id="Craft" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="187"/>
+  </charm>
+  <charm id="Abyssal.Maze-UnravelingConcentration" exalt="Abyssal" group="Survival">
+    <prerequisite>
+      <trait id="Survival" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.EnduringHuntsmanMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="187"/>
+  </charm>
+  <charm id="Abyssal.InfallibleBarghestMien" exalt="Abyssal" group="Survival">
+    <prerequisite>
+      <trait id="Survival" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.EnduringHuntsmanMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per die"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Until released"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="187"/>
+  </charm>
+  <charm id="Abyssal.GhostLeavesNoTrail" exalt="Abyssal" group="Survival">
+    <prerequisite>
+      <trait id="Survival" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.InfallibleBarghestMien"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5+"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="187"/>
+  </charm>
+  <charm id="Abyssal.DecayResistancePreparation" exalt="Abyssal" group="Craft">
+    <prerequisite>
+      <trait id="Craft" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Fault-FindingScrutiny"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="188"/>
+  </charm>
+  <charm id="Abyssal.Form-RestoringTouch" exalt="Abyssal" group="Craft">
+    <prerequisite>
+      <trait id="Craft" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.DecayResistancePreparation"/>
+      <charmReference id="Abyssal.WoodWitheringMethod"/>
+      <charmReference id="Abyssal.MetalWitheringMethod"/>
+      <charmReference id="Abyssal.StoneWitheringMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="188"/>
+  </charm>
+  <charm id="Abyssal.BoneCraftTechnique" exalt="Abyssal" group="Craft">
+    <prerequisite>
+      <trait id="Medicine" value="2"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Flesh-MendingDiscipline"/>
+      <charmReference id="Abyssal.DecayResistancePreparation"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="188"/>
+  </charm>
+  <charm id="Abyssal.ExcellentInquisitorAttitude" exalt="Abyssal" group="Investigation">
+    <prerequisite>
+      <trait id="Investigation" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per die"/>
+      </temporary>
+    </cost>
+    <duration duration="Until relaxed"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="189"/>
+  </charm>
+  <charm id="Abyssal.Deception-PiercingStare" exalt="Abyssal" group="Investigation">
+    <prerequisite>
+      <trait id="Investigation" value="2"/>
+      <essence value="1"/>
+      <charmReference id="Abyssal.ExcellentInquisitorAttitude"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="189"/>
+  </charm>
+  <charm id="Abyssal.UnsurpassedInterrogationMethod" exalt="Abyssal" group="Investigation">
+    <prerequisite>
+      <trait id="Investigation" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Deception-PiercingStare"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="189"/>
+  </charm>
+  <charm id="Abyssal.CunningScrutinyStyle" exalt="Abyssal" group="Investigation">
+    <prerequisite>
+      <trait id="Investigation" value="3"/>
+      <essence value="1"/>
+      <charmReference id="Abyssal.ExcellentInquisitorAttitude"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="190"/>
+  </charm>
+  <charm id="Abyssal.LingeringEchoMeditation" exalt="Abyssal" group="Investigation">
+    <prerequisite>
+      <trait id="Investigation" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.CorpseQuestionningTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="190"/>
+  </charm>
+  <charm id="Abyssal.CorpseQuestionningTechnique" exalt="Abyssal" group="Investigation">
+    <prerequisite>
+      <trait id="Investigation" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.UnsurpassedInterrogationMethod"/>
+      <charmReference id="Abyssal.CunningScrutinyStyle"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="190"/>
+  </charm>
+  <charm id="Abyssal.IncomparableAgonyTechnique" exalt="Abyssal" group="Investigation">
+    <prerequisite>
+      <trait id="Investigation" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.UnsurpassedInterrogationMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="190"/>
+  </charm>
+  <charm id="Abyssal.CryptBolt" exalt="Abyssal" group="Lore">
+    <prerequisite>
+      <trait id="Lore" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per 2L damage"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="191"/>
+  </charm>
+  <charm id="Abyssal.Essence-ScatteringBlast" exalt="Abyssal" group="Lore">
+    <prerequisite>
+      <trait id="Lore" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.CryptBolt"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1+"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="191"/>
+  </charm>
+  <charm id="Abyssal.WyldShieldMeditation" exalt="Abyssal" group="Lore">
+    <prerequisite>
+      <trait id="Lore" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.CryptBolt"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Special"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="192"/>
+  </charm>
+  <charm id="Abyssal.RadiantBlightTechnique" exalt="Abyssal" group="Lore">
+    <prerequisite>
+      <trait id="Lore" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.CryptBolt"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="192"/>
+  </charm>
+  <charm id="Abyssal.Breath-DrainingPrana" exalt="Abyssal" group="Lore">
+    <prerequisite>
+      <trait id="Lore" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Essence-ScatteringBlast"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite/Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="192"/>
+  </charm>
+  <charm id="Abyssal.Chaos-SearingTechnique" exalt="Abyssal" group="Lore">
+    <prerequisite>
+      <trait id="Lore" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.WyldShieldMeditation"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="193"/>
+  </charm>
+  <charm id="Abyssal.Wyld-SlayingBurst" exalt="Abyssal" group="Lore">
+    <prerequisite>
+      <trait id="Lore" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.Chaos-SearingTechnique"/>
+      <charmReference id="Abyssal.RadiantBlightTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="30"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="193"/>
+  </charm>
+  <charm id="Abyssal.InfallibleAilmentSense" exalt="Abyssal" group="Medicine">
+    <prerequisite>
+      <trait id="Medicine" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Five minutes"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="193"/>
+  </charm>
+  <charm id="Abyssal.ContaminationBody" exalt="Abyssal" group="Medicine">
+    <prerequisite>
+      <trait id="Medicine" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.InfallibleAilmentSense"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="193"/>
+  </charm>
+  <charm id="Abyssal.ContaminationSpirit" exalt="Abyssal" group="Medicine">
+    <prerequisite>
+      <trait id="Medicine" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.InfallibleAilmentSense"/>
+      <charmReference id="Abyssal.ContaminationBody"/>
+      <charmReference id="Abyssal.ContaminationMind"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="193"/>
+  </charm>
+  <charm id="Abyssal.ContaminationMind" exalt="Abyssal" group="Medicine">
+    <prerequisite>
+      <trait id="Medicine" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.InfallibleAilmentSense"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="193"/>
+  </charm>
+  <charm id="Abyssal.TaintExtractionTechnique" exalt="Abyssal" group="Medicine">
+    <prerequisite>
+      <trait id="Medicine" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.ContaminationBody"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="194"/>
+  </charm>
+  <charm id="Abyssal.RampantPestilenceMethod" exalt="Abyssal" group="Medicine">
+    <prerequisite>
+      <trait id="Medicine" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.ContaminationBody"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="20"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="194"/>
+  </charm>
+  <charm id="Abyssal.UnsurpassedPlagueKiss" exalt="Abyssal" group="Medicine">
+    <prerequisite>
+      <trait id="Medicine" value="5"/>
+      <essence value="4"/>
+      <charmReference id="Abyssal.TaintExtractionTechnique"/>
+      <charmReference id="Abyssal.RampantPestilenceMethod"/>
+      <charmReference id="Abyssal.ContaminationSpirit"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="15"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="194"/>
+  </charm>
+  <charm id="Abyssal.Flesh-MendingDiscipline" exalt="Abyssal" group="Medicine">
+    <prerequisite>
+      <trait id="Medicine" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="195"/>
+  </charm>
+  <charm id="Abyssal.TouchGentleRepose" exalt="Abyssal" group="Medicine">
+    <prerequisite>
+      <trait id="Medicine" value="2"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Flesh-MendingDiscipline"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="195"/>
+  </charm>
+  <charm id="Abyssal.BloodMasteryTechnique" exalt="Abyssal" group="Medicine">
+    <prerequisite>
+      <trait id="Medicine" value="1"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Flesh-MendingDiscipline"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="None"/>
+      </temporary>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Special"/>
+    <source source="The Abyssals" page="196"/>
+  </charm>
+  <charm id="Abyssal.CrimsonWaterfallAttack" exalt="Abyssal" group="Medicine">
+    <prerequisite>
+      <trait id="Medicine" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.BloodMasteryTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <combo allAbilities="true"/>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="196"/>
+  </charm>
+  <charm id="Abyssal.Wound-AbsorbingMethod" exalt="Abyssal" group="Medicine">
+    <prerequisite>
+      <trait id="Medicine" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.TouchGentleRepose"/>
+      <charmReference id="Abyssal.BloodMasteryTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2" text="per health level"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="196"/>
+  </charm>
+  <charm id="Abyssal.WinterStrikesForest" exalt="Abyssal" group="Medicine">
+    <prerequisite>
+      <trait id="Medicine" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.CrimsonWaterfallAttack"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+      </temporary>
+    </cost>
+    <combo allAbilities="true"/>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="196"/>
+  </charm>
+  <charm id="Abyssal.FivefoldWound-AbsorbingMethod" exalt="Abyssal" group="Medicine">
+    <prerequisite>
+      <trait id="Medicine" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.Wound-AbsorbingMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4" text="per health level"/>
+        <willpower cost="1" text="per health level"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="196"/>
+  </charm>
+  <charm id="Abyssal.TerrestrialCircleSorcery" exalt="Abyssal" group="Occult">
+    <prerequisite>
+      <trait id="Occult" value="3"/>
+      <essence value="3"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="Spell's" text="essence cost"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <combo comboable="false"/>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="197"/>
+  </charm>
+  <charm id="Abyssal.ShadowlandsCircleNecromancy" exalt="Abyssal" group="Occult">
+    <prerequisite>
+      <trait id="Occult" value="3"/>
+      <essence value="3"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="Spell's" text="essence cost"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <combo comboable="false"/>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="197"/>
+  </charm>
+  <charm id="Abyssal.CelestialCircleSorcery" exalt="Abyssal" group="Occult">
+    <prerequisite>
+      <trait id="Occult" value="4"/>
+      <essence value="4"/>
+      <charmReference id="Abyssal.TerrestrialCircleSorcery"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="Spell's" text="essence cost"/>
+        <willpower cost="2"/>
+      </temporary>
+    </cost>
+    <combo comboable="false"/>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="197"/>
+  </charm>
+  <charm id="Abyssal.SpiritSensingTechnique" exalt="Abyssal" group="Occult">
+    <prerequisite>
+      <trait id="Occult" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="198"/>
+  </charm>
+  <charm id="Abyssal.LabyrinthCircleNecromancy" exalt="Abyssal" group="Occult">
+    <prerequisite>
+      <trait id="Occult" value="4"/>
+      <essence value="4"/>
+      <charmReference id="Abyssal.ShadowlandsCircleNecromancy"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="Spell's" text="essence cost"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <combo comboable="false"/>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="198"/>
+  </charm>
+  <charm id="Abyssal.VoidCircleNecromancy" exalt="Abyssal" group="Occult">
+    <prerequisite>
+      <trait id="Occult" value="5"/>
+      <essence value="5"/>
+      <charmReference id="Abyssal.LabyrinthCircleNecromancy"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="Spell's" text="essence cost"/>
+        <willpower cost="3"/>
+      </temporary>
+    </cost>
+    <combo comboable="false"/>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="198"/>
+  </charm>
+  <charm id="Abyssal.Corpus-RendingBlow" exalt="Abyssal" group="Occult">
+    <prerequisite>
+      <trait id="Occult" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.SpiritSensingTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <combo allAbilities="true"/>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="199"/>
+  </charm>
+  <charm id="Abyssal.ThroughDeadEyes" exalt="Abyssal" group="Occult">
+    <prerequisite>
+      <trait id="Occult" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.SpiritSensingTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="199"/>
+  </charm>
+  <charm id="Abyssal.Soul-EatingStrike" exalt="Abyssal" group="Occult">
+    <prerequisite>
+      <trait id="Occult" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.Corpus-RendingBlow"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <combo allAbilities="true"/>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="199"/>
+  </charm>
+  <charm id="Abyssal.Raiton'sNimblePerch" exalt="Abyssal" group="Athletics">
+    <prerequisite>
+      <trait id="Athletics" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="200"/>
+  </charm>
+  <charm id="Abyssal.SpiderPounceTechnique" exalt="Abyssal" group="Athletics">
+    <prerequisite>
+      <trait id="Athletics" value="2"/>
+      <essence value="1"/>
+      <charmReference id="Abyssal.Raiton'sNimblePerch"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="200"/>
+  </charm>
+  <charm id="Abyssal.Spirit-DrainingWard" exalt="Abyssal" group="Occult">
+    <prerequisite>
+      <trait id="Occult" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.Soul-EatingStrike"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="200"/>
+  </charm>
+  <charm id="Abyssal.FallingScytheAttack" exalt="Abyssal" group="Athletics">
+    <prerequisite>
+      <trait id="Athletics" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.SpiderPounceTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <combo allAbilities="true"/>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="201"/>
+  </charm>
+  <charm id="Abyssal.AutumnLeaf'sDescent" exalt="Abyssal" group="Athletics">
+    <prerequisite>
+      <trait id="Athletics" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.SpiderPounceTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="201"/>
+  </charm>
+  <charm id="Abyssal.SoaringRaptorPrana" exalt="Abyssal" group="Athletics">
+    <prerequisite>
+      <trait id="Athletics" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.FallingScytheAttack"/>
+      <charmReference id="Abyssal.AutumnLeaf'sDescent"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Special"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="201"/>
+  </charm>
+  <charm id="Abyssal.ShadowRacesLight" exalt="Abyssal" group="Athletics">
+    <prerequisite>
+      <trait id="Athletics" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Raiton'sNimblePerch"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2+"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="202"/>
+  </charm>
+  <charm id="Abyssal.FlickeringImageStrike" exalt="Abyssal" group="Athletics">
+    <prerequisite>
+      <trait id="Athletics" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.ShadowRacesLight"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <combo allAbilities="true"/>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="202"/>
+  </charm>
+  <charm id="Abyssal.CrouchingGargoyleStance" exalt="Abyssal" group="Athletics">
+    <prerequisite>
+      <trait id="Athletics" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.ShadowRacesLight"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Special"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="202"/>
+  </charm>
+  <charm id="Abyssal.MistOverIce" exalt="Abyssal" group="Athletics">
+    <prerequisite>
+      <trait id="Athletics" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.ShadowRacesLight"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Special"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="202"/>
+  </charm>
+  <charm id="Abyssal.InfirmityInflictingGesture" exalt="Abyssal" group="Athletics">
+    <prerequisite>
+      <trait id="Athletics" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.EnhancedStrengthDiscipline"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3" text="per dot"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="203"/>
+  </charm>
+  <charm id="Abyssal.EnhancedStrengthDiscipline" exalt="Abyssal" group="Athletics">
+    <prerequisite>
+      <trait id="Athletics" value="4"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="203"/>
+  </charm>
+  <charm id="Abyssal.EnhancedDexterityDiscipline" exalt="Abyssal" group="Athletics">
+    <prerequisite>
+      <trait id="Athletics" value="4"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="203"/>
+  </charm>
+  <charm id="Abyssal.StrengthStealingTechnique" exalt="Abyssal" group="Athletics">
+    <prerequisite>
+      <trait id="Athletics" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.InfirmityInflictingGesture"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4" text="per dot"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="204"/>
+  </charm>
+  <charm id="Abyssal.FivefoldSensoryExercise" exalt="Abyssal" group="Awareness">
+    <prerequisite>
+      <trait id="Awareness" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="204"/>
+  </charm>
+  <charm id="Abyssal.Sense-ErodingGesture" exalt="Abyssal" group="Awareness">
+    <prerequisite>
+      <trait id="Awareness" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.FivefoldSensoryExercise"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2" text="per dot"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="204"/>
+  </charm>
+  <charm id="Abyssal.SuperiorSightTechnique" exalt="Abyssal" group="Awareness">
+    <prerequisite>
+      <trait id="Awareness" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.FivefoldSensoryExercise"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="205"/>
+  </charm>
+  <charm id="Abyssal.OwlEyesTreatment" exalt="Abyssal" group="Awareness">
+    <prerequisite>
+      <trait id="Awareness" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.SuperiorSightTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="Special"/>
+      </temporary>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Special"/>
+    <source source="The Abyssals" page="205"/>
+  </charm>
+  <charm id="Abyssal.SuperiorSmell&amp;TasteTechnique" exalt="Abyssal" group="Awareness">
+    <prerequisite>
+      <trait id="Awareness" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.FivefoldSensoryExercise"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="205"/>
+  </charm>
+  <charm id="Abyssal.SuperiorHearing&amp;TouchTechnique" exalt="Abyssal" group="Awareness">
+    <prerequisite>
+      <trait id="Awareness" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.FivefoldSensoryExercise"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="205"/>
+  </charm>
+  <charm id="Abyssal.OminousPortentMethod" exalt="Abyssal" group="Awareness">
+    <prerequisite>
+      <trait id="Awareness" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.FivefoldSensoryExercise"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="None"/>
+      </temporary>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Special"/>
+    <source source="The Abyssals" page="205"/>
+  </charm>
+  <charm id="Abyssal.IncomparableHearing&amp;TouchTechnique" exalt="Abyssal" group="Awareness">
+    <prerequisite>
+      <trait id="Awareness" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.SuperiorHearing&amp;TouchTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="205"/>
+  </charm>
+  <charm id="Abyssal.IncomparableSightTechnique" exalt="Abyssal" group="Awareness">
+    <prerequisite>
+      <trait id="Awareness" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.SuperiorSightTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="205"/>
+  </charm>
+  <charm id="Abyssal.IncomparableSmell&amp;TasteTechnique" exalt="Abyssal" group="Awareness">
+    <prerequisite>
+      <trait id="Awareness" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.SuperiorSmell&amp;TasteTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="205"/>
+  </charm>
+  <charm id="Abyssal.FlittingShadowTechnique" exalt="Abyssal" group="Dodge">
+    <prerequisite>
+      <trait id="Dodge" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per 2 dice"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="206"/>
+  </charm>
+  <charm id="Abyssal.UncannyImpulseEvasion" exalt="Abyssal" group="Dodge">
+    <prerequisite>
+      <trait id="Dodge" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.FlittingShadowTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="206"/>
+  </charm>
+  <charm id="Abyssal.FivefoldShadowForm" exalt="Abyssal" group="Dodge">
+    <prerequisite>
+      <trait id="Dodge" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.FlittingShadowTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="206"/>
+  </charm>
+  <charm id="Abyssal.FlickeringWispTechnique" exalt="Abyssal" group="Dodge">
+    <prerequisite>
+      <trait id="Dodge" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.FivefoldShadowForm"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="206"/>
+  </charm>
+  <charm id="Abyssal.FlowingEvasionTechnique" exalt="Abyssal" group="Dodge">
+    <prerequisite>
+      <trait id="Dodge" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.FlickeringWispTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="206"/>
+  </charm>
+  <charm id="Abyssal.IncomparablePhantomForm" exalt="Abyssal" group="Dodge">
+    <prerequisite>
+      <trait id="Dodge" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.UncannyImpulseEvasion"/>
+      <charmReference id="Abyssal.FlickeringWispTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="207"/>
+  </charm>
+  <charm id="Abyssal.TheftFace" exalt="Abyssal" group="Larceny">
+    <prerequisite>
+      <trait id="Larceny" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One hour"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="207"/>
+  </charm>
+  <charm id="Abyssal.TheftMien" exalt="Abyssal" group="Larceny">
+    <prerequisite>
+      <trait id="Larceny" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.TheftFace"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One hour"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="207"/>
+  </charm>
+  <charm id="Abyssal.FlawlessDopplegangerDisguise" exalt="Abyssal" group="Larceny">
+    <prerequisite>
+      <trait id="Larceny" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.TheftMien"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="15"/>
+        <willpower cost="1"/>
+      </temporary>
+      <permanent>
+        <experience cost="1"/>
+      </permanent>
+    </cost>
+    <duration duration="Until released"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="207"/>
+  </charm>
+  <charm id="Abyssal.CunningCriminalStyle" exalt="Abyssal" group="Larceny">
+    <prerequisite>
+      <trait id="Larceny" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="208"/>
+  </charm>
+  <charm id="Abyssal.SolarImpersonationStyle" exalt="Abyssal" group="Larceny">
+    <prerequisite>
+      <trait id="Larceny" value="5"/>
+      <essence value="4"/>
+      <charmReference id="Abyssal.FlawlessDopplegangerDisguise"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="15"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="208"/>
+  </charm>
+  <charm id="Abyssal.Lock-WeatheringTouch" exalt="Abyssal" group="Larceny">
+    <prerequisite>
+      <trait id="Larceny" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.CunningCriminalStyle"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="209"/>
+  </charm>
+  <charm id="Abyssal.Evidence-ErasingMethod" exalt="Abyssal" group="Larceny">
+    <prerequisite>
+      <trait id="Larceny" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.CunningCriminalStyle"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="209"/>
+  </charm>
+  <charm id="Abyssal.ArtfulConjurationTrick" exalt="Abyssal" group="Larceny">
+    <prerequisite>
+      <trait id="Larceny" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Evidence-ErasingMethod"/>
+      <charmReference id="Abyssal.Lock-WeatheringTouch"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="209"/>
+  </charm>
+  <charm id="Abyssal.StrikingSnakeGrab" exalt="Abyssal" group="Larceny">
+    <prerequisite>
+      <trait id="Larceny" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.ArtfulConjurationTrick"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="209"/>
+  </charm>
+  <charm id="Abyssal.ConcealingDistractionDiscipline" exalt="Abyssal" group="Stealth">
+    <prerequisite>
+      <trait id="Stealth" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="210"/>
+  </charm>
+  <charm id="Abyssal.Encounter-BanishingGesture" exalt="Abyssal" group="Stealth">
+    <prerequisite>
+      <trait id="Stealth" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.ConcealingDistractionDiscipline"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3" text="per target"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="210"/>
+  </charm>
+  <charm id="Abyssal.SplinterinMind'sEye" exalt="Abyssal" group="Stealth">
+    <prerequisite>
+      <trait id="Stealth" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Encounter-BanishingGesture"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="210"/>
+  </charm>
+  <charm id="Abyssal.Authority-ErodingTechnique" exalt="Abyssal" group="Bureaucracy">
+    <prerequisite>
+      <trait id="Bureaucracy" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per die"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="211"/>
+  </charm>
+  <charm id="Abyssal.Argument-SlayingRemark" exalt="Abyssal" group="Bureaucracy">
+    <prerequisite>
+      <trait id="Bureaucracy" value="2"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Authority-ErodingTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="211"/>
+  </charm>
+  <charm id="Abyssal.NoiselessPhantomStyle" exalt="Abyssal" group="Stealth">
+    <prerequisite>
+      <trait id="Stealth" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.ConcealingDistractionDiscipline"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="(Stealth) minutes"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="211"/>
+  </charm>
+  <charm id="Abyssal.ShadowCloakTechnique" exalt="Abyssal" group="Stealth">
+    <prerequisite>
+      <trait id="Stealth" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.NoiselessPhantomStyle"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2" text="per die"/>
+      </temporary>
+    </cost>
+    <duration duration="Stealth in turns"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="211"/>
+  </charm>
+  <charm id="Abyssal.StifledCryExercise" exalt="Abyssal" group="Stealth">
+    <prerequisite>
+      <trait id="Stealth" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.NoiselessPhantomStyle"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One turn"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="211"/>
+  </charm>
+  <charm id="Abyssal.UnseenWispMethod" exalt="Abyssal" group="Stealth">
+    <prerequisite>
+      <trait id="Stealth" value="5"/>
+      <essence value="4"/>
+      <charmReference id="Abyssal.ConcealingDistractionDiscipline"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2" text="per turn"/>
+      </temporary>
+    </cost>
+    <duration duration="Varies"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="211"/>
+  </charm>
+  <charm id="Abyssal.Corruption-SensingScrutiny" exalt="Abyssal" group="Bureaucracy">
+    <prerequisite>
+      <trait id="Bureaucracy" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="212"/>
+  </charm>
+  <charm id="Abyssal.AlluringEloquenceMethod" exalt="Abyssal" group="Bureaucracy">
+    <prerequisite>
+      <trait id="Bureaucracy" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Argument-SlayingRemark"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="The Abyssals" page="212"/>
+  </charm>
+  <charm id="Abyssal.CunningSubversionStyle" exalt="Abyssal" group="Bureaucracy">
+    <prerequisite>
+      <trait id="Bureaucracy" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.Corruption-SensingScrutiny"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One week"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="212"/>
+  </charm>
+  <charm id="Abyssal.Regime-TopplingInsinuation" exalt="Abyssal" group="Bureaucracy">
+    <prerequisite>
+      <trait id="Bureaucracy" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.CunningSubversionStyle"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One week"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="213"/>
+  </charm>
+  <charm id="Abyssal.IronTyrantMien" exalt="Abyssal" group="Bureaucracy">
+    <prerequisite>
+      <trait id="Bureaucracy" value="5"/>
+      <essence value="4"/>
+      <charmReference id="Abyssal.AlluringEloquenceMethod"/>
+      <charmReference id="Abyssal.Regime-TopplingInsinuation"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="12"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One week"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="213"/>
+  </charm>
+  <charm id="Abyssal.LanguageAbsorbingMethod" exalt="Abyssal" group="Linguistics">
+    <prerequisite>
+      <trait id="Linguistics" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One week"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="213"/>
+  </charm>
+  <charm id="Abyssal.PeerlessFluencyStyle" exalt="Abyssal" group="Linguistics">
+    <prerequisite>
+      <trait id="Linguistics" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.LanguageAbsorbingMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per die"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="213"/>
+  </charm>
+  <charm id="Abyssal.TheftWords" exalt="Abyssal" group="Linguistics">
+    <prerequisite>
+      <trait id="Linguistics" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.LanguageAbsorbingMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2" text="+ 4 motes per language"/>
+      </temporary>
+    </cost>
+    <duration duration="One hour"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="214"/>
+  </charm>
+  <charm id="Abyssal.ConfusionTongues" exalt="Abyssal" group="Linguistics">
+    <prerequisite>
+      <trait id="Linguistics" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.TheftWords"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="214"/>
+  </charm>
+  <charm id="Abyssal.BloodInscriptionTechnique" exalt="Abyssal" group="Linguistics">
+    <prerequisite>
+      <trait id="Linguistics" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="215"/>
+  </charm>
+  <charm id="Abyssal.WordsBeneathaWhisper" exalt="Abyssal" group="Linguistics">
+    <prerequisite>
+      <trait id="Linguistics" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.TheftWords"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Until released"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="215"/>
+  </charm>
+  <charm id="Abyssal.Ghost-WardingGlyph" exalt="Abyssal" group="Linguistics">
+    <prerequisite>
+      <trait id="Linguistics" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Corpus-RendingBlow"/>
+      <charmReference id="Abyssal.BloodInscriptionTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="216"/>
+  </charm>
+  <charm id="Abyssal.Glyph-UnveilingMeditation" exalt="Abyssal" group="Linguistics">
+    <prerequisite>
+      <trait id="Linguistics" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.BloodInscriptionTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Until reading"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="216"/>
+  </charm>
+  <charm id="Abyssal.ScathingCynicAttitude" exalt="Abyssal" group="Linguistics">
+    <prerequisite>
+      <trait id="Linguistics" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.BloodInscriptionTechnique"/>
+      <charmReference id="Abyssal.PeerlessFluencyStyle"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="216"/>
+  </charm>
+  <charm id="Abyssal.SoulReins" exalt="Abyssal" group="Ride">
+    <prerequisite>
+      <trait id="Ride" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per point"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="216"/>
+  </charm>
+  <charm id="Abyssal.Mount-BreakingMethod" exalt="Abyssal" group="Ride">
+    <prerequisite>
+      <trait id="Ride" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.SoulReins"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="216"/>
+  </charm>
+  <charm id="Abyssal.TirelessChargerTechnique" exalt="Abyssal" group="Ride">
+    <prerequisite>
+      <trait id="Ride" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Mount-BreakingMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Varies"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="216"/>
+  </charm>
+  <charm id="Abyssal.ForcefulSpiritSpur" exalt="Abyssal" group="Ride">
+    <prerequisite>
+      <trait id="Ride" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.SoulReins"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="217"/>
+  </charm>
+  <charm id="Abyssal.SpectralSteed" exalt="Abyssal" group="Ride">
+    <prerequisite>
+      <trait id="Ride" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.ForcefulSpiritSpur"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="217"/>
+  </charm>
+  <charm id="Abyssal.Mount-SpookingShout" exalt="Abyssal" group="Ride">
+    <prerequisite>
+      <trait id="Ride" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.SoulReins"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="218"/>
+  </charm>
+  <charm id="Abyssal.FounderingFoalGesture" exalt="Abyssal" group="Ride">
+    <prerequisite>
+      <trait id="Ride" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.Mount-SpookingShout"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4" text="per animal"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="218"/>
+  </charm>
+  <charm id="Abyssal.MasterSailor'sMemory" exalt="Abyssal" group="Sail">
+    <prerequisite>
+      <trait id="Sail" value="2"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per dot"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="218"/>
+  </charm>
+  <charm id="Abyssal.PhantomSailTechnique" exalt="Abyssal" group="Sail">
+    <prerequisite>
+      <trait id="Sail" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.MasterSailor'sMemory"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="219"/>
+  </charm>
+  <charm id="Abyssal.GhostonDeck" exalt="Abyssal" group="Sail">
+    <prerequisite>
+      <trait id="Sail" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.MasterSailor'sMemory"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="219"/>
+  </charm>
+  <charm id="Abyssal.GhostWindPrana" exalt="Abyssal" group="Sail">
+    <prerequisite>
+      <trait id="Sail" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.PhantomSailTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="219"/>
+  </charm>
+  <charm id="Abyssal.CrewSustainingTechnique" exalt="Abyssal" group="Sail">
+    <prerequisite>
+      <trait id="Sail" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.GhostonDeck"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="Varies"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="219"/>
+  </charm>
+  <charm id="Abyssal.Wind-KillingStance" exalt="Abyssal" group="Sail">
+    <prerequisite>
+      <trait id="Sail" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.GhostonDeck"/>
+      <charmReference id="Abyssal.GhostWindPrana"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="20"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="219"/>
+  </charm>
+  <charm id="Abyssal.HullHardeningTechnique" exalt="Abyssal" group="Sail">
+    <prerequisite>
+      <trait id="Sail" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.GhostWindPrana"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per 1L of soak"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="220"/>
+  </charm>
+  <charm id="Abyssal.Hull-RestoringMeditation" exalt="Abyssal" group="Sail">
+    <prerequisite>
+      <trait id="Sail" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Abyssal.HullHardeningTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="Varies"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Special"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="220"/>
+  </charm>
+  <charm id="Abyssal.UnsinkableDerelictPreservation" exalt="Abyssal" group="Sail">
+    <prerequisite>
+      <trait id="Sail" value="5"/>
+      <essence value="4"/>
+      <charmReference id="Abyssal.Hull-RestoringMeditation"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="220"/>
+  </charm>
+  <charm id="Abyssal.ExquisiteEtiquetteStyle" exalt="Abyssal" group="Socialize">
+    <prerequisite>
+      <trait id="Socialize" value="3"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="220"/>
+  </charm>
+  <charm id="Abyssal.LoyaltyWitheringTechnique" exalt="Abyssal" group="Socialize">
+    <prerequisite>
+      <trait id="Socialize" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.ExquisiteEtiquetteStyle"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Varies"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="221"/>
+  </charm>
+  <charm id="Abyssal.ImprecationIllManners" exalt="Abyssal" group="Socialize">
+    <prerequisite>
+      <trait id="Socialize" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.ExquisiteEtiquetteStyle"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per die"/>
+      </temporary>
+    </cost>
+    <duration duration="One turn"/>
+    <charmtype type="Reflexive"/>
+    <source source="The Abyssals" page="221"/>
+  </charm>
+  <charm id="Abyssal.Heart-HardeningMethod" exalt="Abyssal" group="Socialize">
+    <prerequisite>
+      <trait id="Socialize" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.LoyaltyWitheringTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="221"/>
+  </charm>
+  <charm id="Abyssal.Sin-SensingMeditation" exalt="Abyssal" group="Socialize">
+    <prerequisite>
+      <trait id="Socialize" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.Heart-HardeningMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="222"/>
+  </charm>
+  <charm id="Abyssal.PassionUnveillingGlance" exalt="Abyssal" group="Socialize">
+    <prerequisite>
+      <trait id="Socialize" value="3"/>
+      <essence value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="222"/>
+  </charm>
+  <charm id="Abyssal.IntimationMortality" exalt="Abyssal" group="Socialize">
+    <prerequisite>
+      <trait id="Socialize" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Abyssal.PassionUnveillingGlance"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Simple"/>
+    <source source="The Abyssals" page="222"/>
+  </charm>
+  <alternatives>
+    <alternative>
+      <charmReference id="Abyssal.EnhancedDexterityDiscipline"/>
+      <charmReference id="Abyssal.EnhancedStrengthDiscipline"/>
+    </alternative>
+  </alternatives>
+</charmlist>
