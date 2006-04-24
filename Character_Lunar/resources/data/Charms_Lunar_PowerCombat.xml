@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<charmlist>
+  <charm id="Lunar.DeadlyBeastmanTransformation" exalt="Lunar" group="Shapechanging">
+    <prerequisite>
+      <trait id="Charisma" value="2"/>
+      <essence value="2"/>
+      <charmReference id="Lunar.FindingTheSpiritsShape"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <charmAttribute attribute="NotAlienLearnable"/>
+    <source source="Player's Guide" page="206"/>
+  </charm>
+  <charm id="Lunar.ClawsOfTheSilverMoon" exalt="Lunar" group="UnarmedCombat">
+    <prerequisite>
+      <trait id="Stamina" value="2"/>
+      <essence value="1"/>
+      <charmReference id="Lunar.DeadlyClawBlow"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="Player's Guide" page="209"/>
+  </charm>  
+  <charm id="Lunar.ScimitarClawTechnique" exalt="Lunar" group="UnarmedCombat">
+    <prerequisite>
+      <trait id="Manipulation" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Lunar.ClawsOfTheSilverMoon"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One Scene"/>
+    <charmtype type="Simple"/>
+    <source source="Player's Guide" page="207"/>
+  </charm>
+  <charm id="Lunar.SpineBreakingTechnique" exalt="Lunar" group="UnarmedCombat">
+    <prerequisite>
+      <trait id="Strength" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Lunar.BearEmbraceMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="plus 1 for each success"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <source source="Player's Guide" page="209"/>
+  </charm>  
+  <charm id="Lunar.Throat-BearingHold" exalt="Lunar" group="UnarmedCombat">
+    <prerequisite>
+      <trait id="Dexterity" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Lunar.MightyBearCrush"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5" text="per turn"/>
+      </temporary>
+    </cost>
+    <duration duration="Varies"/>
+    <charmtype type="Supplemental"/>
+	<source source="Player's Guide" page="207"/>
+  </charm>  
+  <charm id="Lunar.HyenaJawTechnique" exalt="Lunar" group="UnarmedCombat">
+    <prerequisite>
+      <trait id="Manipulation" value="2"/>
+      <essence value="3"/>
+      <charmReference id="Lunar.MightyBearCrush"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <source source="Player's Guide" page="207"/>
+  </charm>
+  <charm id="Lunar.CunningPorcupineDefense" exalt="Lunar" group="UnarmedCombat">
+    <prerequisite>
+      <trait id="Charisma" value="3"/>
+      <essence value="3"/>
+      <charmReference id="Lunar.BearEmbraceMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <source source="Player's Guide" page="206"/>
+  </charm>
+</charmlist>
