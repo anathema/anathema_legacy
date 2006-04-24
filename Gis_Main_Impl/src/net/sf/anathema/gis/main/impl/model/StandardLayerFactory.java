@@ -16,7 +16,7 @@ import de.disy.gis.gisterm.imagecatalog.layer.IImageCatalogLayerCreationStrategy
 import de.disy.gis.gisterm.imagecatalog.layer.IImageCatalogProperties;
 import de.disy.gis.gisterm.imagecatalog.layer.ImageCatalogLayerCreationStrategy;
 import de.disy.gis.gisterm.map.layer.edit.ILayerGraphicsEditStrategy;
-import de.disy.gis.gisterm.map.layer.sketch.SketchLayer;
+import de.disy.gis.gisterm.map.layer.sketch.AbstractSketchLayer;
 import de.disy.gis.gisterm.map.scale.IScaleRange;
 import de.disy.gis.gisterm.map.theme.ITheme;
 import de.disy.gis.gisterm.pro.map.layer.ILayerPopupFactoryExtension;
@@ -26,6 +26,11 @@ import de.disy.gisterm.pro.sketchlayer.edit.SketchLayerGraphicsEditStrategy;
 public class StandardLayerFactory implements IStandardLayerFactory {
   private final File repositoryFolder;
   private final ILayerPopupFactoryExtension rasterLayerPopupMenuFactory = new ILayerPopupFactoryExtension() {
+    public JPopupMenu createPopupMenu(ITheme theme, IMapLayerPopupMenuContext menuContext) {
+      return null;
+    }
+  };
+  private final ILayerPopupFactoryExtension sketchLayerPopupMenuFactory = new ILayerPopupFactoryExtension() {
     public JPopupMenu createPopupMenu(ITheme theme, IMapLayerPopupMenuContext menuContext) {
       return null;
     }
@@ -88,12 +93,20 @@ public class StandardLayerFactory implements IStandardLayerFactory {
   }
 
   public GenericLayer createSketchLayer() {
-    return new SketchLayer() {
+    AbstractSketchLayer sketchLayer = new AbstractSketchLayer() {
       @Override
-      protected void initEditStrategy() {
-        ILayerGraphicsEditStrategy editStrategy = new SketchLayerGraphicsEditStrategy(getGraphicsObjectList());
-        setGraphicsEditStrategy(editStrategy);
+      protected ILayerGraphicsEditStrategy createGraphicsEditStrategy() {
+        return new SketchLayerGraphicsEditStrategy(getGraphicsObjectList());
+      }
+
+      @Override
+      public void legendLayerChanged() {
+        if (getLayerPanel() != null) {
+          getLayerPanel().setPopupMenuFactory(sketchLayerPopupMenuFactory);
+        }
+        super.legendLayerChanged();
       }
     };
+    return sketchLayer;
   }
 }
