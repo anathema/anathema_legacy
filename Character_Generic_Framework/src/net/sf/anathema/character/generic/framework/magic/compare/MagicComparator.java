@@ -168,7 +168,9 @@ public class MagicComparator implements Comparator<IMagic> {
   }
 
   private int handleMartialArtsCharm(ICharm charm, ICharm otherCharm) throws PersistenceException {
-    ICharm[] martialArtsCharms = CharmCache.getInstance().getMartialArtsCharms(ExaltedRuleSet.CoreRules);
+    ICharm[] martialArtsCharms = CharmCache.getInstance().getCharms(
+        CharmCache.MARTIAL_ARTS_TYPE,
+        ExaltedRuleSet.CoreRules);
     return sortEqualTypeCharms(charm, otherCharm, martialArtsCharms);
   }
 }
