@@ -13,7 +13,7 @@ http://anathema.sf.net
 -- Miscellaneous --
 * Fixed an error in the Linux launcher.
 * Violet Bier of Sorrows' "Conclusion Pursuing Approach" is now attributed as "Prayer Strip".
-
+* Power Combat's "Glorious Solar Saber" now has a mote cost of 6.
 
 ===------------------------------------------------------------------------------===
 			Release 0.10 Patch 1 (26/03/06)
