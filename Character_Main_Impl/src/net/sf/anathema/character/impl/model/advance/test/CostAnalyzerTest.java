@@ -2,7 +2,6 @@ package net.sf.anathema.character.impl.model.advance.test;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.impl.magic.test.DummyCharm;
-import net.sf.anathema.character.generic.impl.magic.test.DummyMartialArtsCharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
@@ -48,7 +47,7 @@ public class CostAnalyzerTest extends BasicTestCase {
   }
 
   public void testGetMartialArtsLevelFromMartialArtsCharm() throws Exception {
-    assertEquals(MartialArtsLevel.Terrestrial, costAnalyzer.getMartialArtsLevel(new DummyMartialArtsCharm(CHARM_ID) {
+    assertEquals(MartialArtsLevel.Terrestrial, costAnalyzer.getMartialArtsLevel(new DummyCharm(CHARM_ID) {
       @Override
       public boolean hasAttribute(IIdentificate attribute) {
         return attribute.getId().equals("MartialArts") || attribute.getId().equals("Terrestrial"); //$NON-NLS-1$ //$NON-NLS-2$

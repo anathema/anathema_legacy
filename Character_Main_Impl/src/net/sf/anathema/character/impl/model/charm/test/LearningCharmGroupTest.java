@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.model.charm.test;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmLearnStrategy;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmGroup;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
-import net.sf.anathema.character.generic.impl.magic.test.DummyMartialArtsCharm;
+import net.sf.anathema.character.generic.impl.magic.test.DummyCharm;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
@@ -43,7 +43,7 @@ public class LearningCharmGroupTest extends BasicTestCase {
   }
 
   public void testIsLearnedCreationCharmOnCreation() throws Exception {
-    ICharm learnableCharm = new DummyMartialArtsCharm("learnableDummyCharm"); //$NON-NLS-1$
+    ICharm learnableCharm = new DummyCharm("learnableDummyCharm"); //$NON-NLS-1$
     ICharmLearnableArbitrator learnableArbitrator = new DummyLearnableArbitrator(
         new String[] { learnableCharm.getId() });
     LearningCharmGroup learningCharmGroup = createSolarMeleeGroup(learnableArbitrator);
@@ -54,7 +54,7 @@ public class LearningCharmGroupTest extends BasicTestCase {
   }
 
   public void testLearnedCreationCharmsUnlearnableOnCreation() throws Exception {
-    ICharm learnableCharm = new DummyMartialArtsCharm("learnableDummyCharm"); //$NON-NLS-1$
+    ICharm learnableCharm = new DummyCharm("learnableDummyCharm"); //$NON-NLS-1$
     ICharmLearnableArbitrator learnableArbitrator = new DummyLearnableArbitrator(
         new String[] { learnableCharm.getId() });
     LearningCharmGroup learningCharmGroup = createSolarMeleeGroup(learnableArbitrator);
@@ -68,17 +68,18 @@ public class LearningCharmGroupTest extends BasicTestCase {
     String internalPrerequisiteId = "internalPrerquisite"; //$NON-NLS-1$
     String externalPrerequisiteId = "externalPrerquisite"; //$NON-NLS-1$
     String learCharmID = "learnCharm"; //$NON-NLS-1$
-    DummyMartialArtsCharm internalPrerequisite = new DummyMartialArtsCharm(
+    DummyCharm internalPrerequisite = new DummyCharm(
         internalPrerequisiteId,
         new ICharm[0],
         new IGenericTrait[] { new ValuedTraitType(AbilityType.Melee, 1) });
-    DummyMartialArtsCharm externalPrerequisite = new DummyMartialArtsCharm(
+    DummyCharm externalPrerequisite = new DummyCharm(
         externalPrerequisiteId,
         new ICharm[0],
         new IGenericTrait[] { new ValuedTraitType(AbilityType.Archery, 1) });
-    DummyMartialArtsCharm learnCharm = new DummyMartialArtsCharm(learCharmID, new ICharm[] {
-        internalPrerequisite,
-        externalPrerequisite }, new IGenericTrait[] { new ValuedTraitType(AbilityType.Melee, 1) });
+    DummyCharm learnCharm = new DummyCharm(
+        learCharmID,
+        new ICharm[] { internalPrerequisite, externalPrerequisite },
+        new IGenericTrait[] { new ValuedTraitType(AbilityType.Melee, 1) });
     ICharmTree charmTree = new CharmTree(new ICharm[] { internalPrerequisite, externalPrerequisite, learnCharm });
     externalPrerequisite.addLearnFollowUpCharm(learnCharm);
     ICharmLearnableArbitrator learnableArbitrator = new DummyLearnableArbitrator(new String[] {

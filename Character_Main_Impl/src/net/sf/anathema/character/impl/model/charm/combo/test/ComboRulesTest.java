@@ -1,10 +1,10 @@
 package net.sf.anathema.character.impl.model.charm.combo.test;
 
 import net.sf.anathema.character.generic.impl.magic.test.DummyCharm;
-import net.sf.anathema.character.generic.impl.magic.test.DummyMartialArtsCharm;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
+import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.DurationType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
@@ -22,8 +22,16 @@ public class ComboRulesTest extends AbstractComboRulesTestCase {
   }
 
   public void testDurationComboLegal() throws Exception {
-    assertTrue(rules.isCharmComboLegal(new DummyMartialArtsCharm(DurationType.Instant, CharmType.Reflexive)));
-    assertFalse(rules.isCharmComboLegal(new DummyMartialArtsCharm(DurationType.Other, CharmType.Reflexive)));
+    assertTrue(rules.isCharmComboLegal(new DummyCharm(
+        DurationType.Instant,
+        CharmType.Reflexive,
+        new ComboRestrictions(),
+        null)));
+    assertFalse(rules.isCharmComboLegal(new DummyCharm(
+        DurationType.Other,
+        CharmType.Reflexive,
+        new ComboRestrictions(),
+        null)));
   }
 
   public void testRestrictionComboLegal() throws Exception {
@@ -53,6 +61,7 @@ public class ComboRulesTest extends AbstractComboRulesTestCase {
         AbilityType.Archery,
         3));
     DummyCharm charm2 = new DummyCharm(forbiddenId);
+    charm2.setDuration(Duration.INSTANT_DURATION);
     charm2.setCharmType(CharmType.ExtraAction);
     charm2.setPrerequisites(new ValuedTraitType[] { new ValuedTraitType(AbilityType.Archery, 3) });
     assertFalse(rules.isComboLegal(charm1, charm2));

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.model.charm.test;
 
-import net.sf.anathema.character.generic.impl.magic.test.DummyMartialArtsCharm;
+import net.sf.anathema.character.generic.impl.magic.test.DummyCharm;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
@@ -36,11 +36,11 @@ public class ComboTest extends BasicTestCase {
   }
 
   protected final static ICharm createCharm(CharmType charmType) {
-    return new DummyMartialArtsCharm(DurationType.Instant, charmType);
+    return new DummyCharm(DurationType.Instant, charmType, new ComboRestrictions(), null);
   }
 
   protected final static ICharm createCharm(CharmType charmType, IGenericTrait prerequisite) {
-    return new DummyMartialArtsCharm(
+    return new DummyCharm(
         DurationType.Instant,
         charmType,
         new ComboRestrictions(),
@@ -48,11 +48,11 @@ public class ComboTest extends BasicTestCase {
   }
 
   protected final static ICharm createCharm(CharmType charmType, IComboRestrictions restrictions) {
-    return new DummyMartialArtsCharm(DurationType.Instant, charmType, restrictions);
+    return new DummyCharm(DurationType.Instant, charmType, restrictions, null);
   }
 
   protected final static ICharm createCharm(DurationType durationType, IComboRestrictions restrictions) {
-    return new DummyMartialArtsCharm(durationType, CharmType.Reflexive, restrictions);
+    return new DummyCharm(durationType, CharmType.Reflexive, restrictions, null);
   }
 
   protected final static ICharm createCharm(IComboRestrictions restrictions) {
@@ -72,8 +72,16 @@ public class ComboTest extends BasicTestCase {
   }
 
   public void testOnlyInstantDurationCombos() throws Exception {
-    assertTrue(comboRules.canBeAddedToCombo(combo, new DummyMartialArtsCharm(DurationType.Instant, CharmType.Reflexive)));
-    assertFalse(comboRules.canBeAddedToCombo(combo, new DummyMartialArtsCharm(DurationType.Other, CharmType.Reflexive)));
+    assertTrue(comboRules.canBeAddedToCombo(combo, new DummyCharm(
+        DurationType.Instant,
+        CharmType.Reflexive,
+        new ComboRestrictions(),
+        null)));
+    assertFalse(comboRules.canBeAddedToCombo(combo, new DummyCharm(
+        DurationType.Other,
+        CharmType.Reflexive,
+        new ComboRestrictions(),
+        null)));
   }
 
   public void testComboRestrictionComboAllowed() throws Exception {
