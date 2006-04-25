@@ -46,7 +46,7 @@ public class Charm extends Identificate implements ICharm {
 
   public static final IIdentificate NOT_ALIEN_LEARNABLE = new Identificate("NotAlienLearnable"); //$NON-NLS-1$
 
-  protected final CharmPrerequisiteList prerequisisteList;
+  private final CharmPrerequisiteList prerequisisteList;
 
   private final CharacterType characterType;
   private final IComboRestrictions comboRules;
@@ -188,7 +188,7 @@ public class Charm extends Identificate implements ICharm {
     return new HashSet<ICharm>(parentCharms);
   }
 
-  public void extractParentCharms(Map<String, ? extends Charm> charmsById) {
+  public void extractParentCharms(Map<String, Charm> charmsById) {
     if (parentCharms.size() > 0) {
       return;
     }
@@ -310,5 +310,34 @@ public class Charm extends Identificate implements ICharm {
     }
     IGenericTrait trait = traitCollection.getTrait(primaryTraitType);
     return trait instanceof IFavorableGenericTrait && ((IFavorableGenericTrait) trait).isCasteOrFavored();
+  }
+
+  public Charm cloneUnconnected() {
+    // Charmalternatives need to be calculated anew - find the old charms' clones.
+    // SelectiveCharmGroups have to reference the newly cloned objects.
+    // ParentCharms and children need replacement with their respective clones
+    // Luckily, the standard constructor only works with static parts of the charm definition.
+    // Strategy:
+    // Clone all charms using the standard constructor, store their ids, and
+    // extract alternatives and parentcharms with the existing methods in CharmSetBuilder.
+    // This will handle all selectiveCharmgroups as well.
+    Charm clone = new Charm(
+        getCharacterType(),
+        getId(),
+        getGroupId(),
+        this.prerequisisteList,
+        getTemporaryCost(),
+        getPermanentCost(),
+        getComboRules(),
+        getDuration(),
+        getCharmType(),
+        this.sources);
+    for (ICharmAttribute attribute : getAttributes()) {
+      clone.addCharmAttribute(attribute);
+    }
+    for (String casteId : favoredCasteIds) {
+      clone.addFavoredCasteId(casteId);
+    }
+    return clone;
   }
 }

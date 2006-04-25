@@ -9,6 +9,7 @@ public class AllTests {
     TestSuite suite = new TestSuite("Test for net.sf.anathema.character.concrete.charm.persistence.test"); //$NON-NLS-1$
     // $JUnit-BEGIN$
     suite.addTestSuite(CharmBuilderTest.class);
+    suite.addTestSuite(CharmSetBuilderTest.class);
     // $JUnit-END$
     return suite;
   }

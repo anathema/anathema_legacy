@@ -30,15 +30,15 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.util.Identificate;
 
-public class DummyCharm implements ICharm {
+public class DummyCharm extends Identificate implements ICharm {
 
   private ValuedTraitType essence;
   private Duration duration;
   private CharmType charmType;
   private IComboRestrictions comboRestrictions = new ComboRestrictions();
   private IGenericTrait[] prerequisites;
-  private String id;
   private Set<ICharm> parentCharms;
   private Set<ICharm> learnFollowUpCharms = new HashSet<ICharm>();
   private List<ICharmAttributeRequirement> requirements = new ArrayList<ICharmAttributeRequirement>();
@@ -52,6 +52,7 @@ public class DummyCharm implements ICharm {
       CharmType charmType,
       IComboRestrictions comboRestrictions,
       IGenericTrait[] prerequisites) {
+    super("DummyCharmDefaultId"); //$NON-NLS-1$
     this.prerequisites = prerequisites;
     this.duration = Duration.getDuration(durationType.getId());
     this.charmType = charmType;
@@ -71,7 +72,7 @@ public class DummyCharm implements ICharm {
   }
 
   public DummyCharm(String id, ICharm[] parents, IGenericTrait[] prerequisites) {
-    this.id = id;
+    super(id);
     this.parentCharms = new ListOrderedSet<ICharm>();
     Collections.addAll(parentCharms, parents);
     this.prerequisites = prerequisites;
@@ -119,10 +120,6 @@ public class DummyCharm implements ICharm {
 
   public String getGroupId() {
     return groupId != null ? groupId : prerequisites[0].getType().getId();
-  }
-
-  public String getId() {
-    return id;
   }
 
   public Set<ICharm> getLearnFollowUpCharms(ICharmLearnArbitrator learnArbitrator) {
@@ -183,10 +180,6 @@ public class DummyCharm implements ICharm {
   @Override
   public String toString() {
     return getId();
-  }
-
-  public void setId(String newId) {
-    this.id = newId;
   }
 
   public void setGroupId(String expectedGroup) {

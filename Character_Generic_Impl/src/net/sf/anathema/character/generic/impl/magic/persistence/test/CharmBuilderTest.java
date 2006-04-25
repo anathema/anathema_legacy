@@ -9,7 +9,6 @@ import net.sf.anathema.character.generic.magic.charms.DurationType;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
 import org.dom4j.Element;
-import org.dom4j.tree.DefaultElement;
 
 public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstants {
 
@@ -21,23 +20,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    charmElement = new DefaultElement(TAG_CHARM);
-    charmElement.addAttribute(ATTRIB_ID, "Solar.TestCharm"); //$NON-NLS-1$
-    charmElement.addAttribute(ATTRIB_EXALT, "Solar"); //$NON-NLS-1$
-    charmElement.addAttribute(ATTRIB_GROUP, "AbilityGroup"); //$NON-NLS-1$
-    Element prerequisiteListElement = charmElement.addElement(TAG_PREREQUISITE_LIST);
-    fillBasicPrerequisites(prerequisiteListElement);
-    Element costElement = charmElement.addElement(TAG_COST);
-    costElement.addElement(TAG_TEMPORARY);
-    charmElement.addElement(TAG_DURATION).addAttribute(ATTRIB_DURATION, "Duration"); //$NON-NLS-1$
-    charmElement.addElement(TAG_CHARMTYPE).addAttribute(ATTRIB_TYPE, "Simple"); //$NON-NLS-1$
-  }
-
-  public static void fillBasicPrerequisites(Element prerequisiteListElement) {
-    Element prerequisiteElement = prerequisiteListElement.addElement(TAG_TRAIT);
-    prerequisiteElement.addAttribute("id", "Archery"); //$NON-NLS-1$ //$NON-NLS-2$
-    prerequisiteElement.addAttribute("value", "4"); //$NON-NLS-1$ //$NON-NLS-2$
-    prerequisiteListElement.addElement("essence").addAttribute("value", "3"); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
+    this.charmElement = CharmXmlTestUtils.createCharmElement("Solar.TestCharm"); //$NON-NLS-1$
   }
 
   private void removeAttribute(String attribute) {
@@ -51,7 +34,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
   public void testNoId() throws Exception {
     try {
       removeAttribute("id"); //$NON-NLS-1$
-      charmBuilder.buildCharm(charmElement, false);
+      charmBuilder.buildCharm(charmElement);
       fail();
     }
     catch (CharmException e) {
@@ -62,7 +45,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
   public void testBadId() throws Exception {
     try {
       charmElement.addAttribute("id", ""); //$NON-NLS-1$ //$NON-NLS-2$
-      charmBuilder.buildCharm(charmElement, false);
+      charmBuilder.buildCharm(charmElement);
       fail();
     }
     catch (CharmException e) {
@@ -73,7 +56,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
   public void testNoExalt() throws Exception {
     try {
       removeAttribute("exalt"); //$NON-NLS-1$
-      charmBuilder.buildCharm(charmElement, false);
+      charmBuilder.buildCharm(charmElement);
       fail();
     }
     catch (CharmException e) {
@@ -84,7 +67,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
   public void testExaltNonExistant() throws Exception {
     try {
       charmElement.addAttribute("exalt", "NonExistant"); //$NON-NLS-1$ //$NON-NLS-2$
-      charmBuilder.buildCharm(charmElement, false);
+      charmBuilder.buildCharm(charmElement);
       fail();
     }
     catch (CharmException e) {
@@ -95,7 +78,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
   public void testNoGroup() throws Exception {
     try {
       removeAttribute("group"); //$NON-NLS-1$
-      charmBuilder.buildCharm(charmElement, false);
+      charmBuilder.buildCharm(charmElement);
       fail();
     }
     catch (CharmException e) {
@@ -106,7 +89,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
   public void testNoPrerequisitesAtAll() throws Exception {
     try {
       removeElement("prerequisite"); //$NON-NLS-1$
-      charmBuilder.buildCharm(charmElement, false);
+      charmBuilder.buildCharm(charmElement);
       fail();
     }
     catch (IllegalArgumentException e) {
@@ -120,7 +103,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
       Element prerequisiteElement = prerequisitesElement.element(TAG_TRAIT);
       prerequisiteElement.remove(prerequisiteElement.attribute("id")); //$NON-NLS-1$
       prerequisiteElement.remove(prerequisiteElement.attribute("value")); //$NON-NLS-1$
-      charmBuilder.buildCharm(charmElement, false);
+      charmBuilder.buildCharm(charmElement);
       fail();
     }
     catch (CharmException e) {
@@ -133,7 +116,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
       Element prerequisitesElement = charmElement.element("prerequisite"); //$NON-NLS-1$
       Element prerequisiteElement = prerequisitesElement.element(TAG_TRAIT);
       prerequisiteElement.remove(prerequisiteElement.attribute("id")); //$NON-NLS-1$
-      charmBuilder.buildCharm(charmElement, false);
+      charmBuilder.buildCharm(charmElement);
       fail();
     }
     catch (CharmException e) {
@@ -146,7 +129,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
       Element prerequisitesElement = charmElement.element("prerequisite"); //$NON-NLS-1$
       Element prerequisiteElement = prerequisitesElement.element(TAG_TRAIT);
       prerequisiteElement.addAttribute("id", "BadId"); //$NON-NLS-1$ //$NON-NLS-2$
-      charmBuilder.buildCharm(charmElement, false);
+      charmBuilder.buildCharm(charmElement);
       fail();
     }
     catch (CharmException e) {
@@ -159,7 +142,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
       Element prerequisitesElement = charmElement.element("prerequisite"); //$NON-NLS-1$
       Element prerequisiteElement = prerequisitesElement.element(TAG_TRAIT);
       prerequisiteElement.remove(prerequisiteElement.attribute("value")); //$NON-NLS-1$
-      charmBuilder.buildCharm(charmElement, false);
+      charmBuilder.buildCharm(charmElement);
       fail();
     }
     catch (CharmException e) {
@@ -172,7 +155,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
       Element prerequisitesElement = charmElement.element("prerequisite"); //$NON-NLS-1$
       Element prerequisiteElement = prerequisitesElement.element(TAG_TRAIT);
       prerequisiteElement.addAttribute("value", "BadValue"); //$NON-NLS-1$ //$NON-NLS-2$
-      charmBuilder.buildCharm(charmElement, false);
+      charmBuilder.buildCharm(charmElement);
       fail();
     }
     catch (CharmException e) {
@@ -184,7 +167,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
     try {
       Element prerequisitesElement = charmElement.element("prerequisite"); //$NON-NLS-1$
       prerequisitesElement.remove(prerequisitesElement.element("essence")); //$NON-NLS-1$
-      charmBuilder.buildCharm(charmElement, false);
+      charmBuilder.buildCharm(charmElement);
       fail();
     }
     catch (CharmException e) {
@@ -196,7 +179,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
     try {
       Element prerequisitesElement = charmElement.element("prerequisite"); //$NON-NLS-1$
       prerequisitesElement.element("essence").addAttribute("value", "BadEssence"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-      charmBuilder.buildCharm(charmElement, false);
+      charmBuilder.buildCharm(charmElement);
       fail();
     }
     catch (CharmException e) {
@@ -208,7 +191,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
     try {
       Element prerequisitesElement = charmElement.element("prerequisite"); //$NON-NLS-1$
       prerequisitesElement.addElement(TAG_CHARM_REFERENCE);
-      charmBuilder.buildCharm(charmElement, false);
+      charmBuilder.buildCharm(charmElement);
       fail();
     }
     catch (CharmException e) {
@@ -221,7 +204,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
       Element prerequisitesElement = charmElement.element("prerequisite"); //$NON-NLS-1$
       Element prerequisiteCharmElement = prerequisitesElement.addElement(TAG_CHARM_REFERENCE);
       prerequisiteCharmElement.addAttribute("id", ""); //$NON-NLS-1$ //$NON-NLS-2$
-      charmBuilder.buildCharm(charmElement, false);
+      charmBuilder.buildCharm(charmElement);
       fail();
     }
     catch (CharmException e) {
@@ -232,7 +215,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
   public void testNoCharmTypeElement() throws Exception {
     try {
       removeElement(TAG_CHARMTYPE);
-      charmBuilder.buildCharm(charmElement, false);
+      charmBuilder.buildCharm(charmElement);
       fail();
     }
     catch (CharmException e) {
@@ -244,7 +227,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
     try {
       Element typeElement = charmElement.element(TAG_CHARMTYPE);
       typeElement.remove(typeElement.attribute(ATTRIB_TYPE));
-      charmBuilder.buildCharm(charmElement, false);
+      charmBuilder.buildCharm(charmElement);
       fail();
     }
     catch (CharmException e) {
@@ -256,7 +239,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
     try {
       Element typeElement = charmElement.element(TAG_CHARMTYPE);
       typeElement.addAttribute(ATTRIB_TYPE, "BadType"); //$NON-NLS-1$
-      charmBuilder.buildCharm(charmElement, false);
+      charmBuilder.buildCharm(charmElement);
       fail();
     }
     catch (CharmException e) {
@@ -267,32 +250,32 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
   public void testCorrectCharmWithInstantDuration() throws Exception {
     Element durationElement = charmElement.element(TAG_DURATION);
     durationElement.addAttribute(ATTRIB_DURATION, "Instant"); //$NON-NLS-1$
-    if (charmBuilder.buildCharm(charmElement, false).getDuration().getType() != DurationType.Instant) {
+    if (charmBuilder.buildCharm(charmElement).getDuration().getType() != DurationType.Instant) {
       fail();
     }
   }
 
   public void testCorrectCharmWithOtherDuration() throws Exception {
-    if (charmBuilder.buildCharm(charmElement, false).getDuration().getType() != DurationType.Other) {
+    if (charmBuilder.buildCharm(charmElement).getDuration().getType() != DurationType.Other) {
       fail();
     }
   }
 
   public void testCorrectCharmWithBadSource() throws Exception {
     charmElement.addElement("source"); //$NON-NLS-1$
-    charmBuilder.buildCharm(charmElement, false);
+    charmBuilder.buildCharm(charmElement);
   }
 
   public void testCorrectCharmWithSourceOnly() throws Exception {
     Element sourceElement = charmElement.addElement(TAG_SOURCE);
     sourceElement.addAttribute(ATTRIB_SOURCE, "Source"); //$NON-NLS-1$
-    charmBuilder.buildCharm(charmElement, false);
+    charmBuilder.buildCharm(charmElement);
   }
 
   public void testCorrectCharmWithPageOnly() throws Exception {
     Element sourceElement = charmElement.addElement(TAG_SOURCE);
     sourceElement.addAttribute(ATTRIB_PAGE, "pagenumber"); //$NON-NLS-1$
-    ICharm charm = charmBuilder.buildCharm(charmElement, false);
+    ICharm charm = charmBuilder.buildCharm(charmElement);
     assertEquals(charm.getSource().getSource(), "Custom"); //$NON-NLS-1$
     assertNull(charm.getSource().getPage());
   }
@@ -303,7 +286,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
     sourceElement.addAttribute(ATTRIB_SOURCE, source);
     String page = "pagenumber"; //$NON-NLS-1$
     sourceElement.addAttribute(ATTRIB_PAGE, page);
-    ICharm charm = charmBuilder.buildCharm(charmElement, false);
+    ICharm charm = charmBuilder.buildCharm(charmElement);
     assertEquals(source, charm.getSource().getSource());
     assertEquals(page, charm.getSource().getPage());
   }

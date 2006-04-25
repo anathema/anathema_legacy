@@ -7,5 +7,5 @@ import org.dom4j.Element;
 
 public interface ICharmBuilder {
 
-  public Charm buildCharm(Element charmElement, boolean powerCombat) throws PersistenceException;
+  public Charm buildCharm(Element charmElement) throws PersistenceException;
 }

@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.impl.magic.persistence;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,8 +51,8 @@ public class CharmCache implements ICharmCache {
     if (getRulesetCharms(ruleset).containsKey(type)) {
       return getCharmArray(type, ruleset);
     }
-    buildOfficialCharms(type);
-    buildCustomCharms(type);
+    buildOfficialCharms(type, ruleset);
+    // buildCustomCharms(type);
     return getCharmArray(type, ruleset);
   }
 
@@ -61,10 +61,10 @@ public class CharmCache implements ICharmCache {
     return charmList.toArray(new ICharm[charmList.size()]);
   }
 
-  private void buildOfficialCharms(final CharacterType type) throws PersistenceException {
+  private void buildOfficialCharms(final CharacterType type, IExaltedRuleSet ruleset) throws PersistenceException {
     try {
-      Document charmDocument = charmIo.readCharms(type);
-      buildCharmsFromDocument(type, charmDocument);
+      Document charmDocument = charmIo.readCharms(type, ruleset);
+      buildRulesetCharms(type, ruleset, charmDocument);
     }
     catch (DocumentException e) {
       throw new CharmException(e);
@@ -75,7 +75,7 @@ public class CharmCache implements ICharmCache {
     try {
       Document document = charmIo.readCustomCharms(type);
       if (document != null) {
-        buildCharmsFromDocument(type, document);
+        buildRulesetCharms(type, ExaltedRuleSet.CoreRules, document);
       }
     }
     catch (DocumentException e) {
@@ -83,40 +83,30 @@ public class CharmCache implements ICharmCache {
     }
   }
 
-  private void buildCharmsFromDocument(final CharacterType type, Document charmDocument) throws PersistenceException {
-    buildRulesetCharms(type, charmDocument, ExaltedRuleSet.CoreRules);
-    buildRulesetCharms(type, charmDocument, ExaltedRuleSet.PowerCombat);
-  }
-
-  private void buildRulesetCharms(final CharacterType type, Document charmDocument, IExaltedRuleSet set)
+  private void buildRulesetCharms(final CharacterType type, IExaltedRuleSet set, Document charmDocument)
       throws PersistenceException {
-    MultiEntryMap<CharacterType, ICharm> ruleSetCharms = getRulesetCharms(set);
+    List<ICharm> existingCharms = new ArrayList<ICharm>();
     final IExaltedRuleSet basicRules = set.getBasicRuleset();
     if (basicRules != null) {
-      for (ICharm charm : getCharms(type, basicRules)) {
-        ruleSetCharms.add(type, charm);
-      }
+      Collections.addAll(existingCharms, getCharms(type, basicRules));
     }
-    ICharm[] charmArray = builder.buildCharms(charmDocument, set == ExaltedRuleSet.PowerCombat);
+    ICharm[] charmArray = builder.buildCharms(charmDocument, existingCharms);
     for (ICharm charm : charmArray) {
-      storeCharm(type, charm, ruleSetCharms);
+      getRulesetCharms(set).add(type, charm);
     }
   }
 
-  private void storeCharm(CharacterType type, ICharm charm, MultiEntryMap<CharacterType, ICharm> charmMap) {
-    List<ICharm> name = charmMap.get(type);
-    if (name != null && name.contains(charm)) {
-      charmMap.removeValue(type, charm);
-    }
-    charmMap.add(type, charm);
-  }
-
-  public ICharm[] getMartialArtsCharms(IExaltedRuleSet ruleset) throws PersistenceException {
-    List<ICharm> charmList = martialArtsCharmsByRuleSet.get(ruleset);
+  public ICharm[] getMartialArtsCharms(IExaltedRuleSet set) throws PersistenceException {
+    List<ICharm> charmList = martialArtsCharmsByRuleSet.get(set);
     if (charmList.isEmpty()) {
+      List<ICharm> existingCharms = new ArrayList<ICharm>();
+      final IExaltedRuleSet basicRules = set.getBasicRuleset();
+      if (basicRules != null) {
+        Collections.addAll(existingCharms, getMartialArtsCharms(basicRules));
+      }
       try {
-        Document charmDocument = charmIo.readCharms(new Identificate("MartialArts")); //$NON-NLS-1$
-        charmList.addAll(Arrays.asList(builder.buildCharms(charmDocument, ruleset == ExaltedRuleSet.PowerCombat)));
+        Document charmDocument = charmIo.readCharms(new Identificate("MartialArts"), set); //$NON-NLS-1$
+        Collections.addAll(charmList, builder.buildCharms(charmDocument, existingCharms));
       }
       catch (DocumentException e) {
         throw new CharmException(e);

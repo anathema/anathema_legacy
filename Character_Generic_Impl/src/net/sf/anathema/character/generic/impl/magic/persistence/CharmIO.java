@@ -10,6 +10,7 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
+import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -21,8 +22,8 @@ import org.dom4j.io.SAXReader;
 
 public class CharmIO {
 
-  public Document readCharms(final IIdentificate type) throws DocumentException {
-    String urlString = "data/Charms_" + type.getId() + ".xml"; //$NON-NLS-1$ //$NON-NLS-2$;
+  public Document readCharms(IIdentificate type, IExaltedRuleSet rules) throws DocumentException {
+    String urlString = "data/Charms_" + type.getId() + "_" + rules.getId() + ".xml"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$;
     final URL charmURL = type.getClass().getClassLoader().getResource(urlString);
     if (charmURL == null) {
       throw new NullPointerException("Resource not found in classpath: " + urlString); //$NON-NLS-1$
@@ -48,6 +49,7 @@ public class CharmIO {
   public void writeCharmInternal(ICharmData charmData, List<ICharmAttribute> keywords)
       throws IOException,
       DocumentException {
+    System.err.println("Charm data is written to wrong file until ruleset is handed in."); //$NON-NLS-1$
     CharacterType type = charmData.getCharacterType();
     File file = new File("../Character_" + type.getId() + "/resources/data/Charms_" + type.getId() + ".xml"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$;
     Document document = new SAXReader().read(new FileInputStream(file));

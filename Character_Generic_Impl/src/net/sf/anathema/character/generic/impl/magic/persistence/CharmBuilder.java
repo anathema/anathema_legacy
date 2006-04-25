@@ -6,7 +6,6 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.AT
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_EXALT;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_GROUP;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ID;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_NAME;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_PAGE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_SOURCE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_TYPE;
@@ -20,11 +19,9 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TA
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_PERMANENT;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_PREREQUISITE_LIST;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_RESTRICTIONS;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_RULESET;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_SOURCE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_TEMPORARY;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_TRAIT_REFERENCE;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.VALUE_POWERCOMBAT;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,16 +60,8 @@ public class CharmBuilder implements ICharmBuilder {
   private final DurationBuilder durationBuilder = new DurationBuilder();
   private final TraitTypeUtils traitUtils = new TraitTypeUtils();
 
-  public Charm buildCharm(Element charmElement, boolean powerCombat) throws PersistenceException {
+  public Charm buildCharm(Element charmElement) throws PersistenceException {
     Element rulesElement = charmElement;
-    Element fallBackElement = null;
-    if (powerCombat) {
-      Element potentialRulesElement = charmElement.element(TAG_RULESET);
-      if (potentialRulesElement != null && VALUE_POWERCOMBAT.equals(potentialRulesElement.attributeValue(ATTRIB_NAME))) {
-        rulesElement = potentialRulesElement;
-        fallBackElement = charmElement;
-      }
-    }
     String id = charmElement.attributeValue(ATTRIB_ID);
     if (StringUtilities.isNullOrTrimEmpty(id)) {
       throw new CharmException("Cannot process Charms without id."); //$NON-NLS-1$
@@ -87,13 +76,13 @@ public class CharmBuilder implements ICharmBuilder {
     }
     String group = getCharmGroupId(charmElement);
 
-    Element costElement = getElementFromRules(rulesElement, fallBackElement, TAG_COST);
+    Element costElement = getElementFromRules(rulesElement, TAG_COST);
     Ensure.ensureArgumentNotNull("No cost specified for Charm: " + id, costElement); //$NON-NLS-1$
     ICostList temporaryCost = costListBuilder.buildTemporaryCostList(costElement.element(TAG_TEMPORARY));
     IPermanentCostList permanentCost = costListBuilder.buildPermanentCostList(costElement.element(TAG_PERMANENT));
-    IComboRestrictions comboRules = getComboRules(rulesElement, fallBackElement, id);
-    Duration duration = durationBuilder.buildDuration(getElementFromRules(rulesElement, fallBackElement, TAG_DURATION));
-    CharmType charmType = getCharmType(rulesElement, fallBackElement, id);
+    IComboRestrictions comboRules = getComboRules(rulesElement, id);
+    Duration duration = durationBuilder.buildDuration(getElementFromRules(rulesElement, TAG_DURATION));
+    CharmType charmType = getCharmType(rulesElement, id);
 
     List<IMagicSource> sources = new ArrayList<IMagicSource>();
     List<Element> sourceElements = ElementUtilities.elements(rulesElement, TAG_SOURCE);
@@ -126,19 +115,16 @@ public class CharmBuilder implements ICharmBuilder {
         sources.toArray(new IMagicSource[0]));
     String[] primaryTrait = prerequisites.length == 0 ? new String[0] : new String[] { prerequisites[0].getType()
         .getId() };
-    for (ICharmAttribute attribute : getCharmAttributes(rulesElement, fallBackElement, primaryTrait)) {
+    for (ICharmAttribute attribute : getCharmAttributes(rulesElement, primaryTrait)) {
       charm.addCharmAttribute(attribute);
     }
     loadSpecialLearning(charmElement, charm);
     return charm;
   }
 
-  private ICharmAttribute[] getCharmAttributes(
-      Element rulesElement,
-      Element fallBackElement,
-      String[] additionalAttributes) {
+  private ICharmAttribute[] getCharmAttributes(Element rulesElement, String[] additionalAttributes) {
     List<ICharmAttribute> attributes = new ArrayList<ICharmAttribute>();
-    for (Element attributeElement : getElementsFromRules(rulesElement, fallBackElement, TAG_ATTRIBUTE)) {
+    for (Element attributeElement : getElementsFromRules(rulesElement, TAG_ATTRIBUTE)) {
       String attributeId = attributeElement.attributeValue(ATTRIB_ATTRIBUTE);
       boolean visualizeAttribute = ElementUtilities.getBooleanAttribute(attributeElement, ATTRIB_VISUALIZE, false);
       attributes.add(new CharmAttribute(attributeId, visualizeAttribute));
@@ -157,9 +143,9 @@ public class CharmBuilder implements ICharmBuilder {
     return group;
   }
 
-  private CharmType getCharmType(Element rulesElement, Element fallBackElement, String id) throws CharmException {
+  private CharmType getCharmType(Element rulesElement, String id) throws CharmException {
     CharmType charmType;
-    Element typeElement = getElementFromRules(rulesElement, fallBackElement, TAG_CHARMTYPE);
+    Element typeElement = getElementFromRules(rulesElement, TAG_CHARMTYPE);
     if (typeElement == null) {
       throw new CharmException("Type required for charm: " + id); //$NON-NLS-1$
     }
@@ -175,10 +161,9 @@ public class CharmBuilder implements ICharmBuilder {
     return charmType;
   }
 
-  private IComboRestrictions getComboRules(Element rulesElement, Element fallBackElement, String id)
-      throws CharmException {
+  private IComboRestrictions getComboRules(Element rulesElement, String id) throws CharmException {
     String typeAttribute;
-    Element comboElement = getElementFromRules(rulesElement, fallBackElement, TAG_COMBO);
+    Element comboElement = getElementFromRules(rulesElement, TAG_COMBO);
     if (comboElement == null) {
       return new ComboRestrictions();
     }
@@ -216,19 +201,12 @@ public class CharmBuilder implements ICharmBuilder {
     return comboRules;
   }
 
-  private Element getElementFromRules(Element rulesElement, Element fallBackElement, String elementName) {
-    Element element = rulesElement.element(elementName);
-    if (element == null && fallBackElement != null) {
-      element = fallBackElement.element(elementName);
-    }
-    return element;
+  private Element getElementFromRules(Element rulesElement, String elementName) {
+    return rulesElement.element(elementName);
   }
 
-  private Element[] getElementsFromRules(Element rulesElement, Element fallBackElement, String elementName) {
+  private Element[] getElementsFromRules(Element rulesElement, String elementName) {
     List<Element> elements = ElementUtilities.elements(rulesElement, elementName);
-    if (elements.isEmpty() && fallBackElement != null) {
-      elements = ElementUtilities.elements(fallBackElement, elementName);
-    }
     return elements.toArray(new Element[elements.size()]);
   }
 

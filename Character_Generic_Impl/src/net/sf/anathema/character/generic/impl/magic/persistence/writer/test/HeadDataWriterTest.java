@@ -12,18 +12,16 @@ public class HeadDataWriterTest extends BasicTestCase {
 
   private HeadDataWriter writer;
   private Element element;
-  private DummyCharm charm;
 
   @Override
   protected void setUp() throws Exception {
     writer = new HeadDataWriter();
     element = DocumentFactory.getInstance().createElement("charm"); //$NON-NLS-1$    
-    charm = new DummyCharm();
   }
 
   public void testWriteCompleteData() throws Exception {
     String expectedId = "Charm"; //$NON-NLS-1$
-    charm.setId(expectedId);
+    DummyCharm charm = new DummyCharm(expectedId);
     CharacterType expectedType = CharacterType.ABYSSAL;
     charm.setCharacterType(expectedType);
     String expectedGroup = "CharmGroup"; //$NON-NLS-1$

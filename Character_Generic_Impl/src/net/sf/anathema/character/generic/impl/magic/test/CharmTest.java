@@ -10,11 +10,11 @@ public class CharmTest extends BasicTestCase {
 
   public void testParentCharmsNotOverwritten() throws Exception {
     DummyCharmData data = new DummyCharmData();
-    DummyCharm dummy = new DummyCharm();
-    data.setParentCharms(new ICharm[] {dummy});
+    DummyCharm dummy = new DummyCharm("OtherDummy"); //$NON-NLS-1$
+    data.setParentCharms(new ICharm[] { dummy });
     Charm charm = new Charm(data);
-    charm.extractParentCharms(new HashMap<String,Charm>());
+    charm.extractParentCharms(new HashMap<String, Charm>());
     assertEquals(1, charm.getParentCharms().size());
     assertEquals(dummy, charm.getParentCharms().toArray(new ICharm[1])[0]);
-  }  
+  }
 }

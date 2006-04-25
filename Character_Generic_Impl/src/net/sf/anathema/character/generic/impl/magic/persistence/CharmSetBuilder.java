@@ -26,24 +26,30 @@ public class CharmSetBuilder implements ICharmSetBuilder {
 
   private final ICharmBuilder builder = new CharmBuilder();
 
-  public ICharm[] buildCharms(Document charmDoc, boolean powerCombat) throws PersistenceException {
+  public ICharm[] buildCharms(Document charmDoc, List<ICharm> existingCharms) throws PersistenceException {
     Set<Charm> allCharms = new HashSet<Charm>();
     Map<String, Charm> charmsById = new HashMap<String, Charm>();
+    for (ICharm charm : existingCharms) {
+      Charm clone = ((Charm) charm).cloneUnconnected();
+      allCharms.add(clone);
+      charmsById.put(clone.getId(), clone);
+    }
     Element charmListElement = charmDoc.getRootElement();
     for (Object charmElementObject : charmListElement.elements(TAG_CHARM)) {
       Element charmElement = (Element) charmElementObject;
-      Charm newCharm = builder.buildCharm(charmElement, powerCombat);
-      allCharms.add(newCharm);
-      if (!charmsById.containsKey(newCharm.getId())) {
-        charmsById.put(newCharm.getId(), newCharm);
+      Charm newCharm = builder.buildCharm(charmElement);
+      if (allCharms.contains(newCharm)) {
+        allCharms.remove(newCharm);
       }
+      allCharms.add(newCharm);
+      charmsById.put(newCharm.getId(), newCharm);
     }
     extractParents(charmsById, allCharms);
     readAlternatives(charmsById, charmListElement);
     return allCharms.toArray(new ICharm[allCharms.size()]);
   }
 
-  private void extractParents(Map<String, ? extends Charm> charmsById, Set< ? extends Charm> allCharms) {
+  private void extractParents(Map<String, Charm> charmsById, Set<Charm> allCharms) {
     for (Charm charm : allCharms) {
       charm.extractParentCharms(charmsById);
     }
