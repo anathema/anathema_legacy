@@ -9,7 +9,7 @@ import net.sf.anathema.lib.util.IIdentificate;
 public class MartialArtsUtilitiesTest extends BasicTestCase {
 
   public void testIsMartialArtsCharm() {
-    ICharm charm = new DummyMartialArtsCharm("Dummy") { //$NON-NLS-1$
+    ICharm charm = new DummyCharm("Dummy") { //$NON-NLS-1$
       @Override
       public boolean hasAttribute(IIdentificate attribute) {
         return attribute.getId().equals("MartialArts"); //$NON-NLS-1$
@@ -19,7 +19,7 @@ public class MartialArtsUtilitiesTest extends BasicTestCase {
   }
 
   public void testIsFormCharm() throws Exception {
-    ICharm charm = new DummyMartialArtsCharm("Dummy") { //$NON-NLS-1$
+    ICharm charm = new DummyCharm("Dummy") { //$NON-NLS-1$
       @Override
       public boolean hasAttribute(IIdentificate attribute) {
         return attribute.getId().equals("Form"); //$NON-NLS-1$
@@ -29,7 +29,7 @@ public class MartialArtsUtilitiesTest extends BasicTestCase {
   }
 
   public void testGetMartialArtsLevel() throws Exception {
-    DummyMartialArtsCharm charm = new DummyMartialArtsCharm("Dummy") { //$NON-NLS-1$
+    DummyCharm charm = new DummyCharm("Dummy") { //$NON-NLS-1$
       @Override
       public boolean hasAttribute(IIdentificate attribute) {
         return attribute.getId().equals("MartialArts") || attribute.getId().equals("Terrestrial"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -39,7 +39,7 @@ public class MartialArtsUtilitiesTest extends BasicTestCase {
   }
 
   public void testHasMartialArtsLevel() throws Exception {
-    DummyMartialArtsCharm charm = new DummyMartialArtsCharm("Dummy") { //$NON-NLS-1$
+    DummyCharm charm = new DummyCharm("Dummy") { //$NON-NLS-1$
       @Override
       public boolean hasAttribute(IIdentificate attribute) {
         return attribute.getId().equals("MartialArts") || attribute.getId().equals("Terrestrial"); //$NON-NLS-1$ //$NON-NLS-2$
