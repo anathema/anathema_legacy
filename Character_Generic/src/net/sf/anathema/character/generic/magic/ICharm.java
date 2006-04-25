@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
 import net.sf.anathema.lib.util.IIdentificate;
 
-public interface ICharm extends ICharmData, IMagic {  
+public interface ICharm extends ICharmData, IMagic {
 
   public Set<ICharm> getLearnFollowUpCharms(ICharmLearnArbitrator learnArbitrator);
 
