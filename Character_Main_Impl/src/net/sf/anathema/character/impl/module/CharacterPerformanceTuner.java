@@ -52,7 +52,7 @@ public class CharacterPerformanceTuner {
   }
 
   private void initCharmVisualization(ICharacterGenerics generics) throws AnathemaException {
-    ExaltedCharacter character = createStatedCharacter(generics);
+    ExaltedCharacter character = createStattedCharacter(generics);
     ICharacterStatistics statistics = character.getStatistics();
     MagicViewFactory magicView = new MagicViewFactory();
     TabContent[] contents = new MagicPresenter(
@@ -71,7 +71,7 @@ public class CharacterPerformanceTuner {
   private ICharacterView initCharacterView(ICharacterGenerics characterGenerics, IItemType characterItemType)
       throws AnathemaException {
     IItemViewFactory factory = model.getViewFactoryRegistry().get(characterItemType);
-    ExaltedCharacter characterData = createStatedCharacter(characterGenerics);
+    ExaltedCharacter characterData = createStattedCharacter(characterGenerics);
     ICharacterView view = (ICharacterView) factory.createView(new AnathemaItem(characterItemType, characterData));
     IBonusPointManagement bonusPointManagement = new BonusPointManagement(characterData.getStatistics());
     IExperiencePointManagement experiencePointManagement = new ExperiencePointManagement(characterData.getStatistics());
@@ -86,7 +86,7 @@ public class CharacterPerformanceTuner {
     return view;
   }
 
-  private ExaltedCharacter createStatedCharacter(ICharacterGenerics characterGenerics) throws SpellException {
+  private ExaltedCharacter createStattedCharacter(ICharacterGenerics characterGenerics) throws SpellException {
     ExaltedCharacter characterData = new ExaltedCharacter();
     ICharacterTemplate template = createTemplate(characterGenerics);
     characterData.createCharacterStatistics(template, characterGenerics, ExaltedRuleSet.PowerCombat);
