@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<charmList>
+<charmlist>
   <charm id="Abyssal.ExquisiteRelicBow" exalt="Abyssal" group="Archery">
     <prerequisite>
       <trait id="Archery" value="4"/>
