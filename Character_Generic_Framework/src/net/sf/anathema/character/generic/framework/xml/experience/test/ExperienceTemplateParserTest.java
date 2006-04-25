@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.framework.xml.experience.test;
 import net.sf.anathema.character.generic.framework.xml.experience.ExperienceTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.experience.GenericExperiencePointCosts;
 import net.sf.anathema.character.generic.framework.xml.registry.test.DummyXmlTemplateRegistry;
-import net.sf.anathema.character.generic.impl.magic.test.DummyMartialArtsCharm;
+import net.sf.anathema.character.generic.impl.magic.test.DummyCharm;
 import net.sf.anathema.character.generic.impl.template.points.MultiplyRatingCosts;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
@@ -110,7 +110,7 @@ public class ExperienceTemplateParserTest extends BasicTestCase {
   public void testGeneralMagicCosts() throws Exception {
     Element element = createElement();
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
-    assertEquals(10, costs.getCharmCosts(new DummyMartialArtsCharm("Charm"), new ICostAnalyzer() { //$NON-NLS-1$
+    assertEquals(10, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() { //$NON-NLS-1$
           public boolean isOccultFavored() {
             return false;
           }
@@ -128,7 +128,7 @@ public class ExperienceTemplateParserTest extends BasicTestCase {
   public void testFavoredMagicCosts() throws Exception {
     Element element = createElement();
     GenericExperiencePointCosts costs = parser.parseTemplate(element);
-    assertEquals(8, costs.getCharmCosts(new DummyMartialArtsCharm("Charm"), new ICostAnalyzer() { //$NON-NLS-1$
+    assertEquals(8, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() { //$NON-NLS-1$
           public boolean isOccultFavored() {
             return true;
           }

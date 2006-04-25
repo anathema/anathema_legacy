@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.framework.magic.CharmNodeBuilder;
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
-import net.sf.anathema.character.generic.impl.magic.test.DummyMartialArtsCharm;
+import net.sf.anathema.character.generic.impl.magic.test.DummyCharm;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
@@ -30,7 +30,7 @@ public class CharmNodeBuilderTest extends BasicTestCase {
 
   public void testSingleCharm() throws Exception {
     String name = "dummy";//$NON-NLS-1$
-    DummyMartialArtsCharm charm = new DummyMartialArtsCharm(name);
+    DummyCharm charm = new DummyCharm(name);
     list.add(charm);
     buildNodes();
     assertEquals(1, nodes.size());
@@ -41,9 +41,9 @@ public class CharmNodeBuilderTest extends BasicTestCase {
 
   public void testMultipleCharms() throws Exception {
     String name = "dummy";//$NON-NLS-1$
-    DummyMartialArtsCharm dummy = new DummyMartialArtsCharm(name);
+    DummyCharm dummy = new DummyCharm(name);
     String otherName = "dommy";//$NON-NLS-1$
-    DummyMartialArtsCharm dommy = new DummyMartialArtsCharm(otherName);
+    DummyCharm dommy = new DummyCharm(otherName);
     list.add(dummy);
     list.add(dommy);
     buildNodes();
@@ -59,8 +59,8 @@ public class CharmNodeBuilderTest extends BasicTestCase {
   public void testExternalCharmSingleOccurence() throws Exception {
     String parentName = "ExternalParent";//$NON-NLS-1$
     String childName = "Child"; //$NON-NLS-1$
-    DummyMartialArtsCharm externalParent = new DummyMartialArtsCharm(parentName);
-    DummyMartialArtsCharm child = new DummyMartialArtsCharm(childName, new ICharm[] { externalParent });
+    DummyCharm externalParent = new DummyCharm(parentName);
+    DummyCharm child = new DummyCharm(childName, new ICharm[] { externalParent });
     list.add(child);
     buildNodes();
     assertEquals(2, nodes.size());
@@ -72,9 +72,9 @@ public class CharmNodeBuilderTest extends BasicTestCase {
     String parentName = "ExternalParent";//$NON-NLS-1$
     String firstChildName = "Child1"; //$NON-NLS-1$
     String secondChildName = "Child2"; //$NON-NLS-1$
-    DummyMartialArtsCharm externalParent = new DummyMartialArtsCharm(parentName);
-    DummyMartialArtsCharm firstChild = new DummyMartialArtsCharm(firstChildName, new ICharm[] { externalParent });
-    DummyMartialArtsCharm secondChild = new DummyMartialArtsCharm(secondChildName, new ICharm[] { externalParent });
+    DummyCharm externalParent = new DummyCharm(parentName);
+    DummyCharm firstChild = new DummyCharm(firstChildName, new ICharm[] { externalParent });
+    DummyCharm secondChild = new DummyCharm(secondChildName, new ICharm[] { externalParent });
     list.add(firstChild);
     list.add(secondChild);
     buildNodes();
@@ -84,7 +84,7 @@ public class CharmNodeBuilderTest extends BasicTestCase {
   }
 
   public void testNoAttributes() throws Exception {
-    DummyMartialArtsCharm charm = new DummyMartialArtsCharm("No Attribs"); //$NON-NLS-1$
+    DummyCharm charm = new DummyCharm("No Attribs"); //$NON-NLS-1$
     list.add(charm);
     buildNodes();
     assertEquals(1, nodes.size());
@@ -93,7 +93,7 @@ public class CharmNodeBuilderTest extends BasicTestCase {
   public void testRequirementNodeId() throws Exception {
     String charmName = "One Attribute"; //$NON-NLS-1$
     String attributeName = "Attribute"; //$NON-NLS-1$
-    DummyMartialArtsCharm charm = new DummyMartialArtsCharm(charmName);
+    DummyCharm charm = new DummyCharm(charmName);
     charm.addAttributeRequirement(new CharmAttributeRequirement(new CharmAttribute(attributeName, true), 3));
     list.add(charm);
     buildNodes();

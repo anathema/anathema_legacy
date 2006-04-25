@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IIdent
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.NodeFactory;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
-import net.sf.anathema.character.generic.impl.magic.test.DummyMartialArtsCharm;
+import net.sf.anathema.character.generic.impl.magic.test.DummyCharm;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
@@ -31,8 +31,8 @@ public class CharmNodeConnectorTest extends BasicTestCase {
   public void testSingleParentOnlyChild() throws Exception {
     String parentName = "Parent";//$NON-NLS-1$
     String childName = "Child"; //$NON-NLS-1$
-    DummyMartialArtsCharm parent = new DummyMartialArtsCharm(parentName);
-    DummyMartialArtsCharm child = new DummyMartialArtsCharm(childName, new ICharm[] { parent });
+    DummyCharm parent = new DummyCharm(parentName);
+    DummyCharm child = new DummyCharm(childName, new ICharm[] { parent });
     list.add(child);
     nodes.put(parentName, NodeFactory.createChildlessNode(parentName));
     nodes.put(childName, NodeFactory.createChildlessNode(childName));
@@ -47,9 +47,9 @@ public class CharmNodeConnectorTest extends BasicTestCase {
     String parentName = "Parent";//$NON-NLS-1$
     String firstChildName = "Child1"; //$NON-NLS-1$
     String secondChildName = "Child2"; //$NON-NLS-1$
-    DummyMartialArtsCharm parent = new DummyMartialArtsCharm(parentName);
-    DummyMartialArtsCharm firstChild = new DummyMartialArtsCharm(firstChildName, new ICharm[] { parent });
-    DummyMartialArtsCharm secondChild = new DummyMartialArtsCharm(secondChildName, new ICharm[] { parent });
+    DummyCharm parent = new DummyCharm(parentName);
+    DummyCharm firstChild = new DummyCharm(firstChildName, new ICharm[] { parent });
+    DummyCharm secondChild = new DummyCharm(secondChildName, new ICharm[] { parent });
     list.add(firstChild);
     list.add(secondChild);
     nodes.put(parentName, NodeFactory.createChildlessNode(parentName));
@@ -70,7 +70,7 @@ public class CharmNodeConnectorTest extends BasicTestCase {
 
   public void testAttributeNodeConnection() throws Exception {
     String charmName = "One Attribute"; //$NON-NLS-1$
-    DummyMartialArtsCharm charm = new DummyMartialArtsCharm(charmName);
+    DummyCharm charm = new DummyCharm(charmName);
     charm.addAttributeRequirement(new CharmAttributeRequirement(new CharmAttribute("Attribute", true), 2)); //$NON-NLS-1$
     IIdentifiedRegularNode charmNode = NodeFactory.createChildlessNode(charmName);
     list.add(charm);

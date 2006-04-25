@@ -5,7 +5,7 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.framework.magic.CharmGraphNodeBuilder;
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IIdentifiedRegularNode;
-import net.sf.anathema.character.generic.impl.magic.test.DummyMartialArtsCharm;
+import net.sf.anathema.character.generic.impl.magic.test.DummyCharm;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
@@ -13,8 +13,8 @@ public class CharmGraphNodeBuilderTest extends BasicTestCase {
 
   public void testExternalCharmSingleOccurence() throws Exception {
     String parentName = "ExternalParent";//$NON-NLS-1$
-    DummyMartialArtsCharm externalParent = new DummyMartialArtsCharm(parentName);
-    DummyMartialArtsCharm child = new DummyMartialArtsCharm("Child", new ICharm[] { externalParent }); //$NON-NLS-1$
+    DummyCharm externalParent = new DummyCharm(parentName);
+    DummyCharm child = new DummyCharm("Child", new ICharm[] { externalParent }); //$NON-NLS-1$
     List<ICharm> list = new ArrayList<ICharm>();
     list.add(child);
     IIdentifiedRegularNode[] nodes = CharmGraphNodeBuilder.createNodesFromCharms(list);
@@ -34,9 +34,9 @@ public class CharmGraphNodeBuilderTest extends BasicTestCase {
     String parentName = "ExternalParent";//$NON-NLS-1$
     String firstChildName = "Child1"; //$NON-NLS-1$
     String secondChildName = "Child2"; //$NON-NLS-1$
-    DummyMartialArtsCharm externalParent = new DummyMartialArtsCharm(parentName);
-    DummyMartialArtsCharm firstChild = new DummyMartialArtsCharm(firstChildName, new ICharm[] { externalParent });
-    DummyMartialArtsCharm secondChild = new DummyMartialArtsCharm(secondChildName, new ICharm[] { externalParent });
+    DummyCharm externalParent = new DummyCharm(parentName);
+    DummyCharm firstChild = new DummyCharm(firstChildName, new ICharm[] { externalParent });
+    DummyCharm secondChild = new DummyCharm(secondChildName, new ICharm[] { externalParent });
     List<ICharm> list = new ArrayList<ICharm>();
     list.add(firstChild);
     list.add(secondChild);

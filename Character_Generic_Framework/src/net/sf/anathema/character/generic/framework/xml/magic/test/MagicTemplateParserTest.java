@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.framework.xml.magic.test;
 import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplate;
 import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.test.DummyXmlTemplateRegistry;
-import net.sf.anathema.character.generic.impl.magic.test.DummyMartialArtsCharm;
+import net.sf.anathema.character.generic.impl.magic.test.DummyCharm;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
@@ -34,7 +34,7 @@ public class MagicTemplateParserTest extends BasicTestCase {
   public void testDefaultFreePicksPredicate() throws Exception {
     Element templateElement = DocumentUtilities.read(xml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    assertTrue(template.canBuyFromFreePicks(new DummyMartialArtsCharm("TestCharm"))); //$NON-NLS-1$
+    assertTrue(template.canBuyFromFreePicks(new DummyCharm("TestCharm"))); //$NON-NLS-1$
   }
 
   public void testMortalCharmTemplate() throws Exception {
@@ -68,7 +68,7 @@ public class MagicTemplateParserTest extends BasicTestCase {
         + "</magicTemplate>"; //$NON-NLS-1$
     Element templateElement = DocumentUtilities.read(celestialXml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    DummyMartialArtsCharm dummyMartialArtsCharm = new DummyMartialArtsCharm("Dummy") { //$NON-NLS-1$
+    DummyCharm dummyMartialArtsCharm = new DummyCharm("Dummy") { //$NON-NLS-1$
       @Override
       public boolean hasAttribute(IIdentificate attribute) {
         return attribute.getId().equals("MartialArts") || attribute.getId().equals("Celestial"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -83,7 +83,7 @@ public class MagicTemplateParserTest extends BasicTestCase {
         + "</magicTemplate>"; //$NON-NLS-1$
     Element templateElement = DocumentUtilities.read(celestialXml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    DummyMartialArtsCharm dummyMartialArtsCharm = new DummyMartialArtsCharm("Dummy") { //$NON-NLS-1$
+    DummyCharm dummyMartialArtsCharm = new DummyCharm("Dummy") { //$NON-NLS-1$
       @Override
       public boolean hasAttribute(IIdentificate attribute) {
         return attribute.getId().equals("MartialArts") || attribute.getId().equals("Celestial"); //$NON-NLS-1$ //$NON-NLS-2$
