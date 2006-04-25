@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.backgrounds.SimpleBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.magic.Spell;
-import net.sf.anathema.character.generic.impl.magic.test.DummyMartialArtsCharm;
+import net.sf.anathema.character.generic.impl.magic.test.DummyCharm;
 import net.sf.anathema.character.generic.impl.testing.DummyGenericTrait;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
@@ -47,6 +47,6 @@ public abstract class AbstractBackgroundRulesTest extends BasicTestCase {
   }
 
   protected final ICharm createCharm() {
-    return new DummyMartialArtsCharm("id"); //$NON-NLS-1$
+    return new DummyCharm("id"); //$NON-NLS-1$
   }
 }
