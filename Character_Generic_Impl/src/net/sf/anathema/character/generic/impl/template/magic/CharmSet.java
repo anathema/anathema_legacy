@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.impl.template.magic;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -19,8 +20,12 @@ public class CharmSet implements ICharmSet {
       throws PersistenceException {
     Map<IExaltedRuleSet, ICharm[]> charmMap = createCharmTreeMap(charmProvider, characterType);
     Map<IExaltedRuleSet, ICharm[]> martialArtsCharmMap = new HashMap<IExaltedRuleSet, ICharm[]>();
-    martialArtsCharmMap.put(ExaltedRuleSet.CoreRules, charmProvider.getMartialArtsCharms(ExaltedRuleSet.CoreRules));
-    martialArtsCharmMap.put(ExaltedRuleSet.PowerCombat, charmProvider.getMartialArtsCharms(ExaltedRuleSet.PowerCombat));
+    martialArtsCharmMap.put(ExaltedRuleSet.CoreRules, charmProvider.getCharms(
+        CharmCache.MARTIAL_ARTS_TYPE,
+        ExaltedRuleSet.CoreRules));
+    martialArtsCharmMap.put(ExaltedRuleSet.PowerCombat, charmProvider.getCharms(
+        CharmCache.MARTIAL_ARTS_TYPE,
+        ExaltedRuleSet.PowerCombat));
     return new CharmSet(charmMap, martialArtsCharmMap);
   }
 
