@@ -2,7 +2,7 @@ package net.sf.anathema.charmentry.model.test;
 
 import net.disy.commons.core.testing.ExceptionConvertingBlock;
 import net.disy.commons.core.util.StringUtilities;
-import net.sf.anathema.character.generic.impl.magic.test.DummyMartialArtsCharm;
+import net.sf.anathema.character.generic.impl.magic.test.DummyCharm;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmType;
@@ -270,13 +270,13 @@ public class CharmEntryModelTest extends BasicTestCase {
   }
 
   public void testSetParentCharms() throws Exception {
-    DummyMartialArtsCharm expected = new DummyMartialArtsCharm("Dummy"); //$NON-NLS-1$
+    DummyCharm expected = new DummyCharm("Dummy"); //$NON-NLS-1$
     model.setPrerequisiteCharms(new ICharm[] { expected });
     assertTrue(model.getCharmData().getParentCharms().contains(expected));
   }
 
   public void testRemoveParentCharms() throws Exception {
-    DummyMartialArtsCharm unwanted = new DummyMartialArtsCharm("Dummy"); //$NON-NLS-1$
+    DummyCharm unwanted = new DummyCharm("Dummy"); //$NON-NLS-1$
     model.setPrerequisiteCharms(new ICharm[] { unwanted });
     model.setPrerequisiteCharms(new ICharm[0]);
     assertEquals(0, model.getCharmData().getParentCharms().size());
