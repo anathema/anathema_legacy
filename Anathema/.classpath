@@ -20,7 +20,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Db"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-core-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
-	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-dialog-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-dialog.jar"/>
+	<classpathentry sourcepath="/Thirdparty/disy/disy-comons-swing-dialog.src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-dialog.jar"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-layout_src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Sidereal"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Framework"/>
