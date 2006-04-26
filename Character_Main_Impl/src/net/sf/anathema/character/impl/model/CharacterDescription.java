@@ -1,34 +1,34 @@
 package net.sf.anathema.character.impl.model;
 
 import net.sf.anathema.character.model.ICharacterDescription;
-import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
+import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
 public class CharacterDescription implements ICharacterDescription {
 
-  private final ISimpleTextualDescription nameDescription = new SimpleTextualDescription();
-  private final ISimpleTextualDescription periphraseDescription = new SimpleTextualDescription();
-  private final ISimpleTextualDescription characterization = new SimpleTextualDescription();
-  private final ISimpleTextualDescription physicalDescription = new SimpleTextualDescription();
-  private final ISimpleTextualDescription notes = new SimpleTextualDescription();
+  private final ITextualDescription nameDescription = new SimpleTextualDescription();
+  private final ITextualDescription periphraseDescription = new SimpleTextualDescription();
+  private final ITextualDescription characterization = new SimpleTextualDescription();
+  private final ITextualDescription physicalDescription = new SimpleTextualDescription();
+  private final ITextualDescription notes = new SimpleTextualDescription();
 
-  public ISimpleTextualDescription getName() {
+  public ITextualDescription getName() {
     return nameDescription;
   }
 
-  public ISimpleTextualDescription getPeriphrase() {
+  public ITextualDescription getPeriphrase() {
     return periphraseDescription;
   }
 
-  public ISimpleTextualDescription getCharacterization() {
+  public ITextualDescription getCharacterization() {
     return characterization;
   }
 
-  public ISimpleTextualDescription getPhysicalDescription() {
+  public ITextualDescription getPhysicalDescription() {
     return physicalDescription;
   }
 
-  public ISimpleTextualDescription getNotes() {
+  public ITextualDescription getNotes() {
     return notes;
   }
 }

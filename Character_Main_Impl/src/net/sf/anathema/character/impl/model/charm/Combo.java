@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
+import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
 public class Combo implements ICombo {
@@ -19,8 +19,8 @@ public class Combo implements ICombo {
   private final List<ICharm> charmList = new ArrayList<ICharm>();
   private ICharm extraActionCharm = null;
   private ICharm simpleCharm = null;
-  private final ISimpleTextualDescription name = new SimpleTextualDescription();
-  private final ISimpleTextualDescription description = new SimpleTextualDescription();
+  private final ITextualDescription name = new SimpleTextualDescription();
+  private final ITextualDescription description = new SimpleTextualDescription();
   private Integer id = null;
 
   public ICharm[] getCharms() {
@@ -88,11 +88,11 @@ public class Combo implements ICombo {
     removeCharms(charmList.toArray(new ICharm[0]));
   }
 
-  public ISimpleTextualDescription getName() {
+  public ITextualDescription getName() {
     return name;
   }
 
-  public ISimpleTextualDescription getDescription() {
+  public ITextualDescription getDescription() {
     return description;
   }
 

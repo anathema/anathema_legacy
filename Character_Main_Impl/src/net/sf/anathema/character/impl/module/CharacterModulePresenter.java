@@ -15,7 +15,7 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.AbstractSelectedItemEnabler;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.itemdata.IItemData;
+import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.presenter.action.ItemTypeLoadAction;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.view.IAnathemaView;

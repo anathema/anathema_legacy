@@ -22,7 +22,7 @@ import net.sf.anathema.framework.presenter.view.ObjectSelectionView;
 import net.sf.anathema.lib.gui.GuiUtilities;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
-import net.sf.anathema.lib.workflow.textualdescription.view.ILabelTextView;
+import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
@@ -65,7 +65,7 @@ public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConc
     return selectionView;
   }
 
-  public ILabelTextView addLabelTextView(String labelText) {
+  public ITextView addLabelTextView(String labelText) {
     LineTextView lineTextView = new LineTextView(45);
     lineTextView.getTextComponent().setDisabledTextColor(Color.DARK_GRAY);
     LabelTextView conceptView = new LabelTextView(labelText, lineTextView);

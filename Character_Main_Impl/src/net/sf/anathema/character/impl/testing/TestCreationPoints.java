@@ -1,10 +1,10 @@
 package net.sf.anathema.character.impl.testing;
 
-import net.sf.anathema.character.generic.impl.template.points.FavorableTraitCreationPoints;
 import net.sf.anathema.character.generic.impl.template.points.AbstractCreationPoints;
 import net.sf.anathema.character.generic.impl.template.points.AttributeCreationPoints;
-import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
+import net.sf.anathema.character.generic.impl.template.points.FavorableTraitCreationPoints;
 import net.sf.anathema.character.generic.template.points.IAttributeCreationPoints;
+import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
 
 public class TestCreationPoints extends AbstractCreationPoints {
 

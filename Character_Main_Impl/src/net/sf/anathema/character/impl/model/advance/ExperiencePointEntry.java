@@ -7,13 +7,13 @@ import net.sf.anathema.character.model.advance.IExperiencePointEntry;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
+import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
 public class ExperiencePointEntry implements IExperiencePointEntry {
 
   private final GenericControl<ChangeListener> changeControl = new GenericControl<ChangeListener>();
-  private final ISimpleTextualDescription description = new SimpleTextualDescription();
+  private final ITextualDescription description = new SimpleTextualDescription();
   private int experiencePoints = 0;
 
   public ExperiencePointEntry() {
@@ -44,7 +44,7 @@ public class ExperiencePointEntry implements IExperiencePointEntry {
     fireChangeEvent();
   }
 
-  public ISimpleTextualDescription getTextualDescription() {
+  public ITextualDescription getTextualDescription() {
     return description;
   }
 

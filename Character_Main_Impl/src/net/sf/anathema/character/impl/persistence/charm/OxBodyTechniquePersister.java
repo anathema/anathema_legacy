@@ -1,7 +1,6 @@
 package net.sf.anathema.character.impl.persistence.charm;
 
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CATEGORIES;
-
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
 import net.sf.anathema.character.model.charm.OxBodyCategory;

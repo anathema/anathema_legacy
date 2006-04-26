@@ -1,16 +1,16 @@
 package net.sf.anathema.character.impl.persistence;
 
-import java.util.List;
-import java.util.ArrayList;
-
-import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.model.ISpellConfiguration;
-import net.sf.anathema.lib.xml.ElementUtilities;
-
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_EXPERIENCE_LEARNED;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_NAME;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_SPELL;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_SPELLS;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import net.sf.anathema.character.generic.magic.ISpell;
+import net.sf.anathema.character.model.ISpellConfiguration;
+import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 

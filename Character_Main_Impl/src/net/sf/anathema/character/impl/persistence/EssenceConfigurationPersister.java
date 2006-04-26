@@ -1,7 +1,6 @@
 package net.sf.anathema.character.impl.persistence;
 
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_ESSENCE;
-
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;

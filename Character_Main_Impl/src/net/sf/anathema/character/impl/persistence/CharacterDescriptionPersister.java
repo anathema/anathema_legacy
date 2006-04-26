@@ -1,14 +1,13 @@
 package net.sf.anathema.character.impl.persistence;
 
-import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
-import net.sf.anathema.character.model.ICharacterDescription;
-
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CHARACTERIZATION;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CHARACTER_NAME;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_DESCRIPTION;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_NOTES;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_PERIPHRASE;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_PHYSICAL_DESCRIPTION;
+import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
+import net.sf.anathema.character.model.ICharacterDescription;
 
 import org.dom4j.Element;
 

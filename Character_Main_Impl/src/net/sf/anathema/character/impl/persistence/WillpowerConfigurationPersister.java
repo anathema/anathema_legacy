@@ -1,7 +1,6 @@
 package net.sf.anathema.character.impl.persistence;
 
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_WILLPOWER;
-
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
 import net.sf.anathema.lib.exception.PersistenceException;

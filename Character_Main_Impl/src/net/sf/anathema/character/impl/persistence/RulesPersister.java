@@ -3,7 +3,6 @@ package net.sf.anathema.character.impl.persistence;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_NAME;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_RULES;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_RULESET;
-
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.lib.exception.PersistenceException;

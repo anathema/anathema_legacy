@@ -2,7 +2,6 @@ package net.sf.anathema.character.impl.persistence;
 
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_VIRTUES;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_VIRTUE_FLAW;
-
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersister;
 import net.sf.anathema.character.generic.traits.types.VirtueType;

@@ -11,7 +11,6 @@ import net.sf.anathema.character.impl.view.repository.CharacterTemplateTree;
 import net.sf.anathema.character.impl.view.repository.NewCharacterDialogPage;
 import net.sf.anathema.character.impl.view.repository.RuleSetSelectionView;
 import net.sf.anathema.framework.resources.AnathemaResources;
-
 import de.jdemo.extensions.SwingDemoCase;
 
 public class NewCharacterDialogDemo extends SwingDemoCase {
