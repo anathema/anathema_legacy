@@ -6,12 +6,13 @@ import gis.gisterm.map.IGisView;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.text.NumberFormat;
 
 import javax.swing.JPanel;
 
 import net.sf.anathema.gis.main.view.IAnathemaGisView;
+import net.sf.anathema.gis.main.view.ICoordinateView;
 import de.disy.gis.gisterm.map.IMapModel;
-import de.disy.gisterm.pro.map.extent.DefaultScaleView;
 
 public class AnathemaGisView implements IAnathemaGisView {
 
@@ -22,13 +23,16 @@ public class AnathemaGisView implements IAnathemaGisView {
     gisView = new GisView(mapModel, new NullMapViewConfiguration(), null);
     content.add(GisTermUtilities.createMinimalDisplayToolBar(gisView), BorderLayout.NORTH);
     content.add(gisView.getContent(), BorderLayout.CENTER);
-    DefaultScaleView scaleView = new DefaultScaleView();
-    scaleView.setModel(gisView);
-    content.add(scaleView, BorderLayout.SOUTH);
     return gisView;
   }
 
   public Component getContent() {
     return content;
+  }
+
+  public ICoordinateView addCoordinateView(NumberFormat numberFormat) {
+    CoordinateView coordView = new CoordinateView(numberFormat);
+    content.add(coordView.getComponent(), BorderLayout.SOUTH);
+    return coordView;
   }
 }
