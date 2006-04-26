@@ -8,5 +8,9 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Platform"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-layout_src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
+	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-dialog-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-dialog.jar"/>
+	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
+	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-core-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
+	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
