@@ -26,5 +26,9 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/gisterm-shapeexport.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Platform"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/commons-primitives.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/gt2-referencing.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/vecmath.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/GISterm/gt2-main.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
