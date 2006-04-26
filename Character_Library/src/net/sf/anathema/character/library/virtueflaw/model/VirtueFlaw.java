@@ -3,13 +3,13 @@ package net.sf.anathema.character.library.virtueflaw.model;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
+import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
 public class VirtueFlaw implements IVirtueFlaw {
 
   private VirtueType root;
-  private final ISimpleTextualDescription name = new SimpleTextualDescription(""); //$NON-NLS-1$
+  private final ITextualDescription name = new SimpleTextualDescription(""); //$NON-NLS-1$
   private final ChangeControl control = new ChangeControl();
 
   public VirtueType getRoot() {
@@ -25,7 +25,7 @@ public class VirtueFlaw implements IVirtueFlaw {
     control.addChangeListener(listener);
   }
 
-  public ISimpleTextualDescription getName() {
+  public ITextualDescription getName() {
     return name;
   }
 

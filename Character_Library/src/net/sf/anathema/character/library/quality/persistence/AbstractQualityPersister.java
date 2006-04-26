@@ -6,7 +6,6 @@ import static net.sf.anathema.character.library.quality.persistence.IQualityPers
 import static net.sf.anathema.character.library.quality.persistence.IQualityPersistenceXmlConstants.ATTRIB_TYPE;
 import static net.sf.anathema.character.library.quality.persistence.IQualityPersistenceXmlConstants.ATTRIB_VALUE;
 import static net.sf.anathema.character.library.quality.persistence.IQualityPersistenceXmlConstants.TAG_CATEGORIZATION;
-
 import net.sf.anathema.character.library.quality.presenter.IQuality;
 import net.sf.anathema.character.library.quality.presenter.IQualityModel;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;

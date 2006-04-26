@@ -1,6 +1,5 @@
 package net.sf.anathema.character.library.virtueflaw.view;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.util.ArrayList;
@@ -30,8 +29,6 @@ public class VirtueFlawView implements IVirtueFlawView {
 
   public ITextView addTextView(final String labelText, int columns) {
     final ITextView textView = new LineTextView(columns);
-    // textViews.add(textView);
-    textView.getTextComponent().setDisabledTextColor(Color.DARK_GRAY);
     fillIntoVirtueFlawPanel(labelText, textView);
     return textView;
   }
