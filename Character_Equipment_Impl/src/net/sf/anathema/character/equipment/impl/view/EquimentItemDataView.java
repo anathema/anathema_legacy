@@ -4,7 +4,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.sf.anathema.character.equipment.view.IEquipmentItemDataView;
+import net.sf.anathema.character.equipment.item.view.IEquipmentItemDataView;
 
 public class EquimentItemDataView implements IEquipmentItemDataView {
 
