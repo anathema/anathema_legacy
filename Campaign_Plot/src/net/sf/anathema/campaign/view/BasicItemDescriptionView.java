@@ -16,28 +16,21 @@ import net.sf.anathema.framework.presenter.view.AbstractTabView;
 import net.sf.anathema.framework.styledtext.IStyledTextView;
 import net.sf.anathema.framework.styledtext.ITextEditorProperties;
 import net.sf.anathema.framework.styledtext.TextEditor;
-import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
+import net.sf.anathema.lib.workflow.container.factory.StandardPanelBuilder;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
-import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
-import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
 public class BasicItemDescriptionView extends AbstractTabView<Object> implements IBasicItemDescriptionView {
+
+  private final StandardPanelBuilder standardPanelBuilder = new StandardPanelBuilder();
 
   public BasicItemDescriptionView(String header) {
     super(header, true);
   }
 
   private static final int COLUMN_COUNT = 45;
-  private IGridDialogPanel descriptionPanel = new DefaultGridDialogPanel(false);
 
   public ITextView addLineTextView(final String labelName) {
-    return addLabeledTextView(labelName, new LineTextView(COLUMN_COUNT), false);
-  }
-
-  private ITextView addLabeledTextView(final String labelText, final ITextView textView, boolean scroll) {
-    new LabelTextView(labelText, textView, scroll).addTo(descriptionPanel);
-    return textView;
+    return standardPanelBuilder.addLineTextView(labelName, COLUMN_COUNT);
   }
 
   public IStyledTextView addStyledTextView(
@@ -46,7 +39,7 @@ public class BasicItemDescriptionView extends AbstractTabView<Object> implements
       final Dimension preferredSize,
       ITextEditorProperties properties) {
     final TextEditor textEditor = new TextEditor(document, properties, preferredSize);
-    descriptionPanel.add(new IDialogComponent() {
+    standardPanelBuilder.addDialogComponent(new IDialogComponent() {
       public int getColumnCount() {
         return 2;
       }
@@ -66,7 +59,7 @@ public class BasicItemDescriptionView extends AbstractTabView<Object> implements
   @Override
   protected void createContent(JPanel panel, Object properties) {
     panel.setLayout(new GridDialogLayout(1, false));
-    JPanel descriptionContent = descriptionPanel.getContent();    
+    JPanel descriptionContent = standardPanelBuilder.getUntitledContent();
     panel.add(descriptionContent, GridDialogLayoutData.FILL_BOTH);
   }
 }
