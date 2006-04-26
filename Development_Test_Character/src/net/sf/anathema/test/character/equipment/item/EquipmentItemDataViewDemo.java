@@ -1,10 +1,10 @@
 package net.sf.anathema.test.character.equipment.item;
 
-import net.sf.anathema.character.equipment.EquipmentItemDataPresenter;
-import net.sf.anathema.character.equipment.impl.model.EquipmentItemData;
-import net.sf.anathema.character.equipment.impl.view.EquimentItemDataView;
-import net.sf.anathema.character.equipment.model.IEquipmentItemData;
-import net.sf.anathema.character.equipment.view.IEquipmentItemDataView;
+import net.sf.anathema.character.equipment.impl.item.model.EquipmentItemData;
+import net.sf.anathema.character.equipment.impl.item.view.EquimentItemDataView;
+import net.sf.anathema.character.equipment.item.EquipmentItemDataPresenter;
+import net.sf.anathema.character.equipment.item.model.IEquipmentItemData;
+import net.sf.anathema.character.equipment.item.view.IEquipmentItemDataView;
 import net.sf.anathema.framework.repository.tree.demo.DemoResources;
 import de.jdemo.extensions.SwingDemoCase;
 
