@@ -23,5 +23,6 @@
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/jai_core.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/gisterm-shapeexport.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Platform"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Gui"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
