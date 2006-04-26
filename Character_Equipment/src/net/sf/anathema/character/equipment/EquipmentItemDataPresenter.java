@@ -1,14 +1,18 @@
 package net.sf.anathema.character.equipment;
 
+import javax.swing.JComponent;
+
 import net.sf.anathema.character.equipment.model.IEquipmentItemData;
 import net.sf.anathema.character.equipment.view.IEquipmentItemDataView;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.workflow.container.factory.StandardPanelBuilder;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
 public class EquipmentItemDataPresenter implements IPresenter {
 
+  private static int COLUMN_COUNT = 45;
   private final IResources resources;
   private final IEquipmentItemData model;
   private final IEquipmentItemDataView view;
@@ -20,9 +24,15 @@ public class EquipmentItemDataPresenter implements IPresenter {
   }
 
   public void initPresentation() {
-    ITextView nameView = null;//view.addLineTextView("Name:", 15);
-    ITextView descriptionView = null;//view.addAreaTextView("Description:", 15, 10);
+    view.fillDescriptionPanel(createDescriptionPanel());
+  }
+
+  private JComponent createDescriptionPanel() {
+    StandardPanelBuilder builder = new StandardPanelBuilder();
+    ITextView nameView = builder.addLineTextView("Name:", COLUMN_COUNT);
+    ITextView descriptionView = builder.addAreaTextView("Description:", 5, COLUMN_COUNT);
     new TextualPresentation().initView(nameView, model.getDescription().getName());
     new TextualPresentation().initView(descriptionView, model.getDescription().getContent());
+    return builder.getTitledContent("Basics");
   }
 }
