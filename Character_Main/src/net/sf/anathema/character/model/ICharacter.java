@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.framework.itemdata.IItemData;
+import net.sf.anathema.framework.itemdata.model.IItemData;
 
 public interface ICharacter extends IItemData {
 

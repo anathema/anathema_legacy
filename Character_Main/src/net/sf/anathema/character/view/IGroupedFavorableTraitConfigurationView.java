@@ -1,7 +1,7 @@
 package net.sf.anathema.character.view;
 
-import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
+import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.presenter.specialty.ISpecialtyConfigurationView;
 import net.sf.anathema.framework.presenter.view.ITabView;
 

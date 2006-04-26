@@ -1,8 +1,8 @@
 package net.sf.anathema.character.model.concept;
 
-import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
+import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public interface IMotivation extends IWillpowerRegainingConcept {
 
-  public ISimpleTextualDescription getDescription();
+  public ITextualDescription getDescription();
 }

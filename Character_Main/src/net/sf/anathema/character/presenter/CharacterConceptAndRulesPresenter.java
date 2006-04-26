@@ -29,8 +29,8 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
-import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
-import net.sf.anathema.lib.workflow.textualdescription.view.ILabelTextView;
+import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public class CharacterConceptAndRulesPresenter {
 
@@ -86,8 +86,8 @@ public class CharacterConceptAndRulesPresenter {
     initTextualDescriptionPresentation(statistics.getCharacterConcept().getConcept(), "Label.Concept"); //$NON-NLS-1$
   }
 
-  private void initTextualDescriptionPresentation(final ISimpleTextualDescription description, String resourceKey) {
-    final ILabelTextView conceptView = view.addLabelTextView(resources.getString(resourceKey));
+  private void initTextualDescriptionPresentation(final ITextualDescription description, String resourceKey) {
+    final ITextView conceptView = view.addLabelTextView(resources.getString(resourceKey));
     conceptView.addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         description.setText(newValue);

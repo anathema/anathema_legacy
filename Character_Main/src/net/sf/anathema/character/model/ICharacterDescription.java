@@ -1,17 +1,17 @@
 package net.sf.anathema.character.model;
 
-import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
+import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public interface ICharacterDescription {
 
-  public ISimpleTextualDescription getName();
+  public ITextualDescription getName();
 
-  public ISimpleTextualDescription getPeriphrase();
+  public ITextualDescription getPeriphrase();
   
-  public ISimpleTextualDescription getCharacterization();
+  public ITextualDescription getCharacterization();
   
-  public ISimpleTextualDescription getPhysicalDescription();
+  public ITextualDescription getPhysicalDescription();
 
-  public ISimpleTextualDescription getNotes();
+  public ITextualDescription getNotes();
 
 }

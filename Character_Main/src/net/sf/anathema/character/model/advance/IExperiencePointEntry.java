@@ -2,7 +2,7 @@ package net.sf.anathema.character.model.advance;
 
 import javax.swing.event.ChangeListener;
 
-import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
+import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public interface IExperiencePointEntry {
 
@@ -10,7 +10,7 @@ public interface IExperiencePointEntry {
 
   public void setExperiencePoints(int points);
 
-  public ISimpleTextualDescription getTextualDescription();
+  public ITextualDescription getTextualDescription();
 
   public void addChangeListener(ChangeListener listener);
 

@@ -2,7 +2,7 @@ package net.sf.anathema.character.model.charm;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
+import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public interface ICombo extends Cloneable {
 
@@ -14,9 +14,9 @@ public interface ICombo extends Cloneable {
 
   public void clear();
 
-  public ISimpleTextualDescription getName();
+  public ITextualDescription getName();
 
-  public ISimpleTextualDescription getDescription();
+  public ITextualDescription getDescription();
 
   public ICharm[] getCharms();
 

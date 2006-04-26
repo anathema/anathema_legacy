@@ -4,8 +4,8 @@ import net.sf.anathema.character.model.ICharacterDescription;
 import net.sf.anathema.character.presenter.description.NameGeneratorAction;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 import net.sf.anathema.namegenerator.domain.realm.RealmNameGenerator;
 import net.sf.anathema.namegenerator.exalted.domain.ThresholdNameGenerator;
@@ -49,12 +49,12 @@ public class CharacterDescriptionPresenter {
         new ThresholdNameGenerator()), row);
   }
 
-  private void initLineView(String labelResourceKey, final ISimpleTextualDescription textualDescription, TextualPresentation presentation) {
+  private void initLineView(String labelResourceKey, final ITextualDescription textualDescription, TextualPresentation presentation) {
     ITextView textView = descriptionView.addLineView(resources.getString(labelResourceKey));
     presentation.initView(textView, textualDescription);
   }
 
-  private void initAreaView(String labelResourceKey, int rows, final ISimpleTextualDescription textualDescription, TextualPresentation presentation) {
+  private void initAreaView(String labelResourceKey, int rows, final ITextualDescription textualDescription, TextualPresentation presentation) {
     ITextView textView = descriptionView.addAreaView(resources.getString(labelResourceKey), rows);
     presentation.initView(textView, textualDescription);
   }

@@ -5,7 +5,7 @@ import javax.swing.text.JTextComponent;
 
 import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.ITabView;
-import net.sf.anathema.lib.workflow.textualdescription.view.ILabelTextView;
+import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 public interface ICharacterConceptAndRulesView extends ITabView<ICharacterConceptAndRulesViewProperties> {
 
@@ -15,7 +15,7 @@ public interface ICharacterConceptAndRulesView extends ITabView<ICharacterConcep
       ListCellRenderer renderer,
       boolean editable);
 
-  public ILabelTextView addLabelTextView(String labelText);
+  public ITextView addLabelTextView(String labelText);
 
   public void setEnabled(boolean enabled);
 

@@ -2,7 +2,7 @@ package net.sf.anathema.character.model.concept;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.model.ITypedDescription;
-import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
+import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public interface ICharacterConcept {
   
@@ -10,5 +10,5 @@ public interface ICharacterConcept {
 
   public ITypedDescription<ICasteType> getCaste();
 
-  public ISimpleTextualDescription getConcept();
+  public ITextualDescription getConcept();
 }
