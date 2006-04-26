@@ -9,5 +9,7 @@
 	<classpathentry kind="lib" path="/Thirdparty/Commons/commons-lang-2.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Thirdparty/Testing/disy-commons-testing.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/Testing/disy-commons-testing-src.zip"/>
+	<classpathentry exported="true" sourcepath="/Thirdparty/Testing/easymock-src.zip" kind="lib" path="/Thirdparty/Testing/easymock.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Thirdparty/Testing/jmock.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
