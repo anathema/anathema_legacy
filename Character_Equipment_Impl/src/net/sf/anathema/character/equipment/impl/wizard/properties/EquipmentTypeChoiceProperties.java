@@ -1,16 +1,16 @@
-package net.sf.anathema.character.equipment.impl.wizard;
+package net.sf.anathema.character.equipment.impl.wizard.properties;
 
 import javax.swing.Icon;
 
 import net.sf.anathema.character.equipment.impl.model.EquipmentStatisticsType;
 import net.sf.anathema.lib.resources.IResources;
 
-public class AddEquipmentStatsticsProperties implements IAddEquipmentStatisticsProperties {
+public class EquipmentTypeChoiceProperties implements IEquipmentTypeChoiceProperties {
 
   private static final int ICON_SIZE = 20;
   private final IResources resources;
 
-  public AddEquipmentStatsticsProperties(IResources resources) {
+  public EquipmentTypeChoiceProperties(IResources resources) {
     this.resources = resources;
   }
 

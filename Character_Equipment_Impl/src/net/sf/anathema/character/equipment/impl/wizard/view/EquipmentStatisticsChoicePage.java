@@ -18,20 +18,20 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.toolbar.ToolBarUtilities;
 import net.disy.commons.swing.widgets.HorizontalLine;
 import net.sf.anathema.character.equipment.impl.model.EquipmentStatisticsType;
-import net.sf.anathema.character.equipment.impl.wizard.IAddEquipmentStatisticsProperties;
 import net.sf.anathema.character.equipment.impl.wizard.model.AddEquipmentStatisticsWizardModel;
+import net.sf.anathema.character.equipment.impl.wizard.properties.IEquipmentTypeChoiceProperties;
 
 public class EquipmentStatisticsChoicePage extends AbstractAnathemaWizardPage {
 
   private final ButtonGroup buttonGroup = new ButtonGroup();
   private final AddEquipmentStatisticsWizardModel model;
-  private final IAddEquipmentStatisticsProperties properties;
+  private final IEquipmentTypeChoiceProperties properties;
   private JComponent focusComponent;
 
   public EquipmentStatisticsChoicePage(
       IWizardConfiguration wizard,
       AddEquipmentStatisticsWizardModel model,
-      IAddEquipmentStatisticsProperties properties) {
+      IEquipmentTypeChoiceProperties properties) {
     super(properties.getTypeChoiceTitle(), new BasicMessage(properties.getTypeChoiceMessage()), wizard);
     this.model = model;
     this.properties = properties;

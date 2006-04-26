@@ -1,10 +1,10 @@
-package net.sf.anathema.character.equipment.impl.wizard;
+package net.sf.anathema.character.equipment.impl.wizard.properties;
 
 import javax.swing.Icon;
 
 import net.sf.anathema.character.equipment.impl.model.EquipmentStatisticsType;
 
-public interface IAddEquipmentStatisticsProperties {
+public interface IEquipmentTypeChoiceProperties {
 
   public String getLabel(EquipmentStatisticsType type);
   
@@ -17,4 +17,4 @@ public interface IAddEquipmentStatisticsProperties {
   public String getTypeChoiceTitle();
 
   public String getTypeChoiceMessage();
-}
+ }

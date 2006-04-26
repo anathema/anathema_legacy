@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.impl.wizard;
 import net.disy.commons.swing.dialog.wizard.AbstractWizardConfiguration;
 import net.disy.commons.swing.dialog.wizard.IWizardPage;
 import net.sf.anathema.character.equipment.impl.wizard.model.AddEquipmentStatisticsWizardModel;
+import net.sf.anathema.character.equipment.impl.wizard.properties.IAddEquipmentStatisticsProperties;
 import net.sf.anathema.character.equipment.impl.wizard.view.AbstractAnathemaWizardPage;
 import net.sf.anathema.character.equipment.impl.wizard.view.CloseCombatStatisticsPage;
 import net.sf.anathema.character.equipment.impl.wizard.view.EquipmentStatisticsChoicePage;
@@ -15,8 +16,8 @@ public class AddEquipmentStatisticWizard extends AbstractWizardConfiguration {
   public AddEquipmentStatisticWizard(
       AddEquipmentStatisticsWizardModel model,
       IAddEquipmentStatisticsProperties properties) {
-    this.typeChoicePage = new EquipmentStatisticsChoicePage(this, model, properties);
-    this.closeCombatStatisticsPage = new CloseCombatStatisticsPage(this, model);
+    this.typeChoicePage = new EquipmentStatisticsChoicePage(this, model, properties.getTypeChoiceProperties());
+    this.closeCombatStatisticsPage = new CloseCombatStatisticsPage(this, model.getCloseCombatStatisticsModel(), properties.getCloseCombatProperties());
   }
 
   public IWizardPage getStartingPage() {
