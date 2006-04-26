@@ -12,5 +12,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Development_Test_Platform"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Platform"/>
 	<classpathentry kind="lib" path="/Thirdparty/Testing/jdemo_core.jar"/>
+	<classpathentry sourcepath="/Thirdparty/disy/disy-comons-swing-dialog.src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-dialog.jar"/>
+	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-layout_src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
