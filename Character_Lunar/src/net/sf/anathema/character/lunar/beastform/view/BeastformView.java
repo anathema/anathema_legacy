@@ -19,8 +19,8 @@ import net.sf.anathema.character.lunar.beastform.presenter.IBeastformView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
+import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
-import net.sf.anathema.lib.workflow.textualdescription.view.ILabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 
 public class BeastformView implements IBeastformView {
@@ -68,7 +68,7 @@ public class BeastformView implements IBeastformView {
     return traitView;
   }
 
-  public ILabelTextView addTextArea(String label) {
+  public ITextView addTextArea(String label) {
     LabelTextView labelledView = new LabelTextView(label, new AreaTextView(10, 20));
     labelledView.addTo(baseContentPanel);
     return labelledView;
