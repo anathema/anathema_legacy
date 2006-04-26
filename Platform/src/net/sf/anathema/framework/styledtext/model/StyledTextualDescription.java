@@ -3,6 +3,8 @@ package net.sf.anathema.framework.styledtext.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.framework.styledtext.presentation.TextFormat;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.workflow.textualdescription.model.AbstractTextualDescription;
 
@@ -20,7 +22,7 @@ public class StyledTextualDescription extends AbstractTextualDescription impleme
     setDirty(true);
   }
 
-  public ITextPart[] getText() {
+  public ITextPart[] getTextParts() {
     return textParts;
   }
 
@@ -40,5 +42,29 @@ public class StyledTextualDescription extends AbstractTextualDescription impleme
 
   public boolean isEmpty() {
     return textParts.length == 0;
+  }
+
+  public void setText(String text) {
+    setText(new ITextPart[] { new net.sf.anathema.framework.styledtext.presentation.TextPart(text, new TextFormat()) });
+  }
+
+  public void addTextChangedListener(final IObjectValueChangedListener<String> listener) {
+    addTextChangedListener(new IStyledTextChangeListener() {
+      public void textChanged(ITextPart[] newParts) {
+        listener.valueChanged(getText(newParts));
+      }
+    });
+  }
+
+  private String getText(ITextPart[] parts) {
+    StringBuffer buffer = new StringBuffer();
+    for (ITextPart part : parts) {
+      buffer.append(part.getText());
+    }
+    return buffer.toString();
+  }
+
+  public String getText() {
+    return getText(getTextParts());
   }
 }

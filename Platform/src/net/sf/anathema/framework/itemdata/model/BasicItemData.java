@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.itemdata;
+package net.sf.anathema.framework.itemdata.model;
 
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 

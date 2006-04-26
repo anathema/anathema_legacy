@@ -136,7 +136,7 @@ public class StyledTextManager implements IStyledTextManager {
         textualDescription.setText(newParts);
       }
     });
-    manager.setText(textualDescription.getText());
+    manager.setText(textualDescription.getTextParts());
     textualDescription.addTextChangedListener(new IStyledTextChangeListener() {
       public void textChanged(ITextPart[] newParts) {
         manager.setText(newParts);

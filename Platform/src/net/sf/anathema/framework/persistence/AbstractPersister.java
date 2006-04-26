@@ -9,7 +9,7 @@ import net.sf.anathema.framework.styledtext.model.ITextFormat;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.framework.styledtext.presentation.TextFormat;
 import net.sf.anathema.framework.styledtext.presentation.TextPart;
-import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
+import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
@@ -48,7 +48,7 @@ public abstract class AbstractPersister {
   protected final void saveTextualDescription(
       Element parent,
       String tagName,
-      ISimpleTextualDescription textualDescription) {
+      ITextualDescription textualDescription) {
     saveNonEmptyText(parent, tagName, textualDescription.getText());
   }
 
@@ -56,7 +56,7 @@ public abstract class AbstractPersister {
       Element parent,
       String tagName,
       IStyledTextualDescription textualDescription) {
-    saveNonEmptyText(parent, tagName, textualDescription.getText());
+    saveNonEmptyText(parent, tagName, textualDescription.getTextParts());
   }
 
   protected final void restoreTextualDescription(Element parent, String tagName, IStyledTextualDescription description) {
@@ -89,7 +89,7 @@ public abstract class AbstractPersister {
     return new TextFormat(fontStyle, isUnderline);
   }
 
-  protected final void restoreTextualDescription(Element parent, String tagName, ISimpleTextualDescription description) {
+  protected final void restoreTextualDescription(Element parent, String tagName, ITextualDescription description) {
     Element textualElement = parent.element(tagName);
     if (textualElement != null) {
       description.setText(textualElement.getText());

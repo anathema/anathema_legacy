@@ -1,13 +1,13 @@
-package net.sf.anathema.framework.itemdata;
+package net.sf.anathema.framework.itemdata.model;
 
 import net.sf.anathema.framework.styledtext.model.IStyledTextualDescription;
 import net.sf.anathema.framework.styledtext.model.StyledTextualDescription;
-import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
+import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
 public class ItemDescription implements IItemDescription {
 
-  private final ISimpleTextualDescription name;
+  private final ITextualDescription name;
   private final IStyledTextualDescription content;
 
   public ItemDescription() {
@@ -19,7 +19,7 @@ public class ItemDescription implements IItemDescription {
     this.content = new StyledTextualDescription();
   }
 
-  public ISimpleTextualDescription getName() {
+  public ITextualDescription getName() {
     return name;
   }
 
