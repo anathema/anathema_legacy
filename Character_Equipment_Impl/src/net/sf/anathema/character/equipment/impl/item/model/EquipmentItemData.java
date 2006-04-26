@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.model;
+package net.sf.anathema.character.equipment.impl.item.model;
 
 import net.sf.anathema.character.equipment.item.model.IEquipmentItemData;
 import net.sf.anathema.framework.itemdata.model.BasicItemData;
