@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
+	<classpathentry exported="true" sourcepath="/Thirdparty/disy/disy-comons-swing-dialog.src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-dialog.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
