@@ -9,7 +9,7 @@ import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.itemdata.IItemData;
+import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.repository.AnathemaItem;
 import net.sf.anathema.gis.main.impl.model.GisModel;

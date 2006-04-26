@@ -12,6 +12,6 @@ public abstract class AbstractItemTypeEnabler implements IItemManagementModelLis
   }
 
   protected final boolean isRelevantItem(IItem item) {
-    return item.getItemType().getId().equals(itemTypeId);
+    return item != null && item.getItemType().getId().equals(itemTypeId);
   }
 }
