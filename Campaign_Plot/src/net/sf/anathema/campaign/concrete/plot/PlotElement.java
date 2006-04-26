@@ -2,8 +2,8 @@ package net.sf.anathema.campaign.concrete.plot;
 
 import net.sf.anathema.campaign.model.plot.IPlotElement;
 import net.sf.anathema.campaign.model.plot.IPlotTimeUnit;
-import net.sf.anathema.framework.itemdata.IItemDescription;
-import net.sf.anathema.framework.itemdata.ItemDescription;
+import net.sf.anathema.framework.itemdata.model.IItemDescription;
+import net.sf.anathema.framework.itemdata.model.ItemDescription;
 
 public class PlotElement extends PlotElementContainer implements IPlotElement {
 

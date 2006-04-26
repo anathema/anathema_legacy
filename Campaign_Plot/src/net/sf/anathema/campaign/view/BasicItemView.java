@@ -4,8 +4,8 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 
 import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.campaign.presenter.view.IBasicItemDescriptionView;
-import net.sf.anathema.campaign.presenter.view.IBasicItemView;
+import net.sf.anathema.framework.itemdata.view.IBasicItemDescriptionView;
+import net.sf.anathema.framework.itemdata.view.IBasicItemView;
 import net.sf.anathema.framework.view.item.AbstractItemView;
 
 public class BasicItemView extends AbstractItemView implements IBasicItemView {

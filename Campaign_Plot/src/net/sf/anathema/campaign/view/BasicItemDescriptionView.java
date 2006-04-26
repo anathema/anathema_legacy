@@ -11,7 +11,7 @@ import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
-import net.sf.anathema.campaign.presenter.view.IBasicItemDescriptionView;
+import net.sf.anathema.framework.itemdata.view.IBasicItemDescriptionView;
 import net.sf.anathema.framework.presenter.view.AbstractTabView;
 import net.sf.anathema.framework.styledtext.IStyledTextView;
 import net.sf.anathema.framework.styledtext.ITextEditorProperties;

@@ -13,10 +13,10 @@ import net.sf.anathema.campaign.model.plot.IPlotElement;
 import net.sf.anathema.campaign.model.plot.IPlotElementContainer;
 import net.sf.anathema.campaign.model.plot.IPlotElementContainerListener;
 import net.sf.anathema.campaign.model.plot.IPlotModel;
-import net.sf.anathema.campaign.presenter.view.IBasicItemDescriptionView;
 import net.sf.anathema.campaign.presenter.view.IPlotViewListener;
 import net.sf.anathema.campaign.presenter.view.plot.IPlotView;
-import net.sf.anathema.framework.itemdata.IItemDescription;
+import net.sf.anathema.framework.itemdata.model.IItemDescription;
+import net.sf.anathema.framework.itemdata.view.IBasicItemDescriptionView;
 import net.sf.anathema.framework.presenter.TextEditorProperties;
 import net.sf.anathema.framework.styledtext.IStyledTextView;
 import net.sf.anathema.framework.styledtext.model.IStyledTextChangeListener;
@@ -132,7 +132,7 @@ public class PlotPresenter {
       }
       IItemDescription description = ((IPlotElement) node.getUserObject()).getDescription();
       itemNameView.setText(description.getName().getText());
-      itemSummaryViewManager.setText(description.getContent().getText());
+      itemSummaryViewManager.setText(description.getContent().getTextParts());
     }
   };
   private final IResources resources;

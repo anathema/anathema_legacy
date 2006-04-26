@@ -1,6 +1,6 @@
 package net.sf.anathema.campaign.model.plot;
 
-import net.sf.anathema.framework.itemdata.IItemDescription;
+import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public interface IPlotElementContainer extends IIdentificate{

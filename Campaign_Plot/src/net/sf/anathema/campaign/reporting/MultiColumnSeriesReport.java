@@ -2,7 +2,7 @@ package net.sf.anathema.campaign.reporting;
 
 import net.sf.anathema.campaign.model.ISeries;
 import net.sf.anathema.campaign.model.plot.IPlotElement;
-import net.sf.anathema.framework.itemdata.IItemDescription;
+import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.itext.IITextReport;
 import net.sf.anathema.framework.repository.IItem;
@@ -146,7 +146,7 @@ public class MultiColumnSeriesReport implements IITextReport {
   }
 
   private TextElementArray createContentParagraph(IItemDescription description) {
-    ITextPart[] content = description.getContent().getText();
+    ITextPart[] content = description.getContent().getTextParts();
     Paragraph contentParagraph = new Paragraph();
     contentParagraph.setLeading(0, 1.4f);
     contentParagraph.setAlignment(Element.ALIGN_JUSTIFIED);

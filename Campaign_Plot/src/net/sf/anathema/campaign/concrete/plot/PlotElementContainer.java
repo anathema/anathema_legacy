@@ -8,7 +8,7 @@ import net.sf.anathema.campaign.model.plot.IPlotElement;
 import net.sf.anathema.campaign.model.plot.IPlotElementContainer;
 import net.sf.anathema.campaign.model.plot.IPlotElementContainerListener;
 import net.sf.anathema.campaign.model.plot.IPlotTimeUnit;
-import net.sf.anathema.framework.itemdata.IItemDescription;
+import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.lib.util.Identificate;
 
 public class PlotElementContainer extends Identificate implements IPlotElementContainer {

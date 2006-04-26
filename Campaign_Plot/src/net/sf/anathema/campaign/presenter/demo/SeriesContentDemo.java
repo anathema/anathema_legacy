@@ -16,7 +16,6 @@ import net.sf.anathema.framework.repository.tree.RepositoryTreeView;
 import net.sf.anathema.framework.repository.tree.demo.DemoRepositoryTreeModel;
 import net.sf.anathema.framework.repository.tree.demo.DemoResources;
 import net.sf.anathema.framework.view.PrintNameFile;
-
 import de.jdemo.extensions.SwingDemoCase;
 
 public class SeriesContentDemo extends SwingDemoCase {

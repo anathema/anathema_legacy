@@ -6,7 +6,6 @@ import net.sf.anathema.campaign.presenter.view.plot.IPlotView;
 import net.sf.anathema.campaign.view.plot.PlotView;
 import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.lib.resources.IResources;
-
 import de.jdemo.extensions.SwingDemoCase;
 
 public class PlotViewDemo extends SwingDemoCase {

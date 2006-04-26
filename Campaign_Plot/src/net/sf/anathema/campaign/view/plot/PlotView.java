@@ -23,13 +23,13 @@ import javax.swing.tree.TreeSelectionModel;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.sf.anathema.campaign.presenter.view.IBasicItemDescriptionView;
 import net.sf.anathema.campaign.presenter.view.IPlotViewListener;
 import net.sf.anathema.campaign.presenter.view.plot.IPlotView;
 import net.sf.anathema.campaign.presenter.view.plot.IPlotViewProperties;
 import net.sf.anathema.campaign.presenter.view.plot.ITreeView;
 import net.sf.anathema.campaign.view.BasicItemDescriptionView;
 import net.sf.anathema.campaign.view.util.DefaultTreeView;
+import net.sf.anathema.framework.itemdata.view.IBasicItemDescriptionView;
 import net.sf.anathema.framework.presenter.view.AbstractTabView;
 import net.sf.anathema.lib.gui.layout.AnathemaLayoutUtilities;
 

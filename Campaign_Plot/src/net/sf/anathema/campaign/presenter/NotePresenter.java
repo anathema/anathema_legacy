@@ -1,7 +1,8 @@
 package net.sf.anathema.campaign.presenter;
 
-import net.sf.anathema.campaign.presenter.view.IBasicItemView;
-import net.sf.anathema.framework.itemdata.IBasicItemData;
+import net.sf.anathema.framework.itemdata.AbstractBasicItemPresenter;
+import net.sf.anathema.framework.itemdata.model.IBasicItemData;
+import net.sf.anathema.framework.itemdata.view.IBasicItemView;
 import net.sf.anathema.lib.resources.IResources;
 
 public class NotePresenter extends AbstractBasicItemPresenter {

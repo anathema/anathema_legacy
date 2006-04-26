@@ -1,7 +1,7 @@
 package net.sf.anathema.campaign.reporting;
 
-import net.sf.anathema.framework.itemdata.IBasicItemData;
-import net.sf.anathema.framework.itemdata.IItemDescription;
+import net.sf.anathema.framework.itemdata.model.IBasicItemData;
+import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.itext.IITextReport;
 import net.sf.anathema.framework.repository.IItem;
@@ -25,7 +25,7 @@ public class NoteReport implements IITextReport {
       throw new IllegalArgumentException("Item not supported: " + item.getDisplayName()); //$NON-NLS-1$
     }
     IItemDescription noteDescription = ((IBasicItemData) item.getItemData()).getDescription();
-    ITextPart[] text = noteDescription.getContent().getText();
+    ITextPart[] text = noteDescription.getContent().getTextParts();
     try {
       document.add(reportUtils.createNewParagraph(noteDescription.getName().getText(), Element.ALIGN_CENTER, Font.BOLD));
       MultiColumnText columnText = new MultiColumnText();

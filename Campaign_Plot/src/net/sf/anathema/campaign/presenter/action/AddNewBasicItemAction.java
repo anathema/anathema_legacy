@@ -7,7 +7,7 @@ import javax.swing.Action;
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.itemdata.BasicItemData;
+import net.sf.anathema.framework.itemdata.model.BasicItemData;
 import net.sf.anathema.framework.presenter.action.AbstractAddNewItemAction;
 import net.sf.anathema.framework.repository.AnathemaItem;
 import net.sf.anathema.framework.repository.IItem;
