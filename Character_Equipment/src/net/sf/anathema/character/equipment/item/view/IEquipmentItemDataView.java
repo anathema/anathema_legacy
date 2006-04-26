@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.view;
+package net.sf.anathema.character.equipment.item.view;
 
 import javax.swing.JComponent;
 
