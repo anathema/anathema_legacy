@@ -1,5 +1,6 @@
 package net.sf.anathema.lib.workflow.textualdescription.view;
 
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -11,11 +12,12 @@ import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.widgets.RevalidatingScrollPane;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
-public class LabelTextView implements ILabelTextView {
+public class LabelTextView implements ITextView {
 
   private final ITextView textView;
   private final String labelText;
   private final boolean scrollPane;
+  private JComponent content;
 
   public LabelTextView(String labelText, ITextView textView) {
     this(labelText, textView, false);
@@ -38,15 +40,18 @@ public class LabelTextView implements ILabelTextView {
         labelLayoutData.setHorizontalAlignment(GridAlignment.BEGINNING);
         labelLayoutData.setVerticalAlignment(GridAlignment.BEGINNING);
         panel.add(new JLabel(labelText), labelLayoutData);
-        if (scrollPane) {
-          panel.add(new RevalidatingScrollPane(textView.getComponent()), GridDialogLayoutData.FILL_BOTH);
-        }
-        else {
-          panel.add(textView.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
-        }
+        JComponent initializedContent = getInitializedContent();
+        panel.add(initializedContent, scrollPane ? GridDialogLayoutData.FILL_BOTH : GridDialogLayoutData.FILL_HORIZONTAL);
       }
     });
     return textView;
+  }
+
+  private JComponent getInitializedContent() {
+    if (content == null) {
+      content = scrollPane ? new RevalidatingScrollPane(textView.getComponent()) : textView.getComponent();
+    }
+    return content;
   }
 
   public void setText(String text) {
@@ -55,5 +60,13 @@ public class LabelTextView implements ILabelTextView {
 
   public void addTextChangedListener(final IObjectValueChangedListener<String> listener) {
     textView.addTextChangedListener(listener);
+  }
+
+  public JComponent getComponent() {
+    return getInitializedContent();
+  }
+
+  public void setEnabled(boolean enabled) {
+    textView.setEnabled(enabled);
   }
 }

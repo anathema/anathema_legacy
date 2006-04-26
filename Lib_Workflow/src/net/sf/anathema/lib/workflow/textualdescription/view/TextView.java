@@ -22,6 +22,7 @@ public class TextView implements ITextView {
   protected TextView(JTextComponent textComponent) {
     this.textComponent = textComponent;
     this.textComponent.setFont(new JTextField().getFont());
+    this.textComponent.setDisabledTextColor(Color.DARK_GRAY);
   }
 
   public final void setText(String text) {

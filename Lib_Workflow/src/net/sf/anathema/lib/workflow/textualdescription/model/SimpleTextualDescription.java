@@ -4,9 +4,9 @@ import net.disy.commons.core.util.ObjectUtilities;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.ObjectValueControl;
-import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
+import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
-public class SimpleTextualDescription extends AbstractTextualDescription implements ISimpleTextualDescription {
+public class SimpleTextualDescription extends AbstractTextualDescription implements ITextualDescription {
 
   private final ObjectValueControl<String> textControl = new ObjectValueControl<String>();
   private String text;

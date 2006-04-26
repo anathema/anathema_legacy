@@ -1,5 +1,7 @@
 package net.sf.anathema.lib.workflow.textualdescription.model;
 
+import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
+
 public abstract class AbstractTextualDescription implements ITextualDescription {
 
   private boolean dirty = true;
