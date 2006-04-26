@@ -1,11 +1,11 @@
 package net.sf.anathema.character.solar.virtueflaw.model;
 
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
-import net.sf.anathema.lib.workflow.textualdescription.ISimpleTextualDescription;
+import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public interface ISolarVirtueFlaw extends IVirtueFlaw {
 
-  public ISimpleTextualDescription getDescription();
+  public ITextualDescription getDescription();
 
-  public ISimpleTextualDescription getLimitBreak();
+  public ITextualDescription getLimitBreak();
 }
