@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Lib"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Gui"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Platform"/>
+	<classpathentry kind="lib" path="/Thirdparty/Testing/disy-commons-testing.jar"/>
+	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
+	<classpathentry sourcepath="/Thirdparty/Testing/easymock-src.zip" kind="lib" path="/Thirdparty/Testing/easymock.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
