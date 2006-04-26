@@ -1,6 +1,6 @@
 package net.sf.anathema.test.platform.itemdata;
 
-import net.sf.anathema.framework.itemdata.IBasicItemData;
+import net.sf.anathema.framework.itemdata.model.IBasicItemData;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
@@ -15,7 +15,7 @@ public abstract class AbstractBasicItemDataTest extends BasicTestCase {
   public void testBasicDataOnCreation() throws Exception {
     IBasicItemData itemData = getObjectUnderTest();
     assertEquals("", itemData.getDescription().getName().getText()); //$NON-NLS-1$
-    assertEquals(new ITextPart[0], itemData.getDescription().getContent().getText());
+    assertEquals(new ITextPart[0], itemData.getDescription().getContent().getTextParts());
   }
 
   public void testPrintNameAdjustment() throws Exception {

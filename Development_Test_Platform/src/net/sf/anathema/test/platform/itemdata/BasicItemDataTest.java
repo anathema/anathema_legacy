@@ -1,7 +1,7 @@
 package net.sf.anathema.test.platform.itemdata;
 
-import net.sf.anathema.framework.itemdata.BasicItemData;
-import net.sf.anathema.framework.itemdata.IBasicItemData;
+import net.sf.anathema.framework.itemdata.model.BasicItemData;
+import net.sf.anathema.framework.itemdata.model.IBasicItemData;
 
 public class BasicItemDataTest extends AbstractBasicItemDataTest {
   
