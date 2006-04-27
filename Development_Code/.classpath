@@ -17,7 +17,6 @@
 	<classpathentry kind="src" path="/Character_Abyssal"/>
 	<classpathentry kind="src" path="/Character_Solar"/>
 	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Database/db4o-4.5-src.zip" kind="lib" path="/Thirdparty/Database/db4o-4.5-java1.4.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Db"/>
 	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
