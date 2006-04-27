@@ -8,7 +8,7 @@ public class AllDemos {
   public static IDemo suite() {
     DemoSuite suite = new DemoSuite("Demo for net.sf.anathema.test.character.equipment.item"); //$NON-NLS-1$
     //$JDemo-BEGIN$
-    suite.addDemo(new DemoSuite(AddEquipmentStatisticsWizardDemo.class));
+    suite.addDemo(new DemoSuite(EquipmentStatisticsCreationWizardDemo.class));
     suite.addDemo(new DemoSuite(EquipmentItemDataViewDemo.class));
     //$JDemo-END$
     return suite;
