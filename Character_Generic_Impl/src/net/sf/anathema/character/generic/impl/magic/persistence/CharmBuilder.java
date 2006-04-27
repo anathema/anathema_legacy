@@ -33,6 +33,7 @@ import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
 import net.sf.anathema.character.generic.impl.magic.MagicSource;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmPrerequisiteListBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmTypeBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CostListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.DurationBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ICostListBuilder;
@@ -56,6 +57,7 @@ import org.dom4j.Element;
 
 public class CharmBuilder implements ICharmBuilder {
 
+  private final CharmTypeBuilder charmTypeBuilder = new CharmTypeBuilder();
   private final ICostListBuilder costListBuilder = new CostListBuilder();
   private final DurationBuilder durationBuilder = new DurationBuilder();
   private final TraitTypeUtils traitUtils = new TraitTypeUtils();
@@ -82,7 +84,7 @@ public class CharmBuilder implements ICharmBuilder {
     IPermanentCostList permanentCost = costListBuilder.buildPermanentCostList(costElement.element(TAG_PERMANENT));
     IComboRestrictions comboRules = getComboRules(rulesElement, id);
     Duration duration = durationBuilder.buildDuration(getElementFromRules(rulesElement, TAG_DURATION));
-    CharmType charmType = getCharmType(rulesElement, id);
+    CharmType charmType = charmTypeBuilder.build(rulesElement);
 
     List<IMagicSource> sources = new ArrayList<IMagicSource>();
     List<Element> sourceElements = ElementUtilities.elements(rulesElement, TAG_SOURCE);
@@ -141,24 +143,6 @@ public class CharmBuilder implements ICharmBuilder {
       throw new CharmException("No group specified for charm."); //$NON-NLS-1$
     }
     return group;
-  }
-
-  private CharmType getCharmType(Element rulesElement, String id) throws CharmException {
-    CharmType charmType;
-    Element typeElement = getElementFromRules(rulesElement, TAG_CHARMTYPE);
-    if (typeElement == null) {
-      throw new CharmException("Type required for charm: " + id); //$NON-NLS-1$
-    }
-    try {
-      charmType = CharmType.valueOf(typeElement.attributeValue(ATTRIB_TYPE));
-    }
-    catch (IllegalArgumentException e) {
-      throw new CharmException("Bad type in charm: " + id); //$NON-NLS-1$
-    }
-    catch (NullPointerException e) {
-      throw new CharmException("Bad type in charm: " + id); //$NON-NLS-1$
-    }
-    return charmType;
   }
 
   private IComboRestrictions getComboRules(Element rulesElement, String id) throws CharmException {
