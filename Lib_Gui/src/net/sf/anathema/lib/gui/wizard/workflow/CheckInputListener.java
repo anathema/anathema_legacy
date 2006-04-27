@@ -1,4 +1,4 @@
-package net.sf.anathema.lib.gui.wizard;
+package net.sf.anathema.lib.gui.wizard.workflow;
 
 import net.disy.commons.core.util.ISimpleBlock;
 import net.sf.anathema.lib.control.change.IChangeListener;

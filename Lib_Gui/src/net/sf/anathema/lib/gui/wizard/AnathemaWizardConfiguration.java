@@ -8,6 +8,7 @@ import net.disy.commons.swing.dialog.userdialog.buttons.IDialogButtonConfigurati
 import net.disy.commons.swing.dialog.wizard.IBasicWizardConfiguration;
 import net.disy.commons.swing.dialog.wizard.IBasicWizardPage;
 import net.disy.commons.swing.dialog.wizard.IWizardContainer;
+import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 
 public class AnathemaWizardConfiguration implements IBasicWizardConfiguration {
 
