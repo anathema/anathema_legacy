@@ -19,6 +19,7 @@ import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants;
 
 import org.apache.batik.dom.svg.SVGOMDocument;
+import org.apache.batik.swing.gvt.Interactor;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.events.Event;
 import org.w3c.dom.events.EventListener;
@@ -124,8 +125,7 @@ public class CharmTreeListening {
       }
     });
     canvas.addMouseWheelListener(new MouseWheelMagnifyListener(boundsCalculator));
-    List interactors = canvas.getInteractors();
-    // interactors.add(new RightClickImageZoomInteractor(boundsCalculator));
+    List<Interactor> interactors = canvas.getInteractors();
     interactors.add(new RightClickMagnifyInteractor(boundsCalculator));
     interactors.add(new RightClickPanInteractor(boundsCalculator));
     interactors.add(new DoubleRightClickResetTransformInteractor(boundsCalculator));
