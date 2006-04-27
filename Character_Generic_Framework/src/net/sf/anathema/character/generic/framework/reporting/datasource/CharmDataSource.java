@@ -111,7 +111,7 @@ public class CharmDataSource implements IReportDataSource {
     }
     if (COLUMN_SOURCE.equals(columnName)) {
       if (magic.getSource() == null) {
-        return resources.getImage("CharmDataSource.Source.Custom"); //$NON-NLS-1$
+        return resources.getString("CharmDataSource.Source.Custom"); //$NON-NLS-1$
       }
       IMagicSource source = magic.getSource();
       return source.getSource() + (source.getPage() == null ? "" : ", " + source.getPage()); //$NON-NLS-1$//$NON-NLS-2$
