@@ -1,6 +1,8 @@
 package net.sf.anathema.character.equipment.creation;
 
 import java.awt.Component;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.Action;
 
@@ -13,31 +15,40 @@ import net.sf.anathema.character.equipment.creation.model.IEquipmentStatisticsCr
 import net.sf.anathema.character.equipment.creation.properties.EquipmentTypeChoiceProperties;
 import net.sf.anathema.character.equipment.creation.view.IEquipmentTypeChoiceView;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
-import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
+import net.sf.anathema.lib.gui.wizard.CheckInputListener;
+import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.resources.IResources;
 
-public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage implements IPresenter {
+public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage {
 
+  private final Map<EquipmentStatisticsType, IAnathemaWizardPage> pagesByType = new HashMap<EquipmentStatisticsType, IAnathemaWizardPage>();
   private final IEquipmentStatisticsCreationModel model;
   private final EquipmentTypeChoiceProperties properties;
   private final IEquipmentStatisticsCreationViewFactory viewFactory;
   private IEquipmentTypeChoiceView view;
+  private final IResources resources;
 
   public EquipmentTypeChoicePresenterPage(
       IResources resources,
       IEquipmentStatisticsCreationModel model,
       IEquipmentStatisticsCreationViewFactory viewFactory) {
+    this.resources = resources;
     this.properties = new EquipmentTypeChoiceProperties(resources);
     this.model = model;
     this.viewFactory = viewFactory;
   }
 
   public boolean canFinish() {
-    return model.getEquipmentType() != null;
+    return false;
   }
 
-  public void initPresentation() {
+  public void initPresentation(CheckInputListener inputListener) {
+    model.addEquipmentTypeChangeListener(inputListener);
+    addPage(
+        EquipmentStatisticsType.CloseCombat,
+        new CloseCombatStatisticsPresenterPage(resources, model, viewFactory),
+        inputListener);
     this.view = viewFactory.createTypeChoiceView();
     String label = properties.getOffensiveLabel();
     addStatisticsTypeRow(label, EquipmentStatisticsType.CloseCombat);
@@ -45,6 +56,11 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
     view.addHorizontalLine();
     addStatisticsTypeRow(properties.getDefensiveLabel(), EquipmentStatisticsType.Armor);
     addStatisticsTypeRow("", EquipmentStatisticsType.Shield); //$NON-NLS-1$
+  }
+
+  private void addPage(EquipmentStatisticsType type, IAnathemaWizardPage page, CheckInputListener inputListener) {
+    pagesByType.put(type, page);
+    page.initPresentation(inputListener);
   }
 
   private void addStatisticsTypeRow(String label, final EquipmentStatisticsType type) {
@@ -59,11 +75,7 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
   }
 
   public IBasicWizardPage getNextPage() {
-    return null;
-  }
-
-  public IBasicWizardPage getPreviousPage() {
-    return null;
+    return pagesByType.get(model.getEquipmentType());
   }
 
   public IPageContent getPageContent() {

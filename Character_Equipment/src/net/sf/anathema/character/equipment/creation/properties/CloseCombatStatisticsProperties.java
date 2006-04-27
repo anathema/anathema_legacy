@@ -10,12 +10,19 @@ public class CloseCombatStatisticsProperties {
     this.resources = resources;
   }
 
-  public String getNameString() {
-    return null;
+  public String getNameLabel() {
+    return "Name:";
   }
 
-  public String getSpeedString() {
-    return null;
+  public String getSpeedLabel() {
+    return "Speed:";
   }
 
+  public String getPageDescription() {
+    return "Description";
+  }
+
+  public String getDefaultMessage() {
+    return "Default message";
+  }
 }
