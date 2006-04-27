@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.io.Writer;
 
 import net.disy.commons.core.io.IOUtilities;
+import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
-import net.disy.commons.swing.message.Message;
 import net.sf.anathema.campaign.music.export.PlayListExporter;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.framework.message.MessageUtilities;

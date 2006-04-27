@@ -6,8 +6,8 @@ import java.io.File;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
-import net.disy.commons.swing.message.Message;
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
 import net.sf.anathema.campaign.music.model.libary.ILibraryControl;
 import net.sf.anathema.campaign.music.presenter.IMusicSearchControl;

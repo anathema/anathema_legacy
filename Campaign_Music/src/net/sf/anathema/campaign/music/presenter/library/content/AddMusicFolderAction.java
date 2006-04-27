@@ -11,12 +11,12 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
+import net.disy.commons.core.message.Message;
+import net.disy.commons.core.message.MessageType;
 import net.disy.commons.core.progress.IProgressMonitor;
 import net.disy.commons.core.progress.IRunnableWithProgress;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.progress.ProgressMonitorDialog;
-import net.disy.commons.swing.message.Message;
-import net.disy.commons.swing.message.MessageType;
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
 import net.sf.anathema.campaign.music.model.libary.ILibraryControl;
 import net.sf.anathema.campaign.music.model.libary.IMusicFolderWalker;
