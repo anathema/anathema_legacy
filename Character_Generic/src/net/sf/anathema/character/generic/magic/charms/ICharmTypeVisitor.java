@@ -1,5 +1,7 @@
 package net.sf.anathema.character.generic.magic.charms;
 
+import net.sf.anathema.character.generic.magic.charms.type.CharmType;
+
 public interface ICharmTypeVisitor {
 
   public void visitSimple(CharmType visitedType);

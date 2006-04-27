@@ -2,10 +2,10 @@ package net.sf.anathema.character.generic.magic;
 
 import java.util.Set;
 
-import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
+import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -18,8 +18,6 @@ public interface ICharmData extends IMagicData {
   public static final IIdentificate NO_STYLE_ATTRIBUTE = new Identificate("NoStyle"); //$NON-NLS-1$
 
   public CharacterType getCharacterType();
-
-  public CharmType getCharmType();
 
   public Duration getDuration();
 
@@ -34,4 +32,6 @@ public interface ICharmData extends IMagicData {
   public ICharmAttributeRequirement[] getAttributeRequirements();
 
   public Set<ICharm> getParentCharms();
+
+  public ICharmTypeModel getCharmTypeModel();
 }

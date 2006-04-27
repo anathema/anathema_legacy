@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 
 public class ComboRestrictions implements IComboRestrictions {
@@ -48,7 +49,7 @@ public class ComboRestrictions implements IComboRestrictions {
   }
 
   public boolean isRestrictedCharm(ICharm charm) {
-    if (restrictedCharmTypes.contains(charm.getCharmType())) {
+    if (restrictedCharmTypes.contains(charm.getCharmTypeModel().getCharmType())) {
       return true;
     }
     if (restrictedCharmIds.contains(charm.getId())) {

@@ -1,5 +1,6 @@
-package net.sf.anathema.character.generic.magic.charms;
+package net.sf.anathema.character.generic.magic.charms.type;
 
+import net.sf.anathema.character.generic.magic.charms.ICharmTypeVisitor;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public enum CharmType implements IIdentificate {
