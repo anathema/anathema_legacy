@@ -85,18 +85,18 @@ public class CharmCache implements ICharmCache {
   }
 
   // Necessary for connections between Charms from different documents/types
-  public Charm searchCharm(final String charmId) {
+  public ICharm searchCharm(final String charmId) {
     try {
       String[] idParts = charmId.split("\\."); //$NON-NLS-1$
       CharacterType characterTypeId = CharacterType.getById(idParts[0]);
       ICharm[] charms = getCharms(characterTypeId, ExaltedRuleSet.CoreRules);
-      ICharm parentCharm = ArrayUtilities.find(new Predicate<ICharm>() {
+      ICharm charm = ArrayUtilities.find(new Predicate<ICharm>() {
         @Override
-        public boolean evaluate(ICharm t) {
-          return t.getId().equals(charmId);
+        public boolean evaluate(ICharm candidate) {
+          return candidate.getId().equals(charmId);
         }
       }, charms);
-      return (Charm) parentCharm;
+      return charm;
     }
     catch (PersistenceException e) {
       return null;

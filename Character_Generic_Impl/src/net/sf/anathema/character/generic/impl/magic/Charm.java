@@ -195,7 +195,7 @@ public class Charm extends Identificate implements ICharm {
     for (final String parentId : prerequisisteList.getParentIDs()) {
       Charm parentCharm = charmsById.get(parentId);
       if (parentCharm == null) {
-        parentCharm = CharmCache.getInstance().searchCharm(parentId);
+        parentCharm = (Charm) CharmCache.getInstance().searchCharm(parentId);
       }
       Ensure.ensureNotNull("Parent charm not found for id " + getId(), parentCharm); //$NON-NLS-1$
       parentCharms.add(parentCharm);
