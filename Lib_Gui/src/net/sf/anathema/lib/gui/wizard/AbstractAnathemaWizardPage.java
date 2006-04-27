@@ -50,4 +50,16 @@ public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage 
   public final void setPreviousPage(IAnathemaWizardPage page) {
     this.previousPage = page;
   }
+
+  public final void initPresentation(CheckInputListener inputListener) {
+    initModelListening(inputListener);
+    addFollowUpPages(inputListener);
+    initPageContent();
+  }
+
+  protected abstract void initPageContent();
+
+  protected abstract void addFollowUpPages(CheckInputListener inputListener);
+
+  protected abstract void initModelListening(CheckInputListener inputListener);
 }
