@@ -49,7 +49,7 @@ public class AnathemaWizardConfiguration implements IBasicWizardConfiguration {
   }
 
   public void performAfterDispose(boolean canceled) {
-    //Nothing to do
+    // Nothing to do
   }
 
   public boolean isHeaderPanelVisible() {
@@ -58,6 +58,7 @@ public class AnathemaWizardConfiguration implements IBasicWizardConfiguration {
 
   public final IDialogButtonConfiguration getButtonConfiguration() {
     return new AbstractDialogButtonConfiguration() {
+      @Override
       public String getOkayButtonText() {
         return BasicDialogResources.WIZARD_FINISH_SMART;
       }

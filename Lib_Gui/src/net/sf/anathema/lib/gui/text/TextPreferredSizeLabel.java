@@ -24,6 +24,7 @@ public class TextPreferredSizeLabel extends JLabel {
     this.text = text;
   }
 
+  @Override
   public java.awt.Dimension getPreferredSize() {
     FontMetrics fontMetrics = getFontMetrics(getFont());
     return new Dimension(fontMetrics.stringWidth(text) + horizontalPadding, fontMetrics.getHeight() + verticalPadding);
