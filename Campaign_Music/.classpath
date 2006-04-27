@@ -14,6 +14,6 @@
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-dialog-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-dialog.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
 	<classpathentry kind="src" path="resources"/>
-	<classpathentry kind="lib" path="/Thirdparty/Database/db4o-5.2-java5.jar"/>
+	<classpathentry sourcepath="/Thirdparty/Database/db4o-5.2-src.zip" kind="lib" path="/Thirdparty/Database/db4o-5.2-java5.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
