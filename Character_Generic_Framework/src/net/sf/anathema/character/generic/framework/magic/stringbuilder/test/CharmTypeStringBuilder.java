@@ -12,7 +12,7 @@ public class CharmTypeStringBuilder implements ICharmTypeStringBuilder {
     this.resources = resources;
   }
 
-  public String buildString(ICharmTypeModel charmTypeModel) {
+  public String createTypeString(ICharmTypeModel charmTypeModel) {
     return resources.getString(charmTypeModel.getCharmType().getId());
   }
 }

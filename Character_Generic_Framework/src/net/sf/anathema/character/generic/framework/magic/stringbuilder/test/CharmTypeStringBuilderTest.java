@@ -23,7 +23,7 @@ public class CharmTypeStringBuilderTest extends BasicTestCase {
   public void testNoSpecialModel() throws Exception {
     final CharmTypeModel charmTypeModel = new CharmTypeModel();
     charmTypeModel.setCharmType(CharmType.ExtraAction);
-    String string = builder.buildString(charmTypeModel);
+    String string = builder.createTypeString(charmTypeModel);
     assertEquals("Extra Action", string); //$NON-NLS-1$
   }
 }
