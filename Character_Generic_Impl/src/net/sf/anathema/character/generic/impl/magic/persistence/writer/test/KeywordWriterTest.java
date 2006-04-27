@@ -40,7 +40,7 @@ public class KeywordWriterTest extends BasicTestCase {
   public void testVisibilityCorrect() throws Exception {
     keywords.add(new CharmAttribute("Test1", true)); //$NON-NLS-1$
     writer.write(keywords, element);
-    assertTrue(ElementUtilities.getBooleanAttribute(element.element("charmAttribute"), "visualize", false)); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
+    assertTrue(ElementUtilities.getBooleanAttribute(element.element("charmAttribute"), "visualize", false)); //$NON-NLS-1$//$NON-NLS-2$
   }
 
   public void testWriteTwoKeywords() throws Exception {
