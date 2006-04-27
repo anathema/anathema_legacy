@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.CharmInfoStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmInfoStringBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -59,6 +60,9 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
     ICharm charm = getCharmById(charmId);
     if (charm == null && charmId.startsWith(REQUIREMENT)) {
       return ""; //$NON-NLS-1$
+    }
+    if (charm == null) {
+      charm = CharmCache.getInstance().searchCharm(charmId);
     }
     Ensure.ensureNotNull("Charm with id '" + charmId + " not found.", charm); //$NON-NLS-1$ //$NON-NLS-2$
     return tooltipTextProvider.getInfoString(charm);
