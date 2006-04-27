@@ -2,7 +2,7 @@ package net.sf.anathema.framework.module;
 
 import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.swing.message.MessageType;
+import net.disy.commons.core.message.MessageType;
 import net.sf.anathema.framework.repository.AbstractObjectSelectionProperties;
 import net.sf.anathema.lib.resources.IResources;
 

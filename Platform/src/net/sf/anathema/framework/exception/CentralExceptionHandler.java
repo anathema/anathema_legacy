@@ -3,8 +3,8 @@ package net.sf.anathema.framework.exception;
 import javax.swing.JOptionPane;
 
 import net.disy.commons.core.exception.IExceptionHandler;
+import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
-import net.disy.commons.swing.message.Message;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 

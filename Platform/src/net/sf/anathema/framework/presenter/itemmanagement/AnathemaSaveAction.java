@@ -11,9 +11,9 @@ import javax.swing.Action;
 import javax.swing.KeyStroke;
 
 import net.disy.commons.core.io.IOUtilities;
+import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
-import net.disy.commons.swing.message.Message;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;

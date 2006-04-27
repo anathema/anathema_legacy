@@ -9,11 +9,11 @@ import javax.swing.Action;
 import javax.swing.Icon;
 
 import net.disy.commons.core.io.IOUtilities;
+import net.disy.commons.core.message.Message;
 import net.disy.commons.core.progress.IProgressMonitor;
 import net.disy.commons.core.progress.IRunnableWithProgress;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.progress.ProgressMonitorDialog;
-import net.disy.commons.swing.message.Message;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IExtensionPoint;
 import net.sf.anathema.framework.item.IItemType;

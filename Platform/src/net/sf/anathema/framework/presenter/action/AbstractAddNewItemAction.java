@@ -3,12 +3,12 @@ package net.sf.anathema.framework.presenter.action;
 import java.awt.Component;
 import java.lang.reflect.InvocationTargetException;
 
+import net.disy.commons.core.message.Message;
 import net.disy.commons.core.progress.IProgressMonitor;
 import net.disy.commons.core.progress.IRunnableWithProgress;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.disy.commons.swing.dialog.progress.ProgressMonitorDialog;
-import net.disy.commons.swing.message.Message;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
@@ -44,9 +44,11 @@ public abstract class AbstractAddNewItemAction<T> extends SmartAction {
       new ProgressMonitorDialog(parentComponent, title).run(false, new IRunnableWithProgress() {
         public void run(IProgressMonitor monitor) throws InterruptedException, InvocationTargetException {
           try {
-            monitor.beginTask(resources.getString("AnathemaCore.AddItem.Progress.Task.Model", internationalizedType), IProgressMonitor.UNKNOWN); //$NON-NLS-1$
+            monitor.beginTask(
+                resources.getString("AnathemaCore.AddItem.Progress.Task.Model", internationalizedType), IProgressMonitor.UNKNOWN); //$NON-NLS-1$
             final IItem item = createNewItem(template, itemTypeModel.getById(itemTypeId));
-            monitor.beginTask(resources.getString("AnathemaCore.AddItem.Progress.Task.View", internationalizedType), IProgressMonitor.UNKNOWN); //$NON-NLS-1$
+            monitor.beginTask(
+                resources.getString("AnathemaCore.AddItem.Progress.Task.View", internationalizedType), IProgressMonitor.UNKNOWN); //$NON-NLS-1$
             itemManagement.addItem(item);
           }
           catch (AnathemaException e) {
