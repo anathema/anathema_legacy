@@ -32,7 +32,7 @@ public class EquipmentTypeChoiceProperties {
   }
 
   public String getTypeChoiceTitle() {
-    return "Statistics type Selection";
+    return "Statistics Type Selection";
   }
 
   public String getTypeChoiceMessage() {
