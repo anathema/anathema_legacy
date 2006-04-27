@@ -2,8 +2,8 @@ package net.sf.anathema.suite;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
+
 import net.sf.anathema.character.generic.framework.suite.AllCharacterGenericsFrameworkTests;
-import net.sf.anathema.character.generic.suite.AllCharacterGenericTests;
 
 public class AllAnathemaTests {
 
@@ -17,7 +17,6 @@ public class AllAnathemaTests {
     suite.addTest(net.sf.anathema.character.library.suite.AllCharacterLibraryTests.suite());
     suite.addTest(net.sf.anathema.lib.suite.AllLibTests.suite());
     suite.addTest(AllCharacterGenericsFrameworkTests.suite());
-    suite.addTest(AllCharacterGenericTests.suite());
     // $JUnit-BEGIN$
 
     // $JUnit-END$
