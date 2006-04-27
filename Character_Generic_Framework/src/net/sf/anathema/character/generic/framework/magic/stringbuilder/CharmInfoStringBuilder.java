@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
 import net.disy.commons.core.util.Ensure;
+import net.sf.anathema.character.generic.framework.magic.stringbuilder.test.CharmTypeStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
@@ -12,12 +13,14 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
   private static final String HtmlLineBreak = "<br>"; //$NON-NLS-1$
   private final IMagicInfoStringBuilder costStringBuilder;
   private final IMagicSourceStringBuilder sourceStringBuilder;
+  private final ICharmTypeStringBuilder typeStringBuilder;
   private final IResources resources;
 
   public CharmInfoStringBuilder(IResources resources) {
     this.resources = resources;
     costStringBuilder = new ScreenDisplayInfoStringBuilder(resources);
     sourceStringBuilder = new MagicSourceStringBuilder(resources);
+    typeStringBuilder = new CharmTypeStringBuilder(resources);
   }
 
   public final String getInfoString(ICharm charm) {
@@ -36,7 +39,7 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
     builder.append(HtmlLineBreak);
     builder.append(resources.getString("CharmTreeView.ToolTip.Type")); //$NON-NLS-1$
     builder.append(IMagicStringBuilderConstants.ColonSpace);
-    builder.append(resources.getString(charm.getCharmTypeModel().getCharmType().getId()));
+    builder.append(typeStringBuilder.createTypeString(charm.getCharmTypeModel()));
     builder.append(HtmlLineBreak);
     if (MartialArtsUtilities.isMartialArtsCharm(charm)) {
       builder.append(createMartialArtsLevelLine(charm));
