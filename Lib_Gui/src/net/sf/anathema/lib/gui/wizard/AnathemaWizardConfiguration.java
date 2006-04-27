@@ -10,11 +10,12 @@ import net.disy.commons.swing.dialog.wizard.IWizardContainer;
 
 public class AnathemaWizardConfiguration implements IBasicWizardConfiguration {
 
-  private final IBasicWizardPage startPage;
+  private final IAnathemaWizardPage startPage;
 
-  public AnathemaWizardConfiguration(IBasicWizardPage startPage) {
+  public AnathemaWizardConfiguration(IAnathemaWizardPage startPage) {
     Ensure.ensureArgumentNotNull(startPage);
     this.startPage = startPage;
+    this.startPage.initPresentation();
   }
 
   private IWizardContainer container;

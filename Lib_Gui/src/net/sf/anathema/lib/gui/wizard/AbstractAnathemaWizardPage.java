@@ -1,8 +1,6 @@
 package net.sf.anathema.lib.gui.wizard;
 
-import net.disy.commons.swing.dialog.wizard.IBasicWizardPage;
-
-public abstract class AbstractAnathemaWizardPage implements IBasicWizardPage {
+public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage {
 
   public boolean canFlipToNextPage() {
     return getNextPage() != null;
