@@ -12,10 +12,6 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
   private final ICloseCombatStatsticsModel closeCombatStatisticsModel = new CloseCombatStatsticsModel();
   private final ChangeControl equpimentTypeChangeControl = new ChangeControl();
 
-  public EquipmentStatisticsType getEquipmentType() {
-    return statisticsType;
-  }
-
   public void setEquipmentType(EquipmentStatisticsType statisticsType) {
     if (this.statisticsType == statisticsType) {
       return;
@@ -30,5 +26,9 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
 
   public void addEquipmentTypeChangeListener(IChangeListener changeListener) {
     equpimentTypeChangeControl.addChangeListener(changeListener);
+  }
+
+  public boolean isEquipmentTypeSelected(EquipmentStatisticsType type) {
+    return this.statisticsType == type;
   }
 }
