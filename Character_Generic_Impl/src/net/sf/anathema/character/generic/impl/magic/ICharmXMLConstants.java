@@ -2,6 +2,14 @@ package net.sf.anathema.character.generic.impl.magic;
 
 public interface ICharmXMLConstants {
 
+  // Charm Type Specific Models
+  public static final String TAG_SPECIAL = "special"; //$NON-NLS-1$
+  public static final String ATTRIB_SPEED = "speed"; //$NON-NLS-1$
+  public static final String ATTRIB_TURN_TYPE = "turntype"; //$NON-NLS-1$
+  public static final String ATTRIB_DEFENSE = "defense"; //$NON-NLS-1$
+  public static final String ATTRIB_PRIMARY_STEP = "primaryStep"; //$NON-NLS-1$
+  public static final String ATTRIB_SECONDARY_STEP = "secondaryStep"; //$NON-NLS-1$
+
   public static final String ATTRIB_ALL_ABILITIES = "allAbilities"; //$NON-NLS-1$
   public static final String ATTRIB_ATTRIBUTE = "attribute"; //$NON-NLS-1$  
   public static final String ATTRIB_COMBOABLE = "comboable"; //$NON-NLS-1$

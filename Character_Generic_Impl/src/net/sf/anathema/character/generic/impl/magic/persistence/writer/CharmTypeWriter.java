@@ -1,7 +1,13 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.writer;
 
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_DEFENSE;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_PRIMARY_STEP;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_SECONDARY_STEP;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_SPEED;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_TURN_TYPE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_TYPE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARMTYPE;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_SPECIAL;
 
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmTypeVisitor;
@@ -15,12 +21,7 @@ import org.dom4j.Element;
 
 public class CharmTypeWriter {
 
-  protected static final String TAG_SPECIAL = "special";
-  protected static final String ATTRIB_SPEED = "speed";
-  protected static final String ATTRIB_TURN_TYPE = "turntype";
-  protected static final String ATTRIB_DEFENSE = "defense";
-  protected static final String ATTRIB_SECONDARY_STEP = "secondaryStep";
-  protected static final String ATTRIB_PRIMARY_STEP = "primaryStep";
+
 
   public void write(ICharmData charm, Element charmElement) {
     final Element typeElement = charmElement.addElement(TAG_CHARMTYPE);
