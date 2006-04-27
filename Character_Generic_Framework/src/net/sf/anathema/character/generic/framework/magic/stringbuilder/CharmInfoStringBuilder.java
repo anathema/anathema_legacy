@@ -36,7 +36,7 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
     builder.append(HtmlLineBreak);
     builder.append(resources.getString("CharmTreeView.ToolTip.Type")); //$NON-NLS-1$
     builder.append(IMagicStringBuilderConstants.ColonSpace);
-    builder.append(resources.getString(charm.getCharmType().getId()));
+    builder.append(resources.getString(charm.getCharmTypeModel().getCharmType().getId()));
     builder.append(HtmlLineBreak);
     if (MartialArtsUtilities.isMartialArtsCharm(charm)) {
       builder.append(createMartialArtsLevelLine(charm));

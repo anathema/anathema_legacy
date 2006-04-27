@@ -100,7 +100,7 @@ public class CharmDataSource implements IReportDataSource {
       final String[] type = new String[1];
       magic.accept(new IMagicVisitor() {
         public void visitCharm(ICharm charm) {
-          type[0] = charm.getCharmType().getId();
+          type[0] = charm.getCharmTypeModel().getCharmType().getId();
         }
 
         public void visitSpell(ISpell spell) {
