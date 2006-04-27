@@ -2,6 +2,7 @@ package net.sf.anathema.gis.main.presenter;
 
 import gis.gisterm.gcore.DisplayCoordEvent;
 import gis.gisterm.gcore.DisplayCoordListener;
+import gis.gisterm.gcore.GenericLayer;
 import gis.gisterm.gcore.WorldBox;
 import gis.gisterm.map.IGisView;
 
@@ -33,7 +34,10 @@ public class GisPresenter {
   public void initPresentation() {
     IMapModel mapModel = model.getMapModel();
     try {
-      mapModel.getThemeModel().addTheme(new LayerTheme(model.getStandardLayerFactory().createXeriarRasterLayer()));
+      GenericLayer xeriarLayer = model.getStandardLayerFactory().createXeriarRasterLayer();
+      if (xeriarLayer != null) {
+        mapModel.getThemeModel().addTheme(new LayerTheme(xeriarLayer));
+      }
     }
     catch (LayerCreationException e) {
       logger.warn("Error creating XeriarLayer", e); //$NON-NLS-1$
