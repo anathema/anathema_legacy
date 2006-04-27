@@ -10,12 +10,10 @@ import net.sf.anathema.campaign.music.model.track.Md5Checksum;
 
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
-import com.db4o.query.Query;
+import com.db4o.query.Predicate;
 
 public class LibraryPersister {
 
-  private static final String LIBRARY_FIELD_NAME = "name"; //$NON-NLS-1$
-  private static final String TRACK_FIELD_CHECKSUM = "checksum"; //$NON-NLS-1$
   private final List<ITrackDeletionListener> listeners = new ArrayList<ITrackDeletionListener>();
 
   public final void addLibrary(final ObjectContainer db, String libraryName) {
@@ -28,28 +26,24 @@ public class LibraryPersister {
     return set.size() > 0;
   }
 
-  private ObjectSet getLibraryObjectSet(ObjectContainer db, String name) {
-    Query query = db.query();
-    query.constrain(DbLibrary.class);
-    query.descend(LIBRARY_FIELD_NAME).constrain(name);
-    ObjectSet set = query.execute();
-    return set;
+  private ObjectSet<DbLibrary> getLibraryObjectSet(ObjectContainer db, final String name) {
+    ObjectSet<DbLibrary> results = db.query(new Predicate<DbLibrary>() {
+      @Override
+      public boolean match(DbLibrary candidate) {
+        return candidate.getName().equals(name);
+      }
+    });
+    return results;
   }
 
   public DbLibrary getLibrary(ObjectContainer db, String name) {
-    ObjectSet set = getLibraryObjectSet(db, name);
-    return (DbLibrary) (set.size() == 0 ? null : set.next());
+    ObjectSet<DbLibrary> set = getLibraryObjectSet(db, name);
+    return set.hasNext() ? set.next() : null;
   }
 
   public DbLibrary[] getAllLibraries(ObjectContainer db) {
-    Query query = db.query();
-    query.constrain(DbLibrary.class);
-    ObjectSet set = query.execute();
-    List<DbLibrary> libraries = new ArrayList<DbLibrary>();
-    while (set.hasNext()) {
-      libraries.add((DbLibrary) set.next());
-    }
-    return libraries.toArray(new DbLibrary[libraries.size()]);
+    ObjectSet<DbLibrary> results = db.query(DbLibrary.class);
+    return results.toArray(new DbLibrary[results.size()]);
   }
 
   public void addTracks(ObjectContainer db, String name, List<IMp3Track> tracksToAdd) {
@@ -71,12 +65,14 @@ public class LibraryPersister {
     db.set(dbLibrary);
   }
 
-  private DbMp3Track findTrack(ObjectContainer db, Md5Checksum checkSum) {
-    Query query = db.query();
-    query.constrain(DbMp3Track.class);
-    query.descend(TRACK_FIELD_CHECKSUM).constrain(checkSum);
-    ObjectSet set = query.execute();
-    return set.hasNext() ? (DbMp3Track) set.next() : null;
+  private DbMp3Track findTrack(ObjectContainer db, final Md5Checksum checkSum) {
+    ObjectSet<DbMp3Track> results = db.query(new Predicate<DbMp3Track>() {
+      @Override
+      public boolean match(DbMp3Track candidate) {
+        return candidate.getCheckSum().equals(checkSum);
+      }
+    });
+    return results.hasNext() ? results.next() : null;
   }
 
   public void updateLibraryName(ObjectContainer db, ILibrary library, String newName) {

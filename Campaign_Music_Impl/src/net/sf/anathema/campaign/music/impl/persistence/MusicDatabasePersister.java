@@ -128,7 +128,7 @@ public class MusicDatabasePersister {
   }
 
   public <C> List<C> getAllObjects(Class<C> componentType) {
-    return DbPersistenceUtilities.getAllObjects(componentType, db);
+    return db.query(componentType);
   }
 
   public <C> void setSimpleObject(C object) {
