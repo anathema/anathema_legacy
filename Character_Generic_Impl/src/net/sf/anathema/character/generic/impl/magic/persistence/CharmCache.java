@@ -84,6 +84,7 @@ public class CharmCache implements ICharmCache {
     }
   }
 
+  // Necessary for connections between Charms from different documents/types
   public Charm searchCharm(final String charmId) {
     try {
       String[] idParts = charmId.split("\\."); //$NON-NLS-1$
