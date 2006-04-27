@@ -9,10 +9,13 @@ public class AllCharacterTests {
   public static Test suite() {
     TestSuite suite = new TestSuite("Test for net.sf.anathema.character.abyssal.suite"); //$NON-NLS-1$
     suite.addTest(net.sf.anathema.test.character.equipment.item.AllTests.suite());
+    suite.addTest(net.sf.anathema.test.character.generic.magic.charms.AllTests.suite());
+    suite.addTest(net.sf.anathema.test.character.generic.traits.types.AllTests.suite());
+    suite.addTest(net.sf.anathema.test.character.generic.type.AllTests.suite());
     suite.addTest(Demo2TestConverter.createTest(AllCharacterDemos.suite()));
-    //$JUnit-BEGIN$
+    // $JUnit-BEGIN$
 
-    //$JUnit-END$
+    // $JUnit-END$
     return suite;
   }
 }
