@@ -1,6 +1,9 @@
 package net.sf.anathema.lib.gui.wizard;
 
+
 public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage {
+
+  private IAnathemaWizardPage previousPage;
 
   public boolean canFlipToNextPage() {
     return getNextPage() != null;
@@ -16,5 +19,13 @@ public abstract class AbstractAnathemaWizardPage implements IAnathemaWizardPage 
 
   public boolean isHelpAvailable() {
     return false;
+  }
+
+  public final IAnathemaWizardPage getPreviousPage() {
+    return previousPage;
+  }
+
+  public final void setPreviousPage(IAnathemaWizardPage page) {
+    this.previousPage = page;
   }
 }
