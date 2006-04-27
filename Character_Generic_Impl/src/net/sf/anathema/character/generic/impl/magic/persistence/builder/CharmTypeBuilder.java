@@ -12,19 +12,16 @@ public class CharmTypeBuilder {
 
   public CharmType build(Element rulesElement) throws CharmException {
     CharmType charmType;
-    Element typeElement = rulesElement.element(TAG_CHARMTYPE);
-    if (typeElement == null) {
-      throw new CharmException("Bad type in charm. (Element required)"); //$NON-NLS-1$
-    }
     try {
-      charmType = CharmType.valueOf(typeElement.attributeValue(ATTRIB_TYPE));
+      charmType = CharmType.valueOf(rulesElement.element(TAG_CHARMTYPE).attributeValue(ATTRIB_TYPE));
     }
     catch (IllegalArgumentException e) {
       throw new CharmException("Bad type in charm. (Type unreadable)"); //$NON-NLS-1$
     }
     catch (NullPointerException e) {
-      throw new CharmException("Bad type in charm. (Attribute required)"); //$NON-NLS-1$
+      throw new CharmException("Bad type in charm. (Element required)"); //$NON-NLS-1$
     }
+
     return charmType;
   }
 }
