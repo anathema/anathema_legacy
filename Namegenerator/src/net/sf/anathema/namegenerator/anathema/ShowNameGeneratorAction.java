@@ -5,8 +5,8 @@ import java.awt.Cursor;
 
 import javax.swing.Action;
 
+import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
-import net.disy.commons.swing.message.Message;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
