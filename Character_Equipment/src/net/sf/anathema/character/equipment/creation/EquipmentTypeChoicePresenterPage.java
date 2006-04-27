@@ -23,18 +23,20 @@ import net.sf.anathema.lib.resources.IResources;
 public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage {
 
   private final Map<EquipmentStatisticsType, IAnathemaWizardPage> pagesByType = new HashMap<EquipmentStatisticsType, IAnathemaWizardPage>();
-  private final IEquipmentStatisticsCreationModel model;
   private final EquipmentTypeChoiceProperties properties;
+  private final BasicMessage defaultMessage;
+  private final IResources resources;
+  private final IEquipmentStatisticsCreationModel model;
   private final IEquipmentStatisticsCreationViewFactory viewFactory;
   private IEquipmentTypeChoiceView view;
-  private final IResources resources;
 
   public EquipmentTypeChoicePresenterPage(
       IResources resources,
       IEquipmentStatisticsCreationModel model,
       IEquipmentStatisticsCreationViewFactory viewFactory) {
-    this.resources = resources;
     this.properties = new EquipmentTypeChoiceProperties(resources);
+    this.defaultMessage = new BasicMessage(properties.getTypeChoiceMessage());
+    this.resources = resources;
     this.model = model;
     this.viewFactory = viewFactory;
   }
@@ -43,12 +45,18 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
     return false;
   }
 
-  public void initPresentation(CheckInputListener inputListener) {
+  protected void initModelListening(CheckInputListener inputListener) {
     model.addEquipmentTypeChangeListener(inputListener);
+  }
+
+  protected void addFollowUpPages(CheckInputListener inputListener) {
     addPage(
         EquipmentStatisticsType.CloseCombat,
         new CloseCombatStatisticsPresenterPage(resources, model, viewFactory),
         inputListener);
+  }
+
+  protected void initPageContent() {
     this.view = viewFactory.createTypeChoiceView();
     String label = properties.getOffensiveLabel();
     addStatisticsTypeRow(label, EquipmentStatisticsType.CloseCombat);
@@ -83,7 +91,7 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
   }
 
   public IBasicMessage getMessage() {
-    return new BasicMessage(properties.getTypeChoiceMessage());
+    return defaultMessage;
   }
 
   public String getDescription() {

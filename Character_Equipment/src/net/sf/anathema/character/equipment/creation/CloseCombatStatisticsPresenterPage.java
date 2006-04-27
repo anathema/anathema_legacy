@@ -44,7 +44,16 @@ public class CloseCombatStatisticsPresenterPage extends AbstractAnathemaWizardPa
     return properties.getPageDescription();
   }
 
-  public void initPresentation(CheckInputListener inputListener) {
+  @Override
+  protected void initPageContent() {
     this.view = viewFactory.createCloseCombatStatisticsView();
+  }
+
+  @Override
+  protected void addFollowUpPages(CheckInputListener inputListener) {
+  }
+
+  @Override
+  protected void initModelListening(CheckInputListener inputListener) {
   }
 }
