@@ -22,7 +22,6 @@ import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.magic.charms.type.CharmTypeModel;
-import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.IMagicSource;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
@@ -214,10 +213,5 @@ public class DummyCharm extends Identificate implements ICharm {
 
   public CharmTypeModel getCharmTypeModel() {
     return model;
-  }
-
-  public void setSpecialModel(ICharmTypeModel model) {
-    // TODO Auto-generated method stub
-
   }
 }
