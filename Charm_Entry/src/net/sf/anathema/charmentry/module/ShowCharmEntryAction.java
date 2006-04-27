@@ -5,8 +5,8 @@ import java.awt.Cursor;
 
 import javax.swing.Action;
 
+import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
-import net.disy.commons.swing.message.Message;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
@@ -35,7 +35,8 @@ public class ShowCharmEntryAction extends SmartAction {
   protected void execute(Component parentComponent) {
     parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     try {
-      IItemType itemType = anathemaModel.getItemTypeRegistry().getById(CharmEntryItemTypeConfiguration.CHARM_ENTRY_ITEM_TYPE_ID);
+      IItemType itemType = anathemaModel.getItemTypeRegistry().getById(
+          CharmEntryItemTypeConfiguration.CHARM_ENTRY_ITEM_TYPE_ID);
       AnathemaItem charmEntryItem = new AnathemaItem(itemType, new Identificate("CharmEntry"), null); //$NON-NLS-1$
       charmEntryItem.setPrintName(resources.getString("ItemType.CharmEntry.PrintName")); //$NON-NLS-1$
       anathemaModel.getItemManagement().addItem(charmEntryItem);
