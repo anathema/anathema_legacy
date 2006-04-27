@@ -4,7 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Campaign_Music"/>
 	<classpathentry kind="src" path="/Platform"/>
-	<classpathentry sourcepath="/Thirdparty/Database/db4o-4.5-src.zip" kind="lib" path="/Thirdparty/Database/db4o-4.5-java1.4.jar"/>
 	<classpathentry sourcepath="/Thirdparty/Multimedia/mp3spi1.9.2-src.zip" kind="lib" path="/Thirdparty/Multimedia/mp3spi1.9.2.jar"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-core-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
@@ -23,5 +22,6 @@
 	<classpathentry kind="lib" path="/Thirdparty/Multimedia/tritonus_share.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/Development/jl1.0.jar"/>
 	<classpathentry sourcepath="/Thirdparty/Commons/commons-logging-api.src.zip" kind="lib" path="/Thirdparty/Commons/commons-logging-api.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/Database/db4o-5.2-java5.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
