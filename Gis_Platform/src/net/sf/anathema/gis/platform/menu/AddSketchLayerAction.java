@@ -5,7 +5,6 @@ import java.awt.Component;
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.gis.main.impl.model.StandardLayerFactory;
 import net.sf.anathema.gis.main.model.IGisModel;
 import net.sf.anathema.gis.platform.GisItemTypeConfiguration;
 import net.sf.anathema.gis.platform.util.SelectiveItemTypeEnabler;
@@ -30,8 +29,7 @@ public class AddSketchLayerAction extends SmartAction {
     IItem selectedItem = anathemaModel.getItemManagement().getSelectedItem();
     IGisModel gisModel = (IGisModel) selectedItem.getItemData();
     IMapModel mapModel = gisModel.getMapModel();
-    ITheme sketchTheme = new LayerTheme(
-        new StandardLayerFactory(anathemaModel.getRepository().getRepositoryFolder()).createSketchLayer());
+    ITheme sketchTheme = new LayerTheme(gisModel.getStandardLayerFactory().createSketchLayer());
     mapModel.getThemeModel().addTheme(sketchTheme);
     mapModel.getSelectionModel().setSelectedTheme(sketchTheme);
   }
