@@ -9,7 +9,7 @@ import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.core.IPageContent;
 import net.disy.commons.swing.dialog.wizard.IBasicWizardPage;
-import net.sf.anathema.character.equipment.creation.model.IAddEquipmentStatisticsModel;
+import net.sf.anathema.character.equipment.creation.model.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.properties.EquipmentTypeChoiceProperties;
 import net.sf.anathema.character.equipment.creation.view.IEquipmentTypeChoiceView;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
@@ -19,17 +19,18 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage implements IPresenter {
 
-  private final IAddEquipmentStatisticsModel model;
+  private final IEquipmentStatisticsCreationModel model;
   private final EquipmentTypeChoiceProperties properties;
-  private final IEquipmentTypeChoiceView view;
+  private final IEquipmentStatisticsCreationViewFactory viewFactory;
+  private IEquipmentTypeChoiceView view;
 
   public EquipmentTypeChoicePresenterPage(
       IResources resources,
-      IAddEquipmentStatisticsModel model,
-      IEquipmentTypeChoiceView view) {
+      IEquipmentStatisticsCreationModel model,
+      IEquipmentStatisticsCreationViewFactory viewFactory) {
     this.properties = new EquipmentTypeChoiceProperties(resources);
     this.model = model;
-    this.view = view;
+    this.viewFactory = viewFactory;
   }
 
   public boolean canFinish() {
@@ -37,6 +38,7 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
   }
 
   public void initPresentation() {
+    this.view = viewFactory.createTypeChoiceView();
     String label = properties.getOffensiveLabel();
     addStatisticsTypeRow(label, EquipmentStatisticsType.CloseCombat);
     addStatisticsTypeRow("", EquipmentStatisticsType.RangedCombat); //$NON-NLS-1$
