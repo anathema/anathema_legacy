@@ -5,12 +5,14 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TA
 
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
+import net.sf.anathema.character.generic.magic.charms.type.CharmTypeModel;
+import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 
 import org.dom4j.Element;
 
 public class CharmTypeBuilder {
 
-  public CharmType build(Element rulesElement) throws CharmException {
+  public ICharmTypeModel build(Element rulesElement) throws CharmException {
     CharmType charmType;
     try {
       charmType = CharmType.valueOf(rulesElement.element(TAG_CHARMTYPE).attributeValue(ATTRIB_TYPE));
@@ -22,6 +24,8 @@ public class CharmTypeBuilder {
       throw new CharmException("Bad type in charm. (Element required)"); //$NON-NLS-1$
     }
 
-    return charmType;
+    final CharmTypeModel charmTypeModel = new CharmTypeModel();
+    charmTypeModel.setCharmType(charmType);
+    return charmTypeModel;
   }
 }

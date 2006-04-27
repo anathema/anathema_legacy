@@ -15,6 +15,7 @@ import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
+import net.sf.anathema.character.generic.magic.charms.type.CharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.IMagicSource;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -129,13 +130,15 @@ public class CharmSetBuilderTest extends BasicTestCase {
         parentArray,
         new SelectiveCharmGroupTemplate[0],
         new ICharmAttributeRequirement[0]);
+    CharmTypeModel model = new CharmTypeModel();
+    model.setCharmType(type);
     final Charm charm = new Charm(CharacterType.SOLAR, id, "TestGroup", //$NON-NLS-1$
         list,
         new CostList(null, null, null),
         new PermanentCostList(null, null, null, null),
         new ComboRestrictions(),
         Duration.INSTANT_DURATION,
-        type,
+        model,
         new IMagicSource[] { MagicSource.CUSTOM_SOURCE });
     return charm;
   }

@@ -27,8 +27,6 @@ import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
-import net.sf.anathema.character.generic.magic.charms.type.CharmType;
-import net.sf.anathema.character.generic.magic.charms.type.CharmTypeModel;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.magic.general.IMagicSource;
@@ -77,7 +75,7 @@ public class Charm extends Identificate implements ICharm {
       IPermanentCostList permanentCost,
       IComboRestrictions comboRules,
       Duration duration,
-      CharmType charmType,
+      ICharmTypeModel charmTypeModel,
       IMagicSource[] sources) {
     super(id);
     Ensure.ensureNotNull("Argument must not be null.", prerequisiteList); //$NON-NLS-1$
@@ -88,7 +86,7 @@ public class Charm extends Identificate implements ICharm {
     Ensure.ensureNotNull("Argument must not be null.", permanentCost); //$NON-NLS-1$
     Ensure.ensureNotNull("Argument must not be null.", comboRules); //$NON-NLS-1$
     Ensure.ensureNotNull("Argument must not be null.", duration); //$NON-NLS-1$
-    Ensure.ensureNotNull("Argument must not be null.", charmType); //$NON-NLS-1$
+    Ensure.ensureNotNull("Argument must not be null.", charmTypeModel.getCharmType()); //$NON-NLS-1$
     Ensure.ensureNotNull("Argument must not be null.", sources); //$NON-NLS-1$
     this.characterType = characterType;
     this.group = group;
@@ -97,8 +95,6 @@ public class Charm extends Identificate implements ICharm {
     this.permanentCost = permanentCost;
     this.comboRules = comboRules;
     this.duration = duration;
-    final CharmTypeModel charmTypeModel = new CharmTypeModel();
-    charmTypeModel.setCharmType(charmType);
     this.typeModel = charmTypeModel;
     this.sources = sources;
     for (SelectiveCharmGroupTemplate template : prerequisiteList.getSelectiveCharmGroups()) {
@@ -335,7 +331,7 @@ public class Charm extends Identificate implements ICharm {
         getPermanentCost(),
         getComboRules(),
         getDuration(),
-        getCharmTypeModel().getCharmType(),
+        getCharmTypeModel(),
         this.sources);
     for (ICharmAttribute attribute : getAttributes()) {
       clone.addCharmAttribute(attribute);

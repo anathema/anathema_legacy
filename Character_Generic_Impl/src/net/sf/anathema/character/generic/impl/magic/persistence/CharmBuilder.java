@@ -45,6 +45,7 @@ import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
+import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.magic.general.IMagicSource;
 import net.sf.anathema.character.generic.magic.general.IPermanentCostList;
@@ -84,8 +85,7 @@ public class CharmBuilder implements ICharmBuilder {
     IPermanentCostList permanentCost = costListBuilder.buildPermanentCostList(costElement.element(TAG_PERMANENT));
     IComboRestrictions comboRules = getComboRules(rulesElement, id);
     Duration duration = durationBuilder.buildDuration(getElementFromRules(rulesElement, TAG_DURATION));
-    CharmType charmType = charmTypeBuilder.build(rulesElement);
-
+    ICharmTypeModel charmTypeModel = charmTypeBuilder.build(rulesElement);
     List<IMagicSource> sources = new ArrayList<IMagicSource>();
     List<Element> sourceElements = ElementUtilities.elements(rulesElement, TAG_SOURCE);
     if (sourceElements.isEmpty()) {
@@ -113,7 +113,7 @@ public class CharmBuilder implements ICharmBuilder {
         permanentCost,
         comboRules,
         duration,
-        charmType,
+        charmTypeModel,
         sources.toArray(new IMagicSource[0]));
     String[] primaryTrait = prerequisites.length == 0 ? new String[0] : new String[] { prerequisites[0].getType()
         .getId() };
