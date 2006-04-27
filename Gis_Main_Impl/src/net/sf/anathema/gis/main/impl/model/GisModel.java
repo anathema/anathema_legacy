@@ -1,8 +1,7 @@
 package net.sf.anathema.gis.main.impl.model;
 
-import java.io.File;
-
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
+import net.sf.anathema.gis.data.IGisDataDirectory;
 import net.sf.anathema.gis.main.model.IGisModel;
 import net.sf.anathema.gis.main.model.layerfactory.IStandardLayerFactory;
 import de.disy.gis.gisterm.map.BasicMapModel;
@@ -13,8 +12,8 @@ public class GisModel implements IGisModel {
   private final IMapModel mapModel = new BasicMapModel();
   private final StandardLayerFactory standardLayerFactory;
 
-  public GisModel(File repositoryFile) {
-    standardLayerFactory = new StandardLayerFactory(repositoryFile);
+  public GisModel(IGisDataDirectory gisDataDirectory) {
+    standardLayerFactory = new StandardLayerFactory(gisDataDirectory);
   }
 
   public IMapModel getMapModel() {
