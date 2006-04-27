@@ -7,12 +7,12 @@ import java.lang.reflect.InvocationTargetException;
 
 import javax.swing.Action;
 
+import net.disy.commons.core.message.Message;
 import net.disy.commons.core.progress.IProgressMonitor;
 import net.disy.commons.core.progress.IRunnableWithProgress;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.disy.commons.swing.dialog.progress.ProgressMonitorDialog;
-import net.disy.commons.swing.message.Message;
 import net.sf.anathema.campaign.music.impl.model.MusicDatabase;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
