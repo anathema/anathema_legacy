@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
+import net.sf.anathema.character.generic.magic.charms.type.CharmTypeModel;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -44,7 +45,7 @@ public class CharmEntryModel implements ISimpleSpecialsArbitrator, IReflexiveSpe
   private final PrimaryPrerequisiteLegalityChecker checker = new PrimaryPrerequisiteLegalityChecker();
   private IKeywordEntryModel keywordModel = new KeywordEntryModel();
   private final SimpleSpecialsEntryModel simpleCharmSpecials = new SimpleSpecialsEntryModel(this);
-  private final ReflexiveCharmSpecialsModel reflexiveCharmSpecials = new ReflexiveCharmSpecialsModel(this);
+  private final ReflexiveSpecialsEntryModel reflexiveCharmSpecials = new ReflexiveSpecialsEntryModel(this);
 
   private CharacterType[] createLegalCharacterTypeArray() {
     List<CharacterType> legalTypes = new ArrayList<CharacterType>();
@@ -132,7 +133,17 @@ public class CharmEntryModel implements ISimpleSpecialsArbitrator, IReflexiveSpe
   }
 
   public void setCharmType(CharmType type) {
-    charmData.setCharmType(type);
+    final CharmTypeModel charmTypeModel = charmData.getCharmTypeModel();
+    charmTypeModel.setCharmType(type);
+    if (isSimpleSpecialsAvailable()) {
+      charmTypeModel.setSpecialModel(simpleCharmSpecials);
+    }
+    else if (isReflexiveSpecialsAvailable()) {
+      charmTypeModel.setSpecialModel(reflexiveCharmSpecials);
+    }
+    else {
+      charmTypeModel.setSpecialModel(null);
+    }
     checkCompletion();
     specialsControl.fireChangedEvent();
   }
