@@ -1,6 +1,7 @@
 package net.sf.anathema.character.impl.model.charm.test;
 
 import junit.framework.TestCase;
+
 import net.disy.commons.core.util.ContractFailedException;
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.CostList;
@@ -11,6 +12,7 @@ import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
+import net.sf.anathema.character.generic.magic.charms.type.CharmTypeModel;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
@@ -28,6 +30,8 @@ public class CharmTest extends TestCase {
         new String[0],
         new SelectiveCharmGroupTemplate[0],
         new ICharmAttributeRequirement[0]);
+    CharmTypeModel model = new CharmTypeModel();
+    model.setCharmType(CharmType.Simple);
     try {
       new Charm(CharacterType.SOLAR, "ID", //$NON-NLS-1$
           "Group", //$NON-NLS-1$
@@ -36,7 +40,7 @@ public class CharmTest extends TestCase {
           new PermanentCostList(null, null, null, null),
           new ComboRestrictions(),
           Duration.getDuration("Duration"), //$NON-NLS-1$
-          CharmType.Simple,
+          model,
           null);
       fail();
     }
