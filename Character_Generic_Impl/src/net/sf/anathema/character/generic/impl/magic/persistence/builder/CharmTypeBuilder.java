@@ -62,6 +62,9 @@ public class CharmTypeBuilder {
 
   private ITypeSpecialsModel buildReflexiveModel(Element typeElement) {
     Element element = typeElement.element(TAG_SPECIAL);
+    if (element == null) {
+      return null;
+    }
     try {
       int primaryStep = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_PRIMARY_STEP);
       String secondStepString = element.attributeValue(ATTRIB_SECONDARY_STEP);
