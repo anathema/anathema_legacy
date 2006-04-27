@@ -17,9 +17,9 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.DurationType;
+import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
@@ -27,7 +27,7 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
 import net.sf.anathema.charmentry.model.CharmEntryModel;
 import net.sf.anathema.charmentry.model.IConfigurableCharmData;
-import net.sf.anathema.charmentry.model.IReflexiveCharmModel;
+import net.sf.anathema.charmentry.model.IReflexiveSpecialsEntryModel;
 import net.sf.anathema.charmentry.view.BasicDataView;
 import net.sf.anathema.charmentry.view.ICostEntryView;
 import net.sf.anathema.charmentry.view.ISourceSelectionView;
@@ -85,12 +85,12 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
 
   private void initSecondEditionTypeDependentSpecialsPresentation() {
     final SimpleCharmSpecialsView simpleView = view.addSimpleCharmSpecialsView();
-    final ISimpleCharmSpecialsModel simpleModel = model.getSimpleCharmSpecialsModel();
+    final ISimpleSpecialsEntryModel simpleModel = model.getSimpleCharmSpecialsModel();
     simpleModel.addChangeListener(new IChangeListener() {
       public void changeOccured() {
         simpleView.setEnabled(model.isSimpleSpecialsAvailable());
         simpleView.setSpeedValue(simpleModel.getSpeed());
-        simpleView.setDefenseValue(simpleModel.getDefenseValue());
+        simpleView.setDefenseValue(simpleModel.getDefenseModifier());
       }
     });
     simpleView.addSpeedValueChangedListener(new IIntValueChangedListener() {
@@ -109,12 +109,12 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
       }
     });
     final ReflexiveCharmSpecialsView reflexiveView = view.addReflexiveCharmSpecialsView();
-    final IReflexiveCharmModel reflexiveModel = model.getReflexiveCharmSpecialsModel();
+    final IReflexiveSpecialsEntryModel reflexiveModel = model.getReflexiveCharmSpecialsModel();
     reflexiveModel.addChangeListener(new IChangeListener() {
       public void changeOccured() {
         reflexiveView.setEnabled(model.isReflexiveSpecialsAvailable());
-        reflexiveView.setDefaultStepValue(reflexiveModel.getStep());
-        reflexiveView.setDefenseStepValue(reflexiveModel.getDefenseStep());
+        reflexiveView.setDefaultStepValue(reflexiveModel.getPrimaryStep());
+        reflexiveView.setDefenseStepValue(reflexiveModel.getSecondaryStep());
         reflexiveView.setSplitEnabled(reflexiveModel.isSplitEnabled());
       }
     });

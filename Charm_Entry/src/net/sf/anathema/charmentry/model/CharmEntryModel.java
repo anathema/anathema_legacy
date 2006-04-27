@@ -8,8 +8,8 @@ import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.Duration;
+import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -17,7 +17,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.charmentry.presenter.ISimpleCharmSpecialsModel;
+import net.sf.anathema.charmentry.presenter.ISimpleSpecialsEntryModel;
 import net.sf.anathema.charmentry.presenter.ITraitSelectionChangedListener;
 import net.sf.anathema.charmentry.util.CharmUtilities;
 import net.sf.anathema.lib.control.GenericControl;
@@ -43,7 +43,7 @@ public class CharmEntryModel implements ISimpleSpecialsArbitrator, IReflexiveSpe
   private final BooleanValueControl completionControl = new BooleanValueControl();
   private final PrimaryPrerequisiteLegalityChecker checker = new PrimaryPrerequisiteLegalityChecker();
   private IKeywordEntryModel keywordModel = new KeywordEntryModel();
-  private final SimpleCharmSpecialsModel simpleCharmSpecials = new SimpleCharmSpecialsModel(this);
+  private final SimpleSpecialsEntryModel simpleCharmSpecials = new SimpleSpecialsEntryModel(this);
   private final ReflexiveCharmSpecialsModel reflexiveCharmSpecials = new ReflexiveCharmSpecialsModel(this);
 
   private CharacterType[] createLegalCharacterTypeArray() {
@@ -77,7 +77,7 @@ public class CharmEntryModel implements ISimpleSpecialsArbitrator, IReflexiveSpe
       completionControl.fireValueChangedEvent(false);
       return;
     }
-    if (charmData.getCharmType() == null) {
+    if (charmData.getCharmTypeModel().getCharmType() == null) {
       completionControl.fireValueChangedEvent(false);
       return;
     }
@@ -293,18 +293,20 @@ public class CharmEntryModel implements ISimpleSpecialsArbitrator, IReflexiveSpe
   }
 
   public boolean isReflexiveSpecialsAvailable() {
-    return charmData.getEdition() == ExaltedEdition.SecondEdition && charmData.getCharmType() == CharmType.Reflexive;
+    return charmData.getEdition() == ExaltedEdition.SecondEdition
+        && charmData.getCharmTypeModel().getCharmType() == CharmType.Reflexive;
   }
 
   public boolean isSimpleSpecialsAvailable() {
-    return charmData.getEdition() == ExaltedEdition.SecondEdition && charmData.getCharmType() == CharmType.Simple;
+    return charmData.getEdition() == ExaltedEdition.SecondEdition
+        && charmData.getCharmTypeModel().getCharmType() == CharmType.Simple;
   }
 
-  public ISimpleCharmSpecialsModel getSimpleCharmSpecialsModel() {
+  public ISimpleSpecialsEntryModel getSimpleCharmSpecialsModel() {
     return simpleCharmSpecials;
   }
 
-  public IReflexiveCharmModel getReflexiveCharmSpecialsModel() {
+  public IReflexiveSpecialsEntryModel getReflexiveCharmSpecialsModel() {
     return reflexiveCharmSpecials;
   }
 }

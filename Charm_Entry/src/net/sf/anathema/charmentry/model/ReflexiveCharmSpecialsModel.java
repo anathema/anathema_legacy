@@ -3,7 +3,7 @@ package net.sf.anathema.charmentry.model;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
-public class ReflexiveCharmSpecialsModel implements IReflexiveCharmModel {
+public class ReflexiveCharmSpecialsModel implements IReflexiveSpecialsEntryModel {
   private static final int DEFAULT_STEP = 1;
   private static final int DEFAULT_DEFENSE_STEP = 2;
 
@@ -26,11 +26,11 @@ public class ReflexiveCharmSpecialsModel implements IReflexiveCharmModel {
     control.addChangeListener(listener);
   }
 
-  public int getDefenseStep() {
+  public Integer getSecondaryStep() {
     return defenseStep;
   }
 
-  public int getStep() {
+  public int getPrimaryStep() {
     return step;
   }
 

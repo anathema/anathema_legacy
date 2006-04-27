@@ -5,8 +5,8 @@ import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.impl.magic.test.DummyCharm;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.Duration;
+import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -112,7 +112,7 @@ public class CharmEntryModelTest extends BasicTestCase {
 
   public void testSetCharmType() throws Exception {
     model.setCharmType(CharmType.ExtraAction);
-    assertEquals(CharmType.ExtraAction, model.getCharmData().getCharmType());
+    assertEquals(CharmType.ExtraAction, model.getCharmData().getCharmTypeModel().getCharmType());
   }
 
   public void testSetDuration() throws Exception {

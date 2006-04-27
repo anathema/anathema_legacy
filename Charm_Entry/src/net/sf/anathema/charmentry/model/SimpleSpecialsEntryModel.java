@@ -1,10 +1,11 @@
 package net.sf.anathema.charmentry.model;
 
-import net.sf.anathema.charmentry.presenter.ISimpleCharmSpecialsModel;
+import net.sf.anathema.character.generic.magic.charms.type.TurnType;
+import net.sf.anathema.charmentry.presenter.ISimpleSpecialsEntryModel;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
-public class SimpleCharmSpecialsModel implements ISimpleCharmSpecialsModel {
+public class SimpleSpecialsEntryModel implements ISimpleSpecialsEntryModel {
   private static final int DEFAULT_SPEED = 6;
   private static final int DEFAULT_DEFENSE_MODIFIER = -1;
 
@@ -13,7 +14,7 @@ public class SimpleCharmSpecialsModel implements ISimpleCharmSpecialsModel {
   private final ISimpleSpecialsArbitrator arbitrator;
   private final ChangeControl control = new ChangeControl();
 
-  public SimpleCharmSpecialsModel(ISimpleSpecialsArbitrator arbitrator) {
+  public SimpleSpecialsEntryModel(ISimpleSpecialsArbitrator arbitrator) {
     this.arbitrator = arbitrator;
     arbitrator.addSpecialsChangeListener(new IChangeListener() {
       public void changeOccured() {
@@ -42,7 +43,12 @@ public class SimpleCharmSpecialsModel implements ISimpleCharmSpecialsModel {
     }
   }
 
-  public int getDefenseValue() {
+  public TurnType getTurnType() {
+    // STUB!
+    return null;
+  }
+
+  public int getDefenseModifier() {
     return defenseModifier;
   }
 

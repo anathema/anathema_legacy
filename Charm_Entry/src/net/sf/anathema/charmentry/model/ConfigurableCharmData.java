@@ -10,11 +10,13 @@ import java.util.Set;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
+import net.sf.anathema.character.generic.magic.charms.type.CharmType;
+import net.sf.anathema.character.generic.magic.charms.type.CharmTypeModel;
+import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
@@ -41,6 +43,7 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
   private ITraitType primaryType;
   private ExaltedEdition edition;
   private final List<ICharmAttribute> keywords = new ArrayList<ICharmAttribute>();
+  private final CharmTypeModel model = new CharmTypeModel();
 
   public void setCharacterType(CharacterType type) {
     this.characterType = type;
@@ -56,10 +59,6 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
 
   public String getId() {
     return id;
-  }
-
-  public CharmType getCharmType() {
-    return charmType;
   }
 
   public IConfigurablePermanentCostList getPermanentCost() {
@@ -103,7 +102,7 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
   }
 
   public void setCharmType(CharmType type) {
-    this.charmType = type;
+    model.setCharmType(type);
   }
 
   public void setEssencePrerequisite(IGenericTrait prerequisite) {
@@ -184,5 +183,9 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
 
   public void addKeyword(IIdentificate newValue) {
     keywords.add(new CharmAttribute(newValue.getId(), true));
+  }
+
+  public ICharmTypeModel getCharmTypeModel() {
+    return model;
   }
 }

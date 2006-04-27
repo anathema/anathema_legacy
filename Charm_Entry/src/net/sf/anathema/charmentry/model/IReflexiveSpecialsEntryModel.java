@@ -1,14 +1,11 @@
 package net.sf.anathema.charmentry.model;
 
+import net.sf.anathema.character.generic.magic.charms.type.IReflexiveSpecialsModel;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
-public interface IReflexiveCharmModel {
+public interface IReflexiveSpecialsEntryModel extends IReflexiveSpecialsModel {
 
   public void addChangeListener(IChangeListener listener);
-
-  public int getStep();
-
-  public int getDefenseStep();
 
   public boolean isSplitEnabled();
 
