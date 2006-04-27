@@ -1,9 +1,9 @@
 package net.sf.anathema.character.equipment.impl.creation.model;
 
-import net.sf.anathema.character.equipment.creation.model.IAddEquipmentStatisticsModel;
+import net.sf.anathema.character.equipment.creation.model.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 
-public class AddEquipmentStatisticsModel implements IAddEquipmentStatisticsModel {
+public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCreationModel {
 
   private EquipmentStatisticsType statisticsType;
 
