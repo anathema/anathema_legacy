@@ -10,14 +10,14 @@ import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.core.IPageContent;
-import net.disy.commons.swing.dialog.wizard.IBasicWizardPage;
 import net.sf.anathema.character.equipment.creation.model.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.properties.EquipmentTypeChoiceProperties;
 import net.sf.anathema.character.equipment.creation.view.IEquipmentTypeChoiceView;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
-import net.sf.anathema.lib.gui.wizard.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
+import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
+import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.resources.IResources;
 
 public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage {
@@ -58,9 +58,13 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
     addStatisticsTypeRow("", EquipmentStatisticsType.Shield); //$NON-NLS-1$
   }
 
-  private void addPage(EquipmentStatisticsType type, IAnathemaWizardPage page, CheckInputListener inputListener) {
+  private void addPage(final EquipmentStatisticsType type, IAnathemaWizardPage page, CheckInputListener inputListener) {
     pagesByType.put(type, page);
-    page.initPresentation(inputListener);
+    addFollowupPage(page, inputListener, new ICondition() {
+      public boolean isFullfilled() {
+        return model.isEquipmentTypeSelected(type);
+      }
+    });
   }
 
   private void addStatisticsTypeRow(String label, final EquipmentStatisticsType type) {
@@ -72,10 +76,6 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
     };
     String typeLabel = properties.getLabel(type);
     view.addStatisticsRow(label, action, typeLabel);
-  }
-
-  public IBasicWizardPage getNextPage() {
-    return pagesByType.get(model.getEquipmentType());
   }
 
   public IPageContent getPageContent() {

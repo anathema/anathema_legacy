@@ -5,11 +5,11 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 
 public interface IEquipmentStatisticsCreationModel {
 
-  public EquipmentStatisticsType getEquipmentType();
-
   public void setEquipmentType(EquipmentStatisticsType type);
-  
+
   public ICloseCombatStatsticsModel getCloseCombatStatsticsModel();
 
   public void addEquipmentTypeChangeListener(IChangeListener changeListener);
+
+  public boolean isEquipmentTypeSelected(EquipmentStatisticsType type);
 }

@@ -3,12 +3,11 @@ package net.sf.anathema.character.equipment.creation;
 import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.core.IPageContent;
-import net.disy.commons.swing.dialog.wizard.IBasicWizardPage;
 import net.sf.anathema.character.equipment.creation.model.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.properties.CloseCombatStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.view.ICloseCombatStatisticsView;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
-import net.sf.anathema.lib.gui.wizard.CheckInputListener;
+import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CloseCombatStatisticsPresenterPage extends AbstractAnathemaWizardPage {
@@ -27,10 +26,6 @@ public class CloseCombatStatisticsPresenterPage extends AbstractAnathemaWizardPa
     this.resources = resources;
     this.model = model;
     this.viewFactory = viewFactory;
-  }
-
-  public IBasicWizardPage getNextPage() {
-    return null;
   }
 
   public boolean canFinish() {
