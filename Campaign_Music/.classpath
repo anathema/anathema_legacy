@@ -7,7 +7,6 @@
 	<classpathentry sourcepath="/Thirdparty/Multimedia/mp3spi1.9.2-src.zip" kind="lib" path="/Thirdparty/Multimedia/mp3spi1.9.2.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/Multimedia/tritonus_share.jar"/>
 	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Database/db4o-4.5-src.zip" kind="lib" path="/Thirdparty/Database/db4o-4.5-java1.4.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/Testing/jdemo_core.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Gui"/>
@@ -15,5 +14,6 @@
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-dialog-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-dialog.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
 	<classpathentry kind="src" path="resources"/>
+	<classpathentry kind="lib" path="/Thirdparty/Database/db4o-5.2-java5.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
