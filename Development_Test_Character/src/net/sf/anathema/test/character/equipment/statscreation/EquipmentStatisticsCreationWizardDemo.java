@@ -1,4 +1,4 @@
-package net.sf.anathema.test.character.equipment.item;
+package net.sf.anathema.test.character.equipment.statscreation;
 
 import net.disy.commons.swing.dialog.wizard.WizardDialog;
 import net.sf.anathema.character.equipment.creation.EquipmentTypeChoicePresenterPage;
