@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.model.charm.combo.test;
 
-import net.sf.anathema.character.generic.magic.charms.CharmType;
+import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 
 public class ReflexiveCharmComboRulesTest extends AbstractComboRulesTestCase {
   public void testCharmComboAttributeAbilityReflexiveForbidden() throws Exception {

@@ -2,7 +2,7 @@ package net.sf.anathema.character.impl.model.charm.combo;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IExtendedCharmData;
-import net.sf.anathema.character.generic.magic.charms.CharmType;
+import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 
 public class SecondEditionComboArbitrator extends ComboArbitrator {
 
@@ -15,7 +15,7 @@ public class SecondEditionComboArbitrator extends ComboArbitrator {
 
   @Override
   protected boolean specialRestrictionsApply(ICharm charm1, ICharm charm2) {
-    if (isComboBasic(charm1) && charm2.getCharmType() != CharmType.Reflexive) {
+    if (isComboBasic(charm1) && charm2.getCharmTypeModel().getCharmType() != CharmType.Reflexive) {
       return true;
     }
     return super.specialRestrictionsApply(charm1, charm2);

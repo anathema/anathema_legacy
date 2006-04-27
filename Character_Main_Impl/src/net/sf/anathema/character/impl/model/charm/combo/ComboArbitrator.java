@@ -1,10 +1,10 @@
 package net.sf.anathema.character.impl.model.charm.combo;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.DurationType;
 import net.sf.anathema.character.generic.magic.charms.ICharmTypeVisitor;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
+import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 
@@ -61,7 +61,7 @@ public class ComboArbitrator implements IComboArbitrator {
 
   private boolean handleComboRules(final ICharm charm1, final ICharm charm2) {
     final boolean[] legal = new boolean[1];
-    charm1.getCharmType().accept(new ICharmTypeVisitor() {
+    charm1.getCharmTypeModel().getCharmType().accept(new ICharmTypeVisitor() {
       public void visitSimple(CharmType visitedType) {
         legal[0] = simpleCharmRules.isComboLegal(charm1, charm2);
       }

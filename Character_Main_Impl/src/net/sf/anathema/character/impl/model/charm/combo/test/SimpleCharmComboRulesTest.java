@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.model.charm.combo.test;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.CharmType;
+import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.impl.model.charm.combo.IComboRules;
 import net.sf.anathema.character.impl.model.charm.combo.SimpleCharmComboRules;
 import net.sf.anathema.character.impl.model.charm.test.DummyCharmUtilities;

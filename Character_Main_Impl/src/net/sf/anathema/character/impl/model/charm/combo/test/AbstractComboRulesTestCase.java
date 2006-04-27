@@ -1,8 +1,8 @@
 package net.sf.anathema.character.impl.model.charm.combo.test;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
+import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;

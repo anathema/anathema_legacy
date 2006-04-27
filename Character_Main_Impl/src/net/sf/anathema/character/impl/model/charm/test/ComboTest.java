@@ -1,12 +1,10 @@
 package net.sf.anathema.character.impl.model.charm.test;
 
-import net.sf.anathema.character.generic.impl.magic.test.DummyCharm;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.DurationType;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
@@ -35,24 +33,12 @@ public class ComboTest extends BasicTestCase {
     }
   }
 
-  protected final static ICharm createCharm(CharmType charmType) {
-    return new DummyCharm(DurationType.Instant, charmType, new ComboRestrictions(), null);
-  }
-
-  protected final static ICharm createCharm(CharmType charmType, IGenericTrait prerequisite) {
-    return new DummyCharm(
-        DurationType.Instant,
-        charmType,
-        new ComboRestrictions(),
-        new IGenericTrait[] { prerequisite });
-  }
-
   protected final static ICharm createCharm(CharmType charmType, IComboRestrictions restrictions) {
-    return new DummyCharm(DurationType.Instant, charmType, restrictions, null);
+    return DummyCharmUtilities.createCharm(charmType, restrictions);
   }
 
   protected final static ICharm createCharm(DurationType durationType, IComboRestrictions restrictions) {
-    return new DummyCharm(durationType, CharmType.Reflexive, restrictions, null);
+    return DummyCharmUtilities.createCharm(durationType, restrictions);
   }
 
   protected final static ICharm createCharm(IComboRestrictions restrictions) {
@@ -66,22 +52,16 @@ public class ComboTest extends BasicTestCase {
   }
 
   public void testAddedCharmIsIllegal() throws Exception {
-    ICharm charm = createCharm(CharmType.Reflexive);
+    ICharm charm = DummyCharmUtilities.createCharm(CharmType.Reflexive);
     addCharm(charm);
     assertFalse(comboRules.canBeAddedToCombo(combo, charm));
   }
 
   public void testOnlyInstantDurationCombos() throws Exception {
-    assertTrue(comboRules.canBeAddedToCombo(combo, new DummyCharm(
-        DurationType.Instant,
-        CharmType.Reflexive,
-        new ComboRestrictions(),
-        null)));
-    assertFalse(comboRules.canBeAddedToCombo(combo, new DummyCharm(
-        DurationType.Other,
-        CharmType.Reflexive,
-        new ComboRestrictions(),
-        null)));
+    final ICharm dummy1 = DummyCharmUtilities.createCharm(CharmType.Reflexive);
+    assertTrue(comboRules.canBeAddedToCombo(combo, dummy1));
+    final ICharm dummy2 = DummyCharmUtilities.createCharm(DurationType.Other, new ComboRestrictions());
+    assertFalse(comboRules.canBeAddedToCombo(combo, dummy2));
   }
 
   public void testComboRestrictionComboAllowed() throws Exception {
@@ -94,149 +74,151 @@ public class ComboTest extends BasicTestCase {
   }
 
   public void testOnlyOneExtraActionCharm() {
-    ICharm extraActionCharm = createCharm(CharmType.ExtraAction, new ValuedTraitType(AbilityType.Archery, 3));
+    ICharm extraActionCharm = DummyCharmUtilities.createCharm(CharmType.ExtraAction, new ValuedTraitType(
+        AbilityType.Archery,
+        3));
     assertTrue(comboRules.canBeAddedToCombo(combo, extraActionCharm));
     addCharm(extraActionCharm);
-    assertFalse(comboRules.canBeAddedToCombo(combo, createCharm(CharmType.ExtraAction, new ValuedTraitType(
-        AbilityType.Archery,
-        3))));
+    assertFalse(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(
+        CharmType.ExtraAction,
+        new ValuedTraitType(AbilityType.Archery, 3))));
   }
 
   public void testOnlyOneSimpleCharm() {
-    ICharm simpleCharm = createCharm(CharmType.Simple, new ValuedTraitType(AbilityType.Archery, 3));
+    ICharm simpleCharm = DummyCharmUtilities.createCharm(CharmType.Simple, new ValuedTraitType(AbilityType.Archery, 3));
     assertTrue(comboRules.canBeAddedToCombo(combo, simpleCharm));
     addCharm(simpleCharm);
-    assertFalse(comboRules.canBeAddedToCombo(combo, createCharm(CharmType.Simple, new ValuedTraitType(
-        AbilityType.Archery,
-        3))));
+    assertFalse(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(
+        CharmType.Simple,
+        new ValuedTraitType(AbilityType.Archery, 3))));
   }
 
   public void testSimpleCharmOfSamePrimaryPrerequisiteAsExtraAction() throws Exception {
-    addCharm(createCharm(CharmType.ExtraAction, new ValuedTraitType(AbilityType.Archery, 3)));
-    assertTrue(comboRules.canBeAddedToCombo(combo, createCharm(CharmType.Simple, new ValuedTraitType(
-        AbilityType.Archery,
-        3))));
-    assertFalse(comboRules.canBeAddedToCombo(combo, createCharm(CharmType.Simple, new ValuedTraitType(
-        AbilityType.Athletics,
-        3))));
+    addCharm(DummyCharmUtilities.createCharm(CharmType.ExtraAction, new ValuedTraitType(AbilityType.Archery, 3)));
+    assertTrue(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(
+        CharmType.Simple,
+        new ValuedTraitType(AbilityType.Archery, 3))));
+    assertFalse(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(
+        CharmType.Simple,
+        new ValuedTraitType(AbilityType.Athletics, 3))));
   }
 
   public void testAttributeSimpleCharmsCombosWithAbilityExtraAction() throws Exception {
     comboRules.setCrossPrerequisiteTypeComboAllowed(true);
-    addCharm(createCharm(CharmType.ExtraAction, new ValuedTraitType(AbilityType.Archery, 3)));
-    assertTrue(comboRules.canBeAddedToCombo(combo, createCharm(CharmType.Simple, new ValuedTraitType(
-        AttributeType.Appearance,
-        3))));
+    addCharm(DummyCharmUtilities.createCharm(CharmType.ExtraAction, new ValuedTraitType(AbilityType.Archery, 3)));
+    assertTrue(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(
+        CharmType.Simple,
+        new ValuedTraitType(AttributeType.Appearance, 3))));
   }
 
   public void testAbilitySimpleCharmCombosWithAttributeExtraAction() throws Exception {
     comboRules.setCrossPrerequisiteTypeComboAllowed(true);
-    addCharm(createCharm(CharmType.ExtraAction, new ValuedTraitType(AttributeType.Appearance, 3)));
-    assertTrue(comboRules.canBeAddedToCombo(combo, createCharm(CharmType.Simple, new ValuedTraitType(
-        AbilityType.Archery,
-        3))));
+    addCharm(DummyCharmUtilities.createCharm(CharmType.ExtraAction, new ValuedTraitType(AttributeType.Appearance, 3)));
+    assertTrue(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(
+        CharmType.Simple,
+        new ValuedTraitType(AbilityType.Archery, 3))));
   }
 
   public void testExtraActionCharmOfSamePrimaryPrerequisiteAsSimple() throws Exception {
-    addCharm(createCharm(CharmType.Simple, new ValuedTraitType(AbilityType.Archery, 3)));
-    assertTrue(comboRules.canBeAddedToCombo(combo, createCharm(CharmType.ExtraAction, new ValuedTraitType(
-        AbilityType.Archery,
-        3))));
-    assertFalse(comboRules.canBeAddedToCombo(combo, createCharm(CharmType.ExtraAction, new ValuedTraitType(
-        AbilityType.Athletics,
-        3))));
+    addCharm(DummyCharmUtilities.createCharm(CharmType.Simple, new ValuedTraitType(AbilityType.Archery, 3)));
+    assertTrue(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(
+        CharmType.ExtraAction,
+        new ValuedTraitType(AbilityType.Archery, 3))));
+    assertFalse(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(
+        CharmType.ExtraAction,
+        new ValuedTraitType(AbilityType.Athletics, 3))));
   }
 
   public void testAttributeExtraActionCombosWithAbilitySimpleCharm() throws Exception {
     comboRules.setCrossPrerequisiteTypeComboAllowed(true);
-    addCharm(createCharm(CharmType.Simple, new ValuedTraitType(AbilityType.Archery, 3)));
-    assertTrue(comboRules.canBeAddedToCombo(combo, createCharm(CharmType.ExtraAction, new ValuedTraitType(
-        AttributeType.Dexterity,
-        3))));
+    addCharm(DummyCharmUtilities.createCharm(CharmType.Simple, new ValuedTraitType(AbilityType.Archery, 3)));
+    assertTrue(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(
+        CharmType.ExtraAction,
+        new ValuedTraitType(AttributeType.Dexterity, 3))));
   }
 
   public void testExtraActionOfSamePrimaryPrerequisiteAsSupplemental() throws Exception {
-    addCharm(createCharm(CharmType.Supplemental, new ValuedTraitType(AbilityType.Archery, 3)));
-    assertTrue(comboRules.canBeAddedToCombo(combo, createCharm(CharmType.ExtraAction, new ValuedTraitType(
-        AbilityType.Archery,
-        3))));
-    assertFalse(comboRules.canBeAddedToCombo(combo, createCharm(CharmType.ExtraAction, new ValuedTraitType(
-        AbilityType.Athletics,
-        3))));
+    addCharm(DummyCharmUtilities.createCharm(CharmType.Supplemental, new ValuedTraitType(AbilityType.Archery, 3)));
+    assertTrue(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(
+        CharmType.ExtraAction,
+        new ValuedTraitType(AbilityType.Archery, 3))));
+    assertFalse(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(
+        CharmType.ExtraAction,
+        new ValuedTraitType(AbilityType.Athletics, 3))));
   }
 
   public void testAttributeExtraActionCombosWithAbilitySupplemental() throws Exception {
     comboRules.setCrossPrerequisiteTypeComboAllowed(true);
-    addCharm(createCharm(CharmType.Supplemental, new ValuedTraitType(AbilityType.Archery, 3)));
-    assertTrue(comboRules.canBeAddedToCombo(combo, createCharm(CharmType.ExtraAction, new ValuedTraitType(
-        AttributeType.Perception,
-        3))));
+    addCharm(DummyCharmUtilities.createCharm(CharmType.Supplemental, new ValuedTraitType(AbilityType.Archery, 3)));
+    assertTrue(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(
+        CharmType.ExtraAction,
+        new ValuedTraitType(AttributeType.Perception, 3))));
   }
 
   public void testSupplementalOfSamePrimaryPrerequisiteAsExtraAction() throws Exception {
-    addCharm(createCharm(CharmType.ExtraAction, new ValuedTraitType(AbilityType.Archery, 3)));
-    assertTrue(comboRules.canBeAddedToCombo(combo, createCharm(CharmType.Supplemental, new ValuedTraitType(
-        AbilityType.Archery,
-        3))));
-    assertFalse(comboRules.canBeAddedToCombo(combo, createCharm(CharmType.Supplemental, new ValuedTraitType(
-        AbilityType.Athletics,
-        3))));
+    addCharm(DummyCharmUtilities.createCharm(CharmType.ExtraAction, new ValuedTraitType(AbilityType.Archery, 3)));
+    assertTrue(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(
+        CharmType.Supplemental,
+        new ValuedTraitType(AbilityType.Archery, 3))));
+    assertFalse(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(
+        CharmType.Supplemental,
+        new ValuedTraitType(AbilityType.Athletics, 3))));
   }
 
   public void testAbilitySupplementalCombosWithAttributeExtraAction() throws Exception {
     comboRules.setCrossPrerequisiteTypeComboAllowed(true);
-    addCharm(createCharm(CharmType.ExtraAction, new ValuedTraitType(AttributeType.Wits, 3)));
-    assertTrue(comboRules.canBeAddedToCombo(combo, createCharm(CharmType.Supplemental, new ValuedTraitType(
-        AbilityType.Awareness,
-        3))));
+    addCharm(DummyCharmUtilities.createCharm(CharmType.ExtraAction, new ValuedTraitType(AttributeType.Wits, 3)));
+    assertTrue(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(
+        CharmType.Supplemental,
+        new ValuedTraitType(AbilityType.Awareness, 3))));
   }
 
   public void testAttributeSimpleCombosWithAttributeExtraAction() throws Exception {
-    addCharm(createCharm(CharmType.ExtraAction, new ValuedTraitType(AttributeType.Wits, 3)));
-    assertTrue(comboRules.canBeAddedToCombo(combo, createCharm(CharmType.Simple, new ValuedTraitType(
-        AttributeType.Strength,
-        3))));
+    addCharm(DummyCharmUtilities.createCharm(CharmType.ExtraAction, new ValuedTraitType(AttributeType.Wits, 3)));
+    assertTrue(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(
+        CharmType.Simple,
+        new ValuedTraitType(AttributeType.Strength, 3))));
   }
 
   public void testAttributeExtraActionCombosWithAttributeSimple() throws Exception {
-    addCharm(createCharm(CharmType.Simple, new ValuedTraitType(AttributeType.Strength, 3)));
-    assertTrue(comboRules.canBeAddedToCombo(combo, createCharm(CharmType.ExtraAction, new ValuedTraitType(
-        AttributeType.Dexterity,
-        3))));
+    addCharm(DummyCharmUtilities.createCharm(CharmType.Simple, new ValuedTraitType(AttributeType.Strength, 3)));
+    assertTrue(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(
+        CharmType.ExtraAction,
+        new ValuedTraitType(AttributeType.Dexterity, 3))));
   }
 
   public void testAttributeExtraActionCombosWithAttributeSupplemental() throws Exception {
-    addCharm(createCharm(CharmType.Supplemental, new ValuedTraitType(AttributeType.Strength, 3)));
-    assertTrue(comboRules.canBeAddedToCombo(combo, createCharm(CharmType.ExtraAction, new ValuedTraitType(
-        AttributeType.Dexterity,
-        3))));
+    addCharm(DummyCharmUtilities.createCharm(CharmType.Supplemental, new ValuedTraitType(AttributeType.Strength, 3)));
+    assertTrue(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(
+        CharmType.ExtraAction,
+        new ValuedTraitType(AttributeType.Dexterity, 3))));
   }
 
   public void testAttributeSupplementalCombosWithAttributeExtraAction() throws Exception {
-    addCharm(createCharm(CharmType.ExtraAction, new ValuedTraitType(AttributeType.Wits, 3)));
-    assertTrue(comboRules.canBeAddedToCombo(combo, createCharm(CharmType.Supplemental, new ValuedTraitType(
-        AttributeType.Strength,
-        3))));
+    addCharm(DummyCharmUtilities.createCharm(CharmType.ExtraAction, new ValuedTraitType(AttributeType.Wits, 3)));
+    assertTrue(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(
+        CharmType.Supplemental,
+        new ValuedTraitType(AttributeType.Strength, 3))));
   }
 
   public void testAttributeSimpleCombosWithAttributeSupplemental() throws Exception {
-    addCharm(createCharm(CharmType.Supplemental, new ValuedTraitType(AttributeType.Strength, 3)));
-    assertTrue(comboRules.canBeAddedToCombo(combo, createCharm(CharmType.Simple, new ValuedTraitType(
-        AttributeType.Dexterity,
-        3))));
+    addCharm(DummyCharmUtilities.createCharm(CharmType.Supplemental, new ValuedTraitType(AttributeType.Strength, 3)));
+    assertTrue(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(
+        CharmType.Simple,
+        new ValuedTraitType(AttributeType.Dexterity, 3))));
   }
 
   public void testAttributeSupplementalCombosWithAttributeSimple() throws Exception {
-    addCharm(createCharm(CharmType.Simple, new ValuedTraitType(AttributeType.Wits, 3)));
-    assertTrue(comboRules.canBeAddedToCombo(combo, createCharm(CharmType.Supplemental, new ValuedTraitType(
-        AttributeType.Strength,
-        3))));
+    addCharm(DummyCharmUtilities.createCharm(CharmType.Simple, new ValuedTraitType(AttributeType.Wits, 3)));
+    assertTrue(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(
+        CharmType.Supplemental,
+        new ValuedTraitType(AttributeType.Strength, 3))));
   }
 
   public void testExtraActionRestriction() throws Exception {
     ComboRestrictions comboRestrictions = new ComboRestrictions();
     comboRestrictions.addRestrictedCharmType(CharmType.ExtraAction);
     addCharm(createCharm(comboRestrictions));
-    assertFalse(comboRules.canBeAddedToCombo(combo, createCharm(CharmType.ExtraAction)));
+    assertFalse(comboRules.canBeAddedToCombo(combo, DummyCharmUtilities.createCharm(CharmType.ExtraAction)));
   }
 }

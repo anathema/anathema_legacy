@@ -6,7 +6,7 @@ import java.util.List;
 
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.CharmType;
+import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -29,10 +29,10 @@ public class Combo implements ICombo {
 
   public void addCharm(ICharm charm) {
     charmList.add(charm);
-    if (charm.getCharmType() == CharmType.Simple) {
+    if (charm.getCharmTypeModel().getCharmType() == CharmType.Simple) {
       simpleCharm = charm;
     }
-    if (charm.getCharmType() == CharmType.ExtraAction) {
+    if (charm.getCharmTypeModel().getCharmType() == CharmType.ExtraAction) {
       extraActionCharm = charm;
     }
     fireComboChanged();

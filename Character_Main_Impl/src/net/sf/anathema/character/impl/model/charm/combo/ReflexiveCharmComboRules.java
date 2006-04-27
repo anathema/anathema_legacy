@@ -1,8 +1,8 @@
 package net.sf.anathema.character.impl.model.charm.combo;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.ICharmTypeVisitor;
+import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 
 public class ReflexiveCharmComboRules extends AbstractComboRules {
   private boolean crossPrerequisite;
@@ -13,7 +13,7 @@ public class ReflexiveCharmComboRules extends AbstractComboRules {
 
   public boolean isComboLegal(final ICharm reflexiveCharm, final ICharm otherCharm) {
     final boolean[] legal = new boolean[1];
-    otherCharm.getCharmType().accept(new ICharmTypeVisitor() {
+    otherCharm.getCharmTypeModel().getCharmType().accept(new ICharmTypeVisitor() {
       public void visitSimple(CharmType visitedType) {
         legal[0] = haveAbilityPrerequisites(reflexiveCharm, otherCharm)
             || haveAttributePrerequisites(reflexiveCharm, otherCharm)

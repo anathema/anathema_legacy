@@ -2,10 +2,10 @@ package net.sf.anathema.character.impl.model.charm.test;
 
 import net.sf.anathema.character.generic.impl.magic.test.DummyCharm;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.DurationType;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
+import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 
 public class DummyCharmUtilities {
