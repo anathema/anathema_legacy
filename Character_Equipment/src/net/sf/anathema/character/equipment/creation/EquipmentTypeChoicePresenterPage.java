@@ -45,10 +45,12 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
     return false;
   }
 
+  @Override
   protected void initModelListening(CheckInputListener inputListener) {
     model.addEquipmentTypeChangeListener(inputListener);
   }
 
+  @Override
   protected void addFollowUpPages(CheckInputListener inputListener) {
     addPage(
         EquipmentStatisticsType.CloseCombat,
@@ -56,6 +58,7 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
         inputListener);
   }
 
+  @Override
   protected void initPageContent() {
     this.view = viewFactory.createTypeChoiceView();
     String label = properties.getOffensiveLabel();

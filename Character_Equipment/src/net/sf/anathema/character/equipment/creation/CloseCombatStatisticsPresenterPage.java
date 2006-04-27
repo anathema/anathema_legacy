@@ -40,10 +40,6 @@ public class CloseCombatStatisticsPresenterPage extends AbstractAnathemaWizardPa
     return !getPageModel().getName().isEmpty();
   }
 
-  public IPageContent getPageContent() {
-    return view;
-  }
-
   public IBasicMessage getMessage() {
     if (!isNameDefined()) {
       return properties.getUndefinedNameMessage();
@@ -70,15 +66,15 @@ public class CloseCombatStatisticsPresenterPage extends AbstractAnathemaWizardPa
     new TextualPresentation().initView(textView, textModel);
   }
 
-  private void initIntRow(String label, IIntValueModel intModel, int minimumValue) {
-    final IntegerSpinner spinner = initIntRow(label, intModel);
-    spinner.setMinimum(minimumValue);
-  }
-
   private IntegerSpinner initIntRow(String label, IIntValueModel intModel) {
     final IntegerSpinner spinner = view.addIntegerSpinner(label, intModel.getValue());
     new IntValuePresentation().initView(spinner, intModel);
     return spinner;
+  }
+
+  private void initIntRow(String label, IIntValueModel intModel, int minimumValue) {
+    final IntegerSpinner spinner = initIntRow(label, intModel);
+    spinner.setMinimum(minimumValue);
   }
 
   private ICloseCombatStatsticsModel getPageModel() {
@@ -87,11 +83,15 @@ public class CloseCombatStatisticsPresenterPage extends AbstractAnathemaWizardPa
 
   @Override
   protected void addFollowUpPages(CheckInputListener inputListener) {
-    //Nothing to do
+    // Nothing to do
   }
 
   @Override
   protected void initModelListening(CheckInputListener inputListener) {
     getPageModel().getName().addTextChangedListener(inputListener);
+  }
+
+  public IPageContent getPageContent() {
+    return view;
   }
 }
