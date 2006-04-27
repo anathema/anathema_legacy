@@ -14,13 +14,15 @@ import net.sf.anathema.character.generic.impl.magic.MagicSource;
 import net.sf.anathema.character.generic.impl.magic.PermanentCostList;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
-import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.DurationType;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
+import net.sf.anathema.character.generic.magic.charms.type.CharmType;
+import net.sf.anathema.character.generic.magic.charms.type.CharmTypeModel;
+import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.IMagicSource;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
@@ -36,7 +38,6 @@ public class DummyCharm extends Identificate implements ICharm {
 
   private ValuedTraitType essence;
   private Duration duration;
-  private CharmType charmType;
   private IComboRestrictions comboRestrictions = new ComboRestrictions();
   private IGenericTrait[] prerequisites;
   private Set<ICharm> parentCharms;
@@ -46,6 +47,7 @@ public class DummyCharm extends Identificate implements ICharm {
   private String groupId;
   private IMagicSource source;
   private CostList temporaryCost;
+  private CharmTypeModel model = new CharmTypeModel();
 
   public DummyCharm(
       DurationType durationType,
@@ -55,8 +57,8 @@ public class DummyCharm extends Identificate implements ICharm {
     super("DummyCharmDefaultId"); //$NON-NLS-1$
     this.prerequisites = prerequisites;
     this.duration = Duration.getDuration(durationType.getId());
-    this.charmType = charmType;
     this.comboRestrictions = comboRestrictions;
+    this.model.setCharmType(charmType);
   }
 
   public DummyCharm() {
@@ -100,10 +102,6 @@ public class DummyCharm extends Identificate implements ICharm {
 
   public void setCharacterType(CharacterType type) {
     characterType = type;
-  }
-
-  public CharmType getCharmType() {
-    return charmType;
   }
 
   public IComboRestrictions getComboRules() {
@@ -195,7 +193,7 @@ public class DummyCharm extends Identificate implements ICharm {
   }
 
   public void setCharmType(CharmType type) {
-    charmType = type;
+    model.setCharmType(type);
   }
 
   public void setDuration(Duration duration) {
@@ -208,5 +206,18 @@ public class DummyCharm extends Identificate implements ICharm {
 
   public void setPrerequisites(ValuedTraitType[] prerequisites) {
     this.prerequisites = prerequisites;
+  }
+
+  public void setCharmTypeModel(CharmTypeModel model) {
+    this.model = model;
+  }
+
+  public CharmTypeModel getCharmTypeModel() {
+    return model;
+  }
+
+  public void setSpecialModel(ICharmTypeModel model) {
+    // TODO Auto-generated method stub
+
   }
 }

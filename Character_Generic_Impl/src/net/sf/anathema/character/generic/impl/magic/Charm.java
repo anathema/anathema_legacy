@@ -20,7 +20,6 @@ import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.Sel
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
-import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.ICharmAlternative;
@@ -28,6 +27,9 @@ import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
+import net.sf.anathema.character.generic.magic.charms.type.CharmType;
+import net.sf.anathema.character.generic.magic.charms.type.CharmTypeModel;
+import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.magic.general.IMagicSource;
 import net.sf.anathema.character.generic.magic.general.IPermanentCostList;
@@ -51,7 +53,6 @@ public class Charm extends Identificate implements ICharm {
   private final CharacterType characterType;
   private final IComboRestrictions comboRules;
   private final Duration duration;
-  private final CharmType charmType;
   private final String group;
 
   private final IMagicSource[] sources;
@@ -64,6 +65,8 @@ public class Charm extends Identificate implements ICharm {
   private final List<SelectiveCharmGroup> selectiveCharmGroups = new ArrayList<SelectiveCharmGroup>();
   private final List<ICharmAttribute> charmAttributes = new ArrayList<ICharmAttribute>();
   private final List<String> favoredCasteIds = new ArrayList<String>();
+
+  private final ICharmTypeModel typeModel;
 
   public Charm(
       CharacterType characterType,
@@ -94,7 +97,9 @@ public class Charm extends Identificate implements ICharm {
     this.permanentCost = permanentCost;
     this.comboRules = comboRules;
     this.duration = duration;
-    this.charmType = charmType;
+    final CharmTypeModel charmTypeModel = new CharmTypeModel();
+    charmTypeModel.setCharmType(charmType);
+    this.typeModel = charmTypeModel;
     this.sources = sources;
     for (SelectiveCharmGroupTemplate template : prerequisiteList.getSelectiveCharmGroups()) {
       selectiveCharmGroups.add(new SelectiveCharmGroup(template));
@@ -109,7 +114,6 @@ public class Charm extends Identificate implements ICharm {
     this.permanentCost = charmData.getPermanentCost();
     this.comboRules = new ComboRestrictions();
     this.duration = charmData.getDuration();
-    this.charmType = charmData.getCharmType();
     this.sources = new IMagicSource[] { charmData.getSource() };
     this.prerequisisteList = new CharmPrerequisiteList(
         charmData.getPrerequisites(),
@@ -118,14 +122,15 @@ public class Charm extends Identificate implements ICharm {
         new SelectiveCharmGroupTemplate[0],
         new ICharmAttributeRequirement[0]);
     parentCharms.addAll(charmData.getParentCharms());
+    this.typeModel = charmData.getCharmTypeModel();
   }
 
   public void addCharmAttribute(ICharmAttribute attribute) {
     charmAttributes.add(attribute);
   }
 
-  public CharmType getCharmType() {
-    return charmType;
+  public ICharmTypeModel getCharmTypeModel() {
+    return typeModel;
   }
 
   public CharacterType getCharacterType() {
@@ -330,7 +335,7 @@ public class Charm extends Identificate implements ICharm {
         getPermanentCost(),
         getComboRules(),
         getDuration(),
-        getCharmType(),
+        getCharmTypeModel().getCharmType(),
         this.sources);
     for (ICharmAttribute attribute : getAttributes()) {
       clone.addCharmAttribute(attribute);

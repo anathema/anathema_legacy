@@ -6,10 +6,11 @@ import java.util.Set;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
-import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
+import net.sf.anathema.character.generic.magic.charms.type.CharmType;
+import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.magic.general.IMagicSource;
 import net.sf.anathema.character.generic.magic.general.IPermanentCostList;
@@ -33,7 +34,7 @@ public class DummyCharmData implements ICharmData {
   }
 
   public IGenericTrait getEssence() {
-    return new ValuedTraitType(null,1);
+    return new ValuedTraitType(null, 1);
   }
 
   public IGenericTrait[] getPrerequisites() {
@@ -55,7 +56,7 @@ public class DummyCharmData implements ICharmData {
   public void setParentCharms(ICharm[] parentcharms) {
     Collections.addAll(this.parents, parentcharms);
   }
-  
+
   public Set<ICharm> getParentCharms() {
     return parents;
   }
@@ -73,6 +74,10 @@ public class DummyCharmData implements ICharmData {
   }
 
   public String getId() {
+    return null;
+  }
+
+  public ICharmTypeModel getCharmTypeModel() {
     return null;
   }
 }

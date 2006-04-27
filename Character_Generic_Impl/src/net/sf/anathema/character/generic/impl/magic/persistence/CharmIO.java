@@ -2,12 +2,11 @@ package net.sf.anathema.character.generic.impl.magic.persistence;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
@@ -23,7 +22,7 @@ import org.dom4j.io.SAXReader;
 public class CharmIO {
 
   public Document readCharms(IIdentificate type, IExaltedRuleSet rules) throws DocumentException {
-    String urlString = "data/Charms_" + type.getId() + "_" + rules.getId() + ".xml"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$;
+    String urlString = createFileName(type, rules);
     final URL charmURL = type.getClass().getClassLoader().getResource(urlString);
     if (charmURL == null) {
       throw new NullPointerException("Resource not found in classpath: " + urlString); //$NON-NLS-1$
@@ -31,19 +30,8 @@ public class CharmIO {
     return new SAXReader().read(charmURL);
   }
 
-  public Document readCustomCharms(final IIdentificate type) throws DocumentException {
-    File charmFile = new File("./data/Charms_" + type.getId() + "_Custom.xml"); //$NON-NLS-1$ //$NON-NLS-2$
-    if (charmFile.exists()) {
-      try {
-        InputStream externalStream = new FileInputStream(charmFile);
-        SAXReader saxReader = new SAXReader();
-        return saxReader.read(externalStream);
-      }
-      catch (FileNotFoundException e) {
-        // Nothing to do
-      }
-    }
-    return null;
+  private String createFileName(IIdentificate type, IExaltedRuleSet rules) {
+    return "data/Charms_" + type.getId() + "_" + rules.getId() + ".xml";//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$;
   }
 
   public void writeCharmInternal(ICharmData charmData, List<ICharmAttribute> keywords)
@@ -51,7 +39,10 @@ public class CharmIO {
       DocumentException {
     System.err.println("Charm data is written to wrong file until ruleset is handed in."); //$NON-NLS-1$
     CharacterType type = charmData.getCharacterType();
-    File file = new File("../Character_" + type.getId() + "/resources/data/Charms_" + type.getId() + ".xml"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$;
+    File file = new File("../Character_" //$NON-NLS-1$
+        + type.getId()
+        + "/resources/" //$NON-NLS-1$
+        + createFileName(type, ExaltedRuleSet.CoreRules));
     Document document = new SAXReader().read(new FileInputStream(file));
     try {
       new CharmWriter().writeCharm(charmData, keywords, document.getRootElement());

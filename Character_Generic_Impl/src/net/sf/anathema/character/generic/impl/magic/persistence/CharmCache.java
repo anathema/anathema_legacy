@@ -106,6 +106,6 @@ public class CharmCache implements ICharmCache {
   public void addCharm(ICharmData charmData, List<ICharmAttribute> keywords) throws IOException, DocumentException {
     ICharm charm = new Charm(charmData);
     getRulesetCharms(ExaltedRuleSet.CoreRules).add(charm.getCharacterType(), charm);
-    charmIo.writeCharmInternal(charm, keywords);
+    charmIo.writeCharmInternal(charmData, keywords);
   }
 }

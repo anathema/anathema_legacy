@@ -11,10 +11,10 @@ import net.sf.anathema.character.generic.impl.magic.persistence.CharmSetBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.CharmType;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
+import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.magic.general.IMagicSource;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -53,7 +53,7 @@ public class CharmSetBuilderTest extends BasicTestCase {
     list.add(getTestCharm("Dummy", CharmType.ExtraAction, null)); //$NON-NLS-1$
     ICharm[] charms = builder.buildCharms(document, list);
     assertEquals(1, charms.length);
-    assertEquals(CharmType.Simple, charms[0].getCharmType());
+    assertEquals(CharmType.Simple, charms[0].getCharmTypeModel().getCharmType());
   }
 
   public void testNewCharmsAreConnected() throws Exception {
