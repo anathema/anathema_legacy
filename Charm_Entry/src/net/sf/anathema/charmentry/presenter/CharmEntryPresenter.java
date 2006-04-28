@@ -47,7 +47,7 @@ public class CharmEntryPresenter {
         IConfigurableCharmData charmData = model.getCharmData();
         CharacterType characterType = charmData.getCharacterType();
         try {
-          CharmCache.getInstance().addCharm(charmData, model.getKeywordModel().getEntries());
+          CharmCache.getInstance().addCharm(charmData, model.getKeywordModel().getEntries(), charmData.getEdition());
           new CharmEntryPropertiesPersister().addPropertyInternal(characterType, charmData.getId(), charmData.getName());
           basicDataPresenter.charmAdded(charmData);
           keywordPresenter.charmAdded(charmData);
