@@ -2,6 +2,7 @@ package net.sf.anathema.character.generic.framework.magic.stringbuilder.test;
 
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.CharmTypeStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
+import net.sf.anathema.character.generic.impl.magic.charm.type.ReflexiveSpecialsModel;
 import net.sf.anathema.character.generic.impl.magic.charm.type.SimpleSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.magic.charms.type.TurnType;
@@ -24,6 +25,8 @@ public class CharmTypeStringBuilderTest extends BasicTestCase {
     resources.putString("CharmTreeView.ToolTip.Type.Defense", "DV"); //$NON-NLS-1$ //$NON-NLS-2$
     resources.putString("CharmTreeView.ToolTip.Type.LongTick", "in long ticks"); //$NON-NLS-1$ //$NON-NLS-2$
     resources.putString("CharmTreeView.ToolTip.Type.DramaticAction", "Dramatic Action"); //$NON-NLS-1$ //$NON-NLS-2$
+    resources.putString("CharmTreeView.ToolTip.Type.SingleStep", "Step {0, number, integer}"); //$NON-NLS-1$ //$NON-NLS-2$
+    resources.putString("CharmTreeView.ToolTip.Type.DualStep", "Step {0, number, integer} or {1, number, integer}"); //$NON-NLS-1$ //$NON-NLS-2$
     builder = new CharmTypeStringBuilder(resources);
   }
 
@@ -32,6 +35,22 @@ public class CharmTypeStringBuilderTest extends BasicTestCase {
     charmTypeModel.setCharmType(CharmType.ExtraAction);
     String string = builder.createTypeString(charmTypeModel);
     assertEquals("Extra Action", string); //$NON-NLS-1$
+  }
+
+  public void testReflexiveModelSingleStep() throws Exception {
+    final CharmTypeModel charmTypeModel = new CharmTypeModel();
+    charmTypeModel.setCharmType(CharmType.Reflexive);
+    charmTypeModel.setSpecialModel(new ReflexiveSpecialsModel(4, null));
+    String string = builder.createTypeString(charmTypeModel);
+    assertEquals("Reflexive (Step 4)", string); //$NON-NLS-1$
+  }
+
+  public void testReflexiveModelDoubleStep() throws Exception {
+    final CharmTypeModel charmTypeModel = new CharmTypeModel();
+    charmTypeModel.setCharmType(CharmType.Reflexive);
+    charmTypeModel.setSpecialModel(new ReflexiveSpecialsModel(1, 2));
+    String string = builder.createTypeString(charmTypeModel);
+    assertEquals("Reflexive (Step 1 or 2)", string); //$NON-NLS-1$
   }
 
   public void testSimpleModelTickDefaultDefense() throws Exception {
