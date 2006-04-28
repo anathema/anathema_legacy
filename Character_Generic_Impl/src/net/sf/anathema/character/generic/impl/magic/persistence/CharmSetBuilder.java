@@ -35,18 +35,22 @@ public class CharmSetBuilder implements ICharmSetBuilder {
       charmsById.put(clone.getId(), clone);
     }
     Element charmListElement = charmDoc.getRootElement();
-    for (Object charmElementObject : charmListElement.elements(TAG_CHARM)) {
-      Element charmElement = (Element) charmElementObject;
-      Charm newCharm = builder.buildCharm(charmElement);
-      if (allCharms.contains(newCharm)) {
-        allCharms.remove(newCharm);
-      }
-      allCharms.add(newCharm);
-      charmsById.put(newCharm.getId(), newCharm);
+    for (Element charmElementObject : ElementUtilities.elements(charmListElement, TAG_CHARM)) {
+      createCharm(allCharms, charmsById, charmElementObject);
     }
     extractParents(charmsById, allCharms);
     readAlternatives(charmsById, charmListElement);
     return allCharms.toArray(new ICharm[allCharms.size()]);
+  }
+
+  private void createCharm(Set<Charm> allCharms, Map<String, Charm> charmsById, Element charmElement)
+      throws PersistenceException {
+    Charm newCharm = builder.buildCharm(charmElement);
+    if (allCharms.contains(newCharm)) {
+      allCharms.remove(newCharm);
+    }
+    allCharms.add(newCharm);
+    charmsById.put(newCharm.getId(), newCharm);
   }
 
   private void extractParents(Map<String, Charm> charmsById, Set<Charm> allCharms) {
