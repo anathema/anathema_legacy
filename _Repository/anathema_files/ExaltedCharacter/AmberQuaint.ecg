@@ -19,8 +19,8 @@
     <Willpower creationValue="7"/>
     <Virtues>
       <Compassion creationValue="3"/>
-      <Conviction creationValue="4"/>
-      <Temperance creationValue="1"/>
+      <Conviction creationValue="3"/>
+      <Temperance creationValue="1" />
       <Valor creationValue="2"/>
     </Virtues>
     <Attributes>
@@ -46,20 +46,20 @@
       <MartialArts creationValue="0"/>
       <Melee creationValue="5" favored="true"/>
       <Thrown creationValue="0"/>
-      <Endurance creationValue="3"/>
-      <Performance creationValue="1"/>
-      <Presence creationValue="1"/>
-      <Resistance creationValue="1" experiencedValue="2" favored="true"/>
+      <Endurance creationValue="1" favored="true"/>
+      <Performance creationValue="3"/>
+      <Presence creationValue="0"/>
+      <Resistance creationValue="2"/>
       <Survival creationValue="0" experiencedValue="1"/>
-      <Craft creationValue="1"/>
+      <Craft creationValue="0"/>
       <Investigation creationValue="1" experiencedValue="3"/>
-      <Lore creationValue="4"/>
-      <Medicine creationValue="3"/>
+      <Lore creationValue="3" experiencedValue="4"/>
+      <Medicine creationValue="2"/>
       <Occult creationValue="5">
         <Specialty creationValue="0" experiencedValue="3" name="Sidereals"/>
       </Occult>
       <Athletics creationValue="1" experiencedValue="2" favored="true"/>
-      <Awareness creationValue="1" experiencedValue="2"/>
+      <Awareness creationValue="1" />
       <Dodge creationValue="1"/>
       <Larceny creationValue="0"/>
       <Stealth creationValue="1" experiencedValue="2" favored="true"/>
@@ -67,12 +67,12 @@
       <Linguistics creationValue="2" favored="true"/>
       <Ride creationValue="1"/>
       <Sail creationValue="0"/>
-      <Socialize creationValue="1"/>
+      <Socialize creationValue="0"/>
     </Abilities>
     <Backgrounds>
-      <Background creationValue="3"><![CDATA[Manse]]></Background>
+      <Background creationValue="4"><![CDATA[Manse]]></Background>
       <Background creationValue="3"><![CDATA[Artifact]]></Background>
-      <Background creationValue="1"><![CDATA[Knowledge]]></Background>
+      <Background creationValue="1"><![CDATA[Resources]]></Background>
     </Backgrounds>
     <Charms>
       <CharmGroup name="Melee" type="Solar">
@@ -102,13 +102,13 @@
         <Charm name="Solar.CelestialCircleSorcery" experienceLearned="true"/>
       </CharmGroup>
       <CharmGroup name="Investigation" type="Solar">
-        <Charm name="Solar.TenMagistrateEyes" experienceLearned="false"/>
+        <Charm name="Solar.TenMagistrateEyes" experienceLearned="true"/>
       </CharmGroup>
       <CharmGroup name="Lore" type="Solar">
         <Charm name="Solar.Integrity-ProtectingPrana" experienceLearned="true"/>
       </CharmGroup>
       <CharmGroup name="Medicine" type="Solar">
-        <Charm name="Solar.Body-MendingMeditation" experienceLearned="true"/>
+        <Charm name="Solar.Body-MendingMeditation" experienceLearned="false"/>
       </CharmGroup>
       <Combos/>
     </Charms>
@@ -116,8 +116,7 @@
       <Spell name="Terrestrial.DeathObsidianButterflies" experienceLearned="false"/>
       <Spell name="Terrestrial.EmeraldCountermagic" experienceLearned="false"/>
       <Spell name="Terrestrial.ConjuringAzureChariot" experienceLearned="false"/>
-      <Spell name="Celestial.RollingEarthCarpet" experienceLearned="true"/>
-      <Spell name="Celestial.DemonSecondCircle" experienceLearned="true"/>
+      <Spell name="Terrestrial.Magician'sPleasantPath" experienceLearned="true"/>
     </Spells>
     <Experience>
       <Entry points="73">
