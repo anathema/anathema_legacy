@@ -104,7 +104,6 @@ public class CharmSetBuilderTest extends BasicTestCase {
     ICharm[] oldCharms = builder.buildCharms(document, new ArrayList<ICharm>());
     assertEquals(2, oldCharms.length);
     assertTrue(connectionExists(oldCharms[0], oldCharms[1]));
-
     List<ICharm> existingCharms = new ArrayList<ICharm>();
     existingCharms.add(oldCharms[0]);
     existingCharms.add(oldCharms[1]);

@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
@@ -34,15 +33,14 @@ public class CharmIO {
     return "data/Charms_" + type.getId() + "_" + rules.getId() + ".xml";//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$;
   }
 
-  public void writeCharmInternal(ICharmData charmData, List<ICharmAttribute> keywords)
+  public void writeCharmInternal(ICharmData charmData, List<ICharmAttribute> keywords, IExaltedRuleSet set)
       throws IOException,
       DocumentException {
-    System.err.println("Charm data is written to wrong file until ruleset is handed in."); //$NON-NLS-1$
     CharacterType type = charmData.getCharacterType();
     File file = new File("../Character_" //$NON-NLS-1$
         + type.getId()
         + "/resources/" //$NON-NLS-1$
-        + createFileName(type, ExaltedRuleSet.CoreRules));
+        + createFileName(type, set));
     Document document = new SAXReader().read(new FileInputStream(file));
     try {
       new CharmWriter().writeCharm(charmData, keywords, document.getRootElement());

@@ -13,6 +13,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.collection.MultiEntryMap;
@@ -103,9 +104,12 @@ public class CharmCache implements ICharmCache {
     }
   }
 
-  public void addCharm(ICharmData charmData, List<ICharmAttribute> keywords) throws IOException, DocumentException {
+  public void addCharm(ICharmData charmData, List<ICharmAttribute> keywords, IExaltedEdition edition)
+      throws IOException,
+      DocumentException {
     ICharm charm = new Charm(charmData);
-    getRulesetCharms(ExaltedRuleSet.CoreRules).add(charm.getCharacterType(), charm);
-    charmIo.writeCharmInternal(charmData, keywords);
+    final IExaltedRuleSet set = edition.getDefaultRuleset();
+    getRulesetCharms(set).add(charm.getCharacterType(), charm);
+    charmIo.writeCharmInternal(charmData, keywords, set);
   }
 }
