@@ -6,9 +6,6 @@ import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class SimpleSpecialsEntryModel implements ISimpleSpecialsEntryModel {
-  private static final int DEFAULT_SPEED = 6;
-  private static final int DEFAULT_DEFENSE_MODIFIER = -1;
-
   private int speed = DEFAULT_SPEED;
   private int defenseModifier = DEFAULT_DEFENSE_MODIFIER;
   private final ISimpleSpecialsArbitrator arbitrator;
