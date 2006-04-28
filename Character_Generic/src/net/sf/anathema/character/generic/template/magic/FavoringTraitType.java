@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.template.magic;
 
-import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public enum FavoringTraitType implements IIdentificate {
@@ -19,10 +18,6 @@ public enum FavoringTraitType implements IIdentificate {
 
   public String getId() {
     return name();
-  }
-
-  public Class getFavoredClass() {
-    return AbilityType.class;
   }
 
   public abstract void accept(IFavoringTraitTypeVisitor visitor);
