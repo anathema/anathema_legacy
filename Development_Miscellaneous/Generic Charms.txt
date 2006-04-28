@@ -1,0 +1,24 @@
+new AttributeType: GenericCharm
+if Generic:
+	Name/Id depends on TraitType: BaseId given, TraitType appended.
+	Group depends on TraitType: If no group is given, it equals the primary trait type
+		 (must be hardcoded in case of Martial Arts)
+	Prerequisite trait equals TraitType: Give only value
+	
+	Attribute "Excellency" etc. to indicate this charm being an excellency, as per sidereal prayer strip.
+
+Example
+<genericCharm id="1stExcellency" exalt="Solar">
+    <prerequisite>
+      <trait value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="ExtraAction"/>
+    <source source="Player's Guide" page="206"/>
+</genericcharm>
