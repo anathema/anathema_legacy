@@ -4,7 +4,6 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.AT
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ATTRIBUTE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_COMBOABLE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_EXALT;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_GROUP;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ID;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_PAGE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_SOURCE;
@@ -34,9 +33,10 @@ import net.sf.anathema.character.generic.impl.magic.MagicSource;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmTypeBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CostListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.DurationBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.HeaderStringBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.GroupStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ICostListBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.IHeaderStringBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.IIdStringBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.IdStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.PrerequisiteListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.TraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
@@ -64,8 +64,8 @@ public class CharmBuilder implements ICharmBuilder {
   private final ICostListBuilder costListBuilder = new CostListBuilder();
   private final DurationBuilder durationBuilder = new DurationBuilder();
   private final TraitTypeUtils traitUtils = new TraitTypeUtils();
-  private final IHeaderStringBuilder idBuilder = new HeaderStringBuilder(ATTRIB_ID);
-  private final IHeaderStringBuilder groupBuilder = new HeaderStringBuilder(ATTRIB_GROUP);
+  private final IIdStringBuilder idBuilder = new IdStringBuilder();
+  private final GroupStringBuilder groupBuilder = new GroupStringBuilder();
 
   public Charm buildCharm(Element charmElement) throws PersistenceException {
     Element rulesElement = charmElement;
@@ -78,7 +78,7 @@ public class CharmBuilder implements ICharmBuilder {
     catch (IllegalArgumentException e) {
       throw new CharmException("No chararacter type given for Charm: " + id, e); //$NON-NLS-1$
     }
-    String group = groupBuilder.build(charmElement);
+    String group = groupBuilder.build(charmElement, null);
 
     Element costElement = getElementFromRules(rulesElement, TAG_COST);
     Ensure.ensureArgumentNotNull("No cost specified for Charm: " + id, costElement); //$NON-NLS-1$

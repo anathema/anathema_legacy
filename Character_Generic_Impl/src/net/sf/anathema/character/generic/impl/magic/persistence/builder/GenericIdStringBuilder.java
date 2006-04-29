@@ -5,12 +5,11 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 
 import org.dom4j.Element;
 
-public class GenericHeaderStringBuilder extends HeaderStringBuilder implements IHeaderStringBuilder {
+public class GenericIdStringBuilder extends IdStringBuilder implements IIdStringBuilder {
 
   private final ITraitType type;
 
-  public GenericHeaderStringBuilder(String attributeId, ITraitType type) {
-    super(attributeId);
+  public GenericIdStringBuilder(ITraitType type) {
     this.type = type;
   }
 
