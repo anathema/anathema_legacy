@@ -1,4 +1,4 @@
-package net.sf.anathema.character.generic.impl.magic.persistence.builder.test;
+package net.sf.anathema.character.generic.impl.magic.persistence.builder;
 
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ID;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_VALUE;

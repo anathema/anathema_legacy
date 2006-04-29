@@ -17,7 +17,6 @@ import java.util.List;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.test.TraitPrerequisiteBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.generic.magic.charms.CharmException;

@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.test;
 
 import net.disy.commons.core.testing.ExceptionConvertingBlock;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.TraitPrerequisiteBuilder;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.lib.exception.PersistenceException;
