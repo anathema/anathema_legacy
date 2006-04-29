@@ -14,6 +14,8 @@ import java.util.Set;
 
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.impl.magic.Charm;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.IdStringBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.TraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmAlternative;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -24,7 +26,7 @@ import org.dom4j.Element;
 
 public class CharmSetBuilder implements ICharmSetBuilder {
 
-  private final ICharmBuilder builder = new CharmBuilder();
+  private final ICharmBuilder builder = new CharmBuilder(new IdStringBuilder(), new TraitPrerequisitesBuilder());
 
   public ICharm[] buildCharms(Document charmDoc, List<ICharm> existingCharms) throws PersistenceException {
     Set<Charm> allCharms = new HashSet<Charm>();

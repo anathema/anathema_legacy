@@ -3,6 +3,8 @@ package net.sf.anathema.character.generic.impl.magic.persistence.test;
 import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.IdStringBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.TraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.DurationType;
@@ -16,7 +18,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
   // Todo: Cost, Combos
 
   private Element charmElement;
-  private ICharmBuilder charmBuilder = new CharmBuilder();
+  private ICharmBuilder charmBuilder = new CharmBuilder(new IdStringBuilder(), new TraitPrerequisitesBuilder());
 
   @Override
   protected void setUp() throws Exception {
@@ -76,24 +78,13 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
     }
   }
 
-  public void testNoGroup() throws Exception {
-    try {
-      removeAttribute("group"); //$NON-NLS-1$
-      charmBuilder.buildCharm(charmElement);
-      fail();
-    }
-    catch (CharmException e) {
-      // nothing to do
-    }
-  }
-
   public void testNoPrerequisitesAtAll() throws Exception {
     try {
       removeElement("prerequisite"); //$NON-NLS-1$
       charmBuilder.buildCharm(charmElement);
       fail();
     }
-    catch (IllegalArgumentException e) {
+    catch (PersistenceException e) {
       // nothing to do
     }
   }

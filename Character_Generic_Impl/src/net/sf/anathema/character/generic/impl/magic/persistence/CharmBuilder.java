@@ -36,9 +36,8 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.Duration
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.GroupStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ICostListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.IIdStringBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.IdStringBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.ITraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.PrerequisiteListBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.TraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.impl.traits.TraitTypeUtils;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
@@ -64,8 +63,14 @@ public class CharmBuilder implements ICharmBuilder {
   private final ICostListBuilder costListBuilder = new CostListBuilder();
   private final DurationBuilder durationBuilder = new DurationBuilder();
   private final TraitTypeUtils traitUtils = new TraitTypeUtils();
-  private final IIdStringBuilder idBuilder = new IdStringBuilder();
   private final GroupStringBuilder groupBuilder = new GroupStringBuilder();
+  private final IIdStringBuilder idBuilder;
+  private final ITraitPrerequisitesBuilder traitsBuilder;
+
+  public CharmBuilder(IIdStringBuilder idBuilder, ITraitPrerequisitesBuilder traitsBuilder) {
+    this.idBuilder = idBuilder;
+    this.traitsBuilder = traitsBuilder;
+  }
 
   public Charm buildCharm(Element charmElement) throws PersistenceException {
     Element rulesElement = charmElement;
@@ -78,14 +83,12 @@ public class CharmBuilder implements ICharmBuilder {
     catch (IllegalArgumentException e) {
       throw new CharmException("No chararacter type given for Charm: " + id, e); //$NON-NLS-1$
     }
-    String group = groupBuilder.build(charmElement, null);
-
-    Element costElement = getElementFromRules(rulesElement, TAG_COST);
+    Element costElement = rulesElement.element(TAG_COST);
     Ensure.ensureArgumentNotNull("No cost specified for Charm: " + id, costElement); //$NON-NLS-1$
     ICostList temporaryCost = costListBuilder.buildTemporaryCostList(costElement.element(TAG_TEMPORARY));
     IPermanentCostList permanentCost = costListBuilder.buildPermanentCostList(costElement.element(TAG_PERMANENT));
     IComboRestrictions comboRules = getComboRules(rulesElement, id);
-    Duration duration = durationBuilder.buildDuration(getElementFromRules(rulesElement, TAG_DURATION));
+    Duration duration = durationBuilder.buildDuration(rulesElement.element(TAG_DURATION));
     ICharmTypeModel charmTypeModel = charmTypeBuilder.build(rulesElement);
     List<IMagicSource> sources = new ArrayList<IMagicSource>();
     List<Element> sourceElements = ElementUtilities.elements(rulesElement, TAG_SOURCE);
@@ -100,14 +103,17 @@ public class CharmBuilder implements ICharmBuilder {
       }
     }
 
-    Element prerequisiteListElement = getPrerequisiteListElement(charmElement);
+    Element prerequisiteListElement = ElementUtilities.getRequiredElement(charmElement, TAG_PREREQUISITE_LIST);
     CharmPrerequisiteList prerequisiteList;
     try {
-      prerequisiteList = new PrerequisiteListBuilder(new TraitPrerequisitesBuilder()).buildPrerequisiteList(prerequisiteListElement);
+      prerequisiteList = new PrerequisiteListBuilder(traitsBuilder).buildPrerequisiteList(prerequisiteListElement);
     }
     catch (PersistenceException e) {
       throw new CharmException("Error in Charm " + id, e); //$NON-NLS-1$
     }
+    IGenericTrait[] prerequisites = prerequisiteList.getPrerequisites();
+    final IGenericTrait primaryPrerequisite = (prerequisites.length != 0) ? prerequisites[0] : null;
+    String group = groupBuilder.build(charmElement, primaryPrerequisite);
     Charm charm = new Charm(
         characterType,
         id,
@@ -119,32 +125,29 @@ public class CharmBuilder implements ICharmBuilder {
         duration,
         charmTypeModel,
         sources.toArray(new IMagicSource[0]));
-    IGenericTrait[] prerequisites = prerequisiteList.getPrerequisites();
-    String[] primaryTrait = prerequisites.length == 0 ? new String[0] : new String[] { prerequisites[0].getType()
-        .getId() };
-    for (ICharmAttribute attribute : getCharmAttributes(rulesElement, primaryTrait)) {
+    for (ICharmAttribute attribute : getCharmAttributes(rulesElement, primaryPrerequisite)) {
       charm.addCharmAttribute(attribute);
     }
     loadSpecialLearning(charmElement, charm);
     return charm;
   }
 
-  private ICharmAttribute[] getCharmAttributes(Element rulesElement, String[] additionalAttributes) {
+  private ICharmAttribute[] getCharmAttributes(Element rulesElement, IGenericTrait primaryPrerequisite) {
     List<ICharmAttribute> attributes = new ArrayList<ICharmAttribute>();
     for (Element attributeElement : getElementsFromRules(rulesElement, TAG_ATTRIBUTE)) {
       String attributeId = attributeElement.attributeValue(ATTRIB_ATTRIBUTE);
       boolean visualizeAttribute = ElementUtilities.getBooleanAttribute(attributeElement, ATTRIB_VISUALIZE, false);
       attributes.add(new CharmAttribute(attributeId, visualizeAttribute));
     }
-    for (String attributeString : additionalAttributes) {
-      attributes.add(new CharmAttribute(attributeString, false));
+    if (primaryPrerequisite != null) {
+      attributes.add(new CharmAttribute(primaryPrerequisite.getType().getId(), false));
     }
     return attributes.toArray(new ICharmAttribute[attributes.size()]);
   }
 
   private IComboRestrictions getComboRules(Element rulesElement, String id) throws CharmException {
     String typeAttribute;
-    Element comboElement = getElementFromRules(rulesElement, TAG_COMBO);
+    Element comboElement = rulesElement.element(TAG_COMBO);
     if (comboElement == null) {
       return new ComboRestrictions();
     }
@@ -182,19 +185,9 @@ public class CharmBuilder implements ICharmBuilder {
     return comboRules;
   }
 
-  private Element getElementFromRules(Element rulesElement, String elementName) {
-    return rulesElement.element(elementName);
-  }
-
   private Element[] getElementsFromRules(Element rulesElement, String elementName) {
     List<Element> elements = ElementUtilities.elements(rulesElement, elementName);
     return elements.toArray(new Element[elements.size()]);
-  }
-
-  private Element getPrerequisiteListElement(Element charmElement) {
-    Element prerequisiteListElement = charmElement.element(TAG_PREREQUISITE_LIST);
-    Ensure.ensureArgumentNotNull("Required element 'prerequisite' is missing in Charm.", prerequisiteListElement); //$NON-NLS-1$
-    return prerequisiteListElement;
   }
 
   private void loadSpecialLearning(Element charmElement, Charm charm) {
