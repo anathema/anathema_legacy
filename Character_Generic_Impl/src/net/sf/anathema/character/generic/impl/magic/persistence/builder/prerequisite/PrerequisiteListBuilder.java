@@ -28,7 +28,7 @@ import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
-public class CharmPrerequisiteListBuilder {
+public class PrerequisiteListBuilder {
 
   public CharmPrerequisiteList buildPrerequisiteList(Element prerequisiteListElement) throws PersistenceException {
     IGenericTrait[] allPrerequisites = new TraitPrerequisitesBuilder().buildTraitPrerequisites(prerequisiteListElement);

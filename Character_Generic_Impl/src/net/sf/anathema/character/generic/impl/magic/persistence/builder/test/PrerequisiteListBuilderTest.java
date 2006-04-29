@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.test;
 
 import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.CharmPrerequisiteListBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.PrerequisiteListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.impl.magic.persistence.test.CharmXmlTestUtils;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -10,7 +10,7 @@ import net.sf.anathema.lib.testing.BasicTestCase;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 
-public class CharmPrerequisiteListBuilderTest extends BasicTestCase {
+public class PrerequisiteListBuilderTest extends BasicTestCase {
 
   private static Element createBasicCharmPrerequisiteXml() {
     Element prerequisiteListElement = DocumentHelper.createElement("prerequisiteListElement"); //$NON-NLS-1$
@@ -20,7 +20,7 @@ public class CharmPrerequisiteListBuilderTest extends BasicTestCase {
 
   private static CharmPrerequisiteList parsePrerequisiteList(Element prerequisiteListElement)
       throws PersistenceException {
-    return new CharmPrerequisiteListBuilder().buildPrerequisiteList(prerequisiteListElement);
+    return new PrerequisiteListBuilder().buildPrerequisiteList(prerequisiteListElement);
   }
 
   public void testCorrectCharmWithMultiplePrerequisiteCharms() throws Exception {

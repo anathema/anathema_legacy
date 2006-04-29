@@ -15,7 +15,7 @@ public class AllTests {
     suite.addTestSuite(CharmTypeBuilderTest.class);
     suite.addTestSuite(HealthCostBuilderTest.class);
     suite.addTestSuite(TraitPrerequisiteBuilderTest.class);
-    suite.addTestSuite(CharmPrerequisiteListBuilderTest.class);
+    suite.addTestSuite(PrerequisiteListBuilderTest.class);
     suite.addTestSuite(DurationBuilderTest.class);
     //$JUnit-END$
     return suite;

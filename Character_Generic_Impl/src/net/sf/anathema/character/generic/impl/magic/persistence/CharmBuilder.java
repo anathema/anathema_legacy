@@ -37,7 +37,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.Duration
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.HeaderStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ICostListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.IHeaderStringBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.CharmPrerequisiteListBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.PrerequisiteListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.impl.traits.TraitTypeUtils;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
@@ -102,7 +102,7 @@ public class CharmBuilder implements ICharmBuilder {
     Element prerequisiteListElement = getPrerequisiteListElement(charmElement);
     CharmPrerequisiteList prerequisiteList;
     try {
-      prerequisiteList = new CharmPrerequisiteListBuilder().buildPrerequisiteList(prerequisiteListElement);
+      prerequisiteList = new PrerequisiteListBuilder().buildPrerequisiteList(prerequisiteListElement);
     }
     catch (PersistenceException e) {
       throw new CharmException("Error in Charm " + id, e); //$NON-NLS-1$
