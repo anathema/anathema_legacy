@@ -12,14 +12,14 @@ import org.dom4j.Element;
 
 public class GenericTraitPrerequisiteBuilder implements ITraitPrerequisiteBuilder {
 
-  private final ITraitType type;
-
-  public GenericTraitPrerequisiteBuilder(ITraitType type) {
-    this.type = type;
-  }
+  private ITraitType type;
 
   public IGenericTrait build(Element element) throws PersistenceException {
     int minValue = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_VALUE);
     return new ValuedTraitType(type, minValue);
+  }
+
+  public void setType(ITraitType type) {
+    this.type = type;
   }
 }

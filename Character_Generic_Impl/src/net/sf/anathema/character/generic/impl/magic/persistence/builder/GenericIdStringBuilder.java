@@ -7,14 +7,17 @@ import org.dom4j.Element;
 
 public class GenericIdStringBuilder extends IdStringBuilder implements IIdStringBuilder {
 
-  private final ITraitType type;
-
-  public GenericIdStringBuilder(ITraitType type) {
-    this.type = type;
-  }
+  private ITraitType type;
 
   @Override
   public String build(Element element) throws CharmException {
+    if (type == null) {
+      throw new IllegalStateException("Type not set."); //$NON-NLS-1$
+    }
     return super.build(element) + type.getId();
+  }
+
+  public void setType(ITraitType type) {
+    this.type = type;
   }
 }

@@ -14,11 +14,7 @@ import org.dom4j.Element;
 
 public class GenericTraitPrerequisitesBuilder implements ITraitPrerequisitesBuilder {
 
-  private GenericTraitPrerequisiteBuilder genericBuilder;
-
-  public GenericTraitPrerequisitesBuilder(ITraitType type) {
-    genericBuilder = new GenericTraitPrerequisiteBuilder(type);
-  }
+  private GenericTraitPrerequisiteBuilder genericBuilder = new GenericTraitPrerequisiteBuilder();
 
   public IGenericTrait[] buildTraitPrerequisites(Element prerequisiteListElement) throws PersistenceException {
     List<IGenericTrait> allPrerequisites = new ArrayList<IGenericTrait>();
@@ -34,5 +30,9 @@ public class GenericTraitPrerequisitesBuilder implements ITraitPrerequisitesBuil
       throw new PersistenceException(e);
     }
     return allPrerequisites.toArray(new IGenericTrait[allPrerequisites.size()]);
+  }
+
+  public void setType(ITraitType type) {
+    genericBuilder.setType(type);
   }
 }
