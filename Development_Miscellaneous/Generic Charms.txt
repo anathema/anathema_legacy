@@ -1,8 +1,7 @@
 new AttributeType: GenericCharm
 if Generic:
 	Name/Id depends on TraitType: BaseId given, TraitType appended.
-	Group depends on TraitType: If no group is given, it equals the primary trait type
-		 (must be hardcoded in case of Martial Arts)
+	Group depends on TraitType: it equals the primary trait type		
 	Prerequisite trait equals TraitType: Give only value
 	
 	Attribute "Excellency" etc. to indicate this charm being an excellency, as per sidereal prayer strip.
