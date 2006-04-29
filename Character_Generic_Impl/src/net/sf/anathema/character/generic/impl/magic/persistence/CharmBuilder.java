@@ -37,6 +37,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmTyp
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CostListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.DurationBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ICostListBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.test.IdBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.impl.traits.TraitTypeUtils;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
@@ -62,13 +63,11 @@ public class CharmBuilder implements ICharmBuilder {
   private final ICostListBuilder costListBuilder = new CostListBuilder();
   private final DurationBuilder durationBuilder = new DurationBuilder();
   private final TraitTypeUtils traitUtils = new TraitTypeUtils();
+  private final IdBuilder idBuilder = new IdBuilder();
 
   public Charm buildCharm(Element charmElement) throws PersistenceException {
     Element rulesElement = charmElement;
-    String id = charmElement.attributeValue(ATTRIB_ID);
-    if (StringUtilities.isNullOrTrimEmpty(id)) {
-      throw new CharmException("Cannot process Charms without id."); //$NON-NLS-1$
-    }
+    String id = idBuilder.buildId(charmElement);
     String typeAttribute = charmElement.attributeValue(ATTRIB_EXALT);
     CharacterType characterType;
     try {
