@@ -76,8 +76,8 @@
     </Backgrounds>
     <Charms>
       <CharmGroup name="Melee" type="Solar">
-        <Charm name="Solar.GoldenEssenceBlock" experienceLearned="false"/>
         <Charm name="Solar.DippingSwallowDefense" experienceLearned="false"/>
+        <Charm name="Solar.GoldenEssenceBlock" experienceLearned="false"/>
         <Charm name="Solar.BulwarkStance" experienceLearned="false"/>
         <Charm name="Solar.FivefoldBulwarkStance" experienceLearned="false"/>
       </CharmGroup>
@@ -120,7 +120,7 @@
       <Spell name="Terrestrial.DeathObsidianButterflies" experienceLearned="false"/>
       <Spell name="Terrestrial.EmeraldCountermagic" experienceLearned="false"/>
       <Spell name="Terrestrial.ConjuringAzureChariot" experienceLearned="false"/>
-      <Spell name="Terrestrial.Magician'sPleasantPath" experienceLearned="true"/>
+      <Spell name="Celestial.RollingEarthCarpet" experienceLearned="true"/>
     </Spells>
     <Experience>
       <Entry points="73">
