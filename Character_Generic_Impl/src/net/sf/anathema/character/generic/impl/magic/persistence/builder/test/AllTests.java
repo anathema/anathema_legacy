@@ -10,9 +10,10 @@ public class AllTests {
     //$JUnit-BEGIN$
     suite.addTestSuite(CostBuilderTest.class);
     suite.addTestSuite(CostListBuilderTest.class);
-    suite.addTestSuite(CharmTypeBuilderTest.class);
     suite.addTestSuite(HeaderStringBuilderTest.class);
+    suite.addTestSuite(CharmTypeBuilderTest.class);
     suite.addTestSuite(HealthCostBuilderTest.class);
+    suite.addTestSuite(TraitPrerequisiteBuilderTest.class);
     suite.addTestSuite(CharmPrerequisiteListBuilderTest.class);
     suite.addTestSuite(DurationBuilderTest.class);
     //$JUnit-END$

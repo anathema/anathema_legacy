@@ -17,13 +17,12 @@ import java.util.List;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.test.TraitPrerequisiteBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
-import net.sf.anathema.character.generic.impl.traits.TraitTypeUtils;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -32,8 +31,6 @@ import net.sf.anathema.lib.xml.ElementUtilities;
 import org.dom4j.Element;
 
 public class CharmPrerequisiteListBuilder {
-
-  private final TraitTypeUtils traitUtils = new TraitTypeUtils();
 
   public CharmPrerequisiteList buildPrerequisiteList(Element prerequisiteListElement, String charmId)
       throws PersistenceException {
@@ -53,9 +50,10 @@ public class CharmPrerequisiteListBuilder {
   private IGenericTrait[] buildTraitPrerequisites(String id, Element prerequisiteListElement) throws CharmException {
     List<Element> allPrerequisiteTraitList = ElementUtilities.elements(prerequisiteListElement, TAG_TRAIT);
     IGenericTrait[] allPrerequisites = new IGenericTrait[allPrerequisiteTraitList.size()];
+    TraitPrerequisiteBuilder traitBuilder = new TraitPrerequisiteBuilder();
     for (int j = 0; j < allPrerequisiteTraitList.size(); j++) {
       try {
-        allPrerequisites[j] = buildPrerequisite(allPrerequisiteTraitList.get(j));
+        allPrerequisites[j] = traitBuilder.build(allPrerequisiteTraitList.get(j));
       }
       catch (Exception e) {
         throw new CharmException("Bad prerequisites in Charm: " + id, e); //$NON-NLS-1$
@@ -124,11 +122,5 @@ public class CharmPrerequisiteListBuilder {
       attributeRequirements.add(new CharmAttributeRequirement(new CharmAttribute(attributeId, false), requiredCount));
     }
     return attributeRequirements.toArray(new ICharmAttributeRequirement[attributeRequirements.size()]);
-  }
-
-  private IGenericTrait buildPrerequisite(Element prerequisiteElement) {
-    ITraitType propertyType = traitUtils.getTraitTypeById(prerequisiteElement.attributeValue(ATTRIB_ID));
-    int minValue = Integer.parseInt(prerequisiteElement.attributeValue(ATTRIB_VALUE));
-    return new ValuedTraitType(propertyType, minValue);
   }
 }
