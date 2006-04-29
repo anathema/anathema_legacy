@@ -47,18 +47,17 @@ public class CharmPrerequisiteListBuilder {
   }
 
   private IGenericTrait[] buildTraitPrerequisites(String id, Element prerequisiteListElement) throws CharmException {
-    List<Element> allPrerequisiteTraitList = ElementUtilities.elements(prerequisiteListElement, TAG_TRAIT);
-    IGenericTrait[] allPrerequisites = new IGenericTrait[allPrerequisiteTraitList.size()];
+    List<IGenericTrait> allPrerequisites = new ArrayList<IGenericTrait>();
     TraitPrerequisiteBuilder traitBuilder = new TraitPrerequisiteBuilder();
-    for (int j = 0; j < allPrerequisiteTraitList.size(); j++) {
+    for (Element element : ElementUtilities.elements(prerequisiteListElement, TAG_TRAIT)) {
       try {
-        allPrerequisites[j] = traitBuilder.build(allPrerequisiteTraitList.get(j));
+        allPrerequisites.add(traitBuilder.build(element));
       }
       catch (Exception e) {
         throw new CharmException("Bad prerequisites in Charm: " + id, e); //$NON-NLS-1$
       }
     }
-    return allPrerequisites;
+    return allPrerequisites.toArray(new IGenericTrait[allPrerequisites.size()]);
   }
 
   private String[] buildCharmPrerequisites(Element parent, String charmId) throws CharmException {
