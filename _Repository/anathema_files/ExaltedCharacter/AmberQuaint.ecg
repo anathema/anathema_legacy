@@ -20,7 +20,7 @@
     <Virtues>
       <Compassion creationValue="3"/>
       <Conviction creationValue="3"/>
-      <Temperance creationValue="1" />
+      <Temperance creationValue="1" experiencedValue="2"/>
       <Valor creationValue="2"/>
     </Virtues>
     <Attributes>
@@ -51,15 +51,15 @@
       <Presence creationValue="0"/>
       <Resistance creationValue="2"/>
       <Survival creationValue="0" experiencedValue="1"/>
-      <Craft creationValue="0"/>
+      <Craft creationValue="0" experiencedValue="4"/>
       <Investigation creationValue="1" experiencedValue="3"/>
       <Lore creationValue="3" experiencedValue="4"/>
       <Medicine creationValue="2"/>
       <Occult creationValue="5">
         <Specialty creationValue="0" experiencedValue="3" name="Sidereals"/>
       </Occult>
-      <Athletics creationValue="1" experiencedValue="2" favored="true"/>
-      <Awareness creationValue="1" />
+      <Athletics creationValue="1" favored="true"/>
+      <Awareness creationValue="1" experiencedValue="2"/>
       <Dodge creationValue="1"/>
       <Larceny creationValue="0"/>
       <Stealth creationValue="1" experiencedValue="2" favored="true"/>
@@ -71,15 +71,19 @@
     </Abilities>
     <Backgrounds>
       <Background creationValue="4"><![CDATA[Manse]]></Background>
-      <Background creationValue="3"><![CDATA[Artifact]]></Background>
+      <Background creationValue="3" experiencedValue="5"><![CDATA[Artifact (Kazu's Legacy)]]></Background>
       <Background creationValue="1"><![CDATA[Resources]]></Background>
     </Backgrounds>
     <Charms>
       <CharmGroup name="Melee" type="Solar">
-        <Charm name="Solar.DippingSwallowDefense" experienceLearned="false"/>
         <Charm name="Solar.GoldenEssenceBlock" experienceLearned="false"/>
+        <Charm name="Solar.DippingSwallowDefense" experienceLearned="false"/>
         <Charm name="Solar.BulwarkStance" experienceLearned="false"/>
         <Charm name="Solar.FivefoldBulwarkStance" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Athletics" type="Solar">
+        <Charm name="Solar.MonkeyLeapTechnique" experienceLearned="true"/>
+        <Charm name="Solar.GracefulCraneStance" experienceLearned="true"/>
       </CharmGroup>
       <CharmGroup name="Endurance" type="Solar">
         <Charm name="Solar.Ox-BodyTechnique" experienceLearned="false">
@@ -93,10 +97,6 @@
         </Charm>
         <Charm name="Solar.UnsleepingWatchmanTechnique" experienceLearned="true"/>
       </CharmGroup>
-      <CharmGroup name="Athletics" type="Solar">
-        <Charm name="Solar.MonkeyLeapTechnique" experienceLearned="true"/>
-        <Charm name="Solar.GracefulCraneStance" experienceLearned="true"/>
-      </CharmGroup>
       <CharmGroup name="Occult" type="Solar">
         <Charm name="Solar.TerrestrialCircleSorcery" experienceLearned="false"/>
         <Charm name="Solar.CelestialCircleSorcery" experienceLearned="true"/>
@@ -106,6 +106,10 @@
       </CharmGroup>
       <CharmGroup name="Lore" type="Solar">
         <Charm name="Solar.Integrity-ProtectingPrana" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Craft" type="Solar">
+        <Charm name="Solar.CraftsmanNeedsNoTools" experienceLearned="true"/>
+        <Charm name="Solar.FlawlessHandiworkMethod" experienceLearned="true"/>
       </CharmGroup>
       <CharmGroup name="Medicine" type="Solar">
         <Charm name="Solar.Body-MendingMeditation" experienceLearned="false"/>
@@ -143,15 +147,36 @@
       <Entry points="7">
         <Description><![CDATA[4.1 Adamant Hearts]]></Description>
       </Entry>
+      <Entry points="20">
+        <Description><![CDATA[Downtime for Abilities]]></Description>
+      </Entry>
+      <Entry points="-11">
+        <Description><![CDATA[Craft(Air)2, Craft(Fire)2, Craft(Genesis)1]]></Description>
+      </Entry>
+      <Entry points="15">
+        <Description><![CDATA[Downtime for Charms (First Excellency)]]></Description>
+      </Entry>
+      <Entry points="10">
+        <Description><![CDATA[Downtime for Attributes & Virtues]]></Description>
+      </Entry>
+      <Entry points="-1">
+        <Description><![CDATA[Dowtime for Attributes & Virtues ungenutzt]]></Description>
+      </Entry>
+      <Entry points="5">
+        <Description><![CDATA[Downtime for Essence & Willpower]]></Description>
+      </Entry>
+      <Entry points="-5">
+        <Description><![CDATA[Downtime for Essence & Willpower ungenutzt]]></Description>
+      </Entry>
     </Experience>
     <AdditionalModels>
       <Model templateId="SolarVirtueFlaw">
         <Content>
           <VirtueFlaw>
-            <RootVirtue name="Compassion"/>
-            <Name><![CDATA[Vicious Disenchantment]]></Name>
-            <LimitBreak><![CDATA[Harm an individual in the name of Conviction or Compassion.]]></LimitBreak>
-            <Description><![CDATA[Overcome by anger at the individuals miserable existence, she seeks to utterly annihilate not only the object of his pain or loss, but also to free him from the very concept that made the situation possible.]]></Description>
+            <RootVirtue name="Conviction"/>
+            <Name><![CDATA[Indignation of the Avarice Lamb]]></Name>
+            <LimitBreak><![CDATA[Can't get what she believes must haves.]]></LimitBreak>
+            <Description><![CDATA[Tries to destroy the things she can't have, to assure to one else will have it.]]></Description>
           </VirtueFlaw>
         </Content>
       </Model>
