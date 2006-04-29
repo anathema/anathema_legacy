@@ -27,7 +27,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.disy.commons.core.util.Ensure;
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
@@ -38,6 +37,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.CostList
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.DurationBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.HeaderStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ICostListBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.IHeaderStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.impl.traits.TraitTypeUtils;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
@@ -63,7 +63,8 @@ public class CharmBuilder implements ICharmBuilder {
   private final ICostListBuilder costListBuilder = new CostListBuilder();
   private final DurationBuilder durationBuilder = new DurationBuilder();
   private final TraitTypeUtils traitUtils = new TraitTypeUtils();
-  private final HeaderStringBuilder idBuilder = new HeaderStringBuilder(ATTRIB_ID);
+  private final IHeaderStringBuilder idBuilder = new HeaderStringBuilder(ATTRIB_ID);
+  private final IHeaderStringBuilder groupBuilder = new HeaderStringBuilder(ATTRIB_GROUP);
 
   public Charm buildCharm(Element charmElement) throws PersistenceException {
     Element rulesElement = charmElement;
@@ -76,7 +77,7 @@ public class CharmBuilder implements ICharmBuilder {
     catch (IllegalArgumentException e) {
       throw new CharmException("No chararacter type given for Charm: " + id, e); //$NON-NLS-1$
     }
-    String group = getCharmGroupId(charmElement);
+    String group = groupBuilder.build(charmElement);
 
     Element costElement = getElementFromRules(rulesElement, TAG_COST);
     Ensure.ensureArgumentNotNull("No cost specified for Charm: " + id, costElement); //$NON-NLS-1$
@@ -134,14 +135,6 @@ public class CharmBuilder implements ICharmBuilder {
       attributes.add(new CharmAttribute(attributeString, false));
     }
     return attributes.toArray(new ICharmAttribute[attributes.size()]);
-  }
-
-  private String getCharmGroupId(Element charmElement) throws CharmException {
-    String group = charmElement.attributeValue(ATTRIB_GROUP);
-    if (StringUtilities.isNullOrTrimEmpty(group)) {
-      throw new CharmException("No group specified for charm."); //$NON-NLS-1$
-    }
-    return group;
   }
 
   private IComboRestrictions getComboRules(Element rulesElement, String id) throws CharmException {

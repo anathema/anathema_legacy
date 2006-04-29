@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.magic.charms.CharmException;
 
 import org.dom4j.Element;
 
-public class HeaderStringBuilder {
+public class HeaderStringBuilder implements IHeaderStringBuilder {
 
   private final String attributeId;
 

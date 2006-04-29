@@ -25,4 +25,11 @@ public class GenericCharmBuilderTest extends BasicTestCase {
     assertEquals("Archery", charm.getGroupId()); //$NON-NLS-1$
   }
 
+  public void testReadGenericPrerequisite() throws Exception {
+    String xml = "<genericCharm id=\"Solar.Generic\" />"; //$NON-NLS-1$
+    Element rootElement = DocumentUtilities.read(xml).getRootElement();
+    Charm charm = builder.buildCharm(rootElement, AbilityType.Archery);
+    assertEquals("Archery", charm.getGroupId()); //$NON-NLS-1$
+  }
+
 }

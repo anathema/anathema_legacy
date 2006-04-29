@@ -11,7 +11,7 @@ public class AllTests {
     suite.addTestSuite(CostBuilderTest.class);
     suite.addTestSuite(CostListBuilderTest.class);
     suite.addTestSuite(CharmTypeBuilderTest.class);
-    suite.addTestSuite(IdBuilderTest.class);
+    suite.addTestSuite(HeaderStringBuilderTest.class);
     suite.addTestSuite(HealthCostBuilderTest.class);
     suite.addTestSuite(CharmPrerequisiteListBuilderTest.class);
     suite.addTestSuite(DurationBuilderTest.class);

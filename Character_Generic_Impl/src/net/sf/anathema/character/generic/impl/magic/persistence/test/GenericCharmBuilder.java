@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.impl.magic.MagicSource;
 import net.sf.anathema.character.generic.impl.magic.PermanentCostList;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.HeaderStringBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.IHeaderStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
@@ -24,14 +25,15 @@ import org.dom4j.Element;
 
 public class GenericCharmBuilder {
 
-  private final HeaderStringBuilder idBuilder = new HeaderStringBuilder("id");
+  private final IHeaderStringBuilder idBuilder = new HeaderStringBuilder("id");
 
   public Charm buildCharm(Element charmElement, AbilityType type) throws PersistenceException {
-    String string = idBuilder.build(charmElement);
-    return getTestCharm(string + type.getId(), CharmType.ExtraAction, null);
+    String id = idBuilder.build(charmElement) + type.getId();
+    String groupdId = type.getId();
+    return getCharm(id, groupdId, CharmType.ExtraAction, null);
   }
 
-  private Charm getTestCharm(String id, CharmType type, String parentId) {
+  private Charm getCharm(String id, String groupdId, CharmType type, String parentId) {
     final String[] parentArray = parentId == null ? new String[0] : new String[] { parentId };
     CharmPrerequisiteList list = new CharmPrerequisiteList(
         new IGenericTrait[] { new ValuedTraitType(AbilityType.Archery, 1) },
@@ -41,7 +43,10 @@ public class GenericCharmBuilder {
         new ICharmAttributeRequirement[0]);
     CharmTypeModel model = new CharmTypeModel();
     model.setCharmType(type);
-    final Charm charm = new Charm(CharacterType.SOLAR, id, "TestGroup", //$NON-NLS-1$
+    final Charm charm = new Charm(
+        CharacterType.SOLAR,
+        id,
+        groupdId,
         list,
         new CostList(null, null, null),
         new PermanentCostList(null, null, null, null),
