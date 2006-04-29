@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.test;
 
 import net.disy.commons.core.testing.ExceptionConvertingBlock;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.ITraitPrerequisiteBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.TraitPrerequisiteBuilder;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -12,7 +13,7 @@ import org.dom4j.Element;
 
 public class TraitPrerequisiteBuilderTest extends BasicTestCase {
 
-  private TraitPrerequisiteBuilder builder = new TraitPrerequisiteBuilder();
+  private ITraitPrerequisiteBuilder builder = new TraitPrerequisiteBuilder();
 
   public void testTraitPrerequisiteBuilder() throws Exception {
     String xml = "<trait id=\"Larceny\" value=\"3\"/>";//$NON-NLS-1$

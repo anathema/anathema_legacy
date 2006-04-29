@@ -30,8 +30,14 @@ import org.dom4j.Element;
 
 public class PrerequisiteListBuilder {
 
+  private final ITraitPrerequisitesBuilder builder;
+
+  public PrerequisiteListBuilder(ITraitPrerequisitesBuilder builder) {
+    this.builder = builder;
+  }
+
   public CharmPrerequisiteList buildPrerequisiteList(Element prerequisiteListElement) throws PersistenceException {
-    IGenericTrait[] allPrerequisites = new TraitPrerequisitesBuilder().buildTraitPrerequisites(prerequisiteListElement);
+    IGenericTrait[] allPrerequisites = builder.buildTraitPrerequisites(prerequisiteListElement);
     IGenericTrait essence = buildEssencePrerequisite(prerequisiteListElement);
     String[] prerequisiteCharmIDs = buildCharmPrerequisites(prerequisiteListElement);
     SelectiveCharmGroupTemplate[] selectiveCharmGroups = buildSelectiveCharmGroups(prerequisiteListElement);

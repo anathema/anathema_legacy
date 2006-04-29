@@ -9,12 +9,12 @@ import net.sf.anathema.lib.xml.DocumentUtilities;
 import org.dom4j.Element;
 
 public class GenericTraitPrerequisiteBuilderTest extends BasicTestCase {
-  private GenericTraitPrerequisiteBuilder builder = new GenericTraitPrerequisiteBuilder();
 
   public void testTraitPrerequisiteBuilder() throws Exception {
     String xml = "<trait  value=\"3\"/>";//$NON-NLS-1$
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
-    IGenericTrait trait = builder.build(rootElement, AbilityType.Larceny);
+    GenericTraitPrerequisiteBuilder builder = new GenericTraitPrerequisiteBuilder(AbilityType.Larceny);
+    IGenericTrait trait = builder.build(rootElement);
     assertEquals(AbilityType.Larceny, trait.getType());
     assertEquals(3, trait.getCurrentValue());
   }

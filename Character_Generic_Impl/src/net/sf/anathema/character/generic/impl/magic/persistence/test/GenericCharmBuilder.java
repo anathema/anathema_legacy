@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.impl.magic.PermanentCostList;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.HeaderStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.IHeaderStringBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericTraitPrerequisiteBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
@@ -28,7 +27,6 @@ import org.dom4j.Element;
 public class GenericCharmBuilder {
 
   private final IHeaderStringBuilder idBuilder = new HeaderStringBuilder(ICharmXMLConstants.ATTRIB_ID);
-  private final GenericTraitPrerequisiteBuilder traitBuilder = new GenericTraitPrerequisiteBuilder();
 
   public Charm buildCharm(Element charmElement, AbilityType type) throws PersistenceException {
     String id = idBuilder.build(charmElement) + type.getId();

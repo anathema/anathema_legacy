@@ -12,7 +12,7 @@ import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
-public class TraitPrerequisiteBuilder {
+public class TraitPrerequisiteBuilder implements ITraitPrerequisiteBuilder {
   private final TraitTypeUtils traitUtils = new TraitTypeUtils();
 
   public IGenericTrait build(Element element) throws PersistenceException {
