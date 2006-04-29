@@ -31,13 +31,13 @@ import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
 import net.sf.anathema.character.generic.impl.magic.MagicSource;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmPrerequisiteListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmTypeBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CostListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.DurationBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.HeaderStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ICostListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.IHeaderStringBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.CharmPrerequisiteListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.impl.traits.TraitTypeUtils;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
@@ -100,10 +100,13 @@ public class CharmBuilder implements ICharmBuilder {
     }
 
     Element prerequisiteListElement = getPrerequisiteListElement(charmElement);
-    CharmPrerequisiteList prerequisiteList = new CharmPrerequisiteListBuilder().buildPrerequisiteList(
-        prerequisiteListElement,
-        id);
-    IGenericTrait[] prerequisites = prerequisiteList.getPrerequisites();
+    CharmPrerequisiteList prerequisiteList;
+    try {
+      prerequisiteList = new CharmPrerequisiteListBuilder().buildPrerequisiteList(prerequisiteListElement);
+    }
+    catch (PersistenceException e) {
+      throw new CharmException("Error in Charm " + id, e); //$NON-NLS-1$
+    }
     Charm charm = new Charm(
         characterType,
         id,
@@ -115,6 +118,7 @@ public class CharmBuilder implements ICharmBuilder {
         duration,
         charmTypeModel,
         sources.toArray(new IMagicSource[0]));
+    IGenericTrait[] prerequisites = prerequisiteList.getPrerequisites();
     String[] primaryTrait = prerequisites.length == 0 ? new String[0] : new String[] { prerequisites[0].getType()
         .getId() };
     for (ICharmAttribute attribute : getCharmAttributes(rulesElement, primaryTrait)) {

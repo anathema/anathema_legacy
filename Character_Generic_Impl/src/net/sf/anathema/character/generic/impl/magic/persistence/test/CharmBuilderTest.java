@@ -128,7 +128,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
   public void testBadIdIllegalPrerequisite() throws Exception {
     try {
       Element prerequisitesElement = charmElement.element("prerequisite"); //$NON-NLS-1$
-      Element prerequisiteElement = prerequisitesElement.element(TAG_TRAIT);
+      Element prerequisiteElement = prerequisitesElement.element("trait"); //$NON-NLS-1$
       prerequisiteElement.addAttribute("id", "BadId"); //$NON-NLS-1$ //$NON-NLS-2$
       charmBuilder.buildCharm(charmElement);
       fail();

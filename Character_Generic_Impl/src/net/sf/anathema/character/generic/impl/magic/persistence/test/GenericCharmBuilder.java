@@ -2,11 +2,13 @@ package net.sf.anathema.character.generic.impl.magic.persistence.test;
 
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.CostList;
+import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
 import net.sf.anathema.character.generic.impl.magic.MagicSource;
 import net.sf.anathema.character.generic.impl.magic.PermanentCostList;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.HeaderStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.IHeaderStringBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericTraitPrerequisiteBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
@@ -25,18 +27,19 @@ import org.dom4j.Element;
 
 public class GenericCharmBuilder {
 
-  private final IHeaderStringBuilder idBuilder = new HeaderStringBuilder("id");
+  private final IHeaderStringBuilder idBuilder = new HeaderStringBuilder(ICharmXMLConstants.ATTRIB_ID);
+  private final GenericTraitPrerequisiteBuilder traitBuilder = new GenericTraitPrerequisiteBuilder();
 
   public Charm buildCharm(Element charmElement, AbilityType type) throws PersistenceException {
     String id = idBuilder.build(charmElement) + type.getId();
     String groupdId = type.getId();
-    return getCharm(id, groupdId, CharmType.ExtraAction, null);
+    return getCharm(id, groupdId, type, CharmType.ExtraAction, null);
   }
 
-  private Charm getCharm(String id, String groupdId, CharmType type, String parentId) {
+  private Charm getCharm(String id, String groupdId, AbilityType traitType, CharmType type, String parentId) {
     final String[] parentArray = parentId == null ? new String[0] : new String[] { parentId };
     CharmPrerequisiteList list = new CharmPrerequisiteList(
-        new IGenericTrait[] { new ValuedTraitType(AbilityType.Archery, 1) },
+        new IGenericTrait[] { new ValuedTraitType(traitType, 1) },
         new ValuedTraitType(OtherTraitType.Essence, 1),
         parentArray,
         new SelectiveCharmGroupTemplate[0],

@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.test;
 
 import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmPrerequisiteListBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.CharmPrerequisiteListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.impl.magic.persistence.test.CharmXmlTestUtils;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -20,7 +20,7 @@ public class CharmPrerequisiteListBuilderTest extends BasicTestCase {
 
   private static CharmPrerequisiteList parsePrerequisiteList(Element prerequisiteListElement)
       throws PersistenceException {
-    return new CharmPrerequisiteListBuilder().buildPrerequisiteList(prerequisiteListElement, "testCharm"); //$NON-NLS-1$
+    return new CharmPrerequisiteListBuilder().buildPrerequisiteList(prerequisiteListElement);
   }
 
   public void testCorrectCharmWithMultiplePrerequisiteCharms() throws Exception {

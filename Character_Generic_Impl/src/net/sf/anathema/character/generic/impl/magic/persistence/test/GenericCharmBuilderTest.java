@@ -25,11 +25,38 @@ public class GenericCharmBuilderTest extends BasicTestCase {
     assertEquals("Archery", charm.getGroupId()); //$NON-NLS-1$
   }
 
-  public void testReadGenericPrerequisite() throws Exception {
-    String xml = "<genericCharm id=\"Solar.Generic\" />"; //$NON-NLS-1$
+  public void testReadGenericPrerequisiteFirst() throws Exception {
+    String xml = "<genericCharm id=\"Solar.Generic\">" //$NON-NLS-1$
+        + "<prerequisites>" //$NON-NLS-1$
+        + "<trait value=\"1\"/>" //$NON-NLS-1$
+        + "</prerequisites>" //$NON-NLS-1$
+        + "</genericCharm>"; //$NON-NLS-1$
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     Charm charm = builder.buildCharm(rootElement, AbilityType.Archery);
-    assertEquals("Archery", charm.getGroupId()); //$NON-NLS-1$
+    assertEquals(AbilityType.Archery, charm.getPrerequisites()[0].getType());
   }
 
+  public void testReadGenericPrerequisiteSecond() throws Exception {
+    String xml = "<genericCharm id=\"Solar.Generic\">" //$NON-NLS-1$
+        + "<prerequisites>" //$NON-NLS-1$
+        + "<trait value=\"1\"/>" //$NON-NLS-1$
+        + "</prerequisites>" //$NON-NLS-1$
+        + "</genericCharm>"; //$NON-NLS-1$
+    Element rootElement = DocumentUtilities.read(xml).getRootElement();
+    Charm charm = builder.buildCharm(rootElement, AbilityType.Athletics);
+    assertEquals(AbilityType.Athletics, charm.getPrerequisites()[0].getType());
+  }
+
+  // Fails
+  public void testReadGenericPrerequisiteHigherValue() throws Exception {
+    String xml = "<genericCharm id=\"Solar.Generic\">" //$NON-NLS-1$
+        + "<prerequisites>" //$NON-NLS-1$
+        + "<trait value=\"3\"/>" //$NON-NLS-1$
+        + "</prerequisites>" //$NON-NLS-1$
+        + "</genericCharm>"; //$NON-NLS-1$
+    Element rootElement = DocumentUtilities.read(xml).getRootElement();
+    Charm charm = builder.buildCharm(rootElement, AbilityType.Awareness);
+    assertEquals(AbilityType.Awareness, charm.getPrerequisites()[0].getType());
+    assertEquals(3, charm.getPrerequisites()[0].getCurrentValue());
+  }
 }

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.generic.impl.magic.persistence.builder;
+package net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite;
 
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ATTRIBUTE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_COUNT;
@@ -9,7 +9,6 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TA
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM_REFERENCE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_ESSENCE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_SELECTIVE_CHARM_GROUP;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_TRAIT;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +30,11 @@ import org.dom4j.Element;
 
 public class CharmPrerequisiteListBuilder {
 
-  public CharmPrerequisiteList buildPrerequisiteList(Element prerequisiteListElement, String charmId)
-      throws PersistenceException {
-    IGenericTrait[] allPrerequisites = buildTraitPrerequisites(charmId, prerequisiteListElement);
-    IGenericTrait essence = buildEssencePrerequisite(charmId, prerequisiteListElement);
-    String[] prerequisiteCharmIDs = buildCharmPrerequisites(prerequisiteListElement, charmId);
-    SelectiveCharmGroupTemplate[] selectiveCharmGroups = buildSelectiveCharmGroups(prerequisiteListElement, charmId);
+  public CharmPrerequisiteList buildPrerequisiteList(Element prerequisiteListElement) throws PersistenceException {
+    IGenericTrait[] allPrerequisites = new TraitPrerequisitesBuilder().buildTraitPrerequisites(prerequisiteListElement);
+    IGenericTrait essence = buildEssencePrerequisite(prerequisiteListElement);
+    String[] prerequisiteCharmIDs = buildCharmPrerequisites(prerequisiteListElement);
+    SelectiveCharmGroupTemplate[] selectiveCharmGroups = buildSelectiveCharmGroups(prerequisiteListElement);
     ICharmAttributeRequirement[] attributeRequirements = getCharmAttributeRequirements(prerequisiteListElement);
     return new CharmPrerequisiteList(
         allPrerequisites,
@@ -46,49 +44,35 @@ public class CharmPrerequisiteListBuilder {
         attributeRequirements);
   }
 
-  private IGenericTrait[] buildTraitPrerequisites(String id, Element prerequisiteListElement) throws CharmException {
-    List<IGenericTrait> allPrerequisites = new ArrayList<IGenericTrait>();
-    TraitPrerequisiteBuilder traitBuilder = new TraitPrerequisiteBuilder();
-    for (Element element : ElementUtilities.elements(prerequisiteListElement, TAG_TRAIT)) {
-      try {
-        allPrerequisites.add(traitBuilder.build(element));
-      }
-      catch (Exception e) {
-        throw new CharmException("Bad prerequisites in Charm: " + id, e); //$NON-NLS-1$
-      }
-    }
-    return allPrerequisites.toArray(new IGenericTrait[allPrerequisites.size()]);
-  }
-
-  private String[] buildCharmPrerequisites(Element parent, String charmId) throws CharmException {
+  private String[] buildCharmPrerequisites(Element parent) throws CharmException {
     List<Element> prerequisiteCharmList = ElementUtilities.elements(parent, TAG_CHARM_REFERENCE);
     String[] prerequisiteCharmIDs = new String[prerequisiteCharmList.size()];
     for (int i = 0; i < prerequisiteCharmList.size(); i++) {
       prerequisiteCharmIDs[i] = prerequisiteCharmList.get(i).attributeValue(ATTRIB_ID);
       if (StringUtilities.isNullOrEmpty(prerequisiteCharmIDs[i])) {
-        throw new CharmException("Bad id for prerequisite in Charm: " + charmId); //$NON-NLS-1$
+        throw new CharmException("Prerequisite charm id is null or empty."); //$NON-NLS-1$
       }
     }
     return prerequisiteCharmIDs;
   }
 
-  private IGenericTrait buildEssencePrerequisite(String id, Element prerequisiteListElement) throws CharmException {
+  private IGenericTrait buildEssencePrerequisite(Element prerequisiteListElement) throws CharmException {
     Element essenceElement = prerequisiteListElement.element(TAG_ESSENCE);
     if (essenceElement == null) {
-      throw new CharmException("Cannot process Charm without essence prerequisite: " + id); //$NON-NLS-1$
+      throw new CharmException("Cannot process Charm without essence prerequisite."); //$NON-NLS-1$
     }
     int minValue;
     try {
       minValue = Integer.parseInt(essenceElement.attributeValue(ATTRIB_VALUE));
     }
     catch (NumberFormatException e) {
-      throw new CharmException("Bad value on essence prerequisite in Charm: " + id); //$NON-NLS-1$
+      throw new CharmException("Bad value on essence prerequisite."); //$NON-NLS-1$
     }
     IGenericTrait essence = new ValuedTraitType(OtherTraitType.Essence, minValue);
     return essence;
   }
 
-  private SelectiveCharmGroupTemplate[] buildSelectiveCharmGroups(Element prerequisiteListElement, String charmId)
+  private SelectiveCharmGroupTemplate[] buildSelectiveCharmGroups(Element prerequisiteListElement)
       throws PersistenceException {
     List<Element> selectiveCharmGroupElements = ElementUtilities.elements(
         prerequisiteListElement,
@@ -96,7 +80,7 @@ public class CharmPrerequisiteListBuilder {
     SelectiveCharmGroupTemplate[] charmGroups = new SelectiveCharmGroupTemplate[selectiveCharmGroupElements.size()];
     for (int index = 0; index < selectiveCharmGroupElements.size(); index++) {
       Element groupElement = selectiveCharmGroupElements.get(index);
-      String[] groupCharmIds = buildCharmPrerequisites(groupElement, charmId);
+      String[] groupCharmIds = buildCharmPrerequisites(groupElement);
       int threshold = ElementUtilities.getRequiredIntAttrib(groupElement, ATTRIB_THRESHOLD);
       charmGroups[index] = new SelectiveCharmGroupTemplate(groupCharmIds, threshold);
     }
