@@ -19,6 +19,7 @@ import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
+import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
@@ -192,12 +193,20 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   public ICharm getCharmById(String charmId) {
-    ICharm martialArtsCharm = martialArtsCharmTree.getCharmByID(charmId);
-    if (martialArtsCharm != null) {
-      return martialArtsCharm;
+    ICharm charm = martialArtsCharmTree.getCharmByID(charmId);
+    if (charm != null) {
+      return charm;
     }
     CharacterType characterType = getCharacterType(charmId);
-    return getCharmTree(characterType).getCharmByID(charmId);
+    charm = getCharmTree(characterType).getCharmByID(charmId);
+    if (charm != null) {
+      return charm;
+    }
+    CharmCache.getInstance().searchCharm(charmId);
+    if (charm != null) {
+      return charm;
+    }
+    throw new IllegalArgumentException("No charm for id \"" + charmId + "\""); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   public ICharmTree getCharmTree(CharacterType type) {
