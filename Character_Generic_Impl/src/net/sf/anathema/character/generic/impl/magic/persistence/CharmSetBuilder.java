@@ -5,6 +5,7 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TA
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_ALTERNATIVES;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM_REFERENCE;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_GENERIC_CHARM;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -20,6 +21,8 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequi
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.TraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmAlternative;
+import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
@@ -29,7 +32,7 @@ import org.dom4j.Element;
 public class CharmSetBuilder implements ICharmSetBuilder {
 
   private final ICharmBuilder builder = new CharmBuilder(new IdStringBuilder(), new TraitPrerequisitesBuilder());
-  private final ICharmBuilder genericsBuilder = new GenericCharmBuilder(
+  private final GenericCharmBuilder genericsBuilder = new GenericCharmBuilder(
       new GenericIdStringBuilder(),
       new GenericTraitPrerequisitesBuilder());
 
@@ -43,16 +46,46 @@ public class CharmSetBuilder implements ICharmSetBuilder {
     }
     Element charmListElement = charmDoc.getRootElement();
     for (Element charmElementObject : ElementUtilities.elements(charmListElement, TAG_CHARM)) {
-      createCharm(allCharms, charmsById, charmElementObject);
+      createCharm(allCharms, charmsById, builder, charmElementObject);
     }
+    buildGenericCharms(allCharms, charmsById, charmListElement);
     extractParents(charmsById, allCharms);
     readAlternatives(charmsById, charmListElement);
     return allCharms.toArray(new ICharm[allCharms.size()]);
   }
 
-  private void createCharm(Set<Charm> allCharms, Map<String, Charm> charmsById, Element charmElement)
+  private void buildGenericCharms(Set<Charm> allCharms, Map<String, Charm> charmsById, Element charmListElement)
       throws PersistenceException {
-    Charm newCharm = builder.buildCharm(charmElement);
+    final List<Element> elements = ElementUtilities.elements(charmListElement, TAG_GENERIC_CHARM);
+    if (elements.isEmpty()) {
+      return;
+    }
+    final ITraitType[] types = createTraitList(allCharms);
+    for (ITraitType type : types) {
+      genericsBuilder.setType(type);
+      for (Element charmElementObject : elements) {
+        createCharm(allCharms, charmsById, genericsBuilder, charmElementObject);
+      }
+    }
+  }
+
+  private ITraitType[] createTraitList(Set<Charm> allCharms) {
+    Set<ITraitType> types = new HashSet<ITraitType>();
+    for (Charm charm : allCharms) {
+      final IGenericTrait[] prerequisites = charm.getPrerequisites();
+      if (prerequisites.length > 0) {
+        types.add(prerequisites[0].getType());
+      }
+    }
+    return types.toArray(new ITraitType[types.size()]);
+  }
+
+  private void createCharm(
+      Set<Charm> allCharms,
+      Map<String, Charm> charmsById,
+      ICharmBuilder currentbuilder,
+      Element charmElement) throws PersistenceException {
+    Charm newCharm = currentbuilder.buildCharm(charmElement);
     if (allCharms.contains(newCharm)) {
       allCharms.remove(newCharm);
     }

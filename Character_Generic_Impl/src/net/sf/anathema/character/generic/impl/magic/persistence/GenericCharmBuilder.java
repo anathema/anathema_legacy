@@ -13,7 +13,6 @@ public class GenericCharmBuilder extends CharmBuilder implements ICharmBuilder {
     super(idBuilder, traitBuilder);
     this.idBuilder = idBuilder;
     this.traitBuilder = traitBuilder;
-
   }
 
   public void setType(ITraitType type) {
