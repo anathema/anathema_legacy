@@ -47,7 +47,6 @@ public class GenericCharmBuilderTest extends BasicTestCase {
     assertEquals(AbilityType.Athletics, charm.getPrerequisites()[0].getType());
   }
 
-  // Fails
   public void testReadGenericPrerequisiteHigherValue() throws Exception {
     Element xml = CharmXmlTestUtils.createCharmElement("Solar.Generic"); //$NON-NLS-1$
     Element prerequisites = xml.element("prerequisite"); //$NON-NLS-1$

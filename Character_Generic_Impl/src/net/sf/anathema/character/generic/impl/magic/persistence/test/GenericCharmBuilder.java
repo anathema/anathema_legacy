@@ -6,8 +6,7 @@ import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
 import net.sf.anathema.character.generic.impl.magic.MagicSource;
 import net.sf.anathema.character.generic.impl.magic.PermanentCostList;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.HeaderStringBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.IHeaderStringBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericHeaderStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericTraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.PrerequisiteListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
@@ -23,10 +22,8 @@ import org.dom4j.Element;
 
 public class GenericCharmBuilder {
 
-  private final IHeaderStringBuilder idBuilder = new HeaderStringBuilder(ICharmXMLConstants.ATTRIB_ID);
-
   public Charm buildCharm(Element charmElement, AbilityType type) throws PersistenceException {
-    String id = idBuilder.build(charmElement) + type.getId();
+    String id = new GenericHeaderStringBuilder("id", type).build(charmElement); //$NON-NLS-1$
     PrerequisiteListBuilder builder = new PrerequisiteListBuilder(new GenericTraitPrerequisitesBuilder(type));
     CharmPrerequisiteList list = builder.buildPrerequisiteList(charmElement.element(ICharmXMLConstants.TAG_PREREQUISITE_LIST));
     String groupdId = type.getId();
