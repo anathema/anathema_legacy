@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.ICharmBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.DurationType;
+import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
 import org.dom4j.Element;
@@ -37,7 +38,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
       charmBuilder.buildCharm(charmElement);
       fail();
     }
-    catch (CharmException e) {
+    catch (PersistenceException e) {
       // nothing to do
     }
   }
@@ -48,7 +49,7 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
       charmBuilder.buildCharm(charmElement);
       fail();
     }
-    catch (CharmException e) {
+    catch (PersistenceException e) {
       // nothing to do
     }
   }

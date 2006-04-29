@@ -10,6 +10,7 @@ public class AllTests {
     // $JUnit-BEGIN$
     suite.addTestSuite(CharmBuilderTest.class);
     suite.addTestSuite(CharmSetBuilderTest.class);
+    suite.addTestSuite(GenericCharmBuilderTest.class);
     // $JUnit-END$
     return suite;
   }

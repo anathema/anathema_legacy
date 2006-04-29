@@ -36,8 +36,8 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmPre
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmTypeBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CostListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.DurationBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.HeaderStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ICostListBuilder;
-import net.sf.anathema.character.generic.impl.magic.persistence.builder.test.IdBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.impl.traits.TraitTypeUtils;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
@@ -63,11 +63,11 @@ public class CharmBuilder implements ICharmBuilder {
   private final ICostListBuilder costListBuilder = new CostListBuilder();
   private final DurationBuilder durationBuilder = new DurationBuilder();
   private final TraitTypeUtils traitUtils = new TraitTypeUtils();
-  private final IdBuilder idBuilder = new IdBuilder();
+  private final HeaderStringBuilder idBuilder = new HeaderStringBuilder(ATTRIB_ID);
 
   public Charm buildCharm(Element charmElement) throws PersistenceException {
     Element rulesElement = charmElement;
-    String id = idBuilder.buildId(charmElement);
+    String id = idBuilder.build(charmElement);
     String typeAttribute = charmElement.attributeValue(ATTRIB_EXALT);
     CharacterType characterType;
     try {
