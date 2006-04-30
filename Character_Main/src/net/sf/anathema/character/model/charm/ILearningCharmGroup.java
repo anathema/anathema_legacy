@@ -30,8 +30,6 @@ public interface ILearningCharmGroup extends ICharmGroup, IBasicLearnCharmGroup 
   public ICharm[] getExperienceLearnedCharms();
 
   public void forgetCharm(ICharm child, boolean experienced);
-  
-  public void forgetAll();
 
-  public boolean isCompleted();
+  public void forgetAll();
 }
