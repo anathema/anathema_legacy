@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <charmlist>
+  <!-- Second Edition Snake Style --/>
   <charm id="Solar.StrikingCobraTechnique" exalt="Solar" group="SnakeStyle">
     <prerequisite>
       <trait id="MartialArts" value="2"/>
@@ -171,3 +172,95 @@
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="2nd Edition" page="242"/>
   </charm>
+  <!-- Second Edition Solar Hero Style --/>
+  <!-- Second Edition Solar Generics --/>
+  <charm id="Solar.1stExcellencyMartialArts" exalt="Solar" group="Generics">
+    <prerequisite>
+      <trait id="MartialArts" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per die"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="1" secondaryStep="2"/>
+    </charmtype>
+    <charmAttribute attribute="Mortal"/>
+    <charmAttribute attribute="Exclusive"/>
+    <charmAttribute attribute="Excellency"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="2nd Edition" page="183"/>
+  </charm>
+  <charm id="Solar.2ndExcellencyMartialArts" exalt="Solar" group="Generics">
+    <prerequisite>
+      <trait id="MartialArts" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2" text="per success"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="1" secondaryStep="2"/>
+    </charmtype>
+    <charmAttribute attribute="Mortal"/>
+    <charmAttribute attribute="Exclusive"/>
+    <charmAttribute attribute="Excellency"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="2nd Edition" page="184"/>
+  </charm>
+  <charm id="Solar.3rdExcellencyMartialArts" exalt="Solar" group="Generics">
+    <prerequisite>
+      <trait id="MartialArts" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="4" secondaryStep="6"/>
+    </charmtype>
+    <charmAttribute attribute="Mortal"/>
+    <charmAttribute attribute="Exclusive"/>
+    <charmAttribute attribute="Excellency"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="2nd Edition" page="185"/>
+  </charm>
+  <charm id="Solar.InfiniteMasteryMartialArts" exalt="Solar" group="Generics">
+    <prerequisite>
+      <trait id="MartialArts" value="4"/>
+      <essence value="3"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2" text="or more"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Mortal"/>
+    <charmAttribute attribute="Exclusive"/>
+    <source source="2nd Edition" page="185"/>
+  </charm>
+  <charm id="Solar.EssenceFlowMartialArts" exalt="Solar" group="Generics">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="4"/>
+    </prerequisite>
+    <cost />
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <charmAttribute attribute="Mortal"/>
+    <charmAttribute attribute="Exclusive"/>
+    <source source="2nd Edition" page="187"/>
+  </charm>
+  
