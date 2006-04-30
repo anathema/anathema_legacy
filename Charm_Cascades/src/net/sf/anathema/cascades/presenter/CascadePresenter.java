@@ -56,7 +56,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     List<ICharmGroup> allCharmGroups = new ArrayList<ICharmGroup>();
     for (CharacterType type : CharacterType.values()) {
       ICharacterTemplate defaultTemplate = getTemplateRegistry().getDefaultTemplate(type, ExaltedEdition.FirstEdition);
-      if (defaultTemplate.getMagicTemplate().getCharmTemplate().knowsCharms()) {
+      if (defaultTemplate.getMagicTemplate().getCharmTemplate().knowsCharms(ExaltedRuleSet.CoreRules)) {
         for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(ExaltedEdition.FirstEdition)) {
           CharmTree charmTree = new CharmTree(defaultTemplate.getMagicTemplate().getCharmTemplate(), ruleSet);
           getCharmTreeMap(ruleSet).put(type, charmTree);

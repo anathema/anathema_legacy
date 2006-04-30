@@ -5,5 +5,5 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface ICascadePresenter {
 
-  ICharmTree getCharmTree(IIdentificate type);
+  public ICharmTree getCharmTree(IIdentificate type);
 }
