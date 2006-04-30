@@ -44,8 +44,6 @@ import net.sf.anathema.lib.util.Identificate;
 
 public class Charm extends Identificate implements ICharm {
 
-  public static final IIdentificate NOT_ALIEN_LEARNABLE = new Identificate("NotAlienLearnable"); //$NON-NLS-1$
-
   private final CharmPrerequisiteList prerequisisteList;
 
   private final CharacterType characterType;
