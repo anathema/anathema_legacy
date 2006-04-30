@@ -36,10 +36,10 @@ public class ComboRulesTest extends AbstractComboRulesTestCase {
 
   public void testRestrictionComboLegal() throws Exception {
     assertFalse(rules.isCharmComboLegal(DummyCharmUtilities.createCharm(DurationType.Instant, new ComboRestrictions(
-        null,
+        false,
         Boolean.FALSE))));
     assertTrue(rules.isCharmComboLegal(DummyCharmUtilities.createCharm(DurationType.Other, new ComboRestrictions(
-        null,
+        false,
         Boolean.TRUE))));
   }
 

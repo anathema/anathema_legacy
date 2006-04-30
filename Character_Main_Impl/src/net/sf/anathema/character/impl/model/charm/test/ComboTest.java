@@ -66,10 +66,10 @@ public class ComboTest extends BasicTestCase {
 
   public void testComboRestrictionComboAllowed() throws Exception {
     assertFalse(comboRules.canBeAddedToCombo(combo, createCharm(DurationType.Instant, new ComboRestrictions(
-        null,
+        false,
         Boolean.FALSE))));
     assertTrue(comboRules.canBeAddedToCombo(combo, createCharm(DurationType.Other, new ComboRestrictions(
-        null,
+        false,
         Boolean.TRUE))));
   }
 
