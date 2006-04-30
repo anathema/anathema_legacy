@@ -11,9 +11,9 @@ public interface ICharmTemplate {
 
   public ICharm[] getMartialArtsCharms(IExaltedRuleSet rules);
 
-  public MartialArtsLevel getMartialArtsLevel();
+  public boolean knowsCharms(IExaltedRuleSet rules);
 
-  public boolean knowsCharms();
+  public MartialArtsLevel getMartialArtsLevel();
 
   public boolean isMartialArtsCharmAllowed(
       ICharm martialArtsCharm,
