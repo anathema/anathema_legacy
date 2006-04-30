@@ -121,7 +121,7 @@ public class CharmConfiguration implements ICharmConfiguration {
       specialCharm.accept(new ISpecialCharmVisitor() {
         public void acceptOxBodyTechnique(IOxBodyTechniqueCharm visited) {
           final ICharm charm = getCharmTree(characterType).getCharmByID(visited.getCharmId());
-          IGenericTrait relevantTrait = getModelContext().getTraitCollection().getTrait(visited.getRelevantTrait());
+          IGenericTrait relevantTrait = context.getTraitCollection().getTrait(visited.getRelevantTrait());
           ILearningCharmGroup group = getGroupById(charm.getCharacterType(), charm.getGroupId());
           registerOxBodyTechnique(visited, charm, relevantTrait, group);
         }
@@ -301,7 +301,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   private CharacterType getNativeCharacterType() {
-    return getModelContext().getBasicCharacterContext().getCharacterType();
+    return context.getBasicCharacterContext().getCharacterType();
   }
 
   public void unlearnAllAlienCharms() {
@@ -334,7 +334,7 @@ public class CharmConfiguration implements ICharmConfiguration {
       }
     };
     changeListener.addTraitTypes(createPrerequisiteSet());
-    getModelContext().getCharacterListening().addChangeListener(changeListener);
+    context.getCharacterListening().addChangeListener(changeListener);
     addCharmLearnListener(learnableListener);
   }
 
@@ -363,10 +363,6 @@ public class CharmConfiguration implements ICharmConfiguration {
     return context.getCharmContext().getCharmLearnStrategy();
   }
 
-  private final ICharacterModelContext getModelContext() {
-    return context;
-  }
-
   public boolean isFullfilled(ICharmAttributeRequirement requirement) {
     int count = 0;
     for (ICharm charm : getLearnedCharms(true)) {
@@ -382,7 +378,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   public final boolean isLearnable(ICharm charm) {
     if (isAlienCharm(charm)) {
-      ICasteType casteType = getModelContext().getBasicCharacterContext().getCasteType();
+      ICasteType casteType = context.getBasicCharacterContext().getCasteType();
       if (!getCharmTemplate(getNativeCharacterType()).isAllowedAlienCharms(casteType)) {
         return false;
       }
@@ -401,8 +397,8 @@ public class CharmConfiguration implements ICharmConfiguration {
       }
       if (!getCharmTemplate(getNativeCharacterType()).isMartialArtsCharmAllowed(
           charm,
-          getModelContext().getCharmContext(),
-          getModelContext().getBasicCharacterContext().isExperienced())) {
+          context.getCharmContext(),
+          context.getBasicCharacterContext().isExperienced())) {
         return false;
       }
     }
@@ -516,7 +512,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   public final boolean isCompulsiveCharm(ICharm charm) {
-    String[] compulsiveCharmIDs = getModelContext().getAdditionalRules().getCompulsiveCharmIDs();
+    String[] compulsiveCharmIDs = context.getAdditionalRules().getCompulsiveCharmIDs();
     return ArrayUtilities.contains(compulsiveCharmIDs, charm.getId());
   }
 
@@ -546,6 +542,8 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   public ICharm[] getCharms(ICharmGroup charmGroup) {
-    return charmGroup.getAllCharms();
+    final ICharm[] allCharms = charmGroup.getAllCharms();
+
+    return allCharms;
   }
 }
