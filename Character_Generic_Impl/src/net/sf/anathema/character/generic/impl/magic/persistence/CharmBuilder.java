@@ -151,20 +151,20 @@ public class CharmBuilder implements ICharmBuilder {
     if (comboElement == null) {
       return new ComboRestrictions();
     }
-    Boolean allAbilities = Boolean.valueOf(comboElement.attributeValue(ATTRIB_ALL_ABILITIES));
+    Boolean allAbilities = ElementUtilities.getBooleanAttribute(comboElement, ATTRIB_ALL_ABILITIES, false);
     String comboAllowedValue = comboElement.attributeValue(ATTRIB_COMBOABLE);
-    Boolean comboAllowed = comboAllowedValue == null ? new Boolean(true) : Boolean.valueOf(comboAllowedValue);
-    Element restrictionElement = comboElement.element(TAG_RESTRICTIONS);
+    Boolean comboAllowed = comboAllowedValue == null ? null : Boolean.valueOf(comboAllowedValue);
     ComboRestrictions comboRules = new ComboRestrictions(allAbilities, comboAllowed);
+    Element restrictionElement = comboElement.element(TAG_RESTRICTIONS);
     if (restrictionElement != null) {
       List<Element> restrictedCharmList = ElementUtilities.elements(restrictionElement, TAG_CHARM);
-      for (int i = 0; i < restrictedCharmList.size(); i++) {
-        comboRules.addRestrictedCharmId(restrictedCharmList.get(i).attributeValue(ATTRIB_ID));
+      for (Element element : restrictedCharmList) {
+        comboRules.addRestrictedCharmId(element.attributeValue(ATTRIB_ID));
       }
       List<Element> restrictedCharmTypeList = ElementUtilities.elements(restrictionElement, TAG_CHARMTYPE);
-      for (int i = 0; i < restrictedCharmTypeList.size(); i++) {
+      for (Element element : restrictedCharmTypeList) {
         try {
-          typeAttribute = restrictedCharmTypeList.get(i).attributeValue(ATTRIB_TYPE);
+          typeAttribute = element.attributeValue(ATTRIB_TYPE);
           comboRules.addRestrictedCharmType(CharmType.valueOf(typeAttribute));
         }
         catch (IllegalArgumentException e) {
@@ -172,9 +172,9 @@ public class CharmBuilder implements ICharmBuilder {
         }
       }
       List<Element> restrictedTraitTypeList = ElementUtilities.elements(restrictionElement, TAG_TRAIT_REFERENCE);
-      for (int i = 0; i < restrictedTraitTypeList.size(); i++) {
+      for (Element element : restrictedTraitTypeList) {
         try {
-          typeAttribute = restrictedTraitTypeList.get(i).attributeValue(ATTRIB_ID);
+          typeAttribute = element.attributeValue(ATTRIB_ID);
           comboRules.addRestrictedTraitType(traitUtils.getTraitTypeById(typeAttribute));
         }
         catch (IllegalArgumentException e) {
