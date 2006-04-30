@@ -24,11 +24,12 @@ import org.dom4j.Element;
 
 public class PrerequisiteListBuilder {
 
-  private final AttributeRequirementBuilder attributeBuilder = new AttributeRequirementBuilder();
   private final ITraitPrerequisitesBuilder traitBuilder;
+  private final IAttributeRequirementBuilder attributeBuilder;
 
-  public PrerequisiteListBuilder(ITraitPrerequisitesBuilder traitBuilder) {
+  public PrerequisiteListBuilder(ITraitPrerequisitesBuilder traitBuilder, IAttributeRequirementBuilder attributeBuilder) {
     this.traitBuilder = traitBuilder;
+    this.attributeBuilder = attributeBuilder;
   }
 
   public CharmPrerequisiteList buildPrerequisiteList(Element prerequisiteListElement) throws PersistenceException {

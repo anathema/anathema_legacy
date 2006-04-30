@@ -25,6 +25,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.Duration
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.GroupStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ICostListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.IIdStringBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.IAttributeRequirementBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.ITraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.PrerequisiteListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
@@ -53,10 +54,15 @@ public class CharmBuilder implements ICharmBuilder {
   private final CharmAttributeBuilder attributeBuilder = new CharmAttributeBuilder();
   private final IIdStringBuilder idBuilder;
   private final ITraitPrerequisitesBuilder traitsBuilder;
+  private final IAttributeRequirementBuilder attributeRequirementsBuilder;
 
-  public CharmBuilder(IIdStringBuilder idBuilder, ITraitPrerequisitesBuilder traitsBuilder) {
+  public CharmBuilder(
+      IIdStringBuilder idBuilder,
+      ITraitPrerequisitesBuilder traitsBuilder,
+      IAttributeRequirementBuilder attributeRequirementsBuilder) {
     this.idBuilder = idBuilder;
     this.traitsBuilder = traitsBuilder;
+    this.attributeRequirementsBuilder = attributeRequirementsBuilder;
   }
 
   public Charm buildCharm(Element charmElement) throws PersistenceException {
@@ -102,7 +108,7 @@ public class CharmBuilder implements ICharmBuilder {
     CharmPrerequisiteList prerequisiteList;
     try {
       Element prerequisiteListElement = ElementUtilities.getRequiredElement(charmElement, TAG_PREREQUISITE_LIST);
-      prerequisiteList = new PrerequisiteListBuilder(traitsBuilder).buildPrerequisiteList(prerequisiteListElement);
+      prerequisiteList = new PrerequisiteListBuilder(traitsBuilder, attributeRequirementsBuilder).buildPrerequisiteList(prerequisiteListElement);
     }
     catch (PersistenceException e) {
       throw new CharmException("Error in Charm " + id, e); //$NON-NLS-1$

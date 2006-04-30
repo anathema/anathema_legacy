@@ -16,7 +16,7 @@ import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
-public class AttributeRequirementBuilder {
+public class AttributeRequirementBuilder implements IAttributeRequirementBuilder {
 
   public ICharmAttributeRequirement[] getCharmAttributeRequirements(Element prerequisitesElement) throws CharmException {
     List<ICharmAttributeRequirement> attributeRequirements = new ArrayList<ICharmAttributeRequirement>();
