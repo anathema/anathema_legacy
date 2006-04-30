@@ -6,7 +6,6 @@ import java.util.List;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
@@ -45,9 +44,8 @@ public class CharmTemplate implements ICharmTemplate {
     return martialArtsLevel;
   }
 
-  public boolean knowsCharms() {
-    return charmSet.getCharms(ExaltedRuleSet.CoreRules).length > 0
-        || charmSet.getMartialArtsCharms(ExaltedRuleSet.CoreRules).length > 0;
+  public boolean knowsCharms(IExaltedRuleSet rules) {
+    return charmSet.getCharms(rules).length > 0 || charmSet.getMartialArtsCharms(rules).length > 0;
   }
 
   public boolean isMartialArtsCharmAllowed(
