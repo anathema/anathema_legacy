@@ -63,14 +63,7 @@ public class CharmBuilder implements ICharmBuilder {
 
   public Charm buildCharm(Element charmElement) throws PersistenceException {
     String id = idBuilder.build(charmElement);
-    String typeAttribute = charmElement.attributeValue(ATTRIB_EXALT);
-    CharacterType characterType;
-    try {
-      characterType = CharacterType.getById(typeAttribute);
-    }
-    catch (IllegalArgumentException e) {
-      throw new CharmException("No chararacter type given for Charm: " + id, e); //$NON-NLS-1$
-    }
+    CharacterType characterType = getCharacterType(charmElement, id);
     Element costElement = charmElement.element(TAG_COST);
     Ensure.ensureArgumentNotNull("No cost specified for Charm: " + id, costElement); //$NON-NLS-1$
     ICostList temporaryCost = costListBuilder.buildTemporaryCostList(costElement.element(TAG_TEMPORARY));
@@ -84,27 +77,8 @@ public class CharmBuilder implements ICharmBuilder {
     }
     Duration duration = durationBuilder.buildDuration(charmElement.element(TAG_DURATION));
     ICharmTypeModel charmTypeModel = charmTypeBuilder.build(charmElement);
-    List<IMagicSource> sources = new ArrayList<IMagicSource>();
-    List<Element> sourceElements = ElementUtilities.elements(charmElement, TAG_SOURCE);
-    if (sourceElements.isEmpty()) {
-      sources.add(MagicSource.CUSTOM_SOURCE);
-    }
-    else {
-      for (Element sourceElement : sourceElements) {
-        String source = sourceElement.attributeValue(ATTRIB_SOURCE);
-        String page = String.valueOf(sourceElement.attributeValue(ATTRIB_PAGE));
-        sources.add(new MagicSource(source, page));
-      }
-    }
-
-    Element prerequisiteListElement = ElementUtilities.getRequiredElement(charmElement, TAG_PREREQUISITE_LIST);
-    CharmPrerequisiteList prerequisiteList;
-    try {
-      prerequisiteList = new PrerequisiteListBuilder(traitsBuilder).buildPrerequisiteList(prerequisiteListElement);
-    }
-    catch (PersistenceException e) {
-      throw new CharmException("Error in Charm " + id, e); //$NON-NLS-1$
-    }
+    List<IMagicSource> sources = buildSourceList(charmElement);
+    CharmPrerequisiteList prerequisiteList = getPrerequisites(charmElement, id);
     IGenericTrait[] prerequisites = prerequisiteList.getPrerequisites();
     final IGenericTrait primaryPrerequisite = (prerequisites.length != 0) ? prerequisites[0] : null;
     String group = groupBuilder.build(charmElement, primaryPrerequisite);
@@ -124,6 +98,46 @@ public class CharmBuilder implements ICharmBuilder {
     }
     loadSpecialLearning(charmElement, charm);
     return charm;
+  }
+
+  private CharmPrerequisiteList getPrerequisites(Element charmElement, String id) throws CharmException {
+    CharmPrerequisiteList prerequisiteList;
+    try {
+      Element prerequisiteListElement = ElementUtilities.getRequiredElement(charmElement, TAG_PREREQUISITE_LIST);
+      prerequisiteList = new PrerequisiteListBuilder(traitsBuilder).buildPrerequisiteList(prerequisiteListElement);
+    }
+    catch (PersistenceException e) {
+      throw new CharmException("Error in Charm " + id, e); //$NON-NLS-1$
+    }
+    return prerequisiteList;
+  }
+
+  private CharacterType getCharacterType(Element charmElement, String id) throws CharmException {
+    String typeAttribute = charmElement.attributeValue(ATTRIB_EXALT);
+    CharacterType characterType;
+    try {
+      characterType = CharacterType.getById(typeAttribute);
+    }
+    catch (IllegalArgumentException e) {
+      throw new CharmException("No chararacter type given for Charm: " + id, e); //$NON-NLS-1$
+    }
+    return characterType;
+  }
+
+  private List<IMagicSource> buildSourceList(Element charmElement) {
+    List<IMagicSource> sources = new ArrayList<IMagicSource>();
+    List<Element> sourceElements = ElementUtilities.elements(charmElement, TAG_SOURCE);
+    if (sourceElements.isEmpty()) {
+      sources.add(MagicSource.CUSTOM_SOURCE);
+    }
+    else {
+      for (Element sourceElement : sourceElements) {
+        String source = sourceElement.attributeValue(ATTRIB_SOURCE);
+        String page = String.valueOf(sourceElement.attributeValue(ATTRIB_PAGE));
+        sources.add(new MagicSource(source, page));
+      }
+    }
+    return sources;
   }
 
   private ICharmAttribute[] getCharmAttributes(Element rulesElement, IGenericTrait primaryPrerequisite) {
