@@ -24,7 +24,7 @@ public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeLis
       CascadeCharmTreeViewProperties viewProperties,
       ICascadePresenter presenter,
       ITemplateRegistry templateRegistry) {
-    super(cascadeView.getCharmTreeView(), viewProperties, templateRegistry);
+    super(cascadeView.getCharmTreeView(), viewProperties, templateRegistry, new FriendlyCharmGroupArbitrator());
     this.cascadeView = cascadeView;
     this.viewProperties = viewProperties;
     this.presenter = presenter;
