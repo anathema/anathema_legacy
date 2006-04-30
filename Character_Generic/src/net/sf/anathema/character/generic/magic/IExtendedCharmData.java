@@ -25,4 +25,6 @@ public interface IExtendedCharmData extends ICharmData {
   public static final IIdentificate TOUCH_ATTRIBUTE = new Identificate("Touch"); //$NON-NLS-1$
   public static final IIdentificate TRAINING_ATTRIBUTE = new Identificate("Training"); //$NON-NLS-1$
   public static final IIdentificate WAR_ATTRIBUTE = new Identificate("War"); //$NON-NLS-1$
+
+  public static final IIdentificate EXCLUSIVE_ATTRIBUTE = new Identificate("Exclusive"); //$NON-NLS-1$
 }
