@@ -1,0 +1,4 @@
+AbstractcharmGroupChangeListener initialized with 
+Arbitrator (SimpleArbitrator for cascades, charmconfiguration for character)
+
+Arbitrator.getCharms(charmgroup) returns charms to display.

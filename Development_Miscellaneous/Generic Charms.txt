@@ -1,10 +1,7 @@
-new AttributeType: GenericCharm
-if Generic:
-	Name/Id depends on TraitType: BaseId given, TraitType appended.
-	Group depends on TraitType: it equals the primary trait type		
-	Prerequisite trait equals TraitType: Give only value
-	
-	Attribute "Excellency" etc. to indicate this charm being an excellency, as per sidereal prayer strip.
+Name/Id depends on TraitType: BaseId given, TraitType appended.
+Group depends on TraitType: it equals the primary trait type		
+Prerequisite trait equals TraitType: Give only value
+Attribute "Excellency" etc. to indicate this charm being an excellency, as per sidereal prayer strip.
 
 Example
 <genericCharm id="1stExcellency" exalt="Solar">
