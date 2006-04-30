@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.impl.magic.persistence.builder;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ATTRIBUTE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_VISUALIZE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_ATTRIBUTE;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_GENERIC_ATTRIBUTE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,12 @@ public class CharmAttributeBuilder {
       attributes.add(new CharmAttribute(attributeId, visualizeAttribute));
     }
     if (primaryPrerequisite != null) {
-      attributes.add(new CharmAttribute(primaryPrerequisite.getType().getId(), false));
+      final String id = primaryPrerequisite.getType().getId();
+      attributes.add(new CharmAttribute(id, false));
+      for (Element genericAttributeElement : ElementUtilities.elements(rulesElement, TAG_GENERIC_ATTRIBUTE)) {
+        String attributeId = genericAttributeElement.attributeValue(ATTRIB_ATTRIBUTE) + id;
+        attributes.add(new CharmAttribute(attributeId, false));
+      }
     }
     return attributes.toArray(new ICharmAttribute[attributes.size()]);
   }
