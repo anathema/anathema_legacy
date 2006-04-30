@@ -1,21 +1,15 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite;
 
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ATTRIBUTE;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_COUNT;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ID;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_THRESHOLD;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_VALUE;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM_ATTRIBUTE_REQUIREMENT;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM_REFERENCE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_ESSENCE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_SELECTIVE_CHARM_GROUP;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import net.disy.commons.core.util.StringUtilities;
-import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
-import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
@@ -30,18 +24,19 @@ import org.dom4j.Element;
 
 public class PrerequisiteListBuilder {
 
-  private final ITraitPrerequisitesBuilder builder;
+  private final AttributeRequirementBuilder attributeBuilder = new AttributeRequirementBuilder();
+  private final ITraitPrerequisitesBuilder traitBuilder;
 
-  public PrerequisiteListBuilder(ITraitPrerequisitesBuilder builder) {
-    this.builder = builder;
+  public PrerequisiteListBuilder(ITraitPrerequisitesBuilder traitBuilder) {
+    this.traitBuilder = traitBuilder;
   }
 
   public CharmPrerequisiteList buildPrerequisiteList(Element prerequisiteListElement) throws PersistenceException {
-    IGenericTrait[] allPrerequisites = builder.buildTraitPrerequisites(prerequisiteListElement);
+    IGenericTrait[] allPrerequisites = traitBuilder.buildTraitPrerequisites(prerequisiteListElement);
     IGenericTrait essence = buildEssencePrerequisite(prerequisiteListElement);
     String[] prerequisiteCharmIDs = buildCharmPrerequisites(prerequisiteListElement);
     SelectiveCharmGroupTemplate[] selectiveCharmGroups = buildSelectiveCharmGroups(prerequisiteListElement);
-    ICharmAttributeRequirement[] attributeRequirements = getCharmAttributeRequirements(prerequisiteListElement);
+    ICharmAttributeRequirement[] attributeRequirements = attributeBuilder.getCharmAttributeRequirements(prerequisiteListElement);
     return new CharmPrerequisiteList(
         allPrerequisites,
         essence,
@@ -91,24 +86,5 @@ public class PrerequisiteListBuilder {
       charmGroups[index] = new SelectiveCharmGroupTemplate(groupCharmIds, threshold);
     }
     return charmGroups;
-  }
-
-  private ICharmAttributeRequirement[] getCharmAttributeRequirements(Element prerequisitesElement)
-      throws CharmException {
-    List<ICharmAttributeRequirement> attributeRequirements = new ArrayList<ICharmAttributeRequirement>();
-    for (Element attributeRequirementElement : ElementUtilities.elements(
-        prerequisitesElement,
-        TAG_CHARM_ATTRIBUTE_REQUIREMENT)) {
-      String attributeId = attributeRequirementElement.attributeValue(ATTRIB_ATTRIBUTE);
-      int requiredCount;
-      try {
-        requiredCount = ElementUtilities.getIntAttrib(attributeRequirementElement, ATTRIB_COUNT, 1);
-      }
-      catch (PersistenceException e) {
-        throw new CharmException("Error reading attribute requirement count.", e); //$NON-NLS-1$
-      }
-      attributeRequirements.add(new CharmAttributeRequirement(new CharmAttribute(attributeId, false), requiredCount));
-    }
-    return attributeRequirements.toArray(new ICharmAttributeRequirement[attributeRequirements.size()]);
   }
 }
