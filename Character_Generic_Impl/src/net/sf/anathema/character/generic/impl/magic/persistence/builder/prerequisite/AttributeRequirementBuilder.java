@@ -23,16 +23,30 @@ public class AttributeRequirementBuilder implements IAttributeRequirementBuilder
     for (Element attributeRequirementElement : ElementUtilities.elements(
         prerequisitesElement,
         TAG_CHARM_ATTRIBUTE_REQUIREMENT)) {
-      String attributeId = attributeRequirementElement.attributeValue(ATTRIB_ATTRIBUTE);
-      int requiredCount;
-      try {
-        requiredCount = ElementUtilities.getIntAttrib(attributeRequirementElement, ATTRIB_COUNT, 1);
-      }
-      catch (PersistenceException e) {
-        throw new CharmException("Error reading attribute requirement count.", e); //$NON-NLS-1$
-      }
-      attributeRequirements.add(new CharmAttributeRequirement(new CharmAttribute(attributeId, false), requiredCount));
+      attributeRequirements.add(buildRequirement(attributeRequirementElement));
     }
     return attributeRequirements.toArray(new ICharmAttributeRequirement[attributeRequirements.size()]);
+  }
+
+  protected final ICharmAttributeRequirement buildRequirement(Element attributeRequirementElement)
+      throws CharmException {
+    String attributeId = buildId(attributeRequirementElement);
+    int requiredCount = buildRequirementCount(attributeRequirementElement);
+    return new CharmAttributeRequirement(new CharmAttribute(attributeId, false), requiredCount);
+  }
+
+  protected String buildId(Element attributeRequirementElement) {
+    return attributeRequirementElement.attributeValue(ATTRIB_ATTRIBUTE);
+  }
+
+  private int buildRequirementCount(Element attributeRequirementElement) throws CharmException {
+    int requiredCount;
+    try {
+      requiredCount = ElementUtilities.getIntAttrib(attributeRequirementElement, ATTRIB_COUNT, 1);
+    }
+    catch (PersistenceException e) {
+      throw new CharmException("Error reading attribute requirement count.", e); //$NON-NLS-1$
+    }
+    return requiredCount;
   }
 }

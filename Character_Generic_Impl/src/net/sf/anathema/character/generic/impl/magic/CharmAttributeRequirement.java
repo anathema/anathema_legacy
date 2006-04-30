@@ -2,8 +2,9 @@ package net.sf.anathema.character.generic.impl.magic;
 
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
+import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 
-public class CharmAttributeRequirement implements ICharmAttributeRequirement {
+public class CharmAttributeRequirement extends ReflectionEqualsObject implements ICharmAttributeRequirement {
 
   private final ICharmAttribute attribute;
   private final int count;

@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.impl.magic.persistence.test;
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.persistence.GenericCharmBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericIdStringBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericAttributeRequirementBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericTraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.lib.testing.BasicTestCase;
@@ -12,7 +13,8 @@ import org.dom4j.Element;
 public class GenericCharmBuilderTest extends BasicTestCase {
   GenericCharmBuilder builder = new GenericCharmBuilder(
       new GenericIdStringBuilder(),
-      new GenericTraitPrerequisitesBuilder());
+      new GenericTraitPrerequisitesBuilder(),
+      new GenericAttributeRequirementBuilder());
 
   public void testReadGenericCharmId() throws Exception {
     Element xml = CharmXmlTestUtils.createCharmElement("Solar.Generic"); //$NON-NLS-1$

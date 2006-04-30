@@ -18,6 +18,7 @@ import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericIdStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.IdStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.AttributeRequirementBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericAttributeRequirementBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericTraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.TraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -38,7 +39,8 @@ public class CharmSetBuilder implements ICharmSetBuilder {
       new AttributeRequirementBuilder());
   private final GenericCharmBuilder genericsBuilder = new GenericCharmBuilder(
       new GenericIdStringBuilder(),
-      new GenericTraitPrerequisitesBuilder());
+      new GenericTraitPrerequisitesBuilder(),
+      new GenericAttributeRequirementBuilder());
 
   public ICharm[] buildCharms(Document charmDoc, List<ICharm> existingCharms) throws PersistenceException {
     Set<Charm> allCharms = new HashSet<Charm>();
