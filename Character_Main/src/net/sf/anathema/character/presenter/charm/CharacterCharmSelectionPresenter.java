@@ -76,7 +76,8 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
         selectionView,
         viewProperties,
         this,
-        getTemplateRegistry());
+        getTemplateRegistry(),
+        getCharmConfiguration());
     initSpecialCharmViews();
     initCharmTypeSelectionListening(charms, selectionView);
     initCasteListening(selectionView);
