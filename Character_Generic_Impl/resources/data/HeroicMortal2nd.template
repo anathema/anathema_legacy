@@ -1,0 +1,27 @@
+<exaltedCharacterTemplate characterType="Mortal" subtemplate="HeroicMortal">
+  <general>
+    <edition edition="SecondEdition"/>
+    <abilityGroups uses="trait/DefaultSecondEditionAbilityGroup.template" />
+    <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
+    <essence uses="MortalEssence.template" />
+    <traitCollection uses="trait/MortalTraitCollection.template"/>
+    <magicTemplate uses="magic/MortalMagic.template"/>
+    <presentation uses="presentation/HeroicMortalPresentation.template"/>
+    <healthTemplate>
+      <toughnessControllingTrait type="Resistance"/>
+    </healthTemplate> 
+  </general>
+  <creation>
+    <bonusPointCosts uses="DefaultBonusPointCost.template" />
+    <creationPoints>
+      <attributeDots primary="6" secondary="4" tertiary="3" />
+      <abilityDots general="25" favored="0" favoredPicks="1" />
+      <backgroundDots count="5" />
+      <virtueDots count="5" />
+      <bonusPoints count="21" />
+    </creationPoints>
+  </creation>
+  <experience>
+    <experiencePointCost uses="experience/MortalExperienceCost.template" />
+  </experience>
+</exaltedCharacterTemplate>
