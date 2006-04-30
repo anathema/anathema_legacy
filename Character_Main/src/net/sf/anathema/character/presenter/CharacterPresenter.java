@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
+import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterStatistics;
@@ -129,7 +130,8 @@ public class CharacterPresenter {
   }
 
   private void initMagicPresentation() {
-    if (!getStatistics().getCharacterTemplate().getMagicTemplate().getCharmTemplate().knowsCharms()) {
+    final ICharacterTemplate characterTemplate = getStatistics().getCharacterTemplate();
+    if (!characterTemplate.getMagicTemplate().getCharmTemplate().knowsCharms(getStatistics().getRules())) {
       return;
     }
     String magicViewHeader = getString("CardView.CharmConfiguration.Title"); //$NON-NLS-1$

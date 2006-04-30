@@ -27,7 +27,7 @@ public class MagicPresenter {
     this.factory = factory;
     ICharacterTemplate characterTemplate = statistics.getCharacterTemplate();
     ICharmTemplate charmTemplate = characterTemplate.getMagicTemplate().getCharmTemplate();
-    if (charmTemplate.knowsCharms()) {
+    if (charmTemplate.knowsCharms(statistics.getRules())) {
       subPresenters.add(new CharacterCharmSelectionPresenter(statistics, resources, templateRegistry, provider));
       subPresenters.add(new ComboConfigurationPresenter(resources, statistics));
     }
