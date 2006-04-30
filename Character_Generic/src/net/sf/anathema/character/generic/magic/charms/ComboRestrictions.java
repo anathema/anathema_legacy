@@ -9,18 +9,18 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 
 public class ComboRestrictions implements IComboRestrictions {
 
-  private final Boolean allAbilities;
+  private final boolean allAbilities;
   private final Boolean combosAllowed;
   private final List<String> restrictedCharmIds = new ArrayList<String>();
   private final List<CharmType> restrictedCharmTypes = new ArrayList<CharmType>();
   private final List<ITraitType> restrictedTraitTypes = new ArrayList<ITraitType>();
 
   public ComboRestrictions() {
-    this(null, null);
+    this(false, null);
   }
 
-  public ComboRestrictions(Boolean allAbilities, Boolean combosAllowed) {
-    this.allAbilities = allAbilities == null ? new Boolean(false) : allAbilities;
+  public ComboRestrictions(boolean allAbilities, Boolean combosAllowed) {
+    this.allAbilities = allAbilities;
     this.combosAllowed = combosAllowed;
   }
 
