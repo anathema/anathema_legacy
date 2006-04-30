@@ -14,7 +14,6 @@ import net.sf.anathema.charmtree.presenter.view.ICharmSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.charmtree.presenter.view.ISVGMultiLearnableCharmView;
 import net.sf.anathema.charmtree.presenter.view.ISpecialCharmViewManager;
-import net.sf.anathema.lib.util.IIdentificate;
 
 public class CharmSelectionView extends AbstractCascadeSelectionView implements ICharmSelectionView {
 
@@ -49,10 +48,6 @@ public class CharmSelectionView extends AbstractCascadeSelectionView implements 
 
   public void setSpecialCharmViewVisible(ISVGMultiLearnableCharmView charmView, boolean visible) {
     svgManager.setSpecialCharmViewVisible(getCharmTreeView(), charmView, visible);
-  }
-
-  public void fillCharmTypeBox(IIdentificate[] charmGroups) {
-    getTypeComboBox().setObjects(charmGroups);
   }
 
   public boolean needsScrollbar() {
