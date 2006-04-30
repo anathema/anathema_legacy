@@ -1,5 +1,7 @@
 package net.sf.anathema.lib.gui.wizard;
 
+import javax.swing.Icon;
+
 import net.disy.commons.core.util.Ensure;
 import net.disy.commons.core.util.ISimpleBlock;
 import net.disy.commons.swing.dialog.BasicDialogResources;
@@ -67,5 +69,9 @@ public class AnathemaWizardConfiguration implements IBasicWizardConfiguration {
 
   public IBasicWizardPage getStartingPage() {
     return startPage;
+  }
+  
+  public Icon getLargeDialogIcon() {
+    return null;
   }
 }
