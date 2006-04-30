@@ -1,11 +1,8 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ATTRIBUTE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_EXALT;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_PAGE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_SOURCE;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_VISUALIZE;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_ATTRIBUTE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_COST;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_DURATION;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_PERMANENT;
@@ -18,9 +15,9 @@ import java.util.List;
 
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.impl.magic.Charm;
-import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
 import net.sf.anathema.character.generic.impl.magic.MagicSource;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmAttributeBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmTypeBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ComboRulesBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CostListBuilder;
@@ -53,6 +50,7 @@ public class CharmBuilder implements ICharmBuilder {
   private final DurationBuilder durationBuilder = new DurationBuilder();
   private final GroupStringBuilder groupBuilder = new GroupStringBuilder();
   private final ComboRulesBuilder comboBuilder = new ComboRulesBuilder();
+  private final CharmAttributeBuilder attributeBuilder = new CharmAttributeBuilder();
   private final IIdStringBuilder idBuilder;
   private final ITraitPrerequisitesBuilder traitsBuilder;
 
@@ -93,7 +91,7 @@ public class CharmBuilder implements ICharmBuilder {
         duration,
         charmTypeModel,
         sources.toArray(new IMagicSource[0]));
-    for (ICharmAttribute attribute : getCharmAttributes(charmElement, primaryPrerequisite)) {
+    for (ICharmAttribute attribute : attributeBuilder.buildCharmAttributes(charmElement, primaryPrerequisite)) {
       charm.addCharmAttribute(attribute);
     }
     loadSpecialLearning(charmElement, charm);
@@ -138,24 +136,6 @@ public class CharmBuilder implements ICharmBuilder {
       }
     }
     return sources;
-  }
-
-  private ICharmAttribute[] getCharmAttributes(Element rulesElement, IGenericTrait primaryPrerequisite) {
-    List<ICharmAttribute> attributes = new ArrayList<ICharmAttribute>();
-    for (Element attributeElement : getElementsFromRules(rulesElement, TAG_ATTRIBUTE)) {
-      String attributeId = attributeElement.attributeValue(ATTRIB_ATTRIBUTE);
-      boolean visualizeAttribute = ElementUtilities.getBooleanAttribute(attributeElement, ATTRIB_VISUALIZE, false);
-      attributes.add(new CharmAttribute(attributeId, visualizeAttribute));
-    }
-    if (primaryPrerequisite != null) {
-      attributes.add(new CharmAttribute(primaryPrerequisite.getType().getId(), false));
-    }
-    return attributes.toArray(new ICharmAttribute[attributes.size()]);
-  }
-
-  private Element[] getElementsFromRules(Element rulesElement, String elementName) {
-    List<Element> elements = ElementUtilities.elements(rulesElement, elementName);
-    return elements.toArray(new Element[elements.size()]);
   }
 
   private void loadSpecialLearning(Element charmElement, Charm charm) {
