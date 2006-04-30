@@ -254,13 +254,4 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
       forgetCharm(charm, false);
     }
   }
-
-  public boolean isCompleted() {
-    for (ICharm charm : getAllCharms()) {
-      if (!isLearned(charm)) {
-        return false;
-      }
-    }
-    return true;
-  }
 }

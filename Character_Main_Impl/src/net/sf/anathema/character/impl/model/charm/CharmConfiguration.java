@@ -5,10 +5,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
@@ -71,6 +69,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   private final IHealthConfiguration health;
   private final ChangeControl control = new ChangeControl();
   private final ICharmProvider provider;
+  private final ILearningCharmGroupArbitrator arbitrator;
 
   private final ICharmLearnListener learnableListener = new CharmLearnAdapter() {
     @Override
@@ -95,6 +94,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     IExaltedRuleSet rules = context.getBasicCharacterContext().getRuleSet();
     List<CharacterType> allCharacterTypes = new ArrayList<CharacterType>();
     ICharmTemplate nativeCharmTemplate = getNativeCharmTemplate(registry);
+    this.arbitrator = new LearningCharmGroupArbitrator(nativeCharmTemplate, context.getBasicCharacterContext());
     this.martialArtsCharmTree = new MartialArtsCharmTree(nativeCharmTemplate, rules);
     this.martialArtsGroups = createGroups(martialArtsCharmTree.getAllCharmGroups());
     initCharacterType(nativeCharmTemplate, rules, getNativeCharacterType());
@@ -250,22 +250,6 @@ public class CharmConfiguration implements ICharmConfiguration {
   public ISpecialCharmConfiguration getSpecialCharmConfiguration(ICharm charm) {
     ILearningCharmGroup group = getGroupById(charm.getCharacterType(), charm.getGroupId());
     return group.getSpecialCharmConfiguration(charm);
-  }
-
-  public String[] getUncompletedCelestialMartialArtsGroups() {
-    ICharm[] learnedCharms = getLearnedCharms(true);
-    Set<String> uncompletedGroups = new HashSet<String>();
-    for (ICharm charm : learnedCharms) {
-      if (MartialArtsUtilities.isMartialArtsCharm(charm)) {
-        boolean groupIsStyle = !charm.hasAttribute(ICharmData.NO_STYLE_ATTRIBUTE);
-        boolean isCelestialLevel = MartialArtsUtilities.hasLevel(MartialArtsLevel.Celestial, charm);
-        boolean groupIsIncomplete = !getGroup(charm).isCompleted();
-        if (groupIsStyle && isCelestialLevel && groupIsIncomplete) {
-          uncompletedGroups.add(charm.getGroupId());
-        }
-      }
-    }
-    return uncompletedGroups.toArray(new String[uncompletedGroups.size()]);
   }
 
   private void initCharacterType(ICharmTemplate charmTemplate, IExaltedRuleSet rules, CharacterType type) {
@@ -499,18 +483,6 @@ public class CharmConfiguration implements ICharmConfiguration {
     return getSpecialCharmConfiguration(charm);
   }
 
-  public final boolean isCelestialMartialArtsGroupCompleted() {
-    for (ILearningCharmGroup group : getMartialArtsGroups()) {
-      ICharm martialArtsCharm = group.getAllCharms()[0];
-      if (!martialArtsCharm.hasAttribute(ICharmData.NO_STYLE_ATTRIBUTE)
-          && MartialArtsUtilities.hasLevel(MartialArtsLevel.Celestial, martialArtsCharm)
-          && group.isCompleted()) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   public final boolean isCompulsiveCharm(ICharm charm) {
     String[] compulsiveCharmIDs = context.getAdditionalRules().getCompulsiveCharmIDs();
     return ArrayUtilities.contains(compulsiveCharmIDs, charm.getId());
@@ -542,8 +514,14 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   public ICharm[] getCharms(ICharmGroup charmGroup) {
-    final ICharm[] allCharms = charmGroup.getAllCharms();
+    return arbitrator.getCharms(charmGroup);
+  }
 
-    return allCharms;
+  public String[] getUncompletedCelestialMartialArtsGroups() {
+    return arbitrator.getUncompletedCelestialMartialArtsGroups(getMartialArtsGroups());
+  }
+
+  public boolean isCelestialMartialArtsGroupCompleted() {
+    return arbitrator.isCelestialMartialArtsGroupCompleted(getMartialArtsGroups());
   }
 }
