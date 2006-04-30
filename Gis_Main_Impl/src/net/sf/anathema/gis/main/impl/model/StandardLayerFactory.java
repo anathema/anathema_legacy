@@ -4,11 +4,13 @@ import gis.gisterm.gcore.GenericLayer;
 import gis.gisterm.map.RasterCatalogLayer;
 import gis.gisterm.map.layer.datasource.RasterCatalogLayerDataProvider;
 
+import java.awt.Component;
 import java.io.File;
 
-import javax.swing.JPopupMenu;
-
 import net.disy.commons.core.progress.NullProgressMonitor;
+import net.disy.commons.swing.filechooser.SmartFileChooser;
+import net.disy.commons.swing.filechooser.filefilter.ExtensionFileFilter;
+import net.disy.commons.swing.filechooser.result.FileChooserOpenResult;
 import net.sf.anathema.gis.data.IGisDataDirectory;
 import net.sf.anathema.gis.main.model.layerfactory.IStandardLayerFactory;
 import net.sf.anathema.gis.main.model.layerfactory.LayerCreationException;
@@ -19,11 +21,13 @@ import de.disy.gis.gisterm.imagecatalog.layer.IImageCatalogProperties;
 import de.disy.gis.gisterm.imagecatalog.layer.ImageCatalogLayerCreationStrategy;
 import de.disy.gis.gisterm.map.layer.edit.ILayerGraphicsEditStrategy;
 import de.disy.gis.gisterm.map.layer.sketch.AbstractSketchLayer;
+import de.disy.gis.gisterm.map.layer.sketch.ISketchPropertiesFactory;
+import de.disy.gis.gisterm.map.layer.sketch.ProtoTypeSketchPropertiesFactory;
+import de.disy.gis.gisterm.map.layer.sketch.SketchObjectFactory;
 import de.disy.gis.gisterm.map.scale.IScaleRange;
-import de.disy.gis.gisterm.map.theme.ITheme;
-import de.disy.gis.gisterm.pro.map.layer.ILayerPopupFactoryExtension;
-import de.disy.gis.gisterm.pro.map.layer.popup.IMapLayerPopupMenuContext;
 import de.disy.gisterm.pro.sketchlayer.edit.SketchLayerGraphicsEditStrategy;
+import de.disy.lib.gui.filechooser.IFileProvider;
+import de.disy.lib.gui.filechooser.configuration.OneFileFilterOpenConfiguration;
 
 public class StandardLayerFactory implements IStandardLayerFactory {
 
@@ -33,17 +37,6 @@ public class StandardLayerFactory implements IStandardLayerFactory {
   public StandardLayerFactory(IGisDataDirectory gisDataDirectory) {
     this.gisDataDirectory = gisDataDirectory;
   }
-
-  private final ILayerPopupFactoryExtension rasterLayerPopupMenuFactory = new ILayerPopupFactoryExtension() {
-    public JPopupMenu createPopupMenu(ITheme theme, IMapLayerPopupMenuContext menuContext) {
-      return null;
-    }
-  };
-  private final ILayerPopupFactoryExtension sketchLayerPopupMenuFactory = new ILayerPopupFactoryExtension() {
-    public JPopupMenu createPopupMenu(ITheme theme, IMapLayerPopupMenuContext menuContext) {
-      return null;
-    }
-  };
 
   public GenericLayer createXeriarRasterLayer() throws LayerCreationException {
     if (!gisDataDirectory.canRead()) {
@@ -64,15 +57,7 @@ public class StandardLayerFactory implements IStandardLayerFactory {
   }
 
   private GenericLayer createXeriar(final File dbfFile) throws Exception {
-    RasterCatalogLayer catalogLayer = new RasterCatalogLayer() {
-      @Override
-      public void legendLayerChanged() {
-        if (getLayerPanel() != null) {
-          getLayerPanel().setPopupMenuFactory(rasterLayerPopupMenuFactory);
-        }
-        super.legendLayerChanged();
-      }
-    };
+    RasterCatalogLayer catalogLayer = new RasterCatalogLayer();
     RasterCatalogLayerDataProvider rasterDataProvider = catalogLayer.getRasterCatalogLayerDataProvider();
     IImageCatalogProperties properties = new IImageCatalogProperties() {
       public String getAbsoluteImagePath() {
@@ -105,17 +90,27 @@ public class StandardLayerFactory implements IStandardLayerFactory {
 
   public GenericLayer createSketchLayer() {
     AbstractSketchLayer sketchLayer = new AbstractSketchLayer() {
-      @Override
-      protected ILayerGraphicsEditStrategy createGraphicsEditStrategy() {
-        return new SketchLayerGraphicsEditStrategy(getGraphicsObjectList());
+      {
+        IFileProvider fileProvider = new IFileProvider() {
+          public File getFile(Component parent) {
+            OneFileFilterOpenConfiguration configuration = new OneFileFilterOpenConfiguration(
+                false,
+                ExtensionFileFilter.GIF_FILE_FILTER);
+            SmartFileChooser fileChooser = SmartFileChooser.getInstance();
+            FileChooserOpenResult result = fileChooser.performOpenFileChooser(parent, configuration);
+            if (result.isCanceled()) {
+              return null;
+            }
+            return result.getSelectedFile();
+          }
+        };
+        ISketchPropertiesFactory propertiesFactory = new ProtoTypeSketchPropertiesFactory(fileProvider);
+        setSketchObjectFactory(new SketchObjectFactory(propertiesFactory));
       }
 
       @Override
-      public void legendLayerChanged() {
-        if (getLayerPanel() != null) {
-          getLayerPanel().setPopupMenuFactory(sketchLayerPopupMenuFactory);
-        }
-        super.legendLayerChanged();
+      protected ILayerGraphicsEditStrategy createGraphicsEditStrategy() {
+        return new SketchLayerGraphicsEditStrategy(getGraphicsObjectList());
       }
     };
     return sketchLayer;

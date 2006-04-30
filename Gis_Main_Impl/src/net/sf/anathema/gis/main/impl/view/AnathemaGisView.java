@@ -1,6 +1,6 @@
 package net.sf.anathema.gis.main.impl.view;
 
-import gis.gisterm.GisTermUtilities;
+import gis.gisterm.map.DisplayToolbar;
 import gis.gisterm.map.GisView;
 import gis.gisterm.map.IGisView;
 
@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 import net.sf.anathema.gis.main.view.IAnathemaGisView;
 import net.sf.anathema.gis.main.view.ICoordinateView;
+import de.disy.gis.gisterm.customization.GisTermCustomizations;
 import de.disy.gis.gisterm.map.IMapModel;
 
 public class AnathemaGisView implements IAnathemaGisView {
@@ -21,9 +22,15 @@ public class AnathemaGisView implements IAnathemaGisView {
 
   public IGisView initGisView(IMapModel mapModel) {
     gisView = new GisView(mapModel, new NullMapViewConfiguration(), null);
-    content.add(GisTermUtilities.createMinimalDisplayToolBar(gisView), BorderLayout.NORTH);
+    content.add(createDisplayToolbar(), BorderLayout.NORTH);
     content.add(gisView.getContent(), BorderLayout.CENTER);
     return gisView;
+  }
+
+  private DisplayToolbar createDisplayToolbar() {
+    DisplayToolbar displayToolbar = new DisplayToolbar(new GisTermCustomizations());
+    displayToolbar.connectWith(gisView);
+    return displayToolbar;
   }
 
   public Component getContent() {
