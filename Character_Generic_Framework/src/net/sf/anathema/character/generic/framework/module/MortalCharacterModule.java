@@ -22,6 +22,7 @@ public class MortalCharacterModule extends CharacterGenericsModuleAdapter {
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
     registerParsedTemplate(characterGenerics, "HeroicMortal.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "HeroicMortal2nd.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "Mortal.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "Mortal2nd.template"); //$NON-NLS-1$
   }
