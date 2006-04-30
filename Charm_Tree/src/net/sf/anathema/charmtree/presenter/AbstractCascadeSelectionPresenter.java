@@ -36,7 +36,9 @@ public class AbstractCascadeSelectionPresenter implements ICascadeSelectionPrese
     AbstractSelectCellRenderer renderer = new IdentificateSelectCellRenderer("", getResources()); //$NON-NLS-1$
     Dimension preferredSize = GuiUtilities.calculateComboBoxSize(allGroups, renderer);
     selectionView.addCharmGroupSelector(getResources().getString("CardView.CharmConfiguration.AlienCharms.CharmGroup"), //$NON-NLS-1$
-        renderer, charmSelectionChangeListener, preferredSize);
+        renderer,
+        charmSelectionChangeListener,
+        preferredSize);
   }
 
   protected void createCharmTypeSelector(

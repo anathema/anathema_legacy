@@ -18,6 +18,8 @@ public interface ICascadeSelectionView {
 
   public void fillCharmGroupBox(IIdentificate[] charmGroups);
 
+  public void fillCharmTypeBox(IIdentificate[] cascadeTypes);
+
   public void addCharmGroupSelector(
       String title,
       ListCellRenderer renderer,

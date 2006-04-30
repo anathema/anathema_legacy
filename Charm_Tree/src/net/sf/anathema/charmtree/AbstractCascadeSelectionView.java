@@ -47,6 +47,10 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
     groupComboBox.setObjects(charmGroups);
   }
 
+  public void fillCharmTypeBox(IIdentificate[] charmGroups) {
+    typeComboBox.setObjects(charmGroups);
+  }
+
   public void addCharmTypeSelectionListener(final IExaltTypeChangedListener selectionListener) {
     typeComboBox.addObjectSelectionChangedListener(new IObjectValueChangedListener<IIdentificate>() {
       public void valueChanged(IIdentificate newValue) {
