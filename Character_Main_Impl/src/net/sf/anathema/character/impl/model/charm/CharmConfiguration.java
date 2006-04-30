@@ -544,4 +544,8 @@ public class CharmConfiguration implements ICharmConfiguration {
   public ICharmProvider getCharmProvider() {
     return provider;
   }
+
+  public ICharm[] getCharms(ICharmGroup charmGroup) {
+    return charmGroup.getAllCharms();
+  }
 }

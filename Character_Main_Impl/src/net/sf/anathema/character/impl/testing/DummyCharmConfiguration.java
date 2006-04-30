@@ -3,6 +3,7 @@ package net.sf.anathema.character.impl.testing;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
+import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -142,5 +143,9 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
 
   public ICharmProvider getCharmProvider() {
     throw new NotYetImplementedException();
+  }
+
+  public ICharm[] getCharms(ICharmGroup charmGroup) {
+    return charmGroup.getAllCharms();
   }
 }
