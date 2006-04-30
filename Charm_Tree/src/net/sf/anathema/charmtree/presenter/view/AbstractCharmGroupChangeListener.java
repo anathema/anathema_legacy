@@ -27,16 +27,19 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   private final ICharmTreeViewProperties viewProperties;
   private final ITemplateRegistry templateRegistry;
   private final ICharmTreeView charmTreeView;
+  private final ICharmGroupArbitrator arbitrator;
   private ICharmGroup currentGroup;
 
   public AbstractCharmGroupChangeListener(
       ICharmTreeView charmTreeView,
       ICharmTreeViewProperties viewProperties,
-      ITemplateRegistry templateRegistry) {
+      ITemplateRegistry templateRegistry,
+      ICharmGroupArbitrator arbitrator) {
     this.charmTreeView = charmTreeView;
     Ensure.ensureNotNull("View Properties must not be null", viewProperties); //$NON-NLS-1$
     this.viewProperties = viewProperties;
     this.templateRegistry = templateRegistry;
+    this.arbitrator = arbitrator;
   }
 
   public final void valueChanged(Object cascade, IIdentificate type, IExaltedEdition edition) {
@@ -54,7 +57,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   }
 
   private Set<ICharm> getDisplayCharms(ICharmGroup charmGroup) {
-    ICharm[] allCharms = charmGroup.getAllCharms();
+    ICharm[] allCharms = arbitrator.getCharms(charmGroup);
     Set<ICharm> charmsToDisplay = new ListOrderedSet<ICharm>();
     for (ICharm charm : allCharms) {
       charmsToDisplay.add(charm);
@@ -67,7 +70,8 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     return charmsToDisplay;
   }
 
-  private void loadCharmTree(ICharmGroup charmGroup, IIdentificate type, IExaltedEdition edition) throws DocumentException {
+  private void loadCharmTree(ICharmGroup charmGroup, IIdentificate type, IExaltedEdition edition)
+      throws DocumentException {
     currentGroup = charmGroup;
     modifyCharmVisuals(type, edition);
     if (charmGroup == null) {
