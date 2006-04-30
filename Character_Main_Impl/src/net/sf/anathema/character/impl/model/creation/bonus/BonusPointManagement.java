@@ -267,7 +267,7 @@ public class BonusPointManagement implements IBonusPointManagement {
   }
 
   private void addCharmModels(List<IOverviewModel> models) {
-    if (!statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().knowsCharms()) {
+    if (!statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().knowsCharms(statistics.getRules())) {
       return;
     }
     models.add(getFavoredCharmModel());

@@ -23,7 +23,7 @@ public class DummyCharmTemplate implements ICharmTemplate {
     return martialArtsLevel;
   }
 
-  public boolean knowsCharms() {
+  public boolean knowsCharms(IExaltedRuleSet rules) {
     return false;
   }
 
