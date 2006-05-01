@@ -1,12 +1,13 @@
 package net.sf.anathema.character.equipment.impl.creation.model;
 
+import net.sf.anathema.character.equipment.creation.model.IWeaponDamageModel;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.data.Range;
 import net.sf.anathema.lib.workflow.intvalue.RangedIntValueModel;
 
-public class WeaponDamageModel extends RangedIntValueModel {
+public class WeaponDamageModel extends RangedIntValueModel implements IWeaponDamageModel {
 
   private final ChangeControl changeControl = new ChangeControl();
   private HealthType healthType = HealthType.Lethal;
