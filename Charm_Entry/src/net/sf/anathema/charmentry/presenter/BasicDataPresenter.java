@@ -323,10 +323,11 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
 
   private void setCharmsInView(final ISelectionContainerView prerequisiteCharmView) throws PersistenceException {
     CharacterType type = model.getCharmData().getCharacterType();
-    IExaltedRuleSet set = model.getCharmData().getEdition().getDefaultRuleset();
-    if (type == null || set == null) {
+    IExaltedEdition edition = model.getCharmData().getEdition();
+    if (type == null || edition == null) {
       return;
     }
+    IExaltedRuleSet set = edition.getDefaultRuleset();
     ICharm[] charms = CharmCache.getInstance().getCharms(type, set);
     Arrays.sort(charms, new MagicComparator(type));
     prerequisiteCharmView.populate(charms);
