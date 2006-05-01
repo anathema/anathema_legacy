@@ -2,15 +2,17 @@ package net.sf.anathema.character.equipment.impl.creation.model;
 
 import net.sf.anathema.character.equipment.creation.model.ICloseCombatStatsticsModel;
 import net.sf.anathema.character.equipment.creation.model.IEquipmentStatisticsCreationModel;
+import net.sf.anathema.character.equipment.creation.model.IWeaponTagsModel;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCreationModel {
 
-  private EquipmentStatisticsType statisticsType;
   private final ICloseCombatStatsticsModel closeCombatStatisticsModel = new CloseCombatStatsticsModel();
   private final ChangeControl equpimentTypeChangeControl = new ChangeControl();
+  private final IWeaponTagsModel weaponTagsModel = new WeaponTagsModel();
+  private EquipmentStatisticsType statisticsType;
 
   public void setEquipmentType(EquipmentStatisticsType statisticsType) {
     if (this.statisticsType == statisticsType) {
@@ -30,5 +32,9 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
 
   public boolean isEquipmentTypeSelected(EquipmentStatisticsType type) {
     return this.statisticsType == type;
+  }
+
+  public IWeaponTagsModel getWeaponTagsModel() {
+    return weaponTagsModel;
   }
 }
