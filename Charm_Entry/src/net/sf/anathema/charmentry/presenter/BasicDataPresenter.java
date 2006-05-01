@@ -72,7 +72,7 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
     initCharmNamePresentation();
     ITextView groupView = initCharmGroupPresentation();
     IObjectSelectionView characterTypeView = initCharacterTypeView();
-    IObjectSelectionView editionView = initEditionPresentation();
+    initEditionPresentation();
     initCharmTypePresentation();
     initSecondEditionTypeDependentSpecialsPresentation();
     initDurationPresentation();
@@ -80,16 +80,12 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
     ISelectableTraitView primaryPrerequisiteView = initPrimaryPrerequisitePresentation();
     this.prerequisiteCharmView = initPrerequisiteCharmPresentation();
     initCharacterTypeListening(characterTypeView, primaryPrerequisiteView, groupView);
-    initEditionListening(editionView, prerequisiteCharmView);
     initEssencePrerequisitePresentation();
     initSourcePresentation();
-  }
-
-  private void initEditionListening(IObjectSelectionView editionView, final ISelectionContainerView prerequisiteView) {
-    editionView.addObjectSelectionChangedListener(new IObjectValueChangedListener<IExaltedEdition>() {
-      public void valueChanged(IExaltedEdition newValue) {
+    model.addModelChangeListener(new IChangeListener() {
+      public void changeOccured() {
         try {
-          setCharmsInView(prerequisiteView);
+          setCharmsInView(prerequisiteCharmView);
         }
         catch (PersistenceException e) {
           e.printStackTrace();
@@ -329,7 +325,7 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
     }
     IExaltedRuleSet set = edition.getDefaultRuleset();
     ICharm[] charms = CharmCache.getInstance().getCharms(type, set);
-    Arrays.sort(charms, new MagicComparator(type));
+    Arrays.sort(charms, new MagicComparator(type, set));
     prerequisiteCharmView.populate(charms);
   }
 

@@ -38,7 +38,7 @@ public class CharmEntryModel implements ISimpleSpecialsArbitrator, IReflexiveSpe
   private ConfigurableCharmData charmData = new ConfigurableCharmData();
   private final CharacterType[] legalCharacterTypes = createLegalCharacterTypeArray();
   private final GenericControl<ITraitSelectionChangedListener> control = new GenericControl<ITraitSelectionChangedListener>();
-  private final ChangeControl specialsControl = new ChangeControl();
+  private final ChangeControl modelControl = new ChangeControl();
   private final IntValueControl essenceControl = new IntValueControl();
   private final ObjectValueControl<String> groupControl = new ObjectValueControl<String>();
   private final BooleanValueControl completionControl = new BooleanValueControl();
@@ -104,6 +104,7 @@ public class CharmEntryModel implements ISimpleSpecialsArbitrator, IReflexiveSpe
     setCharmId();
     checkPrimaryPrerequisite();
     checkCompletion();
+    modelControl.fireChangedEvent();
   }
 
   private void checkPrimaryPrerequisite() {
@@ -145,7 +146,7 @@ public class CharmEntryModel implements ISimpleSpecialsArbitrator, IReflexiveSpe
       charmTypeModel.setSpecialModel(null);
     }
     checkCompletion();
-    specialsControl.fireChangedEvent();
+    modelControl.fireChangedEvent();
   }
 
   public void setDuration(Duration duration) {
@@ -292,15 +293,11 @@ public class CharmEntryModel implements ISimpleSpecialsArbitrator, IReflexiveSpe
 
   public void setEdition(ExaltedEdition edition) {
     charmData.setEdition(edition);
-    specialsControl.fireChangedEvent();
+    modelControl.fireChangedEvent();
   }
 
   public IKeywordEntryModel getKeywordModel() {
     return keywordModel;
-  }
-
-  public void addSpecialsChangeListener(IChangeListener listener) {
-    specialsControl.addChangeListener(listener);
   }
 
   public boolean isReflexiveSpecialsAvailable() {
@@ -319,5 +316,9 @@ public class CharmEntryModel implements ISimpleSpecialsArbitrator, IReflexiveSpe
 
   public IReflexiveSpecialsEntryModel getReflexiveCharmSpecialsModel() {
     return reflexiveCharmSpecials;
+  }
+
+  public void addModelChangeListener(IChangeListener listener) {
+    modelControl.addChangeListener(listener);
   }
 }

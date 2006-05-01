@@ -13,7 +13,7 @@ public class SimpleSpecialsEntryModel implements ISimpleSpecialsEntryModel {
 
   public SimpleSpecialsEntryModel(ISimpleSpecialsArbitrator arbitrator) {
     this.arbitrator = arbitrator;
-    arbitrator.addSpecialsChangeListener(new IChangeListener() {
+    arbitrator.addModelChangeListener(new IChangeListener() {
       public void changeOccured() {
         control.fireChangedEvent();
       }
