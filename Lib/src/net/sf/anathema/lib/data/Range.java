@@ -65,4 +65,14 @@ public class Range {
       high = value;
     }
   }
+
+  public int getNearestValue(int value) {
+    if (value < getLowerBound()) {
+      return getLowerBound();
+    }
+    if (value > getUpperBound()) {
+      return getUpperBound();
+    }
+    return value;
+  }
 }
