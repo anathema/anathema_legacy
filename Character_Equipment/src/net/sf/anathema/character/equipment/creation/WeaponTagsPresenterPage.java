@@ -42,8 +42,11 @@ public class WeaponTagsPresenterPage extends AbstractAnathemaWizardPage {
   @Override
   protected void initPageContent() {
     content = viewFactory.createWeaponTagsView();
+    BooleanValuePresentation booleanValuePresentation = new BooleanValuePresentation();
     for (IWeaponTag tag : model.getWeaponTagsModel().getAllTags()) {
-      new BooleanValuePresentation().initPresentation(content.addCheckBox(properties.getLabel(tag)),  model.getWeaponTagsModel().getBooleanModel(tag));
+      booleanValuePresentation.initPresentation(
+          content.addCheckBox(properties.getLabel(tag)),
+          model.getWeaponTagsModel().getBooleanModel(tag));
     }
   }
 
