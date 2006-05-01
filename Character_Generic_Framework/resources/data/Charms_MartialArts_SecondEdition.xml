@@ -477,12 +477,14 @@
       <essence value="4"/>
       <charmAttributeRequirement attribute="ExcellencyMartialArts"/>
     </prerequisite>
-    <cost />
+    <cost>
+      <temporary/>
+    </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Permanent"/>
+    <charmtype type="Special"/>
     <charmAttribute attribute="Mortal"/>
     <charmAttribute attribute="NoStyle"/>
     <charmAttribute attribute="Exclusive"/>
     <source source="2nd Edition" page="187"/>
   </charm>
-  
+</charmlist>
