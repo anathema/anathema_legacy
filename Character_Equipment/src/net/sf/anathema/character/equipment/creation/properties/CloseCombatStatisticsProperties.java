@@ -8,7 +8,8 @@ public class CloseCombatStatisticsProperties {
 
   private final IResources resources;
   private final BasicMessage defaultMessage = new BasicMessage("Please fill the close range weapon statstics.");
-  private final BasicMessage nameUndefinedMessage = new BasicMessage("Please select a name for the close range weapon statstics.");
+  private final BasicMessage nameUndefinedMessage = new BasicMessage(
+      "Please select a name for the close range weapon statstics.");
 
   public CloseCombatStatisticsProperties(IResources resources) {
     this.resources = resources;
