@@ -13,7 +13,6 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TA
 import java.util.ArrayList;
 import java.util.List;
 
-import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
 import net.sf.anathema.character.generic.impl.magic.MagicSource;
@@ -68,10 +67,16 @@ public class CharmBuilder implements ICharmBuilder {
   public Charm buildCharm(Element charmElement) throws PersistenceException {
     String id = idBuilder.build(charmElement);
     CharacterType characterType = getCharacterType(charmElement, id);
-    Element costElement = charmElement.element(TAG_COST);
-    Ensure.ensureArgumentNotNull("No cost specified for Charm: " + id, costElement); //$NON-NLS-1$
-    ICostList temporaryCost = costListBuilder.buildTemporaryCostList(costElement.element(TAG_TEMPORARY));
-    IPermanentCostList permanentCost = costListBuilder.buildPermanentCostList(costElement.element(TAG_PERMANENT));
+    ICostList temporaryCost;
+    IPermanentCostList permanentCost;
+    try {
+      Element costElement = charmElement.element(TAG_COST);
+      temporaryCost = costListBuilder.buildTemporaryCostList(costElement.element(TAG_TEMPORARY));
+      permanentCost = costListBuilder.buildPermanentCostList(costElement.element(TAG_PERMANENT));
+    }
+    catch (PersistenceException e) {
+      throw new CharmException("Error building costlist for charm " + id, e); //$NON-NLS-1$
+    }
     IComboRestrictions comboRules;
     try {
       comboRules = comboBuilder.buildComboRules(charmElement);
