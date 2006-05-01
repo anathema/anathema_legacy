@@ -2,6 +2,7 @@ package net.sf.anathema.character.equipment.creation.properties;
 
 import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
+import net.sf.anathema.character.equipment.creation.model.IWeaponTag;
 import net.sf.anathema.lib.resources.IResources;
 
 public class TagPageProperties {
@@ -20,4 +21,7 @@ public class TagPageProperties {
     return "Weapon Tags";
   }
 
+  public String getLabel(IWeaponTag tag) {
+    return tag.getId();
+  }
 }
