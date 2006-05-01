@@ -59,6 +59,9 @@ public class CharmCache implements ICharmCache {
 
   private ICharm[] getCharmArray(IIdentificate type, IExaltedRuleSet ruleset) {
     List<ICharm> charmList = getRulesetCharms(ruleset).get(type);
+    if (charmList == null) {
+      return new ICharm[0];
+    }
     return charmList.toArray(new ICharm[charmList.size()]);
   }
 
