@@ -58,7 +58,9 @@ public class CharmDataSource implements IReportDataSource {
     // }
     // });
     // Collections.sort(magicList, charmComparator[0]);
-    Collections.sort(magicList, new MagicComparator(character.getTemplate().getTemplateType().getCharacterType()));
+    Collections.sort(magicList, new MagicComparator(
+        character.getTemplate().getTemplateType().getCharacterType(),
+        character.getRules()));
   }
 
   public int getRowCount() {

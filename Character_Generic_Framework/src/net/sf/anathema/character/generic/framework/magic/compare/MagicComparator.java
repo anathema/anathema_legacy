@@ -15,6 +15,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
+import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
 
@@ -22,9 +23,11 @@ public class MagicComparator implements Comparator<IMagic> {
 
   private final CharacterType characterType;
   private final Map<String, Map<String, Integer>> charmOrderByGroupId = new HashMap<String, Map<String, Integer>>();
+  private IExaltedRuleSet set;
 
-  public MagicComparator(CharacterType characterType) {
-    this.characterType = characterType;
+  public MagicComparator(CharacterType type, IExaltedRuleSet set) {
+    this.characterType = type;
+    this.set = set;
   }
 
   public int compare(IMagic magic1, final IMagic magic2) {
@@ -97,7 +100,7 @@ public class MagicComparator implements Comparator<IMagic> {
             ICharm[] charms;
             // todo vom (31.10.2005) (sieroux): ErrorHandling
             try {
-              charms = CharmCache.getInstance().getCharms(otherCharacterType, ExaltedRuleSet.CoreRules);
+              charms = CharmCache.getInstance().getCharms(otherCharacterType, set);
               compareValue[0] = sortEqualTypeCharms(charm, otherCharm, charms);
             }
             catch (PersistenceException e) {
