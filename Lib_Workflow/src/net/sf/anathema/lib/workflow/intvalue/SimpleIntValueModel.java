@@ -4,7 +4,7 @@ import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
 
 public class SimpleIntValueModel implements IIntValueModel {
-  
+
   private final IntValueControl intValueControl = new IntValueControl();
   private int value;
 
@@ -24,7 +24,7 @@ public class SimpleIntValueModel implements IIntValueModel {
     return value;
   }
 
-  public void addIntValueChangeListener(IIntValueChangedListener changeListener) {
+  public final void addIntValueChangeListener(IIntValueChangedListener changeListener) {
     intValueControl.addIntValueChangeListener(changeListener);
   }
 }
