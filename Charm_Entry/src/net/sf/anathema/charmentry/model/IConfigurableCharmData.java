@@ -1,8 +1,8 @@
 package net.sf.anathema.charmentry.model;
 
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.IExtendedCharmData;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 
 public interface IConfigurableCharmData extends IExtendedCharmData {
 
@@ -12,7 +12,7 @@ public interface IConfigurableCharmData extends IExtendedCharmData {
 
   public IConfigurableCostList getTemporaryCost();
 
-  public ExaltedEdition getEdition();
+  public IExaltedEdition getEdition();
 
   public CharmTypeModel getCharmTypeModel();
 }

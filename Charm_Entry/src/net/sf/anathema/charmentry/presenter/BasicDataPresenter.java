@@ -14,12 +14,13 @@ import net.sf.anathema.character.generic.framework.magic.compare.MagicComparator
 import net.sf.anathema.character.generic.impl.IIconConstants;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.DurationType;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
+import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
@@ -71,7 +72,7 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
     initCharmNamePresentation();
     ITextView groupView = initCharmGroupPresentation();
     IObjectSelectionView characterTypeView = initCharacterTypeView();
-    initEditionPresentation();
+    IObjectSelectionView editionView = initEditionPresentation();
     initCharmTypePresentation();
     initSecondEditionTypeDependentSpecialsPresentation();
     initDurationPresentation();
@@ -79,8 +80,22 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
     ISelectableTraitView primaryPrerequisiteView = initPrimaryPrerequisitePresentation();
     this.prerequisiteCharmView = initPrerequisiteCharmPresentation();
     initCharacterTypeListening(characterTypeView, primaryPrerequisiteView, groupView);
+    initEditionListening(editionView, prerequisiteCharmView);
     initEssencePrerequisitePresentation();
     initSourcePresentation();
+  }
+
+  private void initEditionListening(IObjectSelectionView editionView, final ISelectionContainerView prerequisiteView) {
+    editionView.addObjectSelectionChangedListener(new IObjectValueChangedListener<IExaltedEdition>() {
+      public void valueChanged(IExaltedEdition newValue) {
+        try {
+          setCharmsInView(prerequisiteView);
+        }
+        catch (PersistenceException e) {
+          e.printStackTrace();
+        }
+      }
+    });
   }
 
   private void initSecondEditionTypeDependentSpecialsPresentation() {
@@ -143,7 +158,7 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
     reflexiveView.setSplitEnabled(reflexiveModel.isSplitEnabled());
   }
 
-  private void initEditionPresentation() {
+  private IObjectSelectionView initEditionPresentation() {
     IObjectSelectionView typeBox = view.addObjectSelectionView(resources.getString("CharmEntry.ExaltedEdition"), //$NON-NLS-1$
         false,
         new IdentificateSelectCellRenderer("", resources)); //$NON-NLS-1$
@@ -153,6 +168,7 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
         model.setEdition(newValue);
       }
     });
+    return typeBox;
   }
 
   private ITextView initCharmGroupPresentation() {
@@ -290,15 +306,11 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
       public void valueChanged(CharacterType newValue) {
         model.setCharacterType(newValue);
         primaryPrerequisiteView.setSelectableTraits(model.getLegalPrimaryPrerequisiteTypes());
-      }
-    });
-    characterTypeView.addObjectSelectionChangedListener(new IObjectValueChangedListener<CharacterType>() {
-      public void valueChanged(CharacterType newValue) {
         try {
-          setCharmsInView(prerequisiteCharmView, newValue);
+          setCharmsInView(prerequisiteCharmView);
         }
         catch (PersistenceException e) {
-          // Todo Error Handling
+          //Nothing to do
         }
       }
     });
@@ -309,10 +321,14 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
     });
   }
 
-  private void setCharmsInView(final ISelectionContainerView prerequisiteCharmView, CharacterType newValue)
-      throws PersistenceException {
-    ICharm[] charms = CharmCache.getInstance().getCharms(newValue, ExaltedRuleSet.CoreRules);
-    Arrays.sort(charms, new MagicComparator(newValue));
+  private void setCharmsInView(final ISelectionContainerView prerequisiteCharmView) throws PersistenceException {
+    CharacterType type = model.getCharmData().getCharacterType();
+    IExaltedRuleSet set = model.getCharmData().getEdition().getDefaultRuleset();
+    if (type == null || set == null) {
+      return;
+    }
+    ICharm[] charms = CharmCache.getInstance().getCharms(type, set);
+    Arrays.sort(charms, new MagicComparator(type));
     prerequisiteCharmView.populate(charms);
   }
 
@@ -406,6 +422,6 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
 
   public void charmAdded(IConfigurableCharmData charmData) throws PersistenceException {
     nameMap.put(charmData.getId(), charmData.getName());
-    setCharmsInView(prerequisiteCharmView, charmData.getCharacterType());
+    setCharmsInView(prerequisiteCharmView);
   }
 }

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.swing.DefaultListCellRenderer;
 
+import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.IExtendedCharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
@@ -37,10 +38,7 @@ public class KeywordEntryPresenter implements ICharmEntrySubPresenter {
     final IButtonControlledObjectSelectionView selectionView = view.addObjectSelectionView(
         new DefaultListCellRenderer(),
         resources.getString("CharmEntry.Keyword"), basicUi.getMediumAddIcon()); //$NON-NLS-1$
-    selectionView.setObjects(new Object[] {
-        IExtendedCharmData.COMBO_BASIC_ATTRIBUTE,
-        IExtendedCharmData.COMBO_OK_ATTRIBUTE,
-        IExtendedCharmData.COMPULSION_ATTRIBUTE });
+    selectionView.setObjects(getAllKeywords());
     selectionView.addObjectSelectionChangedListener(new IObjectValueChangedListener<IIdentificate>() {
       public void valueChanged(IIdentificate newValue) {
         model.getKeywordModel().setCurrentKeyword(newValue);
@@ -72,6 +70,36 @@ public class KeywordEntryPresenter implements ICharmEntrySubPresenter {
       }
     });
     selectionView.setButtonEnabled(false);
+  }
+
+  private IIdentificate[] getAllKeywords() {
+    return new IIdentificate[] {
+        ICharmData.ALLOWS_CELESTIAL_ATTRIBUTE,
+        ICharmData.FORM_ATTRIBUTE,
+        ICharmData.NO_STYLE_ATTRIBUTE,
+        ICharmData.NOT_ALIEN_LEARNABLE,
+        ICharmData.UNRESTRICTED_ATTRIBUTE,
+        IExtendedCharmData.COMBO_BASIC_ATTRIBUTE,
+        IExtendedCharmData.COMBO_OK_ATTRIBUTE,
+        IExtendedCharmData.COMPULSION_ATTRIBUTE,
+        IExtendedCharmData.COUNTERATTACK_ATTRIBUTE,
+        IExtendedCharmData.CRIPPLING_ATTRIBUTE,
+        IExtendedCharmData.EMOTION_ATTRIBUTE,
+        IExtendedCharmData.EXCLUSIVE_ATTRIBUTE,
+        IExtendedCharmData.HOLY_ATTRIBUTE,
+        IExtendedCharmData.ILLUSION_ATTRIBUTE,
+        IExtendedCharmData.KNOCKBACK_ATTRIBUTE,
+        IExtendedCharmData.MANDATE_ATTRIBUTE,
+        IExtendedCharmData.OBVIOUS_ATTRIBUTE,
+        IExtendedCharmData.POISON_ATTRIBUTE,
+        IExtendedCharmData.SERVITUDE_ATTRIBUTE,
+        IExtendedCharmData.SHAPING_ATTRIBUTE,
+        IExtendedCharmData.SICKNESS_ATTRIBUTE,
+        IExtendedCharmData.SOCIAL_ATTRIBUTE,
+        IExtendedCharmData.STACKABLE_ATTRIBUTE,
+        IExtendedCharmData.TOUCH_ATTRIBUTE,
+        IExtendedCharmData.TRAINING_ATTRIBUTE,
+        IExtendedCharmData.WAR_ATTRIBUTE };
   }
 
   public void charmAdded(IConfigurableCharmData charmData) {
