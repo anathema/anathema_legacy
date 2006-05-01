@@ -36,6 +36,7 @@ public class SolarCharacterModule extends CharacterGenericsModuleAdapter {
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
     registerParsedTemplate(characterGenerics, "template/Solar.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/Solar2nd.template"); //$NON-NLS-1$
   }
 
   @Override
