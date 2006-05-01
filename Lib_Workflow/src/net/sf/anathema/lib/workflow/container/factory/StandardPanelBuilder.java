@@ -4,7 +4,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import net.disy.commons.swing.border.TitledPanel;
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
@@ -53,9 +52,7 @@ public class StandardPanelBuilder {
 
       public void fillInto(JPanel panel, int columnCount) {
         panel.add(new JLabel(labelString));
-        panel.add(spinner.getComponent(), GridDialogLayoutDataUtilities.createHorizontalSpanData(
-            columnCount - 1,
-            GridDialogLayoutData.FILL_HORIZONTAL));
+        panel.add(spinner.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
       }
     });
     return spinner;

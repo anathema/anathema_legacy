@@ -41,7 +41,11 @@ public class LabelTextView implements ITextView {
         labelLayoutData.setVerticalAlignment(GridAlignment.BEGINNING);
         panel.add(new JLabel(labelText), labelLayoutData);
         JComponent initializedContent = getInitializedContent();
-        panel.add(initializedContent, scrollPane ? GridDialogLayoutData.FILL_BOTH : GridDialogLayoutData.FILL_HORIZONTAL);
+        GridDialogLayoutData contentData = new GridDialogLayoutData((scrollPane
+            ? GridDialogLayoutData.FILL_BOTH
+            : GridDialogLayoutData.FILL_HORIZONTAL));
+        contentData.setHorizontalSpan(columnCount - 1);
+        panel.add(initializedContent, contentData);
       }
     });
     return textView;
