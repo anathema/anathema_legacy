@@ -14,7 +14,6 @@ import net.sf.anathema.lib.workflow.booleanvalue.BooleanValuePresentation;
 public class WeaponTagsPresenterPage extends AbstractAnathemaWizardPage {
 
   private final IEquipmentStatisticsCreationModel model;
-  private final IResources resources;
   private final IEquipmentStatisticsCreationViewFactory viewFactory;
   private final TagPageProperties properties;
   private IWeaponTagsView content;
@@ -23,7 +22,6 @@ public class WeaponTagsPresenterPage extends AbstractAnathemaWizardPage {
       IResources resources,
       IEquipmentStatisticsCreationModel model,
       IEquipmentStatisticsCreationViewFactory viewFactory) {
-    this.resources = resources;
     this.model = model;
     this.viewFactory = viewFactory;
     this.properties = new TagPageProperties(resources);
