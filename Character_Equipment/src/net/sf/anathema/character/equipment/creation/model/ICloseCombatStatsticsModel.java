@@ -14,4 +14,6 @@ public interface ICloseCombatStatsticsModel {
   public IIntValueModel getDefenseModel();
 
   public IIntValueModel getRateModel();
+  
+  public IWeaponDamageModel getWeaponDamageModel();
 }
