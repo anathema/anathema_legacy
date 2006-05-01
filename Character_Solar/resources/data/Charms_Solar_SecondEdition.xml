@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<charmlist>
+  <genericCharm id="Solar.1stExcellency" exalt="Solar" >
+    <prerequisite>
+      <trait value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per die"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="1" secondaryStep="2"/>
+    </charmtype>
+    <genericCharmAttribute attribute="Excellency"/>
+    <source source="2nd Edition" page="183"/>
+  </genericCharm>
+  <genericCharm id="Solar.2ndExcellency" exalt="Solar">
+    <prerequisite>
+      <trait value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2" text="per success"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="1" secondaryStep="2"/>
+    </charmtype>
+    <genericCharmAttribute attribute="Excellency"/>
+    <source source="2nd Edition" page="184"/>
+  </genericCharm>
+  <genericCharm id="Solar.3rdExcellency" exalt="Solar">
+    <prerequisite>
+      <trait value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="4" secondaryStep="6"/>
+    </charmtype>
+    <genericCharmAttribute attribute="Excellency"/>
+    <source source="2nd Edition" page="185"/>
+  </genericCharm>
+  <genericCharm id="Solar.InfiniteMastery" exalt="Solar">
+    <prerequisite>
+      <trait value="4"/>
+      <essence value="3"/>
+      <genericCharmAttributeRequirement attribute="Excellency"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2" text="or more"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <source source="2nd Edition" page="185"/>
+  </genericCharm>
+  <genericCharm id="Solar.EssenceFlow" exalt="Solar">
+    <prerequisite>
+      <trait value="5"/>
+      <essence value="4"/>
+      <genericCharmAttributeRequirement attribute="Excellency"/>
+    </prerequisite>
+    <cost>
+	  <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Special"/>
+    <source source="2nd Edition" page="187"/>
+  </genericCharm>  
+  
+  <charm id="Solar.EssenceArrowAttack" exalt="Solar" group="Archery">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Archery" value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="Second Edition" page="188"/>
+  </charm>
+  
+  
+</charmlist>
