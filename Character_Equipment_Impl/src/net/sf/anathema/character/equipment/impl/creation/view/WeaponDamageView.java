@@ -1,0 +1,55 @@
+package net.sf.anathema.character.equipment.impl.creation.view;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.ListCellRenderer;
+
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.sf.anathema.character.equipment.creation.view.IWeaponDamageView;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
+import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
+import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
+
+public class WeaponDamageView implements IWeaponDamageView {
+
+  private final JLabel label = new JLabel();
+  private final IntegerSpinner valueSpinner = new IntegerSpinner(0);
+  private final IChangeableJComboBox<Object> typeBox = new ChangeableJComboBox<Object>(new Object[0], false);
+
+  public void fillInto(JPanel panel, int columnCount) {
+    panel.add(label);
+    panel.add(valueSpinner.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
+    GridDialogLayoutData boxData = new GridDialogLayoutData(GridDialogLayoutData.FILL_HORIZONTAL);
+    boxData.setHorizontalSpan(columnCount - 2);
+    panel.add(typeBox.getComponent(), boxData);
+  }
+
+  public int getColumnCount() {
+    return 3;
+  }
+
+  public IntegerSpinner getIntegerSpinner() {
+    return valueSpinner;
+  }
+
+  public void setHealthTypeRenderer(ListCellRenderer renderer) {
+    typeBox.setRenderer(renderer);
+  }
+
+  public void setLabelText(String labelText) {
+    this.label.setText(labelText);
+  }
+
+  public void addObjectSelectionChangedListener(IObjectValueChangedListener listener) {
+    typeBox.addObjectSelectionChangedListener(listener);
+  }
+
+  public void setObjects(Object[] objects) {
+    typeBox.setObjects(objects);
+  }
+
+  public void setSelectedObject(Object object) {
+    typeBox.setSelectedObject(object);
+  }
+}

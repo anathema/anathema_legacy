@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.impl.creation.view;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.equipment.creation.view.ICloseCombatStatisticsView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.container.factory.StandardPanelBuilder;
@@ -13,6 +14,7 @@ public class CloseCombatStatisticsView implements ICloseCombatStatisticsView {
   private static final int COLUMN_COUNT = 30;
   private final StandardPanelBuilder panelBuilder = new StandardPanelBuilder();
   private JPanel content;
+  private JComponent focusComponent;
 
   public JComponent getContent() {
     if (content == null) {
@@ -22,7 +24,11 @@ public class CloseCombatStatisticsView implements ICloseCombatStatisticsView {
   }
 
   public ITextView addLineTextView(String label) {
-    return panelBuilder.addLineTextView(label, COLUMN_COUNT);
+    ITextView textView = panelBuilder.addLineTextView(label, COLUMN_COUNT);
+    if (focusComponent == null) {
+      focusComponent = textView.getComponent();
+    }
+    return textView;
   }
 
   public IntegerSpinner addIntegerSpinner(String label, int startValue) {
@@ -30,10 +36,14 @@ public class CloseCombatStatisticsView implements ICloseCombatStatisticsView {
   }
 
   public void requestFocus() {
-    //Nothing to do
+    focusComponent.requestFocus();
   }
 
   public void dispose() {
     //Nothing to do
+  }
+
+  public void addDialogComponent(IDialogComponent component) {
+    panelBuilder.addDialogComponent(component);
   }
 }
