@@ -16,7 +16,7 @@ import net.sf.anathema.lib.exception.PersistenceException;
 public class DefaultTerrestrialCharmTemplate extends CharmTemplate {
 
   private ICharmAttributeRequirement celestialAttributeRequirement = new CharmAttributeRequirement(new CharmAttribute(
-      ICharmData.ALLOWS_CELESTIAL_ATTRIBUTE,
+      ICharmData.ALLOWS_CELESTIAL_ATTRIBUTE.getId(),
       false), 1);
 
   public DefaultTerrestrialCharmTemplate(ICharmCache charmProvider) throws PersistenceException {
