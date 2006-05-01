@@ -19,6 +19,7 @@ import net.sf.anathema.character.equipment.creation.view.IWeaponDamageView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
+import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
@@ -129,7 +130,11 @@ public class CloseCombatStatisticsPresenterPage extends AbstractAnathemaWizardPa
 
   @Override
   protected void addFollowUpPages(CheckInputListener inputListener) {
-    // Nothing to do
+    addFollowupPage(new WeaponTagsPresenterPage(resources, model, viewFactory), inputListener, new ICondition() {
+      public boolean isFullfilled() {
+        return isNameDefined();
+      }
+    });
   }
 
   @Override

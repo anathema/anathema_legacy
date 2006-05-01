@@ -12,4 +12,6 @@ public interface IEquipmentStatisticsCreationModel {
   public void addEquipmentTypeChangeListener(IChangeListener changeListener);
 
   public boolean isEquipmentTypeSelected(EquipmentStatisticsType type);
+
+  public IWeaponTagsModel getWeaponTagsModel();
 }
