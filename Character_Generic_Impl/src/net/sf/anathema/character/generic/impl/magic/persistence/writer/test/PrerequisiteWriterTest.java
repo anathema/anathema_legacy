@@ -2,7 +2,6 @@ package net.sf.anathema.character.generic.impl.magic.persistence.writer.test;
 
 import java.util.List;
 
-import net.disy.commons.core.testing.ExceptionConvertingBlock;
 import net.sf.anathema.character.generic.impl.magic.persistence.writer.PrerequisiteWriter;
 import net.sf.anathema.character.generic.impl.magic.test.DummyCharm;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -11,6 +10,7 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.testing.BasicTestCase;
+import net.sf.anathema.lib.testing.ExceptionConvertingBlock;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.DocumentFactory;

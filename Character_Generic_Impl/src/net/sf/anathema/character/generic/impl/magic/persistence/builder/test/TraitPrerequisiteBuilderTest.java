@@ -1,12 +1,12 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.test;
 
-import net.disy.commons.core.testing.ExceptionConvertingBlock;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.ITraitPrerequisiteBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.TraitPrerequisiteBuilder;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.testing.BasicTestCase;
+import net.sf.anathema.lib.testing.ExceptionConvertingBlock;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 
 import org.dom4j.Element;

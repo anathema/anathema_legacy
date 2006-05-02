@@ -1,11 +1,11 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.test;
 
-import net.disy.commons.core.testing.ExceptionConvertingBlock;
 import net.sf.anathema.character.generic.impl.magic.Cost;
 import net.sf.anathema.character.generic.impl.magic.HealthCost;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CostListBuilder;
 import net.sf.anathema.character.generic.magic.general.IPermanentCostList;
 import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.testing.ExceptionConvertingBlock;
 
 public class CostListBuilderTest extends net.sf.anathema.lib.testing.BasicTestCase {
 

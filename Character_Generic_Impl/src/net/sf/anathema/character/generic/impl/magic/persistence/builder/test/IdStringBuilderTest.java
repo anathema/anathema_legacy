@@ -1,10 +1,10 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.test;
 
-import net.disy.commons.core.testing.ExceptionConvertingBlock;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.IIdStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.IdStringBuilder;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.lib.testing.BasicTestCase;
+import net.sf.anathema.lib.testing.ExceptionConvertingBlock;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 
 import org.dom4j.Element;

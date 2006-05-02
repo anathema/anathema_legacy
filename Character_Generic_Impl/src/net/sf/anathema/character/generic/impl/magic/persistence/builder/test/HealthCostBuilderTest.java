@@ -1,12 +1,12 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.test;
 
-import net.disy.commons.core.testing.ExceptionConvertingBlock;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.impl.magic.HealthCost;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.HealthCostBuilder;
 import net.sf.anathema.character.generic.magic.general.IHealthCost;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.testing.BasicTestCase;
+import net.sf.anathema.lib.testing.ExceptionConvertingBlock;
 
 import org.dom4j.Element;
 import org.dom4j.tree.DefaultElement;

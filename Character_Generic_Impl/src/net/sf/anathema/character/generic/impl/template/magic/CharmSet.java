@@ -7,34 +7,37 @@ import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.util.IIdentificate;
 
 public class CharmSet implements ICharmSet {
 
   private final Map<IExaltedRuleSet, ICharm[]> charmMap;
   private final Map<IExaltedRuleSet, ICharm[]> martialArtsCharmMap;
 
-  public static ICharmSet createRegularCharmSet(ICharmCache charmProvider, CharacterType characterType)
-      throws PersistenceException {
-    Map<IExaltedRuleSet, ICharm[]> charmMap = createCharmTreeMap(charmProvider, characterType);
-    Map<IExaltedRuleSet, ICharm[]> martialArtsCharmMap = new HashMap<IExaltedRuleSet, ICharm[]>();
-    martialArtsCharmMap.put(ExaltedRuleSet.CoreRules, charmProvider.getCharms(
+  public static ICharmSet createRegularCharmSet(
+      ICharmCache charmProvider,
+      CharacterType characterType,
+      IExaltedEdition edition) throws PersistenceException {
+    Map<IExaltedRuleSet, ICharm[]> charmMap = createCharmTreeMap(charmProvider, characterType, edition);
+    Map<IExaltedRuleSet, ICharm[]> martialArtsCharmMap = createCharmTreeMap(
+        charmProvider,
         CharmCache.MARTIAL_ARTS_TYPE,
-        ExaltedRuleSet.CoreRules));
-    martialArtsCharmMap.put(ExaltedRuleSet.PowerCombat, charmProvider.getCharms(
-        CharmCache.MARTIAL_ARTS_TYPE,
-        ExaltedRuleSet.PowerCombat));
+        edition);
     return new CharmSet(charmMap, martialArtsCharmMap);
   }
 
   private static Map<IExaltedRuleSet, ICharm[]> createCharmTreeMap(
       ICharmCache charmProvider,
-      CharacterType characterType) throws PersistenceException {
+      IIdentificate characterType,
+      IExaltedEdition edition) throws PersistenceException {
     Map<IExaltedRuleSet, ICharm[]> charmMap = new HashMap<IExaltedRuleSet, ICharm[]>();
-    charmMap.put(ExaltedRuleSet.CoreRules, charmProvider.getCharms(characterType, ExaltedRuleSet.CoreRules));
-    charmMap.put(ExaltedRuleSet.PowerCombat, charmProvider.getCharms(characterType, ExaltedRuleSet.PowerCombat));
+    for (IExaltedRuleSet set : ExaltedRuleSet.getRuleSetsByEdition(edition)) {
+      charmMap.put(set, charmProvider.getCharms(characterType, set));
+    }
     return charmMap;
   }
 

@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
@@ -21,9 +22,9 @@ public class CharmTemplate implements ICharmTemplate {
   private final boolean highLevelAtCreation;
   private final List<String> alienAllowedCastes = new ArrayList<String>();
 
-  public CharmTemplate(MartialArtsLevel martialArtsLevel, ICharmCache charmProvider, CharacterType characterType)
+  public CharmTemplate(MartialArtsLevel martialArtsLevel, ICharmCache charmProvider, CharacterType characterType, IExaltedEdition edition)
       throws PersistenceException {
-    this(martialArtsLevel, false, CharmSet.createRegularCharmSet(charmProvider, characterType));
+    this(martialArtsLevel, false, CharmSet.createRegularCharmSet(charmProvider, characterType, edition));
   }
 
   public CharmTemplate(MartialArtsLevel level, boolean highLevelAtCreation, ICharmSet charmSet) {
