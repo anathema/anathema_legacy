@@ -1,6 +1,5 @@
 package net.sf.anathema.charmentry.model.test;
 
-import net.disy.commons.core.testing.ExceptionConvertingBlock;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.impl.magic.test.DummyCharm;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
@@ -18,6 +17,7 @@ import net.sf.anathema.charmentry.model.CharmEntryModel;
 import net.sf.anathema.charmentry.presenter.ITraitSelectionChangedListener;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.testing.BasicTestCase;
+import net.sf.anathema.lib.testing.ExceptionConvertingBlock;
 
 public class CharmEntryModelTest extends BasicTestCase {
 

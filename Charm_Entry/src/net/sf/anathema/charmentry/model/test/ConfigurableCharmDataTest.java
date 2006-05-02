@@ -1,6 +1,5 @@
 package net.sf.anathema.charmentry.model.test;
 
-import net.disy.commons.core.testing.ExceptionConvertingBlock;
 import net.sf.anathema.character.generic.impl.magic.Cost;
 import net.sf.anathema.character.generic.impl.magic.HealthCost;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
@@ -9,6 +8,7 @@ import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.charmentry.model.ConfigurableCharmData;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.testing.BasicTestCase;
+import net.sf.anathema.lib.testing.ExceptionConvertingBlock;
 
 public class ConfigurableCharmDataTest extends BasicTestCase {
 
