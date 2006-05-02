@@ -12,6 +12,7 @@ import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
 import org.easymock.MockControl;
+import org.easymock.internal.MocksControl;
 
 public abstract class AbstractBackgroundRulesTest extends BasicTestCase {
 
@@ -30,7 +31,7 @@ public abstract class AbstractBackgroundRulesTest extends BasicTestCase {
   protected final void initTraitCollectionControlForValue(int value) {
     DummyGenericTrait dummyTrait = new DummyGenericTrait(backgroundTemplate, value);
     traitCollection.getTrait(backgroundTemplate);
-    traitCollectionControl.setReturnValue(dummyTrait, MockControl.ONE_OR_MORE);
+    traitCollectionControl.setReturnValue(dummyTrait, MocksControl.AT_LEAST_ONCE);
     traitCollectionControl.replay();
   }
 
