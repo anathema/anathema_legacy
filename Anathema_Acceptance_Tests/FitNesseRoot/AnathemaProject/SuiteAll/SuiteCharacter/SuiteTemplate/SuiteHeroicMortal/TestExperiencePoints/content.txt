@@ -1,2 +1,0 @@
-Same as for Mortals:
-!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTemplate.SuiteMortal.TestExperiencePoints

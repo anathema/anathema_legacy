@@ -1,3 +1,0 @@
-!|Check Health Template|
-|getToughnessControllingTrait?|
-|Endurance|
