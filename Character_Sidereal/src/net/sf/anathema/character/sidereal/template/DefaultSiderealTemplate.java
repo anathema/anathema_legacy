@@ -3,6 +3,7 @@ package net.sf.anathema.character.sidereal.template;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.template.AbstractCharacterTemplate;
 import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
 import net.sf.anathema.character.generic.impl.template.magic.DefaultMagicTemplate;
@@ -46,7 +47,11 @@ public class DefaultSiderealTemplate extends AbstractCharacterTemplate {
   public DefaultSiderealTemplate(ICharmCache charmProvider, IAdditionalRules additionalRules)
       throws PersistenceException {
     this.additionalRules = additionalRules;
-    ICharmTemplate charmTemplate = new CharmTemplate(MartialArtsLevel.Sidereal, charmProvider, CharacterType.SIDEREAL);
+    ICharmTemplate charmTemplate = new CharmTemplate(
+        MartialArtsLevel.Sidereal,
+        charmProvider,
+        CharacterType.SIDEREAL,
+        ExaltedEdition.FirstEdition);
     this.magicTemplate = new DefaultMagicTemplate(charmTemplate, createSpellMagicTemplate());
     this.presentationProperties = new SiderealPresentationProperties();
   }
