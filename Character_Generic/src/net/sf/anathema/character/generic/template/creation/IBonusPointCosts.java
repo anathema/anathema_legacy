@@ -3,8 +3,8 @@ package net.sf.anathema.character.generic.template.creation;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.template.experience.IAbilityPointCosts;
-import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
+import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
 
 public interface IBonusPointCosts extends IAbilityPointCosts, IBackgroundCreationPointCosts {
 
@@ -21,4 +21,6 @@ public interface IBonusPointCosts extends IAbilityPointCosts, IBackgroundCreatio
   public int getEssenceCost();
   
   public int getMagicCosts(IMagic magic, ICostAnalyzer analyzer);
+
+  public int getMaximumFreeVirtueRank();
 }
