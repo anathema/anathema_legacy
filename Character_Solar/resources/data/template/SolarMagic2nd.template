@@ -1,0 +1,9 @@
+<magicTemplate>
+	<freePicksPredicate type="Default"/>
+	<charmTemplate martialArtsLevel="Celestial" highLevelMartialArts="false" charmType="Solar">
+		<alienCharms>
+			<caste type="Eclipse"/>
+		</alienCharms>
+	</charmTemplate>
+	<spellTemplate maximumSorceryCircle="Solar" maximumNecromancyCircle="Labyrinth"/>
+</magicTemplate>		
