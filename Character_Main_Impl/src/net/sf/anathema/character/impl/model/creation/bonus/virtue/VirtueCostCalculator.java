@@ -31,13 +31,14 @@ public class VirtueCostCalculator {
   }
 
   private IVirtueCost handleVirtue(ITrait virtue, int costFactor) {
-    int dotsToAdd = Math.min(virtue.getCalculationValue(), 3) - virtue.getMinimalValue();
+    final int maximumFreeVirtueRank = costs.getMaximumFreeVirtueRank();
+    int dotsToAdd = Math.min(virtue.getCalculationValue(), maximumFreeVirtueRank) - virtue.getMinimalValue();
     int dotsRemaining = maxVirtuePoints - dotsSpent;
     int dotsAssigned = Math.min(dotsToAdd, dotsRemaining);
     dotsSpent += dotsAssigned;
     int bonusPointsSpent = 0;
     bonusPointsSpent += (dotsToAdd - dotsAssigned) * costFactor;
-    bonusPointsSpent += Math.max(virtue.getCreationValue() - 3, 0) * costFactor;
+    bonusPointsSpent += Math.max(virtue.getCreationValue() - maximumFreeVirtueRank, 0) * costFactor;
     return new VirtueCost(dotsAssigned, bonusPointsSpent);
   }
 
