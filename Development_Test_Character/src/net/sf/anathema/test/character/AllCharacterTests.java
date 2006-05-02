@@ -12,7 +12,6 @@ public class AllCharacterTests {
     suite.addTest(net.sf.anathema.test.character.equipment.item.AllTests.suite());
     suite.addTest(net.sf.anathema.test.character.generic.magic.charms.AllTests.suite());
     suite.addTest(net.sf.anathema.test.character.generic.traits.types.AllTests.suite());
-    suite.addTest(net.sf.anathema.test.character.generic.type.AllTests.suite());
     suite.addTest(Demo2TestConverter.createTest(AllCharacterDemos.suite()));
     // $JUnit-BEGIN$
 

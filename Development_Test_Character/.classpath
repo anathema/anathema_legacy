@@ -4,7 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib"/>
-	<classpathentry kind="lib" path="/Thirdparty/Testing/disy-commons-testing.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment_Impl"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Gui"/>
