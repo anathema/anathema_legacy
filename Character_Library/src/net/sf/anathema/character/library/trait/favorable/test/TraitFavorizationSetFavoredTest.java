@@ -10,13 +10,12 @@ import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
-import org.easymock.MockControl;
+import org.easymock.EasyMock;
 
 public class TraitFavorizationSetFavoredTest extends BasicTestCase {
 
   private IModifiableGenericTrait archeryTrait;
   private IFavorableStateChangedListener listener;
-  private MockControl listenerControl;
 
   private TraitFavorization createFriendlyTraitFavorization() {
     return createTraitFavorization(new FriendlyIncrementChecker());
@@ -30,8 +29,7 @@ public class TraitFavorizationSetFavoredTest extends BasicTestCase {
   protected void setUp() throws Exception {
     super.setUp();
     this.archeryTrait = new DummyModifiableGenericTrait(AbilityType.Archery);
-    this.listenerControl = MockControl.createStrictControl(IFavorableStateChangedListener.class);
-    this.listener = (IFavorableStateChangedListener) listenerControl.getMock();
+    this.listener = EasyMock.createStrictMock(IFavorableStateChangedListener.class);
   }
 
   public void testSetFavoredOnDefault() throws Exception {
@@ -76,9 +74,9 @@ public class TraitFavorizationSetFavoredTest extends BasicTestCase {
     TraitFavorization favorization = createFriendlyTraitFavorization();
     favorization.addFavorableStateChangedListener(listener);
     listener.favorableStateChanged(FavorableState.Favored);
-    listenerControl.replay();
+    EasyMock.replay();
     favorization.setFavored(true);
-    listenerControl.verify();
+    EasyMock.verify();
   }
 
   public void testEventOnSetNotFavoredOnFavored() throws Exception {
@@ -86,9 +84,9 @@ public class TraitFavorizationSetFavoredTest extends BasicTestCase {
     favorization.setFavored(true);
     favorization.addFavorableStateChangedListener(listener);
     listener.favorableStateChanged(FavorableState.Default);
-    listenerControl.replay();
+    EasyMock.replay();
     favorization.setFavored(false);
-    listenerControl.verify();
+    EasyMock.verify();
   }
 
   public void testNoEventOnSetFavoredOnFavored() throws Exception {
@@ -96,9 +94,9 @@ public class TraitFavorizationSetFavoredTest extends BasicTestCase {
     favorization.setFavored(true);
     assertSame(FavorableState.Favored, favorization.getFavorableState());
     favorization.addFavorableStateChangedListener(listener);
-    listenerControl.replay();
+    EasyMock.replay();
     favorization.setFavored(true);
-    listenerControl.verify();
+    EasyMock.verify();
   }
 
   public void testNoEventOnSetFavoredOnCaste() throws Exception {
@@ -106,19 +104,18 @@ public class TraitFavorizationSetFavoredTest extends BasicTestCase {
     favorization.setCaste(true);
     assertSame(FavorableState.Caste, favorization.getFavorableState());
     favorization.addFavorableStateChangedListener(listener);
-    listenerControl.replay();
+    EasyMock.replay();
     favorization.setFavored(true);
-    listenerControl.verify();
+    EasyMock.verify();
   }
-
 
   public void testNoEventOnSetNotFavoredOnDefault() throws Exception {
     TraitFavorization favorization = createFriendlyTraitFavorization();
     assertSame(FavorableState.Default, favorization.getFavorableState());
     favorization.addFavorableStateChangedListener(listener);
-    listenerControl.replay();
+    EasyMock.replay();
     favorization.setFavored(false);
-    listenerControl.verify();
+    EasyMock.verify();
   }
 
   public void testNoEventOnSetNotFavoredOnCaste() throws Exception {
@@ -126,8 +123,8 @@ public class TraitFavorizationSetFavoredTest extends BasicTestCase {
     favorization.setCaste(true);
     assertSame(FavorableState.Caste, favorization.getFavorableState());
     favorization.addFavorableStateChangedListener(listener);
-    listenerControl.replay();
+    EasyMock.replay();
     favorization.setFavored(false);
-    listenerControl.verify();
+    EasyMock.verify();
   }
 }
