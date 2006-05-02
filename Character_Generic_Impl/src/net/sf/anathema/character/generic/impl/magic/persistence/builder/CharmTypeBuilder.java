@@ -91,8 +91,11 @@ public class CharmTypeBuilder {
     }
     try {
       int speed = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_SPEED);
-      String turnString = element.attributeValue(ATTRIB_TURN_TYPE);
-      TurnType type = TurnType.valueOf(turnString);
+      final String attributeValue = element.attributeValue(ATTRIB_TURN_TYPE);
+      TurnType type = TurnType.Tick;
+      if (attributeValue != null) {
+        type = TurnType.valueOf(attributeValue);
+      }
       int defense = ElementUtilities.getRequiredIntAttrib(element, ATTRIB_DEFENSE);
       return new SimpleSpecialsModel(speed, type, defense);
     }
