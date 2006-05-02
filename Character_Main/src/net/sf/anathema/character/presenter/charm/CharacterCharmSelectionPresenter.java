@@ -232,7 +232,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   }
 
   private void initSpecialCharmViews() {
-    ISpecialCharm[] specialCharms = provider.getAllSpecialCharms();
+    ISpecialCharm[] specialCharms = provider.getAllSpecialCharms(statistics.getRules().getEdition());
     for (ISpecialCharm charm : specialCharms) {
       addSpecialCharmControl(charm);
     }
