@@ -24,9 +24,9 @@ public class PlotElementContainerTest extends BasicTestCase {
       }
     });
   }
-  
+
   private DummyPlotElementContainerListener listener;
-  
+
   @Override
   protected void setUp() throws Exception {
     super.setUp();
