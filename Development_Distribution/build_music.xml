@@ -8,7 +8,7 @@
 		<jar destfile="${dist}/music.jar">
 			<manifest>
 				<attribute name="Built-By" value="${user.name}" />
-				<attribute name="Class-Path" value="${lib}/db4o-4.5-java1.4.jar ${lib}/basicplayer2.3.jar ${lib}/javalayer.jar ${lib}/mp3spi1.9.2.jar ${lib}/tritonus_share.jar" />
+				<attribute name="Class-Path" value="${lib}/db4o-5.2-java5.jar ${lib}/basicplayer2.3.jar ${lib}/javalayer.jar ${lib}/mp3spi1.9.2.jar ${lib}/tritonus_share.jar" />
 			</manifest>
 			<fileset dir="${dist_class}" includes="**/${musicDir}/**/*" />
 			<fileset dir="${dist}/${musicDir}/${resourceDir}" includes="**/*" />
