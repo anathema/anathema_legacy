@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <charmlist>
-  <!-- Second Edition Snake Style --/>
+  <!-- Second Edition Snake Style -->
   <charm id="Solar.StrikingCobraTechnique" exalt="Solar" group="SnakeStyle">
     <prerequisite>
       <trait id="MartialArts" value="2"/>
@@ -173,7 +173,7 @@
     <source source="2nd Edition" page="242"/>
   </charm>
   
-  <!-- Second Edition Solar Hero Style --/>
+  <!-- Second Edition Solar Hero Style -->
  <charm id="Solar.FistsIronTechnique" exalt="Solar" group="SolarHeroStyle">
     <prerequisite>
       <trait id="MartialArts" value="2"/>
@@ -342,7 +342,7 @@
     <source source="2nd Edition" page="244"/>
   </charm>
   
-  <!-- Second Edition Solar Specials--/>
+  <!-- Second Edition Solar Specials -->
   <charm id="Solar.ThunderclapRushAttack" exalt="Solar" group="SolarHeroStyle">
     <prerequisite>
       <trait id="MartialArts" value="3"/>
@@ -385,7 +385,7 @@
     <source source="2nd Edition" page="190"/>
   </charm> 
   
-  <!-- Second Edition Solar Generics --/>
+  <!-- Second Edition Solar Generics -->
   <charm id="Solar.1stExcellencyMartialArts" exalt="Solar" group="Generics">
     <prerequisite>
       <trait id="MartialArts" value="1"/>
