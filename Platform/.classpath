@@ -18,7 +18,6 @@
 	<classpathentry sourcepath="/Thirdparty/Swing/l2fprod-common-0.2dev-src.zip" kind="lib" path="/Thirdparty/Swing/l2fprod-common-sheet.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
 	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/Testing/disy-commons-testing.jar"/>
 	<classpathentry sourcepath="/Thirdparty/Reporting/itext-src-1.4.zip" kind="lib" path="/Thirdparty/Reporting/itext-1.4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
