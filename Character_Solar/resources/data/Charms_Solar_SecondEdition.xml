@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <charmlist>
+  <!-- Solar Generics -->
   <genericCharm id="Solar.1stExcellency" exalt="Solar" >
     <prerequisite>
       <trait value="1"/>
@@ -82,6 +83,7 @@
     <source source="2nd Edition" page="187"/>
   </genericCharm>  
   
+    <!-- Solar Archery -->
   <charm id="Solar.EssenceArrowAttack" exalt="Solar" group="Archery">
     <prerequisite>
       <essence id="Essence" value="2"/>
@@ -97,7 +99,6 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="Second Edition" page="188"/>
-  </charm>
-  
+  </charm>  
   
 </charmlist>
