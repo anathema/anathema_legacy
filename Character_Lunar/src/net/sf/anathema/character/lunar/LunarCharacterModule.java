@@ -8,13 +8,14 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.persistenc
 import net.sf.anathema.character.generic.framework.module.CharacterGenericsModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.BeastformModelFactory;
 import net.sf.anathema.character.lunar.beastform.BeastformPersisterFactory;
+import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
 import net.sf.anathema.character.lunar.beastform.BeastformViewFactory;
 import net.sf.anathema.character.lunar.caste.LunarCaste;
 import net.sf.anathema.character.lunar.heartsblood.HeartsBloodFactory;
@@ -63,7 +64,10 @@ public class LunarCharacterModule extends CharacterGenericsModuleAdapter {
     ISpecialCharm[] specialCharms = new ISpecialCharm[] {
         ILunarSpecialCharms.DEADLY_BEASTMAN_TRANSFORMATION,
         ILunarSpecialCharms.OX_BODY_TECHNIQUE };
-    characterGenerics.getCharmProvider().setSpecialCharms(CharacterType.LUNAR, specialCharms);
+    characterGenerics.getCharmProvider().setSpecialCharms(
+        CharacterType.LUNAR,
+        ExaltedEdition.FirstEdition,
+        specialCharms);
     characterGenerics.getCasteCollectionRegistry().register(
         CharacterType.LUNAR,
         new CasteCollection(LunarCaste.values()));
