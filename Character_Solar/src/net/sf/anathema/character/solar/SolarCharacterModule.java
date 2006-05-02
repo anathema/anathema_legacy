@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdd
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.CharacterGenericsModuleAdapter;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.solar.caste.SolarCaste;
@@ -24,6 +25,7 @@ public class SolarCharacterModule extends CharacterGenericsModuleAdapter {
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     characterGenerics.getCharmProvider().setSpecialCharms(
         CharacterType.SOLAR,
+        ExaltedEdition.FirstEdition,
         new ISpecialCharm[] { ISolarSpecialCharms.OX_BODY_TECHNIQUE });
     characterGenerics.getAdditionalTemplateParserRegistry().register(
         SolarVirtueFlawTemplate.ID,
