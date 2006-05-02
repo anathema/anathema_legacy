@@ -2,11 +2,11 @@ package net.sf.anathema.initialization.repository.test;
 
 import java.io.File;
 
-import net.disy.commons.core.testing.ExceptionConvertingBlock;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.initialization.repository.IStringResolver;
 import net.sf.anathema.initialization.repository.RepositoryFolderCreator;
 import net.sf.anathema.lib.testing.BasicTestCase;
+import net.sf.anathema.lib.testing.ExceptionConvertingBlock;
 
 public class RepositoryFolderCreatorTest extends BasicTestCase {
 
