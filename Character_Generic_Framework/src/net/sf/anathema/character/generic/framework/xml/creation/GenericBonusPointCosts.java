@@ -149,4 +149,8 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject implements
   public GenericBonusPointCosts clone() {
     return (GenericBonusPointCosts) super.clone();
   }
+
+  public void setMaximumFreeVirtueRank(int rank) {
+    this.maximumFreeVirtueRank = rank;
+  }
 }

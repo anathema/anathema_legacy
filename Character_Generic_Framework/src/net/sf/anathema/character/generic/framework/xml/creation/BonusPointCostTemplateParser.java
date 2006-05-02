@@ -11,6 +11,7 @@ import org.dom4j.Element;
 public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<GenericBonusPointCosts> {
 
   private static final String ATTRIB_DOTS = "dots"; //$NON-NLS-1$
+  private static final String ATTRIB_RANK = "rank"; //$NON-NLS-1$
 
   private static final String TAG_ATTRIBUTES = "attributes"; //$NON-NLS-1$
   private static final String TAG_GENERAL_ATTRIBUTE = "generalAttribute"; //$NON-NLS-1$
@@ -31,6 +32,7 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
   private static final String TAG_CHARMS = "charms"; //$NON-NLS-1$
   private static final String TAG_GENERAL_CHARMS = "generalCharms"; //$NON-NLS-1$
   private static final String TAG_FAVORED_CHARMS = "favoredCharms"; //$NON-NLS-1$
+  private static final String TAG_MAXIMUM_FREE_RANK = "maximumFreeRank"; //$NON-NLS-1$
 
   private final CostParser costParser = new CostParser();
 
@@ -93,6 +95,10 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
       return;
     }
     int fixedCost = costParser.getFixedCostFromRequiredElement(element, TAG_VIRTUES);
+    Element maximumFreeRank = virtueElement.element(TAG_MAXIMUM_FREE_RANK);
+    if (maximumFreeRank != null) {
+      costs.setMaximumFreeVirtueRank(ElementUtilities.getRequiredIntAttrib(maximumFreeRank, ATTRIB_RANK));
+    }
     costs.setVirtueCosts(fixedCost);
   }
 
