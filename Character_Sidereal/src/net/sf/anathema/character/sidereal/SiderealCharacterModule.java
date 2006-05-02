@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.persistenc
 import net.sf.anathema.character.generic.framework.module.CharacterGenericsModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.ITemplateType;
@@ -45,9 +46,9 @@ public class SiderealCharacterModule extends CharacterGenericsModuleAdapter {
     ISpecialCharm[] charms = new ISpecialCharm[] {
         ISiderealSpecialCharms.OX_BODY_TECHNIQUE,
         ISiderealSpecialCharms.WORLD_SHAPING_ARTISTIC_VISION };
-    characterGenerics.getCharmProvider().setSpecialCharms(CharacterType.SIDEREAL, charms);
+    characterGenerics.getCharmProvider().setSpecialCharms(CharacterType.SIDEREAL, ExaltedEdition.FirstEdition, charms);
   }
-  
+
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
     CharmCache charmProvider = CharmCache.getInstance();
