@@ -26,6 +26,7 @@ import net.sf.anathema.character.generic.framework.module.CharacterGenericsModul
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.ITemplateType;
@@ -60,7 +61,7 @@ public class DbCharacterModule extends CharacterGenericsModuleAdapter {
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     ISpecialCharm[] specialCharms = new ISpecialCharm[] { IDbSpecialCharms.OX_BODY_TECHNIQUE };
-    characterGenerics.getCharmProvider().setSpecialCharms(CharacterType.DB, specialCharms);
+    characterGenerics.getCharmProvider().setSpecialCharms(CharacterType.DB, ExaltedEdition.FirstEdition, specialCharms);
   }
 
   @Override
