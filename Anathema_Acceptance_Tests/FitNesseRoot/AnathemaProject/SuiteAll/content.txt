@@ -13,6 +13,7 @@
 !path ../Character_Library/build/classes
 !path ../Character_Abyssal/build/classes
 !path ../Character_Db/build/classes
+!path ../Character_Intimacies/build/classes
 !path ../Character_Lunar/build/classes
 !path ../Character_Solar/build/classes
 !path ../Character_Sidereal/build/classes

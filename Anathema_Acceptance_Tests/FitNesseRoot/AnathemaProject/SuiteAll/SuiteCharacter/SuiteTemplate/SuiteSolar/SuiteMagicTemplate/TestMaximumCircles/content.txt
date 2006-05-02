@@ -1,4 +1,1 @@
-!3 Solar Circle and Labyrinth Circle
-!|Check Magic Template|
-|getMaximumSorceryCircle?|getMaximumNecromancyCircle?|
-|Solar|Labyrinth|
+!include SnippetTestSolarSorceryCircles

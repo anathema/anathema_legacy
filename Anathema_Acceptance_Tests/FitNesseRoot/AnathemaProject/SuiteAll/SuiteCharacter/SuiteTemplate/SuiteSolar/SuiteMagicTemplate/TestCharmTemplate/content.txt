@@ -1,11 +1,1 @@
-!|Check Magic Template|
-|getCharmType?|getMartialArtsLevel?|
-|Solar|Celestial|
-
-!|Check Alien Charms|
-|caste|isAllowedAlienCharms?|
-|Dawn|false|
-|Zenith|false|
-|Twilight|false|
-|Night|false|
-|Eclipse|true|
+!include SnippetCheckSolarCharmTemplate

@@ -3,7 +3,6 @@ package net.sf.anathema.acceptance.fixture.character;
 import java.util.Map;
 
 import net.sf.anathema.character.generic.impl.magic.SpellException;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.model.ICharacter;
@@ -12,7 +11,6 @@ import net.sf.anathema.lib.resources.IResources;
 public class CharacterSummary extends CharacterGenericsSummary {
 
   private static final String KEY_RESOURCES = "Resources"; //$NON-NLS-1$
-  public static final ExaltedRuleSet RULE_SET = ExaltedRuleSet.PowerCombat;
   private static final String KEY_CHARACTER = "character"; //$NON-NLS-1$
 
   @SuppressWarnings("unchecked")
@@ -22,7 +20,7 @@ public class CharacterSummary extends CharacterGenericsSummary {
 
   public void setCharacter(ICharacterTemplate template) throws SpellException {
     ExaltedCharacter character = new ExaltedCharacter();
-    character.createCharacterStatistics(template, getCharacterGenerics(), RULE_SET);
+    character.createCharacterStatistics(template, getCharacterGenerics(), template.getEdition().getDefaultRuleset());
     setCharacter(character);
   }
 
