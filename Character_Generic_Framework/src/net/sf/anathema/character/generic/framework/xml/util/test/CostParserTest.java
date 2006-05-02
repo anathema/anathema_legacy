@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.framework.xml.util.test;
 
-import net.disy.commons.core.testing.ExceptionConvertingBlock;
 import net.sf.anathema.character.generic.framework.xml.test.BasicTemplateParsingTestCase;
 import net.sf.anathema.character.generic.framework.xml.util.CostParser;
 import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.testing.ExceptionConvertingBlock;
 
 import org.dom4j.Element;
 

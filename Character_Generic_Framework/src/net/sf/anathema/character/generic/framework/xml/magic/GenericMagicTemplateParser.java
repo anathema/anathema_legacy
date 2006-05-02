@@ -13,6 +13,7 @@ import net.sf.anathema.character.generic.impl.template.magic.NullCharmSet;
 import net.sf.anathema.character.generic.impl.template.magic.SpellMagicTemplate;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -36,9 +37,11 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
   private static final String ATTRIB_MAXIMUM_NECROMANCY_CIRCLE = "maximumNecromancyCircle"; //$NON-NLS-1$
   private static final String TAG_CASTE = "caste"; //$NON-NLS-1$
   private static final String TAG_ALIEN_CHARMS = "alienCharms"; //$NON-NLS-1$
+  private final IExaltedEdition edition;
 
-  public GenericMagicTemplateParser(IXmlTemplateRegistry<GenericMagicTemplate> templateRegistry) {
+  public GenericMagicTemplateParser(IXmlTemplateRegistry<GenericMagicTemplate> templateRegistry, IExaltedEdition edition) {
     super(templateRegistry);
+    this.edition = edition;
   }
 
   @Override
@@ -106,7 +109,7 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
       charmSet = new NullCharmSet();
     }
     else {
-      charmSet = CharmSet.createRegularCharmSet(CharmCache.getInstance(), CharacterType.getById(charmType));
+      charmSet = CharmSet.createRegularCharmSet(CharmCache.getInstance(), CharacterType.getById(charmType), edition);
     }
     CharmTemplate charmTemplate = new CharmTemplate(level, highLevelAtCreation, charmSet);
     setAlienAllowedCastes(charmTemplate, charmTemplateElement);

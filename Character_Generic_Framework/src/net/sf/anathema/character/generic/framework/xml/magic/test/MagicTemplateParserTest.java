@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplat
 import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.test.DummyXmlTemplateRegistry;
 import net.sf.anathema.character.generic.impl.magic.test.DummyCharm;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
@@ -29,7 +30,7 @@ public class MagicTemplateParserTest extends BasicTestCase {
   @Override
   protected void setUp() throws Exception {
     templateRegistry = new DummyXmlTemplateRegistry<GenericMagicTemplate>();
-    parser = new GenericMagicTemplateParser(templateRegistry);
+    parser = new GenericMagicTemplateParser(templateRegistry, ExaltedEdition.FirstEdition);
   }
 
   public void testDefaultFreePicksPredicate() throws Exception {

@@ -2,6 +2,7 @@ package net.sf.anathema.character.generic.framework.unsupported;
 
 import net.sf.anathema.character.generic.impl.exalt.AbstractUnsupportedExaltTemplate;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.template.magic.CharmSet;
 import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmSet;
@@ -25,7 +26,10 @@ public class UnsupportedDragonKingTemplate extends AbstractUnsupportedExaltTempl
   private DragonKingPresentationProperties presentationProperties;
 
   public UnsupportedDragonKingTemplate(ICharmCache charmProvider) throws PersistenceException {
-    ICharmSet charmSet = CharmSet.createRegularCharmSet(charmProvider, CharacterType.DRAGON_KING);
+    ICharmSet charmSet = CharmSet.createRegularCharmSet(
+        charmProvider,
+        CharacterType.DRAGON_KING,
+        ExaltedEdition.FirstEdition);
     charmTemplate = new CharmTemplate(MartialArtsLevel.Mortal, false, charmSet);
     this.presentationProperties = new DragonKingPresentationProperties(getTemplateType());
   }
