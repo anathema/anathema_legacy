@@ -37,7 +37,7 @@ public class TraitFavorizationRequiredFavoredTest extends BasicTestCase {
     assertEquals(FavorableState.Favored, favorization.getFavorableState());
   }
 
-  public void testSetCasteNotAllowdForRequiredFavored() throws Exception {
+  public void testSetCasteNotAllowedForRequiredFavored() throws Exception {
     final TraitFavorization favorization = new TraitFavorization(null, new GrumpyIncrementChecker(), trait, true);
     assertThrowsException(IllegalStateException.class, new ISimpleBlock() {
       public void execute() {
