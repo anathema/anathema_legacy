@@ -38,7 +38,7 @@ public class CharmConfigurationPersister extends AbstractCharacterPersister {
     ICharmConfiguration charmConfiguration = statistics.getCharms();
     for (CharacterType type : charmConfiguration.getCharacterTypes(true)) {
       ISpecialCharmPersister specialPersister = new SpecialCharmPersister(charmConfiguration.getCharmProvider()
-          .getSpecialCharms(type), charmConfiguration.getCharmTree(type));
+          .getSpecialCharms(type, statistics.getRules().getEdition()), charmConfiguration.getCharmTree(type));
       saveNonMartialArtsCharmsForConfiguration(specialPersister, charmConfiguration, type, charmsElement);
     }
     saveMartialArtsCharms(charmConfiguration, charmsElement);
@@ -124,8 +124,9 @@ public class CharmConfigurationPersister extends AbstractCharacterPersister {
         characterType = statistics.getCharacterTemplate().getTemplateType().getCharacterType();
       }
       ISpecialCharmPersister specialPersister;
-      specialPersister = new SpecialCharmPersister(charmConfiguration.getCharmProvider()
-          .getSpecialCharms(characterType), charmConfiguration.getCharmTree(characterType));
+      specialPersister = new SpecialCharmPersister(charmConfiguration.getCharmProvider().getSpecialCharms(
+          characterType,
+          statistics.getRules().getEdition()), charmConfiguration.getCharmTree(characterType));
       loadCharmFromConfiguration(charmConfiguration, groupElement, specialPersister);
     }
     loadCombos(charmsElement, statistics.getCombos(), charmConfiguration);

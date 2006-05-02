@@ -117,7 +117,9 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   private void addSpecialCharmConfigurations(final CharacterType characterType) {
-    for (ISpecialCharm specialCharm : provider.getSpecialCharms(characterType)) {
+    for (ISpecialCharm specialCharm : provider.getSpecialCharms(characterType, context.getBasicCharacterContext()
+        .getRuleSet()
+        .getEdition())) {
       specialCharm.accept(new ISpecialCharmVisitor() {
         public void acceptOxBodyTechnique(IOxBodyTechniqueCharm visited) {
           final ICharm charm = getCharmTree(characterType).getCharmByID(visited.getCharmId());
