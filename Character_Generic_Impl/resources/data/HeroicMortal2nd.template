@@ -12,7 +12,7 @@
     </healthTemplate> 
   </general>
   <creation>
-    <bonusPointCosts uses="DefaultBonusPointCost.template" />
+    <bonusPointCosts uses="DefaultBonusPointCost2nd.template" />
     <creationPoints>
       <attributeDots primary="6" secondary="4" tertiary="3" />
       <abilityDots general="25" favored="0" favoredPicks="1" />
