@@ -27,6 +27,7 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject implements
   private int generalSpecialtyDotsPerBonusPoint = 0;
   private int generalAttributeCost = 0;
   private int favoredAttributeCost = 0;
+  private int maximumFreeVirtueRank = 3;
 
   public int getCharmCosts(ICharm charm, ICostAnalyzer analyzer) {
     return getCharmCosts(analyzer.isMagicFavored(charm), analyzer.getMartialArtsLevel(charm));
@@ -45,6 +46,10 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject implements
 
   public ICurrentRatingCosts getVirtueCosts() {
     return new FixedValueRatingCosts(virtueCost);
+  }
+
+  public int getMaximumFreeVirtueRank() {
+    return maximumFreeVirtueRank;
   }
 
   public int getWillpowerCosts() {
@@ -70,7 +75,6 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject implements
     return essenceCost;
   }
 
-  // todo vom (31.10.2005) (sieroux): Trennung von MA und Regular Charms durch Visitor
   public int getMagicCosts(IMagic magic, final ICostAnalyzer analyzer) {
     final int[] cost = new int[1];
     magic.accept(new IMagicVisitor() {
