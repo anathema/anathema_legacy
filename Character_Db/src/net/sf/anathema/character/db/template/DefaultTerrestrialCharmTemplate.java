@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
@@ -20,7 +21,7 @@ public class DefaultTerrestrialCharmTemplate extends CharmTemplate {
       false), 1);
 
   public DefaultTerrestrialCharmTemplate(ICharmCache charmProvider) throws PersistenceException {
-    super(MartialArtsLevel.Terrestrial, charmProvider, CharacterType.DB);
+    super(MartialArtsLevel.Terrestrial, charmProvider, CharacterType.DB, ExaltedEdition.FirstEdition);
   }
 
   @Override
