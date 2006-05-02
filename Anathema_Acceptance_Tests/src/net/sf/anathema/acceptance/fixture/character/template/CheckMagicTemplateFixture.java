@@ -1,6 +1,5 @@
 package net.sf.anathema.acceptance.fixture.character.template;
 
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 
 public class CheckMagicTemplateFixture extends AbstractTemplateColumnFixture {
@@ -30,7 +29,8 @@ public class CheckMagicTemplateFixture extends AbstractTemplateColumnFixture {
   }
 
   public String getCharmType() {
-    return getTemplate().getMagicTemplate().getCharmTemplate().getCharms(ExaltedRuleSet.CoreRules)[0].getCharacterType()
-        .getId();
+    return getTemplate().getMagicTemplate()
+        .getCharmTemplate()
+        .getCharms(getTemplate().getEdition().getDefaultRuleset())[0].getCharacterType().getId();
   }
 }
