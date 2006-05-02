@@ -12,6 +12,7 @@ import net.sf.anathema.character.generic.framework.module.CharacterGenericsModul
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
@@ -41,7 +42,10 @@ public class AbyssalCharacterModule extends CharacterGenericsModuleAdapter {
         IAbyssalSpecialCharms.OX_BODY_TECHNIQUE,
         IAbyssalSpecialCharms.INSENSIBLE_CORPSE_TECHNIQUE,
         IAbyssalSpecialCharms.ESSENCE_ENGORGEMENT_TECHNIQUE };
-    characterGenerics.getCharmProvider().setSpecialCharms(CharacterType.ABYSSAL, specialCharms);
+    characterGenerics.getCharmProvider().setSpecialCharms(
+        CharacterType.ABYSSAL,
+        ExaltedEdition.FirstEdition,
+        specialCharms);
   }
 
   @Override
