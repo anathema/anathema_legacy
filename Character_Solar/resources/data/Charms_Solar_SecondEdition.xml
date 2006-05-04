@@ -230,7 +230,7 @@
     <charmAttribute attribute="Combo-Basic" visualize="true"/>
     <source source="Second Edition" page="188"/>
   </charm>
-  charm id="Solar.EssenceArrowAttack" exalt="Solar" group="Archery">
+  <charm id="Solar.EssenceArrowAttack" exalt="Solar" group="Archery">
     <prerequisite>
       <essence id="Essence" value="2"/>
       <trait id="Archery" value="2"/>
