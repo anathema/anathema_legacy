@@ -16,7 +16,6 @@ import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
-import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
@@ -99,10 +98,6 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
 
   public void setDuration(Duration duration) {
     this.duration = duration;
-  }
-
-  public void setCharmType(CharmType type) {
-    model.setCharmType(type);
   }
 
   public void setEssencePrerequisite(IGenericTrait prerequisite) {

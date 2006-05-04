@@ -10,6 +10,7 @@ public class SimpleSpecialsEntryModel implements ISimpleSpecialsEntryModel {
   private int defenseModifier = DEFAULT_DEFENSE_MODIFIER;
   private final ISimpleSpecialsArbitrator arbitrator;
   private final ChangeControl control = new ChangeControl();
+  private final TurnType turnType = TurnType.Tick;
 
   public SimpleSpecialsEntryModel(ISimpleSpecialsArbitrator arbitrator) {
     this.arbitrator = arbitrator;
@@ -41,8 +42,7 @@ public class SimpleSpecialsEntryModel implements ISimpleSpecialsEntryModel {
   }
 
   public TurnType getTurnType() {
-    // STUB!
-    return null;
+    return turnType;
   }
 
   public int getDefenseModifier() {
