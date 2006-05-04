@@ -105,8 +105,8 @@
     <cost>
       <temporary/>
     </cost>
-    <duration duration="Indefinite"/>
-    <charmtype type="Special"/>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
     <charmAttribute attribute="NotAlienLearnable"/>
     <source source="The Lunars" page="125"/>
   </charm>
@@ -119,8 +119,8 @@
     <cost>
       <temporary/>
     </cost>
-    <duration duration="Indefinite"/>
-    <charmtype type="Special"/>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
     <charmAttribute attribute="NotAlienLearnable"/>
     <source source="The Lunars" page="128"/>
   </charm>
@@ -278,7 +278,7 @@
       <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="The Lunars" page="132"/>
   </charm>
   <charm id="Lunar.CrouchingTigerExercise" exalt="Lunar" group="BodyEnhancement">
