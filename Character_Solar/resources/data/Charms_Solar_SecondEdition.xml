@@ -2,7 +2,7 @@
 
 <charmlist>
   <!-- Solar Generics -->
-  <genericCharm id="Solar.1stExcellency" exalt="Solar" >
+  <genericCharm id="Solar.1stExcellency" exalt="Solar">
     <prerequisite>
       <trait value="1"/>
       <essence value="1"/>
@@ -76,14 +76,13 @@
       <genericCharmAttributeRequirement attribute="Excellency"/>
     </prerequisite>
     <cost>
-	  <temporary/>
+      <temporary/>
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Special"/>
     <source source="2nd Edition" page="187"/>
-  </genericCharm>  
-  
-    <!-- Solar Archery -->
+  </genericCharm>
+  <!-- Solar Archery -->
   <charm id="Solar.EssenceArrowAttack" exalt="Solar" group="Archery">
     <prerequisite>
       <essence id="Essence" value="2"/>
@@ -99,6 +98,64 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="Second Edition" page="188"/>
-  </charm>  
-  
+  </charm>
+  <charm id="Solar.ThereIsNoWind" exalt="Solar" group="Archery">
+    <prerequisite>
+      <essence id="Essence" value="1"/>
+      <trait id="Archery" value="1"/>
+      <charmAttributeRequirement attribute="ExcellencyArchery" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3" text="or 5 motes"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="Second Edition" page="187"/>
+  </charm>
+  <charm id="Solar.TerrestrialCircleSorcery" exalt="Solar" group="Occult">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Occult" value="3"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="0"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Special"/>
+    <source source="Second Edtion" page="220"/>
+  </charm>
+  <charm id="Solar.CelestialCircleSorcery" exalt="Solar" group="Occult">
+    <prerequisite>
+      <essence id="Essence" value="4"/>
+      <trait id="Occult" value="4"/>
+      <charmReference id="Solar.TerrestrialCircleSorcery"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="0"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Special"/>
+    <source source="Second Edtion" page="220"/>
+  </charm>
+  <charm id="Solar.SolarCircleSorcery" exalt="Solar" group="Occult">
+    <prerequisite>
+      <essence id="Essence" value="5"/>
+      <trait id="Occult" value="5"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="0"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Special"/>
+    <source source="Second Edtion" page="221"/>
+  </charm>
 </charmlist>

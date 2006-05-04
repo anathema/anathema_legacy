@@ -5,5 +5,5 @@
 			<caste type="Eclipse"/>
 		</alienCharms>
 	</charmTemplate>
-	<spellTemplate maximumSorceryCircle="Solar" maximumNecromancyCircle="Labyrinth"/>
+	<spellTemplate maximumSorceryCircle="Solar" maximumNecromancyCircle="None"/>
 </magicTemplate>		
