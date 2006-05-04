@@ -38,6 +38,10 @@ public class ReflexiveCharmComboRules extends AbstractComboRules {
             || crossPrerequisite;
       }
 
+      public void visitPermanent(CharmType visitedType) {
+        legal[0] = false;
+      }
+
       public void visitSpecial(CharmType visitedType) {
         legal[0] = false;
       }

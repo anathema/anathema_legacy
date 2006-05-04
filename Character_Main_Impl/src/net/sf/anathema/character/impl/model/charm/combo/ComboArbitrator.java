@@ -78,6 +78,10 @@ public class ComboArbitrator implements IComboArbitrator {
         legal[0] = supplementalCharmRules.isComboLegal(charm1, charm2);
       }
 
+      public void visitPermanent(CharmType visitedType) {
+        legal[0] = false;
+      }
+
       public void visitSpecial(CharmType visitedType) {
         legal[0] = false;
       }

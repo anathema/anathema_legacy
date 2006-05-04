@@ -38,6 +38,10 @@ public class SimpleCharmComboRules extends AbstractComboRules {
         legal[0] = allAbilitiesRule || samePrerequisite || attributePrerequisites || abilityAttributeCombo;
       }
 
+      public void visitPermanent(CharmType visitedType) {
+        legal[0] = false;
+      }
+
       public void visitSpecial(CharmType visitedType) {
         legal[0] = false;
       }
