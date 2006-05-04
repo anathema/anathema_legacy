@@ -669,7 +669,7 @@
       <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
 	<charmAttribute attribute="Celestial"/>
     <source source="The Sidereals" page="179"/>
   </charm>
@@ -3274,13 +3274,11 @@
       <charmReference id="Solar.FourHaloGoldenMonkeyRealignement"/>
     </prerequisite>
     <cost>
-      <temporary>
-        <essence cost="None"/>
-      </temporary>
+      <temporary/>
     </cost>
     <charmAttribute attribute="Celestial"/>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="Players Guide" page="249"/>
   </charm>
   <charm id="Solar.KissSunConcentration" exalt="Solar" group="RighteousDevilStyle">

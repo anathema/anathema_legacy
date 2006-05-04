@@ -481,7 +481,7 @@
       <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <charmAttribute attribute="Mortal"/>
     <charmAttribute attribute="NoStyle"/>
     <charmAttribute attribute="Exclusive"/>
