@@ -55,7 +55,11 @@ public class CharmEntryPresenter implements IPresenter {
         CharacterType characterType = charmData.getCharacterType();
         try {
           CharmCache.getInstance().addCharm(charmData, model.getKeywordModel().getEntries(), charmData.getEdition());
-          new CharmEntryPropertiesPersister().addPropertyInternal(characterType, charmData.getId(), charmData.getName());
+          new CharmEntryPropertiesPersister().addPropertyInternal(
+              characterType,
+              charmData.getEdition(),
+              charmData.getId(),
+              charmData.getName());
           basicDataPresenter.charmAdded(charmData);
           keywordPresenter.charmAdded(charmData);
           attributePresenter.charmAdded(charmData);
