@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <charmlist>
-<charm id="Solar.TerrestrialCircleSorcery" exalt="Solar" group="Occult">
+  <charm id="Solar.TerrestrialCircleSorcery" exalt="Solar" group="Occult">
     <prerequisite>
       <essence id="Essence" value="3"/>
       <trait id="Occult" value="3"/>
@@ -125,23 +125,7 @@
     <charmtype type="Special"/>
     <source source="2nd Edition" page="187"/>
   </genericCharm>
-  <!-- Solar Archery -->
-  <charm id="Solar.EssenceArrowAttack" exalt="Solar" group="Archery">
-    <prerequisite>
-      <essence id="Essence" value="2"/>
-      <trait id="Archery" value="2"/>
-    </prerequisite>
-    <cost>
-      <temporary>
-        <essence cost="2"/>
-      </temporary>
-    </cost>
-    <duration duration="Instant"/>
-    <charmtype type="Supplemental"/>
-    <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="188"/>
-  </charm>
+  <!-- Solar Archery --> 
   <charm id="Solar.ThereIsNoWind" exalt="Solar" group="Archery">
     <prerequisite>
       <essence id="Essence" value="1"/>
@@ -158,5 +142,123 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="Second Edition" page="187"/>
   </charm>
-  
+  <charm id="Solar.AccuracyWithoutDistance" exalt="Solar" group="Archery">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Archery" value="5"/>
+      <charmReference id="Solar.ThereIsNoWind"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="Second Edition" page="187"/>
+  </charm>
+  <charm id="Solar.ForcefulArrow" exalt="Solar" group="Archery">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Archery" value="4"/>
+      <charmReference id="Solar.ThereIsNoWind"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="Knockback" visualize="true"/>
+    <source source="Second Edition" page="187"/>
+  </charm>
+  <charm id="Solar.TranceUnhesitatingSpeed" exalt="Solar" group="Archery">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Archery" value="3"/>
+      <charmAttributeRequirement attribute="ExcellencyArchery" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2" text="or 4 motes per attack"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="ExtraAction"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="Second Edition" page="187"/>
+  </charm>
+  <charm id="Solar.ArrowStormTechnique" exalt="Solar" group="Archery">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Archery" value="5"/>
+      <charmReference id="Solar.TranceUnhesitatingSpeed"/>
+      <charmAttributeRequirement attribute="ExcellencyArchery" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="Combo-Basic" visualize="true"/>
+    <source source="Second Edition" page="187"/>
+  </charm>
+  <charm id="Solar.FlashingVengeanceDraw" exalt="Solar" group="Archery">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Archery" value="3"/>
+      <charmReference id="Solar.TranceUnhesitatingSpeed"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Combo-Basic" visualize="true"/>
+    <source source="Second Edition" page="188"/>
+  </charm>
+  charm id="Solar.EssenceArrowAttack" exalt="Solar" group="Archery">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Archery" value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="Second Edition" page="188"/>
+  </charm>
+  <charm id="Solar.PhantomArrowTechnique" exalt="Solar" group="Archery">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Archery" value="3"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="0"/>
+      </temporary>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Special"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="Second Edition" page="188"/>
+  </charm>
 </charmlist>
