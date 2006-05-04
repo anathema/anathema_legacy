@@ -58,6 +58,10 @@ public class CharmTypeBuilder {
         // Nothing to do
       }
 
+      public void visitPermanent(CharmType visitedType) {
+        // Nothing to do
+      }
+
       public void visitSupplemental(CharmType visitedType) {
         // Nothing to do
       }

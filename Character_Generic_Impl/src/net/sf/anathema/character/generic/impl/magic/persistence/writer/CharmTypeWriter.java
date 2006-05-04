@@ -60,6 +60,10 @@ public class CharmTypeWriter {
         // Nothing to do
       }
 
+      public void visitPermanent(CharmType visitedType) {
+        // Nothing to do
+      }
+
       public void visitSupplemental(CharmType visitedType) {
         // Nothing to do
       }
