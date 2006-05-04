@@ -39,6 +39,10 @@ public class CharmTypeStringBuilder implements ICharmTypeStringBuilder {
         public void visitSpecial(CharmType visitedType) {
           // Nothing to do
         }
+        
+        public void visitPermanent(CharmType visitedType) {
+          // Nothing to do
+        }
 
         public void visitSupplemental(CharmType visitedType) {
           // Nothing to do
