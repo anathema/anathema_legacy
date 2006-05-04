@@ -14,11 +14,12 @@ import net.sf.anathema.charmentry.persistence.CharmEntryPropertiesPersister;
 import net.sf.anathema.charmentry.view.CharmEntryView;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 
 import org.dom4j.DocumentException;
 
-public class CharmEntryPresenter {
+public class CharmEntryPresenter implements IPresenter {
 
   private final CharmEntryModel model;
   private final CharmEntryView view;
@@ -35,12 +36,18 @@ public class CharmEntryPresenter {
     basicDataPresenter.initPresentation();
     KeywordEntryPresenter keywordPresenter = new KeywordEntryPresenter(model, view.addKeywordView(), resources);
     keywordPresenter.initPresentation();
-    initPersistencePresentation(basicDataPresenter, keywordPresenter);
+    AttributeRequirementPresenter attributePresenter = new AttributeRequirementPresenter(
+        model,
+        view.addAttributeView(),
+        resources);
+    attributePresenter.initPresentation();
+    initPersistencePresentation(basicDataPresenter, keywordPresenter, attributePresenter);
   }
 
   private void initPersistencePresentation(
       final BasicDataPresenter basicDataPresenter,
-      final KeywordEntryPresenter keywordPresenter) {
+      final KeywordEntryPresenter keywordPresenter,
+      final AttributeRequirementPresenter attributePresenter) {
     final JButton button = view.addSaveButton(resources.getString("CharmEntry.Button.Save")); //$NON-NLS-1$
     button.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
@@ -51,6 +58,7 @@ public class CharmEntryPresenter {
           new CharmEntryPropertiesPersister().addPropertyInternal(characterType, charmData.getId(), charmData.getName());
           basicDataPresenter.charmAdded(charmData);
           keywordPresenter.charmAdded(charmData);
+          attributePresenter.charmAdded(charmData);
         }
         catch (IOException ex) {
           ex.printStackTrace();

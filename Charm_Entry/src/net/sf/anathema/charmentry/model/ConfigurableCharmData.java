@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
+import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -42,6 +43,7 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
   private ExaltedEdition edition;
   private final List<ICharmAttribute> keywords = new ArrayList<ICharmAttribute>();
   private final CharmTypeModel model = new CharmTypeModel();
+  private boolean excellencyRequired;
 
   public void setCharacterType(CharacterType type) {
     this.characterType = type;
@@ -139,10 +141,6 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
     throw new NotYetImplementedException();
   }
 
-  public ICharmAttributeRequirement[] getAttributeRequirements() {
-    throw new NotYetImplementedException();
-  }
-
   public void setPrimaryPrerequisite(IGenericTrait prerequisite) {
     removePrerequisiteByType(primaryType);
     this.primaryType = prerequisite.getType();
@@ -185,5 +183,17 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
 
   public CharmTypeModel getCharmTypeModel() {
     return model;
+  }
+
+  public void setExcellencyRequired(boolean required) {
+    this.excellencyRequired = required;
+  }
+
+  public ICharmAttributeRequirement[] getAttributeRequirements() {
+    if (!excellencyRequired) {
+      return new ICharmAttributeRequirement[0];
+    }
+    return new ICharmAttributeRequirement[] { new CharmAttributeRequirement(new CharmAttribute("Excellency" //$NON-NLS-1$
+        + primaryType.getId(), false), 1) };
   }
 }

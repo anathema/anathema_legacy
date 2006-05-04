@@ -321,4 +321,9 @@ public class CharmEntryModel implements ISimpleSpecialsArbitrator, IReflexiveSpe
   public void addModelChangeListener(IChangeListener listener) {
     modelControl.addChangeListener(listener);
   }
+
+  public void setRequiresExcellency(boolean required) {
+    charmData.setExcellencyRequired(required);
+
+  }
 }

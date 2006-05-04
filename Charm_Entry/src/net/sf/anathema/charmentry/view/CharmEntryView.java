@@ -8,16 +8,17 @@ import javax.swing.JPanel;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.sf.anathema.charmentry.presenter.IAttributeRequirementsView;
 import net.sf.anathema.charmentry.presenter.IKeywordView;
 
 public class CharmEntryView {
 
-  private final JPanel content = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel content = new JPanel(new GridDialogLayout(3, false));
 
   public BasicDataView addBasicDataView() {
     BasicDataView view = new BasicDataView();
     GridDialogLayoutData data = new GridDialogLayoutData();
-    data.setHorizontalSpan(2);
+    data.setHorizontalSpan(3);
     content.add(view.getContent(), data);
     return view;
   }
@@ -39,5 +40,11 @@ public class CharmEntryView {
     data.setVerticalAlignment(GridAlignment.BEGINNING);
     content.add(button, data);
     return button;
+  }
+
+  public IAttributeRequirementsView addAttributeView() {
+    AttributeRequirementsView view = new AttributeRequirementsView();
+    content.add(view.getComponent());
+    return view;
   }
 }
