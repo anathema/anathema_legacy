@@ -28,6 +28,12 @@ public enum CharmType implements IIdentificate {
       visitor.visitSupplemental(this);
     }
   },
+  Permanent() {
+    @Override
+    public void accept(ICharmTypeVisitor visitor) {
+      visitor.visitPermanent(this);
+    }
+  },
   Special() {
     @Override
     public void accept(ICharmTypeVisitor visitor) {

@@ -12,5 +12,7 @@ public interface ICharmTypeVisitor {
 
   public void visitSupplemental(CharmType visitedType);
 
+  public void visitPermanent(CharmType visitedType);
+
   public void visitSpecial(CharmType visitedType);
 }
