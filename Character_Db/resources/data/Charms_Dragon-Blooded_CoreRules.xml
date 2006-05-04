@@ -795,12 +795,10 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
-        <essence cost="None"/>
-      </temporary>
+      <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="The Dragon-Blooded" page="195"/>
   </charm>
   <charm id="Dragon-Blooded.UnsleepingEarthMeditation" exalt="Dragon-Blooded" group="Endurance">
