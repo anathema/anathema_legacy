@@ -7,12 +7,10 @@
       <trait id="Occult" value="3"/>
     </prerequisite>
     <cost>
-      <temporary>
-        <essence cost="0"/>
-      </temporary>
+      <temporary/>
     </cost>
     <duration duration="Instant"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="Second Edtion" page="220"/>
   </charm>
   <charm id="Solar.CelestialCircleSorcery" exalt="Solar" group="Occult">
@@ -22,12 +20,10 @@
       <charmReference id="Solar.TerrestrialCircleSorcery"/>
     </prerequisite>
     <cost>
-      <temporary>
-        <essence cost="0"/>
-      </temporary>
+      <temporary/>
     </cost>
     <duration duration="Instant"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="Second Edtion" page="220"/>
   </charm>
   <charm id="Solar.SolarCircleSorcery" exalt="Solar" group="Occult">
@@ -36,12 +32,10 @@
       <trait id="Occult" value="5"/>
     </prerequisite>
     <cost>
-      <temporary>
-        <essence cost="0"/>
-      </temporary>
+      <temporary/>
     </cost>
     <duration duration="Instant"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="Second Edtion" page="221"/>
   </charm>
   <!-- Solar Generics -->
@@ -122,7 +116,7 @@
       <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="2nd Edition" page="187"/>
   </genericCharm>
   <!-- Solar Archery --> 
@@ -253,11 +247,11 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="0"/>
+        <essence cost="-(1 mote per attack)"/>
       </temporary>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="Second Edition" page="188"/>
   </charm>

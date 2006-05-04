@@ -60,14 +60,6 @@
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
     <source source="Exalted" page="155"/>
-    <ruleset name="PowerCombat">
-      <cost>
-        <temporary>
-          <essence cost="3"/>
-        </temporary>
-      </cost>
-      <source source="Player's Guide" page="206"/>
-    </ruleset>
   </charm>
   <charm id="Solar.ThereIsNoWind" exalt="Solar" group="Archery">
     <prerequisite>
@@ -187,9 +179,6 @@
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="157"/>
-    <ruleset name="PowerCombat">
-      <source source="Player's Guide" page="206"/>
-    </ruleset>
   </charm>
   <charm id="Solar.RainFeatheredDeath" exalt="Solar" group="Archery">
     <prerequisite>
@@ -234,9 +223,6 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <source source="Exalted" page="157"/>
-    <ruleset name="PowerCombat">
-      <source source="Player's Guide" page="206"/>
-    </ruleset>
   </charm>
   <charm id="Solar.Ox-StunningBlow" exalt="Solar" group="Brawl">
     <prerequisite>
@@ -287,9 +273,6 @@
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="158"/>
-    <ruleset name="PowerCombat">
-      <source source="Player's Guide" page="206"/>
-    </ruleset>
   </charm>
   <charm id="Solar.SledgehammerFistPunch" exalt="Solar" group="Brawl">
     <prerequisite>
@@ -304,11 +287,6 @@
     <duration duration="One turn"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="159"/>
-    <ruleset name="PowerCombat">
-      <duration duration="Instant"/>
-      <charmtype type="Supplemental"/>
-      <source source="Player's Guide" page="206"/>
-    </ruleset>
   </charm>
   <charm id="Solar.CrashingWaveThrow" exalt="Solar" group="Brawl">
     <prerequisite>
@@ -324,15 +302,6 @@
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="159"/>
-    <ruleset name="PowerCombat">
-      <cost>
-        <temporary>
-          <essence cost="3"/>
-        </temporary>
-      </cost>
-      <charmtype type="Supplemental"/>
-      <source source="Player's Guide" page="206"/>
-    </ruleset>
   </charm>
   <charm id="Solar.HammeronIronTechnique" exalt="Solar" group="Brawl">
     <prerequisite>
@@ -431,14 +400,6 @@
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
     <source source="Exalted" page="163"/>
-    <ruleset name="PowerCombat">
-      <cost>
-        <temporary>
-          <essence cost="2"/>
-        </temporary>
-      </cost>
-      <source source="Player's Guide" page="208"/>
-    </ruleset>
   </charm>
   <charm id="Solar.HungryTigerTechnique" exalt="Solar" group="Melee">
     <prerequisite>
@@ -469,14 +430,6 @@
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
     <source source="Exalted" page="163"/>
-    <ruleset name="PowerCombat">
-      <cost>
-        <temporary>
-          <essence cost="3" text="per attack"/>
-        </temporary>
-      </cost>
-      <source source="Player's Guide" page="208"/>
-    </ruleset>
   </charm>
   <charm id="Solar.FireandStonesStrike" exalt="Solar" group="Melee">
     <prerequisite>
@@ -554,15 +507,6 @@
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="164"/>
-    <ruleset name="PowerCombat">
-      <cost>
-        <temporary>
-          <essence cost="1"/>
-          <willpoer cost="1"/>
-        </temporary>
-      </cost>
-      <source source="Player's Guide" page="208"/>
-    </ruleset>
   </charm>
   <charm id="Solar.SummoningLoyalSteel" exalt="Solar" group="Melee">
     <prerequisite>
@@ -607,9 +551,6 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="Exalted" page="166"/>
-    <ruleset name="PowerCombat">
-      <source source="Player's Guide" page="208"/>
-    </ruleset>
   </charm>
   <charm id="Solar.DippingSwallowDefense" exalt="Solar" group="Melee">
     <prerequisite>
@@ -704,9 +645,6 @@
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="166"/>
-    <ruleset name="PowerCombat">
-      <source source="Player's Guide" page="208"/>
-    </ruleset>
   </charm>
   <charm id="Solar.SolarCounterattack" exalt="Solar" group="Melee">
     <prerequisite>
@@ -882,7 +820,7 @@
       <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="Exalted" page="170"/>
   </charm>
   <charm id="Solar.ArmoredScout'sInvigoration" exalt="Solar" group="Endurance">
@@ -898,14 +836,6 @@
     <duration duration="One day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="170"/>
-    <ruleset name="PowerCombat">
-      <cost>
-        <temporary>
-          <essence cost="3" text="per mobility and fatigue negated"/>
-        </temporary>
-      </cost>
-      <source source="Player's Guide" page="207"/>
-    </ruleset>
   </charm>
   <charm id="Solar.Front-LineWarrior'sStamina" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -920,17 +850,7 @@
     </cost>
     <duration duration="One day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="170"/>
-    <ruleset name="PowerCombat">
-      <cost>
-        <temporary>
-          <essence cost="5"/>
-          <willpower cost="1"/>
-        </temporary>
-      </cost>
-      <duration duration="Special"/>
-      <source source="Player's Guide" page="207"/>
-    </ruleset>
+    <source source="Exalted" page="170"/>  
   </charm>
   <charm id="Solar.FierySolarChakram" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -946,15 +866,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="170"/>
-    <ruleset name="PowerCombat">
-      <cost>
-        <temporary>
-          <essence cost="4"/>
-        </temporary>
-      </cost>
-      <source source="Player's Guide" page="209"/>
-    </ruleset>
+    <source source="Exalted" page="170"/> 
   </charm>
   <charm id="Solar.Essence-GatheringTemper" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -969,9 +881,6 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="Exalted" page="171"/>
-    <ruleset name="PowerCombat">
-      <source source="Player's Guide" page="207"/>
-    </ruleset>
   </charm>
   <charm id="Solar.BattleFuryFocus" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -1017,17 +926,6 @@
     <duration duration="One day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="171"/>
-    <ruleset name="PowerCombat">
-      <cost>
-        <temporary>
-          <essence cost="6"/>
-          <willpower cost="1"/>
-          <health cost="1"/>
-        </temporary>
-      </cost>
-      <duration duration="(Essence + Endurance) hours"/>
-      <source source="Player's Guide" page="207"/>
-    </ruleset>
   </charm>
   <charm id="Solar.BloodthirstySword-DancerSpirit" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -1247,9 +1145,6 @@
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="175"/>
-    <ruleset name="PowerCombat">
-      <source source="Player's Guide" page="208"/>
-    </ruleset>
   </charm>
   <charm id="Solar.UnderlingPromotingTouch" exalt="Solar" group="Presence">
     <prerequisite>
@@ -1298,9 +1193,6 @@
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="176"/>
-    <ruleset name="PowerCombat">
-      <source source="Player's Guide" page="208"/>
-    </ruleset>
   </charm>
   <charm id="Solar.DurabilityOakMeditation" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1315,14 +1207,6 @@
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="176"/>
-    <ruleset name="PowerCombat">
-      <cost>
-        <temporary>
-          <essence cost="1" test="per 2B soak"/>
-        </temporary>
-      </cost>
-      <source source="Player's Guide" page="208"/>
-    </ruleset>
   </charm>
   <charm id="Solar.IronSkinConcentration" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1339,15 +1223,6 @@
     <duration duration="One scene"/>
     <charmtype type="Reflexive"/>
     <source source="Exalted" page="176"/>
-    <ruleset name="PowerCombat">
-      <cost>
-        <temporary>
-          <essence cost="3"/>
-        </temporary>
-      </cost>
-      <duration duration="Instant"/>
-      <source source="Player's Guide" page="209"/>
-    </ruleset>
   </charm>
   <charm id="Solar.SpiritStrengthensSkin" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1363,16 +1238,6 @@
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="176"/>
-    <ruleset name="PowerCombat">
-      <cost>
-        <temporary>
-          <essence cost="2"/>
-          <willpower cost="1"/>
-        </temporary>
-      </cost>
-      <charmtype type="Reflexive"/>
-      <source source="Player's Guide" page="209"/>
-    </ruleset>
   </charm>
   <charm id="Solar.UnfailingTortoiseTechnique" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1388,14 +1253,6 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="Exalted" page="177"/>
-    <ruleset name="PowerCombat">
-      <cost>
-        <temporary>
-          <essence cost="2"/>
-        </temporary>
-      </cost>
-      <source source="Player's Guide" page="209"/>
-    </ruleset>
   </charm>
   <charm id="Solar.AdamantSkinTechnique" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1443,14 +1300,6 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="Exalted" page="178"/>
-    <ruleset name="PowerCombat">
-      <cost>
-        <temporary>
-          <essence cost="3"/>
-        </temporary>
-      </cost>
-      <source source="Player's Guide" page="209"/>
-    </ruleset>
   </charm>
   <charm id="Solar.Hauberk-SummoningGesture" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1482,9 +1331,6 @@
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="178"/>
-    <ruleset name="PowerCombat">
-      <source source="Player's Guide" page="209"/>
-    </ruleset>
   </charm>
   <charm id="Solar.Illness-ResistingMeditation" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -2275,9 +2121,6 @@
     <duration duration="One turn"/>
     <charmtype type="Reflexive"/>
     <source source="Exalted" page="193"/>
-    <ruleset name="PowerCombat">
-      <source source="Player's Guide" page="206"/>
-    </ruleset>
   </charm>
   <charm id="Solar.LightningSpeed" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2359,15 +2202,6 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="Exalted" page="194"/>
-    <ruleset name="PowerCombat">
-      <cost>
-        <temporary>
-          <essence cost="3"/>
-        </temporary>
-      </cost>
-      <duration duration="One scene"/>
-      <source source="Player's Guide" page="206"/>
-    </ruleset>
   </charm>
   <charm id="Solar.LeapingTigerAttack" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2404,15 +2238,6 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <source source="Exalted" page="194"/>
-    <ruleset name="PowerCombat">
-      <cost>
-        <temporary>
-          <essence cost="5"/>
-        </temporary>
-      </cost>
-      <duration duration="One scene"/>
-      <source source="Player's Guide" page="206"/>
-    </ruleset>
   </charm>
   <charm id="Solar.IncreasingStrengthExercise" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -3852,7 +3677,7 @@
       <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="Caste Book: Zenith" page="72"/>
   </charm>
   <charm id="Solar.EnvironmentalHazard-ResistingMeditationWind" exalt="Solar" group="Resistance">
@@ -3864,7 +3689,7 @@
       <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="Caste Book: Zenith" page="72"/>
   </charm>
   <charm id="Solar.EnvironmentalHazard-ResistingMeditationCold" exalt="Solar" group="Resistance">
@@ -3876,7 +3701,7 @@
       <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="Caste Book: Zenith" page="72"/>
   </charm>
   <charm id="Solar.EnvironmentalHazard-ResistingMeditationHeat" exalt="Solar" group="Resistance">
@@ -3888,7 +3713,7 @@
       <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="Caste Book: Zenith" page="72"/>
   </charm>
   <charm id="Solar.EnvironmentalHazard-ResistingMeditationAcid" exalt="Solar" group="Resistance">
@@ -3900,7 +3725,7 @@
       <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="Caste Book: Zenith" page="72"/>
   </charm>
   <charm id="Solar.Alcohol-ResistingPrana" exalt="Solar" group="Resistance">
@@ -4621,9 +4446,6 @@
     <duration duration="One scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Night" page="71"/>
-    <ruleset name="PowerCombat">
-      <source source="Player's Guide" page="208"/>
-    </ruleset>
   </charm>
   <charm id="Solar.FishSwimmingTechnique" exalt="Solar" group="Athletics">
     <prerequisite>
