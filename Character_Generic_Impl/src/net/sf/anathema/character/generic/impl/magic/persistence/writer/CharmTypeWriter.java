@@ -21,8 +21,6 @@ import org.dom4j.Element;
 
 public class CharmTypeWriter {
 
-
-
   public void write(ICharmData charm, Element charmElement) {
     final Element typeElement = charmElement.addElement(TAG_CHARMTYPE);
     final ICharmTypeModel charmTypeModel = charm.getCharmTypeModel();
@@ -37,6 +35,9 @@ public class CharmTypeWriter {
 
       public void visitReflexive(CharmType visitedType) {
         IReflexiveSpecialsModel model = (IReflexiveSpecialsModel) charmTypeModel.getSpecialsModel();
+        if (model == null) {
+          return;
+        }
         Element specialElement = typeElement.addElement(TAG_SPECIAL);
         ElementUtilities.addAttribute(specialElement, ATTRIB_PRIMARY_STEP, model.getPrimaryStep());
         if (model.getSecondaryStep() != null) {
@@ -46,6 +47,9 @@ public class CharmTypeWriter {
 
       public void visitSimple(CharmType visitedType) {
         ISimpleSpecialsModel model = (ISimpleSpecialsModel) charmTypeModel.getSpecialsModel();
+        if (model == null) {
+          return;
+        }
         Element specialElement = typeElement.addElement(TAG_SPECIAL);
         ElementUtilities.addAttribute(specialElement, ATTRIB_SPEED, model.getSpeed());
         specialElement.addAttribute(ATTRIB_TURN_TYPE, model.getTurnType().name());
