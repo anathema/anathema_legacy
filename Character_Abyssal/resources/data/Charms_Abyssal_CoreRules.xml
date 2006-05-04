@@ -847,12 +847,10 @@
       <essence value="1"/>
     </prerequisite>
     <cost>
-      <temporary>
-        <essence cost="None"/>
-      </temporary>
+      <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="The Abyssals" page="174"/>
   </charm>
   <charm id="Abyssal.GhostArmorPrana" exalt="Abyssal" group="Endurance">
@@ -921,12 +919,10 @@
       <charmReference id="Abyssal.Pain-EatingFocus"/>
     </prerequisite>
     <cost>
-      <temporary>
-        <essence cost="None"/>
-      </temporary>
+      <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="The Abyssals" page="175"/>
   </charm>
   <charm id="Abyssal.TirelessSentinelTechnique" exalt="Abyssal" group="Endurance">
@@ -951,12 +947,10 @@
       <charmReference id="Abyssal.TirelessSentinelTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
-        <essence cost="None"/>
-      </temporary>
+      <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="The Abyssals" page="175"/>
   </charm>
   <charm id="Abyssal.Agony-SavoringSpirit" exalt="Abyssal" group="Endurance">
@@ -1244,12 +1238,10 @@
       <charmReference id="Abyssal.Spirit-HardenedFrame"/>
     </prerequisite>
     <cost>
-      <temporary>
-        <essence cost="None"/>
-      </temporary>
+      <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="The Abyssals" page="182"/>
   </charm>
   <charm id="Abyssal.BoneArsenalMethod" exalt="Abyssal" group="Resistance">
@@ -1337,12 +1329,10 @@
       <charmReference id="Abyssal.SnakeBitesItsTail"/>
     </prerequisite>
     <cost>
-      <temporary>
-        <essence cost="None"/>
-      </temporary>
+      <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="The Abyssals" page="183"/>
   </charm>
   <charm id="Abyssal.Void-BanishedMail" exalt="Abyssal" group="Resistance">
@@ -1382,12 +1372,10 @@
       <essence value="2"/>
     </prerequisite>
     <cost>
-      <temporary>
-        <essence cost="None"/>
-      </temporary>
+      <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="The Abyssals" page="184"/>
   </charm>
   <charm id="Abyssal.SuperiorPredatorStyle" exalt="Abyssal" group="Survival">
@@ -1411,12 +1399,10 @@
       <charmReference id="Abyssal.EssenceEngorgementTechnique"/>
     </prerequisite>
     <cost>
-      <temporary>
-        <essence cost="None"/>
-      </temporary>
+      <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="The Abyssals" page="184"/>
   </charm>
   <charm id="Abyssal.FetterBeast" exalt="Abyssal" group="Survival">
@@ -1456,12 +1442,10 @@
       <charmReference id="Abyssal.SuperiorPredatorStyle"/>
     </prerequisite>
     <cost>
-      <temporary>
-        <essence cost="None"/>
-      </temporary>
+      <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="The Abyssals" page="186"/>
   </charm>
   <charm id="Abyssal.UnderworldForagingTechnique" exalt="Abyssal" group="Survival">
@@ -2021,12 +2005,10 @@
       <charmReference id="Abyssal.Flesh-MendingDiscipline"/>
     </prerequisite>
     <cost>
-      <temporary>
-        <essence cost="None"/>
-      </temporary>
+      <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="The Abyssals" page="196"/>
   </charm>
   <charm id="Abyssal.CrimsonWaterfallAttack" exalt="Abyssal" group="Medicine">
@@ -2505,11 +2487,11 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="Special"/>
+        <essence cost="-(1 mote)"/>
       </temporary>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="The Abyssals" page="205"/>
   </charm>
   <charm id="Abyssal.SuperiorSmell&amp;TasteTechnique" exalt="Abyssal" group="Awareness">
@@ -2549,12 +2531,10 @@
       <charmReference id="Abyssal.FivefoldSensoryExercise"/>
     </prerequisite>
     <cost>
-      <temporary>
-        <essence cost="None"/>
-      </temporary>
+      <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="The Abyssals" page="205"/>
   </charm>
   <charm id="Abyssal.IncomparableHearing&amp;TouchTechnique" exalt="Abyssal" group="Awareness">
