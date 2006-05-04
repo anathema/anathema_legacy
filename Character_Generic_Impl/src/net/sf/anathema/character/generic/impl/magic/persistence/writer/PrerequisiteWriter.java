@@ -1,7 +1,10 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.writer;
 
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ATTRIBUTE;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_COUNT;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_ID;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_VALUE;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM_ATTRIBUTE_REQUIREMENT;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM_REFERENCE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_ESSENCE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_PREREQUISITE_LIST;
@@ -11,6 +14,7 @@ import java.util.Set;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
+import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -26,6 +30,15 @@ public class PrerequisiteWriter {
       writeTrait(trait, listElement.addElement(TAG_TRAIT));
     }
     writeParentCharms(charm.getParentCharms(), listElement);
+    writeRequiredAttributes(charm.getAttributeRequirements(), listElement);
+  }
+
+  private void writeRequiredAttributes(ICharmAttributeRequirement[] attributeRequirements, Element listElement) {
+    for (ICharmAttributeRequirement requirement : attributeRequirements) {
+      Element requirementElement = listElement.addElement(TAG_CHARM_ATTRIBUTE_REQUIREMENT);
+      requirementElement.addAttribute(ATTRIB_ATTRIBUTE, requirement.getAttribute().getId());
+      ElementUtilities.addAttribute(requirementElement, ATTRIB_COUNT, requirement.getCount());
+    }
   }
 
   private void writeEssence(ICharmData charm, Element listElement) throws PersistenceException {
