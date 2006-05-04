@@ -39,6 +39,7 @@ public class CharacterCoreModule extends AbstractAnathemaModule {
     resources.addStringResourceHandler(createStringProvider("Lunar", resources.getLocale())); //$NON-NLS-1$
     resources.addStringResourceHandler(createStringProvider("Charms_Lunar", resources.getLocale())); //$NON-NLS-1$
     resources.addStringResourceHandler(createStringProvider("Charms_Solar", resources.getLocale())); //$NON-NLS-1$
+    resources.addStringResourceHandler(createStringProvider("Charms_Solar_SecondEdition", resources.getLocale())); //$NON-NLS-1$
     resources.addStringResourceHandler(createStringProvider("CharacterControl", resources.getLocale())); //$NON-NLS-1$
     resources.addStringResourceHandler(createStringProvider("Sidereal", resources.getLocale())); //$NON-NLS-1$
     resources.addStringResourceHandler(createStringProvider("Charms_Sidereal", resources.getLocale())); //$NON-NLS-1$       
