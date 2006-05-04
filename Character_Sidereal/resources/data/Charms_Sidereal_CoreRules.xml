@@ -10,7 +10,7 @@
       <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="The Sidereals" page="132"/>
   </charm>
   <charm id="Sidereal.UnsweringJuggernautPrinciple" exalt="Sidereal" group="Endurance">
@@ -501,7 +501,7 @@
       <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="The Sidereals" page="144"/>
   </charm>
   <charm id="Sidereal.Destiny-KnittingEntanglement" exalt="Sidereal" group="Craft">
@@ -528,7 +528,7 @@
       <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="The Sidereals" page="144"/>
   </charm>
   <charm id="Sidereal.MendingWarpedDesigns" exalt="Sidereal" group="Craft">
@@ -718,7 +718,7 @@
       <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="The Sidereals" page="149"/>
   </charm>
   <charm id="Sidereal.PerfectioninLife" exalt="Sidereal" group="Performance">
@@ -826,7 +826,7 @@
       <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="The Sidereals" page="151"/>
   </charm>
   <charm id="Sidereal.ShunTheSmilingLady" exalt="Sidereal" group="Socialize">
@@ -1214,7 +1214,7 @@
       <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="The Sidereals" page="158"/>
   </charm>
   <charm id="Sidereal.PresenceinAbscenceTechnique" exalt="Sidereal" group="Presence">
@@ -2158,7 +2158,7 @@
       <temporary/>
     </cost>
     <duration duration="Permanent"/>
-    <charmtype type="Special"/>
+    <charmtype type="Permanent"/>
     <source source="The Sidereals" page="177"/>
   </charm>
   <charm id="Sidereal.IcyHand" exalt="Sidereal" group="Bureaucracy">
