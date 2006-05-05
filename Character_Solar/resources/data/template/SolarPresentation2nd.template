@@ -1,0 +1,8 @@
+<presentation>
+  <color red="247" green="234" blue="130" />
+  <ballResource type="Solar" />
+  <newResources>
+    <newAction>CharacterGenerator.NewCharacter.Solar.Name</newAction>
+  </newResources>
+  <charmPresentation uses="template/SolarCharmPresentation2nd.template"/>
+</presentation>
