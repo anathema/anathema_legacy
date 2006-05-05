@@ -9,7 +9,6 @@ import javax.swing.ListCellRenderer;
 import javax.swing.border.TitledBorder;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.charmtree.presenter.view.ICascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmGroupChangeListener;
 import net.sf.anathema.charmtree.presenter.view.ICharmTreeView;
@@ -72,10 +71,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
     groupComboBox.setPreferredSize(preferredSize);
     groupComboBox.addObjectSelectionChangedListener(new IObjectValueChangedListener() {
       public void valueChanged(Object newValue) {
-        selectionListener.valueChanged(
-            groupComboBox.getSelectedObject(),
-            typeComboBox.getSelectedObject(),
-            ExaltedEdition.FirstEdition);
+        selectionListener.valueChanged(groupComboBox.getSelectedObject(), typeComboBox.getSelectedObject());
       }
     });
     panel.add(groupComboBox.getComponent(), BorderLayout.CENTER);

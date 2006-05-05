@@ -42,10 +42,10 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     this.arbitrator = arbitrator;
   }
 
-  public final void valueChanged(Object cascade, IIdentificate type, IExaltedEdition edition) {
+  public final void valueChanged(Object cascade, IIdentificate type) {
     charmTreeView.getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     try {
-      loadCharmTree((ICharmGroup) cascade, type, edition);
+      loadCharmTree((ICharmGroup) cascade, type);
       return;
     }
     catch (DocumentException e) {
@@ -70,10 +70,11 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     return charmsToDisplay;
   }
 
-  private void loadCharmTree(ICharmGroup charmGroup, IIdentificate type, IExaltedEdition edition)
-      throws DocumentException {
+  protected abstract IExaltedEdition getEdition();
+
+  private void loadCharmTree(ICharmGroup charmGroup, IIdentificate type) throws DocumentException {
     currentGroup = charmGroup;
-    modifyCharmVisuals(type, edition);
+    modifyCharmVisuals(type);
     if (charmGroup == null) {
       charmTreeView.loadCascade(null);
     }
@@ -81,7 +82,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
       Set<ICharm> displayCharms = getDisplayCharms(charmGroup);
       ICharmPresentationProperties presentationProperties = templateRegistry.getDefaultTemplate(
           charmGroup.getCharacterType(),
-          edition).getPresentationProperties().getCharmPresentationProperties();
+          getEdition()).getPresentationProperties().getCharmPresentationProperties();
       Dimension dimension = presentationProperties.getCharmDimension();
       viewProperties.setDimension(dimension);
       charmTreeView.setProperties(viewProperties);
@@ -97,7 +98,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     return currentGroup;
   }
 
-  protected abstract void modifyCharmVisuals(IIdentificate type, IExaltedEdition edition);
+  protected abstract void modifyCharmVisuals(IIdentificate type);
 
   public abstract void updateColors();
 }
