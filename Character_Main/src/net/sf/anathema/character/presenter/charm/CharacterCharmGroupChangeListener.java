@@ -13,21 +13,29 @@ public class CharacterCharmGroupChangeListener extends AbstractCharmGroupChangeL
 
   private final ICharacterCharmSelectionPresenter presenter;
   private final ICharmSelectionView selectionView;
+  private final IExaltedEdition edition;
 
   public CharacterCharmGroupChangeListener(
       ICharmSelectionView selectionView,
       ICharmTreeViewProperties viewProperties,
       ICharacterCharmSelectionPresenter presenter,
       ITemplateRegistry templateRegistry,
-      ICharmGroupArbitrator arbitrator) {
+      ICharmGroupArbitrator arbitrator,
+      IExaltedEdition edition) {
     super(selectionView.getCharmTreeView(), viewProperties, templateRegistry, arbitrator);
     this.selectionView = selectionView;
     this.presenter = presenter;
+    this.edition = edition;
   }
 
   @Override
-  protected void modifyCharmVisuals(IIdentificate type, IExaltedEdition edition) {
+  protected void modifyCharmVisuals(IIdentificate type) {
     // Nothing to do
+  }
+
+  @Override
+  protected IExaltedEdition getEdition() {
+    return edition;
   }
 
   @Override
