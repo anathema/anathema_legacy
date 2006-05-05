@@ -131,12 +131,12 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
         if (selectedRuleset != null) {
           currentEdition = selectedRuleset.getEdition();
         }
-        selectionListener.setEdition(currentEdition);
         selectedRuleset = (IExaltedRuleSet) newValue;
         viewProperties.setCharmTree(getCharmTree(selectedType));
         if (selectedRuleset.getEdition() == currentEdition) {
           return;
         }
+        selectionListener.setEdition(selectedRuleset.getEdition());
         final IIdentificate[] cascadeTypes = getCharmTreeMap(selectedRuleset).keySet().toArray(new IIdentificate[0]);
         Arrays.sort(cascadeTypes, new Comparator<IIdentificate>() {
           public int compare(IIdentificate o1, IIdentificate o2) {
