@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.SystemColor;
 
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
@@ -18,6 +19,7 @@ public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeLis
   private final CascadeCharmTreeViewProperties viewProperties;
   private final ITemplateRegistry templateRegistry;
   private final ICascadePresenter presenter;
+  private IExaltedEdition edition = ExaltedEdition.FirstEdition;
 
   public CascadeCharmGroupChangeListener(
       ICascadeView cascadeView,
@@ -32,12 +34,17 @@ public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeLis
   }
 
   @Override
-  protected final void modifyCharmVisuals(IIdentificate type, IExaltedEdition edition) {
+  protected IExaltedEdition getEdition() {
+    return edition;
+  }
+
+  @Override
+  protected final void modifyCharmVisuals(IIdentificate type) {
     viewProperties.setCharmTree(presenter.getCharmTree(type));
     if (type instanceof CharacterType) {
       IPresentationProperties presentationProperties = templateRegistry.getDefaultTemplate(
           (CharacterType) type,
-          edition).getPresentationProperties();
+          getEdition()).getPresentationProperties();
       cascadeView.setBackgroundColor(presentationProperties.getColor());
     }
     else {
@@ -50,5 +57,9 @@ public class CascadeCharmGroupChangeListener extends AbstractCharmGroupChangeLis
     for (ICharm charm : getCurrentGroup().getAllCharms()) {
       cascadeView.setCharmVisuals(charm.getId(), Color.WHITE);
     }
+  }
+
+  public void setEdition(IExaltedEdition edition) {
+    this.edition = edition;
   }
 }

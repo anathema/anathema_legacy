@@ -131,6 +131,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
         if (selectedRuleset != null) {
           currentEdition = selectedRuleset.getEdition();
         }
+        selectionListener.setEdition(currentEdition);
         selectedRuleset = (IExaltedRuleSet) newValue;
         viewProperties.setCharmTree(getCharmTree(selectedType));
         if (selectedRuleset.getEdition() == currentEdition) {
