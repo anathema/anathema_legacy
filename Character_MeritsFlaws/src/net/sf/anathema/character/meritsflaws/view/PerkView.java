@@ -22,7 +22,6 @@ import net.sf.anathema.character.meritsflaws.presenter.IMeritsFlawsViewPropertie
 import net.sf.anathema.character.meritsflaws.presenter.IPerkListener;
 import net.sf.anathema.character.meritsflaws.presenter.view.IPerkDetailsView;
 import net.sf.anathema.character.meritsflaws.presenter.view.IPerkView;
-import net.sf.anathema.framework.presenter.view.ObjectSelectionView;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -31,6 +30,7 @@ import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.list.SmartJList;
 import net.sf.anathema.lib.gui.list.actionview.ActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.SingleSelectionActionAddableListView;
+import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 
 public class PerkView implements IPerkView {
 
