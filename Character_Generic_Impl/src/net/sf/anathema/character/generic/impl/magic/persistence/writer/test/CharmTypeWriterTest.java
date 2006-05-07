@@ -73,6 +73,10 @@ public class CharmTypeWriterTest extends BasicTestCase {
       public Integer getSecondaryStep() {
         return null;
       }
+
+      public boolean isSplitEnabled() {
+        return false;
+      }
     };
     charm.getCharmTypeModel().setSpecialModel(model);
     writer.write(charm, element);
@@ -91,6 +95,10 @@ public class CharmTypeWriterTest extends BasicTestCase {
 
       public Integer getSecondaryStep() {
         return 4;
+      }
+
+      public boolean isSplitEnabled() {
+        return true;
       }
     };
     charm.getCharmTypeModel().setSpecialModel(model);
