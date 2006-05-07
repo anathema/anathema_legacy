@@ -7,15 +7,15 @@ import javax.swing.ListCellRenderer;
 
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
-public interface IChangeableJComboBox<T> {
+public interface IChangeableJComboBox {
 
   public JComboBox getComponent();
 
-  public void setSelectedObject(T object);
+  public void setSelectedObject(Object object);
 
-  public T getSelectedObject();
+  public Object getSelectedObject();
 
-  void setObjects(T[] objects);
+  void setObjects(Object[] objects);
 
   public void addObjectSelectionChangedListener(IObjectValueChangedListener listener);
 

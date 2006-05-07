@@ -12,7 +12,7 @@ import javax.swing.ListCellRenderer;
 import net.sf.anathema.lib.UnselectingComboBoxModel;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
-public class ChangeableJComboBox<T> implements IChangeableJComboBox<T> {
+public class ChangeableJComboBox implements IChangeableJComboBox {
 
   private JComboBox comboBox;
   private final Map<IObjectValueChangedListener, ItemListener> listenersByListener = new HashMap<IObjectValueChangedListener, ItemListener>();
@@ -27,11 +27,11 @@ public class ChangeableJComboBox<T> implements IChangeableJComboBox<T> {
     return comboBox;
   }
 
-  public void setSelectedObject(T object) {
+  public void setSelectedObject(Object object) {
     comboBox.setSelectedItem(object);
   }
 
-  public void setObjects(T[] objects) {
+  public void setObjects(Object[] objects) {
     Object selectedItem = comboBox.getSelectedItem();
     UnselectingComboBoxModel model = (UnselectingComboBoxModel) comboBox.getModel();
     model.removeAllElements();
@@ -56,9 +56,8 @@ public class ChangeableJComboBox<T> implements IChangeableJComboBox<T> {
     listenersByListener.put(listener, itemListener);
   }
 
-  @SuppressWarnings("unchecked")
-  public T getSelectedObject() {
-    return (T) comboBox.getSelectedItem();
+  public Object getSelectedObject() {
+    return comboBox.getSelectedItem();
   }
 
   public void setRenderer(ListCellRenderer renderer) {
