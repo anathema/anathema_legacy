@@ -14,7 +14,7 @@ public class SimpleSpecialsEntryModel implements ISimpleSpecialsEntryModel {
 
   public SimpleSpecialsEntryModel(ISimpleSpecialsArbitrator arbitrator) {
     this.arbitrator = arbitrator;
-    arbitrator.addModelChangeListener(new IChangeListener() {
+    arbitrator.addModelListener(new IChangeListener() {
       public void changeOccured() {
         control.fireChangedEvent();
       }
@@ -55,5 +55,9 @@ public class SimpleSpecialsEntryModel implements ISimpleSpecialsEntryModel {
 
   public void addChangeListener(IChangeListener listener) {
     control.addChangeListener(listener);
+  }
+
+  public boolean isActive() {
+    return arbitrator.isSimpleSpecialsAvailable();
   }
 }

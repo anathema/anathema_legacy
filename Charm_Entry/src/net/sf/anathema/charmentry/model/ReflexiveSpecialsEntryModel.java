@@ -15,7 +15,7 @@ public class ReflexiveSpecialsEntryModel implements IReflexiveSpecialsEntryModel
 
   public ReflexiveSpecialsEntryModel(IReflexiveSpecialsArbitrator arbitrator) {
     this.arbitrator = arbitrator;
-    arbitrator.addModelChangeListener(new IChangeListener() {
+    arbitrator.addModelListener(new IChangeListener() {
       public void changeOccured() {
         control.fireChangedEvent();
       }
@@ -67,5 +67,9 @@ public class ReflexiveSpecialsEntryModel implements IReflexiveSpecialsEntryModel
       this.step = newValue;
       control.fireChangedEvent();
     }
+  }
+
+  public boolean isActive() {
+    return arbitrator.isReflexiveSpecialsAvailable();
   }
 }

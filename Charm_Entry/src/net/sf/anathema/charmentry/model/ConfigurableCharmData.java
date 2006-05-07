@@ -10,12 +10,12 @@ import java.util.Set;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
@@ -24,6 +24,8 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
+import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
 public class ConfigurableCharmData implements IConfigurableCharmData {
 
@@ -34,12 +36,12 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
   private Map<ITraitType, IGenericTrait> prerequisitesByType = new LinkedHashMap<ITraitType, IGenericTrait>();
   private String groupId;
   private Set<ICharm> parentCharms = new ListOrderedSet<ICharm>();
-  private String name;
+  private ITextualDescription name = new SimpleTextualDescription();
   private IConfigurableCostList temporaryCost = new ConfigurableCostList();
   private IConfigurablePermanentCostList permanentCost = new ConfigurablePermanentCostList();
   private IConfigurableMagicSource source = new ConfigurableMagicSource();
   private ITraitType primaryType;
-  private ExaltedEdition edition;
+  private IExaltedEdition edition;
   private final List<ICharmAttribute> keywords = new ArrayList<ICharmAttribute>();
   private final CharmTypeModel model = new CharmTypeModel();
   private boolean excellencyRequired;
@@ -124,12 +126,12 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
     prerequisitesByType.remove(type);
   }
 
-  public String getName() {
+  public ITextualDescription getName() {
     return name;
   }
 
   public void setName(String newName) {
-    this.name = newName;
+    name.setText(newName);
   }
 
   public IComboRestrictions getComboRules() {
@@ -164,11 +166,11 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
     Collections.addAll(parentCharms, charms);
   }
 
-  public void setEdition(ExaltedEdition edition) {
+  public void setEdition(IExaltedEdition edition) {
     this.edition = edition;
   }
 
-  public ExaltedEdition getEdition() {
+  public IExaltedEdition getEdition() {
     return edition;
   }
 

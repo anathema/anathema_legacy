@@ -12,4 +12,6 @@ public interface ISimpleSpecialsEntryModel extends ISimpleSpecialsModel {
   public void setSpeed(int newValue);
 
   public void addChangeListener(IChangeListener listener);
+
+  public boolean isActive();
 }

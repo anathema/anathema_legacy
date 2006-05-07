@@ -1,8 +1,6 @@
 package net.sf.anathema.charmentry.presenter;
 
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -37,7 +35,6 @@ import net.sf.anathema.charmentry.view.ICostEntryView;
 import net.sf.anathema.charmentry.view.ISourceSelectionView;
 import net.sf.anathema.charmentry.view.ReflexiveCharmSpecialsView;
 import net.sf.anathema.charmentry.view.SimpleCharmSpecialsView;
-import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.IdentificateListCellRenderer;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
@@ -46,6 +43,7 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
@@ -85,7 +83,7 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
     initCharacterTypeListening(characterTypeView, primaryPrerequisiteView, editionView, groupView);
     initEssencePrerequisitePresentation();
     initSourcePresentation();
-    model.addModelChangeListener(new IChangeListener() {
+    model.addModelListener(new IChangeListener() {
       public void changeOccured() {
         try {
           setCharmsInView();
@@ -117,11 +115,6 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
         simpleModel.setDefenseValue(newValue);
       }
     });
-    simpleView.addDefaultButtonListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        simpleModel.reset();
-      }
-    });
     final ReflexiveCharmSpecialsView reflexiveView = view.addReflexiveCharmSpecialsView();
     final IReflexiveSpecialsEntryModel reflexiveModel = model.getReflexiveCharmSpecialsModel();
     reflexiveModel.addChangeListener(new IChangeListener() {
@@ -145,11 +138,6 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
     reflexiveView.addSplitListener(new IBooleanValueChangedListener() {
       public void valueChanged(boolean splitEnabled) {
         reflexiveModel.setSplitEnabled(splitEnabled);
-      }
-    });
-    reflexiveView.addDefaultButtonListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        reflexiveModel.reset();
       }
     });
     simpleView.setEnabled(model.isSimpleSpecialsAvailable());
@@ -456,7 +444,7 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
   }
 
   public void charmAdded(IConfigurableCharmData charmData) throws PersistenceException {
-    nameMap.put(charmData.getId(), charmData.getName());
+    nameMap.put(charmData.getId(), charmData.getName().getText());
     setCharmsInView();
   }
 }

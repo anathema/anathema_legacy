@@ -6,5 +6,5 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 public interface ISimpleSpecialsArbitrator {
   public boolean isSimpleSpecialsAvailable();
 
-  public void addModelChangeListener(IChangeListener listener);
+  public void addModelListener(IChangeListener listener);
 }

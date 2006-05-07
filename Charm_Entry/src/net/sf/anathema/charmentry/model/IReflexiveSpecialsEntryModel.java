@@ -14,4 +14,6 @@ public interface IReflexiveSpecialsEntryModel extends IReflexiveSpecialsModel {
   public void setDefenseStep(int newValue);
 
   public void reset();
+
+  public boolean isActive();
 }

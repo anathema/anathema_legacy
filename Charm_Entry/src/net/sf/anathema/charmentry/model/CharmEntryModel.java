@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -64,7 +63,7 @@ public class CharmEntryModel implements ISimpleSpecialsArbitrator, IReflexiveSpe
   }
 
   private void checkCompletion() {
-    if (StringUtilities.isNullOrEmpty(charmData.getName())) {
+    if (charmData.getName().isEmpty()) {
       completionControl.fireValueChangedEvent(false);
       return;
     }
@@ -125,7 +124,7 @@ public class CharmEntryModel implements ISimpleSpecialsArbitrator, IReflexiveSpe
     if (charmData.getCharacterType() == null || charmData.getName() == null) {
       return;
     }
-    charmData.setId(CharmUtilities.createIDFromName(charmData.getCharacterType(), charmData.getName()));
+    charmData.setId(CharmUtilities.createIDFromName(charmData.getCharacterType(), charmData.getName().getText()));
   }
 
   public CharacterType[] getLegalCharacterTypes() {
@@ -320,7 +319,7 @@ public class CharmEntryModel implements ISimpleSpecialsArbitrator, IReflexiveSpe
     return reflexiveCharmSpecials;
   }
 
-  public void addModelChangeListener(IChangeListener listener) {
+  public void addModelListener(IChangeListener listener) {
     modelControl.addChangeListener(listener);
   }
 

@@ -59,7 +59,7 @@ public class CharmEntryPresenter implements IPresenter {
               characterType,
               charmData.getEdition(),
               charmData.getId(),
-              charmData.getName());
+              charmData.getName().getText());
           basicDataPresenter.charmAdded(charmData);
           keywordPresenter.charmAdded(charmData);
           attributePresenter.charmAdded(charmData);

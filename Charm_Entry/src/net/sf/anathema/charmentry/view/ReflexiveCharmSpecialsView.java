@@ -4,44 +4,45 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListCellRenderer;
-import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import net.disy.commons.swing.layout.grid.IDialogComponent;
+import net.sf.anathema.charmentry.demo.view.IReflexiveCharmSpecialsView;
 import net.sf.anathema.framework.presenter.view.ObjectSelectionIntValueView;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 
-public class ReflexiveCharmSpecialsView {
+public class ReflexiveCharmSpecialsView implements IDialogComponent, IReflexiveCharmSpecialsView {
   private final ObjectSelectionIntValueView stepView;
-  private final JButton defaultButton;
   private JCheckBox splitBox;
   private ObjectSelectionIntValueView defenderView;
   private JLabel mainLabel;
 
-  public ReflexiveCharmSpecialsView(
-      String headerLabel,
-      String defaultLabel,
-      String defenderLabel,
-      String splitLabel,
-      String resetLabel) {
+  public ReflexiveCharmSpecialsView(String headerLabel, String defaultLabel, String defenderLabel, String splitLabel) {
     mainLabel = new JLabel(headerLabel);
     stepView = new ObjectSelectionIntValueView(defaultLabel, new DefaultListCellRenderer(), 10);
     defenderView = new ObjectSelectionIntValueView(defenderLabel, new DefaultListCellRenderer(), 10);
     splitBox = new JCheckBox(splitLabel);
-    defaultButton = new JButton(resetLabel);
   }
 
-  /** Adds 5 columns */
+  public void fillInto(JPanel panel, int columnCount) {
+    addTo(panel);
+  }
+
+  public int getColumnCount() {
+    return 4;
+  }
+
+  /** Adds 4 columns */
   public void addTo(JPanel panel) {
     panel.add(mainLabel);
     addView(panel, stepView);
     addView(panel, defenderView);
     panel.add(splitBox);
-    panel.add(defaultButton);
   }
 
   private void addView(JPanel panel, ObjectSelectionIntValueView view) {
@@ -55,7 +56,6 @@ public class ReflexiveCharmSpecialsView {
     stepView.setEnabled(enabled);
     defenderView.setEnabled(enabled);
     splitBox.setEnabled(enabled);
-    defaultButton.setEnabled(enabled);
   }
 
   public void addSplitListener(final IBooleanValueChangedListener listener) {
@@ -85,9 +85,5 @@ public class ReflexiveCharmSpecialsView {
 
   public void addDefenseStepListener(IIntValueChangedListener listener) {
     defenderView.addIntValueChangedListener(listener);
-  }
-
-  public void addDefaultButtonListener(ActionListener listener) {
-    defaultButton.addActionListener(listener);
   }
 }

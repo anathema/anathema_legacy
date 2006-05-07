@@ -17,5 +17,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Impl"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Framework"/>
 	<classpathentry kind="src" path="resources"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Main"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

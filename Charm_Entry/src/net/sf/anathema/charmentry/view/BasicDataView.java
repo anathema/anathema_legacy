@@ -15,10 +15,10 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
 import net.sf.anathema.charmentry.presenter.ISelectableTraitView;
-import net.sf.anathema.framework.presenter.view.IObjectSelectionView;
-import net.sf.anathema.framework.presenter.view.ObjectSelectionView;
 import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.workflow.container.ISelectionContainerView;
 import net.sf.anathema.lib.workflow.container.view.SelectionContainerListView;
@@ -63,7 +63,7 @@ public class BasicDataView {
   }
 
   public SimpleCharmSpecialsView addSimpleCharmSpecialsView() {
-    SimpleCharmSpecialsView view = new SimpleCharmSpecialsView("Modifiers (Simple)", "Speed", "DV", "Reset");
+    SimpleCharmSpecialsView view = new SimpleCharmSpecialsView("Modifiers (Simple)", "Speed", "DV");
     view.addTo(dataPanel);
     dataPanel.add(new EndOfLineMarkerComponent());
     return view;
@@ -74,8 +74,7 @@ public class BasicDataView {
         "Step (Reflexive)",
         "Default/Offensive",
         "Defensive",
-        "Split Offense/Defense",
-        "Reset");
+        "Split Offense/Defense");
     view.addTo(dataPanel);
     dataPanel.add(new EndOfLineMarkerComponent());
     return view;
