@@ -25,7 +25,7 @@ public class CharmTypeWriter {
     final Element typeElement = charmElement.addElement(TAG_CHARMTYPE);
     final ICharmTypeModel charmTypeModel = charm.getCharmTypeModel();
     typeElement.addAttribute(ATTRIB_TYPE, charmTypeModel.getCharmType().getId());
-    if (charmTypeModel.getSpecialsModel() == null) {
+    if (!charmTypeModel.hasSpecialsModel()) {
       return;
     }
     charmTypeModel.getCharmType().accept(new ICharmTypeVisitor() {

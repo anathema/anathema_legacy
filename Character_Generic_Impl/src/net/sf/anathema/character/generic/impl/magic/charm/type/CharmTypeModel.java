@@ -24,4 +24,8 @@ public class CharmTypeModel implements ICharmTypeModel {
   public void setSpecialModel(ITypeSpecialsModel model) {
     this.model = model;
   }
+
+  public boolean hasSpecialsModel() {
+    return model != null;
+  }
 }
