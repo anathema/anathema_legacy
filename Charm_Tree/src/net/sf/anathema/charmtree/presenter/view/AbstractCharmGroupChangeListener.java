@@ -42,10 +42,10 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     this.arbitrator = arbitrator;
   }
 
-  public final void valueChanged(Object cascade, IIdentificate type) {
+  public final void valueChanged(Object cascade, Object type) {
     charmTreeView.getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     try {
-      loadCharmTree((ICharmGroup) cascade, type);
+      loadCharmTree((ICharmGroup) cascade, (IIdentificate) type);
       return;
     }
     catch (DocumentException e) {
