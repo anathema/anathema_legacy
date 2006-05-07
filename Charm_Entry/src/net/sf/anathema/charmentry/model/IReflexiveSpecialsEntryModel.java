@@ -7,8 +7,6 @@ public interface IReflexiveSpecialsEntryModel extends IReflexiveSpecialsModel {
 
   public void addChangeListener(IChangeListener listener);
 
-  public boolean isSplitEnabled();
-
   public void setSplitEnabled(boolean splitEnabled);
 
   public void setStep(int newValue);
