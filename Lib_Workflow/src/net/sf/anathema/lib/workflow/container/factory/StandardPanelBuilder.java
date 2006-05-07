@@ -2,12 +2,15 @@ package net.sf.anathema.lib.workflow.container.factory;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.ListCellRenderer;
 
 import net.disy.commons.swing.border.TitledPanel;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
+import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
@@ -56,5 +59,11 @@ public class StandardPanelBuilder {
       }
     });
     return spinner;
+  }
+
+  public IObjectSelectionView addObjectSelectionView(String label, ListCellRenderer renderer, Object[] objects) {
+    ObjectSelectionView view = new ObjectSelectionView(label, renderer, objects);
+    view.addComponents(dialogPanel);
+    return view;
   }
 }
