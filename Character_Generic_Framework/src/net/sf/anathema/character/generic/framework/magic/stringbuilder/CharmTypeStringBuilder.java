@@ -22,7 +22,7 @@ public class CharmTypeStringBuilder implements ICharmTypeStringBuilder {
     final StringBuffer buffer = new StringBuffer();
     final CharmType charmType = charmTypeModel.getCharmType();
     buffer.append(resources.getString(charmType.getId()));
-    if (charmTypeModel.getSpecialsModel() != null) {
+    if (charmTypeModel.hasSpecialsModel()) {
       charmType.accept(new ICharmTypeVisitor() {
         public void visitExtraAction(CharmType visitedType) {
           // Nothing to do
@@ -39,7 +39,7 @@ public class CharmTypeStringBuilder implements ICharmTypeStringBuilder {
         public void visitSpecial(CharmType visitedType) {
           // Nothing to do
         }
-        
+
         public void visitPermanent(CharmType visitedType) {
           // Nothing to do
         }
