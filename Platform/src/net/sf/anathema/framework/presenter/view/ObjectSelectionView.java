@@ -16,7 +16,7 @@ import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 
 public class ObjectSelectionView implements IObjectSelectionView, IGridDialogPanelContent {
 
-  private final IChangeableJComboBox<Object> comboBox;
+  private final IChangeableJComboBox comboBox;
   private final JLabel label;
 
   public JComboBox getComboBox() {
@@ -29,7 +29,7 @@ public class ObjectSelectionView implements IObjectSelectionView, IGridDialogPan
 
   public ObjectSelectionView(String labelString, ListCellRenderer renderer, Object[] objects, boolean editable) {
     this.label = new JLabel(labelString);
-    this.comboBox = new ChangeableJComboBox<Object>(objects, editable);
+    this.comboBox = new ChangeableJComboBox(objects, editable);
     comboBox.setRenderer(renderer);
     setSelectedObject(null);
   }
