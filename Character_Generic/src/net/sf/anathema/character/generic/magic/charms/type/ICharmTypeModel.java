@@ -5,4 +5,6 @@ public interface ICharmTypeModel {
   public CharmType getCharmType();
 
   public ITypeSpecialsModel getSpecialsModel();
+
+  public boolean hasSpecialsModel();
 }
