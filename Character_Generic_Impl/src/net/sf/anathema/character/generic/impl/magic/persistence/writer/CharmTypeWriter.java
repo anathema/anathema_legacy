@@ -40,7 +40,7 @@ public class CharmTypeWriter {
         }
         Element specialElement = typeElement.addElement(TAG_SPECIAL);
         ElementUtilities.addAttribute(specialElement, ATTRIB_PRIMARY_STEP, model.getPrimaryStep());
-        if (model.getSecondaryStep() != null) {
+        if (model.isSplitEnabled()) {
           ElementUtilities.addAttribute(specialElement, ATTRIB_SECONDARY_STEP, model.getSecondaryStep());
         }
       }

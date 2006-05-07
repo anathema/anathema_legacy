@@ -19,4 +19,8 @@ public class ReflexiveSpecialsModel implements IReflexiveSpecialsModel {
   public Integer getSecondaryStep() {
     return secondaryStep;
   }
+
+  public boolean isSplitEnabled() {
+    return secondaryStep != null;
+  }
 }
