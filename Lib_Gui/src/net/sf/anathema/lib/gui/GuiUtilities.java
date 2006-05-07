@@ -138,7 +138,7 @@ public class GuiUtilities extends net.disy.commons.swing.util.GuiUtilities {
   }
 
   public static Dimension calculateComboBoxSize(Object[] objects, ListCellRenderer renderer) {
-    ChangeableJComboBox<Object> box = new ChangeableJComboBox<Object>(objects, false);
+    ChangeableJComboBox box = new ChangeableJComboBox(objects, false);
     box.setRenderer(renderer);
     return box.getPreferredSize();
   }
