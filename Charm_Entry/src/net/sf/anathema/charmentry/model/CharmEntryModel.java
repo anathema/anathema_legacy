@@ -7,7 +7,6 @@ import java.util.List;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
@@ -214,7 +213,10 @@ public class CharmEntryModel implements ISimpleSpecialsArbitrator, IReflexiveSpe
     if (charmData.getCharacterType() == CharacterType.LUNAR) {
       return AttributeType.values();
     }
-    return AbilityType.getAbilityTypes(ExaltedRuleSet.CoreRules);
+    if (charmData.getEdition() == null) {
+      return new ITraitType[0];
+    }
+    return AbilityType.getAbilityTypes(charmData.getEdition());
   }
 
   public void addPrimaryPrerequisiteListener(ITraitSelectionChangedListener listener) {

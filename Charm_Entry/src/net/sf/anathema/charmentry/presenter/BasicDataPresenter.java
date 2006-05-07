@@ -75,14 +75,14 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
     initCharmNamePresentation();
     ITextView groupView = initCharmGroupPresentation();
     IObjectSelectionView characterTypeView = initCharacterTypeView();
-    initEditionPresentation();
+    IObjectSelectionView editionView = initEditionPresentation();
     initCharmTypePresentation();
     initSecondEditionTypeDependentSpecialsPresentation();
     initDurationPresentation();
     initCostPresentation();
     ISelectableTraitView primaryPrerequisiteView = initPrimaryPrerequisitePresentation();
     this.prerequisiteCharmView = initPrerequisiteCharmPresentation();
-    initCharacterTypeListening(characterTypeView, primaryPrerequisiteView, groupView);
+    initCharacterTypeListening(characterTypeView, primaryPrerequisiteView, editionView, groupView);
     initEssencePrerequisitePresentation();
     initSourcePresentation();
     model.addModelChangeListener(new IChangeListener() {
@@ -300,10 +300,22 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
   private void initCharacterTypeListening(
       IObjectSelectionView characterTypeView,
       final ISelectableTraitView primaryPrerequisiteView,
+      IObjectSelectionView editionView,
       final ITextView groupView) {
     characterTypeView.addObjectSelectionChangedListener(new IObjectValueChangedListener<CharacterType>() {
       public void valueChanged(CharacterType newValue) {
         model.setCharacterType(newValue);
+        primaryPrerequisiteView.setSelectableTraits(model.getLegalPrimaryPrerequisiteTypes());
+        try {
+          setCharmsInView();
+        }
+        catch (PersistenceException e) {
+          // Nothing to do
+        }
+      }
+    });
+    editionView.addObjectSelectionChangedListener(new IObjectValueChangedListener<IExaltedEdition>() {
+      public void valueChanged(IExaltedEdition newValue) {
         primaryPrerequisiteView.setSelectableTraits(model.getLegalPrimaryPrerequisiteTypes());
         try {
           setCharmsInView();

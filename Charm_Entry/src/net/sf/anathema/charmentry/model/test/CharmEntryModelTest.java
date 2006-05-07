@@ -200,7 +200,9 @@ public class CharmEntryModelTest extends BasicTestCase {
 
   public void testGetLegalPrimaryPrerequisitesForAttributeBasedExalt() throws Exception {
     model.setCharacterType(CharacterType.LUNAR);
-    assertEquals(AbilityType.getAbilityTypes(ExaltedRuleSet.CoreRules), model.getLegalPrimaryPrerequisiteTypes());
+    assertEquals(
+        AbilityType.getAbilityTypes(ExaltedRuleSet.CoreRules.getEdition()),
+        model.getLegalPrimaryPrerequisiteTypes());
   }
 
   public void testSetPrimaryPrerequisiteSetsGroupId() throws Exception {
