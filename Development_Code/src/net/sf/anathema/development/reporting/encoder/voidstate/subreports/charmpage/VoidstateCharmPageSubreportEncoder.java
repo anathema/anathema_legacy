@@ -107,7 +107,7 @@ public class VoidstateCharmPageSubreportEncoder extends AbstractReportEncoder {
     return "VoidstateCharmPageSubreport";
   }
 
-  public int encodeVoidstateHeader(
+  private int encodeVoidstateHeader(
       Element parent,
       int y,
       int x,
