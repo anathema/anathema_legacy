@@ -120,13 +120,11 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
   }
 
   private void initRules(final ICascadeView view) {
-    IChangeableJComboBox<IExaltedRuleSet> rulesComboBox = new ChangeableJComboBox<IExaltedRuleSet>(
-        ExaltedRuleSet.values(),
-        false);
+    IChangeableJComboBox rulesComboBox = new ChangeableJComboBox(ExaltedRuleSet.values(), false);
     rulesComboBox.setRenderer(new IdentificateSelectCellRenderer("Ruleset.", getResources())); //$NON-NLS-1$
     view.addRuleSetComponent(rulesComboBox.getComponent(), getResources().getString("CharmCascades.RuleSetBox.Title")); //$NON-NLS-1$
-    rulesComboBox.addObjectSelectionChangedListener(new IObjectValueChangedListener() {
-      public void valueChanged(Object newValue) {
+    rulesComboBox.addObjectSelectionChangedListener(new IObjectValueChangedListener<IExaltedRuleSet>() {
+      public void valueChanged(IExaltedRuleSet newValue) {
         IExaltedEdition currentEdition = null;
         if (selectedRuleset != null) {
           currentEdition = selectedRuleset.getEdition();
