@@ -185,7 +185,7 @@ public class CharmEntryModel implements ISimpleSpecialsArbitrator, IReflexiveSpe
     checkCompletion();
   }
 
-  private IGenericTrait getPrimaryPrerequisite() {
+  public IGenericTrait getPrimaryPrerequisite() {
     if (charmData.getPrimaryPrerequisiteType() == null) {
       return ValuedTraitType.NULL_TYPE;
     }

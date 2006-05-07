@@ -14,12 +14,12 @@ public class SourceSelectionView implements ISourceSelectionView {
   private final IntegerSpinner spinner;
   private final String bookString;
   private final String pageString;
-  private final ChangeableJComboBox<Object> bookBox;
+  private final ChangeableJComboBox bookBox;
 
   public SourceSelectionView(String bookString, String pageString, IIdentificate[] sources) {
     this.bookString = bookString;
     this.pageString = pageString;
-    this.bookBox = new ChangeableJComboBox<Object>(sources, true);
+    this.bookBox = new ChangeableJComboBox(sources, true);
     spinner = new IntegerSpinner(0);
     spinner.setPreferredWidth(100);
 

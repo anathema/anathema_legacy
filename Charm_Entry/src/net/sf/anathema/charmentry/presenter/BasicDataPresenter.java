@@ -3,8 +3,11 @@ package net.sf.anathema.charmentry.presenter;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.swing.JList;
@@ -85,7 +88,7 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
     model.addModelChangeListener(new IChangeListener() {
       public void changeOccured() {
         try {
-          setCharmsInView(prerequisiteCharmView);
+          setCharmsInView();
         }
         catch (PersistenceException e) {
           e.printStackTrace();
@@ -303,10 +306,10 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
         model.setCharacterType(newValue);
         primaryPrerequisiteView.setSelectableTraits(model.getLegalPrimaryPrerequisiteTypes());
         try {
-          setCharmsInView(prerequisiteCharmView);
+          setCharmsInView();
         }
         catch (PersistenceException e) {
-          //Nothing to do
+          // Nothing to do
         }
       }
     });
@@ -317,7 +320,7 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
     });
   }
 
-  private void setCharmsInView(final ISelectionContainerView prerequisiteCharmView) throws PersistenceException {
+  private void setCharmsInView() throws PersistenceException {
     CharacterType type = model.getCharmData().getCharacterType();
     IExaltedEdition edition = model.getCharmData().getEdition();
     if (type == null || edition == null) {
@@ -325,8 +328,24 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
     }
     IExaltedRuleSet set = edition.getDefaultRuleset();
     ICharm[] charms = CharmCache.getInstance().getCharms(type, set);
-    Arrays.sort(charms, new MagicComparator(type, set));
-    prerequisiteCharmView.populate(charms);
+    List<ICharm> filterList = new ArrayList<ICharm>();
+    if (model.getPrimaryPrerequisite().getType() == null) {
+      Collections.addAll(filterList, charms);
+      addCharmsToView(type, set, filterList);
+      return;
+    }
+    for (ICharm charm : charms) {
+      if (charm.getPrerequisites()[0].getType() == model.getPrimaryPrerequisite().getType()) {
+        filterList.add(charm);
+      }
+    }
+    addCharmsToView(type, set, filterList);
+  }
+
+  private void addCharmsToView(CharacterType type, IExaltedRuleSet set, List<ICharm> filterList) {
+    final ICharm[] filteredCharms = filterList.toArray(new ICharm[0]);
+    Arrays.sort(filteredCharms, new MagicComparator(type, set));
+    prerequisiteCharmView.populate(filteredCharms);
   }
 
   private ISelectableTraitView initPrimaryPrerequisitePresentation() {
@@ -342,6 +361,13 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
       public void selectionChanged(Object object, int value) {
         traitView.setSelectedTrait(object);
         traitView.setValue(value);
+        try {
+          setCharmsInView();
+        }
+        catch (PersistenceException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
       }
     });
     traitView.setSelectableTraits(model.getLegalPrimaryPrerequisiteTypes());
@@ -419,6 +445,6 @@ public class BasicDataPresenter implements ICharmEntrySubPresenter {
 
   public void charmAdded(IConfigurableCharmData charmData) throws PersistenceException {
     nameMap.put(charmData.getId(), charmData.getName());
-    setCharmsInView(prerequisiteCharmView);
+    setCharmsInView();
   }
 }
