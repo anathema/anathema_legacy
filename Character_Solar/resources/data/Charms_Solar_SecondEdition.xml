@@ -392,7 +392,7 @@
     </cost>
     <duration duration="One action"/>
     <charmtype type="Reflexive">
-      <special primaryStep="1" secondaryStep="2"/>
+      <special primaryStep="1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="Second Edition" page="191"/>
@@ -456,7 +456,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive">
-      <special primaryStep="2" secondaryStep="2"/>
+      <special primaryStep="2"/>
     </charmtype>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="Second Edition" page="191"/>
@@ -553,7 +553,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive">
-      <special primaryStep="2" secondaryStep="2"/>
+      <special primaryStep="2"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="Second Edition" page="192"/>
@@ -571,7 +571,7 @@
     </cost>
     <duration duration="Until next action"/>
     <charmtype type="Reflexive">
-      <special primaryStep="2" secondaryStep="2"/>
+      <special primaryStep="2"/>
     </charmtype>
     <charmAttribute attribute="Combo-Basic" visualize="true"/>
     <source source="Second Edition" page="193"/>
@@ -589,7 +589,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive">
-      <special primaryStep="2" secondaryStep="2"/>
+      <special primaryStep="2"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
@@ -626,7 +626,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive">
-      <special primaryStep="9" secondaryStep="2"/>
+      <special primaryStep="9"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Counterattack" visualize="true"/>
