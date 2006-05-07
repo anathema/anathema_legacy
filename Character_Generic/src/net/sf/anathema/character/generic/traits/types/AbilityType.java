@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.traits.types;
 
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
+import net.sf.anathema.character.generic.rules.IEditionVisitor;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.traits.ITraitType;
 
 public enum AbilityType implements ITraitType {
@@ -241,18 +241,14 @@ public enum AbilityType implements ITraitType {
         Socialize };
   }
 
-  public static AbilityType[] getAbilityTypes(IExaltedRuleSet rules) {
+  public static AbilityType[] getAbilityTypes(IExaltedEdition edition) {
     final AbilityType[][] types = new AbilityType[1][];
-    rules.accept(new IRuleSetVisitor() {
-      public void visitCoreRules(IExaltedRuleSet set) {
+    edition.accept(new IEditionVisitor() {
+      public void visitFirstEdition(IExaltedEdition visitedEdition) {
         types[0] = getFirstEditionAbilities();
       }
 
-      public void visitPowerCombat(IExaltedRuleSet set) {
-        types[0] = getFirstEditionAbilities();
-      }
-
-      public void visitSecondEdition(IExaltedRuleSet set) {
+      public void visitSecondEdition(IExaltedEdition visitedEdition) {
         types[0] = getSecondEditionAbilities();
       }
     });
