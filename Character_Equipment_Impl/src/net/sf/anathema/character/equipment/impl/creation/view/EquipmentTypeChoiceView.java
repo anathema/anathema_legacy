@@ -21,8 +21,8 @@ public class EquipmentTypeChoiceView implements IPageContent, IEquipmentTypeChoi
       3,
       GridDialogLayoutData.FILL_HORIZONTAL);
   private final ButtonGroup buttonGroup = new ButtonGroup();
+  private final JPanel content = new JPanel(new GridDialogLayout(3, false));
   private JComponent focusComponent;
-  private JPanel content = new JPanel(new GridDialogLayout(3, false));
 
   public JComponent getContent() {
     return content;
@@ -53,6 +53,6 @@ public class EquipmentTypeChoiceView implements IPageContent, IEquipmentTypeChoi
   }
 
   public void dispose() {
-    //Nothing to do
+    // Nothing to do
   }
 }
