@@ -3,9 +3,13 @@ package net.sf.anathema.framework.presenter.view;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.JComponent;
+import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
-import net.sf.anathema.framework.value.IIntValueView;
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
@@ -14,13 +18,18 @@ import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 
-public class ObjectSelectionIntValueView implements IIntValueView, IGridDialogPanelContent {
+public class ObjectSelectionIntValueView implements IIntValueDisplay, IGridDialogPanelContent {
 
   private final ObjectSelectionView view;
   private final Map<IIntValueChangedListener, IObjectValueChangedListener<Integer>> listenerMap = new HashMap<IIntValueChangedListener, IObjectValueChangedListener<Integer>>();
+  private final JPanel content = new JPanel(new GridDialogLayout(2, false));
 
   public ObjectSelectionIntValueView(String label, ListCellRenderer renderer, int maximum) {
     this.view = new ObjectSelectionView(label, renderer, ArrayUtilities.createIntegerArray(maximum));
+  }
+
+  public ObjectSelectionIntValueView(String label, ListCellRenderer renderer, int minimum, int maximum) {
+    this.view = new ObjectSelectionView(label, renderer, ArrayUtilities.createIntegerArray(minimum, maximum));
   }
 
   public void setValue(int newValue) {
@@ -51,5 +60,10 @@ public class ObjectSelectionIntValueView implements IIntValueView, IGridDialogPa
 
   public void setEnabled(boolean enabled) {
     view.setEnabled(enabled);
+  }
+
+  public JComponent getComponent() {
+    view.addTo(content, GridDialogLayoutData.FILL_HORIZONTAL);
+    return content;
   }
 }

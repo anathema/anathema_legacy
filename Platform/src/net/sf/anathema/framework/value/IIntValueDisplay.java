@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.value;
 
-import java.awt.Component;
+import javax.swing.JComponent;
 
 public interface IIntValueDisplay extends IIntValueView {
 
-  public Component getComponent();
+  public JComponent getComponent();
 }
