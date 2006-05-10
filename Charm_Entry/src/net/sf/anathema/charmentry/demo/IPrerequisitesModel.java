@@ -17,4 +17,6 @@ public interface IPrerequisitesModel {
   public IGenericTrait getPrimaryPrerequisite();
 
   public void setPrimaryPrerequisite(ITraitType type, int value);
+
+  public boolean isPermanentCharm();
 }

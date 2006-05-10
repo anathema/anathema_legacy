@@ -40,9 +40,22 @@ public class PrerequisitesEntryPage extends AbstractAnathemaWizardPage {
   protected void addFollowUpPages(CheckInputListener inputListener) {
     addFollowupPage(new CostEntryPage(resources, model, viewFactory), inputListener, new ICondition() {
       public boolean isFullfilled() {
-        return getPageModel().getPrimaryPrerequisite() != null;
+        return isPrerequisiteSelected() && !isPermanentCharm();
       }
     });
+    addFollowupPage(new PrerequisiteCharmsPage(resources, model, viewFactory), inputListener, new ICondition() {
+      public boolean isFullfilled() {
+        return isPrerequisiteSelected() && isPermanentCharm();
+      }
+    });
+  }
+
+  private boolean isPermanentCharm() {
+    return getPageModel().isPermanentCharm();
+  }
+
+  private boolean isPrerequisiteSelected() {
+    return getPageModel().getPrimaryPrerequisite() != null;
   }
 
   @Override

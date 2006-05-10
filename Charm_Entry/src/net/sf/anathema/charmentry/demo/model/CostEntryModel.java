@@ -1,14 +1,32 @@
 package net.sf.anathema.charmentry.demo.model;
 
+import net.sf.anathema.character.generic.magic.charms.type.CharmType;
+import net.sf.anathema.charmentry.demo.ICharmTypeEntryModel;
 import net.sf.anathema.charmentry.demo.ICostEntryModel;
 import net.sf.anathema.charmentry.model.IConfigurableCharmData;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class CostEntryModel implements ICostEntryModel {
 
+  private static final String BLANK = ""; //$NON-NLS-1$
   private final IConfigurableCharmData charmData;
 
-  public CostEntryModel(IConfigurableCharmData charmData) {
+  public CostEntryModel(ICharmTypeEntryModel model, final IConfigurableCharmData charmData) {
     this.charmData = charmData;
+    model.addModelListener(new IChangeListener() {
+      public void changeOccured() {
+        if (charmData.getCharmTypeModel().getCharmType() == CharmType.Permanent) {
+          setEssenceCostValue(BLANK);
+          setEssenceCostText(BLANK);
+          setWillpowerCostValue(BLANK);
+          setWillpowerCostText(BLANK);
+          setHealthCostValue(BLANK);
+          setHealthCostText(BLANK);
+          setXpCostValue(BLANK);
+          setXpCostText(BLANK);
+        }
+      }
+    });
   }
 
   public void setEssenceCostValue(String newValue) {

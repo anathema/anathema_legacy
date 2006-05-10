@@ -12,9 +12,9 @@ public class WizardCharmEntryModel implements ICharmEntryModel {
   private final IConfigurableCharmData charmData = new ConfigurableCharmData();
   private final IHeaderDataModel headerModel = new HeaderDataModel(charmData);
   private final ICharmTypeEntryModel typeModel = new CharmTypeEntryModel(charmData);
-  private final IDurationEntryModel durationModel = new DurationModel(charmData);
+  private final IDurationEntryModel durationModel = new DurationModel(typeModel, charmData);
   private final IPrerequisitesModel prerequisitesModel = new PrerequisiteEntryModel(headerModel, charmData);
-  private final ICostEntryModel costEntryModel = new CostEntryModel(charmData);
+  private final ICostEntryModel costEntryModel = new CostEntryModel(typeModel, charmData);
 
   public IHeaderDataModel getHeaderDataModel() {
     return headerModel;
