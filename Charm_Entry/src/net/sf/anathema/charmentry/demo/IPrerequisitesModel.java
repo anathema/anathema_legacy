@@ -14,7 +14,7 @@ public interface IPrerequisitesModel {
 
   public int getEssenceMinimum();
 
-  public void setPrimaryPrerequisite(IGenericTrait type);
-
   public IGenericTrait getPrimaryPrerequisite();
+
+  public void setPrimaryPrerequisite(ITraitType type, int value);
 }

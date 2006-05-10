@@ -12,4 +12,8 @@ public interface IPrerequisitePageProperties {
 
   public String getEssenceLabel();
 
+  public String getPrimaryPrerequisiteLabel();
+
+  public IBasicMessage getPrimaryMissingMessage();
+
 }

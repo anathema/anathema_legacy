@@ -2,6 +2,7 @@ package net.sf.anathema.charmentry.demo;
 
 import net.disy.commons.swing.dialog.wizard.WizardDialog;
 import net.sf.anathema.charmentry.demo.model.WizardCharmEntryModel;
+import net.sf.anathema.charmentry.demo.page.HeaderDataEntryPage;
 import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 

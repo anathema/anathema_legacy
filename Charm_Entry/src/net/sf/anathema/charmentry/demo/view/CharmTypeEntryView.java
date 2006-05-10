@@ -8,6 +8,7 @@ import javax.swing.ListCellRenderer;
 
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.charmentry.demo.ICharmTypeEntryView;
+import net.sf.anathema.charmentry.demo.IReflexiveCharmSpecialsView;
 import net.sf.anathema.charmentry.demo.ISimpleCharmSpecialsView;
 import net.sf.anathema.charmentry.view.ReflexiveCharmSpecialsView;
 import net.sf.anathema.charmentry.view.SimpleCharmSpecialsView;

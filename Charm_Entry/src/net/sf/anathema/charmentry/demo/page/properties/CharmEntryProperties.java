@@ -1,7 +1,8 @@
-package net.sf.anathema.charmentry.demo;
+package net.sf.anathema.charmentry.demo.page.properties;
 
 import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
+import net.sf.anathema.charmentry.demo.ICharmEntryProperties;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharmEntryProperties implements ICharmEntryProperties {

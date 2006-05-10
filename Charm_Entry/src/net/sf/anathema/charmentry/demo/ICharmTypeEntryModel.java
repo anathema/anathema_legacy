@@ -22,4 +22,6 @@ public interface ICharmTypeEntryModel {
   public boolean isSpecialModelAvailable();
 
   public CharmType getCharmType();
+
+  public boolean isSpecialModelEnabled();
 }

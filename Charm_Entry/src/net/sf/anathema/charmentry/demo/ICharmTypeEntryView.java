@@ -4,7 +4,6 @@ import javax.swing.JToggleButton;
 import javax.swing.ListCellRenderer;
 
 import net.disy.commons.swing.dialog.core.IPageContent;
-import net.sf.anathema.charmentry.demo.view.IReflexiveCharmSpecialsView;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 
 public interface ICharmTypeEntryView extends IPageContent {

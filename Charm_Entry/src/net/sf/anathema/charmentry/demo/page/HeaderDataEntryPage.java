@@ -1,10 +1,17 @@
-package net.sf.anathema.charmentry.demo;
+package net.sf.anathema.charmentry.demo.page;
 
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.core.IPageContent;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.charmentry.demo.ICharmEntryModel;
+import net.sf.anathema.charmentry.demo.ICharmEntryProperties;
+import net.sf.anathema.charmentry.demo.ICharmEntryViewFactory;
+import net.sf.anathema.charmentry.demo.IHeaderDataEntryView;
+import net.sf.anathema.charmentry.demo.ISourceEntryModel;
 import net.sf.anathema.charmentry.demo.model.IHeaderDataModel;
+import net.sf.anathema.charmentry.demo.page.properties.CharmEntryProperties;
 import net.sf.anathema.charmentry.view.ISourceSelectionView;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
@@ -34,9 +41,21 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
 
   @Override
   protected void addFollowUpPages(CheckInputListener inputListener) {
+    addFollowupPage(
+        new SecondEditionCharmTypeEntryPage(resources, model, viewFactory),
+        inputListener,
+        new ICondition() {
+          public boolean isFullfilled() {
+            return isCharacterTypeSelected()
+                && isNameDefined()
+                && getPageModel().getEdition() == ExaltedEdition.SecondEdition;
+          }
+        });
     addFollowupPage(new CharmTypeEntryPage(resources, model, viewFactory), inputListener, new ICondition() {
       public boolean isFullfilled() {
-        return isCharacterTypeSelected() && isNameDefined() && isEditionSelected();
+        return isCharacterTypeSelected()
+            && isNameDefined()
+            && getPageModel().getEdition() == ExaltedEdition.FirstEdition;
       }
     });
   }

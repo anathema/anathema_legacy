@@ -1,4 +1,4 @@
-package net.sf.anathema.charmentry.demo.view;
+package net.sf.anathema.charmentry.demo;
 
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;

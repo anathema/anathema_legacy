@@ -5,6 +5,7 @@ import java.awt.Component;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
@@ -53,11 +54,15 @@ public class SelectableTraitView implements ISelectableTraitView {
   }
 
   public JComponent getContent() {
-    JPanel panel = new JPanel();
+    JPanel panel = new JPanel(new GridDialogLayout(2, false));
+    addTo(panel);
+    return panel;
+  }
+
+  public void addTo(JPanel panel) {
     panel.add(traitSelectionBox.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
     panel.add(valueDisplay.getComponent());
     panel.revalidate();
-    return panel;
   }
 
   public void setSelectableTraits(Object[] traits) {

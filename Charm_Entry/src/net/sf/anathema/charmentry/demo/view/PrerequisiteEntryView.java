@@ -1,13 +1,12 @@
-package net.sf.anathema.charmentry.demo;
+package net.sf.anathema.charmentry.demo.view;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.charmentry.demo.IPrerequisitesEntryView;
 import net.sf.anathema.charmentry.presenter.ISelectableTraitView;
 import net.sf.anathema.charmentry.view.SelectableTraitView;
 import net.sf.anathema.framework.value.IIntValueDisplay;
@@ -16,25 +15,25 @@ import net.sf.anathema.framework.value.IIntValueView;
 public class PrerequisiteEntryView implements IPrerequisitesEntryView {
 
   private final IIntValueDisplayFactory factory;
-  private final JComponent content = new JPanel(new GridDialogLayout(5, false));
+  private final JPanel content = new JPanel(new GridDialogLayout(3, false));
 
   public PrerequisiteEntryView(IIntValueDisplayFactory factory) {
     this.factory = factory;
   }
 
-  public ISelectableTraitView addSelectablePrerequisiteView(Object[] traits) {
+  public ISelectableTraitView addSelectablePrerequisiteView(String string, Object[] traits) {
+    content.add(new JLabel(string));
     SelectableTraitView view = new SelectableTraitView(factory);
     view.setSelectableTraits(traits);
-    content.add(view.getContent());
+    view.addTo(content);
     return view;
   }
 
-  public IIntValueView addPrerequisiteView(String label, String traitLabel, int minimum, int maximum) {
+  public IIntValueView addEssencePrerequisiteView(String label, int minimum, int maximum) {
     content.add(new JLabel(label));
-    GridDialogLayoutData data = GridDialogLayoutDataUtilities.createHorizontalSpanData(2);
-    content.add(new JLabel(traitLabel), data);
+    content.add(new JLabel());
     IIntValueDisplay display = factory.createIntValueDisplay(maximum, minimum);
-    content.add(display.getComponent(), data);
+    content.add(display.getComponent());
     return display;
   }
 

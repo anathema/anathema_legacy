@@ -10,4 +10,7 @@ public interface ICharmEntryModel {
 
   public IPrerequisitesModel getPrerequisitesModel();
 
+  public IDurationEntryModel getDurationModel();
+
+  public ICostEntryModel getCostEntryModel();
 }

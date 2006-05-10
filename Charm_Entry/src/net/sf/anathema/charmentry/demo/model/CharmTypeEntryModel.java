@@ -67,6 +67,10 @@ public class CharmTypeEntryModel implements
     }
   }
 
+  public boolean isSpecialModelEnabled() {
+    return enabled;
+  }
+
   public boolean isSpecialModelAvailable() {
     final CharmType type = charmData.getCharmTypeModel().getCharmType();
     return type == CharmType.Simple || type == CharmType.Reflexive;

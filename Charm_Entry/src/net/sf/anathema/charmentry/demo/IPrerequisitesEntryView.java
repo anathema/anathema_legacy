@@ -6,8 +6,7 @@ import net.sf.anathema.framework.value.IIntValueView;
 
 public interface IPrerequisitesEntryView extends IPageContent {
 
-  public ISelectableTraitView addSelectablePrerequisiteView(Object[] traits);
+  public ISelectableTraitView addSelectablePrerequisiteView(String string, Object[] traits);
 
-  public IIntValueView addPrerequisiteView(String label, String traitLabel, int minimum, int maximum);
-
+  public IIntValueView addEssencePrerequisiteView(String label, int minimum, int maximum);
 }

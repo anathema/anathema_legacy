@@ -1,10 +1,18 @@
-package net.sf.anathema.charmentry.demo;
+package net.sf.anathema.charmentry.demo.page.properties;
 
+import javax.swing.ListCellRenderer;
+
+import net.disy.commons.core.message.BasicMessage;
+import net.disy.commons.core.message.IBasicMessage;
+import net.sf.anathema.charmentry.demo.ICharmTypeEntryPageProperties;
+import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharmTypeEntryPageProperties implements ICharmTypeEntryPageProperties {
 
   private final IResources resources;
+  private final IBasicMessage reflexiveMessage = new BasicMessage("Enter the Charm's step data.");
+  private final IBasicMessage simpleMessage = new BasicMessage("Enter the Charm's speed data.");
 
   public CharmTypeEntryPageProperties(IResources resources) {
     this.resources = resources;
@@ -53,4 +61,29 @@ public class CharmTypeEntryPageProperties implements ICharmTypeEntryPageProperti
   public String getSpeedLabel() {
     return "Speed";
   }
+
+  public ListCellRenderer getDefaultIdentificateRenderer() {
+    return new IdentificateSelectCellRenderer("", resources);
+  }
+
+  public String getReflexiveSpecialsTitle() {
+    return "Step Data";
+  }
+
+  public IBasicMessage getReflexiveSpecialsMessage() {
+    return reflexiveMessage;
+  }
+
+  public String getSimpleSpecialsTitle() {
+    return "Speed Data";
+  }
+
+  public IBasicMessage getSimpleSpecialsMessage() {
+    return simpleMessage;
+  }
+
+  public String getTurnTypeLabel() {
+    return "Speed is measured in";
+  }
+
 }
