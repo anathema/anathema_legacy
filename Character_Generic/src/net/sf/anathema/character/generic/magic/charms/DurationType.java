@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.magic.charms;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public enum DurationType implements IIdentificate {
-  Instant, Other;
+  Instant, Other, Permanent;
 
   public static DurationType getById(String id) {
     for (DurationType type : values()) {
