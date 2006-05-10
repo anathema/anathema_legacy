@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.lib.collection.Predicate;
 
 public class ArrayUtilities {
@@ -90,6 +91,15 @@ public class ArrayUtilities {
     Integer[] ranks = new Integer[Math.abs(maximalValue) + 1];
     for (int index = 0; index < ranks.length; index++) {
       ranks[index] = Integer.signum(maximalValue) * index;
+    }
+    return ranks;
+  }
+
+  public static Integer[] createIntegerArray(int minimalValue, int maximalValue) {
+    Ensure.ensureArgumentTrue("MinimalValue must be lower than mximalValue", minimalValue < maximalValue); //$NON-NLS-1$
+    Integer[] ranks = new Integer[maximalValue - minimalValue + 1];
+    for (int index = 0; index < ranks.length; index++) {
+      ranks[index] = minimalValue + index;
     }
     return ranks;
   }

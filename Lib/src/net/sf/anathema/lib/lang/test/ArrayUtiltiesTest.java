@@ -28,4 +28,19 @@ public class ArrayUtiltiesTest extends BasicTestCase {
     Integer[] integers = ArrayUtilities.createIntegerArray(-3);
     assertEquals(new Integer[] { -0, -1, -2, -3 }, integers);
   }
+
+  public void testCreateLowBoundedIntegerArray() throws Exception {
+    Integer[] integers = ArrayUtilities.createIntegerArray(1, 5);
+    assertEquals(new Integer[] { 1, 2, 3, 4, 5 }, integers);
+  }
+
+  public void testCreateNegativeLowBoundedIntegerArray() throws Exception {
+    Integer[] integers = ArrayUtilities.createIntegerArray(-5, -1);
+    assertEquals(new Integer[] { -5, -4, -3, -2, -1 }, integers);
+  }
+
+  public void testCreateCrossingLowBoundedIntegerArray() throws Exception {
+    Integer[] integers = ArrayUtilities.createIntegerArray(-5, 1);
+    assertEquals(new Integer[] { -5, -4, -3, -2, -1, 0, 1 }, integers);
+  }
 }
