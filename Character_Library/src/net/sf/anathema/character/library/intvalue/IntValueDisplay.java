@@ -1,12 +1,12 @@
 package net.sf.anathema.character.library.intvalue;
 
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.Icon;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.event.MouseInputAdapter;
 import javax.swing.event.MouseInputListener;
@@ -69,7 +69,7 @@ public class IntValueDisplay implements IIntValueDisplay {
         panel.add(label);
       }
     }
-    for(int index = previousMaximumValue; index > maximumValue; index--) {
+    for (int index = previousMaximumValue; index > maximumValue; index--) {
       JLabel label = imageList.remove(index - 1);
       panel.remove(label);
     }
@@ -115,7 +115,7 @@ public class IntValueDisplay implements IIntValueDisplay {
     fireValueChangedEvent(value);
   }
 
-  public Component getComponent() {
+  public JComponent getComponent() {
     return panel;
   }
 
