@@ -66,4 +66,10 @@ public class StandardPanelBuilder {
     view.addComponents(dialogPanel);
     return view;
   }
+
+  public IObjectSelectionView addEditableObjectSelectionView(String label, ListCellRenderer renderer, Object[] objects) {
+    ObjectSelectionView view = new ObjectSelectionView(label, renderer, objects, true);
+    view.addComponents(dialogPanel);
+    return view;
+  }
 }
