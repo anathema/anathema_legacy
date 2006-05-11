@@ -5,7 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.IDialogComponent;
-import net.sf.anathema.charmentry.demo.ISimpleCharmSpecialsView;
+import net.sf.anathema.charmentry.presenter.view.ISimpleCharmSpecialsView;
 import net.sf.anathema.framework.presenter.view.ObjectSelectionIntValueView;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;

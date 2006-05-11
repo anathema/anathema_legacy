@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.IDialogComponent;
-import net.sf.anathema.charmentry.demo.IReflexiveCharmSpecialsView;
+import net.sf.anathema.charmentry.presenter.view.IReflexiveCharmSpecialsView;
 import net.sf.anathema.framework.presenter.view.ObjectSelectionIntValueView;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;

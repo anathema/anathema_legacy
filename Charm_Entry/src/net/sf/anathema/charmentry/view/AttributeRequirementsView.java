@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.border.TitledBorder;
 
-import net.sf.anathema.charmentry.presenter.IAttributeRequirementsView;
+import net.sf.anathema.charmentry.presenter.view.IAttributeRequirementsView;
 
 public class AttributeRequirementsView implements IAttributeRequirementsView {
 

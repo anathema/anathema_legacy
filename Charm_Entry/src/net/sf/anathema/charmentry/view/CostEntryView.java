@@ -3,6 +3,7 @@ package net.sf.anathema.charmentry.view;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 
+import net.sf.anathema.charmentry.presenter.view.ICostEntryView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 

@@ -8,7 +8,7 @@ import javax.swing.ListCellRenderer;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.library.removableentry.view.RemovableStringView;
-import net.sf.anathema.charmentry.presenter.IKeywordView;
+import net.sf.anathema.charmentry.presenter.view.IKeywordView;
 import net.sf.anathema.framework.presenter.view.ButtonControlledObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
