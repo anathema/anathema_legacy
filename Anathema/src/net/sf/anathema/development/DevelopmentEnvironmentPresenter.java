@@ -2,7 +2,6 @@ package net.sf.anathema.development;
 
 import javax.swing.JMenu;
 
-import net.sf.anathema.charmentry.module.CharmEntryItemTypeConfiguration;
 import net.sf.anathema.charmentry.module.ShowCharmEntryAction;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.resources.IAnathemaResources;
@@ -29,11 +28,8 @@ public class DevelopmentEnvironmentPresenter {
   }
 
   private void initCharmEntry(JMenu developmentMenu) {
-    resources.addStringResourceHandler(new StringProvider ("language.CharmEntry", resources.getLocale())); //$NON-NLS-1$
-    CharmEntryItemTypeConfiguration charmEntryItemTypeConfiguration = new CharmEntryItemTypeConfiguration();
-    model.getItemTypeRegistry().registerItemType(charmEntryItemTypeConfiguration.getItemType());
-    charmEntryItemTypeConfiguration.registerViewFactory(model, resources);
-    developmentMenu.add(new ShowCharmEntryAction("Charm Entry",resources, model)); //$NON-NLS-1$
+    resources.addStringResourceHandler(new StringProvider("language.CharmEntry", resources.getLocale())); //$NON-NLS-1$
+    developmentMenu.add(new ShowCharmEntryAction("Charm Entry", resources)); //$NON-NLS-1$
   }
 
   public void initPresentation() {
