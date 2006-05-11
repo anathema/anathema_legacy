@@ -1,16 +1,9 @@
 package net.sf.anathema.charmentry.module;
 
 import net.sf.anathema.framework.module.AbstractAnathemaModule;
-import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
 import net.sf.anathema.framework.resources.IAnathemaResources;
 
 public class CharmEntryModule extends AbstractAnathemaModule {
-
-  private AbstractItemTypeConfiguration charmEntryConfiguration = new CharmEntryItemTypeConfiguration();
-
-  public CharmEntryModule() {
-    addItemTypeConfiguration(charmEntryConfiguration);
-  }
 
   @Override
   public void initAnathemaResources(IAnathemaResources resources) {
