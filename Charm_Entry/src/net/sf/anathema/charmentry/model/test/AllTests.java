@@ -7,11 +7,9 @@ public class AllTests {
 
   public static Test suite() {
     TestSuite suite = new TestSuite("Test for net.sf.anathema.development.character.charm.entry.test"); //$NON-NLS-1$
-    //$JUnit-BEGIN$
-    suite.addTestSuite(PrimaryPrerequisiteLegalityCheckerTest.class);
+    // $JUnit-BEGIN$
     suite.addTestSuite(ConfigurableCharmDataTest.class);
-    suite.addTestSuite(CharmEntryModelTest.class);
-    //$JUnit-END$
+    // $JUnit-END$
     return suite;
   }
 

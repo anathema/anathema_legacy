@@ -1,6 +1,6 @@
 package net.sf.anathema.charmentry.model.test;
 
-import net.sf.anathema.charmentry.model.ConfigurableMagicSource;
+import net.sf.anathema.charmentry.model.data.ConfigurableMagicSource;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
 public class ConfigurableMagicSourceTest extends BasicTestCase {
