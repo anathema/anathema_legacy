@@ -1,6 +1,7 @@
 package net.sf.anathema.charmentry.demo.model;
 
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.charmentry.demo.ICharmTypeEntryModel;
 import net.sf.anathema.charmentry.demo.ICostEntryModel;
 import net.sf.anathema.charmentry.model.IConfigurableCharmData;
@@ -61,4 +62,7 @@ public class CostEntryModel implements ICostEntryModel {
     charmData.getPermanentCost().getXPCost().setText(newValue);
   }
 
+  public IExaltedEdition getEdition() {
+    return charmData.getEdition();
+  }
 }

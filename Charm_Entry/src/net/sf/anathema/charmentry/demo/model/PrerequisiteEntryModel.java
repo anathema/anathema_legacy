@@ -2,6 +2,7 @@ package net.sf.anathema.charmentry.demo.model;
 
 import net.disy.commons.core.util.ISimpleBlock;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -74,5 +75,9 @@ public class PrerequisiteEntryModel implements IPrerequisitesModel {
 
   public boolean isPermanentCharm() {
     return charmData.getCharmTypeModel().getCharmType() == CharmType.Permanent;
+  }
+
+  public IExaltedEdition getEdition() {
+    return charmData.getEdition();
   }
 }

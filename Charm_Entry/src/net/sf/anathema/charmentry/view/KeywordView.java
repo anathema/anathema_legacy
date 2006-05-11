@@ -4,7 +4,6 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
-import javax.swing.border.TitledBorder;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
@@ -40,14 +39,17 @@ public class KeywordView implements IKeywordView {
     removableView.delete();
   }
 
-  public JComponent getComponent() {
-    contentPanel.setBorder(new TitledBorder("Keywords")); //$NON-NLS-1$
+  public JComponent getContent() {
     contentPanel.add(dataPanel);
     contentPanel.add(entryPanel);
     return contentPanel;
   }
 
-  public boolean needsScrollbar() {
-    return false;
+  public void dispose() {
+    // Nothing to do
+  }
+
+  public void requestFocus() {
+    // Nothing to do
   }
 }

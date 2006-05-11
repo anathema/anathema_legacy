@@ -1,12 +1,15 @@
 package net.sf.anathema.charmentry.demo.model;
 
 import net.sf.anathema.charmentry.demo.ICharmEntryModel;
+import net.sf.anathema.charmentry.demo.ICharmPrerequisitesEntryModel;
 import net.sf.anathema.charmentry.demo.ICharmTypeEntryModel;
 import net.sf.anathema.charmentry.demo.ICostEntryModel;
 import net.sf.anathema.charmentry.demo.IDurationEntryModel;
 import net.sf.anathema.charmentry.demo.IPrerequisitesModel;
 import net.sf.anathema.charmentry.model.ConfigurableCharmData;
 import net.sf.anathema.charmentry.model.IConfigurableCharmData;
+import net.sf.anathema.charmentry.model.IKeywordEntryModel;
+import net.sf.anathema.charmentry.model.KeywordEntryModel;
 
 public class WizardCharmEntryModel implements ICharmEntryModel {
   private final IConfigurableCharmData charmData = new ConfigurableCharmData();
@@ -15,6 +18,10 @@ public class WizardCharmEntryModel implements ICharmEntryModel {
   private final IDurationEntryModel durationModel = new DurationModel(typeModel, charmData);
   private final IPrerequisitesModel prerequisitesModel = new PrerequisiteEntryModel(headerModel, charmData);
   private final ICostEntryModel costEntryModel = new CostEntryModel(typeModel, charmData);
+  private final IKeywordEntryModel keywordEntryModel = new KeywordEntryModel();
+  private final ICharmPrerequisitesEntryModel charmPrerequisitesModel = new CharmPrerequisitesEntryModel(
+      headerModel,
+      charmData);
 
   public IHeaderDataModel getHeaderDataModel() {
     return headerModel;
@@ -34,5 +41,13 @@ public class WizardCharmEntryModel implements ICharmEntryModel {
 
   public ICostEntryModel getCostEntryModel() {
     return costEntryModel;
+  }
+
+  public ICharmPrerequisitesEntryModel getCharmPrerequisitesModel() {
+    return charmPrerequisitesModel;
+  }
+
+  public IKeywordEntryModel getKeywordEntryModel() {
+    return keywordEntryModel;
   }
 }

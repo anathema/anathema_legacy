@@ -9,6 +9,8 @@ import net.sf.anathema.charmentry.demo.view.HeaderDataEntryView;
 import net.sf.anathema.charmentry.demo.view.PrerequisiteEntryView;
 import net.sf.anathema.charmentry.demo.view.ReflexiveSpecialsView;
 import net.sf.anathema.charmentry.demo.view.SimpleSpecialsView;
+import net.sf.anathema.charmentry.presenter.IKeywordView;
+import net.sf.anathema.charmentry.view.KeywordView;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharmEntryViewFactory implements ICharmEntryViewFactory {
@@ -27,7 +29,7 @@ public class CharmEntryViewFactory implements ICharmEntryViewFactory {
     return new CharmTypeEntryView();
   }
 
-  public IPrerequisitesEntryView createPrerequisitesView() {
+  public IPrerequisitesEntryView createPrerequisiteTraitsView() {
     return new PrerequisiteEntryView(factory);
   }
 
@@ -45,5 +47,13 @@ public class CharmEntryViewFactory implements ICharmEntryViewFactory {
 
   public ICostEntryPageView createCostEntryView() {
     return new CostEntryPageView();
+  }
+
+  public IPrerequisiteCharmsEntryView createPrerequisiteCharmsView() {
+    return new PrerequisiteCharmsEntryView();
+  }
+
+  public IKeywordView createKeywordEntryView() {
+    return new KeywordView();
   }
 }

@@ -63,7 +63,7 @@ public class SecondEditionCharmTypeEntryPage extends CharmTypeEntryPage {
   }
 
   private void initAnnotationView() {
-    final JToggleButton button = getView().addCheckBoxRow(getProperties().getSpecialModelLabel());
+    final JToggleButton button = getPageContent().addCheckBoxRow(getProperties().getSpecialModelLabel());
     button.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         getPageModel().setSpecialModelEnabled(button.isSelected());

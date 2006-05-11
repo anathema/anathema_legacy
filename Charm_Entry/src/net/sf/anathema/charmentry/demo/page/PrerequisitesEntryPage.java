@@ -2,6 +2,7 @@ package net.sf.anathema.charmentry.demo.page;
 
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.core.IPageContent;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -45,9 +46,22 @@ public class PrerequisitesEntryPage extends AbstractAnathemaWizardPage {
     });
     addFollowupPage(new PrerequisiteCharmsPage(resources, model, viewFactory), inputListener, new ICondition() {
       public boolean isFullfilled() {
-        return isPrerequisiteSelected() && isPermanentCharm();
+        return isPrerequisiteSelected()
+            && isPermanentCharm()
+            && getPageModel().getEdition() == ExaltedEdition.FirstEdition;
       }
     });
+    addFollowupPage(
+        new SecondEditionPrerequisiteCharmsPage(resources, model, viewFactory),
+        inputListener,
+        new ICondition() {
+          public boolean isFullfilled() {
+            return isPrerequisiteSelected()
+                && isPermanentCharm()
+                && getPageModel().getEdition() == ExaltedEdition.SecondEdition;
+          }
+        });
+
   }
 
   private boolean isPermanentCharm() {
@@ -65,7 +79,7 @@ public class PrerequisitesEntryPage extends AbstractAnathemaWizardPage {
 
   @Override
   protected void initPageContent() {
-    this.view = viewFactory.createPrerequisitesView();
+    this.view = viewFactory.createPrerequisiteTraitsView();
     initPrimaryPrerequistePresentation();
     initEssencePrerequisitePresentation();
   }

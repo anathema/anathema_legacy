@@ -1,6 +1,8 @@
 package net.sf.anathema.charmentry.model;
 
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
+import net.sf.anathema.character.generic.magic.ICharmData;
+import net.sf.anathema.character.generic.magic.IExtendedCharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.library.removableentry.model.AbstractRemovableEntryModel;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -43,5 +45,35 @@ public class KeywordEntryModel extends AbstractRemovableEntryModel<ICharmAttribu
     for (ICharmAttribute entry : getEntries()) {
       removeEntry(entry);
     }
+  }
+
+  public IIdentificate[] getKeywords() {
+    return new IIdentificate[] {
+        ICharmData.ALLOWS_CELESTIAL_ATTRIBUTE,
+        ICharmData.FORM_ATTRIBUTE,
+        ICharmData.NO_STYLE_ATTRIBUTE,
+        ICharmData.NOT_ALIEN_LEARNABLE,
+        ICharmData.UNRESTRICTED_ATTRIBUTE,
+        IExtendedCharmData.COMBO_BASIC_ATTRIBUTE,
+        IExtendedCharmData.COMBO_OK_ATTRIBUTE,
+        IExtendedCharmData.COMPULSION_ATTRIBUTE,
+        IExtendedCharmData.COUNTERATTACK_ATTRIBUTE,
+        IExtendedCharmData.CRIPPLING_ATTRIBUTE,
+        IExtendedCharmData.EMOTION_ATTRIBUTE,
+        IExtendedCharmData.EXCLUSIVE_ATTRIBUTE,
+        IExtendedCharmData.HOLY_ATTRIBUTE,
+        IExtendedCharmData.ILLUSION_ATTRIBUTE,
+        IExtendedCharmData.KNOCKBACK_ATTRIBUTE,
+        IExtendedCharmData.MANDATE_ATTRIBUTE,
+        IExtendedCharmData.OBVIOUS_ATTRIBUTE,
+        IExtendedCharmData.POISON_ATTRIBUTE,
+        IExtendedCharmData.SERVITUDE_ATTRIBUTE,
+        IExtendedCharmData.SHAPING_ATTRIBUTE,
+        IExtendedCharmData.SICKNESS_ATTRIBUTE,
+        IExtendedCharmData.SOCIAL_ATTRIBUTE,
+        IExtendedCharmData.STACKABLE_ATTRIBUTE,
+        IExtendedCharmData.TOUCH_ATTRIBUTE,
+        IExtendedCharmData.TRAINING_ATTRIBUTE,
+        IExtendedCharmData.WAR_ATTRIBUTE };
   }
 }

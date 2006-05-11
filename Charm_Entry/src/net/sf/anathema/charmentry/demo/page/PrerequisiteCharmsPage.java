@@ -1,35 +1,73 @@
 package net.sf.anathema.charmentry.demo.page;
 
 import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.swing.dialog.core.IPageContent;
+import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.charmentry.demo.ICharmEntryModel;
 import net.sf.anathema.charmentry.demo.ICharmEntryViewFactory;
+import net.sf.anathema.charmentry.demo.ICharmPrerequisitesEntryModel;
+import net.sf.anathema.charmentry.demo.IPrerequisiteCharmsEntryView;
+import net.sf.anathema.charmentry.demo.page.properties.PrerequisiteCharmsPageProperties;
+import net.sf.anathema.framework.presenter.view.IdentificateListCellRenderer;
+import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
+import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.workflow.container.ISelectionContainerView;
 
 public class PrerequisiteCharmsPage extends AbstractAnathemaWizardPage {
 
+  private final IResources resources;
+  private final ICharmEntryModel model;
+  private final ICharmEntryViewFactory viewFactory;
+  private final IPrerequisiteCharmsPageProperties properties;
+  private IPrerequisiteCharmsEntryView view;
+
   public PrerequisiteCharmsPage(IResources resources, ICharmEntryModel model, ICharmEntryViewFactory viewFactory) {
-    // TODO Auto-generated constructor stub
+    this.resources = resources;
+    this.properties = new PrerequisiteCharmsPageProperties(resources);
+    this.model = model;
+    this.viewFactory = viewFactory;
   }
 
   @Override
   protected void addFollowUpPages(CheckInputListener inputListener) {
-    // TODO Auto-generated method stub
-
+    // nothing to do
   }
 
   @Override
   protected void initModelListening(CheckInputListener inputListener) {
-    // TODO Auto-generated method stub
+    getPageModel().addModelListener(inputListener);
+  }
 
+  protected ICharmPrerequisitesEntryModel getPageModel() {
+    return model.getCharmPrerequisitesModel();
   }
 
   @Override
   protected void initPageContent() {
-    // TODO Auto-generated method stub
-
+    this.view = viewFactory.createPrerequisiteCharmsView();
+    final ISelectionContainerView charmView = view.addPrerequisiteCharmView(new IdentificateListCellRenderer(resources));
+    charmView.addSelectionChangeListener(new IChangeListener() {
+      public void changeOccured() {
+        Object[] selectedValues = charmView.getSelectedValues();
+        ICharm[] charms = new ICharm[selectedValues.length];
+        ArrayUtilities.copyAll(selectedValues, charms);
+        getPageModel().setPrerequisiteCharms(charms);
+      }
+    });
+    getPageModel().addModelListener(new IChangeListener() {
+      public void changeOccured() {
+        try {
+          charmView.populate(getPageModel().getAvailableCharms());
+        }
+        catch (PersistenceException e) {
+          // TODO Handle
+          e.printStackTrace();
+        }
+      }
+    });
   }
 
   public boolean canFinish() {
@@ -37,15 +75,30 @@ public class PrerequisiteCharmsPage extends AbstractAnathemaWizardPage {
   }
 
   public String getDescription() {
-    return null;
+    return properties.getPageTitle();
   }
 
   public IBasicMessage getMessage() {
-    // TODO Auto-generated method stub
-    return null;
+    return properties.getDefaultMessage();
   }
 
-  public IPageContent getPageContent() {
-    return null;
+  public IPrerequisiteCharmsEntryView getPageContent() {
+    return view;
+  }
+
+  protected IPrerequisiteCharmsPageProperties getProperties() {
+    return properties;
+  }
+
+  protected IResources getResources() {
+    return resources;
+  }
+
+  protected ICharmEntryModel getModel() {
+    return model;
+  }
+
+  protected ICharmEntryViewFactory getViewFactory() {
+    return viewFactory;
   }
 }

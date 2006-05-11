@@ -2,7 +2,6 @@ package net.sf.anathema.charmentry.demo.page;
 
 import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.charmentry.demo.ICharmEntryModel;
 import net.sf.anathema.charmentry.demo.ICharmEntryViewFactory;
@@ -68,7 +67,7 @@ public class CharmTypeEntryPage extends AbstractAnathemaWizardPage {
   }
 
   private void initTypeView() {
-    IObjectSelectionView typeView = getView().addComboBoxRow(
+    IObjectSelectionView typeView = getPageContent().addComboBoxRow(
         getProperties().getTypeLabel(),
         getProperties().getDefaultIdentificateRenderer(),
         getPageModel().getCharmTypes());
@@ -91,11 +90,7 @@ public class CharmTypeEntryPage extends AbstractAnathemaWizardPage {
     return defaultMessage;
   }
 
-  public IPageContent getPageContent() {
-    return view;
-  }
-
-  protected ICharmTypeEntryView getView() {
+  public ICharmTypeEntryView getPageContent() {
     return view;
   }
 

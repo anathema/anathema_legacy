@@ -9,4 +9,6 @@ public interface IKeywordEntryModel extends IRemovableEntryModel<ICharmAttribute
   public void setCurrentKeyword(IIdentificate keyword);
 
   public void clear();
+
+  public IIdentificate[] getKeywords();
 }

@@ -29,7 +29,7 @@ public class CharmEntryView {
 
   public IKeywordView addKeywordView() {
     KeywordView view = new KeywordView();
-    content.add(view.getComponent());
+    content.add(view.getContent());
     return view;
   }
 
