@@ -1,5 +1,6 @@
 package net.sf.anathema.charmentry.model;
 
+import net.sf.anathema.charmentry.presenter.model.IReflexiveSpecialsEntryModel;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 

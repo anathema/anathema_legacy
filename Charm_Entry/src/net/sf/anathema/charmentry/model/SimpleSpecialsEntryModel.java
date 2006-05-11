@@ -1,7 +1,7 @@
 package net.sf.anathema.charmentry.model;
 
 import net.sf.anathema.character.generic.magic.charms.type.TurnType;
-import net.sf.anathema.charmentry.presenter.ISimpleSpecialsEntryModel;
+import net.sf.anathema.charmentry.presenter.model.ISimpleSpecialsEntryModel;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 

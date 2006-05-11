@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.IExtendedCharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.library.removableentry.model.AbstractRemovableEntryModel;
+import net.sf.anathema.charmentry.presenter.model.IKeywordEntryModel;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public class KeywordEntryModel extends AbstractRemovableEntryModel<ICharmAttribute> implements IKeywordEntryModel {
