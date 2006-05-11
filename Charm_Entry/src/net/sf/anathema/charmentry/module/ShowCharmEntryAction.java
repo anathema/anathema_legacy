@@ -6,7 +6,9 @@ import java.awt.Cursor;
 import javax.swing.Action;
 
 import net.disy.commons.swing.action.SmartAction;
+import net.disy.commons.swing.dialog.core.ISwingFrameOrDialog;
 import net.disy.commons.swing.dialog.wizard.WizardDialog;
+import net.disy.commons.swing.util.GuiUtilities;
 import net.sf.anathema.charmentry.model.WizardCharmEntryModel;
 import net.sf.anathema.charmentry.presenter.HeaderDataEntryPage;
 import net.sf.anathema.charmentry.presenter.model.ICharmEntryModel;
@@ -35,7 +37,11 @@ public class ShowCharmEntryAction extends SmartAction {
       ICharmEntryViewFactory viewFactory = new CharmEntryViewFactory(resources);
       HeaderDataEntryPage startPage = new HeaderDataEntryPage(resources, model, viewFactory);
       WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
-      dialog.getConfiguredDialog().show();
+      final ISwingFrameOrDialog configuredDialog = dialog.getConfiguredDialog();
+      configuredDialog.setModal(true);
+      configuredDialog.setResizable(false);
+      GuiUtilities.centerToParent(configuredDialog.getWindow());
+      configuredDialog.show();
     }
     finally {
       parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
