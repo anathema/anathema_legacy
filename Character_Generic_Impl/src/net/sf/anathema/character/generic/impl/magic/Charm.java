@@ -266,8 +266,8 @@ public class Charm extends Identificate implements ICharm {
     return true;
   }
 
-  protected ICharmAttribute[] getAttributes() {
-    return charmAttributes.toArray(new ICharmAttribute[0]);
+  public ICharmAttribute[] getAttributes() {
+    return charmAttributes.toArray(new ICharmAttribute[charmAttributes.size()]);
   }
 
   public boolean hasAttribute(IIdentificate attribute) {

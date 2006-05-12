@@ -9,6 +9,7 @@ import java.util.Set;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.character.IMagicCollection;
+import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CostList;
 import net.sf.anathema.character.generic.impl.magic.MagicSource;
 import net.sf.anathema.character.generic.impl.magic.PermanentCostList;
@@ -18,6 +19,7 @@ import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.DurationType;
+import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
@@ -47,6 +49,7 @@ public class DummyCharm extends Identificate implements ICharm {
   private IMagicSource source;
   private CostList temporaryCost;
   private CharmTypeModel model = new CharmTypeModel();
+  private List<ICharmAttribute> attributes = new ArrayList<ICharmAttribute>();
 
   public DummyCharm(
       DurationType durationType,
@@ -213,5 +216,13 @@ public class DummyCharm extends Identificate implements ICharm {
 
   public CharmTypeModel getCharmTypeModel() {
     return model;
+  }
+
+  public ICharmAttribute[] getAttributes() {
+    return attributes.toArray(new ICharmAttribute[0]);
+  }
+
+  public void addKeyword(CharmAttribute attribute) {
+    this.attributes.add(attribute);
   }
 }

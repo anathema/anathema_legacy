@@ -7,6 +7,7 @@ import java.util.Set;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.charms.Duration;
+import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
@@ -79,5 +80,9 @@ public class DummyCharmData implements ICharmData {
 
   public ICharmTypeModel getCharmTypeModel() {
     return null;
+  }
+
+  public ICharmAttribute[] getAttributes() {
+    return new ICharmAttribute[0];
   }
 }

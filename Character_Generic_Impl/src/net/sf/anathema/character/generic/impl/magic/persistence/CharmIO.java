@@ -38,7 +38,7 @@ public class CharmIO {
         + createFileName(type, charmData.getEdition().getDefaultRuleset()));
     Document document = new SAXReader().read(new FileInputStream(file));
     try {
-      new CharmWriter().writeCharm(charmData.getCoreData(), charmData.getKeywords(), document.getRootElement());
+      new CharmWriter().writeCharm(charmData.getCoreData(), document.getRootElement());
     }
     catch (PersistenceException e) {
       throw new IOException(e.getMessage());
