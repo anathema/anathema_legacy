@@ -1,5 +1,6 @@
 package net.sf.anathema.charmentry.presenter.model;
 
+import net.sf.anathema.character.generic.impl.magic.persistence.ICharmEntryData;
 import net.sf.anathema.charmentry.model.IHeaderDataModel;
 
 public interface ICharmEntryModel {
@@ -17,4 +18,6 @@ public interface ICharmEntryModel {
   public ICharmPrerequisitesEntryModel getCharmPrerequisitesModel();
 
   public IKeywordEntryModel getKeywordEntryModel();
+
+  public ICharmEntryData getCharmData();
 }

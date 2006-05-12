@@ -2,6 +2,7 @@ package net.sf.anathema.charmentry.module;
 
 import java.awt.Component;
 import java.awt.Cursor;
+import java.io.IOException;
 
 import javax.swing.Action;
 
@@ -9,11 +10,14 @@ import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.core.ISwingFrameOrDialog;
 import net.disy.commons.swing.dialog.wizard.WizardDialog;
 import net.disy.commons.swing.util.GuiUtilities;
+import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.charmentry.model.WizardCharmEntryModel;
 import net.sf.anathema.charmentry.presenter.HeaderDataEntryPage;
 import net.sf.anathema.charmentry.presenter.model.ICharmEntryModel;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.resources.IResources;
+
+import org.dom4j.DocumentException;
 
 public class ShowCharmEntryAction extends SmartAction {
 
@@ -38,10 +42,18 @@ public class ShowCharmEntryAction extends SmartAction {
       HeaderDataEntryPage startPage = new HeaderDataEntryPage(resources, model, viewFactory);
       WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
       final ISwingFrameOrDialog configuredDialog = dialog.getConfiguredDialog();
-      configuredDialog.setModal(true);
       configuredDialog.setResizable(false);
       GuiUtilities.centerToParent(configuredDialog.getWindow());
       configuredDialog.show();
+      CharmCache.getInstance().addCharm(model.getCharmData());
+    }
+    catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    catch (DocumentException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
     }
     finally {
       parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
