@@ -11,30 +11,45 @@ import com.lowagie.text.pdf.PdfContentByte;
 public class BoxEncoder {
 
   private static final int HEADER_FONT_PADDING = 2;
-  private static final int HEADER_FONT_SIZE = 13;
+  private static final int HEADER_FONT_SIZE = 12;
   private static final int HEADER_HEIGHT = 14;
   private static final int ARCSPACE = 8;
+  private static final int ARC_SIZE = 2 * ARCSPACE;
   private BaseFont headerFont;
 
   public BoxEncoder() throws DocumentException, IOException {
     headerFont = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1250, BaseFont.NOT_EMBEDDED);
   }
 
-  public void encodeBox(PdfContentByte directContent, SmartRectangle bounds, String title) {
-    encodeContentBox(directContent, bounds);
+  public SmartRectangle encodeBox(PdfContentByte directContent, SmartRectangle bounds, String title) {
+    SmartRectangle contentBounds = encodeContentBox(directContent, bounds);
     encodeHeaderBox(directContent, bounds, title);
+    return contentBounds;
   }
 
-  private void encodeContentBox(PdfContentByte directContent, SmartRectangle bounds) {
+  private SmartRectangle encodeContentBox(PdfContentByte directContent, SmartRectangle bounds) {
     SmartRectangle contentBounds = calculateContentBounds(bounds);
     setFillColorBlack(directContent);
     directContent.setLineWidth(0);
-    directContent.moveTo(contentBounds.x, contentBounds.y);
-    directContent.lineTo(contentBounds.x + contentBounds.width, contentBounds.y);
-    directContent.lineTo(contentBounds.x + contentBounds.width, contentBounds.y + contentBounds.height);
-    directContent.lineTo(contentBounds.x, contentBounds.y + contentBounds.height);
-    directContent.lineTo(contentBounds.x, contentBounds.y);
+    directContent.moveTo(contentBounds.x, contentBounds.y + ARCSPACE);
+    add90DegreeArc(directContent, contentBounds.x, contentBounds.y, 180);
+    directContent.moveTo(contentBounds.x + ARCSPACE, contentBounds.y);
+    directContent.lineTo(contentBounds.x + contentBounds.width - ARCSPACE, contentBounds.y);
+    add90DegreeArc(directContent, contentBounds.x + contentBounds.width - ARC_SIZE, contentBounds.y, 270);
+    directContent.moveTo((int) contentBounds.getMaxX(), contentBounds.y + ARCSPACE);
+    directContent.lineTo((int) contentBounds.getMaxX(), (int) contentBounds.getMaxY() - ARCSPACE);
+    add90DegreeArc(directContent, (int) contentBounds.getMaxX() - ARC_SIZE, (int) contentBounds.getMaxY() - ARC_SIZE, 0);
+    directContent.moveTo((int) contentBounds.getMaxX() - ARCSPACE, (int) contentBounds.getMaxY());
+    directContent.lineTo((int) contentBounds.getMinX() + ARCSPACE, (int) contentBounds.getMaxY());
+    add90DegreeArc(directContent, contentBounds.x, (int) contentBounds.getMaxY() - ARC_SIZE, 90);
+    directContent.moveTo(contentBounds.x, (int) contentBounds.getMaxY() - ARCSPACE);
+    directContent.lineTo(contentBounds.x, contentBounds.y + ARCSPACE);
     directContent.stroke();
+    return contentBounds;
+  }
+
+  private void add90DegreeArc(PdfContentByte directContent, int minX, int minY, float startAngle) {
+    directContent.arc(minX, minY, minX + ARC_SIZE, minY + ARC_SIZE, startAngle, 90);
   }
 
   private SmartRectangle calculateContentBounds(SmartRectangle bounds) {
@@ -56,14 +71,16 @@ public class BoxEncoder {
         (float) headerBounds.getMaxX(),
         headerBounds.y,
         (float) headerBounds.getMaxX() - 2 * ARCSPACE,
-        headerBounds.y + headerBounds.height,
+        (float) headerBounds.getMaxY(),
         0,
         360);
     directContent.fillStroke();
     setFillColorWhite(directContent);
     directContent.setFontAndSize(headerFont, HEADER_FONT_SIZE);
+    directContent.beginText();
     directContent.showTextAligned(PdfContentByte.ALIGN_CENTER, title, (int) headerBounds.getCenterX(), headerBounds.y
         + HEADER_FONT_PADDING, 0);
+    directContent.endText();
   }
 
   private void setFillColorWhite(PdfContentByte directContent) {
