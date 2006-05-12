@@ -8,7 +8,7 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class BoxEncoder {
+public class PdfBoxEncoder {
 
   private static final int HEADER_FONT_PADDING = 3;
   private static final int HEADER_FONT_SIZE = 12;
@@ -17,7 +17,7 @@ public class BoxEncoder {
   private static final int ARC_SIZE = 2 * ARCSPACE;
   private BaseFont headerFont;
 
-  public BoxEncoder() throws DocumentException, IOException {
+  public PdfBoxEncoder() throws DocumentException, IOException {
     headerFont = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1250, BaseFont.NOT_EMBEDDED);
   }
 
