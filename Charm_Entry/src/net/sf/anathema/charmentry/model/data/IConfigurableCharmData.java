@@ -41,4 +41,8 @@ public interface IConfigurableCharmData extends IExtendedCharmData {
   public void addAttribute(ICharmAttribute charmAttribute);
 
   public void removeAttribute(ICharmAttribute charmAttribute);
+
+  public void setId(String id);
+
+  public void setGroupId(String id);
 }

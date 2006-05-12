@@ -9,7 +9,9 @@ import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.ISourceEntryModel;
+import net.sf.anathema.charmentry.util.CharmUtilities;
 import net.sf.anathema.lib.control.change.ChangeControl;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
@@ -18,8 +20,16 @@ public class HeaderDataModel implements IHeaderDataModel {
   private final ChangeControl control = new ChangeControl();
   private final IConfigurableCharmData charmData;
 
-  public HeaderDataModel(IConfigurableCharmData charmData) {
+  public HeaderDataModel(final IConfigurableCharmData charmData) {
     this.charmData = charmData;
+    charmData.getName().addTextChangedListener(new IObjectValueChangedListener<String>() {
+      public void valueChanged(String newValue) {
+        final CharacterType type = charmData.getCharacterType();
+        if (type != null) {
+          charmData.setId(CharmUtilities.createIDFromName(type, newValue));
+        }
+      }
+    });
   }
 
   public CharacterType[] getCharacterTypes() {
@@ -51,6 +61,10 @@ public class HeaderDataModel implements IHeaderDataModel {
 
   public void setCharacterType(CharacterType type) {
     charmData.setCharacterType(type);
+    final String text = charmData.getName().getText();
+    if (text != null) {
+      charmData.setId(CharmUtilities.createIDFromName(type, text));
+    }
     control.fireChangedEvent();
   }
 

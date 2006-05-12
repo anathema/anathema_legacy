@@ -70,6 +70,7 @@ public class PrerequisiteEntryModel implements IPrerequisitesModel {
       return;
     }
     charmData.setPrimaryPrerequisite(new ValuedTraitType(type, value));
+    charmData.setGroupId(type.getId());
     control.fireChangedEvent();
   }
 

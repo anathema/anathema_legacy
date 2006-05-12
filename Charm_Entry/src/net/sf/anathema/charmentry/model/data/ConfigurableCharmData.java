@@ -35,7 +35,7 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
   private Map<ITraitType, IGenericTrait> prerequisitesByType = new LinkedHashMap<ITraitType, IGenericTrait>();
   private String groupId;
   private Set<ICharm> parentCharms = new ListOrderedSet<ICharm>();
-  private ITextualDescription name = new SimpleTextualDescription();
+  private ITextualDescription name = new SimpleTextualDescription(""); //$NON-NLS-1$
   private IConfigurableCostList temporaryCost = new ConfigurableCostList();
   private IConfigurablePermanentCostList permanentCost = new ConfigurablePermanentCostList();
   private IConfigurableMagicSource source = new ConfigurableMagicSource();
@@ -85,7 +85,7 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
     return prerequisitesByType.values().toArray(new IGenericTrait[0]);
   }
 
-  public IGenericTrait getPrerequisiteByType(ITraitType type) {
+  private IGenericTrait getPrerequisiteByType(ITraitType type) {
     return prerequisitesByType.get(type);
   }
 
@@ -127,10 +127,6 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
 
   public ITextualDescription getName() {
     return name;
-  }
-
-  public void setName(String newName) {
-    name.setText(newName);
   }
 
   public IComboRestrictions getComboRules() {
