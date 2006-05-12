@@ -23,7 +23,6 @@ import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
@@ -174,8 +173,16 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
     return edition;
   }
 
-  public void addKeyword(IIdentificate newValue) {
-    keywords.add(new CharmAttribute(newValue.getId(), true));
+  public void addAttribute(ICharmAttribute charmAttribute) {
+    keywords.add(charmAttribute);
+  }
+
+  public void removeAttribute(ICharmAttribute charmAttribute) {
+    keywords.remove(charmAttribute);
+  }
+
+  public ICharmAttribute[] getAttributes() {
+    return keywords.toArray(new ICharmAttribute[keywords.size()]);
   }
 
   public CharmTypeModel getCharmTypeModel() {

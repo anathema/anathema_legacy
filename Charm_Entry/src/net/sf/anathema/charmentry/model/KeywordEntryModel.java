@@ -5,12 +5,18 @@ import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.IExtendedCharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.library.removableentry.model.AbstractRemovableEntryModel;
+import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.IKeywordEntryModel;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public class KeywordEntryModel extends AbstractRemovableEntryModel<ICharmAttribute> implements IKeywordEntryModel {
 
   private IIdentificate keyword;
+  private final IConfigurableCharmData charmData;
+
+  public KeywordEntryModel(IConfigurableCharmData charmData) {
+    this.charmData = charmData;
+  }
 
   @Override
   protected ICharmAttribute createEntry() {
@@ -21,7 +27,14 @@ public class KeywordEntryModel extends AbstractRemovableEntryModel<ICharmAttribu
   public ICharmAttribute commitSelection() {
     ICharmAttribute charmAttribute = super.commitSelection();
     fireEntryChanged();
+    charmData.addAttribute(charmAttribute);
     return charmAttribute;
+  }
+
+  @Override
+  public void removeEntry(ICharmAttribute entry) {
+    super.removeEntry(entry);
+    charmData.removeAttribute(entry);
   }
 
   @Override
@@ -48,7 +61,7 @@ public class KeywordEntryModel extends AbstractRemovableEntryModel<ICharmAttribu
     }
   }
 
-  public IIdentificate[] getKeywords() {
+  public IIdentificate[] getAvailableKeywords() {
     return new IIdentificate[] {
         ICharmData.ALLOWS_CELESTIAL_ATTRIBUTE,
         ICharmData.FORM_ATTRIBUTE,

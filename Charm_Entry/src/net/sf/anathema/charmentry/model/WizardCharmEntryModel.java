@@ -1,10 +1,7 @@
 package net.sf.anathema.charmentry.model;
 
-import java.util.List;
-
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmEntryData;
 import net.sf.anathema.character.generic.magic.ICharmData;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.charmentry.model.data.ConfigurableCharmData;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
@@ -23,7 +20,7 @@ public class WizardCharmEntryModel implements ICharmEntryModel {
   private final IDurationEntryModel durationModel = new DurationModel(typeModel, charmData);
   private final IPrerequisitesModel prerequisitesModel = new PrerequisiteEntryModel(headerModel, charmData);
   private final ICostEntryModel costEntryModel = new CostEntryModel(typeModel, charmData);
-  private final IKeywordEntryModel keywordEntryModel = new KeywordEntryModel();
+  private final IKeywordEntryModel keywordEntryModel = new KeywordEntryModel(charmData);
   private final ICharmPrerequisitesEntryModel charmPrerequisitesModel = new CharmPrerequisitesEntryModel(
       headerModel,
       charmData);
@@ -65,10 +62,6 @@ public class WizardCharmEntryModel implements ICharmEntryModel {
 
       public IExaltedEdition getEdition() {
         return charmData.getEdition();
-      }
-
-      public List<ICharmAttribute> getKeywords() {
-        return keywordEntryModel.getEntries();
       }
     };
   }

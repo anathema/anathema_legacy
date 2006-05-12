@@ -56,7 +56,7 @@ public class KeywordEntryPage extends AbstractAnathemaWizardPage {
         new DefaultListCellRenderer(),
         properties.getKeywordLabel(),
         properties.getAddIcon());
-    selectionView.setObjects(getPageModel().getKeywords());
+    selectionView.setObjects(getPageModel().getAvailableKeywords());
     selectionView.addObjectSelectionChangedListener(new IObjectValueChangedListener<IIdentificate>() {
       public void valueChanged(IIdentificate newValue) {
         getPageModel().setCurrentKeyword(newValue);
