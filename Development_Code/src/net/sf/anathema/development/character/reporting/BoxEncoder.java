@@ -10,10 +10,10 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class BoxEncoder {
 
-  private static final int HEADER_FONT_PADDING = 2;
+  private static final int HEADER_FONT_PADDING = 3;
   private static final int HEADER_FONT_SIZE = 12;
   private static final int HEADER_HEIGHT = 14;
-  private static final int ARCSPACE = 8;
+  private static final int ARCSPACE = HEADER_HEIGHT / 2;
   private static final int ARC_SIZE = 2 * ARCSPACE;
   private BaseFont headerFont;
 

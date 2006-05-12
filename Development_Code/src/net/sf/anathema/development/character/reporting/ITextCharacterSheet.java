@@ -19,10 +19,11 @@ public class ITextCharacterSheet {
   public static void main(String[] args) {
     Document document = new Document();
     try {
+      System.err.println(document.getPageSize());
       PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("iText.pdf"));
       document.open();
       PdfContentByte directContent = writer.getDirectContent();
-      drawBox(directContent, new SmartRectangle(100, 700, 200, 50), "Amber");
+      drawBox(directContent, new SmartRectangle(0, 842 - 50, 200, 50), "Amber");
     }
     catch (DocumentException de) {
       System.err.println(de.getMessage());
