@@ -1,30 +1,32 @@
 package net.sf.anathema.development.character.reporting;
 
-import java.io.IOException;
-
 import net.disy.commons.core.geometry.SmartRectangle;
 
-import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class PdfBoxEncoder {
+public class PdfBoxEncoder extends AbstractPdfEncoder {
 
+  private static final int CONTENT_INSET = 5;
   private static final int HEADER_FONT_PADDING = 3;
   private static final int HEADER_FONT_SIZE = 12;
   private static final int HEADER_HEIGHT = 14;
   private static final int ARCSPACE = HEADER_HEIGHT / 2;
   private static final int ARC_SIZE = 2 * ARCSPACE;
-  private BaseFont headerFont;
+  private BaseFont baseFont;
 
-  public PdfBoxEncoder() throws DocumentException, IOException {
-    headerFont = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1250, BaseFont.NOT_EMBEDDED);
+  public PdfBoxEncoder(BaseFont baseFont) {
+    this.baseFont = baseFont;
   }
 
   public SmartRectangle encodeBox(PdfContentByte directContent, SmartRectangle bounds, String title) {
     SmartRectangle contentBounds = encodeContentBox(directContent, bounds);
     encodeHeaderBox(directContent, bounds, title);
-    return contentBounds;
+    return new SmartRectangle(
+        contentBounds.x + CONTENT_INSET,
+        contentBounds.y,
+        contentBounds.width - 2 * CONTENT_INSET,
+        contentBounds.height - ARCSPACE);
   }
 
   private SmartRectangle encodeContentBox(PdfContentByte directContent, SmartRectangle bounds) {
@@ -76,19 +78,11 @@ public class PdfBoxEncoder {
         360);
     directContent.fillStroke();
     setFillColorWhite(directContent);
-    directContent.setFontAndSize(headerFont, HEADER_FONT_SIZE);
+    directContent.setFontAndSize(baseFont, HEADER_FONT_SIZE);
     directContent.beginText();
     directContent.showTextAligned(PdfContentByte.ALIGN_CENTER, title, (int) headerBounds.getCenterX(), headerBounds.y
         + HEADER_FONT_PADDING, 0);
     directContent.endText();
-  }
-
-  private void setFillColorWhite(PdfContentByte directContent) {
-    directContent.setRGBColorFill(255, 255, 255);
-  }
-
-  private void setFillColorBlack(PdfContentByte directContent) {
-    directContent.setRGBColorFill(0, 0, 0);
   }
 
   private SmartRectangle calculateHeaderBounds(SmartRectangle bounds) {

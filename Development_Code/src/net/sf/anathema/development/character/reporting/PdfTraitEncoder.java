@@ -2,31 +2,21 @@ package net.sf.anathema.development.character.reporting;
 
 import java.awt.Point;
 
+import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants;
+
+import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class PdfTraitEncoder {
+public class PdfTraitEncoder extends AbstractPdfEncoder {
 
-  public static final int MAX_DOT_COUNT = 7;
-  public static final int DEFAULT_HEIGHT = 12;
+  private final int dotSpacing = 1;
+  private final int height = IVoidStateFormatConstants.LINE_HEIGHT;
+  private final int fontSize = IVoidStateFormatConstants.FONT_SIZE;
+  private final int dotSize = IVoidStateFormatConstants.SMALL_SYMBOL_HEIGHT;
+  private final BaseFont baseFont;
 
-  public static final int DOT_SPACING = 1;
-  public static final int PADDING = 8;
-  private final int height;
-  private final int fontSize;
-  protected final int dotSize;
-
-  public PdfTraitEncoder() {
-    this(8);
-  }
-
-  public PdfTraitEncoder(int dotsSize) {
-    this(dotsSize, DEFAULT_HEIGHT, DEFAULT_HEIGHT - 4);
-  }
-
-  public PdfTraitEncoder(int dotsSize, int lineHeight, int fontSize) {
-    this.dotSize = dotsSize;
-    this.height = lineHeight;
-    this.fontSize = fontSize;
+  public PdfTraitEncoder(BaseFont baseFont) {
+    this.baseFont = baseFont;
   }
 
   public int encodeWithText(
@@ -36,16 +26,32 @@ public class PdfTraitEncoder {
       int width,
       int value,
       int dotCount) {
-    boolean putBlankAfterFifthDot = true;
-    int groupingSpace = 0;
+    setDefaultTraitFont(directContent);
+    setFillColorBlack(directContent);
+    directContent.beginText();
+    directContent.showTextAligned(PdfContentByte.ALIGN_LEFT, text, position.x, position.y, 0);
+    directContent.endText();
     for (int dot = 0; dot < dotCount; dot++) {
-      if (putBlankAfterFifthDot && (dot % 5 == 0) && (dot + 1 < dotCount)) {
-        groupingSpace += dotSize / 2;
-      }
+      int groupingSpace = dot < 5 ? dotSize / 2 : 0;
       int rightEdgeX = position.x + width;
-      int spaceNeededRight = groupingSpace + ((dotCount - dot) * (dotSize + DOT_SPACING));
-      // todo vom (12.05.2006) (sieroux): Ellipse zeichnen
+      int spaceNeededRight = groupingSpace + ((dotCount - dot) * (dotSize + dotSpacing));
+      int leftDotX = rightEdgeX - spaceNeededRight;
+      directContent.arc(leftDotX, position.y, leftDotX + dotSize, position.y + dotSize, 0, 360);
+      if (dot < value) {
+        directContent.fillStroke();
+      }
+      else {
+        directContent.stroke();
+      }
     }
+    return height;
+  }
+
+  private void setDefaultTraitFont(PdfContentByte directContent) {
+    directContent.setFontAndSize(baseFont, fontSize);
+  }
+
+  public int getTraitHeight() {
     return height;
   }
 }

@@ -1,7 +1,12 @@
-package net.sf.anathema.development.character.reporting;
+package net.sf.anathema.development.character.reporting.demo;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.development.character.reporting.PdfFirstPageEncoder;
+import net.sf.anathema.development.character.reporting.SecondEditionPartEncoder;
+import net.sf.anathema.framework.repository.tree.demo.DemoResources;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
@@ -9,7 +14,7 @@ import com.lowagie.text.PageSize;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfWriter;
 
-public class ITextCharacterSheet {
+public class PdfCharacterSheetDemo {
 
   public static void main(String[] args) {
     Document document = new Document(PageSize.A4, 40, 40, 15, 15);
@@ -18,7 +23,8 @@ public class ITextCharacterSheet {
       PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("iText.pdf"));
       document.open();
       PdfContentByte directContent = writer.getDirectContent();
-      new PdfFirstPageEncoder().encode(directContent);
+      IGenericCharacter character = new DemoGenericCharacter();
+      new PdfFirstPageEncoder(new SecondEditionPartEncoder(new DemoResources())).encode(directContent, character);
     }
     catch (DocumentException de) {
       System.err.println(de.getMessage());
