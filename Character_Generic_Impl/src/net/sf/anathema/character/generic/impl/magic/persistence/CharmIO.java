@@ -4,10 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 
-import net.sf.anathema.character.generic.magic.ICharmData;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -33,17 +30,15 @@ public class CharmIO {
     return "data/Charms_" + type.getId() + "_" + rules.getId() + ".xml";//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$;
   }
 
-  public void writeCharmInternal(ICharmData charmData, List<ICharmAttribute> keywords, IExaltedRuleSet set)
-      throws IOException,
-      DocumentException {
-    CharacterType type = charmData.getCharacterType();
+  public void writeCharmInternal(ICharmEntryData charmData) throws IOException, DocumentException {
+    CharacterType type = charmData.getCoreData().getCharacterType();
     File file = new File("../Character_" //$NON-NLS-1$
         + type.getId()
         + "/resources/" //$NON-NLS-1$
-        + createFileName(type, set));
+        + createFileName(type, charmData.getEdition().getDefaultRuleset()));
     Document document = new SAXReader().read(new FileInputStream(file));
     try {
-      new CharmWriter().writeCharm(charmData, keywords, document.getRootElement());
+      new CharmWriter().writeCharm(charmData.getCoreData(), charmData.getKeywords(), document.getRootElement());
     }
     catch (PersistenceException e) {
       throw new IOException(e.getMessage());
