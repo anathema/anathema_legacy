@@ -26,14 +26,10 @@ public class PdfFirstPageEncoder {
         "Attributes");
     IGroupedTraitType[] attributeGroups = character.getTemplate().getAttributeGroups();
     partEncoder.encodeAttributes(directContent, attributesContentBounds, attributeGroups, character);
-    boxEncoder.encodeBox(directContent, pageConfiguration.getFirstColumnRectangle(199, 393, 1), "Attributes");
-    boxEncoder.encodeBox(directContent, pageConfiguration.getFirstColumnRectangle(602, 153, 1), "Combat");
-    boxEncoder.encodeBox(directContent, pageConfiguration.getSecondColumnRectangle(61, 282, 1), "Middle Column");
-    boxEncoder.encodeBox(directContent, pageConfiguration.getThirdColumnRectangle(0, 343), "Essence");
-    boxEncoder.encodeBox(directContent, pageConfiguration.getSecondColumnRectangle(353, 170, 2), "Weaponry");
-    boxEncoder.encodeBox(directContent, pageConfiguration.getSecondColumnRectangle(353, 170, 2), "Weaponry");
-    boxEncoder.encodeBox(directContent, pageConfiguration.getSecondColumnRectangle(533, 51, 2), "Armour");
-    boxEncoder.encodeBox(directContent, pageConfiguration.getSecondColumnRectangle(594, 119, 2), "Health");
-    boxEncoder.encodeBox(directContent, pageConfiguration.getSecondColumnRectangle(721, 34, 2), "Combat Sequence");
+    boxEncoder.encodeBox(directContent, pageConfiguration.getFirstColumnRectangle(199, 556, 1), "Abilities");
+    boxEncoder.encodeBox(directContent, pageConfiguration.getThirdColumnRectangle(0, 51), "Essence");
+    partEncoder.encodeEditionSpecificFirstPagePart(
+        directContent,
+        pageConfiguration.getSecondColumnRectangle(61, 694, 2));
   }
 }

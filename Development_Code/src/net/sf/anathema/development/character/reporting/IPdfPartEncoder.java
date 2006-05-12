@@ -16,4 +16,6 @@ public interface IPdfPartEncoder {
       IGenericTraitCollection traitCollection);
 
   public BaseFont getBaseFont();
+
+  public void encodeEditionSpecificFirstPagePart(PdfContentByte directContent, SmartRectangle restBounds);
 }

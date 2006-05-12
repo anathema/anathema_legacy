@@ -19,10 +19,12 @@ public class SecondEditionPartEncoder implements IPdfPartEncoder {
   private final BaseFont baseFont = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1250, BaseFont.NOT_EMBEDDED);
   private final IResources resources;
   private final PdfTraitEncoder traitEncoder;
+  private final PdfBoxEncoder boxEncoder;
 
   public SecondEditionPartEncoder(IResources resources) throws DocumentException, IOException {
     this.resources = resources;
     this.traitEncoder = new PdfTraitEncoder(baseFont);
+    this.boxEncoder = new PdfBoxEncoder(baseFont);
   }
 
   public void encodeAttributes(
@@ -53,5 +55,9 @@ public class SecondEditionPartEncoder implements IPdfPartEncoder {
 
   public BaseFont getBaseFont() {
     return baseFont;
+  }
+
+  public void encodeEditionSpecificFirstPagePart(PdfContentByte directContent, SmartRectangle restBounds) {
+    boxEncoder.encodeBox(directContent, restBounds, "Rest");
   }
 }
