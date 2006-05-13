@@ -37,7 +37,7 @@ public class RuleSetSelectionView implements IRuleSetSelectionView {
   }
 
   public IExaltedRuleSet getSelectedRules() {
-    return (IExaltedRuleSet) selectionView.getComboBox().getSelectedItem();
+    return (IExaltedRuleSet) selectionView.getSelectedObject();
   }
 
   public void setAvailableRulesets(IExaltedRuleSet[] supportedRuleSets) {
