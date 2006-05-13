@@ -11,7 +11,6 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
 
   private final int dotSpacing = 2;
   private final int height = IVoidStateFormatConstants.LINE_HEIGHT;
-  private final int fontSize = IVoidStateFormatConstants.FONT_SIZE;
   private final int dotSize = IVoidStateFormatConstants.SMALL_SYMBOL_HEIGHT - 1;
   private final BaseFont baseFont;
 
@@ -26,7 +25,7 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
       int width,
       int value,
       int dotCount) {
-    setDefaultTraitFont(directContent);
+    setDefaultFont(directContent);
     setFillColorBlack(directContent);
     directContent.setLineWidth(0.8f);
     directContent.beginText();
@@ -48,11 +47,12 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
     return height;
   }
 
-  private void setDefaultTraitFont(PdfContentByte directContent) {
-    directContent.setFontAndSize(baseFont, fontSize);
-  }
-
   public int getTraitHeight() {
     return height;
+  }
+
+  @Override
+  protected BaseFont getBaseFont() {
+    return baseFont;
   }
 }

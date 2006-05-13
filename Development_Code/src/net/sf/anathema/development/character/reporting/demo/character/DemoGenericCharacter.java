@@ -1,4 +1,4 @@
-package net.sf.anathema.development.character.reporting.demo;
+package net.sf.anathema.development.character.reporting.demo.character;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,6 @@ import java.util.List;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.ICharacterPoints;
-import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.testing.DummyGenericTrait;
@@ -28,6 +27,8 @@ public class DemoGenericCharacter implements IGenericCharacter {
   private final List<IGenericTrait> allBackgrounds = new ArrayList<IGenericTrait>();
   private final List<IGenericCombo> allCombos = new ArrayList<IGenericCombo>();
   private final DemoCharacterTemplate characterTemplate = new DemoCharacterTemplate();
+  private final DemoGenericDescription description = new DemoGenericDescription();
+  private final DemoConcept concept = new DemoConcept();
 
   public IAdditionalModel getAdditionalModel(String templateId) {
     return null;
@@ -49,8 +50,8 @@ public class DemoGenericCharacter implements IGenericCharacter {
     return allCombos.toArray(new IGenericCombo[allCombos.size()]);
   }
 
-  public IConcept getConcept() {
-    return null;
+  public DemoConcept getConcept() {
+    return concept;
   }
 
   public int getHealthLevelTypeCount(HealthLevelType type) {
@@ -130,5 +131,9 @@ public class DemoGenericCharacter implements IGenericCharacter {
   }
 
   public void setLearnCount(IMultiLearnableCharm multiLearnableCharm, int newValue) {
+  }
+  
+  public DemoGenericDescription getDescription() {
+    return description ;
   }
 }

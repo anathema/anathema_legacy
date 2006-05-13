@@ -2,7 +2,9 @@ package net.sf.anathema.development.character.reporting;
 
 import static net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants.PADDING;
 import net.disy.commons.core.geometry.SmartRectangle;
+import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.development.character.reporting.page.PdfPageConfiguration;
 
@@ -20,10 +22,10 @@ public class PdfFirstPageEncoder {
     this.boxEncoder = new PdfBoxEncoder(partEncoder.getBaseFont());
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character) {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description) {
     int distanceFromTop = 0;
     final int firstRowHeight = 51;
-    encodePersonalInfo(directContent, character, distanceFromTop, firstRowHeight);
+    encodePersonalInfo(directContent, character, description, distanceFromTop, firstRowHeight);
     encodeEssence(directContent, character, distanceFromTop, firstRowHeight);
 
     distanceFromTop += firstRowHeight + PADDING;
@@ -39,16 +41,24 @@ public class PdfFirstPageEncoder {
       int distanceFromTop,
       final int firstRowHeight) {
     SmartRectangle essenceBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, firstRowHeight);
-    boxEncoder.encodeBox(directContent, essenceBounds, "Essence");
+    boxEncoder.encodeBox(directContent, essenceBounds, getHeaderLabel("Essence"));
+  }
+
+  private String getHeaderLabel(String key) {
+    return partEncoder.getResources().getString("Sheet.Header." + key);
   }
 
   private void encodePersonalInfo(
       PdfContentByte directContent,
       IGenericCharacter character,
+      IGenericDescription description,
       int distanceFromTop,
       final int firstRowHeight) {
-    SmartRectangle personalInfoBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, firstRowHeight, 2);
-    boxEncoder.encodeBox(directContent, personalInfoBounds, "Personal Information");
+    SmartRectangle infoBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, firstRowHeight, 2);
+    String name = description.getName();
+    String title = StringUtilities.isNullOrTrimEmpty(name) ? getHeaderLabel("PersonalInfo") : name;
+    SmartRectangle infoContentBounds = boxEncoder.encodeBox(directContent, infoBounds, title);
+    partEncoder.encodePersonalInfos(directContent, character, description, infoContentBounds);
   }
 
   private void encodeFirstColumn(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop) {
@@ -60,13 +70,13 @@ public class PdfFirstPageEncoder {
   private void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop) {
     int abilitiesHeight = overallContentHeight - distanceFromTop;
     SmartRectangle abilityBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
-    boxEncoder.encodeBox(directContent, abilityBounds, "Abilities");
+    boxEncoder.encodeBox(directContent, abilityBounds, getHeaderLabel("Abilities"));
   }
 
   private int encodeAttributes(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop) {
     int attributeHeight = 128;
     SmartRectangle attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 1);
-    SmartRectangle attributesContentBounds = boxEncoder.encodeBox(directContent, attributeBounds, "Attributes");
+    SmartRectangle attributesContentBounds = boxEncoder.encodeBox(directContent, attributeBounds, getHeaderLabel("Attributes"));
     IGroupedTraitType[] attributeGroups = character.getTemplate().getAttributeGroups();
     partEncoder.encodeAttributes(directContent, attributesContentBounds, attributeGroups, character);
     return attributeHeight;

@@ -29,7 +29,7 @@ public abstract class AbstractPdfPartEncoder extends AbstractPdfEncoder implemen
   public final BaseFont getBaseFont() {
     return baseFont;
   }
-
+  
   public final void encodeAttributes(
       PdfContentByte directContent,
       SmartRectangle contentBounds,
@@ -44,10 +44,18 @@ public abstract class AbstractPdfPartEncoder extends AbstractPdfEncoder implemen
         y -= groupSpacing;
       }
       ITraitType traitType = groupedTraitType.getTraitType();
-      String traitLabel = resources.getString("Sheet." + traitType.getId());
+      String traitLabel = getResources().getString("AttributeType.Name." + traitType.getId());
       int value = traitCollection.getTrait(traitType).getCurrentValue();
       Point position = new Point(contentBounds.x, y);
       y -= traitEncoder.encodeWithText(directContent, traitLabel, position, contentBounds.width, value, essenceMax);
     }
+  }
+  
+  public final IResources getResources() {
+    return resources;
+  }
+
+  protected final String getLabel(String key) {
+    return getResources().getString("Sheet.Label." + key);
   }
 }

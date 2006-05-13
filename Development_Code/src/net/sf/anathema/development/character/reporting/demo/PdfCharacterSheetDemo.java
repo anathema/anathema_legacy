@@ -2,16 +2,20 @@ package net.sf.anathema.development.character.reporting.demo;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
+import java.util.Locale;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.impl.module.CharacterCoreModule;
 import net.sf.anathema.development.character.reporting.PdfFirstPageEncoder;
 import net.sf.anathema.development.character.reporting.SecondEditionPartEncoder;
-import net.sf.anathema.framework.repository.tree.demo.DemoResources;
+import net.sf.anathema.development.character.reporting.demo.character.DemoGenericCharacter;
+import net.sf.anathema.development.character.reporting.demo.character.DemoGenericDescription;
+import net.sf.anathema.framework.resources.AnathemaResources;
+import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.lib.control.BrowserControl;
+import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
 import com.lowagie.text.PageSize;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfWriter;
@@ -26,18 +30,36 @@ public class PdfCharacterSheetDemo {
       PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(outputStream));
       document.open();
       PdfContentByte directContent = writer.getDirectContent();
-      IGenericCharacter character = new DemoGenericCharacter();
-      new PdfFirstPageEncoder(new SecondEditionPartEncoder(new DemoResources(), 7)).encode(directContent, character);
+      IGenericCharacter character = createDemoCharacter();
+      DemoGenericDescription description = createDemoDescription();
+      SecondEditionPartEncoder partEncoder = new SecondEditionPartEncoder(createDemoResources(), 7);
+      new PdfFirstPageEncoder(partEncoder).encode(directContent, character, description);
       BrowserControl.displayUrl(outputStream.toURL());
     }
-    catch (DocumentException de) {
+    catch (Exception de) {
       System.err.println(de.getMessage());
-    }
-    catch (IOException ioe) {
-      System.err.println(ioe.getMessage());
     }
     finally {
       document.close();
     }
+  }
+
+  private static IResources createDemoResources() {
+    Locale.setDefault(Locale.ENGLISH);
+    IAnathemaResources resources = new AnathemaResources();
+//    new CharacterCoreModule().initAnathemaResources(resources);
+    return resources;
+  }
+
+  private static IGenericCharacter createDemoCharacter() {
+    DemoGenericCharacter character = new DemoGenericCharacter();
+    character.getConcept().setConceptText("Tolles Konzept");
+    return character;
+  }
+
+  private static DemoGenericDescription createDemoDescription() {
+    DemoGenericDescription description = new DemoGenericDescription();
+    description.setName("Hugo the Brave");
+    return description;
   }
 }

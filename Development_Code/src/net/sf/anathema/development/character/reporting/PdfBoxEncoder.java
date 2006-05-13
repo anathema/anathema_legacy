@@ -89,4 +89,9 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
   private SmartRectangle calculateHeaderBounds(SmartRectangle bounds) {
     return new SmartRectangle(bounds.x, bounds.y + bounds.height - HEADER_HEIGHT, bounds.width, HEADER_HEIGHT);
   }
+
+  @Override
+  protected BaseFont getBaseFont() {
+    return baseFont;
+  }
 }

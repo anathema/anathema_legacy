@@ -1,4 +1,4 @@
-package net.sf.anathema.development.character.reporting.demo;
+package net.sf.anathema.development.character.reporting.demo.character;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
