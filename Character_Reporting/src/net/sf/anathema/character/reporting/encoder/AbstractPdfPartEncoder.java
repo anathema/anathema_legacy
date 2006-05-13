@@ -4,9 +4,11 @@ import java.awt.Point;
 import java.io.IOException;
 
 import net.disy.commons.core.geometry.SmartRectangle;
+import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.reporting.common.SimpleEssenceEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.DocumentException;
@@ -17,13 +19,13 @@ public abstract class AbstractPdfPartEncoder extends AbstractPdfEncoder implemen
 
   private final BaseFont baseFont = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1250, BaseFont.NOT_EMBEDDED);
   private final IResources resources;
-  private final PdfTraitEncoder traitEncoder;
+  private final PdfTraitEncoder smallTraitEncoder;
   private final int essenceMax;
 
   public AbstractPdfPartEncoder(IResources resources, int essenceMax) throws DocumentException, IOException {
     this.essenceMax = essenceMax;
     this.resources = resources;
-    this.traitEncoder = new PdfTraitEncoder(baseFont);
+    this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
   }
 
   public final BaseFont getBaseFont() {
@@ -35,7 +37,7 @@ public abstract class AbstractPdfPartEncoder extends AbstractPdfEncoder implemen
       SmartRectangle contentBounds,
       IGroupedTraitType[] attributeGroups,
       IGenericTraitCollection traitCollection) {
-    int groupSpacing = traitEncoder.getTraitHeight() / 2;
+    int groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
     int y = (int) contentBounds.getMaxY() - groupSpacing;
     String groupId = null;
     for (IGroupedTraitType groupedTraitType : attributeGroups) {
@@ -44,14 +46,19 @@ public abstract class AbstractPdfPartEncoder extends AbstractPdfEncoder implemen
         y -= groupSpacing;
       }
       ITraitType traitType = groupedTraitType.getTraitType();
-      String traitLabel = getResources().getString("AttributeType.Name." + traitType.getId());
+      String traitLabel = getResources().getString("AttributeType.Name." + traitType.getId()); //$NON-NLS-1$
       int value = traitCollection.getTrait(traitType).getCurrentValue();
       Point position = new Point(contentBounds.x, y);
-      y -= traitEncoder.encodeWithText(directContent, traitLabel, position, contentBounds.width, value, essenceMax);
+      y -= smallTraitEncoder.encodeWithText(directContent, traitLabel, position, contentBounds.width, value, essenceMax);
     }
   }
 
   public final IResources getResources() {
     return resources;
+  }
+
+  public void encodeEssence(PdfContentByte directContent, IGenericCharacter character, SmartRectangle contentBounds) {
+    SimpleEssenceEncoder encoder = new SimpleEssenceEncoder(getBaseFont(), getResources(), essenceMax);
+    encoder.encodeEssence(directContent, character, contentBounds);
   }
 }

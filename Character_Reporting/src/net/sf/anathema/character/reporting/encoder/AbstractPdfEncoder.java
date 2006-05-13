@@ -40,6 +40,7 @@ public abstract class AbstractPdfEncoder {
       int width) {
     setFillColorBlack(directContent);
     setDefaultFont(directContent);
+    directContent.setLineWidth(0);
     directContent.beginText();
     directContent.showTextAlignedKerned(PdfContentByte.ALIGN_LEFT, label, position.x, position.y, 0);
     float labelWidth = getDefaultTextWidth(label);

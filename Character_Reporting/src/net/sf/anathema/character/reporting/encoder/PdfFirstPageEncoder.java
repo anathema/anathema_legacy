@@ -41,11 +41,13 @@ public class PdfFirstPageEncoder {
       int distanceFromTop,
       final int firstRowHeight) {
     SmartRectangle essenceBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, firstRowHeight);
-    boxEncoder.encodeBox(directContent, essenceBounds, getHeaderLabel("Essence"));
+    String title = getHeaderLabel("Essence");
+    SmartRectangle essenceContentBounds = boxEncoder.encodeBox(directContent, essenceBounds, title);
+    partEncoder.encodeEssence(directContent, character, essenceContentBounds);
   }
 
   private String getHeaderLabel(String key) {
-    return partEncoder.getResources().getString("Sheet.Header." + key);
+    return partEncoder.getResources().getString("Sheet.Header." + key); //$NON-NLS-1$
   }
 
   private void encodePersonalInfo(
@@ -56,7 +58,7 @@ public class PdfFirstPageEncoder {
       final int firstRowHeight) {
     SmartRectangle infoBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, firstRowHeight, 2);
     String name = description.getName();
-    String title = StringUtilities.isNullOrTrimEmpty(name) ? getHeaderLabel("PersonalInfo") : name;
+    String title = StringUtilities.isNullOrTrimEmpty(name) ? getHeaderLabel("PersonalInfo") : name; //$NON-NLS-1$
     SmartRectangle infoContentBounds = boxEncoder.encodeBox(directContent, infoBounds, title);
     partEncoder.encodePersonalInfos(directContent, character, infoContentBounds);
   }
@@ -70,7 +72,7 @@ public class PdfFirstPageEncoder {
   private void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop) {
     int abilitiesHeight = overallContentHeight - distanceFromTop;
     SmartRectangle abilityBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
-    boxEncoder.encodeBox(directContent, abilityBounds, getHeaderLabel("Abilities"));
+    boxEncoder.encodeBox(directContent, abilityBounds, getHeaderLabel("Abilities")); //$NON-NLS-1$
   }
 
   private int encodeAttributes(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop) {
@@ -79,7 +81,7 @@ public class PdfFirstPageEncoder {
     SmartRectangle attributesContentBounds = boxEncoder.encodeBox(
         directContent,
         attributeBounds,
-        getHeaderLabel("Attributes"));
+        getHeaderLabel("Attributes")); //$NON-NLS-1$
     IGroupedTraitType[] attributeGroups = character.getTemplate().getAttributeGroups();
     partEncoder.encodeAttributes(directContent, attributesContentBounds, attributeGroups, character);
     return attributeHeight;

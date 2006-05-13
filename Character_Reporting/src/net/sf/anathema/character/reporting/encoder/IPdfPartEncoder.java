@@ -11,17 +11,19 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public interface IPdfPartEncoder {
 
-  public void encodePersonalInfos(PdfContentByte directContent, IGenericCharacter character, SmartRectangle infoBounds);
-
   public void encodeAttributes(
       PdfContentByte directContent,
       SmartRectangle attributesContentBounds,
       IGroupedTraitType[] attributeGroups,
       IGenericTraitCollection traitCollection);
 
-  public BaseFont getBaseFont();
-
   public void encodeEditionSpecificFirstPagePart(PdfContentByte directContent, SmartRectangle restBounds);
+
+  public void encodeEssence(PdfContentByte directContent, IGenericCharacter character, SmartRectangle contentBounds);
+
+  public void encodePersonalInfos(PdfContentByte directContent, IGenericCharacter character, SmartRectangle infoBounds);
+
+  public BaseFont getBaseFont();
 
   public IResources getResources();
 }
