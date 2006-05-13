@@ -13,6 +13,7 @@ public class HeaderDataEntryView implements IHeaderDataEntryView {
 
   private final StandardPanelBuilder builder = new StandardPanelBuilder();
   private JPanel content;
+  private JComponent focusComponent;
 
   public JComponent getContent() {
     if (content == null) {
@@ -26,7 +27,11 @@ public class HeaderDataEntryView implements IHeaderDataEntryView {
   }
 
   public ITextView addLineTextRow(String label) {
-    return builder.addLineTextView(label, 15);
+    final ITextView textView = builder.addLineTextView(label, 15);
+    if (focusComponent == null) {
+      focusComponent = textView.getComponent();
+    }
+    return textView;
   }
 
   public ISourceSelectionView addSourceView(String bookLabel, String pageLabel, Object[] predefinedSources) {
@@ -36,7 +41,7 @@ public class HeaderDataEntryView implements IHeaderDataEntryView {
   }
 
   public void requestFocus() {
-    // Nothing to do
+    focusComponent.requestFocus();
   }
 
   public void dispose() {
