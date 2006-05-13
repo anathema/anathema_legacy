@@ -971,4 +971,173 @@
     <charmAttribute attribute="War" visualize="true"/>
     <source source="SecondEdition" page="199"/>
   </charm>
+  <charm id="Solar.Integrity-PotectingPrana" exalt="Solar" group="Integrity">
+    <prerequisite>
+      <essence id="Essence" value="1"/>
+      <trait id="Integrity" value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Reflexive"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="199"/>
+  </charm>
+  <charm id="Solar.Destiny-ManifestingMethod" exalt="Solar" group="Integrity">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Integrity" value="3"/>
+      <charmReference id="Solar.Integrity-PotectingPrana"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <source source="SecondEdition" page="199"/>
+  </charm>
+  <charm id="Solar.RighteousLionDefense" exalt="Solar" group="Integrity">
+    <prerequisite>
+      <essence id="Essence" value="1"/>
+      <trait id="Integrity" value="3"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <source source="SecondEdition" page="199"/>
+  </charm>
+  <charm id="Solar.StubbornBoarDefense" exalt="Solar" group="Integrity">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Integrity" value="3"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <source source="SecondEdition" page="199"/>
+  </charm>
+  <charm id="Solar.PhoenixRenewalTactic" exalt="Solar" group="Integrity">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Integrity" value="4"/>
+      <charmAttributeRequirement attribute="ExcellencyIntegrity" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <source source="SecondEdition" page="200"/>
+  </charm>
+  <charm id="Solar.Temptation-ResistingStance" exalt="Solar" group="Integrity">
+    <prerequisite>
+      <essence id="Essence" value="1"/>
+      <trait id="Integrity" value="2"/>
+      <charmAttributeRequirement attribute="ExcellencyIntegrity" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Reflexive"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Social" visualize="true"/>
+    <charmAttribute attribute="Stackable" visualize="true"/>
+    <source source="SecondEdition" page="200"/>
+  </charm>
+  <charm id="Solar.ElusiveDreamDefense" exalt="Solar" group="Integrity">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Integrity" value="4"/>
+      <charmReference id="Solar.Temptation-ResistingStance"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant (Story)"/>
+    <charmtype type="Reflexive"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Social" visualize="true"/>
+    <source source="SecondEdition" page="200"/>
+  </charm>
+  <charm id="Solar.TranscendentHeroMeditation" exalt="Solar" group="Integrity">
+    <prerequisite>
+      <essence id="Essence" value="4"/>
+      <trait id="Integrity" value="5"/>
+      <charmReference id="Solar.ElusiveDreamDefense"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="Social" visualize="true"/>
+    <source source="SecondEdition" page="201"/>
+  </charm>
+  <charm id="Solar.SunKingRadiance" exalt="Solar" group="Integrity">
+    <prerequisite>
+      <essence id="Essence" value="4"/>
+      <trait id="Integrity" value="5"/>
+      <charmReference id="Solar.ElusiveDreamDefense"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition" page="201"/>
+  </charm>
+  <charm id="Solar.Spirit-MaintainingManeuver" exalt="Solar" group="Integrity">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Integrity" value="4"/>
+      <charmAttributeRequirement attribute="ExcellencyIntegrity" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5" text="per 1wp"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Social" visualize="true"/>
+    <source source="SecondEdition" page="201"/>
+  </charm>
+  <charm id="Solar.UnhesitatingDedication" exalt="Solar" group="Integrity">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Integrity" value="3"/>
+      <charmReference id="Solar.RighteousLionDefense"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Stackable" visualize="true"/>
+    <source source="SecondEdition" page="202"/>
+  </charm>
 </charmlist>
