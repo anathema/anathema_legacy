@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.health.HealthType;
 
 public class ConfigurableHealthCost extends ConfigurableCost implements IConfigurableHealthCost {
 
-  private HealthType type;
+  private HealthType type = HealthType.Lethal;
 
   public HealthType getType() {
     return type;
