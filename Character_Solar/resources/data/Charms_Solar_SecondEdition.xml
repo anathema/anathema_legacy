@@ -860,7 +860,9 @@
       </temporary>
     </cost>
     <duration duration="Instant"/>
-    <charmtype type="Simple"/>
+    <charmtype type="Simple">
+      <special speed="3" turntype="LongTick" defense="-1"/>
+    </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="War" visualize="true"/>
     <source source="SecondEdition" page="197"/>
@@ -878,7 +880,9 @@
       </temporary>
     </cost>
     <duration duration="One scene"/>
-    <charmtype type="Simple"/>
+    <charmtype type="Simple">
+      <special speed="5" turntype="LongTick" defense="-1"/>
+    </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="SecondEdition" page="197"/>
@@ -913,7 +917,9 @@
       </temporary>
     </cost>
     <duration duration="One scene"/>
-    <charmtype type="Simple"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="LongTick" defense="-1"/>
+    </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="War" visualize="true"/>
@@ -932,7 +938,9 @@
       </temporary>
     </cost>
     <duration duration="One week"/>
-    <charmtype type="Simple"/>
+    <charmtype type="Simple">
+      <special speed="1" turntype="DramaticAction" defense="-1"/>
+    </charmtype>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
     <charmAttribute attribute="Training" visualize="true"/>
@@ -965,7 +973,9 @@
       </temporary>
     </cost>
     <duration duration="One scene"/>
-    <charmtype type="Simple"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="LongTick" defense="-1"/>
+    </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="War" visualize="true"/>
