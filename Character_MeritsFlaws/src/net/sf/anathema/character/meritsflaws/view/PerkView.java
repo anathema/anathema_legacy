@@ -142,8 +142,7 @@ public class PerkView implements IPerkView {
       public void valueChanged(Object newValue) {
         control.forAllDo(new IClosure<IPerkListener>() {
           public void execute(IPerkListener input) {
-            input.filterChanged(typeFilterView.getComboBox().getSelectedItem(), categoryFilterView.getComboBox()
-                .getSelectedItem());
+            input.filterChanged(typeFilterView.getSelectedObject(), categoryFilterView.getComboBox().getSelectedItem());
           }
         });
       }
