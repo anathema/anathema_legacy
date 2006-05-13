@@ -25,6 +25,7 @@ import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.library.trait.IFavorableTrait;
 import net.sf.anathema.character.library.trait.ITrait;
@@ -180,5 +181,9 @@ public class GenericCharacter implements IGenericCharacter {
 
   public ITraitLimitation getEssenceLimitation() {
     return getTemplate().getTraitTemplateCollection().getTraitTemplate(OtherTraitType.Essence).getLimitation();
+  }
+  
+  public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
+    return statistics.getTraitConfiguration().getAbilityTypeGroups();
   }
 }
