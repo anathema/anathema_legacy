@@ -3354,4 +3354,570 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="SecondEdition" page="232"/>
   </charm>
+  <charm id="Solar.WhirlingBrushMethod" exalt="Solar" group="Linguistics">
+    <prerequisite>
+      <essence id="Essence" value="1"/>
+      <trait id="Linguistics" value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="232"/>
+  </charm>
+  <charm id="Solar.FlawlessBrushDiscipline" exalt="Solar" group="Linguistics">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Linguistics" value="5"/>
+      <charmAttributeRequirement attribute="ExcellencyLinguistics" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="Tick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Emotion" visualize="true"/>
+    <source source="SecondEdition" page="232"/>
+  </charm>
+  <charm id="Solar.Letter-Within-a-LetterTechnique" exalt="Solar" group="Linguistics">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Linguistics" value="4"/>
+      <charmAttributeRequirement attribute="ExcellencyLinguistics" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="Tick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="232"/>
+  </charm>
+  <charm id="Solar.DiscerningSavant'sEye" exalt="Solar" group="Linguistics">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Linguistics" value="5"/>
+      <charmAttributeRequirement attribute="ExcellencyLinguistics" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="2"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="232"/>
+  </charm>
+  <charm id="Solar.SagaciousReadingIntent" exalt="Solar" group="Linguistics">
+    <prerequisite>
+      <essence id="Essence" value="1"/>
+      <trait id="Linguistics" value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="2"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Social" visualize="true"/>
+    <source source="SecondEdition" page="233"/>
+  </charm>
+  <charm id="Solar.PoeticExpressionStyle" exalt="Solar" group="Linguistics">
+    <prerequisite>
+      <essence id="Essence" value="1"/>
+      <trait id="Linguistics" value="2"/>
+      <charmReference id="Solar.SagaciousReadingIntent"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Reflexive"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="233"/>
+  </charm>
+  <charm id="Solar.ExcellentEmissary'sTongue" exalt="Solar" group="Linguistics">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Linguistics" value="3"/>
+      <charmReference id="Solar.PoeticExpressionStyle"/>
+      <charmAttributeRequirement attribute="ExcellencyLinguistics" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <source source="SecondEdition" page="233"/>
+  </charm>
+  <charm id="Solar.TwistedWordsTechnique" exalt="Solar" group="Linguistics">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Linguistics" value="4"/>
+      <charmReference id="Solar.Letter-Within-a-LetterTechnique"/>
+      <charmReference id="Solar.SagaciousReadingIntent"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Compulsion" visualize="true"/>
+    <charmAttribute attribute="Illusion" visualize="true"/>
+    <source source="SecondEdition" page="234"/>
+  </charm>
+  <charm id="Solar.UnbreakableFascinationMethod" exalt="Solar" group="Linguistics">
+    <prerequisite>
+      <essence id="Essence" value="4"/>
+      <trait id="Linguistics" value="5"/>
+      <charmReference id="Solar.PoeticExpressionStyle"/>
+      <charmReference id="Solar.TwistedWordsTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+      <special speed="1" turntype="DramaticAction" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition" page="234"/>
+  </charm>
+  <charm id="Solar.MasterHorseman'sTechniques" exalt="Solar" group="Ride">
+    <prerequisite>
+      <essence id="Essence" value="1"/>
+      <trait id="Ride" value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <source source="SecondEdition" page="234"/>
+  </charm>
+  <charm id="Solar.WorthyMountTechnique" exalt="Solar" group="Ride">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Ride" value="3"/>
+      <charmAttributeRequirement attribute="ExcellencyRide" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <source source="SecondEdition" page="234"/>
+  </charm>
+  <charm id="Solar.SingleSpiritMethod" exalt="Solar" group="Ride">
+    <prerequisite>
+      <essence id="Essence" value="4"/>
+      <trait id="Ride" value="5"/>
+      <charmReference id="Solar.WorthyMountTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <source source="SecondEdition" page="235"/>
+  </charm>
+  <charm id="Solar.PhantomSteed" exalt="Solar" group="Ride">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Ride" value="5"/>
+      <charmReference id="Solar.MasterHorseman'sTechniques"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="Tick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition" page="236"/>
+  </charm>
+  <charm id="Solar.FlashingThunderboltSteed" exalt="Solar" group="Ride">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Ride" value="5"/>
+      <charmAttributeRequirement attribute="ExcellencyRide" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One day"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="Tick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Touch" visualize="true"/>
+    <source source="SecondEdition" page="236"/>
+  </charm>
+  <charm id="Solar.Wind-RacingEssenceInfusion" exalt="Solar" group="Ride">
+    <prerequisite>
+      <essence id="Essence" value="4"/>
+      <trait id="Ride" value="5"/>
+      <charmReference id="Solar.FlashingThunderboltSteed"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition" page="236"/>
+  </charm>
+  <charm id="Solar.SometimesHorsesFlyApproach" exalt="Solar" group="Ride">
+    <prerequisite>
+      <essence id="Essence" value="4"/>
+      <trait id="Ride" value="5"/>
+      <charmReference id="Solar.SingleSpiritMethod"/>
+      <charmReference id="Solar.FlashingThunderboltSteed"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One hour"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="Tick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Touch" visualize="true"/>
+    <source source="SecondEdition" page="236"/>
+  </charm>
+  <charm id="Solar.SaltyDogMethod" exalt="Solar" group="Sail">
+    <prerequisite>
+      <essence id="Essence" value="1"/>
+      <trait id="Sail" value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="1" secondaryStep="2"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Social" visualize="true"/>
+    <charmAttribute attribute="War" visualize="true"/>
+    <source source="SecondEdition" page="236"/>
+  </charm>
+  <charm id="Solar.InvincibleAdmiralMethod" exalt="Solar" group="Sail">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Sail" value="4"/>
+      <charmReference id="Solar.SaltyDogMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="12"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="1" secondaryStep="2"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Social" visualize="true"/>
+    <charmAttribute attribute="War" visualize="true"/>
+    <source source="SecondEdition" page="236"/>
+  </charm>
+  <charm id="Solar.Ship-ClaimingStance" exalt="Solar" group="Sail">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Sail" value="4"/>
+      <charmAttributeRequirement attribute="ExcellencySail" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="LongTick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition" page="237"/>
+  </charm>
+  <charm id="Solar.Hull-PreservingTechnique" exalt="Solar" group="Sail">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Sail" value="5"/>
+      <charmReference id="Solar.Ship-ClaimingStance"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8"/>
+        <health cost="1" type="Lethal"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="2"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="Touch" visualize="true"/>
+    <source source="SecondEdition" page="237"/>
+  </charm>
+  <charm id="Solar.Shipwreck-SurvivingStamina" exalt="Solar" group="Sail">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Sail" value="5"/>
+      <charmReference id="Solar.Hull-PreservingTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="10"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="Stackable" visualize="true"/>
+    <charmAttribute attribute="Touch" visualize="true"/>
+    <source source="SecondEdition" page="237"/>
+  </charm>
+  <charm id="Solar.PerfectReckoningTechnique" exalt="Solar" group="Sail">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Sail" value="4"/>
+      <charmAttributeRequirement attribute="ExcellencySail" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple">
+      <special speed="1" turntype="DramaticAction" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="237"/>
+  </charm>
+  <charm id="Solar.Storm-WeatheringEssenceInfusion" exalt="Solar" group="Sail">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Sail" value="4"/>
+      <charmAttributeRequirement attribute="ExcellencySail" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="237"/>
+  </charm>
+  <charm id="Solar.SeaAmbushTechnique" exalt="Solar" group="Sail">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Sail" value="4"/>
+      <charmAttributeRequirement attribute="ExcellencySail" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="War" visualize="true"/>
+    <source source="SecondEdition" page="238"/>
+  </charm>
+  <charm id="Solar.Wise-EyedCourtierMethod" exalt="Solar" group="Socialize">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Socialize" value="3"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="LongTick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Illusion" visualize="true"/>
+    <source source="SecondEdition" page="238"/>
+  </charm>
+  <charm id="Solar.Wild-RevelryApproach" exalt="Solar" group="Socialize">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Socialize" value="3"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="LongTick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Emotion" visualize="true"/>
+    <source source="SecondEdition" page="238"/>
+  </charm>
+  <charm id="Solar.TabooInflictingDiatribe" exalt="Solar" group="Socialize">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Socialize" value="3"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="LongTick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Compulsion" visualize="true"/>
+    <source source="SecondEdition" page="238"/>
+  </charm>
+  <charm id="Solar.VenomousWhispersTechnique" exalt="Solar" group="Socialize">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Socialize" value="5"/>
+      <charmReference id="Solar.TabooInflictingDiatribe"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="LongTick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Compulsion" visualize="true"/>
+    <charmAttribute attribute="Touch" visualize="true"/>
+    <source source="SecondEdition" page="239"/>
+  </charm>
+  <charm id="Solar.UnderstandingCourt" exalt="Solar" group="Socialize">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Socialize" value="5"/>
+      <charmAttributeRequirement attribute="ExcellencySocialize" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="20"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+      <special speed="1" turntype="DramaticAction" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="239"/>
+  </charm>
+  <charm id="Solar.MasterySmallManners" exalt="Solar" group="Socialize">
+    <prerequisite>
+      <essence id="Essence" value="1"/>
+      <trait id="Socialize" value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Until next action"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="1" secondaryStep="2"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Social" visualize="true"/>
+    <source source="SecondEdition" page="239"/>
+  </charm>
+  <charm id="Solar.GatheringCongregation" exalt="Solar" group="Socialize">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Socialize" value="3"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One week"/>
+    <charmtype type="Simple">
+      <special speed="5" turntype="LongTick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="Social" visualize="true"/>
+    <source source="SecondEdition" page="240"/>
+  </charm>
 </charmlist>
