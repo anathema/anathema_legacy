@@ -14,6 +14,8 @@ public interface IConfigurableCharmData extends IExtendedCharmData {
 
   public ITextualDescription getName();
 
+  public IConfigurableMagicSource getSource();
+
   public IConfigurablePermanentCostList getPermanentCost();
 
   public IConfigurableCostList getTemporaryCost();

@@ -16,12 +16,13 @@ import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public class HeaderDataModel implements IHeaderDataModel {
-  private final ISourceEntryModel sourceModel = new SourceEntryModel();
+  private final ISourceEntryModel sourceModel;
   private final ChangeControl control = new ChangeControl();
   private final IConfigurableCharmData charmData;
 
   public HeaderDataModel(final IConfigurableCharmData charmData) {
     this.charmData = charmData;
+    this.sourceModel = new SourceEntryModel(charmData);
     charmData.getName().addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         final CharacterType type = charmData.getCharacterType();
