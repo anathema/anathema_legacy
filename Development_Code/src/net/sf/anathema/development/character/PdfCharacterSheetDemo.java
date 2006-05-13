@@ -9,8 +9,6 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.impl.module.CharacterCoreModule;
 import net.sf.anathema.character.impl.module.CharacterModule;
-import net.sf.anathema.character.reporting.demo.DemoGenericCharacter;
-import net.sf.anathema.character.reporting.demo.DemoGenericDescription;
 import net.sf.anathema.character.reporting.encoder.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.second.SecondEditionPartEncoder;
 import net.sf.anathema.framework.resources.AnathemaResources;
