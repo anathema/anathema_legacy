@@ -73,4 +73,8 @@ public class ObjectSelectionView implements IObjectSelectionView, IGridDialogPan
     label.setEnabled(enabled);
     comboBox.getComponent().setEnabled(enabled);
   }
+
+  public Object getSelectedObject() {
+    return getComboBox().getSelectedItem();
+  }
 }
