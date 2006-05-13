@@ -12,6 +12,10 @@ public abstract class AbstractPdfEncoder {
 
   protected abstract BaseFont getBaseFont();
 
+  protected final void setCommentFont(PdfContentByte directContent) {
+    directContent.setFontAndSize(getBaseFont(), IVoidStateFormatConstants.FONT_SIZE - 2);
+  }
+
   protected final void setDefaultFont(PdfContentByte directContent) {
     directContent.setFontAndSize(getBaseFont(), IVoidStateFormatConstants.FONT_SIZE);
   }
@@ -32,10 +36,29 @@ public abstract class AbstractPdfEncoder {
     directContent.setLineWidth(0.5f);
   }
 
+  protected final void addComment(PdfContentByte directContent, String text, Point position, int alignment) {
+    setFillColorBlack(directContent);
+    setCommentFont(directContent);
+    directContent.setLineWidth(0);
+    drawText(directContent, text, position, alignment, 0);
+  }
+
   protected final void addText(PdfContentByte directContent, String text, Point position, int alignment) {
+    addText(directContent, text, position, alignment, 0);
+  }
+
+  protected final void addVerticalText(PdfContentByte directContent, String text, Point position, int alignment) {
+    addText(directContent, text, position, alignment, 90);
+  }
+
+  private void addText(PdfContentByte directContent, String text, Point position, int alignment, int rotation) {
     initDirectContentForText(directContent);
+    drawText(directContent, text, position, alignment, rotation);
+  }
+
+  private void drawText(PdfContentByte directContent, String text, Point position, int alignment, int rotation) {
     directContent.beginText();
-    directContent.showTextAlignedKerned(alignment, text, position.x, position.y, 0);
+    directContent.showTextAlignedKerned(alignment, text, position.x, position.y, rotation);
     directContent.endText();
   }
 

@@ -30,6 +30,22 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
     this.dotSize = dotSize;
   }
 
+  public int encodeWithRectangle(
+      PdfContentByte directContent,
+      String text,
+      Point position,
+      int width,
+      int value,
+      boolean favored,
+      int dotCount) {
+    initDirectContent(directContent);
+    directContent.rectangle(position.x, position.y, dotSize, dotSize);
+    commitShape(directContent, favored);
+    int squareWidth = dotSize + 2;
+    Point usualTraitPosition = new Point(position.x + squareWidth, position.y);
+    return encodeWithText(directContent, text, usualTraitPosition, width - squareWidth, value, dotCount);
+  }
+
   public int encodeWithText(
       PdfContentByte directContent,
       String text,
@@ -73,7 +89,11 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
 
   private void encodeDot(PdfContentByte directContent, Point lowerLeft, int dotIndex, int value) {
     directContent.arc(lowerLeft.x, lowerLeft.y, lowerLeft.x + dotSize, lowerLeft.y + dotSize, 0, 360);
-    if (dotIndex < value) {
+    commitShape(directContent, dotIndex < value);
+  }
+
+  private void commitShape(PdfContentByte directContent, boolean isFilled) {
+    if (isFilled) {
       directContent.fillStroke();
     }
     else {

@@ -11,6 +11,8 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public interface IPdfPartEncoder {
 
+  public void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, SmartRectangle contentBounds);
+
   public void encodeAttributes(
       PdfContentByte directContent,
       SmartRectangle attributesContentBounds,

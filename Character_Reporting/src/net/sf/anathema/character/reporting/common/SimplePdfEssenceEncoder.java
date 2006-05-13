@@ -13,14 +13,14 @@ import net.sf.anathema.lib.resources.IResources;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class SimpleEssenceEncoder extends AbstractPdfEncoder {
+public class SimplePdfEssenceEncoder extends AbstractPdfEncoder {
 
   private BaseFont baseFont;
   private final IResources resources;
   private PdfTraitEncoder largeTraitEncoder;
   private final int essenceMax;
 
-  public SimpleEssenceEncoder(BaseFont baseFont, IResources resources, int essenceMax) {
+  public SimplePdfEssenceEncoder(BaseFont baseFont, IResources resources, int essenceMax) {
     this.baseFont = baseFont;
     this.resources = resources;
     this.essenceMax = essenceMax;

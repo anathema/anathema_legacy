@@ -8,7 +8,9 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.reporting.common.SimpleEssenceEncoder;
+import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.reporting.common.PdfAbilitiesEncoder;
+import net.sf.anathema.character.reporting.common.SimplePdfEssenceEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.DocumentException;
@@ -30,6 +32,13 @@ public abstract class AbstractPdfPartEncoder extends AbstractPdfEncoder implemen
 
   public final BaseFont getBaseFont() {
     return baseFont;
+  }
+
+  public void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, SmartRectangle contentBounds) {
+    PdfAbilitiesEncoder encoder = new PdfAbilitiesEncoder(getBaseFont(), getResources(), essenceMax);
+    IIdentifiedTraitTypeGroup[] groups = character.getAbilityTypeGroups();
+    Point abilityPosition = new Point((int) contentBounds.getMinX(), (int) contentBounds.getMaxY());
+    encoder.encodeAbilities(directContent, character, groups, abilityPosition, contentBounds.width);
   }
 
   public final void encodeAttributes(
@@ -58,7 +67,7 @@ public abstract class AbstractPdfPartEncoder extends AbstractPdfEncoder implemen
   }
 
   public void encodeEssence(PdfContentByte directContent, IGenericCharacter character, SmartRectangle contentBounds) {
-    SimpleEssenceEncoder encoder = new SimpleEssenceEncoder(getBaseFont(), getResources(), essenceMax);
+    SimplePdfEssenceEncoder encoder = new SimplePdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);
     encoder.encodeEssence(directContent, character, contentBounds);
   }
 }

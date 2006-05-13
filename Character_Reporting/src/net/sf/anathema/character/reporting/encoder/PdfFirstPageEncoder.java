@@ -41,7 +41,7 @@ public class PdfFirstPageEncoder {
       int distanceFromTop,
       final int firstRowHeight) {
     SmartRectangle essenceBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, firstRowHeight);
-    String title = getHeaderLabel("Essence");
+    String title = getHeaderLabel("Essence"); //$NON-NLS-1$
     SmartRectangle essenceContentBounds = boxEncoder.encodeBox(directContent, essenceBounds, title);
     partEncoder.encodeEssence(directContent, character, essenceContentBounds);
   }
@@ -71,8 +71,9 @@ public class PdfFirstPageEncoder {
 
   private void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop) {
     int abilitiesHeight = overallContentHeight - distanceFromTop;
-    SmartRectangle abilityBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
-    boxEncoder.encodeBox(directContent, abilityBounds, getHeaderLabel("Abilities")); //$NON-NLS-1$
+    SmartRectangle boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
+    SmartRectangle contentBounds = boxEncoder.encodeBox(directContent, boxBounds, getHeaderLabel("Abilities")); //$NON-NLS-1$
+    partEncoder.encodeAbilities(directContent, character, contentBounds);
   }
 
   private int encodeAttributes(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop) {
