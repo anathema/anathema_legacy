@@ -14,11 +14,11 @@ public class DurationModel implements IDurationEntryModel {
   private final IConfigurableCharmData charmData;
   private final ChangeControl control = new ChangeControl();
 
-  public DurationModel(ICharmTypeEntryModel typeModel, final IConfigurableCharmData charmData) {
+  public DurationModel(final ICharmTypeEntryModel typeModel, final IConfigurableCharmData charmData) {
     this.charmData = charmData;
     typeModel.addModelListener(new IChangeListener() {
       public void changeOccured() {
-        if (charmData.getCharmTypeModel().getCharmType() == CharmType.Permanent) {
+        if (typeModel.getCharmType() == CharmType.Permanent) {
           setDuration("Permanent");
         }
       }
