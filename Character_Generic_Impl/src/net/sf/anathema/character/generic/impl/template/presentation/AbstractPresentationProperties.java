@@ -24,7 +24,7 @@ public abstract class AbstractPresentationProperties implements IPresentationPro
   }
 
   public String getCasteResourceBase() {
-    return getCharacterTypeId() + ".Caste."; //$NON-NLS-1$
+    return "Caste."; //$NON-NLS-1$
   }
 
   protected final ITemplateType getTemplateType() {
