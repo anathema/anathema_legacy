@@ -24,6 +24,7 @@ import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 
 public class DummyGenericCharacter implements IGenericCharacter {
 
@@ -164,5 +165,9 @@ public class DummyGenericCharacter implements IGenericCharacter {
 
   public void setLearnCount(IMultiLearnableCharm multiLearnableCharm, int newValue) {
     // Nothing to do
+  }
+  
+  public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
+    return new IIdentifiedTraitTypeGroup[0];
   }
 }
