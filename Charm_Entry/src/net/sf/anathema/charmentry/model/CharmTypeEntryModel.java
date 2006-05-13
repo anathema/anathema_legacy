@@ -10,15 +10,12 @@ import net.sf.anathema.charmentry.presenter.model.ISimpleSpecialsEntryModel;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
-public class CharmTypeEntryModel implements
-    ICharmTypeEntryModel,
-    ISimpleSpecialsArbitrator,
-    IReflexiveSpecialsArbitrator {
+public class CharmTypeEntryModel implements ICharmTypeEntryModel {
 
   private final ChangeControl control = new ChangeControl();
   private final IConfigurableCharmData charmData;
-  private final SimpleSpecialsEntryModel simpleCharmSpecials = new SimpleSpecialsEntryModel(this);
-  private final ReflexiveSpecialsEntryModel reflexiveCharmSpecials = new ReflexiveSpecialsEntryModel(this);
+  private final SimpleSpecialsEntryModel simpleCharmSpecials = new SimpleSpecialsEntryModel();
+  private final ReflexiveSpecialsEntryModel reflexiveCharmSpecials = new ReflexiveSpecialsEntryModel();
   private boolean enabled;
 
   public CharmTypeEntryModel(IConfigurableCharmData charmData) {
@@ -40,16 +37,21 @@ public class CharmTypeEntryModel implements
   public void setCharmType(CharmType type) {
     final CharmTypeModel charmTypeModel = charmData.getCharmTypeModel();
     charmTypeModel.setCharmType(type);
-    if (isSimpleSpecialsAvailable()) {
+    setSpecialModel();
+    control.fireChangedEvent();
+  }
+
+  private void setSpecialModel() {
+    final CharmTypeModel charmTypeModel = charmData.getCharmTypeModel();
+    if (isSimpleSpecialsAvailable() && enabled) {
       charmTypeModel.setSpecialModel(simpleCharmSpecials);
     }
-    else if (isReflexiveSpecialsAvailable()) {
+    else if (isReflexiveSpecialsAvailable() && enabled) {
       charmTypeModel.setSpecialModel(reflexiveCharmSpecials);
     }
     else {
       charmTypeModel.setSpecialModel(null);
     }
-    control.fireChangedEvent();
   }
 
   public void addModelListener(IChangeListener listener) {
@@ -59,6 +61,7 @@ public class CharmTypeEntryModel implements
   public void setSpecialModelEnabled(boolean enabled) {
     if (this.enabled != enabled) {
       this.enabled = enabled;
+      setSpecialModel();
       control.fireChangedEvent();
     }
   }
@@ -68,20 +71,17 @@ public class CharmTypeEntryModel implements
   }
 
   public boolean isSpecialModelAvailable() {
-    final CharmType type = charmData.getCharmTypeModel().getCharmType();
-    return type == CharmType.Simple || type == CharmType.Reflexive;
+    return isSimpleSpecialsAvailable() || isReflexiveSpecialsAvailable();
   }
 
-  public boolean isSimpleSpecialsAvailable() {
+  private boolean isSimpleSpecialsAvailable() {
     return charmData.getCharmTypeModel().getCharmType() == CharmType.Simple
-        && charmData.getEdition() == ExaltedEdition.SecondEdition
-        && enabled;
+        && charmData.getEdition() == ExaltedEdition.SecondEdition;
   }
 
-  public boolean isReflexiveSpecialsAvailable() {
+  private boolean isReflexiveSpecialsAvailable() {
     return charmData.getCharmTypeModel().getCharmType() == CharmType.Reflexive
-        && charmData.getEdition() == ExaltedEdition.SecondEdition
-        && enabled;
+        && charmData.getEdition() == ExaltedEdition.SecondEdition;
   }
 
   public CharmType getCharmType() {
