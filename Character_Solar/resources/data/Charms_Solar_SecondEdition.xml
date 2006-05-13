@@ -2608,4 +2608,39 @@
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="SecondEdition" page="222"/>
   </charm>
+  <charm id="Solar.Wonder-ForgingGenius" exalt="Solar" group="Craft">
+    <prerequisite>
+      <essence id="Essence" value="5"/>
+      <trait id="Craft" value="5"/>
+      <charmReference id="Solar.InfiniteMasteryCraft"/>
+      <charmReference id="Solar.Crack-MendingTechnique"/>
+      <charmReference id="Solar.CraftsmanNeedsNoTools"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <source source="Wonders/Lost Age" page="6"/>
+  </charm>
+  <charm id="Solar.InvincibleArmorInvocation" exalt="Solar" group="Resistance">
+    <prerequisite>
+      <essence id="Essence" value="6"/>
+      <trait id="Resistance" value="5"/>
+      <charmReference id="Solar.Hauberk-LighteningGesture"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="Tick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="Wonders/Lost Age" page="157"/>
+  </charm>
 </charmlist>
