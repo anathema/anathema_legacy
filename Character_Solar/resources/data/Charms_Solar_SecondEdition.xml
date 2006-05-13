@@ -1159,6 +1159,7 @@
     <charmAttribute attribute="Stackable" visualize="true"/>
     <source source="SecondEdition" page="202"/>
   </charm>
+  
   <charm id="Solar.RespectCommandingAttitude" exalt="Solar" group="Performance">
     <prerequisite>
       <essence id="Essence" value="2"/>
@@ -1170,7 +1171,9 @@
       </temporary>
     </cost>
     <duration duration="One scene"/>
-    <charmtype type="Simple"/>
+    <charmtype type="Simple">
+      <special speed="4" turntype="LongTick" defense="-1"/>
+    </charmtype
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Compulsion" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
@@ -1222,7 +1225,9 @@
       </temporary>
     </cost>
     <duration duration="Instant"/>
-    <charmtype type="Simple"/>
+    <charmtype type="Simple">
+      <special speed="5" turntype="LongTick" defense="-1"/>
+    </charmtype
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Illusion" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
@@ -1241,7 +1246,9 @@
       </temporary>
     </cost>
     <duration duration="Instant"/>
-    <charmtype type="Simple"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="LongTick" defense="-1"/>
+    </charmtype
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Emotion" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
