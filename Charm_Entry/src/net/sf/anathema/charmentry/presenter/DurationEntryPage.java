@@ -57,6 +57,7 @@ public class DurationEntryPage extends AbstractAnathemaWizardPage {
         getPageModel().setDuration(newValue);
       }
     });
+    selectionView.setSelectedObject(getPageModel().getDurations()[0]);
   }
 
   private IDurationEntryModel getPageModel() {
