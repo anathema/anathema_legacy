@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Locale;
 
+import net.sf.anathema.character.abyssal.caste.AbyssalCaste;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.impl.module.CharacterCoreModule;
 import net.sf.anathema.character.impl.module.CharacterModule;
 import net.sf.anathema.character.reporting.demo.DemoGenericCharacter;
@@ -57,6 +59,9 @@ public class PdfCharacterSheetDemo {
   private static IGenericCharacter createDemoCharacter() {
     DemoGenericCharacter character = new DemoGenericCharacter();
     character.getConcept().setConceptText("Tolles Konzept");
+    character.getConcept().setCasteType(AbyssalCaste.Day);
+    character.getConcept().setWillpowerRegainingConceptName("Pedestrian Motivation");
+    character.setRuleSet(ExaltedRuleSet.SecondEdition);
     return character;
   }
 
