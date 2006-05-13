@@ -85,6 +85,8 @@ public class SecondEditionCharmTypeEntryPage extends CharmTypeEntryPage {
         button.setEnabled(available);
       }
     });
-    getPageModel().setSpecialModelEnabled(getPageModel().isSpecialModelAvailable());
+    button.setSelected(false);
+    button.setEnabled(false);
+    getPageModel().setSpecialModelEnabled(false);
   }
 }
