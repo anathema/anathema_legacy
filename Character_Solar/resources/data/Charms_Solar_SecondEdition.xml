@@ -1140,4 +1140,93 @@
     <charmAttribute attribute="Stackable" visualize="true"/>
     <source source="SecondEdition" page="202"/>
   </charm>
+  <charm id="Solar.RespectCommandingAttitude" exalt="Solar" group="Performance">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Performance" value="3"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Compulsion" visualize="true"/>
+    <charmAttribute attribute="Social" visualize="true"/>
+    <source source="SecondEdition" page="202"/>
+  </charm>
+  <charm id="Solar.Phantom-ConjuringPerformance" exalt="Solar" group="Performance">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Performance" value="3"/>
+      <charmAttributeRequirement attribute="ExcellencyPerformance" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition" page="202"/>
+  </charm>
+  <charm id="Solar.Heart-CompellingMethod" exalt="Solar" group="Performance">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Performance" value="4"/>
+      <charmAttributeRequirement attribute="ExcellencyPerformance" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Emotion" visualize="true"/>
+    <charmAttribute attribute="Social" visualize="true"/>
+    <source source="SecondEdition" page="202"/>
+  </charm>
+  <charm id="Solar.Memory-ReweavingDiscipline" exalt="Solar" group="Performance">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Performance" value="5"/>
+      <charmReference id="Solar.Phantom-ConjuringPerformance"/>
+      <charmReference id="Solar.Heart-CompellingMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Illusion" visualize="true"/>
+    <charmAttribute attribute="Social" visualize="true"/>
+    <source source="SecondEdition" page="202"/>
+  </charm>
+  <charm id="Solar.Husband-SeducingDemonDance" exalt="Solar" group="Performance">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Performance" value="5"/>
+      <charmReference id="Solar.Heart-CompellingMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Emotion" visualize="true"/>
+    <charmAttribute attribute="Social" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition" page="203"/>
+  </charm>
 </charmlist>
