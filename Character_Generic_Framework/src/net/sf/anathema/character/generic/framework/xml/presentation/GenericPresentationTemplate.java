@@ -32,11 +32,11 @@ public class GenericPresentationTemplate extends ReflectionCloneableObject imple
   }
 
   public String getCasteResourceBase() {
-    return getCharacterType().getId() + ".Caste."; //$NON-NLS-1$
+    return "Caste."; //$NON-NLS-1$
   }
 
   public String getCasteLabelResource() {
-    return getCasteResourceBase() + "Label"; //$NON-NLS-1$;
+    return getCharacterType().getId() + ".Caste.Label"; //$NON-NLS-1$;
   }
 
   public GenericCharmPresentationProperties getCharmPresentationProperties() {
