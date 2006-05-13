@@ -48,5 +48,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Platform"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Data"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Data_Impl"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Reporting"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
