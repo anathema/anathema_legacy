@@ -1712,4 +1712,205 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="SecondEdition" page="208"/>
   </charm>
+  <charm id="Solar.FriendshipwithAnimalsApproach" exalt="Solar" group="Survival">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Survival" value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="1" secondaryStep="2"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="209"/>
+  </charm>
+  <charm id="Solar.Spirit-TiedPet" exalt="Solar" group="Survival">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Survival" value="3"/>
+      <charmReference id="Solar.FriendshipwithAnimalsApproach"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+      <permanent>
+        <experience cost="1"/>
+      </permanent>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+      <special speed="1" turntype="DramaticAction" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Touch" visualize="true"/>
+    <source source="SecondEdition" page="209"/>
+  </charm>
+  <charm id="Solar.BestialTraitsTechnique" exalt="Solar" group="Survival">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Survival" value="4"/>
+      <charmReference id="Solar.FriendshipwithAnimalsApproach"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="One week"/>
+    <charmtype type="Simple">
+      <special speed="1" turntype="DramaticAction" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="Touch" visualize="true"/>
+    <charmAttribute attribute="Training" visualize="true"/>
+    <source source="SecondEdition" page="210"/>
+  </charm>
+  <charm id="Solar.Hardship-SurvivingMendicantSpirit" exalt="Solar" group="Survival">
+    <prerequisite>
+      <essence id="Essence" value="1"/>
+      <trait id="Survival" value="3"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Reflexive"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="210"/>
+  </charm>
+  <charm id="Solar.Element-ResistingPrana" exalt="Solar" group="Survival">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Survival" value="5"/>
+      <charmReference id="Solar.Hardship-SurvivingMendicantSpirit"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <source source="SecondEdition" page="210"/>
+  </charm>
+  <charm id="Solar.EternalElementalHarmony" exalt="Solar" group="Survival">
+    <prerequisite>
+      <essence id="Essence" value="4"/>
+      <trait id="Survival" value="5"/>
+      <charmReference id="Solar.Hardship-SurvivingMendicantSpirit"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <source source="SecondEdition" page="210"/>
+  </charm>
+  <charm id="Solar.Food-GatheringExcercise" exalt="Solar" group="Survival">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Survival" value="5"/>
+      <charmAttributeRequirement attribute="ExcellencySurvival" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+      <special speed="5" turntype="LongTick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="210"/>
+  </charm>
+  <charm id="Solar.TracklessRegionNavigation" exalt="Solar" group="Survival">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Survival" value="4"/>
+      <charmAttributeRequirement attribute="ExcellencySurvival" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="7"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Reflexive"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="211"/>
+  </charm>
+  <charm id="Solar.UnshakeableBloodhoundTechnique" exalt="Solar" group="Survival">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Survival" value="5"/>
+      <charmReference id="Solar.TracklessRegionNavigation"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="211"/>
+  </charm>
+  <charm id="Solar.TracelessPassage" exalt="Solar" group="Survival">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Survival" value="5"/>
+      <charmReference id="Solar.UnshakeableBloodhoundTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="211"/>
+  </charm>
+  <charm id="Solar.Eye-DeceivingCamouflage" exalt="Solar" group="Survival">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Survival" value="5"/>
+      <charmReference id="Solar.TracklessRegionNavigation"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple">
+      <special speed="1" turntype="DramaticAction" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="211"/>
+  </charm>
+  <charm id="Solar.City-MovingSecrets" exalt="Solar" group="Survival">
+    <prerequisite>
+      <essence id="Essence" value="5"/>
+      <trait id="Survival" value="5"/>
+      <charmAttributeRequirement attribute="ExcellencySurvival" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <source source="SecondEdition" page="211"/>
+  </charm>
 </charmlist>
