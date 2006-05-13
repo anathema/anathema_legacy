@@ -1229,4 +1229,149 @@
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="SecondEdition" page="203"/>
   </charm>
+  <charm id="Solar.HypnoticTongueTechnique" exalt="Solar" group="Presence">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Presence" value="3"/>
+      <charmAttributeRequirement attribute="ExcellencyPresence" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="(Charisma) days"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Social" visualize="true"/>
+    <charmAttribute attribute="Stackable" visualize="true"/>
+    <charmAttribute attribute="Touch" visualize="true"/>
+    <source source="SecondEdition" page="203"/>
+  </charm>
+  <charm id="Solar.MajesticRadiantPresence" exalt="Solar" group="Presence">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Presence" value="4"/>
+      <charmAttributeRequirement attribute="ExcellencyPresence" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="7"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Reflexive"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="Social" visualize="true"/>
+    <source source="SecondEdition" page="204"/>
+  </charm>
+  <charm id="Solar.TerrifyingApparitionGlory" exalt="Solar" group="Presence">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Presence" value="5"/>
+      <charmReference id="Solar.MajesticRadiantPresence"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Social" visualize="true"/>
+    <source source="SecondEdition" page="204"/>
+  </charm>
+  <charm id="Solar.UnderlingPromotingTouch" exalt="Solar" group="Presence">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Presence" value="5"/>
+      <charmReference id="Solar.MajesticRadiantPresence"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="7"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One story"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="Touch" visualize="true"/>
+    <source source="SecondEdition" page="204"/>
+  </charm>
+  <charm id="Solar.Authority-RadiatingStance" exalt="Solar" group="Presence">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Presence" value="5"/>
+      <charmReference id="Solar.MajesticRadiantPresence"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Social" visualize="true"/>
+    <source source="SecondEdition" page="204"/>
+  </charm>
+  <charm id="Solar.IrresistibleSalesmanSpirit" exalt="Solar" group="Presence">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Presence" value="4"/>
+      <charmAttributeRequirement attribute="ExcellencyPresence" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Combo-Basic" visualize="true"/>
+    <charmAttribute attribute="Social" visualize="true"/>
+    <source source="SecondEdition" page="204"/>
+  </charm>
+  <charm id="Solar.WorshipfulLackeyAcquisition" exalt="Solar" group="Presence">
+    <prerequisite>
+      <essence id="Essence" value="4"/>
+      <trait id="Presence" value="5"/>
+      <charmAttributeRequirement attribute="ExcellencyPresence" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="12"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="(Charisma) days"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="Servitude" visualize="true"/>
+    <charmAttribute attribute="Social" visualize="true"/>
+    <source source="SecondEdition" page="205"/>
+  </charm>
+  <charm id="Solar.Enemy-CastigatingSolarJudgement" exalt="Solar" group="Presence">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Presence" value="1"/>
+      <charmAttributeRequirement attribute="ExcellencyPresence" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Holy" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="Social" visualize="true"/>
+    <source source="SecondEdition" page="205"/>
+  </charm>
 </charmlist>
