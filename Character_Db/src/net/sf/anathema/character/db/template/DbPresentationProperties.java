@@ -54,7 +54,7 @@ public final class DbPresentationProperties extends AbstractPresentationProperti
 
   @Override
   public String getCasteLabelResource() {
-    return getCasteResourceBase() + "Label"; //$NON-NLS-1$;
+    return getCharacterTypeId() + ".Caste.Label"; //$NON-NLS-1$;
   }
 
   @Override
