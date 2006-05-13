@@ -11,4 +11,8 @@ public class AbstractPdfEncoder {
   protected final void setFillColorBlack(PdfContentByte directContent) {
     directContent.setRGBColorFill(0, 0, 0);
   }
+
+  protected final void setLineWidthAHalf(PdfContentByte directContent) {
+    directContent.setLineWidth(0.5f);
+  }
 }

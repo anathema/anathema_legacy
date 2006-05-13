@@ -1,6 +1,7 @@
 package net.sf.anathema.development.character.reporting;
 
 import net.disy.commons.core.geometry.SmartRectangle;
+import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants;
 
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
@@ -9,8 +10,8 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
 
   private static final int CONTENT_INSET = 5;
   private static final int HEADER_FONT_PADDING = 3;
-  private static final int HEADER_FONT_SIZE = 12;
-  private static final int HEADER_HEIGHT = 14;
+  private static final int HEADER_FONT_SIZE = IVoidStateFormatConstants.HEADER_FONT_SIZE;
+  private static final int HEADER_HEIGHT = 12;
   private static final int ARCSPACE = HEADER_HEIGHT / 2;
   private static final int ARC_SIZE = 2 * ARCSPACE;
   private BaseFont baseFont;
@@ -32,7 +33,7 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
   private SmartRectangle encodeContentBox(PdfContentByte directContent, SmartRectangle bounds) {
     SmartRectangle contentBounds = calculateContentBounds(bounds);
     setFillColorBlack(directContent);
-    directContent.setLineWidth(0);
+    setLineWidthAHalf(directContent);
     directContent.moveTo(contentBounds.x, contentBounds.y + ARCSPACE);
     add90DegreeArc(directContent, contentBounds.x, contentBounds.y, 180);
     directContent.moveTo(contentBounds.x + ARCSPACE, contentBounds.y);

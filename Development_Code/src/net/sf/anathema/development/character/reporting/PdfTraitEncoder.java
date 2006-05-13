@@ -9,10 +9,10 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfTraitEncoder extends AbstractPdfEncoder {
 
-  private final int dotSpacing = 1;
+  private final int dotSpacing = 2;
   private final int height = IVoidStateFormatConstants.LINE_HEIGHT;
   private final int fontSize = IVoidStateFormatConstants.FONT_SIZE;
-  private final int dotSize = IVoidStateFormatConstants.SMALL_SYMBOL_HEIGHT;
+  private final int dotSize = IVoidStateFormatConstants.SMALL_SYMBOL_HEIGHT - 1;
   private final BaseFont baseFont;
 
   public PdfTraitEncoder(BaseFont baseFont) {
@@ -28,6 +28,7 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
       int dotCount) {
     setDefaultTraitFont(directContent);
     setFillColorBlack(directContent);
+    directContent.setLineWidth(0.8f);
     directContent.beginText();
     directContent.showTextAligned(PdfContentByte.ALIGN_LEFT, text, position.x, position.y, 0);
     directContent.endText();
