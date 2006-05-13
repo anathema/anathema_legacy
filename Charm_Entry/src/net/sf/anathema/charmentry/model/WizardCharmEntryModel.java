@@ -23,6 +23,7 @@ public class WizardCharmEntryModel implements ICharmEntryModel {
   private final IKeywordEntryModel keywordEntryModel = new KeywordEntryModel(charmData);
   private final ICharmPrerequisitesEntryModel charmPrerequisitesModel = new CharmPrerequisitesEntryModel(
       headerModel,
+      prerequisitesModel,
       charmData);
 
   public IHeaderDataModel getHeaderDataModel() {

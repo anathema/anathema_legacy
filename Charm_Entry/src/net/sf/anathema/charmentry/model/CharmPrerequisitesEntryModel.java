@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.ICharmPrerequisitesEntryModel;
+import net.sf.anathema.charmentry.presenter.model.IPrerequisitesModel;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -19,13 +20,18 @@ public class CharmPrerequisitesEntryModel implements ICharmPrerequisitesEntryMod
   private final IConfigurableCharmData charmData;
   private final ChangeControl control = new ChangeControl();
 
-  public CharmPrerequisitesEntryModel(IHeaderDataModel headerModel, IConfigurableCharmData charmData) {
+  public CharmPrerequisitesEntryModel(
+      IHeaderDataModel headerModel,
+      IPrerequisitesModel prerequisiteModel,
+      IConfigurableCharmData charmData) {
     this.charmData = charmData;
-    headerModel.addModelListener(new CheckInputListener(new ISimpleBlock() {
+    final CheckInputListener changeListener = new CheckInputListener(new ISimpleBlock() {
       public void execute() {
         control.fireChangedEvent();
       }
-    }));
+    });
+    headerModel.addModelListener(changeListener);
+    prerequisiteModel.addModelListener(changeListener);
   }
 
   public void addModelListener(IChangeListener inputListener) {
