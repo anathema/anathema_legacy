@@ -2024,4 +2024,316 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="SecondEdition" page="213"/>
   </charm>
+  <charm id="Solar.CraftyObservationMethod" exalt="Solar" group="Investigation">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Investigation" value="3"/>
+      <charmAttributeRequirement attribute="ExcellencyInvestigation" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="Tick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="213"/>
+  </charm>
+  <charm id="Solar.Evidence-DiscerningMethod" exalt="Solar" group="Investigation">
+    <prerequisite>
+      <essence id="Essence" value="1"/>
+      <trait id="Investigation" value="4"/>
+      <charmAttributeRequirement attribute="ExcellencyInvestigation" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One story"/>
+    <charmtype type="Simple">
+      <special speed="5" turntype="LongTick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="213"/>
+  </charm>
+  <charm id="Solar.Judge'sEarTechnique" exalt="Solar" group="Investigation">
+    <prerequisite>
+      <essence id="Essence" value="1"/>
+      <trait id="Investigation" value="2"/>
+      <charmAttributeRequirement attribute="ExcellencyInvestigation" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="213"/>
+  </charm>
+  <charm id="Solar.IrresistibleQuestioningTechnique" exalt="Solar" group="Investigation">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Investigation" value="3"/>
+      <charmReference id="Solar.Judge'sEarTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="LongTick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Compulsion" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="Social" visualize="true"/>
+    <source source="SecondEdition" page="213"/>
+  </charm>
+  <charm id="Solar.Courtier'sEyeTechnique" exalt="Solar" group="Investigation">
+    <prerequisite>
+      <essence id="Essence" value="1"/>
+      <trait id="Investigation" value="3"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="Tick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="214"/>
+  </charm>
+  <charm id="Solar.Consumer-EvaluatingGlance" exalt="Solar" group="Investigation">
+    <prerequisite>
+      <essence id="Essence" value="1"/>
+      <trait id="Investigation" value="3"/>
+      <charmReference id="Solar.Courtier'sEyeTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Compulsion" visualize="true"/>
+    <source source="SecondEdition" page="214"/>
+  </charm>
+  <charm id="Solar.KnowSoul'sPrice" exalt="Solar" group="Investigation">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Investigation" value="4"/>
+      <charmReference id="Solar.Judge'sEarTechnique"/>
+      <charmReference id="Solar.Courtier'sEyeTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Servitude" visualize="true"/>
+    <source source="SecondEdition" page="214"/>
+  </charm>
+  <charm id="Solar.HarmoniousAcademicMethodology" exalt="Solar" group="Lore">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Lore" value="5"/>
+      <charmAttributeRequirement attribute="ExcellencyLore" count="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="One week"/>
+    <charmtype type="Simple">
+      <special speed="1" turntype="DramaticAction" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="Touch" visualize="true"/>
+    <charmAttribute attribute="Training" visualize="true"/>
+    <source source="SecondEdition" page="215"/>
+  </charm>
+  <charm id="Solar.LegendaryScholarCurriculum" exalt="Solar" group="Lore">
+    <prerequisite>
+      <essence id="Essence" value="4"/>
+      <trait id="Lore" value="5"/>
+      <charmReference id="Solar.HarmoniousAcademicMethodology"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition" page="215"/>
+  </charm>
+  <charm id="Solar.Chaos-RepellingPattern" exalt="Solar" group="Lore">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Lore" value="3"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8"/>
+      </temporary>
+    </cost>
+    <duration duration="One hour"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="Tick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition" page="216"/>
+  </charm>
+  <charm id="Solar.Wyld-ShapingTechnique" exalt="Solar" group="Lore">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Lore" value="5"/>
+      <charmReference id="Solar.Chaos-RepellingPattern"/>
+      <charmAttributeRequirement attribute="ExcellencyLore" count="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="20"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+      <special speed="1" turntype="DramaticAction" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Shaping" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition" page="216"/>
+  </charm>
+  <charm id="Solar.WyldCauldronTechnique" exalt="Solar" group="Lore">
+    <prerequisite>
+      <essence id="Essence" value="4"/>
+      <trait id="Lore" value="5"/>
+      <charmReference id="Solar.Wyld-ShapingTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <source source="SecondEdition" page="217"/>
+  </charm>
+  <charm id="Solar.Essence-LendingMethod" exalt="Solar" group="Lore">
+    <prerequisite>
+      <essence id="Essence" value="1"/>
+      <trait id="Lore" value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+      <special speed="4" turntype="Tick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="Touch" visualize="true"/>
+    <source source="SecondEdition" page="217"/>
+  </charm>
+  <charm id="Solar.Will-BolsteringMethod" exalt="Solar" group="Lore">
+    <prerequisite>
+      <essence id="Essence" value="1"/>
+      <trait id="Lore" value="3"/>
+      <charmReference id="Solar.Essence-LendingMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="Tick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="Touch" visualize="true"/>
+    <source source="SecondEdition" page="217"/>
+  </charm>
+  <charm id="Solar.Power-AwardingPrana" exalt="Solar" group="Lore">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Lore" value="4"/>
+      <charmReference id="Solar.Essence-LendingMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="15"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="Tick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Touch" visualize="true"/>
+    <source source="SecondEdition" page="218"/>
+  </charm>
+  <charm id="Solar.Order-AffirmingBlow" exalt="Solar" group="Lore">
+    <prerequisite>
+      <essence id="Essence" value="4"/>
+      <trait id="Lore" value="5"/>
+      <charmReference id="Solar.Wyld-ShapingTechnique"/>
+      <charmReference id="Solar.Will-BolsteringMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="15"/>
+        <willpower cost="1" text="per Essence"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="Tick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Shaping" visualize="true"/>
+    <charmAttribute attribute="Touch" visualize="true"/>
+    <source source="SecondEdition" page="218"/>
+  </charm>
+  <charm id="Solar.ImmanentSolarGlory" exalt="Solar" group="Lore">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Lore" value="5"/>
+      <charmAttributeRequirement attribute="ExcellencyLore" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition" page="218"/>
+  </charm>
 </charmlist>
