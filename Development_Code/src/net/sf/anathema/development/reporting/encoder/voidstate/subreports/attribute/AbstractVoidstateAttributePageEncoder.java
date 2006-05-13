@@ -3,8 +3,8 @@ package net.sf.anathema.development.reporting.encoder.voidstate.subreports.attri
 import java.awt.Point;
 import java.awt.Rectangle;
 
+import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.encoder.AbstractCharacterSheetPageEncoder;
-import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.VoidstateBasicsEncoder;
 
 public abstract class AbstractVoidstateAttributePageEncoder extends AbstractCharacterSheetPageEncoder implements

@@ -1,6 +1,6 @@
 package net.sf.anathema.development.reporting.encoder.voidstate.util;
 
-import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.util.AbstractJasperEncoder;
 
 import org.dom4j.Element;

@@ -47,5 +47,6 @@
 	<classpathentry sourcepath="/Thirdparty/Reporting/itext-src-1.4.zip" kind="lib" path="/Thirdparty/Reporting/itext-1.4.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_MeritsFlaws"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Intimacies"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Reporting"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

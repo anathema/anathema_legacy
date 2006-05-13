@@ -2,11 +2,11 @@ package net.sf.anathema.development.reporting.encoder.voidstate.util;
 
 import java.awt.Rectangle;
 
-import org.dom4j.Element;
-
-import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.util.AbstractJasperEncoder;
 import net.sf.anathema.framework.reporting.jasper.IJasperXmlConstants;
+
+import org.dom4j.Element;
 
 public class SlashSeparatedLineEncoder extends AbstractJasperEncoder implements
     IVoidStateFormatConstants,

@@ -1,9 +1,6 @@
 package net.sf.anathema.development.reporting.encoder.sidereal;
 
-import static net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants.FONT_SIZE;
-import static net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants.HEADER_FONT_SIZE;
-import static net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants.LINE_HEIGHT;
-import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.util.AbstractJasperEncoder;
 import net.sf.anathema.development.reporting.util.TraitEncoder;
 
@@ -28,21 +25,21 @@ public class NamedTraitEncoder extends AbstractJasperEncoder {
     addTextElement(
         parent,
         quotify(title),
-        HEADER_FONT_SIZE,
+        IVoidStateFormatConstants.HEADER_FONT_SIZE,
         VALUE_LEFT,
         x,
         y,
         valueLabelXInset - IVoidStateFormatConstants.TEXT_PADDING,
-        LINE_HEIGHT);
+        IVoidStateFormatConstants.LINE_HEIGHT);
     addTextElement(
         parent,
         quotify("Level"),
-        FONT_SIZE,
+        IVoidStateFormatConstants.FONT_SIZE,
         VALUE_LEFT,
         x + valueLabelXInset,
         y,
         valueWidth,
-        LINE_HEIGHT);
+        IVoidStateFormatConstants.LINE_HEIGHT);
     rowY += IVoidStateFormatConstants.LINE_HEIGHT;
     for (int index = 0; index < rowCount; index++) {
       rowY += traitEncoder.encodeNamedTraitDataSourceRow(

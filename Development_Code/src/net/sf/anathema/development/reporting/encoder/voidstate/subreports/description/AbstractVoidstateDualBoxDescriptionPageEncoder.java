@@ -2,7 +2,7 @@ package net.sf.anathema.development.reporting.encoder.voidstate.subreports.descr
 
 import java.awt.Rectangle;
 
-import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.VoidstateBasicsEncoder;
 
 import org.dom4j.Element;

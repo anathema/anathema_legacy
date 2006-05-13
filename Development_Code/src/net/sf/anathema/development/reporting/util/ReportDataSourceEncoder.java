@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.framework.reporting.datasource.CharmDat
 import net.sf.anathema.character.generic.framework.reporting.datasource.MeritsAndFlawsDataSource;
 import net.sf.anathema.character.generic.framework.reporting.template.AbstractMagicUserCharacterReportTemplate;
 import net.sf.anathema.character.generic.framework.reporting.template.AbstractStattedCharacterReportTemplate;
-import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
 
 import org.dom4j.Element;
 

@@ -1,8 +1,6 @@
 package net.sf.anathema.development.reporting.util;
 
-import static net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants.FONT_SIZE;
-import static net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants.HEADER_FONT_SIZE;
-import static net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants.LINE_HEIGHT;
+import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
 
 import org.dom4j.Element;
 
@@ -31,31 +29,25 @@ public class BackgroundsEncoder extends AbstractJasperEncoder {
     addTextElement(
         parent,
         quotify("Background"),
-        HEADER_FONT_SIZE,
+        IVoidStateFormatConstants.HEADER_FONT_SIZE,
         VALUE_LEFT,
         x,
         y,
         valueLabelXInset - spacing,
-        LINE_HEIGHT);
+        IVoidStateFormatConstants.LINE_HEIGHT);
     addTextElement(
         parent,
         quotify("Level"),
-        FONT_SIZE,
+        IVoidStateFormatConstants.FONT_SIZE,
         VALUE_LEFT,
         x + valueLabelXInset,
         y,
         backgroundValueWidth,
-        LINE_HEIGHT);
-    addTextElement(
-        parent,
-        quotify("Details"),
-        FONT_SIZE,
-        VALUE_LEFT,
-        x + backgroundWidth + spacing,
-        y,
-        descriptionWidth,
-        LINE_HEIGHT);
-    y += LINE_HEIGHT;
+        IVoidStateFormatConstants.LINE_HEIGHT);
+    addTextElement(parent, quotify("Details"), IVoidStateFormatConstants.FONT_SIZE, VALUE_LEFT, x
+        + backgroundWidth
+        + spacing, y, descriptionWidth, IVoidStateFormatConstants.LINE_HEIGHT);
+    y += IVoidStateFormatConstants.LINE_HEIGHT;
     for (int index = 0; index < rowCount; index++) {
       y += traitEncoder.encodeBackgroundRowWithDescription(
           parent,

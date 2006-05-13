@@ -5,8 +5,8 @@ import java.awt.Rectangle;
 
 import net.disy.commons.core.text.font.FontStyle;
 import net.sf.anathema.character.generic.framework.reporting.ICharacterReportConstants;
+import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.encoder.AbstractCharacterSheetPageEncoder;
-import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.VoidstateBasicsEncoder;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.framework.styledtext.presentation.TextFormat;

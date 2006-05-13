@@ -3,9 +3,9 @@ package net.sf.anathema.development.reporting.encoder.voidstate.subreports.abili
 import java.util.Map;
 
 import net.sf.anathema.character.generic.framework.reporting.IAbilityReportConstants;
+import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.encoder.AbstractPagedCharacterSheetEncoder;
 import net.sf.anathema.development.reporting.encoder.ICharacterSheetPageEncoder;
-import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.VoidstateBasicsEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.util.SubreportUtilities;
 import net.sf.anathema.framework.reporting.IReportDataSource;

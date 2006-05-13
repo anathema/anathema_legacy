@@ -7,9 +7,9 @@ import java.util.Map;
 
 import net.sf.anathema.character.generic.framework.reporting.IAbilityReportConstants;
 import net.sf.anathema.character.generic.framework.reporting.datasource.AbilitySetDataSource;
+import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.encoder.AbstractCharacterSheetPageEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.columns.IOneColumnEncoder;
-import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.util.ParameterUtilities;
 
 public abstract class AbstractVoidstateAbilitySetPageEncoder extends AbstractCharacterSheetPageEncoder implements

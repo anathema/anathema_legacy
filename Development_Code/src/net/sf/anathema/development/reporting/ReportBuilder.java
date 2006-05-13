@@ -5,11 +5,11 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 
 import net.disy.commons.core.io.IOUtilities;
+import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.encoder.BasicMortalSheetEncoder;
 import net.sf.anathema.development.reporting.encoder.BasicSolarSheetEncoder;
 import net.sf.anathema.development.reporting.encoder.page.IPageFormat;
 import net.sf.anathema.development.reporting.encoder.page.PageFormat;
-import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.VoidstateBasicsEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateAbilitySubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateFiveAbilityGroupSubreportEncoder;

@@ -1,6 +1,6 @@
 package net.sf.anathema.development.reporting.encoder.voidstate.subreports.health;
 
-import net.sf.anathema.development.reporting.encoder.voidstate.format.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
 
 import org.dom4j.Element;
 
