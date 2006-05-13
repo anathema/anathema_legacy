@@ -981,6 +981,7 @@
     <charmAttribute attribute="War" visualize="true"/>
     <source source="SecondEdition" page="199"/>
   </charm>
+  
   <charm id="Solar.Integrity-PotectingPrana" exalt="Solar" group="Integrity">
     <prerequisite>
       <essence id="Essence" value="1"/>
@@ -993,7 +994,9 @@
       </temporary>
     </cost>
     <duration duration="One day"/>
-    <charmtype type="Reflexive"/>
+    <charmtype type="Reflexive">
+    	<special primaryStep="2"/>
+    </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="SecondEdition" page="199"/>
   </charm>
@@ -1059,7 +1062,9 @@
       </temporary>
     </cost>
     <duration duration="One scene"/>
-    <charmtype type="Reflexive"/>
+    <charmtype type="Reflexive">
+    	<special primaryStep="2"/>
+    </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
     <charmAttribute attribute="Stackable" visualize="true"/>
@@ -1082,7 +1087,7 @@
     <charmAttribute attribute="Social" visualize="true"/>
     <source source="SecondEdition" page="200"/>
   </charm>
-  <charm id="Solar.TranscendentHeroMeditation" exalt="Solar" group="Integrity">
+  <charm id="Solar.TranscendentHero'sMeditation" exalt="Solar" group="Integrity">
     <prerequisite>
       <essence id="Essence" value="4"/>
       <trait id="Integrity" value="5"/>
@@ -1095,7 +1100,9 @@
       </temporary>
     </cost>
     <duration duration="Instant"/>
-    <charmtype type="Simple"/>
+    <charmtype type="Simple">
+      <special speed="5" turntype="LongTick" defense="-1"/>
+    </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
@@ -1145,7 +1152,9 @@
       </temporary>
     </cost>
     <duration duration="Indefinite"/>
-    <charmtype type="Simple"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="Tick" defense="-1"/>
+    </charmtype
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Stackable" visualize="true"/>
     <source source="SecondEdition" page="202"/>
