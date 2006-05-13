@@ -8,4 +8,6 @@ public interface ICharmEntryData {
   public IExaltedEdition getEdition();
 
   public ICharmData getCoreData();
+
+  public String getName();
 }
