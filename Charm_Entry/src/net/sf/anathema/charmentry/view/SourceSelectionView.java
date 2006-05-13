@@ -20,7 +20,7 @@ public class SourceSelectionView implements ISourceSelectionView, IDialogCompone
   public SourceSelectionView(String bookString, String pageString, Object[] sources) {
     this.bookString = bookString;
     this.pageString = pageString;
-    this.bookBox = new ChangeableJComboBox(sources, true);
+    this.bookBox = new ChangeableJComboBox(sources, false);
     spinner = new IntegerSpinner(0);
     spinner.setPreferredWidth(100);
 
