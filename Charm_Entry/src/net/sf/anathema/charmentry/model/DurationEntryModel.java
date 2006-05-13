@@ -9,12 +9,12 @@ import net.sf.anathema.charmentry.presenter.model.IDurationEntryModel;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
-public class DurationModel implements IDurationEntryModel {
+public class DurationEntryModel implements IDurationEntryModel {
 
   private final IConfigurableCharmData charmData;
   private final ChangeControl control = new ChangeControl();
 
-  public DurationModel(final ICharmTypeEntryModel typeModel, final IConfigurableCharmData charmData) {
+  public DurationEntryModel(final ICharmTypeEntryModel typeModel, final IConfigurableCharmData charmData) {
     this.charmData = charmData;
     typeModel.addModelListener(new IChangeListener() {
       public void changeOccured() {
