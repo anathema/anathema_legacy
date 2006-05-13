@@ -1374,4 +1374,118 @@
     <charmAttribute attribute="Social" visualize="true"/>
     <source source="SecondEdition" page="205"/>
   </charm>
+  <charm id="Solar.WhirlwindArmor-DonningPrana" exalt="Solar" group="Resistance">
+    <prerequisite>
+      <essence id="Essence" value="1"/>
+      <trait id="Resistance" value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="205"/>
+  </charm>
+  <charm id="Solar.Hauberk-LighteningGesture" exalt="Solar" group="Resistance">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Resistance" value="3"/>
+      <charmReference id="Solar.WhirlwindArmor-DonningPrana"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition" page="205"/>
+  </charm>
+  <charm id="Solar.GloriousSolarPlate" exalt="Solar" group="Resistance">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Resistance" value="4"/>
+      <charmReference id="Solar.Hauberk-LighteningGesture"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10" text="or 13 motes"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition" page="205"/>
+  </charm>
+  <charm id="Solar.ArmoredScout'sInvigoration" exalt="Solar" group="Resistance">
+    <prerequisite>
+      <essence id="Essence" value="1"/>
+      <trait id="Resistance" value="4"/>
+      <charmReference id="Solar.Hauberk-LighteningGesture"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3" text="per fatigue/mobility reduction"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="205"/>
+  </charm>
+  <charm id="Solar.DurabilityOakMeditation" exalt="Solar" group="Resistance">
+    <prerequisite>
+      <essence id="Essence" value="1"/>
+      <trait id="Resistance" value="2"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="206"/>
+  </charm>
+  <charm id="Solar.SpiritStrengthensSkin" exalt="Solar" group="Resistance">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Resistance" value="2"/>
+      <charmReference id="Solar.DurabilityOakMeditation"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per pre-soak damage die removed"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition" page="207"/>
+  </charm>
+  <charm id="Solar.IronSkinConcentration" exalt="Solar" group="Resistance">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Resistance" value="3"/>
+      <charmReference id="Solar.DurabilityOakMeditation"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition" page="207"/>
+  </charm>
 </charmlist>
