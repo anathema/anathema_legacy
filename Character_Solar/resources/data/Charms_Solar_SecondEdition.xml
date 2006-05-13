@@ -1154,7 +1154,7 @@
     <duration duration="Indefinite"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
-    </charmtype
+    </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Stackable" visualize="true"/>
     <source source="SecondEdition" page="202"/>
@@ -1173,7 +1173,7 @@
     <duration duration="One scene"/>
     <charmtype type="Simple">
       <special speed="4" turntype="LongTick" defense="-1"/>
-    </charmtype
+    </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Compulsion" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
@@ -1227,7 +1227,7 @@
     <duration duration="Instant"/>
     <charmtype type="Simple">
       <special speed="5" turntype="LongTick" defense="-1"/>
-    </charmtype
+    </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Illusion" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
@@ -1248,7 +1248,7 @@
     <duration duration="Instant"/>
     <charmtype type="Simple">
       <special speed="6" turntype="LongTick" defense="-1"/>
-    </charmtype
+    </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Emotion" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
@@ -1271,7 +1271,7 @@
     <duration duration="(Charisma) days"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
-    </charmtype
+    </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
     <charmAttribute attribute="Stackable" visualize="true"/>
@@ -1329,7 +1329,7 @@
     <duration duration="One story"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
-    </charmtype
+    </charmtype>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
     <source source="SecondEdition" page="204"/>
@@ -1348,7 +1348,7 @@
     <duration duration="One scene"/>
     <charmtype type="Simple">
       <special speed="4" turntype="LongTick" defense="-1"/>
-    </charmtype
+    </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
     <source source="SecondEdition" page="204"/>
@@ -1385,7 +1385,7 @@
     <duration duration="(Charisma) days"/>
     <charmtype type="Simple">
       <special speed="6" turntype="LongTick" defense="-1"/>
-    </charmtype
+    </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Servitude" visualize="true"/>
@@ -1425,7 +1425,7 @@
     <duration duration="Instant"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
-    </charmtype
+    </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="SecondEdition" page="205"/>
   </charm>
@@ -1443,7 +1443,7 @@
     <duration duration="Indefinite"/>
     <charmtype type="Simple">
       <special speed="3" turntype="Tick" defense="-1"/>
-    </charmtype
+    </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="SecondEdition" page="205"/>
@@ -1463,7 +1463,7 @@
     <duration duration="One scene"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
-    </charmtype
+    </charmtype>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <source source="SecondEdition" page="205"/>
   </charm>
@@ -1481,7 +1481,7 @@
     <duration duration="Indefinite"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
-    </charmtype
+    </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="SecondEdition" page="205"/>
   </charm>
