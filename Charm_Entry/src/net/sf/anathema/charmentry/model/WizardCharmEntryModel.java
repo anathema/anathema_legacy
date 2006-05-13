@@ -63,6 +63,10 @@ public class WizardCharmEntryModel implements ICharmEntryModel {
       public IExaltedEdition getEdition() {
         return charmData.getEdition();
       }
+
+      public String getName() {
+        return charmData.getName().getText();
+      }
     };
   }
 }
