@@ -812,4 +812,163 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="Second Edition" page="197"/>
   </charm>
+  <charm id="Solar.Rout-StemmingGesture" exalt="Solar" group="War">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="War" value="3"/>
+      <charmAttributeRequirement attribute="ExcellencyWar" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Until next action"/>
+    <charmtype type="Reflexive"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="War" visualize="true"/>
+    <source source="SecondEdition" page="197"/>
+  </charm>
+  <charm id="Solar.CommandingIdealCelestialArmy" exalt="Solar" group="War">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="War" value="4"/>
+      <charmReference id="Solar.Rout-StemmingGesture"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="War" visualize="true"/>
+    <source source="SecondEdition" page="197"/>
+  </charm>
+  <charm id="Solar.Mob-DispersingRebuke" exalt="Solar" group="War">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="War" value="3"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="7"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="War" visualize="true"/>
+    <source source="SecondEdition" page="197"/>
+  </charm>
+  <charm id="Solar.FuryIncitingPresence" exalt="Solar" group="War">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="War" value="3"/>
+      <charmReference id="Solar.Mob-DispersingRebuke"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition" page="197"/>
+  </charm>
+  <charm id="Solar.GeneralAll-SeeingSun" exalt="Solar" group="War">
+    <prerequisite>
+      <essence id="Essence" value="4"/>
+      <trait id="War" value="5"/>
+      <charmReference id="Solar.FuryIncitingPresence"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="197"/>
+  </charm>
+  <charm id="Solar.Heroism-EncouragingPresence" exalt="Solar" group="War">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="War" value="4"/>
+      <charmReference id="Solar.Rout-StemmingGesture"/>
+      <charmReference id="Solar.FuryIncitingPresence"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="8"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="War" visualize="true"/>
+    <source source="SecondEdition" page="197"/>
+  </charm>
+  <charm id="Solar.TigerWarriorTrainingTechnique" exalt="Solar" group="War">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="War" value="4"/>
+      <charmReference id="Solar.Heroism-EncouragingPresence"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="One week"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="Touch" visualize="true"/>
+    <charmAttribute attribute="Training" visualize="true"/>
+    <source source="SecondEdition" page="198"/>
+  </charm>
+  <charm id="Solar.LegendaryWarriorCurriculum" exalt="Solar" group="War">
+    <prerequisite>
+      <essence id="Essence" value="4"/>
+      <trait id="War" value="5"/>
+      <charmReference id="Solar.TigerWarriorTrainingTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <source source="SecondEdition" page="198"/>
+  </charm>
+  <charm id="Solar.IdealBattleKnowledgePrana" exalt="Solar" group="War">
+    <prerequisite>
+      <essence id="Essence" value="5"/>
+      <trait id="War" value="5"/>
+      <charmReference id="Solar.GeneralAll-SeeingSun"/>
+      <charmReference id="Solar.CommandingIdealCelestialArmy"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="War" visualize="true"/>
+    <source source="SecondEdition" page="199"/>
+  </charm>
 </charmlist>
