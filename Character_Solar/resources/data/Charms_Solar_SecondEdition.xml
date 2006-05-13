@@ -1913,4 +1913,115 @@
     <charmtype type="Permanent"/>
     <source source="SecondEdition" page="211"/>
   </charm>
+  <charm id="Solar.Object-StrengtheningTouch" exalt="Solar" group="Craft">
+    <prerequisite>
+      <essence id="Essence" value="1"/>
+      <trait id="Craft" value="2"/>
+      <charmAttributeRequirement attribute="ExcellencyCraft" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple">
+      <special speed="5" turntype="Tick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Touch" visualize="true"/>
+    <source source="SecondEdition" page="211"/>
+  </charm>
+  <charm id="Solar.Durability-EnhancingTechnique" exalt="Solar" group="Craft">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Craft" value="3"/>
+      <charmReference id="Solar.Object-StrengtheningTouch"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="LongTick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Touch" visualize="true"/>
+    <source source="SecondEdition" page="211"/>
+  </charm>
+  <charm id="Solar.Chaos-ResistancePreparation" exalt="Solar" group="Craft">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Craft" value="4"/>
+      <charmReference id="Solar.Object-StrengtheningTouch"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+        <willpower cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Indefinite"/>
+    <charmtype type="Simple">
+      <special speed="6" turntype="LongTick" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Touch" visualize="true"/>
+    <source source="SecondEdition" page="212"/>
+  </charm>
+  <charm id="Solar.Crack-MendingTechnique" exalt="Solar" group="Craft">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Craft" value="5"/>
+      <charmAttributeRequirement attribute="ExcellencyCraft" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Touch" visualize="true"/>
+    <source source="SecondEdition" page="212"/>
+  </charm>
+  <charm id="Solar.ShatteringGrasp" exalt="Solar" group="Craft">
+    <prerequisite>
+      <essence id="Essence" value="2"/>
+      <trait id="Craft" value="5"/>
+      <charmAttributeRequirement attribute="ExcellencyCraft" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration duration="One scene"/>
+    <charmtype type="Simple">
+      <special speed="1" turntype="DramaticAction" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="212"/>
+  </charm>
+  <charm id="Solar.CraftsmanNeedsNoTools" exalt="Solar" group="Craft">
+    <prerequisite>
+      <essence id="Essence" value="3"/>
+      <trait id="Craft" value="4"/>
+      <charmAttributeRequirement attribute="ExcellencyCraft" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="7"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="213"/>
+  </charm>
 </charmlist>
