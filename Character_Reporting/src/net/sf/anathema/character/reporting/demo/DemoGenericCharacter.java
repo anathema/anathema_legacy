@@ -67,11 +67,11 @@ public class DemoGenericCharacter implements IGenericCharacter {
   }
 
   public String getPeripheralPool() {
-    return "";
+    return "25"; //$NON-NLS-1$
   }
 
   public String getPersonalPool() {
-    return "";
+    return "10"; //$NON-NLS-1$
   }
 
   public IExaltedRuleSet getRules() {

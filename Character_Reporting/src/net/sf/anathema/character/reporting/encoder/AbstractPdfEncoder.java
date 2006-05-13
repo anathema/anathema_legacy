@@ -32,15 +32,20 @@ public abstract class AbstractPdfEncoder {
     directContent.setLineWidth(0.5f);
   }
 
+  protected final void addText(PdfContentByte directContent, String text, Point position, int alignment) {
+    initDirectContentForText(directContent);
+    directContent.beginText();
+    directContent.showTextAlignedKerned(alignment, text, position.x, position.y, 0);
+    directContent.endText();
+  }
+
   protected final void addLabelledContent(
       PdfContentByte directContent,
       String label,
       String content,
       Point position,
       int width) {
-    setFillColorBlack(directContent);
-    setDefaultFont(directContent);
-    directContent.setLineWidth(0);
+    initDirectContentForText(directContent);
     directContent.beginText();
     directContent.showTextAlignedKerned(PdfContentByte.ALIGN_LEFT, label, position.x, position.y, 0);
     float labelWidth = getDefaultTextWidth(label);
@@ -55,5 +60,11 @@ public abstract class AbstractPdfEncoder {
       directContent.showTextAlignedKerned(PdfContentByte.ALIGN_LEFT, content, contentX, position.y, 0);
       directContent.endText();
     }
+  }
+
+  private void initDirectContentForText(PdfContentByte directContent) {
+    setFillColorBlack(directContent);
+    setDefaultFont(directContent);
+    directContent.setLineWidth(0);
   }
 }
