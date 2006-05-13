@@ -13,6 +13,7 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 
 public interface IGenericCharacter extends ILimitationContext, IMagicCollection {
 
@@ -55,4 +56,6 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection 
   public String[] getUncompletedCelestialMartialArtsGroups();
 
   public int getPainTolerance();
+
+  public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups();
 }
