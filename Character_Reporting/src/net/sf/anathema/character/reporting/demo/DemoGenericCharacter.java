@@ -29,6 +29,7 @@ public class DemoGenericCharacter implements IGenericCharacter {
   private final DemoCharacterTemplate characterTemplate = new DemoCharacterTemplate();
   private final DemoGenericDescription description = new DemoGenericDescription();
   private final DemoConcept concept = new DemoConcept();
+  private IExaltedRuleSet ruleSet;
 
   public IAdditionalModel getAdditionalModel(String templateId) {
     return null;
@@ -75,7 +76,11 @@ public class DemoGenericCharacter implements IGenericCharacter {
   }
 
   public IExaltedRuleSet getRules() {
-    return null;
+    return ruleSet;
+  }
+  
+  public void setRuleSet(IExaltedRuleSet ruleSet) {
+    this.ruleSet = ruleSet;
   }
 
   public INamedGenericTrait[] getSpecialties(ITraitType traitType) {

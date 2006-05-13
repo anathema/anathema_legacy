@@ -32,37 +32,29 @@ public class SecondEditionPersonalInfoEncoder extends AbstractPdfEncoder {
 
     int firstRowY = (int) (infoBounds.getMaxY() - lineHeight);
     IExaltedRuleSet rules = character.getRules();
-    String rulesContent = rules == null ? null : resources.getString("Sheet.Content." + rules.getId());
-    addLabelledContent(directContent, getLabel("Rules"), rulesContent, new Point(firstColumnX, firstRowY), entryWidth);
-    addLabelledContent(directContent, getLabel("Player"), null, new Point(secondColumnX, firstRowY), entryWidth);
+    String rulesContent = rules == null ? null : resources.getString("Ruleset." + rules.getId()); //$NON-NLS-1$
+    addLabelledContent(directContent, getLabel("Rules"), rulesContent, new Point(firstColumnX, firstRowY), entryWidth); //$NON-NLS-1$
+    addLabelledContent(directContent, getLabel("Player"), null, new Point(secondColumnX, firstRowY), entryWidth); //$NON-NLS-1$
 
     int secondRowY = firstRowY - lineHeight;
     String conceptContent = character.getConcept().getConceptText();
-    addLabelledContent(
-        directContent,
-        getLabel("Concept"),
-        conceptContent,
-        new Point(firstColumnX, secondRowY),
-        entryWidth);
+    String conceptLabel = getLabel("Concept"); //$NON-NLS-1$
+    addLabelledContent(directContent, conceptLabel, conceptContent, new Point(firstColumnX, secondRowY), entryWidth);
     String casteContent = getCasteString(character.getConcept().getCasteType());
-    addLabelledContent(directContent, getLabel("Caste"), casteContent, new Point(secondColumnX, secondRowY), entryWidth);
+    addLabelledContent(directContent, getLabel("Caste"), casteContent, new Point(secondColumnX, secondRowY), entryWidth); //$NON-NLS-1$
 
     int thirdRowY = secondRowY - lineHeight;
-    String motivationContent = null;
-    addLabelledContent(
-        directContent,
-        getLabel("Motivation"),
-        motivationContent,
-        new Point(firstColumnX, thirdRowY),
-        infoBounds.width);
+    String motivationContent = character.getConcept().getWillpowerRegainingConceptName();
+    String motivationLabel = getLabel("Motivation"); //$NON-NLS-1$
+    Point motivationPosition = new Point(firstColumnX, thirdRowY);
+    addLabelledContent(directContent, motivationLabel, motivationContent, motivationPosition, infoBounds.width);
   }
 
   private String getCasteString(ICasteType casteType) {
-    if (casteType == null) {
+    if (casteType == null || casteType == ICasteType.NULL_CASTE_TYPE) {
       return null;
     }
-    String resourceKey = "Sheet.Caste." + casteType.getId();
-    return casteType == ICasteType.NULL_CASTE_TYPE ? null : resources.getString(resourceKey);
+    return resources.getString("Caste." + casteType.getId()); //$NON-NLS-1$
   }
 
   @Override
@@ -71,6 +63,6 @@ public class SecondEditionPersonalInfoEncoder extends AbstractPdfEncoder {
   }
 
   protected final String getLabel(String key) {
-    return resources.getString("Sheet.Label." + key);
+    return resources.getString("Sheet.Label." + key); //$NON-NLS-1$
   }
 }
