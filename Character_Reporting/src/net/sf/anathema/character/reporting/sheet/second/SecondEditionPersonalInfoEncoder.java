@@ -1,6 +1,6 @@
-package net.sf.anathema.character.reporting.second;
+package net.sf.anathema.character.reporting.sheet.second;
 
-import static net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants.TEXT_PADDING;
+import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.TEXT_PADDING;
 
 import java.awt.Point;
 
@@ -8,7 +8,7 @@ import net.disy.commons.core.geometry.SmartRectangle;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.reporting.encoder.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.sheet.page.AbstractPdfEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;

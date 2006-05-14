@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.common;
+package net.sf.anathema.character.reporting.sheet.common;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -10,9 +10,9 @@ import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.reporting.encoder.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.encoder.PdfTraitEncoder;
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.sheet.page.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.sheet.page.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;

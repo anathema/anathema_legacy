@@ -1,8 +1,8 @@
-package net.sf.anathema.character.reporting.encoder;
+package net.sf.anathema.character.reporting.sheet.page;
 
 import java.awt.Point;
 
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;

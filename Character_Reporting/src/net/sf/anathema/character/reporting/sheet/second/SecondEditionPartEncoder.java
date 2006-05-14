@@ -1,11 +1,11 @@
-package net.sf.anathema.character.reporting.second;
+package net.sf.anathema.character.reporting.sheet.second;
 
 import java.io.IOException;
 
 import net.disy.commons.core.geometry.SmartRectangle;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.reporting.encoder.AbstractPdfPartEncoder;
-import net.sf.anathema.character.reporting.encoder.PdfBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.page.AbstractPdfPartEncoder;
+import net.sf.anathema.character.reporting.sheet.page.PdfBoxEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.DocumentException;

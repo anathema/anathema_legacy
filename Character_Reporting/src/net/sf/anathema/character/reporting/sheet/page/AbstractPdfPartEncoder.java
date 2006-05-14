@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.encoder;
+package net.sf.anathema.character.reporting.sheet.page;
 
 import java.awt.Point;
 import java.io.IOException;
@@ -9,8 +9,8 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.reporting.common.PdfAbilitiesEncoder;
-import net.sf.anathema.character.reporting.common.SimplePdfEssenceEncoder;
+import net.sf.anathema.character.reporting.sheet.common.PdfAbilitiesEncoder;
+import net.sf.anathema.character.reporting.sheet.common.SimplePdfEssenceEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.DocumentException;

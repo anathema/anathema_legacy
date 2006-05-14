@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.encoder;
+package net.sf.anathema.character.reporting.sheet.page;
 
 import net.disy.commons.core.geometry.SmartRectangle;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
