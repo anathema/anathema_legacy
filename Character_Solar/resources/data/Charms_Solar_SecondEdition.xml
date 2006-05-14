@@ -623,7 +623,7 @@
     <cost>
       <temporary/>
     </cost>
-    <duration duration="Instant"/>
+    <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
     <source source="Second Edition" page="194"/>
   </charm>
@@ -1269,6 +1269,7 @@
       </temporary>
     </cost>
     <duration duration="Instant"/>
+    <combo allAbilities="true"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
@@ -1364,6 +1365,7 @@
       </temporary>
     </cost>
     <duration duration="Instant"/>
+    <combo allAbilities="true"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Holy" visualize="true"/>
@@ -2477,7 +2479,7 @@
     <cost>
       <temporary/>
     </cost>
-    <duration duration="Instant"/>
+    <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
     <source source="Second Edtion" page="220"/>
   </charm>
@@ -2490,7 +2492,7 @@
     <cost>
       <temporary/>
     </cost>
-    <duration duration="Instant"/>
+    <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
     <source source="Second Edtion" page="220"/>
   </charm>
@@ -2502,7 +2504,7 @@
     <cost>
       <temporary/>
     </cost>
-    <duration duration="Instant"/>
+    <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
     <source source="Second Edtion" page="221"/>
   </charm>
@@ -2740,7 +2742,8 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="Instant"/>
+    <duration duration="Instant"/>    
+    <combo allAbilities="true"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
