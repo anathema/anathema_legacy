@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 
 import net.sf.anathema.character.generic.framework.reporting.template.voidstate.ExaltVoidstateReportTemplate;
 import net.sf.anathema.character.lunar.reporting.BeastformGiftDatasource;
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.encoder.AbstractCharacterSheetPageEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.columns.IOneColumnEncoder;
 import net.sf.anathema.development.reporting.util.DataSourceColumn;

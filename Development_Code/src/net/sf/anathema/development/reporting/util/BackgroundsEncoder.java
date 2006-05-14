@@ -1,6 +1,6 @@
 package net.sf.anathema.development.reporting.util;
 
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 
 import org.dom4j.Element;
 

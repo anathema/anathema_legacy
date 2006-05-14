@@ -1,6 +1,6 @@
 package net.sf.anathema.development.reporting.encoder.sidereal;
 
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.util.AbstractJasperEncoder;
 import net.sf.anathema.development.reporting.util.TraitEncoder;
 

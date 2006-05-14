@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 
 import net.sf.anathema.character.generic.framework.reporting.datasource.MeleeWeaponDataSource;
 import net.sf.anathema.character.generic.framework.reporting.template.AbstractMagicUserCharacterReportTemplate;
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.encoder.AbstractCharacterSheetPageEncoder;
 import net.sf.anathema.development.reporting.util.ParameterUtilities;
 

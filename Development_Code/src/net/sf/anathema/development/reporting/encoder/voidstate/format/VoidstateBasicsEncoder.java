@@ -4,7 +4,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.encoder.util.TextLineEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.columns.IOneColumnEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.util.VoidStateBoxEncoder;

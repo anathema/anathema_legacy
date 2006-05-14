@@ -4,7 +4,7 @@ import java.util.Map;
 
 import net.sf.anathema.character.generic.framework.reporting.IAbilityReportConstants;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.encoder.AbstractPagedCharacterSheetEncoder;
 import net.sf.anathema.development.reporting.encoder.ICharacterSheetPageEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.VoidstateBasicsEncoder;

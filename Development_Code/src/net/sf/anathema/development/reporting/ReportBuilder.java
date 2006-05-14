@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 
 import net.disy.commons.core.io.IOUtilities;
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.encoder.BasicMortalSheetEncoder;
 import net.sf.anathema.development.reporting.encoder.BasicSolarSheetEncoder;
 import net.sf.anathema.development.reporting.encoder.page.IPageFormat;

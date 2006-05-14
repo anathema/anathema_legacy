@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 import java.util.Map;
 
 import net.sf.anathema.character.generic.framework.reporting.datasource.CharmDataSource;
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.AbstractReportEncoder;
 import net.sf.anathema.development.reporting.ReportBuilder;
 import net.sf.anathema.development.reporting.encoder.page.PageFormat;

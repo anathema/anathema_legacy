@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.framework.reporting.parameters.HealthPa
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.health.IHealthLevelTypeVisitor;
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.encoder.AbstractCharacterSheetPageEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.util.HealthRectangleEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.util.SlashSeparatedLineEncoder;

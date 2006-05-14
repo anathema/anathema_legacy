@@ -3,7 +3,7 @@ package net.sf.anathema.development.reporting.encoder.voidstate.subreports.middl
 import java.awt.Rectangle;
 
 import net.disy.commons.core.text.font.FontStyle;
-import net.sf.anathema.character.reporting.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.development.reporting.encoder.voidstate.columns.IOneColumnEncoder;
 import net.sf.anathema.framework.styledtext.model.ITextFormat;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
