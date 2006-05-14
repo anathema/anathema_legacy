@@ -66,6 +66,10 @@ public class DummyGenericCharacter implements IGenericCharacter {
   public INamedGenericTrait[] getSpecialties(ITraitType type) {
     return new INamedGenericTrait[0];
   }
+  
+  public INamedGenericTrait[] getSubTraits(ITraitType traitType) {
+    return new INamedGenericTrait[0];
+  }
 
   public ICasteType getCasteType() {
     return null;
