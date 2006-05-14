@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.additional.DefaultAdditionalRules;
+import net.sf.anathema.character.generic.impl.additional.MultiLearnablePool;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 
 public class AdditionalAbyssalRules extends DefaultAdditionalRules {
@@ -22,6 +23,6 @@ public class AdditionalAbyssalRules extends DefaultAdditionalRules {
   }
 
   public void addEssenceEngorgementTechniqueRules(IMultiLearnableCharm technique) {
-    addEssencePool(new EssenceEngorgementTechniquePool(technique));
+    addEssencePool(new MultiLearnablePool(technique, 0, 10));
   }
 }
