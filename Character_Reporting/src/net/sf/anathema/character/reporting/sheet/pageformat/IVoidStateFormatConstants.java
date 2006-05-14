@@ -6,6 +6,7 @@ import net.sf.anathema.framework.styledtext.presentation.TextFormat;
 public interface IVoidStateFormatConstants {
 
   public static final int HEADER_FONT_SIZE = 9;
+  public static final int SUBSECTION_FONT_SIZE = 8;
   public static final int FONT_SIZE = 7;
   public static final int LINE_HEIGHT = 11;
   public static final int PADDING = 10;

@@ -2,11 +2,16 @@ package net.sf.anathema.character.reporting.sheet.common;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
+import net.disy.commons.core.geometry.SmartRectangle;
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
+import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -46,20 +51,62 @@ public class PdfAbilitiesEncoder extends AbstractPdfEncoder {
     return baseFont;
   }
 
-  public void encodeAbilities(
-      PdfContentByte directContent,
-      IGenericTraitCollection traitCollection,
-      IIdentifiedTraitTypeGroup[] groups,
-      Point position,
-      int width) {
+  public void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, SmartRectangle contentBounds) {
+    Point position = new Point((int) contentBounds.getMinX(), (int) contentBounds.getMaxY());
+    int width = contentBounds.width;
+    IIdentifiedTraitTypeGroup[] groups = character.getAbilityTypeGroups();
     int yPosition = position.y;
     for (IIdentifiedTraitTypeGroup group : groups) {
       Point groupPosition = new Point(position.x, yPosition);
-      yPosition -= encodeAbilityGroup(directContent, traitCollection, group, groupPosition, width);
+      yPosition -= encodeAbilityGroup(directContent, character, group, groupPosition, width);
       yPosition -= IVoidStateFormatConstants.TEXT_PADDING;
     }
-    yPosition -= IVoidStateFormatConstants.TEXT_PADDING;
-    yPosition -= encodeMobilityPenaltyText(directContent, position, yPosition);
+    yPosition -= IVoidStateFormatConstants.LINE_HEIGHT;
+    yPosition -= encodeCrafts(directContent, character, new Point(position.x, yPosition), width);
+    yPosition -= IVoidStateFormatConstants.LINE_HEIGHT;
+    yPosition -= encodeSpecialties(directContent, character, new Point(position.x, yPosition), width);
+    encodeMobilityPenaltyText(directContent, position, yPosition + 4);
+  }
+
+  private int encodeCrafts(PdfContentByte directContent,  IGenericCharacter character, Point position, int width) {
+    String title = "Crafts";
+    INamedGenericTrait[] traits = character.getSubTraits(AbilityType.Craft);
+    return drawNamedTraitSection(directContent, title, traits, position, width, essenceMax);
+  }
+
+  private int encodeSpecialties(PdfContentByte directContent, IGenericCharacter character, Point position, int width) {
+    String title = "Specialties";
+    List<INamedGenericTrait> allTraits = new ArrayList<INamedGenericTrait>();
+    for (IIdentifiedTraitTypeGroup group : character.getAbilityTypeGroups()) {
+      for (ITraitType traitType : group.getAllGroupTypes()) {
+        allTraits.addAll(Arrays.asList(character.getSpecialties(traitType)));
+      }
+    }
+    INamedGenericTrait[] specialties = allTraits.toArray(new INamedGenericTrait[allTraits.size()]);
+    return drawNamedTraitSection(directContent, title, specialties, position, width, 3);
+  }
+
+  private int drawNamedTraitSection(
+      PdfContentByte directContent,
+      String title,
+      INamedGenericTrait[] traits,
+      Point position,
+      int width,
+      int dotCount) {
+    int height = drawSubsectionHeader(directContent, title, position, width);
+    for (INamedGenericTrait trait : traits) {
+      Point traitPosition = new Point(position.x, position.y - height);
+      int value = trait.getCurrentValue();
+      String name = trait.getName();
+      traitEncoder.encodeWithText(directContent, name, traitPosition, width, value, dotCount);
+      height += traitEncoder.getTraitHeight();
+    }
+    for (int index = traits.length; index < 9; index++) {
+      Point traitPosition = new Point(position.x, position.y - height);
+      traitEncoder.encodeWithLine(directContent, traitPosition, width, 0, dotCount);
+      height += traitEncoder.getTraitHeight();
+    }
+    return height;
   }
 
   private int encodeMobilityPenaltyText(PdfContentByte directContent, Point position, int yPosition) {

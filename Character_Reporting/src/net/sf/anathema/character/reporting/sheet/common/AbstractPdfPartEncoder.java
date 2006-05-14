@@ -1,13 +1,11 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
-import java.awt.Point;
 import java.io.IOException;
 
 import net.disy.commons.core.geometry.SmartRectangle;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
 import net.sf.anathema.lib.resources.IResources;
@@ -33,9 +31,7 @@ public abstract class AbstractPdfPartEncoder extends AbstractPdfEncoder implemen
 
   public void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, SmartRectangle contentBounds) {
     PdfAbilitiesEncoder encoder = new PdfAbilitiesEncoder(getBaseFont(), getResources(), essenceMax);
-    IIdentifiedTraitTypeGroup[] groups = character.getAbilityTypeGroups();
-    Point abilityPosition = new Point((int) contentBounds.getMinX(), (int) contentBounds.getMaxY());
-    encoder.encodeAbilities(directContent, character, groups, abilityPosition, contentBounds.width);
+    encoder.encodeAbilities(directContent, character, contentBounds);
   }
 
   public final void encodeAttributes(

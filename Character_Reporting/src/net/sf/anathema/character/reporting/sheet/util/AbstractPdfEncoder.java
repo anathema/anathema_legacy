@@ -10,6 +10,8 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public abstract class AbstractPdfEncoder {
 
+  private static final int SUBSECTION_FONT_SIZE = 8;
+
   protected abstract BaseFont getBaseFont();
 
   protected final void setCommentFont(PdfContentByte directContent) {
@@ -19,11 +21,18 @@ public abstract class AbstractPdfEncoder {
   protected final void setDefaultFont(PdfContentByte directContent) {
     directContent.setFontAndSize(getBaseFont(), IVoidStateFormatConstants.FONT_SIZE);
   }
-  
+
   protected final void setSubsectionFont(PdfContentByte directContent) {
-    int fontSize = (IVoidStateFormatConstants.FONT_SIZE + IVoidStateFormatConstants.HEADER_FONT_SIZE) / 2;
+    int fontSize = SUBSECTION_FONT_SIZE;
     directContent.setFontAndSize(getBaseFont(), fontSize);
   }
+
+  protected final int drawSubsectionHeader(PdfContentByte directContent, String text, Point position, int width) {
+    setSubsectionFont(directContent);
+    drawText(directContent, text, new Point(position.x + width / 2, position.y), PdfContentByte.ALIGN_CENTER);
+    return (int) (SUBSECTION_FONT_SIZE * 1.5);
+  }
+
   protected final int getDefaultTextWidth(String text) {
     return (int) getBaseFont().getWidthPoint(text, IVoidStateFormatConstants.FONT_SIZE);
   }

@@ -15,8 +15,8 @@ public interface IPdfPartEncoder {
 
   public void encodeAttributes(
       PdfContentByte directContent,
-      SmartRectangle attributesContentBounds,
-      IGroupedTraitType[] attributeGroups,
+      SmartRectangle contentBounds,
+      IGroupedTraitType[] groups,
       IGenericTraitCollection traitCollection);
 
   public void encodeEditionSpecificFirstPagePart(PdfContentByte directContent, SmartRectangle restBounds);
