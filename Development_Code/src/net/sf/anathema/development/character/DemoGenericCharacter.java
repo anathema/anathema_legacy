@@ -28,6 +28,8 @@ import net.sf.anathema.character.solar.caste.SolarCaste;
 
 public class DemoGenericCharacter implements IGenericCharacter {
 
+  private final List<ITraitType> specialtyTraitTypes = new ArrayList<ITraitType>();
+  private final List<ITraitType> subbedTraitTypes = new ArrayList<ITraitType>();
   private final List<IMagic> allLearnedMagic = new ArrayList<IMagic>();
   private final List<IGenericTrait> allBackgrounds = new ArrayList<IGenericTrait>();
   private final List<IGenericCombo> allCombos = new ArrayList<IGenericCombo>();
@@ -89,6 +91,20 @@ public class DemoGenericCharacter implements IGenericCharacter {
   }
 
   public INamedGenericTrait[] getSpecialties(ITraitType traitType) {
+    if (specialtyTraitTypes.contains(traitType)) {
+      return new INamedGenericTrait[] {
+          new DemoNamedGenericTrait(traitType, 3, " (Specialty)")
+      };
+    }
+    return new INamedGenericTrait[0];
+  }
+  
+  public INamedGenericTrait[] getSubTraits(ITraitType traitType) {
+    if (subbedTraitTypes.contains(traitType)) {
+      return new INamedGenericTrait[] {
+          new DemoNamedGenericTrait(traitType, 2, " (Sub)")
+      };
+    }
     return new INamedGenericTrait[0];
   }
 
@@ -180,5 +196,13 @@ public class DemoGenericCharacter implements IGenericCharacter {
             AbilityType.Ride,
             AbilityType.Sail,
             AbilityType.Socialize }, SolarCaste.Eclipse) };
+  }
+
+  public void addSpecialtyTrait(ITraitType traitType) {
+    specialtyTraitTypes.add(traitType);
+  }
+
+  public void addSubbedTrait(ITraitType traitType) {
+    subbedTraitTypes.add(traitType);
   }
 }

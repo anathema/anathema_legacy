@@ -1,0 +1,19 @@
+package net.sf.anathema.development.character;
+
+import net.sf.anathema.character.generic.impl.testing.DummyGenericTrait;
+import net.sf.anathema.character.generic.traits.INamedGenericTrait;
+import net.sf.anathema.character.generic.traits.ITraitType;
+
+public class DemoNamedGenericTrait extends DummyGenericTrait implements INamedGenericTrait {
+
+  private final String postfix;
+
+  public DemoNamedGenericTrait(ITraitType type, int currentValue, String postfix) {
+    super(type, currentValue);
+    this.postfix = postfix;
+  }
+
+  public String getName() {
+    return getType().getId() + postfix;
+  }
+}

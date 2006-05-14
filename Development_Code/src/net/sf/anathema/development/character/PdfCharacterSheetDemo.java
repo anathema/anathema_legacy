@@ -7,6 +7,7 @@ import java.util.Locale;
 import net.sf.anathema.character.abyssal.caste.AbyssalCaste;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
+import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.impl.module.CharacterCoreModule;
 import net.sf.anathema.character.impl.module.CharacterModule;
 import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
@@ -60,6 +61,9 @@ public class PdfCharacterSheetDemo {
     character.getConcept().setCasteType(AbyssalCaste.Day);
     character.getConcept().setWillpowerRegainingConceptName("Pedestrian Motivation");
     character.setRuleSet(ExaltedRuleSet.SecondEdition);
+    character.addSpecialtyTrait(AbilityType.Archery);
+    character.addSpecialtyTrait(AbilityType.Bureaucracy);
+    character.addSubbedTrait(AbilityType.Craft);
     return character;
   }
 
