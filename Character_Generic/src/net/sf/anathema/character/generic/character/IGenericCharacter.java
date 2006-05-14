@@ -29,6 +29,8 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection 
 
   public INamedGenericTrait[] getSpecialties(ITraitType traitType);
 
+  public INamedGenericTrait[] getSubTraits(ITraitType traitType);
+
   public ICharacterPoints getCharacterPoints();
 
   public IExaltedRuleSet getRules();
