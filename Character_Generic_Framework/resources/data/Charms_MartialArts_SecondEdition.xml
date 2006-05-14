@@ -223,6 +223,11 @@
     <charmtype type="Reflexive">
     	<special primaryStep="1"/>
     </charmtype>
+    <combo comboable="true">
+      <restrictions>
+        <charmtype type="ExtraAction"/>
+      </restrictions>
+    </combo>
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="2nd Edition" page="242"/>
