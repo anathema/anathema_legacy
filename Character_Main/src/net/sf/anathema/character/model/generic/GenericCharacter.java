@@ -99,6 +99,11 @@ public class GenericCharacter implements IGenericCharacter {
     return statistics.getTraitConfiguration().getTrait(traitType).getSpecialtiesContainer().getSpecialties();
   }
 
+  public INamedGenericTrait[] getSubTraits(ITraitType traitType) {
+    // todo vom (14.05.2006) (sieroux): Multiple Crafts
+    return new INamedGenericTrait[0];
+  }
+
   public ICasteType getCasteType() {
     return statistics.getCharacterConcept().getCaste().getType();
   }
