@@ -15,6 +15,7 @@ public class AllCharacterGenericsFrameworkTests {
     suite.addTest(net.sf.anathema.character.generic.framework.magic.test.AllTests.suite());
     suite.addTest(net.sf.anathema.character.generic.framework.xml.test.AllTests.suite());
     suite.addTest(net.sf.anathema.character.generic.framework.xml.creation.test.AllTests.suite());
+    suite.addTest(net.sf.anathema.character.generic.framework.xml.rules.test.AllTests.suite());
     suite.addTest(net.sf.anathema.character.generic.framework.xml.essence.test.AllTests.suite());
     suite.addTest(net.sf.anathema.character.generic.framework.xml.experience.test.AllTests.suite());
     suite.addTest(net.sf.anathema.character.generic.framework.xml.magic.test.AllTests.suite());

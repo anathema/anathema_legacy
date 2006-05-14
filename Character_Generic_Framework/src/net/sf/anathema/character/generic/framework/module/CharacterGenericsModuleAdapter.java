@@ -28,7 +28,7 @@ public abstract class CharacterGenericsModuleAdapter implements ICharacterGeneri
   }
 
   public void registerCommonData(ICharacterGenerics characterGenerics) {
-    //Nothing to do
+    // Nothing to do
   }
 
   protected final void registerParsedTemplate(ICharacterGenerics generics, String templateId) {
@@ -37,6 +37,7 @@ public abstract class CharacterGenericsModuleAdapter implements ICharacterGeneri
     new CharacterTemplateParser(
         characterTemplateRegistries,
         generics.getCasteCollectionRegistry(),
+        generics.getCharmProvider(),
         additionalTemplateParserRegistry);
     try {
       generics.getTemplateRegistry().register(

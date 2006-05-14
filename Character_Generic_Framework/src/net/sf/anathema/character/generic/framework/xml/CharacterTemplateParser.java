@@ -29,6 +29,7 @@ import net.sf.anathema.character.generic.framework.xml.rules.GenericAdditionalRu
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactoryParser;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.traits.groups.AllAbilityTraitTypeGroup;
@@ -64,14 +65,17 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   private final ICharacterTemplateRegistryCollection registryCollection;
   private final IRegistry<CharacterType, ICasteCollection> casteCollectionRegistry;
   private final IRegistry<String, IAdditionalTemplateParser> additionModelTemplateParserRegistry;
+  private final ICharmProvider provider;
 
   public CharacterTemplateParser(
       ICharacterTemplateRegistryCollection registryCollection,
       IRegistry<CharacterType, ICasteCollection> casteCollectionRegistry,
+      ICharmProvider provider,
       IRegistry<String, IAdditionalTemplateParser> additionModelTemplateParser) {
     super(registryCollection.getCharacterTemplateRegistry());
     this.registryCollection = registryCollection;
     this.casteCollectionRegistry = casteCollectionRegistry;
+    this.provider = provider;
     this.additionModelTemplateParserRegistry = additionModelTemplateParser;
   }
 
@@ -227,7 +231,10 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
       return;
     }
     AdditionalRulesTemplateParser parser = new AdditionalRulesTemplateParser(
-        registryCollection.getAdditionalRulesRegistry());
+        registryCollection.getAdditionalRulesRegistry(),
+        provider.getSpecialCharms(
+            characterTemplate.getTemplateType().getCharacterType(),
+            characterTemplate.getEdition()));
     GenericAdditionalRules rules = parser.parseTemplate(element);
     characterTemplate.setAdditionalRules(rules);
   }
