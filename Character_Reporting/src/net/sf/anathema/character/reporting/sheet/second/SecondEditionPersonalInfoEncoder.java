@@ -33,21 +33,21 @@ public class SecondEditionPersonalInfoEncoder extends AbstractPdfEncoder {
     int firstRowY = (int) (infoBounds.getMaxY() - lineHeight);
     IExaltedRuleSet rules = character.getRules();
     String rulesContent = rules == null ? null : resources.getString("Ruleset." + rules.getId()); //$NON-NLS-1$
-    addLabelledContent(directContent, getLabel("Rules"), rulesContent, new Point(firstColumnX, firstRowY), entryWidth); //$NON-NLS-1$
-    addLabelledContent(directContent, getLabel("Player"), null, new Point(secondColumnX, firstRowY), entryWidth); //$NON-NLS-1$
+    drawLabelledContent(directContent, getLabel("Rules"), rulesContent, new Point(firstColumnX, firstRowY), entryWidth); //$NON-NLS-1$
+    drawLabelledContent(directContent, getLabel("Player"), null, new Point(secondColumnX, firstRowY), entryWidth); //$NON-NLS-1$
 
     int secondRowY = firstRowY - lineHeight;
     String conceptContent = character.getConcept().getConceptText();
     String conceptLabel = getLabel("Concept"); //$NON-NLS-1$
-    addLabelledContent(directContent, conceptLabel, conceptContent, new Point(firstColumnX, secondRowY), entryWidth);
+    drawLabelledContent(directContent, conceptLabel, conceptContent, new Point(firstColumnX, secondRowY), entryWidth);
     String casteContent = getCasteString(character.getConcept().getCasteType());
-    addLabelledContent(directContent, getLabel("Caste"), casteContent, new Point(secondColumnX, secondRowY), entryWidth); //$NON-NLS-1$
+    drawLabelledContent(directContent, getLabel("Caste"), casteContent, new Point(secondColumnX, secondRowY), entryWidth); //$NON-NLS-1$
 
     int thirdRowY = secondRowY - lineHeight;
     String motivationContent = character.getConcept().getWillpowerRegainingConceptName();
     String motivationLabel = getLabel("Motivation"); //$NON-NLS-1$
     Point motivationPosition = new Point(firstColumnX, thirdRowY);
-    addLabelledContent(directContent, motivationLabel, motivationContent, motivationPosition, infoBounds.width);
+    drawLabelledContent(directContent, motivationLabel, motivationContent, motivationPosition, infoBounds.width);
   }
 
   private String getCasteString(ICasteType casteType) {

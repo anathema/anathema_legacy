@@ -47,23 +47,15 @@ public class PdfEssenceEncoder extends AbstractPdfEncoder {
   }
 
   private void encodePool(PdfContentByte directContent, String label, String poolValue, Point poolPosition, int width) {
-    addText(directContent, label, poolPosition, PdfContentByte.ALIGN_LEFT);
+    drawText(directContent, label, poolPosition, PdfContentByte.ALIGN_LEFT);
     String availableString = " " + resources.getString("Sheet.Essence.Available"); //$NON-NLS-1$ //$NON-NLS-2$
     float availableTextWidth = getDefaultTextWidth(availableString);
     Point availablePosition = new Point(poolPosition.x + width, poolPosition.y);
-    addText(directContent, availableString, availablePosition, PdfContentByte.ALIGN_RIGHT);
+    drawText(directContent, availableString, availablePosition, PdfContentByte.ALIGN_RIGHT);
     int lineLength = 10;
     Point lineStartPoint = new Point((int) (availablePosition.x - availableTextWidth - lineLength), poolPosition.y);
-    drawThinHorizontalLine(directContent, lineStartPoint, lineLength);
+    drawMissingTextLine(directContent, lineStartPoint, lineLength);
     String totalString = poolValue + " " + resources.getString("Sheet.Essence.Total") + " / "; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-    addText(directContent, totalString, lineStartPoint, PdfContentByte.ALIGN_RIGHT);
-  }
-
-  protected final void drawThinHorizontalLine(PdfContentByte directContent, Point position, int length) {
-    setFillColorBlack(directContent);
-    directContent.setLineWidth(0);
-    directContent.moveTo(position.x, position.y);
-    directContent.lineTo(position.x + length, position.y);
-    directContent.stroke();
+    drawText(directContent, totalString, lineStartPoint, PdfContentByte.ALIGN_RIGHT);
   }
 }

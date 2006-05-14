@@ -64,9 +64,9 @@ public class PdfAbilitiesEncoder extends AbstractPdfEncoder {
 
   private int encodeMobilityPenaltyText(PdfContentByte directContent, Point position, int yPosition) {
     encodeCrossMarker(directContent, new Point(position.x, yPosition));
-    String mobilityPenaltyText = " : This abliity is commonly affected by mobility penalty.";
+    String mobilityPenaltyText = " : " + resources.getString("Sheet.Comment.AbilityMobility"); //$NON-NLS-1$ //$NON-NLS-2$
     Point commentPosition = new Point(position.x + 5, yPosition);
-    addComment(directContent, mobilityPenaltyText, commentPosition, PdfContentByte.ALIGN_LEFT);
+    drawComment(directContent, mobilityPenaltyText, commentPosition, PdfContentByte.ALIGN_LEFT);
     return 10;
   }
 
@@ -105,7 +105,7 @@ public class PdfAbilitiesEncoder extends AbstractPdfEncoder {
       int width) {
     int value = trait.getCurrentValue();
     boolean favored = trait.isCasteOrFavored();
-    return traitEncoder.encodeWithRectangle(directContent, label, position, width, value, favored, essenceMax);
+    return traitEncoder.encodeWithTextAndRectangle(directContent, label, position, width, value, favored, essenceMax);
   }
 
   private void encodeCrossMarker(PdfContentByte directContent, Point markerPosition) {
@@ -121,6 +121,6 @@ public class PdfAbilitiesEncoder extends AbstractPdfEncoder {
     String groupId = group.getGroupId().getId();
     String resourceKey = group.getGroupId() instanceof ICasteType ? "Caste." + groupId : "AbilityGroup." + groupId; //$NON-NLS-1$//$NON-NLS-2$
     String groupLabel = resources.getString(resourceKey);
-    addVerticalText(directContent, groupLabel, position, PdfContentByte.ALIGN_CENTER);
+    drawVerticalText(directContent, groupLabel, position, PdfContentByte.ALIGN_CENTER);
   }
 }

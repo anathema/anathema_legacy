@@ -19,9 +19,13 @@ public abstract class AbstractPdfEncoder {
   protected final void setDefaultFont(PdfContentByte directContent) {
     directContent.setFontAndSize(getBaseFont(), IVoidStateFormatConstants.FONT_SIZE);
   }
-
-  protected final float getDefaultTextWidth(String text) {
-    return getBaseFont().getWidthPoint(text, IVoidStateFormatConstants.FONT_SIZE);
+  
+  protected final void setSubsectionFont(PdfContentByte directContent) {
+    int fontSize = (IVoidStateFormatConstants.FONT_SIZE + IVoidStateFormatConstants.HEADER_FONT_SIZE) / 2;
+    directContent.setFontAndSize(getBaseFont(), fontSize);
+  }
+  protected final int getDefaultTextWidth(String text) {
+    return (int) getBaseFont().getWidthPoint(text, IVoidStateFormatConstants.FONT_SIZE);
   }
 
   protected final void setFillColorWhite(PdfContentByte directContent) {
@@ -32,22 +36,26 @@ public abstract class AbstractPdfEncoder {
     directContent.setRGBColorFill(0, 0, 0);
   }
 
-  protected final void setLineWidthAHalf(PdfContentByte directContent) {
-    directContent.setLineWidth(0.5f);
+  protected final void drawMissingTextLine(PdfContentByte directContent, Point position, int length) {
+    setFillColorBlack(directContent);
+    directContent.setLineWidth(0);
+    directContent.moveTo(position.x, position.y);
+    directContent.lineTo(position.x + length, position.y);
+    directContent.stroke();
   }
 
-  protected final void addComment(PdfContentByte directContent, String text, Point position, int alignment) {
+  protected final void drawComment(PdfContentByte directContent, String text, Point position, int alignment) {
     setFillColorBlack(directContent);
     setCommentFont(directContent);
     directContent.setLineWidth(0);
     drawText(directContent, text, position, alignment, 0);
   }
 
-  protected final void addText(PdfContentByte directContent, String text, Point position, int alignment) {
+  protected final void drawText(PdfContentByte directContent, String text, Point position, int alignment) {
     addText(directContent, text, position, alignment, 0);
   }
 
-  protected final void addVerticalText(PdfContentByte directContent, String text, Point position, int alignment) {
+  protected final void drawVerticalText(PdfContentByte directContent, String text, Point position, int alignment) {
     addText(directContent, text, position, alignment, 90);
   }
 
@@ -62,7 +70,7 @@ public abstract class AbstractPdfEncoder {
     directContent.endText();
   }
 
-  protected final void addLabelledContent(
+  protected final void drawLabelledContent(
       PdfContentByte directContent,
       String label,
       String content,
@@ -71,13 +79,12 @@ public abstract class AbstractPdfEncoder {
     initDirectContentForText(directContent);
     directContent.beginText();
     directContent.showTextAlignedKerned(PdfContentByte.ALIGN_LEFT, label, position.x, position.y, 0);
-    float labelWidth = getDefaultTextWidth(label);
-    float contentX = position.x + labelWidth + 2;
+    int labelWidth = getDefaultTextWidth(label);
+    int contentX = (position.x + labelWidth + 2);
     if (StringUtilities.isNullOrTrimEmpty(content)) {
       directContent.endText();
-      directContent.moveTo(contentX, position.y);
-      directContent.lineTo(position.x + width, position.y);
-      directContent.stroke();
+      int lineWidth = (position.x + width) - contentX;
+      drawMissingTextLine(directContent, new Point(contentX, position.y), lineWidth);
     }
     else {
       directContent.showTextAlignedKerned(PdfContentByte.ALIGN_LEFT, content, contentX, position.y, 0);

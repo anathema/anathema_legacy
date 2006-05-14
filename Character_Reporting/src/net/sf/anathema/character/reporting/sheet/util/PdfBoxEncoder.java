@@ -33,7 +33,7 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
   private SmartRectangle encodeContentBox(PdfContentByte directContent, SmartRectangle bounds) {
     SmartRectangle contentBounds = calculateContentBounds(bounds);
     setFillColorBlack(directContent);
-    setLineWidthAHalf(directContent);
+    directContent.setLineWidth(0.5f);
     directContent.moveTo(contentBounds.x, contentBounds.y + ARCSPACE);
     add90DegreeArc(directContent, contentBounds.x, contentBounds.y, 180);
     directContent.moveTo(contentBounds.x + ARCSPACE, contentBounds.y);
