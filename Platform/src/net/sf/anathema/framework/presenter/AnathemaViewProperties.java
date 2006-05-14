@@ -19,7 +19,7 @@ public class AnathemaViewProperties {
   }
 
   public Icon getSplashImage() {
-    int random = new Random().nextInt(4);
+    int random = new Random().nextInt(5);
     return resources.getImageIcon("core/AnathemaSplash" + (random + 3) + ".png"); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
