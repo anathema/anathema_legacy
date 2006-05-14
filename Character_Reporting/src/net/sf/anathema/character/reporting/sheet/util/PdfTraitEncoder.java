@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.sheet.page;
+package net.sf.anathema.character.reporting.sheet.util;
 
 import java.awt.Point;
 

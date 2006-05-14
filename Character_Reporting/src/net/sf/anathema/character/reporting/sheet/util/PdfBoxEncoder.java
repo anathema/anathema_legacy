@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.sheet.page;
+package net.sf.anathema.character.reporting.sheet.util;
 
 import net.disy.commons.core.geometry.SmartRectangle;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;

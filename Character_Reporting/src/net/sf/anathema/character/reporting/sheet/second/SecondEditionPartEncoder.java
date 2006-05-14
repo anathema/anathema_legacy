@@ -4,8 +4,8 @@ import java.io.IOException;
 
 import net.disy.commons.core.geometry.SmartRectangle;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.reporting.sheet.page.AbstractPdfPartEncoder;
-import net.sf.anathema.character.reporting.sheet.page.PdfBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.common.AbstractPdfPartEncoder;
+import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.DocumentException;

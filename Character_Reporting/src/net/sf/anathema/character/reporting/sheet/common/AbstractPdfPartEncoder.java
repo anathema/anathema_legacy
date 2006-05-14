@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.sheet.page;
+package net.sf.anathema.character.reporting.sheet.common;
 
 import java.awt.Point;
 import java.io.IOException;
@@ -9,8 +9,9 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
-import net.sf.anathema.character.reporting.sheet.common.PdfAbilitiesEncoder;
-import net.sf.anathema.character.reporting.sheet.common.SimplePdfEssenceEncoder;
+import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
+import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.DocumentException;
@@ -67,7 +68,7 @@ public abstract class AbstractPdfPartEncoder extends AbstractPdfEncoder implemen
   }
 
   public void encodeEssence(PdfContentByte directContent, IGenericCharacter character, SmartRectangle contentBounds) {
-    SimplePdfEssenceEncoder encoder = new SimplePdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);
+    PdfEssenceEncoder encoder = new PdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);
     encoder.encodeEssence(directContent, character, contentBounds);
   }
 }
