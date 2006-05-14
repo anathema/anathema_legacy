@@ -7,11 +7,9 @@ import net.disy.commons.core.geometry.SmartRectangle;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
-import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.DocumentException;
@@ -22,13 +20,11 @@ public abstract class AbstractPdfPartEncoder extends AbstractPdfEncoder implemen
 
   private final BaseFont baseFont = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1250, BaseFont.NOT_EMBEDDED);
   private final IResources resources;
-  private final PdfTraitEncoder smallTraitEncoder;
   private final int essenceMax;
 
   public AbstractPdfPartEncoder(IResources resources, int essenceMax) throws DocumentException, IOException {
     this.essenceMax = essenceMax;
     this.resources = resources;
-    this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
   }
 
   public final BaseFont getBaseFont() {
@@ -47,20 +43,8 @@ public abstract class AbstractPdfPartEncoder extends AbstractPdfEncoder implemen
       SmartRectangle contentBounds,
       IGroupedTraitType[] attributeGroups,
       IGenericTraitCollection traitCollection) {
-    int groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
-    int y = (int) contentBounds.getMaxY() - groupSpacing;
-    String groupId = null;
-    for (IGroupedTraitType groupedTraitType : attributeGroups) {
-      if (!groupedTraitType.getGroupId().equals(groupId)) {
-        groupId = groupedTraitType.getGroupId();
-        y -= groupSpacing;
-      }
-      ITraitType traitType = groupedTraitType.getTraitType();
-      String traitLabel = getResources().getString("AttributeType.Name." + traitType.getId()); //$NON-NLS-1$
-      int value = traitCollection.getTrait(traitType).getCurrentValue();
-      Point position = new Point(contentBounds.x, y);
-      y -= smallTraitEncoder.encodeWithText(directContent, traitLabel, position, contentBounds.width, value, essenceMax);
-    }
+    PdfAttributesEncoder encoder = new PdfAttributesEncoder(getBaseFont(), getResources(), essenceMax);
+    encoder.encodeAttributes(directContent, contentBounds, attributeGroups, traitCollection);
   }
 
   public final IResources getResources() {
