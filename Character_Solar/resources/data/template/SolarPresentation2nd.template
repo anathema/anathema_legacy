@@ -4,5 +4,5 @@
   <newResources>
     <newAction>CharacterGenerator.NewCharacter.Solar.Name</newAction>
   </newResources>
-  <charmPresentation uses="template/SolarCharmPresentation2nd.template"/>
+  <charmPresentation uses="template/SolarCharmPresentation.template"/>
 </presentation>
