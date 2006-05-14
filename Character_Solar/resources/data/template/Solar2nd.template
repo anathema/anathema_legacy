@@ -7,6 +7,14 @@
     <traitCollection uses="trait/DefaultTraitCollection.template"/>
     <magicTemplate uses="template/SolarMagic2nd.template"/>
     <presentation uses="template/SolarPresentation2nd.template"/>
+    <additionalRules>
+    	<additionalPools>
+    		<multilearnablePool>
+    			<charmReference id="Solar.ImmanentSolarGlory"/>    			
+    			<peripheralPool multiplier="10"/>
+    		</multilearnablePool>
+    	</additionalPools> 
+    </additionalRules>
     <additionalTemplates>
       <template id="SolarVirtueFlaw" />
     </additionalTemplates>
