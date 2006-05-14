@@ -10,7 +10,7 @@ public class SecondEditionComboArbitrator extends ComboArbitrator {
   public boolean isCharmComboLegal(ICharm charm) {
     boolean comboBasic = isComboBasic(charm);
     boolean comboOk = charm.hasAttribute(IExtendedCharmData.COMBO_OK_ATTRIBUTE);
-    return super.isCharmComboLegal(charm) && (comboBasic || comboOk);
+    return comboBasic || comboOk;
   }
 
   @Override
