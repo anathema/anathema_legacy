@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.impl.model.charm.Combo;
 import net.sf.anathema.character.impl.model.charm.combo.ComboArbitrator;
+import net.sf.anathema.character.impl.model.charm.combo.FirstEditionComboArbitrator;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
 public class ComboTest extends BasicTestCase {
@@ -20,7 +21,7 @@ public class ComboTest extends BasicTestCase {
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    this.comboRules = new ComboArbitrator();
+    this.comboRules = new FirstEditionComboArbitrator();
     this.combo = new Combo();
   }
 

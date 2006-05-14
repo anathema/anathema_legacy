@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.impl.model.charm.combo.ComboArbitrator;
+import net.sf.anathema.character.impl.model.charm.combo.FirstEditionComboArbitrator;
 import net.sf.anathema.character.impl.model.charm.test.DummyCharmUtilities;
 
 public class ComboRulesTest extends AbstractComboRulesTestCase {
@@ -18,7 +19,7 @@ public class ComboRulesTest extends AbstractComboRulesTestCase {
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    this.rules = new ComboArbitrator();
+    this.rules = new FirstEditionComboArbitrator();
   }
 
   public void testDurationComboLegal() throws Exception {

@@ -1,14 +1,13 @@
 package net.sf.anathema.character.impl.model.charm.combo;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.DurationType;
 import net.sf.anathema.character.generic.magic.charms.ICharmTypeVisitor;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 
-public class ComboArbitrator implements IComboArbitrator {
+public abstract class ComboArbitrator implements IComboArbitrator {
 
   private final IComboRules simpleCharmRules = new SimpleCharmComboRules();
   private final IComboRules extraActionCharmRules = new ExtraActionCharmComboRules();
@@ -23,9 +22,11 @@ public class ComboArbitrator implements IComboArbitrator {
   }
 
   public boolean isCharmComboLegal(ICharm charm) {
-    boolean isLegalDuration = charm.getDuration().getType() == DurationType.Instant;
-    return charm.getComboRules().isComboAllowed(isLegalDuration);
+    boolean isLegal = isCharmLegalByRules(charm);
+    return charm.getComboRules().isComboAllowed(isLegal);
   }
+
+  protected abstract boolean isCharmLegalByRules(ICharm charm);
 
   public boolean canBeAddedToCombo(ICombo combo, ICharm charm) {
     boolean legal = isCharmComboLegal(charm);

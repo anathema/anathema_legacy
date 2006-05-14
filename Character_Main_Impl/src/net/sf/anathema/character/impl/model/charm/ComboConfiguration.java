@@ -6,7 +6,7 @@ import java.util.List;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.rules.IEditionVisitor;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.impl.model.charm.combo.ComboArbitrator;
+import net.sf.anathema.character.impl.model.charm.combo.FirstEditionComboArbitrator;
 import net.sf.anathema.character.impl.model.charm.combo.IComboArbitrator;
 import net.sf.anathema.character.impl.model.charm.combo.SecondEditionComboArbitrator;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
@@ -45,7 +45,7 @@ public class ComboConfiguration implements IComboConfiguration {
     final IComboArbitrator[] editionRules = new IComboArbitrator[1];
     edition.accept(new IEditionVisitor() {
       public void visitFirstEdition(IExaltedEdition visitedEdition) {
-        editionRules[0] = new ComboArbitrator();
+        editionRules[0] = new FirstEditionComboArbitrator();
       }
 
       public void visitSecondEdition(IExaltedEdition visitedEdition) {
