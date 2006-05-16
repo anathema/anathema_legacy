@@ -57,4 +57,8 @@ public class CascadeView extends AbstractCascadeSelectionView implements ICascad
   public void setBackgroundColor(Color color) {
     getCharmTreeView().setCanvasBackground(color);
   }
+
+  public void unselect() {
+    fillCharmComboBoxes(null, null);
+  }
 }

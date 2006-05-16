@@ -57,7 +57,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     List<ICharmGroup> allCharmGroups = new ArrayList<ICharmGroup>();
     initCharacterTypeCharms(supportedCharmTypes, allCharmGroups);
     initFirstEditionMartialArts(allCharmGroups);
-    // initSecondEditionMartialArts(allCharmGroups);
+    initSecondEditionMartialArts(allCharmGroups);
     supportedCharmTypes.add(MARTIAL_ARTS);
     createCharmTypeSelector(
         supportedCharmTypes.toArray(new IIdentificate[supportedCharmTypes.size()]),
@@ -153,6 +153,8 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
           }
         });
         view.fillCharmTypeBox(cascadeTypes);
+        selectionListener.valueChanged(null, selectedType);
+        view.unselect();
       }
     });
     rulesComboBox.setSelectedObject(ExaltedRuleSet.CoreRules);

@@ -13,4 +13,6 @@ public interface ICascadeView extends ICascadeSelectionView {
   public void setBackgroundColor(Color color);
 
   public void addRuleSetComponent(JComponent component, String borderTitle);
+
+  public void unselect();
 }
