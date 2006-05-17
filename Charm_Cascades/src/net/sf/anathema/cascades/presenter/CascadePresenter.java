@@ -129,7 +129,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
         if (selectedRuleset != null) {
           currentEdition = selectedRuleset.getEdition();
         }
-        selectedRuleset = (IExaltedRuleSet) newValue;
+        selectedRuleset = newValue;
         viewProperties.setCharmTree(getCharmTree(selectedType));
         if (selectedRuleset.getEdition() == currentEdition) {
           return;
@@ -153,8 +153,8 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
           }
         });
         view.fillCharmTypeBox(cascadeTypes);
-        selectionListener.valueChanged(null, selectedType);
         view.unselect();
+        view.fillCharmGroupBox(new IIdentificate[0]);
       }
     });
     rulesComboBox.setSelectedObject(ExaltedRuleSet.CoreRules);
