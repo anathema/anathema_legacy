@@ -1,10 +1,12 @@
 package net.sf.anathema.charmentry.properties;
 
 import javax.swing.Icon;
+import javax.swing.ListCellRenderer;
 
 import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
+import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.resources.IResources;
 
 public class KeywordEntryPageProperties implements IKeywordEntryPageProperties {
@@ -36,5 +38,9 @@ public class KeywordEntryPageProperties implements IKeywordEntryPageProperties {
 
   public Icon getRemoveIcon() {
     return ui.getMediumRemoveIcon();
+  }
+
+  public ListCellRenderer getKeywordRenderer() {
+    return new IdentificateSelectCellRenderer("Keyword.", resources); //$NON-NLS-1$
   }
 }

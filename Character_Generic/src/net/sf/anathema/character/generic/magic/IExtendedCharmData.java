@@ -10,7 +10,7 @@ public interface IExtendedCharmData extends ICharmData {
   public static final IIdentificate COUNTERATTACK_ATTRIBUTE = new Identificate("Counterattack"); //$NON-NLS-1$
   public static final IIdentificate CRIPPLING_ATTRIBUTE = new Identificate("Crippling"); //$NON-NLS-1$
   public static final IIdentificate EMOTION_ATTRIBUTE = new Identificate("Emotion"); //$NON-NLS-1$
-  public static final IIdentificate FORM_ATTRIBUTE = new Identificate("Form"); //$NON-NLS-1$
+
   public static final IIdentificate HOLY_ATTRIBUTE = new Identificate("Holy"); //$NON-NLS-1$
   public static final IIdentificate ILLUSION_ATTRIBUTE = new Identificate("Illusion"); //$NON-NLS-1$
   public static final IIdentificate KNOCKBACK_ATTRIBUTE = new Identificate("Knockback"); //$NON-NLS-1$

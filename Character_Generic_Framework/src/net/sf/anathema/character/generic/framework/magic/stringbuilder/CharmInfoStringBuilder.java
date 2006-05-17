@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.lib.resources.IResources;
@@ -43,12 +44,30 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
     if (MartialArtsUtilities.isMartialArtsCharm(charm)) {
       builder.append(createMartialArtsLevelLine(charm));
     }
+    builder.append(createKeywordLine(charm));
     builder.append(createPrerequisiteLines(charm.getPrerequisites()));
     builder.append(createPrerequisiteLines(new IGenericTrait[] { charm.getEssence() }));
     builder.append(sourceStringBuilder.createSourceString(charm, true));
     builder.append("</body></html>"); //$NON-NLS-1$
     return builder.toString();
 
+  }
+
+  private StringBuilder createKeywordLine(ICharm charm) {
+    StringBuilder builder = new StringBuilder();
+    for (ICharmAttribute attribute : charm.getAttributes()) {
+      if (attribute.isVisualized()) {
+        if (builder.length() != 0) {
+          builder.append(IMagicStringBuilderConstants.CommaSpace);
+        }
+        builder.append(resources.getString("Keyword." + attribute.getId())); //$NON-NLS-1$
+      }
+    }
+    if (builder.length() > 0) {
+      builder.insert(0, resources.getString("CharmTreeView.ToolTip.Keywords") + IMagicStringBuilderConstants.ColonSpace); //$NON-NLS-1$
+      builder.append(HtmlLineBreak);
+    }
+    return builder;
   }
 
   private String createMartialArtsLevelLine(ICharm charm) {

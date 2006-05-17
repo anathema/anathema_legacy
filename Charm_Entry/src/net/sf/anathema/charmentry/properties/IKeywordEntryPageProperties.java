@@ -1,6 +1,7 @@
 package net.sf.anathema.charmentry.properties;
 
 import javax.swing.Icon;
+import javax.swing.ListCellRenderer;
 
 import net.disy.commons.core.message.IBasicMessage;
 
@@ -15,4 +16,6 @@ public interface IKeywordEntryPageProperties {
   public String getKeywordLabel();
 
   public Icon getRemoveIcon();
+
+  public ListCellRenderer getKeywordRenderer();
 }

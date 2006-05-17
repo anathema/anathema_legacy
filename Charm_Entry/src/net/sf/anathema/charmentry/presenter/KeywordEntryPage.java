@@ -5,8 +5,6 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.DefaultListCellRenderer;
-
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
@@ -53,7 +51,7 @@ public class KeywordEntryPage extends AbstractAnathemaWizardPage {
   protected void initPageContent() {
     this.view = viewFactory.createKeywordEntryView();
     final IButtonControlledObjectSelectionView selectionView = view.addObjectSelectionView(
-        new DefaultListCellRenderer(),
+        properties.getKeywordRenderer(),
         properties.getKeywordLabel(),
         properties.getAddIcon());
     selectionView.setObjects(getPageModel().getAvailableKeywords());
