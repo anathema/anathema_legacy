@@ -1,9 +1,5 @@
 package net.sf.anathema.character.impl.view.repository;
 
-import static net.sf.anathema.character.impl.module.preferences.ICharacterPreferencesConstants.DEFAULT_RULESET;
-import static net.sf.anathema.character.impl.module.preferences.ICharacterPreferencesConstants.RULESET_PREFERENCE;
-import static net.sf.anathema.character.impl.module.preferences.ICharacterPreferencesElement.CHARACTER_PREFERENCES;
-
 import java.awt.Component;
 
 import javax.swing.Action;
@@ -11,7 +7,7 @@ import javax.swing.Action;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
+import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
@@ -56,9 +52,7 @@ public class AddNewFullCharacterAction extends AbstractAddNewItemAction<Characte
   @Override
   protected CharacterStatisticsConfiguration createTemplate(Component parentComponent) {
     CharacterTemplateTree tree = new CharacterTemplateTree(generics, resources);
-    ExaltedRuleSet preferredRuleSet = ExaltedRuleSet.valueOf(CHARACTER_PREFERENCES.get(
-        RULESET_PREFERENCE,
-        DEFAULT_RULESET));
+    IExaltedRuleSet preferredRuleSet = AnathemaCharacterPreferences.getDefaultPreferences().getPreferredRuleset();
     RuleSetSelectionView rulesView = new RuleSetSelectionView(resources, preferredRuleSet);
     NewCharacterDialogPage page = new NewCharacterDialogPage(tree, rulesView, resources);
     UserDialog userDialog = new UserDialog(parentComponent, page);

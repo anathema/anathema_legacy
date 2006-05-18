@@ -2,8 +2,8 @@ package net.sf.anathema.character.impl.module;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.ICharacterGenericsExtension;
+import net.sf.anathema.character.generic.framework.configuration.ICharacterPreferencesConstants;
 import net.sf.anathema.character.generic.framework.reporting.template.ICharacterReportTemplate;
-import net.sf.anathema.character.impl.module.preferences.ICharacterPreferencesConstants;
 import net.sf.anathema.character.impl.module.preferences.RulesetPreferenceElement;
 import net.sf.anathema.character.impl.reporting.CharacterReportingInitializer;
 import net.sf.anathema.framework.IAnathemaModel;

@@ -16,9 +16,9 @@ public class RuleSetSelectionView implements IRuleSetSelectionView {
   private IGridDialogPanel rulesSelectionPanel;
   private ObjectSelectionView selectionView;
   private final IResources resources;
-  private final ExaltedRuleSet preferredRuleSet;
+  private final IExaltedRuleSet preferredRuleSet;
 
-  public RuleSetSelectionView(IResources resources, ExaltedRuleSet preferredRuleSet) {
+  public RuleSetSelectionView(IResources resources, IExaltedRuleSet preferredRuleSet) {
     this.resources = resources;
     this.preferredRuleSet = preferredRuleSet;
   }
