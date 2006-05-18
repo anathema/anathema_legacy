@@ -23,10 +23,6 @@ public abstract class AbstractPresentationProperties implements IPresentationPro
     return "Label.Caste"; //$NON-NLS-1$
   }
 
-  public String getCasteResourceBase() {
-    return "Caste."; //$NON-NLS-1$
-  }
-
   protected final ITemplateType getTemplateType() {
     return templateType;
   }

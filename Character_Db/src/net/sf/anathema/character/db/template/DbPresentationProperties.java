@@ -48,7 +48,7 @@ public final class DbPresentationProperties extends AbstractPresentationProperti
     return iconName[0];
   }
 
-  public String getCasteIconResource(String groupId) {
+  public String getMediumCasteIconResource(String groupId) {
     final String[] iconName = new String[1];
     DBAspect dbAspect = DBAspect.valueOf(groupId);
     dbAspect.accept(new IDBAspectVisitor() {

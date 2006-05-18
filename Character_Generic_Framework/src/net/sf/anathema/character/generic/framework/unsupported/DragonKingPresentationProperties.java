@@ -16,7 +16,7 @@ public class DragonKingPresentationProperties extends AbstractPresentationProper
     return null;
   }
 
-  public String getCasteIconResource(String groupId) {
+  public String getMediumCasteIconResource(String groupId) {
     return null;
   }
 

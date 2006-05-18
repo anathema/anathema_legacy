@@ -183,9 +183,8 @@ public class CharacterConceptAndRulesPresenter {
     if (template.getCasteCollection().getAllCasteTypes().length <= 0) {
       return;
     }
-    String casteResourceBase = template.getPresentationProperties().getCasteResourceBase();
     String casteLabelResourceKey = template.getPresentationProperties().getCasteLabelResource();
-    IObjectUi casteUi = new IdentificateObjectUi(resources, casteResourceBase) {
+    IObjectUi casteUi = new IdentificateObjectUi(resources) {
       @Override
       protected Icon getNonNullIcon(IIdentificate value) {
         return getResources().getImageIcon(

@@ -6,17 +6,14 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public class IdentificateObjectUi extends AbstractSelectObjectUi<IIdentificate> {
-  
-  private final String resourceKeyPrefix;
 
-  public IdentificateObjectUi(IResources resources, String keyPrefix) {
+  public IdentificateObjectUi(IResources resources) {
     super(resources);
-    this.resourceKeyPrefix = keyPrefix;
   }
 
   @Override
   protected String getNonNullLabel(IIdentificate value) {
-    return getResources().getString(resourceKeyPrefix + value.getId());
+    return getResources().getString("Caste." + value.getId()); //$NON-NLS-1$
   }
 
   @Override

@@ -19,7 +19,7 @@ public class GenericPresentationTemplate extends ReflectionCloneableObject imple
     return ballResource;
   }
 
-  public String getCasteIconResource(String casteId) {
+  public String getMediumCasteIconResource(String casteId) {
     return getCharacterType().getId() + "Button" + casteId + "20.png"; //$NON-NLS-1$//$NON-NLS-2$
   }
 
@@ -33,10 +33,6 @@ public class GenericPresentationTemplate extends ReflectionCloneableObject imple
 
   public String getNewActionResource() {
     return newActionResource;
-  }
-
-  public String getCasteResourceBase() {
-    return "Caste."; //$NON-NLS-1$
   }
 
   public String getCasteLabelResource() {

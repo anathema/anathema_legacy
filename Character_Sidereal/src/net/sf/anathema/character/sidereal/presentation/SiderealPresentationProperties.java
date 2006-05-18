@@ -76,7 +76,7 @@ public class SiderealPresentationProperties extends AbstractPresentationProperti
     return iconName[0];
   }
 
-  public String getCasteIconResource(String groupId) {
+  public String getMediumCasteIconResource(String groupId) {
     return getSideralCasteIconResource(groupId);
   }
 

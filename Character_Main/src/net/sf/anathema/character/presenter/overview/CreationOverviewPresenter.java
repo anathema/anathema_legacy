@@ -177,7 +177,7 @@ public class CreationOverviewPresenter {
       public void accept(INature nature) {
         INatureType natureType = nature.getDescription().getType();
         if (natureType != null) {
-          value[0] = "Nature." + natureType.getId() + ".Name";
+          value[0] = "Nature." + natureType.getId() + ".Name"; //$NON-NLS-1$//$NON-NLS-2$
         }
       }
 
@@ -195,6 +195,6 @@ public class CreationOverviewPresenter {
     if (casteType.equals(ICasteType.NULL_CASTE_TYPE)) {
       return null;
     }
-    return template.getPresentationProperties().getCasteResourceBase() + casteType.getId();
+    return "Caste." + casteType.getId(); //$NON-NLS-1$
   }
 }

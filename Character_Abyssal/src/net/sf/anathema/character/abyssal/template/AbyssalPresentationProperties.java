@@ -55,7 +55,7 @@ public class AbyssalPresentationProperties extends AbstractPresentationPropertie
     return iconName[0];
   }
 
-  public String getCasteIconResource(String casteId) {
+  public String getMediumCasteIconResource(String casteId) {
     final String[] iconName = new String[1];
     AbyssalCaste abyssalCaste = AbyssalCaste.valueOf(casteId);
     abyssalCaste.accept(new IAbyssalCasteVisitor() {
