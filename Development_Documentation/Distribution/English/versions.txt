@@ -8,12 +8,14 @@ http://anathema.sf.net
 			Release 0.11 "Kether Rock" (Upcoming)
 ===------------------------------------------------------------------------------===
 -- Features --
++ Series are printable.
 + Notes are (finally) printable.
 
 -- Miscellaneous --
 * Fixed an error in the Linux launcher.
 * Violet Bier of Sorrows' "Conclusion Pursuing Approach" is now attributed as "Prayer Strip".
 * Power Combat's "Glorious Solar Saber" now has a mote cost of 6.
+* The DBT-Gift "Enhanced Senses" can be learned twice (Fixes Bug 1490754)
 
 ===------------------------------------------------------------------------------===
 			Release 0.10 Patch 1 (26/03/06)

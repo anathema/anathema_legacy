@@ -64,6 +64,9 @@ public class GiftProvider {
     gifts.add(deadlyBreath);
     Gift senses = new AttributeEnhancingGift("EnhancedSenses", AttributeType.Perception, 2); //$NON-NLS-1$
     gifts.add(senses);
+    Gift senses2 = new AttributeEnhancingGift("EnhancedSensesII", AttributeType.Perception, 2); //$NON-NLS-1$
+    senses2.addCondition(new QualityPrerequisite(senses));
+    gifts.add(senses2);
     Gift sight = new Gift("GhostSight"); //$NON-NLS-1$
     sight.addCondition(new QualityPrerequisite(senses));
     gifts.add(sight);
