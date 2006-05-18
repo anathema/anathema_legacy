@@ -10,6 +10,7 @@ http://anathema.sf.net
 -- Features --
 + Series are printable.
 + Notes are (finally) printable.
++ CharmCascades now honor the preferred ruleset.
 
 -- Miscellaneous --
 * Fixed an error in the Linux launcher.
