@@ -5,11 +5,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-import net.sf.anathema.lib.exception.AnathemaException;
+import net.sf.anathema.lib.exception.PersistenceException;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -18,15 +17,23 @@ import org.dom4j.io.SAXReader;
 
 public class NatureProvider implements INatureProvider {
 
-  private List<INatureType> sortedNatures;
   private final List<INatureType> natures = new ArrayList<INatureType>();
+  private static INatureProvider instance = new NatureProvider();
   private static final String TAG_NATURE = "nature"; //$NON-NLS-1$
   private static final String ATTRIB_NAME = "name"; //$NON-NLS-1$
   protected static final String ATTRIB_TEXT = "text"; //$NON-NLS-1$
   protected static final String TAG_WILLPOWER = "willpower"; //$NON-NLS-1$
   private static final String ATTRIB_ID = "id"; //$NON-NLS-1$
 
-  public void init() throws AnathemaException {
+  private NatureProvider() {
+    // Nothing to do
+  }
+
+  public static INatureProvider getInstance() {
+    return instance;
+  }
+
+  public void init() throws PersistenceException {
     File natureFile = new File("./data/natures.xml"); //$NON-NLS-1$
     if (natureFile.exists()) {
       try {
@@ -47,7 +54,7 @@ public class NatureProvider implements INatureProvider {
     createNaturesFromStream(defaultNatureStream, false);
   }
 
-  private void createNaturesFromStream(InputStream stream, boolean replace) throws AnathemaException {
+  private void createNaturesFromStream(InputStream stream, boolean replace) throws PersistenceException {
     try {
       SAXReader saxReader = new SAXReader();
       Document defaultNatureDocument = saxReader.read(stream);
@@ -57,7 +64,7 @@ public class NatureProvider implements INatureProvider {
       }
     }
     catch (DocumentException e) {
-      throw new AnathemaException("Error while parsing natures.xml", e); //$NON-NLS-1$
+      throw new PersistenceException("Error while parsing natures.xml", e); //$NON-NLS-1$
     }
   }
 
@@ -81,26 +88,8 @@ public class NatureProvider implements INatureProvider {
     return new NatureType(element.attributeValue(ATTRIB_ID), element.attributeValue(ATTRIB_NAME), condition);
   }
 
-  public INatureType[] getAllSorted() {
-    if (sortedNatures != null) {
-      return sortedNatures.toArray(new INatureType[sortedNatures.size()]);
-    }
-    List<String> natureNames = new ArrayList<String>();
-    for (INatureType nature : natures) {
-      natureNames.add(nature.getName());
-    }
-    String[] natureNamesArray = natureNames.toArray(new String[natureNames.size()]);
-    Arrays.sort(natureNamesArray);
-    sortedNatures = new ArrayList<INatureType>();
-    for (String name : natureNamesArray) {
-      for (INatureType nature : natures) {
-        if (nature.getName().equals(name)) {
-          sortedNatures.add(nature);
-          break;
-        }
-      }
-    }
-    return sortedNatures.toArray(new INatureType[sortedNatures.size()]);
+  public INatureType[] getNatures() {
+    return natures.toArray(new INatureType[natures.size()]);
   }
 
   public INatureType getById(final String id) {
@@ -109,6 +98,8 @@ public class NatureProvider implements INatureProvider {
         return nature;
       }
     }
-    return new NatureType(id, id, null);
+    final NatureType natureType = new NatureType(id, id, null);
+    natures.add(natureType);
+    return natureType;
   }
 }

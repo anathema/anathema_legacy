@@ -10,7 +10,6 @@ import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
-import net.sf.anathema.character.model.concept.INatureProvider;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.presenter.advance.ExperienceConfigurationPresenter;
 import net.sf.anathema.character.presenter.charm.MagicPresenter;
@@ -31,7 +30,6 @@ public class CharacterPresenter {
 
   private final ICharacter character;
   private final ICharacterView characterView;
-  private final INatureProvider natureProvider;
   private final ICharacterGenerics generics;
   private final IResources resources;
   private final IBonusPointManagement bonusPointManagement;
@@ -41,14 +39,12 @@ public class CharacterPresenter {
       ICharacter character,
       ICharacterView view,
       IResources resources,
-      INatureProvider natureProvider,
       ICharacterGenerics generics,
       IBonusPointManagement bonusPointManagement,
       IExperiencePointManagement experiencePointManagement) {
     this.character = character;
     this.characterView = view;
     this.resources = resources;
-    this.natureProvider = natureProvider;
     this.generics = generics;
     this.bonusPointManagement = bonusPointManagement;
     this.experiencePointManagement = experiencePointManagement;
@@ -157,11 +153,7 @@ public class CharacterPresenter {
   private void initCharacterConceptPresentation() {
     String viewTitle = getString("CardView.CharacterConcept.Title"); //$NON-NLS-1$
     ICharacterConceptAndRulesViewFactory viewFactory = characterView.createConceptViewFactory();
-    TabContent[] conceptViews = new CharacterConceptAndRulesPresenter(
-        getStatistics(),
-        viewFactory,
-        resources,
-        natureProvider).init();
+    TabContent[] conceptViews = new CharacterConceptAndRulesPresenter(getStatistics(), viewFactory, resources).init();
     initMultiTabViewPresentation(viewTitle, conceptViews, AdditionalModelType.Concept);
   }
 

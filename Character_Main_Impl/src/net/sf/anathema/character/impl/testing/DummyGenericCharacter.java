@@ -66,7 +66,7 @@ public class DummyGenericCharacter implements IGenericCharacter {
   public INamedGenericTrait[] getSpecialties(ITraitType type) {
     return new INamedGenericTrait[0];
   }
-  
+
   public INamedGenericTrait[] getSubTraits(ITraitType traitType) {
     return new INamedGenericTrait[0];
   }
@@ -113,9 +113,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
 
   public IConcept getConcept() {
     return new IConcept() {
-      public String getWillpowerCondition() {
-        return null;
-      }
 
       public String getWillpowerRegainingConceptName() {
         return null;
@@ -170,7 +167,7 @@ public class DummyGenericCharacter implements IGenericCharacter {
   public void setLearnCount(IMultiLearnableCharm multiLearnableCharm, int newValue) {
     // Nothing to do
   }
-  
+
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
     return new IIdentifiedTraitTypeGroup[0];
   }

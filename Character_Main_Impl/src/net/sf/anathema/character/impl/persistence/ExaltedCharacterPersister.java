@@ -8,7 +8,6 @@ import java.io.OutputStream;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.model.concept.INatureProvider;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.AbstractSingleFileItemPersister;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
@@ -28,9 +27,9 @@ public class ExaltedCharacterPersister extends AbstractSingleFileItemPersister {
   private final CharacterStatisticPersister statisticsPersister;
   private final IItemType characterType;
 
-  public ExaltedCharacterPersister(IItemType characterType, INatureProvider natureProvider, ICharacterGenerics generics) {
+  public ExaltedCharacterPersister(IItemType characterType, ICharacterGenerics generics) {
     this.characterType = characterType;
-    this.statisticsPersister = new CharacterStatisticPersister(natureProvider, generics);
+    this.statisticsPersister = new CharacterStatisticPersister(generics);
   }
 
   @Override
@@ -52,7 +51,7 @@ public class ExaltedCharacterPersister extends AbstractSingleFileItemPersister {
   public IItem load(Document characterXml) throws PersistenceException {
     Element documentRoot = characterXml.getRootElement();
     ICharacter character = new ExaltedCharacter();
-    IItem item = new AnathemaItem(characterType, character); 
+    IItem item = new AnathemaItem(characterType, character);
     repositoryItemPerister.load(documentRoot, item);
     descriptionPersister.load(documentRoot, character.getDescription());
     statisticsPersister.load(documentRoot, character);

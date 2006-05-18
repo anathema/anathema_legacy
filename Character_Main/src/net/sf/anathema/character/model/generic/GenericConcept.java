@@ -25,7 +25,7 @@ public class GenericConcept implements IConcept {
     characterConcept.getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
       public void accept(INature nature) {
         INatureType natureType = nature.getDescription().getType();
-        conceptName[0] = natureType == null ? null : natureType.getName();
+        conceptName[0] = natureType == null ? null : natureType.getId();
       }
 
       public void accept(IMotivation motivation) {
@@ -33,22 +33,6 @@ public class GenericConcept implements IConcept {
       }
     });
     return conceptName[0];
-  }
-
-  public String getWillpowerCondition() {
-    final INatureType[] natureType1 = new INatureType[1];
-    characterConcept.getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
-      public void accept(INature nature) {
-        natureType1[0] = nature.getDescription().getType();
-      }
-
-      public void accept(IMotivation motivation) {
-        throw new UnsupportedOperationException("No willpower condition for 2nd Edition characters."); //$NON-NLS-1$
-      }
-    });
-    INatureType type = natureType1[0];
-    INatureType natureType = type;
-    return natureType == null ? null : natureType.getWillpowerCondition();
   }
 
   public ICasteType getCasteType() {

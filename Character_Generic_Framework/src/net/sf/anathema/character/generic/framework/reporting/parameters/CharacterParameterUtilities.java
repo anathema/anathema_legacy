@@ -84,9 +84,23 @@ public class CharacterParameterUtilities {
     parameters.put(ICharacterReportConstants.CONCEPT, character.getConcept().getConceptText());
   }
 
-  public static final void fillInNature(IGenericCharacter character, Map<Object, Object> parameters) {
-    parameters.put(ICharacterReportConstants.NATURE, character.getConcept().getWillpowerRegainingConceptName());
-    parameters.put(ICharacterReportConstants.NATURE_WILLPOWER_CONDITION, character.getConcept().getWillpowerCondition());
+  public static final void fillInNature(
+      IGenericCharacter character,
+      Map<Object, Object> parameters,
+      IResources resources) {
+    final String conceptName = character.getConcept().getWillpowerRegainingConceptName();
+    String natureName = null;
+    String condition = null;
+    if (conceptName != null) {
+      natureName = resources.getString("Nature." //$NON-NLS-1$
+          + conceptName
+          + ".Name"); //$NON-NLS-1$
+      condition = resources.getString("Nature." //$NON-NLS-1$
+          + conceptName
+          + ".Text"); //$NON-NLS-1$
+    }
+    parameters.put(ICharacterReportConstants.NATURE, natureName);
+    parameters.put(ICharacterReportConstants.NATURE_WILLPOWER_CONDITION, condition);
   }
 
   public static final void fillInCharacterDescription(IGenericDescription description, Map<Object, Object> parameters) {

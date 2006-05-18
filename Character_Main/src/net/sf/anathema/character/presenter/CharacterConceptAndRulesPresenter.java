@@ -17,13 +17,14 @@ import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.concept.IMotivation;
 import net.sf.anathema.character.model.concept.INature;
-import net.sf.anathema.character.model.concept.INatureProvider;
 import net.sf.anathema.character.model.concept.INatureType;
 import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
+import net.sf.anathema.character.model.concept.NatureProvider;
 import net.sf.anathema.character.view.ICharacterConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
 import net.sf.anathema.framework.view.renderer.IdentificateObjectUi;
+import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
@@ -36,18 +37,15 @@ public class CharacterConceptAndRulesPresenter {
 
   private final ICharacterConceptAndRulesView view;
   private final ICharacterStatistics statistics;
-  private final INatureProvider natureProvider;
   private final IResources resources;
 
   public CharacterConceptAndRulesPresenter(
       ICharacterStatistics statstics,
       ICharacterConceptAndRulesViewFactory viewFactory,
-      IResources resources,
-      INatureProvider natureProvider) {
+      IResources resources) {
     this.statistics = statstics;
     this.view = viewFactory.createCharacterConceptView();
     this.resources = resources;
-    this.natureProvider = natureProvider;
   }
 
   public TabContent[] init() {
@@ -113,7 +111,14 @@ public class CharacterConceptAndRulesPresenter {
   }
 
   private void initNaturePresentation(INature nature) {
-    INatureType[] natures = natureProvider.getAllSorted();
+    INatureType[] unsortedNatures = NatureProvider.getInstance().getNatures();
+    INatureType[] natures = new INatureType[unsortedNatures.length];
+    new I18nedIdentificateSorter<INatureType>() {
+      @Override
+      protected String getString(final IResources sorterResources, INatureType type) {
+        return sorterResources.getString("Nature." + type.getId() + ".Name"); //$NON-NLS-1$ //$NON-NLS-2$
+      }
+    }.sortAscending(unsortedNatures, natures, resources);
     final IObjectSelectionView natureView = view.addConceptObjectSelectionView(resources.getString("Label.Nature"), //$NON-NLS-1$
         natures,
         new DefaultListCellRenderer() {
@@ -129,7 +134,7 @@ public class CharacterConceptAndRulesPresenter {
               printName = resources.getString("ComboBox.SelectLabel"); //$NON-NLS-1$
             }
             else {
-              printName = ((INatureType) value).getName();
+              printName = resources.getString("Nature." + ((INatureType) value).getId() + ".Name"); //$NON-NLS-1$ //$NON-NLS-2$
             }
             return super.getListCellRendererComponent(list, printName, index, isSelected, cellHasFocus);
           }
@@ -167,7 +172,7 @@ public class CharacterConceptAndRulesPresenter {
       willpowerConditionLabel.setText(null);
       return;
     }
-    String willpowerCondition = natureType.getWillpowerCondition();
+    String willpowerCondition = resources.getString("Nature." + natureType + ".Text"); //$NON-NLS-1$ //$NON-NLS-2$
     if (willpowerCondition == null) {
       willpowerCondition = resources.getString("CharacterConcept.WillpowerCondition.NotSpecified"); //$NON-NLS-1$
     }

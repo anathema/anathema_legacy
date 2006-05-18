@@ -13,21 +13,12 @@ public class NatureType extends Identificate implements INatureType {
     this.condition = condition;
   }
 
-  public String getWillpowerCondition() {
-    return condition;
-  }
-
-  public String getName() {
-    return name;
-  }
-
   @Override
   public boolean equals(Object obj) {
     if (!(obj instanceof NatureType)) {
       return false;
     }
-    NatureType other = (NatureType) obj;
-    return super.equals(obj) && other.name.equals(name) && other.condition.equals(condition);
+    return super.equals(obj);
   }
 
   @Override

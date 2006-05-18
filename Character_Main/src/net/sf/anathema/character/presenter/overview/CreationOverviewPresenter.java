@@ -75,7 +75,7 @@ public class CreationOverviewPresenter {
         }
 
         public void visitAdditionalAlotmentModel(IAdditionalSpendingModel visitedModel) {
-          if (visitedModel.isExtensionRequired()) {            
+          if (visitedModel.isExtensionRequired()) {
             IAdditionalAlotmentView valueView = categoriesById.get(visitedModel.getCategoryId())
                 .addAdditionalAlotmentView(getLabelString(visitedModel), visitedModel.getRequiredSize());
             presenters.add(new AdditionalAlotmentSubPresenter(visitedModel, valueView));
@@ -177,7 +177,7 @@ public class CreationOverviewPresenter {
       public void accept(INature nature) {
         INatureType natureType = nature.getDescription().getType();
         if (natureType != null) {
-          value[0] = natureType.getName();
+          value[0] = "Nature." + natureType.getId() + ".Name";
         }
       }
 

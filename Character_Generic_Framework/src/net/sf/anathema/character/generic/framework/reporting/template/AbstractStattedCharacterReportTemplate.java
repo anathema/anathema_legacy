@@ -65,7 +65,7 @@ public abstract class AbstractStattedCharacterReportTemplate extends AbstractCha
     CombatParameterUtilities.fillInCombatStats(character, character.getRules(), isExalted(character), parameters);
     CharacterParameterUtilities.fillExperienceParameters(parameters, character);
     CharacterParameterUtilities.fillInConcept(character, parameters);
-    CharacterParameterUtilities.fillInNature(character, parameters);
+    CharacterParameterUtilities.fillInNature(character, parameters, getResources());
     CharacterParameterUtilities.fillInTemplate(character, parameters, getResources());
     HealthParameterUtilities.fillInHealth(character, parameters);
     HealthParameterUtilities.fillInSoak(character.getTrait(AttributeType.Stamina).getCurrentValue(), parameters);

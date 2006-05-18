@@ -17,7 +17,6 @@ import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
-import net.sf.anathema.character.model.concept.INatureProvider;
 import net.sf.anathema.character.model.concept.NatureProvider;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.presenter.CharacterPresenter;
@@ -43,17 +42,16 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractItemTyp
     return new ItemType(CHARACTER_ITEM_TYPE_ID, new RepositoryConfiguration(".ecg", "ExaltedCharacter/")); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
-  private final INatureProvider natureProvider = new NatureProvider();
   private ICharacterGenerics generics;
 
   public ExaltedCharacterItemTypeConfiguration() throws AnathemaException {
     super(createCharacterItemType());
-    natureProvider.init();
+    NatureProvider.getInstance().init();
   }
 
   @Override
   protected IRepositoryItemPersister createPersister(IAnathemaModel model) {
-    return new ExaltedCharacterPersister(getItemType(), natureProvider, generics);
+    return new ExaltedCharacterPersister(getItemType(), generics);
   }
 
   public void setCharacterGenerics(ICharacterGenerics generics) {
@@ -85,7 +83,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractItemTyp
         if (statistics == null) {
           Icon icon = resources.getImageIcon("CharacterTabIcon.png"); //$NON-NLS-1$
           ICharacterView characterView = new CharacterView(null, printName, icon);
-          new CharacterPresenter(character, characterView, resources, natureProvider, generics, null, null).initPresentation();
+          new CharacterPresenter(character, characterView, resources, generics, null, null).initPresentation();
           return characterView;
         }
         IPresentationProperties presentationProperties = statistics.getCharacterTemplate().getPresentationProperties();
@@ -104,7 +102,6 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractItemTyp
             character,
             characterView,
             resources,
-            natureProvider,
             generics,
             bonusPointManagement,
             experiencePointManagement).initPresentation();

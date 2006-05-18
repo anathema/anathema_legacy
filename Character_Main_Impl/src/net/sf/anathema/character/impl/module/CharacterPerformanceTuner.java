@@ -14,7 +14,6 @@ import net.sf.anathema.character.impl.view.magic.CharmSelectionView;
 import net.sf.anathema.character.impl.view.magic.MagicViewFactory;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
-import net.sf.anathema.character.model.concept.NatureProvider;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.presenter.CharacterPresenter;
 import net.sf.anathema.character.presenter.TabContent;
@@ -79,7 +78,6 @@ public class CharacterPerformanceTuner {
         characterData,
         view,
         resources,
-        new NatureProvider(),
         characterGenerics,
         bonusPointManagement,
         experiencePointManagement).initPresentation();

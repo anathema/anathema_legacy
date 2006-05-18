@@ -7,7 +7,6 @@ public class DemoConcept implements IConcept {
 
   private ICasteType casteType = ICasteType.NULL_CASTE_TYPE;
   private String conceptText;
-  private String willpowerCondition;
   private String willpowerRegainingConceptName;
 
   public ICasteType getCasteType() {
@@ -16,10 +15,6 @@ public class DemoConcept implements IConcept {
 
   public String getConceptText() {
     return conceptText;
-  }
-
-  public String getWillpowerCondition() {
-    return willpowerCondition;
   }
 
   public String getWillpowerRegainingConceptName() {
@@ -32,10 +27,6 @@ public class DemoConcept implements IConcept {
 
   public void setConceptText(String conceptText) {
     this.conceptText = conceptText;
-  }
-
-  public void setWillpowerCondition(String willpowerCondition) {
-    this.willpowerCondition = willpowerCondition;
   }
 
   public void setWillpowerRegainingConceptName(String willpowerRegainingConceptName) {
