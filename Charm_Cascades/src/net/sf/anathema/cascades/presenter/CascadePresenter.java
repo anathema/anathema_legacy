@@ -9,6 +9,7 @@ import java.util.Map;
 
 import net.sf.anathema.cascades.module.CharmCascadeModuleView;
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
+import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
@@ -157,7 +158,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
         view.fillCharmGroupBox(new IIdentificate[0]);
       }
     });
-    rulesComboBox.setSelectedObject(ExaltedRuleSet.CoreRules);
+    rulesComboBox.setSelectedObject(AnathemaCharacterPreferences.getDefaultPreferences().getPreferredRuleset());
   }
 
   private CharmTreeIdentificateMap getCharmTreeMap(IExaltedRuleSet ruleSet) {
