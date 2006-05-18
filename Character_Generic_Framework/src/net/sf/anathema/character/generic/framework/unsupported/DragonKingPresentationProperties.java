@@ -20,6 +20,10 @@ public class DragonKingPresentationProperties extends AbstractPresentationProper
     return null;
   }
 
+  public String getSmallCasteIconResource(String casteId) {
+    return null;
+  }
+
   public Color getColor() {
     return new Color(250, 250, 210);
   }

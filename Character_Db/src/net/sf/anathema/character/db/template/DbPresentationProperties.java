@@ -21,6 +21,33 @@ public final class DbPresentationProperties extends AbstractPresentationProperti
     return IIconConstants.DB_BALL;
   }
 
+  public String getSmallCasteIconResource(String casteId) {
+    final String[] iconName = new String[1];
+    DBAspect dbAspect = DBAspect.valueOf(casteId);
+    dbAspect.accept(new IDBAspectVisitor() {
+      public void visitAir(DBAspect aspect) {
+        iconName[0] = IIconConstants.DB_AIRASPECT_SMALL;
+      }
+
+      public void visisEarth(DBAspect aspect) {
+        iconName[0] = IIconConstants.DB_EARTHASPECT_SMALL;
+      }
+
+      public void visitFire(DBAspect aspect) {
+        iconName[0] = IIconConstants.DB_FIREASPECT_SMALL;
+      }
+
+      public void visitWater(DBAspect aspect) {
+        iconName[0] = IIconConstants.DB_WATERASPECT_SMALL;
+      }
+
+      public void visitWood(DBAspect aspect) {
+        iconName[0] = IIconConstants.DB_WOODASPECT_SMALL;
+      }
+    });
+    return iconName[0];
+  }
+
   public String getCasteIconResource(String groupId) {
     final String[] iconName = new String[1];
     DBAspect dbAspect = DBAspect.valueOf(groupId);

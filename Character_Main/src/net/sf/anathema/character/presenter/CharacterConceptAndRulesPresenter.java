@@ -12,7 +12,6 @@ import net.disy.commons.swing.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.concept.IMotivation;
@@ -189,8 +188,8 @@ public class CharacterConceptAndRulesPresenter {
     IObjectUi casteUi = new IdentificateObjectUi(resources, casteResourceBase) {
       @Override
       protected Icon getNonNullIcon(IIdentificate value) {
-        CharacterType characterType = template.getTemplateType().getCharacterType();
-        return getResources().getImageIcon(characterType.getId() + "Button" + value.getId() + "16.png"); //$NON-NLS-1$ //$NON-NLS-2$
+        return getResources().getImageIcon(
+            statistics.getCharacterTemplate().getPresentationProperties().getSmallCasteIconResource(value.getId()));
       }
     };
     final IObjectSelectionView casteView = view.addConceptObjectSelectionView(

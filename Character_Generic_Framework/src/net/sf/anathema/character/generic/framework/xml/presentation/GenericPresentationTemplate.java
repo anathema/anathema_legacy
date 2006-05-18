@@ -23,6 +23,10 @@ public class GenericPresentationTemplate extends ReflectionCloneableObject imple
     return getCharacterType().getId() + "Button" + casteId + "20.png"; //$NON-NLS-1$//$NON-NLS-2$
   }
 
+  public String getSmallCasteIconResource(String casteId) {
+    return getCharacterType().getId() + "Button" + casteId + "16.png"; //$NON-NLS-1$//$NON-NLS-2$
+  }
+
   public Color getColor() {
     return color;
   }

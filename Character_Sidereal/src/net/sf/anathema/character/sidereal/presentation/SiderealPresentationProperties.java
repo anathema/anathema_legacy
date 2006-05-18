@@ -49,6 +49,33 @@ public class SiderealPresentationProperties extends AbstractPresentationProperti
     return IIconConstants.SIDEREAL_BALL;
   }
 
+  public String getSmallCasteIconResource(String casteId) {
+    final String[] iconName = new String[1];
+    SiderealCaste caste = SiderealCaste.valueOf(casteId);
+    caste.accept(new ISiderealCasteVisitor() {
+      public void visitJourneys(SiderealCaste journeys) {
+        iconName[0] = IIconConstants.SIDEREAL_JOURNEYSCASTE_SMALL;
+      }
+
+      public void visitSerenity(SiderealCaste serenity) {
+        iconName[0] = IIconConstants.SIDEREAL_SERENITYCASTE_SMALL;
+      }
+
+      public void visitBattles(SiderealCaste battles) {
+        iconName[0] = IIconConstants.SIDEREAL_BATTLESCASTE_SMALL;
+      }
+
+      public void visitSecrets(SiderealCaste secrets) {
+        iconName[0] = IIconConstants.SIDEREAL_SECRETSCASTE_SMALL;
+      }
+
+      public void visitEndings(SiderealCaste endings) {
+        iconName[0] = IIconConstants.SIDEREAL_ENDINGSCASTE_SMALL;
+      }
+    });
+    return iconName[0];
+  }
+
   public String getCasteIconResource(String groupId) {
     return getSideralCasteIconResource(groupId);
   }

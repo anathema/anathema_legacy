@@ -28,15 +28,34 @@ public class AbyssalPresentationProperties extends AbstractPresentationPropertie
     return IIconConstants.ABYSSAL_BALL;
   }
 
+  public String getSmallCasteIconResource(String casteId) {
+    final String[] iconName = new String[1];
+    AbyssalCaste abyssalCaste = AbyssalCaste.valueOf(casteId);
+    abyssalCaste.accept(new IAbyssalCasteVisitor() {
+      public void visitDusk(AbyssalCaste caste) {
+        iconName[0] = IIconConstants.ABYSSAL_DUSKCASTE_SMALL;
+      }
+
+      public void visitMidnight(AbyssalCaste caste) {
+        iconName[0] = IIconConstants.ABYSSAL_MIDNIGHTCASTE_SMALL;
+      }
+
+      public void visitDaybreak(AbyssalCaste caste) {
+        iconName[0] = IIconConstants.ABYSSAL_DAYBREAKCASTE_SMALL;
+      }
+
+      public void visitDay(AbyssalCaste caste) {
+        iconName[0] = IIconConstants.ABYSSAL_DAYCASTE_SMALL;
+      }
+
+      public void visitMoonshadow(AbyssalCaste caste) {
+        iconName[0] = IIconConstants.ABYSSAL_MOONSHADOWCASTE_SMALL;
+      }
+    });
+    return iconName[0];
+  }
+
   public String getCasteIconResource(String casteId) {
-    return getAbyssalIcon(casteId);
-  }
-
-  public Color getColor() {
-    return new Color(169, 169, 169);
-  }
-
-  private String getAbyssalIcon(String casteId) {
     final String[] iconName = new String[1];
     AbyssalCaste abyssalCaste = AbyssalCaste.valueOf(casteId);
     abyssalCaste.accept(new IAbyssalCasteVisitor() {
@@ -61,6 +80,10 @@ public class AbyssalPresentationProperties extends AbstractPresentationPropertie
       }
     });
     return iconName[0];
+  }
+
+  public Color getColor() {
+    return new Color(169, 169, 169);
   }
 
   public ICharmPresentationProperties getCharmPresentationProperties() {
