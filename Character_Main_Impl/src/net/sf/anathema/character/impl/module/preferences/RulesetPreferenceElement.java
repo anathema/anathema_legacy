@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.module.preferences;
 
-import static net.sf.anathema.character.impl.module.preferences.ICharacterPreferencesConstants.DEFAULT_RULESET;
-import static net.sf.anathema.character.impl.module.preferences.ICharacterPreferencesConstants.RULESET_PREFERENCE;
+import static net.sf.anathema.character.generic.framework.configuration.ICharacterPreferencesConstants.DEFAULT_RULESET;
+import static net.sf.anathema.character.generic.framework.configuration.ICharacterPreferencesConstants.RULESET_PREFERENCE;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

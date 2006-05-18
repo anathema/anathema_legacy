@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.module.preferences;
 
-import static net.sf.anathema.character.impl.module.preferences.ICharacterPreferencesConstants.CHARMORDER_PREFERENCE;
-import static net.sf.anathema.character.impl.module.preferences.ICharacterPreferencesConstants.DEFAULT_CHARMORDER;
+import static net.sf.anathema.character.generic.framework.configuration.ICharacterPreferencesConstants.CHARMORDER_PREFERENCE;
+import static net.sf.anathema.character.generic.framework.configuration.ICharacterPreferencesConstants.DEFAULT_CHARMORDER;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
