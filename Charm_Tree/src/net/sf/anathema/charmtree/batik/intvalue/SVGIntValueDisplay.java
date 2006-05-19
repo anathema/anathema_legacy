@@ -13,7 +13,6 @@ import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATT
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.TAG_CIRCLE;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.TAG_G;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.TAG_RECT;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_0;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_BLACK;
 
 import java.awt.Color;
@@ -27,6 +26,7 @@ import net.sf.anathema.lib.control.intvalue.IntValueControl;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;
+import org.apache.batik.util.SVGConstants;
 import org.w3c.dom.Element;
 import org.w3c.dom.events.Event;
 import org.w3c.dom.events.EventListener;
@@ -159,9 +159,9 @@ public class SVGIntValueDisplay implements IIntValueView {
             selectionRectangle = (SVGRectElement) document.createElementNS(
                 SVGDOMImplementation.SVG_NAMESPACE_URI,
                 TAG_RECT);
-            selectionRectangle.setAttributeNS(null, ATTRIB_X, "0"); //$NON-NLS-1$
+            selectionRectangle.setAttributeNS(null, ATTRIB_X, SVGConstants.SVG_ZERO_VALUE);
             selectionRectangle.setAttributeNS(null, ATTRIB_Y, "1"); //$NON-NLS-1$
-            setAttribute(selectionRectangle, ATTRIB_WIDTH, VALUE_0);
+            setAttribute(selectionRectangle, ATTRIB_WIDTH, SVGConstants.SVG_ZERO_VALUE);
             selectionRectangle.setAttributeNS(null, ATTRIB_HEIGHT, "22"); //$NON-NLS-1$
             selectionRectangle.setAttributeNS(null, ATTRIB_STROKE, VALUE_COLOR_BLACK);
             selectionRectangle.setAttributeNS(null, ATTRIB_FILL, "rgb(120, 120, 120)"); //$NON-NLS-1$
@@ -177,12 +177,12 @@ public class SVGIntValueDisplay implements IIntValueView {
   private Element createGlassPane(SVGDocument document) {
     org.w3c.dom.Element rectangle = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_RECT);
     document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_RECT);
-    setAttribute(rectangle, ATTRIB_X, VALUE_0);
-    setAttribute(rectangle, ATTRIB_Y, VALUE_0);
+    setAttribute(rectangle, ATTRIB_X, SVGConstants.SVG_ZERO_VALUE);
+    setAttribute(rectangle, ATTRIB_Y, SVGConstants.SVG_ZERO_VALUE);
     setAttribute(rectangle, ATTRIB_WIDTH, String.valueOf(maximumWidth));
     setAttribute(rectangle, ATTRIB_HEIGHT, String.valueOf(2 * (radius + gap)));
     setAttribute(rectangle, ATTRIB_FILL, VALUE_COLOR_BLACK);
-    setAttribute(rectangle, ATTRIB_FILL_OPACITY, VALUE_0);
+    setAttribute(rectangle, ATTRIB_FILL_OPACITY, SVGConstants.SVG_ZERO_VALUE);
     return rectangle;
   }
 
@@ -202,7 +202,7 @@ public class SVGIntValueDisplay implements IIntValueView {
     setAttribute(circle, ATTRIB_R, String.valueOf(radius));
     setAttribute(circle, ATTRIB_CX, String.valueOf(xCoordinate));
     setAttribute(circle, ATTRIB_CY, String.valueOf(radius + gap));
-    setAttribute(circle, ATTRIB_FILL_OPACITY, VALUE_0);
+    setAttribute(circle, ATTRIB_FILL_OPACITY, SVGConstants.SVG_ZERO_VALUE);
     setAttribute(circle, ATTRIB_FILL, fillColorString);
     setAttribute(circle, ATTRIB_STROKE, VALUE_COLOR_BLACK);
     return (SVGCircleElement) circle;
@@ -215,14 +215,10 @@ public class SVGIntValueDisplay implements IIntValueView {
         setAttribute(circles[imageIndex], ATTRIB_FILL_OPACITY, fillOpacityString);
       }
       for (int imageIndex = value; imageIndex < dotCount; imageIndex++) {
-        setAttribute(circles[imageIndex], ATTRIB_FILL_OPACITY, VALUE_0);
+        setAttribute(circles[imageIndex], ATTRIB_FILL_OPACITY, SVGConstants.SVG_ZERO_VALUE);
       }
     }
     fireValueChangedEvent(value);
-  }
-
-  public void setInvisible() {
-    this.visible = false;
   }
 
   public void addIntValueChangedListener(IIntValueChangedListener listener) {
@@ -243,6 +239,10 @@ public class SVGIntValueDisplay implements IIntValueView {
   }
 
   public void setMaximum(int maximalValue) {
-    //nothing to do
+    // nothing to do
+  }
+
+  public void setVisible(boolean visible) {
+    this.visible = visible;
   }
 }

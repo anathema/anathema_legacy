@@ -27,7 +27,7 @@ public class SVGSpecialCharmViewManager implements ISpecialCharmViewManager<ISVG
   public void setSpecialCharmViewVisible(ICharmTreeView view, ISVGMultiLearnableCharmView charmView, boolean visible) {
     SVGOMDocument document = (SVGOMDocument) canvas.getSVGDocument();
     if (!visible) {
-      charmView.setInvisible();
+      charmView.setVisible(false);
     }
     else {
       SVGSVGElement rootElement = document.getRootElement();

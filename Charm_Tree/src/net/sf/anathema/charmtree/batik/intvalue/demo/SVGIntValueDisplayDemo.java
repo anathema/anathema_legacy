@@ -11,6 +11,7 @@ import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;
+import org.apache.batik.util.SVG12Constants;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -61,6 +62,39 @@ public class SVGIntValueDisplayDemo extends SwingDemoCase {
     display.addCategory("Third", 6, 3); //$NON-NLS-1$
     Element element = display.initGui((SVGOMDocument) canvas.getSVGDocument(), new BoundsCalculator());
     canvas.getSVGDocument().getRootElement().appendChild(element);
+    show(canvas);
+  }
+
+  public void demoButtonExpandedSVGMultiLearnableCharmView() {
+    DOMImplementation impl = SVGDOMImplementation.getDOMImplementation();
+    Document document = impl.createDocument(SVGDOMImplementation.SVG_NAMESPACE_URI, "svg", null); //$NON-NLS-1$
+    AnathemaCanvas canvas = new AnathemaCanvas();
+    canvas.setDocument(document);
+    SVGMultiLearnableCharmView display = new SVGMultiLearnableCharmView("MyCharm", 190, Color.GREEN); //$NON-NLS-1$
+    display.addCategory("First", 7, 2); //$NON-NLS-1$
+    display.addCategory("Second", 4, 4); //$NON-NLS-1$
+    display.addCategory("Third", 6, 3); //$NON-NLS-1$
+    final BoundsCalculator boundsCalculator = new BoundsCalculator();
+    final MultiLearnableCharmViewControlButton buttonView = new MultiLearnableCharmViewControlButton(display, 190);
+    Element buttonElement = buttonView.initGui((SVGOMDocument) canvas.getSVGDocument(), boundsCalculator);
+    canvas.getSVGDocument().getRootElement().appendChild(buttonElement);
+    show(canvas);
+  }
+
+  public void demoButtonFadeout() {
+    DOMImplementation impl = SVGDOMImplementation.getDOMImplementation();
+    Document document = impl.createDocument(SVGDOMImplementation.SVG_NAMESPACE_URI, "svg", null); //$NON-NLS-1$
+    AnathemaCanvas canvas = new AnathemaCanvas();
+    canvas.setDocument(document);
+    SVGMultiLearnableCharmView display = new SVGMultiLearnableCharmView("MyCharm", 190, Color.GREEN); //$NON-NLS-1$
+    display.addCategory("First", 7, 2); //$NON-NLS-1$
+    final BoundsCalculator boundsCalculator = new BoundsCalculator();
+    final MultiLearnableCharmViewControlButton buttonView = new MultiLearnableCharmViewControlButton(display, 190);
+    Element circle = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVG12Constants.SVG_CIRCLE_TAG);
+    circle.setAttributeNS(null, "r", "50");
+    canvas.getSVGDocument().getRootElement().appendChild(circle);
+    Element buttonElement = buttonView.initGui((SVGOMDocument) canvas.getSVGDocument(), boundsCalculator);
+    canvas.getSVGDocument().getRootElement().appendChild(buttonElement);
     show(canvas);
   }
 }

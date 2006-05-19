@@ -68,11 +68,11 @@ public class SVGDefaultTraitView implements IIntValueView {
     valueDisplay.removeIntValueChangedListener(listener);
   }
 
-  public void setInvisible() {
-    valueDisplay.setInvisible();
-  }
-
   public void setMaximum(int maximalValue) {
     valueDisplay.setMaximum(maximalValue);
+  }
+
+  public void setVisible(boolean visible) {
+    valueDisplay.setVisible(visible);
   }
 }

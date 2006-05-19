@@ -10,7 +10,6 @@ import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATT
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_Y;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.TAG_G;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.TAG_RECT;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_0;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_BLACK;
 
 import java.awt.Color;
@@ -23,6 +22,7 @@ import net.sf.anathema.framework.value.IIntValueView;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;
+import org.apache.batik.util.SVGConstants;
 import org.w3c.dom.Element;
 import org.w3c.dom.svg.SVGDocument;
 
@@ -43,9 +43,9 @@ public class SVGMultiLearnableCharmView implements ISVGMultiLearnableCharmView {
     return charmId;
   }
 
-  public void setInvisible() {
+  public void setVisible(boolean visible) {
     for (SVGDefaultTraitView view : categories) {
-      view.setInvisible();
+      view.setVisible(visible);
     }
   }
 
@@ -69,15 +69,15 @@ public class SVGMultiLearnableCharmView implements ISVGMultiLearnableCharmView {
 
   private Element createBorder(SVGDocument document) {
     Element rectangle = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_RECT);
-    setAttribute(rectangle, ATTRIB_X, VALUE_0);
-    setAttribute(rectangle, ATTRIB_Y, VALUE_0);
+    setAttribute(rectangle, ATTRIB_X, SVGConstants.SVG_ZERO_VALUE);
+    setAttribute(rectangle, ATTRIB_Y, SVGConstants.SVG_ZERO_VALUE);
     setAttribute(rectangle, ATTRIB_WIDTH, String.valueOf(charmWidth));
     setAttribute(rectangle, ATTRIB_HEIGHT, String.valueOf(categories.size()
         * SVGIntValueDisplay.getDiameter(charmWidth)
         * 1.15));
     setAttribute(rectangle, ATTRIB_STROKE, VALUE_COLOR_BLACK);
     setAttribute(rectangle, ATTRIB_FILL, VALUE_COLOR_BLACK);
-    setAttribute(rectangle, ATTRIB_FILL_OPACITY, VALUE_0);
+    setAttribute(rectangle, ATTRIB_FILL_OPACITY, SVGConstants.SVG_ZERO_VALUE);
     return rectangle;
   }
 
