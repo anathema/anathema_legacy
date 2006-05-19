@@ -16,11 +16,11 @@ public class DragonKingPresentationProperties extends AbstractPresentationProper
     return null;
   }
 
-  public String getMediumCasteIconResource(String groupId) {
+  public String getMediumCasteIconResource(String groupId, String editionId) {
     return null;
   }
 
-  public String getSmallCasteIconResource(String casteId) {
+  public String getSmallCasteIconResource(String casteId, String editionId) {
     return null;
   }
 

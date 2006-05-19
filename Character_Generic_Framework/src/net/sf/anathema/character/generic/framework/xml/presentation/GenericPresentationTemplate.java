@@ -19,12 +19,12 @@ public class GenericPresentationTemplate extends ReflectionCloneableObject imple
     return ballResource;
   }
 
-  public String getMediumCasteIconResource(String casteId) {
-    return getCharacterType().getId() + "Button" + casteId + "20.png"; //$NON-NLS-1$//$NON-NLS-2$
+  public String getMediumCasteIconResource(String casteId, String editionId) {
+    return getCharacterType().getId() + "Button" + casteId + editionId + "20.png"; //$NON-NLS-1$//$NON-NLS-2$
   }
 
-  public String getSmallCasteIconResource(String casteId) {
-    return getCharacterType().getId() + "Button" + casteId + "16.png"; //$NON-NLS-1$//$NON-NLS-2$
+  public String getSmallCasteIconResource(String casteId, String editionId) {
+    return getCharacterType().getId() + "Button" + casteId + editionId + "16.png"; //$NON-NLS-1$//$NON-NLS-2$
   }
 
   public Color getColor() {

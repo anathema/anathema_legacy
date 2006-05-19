@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.framework.xml.presentation.GenericCharm
 import net.sf.anathema.character.generic.framework.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.generic.framework.xml.presentation.PresentationPropertiesParser;
 import net.sf.anathema.character.generic.framework.xml.registry.test.DummyXmlTemplateRegistry;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.abilities.AbilityGroupType;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
@@ -68,7 +69,8 @@ public class PresentationPropertiesParserTest extends BasicTestCase {
     GenericCharacterTemplate parentTemplate = new GenericCharacterTemplate();
     parentTemplate.setTemplateType(new TemplateType(CharacterType.SOLAR));
     presentationProperties.setParentTemplate(parentTemplate);
-    assertEquals("SolarButtonLife20.png", presentationProperties.getMediumCasteIconResource(AbilityGroupType.Life.getId())); //$NON-NLS-1$
+    assertEquals(
+        "SolarButtonLifeFirstEdition20.png", presentationProperties.getMediumCasteIconResource(AbilityGroupType.Life.getId(), ExaltedEdition.FirstEdition.getId())); //$NON-NLS-1$
   }
 
   public void testParseXmlWithoutNewActionResource() throws Exception {

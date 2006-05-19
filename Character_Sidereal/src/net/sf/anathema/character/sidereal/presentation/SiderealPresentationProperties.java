@@ -49,7 +49,7 @@ public class SiderealPresentationProperties extends AbstractPresentationProperti
     return IIconConstants.SIDEREAL_BALL;
   }
 
-  public String getSmallCasteIconResource(String casteId) {
+  public String getSmallCasteIconResource(String casteId, String editionId) {
     final String[] iconName = new String[1];
     SiderealCaste caste = SiderealCaste.valueOf(casteId);
     caste.accept(new ISiderealCasteVisitor() {
@@ -76,7 +76,7 @@ public class SiderealPresentationProperties extends AbstractPresentationProperti
     return iconName[0];
   }
 
-  public String getMediumCasteIconResource(String groupId) {
+  public String getMediumCasteIconResource(String groupId, String editionId) {
     return getSideralCasteIconResource(groupId);
   }
 

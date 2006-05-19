@@ -188,7 +188,9 @@ public class CharacterConceptAndRulesPresenter {
       @Override
       protected Icon getNonNullIcon(IIdentificate value) {
         return getResources().getImageIcon(
-            statistics.getCharacterTemplate().getPresentationProperties().getSmallCasteIconResource(value.getId()));
+            statistics.getCharacterTemplate().getPresentationProperties().getSmallCasteIconResource(
+                value.getId(),
+                template.getEdition().getId()));
       }
     };
     final IObjectSelectionView casteView = view.addConceptObjectSelectionView(

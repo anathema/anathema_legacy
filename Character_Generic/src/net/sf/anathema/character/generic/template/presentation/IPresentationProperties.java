@@ -4,9 +4,9 @@ import java.awt.Color;
 
 public interface IPresentationProperties extends ICommonPresentationProperties {
 
-  public String getSmallCasteIconResource(String casteId);
+  public String getSmallCasteIconResource(String casteId, String editionId);
 
-  public String getMediumCasteIconResource(String casteId);
+  public String getMediumCasteIconResource(String casteId, String editionId);
 
   public Color getColor();
 

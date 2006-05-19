@@ -21,7 +21,7 @@ public final class DbPresentationProperties extends AbstractPresentationProperti
     return IIconConstants.DB_BALL;
   }
 
-  public String getSmallCasteIconResource(String casteId) {
+  public String getSmallCasteIconResource(String casteId, String editionId) {
     final String[] iconName = new String[1];
     DBAspect dbAspect = DBAspect.valueOf(casteId);
     dbAspect.accept(new IDBAspectVisitor() {
@@ -48,7 +48,7 @@ public final class DbPresentationProperties extends AbstractPresentationProperti
     return iconName[0];
   }
 
-  public String getMediumCasteIconResource(String groupId) {
+  public String getMediumCasteIconResource(String groupId, String editionId) {
     final String[] iconName = new String[1];
     DBAspect dbAspect = DBAspect.valueOf(groupId);
     dbAspect.accept(new IDBAspectVisitor() {

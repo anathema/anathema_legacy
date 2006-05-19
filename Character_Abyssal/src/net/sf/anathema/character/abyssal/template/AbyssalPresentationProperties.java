@@ -28,7 +28,7 @@ public class AbyssalPresentationProperties extends AbstractPresentationPropertie
     return IIconConstants.ABYSSAL_BALL;
   }
 
-  public String getSmallCasteIconResource(String casteId) {
+  public String getSmallCasteIconResource(String casteId, String editionId) {
     final String[] iconName = new String[1];
     AbyssalCaste abyssalCaste = AbyssalCaste.valueOf(casteId);
     abyssalCaste.accept(new IAbyssalCasteVisitor() {
@@ -55,7 +55,7 @@ public class AbyssalPresentationProperties extends AbstractPresentationPropertie
     return iconName[0];
   }
 
-  public String getMediumCasteIconResource(String casteId) {
+  public String getMediumCasteIconResource(String casteId, String editionId) {
     final String[] iconName = new String[1];
     AbyssalCaste abyssalCaste = AbyssalCaste.valueOf(casteId);
     abyssalCaste.accept(new IAbyssalCasteVisitor() {
