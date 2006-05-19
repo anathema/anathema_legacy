@@ -75,7 +75,12 @@ public class BeastformView implements IBeastformView {
   }
 
   public SimpleTraitView addAttributeValueView(String label, int value, int maxValue) {
-    SimpleTraitView traitView = new SimpleTraitView(intValueDisplayFactory, label, value, maxValue);
+    SimpleTraitView traitView = new SimpleTraitView(
+        intValueDisplayFactory,
+        label,
+        value,
+        maxValue,
+        GridAlignment.BEGINNING);
     traitView.addComponents(attributePanel);
     return traitView;
   }

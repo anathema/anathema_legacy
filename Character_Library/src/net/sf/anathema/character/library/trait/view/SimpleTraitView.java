@@ -16,12 +16,23 @@ public class SimpleTraitView extends AbstractTraitView implements IGridDialogPan
 
   private final JLabel label;
   private final Component displayComponent;
+  private final GridAlignment dotAlignment;
   private JPanel traitViewPanel;
 
   public SimpleTraitView(IIntValueDisplayFactory configuration, String labelText, int value, int maxValue) {
+    this(configuration, labelText, value, maxValue, GridAlignment.END);
+  }
+
+  public SimpleTraitView(
+      IIntValueDisplayFactory configuration,
+      String labelText,
+      int value,
+      int maxValue,
+      GridAlignment dotAlignment) {
     super(configuration, labelText, value, maxValue);
     this.label = new JLabel(getLabelText());
     this.displayComponent = getValueDisplay().getComponent();
+    this.dotAlignment = dotAlignment;
   }
 
   public void addComponents(IGridDialogPanel dialogPanel) {
@@ -40,7 +51,7 @@ public class SimpleTraitView extends AbstractTraitView implements IGridDialogPan
     this.traitViewPanel = panel;
     panel.add(label, GridDialogLayoutData.FILL_HORIZONTAL);
     GridDialogLayoutData data = new GridDialogLayoutData();
-    data.setHorizontalAlignment(GridAlignment.END);
+    data.setHorizontalAlignment(dotAlignment);
     panel.add(displayComponent, data);
   }
 
