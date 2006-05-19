@@ -32,8 +32,7 @@ public class PdfFirstPageEncoder {
     distanceFromTop += firstRowHeight + PADDING;
 
     encodeFirstColumn(directContent, character, distanceFromTop);
-    SmartRectangle editionBounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, 694, 2);
-    partEncoder.encodeEditionSpecificFirstPagePart(directContent, editionBounds);
+    partEncoder.encodeEditionSpecificFirstPagePart(directContent, character, distanceFromTop);
   }
 
   private void encodeEssence(

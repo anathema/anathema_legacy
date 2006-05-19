@@ -9,6 +9,24 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfTraitEncoder extends AbstractPdfEncoder {
 
+  private interface IShape {
+    public void encode(PdfContentByte directContent, Point lowerLeft, int dotIndex, int value);
+  }
+
+  private class Dot implements IShape {
+    public void encode(PdfContentByte directContent, Point lowerLeft, int dotIndex, int value) {
+      directContent.arc(lowerLeft.x, lowerLeft.y, lowerLeft.x + dotSize, lowerLeft.y + dotSize, 0, 360);
+      commitShape(directContent, dotIndex < value);
+    }
+  }
+
+  private class Square implements IShape {
+    public void encode(PdfContentByte directContent, Point lowerLeft, int dotIndex, int value) {
+      directContent.rectangle(lowerLeft.x, lowerLeft.y, dotSize, dotSize);
+      commitShape(directContent, dotIndex < value);
+    }
+  }
+
   private static final int SMALL_DOT_SPACING = 2;
 
   public static PdfTraitEncoder createLargeTraitEncoder(BaseFont baseFont) {
@@ -42,21 +60,53 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
   }
 
   public int encodeCenteredAndUngrouped(PdfContentByte directContent, Point position, int width, int value, int dotCount) {
+    return encodeShapeCenteredAndUngrouped(directContent, position, width, value, dotCount, new Dot());
+  }
+
+  private int encodeGroupedDots(
+      PdfContentByte directContent,
+      Point position,
+      int width,
+      int value,
+      int dotCount,
+      final int dotSpacing) {
+    int groupSpacing = dotCount > 5 ? dotSize / 2 : 0;
+    for (int dot = 0; dot < dotCount; dot++) {
+      int currentGroupingSpace = dot < 5 ? groupSpacing : 0;
+      int rightEdgeX = position.x + width;
+      int spaceNeededRight = currentGroupingSpace + ((dotCount - dot) * (dotSize + dotSpacing));
+      Point lowerLeft = new Point(rightEdgeX - spaceNeededRight, position.y);
+      new Dot().encode(directContent, lowerLeft, dot, value);
+    }
+    return dotCount * dotSize + (dotCount - 1) * dotSpacing + groupSpacing;
+  }
+
+  private int encodeShapeCenteredAndUngrouped(
+      PdfContentByte directContent,
+      Point position,
+      int width,
+      int value,
+      int dotCount,
+      IShape shape) {
     initDirectContent(directContent);
     int dotWidth = dotCount * dotSize;
     final int dotSpacing = (width - dotWidth) / (dotCount + 1);
     int neededWidth = dotWidth + (dotCount - 1) * dotSpacing;
     int leftDotX = position.x + (width - neededWidth) / 2;
     for (int dot = 0; dot < dotCount; dot++) {
-      encodeDot(directContent, new Point(leftDotX, position.y), dot, value);
+      shape.encode(directContent, new Point(leftDotX, position.y), dot, value);
       leftDotX += dotSize + dotSpacing;
     }
     return height;
   }
 
-  private void encodeDot(PdfContentByte directContent, Point lowerLeft, int dotIndex, int value) {
-    directContent.arc(lowerLeft.x, lowerLeft.y, lowerLeft.x + dotSize, lowerLeft.y + dotSize, 0, 360);
-    commitShape(directContent, dotIndex < value);
+  public int encodeSquaresCenteredAndUngrouped(
+      PdfContentByte directContent,
+      Point position,
+      int width,
+      int value,
+      int dotCount) {
+    return encodeShapeCenteredAndUngrouped(directContent, position, width, value, dotCount, new Square());
   }
 
   public int encodeWithLine(PdfContentByte directContent, Point position, int width, int value, int dotCount) {
@@ -79,24 +129,6 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
     directContent.endText();
     encodeGroupedDots(directContent, position, width, value, dotCount, SMALL_DOT_SPACING);
     return height;
-  }
-
-  private int encodeGroupedDots(
-      PdfContentByte directContent,
-      Point position,
-      int width,
-      int value,
-      int dotCount,
-      final int dotSpacing) {
-    int groupSpacing = dotCount > 5 ? dotSize / 2 : 0;
-    for (int dot = 0; dot < dotCount; dot++) {
-      int currentGroupingSpace = dot < 5 ? groupSpacing : 0;
-      int rightEdgeX = position.x + width;
-      int spaceNeededRight = currentGroupingSpace + ((dotCount - dot) * (dotSize + dotSpacing));
-      Point lowerLeft = new Point(rightEdgeX - spaceNeededRight, position.y);
-      encodeDot(directContent, lowerLeft, dot, value);
-    }
-    return dotCount * dotSize + (dotCount - 1) * dotSpacing + groupSpacing;
   }
 
   public int encodeWithTextAndRectangle(
