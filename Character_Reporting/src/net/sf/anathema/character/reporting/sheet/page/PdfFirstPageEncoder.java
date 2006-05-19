@@ -13,10 +13,10 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfFirstPageEncoder {
 
+  public static final int CONTENT_HEIGHT = 755;
   private final PdfPageConfiguration pageConfiguration = new PdfPageConfiguration();
   private final PdfBoxEncoder boxEncoder;
   private final IPdfPartEncoder partEncoder;
-  private final int overallContentHeight = 755;
 
   public PdfFirstPageEncoder(IPdfPartEncoder partEncoder) {
     this.partEncoder = partEncoder;
@@ -70,7 +70,7 @@ public class PdfFirstPageEncoder {
   }
 
   private void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop) {
-    int abilitiesHeight = overallContentHeight - distanceFromTop;
+    int abilitiesHeight = CONTENT_HEIGHT - distanceFromTop;
     SmartRectangle boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
     SmartRectangle contentBounds = boxEncoder.encodeBox(directContent, boxBounds, getHeaderLabel("Abilities")); //$NON-NLS-1$
     partEncoder.encodeAbilities(directContent, character, contentBounds);
