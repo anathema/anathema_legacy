@@ -28,13 +28,14 @@ import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfigurati
 import net.sf.anathema.character.presenter.TabContent;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.charmtree.batik.intvalue.SVGMultiLearnableCharmView;
+import net.sf.anathema.charmtree.batik.intvalue.SVGViewControlButton;
 import net.sf.anathema.charmtree.presenter.AbstractCascadeSelectionPresenter;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionListener;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.charmtree.presenter.view.IDocumentLoadedListener;
 import net.sf.anathema.charmtree.presenter.view.IExaltTypeChangedListener;
-import net.sf.anathema.charmtree.presenter.view.ISVGMultiLearnableCharmView;
+import net.sf.anathema.charmtree.presenter.view.ISVGSpecialCharmView;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -46,7 +47,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   private final ICharmTreeViewProperties viewProperties;
   private CharacterCharmGroupChangeListener charmSelectionChangeListener;
   private final Color characterColor;
-  private final List<ISVGMultiLearnableCharmView> specialCharmViews = new ArrayList<ISVGMultiLearnableCharmView>();
+  private final List<ISVGSpecialCharmView> specialCharmViews = new ArrayList<ISVGSpecialCharmView>();
   private final ICharacterStatistics statistics;
   private final ICharmProvider provider;
 
@@ -225,7 +226,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   }
 
   private void showSpecialViews(ICharmSelectionView selectionView, ILearningCharmGroup group) {
-    for (ISVGMultiLearnableCharmView charmView : specialCharmViews) {
+    for (ISVGSpecialCharmView charmView : specialCharmViews) {
       ICharm charm = getCharmConfiguration().getCharmById(charmView.getCharmId());
       boolean isVisible = isVisible(group, charm);
       selectionView.setSpecialCharmViewVisible(charmView, isVisible);
@@ -251,10 +252,19 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
 
       public void acceptOxBodyTechnique(IOxBodyTechniqueCharm visited) {
         SVGMultiLearnableCharmView oxBodyTechniqueView = createMultiLearnableCharmView(visited);
+        ICharm originalCharm = statistics.getCharms().getCharmById(visited.getCharmId());
         IOxBodyTechniqueConfiguration model = (IOxBodyTechniqueConfiguration) getCharmConfiguration().getSpecialCharmConfiguration(
             visited.getCharmId());
         new OxBodyTechniquePresenter(getResources(), oxBodyTechniqueView, model).init();
-        specialCharmViews.add(oxBodyTechniqueView);
+        if (originalCharm.hasChildren()) {
+          specialCharmViews.add(new SVGViewControlButton(
+              oxBodyTechniqueView,
+              getCharmWidth(),
+              getResources().getString("CharmTreeView.Ox-Body.HealthLevels"))); //$NON-NLS-1$
+        }
+        else {
+          specialCharmViews.add(oxBodyTechniqueView);
+        }
       }
 
       public void visitPainToleranceCharm(IPainToleranceCharm visited) {
@@ -266,13 +276,17 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   private SVGMultiLearnableCharmView createMultiLearnableCharmView(ISpecialCharm charm) {
     SVGMultiLearnableCharmView multiLearnableCharmView = new SVGMultiLearnableCharmView(
         charm.getCharmId(),
-        statistics.getCharacterTemplate()
-            .getPresentationProperties()
-            .getCharmPresentationProperties()
-            .getCharmDimension()
-            .getWidth(),
+        getCharmWidth(),
         characterColor);
     return multiLearnableCharmView;
+  }
+
+  private double getCharmWidth() {
+    return statistics.getCharacterTemplate()
+        .getPresentationProperties()
+        .getCharmPresentationProperties()
+        .getCharmDimension()
+        .getWidth();
   }
 
   private ICharmConfiguration getCharmConfiguration() {

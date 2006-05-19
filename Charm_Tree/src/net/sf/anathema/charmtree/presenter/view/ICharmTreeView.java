@@ -20,8 +20,6 @@ public interface ICharmTreeView {
 
   public void setCharmAlpha(String charmId, int alpha);
 
-  public void setCharmTextColor(String charmId, Color color);
-
   public void addDocumentLoadedListener(IDocumentLoadedListener listener);
 
   public Rectangle getGroupBounds(String charmId);

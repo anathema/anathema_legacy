@@ -5,7 +5,7 @@ import java.awt.geom.Point2D.Double;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import org.apache.batik.util.SVGConstants;
 import org.dom4j.Element;
 import org.dom4j.QName;
 import org.dom4j.tree.DefaultElement;
@@ -71,7 +71,7 @@ public class PolylineSVGArrow {
   private void createLine(Element g) {
     QName lineName = SVGCreationUtils.createSVGQName(ISVGCascadeXMLConstants.TAG_POLYLINE);
     Element line = g.addElement(lineName);
-    line.addAttribute(ISVGCascadeXMLConstants.ATTRIB_FILL, ISVGCascadeXMLConstants.VALUE_NONE);
+    line.addAttribute(ISVGCascadeXMLConstants.ATTRIB_FILL, SVGConstants.SVG_NONE_VALUE);
     line.addAttribute(ISVGCascadeXMLConstants.ATTRIB_STROKE, ISVGCascadeXMLConstants.VALUE_COLOR_BLACK);
     line.addAttribute(ISVGCascadeXMLConstants.ATTRIB_STROKE_WIDTH, String.valueOf(ShaftWidth));
     String pointString = ""; //$NON-NLS-1$

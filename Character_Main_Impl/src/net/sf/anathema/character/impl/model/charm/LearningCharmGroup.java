@@ -15,6 +15,7 @@ import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ICharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
+import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 
@@ -108,6 +109,19 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
       else {
         if (multiLearnable.getCategory().getCreationValue() < 1) {
           multiLearnable.getCategory().setCreationValue(1);
+        }
+      }
+    }
+    if (specialCharmConfiguration instanceof IOxBodyTechniqueConfiguration) {
+      IOxBodyTechniqueConfiguration oxBody = (IOxBodyTechniqueConfiguration) specialCharmConfiguration;
+      if (experienced) {
+        if (oxBody.getCurrentLearnCount() < 1) {
+          oxBody.getCategories()[0].setExperiencedValue(1);
+        }
+      }
+      else {
+        if (oxBody.getCreationLearnCount() < 1) {
+          oxBody.getCategories()[0].setCreationValue(1);
         }
       }
     }

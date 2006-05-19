@@ -146,9 +146,9 @@ public class SVGIntValueDisplay implements IIntValueView {
   }
 
   private EventListener createRectangleDisplayListener(final SVGDocument document) {
-    return new EventListener() {
-      public void handleEvent(Event evt) {
-        if (evt instanceof MouseEvent) {
+    final EventListener displayListener = new EventListener() {
+          public void handleEvent(Event evt) {
+        if (visible && evt instanceof MouseEvent) {
           MouseEvent mouseEvent = (MouseEvent) evt;
           if (!boundsCalculator.getBounds((SVGLocatable) glassPane).contains(
               mouseEvent.getClientX(),
@@ -171,7 +171,8 @@ public class SVGIntValueDisplay implements IIntValueView {
           setSelectionRectangleWidth(mouseEvent.getClientX());
         }
       }
-    };
+        };
+    return displayListener;
   }
 
   private Element createGlassPane(SVGDocument document) {
@@ -244,5 +245,8 @@ public class SVGIntValueDisplay implements IIntValueView {
 
   public void setVisible(boolean visible) {
     this.visible = visible;
+    if (visible) {
+      setValue(value);
+    }
   }
 }

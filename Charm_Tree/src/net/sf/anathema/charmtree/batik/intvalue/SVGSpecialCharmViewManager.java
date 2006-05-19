@@ -7,14 +7,14 @@ import java.awt.Rectangle;
 import net.sf.anathema.charmtree.batik.IBoundsCalculator;
 import net.sf.anathema.charmtree.presenter.view.IAnathemaCanvas;
 import net.sf.anathema.charmtree.presenter.view.ICharmTreeView;
-import net.sf.anathema.charmtree.presenter.view.ISVGMultiLearnableCharmView;
+import net.sf.anathema.charmtree.presenter.view.ISVGSpecialCharmView;
 import net.sf.anathema.charmtree.presenter.view.ISpecialCharmViewManager;
 
 import org.apache.batik.dom.svg.SVGOMDocument;
 import org.w3c.dom.Element;
 import org.w3c.dom.svg.SVGSVGElement;
 
-public class SVGSpecialCharmViewManager implements ISpecialCharmViewManager<ISVGMultiLearnableCharmView> {
+public class SVGSpecialCharmViewManager implements ISpecialCharmViewManager<ISVGSpecialCharmView> {
 
   private final IAnathemaCanvas canvas;
   private final IBoundsCalculator boundsCalculator;
@@ -24,7 +24,7 @@ public class SVGSpecialCharmViewManager implements ISpecialCharmViewManager<ISVG
     this.boundsCalculator = view.getBoundsCalculator();
   }
 
-  public void setSpecialCharmViewVisible(ICharmTreeView view, ISVGMultiLearnableCharmView charmView, boolean visible) {
+  public void setSpecialCharmViewVisible(ICharmTreeView view, ISVGSpecialCharmView charmView, boolean visible) {
     SVGOMDocument document = (SVGOMDocument) canvas.getSVGDocument();
     if (!visible) {
       charmView.setVisible(false);

@@ -12,13 +12,13 @@ import net.sf.anathema.charmtree.batik.intvalue.SVGSpecialCharmViewManager;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionListener;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
-import net.sf.anathema.charmtree.presenter.view.ISVGMultiLearnableCharmView;
+import net.sf.anathema.charmtree.presenter.view.ISVGSpecialCharmView;
 import net.sf.anathema.charmtree.presenter.view.ISpecialCharmViewManager;
 
 public class CharmSelectionView extends AbstractCascadeSelectionView implements ICharmSelectionView {
 
   private JPanel content;
-  private final ISpecialCharmViewManager<ISVGMultiLearnableCharmView> svgManager = new SVGSpecialCharmViewManager(
+  private final ISpecialCharmViewManager<ISVGSpecialCharmView> svgManager = new SVGSpecialCharmViewManager(
       getCharmTreeView());
 
   public CharmSelectionView(ICharmTreeViewProperties treeProperties) {
@@ -46,7 +46,7 @@ public class CharmSelectionView extends AbstractCascadeSelectionView implements 
     return content;
   }
 
-  public void setSpecialCharmViewVisible(ISVGMultiLearnableCharmView charmView, boolean visible) {
+  public void setSpecialCharmViewVisible(ISVGSpecialCharmView charmView, boolean visible) {
     svgManager.setSpecialCharmViewVisible(getCharmTreeView(), charmView, visible);
   }
 

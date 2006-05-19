@@ -12,5 +12,5 @@ public interface ICharmSelectionView extends ICascadeSelectionView, ISimpleTabVi
 
   public void initGui();
 
-  public void setSpecialCharmViewVisible(ISVGMultiLearnableCharmView charmView, boolean visible);
+  public void setSpecialCharmViewVisible(ISVGSpecialCharmView charmView, boolean visible);
 }

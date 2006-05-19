@@ -1,5 +1,7 @@
 package net.sf.anathema.charmtree.provider.svg;
 
+import org.apache.batik.util.SVGConstants;
+
 public interface ISVGCascadeXMLConstants {
 
   public static final String DOT = ","; //$NON-NLS-1$
@@ -39,8 +41,6 @@ public interface ISVGCascadeXMLConstants {
   public static final String TAG_TSPAN = "tspan"; //$NON-NLS-1$
   public static final String TAG_USE = "use"; //$NON-NLS-1$
 
-  public static final String VALUE_0 = "0"; //$NON-NLS-1$
-  public static final String VALUE_100_PERCENT = "100%"; //$NON-NLS-1$
   public static final String VALUE_15 = "15"; //$NON-NLS-1$
   public static final String VALUE_3 = "3"; //$NON-NLS-1$
   public static final String VALUE_ARROWHEAD_POINTS = "0,0 15,15 30,0 15,5"; //$NON-NLS-1$
@@ -48,12 +48,10 @@ public interface ISVGCascadeXMLConstants {
   public static final String VALUE_ARROWHEAD_REFERENCE = "#" + VALUE_ARROWHEAD_ID; //$NON-NLS-1$
   public static final String VALUE_FRAME_ID = "Frame"; //$NON-NLS-1$
   public static final String VALUE_FRAME_REFERENCE = "#" + VALUE_FRAME_ID; //$NON-NLS-1$
-  public static final String VALUE_HREF = "href"; //$NON-NLS-1$
   public static final String VALUE_CASCADE_ID = "cascade"; //$NON-NLS-1$
-  public static final String VALUE_MIDDLE = "middle"; //$NON-NLS-1$
-  public static final String VALUE_NONE = "none"; //$NON-NLS-1$
   public static final String VALUE_COLOR_BLACK = "rgb(0,0,0)"; //$NON-NLS-1$
   public static final String VALUE_STROKE_MEDIUM_GRAY = "rgb(128,128,128)"; //$NON-NLS-1$
   public static final String VALUE_VIEWBOX_SIZE = "0 0 1400 625"; //$NON-NLS-1$
-  public static final String VALUE_XMID_YMIN_MEET = "xMidYMin meet"; //$NON-NLS-1$
+  public static final String VALUE_XMID_YMIN_MEET = SVGConstants.SVG_XMIDYMIN_VALUE + " meet"; //$NON-NLS-1$
+  public static final String VALUE_SVG_VERSION = "1.2"; //$NON-NLS-1$
 }

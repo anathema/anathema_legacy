@@ -14,7 +14,6 @@ public class DoubleRightClickResetTransformInteractor extends AbstractResetTrans
     this.calculator = calculator;
   }
 
-  @Override
   public boolean startInteraction(InputEvent ie) {
     if (!(ie instanceof MouseEvent)) {
       return false;

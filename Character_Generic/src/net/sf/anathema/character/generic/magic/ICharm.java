@@ -19,4 +19,6 @@ public interface ICharm extends ICharmData, IMagic {
   public Set<ICharm> getRenderingPrerequisiteCharms();
 
   public boolean hasAttribute(IIdentificate attribute);
+
+  public boolean hasChildren();
 }

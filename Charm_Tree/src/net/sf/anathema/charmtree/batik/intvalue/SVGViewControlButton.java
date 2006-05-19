@@ -1,4 +1,4 @@
-package net.sf.anathema.charmtree.batik.intvalue.demo;
+package net.sf.anathema.charmtree.batik.intvalue;
 
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_FILL;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_FILL_OPACITY;
@@ -12,9 +12,9 @@ import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.TAG
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.TAG_RECT;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_BLACK;
 
-import net.sf.anathema.charmtree.batik.BoundsCalculator;
-import net.sf.anathema.charmtree.batik.intvalue.SVGIntValueDisplay;
+import net.sf.anathema.charmtree.batik.IBoundsCalculator;
 import net.sf.anathema.charmtree.presenter.view.ISVGMultiLearnableCharmView;
+import net.sf.anathema.charmtree.presenter.view.ISVGSpecialCharmView;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;
@@ -31,22 +31,28 @@ import org.w3c.dom.svg.SVGDocument;
 import org.w3c.dom.svg.SVGLocatable;
 import org.w3c.dom.svg.SVGSVGElement;
 
-public class MultiLearnableCharmViewControlButton {
+public class SVGViewControlButton implements ISVGSpecialCharmView {
 
   private final ISVGMultiLearnableCharmView display;
   private final double charmWidth;
   private boolean enabled = false;
+  private final String label;
 
-  public MultiLearnableCharmViewControlButton(ISVGMultiLearnableCharmView display, double charmWidth) {
+  public SVGViewControlButton(ISVGMultiLearnableCharmView display, double charmWidth, String label) {
     this.display = display;
     this.charmWidth = charmWidth;
+    this.label = label;
   }
 
-  public Element initGui(SVGOMDocument svgDocument, BoundsCalculator boundsCalculator) {
+  public String getCharmId() {
+    return display.getCharmId();
+  }
+
+  public Element initGui(SVGOMDocument svgDocument, IBoundsCalculator boundsCalculator) {
     Element outerGroupElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_G);
     Element innerGroupElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_G);
     innerGroupElement.appendChild(createBorder(svgDocument));
-    innerGroupElement.appendChild(createText(svgDocument, "Categories"));
+    innerGroupElement.appendChild(createText(svgDocument, label));
     outerGroupElement.appendChild(innerGroupElement);
     Element displayElement = display.initGui(svgDocument, boundsCalculator);
     setAttribute(
@@ -67,7 +73,7 @@ public class MultiLearnableCharmViewControlButton {
       final Element displayElement,
       final Element innerGroupElement,
       final Element outerGroupElement,
-      final BoundsCalculator boundsCalculator,
+      final IBoundsCalculator boundsCalculator,
       final SVGSVGElement rootElement) {
     return new EventListener() {
       public void handleEvent(Event evt) {
@@ -90,7 +96,10 @@ public class MultiLearnableCharmViewControlButton {
           NodeList childNodes = rootElement.getChildNodes();
           for (int index = 0; index < childNodes.getLength(); index++) {
             if (childNodes.item(index) instanceof Element) {
-              setAttribute((Element) childNodes.item(index), SVGConstants.SVG_OPACITY_ATTRIBUTE, "1");
+              setAttribute(
+                  (Element) childNodes.item(index),
+                  SVGConstants.SVG_OPACITY_ATTRIBUTE,
+                  SVGConstants.SVG_OPAQUE_VALUE);
             }
           }
           enabled = false;
@@ -103,7 +112,7 @@ public class MultiLearnableCharmViewControlButton {
               setAttribute((Element) childNodes.item(index), SVGConstants.SVG_OPACITY_ATTRIBUTE, "0.1");
             }
           }
-          setAttribute(outerGroupElement, SVGConstants.SVG_OPACITY_ATTRIBUTE, "1.0");
+          setAttribute(outerGroupElement, SVGConstants.SVG_OPACITY_ATTRIBUTE, SVGConstants.SVG_OPAQUE_VALUE);
           display.setVisible(true);
           enabled = true;
         }
@@ -140,4 +149,7 @@ public class MultiLearnableCharmViewControlButton {
     element.setAttributeNS(null, attributeName, attributeValue);
   }
 
+  public void setVisible(boolean visible) {
+    display.setVisible(visible);
+  }
 }

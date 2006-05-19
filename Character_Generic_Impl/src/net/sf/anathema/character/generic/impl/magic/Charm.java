@@ -311,6 +311,10 @@ public class Charm extends Identificate implements ICharm {
     return trait instanceof IFavorableGenericTrait && ((IFavorableGenericTrait) trait).isCasteOrFavored();
   }
 
+  public boolean hasChildren() {
+    return !children.isEmpty();
+  }
+
   public Charm cloneUnconnected() {
     // Charmalternatives need to be calculated anew - find the old charms' clones.
     // SelectiveCharmGroups have to reference the newly cloned objects.

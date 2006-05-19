@@ -24,6 +24,7 @@ import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.swing.svg.SVGLoadEventDispatcherAdapter;
 import org.apache.batik.swing.svg.SVGLoadEventDispatcherEvent;
+import org.apache.batik.util.SVGConstants;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -31,7 +32,6 @@ import org.w3c.dom.Text;
 import org.w3c.dom.svg.SVGDocument;
 import org.w3c.dom.svg.SVGElement;
 import org.w3c.dom.svg.SVGGElement;
-import org.w3c.dom.svg.SVGTSpanElement;
 import org.w3c.dom.svg.SVGTextElement;
 import org.w3c.dom.svg.SVGUseElement;
 
@@ -101,31 +101,6 @@ public class CharmTreeView implements ICharmTreeView {
     }
   }
 
-  public void setCharmTextColor(String charmId, Color color) {
-    Ensure.ensureNotNull("Color must not be null.", color); //$NON-NLS-1$
-    SVGElement charmGroup = ((SVGElement) canvas.getSVGDocument().getElementById(charmId));
-    NodeList list = charmGroup.getChildNodes();
-    for (int i = 0; i < list.getLength(); i++) {
-      if (list.item(i) instanceof SVGTextElement) {
-        NodeList spanList = list.item(i).getChildNodes();
-        for (int j = 0; j < spanList.getLength(); j++) {
-          if (spanList.item(j) instanceof SVGTSpanElement) {
-            ((SVGElement) spanList.item(j)).setAttribute(ISVGCascadeXMLConstants.ATTRIB_FILL, "rgb(" //$NON-NLS-1$
-                + color.getRed()
-                + "," //$NON-NLS-1$
-                + color.getGreen()
-                + "," //$NON-NLS-1$
-                + color.getBlue()
-                + ")"); //$NON-NLS-1$
-            ((SVGElement) spanList.item(j)).setAttribute(
-                ISVGCascadeXMLConstants.ATTRIB_FILL_OPACITY,
-                String.valueOf((float) color.getAlpha() / 255));
-          }
-        }
-      }
-    }
-  }
-
   public void setCharmAlpha(String charmId, int alpha) {
     if (alpha > 255)
       alpha = 255;
@@ -151,6 +126,13 @@ public class CharmTreeView implements ICharmTreeView {
     });
   }
 
+  // private void initCharmNames(SVGDocument svgDoc) {
+  // NodeList textNodes = svgDoc.getElementsByTagName(SVG12Constants.SVG_FLOW_PARA_TAG);
+  // for (int i = 0; i < textNodes.getLength(); i++) {
+  // internationalize((SVGTextContentElement) textNodes.item(i));
+  // }
+  //  }
+  
   private void initCharmNames(SVGDocument svgDoc) {
     NodeList textNodes = svgDoc.getElementsByTagName(ISVGCascadeXMLConstants.TAG_TEXT);
     for (int i = 0; i < textNodes.getLength(); i++) {
@@ -158,6 +140,41 @@ public class CharmTreeView implements ICharmTreeView {
       internationalize(currentNode);
       breakText(currentNode);
     }
+  }
+
+  
+// private void internationalize(SVGTextContentElement currentNode) {
+  // String id = ((Text) currentNode.getFirstChild()).getData();
+  // String charmName = properties.getNodeName(id);
+  // if (properties.isRootCharm(id)) {
+  // currentNode.getFirstChild().setNodeValue(charmName.toUpperCase());
+  // }
+  // else {
+  // currentNode.getFirstChild().setNodeValue(charmName);
+  //    }
+  //  }
+
+  public void setCanvasBackground(Color color) {
+    canvas.setBackground(color);
+  }
+
+  public void dispose() {
+    SVGDocument document = canvas.getSVGDocument();
+    if (document != null) {
+      listening.destructDocumentListening(document);
+    }
+    canvas.setDocument(null);
+    // todo vom (22.02.2005) (sieroux): Notify pool of unused canvas
+    canvas = null;
+  }
+
+  public void setProperties(ICharmTreeViewProperties viewProperties) {
+    this.properties = viewProperties;
+    this.listening.setProperties(viewProperties);
+  }
+
+  public IBoundsCalculator getBoundsCalculator() {
+    return listening.getBoundsCalculator();
   }
 
   private void breakText(SVGTextElement text) {
@@ -195,7 +212,7 @@ public class CharmTreeView implements ICharmTreeView {
         ISVGCascadeXMLConstants.TAG_TSPAN);
     tSpanElement.setAttribute(ISVGCascadeXMLConstants.ATTRIB_X, xPosition);
     tSpanElement.setAttribute(ISVGCascadeXMLConstants.ATTRIB_Y, String.valueOf(varY));
-    tSpanElement.setAttribute(ISVGCascadeXMLConstants.ATTRIB_DX, ISVGCascadeXMLConstants.VALUE_0);
+    tSpanElement.setAttribute(ISVGCascadeXMLConstants.ATTRIB_DX, SVGConstants.SVG_ZERO_VALUE);
     tSpanElement.setAttribute(ISVGCascadeXMLConstants.ATTRIB_DY, String.valueOf(dy));
     tSpanElement.appendChild(textNode);
     return tSpanElement;
@@ -211,28 +228,5 @@ public class CharmTreeView implements ICharmTreeView {
     else {
       text.getFirstChild().setNodeValue(charmName);
     }
-  }
-
-  public void setCanvasBackground(Color color) {
-    canvas.setBackground(color);
-  }
-
-  public void dispose() {
-    SVGDocument document = canvas.getSVGDocument();
-    if (document != null) {
-      listening.destructDocumentListening(document);
-    }
-    canvas.setDocument(null);
-    // todo vom (22.02.2005) (sieroux): Notify pool of unused canvas
-    canvas = null;
-  }
-
-  public void setProperties(ICharmTreeViewProperties viewProperties) {
-    this.properties = viewProperties;
-    this.listening.setProperties(viewProperties);
-  }
-
-  public IBoundsCalculator getBoundsCalculator() {
-    return listening.getBoundsCalculator();
   }
 }

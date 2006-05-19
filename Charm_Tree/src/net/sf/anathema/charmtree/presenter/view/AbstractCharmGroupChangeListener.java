@@ -14,7 +14,7 @@ import net.sf.anathema.charmtree.provider.CharmTreeProvider;
 import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.util.IIdentificate;
 
-import org.apache.batik.dom.svg.SVGDOMImplementation;
+import org.apache.batik.dom.svg12.SVG12DOMImplementation;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.io.DOMWriter;
@@ -88,7 +88,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
       charmTreeView.setProperties(viewProperties);
       ICharm[] charms = displayCharms.toArray(new ICharm[displayCharms.size()]);
       Document dom4jDocument = provider.createCascadeDocument(charms, presentationProperties);
-      DOMImplementation implementation = SVGDOMImplementation.getDOMImplementation();
+      DOMImplementation implementation = SVG12DOMImplementation.getDOMImplementation();
       SVGDocument svgDocument = (SVGDocument) new DOMWriter().write(dom4jDocument, implementation);
       charmTreeView.loadCascade(svgDocument);
     }
