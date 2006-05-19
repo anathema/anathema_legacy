@@ -50,11 +50,11 @@ public class PdfVirtueEncoder extends AbstractPdfEncoder {
     String label = resources.getString(trait.getType().getId());
     int labelX = position.x + width / 2;
     drawText(directContent, label, new Point(labelX, yPosition), PdfContentByte.ALIGN_CENTER);
-    yPosition -= traitEncoder.getTraitHeight();
+    yPosition -= traitEncoder.getTraitHeight() - 1;
     Point traitPosition = new Point(position.x, yPosition);
     int value = trait.getCurrentValue();
     traitEncoder.encodeCenteredAndUngrouped(directContent, traitPosition, width, value, 5);
-    yPosition -= traitEncoder.getTraitHeight();
+    yPosition -= traitEncoder.getTraitHeight() - 1;
     traitEncoder.encodeSquaresCenteredAndUngrouped(directContent, new Point(position.x, yPosition), width, 0, 5);
   }
 }
