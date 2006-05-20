@@ -26,7 +26,7 @@ public class SpecialCharmPersister implements ISpecialCharmPersister {
           persisterByCharmId.put(getCharm(charm.getCharmId(), charmTree), new MultiLearnCharmPersister());
         }
 
-        public void acceptOxBodyTechnique(IOxBodyTechniqueCharm charm) {
+        public void visitOxBodyTechnique(IOxBodyTechniqueCharm charm) {
           persisterByCharmId.put(getCharm(charm.getCharmId(), charmTree), new OxBodyTechniquePersister());
         }
 

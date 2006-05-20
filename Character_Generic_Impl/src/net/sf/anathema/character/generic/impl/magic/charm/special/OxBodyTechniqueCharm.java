@@ -36,6 +36,6 @@ public class OxBodyTechniqueCharm implements IOxBodyTechniqueCharm {
   }
 
   public void accept(ISpecialCharmVisitor visitor) {
-    visitor.acceptOxBodyTechnique(this);
+    visitor.visitOxBodyTechnique(this);
   }
 }

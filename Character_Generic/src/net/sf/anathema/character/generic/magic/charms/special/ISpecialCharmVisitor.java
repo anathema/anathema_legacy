@@ -4,7 +4,8 @@ public interface ISpecialCharmVisitor {
 
   public void visitMultiLearnableCharm(IMultiLearnableCharm charm);
 
-  public void acceptOxBodyTechnique(IOxBodyTechniqueCharm charm);
+  public void visitOxBodyTechnique(IOxBodyTechniqueCharm charm);
 
   public void visitPainToleranceCharm(IPainToleranceCharm charm);
+
 }

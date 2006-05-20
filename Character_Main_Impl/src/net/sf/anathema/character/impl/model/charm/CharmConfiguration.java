@@ -40,20 +40,18 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.charm.prerequisite.PrerequisiteSetBuilder;
-import net.sf.anathema.character.impl.model.charm.special.MultiLearnableCharmConfiguration;
-import net.sf.anathema.character.impl.model.charm.special.OxBodyTechniqueConfiguration;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
-import net.sf.anathema.character.model.health.IPainToleranceProvider;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 
 public class CharmConfiguration implements ICharmConfiguration {
 
+  private final ISpecialCharmManager manager;
   private final ICharmTree martialArtsCharmTree;
   private final Map<CharacterType, ICharmTree> alienTreesByType = new HashMap<CharacterType, ICharmTree>();
   private final Map<CharacterType, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new HashMap<CharacterType, ILearningCharmGroup[]>();
@@ -66,7 +64,6 @@ public class CharmConfiguration implements ICharmConfiguration {
   };
   private ILearningCharmGroup[] martialArtsGroups;
   private final ICharacterModelContext context;
-  private final IHealthConfiguration health;
   private final ChangeControl control = new ChangeControl();
   private final ICharmProvider provider;
   private final ILearningCharmGroupArbitrator arbitrator;
@@ -88,7 +85,7 @@ public class CharmConfiguration implements ICharmConfiguration {
       ICharacterModelContext context,
       ITemplateRegistry registry,
       ICharmProvider provider) {
-    this.health = health;
+    this.manager = new SpecialCharmManager(health, context);
     this.context = context;
     this.provider = provider;
     IExaltedRuleSet rules = context.getBasicCharacterContext().getRuleSet();
@@ -121,23 +118,23 @@ public class CharmConfiguration implements ICharmConfiguration {
         .getRuleSet()
         .getEdition())) {
       specialCharm.accept(new ISpecialCharmVisitor() {
-        public void acceptOxBodyTechnique(IOxBodyTechniqueCharm visited) {
+        public void visitOxBodyTechnique(IOxBodyTechniqueCharm visited) {
           final ICharm charm = getCharmTree(characterType).getCharmByID(visited.getCharmId());
-          IGenericTrait relevantTrait = context.getTraitCollection().getTrait(visited.getRelevantTrait());
           ILearningCharmGroup group = getGroupById(charm.getCharacterType(), charm.getGroupId());
-          registerOxBodyTechnique(visited, charm, relevantTrait, group);
+          IGenericTrait relevantTrait = context.getTraitCollection().getTrait(visited.getRelevantTrait());
+          manager.registerOxBodyTechnique(visited, charm, relevantTrait, group);
         }
 
         public void visitMultiLearnableCharm(IMultiLearnableCharm visitedCharm) {
           final ICharm charm = getCharmTree(characterType).getCharmByID(visitedCharm.getCharmId());
           ILearningCharmGroup group = getGroupById(charm.getCharacterType(), charm.getGroupId());
-          registerMultiLearnableCharm(visitedCharm, charm, group);
+          manager.registerMultiLearnableCharm(visitedCharm, charm, group, CharmConfiguration.this);
         }
 
         public void visitPainToleranceCharm(IPainToleranceCharm visitedCharm) {
           final ICharm charm = getCharmTree(characterType).getCharmByID(visitedCharm.getCharmId());
           ILearningCharmGroup group = getGroupById(charm.getCharacterType(), charm.getGroupId());
-          registerPainToleranceCharm(visitedCharm, charm, group);
+          manager.registerPainToleranceCharm(visitedCharm, charm, group);
         }
       });
     }
@@ -334,13 +331,6 @@ public class CharmConfiguration implements ICharmConfiguration {
     control.addChangeListener(listener);
   }
 
-  private void addSpecialCharmConfiguration(
-      ICharm charm,
-      ILearningCharmGroup group,
-      ISpecialCharmConfiguration configuration) {
-    group.addSpecialCharmConfiguration(charm, configuration);
-  }
-
   private void fireLearnConditionsChanged() {
     control.fireChangedEvent();
   }
@@ -433,43 +423,6 @@ public class CharmConfiguration implements ICharmConfiguration {
     ICharm charm = getCharmById(charmId);
     final ILearningCharmGroup group = getGroup(charm);
     return group.isUnlearnable(charm);
-  }
-
-  private void registerMultiLearnableCharm(
-      IMultiLearnableCharm visitedCharm,
-      final ICharm charm,
-      ILearningCharmGroup group) {
-    addSpecialCharmConfiguration(charm, group, new MultiLearnableCharmConfiguration(context, charm, visitedCharm, this));
-  }
-
-  private void registerOxBodyTechnique(
-      IOxBodyTechniqueCharm visited,
-      final ICharm charm,
-      IGenericTrait relevantTrait,
-      ILearningCharmGroup group) {
-    OxBodyTechniqueConfiguration oxBodyTechniqueConfiguration = new OxBodyTechniqueConfiguration(
-        context.getTraitContext(),
-        charm,
-        relevantTrait,
-        health.getOxBodyLearnArbitrator(),
-        visited);
-    addSpecialCharmConfiguration(charm, group, oxBodyTechniqueConfiguration);
-    health.getOxBodyLearnArbitrator().addOxBodyTechniqueConfiguration(oxBodyTechniqueConfiguration);
-    health.addHealthLevelProvider(oxBodyTechniqueConfiguration.getHealthLevelProvider());
-  }
-
-  private void registerPainToleranceCharm(
-      final IPainToleranceCharm visitedCharm,
-      ICharm charm,
-      ILearningCharmGroup group) {
-    final ISpecialCharmConfiguration specialCharmConfiguration = group.getSpecialCharmConfiguration(charm);
-    IPainToleranceProvider painToleranceProvider = new IPainToleranceProvider() {
-      public int getPainToleranceLevel() {
-        int learnCount = specialCharmConfiguration.getCurrentLearnCount();
-        return visitedCharm.getPainToleranceLevel(learnCount);
-      }
-    };
-    health.addPainToleranceProvider(painToleranceProvider);
   }
 
   public boolean isAlienCharm(ICharm charm) {

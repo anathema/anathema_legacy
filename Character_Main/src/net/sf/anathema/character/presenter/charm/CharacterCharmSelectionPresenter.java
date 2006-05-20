@@ -250,7 +250,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
         specialCharmViews.add(multiLearnableCharmView);
       }
 
-      public void acceptOxBodyTechnique(IOxBodyTechniqueCharm visited) {
+      public void visitOxBodyTechnique(IOxBodyTechniqueCharm visited) {
         SVGMultiLearnableCharmView oxBodyTechniqueView = createMultiLearnableCharmView(visited);
         ICharm originalCharm = statistics.getCharms().getCharmById(visited.getCharmId());
         IOxBodyTechniqueConfiguration model = (IOxBodyTechniqueConfiguration) getCharmConfiguration().getSpecialCharmConfiguration(
