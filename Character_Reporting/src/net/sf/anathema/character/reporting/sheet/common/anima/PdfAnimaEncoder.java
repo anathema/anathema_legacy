@@ -8,6 +8,8 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.sheet.util.PdfLineEncodingUtilities;
+import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.character.reporting.util.Position;
 import net.sf.anathema.lib.resources.IResources;
@@ -17,7 +19,6 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentEncoder {
@@ -38,60 +39,41 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentEn
     return baseFont;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds)
+  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
       throws DocumentException,
       IOException {
-    Position cursorPosition = encodeAnimaPowers(directContent, character, contentBounds);
-    setFillColorBlack(directContent);
-    directContent.setLineWidth(0);
-    float startX = contentBounds.getMinX() + cursorPosition.x;
-    float endX = contentBounds.getMaxX();
-    float yPosition = cursorPosition.y;
-    directContent.moveTo(startX, yPosition);
-    directContent.lineTo(endX, yPosition);
-    yPosition -= LINE_HEIGHT;
-    startX = (int) contentBounds.getMinX();
-    directContent.moveTo(startX, yPosition);
-    directContent.lineTo(endX, yPosition);
-    yPosition -= LINE_HEIGHT;
-    directContent.moveTo(startX, yPosition);
-    directContent.lineTo(endX, yPosition);
-    directContent.stroke();
-
-    new SolarAnimaTableEncoder(resources, getBaseFont(), FONT_SIZE).encodeTable(directContent, contentBounds);
+    float halfWidth = bounds.getHeight() / 2;
+    Bounds animaPowerBounds = new Bounds(bounds.getMinX(), bounds.getCenterY(), bounds.getWidth(), halfWidth);
+    Position lineStartPosition = encodeAnimaPowers(directContent, character, animaPowerBounds);
+    encodeLines(directContent, bounds, lineStartPosition);
+    Bounds animaTableBounds = new Bounds(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), halfWidth);
+    new SolarAnimaTableEncoder(resources, baseFont, FONT_SIZE).encodeTable(directContent, animaTableBounds);
   }
 
-  private Position encodeAnimaPowers(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds)
+  private void encodeLines(PdfContentByte directContent, Bounds bounds, Position lineStartPosition) {
+    float minX = bounds.getMinX();
+    float maxX = bounds.getMaxX();
+    PdfLineEncodingUtilities.encodeHorizontalLines(directContent, lineStartPosition, minX, maxX, LINE_HEIGHT, 3);
+  }
+
+  private Position encodeAnimaPowers(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
       throws DocumentException,
       IOException {
-    BaseFont symbolBaseFont = BaseFont.createFont(BaseFont.SYMBOL, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-    Font symbolFont = new Font(symbolBaseFont, FONT_SIZE, Font.NORMAL, Color.BLACK);
-    Font font = new Font(getBaseFont(), FONT_SIZE, Font.NORMAL, Color.BLACK);
-    Phrase powerPhrase = new Phrase("", font); //$NON-NLS-1$
-    addAnimaPowerText(character.getTemplate().getTemplateType().getCharacterType(), powerPhrase, symbolFont);
-    ColumnText columnText = new ColumnText(directContent);
-    columnText.setSimpleColumn(
-        powerPhrase,
-        contentBounds.getMinX(),
-        contentBounds.getCenterX(),
-        contentBounds.getMaxX(),
-        contentBounds.getMaxY(),
-        LINE_HEIGHT,
-        PdfContentByte.ALIGN_LEFT);
-    columnText.go();
-    float xPosition = symbolBaseFont.getWidthPoint(SYMBOL, FONT_SIZE);
-    return new Position(xPosition, columnText.getYLine());
+    BaseFont symbolBaseFont =  PdfTextEncodingUtilities.createBaseFont(BaseFont.SYMBOL);
+    Phrase phrase = new Phrase("", new Font(baseFont, FONT_SIZE, Font.NORMAL, Color.BLACK)); //$NON-NLS-1$
+    addAnimaPowerText(character, phrase, new Font(symbolBaseFont, FONT_SIZE, Font.NORMAL, Color.BLACK));
+    float yPosition = PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, LINE_HEIGHT);
+    return new Position((bounds.getMinX() + symbolBaseFont.getWidthPoint(SYMBOL, FONT_SIZE)), yPosition);
   }
 
-  private void addAnimaPowerText(CharacterType characterType, Phrase phrase, Font symbolFont) {
+  private void addAnimaPowerText(IGenericCharacter character, Phrase phrase, Font symbolFont) {
+    CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     Chunk symbolChunk = new Chunk(SYMBOL, symbolFont);
     String resourceBase = "Sheet.AnimaPower." + characterType.getId() + "."; //$NON-NLS-1$ //$NON-NLS-2$
-    phrase.add(symbolChunk);
-    phrase.add(resources.getString(resourceBase + "First") + "\n"); //$NON-NLS-1$ //$NON-NLS-2$
-    phrase.add(symbolChunk);
-    phrase.add(resources.getString(resourceBase + "Second") + "\n"); //$NON-NLS-1$ //$NON-NLS-2$
-    phrase.add(symbolChunk);
-    phrase.add(resources.getString(resourceBase + "Third") + "\n"); //$NON-NLS-1$ //$NON-NLS-2$
+    for (String resourceId : new String[] { "First", "Second", "Third" }) { //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      phrase.add(symbolChunk);
+      phrase.add(resources.getString(resourceBase + resourceId) + "\n"); //$NON-NLS-1$
+    }
     phrase.add(symbolChunk);
   }
 }

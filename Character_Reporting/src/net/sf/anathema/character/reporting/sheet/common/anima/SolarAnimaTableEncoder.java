@@ -23,14 +23,14 @@ public class SolarAnimaTableEncoder {
 
   public SolarAnimaTableEncoder(IResources resources, BaseFont baseFont, float fontSize) {
     this.resources = resources;
-    this.headerFont = new Font(baseFont, fontSize, Font.NORMAL, Color.BLACK);
+    this.headerFont = new Font(baseFont, fontSize, Font.ITALIC, Color.BLACK);
     this.font = new Font(baseFont, fontSize, Font.NORMAL, Color.BLACK);
   }
 
   public void encodeTable(PdfContentByte directContent, Bounds bounds) throws DocumentException {
     ColumnText tableColumn = new ColumnText(directContent);
     PdfPTable table = createTable();
-    tableColumn.setSimpleColumn(bounds.getMinX(), bounds.getMinY(), bounds.getMaxX(), bounds.getCenterY());
+    tableColumn.setSimpleColumn(bounds.getMinX(), bounds.getMinY(), bounds.getMaxX(), bounds.getMaxY());
     tableColumn.addElement(table);
     tableColumn.go();
   }
