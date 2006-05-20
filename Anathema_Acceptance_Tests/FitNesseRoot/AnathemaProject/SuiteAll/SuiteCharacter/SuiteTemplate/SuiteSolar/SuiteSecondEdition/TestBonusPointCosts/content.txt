@@ -1,4 +1,4 @@
-This will cover all Solar BP Costs, except for Charms.
+This will cover all Solar BP Costs, except for Charms and Intimacies, which will be covered by separate tests.
 
 !|Check Bonus Point Template|
 |getUnfavoredAttributePointCost?|getFavoredAttributePointCost?|
