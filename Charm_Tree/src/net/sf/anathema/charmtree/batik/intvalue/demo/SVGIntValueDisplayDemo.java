@@ -12,7 +12,7 @@ import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;
-import org.apache.batik.util.SVG12Constants;
+import org.apache.batik.util.SVGConstants;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -91,8 +91,8 @@ public class SVGIntValueDisplayDemo extends SwingDemoCase {
     display.addCategory("First", 7, 2); //$NON-NLS-1$
     final BoundsCalculator boundsCalculator = new BoundsCalculator();
     final SVGViewControlButton buttonView = new SVGViewControlButton(display, 190, "Categories"); //$NON-NLS-1$
-    Element circle = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVG12Constants.SVG_CIRCLE_TAG);
-    circle.setAttributeNS(null, "r", "50");
+    Element circle = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_CIRCLE_TAG);
+    circle.setAttributeNS(null, SVGConstants.SVG_R_ATTRIBUTE, "50");
     canvas.getSVGDocument().getRootElement().appendChild(circle);
     Element buttonElement = buttonView.initGui((SVGOMDocument) canvas.getSVGDocument(), boundsCalculator);
     canvas.getSVGDocument().getRootElement().appendChild(buttonElement);

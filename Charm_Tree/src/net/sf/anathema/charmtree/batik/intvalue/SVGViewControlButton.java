@@ -25,10 +25,9 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 import org.w3c.dom.events.Event;
 import org.w3c.dom.events.EventListener;
-import org.w3c.dom.events.EventTarget;
 import org.w3c.dom.events.MouseEvent;
 import org.w3c.dom.svg.SVGDocument;
-import org.w3c.dom.svg.SVGLocatable;
+import org.w3c.dom.svg.SVGGElement;
 import org.w3c.dom.svg.SVGSVGElement;
 
 public class SVGViewControlButton implements ISVGSpecialCharmView {
@@ -50,7 +49,9 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
 
   public Element initGui(SVGOMDocument svgDocument, IBoundsCalculator boundsCalculator) {
     Element outerGroupElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_G);
-    Element innerGroupElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_G);
+    SVGGElement innerGroupElement = (SVGGElement) svgDocument.createElementNS(
+        SVGDOMImplementation.SVG_NAMESPACE_URI,
+        TAG_G);
     innerGroupElement.appendChild(createBorder(svgDocument));
     innerGroupElement.appendChild(createText(svgDocument, label));
     outerGroupElement.appendChild(innerGroupElement);
@@ -59,11 +60,9 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
         displayElement,
         ATTRIB_TRANSFORM,
         "translate(0," + SVGIntValueDisplay.getDiameter(charmWidth) * 1.15 + ")"); //$NON-NLS-1$ //$NON-NLS-2$
-    svgDocument.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, createDisplayListener(
+    innerGroupElement.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, createDisplayListener(
         displayElement,
-        innerGroupElement,
         outerGroupElement,
-        boundsCalculator,
         svgDocument.getRootElement()), false);
     display.setVisible(false);
     return outerGroupElement;
@@ -71,23 +70,11 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
 
   private EventListener createDisplayListener(
       final Element displayElement,
-      final Element innerGroupElement,
       final Element outerGroupElement,
-      final IBoundsCalculator boundsCalculator,
       final SVGSVGElement rootElement) {
     return new EventListener() {
       public void handleEvent(Event evt) {
         if (!(evt instanceof MouseEvent && ((MouseEvent) evt).getButton() == 0)) {
-          return;
-        }
-        MouseEvent mouseEvent = (MouseEvent) evt;
-        EventTarget eventTarget = evt.getTarget();
-        if (!(eventTarget instanceof SVGLocatable)) {
-          return;
-        }
-        if (!(boundsCalculator.getBounds((SVGLocatable) innerGroupElement).contains(
-            mouseEvent.getClientX(),
-            mouseEvent.getClientY()))) {
           return;
         }
         if (enabled) {
@@ -109,7 +96,7 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
           NodeList childNodes = rootElement.getChildNodes();
           for (int index = 0; index < childNodes.getLength(); index++) {
             if (childNodes.item(index) instanceof Element) {
-              setAttribute((Element) childNodes.item(index), SVGConstants.SVG_OPACITY_ATTRIBUTE, "0.1");
+              setAttribute((Element) childNodes.item(index), SVGConstants.SVG_OPACITY_ATTRIBUTE, "0.1"); //$NON-NLS-1$
             }
           }
           setAttribute(outerGroupElement, SVGConstants.SVG_OPACITY_ATTRIBUTE, SVGConstants.SVG_OPAQUE_VALUE);
