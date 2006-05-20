@@ -15,9 +15,12 @@ import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
+import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
+import com.lowagie.text.pdf.PdfPCell;
+import com.lowagie.text.pdf.PdfPTable;
 
 public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentEncoder {
 
@@ -56,6 +59,18 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentEn
     directContent.moveTo(startX, yPosition);
     directContent.lineTo(endX, yPosition);
     directContent.stroke();
+
+    ColumnText tableColumn = new ColumnText(directContent);
+    PdfPTable table = createTable();
+    tableColumn.setSimpleColumn(
+        contentBounds.getMinX(),
+        contentBounds.getMinY(),
+        contentBounds.getMaxX(),
+        contentBounds.getCenterY(),
+        LINE_HEIGHT,
+        PdfContentByte.ALIGN_LEFT);
+    tableColumn.addElement(table);
+    tableColumn.go();
   }
 
   private Position encodeAnimaPowers(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds)
@@ -70,7 +85,7 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentEn
     columnText.setSimpleColumn(
         powerPhrase,
         contentBounds.getMinX(),
-        contentBounds.getMinY(),
+        contentBounds.getCenterX(),
         contentBounds.getMaxX(),
         contentBounds.getMaxY(),
         LINE_HEIGHT,
@@ -78,6 +93,50 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentEn
     columnText.go();
     float xPosition = symbolBaseFont.getWidthPoint(SYMBOL, FONT_SIZE);
     return new Position(xPosition, columnText.getYLine());
+  }
+
+  private PdfPTable createTable() {
+    PdfPTable table = new PdfPTable(new float[] { 0.15f, 0.6f, 0.25f });
+    Font font = new Font(getBaseFont(), FONT_SIZE, Font.NORMAL, Color.BLACK);
+    table.setWidthPercentage(100);
+    table.addCell(createHeaderCell(new Phrase(resources.getString("Sheet.AnimaTable.Header.Motes"), font))); //$NON-NLS-1$
+    table.addCell(createHeaderCell(new Phrase(resources.getString("Sheet.AnimaTable.Header.BannerFlare"), font))); //$NON-NLS-1$
+    table.addCell(createHeaderCell(new Phrase(resources.getString("Sheet.AnimaTable.Header.Stealth"), font))); //$NON-NLS-1$
+
+    table.addCell(createContentCell(new Phrase("1-3", font))); //$NON-NLS-1$
+    table.addCell(createContentCell(new Phrase(resources.getString("Sheet.AnimaTable.CasteMarkGlitters"), font))); //$NON-NLS-1$
+    table.addCell(createContentCell(new Phrase(resources.getString("Sheet.AnimaTable.StealthNormal"), font))); //$NON-NLS-1$
+
+    table.addCell(createContentCell(new Phrase("4-7", font))); //$NON-NLS-1$
+    table.addCell(createContentCell(new Phrase(resources.getString("Sheet.AnimaTable.CasteMarkBurns"), font))); //$NON-NLS-1$
+    table.addCell(createContentCell(new Phrase("+2", font))); //$NON-NLS-1$
+
+    table.addCell(createContentCell(new Phrase("8-10", font))); //$NON-NLS-1$
+    table.addCell(createContentCell(new Phrase(resources.getString("Sheet.AnimaTable.CoruscantAura"), font))); //$NON-NLS-1$
+    String stealthImpossible = resources.getString("Sheet.AnimaTable.StealthImpossible"); //$NON-NLS-1$
+    table.addCell(createContentCell(new Phrase(stealthImpossible, font)));
+
+    table.addCell(createContentCell(new Phrase("11-15", font))); //$NON-NLS-1$
+    table.addCell(createContentCell(new Phrase(resources.getString("Sheet.AnimaTable.BrilliantBonfire"), font))); //$NON-NLS-1$
+    table.addCell(createContentCell(new Phrase(stealthImpossible, font)));
+
+    table.addCell(createContentCell(new Phrase("16+", font))); //$NON-NLS-1$
+    table.addCell(createContentCell(new Phrase(resources.getString("Sheet.AnimaTable.TotemicAura"), font))); //$NON-NLS-1$
+    table.addCell(createContentCell(new Phrase(stealthImpossible, font)));
+    return table;
+  }
+
+  private PdfPCell createContentCell(Phrase phrase) {
+    PdfPCell cell = new PdfPCell(phrase);
+    cell.setPaddingTop(1);
+    cell.setPaddingBottom(1.5f);
+    return cell;
+  }
+
+  private PdfPCell createHeaderCell(Phrase phrase) {
+    PdfPCell cell = new PdfPCell(phrase);
+    cell.setBorder(Rectangle.BOTTOM);
+    return cell;
   }
 
   private void addAnimaPowerText(CharacterType characterType, Phrase phrase, Font symbolFont) {

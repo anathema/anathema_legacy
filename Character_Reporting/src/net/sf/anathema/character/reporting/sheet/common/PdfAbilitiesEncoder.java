@@ -69,7 +69,7 @@ public class PdfAbilitiesEncoder extends AbstractPdfEncoder {
   }
 
   private int encodeCrafts(PdfContentByte directContent, IGenericCharacter character, Position position, float width) {
-    String title = "Crafts";
+    String title = resources.getString("Sheet.AbilitySubHeader.Crafts"); //$NON-NLS-1$
     INamedGenericTrait[] traits = character.getSubTraits(AbilityType.Craft);
     return drawNamedTraitSection(directContent, title, traits, position, width, essenceMax);
   }
@@ -79,7 +79,7 @@ public class PdfAbilitiesEncoder extends AbstractPdfEncoder {
       IGenericCharacter character,
       Position position,
       float width) {
-    String title = "Specialties";
+    String title = resources.getString("Sheet.AbilitySubHeader.Specialties"); //$NON-NLS-1$
     List<INamedGenericTrait> allTraits = new ArrayList<INamedGenericTrait>();
     for (IIdentifiedTraitTypeGroup group : character.getAbilityTypeGroups()) {
       for (ITraitType traitType : group.getAllGroupTypes()) {
