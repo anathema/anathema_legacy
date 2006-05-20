@@ -60,15 +60,10 @@ public class SVGIntValueDisplay implements IIntValueView {
     }
   };
 
-  private final EventListener displayListener = new EventListener() {
+  private final EventListener displayRectangleListener = new EventListener() {
     public void handleEvent(Event evt) {
       if (visible && evt instanceof MouseEvent) {
         MouseEvent mouseEvent = (MouseEvent) evt;
-        if (!boundsCalculator.getBounds((SVGLocatable) glassPane).contains(
-            mouseEvent.getClientX(),
-            mouseEvent.getClientY())) {
-          return;
-        }
         if (selectionRectangle == null) {
           selectionRectangle = (SVGRectElement) document.createElementNS(
               SVGDOMImplementation.SVG_NAMESPACE_URI,
@@ -103,7 +98,7 @@ public class SVGIntValueDisplay implements IIntValueView {
   private final String fillColorString;
   private final String fillOpacityString;
   private Element groupElement;
-  private Element glassPane;
+  private SVGRectElement glassPane;
   private int value;
   private boolean visible = false;
 
@@ -168,8 +163,10 @@ public class SVGIntValueDisplay implements IIntValueView {
     return;
   }
 
-  private Element createGlassPane() {
-    Element rectangle = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_RECT);
+  private SVGRectElement createGlassPane() {
+    SVGRectElement rectangle = (SVGRectElement) document.createElementNS(
+        SVGDOMImplementation.SVG_NAMESPACE_URI,
+        TAG_RECT);
     document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_RECT);
     setAttribute(rectangle, ATTRIB_X, SVGConstants.SVG_ZERO_VALUE);
     setAttribute(rectangle, ATTRIB_Y, SVGConstants.SVG_ZERO_VALUE);
@@ -248,7 +245,7 @@ public class SVGIntValueDisplay implements IIntValueView {
   }
 
   private void startListening() {
-    document.addEventListener("mousedown", displayListener, false); //$NON-NLS-1$
+    glassPane.addEventListener("mousedown", displayRectangleListener, false); //$NON-NLS-1$
     document.addEventListener("mousemove", rectangleChangeListener, false); //$NON-NLS-1$
     document.addEventListener("mouseup", selectionListener, false); //$NON-NLS-1$
   }
@@ -257,7 +254,7 @@ public class SVGIntValueDisplay implements IIntValueView {
     if (document == null) {
       return;
     }
-    document.removeEventListener("mousedown", displayListener, false); //$NON-NLS-1$
+    glassPane.removeEventListener("mousedown", displayRectangleListener, false); //$NON-NLS-1$
     document.removeEventListener("mousemove", rectangleChangeListener, false); //$NON-NLS-1$
     document.removeEventListener("mouseup", selectionListener, false); //$NON-NLS-1$
   }
