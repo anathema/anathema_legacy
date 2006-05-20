@@ -12,6 +12,7 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.module.CharacterCoreModule;
 import net.sf.anathema.character.impl.module.CharacterModule;
 import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
+import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionPartEncoder;
 import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.framework.resources.IAnathemaResources;
@@ -27,7 +28,7 @@ import com.lowagie.text.pdf.PdfWriter;
 public class PdfCharacterSheetDemo {
 
   public static void main(String[] args) {
-    Document document = new Document(PageSize.A4, 40, 40, 15, 15);
+    Document document = new Document(PageSize.A4);
     try {
       System.err.println(document.getPageSize());
       File outputStream = new File("iText.pdf");
@@ -36,8 +37,9 @@ public class PdfCharacterSheetDemo {
       PdfContentByte directContent = writer.getDirectContent();
       IGenericCharacter character = createDemoCharacter(CharacterType.SOLAR);
       DemoGenericDescription description = createDemoDescription();
-      SecondEditionPartEncoder partEncoder = new SecondEditionPartEncoder(createDemoResources(), 7);
-      new PdfFirstPageEncoder(partEncoder).encode(directContent, character, description);
+      PdfPageConfiguration pageConfiguration = PdfPageConfiguration.create(document.getPageSize());
+      SecondEditionPartEncoder partEncoder = new SecondEditionPartEncoder(createDemoResources(), 7, pageConfiguration);
+      new PdfFirstPageEncoder(partEncoder, pageConfiguration).encode(directContent, character, description);
       BrowserControl.displayUrl(outputStream.toURL());
     }
     catch (Exception de) {

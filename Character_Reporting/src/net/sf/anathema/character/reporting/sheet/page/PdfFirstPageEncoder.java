@@ -18,13 +18,14 @@ import com.lowagie.text.pdf.PdfContentByte;
 public class PdfFirstPageEncoder {
 
   public static final int CONTENT_HEIGHT = 755;
-  private final PdfPageConfiguration pageConfiguration = new PdfPageConfiguration();
+  private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
   private final IPdfPartEncoder partEncoder;
 
-  public PdfFirstPageEncoder(IPdfPartEncoder partEncoder) {
+  public PdfFirstPageEncoder(IPdfPartEncoder partEncoder, PdfPageConfiguration pageConfiguration) {
     this.partEncoder = partEncoder;
     this.boxEncoder = new PdfBoxEncoder(partEncoder.getBaseFont());
+    this.pageConfiguration = pageConfiguration;
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description)
@@ -70,14 +71,16 @@ public class PdfFirstPageEncoder {
   }
 
   private void encodeFirstColumn(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
-      throws DocumentException, IOException {
+      throws DocumentException,
+      IOException {
     int attributeHeight = encodeAttributes(directContent, character, distanceFromTop);
     distanceFromTop += attributeHeight + PADDING;
     encodeAbilities(directContent, character, distanceFromTop);
   }
 
   private void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
-      throws DocumentException, IOException {
+      throws DocumentException,
+      IOException {
     int abilitiesHeight = CONTENT_HEIGHT - distanceFromTop;
     SmartRectangle boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
     SmartRectangle contentBounds = boxEncoder.encodeBox(directContent, boxBounds, getHeaderLabel("Abilities")); //$NON-NLS-1$

@@ -21,11 +21,14 @@ import com.lowagie.text.pdf.PdfContentByte;
 public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
 
   private static final int ANIMA_HEIGHT = 128;
-  private final PdfPageConfiguration pageConfiguration = new PdfPageConfiguration();
+  private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
 
-  public SecondEditionPartEncoder(IResources resources, int essenceMax) throws DocumentException, IOException {
+  public SecondEditionPartEncoder(IResources resources, int essenceMax, PdfPageConfiguration pageConfiguration)
+      throws DocumentException,
+      IOException {
     super(resources, essenceMax);
+    this.pageConfiguration = pageConfiguration;
     this.boxEncoder = new PdfBoxEncoder(getBaseFont());
   }
 
