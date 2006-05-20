@@ -4,7 +4,6 @@ import java.awt.Cursor;
 import java.awt.Rectangle;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.charmtree.batik.AnathemaCanvas;
@@ -14,6 +13,8 @@ import net.sf.anathema.charmtree.presenter.view.IAnathemaCanvas;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionListener;
 import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 
 import org.apache.batik.swing.gvt.Interactor;
 import org.w3c.dom.NodeList;
@@ -28,7 +29,7 @@ public class CharmTreeListening {
   private ICharmTreeViewProperties properties;
   private final IAnathemaCanvas canvas;
   private final BoundsCalculator boundsCalculator = new BoundsCalculator();
-  private final ArrayList<ICharmSelectionListener> charmListenerList = new ArrayList<ICharmSelectionListener>();
+  private final GenericControl<ICharmSelectionListener> control = new GenericControl<ICharmSelectionListener>();
 
   private final EventListener canvasResettingListener = new EventListener() {
     public void handleEvent(Event evt) {
@@ -79,8 +80,8 @@ public class CharmTreeListening {
     interactors.add(new DoubleRightClickResetTransformInteractor(boundsCalculator));
   }
 
-  public synchronized void addCharmSelectionListener(ICharmSelectionListener listener) {
-    charmListenerList.add(listener);
+  public void addCharmSelectionListener(ICharmSelectionListener listener) {
+    control.addListener(listener);
   }
 
   public void destructDocumentListening(final SVGDocument document) {
@@ -100,10 +101,12 @@ public class CharmTreeListening {
     }
   }
 
-  private synchronized void fireCharmSelectionEvent(String charmId) {
-    for (ICharmSelectionListener listener : charmListenerList) {
-      listener.charmSelected(charmId);
-    }
+  private void fireCharmSelectionEvent(final String charmId) {
+    control.forAllDo(new IClosure<ICharmSelectionListener>() {
+      public void execute(ICharmSelectionListener input) {
+        input.charmSelected(charmId);
+      }
+    });
   }
 
   public Rectangle getGroupBounds(String groupId) {
