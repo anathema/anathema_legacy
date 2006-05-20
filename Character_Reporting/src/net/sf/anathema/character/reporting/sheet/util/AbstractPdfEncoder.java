@@ -15,7 +15,7 @@ public abstract class AbstractPdfEncoder {
   protected abstract BaseFont getBaseFont();
 
   protected final void setCommentFont(PdfContentByte directContent) {
-    directContent.setFontAndSize(getBaseFont(), IVoidStateFormatConstants.FONT_SIZE - 2);
+    directContent.setFontAndSize(getBaseFont(), IVoidStateFormatConstants.COMMENT_FONT_SIZE);
   }
 
   protected final void setDefaultFont(PdfContentByte directContent) {
@@ -23,8 +23,7 @@ public abstract class AbstractPdfEncoder {
   }
 
   protected final void setSubsectionFont(PdfContentByte directContent) {
-    int fontSize = SUBSECTION_FONT_SIZE;
-    directContent.setFontAndSize(getBaseFont(), fontSize);
+    directContent.setFontAndSize(getBaseFont(), SUBSECTION_FONT_SIZE);
   }
 
   protected final int drawSubsectionHeader(PdfContentByte directContent, String text, Point position, int width) {

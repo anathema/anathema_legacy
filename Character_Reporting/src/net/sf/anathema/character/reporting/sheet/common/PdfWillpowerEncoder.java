@@ -10,7 +10,7 @@ import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class PdfWillpowerEncoder {
+public class PdfWillpowerEncoder implements IPdfContentEncoder {
 
   private PdfTraitEncoder traitEncoder;
 
@@ -18,7 +18,7 @@ public class PdfWillpowerEncoder {
     this.traitEncoder = PdfTraitEncoder.createLargeTraitEncoder(baseFont);
   }
 
-  public void encodeWillpower(PdfContentByte directContent, IGenericCharacter character, SmartRectangle contentBounds) {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, SmartRectangle contentBounds) {
     int width = contentBounds.width;
     int value = character.getTrait(OtherTraitType.Willpower).getCurrentValue();
     int yPosition = (int) contentBounds.getMaxY() - traitEncoder.getTraitHeight();

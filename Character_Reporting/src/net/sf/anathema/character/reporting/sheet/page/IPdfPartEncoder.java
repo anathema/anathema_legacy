@@ -1,32 +1,41 @@
 package net.sf.anathema.character.reporting.sheet.page;
 
+import java.io.IOException;
+
 import net.disy.commons.core.geometry.SmartRectangle;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.lib.resources.IResources;
 
+import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
 public interface IPdfPartEncoder {
 
-  public void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, SmartRectangle contentBounds);
+  public void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, SmartRectangle contentBounds)
+      throws DocumentException,
+      IOException;
 
   public void encodeAttributes(
       PdfContentByte directContent,
       SmartRectangle contentBounds,
       IGroupedTraitType[] groups,
-      IGenericTraitCollection traitCollection);
+      IGenericTraitCollection traitCollection) throws DocumentException, IOException;
 
   public void encodeEditionSpecificFirstPagePart(
       PdfContentByte directContent,
       IGenericCharacter character,
-      int distanceFromTop);
+      int distanceFromTop) throws DocumentException, IOException;
 
-  public void encodeEssence(PdfContentByte directContent, IGenericCharacter character, SmartRectangle contentBounds);
+  public void encodeEssence(PdfContentByte directContent, IGenericCharacter character, SmartRectangle contentBounds)
+      throws DocumentException,
+      IOException;
 
-  public void encodePersonalInfos(PdfContentByte directContent, IGenericCharacter character, SmartRectangle infoBounds);
+  public void encodePersonalInfos(PdfContentByte directContent, IGenericCharacter character, SmartRectangle infoBounds)
+      throws DocumentException,
+      IOException;
 
   public BaseFont getBaseFont();
 

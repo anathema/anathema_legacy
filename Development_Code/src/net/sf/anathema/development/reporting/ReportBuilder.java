@@ -10,6 +10,7 @@ import net.sf.anathema.development.reporting.encoder.BasicMortalSheetEncoder;
 import net.sf.anathema.development.reporting.encoder.BasicSolarSheetEncoder;
 import net.sf.anathema.development.reporting.encoder.page.IPageFormat;
 import net.sf.anathema.development.reporting.encoder.page.PageFormat;
+import net.sf.anathema.development.reporting.encoder.voidstate.VoidstateSheetEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.VoidstateBasicsEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateAbilitySubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateFiveAbilityGroupSubreportEncoder;
@@ -58,7 +59,7 @@ public class ReportBuilder {
       IVoidStateFormatConstants.FONT_SIZE);
 
   public static void main(String[] args) {
-    // buildReportDesign(new File("VoidStateCharacterSheet.xml"), new VoidstateSheetEncoder()); //$NON-NLS-1$
+    buildReportDesign(new File("VoidStateCharacterSheet.xml"), new VoidstateSheetEncoder()); //$NON-NLS-1$
     // buildReportDesign(new File("VoidstateNullPage.xml"), new VoidstateNullPageSubreportEncoder()); //$NON-NLS-1$
     // buildReportDesign(new File("VoidstateBeastformPage.xml"), new VoidstateBeastformSubreportEncoder());
     // //$NON-NLS-1$

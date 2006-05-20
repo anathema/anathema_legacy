@@ -1,6 +1,9 @@
 package net.sf.anathema.character.reporting.sheet.page;
 
 import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.PADDING;
+
+import java.io.IOException;
+
 import net.disy.commons.core.geometry.SmartRectangle;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
@@ -9,6 +12,7 @@ import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
 
+import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfFirstPageEncoder {
@@ -23,7 +27,9 @@ public class PdfFirstPageEncoder {
     this.boxEncoder = new PdfBoxEncoder(partEncoder.getBaseFont());
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description) {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description)
+      throws DocumentException,
+      IOException {
     int distanceFromTop = 0;
     final int firstRowHeight = 51;
     encodePersonalInfo(directContent, character, description, distanceFromTop, firstRowHeight);
@@ -39,7 +45,7 @@ public class PdfFirstPageEncoder {
       PdfContentByte directContent,
       IGenericCharacter character,
       int distanceFromTop,
-      final int firstRowHeight) {
+      final int firstRowHeight) throws DocumentException, IOException {
     SmartRectangle essenceBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, firstRowHeight);
     String title = getHeaderLabel("Essence"); //$NON-NLS-1$
     SmartRectangle essenceContentBounds = boxEncoder.encodeBox(directContent, essenceBounds, title);
@@ -55,7 +61,7 @@ public class PdfFirstPageEncoder {
       IGenericCharacter character,
       IGenericDescription description,
       int distanceFromTop,
-      final int firstRowHeight) {
+      final int firstRowHeight) throws DocumentException, IOException {
     SmartRectangle infoBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, firstRowHeight, 2);
     String name = description.getName();
     String title = StringUtilities.isNullOrTrimEmpty(name) ? getHeaderLabel("PersonalInfo") : name; //$NON-NLS-1$
@@ -63,20 +69,24 @@ public class PdfFirstPageEncoder {
     partEncoder.encodePersonalInfos(directContent, character, infoContentBounds);
   }
 
-  private void encodeFirstColumn(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop) {
+  private void encodeFirstColumn(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
+      throws DocumentException, IOException {
     int attributeHeight = encodeAttributes(directContent, character, distanceFromTop);
     distanceFromTop += attributeHeight + PADDING;
     encodeAbilities(directContent, character, distanceFromTop);
   }
 
-  private void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop) {
+  private void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
+      throws DocumentException, IOException {
     int abilitiesHeight = CONTENT_HEIGHT - distanceFromTop;
     SmartRectangle boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
     SmartRectangle contentBounds = boxEncoder.encodeBox(directContent, boxBounds, getHeaderLabel("Abilities")); //$NON-NLS-1$
     partEncoder.encodeAbilities(directContent, character, contentBounds);
   }
 
-  private int encodeAttributes(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop) {
+  private int encodeAttributes(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
+      throws DocumentException,
+      IOException {
     int attributeHeight = 128;
     SmartRectangle attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 1);
     SmartRectangle attributesContentBounds = boxEncoder.encodeBox(

@@ -24,6 +24,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.solar.caste.SolarCaste;
 
 public class DemoGenericCharacter implements IGenericCharacter {
@@ -33,10 +34,14 @@ public class DemoGenericCharacter implements IGenericCharacter {
   private final List<IMagic> allLearnedMagic = new ArrayList<IMagic>();
   private final List<IGenericTrait> allBackgrounds = new ArrayList<IGenericTrait>();
   private final List<IGenericCombo> allCombos = new ArrayList<IGenericCombo>();
-  private final DemoCharacterTemplate characterTemplate = new DemoCharacterTemplate();
+  private final DemoCharacterTemplate characterTemplate;
   private final DemoGenericDescription description = new DemoGenericDescription();
   private final DemoConcept concept = new DemoConcept();
   private IExaltedRuleSet ruleSet;
+  
+  public DemoGenericCharacter(CharacterType characterType) {
+    this.characterTemplate = new DemoCharacterTemplate(characterType);
+  }
 
   public IAdditionalModel getAdditionalModel(String templateId) {
     return null;

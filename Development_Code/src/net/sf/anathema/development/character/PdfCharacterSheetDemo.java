@@ -8,6 +8,7 @@ import net.sf.anathema.character.abyssal.caste.AbyssalCaste;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.module.CharacterCoreModule;
 import net.sf.anathema.character.impl.module.CharacterModule;
 import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
@@ -33,7 +34,7 @@ public class PdfCharacterSheetDemo {
       PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(outputStream));
       document.open();
       PdfContentByte directContent = writer.getDirectContent();
-      IGenericCharacter character = createDemoCharacter();
+      IGenericCharacter character = createDemoCharacter(CharacterType.SOLAR);
       DemoGenericDescription description = createDemoDescription();
       SecondEditionPartEncoder partEncoder = new SecondEditionPartEncoder(createDemoResources(), 7);
       new PdfFirstPageEncoder(partEncoder).encode(directContent, character, description);
@@ -55,8 +56,8 @@ public class PdfCharacterSheetDemo {
     return resources;
   }
 
-  private static IGenericCharacter createDemoCharacter() {
-    DemoGenericCharacter character = new DemoGenericCharacter();
+  private static IGenericCharacter createDemoCharacter(CharacterType characterType) {
+    DemoGenericCharacter character = new DemoGenericCharacter(characterType);
     character.getConcept().setConceptText("Tolles Konzept");
     character.getConcept().setCasteType(AbyssalCaste.Day);
     character.getConcept().setWillpowerRegainingConceptName("Pedestrian Motivation");

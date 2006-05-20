@@ -15,4 +15,5 @@ public interface IVoidStateFormatConstants {
   public static final int TITLE_HEIGHT = 14;
   public static final int HEALTH_RECT_SIZE = 7;
   public static final TextFormat DEFAULT_TEXT_FORMAT = new TextFormat(FontStyle.PLAIN, false, FONT_SIZE);
+  public static final int COMMENT_FONT_SIZE = FONT_SIZE - 2;
 }

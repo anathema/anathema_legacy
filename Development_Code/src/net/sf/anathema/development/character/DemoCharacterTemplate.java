@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
+import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.abilities.GroupedTraitType;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
@@ -18,8 +19,15 @@ import net.sf.anathema.character.generic.template.presentation.IPresentationProp
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.character.generic.type.CharacterType;
 
 public class DemoCharacterTemplate implements ICharacterTemplate {
+  
+  private final ITemplateType templateType;
+
+  public DemoCharacterTemplate(CharacterType characterType) {
+    this.templateType = new TemplateType(characterType);
+  }
 
   public IGroupedTraitType[] getAbilityGroups() {
     return null;
@@ -87,7 +95,6 @@ public class DemoCharacterTemplate implements ICharacterTemplate {
   }
 
   public ITemplateType getTemplateType() {
-    return null;
+    return templateType;
   }
-
 }

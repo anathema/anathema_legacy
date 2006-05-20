@@ -9,15 +9,15 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfTraitEncoder extends AbstractPdfEncoder {
 
-  private interface IShape {
-    public void encode(PdfContentByte directContent, Point lowerLeft, int dotIndex, int value);
-  }
-
   private class Dot implements IShape {
     public void encode(PdfContentByte directContent, Point lowerLeft, int dotIndex, int value) {
       directContent.arc(lowerLeft.x, lowerLeft.y, lowerLeft.x + dotSize, lowerLeft.y + dotSize, 0, 360);
       commitShape(directContent, dotIndex < value);
     }
+  }
+
+  private interface IShape {
+    public void encode(PdfContentByte directContent, Point lowerLeft, int dotIndex, int value);
   }
 
   private class Square implements IShape {
@@ -30,7 +30,7 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
   private static final int SMALL_DOT_SPACING = 2;
 
   public static PdfTraitEncoder createLargeTraitEncoder(BaseFont baseFont) {
-    return new PdfTraitEncoder(baseFont, 14, 11);
+    return new PdfTraitEncoder(baseFont, 14, 10);
   }
 
   public static PdfTraitEncoder createSmallTraitEncoder(BaseFont baseFont) {

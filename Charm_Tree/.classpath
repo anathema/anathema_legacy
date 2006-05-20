@@ -27,8 +27,8 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Framework"/>
-	<classpathentry kind="lib" path="/xml-batik/batik-1.6/lib/xml-apis-dom3.jar"/>
 	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-css.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-script.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/XML/xml-apis-dom3.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
