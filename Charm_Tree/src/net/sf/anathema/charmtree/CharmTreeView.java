@@ -43,7 +43,6 @@ public class CharmTreeView implements ICharmTreeView {
 
   public CharmTreeView(ICharmTreeViewProperties properties) {
     setProperties(properties);
-    listening.initOverallCharmTreeListening(this);
     addDocumentLoadedListener(new IDocumentLoadedListener() {
       public void documentLoaded() {
         initCharmNames(canvas.getSVGDocument());
@@ -131,8 +130,8 @@ public class CharmTreeView implements ICharmTreeView {
   // for (int i = 0; i < textNodes.getLength(); i++) {
   // internationalize((SVGTextContentElement) textNodes.item(i));
   // }
-  //  }
-  
+  // }
+
   private void initCharmNames(SVGDocument svgDoc) {
     NodeList textNodes = svgDoc.getElementsByTagName(ISVGCascadeXMLConstants.TAG_TEXT);
     for (int i = 0; i < textNodes.getLength(); i++) {
@@ -142,8 +141,7 @@ public class CharmTreeView implements ICharmTreeView {
     }
   }
 
-  
-// private void internationalize(SVGTextContentElement currentNode) {
+  // private void internationalize(SVGTextContentElement currentNode) {
   // String id = ((Text) currentNode.getFirstChild()).getData();
   // String charmName = properties.getNodeName(id);
   // if (properties.isRootCharm(id)) {
@@ -151,8 +149,8 @@ public class CharmTreeView implements ICharmTreeView {
   // }
   // else {
   // currentNode.getFirstChild().setNodeValue(charmName);
-  //    }
-  //  }
+  // }
+  // }
 
   public void setCanvasBackground(Color color) {
     canvas.setBackground(color);

@@ -7,34 +7,24 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.charmtree.batik.AnathemaCanvas;
 import net.sf.anathema.charmtree.batik.BoundsCalculator;
-import net.sf.anathema.charmtree.batik.EventListenerRegistratingLoadListener;
 import net.sf.anathema.charmtree.batik.IBoundsCalculator;
 import net.sf.anathema.charmtree.presenter.view.IAnathemaCanvas;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionListener;
-import net.sf.anathema.charmtree.presenter.view.ICharmTreeView;
 import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants;
 
-import org.apache.batik.dom.svg.SVGOMDocument;
 import org.apache.batik.swing.gvt.Interactor;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.events.Event;
 import org.w3c.dom.events.EventListener;
-import org.w3c.dom.events.EventTarget;
 import org.w3c.dom.events.MouseEvent;
 import org.w3c.dom.svg.SVGDocument;
 import org.w3c.dom.svg.SVGGElement;
-import org.w3c.dom.svg.SVGLocatable;
-import org.w3c.dom.svg.SVGTSpanElement;
 
 public class CharmTreeListening {
 
-  private boolean overCharmLearnable;
-  private boolean overCharmSelected;
-  private boolean overCharmUnlearnable;
   private ICharmTreeViewProperties properties;
   private Cursor currentCursor;
   private final IAnathemaCanvas canvas;
@@ -48,39 +38,16 @@ public class CharmTreeListening {
     }
   };
 
-  private ICharmSelectionListener charmSelectionListener = new ICharmSelectionListener() {
-    public void charmSelected(String charmId) {
-      overCharmSelected = properties.isCharmSelected(charmId);
-      overCharmUnlearnable = properties.isCharmUnlearnable(charmId);
-      overCharmLearnable = properties.isCharmLearnable(charmId);
-      setCursorForCharm();
-      setCanvasTooltip(charmId);
-    }
-  };
-
   private EventListener cursorTooltipInitListener = new EventListener() {
     public void handleEvent(Event evt) {
       if (evt instanceof MouseEvent) {
-        MouseEvent mouseEvent = (MouseEvent) evt;
-        NodeList groupElementsList = canvas.getElementById(ISVGCascadeXMLConstants.VALUE_CASCADE_ID)
-            .getElementsByTagName(ISVGCascadeXMLConstants.TAG_G);
-        for (int index = 0; index < groupElementsList.getLength(); index++) {
-          SVGGElement groupElement = (SVGGElement) groupElementsList.item(index);
-          if (boundsCalculator.getBounds(groupElement).contains(mouseEvent.getClientX(), mouseEvent.getClientY())) {
-            String charmId = groupElement.getAttribute(ISVGCascadeXMLConstants.ATTRIB_ID);
-            if (StringUtilities.isNullOrEmpty(charmId)) {
-              continue;
-            }
-            overCharmSelected = properties.isCharmSelected(charmId);
-            overCharmUnlearnable = properties.isCharmUnlearnable(charmId);
-            overCharmLearnable = properties.isCharmLearnable(charmId);
-            setCursorForCharm();
-            setCanvasTooltip(charmId);
-            return;
-          }
-        }
-        canvas.setCursorInternal(Cursor.getDefaultCursor());
-        canvas.setToolTipText(null);
+        SVGGElement group = (SVGGElement) evt.getCurrentTarget();
+        String charmId = group.getAttribute(ISVGCascadeXMLConstants.ATTRIB_ID);
+        boolean isCharmSelected = properties.isCharmSelected(charmId);
+        boolean isCharmUnlearnable = properties.isCharmUnlearnable(charmId);
+        boolean isCharmLearnable = properties.isCharmLearnable(charmId);
+        setCursorForCharm(isCharmSelected, isCharmLearnable, isCharmUnlearnable);
+        setCanvasTooltip(charmId);
       }
     }
   };
@@ -88,26 +55,8 @@ public class CharmTreeListening {
   private final EventListener selectionInvokingListener = new EventListener() {
     public void handleEvent(Event evt) {
       if (evt instanceof MouseEvent && ((MouseEvent) evt).getButton() == 0) {
-        MouseEvent mouseEvent = (MouseEvent) evt;
-        String charmId = null;
-        EventTarget eventTarget = evt.getTarget();
-        if (eventTarget instanceof SVGTSpanElement) {
-          charmId = ((SVGTSpanElement) eventTarget).getParentNode().getParentNode().getAttributes().getNamedItem(
-              ISVGCascadeXMLConstants.ATTRIB_ID).getNodeValue();
-        }
-        else if (eventTarget instanceof SVGLocatable) {
-          NodeList groupElementsList = canvas.getElementById(ISVGCascadeXMLConstants.VALUE_CASCADE_ID)
-              .getElementsByTagName(ISVGCascadeXMLConstants.TAG_G);
-          for (int index = 0; index < groupElementsList.getLength(); index++) {
-            SVGGElement groupElement = (SVGGElement) groupElementsList.item(index);
-            if (boundsCalculator.getBounds(groupElement).contains(mouseEvent.getClientX(), mouseEvent.getClientY())) {
-              charmId = groupElement.getAttribute(ISVGCascadeXMLConstants.ATTRIB_ID);
-            }
-          }
-        }
-        if (StringUtilities.isNullOrEmpty(charmId)) {
-          return;
-        }
+        SVGGElement group = (SVGGElement) evt.getCurrentTarget();
+        String charmId = group.getAttribute(ISVGCascadeXMLConstants.ATTRIB_ID);
         fireCharmSelectionEvent(charmId);
       }
     }
@@ -137,13 +86,19 @@ public class CharmTreeListening {
 
   public void destructDocumentListening(final SVGDocument document) {
     boundsCalculator.reset();
-    if (document == null || !(document instanceof SVGOMDocument)) {
+    if (document == null) {
       return;
     }
-    SVGOMDocument omDocument = (SVGOMDocument) document;
-    omDocument.removeEventListener("mousemove", cursorTooltipInitListener, false); //$NON-NLS-1$
-    omDocument.removeEventListener("mouseout", canvasResettingListener, false); //$NON-NLS-1$
-    omDocument.removeEventListener("click", selectionInvokingListener, false); //$NON-NLS-1$
+    NodeList groupElementsList = document.getElementById(ISVGCascadeXMLConstants.VALUE_CASCADE_ID)
+        .getElementsByTagName(ISVGCascadeXMLConstants.TAG_G);
+    for (int index = 0; index < groupElementsList.getLength(); index++) {
+      SVGGElement groupElement = (SVGGElement) groupElementsList.item(index);
+      if (groupElement.hasAttribute("isCharm")) {
+        groupElement.removeEventListener("click", selectionInvokingListener, false); //$NON-NLS-1$
+        groupElement.removeEventListener("mousemove", cursorTooltipInitListener, false); //$NON-NLS-1$
+        groupElement.removeEventListener("mouseout", canvasResettingListener, false); //$NON-NLS-1$
+      }
+    }
   }
 
   private synchronized void fireCharmSelectionEvent(String charmId) {
@@ -158,31 +113,31 @@ public class CharmTreeListening {
   }
 
   public void initDocumentListening(SVGDocument document) {
-    if (document == null || !(document instanceof SVGOMDocument)) {
+    if (document == null) {
       return;
     }
-    final SVGOMDocument omDocument = (SVGOMDocument) document;
-    omDocument.addEventListener("click", selectionInvokingListener, false); //$NON-NLS-1$
-  }
-
-  public void initOverallCharmTreeListening(ICharmTreeView charmTreeView) {
-    addCharmSelectionListener(charmSelectionListener);
-    charmTreeView.addDocumentLoadedListener(new EventListenerRegistratingLoadListener(
-        "mousemove", cursorTooltipInitListener, canvas)); //$NON-NLS-1$
-    charmTreeView.addDocumentLoadedListener(new EventListenerRegistratingLoadListener(
-        "mouseout", canvasResettingListener, canvas)); //$NON-NLS-1$
+    NodeList groupElementsList = document.getElementById(ISVGCascadeXMLConstants.VALUE_CASCADE_ID)
+        .getElementsByTagName(ISVGCascadeXMLConstants.TAG_G);
+    for (int index = 0; index < groupElementsList.getLength(); index++) {
+      SVGGElement groupElement = (SVGGElement) groupElementsList.item(index);
+      if (groupElement.hasAttribute("isCharm")) {
+        groupElement.addEventListener("click", selectionInvokingListener, false); //$NON-NLS-1$
+        groupElement.addEventListener("mousemove", cursorTooltipInitListener, false); //$NON-NLS-1$
+        groupElement.addEventListener("mouseout", canvasResettingListener, false); //$NON-NLS-1$
+      }
+    }
   }
 
   private void setCanvasTooltip(String charmId) {
     canvas.setToolTipText(properties.getToolTip(charmId));
   }
 
-  private void setCursorForCharm() {
-    if (!overCharmSelected) {
-      currentCursor = !overCharmLearnable ? properties.getDefaultCursor() : properties.getAddCursor();
+  private void setCursorForCharm(boolean isCharmSelected, boolean isCharmLearnable, boolean isCharmUnlearnable) {
+    if (!isCharmSelected) {
+      currentCursor = !isCharmLearnable ? properties.getDefaultCursor() : properties.getAddCursor();
     }
     else {
-      currentCursor = !overCharmUnlearnable ? properties.getDefaultCursor() : properties.getRemoveCursor();
+      currentCursor = !isCharmUnlearnable ? properties.getDefaultCursor() : properties.getRemoveCursor();
     }
     canvas.setCursorInternal(currentCursor);
   }
