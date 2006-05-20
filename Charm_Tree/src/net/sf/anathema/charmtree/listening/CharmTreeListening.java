@@ -1,7 +1,6 @@
 package net.sf.anathema.charmtree.listening;
 
 import java.awt.Cursor;
-import java.awt.Rectangle;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.List;
@@ -107,11 +106,6 @@ public class CharmTreeListening {
         input.charmSelected(charmId);
       }
     });
-  }
-
-  public Rectangle getGroupBounds(String groupId) {
-    SVGGElement svgElement = (SVGGElement) canvas.getElementById(groupId);
-    return boundsCalculator.getBounds(svgElement);
   }
 
   public void initDocumentListening(SVGDocument document) {

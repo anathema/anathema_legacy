@@ -112,10 +112,6 @@ public class CharmTreeView implements ICharmTreeView {
     charmGroup.setAttribute(ISVGCascadeXMLConstants.ATTRIB_OPACITY, String.valueOf((float) alpha / 255));
   }
 
-  public Rectangle getGroupBounds(String groupId) {
-    return listening.getGroupBounds(groupId);
-  }
-
   public void addDocumentLoadedListener(final IDocumentLoadedListener listener) {
     canvas.addSVGLoadEventDispatcherListener(new SVGLoadEventDispatcherAdapter() {
       @Override

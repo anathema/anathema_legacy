@@ -1,7 +1,6 @@
 package net.sf.anathema.charmtree.presenter.view;
 
 import java.awt.Color;
-import java.awt.Rectangle;
 
 import javax.swing.JComponent;
 
@@ -21,8 +20,6 @@ public interface ICharmTreeView {
   public void setCharmAlpha(String charmId, int alpha);
 
   public void addDocumentLoadedListener(IDocumentLoadedListener listener);
-
-  public Rectangle getGroupBounds(String charmId);
 
   public void setCanvasBackground(Color color);
 
