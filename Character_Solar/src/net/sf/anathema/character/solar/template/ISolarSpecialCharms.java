@@ -3,12 +3,12 @@ package net.sf.anathema.character.solar.template;
 import java.util.LinkedHashMap;
 
 import net.sf.anathema.character.generic.health.HealthLevelType;
+import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.StaticMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TraitDependentMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
-import net.sf.anathema.character.generic.magic.charms.special.OxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 
