@@ -38,6 +38,55 @@ import org.w3c.dom.svg.SVGRectElement;
 
 public class SVGIntValueDisplay implements IIntValueView {
 
+  private final EventListener selectionListener = new EventListener() {
+    public void handleEvent(Event evt) {
+      if (selectionRectangle != null) {
+        removeSelectionRectangle();
+        if (evt instanceof MouseEvent) {
+          selectCircles(((MouseEvent) evt).getClientX());
+        }
+      }
+    }
+  };
+
+  private final EventListener rectangleChangeListener = new EventListener() {
+    public void handleEvent(Event evt) {
+      if (evt instanceof MouseEvent && selectionRectangle != null) {
+        MouseEvent mouseEvent = ((MouseEvent) evt);
+        int clientX = mouseEvent.getClientX();
+        setSelectionRectangleWidth(clientX);
+        selectCircles(clientX);
+      }
+    }
+  };
+
+  private final EventListener displayListener = new EventListener() {
+    public void handleEvent(Event evt) {
+      if (visible && evt instanceof MouseEvent) {
+        MouseEvent mouseEvent = (MouseEvent) evt;
+        if (!boundsCalculator.getBounds((SVGLocatable) glassPane).contains(
+            mouseEvent.getClientX(),
+            mouseEvent.getClientY())) {
+          return;
+        }
+        if (selectionRectangle == null) {
+          selectionRectangle = (SVGRectElement) document.createElementNS(
+              SVGDOMImplementation.SVG_NAMESPACE_URI,
+              TAG_RECT);
+          selectionRectangle.setAttributeNS(null, ATTRIB_X, SVGConstants.SVG_ZERO_VALUE);
+          selectionRectangle.setAttributeNS(null, ATTRIB_Y, "1"); //$NON-NLS-1$
+          setAttribute(selectionRectangle, ATTRIB_WIDTH, SVGConstants.SVG_ZERO_VALUE);
+          selectionRectangle.setAttributeNS(null, ATTRIB_HEIGHT, "22"); //$NON-NLS-1$
+          selectionRectangle.setAttributeNS(null, ATTRIB_STROKE, VALUE_COLOR_BLACK);
+          selectionRectangle.setAttributeNS(null, ATTRIB_FILL, "rgb(120, 120, 120)"); //$NON-NLS-1$
+          selectionRectangle.setAttributeNS(null, ATTRIB_FILL_OPACITY, String.valueOf((float) 120 / 255));
+          groupElement.appendChild(selectionRectangle);
+        }
+        setSelectionRectangleWidth(mouseEvent.getClientX());
+      }
+    }
+  };
+
   public static double getDiameter(double charmWidth) {
     return charmWidth / 10;
   }
@@ -58,6 +107,8 @@ public class SVGIntValueDisplay implements IIntValueView {
   private int value;
   private boolean visible = false;
 
+  private SVGOMDocument document;
+
   public SVGIntValueDisplay(int maxValue, Color fillColor, int initialValue, double diameter) {
     this.dotCount = maxValue;
     this.value = initialValue;
@@ -75,32 +126,30 @@ public class SVGIntValueDisplay implements IIntValueView {
 
   public Element initGui(SVGOMDocument svgDocument, IBoundsCalculator calculator) {
     this.boundsCalculator = calculator;
+    this.document = svgDocument;
     groupElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_G);
-    createCircles(svgDocument);
+    createCircles();
     for (Element circle : circles) {
       groupElement.appendChild(circle);
     }
-    glassPane = createGlassPane(svgDocument);
+    glassPane = createGlassPane();
     groupElement.appendChild(glassPane);
-    svgDocument.addEventListener("mousedown", createRectangleDisplayListener(svgDocument), false); //$NON-NLS-1$
-    svgDocument.addEventListener("mousemove", createRectangleChangeListener(), false); //$NON-NLS-1$
-    svgDocument.addEventListener("mouseup", createRectangleSelectionListener(), false); //$NON-NLS-1$
+    startListening();
     this.visible = true;
     setValue(value);
     return groupElement;
   }
 
-  private EventListener createRectangleChangeListener() {
-    return new EventListener() {
-      public void handleEvent(Event evt) {
-        if (evt instanceof MouseEvent && selectionRectangle != null) {
-          MouseEvent mouseEvent = ((MouseEvent) evt);
-          int clientX = mouseEvent.getClientX();
-          setSelectionRectangleWidth(clientX);
-          selectCircles(clientX);
-        }
-      }
-    };
+  private void startListening() {
+    document.addEventListener("mousedown", displayListener, false); //$NON-NLS-1$
+    document.addEventListener("mousemove", rectangleChangeListener, false); //$NON-NLS-1$
+    document.addEventListener("mouseup", selectionListener, false); //$NON-NLS-1$
+  }
+
+  private void stopListening() {
+    document.addEventListener("mousedown", displayListener, false); //$NON-NLS-1$
+    document.addEventListener("mousemove", rectangleChangeListener, false); //$NON-NLS-1$
+    document.addEventListener("mouseup", selectionListener, false); //$NON-NLS-1$
   }
 
   private void setSelectionRectangleWidth(float clientX) {
@@ -108,19 +157,6 @@ public class SVGIntValueDisplay implements IIntValueView {
     float width = selectionRectangle.getScreenCTM().inverse().getA() * (clientX - groupBounds.x);
     double boundedWidth = Math.max(0, Math.min(maximumWidth, width));
     setAttribute(selectionRectangle, ATTRIB_WIDTH, String.valueOf(boundedWidth));
-  }
-
-  private EventListener createRectangleSelectionListener() {
-    return new EventListener() {
-      public void handleEvent(Event evt) {
-        if (selectionRectangle != null) {
-          removeSelectionRectangle();
-          if (evt instanceof MouseEvent) {
-            selectCircles(((MouseEvent) evt).getClientX());
-          }
-        }
-      }
-    };
   }
 
   private void selectCircles(int xPosition) {
@@ -145,38 +181,8 @@ public class SVGIntValueDisplay implements IIntValueView {
     return;
   }
 
-  private EventListener createRectangleDisplayListener(final SVGDocument document) {
-    final EventListener displayListener = new EventListener() {
-          public void handleEvent(Event evt) {
-        if (visible && evt instanceof MouseEvent) {
-          MouseEvent mouseEvent = (MouseEvent) evt;
-          if (!boundsCalculator.getBounds((SVGLocatable) glassPane).contains(
-              mouseEvent.getClientX(),
-              mouseEvent.getClientY())) {
-            return;
-          }
-          if (selectionRectangle == null) {
-            selectionRectangle = (SVGRectElement) document.createElementNS(
-                SVGDOMImplementation.SVG_NAMESPACE_URI,
-                TAG_RECT);
-            selectionRectangle.setAttributeNS(null, ATTRIB_X, SVGConstants.SVG_ZERO_VALUE);
-            selectionRectangle.setAttributeNS(null, ATTRIB_Y, "1"); //$NON-NLS-1$
-            setAttribute(selectionRectangle, ATTRIB_WIDTH, SVGConstants.SVG_ZERO_VALUE);
-            selectionRectangle.setAttributeNS(null, ATTRIB_HEIGHT, "22"); //$NON-NLS-1$
-            selectionRectangle.setAttributeNS(null, ATTRIB_STROKE, VALUE_COLOR_BLACK);
-            selectionRectangle.setAttributeNS(null, ATTRIB_FILL, "rgb(120, 120, 120)"); //$NON-NLS-1$
-            selectionRectangle.setAttributeNS(null, ATTRIB_FILL_OPACITY, String.valueOf((float) 120 / 255));
-            groupElement.appendChild(selectionRectangle);
-          }
-          setSelectionRectangleWidth(mouseEvent.getClientX());
-        }
-      }
-        };
-    return displayListener;
-  }
-
-  private Element createGlassPane(SVGDocument document) {
-    org.w3c.dom.Element rectangle = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_RECT);
+  private Element createGlassPane() {
+    Element rectangle = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_RECT);
     document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_RECT);
     setAttribute(rectangle, ATTRIB_X, SVGConstants.SVG_ZERO_VALUE);
     setAttribute(rectangle, ATTRIB_Y, SVGConstants.SVG_ZERO_VALUE);
@@ -187,14 +193,14 @@ public class SVGIntValueDisplay implements IIntValueView {
     return rectangle;
   }
 
-  private void setAttribute(org.w3c.dom.Element element, String attributeName, String attributeValue) {
+  private void setAttribute(Element element, String attributeName, String attributeValue) {
     element.setAttributeNS(null, attributeName, attributeValue);
   }
 
-  private void createCircles(SVGDocument svgDocument) {
+  private void createCircles() {
     for (int index = 0; index < dotCount; index++) {
       double xCoordinate = radius + gap + index * ((2 * radius) + gap);
-      circles[index] = createCircleElement(svgDocument, xCoordinate);
+      circles[index] = createCircleElement(document, xCoordinate);
     }
   }
 
