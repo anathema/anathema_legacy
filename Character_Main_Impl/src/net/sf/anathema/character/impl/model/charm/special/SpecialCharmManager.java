@@ -1,4 +1,4 @@
-package net.sf.anathema.character.impl.model.charm;
+package net.sf.anathema.character.impl.model.charm.special;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -7,8 +7,7 @@ import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCh
 import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.impl.model.charm.special.MultiLearnableCharmConfiguration;
-import net.sf.anathema.character.impl.model.charm.special.OxBodyTechniqueConfiguration;
+import net.sf.anathema.character.impl.model.charm.ISpecialCharmManager;
 import net.sf.anathema.character.model.charm.ICharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
