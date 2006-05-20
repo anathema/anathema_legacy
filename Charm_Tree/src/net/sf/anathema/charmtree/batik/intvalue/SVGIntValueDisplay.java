@@ -127,29 +127,16 @@ public class SVGIntValueDisplay implements IIntValueView {
   public Element initGui(SVGOMDocument svgDocument, IBoundsCalculator calculator) {
     this.boundsCalculator = calculator;
     this.document = svgDocument;
-    groupElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_G);
+    this.groupElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_G);
     createCircles();
     for (Element circle : circles) {
       groupElement.appendChild(circle);
     }
-    glassPane = createGlassPane();
+    this.glassPane = createGlassPane();
     groupElement.appendChild(glassPane);
-    startListening();
-    this.visible = true;
+    setVisible(true);
     setValue(value);
     return groupElement;
-  }
-
-  private void startListening() {
-    document.addEventListener("mousedown", displayListener, false); //$NON-NLS-1$
-    document.addEventListener("mousemove", rectangleChangeListener, false); //$NON-NLS-1$
-    document.addEventListener("mouseup", selectionListener, false); //$NON-NLS-1$
-  }
-
-  private void stopListening() {
-    document.addEventListener("mousedown", displayListener, false); //$NON-NLS-1$
-    document.addEventListener("mousemove", rectangleChangeListener, false); //$NON-NLS-1$
-    document.addEventListener("mouseup", selectionListener, false); //$NON-NLS-1$
   }
 
   private void setSelectionRectangleWidth(float clientX) {
@@ -250,9 +237,28 @@ public class SVGIntValueDisplay implements IIntValueView {
   }
 
   public void setVisible(boolean visible) {
+    // if (this.visible && !visible) {
+    // stopListening();
+    // }
     this.visible = visible;
     if (visible) {
       setValue(value);
+      startListening();
     }
+  }
+
+  private void startListening() {
+    document.addEventListener("mousedown", displayListener, false); //$NON-NLS-1$
+    document.addEventListener("mousemove", rectangleChangeListener, false); //$NON-NLS-1$
+    document.addEventListener("mouseup", selectionListener, false); //$NON-NLS-1$
+  }
+
+  private void stopListening() {
+    if (document == null) {
+      return;
+    }
+    document.removeEventListener("mousedown", displayListener, false); //$NON-NLS-1$
+    document.removeEventListener("mousemove", rectangleChangeListener, false); //$NON-NLS-1$
+    document.removeEventListener("mouseup", selectionListener, false); //$NON-NLS-1$
   }
 }
