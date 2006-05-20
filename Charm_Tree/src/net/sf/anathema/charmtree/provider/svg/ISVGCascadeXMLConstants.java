@@ -28,6 +28,7 @@ public interface ISVGCascadeXMLConstants {
   public static final String ATTRIB_WIDTH = "width"; //$NON-NLS-1$
   public static final String ATTRIB_X = "x"; //$NON-NLS-1$
   public static final String ATTRIB_Y = "y"; //$NON-NLS-1$
+  public static final String ATTRIB_IS_CHARM = "isCharm"; //$NON-NLS-1$
 
   public static final String TAG_CIRCLE = "circle"; //$NON-NLS-1$
   public static final String TAG_RECT = "rect"; //$NON-NLS-1$

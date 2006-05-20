@@ -26,7 +26,6 @@ import org.w3c.dom.svg.SVGGElement;
 public class CharmTreeListening {
 
   private ICharmTreeViewProperties properties;
-  private Cursor currentCursor;
   private final IAnathemaCanvas canvas;
   private final BoundsCalculator boundsCalculator = new BoundsCalculator();
   private final ArrayList<ICharmSelectionListener> charmListenerList = new ArrayList<ICharmSelectionListener>();
@@ -93,7 +92,7 @@ public class CharmTreeListening {
         .getElementsByTagName(ISVGCascadeXMLConstants.TAG_G);
     for (int index = 0; index < groupElementsList.getLength(); index++) {
       SVGGElement groupElement = (SVGGElement) groupElementsList.item(index);
-      if (groupElement.hasAttribute("isCharm")) {
+      if (groupElement.hasAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_CHARM)) {
         groupElement.removeEventListener("click", selectionInvokingListener, false); //$NON-NLS-1$
         groupElement.removeEventListener("mousemove", cursorTooltipInitListener, false); //$NON-NLS-1$
         groupElement.removeEventListener("mouseout", canvasResettingListener, false); //$NON-NLS-1$
@@ -120,7 +119,7 @@ public class CharmTreeListening {
         .getElementsByTagName(ISVGCascadeXMLConstants.TAG_G);
     for (int index = 0; index < groupElementsList.getLength(); index++) {
       SVGGElement groupElement = (SVGGElement) groupElementsList.item(index);
-      if (groupElement.hasAttribute("isCharm")) {
+      if (groupElement.hasAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_CHARM)) {
         groupElement.addEventListener("click", selectionInvokingListener, false); //$NON-NLS-1$
         groupElement.addEventListener("mousemove", cursorTooltipInitListener, false); //$NON-NLS-1$
         groupElement.addEventListener("mouseout", canvasResettingListener, false); //$NON-NLS-1$
@@ -133,6 +132,7 @@ public class CharmTreeListening {
   }
 
   private void setCursorForCharm(boolean isCharmSelected, boolean isCharmLearnable, boolean isCharmUnlearnable) {
+    Cursor currentCursor;
     if (!isCharmSelected) {
       currentCursor = !isCharmLearnable ? properties.getDefaultCursor() : properties.getAddCursor();
     }
