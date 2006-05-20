@@ -1,14 +1,12 @@
 package net.sf.anathema.character.reporting.sheet.second;
 
 import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.TEXT_PADDING;
-
-import java.awt.Point;
-
-import net.disy.commons.core.geometry.SmartRectangle;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.util.Position;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
@@ -24,29 +22,33 @@ public class SecondEditionPersonalInfoEncoder extends AbstractPdfEncoder {
     this.resources = resources;
   }
 
-  public void encodePersonalInfos(PdfContentByte directContent, IGenericCharacter character, SmartRectangle infoBounds) {
-    int lineHeight = (infoBounds.height - TEXT_PADDING) / 3;
-    int entryWidth = (infoBounds.width - TEXT_PADDING) / 2;
-    int firstColumnX = infoBounds.x;
-    int secondColumnX = infoBounds.x + entryWidth + TEXT_PADDING;
+  public void encodePersonalInfos(PdfContentByte directContent, IGenericCharacter character, Bounds infoBounds) {
+    float lineHeight = (infoBounds.height - TEXT_PADDING) / 3;
+    float entryWidth = (infoBounds.width - TEXT_PADDING) / 2;
+    float firstColumnX = infoBounds.x;
+    float secondColumnX = infoBounds.x + entryWidth + TEXT_PADDING;
 
-    int firstRowY = (int) (infoBounds.getMaxY() - lineHeight);
+    float firstRowY = (int) (infoBounds.getMaxY() - lineHeight);
     IExaltedRuleSet rules = character.getRules();
     String rulesContent = rules == null ? null : resources.getString("Ruleset." + rules.getId()); //$NON-NLS-1$
-    drawLabelledContent(directContent, getLabel("Rules"), rulesContent, new Point(firstColumnX, firstRowY), entryWidth); //$NON-NLS-1$
-    drawLabelledContent(directContent, getLabel("Player"), null, new Point(secondColumnX, firstRowY), entryWidth); //$NON-NLS-1$
+    drawLabelledContent(
+        directContent,
+        getLabel("Rules"), rulesContent, new Position(firstColumnX, firstRowY), entryWidth); //$NON-NLS-1$
+    drawLabelledContent(directContent, getLabel("Player"), null, new Position(secondColumnX, firstRowY), entryWidth); //$NON-NLS-1$
 
-    int secondRowY = firstRowY - lineHeight;
+    float secondRowY = firstRowY - lineHeight;
     String conceptContent = character.getConcept().getConceptText();
     String conceptLabel = getLabel("Concept"); //$NON-NLS-1$
-    drawLabelledContent(directContent, conceptLabel, conceptContent, new Point(firstColumnX, secondRowY), entryWidth);
+    drawLabelledContent(directContent, conceptLabel, conceptContent, new Position(firstColumnX, secondRowY), entryWidth);
     String casteContent = getCasteString(character.getConcept().getCasteType());
-    drawLabelledContent(directContent, getLabel("Caste"), casteContent, new Point(secondColumnX, secondRowY), entryWidth); //$NON-NLS-1$
+    drawLabelledContent(
+        directContent,
+        getLabel("Caste"), casteContent, new Position(secondColumnX, secondRowY), entryWidth); //$NON-NLS-1$
 
-    int thirdRowY = secondRowY - lineHeight;
+    float thirdRowY = secondRowY - lineHeight;
     String motivationContent = character.getConcept().getWillpowerRegainingConceptName();
     String motivationLabel = getLabel("Motivation"); //$NON-NLS-1$
-    Point motivationPosition = new Point(firstColumnX, thirdRowY);
+    Position motivationPosition = new Position(firstColumnX, thirdRowY);
     drawLabelledContent(directContent, motivationLabel, motivationContent, motivationPosition, infoBounds.width);
   }
 

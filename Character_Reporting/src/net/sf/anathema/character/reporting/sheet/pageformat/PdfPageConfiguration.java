@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.sheet.pageformat;
 
 import java.awt.Dimension;
 
-import net.disy.commons.core.geometry.SmartRectangle;
+import net.sf.anathema.character.reporting.util.Bounds;
 
 import com.lowagie.text.Rectangle;
 
@@ -31,44 +31,40 @@ public class PdfPageConfiguration {
     this.marginBottom = verticalMargin;
   }
 
-  private SmartRectangle getColumnRectangle(int spaceFromTop, int height, int columnCount, int leftColumnX) {
-    return new SmartRectangle(
-        leftColumnX,
-        (getUpperContentY() - spaceFromTop) - height,
-        getColumnWidth(columnCount),
-        height);
+  private Bounds getColumnRectangle(float spaceFromTop, float height, int columnCount, float leftColumnX) {
+    return new Bounds(leftColumnX, (getUpperContentY() - spaceFromTop) - height, getColumnWidth(columnCount), height);
   }
 
-  public int getColumnWidth() {
+  public float getColumnWidth() {
     return getColumnWidth(1);
   }
 
-  public int getColumnWidth(int columnCount) {
-    int oneColumnWidth = (getContentWidth() - 2 * columnSpacing) / 3;
+  public float getColumnWidth(int columnCount) {
+    float oneColumnWidth = (getContentWidth() - 2 * columnSpacing) / 3;
     return (oneColumnWidth * columnCount) + (columnSpacing * (columnCount - 1));
   }
 
-  public int getContentHeight() {
+  public float getContentHeight() {
     return pageHeight - marginBottom - marginTop;
   }
 
-  public int getContentWidth() {
+  public float getContentWidth() {
     return pageWidth - marginLeft - marginRight;
   }
 
-  public SmartRectangle getFirstColumnRectangle(int spaceFromTop, int height, int columnCount) {
+  public Bounds getFirstColumnRectangle(float spaceFromTop, float height, int columnCount) {
     return getColumnRectangle(spaceFromTop, height, columnCount, getLeftColumnX(0));
   }
 
-  public int getLeftColumnX(int columnIndex) {
+  public float getLeftColumnX(int columnIndex) {
     return columnIndex * (getColumnWidth() + columnSpacing) + marginLeft;
   }
 
-  public SmartRectangle getSecondColumnRectangle(int spaceFromTop, int height, int columnCount) {
+  public Bounds getSecondColumnRectangle(float spaceFromTop, float height, int columnCount) {
     return getColumnRectangle(spaceFromTop, height, columnCount, getLeftColumnX(1));
   }
 
-  public SmartRectangle getThirdColumnRectangle(int spaceFromTop, int height) {
+  public Bounds getThirdColumnRectangle(float spaceFromTop, float height) {
     return getColumnRectangle(spaceFromTop, height, 1, getLeftColumnX(2));
   }
 

@@ -4,13 +4,13 @@ import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFor
 
 import java.io.IOException;
 
-import net.disy.commons.core.geometry.SmartRectangle;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
+import net.sf.anathema.character.reporting.util.Bounds;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfContentByte;
@@ -45,11 +45,11 @@ public class PdfFirstPageEncoder {
   private void encodeEssence(
       PdfContentByte directContent,
       IGenericCharacter character,
-      int distanceFromTop,
-      final int firstRowHeight) throws DocumentException, IOException {
-    SmartRectangle essenceBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, firstRowHeight);
+      float distanceFromTop,
+      final float firstRowHeight) throws DocumentException, IOException {
+    Bounds essenceBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, firstRowHeight);
     String title = getHeaderLabel("Essence"); //$NON-NLS-1$
-    SmartRectangle essenceContentBounds = boxEncoder.encodeBox(directContent, essenceBounds, title);
+    Bounds essenceContentBounds = boxEncoder.encodeBox(directContent, essenceBounds, title);
     partEncoder.encodeEssence(directContent, character, essenceContentBounds);
   }
 
@@ -63,10 +63,10 @@ public class PdfFirstPageEncoder {
       IGenericDescription description,
       int distanceFromTop,
       final int firstRowHeight) throws DocumentException, IOException {
-    SmartRectangle infoBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, firstRowHeight, 2);
+    Bounds infoBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, firstRowHeight, 2);
     String name = description.getName();
     String title = StringUtilities.isNullOrTrimEmpty(name) ? getHeaderLabel("PersonalInfo") : name; //$NON-NLS-1$
-    SmartRectangle infoContentBounds = boxEncoder.encodeBox(directContent, infoBounds, title);
+    Bounds infoContentBounds = boxEncoder.encodeBox(directContent, infoBounds, title);
     partEncoder.encodePersonalInfos(directContent, character, infoContentBounds);
   }
 
@@ -82,8 +82,8 @@ public class PdfFirstPageEncoder {
       throws DocumentException,
       IOException {
     int abilitiesHeight = CONTENT_HEIGHT - distanceFromTop;
-    SmartRectangle boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
-    SmartRectangle contentBounds = boxEncoder.encodeBox(directContent, boxBounds, getHeaderLabel("Abilities")); //$NON-NLS-1$
+    Bounds boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
+    Bounds contentBounds = boxEncoder.encodeBox(directContent, boxBounds, getHeaderLabel("Abilities")); //$NON-NLS-1$
     partEncoder.encodeAbilities(directContent, character, contentBounds);
   }
 
@@ -91,11 +91,8 @@ public class PdfFirstPageEncoder {
       throws DocumentException,
       IOException {
     int attributeHeight = 128;
-    SmartRectangle attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 1);
-    SmartRectangle attributesContentBounds = boxEncoder.encodeBox(
-        directContent,
-        attributeBounds,
-        getHeaderLabel("Attributes")); //$NON-NLS-1$
+    Bounds attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 1);
+    Bounds attributesContentBounds = boxEncoder.encodeBox(directContent, attributeBounds, getHeaderLabel("Attributes")); //$NON-NLS-1$
     IGroupedTraitType[] attributeGroups = character.getTemplate().getAttributeGroups();
     partEncoder.encodeAttributes(directContent, attributesContentBounds, attributeGroups, character);
     return attributeHeight;

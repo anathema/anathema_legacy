@@ -1,14 +1,14 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
 import java.awt.Color;
-import java.awt.Point;
 import java.io.IOException;
 
-import net.disy.commons.core.geometry.SmartRectangle;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.util.Position;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Chunk;
@@ -37,15 +37,15 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentEn
     return baseFont;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, SmartRectangle contentBounds)
+  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds)
       throws DocumentException,
       IOException {
-    Point cursorPosition = encodeAnimaPowers(directContent, character, contentBounds);
+    Position cursorPosition = encodeAnimaPowers(directContent, character, contentBounds);
     setFillColorBlack(directContent);
     directContent.setLineWidth(0);
-    int startX = (int) (contentBounds.getMinX() + cursorPosition.x);
-    int endX = (int) contentBounds.getMaxX();
-    int yPosition = cursorPosition.y;
+    float startX = contentBounds.getMinX() + cursorPosition.x;
+    float endX = contentBounds.getMaxX();
+    float yPosition = cursorPosition.y;
     directContent.moveTo(startX, yPosition);
     directContent.lineTo(endX, yPosition);
     yPosition -= LINE_HEIGHT;
@@ -58,10 +58,9 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentEn
     directContent.stroke();
   }
 
-  private Point encodeAnimaPowers(
-      PdfContentByte directContent,
-      IGenericCharacter character,
-      SmartRectangle contentBounds) throws DocumentException, IOException {
+  private Position encodeAnimaPowers(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds)
+      throws DocumentException,
+      IOException {
     BaseFont symbolBaseFont = BaseFont.createFont(BaseFont.SYMBOL, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
     Font symbolFont = new Font(symbolBaseFont, FONT_SIZE, Font.NORMAL, Color.BLACK);
     Font font = new Font(getBaseFont(), FONT_SIZE, Font.NORMAL, Color.BLACK);
@@ -70,15 +69,15 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentEn
     ColumnText columnText = new ColumnText(directContent);
     columnText.setSimpleColumn(
         powerPhrase,
-        (int) contentBounds.getMinX(),
-        (int) contentBounds.getMinY(),
-        (int) contentBounds.getMaxX(),
-        (int) contentBounds.getMaxY(),
+        contentBounds.getMinX(),
+        contentBounds.getMinY(),
+        contentBounds.getMaxX(),
+        contentBounds.getMaxY(),
         LINE_HEIGHT,
         PdfContentByte.ALIGN_LEFT);
     columnText.go();
-    int xPosition = (int) symbolBaseFont.getWidthPoint(SYMBOL, FONT_SIZE);
-    return new Point(xPosition, (int) columnText.getYLine());
+    float xPosition = symbolBaseFont.getWidthPoint(SYMBOL, FONT_SIZE);
+    return new Position(xPosition, columnText.getYLine());
   }
 
   private void addAnimaPowerText(CharacterType characterType, Phrase phrase, Font symbolFont) {

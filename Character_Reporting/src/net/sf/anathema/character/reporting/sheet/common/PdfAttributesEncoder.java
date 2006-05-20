@@ -1,12 +1,11 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
-import java.awt.Point;
-
-import net.disy.commons.core.geometry.SmartRectangle;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.util.Position;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
@@ -26,11 +25,11 @@ public class PdfAttributesEncoder {
 
   public final void encodeAttributes(
       PdfContentByte directContent,
-      SmartRectangle contentBounds,
+      Bounds contentBounds,
       IGroupedTraitType[] attributeGroups,
       IGenericTraitCollection traitCollection) {
-    int groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
-    int y = (int) contentBounds.getMaxY() - groupSpacing;
+    float groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
+    float y = contentBounds.getMaxY() - groupSpacing;
     String groupId = null;
     for (IGroupedTraitType groupedTraitType : attributeGroups) {
       if (!groupedTraitType.getGroupId().equals(groupId)) {
@@ -40,7 +39,7 @@ public class PdfAttributesEncoder {
       ITraitType traitType = groupedTraitType.getTraitType();
       String traitLabel = resources.getString("AttributeType.Name." + traitType.getId()); //$NON-NLS-1$
       int value = traitCollection.getTrait(traitType).getCurrentValue();
-      Point position = new Point(contentBounds.x, y);
+      Position position = new Position(contentBounds.x, y);
       y -= smallTraitEncoder.encodeWithText(directContent, traitLabel, position, contentBounds.width, value, essenceMax);
     }
   }

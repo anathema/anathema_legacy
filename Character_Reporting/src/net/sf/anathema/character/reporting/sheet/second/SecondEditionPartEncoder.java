@@ -2,7 +2,6 @@ package net.sf.anathema.character.reporting.sheet.second;
 
 import java.io.IOException;
 
-import net.disy.commons.core.geometry.SmartRectangle;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.sheet.common.AbstractPdfPartEncoder;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
@@ -13,6 +12,7 @@ import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
+import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.DocumentException;
@@ -32,26 +32,28 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
     this.boxEncoder = new PdfBoxEncoder(getBaseFont());
   }
 
-  private int calculateBoxIncrement(int height) {
+  private float calculateBoxIncrement(float height) {
     return height + IVoidStateFormatConstants.PADDING;
   }
 
-  private void encodeAnima(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop, int height)
-      throws DocumentException,
-      IOException {
-    SmartRectangle animaBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
+  private void encodeAnima(
+      PdfContentByte directContent,
+      IGenericCharacter character,
+      float distanceFromTop,
+      float height) throws DocumentException, IOException {
+    Bounds animaBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
     encodeContent(directContent, new PdfAnimaEncoder(getResources(), getBaseFont()), character, animaBounds, "Anima"); //$NON-NLS-1$
   }
 
-  private int encodeArmorAndSoak(PdfContentByte directContent, int distanceFromTop, int height) {
-    SmartRectangle bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
+  private float encodeArmorAndSoak(PdfContentByte directContent, float distanceFromTop, float height) {
+    Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     String header = getResources().getString("Sheet.Header.ArmorySoak"); //$NON-NLS-1$
     boxEncoder.encodeBox(directContent, bounds, header);
     return height;
   }
 
-  private int encodeCombatStats(PdfContentByte directContent, int distanceFromTop, int height) {
-    SmartRectangle bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
+  private float  encodeCombatStats(PdfContentByte directContent, float distanceFromTop, float height) {
+    Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     String header = getResources().getString("Sheet.Header.Combat"); //$NON-NLS-1$
     boxEncoder.encodeBox(directContent, bounds, header);
     return height;
@@ -61,43 +63,43 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
       PdfContentByte directContent,
       IPdfContentEncoder encoder,
       IGenericCharacter character,
-      SmartRectangle bounds,
+      Bounds bounds,
       String headerId) throws DocumentException, IOException {
     String animaHeader = getResources().getString("Sheet.Header." + headerId); //$NON-NLS-1$
-    SmartRectangle contentBounds = boxEncoder.encodeBox(directContent, bounds, animaHeader);
+    Bounds contentBounds = boxEncoder.encodeBox(directContent, bounds, animaHeader);
     encoder.encode(directContent, character, contentBounds);
   }
 
   public void encodeEditionSpecificFirstPagePart(
       PdfContentByte directContent,
       IGenericCharacter character,
-      int distanceFromTop) throws DocumentException, IOException {
+      float distanceFromTop) throws DocumentException, IOException {
     encodeAnima(directContent, character, distanceFromTop, ANIMA_HEIGHT);
-    int virtueHeight = 75;
-    int willpowerHeight = ANIMA_HEIGHT - virtueHeight - IVoidStateFormatConstants.PADDING;
+    float virtueHeight = 75;
+    float willpowerHeight = ANIMA_HEIGHT - virtueHeight - IVoidStateFormatConstants.PADDING;
     encodeWillpower(directContent, character, distanceFromTop, willpowerHeight);
     distanceFromTop += calculateBoxIncrement(willpowerHeight);
     encodeVirtues(directContent, character, distanceFromTop, virtueHeight);
     distanceFromTop += calculateBoxIncrement(virtueHeight);
 
-    int weaponryHeight = encodeWeaponry(directContent, distanceFromTop, 150);
+    float weaponryHeight = encodeWeaponry(directContent, distanceFromTop, 150);
     distanceFromTop += calculateBoxIncrement(weaponryHeight);
-    int armourHeight = encodeArmorAndSoak(directContent, distanceFromTop, 75);
+    float armourHeight = encodeArmorAndSoak(directContent, distanceFromTop, 75);
     distanceFromTop += calculateBoxIncrement(armourHeight);
-    int healthHeight = encodeMovementAndHealth(directContent, distanceFromTop, 125);
+    float healthHeight = encodeMovementAndHealth(directContent, distanceFromTop, 125);
     distanceFromTop += calculateBoxIncrement(healthHeight);
-    int combatHeight = PdfFirstPageEncoder.CONTENT_HEIGHT - distanceFromTop;
+    float combatHeight = PdfFirstPageEncoder.CONTENT_HEIGHT - distanceFromTop;
     encodeCombatStats(directContent, distanceFromTop, combatHeight);
   }
 
-  private int encodeMovementAndHealth(PdfContentByte directContent, int distanceFromTop, int height) {
-    SmartRectangle bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
+  private float encodeMovementAndHealth(PdfContentByte directContent, float distanceFromTop, float height) {
+    Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     String header = getResources().getString("Sheet.Header.MovementHealth"); //$NON-NLS-1$
     boxEncoder.encodeBox(directContent, bounds, header);
     return height;
   }
 
-  public void encodePersonalInfos(PdfContentByte directContent, IGenericCharacter character, SmartRectangle infoBounds) {
+  public void encodePersonalInfos(PdfContentByte directContent, IGenericCharacter character, Bounds infoBounds) {
     SecondEditionPersonalInfoEncoder encoder = new SecondEditionPersonalInfoEncoder(getBaseFont(), getResources());
     encoder.encodePersonalInfos(directContent, character, infoBounds);
   }
@@ -105,25 +107,25 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
   private void encodeVirtues(
       PdfContentByte directContent,
       IGenericCharacter character,
-      int distanceFromTop,
-      int virtueHeight) {
-    SmartRectangle virtueBounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, virtueHeight, 1);
+      float distanceFromTop,
+      float virtueHeight) {
+    Bounds virtueBounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, virtueHeight, 1);
     String virtueHeader = getResources().getString("Sheet.Header.Virtues"); //$NON-NLS-1$
-    SmartRectangle contentBounds = boxEncoder.encodeBox(directContent, virtueBounds, virtueHeader);
+    Bounds contentBounds = boxEncoder.encodeBox(directContent, virtueBounds, virtueHeader);
     new PdfVirtueEncoder(getResources(), getBaseFont()).encodeVirtues(directContent, character, contentBounds);
   }
 
-  private int encodeWeaponry(PdfContentByte directContent, int distanceFromTop, int height) {
-    SmartRectangle bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
+  private float encodeWeaponry(PdfContentByte directContent, float distanceFromTop, float height) {
+    Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     String header = getResources().getString("Sheet.Header.Weaponry"); //$NON-NLS-1$
     boxEncoder.encodeBox(directContent, bounds, header);
     return height;
   }
 
-  private int encodeWillpower(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop, int height)
+  private float encodeWillpower(PdfContentByte directContent, IGenericCharacter character, float distanceFromTop, float height)
       throws DocumentException,
       IOException {
-    SmartRectangle willpowerBounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
+    Bounds willpowerBounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
     encodeContent(directContent, new PdfWillpowerEncoder(getBaseFont()), character, willpowerBounds, "Willpower"); //$NON-NLS-1$
     return height;
   }
