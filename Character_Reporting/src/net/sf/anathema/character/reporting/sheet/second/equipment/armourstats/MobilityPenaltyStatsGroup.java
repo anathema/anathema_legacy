@@ -1,0 +1,22 @@
+package net.sf.anathema.character.reporting.sheet.second.equipment.armourstats;
+
+import net.sf.anathema.character.reporting.sheet.second.equipment.stats.AbstractValueEquipmentStatsGroup;
+import net.sf.anathema.lib.resources.IResources;
+
+import com.lowagie.text.Font;
+import com.lowagie.text.pdf.PdfPTable;
+
+public class MobilityPenaltyStatsGroup extends AbstractValueEquipmentStatsGroup {
+
+  public MobilityPenaltyStatsGroup(IResources resources) {
+    super(resources, "MobilityPenalty"); //$NON-NLS-1$
+  }
+
+  public int getColumnCount() {
+    return 1;
+  }
+
+  public void addContent(PdfPTable table, Font font) {
+    table.addCell(createWeaponValueCell(font));
+  }
+}

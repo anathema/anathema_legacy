@@ -14,7 +14,7 @@ public final class EquipmentNameStatsGroup implements IEquipmentStatsGroup {
   private final String title;
 
   public EquipmentNameStatsGroup(IResources resources) {
-    this.title =resources.getString("Sheet.Weapons.Header.WeaponName"); //$NON-NLS-1$ ;
+    this.title =resources.getString("Sheet.Equipment.Header.Name"); //$NON-NLS-1$ ;
   }
 
   public int getColumnCount() {

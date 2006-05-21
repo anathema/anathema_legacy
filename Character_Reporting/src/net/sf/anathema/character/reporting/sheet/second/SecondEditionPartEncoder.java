@@ -53,13 +53,8 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
       float distanceFromTop,
       float height) throws DocumentException, IOException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    String header = getResources().getString("Sheet.Header.ArmorySoak"); //$NON-NLS-1$
-    encodeContent(
-        directContent,
-        new SecondEditionArmourEncoder(getResources(), getBaseFont()),
-        character,
-        bounds,
-        header);
+    IPdfContentEncoder contentEncoder = new SecondEditionArmourEncoder(getResources(), getBaseFont());
+    encodeContent(directContent, contentEncoder, character, bounds, "ArmourSoak"); //$NON-NLS-1$
     return height;
   }
 
@@ -95,7 +90,7 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
 
     float weaponryHeight = encodeWeaponry(directContent, character, distanceFromTop, 117);
     distanceFromTop += calculateBoxIncrement(weaponryHeight);
-    float armourHeight = encodeArmourAndSoak(directContent, character, distanceFromTop, 75);
+    float armourHeight = encodeArmourAndSoak(directContent, character, distanceFromTop, 71);
     distanceFromTop += calculateBoxIncrement(armourHeight);
     float healthHeight = encodeMovementAndHealth(directContent, distanceFromTop, 125);
     distanceFromTop += calculateBoxIncrement(healthHeight);

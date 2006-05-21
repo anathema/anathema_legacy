@@ -15,7 +15,7 @@ public final class TagsStatsGroup implements IEquipmentStatsGroup {
   private final String title;
 
   public TagsStatsGroup(IResources resources) {
-    this.title =resources.getString("Sheet.Weapons.Header.Tags"); //$NON-NLS-1$ ;
+    this.title =resources.getString("Sheet.Equipment.Header.Tags"); //$NON-NLS-1$ ;
   }
 
   public int getColumnCount() {

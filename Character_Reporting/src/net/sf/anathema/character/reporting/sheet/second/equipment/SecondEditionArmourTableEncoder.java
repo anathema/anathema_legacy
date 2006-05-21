@@ -1,11 +1,14 @@
 package net.sf.anathema.character.reporting.sheet.second.equipment;
 
+import net.sf.anathema.character.reporting.sheet.second.equipment.armourstats.FatiguePenaltyStatsGroup;
+import net.sf.anathema.character.reporting.sheet.second.equipment.armourstats.HardnessPenaltyStatsGroup;
+import net.sf.anathema.character.reporting.sheet.second.equipment.armourstats.MobilityPenaltyStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.armourstats.SoakArmourStatsGroup;
+import net.sf.anathema.character.reporting.sheet.second.equipment.stats.EquipmentNameStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.stats.IEquipmentStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfPTable;
 
 public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncoder {
 
@@ -17,19 +20,17 @@ public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncod
   }
 
   @Override
-  protected PdfPTable createTable() {
-    PdfPTable pdfPTable = super.createTable();
-    // todo vom (21.05.2006) (sieroux): Totalline hinzufügen
-    return pdfPTable;
-  }
-
-  @Override
   protected IEquipmentStatsGroup[] createEquipmentGroups() {
-    return new IEquipmentStatsGroup[] { new SoakArmourStatsGroup(resources) };
+    return new IEquipmentStatsGroup[] {
+        new EquipmentNameStatsGroup(resources),
+        new SoakArmourStatsGroup(resources),
+        new MobilityPenaltyStatsGroup(resources),
+        new FatiguePenaltyStatsGroup(resources),
+        new HardnessPenaltyStatsGroup(resources) };
   }
 
   @Override
   protected int getLineCount() {
-    return 3;
+    return 4;
   }
 }

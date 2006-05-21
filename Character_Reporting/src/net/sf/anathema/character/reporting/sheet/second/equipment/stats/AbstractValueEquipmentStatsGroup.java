@@ -14,7 +14,7 @@ public abstract class AbstractValueEquipmentStatsGroup implements IEquipmentStat
   private final String title;
   
   public AbstractValueEquipmentStatsGroup(IResources resources, String resourceKey) {
-    this.title = resources.getString("Sheet.Weapons.Header." + resourceKey); //$NON-NLS-1$
+    this.title = resources.getString("Sheet.Equipment.Header." + resourceKey); //$NON-NLS-1$
   }
 
   public Float[] getColumnWeights() {
