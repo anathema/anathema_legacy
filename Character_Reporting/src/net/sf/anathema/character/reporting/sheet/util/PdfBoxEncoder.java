@@ -11,7 +11,7 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
   private static final int CONTENT_INSET = 5;
   private static final int HEADER_FONT_PADDING = 3;
   private static final int HEADER_FONT_SIZE = IVoidStateFormatConstants.HEADER_FONT_SIZE;
-  private static final int HEADER_HEIGHT = 12;
+  public static final int HEADER_HEIGHT = 12;
   private static final int ARCSPACE = HEADER_HEIGHT / 2;
   private static final int ARC_SIZE = 2 * ARCSPACE;
   private BaseFont baseFont;

@@ -2,20 +2,17 @@ package net.sf.anathema.character.reporting.sheet.common.anima;
 
 import java.awt.Color;
 
-import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.sheet.util.AbstractTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.ColumnText;
-import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class SolarAnimaTableEncoder {
+public class SolarAnimaTableEncoder extends AbstractTableEncoder {
 
   private final IResources resources;
   private Font headerFont;
@@ -27,15 +24,8 @@ public class SolarAnimaTableEncoder {
     this.font = new Font(baseFont, fontSize, Font.NORMAL, Color.BLACK);
   }
 
-  public void encodeTable(PdfContentByte directContent, Bounds bounds) throws DocumentException {
-    ColumnText tableColumn = new ColumnText(directContent);
-    PdfPTable table = createTable();
-    tableColumn.setSimpleColumn(bounds.getMinX(), bounds.getMinY(), bounds.getMaxX(), bounds.getMaxY());
-    tableColumn.addElement(table);
-    tableColumn.go();
-  }
-
-  private PdfPTable createTable() {
+  @Override
+  protected PdfPTable createTable() {
     PdfPTable table = new PdfPTable(new float[] { 0.15f, 0.6f, 0.25f });
     table.setWidthPercentage(100);
     table.addCell(createHeaderCell(resources.getString("Sheet.AnimaTable.Header.Motes"))); //$NON-NLS-1$

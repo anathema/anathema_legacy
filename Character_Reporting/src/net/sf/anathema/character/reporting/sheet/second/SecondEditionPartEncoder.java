@@ -11,6 +11,7 @@ import net.sf.anathema.character.reporting.sheet.common.anima.PdfAnimaEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.sheet.second.equipment.SecondEditionWeaponryEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
@@ -52,7 +53,7 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
     return height;
   }
 
-  private float  encodeCombatStats(PdfContentByte directContent, float distanceFromTop, float height) {
+  private float encodeCombatStats(PdfContentByte directContent, float distanceFromTop, float height) {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     String header = getResources().getString("Sheet.Header.Combat"); //$NON-NLS-1$
     boxEncoder.encodeBox(directContent, bounds, header);
@@ -82,7 +83,7 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
     encodeVirtues(directContent, character, distanceFromTop, virtueHeight);
     distanceFromTop += calculateBoxIncrement(virtueHeight);
 
-    float weaponryHeight = encodeWeaponry(directContent, distanceFromTop, 150);
+    float weaponryHeight = encodeWeaponry(directContent, character, distanceFromTop, 150);
     distanceFromTop += calculateBoxIncrement(weaponryHeight);
     float armourHeight = encodeArmorAndSoak(directContent, distanceFromTop, 75);
     distanceFromTop += calculateBoxIncrement(armourHeight);
@@ -115,16 +116,23 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
     new PdfVirtueEncoder(getResources(), getBaseFont()).encodeVirtues(directContent, character, contentBounds);
   }
 
-  private float encodeWeaponry(PdfContentByte directContent, float distanceFromTop, float height) {
+  private float encodeWeaponry(
+      PdfContentByte directContent,
+      IGenericCharacter character,
+      float distanceFromTop,
+      float height) throws DocumentException, IOException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     String header = getResources().getString("Sheet.Header.Weaponry"); //$NON-NLS-1$
-    boxEncoder.encodeBox(directContent, bounds, header);
+    IPdfContentEncoder weaponryEncoder = new SecondEditionWeaponryEncoder(getBaseFont(), getResources());
+    encodeContent(directContent, weaponryEncoder, character, bounds, header);
     return height;
   }
 
-  private float encodeWillpower(PdfContentByte directContent, IGenericCharacter character, float distanceFromTop, float height)
-      throws DocumentException,
-      IOException {
+  private float encodeWillpower(
+      PdfContentByte directContent,
+      IGenericCharacter character,
+      float distanceFromTop,
+      float height) throws DocumentException, IOException {
     Bounds willpowerBounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
     encodeContent(directContent, new PdfWillpowerEncoder(getBaseFont()), character, willpowerBounds, "Willpower"); //$NON-NLS-1$
     return height;
