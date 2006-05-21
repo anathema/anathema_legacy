@@ -2,6 +2,7 @@ package net.sf.anathema.character.reporting.sheet.second.equipment.stats;
 
 import java.awt.Color;
 
+import net.sf.anathema.character.generic.equipment.weapon.IEquipment;
 import net.sf.anathema.character.reporting.sheet.second.equipment.WeaponEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -9,7 +10,7 @@ import com.lowagie.text.Font;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfPCell;
 
-public abstract class AbstractValueEquipmentStatsGroup implements IEquipmentStatsGroup {
+public abstract class AbstractValueEquipmentStatsGroup<T extends IEquipment> implements IEquipmentStatsGroup<T> {
 
   private final String title;
   
@@ -29,7 +30,7 @@ public abstract class AbstractValueEquipmentStatsGroup implements IEquipmentStat
     return createContentCellTable(Color.BLACK, " ", font, 0.75f); //$NON-NLS-1$
   }
 
-  protected final PdfPCell createWeaponValueCell(Font font) {
+  protected final PdfPCell createEquipmentValueCell(Font font) {
     return createContentCellTable(Color.GRAY, " ", font, 0.5f); //$NON-NLS-1$
   }
 

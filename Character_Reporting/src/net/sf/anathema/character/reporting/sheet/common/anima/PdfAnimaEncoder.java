@@ -47,7 +47,7 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentEn
     Position lineStartPosition = encodeAnimaPowers(directContent, character, animaPowerBounds);
     encodeLines(directContent, bounds, lineStartPosition);
     Bounds animaTableBounds = new Bounds(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), halfWidth);
-    new SolarAnimaTableEncoder(resources, baseFont, FONT_SIZE).encodeTable(directContent, animaTableBounds);
+    new SolarAnimaTableEncoder(resources, baseFont, FONT_SIZE).encodeTable(directContent, character, animaTableBounds);
   }
 
   private void encodeLines(PdfContentByte directContent, Bounds bounds, Position lineStartPosition) {
@@ -59,7 +59,7 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentEn
   private Position encodeAnimaPowers(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
       throws DocumentException,
       IOException {
-    BaseFont symbolBaseFont =  PdfTextEncodingUtilities.createBaseFont(BaseFont.SYMBOL);
+    BaseFont symbolBaseFont = PdfTextEncodingUtilities.createBaseFont(BaseFont.SYMBOL);
     Phrase phrase = new Phrase("", new Font(baseFont, FONT_SIZE, Font.NORMAL, Color.BLACK)); //$NON-NLS-1$
     addAnimaPowerText(character, phrase, new Font(symbolBaseFont, FONT_SIZE, Font.NORMAL, Color.BLACK));
     float yPosition = PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, LINE_HEIGHT);

@@ -2,6 +2,8 @@ package net.sf.anathema.character.reporting.sheet.second.equipment.stats;
 
 import java.awt.Color;
 
+import net.disy.commons.core.util.StringUtilities;
+import net.sf.anathema.character.generic.equipment.weapon.IEquipment;
 import net.sf.anathema.character.reporting.sheet.second.equipment.WeaponEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -10,11 +12,13 @@ import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 
-public final class EquipmentNameStatsGroup implements IEquipmentStatsGroup {
+public final class EquipmentNameStatsGroup<T extends IEquipment> implements IEquipmentStatsGroup {
   private final String title;
+  private final IResources resources;
 
   public EquipmentNameStatsGroup(IResources resources) {
-    this.title =resources.getString("Sheet.Equipment.Header.Name"); //$NON-NLS-1$ ;
+    this.resources = resources;
+    this.title = resources.getString("Sheet.Equipment.Header.Name"); //$NON-NLS-1$ ;
   }
 
   public int getColumnCount() {
@@ -29,11 +33,21 @@ public final class EquipmentNameStatsGroup implements IEquipmentStatsGroup {
     return new Float[] { new Float(6) };
   }
 
-  public void addContent(PdfPTable table, Font font) {
-    table.addCell(createEmptyNameCell(font));
+  public void addContent(PdfPTable table, Font font, IEquipment equipment) {
+    if (equipment == null) {
+      table.addCell(createNameCell(font, "")); //$NON-NLS-1$
+    }
+    else {
+      String resourceKey = "Equipment.Name." + equipment.getName().getId(); //$NON-NLS-1$
+      table.addCell(createNameCell(font, resources.getString(resourceKey)));
+    }
   }
 
-  private PdfPCell createEmptyNameCell(Font font) {
-    return WeaponEncodingUtilities.createContentCellTable(Color.BLACK, " ", font, 0.5f, Rectangle.BOTTOM); //$NON-NLS-1$
+  private PdfPCell createNameCell(Font font, String text) {
+    int border = StringUtilities.isNullOrTrimEmpty(text) ? Rectangle.BOTTOM : Rectangle.NO_BORDER;
+    if (StringUtilities.isNullOrTrimEmpty(text)) {
+      text = " "; //$NON-NLS-1$
+    }
+    return WeaponEncodingUtilities.createContentCellTable(Color.BLACK, " ", font, 0.5f, border); //$NON-NLS-1$
   }
 }

@@ -1,12 +1,13 @@
 package net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats;
 
+import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
 import net.sf.anathema.character.reporting.sheet.second.equipment.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class SpeedWeaopnStatsGroup extends AbstractValueEquipmentStatsGroup {
+public class SpeedWeaopnStatsGroup extends AbstractValueEquipmentStatsGroup<IWeapon> {
 
   public SpeedWeaopnStatsGroup(IResources resources) {
     super(resources, "Speed"); //$NON-NLS-1$
@@ -16,7 +17,7 @@ public class SpeedWeaopnStatsGroup extends AbstractValueEquipmentStatsGroup {
     return 1;
   }
 
-  public void addContent(PdfPTable table, Font font) {
+  public void addContent(PdfPTable table, Font font, IWeapon weapon) {
     table.addCell(createFinalValueCell(font));
   }
 }

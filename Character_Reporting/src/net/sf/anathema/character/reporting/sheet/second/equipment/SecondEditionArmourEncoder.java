@@ -20,6 +20,6 @@ public class SecondEditionArmourEncoder implements IPdfContentEncoder {
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    new SecondEditionArmourTableEncoder(baseFont, resources).encodeTable(directContent, bounds);
+    new SecondEditionArmourTableEncoder(baseFont, resources).encodeTable(directContent, character, bounds);
   }
 }

@@ -20,6 +20,6 @@ public class SecondEditionWeaponryEncoder implements IPdfContentEncoder {
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    new SecondEditionWeaponryTableEncoder(baseFont, resources).encodeTable(directContent, bounds);
+    new SecondEditionWeaponryTableEncoder(baseFont, resources).encodeTable(directContent, character, bounds);
   }
 }

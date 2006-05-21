@@ -3,6 +3,8 @@ package net.sf.anathema.character.reporting.sheet.second.equipment;
 import java.awt.Color;
 
 import net.disy.commons.core.util.ArrayUtilities;
+import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.equipment.weapon.IEquipment;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.second.equipment.stats.IEquipmentStatsGroup;
 import net.sf.anathema.character.reporting.sheet.util.AbstractTableEncoder;
@@ -14,7 +16,7 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 
-public abstract class AbstractEquipmentTableEncoder extends AbstractTableEncoder {
+public abstract class AbstractEquipmentTableEncoder<T extends IEquipment> extends AbstractTableEncoder {
 
   private final Font font;
   private final Font headerFont;
@@ -25,8 +27,8 @@ public abstract class AbstractEquipmentTableEncoder extends AbstractTableEncoder
   }
 
   @Override
-  protected PdfPTable createTable() {
-    IEquipmentStatsGroup[] groups = createEquipmentGroups();
+  protected PdfPTable createTable(IGenericCharacter character) {
+    IEquipmentStatsGroup<T>[] groups = createEquipmentGroups();
     float[] columnWidths = calculateColumnWidths(groups);
     PdfPTable table = new PdfPTable(columnWidths);
     table.setWidthPercentage(100);
@@ -38,22 +40,28 @@ public abstract class AbstractEquipmentTableEncoder extends AbstractTableEncoder
           index != groups.length - 1,
           usedFont));
     }
-    for (int line = 0; line < getLineCount(); line++) {
-      encodeContentLine(table, groups);
+    T[] printEquipments = getPrintEquipments(character);
+    for (int line = 0; line < Math.min(printEquipments.length, getLineCount()); line++) {
+      encodeContentLine(table, groups, printEquipments[line]);
+    }
+    for (int line = printEquipments.length; line < getLineCount(); line++) {
+      encodeContentLine(table, groups, null);
     }
     return table;
   }
 
+  protected abstract T[] getPrintEquipments(IGenericCharacter character);
+
   protected abstract int getLineCount();
 
-  protected abstract IEquipmentStatsGroup[] createEquipmentGroups();
+  protected abstract IEquipmentStatsGroup<T>[] createEquipmentGroups();
 
-  private void encodeContentLine(PdfPTable table, IEquipmentStatsGroup[] groups) {
+  private void encodeContentLine(PdfPTable table, IEquipmentStatsGroup<T>[] groups, T equipment) {
     for (int index = 0; index < groups.length; index++) {
       if (index != 0) {
         table.addCell(createSpaceCell());
       }
-      groups[index].addContent(table, font);
+      groups[index].addContent(table, font, equipment);
     }
   }
 

@@ -1,5 +1,7 @@
 package net.sf.anathema.character.reporting.sheet.second.equipment;
 
+import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
 import net.sf.anathema.character.reporting.sheet.second.equipment.stats.EquipmentNameStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.stats.IEquipmentStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.AccuracyWeaponStatsGroup;
@@ -13,7 +15,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
 
-public class SecondEditionWeaponryTableEncoder extends AbstractEquipmentTableEncoder {
+public class SecondEditionWeaponryTableEncoder extends AbstractEquipmentTableEncoder<IWeapon> {
 
   private final IResources resources;
 
@@ -22,8 +24,9 @@ public class SecondEditionWeaponryTableEncoder extends AbstractEquipmentTableEnc
     this.resources = resources;
   }
 
+  @SuppressWarnings("unchecked")
   @Override
-  protected IEquipmentStatsGroup[] createEquipmentGroups() {
+  protected IEquipmentStatsGroup<IWeapon>[] createEquipmentGroups() {
     return new IEquipmentStatsGroup[] {
         new EquipmentNameStatsGroup(resources),
         new SpeedWeaopnStatsGroup(resources),
@@ -38,5 +41,10 @@ public class SecondEditionWeaponryTableEncoder extends AbstractEquipmentTableEnc
   @Override
   protected int getLineCount() {
     return 8;
+  }
+
+  @Override
+  protected IWeapon[] getPrintEquipments(IGenericCharacter character) {
+    return new IWeapon[0];
   }
 }

@@ -1,5 +1,7 @@
 package net.sf.anathema.character.reporting.sheet.second.equipment;
 
+import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.equipment.weapon.IArmour;
 import net.sf.anathema.character.reporting.sheet.second.equipment.armourstats.FatiguePenaltyStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.armourstats.HardnessPenaltyStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.armourstats.MobilityPenaltyStatsGroup;
@@ -10,7 +12,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
 
-public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncoder {
+public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncoder<IArmour> {
 
   private final IResources resources;
 
@@ -19,10 +21,11 @@ public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncod
     this.resources = resources;
   }
 
+  @SuppressWarnings("unchecked")
   @Override
-  protected IEquipmentStatsGroup[] createEquipmentGroups() {
+  protected IEquipmentStatsGroup<IArmour>[] createEquipmentGroups() {
     return new IEquipmentStatsGroup[] {
-        new EquipmentNameStatsGroup(resources),
+        new EquipmentNameStatsGroup<IArmour>(resources),
         new SoakArmourStatsGroup(resources),
         new MobilityPenaltyStatsGroup(resources),
         new FatiguePenaltyStatsGroup(resources),
@@ -32,5 +35,10 @@ public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncod
   @Override
   protected int getLineCount() {
     return 4;
+  }
+  
+  @Override
+  protected IArmour[] getPrintEquipments(IGenericCharacter character) {
+    return new IArmour[0];
   }
 }
