@@ -4,10 +4,10 @@ import java.awt.Color;
 
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.sheet.second.equipment.stats.IEquipmentStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.AccuracyWeaponStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.DamageWeaponStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.DefenceWeaponStatsGroup;
-import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.IWeaponStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.RangeWeaponStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.RateWeaponStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.SpeedWeaopnStatsGroup;
@@ -37,7 +37,7 @@ public class SecondEditionWeaponryTableEncoder extends AbstractTableEncoder {
 
   @Override
   protected PdfPTable createTable() {
-    IWeaponStatsGroup[] groups = new IWeaponStatsGroup[] {
+    IEquipmentStatsGroup[] groups = new IEquipmentStatsGroup[] {
         new WeaponNameStatsGroup(resources),
         new SpeedWeaopnStatsGroup(resources),
         new AccuracyWeaponStatsGroup(resources),
@@ -63,7 +63,7 @@ public class SecondEditionWeaponryTableEncoder extends AbstractTableEncoder {
     return table;
   }
 
-  private void encodeContentLine(PdfPTable table, IWeaponStatsGroup[] groups) {
+  private void encodeContentLine(PdfPTable table, IEquipmentStatsGroup[] groups) {
     for (int index = 0; index < groups.length; index++) {
       if (index != 0) {
         table.addCell(createSpaceCell());
@@ -72,9 +72,9 @@ public class SecondEditionWeaponryTableEncoder extends AbstractTableEncoder {
     }
   }
 
-  private float[] calculateColumnWidths(IWeaponStatsGroup[] groups) {
+  private float[] calculateColumnWidths(IEquipmentStatsGroup[] groups) {
     Float[] columnWidths = new Float[0];
-    for (IWeaponStatsGroup group : groups) {
+    for (IEquipmentStatsGroup group : groups) {
       if (columnWidths.length != 0) {
         columnWidths = ArrayUtilities.concat(columnWidths, new Float(0.2));
       }

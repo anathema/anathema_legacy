@@ -3,6 +3,7 @@ package net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats;
 import java.awt.Color;
 
 import net.sf.anathema.character.reporting.sheet.second.equipment.WeaponEncodingUtilities;
+import net.sf.anathema.character.reporting.sheet.second.equipment.stats.IEquipmentStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Font;
@@ -10,7 +11,7 @@ import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 
-public final class WeaponNameStatsGroup implements IWeaponStatsGroup {
+public final class WeaponNameStatsGroup implements IEquipmentStatsGroup {
   private final String title;
 
   public WeaponNameStatsGroup(IResources resources) {
