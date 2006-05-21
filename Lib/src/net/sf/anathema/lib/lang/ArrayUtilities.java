@@ -137,4 +137,12 @@ public class ArrayUtilities {
     int[] invertedIndices = createInvertedIndexArray(array.length);
     reorder(array, indices, invertedIndices);
   }
+
+  public static float[] toPrimitive(Float[] objectArray) {
+    float[] primitiveArray = new float[objectArray.length];
+    for (int index = 0; index < primitiveArray.length; index++) {
+      primitiveArray[index] = objectArray[index];
+    }
+    return primitiveArray;
+  }
 }
