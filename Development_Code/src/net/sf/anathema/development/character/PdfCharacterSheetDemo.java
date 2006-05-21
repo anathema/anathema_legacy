@@ -67,6 +67,10 @@ public class PdfCharacterSheetDemo {
     character.addSpecialtyTrait(AbilityType.Archery);
     character.addSpecialtyTrait(AbilityType.Bureaucracy);
     character.addSubbedTrait(AbilityType.Craft);
+    character.addPrintArmour(new DemoNaturalArmour());
+    character.addPrintArmour(new DemoAlienArmour());
+    character.addPrintWeapon(new DemoRangeWeapon());
+    character.addPrintWeapon(new DemoMeleeWeapon());
     return character;
   }
 

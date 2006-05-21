@@ -18,7 +18,14 @@ public class AccuracyWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<I
   }
 
   public void addContent(PdfPTable table, Font font, IWeapon weapon) {
-    table.addCell(createEquipmentValueCell(font));
-    table.addCell(createFinalValueCell(font));
+    if (weapon == null) {
+      table.addCell(createEmptyEquipmentValueCell(font));
+      table.addCell(createFinalValueCell(font));
+    }
+    else {
+      table.addCell(createEquipmentValueCell(font, weapon.getAccuracy()));
+      // todo vom (21.05.2006) (sieroux): Hier brauch's noch den Character
+      table.addCell(createFinalValueCell(font));
+    }
   }
 }

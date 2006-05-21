@@ -18,6 +18,11 @@ public class MobilityPenaltyStatsGroup extends AbstractValueEquipmentStatsGroup<
   }
 
   public void addContent(PdfPTable table, Font font, IArmour armour) {
-    table.addCell(createEquipmentValueCell(font));
+    if (armour == null) {
+      table.addCell(createEmptyEquipmentValueCell(font));
+    }
+    else {
+      table.addCell(createEquipmentValueCell(font, armour.getMobilityPenalty()));
+    }
   }
 }

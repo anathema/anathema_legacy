@@ -24,16 +24,29 @@ public class WeaponEncodingUtilities {
       Font font,
       float borderWidth,
       int border) {
+    return createContentCellTable(borderColor, text, font, borderWidth, border, true);
+  }
+
+  public static final PdfPCell createContentCellTable(
+      Color borderColor,
+      String text,
+      Font font,
+      float borderWidth,
+      int border,
+      boolean enabled) {
     PdfPCell innerCell = new PdfPCell(new Phrase(text, font));
     innerCell.setPaddingTop(0.5f);
     innerCell.setBorderColor(borderColor);
     innerCell.setBorderWidth(borderWidth);
     innerCell.setBorder(border);
-  
+    if (!enabled) {
+      innerCell.setBackgroundColor(borderColor);
+    }
+
     PdfPTable cellTable = new PdfPTable(1);
     cellTable.setWidthPercentage(100);
     cellTable.addCell(innerCell);
-  
+
     PdfPCell outerCell = new PdfPCell();
     outerCell.addElement(cellTable);
     outerCell.setBorder(Rectangle.NO_BORDER);

@@ -18,6 +18,11 @@ public class FatiguePenaltyStatsGroup extends AbstractValueEquipmentStatsGroup<I
   }
 
   public void addContent(PdfPTable table, Font font, IArmour armour) {
-    table.addCell(createEquipmentValueCell(font));
+    if (armour == null) {
+      table.addCell(createEmptyEquipmentValueCell(font));
+    }
+    else {
+      table.addCell(createEquipmentValueCell(font, armour.getFatigue()));
+    }
   }
 }

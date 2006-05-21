@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.sheet.second.equipment.armourstats;
 
 import net.sf.anathema.character.generic.equipment.weapon.IArmour;
+import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.reporting.sheet.second.equipment.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -14,9 +15,16 @@ public class SoakArmourStatsGroup extends AbstractValueEquipmentStatsGroup<IArmo
   }
 
   public void addContent(PdfPTable table, Font font, IArmour armour) {
-    table.addCell(createEquipmentValueCell(font));
-    table.addCell(createEquipmentValueCell(font));
-    table.addCell(createEquipmentValueCell(font));
+    if (armour == null) {
+      table.addCell(createEmptyEquipmentValueCell(font));
+      table.addCell(createEmptyEquipmentValueCell(font));
+      table.addCell(createEmptyEquipmentValueCell(font));
+    }
+    else {
+      table.addCell(createEquipmentValueCell(font, armour.getSoak(HealthType.Bashing)));
+      table.addCell(createEquipmentValueCell(font, armour.getSoak(HealthType.Lethal)));
+      table.addCell(createEquipmentValueCell(font, armour.getSoak(HealthType.Aggravated)));
+    }
   }
 
   public int getColumnCount() {

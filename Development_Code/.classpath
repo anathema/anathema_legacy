@@ -47,5 +47,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_MeritsFlaws"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Intimacies"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Reporting"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment_Impl"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

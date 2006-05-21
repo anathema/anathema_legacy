@@ -48,6 +48,6 @@ public final class EquipmentNameStatsGroup<T extends IEquipment> implements IEqu
     if (StringUtilities.isNullOrTrimEmpty(text)) {
       text = " "; //$NON-NLS-1$
     }
-    return WeaponEncodingUtilities.createContentCellTable(Color.BLACK, " ", font, 0.5f, border); //$NON-NLS-1$
+    return WeaponEncodingUtilities.createContentCellTable(Color.BLACK, text, font, 0.5f, border);
   }
 }
