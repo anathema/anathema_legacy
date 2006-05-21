@@ -1,20 +1,19 @@
-package net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats;
+package net.sf.anathema.character.reporting.sheet.second.equipment.stats;
 
 import java.awt.Color;
 
 import net.sf.anathema.character.reporting.sheet.second.equipment.WeaponEncodingUtilities;
-import net.sf.anathema.character.reporting.sheet.second.equipment.stats.IEquipmentStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Font;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfPCell;
 
-public abstract class AbstractValueWeaponStatsGroup implements IEquipmentStatsGroup {
+public abstract class AbstractValueEquipmentStatsGroup implements IEquipmentStatsGroup {
 
   private final String title;
   
-  public AbstractValueWeaponStatsGroup(IResources resources, String resourceKey) {
+  public AbstractValueEquipmentStatsGroup(IResources resources, String resourceKey) {
     this.title = resources.getString("Sheet.Weapons.Header." + resourceKey); //$NON-NLS-1$
   }
 

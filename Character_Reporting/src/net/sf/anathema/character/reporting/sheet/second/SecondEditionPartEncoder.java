@@ -11,6 +11,7 @@ import net.sf.anathema.character.reporting.sheet.common.anima.PdfAnimaEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.sheet.second.equipment.SecondEditionArmourEncoder;
 import net.sf.anathema.character.reporting.sheet.second.equipment.SecondEditionWeaponryEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
@@ -46,10 +47,19 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
     encodeContent(directContent, new PdfAnimaEncoder(getResources(), getBaseFont()), character, animaBounds, "Anima"); //$NON-NLS-1$
   }
 
-  private float encodeArmorAndSoak(PdfContentByte directContent, float distanceFromTop, float height) {
+  private float encodeArmourAndSoak(
+      PdfContentByte directContent,
+      IGenericCharacter character,
+      float distanceFromTop,
+      float height) throws DocumentException, IOException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     String header = getResources().getString("Sheet.Header.ArmorySoak"); //$NON-NLS-1$
-    boxEncoder.encodeBox(directContent, bounds, header);
+    encodeContent(
+        directContent,
+        new SecondEditionArmourEncoder(getResources(), getBaseFont()),
+        character,
+        bounds,
+        header);
     return height;
   }
 
@@ -85,7 +95,7 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
 
     float weaponryHeight = encodeWeaponry(directContent, character, distanceFromTop, 117);
     distanceFromTop += calculateBoxIncrement(weaponryHeight);
-    float armourHeight = encodeArmorAndSoak(directContent, distanceFromTop, 75);
+    float armourHeight = encodeArmourAndSoak(directContent, character, distanceFromTop, 75);
     distanceFromTop += calculateBoxIncrement(armourHeight);
     float healthHeight = encodeMovementAndHealth(directContent, distanceFromTop, 125);
     distanceFromTop += calculateBoxIncrement(healthHeight);

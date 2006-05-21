@@ -1,9 +1,8 @@
-package net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats;
+package net.sf.anathema.character.reporting.sheet.second.equipment.stats;
 
 import java.awt.Color;
 
 import net.sf.anathema.character.reporting.sheet.second.equipment.WeaponEncodingUtilities;
-import net.sf.anathema.character.reporting.sheet.second.equipment.stats.IEquipmentStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Font;
@@ -11,10 +10,10 @@ import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 
-public final class WeaponNameStatsGroup implements IEquipmentStatsGroup {
+public final class EquipmentNameStatsGroup implements IEquipmentStatsGroup {
   private final String title;
 
-  public WeaponNameStatsGroup(IResources resources) {
+  public EquipmentNameStatsGroup(IResources resources) {
     this.title =resources.getString("Sheet.Weapons.Header.WeaponName"); //$NON-NLS-1$ ;
   }
 
