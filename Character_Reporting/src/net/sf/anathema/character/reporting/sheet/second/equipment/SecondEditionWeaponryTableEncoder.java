@@ -8,8 +8,10 @@ import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.Ac
 import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.DamageWeaponStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.DefenceWeaponStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.IWeaponStatsGroup;
+import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.RangeWeaponStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.RateWeaponStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.SpeedWeaopnStatsGroup;
+import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.TagsStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.WeaponNameStatsGroup;
 import net.sf.anathema.character.reporting.sheet.util.AbstractTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
@@ -28,7 +30,7 @@ public class SecondEditionWeaponryTableEncoder extends AbstractTableEncoder {
   private final Font headerFont;
 
   public SecondEditionWeaponryTableEncoder(BaseFont baseFont, IResources resources) {
-    this.headerFont = new Font(baseFont, IVoidStateFormatConstants.FONT_SIZE, Font.NORMAL, Color.BLACK);
+    this.headerFont = new Font(baseFont, IVoidStateFormatConstants.FONT_SIZE - 1, Font.NORMAL, Color.BLACK);
     this.font = new Font(baseFont, IVoidStateFormatConstants.FONT_SIZE, Font.NORMAL, Color.BLACK);
     this.resources = resources;
   }
@@ -41,15 +43,19 @@ public class SecondEditionWeaponryTableEncoder extends AbstractTableEncoder {
         new AccuracyWeaponStatsGroup(resources),
         new DamageWeaponStatsGroup(resources),
         new DefenceWeaponStatsGroup(resources),
-        new RateWeaponStatsGroup(resources) };
+        new RateWeaponStatsGroup(resources),
+        new RangeWeaponStatsGroup(resources),
+        new TagsStatsGroup(resources)};
     float[] columnWidths = calculateColumnWidths(groups);
     PdfPTable table = new PdfPTable(columnWidths);
     table.setWidthPercentage(100);
     for (int index = 0; index < groups.length; index++) {
+      Font usedFont = index == 0 ? font : headerFont;
       table.addCell(createHeaderCell(
           groups[index].getTitle(),
           groups[index].getColumnCount(),
-          index != groups.length - 1));
+          index != groups.length - 1,
+          usedFont));
     }
     for (int line = 0; line < 8; line++) {
       encodeContentLine(table, groups);
@@ -83,8 +89,8 @@ public class SecondEditionWeaponryTableEncoder extends AbstractTableEncoder {
     return cell;
   }
 
-  private PdfPCell createHeaderCell(String text, int columnSpan, boolean useSpaceCell) {
-    PdfPCell cell = new PdfPCell(new Phrase(text, headerFont));
+  private PdfPCell createHeaderCell(String text, int columnSpan, boolean useSpaceCell, Font textFont) {
+    PdfPCell cell = new PdfPCell(new Phrase(text, textFont));
     cell.setBorder(Rectangle.NO_BORDER);
     cell.setColspan(useSpaceCell ? columnSpan + 1 : columnSpan);
     cell.setPaddingLeft(0);

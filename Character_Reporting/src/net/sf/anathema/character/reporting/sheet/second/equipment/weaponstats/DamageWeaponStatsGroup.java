@@ -8,7 +8,7 @@ import com.lowagie.text.pdf.PdfPTable;
 public class DamageWeaponStatsGroup extends AbstractValueWeaponStatsGroup {
 
   public DamageWeaponStatsGroup(IResources resources) {
-    super(resources, "Damage");
+    super(resources, "Damage"); //$NON-NLS-1$
   }
 
   @Override
