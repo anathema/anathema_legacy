@@ -38,23 +38,32 @@ public class SecondEditionWeaponryTableEncoder extends AbstractTableEncoder {
     IWeaponStatsGroup[] groups = new IWeaponStatsGroup[] {
         new WeaponNameStatsGroup(resources),
         new SpeedWeaopnStatsGroup(resources),
-        new AccuracyWeaponStatsGroup(),
-        new DamageWeaponStatsGroup(),
-        new DefenceWeaponStatsGroup(),
-        new RateWeaponStatsGroup() };
+        new AccuracyWeaponStatsGroup(resources),
+        new DamageWeaponStatsGroup(resources),
+        new DefenceWeaponStatsGroup(resources),
+        new RateWeaponStatsGroup(resources) };
     float[] columnWidths = calculateColumnWidths(groups);
     PdfPTable table = new PdfPTable(columnWidths);
     table.setWidthPercentage(100);
     for (int index = 0; index < groups.length; index++) {
-      table.addCell(createHeaderCell(groups[index].getTitle(), groups[index].getColumnCount(), index != 0));
+      table.addCell(createHeaderCell(
+          groups[index].getTitle(),
+          groups[index].getColumnCount(),
+          index != groups.length - 1));
     }
-    for (int line = 0; line < 2; line++) {
+    for (int line = 0; line < 8; line++) {
       encodeContentLine(table, groups);
     }
     return table;
   }
 
   private void encodeContentLine(PdfPTable table, IWeaponStatsGroup[] groups) {
+    for (int index = 0; index < groups.length; index++) {
+      if (index != 0) {
+        table.addCell(createSpaceCell());
+      }
+      groups[index].addContent(table, font);
+    }
   }
 
   private float[] calculateColumnWidths(IWeaponStatsGroup[] groups) {
@@ -78,6 +87,8 @@ public class SecondEditionWeaponryTableEncoder extends AbstractTableEncoder {
     PdfPCell cell = new PdfPCell(new Phrase(text, headerFont));
     cell.setBorder(Rectangle.NO_BORDER);
     cell.setColspan(useSpaceCell ? columnSpan + 1 : columnSpan);
+    cell.setPaddingLeft(0);
+    cell.setPaddingRight(0);
     return cell;
   }
 }

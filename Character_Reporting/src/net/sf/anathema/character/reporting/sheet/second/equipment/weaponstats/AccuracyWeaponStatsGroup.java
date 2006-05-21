@@ -1,13 +1,22 @@
 package net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats;
 
+import net.sf.anathema.lib.resources.IResources;
+
+import com.lowagie.text.Font;
+import com.lowagie.text.pdf.PdfPTable;
 
 public class AccuracyWeaponStatsGroup extends AbstractValueWeaponStatsGroup {
+
+  public AccuracyWeaponStatsGroup(IResources resources) {
+    super(resources, "Accuracy"); //$NON-NLS-1$
+  }
 
   public int getColumnCount() {
     return 2;
   }
 
-  public String getTitle() {
-    return "Accuracy";
+  public void addContent(PdfPTable table, Font font) {
+    table.addCell(createWeaponValueCell(font));
+    table.addCell(createFinalValueCell(font));
   }
 }

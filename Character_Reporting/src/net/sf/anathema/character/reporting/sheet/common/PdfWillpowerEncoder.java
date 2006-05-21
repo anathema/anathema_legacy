@@ -1,7 +1,5 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
-import java.awt.Point;
-
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;

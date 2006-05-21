@@ -2,19 +2,20 @@ package net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats;
 
 import net.sf.anathema.lib.resources.IResources;
 
+import com.lowagie.text.Font;
+import com.lowagie.text.pdf.PdfPTable;
+
 public class SpeedWeaopnStatsGroup extends AbstractValueWeaponStatsGroup {
 
-  private String title;
-
   public SpeedWeaopnStatsGroup(IResources resources) {
-    this.title = "Speed";
+    super(resources, "Speed"); //$NON-NLS-1$
   }
 
   public int getColumnCount() {
     return 1;
   }
 
-  public String getTitle() {
-    return title;
+  public void addContent(PdfPTable table, Font font) {
+    table.addCell(createFinalValueCell(font));
   }
 }
