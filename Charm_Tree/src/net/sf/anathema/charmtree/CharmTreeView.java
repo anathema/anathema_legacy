@@ -129,7 +129,7 @@ public class CharmTreeView implements ICharmTreeView {
   // }
 
   private void initCharmNames(SVGDocument svgDoc) {
-    NodeList textNodes = svgDoc.getElementsByTagName(ISVGCascadeXMLConstants.TAG_TEXT);
+    NodeList textNodes = svgDoc.getElementsByTagName(SVGConstants.SVG_TEXT_TAG);
     for (int i = 0; i < textNodes.getLength(); i++) {
       SVGTextElement currentNode = (SVGTextElement) textNodes.item(i);
       internationalize(currentNode);
@@ -201,9 +201,7 @@ public class CharmTreeView implements ICharmTreeView {
   }
 
   private Element createTSpanElement(Document document, Text textNode, String xPosition, float varY, int dy) {
-    Element tSpanElement = document.createElementNS(
-        SVGDOMImplementation.SVG_NAMESPACE_URI,
-        ISVGCascadeXMLConstants.TAG_TSPAN);
+    Element tSpanElement = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_TSPAN_TAG);
     tSpanElement.setAttribute(ISVGCascadeXMLConstants.ATTRIB_X, xPosition);
     tSpanElement.setAttribute(ISVGCascadeXMLConstants.ATTRIB_Y, String.valueOf(varY));
     tSpanElement.setAttribute(ISVGCascadeXMLConstants.ATTRIB_DX, SVGConstants.SVG_ZERO_VALUE);

@@ -8,8 +8,6 @@ import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATT
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_WIDTH;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_X;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_Y;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.TAG_G;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.TAG_RECT;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_BLACK;
 
 import java.awt.Color;
@@ -50,7 +48,7 @@ public class SVGMultiLearnableCharmView implements ISVGMultiLearnableCharmView {
   }
 
   public Element initGui(SVGOMDocument document, IBoundsCalculator boundsCalculator) {
-    Element groupElement = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_G);
+    Element groupElement = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_G_TAG);
     groupElement.appendChild(createBorder(document));
     for (int index = 0; index < categories.size(); index++) {
       Element displayElement = categories.get(index).initGui(document, boundsCalculator);
@@ -68,7 +66,7 @@ public class SVGMultiLearnableCharmView implements ISVGMultiLearnableCharmView {
   }
 
   private Element createBorder(SVGDocument document) {
-    Element rectangle = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_RECT);
+    Element rectangle = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_RECT_TAG);
     setAttribute(rectangle, ATTRIB_X, SVGConstants.SVG_ZERO_VALUE);
     setAttribute(rectangle, ATTRIB_Y, SVGConstants.SVG_ZERO_VALUE);
     setAttribute(rectangle, ATTRIB_WIDTH, String.valueOf(charmWidth));

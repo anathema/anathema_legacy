@@ -2,8 +2,6 @@ package net.sf.anathema.charmtree.batik.intvalue;
 
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_TRANSFORM;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_Y;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.TAG_G;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.TAG_TEXT;
 
 import java.awt.Color;
 
@@ -14,6 +12,7 @@ import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;
+import org.apache.batik.util.SVGConstants;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 
@@ -34,8 +33,8 @@ public class SVGDefaultTraitView implements IIntValueView {
   }
 
   public Element initGui(SVGOMDocument svgDocument, IBoundsCalculator boundsCalculator) {
-    Element groupElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_G);
-    Element textElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_TEXT);
+    Element groupElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_G_TAG);
+    Element textElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_TEXT_TAG);
     setAttribute(textElement, ATTRIB_Y, String.valueOf(SVGIntValueDisplay.getDiameter(maxWidth) * 0.9));
     Text text = svgDocument.createTextNode(labelString);
     textElement.appendChild(text);

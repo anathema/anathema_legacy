@@ -10,9 +10,6 @@ import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATT
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_WIDTH;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_X;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_Y;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.TAG_CIRCLE;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.TAG_G;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.TAG_RECT;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_BLACK;
 
 import java.awt.Color;
@@ -67,7 +64,7 @@ public class SVGIntValueDisplay implements IIntValueView {
         if (selectionRectangle == null) {
           selectionRectangle = (SVGRectElement) document.createElementNS(
               SVGDOMImplementation.SVG_NAMESPACE_URI,
-              TAG_RECT);
+              SVGConstants.SVG_RECT_TAG);
           selectionRectangle.setAttributeNS(null, ATTRIB_X, SVGConstants.SVG_ZERO_VALUE);
           selectionRectangle.setAttributeNS(null, ATTRIB_Y, "1"); //$NON-NLS-1$
           setAttribute(selectionRectangle, ATTRIB_WIDTH, SVGConstants.SVG_ZERO_VALUE);
@@ -122,7 +119,7 @@ public class SVGIntValueDisplay implements IIntValueView {
   public Element initGui(SVGOMDocument svgDocument, IBoundsCalculator calculator) {
     this.boundsCalculator = calculator;
     this.document = svgDocument;
-    this.groupElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_G);
+    this.groupElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_G_TAG);
     createCircles();
     for (Element circle : circles) {
       groupElement.appendChild(circle);
@@ -166,8 +163,8 @@ public class SVGIntValueDisplay implements IIntValueView {
   private SVGRectElement createGlassPane() {
     SVGRectElement rectangle = (SVGRectElement) document.createElementNS(
         SVGDOMImplementation.SVG_NAMESPACE_URI,
-        TAG_RECT);
-    document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_RECT);
+        SVGConstants.SVG_RECT_TAG);
+    document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_RECT_TAG);
     setAttribute(rectangle, ATTRIB_X, SVGConstants.SVG_ZERO_VALUE);
     setAttribute(rectangle, ATTRIB_Y, SVGConstants.SVG_ZERO_VALUE);
     setAttribute(rectangle, ATTRIB_WIDTH, String.valueOf(maximumWidth));
@@ -189,7 +186,9 @@ public class SVGIntValueDisplay implements IIntValueView {
   }
 
   private SVGCircleElement createCircleElement(SVGDocument svgDocument, double xCoordinate) {
-    org.w3c.dom.Element circle = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_CIRCLE);
+    org.w3c.dom.Element circle = svgDocument.createElementNS(
+        SVGDOMImplementation.SVG_NAMESPACE_URI,
+        SVGConstants.SVG_CIRCLE_TAG);
     setAttribute(circle, ATTRIB_R, String.valueOf(radius));
     setAttribute(circle, ATTRIB_CX, String.valueOf(xCoordinate));
     setAttribute(circle, ATTRIB_CY, String.valueOf(radius + gap));

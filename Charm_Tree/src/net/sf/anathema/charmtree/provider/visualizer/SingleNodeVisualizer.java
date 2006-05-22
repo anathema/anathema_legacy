@@ -8,9 +8,9 @@ import net.sf.anathema.charmtree.provider.VisualizedGraph;
 import net.sf.anathema.charmtree.provider.components.ILayer;
 import net.sf.anathema.charmtree.provider.components.Layer;
 import net.sf.anathema.charmtree.provider.components.nodes.IVisualizableNode;
-import net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants;
 import net.sf.anathema.charmtree.provider.svg.SVGCreationUtils;
 
+import org.apache.batik.util.SVGConstants;
 import org.dom4j.Element;
 import org.dom4j.QName;
 import org.dom4j.tree.DefaultElement;
@@ -27,7 +27,7 @@ public class SingleNodeVisualizer extends AbstractCharmCascadeVisualizer {
     ILayer layer = new Layer(getProperties().getGapDimension(), 0);
     visualizableNode.setLayer(layer);
     visualizableNode.setPosition(visualizableNode.getWidth() / 2);
-    QName group = SVGCreationUtils.createSVGQName(ISVGCascadeXMLConstants.TAG_G);
+    QName group = SVGCreationUtils.createSVGQName(SVGConstants.SVG_G_TAG);
     Element cascadeElement = new DefaultElement(group);
     visualizableNode.toXML(cascadeElement);
     return new VisualizedGraph(cascadeElement, getProperties().getCharmDimension());

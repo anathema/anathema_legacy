@@ -21,6 +21,7 @@ import net.sf.anathema.charmtree.provider.visualizer.InvertedTreeVisualizer;
 import net.sf.anathema.charmtree.provider.visualizer.SingleNodeVisualizer;
 import net.sf.anathema.charmtree.provider.visualizer.TreeVisualizer;
 
+import org.apache.batik.util.SVGConstants;
 import org.dom4j.Document;
 import org.dom4j.Element;
 
@@ -55,7 +56,7 @@ public class CharmTreeProvider {
   }
 
   private Element createCascadeElement(Element root) {
-    Element cascadeElement = root.addElement(SVGCreationUtils.createSVGQName(ISVGCascadeXMLConstants.TAG_G));
+    Element cascadeElement = root.addElement(SVGCreationUtils.createSVGQName(SVGConstants.SVG_G_TAG));
     cascadeElement.addAttribute(ISVGCascadeXMLConstants.ATTRIB_ID, ISVGCascadeXMLConstants.VALUE_CASCADE_ID);
     return cascadeElement;
   }

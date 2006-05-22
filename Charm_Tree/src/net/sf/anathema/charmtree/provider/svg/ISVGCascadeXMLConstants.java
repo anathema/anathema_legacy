@@ -31,17 +31,7 @@ public interface ISVGCascadeXMLConstants {
   public static final String ATTRIB_IS_CHARM = "isCharm"; //$NON-NLS-1$
   public static final String ATTRIB_IS_ARROW = "isArrow"; //$NON-NLS-1$
 
-  public static final String TAG_CIRCLE = "circle"; //$NON-NLS-1$
-  public static final String TAG_RECT = "rect"; //$NON-NLS-1$
-  public static final String TAG_DEFS = "defs"; //$NON-NLS-1$
   public static final String TAG_G = "g"; //$NON-NLS-1$
-  public static final String TAG_POLYGON = "polygon"; //$NON-NLS-1$
-  public static final String TAG_POLYLINE = "polyline"; //$NON-NLS-1$
-  public static final String TAG_SVG = "svg"; //$NON-NLS-1$
-  public static final String TAG_SYMBOL = "symbol"; //$NON-NLS-1$
-  public static final String TAG_TEXT = "text"; //$NON-NLS-1$
-  public static final String TAG_TSPAN = "tspan"; //$NON-NLS-1$
-  public static final String TAG_USE = "use"; //$NON-NLS-1$
 
   public static final String VALUE_15 = "15"; //$NON-NLS-1$
   public static final String VALUE_3 = "3"; //$NON-NLS-1$

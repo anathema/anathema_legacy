@@ -10,10 +10,10 @@ import net.sf.anathema.charmtree.provider.components.ILayer;
 import net.sf.anathema.charmtree.provider.components.Layer;
 import net.sf.anathema.charmtree.provider.components.nodes.IVisualizableNode;
 import net.sf.anathema.charmtree.provider.components.nodes.VisualizableNodeFactory;
-import net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants;
 import net.sf.anathema.charmtree.provider.svg.SVGCreationUtils;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 
+import org.apache.batik.util.SVGConstants;
 import org.dom4j.Element;
 import org.dom4j.QName;
 import org.dom4j.tree.DefaultElement;
@@ -91,7 +91,7 @@ public abstract class AbstractCharmCascadeVisualizer implements ICharmCascadeVis
   }
 
   protected Element createXml(ILayer[] layers) {
-    QName group = SVGCreationUtils.createSVGQName(ISVGCascadeXMLConstants.TAG_G);
+    QName group = SVGCreationUtils.createSVGQName(SVGConstants.SVG_G_TAG);
     Element cascadeElement = new DefaultElement(group);
     for (ILayer layer : layers) {
       layer.addNodesToXml(cascadeElement);

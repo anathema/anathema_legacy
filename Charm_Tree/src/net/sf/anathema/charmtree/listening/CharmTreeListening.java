@@ -16,6 +16,7 @@ import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 
 import org.apache.batik.swing.gvt.Interactor;
+import org.apache.batik.util.SVGConstants;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.events.Event;
 import org.w3c.dom.events.EventListener;
@@ -89,7 +90,7 @@ public class CharmTreeListening {
       return;
     }
     NodeList groupElementsList = document.getElementById(ISVGCascadeXMLConstants.VALUE_CASCADE_ID)
-        .getElementsByTagName(ISVGCascadeXMLConstants.TAG_G);
+        .getElementsByTagName(SVGConstants.SVG_G_TAG);
     for (int index = 0; index < groupElementsList.getLength(); index++) {
       SVGGElement groupElement = (SVGGElement) groupElementsList.item(index);
       if (groupElement.hasAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_CHARM)) {
@@ -113,7 +114,7 @@ public class CharmTreeListening {
       return;
     }
     NodeList groupElementsList = document.getElementById(ISVGCascadeXMLConstants.VALUE_CASCADE_ID)
-        .getElementsByTagName(ISVGCascadeXMLConstants.TAG_G);
+        .getElementsByTagName(SVGConstants.SVG_G_TAG);
     for (int index = 0; index < groupElementsList.getLength(); index++) {
       SVGGElement groupElement = (SVGGElement) groupElementsList.item(index);
       if (groupElement.hasAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_CHARM)) {

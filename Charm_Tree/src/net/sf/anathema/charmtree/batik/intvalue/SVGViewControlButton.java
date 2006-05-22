@@ -9,7 +9,6 @@ import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATT
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_X;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_Y;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.TAG_G;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.TAG_RECT;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_BLACK;
 
 import net.sf.anathema.charmtree.batik.IBoundsCalculator;
@@ -52,7 +51,7 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
   }
 
   public Element initGui(SVGOMDocument svgDocument, IBoundsCalculator boundsCalculator) {
-    this.outerGroupElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_G);
+    this.outerGroupElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_G_TAG);
     SVGGElement innerGroupElement = (SVGGElement) svgDocument.createElementNS(
         SVGDOMImplementation.SVG_NAMESPACE_URI,
         TAG_G);
@@ -65,24 +64,13 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
         ATTRIB_TRANSFORM,
         "translate(0," + SVGIntValueDisplay.getDiameter(charmWidth) * 1.15 + ")"); //$NON-NLS-1$ //$NON-NLS-2$
     this.rootElement = svgDocument.getRootElement();
-    innerGroupElement.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, createDisplayListener(
-        displayElement,
-        outerGroupElement,
-        rootElement), false);
-    svgDocument.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, createRemoveListener(
-        displayElement,
-        outerGroupElement,
-        rootElement,
-        boundsCalculator), true);
+    innerGroupElement.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, createDisplayListener(), false);
+    svgDocument.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, createRemoveListener(boundsCalculator), true);
     display.setVisible(false);
     return outerGroupElement;
   }
 
-  private EventListener createRemoveListener(
-      final Element displayElement,
-      final Element outerGroupElement,
-      final SVGSVGElement rootElement,
-      final IBoundsCalculator boundsCalculator) {
+  private EventListener createRemoveListener(final IBoundsCalculator boundsCalculator) {
     return new EventListener() {
       public void handleEvent(Event evt) {
         if (evt.getEventPhase() != Event.CAPTURING_PHASE) {
@@ -96,24 +84,21 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
         }
         MouseEvent event = (MouseEvent) evt;
         if (!boundsCalculator.getBounds((SVGLocatable) displayElement).contains(event.getClientX(), event.getClientY())) {
-          removeFromView(displayElement, outerGroupElement, rootElement);
+          removeFromView();
           evt.stopPropagation();
         }
       }
     };
   }
 
-  private EventListener createDisplayListener(
-      final Element displayElement,
-      final Element outerGroupElement,
-      final SVGSVGElement rootElement) {
+  private EventListener createDisplayListener() {
     return new EventListener() {
       public void handleEvent(Event evt) {
         if (!(evt instanceof MouseEvent && ((MouseEvent) evt).getButton() == 0)) {
           return;
         }
         if (enabled) {
-          removeFromView(displayElement, outerGroupElement, rootElement);
+          removeFromView();
         }
         else {
           outerGroupElement.appendChild(displayElement);
@@ -131,10 +116,7 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
     };
   }
 
-  private void removeFromView(
-      final Element displayElement,
-      final Element outerGroupElement,
-      final SVGSVGElement rootElement) {
+  private void removeFromView() {
     display.setVisible(false);
     outerGroupElement.removeChild(displayElement);
     NodeList childNodes = rootElement.getChildNodes();
@@ -163,7 +145,7 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
   }
 
   private Element createBorder(SVGDocument document) {
-    Element rectangle = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_RECT);
+    Element rectangle = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_RECT_TAG);
     setAttribute(rectangle, ATTRIB_X, SVGConstants.SVG_ZERO_VALUE);
     setAttribute(rectangle, ATTRIB_Y, SVGConstants.SVG_ZERO_VALUE);
     setAttribute(rectangle, ATTRIB_WIDTH, String.valueOf(charmWidth));
@@ -187,7 +169,7 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
 
   public void reset() {
     if (enabled) {
-      removeFromView(displayElement, outerGroupElement, rootElement);
+      removeFromView();
     }
   }
 }
