@@ -4,14 +4,14 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
-import net.sf.anathema.character.generic.framework.module.CharacterGenericsModuleAdapter;
+import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.meritsflaws.model.MeritsFlawsModelFactory;
 import net.sf.anathema.character.meritsflaws.persistence.MeritsFlawsPersisterFactory;
 import net.sf.anathema.character.meritsflaws.template.MeritsFlawsTemplate;
 import net.sf.anathema.character.meritsflaws.view.MeritsFlawsViewFactory;
 import net.sf.anathema.lib.registry.IRegistry;
 
-public class MeritsFlawsModule extends CharacterGenericsModuleAdapter {
+public class MeritsFlawsModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void addAdditionalTemplateData(ICharacterGenerics characterGenerics) {
