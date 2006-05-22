@@ -41,6 +41,7 @@ public class PolylineSVGArrow {
   public Element toXML() {
     QName group = SVGCreationUtils.createSVGQName(ISVGCascadeXMLConstants.TAG_G);
     Element g = new DefaultElement(group);
+    g.addAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_ARROW, SVGConstants.SVG_TRUE_VALUE);
     createCircle(g);
     createLine(g);
     createArrowHead(g);

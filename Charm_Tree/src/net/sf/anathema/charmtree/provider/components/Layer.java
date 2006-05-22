@@ -227,7 +227,7 @@ public class Layer implements ILayer {
             arrow.addPoint(visitedNode.getPosition(), yPosition + visitedNode.getHeight());
             arrow.addPoint(child.getPosition(), child.getLayer().getYPosition());
             extendArrow(arrow, child);
-            cascade.appendContent(arrow.toXML());
+            cascade.add(arrow.toXML());
           }
         }
 
