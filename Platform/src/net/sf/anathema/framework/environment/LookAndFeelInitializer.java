@@ -14,6 +14,8 @@ public class LookAndFeelInitializer {
 
   private static final String WINDOWS_LOOK_AND_FEEL_CLASSNAME = WindowsLookAndFeel.class.getName();
   private static final String AQUA_LOOK_AND_FEEL_CLASSNAME = "apple.laf.AquaLookAndFeel"; //$NON-NLS-1$
+  private static final String AQUA_USE_SCREEN_MENU_BAR = "apple.laf.useScreenMenuBar"; //$NON-NLS-1$
+  private static final String AQUA_APPLICATION_NAME = "com.apple.mrj.application.apple.menu.about.name"; //$NON-NLS-1$
   private final IAnathemaPreferences anathemaPreferences;
 
   public LookAndFeelInitializer(IAnathemaPreferences anathemaPreferences) {
@@ -33,13 +35,20 @@ public class LookAndFeelInitializer {
     else {
       LookAndFeelAddons.setAddon(LookAndFeelAddons.getSystemAddonClassName());
     }
+    if (isAqua(lookAndFeelClassName)) {
+      System.setProperty(AQUA_USE_SCREEN_MENU_BAR, "true"); //$NON-NLS-1$
+      System.setProperty(AQUA_APPLICATION_NAME, "Anathema"); //$NON-NLS-1$
+    }
     UIManager.setLookAndFeel(lookAndFeelClassName);
   }
 
   private boolean useMetalLookAndFeel(String lookAndFeelClassName) {
     boolean forceMetalLookAndFeel = anathemaPreferences.isMetalLookAndFeelForced();
     final boolean isWindowsLookAndFeel = lookAndFeelClassName.equals(WINDOWS_LOOK_AND_FEEL_CLASSNAME);
-    final boolean isAppleLookAndFeel = lookAndFeelClassName.equals(AQUA_LOOK_AND_FEEL_CLASSNAME);
-    return (!isWindowsLookAndFeel && !isAppleLookAndFeel) || forceMetalLookAndFeel;
+    return (!isWindowsLookAndFeel && !isAqua(lookAndFeelClassName)) || forceMetalLookAndFeel;
+  }
+
+  private boolean isAqua(String lookAndFeelClassName) {
+    return lookAndFeelClassName.equals(AQUA_LOOK_AND_FEEL_CLASSNAME);
   }
 }
