@@ -28,9 +28,9 @@ public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncod
     return new IEquipmentStatsGroup[] {
         new EquipmentNameStatsGroup<IArmour>(resources),
         new SoakArmourStatsGroup(resources),
+        new HardnessStatsGroup(resources),
         new MobilityPenaltyStatsGroup(resources),
-        new FatigueStatsGroup(resources),
-        new HardnessStatsGroup(resources) };
+        new FatigueStatsGroup(resources) };
   }
 
   @Override
