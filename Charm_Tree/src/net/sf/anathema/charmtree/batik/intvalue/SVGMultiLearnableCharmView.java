@@ -1,13 +1,5 @@
 package net.sf.anathema.charmtree.batik.intvalue;
 
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_FILL;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_FILL_OPACITY;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_HEIGHT;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_STROKE;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_TRANSFORM;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_WIDTH;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_X;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_Y;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_BLACK;
 
 import java.awt.Color;
@@ -54,7 +46,7 @@ public class SVGMultiLearnableCharmView implements ISVGMultiLearnableCharmView {
       Element displayElement = categories.get(index).initGui(document, boundsCalculator);
       setAttribute(
           displayElement,
-          ATTRIB_TRANSFORM,
+          SVGConstants.SVG_TRANSFORM_ATTRIBUTE,
           "translate(0," + index * SVGIntValueDisplay.getDiameter(charmWidth) * 1.1 + ")"); //$NON-NLS-1$ //$NON-NLS-2$
       groupElement.appendChild(displayElement);
     }
@@ -67,15 +59,15 @@ public class SVGMultiLearnableCharmView implements ISVGMultiLearnableCharmView {
 
   private Element createBorder(SVGDocument document) {
     Element rectangle = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_RECT_TAG);
-    setAttribute(rectangle, ATTRIB_X, SVGConstants.SVG_ZERO_VALUE);
-    setAttribute(rectangle, ATTRIB_Y, SVGConstants.SVG_ZERO_VALUE);
-    setAttribute(rectangle, ATTRIB_WIDTH, String.valueOf(charmWidth));
-    setAttribute(rectangle, ATTRIB_HEIGHT, String.valueOf(categories.size()
+    setAttribute(rectangle, SVGConstants.SVG_X_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
+    setAttribute(rectangle, SVGConstants.SVG_Y_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
+    setAttribute(rectangle, SVGConstants.SVG_WIDTH_ATTRIBUTE, String.valueOf(charmWidth));
+    setAttribute(rectangle, SVGConstants.SVG_HEIGHT_ATTRIBUTE, String.valueOf(categories.size()
         * SVGIntValueDisplay.getDiameter(charmWidth)
         * 1.15));
-    setAttribute(rectangle, ATTRIB_STROKE, VALUE_COLOR_BLACK);
-    setAttribute(rectangle, ATTRIB_FILL, VALUE_COLOR_BLACK);
-    setAttribute(rectangle, ATTRIB_FILL_OPACITY, SVGConstants.SVG_ZERO_VALUE);
+    setAttribute(rectangle, SVGConstants.SVG_STROKE_ATTRIBUTE, VALUE_COLOR_BLACK);
+    setAttribute(rectangle, SVGConstants.SVG_FILL_ATTRIBUTE, VALUE_COLOR_BLACK);
+    setAttribute(rectangle, SVGConstants.SVG_FILL_OPACITY_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
     return rectangle;
   }
 

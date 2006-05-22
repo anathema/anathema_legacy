@@ -55,7 +55,7 @@ public class PolylineSVGArrow {
     Double previousPoint = pointList.get(size - 2);
     Double lastPoint = pointList.get(size - 1);
     arrowElement.addAttribute(SVGCreationUtils.createXLinkQName(), ISVGCascadeXMLConstants.VALUE_ARROWHEAD_REFERENCE);
-    arrowElement.addAttribute(SVGConstants.SVG_TRANSFORM_ATTRIBUTE, "translate(" //$NON-NLS-1$
+    arrowElement.addAttribute(SVGConstants.SVG_TRANSFORM_ATTRIBUTE, SVGConstants.SVG_TRANSLATE_VALUE + "(" //$NON-NLS-1$
         + (lastPoint.x - (PolylineSVGArrow.HeadWidth / 2.0))
         + ISVGCascadeXMLConstants.SPACE
         + (lastPoint.y - PolylineSVGArrow.HeadHeight)

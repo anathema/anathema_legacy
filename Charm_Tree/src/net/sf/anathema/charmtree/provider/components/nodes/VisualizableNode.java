@@ -42,8 +42,8 @@ public class VisualizableNode extends AbstractSingleVisualizableNode {
     QName textName = SVGCreationUtils.createSVGQName(SVGConstants.SVG_TEXT_TAG);
     Element text = g.addElement(textName);
     {
-      text.addAttribute(ISVGCascadeXMLConstants.ATTRIB_X, String.valueOf(getPosition()));
-      text.addAttribute(ISVGCascadeXMLConstants.ATTRIB_Y, String.valueOf(getLayer().getYPosition()
+      text.addAttribute(SVGConstants.SVG_X_ATTRIBUTE, String.valueOf(getPosition()));
+      text.addAttribute(SVGConstants.SVG_Y_ATTRIBUTE, String.valueOf(getLayer().getYPosition()
           + getCharmDimension().getHeight()
           / 2));
       text.addAttribute(SVGConstants.SVG_TEXT_ANCHOR_ATTRIBUTE, SVGConstants.SVG_MIDDLE_VALUE);

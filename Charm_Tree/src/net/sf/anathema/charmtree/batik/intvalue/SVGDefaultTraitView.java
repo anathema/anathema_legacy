@@ -1,8 +1,5 @@
 package net.sf.anathema.charmtree.batik.intvalue;
 
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_TRANSFORM;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_Y;
-
 import java.awt.Color;
 
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
@@ -35,12 +32,15 @@ public class SVGDefaultTraitView implements IIntValueView {
   public Element initGui(SVGOMDocument svgDocument, IBoundsCalculator boundsCalculator) {
     Element groupElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_G_TAG);
     Element textElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_TEXT_TAG);
-    setAttribute(textElement, ATTRIB_Y, String.valueOf(SVGIntValueDisplay.getDiameter(maxWidth) * 0.9));
+    setAttribute(
+        textElement,
+        SVGConstants.SVG_Y_ATTRIBUTE,
+        String.valueOf(SVGIntValueDisplay.getDiameter(maxWidth) * 0.9));
     Text text = svgDocument.createTextNode(labelString);
     textElement.appendChild(text);
     groupElement.appendChild(textElement);
     Element valueGroupElement = valueDisplay.initGui(svgDocument, boundsCalculator);
-    setAttribute(valueGroupElement, ATTRIB_TRANSFORM, "translate(" //$NON-NLS-1$
+    setAttribute(valueGroupElement, SVGConstants.SVG_TRANSFORM_ATTRIBUTE, "translate(" //$NON-NLS-1$
         + String.valueOf(maxWidth
             - EssenceTemplate.SYSTEM_ESSENCE_MAX
             * SVGIntValueDisplay.getDiameter(maxWidth)

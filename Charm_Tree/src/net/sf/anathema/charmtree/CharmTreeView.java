@@ -18,7 +18,6 @@ import net.sf.anathema.charmtree.presenter.view.ICharmSelectionListener;
 import net.sf.anathema.charmtree.presenter.view.ICharmTreeView;
 import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.charmtree.presenter.view.IDocumentLoadedListener;
-import net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
@@ -85,16 +84,14 @@ public class CharmTreeView implements ICharmTreeView {
     for (int i = 0; i < list.getLength(); i++) {
       if (list.item(i) instanceof SVGUseElement) {
         SVGElement element = (SVGElement) list.item(i);
-        element.setAttribute(ISVGCascadeXMLConstants.ATTRIB_FILL, "rgb(" //$NON-NLS-1$
+        element.setAttribute(SVGConstants.SVG_FILL_ATTRIBUTE, "rgb(" //$NON-NLS-1$
             + color.getRed()
             + "," //$NON-NLS-1$
             + color.getGreen()
             + "," //$NON-NLS-1$
             + color.getBlue()
             + ")"); //$NON-NLS-1$
-        element.setAttribute(
-            ISVGCascadeXMLConstants.ATTRIB_FILL_OPACITY,
-            String.valueOf((float) color.getAlpha() / 255));
+        element.setAttribute(SVGConstants.SVG_FILL_OPACITY_ATTRIBUTE, String.valueOf((float) color.getAlpha() / 255));
       }
     }
   }
@@ -177,7 +174,7 @@ public class CharmTreeView implements ICharmTreeView {
     Text oldNode = (Text) text.getFirstChild();
     Text[] textNodes = new Text[lines];
     int lineHeight = 16;
-    float varY = Float.valueOf(text.getAttribute(ISVGCascadeXMLConstants.ATTRIB_Y));
+    float varY = Float.valueOf(text.getAttribute(SVGConstants.SVG_Y_ATTRIBUTE));
     varY += lineHeight - lines * lineHeight / 2 - (lines == 1 ? 2 : 0);
     List<Integer> wrap = new ArrayList<Integer>();
     wrap.add(0);
@@ -192,7 +189,7 @@ public class CharmTreeView implements ICharmTreeView {
     }
     text.removeChild(oldNode);
     Element[] lineBreak = new Element[lines];
-    String xPosition = text.getAttribute(ISVGCascadeXMLConstants.ATTRIB_X);
+    String xPosition = text.getAttribute(SVGConstants.SVG_X_ATTRIBUTE);
     for (int index = 0; index < lineBreak.length; index++) {
       lineBreak[index] = createTSpanElement(document, textNodes[index], xPosition, varY, lineHeight * index);
       text.appendChild(lineBreak[index]);
@@ -201,8 +198,8 @@ public class CharmTreeView implements ICharmTreeView {
 
   private Element createTSpanElement(Document document, Text textNode, String xPosition, float varY, int dy) {
     Element tSpanElement = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_TSPAN_TAG);
-    tSpanElement.setAttribute(ISVGCascadeXMLConstants.ATTRIB_X, xPosition);
-    tSpanElement.setAttribute(ISVGCascadeXMLConstants.ATTRIB_Y, String.valueOf(varY));
+    tSpanElement.setAttribute(SVGConstants.SVG_X_ATTRIBUTE, xPosition);
+    tSpanElement.setAttribute(SVGConstants.SVG_Y_ATTRIBUTE, String.valueOf(varY));
     tSpanElement.setAttribute(SVGConstants.SVG_DX_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
     tSpanElement.setAttribute(SVGConstants.SVG_DY_ATTRIBUTE, String.valueOf(dy));
     tSpanElement.appendChild(textNode);

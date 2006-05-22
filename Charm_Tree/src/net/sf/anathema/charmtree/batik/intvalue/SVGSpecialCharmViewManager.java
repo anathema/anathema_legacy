@@ -1,7 +1,5 @@
 package net.sf.anathema.charmtree.batik.intvalue;
 
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_TRANSFORM;
-
 import java.awt.Rectangle;
 
 import net.sf.anathema.charmtree.batik.IBoundsCalculator;
@@ -11,6 +9,7 @@ import net.sf.anathema.charmtree.presenter.view.ISVGSpecialCharmView;
 import net.sf.anathema.charmtree.presenter.view.ISpecialCharmViewManager;
 
 import org.apache.batik.dom.svg.SVGOMDocument;
+import org.apache.batik.util.SVGConstants;
 import org.w3c.dom.Element;
 import org.w3c.dom.svg.SVGGElement;
 import org.w3c.dom.svg.SVGSVGElement;
@@ -36,7 +35,7 @@ public class SVGSpecialCharmViewManager implements ISpecialCharmViewManager<ISVG
       Rectangle bounds = getGroupBounds(charmView.getCharmId());
       float xPosition = bounds.x / rootElement.getScreenCTM().getA();
       float yPosition = (bounds.y + bounds.height + 5) / rootElement.getScreenCTM().getD();
-      setAttribute(viewElement, ATTRIB_TRANSFORM, "translate(" + xPosition + "," + yPosition + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      setAttribute(viewElement, SVGConstants.SVG_TRANSFORM_ATTRIBUTE, "translate(" + xPosition + "," + yPosition + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
       rootElement.appendChild(viewElement);
     }
   }

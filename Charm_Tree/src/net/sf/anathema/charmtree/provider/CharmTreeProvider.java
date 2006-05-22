@@ -44,7 +44,7 @@ public class CharmTreeProvider {
     Element cascadeElement = createCascadeElement(root);
     for (IVisualizedGraph graph : visualizedGraphs) {
       cascadeElement.add(graph.getCascadeElement());
-      graph.getCascadeElement().addAttribute(ISVGCascadeXMLConstants.ATTRIB_TRANSFORM, "translate(" //$NON-NLS-1$
+      graph.getCascadeElement().addAttribute(SVGConstants.SVG_TRANSFORM_ATTRIBUTE, "translate(" //$NON-NLS-1$
           + (totalDimension.width + properties.getGapDimension().width)
           + " 0)"); //$NON-NLS-1$
       totalDimension.setSize(

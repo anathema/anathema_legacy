@@ -1,13 +1,7 @@
 package net.sf.anathema.charmtree.batik.intvalue;
 
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_FILL;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_FILL_OPACITY;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_HEIGHT;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_STROKE;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_WIDTH;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_X;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_Y;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_BLACK;
+import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_LIGHT_MEDIUM_GRAY;
 
 import java.awt.Color;
 import java.awt.Rectangle;
@@ -62,13 +56,16 @@ public class SVGIntValueDisplay implements IIntValueView {
           selectionRectangle = (SVGRectElement) document.createElementNS(
               SVGDOMImplementation.SVG_NAMESPACE_URI,
               SVGConstants.SVG_RECT_TAG);
-          selectionRectangle.setAttributeNS(null, ATTRIB_X, SVGConstants.SVG_ZERO_VALUE);
-          selectionRectangle.setAttributeNS(null, ATTRIB_Y, "1"); //$NON-NLS-1$
-          setAttribute(selectionRectangle, ATTRIB_WIDTH, SVGConstants.SVG_ZERO_VALUE);
-          selectionRectangle.setAttributeNS(null, ATTRIB_HEIGHT, "22"); //$NON-NLS-1$
-          selectionRectangle.setAttributeNS(null, ATTRIB_STROKE, VALUE_COLOR_BLACK);
-          selectionRectangle.setAttributeNS(null, ATTRIB_FILL, "rgb(120, 120, 120)"); //$NON-NLS-1$
-          selectionRectangle.setAttributeNS(null, ATTRIB_FILL_OPACITY, String.valueOf((float) 120 / 255));
+          selectionRectangle.setAttributeNS(null, SVGConstants.SVG_X_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
+          selectionRectangle.setAttributeNS(null, SVGConstants.SVG_Y_ATTRIBUTE, SVGConstants.SVG_ONE_VALUE);
+          setAttribute(selectionRectangle, SVGConstants.SVG_WIDTH_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
+          selectionRectangle.setAttributeNS(null, SVGConstants.SVG_HEIGHT_ATTRIBUTE, "22"); //$NON-NLS-1$
+          selectionRectangle.setAttributeNS(null, SVGConstants.SVG_STROKE_ATTRIBUTE, VALUE_COLOR_BLACK);
+          selectionRectangle.setAttributeNS(null, SVGConstants.SVG_FILL_ATTRIBUTE, VALUE_COLOR_LIGHT_MEDIUM_GRAY); //$NON-NLS-1$
+          selectionRectangle.setAttributeNS(
+              null,
+              SVGConstants.SVG_FILL_OPACITY_ATTRIBUTE,
+              String.valueOf((float) 120 / 255));
           groupElement.appendChild(selectionRectangle);
         }
         setSelectionRectangleWidth(mouseEvent.getClientX());
@@ -132,7 +129,7 @@ public class SVGIntValueDisplay implements IIntValueView {
     Rectangle groupBounds = boundsCalculator.getBounds((SVGLocatable) groupElement);
     float width = selectionRectangle.getScreenCTM().inverse().getA() * (clientX - groupBounds.x);
     double boundedWidth = Math.max(0, Math.min(maximumWidth, width));
-    setAttribute(selectionRectangle, ATTRIB_WIDTH, String.valueOf(boundedWidth));
+    setAttribute(selectionRectangle, SVGConstants.SVG_WIDTH_ATTRIBUTE, String.valueOf(boundedWidth));
   }
 
   private void selectCircles(int xPosition) {
@@ -162,12 +159,12 @@ public class SVGIntValueDisplay implements IIntValueView {
         SVGDOMImplementation.SVG_NAMESPACE_URI,
         SVGConstants.SVG_RECT_TAG);
     document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_RECT_TAG);
-    setAttribute(rectangle, ATTRIB_X, SVGConstants.SVG_ZERO_VALUE);
-    setAttribute(rectangle, ATTRIB_Y, SVGConstants.SVG_ZERO_VALUE);
-    setAttribute(rectangle, ATTRIB_WIDTH, String.valueOf(maximumWidth));
-    setAttribute(rectangle, ATTRIB_HEIGHT, String.valueOf(2 * (radius + gap)));
-    setAttribute(rectangle, ATTRIB_FILL, VALUE_COLOR_BLACK);
-    setAttribute(rectangle, ATTRIB_FILL_OPACITY, SVGConstants.SVG_ZERO_VALUE);
+    setAttribute(rectangle, SVGConstants.SVG_X_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
+    setAttribute(rectangle, SVGConstants.SVG_Y_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
+    setAttribute(rectangle, SVGConstants.SVG_WIDTH_ATTRIBUTE, String.valueOf(maximumWidth));
+    setAttribute(rectangle, SVGConstants.SVG_HEIGHT_ATTRIBUTE, String.valueOf(2 * (radius + gap)));
+    setAttribute(rectangle, SVGConstants.SVG_FILL_ATTRIBUTE, VALUE_COLOR_BLACK);
+    setAttribute(rectangle, SVGConstants.SVG_FILL_OPACITY_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
     return rectangle;
   }
 
@@ -189,9 +186,9 @@ public class SVGIntValueDisplay implements IIntValueView {
     setAttribute(circle, SVGConstants.SVG_R_ATTRIBUTE, String.valueOf(radius));
     setAttribute(circle, SVGConstants.SVG_CX_ATTRIBUTE, String.valueOf(xCoordinate));
     setAttribute(circle, SVGConstants.SVG_CY_ATTRIBUTE, String.valueOf(radius + gap));
-    setAttribute(circle, ATTRIB_FILL_OPACITY, SVGConstants.SVG_ZERO_VALUE);
-    setAttribute(circle, ATTRIB_FILL, fillColorString);
-    setAttribute(circle, ATTRIB_STROKE, VALUE_COLOR_BLACK);
+    setAttribute(circle, SVGConstants.SVG_FILL_OPACITY_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
+    setAttribute(circle, SVGConstants.SVG_FILL_ATTRIBUTE, fillColorString);
+    setAttribute(circle, SVGConstants.SVG_STROKE_ATTRIBUTE, VALUE_COLOR_BLACK);
     return (SVGCircleElement) circle;
   }
 
@@ -199,10 +196,10 @@ public class SVGIntValueDisplay implements IIntValueView {
     this.value = value;
     if (visible) {
       for (int imageIndex = 0; imageIndex < dotCount; imageIndex++) {
-        setAttribute(circles[imageIndex], ATTRIB_FILL_OPACITY, fillOpacityString);
+        setAttribute(circles[imageIndex], SVGConstants.SVG_FILL_OPACITY_ATTRIBUTE, fillOpacityString);
       }
       for (int imageIndex = value; imageIndex < dotCount; imageIndex++) {
-        setAttribute(circles[imageIndex], ATTRIB_FILL_OPACITY, SVGConstants.SVG_ZERO_VALUE);
+        setAttribute(circles[imageIndex], SVGConstants.SVG_FILL_OPACITY_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
       }
     }
     fireValueChangedEvent(value);
