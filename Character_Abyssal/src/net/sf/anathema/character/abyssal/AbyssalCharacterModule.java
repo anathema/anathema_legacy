@@ -8,7 +8,7 @@ import net.sf.anathema.character.abyssal.template.LoyalAbyssalTemplate;
 import net.sf.anathema.character.abyssal.template.RenegadeAbyssalTemplate;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.framework.module.CharacterGenericsModuleAdapter;
+import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
@@ -24,7 +24,7 @@ import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
-public class AbyssalCharacterModule extends CharacterGenericsModuleAdapter {
+public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
 
   private static final Logger logger = Logger.getLogger(AbyssalCharacterModule.class);
   public static final String BACKGROUND_ID_ABYSSAL_COMMAND = "AbyssalCommand"; //$NON-NLS-1$
