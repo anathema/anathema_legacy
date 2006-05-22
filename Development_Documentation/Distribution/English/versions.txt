@@ -14,7 +14,12 @@ http://anathema.sf.net
 - Custom natures are gone. Old characters using the feature will still load, but they will look a bit odd 
   in both program and printout. The feature might return some day, if demanded.
 
+-- Usability --
+* Greatly improved speed of Charm trees.
+* Tried to improve usability on Mac OS X
+
 -- Miscellaneous --
+* Replaced "Periphrase" by "Periphrasis", as is due in English.
 * Fixed an error in the Linux launcher.
 * Violet Bier of Sorrows' "Conclusion Pursuing Approach" is now attributed as "Prayer Strip".
 * Power Combat's "Glorious Solar Saber" now has a mote cost of 6.
@@ -29,6 +34,7 @@ http://anathema.sf.net
 * Fixed calculation for Lunar attribute points.
 * Lunars are able to learn Shadowlands circle Necromancy.
 * Changed Lunars' charm selection color
+
 
 -- Reporting --
 + The character's ruleset is now included on the voidstate sheet.
