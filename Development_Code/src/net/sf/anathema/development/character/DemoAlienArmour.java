@@ -6,22 +6,24 @@ import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
 public class DemoAlienArmour implements IArmour {
-
   public Integer getFatigue() {
-    return null;
+    return 2;
   }
 
-  public Integer getHardness() {
-    return null;
+  public Integer getHardness(HealthType healthType) {
+    if (healthType == HealthType.Bashing) {
+      return 12;
+    }
+    return 3;
   }
 
   public Integer getMobilityPenalty() {
-    return null;
+    return -4;
   }
 
   public Integer getSoak(HealthType type) {
     if (type == HealthType.Aggravated) {
-      return null;
+      return 10;
     }
     if (type == HealthType.Lethal) {
       return 1;
@@ -30,6 +32,6 @@ public class DemoAlienArmour implements IArmour {
   }
 
   public IIdentificate getName() {
-    return new Identificate("Natural");
+    return new Identificate("Alien");
   }
 }
