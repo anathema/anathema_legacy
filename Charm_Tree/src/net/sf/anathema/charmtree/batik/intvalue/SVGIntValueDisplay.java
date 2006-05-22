@@ -1,11 +1,8 @@
 package net.sf.anathema.charmtree.batik.intvalue;
 
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_CX;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_CY;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_FILL;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_FILL_OPACITY;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_HEIGHT;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_R;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_STROKE;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_WIDTH;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_X;
@@ -189,9 +186,9 @@ public class SVGIntValueDisplay implements IIntValueView {
     org.w3c.dom.Element circle = svgDocument.createElementNS(
         SVGDOMImplementation.SVG_NAMESPACE_URI,
         SVGConstants.SVG_CIRCLE_TAG);
-    setAttribute(circle, ATTRIB_R, String.valueOf(radius));
-    setAttribute(circle, ATTRIB_CX, String.valueOf(xCoordinate));
-    setAttribute(circle, ATTRIB_CY, String.valueOf(radius + gap));
+    setAttribute(circle, SVGConstants.SVG_R_ATTRIBUTE, String.valueOf(radius));
+    setAttribute(circle, SVGConstants.SVG_CX_ATTRIBUTE, String.valueOf(xCoordinate));
+    setAttribute(circle, SVGConstants.SVG_CY_ATTRIBUTE, String.valueOf(radius + gap));
     setAttribute(circle, ATTRIB_FILL_OPACITY, SVGConstants.SVG_ZERO_VALUE);
     setAttribute(circle, ATTRIB_FILL, fillColorString);
     setAttribute(circle, ATTRIB_STROKE, VALUE_COLOR_BLACK);

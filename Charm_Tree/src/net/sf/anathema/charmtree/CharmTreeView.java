@@ -31,7 +31,6 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 import org.w3c.dom.svg.SVGDocument;
 import org.w3c.dom.svg.SVGElement;
-import org.w3c.dom.svg.SVGGElement;
 import org.w3c.dom.svg.SVGTextElement;
 import org.w3c.dom.svg.SVGUseElement;
 
@@ -109,7 +108,7 @@ public class CharmTreeView implements ICharmTreeView {
     if (charmGroup == null) {
       return;
     }
-    charmGroup.setAttribute(ISVGCascadeXMLConstants.ATTRIB_OPACITY, String.valueOf((float) alpha / 255));
+    charmGroup.setAttribute(SVGConstants.SVG_OPACITY_ATTRIBUTE, String.valueOf((float) alpha / 255));
   }
 
   public void addDocumentLoadedListener(final IDocumentLoadedListener listener) {
@@ -204,15 +203,14 @@ public class CharmTreeView implements ICharmTreeView {
     Element tSpanElement = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_TSPAN_TAG);
     tSpanElement.setAttribute(ISVGCascadeXMLConstants.ATTRIB_X, xPosition);
     tSpanElement.setAttribute(ISVGCascadeXMLConstants.ATTRIB_Y, String.valueOf(varY));
-    tSpanElement.setAttribute(ISVGCascadeXMLConstants.ATTRIB_DX, SVGConstants.SVG_ZERO_VALUE);
-    tSpanElement.setAttribute(ISVGCascadeXMLConstants.ATTRIB_DY, String.valueOf(dy));
+    tSpanElement.setAttribute(SVGConstants.SVG_DX_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
+    tSpanElement.setAttribute(SVGConstants.SVG_DY_ATTRIBUTE, String.valueOf(dy));
     tSpanElement.appendChild(textNode);
     return tSpanElement;
   }
 
   private void internationalize(SVGTextElement text) {
     String id = ((Text) text.getFirstChild()).getData();
-    ((SVGGElement) text.getParentNode()).setAttribute(ISVGCascadeXMLConstants.ATTRIB_ID, id);
     String charmName = properties.getNodeName(id);
     if (properties.isRootCharm(id)) {
       text.getFirstChild().setNodeValue(charmName.toUpperCase());

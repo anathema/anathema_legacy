@@ -42,7 +42,7 @@ public class CharmTreeListening {
     public void handleEvent(Event evt) {
       if (evt instanceof MouseEvent) {
         SVGGElement group = (SVGGElement) evt.getCurrentTarget();
-        String charmId = group.getAttribute(ISVGCascadeXMLConstants.ATTRIB_ID);
+        String charmId = group.getId();
         boolean isCharmSelected = properties.isCharmSelected(charmId);
         boolean isCharmUnlearnable = properties.isCharmUnlearnable(charmId);
         boolean isCharmLearnable = properties.isCharmLearnable(charmId);
@@ -56,7 +56,7 @@ public class CharmTreeListening {
     public void handleEvent(Event evt) {
       if (evt instanceof MouseEvent && ((MouseEvent) evt).getButton() == 0) {
         SVGGElement group = (SVGGElement) evt.getCurrentTarget();
-        String charmId = group.getAttribute(ISVGCascadeXMLConstants.ATTRIB_ID);
+        String charmId = group.getId();
         fireCharmSelectionEvent(charmId);
       }
     }

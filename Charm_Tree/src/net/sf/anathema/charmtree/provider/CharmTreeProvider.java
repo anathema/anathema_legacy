@@ -57,7 +57,7 @@ public class CharmTreeProvider {
 
   private Element createCascadeElement(Element root) {
     Element cascadeElement = root.addElement(SVGCreationUtils.createSVGQName(SVGConstants.SVG_G_TAG));
-    cascadeElement.addAttribute(ISVGCascadeXMLConstants.ATTRIB_ID, ISVGCascadeXMLConstants.VALUE_CASCADE_ID);
+    cascadeElement.addAttribute(SVGConstants.SVG_ID_ATTRIBUTE, ISVGCascadeXMLConstants.VALUE_CASCADE_ID);
     return cascadeElement;
   }
 
@@ -65,7 +65,7 @@ public class CharmTreeProvider {
     if (graphDimension.height > MAXIMUM_DIMENSION.height || graphDimension.width > MAXIMUM_DIMENSION.width) {
       double height = Math.max(graphDimension.getHeight(), graphDimension.width / 2.24);
       double width = Math.max(graphDimension.getWidth(), graphDimension.height * 2.24) + 10;
-      root.addAttribute(ISVGCascadeXMLConstants.ATTRIB_VIEW_BOX, "0 0 " + width + " " + height); //$NON-NLS-1$ //$NON-NLS-2$
+      root.addAttribute(SVGConstants.SVG_VIEW_BOX_ATTRIBUTE, "0 0 " + width + " " + height); //$NON-NLS-1$ //$NON-NLS-2$
     }
   }
 

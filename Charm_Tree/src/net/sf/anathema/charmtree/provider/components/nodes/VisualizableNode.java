@@ -46,8 +46,8 @@ public class VisualizableNode extends AbstractSingleVisualizableNode {
       text.addAttribute(ISVGCascadeXMLConstants.ATTRIB_Y, String.valueOf(getLayer().getYPosition()
           + getCharmDimension().getHeight()
           / 2));
-      text.addAttribute(ISVGCascadeXMLConstants.ATTRIB_TEXT_ANCHOR, SVGConstants.SVG_MIDDLE_VALUE);
-      text.addAttribute(ISVGCascadeXMLConstants.ATTRIB_FONT_SIZE, ISVGCascadeXMLConstants.VALUE_15);
+      text.addAttribute(SVGConstants.SVG_TEXT_ANCHOR_ATTRIBUTE, SVGConstants.SVG_MIDDLE_VALUE);
+      text.addAttribute(SVGConstants.SVG_FONT_SIZE_ATTRIBUTE, ISVGCascadeXMLConstants.VALUE_15);
       text.setText(getContentNode().getId());
     }
   }

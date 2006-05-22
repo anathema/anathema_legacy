@@ -8,7 +8,6 @@ import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATT
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_WIDTH;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_X;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.ATTRIB_Y;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.TAG_G;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_BLACK;
 
 import net.sf.anathema.charmtree.batik.IBoundsCalculator;
@@ -54,7 +53,7 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
     this.outerGroupElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_G_TAG);
     SVGGElement innerGroupElement = (SVGGElement) svgDocument.createElementNS(
         SVGDOMImplementation.SVG_NAMESPACE_URI,
-        TAG_G);
+        SVGConstants.SVG_G_TAG);
     innerGroupElement.appendChild(createBorder(svgDocument));
     innerGroupElement.appendChild(createText(svgDocument, label));
     outerGroupElement.appendChild(innerGroupElement);
