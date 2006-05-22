@@ -86,4 +86,8 @@ public class SVGMultiLearnableCharmView implements ISVGMultiLearnableCharmView {
     categories.add(view);
     return view;
   }
+
+  public void reset() {
+    // Nothing to do
+  }
 }

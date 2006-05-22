@@ -10,4 +10,6 @@ public interface ISVGSpecialCharmView extends ISpecialCharmView {
   public Element initGui(SVGOMDocument document, IBoundsCalculator boundsCalculator);
 
   public void setVisible(boolean visible);
+
+  public void reset();
 }

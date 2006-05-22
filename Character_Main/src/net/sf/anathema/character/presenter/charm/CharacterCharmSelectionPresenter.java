@@ -2,9 +2,13 @@ package net.sf.anathema.character.presenter.charm;
 
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import javax.swing.ToolTipManager;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
@@ -95,6 +99,20 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
       }
     });
     initCharmLearnListening(charms, selectionView);
+    selectionView.getCharmTreeView().getComponent().addMouseListener(new MouseAdapter() {
+      @Override
+      public void mouseExited(MouseEvent e) {
+        for (ISVGSpecialCharmView charmView : specialCharmViews) {
+          ICharm charm = getCharmConfiguration().getCharmById(charmView.getCharmId());
+          boolean isVisible = isVisible(charmSelectionChangeListener.getSelectedLearnCharmGroup(), charm);
+          if (isVisible) {
+            charmView.reset();
+          }
+        }
+        ToolTipManager.sharedInstance().setEnabled(false);
+        ToolTipManager.sharedInstance().setEnabled(true);
+      }
+    });
     selectionView.addDocumentLoadedListener(new IDocumentLoadedListener() {
       public void documentLoaded() {
         ILearningCharmGroup charmGroup = charmSelectionChangeListener.getSelectedLearnCharmGroup();

@@ -37,6 +37,9 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
   private final double charmWidth;
   private boolean enabled = false;
   private final String label;
+  private Element displayElement;
+  private Element outerGroupElement;
+  private SVGSVGElement rootElement;
 
   public SVGViewControlButton(ISVGMultiLearnableCharmView display, double charmWidth, String label) {
     this.display = display;
@@ -49,19 +52,19 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
   }
 
   public Element initGui(SVGOMDocument svgDocument, IBoundsCalculator boundsCalculator) {
-    Element outerGroupElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_G);
+    this.outerGroupElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, TAG_G);
     SVGGElement innerGroupElement = (SVGGElement) svgDocument.createElementNS(
         SVGDOMImplementation.SVG_NAMESPACE_URI,
         TAG_G);
     innerGroupElement.appendChild(createBorder(svgDocument));
     innerGroupElement.appendChild(createText(svgDocument, label));
     outerGroupElement.appendChild(innerGroupElement);
-    Element displayElement = display.initGui(svgDocument, boundsCalculator);
+    this.displayElement = display.initGui(svgDocument, boundsCalculator);
     setAttribute(
         displayElement,
         ATTRIB_TRANSFORM,
         "translate(0," + SVGIntValueDisplay.getDiameter(charmWidth) * 1.15 + ")"); //$NON-NLS-1$ //$NON-NLS-2$
-    final SVGSVGElement rootElement = svgDocument.getRootElement();
+    this.rootElement = svgDocument.getRootElement();
     innerGroupElement.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, createDisplayListener(
         displayElement,
         outerGroupElement,
@@ -179,6 +182,12 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
     display.setVisible(visible);
     if (!visible) {
       enabled = false;
+    }
+  }
+
+  public void reset() {
+    if (enabled) {
+      removeFromView(displayElement, outerGroupElement, rootElement);
     }
   }
 }
