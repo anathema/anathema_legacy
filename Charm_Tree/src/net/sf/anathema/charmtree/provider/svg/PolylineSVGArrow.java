@@ -39,7 +39,7 @@ public class PolylineSVGArrow {
   }
 
   public Element toXML() {
-    QName group = SVGCreationUtils.createSVGQName(ISVGCascadeXMLConstants.TAG_G);
+    QName group = SVGCreationUtils.createSVGQName(SVGConstants.SVG_G_TAG);
     Element g = new DefaultElement(group);
     g.addAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_ARROW, SVGConstants.SVG_TRUE_VALUE);
     createCircle(g);
@@ -49,7 +49,7 @@ public class PolylineSVGArrow {
   }
 
   private void createArrowHead(Element g) {
-    QName useName = SVGCreationUtils.createSVGQName(ISVGCascadeXMLConstants.TAG_USE);
+    QName useName = SVGCreationUtils.createSVGQName(SVGConstants.SVG_USE_TAG);
     Element arrowElement = g.addElement(useName);
     int size = pointList.size();
     Double previousPoint = pointList.get(size - 2);
