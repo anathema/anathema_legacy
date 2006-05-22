@@ -28,6 +28,7 @@ import org.w3c.dom.events.EventListener;
 import org.w3c.dom.events.MouseEvent;
 import org.w3c.dom.svg.SVGDocument;
 import org.w3c.dom.svg.SVGGElement;
+import org.w3c.dom.svg.SVGLocatable;
 import org.w3c.dom.svg.SVGSVGElement;
 
 public class SVGViewControlButton implements ISVGSpecialCharmView {
@@ -60,12 +61,43 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
         displayElement,
         ATTRIB_TRANSFORM,
         "translate(0," + SVGIntValueDisplay.getDiameter(charmWidth) * 1.15 + ")"); //$NON-NLS-1$ //$NON-NLS-2$
+    final SVGSVGElement rootElement = svgDocument.getRootElement();
     innerGroupElement.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, createDisplayListener(
         displayElement,
         outerGroupElement,
-        svgDocument.getRootElement()), false);
+        rootElement), false);
+    svgDocument.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, createRemoveListener(
+        displayElement,
+        outerGroupElement,
+        rootElement,
+        boundsCalculator), true);
     display.setVisible(false);
     return outerGroupElement;
+  }
+
+  private EventListener createRemoveListener(
+      final Element displayElement,
+      final Element outerGroupElement,
+      final SVGSVGElement rootElement,
+      final IBoundsCalculator boundsCalculator) {
+    return new EventListener() {
+      public void handleEvent(Event evt) {
+        if (evt.getEventPhase() != Event.CAPTURING_PHASE) {
+          return;
+        }
+        if (!enabled) {
+          return;
+        }
+        if (!(evt instanceof MouseEvent && ((MouseEvent) evt).getButton() == 0)) {
+          return;
+        }
+        MouseEvent event = (MouseEvent) evt;
+        if (!boundsCalculator.getBounds((SVGLocatable) displayElement).contains(event.getClientX(), event.getClientY())) {
+          removeFromView(displayElement, outerGroupElement, rootElement);
+          evt.stopPropagation();
+        }
+      }
+    };
   }
 
   private EventListener createDisplayListener(
@@ -78,18 +110,7 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
           return;
         }
         if (enabled) {
-          display.setVisible(false);
-          outerGroupElement.removeChild(displayElement);
-          NodeList childNodes = rootElement.getChildNodes();
-          for (int index = 0; index < childNodes.getLength(); index++) {
-            if (childNodes.item(index) instanceof Element) {
-              setAttribute(
-                  (Element) childNodes.item(index),
-                  SVGConstants.SVG_OPACITY_ATTRIBUTE,
-                  SVGConstants.SVG_OPAQUE_VALUE);
-            }
-          }
-          enabled = false;
+          removeFromView(displayElement, outerGroupElement, rootElement);
         }
         else {
           outerGroupElement.appendChild(displayElement);
@@ -105,6 +126,24 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
         }
       }
     };
+  }
+
+  private void removeFromView(
+      final Element displayElement,
+      final Element outerGroupElement,
+      final SVGSVGElement rootElement) {
+    display.setVisible(false);
+    outerGroupElement.removeChild(displayElement);
+    NodeList childNodes = rootElement.getChildNodes();
+    for (int index = 0; index < childNodes.getLength(); index++) {
+      if (childNodes.item(index) instanceof Element) {
+        setAttribute(
+            (Element) childNodes.item(index),
+            SVGConstants.SVG_OPACITY_ATTRIBUTE,
+            SVGConstants.SVG_OPAQUE_VALUE);
+      }
+    }
+    enabled = false;
   }
 
   private Node createText(SVGOMDocument svgDocument, String labelString) {
@@ -138,5 +177,8 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
 
   public void setVisible(boolean visible) {
     display.setVisible(visible);
+    if (!visible) {
+      enabled = false;
+    }
   }
 }
