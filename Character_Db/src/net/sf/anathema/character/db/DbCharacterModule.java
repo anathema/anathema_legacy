@@ -22,7 +22,7 @@ import net.sf.anathema.character.db.template.pirates.PirateOutcasteDbTemplate;
 import net.sf.anathema.character.db.template.pirates.PirateRealmDbTemplate;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.framework.module.CharacterGenericsModuleAdapter;
+import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
@@ -37,7 +37,7 @@ import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
-public class DbCharacterModule extends CharacterGenericsModuleAdapter {
+public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
 
   private final Logger logger = Logger.getLogger(DbCharacterModule.class);
   public static final String BACKGROUND_ID_ARSENAL = "Arsenal"; //$NON-NLS-1$
