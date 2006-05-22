@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.reporting.sheet.second.equipment.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
 
+import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.PdfPTable;
 
@@ -35,7 +36,7 @@ public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWe
     else {
       table.addCell(createEquipmentValueCell(font, weapon.getDamage()));
       table.addCell(createFinalValueCell(font, weapon.getDamage() + trait.getCurrentValue()));
-      table.addCell(createFinalValueCell(font, getDamageTypeLabel(weapon.getDamageType())));
+      table.addCell(createFinalValueCell(font, getDamageTypeLabel(weapon.getDamageType()), Element.ALIGN_CENTER));
     }
   }
 

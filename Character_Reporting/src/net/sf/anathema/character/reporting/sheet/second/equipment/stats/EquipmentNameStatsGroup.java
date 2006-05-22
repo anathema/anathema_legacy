@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.reporting.sheet.second.equipment.EquipmentEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
+import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfPCell;
@@ -49,6 +50,6 @@ public final class EquipmentNameStatsGroup<T extends IEquipment> implements IEqu
     if (StringUtilities.isNullOrTrimEmpty(text)) {
       text = " "; //$NON-NLS-1$
     }
-    return EquipmentEncodingUtilities.createContentCellTable(Color.BLACK, text, font, 0.5f, border);
+    return EquipmentEncodingUtilities.createContentCellTable(Color.BLACK, text, font, 0.5f, border, Element.ALIGN_LEFT);
   }
 }

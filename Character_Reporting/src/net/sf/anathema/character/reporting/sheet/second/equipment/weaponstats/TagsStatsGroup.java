@@ -12,6 +12,7 @@ import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
+import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfPCell;
@@ -59,6 +60,12 @@ public final class TagsStatsGroup implements IEquipmentStatsGroup<IWeapon> {
   }
 
   private PdfPCell createFilledContentCell(Font font, final String text) {
-    return EquipmentEncodingUtilities.createContentCellTable(Color.BLACK, text, font, 0.5f, Rectangle.BOTTOM);
+    return EquipmentEncodingUtilities.createContentCellTable(
+        Color.BLACK,
+        text,
+        font,
+        0.5f,
+        Rectangle.BOTTOM,
+        Element.ALIGN_LEFT);
   }
 }

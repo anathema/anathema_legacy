@@ -9,39 +9,34 @@ import net.sf.anathema.lib.resources.IResources;
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class SoakArmourStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour> {
+public class HardnessStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour> {
 
-  private String valuePrefix = ""; //$NON-NLS-1$
+  public HardnessStatsGroup(IResources resources) {
+    super(resources, "Hardness"); //$NON-NLS-1$
+  }
 
-  public SoakArmourStatsGroup(IResources resources) {
-    super(resources, "Soak"); //$NON-NLS-1$
+  public int getColumnCount() {
+    return 2;
   }
 
   public void addContent(PdfPTable table, Font font, IGenericTrait trait, IArmour armour) {
     if (armour == null) {
       table.addCell(createEmptyEquipmentValueCell(font));
       table.addCell(createEmptyEquipmentValueCell(font));
-      table.addCell(createEmptyEquipmentValueCell(font));
     }
     else {
-      table.addCell(createEquipmentValueCell(font, armour.getSoak(HealthType.Bashing)));
-      table.addCell(createEquipmentValueCell(font, armour.getSoak(HealthType.Lethal)));
-      table.addCell(createEquipmentValueCell(font, armour.getSoak(HealthType.Aggravated)));
+      table.addCell(createEquipmentValueCell(font, armour.getHardness(HealthType.Bashing)));
+      table.addCell(createEquipmentValueCell(font, armour.getHardness(HealthType.Lethal)));
     }
-    valuePrefix = "+"; //$NON-NLS-1$
-  }
-
-  public int getColumnCount() {
-    return 3;
-  }
-
-  @Override
-  protected String getPositivePrefix() {
-    return valuePrefix;
   }
 
   @Override
   protected String getZeroPrefix() {
-    return valuePrefix;
+    return ""; //$NON-NLS-1$
+  }
+
+  @Override
+  protected String getPositivePrefix() {
+    return ""; //$NON-NLS-1$
   }
 }

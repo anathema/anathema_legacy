@@ -23,8 +23,9 @@ public class EquipmentEncodingUtilities {
       String text,
       Font font,
       float borderWidth,
-      int border) {
-    return createContentCellTable(borderColor, text, font, borderWidth, border, true);
+      int border,
+      int alignment) {
+    return createContentCellTable(borderColor, text, font, borderWidth, border, alignment, true);
   }
 
   public static final PdfPCell createContentCellTable(
@@ -33,12 +34,14 @@ public class EquipmentEncodingUtilities {
       Font font,
       float borderWidth,
       int border,
+      int alignment,
       boolean enabled) {
     PdfPCell innerCell = new PdfPCell(new Phrase(text, font));
-    innerCell.setPaddingTop(0.5f);
     innerCell.setBorderColor(borderColor);
     innerCell.setBorderWidth(borderWidth);
     innerCell.setBorder(border);
+    innerCell.setHorizontalAlignment(alignment);
+    innerCell.setPaddingTop(0.5f);
     if (border != Rectangle.BOX) {
       innerCell.setPaddingLeft(0);
       innerCell.setPaddingRight(0);

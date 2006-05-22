@@ -3,8 +3,8 @@ package net.sf.anathema.character.reporting.sheet.second.equipment;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IArmour;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.reporting.sheet.second.equipment.armourstats.FatiguePenaltyStatsGroup;
-import net.sf.anathema.character.reporting.sheet.second.equipment.armourstats.HardnessPenaltyStatsGroup;
+import net.sf.anathema.character.reporting.sheet.second.equipment.armourstats.FatigueStatsGroup;
+import net.sf.anathema.character.reporting.sheet.second.equipment.armourstats.HardnessStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.armourstats.MobilityPenaltyStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.armourstats.SoakArmourStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.stats.EquipmentNameStatsGroup;
@@ -29,8 +29,8 @@ public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncod
         new EquipmentNameStatsGroup<IArmour>(resources),
         new SoakArmourStatsGroup(resources),
         new MobilityPenaltyStatsGroup(resources),
-        new FatiguePenaltyStatsGroup(resources),
-        new HardnessPenaltyStatsGroup(resources) };
+        new FatigueStatsGroup(resources),
+        new HardnessStatsGroup(resources) };
   }
 
   @Override
