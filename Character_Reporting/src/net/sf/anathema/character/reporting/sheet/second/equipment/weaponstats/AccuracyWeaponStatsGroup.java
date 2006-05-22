@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats;
 
 import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
+import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.reporting.sheet.second.equipment.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -17,15 +18,15 @@ public class AccuracyWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<I
     return 2;
   }
 
-  public void addContent(PdfPTable table, Font font, IWeapon weapon) {
+  public void addContent(PdfPTable table, Font font, IGenericTrait trait, IWeapon weapon) {
     if (weapon == null) {
       table.addCell(createEmptyEquipmentValueCell(font));
       table.addCell(createFinalValueCell(font));
     }
     else {
-      table.addCell(createEquipmentValueCell(font, weapon.getAccuracy()));
-      // todo vom (21.05.2006) (sieroux): Hier brauch's noch den Character
-      table.addCell(createFinalValueCell(font));
+      final int weaponValue = weapon.getAccuracy();
+      table.addCell(createEquipmentValueCell(font, weaponValue));
+      table.addCell(createFinalValueCell(font, trait.getCurrentValue() + weaponValue));
     }
   }
 }

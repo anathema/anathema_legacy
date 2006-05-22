@@ -2,6 +2,7 @@ package net.sf.anathema.character.reporting.sheet.second.equipment;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IArmour;
+import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.reporting.sheet.second.equipment.armourstats.FatiguePenaltyStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.armourstats.HardnessPenaltyStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.armourstats.MobilityPenaltyStatsGroup;
@@ -36,9 +37,14 @@ public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncod
   protected int getLineCount() {
     return 4;
   }
-  
+
   @Override
   protected IArmour[] getPrintEquipments(IGenericCharacter character) {
     return character.getPrintArmours();
+  }
+
+  @Override
+  protected IGenericTrait getTrait(IGenericCharacter character, IArmour equipment) {
+    return null;
   }
 }

@@ -4,7 +4,8 @@ import java.awt.Color;
 
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipment;
-import net.sf.anathema.character.reporting.sheet.second.equipment.WeaponEncodingUtilities;
+import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.reporting.sheet.second.equipment.EquipmentEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Font;
@@ -33,7 +34,7 @@ public final class EquipmentNameStatsGroup<T extends IEquipment> implements IEqu
     return new Float[] { new Float(6) };
   }
 
-  public void addContent(PdfPTable table, Font font, IEquipment equipment) {
+  public void addContent(PdfPTable table, Font font, IGenericTrait trait, IEquipment equipment) {
     if (equipment == null) {
       table.addCell(createNameCell(font, "")); //$NON-NLS-1$
     }
@@ -48,6 +49,6 @@ public final class EquipmentNameStatsGroup<T extends IEquipment> implements IEqu
     if (StringUtilities.isNullOrTrimEmpty(text)) {
       text = " "; //$NON-NLS-1$
     }
-    return WeaponEncodingUtilities.createContentCellTable(Color.BLACK, text, font, 0.5f, border);
+    return EquipmentEncodingUtilities.createContentCellTable(Color.BLACK, text, font, 0.5f, border);
   }
 }

@@ -88,9 +88,9 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
     encodeVirtues(directContent, character, distanceFromTop, virtueHeight);
     distanceFromTop += calculateBoxIncrement(virtueHeight);
 
-    float weaponryHeight = encodeWeaponry(directContent, character, distanceFromTop, 117);
+    float weaponryHeight = encodeWeaponry(directContent, character, distanceFromTop, 113);
     distanceFromTop += calculateBoxIncrement(weaponryHeight);
-    float armourHeight = encodeArmourAndSoak(directContent, character, distanceFromTop, 71);
+    float armourHeight = encodeArmourAndSoak(directContent, character, distanceFromTop, 69);
     distanceFromTop += calculateBoxIncrement(armourHeight);
     float healthHeight = encodeMovementAndHealth(directContent, distanceFromTop, 125);
     distanceFromTop += calculateBoxIncrement(healthHeight);

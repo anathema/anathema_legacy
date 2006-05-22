@@ -8,7 +8,7 @@ import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class WeaponEncodingUtilities {
+public class EquipmentEncodingUtilities {
 
   public static Float[] createStandardColumnWeights(int columnCount) {
     Float[] columnWeights = new Float[columnCount];
@@ -39,8 +39,12 @@ public class WeaponEncodingUtilities {
     innerCell.setBorderColor(borderColor);
     innerCell.setBorderWidth(borderWidth);
     innerCell.setBorder(border);
+    if (border != Rectangle.BOX) {
+      innerCell.setPaddingLeft(0);
+      innerCell.setPaddingRight(0);
+    }
     if (!enabled) {
-      innerCell.setBackgroundColor(borderColor);
+      innerCell.setBackgroundColor(Color.LIGHT_GRAY);
     }
 
     PdfPTable cellTable = new PdfPTable(1);

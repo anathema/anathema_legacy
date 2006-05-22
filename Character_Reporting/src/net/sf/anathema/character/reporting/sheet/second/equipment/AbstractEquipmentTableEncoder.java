@@ -5,6 +5,7 @@ import java.awt.Color;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipment;
+import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.second.equipment.stats.IEquipmentStatsGroup;
 import net.sf.anathema.character.reporting.sheet.util.AbstractTableEncoder;
@@ -23,7 +24,7 @@ public abstract class AbstractEquipmentTableEncoder<T extends IEquipment> extend
 
   public AbstractEquipmentTableEncoder(BaseFont baseFont) {
     this.headerFont = new Font(baseFont, IVoidStateFormatConstants.FONT_SIZE - 1, Font.NORMAL, Color.BLACK);
-    this.font = new Font(baseFont, IVoidStateFormatConstants.FONT_SIZE, Font.NORMAL, Color.BLACK);
+    this.font = new Font(baseFont, IVoidStateFormatConstants.FONT_SIZE - 0.5f, Font.NORMAL, Color.BLACK);
   }
 
   @Override
@@ -42,13 +43,16 @@ public abstract class AbstractEquipmentTableEncoder<T extends IEquipment> extend
     }
     T[] printEquipments = getPrintEquipments(character);
     for (int line = 0; line < Math.min(printEquipments.length, getLineCount()); line++) {
-      encodeContentLine(table, groups, printEquipments[line]);
+      IGenericTrait trait = getTrait(character, printEquipments[line]);
+      encodeContentLine(table, groups, trait, printEquipments[line]);
     }
     for (int line = printEquipments.length; line < getLineCount(); line++) {
-      encodeContentLine(table, groups, null);
+      encodeContentLine(table, groups, null, null);
     }
     return table;
   }
+
+  protected abstract IGenericTrait getTrait(IGenericCharacter character, T equipment);
 
   protected abstract T[] getPrintEquipments(IGenericCharacter character);
 
@@ -56,12 +60,12 @@ public abstract class AbstractEquipmentTableEncoder<T extends IEquipment> extend
 
   protected abstract IEquipmentStatsGroup<T>[] createEquipmentGroups();
 
-  private void encodeContentLine(PdfPTable table, IEquipmentStatsGroup<T>[] groups, T equipment) {
+  private void encodeContentLine(PdfPTable table, IEquipmentStatsGroup<T>[] groups, IGenericTrait trait, T equipment) {
     for (int index = 0; index < groups.length; index++) {
       if (index != 0) {
         table.addCell(createSpaceCell());
       }
-      groups[index].addContent(table, font, equipment);
+      groups[index].addContent(table, font, trait, equipment);
     }
   }
 

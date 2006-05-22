@@ -2,6 +2,7 @@ package net.sf.anathema.character.reporting.sheet.second.equipment;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
+import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.reporting.sheet.second.equipment.stats.EquipmentNameStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.stats.IEquipmentStatsGroup;
 import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.AccuracyWeaponStatsGroup;
@@ -46,5 +47,10 @@ public class SecondEditionWeaponryTableEncoder extends AbstractEquipmentTableEnc
   @Override
   protected IWeapon[] getPrintEquipments(IGenericCharacter character) {
     return character.getPrintWeapons();
+  }
+
+  @Override
+  protected IGenericTrait getTrait(IGenericCharacter character, IWeapon equipment) {
+    return character.getTrait(equipment.getTraitType());
   }
 }
