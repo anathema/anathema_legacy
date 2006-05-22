@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
+import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
 import net.sf.anathema.character.generic.framework.reporting.template.ICharacterReportTemplate;
 import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTemplateParser;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
@@ -38,4 +39,6 @@ public interface ICharacterGenerics {
   public IRegistry<String, IAdditionalTemplateParser> getAdditionalTemplateParserRegistry();
 
   public ICharmProvider getCharmProvider();
+  
+  public ICharacterModuleObjectMap getModuleObjectMap();
 }

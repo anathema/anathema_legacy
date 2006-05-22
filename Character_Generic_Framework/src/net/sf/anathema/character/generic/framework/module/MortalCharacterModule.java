@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.impl.backgrounds.SimpleBackgroundTempla
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
-public class MortalCharacterModule extends CharacterGenericsModuleAdapter {
+public class MortalCharacterModule extends NullObjectCharacterModuleAdapter {
 
   public static final String BACKGROUND_ID_RESOURCES = "Resources"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_MENTOR = "Mentor"; //$NON-NLS-1$

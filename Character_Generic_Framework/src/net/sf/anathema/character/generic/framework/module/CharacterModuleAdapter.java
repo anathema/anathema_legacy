@@ -2,6 +2,7 @@ package net.sf.anathema.character.generic.framework.module;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.ICharacterTemplateRegistryCollection;
+import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObject;
 import net.sf.anathema.character.generic.framework.xml.CharacterTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTemplateParser;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -9,7 +10,7 @@ import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
-public abstract class CharacterGenericsModuleAdapter implements ICharacterGenericsModule {
+public abstract class CharacterModuleAdapter<M extends ICharacterModuleObject> implements ICharacterModule<M> {
 
   public void addAdditionalTemplateData(ICharacterGenerics characterGenerics) {
     // Nothing to do
@@ -46,5 +47,9 @@ public abstract class CharacterGenericsModuleAdapter implements ICharacterGeneri
     catch (PersistenceException e) {
       Logger.getLogger(MortalCharacterModule.class).error(e);
     }
+  }
+
+  public M getModuleObject() {
+    return null;
   }
 }

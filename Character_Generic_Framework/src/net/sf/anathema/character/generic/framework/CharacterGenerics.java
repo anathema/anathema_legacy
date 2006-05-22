@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
+import net.sf.anathema.character.generic.framework.module.object.CharacterModuleObjectMap;
 import net.sf.anathema.character.generic.framework.reporting.template.ICharacterReportTemplate;
 import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.CharacterTemplateRegistryCollection;
@@ -34,6 +35,7 @@ public class CharacterGenerics implements ICharacterGenerics {
   private final IRegistry<CharacterType, ICasteCollection> casteCollectionRegistry = new Registry<CharacterType, ICasteCollection>();
   private final IRegistry<String, IAdditionalTemplateParser> additionalTemplateParserRegistry = new Registry<String, IAdditionalTemplateParser>();
   private final ICharmProvider charmProvider = new CharmProvider();
+  private final CharacterModuleObjectMap moduleObjectMap = new CharacterModuleObjectMap();
 
   public IIdentificateRegistry<IBackgroundTemplate> getBackgroundRegistry() {
     return backgroundRegistry;
@@ -77,5 +79,9 @@ public class CharacterGenerics implements ICharacterGenerics {
 
   public ICharmProvider getCharmProvider() {
     return charmProvider;
+  }
+  
+  public CharacterModuleObjectMap getModuleObjectMap() {
+    return moduleObjectMap;
   }
 }
