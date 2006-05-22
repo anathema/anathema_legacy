@@ -4,11 +4,11 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
-import net.sf.anathema.character.generic.framework.module.CharacterGenericsModuleAdapter;
+import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
 import net.sf.anathema.lib.registry.IRegistry;
 
-public class IntimaciesModule extends CharacterGenericsModuleAdapter {
+public class IntimaciesModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void addAdditionalTemplateData(ICharacterGenerics characterGenerics) {
