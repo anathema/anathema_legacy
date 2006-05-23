@@ -13,6 +13,7 @@
     <CharacterConcept>
       <Caste type="Twilight"/>
       <Concept><![CDATA[Erudite Princess]]></Concept>
+      <Motivation><![CDATA[Restore Justice to the Heavenly Hierarchy]]></Motivation>
     </CharacterConcept>
     <Essence creationValue="3" experiencedValue="4"/>
     <Willpower creationValue="7"/>
