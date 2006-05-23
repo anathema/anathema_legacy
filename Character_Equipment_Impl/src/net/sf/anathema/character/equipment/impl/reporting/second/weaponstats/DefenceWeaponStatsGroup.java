@@ -34,18 +34,18 @@ public class DefenceWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IW
         table.addCell(createFinalValueCell(font, (Integer) null));
       }
       else {
-        int finalValue = calculateFinalValue(
+        double finalValue = calculateFinalValue(
             weapon.getDefence(),
             character.getTrait(AttributeType.Dexterity),
             character.getTrait(weapon.getTraitType()));
         boolean isMortal = character.getTemplate().getTemplateType().getCharacterType() == CharacterType.MORTAL;
         if (isMortal) {
-          finalValue = (int) Math.floor(finalValue / 2);
+          finalValue = Math.floor(finalValue / 2);
         }
         else {
-          finalValue = (int) Math.ceil(finalValue / 2);
+          finalValue = Math.ceil(finalValue / 2);
         }
-        table.addCell(createFinalValueCell(font, finalValue));
+        table.addCell(createFinalValueCell(font, (int) finalValue));
       }
     }
   }
