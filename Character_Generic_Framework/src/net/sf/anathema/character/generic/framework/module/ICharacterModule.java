@@ -6,6 +6,8 @@ import net.sf.anathema.lib.resources.IResources;
 
 public interface ICharacterModule<M extends ICharacterModuleObject> {
 
+  public void initModuleObject();
+
   public void addCharacterTemplates(ICharacterGenerics characterGenerics);
 
   public void addBackgroundTemplates(ICharacterGenerics generics);

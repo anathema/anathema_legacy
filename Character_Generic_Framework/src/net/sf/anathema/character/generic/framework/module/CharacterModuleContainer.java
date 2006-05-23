@@ -17,6 +17,7 @@ public class CharacterModuleContainer {
   }
 
   public void addCharacterGenericsModule(ICharacterModule< ? extends ICharacterModuleObject> module) {
+    module.initModuleObject();
     module.registerCommonData(characterGenerics);
     module.addCharacterTemplates(characterGenerics);
     module.addBackgroundTemplates(characterGenerics);

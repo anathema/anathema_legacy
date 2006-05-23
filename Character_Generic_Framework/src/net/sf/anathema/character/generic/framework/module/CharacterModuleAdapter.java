@@ -48,8 +48,4 @@ public abstract class CharacterModuleAdapter<M extends ICharacterModuleObject> i
       Logger.getLogger(MortalCharacterModule.class).error(e);
     }
   }
-
-  public M getModuleObject() {
-    return null;
-  }
 }
