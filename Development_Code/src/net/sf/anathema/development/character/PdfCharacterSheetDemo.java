@@ -5,6 +5,8 @@ import java.io.FileOutputStream;
 import java.util.Locale;
 
 import net.sf.anathema.character.abyssal.caste.AbyssalCaste;
+import net.sf.anathema.character.equipment.impl.reporting.second.SecondEditionArmourEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.second.SecondEditionWeaponryEncoder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -15,8 +17,6 @@ import net.sf.anathema.character.reporting.sheet.SecondEditionEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionPartEncoder;
-import net.sf.anathema.character.reporting.sheet.second.equipment.SecondEditionArmourEncoder;
-import net.sf.anathema.character.reporting.sheet.second.equipment.SecondEditionWeaponryEncoder;
 import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.lib.control.BrowserControl;
