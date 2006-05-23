@@ -62,8 +62,4 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection 
   public int getPainTolerance();
 
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups();
-
-  public IWeapon[] getPrintWeapons();
-
-  public IArmour[] getPrintArmours();
 }

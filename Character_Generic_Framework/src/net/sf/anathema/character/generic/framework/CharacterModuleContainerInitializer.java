@@ -15,14 +15,15 @@ public class CharacterModuleContainerInitializer {
 
   public List<String> moduleNameList = new ArrayList<String>() {
     {
-      add("net.sf.anathema.character.reporting.CharacterReportingModule.java"); //$NON-NLS-1$
+      add("net.sf.anathema.character.reporting.CharacterReportingModule"); //$NON-NLS-1$
+      add("net.sf.anathema.character.equipment.impl.EquipmentCharacterModule"); //$NON-NLS-1$
+      add("net.sf.anathema.character.meritsflaws.MeritsFlawsModule"); //$NON-NLS-1$
+      add("net.sf.anathema.character.intimacies.IntimaciesModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.abyssal.AbyssalCharacterModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.db.DbCharacterModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.lunar.LunarCharacterModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.solar.SolarCharacterModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.sidereal.SiderealCharacterModule"); //$NON-NLS-1$
-      add("net.sf.anathema.character.meritsflaws.MeritsFlawsModule"); //$NON-NLS-1$
-      add("net.sf.anathema.character.intimacies.IntimaciesModule"); //$NON-NLS-1$
     }
   };
 

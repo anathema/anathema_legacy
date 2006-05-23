@@ -6,11 +6,14 @@ import net.sf.anathema.character.generic.framework.configuration.ICharacterPrefe
 import net.sf.anathema.character.generic.framework.reporting.template.ICharacterReportTemplate;
 import net.sf.anathema.character.impl.module.preferences.RulesetPreferenceElement;
 import net.sf.anathema.character.impl.reporting.CharacterReportingInitializer;
+import net.sf.anathema.character.impl.reporting.SecondEditionSheetReport;
 import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.environment.AnathemaEnvironment;
 import net.sf.anathema.framework.extension.IExtensionPoint;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.module.AbstractAnathemaModule;
 import net.sf.anathema.framework.module.PreferencesElementsExtensionPoint;
+import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.lib.exception.AnathemaException;
@@ -37,16 +40,21 @@ public class CharacterModule extends AbstractAnathemaModule {
   public void initModel(IAnathemaModel model) {
     super.initModel(model);
     ICollectionRegistry<ICharacterReportTemplate> reportTemplates = getCharacterGenerics(model).getReportTemplateRegistry();
-    new CharacterReportingInitializer().initReporting(reportTemplates, model.getReportRegistry(), getResources());
+    IReportRegistry reportRegistry = model.getReportRegistry();
+    new CharacterReportingInitializer().initReporting(reportTemplates, reportRegistry, getResources());
   }
 
   @Override
-  public void initPresentation(IResources resources, IAnathemaView view) {
-    super.initPresentation(resources, view);
-    ICharacterGenerics characterGenerics = getCharacterGenerics(getAnathemaModel());
+  public void initPresentation(IResources resources, IAnathemaModel model, IAnathemaView view) {
+    super.initPresentation(resources, model, view);
+    ICharacterGenerics characterGenerics = getCharacterGenerics(model);
+    // TODO 23.05.2006 (sieroux): Development herausgenommen 
+    if (AnathemaEnvironment.isDevelopment()) {
+      model.getReportRegistry().addReport(new SecondEditionSheetReport(resources, characterGenerics));
+    }
     IItemType characterItemType = characterTypeConfiguration.getItemType();
-    new CharacterModulePresenter(getAnathemaModel(), view, resources, characterItemType, characterGenerics);
-    new CharacterPerformanceTuner(getAnathemaModel(), getResources()).startTuning(characterGenerics, characterItemType);
+    new CharacterModulePresenter(model, view, resources, characterItemType, characterGenerics);
+    new CharacterPerformanceTuner(model, getResources()).startTuning(characterGenerics, characterItemType);
   }
 
   @Override

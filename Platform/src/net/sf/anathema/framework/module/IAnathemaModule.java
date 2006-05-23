@@ -20,7 +20,7 @@ public interface IAnathemaModule {
 
   public void initPresentationExtensionPoints(IRegistry<String, IExtensionPoint> registry, IResources resources);
 
-  public void initPresentation(IResources resources, IAnathemaView anathemaView);
+  public void initPresentation(IResources resources, IAnathemaModel model, IAnathemaView anathemaView);
 
   public void fillModelExtensionPoints(IRegistry<String, IExtensionPoint> extensionPointRegistry, IAnathemaModel model);
 

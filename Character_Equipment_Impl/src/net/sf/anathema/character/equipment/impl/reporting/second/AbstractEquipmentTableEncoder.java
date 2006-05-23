@@ -3,6 +3,8 @@ package net.sf.anathema.character.equipment.impl.reporting.second;
 import java.awt.Color;
 
 import net.disy.commons.core.util.ArrayUtilities;
+import net.sf.anathema.character.equipment.character.IEquipmentAdditionalModel;
+import net.sf.anathema.character.equipment.impl.character.EquipmentAdditonalModelTemplate;
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.IEquipmentStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipment;
@@ -93,5 +95,9 @@ public abstract class AbstractEquipmentTableEncoder<T extends IEquipment> extend
     cell.setPaddingLeft(0);
     cell.setPaddingRight(0);
     return cell;
+  }
+
+  protected final IEquipmentAdditionalModel getEquipmentModel(IGenericCharacter character) {
+    return (IEquipmentAdditionalModel) character.getAdditionalModel(EquipmentAdditonalModelTemplate.ID);
   }
 }

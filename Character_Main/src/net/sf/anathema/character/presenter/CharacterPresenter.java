@@ -117,6 +117,9 @@ public class CharacterPresenter {
     IRegistry<String, IAdditionalViewFactory> factoryRegistry = generics.getAdditionalViewFactoryRegistry();
     for (IAdditionalModel model : additionalModels) {
       IAdditionalViewFactory viewFactory = factoryRegistry.get(model.getTemplateId());
+      if (viewFactory == null) {
+        continue;
+      }
       String tabName = getString("AdditionalTemplateView.TabName." + model.getTemplateId()); //$NON-NLS-1$
       multiTabView.addTabView(viewFactory.createView(model, resources, getStatistics().getCharacterTemplate()
           .getTemplateType()

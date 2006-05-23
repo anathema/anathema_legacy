@@ -46,7 +46,7 @@ public class SecondEditionWeaponryTableEncoder extends AbstractEquipmentTableEnc
 
   @Override
   protected IWeapon[] getPrintEquipments(IGenericCharacter character) {
-    return character.getPrintWeapons();
+    return getEquipmentModel(character).getPrintWeapons();
   }
 
   @Override

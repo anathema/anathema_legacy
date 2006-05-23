@@ -3,12 +3,11 @@ package net.sf.anathema.development.character;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.character.equipment.impl.character.EquipmentAdditonalModelTemplate;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.ICharacterPoints;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.equipment.weapon.IArmour;
-import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
 import net.sf.anathema.character.generic.framework.xml.trait.alternate.test.DummyFavorableGenericTrait;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.testing.DummyGenericTrait;
@@ -31,8 +30,6 @@ import net.sf.anathema.character.solar.caste.SolarCaste;
 
 public class DemoGenericCharacter implements IGenericCharacter {
 
-  private final List<IArmour> armours = new ArrayList<IArmour>();
-  private final List<IWeapon> weapons = new ArrayList<IWeapon>();
   private final List<ITraitType> specialtyTraitTypes = new ArrayList<ITraitType>();
   private final List<ITraitType> subbedTraitTypes = new ArrayList<ITraitType>();
   private final List<IMagic> allLearnedMagic = new ArrayList<IMagic>();
@@ -41,6 +38,7 @@ public class DemoGenericCharacter implements IGenericCharacter {
   private final DemoCharacterTemplate characterTemplate;
   private final DemoGenericDescription description = new DemoGenericDescription();
   private final DemoConcept concept = new DemoConcept();
+  private final DemoEquipmentAdditionalModel equipmentModel = new DemoEquipmentAdditionalModel();
   private IExaltedRuleSet ruleSet;
   
   public DemoGenericCharacter(CharacterType characterType) {
@@ -48,6 +46,9 @@ public class DemoGenericCharacter implements IGenericCharacter {
   }
 
   public IAdditionalModel getAdditionalModel(String templateId) {
+    if (templateId.equals(EquipmentAdditonalModelTemplate.ID)) {
+      return equipmentModel;
+    }
     return null;
   }
 
@@ -214,20 +215,8 @@ public class DemoGenericCharacter implements IGenericCharacter {
   public void addSubbedTrait(ITraitType traitType) {
     subbedTraitTypes.add(traitType);
   }
-  
-  public void addPrintArmour(IArmour armour) {
-    this.armours.add(armour);
-  }
-  
-  public void addPrintWeapon(IWeapon weapon) {
-    this.weapons.add(weapon);
-  }
-  
-  public IArmour[] getPrintArmours() {
-    return armours.toArray(new IArmour[armours.size()]);
-  }
-  
-  public IWeapon[] getPrintWeapons() {
-    return weapons.toArray(new IWeapon[weapons.size()]);
+ 
+  public DemoEquipmentAdditionalModel getEquipmentModel() {
+    return equipmentModel;
   }
 }

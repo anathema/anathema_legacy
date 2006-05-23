@@ -25,7 +25,7 @@ public class AnathemaPresenter {
   public void initPresentation(IModuleCollection moduleCollection) {
     new PresentationExtensionPointInitializer(moduleCollection, model.getExtensionPointRegistry(), resources).initialize();
     new PresentationExtensionPointFiller(moduleCollection, model, view, resources).initialize();
-    new PresentationInitializer(moduleCollection, resources, view).initialize();
+    new PresentationInitializer(moduleCollection, resources, model, view).initialize();
     if (AnathemaEnvironment.isDevelopment()) {
       new DevelopmentEnvironmentPresenter(model, view, resources).initPresentation();
     }

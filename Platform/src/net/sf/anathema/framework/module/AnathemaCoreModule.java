@@ -91,10 +91,9 @@ public class AnathemaCoreModule extends AbstractAnathemaModule {
   }
 
   @Override
-  public void initPresentation(IResources resources, IAnathemaView view) {
-    super.initPresentation(resources, view);
+  public void initPresentation(IResources resources, IAnathemaModel model, IAnathemaView view) {
+    super.initPresentation(resources, model, view);
     IModelViewMapping mapping = new ModelViewMapping();
-    final IAnathemaModel model = getAnathemaModel();
     initMenu(resources);
     initTools(resources);
     IItemMangementModel itemManagement = model.getItemManagement();

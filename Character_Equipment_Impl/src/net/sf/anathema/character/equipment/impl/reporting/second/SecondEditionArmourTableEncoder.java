@@ -40,7 +40,7 @@ public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncod
 
   @Override
   protected IArmour[] getPrintEquipments(IGenericCharacter character) {
-    return character.getPrintArmours();
+    return getEquipmentModel(character).getPrintArmours();
   }
 
   @Override

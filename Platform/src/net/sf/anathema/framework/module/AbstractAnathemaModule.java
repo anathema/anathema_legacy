@@ -68,7 +68,7 @@ public abstract class AbstractAnathemaModule implements IAnathemaModule {
     }
   }
 
-  public void initPresentation(IResources resources, IAnathemaView view) {
+  public void initPresentation(IResources resources, IAnathemaModel model, IAnathemaView view) {
     this.anathemaView = view;
     for (AbstractItemTypeConfiguration configuration : itemTypeConfigurations) {
       configuration.registerViewFactory(getAnathemaModel(), resources);
