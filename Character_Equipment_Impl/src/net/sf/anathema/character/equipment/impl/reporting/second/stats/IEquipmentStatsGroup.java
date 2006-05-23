@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.sheet.second.equipment.stats;
+package net.sf.anathema.character.equipment.impl.reporting.second.stats;
 
 import net.sf.anathema.character.generic.equipment.weapon.IEquipment;
 import net.sf.anathema.character.generic.traits.IGenericTrait;

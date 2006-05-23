@@ -1,9 +1,9 @@
-package net.sf.anathema.character.reporting.sheet.second.equipment.armourstats;
+package net.sf.anathema.character.equipment.impl.reporting.second.armourstats;
 
+import net.sf.anathema.character.equipment.impl.reporting.second.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.equipment.weapon.IArmour;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.reporting.sheet.second.equipment.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Font;

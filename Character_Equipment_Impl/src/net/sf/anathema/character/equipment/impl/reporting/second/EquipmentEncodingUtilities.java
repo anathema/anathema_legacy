@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.sheet.second.equipment;
+package net.sf.anathema.character.equipment.impl.reporting.second;
 
 import java.awt.Color;
 
@@ -7,6 +7,7 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
+
 
 public class EquipmentEncodingUtilities {
 

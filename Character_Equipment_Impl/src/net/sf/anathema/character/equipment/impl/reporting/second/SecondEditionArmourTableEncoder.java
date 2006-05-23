@@ -1,14 +1,14 @@
-package net.sf.anathema.character.reporting.sheet.second.equipment;
+package net.sf.anathema.character.equipment.impl.reporting.second;
 
+import net.sf.anathema.character.equipment.impl.reporting.second.armourstats.FatigueStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.second.armourstats.HardnessStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.second.armourstats.MobilityPenaltyStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.second.armourstats.SoakArmourStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.second.stats.EquipmentNameStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.second.stats.IEquipmentStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IArmour;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.reporting.sheet.second.equipment.armourstats.FatigueStatsGroup;
-import net.sf.anathema.character.reporting.sheet.second.equipment.armourstats.HardnessStatsGroup;
-import net.sf.anathema.character.reporting.sheet.second.equipment.armourstats.MobilityPenaltyStatsGroup;
-import net.sf.anathema.character.reporting.sheet.second.equipment.armourstats.SoakArmourStatsGroup;
-import net.sf.anathema.character.reporting.sheet.second.equipment.stats.EquipmentNameStatsGroup;
-import net.sf.anathema.character.reporting.sheet.second.equipment.stats.IEquipmentStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;

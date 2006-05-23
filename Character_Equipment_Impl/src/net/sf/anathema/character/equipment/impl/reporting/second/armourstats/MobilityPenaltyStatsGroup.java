@@ -1,17 +1,17 @@
-package net.sf.anathema.character.reporting.sheet.second.equipment.armourstats;
+package net.sf.anathema.character.equipment.impl.reporting.second.armourstats;
 
+import net.sf.anathema.character.equipment.impl.reporting.second.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.equipment.weapon.IArmour;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.reporting.sheet.second.equipment.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class FatigueStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour> {
+public class MobilityPenaltyStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour> {
 
-  public FatigueStatsGroup(IResources resources) {
-    super(resources, "Fatigue"); //$NON-NLS-1$
+  public MobilityPenaltyStatsGroup(IResources resources) {
+    super(resources, "MobilityPenalty"); //$NON-NLS-1$
   }
 
   public int getColumnCount() {
@@ -23,17 +23,12 @@ public class FatigueStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour>
       table.addCell(createEmptyEquipmentValueCell(font));
     }
     else {
-      table.addCell(createEquipmentValueCell(font, armour.getFatigue()));
+      table.addCell(createEquipmentValueCell(font, armour.getMobilityPenalty()));
     }
-  }
-  
-  @Override
-  protected String getPositivePrefix() {
-    return ""; //$NON-NLS-1$
   }
 
   @Override
   protected String getZeroPrefix() {
-    return getPositivePrefix();
+    return "-"; //$NON-NLS-1$
   }
 }

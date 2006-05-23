@@ -1,11 +1,11 @@
-package net.sf.anathema.character.reporting.sheet.second.equipment.stats;
+package net.sf.anathema.character.equipment.impl.reporting.second.stats;
 
 import java.awt.Color;
 
 import net.disy.commons.core.util.StringUtilities;
+import net.sf.anathema.character.equipment.impl.reporting.second.EquipmentEncodingUtilities;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipment;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.reporting.sheet.second.equipment.EquipmentEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Element;

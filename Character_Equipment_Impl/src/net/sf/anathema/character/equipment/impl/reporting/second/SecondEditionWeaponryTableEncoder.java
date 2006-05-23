@@ -1,17 +1,17 @@
-package net.sf.anathema.character.reporting.sheet.second.equipment;
+package net.sf.anathema.character.equipment.impl.reporting.second;
 
+import net.sf.anathema.character.equipment.impl.reporting.second.stats.EquipmentNameStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.second.stats.IEquipmentStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.AccuracyWeaponStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.DamageWeaponStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.DefenceWeaponStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.RangeWeaponStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.RateWeaponStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.SpeedWeaopnStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.TagsStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.reporting.sheet.second.equipment.stats.EquipmentNameStatsGroup;
-import net.sf.anathema.character.reporting.sheet.second.equipment.stats.IEquipmentStatsGroup;
-import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.AccuracyWeaponStatsGroup;
-import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.DamageWeaponStatsGroup;
-import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.DefenceWeaponStatsGroup;
-import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.RangeWeaponStatsGroup;
-import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.RateWeaponStatsGroup;
-import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.SpeedWeaopnStatsGroup;
-import net.sf.anathema.character.reporting.sheet.second.equipment.weaponstats.TagsStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
