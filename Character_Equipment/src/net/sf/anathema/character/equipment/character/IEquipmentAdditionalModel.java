@@ -9,4 +9,6 @@ public interface IEquipmentAdditionalModel extends IAdditionalModel {
   public IWeapon[] getPrintWeapons();
 
   public IArmour[] getPrintArmours();
+
+  public IArmour getTotalPrintArmour(int lineCount);
 }
