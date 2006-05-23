@@ -12,8 +12,8 @@
     <CharacterType subtype="TemplateType.Default">Solar</CharacterType>
     <CharacterConcept>
       <Caste type="Twilight"/>
-      <Concept><![CDATA[Erudite Princess]]></Concept>
       <Motivation><![CDATA[Restore Justice to the Heavenly Hierarchy]]></Motivation>
+      <Concept><![CDATA[Erudite Princess]]></Concept>
     </CharacterConcept>
     <Essence creationValue="3" experiencedValue="4"/>
     <Willpower creationValue="7"/>
@@ -46,7 +46,7 @@
       <Melee creationValue="5" favored="true"/>
       <Thrown creationValue="0"/>
       <War creationValue="0"/>
-      <Integrity creationValue="1" favored="true"/>
+      <Integrity creationValue="1" experiencedValue="2" favored="true"/>
       <Performance creationValue="3"/>
       <Presence creationValue="0"/>
       <Resistance creationValue="2"/>
@@ -191,7 +191,17 @@
       </Model>
       <Model templateId="Intimacies">
         <Content>
-          <Intimacies/>
+          <Intimacies>
+            <Intimacy name="Telperion" complete="true">
+              <Trait creationValue="0" experiencedValue="3"/>
+            </Intimacy>
+            <Intimacy name="Kazu's Erbe" complete="true">
+              <Trait creationValue="0" experiencedValue="3"/>
+            </Intimacy>
+            <Intimacy name="Loyalität" complete="true">
+              <Trait creationValue="0" experiencedValue="3"/>
+            </Intimacy>
+          </Intimacies>
         </Content>
       </Model>
     </AdditionalModels>
