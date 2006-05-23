@@ -11,9 +11,12 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.module.CharacterCoreModule;
 import net.sf.anathema.character.impl.module.CharacterModule;
+import net.sf.anathema.character.reporting.sheet.SecondEditionEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionPartEncoder;
+import net.sf.anathema.character.reporting.sheet.second.equipment.SecondEditionArmourEncoder;
+import net.sf.anathema.character.reporting.sheet.second.equipment.SecondEditionWeaponryEncoder;
 import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.lib.control.BrowserControl;
@@ -37,8 +40,14 @@ public class PdfCharacterSheetDemo {
       PdfContentByte directContent = writer.getDirectContent();
       IGenericCharacter character = createDemoCharacter(CharacterType.SOLAR);
       DemoGenericDescription description = createDemoDescription();
+      IResources resources = createDemoResources();
       PdfPageConfiguration pageConfiguration = PdfPageConfiguration.create(document.getPageSize());
-      SecondEditionPartEncoder partEncoder = new SecondEditionPartEncoder(createDemoResources(), 7, pageConfiguration);
+      SecondEditionEncodingRegistry encodingRegistry = createEncodingRegistry(resources);
+      SecondEditionPartEncoder partEncoder = new SecondEditionPartEncoder(
+          encodingRegistry,
+          resources,
+          7,
+          pageConfiguration);
       new PdfFirstPageEncoder(partEncoder, pageConfiguration).encode(directContent, character, description);
       BrowserControl.displayUrl(outputStream.toURL());
     }
@@ -48,6 +57,13 @@ public class PdfCharacterSheetDemo {
     finally {
       document.close();
     }
+  }
+
+  private static SecondEditionEncodingRegistry createEncodingRegistry(IResources resources) {
+    SecondEditionEncodingRegistry encodingRegistry = new SecondEditionEncodingRegistry();
+    encodingRegistry.setArmourContentEncoder(new SecondEditionArmourEncoder(resources, encodingRegistry.getBaseFont()));
+    encodingRegistry.setWeaponContentEncoder(new SecondEditionWeaponryEncoder(resources, encodingRegistry.getBaseFont()));
+    return encodingRegistry;
   }
 
   private static IResources createDemoResources() throws AnathemaException {
