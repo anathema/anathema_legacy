@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.impl;
 
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalModelFactory;
+import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalModelPersisterFactory;
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditonalModelTemplate;
 import net.sf.anathema.character.equipment.impl.reporting.second.SecondEditionArmourEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.second.SecondEditionWeaponryEncoder;
@@ -19,6 +20,9 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getAdditionalModelFactoryRegistry().register(
         EquipmentAdditonalModelTemplate.ID,
         new EquipmentAdditionalModelFactory());
+    characterGenerics.getAdditonalPersisterFactoryRegistry().register(
+        EquipmentAdditonalModelTemplate.ID,
+        new EquipmentAdditionalModelPersisterFactory());
     characterGenerics.getGlobalAdditionalTemplateRegistry().add(new EquipmentAdditonalModelTemplate());
   }
 

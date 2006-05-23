@@ -17,5 +17,6 @@
 	<classpathentry sourcepath="/Thirdparty/Reporting/itext-1.4-src.zip" kind="lib" path="/Thirdparty/Reporting/itext-1.4.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Framework"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Impl"/>
+	<classpathentry sourcepath="/Thirdparty/XML/dom4j-src.zip" kind="lib" path="/Thirdparty/XML/dom4j-1.5.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

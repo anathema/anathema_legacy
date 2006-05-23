@@ -8,7 +8,7 @@ import net.sf.anathema.lib.resources.IResources;
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class FatigueStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour> {
+public class FatigueStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour> implements IArmourStatsGroup {
 
   public FatigueStatsGroup(IResources resources) {
     super(resources, "Fatigue"); //$NON-NLS-1$
@@ -25,6 +25,10 @@ public class FatigueStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour>
     else {
       table.addCell(createEquipmentValueCell(font, armour.getFatigue()));
     }
+  }
+  
+  public void addTotal(PdfPTable table, Font font, IArmour totalArmour) {
+    table.addCell(createFinalValueCell(font, totalArmour.getFatigue()));
   }
   
   @Override

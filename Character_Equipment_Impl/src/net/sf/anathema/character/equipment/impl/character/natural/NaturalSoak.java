@@ -47,6 +47,6 @@ public class NaturalSoak implements IArmour {
   }
 
   public IIdentificate getName() {
-    return new Identificate("Natural"); //$NON-NLS-1$
+    return new Identificate("NaturalSoak"); //$NON-NLS-1$
   }
 }

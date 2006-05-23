@@ -52,7 +52,7 @@ public class PdfCharacterSheetDemo {
       BrowserControl.displayUrl(outputStream.toURL());
     }
     catch (Exception de) {
-      System.err.println(de.getMessage());
+      de.printStackTrace();
     }
     finally {
       document.close();

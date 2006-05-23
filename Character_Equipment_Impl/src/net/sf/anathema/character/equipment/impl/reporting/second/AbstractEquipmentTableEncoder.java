@@ -28,6 +28,10 @@ public abstract class AbstractEquipmentTableEncoder<T extends IEquipment> extend
     this.headerFont = new Font(baseFont, IVoidStateFormatConstants.FONT_SIZE - 1, Font.NORMAL, Color.BLACK);
     this.font = new Font(baseFont, IVoidStateFormatConstants.FONT_SIZE - 0.5f, Font.NORMAL, Color.BLACK);
   }
+  
+  protected final Font getFont() {
+    return font;
+  }
 
   @Override
   protected PdfPTable createTable(IGenericCharacter character) {
@@ -82,7 +86,7 @@ public abstract class AbstractEquipmentTableEncoder<T extends IEquipment> extend
     return net.sf.anathema.lib.lang.ArrayUtilities.toPrimitive(columnWidths);
   }
 
-  private PdfPCell createSpaceCell() {
+  protected PdfPCell createSpaceCell() {
     PdfPCell cell = new PdfPCell(new Phrase("", font)); //$NON-NLS-1$
     cell.setBorder(Rectangle.NO_BORDER);
     return cell;

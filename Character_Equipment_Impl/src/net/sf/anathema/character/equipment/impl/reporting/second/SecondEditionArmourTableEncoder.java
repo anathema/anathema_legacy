@@ -2,6 +2,7 @@ package net.sf.anathema.character.equipment.impl.reporting.second;
 
 import net.sf.anathema.character.equipment.impl.reporting.second.armourstats.FatigueStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.armourstats.HardnessStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.second.armourstats.IArmourStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.armourstats.MobilityPenaltyStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.armourstats.SoakArmourStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.EquipmentNameStatsGroup;
@@ -12,6 +13,7 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfPTable;
 
 public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncoder<IArmour> {
 
@@ -20,6 +22,26 @@ public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncod
   public SecondEditionArmourTableEncoder(BaseFont baseFont, IResources resources) {
     super(baseFont);
     this.resources = resources;
+  }
+
+  @Override
+  protected PdfPTable createTable(IGenericCharacter character) {
+    PdfPTable armourTable = super.createTable(character);
+    IArmour totalArmour = getEquipmentModel(character).getTotalPrintArmour(getLineCount());
+    IEquipmentStatsGroup<IArmour>[] groups = createEquipmentGroups();
+    for (int index = 0; index < groups.length; index++) {
+      if (index != 0) {
+        armourTable.addCell(createSpaceCell());
+      }
+      IEquipmentStatsGroup<IArmour> group = groups[index];
+      if (group instanceof IArmourStatsGroup) {
+        ((IArmourStatsGroup) group).addTotal(armourTable, getFont(), totalArmour);
+      }
+      else {
+        group.addContent(armourTable, getFont(), null, totalArmour);
+      }
+    }
+    return armourTable;
   }
 
   @SuppressWarnings("unchecked")
@@ -35,7 +57,7 @@ public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncod
 
   @Override
   protected int getLineCount() {
-    return 4;
+    return 3;
   }
 
   @Override

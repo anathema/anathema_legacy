@@ -54,6 +54,9 @@ public class SecondEditionSheetReport implements IITextReport {
   }
 
   public boolean supports(IItem item) {
+    if (item == null) {
+      return false;
+    }
     IItemData itemData = item.getItemData();
     if (!(itemData instanceof ICharacter)) {
       return false;

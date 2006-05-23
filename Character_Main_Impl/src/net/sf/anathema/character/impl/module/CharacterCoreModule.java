@@ -50,5 +50,6 @@ public class CharacterCoreModule extends AbstractAnathemaModule {
     resources.addStringResourceHandler(createStringProvider("MeritsFlaws", resources.getLocale())); //$NON-NLS-1$
     resources.addStringResourceHandler(createStringProvider("Intimacies", resources.getLocale())); //$NON-NLS-1$
     resources.addStringResourceHandler(createStringProvider("CharacterSheet", resources.getLocale())); //$NON-NLS-1$
+    resources.addStringResourceHandler(createStringProvider("Equipment", resources.getLocale())); //$NON-NLS-1$
   }
 }

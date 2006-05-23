@@ -8,7 +8,7 @@ import net.sf.anathema.lib.resources.IResources;
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class MobilityPenaltyStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour> {
+public class MobilityPenaltyStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour>  implements IArmourStatsGroup{
 
   public MobilityPenaltyStatsGroup(IResources resources) {
     super(resources, "MobilityPenalty"); //$NON-NLS-1$
@@ -25,6 +25,10 @@ public class MobilityPenaltyStatsGroup extends AbstractValueEquipmentStatsGroup<
     else {
       table.addCell(createEquipmentValueCell(font, armour.getMobilityPenalty()));
     }
+  }
+  
+  public void addTotal(PdfPTable table, Font font, IArmour armour) {
+    table.addCell(createFinalValueCell(font, armour.getMobilityPenalty()));
   }
 
   @Override

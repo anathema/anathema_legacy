@@ -9,7 +9,7 @@ import net.sf.anathema.lib.resources.IResources;
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class HardnessStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour> {
+public class HardnessStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour> implements IArmourStatsGroup {
 
   public HardnessStatsGroup(IResources resources) {
     super(resources, "Hardness"); //$NON-NLS-1$
@@ -30,6 +30,11 @@ public class HardnessStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour
     }
   }
 
+  public void addTotal(PdfPTable table, Font font, IArmour armour) {
+    table.addCell(createFinalValueCell(font, armour.getHardness(HealthType.Bashing)));
+    table.addCell(createFinalValueCell(font, armour.getHardness(HealthType.Lethal)));
+  }
+  
   @Override
   protected String getZeroPrefix() {
     return ""; //$NON-NLS-1$
