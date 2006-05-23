@@ -25,17 +25,6 @@ public class NaturalSoak implements IArmour {
     return null;
   }
 
-  private Integer getMortalSoak() {
-    return 0;
-  }
-
-  private Integer getExaltedSoak(HealthType type) {
-    if (type == HealthType.Bashing) {
-      return stamina.getCurrentValue();
-    }
-    return stamina.getCurrentValue() / 2;
-  }
-
   public Integer getMobilityPenalty() {
     return null;
   }
@@ -44,10 +33,17 @@ public class NaturalSoak implements IArmour {
     if (type == HealthType.Aggravated) {
       return null;
     }
-    if (characterType == CharacterType.MORTAL) {
-      return getMortalSoak();
+    if (characterType == CharacterType.MORTAL && type == HealthType.Lethal) {
+      return 0;
     }
     return getExaltedSoak(type);
+  }
+
+  private Integer getExaltedSoak(HealthType type) {
+    if (type == HealthType.Bashing) {
+      return stamina.getCurrentValue();
+    }
+    return stamina.getCurrentValue() / 2;
   }
 
   public IIdentificate getName() {
