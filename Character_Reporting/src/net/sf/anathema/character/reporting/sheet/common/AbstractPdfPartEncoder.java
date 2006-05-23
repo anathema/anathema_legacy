@@ -1,7 +1,5 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
-import java.io.IOException;
-
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
@@ -10,21 +8,22 @@ import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
-import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
 public abstract class AbstractPdfPartEncoder extends AbstractPdfEncoder implements IPdfPartEncoder {
 
-  private final BaseFont baseFont = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1250, BaseFont.NOT_EMBEDDED);
   private final IResources resources;
   private final int essenceMax;
+  private final BaseFont baseFont;
 
-  public AbstractPdfPartEncoder(IResources resources, int essenceMax) throws DocumentException, IOException {
+  public AbstractPdfPartEncoder(BaseFont baseFont, IResources resources, int essenceMax) {
+    this.baseFont = baseFont;
     this.essenceMax = essenceMax;
     this.resources = resources;
   }
 
+  @Override
   public final BaseFont getBaseFont() {
     return baseFont;
   }

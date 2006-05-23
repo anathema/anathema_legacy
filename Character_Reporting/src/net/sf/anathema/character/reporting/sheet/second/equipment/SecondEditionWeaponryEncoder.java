@@ -14,7 +14,7 @@ public class SecondEditionWeaponryEncoder implements IPdfContentEncoder {
   private final IResources resources;
   private final BaseFont baseFont;
 
-  public SecondEditionWeaponryEncoder(BaseFont baseFont, IResources resources) {
+  public SecondEditionWeaponryEncoder(IResources resources, BaseFont baseFont) {
     this.baseFont = baseFont;
     this.resources = resources;
   }

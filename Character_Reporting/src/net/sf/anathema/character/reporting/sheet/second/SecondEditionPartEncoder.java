@@ -3,6 +3,7 @@ package net.sf.anathema.character.reporting.sheet.second;
 import java.io.IOException;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.reporting.sheet.SecondEditionEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.AbstractPdfPartEncoder;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfVirtueEncoder;
@@ -26,10 +27,12 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
 
-  public SecondEditionPartEncoder(IResources resources, int essenceMax, PdfPageConfiguration pageConfiguration)
-      throws DocumentException,
-      IOException {
-    super(resources, essenceMax);
+  public SecondEditionPartEncoder(
+      SecondEditionEncodingRegistry registry,
+      IResources resources,
+      int essenceMax,
+      PdfPageConfiguration pageConfiguration) {
+    super(registry.getBaseFont(), resources, essenceMax);
     this.pageConfiguration = pageConfiguration;
     this.boxEncoder = new PdfBoxEncoder(getBaseFont());
   }
@@ -127,7 +130,7 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
       float distanceFromTop,
       float height) throws DocumentException, IOException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IPdfContentEncoder weaponryEncoder = new SecondEditionWeaponryEncoder(getBaseFont(), getResources());
+    IPdfContentEncoder weaponryEncoder = new SecondEditionWeaponryEncoder(getResources(), getBaseFont());
     encodeContent(directContent, weaponryEncoder, character, bounds, "Weapons"); //$NON-NLS-1$
     return height;
   }
