@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import net.sf.anathema.character.equipment.impl.reporting.second.EquipmentEncodingUtilities;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipment;
+import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Element;
@@ -113,5 +114,13 @@ public abstract class AbstractValueEquipmentStatsGroup<T extends IEquipment> imp
         Rectangle.BOX,
         alignment,
         enabled);
+  }
+
+  protected int calculateFinalValue(final int weaponValue, IGenericTrait... traits) {
+    int totalValue = weaponValue;
+    for (IGenericTrait trait : traits) {
+      totalValue += trait.getCurrentValue();
+    }
+    return totalValue;
   }
 }

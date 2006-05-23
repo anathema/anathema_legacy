@@ -8,9 +8,9 @@ import net.sf.anathema.lib.resources.IResources;
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class SpeedWeaopnStatsGroup extends AbstractValueEquipmentStatsGroup<IWeapon> {
+public class SpeedWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeapon> {
 
-  public SpeedWeaopnStatsGroup(IResources resources) {
+  public SpeedWeaponStatsGroup(IResources resources) {
     super(resources, "Speed"); //$NON-NLS-1$
   }
 
@@ -18,7 +18,7 @@ public class SpeedWeaopnStatsGroup extends AbstractValueEquipmentStatsGroup<IWea
     return 1;
   }
 
-  public void addContent(PdfPTable table, Font font, IGenericTrait trait, IWeapon weapon) {
+  public void addContent(PdfPTable table, Font font, IWeapon weapon, IGenericTrait... trait) {
     if (weapon == null) {
       table.addCell(createFinalValueCell(font));
     }

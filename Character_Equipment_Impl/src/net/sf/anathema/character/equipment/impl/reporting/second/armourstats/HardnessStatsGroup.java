@@ -19,7 +19,7 @@ public class HardnessStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour
     return 2;
   }
 
-  public void addContent(PdfPTable table, Font font, IGenericTrait trait, IArmour armour) {
+  public void addContent(PdfPTable table, Font font, IArmour armour, IGenericTrait... traits) {
     if (armour == null) {
       table.addCell(createEmptyEquipmentValueCell(font));
       table.addCell(createEmptyEquipmentValueCell(font));
@@ -34,7 +34,7 @@ public class HardnessStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour
     table.addCell(createFinalValueCell(font, armour.getHardness(HealthType.Bashing)));
     table.addCell(createFinalValueCell(font, armour.getHardness(HealthType.Lethal)));
   }
-  
+
   @Override
   protected String getZeroPrefix() {
     return ""; //$NON-NLS-1$

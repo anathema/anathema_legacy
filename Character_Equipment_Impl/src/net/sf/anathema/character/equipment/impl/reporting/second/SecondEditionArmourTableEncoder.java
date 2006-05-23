@@ -38,7 +38,7 @@ public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncod
         ((IArmourStatsGroup) group).addTotal(armourTable, getFont(), totalArmour);
       }
       else {
-        group.addContent(armourTable, getFont(), null, totalArmour);
+        group.addContent(armourTable, getFont(), totalArmour);
       }
     }
     return armourTable;

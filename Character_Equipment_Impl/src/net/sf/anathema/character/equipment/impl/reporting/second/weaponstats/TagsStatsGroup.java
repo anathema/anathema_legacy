@@ -39,7 +39,7 @@ public final class TagsStatsGroup implements IEquipmentStatsGroup<IWeapon> {
     return new Float[] { new Float(1.7) };
   }
 
-  public void addContent(PdfPTable table, Font font, IGenericTrait trait, IWeapon weapon) {
+  public void addContent(PdfPTable table, Font font, IWeapon weapon, IGenericTrait... traits) {
     if (weapon == null) {
       table.addCell(createEmptyNameCell(font));
     }

@@ -17,7 +17,7 @@ public class SoakArmourStatsGroup extends AbstractValueEquipmentStatsGroup<IArmo
     super(resources, "Soak"); //$NON-NLS-1$
   }
 
-  public void addContent(PdfPTable table, Font font, IGenericTrait trait, IArmour armour) {
+  public void addContent(PdfPTable table, Font font, IArmour armour, IGenericTrait... traits) {
     if (armour == null) {
       table.addCell(createEmptyEquipmentValueCell(font));
       table.addCell(createEmptyEquipmentValueCell(font));

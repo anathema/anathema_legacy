@@ -28,7 +28,7 @@ public abstract class AbstractEquipmentTableEncoder<T extends IEquipment> extend
     this.headerFont = new Font(baseFont, IVoidStateFormatConstants.FONT_SIZE - 1, Font.NORMAL, Color.BLACK);
     this.font = new Font(baseFont, IVoidStateFormatConstants.FONT_SIZE - 0.5f, Font.NORMAL, Color.BLACK);
   }
-  
+
   protected final Font getFont() {
     return font;
   }
@@ -71,7 +71,7 @@ public abstract class AbstractEquipmentTableEncoder<T extends IEquipment> extend
       if (index != 0) {
         table.addCell(createSpaceCell());
       }
-      groups[index].addContent(table, font, trait, equipment);
+      groups[index].addContent(table, font, equipment, trait);
     }
   }
 

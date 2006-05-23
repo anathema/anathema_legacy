@@ -14,5 +14,5 @@ public interface IEquipmentStatsGroup<T extends IEquipment> {
 
   public Float[] getColumnWeights();
 
-  public void addContent(PdfPTable table, Font font, IGenericTrait trait, T equipment);
+  public void addContent(PdfPTable table, Font font, T equipment, IGenericTrait... traits);
 }

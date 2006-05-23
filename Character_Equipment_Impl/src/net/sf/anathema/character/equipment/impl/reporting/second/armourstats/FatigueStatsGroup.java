@@ -18,7 +18,7 @@ public class FatigueStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour>
     return 1;
   }
 
-  public void addContent(PdfPTable table, Font font, IGenericTrait trait, IArmour armour) {
+  public void addContent(PdfPTable table, Font font, IArmour armour, IGenericTrait... traits) {
     if (armour == null) {
       table.addCell(createEmptyEquipmentValueCell(font));
     }
@@ -26,11 +26,11 @@ public class FatigueStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour>
       table.addCell(createEquipmentValueCell(font, armour.getFatigue()));
     }
   }
-  
+
   public void addTotal(PdfPTable table, Font font, IArmour totalArmour) {
     table.addCell(createFinalValueCell(font, totalArmour.getFatigue()));
   }
-  
+
   @Override
   protected String getPositivePrefix() {
     return ""; //$NON-NLS-1$

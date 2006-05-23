@@ -18,7 +18,7 @@ public class RangeWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWea
     return 1;
   }
 
-  public void addContent(PdfPTable table, Font font, IGenericTrait trait, IWeapon weapon) {
+  public void addContent(PdfPTable table, Font font, IWeapon weapon, IGenericTrait... traits) {
     if (weapon == null) {
       table.addCell(createFinalValueCell(font));
     }

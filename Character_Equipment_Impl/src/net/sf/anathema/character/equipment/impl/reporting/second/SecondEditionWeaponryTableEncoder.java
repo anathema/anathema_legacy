@@ -7,7 +7,7 @@ import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.Dam
 import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.DefenceWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.RangeWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.RateWeaponStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.SpeedWeaopnStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.SpeedWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.TagsStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
@@ -30,7 +30,7 @@ public class SecondEditionWeaponryTableEncoder extends AbstractEquipmentTableEnc
   protected IEquipmentStatsGroup<IWeapon>[] createEquipmentGroups() {
     return new IEquipmentStatsGroup[] {
         new EquipmentNameStatsGroup(resources),
-        new SpeedWeaopnStatsGroup(resources),
+        new SpeedWeaponStatsGroup(resources),
         new AccuracyWeaponStatsGroup(resources),
         new DamageWeaponStatsGroup(resources),
         new DefenceWeaponStatsGroup(resources),

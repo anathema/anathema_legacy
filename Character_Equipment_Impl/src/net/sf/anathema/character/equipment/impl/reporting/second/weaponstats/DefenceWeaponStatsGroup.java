@@ -18,7 +18,7 @@ public class DefenceWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IW
     return 2;
   }
 
-  public void addContent(PdfPTable table, Font font, IGenericTrait trait, IWeapon weapon) {
+  public void addContent(PdfPTable table, Font font, IWeapon weapon, IGenericTrait... traits) {
     if (weapon == null) {
       table.addCell(createEmptyEquipmentValueCell(font));
       table.addCell(createFinalValueCell(font));
@@ -29,7 +29,7 @@ public class DefenceWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IW
         table.addCell(createFinalValueCell(font, (Integer) null));
       }
       else {
-        table.addCell(createFinalValueCell(font, trait.getCurrentValue() + weapon.getDefence()));
+        table.addCell(createFinalValueCell(font, calculateFinalValue(weapon.getDefence(), traits)));
       }
     }
   }

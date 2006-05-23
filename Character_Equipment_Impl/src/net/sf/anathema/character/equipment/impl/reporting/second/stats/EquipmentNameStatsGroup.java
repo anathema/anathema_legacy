@@ -35,7 +35,7 @@ public final class EquipmentNameStatsGroup<T extends IEquipment> implements IEqu
     return new Float[] { new Float(6) };
   }
 
-  public void addContent(PdfPTable table, Font font, IGenericTrait trait, IEquipment equipment) {
+  public void addContent(PdfPTable table, Font font, IEquipment equipment, IGenericTrait... trait) {
     if (equipment == null) {
       table.addCell(createNameCell(font, "")); //$NON-NLS-1$
     }
