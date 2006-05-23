@@ -2,7 +2,6 @@ package net.sf.anathema.character.equipment.impl.reporting.second.weaponstats;
 
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Font;
@@ -18,7 +17,7 @@ public class SpeedWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWea
     return 1;
   }
 
-  public void addContent(PdfPTable table, Font font, IWeapon weapon, IGenericTrait... trait) {
+  public void addContent(PdfPTable table, Font font, IWeapon weapon) {
     if (weapon == null) {
       table.addCell(createFinalValueCell(font));
     }

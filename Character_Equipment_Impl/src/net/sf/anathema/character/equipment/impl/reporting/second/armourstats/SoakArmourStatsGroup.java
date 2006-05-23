@@ -3,7 +3,6 @@ package net.sf.anathema.character.equipment.impl.reporting.second.armourstats;
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.equipment.weapon.IArmour;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Font;
@@ -17,7 +16,7 @@ public class SoakArmourStatsGroup extends AbstractValueEquipmentStatsGroup<IArmo
     super(resources, "Soak"); //$NON-NLS-1$
   }
 
-  public void addContent(PdfPTable table, Font font, IArmour armour, IGenericTrait... traits) {
+  public void addContent(PdfPTable table, Font font, IArmour armour) {
     if (armour == null) {
       table.addCell(createEmptyEquipmentValueCell(font));
       table.addCell(createEmptyEquipmentValueCell(font));

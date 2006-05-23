@@ -5,7 +5,6 @@ import java.awt.Color;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.equipment.impl.reporting.second.EquipmentEncodingUtilities;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipment;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Element;
@@ -35,7 +34,7 @@ public final class EquipmentNameStatsGroup<T extends IEquipment> implements IEqu
     return new Float[] { new Float(6) };
   }
 
-  public void addContent(PdfPTable table, Font font, IEquipment equipment, IGenericTrait... trait) {
+  public void addContent(PdfPTable table, Font font, IEquipment equipment) {
     if (equipment == null) {
       table.addCell(createNameCell(font, "")); //$NON-NLS-1$
     }

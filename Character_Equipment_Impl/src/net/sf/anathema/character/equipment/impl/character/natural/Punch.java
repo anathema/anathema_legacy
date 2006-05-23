@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
@@ -44,6 +45,14 @@ public class Punch implements IWeapon {
 
   public ITraitType getTraitType() {
     return AbilityType.MartialArts;
+  }
+
+  public ITraitType getDamageTraitType() {
+    return AttributeType.Strength;
+  }
+
+  public boolean inflictsNoDamage() {
+    return false;
   }
 
   public IIdentificate getName() {

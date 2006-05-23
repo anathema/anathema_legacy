@@ -28,7 +28,7 @@ public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncod
   protected PdfPTable createTable(IGenericCharacter character) {
     PdfPTable armourTable = super.createTable(character);
     IArmour totalArmour = getEquipmentModel(character).getTotalPrintArmour(getLineCount());
-    IEquipmentStatsGroup<IArmour>[] groups = createEquipmentGroups();
+    IEquipmentStatsGroup<IArmour>[] groups = createEquipmentGroups(character);
     for (int index = 0; index < groups.length; index++) {
       if (index != 0) {
         armourTable.addCell(createSpaceCell());
@@ -46,7 +46,7 @@ public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncod
 
   @SuppressWarnings("unchecked")
   @Override
-  protected IEquipmentStatsGroup<IArmour>[] createEquipmentGroups() {
+  protected IEquipmentStatsGroup<IArmour>[] createEquipmentGroups(IGenericCharacter character) {
     return new IEquipmentStatsGroup[] {
         new EquipmentNameStatsGroup<IArmour>(resources),
         new SoakArmourStatsGroup(resources),

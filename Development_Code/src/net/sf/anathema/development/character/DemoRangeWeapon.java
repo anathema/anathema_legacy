@@ -30,7 +30,7 @@ public class DemoRangeWeapon implements IWeapon {
   }
 
   public Integer getRate() {
-    return null;
+    return 3;
   }
 
   public int getSpeed() {
@@ -43,6 +43,14 @@ public class DemoRangeWeapon implements IWeapon {
 
   public ITraitType getTraitType() {
     return AbilityType.MartialArts;
+  }
+
+  public ITraitType getDamageTraitType() {
+    return null;
+  }
+
+  public boolean inflictsNoDamage() {
+    return true;
   }
 
   public IIdentificate getName() {

@@ -23,4 +23,8 @@ public interface IWeapon extends IEquipment {
   public Integer getRange();
 
   public Integer getRate();
+
+  public ITraitType getDamageTraitType();
+
+  public boolean inflictsNoDamage();
 }

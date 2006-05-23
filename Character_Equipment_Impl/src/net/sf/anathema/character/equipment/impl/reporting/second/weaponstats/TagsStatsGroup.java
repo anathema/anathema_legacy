@@ -7,7 +7,6 @@ import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.character.equipment.impl.reporting.second.EquipmentEncodingUtilities;
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.IEquipmentStatsGroup;
 import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -39,7 +38,7 @@ public final class TagsStatsGroup implements IEquipmentStatsGroup<IWeapon> {
     return new Float[] { new Float(1.7) };
   }
 
-  public void addContent(PdfPTable table, Font font, IWeapon weapon, IGenericTrait... traits) {
+  public void addContent(PdfPTable table, Font font, IWeapon weapon) {
     if (weapon == null) {
       table.addCell(createEmptyNameCell(font));
     }

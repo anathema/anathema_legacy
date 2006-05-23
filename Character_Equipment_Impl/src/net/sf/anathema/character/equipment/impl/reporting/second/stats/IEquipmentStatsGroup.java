@@ -1,7 +1,6 @@
 package net.sf.anathema.character.equipment.impl.reporting.second.stats;
 
 import net.sf.anathema.character.generic.equipment.weapon.IEquipment;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
 
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.PdfPTable;
@@ -14,5 +13,5 @@ public interface IEquipmentStatsGroup<T extends IEquipment> {
 
   public Float[] getColumnWeights();
 
-  public void addContent(PdfPTable table, Font font, T equipment, IGenericTrait... traits);
+  public void addContent(PdfPTable table, Font font, T equipment);
 }

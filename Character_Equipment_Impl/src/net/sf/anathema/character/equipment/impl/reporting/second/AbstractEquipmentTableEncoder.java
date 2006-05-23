@@ -35,7 +35,7 @@ public abstract class AbstractEquipmentTableEncoder<T extends IEquipment> extend
 
   @Override
   protected PdfPTable createTable(IGenericCharacter character) {
-    IEquipmentStatsGroup<T>[] groups = createEquipmentGroups();
+    IEquipmentStatsGroup<T>[] groups = createEquipmentGroups(character);
     float[] columnWidths = calculateColumnWidths(groups);
     PdfPTable table = new PdfPTable(columnWidths);
     table.setWidthPercentage(100);
@@ -49,11 +49,10 @@ public abstract class AbstractEquipmentTableEncoder<T extends IEquipment> extend
     }
     T[] printEquipments = getPrintEquipments(character);
     for (int line = 0; line < Math.min(printEquipments.length, getLineCount()); line++) {
-      IGenericTrait trait = getTrait(character, printEquipments[line]);
-      encodeContentLine(table, groups, trait, printEquipments[line]);
+      encodeContentLine(table, groups, printEquipments[line]);
     }
     for (int line = printEquipments.length; line < getLineCount(); line++) {
-      encodeContentLine(table, groups, null, null);
+      encodeContentLine(table, groups, null);
     }
     return table;
   }
@@ -64,14 +63,14 @@ public abstract class AbstractEquipmentTableEncoder<T extends IEquipment> extend
 
   protected abstract int getLineCount();
 
-  protected abstract IEquipmentStatsGroup<T>[] createEquipmentGroups();
+  protected abstract IEquipmentStatsGroup<T>[] createEquipmentGroups(IGenericCharacter character);
 
-  private void encodeContentLine(PdfPTable table, IEquipmentStatsGroup<T>[] groups, IGenericTrait trait, T equipment) {
+  private void encodeContentLine(PdfPTable table, IEquipmentStatsGroup<T>[] groups, T equipment) {
     for (int index = 0; index < groups.length; index++) {
       if (index != 0) {
         table.addCell(createSpaceCell());
       }
-      groups[index].addContent(table, font, equipment, trait);
+      groups[index].addContent(table, font, equipment);
     }
   }
 
