@@ -1662,7 +1662,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="SecondEdition" page="207"/>
   </charm>
-  <charm id="Solar.Body-MendingTechnique" exalt="Solar" group="Resistance">
+  <charm id="Solar.Body-MendingMeditation" exalt="Solar" group="Resistance">
     <prerequisite>
       <essence id="Essence" value="1"/>
       <trait id="Resistance" value="1"/>
