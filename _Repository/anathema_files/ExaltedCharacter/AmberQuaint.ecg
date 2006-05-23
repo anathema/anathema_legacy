@@ -7,12 +7,11 @@
   </Description>
   <Statistics experienced="true">
     <Rules>
-      <RuleSet name="PowerCombat"/>
+      <RuleSet name="SecondEdition"/>
     </Rules>
     <CharacterType subtype="TemplateType.Default">Solar</CharacterType>
     <CharacterConcept>
       <Caste type="Twilight"/>
-      <Nature type="Rebel"/>
       <Concept><![CDATA[Erudite Princess]]></Concept>
     </CharacterConcept>
     <Essence creationValue="3" experiencedValue="4"/>
@@ -42,11 +41,11 @@
     </Attributes>
     <Abilities>
       <Archery creationValue="0"/>
-      <Brawl creationValue="0"/>
       <MartialArts creationValue="0"/>
       <Melee creationValue="5" favored="true"/>
       <Thrown creationValue="0"/>
-      <Endurance creationValue="1" favored="true"/>
+      <War creationValue="0"/>
+      <Integrity creationValue="1" favored="true"/>
       <Performance creationValue="3"/>
       <Presence creationValue="0"/>
       <Resistance creationValue="2"/>
@@ -77,15 +76,11 @@
     <Charms>
       <CharmGroup name="Melee" type="Solar">
         <Charm name="Solar.DippingSwallowDefense" experienceLearned="false"/>
-        <Charm name="Solar.GoldenEssenceBlock" experienceLearned="false"/>
         <Charm name="Solar.BulwarkStance" experienceLearned="false"/>
+        <Charm name="Solar.1stExcellencyMelee" experienceLearned="false"/>
         <Charm name="Solar.FivefoldBulwarkStance" experienceLearned="false"/>
       </CharmGroup>
-      <CharmGroup name="Athletics" type="Solar">
-        <Charm name="Solar.MonkeyLeapTechnique" experienceLearned="true"/>
-        <Charm name="Solar.GracefulCraneStance" experienceLearned="true"/>
-      </CharmGroup>
-      <CharmGroup name="Endurance" type="Solar">
+      <CharmGroup name="Resistance" type="Solar">
         <Charm name="Solar.Ox-BodyTechnique" experienceLearned="false">
           <Special>
             <Categories>
@@ -95,24 +90,25 @@
             </Categories>
           </Special>
         </Charm>
-        <Charm name="Solar.UnsleepingWatchmanTechnique" experienceLearned="true"/>
+        <Charm name="Solar.Body-MendingMeditation" experienceLearned="false"/>
+      </CharmGroup>
+      <CharmGroup name="Athletics" type="Solar">
+        <Charm name="Solar.MonkeyLeapTechnique" experienceLearned="true"/>
+        <Charm name="Solar.GracefulCraneStance" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Investigation" type="Solar">
+        <Charm name="Solar.2ndExcellencyInvestigation" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Craft" type="Solar">
+        <Charm name="Solar.1stExcellencyCraft" experienceLearned="true"/>
+        <Charm name="Solar.CraftsmanNeedsNoTools" experienceLearned="true"/>
+      </CharmGroup>
+      <CharmGroup name="Integrity" type="Solar">
+        <Charm name="Solar.Integrity-PotectingPrana" experienceLearned="true"/>
       </CharmGroup>
       <CharmGroup name="Occult" type="Solar">
         <Charm name="Solar.TerrestrialCircleSorcery" experienceLearned="false"/>
         <Charm name="Solar.CelestialCircleSorcery" experienceLearned="true"/>
-      </CharmGroup>
-      <CharmGroup name="Investigation" type="Solar">
-        <Charm name="Solar.TenMagistrateEyes" experienceLearned="true"/>
-      </CharmGroup>
-      <CharmGroup name="Lore" type="Solar">
-        <Charm name="Solar.Integrity-ProtectingPrana" experienceLearned="true"/>
-      </CharmGroup>
-      <CharmGroup name="Craft" type="Solar">
-        <Charm name="Solar.CraftsmanNeedsNoTools" experienceLearned="true"/>
-        <Charm name="Solar.FlawlessHandiworkMethod" experienceLearned="true"/>
-      </CharmGroup>
-      <CharmGroup name="Medicine" type="Solar">
-        <Charm name="Solar.Body-MendingMeditation" experienceLearned="false"/>
       </CharmGroup>
       <Combos/>
     </Charms>
@@ -168,6 +164,15 @@
       <Entry points="-5">
         <Description><![CDATA[Downtime for Essence & Willpower ungenutzt]]></Description>
       </Entry>
+      <Entry points="-10">
+        <Description><![CDATA[Unsleeping Watchman Technique]]></Description>
+      </Entry>
+      <Entry points="6">
+        <Description><![CDATA[Heuschrecken in Fanshu]]></Description>
+      </Entry>
+      <Entry points="8">
+        <Description><![CDATA[Politics in Gem]]></Description>
+      </Entry>
     </Experience>
     <AdditionalModels>
       <Model templateId="SolarVirtueFlaw">
@@ -180,9 +185,12 @@
           </VirtueFlaw>
         </Content>
       </Model>
-      <Model templateId="MeritsAndFlaws">
+      <Model templateId="Equipment">
+        <Content/>
+      </Model>
+      <Model templateId="Intimacies">
         <Content>
-          <meritsFlaws/>
+          <Intimacies/>
         </Content>
       </Model>
     </AdditionalModels>
