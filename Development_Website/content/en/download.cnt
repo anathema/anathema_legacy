@@ -25,10 +25,3 @@
 	<a href="http://sourceforge.net/svn/?group_id=122320">
 	SVN server</a> at all times.
 </p>
-<p>
-	If you don't want to deal with the intricacies of SVN and building the program from source, 
-	you can grab a build from 
-	<a href="http://theuteck.googlepages.com/home">
-	uteck's page</a>. Note that we deny responsibility, note also that we'd be glad to hear 
-	what you are thinking on our unfinished projects.
-</p>
