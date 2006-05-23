@@ -12,8 +12,6 @@ import net.sf.anathema.character.reporting.sheet.common.anima.PdfAnimaEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.sheet.second.equipment.SecondEditionArmourEncoder;
-import net.sf.anathema.character.reporting.sheet.second.equipment.SecondEditionWeaponryEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
@@ -26,6 +24,7 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
   private static final int ANIMA_HEIGHT = 128;
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
+  private final SecondEditionEncodingRegistry registry;
 
   public SecondEditionPartEncoder(
       SecondEditionEncodingRegistry registry,
@@ -33,6 +32,7 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
       int essenceMax,
       PdfPageConfiguration pageConfiguration) {
     super(registry.getBaseFont(), resources, essenceMax);
+    this.registry = registry;
     this.pageConfiguration = pageConfiguration;
     this.boxEncoder = new PdfBoxEncoder(getBaseFont());
   }
@@ -56,7 +56,7 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
       float distanceFromTop,
       float height) throws DocumentException, IOException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IPdfContentEncoder contentEncoder = new SecondEditionArmourEncoder(getResources(), getBaseFont());
+    IPdfContentEncoder contentEncoder = registry.getArmourContentEncoder();
     encodeContent(directContent, contentEncoder, character, bounds, "ArmourSoak"); //$NON-NLS-1$
     return height;
   }
@@ -130,7 +130,7 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
       float distanceFromTop,
       float height) throws DocumentException, IOException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IPdfContentEncoder weaponryEncoder = new SecondEditionWeaponryEncoder(getResources(), getBaseFont());
+    IPdfContentEncoder weaponryEncoder = registry.getWeaponContentEncoder();
     encodeContent(directContent, weaponryEncoder, character, bounds, "Weapons"); //$NON-NLS-1$
     return height;
   }
