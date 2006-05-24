@@ -18,6 +18,7 @@
 		<copyProjectFiles project="Character_Main_Impl" subdirectory="core" />
 		<copyProjectFiles project="Character_MeritsFlaws" subdirectory="core" />
 		<copyProjectFiles project="Character_Intimacies" subdirectory="core" />
+		<copyProjectFiles project="Character_Reporting" subdirectory="core" />
 		<copyProjectFiles project="Character_Sidereal" subdirectory="core" />
 		<copyProjectFiles project="Character_Solar" subdirectory="core" />
 		<copyProjectFiles project="Charm_Cascades" subdirectory="core" />
