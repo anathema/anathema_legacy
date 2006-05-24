@@ -1,6 +1,7 @@
 package net.sf.anathema.character.impl.view;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 
 import javax.swing.ComboBoxEditor;
 import javax.swing.Icon;
@@ -45,28 +46,30 @@ public class BasicAdvantageView extends AbstractTabView<IAdvantageViewProperties
   }
 
   @Override
-  public void createContent(JPanel panel, IAdvantageViewProperties properties) {
-    panel.setLayout(new GridDialogLayout(2, false));
+  public void createContent(JPanel content, IAdvantageViewProperties properties) {
+    content.setLayout(new FlowLayout(FlowLayout.LEFT));
+    JPanel innerPanel = new JPanel(new GridDialogLayout(2, false));
+    content.add(innerPanel);
     GridDialogLayoutData virtueData = new GridDialogLayoutData();
     virtueData.setVerticalSpan(2);
     virtueData.setVerticalAlignment(GridAlignment.FILL);
-    addTitledPanel(properties.getVirtueTitle(), panel, virtuePanel, virtueData);
+    addTitledPanel(properties.getVirtueTitle(), innerPanel, virtuePanel, virtueData);
     GridDialogLayoutData willpowerData = new GridDialogLayoutData();
     willpowerData.setHorizontalAlignment(GridAlignment.FILL);
     willpowerData.setGrabExcessHorizontalSpace(true);
     willpowerData.setVerticalAlignment(GridAlignment.BEGINNING);
-    addTitledPanel(properties.getWillpowerTitle(), panel, willpowerPanel, willpowerData);
+    addTitledPanel(properties.getWillpowerTitle(), innerPanel, willpowerPanel, willpowerData);
     GridDialogLayoutData essenceData = new GridDialogLayoutData();
     essenceData.setHorizontalAlignment(GridAlignment.FILL);
     essenceData.setGrabExcessHorizontalSpace(true);
     essenceData.setVerticalAlignment(GridAlignment.END);
-    addTitledPanel(properties.getEssenceTitle(), panel, essencePanelView.getPanel(), essenceData);
+    addTitledPanel(properties.getEssenceTitle(), innerPanel, essencePanelView.getPanel(), essenceData);
     GridDialogLayoutData fullSpanData = new GridDialogLayoutData();
     fullSpanData.setHorizontalSpan(2);
     fullSpanData.setGrabExcessHorizontalSpace(true);
     fullSpanData.setHorizontalAlignment(GridAlignment.FILL);
     backgroundPanel = createBackgroundPanel(properties.getBackgroundTitle());
-    panel.add(backgroundPanel, fullSpanData);
+    innerPanel.add(backgroundPanel, fullSpanData);
   }
 
   private JPanel createBackgroundPanel(String title) {

@@ -19,8 +19,8 @@ import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.framework.presenter.view.IMultiTabView;
-import net.sf.anathema.framework.presenter.view.MultiTabView;
 import net.sf.anathema.framework.view.item.AbstractTabbedItemView;
+import net.sf.anathema.framework.view.util.MultiTabView;
 import net.sf.anathema.lib.gui.IDisposable;
 
 public class CharacterView extends AbstractTabbedItemView implements ICharacterView {
