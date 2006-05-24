@@ -298,8 +298,11 @@ public class CharmConfiguration implements ICharmConfiguration {
     }
   }
 
-  public ILearningCharmGroup getGroup(String characterType, String groupName) {
-    return getGroupById(CharacterType.getById(characterType), groupName);
+  public ILearningCharmGroup getGroup(String characterTypeId, String groupName) {
+    final CharacterType characterType = characterTypeId == null
+        ? getNativeCharacterType()
+        : CharacterType.getById(characterTypeId);
+    return getGroupById(characterType, groupName);
   }
 
   public CharacterType[] getCharacterTypes(boolean includeAlienTypes) {
