@@ -82,7 +82,7 @@ public class CharacterDescriptionView extends AbstractTabView<Object> implements
   }
 
   private ITextView addTextView(final String labelText, final ITextView textView) {
-    new LabelTextView(labelText, textView).addTo(dialogPanel);
+    new LabelTextView(labelText, textView).addTo(dialogPanel, false);
     return textView;
   }
 

@@ -30,6 +30,10 @@ public class LabelTextView implements ITextView {
   }
 
   public ITextView addTo(IGridDialogPanel dialogPanel) {
+    return addTo(dialogPanel, true);
+  }
+
+  public ITextView addTo(IGridDialogPanel dialogPanel, final boolean fillAllColumns) {
     dialogPanel.add(new IDialogComponent() {
       public int getColumnCount() {
         return 2;
@@ -44,7 +48,7 @@ public class LabelTextView implements ITextView {
         GridDialogLayoutData contentData = new GridDialogLayoutData((scrollPane
             ? GridDialogLayoutData.FILL_BOTH
             : GridDialogLayoutData.FILL_HORIZONTAL));
-        contentData.setHorizontalSpan(columnCount - 1);
+        contentData.setHorizontalSpan(fillAllColumns ? columnCount - 1 : 1);
         panel.add(initializedContent, contentData);
       }
     });
