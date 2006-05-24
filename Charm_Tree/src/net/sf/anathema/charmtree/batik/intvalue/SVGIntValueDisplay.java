@@ -61,7 +61,7 @@ public class SVGIntValueDisplay implements IIntValueView {
           setAttribute(selectionRectangle, SVGConstants.SVG_WIDTH_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
           selectionRectangle.setAttributeNS(null, SVGConstants.SVG_HEIGHT_ATTRIBUTE, "22"); //$NON-NLS-1$
           selectionRectangle.setAttributeNS(null, SVGConstants.SVG_STROKE_ATTRIBUTE, VALUE_COLOR_BLACK);
-          selectionRectangle.setAttributeNS(null, SVGConstants.SVG_FILL_ATTRIBUTE, VALUE_COLOR_LIGHT_MEDIUM_GRAY); //$NON-NLS-1$
+          selectionRectangle.setAttributeNS(null, SVGConstants.SVG_FILL_ATTRIBUTE, VALUE_COLOR_LIGHT_MEDIUM_GRAY);
           selectionRectangle.setAttributeNS(
               null,
               SVGConstants.SVG_FILL_OPACITY_ATTRIBUTE,
