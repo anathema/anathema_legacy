@@ -1,16 +1,17 @@
-package net.sf.anathema.framework.presenter.view;
+package net.sf.anathema.framework.view.util;
 
 import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 
-import net.sf.anathema.framework.view.util.TabDirection;
-import net.sf.anathema.framework.view.util.TabbedView;
+import net.sf.anathema.framework.presenter.view.AbstractTabView;
+import net.sf.anathema.framework.presenter.view.IMultiTabView;
+import net.sf.anathema.framework.presenter.view.ISimpleTabView;
 
 public class MultiTabView extends AbstractTabView<Object> implements IMultiTabView {
 
   public MultiTabView(String header) {
-    super(header);
+    super(header, false);
   }
 
   private TabbedView tabbedView = new TabbedView(TabDirection.Up);

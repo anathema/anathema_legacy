@@ -1,28 +1,53 @@
 package net.sf.anathema.framework.view.util.demo;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
+import net.infonode.tabbedpanel.TabbedPanel;
+import net.infonode.tabbedpanel.titledtab.TitledTab;
 import net.sf.anathema.framework.presenter.view.ISimpleTabView;
 import net.sf.anathema.framework.view.util.TabDirection;
 import net.sf.anathema.framework.view.util.TabbedView;
+
 import de.jdemo.extensions.SwingDemoCase;
 
 public class TabbedViewDemo extends SwingDemoCase {
 
-  public void demo() {
+  public void demoViewThatNeedsScrollbar() {
     TabbedView view = new TabbedView(TabDirection.Up);
+    view.addTab(new DemoTabView(true), "TabName"); //$NON-NLS-1$
+    show(view.getComponent());
+  }
+
+  public void demoViewDoesNotNeedScrollbar() {
+    TabbedView view = new TabbedView(TabDirection.Up);
+    view.addTab(new DemoTabView(false), "TabName"); //$NON-NLS-1$
+    show(view.getComponent());
+  }
+
+  public void demoTabbedPanelInTabView() {
+    TabbedView view = new TabbedView(TabDirection.Left);
     view.addTab(new ISimpleTabView() {
-      private JLabel content = new JLabel("Content"); //$NON-NLS-1$
-    
-      public boolean needsScrollbar() {
-        return true;
-      }
-    
+
+      private TabbedPanel tabbedPanel = new TabbedPanel() {
+        {
+          JPanel panel = new JPanel(new BorderLayout());
+          panel.add(new JLabel("Content"), BorderLayout.CENTER);
+          addTab(new TitledTab("Title", null, panel, null));
+        }
+      };
+
       public JComponent getComponent() {
-        return content;
+        return tabbedPanel;
       }
-    
+
+      public boolean needsScrollbar() {
+        return false;
+      }
+
     }, "TabName"); //$NON-NLS-1$
     show(view.getComponent());
   }
