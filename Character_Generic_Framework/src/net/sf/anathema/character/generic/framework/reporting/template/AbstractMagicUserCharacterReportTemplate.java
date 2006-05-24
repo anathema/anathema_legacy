@@ -47,8 +47,7 @@ public abstract class AbstractMagicUserCharacterReportTemplate extends AbstractS
     String casteId = character.getConcept().getCasteType().getId();
     String printName = null;
     if (casteId != null) {
-      printName = getResources().getString(
-          character.getTemplate().getTemplateType().getCharacterType() + ".Caste." + casteId); //$NON-NLS-1$
+      printName = getResources().getString("Caste." + casteId); //$NON-NLS-1$
     }
     parameters.put(CASTE, printName);
   }
