@@ -3,8 +3,8 @@ package net.sf.anathema.character.equipment.impl.reporting.second.stats;
 import java.awt.Color;
 
 import net.disy.commons.core.util.StringUtilities;
-import net.sf.anathema.character.equipment.impl.reporting.second.TableEncodingUtilities;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipment;
+import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Element;
