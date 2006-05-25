@@ -8,7 +8,7 @@ import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPTable;
 
-public abstract class AbstractTableEncoder {
+public abstract class AbstractTableEncoder implements IPdfTableEncoder {
 
   protected abstract PdfPTable createTable(IGenericCharacter character);
 
@@ -16,6 +16,7 @@ public abstract class AbstractTableEncoder {
       throws DocumentException {
     ColumnText tableColumn = new ColumnText(directContent);
     PdfPTable table = createTable(character);
+    table.setWidthPercentage(100);
     tableColumn.setSimpleColumn(bounds.getMinX(), bounds.getMinY(), bounds.getMaxX(), bounds.getMaxY());
     tableColumn.addElement(table);
     tableColumn.go();

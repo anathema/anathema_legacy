@@ -45,4 +45,9 @@ public class Bounds {
   public float getWidth() {
     return width;
   }
+
+  @Override
+  public String toString() {
+    return getClass().getName() + "[" + x + "," + y + "," + width + "," + height + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
+  }
 }
