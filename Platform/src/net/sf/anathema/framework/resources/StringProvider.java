@@ -46,5 +46,4 @@ public class StringProvider implements IStringResourceHandler {
   public boolean supportsKey(String key) {
     return keyList.contains(key);
   }
-
 }
