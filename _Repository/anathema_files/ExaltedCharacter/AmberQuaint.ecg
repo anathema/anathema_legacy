@@ -12,7 +12,7 @@
     <CharacterType subtype="TemplateType.Default">Solar</CharacterType>
     <CharacterConcept>
       <Caste type="Twilight"/>
-      <Motivation><![CDATA[Restore Justice to the Heavenly Hierarchy]]></Motivation>
+      <Motivation><![CDATA[Restore peace and order throughout the Heavenly Hierarchy]]></Motivation>
       <Concept><![CDATA[Erudite Princess]]></Concept>
     </CharacterConcept>
     <Essence creationValue="3" experiencedValue="4"/>
