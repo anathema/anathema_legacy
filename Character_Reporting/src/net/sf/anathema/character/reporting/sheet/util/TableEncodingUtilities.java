@@ -75,4 +75,8 @@ public class TableEncodingUtilities {
   public static Font createHeaderFont(BaseFont baseFont) {
     return new Font(baseFont, IVoidStateFormatConstants.FONT_SIZE - 1, Font.NORMAL, Color.BLACK);
   }
+
+  public static Font createCommentFont(BaseFont baseFont) {
+    return new Font(baseFont, IVoidStateFormatConstants.COMMENT_FONT_SIZE, Font.NORMAL, Color.BLACK);
+  }
 }

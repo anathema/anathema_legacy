@@ -5,6 +5,8 @@ import java.awt.Color;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.health.HealthLevelType;
+import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.sheet.util.TableCell;
 import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
@@ -43,12 +45,14 @@ public class SecondEditionHealthAndMovemenTableEncoder implements IPdfTableEncod
   private final IResources resources;
   private final Font font;
   private Font headerFont;
+  private Font commentFont;
   private PdfPCell spaceCell;
 
   public SecondEditionHealthAndMovemenTableEncoder(IResources resources, BaseFont baseFont) {
     this.resources = resources;
     this.font = TableEncodingUtilities.createFont(baseFont);
     this.headerFont = TableEncodingUtilities.createHeaderFont(baseFont);
+    this.commentFont = TableEncodingUtilities.createCommentFont(baseFont);
     this.spaceCell = new PdfPCell(new Phrase(" ", font)); //$NON-NLS-1$
     this.spaceCell.setBorder(Rectangle.NO_BORDER);
   }
@@ -83,13 +87,24 @@ public class SecondEditionHealthAndMovemenTableEncoder implements IPdfTableEncod
       addHealthCells(table, character, HealthLevelType.TWO, 1, activeTemplate, passiveTemplate);
       addMovementCells(table, character, HealthLevelType.FOUR);
       addHealthCells(table, character, HealthLevelType.FOUR, 0, activeTemplate, passiveTemplate);
-      addSpaceCells(table, MOVEMENT_COLUMNS.length);
+      addIncapacitatedMovement(table);
       addHealthCells(table, character, HealthLevelType.INCAPACITATED, 0, activeTemplate, passiveTemplate);
       return table;
     }
     catch (BadElementException e) {
       throw new DocumentException(e);
     }
+  }
+
+  private void addIncapacitatedMovement(PdfPTable table) {
+    final Phrase commentPhrase = new Phrase(resources.getString("Sheet.Comment.Movement"), commentFont); //$NON-NLS-1$
+    final TableCell cell = new TableCell(commentPhrase, Rectangle.NO_BORDER);
+    cell.setColspan(MOVEMENT_COLUMNS.length - 4);
+    cell.setVerticalAlignment(Element.ALIGN_BOTTOM);
+    table.addCell(cell);
+    addSpaceCells(table, 1);
+    addHealthPenaltyCells(table, HealthLevelType.INCAPACITATED, 0);
+    addSpaceCells(table, 1);
   }
 
   private void addSpaceCells(PdfPTable table, int count) {
@@ -123,15 +138,31 @@ public class SecondEditionHealthAndMovemenTableEncoder implements IPdfTableEncod
 
   private void addMovementCells(PdfPTable table, IGenericCharacter character, HealthLevelType level) {
     int painTolerance = character.getPainTolerance();
-    table.addCell(new Phrase(" ", font));
+    int penalty = getPenalty(level, painTolerance);
+    int dexValue = character.getTrait(AttributeType.Dexterity).getCurrentValue();
+    int moveValue = dexValue + penalty;
+    table.addCell(createMovementCell(moveValue, 1));
     addSpaceCells(table, 1);
-    table.addCell(new Phrase(" ", font));
+    table.addCell(createMovementCell(moveValue + 6, 2));
+    int verticalJump = character.getTrait(AttributeType.Strength).getCurrentValue()
+        + character.getTrait(AbilityType.Athletics).getCurrentValue()
+        - penalty;
     addSpaceCells(table, 1);
-    table.addCell(new Phrase(" ", font));
-    table.addCell(new Phrase(" ", font));
+    table.addCell(createMovementCell(verticalJump * 2, 0));
+    table.addCell(createMovementCell(verticalJump, 0));
     addSpaceCells(table, 1);
     addHealthPenaltyCells(table, level, painTolerance);
     addSpaceCells(table, 1);
+  }
+
+  private PdfPCell createMovementCell(int value, int minValue) {
+    return TableEncodingUtilities.createContentCellTable(
+        Color.BLACK,
+        String.valueOf(Math.max(value, minValue)),
+        font,
+        0.5f,
+        Rectangle.BOX,
+        Element.ALIGN_CENTER);
   }
 
   private void addHealthPenaltyCells(PdfPTable table, HealthLevelType level, int painTolerance) {

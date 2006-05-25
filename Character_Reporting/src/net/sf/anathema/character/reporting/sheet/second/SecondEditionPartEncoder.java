@@ -61,10 +61,14 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
     return height;
   }
 
-  private float encodeCombatStats(PdfContentByte directContent, float distanceFromTop, float height) {
+  private float encodeCombatStats(
+      PdfContentByte directContent,
+      IGenericCharacter character,
+      float distanceFromTop,
+      float height) throws DocumentException, IOException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    String header = getResources().getString("Sheet.Header.Combat"); //$NON-NLS-1$
-    boxEncoder.encodeBox(directContent, bounds, header);
+    IPdfContentEncoder encoder = new SecondEditionCombatStatsEncoder(getResources(), getBaseFont());
+    encodeContent(directContent, encoder, character, bounds, "Combat"); //$NON-NLS-1$
     return height;
   }
 
@@ -95,10 +99,10 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
     distanceFromTop += calculateBoxIncrement(weaponryHeight);
     float armourHeight = encodeArmourAndSoak(directContent, character, distanceFromTop, 69);
     distanceFromTop += calculateBoxIncrement(armourHeight);
-    float healthHeight = encodeMovementAndHealth(directContent, character, distanceFromTop, 125);
+    float healthHeight = encodeMovementAndHealth(directContent, character, distanceFromTop, 99);
     distanceFromTop += calculateBoxIncrement(healthHeight);
     float combatHeight = PdfFirstPageEncoder.CONTENT_HEIGHT - distanceFromTop;
-    encodeCombatStats(directContent, distanceFromTop, combatHeight);
+    encodeCombatStats(directContent, character, distanceFromTop, combatHeight);
   }
 
   private float encodeMovementAndHealth(
