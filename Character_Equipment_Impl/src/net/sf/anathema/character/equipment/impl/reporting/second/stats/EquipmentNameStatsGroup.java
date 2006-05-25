@@ -3,7 +3,7 @@ package net.sf.anathema.character.equipment.impl.reporting.second.stats;
 import java.awt.Color;
 
 import net.disy.commons.core.util.StringUtilities;
-import net.sf.anathema.character.equipment.impl.reporting.second.EquipmentEncodingUtilities;
+import net.sf.anathema.character.equipment.impl.reporting.second.TableEncodingUtilities;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipment;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -49,6 +49,6 @@ public final class EquipmentNameStatsGroup<T extends IEquipment> implements IEqu
     if (StringUtilities.isNullOrTrimEmpty(text)) {
       text = " "; //$NON-NLS-1$
     }
-    return EquipmentEncodingUtilities.createContentCellTable(Color.BLACK, text, font, 0.5f, border, Element.ALIGN_LEFT);
+    return TableEncodingUtilities.createContentCellTable(Color.BLACK, text, font, 0.5f, border, Element.ALIGN_LEFT);
   }
 }

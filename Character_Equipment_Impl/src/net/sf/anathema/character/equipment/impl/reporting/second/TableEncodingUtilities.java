@@ -9,7 +9,7 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 
 
-public class EquipmentEncodingUtilities {
+public class TableEncodingUtilities {
 
   public static Float[] createStandardColumnWeights(int columnCount) {
     Float[] columnWeights = new Float[columnCount];

@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.impl.reporting.second.stats;
 
 import java.awt.Color;
 
-import net.sf.anathema.character.equipment.impl.reporting.second.EquipmentEncodingUtilities;
+import net.sf.anathema.character.equipment.impl.reporting.second.TableEncodingUtilities;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipment;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.lib.resources.IResources;
@@ -27,7 +27,7 @@ public abstract class AbstractValueEquipmentStatsGroup<T extends IEquipment> imp
   }
 
   public Float[] getColumnWeights() {
-    return EquipmentEncodingUtilities.createStandardColumnWeights(getColumnCount());
+    return TableEncodingUtilities.createStandardColumnWeights(getColumnCount());
   }
 
   public final String getTitle() {
@@ -89,7 +89,7 @@ public abstract class AbstractValueEquipmentStatsGroup<T extends IEquipment> imp
       Font font,
       float borderWidth,
       boolean enabled) {
-    return EquipmentEncodingUtilities.createContentCellTable(
+    return TableEncodingUtilities.createContentCellTable(
         borderColor,
         text,
         font,
@@ -106,7 +106,7 @@ public abstract class AbstractValueEquipmentStatsGroup<T extends IEquipment> imp
       float borderWidth,
       int alignment,
       boolean enabled) {
-    return EquipmentEncodingUtilities.createContentCellTable(
+    return TableEncodingUtilities.createContentCellTable(
         borderColor,
         text,
         font,
