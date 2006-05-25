@@ -4,7 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/gisterm.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/jts.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Commons/commons-io-src.zip" kind="lib" path="/Thirdparty/Commons/commons-io.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/gisterm-lib.jar"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-core-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
@@ -18,5 +17,6 @@
 	<classpathentry exported="true" kind="lib" path="/Thirdparty/GISterm/gt2-api.jar"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-comons-swing-dialog.src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-dialog.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Data"/>
+	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-io.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

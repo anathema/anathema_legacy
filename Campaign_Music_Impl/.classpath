@@ -17,11 +17,11 @@
 	<classpathentry sourcepath="/Thirdparty/Multimedia/BasicPlayer-2.3-src.zip" kind="lib" path="/Thirdparty/Multimedia/basicplayer2.3.jar"/>
 	<classpathentry sourcepath="/Thirdparty/Swing/itp-gpl-1.3.0-src.zip" kind="lib" path="/Thirdparty/Swing/itp-gpl-1.3.0.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
-	<classpathentry sourcepath="/Thirdparty/Commons/commons-io-src.zip" kind="lib" path="/Thirdparty/Commons/commons-io.jar"/>
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="lib" path="/Thirdparty/Multimedia/tritonus_share.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/Development/jl1.0.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Commons/commons-logging-api.src.zip" kind="lib" path="/Thirdparty/Commons/commons-logging-api.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/Database/db4o-5.2-java5.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-io.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-logging-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

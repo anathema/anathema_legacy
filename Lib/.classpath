@@ -6,8 +6,8 @@
 	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
 	<classpathentry sourcepath="/Thirdparty/XML/dom4j-src.zip" kind="lib" path="/Thirdparty/XML/dom4j-1.5.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/Commons/commons-lang-2.1.jar"/>
 	<classpathentry exported="true" sourcepath="/Thirdparty/Testing/easymock-src.zip" kind="lib" path="/Thirdparty/Testing/easymock.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Thirdparty/Testing/jmock.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-lang-2.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

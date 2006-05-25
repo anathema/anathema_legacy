@@ -7,14 +7,9 @@
 	<classpathentry kind="src" path="/Platform"/>
 	<classpathentry kind="src" path="/Lib"/>
 	<classpathentry kind="src" path="/Lib_Gui"/>
-	<classpathentry kind="lib" path="/Thirdparty/Commons/commons-io.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/Commons/commons-io-src.zip"/>
 	<classpathentry sourcepath="/Thirdparty/Reporting/jasperreport-src.zip" kind="lib" path="/Thirdparty/Reporting/jasperreports-0.6.2.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/Reporting/jasperreport-src.zip"/>
 	<classpathentry kind="lib" path="/Thirdparty/XML/dom4j-1.5.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/XML/xalan.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/XML/xercesImpl-2.6.2.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/XML/xml-apis-2.0.2.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-awt-util.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-bridge.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-css.jar"/>
@@ -29,5 +24,6 @@
 	<classpathentry kind="src" path="/Character_Generic_Impl"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-layout_src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
 	<classpathentry sourcepath="/Thirdparty/Reporting/itext-src-1.4.zip" kind="lib" path="/Thirdparty/Reporting/itext-1.4.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-io.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

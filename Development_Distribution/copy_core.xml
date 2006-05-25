@@ -33,7 +33,7 @@
 
 	<target name="Copy Core Thirdparty" depends="Prepare" description="Copy common third party packages">
 		<copy todir="${dist_lib}/core">
-			<fileset dir="../${thirdpartyDir}/Commons/">
+			<fileset dir="../${thirdpartyDir}/Jakarta/">
 				<include name="**/*.jar" />
 			</fileset>
 			<fileset dir="../${thirdpartyDir}/disy/">

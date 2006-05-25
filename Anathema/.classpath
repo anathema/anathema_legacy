@@ -11,7 +11,6 @@
 	<classpathentry sourcepath="/Thirdparty/Swing/l2fprod-common-tasks-src.zip" kind="lib" path="/Thirdparty/Swing/l2fprod-common-tasks.jar"/>
 	<classpathentry kind="src" path="/Charm_Cascades"/>
 	<classpathentry kind="src" path="/Campaign_Plot"/>
-	<classpathentry sourcepath="/Thirdparty/Commons/commons-io-src.zip" kind="lib" path="/Thirdparty/Commons/commons-io.jar"/>
 	<classpathentry kind="src" path="/Character_Abyssal"/>
 	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
 	<classpathentry kind="src" path="/Character_Generic"/>
@@ -26,7 +25,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Framework"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Campaign_Music"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Campaign_Music_Impl"/>
-	<classpathentry sourcepath="/Thirdparty/Commons/commons-logging-api.src.zip" kind="lib" path="/Thirdparty/Commons/commons-logging-api.jar"/>
 	<classpathentry kind="src" path="/Character_MeritsFlaws"/>
 	<classpathentry kind="src" path="/Namegenerator"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Library"/>
@@ -51,5 +49,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Reporting"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment_Impl"/>
+	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-io.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-lang-2.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

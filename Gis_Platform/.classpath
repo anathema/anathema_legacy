@@ -25,6 +25,6 @@
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/gisterm-shapeexport.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Data"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Gis_Data_Impl"/>
-	<classpathentry sourcepath="/Thirdparty/Commons/commons-io-src.zip" kind="lib" path="/Thirdparty/Commons/commons-io.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-io.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
