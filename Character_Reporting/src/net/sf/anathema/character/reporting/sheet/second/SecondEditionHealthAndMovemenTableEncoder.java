@@ -5,8 +5,8 @@ import java.awt.Color;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.health.HealthLevelType;
-import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
+import net.sf.anathema.character.reporting.sheet.util.TableCell;
 import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
@@ -28,14 +28,29 @@ import com.lowagie.text.pdf.PdfTemplate;
 public class SecondEditionHealthAndMovemenTableEncoder implements IPdfTableEncoder {
 
   private static final int HEALTH_COLUMN_COUNT = 10;
+  private static float PADDING = 0.3f;
+  private static final Float[] MOVEMENT_COLUMNS = new Float[] {
+      1f,
+      PADDING,
+      1f,
+      PADDING,
+      1f,
+      1f,
+      PADDING,
+      0.6f,
+      0.7f,
+      PADDING };
   private final IResources resources;
-  private final BaseFont baseFont;
   private final Font font;
+  private Font headerFont;
+  private PdfPCell spaceCell;
 
   public SecondEditionHealthAndMovemenTableEncoder(IResources resources, BaseFont baseFont) {
     this.resources = resources;
-    this.baseFont = baseFont;
-    this.font = new Font(baseFont, IVoidStateFormatConstants.FONT_SIZE, Font.NORMAL, Color.BLACK);
+    this.font = TableEncodingUtilities.createFont(baseFont);
+    this.headerFont = TableEncodingUtilities.createHeaderFont(baseFont);
+    this.spaceCell = new PdfPCell(new Phrase(" ", font)); //$NON-NLS-1$
+    this.spaceCell.setBorder(Rectangle.NO_BORDER);
   }
 
   public void encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
@@ -52,23 +67,24 @@ public class SecondEditionHealthAndMovemenTableEncoder implements IPdfTableEncod
     final int healthRectSize = 6;
     try {
       Image activeTemplate = Image.getInstance(createRectTemplate(directContent, healthRectSize, Color.BLACK));
-      Image passiveTemplate = Image.getInstance(createRectTemplate(directContent, healthRectSize, Color.GRAY));
+      Image passiveTemplate = Image.getInstance(createRectTemplate(directContent, healthRectSize, Color.LIGHT_GRAY));
       float[] columnWidth = createColumnWidth();
       PdfPTable table = new PdfPTable(columnWidth);
+      addHeaders(table);
       addMovementCells(table, character, HealthLevelType.ZERO);
-      addHealthCells(table, character, HealthLevelType.ZERO, activeTemplate, passiveTemplate);
+      addHealthCells(table, character, HealthLevelType.ZERO, 0, activeTemplate, passiveTemplate);
       addMovementCells(table, character, HealthLevelType.ONE);
-      addHealthCells(table, character, HealthLevelType.ONE, activeTemplate, passiveTemplate);
-      addMovementCells(table, character, HealthLevelType.ONE);
-      addHealthCells(table, character, HealthLevelType.ONE, activeTemplate, passiveTemplate);
+      addHealthCells(table, character, HealthLevelType.ONE, 0, activeTemplate, passiveTemplate);
+      addSpaceCells(table, MOVEMENT_COLUMNS.length);
+      addHealthCells(table, character, HealthLevelType.ONE, 1, activeTemplate, passiveTemplate);
       addMovementCells(table, character, HealthLevelType.TWO);
-      addHealthCells(table, character, HealthLevelType.TWO, activeTemplate, passiveTemplate);
-      addMovementCells(table, character, HealthLevelType.TWO);
-      addHealthCells(table, character, HealthLevelType.TWO, activeTemplate, passiveTemplate);
+      addHealthCells(table, character, HealthLevelType.TWO, 0, activeTemplate, passiveTemplate);
+      addSpaceCells(table, MOVEMENT_COLUMNS.length);
+      addHealthCells(table, character, HealthLevelType.TWO, 1, activeTemplate, passiveTemplate);
       addMovementCells(table, character, HealthLevelType.FOUR);
-      addHealthCells(table, character, HealthLevelType.FOUR, activeTemplate, passiveTemplate);
-      addMovementCells(table, character, HealthLevelType.INCAPACITATED);
-      addHealthCells(table, character, HealthLevelType.INCAPACITATED, activeTemplate, passiveTemplate);
+      addHealthCells(table, character, HealthLevelType.FOUR, 0, activeTemplate, passiveTemplate);
+      addSpaceCells(table, MOVEMENT_COLUMNS.length);
+      addHealthCells(table, character, HealthLevelType.INCAPACITATED, 0, activeTemplate, passiveTemplate);
       return table;
     }
     catch (BadElementException e) {
@@ -76,9 +92,29 @@ public class SecondEditionHealthAndMovemenTableEncoder implements IPdfTableEncod
     }
   }
 
+  private void addSpaceCells(PdfPTable table, int count) {
+    for (int index = 0; index < count; index++) {
+      table.addCell(spaceCell);
+    }
+  }
+
+  private PdfPCell createHeaderCell(String text, int columnSpan) {
+    PdfPCell cell = new PdfPCell(new Phrase(text, headerFont));
+    cell.setBorder(Rectangle.NO_BORDER);
+    cell.setColspan(columnSpan);
+    return cell;
+  }
+
+  private void addHeaders(PdfPTable table) {
+    table.addCell(createHeaderCell("Move", 2));
+    table.addCell(createHeaderCell("Dash", 2));
+    table.addCell(createHeaderCell("Jump (H/V)", 3));
+    table.addCell(createHeaderCell("Health Levels", 13));
+  }
+
   private PdfTemplate createRectTemplate(PdfContentByte directContent, final int healthRectSize, final Color strokeColor) {
     PdfTemplate activeHealthRect = directContent.createTemplate(healthRectSize, healthRectSize);
-    activeHealthRect.setLineWidth(0.75f);
+    activeHealthRect.setLineWidth(1f);
     activeHealthRect.setColorStroke(strokeColor);
     activeHealthRect.rectangle(0, 0, healthRectSize, healthRectSize);
     activeHealthRect.stroke();
@@ -86,31 +122,71 @@ public class SecondEditionHealthAndMovemenTableEncoder implements IPdfTableEncod
   }
 
   private void addMovementCells(PdfPTable table, IGenericCharacter character, HealthLevelType level) {
+    int painTolerance = character.getPainTolerance();
+    table.addCell(new Phrase(" ", font));
+    addSpaceCells(table, 1);
+    table.addCell(new Phrase(" ", font));
+    addSpaceCells(table, 1);
     table.addCell(new Phrase(" ", font));
     table.addCell(new Phrase(" ", font));
-    table.addCell(new Phrase(" ", font));
-    table.addCell(new Phrase(" ", font));
-    table.addCell(new Phrase(" ", font));
-    table.addCell(new Phrase(" ", font));
-    table.addCell(new Phrase(" ", font));
-    table.addCell(new Phrase(" ", font));
-    table.addCell(new Phrase(" ", font));
-    table.addCell(new Phrase(" ", font));
+    addSpaceCells(table, 1);
+    addHealthPenaltyCells(table, level, painTolerance);
+    addSpaceCells(table, 1);
+  }
+
+  private void addHealthPenaltyCells(PdfPTable table, HealthLevelType level, int painTolerance) {
+    final String healthPenText = resources.getString("HealthLevelType." + level.getId() + ".Short"); //$NON-NLS-1$ //$NON-NLS-2$
+    final Phrase healthPenaltyPhrase = new Phrase(healthPenText, font);
+    PdfPCell healthPdfPCell = new TableCell(healthPenaltyPhrase, Rectangle.NO_BORDER);
+    if (level == HealthLevelType.INCAPACITATED) {
+      healthPdfPCell.setColspan(2);
+      table.addCell(healthPdfPCell);
+    }
+    else {
+      table.addCell(healthPdfPCell);
+      String painToleranceText = " "; //$NON-NLS-1$
+      if (painTolerance > 0) {
+        final int value = getPenalty(level, painTolerance);
+        painToleranceText = "(" + (value == 0 ? "-" : "") + value + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+      }
+      final TableCell painToleranceCell = new TableCell(new Phrase(painToleranceText, font), Rectangle.NO_BORDER);
+      painToleranceCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+      table.addCell(painToleranceCell);
+    }
+  }
+
+  private int getPenalty(HealthLevelType level, int painTolerance) {
+    return Math.min(0, level.getIntValue() + painTolerance);
   }
 
   private void addHealthCells(
       PdfPTable table,
       IGenericCharacter character,
       HealthLevelType level,
+      int row,
       Image activeImage,
       Image passiveImage) {
-    int passiveCellCount = 8;
-    for (int index = 0; index < passiveCellCount; index++) {
-      table.addCell(createHealthCell(passiveImage));
-    }
-    for (int index = passiveCellCount; index < HEALTH_COLUMN_COUNT; index++) {
+    int naturalCount = getNaturalHealthLevels(level);
+    if (row < naturalCount) {
       table.addCell(createHealthCell(activeImage));
     }
+    else {
+      addSpaceCells(table, 1);
+    }
+    int additionalCount = 9;
+    for (int index = 0; index < additionalCount; index++) {
+      int value = naturalCount + (row * additionalCount) + index + 1;
+      if (value <= character.getHealthLevelTypeCount(level)) {
+        table.addCell(createHealthCell(activeImage));
+      }
+      else {
+        table.addCell(createHealthCell(passiveImage));
+      }
+    }
+  }
+
+  private int getNaturalHealthLevels(HealthLevelType level) {
+    return (level == HealthLevelType.ONE || level == HealthLevelType.TWO) ? 2 : 1;
   }
 
   private PdfPCell createHealthCell(Image image) {
@@ -122,10 +198,8 @@ public class SecondEditionHealthAndMovemenTableEncoder implements IPdfTableEncod
   }
 
   private float[] createColumnWidth() {
-    float padding = 0.3f;
-    Float[] movementColumns = new Float[] { 1f, padding, 1f, padding, 1f, 1f, padding, 1f, 1f, padding };
     Float[] healthColumns = TableEncodingUtilities.createStandardColumnWidths(HEALTH_COLUMN_COUNT, 0.4f);
-    Float[] objectArray = ArrayUtilities.concat(movementColumns, healthColumns);
+    Float[] objectArray = ArrayUtilities.concat(MOVEMENT_COLUMNS, healthColumns);
     return net.sf.anathema.lib.lang.ArrayUtilities.toPrimitive(objectArray);
   }
 }

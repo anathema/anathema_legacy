@@ -2,9 +2,12 @@ package net.sf.anathema.character.reporting.sheet.util;
 
 import java.awt.Color;
 
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
+
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
+import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 
@@ -63,5 +66,13 @@ public class TableEncodingUtilities {
     outerCell.setBorder(Rectangle.NO_BORDER);
     outerCell.setPadding(1);
     return outerCell;
+  }
+
+  public static Font createFont(BaseFont baseFont) {
+    return new Font(baseFont, IVoidStateFormatConstants.FONT_SIZE - 0.5f, Font.NORMAL, Color.BLACK);
+  }
+
+  public static Font createHeaderFont(BaseFont baseFont) {
+    return new Font(baseFont, IVoidStateFormatConstants.FONT_SIZE - 1, Font.NORMAL, Color.BLACK);
   }
 }

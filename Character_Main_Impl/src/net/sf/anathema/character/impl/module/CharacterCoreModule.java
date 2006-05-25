@@ -31,6 +31,7 @@ public class CharacterCoreModule extends AbstractAnathemaModule {
     }
     this.anathemaResources = resources;
     // TODO: Resource-Registrierung in die jeweiligen Module auslagern?
+    resources.addStringResourceHandler(createStringProvider("Health", resources.getLocale())); //$NON-NLS-1$
     resources.addStringResourceHandler(createStringProvider("Abyssal", resources.getLocale())); //$NON-NLS-1$
     resources.addStringResourceHandler(createStringProvider("Charms_Abyssal", resources.getLocale())); //$NON-NLS-1$
     resources.addStringResourceHandler(createStringProvider("Dragon-Blooded", resources.getLocale())); //$NON-NLS-1$

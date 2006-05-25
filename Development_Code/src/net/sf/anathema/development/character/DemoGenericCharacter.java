@@ -40,7 +40,8 @@ public class DemoGenericCharacter implements IGenericCharacter {
   private final DemoConcept concept = new DemoConcept();
   private final DemoEquipmentAdditionalModel equipmentModel = new DemoEquipmentAdditionalModel();
   private IExaltedRuleSet ruleSet;
-  
+  private int painTolerance = 0;
+
   public DemoGenericCharacter(CharacterType characterType) {
     this.characterTemplate = new DemoCharacterTemplate(characterType);
   }
@@ -73,7 +74,7 @@ public class DemoGenericCharacter implements IGenericCharacter {
   }
 
   public int getHealthLevelTypeCount(HealthLevelType type) {
-    return 0;
+    return 10 + type.getIntValue();
   }
 
   public int getLearnCount(ICharm charm) {
@@ -81,7 +82,11 @@ public class DemoGenericCharacter implements IGenericCharacter {
   }
 
   public int getPainTolerance() {
-    return 0;
+    return painTolerance;
+  }
+
+  public void setPainTolerance(int painTolerance) {
+    this.painTolerance = painTolerance;
   }
 
   public String getPeripheralPool() {
@@ -102,18 +107,14 @@ public class DemoGenericCharacter implements IGenericCharacter {
 
   public INamedGenericTrait[] getSpecialties(ITraitType traitType) {
     if (specialtyTraitTypes.contains(traitType)) {
-      return new INamedGenericTrait[] {
-          new DemoNamedGenericTrait(traitType, 3, " (Specialty)")
-      };
+      return new INamedGenericTrait[] { new DemoNamedGenericTrait(traitType, 3, " (Specialty)") };
     }
     return new INamedGenericTrait[0];
   }
-  
+
   public INamedGenericTrait[] getSubTraits(ITraitType traitType) {
     if (subbedTraitTypes.contains(traitType)) {
-      return new INamedGenericTrait[] {
-          new DemoNamedGenericTrait(traitType, 2, " (Sub)")
-      };
+      return new INamedGenericTrait[] { new DemoNamedGenericTrait(traitType, 2, " (Sub)") };
     }
     return new INamedGenericTrait[0];
   }
@@ -215,7 +216,7 @@ public class DemoGenericCharacter implements IGenericCharacter {
   public void addSubbedTrait(ITraitType traitType) {
     subbedTraitTypes.add(traitType);
   }
- 
+
   public DemoEquipmentAdditionalModel getEquipmentModel() {
     return equipmentModel;
   }

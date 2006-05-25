@@ -1,6 +1,5 @@
 package net.sf.anathema.character.equipment.impl.reporting.second;
 
-import java.awt.Color;
 
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.equipment.character.IEquipmentAdditionalModel;
@@ -9,8 +8,8 @@ import net.sf.anathema.character.equipment.impl.reporting.second.stats.IEquipmen
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipment;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractTableEncoder;
+import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
 
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
@@ -25,8 +24,8 @@ public abstract class AbstractEquipmentTableEncoder<T extends IEquipment> extend
   private final Font headerFont;
 
   public AbstractEquipmentTableEncoder(BaseFont baseFont) {
-    this.headerFont = new Font(baseFont, IVoidStateFormatConstants.FONT_SIZE - 1, Font.NORMAL, Color.BLACK);
-    this.font = new Font(baseFont, IVoidStateFormatConstants.FONT_SIZE - 0.5f, Font.NORMAL, Color.BLACK);
+    this.headerFont = TableEncodingUtilities.createHeaderFont(baseFont);
+    this.font = TableEncodingUtilities.createFont(baseFont);
   }
 
   protected final Font getFont() {
