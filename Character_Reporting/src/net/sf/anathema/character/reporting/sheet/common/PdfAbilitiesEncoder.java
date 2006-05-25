@@ -99,6 +99,7 @@ public class PdfAbilitiesEncoder extends AbstractPdfEncoder {
       int dotCount) {
     int height = drawSubsectionHeader(directContent, title, position, width);
     for (INamedGenericTrait trait : traits) {
+      trait = new I18nNamedGenericTrait(trait, resources);
       Position traitPosition = new Position(position.x, position.y - height);
       int value = trait.getCurrentValue();
       String name = trait.getName();

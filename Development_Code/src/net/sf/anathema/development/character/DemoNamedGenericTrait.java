@@ -1,8 +1,10 @@
 package net.sf.anathema.development.character;
 
 import net.sf.anathema.character.generic.impl.testing.DummyGenericTrait;
+import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 
 public class DemoNamedGenericTrait extends DummyGenericTrait implements INamedGenericTrait {
 
@@ -15,5 +17,9 @@ public class DemoNamedGenericTrait extends DummyGenericTrait implements INamedGe
 
   public String getName() {
     return getType().getId() + postfix;
+  }
+
+  public IGenericTrait getBasicTrait() {
+    return new ValuedTraitType(getType(), 1);
   }
 }
