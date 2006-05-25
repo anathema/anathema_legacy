@@ -36,7 +36,6 @@ public class SpecialtiesDataSource implements IReportDataSource {
         return ""; //$NON-NLS-1$
       }
       INamedGenericTrait specialty = specialtyList.get(currentRow);
-      // todo i18n
       return abilityTypeBySpecialty.get(specialty).getId() + " - " + specialty.getName(); //$NON-NLS-1$
     }
     if (COLUMN_VALUE.equals(columnName)) {
