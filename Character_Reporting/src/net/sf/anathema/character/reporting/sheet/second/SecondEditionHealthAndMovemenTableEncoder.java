@@ -97,7 +97,7 @@ public class SecondEditionHealthAndMovemenTableEncoder implements IPdfTableEncod
   }
 
   private void addIncapacitatedMovement(PdfPTable table) {
-    final Phrase commentPhrase = new Phrase(resources.getString("Sheet.Comment.Movement"), commentFont); //$NON-NLS-1$
+    final Phrase commentPhrase = new Phrase(resources.getString("Sheet.Movement.Comment.Mobility"), commentFont); //$NON-NLS-1$
     final TableCell cell = new TableCell(commentPhrase, Rectangle.NO_BORDER);
     cell.setColspan(MOVEMENT_COLUMNS.length - 4);
     cell.setVerticalAlignment(Element.ALIGN_BOTTOM);
@@ -121,10 +121,10 @@ public class SecondEditionHealthAndMovemenTableEncoder implements IPdfTableEncod
   }
 
   private void addHeaders(PdfPTable table) {
-    table.addCell(createHeaderCell("Move", 2));
-    table.addCell(createHeaderCell("Dash", 2));
-    table.addCell(createHeaderCell("Jump (H/V)", 3));
-    table.addCell(createHeaderCell("Health Levels", 13));
+    table.addCell(createHeaderCell(resources.getString("Sheet.Movement.Move"), 2)); //$NON-NLS-1$
+    table.addCell(createHeaderCell(resources.getString("Sheet.Movement.Dash"), 2)); //$NON-NLS-1$
+    table.addCell(createHeaderCell(resources.getString("Sheet.Movement.Jump"), 3)); //$NON-NLS-1$
+    table.addCell(createHeaderCell(resources.getString("Sheet.Health.Levels"), 13)); //$NON-NLS-1$
   }
 
   private PdfTemplate createRectTemplate(PdfContentByte directContent, final int healthRectSize, final Color strokeColor) {
@@ -205,6 +205,10 @@ public class SecondEditionHealthAndMovemenTableEncoder implements IPdfTableEncod
       addSpaceCells(table, 1);
     }
     int additionalCount = 9;
+    if (level == HealthLevelType.FOUR || level == HealthLevelType.INCAPACITATED) {
+      addSpaceCells(table, additionalCount);
+      return;
+    }
     for (int index = 0; index < additionalCount; index++) {
       int value = naturalCount + (row * additionalCount) + index + 1;
       if (value <= character.getHealthLevelTypeCount(level)) {

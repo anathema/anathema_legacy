@@ -47,7 +47,12 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
       float distanceFromTop,
       float height) throws DocumentException, IOException {
     Bounds animaBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
-    encodeContent(directContent, new PdfAnimaEncoder(getResources(), getBaseFont()), character, animaBounds, "Anima"); //$NON-NLS-1$
+    encodeContent(
+        directContent,
+        new PdfAnimaEncoder(getResources(), getBaseFont(), registry.getSymbolBaseFont()),
+        character,
+        animaBounds,
+        "Anima"); //$NON-NLS-1$
   }
 
   private float encodeArmourAndSoak(
@@ -111,7 +116,10 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
       float distanceFromTop,
       float height) throws DocumentException, IOException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IPdfContentEncoder encoder = new SecondEditionHealthAndMovementEncoder(getResources(), getBaseFont());
+    IPdfContentEncoder encoder = new SecondEditionHealthAndMovementEncoder(
+        getResources(),
+        getBaseFont(),
+        registry.getSymbolBaseFont());
     encodeContent(directContent, encoder, character, bounds, "MovementHealth"); //$NON-NLS-1$
     return height;
   }

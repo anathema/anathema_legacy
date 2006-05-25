@@ -6,6 +6,7 @@ import java.io.IOException;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfLineEncodingUtilities;
@@ -25,13 +26,14 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentEn
 
   private static final int FONT_SIZE = IVoidStateFormatConstants.FONT_SIZE - 1;
   private static final float LINE_HEIGHT = FONT_SIZE * 1.5f;
-  private static final String SYMBOL = "\u00A8  "; //$NON-NLS-1$
   private final BaseFont baseFont;
   private final IResources resources;
+  private final BaseFont symbolBaseFont;
 
-  public PdfAnimaEncoder(IResources resources, BaseFont baseFont) {
+  public PdfAnimaEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont) {
     this.resources = resources;
     this.baseFont = baseFont;
+    this.symbolBaseFont = symbolBaseFont;
   }
 
   @Override
@@ -57,18 +59,16 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentEn
   }
 
   private Position encodeAnimaPowers(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
-      throws DocumentException,
-      IOException {
-    BaseFont symbolBaseFont = PdfTextEncodingUtilities.createBaseFont(BaseFont.SYMBOL);
+      throws DocumentException {
     Phrase phrase = new Phrase("", new Font(baseFont, FONT_SIZE, Font.NORMAL, Color.BLACK)); //$NON-NLS-1$
-    addAnimaPowerText(character, phrase, new Font(symbolBaseFont, FONT_SIZE, Font.NORMAL, Color.BLACK));
+    addAnimaPowerText(character, phrase);
     float yPosition = PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, LINE_HEIGHT);
-    return new Position((bounds.getMinX() + symbolBaseFont.getWidthPoint(SYMBOL, FONT_SIZE)), yPosition);
+    return new Position((bounds.getMinX() + PdfEncodingUtilities.getCaretSymbolWidth(symbolBaseFont)), yPosition);
   }
 
-  private void addAnimaPowerText(IGenericCharacter character, Phrase phrase, Font symbolFont) {
+  private void addAnimaPowerText(IGenericCharacter character, Phrase phrase) {
     CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-    Chunk symbolChunk = new Chunk(SYMBOL, symbolFont);
+    Chunk symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
     String resourceBase = "Sheet.AnimaPower." + characterType.getId() + "."; //$NON-NLS-1$ //$NON-NLS-2$
     for (String resourceId : new String[] { "First", "Second", "Third" }) { //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
       phrase.add(symbolChunk);
