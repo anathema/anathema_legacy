@@ -1,0 +1,57 @@
+<project name="BuildMac" default="dist-mac" basedir=".">
+	<description>Assemble a distribution directory of Anathema into a double-clickable Mac OS X application.</description>
+
+	<property name="dist-loc" value="/Download/anathema_user_v0.10.1"/>
+	<property name="mac-src" value="."/>
+	<property name="app-name" value="Anathema"/>
+
+	<target name="dist-mac">
+		<!-- Make the app shell -->
+	    <property name="appdir" value="${app-name}.app"/>
+	    <mkdir dir="${appdir}"/>
+	    <mkdir dir="${appdir}/Contents"/>
+	    <mkdir dir="${appdir}/Contents/MacOS"/>
+	    <mkdir dir="${appdir}/Contents/Resources"/>
+	    <mkdir dir="${appdir}/Contents/Resources/Java"/>
+		
+		<!-- Copy Apple's application stub. Should probably really grab this from 
+			/System/Library/Frameworks/JavaVM.framework/ Versions/Current/Resources/MacOS/,
+			but since that doesn't exist on other platforms, use our own copy. -->
+		<copy file="${mac-src}/JavaApplicationStub" todir="${appdir}/Contents/MacOS"/>
+		
+		<!-- Set execution bits -->
+		<exec executable="chmod">
+		    <arg value="755"/>
+		    <arg value="${appdir}/Contents/MacOS/JavaApplicationStub"/>
+		</exec>
+				
+		<!-- Copy files and directories where we need them -->
+		<copy file="${mac-src}/Info.plist" todir="${appdir}/Contents"/>
+		<copy file="${mac-src}/anathema.icns" todir="${appdir}/Contents/Resources"/>
+		<copy todir="${appdir}/Contents/Resources/Java">
+		    <fileset dir="${dist-loc}">
+		        <include name="*.jar"/>
+			    <include name="*.txt"/>
+		    </fileset>
+		</copy>
+				
+		<!-- Copy whole directories. -->
+		<copy todir="${appdir}/Contents/Resources/Java/lib">
+	    	<fileset dir="${dist-loc}/lib"/>
+	  	</copy>
+		<copy todir="${appdir}/Contents/Resources/Java/data">
+	    	<fileset dir="${dist-loc}/data"/>
+	  	</copy>
+		<copy todir="${appdir}/Contents/Resources/Java/doc">
+	    	<fileset dir="${dist-loc}/doc"/>
+	  	</copy>
+		<copy todir="${appdir}/Contents/Resources/Java/modules">
+	    	<fileset dir="${dist-loc}/modules"/>
+	  	</copy>
+	
+		<!-- The Mac command to "bless" the directory into an app bundle. Will fail on other platforms. -->
+		<exec executable="/Developer/Tools/SetFile">
+		    <arg value="-a B ${appdir}"/>
+		</exec>
+	</target>
+</project>

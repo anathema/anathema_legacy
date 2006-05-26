@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist SYSTEM "file://localhost/System/Library/DTDs/PropertyList.dtd">
+<plist version="0.9">
+<dict>
+	<!-- Change these with each version -->
+	<key>CFBundleVersion</key>
+	<string>0.10.1</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.10.1</string>
+	<key>CFBundleGetInfoString</key>
+	<string>0.10 Patch 1</string>
+	<!-- Should never need changing -->	
+	<key>CFBundleName</key>
+	<string>Anathema</string>
+	<key>CFBundleAllowMixedLocalizations</key>
+	<string>true</string>
+	<key>CFBundleExecutable</key>
+	<string>JavaApplicationStub</string>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>Athm</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleIconFile</key>
+	<string>anathema.icns</string>
+	<key>Java</key>
+	<dict>
+		<key>MainClass</key>
+		<string>net.sf.anathema.Anathema</string>
+		<key>JVMVersion</key>
+		<string>1.4+</string>
+		<!-- May need to update this if any jars get added to the project. -->
+		<key>ClassPath</key>
+			<array>
+			<string>$JAVAROOT/anathema.jar</string>
+			<string>$JAVAROOT/lib/batik-awt-util.jar</string>
+			<string>$JAVAROOT/lib/batik-bridge.jar</string>
+			<string>$JAVAROOT/lib/batik-css.jar</string>
+			<string>$JAVAROOT/lib/batik-dom.jar</string>
+			<string>$JAVAROOT/lib/batik-ext.jar</string>
+			<string>$JAVAROOT/lib/batik-gui-util.jar</string>
+			<string>$JAVAROOT/lib/batik-gvt.jar</string>
+			<string>$JAVAROOT/lib/batik-parser.jar</string>
+			<string>$JAVAROOT/lib/batik-script.jar</string>
+			<string>$JAVAROOT/lib/batik-svg-dom.jar</string>
+			<string>$JAVAROOT/lib/batik-swing.jar</string>
+			<string>$JAVAROOT/lib/batik-util.jar</string>
+			<string>$JAVAROOT/lib/batik-xml.jar</string>
+			<string>$JAVAROOT/lib/commons-io.jar</string>
+			<string>$JAVAROOT/lib/commons-lang-2.1.jar</string>
+			<string>$JAVAROOT/lib/commons-logging-api-1.0.2.jar</string>
+			<string>$JAVAROOT/lib/commons-logging-api.jar</string>
+			<string>$JAVAROOT/lib/disy-commons-core.jar</string>
+			<string>$JAVAROOT/lib/disy-commons-swing-dialog.jar</string>
+			<string>$JAVAROOT/lib/disy-commons-swing-layout.jar</string>
+			<string>$JAVAROOT/lib/disy-commons-swing-smarttable.jar</string>
+			<string>$JAVAROOT/lib/disy-commons-swing.jar</string>
+			<string>$JAVAROOT/lib/dom4j-1.5.jar</string>
+			<string>$JAVAROOT/lib/itext-1.01.jar</string>
+			<string>$JAVAROOT/lib/itp-gpl-1.3.0.jar</string>
+			<string>$JAVAROOT/lib/jasperreports-0.6.2.jar</string>
+			<string>$JAVAROOT/lib/l2fprod-common-directorychooser.jar</string>
+			<string>$JAVAROOT/lib/l2fprod-common-sheet.jar</string>
+			<string>$JAVAROOT/lib/l2fprod-common-tasks.jar</string>
+			<string>$JAVAROOT/lib/xalan.jar</string>
+			<string>$JAVAROOT/lib/xercesImpl-2.6.2.jar</string>
+			<string>$JAVAROOT/lib/xml-apis-2.0.2.jar</string>
+			</array>
+		<key>Properties</key>
+		<dict>
+			<key>apple.laf.useScreenMenuBar</key>
+			<string>true</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
