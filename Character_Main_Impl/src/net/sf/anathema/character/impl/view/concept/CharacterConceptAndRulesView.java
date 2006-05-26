@@ -1,6 +1,5 @@
 package net.sf.anathema.character.impl.view.concept;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
@@ -11,7 +10,8 @@ import javax.swing.ListCellRenderer;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.JTextComponent;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.generic.framework.util.ExperienceUtilities;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
@@ -33,16 +33,16 @@ public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConc
   private IGridDialogPanel rulesPanel = new DefaultGridDialogPanel(false);
 
   public CharacterConceptAndRulesView() {
-    super(null);
+    super(null, false);
   }
 
   @Override
   protected void createContent(JPanel panel, ICharacterConceptAndRulesViewProperties properties) {
     characterConceptPanel.getContent().setBorder(new TitledBorder(properties.getConceptTitle()));
     rulesPanel.getContent().setBorder(new TitledBorder(properties.getRulesTitle()));
-    panel.setLayout(new BorderLayout());
-    panel.add(characterConceptPanel.getContent(), BorderLayout.CENTER);
-    panel.add(rulesPanel.getContent(), BorderLayout.SOUTH);
+    panel.setLayout(new GridDialogLayout(1, false));
+    panel.add(characterConceptPanel.getContent(), GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
+    panel.add(rulesPanel.getContent(), GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
   }
 
   public IObjectSelectionView addConceptObjectSelectionView(
@@ -50,18 +50,9 @@ public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConc
       Object[] objects,
       ListCellRenderer renderer,
       boolean editable) {
-    return addObjectSelectionView(labelText, objects, renderer, editable, characterConceptPanel);
-  }
-
-  private IObjectSelectionView addObjectSelectionView(
-      String labelText,
-      Object[] objects,
-      ListCellRenderer renderer,
-      boolean editable,
-      IGridDialogPanel panel) {
     ObjectSelectionView selectionView = new ObjectSelectionView(labelText, renderer, objects, editable);
     selectionView.getComboBox().getEditor().getEditorComponent().setEnabled(true);
-    selectionView.addComponents(panel, GridDialogLayoutData.FILL_HORIZONTAL);
+    selectionView.addComponents(characterConceptPanel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
     return selectionView;
   }
 
