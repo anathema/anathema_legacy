@@ -11,8 +11,8 @@ http://anathema.sf.net
 + Series are printable.
 + Notes are (finally) printable.
 + CharmCascades now honor the preferred ruleset.
-- Custom natures are gone. Old characters using the feature will still load, but they will look a bit odd 
-  in both program and printout. The feature might return some day, if demanded.
+* There have been major changes to the handling of customized natures. 
+	Refer to "nature_instructions" for details.
 
 -- Usability --
 * Greatly improved speed of Charm trees.
