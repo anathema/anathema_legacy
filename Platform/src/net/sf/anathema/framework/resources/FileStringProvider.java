@@ -7,8 +7,8 @@ import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.Properties;
 
+import net.disy.commons.core.io.IOUtilities;
 import net.sf.anathema.lib.resources.IStringResourceHandler;
-import de.jdemo.util.IOUtilities;
 
 public class FileStringProvider implements IStringResourceHandler {
 
