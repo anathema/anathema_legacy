@@ -9,7 +9,7 @@ public class EssencePanelViewDemo extends BasicCharacterDemoCase {
 
   public void demo() throws Exception {
     AnathemaResources resources = new AnathemaResources();
-    IIntValueDisplayFactory configuration = createSolarGuiConfiguration(resources);
+    IIntValueDisplayFactory configuration = createMortalGuiConfiguration(resources);
     EssencePanelView essencePanelView = new EssencePanelView(configuration);
     essencePanelView.addEssenceView("Essence", 2, 5); //$NON-NLS-1$
     essencePanelView.addPoolView("Personal Essence", "18"); //$NON-NLS-1$ //$NON-NLS-2$

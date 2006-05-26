@@ -6,13 +6,14 @@ import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
 import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.lib.exception.AnathemaException;
+
 import de.jdemo.extensions.SwingDemoCase;
 
 public class BasicCharacterDemoCase extends SwingDemoCase {
 
-  protected final IIntValueDisplayFactory createSolarGuiConfiguration(IAnathemaResources resources)
+  protected final IIntValueDisplayFactory createMortalGuiConfiguration(IAnathemaResources resources)
       throws AnathemaException {
     new CharacterModule().initAnathemaResources(resources);
-    return new IntValueDisplayFactory(resources, resources.getImageIcon(IIconConstants.SOLAR_BALL));
+    return new IntValueDisplayFactory(resources, resources.getImageIcon(IIconConstants.MORTAL_BALL));
   }
 }
