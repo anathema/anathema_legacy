@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
@@ -43,7 +44,7 @@ public class VirtueFlawView implements IVirtueFlawView {
         GridDialogLayoutData labelData = new GridDialogLayoutData();
         labelData.setVerticalAlignment(GridAlignment.BEGINNING);
         panel.add(new JLabel(labelText), labelData);
-        panel.add(textView.getComponent(), GridDialogLayoutData.FILL_BOTH);
+        panel.add(textView.getComponent(), GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
       }
     });
   }
@@ -70,7 +71,7 @@ public class VirtueFlawView implements IVirtueFlawView {
   }
 
   public boolean needsScrollbar() {
-    return true;
+    return false;
   }
 
   protected IGridDialogPanel getVirtueFlawPanel() {
@@ -83,7 +84,7 @@ public class VirtueFlawView implements IVirtueFlawView {
 
   public IObjectSelectionView addVirtueFlawRootSelectionView(final String labelText, ListCellRenderer renderer) {
     final ObjectSelectionView rootSelectionView = new ObjectSelectionView(labelText, renderer, new Object[0]);
-    rootSelectionView.addComponents(getVirtueFlawPanel(), GridDialogLayoutData.FILL_HORIZONTAL);
+    rootSelectionView.addComponents(getVirtueFlawPanel(), GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
     return rootSelectionView;
   }
 }
