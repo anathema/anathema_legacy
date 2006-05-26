@@ -3,9 +3,9 @@ package net.sf.anathema.charmtree.provider.svg;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_3;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_ARROWHEAD_ID;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_ARROWHEAD_POINTS;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_BLACK;
+import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_SVG_BLACK;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_FRAME_ID;
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_MEDIUM_GRAY;
+import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_SVG_GRAY;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_SVG_VERSION;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_VIEWBOX_SIZE;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_XMID_YMIN_MEET;
@@ -45,7 +45,7 @@ public class SVGDocumentFrameFactory {
     QName polygon = SVGCreationUtils.createSVGQName(SVGConstants.SVG_POLYGON_TAG);
     Element polygonElement = arrowHeadSymbolElement.addElement(polygon);
     polygonElement.addAttribute(SVGConstants.SVG_POINTS_ATTRIBUTE, VALUE_ARROWHEAD_POINTS);
-    polygonElement.addAttribute(SVGConstants.SVG_STROKE_ATTRIBUTE, VALUE_COLOR_BLACK);
+    polygonElement.addAttribute(SVGConstants.SVG_STROKE_ATTRIBUTE, VALUE_COLOR_SVG_BLACK);
     polygonElement.addAttribute(SVGConstants.SVG_STROKE_WIDTH_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
   }
 
@@ -62,7 +62,7 @@ public class SVGDocumentFrameFactory {
     Element outerPolygonElement = frameGroupElement.addElement(polygon);
     outerPolygonElement.addAttribute(SVGConstants.SVG_FILL_ATTRIBUTE, SVGConstants.SVG_NONE_VALUE);
     outerPolygonElement.addAttribute(SVGConstants.SVG_STROKE_WIDTH_ATTRIBUTE, VALUE_3);
-    outerPolygonElement.addAttribute(SVGConstants.SVG_STROKE_ATTRIBUTE, VALUE_COLOR_MEDIUM_GRAY);
+    outerPolygonElement.addAttribute(SVGConstants.SVG_STROKE_ATTRIBUTE, VALUE_COLOR_SVG_GRAY);
     outerPolygonElement.addAttribute(SVGConstants.SVG_POINTS_ATTRIBUTE, properties.getCharmFramePolygonString());
   }
 

@@ -1,6 +1,6 @@
 package net.sf.anathema.charmtree.batik.intvalue;
 
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_BLACK;
+import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_SVG_BLACK;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_LIGHT_MEDIUM_GRAY;
 
 import java.awt.Color;
@@ -60,7 +60,7 @@ public class SVGIntValueDisplay implements IIntValueView {
           selectionRectangle.setAttributeNS(null, SVGConstants.SVG_Y_ATTRIBUTE, SVGConstants.SVG_ONE_VALUE);
           setAttribute(selectionRectangle, SVGConstants.SVG_WIDTH_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
           selectionRectangle.setAttributeNS(null, SVGConstants.SVG_HEIGHT_ATTRIBUTE, "22"); //$NON-NLS-1$
-          selectionRectangle.setAttributeNS(null, SVGConstants.SVG_STROKE_ATTRIBUTE, VALUE_COLOR_BLACK);
+          selectionRectangle.setAttributeNS(null, SVGConstants.SVG_STROKE_ATTRIBUTE, VALUE_COLOR_SVG_BLACK);
           selectionRectangle.setAttributeNS(null, SVGConstants.SVG_FILL_ATTRIBUTE, VALUE_COLOR_LIGHT_MEDIUM_GRAY);
           selectionRectangle.setAttributeNS(
               null,
@@ -163,7 +163,7 @@ public class SVGIntValueDisplay implements IIntValueView {
     setAttribute(rectangle, SVGConstants.SVG_Y_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
     setAttribute(rectangle, SVGConstants.SVG_WIDTH_ATTRIBUTE, String.valueOf(maximumWidth));
     setAttribute(rectangle, SVGConstants.SVG_HEIGHT_ATTRIBUTE, String.valueOf(2 * (radius + gap)));
-    setAttribute(rectangle, SVGConstants.SVG_FILL_ATTRIBUTE, VALUE_COLOR_BLACK);
+    setAttribute(rectangle, SVGConstants.SVG_FILL_ATTRIBUTE, VALUE_COLOR_SVG_BLACK);
     setAttribute(rectangle, SVGConstants.SVG_FILL_OPACITY_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
     return rectangle;
   }
@@ -188,7 +188,7 @@ public class SVGIntValueDisplay implements IIntValueView {
     setAttribute(circle, SVGConstants.SVG_CY_ATTRIBUTE, String.valueOf(radius + gap));
     setAttribute(circle, SVGConstants.SVG_FILL_OPACITY_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
     setAttribute(circle, SVGConstants.SVG_FILL_ATTRIBUTE, fillColorString);
-    setAttribute(circle, SVGConstants.SVG_STROKE_ATTRIBUTE, VALUE_COLOR_BLACK);
+    setAttribute(circle, SVGConstants.SVG_STROKE_ATTRIBUTE, VALUE_COLOR_SVG_BLACK);
     return (SVGCircleElement) circle;
   }
 

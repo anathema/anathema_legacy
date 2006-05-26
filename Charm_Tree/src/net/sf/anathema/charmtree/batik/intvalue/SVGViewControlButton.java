@@ -1,6 +1,6 @@
 package net.sf.anathema.charmtree.batik.intvalue;
 
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_BLACK;
+import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_SVG_BLACK;
 
 import net.sf.anathema.charmtree.batik.IBoundsCalculator;
 import net.sf.anathema.charmtree.presenter.view.ISVGMultiLearnableCharmView;
@@ -26,15 +26,15 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
   private final ISVGMultiLearnableCharmView display;
   private final double charmWidth;
   private boolean enabled = false;
-  private final String label;
   private Element displayElement;
   private Element outerGroupElement;
   private SVGSVGElement rootElement;
+  private SVGButton button;
 
   public SVGViewControlButton(ISVGMultiLearnableCharmView display, double charmWidth, String label) {
     this.display = display;
     this.charmWidth = charmWidth;
-    this.label = label;
+    this.button = new SVGButton(charmWidth, label);
   }
 
   public String getCharmId() {
@@ -43,19 +43,15 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
 
   public Element initGui(SVGOMDocument svgDocument, IBoundsCalculator boundsCalculator) {
     this.outerGroupElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_G_TAG);
-    SVGGElement innerGroupElement = (SVGGElement) svgDocument.createElementNS(
-        SVGDOMImplementation.SVG_NAMESPACE_URI,
-        SVGConstants.SVG_G_TAG);
-    innerGroupElement.appendChild(createBorder(svgDocument));
-    innerGroupElement.appendChild(createText(svgDocument, label));
-    outerGroupElement.appendChild(innerGroupElement);
+    final SVGGElement buttonGroup = button.initGui(svgDocument);
+    outerGroupElement.appendChild(buttonGroup);
     this.displayElement = display.initGui(svgDocument, boundsCalculator);
     setAttribute(
         displayElement,
         SVGConstants.SVG_TRANSFORM_ATTRIBUTE,
-        "translate(0," + SVGIntValueDisplay.getDiameter(charmWidth) * 1.15 + ")"); //$NON-NLS-1$ //$NON-NLS-2$
+        "translate(0," + SVGIntValueDisplay.getDiameter(charmWidth) * 1.15 + SVGButton.SHADOW_OFFSET + ")"); //$NON-NLS-1$ //$NON-NLS-2$
     this.rootElement = svgDocument.getRootElement();
-    innerGroupElement.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, createDisplayListener(), false);
+    buttonGroup.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, createDisplayListener(), false);
     svgDocument.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, createRemoveListener(boundsCalculator), true);
     display.setVisible(false);
     return outerGroupElement;
@@ -102,6 +98,7 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
           setAttribute(outerGroupElement, SVGConstants.SVG_OPACITY_ATTRIBUTE, SVGConstants.SVG_OPAQUE_VALUE);
           display.setVisible(true);
           enabled = true;
+          button.setSelected(true);
         }
       }
     };
@@ -119,6 +116,7 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
             SVGConstants.SVG_OPAQUE_VALUE);
       }
     }
+    button.setSelected(false);
     enabled = false;
   }
 
@@ -144,8 +142,8 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
         rectangle,
         SVGConstants.SVG_HEIGHT_ATTRIBUTE,
         String.valueOf(SVGIntValueDisplay.getDiameter(charmWidth) * 1.15));
-    setAttribute(rectangle, SVGConstants.SVG_STROKE_ATTRIBUTE, VALUE_COLOR_BLACK);
-    setAttribute(rectangle, SVGConstants.SVG_FILL_ATTRIBUTE, VALUE_COLOR_BLACK);
+    setAttribute(rectangle, SVGConstants.SVG_STROKE_ATTRIBUTE, VALUE_COLOR_SVG_BLACK);
+    setAttribute(rectangle, SVGConstants.SVG_FILL_ATTRIBUTE, VALUE_COLOR_SVG_BLACK);
     setAttribute(rectangle, SVGConstants.SVG_FILL_OPACITY_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
     return rectangle;
   }

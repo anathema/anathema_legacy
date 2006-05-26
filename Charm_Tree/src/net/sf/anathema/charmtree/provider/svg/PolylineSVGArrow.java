@@ -73,7 +73,7 @@ public class PolylineSVGArrow {
     QName lineName = SVGCreationUtils.createSVGQName(SVGConstants.SVG_POLYLINE_TAG);
     Element line = g.addElement(lineName);
     line.addAttribute(SVGConstants.SVG_FILL_ATTRIBUTE, SVGConstants.SVG_NONE_VALUE);
-    line.addAttribute(SVGConstants.SVG_STROKE_ATTRIBUTE, ISVGCascadeXMLConstants.VALUE_COLOR_BLACK);
+    line.addAttribute(SVGConstants.SVG_STROKE_ATTRIBUTE, ISVGCascadeXMLConstants.VALUE_COLOR_SVG_BLACK);
     line.addAttribute(SVGConstants.SVG_STROKE_WIDTH_ATTRIBUTE, String.valueOf(ShaftWidth));
     String pointString = ""; //$NON-NLS-1$
     for (int pointIndex = 0; pointIndex < pointList.size() - 1; pointIndex++) {
@@ -123,6 +123,6 @@ public class PolylineSVGArrow {
     circle.addAttribute(SVGConstants.SVG_CX_ATTRIBUTE, String.valueOf(origin.x));
     circle.addAttribute(SVGConstants.SVG_CY_ATTRIBUTE, String.valueOf(origin.y + PolylineSVGArrow.RootRadius));
     circle.addAttribute(SVGConstants.SVG_R_ATTRIBUTE, String.valueOf(PolylineSVGArrow.RootRadius));
-    circle.addAttribute(SVGConstants.SVG_FILL_ATTRIBUTE, ISVGCascadeXMLConstants.VALUE_COLOR_BLACK);
+    circle.addAttribute(SVGConstants.SVG_FILL_ATTRIBUTE, ISVGCascadeXMLConstants.VALUE_COLOR_SVG_BLACK);
   }
 }
