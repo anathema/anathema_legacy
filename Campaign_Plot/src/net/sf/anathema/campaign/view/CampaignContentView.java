@@ -32,7 +32,7 @@ public class CampaignContentView extends AbstractTabView<ICampaignContentViewPro
   private final List<IContentChangeListener> listeners = new ArrayList<IContentChangeListener>();
 
   public CampaignContentView(String title) {
-    super(title);
+    super(title, false);
   }
 
   @Override
@@ -54,11 +54,11 @@ public class CampaignContentView extends AbstractTabView<ICampaignContentViewPro
     repositoryTree.addMouseListener(new MouseAdapter() {
       @Override
       public void mouseClicked(java.awt.event.MouseEvent e) {
-       if (e.getClickCount()==2) {
-         fireAddRequest();
-       }
-      }      
-    });    
+        if (e.getClickCount() == 2) {
+          fireAddRequest();
+        }
+      }
+    });
     contentTree.addTreeSelectionListener(new TreeSelectionListener() {
       public void valueChanged(TreeSelectionEvent e) {
         fireSelectionChanged(contentTree);
@@ -68,10 +68,10 @@ public class CampaignContentView extends AbstractTabView<ICampaignContentViewPro
     contentTree.addMouseListener(new MouseAdapter() {
       @Override
       public void mouseClicked(java.awt.event.MouseEvent e) {
-       if (e.getClickCount()==2) {
-         fireRemoveRequest();
-       }
-      }      
+        if (e.getClickCount() == 2) {
+          fireRemoveRequest();
+        }
+      }
     });
     addButton.setEnabled(repositoryTree.getSelectionCount() > 0);
     removeButton.setEnabled(contentTree.getSelectionCount() > 0);
