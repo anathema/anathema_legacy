@@ -4,9 +4,6 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
-import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 
 public abstract class AbstractTabView<P> implements ITabView<P> {
 
@@ -36,25 +33,7 @@ public abstract class AbstractTabView<P> implements ITabView<P> {
     return content;
   }
 
-  protected final JPanel addTitledPanel(String title, JPanel container, GridDialogPanel contentDialogPanel) {
-    JPanel newPanel = contentDialogPanel.getContent();
-    newPanel.setBorder(new TitledBorder(title));
-    container.add(newPanel);
-    return newPanel;
-  }
-
   public final boolean needsScrollbar() {
     return scrollable;
-  }
-
-  protected final JPanel addTitledPanel(
-      String title,
-      JPanel container,
-      IGridDialogPanel contentPanel,
-      IGridDialogLayoutData constraint) {
-    JPanel newPanel = contentPanel.getContent();
-    newPanel.setBorder(new TitledBorder(title));
-    container.add(newPanel, constraint);
-    return newPanel;
   }
 }

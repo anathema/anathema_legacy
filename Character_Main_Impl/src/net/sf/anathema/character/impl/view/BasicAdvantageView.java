@@ -12,6 +12,7 @@ import javax.swing.border.TitledBorder;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.sf.anathema.character.impl.view.advantage.EssencePanelView;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
@@ -123,5 +124,16 @@ public class BasicAdvantageView extends AbstractTabView<IAdvantageViewProperties
 
   public void setBackgroundPanelEnabled(boolean enabled) {
     GuiUtilities.setEnabled(backgroundPanel, enabled);
+  }
+
+  private final JPanel addTitledPanel(
+      String title,
+      JPanel container,
+      IGridDialogPanel contentPanel,
+      IGridDialogLayoutData constraint) {
+    JPanel newPanel = contentPanel.getContent();
+    newPanel.setBorder(new TitledBorder(title));
+    container.add(newPanel, constraint);
+    return newPanel;
   }
 }
