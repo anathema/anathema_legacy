@@ -43,7 +43,7 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
           index != groups.length - 1,
           usedFont));
     }
-    T[] printEquipments = getPrintEquipments(character);
+    T[] printEquipments = getPrintStats(character);
     for (int line = 0; line < Math.min(printEquipments.length, getLineCount()); line++) {
       encodeContentLine(table, groups, printEquipments[line]);
     }
@@ -55,7 +55,7 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
 
   protected abstract IGenericTrait getTrait(IGenericCharacter character, T equipment);
 
-  protected abstract T[] getPrintEquipments(IGenericCharacter character);
+  protected abstract T[] getPrintStats(IGenericCharacter character);
 
   protected abstract int getLineCount();
 
