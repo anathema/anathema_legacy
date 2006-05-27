@@ -1,7 +1,7 @@
 package net.sf.anathema.charmtree.batik.intvalue;
 
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_SVG_BLACK;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_LIGHT_MEDIUM_GRAY;
+import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_SVG_BLACK;
 
 import java.awt.Color;
 import java.awt.Rectangle;
@@ -213,7 +213,7 @@ public class SVGIntValueDisplay implements IIntValueView {
     valueControl.removeIntValueChangeListener(listener);
   }
 
-  private synchronized void fireValueChangedEvent(int newValue) {
+  private void fireValueChangedEvent(int newValue) {
     valueControl.fireValueChangedEvent(newValue);
   }
 
