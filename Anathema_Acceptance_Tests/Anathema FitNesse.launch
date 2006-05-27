@@ -6,6 +6,9 @@
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-p 8080"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Anathema_Acceptance_Tests"/>
+<listAttribute key="org.eclipse.debug.ui.favoriteGroups">
+<listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
+</listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
 <listEntry value="/Anathema_Acceptance_Tests"/>
 </listAttribute>
