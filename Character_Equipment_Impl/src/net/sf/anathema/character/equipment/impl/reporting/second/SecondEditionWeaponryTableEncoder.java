@@ -27,7 +27,7 @@ public class SecondEditionWeaponryTableEncoder extends AbstractEquipmentTableEnc
 
   @SuppressWarnings("unchecked")
   @Override
-  protected IEquipmentStatsGroup<IWeapon>[] createEquipmentGroups(IGenericCharacter character) {
+  protected IEquipmentStatsGroup<IWeapon>[] createStatsGroups(IGenericCharacter character) {
     return new IEquipmentStatsGroup[] {
         new EquipmentNameStatsGroup(resources),
         new SpeedWeaponStatsGroup(resources),
