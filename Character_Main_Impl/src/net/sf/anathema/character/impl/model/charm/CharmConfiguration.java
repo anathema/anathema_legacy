@@ -30,6 +30,7 @@ import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceChar
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
+import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
@@ -136,6 +137,12 @@ public class CharmConfiguration implements ICharmConfiguration {
           final ICharm charm = getCharmTree(characterType).getCharmByID(visitedCharm.getCharmId());
           ILearningCharmGroup group = getGroupById(charm.getCharacterType(), charm.getGroupId());
           manager.registerPainToleranceCharm(visitedCharm, charm, group);
+        }
+
+        public void visitSubeffectCharm(ISubeffectCharm visitedCharm) {
+          final ICharm charm = getCharmTree(characterType).getCharmByID(visitedCharm.getCharmId());
+          ILearningCharmGroup group = getGroupById(charm.getCharacterType(), charm.getGroupId());
+          manager.registerSubeffectCharm(visitedCharm, charm, group);
         }
       });
     }

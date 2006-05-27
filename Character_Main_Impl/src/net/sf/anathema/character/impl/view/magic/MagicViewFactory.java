@@ -3,10 +3,12 @@ package net.sf.anathema.character.impl.view.magic;
 import java.awt.Color;
 
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.view.magic.IComboConfigurationView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.charmtree.batik.intvalue.SVGMultiLearnableCharmView;
+import net.sf.anathema.charmtree.batik.intvalue.SVGSubeffectCharmView;
 import net.sf.anathema.charmtree.batik.intvalue.SVGViewControlButton;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
@@ -30,7 +32,11 @@ public class MagicViewFactory implements IMagicViewFactory {
     return new SVGMultiLearnableCharmView(charm.getCharmId(), width, color);
   }
 
-  public ISVGSpecialCharmView createViewControlButton(SVGMultiLearnableCharmView view, double width, String label) {
+  public SVGSubeffectCharmView createSubeffectCharmView(ISubeffectCharm charm, double width, Color color) {
+    return new SVGSubeffectCharmView(charm.getCharmId(), width, color);
+  }
+
+  public ISVGSpecialCharmView createViewControlButton(ISVGSpecialCharmView view, double width, String label) {
     return new SVGViewControlButton(view, width, label);
   }
 }

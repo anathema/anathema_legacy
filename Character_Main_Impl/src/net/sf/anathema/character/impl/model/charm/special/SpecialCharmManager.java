@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCha
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.impl.model.charm.ISpecialCharmManager;
 import net.sf.anathema.character.model.charm.ICharmLearnableArbitrator;
@@ -60,6 +61,10 @@ public class SpecialCharmManager implements ISpecialCharmManager {
       }
     };
     health.addPainToleranceProvider(painToleranceProvider);
+  }
+
+  public void registerSubeffectCharm(ISubeffectCharm visited, ICharm charm, ILearningCharmGroup group) {
+    addSpecialCharmConfiguration(charm, group, new SubeffectCharmConfiguration(context, charm, visited));
   }
 
   private void addSpecialCharmConfiguration(

@@ -5,10 +5,12 @@ import java.util.LinkedHashMap;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.StaticMultiLearnableCharm;
+import net.sf.anathema.character.generic.impl.magic.charm.special.SubeffectCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TraitDependentMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
+import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 
@@ -54,4 +56,7 @@ public interface ISolarSpecialCharms {
   public static final IMultiLearnableCharm RIGHTEOUS_LION_DEFENSE = new StaticMultiLearnableCharm(
       "Solar.RighteousLionDefense", //$NON-NLS-1$
       2);
+
+  public static final ISubeffectCharm ESSENCE_ARROW_ATTACK = new SubeffectCharm("Solar.EssenceArrowAttack", //$NON-NLS-1$
+      new String[] { "FirstEffect", "SecondEffect", "ThirdEffect" });
 }

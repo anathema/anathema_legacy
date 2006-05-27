@@ -19,6 +19,7 @@ import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCh
 import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
+import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -29,9 +30,11 @@ import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
+import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.character.presenter.TabContent;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.charmtree.batik.intvalue.SVGMultiLearnableCharmView;
+import net.sf.anathema.charmtree.batik.intvalue.SVGSubeffectCharmView;
 import net.sf.anathema.charmtree.presenter.AbstractCascadeSelectionPresenter;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionListener;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionView;
@@ -292,6 +295,26 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
 
       public void visitPainToleranceCharm(IPainToleranceCharm visited) {
         // Nothing to do
+      }
+
+      public void visitSubeffectCharm(ISubeffectCharm visited) {
+        SVGSubeffectCharmView subeffectView = viewFactory.createSubeffectCharmView(
+            visited,
+            getCharmWidth(),
+            characterColor);
+        ICharm originalCharm = statistics.getCharms().getCharmById(visited.getCharmId());
+        ISubeffectCharmConfiguration model = (ISubeffectCharmConfiguration) getCharmConfiguration().getSpecialCharmConfiguration(
+            visited.getCharmId());
+        new SubeffectCharmPresenter(getResources(), subeffectView, model).initPresentation();
+        if (originalCharm.hasChildren()) {
+          specialCharmViews.add(viewFactory.createViewControlButton(
+              subeffectView,
+              getCharmWidth(),
+              getResources().getString("CharmTreeView.Ox-Body.HealthLevels"))); //$NON-NLS-1$
+        }
+        else {
+          specialCharmViews.add(subeffectView);
+        }
       }
     });
   }

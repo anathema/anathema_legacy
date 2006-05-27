@@ -8,4 +8,5 @@ public interface ISpecialCharmVisitor {
 
   public void visitPainToleranceCharm(IPainToleranceCharm charm);
 
+  public void visitSubeffectCharm(ISubeffectCharm charm);
 }

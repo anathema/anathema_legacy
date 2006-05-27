@@ -11,6 +11,7 @@ import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceChar
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisitor;
+import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.lib.exception.PersistenceException;
 
 import org.dom4j.Element;
@@ -32,6 +33,10 @@ public class SpecialCharmPersister implements ISpecialCharmPersister {
 
         public void visitPainToleranceCharm(IPainToleranceCharm charm) {
           // Nothing to do
+        }
+
+        public void visitSubeffectCharm(ISubeffectCharm charm) {
+          persisterByCharmId.put(getCharm(charm.getCharmId(), charmTree), new SubeffectCharmPersister());
         }
       });
     }

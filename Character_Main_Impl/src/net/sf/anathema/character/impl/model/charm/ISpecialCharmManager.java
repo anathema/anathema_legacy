@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
+import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.model.charm.ICharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
@@ -23,5 +24,7 @@ public interface ISpecialCharmManager {
       ICharmLearnableArbitrator arbitrator);
 
   public void registerPainToleranceCharm(IPainToleranceCharm visitedCharm, ICharm charm, ILearningCharmGroup group);
+
+  public void registerSubeffectCharm(ISubeffectCharm visitedCharm, ICharm charm, ILearningCharmGroup group);
 
 }

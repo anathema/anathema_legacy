@@ -35,7 +35,8 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
             ISolarSpecialCharms.GLORIOUS_SOLAR_SABER,
             ISolarSpecialCharms.CITY_MOVING_SECRETS,
             ISolarSpecialCharms.IMMANENT_SOLAR_GLORY,
-            ISolarSpecialCharms.RIGHTEOUS_LION_DEFENSE });
+            ISolarSpecialCharms.RIGHTEOUS_LION_DEFENSE,
+            ISolarSpecialCharms.ESSENCE_ARROW_ATTACK });
     characterGenerics.getAdditionalTemplateParserRegistry().register(
         SolarVirtueFlawTemplate.ID,
         new SolarVirtueFlawParser());
