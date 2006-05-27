@@ -61,6 +61,15 @@ public class SecondEditionCombatRulesTableEncoder extends AbstractTableEncoder {
     list.addItem(resources.getString("Sheet.Combat.AttackList.RollDamage")); //$NON-NLS-1$
     list.addItem(resources.getString("Sheet.Combat.AttackList.Counterattack")); //$NON-NLS-1$
     list.addItem(resources.getString("Sheet.Combat.AttackList.ApplyDamage")); //$NON-NLS-1$
+    TableCell spaceCell = new TableCell(new Phrase(" ", commentFont), Rectangle.NO_BORDER); //$NON-NLS-1$
+    spaceCell.setPadding(0);
+    list.addCell(spaceCell);
+    list.addCell(spaceCell);
+    list.addCell(spaceCell);
+    TableCell rulesCommentCell = new TableCell(new Phrase(
+        resources.getString("Sheet.Combat.Comment.Rules"), commentFont), Rectangle.NO_BORDER); //$NON-NLS-1$
+    rulesCommentCell.setPadding(0);
+    list.addCell(rulesCommentCell);
     return list;
   }
 
