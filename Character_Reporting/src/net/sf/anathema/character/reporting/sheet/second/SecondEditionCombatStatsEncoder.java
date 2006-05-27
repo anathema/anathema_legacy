@@ -2,6 +2,7 @@ package net.sf.anathema.character.reporting.sheet.second;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -20,7 +21,7 @@ public class SecondEditionCombatStatsEncoder implements IPdfContentEncoder {
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    // TODO Auto-generated method stub
-
+    float halfWidth = (bounds.width - IVoidStateFormatConstants.TEXT_PADDING) * 0.5f;
+    
   }
 }

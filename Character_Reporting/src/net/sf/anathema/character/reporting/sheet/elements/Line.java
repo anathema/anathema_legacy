@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.sheet.util;
+package net.sf.anathema.character.reporting.sheet.elements;
 
 import java.awt.Color;
 
