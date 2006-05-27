@@ -3,7 +3,6 @@ package net.sf.anathema.charmtree.batik.intvalue;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_SVG_BLACK;
 
 import net.sf.anathema.charmtree.batik.IBoundsCalculator;
-import net.sf.anathema.charmtree.presenter.view.ISVGMultiLearnableCharmView;
 import net.sf.anathema.charmtree.presenter.view.ISVGSpecialCharmView;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
@@ -23,7 +22,7 @@ import org.w3c.dom.svg.SVGSVGElement;
 
 public class SVGViewControlButton implements ISVGSpecialCharmView {
 
-  private final ISVGMultiLearnableCharmView display;
+  private final ISVGSpecialCharmView display;
   private final double charmWidth;
   private boolean enabled = false;
   private Element displayElement;
@@ -31,7 +30,7 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
   private SVGSVGElement rootElement;
   private SVGButton button;
 
-  public SVGViewControlButton(ISVGMultiLearnableCharmView display, double charmWidth, String label) {
+  public SVGViewControlButton(ISVGSpecialCharmView display, double charmWidth, String label) {
     this.display = display;
     this.charmWidth = charmWidth;
     this.button = new SVGButton(charmWidth, label);
