@@ -14,11 +14,13 @@ import net.sf.anathema.character.model.charm.OxBodyCategory;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
 import net.sf.anathema.character.model.health.IHealthLevelProvider;
 import net.sf.anathema.character.model.health.IOxBodyTechniqueArbitrator;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
 public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfiguration {
 
-  private final List<ISpecialCharmLearnListener> learnListeners = new ArrayList<ISpecialCharmLearnListener>();
+  private final GenericControl<ISpecialCharmLearnListener> control = new GenericControl<ISpecialCharmLearnListener>();
   private final IIncrementChecker incrementChecker;
   private final OxBodyCategory[] categories;
   private final ICharm oxBodyTechnique;
@@ -50,7 +52,7 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
         }
       });
     }
-    this.healthLevelProvider  = new OxBodyTechniqueHealthLevelProvider(categories);
+    this.healthLevelProvider = new OxBodyTechniqueHealthLevelProvider(categories);
   }
 
   public OxBodyCategory[] getCategories() {
@@ -73,14 +75,16 @@ public class OxBodyTechniqueConfiguration implements IOxBodyTechniqueConfigurati
     return sum;
   }
 
-  public synchronized void addSpecialCharmLearnListener(ISpecialCharmLearnListener listener) {
-    learnListeners.add(listener);
+  public void addSpecialCharmLearnListener(ISpecialCharmLearnListener listener) {
+    control.addListener(listener);
   }
 
-  private synchronized void fireLearnCountChanged(int learnCount) {
-    for (ISpecialCharmLearnListener listener : new ArrayList<ISpecialCharmLearnListener>(learnListeners)) {
-      listener.learnCountChanged(learnCount);
-    }
+  private void fireLearnCountChanged(final int learnCount) {
+    control.forAllDo(new IClosure<ISpecialCharmLearnListener>() {
+      public void execute(ISpecialCharmLearnListener input) {
+        input.learnCountChanged(learnCount);
+      }
+    });
   }
 
   public ICharm getCharm() {
