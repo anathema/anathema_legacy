@@ -1,8 +1,5 @@
 package net.sf.anathema.character.impl.model.charm.special;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -15,12 +12,14 @@ import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.data.Range;
 
 public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmConfiguration {
 
-  private final List<ISpecialCharmLearnListener> learnListeners = new ArrayList<ISpecialCharmLearnListener>();
+  private final GenericControl<ISpecialCharmLearnListener> control = new GenericControl<ISpecialCharmLearnListener>();
   private final ICharm charm;
   private final ITrait trait;
 
@@ -65,14 +64,16 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
     return trait.getCreationValue();
   }
 
-  public synchronized void addSpecialCharmLearnListener(ISpecialCharmLearnListener listener) {
-    learnListeners.add(listener);
+  public void addSpecialCharmLearnListener(ISpecialCharmLearnListener listener) {
+    control.addListener(listener);
   }
 
-  private synchronized void fireLearnCountChanged(int learnCount) {
-    for (ISpecialCharmLearnListener listener : new ArrayList<ISpecialCharmLearnListener>(learnListeners)) {
-      listener.learnCountChanged(learnCount);
-    }
+  private synchronized void fireLearnCountChanged(final int learnCount) {
+    control.forAllDo(new IClosure<ISpecialCharmLearnListener>() {
+      public void execute(ISpecialCharmLearnListener input) {
+        input.learnCountChanged(learnCount);
+      }
+    });
   }
 
   public ICharm getCharm() {
