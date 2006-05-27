@@ -54,7 +54,7 @@ public abstract class AbstractValueStatsGroup<T extends IStats> implements IStat
     return createContentCellTable(Color.BLACK, content, font, 0.75f, alignment, text != null);
   }
 
-  protected final PdfPCell createEmptyEquipmentValueCell(Font font) {
+  protected final PdfPCell createEmptyValueCell(Font font) {
     return createContentCellTable(Color.GRAY, " ", font, 0.5f, true); //$NON-NLS-1$
   }
 

@@ -18,9 +18,9 @@ public class SoakArmourStatsGroup extends AbstractValueEquipmentStatsGroup<IArmo
 
   public void addContent(PdfPTable table, Font font, IArmour armour) {
     if (armour == null) {
-      table.addCell(createEmptyEquipmentValueCell(font));
-      table.addCell(createEmptyEquipmentValueCell(font));
-      table.addCell(createEmptyEquipmentValueCell(font));
+      table.addCell(createEmptyValueCell(font));
+      table.addCell(createEmptyValueCell(font));
+      table.addCell(createEmptyValueCell(font));
     }
     else {
       table.addCell(createEquipmentValueCell(font, armour.getSoak(HealthType.Bashing)));

@@ -20,8 +20,8 @@ public class HardnessStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour
 
   public void addContent(PdfPTable table, Font font, IArmour armour) {
     if (armour == null) {
-      table.addCell(createEmptyEquipmentValueCell(font));
-      table.addCell(createEmptyEquipmentValueCell(font));
+      table.addCell(createEmptyValueCell(font));
+      table.addCell(createEmptyValueCell(font));
     }
     else {
       table.addCell(createEquipmentValueCell(font, armour.getHardness(HealthType.Bashing)));

@@ -25,7 +25,7 @@ public class DefenceWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IW
 
   public void addContent(PdfPTable table, Font font, IWeapon weapon) {
     if (weapon == null) {
-      table.addCell(createEmptyEquipmentValueCell(font));
+      table.addCell(createEmptyValueCell(font));
       table.addCell(createFinalValueCell(font));
     }
     else {
