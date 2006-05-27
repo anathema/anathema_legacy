@@ -82,20 +82,28 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
           removeFromView();
         }
         else {
-          outerGroupElement.appendChild(displayElement);
-          NodeList childNodes = rootElement.getChildNodes();
-          for (int index = 0; index < childNodes.getLength(); index++) {
-            if (childNodes.item(index) instanceof Element) {
-              setAttribute((Element) childNodes.item(index), SVGConstants.SVG_OPACITY_ATTRIBUTE, "0.1"); //$NON-NLS-1$
-            }
-          }
-          setAttribute(outerGroupElement, SVGConstants.SVG_OPACITY_ATTRIBUTE, SVGConstants.SVG_OPAQUE_VALUE);
-          display.setVisible(true);
-          enabled = true;
-          button.setSelected(true);
+          addToView();
         }
       }
     };
+  }
+
+  private void addToView() {
+    outerGroupElement.appendChild(displayElement);
+    NodeList childNodes = rootElement.getChildNodes();
+    for (int index = 0; index < childNodes.getLength(); index++) {
+      if (childNodes.item(index) instanceof Element) {
+        setAttribute((Element) childNodes.item(index), SVGConstants.SVG_OPACITY_ATTRIBUTE, "0.1"); //$NON-NLS-1$
+      }
+    }
+    setAttribute(outerGroupElement, SVGConstants.SVG_OPACITY_ATTRIBUTE, SVGConstants.SVG_OPAQUE_VALUE);
+    display.setVisible(true);
+    setEnabled(true);
+  }
+
+  private void setEnabled(boolean enabled) {
+    this.enabled = enabled;
+    button.setSelected(enabled);
   }
 
   private void removeFromView() {
@@ -110,8 +118,7 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
             SVGConstants.SVG_OPAQUE_VALUE);
       }
     }
-    button.setSelected(false);
-    enabled = false;
+    setEnabled(false);
   }
 
   private void setAttribute(org.w3c.dom.Element element, String attributeName, String attributeValue) {
