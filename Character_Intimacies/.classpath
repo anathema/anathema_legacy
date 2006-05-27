@@ -15,5 +15,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Framework"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-core-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Impl"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Reporting"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

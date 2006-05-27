@@ -59,9 +59,9 @@ public class SecondEditionCombatStatsEncoder extends AbstractPdfEncoder implemen
     encoder.addLabelledValue(directContent, 3, stunningLabel, stunningThreshold, stunningPool);
     String mobilityPenaltyLabel = "-" + resources.getString("Sheet.Combat.MobilityPenalty"); //$NON-NLS-1$ //$NON-NLS-2$
     String thresholdPoolLabel = resources.getString("Sheet.Combat.ThresholdPool"); //$NON-NLS-1$
-    encoder.addComment(directContent, mobilityPenaltyLabel, 0);
-    encoder.addComment(directContent, thresholdPoolLabel, 1);
+    encoder.addComment(directContent, mobilityPenaltyLabel, 1);
     encoder.addComment(directContent, thresholdPoolLabel, 2);
+    encoder.addComment(directContent, thresholdPoolLabel, 3);
     return encoder.getHeight();
   }
 

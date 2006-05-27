@@ -6,7 +6,11 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdd
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
+import net.sf.anathema.character.reporting.CharacterReportingModule;
+import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
+import net.sf.anathema.character.reporting.sheet.SecondEditionEncodingRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
+import net.sf.anathema.lib.resources.IResources;
 
 public class IntimaciesModule extends NullObjectCharacterModuleAdapter {
 
@@ -20,5 +24,13 @@ public class IntimaciesModule extends NullObjectCharacterModuleAdapter {
     IRegistry<String, IAdditionalPersisterFactory> persisterFactory = characterGenerics.getAdditonalPersisterFactoryRegistry();
     persisterFactory.register(templateId, new IntimaciesPersisterFactory());
     characterGenerics.getGlobalAdditionalTemplateRegistry().add(new IntimaciesTemplate());
+  }
+
+  @Override
+  public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
+    CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
+        CharacterReportingModule.class);
+    SecondEditionEncodingRegistry registry = moduleObject.getSecondEditionEncodingRegistry();
+    registry.setIntimaciesEncoder(new IntimaciesEncoder(resources, registry.getBaseFont()));
   }
 }

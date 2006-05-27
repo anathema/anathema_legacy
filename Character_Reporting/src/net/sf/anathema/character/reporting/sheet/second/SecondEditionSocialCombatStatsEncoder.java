@@ -7,6 +7,8 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
+import net.sf.anathema.character.reporting.sheet.second.social.SocialCombatStatsTableEncoder;
+import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.sheet.util.LabelledValueEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.character.reporting.util.Position;
@@ -20,17 +22,27 @@ public class SecondEditionSocialCombatStatsEncoder implements IPdfContentEncoder
 
   private final IResources resources;
   private final BaseFont baseFont;
+  private final IPdfContentEncoder intimaciesEncoder;
 
-  public SecondEditionSocialCombatStatsEncoder(IResources resources, BaseFont baseFont) {
+  public SecondEditionSocialCombatStatsEncoder(
+      IResources resources,
+      BaseFont baseFont,
+      IPdfContentEncoder intimaciesEncoder) {
     this.resources = resources;
     this.baseFont = baseFont;
+    this.intimaciesEncoder = intimaciesEncoder;
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    float integrityWdth = bounds.width / 3.0f;
-    float valueWidth = bounds.width - integrityWdth- IVoidStateFormatConstants.TEXT_PADDING;
+    float intimaciesWdth = (bounds.width - IVoidStateFormatConstants.PADDING) / 2.0f;
+    float valueWidth = bounds.width - intimaciesWdth - IVoidStateFormatConstants.PADDING;
     Bounds valueBounds = new Bounds(bounds.x, bounds.y, valueWidth, bounds.height);
     float valueHeight = encodeValues(directContent, character, valueBounds);
+    Bounds attackTableBounds = new Bounds(bounds.x, bounds.y, valueWidth, bounds.height - valueHeight);
+    IPdfTableEncoder tableEncoder = new SocialCombatStatsTableEncoder(resources, baseFont);
+    tableEncoder.encodeTable(directContent, character, attackTableBounds);
+    Bounds intimaciesBounds = new Bounds(bounds.getMaxX() - intimaciesWdth, bounds.y, intimaciesWdth, bounds.height);
+    intimaciesEncoder.encode(directContent, character, intimaciesBounds);
   }
 
   private float encodeValues(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {

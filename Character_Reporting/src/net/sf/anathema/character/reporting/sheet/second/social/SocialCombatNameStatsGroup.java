@@ -11,6 +11,11 @@ public class SocialCombatNameStatsGroup extends AbstractNameStatsGroup<ISocialCo
   }
 
   @Override
+  public Float[] getColumnWeights() {
+    return new Float[] { new Float(3) };
+  }
+
+  @Override
   protected String getHeaderResourceKey() {
     return getResourceBase() + "AttackName"; //$NON-NLS-1$
   }

@@ -26,6 +26,7 @@ import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup
 import net.sf.anathema.character.generic.traits.groups.IdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
 import net.sf.anathema.character.solar.caste.SolarCaste;
 
 public class DemoGenericCharacter implements IGenericCharacter {
@@ -39,6 +40,7 @@ public class DemoGenericCharacter implements IGenericCharacter {
   private final DemoGenericDescription description = new DemoGenericDescription();
   private final DemoConcept concept = new DemoConcept();
   private final DemoEquipmentAdditionalModel equipmentModel = new DemoEquipmentAdditionalModel();
+  private final DemoIntimaciesModel intimaciesModel = new DemoIntimaciesModel();
   private IExaltedRuleSet ruleSet;
   private int painTolerance = 0;
 
@@ -49,6 +51,9 @@ public class DemoGenericCharacter implements IGenericCharacter {
   public IAdditionalModel getAdditionalModel(String templateId) {
     if (templateId.equals(EquipmentAdditonalModelTemplate.ID)) {
       return equipmentModel;
+    }
+    if (templateId.equals(IntimaciesTemplate.ID)) {
+      return intimaciesModel;
     }
     return null;
   }
@@ -215,6 +220,10 @@ public class DemoGenericCharacter implements IGenericCharacter {
 
   public void addSubbedTrait(ITraitType traitType) {
     subbedTraitTypes.add(traitType);
+  }
+  
+  public DemoIntimaciesModel getIntimaciesModel() {
+    return intimaciesModel;
   }
 
   public DemoEquipmentAdditionalModel getEquipmentModel() {

@@ -13,6 +13,7 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.module.CharacterCoreModule;
 import net.sf.anathema.character.impl.module.CharacterModule;
+import net.sf.anathema.character.intimacies.IntimaciesEncoder;
 import net.sf.anathema.character.reporting.sheet.SecondEditionEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
@@ -63,6 +64,7 @@ public class PdfCharacterSheetDemo {
     SecondEditionEncodingRegistry encodingRegistry = new SecondEditionEncodingRegistry();
     encodingRegistry.setArmourContentEncoder(new SecondEditionArmourEncoder(resources, encodingRegistry.getBaseFont()));
     encodingRegistry.setWeaponContentEncoder(new SecondEditionWeaponryEncoder(resources, encodingRegistry.getBaseFont()));
+    encodingRegistry.setIntimaciesEncoder(new IntimaciesEncoder(resources, encodingRegistry.getBaseFont()));
     return encodingRegistry;
   }
 
@@ -88,6 +90,10 @@ public class PdfCharacterSheetDemo {
     character.getEquipmentModel().addPrintArmour(new DemoAlienArmour());
     character.getEquipmentModel().addPrintWeapon(new DemoRangeWeapon());
     character.getEquipmentModel().addPrintWeapon(new DemoMeleeWeapon());
+    character.getIntimaciesModel().addEntry(new DemoIntimacy("Intimacy 1", 1, character));
+    character.getIntimaciesModel().addEntry(new DemoIntimacy("Intimacy 2", 3, character));
+    String longIntimacy = "Und ich bin jetzt eine ganz super lange Intimacy damit wir auch einen Umbruch bekommen";
+    character.getIntimaciesModel().addEntry(new DemoIntimacy(longIntimacy, 0, character));
     return character;
   }
 

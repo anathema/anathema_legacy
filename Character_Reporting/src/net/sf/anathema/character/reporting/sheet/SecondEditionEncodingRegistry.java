@@ -11,6 +11,7 @@ public class SecondEditionEncodingRegistry {
   private IPdfContentEncoder armourContentEncoder;
   private final BaseFont baseFont;
   private final BaseFont symbolBaseFont;
+  private IPdfContentEncoder intimaciesEncoder;
 
   public SecondEditionEncodingRegistry() {
     try {
@@ -37,6 +38,10 @@ public class SecondEditionEncodingRegistry {
   public void setArmourContentEncoder(IPdfContentEncoder encoder) {
     this.armourContentEncoder = encoder;
   }
+  
+  public void setIntimaciesEncoder(IPdfContentEncoder intimaciesEncoder) {
+    this.intimaciesEncoder = intimaciesEncoder;
+  }
 
   public IPdfContentEncoder getWeaponContentEncoder() {
     return weaponContentEncoder;
@@ -44,5 +49,9 @@ public class SecondEditionEncodingRegistry {
 
   public IPdfContentEncoder getArmourContentEncoder() {
     return armourContentEncoder;
+  }
+
+  public IPdfContentEncoder getIntimaciesEncoder() {
+    return intimaciesEncoder;
   }
 }

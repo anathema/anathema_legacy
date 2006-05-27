@@ -72,7 +72,10 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
       float distanceFromTop,
       float height) throws DocumentException, IOException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IPdfContentEncoder encoder = new SecondEditionSocialCombatStatsEncoder(getResources(), getBaseFont());
+    IPdfContentEncoder encoder = new SecondEditionSocialCombatStatsEncoder(
+        getResources(),
+        getBaseFont(),
+        registry.getIntimaciesEncoder());
     encodeContent(directContent, encoder, character, bounds, "SocialCombat"); //$NON-NLS-1$
     return height;
   }

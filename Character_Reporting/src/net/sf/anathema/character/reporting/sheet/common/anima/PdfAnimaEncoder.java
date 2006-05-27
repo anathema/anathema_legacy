@@ -1,7 +1,6 @@
 package net.sf.anathema.character.reporting.sheet.common.anima;
 
 import java.awt.Color;
-import java.io.IOException;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -41,9 +40,7 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentEn
     return baseFont;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
-      throws DocumentException,
-      IOException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     float halfWidth = bounds.getHeight() / 2;
     Bounds animaPowerBounds = new Bounds(bounds.getMinX(), bounds.getCenterY(), bounds.getWidth(), halfWidth);
     Position lineStartPosition = encodeAnimaPowers(directContent, character, animaPowerBounds);

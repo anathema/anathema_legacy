@@ -30,7 +30,7 @@ public abstract class AbstractNameStatsGroup<T extends IStats> implements IStats
     return title;
   }
 
-  public final Float[] getColumnWeights() {
+  public Float[] getColumnWeights() {
     return new Float[] { new Float(6) };
   }
 
