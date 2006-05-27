@@ -84,7 +84,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
         getTemplateRegistry(),
         getCharmConfiguration(),
         statistics.getRules().getEdition());
-    initSpecialCharmViews();
+    initSpecialCharmViews(viewFactory);
     initCharmTypeSelectionListening(charms, selectionView);
     initCasteListening(selectionView);
     ILearningCharmGroup[] allGroups = charms.getAllGroups();
@@ -251,17 +251,20 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     }
   }
 
-  private void initSpecialCharmViews() {
+  private void initSpecialCharmViews(IMagicViewFactory viewFactory) {
     ISpecialCharm[] specialCharms = provider.getAllSpecialCharms(statistics.getRules().getEdition());
     for (ISpecialCharm charm : specialCharms) {
-      addSpecialCharmControl(charm);
+      addSpecialCharmControl(charm, viewFactory);
     }
   }
 
-  private void addSpecialCharmControl(ISpecialCharm charm) {
+  private void addSpecialCharmControl(ISpecialCharm charm, final IMagicViewFactory viewFactory) {
     charm.accept(new ISpecialCharmVisitor() {
       public void visitMultiLearnableCharm(IMultiLearnableCharm visitedCharm) {
-        SVGMultiLearnableCharmView multiLearnableCharmView = createMultiLearnableCharmView(visitedCharm);
+        SVGMultiLearnableCharmView multiLearnableCharmView = viewFactory.createMultiLearnableCharmView(
+            visitedCharm,
+            getCharmWidth(),
+            characterColor);
         IMultiLearnableCharmConfiguration model = (IMultiLearnableCharmConfiguration) getCharmConfiguration().getSpecialCharmConfiguration(
             visitedCharm.getCharmId());
         new MultiLearnableCharmPresenter(getResources(), multiLearnableCharmView, model).init();
@@ -269,7 +272,10 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
       }
 
       public void visitOxBodyTechnique(IOxBodyTechniqueCharm visited) {
-        SVGMultiLearnableCharmView oxBodyTechniqueView = createMultiLearnableCharmView(visited);
+        SVGMultiLearnableCharmView oxBodyTechniqueView = viewFactory.createMultiLearnableCharmView(
+            visited,
+            getCharmWidth(),
+            characterColor);
         ICharm originalCharm = statistics.getCharms().getCharmById(visited.getCharmId());
         IOxBodyTechniqueConfiguration model = (IOxBodyTechniqueConfiguration) getCharmConfiguration().getSpecialCharmConfiguration(
             visited.getCharmId());
@@ -289,14 +295,6 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
         // Nothing to do
       }
     });
-  }
-
-  private SVGMultiLearnableCharmView createMultiLearnableCharmView(ISpecialCharm charm) {
-    SVGMultiLearnableCharmView multiLearnableCharmView = new SVGMultiLearnableCharmView(
-        charm.getCharmId(),
-        getCharmWidth(),
-        characterColor);
-    return multiLearnableCharmView;
   }
 
   private double getCharmWidth() {
