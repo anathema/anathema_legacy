@@ -32,7 +32,6 @@ import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfigurati
 import net.sf.anathema.character.presenter.TabContent;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.charmtree.batik.intvalue.SVGMultiLearnableCharmView;
-import net.sf.anathema.charmtree.batik.intvalue.SVGViewControlButton;
 import net.sf.anathema.charmtree.presenter.AbstractCascadeSelectionPresenter;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionListener;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionView;
@@ -281,7 +280,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
             visited.getCharmId());
         new OxBodyTechniquePresenter(getResources(), oxBodyTechniqueView, model).init();
         if (originalCharm.hasChildren()) {
-          specialCharmViews.add(new SVGViewControlButton(
+          specialCharmViews.add(viewFactory.createViewControlButton(
               oxBodyTechniqueView,
               getCharmWidth(),
               getResources().getString("CharmTreeView.Ox-Body.HealthLevels"))); //$NON-NLS-1$

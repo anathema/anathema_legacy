@@ -7,6 +7,7 @@ import net.sf.anathema.character.view.magic.IComboConfigurationView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.charmtree.batik.intvalue.SVGMultiLearnableCharmView;
+import net.sf.anathema.charmtree.batik.intvalue.SVGViewControlButton;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
 
@@ -26,5 +27,9 @@ public class MagicViewFactory implements IMagicViewFactory {
 
   public SVGMultiLearnableCharmView createMultiLearnableCharmView(ISpecialCharm charm, double width, Color color) {
     return new SVGMultiLearnableCharmView(charm.getCharmId(), width, color);
+  }
+
+  public SVGViewControlButton createViewControlButton(SVGMultiLearnableCharmView view, double width, String label) {
+    return new SVGViewControlButton(view, width, label);
   }
 }
