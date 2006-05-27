@@ -10,6 +10,7 @@ import net.sf.anathema.charmtree.batik.intvalue.SVGMultiLearnableCharmView;
 import net.sf.anathema.charmtree.batik.intvalue.SVGViewControlButton;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
+import net.sf.anathema.charmtree.presenter.view.ISVGSpecialCharmView;
 
 public class MagicViewFactory implements IMagicViewFactory {
 
@@ -29,7 +30,7 @@ public class MagicViewFactory implements IMagicViewFactory {
     return new SVGMultiLearnableCharmView(charm.getCharmId(), width, color);
   }
 
-  public SVGViewControlButton createViewControlButton(SVGMultiLearnableCharmView view, double width, String label) {
+  public ISVGSpecialCharmView createViewControlButton(SVGMultiLearnableCharmView view, double width, String label) {
     return new SVGViewControlButton(view, width, label);
   }
 }
