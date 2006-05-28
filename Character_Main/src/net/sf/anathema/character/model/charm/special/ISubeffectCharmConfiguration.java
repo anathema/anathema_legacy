@@ -6,4 +6,6 @@ public interface ISubeffectCharmConfiguration extends ISpecialCharmConfiguration
 
   public ISubeffect[] getSubeffects();
 
+  public ISubeffect getEffectById(String id);
+
 }

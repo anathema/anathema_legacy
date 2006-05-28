@@ -142,7 +142,7 @@ public class CharmConfiguration implements ICharmConfiguration {
         public void visitSubeffectCharm(ISubeffectCharm visitedCharm) {
           final ICharm charm = getCharmTree(characterType).getCharmByID(visitedCharm.getCharmId());
           ILearningCharmGroup group = getGroupById(charm.getCharacterType(), charm.getGroupId());
-          manager.registerSubeffectCharm(visitedCharm, charm, group);
+          manager.registerSubeffectCharm(visitedCharm, charm, group, CharmConfiguration.this);
         }
       });
     }

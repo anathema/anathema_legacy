@@ -63,8 +63,12 @@ public class SpecialCharmManager implements ISpecialCharmManager {
     health.addPainToleranceProvider(painToleranceProvider);
   }
 
-  public void registerSubeffectCharm(ISubeffectCharm visited, ICharm charm, ILearningCharmGroup group) {
-    addSpecialCharmConfiguration(charm, group, new SubeffectCharmConfiguration(context, charm, visited));
+  public void registerSubeffectCharm(
+      ISubeffectCharm visited,
+      ICharm charm,
+      ILearningCharmGroup group,
+      ICharmLearnableArbitrator arbitrator) {
+    addSpecialCharmConfiguration(charm, group, new SubeffectCharmConfiguration(context, charm, visited, arbitrator));
   }
 
   private void addSpecialCharmConfiguration(

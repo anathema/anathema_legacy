@@ -25,6 +25,10 @@ public interface ISpecialCharmManager {
 
   public void registerPainToleranceCharm(IPainToleranceCharm visitedCharm, ICharm charm, ILearningCharmGroup group);
 
-  public void registerSubeffectCharm(ISubeffectCharm visitedCharm, ICharm charm, ILearningCharmGroup group);
+  public void registerSubeffectCharm(
+      ISubeffectCharm visited,
+      ICharm charm,
+      ILearningCharmGroup group,
+      ICharmLearnableArbitrator arbitrator);
 
 }

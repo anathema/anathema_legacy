@@ -12,4 +12,8 @@ public interface ISubeffect extends IIdentificate {
   public void addChangeListener(IChangeListener listener);
 
   public void setLearned(boolean learned);
+
+  public void setCreationLearned(boolean creationLearned);
+
+  public void setExperienceLearned(boolean experienceLearned);
 }
