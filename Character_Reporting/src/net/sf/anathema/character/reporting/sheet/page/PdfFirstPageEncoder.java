@@ -62,12 +62,12 @@ public class PdfFirstPageEncoder {
       IGenericCharacter character,
       IGenericDescription description,
       int distanceFromTop,
-      final int firstRowHeight) throws DocumentException, IOException {
+      final int firstRowHeight) throws DocumentException {
     Bounds infoBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, firstRowHeight, 2);
     String name = description.getName();
     String title = StringUtilities.isNullOrTrimEmpty(name) ? getHeaderLabel("PersonalInfo") : name; //$NON-NLS-1$
     Bounds infoContentBounds = boxEncoder.encodeBox(directContent, infoBounds, title);
-    partEncoder.encodePersonalInfos(directContent, character, infoContentBounds);
+    partEncoder.encodePersonalInfos(directContent, character, description, infoContentBounds);
   }
 
   private void encodeFirstColumn(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)

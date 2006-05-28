@@ -1,8 +1,10 @@
 package net.sf.anathema.character.reporting.sheet.second;
 
 import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.TEXT_PADDING;
+
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
@@ -22,7 +24,11 @@ public class SecondEditionPersonalInfoEncoder extends AbstractPdfEncoder {
     this.resources = resources;
   }
 
-  public void encodePersonalInfos(PdfContentByte directContent, IGenericCharacter character, Bounds infoBounds) {
+  public void encodePersonalInfos(
+      PdfContentByte directContent,
+      IGenericCharacter character,
+      IGenericDescription description,
+      Bounds infoBounds) {
     float lineHeight = (infoBounds.height - TEXT_PADDING) / 3;
     float entryWidth = (infoBounds.width - TEXT_PADDING) / 2;
     float firstColumnX = infoBounds.x;
@@ -34,7 +40,9 @@ public class SecondEditionPersonalInfoEncoder extends AbstractPdfEncoder {
     drawLabelledContent(
         directContent,
         getLabel("Rules"), rulesContent, new Position(firstColumnX, firstRowY), entryWidth); //$NON-NLS-1$
-    drawLabelledContent(directContent, getLabel("Player"), null, new Position(secondColumnX, firstRowY), entryWidth); //$NON-NLS-1$
+    drawLabelledContent(
+        directContent,
+        getLabel("Player"), description.getPlayer(), new Position(secondColumnX, firstRowY), entryWidth); //$NON-NLS-1$
 
     float secondRowY = firstRowY - lineHeight;
     String conceptContent = character.getConcept().getConceptText();

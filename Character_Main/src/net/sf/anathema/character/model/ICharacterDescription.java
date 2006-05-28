@@ -7,11 +7,12 @@ public interface ICharacterDescription {
   public ITextualDescription getName();
 
   public ITextualDescription getPeriphrase();
-  
+
   public ITextualDescription getCharacterization();
-  
+
   public ITextualDescription getPhysicalDescription();
 
   public ITextualDescription getNotes();
 
+  public ITextualDescription getPlayer();
 }

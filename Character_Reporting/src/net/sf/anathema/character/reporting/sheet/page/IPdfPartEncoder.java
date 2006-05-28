@@ -3,6 +3,7 @@ package net.sf.anathema.character.reporting.sheet.page;
 import java.io.IOException;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.reporting.util.Bounds;
@@ -33,9 +34,11 @@ public interface IPdfPartEncoder {
       throws DocumentException,
       IOException;
 
-  public void encodePersonalInfos(PdfContentByte directContent, IGenericCharacter character, Bounds infoBounds)
-      throws DocumentException,
-      IOException;
+  public void encodePersonalInfos(
+      PdfContentByte directContent,
+      IGenericCharacter character,
+      IGenericDescription description,
+      Bounds infoBounds) throws DocumentException;
 
   public BaseFont getBaseFont();
 

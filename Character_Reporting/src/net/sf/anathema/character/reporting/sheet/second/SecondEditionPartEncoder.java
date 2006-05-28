@@ -3,6 +3,7 @@ package net.sf.anathema.character.reporting.sheet.second;
 import java.io.IOException;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.sheet.SecondEditionEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.AbstractPdfPartEncoder;
@@ -148,9 +149,13 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
     return height;
   }
 
-  public void encodePersonalInfos(PdfContentByte directContent, IGenericCharacter character, Bounds infoBounds) {
+  public void encodePersonalInfos(
+      PdfContentByte directContent,
+      IGenericCharacter character,
+      IGenericDescription description,
+      Bounds infoBounds) {
     SecondEditionPersonalInfoEncoder encoder = new SecondEditionPersonalInfoEncoder(getBaseFont(), getResources());
-    encoder.encodePersonalInfos(directContent, character, infoBounds);
+    encoder.encodePersonalInfos(directContent, character, description, infoBounds);
   }
 
   private float encodeVirtues(

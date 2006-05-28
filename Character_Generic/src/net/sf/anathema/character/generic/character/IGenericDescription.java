@@ -9,4 +9,6 @@ public interface IGenericDescription {
   public String getCharacterization();
 
   public String getPhysicalAppearance();
+
+  public String getPlayer();
 }

@@ -8,11 +8,12 @@ public class DemoGenericDescription implements IGenericDescription {
   private String name;
   private String periphrase;
   private String appearance;
+  private String player;
 
   public String getAppearance() {
     return appearance;
   }
-  
+
   public String getCharacterization() {
     return characterization;
   }
@@ -43,5 +44,13 @@ public class DemoGenericDescription implements IGenericDescription {
 
   public void setPeriphrase(String periphrase) {
     this.periphrase = periphrase;
+  }
+
+  public String getPlayer() {
+    return player;
+  }
+
+  public void setPlayer(String player) {
+    this.player = player;
   }
 }

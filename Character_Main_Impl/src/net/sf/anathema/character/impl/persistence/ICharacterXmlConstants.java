@@ -34,6 +34,7 @@ public interface ICharacterXmlConstants {
   public static final String TAG_NOTES = "Notes"; //$NON-NLS-1$
   public static final String TAG_PERIPHRASE = "Periphrase"; //$NON-NLS-1$
   public static final String TAG_PHYSICAL_DESCRIPTION = "PhysicalDescription"; //$NON-NLS-1$
+  public static final String TAG_PLAYER = "Player"; //$NON-NLS-1$
   public static final String TAG_RULES = "Rules"; //$NON-NLS-1$
   public static final String TAG_RULESET = "RuleSet"; //$NON-NLS-1$
   public static final String TAG_SPECIAL = "Special"; //$NON-NLS-1$

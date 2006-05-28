@@ -10,7 +10,7 @@ public class GenericDescription implements IGenericDescription {
   public GenericDescription(ICharacterDescription description) {
     this.description = description;
   }
-  
+
   public String getName() {
     return description.getName().getText();
   }
@@ -25,5 +25,9 @@ public class GenericDescription implements IGenericDescription {
 
   public String getPhysicalAppearance() {
     return description.getPhysicalDescription().getText();
+  }
+
+  public String getPlayer() {
+    return description.getPlayer().getText();
   }
 }

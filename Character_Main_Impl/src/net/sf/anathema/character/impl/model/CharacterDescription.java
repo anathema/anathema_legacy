@@ -11,9 +11,14 @@ public class CharacterDescription implements ICharacterDescription {
   private final ITextualDescription characterization = new SimpleTextualDescription();
   private final ITextualDescription physicalDescription = new SimpleTextualDescription();
   private final ITextualDescription notes = new SimpleTextualDescription();
+  private final ITextualDescription player = new SimpleTextualDescription();
 
   public ITextualDescription getName() {
     return nameDescription;
+  }
+
+  public ITextualDescription getPlayer() {
+    return player;
   }
 
   public ITextualDescription getPeriphrase() {

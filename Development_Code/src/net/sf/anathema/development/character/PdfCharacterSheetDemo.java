@@ -108,8 +108,9 @@ public class PdfCharacterSheetDemo {
     character.getIntimaciesModel().addEntry(new DemoIntimacy(longIntimacy, 0, character));
     ICharacterModelContext context = new CharacterModelContext(character);
     SolarVirtueFlawModel virtueFlawModel = new SolarVirtueFlawModel(context, new SolarVirtueFlawTemplate());
-//    virtueFlawModel.getVirtueFlaw().getName().setText("Doll, doll, böse");
-    virtueFlawModel.getVirtueFlaw().getLimitBreak().setText("Oh nein nicht schon wieder. Diese verschissene Welt hat mich gar nicht verdient.");
+    virtueFlawModel.getVirtueFlaw().getName().setText("Doll, doll, böse");
+    virtueFlawModel.getVirtueFlaw().getLimitBreak().setText(
+        "Oh nein nicht schon wieder. Diese verschissene Welt hat mich gar nicht verdient.");
     character.addAdditionalModel(virtueFlawModel);
     return character;
   }
@@ -117,6 +118,7 @@ public class PdfCharacterSheetDemo {
   private static DemoGenericDescription createDemoDescription() {
     DemoGenericDescription description = new DemoGenericDescription();
     description.setName("Hugo the Brave");
+    description.setPlayer("Max the Wicked");
     return description;
   }
 }
