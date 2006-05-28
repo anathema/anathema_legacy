@@ -28,11 +28,13 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentEn
   private final BaseFont baseFont;
   private final IResources resources;
   private final BaseFont symbolBaseFont;
+  private final Chunk symbolChunk;
 
   public PdfAnimaEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont) {
     this.resources = resources;
     this.baseFont = baseFont;
     this.symbolBaseFont = symbolBaseFont;
+    this.symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
   }
 
   @Override
@@ -44,7 +46,9 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentEn
     float halfWidth = bounds.getHeight() / 2;
     Bounds animaPowerBounds = new Bounds(bounds.getMinX(), bounds.getCenterY(), bounds.getWidth(), halfWidth);
     Position lineStartPosition = encodeAnimaPowers(directContent, character, animaPowerBounds);
-    encodeLines(directContent, bounds, lineStartPosition);
+    if (lineStartPosition != null) {
+      encodeLines(directContent, bounds, lineStartPosition);
+    }
     Bounds animaTableBounds = new Bounds(bounds.getMinX(), bounds.getMinY(), bounds.getWidth(), halfWidth);
     new SolarAnimaTableEncoder(resources, baseFont, FONT_SIZE).encodeTable(directContent, character, animaTableBounds);
   }
@@ -59,18 +63,25 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentEn
       throws DocumentException {
     Phrase phrase = new Phrase("", new Font(baseFont, FONT_SIZE, Font.NORMAL, Color.BLACK)); //$NON-NLS-1$
     addAnimaPowerText(character, phrase);
+    String casteResourceKey = "Sheet.AnimaPower." + character.getCasteType().getId() + "." + character.getRules().getEdition().getId(); //$NON-NLS-1$ //$NON-NLS-2$
+    boolean isCastePowerDefined = resources.supportsKey(casteResourceKey);
+    if (isCastePowerDefined) {
+      phrase.add(symbolChunk);
+      phrase.add(resources.getString(casteResourceKey));
+      PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, LINE_HEIGHT).getYLine();
+      return null;
+    }
+    phrase.add(symbolChunk);
     float yPosition = PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, LINE_HEIGHT).getYLine();
     return new Position((bounds.getMinX() + PdfEncodingUtilities.getCaretSymbolWidth(symbolBaseFont)), yPosition);
   }
 
   private void addAnimaPowerText(IGenericCharacter character, Phrase phrase) {
     CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-    Chunk symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
     String resourceBase = "Sheet.AnimaPower." + characterType.getId() + "."; //$NON-NLS-1$ //$NON-NLS-2$
     for (String resourceId : new String[] { "First", "Second", "Third" }) { //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
       phrase.add(symbolChunk);
       phrase.add(resources.getString(resourceBase + resourceId) + "\n"); //$NON-NLS-1$
     }
-    phrase.add(symbolChunk);
   }
 }
