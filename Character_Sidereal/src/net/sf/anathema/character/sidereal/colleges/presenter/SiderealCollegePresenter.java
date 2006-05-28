@@ -33,7 +33,7 @@ public class SiderealCollegePresenter extends AbstractTraitPresenter {
   }
 
   public void initPresentation() {
-    final IOverviewCategory creationOverview = view.createOverview(resources.getString("Overview.Title")); //$NON-NLS-1$
+    final IOverviewCategory creationOverview = view.createOverview(resources.getString("Astrology.Overview.Title")); //$NON-NLS-1$
     final ILabelledAlotmentView favoredView = creationOverview.addAlotmentView(
         resources.getString("Astrology.Overview.FavoredDots"), 2); //$NON-NLS-1$
     final ILabelledAlotmentView generalView = creationOverview.addAlotmentView(
