@@ -158,7 +158,7 @@ public class DemoGenericCharacter implements IGenericCharacter {
   }
 
   public ICasteType getCasteType() {
-    return null;
+    return ICasteType.NULL_CASTE_TYPE;
   }
 
   public ITraitLimitation getEssenceLimitation() {

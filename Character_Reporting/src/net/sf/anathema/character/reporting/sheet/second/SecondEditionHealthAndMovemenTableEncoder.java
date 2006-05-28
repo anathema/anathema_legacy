@@ -28,7 +28,7 @@ import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfTemplate;
 
 public class SecondEditionHealthAndMovemenTableEncoder implements IPdfTableEncoder {
-
+  public static final int HEALTH_RECT_SIZE= 6;
   private static final int HEALTH_COLUMN_COUNT = 10;
   private static float PADDING = 0.3f;
   private static final Float[] MOVEMENT_COLUMNS = new Float[] {
@@ -68,10 +68,9 @@ public class SecondEditionHealthAndMovemenTableEncoder implements IPdfTableEncod
   }
 
   protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character) throws DocumentException {
-    final int healthRectSize = 6;
     try {
-      Image activeTemplate = Image.getInstance(createRectTemplate(directContent, healthRectSize, Color.BLACK));
-      Image passiveTemplate = Image.getInstance(createRectTemplate(directContent, healthRectSize, Color.LIGHT_GRAY));
+      Image activeTemplate = Image.getInstance(createRectTemplate(directContent,  Color.BLACK));
+      Image passiveTemplate = Image.getInstance(createRectTemplate(directContent,  Color.LIGHT_GRAY));
       float[] columnWidth = createColumnWidth();
       PdfPTable table = new PdfPTable(columnWidth);
       addHeaders(table);
@@ -127,11 +126,11 @@ public class SecondEditionHealthAndMovemenTableEncoder implements IPdfTableEncod
     table.addCell(createHeaderCell(resources.getString("Sheet.Health.Levels"), 13)); //$NON-NLS-1$
   }
 
-  private PdfTemplate createRectTemplate(PdfContentByte directContent, final int healthRectSize, final Color strokeColor) {
-    PdfTemplate activeHealthRect = directContent.createTemplate(healthRectSize, healthRectSize);
+  public static PdfTemplate createRectTemplate(PdfContentByte directContent, final Color strokeColor) {
+    PdfTemplate activeHealthRect = directContent.createTemplate(HEALTH_RECT_SIZE, HEALTH_RECT_SIZE);
     activeHealthRect.setLineWidth(1f);
     activeHealthRect.setColorStroke(strokeColor);
-    activeHealthRect.rectangle(0, 0, healthRectSize, healthRectSize);
+    activeHealthRect.rectangle(0, 0, HEALTH_RECT_SIZE, HEALTH_RECT_SIZE);
     activeHealthRect.stroke();
     return activeHealthRect;
   }
