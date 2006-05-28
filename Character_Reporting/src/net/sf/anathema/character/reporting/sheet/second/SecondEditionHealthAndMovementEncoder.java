@@ -80,17 +80,29 @@ public class SecondEditionHealthAndMovementEncoder extends AbstractPdfEncoder im
     float xPosition = textBounds.x;
     PdfTemplate rectTemplate = SecondEditionHealthAndMovemenTableEncoder.createRectTemplate(directContent, Color.BLACK);
     directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
+    PdfTemplate bashingTemplate = SecondEditionHealthAndMovemenTableEncoder.createBashingTemplate(
+        directContent,
+        Color.GRAY);
+    directContent.addTemplate(bashingTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     final String createSpacedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageBashing")); //$NON-NLS-1$
     String bashingString = createSpacedString;
     drawComment(directContent, bashingString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += getCommentTextWidth(bashingString);
     directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
+    PdfTemplate lethalTemplate = SecondEditionHealthAndMovemenTableEncoder.createLethalTemplate(
+        directContent,
+        Color.GRAY);
+    directContent.addTemplate(lethalTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     String lethalString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageLethal")); //$NON-NLS-1$
     drawComment(directContent, lethalString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += getCommentTextWidth(lethalString);
     directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
+    PdfTemplate aggravatedTemplate = SecondEditionHealthAndMovemenTableEncoder.createAggravatedTemplate(
+        directContent,
+        Color.GRAY);
+    directContent.addTemplate(aggravatedTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     String aggravatedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageAggravated")); //$NON-NLS-1$
     drawComment(directContent, aggravatedString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
