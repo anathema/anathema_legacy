@@ -74,27 +74,24 @@ public class SecondEditionHealthAndMovementEncoder extends AbstractPdfEncoder im
     int leading = IVoidStateFormatConstants.COMMENT_FONT_SIZE + 1;
     ColumnText text = PdfTextEncodingUtilities.encodeText(directContent, healthText, textBounds, leading);
     int rectangleOffset = SecondEditionHealthAndMovemenTableEncoder.HEALTH_RECT_SIZE + 1;
-    float rectYPosition = text.getYLine() - rectangleOffset;
-    float textYPosition = text.getYLine() - leading;
+    final float additionalOffset = 2.5f;
+    float rectYPosition = text.getYLine() - rectangleOffset - additionalOffset;
+    float textYPosition = text.getYLine() - leading - additionalOffset;
     float xPosition = textBounds.x;
     PdfTemplate rectTemplate = SecondEditionHealthAndMovemenTableEncoder.createRectTemplate(directContent, Color.BLACK);
-    directContent.addTemplate(rectTemplate,xPosition , rectYPosition);
+    directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     String bashingString = " Bashing   ";
-    drawComment(
-        directContent,
-        bashingString,
-        new Position(xPosition, textYPosition),
-        Element.ALIGN_LEFT);
+    drawComment(directContent, bashingString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += getCommentTextWidth(bashingString);
     directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
-    xPosition +=rectangleOffset;
+    xPosition += rectangleOffset;
     String lethalString = " Lethal   ";
-    drawComment(
-        directContent,
-        lethalString,
-        new Position(xPosition , textYPosition),
-        Element.ALIGN_LEFT);
+    drawComment(directContent, lethalString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
+    xPosition += getCommentTextWidth(lethalString);
+    directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
+    xPosition += rectangleOffset;
+    drawComment(directContent, " Aggravated   ", new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += getCommentTextWidth(lethalString);
   }
 
