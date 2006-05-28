@@ -112,7 +112,7 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
       IGenericCharacter character,
       float distanceFromTop) throws DocumentException, IOException {
     encodeAnima(directContent, character, distanceFromTop, ANIMA_HEIGHT);
-    float virtueHeight = encodeVirtues(directContent, character, distanceFromTop, 75);
+    float virtueHeight = encodeVirtues(directContent, character, distanceFromTop, 72);
     distanceFromTop += calculateBoxIncrement(virtueHeight);
     float greatCurseHeigth = ANIMA_HEIGHT - virtueHeight - IVoidStateFormatConstants.PADDING;
     encodeGreatCurse(directContent, character, distanceFromTop, greatCurseHeigth);

@@ -59,7 +59,7 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
     SecondEditionEncodingRegistry registry = moduleObject.getSecondEditionEncodingRegistry();
-    registry.setGreatCurseEncoder(CharacterType.SOLAR, new PdfSolarVirtueFlawEncoder(resources, registry.getBaseFont()));
+    registry.setGreatCurseEncoder(CharacterType.SOLAR, new PdfSolarVirtueFlawEncoder(registry.getBaseFont()));
     generics.getReportTemplateRegistry().add(new SolarVoidStateReportTemplate(resources));
   }
 

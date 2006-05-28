@@ -1,7 +1,9 @@
 package net.sf.anathema.development.character;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditonalModelTemplate;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
@@ -41,6 +43,7 @@ public class DemoGenericCharacter implements IGenericCharacter {
   private final DemoCharacterTemplate characterTemplate;
   private final DemoGenericDescription description = new DemoGenericDescription();
   private final DemoConcept concept = new DemoConcept();
+  private final Map<String, IAdditionalModel> additionalModels = new HashMap<String, IAdditionalModel>();
   private final DemoEquipmentAdditionalModel equipmentModel = new DemoEquipmentAdditionalModel();
   private final DemoIntimaciesModel intimaciesModel = new DemoIntimaciesModel();
   private IExaltedRuleSet ruleSet;
@@ -57,7 +60,7 @@ public class DemoGenericCharacter implements IGenericCharacter {
     if (templateId.equals(IntimaciesTemplate.ID)) {
       return intimaciesModel;
     }
-    return null;
+    return additionalModels.get(templateId);
   }
 
   public List<IMagic> getAllLearnedMagic() {
@@ -230,5 +233,9 @@ public class DemoGenericCharacter implements IGenericCharacter {
 
   public DemoEquipmentAdditionalModel getEquipmentModel() {
     return equipmentModel;
+  }
+  
+  public void addAdditionalModel(IAdditionalModel model) {
+    additionalModels.put(model.getTemplateId(), model);
   }
 }

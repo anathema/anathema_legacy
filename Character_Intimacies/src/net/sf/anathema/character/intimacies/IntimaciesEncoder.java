@@ -50,7 +50,7 @@ public class IntimaciesEncoder extends AbstractPdfEncoder implements IPdfContent
       intimacyPhrase.add(new Chunk(text, font));
     }
     Bounds textBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - 2);
-    float yPosition = PdfTextEncodingUtilities.encodeText(directContent, intimacyPhrase, textBounds, LINE_HEIGHT);
+    float yPosition = PdfTextEncodingUtilities.encodeText(directContent, intimacyPhrase, textBounds, LINE_HEIGHT).getYLine();
     yPosition -= LINE_HEIGHT;
     while (yPosition > bounds.y) {
       Line.createHorizontalByCoordinate(new Position(bounds.x, yPosition), bounds.getMaxX()).encode(directContent);

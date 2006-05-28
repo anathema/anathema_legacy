@@ -16,5 +16,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Library"/>
 	<classpathentry sourcepath="/Thirdparty/Reporting/itext-1.4-src.zip" kind="lib" path="/Thirdparty/Reporting/itext-1.4.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Reporting"/>
+	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-core-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

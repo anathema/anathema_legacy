@@ -59,7 +59,7 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentEn
       throws DocumentException {
     Phrase phrase = new Phrase("", new Font(baseFont, FONT_SIZE, Font.NORMAL, Color.BLACK)); //$NON-NLS-1$
     addAnimaPowerText(character, phrase);
-    float yPosition = PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, LINE_HEIGHT);
+    float yPosition = PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, LINE_HEIGHT).getYLine();
     return new Position((bounds.getMinX() + PdfEncodingUtilities.getCaretSymbolWidth(symbolBaseFont)), yPosition);
   }
 

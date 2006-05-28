@@ -12,7 +12,7 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfTextEncodingUtilities {
 
-  public static float encodeText(PdfContentByte directContent, Phrase phrase, Bounds bounds, float lineHeight)
+  public static ColumnText encodeText(PdfContentByte directContent, Phrase phrase, Bounds bounds, float lineHeight)
       throws DocumentException {
     ColumnText columnText = new ColumnText(directContent);
     float minX = bounds.getMinX();
@@ -21,7 +21,7 @@ public class PdfTextEncodingUtilities {
     float maxY = bounds.getMaxY();
     columnText.setSimpleColumn(phrase, minX, minY, maxX, maxY, lineHeight, PdfContentByte.ALIGN_LEFT);
     columnText.go();
-    return columnText.getYLine();
+    return columnText;
   }
 
   public static BaseFont createBaseFont(String fontName) throws DocumentException, IOException {

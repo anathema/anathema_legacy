@@ -8,9 +8,11 @@ import net.sf.anathema.character.abyssal.caste.AbyssalCaste;
 import net.sf.anathema.character.equipment.impl.reporting.second.SecondEditionArmourEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.second.SecondEditionWeaponryEncoder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.module.CharacterCoreModule;
 import net.sf.anathema.character.impl.module.CharacterModule;
 import net.sf.anathema.character.intimacies.IntimaciesEncoder;
@@ -19,6 +21,8 @@ import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionPartEncoder;
 import net.sf.anathema.character.solar.reporting.PdfSolarVirtueFlawEncoder;
+import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
+import net.sf.anathema.character.solar.virtueflaw.model.SolarVirtueFlawModel;
 import net.sf.anathema.development.character.additional.DemoAlienArmour;
 import net.sf.anathema.development.character.additional.DemoIntimacy;
 import net.sf.anathema.development.character.additional.DemoMeleeWeapon;
@@ -72,7 +76,6 @@ public class PdfCharacterSheetDemo {
     encodingRegistry.setWeaponContentEncoder(new SecondEditionWeaponryEncoder(resources, encodingRegistry.getBaseFont()));
     encodingRegistry.setIntimaciesEncoder(new IntimaciesEncoder(encodingRegistry.getBaseFont()));
     encodingRegistry.setGreatCurseEncoder(CharacterType.SOLAR, new PdfSolarVirtueFlawEncoder(
-        resources,
         encodingRegistry.getBaseFont()));
     return encodingRegistry;
   }
@@ -103,6 +106,11 @@ public class PdfCharacterSheetDemo {
     character.getIntimaciesModel().addEntry(new DemoIntimacy("Intimacy 2", 3, character));
     String longIntimacy = "Und ich bin jetzt eine ganz super lange Intimacy damit wir auch einen Umbruch bekommen";
     character.getIntimaciesModel().addEntry(new DemoIntimacy(longIntimacy, 0, character));
+    ICharacterModelContext context = new CharacterModelContext(character);
+    SolarVirtueFlawModel virtueFlawModel = new SolarVirtueFlawModel(context, new SolarVirtueFlawTemplate());
+//    virtueFlawModel.getVirtueFlaw().getName().setText("Doll, doll, böse");
+    virtueFlawModel.getVirtueFlaw().getLimitBreak().setText("Oh nein nicht schon wieder. Diese verschissene Welt hat mich gar nicht verdient.");
+    character.addAdditionalModel(virtueFlawModel);
     return character;
   }
 

@@ -13,6 +13,8 @@ import com.lowagie.text.pdf.PdfPTable;
 
 public class TableEncodingUtilities {
 
+  public static final float FONT_SIZE = IVoidStateFormatConstants.FONT_SIZE - 0.5f;
+
   public static Float[] createStandardColumnWeights(int columnCount) {
     return createStandardColumnWidths(columnCount, 1);
   }
@@ -69,7 +71,7 @@ public class TableEncodingUtilities {
   }
 
   public static Font createFont(BaseFont baseFont) {
-    return new Font(baseFont, IVoidStateFormatConstants.FONT_SIZE - 0.5f, Font.NORMAL, Color.BLACK);
+    return new Font(baseFont, FONT_SIZE, Font.NORMAL, Color.BLACK);
   }
 
   public static Font createHeaderFont(BaseFont baseFont) {
