@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfi
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 public class CharmExperienceModel extends AbstractIntegerValueModel {
@@ -52,7 +53,15 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
         statistics.getCharacterTemplate().getMagicTemplate().getFavoringTraitType());
     if (specialCharm != null) {
       int timesLearnedWithExperience = specialCharm.getCurrentLearnCount() - specialCharm.getCreationLearnCount();
-      return timesLearnedWithExperience * charmCost;
+      final int specialCharmCost = timesLearnedWithExperience * charmCost;
+      if (!(specialCharm instanceof ISubeffectCharmConfiguration)) {
+        return specialCharmCost;
+      }
+      final ISubeffectCharmConfiguration subeffectCharmConfiguration = (ISubeffectCharmConfiguration) specialCharm;
+      final int count = Math.max(0, (subeffectCharmConfiguration.getExperienceLearnedSubeffectCount()
+          - subeffectCharmConfiguration.getCreationLearnedSubeffectCount() - 1));
+      int subeffectCost = (int) Math.ceil(count * subeffectCharmConfiguration.getPointCostPerEffect() * 2);
+      return subeffectCost + specialCharmCost;
     }
     else if (charmConfiguration.getGroup(charm).isLearned(charm, true)) {
       return charmCost;
