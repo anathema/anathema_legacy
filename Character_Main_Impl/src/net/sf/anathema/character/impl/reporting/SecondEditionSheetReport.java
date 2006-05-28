@@ -34,6 +34,11 @@ public class SecondEditionSheetReport implements IITextReport {
     this.characterGenerics = characterGenerics;
   }
 
+  @Override
+  public String toString() {
+    return resources.getString("CharacterModule.Reporting.SecondEdition.Name"); //$NON-NLS-1$
+  }
+
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     ICharacter stattedCharacter = (ICharacter) item.getItemData();
     document.open();
