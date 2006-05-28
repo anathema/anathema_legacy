@@ -40,7 +40,8 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
             ISolarSpecialCharms.CITY_MOVING_SECRETS,
             ISolarSpecialCharms.IMMANENT_SOLAR_GLORY,
             ISolarSpecialCharms.RIGHTEOUS_LION_DEFENSE,
-            ISolarSpecialCharms.ESSENCE_ARROW_ATTACK });
+            ISolarSpecialCharms.ESSENCE_ARROW_ATTACK,
+            ISolarSpecialCharms.MASTER_HORSEMANS_TECHNIQUES });
     characterGenerics.getAdditionalTemplateParserRegistry().register(
         SolarVirtueFlawTemplate.ID,
         new SolarVirtueFlawParser());
@@ -57,7 +58,8 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
+    CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
+        CharacterReportingModule.class);
     SecondEditionEncodingRegistry registry = moduleObject.getSecondEditionEncodingRegistry();
     registry.setGreatCurseEncoder(CharacterType.SOLAR, new PdfSolarVirtueFlawEncoder(registry.getBaseFont()));
     generics.getReportTemplateRegistry().add(new SolarVoidStateReportTemplate(resources));

@@ -58,5 +58,10 @@ public interface ISolarSpecialCharms {
       2);
 
   public static final ISubeffectCharm ESSENCE_ARROW_ATTACK = new SubeffectCharm("Solar.EssenceArrowAttack", //$NON-NLS-1$
-      new String[] { "FirstEffect", "SecondEffect", "ThirdEffect" });
+      new String[] { "FieryArrowAttack", "DazzlingFlare", "RighteousJudgementArrow" }); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+
+  public static final ISubeffectCharm MASTER_HORSEMANS_TECHNIQUES = new SubeffectCharm(
+      "Solar.MasterHorseman'sTechniques", //$NON-NLS-1$
+      new String[] {
+          "HarmonySpiritsStyle", "Horse-SummoningWhistle", "MasterHorseman'sEye", "Speed-SustainingTechnique", "Spirit-SteadyingAssurances" }); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
 }
