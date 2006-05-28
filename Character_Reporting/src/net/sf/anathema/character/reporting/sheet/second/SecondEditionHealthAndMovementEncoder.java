@@ -81,18 +81,24 @@ public class SecondEditionHealthAndMovementEncoder extends AbstractPdfEncoder im
     PdfTemplate rectTemplate = SecondEditionHealthAndMovemenTableEncoder.createRectTemplate(directContent, Color.BLACK);
     directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
-    String bashingString = " Bashing   ";
+    final String createSpacedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageBashing")); //$NON-NLS-1$
+    String bashingString = createSpacedString;
     drawComment(directContent, bashingString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += getCommentTextWidth(bashingString);
     directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
-    String lethalString = " Lethal   ";
+    String lethalString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageLethal")); //$NON-NLS-1$
     drawComment(directContent, lethalString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += getCommentTextWidth(lethalString);
     directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
-    drawComment(directContent, " Aggravated   ", new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
+    String aggravatedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageAggravated")); //$NON-NLS-1$
+    drawComment(directContent, aggravatedString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += getCommentTextWidth(lethalString);
+  }
+
+  private String createSpacedString(final String string) {
+    return " " + string + "   "; //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   @Override
