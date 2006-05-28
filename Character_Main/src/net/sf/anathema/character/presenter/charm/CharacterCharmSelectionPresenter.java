@@ -310,7 +310,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
           specialCharmViews.add(viewFactory.createViewControlButton(
               subeffectView,
               getCharmWidth(),
-              getResources().getString("CharmTreeView.Ox-Body.HealthLevels"))); //$NON-NLS-1$
+              getResources().getString("CharmTreeView.SubeffectCharm.ButtonLabel"))); //$NON-NLS-1$
         }
         else {
           specialCharmViews.add(subeffectView);
