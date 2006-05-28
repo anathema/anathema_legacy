@@ -11,8 +11,10 @@ http://anathema.sf.net
 + Series are printable.
 + Notes are (finally) printable.
 + CharmCascades now honor the preferred ruleset.
++ Character Description now sports a "Player" field.
 * There have been major changes to the handling of customized natures. 
-	Refer to "nature_instructions" for details.
+	Refer to "nature_instructions.txt" for details.
+
 
 -- Usability --
 * Greatly improved speed of Charm trees.
