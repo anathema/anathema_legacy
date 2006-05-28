@@ -18,6 +18,7 @@ import net.sf.anathema.character.reporting.sheet.SecondEditionEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionPartEncoder;
+import net.sf.anathema.character.solar.reporting.PdfSolarVirtueFlawEncoder;
 import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.lib.control.BrowserControl;
@@ -65,6 +66,9 @@ public class PdfCharacterSheetDemo {
     encodingRegistry.setArmourContentEncoder(new SecondEditionArmourEncoder(resources, encodingRegistry.getBaseFont()));
     encodingRegistry.setWeaponContentEncoder(new SecondEditionWeaponryEncoder(resources, encodingRegistry.getBaseFont()));
     encodingRegistry.setIntimaciesEncoder(new IntimaciesEncoder(encodingRegistry.getBaseFont()));
+    encodingRegistry.setGreatCurseEncoder(CharacterType.SOLAR, new PdfSolarVirtueFlawEncoder(
+        resources,
+        encodingRegistry.getBaseFont()));
     return encodingRegistry;
   }
 

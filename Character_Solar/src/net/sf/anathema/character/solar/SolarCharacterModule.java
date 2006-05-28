@@ -9,7 +9,11 @@ import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.reporting.CharacterReportingModule;
+import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
+import net.sf.anathema.character.reporting.sheet.SecondEditionEncodingRegistry;
 import net.sf.anathema.character.solar.caste.SolarCaste;
+import net.sf.anathema.character.solar.reporting.PdfSolarVirtueFlawEncoder;
 import net.sf.anathema.character.solar.reporting.SolarVoidStateReportTemplate;
 import net.sf.anathema.character.solar.template.ISolarSpecialCharms;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawModelFactory;
@@ -53,6 +57,9 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
+    CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(CharacterReportingModule.class);
+    SecondEditionEncodingRegistry registry = moduleObject.getSecondEditionEncodingRegistry();
+    registry.setGreatCurseEncoder(CharacterType.SOLAR, new PdfSolarVirtueFlawEncoder(resources, registry.getBaseFont()));
     generics.getReportTemplateRegistry().add(new SolarVoidStateReportTemplate(resources));
   }
 

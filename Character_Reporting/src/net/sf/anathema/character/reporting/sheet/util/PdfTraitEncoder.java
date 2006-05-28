@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.sheet.util;
 
-import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.util.Position;
 
 import com.lowagie.text.pdf.BaseFont;
@@ -32,11 +31,12 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
     return new PdfTraitEncoder(baseFont, 14, 10);
   }
 
+  public static PdfTraitEncoder createMediumTraitEncoder(BaseFont baseFont) {
+    return new PdfTraitEncoder(baseFont, 12, 8);
+  }
+
   public static PdfTraitEncoder createSmallTraitEncoder(BaseFont baseFont) {
-    return new PdfTraitEncoder(
-        baseFont,
-        IVoidStateFormatConstants.LINE_HEIGHT,
-        IVoidStateFormatConstants.SMALL_SYMBOL_HEIGHT - 1);
+    return new PdfTraitEncoder(baseFont, 11, 6);
   }
 
   private final int height;
