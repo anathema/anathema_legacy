@@ -239,7 +239,8 @@ public class SecondEditionHealthAndMovemenTableEncoder implements IPdfTableEncod
     int additionalCount = 9;
     if (level == HealthLevelType.FOUR) {
       addSpaceCells(table, 1);
-      TableCell cell = new TableCell(new Phrase("Dying", commentFont), Rectangle.BOTTOM); //$NON-NLS-1$
+      TableCell cell = new TableCell(
+          new Phrase(resources.getString("HealthLevelType.Dying.Short"), commentFont), Rectangle.BOTTOM); //$NON-NLS-1$
       cell.setHorizontalAlignment(Element.ALIGN_CENTER);
       cell.setVerticalAlignment(Element.ALIGN_BOTTOM);
       cell.setColspan(additionalCount - 1);
