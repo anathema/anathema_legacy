@@ -78,7 +78,9 @@ public class SecondEditionCombatRulesTableEncoder extends AbstractTableEncoder {
     PdfPTable table = new PdfPTable(columnWidths);
     table.setWidthPercentage(100);
     String header = resources.getString("Sheet.Combat.CommonActions.Header"); //$NON-NLS-1$
-    table.addCell(createCommonActionsCell(new Phrase(header, font), columnWidths.length));
+    final TableCell headerCell = createCommonActionsCell(new Phrase(header, font));
+    headerCell.setColspan(columnWidths.length);
+    table.addCell(headerCell);
     String actionSubheader = resources.getString("Sheet.Combat.CommonActions.Action"); //$NON-NLS-1$
     table.addCell(createCommonActionsCell(new Phrase(actionSubheader, commentFont)));
     String speedSubheader = resources.getString("Sheet.Combat.CommonActions.Speed"); //$NON-NLS-1$
@@ -115,12 +117,6 @@ public class SecondEditionCombatRulesTableEncoder extends AbstractTableEncoder {
   private TableCell createCommonActionsCell(Phrase phrase) {
     TableCell cell = new TableCell(phrase, Rectangle.NO_BORDER);
     cell.setPadding(0);
-    return cell;
-  }
-
-  private TableCell createCommonActionsCell(Phrase phrase, int columnSpan) {
-    TableCell cell = createCommonActionsCell(phrase);
-    cell.setColspan(columnSpan);
     return cell;
   }
 

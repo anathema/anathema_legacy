@@ -21,6 +21,7 @@ public class LabelledValueEncoder extends AbstractPdfEncoder {
   private final float baseLine;
   private final float commentLine;
   private final float padding;
+  private boolean commentPresent = false;
 
   public LabelledValueEncoder(BaseFont baseFont, int columnCount, Position position, float width, int padding) {
     this.baseFont = baseFont;
@@ -43,6 +44,7 @@ public class LabelledValueEncoder extends AbstractPdfEncoder {
 
   public void addComment(PdfContentByte directContent, String text, int column) {
     float rightX = getRightColumnX(column);
+    commentPresent = true;
     drawComment(directContent, text, new Position(rightX, commentLine), Element.ALIGN_RIGHT);
   }
 
@@ -61,6 +63,7 @@ public class LabelledValueEncoder extends AbstractPdfEncoder {
   }
 
   public float getHeight() {
-    return position.y - commentLine + 1;
+    float textPosition = commentPresent ? commentLine : baseLine;
+    return position.y - textPosition + 1;
   }
 }

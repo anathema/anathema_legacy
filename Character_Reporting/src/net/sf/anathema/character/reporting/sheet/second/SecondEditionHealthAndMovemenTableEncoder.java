@@ -57,7 +57,7 @@ public class SecondEditionHealthAndMovemenTableEncoder implements IPdfTableEncod
     this.spaceCell.setBorder(Rectangle.NO_BORDER);
   }
 
-  public void encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
+  public float encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
       throws DocumentException {
     ColumnText tableColumn = new ColumnText(directContent);
     PdfPTable table = createTable(directContent, character);
@@ -65,6 +65,7 @@ public class SecondEditionHealthAndMovemenTableEncoder implements IPdfTableEncod
     tableColumn.setSimpleColumn(bounds.getMinX(), bounds.getMinY(), bounds.getMaxX(), bounds.getMaxY());
     tableColumn.addElement(table);
     tableColumn.go();
+    return table.getTotalHeight();
   }
 
   protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character) throws DocumentException {

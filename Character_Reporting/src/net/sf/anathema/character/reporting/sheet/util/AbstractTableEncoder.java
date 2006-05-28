@@ -12,7 +12,7 @@ public abstract class AbstractTableEncoder implements IPdfTableEncoder {
 
   protected abstract PdfPTable createTable(IGenericCharacter character);
 
-  public void encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
+  public float encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
       throws DocumentException {
     ColumnText tableColumn = new ColumnText(directContent);
     PdfPTable table = createTable(character);
@@ -20,5 +20,6 @@ public abstract class AbstractTableEncoder implements IPdfTableEncoder {
     tableColumn.setSimpleColumn(bounds.getMinX(), bounds.getMinY(), bounds.getMaxX(), bounds.getMaxY());
     tableColumn.addElement(table);
     tableColumn.go();
+    return table.getTotalHeight();
   }
 }

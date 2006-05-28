@@ -8,7 +8,7 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public interface IPdfTableEncoder {
 
-  public void encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
+  public float encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
       throws DocumentException;
 
 }

@@ -11,6 +11,7 @@ import net.sf.anathema.character.reporting.sheet.util.statstable.IStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfPTable;
 
 public class SocialCombatStatsTableEncoder extends AbstractStatsTableEncoder<ISocialCombatStats> {
 
@@ -19,6 +20,12 @@ public class SocialCombatStatsTableEncoder extends AbstractStatsTableEncoder<ISo
   public SocialCombatStatsTableEncoder(IResources resources, BaseFont baseFont) {
     super(baseFont);
     this.resources = resources;
+  }
+
+  @Override
+  protected PdfPTable createTable(IGenericCharacter character) {
+    PdfPTable table = super.createTable(character);
+    return table;
   }
 
   @SuppressWarnings("unchecked")
