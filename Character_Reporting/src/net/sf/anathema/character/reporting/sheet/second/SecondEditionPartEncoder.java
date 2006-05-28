@@ -71,11 +71,8 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
       IGenericCharacter character,
       float distanceFromTop,
       float height) throws DocumentException, IOException {
-    Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IPdfContentEncoder encoder = new SecondEditionSocialCombatStatsEncoder(
-        getResources(),
-        getBaseFont(),
-        registry.getIntimaciesEncoder());
+    Bounds bounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
+    IPdfContentEncoder encoder = new SecondEditionSocialCombatStatsEncoder(getResources(), getBaseFont());
     encodeContent(directContent, encoder, character, bounds, "SocialCombat"); //$NON-NLS-1$
     return height;
   }
@@ -108,22 +105,24 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
       float distanceFromTop) throws DocumentException, IOException {
     encodeAnima(directContent, character, distanceFromTop, ANIMA_HEIGHT);
     float virtueHeight = 75;
-    float willpowerHeight = ANIMA_HEIGHT - virtueHeight - IVoidStateFormatConstants.PADDING;
-    encodeWillpower(directContent, character, distanceFromTop, willpowerHeight);
-    distanceFromTop += calculateBoxIncrement(willpowerHeight);
+    float virtueRest = ANIMA_HEIGHT - virtueHeight - IVoidStateFormatConstants.PADDING;
+    distanceFromTop += calculateBoxIncrement(virtueRest);
     encodeVirtues(directContent, character, distanceFromTop, virtueHeight);
     distanceFromTop += calculateBoxIncrement(virtueHeight);
-
+    float socialCombatHeight = encodeSocialCombatStats(directContent, character, distanceFromTop, 115);
+    float willpowerHeight = encodeWillpower(directContent, character, distanceFromTop, 43);
+    float willpowerIncrement = calculateBoxIncrement(willpowerHeight);
+    distanceFromTop += willpowerIncrement;
+    float intimaciesHeight = encodeIntimacies(directContent, character, distanceFromTop, socialCombatHeight - willpowerIncrement);
+    distanceFromTop += calculateBoxIncrement(intimaciesHeight);
     float weaponryHeight = encodeWeaponry(directContent, character, distanceFromTop, 113);
     distanceFromTop += calculateBoxIncrement(weaponryHeight);
     float armourHeight = encodeArmourAndSoak(directContent, character, distanceFromTop, 69);
     distanceFromTop += calculateBoxIncrement(armourHeight);
     float healthHeight = encodeMovementAndHealth(directContent, character, distanceFromTop, 99);
     distanceFromTop += calculateBoxIncrement(healthHeight);
-    float combatHeight = encodeCombatStats(directContent, character, distanceFromTop, 120);
-    distanceFromTop += calculateBoxIncrement(combatHeight);
     float remainingHeight = PdfFirstPageEncoder.CONTENT_HEIGHT - distanceFromTop;
-    encodeSocialCombatStats(directContent, character, distanceFromTop, remainingHeight);
+    encodeCombatStats(directContent, character, distanceFromTop, remainingHeight);
   }
 
   private float encodeMovementAndHealth(
@@ -174,6 +173,17 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
       float height) throws DocumentException, IOException {
     Bounds willpowerBounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
     encodeContent(directContent, new PdfWillpowerEncoder(getBaseFont()), character, willpowerBounds, "Willpower"); //$NON-NLS-1$
+    return height;
+  }
+
+  private float encodeIntimacies(
+      PdfContentByte directContent,
+      IGenericCharacter character,
+      float distanceFromTop,
+      float height) throws DocumentException, IOException {
+    Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
+    IPdfContentEncoder encoder = registry.getIntimaciesEncoder();
+    encodeContent(directContent, encoder, character, bounds, "Intimacies"); //$NON-NLS-1$
     return height;
   }
 }

@@ -64,7 +64,7 @@ public class PdfCharacterSheetDemo {
     SecondEditionEncodingRegistry encodingRegistry = new SecondEditionEncodingRegistry();
     encodingRegistry.setArmourContentEncoder(new SecondEditionArmourEncoder(resources, encodingRegistry.getBaseFont()));
     encodingRegistry.setWeaponContentEncoder(new SecondEditionWeaponryEncoder(resources, encodingRegistry.getBaseFont()));
-    encodingRegistry.setIntimaciesEncoder(new IntimaciesEncoder(resources, encodingRegistry.getBaseFont()));
+    encodingRegistry.setIntimaciesEncoder(new IntimaciesEncoder(encodingRegistry.getBaseFont()));
     return encodingRegistry;
   }
 

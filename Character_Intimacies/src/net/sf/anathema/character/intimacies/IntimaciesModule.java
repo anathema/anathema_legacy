@@ -31,6 +31,6 @@ public class IntimaciesModule extends NullObjectCharacterModuleAdapter {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
         CharacterReportingModule.class);
     SecondEditionEncodingRegistry registry = moduleObject.getSecondEditionEncodingRegistry();
-    registry.setIntimaciesEncoder(new IntimaciesEncoder(resources, registry.getBaseFont()));
+    registry.setIntimaciesEncoder(new IntimaciesEncoder(registry.getBaseFont()));
   }
 }
