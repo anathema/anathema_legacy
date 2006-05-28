@@ -237,8 +237,25 @@ public class SecondEditionHealthAndMovemenTableEncoder implements IPdfTableEncod
       addSpaceCells(table, 1);
     }
     int additionalCount = 9;
-    if (level == HealthLevelType.FOUR || level == HealthLevelType.INCAPACITATED) {
-      addSpaceCells(table, additionalCount);
+    if (level == HealthLevelType.FOUR) {
+      addSpaceCells(table, 1);
+      TableCell cell = new TableCell(new Phrase("Dying", commentFont), Rectangle.BOTTOM); //$NON-NLS-1$
+      cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+      cell.setVerticalAlignment(Element.ALIGN_BOTTOM);
+      cell.setColspan(additionalCount - 1);
+      table.addCell(cell);
+      return;
+    }
+    if (level == HealthLevelType.INCAPACITATED) {
+      addSpaceCells(table, 1);
+      for (int index = 0; index < additionalCount - 1; index++) {
+        if (index <= character.getTrait(AttributeType.Stamina).getCurrentValue()) {
+          table.addCell(createHealthCell(activeImage));
+        }
+        else {
+          table.addCell(createHealthCell(passiveImage));
+        }
+      }
       return;
     }
     for (int index = 0; index < additionalCount; index++) {
