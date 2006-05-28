@@ -1,4 +1,4 @@
-package net.sf.anathema.development.character;
+package net.sf.anathema.development.character.additional;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;

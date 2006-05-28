@@ -1,4 +1,4 @@
-package net.sf.anathema.development.character;
+package net.sf.anathema.development.character.additional;
 
 import java.util.ArrayList;
 import java.util.List;

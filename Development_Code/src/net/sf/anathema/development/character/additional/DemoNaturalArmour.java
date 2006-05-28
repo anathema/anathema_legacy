@@ -1,29 +1,27 @@
-package net.sf.anathema.development.character;
+package net.sf.anathema.development.character.additional;
 
 import net.sf.anathema.character.generic.equipment.weapon.IArmour;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-public class DemoAlienArmour implements IArmour {
+public class DemoNaturalArmour implements IArmour {
+
   public Integer getFatigue() {
-    return 2;
+    return null;
   }
 
   public Integer getHardness(HealthType healthType) {
-    if (healthType == HealthType.Bashing) {
-      return 12;
-    }
-    return 3;
+    return null;
   }
 
   public Integer getMobilityPenalty() {
-    return -4;
+    return null;
   }
 
   public Integer getSoak(HealthType type) {
     if (type == HealthType.Aggravated) {
-      return 10;
+      return null;
     }
     if (type == HealthType.Lethal) {
       return 1;
@@ -32,6 +30,6 @@ public class DemoAlienArmour implements IArmour {
   }
 
   public IIdentificate getName() {
-    return new Identificate("Alien");
+    return new Identificate("Natural");
   }
 }
