@@ -38,6 +38,7 @@ public class SubeffectCharmPresenter implements IPresenter {
           subeffect.setLearned(newValue);
         }
       });
+      display.setSelected(subeffect.isLearned());
     }
   }
 }
