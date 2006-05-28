@@ -7,9 +7,11 @@ public class SubeffectCharm implements ISubeffectCharm {
 
   private final String charmId;
   private final String[] subeffectIds;
+  private final double pointCost;
 
-  public SubeffectCharm(String charmId, String[] subeffectIds) {
+  public SubeffectCharm(String charmId, double pointCost, String[] subeffectIds) {
     this.charmId = charmId;
+    this.pointCost = pointCost;
     this.subeffectIds = subeffectIds;
   }
 
@@ -23,5 +25,9 @@ public class SubeffectCharm implements ISubeffectCharm {
 
   public String[] getSubeffectIds() {
     return subeffectIds;
+  }
+
+  public double getPointCost() {
+    return pointCost;
   }
 }

@@ -18,6 +18,7 @@ import net.sf.anathema.character.impl.model.creation.bonus.IAdditionalMagicLearn
 import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalBonusPointManagment;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
+import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
 
 public class MagicCostCalculator {
 
@@ -96,6 +97,21 @@ public class MagicCostCalculator {
         handleGeneralMagic(bonusPointFactor, magic);
       }
     }
+    handleSubeffectCharm(magic);
+  }
+
+  private void handleSubeffectCharm(IMagic magic) {
+    if (!(magic instanceof ICharm)) {
+      return;
+    }
+    ISpecialCharmConfiguration specialCharmConfiguration = charms.getSpecialCharmConfiguration((ICharm) magic);
+    if (!(specialCharmConfiguration instanceof ISubeffectCharmConfiguration)) {
+      return;
+    }
+    ISubeffectCharmConfiguration configuration = (ISubeffectCharmConfiguration) specialCharmConfiguration;
+    final int count = Math.max(0, (configuration.getCreationLearnedSubeffectCount() - 1));
+    int cost = (int) Math.ceil(count * configuration.getPointCostPerEffect());
+    bonusPointsSpentForCharms += cost;
   }
 
   private List<IMagic> compileCompleteMagicList() {
@@ -120,15 +136,15 @@ public class MagicCostCalculator {
   }
 
   private int determineLearnCount(ICharm charm) {
-    int learnCount = handleSpecialCharm(charm, charms);
+    int learnCount = handleSpecialCharm(charm);
     if (charms.isAlienCharm(charm)) {
       learnCount *= 2;
     }
     return learnCount;
   }
 
-  private int handleSpecialCharm(ICharm charm, ICharmConfiguration charmConfiguration) {
-    ISpecialCharmConfiguration specialCharmConfiguration = charmConfiguration.getSpecialCharmConfiguration(charm);
+  private int handleSpecialCharm(ICharm charm) {
+    ISpecialCharmConfiguration specialCharmConfiguration = charms.getSpecialCharmConfiguration(charm);
     if (specialCharmConfiguration != null) {
       return specialCharmConfiguration.getCreationLearnCount();
     }

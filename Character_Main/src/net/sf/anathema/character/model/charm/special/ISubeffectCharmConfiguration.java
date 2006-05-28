@@ -8,4 +8,9 @@ public interface ISubeffectCharmConfiguration extends ISpecialCharmConfiguration
 
   public ISubeffect getEffectById(String id);
 
+  public int getCreationLearnedSubeffectCount();
+
+  public int getExperienceLearnedSubeffectCount();
+
+  public double getPointCostPerEffect();
 }

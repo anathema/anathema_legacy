@@ -22,6 +22,7 @@ public class SubeffectCharmConfiguration implements ISubeffectCharmConfiguration
   private final ICharm charm;
   private final ISubeffect[] subeffects;
   private final GenericControl<ISpecialCharmLearnListener> control = new GenericControl<ISpecialCharmLearnListener>();
+  private final double pointCost;
 
   public SubeffectCharmConfiguration(
       ICharacterModelContext context,
@@ -35,6 +36,7 @@ public class SubeffectCharmConfiguration implements ISubeffectCharmConfiguration
         return arbitrator.isLearnable(charm);
       }
     };
+    pointCost = visited.getPointCost();
     for (String subeffectId : visited.getSubeffectIds()) {
       effectList.add(new Subeffect(subeffectId, context.getBasicCharacterContext(), condition));
     }
@@ -92,5 +94,29 @@ public class SubeffectCharmConfiguration implements ISubeffectCharmConfiguration
       }
     }
     return 0;
+  }
+
+  public int getCreationLearnedSubeffectCount() {
+    int count = 0;
+    for (ISubeffect subeffect : subeffects) {
+      if (subeffect.isCreationLearned()) {
+        count++;
+      }
+    }
+    return count;
+  }
+
+  public int getExperienceLearnedSubeffectCount() {
+    int count = 0;
+    for (ISubeffect subeffect : subeffects) {
+      if (subeffect.isLearned() && !subeffect.isCreationLearned()) {
+        count++;
+      }
+    }
+    return count;
+  }
+
+  public double getPointCostPerEffect() {
+    return pointCost;
   }
 }
