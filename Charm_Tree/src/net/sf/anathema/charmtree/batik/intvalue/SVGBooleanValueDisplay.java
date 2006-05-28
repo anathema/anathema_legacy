@@ -23,7 +23,7 @@ import org.w3c.dom.svg.SVGGElement;
 public class SVGBooleanValueDisplay implements IBooleanValueView {
 
   private boolean visible;
-  private boolean selected;
+  private boolean selected = false;
   private final String label;
   private final double width;
   private final BooleanValueControl control = new BooleanValueControl();
@@ -51,7 +51,6 @@ public class SVGBooleanValueDisplay implements IBooleanValueView {
     groupElement.appendChild(createTextLabel(document));
     groupElement.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, createEventListener(), false);
     setVisible(true);
-    setSelected(false);
     return groupElement;
   }
 
