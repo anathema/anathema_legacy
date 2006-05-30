@@ -8,29 +8,51 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
 
 import javax.swing.JOptionPane;
 
 import net.sf.anathema.framework.presenter.action.NamedLocale;
-import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
 
 public class PropertiesMatcher {
 
   public static void main(String[] args) throws IOException {
-    File defaultPropertiesFile = FileChoosingUtilities.chooseFile(
-        "Select default properties file",
-        javax.swing.JOptionPane.getRootFrame(),
-        new PropertiesFilter(),
-        new File(".."));
+    // File defaultPropertiesFile = FileChoosingUtilities.chooseFile(
+    // "Select default properties file",
+    // javax.swing.JOptionPane.getRootFrame(),
+    // new PropertiesFilter(),
+    // new File(".."));
     NamedLocale locale = (NamedLocale) JOptionPane.showInputDialog(
         null,
         "Choose Locale:", "Locale", JOptionPane.QUESTION_MESSAGE, null, NamedLocale.values(), null); //$NON-NLS-1$ //$NON-NLS-2$
-   // for (File propertiesFile : defaultPropertiesFiles) {
-      PropertiesMatcher matcher = new PropertiesMatcher(defaultPropertiesFile, locale.getLocale());
+
+    List<File> defaultPropertiesFiles = new ArrayList<File>();
+    File superFolder = new File("..");
+    File[] projectFolders = superFolder.listFiles();
+    for (File file : projectFolders) {
+      if (file.isDirectory()) {
+        File resourceFolder = new File(file, "/resources/language");
+        if (resourceFolder.exists()) {
+          File[] files = resourceFolder.listFiles(new PropertiesFilter());
+          for (File propertiesFile : files) {
+            if (propertiesFile.isDirectory()) {
+              continue;
+            }
+            if (!propertiesFile.getName().contains("_es.")) {
+              defaultPropertiesFiles.add(propertiesFile);
+            }
+          }
+        }
+      }
+    }
+
+    for (File propertiesFile : defaultPropertiesFiles) {
+      PropertiesMatcher matcher = new PropertiesMatcher(propertiesFile, locale.getLocale());
       matcher.matchProperties();
-    //}
+    }
   }
 
   private final Properties localeProperties = new Properties();
@@ -46,7 +68,7 @@ public class PropertiesMatcher {
     defaultPropertiesReader = new BufferedReader(new FileReader(defaultPropertiesFile));
     this.locale = locale;
     getLocaleProperties(defaultPropertiesFile);
-    localePropertiesWriter = new BufferedWriter(new FileWriter(localePropertiesFile));
+    localePropertiesWriter = new BufferedWriter(new FileWriter(new File(localePropertiesFile.getName())));
   }
 
   private void getLocaleProperties(File defaultPropertiesFile) throws IOException {
