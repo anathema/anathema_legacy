@@ -84,18 +84,18 @@ public class CharacterConceptAndRulesPresenter {
   }
 
   private void initTextualDescriptionPresentation(final ITextualDescription description, String resourceKey) {
-    final ITextView conceptView = view.addLabelTextView(resources.getString(resourceKey));
-    conceptView.addTextChangedListener(new IObjectValueChangedListener<String>() {
+    final ITextView textView = view.addLabelTextView(resources.getString(resourceKey));
+    textView.addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         description.setText(newValue);
       }
     });
     description.addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
-        conceptView.setText(newValue);
+        textView.setText(newValue);
       }
     });
-    conceptView.setText(description.getText());
+    textView.setText(description.getText());
   }
 
   private void initGui() {
