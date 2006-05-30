@@ -9,6 +9,8 @@
 		<copyProjectFiles project="Campaign_Plot" subdirectory="core" />
 		<copyProjectFiles project="Character_Abyssal" subdirectory="core" />
 		<copyProjectFiles project="Character_Db" subdirectory="core" />
+		<copyProjectFiles project="Character_Equipment" subdirectory="core" />
+		<copyProjectFiles project="Character_Equipment_Impl" subdirectory="core" />
 		<copyProjectFiles project="Character_Generic" subdirectory="core" />
 		<copyProjectFiles project="Character_Generic_Framework" subdirectory="core" />
 		<copyProjectFiles project="Character_Generic_Impl" subdirectory="core" />
