@@ -3,8 +3,8 @@
 	<description>Common variables for building Anathema.
 	</description>
 
-	<property name="version" value="0.10.1" />
-	<property name="name" value="Juche" />
+	<property name="version" value="0.11" />
+	<property name="name" value="Ricardo Prerelease" />
 
 	<property name="dist" value="./dist" />
 	<property name="lib" value="./lib" />
