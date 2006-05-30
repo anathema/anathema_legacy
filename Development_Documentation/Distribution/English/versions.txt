@@ -8,6 +8,15 @@ http://anathema.sf.net
 			Release 0.11 "Kirighast" (0x/06/06)
 ===------------------------------------------------------------------------------===
 -- Features --
++ Support for Exalted, Second Edition with
++	Both character types from the main rulebook.
++   All Charms from the core book as well as the first two supplements
++   An all-new character sheet
++   Intimacies
++ Character sheet now prints caste-specific Anima ability. 
++	("New Model" sheets only, so it's limited to Solars.)
++	To use, define key "Sheet.AnimaPower.[CASTE/ASPECT].[EDITION]" in custom.properties (see below),
++	where [EDITION] can either be "FirstEdition" or "SecondEdition".
 + Series are printable.
 + Notes are (finally) printable.
 + CharmCascades now honor the preferred ruleset.
