@@ -53,7 +53,7 @@
 			</path>
 			<sequential>
 				<concat destfile="${dist}/temp">
-					<header>/*Anathema (C) 2004,2005 by Sandra Sieroux and Urs Reupke. Published under the GNU GPL. See license.txt for details.*/
+					<header>/*Anathema (C) 2004-2006 by Sandra Sieroux and Urs Reupke. Published under the GNU GPL. See license.txt for details.*/
 					</header>
 					<fileset file="@{file}" />
 				</concat>
