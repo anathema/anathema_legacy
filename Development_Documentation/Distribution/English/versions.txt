@@ -12,6 +12,8 @@ http://anathema.sf.net
 + Notes are (finally) printable.
 + CharmCascades now honor the preferred ruleset.
 + Character Description now sports a "Player" field.
++ Anathema now accepts user-defined strings. The file "custom.properties" (or a locale-specific variant) 
+	in the main directory is read at startup.
 * There have been major changes to the handling of customized natures. 
 	Refer to "nature_instructions.txt" for details.
 
