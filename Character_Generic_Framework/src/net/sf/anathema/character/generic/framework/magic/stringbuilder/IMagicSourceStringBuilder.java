@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
 import net.sf.anathema.character.generic.magic.IMagic;
 
-public interface IMagicSourceStringBuilder {
+public interface IMagicSourceStringBuilder<T extends IMagic> {
 
-  public String createSourceString(IMagic magic, boolean includeHeader);
+  public String createSourceString(T magic);
 }
