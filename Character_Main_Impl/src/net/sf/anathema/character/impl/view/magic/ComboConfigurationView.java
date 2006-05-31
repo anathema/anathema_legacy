@@ -106,16 +106,13 @@ public class ComboConfigurationView implements IComboConfigurationView {
   }
 
   private JButton createClearButton(Icon icon) {
-    Action smartAction = new SmartAction(null, icon) {
-      {
-        setEnabled(false);
-      }
-
+    Action smartAction = new SmartAction(icon) {
       @Override
       protected void execute(Component parentComponent) {
         fireComboCleared();
       }
     };
+    smartAction.setEnabled(false);
     return magicLearnView.addAdditionalAction(smartAction);
   }
 
@@ -126,7 +123,7 @@ public class ComboConfigurationView implements IComboConfigurationView {
   }
 
   private JButton createFinalizeComboButton(Icon icon) {
-    Action smartAction = new SmartAction(null, icon) {
+    Action smartAction = new SmartAction(icon) {
       @Override
       protected void execute(Component parentComponent) {
         fireComboFinalized();
