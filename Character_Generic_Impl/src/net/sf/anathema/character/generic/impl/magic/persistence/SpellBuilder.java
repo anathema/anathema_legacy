@@ -5,14 +5,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import net.sf.anathema.character.generic.impl.magic.MagicSource;
+import net.sf.anathema.character.generic.impl.magic.SourceList;
 import net.sf.anathema.character.generic.impl.magic.Spell;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CostListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ICostListBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.SourceBuilder;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.general.ICostList;
+import net.sf.anathema.character.generic.magic.general.IMagicSource;
 import net.sf.anathema.character.generic.magic.general.IPermanentCostList;
+import net.sf.anathema.character.generic.magic.general.ISourceList;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.lib.exception.PersistenceException;
 
@@ -23,7 +26,8 @@ import org.dom4j.io.SAXReader;
 
 public class SpellBuilder {
   private static ISpell[] spells;
-  private final static ICostListBuilder costListBuilder = new CostListBuilder();
+  private final ICostListBuilder costListBuilder = new CostListBuilder();
+  private final SourceBuilder sourceBuilder = new SourceBuilder();
   private final static SpellBuilder instance = new SpellBuilder();
 
   private SpellBuilder() {
@@ -83,11 +87,16 @@ public class SpellBuilder {
     String circleId = spellElement.attributeValue("circle"); //$NON-NLS-1$
     ICostList temporaryCost = costListBuilder.buildTemporaryCostList(spellElement.element("cost").element("temporary")); //$NON-NLS-1$ //$NON-NLS-2$
     IPermanentCostList permanentCost = costListBuilder.buildPermanentCostList(spellElement.element("cost").element("permanent")); //$NON-NLS-1$ //$NON-NLS-2$
-    String source = spellElement.element("source").attributeValue("source"); //$NON-NLS-1$ //$NON-NLS-2$
-    String page = String.valueOf(spellElement.element("source").attributeValue("page")); //$NON-NLS-1$ //$NON-NLS-2$
-    if (page.equals("null")) { //$NON-NLS-1$
-      page = null;
+    final ISourceList sourceList = buildSource(spellElement);
+    return new Spell(id, CircleType.valueOf(circleId), temporaryCost, permanentCost, sourceList);
+  }
+
+  private ISourceList buildSource(Element spellElement) {
+    final IMagicSource[] sources = sourceBuilder.buildSourceList(spellElement);
+    final SourceList sourceList = new SourceList();
+    for (IMagicSource source : sources) {
+      sourceList.addSource(source);
     }
-    return new Spell(id, CircleType.valueOf(circleId), temporaryCost, permanentCost, new MagicSource(source, page));
+    return sourceList;
   }
 }

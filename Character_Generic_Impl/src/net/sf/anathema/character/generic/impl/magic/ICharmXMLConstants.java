@@ -16,6 +16,7 @@ public interface ICharmXMLConstants {
   public static final String ATTRIB_COUNT = "count"; //$NON-NLS-1$
   public static final String ATTRIB_DURATION = "duration"; //$NON-NLS-1$
   public static final String ATTRIB_EXALT = "exalt"; //$NON-NLS-1$
+  public static final String ATTRIB_EDITION = "edition"; //$NON-NLS-1$
   public static final String ATTRB_FAVORED = "favored"; //$NON-NLS-1$
   public static final String ATTRIB_GROUP = "group"; //$NON-NLS-1$
   public static final String ATTRIB_ID = "id"; //$NON-NLS-1$

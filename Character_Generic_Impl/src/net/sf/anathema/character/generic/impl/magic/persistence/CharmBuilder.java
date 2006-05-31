@@ -1,21 +1,14 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_EXALT;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_PAGE;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_SOURCE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_COST;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_DURATION;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_PERMANENT;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_PREREQUISITE_LIST;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_SOURCE;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_TEMPORARY;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants;
-import net.sf.anathema.character.generic.impl.magic.MagicSource;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmAttributeBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CharmTypeBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ComboRulesBuilder;
@@ -24,6 +17,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.Duration
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.GroupStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ICostListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.IIdStringBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.SourceBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.IAttributeRequirementBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.ITraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.PrerequisiteListBuilder;
@@ -50,6 +44,7 @@ public class CharmBuilder implements ICharmBuilder {
   private final DurationBuilder durationBuilder = new DurationBuilder();
   private final GroupStringBuilder groupBuilder = new GroupStringBuilder();
   private final ComboRulesBuilder comboBuilder = new ComboRulesBuilder();
+  private final SourceBuilder sourceBuilder = new SourceBuilder();
   private final CharmAttributeBuilder attributeBuilder = new CharmAttributeBuilder();
   private final IIdStringBuilder idBuilder;
   private final ITraitPrerequisitesBuilder traitsBuilder;
@@ -86,7 +81,7 @@ public class CharmBuilder implements ICharmBuilder {
     }
     Duration duration = durationBuilder.buildDuration(charmElement.element(TAG_DURATION));
     ICharmTypeModel charmTypeModel = charmTypeBuilder.build(charmElement);
-    List<IMagicSource> sources = buildSourceList(charmElement);
+    IMagicSource[] sources = sourceBuilder.buildSourceList(charmElement);
     CharmPrerequisiteList prerequisiteList = getPrerequisites(charmElement, id);
     IGenericTrait[] prerequisites = prerequisiteList.getPrerequisites();
     final IGenericTrait primaryPrerequisite = (prerequisites.length != 0) ? prerequisites[0] : null;
@@ -101,7 +96,7 @@ public class CharmBuilder implements ICharmBuilder {
         comboRules,
         duration,
         charmTypeModel,
-        sources.toArray(new IMagicSource[0]));
+        sources);
     for (ICharmAttribute attribute : attributeBuilder.buildCharmAttributes(charmElement, primaryPrerequisite)) {
       charm.addCharmAttribute(attribute);
     }
@@ -131,22 +126,6 @@ public class CharmBuilder implements ICharmBuilder {
       throw new CharmException("No chararacter type given for Charm: " + id, e); //$NON-NLS-1$
     }
     return characterType;
-  }
-
-  private List<IMagicSource> buildSourceList(Element charmElement) {
-    List<IMagicSource> sources = new ArrayList<IMagicSource>();
-    List<Element> sourceElements = ElementUtilities.elements(charmElement, TAG_SOURCE);
-    if (sourceElements.isEmpty()) {
-      sources.add(MagicSource.CUSTOM_SOURCE);
-    }
-    else {
-      for (Element sourceElement : sourceElements) {
-        String source = sourceElement.attributeValue(ATTRIB_SOURCE);
-        String page = String.valueOf(sourceElement.attributeValue(ATTRIB_PAGE));
-        sources.add(new MagicSource(source, page));
-      }
-    }
-    return sources;
   }
 
   private void loadSpecialLearning(Element charmElement, Charm charm) {

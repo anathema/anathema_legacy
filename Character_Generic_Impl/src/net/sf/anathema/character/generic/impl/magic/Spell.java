@@ -7,7 +7,9 @@ import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.magic.general.IMagicSource;
 import net.sf.anathema.character.generic.magic.general.IPermanentCostList;
+import net.sf.anathema.character.generic.magic.general.ISourceList;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.template.magic.IFavoringTraitTypeVisitor;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -19,14 +21,14 @@ public class Spell extends Identificate implements ISpell {
   private final CircleType circleType;
   private final ICostList temporaryCost;
   private final IPermanentCostList permanentCost;
-  private IMagicSource source;
+  private ISourceList source;
 
   public Spell(
       String id,
       CircleType circleType,
       ICostList temporaryCost,
       IPermanentCostList permanentCost,
-      IMagicSource source) {
+      ISourceList source) {
     super(id);
     this.circleType = circleType;
     this.temporaryCost = temporaryCost;
@@ -44,7 +46,11 @@ public class Spell extends Identificate implements ISpell {
   }
 
   public IMagicSource getSource() {
-    return source;
+    return source.getPrimarySource();
+  }
+
+  public IMagicSource getSource(IExaltedEdition edition) {
+    return source.getSource(edition);
   }
 
   public ICostList getTemporaryCost() {
