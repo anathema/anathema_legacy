@@ -31,7 +31,7 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
   }
 
   @Override
-  protected PdfPTable createTable(IGenericCharacter character, Bounds bounds) {
+  protected PdfPTable createTable(IGenericCharacter character) {
     IStatsGroup<T>[] groups = createStatsGroups(character);
     float[] columnWidths = calculateColumnWidths(groups);
     PdfPTable table = new PdfPTable(columnWidths);
