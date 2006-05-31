@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import net.sf.anathema.character.generic.impl.magic.CharmUtilities;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.ISourceEntryModel;
-import net.sf.anathema.charmentry.util.CharmUtilities;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;

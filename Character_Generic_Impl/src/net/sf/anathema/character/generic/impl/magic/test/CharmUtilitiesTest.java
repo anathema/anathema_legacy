@@ -1,7 +1,7 @@
-package net.sf.anathema.charmentry.util.test;
+package net.sf.anathema.character.generic.impl.magic.test;
 
+import net.sf.anathema.character.generic.impl.magic.CharmUtilities;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.charmentry.util.CharmUtilities;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
 public class CharmUtilitiesTest extends BasicTestCase {
