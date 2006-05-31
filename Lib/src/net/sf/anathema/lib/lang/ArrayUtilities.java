@@ -29,11 +29,11 @@ public class ArrayUtilities {
     return true;
   }
 
-  public static boolean contains(Object[] array, Object value) {
+  public static <T> boolean contains(T[] array, T value) {
     if (value == null) {
       return false;
     }
-    for (Object object : array) {
+    for (T object : array) {
       if (value.equals(object)) {
         return true;
       }
