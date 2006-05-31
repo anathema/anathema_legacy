@@ -15,7 +15,11 @@ import com.lowagie.text.pdf.PdfContentByte;
 public class PdfTextEncodingUtilities {
 
   public static Font createTextFont(BaseFont baseFont) {
-    return new Font(baseFont, IVoidStateFormatConstants.FONT_SIZE, Font.NORMAL, Color.black);
+    return createFont(baseFont, IVoidStateFormatConstants.FONT_SIZE);
+  }
+
+  public static Font createFont(BaseFont baseFont, float size) {
+    return new Font(baseFont, size, Font.NORMAL, Color.black);
   }
   
   public static ColumnText encodeText(PdfContentByte directContent, Phrase phrase, Bounds bounds, float lineHeight)

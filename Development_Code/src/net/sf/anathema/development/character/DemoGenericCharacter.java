@@ -48,8 +48,8 @@ public class DemoGenericCharacter implements IGenericCharacter {
   private final DemoIntimaciesModel intimaciesModel = new DemoIntimaciesModel();
   private IExaltedRuleSet ruleSet;
   private int painTolerance = 0;
-  private int totalExperiencePoints = 0;
-  private int spentExperiencePoints = 0;
+  private int totalExperiencePoints = 500;
+  private int spentExperiencePoints = 125;
 
   public DemoGenericCharacter(CharacterType characterType) {
     this.characterTemplate = new DemoCharacterTemplate(characterType);

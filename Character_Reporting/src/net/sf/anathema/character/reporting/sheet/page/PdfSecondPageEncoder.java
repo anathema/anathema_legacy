@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfBackgroundEncoder;
+import net.sf.anathema.character.reporting.sheet.common.PdfExperienceEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfHorizontalLineContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.PdfComboEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
@@ -18,11 +19,6 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfSecondPageEncoder implements IPdfPageEncoder {
 
-  private final IPdfContentEncoder nullContentEncoder = new IPdfContentEncoder() {
-    public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
-        throws DocumentException {
-    }
-  };
   private final BaseFont baseFont;
   private final PdfPageConfiguration configuration;
   private PdfBoxEncoder boxEncoder;
@@ -69,7 +65,8 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds bounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
-    boxEncoder.encodeBox(directContent, nullContentEncoder, character, bounds, "Experience"); //$NON-NLS-1$
+    IPdfContentEncoder encoder = new PdfExperienceEncoder(resources, baseFont);
+    boxEncoder.encodeBox(directContent, encoder, character, bounds, "Experience"); //$NON-NLS-1$
     return height;
   }
 
@@ -94,7 +91,6 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
     boxEncoder.encodeBox(directContent, encoder, character, backgroundBounds, "Backgrounds"); //$NON-NLS-1$
     return height;
   }
-
 
   private float encodePossessions(
       PdfContentByte directContent,
