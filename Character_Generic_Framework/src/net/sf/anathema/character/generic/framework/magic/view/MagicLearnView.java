@@ -58,9 +58,7 @@ public class MagicLearnView implements IMagicLearnView {
         fireMagicAdded(learnOptionsList.getSelectedValues());
       }
     };
-    smartAction.setEnabled(false);
-    smartAction.setToolTipText(tooltip);
-    return new JButton(smartAction);
+    return createButton(tooltip, smartAction);
   }
 
   private JButton createRemoveMagicButton(Icon icon, String tooltip) {
@@ -70,6 +68,10 @@ public class MagicLearnView implements IMagicLearnView {
         fireMagicRemoved(learnedList.getSelectedValues());
       }
     };
+    return createButton(tooltip, smartAction);
+  }
+
+  private JButton createButton(String tooltip, final SmartAction smartAction) {
     smartAction.setEnabled(false);
     smartAction.setToolTipText(tooltip);
     return new JButton(smartAction);
