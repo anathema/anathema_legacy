@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
+import net.sf.anathema.character.presenter.charm.SpellViewProperties;
 import net.sf.anathema.charmtree.batik.intvalue.SVGMultiLearnableCharmView;
 import net.sf.anathema.charmtree.batik.intvalue.SVGSubeffectCharmView;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionView;
@@ -16,7 +17,7 @@ public interface IMagicViewFactory {
 
   public IComboConfigurationView createCharmComboView();
 
-  public ISpellView createSpellView();
+  public ISpellView createSpellView(SpellViewProperties properties);
 
   public SVGMultiLearnableCharmView createMultiLearnableCharmView(ISpecialCharm charm, double width, Color color);
 

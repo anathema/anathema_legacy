@@ -1,13 +1,11 @@
 package net.sf.anathema.character.impl.view.magic;
 
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
@@ -18,11 +16,15 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
 import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
+import net.sf.anathema.character.presenter.charm.SpellViewProperties;
 import net.sf.anathema.character.view.magic.ISpellView;
-import net.sf.anathema.character.view.magic.ISpellViewProperties;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.ObjectValueControl;
+import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
+import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledStringValueView;
 
 public class SpellView implements ISpellView {
 
@@ -31,31 +33,41 @@ public class SpellView implements ISpellView {
   private JPanel content = new JPanel(new GridDialogLayout(1, false));
   private JComboBox circleComboBox;
   private final ObjectValueControl circleControl = new ObjectValueControl();
-  private JLabel nameLabel;
-  private JLabel circleLabel;
-  private JLabel costLabel;
-  private JLabel sourceLabel;
+  private final IGridDialogPanel detailPanel = new DefaultGridDialogPanel();
 
-  public JComponent getComponent() {
-    return content;
-  }
+  private final SpellViewProperties properties;
 
-  public void initGui(IIdentificate[] circles, final ISpellViewProperties properties) {
-    JComponent selectionPanel = createSelectionPanel(circles, properties);
-    JComponent detailsPanel = createDetailsPanel(properties);
-    GridDialogLayoutData data = new GridDialogLayoutData();
-    data.setHorizontalAlignment(GridAlignment.FILL);
-    content.add(selectionPanel, data);
-    content.add(detailsPanel, data);
-  }
-
-  private JPanel createSelectionPanel(IIdentificate[] circles, final ISpellViewProperties properties) {
+  public SpellView(final SpellViewProperties properties) {
+    this.properties = properties;
     this.magicLearnView = new MagicLearnView() {
       @Override
       protected ListSelectionListener createLearnedListListener(final JButton button, final JList list) {
         return properties.getRemoveButtonEnabledListener(button, list);
       }
     };
+  }
+
+  public JComponent getComponent() {
+    return content;
+  }
+
+  public IValueView<String> addDetailValueView(String label) {
+    LabelledStringValueView view = new LabelledStringValueView(label, new GridDialogLayoutData());
+    view.addComponents(detailPanel);
+    return view;
+  }
+
+  public void initGui(IIdentificate[] circles) {
+    JComponent selectionPanel = createSelectionPanel(circles);
+    GridDialogLayoutData data = new GridDialogLayoutData();
+    data.setHorizontalAlignment(GridAlignment.FILL);
+    content.add(selectionPanel, data);
+    final JPanel detailContent = detailPanel.getContent();
+    detailContent.setBorder(new TitledBorder(properties.getDetailTitle()));
+    content.add(detailContent, data);
+  }
+
+  private JPanel createSelectionPanel(IIdentificate[] circles) {
     JComboBox box = magicLearnView.addFilterBox(
         properties.getCircleString(),
         circles,
@@ -70,33 +82,6 @@ public class SpellView implements ISpellView {
     magicLearnView.addTo(selectionPanel);
     selectionPanel.setBorder(new TitledBorder(properties.getSelectionTitle()));
     return selectionPanel;
-  }
-
-  public void setSpellDetails(String name, String circle, String costString, String sourceString) {
-    nameLabel.setText(name);
-    circleLabel.setText(circle);
-    costLabel.setText(costString);
-    sourceLabel.setText(sourceString);
-  }
-
-  private JComponent createDetailsPanel(ISpellViewProperties properties) {
-    JPanel detailsPanel = new JPanel(new GridDialogLayout(2, false));
-    detailsPanel.setBorder(new TitledBorder(properties.getDetailTitle()));
-    nameLabel = new JLabel();
-    nameLabel.setFont(nameLabel.getFont().deriveFont(Font.BOLD));
-    GridDialogLayoutData nameData = new GridDialogLayoutData();
-    nameData.setHorizontalSpan(2);
-    detailsPanel.add(nameLabel, nameData);
-    detailsPanel.add(new JLabel(properties.getCircleString() + ":")); //$NON-NLS-1$
-    circleLabel = new JLabel();
-    detailsPanel.add(circleLabel);
-    detailsPanel.add(new JLabel(properties.getCostString() + ":")); //$NON-NLS-1$
-    costLabel = new JLabel();
-    detailsPanel.add(costLabel);
-    detailsPanel.add(new JLabel(properties.getSourceString() + ":")); //$NON-NLS-1$
-    sourceLabel = new JLabel();
-    detailsPanel.add(sourceLabel);
-    return detailsPanel;
   }
 
   public void addMagicViewListener(IMagicViewListener listener) {

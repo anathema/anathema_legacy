@@ -28,6 +28,7 @@ import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
+import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 public abstract class SpellPresenter implements IMagicSubPresenter {
 
@@ -38,9 +39,11 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
   private final IResources resources;
   private CircleType circle;
   private final IMagicSourceStringBuilder sourceStringBuilder;
+  private final SpellViewProperties properties;
 
   public SpellPresenter(ICharacterStatistics statistics, IResources resources) {
     this.statistics = statistics;
+    this.properties = new SpellViewProperties(resources, statistics);
     this.resources = resources;
     this.creator = new ScreenDisplayInfoStringBuilder(resources);
     this.sourceStringBuilder = new MagicSourceStringBuilder(resources);
@@ -49,14 +52,14 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
   }
 
   public TabContent init(IMagicViewFactory magicView) {
-    final ISpellView view = magicView.createSpellView();
+    final ISpellView view = magicView.createSpellView(properties);
     IIdentificate[] circles;
     IIdentificate[] allowedCircles = getCircles();
     circles = new IIdentificate[allowedCircles.length + 1];
     circles[0] = new Identificate("AllCircles"); //$NON-NLS-1$
     System.arraycopy(allowedCircles, 0, circles, 1, allowedCircles.length);
-
-    view.initGui(circles, new SpellViewProperties(resources, statistics));
+    initDetailsView(view);
+    view.initGui(circles);
     view.addMagicViewListener(new IMagicViewListener() {
       public void magicRemoved(Object[] removedSpells) {
         List<ISpell> spellList = new ArrayList<ISpell>();
@@ -91,13 +94,6 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
       }
     });
     updateSpellListsInView(view);
-    final ListSelectionListener detailListener = new ListSelectionListener() {
-      public void valueChanged(ListSelectionEvent e) {
-        updateSpellDetails((ISpell) ((JList) e.getSource()).getSelectedValue(), view);
-      }
-    };
-    view.addOptionListListener(detailListener);
-    view.addSelectionListListener(detailListener);
     statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
       public void experiencedChanged(boolean experienced) {
@@ -108,20 +104,28 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
     return new TabContent(header, view);
   }
 
+  private void initDetailsView(final ISpellView view) {
+    final IValueView<String> circleView = view.addDetailValueView(properties.getCircleString() + ":"); //$NON-NLS-1$
+    final IValueView<String> costView = view.addDetailValueView(properties.getCostString() + ":"); //$NON-NLS-1$
+    final IValueView<String> sourceView = view.addDetailValueView(properties.getSourceString() + ":"); //$NON-NLS-1$
+    final ListSelectionListener detailListener = new ListSelectionListener() {
+      public void valueChanged(ListSelectionEvent e) {
+        final ISpell spell = (ISpell) ((JList) e.getSource()).getSelectedValue();
+        if (spell == null) {
+          return;
+        }
+        circleView.setValue(resources.getString(spell.getCircleType().getId()));
+        costView.setValue(creator.createCostString(spell));
+        sourceView.setValue(sourceStringBuilder.createSourceString(spell, false));
+      }
+    };
+    view.addOptionListListener(detailListener);
+    view.addSelectionListListener(detailListener);
+  }
+
   protected abstract CircleType[] getCircles();
 
   protected abstract String getTabTitleResourceKey();
-
-  private void updateSpellDetails(ISpell spell, ISpellView view) {
-    if (spell == null) {
-      return;
-    }
-    String name = resources.getString(spell.getId());
-    String circleName = resources.getString(spell.getCircleType().getId());
-    view.setSpellDetails(name, circleName, creator.createCostString(spell), sourceStringBuilder.createSourceString(
-        spell,
-        false));
-  }
 
   private void updateSpellListsInView(final ISpellView spellView) {
     spellView.setLearnedMagic(getCircleFilteredSpellList(spellConfiguration.getLearnedSpells()).toArray(new ISpell[0]));

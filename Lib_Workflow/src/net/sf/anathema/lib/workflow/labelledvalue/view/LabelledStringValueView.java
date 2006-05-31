@@ -16,8 +16,14 @@ public class LabelledStringValueView implements IValueView<String> {
 
   protected final JLabel titleLabel;
   protected final JLabel valueLabel;
+  private final GridDialogLayoutData textData;
 
   public LabelledStringValueView(String labelText) {
+    this(labelText, AnathemaLayoutUtilities.createAlignedGridDialogData(GridAlignment.FILL));
+  }
+
+  public LabelledStringValueView(String labelText, GridDialogLayoutData textData) {
+    this.textData = textData;
     this.titleLabel = new JLabel(labelText);
     this.valueLabel = new JLabel();
   }
@@ -31,12 +37,9 @@ public class LabelledStringValueView implements IValueView<String> {
       public void fillInto(JPanel panel, int columnCount) {
         GridDialogLayoutData beginData = new GridDialogLayoutData();
         beginData.setHorizontalAlignment(GridAlignment.BEGINNING);
-        beginData.setGrabExcessHorizontalSpace(true);
         panel.add(titleLabel, beginData);
-
-        GridDialogLayoutData endData = AnathemaLayoutUtilities.createAlignedGridDialogData(GridAlignment.FILL);
-        endData.setHorizontalSpan(columnCount - 1);
-        panel.add(valueLabel, endData);
+        textData.setHorizontalSpan(columnCount - 1);
+        panel.add(valueLabel, textData);
       }
     });
   }
