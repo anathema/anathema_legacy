@@ -12,8 +12,8 @@ import javax.swing.event.ListSelectionListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.MagicInfoStringBuilder;
-import net.sf.anathema.character.generic.framework.magic.stringbuilder.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ScreenDisplayInfoStringBuilder;
+import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.SpellSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
@@ -39,7 +39,7 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
   private final ICharacterTemplate characterTemplate;
   private final IResources resources;
   private CircleType circle;
-  private final IMagicSourceStringBuilder sourceStringBuilder;
+  private final IMagicSourceStringBuilder<ISpell> sourceStringBuilder;
   private final SpellViewProperties properties;
 
   public SpellPresenter(ICharacterStatistics statistics, IResources resources) {
@@ -47,7 +47,7 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
     this.properties = new SpellViewProperties(resources, statistics);
     this.resources = resources;
     this.creator = new ScreenDisplayInfoStringBuilder(resources);
-    this.sourceStringBuilder = new MagicSourceStringBuilder(resources);
+    this.sourceStringBuilder = new SpellSourceStringBuilder(resources, statistics.getRules().getEdition());
     this.spellConfiguration = statistics.getSpells();
     this.characterTemplate = statistics.getCharacterTemplate();
   }
@@ -120,7 +120,7 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
         titleView.setText(resources.getString(spell.getId()));
         circleView.setValue(resources.getString(spell.getCircleType().getId()));
         costView.setValue(creator.createCostString(spell));
-        sourceView.setValue(sourceStringBuilder.createSourceString(spell, false));
+        sourceView.setValue(sourceStringBuilder.createSourceString(spell));
       }
     };
     view.addOptionListListener(detailListener);
