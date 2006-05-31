@@ -23,6 +23,7 @@ http://anathema.sf.net
 +	Combo-field prints only when combos learned
 +	Prints caste-specific Anima ability: To use, define key "Sheet.AnimaPower.[CASTE/ASPECT].[EDITION]" 
 +	in custom.properties (see below), where [EDITION] can either be "FirstEdition" or "SecondEdition".
++	Makes use of the incomplete Equipment and Crafts models.
 + Series and Notes (finally) are printable.
 
 -- Usability --
