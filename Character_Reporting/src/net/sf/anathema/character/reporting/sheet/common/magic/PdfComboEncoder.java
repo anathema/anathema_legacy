@@ -3,6 +3,7 @@ package net.sf.anathema.character.reporting.sheet.common.magic;
 import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.LINE_HEIGHT;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ITransformer;
+import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.reporting.sheet.common.NullPdfContentEncoder;
@@ -22,22 +23,34 @@ import com.lowagie.text.pdf.PdfContentByte;
 public class PdfComboEncoder {
 
   private final IResources resources;
-  private final BaseFont baseFont;
   private final PdfBoxEncoder boxEncoder;
+  private final Font font;
+  private final Font nameFont;
 
   public PdfComboEncoder(IResources resources, BaseFont baseFont) {
     this.resources = resources;
-    this.baseFont = baseFont;
     this.boxEncoder = new PdfBoxEncoder(resources, baseFont);
+    this.font = PdfTextEncodingUtilities.createTextFont(baseFont);
+    this.nameFont = new Font(font);
+    this.nameFont.setStyle(Font.BOLD);
   }
 
-  public float encodeCombos(PdfContentByte directContent, IGenericCombo[] combos, Bounds restOfPage)
+  public float encodeCombos(PdfContentByte directContent, IGenericCharacter character, Bounds restOfPage)
       throws DocumentException {
+    IGenericCombo[] combos = character.getCombos();
+    if (combos.length == 0) {
+      return 0;
+    }
     Bounds contentBounds = boxEncoder.calculateContentBounds(restOfPage);
+    Phrase phrase = createComboPhrase(combos);
+    float yPosition = PdfTextEncodingUtilities.encodeText(directContent, phrase, contentBounds, LINE_HEIGHT).getYLine();
+    Bounds actualBoxBounds = calculateActualBoxBounds(restOfPage, yPosition);
+    boxEncoder.encodeBox(directContent, new NullPdfContentEncoder(), null, actualBoxBounds, "Combos"); //$NON-NLS-1$
+    return actualBoxBounds.y;
+  }
+
+  private Phrase createComboPhrase(IGenericCombo[] combos) {
     Phrase phrase = new Phrase();
-    Font font = PdfTextEncodingUtilities.createTextFont(baseFont);
-    Font nameFont = new Font(font);
-    nameFont.setStyle(Font.BOLD);
     for (IGenericCombo combo : combos) {
       if (!phrase.isEmpty()) {
         phrase.add(new Chunk("\n", font)); //$NON-NLS-1$
@@ -46,14 +59,10 @@ public class PdfComboEncoder {
       String charmString = getCharmString(combo);
       phrase.add(new Chunk(charmString, font));
     }
-    float yPosition = PdfTextEncodingUtilities.encodeText(directContent, phrase, contentBounds, LINE_HEIGHT).getYLine();
-    Bounds actualBounds = calculateActualBounds(restOfPage, yPosition);
-    boxEncoder.encodeBox(directContent, new NullPdfContentEncoder(), null, actualBounds, "Combos"); //$NON-NLS-1$
-    return actualBounds.y;
-
+    return phrase;
   }
 
-  private Bounds calculateActualBounds(Bounds restOfPage, float textEndY) {
+  private Bounds calculateActualBoxBounds(Bounds restOfPage, float textEndY) {
     float boxY = textEndY - 3;
     return new Bounds(restOfPage.x, boxY, restOfPage.width, restOfPage.getMaxY() - boxY);
   }

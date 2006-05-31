@@ -1,24 +1,16 @@
 package net.sf.anathema.character.reporting.sheet.page;
 
-import net.disy.commons.core.util.ArrayUtilities;
-import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.magic.PdfComboEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
-import com.lowagie.text.Chunk;
 import com.lowagie.text.DocumentException;
-import com.lowagie.text.Font;
-import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
@@ -61,38 +53,12 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
 
   private float encodeCombos(PdfContentByte directContent, IGenericCharacter character, float distanceFromTop)
       throws DocumentException {
-    IGenericCombo[] combos = character.getCombos();
-    if (combos.length == 0) {
-      return 0;
-    }
-    Bounds restOfPage = boxEncoder.calculateContentBounds(new Bounds(
-        configuration.getLeftColumnX(0),
+    Bounds restOfPage = new Bounds(
+        configuration.getLeftX(),
         configuration.getLowerContentY(),
         configuration.getContentWidth(),
-        configuration.getContentHeight() - distanceFromTop));
-    Bounds contentBounds = boxEncoder.calculateContentBounds(restOfPage);
-    Phrase phrase = new Phrase();
-    Font font = PdfTextEncodingUtilities.createTextFont(baseFont);
-    Font nameFont = new Font(font);
-    nameFont.setStyle(Font.BOLD);
-    for (IGenericCombo combo : combos) {
-      if (!phrase.isEmpty()) {
-        phrase.add(new Chunk("\n", font)); //$NON-NLS-1$
-      }
-      phrase.add(new Chunk(combo.getName() + ": ", nameFont)); //$NON-NLS-1$
-      String[] charmNames = ArrayUtilities.transform(
-          combo.getCharms(),
-          String.class,
-          new ITransformer<ICharm, String>() {
-            public String transform(ICharm input) {
-              return resources.getString(input.getId());
-            }
-          });
-      String charmString = AnathemaStringUtilities.concat(charmNames, ", "); //$NON-NLS-1$
-      phrase.add(new Chunk(charmString, font));
-      PdfTextEncodingUtilities.encodeText(directContent, phrase, contentBounds, IVoidStateFormatConstants.LINE_HEIGHT);
-    }
-    return 0;
+        configuration.getContentHeight() - distanceFromTop);
+    return new PdfComboEncoder(resources, baseFont).encodeCombos(directContent, character, restOfPage);
   }
 
   private float encodeExperience(
