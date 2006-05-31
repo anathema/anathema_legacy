@@ -74,6 +74,10 @@ public class DemoGenericCharacter implements IGenericCharacter {
   public ICharacterPoints getCharacterPoints() {
     return null;
   }
+  
+  public void addCombo(IGenericCombo combo) {
+    allCombos.add(combo);
+  }
 
   public IGenericCombo[] getCombos() {
     return allCombos.toArray(new IGenericCombo[allCombos.size()]);

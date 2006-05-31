@@ -9,7 +9,9 @@ import net.sf.anathema.character.equipment.impl.reporting.second.SecondEditionAr
 import net.sf.anathema.character.equipment.impl.reporting.second.SecondEditionWeaponryEncoder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
+import net.sf.anathema.character.generic.impl.magic.test.DummyCharm;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
+import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
@@ -18,6 +20,7 @@ import net.sf.anathema.character.impl.module.CharacterModule;
 import net.sf.anathema.character.intimacies.IntimaciesEncoder;
 import net.sf.anathema.character.reporting.sheet.SecondEditionEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
+import net.sf.anathema.character.reporting.sheet.page.PdfSecondPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionPartEncoder;
 import net.sf.anathema.character.solar.reporting.PdfSolarVirtueFlawEncoder;
@@ -28,6 +31,7 @@ import net.sf.anathema.development.character.additional.DemoIntimacy;
 import net.sf.anathema.development.character.additional.DemoMeleeWeapon;
 import net.sf.anathema.development.character.additional.DemoNaturalArmour;
 import net.sf.anathema.development.character.additional.DemoRangeWeapon;
+import net.sf.anathema.development.character.magic.DemoGenericCombo;
 import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.lib.control.BrowserControl;
@@ -42,7 +46,7 @@ import com.lowagie.text.pdf.PdfWriter;
 public class PdfCharacterSheetDemo {
 
   public static void main(String[] args) {
-    Document document = new Document(PageSize.A4);
+    Document document = new Document(PageSize.LETTER);
     try {
       System.err.println(document.getPageSize());
       File outputStream = new File("iText.pdf");
@@ -60,6 +64,11 @@ public class PdfCharacterSheetDemo {
           7,
           pageConfiguration);
       new PdfFirstPageEncoder(partEncoder, pageConfiguration).encode(directContent, character, description);
+      document.newPage();
+      new PdfSecondPageEncoder(resources, partEncoder.getBaseFont(), pageConfiguration).encode(
+          directContent,
+          character,
+          description);
       BrowserControl.displayUrl(outputStream.toURL());
     }
     catch (Exception de) {
@@ -98,6 +107,12 @@ public class PdfCharacterSheetDemo {
     character.addSpecialtyTrait(AbilityType.Bureaucracy);
     character.addSubbedTrait(AbilityType.Craft);
     character.setPainTolerance(3);
+    character.addCombo(new DemoGenericCombo("Combo 1", new ICharm[] {
+        new DummyCharm("FirstCharm.Id"),
+        new DummyCharm("SecondCharm.Id") }));
+    character.addCombo(new DemoGenericCombo("Combo Nummero 2", new ICharm[] {
+        new DummyCharm("Und noch eine Charm Id"),
+        new DummyCharm("Und noch eine") }));
     character.getEquipmentModel().addPrintArmour(new DemoNaturalArmour());
     character.getEquipmentModel().addPrintArmour(new DemoAlienArmour());
     character.getEquipmentModel().addPrintWeapon(new DemoRangeWeapon());

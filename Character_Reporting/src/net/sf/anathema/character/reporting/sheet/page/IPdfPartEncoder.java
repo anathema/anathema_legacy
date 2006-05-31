@@ -1,7 +1,5 @@
 package net.sf.anathema.character.reporting.sheet.page;
 
-import java.io.IOException;
-
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
@@ -16,23 +14,21 @@ import com.lowagie.text.pdf.PdfContentByte;
 public interface IPdfPartEncoder {
 
   public void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds)
-      throws DocumentException,
-      IOException;
+      throws DocumentException;
 
   public void encodeAttributes(
       PdfContentByte directContent,
       Bounds contentBounds,
       IGroupedTraitType[] groups,
-      IGenericTraitCollection traitCollection) throws DocumentException, IOException;
+      IGenericTraitCollection traitCollection) throws DocumentException;
 
   public void encodeEditionSpecificFirstPagePart(
       PdfContentByte directContent,
       IGenericCharacter character,
-      float distanceFromTop) throws DocumentException, IOException;
+      float distanceFromTop) throws DocumentException;
 
   public void encodeEssence(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds)
-      throws DocumentException,
-      IOException;
+      throws DocumentException;
 
   public void encodePersonalInfos(
       PdfContentByte directContent,

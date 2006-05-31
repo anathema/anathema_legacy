@@ -1,13 +1,19 @@
 package net.sf.anathema.character.reporting.sheet.util;
 
+import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.lib.logging.Logger;
+import net.sf.anathema.lib.resources.IResources;
 
+import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfBoxEncoder extends AbstractPdfEncoder {
 
+  private static final Logger logger = Logger.getLogger(PdfBoxEncoder.class);
   private static final int CONTENT_INSET = 5;
   private static final int HEADER_FONT_PADDING = 3;
   private static final int HEADER_FONT_SIZE = IVoidStateFormatConstants.HEADER_FONT_SIZE;
@@ -15,14 +21,41 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
   private static final int ARCSPACE = HEADER_HEIGHT / 2;
   private static final int ARC_SIZE = 2 * ARCSPACE;
   private BaseFont baseFont;
+  private final IResources resources;
 
-  public PdfBoxEncoder(BaseFont baseFont) {
+  public PdfBoxEncoder(IResources resources, BaseFont baseFont) {
+    this.resources = resources;
     this.baseFont = baseFont;
+  }
+
+  public Bounds calculateContentBounds(Bounds bounds) {
+    Bounds contentBoxBounds = calculateContentBoxBounds(bounds);
+    return calculateInsettedBounds(contentBoxBounds);
   }
 
   public Bounds encodeBox(PdfContentByte directContent, Bounds bounds, String title) {
     Bounds contentBounds = encodeContentBox(directContent, bounds);
     encodeHeaderBox(directContent, bounds, title);
+    return calculateInsettedBounds(contentBounds);
+  }
+
+  public void encodeBox(
+      PdfContentByte directContent,
+      IPdfContentEncoder encoder,
+      IGenericCharacter character,
+      Bounds bounds,
+      String headerId) throws DocumentException {
+    String header = resources.getString("Sheet.Header." + headerId); //$NON-NLS-1$
+    Bounds contentBounds = encodeBox(directContent, bounds, header);
+    if (encoder != null) {
+      encoder.encode(directContent, character, contentBounds);
+    }
+    else {
+      logger.error("Encoder missing for " + header); //$NON-NLS-1$
+    }
+  }
+
+  private Bounds calculateInsettedBounds(Bounds contentBounds) {
     return new Bounds(
         contentBounds.x + CONTENT_INSET,
         contentBounds.y,
@@ -31,7 +64,7 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
   }
 
   private Bounds encodeContentBox(PdfContentByte directContent, Bounds bounds) {
-    Bounds contentBounds = calculateContentBounds(bounds);
+    Bounds contentBounds = calculateContentBoxBounds(bounds);
     setFillColorBlack(directContent);
     directContent.setLineWidth(0.5f);
     directContent.moveTo(contentBounds.x, contentBounds.y + ARCSPACE);
@@ -55,7 +88,7 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
     directContent.arc(minX, minY, minX + ARC_SIZE, minY + ARC_SIZE, startAngle, 90);
   }
 
-  private Bounds calculateContentBounds(Bounds bounds) {
+  private Bounds calculateContentBoxBounds(Bounds bounds) {
     int headerPadding = HEADER_HEIGHT / 2;
     return new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - headerPadding);
   }

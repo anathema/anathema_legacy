@@ -52,6 +52,10 @@ public class PdfPageConfiguration {
     return pageWidth - marginLeft - marginRight;
   }
 
+  public float getLowerContentY() {
+    return marginBottom;
+  }
+
   public Bounds getFirstColumnRectangle(float spaceFromTop, float height, int columnCount) {
     return getColumnRectangle(spaceFromTop, height, columnCount, getLeftColumnX(0));
   }

@@ -1,9 +1,6 @@
 package net.sf.anathema.character.reporting.sheet.page;
 
 import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.PADDING;
-
-import java.io.IOException;
-
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
@@ -15,7 +12,7 @@ import net.sf.anathema.character.reporting.util.Bounds;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class PdfFirstPageEncoder {
+public class PdfFirstPageEncoder implements IPdfPageEncoder {
 
   public static final int CONTENT_HEIGHT = 755;
   private final PdfPageConfiguration pageConfiguration;
@@ -24,13 +21,12 @@ public class PdfFirstPageEncoder {
 
   public PdfFirstPageEncoder(IPdfPartEncoder partEncoder, PdfPageConfiguration pageConfiguration) {
     this.partEncoder = partEncoder;
-    this.boxEncoder = new PdfBoxEncoder(partEncoder.getBaseFont());
+    this.boxEncoder = new PdfBoxEncoder(partEncoder.getResources(), partEncoder.getBaseFont());
     this.pageConfiguration = pageConfiguration;
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description)
-      throws DocumentException,
-      IOException {
+      throws DocumentException {
     int distanceFromTop = 0;
     final int firstRowHeight = 51;
     encodePersonalInfo(directContent, character, description, distanceFromTop, firstRowHeight);
@@ -46,7 +42,7 @@ public class PdfFirstPageEncoder {
       PdfContentByte directContent,
       IGenericCharacter character,
       float distanceFromTop,
-      final float firstRowHeight) throws DocumentException, IOException {
+      final float firstRowHeight) throws DocumentException {
     Bounds essenceBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, firstRowHeight);
     String title = getHeaderLabel("Essence"); //$NON-NLS-1$
     Bounds essenceContentBounds = boxEncoder.encodeBox(directContent, essenceBounds, title);
@@ -71,16 +67,14 @@ public class PdfFirstPageEncoder {
   }
 
   private void encodeFirstColumn(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
-      throws DocumentException,
-      IOException {
+      throws DocumentException {
     int attributeHeight = encodeAttributes(directContent, character, distanceFromTop);
     distanceFromTop += attributeHeight + PADDING;
     encodeAbilities(directContent, character, distanceFromTop);
   }
 
   private void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
-      throws DocumentException,
-      IOException {
+      throws DocumentException {
     int abilitiesHeight = CONTENT_HEIGHT - distanceFromTop;
     Bounds boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
     Bounds contentBounds = boxEncoder.encodeBox(directContent, boxBounds, getHeaderLabel("Abilities")); //$NON-NLS-1$
@@ -88,8 +82,7 @@ public class PdfFirstPageEncoder {
   }
 
   private int encodeAttributes(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
-      throws DocumentException,
-      IOException {
+      throws DocumentException {
     int attributeHeight = 128;
     Bounds attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 1);
     Bounds attributesContentBounds = boxEncoder.encodeBox(directContent, attributeBounds, getHeaderLabel("Attributes")); //$NON-NLS-1$

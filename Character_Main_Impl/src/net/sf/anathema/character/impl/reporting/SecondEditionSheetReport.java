@@ -12,6 +12,7 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.sheet.SecondEditionEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
+import net.sf.anathema.character.reporting.sheet.page.PdfSecondPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionPartEncoder;
 import net.sf.anathema.framework.itemdata.model.IItemData;
@@ -52,6 +53,8 @@ public class SecondEditionSheetReport implements IITextReport {
     SecondEditionPartEncoder partEncoder = new SecondEditionPartEncoder(encodingRegistry, resources, 7, configuration);
     try {
       new PdfFirstPageEncoder(partEncoder, configuration).encode(directContent, character, description);
+      document.newPage();
+      new PdfSecondPageEncoder(resources, partEncoder.getBaseFont(), configuration).encode(directContent, character, description);
     }
     catch (Exception e) {
       throw new ReportException(e);
