@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -105,6 +106,8 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
   }
 
   private void initDetailsView(final ISpellView view) {
+    final JLabel titleView = view.addDetailTitleView();
+    titleView.setText(" "); //$NON-NLS-1$
     final IValueView<String> circleView = view.addDetailValueView(properties.getCircleString() + ":"); //$NON-NLS-1$
     final IValueView<String> costView = view.addDetailValueView(properties.getCostString() + ":"); //$NON-NLS-1$
     final IValueView<String> sourceView = view.addDetailValueView(properties.getSourceString() + ":"); //$NON-NLS-1$
@@ -114,6 +117,7 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
         if (spell == null) {
           return;
         }
+        titleView.setText(resources.getString(spell.getId()));
         circleView.setValue(resources.getString(spell.getCircleType().getId()));
         costView.setValue(creator.createCostString(spell));
         sourceView.setValue(sourceStringBuilder.createSourceString(spell, false));

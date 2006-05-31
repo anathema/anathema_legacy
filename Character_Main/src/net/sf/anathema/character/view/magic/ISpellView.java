@@ -1,5 +1,7 @@
 package net.sf.anathema.character.view.magic;
 
+import javax.swing.JLabel;
+
 import net.sf.anathema.character.generic.framework.magic.view.IMagicLearnView;
 import net.sf.anathema.framework.presenter.view.ISimpleTabView;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -13,4 +15,6 @@ public interface ISpellView extends ISimpleTabView, IMagicLearnView {
   public void addCircleSelectionListener(IObjectValueChangedListener listener);
 
   public IValueView<String> addDetailValueView(String label);
+
+  public JLabel addDetailTitleView();
 }
