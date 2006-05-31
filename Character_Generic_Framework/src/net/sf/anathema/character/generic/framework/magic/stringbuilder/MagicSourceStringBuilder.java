@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
 import net.sf.anathema.character.generic.magic.IMagic;
+import net.sf.anathema.character.generic.magic.general.IMagicSource;
 import net.sf.anathema.lib.resources.IResources;
 
 public class MagicSourceStringBuilder implements IMagicSourceStringBuilder {
@@ -12,15 +13,21 @@ public class MagicSourceStringBuilder implements IMagicSourceStringBuilder {
   }
 
   public String createSourceString(IMagic magic, boolean includeHeader) {
-    String sourceString = ""; //$NON-NLS-1$
+    StringBuilder builder = new StringBuilder();
     if (includeHeader) {
-      sourceString = sourceString.concat(resources.getString("CharmTreeView.ToolTip.Source") + IMagicStringBuilderConstants.ColonSpace); //$NON-NLS-1$
+      builder.append(resources.getString("CharmTreeView.ToolTip.Source") + IMagicStringBuilderConstants.ColonSpace); //$NON-NLS-1$
     }
-    sourceString = sourceString.concat(magic.getSource().getSource());
-    if (magic.getSource().getPage() != null) {
-      sourceString = sourceString.concat(IMagicStringBuilderConstants.CommaSpace
-          + resources.getString("CharmTreeView.ToolTip.Page") + IMagicStringBuilderConstants.Space + magic.getSource().getPage()); //$NON-NLS-1$
+    builder.append(buildSourceString(magic.getSource()));
+    return builder.toString();
+  }
+
+  private StringBuilder buildSourceString(final IMagicSource source) {
+    StringBuilder builder = new StringBuilder();
+    builder.append(source.getSource());
+    if (source.getPage() != null) {
+      builder.append(IMagicStringBuilderConstants.CommaSpace
+          + resources.getString("CharmTreeView.ToolTip.Page") + IMagicStringBuilderConstants.Space + source.getPage()); //$NON-NLS-1$
     }
-    return sourceString;
+    return builder;
   }
 }
