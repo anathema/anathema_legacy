@@ -3,8 +3,6 @@ package net.sf.anathema.character.generic.framework.magic.view;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
@@ -17,11 +15,13 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import net.disy.commons.swing.action.SmartAction;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.gui.list.ComponentEnablingListSelectionListener;
 
 public class MagicLearnView implements IMagicLearnView {
 
-  private final List<IMagicViewListener> magicViewListeners = new ArrayList<IMagicViewListener>();
+  private final GenericControl<IMagicViewListener> control = new GenericControl<IMagicViewListener>();
   private final JList learnOptionsList = new JList(new DefaultListModel());
   private final JList learnedList = new JList(new DefaultListModel());
   private JButton addButton;
@@ -73,16 +73,20 @@ public class MagicLearnView implements IMagicLearnView {
     });
   }
 
-  private synchronized void fireMagicRemoved(Object[] removedMagics) {
-    for (IMagicViewListener listener : new ArrayList<IMagicViewListener>(magicViewListeners)) {
-      listener.magicRemoved(removedMagics);
-    }
+  private void fireMagicRemoved(final Object[] removedMagics) {
+    control.forAllDo(new IClosure<IMagicViewListener>() {
+      public void execute(IMagicViewListener input) {
+        input.magicRemoved(removedMagics);
+      }
+    });
   }
 
-  private synchronized void fireMagicAdded(Object[] addedMagics) {
-    for (IMagicViewListener listener : new ArrayList<IMagicViewListener>(magicViewListeners)) {
-      listener.magicAdded(addedMagics);
-    }
+  private void fireMagicAdded(final Object[] addedMagics) {
+    control.forAllDo(new IClosure<IMagicViewListener>() {
+      public void execute(IMagicViewListener input) {
+        input.magicRemoved(addedMagics);
+      }
+    });
   }
 
   public void setMagicOptions(Object[] magics) {
@@ -101,7 +105,7 @@ public class MagicLearnView implements IMagicLearnView {
   }
 
   public void addMagicViewListener(IMagicViewListener listener) {
-    magicViewListeners.add(listener);
+    control.addListener(listener);
   }
 
   public void addToGridDialogLayoutPanel(JPanel viewPort, JButton[] additionalButtons) {
