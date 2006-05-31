@@ -12,17 +12,18 @@ http://anathema.sf.net
 +	Both character types from the main rulebook.
 +   All Charms from the core book as well as the first two supplements
 +   Intimacies
-+ An all new character sheet, with advanced options:
-+	Combo-field prints only when combos learned
-+	Prints caste-specific Anima ability: To use, define key "Sheet.AnimaPower.[CASTE/ASPECT].[EDITION]" 
-+	in custom.properties (see below), where [EDITION] can either be "FirstEdition" or "SecondEdition".
-+ Series are printable.
-+ Notes are (finally) printable.
 + Character Description now sports a "Player" field.
 + Anathema now accepts user-defined strings. The file "custom.properties" (or a locale-specific variant) 
 	in the main directory is read at startup.
 * There have been major changes to the handling of customized natures. 
 	Refer to "nature_instructions.txt" for details.
+
+-- Reporting --
++ An all new character sheet with advanced features:
++	Combo-field prints only when combos learned
++	Prints caste-specific Anima ability: To use, define key "Sheet.AnimaPower.[CASTE/ASPECT].[EDITION]" 
++	in custom.properties (see below), where [EDITION] can either be "FirstEdition" or "SecondEdition".
++ Series and Notes (finally) are printable.
 
 -- Usability --
 + CharmCascades now honor the preferred ruleset.
