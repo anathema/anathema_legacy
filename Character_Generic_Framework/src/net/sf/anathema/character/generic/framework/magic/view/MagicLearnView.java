@@ -21,9 +21,9 @@ import net.sf.anathema.lib.gui.list.ComponentEnablingListSelectionListener;
 
 public class MagicLearnView implements IMagicLearnView {
 
-  private List<IMagicViewListener> magicViewListeners = new ArrayList<IMagicViewListener>();
-  private JList learnOptionsList = new JList(new DefaultListModel());
-  private JList learnedList = new JList(new DefaultListModel());
+  private final List<IMagicViewListener> magicViewListeners = new ArrayList<IMagicViewListener>();
+  private final JList learnOptionsList = new JList(new DefaultListModel());
+  private final JList learnedList = new JList(new DefaultListModel());
   private JButton addButton;
   private JButton removeButton;
 
