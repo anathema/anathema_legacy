@@ -27,49 +27,51 @@ public class MagicLearnView implements IMagicLearnView {
   private final GenericControl<IMagicViewListener> control = new GenericControl<IMagicViewListener>();
   private final JList learnOptionsList = new JList(new DefaultListModel());
   private final JList learnedList = new JList(new DefaultListModel());
-  private final List<JButton> additionalButtons = new ArrayList<JButton>();
+  private final List<JButton> endButtons = new ArrayList<JButton>();
   private JButton addButton;
-  private JButton removeButton;
 
   public void init(final IMagicLearnProperties properties) {
     learnOptionsList.setCellRenderer(properties.getAvailableMagicRenderer());
     learnOptionsList.setSelectionMode(properties.getAvailableListSelectionMode());
     learnedList.setCellRenderer(properties.getLearnedMagicRenderer());
-    addButton = createAddMagicButton(properties.getAddButtonIcon());
-    addButton.setToolTipText(properties.getAddButtonToolTip());
-    learnOptionsList.addListSelectionListener(new ListSelectionListener() {
+    addButton = createAddMagicButton(properties.getAddButtonIcon(), properties.getAddButtonToolTip());
+    addOptionListListener(new ListSelectionListener() {
       public void valueChanged(ListSelectionEvent e) {
         addButton.setEnabled(properties.isMagicSelectionAvailable(learnOptionsList.getSelectedValue()));
       }
     });
-    removeButton = createRemoveMagicButton(properties.getRemoveButtonIcon());
-    removeButton.setToolTipText(properties.getRemoveButtonToolTip());
-    learnedList.addListSelectionListener(createLearnedListListener(removeButton, learnedList));
+    JButton removeButton = createRemoveMagicButton(
+        properties.getRemoveButtonIcon(),
+        properties.getRemoveButtonToolTip());
+    endButtons.add(removeButton);
+    addSelectionListListener(createLearnedListListener(removeButton, learnedList));
   }
 
   protected ListSelectionListener createLearnedListListener(JButton button, JList list) {
     return new ComponentEnablingListSelectionListener(button, list);
   }
 
-  private JButton createAddMagicButton(Icon icon) {
-    final Action smartAction = new SmartAction(icon) {
+  private JButton createAddMagicButton(Icon icon, String tooltip) {
+    final SmartAction smartAction = new SmartAction(icon) {
       @Override
       protected void execute(Component parentComponent) {
         fireMagicAdded(learnOptionsList.getSelectedValues());
       }
     };
     smartAction.setEnabled(false);
+    smartAction.setToolTipText(tooltip);
     return new JButton(smartAction);
   }
 
-  private JButton createRemoveMagicButton(Icon icon) {
-    final Action smartAction = new SmartAction(icon) {
+  private JButton createRemoveMagicButton(Icon icon, String tooltip) {
+    final SmartAction smartAction = new SmartAction(icon) {
       @Override
       protected void execute(Component parentComponent) {
         fireMagicRemoved(learnedList.getSelectedValues());
       }
     };
     smartAction.setEnabled(false);
+    smartAction.setToolTipText(tooltip);
     return new JButton(smartAction);
   }
 
@@ -84,7 +86,7 @@ public class MagicLearnView implements IMagicLearnView {
   private void fireMagicAdded(final Object[] addedMagics) {
     control.forAllDo(new IClosure<IMagicViewListener>() {
       public void execute(IMagicViewListener input) {
-        input.magicRemoved(addedMagics);
+        input.magicAdded(addedMagics);
       }
     });
   }
@@ -110,7 +112,7 @@ public class MagicLearnView implements IMagicLearnView {
 
   public JButton addAdditionalAction(Action action) {
     JButton button = new JButton(action);
-    additionalButtons.add(button);
+    endButtons.add(button);
     return button;
   }
 
@@ -120,9 +122,8 @@ public class MagicLearnView implements IMagicLearnView {
     viewPort.add(createScrollPane(learnedList));
 
     JPanel buttonPanel = new JPanel(new GridLayout(0, 1));
-    buttonPanel.add(removeButton);
-    for (JButton additonalButton : additionalButtons) {
-      buttonPanel.add(additonalButton);
+    for (JButton button : endButtons) {
+      buttonPanel.add(button);
     }
     viewPort.add(buttonPanel);
   }

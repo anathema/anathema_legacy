@@ -111,11 +111,11 @@ public class SpellView implements ISpellView {
     magicLearnView.addMagicViewListener(listener);
   }
 
-  public synchronized void addCircleSelectionListener(IObjectValueChangedListener listener) {
+  public void addCircleSelectionListener(IObjectValueChangedListener listener) {
     circleControl.addObjectValueChangeListener(listener);
   }
 
-  public synchronized void addSpellSelectionListener(ListSelectionListener listener) {
+  public void addSpellSelectionListener(ListSelectionListener listener) {
     magicLearnView.addSelectionListListener(listener);
     magicLearnView.addOptionListListener(listener);
   }
