@@ -52,7 +52,7 @@ public class MagicLearnView implements IMagicLearnView {
   }
 
   private JButton createAddMagicButton(Icon icon) {
-    final Action smartAction = new SmartAction(null, icon) {
+    final Action smartAction = new SmartAction(icon) {
       @Override
       protected void execute(Component parentComponent) {
         fireMagicAdded(learnOptionsList.getSelectedValues());
@@ -63,7 +63,7 @@ public class MagicLearnView implements IMagicLearnView {
   }
 
   private JButton createRemoveMagicButton(Icon icon) {
-    final Action smartAction = new SmartAction(null, icon) {
+    final Action smartAction = new SmartAction(icon) {
       @Override
       protected void execute(Component parentComponent) {
         fireMagicRemoved(learnedList.getSelectedValues());
