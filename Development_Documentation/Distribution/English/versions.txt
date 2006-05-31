@@ -11,23 +11,22 @@ http://anathema.sf.net
 + Support for Exalted, Second Edition with
 +	Both character types from the main rulebook.
 +   All Charms from the core book as well as the first two supplements
-+   An all-new character sheet
 +   Intimacies
-+ Character sheet now prints caste-specific Anima ability. 
-+	("New Model" sheets only, so it's limited to Solars.)
-+	To use, define key "Sheet.AnimaPower.[CASTE/ASPECT].[EDITION]" in custom.properties (see below),
-+	where [EDITION] can either be "FirstEdition" or "SecondEdition".
++ An all new character sheet, with advanced options:
++	Combo-field prints only when combos learned
++	Prints caste-specific Anima ability: To use, define key "Sheet.AnimaPower.[CASTE/ASPECT].[EDITION]" 
++	in custom.properties (see below), where [EDITION] can either be "FirstEdition" or "SecondEdition".
 + Series are printable.
 + Notes are (finally) printable.
-+ CharmCascades now honor the preferred ruleset.
 + Character Description now sports a "Player" field.
 + Anathema now accepts user-defined strings. The file "custom.properties" (or a locale-specific variant) 
 	in the main directory is read at startup.
 * There have been major changes to the handling of customized natures. 
 	Refer to "nature_instructions.txt" for details.
 
-
 -- Usability --
++ CharmCascades now honor the preferred ruleset.
+* Revamped the spell selection view
 * Greatly improved speed of Charm trees.
 * Tried to improve usability on Mac OS X
 
