@@ -181,4 +181,12 @@ public class DummyGenericCharacter implements IGenericCharacter {
   public IWeapon[] getPrintWeapons() {
     return new IWeapon[0];
   }
+
+  public int getSpentExperiencePoints() {
+    return 0;
+  }
+
+  public int getTotalExperiencePoints() {
+    return 0;
+  }
 }

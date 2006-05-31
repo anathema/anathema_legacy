@@ -1,8 +1,8 @@
 package net.sf.anathema.character.impl.util;
 
+import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.model.ICharacterStatistics;
-import net.sf.anathema.character.model.generic.GenericCharacter;
 
 public class GenericCharacterUtilities {
 

@@ -5,10 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.sf.anathema.character.generic.framework.reporting.template.ICharacterReportTemplate;
+import net.sf.anathema.character.impl.generic.GenericCharacter;
+import net.sf.anathema.character.impl.generic.GenericDescription;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
-import net.sf.anathema.character.model.generic.GenericCharacter;
-import net.sf.anathema.character.model.generic.GenericDescription;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.reporting.IReportDataSource;
 import net.sf.anathema.framework.reporting.ReportException;
