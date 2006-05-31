@@ -3,6 +3,8 @@ package net.sf.anathema.character.reporting.sheet.page;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.PdfBackgroundEncoder;
+import net.sf.anathema.character.reporting.sheet.common.PdfHorizontalLineContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.PdfComboEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
@@ -36,11 +38,11 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
   public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description)
       throws DocumentException {
     float distanceFromTop = 0;
-    float languageHeight = 80;
-    float experienceHeight = 30;
-    encodeBackgrounds(directContent, character, distanceFromTop, languageHeight
-        + experienceHeight
-        + IVoidStateFormatConstants.PADDING);
+    float languageHeight = 59;
+    float backgroundHeight = 104;
+    float experienceHeight = backgroundHeight - languageHeight - IVoidStateFormatConstants.PADDING;
+    encodeBackgrounds(directContent, character, distanceFromTop, backgroundHeight);
+    encodePossessions(directContent, character, distanceFromTop, backgroundHeight);
     encodeLanguages(directContent, character, distanceFromTop, languageHeight);
     distanceFromTop += languageHeight + IVoidStateFormatConstants.PADDING;
     encodeExperience(directContent, character, distanceFromTop, experienceHeight);
@@ -77,7 +79,8 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds languageBounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
-    boxEncoder.encodeBox(directContent, nullContentEncoder, character, languageBounds, "Languages"); //$NON-NLS-1$
+    IPdfContentEncoder encoder = new PdfHorizontalLineContentEncoder(2);
+    boxEncoder.encodeBox(directContent, encoder, character, languageBounds, "Languages"); //$NON-NLS-1$
     return height;
   }
 
@@ -86,8 +89,21 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
       IGenericCharacter character,
       float distanceFromTop,
       float height) throws DocumentException {
-    Bounds backgroundBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 2);
-    boxEncoder.encodeBox(directContent, nullContentEncoder, character, backgroundBounds, "Backgrounds"); //$NON-NLS-1$
+    Bounds backgroundBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
+    IPdfContentEncoder encoder = new PdfBackgroundEncoder(resources, baseFont);
+    boxEncoder.encodeBox(directContent, encoder, character, backgroundBounds, "Backgrounds"); //$NON-NLS-1$
+    return height;
+  }
+
+
+  private float encodePossessions(
+      PdfContentByte directContent,
+      IGenericCharacter character,
+      float distanceFromTop,
+      float height) throws DocumentException {
+    Bounds backgroundBounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
+    IPdfContentEncoder encoder = new PdfHorizontalLineContentEncoder(1);
+    boxEncoder.encodeBox(directContent, encoder, character, backgroundBounds, "Possessions"); //$NON-NLS-1$
     return height;
   }
 }
