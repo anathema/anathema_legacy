@@ -4,6 +4,5 @@ import net.sf.anathema.character.generic.magic.IMagic;
 
 public interface IMagicSourceStringBuilder {
 
-  public String createSourceString(IMagic charm, boolean includeHeader);
-
+  public String createSourceString(IMagic magic, boolean includeHeader);
 }
