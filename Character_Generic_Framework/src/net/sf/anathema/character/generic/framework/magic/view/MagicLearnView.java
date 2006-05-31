@@ -52,29 +52,25 @@ public class MagicLearnView implements IMagicLearnView {
   }
 
   private JButton createAddMagicButton(Icon icon) {
-    return new JButton(new SmartAction(null, icon) {
-      {
-        setEnabled(false);
-      }
-
+    final Action smartAction = new SmartAction(null, icon) {
       @Override
       protected void execute(Component parentComponent) {
         fireMagicAdded(learnOptionsList.getSelectedValues());
       }
-    });
+    };
+    smartAction.setEnabled(false);
+    return new JButton(smartAction);
   }
 
   private JButton createRemoveMagicButton(Icon icon) {
-    return new JButton(new SmartAction(null, icon) {
-      {
-        setEnabled(false);
-      }
-
+    final Action smartAction = new SmartAction(null, icon) {
       @Override
       protected void execute(Component parentComponent) {
         fireMagicRemoved(learnedList.getSelectedValues());
       }
-    });
+    };
+    smartAction.setEnabled(false);
+    return new JButton(smartAction);
   }
 
   private void fireMagicRemoved(final Object[] removedMagics) {
