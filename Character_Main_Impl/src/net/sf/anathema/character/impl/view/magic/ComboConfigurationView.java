@@ -96,7 +96,7 @@ public class ComboConfigurationView implements IComboConfigurationView {
     nameData.setVerticalAlignment(GridAlignment.BEGINNING);
     nameData.setVerticalSpan(2);
     viewPort.add(namePanel, nameData);
-    magicLearnView.addToGridDialogLayoutPanel(viewPort, new JButton[] { clearButton, finalizeButton });
+    magicLearnView.addToGridDialogLayoutPanel(viewPort);
     GridDialogLayoutData taskPaneData = new GridDialogLayoutData(GridDialogLayoutData.FILL_BOTH);
     taskPaneData.setHorizontalSpan(5);
     comboPane.setBackground(viewPort.getBackground());
@@ -106,7 +106,7 @@ public class ComboConfigurationView implements IComboConfigurationView {
   }
 
   private JButton createClearButton(Icon icon) {
-    return new JButton(new SmartAction(null, icon) {
+    Action smartAction = new SmartAction(null, icon) {
       {
         setEnabled(false);
       }
@@ -115,7 +115,8 @@ public class ComboConfigurationView implements IComboConfigurationView {
       protected void execute(Component parentComponent) {
         fireComboCleared();
       }
-    });
+    };
+    return magicLearnView.addAdditionalAction(smartAction);
   }
 
   private void fireComboCleared() {
@@ -125,14 +126,14 @@ public class ComboConfigurationView implements IComboConfigurationView {
   }
 
   private JButton createFinalizeComboButton(Icon icon) {
-    SmartAction smartAction = new SmartAction(null, icon) {
+    Action smartAction = new SmartAction(null, icon) {
       @Override
       protected void execute(Component parentComponent) {
         fireComboFinalized();
       }
     };
     smartAction.setEnabled(false);
-    return new JButton(smartAction);
+    return magicLearnView.addAdditionalAction(smartAction);
   }
 
   private synchronized void fireComboFinalized() {

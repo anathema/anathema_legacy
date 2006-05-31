@@ -93,7 +93,7 @@ public class BeastformView implements IBeastformView {
       }
     };
     learnView.init(giftViewProperties);
-    learnView.addToGridDialogLayoutPanel(giftPanel, new JButton[0]);
+    learnView.addToGridDialogLayoutPanel(giftPanel);
     return learnView;
   }
 

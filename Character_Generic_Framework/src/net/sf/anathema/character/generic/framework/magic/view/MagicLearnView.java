@@ -3,7 +3,10 @@ package net.sf.anathema.character.generic.framework.magic.view;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.swing.Action;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.JButton;
@@ -24,6 +27,7 @@ public class MagicLearnView implements IMagicLearnView {
   private final GenericControl<IMagicViewListener> control = new GenericControl<IMagicViewListener>();
   private final JList learnOptionsList = new JList(new DefaultListModel());
   private final JList learnedList = new JList(new DefaultListModel());
+  private final List<JButton> additionalButtons = new ArrayList<JButton>();
   private JButton addButton;
   private JButton removeButton;
 
@@ -108,7 +112,13 @@ public class MagicLearnView implements IMagicLearnView {
     control.addListener(listener);
   }
 
-  public void addToGridDialogLayoutPanel(JPanel viewPort, JButton[] additionalButtons) {
+  public JButton addAdditionalAction(Action action) {
+    JButton button = new JButton(action);
+    additionalButtons.add(button);
+    return button;
+  }
+
+  public void addToGridDialogLayoutPanel(JPanel viewPort) {
     viewPort.add(createScrollPane(learnOptionsList));
     viewPort.add(addButton);
     viewPort.add(createScrollPane(learnedList));

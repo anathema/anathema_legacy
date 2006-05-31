@@ -72,7 +72,7 @@ public class SpellView implements ISpellView {
     viewPort.add(learnedSpellsPanel);
     viewPort.add(new JLabel());
     magicLearnView.init(properties);
-    magicLearnView.addToGridDialogLayoutPanel(viewPort, new JButton[0]);
+    magicLearnView.addToGridDialogLayoutPanel(viewPort);
     GridDialogLayoutData detailsData = new GridDialogLayoutData();
     detailsData.setHorizontalSpan(4);
     detailsData.setHorizontalAlignment(GridAlignment.FILL);
