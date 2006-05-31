@@ -110,6 +110,7 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
     titleView.setText(" "); //$NON-NLS-1$
     final IValueView<String> circleView = view.addDetailValueView(properties.getCircleString() + ":"); //$NON-NLS-1$
     final IValueView<String> costView = view.addDetailValueView(properties.getCostString() + ":"); //$NON-NLS-1$
+    final IValueView<String> targetView = view.addDetailValueView(properties.getTargetString() + ":"); //$NON-NLS-1$
     final IValueView<String> sourceView = view.addDetailValueView(properties.getSourceString() + ":"); //$NON-NLS-1$
     final ListSelectionListener detailListener = new ListSelectionListener() {
       public void valueChanged(ListSelectionEvent e) {
@@ -120,6 +121,12 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
         titleView.setText(resources.getString(spell.getId()));
         circleView.setValue(resources.getString(spell.getCircleType().getId()));
         costView.setValue(creator.createCostString(spell));
+        if (spell.getTarget() == null) {
+          targetView.setValue(properties.getUndefinedString());
+        }
+        else {
+          targetView.setValue(spell.getTarget());
+        }
         sourceView.setValue(sourceStringBuilder.createSourceString(spell));
       }
     };

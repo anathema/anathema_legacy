@@ -9,4 +9,6 @@ public interface ISpell extends IMagic {
   public CircleType getCircleType();
 
   public IMagicSource getSource(IExaltedEdition edition);
+
+  public String getTarget();
 }

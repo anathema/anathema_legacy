@@ -22,19 +22,25 @@ public class Spell extends Identificate implements ISpell {
   private final ICostList temporaryCost;
   private final IPermanentCostList permanentCost;
   private ISourceList source;
+  private final String target;
 
   public Spell(
       String id,
       CircleType circleType,
       ICostList temporaryCost,
       IPermanentCostList permanentCost,
-      ISourceList source) {
+      ISourceList source,
+      String target) {
     super(id);
     this.circleType = circleType;
     this.temporaryCost = temporaryCost;
     this.permanentCost = permanentCost;
     this.source = source;
+    this.target = target;
+  }
 
+  public String getTarget() {
+    return target;
   }
 
   public CircleType getCircleType() {

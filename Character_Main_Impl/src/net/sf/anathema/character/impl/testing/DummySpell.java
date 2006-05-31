@@ -54,4 +54,8 @@ public class DummySpell implements ISpell {
       FavoringTraitType type) {
     return ((IFavorableGenericTrait) traitCollection.getTrait(AbilityType.Occult)).isCasteOrFavored();
   }
+
+  public String getTarget() {
+    throw new NotYetImplementedException();
+  }
 }

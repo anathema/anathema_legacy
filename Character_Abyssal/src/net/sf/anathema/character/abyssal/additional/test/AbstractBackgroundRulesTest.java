@@ -44,7 +44,7 @@ public abstract class AbstractBackgroundRulesTest extends BasicTestCase {
   }
 
   protected final ISpell createSpell(CircleType type) {
-    return new Spell(null, type, null, null, null);
+    return new Spell(null, type, null, null, null, null);
   }
 
   protected final ICharm createCharm() {
