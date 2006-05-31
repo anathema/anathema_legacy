@@ -39,7 +39,7 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
     return calculateInsettedBounds(contentBounds);
   }
 
-  public void encodeBox(
+  public Bounds encodeBox(
       PdfContentByte directContent,
       IPdfContentEncoder encoder,
       IGenericCharacter character,
@@ -53,6 +53,7 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
     else {
       logger.error("Encoder missing for " + header); //$NON-NLS-1$
     }
+    return calculateInsettedBounds(contentBounds);
   }
 
   private Bounds calculateInsettedBounds(Bounds contentBounds) {

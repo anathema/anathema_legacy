@@ -46,7 +46,7 @@ public class PdfComboEncoder {
     float yPosition = PdfTextEncodingUtilities.encodeText(directContent, phrase, contentBounds, LINE_HEIGHT).getYLine();
     Bounds actualBoxBounds = calculateActualBoxBounds(restOfPage, yPosition);
     boxEncoder.encodeBox(directContent, new NullPdfContentEncoder(), null, actualBoxBounds, "Combos"); //$NON-NLS-1$
-    return actualBoxBounds.y;
+    return actualBoxBounds.getHeight();
   }
 
   private Phrase createComboPhrase(IGenericCombo[] combos) {
