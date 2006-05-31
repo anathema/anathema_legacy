@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.magic.general.IMagicSource;
 import net.sf.anathema.character.generic.magic.general.IPermanentCostList;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -32,6 +33,10 @@ public class DummySpell implements ISpell {
   }
 
   public IMagicSource getSource() {
+    throw new NotYetImplementedException();
+  }
+
+  public IMagicSource getSource(IExaltedEdition edition) {
     throw new NotYetImplementedException();
   }
 
