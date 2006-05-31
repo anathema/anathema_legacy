@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.util.IStats;
 import net.sf.anathema.character.reporting.sheet.util.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.util.Bounds;
 
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
@@ -30,7 +31,7 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
   }
 
   @Override
-  protected PdfPTable createTable(IGenericCharacter character) {
+  protected PdfPTable createTable(IGenericCharacter character, Bounds bounds) {
     IStatsGroup<T>[] groups = createStatsGroups(character);
     float[] columnWidths = calculateColumnWidths(groups);
     PdfPTable table = new PdfPTable(columnWidths);
@@ -43,12 +44,10 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
           index != groups.length - 1,
           usedFont));
     }
-    T[] printEquipments = getPrintStats(character);
-    for (int line = 0; line < Math.min(printEquipments.length, getLineCount()); line++) {
-      encodeContentLine(table, groups, printEquipments[line]);
-    }
-    for (int line = printEquipments.length; line < getLineCount(); line++) {
-      encodeContentLine(table, groups, null);
+    T[] printStats = getPrintStats(character);
+    for (int line = 0; line < getLineCount(); line++) {
+      T printStat = line < printStats.length ? printStats[line] : null;
+      encodeContentLine(table, groups, printStat);
     }
     return table;
   }
