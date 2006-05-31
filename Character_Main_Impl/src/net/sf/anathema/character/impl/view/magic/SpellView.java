@@ -10,8 +10,6 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionListener;
 
@@ -29,12 +27,10 @@ import net.sf.anathema.lib.util.IIdentificate;
 public class SpellView implements ISpellView {
 
   private MagicLearnView magicLearnView;
-  private JLabel countLabel;
 
-  private JScrollPane content;
+  private JPanel content = new JPanel(new GridDialogLayout(1, false));
   private JComboBox circleComboBox;
   private final ObjectValueControl circleControl = new ObjectValueControl();
-  private JPanel detailsPanel;
   private JLabel nameLabel;
   private JLabel circleLabel;
   private JLabel costLabel;
@@ -45,39 +41,35 @@ public class SpellView implements ISpellView {
   }
 
   public void initGui(IIdentificate[] circles, final ISpellViewProperties properties) {
-    magicLearnView = new MagicLearnView() {
+    JComponent selectionPanel = createSelectionPanel(circles, properties);
+    JComponent detailsPanel = createDetailsPanel(properties);
+    GridDialogLayoutData data = new GridDialogLayoutData();
+    data.setHorizontalAlignment(GridAlignment.FILL);
+    content.add(selectionPanel, data);
+    content.add(detailsPanel, data);
+  }
+
+  private JPanel createSelectionPanel(IIdentificate[] circles, final ISpellViewProperties properties) {
+    this.magicLearnView = new MagicLearnView() {
       @Override
       protected ListSelectionListener createLearnedListListener(final JButton button, final JList list) {
         return properties.getRemoveButtonEnabledListener(button, list);
       }
     };
-    JPanel viewPort = new JPanel(new GridDialogLayout(4, false));
-    viewPort.setBorder(new EmptyBorder(3, 6, 6, 6));
-    JPanel filterPanel = new JPanel(new GridDialogLayout(2, false));
-    filterPanel.add(new JLabel(properties.getCircleString()));
-    circleComboBox = new JComboBox(circles);
-    circleComboBox.setRenderer(properties.getCircleSelectionRenderer());
-    circleComboBox.addActionListener(new ActionListener() {
+    JComboBox box = magicLearnView.addFilterBox(
+        properties.getCircleString(),
+        circles,
+        properties.getCircleSelectionRenderer());
+    box.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         circleControl.fireValueChangedEvent(circleComboBox.getSelectedItem());
       }
     });
-    filterPanel.add(circleComboBox);
-    viewPort.add(filterPanel);
-    countLabel = new JLabel("(0)"); //$NON-NLS-1$
-    viewPort.add(new JLabel());
-    JPanel learnedSpellsPanel = new JPanel();
-    learnedSpellsPanel.add(new JLabel(properties.getLearnedSpellString()));
-    learnedSpellsPanel.add(countLabel);
-    viewPort.add(learnedSpellsPanel);
-    viewPort.add(new JLabel());
     magicLearnView.init(properties);
-    magicLearnView.addToGridDialogLayoutPanel(viewPort);
-    GridDialogLayoutData detailsData = new GridDialogLayoutData();
-    detailsData.setHorizontalSpan(4);
-    detailsData.setHorizontalAlignment(GridAlignment.FILL);
-    viewPort.add(createDetailsPanel(properties), detailsData);
-    content = new JScrollPane(viewPort);
+    JPanel selectionPanel = new JPanel(new GridDialogLayout(4, false));
+    magicLearnView.addTo(selectionPanel);
+    selectionPanel.setBorder(new TitledBorder(properties.getSelectionTitle()));
+    return selectionPanel;
   }
 
   public void setSpellDetails(String name, String circle, String costString, String sourceString) {
@@ -88,7 +80,7 @@ public class SpellView implements ISpellView {
   }
 
   private JComponent createDetailsPanel(ISpellViewProperties properties) {
-    detailsPanel = new JPanel(new GridDialogLayout(2, false));
+    JPanel detailsPanel = new JPanel(new GridDialogLayout(2, false));
     detailsPanel.setBorder(new TitledBorder(properties.getDetailTitle()));
     nameLabel = new JLabel();
     nameLabel.setFont(nameLabel.getFont().deriveFont(Font.BOLD));
@@ -107,25 +99,27 @@ public class SpellView implements ISpellView {
     return detailsPanel;
   }
 
-  public void addSpellViewListener(IMagicViewListener listener) {
+  public void addMagicViewListener(IMagicViewListener listener) {
     magicLearnView.addMagicViewListener(listener);
+  }
+
+  public void addOptionListListener(ListSelectionListener listener) {
+    magicLearnView.addOptionListListener(listener);
+  }
+
+  public void addSelectionListListener(ListSelectionListener listener) {
+    magicLearnView.addSelectionListListener(listener);
   }
 
   public void addCircleSelectionListener(IObjectValueChangedListener listener) {
     circleControl.addObjectValueChangeListener(listener);
   }
 
-  public void addSpellSelectionListener(ListSelectionListener listener) {
-    magicLearnView.addSelectionListListener(listener);
-    magicLearnView.addOptionListListener(listener);
-  }
-
-  public void setLearnedSpells(Object[] spells) {
-    countLabel.setText("(" + spells.length + ")"); //$NON-NLS-1$ //$NON-NLS-2$
+  public void setLearnedMagic(Object[] spells) {
     magicLearnView.setLearnedMagic(spells);
   }
 
-  public void setAllSpells(Object[] spells) {
+  public void setMagicOptions(Object[] spells) {
     magicLearnView.setMagicOptions(spells);
   }
 

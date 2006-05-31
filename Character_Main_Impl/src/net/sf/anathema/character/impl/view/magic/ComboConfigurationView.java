@@ -96,7 +96,7 @@ public class ComboConfigurationView implements IComboConfigurationView {
     nameData.setVerticalAlignment(GridAlignment.BEGINNING);
     nameData.setVerticalSpan(2);
     viewPort.add(namePanel, nameData);
-    magicLearnView.addToGridDialogLayoutPanel(viewPort);
+    magicLearnView.addTo(viewPort);
     GridDialogLayoutData taskPaneData = new GridDialogLayoutData(GridDialogLayoutData.FILL_BOTH);
     taskPaneData.setHorizontalSpan(5);
     comboPane.setBackground(viewPort.getBackground());

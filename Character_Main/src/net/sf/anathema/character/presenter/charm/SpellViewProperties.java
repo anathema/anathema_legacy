@@ -93,4 +93,8 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
   public String getSourceString() {
     return getResources().getString("CardView.CharmConfiguration.Spells.Source"); //$NON-NLS-1$
   }
+
+  public String getSelectionTitle() {
+    return getResources().getString("CardView.CharmConfiguration.Spells.Selection.Title"); //$NON-NLS-1$
+  }
 }

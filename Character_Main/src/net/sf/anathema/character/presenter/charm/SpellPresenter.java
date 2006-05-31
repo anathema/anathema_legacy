@@ -57,7 +57,7 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
     System.arraycopy(allowedCircles, 0, circles, 1, allowedCircles.length);
 
     view.initGui(circles, new SpellViewProperties(resources, statistics));
-    view.addSpellViewListener(new IMagicViewListener() {
+    view.addMagicViewListener(new IMagicViewListener() {
       public void magicRemoved(Object[] removedSpells) {
         List<ISpell> spellList = new ArrayList<ISpell>();
         for (Object spellObject : removedSpells) {
@@ -82,7 +82,7 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
         else {
           circle = null;
         }
-        view.setAllSpells(getSpellsToShow());
+        view.setMagicOptions(getSpellsToShow());
       }
     });
     spellConfiguration.addSpellListener(new ISpellModelListener() {
@@ -91,11 +91,13 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
       }
     });
     updateSpellListsInView(view);
-    view.addSpellSelectionListener(new ListSelectionListener() {
+    final ListSelectionListener detailListener = new ListSelectionListener() {
       public void valueChanged(ListSelectionEvent e) {
         updateSpellDetails((ISpell) ((JList) e.getSource()).getSelectedValue(), view);
       }
-    });
+    };
+    view.addOptionListListener(detailListener);
+    view.addSelectionListListener(detailListener);
     statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
       public void experiencedChanged(boolean experienced) {
@@ -122,8 +124,8 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
   }
 
   private void updateSpellListsInView(final ISpellView spellView) {
-    spellView.setLearnedSpells(getCircleFilteredSpellList(spellConfiguration.getLearnedSpells()).toArray(new ISpell[0]));
-    spellView.setAllSpells(getSpellsToShow());
+    spellView.setLearnedMagic(getCircleFilteredSpellList(spellConfiguration.getLearnedSpells()).toArray(new ISpell[0]));
+    spellView.setMagicOptions(getSpellsToShow());
   }
 
   private ISpell[] getSpellsToShow() {

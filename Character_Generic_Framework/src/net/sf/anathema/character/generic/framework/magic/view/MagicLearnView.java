@@ -10,14 +10,20 @@ import javax.swing.Action;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ListCellRenderer;
 import javax.swing.ListModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import net.disy.commons.swing.action.SmartAction;
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
+import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.gui.list.ComponentEnablingListSelectionListener;
@@ -28,6 +34,7 @@ public class MagicLearnView implements IMagicLearnView {
   private final JList learnOptionsList = new JList(new DefaultListModel());
   private final JList learnedList = new JList(new DefaultListModel());
   private final List<JButton> endButtons = new ArrayList<JButton>();
+  private JPanel boxPanel;
   private JButton addButton;
 
   public void init(final IMagicLearnProperties properties) {
@@ -69,6 +76,15 @@ public class MagicLearnView implements IMagicLearnView {
       }
     };
     return createButton(tooltip, smartAction);
+  }
+
+  public JComboBox addFilterBox(String label, Object[] objects, ListCellRenderer renderer) {
+    this.boxPanel = new JPanel(new GridDialogLayout(2, false));
+    boxPanel.add(new JLabel(label));
+    JComboBox box = new JComboBox(objects);
+    box.setRenderer(renderer);
+    boxPanel.add(box, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
+    return box;
   }
 
   private JButton createButton(String tooltip, final SmartAction smartAction) {
@@ -118,16 +134,20 @@ public class MagicLearnView implements IMagicLearnView {
     return button;
   }
 
-  public void addToGridDialogLayoutPanel(JPanel viewPort) {
-    viewPort.add(createScrollPane(learnOptionsList));
-    viewPort.add(addButton);
-    viewPort.add(createScrollPane(learnedList));
-
+  /** Takes up 4 columns in GridDialogLayouted-Panel */
+  public void addTo(JPanel panel) {
+    if (boxPanel != null) {
+      panel.add(boxPanel);
+      panel.add(new EndOfLineMarkerComponent());
+    }
+    panel.add(createScrollPane(learnOptionsList));
+    panel.add(addButton);
+    panel.add(createScrollPane(learnedList));
     JPanel buttonPanel = new JPanel(new GridLayout(0, 1));
     for (JButton button : endButtons) {
       buttonPanel.add(button);
     }
-    viewPort.add(buttonPanel);
+    panel.add(buttonPanel);
   }
 
   private JScrollPane createScrollPane(JList list) {

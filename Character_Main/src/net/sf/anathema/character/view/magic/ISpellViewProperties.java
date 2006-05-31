@@ -7,7 +7,6 @@ import javax.swing.event.ListSelectionListener;
 
 import net.sf.anathema.character.generic.framework.magic.view.IMagicLearnProperties;
 
-
 public interface ISpellViewProperties extends IMagicLearnProperties {
 
   public String getCircleString();
@@ -23,4 +22,6 @@ public interface ISpellViewProperties extends IMagicLearnProperties {
   public String getCostString();
 
   public String getSourceString();
+
+  public String getSelectionTitle();
 }
