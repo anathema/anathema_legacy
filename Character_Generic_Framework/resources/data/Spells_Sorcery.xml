@@ -32,7 +32,9 @@
         <essence cost="15"/>
       </temporary>
     </cost>
-    <source source="Exalted" page="217"/>
+    <target target="Area (30x100x10 yards)"/>
+    <source source="Exalted" page="217" edition="FirstEdition"/>
+    <source source="Second Edition" page="252" edition="SecondEdition"/>
   </spell>
   <spell id="Terrestrial.DemonFirstCircle" circle="Terrestrial">
     <cost>
@@ -40,7 +42,9 @@
         <essence cost="20" text="or more"/>
       </temporary>
     </cost>
-    <source source="Exalted" page="218"/>
+    <target target="First Circle Demon"/>
+    <source source="Exalted" page="218" edition="FirstEdition"/>
+    <source source="Second Edition" page="252" edition="SecondEdition"/>
   </spell>
   <spell id="Terrestrial.EmeraldCountermagic" circle="Terrestrial">
     <cost>
@@ -48,7 +52,9 @@
         <essence cost="10" text="or 20 motes"/>
       </temporary>
     </cost>
-    <source source="Exalted" page="218"/>
+    <target target="Caster or spell"/>
+    <source source="Exalted" page="218" edition="FirstEdition"/>
+    <source source="Second Edition" page="253" edition="SecondEdition"/>
   </spell>
   <spell id="Terrestrial.ImpenetrableFrostBarrier" circle="Terrestrial">
     <cost>
@@ -56,7 +62,9 @@
         <essence cost="20"/>
       </temporary>
     </cost>
-    <source source="Exalted" page="218"/>
+    <target target="Area (10-15 feet radius)"/>
+    <source source="Exalted" page="218" edition="FirstEdition"/>
+    <source source="Second Edition" page="253" edition="SecondEdition"/>
   </spell>
   <spell id="Terrestrial.InfallibleMessenger" circle="Terrestrial">
     <cost>
@@ -64,7 +72,9 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <source source="Exalted" page="218"/>
+    <target target="Summoned cherub"/>
+    <source source="Exalted" page="218" edition="FirstEdition"/>
+    <source source="Second Edition" page="254" edition="SecondEdition"/>
   </spell>
   <spell id="Terrestrial.InvulnerableSkinBronze" circle="Terrestrial">
     <cost>
@@ -72,7 +82,10 @@
         <essence cost="20"/>
       </temporary>
     </cost>
-    <source source="Exalted" page="219"/>
+    <target target="Caster"/>
+    <source source="Exalted" page="219" edition="FirstEdition"/>
+    <source source="Second Edition" page="254" edition="SecondEdition"/>
+
   </spell>
   <spell id="Terrestrial.SummonElemental" circle="Terrestrial">
     <cost>
@@ -80,7 +93,9 @@
         <essence cost="10" text="or more"/>
       </temporary>
     </cost>
-    <source source="Exalted" page="219"/>
+    <target target="Elemental"/>
+    <source source="Exalted" page="219" edition="FirstEdition"/>
+    <source source="Second Edition" page="254" edition="SecondEdition"/>
   </spell>
   <spell id="Terrestrial.StormwindRider" circle="Terrestrial">
     <cost>
@@ -96,7 +111,9 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <source source="Exalted" page="220"/>
+    <target target="Caster"/>
+    <source source="Exalted" page="220" edition="FirstEdition"/>
+    <source source="Second Edition" page="254" edition="SecondEdition"/>
   </spell>
   <spell id="Celestial.BloodBoilingOil" circle="Celestial">
     <cost>
@@ -104,7 +121,9 @@
         <essence cost="30"/>
       </temporary>
     </cost>
-    <source source="Exalted" page="220"/>
+    <target target="Touched creature"/>
+    <source source="Exalted" page="220" edition="FirstEdition"/>
+    <source source="Second Edition" page="255" edition="SecondEdition"/>
   </spell>
   <spell id="Celestial.DemonSecondCircle" circle="Celestial">
     <cost>
@@ -112,7 +131,9 @@
         <essence cost="30" text="or more"/>
       </temporary>
     </cost>
-    <source source="Exalted" page="220"/>
+    <target target="Second Circle Demon"/>
+    <source source="Exalted" page="220" edition="FirstEdition"/>
+    <source source="Second Edition" page="255" edition="SecondEdition"/>
   </spell>
   <spell id="Celestial.DolorousReflection" circle="Celestial">
     <cost>
@@ -120,7 +141,9 @@
         <essence cost="20"/>
       </temporary>
     </cost>
-    <source source="Exalted" page="220"/>
+    <target target="Caster"/>
+    <source source="Exalted" page="220" edition="FirstEdition"/>
+    <source source="Second Edition" page="255" edition="SecondEdition"/>
   </spell>
   <spell id="Celestial.IncomparableBodyArsenal" circle="Celestial">
     <cost>
@@ -128,7 +151,9 @@
         <essence cost="30"/>
       </temporary>
     </cost>
-    <source source="Exalted" page="221"/>
+    <target target="Caster"/>
+    <source source="Exalted" page="221" edition="FirstEdition"/>
+    <source source="Second Edition" page="255" edition="SecondEdition"/>
   </spell>
   <spell id="Celestial.SapphireCountermagic" circle="Celestial">
     <cost>
@@ -136,7 +161,9 @@
         <essence cost="15" text="or 20 motes"/>
       </temporary>
     </cost>
-    <source source="Exalted" page="221"/>
+    <target target="Caster or spell"/>
+    <source source="Exalted" page="221" edition="FirstEdition"/>
+    <source source="Second Edition" page="256" edition="SecondEdition"/>
   </spell>
   <spell id="Celestial.TravelwithoutDistance" circle="Celestial">
     <cost>
@@ -144,7 +171,9 @@
         <essence cost="25"/>
       </temporary>
     </cost>
-    <source source="Exalted" page="221"/>
+    <target target="Caster"/>
+    <source source="Exalted" page="221" edition="FirstEdition"/>
+    <source source="Second Edition" page="256" edition="SecondEdition"/>  
   </spell>
   <spell id="Solar.AdamantCountermagic" circle="Solar">
     <cost>
@@ -152,7 +181,9 @@
         <essence cost="20" text="or 25 motes"/>
       </temporary>
     </cost>
-    <source source="Exalted" page="222"/>
+    <target target="Caster or spell"/>
+    <source source="Exalted" page="222" edition="FirstEdition"/>
+    <source source="Second Edition" page="256" edition="SecondEdition"/>
   </spell>
   <spell id="Solar.DemonThirdCircle" circle="Solar">
     <cost>
@@ -160,7 +191,9 @@
         <essence cost="40" text="or more"/>
       </temporary>
     </cost>
-    <source source="Exalted" page="222"/>
+    <target target="Third Circle Demon"/>
+    <source source="Exalted" page="222" edition="FirstEdition"/>
+    <source source="Second Edition" page="256" edition="SecondEdition"/>
   </spell>
   <spell id="Solar.RainDoom" circle="Solar">
     <cost>
@@ -168,7 +201,9 @@
         <essence cost="60"/>
       </temporary>
     </cost>
-    <source source="Exalted" page="222"/>
+    <target target="Area"/>
+    <source source="Exalted" page="222" edition="FirstEdition"/>
+    <source source="Second Edition" page="256" edition="SecondEdition"/>
   </spell>
   <spell id="Solar.RuneSingularHate" circle="Solar">
     <cost>
