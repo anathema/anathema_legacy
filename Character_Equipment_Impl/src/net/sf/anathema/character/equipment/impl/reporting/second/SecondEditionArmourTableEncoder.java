@@ -57,7 +57,7 @@ public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncod
   }
 
   @Override
-  protected boolean isLineValid(int line, Bounds bounds) {
+  protected boolean isLineValid(int line, Bounds bounds, PdfPTable table) {
     return line < getLineCount();
   }
   
