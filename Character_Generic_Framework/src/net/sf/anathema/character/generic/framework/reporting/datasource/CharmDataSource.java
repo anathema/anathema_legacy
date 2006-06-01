@@ -19,6 +19,14 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class CharmDataSource implements IReportDataSource {
 
+  public static final MagicInfoStringBuilder createMagicInfoStringBuilder(final IResources resources) {
+    CostStringBuilder essenceBuilder = new CostStringBuilder(resources, "CharacterSheet.Charm.Mote"); //$NON-NLS-1$
+    CostStringBuilder willpowerBuilder = new CostStringBuilder(resources, "CharacterSheet.Charm.Willpower"); //$NON-NLS-1$
+    HealthCostStringBuilder healthBuilder = new HealthCostStringBuilder(resources, "CharacterSheet.Charm.HealthLevel"); //$NON-NLS-1$
+    CostStringBuilder experienceBuilder = new CostStringBuilder(resources, "CharacterSheet.Charm.ExperiencePoints"); //$NON-NLS-1$
+    return new MagicInfoStringBuilder(resources, essenceBuilder, willpowerBuilder, healthBuilder, experienceBuilder);
+  }
+
   public static final String COLUMN_PRINT_NAME = "PRINT_NAME"; //$NON-NLS-1$
   public static final String COLUMN_COST = "COST"; //$NON-NLS-1$
   public static final String COLUMN_DURATION = "DURATION"; //$NON-NLS-1$
@@ -32,17 +40,8 @@ public class CharmDataSource implements IReportDataSource {
 
   public CharmDataSource(final IResources resources, final IGenericCharacter character) {
     this.resources = resources;
-    CostStringBuilder essenceBuilder = new CostStringBuilder(resources, "CharacterSheet.Charm.Mote"); //$NON-NLS-1$
-    CostStringBuilder willpowerBuilder = new CostStringBuilder(resources, "CharacterSheet.Charm.Willpower"); //$NON-NLS-1$
-    HealthCostStringBuilder healthBuilder = new HealthCostStringBuilder(resources, "CharacterSheet.Charm.HealthLevel"); //$NON-NLS-1$
-    CostStringBuilder experienceBuilder = new CostStringBuilder(resources, "CharacterSheet.Charm.ExperiencePoints"); //$NON-NLS-1$
-    this.costStringBuilder = new MagicInfoStringBuilder(
-        resources,
-        essenceBuilder,
-        willpowerBuilder,
-        healthBuilder,
-        experienceBuilder);
     this.character = character;
+    this.costStringBuilder = createMagicInfoStringBuilder(resources);
     this.magicList = character.getAllLearnedMagic();
     // CharmOrderType preferredOrderType = CharmOrderType.valueOf(CHARACTER_PREFERENCES.get(
     // CHARMORDER_PREFERENCE,
