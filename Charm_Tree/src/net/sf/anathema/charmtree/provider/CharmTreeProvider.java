@@ -38,20 +38,18 @@ public class CharmTreeProvider {
   private Document placeOnCanvas(
       final ICharmPresentationProperties properties,
       final List<IVisualizedGraph> visualizedGraphs) {
-    Dimension totalDimension = new Dimension();
     Document cascadeDocument = factory.createFrame(properties);
     Element root = cascadeDocument.getRootElement();
     Element cascadeElement = createCascadeElement(root);
+    double currentWidth = properties.getGapDimension().width;
+    double maximumHeight = 0;
     for (IVisualizedGraph graph : visualizedGraphs) {
       cascadeElement.add(graph.getCascadeElement());
-      graph.getCascadeElement().addAttribute(SVGConstants.SVG_TRANSFORM_ATTRIBUTE, "translate(" //$NON-NLS-1$
-          + (totalDimension.width + properties.getGapDimension().width)
-          + " 0)"); //$NON-NLS-1$
-      totalDimension.setSize(
-          totalDimension.width + properties.getGapDimension().width + graph.getDimension().width,
-          Math.max(totalDimension.height, graph.getDimension().height));
+      graph.getCascadeElement().addAttribute(SVGConstants.SVG_TRANSFORM_ATTRIBUTE, "translate(" + currentWidth + " 0)"); //$NON-NLS-1$ //$NON-NLS-2$
+      currentWidth += properties.getGapDimension().width + graph.getDimension().width;
+      maximumHeight = Math.max(maximumHeight, graph.getDimension().height);
     }
-    setViewBox(totalDimension, root);
+    setViewBox(currentWidth, maximumHeight, root);
     return cascadeDocument;
   }
 
@@ -61,11 +59,11 @@ public class CharmTreeProvider {
     return cascadeElement;
   }
 
-  private void setViewBox(Dimension graphDimension, Element root) {
-    if (graphDimension.height > MAXIMUM_DIMENSION.height || graphDimension.width > MAXIMUM_DIMENSION.width) {
-      double height = Math.max(graphDimension.getHeight(), graphDimension.width / 2.24);
-      double width = Math.max(graphDimension.getWidth(), graphDimension.height * 2.24) + 10;
-      root.addAttribute(SVGConstants.SVG_VIEW_BOX_ATTRIBUTE, "0 0 " + width + " " + height); //$NON-NLS-1$ //$NON-NLS-2$
+  private void setViewBox(double width, double height, Element root) {
+    if (height > MAXIMUM_DIMENSION.height || width > MAXIMUM_DIMENSION.width) {
+      double viewBoxHeight = Math.max(height, width / 2.24);
+      double viewBoxWidth = Math.max(width, height * 2.24) + 10;
+      root.addAttribute(SVGConstants.SVG_VIEW_BOX_ATTRIBUTE, "0 0 " + viewBoxWidth + " " + viewBoxHeight); //$NON-NLS-1$ //$NON-NLS-2$
     }
   }
 
