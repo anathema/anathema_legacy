@@ -66,7 +66,6 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
   public ITrait addBackground(final IBackgroundTemplate backgroundType) {
     Ensure.ensureNotNull(backgroundType);
     ITrait foundBackground = new Predicate<ITrait>() {
-      @Override
       public boolean evaluate(ITrait listBackground) {
         return ObjectUtilities.equals(backgroundType, listBackground.getType());
       }

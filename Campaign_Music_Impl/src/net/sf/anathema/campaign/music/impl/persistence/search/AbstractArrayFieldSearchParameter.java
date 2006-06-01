@@ -1,6 +1,6 @@
 package net.sf.anathema.campaign.music.impl.persistence.search;
 
-import net.sf.anathema.lib.lang.ArrayUtilities;
+import net.disy.commons.core.util.ArrayUtilities;
 
 import com.db4o.query.Candidate;
 import com.db4o.query.Constraint;

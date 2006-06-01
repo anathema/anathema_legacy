@@ -1,7 +1,8 @@
 package net.sf.anathema.character.generic.traits.groups;
 
+import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.lib.lang.ArrayUtilities;
+
 
 public class TraitTypeGroup implements ITraitTypeGroup {
   

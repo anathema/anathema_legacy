@@ -1,5 +1,6 @@
 package net.sf.anathema.acceptance.fixture.character.traits;
 
+import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.acceptance.fixture.character.CharacterSummary;
 import net.sf.anathema.acceptance.fixture.character.util.AbstractCharacterColumnFixture;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
@@ -7,7 +8,6 @@ import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTe
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterStatistics;
-import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 
 public class CheckBackgroundFixture extends AbstractCharacterColumnFixture {

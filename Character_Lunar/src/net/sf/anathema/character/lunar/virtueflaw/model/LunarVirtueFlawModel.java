@@ -3,6 +3,7 @@ package net.sf.anathema.character.lunar.virtueflaw.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.VirtueChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.traits.ValueWeightGenericTraitSorter;
@@ -11,7 +12,7 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.virtueflaw.model.VirtueFlawModel;
-import net.sf.anathema.lib.lang.ArrayUtilities;
+
 
 public class LunarVirtueFlawModel extends VirtueFlawModel {
 

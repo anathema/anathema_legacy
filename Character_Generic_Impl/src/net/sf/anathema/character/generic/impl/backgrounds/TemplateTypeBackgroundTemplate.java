@@ -1,9 +1,9 @@
 package net.sf.anathema.character.generic.impl.backgrounds;
 
+import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
-import net.sf.anathema.lib.lang.ArrayUtilities;
 
 public class TemplateTypeBackgroundTemplate extends AbstractBackgroundTemplate {
 

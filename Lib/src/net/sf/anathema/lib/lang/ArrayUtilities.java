@@ -29,18 +29,6 @@ public class ArrayUtilities {
     return true;
   }
 
-  public static <T> boolean contains(T[] array, T value) {
-    if (value == null) {
-      return false;
-    }
-    for (T object : array) {
-      if (value.equals(object)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   public static void copyAll(Object[] sourceArray, Object[] targetArray) {
     System.arraycopy(sourceArray, 0, targetArray, 0, sourceArray.length);
   }

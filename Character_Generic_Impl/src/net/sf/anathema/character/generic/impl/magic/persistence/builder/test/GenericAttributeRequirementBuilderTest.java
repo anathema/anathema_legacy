@@ -1,11 +1,11 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.builder.test;
 
+import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericAttributeRequirementBuilder;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 

@@ -48,7 +48,6 @@ public class MusicFolderWalker implements IMusicFolderWalker {
 
   private int getTrackCount() {
     return FileUtilities.getFileCount(musicFolder, true, new Predicate<File>() {
-      @Override
       public boolean evaluate(File file) {
         return isMp3File(file);
       }

@@ -1,9 +1,9 @@
 package net.sf.anathema.acceptance.fixture.character.magic;
 
+import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
-import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.util.Identificate;
 
 public class CheckCharmFixture extends AbstractCheckCharmFisture {

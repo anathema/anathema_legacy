@@ -2,9 +2,10 @@ package net.sf.anathema.character.meritsflaws.model.perk.evaluator;
 
 import java.util.Arrays;
 
+import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.lib.lang.ArrayUtilities;
+
 
 public class CharacterTypeEvaluator implements ICharacterEvaluator {
 

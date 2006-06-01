@@ -92,7 +92,6 @@ public class CharmCache implements ICharmCache {
       CharacterType characterTypeId = CharacterType.getById(idParts[0]);
       ICharm[] charms = getCharms(characterTypeId, ExaltedRuleSet.CoreRules);
       ICharm charm = ArrayUtilities.find(new Predicate<ICharm>() {
-        @Override
         public boolean evaluate(ICharm candidate) {
           return candidate.getId().equals(charmId);
         }

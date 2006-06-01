@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.impl.template.test;
 
+import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.template.TemplateRegistry;
 import net.sf.anathema.character.generic.template.ICharacterExternalsTemplate;
@@ -7,7 +8,6 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
 public class TemplateRegistryTest extends BasicTestCase {

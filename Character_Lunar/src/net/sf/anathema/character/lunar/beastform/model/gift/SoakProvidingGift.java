@@ -3,12 +3,12 @@ package net.sf.anathema.character.lunar.beastform.model.gift;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.health.IHealthTypeVisitor;
 import net.sf.anathema.character.library.quality.model.QualityPrerequisite;
 import net.sf.anathema.character.library.quality.presenter.IQuality;
 import net.sf.anathema.character.library.quality.presenter.IQualityPredicate;
-import net.sf.anathema.lib.lang.ArrayUtilities;
 
 public class SoakProvidingGift extends Gift {
 

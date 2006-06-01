@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.framework.xml.magic.test;
 
+import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplate;
 import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.test.DummyXmlTemplateRegistry;
@@ -10,7 +11,6 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
-import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.xml.DocumentUtilities;

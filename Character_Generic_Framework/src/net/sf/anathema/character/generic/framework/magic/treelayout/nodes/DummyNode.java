@@ -1,7 +1,8 @@
 package net.sf.anathema.character.generic.framework.magic.treelayout.nodes;
 
+import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.lib.lang.ArrayUtilities;
+
 
 public class DummyNode implements ISimpleNode {
 

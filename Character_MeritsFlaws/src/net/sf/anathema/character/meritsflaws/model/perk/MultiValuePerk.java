@@ -3,13 +3,13 @@ package net.sf.anathema.character.meritsflaws.model.perk;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.library.quality.model.Quality;
 import net.sf.anathema.character.meritsflaws.model.perk.cost.IFixedPerkCost;
 import net.sf.anathema.character.meritsflaws.model.perk.cost.IPerkCostModifier;
 import net.sf.anathema.character.meritsflaws.presenter.IPerkVisitor;
-import net.sf.anathema.lib.lang.ArrayUtilities;
 
 public class MultiValuePerk extends Quality implements IPerk {
 

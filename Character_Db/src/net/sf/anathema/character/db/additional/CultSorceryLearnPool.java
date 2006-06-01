@@ -1,9 +1,11 @@
 package net.sf.anathema.character.db.additional;
 
+import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.lib.lang.ArrayUtilities;
+
+
 
 public class CultSorceryLearnPool extends AbstractSorceryLearnPool implements IAdditionalMagicLearnPool {
 

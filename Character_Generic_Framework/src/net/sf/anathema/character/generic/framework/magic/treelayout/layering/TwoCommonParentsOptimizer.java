@@ -7,9 +7,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IRegularNode;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.lib.lang.ArrayUtilities;
+
 
 public class TwoCommonParentsOptimizer {
 

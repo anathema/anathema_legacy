@@ -1,6 +1,6 @@
 package net.sf.anathema.acceptance.fixture.character.template;
 
-import net.sf.anathema.lib.lang.ArrayUtilities;
+import net.disy.commons.core.util.ArrayUtilities;
 
 public class CheckCompulsiveCharmsFixture extends AbstractTemplateColumnFixture {
   public String id;

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import net.disy.commons.core.predicate.IPredicate;
+import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
@@ -18,9 +20,7 @@ import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.lib.collection.Predicate;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
-import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
@@ -34,12 +34,11 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
 
   private IIdentifiedTraitTypeGroup getAttributeTypeGroup(final AttributeGroupType type) {
     IIdentifiedCasteTraitTypeGroup[] allAttributeTypeGroups = getAttributeTypeGroups();
-    return ArrayUtilities.find(new Predicate<IIdentifiedCasteTraitTypeGroup>() {
-      @Override
+    return ArrayUtilities.getFirst(allAttributeTypeGroups, new IPredicate<IIdentifiedCasteTraitTypeGroup>() {
       public boolean evaluate(IIdentifiedCasteTraitTypeGroup group) {
         return group.getGroupId() == type;
       }
-    }, allAttributeTypeGroups);
+    });
   }
 
   public ITrait[] getAllTraits(AttributeGroupType groupType) {

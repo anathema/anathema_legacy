@@ -1,11 +1,12 @@
 package net.sf.anathema.character.impl.model.charm.combo;
 
+import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmTypeVisitor;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.model.charm.ICombo;
-import net.sf.anathema.lib.lang.ArrayUtilities;
+
 
 public abstract class ComboArbitrator implements IComboArbitrator {
 

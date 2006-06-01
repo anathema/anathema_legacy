@@ -6,7 +6,6 @@ import net.sf.anathema.lib.collection.Predicate;
 
 public class ImmaculateFreePicksPredicate extends Predicate<IMagic> {
 
-  @Override
   public boolean evaluate(IMagic magic) {
     if (magic instanceof ICharm) {
       ICharm charm = (ICharm) magic;

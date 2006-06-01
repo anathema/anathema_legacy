@@ -13,8 +13,10 @@
 !path ../Character_Library/build/classes
 !path ../Character_Abyssal/build/classes
 !path ../Character_Db/build/classes
+!path ../Character_Equipment/build/classes
 !path ../Character_Intimacies/build/classes
 !path ../Character_Lunar/build/classes
+!path ../Character_Reporting/build/classes
 !path ../Character_Solar/build/classes
 !path ../Character_Sidereal/build/classes
 !path ../Character_MeritsFlaws/build/classes
@@ -26,6 +28,7 @@
 !path ../Lib_Workflow/build/classes
 !path ../Thirdparty/XML/dom4j-1.5.jar
 !path ../Thirdparty/Reporting/jasperreports-0.6.2.jar
+!path ../Thirdparty/Reporting/itext-1.4.jar
 !path ../Thirdparty/disy/disy-commons-core.jar
 !path ../Thirdparty/disy/disy-commons-swing.jar
 *!

@@ -5,7 +5,6 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.lib.collection.Predicate;
 
 public class SequesteredTabernacleFreePicksPredicate extends Predicate<IMagic> {
-  @Override
   public boolean evaluate(IMagic magic) {
     if (magic instanceof ICharm) {
       ICharm charm = (ICharm) magic;
