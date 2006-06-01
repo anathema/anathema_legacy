@@ -4,11 +4,11 @@ import net.sf.anathema.character.equipment.character.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditonalModelTemplate;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipment;
-import net.sf.anathema.character.reporting.sheet.util.statstable.AbstractStatsTableEncoder;
+import net.sf.anathema.character.reporting.sheet.util.statstable.AbstractFixedLineStatsTableEncoder;
 
 import com.lowagie.text.pdf.BaseFont;
 
-public abstract class AbstractEquipmentTableEncoder<T extends IEquipment> extends AbstractStatsTableEncoder<T> {
+public abstract class AbstractEquipmentTableEncoder<T extends IEquipment> extends AbstractFixedLineStatsTableEncoder<T> {
 
   public AbstractEquipmentTableEncoder(BaseFont baseFont) {
     super(baseFont);

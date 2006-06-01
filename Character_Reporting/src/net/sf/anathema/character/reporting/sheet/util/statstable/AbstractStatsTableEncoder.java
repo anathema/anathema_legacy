@@ -2,7 +2,6 @@ package net.sf.anathema.character.reporting.sheet.util.statstable;
 
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.util.IStats;
 import net.sf.anathema.character.reporting.sheet.util.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
@@ -47,31 +46,20 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
     return table;
   }
 
-  protected void encodeContent(PdfPTable table, IGenericCharacter character, Bounds bounds, IStatsGroup<T>[] groups) {
-    T[] printStats = getPrintStats(character);
-    int line = 0;
-    while(line < getLineCount()) {
-      T printStat = line < printStats.length ? printStats[line] : null;
-      encodeContentLine(table, groups, printStat);
-      line++;
-    }
-  }
-
-  
-  protected abstract int getLineCount();
-
-  protected abstract IGenericTrait getTrait(IGenericCharacter character, T equipment);
-
-  protected abstract T[] getPrintStats(IGenericCharacter character);
+  protected abstract void encodeContent(
+      PdfPTable table,
+      IGenericCharacter character,
+      Bounds bounds,
+      IStatsGroup<T>[] groups);
 
   protected abstract IStatsGroup<T>[] createStatsGroups(IGenericCharacter character);
 
-  private void encodeContentLine(PdfPTable table, IStatsGroup<T>[] groups, T equipment) {
+  protected final void encodeContentLine(PdfPTable table, IStatsGroup<T>[] groups, T stats) {
     for (int index = 0; index < groups.length; index++) {
       if (index != 0) {
         table.addCell(createSpaceCell());
       }
-      groups[index].addContent(table, font, equipment);
+      groups[index].addContent(table, font, stats);
     }
   }
 

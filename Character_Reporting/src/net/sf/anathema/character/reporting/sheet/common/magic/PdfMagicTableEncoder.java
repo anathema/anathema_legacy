@@ -5,16 +5,17 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.magic.IMagic;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.IMagicStats;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicCostStatsGroup;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicNameStatsGroup;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicStats;
 import net.sf.anathema.character.reporting.sheet.util.statstable.AbstractStatsTableEncoder;
 import net.sf.anathema.character.reporting.sheet.util.statstable.IStatsGroup;
+import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfPTable;
 
 public class PdfMagicTableEncoder extends AbstractStatsTableEncoder<IMagicStats> {
 
@@ -36,17 +37,11 @@ public class PdfMagicTableEncoder extends AbstractStatsTableEncoder<IMagicStats>
   }
 
   @Override
-  protected IMagicStats[] getPrintStats(IGenericCharacter character) {
-    return printStats.toArray(new IMagicStats[printStats.size()]);
-  }
-
-  @Override
-  protected IGenericTrait getTrait(IGenericCharacter character, IMagicStats equipment) {
-    return null;
-  }
-
-  @Override
-  protected int getLineCount() {
-    return 2;
+  protected void encodeContent(
+      PdfPTable table,
+      IGenericCharacter character,
+      Bounds bounds,
+      IStatsGroup<IMagicStats>[] groups) {
+    IMagicStats[] magicStats = printStats.toArray(new IMagicStats[printStats.size()]);
   }
 }
