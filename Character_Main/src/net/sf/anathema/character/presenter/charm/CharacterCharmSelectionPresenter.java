@@ -282,7 +282,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
         IOxBodyTechniqueConfiguration model = (IOxBodyTechniqueConfiguration) getCharmConfiguration().getSpecialCharmConfiguration(
             visited.getCharmId());
         new OxBodyTechniquePresenter(getResources(), oxBodyTechniqueView, model).init();
-        if (originalCharm.hasChildren()) {
+        if ((originalCharm.hasChildren() || originalCharm.isTreeRoot()) && model.getCategories().length > 1) {
           specialCharmViews.add(viewFactory.createViewControlButton(
               oxBodyTechniqueView,
               getCharmWidth(),
@@ -306,7 +306,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
         ISubeffectCharmConfiguration model = (ISubeffectCharmConfiguration) getCharmConfiguration().getSpecialCharmConfiguration(
             visited.getCharmId());
         new SubeffectCharmPresenter(getResources(), subeffectView, model).initPresentation();
-        if (originalCharm.hasChildren()) {
+        if ((originalCharm.hasChildren() || originalCharm.isTreeRoot()) && model.getSubeffects().length > 1) {
           specialCharmViews.add(viewFactory.createViewControlButton(
               subeffectView,
               getCharmWidth(),
