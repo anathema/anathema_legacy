@@ -12,11 +12,9 @@ import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.Tag
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfPTable;
 
 public class SecondEditionWeaponryTableEncoder extends AbstractEquipmentTableEncoder<IWeapon> {
 
@@ -42,11 +40,7 @@ public class SecondEditionWeaponryTableEncoder extends AbstractEquipmentTableEnc
   }
 
   @Override
-  protected boolean isLineValid(int line, Bounds bounds, PdfPTable table) {
-    return line < getLineCount();
-  }
-  
-  private int getLineCount() {
+  protected int getLineCount() {
     return 8;
   }
 

@@ -34,7 +34,7 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
     IStatsGroup<T>[] groups = createStatsGroups(character);
     float[] columnWidths = calculateColumnWidths(groups);
     PdfPTable table = new PdfPTable(columnWidths);
-    table.setWidthPercentage(100);
+    table.setTotalWidth(bounds.width);
     for (int index = 0; index < groups.length; index++) {
       Font usedFont = index == 0 ? font : headerFont;
       table.addCell(createHeaderCell(
@@ -43,17 +43,22 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
           index != groups.length - 1,
           usedFont));
     }
+    encodeContent(table, character, bounds, groups);
+    return table;
+  }
+
+  protected void encodeContent(PdfPTable table, IGenericCharacter character, Bounds bounds, IStatsGroup<T>[] groups) {
     T[] printStats = getPrintStats(character);
     int line = 0;
-    while(isLineValid(line, bounds, table)) {
+    while(line < getLineCount()) {
       T printStat = line < printStats.length ? printStats[line] : null;
       encodeContentLine(table, groups, printStat);
       line++;
     }
-    return table;
   }
 
-  protected abstract boolean isLineValid(int line, Bounds bounds, PdfPTable table);
+  
+  protected abstract int getLineCount();
 
   protected abstract IGenericTrait getTrait(IGenericCharacter character, T equipment);
 

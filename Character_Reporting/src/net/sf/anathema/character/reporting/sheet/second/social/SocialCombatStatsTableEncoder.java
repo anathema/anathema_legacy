@@ -41,11 +41,7 @@ public class SocialCombatStatsTableEncoder extends AbstractStatsTableEncoder<ISo
   }
 
   @Override
-  protected boolean isLineValid(int line, Bounds bounds, PdfPTable table) {
-    return line < getLineCount();
-  }
-
-  private int getLineCount() {
+  protected int getLineCount() {
     return 3;
   }
 

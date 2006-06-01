@@ -12,11 +12,9 @@ import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicNameSta
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicStats;
 import net.sf.anathema.character.reporting.sheet.util.statstable.AbstractStatsTableEncoder;
 import net.sf.anathema.character.reporting.sheet.util.statstable.IStatsGroup;
-import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfPTable;
 
 public class PdfMagicTableEncoder extends AbstractStatsTableEncoder<IMagicStats> {
 
@@ -48,7 +46,7 @@ public class PdfMagicTableEncoder extends AbstractStatsTableEncoder<IMagicStats>
   }
 
   @Override
-  protected boolean isLineValid(int line, Bounds bounds, PdfPTable table) {
-    return line < 2;
+  protected int getLineCount() {
+    return 2;
   }
 }
