@@ -41,14 +41,36 @@ public class CharmTreeProvider {
     Document cascadeDocument = factory.createFrame(properties);
     Element root = cascadeDocument.getRootElement();
     Element cascadeElement = createCascadeElement(root);
+    boolean singlesPresent = false;
+    for (IVisualizedGraph graph : visualizedGraphs) {
+      if (graph.isSingleNode()) {
+        singlesPresent = true;
+        break;
+      }
+    }
+    double firstRowWidth = properties.getGapDimension().width;
+    double firstRowHeight = singlesPresent ? properties.getCharmDimension().height
+        + properties.getGapDimension().height : 0;
     double currentWidth = properties.getGapDimension().width;
     double maximumHeight = 0;
     for (IVisualizedGraph graph : visualizedGraphs) {
       cascadeElement.add(graph.getCascadeElement());
-      graph.getCascadeElement().addAttribute(SVGConstants.SVG_TRANSFORM_ATTRIBUTE, "translate(" + currentWidth + " 0)"); //$NON-NLS-1$ //$NON-NLS-2$
-      currentWidth += properties.getGapDimension().width + graph.getDimension().width;
-      maximumHeight = Math.max(maximumHeight, graph.getDimension().height);
+      if (graph.isSingleNode()) {
+        graph.getCascadeElement().addAttribute(
+            SVGConstants.SVG_TRANSFORM_ATTRIBUTE,
+            "translate(" + firstRowWidth + " 0)"); //$NON-NLS-1$ //$NON-NLS-2$
+        firstRowWidth += properties.getGapDimension().width + graph.getDimension().width;
+      }
+      else {
+        graph.getCascadeElement().addAttribute(
+            SVGConstants.SVG_TRANSFORM_ATTRIBUTE,
+            "translate(" + currentWidth + " " + firstRowHeight + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        currentWidth += properties.getGapDimension().width + graph.getDimension().width;
+        maximumHeight = Math.max(maximumHeight, graph.getDimension().height);
+      }
     }
+    maximumHeight += singlesPresent ? firstRowHeight : 0;
+    currentWidth = Math.max(currentWidth, firstRowWidth);
     setViewBox(currentWidth, maximumHeight, root);
     return cascadeDocument;
   }

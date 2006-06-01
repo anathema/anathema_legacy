@@ -9,4 +9,6 @@ public interface IVisualizedGraph {
   public Element getCascadeElement();
 
   public Dimension getDimension();
+
+  public boolean isSingleNode();
 }

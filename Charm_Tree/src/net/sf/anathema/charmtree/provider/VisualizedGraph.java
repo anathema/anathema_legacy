@@ -21,4 +21,8 @@ public class VisualizedGraph implements IVisualizedGraph {
   public final Dimension getDimension() {
     return dimension;
   }
+
+  public boolean isSingleNode() {
+    return false;
+  }
 }

@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.framework.magic.treelayout.graph.IPrope
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.ISimpleNode;
 import net.sf.anathema.character.generic.template.presentation.ICharmPresentationProperties;
 import net.sf.anathema.charmtree.provider.IVisualizedGraph;
-import net.sf.anathema.charmtree.provider.VisualizedGraph;
+import net.sf.anathema.charmtree.provider.SingleNodeVisualizedGraph;
 import net.sf.anathema.charmtree.provider.components.ILayer;
 import net.sf.anathema.charmtree.provider.components.Layer;
 import net.sf.anathema.charmtree.provider.components.nodes.IVisualizableNode;
@@ -30,6 +30,6 @@ public class SingleNodeVisualizer extends AbstractCharmCascadeVisualizer {
     QName group = SVGCreationUtils.createSVGQName(SVGConstants.SVG_G_TAG);
     Element cascadeElement = new DefaultElement(group);
     visualizableNode.toXML(cascadeElement);
-    return new VisualizedGraph(cascadeElement, getProperties().getCharmDimension());
+    return new SingleNodeVisualizedGraph(cascadeElement, getProperties().getCharmDimension());
   }
 }
