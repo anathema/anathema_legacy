@@ -11,6 +11,7 @@ public class GenericCharmPresentationProperties extends ReflectionCloneableObjec
   private String polygonString;
   private Dimension charmDimension;
   private Dimension gapDimension;
+  private boolean isolateSingles = false;
 
   public String getCharmFramePolygonString() {
     return polygonString;
@@ -24,15 +25,23 @@ public class GenericCharmPresentationProperties extends ReflectionCloneableObjec
     return gapDimension;
   }
 
+  public boolean isolateSingles() {
+    return isolateSingles;
+  }
+
   public void setPolygonString(String polygonString) {
     this.polygonString = polygonString;
   }
 
   public void setCharmDimension(Dimension dimension) {
-    charmDimension = dimension;
+    this.charmDimension = dimension;
   }
 
   public void setGapDimension(Dimension dimension) {
-    gapDimension = dimension;
+    this.gapDimension = dimension;
+  }
+
+  public void setIsolateSingles(boolean isolate) {
+    this.isolateSingles = isolate;
   }
 }

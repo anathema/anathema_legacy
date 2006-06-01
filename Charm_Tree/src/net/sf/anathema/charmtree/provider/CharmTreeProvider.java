@@ -41,21 +41,22 @@ public class CharmTreeProvider {
     Document cascadeDocument = factory.createFrame(properties);
     Element root = cascadeDocument.getRootElement();
     Element cascadeElement = createCascadeElement(root);
-    boolean singlesPresent = false;
-    for (IVisualizedGraph graph : visualizedGraphs) {
-      if (graph.isSingleNode()) {
-        singlesPresent = true;
-        break;
+    double firstRowWidth = 0;
+    double firstRowHeight = 0;
+    if (properties.isolateSingles()) {
+      for (IVisualizedGraph graph : visualizedGraphs) {
+        if (graph.isSingleNode()) {
+          firstRowWidth = properties.getGapDimension().width;
+          firstRowHeight = properties.getCharmDimension().height + properties.getGapDimension().height;
+          break;
+        }
       }
     }
-    double firstRowWidth = properties.getGapDimension().width;
-    double firstRowHeight = singlesPresent ? properties.getCharmDimension().height
-        + properties.getGapDimension().height : 0;
     double currentWidth = properties.getGapDimension().width;
     double maximumHeight = 0;
     for (IVisualizedGraph graph : visualizedGraphs) {
       cascadeElement.add(graph.getCascadeElement());
-      if (graph.isSingleNode()) {
+      if (graph.isSingleNode() && properties.isolateSingles()) {
         graph.getCascadeElement().addAttribute(
             SVGConstants.SVG_TRANSFORM_ATTRIBUTE,
             "translate(" + firstRowWidth + " 0)"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -69,7 +70,7 @@ public class CharmTreeProvider {
         maximumHeight = Math.max(maximumHeight, graph.getDimension().height);
       }
     }
-    maximumHeight += singlesPresent ? firstRowHeight : 0;
+    maximumHeight += firstRowHeight;
     currentWidth = Math.max(currentWidth, firstRowWidth);
     setViewBox(currentWidth, maximumHeight, root);
     return cascadeDocument;

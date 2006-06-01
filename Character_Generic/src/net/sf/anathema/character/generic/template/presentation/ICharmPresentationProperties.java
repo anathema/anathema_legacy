@@ -8,4 +8,6 @@ public interface ICharmPresentationProperties {
   public Dimension getCharmDimension();
 
   public Dimension getGapDimension();
+
+  public boolean isolateSingles();
 }

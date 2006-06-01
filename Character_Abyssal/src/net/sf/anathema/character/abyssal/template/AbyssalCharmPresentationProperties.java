@@ -19,4 +19,8 @@ public class AbyssalCharmPresentationProperties implements ICharmPresentationPro
   public Dimension getGapDimension() {
     return new Dimension(20, 40);
   }
+
+  public boolean isolateSingles() {
+    return false;
+  }
 }

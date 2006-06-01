@@ -30,11 +30,15 @@ public class FlowTextDemo extends SwingDemoCase {
       }
 
       public String getCharmFramePolygonString() {
-        return "15,15 20,20 15,15";
+        return "15,15 20,20 15,15"; //$NON-NLS-1$
       }
 
       public Dimension getGapDimension() {
         return new Dimension(50, 25);
+      }
+
+      public boolean isolateSingles() {
+        return false;
       }
     });
     Element rootElement = document.getRootElement();

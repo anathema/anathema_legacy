@@ -20,4 +20,8 @@ public class DefaultCharmPresentationProperties implements ICharmPresentationPro
   public Dimension getGapDimension() {
     return new Dimension(25, 50);
   }
+
+  public boolean isolateSingles() {
+    return false;
+  }
 }

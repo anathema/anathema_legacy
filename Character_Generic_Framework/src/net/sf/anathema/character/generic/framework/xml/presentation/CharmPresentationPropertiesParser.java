@@ -16,6 +16,8 @@ public class CharmPresentationPropertiesParser extends AbstractXmlTemplateParser
   private static final String ATTRIB_WIDTH = "width"; //$NON-NLS-1$
   private static final String ATTRIB_HEIGHT = "height"; //$NON-NLS-1$
   private static final String TAG_GAP_DIMENSION = "gapDimension"; //$NON-NLS-1$
+  private static final String TAG_ISOLATE_SINGLE_CHARMS = "isolateSingleCharms"; //$NON-NLS-1$
+  private static final String ATTRIB_ISOLATE = "isolate"; //$NON-NLS-1$
 
   public CharmPresentationPropertiesParser(IXmlTemplateRegistry<GenericCharmPresentationProperties> templateRegistry) {
     super(templateRegistry);
@@ -31,7 +33,16 @@ public class CharmPresentationPropertiesParser extends AbstractXmlTemplateParser
     parsePolygonString(element, basicTemplate);
     parseCharmDimension(element, basicTemplate);
     parseGapDimension(element, basicTemplate);
+    parseIsolateSingleCharms(element, basicTemplate);
     return basicTemplate;
+  }
+
+  private void parseIsolateSingleCharms(Element element, GenericCharmPresentationProperties basicTemplate) {
+    Element isolateElement = element.element(TAG_ISOLATE_SINGLE_CHARMS);
+    if (isolateElement == null) {
+      return;
+    }
+    basicTemplate.setIsolateSingles(ElementUtilities.getBooleanAttribute(isolateElement, ATTRIB_ISOLATE, false));
   }
 
   private void parseGapDimension(Element element, GenericCharmPresentationProperties basicTemplate)

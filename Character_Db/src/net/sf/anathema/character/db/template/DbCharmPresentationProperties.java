@@ -19,4 +19,8 @@ public class DbCharmPresentationProperties implements ICharmPresentationProperti
   public Dimension getGapDimension() {
     return new Dimension(25, 50);
   }
+
+  public boolean isolateSingles() {
+    return false;
+  }
 }
