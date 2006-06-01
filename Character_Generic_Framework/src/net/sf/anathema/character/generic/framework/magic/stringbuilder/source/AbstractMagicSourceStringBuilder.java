@@ -27,4 +27,13 @@ public abstract class AbstractMagicSourceStringBuilder<T extends IMagic> impleme
     }
     return builder;
   }
+
+  protected StringBuilder createShortSourceString(final IMagicSource source) {
+    StringBuilder builder = new StringBuilder();
+    builder.append(source.getSource());
+    if (source.getPage() != null) {
+      builder.append(IMagicStringBuilderConstants.CommaSpace + source.getPage());
+    }
+    return builder;
+  }
 }

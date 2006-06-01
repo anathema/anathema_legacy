@@ -6,24 +6,24 @@ import net.sf.anathema.lib.resources.IResources;
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class MagicCostStatsGroup extends AbstractTextStatsGroup<IMagicStats> {
+public class MagicDurationStatsGroup extends AbstractTextStatsGroup<IMagicStats> {
 
   private final IResources resources;
 
-  public MagicCostStatsGroup(IResources resources) {
+  public MagicDurationStatsGroup(IResources resources) {
     this.resources = resources;
   }
 
   public void addContent(PdfPTable table, Font font, IMagicStats stats) {
-    String text = stats == null ? null : stats.getCostString(resources);
+    String text = stats == null ? null : stats.getDurationString(resources);
     table.addCell(createTextCell(font, text));
   }
 
   public Float[] getColumnWeights() {
-    return new Float[] { 3.0f };
+    return new Float[] { 3f };
   }
 
   public String getTitle() {
-    return resources.getString("Sheet.Magic.Cost"); //$NON-NLS-1$
+    return resources.getString("Sheet.Magic.Duration"); //$NON-NLS-1$
   }
 }

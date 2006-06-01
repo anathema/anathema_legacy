@@ -3,6 +3,7 @@ package net.sf.anathema.character.reporting.sheet.common;
 import java.text.MessageFormat;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
@@ -15,7 +16,7 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfExperienceEncoder implements IPdfContentEncoder {
 
-  private static final int FONT_SIZE = 9;
+  private static final int FONT_SIZE = IVoidStateFormatConstants.FONT_SIZE;
   private final Font font;
   private final IResources resources;
 
@@ -33,6 +34,6 @@ public class PdfExperienceEncoder implements IPdfContentEncoder {
         new Integer(spentPoints),
         new Integer(totalPoints - spentPoints) });
     Phrase phrase = new Phrase(experienceText, font);
-    PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, FONT_SIZE + 6);
+    PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, FONT_SIZE  + 6);
   }
 }

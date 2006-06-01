@@ -4,6 +4,7 @@ import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.util.IStats;
 import net.sf.anathema.character.reporting.sheet.util.AbstractTableEncoder;
+import net.sf.anathema.character.reporting.sheet.util.TableCell;
 import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
 import net.sf.anathema.character.reporting.util.Bounds;
 
@@ -17,11 +18,14 @@ import com.lowagie.text.pdf.PdfPTable;
 public abstract class AbstractStatsTableEncoder<T extends IStats> extends AbstractTableEncoder {
 
   private final Font font;
+  private final Font sectionFont;
   private final Font headerFont;
 
   public AbstractStatsTableEncoder(BaseFont baseFont) {
     this.headerFont = TableEncodingUtilities.createHeaderFont(baseFont);
     this.font = TableEncodingUtilities.createFont(baseFont);
+    this.sectionFont = new Font(font);
+    this.sectionFont.setStyle(Font.BOLD);
   }
 
   protected final Font getFont() {
@@ -42,15 +46,14 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
           index != groups.length - 1,
           usedFont));
     }
-    encodeContent(table, character, bounds, groups);
+    encodeContent(table, character, bounds);
     return table;
   }
 
   protected abstract void encodeContent(
       PdfPTable table,
       IGenericCharacter character,
-      Bounds bounds,
-      IStatsGroup<T>[] groups);
+      Bounds bounds);
 
   protected abstract IStatsGroup<T>[] createStatsGroups(IGenericCharacter character);
 
@@ -61,6 +64,17 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
       }
       groups[index].addContent(table, font, stats);
     }
+  }
+
+
+  protected final void encodeSectionLine(PdfPTable table, String sectionName) {
+    int columnCount = table.getAbsoluteWidths().length;
+    Phrase phrase = new Phrase(sectionName, sectionFont);
+    PdfPCell cell = new TableCell(phrase, Rectangle.NO_BORDER);
+    cell.setPaddingTop(3);
+    cell.setPaddingLeft(0.75f);
+    cell.setColspan(columnCount);
+    table.addCell(cell);
   }
 
   private float[] calculateColumnWidths(IStatsGroup[] groups) {

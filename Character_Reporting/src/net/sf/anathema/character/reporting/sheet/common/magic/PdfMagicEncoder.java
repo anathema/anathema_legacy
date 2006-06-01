@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
@@ -30,7 +31,8 @@ public class PdfMagicEncoder implements IPdfContentEncoder {
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     List<IMagic> printMagic = collectPrintMagic(character);
-    new PdfMagicTableEncoder(resources, baseFont, printMagic).encodeTable(directContent, character, bounds);
+    IExaltedEdition edition = character.getRules().getEdition();
+    new PdfMagicTableEncoder(resources, baseFont, printMagic, edition).encodeTable(directContent, character, bounds);
 
   }
 

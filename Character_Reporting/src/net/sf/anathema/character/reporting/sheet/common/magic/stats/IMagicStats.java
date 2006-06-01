@@ -9,4 +9,12 @@ public interface IMagicStats extends IStats {
   public IIdentificate getName();
 
   public String getCostString(IResources resources);
+
+  public String getGroupName(IResources resources);
+
+  public String getType(IResources resources);
+
+  public String getDurationString(IResources resources);
+
+  public String getSourceString(IResources resources);
 }

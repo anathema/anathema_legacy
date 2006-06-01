@@ -15,8 +15,17 @@ public class SpellSourceStringBuilder extends AbstractMagicSourceStringBuilder<I
   }
 
   public String createSourceString(ISpell spell) {
-    IMagicSource source = spell.getSource(edition);
+    IMagicSource source = getSource(spell);
     return createSourceString(source).toString();
   }
+  
 
+  public String createShortSourceString(ISpell spell) {
+    IMagicSource source = getSource(spell);
+    return createShortSourceString(source).toString();
+  }
+
+  private IMagicSource getSource(ISpell spell) {
+    return spell.getSource(edition);
+  }
 }
