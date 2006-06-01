@@ -10,6 +10,7 @@ import net.sf.anathema.character.equipment.impl.reporting.second.stats.IEquipmen
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IArmour;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
@@ -25,8 +26,8 @@ public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncod
   }
 
   @Override
-  protected PdfPTable createTable(IGenericCharacter character) {
-    PdfPTable armourTable = super.createTable(character);
+  protected PdfPTable createTable(IGenericCharacter character, Bounds bounds) {
+    PdfPTable armourTable = super.createTable(character, bounds);
     IArmour totalArmour = getEquipmentModel(character).getTotalPrintArmour(getLineCount());
     IEquipmentStatsGroup<IArmour>[] groups = createStatsGroups(character);
     for (int index = 0; index < groups.length; index++) {
@@ -56,7 +57,11 @@ public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncod
   }
 
   @Override
-  protected int getLineCount() {
+  protected boolean isLineValid(int line, Bounds bounds) {
+    return line < getLineCount();
+  }
+  
+  private int getLineCount() {
     return 3;
   }
 

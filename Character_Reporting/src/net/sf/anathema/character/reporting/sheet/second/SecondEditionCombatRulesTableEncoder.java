@@ -5,6 +5,7 @@ import net.sf.anathema.character.reporting.sheet.elements.TableList;
 import net.sf.anathema.character.reporting.sheet.util.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.sheet.util.TableCell;
 import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Chunk;
@@ -28,7 +29,7 @@ public class SecondEditionCombatRulesTableEncoder extends AbstractTableEncoder {
   }
 
   @Override
-  protected PdfPTable createTable(IGenericCharacter character) {
+  protected PdfPTable createTable(IGenericCharacter character, Bounds bounds) {
     float cellPadding = 0.05f;
     PdfPTable table = new PdfPTable(new float[] { 1f, cellPadding, 1.1f, cellPadding, 1f });
 

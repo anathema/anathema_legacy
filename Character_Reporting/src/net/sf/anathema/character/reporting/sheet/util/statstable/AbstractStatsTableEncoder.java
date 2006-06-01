@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.sheet.util.statstable;
 
-
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
@@ -31,7 +30,7 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
   }
 
   @Override
-  protected PdfPTable createTable(IGenericCharacter character) {
+  protected PdfPTable createTable(IGenericCharacter character, Bounds bounds) {
     IStatsGroup<T>[] groups = createStatsGroups(character);
     float[] columnWidths = calculateColumnWidths(groups);
     PdfPTable table = new PdfPTable(columnWidths);
@@ -45,18 +44,20 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
           usedFont));
     }
     T[] printStats = getPrintStats(character);
-    for (int line = 0; line < getLineCount(); line++) {
+    int line = 0;
+    while(isLineValid(line, bounds)) {
       T printStat = line < printStats.length ? printStats[line] : null;
       encodeContentLine(table, groups, printStat);
+      line++;
     }
     return table;
   }
 
+  protected abstract boolean isLineValid(int line, Bounds bounds);
+
   protected abstract IGenericTrait getTrait(IGenericCharacter character, T equipment);
 
   protected abstract T[] getPrintStats(IGenericCharacter character);
-
-  protected abstract int getLineCount();
 
   protected abstract IStatsGroup<T>[] createStatsGroups(IGenericCharacter character);
 

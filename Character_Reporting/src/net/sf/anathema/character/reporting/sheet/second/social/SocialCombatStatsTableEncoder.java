@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.social.ISocialCombatStats;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.reporting.sheet.util.statstable.AbstractStatsTableEncoder;
 import net.sf.anathema.character.reporting.sheet.util.statstable.IStatsGroup;
+import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
@@ -23,8 +24,8 @@ public class SocialCombatStatsTableEncoder extends AbstractStatsTableEncoder<ISo
   }
 
   @Override
-  protected PdfPTable createTable(IGenericCharacter character) {
-    PdfPTable table = super.createTable(character);
+  protected PdfPTable createTable(IGenericCharacter character, Bounds bounds) {
+    PdfPTable table = super.createTable(character, bounds);
     return table;
   }
 
@@ -40,7 +41,11 @@ public class SocialCombatStatsTableEncoder extends AbstractStatsTableEncoder<ISo
   }
 
   @Override
-  protected int getLineCount() {
+  protected boolean isLineValid(int line, Bounds bounds) {
+    return line < getLineCount();
+  }
+
+  private int getLineCount() {
     return 3;
   }
 

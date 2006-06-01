@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.sheet.util.AbstractTableEncoder;
+import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Font;
@@ -26,7 +27,7 @@ public class SolarAnimaTableEncoder extends AbstractTableEncoder {
   }
 
   @Override
-  protected PdfPTable createTable(IGenericCharacter character) {
+  protected PdfPTable createTable(IGenericCharacter character, Bounds bounds) {
     PdfPTable table = new PdfPTable(new float[] { 0.15f, 0.6f, 0.25f });
     table.setWidthPercentage(100);
     table.addCell(createHeaderCell(resources.getString("Sheet.AnimaTable.Header.Motes"))); //$NON-NLS-1$
