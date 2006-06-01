@@ -30,6 +30,7 @@ public class PdfMagicEncoder implements IPdfContentEncoder {
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     List<IMagic> printMagic = collectPrintMagic(character);
+    new PdfMagicTableEncoder(resources, baseFont, printMagic).encodeTable(directContent, character, bounds);
 
   }
 

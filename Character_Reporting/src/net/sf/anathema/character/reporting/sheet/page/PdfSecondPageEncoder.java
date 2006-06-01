@@ -8,6 +8,7 @@ import net.sf.anathema.character.reporting.sheet.common.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfExperienceEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfHorizontalLineContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.PdfComboEncoder;
+import net.sf.anathema.character.reporting.sheet.common.magic.PdfMagicEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
@@ -126,7 +127,7 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds bounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
-    IPdfContentEncoder encoder = new NullPdfContentEncoder();
+    IPdfContentEncoder encoder = new PdfMagicEncoder(resources, baseFont);
     boxEncoder.encodeBox(directContent, encoder, character, bounds, "Charms"); //$NON-NLS-1$
     return height;
   }

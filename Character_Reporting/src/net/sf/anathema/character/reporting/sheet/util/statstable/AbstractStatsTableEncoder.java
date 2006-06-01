@@ -45,7 +45,7 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
     }
     T[] printStats = getPrintStats(character);
     int line = 0;
-    while(isLineValid(line, bounds)) {
+    while(isLineValid(line, bounds, table)) {
       T printStat = line < printStats.length ? printStats[line] : null;
       encodeContentLine(table, groups, printStat);
       line++;
@@ -53,7 +53,7 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
     return table;
   }
 
-  protected abstract boolean isLineValid(int line, Bounds bounds);
+  protected abstract boolean isLineValid(int line, Bounds bounds, PdfPTable table);
 
   protected abstract IGenericTrait getTrait(IGenericCharacter character, T equipment);
 
