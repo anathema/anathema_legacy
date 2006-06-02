@@ -127,7 +127,7 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
           targetView.setValue(properties.getUndefinedString());
         }
         else {
-          targetView.setValue(spell.getTarget());
+          targetView.setValue(resources.getString("Spells.Target." + spell.getTarget())); //$NON-NLS-1$
         }
         sourceView.setValue(sourceStringBuilder.createSourceString(spell));
       }

@@ -32,7 +32,7 @@
         <essence cost="15"/>
       </temporary>
     </cost>
-    <target target="Area (30x100x10 yards)"/>
+    <target target="Area30x100x10yards"/>
     <source source="Exalted" page="217" edition="FirstEdition"/>
     <source source="Second Edition" page="252" edition="SecondEdition"/>
   </spell>
@@ -42,7 +42,7 @@
         <essence cost="20" text="or more"/>
       </temporary>
     </cost>
-    <target target="First Circle Demon"/>
+    <target target="SummonedDemon"/>
     <source source="Exalted" page="218" edition="FirstEdition"/>
     <source source="Second Edition" page="252" edition="SecondEdition"/>
   </spell>
@@ -52,7 +52,7 @@
         <essence cost="10" text="or 20 motes"/>
       </temporary>
     </cost>
-    <target target="Caster or spell"/>
+    <target target="CasterSpell"/>
     <source source="Exalted" page="218" edition="FirstEdition"/>
     <source source="Second Edition" page="253" edition="SecondEdition"/>
   </spell>
@@ -62,7 +62,7 @@
         <essence cost="20"/>
       </temporary>
     </cost>
-    <target target="Area (10-15 feet radius)"/>
+    <target target="Area1015feet"/>
     <source source="Exalted" page="218" edition="FirstEdition"/>
     <source source="Second Edition" page="253" edition="SecondEdition"/>
   </spell>
@@ -72,7 +72,7 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <target target="Summoned cherub"/>
+    <target target="SummonedCherub"/>
     <source source="Exalted" page="218" edition="FirstEdition"/>
     <source source="Second Edition" page="254" edition="SecondEdition"/>
   </spell>
@@ -93,7 +93,7 @@
         <essence cost="10" text="or more"/>
       </temporary>
     </cost>
-    <target target="Elemental"/>
+    <target target="SummonedElemental"/>
     <source source="Exalted" page="219" edition="FirstEdition"/>
     <source source="Second Edition" page="254" edition="SecondEdition"/>
   </spell>
@@ -121,7 +121,7 @@
         <essence cost="30"/>
       </temporary>
     </cost>
-    <target target="Touched creature"/>
+    <target target="TouchedCreature"/>
     <source source="Exalted" page="220" edition="FirstEdition"/>
     <source source="Second Edition" page="255" edition="SecondEdition"/>
   </spell>
@@ -131,7 +131,7 @@
         <essence cost="30" text="or more"/>
       </temporary>
     </cost>
-    <target target="Second Circle Demon"/>
+    <target target="SummonedDemon"/>
     <source source="Exalted" page="220" edition="FirstEdition"/>
     <source source="Second Edition" page="255" edition="SecondEdition"/>
   </spell>
@@ -161,7 +161,7 @@
         <essence cost="15" text="or 20 motes"/>
       </temporary>
     </cost>
-    <target target="Caster or spell"/>
+    <target target="CasterSpell"/>
     <source source="Exalted" page="221" edition="FirstEdition"/>
     <source source="Second Edition" page="256" edition="SecondEdition"/>
   </spell>
@@ -181,7 +181,7 @@
         <essence cost="20" text="or 25 motes"/>
       </temporary>
     </cost>
-    <target target="Caster or spell"/>
+    <target target="CasterSpell"/>
     <source source="Exalted" page="222" edition="FirstEdition"/>
     <source source="Second Edition" page="256" edition="SecondEdition"/>
   </spell>
@@ -191,7 +191,7 @@
         <essence cost="40" text="or more"/>
       </temporary>
     </cost>
-    <target target="Third Circle Demon"/>
+    <target target="SummonedDemon"/>
     <source source="Exalted" page="222" edition="FirstEdition"/>
     <source source="Second Edition" page="256" edition="SecondEdition"/>
   </spell>

@@ -31,6 +31,7 @@ http://anathema.sf.net
 + Hired wordman to tend to the Mac communities needs.
 * Tried to improve usability on Mac OS X.
 * Revamped the spell selection view
+* 	View now filters illegals spells from mass-selection without throwing an exception
 * Greatly improved speed of Charm trees.
 
 -- Bugs Fixed --
