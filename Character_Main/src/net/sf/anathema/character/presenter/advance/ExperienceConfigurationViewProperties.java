@@ -43,6 +43,6 @@ public class ExperienceConfigurationViewProperties implements IExperienceConfigu
   }
 
   public String getTotalString() {
-    return resources.getString("Experience.Total"); //$NON-NLS-1$
+    return resources.getString("CardView.Experience.Total"); //$NON-NLS-1$
   }
 }
