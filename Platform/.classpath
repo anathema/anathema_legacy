@@ -3,7 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="/Lib"/>
-	<classpathentry kind="src" path="/Lib_Gui"/>
 	<classpathentry kind="lib" path="/Thirdparty/XML/dom4j-1.5.jar"/>
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry sourcepath="/Thirdparty/Reporting/jasperreport-src.zip" kind="lib" path="/Thirdparty/Reporting/jasperreports-0.6.2.jar"/>
@@ -19,5 +18,6 @@
 	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
 	<classpathentry sourcepath="/Thirdparty/Reporting/itext-src-1.4.zip" kind="lib" path="/Thirdparty/Reporting/itext-1.4.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-io.jar"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/LibGui"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

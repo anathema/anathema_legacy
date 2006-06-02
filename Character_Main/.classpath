@@ -10,7 +10,6 @@
 	<classpathentry kind="lib" path="/Thirdparty/Testing/bcel.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/Testing/hansel.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/Testing/junit.jar"/>
-	<classpathentry kind="src" path="/Lib_Gui"/>
 	<classpathentry kind="lib" path="/Thirdparty/Testing/jemmy.zip"/>
 	<classpathentry kind="src" path="/Platform"/>
 	<classpathentry kind="src" path="/Charm_Tree"/>

@@ -6,7 +6,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment_Impl"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Gui"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Development_Test_Platform"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Platform"/>

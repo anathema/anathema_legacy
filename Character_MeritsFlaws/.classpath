@@ -7,7 +7,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Library"/>
 	<classpathentry kind="src" path="/Platform"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Gui"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
 	<classpathentry sourcepath="/Thirdparty/XML/dom4j-src.zip" kind="lib" path="/Thirdparty/XML/dom4j-1.5.jar"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-layout_src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>

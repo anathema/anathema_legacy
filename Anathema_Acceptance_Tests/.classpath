@@ -16,7 +16,6 @@
 	<classpathentry kind="src" path="/Charm_Tree"/>
 	<classpathentry kind="src" path="/Platform"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Gui"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-core-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Sidereal"/>

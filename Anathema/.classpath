@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="/Lib_Gui"/>
 	<classpathentry kind="src" path="/Lib"/>
 	<classpathentry kind="src" path="/Character_Main"/>
 	<classpathentry kind="src" path="/Platform"/>
