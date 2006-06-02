@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.magic.general.IMagicSource;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.lib.resources.IResources;
 
-public class SpellSourceStringBuilder extends AbstractMagicSourceStringBuilder<ISpell> {
+public class SpellSourceStringBuilder extends MagicSourceStringBuilder<ISpell> {
 
   private final IExaltedEdition edition;
 

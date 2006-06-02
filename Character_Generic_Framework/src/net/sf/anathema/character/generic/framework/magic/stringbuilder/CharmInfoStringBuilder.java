@@ -1,7 +1,7 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
 import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.AbstractMagicSourceStringBuilder;
+import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
@@ -20,7 +20,7 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
   public CharmInfoStringBuilder(IResources resources) {
     this.resources = resources;
     costStringBuilder = new ScreenDisplayInfoStringBuilder(resources);
-    sourceStringBuilder = new AbstractMagicSourceStringBuilder<ICharm>(resources);
+    sourceStringBuilder = new MagicSourceStringBuilder<ICharm>(resources);
     typeStringBuilder = new CharmTypeStringBuilder(resources);
   }
 

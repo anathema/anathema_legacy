@@ -6,11 +6,11 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.general.IMagicSource;
 import net.sf.anathema.lib.resources.IResources;
 
-public class AbstractMagicSourceStringBuilder<T extends IMagic> implements IMagicSourceStringBuilder<T> {
+public class MagicSourceStringBuilder<T extends IMagic> implements IMagicSourceStringBuilder<T> {
 
   private final IResources resources;
 
-  public AbstractMagicSourceStringBuilder(IResources resources) {
+  public MagicSourceStringBuilder(IResources resources) {
     this.resources = resources;
   }
 
