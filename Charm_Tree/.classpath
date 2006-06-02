@@ -5,16 +5,16 @@
 	<classpathentry sourcepath="/Thirdparty/XML/XercesImpl-2.6.2-src.zip" kind="lib" path="/Thirdparty/XML/xercesImpl-2.6.2.jar"/>
 	<classpathentry kind="src" path="/Lib"/>
 	<classpathentry kind="src" path="/Platform"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-ext.jar"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-gvt.jar"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-util.jar"/>
-	<classpathentry sourcepath="/xml-batik/sources" kind="lib" path="/Thirdparty/SVG/batik-bridge.jar"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-dom.jar"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-svg-dom.jar"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-xml.jar"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-awt-util.jar"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-parser.jar"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-swing.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-ext.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-gvt.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-util.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-bridge.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-dom.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-svg-dom.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-xml.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-awt-util.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-parser.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-swing.jar"/>
 	<classpathentry kind="src" path="/Character_Generic"/>
 	<classpathentry kind="src" path="/Character_Generic_Impl"/>
 	<classpathentry kind="lib" path="/Thirdparty/Testing/jdemo_core.jar"/>
@@ -22,12 +22,12 @@
 	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-gui-util.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-gui-util.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Framework"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-1.6-src.zip" kind="lib" path="/Thirdparty/SVG/batik-css.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-script.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-css.jar"/>
+	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-script.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/XML/xml-apis-dom3.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
