@@ -1,10 +1,9 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder;
 
 import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
+import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.AbstractMagicSourceStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
@@ -14,14 +13,14 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
 
   private static final String HtmlLineBreak = "<br>"; //$NON-NLS-1$
   private final IMagicInfoStringBuilder costStringBuilder;
-  private final IMagicSourceStringBuilder<IMagic> sourceStringBuilder;
+  private final IMagicSourceStringBuilder<ICharm> sourceStringBuilder;
   private final ICharmTypeStringBuilder typeStringBuilder;
   private final IResources resources;
 
   public CharmInfoStringBuilder(IResources resources) {
     this.resources = resources;
     costStringBuilder = new ScreenDisplayInfoStringBuilder(resources);
-    sourceStringBuilder = new MagicSourceStringBuilder(resources);
+    sourceStringBuilder = new AbstractMagicSourceStringBuilder<ICharm>(resources);
     typeStringBuilder = new CharmTypeStringBuilder(resources);
   }
 
@@ -49,6 +48,8 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
     builder.append(createKeywordLine(charm));
     builder.append(createPrerequisiteLines(charm.getPrerequisites()));
     builder.append(createPrerequisiteLines(new IGenericTrait[] { charm.getEssence() }));
+    builder.append(resources.getString("CharmTreeView.ToolTip.Source")); //$NON-NLS-1$
+    builder.append(IMagicStringBuilderConstants.ColonSpace);
     builder.append(sourceStringBuilder.createSourceString(charm));
     builder.append("</body></html>"); //$NON-NLS-1$
     return builder.toString();

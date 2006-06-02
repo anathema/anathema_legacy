@@ -1,8 +1,9 @@
 package net.sf.anathema.character.reporting.sheet.common.magic.stats;
 
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.CharmTypeStringBuilder;
+import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.MagicInfoStringBuilder;
-import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
+import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.AbstractMagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.SpellSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.reporting.datasource.CharmDataSource;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -83,12 +84,12 @@ public class MagicStats implements IMagicStats {
     final String[] group = new String[1];
     magic.accept(new IMagicVisitor() {
       public void visitCharm(ICharm charm) {
-        final MagicSourceStringBuilder stringBuilder = new MagicSourceStringBuilder(resources);
+        final IMagicSourceStringBuilder<ICharm> stringBuilder = new AbstractMagicSourceStringBuilder<ICharm>(resources);
         group[0] = stringBuilder.createShortSourceString(charm);
       }
 
       public void visitSpell(ISpell spell) {
-        final SpellSourceStringBuilder stringBuilder = new SpellSourceStringBuilder(resources, edition);
+        final IMagicSourceStringBuilder<ISpell> stringBuilder = new SpellSourceStringBuilder(resources, edition);
         group[0] = stringBuilder.createShortSourceString(spell);
       }
     });
