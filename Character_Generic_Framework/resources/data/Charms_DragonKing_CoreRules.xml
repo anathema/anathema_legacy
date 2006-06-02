@@ -9,7 +9,7 @@
 				<essence cost="2"/>
 			</temporary>
 		</cost>
-		<duration duration="One Scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="178"/>
 	</charm>
@@ -20,10 +20,11 @@
 		</prerequisite>
 		<cost>
 			<temporary>
-				<essence cost="3" text="or 3 motes and 1 WP"/>
+				<essence cost="3"/>
+				<willpower cost="1" text="(optional)"/>
 			</temporary>
 		</cost>
-		<duration duration="Instant or One Scene"/>
+		<duration duration="Varies"/>
 		<combo comboable="true"/>
 		<charmtype type="Supplemental"/>
 		<source source="Player's Guide" page="178"/>
@@ -97,7 +98,7 @@
 				<essence cost="2"/>
 			</temporary>
 		</cost>
-		<duration duration="One Scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="180"/>
 	</charm>
@@ -111,7 +112,7 @@
 				<essence cost="4"/>
 			</temporary>
 		</cost>
-		<duration duration="One Scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="180"/>
 	</charm>
@@ -126,7 +127,7 @@
 				<willpower cost="1"/>
 			</temporary>
 		</cost>
-		<duration duration="Path level in turns"/>
+		<duration duration="PathLevelTurns"/>
 		<charmtype type="Reflexive"/>
 		<source source="Player's Guide" page="180"/>
 	</charm>
@@ -170,7 +171,7 @@
 				<willpower cost="1"/>
 			</temporary>
 		</cost>
-		<duration duration="Day"/>
+		<duration duration="1day"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="180"/>
 	</charm>
@@ -183,7 +184,7 @@
 				<essence cost="5"/>
 			</temporary>
 		</cost>
-		<duration duration="One Scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="181"/>
 	</charm>
@@ -197,7 +198,7 @@
 				<essence cost="4"/>
 			</temporary>
 		</cost>
-		<duration duration="One Scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="181"/>
 	</charm>
@@ -227,7 +228,7 @@
 				<willpower cost="1"/>
 			</temporary>
 		</cost>
-		<duration duration="One Day"/>
+		<duration duration="1day"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="181"/>
 	</charm>
@@ -257,7 +258,7 @@
 				<willpower cost="1"/>
 			</temporary>
 		</cost>
-		<duration duration="One Scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="182"/>
 	</charm>
@@ -360,7 +361,7 @@
 				<essence cost="3"/>
 			</temporary>
 		</cost>
-		<duration duration="One Scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="183"/>
 	</charm>
@@ -403,7 +404,7 @@
 				<willpower cost="1"/>
 			</temporary>
 		</cost>
-		<duration duration="One scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="183"/>
 	</charm>
@@ -432,7 +433,7 @@
 				<willpower cost="1"/>
 			</temporary>
 		</cost>
-		<duration duration="One scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="184"/>
 	</charm>
@@ -445,7 +446,7 @@
 				<essence cost="2"/>
 			</temporary>
 		</cost>
-		<duration duration="(Essence) hours"/>
+		<duration duration="EssenceHours"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="185"/>
 	</charm>
@@ -487,7 +488,7 @@
 				<essence cost="3"/>
 			</temporary>
 		</cost>
-		<duration duration="One scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="185"/>
 	</charm>
@@ -502,7 +503,7 @@
 				<willpower cost="1"/>
 			</temporary>
 		</cost>
-		<duration duration="One scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="185"/>
 	</charm>
@@ -517,7 +518,7 @@
 				<willpower cost="1"/>
 			</temporary>
 		</cost>
-		<duration duration="One scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="185"/>
 	</charm>
@@ -530,7 +531,7 @@
 				<essence cost="2"/>
 			</temporary>
 		</cost>
-		<duration duration="One scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Reflexive"/>
 		<source source="Player's Guide" page="186"/>
 	</charm>
@@ -544,7 +545,7 @@
 				<essence cost="4"/>
 			</temporary>
 		</cost>
-		<duration duration="Path level in turns"/>
+		<duration duration="PathLevelTurns"/>
 		<charmtype type="Reflexive"/>
 		<source source="Player's Guide" page="186"/>
 	</charm>
@@ -558,7 +559,7 @@
 				<essence cost="6"/>
 			</temporary>
 		</cost>
-		<duration duration="One turn"/>
+		<duration duration="1turn"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="186"/>
 	</charm>
@@ -603,7 +604,7 @@
 				<willpower cost="1"/>
 			</temporary>
 		</cost>
-		<duration duration="One turn"/>
+		<duration duration="1turn"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="186"/>
 	</charm>
@@ -616,7 +617,7 @@
 				<essence cost="1" text="per +1 in difficulty"/>
 			</temporary>
 		</cost>
-		<duration duration="One scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="187"/>
 	</charm>
@@ -630,7 +631,7 @@
 				<essence cost="3"/>
 			</temporary>
 		</cost>
-		<duration duration="One day"/>
+		<duration duration="1day"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="187"/>
 	</charm>
@@ -645,7 +646,7 @@
 				<willpower cost="1"/>
 			</temporary>
 		</cost>
-		<duration duration="(Essence) hours"/>
+		<duration duration="EssenceHours"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="187"/>
 	</charm>
@@ -660,7 +661,7 @@
 				<willpower cost="1"/>
 			</temporary>
 		</cost>
-		<duration duration="Path level in minutes"/>
+		<duration duration="PathLevelMinutes"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="188"/>
 	</charm>
@@ -675,7 +676,7 @@
 				<willpower cost="1"/>
 			</temporary>
 		</cost>
-		<duration duration="One scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="188"/>
 	</charm>
@@ -690,7 +691,7 @@
 				<willpower cost="1"/>
 			</temporary>
 		</cost>
-		<duration duration="Willpower in turn"/>
+		<duration duration="WillpowerTurns"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="189"/>
 	</charm>
@@ -703,7 +704,7 @@
 				<essence cost="5"/>
 			</temporary>
 		</cost>
-		<duration duration="One scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="189"/>
 	</charm>
@@ -746,7 +747,7 @@
 				<willpower cost="5"/>
 			</temporary>
 		</cost>
-		<duration duration="One scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="189"/>
 	</charm>
@@ -761,7 +762,7 @@
 				<willpower cost="1"/>
 			</temporary>
 		</cost>
-		<duration duration="One scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="190"/>
 	</charm>
@@ -776,7 +777,7 @@
 				<willpower cost="1"/>
 			</temporary>
 		</cost>
-		<duration duration="One scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="190"/>
 	</charm>
@@ -803,7 +804,7 @@
 				<essence cost="3"/>
 			</temporary>
 		</cost>
-		<duration duration="One scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="190"/>
 	</charm>
@@ -818,7 +819,7 @@
 				<willpower cost="1"/>
 			</temporary>
 		</cost>
-		<duration duration="One day"/>
+		<duration duration="1day"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="190"/>
 	</charm>
@@ -833,7 +834,7 @@
 				<willpower cost="1"/>
 			</temporary>
 		</cost>
-		<duration duration="One scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="190"/>
 	</charm>
@@ -848,7 +849,7 @@
 				<willpower cost="1"/>
 			</temporary>
 		</cost>
-		<duration duration="One scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="191"/>
 	</charm>
@@ -863,7 +864,7 @@
 				<willpower cost="1"/>
 			</temporary>
 		</cost>
-		<duration duration="One scene"/>
+		<duration duration="1scene"/>
 		<charmtype type="Simple"/>
 		<source source="Player's Guide" page="191"/>
 	</charm>
