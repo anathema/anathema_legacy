@@ -9,6 +9,7 @@ import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration
 import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 
+import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfContentByte;
 
@@ -25,8 +26,11 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
     this.pageConfiguration = pageConfiguration;
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description)
-      throws DocumentException {
+  public void encode(
+      Document document,
+      PdfContentByte directContent,
+      IGenericCharacter character,
+      IGenericDescription description) throws DocumentException {
     int distanceFromTop = 0;
     final int firstRowHeight = 51;
     encodePersonalInfo(directContent, character, description, distanceFromTop, firstRowHeight);

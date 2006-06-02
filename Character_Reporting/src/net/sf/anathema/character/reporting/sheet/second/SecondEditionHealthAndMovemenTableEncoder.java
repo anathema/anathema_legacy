@@ -177,8 +177,7 @@ public class SecondEditionHealthAndMovemenTableEncoder implements IPdfTableEncod
     addSpaceCells(table, 1);
     table.addCell(createMovementCell(moveValue + 6, 2));
     int verticalJump = character.getTrait(AttributeType.Strength).getCurrentValue()
-        + character.getTrait(AbilityType.Athletics).getCurrentValue()
-        - penalty;
+        + character.getTrait(AbilityType.Athletics).getCurrentValue() + penalty;
     addSpaceCells(table, 1);
     table.addCell(createMovementCell(verticalJump * 2, 0));
     table.addCell(createMovementCell(verticalJump, 0));
@@ -250,7 +249,7 @@ public class SecondEditionHealthAndMovemenTableEncoder implements IPdfTableEncod
     if (level == HealthLevelType.INCAPACITATED) {
       addSpaceCells(table, 1);
       for (int index = 0; index < additionalCount - 1; index++) {
-        if (index <= character.getTrait(AttributeType.Stamina).getCurrentValue()) {
+        if (index < character.getTrait(AttributeType.Stamina).getCurrentValue()) {
           table.addCell(createHealthCell(activeImage));
         }
         else {

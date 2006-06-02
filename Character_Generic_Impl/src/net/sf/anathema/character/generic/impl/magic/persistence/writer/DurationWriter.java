@@ -4,7 +4,6 @@ import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.AT
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_DURATION;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.VALUE_INSTANT;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.VALUE_PERMANENT;
-
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.charms.DurationType;
 
@@ -22,6 +21,6 @@ public class DurationWriter {
       durationElement.addAttribute(ATTRIB_DURATION, VALUE_PERMANENT);
       return;
     }
-    durationElement.addAttribute(ATTRIB_DURATION, charm.getDuration().getText(null));
+    durationElement.addAttribute(ATTRIB_DURATION, charm.getDuration().getText());
   }
 }

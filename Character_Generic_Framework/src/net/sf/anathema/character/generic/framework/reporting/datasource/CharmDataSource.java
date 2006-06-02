@@ -88,7 +88,7 @@ public class CharmDataSource implements IReportDataSource {
       final String[] duration = new String[1];
       magic.accept(new IMagicVisitor() {
         public void visitCharm(ICharm charm) {
-          duration[0] = charm.getDuration().getText(resources);
+          duration[0] = resources.getString("Charm.Duration." + charm.getDuration().getText()); //$NON-NLS-1$
         }
 
         public void visitSpell(ISpell spell) {

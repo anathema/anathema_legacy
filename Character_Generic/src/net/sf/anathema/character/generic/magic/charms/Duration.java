@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.magic.charms;
 
-import net.sf.anathema.lib.resources.IResources;
 
 public class Duration {
 
@@ -24,14 +23,8 @@ public class Duration {
     this.type = type;
     this.text = text;
   }
-
-  public String getText(IResources resources) {
-    if (type == DurationType.Instant) {
-      return resources.getString("Charm.Duration.Instant"); //$NON-NLS-1$
-    }
-    if (type == DurationType.Permanent) {
-      return resources.getString("Charm.Duration.Permanent"); //$NON-NLS-1$
-    }
+  
+  public String getText() {
     return text;
   }
 

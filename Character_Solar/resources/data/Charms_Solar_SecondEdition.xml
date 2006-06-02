@@ -65,7 +65,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="Second Edition" page="185"/>
   </genericCharm>
@@ -247,7 +247,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One Scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="5" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -266,7 +266,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One Scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -286,7 +286,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One Scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="5" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -353,7 +353,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One action"/>
+    <duration duration="1action"/>
     <charmtype type="Reflexive">
       <special primaryStep="1"/>
     </charmtype>
@@ -454,7 +454,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -532,7 +532,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="Until next action"/>
+    <duration duration="UntilNextAction"/>
     <charmtype type="Reflexive">
       <special primaryStep="2"/>
     </charmtype>
@@ -569,7 +569,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -606,7 +606,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="Until next action"/>
+    <duration duration="UntilNextAction"/>
     <charmtype type="Reflexive">
       <special primaryStep="9"/>
     </charmtype>
@@ -767,7 +767,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive">
       <special primaryStep="1"/>
     </charmtype>
@@ -787,7 +787,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="Until next action"/>
+    <duration duration="UntilNextAction"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
@@ -842,7 +842,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="5" turntype="LongTick" defense="-1"/>
     </charmtype>
@@ -879,7 +879,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="6" turntype="LongTick" defense="-1"/>
     </charmtype>
@@ -900,7 +900,7 @@
         <willpower cost="2"/>
       </temporary>
     </cost>
-    <duration duration="One week"/>
+    <duration duration="1week"/>
     <charmtype type="Simple">
       <special speed="1" turntype="DramaticAction" defense="-1"/>
     </charmtype>
@@ -935,7 +935,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="6" turntype="LongTick" defense="-1"/>
     </charmtype>
@@ -955,7 +955,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration duration="1day"/>
     <charmtype type="Reflexive">
       <special primaryStep="2"/>
     </charmtype>
@@ -1023,7 +1023,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive">
       <special primaryStep="2"/>
     </charmtype>
@@ -1043,7 +1043,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="Instant (Story)"/>
+    <duration duration="InstantStory"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
@@ -1131,7 +1131,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="4" turntype="LongTick" defense="-1"/>
     </charmtype>
@@ -1165,7 +1165,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Emotion" visualize="true"/>
@@ -1228,7 +1228,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="(Charisma) days"/>
+    <duration duration="CharismaDays"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -1249,7 +1249,7 @@
         <essence cost="7"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive">
       <special primaryStep="2"/>
     </charmtype>
@@ -1287,7 +1287,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One story"/>
+    <duration duration="1story"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -1306,7 +1306,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="4" turntype="LongTick" defense="-1"/>
     </charmtype>
@@ -1343,7 +1343,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="(Charisma) days"/>
+    <duration duration="CharismaDays"/>
     <charmtype type="Simple">
       <special speed="6" turntype="LongTick" defense="-1"/>
     </charmtype>
@@ -1421,7 +1421,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -1513,7 +1513,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -1585,7 +1585,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="7" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -1603,7 +1603,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="7" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -1655,7 +1655,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="4" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -1672,7 +1672,7 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <duration duration="Until the day ends"/>
+    <duration duration="UntilDayEnds"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="Second Edition" page="208"/>
@@ -1687,7 +1687,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive">
       <special primaryStep="1" secondaryStep="2"/>
     </charmtype>
@@ -1729,7 +1729,7 @@
         <willpower cost="2"/>
       </temporary>
     </cost>
-    <duration duration="One week"/>
+    <duration duration="1week"/>
     <charmtype type="Simple">
       <special speed="1" turntype="DramaticAction" defense="-1"/>
     </charmtype>
@@ -1889,7 +1889,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="5" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -1965,7 +1965,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="1" turntype="DramaticAction" defense="-1"/>
     </charmtype>
@@ -2019,7 +2019,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One story"/>
+    <duration duration="1story"/>
     <charmtype type="Simple">
       <special speed="5" turntype="LongTick" defense="-1"/>
     </charmtype>
@@ -2037,7 +2037,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive">
       <special primaryStep="1"/>
     </charmtype>
@@ -2055,7 +2055,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="6" turntype="LongTick" defense="-1"/>
     </charmtype>
@@ -2130,7 +2130,7 @@
         <willpower cost="2"/>
       </temporary>
     </cost>
-    <duration duration="One week"/>
+    <duration duration="1week"/>
     <charmtype type="Simple">
       <special speed="1" turntype="DramaticAction" defense="-1"/>
     </charmtype>
@@ -2163,7 +2163,7 @@
         <essence cost="8"/>
       </temporary>
     </cost>
-    <duration duration="One hour"/>
+    <duration duration="1hour"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -2314,7 +2314,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="(Essence) hours"/>
+    <duration duration="EssenceHours"/>
     <charmtype type="Simple">
       <special speed="5" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -2350,7 +2350,7 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <duration duration="Until the day ends"/>
+    <duration duration="UntilDayEnds"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
@@ -2500,6 +2500,7 @@
     <prerequisite>
       <essence id="Essence" value="5"/>
       <trait id="Occult" value="5"/>
+      <charmReference id="Solar.CelestialCircleSorcery"/>
     </prerequisite>
     <cost>
       <temporary/>
@@ -2518,7 +2519,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive">
       <special primaryStep="1"/>
     </charmtype>
@@ -2572,7 +2573,7 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -2592,7 +2593,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive">
       <special primaryStep="1"/>
     </charmtype>
@@ -2657,7 +2658,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="Second Edition" page="222"/>
@@ -2672,7 +2673,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="Second Edition" page="223"/>
@@ -2688,7 +2689,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="Until next action"/>
+    <duration duration="UntilNextAction"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="Second Edition" page="223"/>
@@ -2724,7 +2725,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
@@ -2760,7 +2761,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="Second Edition" page="224"/>
@@ -2796,7 +2797,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
@@ -2813,7 +2814,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="Second Edition" page="225"/>
@@ -2832,7 +2833,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="Second Edition" page="225"/>
@@ -2847,7 +2848,7 @@
         <essence cost="3" text="per point"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -2867,7 +2868,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="Second Edition" page="225"/>
@@ -2883,7 +2884,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="Second Edition" page="225"/>
@@ -2899,7 +2900,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="Second Edition" page="225"/>
@@ -2915,7 +2916,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="Second Edition" page="226"/>
@@ -2931,7 +2932,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="Second Edition" page="226"/>
@@ -2947,7 +2948,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="Second Edition" page="226"/>
@@ -2981,7 +2982,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
@@ -3054,7 +3055,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -3092,7 +3093,7 @@
         <essence cost="7"/>
       </temporary>
     </cost>
-    <duration duration="Until the character sleeps"/>
+    <duration duration="UntilSleep"/>
     <charmtype type="Simple">
       <special speed="6" turntype="LongTick" defense="-1"/>
     </charmtype>
@@ -3111,7 +3112,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One hour"/>
+    <duration duration="1hour"/>
     <charmtype type="Simple">
       <special speed="6" turntype="LongTick" defense="-1"/>
     </charmtype>
@@ -3145,7 +3146,7 @@
         <willpower cost="1" text="(optional)"/>
       </temporary>
     </cost>
-    <duration duration="(Essence) DV refreshes"/>
+    <duration duration="EssenceRefreshes"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -3194,7 +3195,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -3213,7 +3214,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -3425,7 +3426,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive">
       <special primaryStep="2"/>
     </charmtype>
@@ -3461,7 +3462,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="Second Edition" page="233"/>
@@ -3571,7 +3572,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration duration="1day"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -3591,7 +3592,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration duration="1day"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -3626,7 +3627,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One hour"/>
+    <duration duration="1hour"/>
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
@@ -3644,7 +3645,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive">
       <special primaryStep="1" secondaryStep="2"/>
     </charmtype>
@@ -3665,7 +3666,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive">
       <special primaryStep="1" secondaryStep="2"/>
     </charmtype>
@@ -3748,7 +3749,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple">
       <special speed="1" turntype="DramaticAction" defense="-1"/>
     </charmtype>
@@ -3767,7 +3768,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive">
       <special primaryStep="1"/>
     </charmtype>
@@ -3901,7 +3902,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="Until next action"/>
+    <duration duration="UntilNextAction"/>
     <charmtype type="Reflexive">
       <special primaryStep="1" secondaryStep="2"/>
     </charmtype>
@@ -3920,7 +3921,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One week"/>
+    <duration duration="1week"/>
     <charmtype type="Simple">
       <special speed="5" turntype="LongTick" defense="-1"/>
     </charmtype>

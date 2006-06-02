@@ -253,14 +253,6 @@
     </cost>
     <source source="Exalted: The Outcaste" page="95"/>
   </spell>
-  <spell circle="Terrestrial" id="Terrestrial.BetweenCandleAndFlame">
-    <cost>
-      <temporary>
-        <essence cost="15" text="plus 5 commited motes per target"/>
-      </temporary>
-    </cost>
-    <source source="Custom"/>
-  </spell>
   <spell circle="Terrestrial" id="Terrestrial.BecomingWoodFriend">
     <cost>
       <temporary>

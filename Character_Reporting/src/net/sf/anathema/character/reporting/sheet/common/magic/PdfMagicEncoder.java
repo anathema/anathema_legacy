@@ -12,6 +12,8 @@ import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.magic.stats.IMagicStats;
+import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicStats;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -21,22 +23,9 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfMagicEncoder implements IPdfContentEncoder {
 
-  private final IResources resources;
-  private final BaseFont baseFont;
 
-  public PdfMagicEncoder(IResources resources, BaseFont baseFont) {
-    this.resources = resources;
-    this.baseFont = baseFont;
-  }
-
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    List<IMagic> printMagic = collectPrintMagic(character);
+  public static List<IMagicStats> collectPrintMagic(final IGenericCharacter character) {
     IExaltedEdition edition = character.getRules().getEdition();
-    new PdfMagicTableEncoder(resources, baseFont, printMagic, edition).encodeTable(directContent, character, bounds);
-
-  }
-
-  private List<IMagic> collectPrintMagic(final IGenericCharacter character) {
     final CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     final List<IMagic> printMagic = new ArrayList<IMagic>();
     for (IMagic magic : character.getAllLearnedMagic()) {
@@ -52,6 +41,24 @@ public class PdfMagicEncoder implements IPdfContentEncoder {
         }
       });
     }
-    return printMagic;
+    List<IMagicStats> printStats = new ArrayList<IMagicStats>();
+    for (IMagic magic : printMagic) {
+      printStats.add(new MagicStats(magic, edition));
+    }
+    return printStats;
+  }
+
+  private final IResources resources;
+  private final BaseFont baseFont;
+  private final List<IMagicStats> printMagic;
+
+  public PdfMagicEncoder(IResources resources, BaseFont baseFont, List<IMagicStats> printMagic) {
+    this.resources = resources;
+    this.baseFont = baseFont;
+    this.printMagic = printMagic;
+  }
+
+  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+    new PdfMagicTableEncoder(resources, baseFont, printMagic).encodeTable(directContent, character, bounds);
   }
 }

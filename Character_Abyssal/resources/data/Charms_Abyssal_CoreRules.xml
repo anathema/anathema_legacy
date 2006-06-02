@@ -161,7 +161,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="159"/>
   </charm>
@@ -192,7 +192,7 @@
         <essence cost="1" text="per turn"/>
       </temporary>
     </cost>
-    <duration duration="Until released"/>
+    <duration duration="UntilReleased"/>
     <charmtype type="Reflexive"/>
     <source source="The Abyssals" page="160"/>
   </charm>
@@ -207,7 +207,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="Until released"/>
+    <duration duration="UntilReleased"/>
     <charmtype type="Supplemental"/>
     <source source="The Abyssals" page="160"/>
   </charm>
@@ -222,7 +222,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="One turn"/>
+    <duration duration="1turn"/>
     <charmtype type="Reflexive"/>
     <source source="The Abyssals" page="160"/>
   </charm>
@@ -296,7 +296,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <source source="The Abyssals" page="162"/>
   </charm>
@@ -348,7 +348,7 @@
         <charmtype type="ExtraAction"/>
       </restrictions>
     </combo>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="162"/>
   </charm>
@@ -453,7 +453,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="167"/>
   </charm>
@@ -469,7 +469,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="167"/>
   </charm>
@@ -593,7 +593,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="169"/>
   </charm>
@@ -683,7 +683,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One turn"/>
+    <duration duration="1turn"/>
     <charmtype type="Reflexive"/>
     <source source="The Abyssals" page="171"/>
   </charm>
@@ -715,7 +715,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <source source="The Abyssals" page="171"/>
   </charm>
@@ -863,7 +863,7 @@
         <essence cost="3" text="per point"/>
       </temporary>
     </cost>
-    <duration duration="One hour"/>
+    <duration duration="1hour"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="174"/>
   </charm>
@@ -908,7 +908,7 @@
         <essence cost="1" text="per -1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <source source="The Abyssals" page="175"/>
   </charm>
@@ -936,7 +936,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration duration="1day"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="175"/>
   </charm>
@@ -1008,7 +1008,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="177"/>
   </charm>
@@ -1040,7 +1040,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="177"/>
   </charm>
@@ -1071,7 +1071,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One week"/>
+    <duration duration="1week"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="178"/>
   </charm>
@@ -1088,7 +1088,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="178"/>
   </charm>
@@ -1102,7 +1102,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One hour"/>
+    <duration duration="1hour"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="179"/>
   </charm>
@@ -1118,7 +1118,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration duration="1day"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="179"/>
   </charm>
@@ -1150,7 +1150,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One turn"/>
+    <duration duration="1turn"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="180"/>
   </charm>
@@ -1166,7 +1166,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="180"/>
   </charm>
@@ -1197,7 +1197,7 @@
         <essence cost="8"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="180"/>
   </charm>
@@ -1211,7 +1211,7 @@
         <essence cost="2+"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="181"/>
   </charm>
@@ -1227,7 +1227,7 @@
         <health cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="181"/>
   </charm>
@@ -1255,7 +1255,7 @@
         <essence cost="Varies"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="182"/>
   </charm>
@@ -1289,7 +1289,7 @@
         <health cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="182"/>
   </charm>
@@ -1303,7 +1303,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One turn"/>
+    <duration duration="1turn"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="183"/>
   </charm>
@@ -1318,7 +1318,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <source source="The Abyssals" page="183"/>
   </charm>
@@ -1362,7 +1362,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="184"/>
   </charm>
@@ -1388,7 +1388,7 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration duration="1day"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="184"/>
   </charm>
@@ -1431,7 +1431,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration duration="1day"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="186"/>
   </charm>
@@ -1459,7 +1459,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One hour"/>
+    <duration duration="1hour"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="186"/>
   </charm>
@@ -1475,7 +1475,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="Until released"/>
+    <duration duration="UntilReleased"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="186"/>
   </charm>
@@ -1565,7 +1565,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="Until released"/>
+    <duration duration="UntilReleased"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="187"/>
   </charm>
@@ -1581,7 +1581,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration duration="1day"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="187"/>
   </charm>
@@ -1647,7 +1647,7 @@
         <essence cost="1" text="per die"/>
       </temporary>
     </cost>
-    <duration duration="Until relaxed"/>
+    <duration duration="UntilRelaxed"/>
     <charmtype type="Supplemental"/>
     <source source="The Abyssals" page="189"/>
   </charm>
@@ -1662,7 +1662,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <source source="The Abyssals" page="189"/>
   </charm>
@@ -1678,7 +1678,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="189"/>
   </charm>
@@ -1726,7 +1726,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="190"/>
   </charm>
@@ -1817,7 +1817,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="Indefinite/Instant"/>
+    <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="192"/>
   </charm>
@@ -1832,7 +1832,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="193"/>
   </charm>
@@ -1864,7 +1864,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="Five minutes"/>
+    <duration duration="5minutes"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="193"/>
   </charm>
@@ -1979,7 +1979,7 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration duration="1day"/>
     <charmtype type="Reflexive"/>
     <source source="The Abyssals" page="195"/>
   </charm>
@@ -2135,7 +2135,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="198"/>
   </charm>
@@ -2200,7 +2200,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="199"/>
   </charm>
@@ -2230,7 +2230,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <source source="The Abyssals" page="200"/>
   </charm>
@@ -2260,7 +2260,7 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="200"/>
   </charm>
@@ -2324,7 +2324,7 @@
         <essence cost="2+"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <source source="The Abyssals" page="202"/>
   </charm>
@@ -2387,7 +2387,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="203"/>
   </charm>
@@ -2401,7 +2401,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="203"/>
   </charm>
@@ -2415,7 +2415,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="203"/>
   </charm>
@@ -2445,7 +2445,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="204"/>
   </charm>
@@ -2460,7 +2460,7 @@
         <essence cost="2" text="per dot"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="204"/>
   </charm>
@@ -2475,7 +2475,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="205"/>
   </charm>
@@ -2505,7 +2505,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="205"/>
   </charm>
@@ -2520,7 +2520,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="205"/>
   </charm>
@@ -2548,7 +2548,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="205"/>
   </charm>
@@ -2563,7 +2563,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="205"/>
   </charm>
@@ -2578,7 +2578,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="205"/>
   </charm>
@@ -2669,7 +2669,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="207"/>
   </charm>
@@ -2683,7 +2683,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One hour"/>
+    <duration duration="1hour"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="207"/>
   </charm>
@@ -2699,7 +2699,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One hour"/>
+    <duration duration="1hour"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="207"/>
   </charm>
@@ -2718,7 +2718,7 @@
         <experience cost="1"/>
       </permanent>
     </cost>
-    <duration duration="Until released"/>
+    <duration duration="UntilReleased"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="207"/>
   </charm>
@@ -2732,7 +2732,7 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration duration="1day"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="208"/>
   </charm>
@@ -2748,7 +2748,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration duration="1day"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="208"/>
   </charm>
@@ -2778,7 +2778,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="209"/>
   </charm>
@@ -2823,7 +2823,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="210"/>
   </charm>
@@ -2898,7 +2898,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="(Stealth) minutes"/>
+    <duration duration="StealthMinutes"/>
     <charmtype type="Reflexive"/>
     <source source="The Abyssals" page="211"/>
   </charm>
@@ -2913,7 +2913,7 @@
         <essence cost="2" text="per die"/>
       </temporary>
     </cost>
-    <duration duration="Stealth in turns"/>
+    <duration duration="StealthTurns"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="211"/>
   </charm>
@@ -2928,7 +2928,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One turn"/>
+    <duration duration="1turn"/>
     <charmtype type="Reflexive"/>
     <source source="The Abyssals" page="211"/>
   </charm>
@@ -2988,7 +2988,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One week"/>
+    <duration duration="1week"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="212"/>
   </charm>
@@ -3004,7 +3004,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One week"/>
+    <duration duration="1week"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="213"/>
   </charm>
@@ -3021,7 +3021,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One week"/>
+    <duration duration="1week"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="213"/>
   </charm>
@@ -3036,7 +3036,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One week"/>
+    <duration duration="1week"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="213"/>
   </charm>
@@ -3051,7 +3051,7 @@
         <essence cost="1" text="per die"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <source source="The Abyssals" page="213"/>
   </charm>
@@ -3066,7 +3066,7 @@
         <essence cost="2" text="+ 4 motes per language"/>
       </temporary>
     </cost>
-    <duration duration="One hour"/>
+    <duration duration="1hour"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="214"/>
   </charm>
@@ -3082,7 +3082,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="214"/>
   </charm>
@@ -3096,7 +3096,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="215"/>
   </charm>
@@ -3112,7 +3112,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="Until released"/>
+    <duration duration="UntilReleased"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="215"/>
   </charm>
@@ -3128,7 +3128,7 @@
         <essence cost="8"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration duration="1day"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="216"/>
   </charm>
@@ -3144,7 +3144,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="Until reading"/>
+    <duration duration="UntilReading"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="216"/>
   </charm>
@@ -3161,7 +3161,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <source source="The Abyssals" page="216"/>
   </charm>
@@ -3175,7 +3175,7 @@
         <essence cost="1" text="per point"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="216"/>
   </charm>
@@ -3191,7 +3191,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="216"/>
   </charm>
@@ -3238,7 +3238,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration duration="1day"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="217"/>
   </charm>
@@ -3270,7 +3270,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="218"/>
   </charm>
@@ -3284,7 +3284,7 @@
         <essence cost="1" text="per dot"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <source source="The Abyssals" page="218"/>
   </charm>
@@ -3299,7 +3299,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration duration="1day"/>
     <charmtype type="Reflexive"/>
     <source source="The Abyssals" page="219"/>
   </charm>
@@ -3314,7 +3314,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration duration="1day"/>
     <charmtype type="Reflexive"/>
     <source source="The Abyssals" page="219"/>
   </charm>
@@ -3329,7 +3329,7 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="219"/>
   </charm>
@@ -3344,7 +3344,7 @@
         <essence cost="Varies"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration duration="1day"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="219"/>
   </charm>
@@ -3361,7 +3361,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="219"/>
   </charm>
@@ -3377,7 +3377,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <source source="The Abyssals" page="220"/>
   </charm>
@@ -3409,7 +3409,7 @@
         <willpower cost="2"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration duration="1day"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="220"/>
   </charm>
@@ -3423,7 +3423,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration duration="1scene"/>
     <charmtype type="Reflexive"/>
     <source source="The Abyssals" page="220"/>
   </charm>
@@ -3453,7 +3453,7 @@
         <essence cost="1" text="per die"/>
       </temporary>
     </cost>
-    <duration duration="One turn"/>
+    <duration duration="1turn"/>
     <charmtype type="Reflexive"/>
     <source source="The Abyssals" page="221"/>
   </charm>
@@ -3513,7 +3513,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration duration="1day"/>
     <charmtype type="Simple"/>
     <source source="The Abyssals" page="222"/>
   </charm>

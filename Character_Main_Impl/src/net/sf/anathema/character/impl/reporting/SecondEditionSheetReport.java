@@ -52,9 +52,13 @@ public class SecondEditionSheetReport implements IITextReport {
     SecondEditionEncodingRegistry encodingRegistry = moduleObject.getSecondEditionEncodingRegistry();
     SecondEditionPartEncoder partEncoder = new SecondEditionPartEncoder(encodingRegistry, resources, 7, configuration);
     try {
-      new PdfFirstPageEncoder(partEncoder, configuration).encode(directContent, character, description);
+      new PdfFirstPageEncoder(partEncoder, configuration).encode(document, directContent, character, description);
       document.newPage();
-      new PdfSecondPageEncoder(resources, partEncoder.getBaseFont(), configuration).encode(directContent, character, description);
+      new PdfSecondPageEncoder(resources, partEncoder.getBaseFont(), configuration).encode(
+          document,
+          directContent,
+          character,
+          description);
     }
     catch (Exception e) {
       throw new ReportException(e);

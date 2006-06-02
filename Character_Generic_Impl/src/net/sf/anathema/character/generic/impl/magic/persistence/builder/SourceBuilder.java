@@ -27,7 +27,7 @@ public class SourceBuilder {
     else {
       for (Element sourceElement : sourceElements) {
         String source = sourceElement.attributeValue(ATTRIB_SOURCE);
-        String page = String.valueOf(sourceElement.attributeValue(ATTRIB_PAGE));
+        String page = sourceElement.attributeValue(ATTRIB_PAGE);
         IExaltedEdition edition = null;
         final String editionValue = sourceElement.attributeValue(ATTRIB_EDITION);
         if (editionValue != null) {

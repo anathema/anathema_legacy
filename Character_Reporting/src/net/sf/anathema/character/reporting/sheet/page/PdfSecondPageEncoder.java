@@ -1,5 +1,7 @@
 package net.sf.anathema.character.reporting.sheet.page;
 
+import java.util.List;
+
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
@@ -9,12 +11,14 @@ import net.sf.anathema.character.reporting.sheet.common.PdfExperienceEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfHorizontalLineContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.PdfComboEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.PdfMagicEncoder;
+import net.sf.anathema.character.reporting.sheet.common.magic.stats.IMagicStats;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
+import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
@@ -33,8 +37,11 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
     this.boxEncoder = new PdfBoxEncoder(resources, baseFont);
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, IGenericDescription description)
-      throws DocumentException {
+  public void encode(
+      Document document,
+      PdfContentByte directContent,
+      IGenericCharacter character,
+      IGenericDescription description) throws DocumentException {
     float distanceFromTop = 0;
     float languageHeight = 60;
     float backgroundHeight = 104;
@@ -52,7 +59,13 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
     float genericCharmsHeight = encodeGenericCharms(directContent, character, distanceFromTop, 150);
     distanceFromTop += genericCharmsHeight + IVoidStateFormatConstants.PADDING;
     float remainingHeight = configuration.getContentHeight() - distanceFromTop;
-    encodeCharms(directContent, character, distanceFromTop, remainingHeight);
+
+    List<IMagicStats> printMagic = PdfMagicEncoder.collectPrintMagic(character);
+    encodeCharms(directContent, printMagic, distanceFromTop, remainingHeight);
+    while (!printMagic.isEmpty()) {
+      document.newPage();
+      encodeCharms(directContent, printMagic, 0, configuration.getContentHeight());
+    }
   }
 
   private float encodeCombos(PdfContentByte directContent, IGenericCharacter character, float distanceFromTop)
@@ -120,15 +133,14 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
     return height;
   }
 
-
   private float encodeCharms(
       PdfContentByte directContent,
-      IGenericCharacter character,
+      List<IMagicStats> printMagic,
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds bounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
-    IPdfContentEncoder encoder = new PdfMagicEncoder(resources, baseFont);
-    boxEncoder.encodeBox(directContent, encoder, character, bounds, "Charms"); //$NON-NLS-1$
+    IPdfContentEncoder encoder = new PdfMagicEncoder(resources, baseFont, printMagic);
+    boxEncoder.encodeBox(directContent, encoder, null, bounds, "Charms"); //$NON-NLS-1$
     return height;
   }
 }

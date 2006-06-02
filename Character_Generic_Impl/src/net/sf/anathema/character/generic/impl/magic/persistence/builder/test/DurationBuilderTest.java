@@ -27,7 +27,7 @@ public class DurationBuilderTest extends BasicTestCase {
     durationElement.addAttribute("duration", text); //$NON-NLS-1$
     Duration duration = builder.buildDuration(durationElement);
     assertEquals(DurationType.Other, duration.getType());
-    assertEquals(text, duration.getText(null));
+    assertEquals(text, duration.getText());
   }
 
   private Element getDurationElement() {
