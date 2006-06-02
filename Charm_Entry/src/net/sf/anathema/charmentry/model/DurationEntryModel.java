@@ -1,7 +1,6 @@
 package net.sf.anathema.charmentry.model;
 
 import net.sf.anathema.character.generic.magic.charms.Duration;
-import net.sf.anathema.character.generic.magic.charms.DurationType;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.ICharmTypeEntryModel;
@@ -19,7 +18,7 @@ public class DurationEntryModel implements IDurationEntryModel {
     typeModel.addModelListener(new IChangeListener() {
       public void changeOccured() {
         if (typeModel.getCharmType() == CharmType.Permanent) {
-          setDuration("Permanent");
+          setDuration("Permanent"); //$NON-NLS-1$
         }
       }
     });
@@ -30,7 +29,7 @@ public class DurationEntryModel implements IDurationEntryModel {
   }
 
   public String[] getDurations() {
-    return new String[] { DurationType.Instant.getId() };
+    return new String[] { "Instant" }; //$NON-NLS-1$
   }
 
   public void setDuration(String newValue) {

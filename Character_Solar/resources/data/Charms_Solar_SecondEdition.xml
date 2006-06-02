@@ -17,6 +17,7 @@
       <special primaryStep="1" secondaryStep="2"/>
     </charmtype>
     <genericCharmAttribute attribute="Excellency"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="Second Edition" page="183"/>
   </genericCharm>
   <genericCharm id="Solar.2ndExcellency" exalt="Solar">
@@ -34,6 +35,7 @@
       <special primaryStep="1" secondaryStep="2"/>
     </charmtype>
     <genericCharmAttribute attribute="Excellency"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="Second Edition" page="184"/>
   </genericCharm>
   <genericCharm id="Solar.3rdExcellency" exalt="Solar">
@@ -51,6 +53,7 @@
       <special primaryStep="4" secondaryStep="6"/>
     </charmtype>
     <genericCharmAttribute attribute="Excellency"/>
+	<charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="Second Edition" page="185"/>
   </genericCharm>
   <genericCharm id="Solar.InfiniteMastery" exalt="Solar">

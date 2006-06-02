@@ -2,7 +2,6 @@ package net.sf.anathema.character.impl.model.charm.test;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
-import net.sf.anathema.character.generic.magic.charms.DurationType;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -38,8 +37,8 @@ public class ComboTest extends BasicTestCase {
     return DummyCharmUtilities.createCharm(charmType, restrictions);
   }
 
-  protected final static ICharm createCharm(DurationType durationType, IComboRestrictions restrictions) {
-    return DummyCharmUtilities.createCharm(durationType, restrictions);
+  protected final static ICharm createCharm(String duration, IComboRestrictions restrictions) {
+    return DummyCharmUtilities.createCharm(duration, restrictions);
   }
 
   protected final static ICharm createCharm(IComboRestrictions restrictions) {
@@ -61,15 +60,15 @@ public class ComboTest extends BasicTestCase {
   public void testOnlyInstantDurationCombos() throws Exception {
     final ICharm dummy1 = DummyCharmUtilities.createCharm(CharmType.Reflexive);
     assertTrue(comboRules.canBeAddedToCombo(combo, dummy1));
-    final ICharm dummy2 = DummyCharmUtilities.createCharm(DurationType.Other, new ComboRestrictions());
+    final ICharm dummy2 = DummyCharmUtilities.createCharm("Other", new ComboRestrictions()); //$NON-NLS-1$
     assertFalse(comboRules.canBeAddedToCombo(combo, dummy2));
   }
 
   public void testComboRestrictionComboAllowed() throws Exception {
-    assertFalse(comboRules.canBeAddedToCombo(combo, createCharm(DurationType.Instant, new ComboRestrictions(
+    assertFalse(comboRules.canBeAddedToCombo(combo, createCharm("Instant", new ComboRestrictions( //$NON-NLS-1$
         false,
         Boolean.FALSE))));
-    assertTrue(comboRules.canBeAddedToCombo(combo, createCharm(DurationType.Other, new ComboRestrictions(
+    assertTrue(comboRules.canBeAddedToCombo(combo, createCharm("Other", new ComboRestrictions( //$NON-NLS-1$
         false,
         Boolean.TRUE))));
   }

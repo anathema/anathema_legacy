@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.impl.magic.test.DummyCharm;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.Duration;
-import net.sf.anathema.character.generic.magic.charms.DurationType;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
@@ -23,23 +22,21 @@ public class ComboRulesTest extends AbstractComboRulesTestCase {
   }
 
   public void testDurationComboLegal() throws Exception {
-    assertTrue(rules.isCharmComboLegal(new DummyCharm(
-        DurationType.Instant,
+    assertTrue(rules.isCharmComboLegal(new DummyCharm("Instant", //$NON-NLS-1$
         CharmType.Reflexive,
         new ComboRestrictions(),
         null)));
-    assertFalse(rules.isCharmComboLegal(new DummyCharm(
-        DurationType.Other,
+    assertFalse(rules.isCharmComboLegal(new DummyCharm("Other", //$NON-NLS-1$
         CharmType.Reflexive,
         new ComboRestrictions(),
         null)));
   }
 
   public void testRestrictionComboLegal() throws Exception {
-    assertFalse(rules.isCharmComboLegal(DummyCharmUtilities.createCharm(DurationType.Instant, new ComboRestrictions(
+    assertFalse(rules.isCharmComboLegal(DummyCharmUtilities.createCharm("Instant", new ComboRestrictions(
         false,
         Boolean.FALSE))));
-    assertTrue(rules.isCharmComboLegal(DummyCharmUtilities.createCharm(DurationType.Other, new ComboRestrictions(
+    assertTrue(rules.isCharmComboLegal(DummyCharmUtilities.createCharm("DurationType", new ComboRestrictions(
         false,
         Boolean.TRUE))));
   }

@@ -1,34 +1,29 @@
 package net.sf.anathema.character.generic.magic.charms;
 
-
 public class Duration {
 
-  public static final Duration INSTANT_DURATION = new Duration(DurationType.Instant, ""); //$NON-NLS-1$
-  public static final Duration PERMANENT_DURATION = new Duration(DurationType.Permanent, ""); //$NON-NLS-1$
+  private static final String INSTANT = "Instant";//$NON-NLS-1$
+  private static final String PERMANENT = "Permanent"; //$NON-NLS-1$
+  public static final Duration INSTANT_DURATION = new Duration(INSTANT);
+  public static final Duration PERMANENT_DURATION = new Duration(PERMANENT);
 
   public static Duration getDuration(String text) {
-    if (text.equalsIgnoreCase("Instant")) { //$NON-NLS-1$
+    if (text.equalsIgnoreCase(INSTANT)) {
       return INSTANT_DURATION;
     }
-    if (text.equalsIgnoreCase("Permanent")) { //$NON-NLS-1$
+    if (text.equalsIgnoreCase(PERMANENT)) {
       return PERMANENT_DURATION;
     }
-    return new Duration(DurationType.Other, text);
+    return new Duration(text);
   }
 
   private final String text;
-  private final DurationType type;
 
-  private Duration(DurationType type, String text) {
-    this.type = type;
+  private Duration(String text) {
     this.text = text;
   }
-  
+
   public String getText() {
     return text;
-  }
-
-  public DurationType getType() {
-    return type;
   }
 }

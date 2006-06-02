@@ -18,7 +18,6 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.Duration;
-import net.sf.anathema.character.generic.magic.charms.DurationType;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
@@ -52,13 +51,13 @@ public class DummyCharm extends Identificate implements ICharm {
   private List<ICharmAttribute> attributes = new ArrayList<ICharmAttribute>();
 
   public DummyCharm(
-      DurationType durationType,
+      String duration,
       CharmType charmType,
       IComboRestrictions comboRestrictions,
       IGenericTrait[] prerequisites) {
     super("DummyCharmDefaultId"); //$NON-NLS-1$
     this.prerequisites = prerequisites;
-    this.duration = Duration.getDuration(durationType.getId());
+    this.duration = Duration.getDuration(duration);
     this.comboRestrictions = comboRestrictions;
     this.model.setCharmType(charmType);
   }
