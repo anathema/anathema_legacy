@@ -86,8 +86,8 @@
           <Special>
             <Categories>
               <Category.-0 creationValue="0"/>
-              <Category.-1x2 creationValue="1"/>
-              <Category.-1-2x2 creationValue="0"/>
+              <Category.-1x2 creationValue="0"/>
+              <Category.-1-2x2 creationValue="1"/>
             </Categories>
           </Special>
         </Charm>
