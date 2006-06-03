@@ -1,5 +1,8 @@
 package net.sf.anathema.character.reporting.sheet.common.magic.stats;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.CharmTypeStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.MagicInfoStringBuilder;
@@ -10,6 +13,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
+import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.lib.resources.IResources;
@@ -94,5 +98,27 @@ public class MagicStats implements IMagicStats {
       }
     });
     return group[0];
+  }
+
+  public String[] getDetailKeys() {
+    final List<String> details = new ArrayList<String>();
+    magic.accept(new IMagicVisitor() {
+      public void visitCharm(ICharm charm) {
+        for (ICharmAttribute attribute : charm.getAttributes()) {
+          final String attributeId = attribute.getId();
+          if (attribute.isVisualized() && !attributeId.contains("Combo")) { //$NON-NLS-1$
+            details.add("Keyword." + attributeId); //$NON-NLS-1$
+          }
+        }
+      }
+
+      public void visitSpell(ISpell spell) {
+        final String target = spell.getTarget();
+        if (target != null) {
+          details.add("Spells.Target." + target); //$NON-NLS-1$
+        }
+      }
+    });
+    return details.toArray(new String[details.size()]);
   }
 }

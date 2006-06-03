@@ -17,4 +17,6 @@ public interface IMagicStats extends IStats {
   public String getDurationString(IResources resources);
 
   public String getSourceString(IResources resources);
+
+  public String[] getDetailKeys();
 }

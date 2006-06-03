@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.IMagicStats;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicCostStatsGroup;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicDurationStatsGroup;
+import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicDetailsStatsGroup;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicNameStatsGroup;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicSourceStatsGroup;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicTypeStatsGroup;
@@ -38,6 +39,7 @@ public class PdfMagicTableEncoder extends AbstractStatsTableEncoder<IMagicStats>
         new MagicCostStatsGroup(resources),
         new MagicTypeStatsGroup(resources),
         new MagicDurationStatsGroup(resources),
+        new MagicDetailsStatsGroup(resources),
         new MagicSourceStatsGroup(resources) };
   }
 
