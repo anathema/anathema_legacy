@@ -176,7 +176,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="157"/>
   </charm>
@@ -284,7 +284,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="159"/>
   </charm>
@@ -504,7 +504,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="164"/>
   </charm>
@@ -578,7 +578,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="Until next action"/>
+    <duration event="NextAction"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="166"/>
   </charm>
@@ -625,7 +625,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="166"/>
   </charm>
@@ -672,7 +672,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
     <source source="Exalted" page="167"/>
   </charm>
@@ -688,7 +688,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <source source="Exalted" page="167"/>
   </charm>
@@ -833,7 +833,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="170"/>
   </charm>
@@ -848,7 +848,7 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="170"/>  
   </charm>
@@ -893,7 +893,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="171"/>
   </charm>
@@ -923,7 +923,7 @@
         <essence cost="15"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="171"/>
   </charm>
@@ -939,7 +939,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="172"/>
   </charm>
@@ -953,7 +953,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="172"/>
   </charm>
@@ -985,7 +985,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="Three turns"/>
+    <duration amount="3" unit="turn"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="172"/>
   </charm>
@@ -1001,7 +1001,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="173"/>
   </charm>
@@ -1017,7 +1017,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="173"/>
   </charm>
@@ -1034,7 +1034,7 @@
         <willpower cost="2"/>
       </temporary>
     </cost>
-    <duration duration="One week"/>
+    <duration amount="1" unit="week"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="173"/>
   </charm>
@@ -1064,7 +1064,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Supplemental"/>
     <source source="Exalted" page="174"/>
   </charm>
@@ -1080,7 +1080,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Supplemental"/>
     <source source="Exalted" page="174"/>
   </charm>
@@ -1097,7 +1097,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="175"/>
   </charm>
@@ -1111,7 +1111,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One hour"/>
+    <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="175"/>
   </charm>
@@ -1142,7 +1142,7 @@
         <essence cost="8"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="175"/>
   </charm>
@@ -1158,7 +1158,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="175"/>
   </charm>
@@ -1190,7 +1190,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="176"/>
   </charm>
@@ -1204,7 +1204,7 @@
         <essence cost="1" text="per 2 dice"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="176"/>
   </charm>
@@ -1220,7 +1220,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <source source="Exalted" page="176"/>
   </charm>
@@ -1235,7 +1235,7 @@
         <essence cost="2" text="per 1B soak"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="176"/>
   </charm>
@@ -1328,7 +1328,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="178"/>
   </charm>
@@ -1342,7 +1342,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Reflexive"/>
     <source source="Exalted" page="179"/>
   </charm>
@@ -1356,7 +1356,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <source source="Exalted" page="179"/>
   </charm>
@@ -1373,7 +1373,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="179"/>
   </charm>
@@ -1387,7 +1387,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="179"/>
   </charm>
@@ -1420,7 +1420,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="180"/>
   </charm>
@@ -1435,7 +1435,7 @@
         <essence cost="8"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="180"/>
   </charm>
@@ -1450,7 +1450,7 @@
         <essence cost="7"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="181"/>
   </charm>
@@ -1466,7 +1466,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="181"/>
   </charm>
@@ -1481,7 +1481,7 @@
         <essence cost="3" text="per person"/>
       </temporary>
     </cost>
-    <duration duration="One hour"/>
+    <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="181"/>
   </charm>
@@ -1511,7 +1511,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="182"/>
   </charm>
@@ -1527,7 +1527,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="182"/>
   </charm>
@@ -1542,7 +1542,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="182"/>
   </charm>
@@ -1557,7 +1557,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="183"/>
   </charm>
@@ -1637,7 +1637,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="184"/>
   </charm>
@@ -1651,7 +1651,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Supplemental"/>
     <source source="Exalted" page="185"/>
   </charm>
@@ -1666,7 +1666,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <source source="Exalted" page="185"/>
   </charm>
@@ -1712,7 +1712,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="186"/>
   </charm>
@@ -1744,7 +1744,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="186"/>
   </charm>
@@ -1760,7 +1760,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One hour"/>
+    <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="186"/>
   </charm>
@@ -1841,7 +1841,7 @@
         <experience cost="1"/>
       </permanent>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="188"/>
   </charm>
@@ -1855,7 +1855,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="Five minutes"/>
+    <duration amount="5" unit="minute"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="188"/>
   </charm>
@@ -1869,7 +1869,7 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Reflexive"/>
     <source source="Exalted" page="188"/>
   </charm>
@@ -1884,7 +1884,7 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <duration duration="Six hours"/>
+    <duration amount="6" unit="hour"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="188"/>
   </charm>
@@ -1899,7 +1899,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="Six hours"/>
+    <duration amount="6" unit="hour"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="189"/>
   </charm>
@@ -1914,7 +1914,7 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="189"/>
   </charm>
@@ -1929,7 +1929,7 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="190"/>
   </charm>
@@ -1945,7 +1945,7 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="190"/>
   </charm>
@@ -1977,7 +1977,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One hour"/>
+    <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="191"/>
   </charm>
@@ -1993,7 +1993,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One hour"/>
+    <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="191"/>
   </charm>
@@ -2057,7 +2057,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <source source="Exalted" page="192"/>
   </charm>
@@ -2071,7 +2071,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="192"/>
   </charm>
@@ -2118,7 +2118,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
     <source source="Exalted" page="193"/>
   </charm>
@@ -2133,7 +2133,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
     <source source="Exalted" page="193"/>
   </charm>
@@ -2169,7 +2169,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="193"/>
   </charm>
@@ -2184,7 +2184,7 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="193"/>
   </charm>
@@ -2249,7 +2249,7 @@
         <essence cost="3" text="per dot"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="195"/>
   </charm>
@@ -2264,7 +2264,7 @@
         <essence cost="2" text="per point"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="195"/>
   </charm>
@@ -2281,7 +2281,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One hour"/>
+    <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="195"/>
   </charm>
@@ -2310,7 +2310,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="196"/>
   </charm>
@@ -2325,7 +2325,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="196"/>
   </charm>
@@ -2340,7 +2340,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="196"/>
   </charm>
@@ -2355,7 +2355,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="196"/>
   </charm>
@@ -2370,7 +2370,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="196"/>
   </charm>
@@ -2385,7 +2385,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="196"/>
   </charm>
@@ -2400,7 +2400,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="196"/>
   </charm>
@@ -2491,7 +2491,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="198"/>
   </charm>
@@ -2505,7 +2505,7 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="199"/>
   </charm>
@@ -2520,7 +2520,7 @@
         <essence cost="7"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="199"/>
   </charm>
@@ -2536,7 +2536,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One hour"/>
+    <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="199"/>
   </charm>
@@ -2626,7 +2626,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="201"/>
   </charm>
@@ -2642,7 +2642,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="201"/>
   </charm>
@@ -2657,7 +2657,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="Until disturbed"/>
+    <duration event="Disturbed"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="202"/>
   </charm>
@@ -2673,7 +2673,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="202"/>
   </charm>
@@ -2689,7 +2689,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="202"/>
   </charm>
@@ -2750,7 +2750,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="203"/>
   </charm>
@@ -2765,7 +2765,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="203"/>
   </charm>
@@ -2779,7 +2779,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One task"/>
+    <duration amount="1" unit="task"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="204"/>
   </charm>
@@ -2794,7 +2794,7 @@
         <essence cost="8"/>
       </temporary>
     </cost>
-    <duration duration="One task"/>
+    <duration amount="1" unit="task"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="204"/>
   </charm>
@@ -2809,7 +2809,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="One task"/>
+    <duration amount="1" unit="task"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="205"/>
   </charm>
@@ -2825,7 +2825,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One task"/>
+    <duration amount="1" unit="task"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="205"/>
   </charm>
@@ -2840,7 +2840,7 @@
         <essence cost="8"/>
       </temporary>
     </cost>
-    <duration duration="One investigation"/>
+    <duration amount="1" unit="investigation"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="205"/>
   </charm>
@@ -2854,7 +2854,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="205"/>
   </charm>
@@ -2869,7 +2869,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="205"/>
   </charm>
@@ -2901,7 +2901,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One hour"/>
+    <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="206"/>
   </charm>
@@ -2930,7 +2930,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="207"/>
   </charm>
@@ -2946,7 +2946,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="207"/>
   </charm>
@@ -3007,7 +3007,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="208"/>
   </charm>
@@ -3022,7 +3022,7 @@
         <essence cost="6" text="per mount"/>
       </temporary>
     </cost>
-    <duration duration="One day's march"/>
+    <duration amount="1" unit="daysMarch"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="208"/>
   </charm>
@@ -3038,7 +3038,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="208"/>
   </charm>
@@ -3055,7 +3055,7 @@
         <health cost="1" type="Lethal"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="209"/>
   </charm>
@@ -3070,7 +3070,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="209"/>
   </charm>
@@ -3100,7 +3100,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Reflexive"/>
     <source source="Exalted" page="209"/>
   </charm>
@@ -3115,7 +3115,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Reflexive"/>
     <source source="Exalted" page="209"/>
   </charm>
@@ -3160,7 +3160,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <source source="Exalted" page="210"/>
   </charm>
@@ -3175,7 +3175,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="210"/>
   </charm>
@@ -3191,7 +3191,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="211"/>
   </charm>
@@ -3208,7 +3208,7 @@
         <health cost="1" type="Lethal"/>
       </temporary>
     </cost>
-    <duration duration="One turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="211"/>
   </charm>
@@ -3222,7 +3222,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <source source="Exalted" page="211"/>
   </charm>
@@ -3301,7 +3301,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Exalted" page="212"/>
   </charm>
@@ -3333,7 +3333,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Dawn" page="71"/>
   </charm>
@@ -3396,7 +3396,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Supplemental"/>
     <source source="Caste Book: Dawn" page="72"/>
   </charm>
@@ -3412,7 +3412,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Supplemental"/>
     <source source="Caste Book: Dawn" page="74"/>
   </charm>
@@ -3521,7 +3521,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Dawn" page="76"/>
   </charm>
@@ -3537,7 +3537,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene or special"/>
+    <duration duration="OneSceneOrSpecial"/>
     <charmtype type="Simple"/>
     <source source="Cult of the Illuminated" page="104"/>
   </charm>
@@ -3552,7 +3552,7 @@
         <essence cost="8"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Dawn" page="76"/>
   </charm>
@@ -3567,7 +3567,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Supplemental"/>
     <source source="Caste Book: Dawn" page="76"/>
   </charm>
@@ -3581,7 +3581,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Zenith" page="71"/>
   </charm>
@@ -3596,7 +3596,7 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <duration duration="Three days"/>
+    <duration amount="3" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Zenith" page="71"/>
   </charm>
@@ -3610,7 +3610,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One Night"/>
+    <duration amount="1" unit="Night"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Zenith" page="72"/>
   </charm>
@@ -3624,7 +3624,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Zenith" page="72"/>
   </charm>
@@ -3738,7 +3738,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Zenith" page="73"/>
   </charm>
@@ -3767,7 +3767,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Zenith" page="74"/>
   </charm>
@@ -3798,7 +3798,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Zenith" page="74"/>
   </charm>
@@ -3814,7 +3814,7 @@
         <essence cost="1" text="per -1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <source source="Caste Book: Zenith" page="74"/>
   </charm>
@@ -3829,7 +3829,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Zenith" page="75"/>
   </charm>
@@ -3844,7 +3844,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Zenith" page="75"/>
   </charm>
@@ -3919,7 +3919,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Zenith" page="76"/>
   </charm>
@@ -3934,7 +3934,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Zenith" page="76"/>
   </charm>
@@ -3949,7 +3949,7 @@
         <essence cost="2" text="per die"/>
       </temporary>
     </cost>
-    <duration duration="One week"/>
+    <duration amount="1" unit="week"/>
     <charmtype type="Supplemental"/>
     <source source="Caste Book: Zenith" page="76"/>
   </charm>
@@ -3964,7 +3964,7 @@
         <essence cost="1" text="per die"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Supplemental"/>
     <source source="Caste Book: Zenith" page="76"/>
     <!--source source="Cult of the Illuminated" page="106"/-->
@@ -4027,7 +4027,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Supplemental"/>
     <source source="Caste Book: Zenith" page="78"/>
   </charm>
@@ -4042,7 +4042,7 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Zenith" page="79"/>
   </charm>
@@ -4057,7 +4057,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Twilight" page="69"/>
   </charm>
@@ -4073,7 +4073,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Twilight" page="69"/>
   </charm>
@@ -4106,7 +4106,7 @@
         <health cost="1" type="Lethal"/>
       </temporary>
     </cost>
-    <duration duration="One year"/>
+    <duration amount="1" unit="year"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Twilight" page="70"/>
   </charm>
@@ -4136,7 +4136,7 @@
         <essence cost="7"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Twilight" page="70"/>
   </charm>
@@ -4182,7 +4182,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Twilight" page="71"/>
   </charm>
@@ -4265,7 +4265,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Twilight" page="73"/>
   </charm>
@@ -4281,7 +4281,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Twilight" page="73"/>
   </charm>
@@ -4333,7 +4333,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="Multiple Turns"/>
+    <duration amount="Multiple" unit="turn"/>
     <charmtype type="Supplemental"/>
     <source source="Caste Book: Twilight" page="74"/>
   </charm>
@@ -4379,7 +4379,7 @@
       </temporary>
     </cost>
     <combo comboable="true"/>
-    <duration duration="One turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="ExtraAction"/>
     <source source="Caste Book: Night" page="70"/>
   </charm>
@@ -4394,7 +4394,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <source source="Caste Book: Night" page="70"/>
   </charm>
@@ -4426,7 +4426,7 @@
         <health cost="1" text="for one pot" type="Lethal"/>
       </temporary>
     </cost>
-    <duration duration="One week"/>
+    <duration amount="1" unit="week"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Night" page="71"/>
   </charm>
@@ -4443,7 +4443,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Night" page="71"/>
   </charm>
@@ -4457,7 +4457,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Night" page="72"/>
   </charm>
@@ -4474,7 +4474,7 @@
         <health cost="1" type="Lethal"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Night" page="72"/>
   </charm>
@@ -4551,7 +4551,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One hour"/>
+    <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Night" page="73"/>
   </charm>
@@ -4566,7 +4566,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="One turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
     <source source="Caste Book: Night" page="73"/>
   </charm>
@@ -4583,7 +4583,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Night" page="73"/>
   </charm>
@@ -4600,7 +4600,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Night" page="73"/>
   </charm>
@@ -4616,7 +4616,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Night" page="73"/>
   </charm>
@@ -4631,7 +4631,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Night" page="75"/>
   </charm>
@@ -4646,7 +4646,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Night" page="75"/>
   </charm>
@@ -4661,7 +4661,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Night" page="75"/>
   </charm>
@@ -4676,7 +4676,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Night" page="75"/>
   </charm>
@@ -4692,7 +4692,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Night" page="75"/>
   </charm>
@@ -4753,7 +4753,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="Exalted's Essence minutes"/>
+    <duration amount="Essence" unit="minute"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Night" page="76"/>
   </charm>
@@ -4798,7 +4798,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Eclipse" page="72"/>
     <!--source source="Cult of the Illuminated" page="102"/-->
@@ -4813,7 +4813,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Eclipse" page="72"/>
   </charm>
@@ -4859,7 +4859,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Eclipse" page="73"/>
   </charm>
@@ -4874,7 +4874,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Eclipse" page="73"/>
   </charm>
@@ -4954,7 +4954,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Eclipse" page="76"/>
   </charm>
@@ -4970,7 +4970,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Eclipse" page="76"/>
   </charm>
@@ -4986,7 +4986,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Eclipse" page="76"/>
   </charm>
@@ -5002,7 +5002,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Eclipse" page="76"/>
   </charm>
@@ -5018,7 +5018,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Eclipse" page="77"/>
   </charm>
@@ -5049,7 +5049,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Eclipse" page="77"/>
   </charm>
@@ -5064,7 +5064,7 @@
         <essence cost="2" text="per difficulty penalty"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Eclipse" page="77"/>
     <!--source source="Cult of the Illuminated" page="107"/-->
@@ -5080,7 +5080,7 @@
         <essence cost="8"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Eclipse" page="77"/>
   </charm>
@@ -5095,7 +5095,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <source source="Caste Book: Eclipse" page="78"/>
   </charm>
@@ -5110,7 +5110,7 @@
         <essence cost="8"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Eclipse" page="78"/>
   </charm>
@@ -5142,7 +5142,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Eclipse" page="78"/>
   </charm>
@@ -5157,7 +5157,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One hour"/>
+    <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
     <source source="Time of Tumult" page="95"/>
   </charm>
@@ -5172,7 +5172,7 @@
         <essence cost="20"/>
       </temporary>
     </cost>
-    <duration duration="One day or more"/>
+    <duration duration="OneDayPlus"/>
     <charmtype type="Simple"/>
     <source source="Time of Tumult" page="96"/>
   </charm>
@@ -5202,7 +5202,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Savage Seas" page="114"/>
   </charm>
@@ -5217,7 +5217,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Savage Seas" page="114"/>
   </charm>
@@ -5232,7 +5232,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Savage Seas" page="115"/>
   </charm>
@@ -5247,7 +5247,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Savage Seas" page="115"/>
   </charm>
@@ -5262,7 +5262,7 @@
         <essence cost="3" text="+ 2 per (Essence)L of soak"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <source source="Savage Seas" page="115"/>
   </charm>
@@ -5278,7 +5278,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Savage Seas" page="115"/>
   </charm>
@@ -5293,7 +5293,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="One turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
     <source source="Savage Seas" page="115"/>
   </charm>
@@ -5308,7 +5308,7 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Savage Seas" page="115"/>
   </charm>
@@ -5324,7 +5324,7 @@
         <willpower cost="2"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Savage Seas" page="116"/>
   </charm>
@@ -5338,7 +5338,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <source source="Savage Seas" page="116"/>
   </charm>
@@ -5353,7 +5353,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="Until released"/>
+    <duration event="Released"/>
     <charmtype type="Simple"/>
     <source source="Player's Guide" page="123"/>
   </charm>
@@ -5369,7 +5369,7 @@
         <willpower cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One month"/>
+    <duration amount="1" unit="month"/>
     <charmtype type="Simple"/>
     <source source="Player's Guide" page="158"/>
   </charm>
@@ -5418,7 +5418,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="Until used"/>
+    <duration event="Used"/>
     <charmtype type="Simple"/>
     <source source="Cult of the Illuminated" page="100"/>
   </charm>
@@ -5482,7 +5482,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One Turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
     <source source="Cult of the Illuminated" page="102"/>
   </charm>
@@ -5546,7 +5546,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <source source="Comic #0"/>
   </charm>
