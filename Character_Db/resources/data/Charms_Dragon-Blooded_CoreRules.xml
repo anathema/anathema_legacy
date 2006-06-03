@@ -12,7 +12,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1week"/>
+    <duration amount="1" unit="week"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="177"/>
   </charm>
@@ -27,7 +27,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="177"/>
   </charm>
@@ -59,7 +59,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="178"/>
   </charm>
@@ -88,7 +88,7 @@
         <essence cost="3" text="plus distance"/>
       </temporary>
     </cost>
-    <duration duration="1minute"/>
+    <duration amount="1" unit="minute"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="179"/>
   </charm>
@@ -104,7 +104,7 @@
         <essence cost="2" text="per dot of increase"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="179"/>
   </charm>
@@ -119,7 +119,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="180"/>
   </charm>
@@ -197,7 +197,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="182"/>
   </charm>
@@ -211,7 +211,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="182"/>
   </charm>
@@ -226,7 +226,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="1hour"/>
+    <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="183"/>
   </charm>
@@ -258,7 +258,7 @@
       </temporary>
     </cost>
     <combo allAbilities="true"/>
-    <duration duration="5minutes"/>
+    <duration amount="5" unit="minute"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="183"/>
   </charm>
@@ -304,7 +304,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="184"/>
   </charm>
@@ -335,7 +335,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="EssenceMinutes"/>
+    <duration amount="Essence" unit="minute"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="184"/>
   </charm>
@@ -349,7 +349,7 @@
         <essence cost="1" text="per two sucesses"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="184"/>
   </charm>
@@ -379,7 +379,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="UntilBroken"/>
+    <duration event="Broken"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="186"/>
   </charm>
@@ -396,7 +396,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="186"/>
   </charm>
@@ -440,7 +440,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="EssenceTurns"/>
+    <duration amount="Essence" unit="turn"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="187"/>
   </charm>
@@ -475,7 +475,7 @@
         <essence cost="3" text="+1 mote per additional person"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="188"/>
   </charm>
@@ -526,7 +526,7 @@
         <essence cost="1" text="per 1L/1B soak"/>
       </temporary>
     </cost>
-    <duration duration="EssenceScenes"/>
+    <duration amount="Essence" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="189"/>
   </charm>
@@ -555,7 +555,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="190"/>
   </charm>
@@ -585,7 +585,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="5minutes"/>
+    <duration amount="5" unit="minute"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="191"/>
   </charm>
@@ -600,7 +600,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="UntilDisturbed"/>
+    <duration event="Disturbed"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="191"/>
   </charm>
@@ -615,7 +615,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="UntilDisturbed"/>
+    <duration event="Disturbed"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="191"/>
   </charm>
@@ -630,7 +630,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="UntilDisturbed"/>
+    <duration event="Disturbed"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="191"/>
   </charm>
@@ -646,7 +646,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="EssenceTurns"/>
+    <duration amount="Essence" unit="turn"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="191"/>
   </charm>
@@ -662,7 +662,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="EssenceTurns"/>
+    <duration amount="Essence" unit="turn"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="191"/>
   </charm>
@@ -678,7 +678,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="EssenceTurns"/>
+    <duration amount="Essence" unit="turn"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="191"/>
   </charm>
@@ -696,7 +696,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="EssenceTurns"/>
+    <duration amount="Essence" unit="turn"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="192"/>
   </charm>
@@ -710,7 +710,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="1hour"/>
+    <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="192"/>
   </charm>
@@ -740,7 +740,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="194"/>
   </charm>
@@ -754,7 +754,7 @@
         <essence cost="1" text="for touch, 3 for sight"/>
       </temporary>
     </cost>
-    <duration duration="1minute"/>
+    <duration amount="1" unit="minute"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="194"/>
   </charm>
@@ -811,7 +811,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="196"/>
   </charm>
@@ -826,7 +826,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="1day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="196"/>
   </charm>
@@ -841,7 +841,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="196"/>
   </charm>
@@ -873,7 +873,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="196"/>
   </charm>
@@ -890,7 +890,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="UntilSatisfied"/>
+    <duration event="Satisfied"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="196"/>
   </charm>
@@ -904,7 +904,7 @@
         <essence cost="2" text="per person"/>
       </temporary>
     </cost>
-    <duration duration="EssenceTurns"/>
+    <duration amount="Essence" unit="turn"/>
     <charmtype type="Reflexive"/>
     <source source="The Dragon-Blooded" page="200"/>
   </charm>
@@ -919,7 +919,7 @@
         <essence cost="1" text="per 2L/2B soak"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="200"/>
   </charm>
@@ -935,7 +935,7 @@
       </temporary>
     </cost>
 	<combo allAbilities="true"/>
-    <duration duration="1turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="200"/>
   </charm>
@@ -951,7 +951,7 @@
       </temporary>
     </cost>
     <charmAttribute attribute="ElementProtectionForm"/>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="201"/>
   </charm>
@@ -967,7 +967,7 @@
       </temporary>
     </cost>
     <charmAttribute attribute="ElementProtectionForm"/>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="201"/>
   </charm>
@@ -983,7 +983,7 @@
       </temporary>
     </cost>
     <charmAttribute attribute="ElementProtectionForm"/>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="201"/>
   </charm>
@@ -999,7 +999,7 @@
       </temporary>
     </cost>
     <charmAttribute attribute="ElementProtectionForm"/>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="201"/>
   </charm>
@@ -1015,7 +1015,7 @@
       </temporary>
     </cost>
     <charmAttribute attribute="ElementProtectionForm"/>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="201"/>
   </charm>
@@ -1031,7 +1031,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="201"/>
   </charm>
@@ -1047,7 +1047,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="201"/>
   </charm>
@@ -1092,7 +1092,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <source source="The Dragon-Blooded" page="203"/>
   </charm>
@@ -1168,7 +1168,7 @@
         <essence cost="2" text="per subject"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="204"/>
   </charm>
@@ -1241,7 +1241,7 @@
         <essence cost="1" text="per two dice +1 mote per ally"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="205"/>
   </charm>
@@ -1271,7 +1271,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="206"/>
   </charm>
@@ -1333,7 +1333,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="208"/>
   </charm>
@@ -1362,7 +1362,7 @@
         <essence cost="1" text="per two dice +1 mote per subject"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="208"/>
   </charm>
@@ -1393,7 +1393,7 @@
         <essence cost="2" text="+1 mote per targeted ally"/>
       </temporary>
     </cost>
-    <duration duration="1turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="209"/>
   </charm>
@@ -1437,7 +1437,7 @@
         <essence cost="1" text="per person"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="209"/>
   </charm>
@@ -1451,7 +1451,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="1turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="209"/>
   </charm>
@@ -1466,7 +1466,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="210"/>
   </charm>
@@ -1482,7 +1482,7 @@
         <essence cost="8"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="210"/>
   </charm>
@@ -1497,7 +1497,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="EssenceTurns"/>
+    <duration amount="Essence" unit="turn"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="211"/>
   </charm>
@@ -1513,7 +1513,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="211"/>
   </charm>
@@ -1527,7 +1527,7 @@
         <essence cost="1" text="per two dice"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="211"/>
   </charm>
@@ -1542,7 +1542,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="211"/>
   </charm>
@@ -1588,7 +1588,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="212"/>
   </charm>
@@ -1618,7 +1618,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="213"/>
   </charm>
@@ -1634,7 +1634,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <source source="The Dragon-Blooded" page="213"/>
   </charm>
@@ -1663,7 +1663,7 @@
         <essence cost="1" text="per attack/foe"/>
       </temporary>
     </cost>
-    <duration duration="1turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="ExtraAction"/>
     <source source="The Dragon-Blooded" page="213"/>
   </charm>
@@ -1740,7 +1740,7 @@
         <essence cost="2" text="+1 mote each additional turn"/>
       </temporary>
     </cost>
-    <duration duration="1turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="215"/>
   </charm>
@@ -1754,7 +1754,7 @@
         <essence cost="1" text="or 1 mote per two dice"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="215"/>
   </charm>
@@ -1769,7 +1769,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="216"/>
   </charm>
@@ -1785,7 +1785,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1task"/>
+    <duration amount="1" unit="task"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="216"/>
   </charm>
@@ -1815,7 +1815,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="217"/>
   </charm>
@@ -1861,7 +1861,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="EssenceWeeks"/>
+    <duration amount="Essence" unit="week"/>
     <charmtype type="Simple"/>
     <source source="Exalted Player's Guide" page="123"/>
   </charm>
@@ -1889,7 +1889,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="217"/>
   </charm>
@@ -1905,7 +1905,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="218"/>
   </charm>
@@ -1936,7 +1936,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted: The Outcaste" page="130"/>
   </charm>
@@ -1953,7 +1953,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="218"/>
   </charm>
@@ -2014,7 +2014,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="220"/>
   </charm>
@@ -2029,7 +2029,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1minute"/>
+    <duration amount="1" unit="minute"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="220"/>
   </charm>
@@ -2044,7 +2044,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="1turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="221"/>
   </charm>
@@ -2073,7 +2073,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="221"/>
   </charm>
@@ -2118,7 +2118,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="222"/>
   </charm>
@@ -2133,7 +2133,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted: The Outcaste" page="93"/>
   </charm>
@@ -2148,7 +2148,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <source source="The Dragon-Blooded" page="222"/>
   </charm>
@@ -2210,7 +2210,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="223"/>
   </charm>
@@ -2225,7 +2225,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="223"/>
   </charm>
@@ -2240,7 +2240,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Exalted: The Outcaste" page="94"/>
   </charm>
@@ -2330,7 +2330,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="225"/>
   </charm>
@@ -2501,7 +2501,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <source source="The Dragon-Blooded" page="228"/>
   </charm>
@@ -2532,7 +2532,7 @@
         <essence cost="8"/>
       </temporary>
     </cost>
-    <duration duration="1performance"/>
+    <duration amount="1" unit="performance"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="229"/>
   </charm>
@@ -2562,7 +2562,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="2months"/>
+    <duration amount="2" unit="month"/>
     <charmtype type="Simple" synergistic="true"/>
     <source source="Exalted: The Outcaste" page="44"/>
   </charm>
@@ -2592,7 +2592,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
     <source source="The Dragon-Blooded" page="229"/>
   </charm>
@@ -2622,7 +2622,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="1turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
     <source source="The Dragon-Blooded" page="230"/>
   </charm>
@@ -2654,7 +2654,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1charge"/>
+    <duration amount="1" unit="charge"/>
     <charmtype type="Supplemental"/>
     <source source="The Dragon-Blooded" page="230"/>
   </charm>
@@ -2669,7 +2669,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="SuccessesTurns"/>
+    <duration amount="Successes" unit="turn"/>
     <charmtype type="Reflexive"/>
     <source source="The Dragon-Blooded" page="231"/>
   </charm>
@@ -2729,7 +2729,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="1day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="232"/>
   </charm>
@@ -2744,7 +2744,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="1day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="233"/>
   </charm>
@@ -2759,7 +2759,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="1hunt"/>
+    <duration amount="1" unit="hunt"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="233"/>
   </charm>
@@ -2774,7 +2774,7 @@
         <essence cost="3" text="+1 mote per companion"/>
       </temporary>
     </cost>
-    <duration duration="1day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="233"/>
   </charm>
@@ -2789,7 +2789,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Dragon-Blooded" page="233"/>
   </charm>
@@ -2852,7 +2852,7 @@
         <essence cost="2" text="plus 1 mote per ally included"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Air" page="68"/>
   </charm>
@@ -2882,7 +2882,7 @@
         <essence cost="2" text="per success"/>
       </temporary>
     </cost>
-    <duration duration="SuccessesHours"/>
+    <duration amount="Successes" unit="hour"/>
     <charmtype type="Supplemental"/>
     <source source="Aspect Book: Air" page="69"/>
   </charm>
@@ -2928,7 +2928,7 @@
         <essence cost="2" text="plus 1 mote per student"/>
       </temporary>
     </cost>
-    <duration duration="1day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Air" page="70"/>
   </charm>
@@ -3035,7 +3035,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Air" page="70"/>
   </charm>
@@ -3050,7 +3050,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Air" page="71"/>
   </charm>
@@ -3096,7 +3096,7 @@
         <essence cost="2" text="plus 1 mote per ally masked"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Air" page="72"/>
   </charm>
@@ -3188,7 +3188,7 @@
         <essence cost="1" text="or 3 motes"/>
       </temporary>
     </cost>
-    <duration duration="1turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Special"/>
     <source source="Aspect Book: Earth" page="72"/>
   </charm>
@@ -3250,7 +3250,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1hour"/>
+    <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Earth" page="74"/>
   </charm>
@@ -3265,7 +3265,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1hour"/>
+    <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Earth" page="74"/>
   </charm>
@@ -3310,7 +3310,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Fire" page="76"/>
   </charm>
@@ -3325,7 +3325,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Fire" page="77"/>
   </charm>
@@ -3339,7 +3339,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Fire" page="76"/>
   </charm>
@@ -3353,7 +3353,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Fire" page="76"/>
   </charm>
@@ -3383,7 +3383,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Fire" page="74"/>
   </charm>
@@ -3444,7 +3444,7 @@
         <essence cost="4" text="or more"/>
       </temporary>
     </cost>
-    <duration duration="EssenceDays"/>
+    <duration amount="Essence" unit="day"/>
     <charmtype type="Supplemental"/>
     <source source="Aspect Book: Fire" page="75"/>
   </charm>
@@ -3505,7 +3505,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="EssenceTurns"/>
+    <duration amount="Essence" unit="turn"/>
     <charmtype type="Supplemental"/>
     <source source="Aspect Book: Water" page="73"/>
   </charm>
@@ -3521,7 +3521,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="EssenceTurns"/>
+    <duration amount="Essence" unit="turn"/>
     <charmtype type="Supplemental"/>
     <source source="Aspect Book: Water" page="73"/>
   </charm>
@@ -3537,7 +3537,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="BrawlTurns"/>
+    <duration amount="Brawl" unit="turn"/>
     <charmtype type="Supplemental"/>
     <source source="Aspect Book: Water" page="74"/>
   </charm>
@@ -3599,7 +3599,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Water" page="79"/>
   </charm>
@@ -3613,7 +3613,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <source source="Aspect Book: Water" page="79"/>
   </charm>
@@ -3628,7 +3628,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Water" page="79"/>
   </charm>
@@ -3689,7 +3689,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1task"/>
+    <duration amount="1" unit="task"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Water" page="75"/>
   </charm>
@@ -3766,7 +3766,7 @@
         <willpoer cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Supplemental"/>
     <source source="Aspect Book: Water" page="77"/>
   </charm>
@@ -3781,7 +3781,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Supplemental"/>
     <source source="Aspect Book: Water" page="77"/>
   </charm>
@@ -3795,7 +3795,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Water" page="77"/>
   </charm>
@@ -3809,7 +3809,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="1task"/>
+    <duration amount="1" unit="task"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Water" page="77"/>
   </charm>
@@ -3824,7 +3824,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Water" page="77"/>
   </charm>
@@ -3855,7 +3855,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Water" page="78"/>
   </charm>
@@ -3870,7 +3870,7 @@
         <essence cost="2" text="per person"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Earth" page="76"/>
   </charm>
@@ -3889,7 +3889,7 @@
     <learning>
       <favored caste="Fire"/>
     </learning>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Earth" page="77"/>
   </charm>
@@ -3908,7 +3908,7 @@
     <learning>
       <favored caste="Air"/>
     </learning>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Earth" page="77"/>
   </charm>
@@ -3924,7 +3924,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Earth" page="77"/>
   </charm>
@@ -3943,7 +3943,7 @@
     <learning>
       <favored caste="Water"/>
     </learning>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Earth" page="77"/>
   </charm>
@@ -3962,7 +3962,7 @@
     <learning>
       <favored caste="Wood"/>
     </learning>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Earth" page="77"/>
   </charm>
@@ -3986,7 +3986,7 @@
     <learning>
       <favored caste="Wood"/>
     </learning>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Earth" page="77"/>
   </charm>
@@ -4052,7 +4052,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Wood" page="76"/>
   </charm>
@@ -4086,7 +4086,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Wood" page="76"/>
   </charm>
@@ -4131,7 +4131,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Aspect Book: Wood" page="77"/>
   </charm>

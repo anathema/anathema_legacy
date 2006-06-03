@@ -12,7 +12,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
 	<source source="Player's Guide" page="206"/>    
   </charm>
@@ -44,7 +44,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="UntilReleased"/>
+    <duration event="Released"/>
     <charmtype type="Supplemental"/>
     <source source="Player's Guide" page="206"/>    
   </charm>  
@@ -59,7 +59,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="1turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
     <source source="Player's Guide" page="206"/>
   </charm>
@@ -75,7 +75,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Player's Guide" page="208"/>
   </charm>  
@@ -118,7 +118,7 @@
         <essence cost="Varies"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Player's Guide" page="208"/>
   </charm>
@@ -152,7 +152,7 @@
         <health cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Player's Guide" page="208"/>
   </charm>
@@ -168,7 +168,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Player's Guide" page="209"/>
   </charm>
@@ -183,7 +183,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="1scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <source source="Player's Guide" page="206"/>
   </charm>

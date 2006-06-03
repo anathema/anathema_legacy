@@ -11,7 +11,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One Day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="123"/>
   </charm>
@@ -27,7 +27,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One Scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="123"/>
   </charm>
@@ -76,7 +76,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One Scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="125"/>
   </charm>
@@ -185,7 +185,7 @@
         <health type="Lethal" cost="1" text="+Special"/>
       </temporary>
     </cost>
-    <duration duration="Onde Day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="129"/>
   </charm>
@@ -203,7 +203,7 @@
         <health type="Lethal" cost="1" text="+Special"/>
       </temporary>
     </cost>
-    <duration duration="Onde Day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="130"/>
   </charm>
@@ -220,7 +220,7 @@
         <health type="Lethal" cost="1" text="+Special"/>
       </temporary>
     </cost>
-    <duration duration="Indefinite/Instant"/>
+    <duration duration="Varies"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="130"/>
   </charm>
@@ -250,7 +250,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One Scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="131"/>
   </charm>
@@ -265,7 +265,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One Scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="132"/>
   </charm>
@@ -370,7 +370,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="One Scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="134"/>
   </charm>
@@ -385,7 +385,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One Scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="134"/>
   </charm>
@@ -415,7 +415,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One Scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="135"/>
   </charm>
@@ -430,7 +430,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One Scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="135"/>
   </charm>
@@ -521,7 +521,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="Variable"/>
+    <duration duration="Special"/>
     <charmtype type="Supplemental"/>
     <source source="The Lunars" page="137"/>
   </charm>
@@ -570,7 +570,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One Scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="138"/>
     <ruleset name="PowerCombat">		
@@ -739,7 +739,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="Until attack ends"/>
+    <duration event="AttackEnds"/>
     <charmtype type="Supplemental"/>
     <source source="The Lunars" page="143"/>
   </charm>
@@ -974,7 +974,7 @@
         <essence cost="2" text="+1 mote per die"/>
       </temporary>
     </cost>
-    <duration duration="One turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Supplemental"/>
     <source source="The Lunars" page="147"/>
   </charm>
@@ -1567,7 +1567,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One Scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="159"/>
   </charm>
@@ -1701,7 +1701,7 @@
         <essence cost="2" text="per enemy denied"/>
       </temporary>
     </cost>
-    <duration duration="One turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
     <source source="The Lunars" page="161"/>
   </charm>
@@ -1927,7 +1927,7 @@
         <essence cost="1" text="per 2 points"/>
       </temporary>
     </cost>
-    <duration duration="One Scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="166"/>
   </charm>
@@ -1942,7 +1942,7 @@
         <essence cost="1" text="per point"/>
       </temporary>
     </cost>
-    <duration duration="One Scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="166"/>
   </charm>
@@ -1957,7 +1957,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One Scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="167"/>
   </charm>
@@ -1973,7 +1973,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One Scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="167"/>
   </charm>
@@ -1990,7 +1990,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="167"/>
   </charm>
@@ -2119,7 +2119,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One Day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Reflexive"/>
     <source source="The Lunars" page="168"/>
   </charm>
@@ -2134,7 +2134,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="Stamina x 10 minutes"/>
+    <duration amount="Staminax10" unit="minute"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="168"/>
   </charm>
@@ -2149,7 +2149,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="One Day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="168"/>
   </charm>
@@ -2164,7 +2164,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="One Day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="169"/>
   </charm>
@@ -2179,7 +2179,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="10 turns"/>
+    <duration amount="10" unit="turn"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="169"/>
   </charm>
@@ -2194,7 +2194,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="169"/>
   </charm>
@@ -2240,7 +2240,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration duration="Until released"/>
+    <duration event="Released"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="170"/>
   </charm>
@@ -2255,7 +2255,7 @@
         <essence cost="3" text="and 1 Stamina"/>
       </temporary>
     </cost>
-    <duration duration="1 month"/>
+    <duration amount="1" unit="month"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="171"/>
   </charm>
@@ -2270,7 +2270,7 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="171"/>
   </charm>
@@ -2285,7 +2285,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="171"/>
   </charm>
@@ -2329,7 +2329,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="One turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
     <source source="The Lunars" page="172"/>
   </charm>
@@ -2434,7 +2434,7 @@
         <essence cost="1" text="per die"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="174"/>
   </charm>
@@ -2449,7 +2449,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="10 turns"/>
+    <duration amount="10" unit="turn"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="174"/>
   </charm>
@@ -2464,7 +2464,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="10 turns"/>
+    <duration amount="10" unit="turn"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="174"/>
   </charm>
@@ -2479,7 +2479,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="10 turns"/>
+    <duration amount="10" unit="turn"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="174"/>
   </charm>
@@ -2509,7 +2509,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="189"/>
   </charm>
@@ -2646,7 +2646,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One hour"/>
+    <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="176"/>
   </charm>
@@ -2677,7 +2677,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One lunar month"/>
+    <duration amount="1" unit="lunarMonth"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="177"/>
   </charm>
@@ -2725,7 +2725,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="Essence lunar months"/>
+    <duration amount="Essence" unit="lunarMonth"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="177"/>
   </charm>
@@ -2740,7 +2740,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="178"/>
   </charm>
@@ -2755,7 +2755,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="178"/>
   </charm>
@@ -2770,7 +2770,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="178"/>
   </charm>
@@ -2785,7 +2785,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="179"/>
   </charm>
@@ -2801,7 +2801,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="179"/>
   </charm>
@@ -2816,7 +2816,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="179"/>
   </charm>
@@ -2831,7 +2831,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="179"/>
   </charm>
@@ -2846,7 +2846,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="179"/>
   </charm>
@@ -2876,7 +2876,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="181"/>
   </charm>
@@ -2906,7 +2906,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="181"/>
   </charm>
@@ -2920,7 +2920,7 @@
         <essence cost="2" text="per die"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="182"/>
   </charm>
@@ -2935,7 +2935,7 @@
         <essence cost="2" text="per die"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="182"/>
   </charm>
@@ -2950,7 +2950,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="182"/>
   </charm>
@@ -2965,7 +2965,7 @@
         <essence cost="5" text="per person"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="183"/>
   </charm>
@@ -2981,7 +2981,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="183"/>
   </charm>
@@ -2997,7 +2997,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One day"/>
+    <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="183"/>
   </charm>
@@ -3011,7 +3011,7 @@
         <essence cost="1" text="per die"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="183"/>
   </charm>
@@ -3026,7 +3026,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="30 minutes + 10 min. per die"/>
+    <duration duration="30MinutesAnd10PerDie"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="184"/>
   </charm>
@@ -3042,7 +3042,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="1 hour +"/>
+    <duration duration="1HourPlus"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="184"/>
   </charm>
@@ -3087,7 +3087,7 @@
         <essence cost="4"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="186"/>
   </charm>
@@ -3151,7 +3151,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One battle"/>
+    <duration amount="1" unit="battle"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="187"/>
   </charm>
@@ -3167,7 +3167,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="5 turns"/>
+    <duration amount="5" unit="turn"/>
     <charmtype type="Special"/>
     <source source="The Lunars" page="187"/>
   </charm>
@@ -3182,7 +3182,7 @@
         <essence cost="3"/>
       </temporary>
     </cost>
-    <duration duration="One turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="187"/>
   </charm>
@@ -3197,7 +3197,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="188"/>
   </charm>
@@ -3272,7 +3272,7 @@
         <essence cost="1" text="per wolf-sibling"/>
       </temporary>
     </cost>
-    <duration duration="One turn"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
     <source source="The Lunars" page="191"/>
   </charm>
@@ -3301,7 +3301,7 @@
         <essence cost="2"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="191"/>
   </charm>
@@ -3316,7 +3316,7 @@
         <essence cost="8"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="192"/>
   </charm>
@@ -3332,7 +3332,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="The Lunars" page="192"/>
   </charm>

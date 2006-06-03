@@ -43,7 +43,7 @@
         <willpower cost="1"/>
       </temporary>
     </cost>
-    <duration duration="One Scene"/>
+    <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <source source="Player's Guide" page="207"/>
   </charm>
