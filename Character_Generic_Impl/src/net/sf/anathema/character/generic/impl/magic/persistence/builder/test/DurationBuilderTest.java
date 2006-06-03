@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.duration.QualifiedAmountDuration;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
+import net.sf.anathema.character.generic.magic.charms.duration.UntilEventDuration;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.testing.ExceptionConvertingBlock;
@@ -60,6 +61,14 @@ public class DurationBuilderTest extends BasicTestCase {
     durationElement.addAttribute("unit", unit); //$NON-NLS-1$
     IDuration duration = builder.buildDuration(durationElement);
     assertEquals(new QualifiedAmountDuration(amount, unit), duration);
+  }
+
+  public void testUntilEventDuration() throws Exception {
+    Element durationElement = getDurationElement();
+    String event = "an event"; //$NON-NLS-1$
+    durationElement.addAttribute("event", event); //$NON-NLS-1$
+    IDuration duration = builder.buildDuration(durationElement);
+    assertEquals(new UntilEventDuration(event), duration);
   }
 
   public void testNoDurationElement() throws Exception {

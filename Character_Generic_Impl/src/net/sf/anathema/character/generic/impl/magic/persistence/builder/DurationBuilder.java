@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.duration.QualifiedAmountDuration;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
+import net.sf.anathema.character.generic.magic.charms.duration.UntilEventDuration;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
@@ -24,6 +25,10 @@ public class DurationBuilder {
     if (amount != null) {
       String unit = ElementUtilities.getRequiredAttrib(durationElement, ICharmXMLConstants.ATTRIB_UNIT);
       return new QualifiedAmountDuration(amount, unit);
+    }
+    String event = durationElement.attributeValue(ICharmXMLConstants.ATTRIB_EVENT);
+    if (event != null) {
+      return new UntilEventDuration(event);
     }
     throw new PersistenceException("No legal duration definition found"); //$NON-NLS-1$
   }

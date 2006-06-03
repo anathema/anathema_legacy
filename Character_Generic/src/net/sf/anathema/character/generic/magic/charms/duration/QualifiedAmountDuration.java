@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.magic.charms.duration;
 
+import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -9,6 +10,8 @@ public class QualifiedAmountDuration extends ReflectionEqualsObject implements I
   private final String unit;
 
   public QualifiedAmountDuration(String amount, String unit) {
+    Ensure.ensureArgumentNotNull(amount);
+    Ensure.ensureArgumentNotNull(unit);
     this.amount = amount;
     this.unit = unit;
   }

@@ -5,4 +5,6 @@ public interface IDurationVisitor {
   public void visitSimpleDuration(SimpleDuration visitedDuration);
 
   public void visitQualifiedAmountDuration(QualifiedAmountDuration visitedDuration);
+
+  public void acceptUntilEventDuration(UntilEventDuration visitedDuration);
 }

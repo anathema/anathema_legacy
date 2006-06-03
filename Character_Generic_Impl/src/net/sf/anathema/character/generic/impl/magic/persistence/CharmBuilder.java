@@ -79,7 +79,13 @@ public class CharmBuilder implements ICharmBuilder {
     catch (IllegalArgumentException e) {
       throw new CharmException("Error in Charm " + id, e); //$NON-NLS-1$
     }
-    IDuration duration = durationBuilder.buildDuration(charmElement.element(TAG_DURATION));
+    IDuration duration = null;
+    try {
+      duration = durationBuilder.buildDuration(charmElement.element(TAG_DURATION));
+    }
+    catch (PersistenceException e) {
+      throw new CharmException("Error in Charm duration " + id, e); //$NON-NLS-1$
+    }
     ICharmTypeModel charmTypeModel = charmTypeBuilder.build(charmElement);
     IMagicSource[] sources = sourceBuilder.buildSourceList(charmElement);
     CharmPrerequisiteList prerequisiteList = getPrerequisites(charmElement, id);
