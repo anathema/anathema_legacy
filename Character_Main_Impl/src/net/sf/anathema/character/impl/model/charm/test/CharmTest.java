@@ -10,8 +10,8 @@ import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
-import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
+import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -39,7 +39,7 @@ public class CharmTest extends TestCase {
           new CostList(null, null, null),
           new PermanentCostList(null, null, null, null),
           new ComboRestrictions(),
-          Duration.getDuration("Duration"), //$NON-NLS-1$
+          SimpleDuration.getDuration("Duration"), //$NON-NLS-1$
           model,
           null);
       fail();

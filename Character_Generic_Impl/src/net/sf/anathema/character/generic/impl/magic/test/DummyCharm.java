@@ -17,11 +17,12 @@ import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
-import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
+import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
+import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.magic.general.IMagicSource;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
@@ -37,7 +38,7 @@ import net.sf.anathema.lib.util.Identificate;
 public class DummyCharm extends Identificate implements ICharm {
 
   private ValuedTraitType essence;
-  private Duration duration;
+  private IDuration duration;
   private IComboRestrictions comboRestrictions = new ComboRestrictions();
   private IGenericTrait[] prerequisites;
   private Set<ICharm> parentCharms;
@@ -57,7 +58,7 @@ public class DummyCharm extends Identificate implements ICharm {
       IGenericTrait[] prerequisites) {
     super("DummyCharmDefaultId"); //$NON-NLS-1$
     this.prerequisites = prerequisites;
-    this.duration = Duration.getDuration(duration);
+    this.duration = SimpleDuration.getDuration(duration);
     this.comboRestrictions = comboRestrictions;
     this.model.setCharmType(charmType);
   }
@@ -109,7 +110,7 @@ public class DummyCharm extends Identificate implements ICharm {
     return comboRestrictions;
   }
 
-  public Duration getDuration() {
+  public IDuration getDuration() {
     return duration;
   }
 
@@ -197,7 +198,7 @@ public class DummyCharm extends Identificate implements ICharm {
     model.setCharmType(type);
   }
 
-  public void setDuration(Duration duration) {
+  public void setDuration(IDuration duration) {
     this.duration = duration;
   }
 

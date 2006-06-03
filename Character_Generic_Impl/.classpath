@@ -11,6 +11,6 @@
 	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-lang-2.1.jar"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/LibGui"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Lib_Gui"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

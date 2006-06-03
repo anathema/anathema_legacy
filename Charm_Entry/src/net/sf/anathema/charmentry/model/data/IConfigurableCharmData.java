@@ -3,8 +3,8 @@ package net.sf.anathema.charmentry.model.data;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IExtendedCharmData;
-import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
+import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -34,7 +34,7 @@ public interface IConfigurableCharmData extends IExtendedCharmData {
 
   public IGenericTrait getPrimaryPrerequiste();
 
-  public void setDuration(Duration duration);
+  public void setDuration(SimpleDuration duration);
 
   public void setParentCharms(ICharm[] charms);
 

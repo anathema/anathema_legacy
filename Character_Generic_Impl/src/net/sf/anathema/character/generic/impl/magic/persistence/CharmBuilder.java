@@ -23,9 +23,9 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequi
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.PrerequisiteListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
-import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
+import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.magic.general.IMagicSource;
@@ -79,7 +79,7 @@ public class CharmBuilder implements ICharmBuilder {
     catch (IllegalArgumentException e) {
       throw new CharmException("Error in Charm " + id, e); //$NON-NLS-1$
     }
-    Duration duration = durationBuilder.buildDuration(charmElement.element(TAG_DURATION));
+    IDuration duration = durationBuilder.buildDuration(charmElement.element(TAG_DURATION));
     ICharmTypeModel charmTypeModel = charmTypeBuilder.build(charmElement);
     IMagicSource[] sources = sourceBuilder.buildSourceList(charmElement);
     CharmPrerequisiteList prerequisiteList = getPrerequisites(charmElement, id);

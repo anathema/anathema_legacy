@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequi
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.TraitPrerequisitesBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
-import net.sf.anathema.character.generic.magic.charms.Duration;
+import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
@@ -246,12 +246,12 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
   public void testCorrectCharmWithInstantDuration() throws Exception {
     Element durationElement = charmElement.element(TAG_DURATION);
     durationElement.addAttribute(ATTRIB_DURATION, "Instant"); //$NON-NLS-1$
-    assertTrue(charmBuilder.buildCharm(charmElement).getDuration() == Duration.INSTANT_DURATION);
+    assertTrue(charmBuilder.buildCharm(charmElement).getDuration() == SimpleDuration.INSTANT_DURATION);
   }
 
   public void testCorrectCharmWithOtherDuration() throws Exception {
-    assertFalse(charmBuilder.buildCharm(charmElement).getDuration() == Duration.PERMANENT_DURATION);
-    assertFalse(charmBuilder.buildCharm(charmElement).getDuration() == Duration.INSTANT_DURATION);
+    assertFalse(charmBuilder.buildCharm(charmElement).getDuration() == SimpleDuration.PERMANENT_DURATION);
+    assertFalse(charmBuilder.buildCharm(charmElement).getDuration() == SimpleDuration.INSTANT_DURATION);
   }
 
   public void testCorrectCharmWithBadSource() throws Exception {

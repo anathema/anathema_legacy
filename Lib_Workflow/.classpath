@@ -7,6 +7,6 @@
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-layout_src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/Testing/jdemo_core.jar"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/LibGui"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Lib_Gui"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -70,7 +70,7 @@ public class MagicStats implements IMagicStats {
     final String[] group = new String[1];
     magic.accept(new IMagicVisitor() {
       public void visitCharm(ICharm charm) {
-        group[0] = resources.getString("Charm.Duration." + charm.getDuration().getText()); //$NON-NLS-1$
+        group[0] = charm.getDuration().getText(resources);
       }
 
       public void visitSpell(ISpell spell) {

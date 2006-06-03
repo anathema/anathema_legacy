@@ -1,27 +1,30 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.writer;
 
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_AMOUNT;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_DURATION;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_UNIT;
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_DURATION;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.VALUE_INSTANT;
-import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.VALUE_PERMANENT;
 
 import net.sf.anathema.character.generic.magic.ICharmData;
-import net.sf.anathema.character.generic.magic.charms.Duration;
+import net.sf.anathema.character.generic.magic.charms.duration.IDurationVisitor;
+import net.sf.anathema.character.generic.magic.charms.duration.QualifiedAmountDuration;
+import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 
 import org.dom4j.Element;
 
 public class DurationWriter {
 
   public void write(ICharmData charm, Element charmElement) {
-    Element durationElement = charmElement.addElement(TAG_DURATION);
-    if (charm.getDuration() == Duration.INSTANT_DURATION) {
-      durationElement.addAttribute(ATTRIB_DURATION, VALUE_INSTANT);
-      return;
-    }
-    if (charm.getDuration() == Duration.PERMANENT_DURATION) {
-      durationElement.addAttribute(ATTRIB_DURATION, VALUE_PERMANENT);
-      return;
-    }
-    durationElement.addAttribute(ATTRIB_DURATION, charm.getDuration().getText());
+    final Element durationElement = charmElement.addElement(TAG_DURATION);
+    charm.getDuration().accept(new IDurationVisitor() {
+      public void visitSimpleDuration(SimpleDuration duration) {
+        durationElement.addAttribute(ATTRIB_DURATION, duration.getText());
+      }
+
+      public void visitQualifiedAmountDuration(QualifiedAmountDuration visitedDuration) {
+        durationElement.addAttribute(ATTRIB_AMOUNT, visitedDuration.getAmount());
+        durationElement.addAttribute(ATTRIB_UNIT, visitedDuration.getUnit());
+      }
+    });
   }
 }

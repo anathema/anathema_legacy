@@ -11,10 +11,10 @@ import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
+import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -30,7 +30,7 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
 
   private CharacterType characterType;
   private String id;
-  private Duration duration;
+  private SimpleDuration duration;
   private IGenericTrait essence = new ValuedTraitType(OtherTraitType.Essence, 1);
   private Map<ITraitType, IGenericTrait> prerequisitesByType = new LinkedHashMap<ITraitType, IGenericTrait>();
   private String groupId;
@@ -73,7 +73,7 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
     return temporaryCost;
   }
 
-  public Duration getDuration() {
+  public SimpleDuration getDuration() {
     return duration;
   }
 
@@ -97,7 +97,7 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
     return parentCharms;
   }
 
-  public void setDuration(Duration duration) {
+  public void setDuration(SimpleDuration duration) {
     this.duration = duration;
   }
 

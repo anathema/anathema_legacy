@@ -11,6 +11,7 @@ public interface ICharmXMLConstants {
   public static final String ATTRIB_SECONDARY_STEP = "secondaryStep"; //$NON-NLS-1$
 
   public static final String ATTRIB_ALL_ABILITIES = "allAbilities"; //$NON-NLS-1$
+  public static final String ATTRIB_AMOUNT = "amount"; //$NON-NLS-1$
   public static final String ATTRIB_ATTRIBUTE = "attribute"; //$NON-NLS-1$  
   public static final String ATTRIB_COMBOABLE = "comboable"; //$NON-NLS-1$
   public static final String ATTRIB_COUNT = "count"; //$NON-NLS-1$
@@ -27,6 +28,7 @@ public interface ICharmXMLConstants {
   public static final String ATTRIB_SOURCE = "source"; //$NON-NLS-1$
   public static final String ATTRIB_THRESHOLD = "threshold"; //$NON-NLS-1$
   public static final String ATTRIB_TYPE = "type"; //$NON-NLS-1$
+  public static final String ATTRIB_UNIT = "unit"; //$NON-NLS-1$
   public static final String ATTRIB_VALUE = "value"; //$NON-NLS-1$
   public static final String ATTRIB_VISUALIZE = "visualize"; //$NON-NLS-1$
 
@@ -60,8 +62,6 @@ public interface ICharmXMLConstants {
   public static final String TAG_EXPERIENCE_COST = "experience"; //$NON-NLS-1$
   public static final String TAG_HEALTH_COST = "health"; //$NON-NLS-1$
 
-  public static final String VALUE_INSTANT = "Instant"; //$NON-NLS-1$
-  public static final String VALUE_PERMANENT = "Permanent"; //$NON-NLS-1$
   public static final String ATTRIB_COST = "cost"; //$NON-NLS-1$
   public static final String ATTRIB_TEXT = "text"; //$NON-NLS-1$
   public static final String TAG_GENERIC_CHARM_ATTRIBUTE_REQUIREMENT = "genericCharmAttributeRequirement"; //$NON-NLS-1$

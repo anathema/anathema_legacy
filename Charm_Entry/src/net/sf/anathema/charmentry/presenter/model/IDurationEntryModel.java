@@ -1,6 +1,6 @@
 package net.sf.anathema.charmentry.presenter.model;
 
-import net.sf.anathema.character.generic.magic.charms.Duration;
+import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
 public interface IDurationEntryModel {
@@ -9,7 +9,7 @@ public interface IDurationEntryModel {
 
   public void setDuration(String newValue);
 
-  public Duration getDuration();
+  public IDuration getDuration();
 
   public void addModelListener(IChangeListener listener);
 }

@@ -13,8 +13,8 @@ import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.Cha
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
-import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
+import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.magic.general.IMagicSource;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
@@ -136,7 +136,7 @@ public class CharmSetBuilderTest extends BasicTestCase {
         new CostList(null, null, null),
         new PermanentCostList(null, null, null, null),
         new ComboRestrictions(),
-        Duration.INSTANT_DURATION,
+        SimpleDuration.INSTANT_DURATION,
         model,
         new IMagicSource[] { MagicSource.CUSTOM_SOURCE });
     return charm;

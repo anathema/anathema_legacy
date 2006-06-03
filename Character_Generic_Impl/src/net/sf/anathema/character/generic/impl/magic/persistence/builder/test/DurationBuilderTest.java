@@ -2,7 +2,9 @@ package net.sf.anathema.character.generic.impl.magic.persistence.builder.test;
 
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.DurationBuilder;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
-import net.sf.anathema.character.generic.magic.charms.Duration;
+import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
+import net.sf.anathema.character.generic.magic.charms.duration.QualifiedAmountDuration;
+import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.testing.ExceptionConvertingBlock;
@@ -24,10 +26,10 @@ public class DurationBuilderTest extends BasicTestCase {
     Element durationElement = getDurationElement();
     String text = "One Tudeldu"; //$NON-NLS-1$
     durationElement.addAttribute("duration", text); //$NON-NLS-1$
-    Duration duration = builder.buildDuration(durationElement);
-    assertFalse(duration == Duration.INSTANT_DURATION);
-    assertFalse(duration == Duration.PERMANENT_DURATION);
-    assertEquals(text, duration.getText());
+    IDuration duration = builder.buildDuration(durationElement);
+    assertFalse(duration == SimpleDuration.INSTANT_DURATION);
+    assertFalse(duration == SimpleDuration.PERMANENT_DURATION);
+    assertEquals(text, ((SimpleDuration) duration).getText());
   }
 
   private Element getDurationElement() {
@@ -38,16 +40,26 @@ public class DurationBuilderTest extends BasicTestCase {
     Element durationElement = getDurationElement();
     String text = "Instant"; //$NON-NLS-1$
     durationElement.addAttribute("duration", text); //$NON-NLS-1$
-    Duration duration = builder.buildDuration(durationElement);
-    assertEquals(Duration.INSTANT_DURATION, duration);
+    IDuration duration = builder.buildDuration(durationElement);
+    assertEquals(SimpleDuration.INSTANT_DURATION, duration);
   }
 
   public void testPermanentDuration() throws Exception {
     Element durationElement = getDurationElement();
     String text = "Permanent"; //$NON-NLS-1$
     durationElement.addAttribute("duration", text); //$NON-NLS-1$
-    Duration duration = builder.buildDuration(durationElement);
-    assertEquals(Duration.PERMANENT_DURATION, duration);
+    IDuration duration = builder.buildDuration(durationElement);
+    assertEquals(SimpleDuration.PERMANENT_DURATION, duration);
+  }
+
+  public void testQualifiedAmountDuration() throws Exception {
+    Element durationElement = getDurationElement();
+    String amount = "this amount"; //$NON-NLS-1$
+    String unit = "that unit"; //$NON-NLS-1$
+    durationElement.addAttribute("amount", amount); //$NON-NLS-1$
+    durationElement.addAttribute("unit", unit); //$NON-NLS-1$
+    IDuration duration = builder.buildDuration(durationElement);
+    assertEquals(new QualifiedAmountDuration(amount, unit), duration);
   }
 
   public void testNoDurationElement() throws Exception {
@@ -59,7 +71,7 @@ public class DurationBuilderTest extends BasicTestCase {
     });
   }
 
-  public void testNoDurationAttribute() throws Exception {
+  public void testNoUsefullDurationAttribute() throws Exception {
     assertThrowsException(PersistenceException.class, new ExceptionConvertingBlock() {
       @Override
       public void executeExceptionThrowing() throws Exception {

@@ -36,7 +36,7 @@ public class CharmInfoStringBuilder implements ICharmInfoStringBuilder {
     builder.append(HtmlLineBreak);
     builder.append(resources.getString("CharmTreeView.ToolTip.Duration")); //$NON-NLS-1$
     builder.append(IMagicStringBuilderConstants.ColonSpace);
-    builder.append(resources.getString("Charm.Duration." + charm.getDuration().getText())); //$NON-NLS-1$
+    builder.append(charm.getDuration().getText(resources));
     builder.append(HtmlLineBreak);
     builder.append(resources.getString("CharmTreeView.ToolTip.Type")); //$NON-NLS-1$
     builder.append(IMagicStringBuilderConstants.ColonSpace);

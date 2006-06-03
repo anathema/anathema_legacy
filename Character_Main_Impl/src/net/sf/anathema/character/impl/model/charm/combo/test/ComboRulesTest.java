@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.model.charm.combo.test;
 import net.sf.anathema.character.generic.impl.magic.test.DummyCharm;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
-import net.sf.anathema.character.generic.magic.charms.Duration;
+import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
@@ -59,7 +59,7 @@ public class ComboRulesTest extends AbstractComboRulesTestCase {
         AbilityType.Archery,
         3));
     DummyCharm charm2 = new DummyCharm(forbiddenId);
-    charm2.setDuration(Duration.INSTANT_DURATION);
+    charm2.setDuration(SimpleDuration.INSTANT_DURATION);
     charm2.setCharmType(CharmType.ExtraAction);
     charm2.setPrerequisites(new ValuedTraitType[] { new ValuedTraitType(AbilityType.Archery, 3) });
     assertFalse(rules.isComboLegal(charm1, charm2));

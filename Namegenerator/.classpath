@@ -10,6 +10,5 @@
 	<classpathentry kind="src" path="/Platform"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
 	<classpathentry kind="src" path="resources"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/LibGui"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

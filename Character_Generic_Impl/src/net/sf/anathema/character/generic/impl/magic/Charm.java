@@ -21,12 +21,12 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
-import net.sf.anathema.character.generic.magic.charms.Duration;
 import net.sf.anathema.character.generic.magic.charms.ICharmAlternative;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnArbitrator;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
+import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
 import net.sf.anathema.character.generic.magic.general.IMagicSource;
@@ -48,7 +48,7 @@ public class Charm extends Identificate implements ICharm {
 
   private final CharacterType characterType;
   private final IComboRestrictions comboRules;
-  private final Duration duration;
+  private final IDuration duration;
   private final String group;
 
   private final IMagicSource[] sources;
@@ -72,7 +72,7 @@ public class Charm extends Identificate implements ICharm {
       ICostList temporaryCost,
       IPermanentCostList permanentCost,
       IComboRestrictions comboRules,
-      Duration duration,
+      IDuration duration,
       ICharmTypeModel charmTypeModel,
       IMagicSource[] sources) {
     super(id);
@@ -131,7 +131,7 @@ public class Charm extends Identificate implements ICharm {
     return characterType;
   }
 
-  public Duration getDuration() {
+  public IDuration getDuration() {
     return duration;
   }
 

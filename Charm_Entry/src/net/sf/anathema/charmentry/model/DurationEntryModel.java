@@ -1,6 +1,7 @@
 package net.sf.anathema.charmentry.model;
 
-import net.sf.anathema.character.generic.magic.charms.Duration;
+import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
+import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.ICharmTypeEntryModel;
@@ -33,11 +34,11 @@ public class DurationEntryModel implements IDurationEntryModel {
   }
 
   public void setDuration(String newValue) {
-    charmData.setDuration(Duration.getDuration(newValue));
+    charmData.setDuration(SimpleDuration.getDuration(newValue));
     control.fireChangedEvent();
   }
 
-  public Duration getDuration() {
+  public IDuration getDuration() {
     return charmData.getDuration();
   }
 }
