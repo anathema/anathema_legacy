@@ -24,6 +24,27 @@ public class CharacterCoreModule extends AbstractAnathemaModule {
     registry.register(ICharacterGenericsExtension.ID, new CharacterGenericsExtension(container.getCharacterGenerics()));
   }
 
+  // @Override
+  // public void initPresentation(IResources resources, IAnathemaModel model, IAnathemaView view) {
+  // CharmCache charmCache = CharmCache.getInstance();
+  // for (CharacterType characterType : CharacterType.values()) {
+  // for (IExaltedRuleSet ruleSet : ExaltedRuleSet.values()) {
+  // try {
+  // ICharm[] charms = charmCache.getCharms(characterType, ruleSet);
+  // for (ICharm charm : charms) {
+  // final String durationString = charm.getDuration().getText(resources);
+  // if (durationString.contains("#")) {
+  // System.err.println(ruleSet + " - " + charm.getId());
+  // }
+  // }
+  // }
+  // catch (Exception e) {
+  // // e.printStackTrace();
+  // }
+  // }
+  // }
+  // }
+
   @Override
   public void initAnathemaResources(IAnathemaResources resources) {
     if (anathemaResources != null) {
@@ -45,6 +66,7 @@ public class CharacterCoreModule extends AbstractAnathemaModule {
     resources.addStringResourceHandler(createStringProvider("Sidereal", resources.getLocale())); //$NON-NLS-1$
     resources.addStringResourceHandler(createStringProvider("Charms_Sidereal", resources.getLocale())); //$NON-NLS-1$       
     resources.addStringResourceHandler(createStringProvider("Charmgroups", resources.getLocale())); //$NON-NLS-1$
+    resources.addStringResourceHandler(createStringProvider("CharmDuration", resources.getLocale())); //$NON-NLS-1$
     resources.addStringResourceHandler(createStringProvider("Traits", resources.getLocale())); //$NON-NLS-1$
     resources.addStringResourceHandler(createStringProvider("Cascades", resources.getLocale())); //$NON-NLS-1$
     resources.addStringResourceHandler(createStringProvider("CharmTreeView", resources.getLocale())); //$NON-NLS-1$

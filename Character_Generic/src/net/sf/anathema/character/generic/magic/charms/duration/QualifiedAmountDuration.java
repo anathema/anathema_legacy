@@ -29,7 +29,7 @@ public class QualifiedAmountDuration extends ReflectionEqualsObject implements I
   }
 
   public String getText(IResources resources) {
-    String amountText = resources.getString("Charm.Amount." + getAmount().toLowerCase()); //$NON-NLS-1$
+    String amountText = resources.getString("Charm.Amount." + getAmount()); //$NON-NLS-1$
     String unitText = resources.getString(getUnitKey());
     return resources.getString("Charm.QualifiedAmount", new String[] { amountText, unitText }); //$NON-NLS-1$
   }
@@ -37,12 +37,12 @@ public class QualifiedAmountDuration extends ReflectionEqualsObject implements I
   private String getUnitKey() {
     try {
       if (Integer.parseInt(getAmount()) == 1) {
-        return "Charm.Unit." + unit.toLowerCase() + ".Singular"; //$NON-NLS-1$ //$NON-NLS-2$
+        return "Charm.Unit." + unit + ".Singular"; //$NON-NLS-1$ //$NON-NLS-2$
       }
     }
     catch (NumberFormatException e) {
       // Nothing to do
     }
-    return "Charm.Unit." + unit.toLowerCase() + ".Plural"; //$NON-NLS-1$ //$NON-NLS-2$
+    return "Charm.Unit." + unit + ".Plural"; //$NON-NLS-1$ //$NON-NLS-2$
   }
 }

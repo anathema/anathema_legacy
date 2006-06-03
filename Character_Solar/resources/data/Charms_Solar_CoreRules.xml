@@ -3610,7 +3610,7 @@
         <essence cost="5"/>
       </temporary>
     </cost>
-    <duration amount="1" unit="Night"/>
+    <duration amount="1" unit="night"/>
     <charmtype type="Simple"/>
     <source source="Caste Book: Zenith" page="72"/>
   </charm>
@@ -5172,7 +5172,7 @@
         <essence cost="20"/>
       </temporary>
     </cost>
-    <duration duration="OneDayPlus"/>
+    <duration duration="1DayPlus"/>
     <charmtype type="Simple"/>
     <source source="Time of Tumult" page="96"/>
   </charm>
