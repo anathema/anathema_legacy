@@ -33,6 +33,8 @@ http://anathema.sf.net
 * Revamped the spell selection view
 * 	View now filters illegals spells from mass-selection without throwing an exception
 * Greatly improved speed of Charm trees.
+* Charm durations are translated.
+* Charm attribute requirements now use proper spanish language.
 
 -- Bugs Fixed --
 * Replaced "Periphrase" by "Periphrasis", as is due in English.
