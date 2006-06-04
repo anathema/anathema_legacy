@@ -1,26 +1,33 @@
 package net.sf.anathema.character.reporting.sheet.common.magic.stats;
 
-import net.sf.anathema.character.reporting.sheet.util.statstable.AbstractNameStatsGroup;
+import net.sf.anathema.character.reporting.sheet.util.statstable.AbstractTextStatsGroup;
 import net.sf.anathema.lib.resources.IResources;
 
-public class MagicNameStatsGroup extends AbstractNameStatsGroup<IMagicStats> {
+import com.lowagie.text.Font;
+import com.lowagie.text.pdf.PdfPTable;
+
+public class MagicNameStatsGroup extends AbstractTextStatsGroup<IMagicStats> {
+
+  private final IResources resources;
 
   public MagicNameStatsGroup(IResources resources) {
-    super(resources);
+    this.resources = resources;
   }
 
-  @Override
   public Float[] getColumnWeights() {
     return new Float[] { 6.0f };
   }
 
-  @Override
-  protected String getHeaderResourceKey() {
-    return "Sheet.Magic.Name"; //$NON-NLS-1$
+  public void addContent(PdfPTable table, Font font, IMagicStats stats) {
+    if (stats == null) {
+      table.addCell(createTextCell(font, "")); //$NON-NLS-1$
+    }
+    else {
+      table.addCell(createTextCell(font, stats.getNameString(resources)));
+    }
   }
 
-  @Override
-  protected String getResourceBase() {
-    return ""; //$NON-NLS-1$
+  public String getTitle() {
+    return resources.getString("Sheet.Magic.Name"); //$NON-NLS-1$
   }
 }

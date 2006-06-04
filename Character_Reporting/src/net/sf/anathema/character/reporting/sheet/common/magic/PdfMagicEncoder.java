@@ -23,7 +23,6 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfMagicEncoder implements IPdfContentEncoder {
 
-
   public static List<IMagicStats> collectPrintMagic(final IGenericCharacter character) {
     IExaltedEdition edition = character.getRules().getEdition();
     final CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
@@ -43,7 +42,7 @@ public class PdfMagicEncoder implements IPdfContentEncoder {
     }
     List<IMagicStats> printStats = new ArrayList<IMagicStats>();
     for (IMagic magic : printMagic) {
-      printStats.add(new MagicStats(magic, edition));
+      printStats.add(new MagicStats(magic, edition, character));
     }
     return printStats;
   }

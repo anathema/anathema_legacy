@@ -3,6 +3,7 @@ package net.sf.anathema.character.reporting.sheet.common.magic.stats;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.MagicInfoStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
@@ -24,10 +25,12 @@ public class MagicStats implements IMagicStats {
 
   private final IMagic magic;
   private final IExaltedEdition edition;
+  private final IGenericCharacter character;
 
-  public MagicStats(IMagic magic, IExaltedEdition edition) {
+  public MagicStats(IMagic magic, IExaltedEdition edition, IGenericCharacter character) {
     this.magic = magic;
     this.edition = edition;
+    this.character = character;
   }
 
   public IIdentificate getName() {
@@ -120,5 +123,25 @@ public class MagicStats implements IMagicStats {
       }
     });
     return details.toArray(new String[details.size()]);
+  }
+
+  public String getNameString(final IResources resources) {
+    final StringBuilder nameString = new StringBuilder();
+    nameString.append(resources.getString(magic.getId()));
+    magic.accept(new IMagicVisitor() {
+      public void visitCharm(ICharm charm) {
+        int learnCount = character.getLearnCount(charm);
+        if (learnCount > 1) {
+          nameString.append(" ("); //$NON-NLS-1$
+          nameString.append(learnCount);
+          nameString.append("x)"); //$NON-NLS-1$
+        }
+      }
+
+      public void visitSpell(ISpell spell) {
+        // Nothing to do
+      }
+    });
+    return nameString.toString();
   }
 }
