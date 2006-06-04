@@ -24,7 +24,7 @@ public class SourceEntryModel implements ISourceEntryModel {
 
   public IIdentificate[] getPredefinedSources() {
     List<IIdentificate> sources = new ArrayList<IIdentificate>();
-    Collections.addAll(sources, ExaltedSourceBooks.values());
+    Collections.addAll(sources, ExaltedSourceBook.values());
     sources.add(new Identificate("Custom"));
     return sources.toArray(new IIdentificate[sources.size()]);
   }
