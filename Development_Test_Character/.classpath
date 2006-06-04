@@ -14,5 +14,8 @@
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-layout_src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic"/>
+	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-core-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
+	<classpathentry sourcepath="/Thirdparty/XML/dom4j-src.zip" kind="lib" path="/Thirdparty/XML/dom4j-1.5.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Impl"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
