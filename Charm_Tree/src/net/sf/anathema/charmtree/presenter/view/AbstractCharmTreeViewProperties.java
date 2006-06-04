@@ -3,6 +3,7 @@ package net.sf.anathema.charmtree.presenter.view;
 import java.awt.Cursor;
 import java.awt.Dimension;
 
+import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.CharmInfoStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmInfoStringBuilder;
@@ -22,20 +23,18 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
   }
 
   public final String getNodeName(String nodeId) {
-    String name = nodeId;
     if (resources.supportsKey(nodeId)) {
-      name = resources.getString(nodeId);
+      return resources.getString(nodeId);
     }
     else if (isRequirementNode(nodeId)) {
       String requirementWithCount = nodeId.replaceFirst(REQUIREMENT + ".", ""); //$NON-NLS-1$ //$NON-NLS-2$
       String[] strings = requirementWithCount.split("\\."); //$NON-NLS-1$
-      String requirementName = strings[0];
       int requirementCount = Integer.parseInt(strings[1]);
-      name = requirementCount + " " + resources.getString(REQUIREMENT + "." + requirementName); //$NON-NLS-1$ //$NON-NLS-2$
-      name = name.concat(" " + resources.getString( //$NON-NLS-1$
-      requirementCount == 1 ? "Charms.Charm.Single" : "Charms.Charm.Multiple")); //$NON-NLS-1$//$NON-NLS-2$
+      String requirementName = resources.getString(REQUIREMENT + "." + strings[0]); //$NON-NLS-1$
+      String charmString = resources.getString(requirementCount == 1 ? "Charms.Charm.Single" : "Charms.Charm.Multiple"); //$NON-NLS-1$//$NON-NLS-2$
+      return resources.getString("Requirement.Message", new Object[] { requirementCount, requirementName, charmString }); //$NON-NLS-1$
     }
-    return name;
+    throw new UnreachableCodeReachedException("Node " + nodeId + " must be requirement or charm."); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   public final boolean isRequirementNode(String nodeId) {
