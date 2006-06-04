@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.framework.configuration.ICharacterPrefe
 import net.sf.anathema.character.generic.framework.reporting.template.ICharacterReportTemplate;
 import net.sf.anathema.character.impl.module.preferences.RulesetPreferenceElement;
 import net.sf.anathema.character.impl.reporting.CharacterReportingInitializer;
+import net.sf.anathema.character.impl.reporting.PageSize;
 import net.sf.anathema.character.impl.reporting.SecondEditionSheetReport;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IExtensionPoint;
@@ -47,7 +48,8 @@ public class CharacterModule extends AbstractAnathemaModule {
   public void initPresentation(IResources resources, IAnathemaModel model, IAnathemaView view) {
     super.initPresentation(resources, model, view);
     ICharacterGenerics characterGenerics = getCharacterGenerics(model);
-    model.getReportRegistry().addReport(new SecondEditionSheetReport(resources, characterGenerics));
+    model.getReportRegistry().addReport(new SecondEditionSheetReport(resources, characterGenerics, PageSize.A4));
+    model.getReportRegistry().addReport(new SecondEditionSheetReport(resources, characterGenerics, PageSize.Letter));
     IItemType characterItemType = characterTypeConfiguration.getItemType();
     new CharacterModulePresenter(model, view, resources, characterItemType, characterGenerics);
     new CharacterPerformanceTuner(model, getResources()).startTuning(characterGenerics, characterItemType);

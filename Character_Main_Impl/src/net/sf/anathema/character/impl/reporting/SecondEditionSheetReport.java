@@ -29,19 +29,22 @@ public class SecondEditionSheetReport implements IITextReport {
 
   private final IResources resources;
   private final ICharacterGenerics characterGenerics;
+  private final PageSize pageSize;
 
-  public SecondEditionSheetReport(IResources resources, ICharacterGenerics characterGenerics) {
+  public SecondEditionSheetReport(IResources resources, ICharacterGenerics characterGenerics, PageSize pageSize) {
     this.resources = resources;
     this.characterGenerics = characterGenerics;
+    this.pageSize = pageSize;
   }
 
   @Override
   public String toString() {
-    return resources.getString("CharacterModule.Reporting.SecondEdition.Name"); //$NON-NLS-1$
+    return resources.getString("CharacterModule.Reporting.SecondEdition.Name") + " (" + pageSize.name() + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
   }
 
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     ICharacter stattedCharacter = (ICharacter) item.getItemData();
+    document.setPageSize(pageSize.getRectangle());
     document.open();
     PdfContentByte directContent = writer.getDirectContent();
     IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
