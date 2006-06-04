@@ -4,7 +4,9 @@ import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.reporting.template.CharacterDescriptionReportTemplate;
 import net.sf.anathema.character.generic.framework.reporting.template.MortalBasicsCharacterTemplate;
+import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.SimpleBackgroundTemplate;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -18,6 +20,7 @@ public class MortalCharacterModule extends NullObjectCharacterModuleAdapter {
   public static final String BACKGROUND_ID_CONTACTS = "Contacts"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_BACKING = "Backing"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_ALLIES = "Allies"; //$NON-NLS-1$
+  public static final String BACKGROUND_ID_CULT = "Cult"; //$NON-NLS-1$
 
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
@@ -44,5 +47,6 @@ public class MortalCharacterModule extends NullObjectCharacterModuleAdapter {
     registry.add(new SimpleBackgroundTemplate(BACKGROUND_ID_INFLUENCE));
     registry.add(new SimpleBackgroundTemplate(BACKGROUND_ID_MENTOR));
     registry.add(new SimpleBackgroundTemplate(BACKGROUND_ID_RESOURCES));
+    registry.add(new EditionSpecificBackgroundTemplate(BACKGROUND_ID_CULT, ExaltedEdition.SecondEdition));
   }
 }
