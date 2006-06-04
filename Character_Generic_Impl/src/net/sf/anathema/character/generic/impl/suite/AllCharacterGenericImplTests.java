@@ -8,7 +8,6 @@ public class AllCharacterGenericImplTests {
   public static Test suite() {
     TestSuite suite = new TestSuite("Test for net.sf.anathema.character.generic.impl"); //$NON-NLS-1$
     suite.addTest(net.sf.anathema.character.generic.impl.magic.persistence.test.AllTests.suite());
-    suite.addTest(net.sf.anathema.character.generic.impl.magic.persistence.builder.test.AllTests.suite());
     suite.addTest(net.sf.anathema.character.generic.impl.magic.persistence.writer.test.AllTests.suite());
     suite.addTest(net.sf.anathema.character.generic.impl.template.points.test.AllTests.suite());
     suite.addTest(net.sf.anathema.character.generic.impl.magic.test.AllTests.suite());
