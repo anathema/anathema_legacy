@@ -14,7 +14,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-	<source source="Player's Guide" page="206"/>    
+	<source source="PlayersGuide" page="206"/>    
   </charm>
   <charm id="Abyssal.PiercingGhostBarb" exalt="Abyssal" group="Archery">
     <prerequisite>
@@ -31,7 +31,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="206"/>
+    <source source="PlayersGuide" page="206"/>
   </charm>  
   <charm id="Abyssal.InescapableIronGrip" exalt="Abyssal" group="Brawl">
     <prerequisite>
@@ -46,7 +46,7 @@
     </cost>
     <duration event="Released"/>
     <charmtype type="Supplemental"/>
-    <source source="Player's Guide" page="206"/>    
+    <source source="PlayersGuide" page="206"/>    
   </charm>  
   <charm id="Abyssal.RapaciousLampreyTechnique" exalt="Abyssal" group="Brawl">
     <prerequisite>
@@ -61,7 +61,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="Player's Guide" page="206"/>
+    <source source="PlayersGuide" page="206"/>
   </charm>
   <charm id="Abyssal.ResplendentShadowBlade" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -77,7 +77,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="208"/>
+    <source source="PlayersGuide" page="208"/>
   </charm>  
   <charm id="Abyssal.ElegantFlowingDeflection" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -91,7 +91,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Player's Guide" page="208"/>
+    <source source="PlayersGuide" page="208"/>
   </charm>  
  <charm id="Abyssal.Pain-EatingFocus" exalt="Abyssal" group="Endurance">
     <prerequisite>
@@ -105,7 +105,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Player's Guide" page="207"/>
+    <source source="PlayersGuide" page="207"/>
   </charm>
   <charm id="Abyssal.BoneArsenalMethod" exalt="Abyssal" group="Resistance">
     <prerequisite>
@@ -120,7 +120,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="208"/>
+    <source source="PlayersGuide" page="208"/>
   </charm>
   <charm id="Abyssal.FlowingWoundDefense" exalt="Abyssal" group="Resistance">
     <prerequisite>
@@ -137,7 +137,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Player's Guide" page="209"/>
+    <source source="PlayersGuide" page="209"/>
   </charm>
   <charm id="Abyssal.CrimsonPetalArmor" exalt="Abyssal" group="Resistance">
     <prerequisite>
@@ -154,7 +154,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="208"/>
+    <source source="PlayersGuide" page="208"/>
   </charm>
   <charm id="Abyssal.InauspiciousShadowPlate" exalt="Abyssal" group="Resistance">
     <prerequisite>
@@ -170,7 +170,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="209"/>
+    <source source="PlayersGuide" page="209"/>
   </charm>
   <charm id="Abyssal.MistOverIce" exalt="Abyssal" group="Athletics">
     <prerequisite>
@@ -185,7 +185,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Player's Guide" page="206"/>
+    <source source="PlayersGuide" page="206"/>
   </charm>
   <alternatives>
     <alternative>

@@ -18,7 +18,7 @@
     </charmtype>
     <genericCharmAttribute attribute="Excellency"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="183"/>
+    <source source="SecondEdition" page="183"/>
   </genericCharm>
   <genericCharm id="Solar.2ndExcellency" exalt="Solar">
     <prerequisite>
@@ -36,7 +36,7 @@
     </charmtype>
     <genericCharmAttribute attribute="Excellency"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="184"/>
+    <source source="SecondEdition" page="184"/>
   </genericCharm>
   <genericCharm id="Solar.3rdExcellency" exalt="Solar">
     <prerequisite>
@@ -54,7 +54,7 @@
     </charmtype>
     <genericCharmAttribute attribute="Excellency"/>
 	<charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="185"/>
+    <source source="SecondEdition" page="185"/>
   </genericCharm>
   <genericCharm id="Solar.InfiniteMastery" exalt="Solar">
     <prerequisite>
@@ -70,7 +70,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Second Edition" page="185"/>
+    <source source="SecondEdition" page="185"/>
   </genericCharm>
   <genericCharm id="Solar.EssenceFlow" exalt="Solar">
     <prerequisite>
@@ -83,7 +83,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Second Edition" page="187"/>
+    <source source="SecondEdition" page="187"/>
   </genericCharm>
   <!-- Solar Archery -->
   <charm id="Solar.ThereIsNoWind" exalt="Solar" group="Archery">
@@ -100,7 +100,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="187"/>
+    <source source="SecondEdition" page="187"/>
   </charm>
   <charm id="Solar.AccuracyWithoutDistance" exalt="Solar" group="Archery">
     <prerequisite>
@@ -118,7 +118,7 @@
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="187"/>
+    <source source="SecondEdition" page="187"/>
   </charm>
   <charm id="Solar.ForcefulArrow" exalt="Solar" group="Archery">
     <prerequisite>
@@ -136,7 +136,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Knockback" visualize="true"/>
-    <source source="Second Edition" page="187"/>
+    <source source="SecondEdition" page="187"/>
   </charm>
   <charm id="Solar.TranceUnhesitatingSpeed" exalt="Solar" group="Archery">
     <prerequisite>
@@ -153,7 +153,7 @@
     <charmtype type="ExtraAction"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="187"/>
+    <source source="SecondEdition" page="187"/>
   </charm>
   <charm id="Solar.ArrowStormTechnique" exalt="Solar" group="Archery">
     <prerequisite>
@@ -171,7 +171,7 @@
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Combo-Basic" visualize="true"/>
-    <source source="Second Edition" page="187"/>
+    <source source="SecondEdition" page="187"/>
   </charm>
   <charm id="Solar.FlashingVengeanceDraw" exalt="Solar" group="Archery">
     <prerequisite>
@@ -187,7 +187,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-Basic" visualize="true"/>
-    <source source="Second Edition" page="188"/>
+    <source source="SecondEdition" page="188"/>
   </charm>
   <charm id="Solar.EssenceArrowAttack" exalt="Solar" group="Archery">
     <prerequisite>
@@ -203,7 +203,7 @@
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="188"/>
+    <source source="SecondEdition" page="188"/>
   </charm>
   <charm id="Solar.PhantomArrowTechnique" exalt="Solar" group="Archery">
     <prerequisite>
@@ -218,7 +218,7 @@
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="188"/>
+    <source source="SecondEdition" page="188"/>
   </charm>
   <charm id="Solar.SummoningLoyalBow" exalt="Solar" group="Archery">
     <prerequisite>
@@ -236,7 +236,7 @@
       <special speed="3" turntype="Tick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="189"/>
+    <source source="SecondEdition" page="189"/>
   </charm>
   <charm id="Solar.ImmaculateGoldenBow" exalt="Solar" group="Archery">
     <prerequisite>
@@ -255,7 +255,7 @@
       <special speed="5" turntype="Tick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="189"/>
+    <source source="SecondEdition" page="189"/>
   </charm>
   <charm id="Solar.InexhaustibleBoltsSolarFire" exalt="Solar" group="Archery">
     <prerequisite>
@@ -275,7 +275,7 @@
     </charmtype>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="189"/>
+    <source source="SecondEdition" page="189"/>
   </charm>
   <charm id="Solar.SolarFlareMethodology" exalt="Solar" group="Archery">
     <prerequisite>
@@ -294,7 +294,7 @@
       <special speed="5" turntype="Tick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="189"/>
+    <source source="SecondEdition" page="189"/>
   </charm>
   <charm id="Solar.RainFeatheredDeath" exalt="Solar" group="Archery">
     <prerequisite>
@@ -311,7 +311,7 @@
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="189"/>
+    <source source="SecondEdition" page="189"/>
   </charm>
   <charm id="Solar.HungryTigerTechnique" exalt="Solar" group="Melee">
     <prerequisite>
@@ -327,7 +327,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="190"/>
+    <source source="SecondEdition" page="190"/>
   </charm>
   <charm id="Solar.FireandStonesStrike" exalt="Solar" group="Melee">
     <prerequisite>
@@ -343,7 +343,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="190"/>
+    <source source="SecondEdition" page="190"/>
   </charm>
   <charm id="Solar.OneWeapon,TwoBlows" exalt="Solar" group="Melee">
     <prerequisite>
@@ -361,7 +361,7 @@
       <special primaryStep="1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="191"/>
+    <source source="SecondEdition" page="191"/>
   </charm>
   <charm id="Solar.PeonyBlossomAttack" exalt="Solar" group="Melee">
     <prerequisite>
@@ -378,7 +378,7 @@
     <charmtype type="ExtraAction"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="191"/>
+    <source source="SecondEdition" page="191"/>
   </charm>
   <charm id="Solar.IronWhirlwindAttack" exalt="Solar" group="Melee">
     <prerequisite>
@@ -396,7 +396,7 @@
     <charmtype type="ExtraAction"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="191"/>
+    <source source="SecondEdition" page="191"/>
   </charm>
   <charm id="Solar.InvincibleFuryDawn" exalt="Solar" group="Melee">
     <prerequisite>
@@ -408,7 +408,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Second Edition" page="191"/>
+    <source source="SecondEdition" page="191"/>
   </charm>
   <charm id="Solar.CallBlade" exalt="Solar" group="Melee">
     <prerequisite>
@@ -425,7 +425,7 @@
       <special primaryStep="2"/>
     </charmtype>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="191"/>
+    <source source="SecondEdition" page="191"/>
   </charm>
   <charm id="Solar.SummoningLoyalSteel" exalt="Solar" group="Melee">
     <prerequisite>
@@ -443,7 +443,7 @@
       <special speed="3" turntype="Tick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="192"/>
+    <source source="SecondEdition" page="192"/>
   </charm>
   <charm id="Solar.GloriousSolarSaber" exalt="Solar" group="Melee">
     <prerequisite>
@@ -464,7 +464,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Holy" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="192"/>
+    <source source="SecondEdition" page="192"/>
   </charm>
   <charm id="Solar.IronRaptorTechnique" exalt="Solar" group="Melee">
     <prerequisite>
@@ -483,7 +483,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="192"/>
+    <source source="SecondEdition" page="192"/>
   </charm>
   <charm id="Solar.BlazingSolarBolt" exalt="Solar" group="Melee">
     <prerequisite>
@@ -504,7 +504,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Holy" visualize="true"/>
-    <source source="Second Edition" page="192"/>
+    <source source="SecondEdition" page="192"/>
   </charm>
   <charm id="Solar.DippingSwallowDefense" exalt="Solar" group="Melee">
     <prerequisite>
@@ -522,7 +522,7 @@
       <special primaryStep="2"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="192"/>
+    <source source="SecondEdition" page="192"/>
   </charm>
   <charm id="Solar.BulwarkStance" exalt="Solar" group="Melee">
     <prerequisite>
@@ -540,7 +540,7 @@
       <special primaryStep="2"/>
     </charmtype>
     <charmAttribute attribute="Combo-Basic" visualize="true"/>
-    <source source="Second Edition" page="193"/>
+    <source source="SecondEdition" page="193"/>
   </charm>
   <charm id="Solar.HeavenlyGuardianDefense" exalt="Solar" group="Melee">
     <prerequisite>
@@ -559,7 +559,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="193"/>
+    <source source="SecondEdition" page="193"/>
   </charm>
   <charm id="Solar.FivefoldBulwarkStance" exalt="Solar" group="Melee">
     <prerequisite>
@@ -577,7 +577,7 @@
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="194"/>
+    <source source="SecondEdition" page="194"/>
   </charm>
   <charm id="Solar.SolarCounterattack" exalt="Solar" group="Melee">
     <prerequisite>
@@ -596,7 +596,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Counterattack" visualize="true"/>
-    <source source="Second Edition" page="194"/>
+    <source source="SecondEdition" page="194"/>
   </charm>
   <charm id="Solar.ReadyinEightDirectionsStance" exalt="Solar" group="Melee">
     <prerequisite>
@@ -615,7 +615,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-Basic" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="194"/>
+    <source source="SecondEdition" page="194"/>
   </charm>
   <charm id="Solar.ProtectionCelestialBliss" exalt="Solar" group="Melee">
     <prerequisite>
@@ -628,7 +628,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Second Edition" page="194"/>
+    <source source="SecondEdition" page="194"/>
   </charm>
   <charm id="Solar.Joint-WoundingAttack" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -645,7 +645,7 @@
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Crippling" visualize="true"/>
-    <source source="Second Edition" page="195"/>
+    <source source="SecondEdition" page="195"/>
   </charm>
   <charm id="Solar.Observer-DeceivingAttack" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -661,7 +661,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="195"/>
+    <source source="SecondEdition" page="195"/>
   </charm>
   <charm id="Solar.MistonWaterAttack" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -677,7 +677,7 @@
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Crippling" visualize="true"/>
-    <source source="Second Edition" page="195"/>
+    <source source="SecondEdition" page="195"/>
   </charm>
   <charm id="Solar.FallingIcicleStrike" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -695,7 +695,7 @@
       <special primaryStep="7"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="196"/>
+    <source source="SecondEdition" page="196"/>
   </charm>
   <charm id="Solar.Triple-DistanceAttackTechnique" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -710,7 +710,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="196"/>
+    <source source="SecondEdition" page="196"/>
   </charm>
   <charm id="Solar.CascadeCuttingTerror" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -727,7 +727,7 @@
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="196"/>
+    <source source="SecondEdition" page="196"/>
   </charm>
   <charm id="Solar.ReturningWeaponConcentration" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -739,7 +739,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Second Edition" page="196"/>
+    <source source="SecondEdition" page="196"/>
   </charm>
   <charm id="Solar.CallBladeThrown" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -757,7 +757,7 @@
       <special primaryStep="2"/>
     </charmtype>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="197"/>
+    <source source="SecondEdition" page="197"/>
   </charm>
   <charm id="Solar.SpiritWeapons" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -776,7 +776,7 @@
     </charmtype>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="197"/>
+    <source source="SecondEdition" page="197"/>
   </charm>
   <charm id="Solar.Rout-StemmingGesture" exalt="Solar" group="War">
     <prerequisite>
@@ -795,7 +795,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="War" visualize="true"/>
-    <source source="Second Edition" page="197"/>
+    <source source="SecondEdition" page="197"/>
   </charm>
   <charm id="Solar.CommandingIdealCelestialArmy" exalt="Solar" group="War">
     <prerequisite>
@@ -812,7 +812,7 @@
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="War" visualize="true"/>
-    <source source="Second Edition" page="197"/>
+    <source source="SecondEdition" page="197"/>
   </charm>
   <charm id="Solar.Mob-DispersingRebuke" exalt="Solar" group="War">
     <prerequisite>
@@ -831,7 +831,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="War" visualize="true"/>
-    <source source="Second Edition" page="197"/>
+    <source source="SecondEdition" page="197"/>
   </charm>
   <charm id="Solar.FuryIncitingPresence" exalt="Solar" group="War">
     <prerequisite>
@@ -851,7 +851,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="197"/>
+    <source source="SecondEdition" page="197"/>
   </charm>
   <charm id="Solar.GeneralAll-SeeingSun" exalt="Solar" group="War">
     <prerequisite>
@@ -867,7 +867,7 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="197"/>
+    <source source="SecondEdition" page="197"/>
   </charm>
   <charm id="Solar.Heroism-EncouragingPresence" exalt="Solar" group="War">
     <prerequisite>
@@ -889,7 +889,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="War" visualize="true"/>
-    <source source="Second Edition" page="197"/>
+    <source source="SecondEdition" page="197"/>
   </charm>
   <charm id="Solar.TigerWarriorTrainingTechnique" exalt="Solar" group="War">
     <prerequisite>
@@ -910,7 +910,7 @@
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
     <charmAttribute attribute="Training" visualize="true"/>
-    <source source="Second Edition" page="198"/>
+    <source source="SecondEdition" page="198"/>
   </charm>
   <charm id="Solar.LegendaryWarriorCurriculum" exalt="Solar" group="War">
     <prerequisite>
@@ -923,7 +923,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Second Edition" page="198"/>
+    <source source="SecondEdition" page="198"/>
   </charm>
   <charm id="Solar.IdealBattleKnowledgePrana" exalt="Solar" group="War">
     <prerequisite>
@@ -945,7 +945,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="War" visualize="true"/>
-    <source source="Second Edition" page="199"/>
+    <source source="SecondEdition" page="199"/>
   </charm>
   <charm id="Solar.Integrity-PotectingPrana" exalt="Solar" group="Integrity">
     <prerequisite>
@@ -963,7 +963,7 @@
       <special primaryStep="2"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="199"/>
+    <source source="SecondEdition" page="199"/>
   </charm>
   <charm id="Solar.Destiny-ManifestingMethod" exalt="Solar" group="Integrity">
     <prerequisite>
@@ -976,7 +976,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Second Edition" page="199"/>
+    <source source="SecondEdition" page="199"/>
   </charm>
   <charm id="Solar.RighteousLionDefense" exalt="Solar" group="Integrity">
     <prerequisite>
@@ -988,7 +988,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Second Edition" page="199"/>
+    <source source="SecondEdition" page="199"/>
   </charm>
   <charm id="Solar.StubbornBoarDefense" exalt="Solar" group="Integrity">
     <prerequisite>
@@ -1000,7 +1000,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Second Edition" page="199"/>
+    <source source="SecondEdition" page="199"/>
   </charm>
   <charm id="Solar.PhoenixRenewalTactic" exalt="Solar" group="Integrity">
     <prerequisite>
@@ -1013,7 +1013,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Second Edition" page="200"/>
+    <source source="SecondEdition" page="200"/>
   </charm>
   <charm id="Solar.Temptation-ResistingStance" exalt="Solar" group="Integrity">
     <prerequisite>
@@ -1033,7 +1033,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
     <charmAttribute attribute="Stackable" visualize="true"/>
-    <source source="Second Edition" page="200"/>
+    <source source="SecondEdition" page="200"/>
   </charm>
   <charm id="Solar.ElusiveDreamDefense" exalt="Solar" group="Integrity">
     <prerequisite>
@@ -1050,7 +1050,7 @@
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
-    <source source="Second Edition" page="200"/>
+    <source source="SecondEdition" page="200"/>
   </charm>
   <charm id="Solar.TranscendentHero'sMeditation" exalt="Solar" group="Integrity">
     <prerequisite>
@@ -1071,7 +1071,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
-    <source source="Second Edition" page="201"/>
+    <source source="SecondEdition" page="201"/>
   </charm>
   <charm id="Solar.SunKingRadiance" exalt="Solar" group="Integrity">
     <prerequisite>
@@ -1085,7 +1085,7 @@
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="201"/>
+    <source source="SecondEdition" page="201"/>
   </charm>
   <charm id="Solar.Spirit-MaintainingManeuver" exalt="Solar" group="Integrity">
     <prerequisite>
@@ -1102,7 +1102,7 @@
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
-    <source source="Second Edition" page="201"/>
+    <source source="SecondEdition" page="201"/>
   </charm>
   <charm id="Solar.UnhesitatingDedication" exalt="Solar" group="Integrity">
     <prerequisite>
@@ -1122,7 +1122,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Stackable" visualize="true"/>
-    <source source="Second Edition" page="202"/>
+    <source source="SecondEdition" page="202"/>
   </charm>
   <charm id="Solar.RespectCommandingAttitude" exalt="Solar" group="Performance">
     <prerequisite>
@@ -1141,7 +1141,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Compulsion" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
-    <source source="Second Edition" page="202"/>
+    <source source="SecondEdition" page="202"/>
   </charm>
   <charm id="Solar.Phantom-ConjuringPerformance" exalt="Solar" group="Performance">
     <prerequisite>
@@ -1155,7 +1155,7 @@
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="202"/>
+    <source source="SecondEdition" page="202"/>
   </charm>
   <charm id="Solar.Heart-CompellingMethod" exalt="Solar" group="Performance">
     <prerequisite>
@@ -1173,7 +1173,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Emotion" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
-    <source source="Second Edition" page="202"/>
+    <source source="SecondEdition" page="202"/>
   </charm>
   <charm id="Solar.Memory-ReweavingDiscipline" exalt="Solar" group="Performance">
     <prerequisite>
@@ -1195,7 +1195,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Illusion" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
-    <source source="Second Edition" page="202"/>
+    <source source="SecondEdition" page="202"/>
   </charm>
   <charm id="Solar.Husband-SeducingDemonDance" exalt="Solar" group="Performance">
     <prerequisite>
@@ -1217,7 +1217,7 @@
     <charmAttribute attribute="Emotion" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="203"/>
+    <source source="SecondEdition" page="203"/>
   </charm>
   <charm id="Solar.HypnoticTongueTechnique" exalt="Solar" group="Presence">
     <prerequisite>
@@ -1239,7 +1239,7 @@
     <charmAttribute attribute="Social" visualize="true"/>
     <charmAttribute attribute="Stackable" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="203"/>
+    <source source="SecondEdition" page="203"/>
   </charm>
   <charm id="Solar.MajesticRadiantPresence" exalt="Solar" group="Presence">
     <prerequisite>
@@ -1258,7 +1258,7 @@
     </charmtype>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
-    <source source="Second Edition" page="204"/>
+    <source source="SecondEdition" page="204"/>
   </charm>
   <charm id="Solar.TerrifyingApparitionGlory" exalt="Solar" group="Presence">
     <prerequisite>
@@ -1276,7 +1276,7 @@
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
-    <source source="Second Edition" page="204"/>
+    <source source="SecondEdition" page="204"/>
   </charm>
   <charm id="Solar.UnderlingPromotingTouch" exalt="Solar" group="Presence">
     <prerequisite>
@@ -1296,7 +1296,7 @@
     </charmtype>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="204"/>
+    <source source="SecondEdition" page="204"/>
   </charm>
   <charm id="Solar.Authority-RadiatingStance" exalt="Solar" group="Presence">
     <prerequisite>
@@ -1315,7 +1315,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
-    <source source="Second Edition" page="204"/>
+    <source source="SecondEdition" page="204"/>
   </charm>
   <charm id="Solar.IrresistibleSalesmanSpirit" exalt="Solar" group="Presence">
     <prerequisite>
@@ -1332,7 +1332,7 @@
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-Basic" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
-    <source source="Second Edition" page="204"/>
+    <source source="SecondEdition" page="204"/>
   </charm>
   <charm id="Solar.WorshipfulLackeyAcquisition" exalt="Solar" group="Presence">
     <prerequisite>
@@ -1354,7 +1354,7 @@
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Servitude" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
-    <source source="Second Edition" page="205"/>
+    <source source="SecondEdition" page="205"/>
   </charm>
   <charm id="Solar.Enemy-CastigatingSolarJudgement" exalt="Solar" group="Presence">
     <prerequisite>
@@ -1374,7 +1374,7 @@
     <charmAttribute attribute="Holy" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
-    <source source="Second Edition" page="205"/>
+    <source source="SecondEdition" page="205"/>
   </charm>
   <charm id="Solar.WhirlwindArmor-DonningPrana" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1391,7 +1391,7 @@
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="205"/>
+    <source source="SecondEdition" page="205"/>
   </charm>
   <charm id="Solar.Hauberk-LighteningGesture" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1410,7 +1410,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="205"/>
+    <source source="SecondEdition" page="205"/>
   </charm>
   <charm id="Solar.GloriousSolarPlate" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1429,7 +1429,7 @@
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="205"/>
+    <source source="SecondEdition" page="205"/>
   </charm>
   <charm id="Solar.ArmoredScout'sInvigoration" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1447,7 +1447,7 @@
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="205"/>
+    <source source="SecondEdition" page="205"/>
   </charm>
   <charm id="Solar.DurabilityOakMeditation" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1464,7 +1464,7 @@
       <special primaryStep="7"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="206"/>
+    <source source="SecondEdition" page="206"/>
   </charm>
   <charm id="Solar.SpiritStrengthensSkin" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1483,7 +1483,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="207"/>
+    <source source="SecondEdition" page="207"/>
   </charm>
   <charm id="Solar.IronSkinConcentration" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1502,7 +1502,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="207"/>
+    <source source="SecondEdition" page="207"/>
   </charm>
   <charm id="Solar.IronKettleBody" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1520,7 +1520,7 @@
     <charmtype type="Simple">
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
-    <source source="Second Edition" page="207"/>
+    <source source="SecondEdition" page="207"/>
   </charm>
   <charm id="Solar.AdamantSkinTechnique" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1540,7 +1540,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="207"/>
+    <source source="SecondEdition" page="207"/>
   </charm>
   <charm id="Solar.Essence-GatheringTemper" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1557,7 +1557,7 @@
       <special primaryStep="8"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="207"/>
+    <source source="SecondEdition" page="207"/>
   </charm>
   <charm id="Solar.Willpower-EnhancingSpirit" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1575,7 +1575,7 @@
       <special primaryStep="10"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="207"/>
+    <source source="SecondEdition" page="207"/>
   </charm>
   <charm id="Solar.BattleFuryFocus" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1592,7 +1592,7 @@
     <charmtype type="Simple">
       <special speed="7" turntype="Tick" defense="-1"/>
     </charmtype>
-    <source source="Second Edition" page="207"/>
+    <source source="SecondEdition" page="207"/>
   </charm>
   <charm id="Solar.BloodthirstySword-DancerSpirit" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1611,7 +1611,7 @@
       <special speed="7" turntype="Tick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="208"/>
+    <source source="SecondEdition" page="208"/>
   </charm>
   <charm id="Solar.Ox-BodyTechnique" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1624,7 +1624,7 @@
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
     <charmAttribute attribute="Stackable" visualize="true"/>
-    <source source="Second Edition" page="208"/>
+    <source source="SecondEdition" page="208"/>
   </charm>
   <charm id="Solar.UnbreakableWarrior'sMastery" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1644,7 +1644,7 @@
       <special primaryStep="10"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="208"/>
+    <source source="SecondEdition" page="208"/>
   </charm>
   <charm id="Solar.ImmunitytoEverythingTechnique" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1663,7 +1663,7 @@
       <special speed="4" turntype="Tick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="207"/>
+    <source source="SecondEdition" page="207"/>
   </charm>
   <charm id="Solar.Body-MendingMeditation" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1678,7 +1678,7 @@
     <duration event="DayEnds"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="208"/>
+    <source source="SecondEdition" page="208"/>
   </charm>
   <charm id="Solar.FriendshipwithAnimalsApproach" exalt="Solar" group="Survival">
     <prerequisite>
@@ -1695,7 +1695,7 @@
       <special primaryStep="1" secondaryStep="2"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="209"/>
+    <source source="SecondEdition" page="209"/>
   </charm>
   <charm id="Solar.Spirit-TiedPet" exalt="Solar" group="Survival">
     <prerequisite>
@@ -1718,7 +1718,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="209"/>
+    <source source="SecondEdition" page="209"/>
   </charm>
   <charm id="Solar.BestialTraitsTechnique" exalt="Solar" group="Survival">
     <prerequisite>
@@ -1739,7 +1739,7 @@
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
     <charmAttribute attribute="Training" visualize="true"/>
-    <source source="Second Edition" page="210"/>
+    <source source="SecondEdition" page="210"/>
   </charm>
   <charm id="Solar.Hardship-SurvivingMendicantSpirit" exalt="Solar" group="Survival">
     <prerequisite>
@@ -1754,7 +1754,7 @@
     <duration duration="Indefinite"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="210"/>
+    <source source="SecondEdition" page="210"/>
   </charm>
   <charm id="Solar.Element-ResistingPrana" exalt="Solar" group="Survival">
     <prerequisite>
@@ -1767,7 +1767,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Second Edition" page="210"/>
+    <source source="SecondEdition" page="210"/>
   </charm>
   <charm id="Solar.EternalElementalHarmony" exalt="Solar" group="Survival">
     <prerequisite>
@@ -1780,7 +1780,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Second Edition" page="210"/>
+    <source source="SecondEdition" page="210"/>
   </charm>
   <charm id="Solar.Food-GatheringExcercise" exalt="Solar" group="Survival">
     <prerequisite>
@@ -1798,7 +1798,7 @@
       <special speed="5" turntype="LongTick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="210"/>
+    <source source="SecondEdition" page="210"/>
   </charm>
   <charm id="Solar.TracklessRegionNavigation" exalt="Solar" group="Survival">
     <prerequisite>
@@ -1814,7 +1814,7 @@
     <duration duration="Indefinite"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="211"/>
+    <source source="SecondEdition" page="211"/>
   </charm>
   <charm id="Solar.UnshakeableBloodhoundTechnique" exalt="Solar" group="Survival">
     <prerequisite>
@@ -1831,7 +1831,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="211"/>
+    <source source="SecondEdition" page="211"/>
   </charm>
   <charm id="Solar.TracelessPassage" exalt="Solar" group="Survival">
     <prerequisite>
@@ -1848,7 +1848,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="211"/>
+    <source source="SecondEdition" page="211"/>
   </charm>
   <charm id="Solar.Eye-DeceivingCamouflage" exalt="Solar" group="Survival">
     <prerequisite>
@@ -1866,7 +1866,7 @@
       <special speed="1" turntype="DramaticAction" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="211"/>
+    <source source="SecondEdition" page="211"/>
   </charm>
   <charm id="Solar.City-MovingSecrets" exalt="Solar" group="Survival">
     <prerequisite>
@@ -1879,7 +1879,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Second Edition" page="211"/>
+    <source source="SecondEdition" page="211"/>
   </charm>
   <charm id="Solar.Object-StrengtheningTouch" exalt="Solar" group="Craft">
     <prerequisite>
@@ -1898,7 +1898,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="211"/>
+    <source source="SecondEdition" page="211"/>
   </charm>
   <charm id="Solar.Durability-EnhancingTechnique" exalt="Solar" group="Craft">
     <prerequisite>
@@ -1917,7 +1917,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="211"/>
+    <source source="SecondEdition" page="211"/>
   </charm>
   <charm id="Solar.Chaos-ResistancePreparation" exalt="Solar" group="Craft">
     <prerequisite>
@@ -1937,7 +1937,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="212"/>
+    <source source="SecondEdition" page="212"/>
   </charm>
   <charm id="Solar.Crack-MendingTechnique" exalt="Solar" group="Craft">
     <prerequisite>
@@ -1955,7 +1955,7 @@
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="212"/>
+    <source source="SecondEdition" page="212"/>
   </charm>
   <charm id="Solar.ShatteringGrasp" exalt="Solar" group="Craft">
     <prerequisite>
@@ -1973,7 +1973,7 @@
       <special speed="1" turntype="DramaticAction" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="212"/>
+    <source source="SecondEdition" page="212"/>
   </charm>
   <charm id="Solar.CraftsmanNeedsNoTools" exalt="Solar" group="Craft">
     <prerequisite>
@@ -1990,7 +1990,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="213"/>
+    <source source="SecondEdition" page="213"/>
   </charm>
   <charm id="Solar.CraftyObservationMethod" exalt="Solar" group="Investigation">
     <prerequisite>
@@ -2008,7 +2008,7 @@
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="213"/>
+    <source source="SecondEdition" page="213"/>
   </charm>
   <charm id="Solar.Evidence-DiscerningMethod" exalt="Solar" group="Investigation">
     <prerequisite>
@@ -2027,7 +2027,7 @@
       <special speed="5" turntype="LongTick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="213"/>
+    <source source="SecondEdition" page="213"/>
   </charm>
   <charm id="Solar.Judge'sEarTechnique" exalt="Solar" group="Investigation">
     <prerequisite>
@@ -2045,7 +2045,7 @@
       <special primaryStep="1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="213"/>
+    <source source="SecondEdition" page="213"/>
   </charm>
   <charm id="Solar.IrresistibleQuestioningTechnique" exalt="Solar" group="Investigation">
     <prerequisite>
@@ -2066,7 +2066,7 @@
     <charmAttribute attribute="Compulsion" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
-    <source source="Second Edition" page="213"/>
+    <source source="SecondEdition" page="213"/>
   </charm>
   <charm id="Solar.Courtier'sEyeTechnique" exalt="Solar" group="Investigation">
     <prerequisite>
@@ -2083,7 +2083,7 @@
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="214"/>
+    <source source="SecondEdition" page="214"/>
   </charm>
   <charm id="Solar.Consumer-EvaluatingGlance" exalt="Solar" group="Investigation">
     <prerequisite>
@@ -2100,7 +2100,7 @@
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Compulsion" visualize="true"/>
-    <source source="Second Edition" page="214"/>
+    <source source="SecondEdition" page="214"/>
   </charm>
   <charm id="Solar.KnowSoul'sPrice" exalt="Solar" group="Investigation">
     <prerequisite>
@@ -2119,7 +2119,7 @@
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Servitude" visualize="true"/>
-    <source source="Second Edition" page="214"/>
+    <source source="SecondEdition" page="214"/>
   </charm>
   <charm id="Solar.HarmoniousAcademicMethodology" exalt="Solar" group="Lore">
     <prerequisite>
@@ -2140,7 +2140,7 @@
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
     <charmAttribute attribute="Training" visualize="true"/>
-    <source source="Second Edition" page="215"/>
+    <source source="SecondEdition" page="215"/>
   </charm>
   <charm id="Solar.LegendaryScholarCurriculum" exalt="Solar" group="Lore">
     <prerequisite>
@@ -2154,7 +2154,7 @@
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="215"/>
+    <source source="SecondEdition" page="215"/>
   </charm>
   <charm id="Solar.Chaos-RepellingPattern" exalt="Solar" group="Lore">
     <prerequisite>
@@ -2172,7 +2172,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="216"/>
+    <source source="SecondEdition" page="216"/>
   </charm>
   <charm id="Solar.Wyld-ShapingTechnique" exalt="Solar" group="Lore">
     <prerequisite>
@@ -2195,7 +2195,7 @@
     <charmAttribute attribute="Shaping" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Mandate" visualize="true"/>    
-    <source source="Second Edition" page="216"/>
+    <source source="SecondEdition" page="216"/>
   </charm>
   <charm id="Solar.WyldCauldronTechnique" exalt="Solar" group="Lore">
     <prerequisite>
@@ -2208,7 +2208,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Second Edition" page="217"/>
+    <source source="SecondEdition" page="217"/>
   </charm>
   <charm id="Solar.Essence-LendingMethod" exalt="Solar" group="Lore">
     <prerequisite>
@@ -2227,7 +2227,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="217"/>
+    <source source="SecondEdition" page="217"/>
   </charm>
   <charm id="Solar.Will-BolsteringMethod" exalt="Solar" group="Lore">
     <prerequisite>
@@ -2247,7 +2247,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="217"/>
+    <source source="SecondEdition" page="217"/>
   </charm>
   <charm id="Solar.Power-AwardingPrana" exalt="Solar" group="Lore">
     <prerequisite>
@@ -2267,7 +2267,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="218"/>
+    <source source="SecondEdition" page="218"/>
   </charm>
   <charm id="Solar.Order-AffirmingBlow" exalt="Solar" group="Lore">
     <prerequisite>
@@ -2289,7 +2289,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Shaping" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="218"/>
+    <source source="SecondEdition" page="218"/>
   </charm>
   <charm id="Solar.ImmanentSolarGlory" exalt="Solar" group="Lore">
     <prerequisite>
@@ -2304,7 +2304,7 @@
     <charmtype type="Permanent"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Mandate" visualize="true"/>
-    <source source="Second Edition" page="218"/>
+    <source source="SecondEdition" page="218"/>
   </charm>
   <charm id="Solar.TouchBlissfulRelease" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -2323,7 +2323,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="218"/>
+    <source source="SecondEdition" page="218"/>
   </charm>
   <charm id="Solar.Contagion-CuringTouch" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -2340,7 +2340,7 @@
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="218"/>
+    <source source="SecondEdition" page="218"/>
   </charm>
   <charm id="Solar.Wound-MendingCareTechnique" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -2357,7 +2357,7 @@
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="219"/>
+    <source source="SecondEdition" page="219"/>
   </charm>
   <charm id="Solar.AnointmentMiraculousHealth" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -2376,7 +2376,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="219"/>
+    <source source="SecondEdition" page="219"/>
   </charm>
   <charm id="Solar.Wound-CleansingMeditation" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -2395,7 +2395,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="219"/>
+    <source source="SecondEdition" page="219"/>
   </charm>
   <charm id="Solar.FlawlessDiagnosisTechnique" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -2410,7 +2410,7 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="220"/>
+    <source source="SecondEdition" page="220"/>
   </charm>
   <charm id="Solar.Ailment-RectifyingMethod" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -2424,7 +2424,7 @@
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="220"/>
+    <source source="SecondEdition" page="220"/>
   </charm>
   <charm id="Solar.Body-PurifyingAdmonitions" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -2438,7 +2438,7 @@
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="220"/>
+    <source source="SecondEdition" page="220"/>
   </charm>
   <charm id="Solar.Wholeness-RestoringMeditation" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -2452,7 +2452,7 @@
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="220"/>
+    <source source="SecondEdition" page="220"/>
   </charm>
   <charm id="Solar.InstantTreatmentMethodology" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -2472,7 +2472,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="220"/>
+    <source source="SecondEdition" page="220"/>
   </charm>
   <charm id="Solar.TerrestrialCircleSorcery" exalt="Solar" group="Occult">
     <prerequisite>
@@ -2484,7 +2484,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Second Edtion" page="220"/>
+    <source source="SecondEdition" page="220"/>
   </charm>
   <charm id="Solar.CelestialCircleSorcery" exalt="Solar" group="Occult">
     <prerequisite>
@@ -2497,7 +2497,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Second Edtion" page="220"/>
+    <source source="SecondEdition" page="220"/>
   </charm>
   <charm id="Solar.SolarCircleSorcery" exalt="Solar" group="Occult">
     <prerequisite>
@@ -2510,7 +2510,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Second Edtion" page="221"/>
+    <source source="SecondEdition" page="221"/>
   </charm>
   <charm id="Solar.Spirit-DetectingGlance" exalt="Solar" group="Occult">
     <prerequisite>
@@ -2527,7 +2527,7 @@
       <special primaryStep="1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="221"/>
+    <source source="SecondEdition" page="221"/>
   </charm>
   <charm id="Solar.Spirit-CuttingAttack" exalt="Solar" group="Occult">
     <prerequisite>
@@ -2544,7 +2544,7 @@
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="221"/>
+    <source source="SecondEdition" page="221"/>
   </charm>
   <charm id="Solar.Ghost-EatingTechnique" exalt="Solar" group="Occult">
     <prerequisite>
@@ -2563,7 +2563,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="221"/>
+    <source source="SecondEdition" page="221"/>
   </charm>
   <charm id="Solar.Spirit-RepellingDiagram" exalt="Solar" group="Occult">
     <prerequisite>
@@ -2583,7 +2583,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Compulsion" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="221"/>
+    <source source="SecondEdition" page="221"/>
   </charm>
   <charm id="Solar.All-EncompassingSorcerer'sSight" exalt="Solar" group="Occult">
     <prerequisite>
@@ -2600,7 +2600,7 @@
     <charmtype type="Reflexive">
       <special primaryStep="1"/>
     </charmtype>
-    <source source="Second Edition" page="222"/>
+    <source source="SecondEdition" page="222"/>
   </charm>
   <charm id="Solar.Sorcerer'sBurningChakram" exalt="Solar" group="Occult">
     <prerequisite>
@@ -2614,7 +2614,7 @@
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="222"/>
+    <source source="SecondEdition" page="222"/>
   </charm>
   <charm id="Solar.Wonder-ForgingGenius" exalt="Solar" group="Craft">
     <prerequisite>
@@ -2629,7 +2629,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Wonders/Lost Age" page="6"/>
+    <source source="WondersLostAge" page="6"/>
   </charm>
   <charm id="Solar.InvincibleArmorInvocation" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -2649,7 +2649,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Wonders/Lost Age" page="157"/>
+    <source source="WondersLostAge" page="157"/>
   </charm>
   <charm id="Solar.GracefulCraneStance" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2664,7 +2664,7 @@
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="222"/>
+    <source source="SecondEdition" page="222"/>
   </charm>
   <charm id="Solar.MonkeyLeapTechnique" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2679,7 +2679,7 @@
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="223"/>
+    <source source="SecondEdition" page="223"/>
   </charm>
   <charm id="Solar.SoaringCraneLeap" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2695,7 +2695,7 @@
     <duration event="NextAction"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="223"/>
+    <source source="SecondEdition" page="223"/>
   </charm>
   <charm id="Solar.Mountain-CrossingLeapTechnique" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2715,7 +2715,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="223"/>
+    <source source="SecondEdition" page="223"/>
   </charm>
   <charm id="Solar.Foe-VaultingMethod" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2732,7 +2732,7 @@
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="223"/>
+    <source source="SecondEdition" page="223"/>
   </charm>
   <charm id="Solar.ThunderboltAttackPrana" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2751,7 +2751,7 @@
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="223"/>
+    <source source="SecondEdition" page="223"/>
   </charm>
   <charm id="Solar.LightningSpeed" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2767,7 +2767,7 @@
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="224"/>
+    <source source="SecondEdition" page="224"/>
   </charm>
   <charm id="Solar.RacingHareMethod" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2787,7 +2787,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="224"/>
+    <source source="SecondEdition" page="224"/>
   </charm>
   <charm id="Solar.Spider-FootStyle" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2804,7 +2804,7 @@
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="225"/>
+    <source source="SecondEdition" page="225"/>
   </charm>
   <charm id="Solar.Feather-FootStyle" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2820,7 +2820,7 @@
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="225"/>
+    <source source="SecondEdition" page="225"/>
   </charm>
   <charm id="Solar.Eagle-WingStyle" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2839,7 +2839,7 @@
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="225"/>
+    <source source="SecondEdition" page="225"/>
   </charm>
   <charm id="Solar.IncreasingStrengthExercise" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2858,7 +2858,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Stackable" visualize="true"/>
-    <source source="Second Edition" page="225"/>
+    <source source="SecondEdition" page="225"/>
   </charm>
   <charm id="Solar.KeenSightTechnique" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -2874,7 +2874,7 @@
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="225"/>
+    <source source="SecondEdition" page="225"/>
   </charm>
   <charm id="Solar.KeenHearingandTouchTechnique" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -2890,7 +2890,7 @@
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="225"/>
+    <source source="SecondEdition" page="225"/>
   </charm>
   <charm id="Solar.KeenSmellandTasteTechnique" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -2906,7 +2906,7 @@
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="225"/>
+    <source source="SecondEdition" page="225"/>
   </charm>
   <charm id="Solar.UnsurpassedSightDiscipline" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -2922,7 +2922,7 @@
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="226"/>
+    <source source="SecondEdition" page="226"/>
   </charm>
   <charm id="Solar.UnsurpassedHearingandTouchDiscipline" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -2938,7 +2938,7 @@
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="226"/>
+    <source source="SecondEdition" page="226"/>
   </charm>
   <charm id="Solar.UnsurpassedSmellandTasteDiscipline" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -2954,7 +2954,7 @@
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="226"/>
+    <source source="SecondEdition" page="226"/>
   </charm>
   <charm id="Solar.SurpriseAnticipationMethod" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -2971,7 +2971,7 @@
       <special primaryStep="2"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="226"/>
+    <source source="SecondEdition" page="226"/>
   </charm>
   <charm id="Solar.EyeUnconqueredSun" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -2989,7 +2989,7 @@
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="226"/>
+    <source source="SecondEdition" page="226"/>
   </charm>
   <charm id="Solar.ShadowOverWater" exalt="Solar" group="Dodge">
     <prerequisite>
@@ -3006,7 +3006,7 @@
       <special primaryStep="2"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="227"/>
+    <source source="SecondEdition" page="227"/>
   </charm>
   <charm id="Solar.SevenShadowEvasion" exalt="Solar" group="Dodge">
     <prerequisite>
@@ -3025,7 +3025,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="227"/>
+    <source source="SecondEdition" page="227"/>
   </charm>
   <charm id="Solar.ReflexSidestepTechnique" exalt="Solar" group="Dodge">
     <prerequisite>
@@ -3042,7 +3042,7 @@
       <special primaryStep="2"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="227"/>
+    <source source="SecondEdition" page="227"/>
   </charm>
   <charm id="Solar.FlowLikeBlood" exalt="Solar" group="Dodge">
     <prerequisite>
@@ -3064,7 +3064,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="227"/>
+    <source source="SecondEdition" page="227"/>
   </charm>
   <charm id="Solar.LeapingDodgeMethod" exalt="Solar" group="Dodge">
     <prerequisite>
@@ -3083,7 +3083,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Counterattack" visualize="true"/>
-    <source source="Second Edition" page="227"/>
+    <source source="SecondEdition" page="227"/>
   </charm>
   <charm id="Solar.FlawlesslyImpenetrableDisguise" exalt="Solar" group="Larceny">
     <prerequisite>
@@ -3101,7 +3101,7 @@
       <special speed="6" turntype="LongTick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="227"/>
+    <source source="SecondEdition" page="227"/>
   </charm>
   <charm id="Solar.PerfectMirror" exalt="Solar" group="Larceny">
     <prerequisite>
@@ -3120,7 +3120,7 @@
       <special speed="6" turntype="LongTick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="228"/>
+    <source source="SecondEdition" page="228"/>
   </charm>
   <charm id="Solar.FlawlessPickpocketingTechnique" exalt="Solar" group="Larceny">
     <prerequisite>
@@ -3135,7 +3135,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="228"/>
+    <source source="SecondEdition" page="228"/>
   </charm>
   <charm id="Solar.StealingfromPlainSightSpirit" exalt="Solar" group="Larceny">
     <prerequisite>
@@ -3154,7 +3154,7 @@
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="229"/>
+    <source source="SecondEdition" page="229"/>
   </charm>
   <charm id="Solar.Lock-OpeningTouch" exalt="Solar" group="Larceny">
     <prerequisite>
@@ -3169,7 +3169,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="229"/>
+    <source source="SecondEdition" page="229"/>
   </charm>
   <charm id="Solar.Door-EvadingTechnique" exalt="Solar" group="Larceny">
     <prerequisite>
@@ -3186,7 +3186,7 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="229"/>
+    <source source="SecondEdition" page="229"/>
   </charm>
   <charm id="Solar.EasilyOverlookedPresenceMethod" exalt="Solar" group="Stealth">
     <prerequisite>
@@ -3203,7 +3203,7 @@
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="230"/>
+    <source source="SecondEdition" page="230"/>
   </charm>
   <charm id="Solar.MentalInvisibilityTechnique" exalt="Solar" group="Stealth">
     <prerequisite>
@@ -3223,7 +3223,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Compulsion" visualize="true"/>
-    <source source="Second Edition" page="230"/>
+    <source source="SecondEdition" page="230"/>
   </charm>
   <charm id="Solar.VanishingfromMind'sEyeMethod" exalt="Solar" group="Stealth">
     <prerequisite>
@@ -3242,7 +3242,7 @@
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="230"/>
+    <source source="SecondEdition" page="230"/>
   </charm>
   <charm id="Solar.InvisibleStatueSpirit" exalt="Solar" group="Stealth">
     <prerequisite>
@@ -3260,7 +3260,7 @@
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="230"/>
+    <source source="SecondEdition" page="230"/>
   </charm>
   <charm id="Solar.FrugalMerchantMethod" exalt="Solar" group="Bureaucracy">
     <prerequisite>
@@ -3275,7 +3275,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="230"/>
+    <source source="SecondEdition" page="230"/>
   </charm>
   <charm id="Solar.InsightfulBuyerTechnique" exalt="Solar" group="Bureaucracy">
     <prerequisite>
@@ -3292,7 +3292,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
     <charmAttribute attribute="Mandate" visualize="true"/>    
-    <source source="Second Edition" page="231"/>
+    <source source="SecondEdition" page="231"/>
   </charm>
   <charm id="Solar.SpeedWheels" exalt="Solar" group="Bureaucracy">
     <prerequisite>
@@ -3310,7 +3310,7 @@
       <special speed="1" turntype="DramaticAction" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="231"/>
+    <source source="SecondEdition" page="231"/>
   </charm>
   <charm id="Solar.Bureau-RectifyingMethod" exalt="Solar" group="Bureaucracy">
     <prerequisite>
@@ -3328,7 +3328,7 @@
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Mandate" visualize="true"/>
-    <source source="Second Edition" page="231"/>
+    <source source="SecondEdition" page="231"/>
   </charm>
   <charm id="Solar.IndolentOfficialCharm" exalt="Solar" group="Bureaucracy">
     <prerequisite>
@@ -3346,7 +3346,7 @@
       <special speed="1" turntype="DramaticAction" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="232"/>
+    <source source="SecondEdition" page="232"/>
   </charm>
   <charm id="Solar.FoulAirArgumentTechnique" exalt="Solar" group="Bureaucracy">
     <prerequisite>
@@ -3363,7 +3363,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="232"/>
+    <source source="SecondEdition" page="232"/>
   </charm>
   <charm id="Solar.WhirlingBrushMethod" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -3378,7 +3378,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="232"/>
+    <source source="SecondEdition" page="232"/>
   </charm>
   <charm id="Solar.FlawlessBrushDiscipline" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -3397,7 +3397,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Emotion" visualize="true"/>
-    <source source="Second Edition" page="232"/>
+    <source source="SecondEdition" page="232"/>
   </charm>
   <charm id="Solar.Letter-Within-a-LetterTechnique" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -3415,7 +3415,7 @@
       <special speed="6" turntype="Tick" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="232"/>
+    <source source="SecondEdition" page="232"/>
   </charm>
   <charm id="Solar.DiscerningSavant'sEye" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -3434,7 +3434,7 @@
       <special primaryStep="2"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="232"/>
+    <source source="SecondEdition" page="232"/>
   </charm>
   <charm id="Solar.SagaciousReadingIntent" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -3452,7 +3452,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
-    <source source="Second Edition" page="233"/>
+    <source source="SecondEdition" page="233"/>
   </charm>
   <charm id="Solar.PoeticExpressionStyle" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -3468,7 +3468,7 @@
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="233"/>
+    <source source="SecondEdition" page="233"/>
   </charm>
   <charm id="Solar.ExcellentEmissary'sTongue" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -3482,7 +3482,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Second Edition" page="233"/>
+    <source source="SecondEdition" page="233"/>
   </charm>
   <charm id="Solar.TwistedWordsTechnique" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -3502,7 +3502,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Compulsion" visualize="true"/>
     <charmAttribute attribute="Illusion" visualize="true"/>
-    <source source="Second Edition" page="234"/>
+    <source source="SecondEdition" page="234"/>
   </charm>
   <charm id="Solar.UnbreakableFascinationMethod" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -3523,7 +3523,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="234"/>
+    <source source="SecondEdition" page="234"/>
   </charm>
   <charm id="Solar.MasterHorseman'sTechniques" exalt="Solar" group="Ride">
     <prerequisite>
@@ -3535,7 +3535,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Second Edition" page="234"/>
+    <source source="SecondEdition" page="234"/>
   </charm>
   <charm id="Solar.WorthyMountTechnique" exalt="Solar" group="Ride">
     <prerequisite>
@@ -3548,7 +3548,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Second Edition" page="234"/>
+    <source source="SecondEdition" page="234"/>
   </charm>
   <charm id="Solar.SingleSpiritMethod" exalt="Solar" group="Ride">
     <prerequisite>
@@ -3561,7 +3561,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Second Edition" page="235"/>
+    <source source="SecondEdition" page="235"/>
   </charm>
   <charm id="Solar.PhantomSteed" exalt="Solar" group="Ride">
     <prerequisite>
@@ -3581,7 +3581,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="236"/>
+    <source source="SecondEdition" page="236"/>
   </charm>
   <charm id="Solar.FlashingThunderboltSteed" exalt="Solar" group="Ride">
     <prerequisite>
@@ -3601,7 +3601,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="236"/>
+    <source source="SecondEdition" page="236"/>
   </charm>
   <charm id="Solar.Wind-RacingEssenceInfusion" exalt="Solar" group="Ride">
     <prerequisite>
@@ -3615,7 +3615,7 @@
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="236"/>
+    <source source="SecondEdition" page="236"/>
   </charm>
   <charm id="Solar.SometimesHorsesFlyApproach" exalt="Solar" group="Ride">
     <prerequisite>
@@ -3636,7 +3636,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="236"/>
+    <source source="SecondEdition" page="236"/>
   </charm>
   <charm id="Solar.SaltyDogMethod" exalt="Solar" group="Sail">
     <prerequisite>
@@ -3655,7 +3655,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
     <charmAttribute attribute="War" visualize="true"/>
-    <source source="Second Edition" page="236"/>
+    <source source="SecondEdition" page="236"/>
   </charm>
   <charm id="Solar.InvincibleAdmiralMethod" exalt="Solar" group="Sail">
     <prerequisite>
@@ -3676,7 +3676,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
     <charmAttribute attribute="War" visualize="true"/>
-    <source source="Second Edition" page="236"/>
+    <source source="SecondEdition" page="236"/>
   </charm>
   <charm id="Solar.Ship-ClaimingStance" exalt="Solar" group="Sail">
     <prerequisite>
@@ -3696,7 +3696,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="237"/>
+    <source source="SecondEdition" page="237"/>
   </charm>
   <charm id="Solar.Hull-PreservingTechnique" exalt="Solar" group="Sail">
     <prerequisite>
@@ -3717,7 +3717,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="237"/>
+    <source source="SecondEdition" page="237"/>
   </charm>
   <charm id="Solar.Shipwreck-SurvivingStamina" exalt="Solar" group="Sail">
     <prerequisite>
@@ -3738,7 +3738,7 @@
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Stackable" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="237"/>
+    <source source="SecondEdition" page="237"/>
   </charm>
   <charm id="Solar.PerfectReckoningTechnique" exalt="Solar" group="Sail">
     <prerequisite>
@@ -3757,7 +3757,7 @@
       <special speed="1" turntype="DramaticAction" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="237"/>
+    <source source="SecondEdition" page="237"/>
   </charm>
   <charm id="Solar.Storm-WeatheringEssenceInfusion" exalt="Solar" group="Sail">
     <prerequisite>
@@ -3776,7 +3776,7 @@
       <special primaryStep="1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="237"/>
+    <source source="SecondEdition" page="237"/>
   </charm>
   <charm id="Solar.SeaAmbushTechnique" exalt="Solar" group="Sail">
     <prerequisite>
@@ -3794,7 +3794,7 @@
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="War" visualize="true"/>
-    <source source="Second Edition" page="238"/>
+    <source source="SecondEdition" page="238"/>
   </charm>
   <charm id="Solar.Wise-EyedCourtierMethod" exalt="Solar" group="Socialize">
     <prerequisite>
@@ -3814,7 +3814,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Illusion" visualize="true"/>
     <charmAttribute attribute="Mandate" visualize="true"/>    
-    <source source="Second Edition" page="238"/>
+    <source source="SecondEdition" page="238"/>
   </charm>
   <charm id="Solar.Wild-RevelryApproach" exalt="Solar" group="Socialize">
     <prerequisite>
@@ -3833,7 +3833,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Emotion" visualize="true"/>
-    <source source="Second Edition" page="238"/>
+    <source source="SecondEdition" page="238"/>
   </charm>
   <charm id="Solar.TabooInflictingDiatribe" exalt="Solar" group="Socialize">
     <prerequisite>
@@ -3853,7 +3853,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Compulsion" visualize="true"/>
     <charmAttribute attribute="Mandate" visualize="true"/>    
-    <source source="Second Edition" page="238"/>
+    <source source="SecondEdition" page="238"/>
   </charm>
   <charm id="Solar.VenomousWhispersTechnique" exalt="Solar" group="Socialize">
     <prerequisite>
@@ -3874,7 +3874,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Compulsion" visualize="true"/>
     <charmAttribute attribute="Touch" visualize="true"/>
-    <source source="Second Edition" page="239"/>
+    <source source="SecondEdition" page="239"/>
   </charm>
   <charm id="Solar.UnderstandingCourt" exalt="Solar" group="Socialize">
     <prerequisite>
@@ -3893,7 +3893,7 @@
       <special speed="1" turntype="DramaticAction" defense="-1"/>
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="239"/>
+    <source source="SecondEdition" page="239"/>
   </charm>
   <charm id="Solar.MasterySmallManners" exalt="Solar" group="Socialize">
     <prerequisite>
@@ -3911,7 +3911,7 @@
     </charmtype>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
-    <source source="Second Edition" page="239"/>
+    <source source="SecondEdition" page="239"/>
   </charm>
   <charm id="Solar.GatheringCongregation" exalt="Solar" group="Socialize">
     <prerequisite>
@@ -3931,6 +3931,6 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Social" visualize="true"/>
-    <source source="Second Edition" page="240"/>
+    <source source="SecondEdition" page="240"/>
   </charm>
 </charmlist>

@@ -14,7 +14,7 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Eclipse" page="74"/>
+    <source source="CBEclipse" page="74"/>
   </charm>
   <charm id="Solar.Iron-ArmBlock" exalt="Solar" group="MantisStyle">
     <prerequisite>
@@ -30,7 +30,7 @@
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Eclipse" page="74"/>
+    <source source="CBEclipse" page="74"/>
   </charm>
   <charm id="Solar.MantisForm" exalt="Solar" group="MantisStyle">
     <prerequisite>
@@ -47,7 +47,7 @@
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
   	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Eclipse" page="74"/>
+    <source source="CBEclipse" page="74"/>
   </charm>
   <charm id="Solar.GraspingClawMethod" exalt="Solar" group="MantisStyle">
     <prerequisite>
@@ -63,7 +63,7 @@
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
    	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Eclipse" page="75"/>
+    <source source="CBEclipse" page="75"/>
   </charm>
   <charm id="Solar.Joint-LockingTechnique" exalt="Solar" group="MantisStyle">
     <prerequisite>
@@ -79,7 +79,7 @@
     <duration duration="OneTurnOrOneHold"/>
     <charmtype type="Reflexive"/>
    	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Eclipse" page="75"/>
+    <source source="CBEclipse" page="75"/>
   </charm>
   <charm id="Solar.UnfoldingRetributionStance" exalt="Solar" group="MantisStyle">
     <prerequisite>
@@ -98,7 +98,7 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
    	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Eclipse" page="75"/>
+    <source source="CBEclipse" page="75"/>
   </charm>
   <charm id="Solar.CrushingClawTechnique" exalt="Solar" group="MantisStyle">
     <prerequisite>
@@ -114,7 +114,7 @@
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
    	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Eclipse" page="75"/>
+    <source source="CBEclipse" page="75"/>
   </charm>
   <charm id="Solar.FlyingMantisKick" exalt="Solar" group="MantisStyle">
     <prerequisite>
@@ -130,7 +130,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
    	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Eclipse" page="75"/>
+    <source source="CBEclipse" page="75"/>
   </charm>
   <charm id="Solar.Joint-BreakingAttack" exalt="Solar" group="MantisStyle">
     <prerequisite>
@@ -146,7 +146,7 @@
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
    	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Eclipse" page="75"/>
+    <source source="CBEclipse" page="75"/>
   </charm>
   <charm id="Solar.GraspingMantisDefense" exalt="Solar" group="MantisStyle">
     <prerequisite>
@@ -162,7 +162,7 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
    	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Eclipse" page="75"/>
+    <source source="CBEclipse" page="75"/>
   </charm>
   <charm id="Solar.ImageDeathTechnique" exalt="Solar" group="EbonShadowStyle">
     <prerequisite>
@@ -177,7 +177,7 @@
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
 	<charmAttribute attribute="Celestial"/>    
-    <source source="Caste Book: Night" page="67"/>
+    <source source="CBNight" page="67"/>
   </charm>
   <charm id="Solar.WallClimbingTechnique" exalt="Solar" group="EbonShadowStyle">
     <prerequisite>
@@ -193,7 +193,7 @@
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Night" page="67"/>
+    <source source="CBNight" page="67"/>
   </charm>
   <charm id="Solar.DistractingFinger-GestureAttack" exalt="Solar" group="EbonShadowStyle">
     <prerequisite>
@@ -209,7 +209,7 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Night" page="68"/>
+    <source source="CBNight" page="68"/>
   </charm>
   <charm id="Solar.EbonShadowForm" exalt="Solar" group="EbonShadowStyle">
     <prerequisite>
@@ -226,7 +226,7 @@
     <charmtype type="Simple"/>
 	<charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Form"/>
-    <source source="Caste Book: Night" page="68"/>
+    <source source="CBNight" page="68"/>
   </charm>
   <charm id="Solar.SevenPointsWeaknessStrike" exalt="Solar" group="EbonShadowStyle">
     <prerequisite>
@@ -242,7 +242,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Night" page="68"/>
+    <source source="CBNight" page="68"/>
   </charm>
   <charm id="Solar.ElusiveFlickerEvasion" exalt="Solar" group="EbonShadowStyle">
     <prerequisite>
@@ -258,7 +258,7 @@
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Night" page="69"/>
+    <source source="CBNight" page="69"/>
   </charm>
   <charm id="Solar.Limb-ImmobilizingMethod" exalt="Solar" group="EbonShadowStyle">
     <prerequisite>
@@ -274,7 +274,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Night" page="69"/>
+    <source source="CBNight" page="69"/>
   </charm>
   <charm id="Solar.Blow-ConcealingGestureTechnique" exalt="Solar" group="EbonShadowStyle">
     <prerequisite>
@@ -292,7 +292,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Night" page="69"/>
+    <source source="CBNight" page="69"/>
   </charm>
   <charm id="Solar.ParalyzingTouchAttack" exalt="Solar" group="EbonShadowStyle">
     <prerequisite>
@@ -309,7 +309,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Night" page="69"/>
+    <source source="CBNight" page="69"/>
   </charm>
   <charm id="Solar.Shadow-BodyStyle" exalt="Solar" group="EbonShadowStyle">
     <prerequisite>
@@ -326,7 +326,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Night" page="69"/>
+    <source source="CBNight" page="69"/>
   </charm>
   <charm id="Solar.Shadow-SteppingMotion" exalt="Solar" group="EbonShadowStyle">
     <prerequisite>
@@ -344,7 +344,7 @@
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Night" page="70"/>
+    <source source="CBNight" page="70"/>
   </charm>
   <charm id="Solar.CrimsonLeapingCatTechnique" exalt="Solar" group="TigerStyle">
     <prerequisite>
@@ -359,7 +359,7 @@
     <duration amount="1" unit="turn"/>
     <charmtype type="Supplemental"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Dawn" page="73"/>
+    <source source="CBDawn" page="73"/>
   </charm>
   <charm id="Solar.StrikingFuryClawsAttack" exalt="Solar" group="TigerStyle">
     <prerequisite>
@@ -375,7 +375,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Dawn" page="73"/>
+    <source source="CBDawn" page="73"/>
   </charm>
   <charm id="Solar.RagingTigerPounce" exalt="Solar" group="TigerStyle">
     <prerequisite>
@@ -391,7 +391,7 @@
     <duration amount="1" unit="turn"/>
     <charmtype type="Supplemental"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Dawn" page="73"/>
+    <source source="CBDawn" page="73"/>
   </charm>
   <charm id="Solar.TigerForm" exalt="Solar" group="TigerStyle">
     <prerequisite>
@@ -408,7 +408,7 @@
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Dawn" page="73"/>
+    <source source="CBDawn" page="73"/>
   </charm>
   <charm id="Solar.StalkingCatMovementMeditation" exalt="Solar" group="TigerStyle">
     <prerequisite>
@@ -424,7 +424,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Dawn" page="73"/>
+    <source source="CBDawn" page="73"/>
   </charm>
   <charm id="Solar.SpineShatteringBite" exalt="Solar" group="TigerStyle">
     <prerequisite>
@@ -440,7 +440,7 @@
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Dawn" page="73"/>
+    <source source="CBDawn" page="73"/>
   </charm>
   <charm id="Solar.CelestialTigerHide" exalt="Solar" group="TigerStyle">
     <prerequisite>
@@ -457,7 +457,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Dawn" page="74"/>
+    <source source="CBDawn" page="74"/>
   </charm>
   <charm id="Solar.LeapfromCloakingShadowsAttack" exalt="Solar" group="TigerStyle">
     <prerequisite>
@@ -473,7 +473,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Dawn" page="74"/>
+    <source source="CBDawn" page="74"/>
   </charm>
   <charm id="Solar.AngryPredatorFrenzyStyle" exalt="Solar" group="TigerStyle">
     <prerequisite>
@@ -492,7 +492,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="ExtraAction"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Caste Book: Dawn" page="74"/>
+    <source source="CBDawn" page="74"/>
   </charm>
   <charm id="Solar.StrikingCobraTechnique" exalt="Solar" group="SnakeStyle">
     <prerequisite>
@@ -507,7 +507,7 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Exalted" page="160"/>
+    <source source="FirstEdition" page="160"/>
   </charm>
   <charm id="Solar.SerpentineEvasion" exalt="Solar" group="SnakeStyle">
     <prerequisite>
@@ -523,7 +523,7 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Exalted" page="160"/>
+    <source source="FirstEdition" page="160"/>
   </charm>
   <charm id="Solar.EssenceFangsandScalesTechnique" exalt="Solar" group="SnakeStyle">
     <prerequisite>
@@ -539,7 +539,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Exalted" page="160"/>
+    <source source="FirstEdition" page="160"/>
   </charm>
   <charm id="Solar.SnakeForm" exalt="Solar" group="SnakeStyle">
     <prerequisite>
@@ -556,7 +556,7 @@
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Exalted" page="160"/>
+    <source source="FirstEdition" page="160"/>
   </charm>
   <charm id="Solar.Armor-PenetratingFangStrike" exalt="Solar" group="SnakeStyle">
     <prerequisite>
@@ -573,7 +573,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Exalted" page="161"/>
+    <source source="FirstEdition" page="161"/>
   </charm>
   <charm id="Solar.CripplingPressure-PointStrike" exalt="Solar" group="SnakeStyle">
     <prerequisite>
@@ -589,7 +589,7 @@
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Exalted" page="161"/>
+    <source source="FirstEdition" page="161"/>
   </charm>
   <charm id="Solar.SnakeStrikesHeel" exalt="Solar" group="SnakeStyle">
     <prerequisite>
@@ -605,7 +605,7 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Exalted" page="161"/>
+    <source source="FirstEdition" page="161"/>
   </charm>
   <charm id="Solar.UncoilingSerpentPrana" exalt="Solar" group="SnakeStyle">
     <prerequisite>
@@ -621,7 +621,7 @@
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Exalted" page="161"/>
+    <source source="FirstEdition" page="161"/>
   </charm>
   <charm id="Solar.EssenceVenomStrike" exalt="Solar" group="SnakeStyle">
     <prerequisite>
@@ -641,7 +641,7 @@
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Exalted" page="162"/>
+    <source source="FirstEdition" page="162"/>
   </charm>
   <charm id="Solar.StrikingSerpentSpeed" exalt="Solar" group="SnakeStyle">
     <prerequisite>
@@ -658,7 +658,7 @@
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Exalted" page="162"/>
+    <source source="FirstEdition" page="162"/>
   </charm>
   <charm id="Sidereal.SecretFutureStrife" exalt="Sidereal" group="VioletBierSorrowsStyle">
     <prerequisite>
@@ -671,7 +671,7 @@
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="The Sidereals" page="179"/>
+    <source source="Sidereals1st" page="179"/>
   </charm>
   <charm id="Sidereal.FlightMercury" exalt="Sidereal" group="VioletBierSorrowsStyle">
     <prerequisite>
@@ -687,7 +687,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="The Sidereals" page="179"/>
+    <source source="Sidereals1st" page="179"/>
   </charm>
   <charm id="Sidereal.BladeBattleMaiden" exalt="Sidereal" group="VioletBierSorrowsStyle">
     <prerequisite>
@@ -704,7 +704,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="The Sidereals" page="180"/>
+    <source source="Sidereals1st" page="180"/>
   </charm>
   <charm id="Sidereal.JoyinAdversityStance" exalt="Sidereal" group="VioletBierSorrowsStyle">
     <prerequisite>
@@ -720,7 +720,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="The Sidereals" page="180"/>
+    <source source="Sidereals1st" page="180"/>
   </charm>
   <charm id="Sidereal.VioletBierSorrowsForm" exalt="Sidereal" group="VioletBierSorrowsStyle">
     <prerequisite>
@@ -739,7 +739,7 @@
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="The Sidereals" page="181"/>
+    <source source="Sidereals1st" page="181"/>
   </charm>
   <charm id="Sidereal.Death-ParryingStroke" exalt="Sidereal" group="VioletBierSorrowsStyle">
     <prerequisite>
@@ -755,7 +755,7 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="The Sidereals" page="181"/>
+    <source source="Sidereals1st" page="181"/>
   </charm>
   <charm id="Sidereal.Life-SeveringBlow" exalt="Sidereal" group="VioletBierSorrowsStyle">
     <prerequisite>
@@ -771,7 +771,7 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="The Sidereals" page="181"/>
+    <source source="Sidereals1st" page="181"/>
   </charm>
   <charm id="Sidereal.MetalStorm" exalt="Sidereal" group="VioletBierSorrowsStyle">
     <prerequisite>
@@ -787,7 +787,7 @@
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="The Sidereals" page="181"/>
+    <source source="Sidereals1st" page="181"/>
   </charm>
   <charm id="Sidereal.Conclusion-PursuingApproach" exalt="Sidereal" group="VioletBierSorrowsStyle">
     <prerequisite>
@@ -806,7 +806,7 @@
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="The Sidereals" page="181"/>
+    <source source="Sidereals1st" page="181"/>
   </charm>
   <charm id="Sidereal.UnnaturalMany-StepStride" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
     <prerequisite>
@@ -822,7 +822,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="184"/>
+    <source source="Sidereals1st" page="184"/>
   </charm>
   <charm id="Sidereal.DanceHungrySpider" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
     <prerequisite>
@@ -838,7 +838,7 @@
     <duration amount="5" unit="turn"/>
     <charmtype type="Reflexive"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="185"/>
+    <source source="Sidereals1st" page="185"/>
   </charm>
   <charm id="Sidereal.MawDrippingVenom" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
     <prerequisite>
@@ -853,7 +853,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="186"/>
+    <source source="Sidereals1st" page="186"/>
   </charm>
   <charm id="Sidereal.NestLivingStrands" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
     <prerequisite>
@@ -870,7 +870,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="186"/>
+    <source source="Sidereals1st" page="186"/>
   </charm>
   <charm id="Sidereal.RainUnseenThreads" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
     <prerequisite>
@@ -885,7 +885,7 @@
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="186"/>
+    <source source="Sidereals1st" page="186"/>
   </charm>
   <charm id="Sidereal.CharcoalMarchSpidersForm" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
     <prerequisite>
@@ -904,7 +904,7 @@
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="187"/>
+    <source source="Sidereals1st" page="187"/>
   </charm>
   <charm id="Sidereal.CannibalisticHeritageTechnique" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
     <prerequisite>
@@ -921,7 +921,7 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="187"/>
+    <source source="Sidereals1st" page="187"/>
   </charm>
   <charm id="Sidereal.ThumbnailSpiderMarch" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
     <prerequisite>
@@ -938,7 +938,7 @@
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="187"/>
+    <source source="Sidereals1st" page="187"/>
   </charm>
   <charm id="Sidereal.JumpingSpiderStrike" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
     <prerequisite>
@@ -955,7 +955,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="188"/>
+    <source source="Sidereals1st" page="188"/>
   </charm>
   <charm id="Sidereal.WaterSpiderBite" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
     <prerequisite>
@@ -972,7 +972,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="188"/>
+    <source source="Sidereals1st" page="188"/>
   </charm>
   <charm id="Sidereal.PatternSpiderTouch" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
     <prerequisite>
@@ -991,7 +991,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="189"/>
+    <source source="Sidereals1st" page="189"/>
   </charm>
   <charm id="Sidereal.GrandmotherSpiderMastery" exalt="Sidereal" group="CharcoalMarchSpidersStyle">
     <prerequisite>
@@ -1008,7 +1008,7 @@
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="189"/>
+    <source source="Sidereals1st" page="189"/>
   </charm>
   <charm id="Sidereal.DeadlyStarmetalOffensive" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
     <prerequisite>
@@ -1023,7 +1023,7 @@
     <duration amount="5" unit="turn"/>
     <charmtype type="Simple"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="189"/>
+    <source source="Sidereals1st" page="189"/>
   </charm>
   <charm id="Sidereal.OrichalcumSheathingStance" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
     <prerequisite>
@@ -1039,7 +1039,7 @@
     <duration amount="5" unit="turn"/>
     <charmtype type="Reflexive"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="190"/>
+    <source source="Sidereals1st" page="190"/>
   </charm>
   <charm id="Sidereal.FlickeringMoonsilverApproach" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
     <prerequisite>
@@ -1054,7 +1054,7 @@
     <duration amount="5" unit="turn"/>
     <charmtype type="Reflexive"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="190"/>
+    <source source="Sidereals1st" page="190"/>
   </charm>
   <charm id="Sidereal.FiveJadeFury" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
     <prerequisite>
@@ -1069,7 +1069,7 @@
     <duration amount="5" unit="turn"/>
     <charmtype type="Reflexive"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="191"/>
+    <source source="Sidereals1st" page="191"/>
   </charm>
   <charm id="Sidereal.FourMagicalMaterialsForm" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
     <prerequisite>
@@ -1089,7 +1089,7 @@
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="191"/>
+    <source source="Sidereals1st" page="191"/>
   </charm>
   <charm id="Sidereal.CharmRedirectionTechnique" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
     <prerequisite>
@@ -1104,7 +1104,7 @@
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="191"/>
+    <source source="Sidereals1st" page="191"/>
   </charm>
   <charm id="Sidereal.SequentialCharmDisruption" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
     <prerequisite>
@@ -1121,7 +1121,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="192"/>
+    <source source="Sidereals1st" page="192"/>
   </charm>
   <charm id="Sidereal.Spell-ShatteringPalm" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
     <prerequisite>
@@ -1136,7 +1136,7 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="192"/>
+    <source source="Sidereals1st" page="192"/>
   </charm>
   <charm id="Sidereal.AstrologyInterruptionMethod" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
     <prerequisite>
@@ -1152,7 +1152,7 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="192"/>
+    <source source="Sidereals1st" page="192"/>
   </charm>
   <charm id="Sidereal.SoulFireShaperForm" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
     <prerequisite>
@@ -1171,7 +1171,7 @@
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="193"/>
+    <source source="Sidereals1st" page="193"/>
   </charm>
   <charm id="Sidereal.GodWays" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
     <prerequisite>
@@ -1186,7 +1186,7 @@
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="193"/>
+    <source source="Sidereals1st" page="193"/>
   </charm>
   <charm id="Sidereal.(Type)ExaltWays" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
     <prerequisite>
@@ -1202,7 +1202,7 @@
     <duration amount="5" unit="turn"/>
     <charmtype type="Simple"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="193"/>
+    <source source="Sidereals1st" page="193"/>
   </charm>
   <charm id="Sidereal.GameDivinityForm" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
     <prerequisite>
@@ -1221,7 +1221,7 @@
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="194"/>
+    <source source="Sidereals1st" page="194"/>
   </charm>
   <charm id="Sidereal.DemesneEmulationPractice" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
     <prerequisite>
@@ -1238,7 +1238,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
    	<charmAttribute attribute="Sidereal"/>
-    <source source="The Sidereals" page="194"/>
+    <source source="Sidereals1st" page="194"/>
   </charm>
   <charm id="Sidereal.DesmeneandManseForm" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
     <prerequisite>
@@ -1256,7 +1256,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
-    <source source="The Sidereals" page="194"/>
+    <source source="Sidereals1st" page="194"/>
   </charm>
   <charm id="Sidereal.PrismaticArrangementCreationForm" exalt="Sidereal" group="PrismaticArrangementCreationStyle">
     <prerequisite>
@@ -1277,7 +1277,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
-    <source source="The Sidereals" page="194"/>
+    <source source="Sidereals1st" page="194"/>
   </charm>
   <charm id="Sidereal.FeverishEssenceDischargeAtemi" exalt="Sidereal" group="CitrinePoxesContagionStyle">
     <prerequisite>
@@ -1292,7 +1292,7 @@
     <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Sidereals" page="197"/>
+    <source source="Sidereals1st" page="197"/>
   </charm>
   <charm id="Sidereal.DisjointedEssenceInfectiousAtemi" exalt="Sidereal" group="CitrinePoxesContagionStyle">
     <prerequisite>
@@ -1307,7 +1307,7 @@
     <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Sidereals" page="197"/>
+    <source source="Sidereals1st" page="197"/>
   </charm>
   <charm id="Sidereal.ConvulsiveDisplacementInfectiousAtemi" exalt="Sidereal" group="CitrinePoxesContagionStyle">
     <prerequisite>
@@ -1323,7 +1323,7 @@
     <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Sidereals" page="198"/>
+    <source source="Sidereals1st" page="198"/>
   </charm>
   <charm id="Sidereal.Essence-DisruptingAtemi" exalt="Sidereal" group="CitrinePoxesContagionStyle">
     <prerequisite>
@@ -1342,7 +1342,7 @@
     <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Sidereals" page="198"/>
+    <source source="Sidereals1st" page="198"/>
   </charm>
   <charm id="Sidereal.PerfectReconstructionMethod" exalt="Sidereal" group="CitrinePoxesContagionStyle">
     <prerequisite>
@@ -1361,7 +1361,7 @@
     <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="198"/>
+    <source source="Sidereals1st" page="198"/>
   </charm>
   <charm id="Sidereal.SpiritandBodyPurificationTouch" exalt="Sidereal" group="CitrinePoxesContagionStyle">
     <prerequisite>
@@ -1377,7 +1377,7 @@
     <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="199"/>
+    <source source="Sidereals1st" page="199"/>
   </charm>
   <charm id="Sidereal.InnerDragonUnbinding" exalt="Sidereal" group="CitrinePoxesContagionStyle">
     <prerequisite>
@@ -1394,7 +1394,7 @@
     <charmAttribute attribute="Sidereal"/>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="The Sidereals" page="199"/>
+    <source source="Sidereals1st" page="199"/>
   </charm>
   <charm id="Sidereal.FlareInvulnerabilityMethod" exalt="Sidereal" group="CitrinePoxesContagionStyle">
     <prerequisite>
@@ -1411,7 +1411,7 @@
     <charmAttribute attribute="Sidereal"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="199"/>
+    <source source="Sidereals1st" page="199"/>
   </charm>
   <charm id="Sidereal.CitrinePoxesContagionForm" exalt="Sidereal" group="CitrinePoxesContagionStyle">
     <prerequisite>
@@ -1431,7 +1431,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
-    <source source="The Sidereals" page="200"/>
+    <source source="Sidereals1st" page="200"/>
   </charm>
   <charm id="Sidereal.SpiritualPerfection" exalt="Sidereal" group="CitrinePoxesContagionStyle">
     <prerequisite>
@@ -1447,7 +1447,7 @@
     <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Sidereals" page="200"/>
+    <source source="Sidereals1st" page="200"/>
   </charm>
   <charm id="Sidereal.GentleTouchWickedHand" exalt="Sidereal" group="CitrinePoxesContagionStyle">
     <prerequisite>
@@ -1464,7 +1464,7 @@
     <charmAttribute attribute="Sidereal"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Sidereals" page="200"/>
+    <source source="Sidereals1st" page="200"/>
   </charm>
   <charm id="Sidereal.GloriousSiderealProtection" exalt="Sidereal" group="CitrinePoxesContagionStyle">
     <prerequisite>
@@ -1481,7 +1481,7 @@
     <charmAttribute attribute="Sidereal"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="201"/>
+    <source source="Sidereals1st" page="201"/>
   </charm>
   <charm id="Sidereal.Essence-ShatteringTyphoon" exalt="Sidereal" group="CitrinePoxesContagionStyle">
     <prerequisite>
@@ -1499,7 +1499,7 @@
     <charmAttribute attribute="Sidereal"/>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="201"/>
+    <source source="Sidereals1st" page="201"/>
   </charm>
   <charm id="Dragon-Blooded.Five-DragonFortitude" group="Five-DragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1514,7 +1514,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="197"/>
+    <source source="DragonBlooded1st" page="197"/>
   </charm>
   <charm id="Dragon-Blooded.Five-DragonBlockingTechnique" group="Five-DragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1531,7 +1531,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="197"/>
+    <source source="DragonBlooded1st" page="197"/>
   </charm>
   <charm id="Dragon-Blooded.Five-DragonClaw" group="Five-DragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1546,7 +1546,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="198"/>
+    <source source="DragonBlooded1st" page="198"/>
   </charm>
   <charm id="Dragon-Blooded.Five-Dragon-ForceBlow" group="Five-DragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1562,7 +1562,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="198"/>
+    <source source="DragonBlooded1st" page="198"/>
   </charm>
   <charm id="Dragon-Blooded.Five-DragonForm" group="Five-DragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1580,7 +1580,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
-    <source source="The Dragon-Blooded" page="199"/>
+    <source source="DragonBlooded1st" page="199"/>
   </charm>
   <charm id="Dragon-Blooded.Five-DragonFist" group="Five-DragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1598,7 +1598,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="199"/>
+    <source source="DragonBlooded1st" page="199"/>
   </charm>
   <charm id="Dragon-Blooded.Five-DragonInvulnerability" group="Five-DragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1615,7 +1615,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="199"/>
+    <source source="DragonBlooded1st" page="199"/>
   </charm>
   <charm id="Dragon-Blooded.Five-DragonWrath" group="Five-DragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1633,7 +1633,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Dragon-Blooded" page="199"/>
+    <source source="DragonBlooded1st" page="199"/>
   </charm>
   <charm id="Dragon-Blooded.AirDragon'sSight" group="AirDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1648,7 +1648,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="243"/>
+    <source source="DragonBlooded1st" page="243"/>
   </charm>
   <charm id="Dragon-Blooded.WindDragonSpeed" group="AirDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1664,7 +1664,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="243"/>
+    <source source="DragonBlooded1st" page="243"/>
   </charm>
   <charm id="Dragon-Blooded.Breath-SeizingTechnique" group="AirDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1680,7 +1680,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration amount="MartialArts" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="243"/>
+    <source source="DragonBlooded1st" page="243"/>
   </charm>
   <charm id="Dragon-Blooded.ShroudingBodyandMind" group="AirDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1696,7 +1696,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration amount="MartialArts" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="244"/>
+    <source source="DragonBlooded1st" page="244"/>
   </charm>
   <charm id="Dragon-Blooded.AirDragonForm" group="AirDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1715,7 +1715,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
-    <source source="The Dragon-Blooded" page="245"/>
+    <source source="DragonBlooded1st" page="245"/>
   </charm>
   <charm id="Dragon-Blooded.TornadoOffenseTechnique" group="AirDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1731,7 +1731,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Dragon-Blooded" page="245"/>
+    <source source="DragonBlooded1st" page="245"/>
   </charm>
   <charm id="Dragon-Blooded.AvengingWindStrike" group="AirDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1747,7 +1747,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="245"/>
+    <source source="DragonBlooded1st" page="245"/>
   </charm>
   <charm id="Dragon-Blooded.WrathfulWindsManeuver" group="AirDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1764,7 +1764,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="245"/>
+    <source source="DragonBlooded1st" page="245"/>
   </charm>
   <charm id="Dragon-Blooded.CloudTreadingMethod" group="AirDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1780,7 +1780,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration amount="MartialArts" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="246"/>
+    <source source="DragonBlooded1st" page="246"/>
   </charm>
   <charm id="Dragon-Blooded.ThunderclapKata" group="AirDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1796,7 +1796,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="247"/>
+    <source source="DragonBlooded1st" page="247"/>
   </charm>
   <charm id="Dragon-Blooded.LightningStrikeStyle" group="AirDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1813,7 +1813,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration amount="MartialArts" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="247"/>
+    <source source="DragonBlooded1st" page="247"/>
   </charm>
   <charm id="Dragon-Blooded.HurricaneCombatMethod" group="AirDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1832,7 +1832,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration amount="MartialArts" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="247"/>
+    <source source="DragonBlooded1st" page="247"/>
   </charm>
   <charm id="Dragon-Blooded.ForceMountain" group="EarthDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1847,7 +1847,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="247"/>
+    <source source="DragonBlooded1st" page="247"/>
   </charm>
   <charm id="Dragon-Blooded.UnmovingMountainStance" group="EarthDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1862,7 +1862,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration amount="MartialArts" unit="minute"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="248"/>
+    <source source="DragonBlooded1st" page="248"/>
   </charm>
   <charm id="Dragon-Blooded.StoneDragon'sSkin" group="EarthDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1877,7 +1877,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="249"/>
+    <source source="DragonBlooded1st" page="249"/>
   </charm>
   <charm id="Dragon-Blooded.EarthDragonForm" group="EarthDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1896,7 +1896,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
-    <source source="The Dragon-Blooded" page="249"/>
+    <source source="DragonBlooded1st" page="249"/>
   </charm>
   <charm id="Dragon-Blooded.ShatteringFistStrike" group="EarthDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1912,7 +1912,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration amount="MartialArts" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="249"/>
+    <source source="DragonBlooded1st" page="249"/>
   </charm>
   <charm id="Dragon-Blooded.Weapon-BreakingDefenseTechnique" group="EarthDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1929,7 +1929,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="249"/>
+    <source source="DragonBlooded1st" page="249"/>
   </charm>
   <charm id="Dragon-Blooded.StillnessStone" group="EarthDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1945,7 +1945,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Special"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="250"/>
+    <source source="DragonBlooded1st" page="250"/>
   </charm>
   <charm id="Dragon-Blooded.AvalancheMethod" group="EarthDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1961,7 +1961,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Special"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="250"/>
+    <source source="DragonBlooded1st" page="250"/>
   </charm>
   <charm id="Dragon-Blooded.EarthshakerAttack" group="EarthDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1977,7 +1977,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="250"/>
+    <source source="DragonBlooded1st" page="250"/>
   </charm>
   <charm id="Dragon-Blooded.HungryEarthStrike" group="EarthDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -1994,7 +1994,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="250"/>
+    <source source="DragonBlooded1st" page="250"/>
   </charm>
   <charm id="Dragon-Blooded.Ghost-GroundingBlow" group="EarthDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2013,7 +2013,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="251"/>
+    <source source="DragonBlooded1st" page="251"/>
   </charm>
   <charm id="Dragon-Blooded.PerfectionEarthBody" group="EarthDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2030,7 +2030,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="252"/>
+    <source source="DragonBlooded1st" page="252"/>
   </charm>
   <charm id="Dragon-Blooded.Flash-FireTechnique" group="FireDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2045,7 +2045,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="252"/>
+    <source source="DragonBlooded1st" page="252"/>
   </charm>
   <charm id="Dragon-Blooded.Flame-FlickerStance" group="FireDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2061,7 +2061,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="252"/>
+    <source source="DragonBlooded1st" page="252"/>
   </charm>
   <charm id="Dragon-Blooded.SearingFistTechnique" group="FireDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2076,7 +2076,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration amount="1" unit="turn"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="252"/>
+    <source source="DragonBlooded1st" page="252"/>
   </charm>
   <charm id="Dragon-Blooded.PerfectBlazingBlow" group="FireDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2092,7 +2092,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="252"/>
+    <source source="DragonBlooded1st" page="252"/>
   </charm>
   <charm id="Dragon-Blooded.FireDragonForm" group="FireDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2110,7 +2110,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
-    <source source="The Dragon-Blooded" page="252"/>
+    <source source="DragonBlooded1st" page="252"/>
   </charm>
   <charm id="Dragon-Blooded.FieryHandAttack" group="FireDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2126,7 +2126,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="254"/>
+    <source source="DragonBlooded1st" page="254"/>
   </charm>
   <charm id="Dragon-Blooded.BreathFireDragon" group="FireDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2142,7 +2142,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="254"/>
+    <source source="DragonBlooded1st" page="254"/>
   </charm>
   <charm id="Dragon-Blooded.Essence-IgnitingNerveStrike" group="FireDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2159,7 +2159,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="253"/>
+    <source source="DragonBlooded1st" page="253"/>
   </charm>
   <charm id="Dragon-Blooded.OverwhelmingFireMajestyStance" group="FireDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2175,7 +2175,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration event="Abandoned"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="255"/>
+    <source source="DragonBlooded1st" page="255"/>
   </charm>
   <charm id="Dragon-Blooded.SmolderingWoundAttack" group="FireDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2191,7 +2191,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Varies"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="255"/>
+    <source source="DragonBlooded1st" page="255"/>
   </charm>
   <charm id="Dragon-Blooded.ConsumingMightFireDragon" group="FireDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2209,7 +2209,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="255"/>
+    <source source="DragonBlooded1st" page="255"/>
   </charm>
   <charm id="Dragon-Blooded.FlowingWaterDefense" group="WaterDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2224,7 +2224,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration amount="Essence" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="255"/>
+    <source source="DragonBlooded1st" page="255"/>
   </charm>
   <charm id="Dragon-Blooded.RipplingWaterStrike" group="WaterDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2240,7 +2240,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="256"/>
+    <source source="DragonBlooded1st" page="256"/>
   </charm>
   <charm id="Dragon-Blooded.Drowning-in-BloodTechnique" group="WaterDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2256,7 +2256,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="256"/>
+    <source source="DragonBlooded1st" page="256"/>
   </charm>
   <charm id="Dragon-Blooded.ShruggingWaterDragonEscape" group="WaterDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2272,7 +2272,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="257"/>
+    <source source="DragonBlooded1st" page="257"/>
   </charm>
   <charm id="Dragon-Blooded.WaterDragonForm" group="WaterDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2290,7 +2290,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
-    <source source="The Dragon-Blooded" page="257"/>
+    <source source="DragonBlooded1st" page="257"/>
   </charm>
   <charm id="Dragon-Blooded.Theft-of-EssenceMethod" group="WaterDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2307,7 +2307,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="257"/>
+    <source source="DragonBlooded1st" page="257"/>
   </charm>
   <charm id="Dragon-Blooded.Ghost-RestrainingWhirlpoolStance" group="WaterDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2324,7 +2324,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration event="Abandoned"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="257"/>
+    <source source="DragonBlooded1st" page="257"/>
   </charm>
   <charm id="Dragon-Blooded.FlowReversalStrike" group="WaterDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2340,7 +2340,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="258"/>
+    <source source="DragonBlooded1st" page="258"/>
   </charm>
   <charm id="Dragon-Blooded.CrashingWaveStyle" group="WaterDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2356,7 +2356,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Dragon-Blooded" page="258"/>
+    <source source="DragonBlooded1st" page="258"/>
   </charm>
   <charm id="Dragon-Blooded.BottomlessDepthsDefense" group="WaterDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2374,7 +2374,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="259"/>
+    <source source="DragonBlooded1st" page="259"/>
   </charm>
   <charm id="Dragon-Blooded.Essence-DousingWaveAttack" group="WaterDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2391,7 +2391,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Varies"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="259"/>
+    <source source="DragonBlooded1st" page="259"/>
   </charm>
   <charm id="Dragon-Blooded.TsunamiForceShout" group="WaterDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2409,7 +2409,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="259"/>
+    <source source="DragonBlooded1st" page="259"/>
   </charm>
   <charm id="Dragon-Blooded.EyesWoodDragon" group="WoodDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2424,7 +2424,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="5turnsOrUntilUsed"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="259"/>
+    <source source="DragonBlooded1st" page="259"/>
   </charm>
   <charm id="Dragon-Blooded.Mind-Over-BodyMeditation" group="WoodDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2440,7 +2440,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="260"/>
+    <source source="DragonBlooded1st" page="260"/>
   </charm>
   <charm id="Dragon-Blooded.WoodDragonVitality" group="WoodDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2456,7 +2456,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="261"/>
+    <source source="DragonBlooded1st" page="261"/>
   </charm>
   <charm id="Dragon-Blooded.Soul-MarkingStrike" group="WoodDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2472,7 +2472,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="261"/>
+    <source source="DragonBlooded1st" page="261"/>
   </charm>
   <charm id="Dragon-Blooded.WoodDragonForm" group="WoodDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2489,7 +2489,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
-    <source source="The Dragon-Blooded" page="261"/>
+    <source source="DragonBlooded1st" page="261"/>
   </charm>
   <charm id="Dragon-Blooded.UnbreakableFascinationKata" group="WoodDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2505,7 +2505,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration event="Abandoned"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="261"/>
+    <source source="DragonBlooded1st" page="261"/>
   </charm>
   <charm id="Dragon-Blooded.WoodDragonSuccor" group="WoodDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2521,7 +2521,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="263"/>
+    <source source="DragonBlooded1st" page="263"/>
   </charm>
   <charm id="Dragon-Blooded.Spirit-WrackingMethod" group="WoodDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2538,7 +2538,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="262"/>
+    <source source="DragonBlooded1st" page="262"/>
   </charm>
   <charm id="Dragon-Blooded.SpiritRendingTechnique" group="WoodDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2555,7 +2555,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="262"/>
+    <source source="DragonBlooded1st" page="262"/>
   </charm>
   <charm id="Dragon-Blooded.Death-PatternSensingAttitude" group="WoodDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2572,7 +2572,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="263"/>
+    <source source="DragonBlooded1st" page="263"/>
   </charm>
   <charm id="Dragon-Blooded.EnthrallingBlowAttack" group="WoodDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2589,7 +2589,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="261"/>
+    <source source="DragonBlooded1st" page="261"/>
   </charm>
   <charm id="Dragon-Blooded.SoulMastery" group="WoodDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -2608,7 +2608,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="EssenceTurnsOrUntilDischarged"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="263"/>
+    <source source="DragonBlooded1st" page="263"/>
   </charm>
   <charm id="Abyssal.ShroudedClawAttack" exalt="Abyssal" group="HungryGhostStyle">
     <prerequisite>
@@ -2624,7 +2624,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="162"/>
+    <source source="Abyssals1st" page="162"/>
   </charm>
   <charm id="Abyssal.EssenceDiscerningGlance" exalt="Abyssal" group="HungryGhostStyle">
     <prerequisite>
@@ -2639,7 +2639,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="162"/>
+    <source source="Abyssals1st" page="162"/>
   </charm>
   <charm id="Abyssal.HungryGhostForm" exalt="Abyssal" group="HungryGhostStyle">
     <prerequisite>
@@ -2656,7 +2656,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
-    <source source="The Abyssals" page="162"/>
+    <source source="Abyssals1st" page="162"/>
   </charm>
   <charm id="Abyssal.PowerReapingPrana" exalt="Abyssal" group="HungryGhostStyle">
     <prerequisite>
@@ -2674,7 +2674,7 @@
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="163"/>
+    <source source="Abyssals1st" page="163"/>
   </charm>
   <charm id="Abyssal.CharmSmotheringTechnique" exalt="Abyssal" group="HungryGhostStyle">
     <prerequisite>
@@ -2690,7 +2690,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="163"/>
+    <source source="Abyssals1st" page="163"/>
   </charm>
   <charm id="Abyssal.ConsumingEntropyStrike" exalt="Abyssal" group="HungryGhostStyle">
     <prerequisite>
@@ -2706,7 +2706,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="164"/>
+    <source source="Abyssals1st" page="164"/>
   </charm>
   <charm id="Abyssal.LungingPhantomMethod" exalt="Abyssal" group="HungryGhostStyle">
     <prerequisite>
@@ -2722,7 +2722,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="165"/>
+    <source source="Abyssals1st" page="165"/>
   </charm>
   <charm id="Abyssal.UnnaturalShamblingDefense" exalt="Abyssal" group="HungryGhostStyle">
     <prerequisite>
@@ -2739,7 +2739,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Abyssals" page="165"/>
+    <source source="Abyssals1st" page="165"/>
   </charm>
   <charm id="Abyssal.BloodFreezingTechnique" exalt="Abyssal" group="HungryGhostStyle">
     <prerequisite>
@@ -2756,7 +2756,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="165"/>
+    <source source="Abyssals1st" page="165"/>
   </charm>
   <charm id="Abyssal.Soul-FlayingStrike" exalt="Abyssal" group="HungryGhostStyle">
     <prerequisite>
@@ -2776,7 +2776,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="165"/>
+    <source source="Abyssals1st" page="165"/>
   </charm>
   <charm id="Dragon-Blooded.LivingShieldTechnique" exalt="Dragon-Blooded" group="FallingBlossomStyle">
     <prerequisite>
@@ -2791,7 +2791,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Cult of the Illuminated" page="103"/>
+    <source source="Illuminated" page="103"/>
   </charm>
   <charm id="Dragon-Blooded.UndefendedAssaultMethod" exalt="Dragon-Blooded" group="FallingBlossomStyle">
     <prerequisite>
@@ -2807,7 +2807,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="Cult of the Illuminated" page="103"/>
+    <source source="Illuminated" page="103"/>
   </charm>
   <charm id="Dragon-Blooded.DualScarletBlossomTechnique" exalt="Dragon-Blooded" group="FallingBlossomStyle">
     <prerequisite>
@@ -2825,7 +2825,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Cult of the Illuminated" page="103"/>
+    <source source="Illuminated" page="103"/>
   </charm>
   <charm id="Dragon-Blooded.FallingBlossomForm" exalt="Dragon-Blooded" group="FallingBlossomStyle">
     <prerequisite>
@@ -2843,7 +2843,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
-    <source source="Cult of the Illuminated" page="103"/>
+    <source source="Illuminated" page="103"/>
   </charm>
   <charm id="Dragon-Blooded.PurityPurposeAttack" exalt="Dragon-Blooded" group="FallingBlossomStyle">
     <prerequisite>
@@ -2863,7 +2863,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Cult of the Illuminated" page="104"/>
+    <source source="Illuminated" page="104"/>
   </charm>
   <charm id="Dragon-Blooded.StrengthFaithMeditation" exalt="Dragon-Blooded" group="FallingBlossomStyle">
     <prerequisite>
@@ -2880,7 +2880,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Cult of the Illuminated" page="104"/>
+    <source source="Illuminated" page="104"/>
   </charm>
   <charm id="Dragon-Blooded.VerseMartyr" exalt="Dragon-Blooded" group="FallingBlossomStyle">
     <prerequisite>
@@ -2897,7 +2897,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Cult of the Illuminated" page="104"/>
+    <source source="Illuminated" page="104"/>
   </charm>
   <charm id="Dragon-Blooded.GracefulTortoiseTechnique" exalt="Dragon-Blooded" group="CrimsonPentacleBladeStyle">
     <prerequisite>
@@ -2912,7 +2912,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Players Guide" page="241"/>
+    <source source="PlayersGuide" page="241"/>
   </charm>
   <charm id="Dragon-Blooded.SpeardancerConcentration" exalt="Dragon-Blooded" group="CrimsonPentacleBladeStyle">
     <prerequisite>
@@ -2928,7 +2928,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Players Guide" page="242"/>
+    <source source="PlayersGuide" page="242"/>
   </charm>
   <charm id="Dragon-Blooded.CrimsonPentacleBladeForm" exalt="Dragon-Blooded" group="CrimsonPentacleBladeStyle">
     <prerequisite>
@@ -2945,7 +2945,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
-    <source source="Players Guide" page="242"/>
+    <source source="PlayersGuide" page="242"/>
   </charm>
   <charm id="Dragon-Blooded.EasternRootProtocol" exalt="Dragon-Blooded" group="CrimsonPentacleBladeStyle">
     <prerequisite>
@@ -2961,7 +2961,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Players Guide" page="242"/>
+    <source source="PlayersGuide" page="242"/>
   </charm>
   <!--<charm id="Dragon-Blooded.FiveDirectionsFormationProtocol" exalt="Dragon-Blooded" group="CrimsonPentacleBladeStyle">
 		<prerequisite>
@@ -2977,7 +2977,7 @@
  		<charmAttribute attribute="Terrestrial"/>
 		<duration duration="Varies"/>
  		<charmtype type="Varies"/>
-		<source source="Players Guide" page="242"/>
+		<source source="PlayersGuide" page="242"/>
  	</charm>-->
   <charm id="Dragon-Blooded.NothernLotusPetalDiscernmentMeditation" exalt="Dragon-Blooded" group="CrimsonPentacleBladeStyle">
     <prerequisite>
@@ -2993,7 +2993,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Players Guide" page="243"/>
+    <source source="PlayersGuide" page="243"/>
   </charm>
   <charm id="Dragon-Blooded.SprintingStagDefense" exalt="Dragon-Blooded" group="CrimsonPentacleBladeStyle">
     <prerequisite>
@@ -3009,7 +3009,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Players Guide" page="244"/>
+    <source source="PlayersGuide" page="244"/>
   </charm>
   <charm id="Dragon-Blooded.WesternShieldCrushCounterattack" exalt="Dragon-Blooded" group="CrimsonPentacleBladeStyle">
     <prerequisite>
@@ -3025,7 +3025,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Players Guide" page="244"/>
+    <source source="PlayersGuide" page="244"/>
   </charm>
   <charm id="Dragon-Blooded.BlessingJeweledVambracesAndMantle" exalt="Dragon-Blooded" group="CrimsonPentacleBladeStyle">
     <prerequisite>
@@ -3042,7 +3042,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Players Guide" page="244"/>
+    <source source="PlayersGuide" page="244"/>
   </charm>
   <charm id="Dragon-Blooded.GloriousSouthernHarbingerWarAndFury" exalt="Dragon-Blooded" group="CrimsonPentacleBladeStyle">
     <prerequisite>
@@ -3059,7 +3059,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Players Guide" page="244"/>
+    <source source="PlayersGuide" page="244"/>
   </charm>
   <charm id="Dragon-Blooded.FuriousBattleScythe" exalt="Dragon-Blooded" group="CrimsonPentacleBladeStyle">
     <prerequisite>
@@ -3075,7 +3075,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration event="NextTurn"/>
     <charmtype type="Reflexive"/>
-    <source source="Players Guide" page="245"/>
+    <source source="PlayersGuide" page="245"/>
   </charm>
   <charm id="Dragon-Blooded.RetributionHonorableGuardianshipAttitude" exalt="Dragon-Blooded" group="CrimsonPentacleBladeStyle">
     <prerequisite>
@@ -3092,7 +3092,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="ExtraAction"/>
-    <source source="Players Guide" page="245"/>
+    <source source="PlayersGuide" page="245"/>
   </charm>
   <charm id="Dragon-Blooded.Call-to-BladeRighteousnessMantra" exalt="Dragon-Blooded" group="CrimsonPentacleBladeStyle">
     <prerequisite>
@@ -3109,7 +3109,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Players Guide" page="246"/>
+    <source source="PlayersGuide" page="246"/>
   </charm>
   <charm id="Dragon-Blooded.CentralPillarAttackPatternMastery" exalt="Dragon-Blooded" group="CrimsonPentacleBladeStyle">
     <prerequisite>
@@ -3130,7 +3130,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="Players Guide" page="246"/>
+    <source source="PlayersGuide" page="246"/>
   </charm>
   <charm id="Solar.MonkeyTailDistractionStrike" exalt="Solar" group="CelestialMonkeyStyle">
     <prerequisite>
@@ -3145,7 +3145,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Players Guide" page="246"/>
+    <source source="PlayersGuide" page="246"/>
   </charm>
   <charm id="Solar.FlowingMirrorofOppositionTechnique" exalt="Solar" group="CelestialMonkeyStyle">
     <prerequisite>
@@ -3161,7 +3161,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Players Guide" page="247"/>
+    <source source="PlayersGuide" page="247"/>
   </charm>
   <charm id="Solar.BodyWarMeditation" exalt="Solar" group="CelestialMonkeyStyle">
     <prerequisite>
@@ -3176,7 +3176,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Players Guide" page="247"/>
+    <source source="PlayersGuide" page="247"/>
   </charm>
   <charm id="Solar.WitheringPawStrike" exalt="Solar" group="CelestialMonkeyStyle">
     <prerequisite>
@@ -3193,7 +3193,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Players Guide" page="247"/>
+    <source source="PlayersGuide" page="247"/>
   </charm>
   <charm id="Solar.CelestialMonkeyForm" exalt="Solar" group="CelestialMonkeyStyle">
     <prerequisite>
@@ -3211,7 +3211,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
-    <source source="Players Guide" page="248"/>
+    <source source="PlayersGuide" page="248"/>
   </charm>
   <charm id="Solar.WalkingFootstepsTenThousandThings" exalt="Solar" group="CelestialMonkeyStyle">
     <prerequisite>
@@ -3231,7 +3231,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Players Guide" page="248"/>
+    <source source="PlayersGuide" page="248"/>
   </charm>
   <charm id="Solar.FourHaloGoldenMonkeyPalm" exalt="Solar" group="CelestialMonkeyStyle">
     <prerequisite>
@@ -3248,7 +3248,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Players Guide" page="248"/>
+    <source source="PlayersGuide" page="248"/>
   </charm>
   <charm id="Solar.FourHaloGoldenMonkeyRealignement" exalt="Solar" group="CelestialMonkeyStyle">
     <prerequisite>
@@ -3265,7 +3265,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Players Guide" page="249"/>
+    <source source="PlayersGuide" page="249"/>
   </charm>
   <charm id="Solar.CelestialGodbodyUnderstanding" exalt="Solar" group="CelestialMonkeyStyle">
     <prerequisite>
@@ -3279,7 +3279,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Players Guide" page="249"/>
+    <source source="PlayersGuide" page="249"/>
   </charm>
   <charm id="Solar.KissSunConcentration" exalt="Solar" group="RighteousDevilStyle">
     <prerequisite>
@@ -3294,7 +3294,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Players Guide" page="254"/>
+    <source source="PlayersGuide" page="254"/>
   </charm>
   <charm id="Solar.FireBlossomInevitableDemiseTechique" exalt="Solar" group="RighteousDevilStyle">
     <prerequisite>
@@ -3310,7 +3310,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Players Guide" page="255"/>
+    <source source="PlayersGuide" page="255"/>
   </charm>
   <charm id="Solar.LightingDrawStance" exalt="Solar" group="RighteousDevilStyle">
     <prerequisite>
@@ -3326,7 +3326,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Players Guide" page="255"/>
+    <source source="PlayersGuide" page="255"/>
   </charm>
   <charm id="Solar.BlessingRighteousSolarSparkMeditation" exalt="Solar" group="RighteousDevilStyle">
     <prerequisite>
@@ -3342,7 +3342,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration event="Fired"/>
     <charmtype type="Simple"/>
-    <source source="Players Guide" page="255"/>
+    <source source="PlayersGuide" page="255"/>
   </charm>
   <charm id="Solar.CloudEbonDevils" exalt="Solar" group="RighteousDevilStyle">
     <prerequisite>
@@ -3358,7 +3358,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Players Guide" page="255"/>
+    <source source="PlayersGuide" page="255"/>
   </charm>
   <charm id="Solar.RighteousDevilForm" exalt="Solar" group="RighteousDevilStyle">
     <prerequisite>
@@ -3376,7 +3376,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
-    <source source="Players Guide" page="256"/>
+    <source source="PlayersGuide" page="256"/>
   </charm>
   <charm id="Solar.PhoenixFliesonGoldenWingsAttack" exalt="Solar" group="RighteousDevilStyle">
     <prerequisite>
@@ -3392,7 +3392,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Players Guide" page="256"/>
+    <source source="PlayersGuide" page="256"/>
   </charm>
   <charm id="Solar.AzureAbacusMeditation" exalt="Solar" group="RighteousDevilStyle">
     <prerequisite>
@@ -3409,7 +3409,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Players Guide" page="256"/>
+    <source source="PlayersGuide" page="256"/>
   </charm>
   <charm id="Solar.TwinSalamanderFist" exalt="Solar" group="RighteousDevilStyle">
     <prerequisite>
@@ -3425,7 +3425,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Players Guide" page="257"/>
+    <source source="PlayersGuide" page="257"/>
   </charm>
   <charm id="Solar.DanceHowlingMagmaSprites" exalt="Solar" group="RighteousDevilStyle">
     <prerequisite>
@@ -3442,7 +3442,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="Players Guide" page="257"/>
+    <source source="PlayersGuide" page="257"/>
   </charm>
   <charm id="Solar.PhantomFlameboltPrana" exalt="Solar" group="RighteousDevilStyle">
     <prerequisite>
@@ -3458,7 +3458,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Players Guide" page="257"/>
+    <source source="PlayersGuide" page="257"/>
   </charm>
   <charm id="Solar.Caress1000Hells" exalt="Solar" group="RighteousDevilStyle">
     <prerequisite>
@@ -3475,7 +3475,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Varies"/>
     <charmtype type="Supplemental"/>
-    <source source="Players Guide" page="257"/>
+    <source source="PlayersGuide" page="257"/>
   </charm>
   <charm id="Dragon-Blooded.PillarMarbleStance" exalt="Dragon-Blooded" group="JadeMountainStyle">
     <prerequisite>
@@ -3490,7 +3490,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Aspect Book: Earth" page="75"/>
+    <source source="ABEarth" page="75"/>
   </charm>
   <charm id="Dragon-Blooded.FortressOne" exalt="Dragon-Blooded" group="JadeMountainStyle">
     <prerequisite>
@@ -3507,7 +3507,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Earth" page="75"/>
+    <source source="ABEarth" page="75"/>
   </charm>
   <charm id="Dragon-Blooded.Boulder-CrushingGrasp" exalt="Dragon-Blooded" group="JadeMountainStyle">
     <prerequisite>
@@ -3522,7 +3522,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration event="Released"/>
     <charmtype type="Supplemental"/>
-    <source source="Aspect Book: Earth" page="75"/>
+    <source source="ABEarth" page="75"/>
   </charm>
   <charm id="Dragon-Blooded.SlinderGlacierGrip" exalt="Dragon-Blooded" group="JadeMountainStyle">
     <prerequisite>
@@ -3539,7 +3539,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Aspect Book: Earth" page="76"/>
+    <source source="ABEarth" page="76"/>
   </charm>
   <charm id="Dragon-Blooded.JadeMountainForm" exalt="Dragon-Blooded" group="JadeMountainStyle">
     <prerequisite>
@@ -3557,7 +3557,7 @@
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
-    <source source="Aspect Book: Earth" page="76"/>
+    <source source="ABEarth" page="76"/>
   </charm>
   <charm id="Dragon-Blooded.PasiapStillStands" exalt="Dragon-Blooded" group="JadeMountainStyle">
     <prerequisite>
@@ -3573,7 +3573,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Aspect Book: Earth" page="76"/>
+    <source source="ABEarth" page="76"/>
   </charm>
   <charm id="Dragon-Blooded.FallingRockslideOnslaught" exalt="Dragon-Blooded" group="JadeMountainStyle">
     <prerequisite>
@@ -3590,7 +3590,7 @@
     <charmAttribute attribute="Terrestrial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Earth" page="76"/>
+    <source source="ABEarth" page="76"/>
   </charm>
   <charm id="Dragon-Blooded.SpiritSight" exalt="Dragon-Blooded" group="TerrestrialInitiation">
     <prerequisite>
@@ -3607,7 +3607,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="241"/>
+    <source source="DragonBlooded1st" page="241"/>
   </charm>
   <charm id="Dragon-Blooded.SpiritWalking" exalt="Dragon-Blooded" group="TerrestrialInitiation">
     <prerequisite>
@@ -3627,7 +3627,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="242"/>
+    <source source="DragonBlooded1st" page="242"/>
   </charm>
   <charm id="Dragon-Blooded.Walker-Among-IrisesPerception" exalt="Dragon-Blooded" group="TerrestrialInitiation">
     <prerequisite>
@@ -3644,7 +3644,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Players Guide" page="236"/>
+    <source source="PlayersGuide" page="236"/>
   </charm>
   <charm id="Dragon-Blooded.Iris-BulbDiscourse" exalt="Dragon-Blooded" group="TerrestrialInitiation">
     <prerequisite>
@@ -3664,7 +3664,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Players Guide" page="236"/>
+    <source source="PlayersGuide" page="236"/>
   </charm>
   <charm id="Dragon-Blooded.Tiger-and-Bear-Awareness" exalt="Dragon-Blooded" group="TerrestrialInitiation">
     <prerequisite>
@@ -3681,7 +3681,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Players Guide" page="237"/>
+    <source source="PlayersGuide" page="237"/>
   </charm>
   <charm id="Dragon-Blooded.Tiger-and-BearUnity" exalt="Dragon-Blooded" group="TerrestrialInitiation">
     <prerequisite>
@@ -3701,7 +3701,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Players Guide" page="236"/>
+    <source source="PlayersGuide" page="236"/>
   </charm>
   <charm id="Solar.DemureCarpFeint" exalt="Solar" group="DreamingPearlCourtesanStyle">
     <prerequisite>
@@ -3716,7 +3716,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Players Guide" page="250"/>
+    <source source="PlayersGuide" page="250"/>
   </charm>
   <charm id="Solar.PearlescentFiligreeDefense" exalt="Solar" group="DreamingPearlCourtesanStyle">
     <prerequisite>
@@ -3731,7 +3731,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Players Guide" page="250"/>
+    <source source="PlayersGuide" page="250"/>
   </charm>
   <charm id="Solar.LethalPaperFanAttack" exalt="Solar" group="DreamingPearlCourtesanStyle">
     <prerequisite>
@@ -3746,7 +3746,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Players Guide" page="250"/>
+    <source source="PlayersGuide" page="250"/>
   </charm>
   <charm id="Solar.DreamingPearlCourtesanForm" exalt="Solar" group="DreamingPearlCourtesanStyle">
     <prerequisite>
@@ -3764,7 +3764,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Players Guide" page="250"/>
+    <source source="PlayersGuide" page="250"/>
   </charm>
   <charm id="Solar.FlurryAugustLeavesConcentration" exalt="Solar" group="DreamingPearlCourtesanStyle">
     <prerequisite>
@@ -3780,7 +3780,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Players Guide" page="251"/>
+    <source source="PlayersGuide" page="251"/>
   </charm>
   <charm id="Solar.ResplendantSashGrappleTechnique" exalt="Solar" group="DreamingPearlCourtesanStyle">
     <prerequisite>
@@ -3796,7 +3796,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Varies"/>
     <charmtype type="Reflexive"/>
-    <source source="Players Guide" page="251"/>
+    <source source="PlayersGuide" page="251"/>
   </charm>
   <charm id="Solar.VindictiveConcubine'sPillowBookUnderstanding" exalt="Solar" group="DreamingPearlCourtesanStyle">
     <prerequisite>
@@ -3813,7 +3813,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Players Guide" page="251"/>
+    <source source="PlayersGuide" page="251"/>
   </charm>
   <charm id="Solar.FragrantPetalFascinationKata" exalt="Solar" group="DreamingPearlCourtesanStyle">
     <prerequisite>
@@ -3830,7 +3830,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration event="Disturbed"/>
     <charmtype type="Simple"/>
-    <source source="Players Guide" page="252"/>
+    <source source="PlayersGuide" page="252"/>
   </charm>
   <charm id="Solar.SevenStormsEscapePrana" exalt="Solar" group="DreamingPearlCourtesanStyle">
     <prerequisite>
@@ -3847,7 +3847,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Players Guide" page="253"/>
+    <source source="PlayersGuide" page="253"/>
   </charm>
   <charm id="Solar.InvokingChimera'sCoils" exalt="Solar" group="DreamingPearlCourtesanStyle">
     <prerequisite>
@@ -3867,6 +3867,6 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
-    <source source="Players Guide" page="253"/>
+    <source source="PlayersGuide" page="253"/>
   </charm>
 </charmlist>

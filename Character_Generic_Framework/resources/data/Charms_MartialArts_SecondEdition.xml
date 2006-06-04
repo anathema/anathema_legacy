@@ -16,7 +16,7 @@
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK"/>
-    <source source="Second Edition" page="240"/>
+    <source source="SecondEdition" page="240"/>
   </charm>
   <charm id="Solar.SerpentineEvasion" exalt="Solar" group="SnakeStyle">
     <prerequisite>
@@ -35,7 +35,7 @@
    	</charmtype>
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK"/>
-    <source source="Second Edition" page="240"/>
+    <source source="SecondEdition" page="240"/>
   </charm>
   <charm id="Solar.SnakeForm" exalt="Solar" group="SnakeStyle">
     <prerequisite>
@@ -56,7 +56,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Form" visualize="true"/>    
     <charmAttribute attribute="Obvious" visualize="true"/>    
-    <source source="Second Edition" page="240"/>
+    <source source="SecondEdition" page="240"/>
   </charm>
   <charm id="Solar.EssenceFangsandScalesTechnique" exalt="Solar" group="SnakeStyle">
     <prerequisite>
@@ -74,7 +74,7 @@
    	  <special speed="5" defense="-1"/>
    	</charmtype>
     <charmAttribute attribute="Celestial"/>
-    <source source="Second Edition" page="240"/>
+    <source source="SecondEdition" page="240"/>
   </charm>
   <charm id="Solar.Armor-PenetratingFangStrike" exalt="Solar" group="SnakeStyle">
     <prerequisite>
@@ -93,7 +93,7 @@
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/> 
-    <source source="Second Edition" page="240"/>
+    <source source="SecondEdition" page="240"/>
   </charm>
   <charm id="Solar.SnakeStrikesHeel" exalt="Solar" group="SnakeStyle">
     <prerequisite>
@@ -113,7 +113,7 @@
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Counterattack" visualize="true"/> 
-    <source source="Second Edition" page="241"/>
+    <source source="SecondEdition" page="241"/>
   </charm>
   <charm id="Solar.UncoilingSerpentPrana" exalt="Solar" group="SnakeStyle">
     <prerequisite>
@@ -131,7 +131,7 @@
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/> 
-    <source source="Second Edition" page="241"/>
+    <source source="SecondEdition" page="241"/>
   </charm>
   <charm id="Solar.StrikingSerpentSpeed" exalt="Solar" group="SnakeStyle">
     <prerequisite>
@@ -148,7 +148,7 @@
     <charmtype type="ExtraAction"/>
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="242"/>
+    <source source="SecondEdition" page="242"/>
   </charm>
   <charm id="Solar.EssenceVenomStrike" exalt="Solar" group="SnakeStyle">
     <prerequisite>
@@ -170,10 +170,10 @@
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="242"/>
+    <source source="SecondEdition" page="242"/>
   </charm>
   
-  <!-- Second Edition Solar Hero Style -->
+  <!-- SecondEdition Solar Hero Style -->
  <charm id="Solar.FistsIronTechnique" exalt="Solar" group="SolarHeroStyle">
     <prerequisite>
       <trait id="MartialArts" value="2"/>
@@ -188,7 +188,7 @@
     <charmtype type="Supplemental" />
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="242"/>
+    <source source="SecondEdition" page="242"/>
   </charm>
   <charm id="Solar.SledgehammerFistPunch" exalt="Solar" group="SolarHeroStyle">
     <prerequisite>
@@ -206,7 +206,7 @@
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="242"/>
+    <source source="SecondEdition" page="242"/>
   </charm>
   <charm id="Solar.DragonCoilTechnique" exalt="Solar" group="SolarHeroStyle">
     <prerequisite>
@@ -230,7 +230,7 @@
     </combo>
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="242"/>
+    <source source="SecondEdition" page="242"/>
   </charm>
   <charm id="Solar.SolarHeroForm" exalt="Solar" group="SolarHeroStyle">
     <prerequisite>
@@ -251,7 +251,7 @@
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
     <charmAttribute attribute="Form" visualize="true"/>
-    <source source="Second Edition" page="242"/>
+    <source source="SecondEdition" page="242"/>
   </charm>
   <charm id="Solar.HeavenThunderHammer" exalt="Solar" group="SolarHeroStyle">
     <prerequisite>
@@ -268,7 +268,7 @@
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="242"/>
+    <source source="SecondEdition" page="242"/>
   </charm>
   <charm id="Solar.CrashingWaveThrow" exalt="Solar" group="SolarHeroStyle">
     <prerequisite>
@@ -285,7 +285,7 @@
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="243"/>
+    <source source="SecondEdition" page="243"/>
   </charm>
   <charm id="Solar.Ox-StunningBlow" exalt="Solar" group="SolarHeroStyle">
     <prerequisite>
@@ -305,7 +305,7 @@
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Crippling" visualize="true"/>
-    <source source="Second Edition" page="243"/>
+    <source source="SecondEdition" page="243"/>
   </charm>
   <charm id="Solar.HammeronIronTechnique" exalt="Solar" group="SolarHeroStyle">
     <prerequisite>
@@ -323,7 +323,7 @@
     <charmtype type="ExtraAction"/>
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="243"/>
+    <source source="SecondEdition" page="243"/>
   </charm>
   <charm id="Solar.ShockwaveTechnique" exalt="Solar" group="SolarHeroStyle">
     <prerequisite>
@@ -344,10 +344,10 @@
     <charmAttribute attribute="Counterattack" visualize="true"/>
     <charmAttribute attribute="Knockback" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="244"/>
+    <source source="SecondEdition" page="244"/>
   </charm>
   
-  <!-- Second Edition Solar Specials -->
+  <!-- SecondEdition Solar Specials -->
   <charm id="Solar.ThunderclapRushAttack" exalt="Solar" group="SolarHeroStyle">
     <prerequisite>
       <trait id="MartialArts" value="3"/>
@@ -366,7 +366,7 @@
     <charmAttribute attribute="Celestial"/>
     <charmAttribute attribute="Exclusive"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <source source="Second Edition" page="190"/>
+    <source source="SecondEdition" page="190"/>
   </charm>
   <charm id="Solar.KnockoutBlow" exalt="Solar" group="SolarHeroStyle">
     <prerequisite>
@@ -387,10 +387,10 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="Crippling" visualize="true"/>
     <charmAttribute attribute="Obvious" visualize="true"/>
-    <source source="Second Edition" page="190"/>
+    <source source="SecondEdition" page="190"/>
   </charm> 
   
-  <!-- Second Edition Solar Generics -->
+  <!-- SecondEdition Solar Generics -->
   <charm id="Solar.1stExcellencyMartialArts" exalt="Solar" group="Generics">
     <prerequisite>
       <trait id="MartialArts" value="1"/>
@@ -411,7 +411,7 @@
     <charmAttribute attribute="Excellency"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="ExcellencyMartialArts"/>
-    <source source="Second Edition" page="183"/>
+    <source source="SecondEdition" page="183"/>
   </charm>
   <charm id="Solar.2ndExcellencyMartialArts" exalt="Solar" group="Generics">
     <prerequisite>
@@ -433,7 +433,7 @@
     <charmAttribute attribute="Excellency"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="ExcellencyMartialArts"/>
-    <source source="Second Edition" page="184"/>
+    <source source="SecondEdition" page="184"/>
   </charm>
   <charm id="Solar.3rdExcellencyMartialArts" exalt="Solar" group="Generics">
     <prerequisite>
@@ -455,7 +455,7 @@
     <charmAttribute attribute="Excellency"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <charmAttribute attribute="ExcellencyMartialArts"/>
-    <source source="Second Edition" page="185"/>
+    <source source="SecondEdition" page="185"/>
   </charm>
   <charm id="Solar.InfiniteMasteryMartialArts" exalt="Solar" group="Generics">
     <prerequisite>
@@ -474,7 +474,7 @@
     <charmAttribute attribute="Mortal"/>
     <charmAttribute attribute="NoStyle"/>
     <charmAttribute attribute="Exclusive"/>
-    <source source="Second Edition" page="185"/>
+    <source source="SecondEdition" page="185"/>
   </charm>
   <charm id="Solar.EssenceFlowMartialArts" exalt="Solar" group="Generics">
     <prerequisite>
@@ -490,6 +490,6 @@
     <charmAttribute attribute="Mortal"/>
     <charmAttribute attribute="NoStyle"/>
     <charmAttribute attribute="Exclusive"/>
-    <source source="Second Edition" page="187"/>
+    <source source="SecondEdition" page="187"/>
   </charm>
 </charmlist>

@@ -11,7 +11,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="The Sidereals" page="132"/>
+    <source source="Sidereals1st" page="132"/>
   </charm>
   <charm id="Sidereal.UnsweringJuggernautPrinciple" exalt="Sidereal" group="Endurance">
     <prerequisite>
@@ -25,7 +25,7 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="132"/>
+    <source source="Sidereals1st" page="132"/>
   </charm>
   <charm id="Sidereal.Forward-ThinkingTechnique" exalt="Sidereal" group="Endurance">
     <prerequisite>
@@ -41,7 +41,7 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="133"/>
+    <source source="Sidereals1st" page="133"/>
   </charm>
   <charm id="Sidereal.OptimisticSecurityPractice" exalt="Sidereal" group="Endurance">
     <prerequisite>
@@ -55,7 +55,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="133"/>
+    <source source="Sidereals1st" page="133"/>
   </charm>
   <charm id="Sidereal.UnwaveringWell-BeingMeditation" exalt="Sidereal" group="Endurance">
     <prerequisite>
@@ -69,7 +69,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Sidereals" page="133"/>
+    <source source="Sidereals1st" page="133"/>
   </charm>
   <charm id="Sidereal.HeartlessMaidenTrance" exalt="Sidereal" group="Endurance">
     <prerequisite>
@@ -86,7 +86,7 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="133"/>
+    <source source="Sidereals1st" page="133"/>
   </charm>
   <charm id="Sidereal.OneDirectionInvocation" exalt="Sidereal" group="Endurance">
     <prerequisite>
@@ -104,7 +104,7 @@
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="133"/>
+    <source source="Sidereals1st" page="133"/>
   </charm>
   <charm id="Sidereal.OrdainedBriddleMercury" exalt="Sidereal" group="Ride">
     <prerequisite>
@@ -122,7 +122,7 @@
     </cost>
     <duration event="Applied"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="134"/>
+    <source source="Sidereals1st" page="134"/>
   </charm>
   <charm id="Sidereal.Spirit-ShapeCompanion" exalt="Sidereal" group="Ride">
     <prerequisite>
@@ -141,7 +141,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="135"/>
+    <source source="Sidereals1st" page="135"/>
   </charm>
   <charm id="Sidereal.GodlyCompanion" exalt="Sidereal" group="Ride">
     <prerequisite>
@@ -160,7 +160,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="135"/>
+    <source source="Sidereals1st" page="135"/>
   </charm>
   <charm id="Sidereal.BreakingWildMortal" exalt="Sidereal" group="Ride">
     <prerequisite>
@@ -179,7 +179,7 @@
     </cost>
     <duration event="Applied"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="136"/>
+    <source source="Sidereals1st" page="136"/>
   </charm>
   <charm id="Sidereal.YellowPath" exalt="Sidereal" group="Ride">
     <prerequisite>
@@ -193,7 +193,7 @@
     </cost>
     <duration amount="1" unit="journey"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="136"/>
+    <source source="Sidereals1st" page="136"/>
   </charm>
   <charm id="Sidereal.GloryPath" exalt="Sidereal" group="Ride">
     <prerequisite>
@@ -208,7 +208,7 @@
     </cost>
     <duration amount="5" unit="minute"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="136"/>
+    <source source="Sidereals1st" page="136"/>
   </charm>
   <charm id="Sidereal.RidingDragon" exalt="Sidereal" group="Ride">
     <prerequisite>
@@ -228,7 +228,7 @@
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="136"/>
+    <source source="Sidereals1st" page="136"/>
   </charm>
   <charm id="Sidereal.SaltintoAshSleight" exalt="Sidereal" group="Sail">
     <prerequisite>
@@ -242,7 +242,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="137"/>
+    <source source="Sidereals1st" page="137"/>
   </charm>
   <charm id="Sidereal.StoneSkipppingSpirit" exalt="Sidereal" group="Sail">
     <prerequisite>
@@ -256,7 +256,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="137"/>
+    <source source="Sidereals1st" page="137"/>
   </charm>
   <charm id="Sidereal.MirrorShatteringMethod" exalt="Sidereal" group="Sail">
     <prerequisite>
@@ -271,7 +271,7 @@
     </cost>
     <duration amount="5" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="138"/>
+    <source source="Sidereals1st" page="138"/>
   </charm>
   <charm id="Sidereal.FiveOrdealsOdyssey" exalt="Sidereal" group="Sail">
     <prerequisite>
@@ -290,7 +290,7 @@
     <duration amount="1" unit="hazard"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="139"/>
+    <source source="Sidereals1st" page="139"/>
   </charm>
   <charm id="Sidereal.BecomingWilderness" exalt="Sidereal" group="Survival">
     <prerequisite>
@@ -304,7 +304,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="140"/>
+    <source source="Sidereals1st" page="140"/>
   </charm>
   <charm id="Sidereal.AdoptingUntamedFace" exalt="Sidereal" group="Survival">
     <prerequisite>
@@ -319,7 +319,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="140"/>
+    <source source="Sidereals1st" page="140"/>
   </charm>
   <charm id="Sidereal.DreamingWildLands" exalt="Sidereal" group="Survival">
     <prerequisite>
@@ -335,7 +335,7 @@
     </cost>
     <duration amount="5" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="140"/>
+    <source source="Sidereals1st" page="140"/>
   </charm>
   <charm id="Sidereal.SkyandRainMantra" exalt="Sidereal" group="Survival">
     <prerequisite>
@@ -349,7 +349,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="140"/>
+    <source source="Sidereals1st" page="140"/>
   </charm>
   <charm id="Sidereal.SkySpiritDemand" exalt="Sidereal" group="Survival">
     <prerequisite>
@@ -365,7 +365,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="140"/>
+    <source source="Sidereals1st" page="140"/>
   </charm>
   <charm id="Sidereal.Wilderness-CommandingPractice" exalt="Sidereal" group="Survival">
     <prerequisite>
@@ -383,7 +383,7 @@
     <duration amount="5" unit="day"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="140"/>
+    <source source="Sidereals1st" page="140"/>
   </charm>
   <charm id="Sidereal.WillfulWeaponMethod" exalt="Sidereal" group="Thrown">
     <prerequisite>
@@ -397,7 +397,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Sidereals" page="141"/>
+    <source source="Sidereals1st" page="141"/>
   </charm>
   <charm id="Sidereal.LifeGetsWorseApproach" exalt="Sidereal" group="Thrown">
     <prerequisite>
@@ -411,7 +411,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Sidereals" page="142"/>
+    <source source="Sidereals1st" page="142"/>
   </charm>
   <charm id="Sidereal.EssenceThornPractice" exalt="Sidereal" group="Thrown">
     <prerequisite>
@@ -427,7 +427,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="142"/>
+    <source source="Sidereals1st" page="142"/>
   </charm>
   <charm id="Sidereal.PainAmplificationStratagem" exalt="Sidereal" group="Thrown">
     <prerequisite>
@@ -441,7 +441,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Sidereals" page="142"/>
+    <source source="Sidereals1st" page="142"/>
   </charm>
   <charm id="Sidereal.UnrelentingTormentTechnique" exalt="Sidereal" group="Thrown">
     <prerequisite>
@@ -461,7 +461,7 @@
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="142"/>
+    <source source="Sidereals1st" page="142"/>
   </charm>
   <charm id="Sidereal.ElegantPatternsFate" exalt="Sidereal" group="Craft">
     <prerequisite>
@@ -475,7 +475,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Sidereals" page="143"/>
+    <source source="Sidereals1st" page="143"/>
   </charm>
   <charm id="Sidereal.ExcellentImplementationObjectives" exalt="Sidereal" group="Craft">
     <prerequisite>
@@ -490,7 +490,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Supplemental"/>
-    <source source="The Sidereals" page="144"/>
+    <source source="Sidereals1st" page="144"/>
   </charm>
   <charm id="Sidereal.World-ShapingArtisticVision" exalt="Sidereal" group="Craft">
     <prerequisite>
@@ -502,7 +502,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="The Sidereals" page="144"/>
+    <source source="Sidereals1st" page="144"/>
   </charm>
   <charm id="Sidereal.Destiny-KnittingEntanglement" exalt="Sidereal" group="Craft">
     <prerequisite>
@@ -517,7 +517,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Sidereals" page="144"/>
+    <source source="Sidereals1st" page="144"/>
   </charm>
   <charm id="Sidereal.ElementalVision" exalt="Sidereal" group="Craft">
     <prerequisite>
@@ -529,7 +529,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="The Sidereals" page="144"/>
+    <source source="Sidereals1st" page="144"/>
   </charm>
   <charm id="Sidereal.MendingWarpedDesigns" exalt="Sidereal" group="Craft">
     <prerequisite>
@@ -543,7 +543,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="145"/>
+    <source source="Sidereals1st" page="145"/>
   </charm>
   <charm id="Sidereal.ImplicitConstructionMethodology" exalt="Sidereal" group="Craft">
     <prerequisite>
@@ -564,7 +564,7 @@
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="145"/>
+    <source source="Sidereals1st" page="145"/>
   </charm>
   <charm id="Sidereal.Absence" exalt="Sidereal" group="Dodge">
     <prerequisite>
@@ -578,7 +578,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Sidereals" page="145"/>
+    <source source="Sidereals1st" page="145"/>
   </charm>
   <charm id="Sidereal.DuckFate" exalt="Sidereal" group="Dodge">
     <prerequisite>
@@ -593,7 +593,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Sidereals" page="145"/>
+    <source source="Sidereals1st" page="145"/>
   </charm>
   <charm id="Sidereal.AvoidanceKata" exalt="Sidereal" group="Dodge">
     <prerequisite>
@@ -608,7 +608,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Sidereals" page="146"/>
+    <source source="Sidereals1st" page="146"/>
   </charm>
   <charm id="Sidereal.TroubleReductionStrategy" exalt="Sidereal" group="Dodge">
     <prerequisite>
@@ -623,7 +623,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="146"/>
+    <source source="Sidereals1st" page="146"/>
   </charm>
   <charm id="Sidereal.NeighborhoodRelocationScheme" exalt="Sidereal" group="Dodge">
     <prerequisite>
@@ -642,7 +642,7 @@
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="146"/>
+    <source source="Sidereals1st" page="146"/>
   </charm>
   <charm id="Sidereal.FavorableInflectionProcedure" exalt="Sidereal" group="Linguistics">
     <prerequisite>
@@ -656,7 +656,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="148"/>
+    <source source="Sidereals1st" page="148"/>
   </charm>
   <charm id="Sidereal.BlueVervainBinding" exalt="Sidereal" group="Linguistics">
     <prerequisite>
@@ -673,7 +673,7 @@
     </cost>
     <duration amount="1" unit="minute"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="148"/>
+    <source source="Sidereals1st" page="148"/>
   </charm>
   <charm id="Sidereal.IceandFireBinding" exalt="Sidereal" group="Linguistics">
     <prerequisite>
@@ -687,7 +687,7 @@
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="148"/>
+    <source source="Sidereals1st" page="148"/>
   </charm>
   <charm id="Sidereal.Lover'sOath" exalt="Sidereal" group="Linguistics">
     <prerequisite>
@@ -707,7 +707,7 @@
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="149"/>
+    <source source="Sidereals1st" page="149"/>
   </charm>
   <charm id="Sidereal.CompassionateEssenceReplenishment" exalt="Sidereal" group="Performance">
     <prerequisite>
@@ -719,7 +719,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="The Sidereals" page="149"/>
+    <source source="Sidereals1st" page="149"/>
   </charm>
   <charm id="Sidereal.PerfectioninLife" exalt="Sidereal" group="Performance">
     <prerequisite>
@@ -733,7 +733,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="149"/>
+    <source source="Sidereals1st" page="149"/>
   </charm>
   <charm id="Sidereal.DefenseShiningJoy" exalt="Sidereal" group="Performance">
     <prerequisite>
@@ -749,7 +749,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="150"/>
+    <source source="Sidereals1st" page="150"/>
   </charm>
   <charm id="Sidereal.SongSpiritPersuasion" exalt="Sidereal" group="Performance">
     <prerequisite>
@@ -765,7 +765,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="150"/>
+    <source source="Sidereals1st" page="150"/>
   </charm>
   <charm id="Sidereal.FautlessCeremony" exalt="Sidereal" group="Performance">
     <prerequisite>
@@ -779,7 +779,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="150"/>
+    <source source="Sidereals1st" page="150"/>
   </charm>
   <charm id="Sidereal.Heart-BrighteningPresentationStyle" exalt="Sidereal" group="Performance">
     <prerequisite>
@@ -794,7 +794,7 @@
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="151"/>
+    <source source="Sidereals1st" page="151"/>
   </charm>
   <charm id="Sidereal.HarmonicCompletion" exalt="Sidereal" group="Performance">
     <prerequisite>
@@ -815,7 +815,7 @@
     <duration amount="5" unit="day"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="151"/>
+    <source source="Sidereals1st" page="151"/>
   </charm>
   <charm id="Sidereal.SternEssenceReplenishment" exalt="Sidereal" group="Socialize">
     <prerequisite>
@@ -827,7 +827,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="The Sidereals" page="151"/>
+    <source source="Sidereals1st" page="151"/>
   </charm>
   <charm id="Sidereal.ShunTheSmilingLady" exalt="Sidereal" group="Socialize">
     <prerequisite>
@@ -841,7 +841,7 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="151"/>
+    <source source="Sidereals1st" page="151"/>
   </charm>
   <charm id="Sidereal.CashandMurderGames" exalt="Sidereal" group="Socialize">
     <prerequisite>
@@ -857,7 +857,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="152"/>
+    <source source="Sidereals1st" page="152"/>
   </charm>
   <charm id="Sidereal.LifeWithoutCompunction" exalt="Sidereal" group="Socialize">
     <prerequisite>
@@ -872,7 +872,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="152"/>
+    <source source="Sidereals1st" page="152"/>
   </charm>
   <charm id="Sidereal.YouandYoursStance" exalt="Sidereal" group="Socialize">
     <prerequisite>
@@ -888,7 +888,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="152"/>
+    <source source="Sidereals1st" page="152"/>
   </charm>
   <charm id="Sidereal.Hot-EyedSnakeWhispering" exalt="Sidereal" group="Socialize">
     <prerequisite>
@@ -903,7 +903,7 @@
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Sidereals" page="153"/>
+    <source source="Sidereals1st" page="153"/>
   </charm>
   <charm id="Sidereal.WantingandFearingPrayer" exalt="Sidereal" group="Socialize">
     <prerequisite>
@@ -923,7 +923,7 @@
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="153"/>
+    <source source="Sidereals1st" page="153"/>
   </charm>
   <charm id="Sidereal.GeneralizedAmmunitionTechnique" exalt="Sidereal" group="Archery">
     <prerequisite>
@@ -937,7 +937,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Sidereals" page="153"/>
+    <source source="Sidereals1st" page="153"/>
   </charm>
   <charm id="Sidereal.AnyDirectionArrow" exalt="Sidereal" group="Archery">
     <prerequisite>
@@ -951,7 +951,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Sidereals" page="153"/>
+    <source source="Sidereals1st" page="153"/>
   </charm>
   <charm id="Sidereal.EveryDirectionArrow" exalt="Sidereal" group="Archery">
     <prerequisite>
@@ -966,7 +966,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Sidereals" page="154"/>
+    <source source="Sidereals1st" page="154"/>
   </charm>
   <charm id="Sidereal.OpportuneShot" exalt="Sidereal" group="Archery">
     <prerequisite>
@@ -980,7 +980,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Sidereals" page="154"/>
+    <source source="Sidereals1st" page="154"/>
   </charm>
   <charm id="Sidereal.FiveSeasonApproach" exalt="Sidereal" group="Archery">
     <prerequisite>
@@ -996,7 +996,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Sidereals" page="154"/>
+    <source source="Sidereals1st" page="154"/>
   </charm>
   <charm id="Sidereal.ManyMissilesBowTechnique" exalt="Sidereal" group="Archery">
     <prerequisite>
@@ -1015,7 +1015,7 @@
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="154"/>
+    <source source="Sidereals1st" page="154"/>
   </charm>
   <charm id="Sidereal.UnobstructedBlow" exalt="Sidereal" group="Brawl">
     <prerequisite>
@@ -1029,7 +1029,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Sidereals" page="155"/>
+    <source source="Sidereals1st" page="155"/>
   </charm>
   <charm id="Sidereal.TolerantStrife" exalt="Sidereal" group="Brawl">
     <prerequisite>
@@ -1043,7 +1043,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Sidereals" page="155"/>
+    <source source="Sidereals1st" page="155"/>
   </charm>
   <charm id="Sidereal.HorrificWreath" exalt="Sidereal" group="Brawl">
     <prerequisite>
@@ -1057,7 +1057,7 @@
     </cost>
     <duration amount="5" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="155"/>
+    <source source="Sidereals1st" page="155"/>
   </charm>
   <charm id="Sidereal.CrimsonPalmCounterstrike" exalt="Sidereal" group="Brawl">
     <prerequisite>
@@ -1072,7 +1072,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Sidereals" page="155"/>
+    <source source="Sidereals1st" page="155"/>
   </charm>
   <charm id="Sidereal.EasilyAcceptedPropositionStance" exalt="Sidereal" group="Brawl">
     <prerequisite>
@@ -1092,7 +1092,7 @@
     <duration amount="1" unit="battle"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="156"/>
+    <source source="Sidereals1st" page="156"/>
   </charm>
   <charm id="Sidereal.HarmonyBlows" exalt="Sidereal" group="Melee">
     <prerequisite>
@@ -1107,7 +1107,7 @@
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Sidereals" page="156"/>
+    <source source="Sidereals1st" page="156"/>
   </charm>
   <charm id="Sidereal.MeditationonWar" exalt="Sidereal" group="Melee">
     <prerequisite>
@@ -1122,7 +1122,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Sidereals" page="157"/>
+    <source source="Sidereals1st" page="157"/>
   </charm>
   <charm id="Sidereal.OrchestrationConflict" exalt="Sidereal" group="Melee">
     <prerequisite>
@@ -1137,7 +1137,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Sidereals" page="157"/>
+    <source source="Sidereals1st" page="157"/>
   </charm>
   <charm id="Sidereal.ImpedingFlow" exalt="Sidereal" group="Melee">
     <prerequisite>
@@ -1151,7 +1151,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Sidereals" page="157"/>
+    <source source="Sidereals1st" page="157"/>
   </charm>
   <charm id="Sidereal.SerenityinBlood" exalt="Sidereal" group="Melee">
     <prerequisite>
@@ -1168,7 +1168,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Sidereals" page="157"/>
+    <source source="Sidereals1st" page="157"/>
   </charm>
   <charm id="Sidereal.SmilingatDamned" exalt="Sidereal" group="Melee">
     <prerequisite>
@@ -1182,7 +1182,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="158"/>
+    <source source="Sidereals1st" page="158"/>
   </charm>
   <charm id="Sidereal.PerfectionVisionaryWarrior" exalt="Sidereal" group="Melee">
     <prerequisite>
@@ -1203,7 +1203,7 @@
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="158"/>
+    <source source="Sidereals1st" page="158"/>
   </charm>
   <charm id="Sidereal.HeroicEssenceReplenishment" exalt="Sidereal" group="Presence">
     <prerequisite>
@@ -1215,7 +1215,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="The Sidereals" page="158"/>
+    <source source="Sidereals1st" page="158"/>
   </charm>
   <charm id="Sidereal.PresenceinAbscenceTechnique" exalt="Sidereal" group="Presence">
     <prerequisite>
@@ -1229,7 +1229,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="159"/>
+    <source source="Sidereals1st" page="159"/>
   </charm>
   <charm id="Sidereal.ImposeNature" exalt="Sidereal" group="Presence">
     <prerequisite>
@@ -1243,7 +1243,7 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="159"/>
+    <source source="Sidereals1st" page="159"/>
   </charm>
   <charm id="Sidereal.ForceDecision" exalt="Sidereal" group="Presence">
     <prerequisite>
@@ -1259,7 +1259,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="159"/>
+    <source source="Sidereals1st" page="159"/>
   </charm>
   <charm id="Sidereal.PredestinedTriumphPractice" exalt="Sidereal" group="Presence">
     <prerequisite>
@@ -1274,7 +1274,7 @@
     </cost>
     <duration amount="1" unit="battle"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="160"/>
+    <source source="Sidereals1st" page="160"/>
   </charm>
   <charm id="Sidereal.Essence-DrainingBattlePattern" exalt="Sidereal" group="Presence">
     <prerequisite>
@@ -1289,7 +1289,7 @@
     </cost>
     <duration event="BattleEnds"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="160"/>
+    <source source="Sidereals1st" page="160"/>
   </charm>
   <charm id="Sidereal.Demon-BlockingPattern" exalt="Sidereal" group="Presence">
     <prerequisite>
@@ -1304,7 +1304,7 @@
     </cost>
     <duration event="BattleEnds"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="160"/>
+    <source source="Sidereals1st" page="160"/>
   </charm>
   <charm id="Sidereal.Spirit-BindingPattern" exalt="Sidereal" group="Presence">
     <prerequisite>
@@ -1325,7 +1325,7 @@
     <duration event="BattleEnds"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="160"/>
+    <source source="Sidereals1st" page="160"/>
   </charm>
   <charm id="Sidereal.RedHaze" exalt="Sidereal" group="Resistance">
     <prerequisite>
@@ -1340,7 +1340,7 @@
     </cost>
     <duration amount="5" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="161"/>
+    <source source="Sidereals1st" page="161"/>
   </charm>
   <charm id="Sidereal.SomeoneElse'sDestiny" exalt="Sidereal" group="Resistance">
     <prerequisite>
@@ -1354,7 +1354,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Sidereals" page="162"/>
+    <source source="Sidereals1st" page="162"/>
   </charm>
   <charm id="Sidereal.WaterandFireLegion" exalt="Sidereal" group="Resistance">
     <prerequisite>
@@ -1370,7 +1370,7 @@
     </cost>
     <duration event="Calibration"/>
     <charmtype type="Reflexive"/>
-    <source source="The Sidereals" page="162"/>
+    <source source="Sidereals1st" page="162"/>
   </charm>
   <charm id="Sidereal.ShieldMars" exalt="Sidereal" group="Resistance">
     <prerequisite>
@@ -1385,7 +1385,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Sidereals" page="162"/>
+    <source source="Sidereals1st" page="162"/>
   </charm>
   <charm id="Sidereal.Storm'sEyeStance" exalt="Sidereal" group="Resistance">
     <prerequisite>
@@ -1406,7 +1406,7 @@
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="162"/>
+    <source source="Sidereals1st" page="162"/>
   </charm>
   <charm id="Sidereal.AuspiciousProspectforJourneys" exalt="Sidereal" group="Investigation">
     <prerequisite>
@@ -1423,7 +1423,7 @@
     <learning>
       <favored caste="Journeys"/>
     </learning>
-    <source source="The Sidereals" page="163"/>
+    <source source="Sidereals1st" page="163"/>
   </charm>
   <charm id="Sidereal.AuspiciousProspectforSerenity" exalt="Sidereal" group="Investigation">
     <prerequisite>
@@ -1440,7 +1440,7 @@
     <learning>
       <favored caste="Serenity"/>
     </learning>
-    <source source="The Sidereals" page="163"/>
+    <source source="Sidereals1st" page="163"/>
   </charm>
   <charm id="Sidereal.AuspiciousProspectforBattles" exalt="Sidereal" group="Investigation">
     <prerequisite>
@@ -1457,7 +1457,7 @@
     <learning>
       <favored caste="Battles"/>
     </learning>
-    <source source="The Sidereals" page="163"/>
+    <source source="Sidereals1st" page="163"/>
   </charm>
   <charm id="Sidereal.AuspiciousProspectforFate" exalt="Sidereal" group="Investigation">
     <prerequisite>
@@ -1471,7 +1471,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="163"/>
+    <source source="Sidereals1st" page="163"/>
   </charm>
   <charm id="Sidereal.AuspiciousProspectforEndings" exalt="Sidereal" group="Investigation">
     <prerequisite>
@@ -1488,7 +1488,7 @@
     <learning>
       <favored caste="Endings"/>
     </learning>
-    <source source="The Sidereals" page="163"/>
+    <source source="Sidereals1st" page="163"/>
   </charm>
   <charm id="Sidereal.MarvelousInclusionDetails" exalt="Sidereal" group="Investigation">
     <prerequisite>
@@ -1502,7 +1502,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="163"/>
+    <source source="Sidereals1st" page="163"/>
   </charm>
   <charm id="Sidereal.EfficientSecretaryTechnique" exalt="Sidereal" group="Investigation">
     <prerequisite>
@@ -1516,7 +1516,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="163"/>
+    <source source="Sidereals1st" page="163"/>
   </charm>
   <charm id="Sidereal.ResearchAssistantInvocation" exalt="Sidereal" group="Investigation">
     <prerequisite>
@@ -1531,7 +1531,7 @@
     </cost>
     <duration amount="5" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="164"/>
+    <source source="Sidereals1st" page="164"/>
   </charm>
   <charm id="Sidereal.EmbracingLifeMethod" exalt="Sidereal" group="Investigation">
     <prerequisite>
@@ -1550,7 +1550,7 @@
     <duration amount="5" unit="day"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="164"/>
+    <source source="Sidereals1st" page="164"/>
   </charm>
   <charm id="Sidereal.CreationSmugglingProcedures" exalt="Sidereal" group="Larceny">
     <prerequisite>
@@ -1565,7 +1565,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="165"/>
+    <source source="Sidereals1st" page="165"/>
   </charm>
   <charm id="Sidereal.SiderealShellGames" exalt="Sidereal" group="Larceny">
     <prerequisite>
@@ -1581,7 +1581,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="165"/>
+    <source source="Sidereals1st" page="165"/>
   </charm>
   <charm id="Sidereal.NamePilferingPractices" exalt="Sidereal" group="Larceny">
     <prerequisite>
@@ -1595,7 +1595,7 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="165"/>
+    <source source="Sidereals1st" page="165"/>
   </charm>
   <charm id="Sidereal.DreamConfiscationApproach" exalt="Sidereal" group="Larceny">
     <prerequisite>
@@ -1611,7 +1611,7 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="165"/>
+    <source source="Sidereals1st" page="165"/>
   </charm>
   <charm id="Sidereal.HonorableThiefSpirit" exalt="Sidereal" group="Larceny">
     <prerequisite>
@@ -1625,7 +1625,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="166"/>
+    <source source="Sidereals1st" page="166"/>
   </charm>
   <charm id="Sidereal.ConningChaosTechnique" exalt="Sidereal" group="Larceny">
     <prerequisite>
@@ -1644,7 +1644,7 @@
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="166"/>
+    <source source="Sidereals1st" page="166"/>
   </charm>
   <charm id="Sidereal.SystematicUnderstandingEverything" exalt="Sidereal" group="Lore">
     <prerequisite>
@@ -1658,7 +1658,7 @@
     </cost>
     <duration event="Sleep"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="166"/>
+    <source source="Sidereals1st" page="166"/>
   </charm>
   <charm id="Sidereal.TheMethodologySecrets" exalt="Sidereal" group="Lore">
     <prerequisite>
@@ -1673,7 +1673,7 @@
     </cost>
     <duration event="Sleep"/>
     <charmtype type="Reflexive"/>
-    <source source="The Sidereals" page="167"/>
+    <source source="Sidereals1st" page="167"/>
   </charm>
   <charm id="Sidereal.OfTruthsBestUnspoken" exalt="Sidereal" group="Lore">
     <prerequisite>
@@ -1688,7 +1688,7 @@
     </cost>
     <duration amount="3" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="167"/>
+    <source source="Sidereals1st" page="167"/>
   </charm>
   <charm id="Sidereal.OfThingsDesiredandFeared" exalt="Sidereal" group="Lore">
     <prerequisite>
@@ -1703,7 +1703,7 @@
     </cost>
     <duration amount="3" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="168"/>
+    <source source="Sidereals1st" page="168"/>
   </charm>
   <charm id="Sidereal.OfTheShapeWorld" exalt="Sidereal" group="Lore">
     <prerequisite>
@@ -1719,7 +1719,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Sidereals" page="168"/>
+    <source source="Sidereals1st" page="168"/>
   </charm>
   <charm id="Sidereal.OfHorrorsBestUnknown" exalt="Sidereal" group="Lore">
     <prerequisite>
@@ -1734,7 +1734,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="168"/>
+    <source source="Sidereals1st" page="168"/>
   </charm>
   <charm id="Sidereal.OfSecretsYetUntold" exalt="Sidereal" group="Lore">
     <prerequisite>
@@ -1750,7 +1750,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="168"/>
+    <source source="Sidereals1st" page="168"/>
   </charm>
   <charm id="Sidereal.AvoidingTruthTechnique" exalt="Sidereal" group="Lore">
     <prerequisite>
@@ -1765,7 +1765,7 @@
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Sidereals" page="169"/>
+    <source source="Sidereals1st" page="169"/>
   </charm>
   <charm id="Sidereal.TranscendantHatchetFate" exalt="Sidereal" group="Lore">
     <prerequisite>
@@ -1788,7 +1788,7 @@
     <duration event="Used"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="169"/>
+    <source source="Sidereals1st" page="169"/>
   </charm>
   <charm id="Sidereal.MarkExaltation" exalt="Sidereal" group="Occult">
     <prerequisite>
@@ -1802,7 +1802,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="170"/>
+    <source source="Sidereals1st" page="170"/>
   </charm>
   <charm id="Sidereal.Tell-TaleSymphony" exalt="Sidereal" group="Occult">
     <prerequisite>
@@ -1817,7 +1817,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="170"/>
+    <source source="Sidereals1st" page="170"/>
   </charm>
   <charm id="Sidereal.InciteDecorum" exalt="Sidereal" group="Occult">
     <prerequisite>
@@ -1831,7 +1831,7 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="170"/>
+    <source source="Sidereals1st" page="170"/>
   </charm>
   <charm id="Sidereal.InnocuousManeuver" exalt="Sidereal" group="Occult">
     <prerequisite>
@@ -1847,7 +1847,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="171"/>
+    <source source="Sidereals1st" page="171"/>
   </charm>
   <charm id="Sidereal.UnweavingMethod" exalt="Sidereal" group="Occult">
     <prerequisite>
@@ -1864,7 +1864,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="171"/>
+    <source source="Sidereals1st" page="171"/>
   </charm>
   <charm id="Sidereal.TerrestrialCircleSorcery" exalt="Sidereal" group="Occult">
     <prerequisite>
@@ -1880,7 +1880,7 @@
     <combo comboable="false"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="171"/>
+    <source source="Sidereals1st" page="171"/>
   </charm>
   <charm id="Sidereal.CelestialCircleSorcery" exalt="Sidereal" group="Occult">
     <prerequisite>
@@ -1898,7 +1898,7 @@
     <combo comboable="false"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="171"/>
+    <source source="Sidereals1st" page="171"/>
   </charm>
   <charm id="Sidereal.SoftPresencePractice" exalt="Sidereal" group="Stealth">
     <prerequisite>
@@ -1912,7 +1912,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="172"/>
+    <source source="Sidereals1st" page="172"/>
   </charm>
   <charm id="Sidereal.WalkingOutsideFate" exalt="Sidereal" group="Stealth">
     <prerequisite>
@@ -1928,7 +1928,7 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="172"/>
+    <source source="Sidereals1st" page="172"/>
   </charm>
   <charm id="Sidereal.SubordinateInspirationTechnique" exalt="Sidereal" group="Stealth">
     <prerequisite>
@@ -1943,7 +1943,7 @@
     </cost>
     <duration amount="1" unit="minute"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="172"/>
+    <source source="Sidereals1st" page="172"/>
   </charm>
   <charm id="Sidereal.BlindingBoar" exalt="Sidereal" group="Stealth">
     <prerequisite>
@@ -1958,7 +1958,7 @@
     </cost>
     <duration amount="5" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="172"/>
+    <source source="Sidereals1st" page="172"/>
   </charm>
   <charm id="Sidereal.CeasingtoExistApproach" exalt="Sidereal" group="Stealth">
     <prerequisite>
@@ -1977,7 +1977,7 @@
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="173"/>
+    <source source="Sidereals1st" page="173"/>
   </charm>
   <charm id="Sidereal.BurnLife" exalt="Sidereal" group="Athletics">
     <prerequisite>
@@ -1991,7 +1991,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="174"/>
+    <source source="Sidereals1st" page="174"/>
   </charm>
   <charm id="Sidereal.HungryTouch" exalt="Sidereal" group="Athletics">
     <prerequisite>
@@ -2006,7 +2006,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="174"/>
+    <source source="Sidereals1st" page="174"/>
   </charm>
   <charm id="Sidereal.ForgottenEarth" exalt="Sidereal" group="Athletics">
     <prerequisite>
@@ -2020,7 +2020,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Sidereals" page="175"/>
+    <source source="Sidereals1st" page="175"/>
   </charm>
   <charm id="Sidereal.InexorableAdvance" exalt="Sidereal" group="Athletics">
     <prerequisite>
@@ -2034,7 +2034,7 @@
     </cost>
     <duration amount="5" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="175"/>
+    <source source="Sidereals1st" page="175"/>
   </charm>
   <charm id="Sidereal.InvisibleMotion" exalt="Sidereal" group="Athletics">
     <prerequisite>
@@ -2054,7 +2054,7 @@
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="175"/>
+    <source source="Sidereals1st" page="175"/>
   </charm>
   <charm id="Sidereal.PriorWarning" exalt="Sidereal" group="Awareness">
     <prerequisite>
@@ -2068,7 +2068,7 @@
     </cost>
     <duration amount="5" unit="minute"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="175"/>
+    <source source="Sidereals1st" page="175"/>
   </charm>
   <charm id="Sidereal.ExpectedPain" exalt="Sidereal" group="Awareness">
     <prerequisite>
@@ -2083,7 +2083,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Sidereals" page="175"/>
+    <source source="Sidereals1st" page="175"/>
   </charm>
   <charm id="Sidereal.SupernalAwareness" exalt="Sidereal" group="Awareness">
     <prerequisite>
@@ -2098,7 +2098,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="176"/>
+    <source source="Sidereals1st" page="176"/>
   </charm>
   <charm id="Sidereal.WiseChoice" exalt="Sidereal" group="Awareness">
     <prerequisite>
@@ -2112,7 +2112,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="176"/>
+    <source source="Sidereals1st" page="176"/>
   </charm>
   <charm id="Sidereal.InevitablePursuit" exalt="Sidereal" group="Awareness">
     <prerequisite>
@@ -2127,7 +2127,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="176"/>
+    <source source="Sidereals1st" page="176"/>
   </charm>
   <charm id="Sidereal.ConclusiveWisdom" exalt="Sidereal" group="Awareness">
     <prerequisite>
@@ -2147,7 +2147,7 @@
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="177"/>
+    <source source="Sidereals1st" page="177"/>
   </charm>
   <charm id="Sidereal.SlickEssenceReplenishment" exalt="Sidereal" group="Bureaucracy">
     <prerequisite>
@@ -2159,7 +2159,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="The Sidereals" page="177"/>
+    <source source="Sidereals1st" page="177"/>
   </charm>
   <charm id="Sidereal.IcyHand" exalt="Sidereal" group="Bureaucracy">
     <prerequisite>
@@ -2173,7 +2173,7 @@
     </cost>
     <duration amount="5" unit="day"/>
     <charmtype type="Reflexive"/>
-    <source source="The Sidereals" page="178"/>
+    <source source="Sidereals1st" page="178"/>
   </charm>
   <charm id="Sidereal.TerminalSanction" exalt="Sidereal" group="Bureaucracy">
     <prerequisite>
@@ -2189,7 +2189,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="178"/>
+    <source source="Sidereals1st" page="178"/>
   </charm>
   <charm id="Sidereal.UnderlingInvisibilityPractice" exalt="Sidereal" group="Bureaucracy">
     <prerequisite>
@@ -2203,7 +2203,7 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="178"/>
+    <source source="Sidereals1st" page="178"/>
   </charm>
   <charm id="Sidereal.EndDebate" exalt="Sidereal" group="Bureaucracy">
     <prerequisite>
@@ -2222,7 +2222,7 @@
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="179"/>
+    <source source="Sidereals1st" page="179"/>
   </charm>
   <charm id="Sidereal.SmoothTransition" exalt="Sidereal" group="Medicine">
     <prerequisite>
@@ -2236,7 +2236,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="182"/>
+    <source source="Sidereals1st" page="182"/>
   </charm>
   <charm id="Sidereal.PeaceableConclusion" exalt="Sidereal" group="Medicine">
     <prerequisite>
@@ -2251,7 +2251,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="182"/>
+    <source source="Sidereals1st" page="182"/>
   </charm>
   <charm id="Sidereal.InvocationStorm-FollowingSilence" exalt="Sidereal" group="Medicine">
     <prerequisite>
@@ -2267,7 +2267,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="183"/>
+    <source source="Sidereals1st" page="183"/>
   </charm>
   <charm id="Sidereal.TerminateIllness" exalt="Sidereal" group="Medicine">
     <prerequisite>
@@ -2281,7 +2281,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Sidereals" page="183"/>
+    <source source="Sidereals1st" page="183"/>
   </charm>
   <charm id="Sidereal.EarthandSkyBargain" exalt="Sidereal" group="Medicine">
     <prerequisite>
@@ -2301,7 +2301,7 @@
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="PrayerStrip"/>
-    <source source="The Sidereals" page="183"/>
+    <source source="Sidereals1st" page="183"/>
   </charm>
   <charm id="Sidereal.ShadowlandsCircleNecromancy" exalt="Sidereal" group="Occult">
     <prerequisite>
@@ -2317,6 +2317,6 @@
     <combo comboable="false"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="197"/>
+    <source source="Abyssals1st" page="197"/>
   </charm>
 </charmlist>

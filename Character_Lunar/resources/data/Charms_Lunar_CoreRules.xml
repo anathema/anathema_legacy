@@ -13,7 +13,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="123"/>
+    <source source="Lunars1st" page="123"/>
   </charm>
   <charm id="Lunar.MaskingTheBrilliantForm" exalt="Lunar" group="Shapechanging">
     <prerequisite>
@@ -29,7 +29,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="123"/>
+    <source source="Lunars1st" page="123"/>
   </charm>
   <charm id="Lunar.FindingTheSpiritsShape" exalt="Lunar" group="Shapechanging">
     <prerequisite>
@@ -44,7 +44,7 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="NotAlienLearnable"/>
-    <source source="The Lunars" page="124"/>
+    <source source="Lunars1st" page="124"/>
   </charm>
   <charm id="Lunar.DeadlyBeastmanTransformation" exalt="Lunar" group="Shapechanging">
     <prerequisite>
@@ -60,7 +60,7 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="NotAlienLearnable"/>
-    <source source="The Lunars" page="124"/>
+    <source source="Lunars1st" page="124"/>
     <ruleset name="PowerCombat">
       <source source="Player's Guide" page="206"/>
     </ruleset>
@@ -78,7 +78,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="125"/>
+    <source source="Lunars1st" page="125"/>
   </charm>
   <charm id="Lunar.BlossomingGiftOfLuna" exalt="Lunar" group="Shapechanging">
     <prerequisite>
@@ -94,7 +94,7 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="125"/>
+    <source source="Lunars1st" page="125"/>
   </charm>
   <charm id="Lunar.ToweringBeastForm" exalt="Lunar" group="Shapechanging">
     <prerequisite>
@@ -108,7 +108,7 @@
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
     <charmAttribute attribute="NotAlienLearnable"/>
-    <source source="The Lunars" page="125"/>
+    <source source="Lunars1st" page="125"/>
   </charm>
   <charm id="Lunar.HumbleMouseShape" exalt="Lunar" group="Shapechanging">
     <prerequisite>
@@ -122,7 +122,7 @@
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
     <charmAttribute attribute="NotAlienLearnable"/>
-    <source source="The Lunars" page="128"/>
+    <source source="Lunars1st" page="128"/>
   </charm>
   <charm id="Lunar.ShapingIdealForm" exalt="Lunar" group="Shapechanging">
     <prerequisite>
@@ -137,7 +137,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="128"/>
+    <source source="Lunars1st" page="128"/>
   </charm>
   <charm id="Lunar.ManyFacedMoonTransformation" exalt="Lunar" group="Shapechanging">
     <prerequisite>
@@ -152,7 +152,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="128"/>
+    <source source="Lunars1st" page="128"/>
   </charm>
   <charm id="Lunar.PreysSkinDisguise" exalt="Lunar" group="Shapechanging">
     <prerequisite>
@@ -171,7 +171,7 @@
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
     <charmAttribute attribute="NotAlienLearnable"/>
-    <source source="The Lunars" page="129"/>
+    <source source="Lunars1st" page="129"/>
   </charm>
   <charm id="Lunar.LunarBloodReshapingTechnique" exalt="Lunar" group="Shapechanging">
     <prerequisite>
@@ -187,7 +187,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="129"/>
+    <source source="Lunars1st" page="129"/>
   </charm>
   <charm id="Lunar.WondrousLunarTransformation" exalt="Lunar" group="Shapechanging">
     <prerequisite>
@@ -205,7 +205,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="130"/>
+    <source source="Lunars1st" page="130"/>
   </charm>
   <charm id="Lunar.ShapingOnce-LivingForm" exalt="Lunar" group="Shapechanging">
     <prerequisite>
@@ -222,7 +222,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="130"/>
+    <source source="Lunars1st" page="130"/>
   </charm>
   <charm id="Lunar.FishTailTechnique" exalt="Lunar" group="Shapechanging">
     <prerequisite>
@@ -237,7 +237,7 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="131"/>
+    <source source="Lunars1st" page="131"/>
   </charm>
   <charm id="Lunar.ToolHandTechnique" exalt="Lunar" group="Shapechanging">
     <prerequisite>
@@ -252,7 +252,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="131"/>
+    <source source="Lunars1st" page="131"/>
   </charm>
   <charm id="Lunar.RatHeadTechnique" exalt="Lunar" group="Shapechanging">
     <prerequisite>
@@ -267,7 +267,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="132"/>
+    <source source="Lunars1st" page="132"/>
   </charm>
   <charm id="Lunar.Ox-BodyTechnique" exalt="Lunar" group="BodyEnhancement">
     <prerequisite>
@@ -279,7 +279,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="The Lunars" page="132"/>
+    <source source="Lunars1st" page="132"/>
   </charm>
   <charm id="Lunar.CrouchingTigerExercise" exalt="Lunar" group="BodyEnhancement">
     <prerequisite>
@@ -295,7 +295,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="133"/>
+    <source source="Lunars1st" page="133"/>
   </charm>
   <charm id="Lunar.MoonsilverMonkeyExercise" exalt="Lunar" group="BodyEnhancement">
     <prerequisite>
@@ -311,7 +311,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="133"/>
+    <source source="Lunars1st" page="133"/>
   </charm>
   <charm id="Lunar.RegainingBreathExercise" exalt="Lunar" group="BodyEnhancement">
     <prerequisite>
@@ -327,7 +327,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="134"/>
+    <source source="Lunars1st" page="134"/>
   </charm>
   <charm id="Lunar.BreathDrinkingExecutionerAttack" exalt="Lunar" group="BodyEnhancement">
     <prerequisite>
@@ -342,7 +342,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="134"/>
+    <source source="Lunars1st" page="134"/>
   </charm>
   <charm id="Lunar.PredatorGraceMethod" exalt="Lunar" group="BodyEnhancement">
     <prerequisite>
@@ -357,7 +357,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="134"/>
+    <source source="Lunars1st" page="134"/>
   </charm>
   <charm id="Lunar.PantherStrideStance" exalt="Lunar" group="BodyEnhancement">
     <prerequisite>
@@ -372,7 +372,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="134"/>
+    <source source="Lunars1st" page="134"/>
   </charm>
   <charm id="Lunar.FlyingTigerTechnique" exalt="Lunar" group="BodyEnhancement">
     <prerequisite>
@@ -387,7 +387,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="134"/>
+    <source source="Lunars1st" page="134"/>
   </charm>
   <charm id="Lunar.CatFallingAttitude" exalt="Lunar" group="BodyEnhancement">
     <prerequisite>
@@ -402,7 +402,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="135"/>
+    <source source="Lunars1st" page="135"/>
   </charm>
   <charm id="Lunar.TreeDwellingJaguarClaws" exalt="Lunar" group="BodyEnhancement">
     <prerequisite>
@@ -417,7 +417,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="135"/>
+    <source source="Lunars1st" page="135"/>
   </charm>
   <charm id="Lunar.CatPawClimbingStyle" exalt="Lunar" group="BodyEnhancement">
     <prerequisite>
@@ -432,7 +432,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="135"/>
+    <source source="Lunars1st" page="135"/>
   </charm>
   <charm id="Lunar.BodyWeaponTechnique" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -446,7 +446,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="136"/>
+    <source source="Lunars1st" page="136"/>
   </charm>
   <charm id="Lunar.SinuousStrikingGrace" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -461,7 +461,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="136"/>
+    <source source="Lunars1st" page="136"/>
   </charm>
   <charm id="Lunar.TyrantLizardStrike" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -476,7 +476,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="137"/>
+    <source source="Lunars1st" page="137"/>
   </charm>
   <charm id="Lunar.HydraHeadAttack" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -492,7 +492,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Lunars" page="137"/>
+    <source source="Lunars1st" page="137"/>
   </charm>
   <charm id="Lunar.SnakeBodyTechnique" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -507,7 +507,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="137"/>
+    <source source="Lunars1st" page="137"/>
   </charm>
   <charm id="Lunar.CoiledCobraStance" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -523,7 +523,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="137"/>
+    <source source="Lunars1st" page="137"/>
   </charm>
   <charm id="Lunar.DeadlyClawBlow" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -538,7 +538,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="137"/>
+    <source source="Lunars1st" page="137"/>
   </charm>
   <charm id="Lunar.ClawsOfTheSilverMoon" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -553,7 +553,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="138"/>
+    <source source="Lunars1st" page="138"/>
     <ruleset name="PowerCombat">		
     	<source source="Player's Guide" page="209"/>
     </ruleset>
@@ -572,7 +572,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="138"/>
+    <source source="Lunars1st" page="138"/>
     <ruleset name="PowerCombat">		
     	<source source="Player's Guide" page="207"/>
     </ruleset>
@@ -590,7 +590,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="139"/>
+    <source source="Lunars1st" page="139"/>
   </charm>
   <charm id="Lunar.BurningSalivaAttack" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -605,7 +605,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="139"/>
+    <source source="Lunars1st" page="139"/>
   </charm>
   <charm id="Lunar.CobraEyeMethod" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -620,7 +620,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="140"/>
+    <source source="Lunars1st" page="140"/>
   </charm>
   <charm id="Lunar.SoporificVenomAttack" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -635,7 +635,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="140"/>
+    <source source="Lunars1st" page="140"/>
   </charm>
   <charm id="Lunar.DeadlyViperStrike" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -650,7 +650,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="140"/>
+    <source source="Lunars1st" page="140"/>
   </charm>
   <charm id="Lunar.RabidBeastBite" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -665,7 +665,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="140"/>
+    <source source="Lunars1st" page="140"/>
   </charm>
   <charm id="Lunar.Form-DestroyingTouch" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -681,7 +681,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="141"/>
+    <source source="Lunars1st" page="141"/>
   </charm>
   <charm id="Lunar.SnakeHeadDefense" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -696,7 +696,7 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="141"/>
+    <source source="Lunars1st" page="141"/>
   </charm>
   <charm id="Lunar.MonkeyArmStyle" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -711,7 +711,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="142"/>
+    <source source="Lunars1st" page="142"/>
   </charm>
   <charm id="Lunar.StartlingTentacleAttack" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -726,7 +726,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Lunars" page="142"/>
+    <source source="Lunars1st" page="142"/>
   </charm>
   <charm id="Lunar.GraspingPseudopodMethod" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -741,7 +741,7 @@
     </cost>
     <duration event="AttackEnds"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="143"/>
+    <source source="Lunars1st" page="143"/>
   </charm>
   <charm id="Lunar.Tentacle-SpearStrike" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -756,7 +756,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Lunars" page="143"/>
+    <source source="Lunars1st" page="143"/>
   </charm>
   <charm id="Lunar.Weapon-SnatchingCoils" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -772,7 +772,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="143"/>
+    <source source="Lunars1st" page="143"/>
   </charm>
   <charm id="Lunar.BearEmbraceMethod" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -787,7 +787,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="144"/>
+    <source source="Lunars1st" page="144"/>
   </charm>
   <charm id="Lunar.SpineBreakingTechnique" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -802,7 +802,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="144"/>
+    <source source="Lunars1st" page="144"/>
     <ruleset name="PowerCombat">	
 	    <cost>
     	  <temporary>
@@ -825,7 +825,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="144"/>
+    <source source="Lunars1st" page="144"/>
   </charm>
   <charm id="Lunar.Throat-BearingHold" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -840,7 +840,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="145"/>
+    <source source="Lunars1st" page="145"/>
     <ruleset name="PowerCombat">
       <source source="Player's Guide" page="207"/>
     </ruleset>
@@ -858,7 +858,7 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="145"/>
+    <source source="Lunars1st" page="145"/>
     <ruleset name="PowerCombat">
 		<cost>
 	      <temporary>
@@ -882,7 +882,7 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="145"/>
+    <source source="Lunars1st" page="145"/>
     <ruleset name="PowerCombat">
       <source source="Player's Guide" page="206"/>
     </ruleset>
@@ -900,7 +900,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="146"/>
+    <source source="Lunars1st" page="146"/>
   </charm>
   <charm id="Lunar.AngryRhinoCharge" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -915,7 +915,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="146"/>
+    <source source="Lunars1st" page="146"/>
   </charm>
   <charm id="Lunar.BullHeadTechnique" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -930,7 +930,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="146"/>
+    <source source="Lunars1st" page="146"/>
   </charm>
   <charm id="Lunar.SubduingHonoredFoe" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -945,7 +945,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="147"/>
+    <source source="Lunars1st" page="147"/>
   </charm>
   <charm id="Lunar.BodyBreakingKata" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -961,7 +961,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="147"/>
+    <source source="Lunars1st" page="147"/>
   </charm>
   <charm id="Lunar.Foot-ConfusingBuffet" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -976,7 +976,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="147"/>
+    <source source="Lunars1st" page="147"/>
   </charm>
   <charm id="Lunar.Door-BreakingMethod" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -991,7 +991,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="147"/>
+    <source source="Lunars1st" page="147"/>
   </charm>
   <charm id="Lunar.Hunter'sEyeTechnique" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -1006,7 +1006,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="148"/>
+    <source source="Lunars1st" page="148"/>
   </charm>
   <charm id="Lunar.Armor-RendingClawFist" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -1022,7 +1022,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="148"/>
+    <source source="Lunars1st" page="148"/>
   </charm>
   <charm id="Lunar.SensingDeadlyFlow" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1036,7 +1036,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="149"/>
+    <source source="Lunars1st" page="149"/>
   </charm>
   <charm id="Lunar.StrikingMospidMethod" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1051,7 +1051,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="149"/>
+    <source source="Lunars1st" page="149"/>
   </charm>
   <charm id="Lunar.FerociousBitingSword" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1066,7 +1066,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="149"/>
+    <source source="Lunars1st" page="149"/>
   </charm>
   <charm id="Lunar.DanceLivingBlade" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1082,7 +1082,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Lunars" page="149"/>
+    <source source="Lunars1st" page="149"/>
   </charm>
   <charm id="Lunar.IrresistibleStormAttack" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1098,7 +1098,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Lunars" page="150"/>
+    <source source="Lunars1st" page="150"/>
   </charm>
   <charm id="Lunar.SpinningBladeAttack" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1113,7 +1113,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Lunars" page="151"/>
+    <source source="Lunars1st" page="151"/>
   </charm>
   <charm id="Lunar.LightningSwordMethod" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1128,7 +1128,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Lunars" page="151"/>
+    <source source="Lunars1st" page="151"/>
   </charm>
   <charm id="Lunar.DustDevilAdvance" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1144,7 +1144,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="151"/>
+    <source source="Lunars1st" page="151"/>
   </charm>
   <charm id="Lunar.TwistingSurpriseAttack" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1159,7 +1159,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="151"/>
+    <source source="Lunars1st" page="151"/>
   </charm>
   <charm id="Lunar.Foe-DrivingAttack" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1175,7 +1175,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Lunars" page="151"/>
+    <source source="Lunars1st" page="151"/>
   </charm>
   <charm id="Lunar.MonkeyPawAdvantage" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1190,7 +1190,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="151"/>
+    <source source="Lunars1st" page="151"/>
   </charm>
   <charm id="Lunar.Weapon-ClutchingMethod" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1205,7 +1205,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="152"/>
+    <source source="Lunars1st" page="152"/>
   </charm>
   <charm id="Lunar.TwistingMonkeyWrist" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1220,7 +1220,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="152"/>
+    <source source="Lunars1st" page="152"/>
   </charm>
   <charm id="Lunar.SurprisingGibbonAttack" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1235,7 +1235,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="153"/>
+    <source source="Lunars1st" page="153"/>
   </charm>
   <charm id="Lunar.KnowingWeaponTechnique" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1250,7 +1250,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="153"/>
+    <source source="Lunars1st" page="153"/>
   </charm>
   <charm id="Lunar.TigerClawSwat" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1265,7 +1265,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="153"/>
+    <source source="Lunars1st" page="153"/>
   </charm>
   <charm id="Lunar.Scar-MakingBlow" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1280,7 +1280,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="154"/>
+    <source source="Lunars1st" page="154"/>
   </charm>
   <charm id="Lunar.FerociousAvalancheTechnique" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1295,7 +1295,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="154"/>
+    <source source="Lunars1st" page="154"/>
   </charm>
   <charm id="Lunar.Limb-MaimingFlourish" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1310,7 +1310,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="154"/>
+    <source source="Lunars1st" page="154"/>
   </charm>
   <charm id="Lunar.ThunderclapMethod" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1325,7 +1325,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="154"/>
+    <source source="Lunars1st" page="154"/>
   </charm>
   <charm id="Lunar.WeaponFusionMethod" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1340,7 +1340,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="155"/>
+    <source source="Lunars1st" page="155"/>
   </charm>
   <charm id="Lunar.Weapon-ShapingPrana" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1355,7 +1355,7 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="155"/>
+    <source source="Lunars1st" page="155"/>
   </charm>
   <charm id="Lunar.StunningMoonsilverBlow" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1370,7 +1370,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="155"/>
+    <source source="Lunars1st" page="155"/>
   </charm>
   <charm id="Lunar.SurprisingMoonsilverDeformation" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1385,7 +1385,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="155"/>
+    <source source="Lunars1st" page="155"/>
   </charm>
   <charm id="Lunar.DeadlyMoonsilverAffinity" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1400,7 +1400,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="155"/>
+    <source source="Lunars1st" page="155"/>
   </charm>
   <charm id="Lunar.InsidiousMoonsilverShard" exalt="Lunar" group="Melee">
     <prerequisite>
@@ -1417,7 +1417,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="156"/>
+    <source source="Lunars1st" page="156"/>
   </charm>
   <charm id="Lunar.EagleEyeAdvantage" exalt="Lunar" group="RangedCombat">
     <prerequisite>
@@ -1431,7 +1431,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="156"/>
+    <source source="Lunars1st" page="156"/>
   </charm>
   <charm id="Lunar.Nature'sHarmonyAdvantage" exalt="Lunar" group="RangedCombat">
     <prerequisite>
@@ -1446,7 +1446,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="156"/>
+    <source source="Lunars1st" page="156"/>
   </charm>
   <charm id="Lunar.KnowingArrow'sPath" exalt="Lunar" group="RangedCombat">
     <prerequisite>
@@ -1461,7 +1461,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="156"/>
+    <source source="Lunars1st" page="156"/>
   </charm>
   <charm id="Lunar.Two-TargetMethod" exalt="Lunar" group="RangedCombat">
     <prerequisite>
@@ -1476,7 +1476,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Lunars" page="156"/>
+    <source source="Lunars1st" page="156"/>
   </charm>
   <charm id="Lunar.SilverWaterfallTechnique" exalt="Lunar" group="RangedCombat">
     <prerequisite>
@@ -1492,7 +1492,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Lunars" page="157"/>
+    <source source="Lunars1st" page="157"/>
   </charm>
   <charm id="Lunar.RainFeatheredDoom" exalt="Lunar" group="RangedCombat">
     <prerequisite>
@@ -1507,7 +1507,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Lunars" page="157"/>
+    <source source="Lunars1st" page="157"/>
   </charm>
   <charm id="Lunar.FindingNeedle'sEye" exalt="Lunar" group="RangedCombat">
     <prerequisite>
@@ -1522,7 +1522,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="158"/>
+    <source source="Lunars1st" page="158"/>
   </charm>
   <charm id="Lunar.Arrow-BreakingShot" exalt="Lunar" group="RangedCombat">
     <prerequisite>
@@ -1537,7 +1537,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="158"/>
+    <source source="Lunars1st" page="158"/>
   </charm>
   <charm id="Lunar.SkillfulRicochetAttack" exalt="Lunar" group="RangedCombat">
     <prerequisite>
@@ -1552,7 +1552,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="159"/>
+    <source source="Lunars1st" page="159"/>
   </charm>
   <charm id="Lunar.Arrow-ShapingMethod" exalt="Lunar" group="RangedCombat">
     <prerequisite>
@@ -1569,7 +1569,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="159"/>
+    <source source="Lunars1st" page="159"/>
   </charm>
   <charm id="Lunar.WolfEyeAdvantage" exalt="Lunar" group="RangedCombat">
     <prerequisite>
@@ -1584,7 +1584,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="159"/>
+    <source source="Lunars1st" page="159"/>
   </charm>
   <charm id="Lunar.Wind-WingsCarryTechnique" exalt="Lunar" group="RangedCombat">
     <prerequisite>
@@ -1599,7 +1599,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="160"/>
+    <source source="Lunars1st" page="160"/>
   </charm>
   <charm id="Lunar.Bow-BendingMethod" exalt="Lunar" group="RangedCombat">
     <prerequisite>
@@ -1614,7 +1614,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="160"/>
+    <source source="Lunars1st" page="160"/>
   </charm>
   <charm id="Lunar.Body-PinningStyle" exalt="Lunar" group="RangedCombat">
     <prerequisite>
@@ -1629,7 +1629,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="160"/>
+    <source source="Lunars1st" page="160"/>
   </charm>
   <charm id="Lunar.DeadlyAssassin'sShot" exalt="Lunar" group="RangedCombat">
     <prerequisite>
@@ -1644,7 +1644,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="160"/>
+    <source source="Lunars1st" page="160"/>
   </charm>
   <charm id="Lunar.LightningStrokeAttack" exalt="Lunar" group="RangedCombat">
     <prerequisite>
@@ -1659,7 +1659,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="160"/>
+    <source source="Lunars1st" page="160"/>
   </charm>
   <charm id="Lunar.RidingSecretWind" exalt="Lunar" group="RangedCombat">
     <prerequisite>
@@ -1674,7 +1674,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="160"/>
+    <source source="Lunars1st" page="160"/>
   </charm>
   <charm id="Lunar.SteelPawStyle" exalt="Lunar" group="Defensive">
     <prerequisite>
@@ -1688,7 +1688,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="161"/>
+    <source source="Lunars1st" page="161"/>
   </charm>
   <charm id="Lunar.GroundDenyingDefense" exalt="Lunar" group="Defensive">
     <prerequisite>
@@ -1703,7 +1703,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="161"/>
+    <source source="Lunars1st" page="161"/>
   </charm>
   <charm id="Lunar.GoldenTigerBlock" exalt="Lunar" group="Defensive">
     <prerequisite>
@@ -1718,7 +1718,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="162"/>
+    <source source="Lunars1st" page="162"/>
   </charm>
   <charm id="Lunar.WarySwallowMethod" exalt="Lunar" group="Defensive">
     <prerequisite>
@@ -1733,7 +1733,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="162"/>
+    <source source="Lunars1st" page="162"/>
   </charm>
   <charm id="Lunar.FelineGuardTechnique" exalt="Lunar" group="Defensive">
     <prerequisite>
@@ -1748,7 +1748,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="162"/>
+    <source source="Lunars1st" page="162"/>
   </charm>
   <charm id="Lunar.DenMotherMethod" exalt="Lunar" group="Defensive">
     <prerequisite>
@@ -1763,7 +1763,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="162"/>
+    <source source="Lunars1st" page="162"/>
   </charm>
   <charm id="Lunar.CrouchingTigerStance" exalt="Lunar" group="Defensive">
     <prerequisite>
@@ -1778,7 +1778,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="162"/>
+    <source source="Lunars1st" page="162"/>
   </charm>
   <charm id="Lunar.BowingReedTechnique" exalt="Lunar" group="Defensive">
     <prerequisite>
@@ -1792,7 +1792,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="163"/>
+    <source source="Lunars1st" page="163"/>
   </charm>
   <charm id="Lunar.BendingBeforeStorm" exalt="Lunar" group="Defensive">
     <prerequisite>
@@ -1807,7 +1807,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="163"/>
+    <source source="Lunars1st" page="163"/>
   </charm>
   <charm id="Lunar.Wind-DancingMethod" exalt="Lunar" group="Defensive">
     <prerequisite>
@@ -1822,7 +1822,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="163"/>
+    <source source="Lunars1st" page="163"/>
   </charm>
   <charm id="Lunar.SerpentEyeDefense" exalt="Lunar" group="Defensive">
     <prerequisite>
@@ -1837,7 +1837,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="164"/>
+    <source source="Lunars1st" page="164"/>
   </charm>
   <charm id="Lunar.UnmovingBearDefense" exalt="Lunar" group="Defensive">
     <prerequisite>
@@ -1852,7 +1852,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="165"/>
+    <source source="Lunars1st" page="165"/>
   </charm>
   <charm id="Lunar.FootTrappingCounter" exalt="Lunar" group="Defensive">
     <prerequisite>
@@ -1867,7 +1867,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="165"/>
+    <source source="Lunars1st" page="165"/>
   </charm>
   <charm id="Lunar.FlowingBodyEvasion" exalt="Lunar" group="Defensive">
     <prerequisite>
@@ -1883,7 +1883,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="165"/>
+    <source source="Lunars1st" page="165"/>
   </charm>
   <charm id="Lunar.Pack-SavingMethod" exalt="Lunar" group="Defensive">
     <prerequisite>
@@ -1898,7 +1898,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="165"/>
+    <source source="Lunars1st" page="165"/>
   </charm>
   <charm id="Lunar.RunningThroughHerd" exalt="Lunar" group="Defensive">
     <prerequisite>
@@ -1915,7 +1915,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="166"/>
+    <source source="Lunars1st" page="166"/>
   </charm>
   <charm id="Lunar.Hide-TougheningEssence" exalt="Lunar" group="Defensive">
     <prerequisite>
@@ -1929,7 +1929,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="166"/>
+    <source source="Lunars1st" page="166"/>
   </charm>
   <charm id="Lunar.Armor-FormingTechnique" exalt="Lunar" group="Defensive">
     <prerequisite>
@@ -1944,7 +1944,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="166"/>
+    <source source="Lunars1st" page="166"/>
   </charm>
   <charm id="Lunar.Limb-ShieldingGrowth" exalt="Lunar" group="Defensive">
     <prerequisite>
@@ -1959,7 +1959,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="167"/>
+    <source source="Lunars1st" page="167"/>
   </charm>
   <charm id="Lunar.ScalesDragon" exalt="Lunar" group="Defensive">
     <prerequisite>
@@ -1975,7 +1975,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="167"/>
+    <source source="Lunars1st" page="167"/>
   </charm>
   <charm id="Lunar.InvulnerableMoonsilverCarapace" exalt="Lunar" group="Defensive">
     <prerequisite>
@@ -1992,7 +1992,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="167"/>
+    <source source="Lunars1st" page="167"/>
   </charm>
   <charm id="Lunar.ShadowlandsCircleNecromancy" exalt="Lunar" group="Sorcery">
     <prerequisite>
@@ -2008,7 +2008,7 @@
     <combo comboable="false"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="197"/>
+    <source source="Abyssals1st" page="197"/>
   </charm>
   <charm id="Lunar.TerrestrialCircleSorcery" exalt="Lunar" group="Sorcery">
     <prerequisite>
@@ -2024,7 +2024,7 @@
     <combo comboable="false"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="192"/>
+    <source source="Lunars1st" page="192"/>
   </charm>
   <charm id="Lunar.Form-FindingMethod" exalt="Lunar" group="Sorcery">
     <prerequisite>
@@ -2040,7 +2040,7 @@
     <combo comboable="false"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="193"/>
+    <source source="Lunars1st" page="193"/>
   </charm>
   <charm id="Lunar.Tatoo-CuttingWisdom" exalt="Lunar" group="Sorcery">
     <prerequisite>
@@ -2057,7 +2057,7 @@
     <combo comboable="false"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="193"/>
+    <source source="Lunars1st" page="193"/>
   </charm>
   <charm id="Lunar.Moonsilver-ShapingRite" exalt="Lunar" group="Sorcery">
     <prerequisite>
@@ -2074,7 +2074,7 @@
     <combo comboable="false"/>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="193"/>
+    <source source="Lunars1st" page="193"/>
   </charm>
   <charm id="Lunar.CelestialCircleSorcery" exalt="Lunar" group="Sorcery">
     <prerequisite>
@@ -2092,7 +2092,7 @@
     <combo comboable="false"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="193"/>
+    <source source="Lunars1st" page="193"/>
   </charm>
   <charm id="Lunar.BeastInstinctMethod" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
@@ -2106,7 +2106,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="168"/>
+    <source source="Lunars1st" page="168"/>
   </charm>
   <charm id="Lunar.Gill-BreathingTechnique" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
@@ -2121,7 +2121,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="168"/>
+    <source source="Lunars1st" page="168"/>
   </charm>
   <charm id="Lunar.Whale-BreathTechnique" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
@@ -2136,7 +2136,7 @@
     </cost>
     <duration amount="Staminax10" unit="minute"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="168"/>
+    <source source="Lunars1st" page="168"/>
   </charm>
   <charm id="Lunar.SealskinEndurance" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
@@ -2151,7 +2151,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="168"/>
+    <source source="Lunars1st" page="168"/>
   </charm>
   <charm id="Lunar.HeatAdaptingMethod" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
@@ -2166,7 +2166,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="169"/>
+    <source source="Lunars1st" page="169"/>
   </charm>
   <charm id="Lunar.Fire-WalkingPrana" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
@@ -2181,7 +2181,7 @@
     </cost>
     <duration amount="10" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="169"/>
+    <source source="Lunars1st" page="169"/>
   </charm>
   <charm id="Lunar.UnerringDen-FindingSense" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
@@ -2196,7 +2196,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="169"/>
+    <source source="Lunars1st" page="169"/>
   </charm>
   <charm id="Lunar.Food-ScentingMethod" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
@@ -2211,7 +2211,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="170"/>
+    <source source="Lunars1st" page="170"/>
   </charm>
   <charm id="Lunar.Water-ProvidingTechnique" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
@@ -2226,7 +2226,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="170"/>
+    <source source="Lunars1st" page="170"/>
   </charm>
   <charm id="Lunar.WolfEnduranceMethod" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
@@ -2242,7 +2242,7 @@
     </cost>
     <duration event="Released"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="170"/>
+    <source source="Lunars1st" page="170"/>
   </charm>
   <charm id="Lunar.BearSleepTechnique" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
@@ -2257,7 +2257,7 @@
     </cost>
     <duration amount="1" unit="month"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="171"/>
+    <source source="Lunars1st" page="171"/>
   </charm>
   <charm id="Lunar.FortitudeAurochs" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
@@ -2272,7 +2272,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="171"/>
+    <source source="Lunars1st" page="171"/>
   </charm>
   <charm id="Lunar.Ever-WakingMethod" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
@@ -2287,7 +2287,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="171"/>
+    <source source="Lunars1st" page="171"/>
   </charm>
   <charm id="Lunar.Pain-NumbingPrana" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
@@ -2301,7 +2301,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="172"/>
+    <source source="Lunars1st" page="172"/>
   </charm>
   <charm id="Lunar.WillStoicWarrior" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
@@ -2316,7 +2316,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="172"/>
+    <source source="Lunars1st" page="172"/>
   </charm>
   <charm id="Lunar.Luna'sFortitude" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
@@ -2331,7 +2331,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="172"/>
+    <source source="Lunars1st" page="172"/>
   </charm>
   <charm id="Lunar.Infection-ResistingMethod" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
@@ -2345,7 +2345,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="173"/>
+    <source source="Lunars1st" page="173"/>
   </charm>
   <charm id="Lunar.DiseasePurgingEssence" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
@@ -2360,7 +2360,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="173"/>
+    <source source="Lunars1st" page="173"/>
   </charm>
   <charm id="Lunar.Bruise-ReliefTechnique" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
@@ -2375,7 +2375,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="173"/>
+    <source source="Lunars1st" page="173"/>
   </charm>
   <charm id="Lunar.HaltingScarletFlow" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
@@ -2390,7 +2390,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="173"/>
+    <source source="Lunars1st" page="173"/>
   </charm>
   <charm id="Lunar.LickWound" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
@@ -2405,7 +2405,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="173"/>
+    <source source="Lunars1st" page="173"/>
   </charm>
   <charm id="Lunar.Mother'sTouch" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
@@ -2422,7 +2422,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="173"/>
+    <source source="Lunars1st" page="173"/>
   </charm>
   <charm id="Lunar.Sense-SharpeningChange" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2436,7 +2436,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="174"/>
+    <source source="Lunars1st" page="174"/>
   </charm>
   <charm id="Lunar.HeightenedSightMethod" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2451,7 +2451,7 @@
     </cost>
     <duration amount="10" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="174"/>
+    <source source="Lunars1st" page="174"/>
   </charm>
   <charm id="Lunar.HeightenedSmellandTasteMethod" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2466,7 +2466,7 @@
     </cost>
     <duration amount="10" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="174"/>
+    <source source="Lunars1st" page="174"/>
   </charm>
   <charm id="Lunar.HeightenedHearingandTouchMethod" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2481,7 +2481,7 @@
     </cost>
     <duration amount="10" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="174"/>
+    <source source="Lunars1st" page="174"/>
   </charm>
   <charm id="Lunar.UnspeakingAuraDread" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -2496,7 +2496,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="189"/>
+    <source source="Lunars1st" page="189"/>
   </charm>
   <charm id="Lunar.BeastCalmingMethod" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -2511,7 +2511,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="189"/>
+    <source source="Lunars1st" page="189"/>
   </charm>
   <charm id="Lunar.Pack-FormingPresence" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -2527,7 +2527,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="189"/>
+    <source source="Lunars1st" page="189"/>
   </charm>
   <charm id="Lunar.AttentionDemandingPresence" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -2542,7 +2542,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="190"/>
+    <source source="Lunars1st" page="190"/>
   </charm>
   <charm id="Lunar.AnimalMagnetism" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -2557,7 +2557,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="190"/>
+    <source source="Lunars1st" page="190"/>
   </charm>
   <charm id="Lunar.Sense-BorrowingMethod" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2573,7 +2573,7 @@
     </cost>
     <duration duration="Sustained"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="175"/>
+    <source source="Lunars1st" page="175"/>
   </charm>
   <charm id="Lunar.Ever-WaryFoxTechnique" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2588,7 +2588,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="175"/>
+    <source source="Lunars1st" page="175"/>
   </charm>
   <charm id="Lunar.ObservedPreyInstinct" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2603,7 +2603,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="175"/>
+    <source source="Lunars1st" page="175"/>
   </charm>
   <charm id="Lunar.Weather-ScentingMethod" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2618,7 +2618,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="175"/>
+    <source source="Lunars1st" page="175"/>
   </charm>
   <charm id="Lunar.UnerringEarthDirectionSense" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2633,7 +2633,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="176"/>
+    <source source="Lunars1st" page="176"/>
   </charm>
   <charm id="Lunar.Moonsilver-ScentingSense" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2648,7 +2648,7 @@
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="176"/>
+    <source source="Lunars1st" page="176"/>
   </charm>
   <charm id="Lunar.Wyld-SensingInstincts" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2663,7 +2663,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="176"/>
+    <source source="Lunars1st" page="176"/>
   </charm>
   <charm id="Lunar.ResistingLureMadness" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2679,7 +2679,7 @@
     </cost>
     <duration amount="1" unit="lunarMonth"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="177"/>
+    <source source="Lunars1st" page="177"/>
   </charm>
   <charm id="Lunar.WyldObjectAppraisalMethod" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2694,7 +2694,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="177"/>
+    <source source="Lunars1st" page="177"/>
   </charm>
   <charm id="Lunar.HarmonyWithRealityTechnique" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2711,7 +2711,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="177"/>
+    <source source="Lunars1st" page="177"/>
   </charm>
   <charm id="Lunar.RitualLunarStability" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2727,7 +2727,7 @@
     </cost>
     <duration amount="Essence" unit="lunarMonth"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="177"/>
+    <source source="Lunars1st" page="177"/>
   </charm>
   <charm id="Lunar.NightIsDay" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2742,7 +2742,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="178"/>
+    <source source="Lunars1st" page="178"/>
   </charm>
   <charm id="Lunar.Fish-EyeTechnique" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2757,7 +2757,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="178"/>
+    <source source="Lunars1st" page="178"/>
   </charm>
   <charm id="Lunar.PerceivingHiddenWorld" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2772,7 +2772,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="178"/>
+    <source source="Lunars1st" page="178"/>
   </charm>
   <charm id="Lunar.ComprehendingEarsMeditation" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2787,7 +2787,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="179"/>
+    <source source="Lunars1st" page="179"/>
   </charm>
   <charm id="Lunar.CallsHumanPrey" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2803,7 +2803,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="179"/>
+    <source source="Lunars1st" page="179"/>
   </charm>
   <charm id="Lunar.FeralEarsMetamorphosis" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2818,7 +2818,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="179"/>
+    <source source="Lunars1st" page="179"/>
   </charm>
   <charm id="Lunar.RabbitEarMethod" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2833,7 +2833,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="179"/>
+    <source source="Lunars1st" page="179"/>
   </charm>
   <charm id="Lunar.SeeingWithoutLooking" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2848,7 +2848,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="179"/>
+    <source source="Lunars1st" page="179"/>
   </charm>
   <charm id="Lunar.Blood-KinSense" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2863,7 +2863,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="180"/>
+    <source source="Lunars1st" page="180"/>
   </charm>
   <charm id="Lunar.BloodonWind" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2878,7 +2878,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="181"/>
+    <source source="Lunars1st" page="181"/>
   </charm>
   <charm id="Lunar.Emotion-RevealingScent" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2893,7 +2893,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="181"/>
+    <source source="Lunars1st" page="181"/>
   </charm>
   <charm id="Lunar.Truth-ScentingMethod" exalt="Lunar" group="Perception">
     <prerequisite>
@@ -2908,7 +2908,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="181"/>
+    <source source="Lunars1st" page="181"/>
   </charm>
   <charm id="Lunar.StealthyFoxMethod" exalt="Lunar" group="Stealth">
     <prerequisite>
@@ -2922,7 +2922,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="182"/>
+    <source source="Lunars1st" page="182"/>
   </charm>
   <charm id="Lunar.ChameleonSkinDisguise" exalt="Lunar" group="Stealth">
     <prerequisite>
@@ -2937,7 +2937,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="182"/>
+    <source source="Lunars1st" page="182"/>
   </charm>
   <charm id="Lunar.Object-ConcealingMethod" exalt="Lunar" group="Stealth">
     <prerequisite>
@@ -2952,7 +2952,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="182"/>
+    <source source="Lunars1st" page="182"/>
   </charm>
   <charm id="Lunar.AllyConcealingMethod" exalt="Lunar" group="Stealth">
     <prerequisite>
@@ -2967,7 +2967,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="183"/>
+    <source source="Lunars1st" page="183"/>
   </charm>
   <charm id="Lunar.TracelessPassageTechnique" exalt="Lunar" group="Stealth">
     <prerequisite>
@@ -2983,7 +2983,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="183"/>
+    <source source="Lunars1st" page="183"/>
   </charm>
   <charm id="Lunar.Track-SweepingEssence" exalt="Lunar" group="Stealth">
     <prerequisite>
@@ -2999,7 +2999,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="183"/>
+    <source source="Lunars1st" page="183"/>
   </charm>
   <charm id="Lunar.Tale-SpinningMastery" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -3013,7 +3013,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="183"/>
+    <source source="Lunars1st" page="183"/>
   </charm>
   <charm id="Lunar.Lore-SpeakingMethod" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -3028,7 +3028,7 @@
     </cost>
     <duration duration="30MinutesAnd10PerDie"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="184"/>
+    <source source="Lunars1st" page="184"/>
   </charm>
   <charm id="Lunar.DiviningHiddenTruth" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -3044,7 +3044,7 @@
     </cost>
     <duration duration="1HourPlus"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="184"/>
+    <source source="Lunars1st" page="184"/>
   </charm>
   <charm id="Lunar.LionRoarMethod" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -3059,7 +3059,7 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="185"/>
+    <source source="Lunars1st" page="185"/>
   </charm>
   <charm id="Lunar.Wind-SpeakingMethod" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -3074,7 +3074,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="185"/>
+    <source source="Lunars1st" page="185"/>
   </charm>
   <charm id="Lunar.EmotionShapingTechnique" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -3089,7 +3089,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="186"/>
+    <source source="Lunars1st" page="186"/>
   </charm>
   <charm id="Lunar.RiverWords" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -3105,7 +3105,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="186"/>
+    <source source="Lunars1st" page="186"/>
   </charm>
   <charm id="Lunar.Crowd-IncitingMethod" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -3121,7 +3121,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="187"/>
+    <source source="Lunars1st" page="187"/>
   </charm>
   <charm id="Lunar.Crowd-CalmingPronouncement" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -3137,7 +3137,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="187"/>
+    <source source="Lunars1st" page="187"/>
   </charm>
   <charm id="Lunar.Courage-BuildingAdress" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -3153,7 +3153,7 @@
     </cost>
     <duration amount="1" unit="battle"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="187"/>
+    <source source="Lunars1st" page="187"/>
   </charm>
   <charm id="Lunar.GloriousBattlePresence" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -3169,7 +3169,7 @@
     </cost>
     <duration amount="5" unit="turn"/>
     <charmtype type="Special"/>
-    <source source="The Lunars" page="187"/>
+    <source source="Lunars1st" page="187"/>
   </charm>
   <charm id="Lunar.Foe-TauntingUtterance" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -3184,7 +3184,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="187"/>
+    <source source="Lunars1st" page="187"/>
   </charm>
   <charm id="Lunar.GlibTongueTechnique" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -3199,7 +3199,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="188"/>
+    <source source="Lunars1st" page="188"/>
   </charm>
   <charm id="Lunar.ImposingPresenceAttitude" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -3214,7 +3214,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="188"/>
+    <source source="Lunars1st" page="188"/>
   </charm>
   <charm id="Lunar.FearfulLunarForm" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -3229,7 +3229,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="188"/>
+    <source source="Lunars1st" page="188"/>
   </charm>
   <charm id="Lunar.Mind-BlankingFearTechnique" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -3244,7 +3244,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="188"/>
+    <source source="Lunars1st" page="188"/>
   </charm>
   <charm id="Lunar.BrotherhoodLakeandRiver" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -3259,7 +3259,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="190"/>
+    <source source="Lunars1st" page="190"/>
   </charm>
   <charm id="Lunar.Blood-SingingInstincts" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -3274,7 +3274,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="The Lunars" page="191"/>
+    <source source="Lunars1st" page="191"/>
   </charm>
   <charm id="Lunar.Pack-CallingCry" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
@@ -3289,7 +3289,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="191"/>
+    <source source="Lunars1st" page="191"/>
   </charm>
   <charm id="Lunar.Spirit-ScentingTechnique" exalt="Lunar" group="Spirit">
     <prerequisite>
@@ -3303,7 +3303,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="191"/>
+    <source source="Lunars1st" page="191"/>
   </charm>
   <charm id="Lunar.PulseInvisible" exalt="Lunar" group="Spirit">
     <prerequisite>
@@ -3318,7 +3318,7 @@
     </cost>
     <duration  amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="192"/>
+    <source source="Lunars1st" page="192"/>
   </charm>
   <charm id="Lunar.Devil-RestrainingGrip" exalt="Lunar" group="Spirit">
     <prerequisite>
@@ -3334,7 +3334,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Lunars" page="192"/>
+    <source source="Lunars1st" page="192"/>
   </charm>
   <charm id="Lunar.Spirit-MaimingEssenceAttack" exalt="Lunar" group="Spirit">
     <prerequisite>
@@ -3350,6 +3350,6 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Lunars" page="192"/>
+    <source source="Lunars1st" page="192"/>
   </charm>
 </charmlist>

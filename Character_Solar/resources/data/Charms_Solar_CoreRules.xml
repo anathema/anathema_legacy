@@ -13,7 +13,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="154"/>
+    <source source="FirstEdition" page="154"/>
   </charm>
   <charm id="Solar.SightWithoutEyes" exalt="Solar" group="Archery">
     <prerequisite>
@@ -28,7 +28,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="154"/>
+    <source source="FirstEdition" page="154"/>
   </charm>
   <charm id="Solar.AccuracyWithoutDistance" exalt="Solar" group="Archery">
     <prerequisite>
@@ -44,7 +44,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="154"/>
+    <source source="FirstEdition" page="154"/>
   </charm>
   <charm id="Solar.TranceUnhesitatingSpeed" exalt="Solar" group="Archery">
     <prerequisite>
@@ -59,7 +59,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="Exalted" page="155"/>
+    <source source="FirstEdition" page="155"/>
   </charm>
   <charm id="Solar.ThereIsNoWind" exalt="Solar" group="Archery">
     <prerequisite>
@@ -74,7 +74,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="155"/>
+    <source source="FirstEdition" page="155"/>
   </charm>
   <charm id="Solar.ArrowStormTechnique" exalt="Solar" group="Archery">
     <prerequisite>
@@ -90,7 +90,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="Exalted" page="155"/>
+    <source source="FirstEdition" page="155"/>
   </charm>
   <charm id="Solar.FieryArrowTechnique" exalt="Solar" group="Archery">
     <prerequisite>
@@ -104,7 +104,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="156"/>
+    <source source="FirstEdition" page="156"/>
   </charm>
   <charm id="Solar.PhantomArrowTechnique" exalt="Solar" group="Archery">
     <prerequisite>
@@ -119,7 +119,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="156"/>
+    <source source="FirstEdition" page="156"/>
   </charm>
   <charm id="Solar.DazzlingFlareAttack" exalt="Solar" group="Archery">
     <prerequisite>
@@ -134,7 +134,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="156"/>
+    <source source="FirstEdition" page="156"/>
   </charm>
   <charm id="Solar.SolarSpike" exalt="Solar" group="Archery">
     <prerequisite>
@@ -162,7 +162,7 @@
     </combo>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="157"/>
+    <source source="FirstEdition" page="157"/>
   </charm>
   <charm id="Solar.ImmaculateGoldenBow" exalt="Solar" group="Archery">
     <prerequisite>
@@ -178,7 +178,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="157"/>
+    <source source="FirstEdition" page="157"/>
   </charm>
   <charm id="Solar.RainFeatheredDeath" exalt="Solar" group="Archery">
     <prerequisite>
@@ -193,7 +193,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="157"/>
+    <source source="FirstEdition" page="157"/>
   </charm>
   <charm id="Solar.FerociousJab" exalt="Solar" group="Brawl">
     <prerequisite>
@@ -207,7 +207,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="157"/>
+    <source source="FirstEdition" page="157"/>
   </charm>
   <charm id="Solar.FistIronTechnique" exalt="Solar" group="Brawl">
     <prerequisite>
@@ -222,7 +222,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="157"/>
+    <source source="FirstEdition" page="157"/>
   </charm>
   <charm id="Solar.Ox-StunningBlow" exalt="Solar" group="Brawl">
     <prerequisite>
@@ -237,7 +237,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="157"/>
+    <source source="FirstEdition" page="157"/>
   </charm>
   <charm id="Solar.ThunderclapRushAttack" exalt="Solar" group="Brawl">
     <prerequisite>
@@ -252,7 +252,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="158"/>
+    <source source="FirstEdition" page="158"/>
   </charm>
   <charm id="Solar.DragonCoilTechnique" exalt="Solar" group="Brawl">
     <prerequisite>
@@ -272,7 +272,7 @@
     </combo>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="158"/>
+    <source source="FirstEdition" page="158"/>
   </charm>
   <charm id="Solar.SledgehammerFistPunch" exalt="Solar" group="Brawl">
     <prerequisite>
@@ -286,7 +286,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="159"/>
+    <source source="FirstEdition" page="159"/>
   </charm>
   <charm id="Solar.CrashingWaveThrow" exalt="Solar" group="Brawl">
     <prerequisite>
@@ -301,7 +301,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="159"/>
+    <source source="FirstEdition" page="159"/>
   </charm>
   <charm id="Solar.HammeronIronTechnique" exalt="Solar" group="Brawl">
     <prerequisite>
@@ -326,7 +326,7 @@
     </combo>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="Exalted" page="159"/>
+    <source source="FirstEdition" page="159"/>
   </charm>
   <charm id="Solar.HeavenThunderHammer" exalt="Solar" group="Brawl">
     <prerequisite>
@@ -341,7 +341,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="160"/>
+    <source source="FirstEdition" page="160"/>
   </charm>
   <charm id="Solar.ShockwaveTechnique" exalt="Solar" group="Brawl">
     <prerequisite>
@@ -356,7 +356,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="160"/>
+    <source source="FirstEdition" page="160"/>
   </charm>
   <charm id="Solar.ExcellentStrike" exalt="Solar" group="Melee">
     <prerequisite>
@@ -370,7 +370,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="162"/>
+    <source source="FirstEdition" page="162"/>
   </charm>
   <charm id="Solar.RetrieveFallenWeapon" exalt="Solar" group="Melee">
     <prerequisite>
@@ -384,7 +384,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="163"/>
+    <source source="FirstEdition" page="163"/>
   </charm>
   <charm id="Solar.OneWeapon,TwoBlows" exalt="Solar" group="Melee">
     <prerequisite>
@@ -399,7 +399,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="Exalted" page="163"/>
+    <source source="FirstEdition" page="163"/>
   </charm>
   <charm id="Solar.HungryTigerTechnique" exalt="Solar" group="Melee">
     <prerequisite>
@@ -414,7 +414,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="163"/>
+    <source source="FirstEdition" page="163"/>
   </charm>
   <charm id="Solar.PeonyBlossomAttack" exalt="Solar" group="Melee">
     <prerequisite>
@@ -429,7 +429,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="Exalted" page="163"/>
+    <source source="FirstEdition" page="163"/>
   </charm>
   <charm id="Solar.FireandStonesStrike" exalt="Solar" group="Melee">
     <prerequisite>
@@ -444,7 +444,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="163"/>
+    <source source="FirstEdition" page="163"/>
   </charm>
   <charm id="Solar.CallBlade" exalt="Solar" group="Melee">
     <prerequisite>
@@ -459,7 +459,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="163"/>
+    <source source="FirstEdition" page="163"/>
   </charm>
   <charm id="Solar.IronWhirlwindAttack" exalt="Solar" group="Melee">
     <prerequisite>
@@ -475,7 +475,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="Exalted" page="163"/>
+    <source source="FirstEdition" page="163"/>
   </charm>
   <charm id="Solar.IronRaptorTechnique" exalt="Solar" group="Melee">
     <prerequisite>
@@ -490,7 +490,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="164"/>
+    <source source="FirstEdition" page="164"/>
   </charm>
   <charm id="Solar.GloriousSolarSaber" exalt="Solar" group="Melee">
     <prerequisite>
@@ -506,7 +506,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="164"/>
+    <source source="FirstEdition" page="164"/>
   </charm>
   <charm id="Solar.SummoningLoyalSteel" exalt="Solar" group="Melee">
     <prerequisite>
@@ -521,7 +521,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="164"/>
+    <source source="FirstEdition" page="164"/>
   </charm>
   <charm id="Solar.Sandstorm-WindAttack" exalt="Solar" group="Melee">
     <prerequisite>
@@ -536,7 +536,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="165"/>
+    <source source="FirstEdition" page="165"/>
   </charm>
   <charm id="Solar.GoldenEssenceBlock" exalt="Solar" group="Melee">
     <prerequisite>
@@ -550,7 +550,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="166"/>
+    <source source="FirstEdition" page="166"/>
   </charm>
   <charm id="Solar.DippingSwallowDefense" exalt="Solar" group="Melee">
     <prerequisite>
@@ -565,7 +565,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="166"/>
+    <source source="FirstEdition" page="166"/>
   </charm>
   <charm id="Solar.BulwarkStance" exalt="Solar" group="Melee">
     <prerequisite>
@@ -580,7 +580,7 @@
     </cost>
     <duration event="NextAction"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="166"/>
+    <source source="FirstEdition" page="166"/>
   </charm>
   <charm id="Solar.HeavenlyGuardianDefense" exalt="Solar" group="Melee">
     <prerequisite>
@@ -596,7 +596,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="166"/>
+    <source source="FirstEdition" page="166"/>
   </charm>
   <charm id="Solar.EdgeMorningSunlight" exalt="Solar" group="Melee">
     <prerequisite>
@@ -611,7 +611,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="166"/>
+    <source source="FirstEdition" page="166"/>
   </charm>
   <charm id="Solar.CoronaRadiance" exalt="Solar" group="Melee">
     <prerequisite>
@@ -627,7 +627,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="166"/>
+    <source source="FirstEdition" page="166"/>
   </charm>
   <charm id="Solar.BlazingSolarBolt" exalt="Solar" group="Melee">
     <prerequisite>
@@ -644,7 +644,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="166"/>
+    <source source="FirstEdition" page="166"/>
   </charm>
   <charm id="Solar.SolarCounterattack" exalt="Solar" group="Melee">
     <prerequisite>
@@ -659,7 +659,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="167"/>
+    <source source="FirstEdition" page="167"/>
   </charm>
   <charm id="Solar.ReadyinEightDirectionsStance" exalt="Solar" group="Melee">
     <prerequisite>
@@ -674,7 +674,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="167"/>
+    <source source="FirstEdition" page="167"/>
   </charm>
   <charm id="Solar.FivefoldBulwarkStance" exalt="Solar" group="Melee">
     <prerequisite>
@@ -690,7 +690,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="167"/>
+    <source source="FirstEdition" page="167"/>
   </charm>
   <charm id="Solar.PrecisionStrikingRaptor" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -704,7 +704,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="168"/>
+    <source source="FirstEdition" page="168"/>
   </charm>
   <charm id="Solar.Joint-WoundingAttack" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -719,7 +719,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="168"/>
+    <source source="FirstEdition" page="168"/>
   </charm>
   <charm id="Solar.Observer-DeceivingAttack" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -734,7 +734,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="168"/>
+    <source source="FirstEdition" page="168"/>
   </charm>
   <charm id="Solar.MistonWaterAttack" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -749,7 +749,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="168"/>
+    <source source="FirstEdition" page="168"/>
   </charm>
   <charm id="Solar.FallingIcicleStrike" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -764,7 +764,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="168"/>
+    <source source="FirstEdition" page="168"/>
   </charm>
   <charm id="Solar.Triple-DistanceAttackTechnique" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -778,7 +778,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="169"/>
+    <source source="FirstEdition" page="169"/>
   </charm>
   <charm id="Solar.ShowerDeadlyBlades" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -794,7 +794,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="Exalted" page="169"/>
+    <source source="FirstEdition" page="169"/>
   </charm>
   <charm id="Solar.CascadeCuttingTerror" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -809,7 +809,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="169"/>
+    <source source="FirstEdition" page="169"/>
   </charm>
   <charm id="Solar.Ox-BodyTechnique" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -821,7 +821,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Exalted" page="170"/>
+    <source source="FirstEdition" page="170"/>
   </charm>
   <charm id="Solar.ArmoredScout'sInvigoration" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -835,7 +835,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="170"/>
+    <source source="FirstEdition" page="170"/>
   </charm>
   <charm id="Solar.Front-LineWarrior'sStamina" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -850,7 +850,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="170"/>  
+    <source source="FirstEdition" page="170"/>  
   </charm>
   <charm id="Solar.FierySolarChakram" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -866,7 +866,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="170"/> 
+    <source source="FirstEdition" page="170"/> 
   </charm>
   <charm id="Solar.Essence-GatheringTemper" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -880,7 +880,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="171"/>
+    <source source="FirstEdition" page="171"/>
   </charm>
   <charm id="Solar.BattleFuryFocus" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -895,7 +895,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="171"/>
+    <source source="FirstEdition" page="171"/>
   </charm>
   <charm id="Solar.Willpower-EnhancingSpirit" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -910,7 +910,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="171"/>
+    <source source="FirstEdition" page="171"/>
   </charm>
   <charm id="Solar.Tiger-Warrior'sEndurance" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -925,7 +925,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="171"/>
+    <source source="FirstEdition" page="171"/>
   </charm>
   <charm id="Solar.BloodthirstySword-DancerSpirit" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -941,7 +941,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="172"/>
+    <source source="FirstEdition" page="172"/>
   </charm>
   <charm id="Solar.RespectCommandingAttitude" exalt="Solar" group="Performance">
     <prerequisite>
@@ -955,7 +955,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="172"/>
+    <source source="FirstEdition" page="172"/>
   </charm>
   <charm id="Solar.UnrulyMobDispersingRebuke" exalt="Solar" group="Performance">
     <prerequisite>
@@ -971,7 +971,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="172"/>
+    <source source="FirstEdition" page="172"/>
   </charm>
   <charm id="Solar.Rout-StemmingGesture" exalt="Solar" group="Performance">
     <prerequisite>
@@ -987,7 +987,7 @@
     </cost>
     <duration amount="3" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="172"/>
+    <source source="FirstEdition" page="172"/>
   </charm>
   <charm id="Solar.FuryIncitingPresence" exalt="Solar" group="Performance">
     <prerequisite>
@@ -1003,7 +1003,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="173"/>
+    <source source="FirstEdition" page="173"/>
   </charm>
   <charm id="Solar.Heroism-EncouragingPresence" exalt="Solar" group="Performance">
     <prerequisite>
@@ -1019,7 +1019,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="173"/>
+    <source source="FirstEdition" page="173"/>
   </charm>
   <charm id="Solar.Tiger-WarriorTrainingTechnique" exalt="Solar" group="Performance">
     <prerequisite>
@@ -1036,7 +1036,7 @@
     </cost>
     <duration amount="1" unit="week"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="173"/>
+    <source source="FirstEdition" page="173"/>
   </charm>
   <charm id="Solar.MasterfulPerformanceExercise" exalt="Solar" group="Performance">
     <prerequisite>
@@ -1050,7 +1050,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="174"/>
+    <source source="FirstEdition" page="174"/>
   </charm>
   <charm id="Solar.Phantom-ConjuringPerformance" exalt="Solar" group="Performance">
     <prerequisite>
@@ -1066,7 +1066,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="174"/>
+    <source source="FirstEdition" page="174"/>
   </charm>
   <charm id="Solar.Heart-CompellingMethod" exalt="Solar" group="Performance">
     <prerequisite>
@@ -1082,7 +1082,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="174"/>
+    <source source="FirstEdition" page="174"/>
   </charm>
   <charm id="Solar.MemoryReweavingDiscipline" exalt="Solar" group="Performance">
     <prerequisite>
@@ -1099,7 +1099,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="175"/>
+    <source source="FirstEdition" page="175"/>
   </charm>
   <charm id="Solar.HarmoniousPresenceMeditation" exalt="Solar" group="Presence">
     <prerequisite>
@@ -1113,7 +1113,7 @@
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="175"/>
+    <source source="FirstEdition" page="175"/>
   </charm>
   <charm id="Solar.Listener-SwayingArgument" exalt="Solar" group="Presence">
     <prerequisite>
@@ -1129,7 +1129,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="175"/>
+    <source source="FirstEdition" page="175"/>
   </charm>
   <charm id="Solar.MajesticRadiantPresence" exalt="Solar" group="Presence">
     <prerequisite>
@@ -1144,7 +1144,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="175"/>
+    <source source="FirstEdition" page="175"/>
   </charm>
   <charm id="Solar.UnderlingPromotingTouch" exalt="Solar" group="Presence">
     <prerequisite>
@@ -1160,7 +1160,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="175"/>
+    <source source="FirstEdition" page="175"/>
   </charm>
   <charm id="Solar.HypnoticTongueTechnique" exalt="Solar" group="Presence">
     <prerequisite>
@@ -1176,7 +1176,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="175"/>
+    <source source="FirstEdition" page="175"/>
   </charm>
   <charm id="Solar.TerrifyingApparitionGlory" exalt="Solar" group="Presence">
     <prerequisite>
@@ -1192,7 +1192,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="176"/>
+    <source source="FirstEdition" page="176"/>
   </charm>
   <charm id="Solar.DurabilityOakMeditation" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1206,7 +1206,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="176"/>
+    <source source="FirstEdition" page="176"/>
   </charm>
   <charm id="Solar.IronSkinConcentration" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1222,7 +1222,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="176"/>
+    <source source="FirstEdition" page="176"/>
   </charm>
   <charm id="Solar.SpiritStrengthensSkin" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1237,7 +1237,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="176"/>
+    <source source="FirstEdition" page="176"/>
   </charm>
   <charm id="Solar.UnfailingTortoiseTechnique" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1252,7 +1252,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="177"/>
+    <source source="FirstEdition" page="177"/>
   </charm>
   <charm id="Solar.AdamantSkinTechnique" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1270,7 +1270,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="177"/>
+    <source source="FirstEdition" page="177"/>
   </charm>
   <charm id="Solar.WhirlwindArmor-DonningPrana" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1284,7 +1284,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="178"/>
+    <source source="FirstEdition" page="178"/>
   </charm>
   <charm id="Solar.IronKettleBody" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1299,7 +1299,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="178"/>
+    <source source="FirstEdition" page="178"/>
   </charm>
   <charm id="Solar.Hauberk-SummoningGesture" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1314,7 +1314,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="178"/>
+    <source source="FirstEdition" page="178"/>
   </charm>
   <charm id="Solar.GloriousSolarPlate" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1330,7 +1330,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="178"/>
+    <source source="FirstEdition" page="178"/>
   </charm>
   <charm id="Solar.Illness-ResistingMeditation" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1344,7 +1344,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="179"/>
+    <source source="FirstEdition" page="179"/>
   </charm>
   <charm id="Solar.Poison-ResistingMeditation" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1358,7 +1358,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="179"/>
+    <source source="FirstEdition" page="179"/>
   </charm>
   <charm id="Solar.ImmunitytoEverythingTechnique" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -1375,7 +1375,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="179"/>
+    <source source="FirstEdition" page="179"/>
   </charm>
   <charm id="Solar.FriendshipWithAnimalsApproach" exalt="Solar" group="Survival">
     <prerequisite>
@@ -1389,7 +1389,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="179"/>
+    <source source="FirstEdition" page="179"/>
   </charm>
   <charm id="Solar.Spirit-TiedPet" exalt="Solar" group="Survival">
     <prerequisite>
@@ -1408,7 +1408,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="179"/>
+    <source source="FirstEdition" page="179"/>
   </charm>
   <charm id="Solar.Hardship-SurvivingMendicantSpirit" exalt="Solar" group="Survival">
     <prerequisite>
@@ -1422,7 +1422,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="180"/>
+    <source source="FirstEdition" page="180"/>
   </charm>
   <charm id="Solar.BestialTraitsTechnique" exalt="Solar" group="Survival">
     <prerequisite>
@@ -1437,7 +1437,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="180"/>
+    <source source="FirstEdition" page="180"/>
   </charm>
   <charm id="Solar.TracklessRegionNavigationCharm" exalt="Solar" group="Survival">
     <prerequisite>
@@ -1452,7 +1452,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="181"/>
+    <source source="FirstEdition" page="181"/>
   </charm>
   <charm id="Solar.UnshakeableBloodhoundTechnique" exalt="Solar" group="Survival">
     <prerequisite>
@@ -1468,7 +1468,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="181"/>
+    <source source="FirstEdition" page="181"/>
   </charm>
   <charm id="Solar.FoodGatheringExercise" exalt="Solar" group="Survival">
     <prerequisite>
@@ -1483,7 +1483,7 @@
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="181"/>
+    <source source="FirstEdition" page="181"/>
   </charm>
   <charm id="Solar.FlawlessHandiworkMethod" exalt="Solar" group="Craft">
     <prerequisite>
@@ -1497,7 +1497,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="182"/>
+    <source source="FirstEdition" page="182"/>
   </charm>
   <charm id="Solar.Element-ResistingPrana" exalt="Solar" group="Survival">
     <prerequisite>
@@ -1513,7 +1513,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="182"/>
+    <source source="FirstEdition" page="182"/>
   </charm>
   <charm id="Solar.TracelessPassage" exalt="Solar" group="Survival">
     <prerequisite>
@@ -1529,7 +1529,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="182"/>
+    <source source="FirstEdition" page="182"/>
   </charm>
   <charm id="Solar.Eye-DeceivingCamouflage" exalt="Solar" group="Survival">
     <prerequisite>
@@ -1544,7 +1544,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="182"/>
+    <source source="FirstEdition" page="182"/>
   </charm>
   <charm id="Solar.Object-StrengtheningTouch" exalt="Solar" group="Craft">
     <prerequisite>
@@ -1559,7 +1559,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="183"/>
+    <source source="FirstEdition" page="183"/>
   </charm>
   <charm id="Solar.Chaos-ResistancePreparation" exalt="Solar" group="Craft">
     <prerequisite>
@@ -1575,7 +1575,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="183"/>
+    <source source="FirstEdition" page="183"/>
   </charm>
   <charm id="Solar.Durability-EnhancingTechnique" exalt="Solar" group="Craft">
     <prerequisite>
@@ -1590,7 +1590,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="183"/>
+    <source source="FirstEdition" page="183"/>
   </charm>
   <charm id="Solar.Crack-MendingTechnique" exalt="Solar" group="Craft">
     <prerequisite>
@@ -1608,7 +1608,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="183"/>
+    <source source="FirstEdition" page="183"/>
   </charm>
   <charm id="Solar.ShatteringGrasp" exalt="Solar" group="Craft">
     <prerequisite>
@@ -1623,7 +1623,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="184"/>
+    <source source="FirstEdition" page="184"/>
   </charm>
   <charm id="Solar.CraftsmanNeedsNoTools" exalt="Solar" group="Craft">
     <prerequisite>
@@ -1639,7 +1639,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="184"/>
+    <source source="FirstEdition" page="184"/>
   </charm>
   <charm id="Solar.TenMagistrateEyes" exalt="Solar" group="Investigation">
     <prerequisite>
@@ -1653,7 +1653,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="185"/>
+    <source source="FirstEdition" page="185"/>
   </charm>
   <charm id="Solar.Judge'sEarTechnique" exalt="Solar" group="Investigation">
     <prerequisite>
@@ -1668,7 +1668,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="185"/>
+    <source source="FirstEdition" page="185"/>
   </charm>
   <charm id="Solar.CraftyObservationMethod" exalt="Solar" group="Investigation">
     <prerequisite>
@@ -1683,7 +1683,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="185"/>
+    <source source="FirstEdition" page="185"/>
   </charm>
   <charm id="Solar.Evidence-DiscerningMethod" exalt="Solar" group="Investigation">
     <prerequisite>
@@ -1699,7 +1699,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="185"/>
+    <source source="FirstEdition" page="185"/>
   </charm>
   <charm id="Solar.IrresistableQuestioningTechnique" exalt="Solar" group="Investigation">
     <prerequisite>
@@ -1714,7 +1714,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="186"/>
+    <source source="FirstEdition" page="186"/>
   </charm>
   <charm id="Solar.UnknownWisdomEpiphany" exalt="Solar" group="Investigation">
     <prerequisite>
@@ -1731,7 +1731,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="186"/>
+    <source source="FirstEdition" page="186"/>
   </charm>
   <charm id="Solar.Integrity-ProtectingPrana" exalt="Solar" group="Lore">
     <prerequisite>
@@ -1746,7 +1746,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="186"/>
+    <source source="FirstEdition" page="186"/>
   </charm>
   <charm id="Solar.Chaos-RepellingPattern" exalt="Solar" group="Lore">
     <prerequisite>
@@ -1762,7 +1762,7 @@
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="186"/>
+    <source source="FirstEdition" page="186"/>
   </charm>
   <charm id="Solar.Wyld-ShapingTechnique" exalt="Solar" group="Lore">
     <prerequisite>
@@ -1778,7 +1778,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="186"/>
+    <source source="FirstEdition" page="186"/>
   </charm>
   <charm id="Solar.Essence-LendingMethod" exalt="Solar" group="Lore">
     <prerequisite>
@@ -1792,7 +1792,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="187"/>
+    <source source="FirstEdition" page="187"/>
   </charm>
   <charm id="Solar.Will-BolsteringMethod" exalt="Solar" group="Lore">
     <prerequisite>
@@ -1808,7 +1808,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="187"/>
+    <source source="FirstEdition" page="187"/>
   </charm>
   <charm id="Solar.Wound-AcceptingTechnique" exalt="Solar" group="Lore">
     <prerequisite>
@@ -1824,7 +1824,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="188"/>
+    <source source="FirstEdition" page="188"/>
   </charm>
   <charm id="Solar.Power-AwardingPrana" exalt="Solar" group="Lore">
     <prerequisite>
@@ -1843,7 +1843,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="188"/>
+    <source source="FirstEdition" page="188"/>
   </charm>
   <charm id="Solar.FlawlessDiagnosisTechnique" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -1857,7 +1857,7 @@
     </cost>
     <duration amount="5" unit="minute"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="188"/>
+    <source source="FirstEdition" page="188"/>
   </charm>
   <charm id="Solar.Body-MendingMeditation" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -1871,7 +1871,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="188"/>
+    <source source="FirstEdition" page="188"/>
   </charm>
   <charm id="Solar.Ailment-RectifyingMethod" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -1886,7 +1886,7 @@
     </cost>
     <duration amount="6" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="188"/>
+    <source source="FirstEdition" page="188"/>
   </charm>
   <charm id="Solar.TouchBlissfulRelease" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -1901,7 +1901,7 @@
     </cost>
     <duration amount="6" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="189"/>
+    <source source="FirstEdition" page="189"/>
   </charm>
   <charm id="Solar.Contagion-CuringTouch" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -1916,7 +1916,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="189"/>
+    <source source="FirstEdition" page="189"/>
   </charm>
   <charm id="Solar.GrievousInjuryRecoveryMethod" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -1931,7 +1931,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="190"/>
+    <source source="FirstEdition" page="190"/>
   </charm>
   <charm id="Solar.Wound-MendingCareTechnique" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -1947,7 +1947,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="190"/>
+    <source source="FirstEdition" page="190"/>
   </charm>
   <charm id="Solar.AnointmentMiraculousHealth" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -1963,7 +1963,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="190"/>
+    <source source="FirstEdition" page="190"/>
   </charm>
   <charm id="Solar.BodilyRegenerationPrana" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -1979,7 +1979,7 @@
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="191"/>
+    <source source="FirstEdition" page="191"/>
   </charm>
   <charm id="Solar.HealingTranceMeditation" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -1995,7 +1995,7 @@
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="191"/>
+    <source source="FirstEdition" page="191"/>
   </charm>
   <charm id="Solar.TerrestrialCircleSorcery" exalt="Solar" group="Occult">
     <prerequisite>
@@ -2011,7 +2011,7 @@
     <combo comboable="false"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="191"/>
+    <source source="FirstEdition" page="191"/>
   </charm>
   <charm id="Solar.CelestialCircleSorcery" exalt="Solar" group="Occult">
     <prerequisite>
@@ -2028,7 +2028,7 @@
     <combo comboable="false"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="191"/>
+    <source source="FirstEdition" page="191"/>
   </charm>
   <charm id="Solar.SolarCircleSorcery" exalt="Solar" group="Occult">
     <prerequisite>
@@ -2045,7 +2045,7 @@
     <combo comboable="false"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="191"/>
+    <source source="FirstEdition" page="191"/>
   </charm>
   <charm id="Solar.GracefulCraneStance" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2059,7 +2059,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="192"/>
+    <source source="FirstEdition" page="192"/>
   </charm>
   <charm id="Solar.Spirit-DetectingGlance" exalt="Solar" group="Occult">
     <prerequisite>
@@ -2073,7 +2073,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="192"/>
+    <source source="FirstEdition" page="192"/>
   </charm>
   <charm id="Solar.Spirit-CuttingAttack" exalt="Solar" group="Occult">
     <prerequisite>
@@ -2089,7 +2089,7 @@
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="192"/>
+    <source source="FirstEdition" page="192"/>
   </charm>
   <charm id="Solar.Ghost-EatingTechnique" exalt="Solar" group="Occult">
     <prerequisite>
@@ -2105,7 +2105,7 @@
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="192"/>
+    <source source="FirstEdition" page="192"/>
   </charm>
   <charm id="Solar.MonkeyLeapTechnique" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2120,7 +2120,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="193"/>
+    <source source="FirstEdition" page="193"/>
   </charm>
   <charm id="Solar.LightningSpeed" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2135,7 +2135,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="193"/>
+    <source source="FirstEdition" page="193"/>
   </charm>
   <charm id="Solar.ThunderboltAttackPrana" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2156,7 +2156,7 @@
     </combo>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="193"/>
+    <source source="FirstEdition" page="193"/>
   </charm>
   <charm id="Solar.All-EncompassingSorcerer'sSight" exalt="Solar" group="Occult">
     <prerequisite>
@@ -2171,7 +2171,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="193"/>
+    <source source="FirstEdition" page="193"/>
   </charm>
   <charm id="Solar.Spirit-RepellingDiagram" exalt="Solar" group="Occult">
     <prerequisite>
@@ -2186,7 +2186,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="193"/>
+    <source source="FirstEdition" page="193"/>
   </charm>
   <charm id="Solar.Spider-FootStyle" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2201,7 +2201,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="194"/>
+    <source source="FirstEdition" page="194"/>
   </charm>
   <charm id="Solar.LeapingTigerAttack" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2222,7 +2222,7 @@
     </combo>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="194"/>
+    <source source="FirstEdition" page="194"/>
   </charm>
   <charm id="Solar.Feather-FootStyle" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2237,7 +2237,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="194"/>
+    <source source="FirstEdition" page="194"/>
   </charm>
   <charm id="Solar.IncreasingStrengthExercise" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2251,7 +2251,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="195"/>
+    <source source="FirstEdition" page="195"/>
   </charm>
   <charm id="Solar.Thunder'sMight" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2266,7 +2266,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="195"/>
+    <source source="FirstEdition" page="195"/>
   </charm>
   <charm id="Solar.RacingHareMethod" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2283,7 +2283,7 @@
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="195"/>
+    <source source="FirstEdition" page="195"/>
   </charm>
   <charm id="Solar.TenOxMeditation" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -2298,7 +2298,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Exalted" page="196"/>
+    <source source="FirstEdition" page="196"/>
   </charm>
   <charm id="Solar.SensoryAcuityPrana" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -2312,7 +2312,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="196"/>
+    <source source="FirstEdition" page="196"/>
   </charm>
   <charm id="Solar.KeenHearingAndTouchTechnique" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -2327,7 +2327,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="196"/>
+    <source source="FirstEdition" page="196"/>
   </charm>
   <charm id="Solar.KeenSmellAndTasteTechnique" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -2342,7 +2342,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="196"/>
+    <source source="FirstEdition" page="196"/>
   </charm>
   <charm id="Solar.KeenSightTechnique" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -2357,7 +2357,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="196"/>
+    <source source="FirstEdition" page="196"/>
   </charm>
   <charm id="Solar.UnsurpassedHearingAndTouchDiscipline" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -2372,7 +2372,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="196"/>
+    <source source="FirstEdition" page="196"/>
   </charm>
   <charm id="Solar.UnsurpassedSightDiscipline" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -2387,7 +2387,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="196"/>
+    <source source="FirstEdition" page="196"/>
   </charm>
   <charm id="Solar.UnsurpassedSmellAndTasteDiscipline" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -2402,7 +2402,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="196"/>
+    <source source="FirstEdition" page="196"/>
   </charm>
   <charm id="Solar.SurpriseAnticipationMethod" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -2417,7 +2417,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="197"/>
+    <source source="FirstEdition" page="197"/>
   </charm>
   <charm id="Solar.ReedinWind" exalt="Solar" group="Dodge">
     <prerequisite>
@@ -2431,7 +2431,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="197"/>
+    <source source="FirstEdition" page="197"/>
   </charm>
   <charm id="Solar.ReflexSidestepTechnique" exalt="Solar" group="Dodge">
     <prerequisite>
@@ -2446,7 +2446,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="198"/>
+    <source source="FirstEdition" page="198"/>
   </charm>
   <charm id="Solar.ShadowOverWater" exalt="Solar" group="Dodge">
     <prerequisite>
@@ -2461,7 +2461,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="198"/>
+    <source source="FirstEdition" page="198"/>
   </charm>
   <charm id="Solar.SevenShadowEvasion" exalt="Solar" group="Dodge">
     <prerequisite>
@@ -2476,7 +2476,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="198"/>
+    <source source="FirstEdition" page="198"/>
   </charm>
   <charm id="Solar.FlowLikeBlood" exalt="Solar" group="Dodge">
     <prerequisite>
@@ -2493,7 +2493,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="198"/>
+    <source source="FirstEdition" page="198"/>
   </charm>
   <charm id="Solar.SeasonedCriminalMethod" exalt="Solar" group="Larceny">
     <prerequisite>
@@ -2507,7 +2507,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="199"/>
+    <source source="FirstEdition" page="199"/>
   </charm>
   <charm id="Solar.FlawlesslyImpenetrableDisguise" exalt="Solar" group="Larceny">
     <prerequisite>
@@ -2522,7 +2522,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="199"/>
+    <source source="FirstEdition" page="199"/>
   </charm>
   <charm id="Solar.PerfectMirror" exalt="Solar" group="Larceny">
     <prerequisite>
@@ -2538,7 +2538,7 @@
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="199"/>
+    <source source="FirstEdition" page="199"/>
   </charm>
   <charm id="Solar.FlawlessPickpocketingTechnique" exalt="Solar" group="Larceny">
     <prerequisite>
@@ -2552,7 +2552,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="200"/>
+    <source source="FirstEdition" page="200"/>
   </charm>
   <charm id="Solar.StealingFromPlainSightSpirit" exalt="Solar" group="Larceny">
     <prerequisite>
@@ -2567,7 +2567,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="200"/>
+    <source source="FirstEdition" page="200"/>
   </charm>
   <charm id="Solar.Magpie'sInvisibleTalon" exalt="Solar" group="Larceny">
     <prerequisite>
@@ -2583,7 +2583,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="200"/>
+    <source source="FirstEdition" page="200"/>
   </charm>
   <charm id="Solar.Lock-OpeningTouch" exalt="Solar" group="Larceny">
     <prerequisite>
@@ -2598,7 +2598,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="201"/>
+    <source source="FirstEdition" page="201"/>
   </charm>
   <charm id="Solar.Door-EvadingTechnique" exalt="Solar" group="Larceny">
     <prerequisite>
@@ -2614,7 +2614,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="201"/>
+    <source source="FirstEdition" page="201"/>
   </charm>
   <charm id="Solar.EasilyOverlookedPresenceMethod" exalt="Solar" group="Stealth">
     <prerequisite>
@@ -2628,7 +2628,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="201"/>
+    <source source="FirstEdition" page="201"/>
   </charm>
   <charm id="Solar.MentalInvisibilityTechnique" exalt="Solar" group="Stealth">
     <prerequisite>
@@ -2644,7 +2644,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="201"/>
+    <source source="FirstEdition" page="201"/>
   </charm>
   <charm id="Solar.InvisibleStatueSpirit" exalt="Solar" group="Stealth">
     <prerequisite>
@@ -2659,7 +2659,7 @@
     </cost>
     <duration event="Disturbed"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="202"/>
+    <source source="FirstEdition" page="202"/>
   </charm>
   <charm id="Solar.BlurredFormStyle" exalt="Solar" group="Stealth">
     <prerequisite>
@@ -2675,7 +2675,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="202"/>
+    <source source="FirstEdition" page="202"/>
   </charm>
   <charm id="Solar.VanishingfromMind'sEyeMethod" exalt="Solar" group="Stealth">
     <prerequisite>
@@ -2691,7 +2691,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="202"/>
+    <source source="FirstEdition" page="202"/>
   </charm>
   <charm id="Solar.FrugalMerchantMethod" exalt="Solar" group="Bureaucracy">
     <prerequisite>
@@ -2705,7 +2705,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="203"/>
+    <source source="FirstEdition" page="203"/>
   </charm>
   <charm id="Solar.Consumer-EvaluatingGlance" exalt="Solar" group="Bureaucracy">
     <prerequisite>
@@ -2720,7 +2720,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="203"/>
+    <source source="FirstEdition" page="203"/>
   </charm>
   <charm id="Solar.InsightfulBuyerTechnique" exalt="Solar" group="Bureaucracy">
     <prerequisite>
@@ -2735,7 +2735,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="203"/>
+    <source source="FirstEdition" page="203"/>
   </charm>
   <charm id="Solar.IrresistableSalesmanSpirit" exalt="Solar" group="Bureaucracy">
     <prerequisite>
@@ -2752,7 +2752,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="203"/>
+    <source source="FirstEdition" page="203"/>
   </charm>
   <charm id="Solar.SoundandScentBanishingAttitude" exalt="Solar" group="Stealth">
     <prerequisite>
@@ -2767,7 +2767,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="203"/>
+    <source source="FirstEdition" page="203"/>
   </charm>
   <charm id="Solar.DeftOfficial'sWay" exalt="Solar" group="Bureaucracy">
     <prerequisite>
@@ -2781,7 +2781,7 @@
     </cost>
     <duration amount="1" unit="task"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="204"/>
+    <source source="FirstEdition" page="204"/>
   </charm>
   <charm id="Solar.SpeedWheels" exalt="Solar" group="Bureaucracy">
     <prerequisite>
@@ -2796,7 +2796,7 @@
     </cost>
     <duration amount="1" unit="task"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="204"/>
+    <source source="FirstEdition" page="204"/>
   </charm>
   <charm id="Solar.IndolentOfficialCharm" exalt="Solar" group="Bureaucracy">
     <prerequisite>
@@ -2811,7 +2811,7 @@
     </cost>
     <duration amount="1" unit="task"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="205"/>
+    <source source="FirstEdition" page="205"/>
   </charm>
   <charm id="Solar.FoulAirArgumentTechnique" exalt="Solar" group="Bureaucracy">
     <prerequisite>
@@ -2827,7 +2827,7 @@
     </cost>
     <duration amount="1" unit="task"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="205"/>
+    <source source="FirstEdition" page="205"/>
   </charm>
   <charm id="Solar.Bureau-RectifyingMethod" exalt="Solar" group="Bureaucracy">
     <prerequisite>
@@ -2842,7 +2842,7 @@
     </cost>
     <duration amount="1" unit="investigation"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="205"/>
+    <source source="FirstEdition" page="205"/>
   </charm>
   <charm id="Solar.WhirlwindBrushMethod" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -2856,7 +2856,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="205"/>
+    <source source="FirstEdition" page="205"/>
   </charm>
   <charm id="Solar.FlawlessBrushDiscipline" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -2871,7 +2871,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="205"/>
+    <source source="FirstEdition" page="205"/>
   </charm>
   <charm id="Solar.Letter-Within-a-LetterTechnique" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -2886,7 +2886,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="206"/>
+    <source source="FirstEdition" page="206"/>
   </charm>
   <charm id="Solar.DiscerningSavant'sEye" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -2903,7 +2903,7 @@
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="206"/>
+    <source source="FirstEdition" page="206"/>
   </charm>
   <charm id="Solar.SagaciousReadingIntent" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -2917,7 +2917,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="207"/>
+    <source source="FirstEdition" page="207"/>
   </charm>
   <charm id="Solar.PoeticExpressionStyle" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -2932,7 +2932,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="207"/>
+    <source source="FirstEdition" page="207"/>
   </charm>
   <charm id="Solar.TwistedWordsTechnique" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -2948,7 +2948,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="207"/>
+    <source source="FirstEdition" page="207"/>
   </charm>
   <charm id="Solar.UnbreakableFascinationMethod" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -2965,7 +2965,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="207"/>
+    <source source="FirstEdition" page="207"/>
   </charm>
   <charm id="Solar.MasterHorseman'sEye" exalt="Solar" group="Ride">
     <prerequisite>
@@ -2979,7 +2979,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="207"/>
+    <source source="FirstEdition" page="207"/>
   </charm>
   <charm id="Solar.Horse-SummoningWhistle" exalt="Solar" group="Ride">
     <prerequisite>
@@ -2994,7 +2994,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="207"/>
+    <source source="FirstEdition" page="207"/>
   </charm>
   <charm id="Solar.Spirit-SteadyingAssurances" exalt="Solar" group="Ride">
     <prerequisite>
@@ -3009,7 +3009,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="208"/>
+    <source source="FirstEdition" page="208"/>
   </charm>
   <charm id="Solar.Steed-SustainingMethod" exalt="Solar" group="Ride">
     <prerequisite>
@@ -3024,7 +3024,7 @@
     </cost>
     <duration amount="1" unit="daysMarch"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="208"/>
+    <source source="FirstEdition" page="208"/>
   </charm>
   <charm id="Solar.PhantomSteed" exalt="Solar" group="Ride">
     <prerequisite>
@@ -3040,7 +3040,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="208"/>
+    <source source="FirstEdition" page="208"/>
   </charm>
   <charm id="Solar.FlashingThunderboltSteed" exalt="Solar" group="Ride">
     <prerequisite>
@@ -3057,7 +3057,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="209"/>
+    <source source="FirstEdition" page="209"/>
   </charm>
   <charm id="Solar.FlawlessPartnershipMeditation" exalt="Solar" group="Ride">
     <prerequisite>
@@ -3072,7 +3072,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="209"/>
+    <source source="FirstEdition" page="209"/>
   </charm>
   <charm id="Solar.Horse-HealingTechnique" exalt="Solar" group="Ride">
     <prerequisite>
@@ -3088,7 +3088,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="209"/>
+    <source source="FirstEdition" page="209"/>
   </charm>
   <charm id="Solar.SaltyDogMethod" exalt="Solar" group="Sail">
     <prerequisite>
@@ -3102,7 +3102,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="209"/>
+    <source source="FirstEdition" page="209"/>
   </charm>
   <charm id="Solar.Shipwreck-SurvivingStamina" exalt="Solar" group="Sail">
     <prerequisite>
@@ -3117,7 +3117,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="209"/>
+    <source source="FirstEdition" page="209"/>
   </charm>
   <charm id="Solar.Weather-AnticipatingIntuition" exalt="Solar" group="Sail">
     <prerequisite>
@@ -3132,7 +3132,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="210"/>
+    <source source="FirstEdition" page="210"/>
   </charm>
   <charm id="Solar.PerfectReckoningTechnique" exalt="Solar" group="Sail">
     <prerequisite>
@@ -3147,7 +3147,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="210"/>
+    <source source="FirstEdition" page="210"/>
   </charm>
   <charm id="Solar.Depth-PlumbingIntuition" exalt="Solar" group="Sail">
     <prerequisite>
@@ -3162,7 +3162,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="210"/>
+    <source source="FirstEdition" page="210"/>
   </charm>
   <charm id="Solar.Wind-DefyingCourseTechnique" exalt="Solar" group="Sail">
     <prerequisite>
@@ -3177,7 +3177,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="210"/>
+    <source source="FirstEdition" page="210"/>
   </charm>
   <charm id="Solar.Storm-WeatheringEssenceInfusion" exalt="Solar" group="Sail">
     <prerequisite>
@@ -3193,7 +3193,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="211"/>
+    <source source="FirstEdition" page="211"/>
   </charm>
   <charm id="Solar.Hull-PreservingTechnique" exalt="Solar" group="Sail">
     <prerequisite>
@@ -3210,7 +3210,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="211"/>
+    <source source="FirstEdition" page="211"/>
   </charm>
   <charm id="Solar.MasterySmallManners" exalt="Solar" group="Socialize">
     <prerequisite>
@@ -3224,7 +3224,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Exalted" page="211"/>
+    <source source="FirstEdition" page="211"/>
   </charm>
   <charm id="Solar.Wise-EyedCourtierMethod" exalt="Solar" group="Socialize">
     <prerequisite>
@@ -3238,7 +3238,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="211"/>
+    <source source="FirstEdition" page="211"/>
   </charm>
   <charm id="Solar.Motive-DiscerningTechnique" exalt="Solar" group="Socialize">
     <prerequisite>
@@ -3253,7 +3253,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="211"/>
+    <source source="FirstEdition" page="211"/>
   </charm>
   <charm id="Solar.KnowingSoul'sPrice" exalt="Solar" group="Socialize">
     <prerequisite>
@@ -3270,7 +3270,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="211"/>
+    <source source="FirstEdition" page="211"/>
   </charm>
   <charm id="Solar.UnderstandingCourt" exalt="Solar" group="Socialize">
     <prerequisite>
@@ -3286,7 +3286,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="212"/>
+    <source source="FirstEdition" page="212"/>
   </charm>
   <charm id="Solar.VenomousRumorsTechnique" exalt="Solar" group="Socialize">
     <prerequisite>
@@ -3303,7 +3303,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Exalted" page="212"/>
+    <source source="FirstEdition" page="212"/>
   </charm>
   <charm id="Solar.ShotWithoutDistanceExercise" exalt="Solar" group="Archery">
     <prerequisite>
@@ -3318,7 +3318,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Caste Book: Dawn" page="71"/>
+    <source source="CBDawn" page="71"/>
   </charm>
   <charm id="Solar.InexhaustibleBoltsSolarFire" exalt="Solar" group="Archery">
     <prerequisite>
@@ -3335,7 +3335,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Dawn" page="71"/>
+    <source source="CBDawn" page="71"/>
   </charm>
   <charm id="Solar.BoltFieryDevastationTechnique" exalt="Solar" group="Archery">
     <prerequisite>
@@ -3351,7 +3351,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Dawn" page="71"/>
+    <source source="CBDawn" page="71"/>
   </charm>
   <charm id="Solar.KnockoutBlow" exalt="Solar" group="Brawl">
     <prerequisite>
@@ -3366,7 +3366,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Caste Book: Dawn" page="72"/>
+    <source source="CBDawn" page="72"/>
   </charm>
   <charm id="Solar.PoundingHammerDevastationTechnique" exalt="Solar" group="Brawl">
     <prerequisite>
@@ -3381,7 +3381,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Caste Book: Dawn" page="72"/>
+    <source source="CBDawn" page="72"/>
   </charm>
   <charm id="Solar.AdamantineFistsBattle" exalt="Solar" group="Brawl">
     <prerequisite>
@@ -3398,7 +3398,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Supplemental"/>
-    <source source="Caste Book: Dawn" page="72"/>
+    <source source="CBDawn" page="72"/>
   </charm>
   <charm id="Solar.WhirlwindSearingBlows" exalt="Solar" group="Melee">
     <prerequisite>
@@ -3414,7 +3414,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Supplemental"/>
-    <source source="Caste Book: Dawn" page="74"/>
+    <source source="CBDawn" page="74"/>
   </charm>
   <charm id="Solar.ProtectionCelestialBliss" exalt="Solar" group="Melee">
     <prerequisite>
@@ -3431,7 +3431,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Reflexive"/>
-    <source source="Caste Book: Dawn" page="74"/>
+    <source source="CBDawn" page="74"/>
   </charm>
   <charm id="Solar.RicochetWeaponTechnique" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -3446,7 +3446,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Caste Book: Dawn" page="74"/>
+    <source source="CBDawn" page="74"/>
   </charm>
   <charm id="Solar.ReapingBloodyWheat" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -3461,7 +3461,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="Caste Book: Dawn" page="75"/>
+    <source source="CBDawn" page="75"/>
   </charm>
   <charm id="Solar.WhirlingRazorGuardianTechnique" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -3477,7 +3477,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Dawn" page="75"/>
+    <source source="CBDawn" page="75"/>
   </charm>
   <charm id="Solar.CommandingIdealCelestialArmy" exalt="Solar" group="Performance">
     <prerequisite>
@@ -3492,7 +3492,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Dawn" page="76"/>
+    <source source="CBDawn" page="76"/>
   </charm>
   <charm id="Solar.GeneralAll-SeeingSun" exalt="Solar" group="Performance">
     <prerequisite>
@@ -3507,7 +3507,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Dawn" page="76"/>
+    <source source="CBDawn" page="76"/>
   </charm>
   <charm id="Solar.IdealBattleKnowledgePrana" exalt="Solar" group="Performance">
     <prerequisite>
@@ -3523,7 +3523,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Dawn" page="76"/>
+    <source source="CBDawn" page="76"/>
   </charm>
   <charm id="Solar.Prey-FreezingGaze" exalt="Solar" group="Presence">
     <prerequisite>
@@ -3539,7 +3539,7 @@
     </cost>
     <duration duration="OneSceneOrSpecial"/>
     <charmtype type="Simple"/>
-    <source source="Cult of the Illuminated" page="104"/>
+    <source source="Illuminated" page="104"/>
   </charm>
   <charm id="Solar.CommandVoice" exalt="Solar" group="Presence">
     <prerequisite>
@@ -3554,7 +3554,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Dawn" page="76"/>
+    <source source="CBDawn" page="76"/>
   </charm>
   <charm id="Solar.ReturningWeaponConcentration" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -3569,7 +3569,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Supplemental"/>
-    <source source="Caste Book: Dawn" page="76"/>
+    <source source="CBDawn" page="76"/>
   </charm>
   <charm id="Solar.EmptyStomachFastingMeditation" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -3583,7 +3583,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Zenith" page="71"/>
+    <source source="CBZenith" page="71"/>
   </charm>
   <charm id="Solar.AsceticMonk'sPurificationDiscipline" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -3598,7 +3598,7 @@
     </cost>
     <duration amount="3" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Zenith" page="71"/>
+    <source source="CBZenith" page="71"/>
   </charm>
   <charm id="Solar.UnsleepingWatchmanTechnique" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -3612,7 +3612,7 @@
     </cost>
     <duration amount="1" unit="night"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Zenith" page="72"/>
+    <source source="CBZenith" page="72"/>
   </charm>
   <charm id="Solar.ControlledBreathingExercise" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -3626,7 +3626,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Zenith" page="72"/>
+    <source source="CBZenith" page="72"/>
   </charm>
   <charm id="Solar.TirelessRunner'sStride" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -3644,7 +3644,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Zenith" page="72"/>
+    <source source="CBZenith" page="72"/>
   </charm>
   <charm id="Solar.SleepDeathTechnique" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -3659,7 +3659,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Zenith" page="72"/>
+    <source source="CBZenith" page="72"/>
   </charm>
   <charm id="Solar.ExtendedLifePrana" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -3678,7 +3678,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Caste Book: Zenith" page="72"/>
+    <source source="CBZenith" page="72"/>
   </charm>
   <charm id="Solar.EnvironmentalHazard-ResistingMeditationWind" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -3690,7 +3690,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Caste Book: Zenith" page="72"/>
+    <source source="CBZenith" page="72"/>
   </charm>
   <charm id="Solar.EnvironmentalHazard-ResistingMeditationCold" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -3702,7 +3702,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Caste Book: Zenith" page="72"/>
+    <source source="CBZenith" page="72"/>
   </charm>
   <charm id="Solar.EnvironmentalHazard-ResistingMeditationHeat" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -3714,7 +3714,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Caste Book: Zenith" page="72"/>
+    <source source="CBZenith" page="72"/>
   </charm>
   <charm id="Solar.EnvironmentalHazard-ResistingMeditationAcid" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -3726,7 +3726,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="Caste Book: Zenith" page="72"/>
+    <source source="CBZenith" page="72"/>
   </charm>
   <charm id="Solar.Alcohol-ResistingPrana" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -3740,7 +3740,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Zenith" page="73"/>
+    <source source="CBZenith" page="73"/>
   </charm>
   <charm id="Solar.DrunkenWarriorTechnique" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -3755,7 +3755,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Caste Book: Zenith" page="73"/>
+    <source source="CBZenith" page="73"/>
   </charm>
   <charm id="Solar.Interrogation-ResistingAttitude" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -3769,7 +3769,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Zenith" page="74"/>
+    <source source="CBZenith" page="74"/>
   </charm>
   <charm id="Solar.InebriatedFoolDefense" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -3785,7 +3785,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Caste Book: Zenith" page="74"/>
+    <source source="CBZenith" page="74"/>
   </charm>
   <charm id="Solar.ArmorVirtueTechnique" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -3800,7 +3800,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Zenith" page="74"/>
+    <source source="CBZenith" page="74"/>
   </charm>
   <charm id="Solar.Pain-ReducingMeditation" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -3816,7 +3816,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Caste Book: Zenith" page="74"/>
+    <source source="CBZenith" page="74"/>
   </charm>
   <charm id="Solar.FivefoldArmorVirtueTechnique" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -3831,7 +3831,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Zenith" page="75"/>
+    <source source="CBZenith" page="75"/>
   </charm>
   <charm id="Solar.StormWardenConcentration" exalt="Solar" group="Survival">
     <prerequisite>
@@ -3846,7 +3846,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Zenith" page="75"/>
+    <source source="CBZenith" page="75"/>
   </charm>
   <charm id="Solar.UnquenchableConflagrationTechnique" exalt="Solar" group="Survival">
     <prerequisite>
@@ -3861,7 +3861,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Zenith" page="75"/>
+    <source source="CBZenith" page="75"/>
   </charm>
   <charm id="Solar.SalamanderTouchTechnique" exalt="Solar" group="Survival">
     <prerequisite>
@@ -3876,7 +3876,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Zenith" page="75"/>
+    <source source="CBZenith" page="75"/>
   </charm>
   <charm id="Solar.Sun'sFlamingTongueAttack" exalt="Solar" group="Survival">
     <prerequisite>
@@ -3892,7 +3892,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Zenith" page="75"/>
+    <source source="CBZenith" page="75"/>
   </charm>
   <charm id="Solar.GracefulReedDancing" exalt="Solar" group="Performance">
     <prerequisite>
@@ -3906,7 +3906,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Caste Book: Zenith" page="76"/>
+    <source source="CBZenith" page="76"/>
   </charm>
   <charm id="Solar.Gender-ConcealingMeditation" exalt="Solar" group="Performance">
     <prerequisite>
@@ -3921,7 +3921,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Zenith" page="76"/>
+    <source source="CBZenith" page="76"/>
   </charm>
   <charm id="Solar.Husband-SeducingDemon'sDancing" exalt="Solar" group="Performance">
     <prerequisite>
@@ -3936,7 +3936,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Zenith" page="76"/>
+    <source source="CBZenith" page="76"/>
   </charm>
   <charm id="Solar.Devil-PitTechnique" exalt="Solar" group="Survival">
     <prerequisite>
@@ -3951,7 +3951,7 @@
     </cost>
     <duration amount="1" unit="week"/>
     <charmtype type="Supplemental"/>
-    <source source="Caste Book: Zenith" page="76"/>
+    <source source="CBZenith" page="76"/>
   </charm>
   <charm id="Solar.Game-SnaringHuntman'sMethod" exalt="Solar" group="Survival">
     <prerequisite>
@@ -3966,8 +3966,8 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Supplemental"/>
-    <source source="Caste Book: Zenith" page="76"/>
-    <!--source source="Cult of the Illuminated" page="106"/-->
+    <source source="CBZenith" page="76"/>
+    <!--source source="Illuminated" page="106"/-->
   </charm>
   <charm id="Solar.DivinePerformanceStyle" exalt="Solar" group="Performance">
     <prerequisite>
@@ -3982,7 +3982,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Zenith" page="77"/>
+    <source source="CBZenith" page="77"/>
   </charm>
   <charm id="Solar.KingMasksTechnique" exalt="Solar" group="Performance">
     <prerequisite>
@@ -3996,7 +3996,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Zenith" page="78"/>
+    <source source="CBZenith" page="78"/>
   </charm>
   <charm id="Solar.ImpenetrableIdentity" exalt="Solar" group="Performance">
     <prerequisite>
@@ -4014,7 +4014,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Zenith" page="78"/>
+    <source source="CBZenith" page="78"/>
   </charm>
   <charm id="Solar.ImpassionedOratorTechnique" exalt="Solar" group="Presence">
     <prerequisite>
@@ -4029,7 +4029,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Supplemental"/>
-    <source source="Caste Book: Zenith" page="78"/>
+    <source source="CBZenith" page="78"/>
   </charm>
   <charm id="Solar.CountenanceVastWrath" exalt="Solar" group="Presence">
     <prerequisite>
@@ -4044,7 +4044,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Zenith" page="79"/>
+    <source source="CBZenith" page="79"/>
   </charm>
   <charm id="Solar.Impurity-HammeringBlow" exalt="Solar" group="Craft">
     <prerequisite>
@@ -4059,7 +4059,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Twilight" page="69"/>
+    <source source="CBTwilight" page="69"/>
   </charm>
   <charm id="Solar.Body-ForgingTravail" exalt="Solar" group="Craft">
     <prerequisite>
@@ -4075,7 +4075,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Twilight" page="69"/>
+    <source source="CBTwilight" page="69"/>
   </charm>
   <charm id="Solar.Edifice-SmashingStrike" exalt="Solar" group="Craft">
     <prerequisite>
@@ -4091,7 +4091,7 @@
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Twilight" page="70"/>
+    <source source="CBTwilight" page="70"/>
   </charm>
   <charm id="Solar.Stability-ConferringEstablishment" exalt="Solar" group="Craft">
     <prerequisite>
@@ -4108,7 +4108,7 @@
     </cost>
     <duration amount="1" unit="year"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Twilight" page="70"/>
+    <source source="CBTwilight" page="70"/>
   </charm>
   <charm id="Solar.AbidingBloodObservation" exalt="Solar" group="Investigation">
     <prerequisite>
@@ -4123,7 +4123,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Twilight" page="70"/>
+    <source source="CBTwilight" page="70"/>
   </charm>
   <charm id="Solar.Guilt-FindingInquisitorMethod" exalt="Solar" group="Investigation">
     <prerequisite>
@@ -4138,7 +4138,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Twilight" page="70"/>
+    <source source="CBTwilight" page="70"/>
   </charm>
   <charm id="Solar.HawkAloftGaze" exalt="Solar" group="Investigation">
     <prerequisite>
@@ -4153,7 +4153,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Twilight" page="70"/>
+    <source source="CBTwilight" page="70"/>
   </charm>
   <charm id="Solar.Lore-ScanningMethod" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -4168,7 +4168,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Twilight" page="71"/>
+    <source source="CBTwilight" page="71"/>
   </charm>
   <charm id="Solar.Earth-FirmingMethod" exalt="Solar" group="Lore">
     <prerequisite>
@@ -4184,7 +4184,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Twilight" page="71"/>
+    <source source="CBTwilight" page="71"/>
   </charm>
   <charm id="Solar.Injury-ForcingTechnique" exalt="Solar" group="Lore">
     <prerequisite>
@@ -4200,7 +4200,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Twilight" page="72"/>
+    <source source="CBTwilight" page="72"/>
   </charm>
   <charm id="Solar.Order-AffirmingBlow" exalt="Solar" group="Lore">
     <prerequisite>
@@ -4216,7 +4216,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Twilight" page="72"/>
+    <source source="CBTwilight" page="72"/>
   </charm>
   <charm id="Solar.Sorcery-ConferringContemplation" exalt="Solar" group="Lore">
     <prerequisite>
@@ -4235,7 +4235,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Twilight" page="72"/>
+    <source source="CBTwilight" page="72"/>
   </charm>
   <charm id="Solar.Addiction-CleansingTouch" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -4251,7 +4251,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Twilight" page="72"/>
+    <source source="CBTwilight" page="72"/>
   </charm>
   <charm id="Solar.UnhealingWoundInfliction" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -4267,7 +4267,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Twilight" page="73"/>
+    <source source="CBTwilight" page="73"/>
   </charm>
   <charm id="Solar.MercifulBalmSleep" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -4283,7 +4283,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Twilight" page="73"/>
+    <source source="CBTwilight" page="73"/>
   </charm>
   <charm id="Solar.Youth-RestoringBenison" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -4302,7 +4302,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Twilight" page="73"/>
+    <source source="CBTwilight" page="73"/>
   </charm>
   <charm id="Solar.Power-DrainingWhisper" exalt="Solar" group="Occult">
     <prerequisite>
@@ -4318,7 +4318,7 @@
     <combo comboable="false"/>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Twilight" page="73"/>
+    <source source="CBTwilight" page="73"/>
   </charm>
   <charm id="Solar.Power-DisruptingBlow" exalt="Solar" group="Occult">
     <prerequisite>
@@ -4335,7 +4335,7 @@
     </cost>
     <duration amount="Multiple" unit="turn"/>
     <charmtype type="Supplemental"/>
-    <source source="Caste Book: Twilight" page="74"/>
+    <source source="CBTwilight" page="74"/>
   </charm>
   <charm id="Solar.Spirit-WardingBan" exalt="Solar" group="Occult">
     <prerequisite>
@@ -4351,7 +4351,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Twilight" page="74"/>
+    <source source="CBTwilight" page="74"/>
   </charm>
   <charm id="Solar.DualSlayingStance" exalt="Solar" group="Melee">
     <prerequisite>
@@ -4365,7 +4365,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Caste Book: Night" page="70"/>
+    <source source="CBNight" page="70"/>
   </charm>
   <charm id="Solar.Sun-and-MoonMethod" exalt="Solar" group="Melee">
     <prerequisite>
@@ -4381,7 +4381,7 @@
     <combo comboable="true"/>
     <duration amount="1" unit="turn"/>
     <charmtype type="ExtraAction"/>
-    <source source="Caste Book: Night" page="70"/>
+    <source source="CBNight" page="70"/>
   </charm>
   <charm id="Solar.TwoSwordsTechnique" exalt="Solar" group="Melee">
     <prerequisite>
@@ -4396,7 +4396,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Caste Book: Night" page="70"/>
+    <source source="CBNight" page="70"/>
   </charm>
   <charm id="Solar.DeathRevealingMethod" exalt="Solar" group="Investigation">
     <prerequisite>
@@ -4411,7 +4411,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Night" page="71"/>
+    <source source="CBNight" page="71"/>
   </charm>
   <charm id="Solar.BrewingVenomTechnique" exalt="Solar" group="Lore">
     <prerequisite>
@@ -4428,7 +4428,7 @@
     </cost>
     <duration amount="1" unit="week"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Night" page="71"/>
+    <source source="CBNight" page="71"/>
   </charm>
   <charm id="Solar.SteelDevilStyle" exalt="Solar" group="Melee">
     <prerequisite>
@@ -4445,7 +4445,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Night" page="71"/>
+    <source source="CBNight" page="71"/>
   </charm>
   <charm id="Solar.FishSwimmingTechnique" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -4459,7 +4459,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Night" page="72"/>
+    <source source="CBNight" page="72"/>
   </charm>
   <charm id="Solar.EnvenomedWeaponPrana" exalt="Solar" group="Lore">
     <prerequisite>
@@ -4476,7 +4476,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Night" page="72"/>
+    <source source="CBNight" page="72"/>
   </charm>
   <charm id="Solar.MasteryPoisonTechnique" exalt="Solar" group="Lore">
     <prerequisite>
@@ -4493,7 +4493,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Caste Book: Night" page="72"/>
+    <source source="CBNight" page="72"/>
   </charm>
   <charm id="Solar.VenomAnodyneMethod" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -4508,7 +4508,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Caste Book: Night" page="72"/>
+    <source source="CBNight" page="72"/>
   </charm>
   <charm id="Solar.BodyPurifyingTechnique" exalt="Solar" group="Medicine">
     <prerequisite>
@@ -4523,7 +4523,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Night" page="72"/>
+    <source source="CBNight" page="72"/>
   </charm>
   <charm id="Solar.Foe-VaultingStyle" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -4538,7 +4538,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Caste Book: Night" page="73"/>
+    <source source="CBNight" page="73"/>
   </charm>
   <charm id="Solar.SwiftWaterPrana" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -4553,7 +4553,7 @@
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Night" page="73"/>
+    <source source="CBNight" page="73"/>
   </charm>
   <charm id="Solar.SoaringCraneLeap" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -4568,7 +4568,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="Caste Book: Night" page="73"/>
+    <source source="CBNight" page="73"/>
   </charm>
   <charm id="Solar.Cloud-FootStyle" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -4585,7 +4585,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Night" page="73"/>
+    <source source="CBNight" page="73"/>
   </charm>
   <charm id="Solar.Eagle-WingStyle" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -4602,7 +4602,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Night" page="73"/>
+    <source source="CBNight" page="73"/>
   </charm>
   <charm id="Solar.Mountain-CrossingLeap" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -4618,7 +4618,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Night" page="73"/>
+    <source source="CBNight" page="73"/>
   </charm>
   <charm id="Solar.Owl-EyeTechnique" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -4633,7 +4633,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Night" page="75"/>
+    <source source="CBNight" page="75"/>
   </charm>
   <charm id="Solar.Barrier-BypassingSensesSight" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -4648,7 +4648,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Night" page="75"/>
+    <source source="CBNight" page="75"/>
   </charm>
   <charm id="Solar.Barrier-BypassingSensesSmellAndTaste" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -4663,7 +4663,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Night" page="75"/>
+    <source source="CBNight" page="75"/>
   </charm>
   <charm id="Solar.Barrier-BypassingSensesHearingAndTouch" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -4678,7 +4678,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Night" page="75"/>
+    <source source="CBNight" page="75"/>
   </charm>
   <charm id="Solar.EyeUnconqueredSun" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -4694,7 +4694,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Night" page="75"/>
+    <source source="CBNight" page="75"/>
   </charm>
   <charm id="Solar.LeapingDodgeMethod" exalt="Solar" group="Dodge">
     <prerequisite>
@@ -4709,7 +4709,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Caste Book: Night" page="75"/>
+    <source source="CBNight" page="75"/>
   </charm>
   <charm id="Solar.InescapableShadowSun" exalt="Solar" group="Larceny">
     <prerequisite>
@@ -4724,7 +4724,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Caste Book: Night" page="75"/>
+    <source source="CBNight" page="75"/>
   </charm>
   <charm id="Solar.ImpassablePortalTechnique" exalt="Solar" group="Larceny">
     <prerequisite>
@@ -4739,7 +4739,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Reflexive"/>
-    <source source="Caste Book: Night" page="76"/>
+    <source source="CBNight" page="76"/>
   </charm>
   <charm id="Solar.UnseenGhostWalk" exalt="Solar" group="Stealth">
     <prerequisite>
@@ -4755,7 +4755,7 @@
     </cost>
     <duration amount="Essence" unit="minute"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Night" page="76"/>
+    <source source="CBNight" page="76"/>
   </charm>
   <charm id="Solar.BureaucraticConcealmentMethod" exalt="Solar" group="Bureaucracy">
     <prerequisite>
@@ -4770,7 +4770,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Eclipse" page="71"/>
+    <source source="CBEclipse" page="71"/>
   </charm>
   <charm id="Solar.ForgetfulBureauCharm" exalt="Solar" group="Bureaucracy">
     <prerequisite>
@@ -4786,7 +4786,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Eclipse" page="71"/>
+    <source source="CBEclipse" page="71"/>
   </charm>
   <charm id="Solar.TirelessTraveler'sStamina" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -4800,8 +4800,8 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Eclipse" page="72"/>
-    <!--source source="Cult of the Illuminated" page="102"/-->
+    <source source="CBEclipse" page="72"/>
+    <!--source source="Illuminated" page="102"/-->
   </charm>
   <charm id="Solar.SwiftSage'sEye" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -4815,7 +4815,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Eclipse" page="72"/>
+    <source source="CBEclipse" page="72"/>
   </charm>
   <charm id="Solar.ExcellentEmissary'sTongue" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -4830,7 +4830,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
-    <source source="Cult of the Illuminated" page="102"/>
+    <source source="Illuminated" page="102"/>
   </charm>
   <charm id="Solar.PerfectRecollectionDiscipline" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -4845,7 +4845,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Eclipse" page="72"/>
+    <source source="CBEclipse" page="72"/>
   </charm>
   <charm id="Solar.SubtleSpeechMethod" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -4861,7 +4861,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Eclipse" page="73"/>
+    <source source="CBEclipse" page="73"/>
   </charm>
   <charm id="Solar.FlawlessForgeryTechnique" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -4876,7 +4876,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Eclipse" page="73"/>
+    <source source="CBEclipse" page="73"/>
   </charm>
   <charm id="Solar.MasterfulTrainingManual" exalt="Solar" group="Linguistics">
     <prerequisite>
@@ -4894,7 +4894,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Eclipse" page="73"/>
+    <source source="CBEclipse" page="73"/>
   </charm>
   <charm id="Solar.Rose-LippedSeductionStyle" exalt="Solar" group="Presence">
     <prerequisite>
@@ -4909,7 +4909,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Caste Book: Eclipse" page="75"/>
+    <source source="CBEclipse" page="75"/>
   </charm>
   <charm id="Solar.FeatheryGallopExercise" exalt="Solar" group="Ride">
     <prerequisite>
@@ -4924,7 +4924,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Caste Book: Eclipse" page="76"/>
+    <source source="CBEclipse" page="76"/>
   </charm>
   <charm id="Solar.BridgeCloudsTechnique" exalt="Solar" group="Ride">
     <prerequisite>
@@ -4939,7 +4939,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Caste Book: Eclipse" page="76"/>
+    <source source="CBEclipse" page="76"/>
   </charm>
   <charm id="Solar.Wind-RacingEssenceInfusion" exalt="Solar" group="Ride">
     <prerequisite>
@@ -4956,7 +4956,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Eclipse" page="76"/>
+    <source source="CBEclipse" page="76"/>
   </charm>
   <charm id="Solar.SoaringSpiritSteed" exalt="Solar" group="Ride">
     <prerequisite>
@@ -4972,7 +4972,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Eclipse" page="76"/>
+    <source source="CBEclipse" page="76"/>
   </charm>
   <charm id="Solar.GoldenEssenceSails" exalt="Solar" group="Sail">
     <prerequisite>
@@ -4988,7 +4988,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Eclipse" page="76"/>
+    <source source="CBEclipse" page="76"/>
   </charm>
   <charm id="Solar.PhantomCrewCharm" exalt="Solar" group="Sail">
     <prerequisite>
@@ -5004,7 +5004,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Eclipse" page="76"/>
+    <source source="CBEclipse" page="76"/>
   </charm>
   <charm id="Solar.GloriousSolarShip" exalt="Solar" group="Sail">
     <prerequisite>
@@ -5020,7 +5020,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Eclipse" page="77"/>
+    <source source="CBEclipse" page="77"/>
   </charm>
   <charm id="Solar.GracefulDeflectionTechnique" exalt="Solar" group="Socialize">
     <prerequisite>
@@ -5036,7 +5036,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Caste Book: Eclipse" page="77"/>
+    <source source="CBEclipse" page="77"/>
   </charm>
   <charm id="Solar.WelcomeGuestMethod" exalt="Solar" group="Socialize">
     <prerequisite>
@@ -5051,7 +5051,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Eclipse" page="77"/>
+    <source source="CBEclipse" page="77"/>
   </charm>
   <charm id="Solar.GracefulCourtierAttitude" exalt="Solar" group="Socialize">
     <prerequisite>
@@ -5066,8 +5066,8 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Eclipse" page="77"/>
-    <!--source source="Cult of the Illuminated" page="107"/-->
+    <source source="CBEclipse" page="77"/>
+    <!--source source="Illuminated" page="107"/-->
   </charm>
   <charm id="Solar.FlawlessDiscretionStyle" exalt="Solar" group="Socialize">
     <prerequisite>
@@ -5082,7 +5082,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Eclipse" page="77"/>
+    <source source="CBEclipse" page="77"/>
   </charm>
   <charm id="Solar.MasterfulDissimulationMethod" exalt="Solar" group="Socialize">
     <prerequisite>
@@ -5097,7 +5097,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Caste Book: Eclipse" page="78"/>
+    <source source="CBEclipse" page="78"/>
   </charm>
   <charm id="Solar.DistractingBanterMethod" exalt="Solar" group="Socialize">
     <prerequisite>
@@ -5112,7 +5112,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Eclipse" page="78"/>
+    <source source="CBEclipse" page="78"/>
   </charm>
   <charm id="Solar.ReadingHeart" exalt="Solar" group="Socialize">
     <prerequisite>
@@ -5128,7 +5128,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Eclipse" page="78"/>
+    <source source="CBEclipse" page="78"/>
   </charm>
   <charm id="Solar.ExaltedAccolades" exalt="Solar" group="Socialize">
     <prerequisite>
@@ -5144,7 +5144,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Caste Book: Eclipse" page="78"/>
+    <source source="CBEclipse" page="78"/>
   </charm>
   <charm id="Solar.Rock-SpinningTechnique" exalt="Solar" group="Craft">
     <prerequisite>
@@ -5159,7 +5159,7 @@
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="Time of Tumult" page="95"/>
+    <source source="TimeOfTumult" page="95"/>
   </charm>
   <charm id="Solar.WorldWithinaPictureStyle" exalt="Solar" group="Craft">
     <prerequisite>
@@ -5174,7 +5174,7 @@
     </cost>
     <duration duration="1DayPlus"/>
     <charmtype type="Simple"/>
-    <source source="Time of Tumult" page="96"/>
+    <source source="TimeOfTumult" page="96"/>
   </charm>
   <charm id="Solar.SpiritualSustenance" exalt="Solar" group="Craft">
     <prerequisite>
@@ -5189,7 +5189,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
-    <source source="Time of Tumult" page="98"/>
+    <source source="TimeOfTumult" page="98"/>
   </charm>
   <charm id="Solar.PiercingNight'sVeilPractice" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -5204,7 +5204,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Savage Seas" page="114"/>
+    <source source="SavageSeas" page="114"/>
   </charm>
   <charm id="Solar.VisionMurkyDepthsMethod" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -5219,7 +5219,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Savage Seas" page="114"/>
+    <source source="SavageSeas" page="114"/>
   </charm>
   <charm id="Solar.HundredLeaguesSightProcedure" exalt="Solar" group="Awareness">
     <prerequisite>
@@ -5234,7 +5234,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Savage Seas" page="115"/>
+    <source source="SavageSeas" page="115"/>
   </charm>
   <charm id="Solar.Mast'sUnbreakableWillPrana" exalt="Solar" group="Sail">
     <prerequisite>
@@ -5249,7 +5249,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Savage Seas" page="115"/>
+    <source source="SavageSeas" page="115"/>
   </charm>
   <charm id="Solar.HardenHullPractice" exalt="Solar" group="Sail">
     <prerequisite>
@@ -5264,7 +5264,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Savage Seas" page="115"/>
+    <source source="SavageSeas" page="115"/>
   </charm>
   <charm id="Solar.Fire'sKissResistancePrana" exalt="Solar" group="Sail">
     <prerequisite>
@@ -5280,7 +5280,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Savage Seas" page="115"/>
+    <source source="SavageSeas" page="115"/>
   </charm>
   <charm id="Solar.SeekingEarth'sBountyMethod" exalt="Solar" group="Sail">
     <prerequisite>
@@ -5295,7 +5295,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="Savage Seas" page="115"/>
+    <source source="SavageSeas" page="115"/>
   </charm>
   <charm id="Solar.IgnoreWind'sCourseTechnique" exalt="Solar" group="Sail">
     <prerequisite>
@@ -5310,7 +5310,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Savage Seas" page="115"/>
+    <source source="SavageSeas" page="115"/>
   </charm>
   <charm id="Solar.Ship'sHullMaintenanceTechnique" exalt="Solar" group="Sail">
     <prerequisite>
@@ -5326,7 +5326,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Savage Seas" page="116"/>
+    <source source="SavageSeas" page="116"/>
   </charm>
   <charm id="Solar.Earth'sUnceasingBeacon" exalt="Solar" group="Survival">
     <prerequisite>
@@ -5340,7 +5340,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Savage Seas" page="116"/>
+    <source source="SavageSeas" page="116"/>
   </charm>
   <charm id="Solar.Power-InvestingPrana" exalt="Solar" group="Lore">
     <prerequisite>
@@ -5355,7 +5355,7 @@
     </cost>
     <duration event="Released"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="123"/>
+    <source source="PlayersGuide" page="123"/>
   </charm>
   <charm id="Solar.Dragon-SoulEnlightenmentMethod" exalt="Solar" group="Performance">
     <prerequisite>
@@ -5371,7 +5371,7 @@
     </cost>
     <duration amount="1" unit="month"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="158"/>
+    <source source="PlayersGuide" page="158"/>
   </charm>
   <charm id="Solar.ShadowlandsCircleNecromancy" exalt="Solar" group="Occult">
     <prerequisite>
@@ -5387,7 +5387,7 @@
     <combo comboable="false"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="197"/>
+    <source source="Abyssals1st" page="197"/>
   </charm>
   <charm id="Solar.LabyrinthCircleNecromancy" exalt="Solar" group="Occult">
     <prerequisite>
@@ -5404,7 +5404,7 @@
     <combo comboable="false"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="198"/>
+    <source source="Abyssals1st" page="198"/>
   </charm>
   <charm id="Solar.InevitableVictoryMeditation" group="Brawl" exalt="Solar">
     <prerequisite>
@@ -5420,7 +5420,7 @@
     </cost>
     <duration event="Used"/>
     <charmtype type="Simple"/>
-    <source source="Cult of the Illuminated" page="100"/>
+    <source source="Illuminated" page="100"/>
   </charm>
   <charm id="Solar.IrrepressibleBraveryTactic" group="Brawl" exalt="Solar">
     <prerequisite>
@@ -5435,7 +5435,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Cult of the Illuminated" page="100"/>
+    <source source="Illuminated" page="100"/>
   </charm>
   <charm id="Solar.DancingwithStrifeTechnique" group="Brawl" exalt="Solar">
     <prerequisite>
@@ -5450,7 +5450,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Cult of the Illuminated" page="100"/>
+    <source source="Illuminated" page="100"/>
   </charm>
   <charm id="Solar.SupremacyWarMethod" group="Brawl" exalt="Solar">
     <prerequisite>
@@ -5466,7 +5466,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Cult of the Illuminated" page="101"/>
+    <source source="Illuminated" page="101"/>
   </charm>
   <charm id="Solar.AscendantBattleVisage" group="Brawl" exalt="Solar">
     <prerequisite>
@@ -5484,7 +5484,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="Cult of the Illuminated" page="102"/>
+    <source source="Illuminated" page="102"/>
   </charm>
   <charm id="Solar.Soul-ShapingWordsTechnique" group="Presence" exalt="Solar">
     <prerequisite>
@@ -5500,7 +5500,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Cult of the Illuminated" page="105"/>
+    <source source="Illuminated" page="105"/>
   </charm>
   <charm id="Solar.TrueHarmonyRevelation" group="Presence" exalt="Solar">
     <prerequisite>
@@ -5516,7 +5516,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Cult of the Illuminated" page="105"/>
+    <source source="Illuminated" page="105"/>
   </charm>
   <charm id="Solar.Horizon-to-HorizonPresenceMethod" group="Presence" exalt="Solar">
     <prerequisite>
@@ -5533,7 +5533,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Cult of the Illuminated" page="105"/>
+    <source source="Illuminated" page="105"/>
   </charm>
   <charm id="Solar.Spirit Weapons" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -5548,6 +5548,6 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Comic #0"/>
+    <source source="Comic0" page="12"/>
   </charm>
 </charmlist>

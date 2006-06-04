@@ -14,7 +14,7 @@
     </cost>
     <duration amount="1" unit="week"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="177"/>
+    <source source="DragonBlooded1st" page="177"/>
   </charm>
   <charm id="Dragon-Blooded.ThousandTonguesMeditation" exalt="Dragon-Blooded" group="Linguistics">
     <prerequisite>
@@ -29,7 +29,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="177"/>
+    <source source="DragonBlooded1st" page="177"/>
   </charm>
   <charm id="Dragon-Blooded.PoisonedTongueTechnique" exalt="Dragon-Blooded" group="Linguistics">
     <prerequisite>
@@ -45,7 +45,7 @@
     </cost>
     <duration duration="Concentration"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="178"/>
+    <source source="DragonBlooded1st" page="178"/>
   </charm>
   <charm id="Dragon-Blooded.VoiceMastery" exalt="Dragon-Blooded" group="Linguistics">
     <prerequisite>
@@ -61,7 +61,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="178"/>
+    <source source="DragonBlooded1st" page="178"/>
   </charm>
   <charm id="Dragon-Blooded.Wind-CarriedWordsTechnique" exalt="Dragon-Blooded" group="Linguistics">
     <prerequisite>
@@ -75,7 +75,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="179"/>
+    <source source="DragonBlooded1st" page="179"/>
   </charm>
   <charm id="Dragon-Blooded.VoicesonWind" exalt="Dragon-Blooded" group="Linguistics">
     <prerequisite>
@@ -90,7 +90,7 @@
     </cost>
     <duration amount="1" unit="minute"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="179"/>
+    <source source="DragonBlooded1st" page="179"/>
   </charm>
   <charm id="Dragon-Blooded.WithOneMind" exalt="Dragon-Blooded" group="Linguistics">
     <prerequisite>
@@ -106,7 +106,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="179"/>
+    <source source="DragonBlooded1st" page="179"/>
   </charm>
   <charm id="Dragon-Blooded.ElementalConcentrationTrance" exalt="Dragon-Blooded" group="Lore">
     <prerequisite>
@@ -121,7 +121,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="180"/>
+    <source source="DragonBlooded1st" page="180"/>
   </charm>
   <charm id="Dragon-Blooded.ElementalEmpowermentMeditation" exalt="Dragon-Blooded" group="Lore">
     <prerequisite>
@@ -137,7 +137,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="180"/>
+    <source source="DragonBlooded1st" page="180"/>
   </charm>
   <charm id="Dragon-Blooded.ElementalSuccorMethod" exalt="Dragon-Blooded" group="Lore">
     <prerequisite>
@@ -153,7 +153,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="181"/>
+    <source source="DragonBlooded1st" page="181"/>
   </charm>
   <charm id="Dragon-Blooded.ElementalBoltAttack" exalt="Dragon-Blooded" group="Lore">
     <prerequisite>
@@ -167,7 +167,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="181"/>
+    <source source="DragonBlooded1st" page="181"/>
   </charm>
   <charm id="Dragon-Blooded.ElementalBurstTechnique" exalt="Dragon-Blooded" group="Lore">
     <prerequisite>
@@ -182,7 +182,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="181"/>
+    <source source="DragonBlooded1st" page="181"/>
   </charm>
   <charm id="Dragon-Blooded.DragonVortexAttack" exalt="Dragon-Blooded" group="Lore">
     <prerequisite>
@@ -199,7 +199,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="182"/>
+    <source source="DragonBlooded1st" page="182"/>
   </charm>
   <charm id="Dragon-Blooded.Spirit-DetectingMirrorTechnique" exalt="Dragon-Blooded" group="Occult">
     <prerequisite>
@@ -213,7 +213,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="182"/>
+    <source source="DragonBlooded1st" page="182"/>
   </charm>
   <charm id="Dragon-Blooded.HarmoniousWind-LuringSong" exalt="Dragon-Blooded" group="Occult">
     <prerequisite>
@@ -228,7 +228,7 @@
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="183"/>
+    <source source="DragonBlooded1st" page="183"/>
   </charm>
   <charm id="Dragon-Blooded.Spirit-GroundingShout" exalt="Dragon-Blooded" group="Occult">
     <prerequisite>
@@ -243,7 +243,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="183"/>
+    <source source="DragonBlooded1st" page="183"/>
   </charm>
   <charm id="Dragon-Blooded.Spirit-ChainingStrike" exalt="Dragon-Blooded" group="Occult">
     <prerequisite>
@@ -260,7 +260,7 @@
     <combo allAbilities="true"/>
     <duration amount="5" unit="minute"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="183"/>
+    <source source="DragonBlooded1st" page="183"/>
   </charm>
   <charm id="Dragon-Blooded.Spirit-ShreddingAttack" exalt="Dragon-Blooded" group="Occult">
     <prerequisite>
@@ -276,7 +276,7 @@
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="183"/>
+    <source source="DragonBlooded1st" page="183"/>
   </charm>
   <charm id="Dragon-Blooded.TerrestrialCircleSorcery" exalt="Dragon-Blooded" group="Occult">
     <prerequisite>
@@ -292,7 +292,7 @@
     <combo comboable="false"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="184"/>
+    <source source="DragonBlooded1st" page="184"/>
   </charm>
   <charm id="Dragon-Blooded.Feeling-the-AirTechnique" exalt="Dragon-Blooded" group="Stealth">
     <prerequisite>
@@ -306,7 +306,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="184"/>
+    <source source="DragonBlooded1st" page="184"/>
   </charm>
   <charm id="Dragon-Blooded.SoundlessActionPrana" exalt="Dragon-Blooded" group="Stealth">
     <prerequisite>
@@ -321,7 +321,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="184"/>
+    <source source="DragonBlooded1st" page="184"/>
   </charm>
   <charm id="Dragon-Blooded.ZoneSilenceStance" exalt="Dragon-Blooded" group="Stealth">
     <prerequisite>
@@ -337,7 +337,7 @@
     </cost>
     <duration amount="Essence" unit="minute"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="184"/>
+    <source source="DragonBlooded1st" page="184"/>
   </charm>
   <charm id="Dragon-Blooded.DistractingBreezeMeditation" exalt="Dragon-Blooded" group="Stealth">
     <prerequisite>
@@ -351,7 +351,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="184"/>
+    <source source="DragonBlooded1st" page="184"/>
   </charm>
   <charm id="Dragon-Blooded.TracklessPassageStyle" exalt="Dragon-Blooded" group="Stealth">
     <prerequisite>
@@ -366,7 +366,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="185"/>
+    <source source="DragonBlooded1st" page="185"/>
   </charm>
   <charm id="Dragon-Blooded.Wind-WalkingTechnique" exalt="Dragon-Blooded" group="Stealth">
     <prerequisite>
@@ -381,7 +381,7 @@
     </cost>
     <duration event="Broken"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="186"/>
+    <source source="DragonBlooded1st" page="186"/>
   </charm>
   <charm id="Dragon-Blooded.DragonShroudTechnique" exalt="Dragon-Blooded" group="Stealth">
     <prerequisite>
@@ -398,7 +398,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="186"/>
+    <source source="DragonBlooded1st" page="186"/>
   </charm>
   <charm id="Dragon-Blooded.SeekingThrowTechnique" exalt="Dragon-Blooded" group="Thrown">
     <prerequisite>
@@ -412,7 +412,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="186"/>
+    <source source="DragonBlooded1st" page="186"/>
   </charm>
   <charm id="Dragon-Blooded.LoyalWeapon" exalt="Dragon-Blooded" group="Thrown">
     <prerequisite>
@@ -427,7 +427,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="186"/>
+    <source source="DragonBlooded1st" page="186"/>
   </charm>
   <charm id="Dragon-Blooded.PersistantHornetAttack" exalt="Dragon-Blooded" group="Thrown">
     <prerequisite>
@@ -442,7 +442,7 @@
     </cost>
     <duration amount="Essence" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="187"/>
+    <source source="DragonBlooded1st" page="187"/>
   </charm>
   <charm id="Dragon-Blooded.InvisiblyHiddenChakramMethod" exalt="Dragon-Blooded" group="Thrown">
     <prerequisite>
@@ -463,7 +463,7 @@
     </combo>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="187"/>
+    <source source="DragonBlooded1st" page="187"/>
   </charm>
   <charm id="Dragon-Blooded.WhirlwindShieldForm" exalt="Dragon-Blooded" group="Thrown">
     <prerequisite>
@@ -477,7 +477,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="188"/>
+    <source source="DragonBlooded1st" page="188"/>
   </charm>
   <charm id="Dragon-Blooded.VengefulGustCounterattack" exalt="Dragon-Blooded" group="Thrown">
     <prerequisite>
@@ -492,7 +492,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="188"/>
+    <source source="DragonBlooded1st" page="188"/>
   </charm>
   <charm id="Dragon-Blooded.WindWeapons" exalt="Dragon-Blooded" group="Thrown">
     <prerequisite>
@@ -513,7 +513,7 @@
     </combo>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="188"/>
+    <source source="DragonBlooded1st" page="188"/>
   </charm>
   <charm id="Dragon-Blooded.WindArmorTechnique" exalt="Dragon-Blooded" group="Thrown">
     <prerequisite>
@@ -528,7 +528,7 @@
     </cost>
     <duration amount="Essence" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="189"/>
+    <source source="DragonBlooded1st" page="189"/>
   </charm>
   <charm id="Dragon-Blooded.PrecisionObservationMethod" exalt="Dragon-Blooded" group="Awareness">
     <prerequisite>
@@ -542,7 +542,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="189"/>
+    <source source="DragonBlooded1st" page="189"/>
   </charm>
   <charm id="Dragon-Blooded.All-EncompassingEarthSense" exalt="Dragon-Blooded" group="Awareness">
     <prerequisite>
@@ -557,7 +557,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="190"/>
+    <source source="DragonBlooded1st" page="190"/>
   </charm>
   <charm id="Dragon-Blooded.FeelingDragon'sBone" exalt="Dragon-Blooded" group="Awareness">
     <prerequisite>
@@ -572,7 +572,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="190"/>
+    <source source="DragonBlooded1st" page="190"/>
   </charm>
   <charm id="Dragon-Blooded.EntombedMindTechnique" exalt="Dragon-Blooded" group="Awareness">
     <prerequisite>
@@ -587,7 +587,7 @@
     </cost>
     <duration amount="5" unit="minute"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="191"/>
+    <source source="DragonBlooded1st" page="191"/>
   </charm>
   <charm id="Dragon-Blooded.Sight-RidingTechnique" exalt="Dragon-Blooded" group="Awareness">
     <prerequisite>
@@ -602,7 +602,7 @@
     </cost>
     <duration event="Disturbed"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="191"/>
+    <source source="DragonBlooded1st" page="191"/>
   </charm>
   <charm id="Dragon-Blooded.HearingAndTouch-RidingTechnique" exalt="Dragon-Blooded" group="Awareness">
     <prerequisite>
@@ -617,7 +617,7 @@
     </cost>
     <duration event="Disturbed"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="191"/>
+    <source source="DragonBlooded1st" page="191"/>
   </charm>
   <charm id="Dragon-Blooded.SmellAndTaste-RidingTechnique" exalt="Dragon-Blooded" group="Awareness">
     <prerequisite>
@@ -632,7 +632,7 @@
     </cost>
     <duration event="Disturbed"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="191"/>
+    <source source="DragonBlooded1st" page="191"/>
   </charm>
   <charm id="Dragon-Blooded.Sight-DestroyingMethod" exalt="Dragon-Blooded" group="Awareness">
     <prerequisite>
@@ -648,7 +648,7 @@
     </cost>
     <duration amount="Essence" unit="turn"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="191"/>
+    <source source="DragonBlooded1st" page="191"/>
   </charm>
   <charm id="Dragon-Blooded.SmellAndTaste-DestroyingMethod" exalt="Dragon-Blooded" group="Awareness">
     <prerequisite>
@@ -664,7 +664,7 @@
     </cost>
     <duration amount="Essence" unit="turn"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="191"/>
+    <source source="DragonBlooded1st" page="191"/>
   </charm>
   <charm id="Dragon-Blooded.HearingAndTouch-DestroyingMethod" exalt="Dragon-Blooded" group="Awareness">
     <prerequisite>
@@ -680,7 +680,7 @@
     </cost>
     <duration amount="Essence" unit="turn"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="191"/>
+    <source source="DragonBlooded1st" page="191"/>
   </charm>
   <charm id="Dragon-Blooded.EssenceDisruptionAttack" exalt="Dragon-Blooded" group="Awareness">
     <prerequisite>
@@ -698,7 +698,7 @@
     </cost>
     <duration amount="Essence" unit="turn"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="192"/>
+    <source source="DragonBlooded1st" page="192"/>
   </charm>
   <charm id="Dragon-Blooded.ShapingHandStyle" exalt="Dragon-Blooded" group="Craft">
     <prerequisite>
@@ -712,7 +712,7 @@
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="192"/>
+    <source source="DragonBlooded1st" page="192"/>
   </charm>
   <charm id="Dragon-Blooded.Stone-CarvingFingersForm" exalt="Dragon-Blooded" group="Craft">
     <prerequisite>
@@ -727,7 +727,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="192"/>
+    <source source="DragonBlooded1st" page="192"/>
   </charm>
   <charm id="Dragon-Blooded.PerfectClimbingAttitude" exalt="Dragon-Blooded" group="Craft">
     <prerequisite>
@@ -742,7 +742,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="194"/>
+    <source source="DragonBlooded1st" page="194"/>
   </charm>
   <charm id="Dragon-Blooded.Flaw-FindingExamination" exalt="Dragon-Blooded" group="Craft">
     <prerequisite>
@@ -756,7 +756,7 @@
     </cost>
     <duration amount="1" unit="minute"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="194"/>
+    <source source="DragonBlooded1st" page="194"/>
   </charm>
   <charm id="Dragon-Blooded.CharmLesserUnmaking" exalt="Dragon-Blooded" group="Craft">
     <prerequisite>
@@ -771,7 +771,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="194"/>
+    <source source="DragonBlooded1st" page="194"/>
   </charm>
   <charm id="Dragon-Blooded.CharmGreaterUnmaking" exalt="Dragon-Blooded" group="Craft">
     <prerequisite>
@@ -787,7 +787,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Special"/>
-    <source source="The Dragon-Blooded" page="195"/>
+    <source source="DragonBlooded1st" page="195"/>
   </charm>
   <charm id="Dragon-Blooded.Ox-BodyTechnique" exalt="Dragon-Blooded" group="Endurance">
     <prerequisite>
@@ -799,7 +799,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="The Dragon-Blooded" page="195"/>
+    <source source="DragonBlooded1st" page="195"/>
   </charm>
   <charm id="Dragon-Blooded.UnsleepingEarthMeditation" exalt="Dragon-Blooded" group="Endurance">
     <prerequisite>
@@ -813,7 +813,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="196"/>
+    <source source="DragonBlooded1st" page="196"/>
   </charm>
   <charm id="Dragon-Blooded.UneatingEarthMeditation" exalt="Dragon-Blooded" group="Endurance">
     <prerequisite>
@@ -828,7 +828,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="196"/>
+    <source source="DragonBlooded1st" page="196"/>
   </charm>
   <charm id="Dragon-Blooded.UnbreathingEarthMeditation" exalt="Dragon-Blooded" group="Endurance">
     <prerequisite>
@@ -843,7 +843,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="196"/>
+    <source source="DragonBlooded1st" page="196"/>
   </charm>
   <charm id="Dragon-Blooded.UnfeelingEarthMeditation" exalt="Dragon-Blooded" group="Endurance">
     <prerequisite>
@@ -859,7 +859,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="196"/>
+    <source source="DragonBlooded1st" page="196"/>
   </charm>
   <charm id="Dragon-Blooded.UntiringEarthMeditation" exalt="Dragon-Blooded" group="Endurance">
     <prerequisite>
@@ -875,7 +875,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="196"/>
+    <source source="DragonBlooded1st" page="196"/>
   </charm>
   <charm id="Dragon-Blooded.UnflaggingVengeanceMeditation" exalt="Dragon-Blooded" group="Endurance">
     <prerequisite>
@@ -892,7 +892,7 @@
     </cost>
     <duration event="Satisfied"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="196"/>
+    <source source="DragonBlooded1st" page="196"/>
   </charm>
   <charm id="Dragon-Blooded.StrengthStoneTechnique" exalt="Dragon-Blooded" group="Resistance">
     <prerequisite>
@@ -906,7 +906,7 @@
     </cost>
     <duration amount="Essence" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="200"/>
+    <source source="DragonBlooded1st" page="200"/>
   </charm>
   <charm id="Dragon-Blooded.ImperviousSkinStoneMeditation" exalt="Dragon-Blooded" group="Resistance">
     <prerequisite>
@@ -921,7 +921,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="200"/>
+    <source source="DragonBlooded1st" page="200"/>
   </charm>
   <charm id="Dragon-Blooded.MountainTopplingMethod" exalt="Dragon-Blooded" group="Resistance">
     <prerequisite>
@@ -937,7 +937,7 @@
 	<combo allAbilities="true"/>
     <duration amount="1" unit="turn"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="200"/>
+    <source source="DragonBlooded1st" page="200"/>
   </charm>
   <charm id="Dragon-Blooded.FireProtectionForm" exalt="Dragon-Blooded" group="Resistance">
     <prerequisite>
@@ -953,7 +953,7 @@
     <charmAttribute attribute="ElementProtectionForm"/>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="201"/>
+    <source source="DragonBlooded1st" page="201"/>
   </charm>
   <charm id="Dragon-Blooded.EarthProtectionForm" exalt="Dragon-Blooded" group="Resistance">
     <prerequisite>
@@ -969,7 +969,7 @@
     <charmAttribute attribute="ElementProtectionForm"/>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="201"/>
+    <source source="DragonBlooded1st" page="201"/>
   </charm>
   <charm id="Dragon-Blooded.WaterProtectionForm" exalt="Dragon-Blooded" group="Resistance">
     <prerequisite>
@@ -985,7 +985,7 @@
     <charmAttribute attribute="ElementProtectionForm"/>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="201"/>
+    <source source="DragonBlooded1st" page="201"/>
   </charm>
   <charm id="Dragon-Blooded.WoodProtectionForm" exalt="Dragon-Blooded" group="Resistance">
     <prerequisite>
@@ -1001,7 +1001,7 @@
     <charmAttribute attribute="ElementProtectionForm"/>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="201"/>
+    <source source="DragonBlooded1st" page="201"/>
   </charm>
   <charm id="Dragon-Blooded.AirProtectionForm" exalt="Dragon-Blooded" group="Resistance">
     <prerequisite>
@@ -1017,7 +1017,7 @@
     <charmAttribute attribute="ElementProtectionForm"/>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="201"/>
+    <source source="DragonBlooded1st" page="201"/>
   </charm>
   <charm id="Dragon-Blooded.Chaos-WardingPrana" exalt="Dragon-Blooded" group="Resistance">
     <prerequisite>
@@ -1033,7 +1033,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="201"/>
+    <source source="DragonBlooded1st" page="201"/>
   </charm>
   <charm id="Dragon-Blooded.Defense-From-AnathemaMethod" exalt="Dragon-Blooded" group="Resistance">
     <prerequisite>
@@ -1049,7 +1049,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="201"/>
+    <source source="DragonBlooded1st" page="201"/>
   </charm>
   <charm id="Dragon-Blooded.EffortlesslyRisingFlame" exalt="Dragon-Blooded" group="Athletics">
     <prerequisite>
@@ -1063,7 +1063,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="202"/>
+    <source source="DragonBlooded1st" page="202"/>
   </charm>
   <charm id="Dragon-Blooded.FallingStarManeuver" exalt="Dragon-Blooded" group="Athletics">
     <prerequisite>
@@ -1079,7 +1079,7 @@
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="202"/>
+    <source source="DragonBlooded1st" page="202"/>
   </charm>
   <charm id="Dragon-Blooded.Bellows-PumpingStride" exalt="Dragon-Blooded" group="Athletics">
     <prerequisite>
@@ -1094,7 +1094,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="203"/>
+    <source source="DragonBlooded1st" page="203"/>
   </charm>
   <charm id="Dragon-Blooded.IncenseSmokeLadder" exalt="Dragon-Blooded" group="Athletics">
     <prerequisite>
@@ -1109,7 +1109,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="203"/>
+    <source source="DragonBlooded1st" page="203"/>
   </charm>
   <charm id="Dragon-Blooded.DancingEmberStride" exalt="Dragon-Blooded" group="Athletics">
     <prerequisite>
@@ -1124,7 +1124,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="203"/>
+    <source source="DragonBlooded1st" page="203"/>
   </charm>
   <charm id="Dragon-Blooded.PhoenixMate'sLament" exalt="Dragon-Blooded" group="Athletics">
     <prerequisite>
@@ -1139,7 +1139,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="204"/>
+    <source source="DragonBlooded1st" page="204"/>
   </charm>
   <charm id="Dragon-Blooded.FieryProwess" exalt="Dragon-Blooded" group="Athletics">
     <prerequisite>
@@ -1154,7 +1154,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="204"/>
+    <source source="DragonBlooded1st" page="204"/>
   </charm>
   <charm id="Dragon-Blooded.SwiftLegionTechnique" exalt="Dragon-Blooded" group="Athletics">
     <prerequisite>
@@ -1170,7 +1170,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="204"/>
+    <source source="DragonBlooded1st" page="204"/>
   </charm>
   <charm id="Dragon-Blooded.ThresholdWardingStance" exalt="Dragon-Blooded" group="Dodge">
     <prerequisite>
@@ -1184,7 +1184,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="204"/>
+    <source source="DragonBlooded1st" page="204"/>
   </charm>
   <charm id="Dragon-Blooded.HoppingFirecrakerEvasion" exalt="Dragon-Blooded" group="Dodge">
     <prerequisite>
@@ -1199,7 +1199,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="204"/>
+    <source source="DragonBlooded1st" page="204"/>
   </charm>
   <charm id="Dragon-Blooded.VirtuousNegationDefense" exalt="Dragon-Blooded" group="Dodge">
     <prerequisite>
@@ -1214,7 +1214,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="205"/>
+    <source source="DragonBlooded1st" page="205"/>
   </charm>
   <charm id="Dragon-Blooded.FlickeringCandleMeditation" exalt="Dragon-Blooded" group="Dodge">
     <prerequisite>
@@ -1228,7 +1228,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="205"/>
+    <source source="DragonBlooded1st" page="205"/>
   </charm>
   <charm id="Dragon-Blooded.SmokeObscuringEffect" exalt="Dragon-Blooded" group="Dodge">
     <prerequisite>
@@ -1243,7 +1243,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="205"/>
+    <source source="DragonBlooded1st" page="205"/>
   </charm>
   <charm id="Dragon-Blooded.SafetyAmongEnemies" exalt="Dragon-Blooded" group="Dodge">
     <prerequisite>
@@ -1258,7 +1258,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="206"/>
+    <source source="DragonBlooded1st" page="206"/>
   </charm>
   <charm id="Dragon-Blooded.Arrow-ConsumingFlameDefense" exalt="Dragon-Blooded" group="Dodge">
     <prerequisite>
@@ -1273,7 +1273,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="206"/>
+    <source source="DragonBlooded1st" page="206"/>
   </charm>
   <charm id="Dragon-Blooded.SmolderingKarmaStrike" exalt="Dragon-Blooded" group="Dodge">
     <prerequisite>
@@ -1290,7 +1290,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="207"/>
+    <source source="DragonBlooded1st" page="207"/>
   </charm>
   <charm id="Dragon-Blooded.Dragon-GracedWeapon" exalt="Dragon-Blooded" group="Melee">
     <prerequisite>
@@ -1304,7 +1304,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="207"/>
+    <source source="DragonBlooded1st" page="207"/>
   </charm>
   <charm id="Dragon-Blooded.Ghostly-FireBlade" exalt="Dragon-Blooded" group="Melee">
     <prerequisite>
@@ -1319,7 +1319,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="208"/>
+    <source source="DragonBlooded1st" page="208"/>
   </charm>
   <charm id="Dragon-Blooded.RefiningInnerBlade" exalt="Dragon-Blooded" group="Melee">
     <prerequisite>
@@ -1335,7 +1335,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="208"/>
+    <source source="DragonBlooded1st" page="208"/>
   </charm>
   <charm id="Dragon-Blooded.StokingBonfireStyle" exalt="Dragon-Blooded" group="Melee">
     <prerequisite>
@@ -1349,7 +1349,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="208"/>
+    <source source="DragonBlooded1st" page="208"/>
   </charm>
   <charm id="Dragon-Blooded.DeadlyWildfireLegion" exalt="Dragon-Blooded" group="Melee">
     <prerequisite>
@@ -1364,7 +1364,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="208"/>
+    <source source="DragonBlooded1st" page="208"/>
   </charm>
   <charm id="Dragon-Blooded.PortentousCometDeflectingMode" exalt="Dragon-Blooded" group="Melee">
     <prerequisite>
@@ -1380,7 +1380,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="208"/>
+    <source source="DragonBlooded1st" page="208"/>
   </charm>
   <charm id="Dragon-Blooded.ThreshingFloorTechnique" exalt="Dragon-Blooded" group="Melee">
     <prerequisite>
@@ -1395,7 +1395,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="209"/>
+    <source source="DragonBlooded1st" page="209"/>
   </charm>
   <charm id="Dragon-Blooded.RingingAnvilOnslaught" exalt="Dragon-Blooded" group="Melee">
     <prerequisite>
@@ -1410,7 +1410,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Dragon-Blooded" page="209"/>
+    <source source="DragonBlooded1st" page="209"/>
   </charm>
   <charm id="Dragon-Blooded.PhantomFire-WarriorHorde" exalt="Dragon-Blooded" group="Presence">
     <prerequisite>
@@ -1424,7 +1424,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="209"/>
+    <source source="DragonBlooded1st" page="209"/>
   </charm>
   <charm id="Dragon-Blooded.BlazingCourageousSwordsmenInspiration" exalt="Dragon-Blooded" group="Presence">
     <prerequisite>
@@ -1439,7 +1439,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="209"/>
+    <source source="DragonBlooded1st" page="209"/>
   </charm>
   <charm id="Dragon-Blooded.GlowingCoalRadiance" exalt="Dragon-Blooded" group="Presence">
     <prerequisite>
@@ -1453,7 +1453,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="209"/>
+    <source source="DragonBlooded1st" page="209"/>
   </charm>
   <charm id="Dragon-Blooded.AuraInvulnerability" exalt="Dragon-Blooded" group="Presence">
     <prerequisite>
@@ -1468,7 +1468,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="210"/>
+    <source source="DragonBlooded1st" page="210"/>
   </charm>
   <charm id="Dragon-Blooded.Warlord'sConvocation" exalt="Dragon-Blooded" group="Presence">
     <prerequisite>
@@ -1484,7 +1484,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="210"/>
+    <source source="DragonBlooded1st" page="210"/>
   </charm>
   <charm id="Dragon-Blooded.UnbearableTauntTechnique" exalt="Dragon-Blooded" group="Presence">
     <prerequisite>
@@ -1499,7 +1499,7 @@
     </cost>
     <duration amount="Essence" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="211"/>
+    <source source="DragonBlooded1st" page="211"/>
   </charm>
   <charm id="Dragon-Blooded.MothtoCandle" exalt="Dragon-Blooded" group="Presence">
     <prerequisite>
@@ -1515,7 +1515,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="211"/>
+    <source source="DragonBlooded1st" page="211"/>
   </charm>
   <charm id="Dragon-Blooded.LoquaciousCourtierTechnique" exalt="Dragon-Blooded" group="Socialize">
     <prerequisite>
@@ -1529,7 +1529,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="211"/>
+    <source source="DragonBlooded1st" page="211"/>
   </charm>
   <charm id="Dragon-Blooded.Sweeteen-the-TapMethod" exalt="Dragon-Blooded" group="Socialize">
     <prerequisite>
@@ -1544,7 +1544,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="211"/>
+    <source source="DragonBlooded1st" page="211"/>
   </charm>
   <charm id="Dragon-Blooded.WaryYellowDogAttitude" exalt="Dragon-Blooded" group="Socialize">
     <prerequisite>
@@ -1559,7 +1559,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="212"/>
+    <source source="DragonBlooded1st" page="212"/>
   </charm>
   <charm id="Dragon-Blooded.Seizing-the-TongueTechnique" exalt="Dragon-Blooded" group="Socialize">
     <prerequisite>
@@ -1574,7 +1574,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="212"/>
+    <source source="DragonBlooded1st" page="212"/>
   </charm>
   <charm id="Dragon-Blooded.Brother-Against-BrotherInsinuation" exalt="Dragon-Blooded" group="Socialize">
     <prerequisite>
@@ -1590,7 +1590,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="212"/>
+    <source source="DragonBlooded1st" page="212"/>
   </charm>
   <charm id="Dragon-Blooded.Warm-FacedSeductionStyle" exalt="Dragon-Blooded" group="Socialize">
     <prerequisite>
@@ -1605,7 +1605,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="212"/>
+    <source source="DragonBlooded1st" page="212"/>
   </charm>
   <charm id="Dragon-Blooded.Friend-to-AllNationsAttitude" exalt="Dragon-Blooded" group="Socialize">
     <prerequisite>
@@ -1620,7 +1620,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="213"/>
+    <source source="DragonBlooded1st" page="213"/>
   </charm>
   <charm id="Dragon-Blooded.Smoothing-Over-the-PastTechnique" exalt="Dragon-Blooded" group="Socialize">
     <prerequisite>
@@ -1636,7 +1636,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="213"/>
+    <source source="DragonBlooded1st" page="213"/>
   </charm>
   <charm id="Dragon-Blooded.DrowningEmbrace" exalt="Dragon-Blooded" group="Brawl">
     <prerequisite>
@@ -1650,7 +1650,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="213"/>
+    <source source="DragonBlooded1st" page="213"/>
   </charm>
   <charm id="Dragon-Blooded.RiptideMethod" exalt="Dragon-Blooded" group="Brawl">
     <prerequisite>
@@ -1665,7 +1665,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Dragon-Blooded" page="213"/>
+    <source source="DragonBlooded1st" page="213"/>
   </charm>
   <charm id="Dragon-Blooded.PoundingSurfStyle" exalt="Dragon-Blooded" group="Brawl">
     <prerequisite>
@@ -1680,7 +1680,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="214"/>
+    <source source="DragonBlooded1st" page="214"/>
   </charm>
   <charm id="Dragon-Blooded.Fist-SpinningMaelstrom" exalt="Dragon-Blooded" group="Brawl">
     <prerequisite>
@@ -1696,7 +1696,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Dragon-Blooded" page="214"/>
+    <source source="DragonBlooded1st" page="214"/>
   </charm>
   <charm id="Dragon-Blooded.Blade-DeflectingPalm" exalt="Dragon-Blooded" group="Brawl">
     <prerequisite>
@@ -1710,7 +1710,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="214"/>
+    <source source="DragonBlooded1st" page="214"/>
   </charm>
   <charm id="Dragon-Blooded.BecomeHammer" exalt="Dragon-Blooded" group="Brawl">
     <prerequisite>
@@ -1725,7 +1725,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="215"/>
+    <source source="DragonBlooded1st" page="215"/>
   </charm>
   <charm id="Dragon-Blooded.FlowPastDefenses" exalt="Dragon-Blooded" group="Brawl">
     <prerequisite>
@@ -1742,7 +1742,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="215"/>
+    <source source="DragonBlooded1st" page="215"/>
   </charm>
   <charm id="Dragon-Blooded.BenevolentMaster'sBlessing" exalt="Dragon-Blooded" group="Bureaucracy">
     <prerequisite>
@@ -1756,7 +1756,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="215"/>
+    <source source="DragonBlooded1st" page="215"/>
   </charm>
   <charm id="Dragon-Blooded.ConfluenceSavantThought" exalt="Dragon-Blooded" group="Bureaucracy">
     <prerequisite>
@@ -1771,7 +1771,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="216"/>
+    <source source="DragonBlooded1st" page="216"/>
   </charm>
   <charm id="Dragon-Blooded.Geese-Flying-SouthAdministration" exalt="Dragon-Blooded" group="Bureaucracy">
     <prerequisite>
@@ -1787,7 +1787,7 @@
     </cost>
     <duration amount="1" unit="task"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="216"/>
+    <source source="DragonBlooded1st" page="216"/>
   </charm>
   <charm id="Dragon-Blooded.BestowSaffronMantle" exalt="Dragon-Blooded" group="Bureaucracy">
     <prerequisite>
@@ -1802,7 +1802,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="216"/>
+    <source source="DragonBlooded1st" page="216"/>
   </charm>
   <charm id="Dragon-Blooded.TrashingCarpSerenade" exalt="Dragon-Blooded" group="Bureaucracy">
     <prerequisite>
@@ -1817,7 +1817,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="217"/>
+    <source source="DragonBlooded1st" page="217"/>
   </charm>
   <charm id="Dragon-Blooded.ToughtfulGiftTechnique" exalt="Dragon-Blooded" group="Bureaucracy">
     <prerequisite>
@@ -1832,7 +1832,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="217"/>
+    <source source="DragonBlooded1st" page="217"/>
   </charm>
   <charm id="Dragon-Blooded.TestingWaters" exalt="Dragon-Blooded" group="Bureaucracy">
     <prerequisite>
@@ -1847,7 +1847,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="217"/>
+    <source source="DragonBlooded1st" page="217"/>
   </charm>
   <charm id="Dragon-Blooded.WiseCommander'sGift" exalt="Dragon-Blooded" group="Bureaucracy">
     <prerequisite>
@@ -1863,7 +1863,7 @@
     </cost>
     <duration amount="Essence" unit="week"/>
     <charmtype type="Simple"/>
-    <source source="Exalted Player's Guide" page="123"/>
+    <source source="PlayersGuide" page="123"/>
   </charm>
   <charm id="Dragon-Blooded.IndisputablePhysicalAnalysisTechnique" exalt="Dragon-Blooded" group="Investigation">
     <prerequisite>
@@ -1877,7 +1877,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="217"/>
+    <source source="DragonBlooded1st" page="217"/>
   </charm>
   <charm id="Dragon-Blooded.Scent-of-CrimeMethod" exalt="Dragon-Blooded" group="Investigation">
     <prerequisite>
@@ -1891,7 +1891,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="217"/>
+    <source source="DragonBlooded1st" page="217"/>
   </charm>
   <charm id="Dragon-Blooded.FalseholdUnearthingAttitude" exalt="Dragon-Blooded" group="Investigation">
     <prerequisite>
@@ -1907,7 +1907,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="218"/>
+    <source source="DragonBlooded1st" page="218"/>
   </charm>
   <charm id="Dragon-Blooded.Atsiluth'sBounty" exalt="Dragon-Blooded" group="Investigation">
     <prerequisite>
@@ -1921,7 +1921,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted: The Outcaste" page="130"/>
+    <source source="Outcaste" page="130"/>
   </charm>
   <charm id="Dragon-Blooded.VisionOutsideTime" exalt="Dragon-Blooded" group="Investigation">
     <prerequisite>
@@ -1938,7 +1938,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted: The Outcaste" page="130"/>
+    <source source="Outcaste" page="130"/>
   </charm>
   <charm id="Dragon-Blooded.Bloodhound'sNoseTechnique" exalt="Dragon-Blooded" group="Investigation">
     <prerequisite>
@@ -1955,7 +1955,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="218"/>
+    <source source="DragonBlooded1st" page="218"/>
   </charm>
   <charm id="Dragon-Blooded.RevelationAssociationHunch" exalt="Dragon-Blooded" group="Investigation">
     <prerequisite>
@@ -1971,7 +1971,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="218"/>
+    <source source="DragonBlooded1st" page="218"/>
   </charm>
   <charm id="Dragon-Blooded.HomewardTrailDiscoveryMethod" exalt="Dragon-Blooded" group="Investigation">
     <prerequisite>
@@ -1987,7 +1987,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="219"/>
+    <source source="DragonBlooded1st" page="219"/>
   </charm>
   <charm id="Dragon-Blooded.ObserverAwarenessMethod" exalt="Dragon-Blooded" group="Larceny">
     <prerequisite>
@@ -2001,7 +2001,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="219"/>
+    <source source="DragonBlooded1st" page="219"/>
   </charm>
   <charm id="Dragon-Blooded.TracklessWalkStyle" exalt="Dragon-Blooded" group="Larceny">
     <prerequisite>
@@ -2016,7 +2016,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="220"/>
+    <source source="DragonBlooded1st" page="220"/>
   </charm>
   <charm id="Dragon-Blooded.EarsSnowyOwl" exalt="Dragon-Blooded" group="Larceny">
     <prerequisite>
@@ -2031,7 +2031,7 @@
     </cost>
     <duration amount="1" unit="minute"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="220"/>
+    <source source="DragonBlooded1st" page="220"/>
   </charm>
   <charm id="Dragon-Blooded.Window-in-the-DoorTechnique" exalt="Dragon-Blooded" group="Larceny">
     <prerequisite>
@@ -2046,7 +2046,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="221"/>
+    <source source="DragonBlooded1st" page="221"/>
   </charm>
   <charm id="Dragon-Blooded.ResettingTumblersTechnique" exalt="Dragon-Blooded" group="Larceny">
     <prerequisite>
@@ -2060,7 +2060,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="221"/>
+    <source source="DragonBlooded1st" page="221"/>
   </charm>
   <charm id="Dragon-Blooded.ArtfulSprintingTheft" exalt="Dragon-Blooded" group="Larceny">
     <prerequisite>
@@ -2075,7 +2075,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="221"/>
+    <source source="DragonBlooded1st" page="221"/>
   </charm>
   <charm id="Dragon-Blooded.Space-CrossingTheftTechnique" exalt="Dragon-Blooded" group="Larceny">
     <prerequisite>
@@ -2091,7 +2091,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="221"/>
+    <source source="DragonBlooded1st" page="221"/>
   </charm>
   <charm id="Dragon-Blooded.Hurricane-PredictingGlance" exalt="Dragon-Blooded" group="Sail">
     <prerequisite>
@@ -2105,7 +2105,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="221"/>
+    <source source="DragonBlooded1st" page="221"/>
   </charm>
   <charm id="Dragon-Blooded.Storm-OutrunningTechnique" exalt="Dragon-Blooded" group="Sail">
     <prerequisite>
@@ -2120,7 +2120,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="222"/>
+    <source source="DragonBlooded1st" page="222"/>
   </charm>
   <charm id="Dragon-Blooded.Wind-SummoningWhistle" exalt="Dragon-Blooded" group="Sail">
     <prerequisite>
@@ -2135,7 +2135,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted: The Outcaste" page="93"/>
+    <source source="Outcaste" page="93"/>
   </charm>
   <charm id="Dragon-Blooded.FinePassageNegotiatingStyle" exalt="Dragon-Blooded" group="Sail">
     <prerequisite>
@@ -2150,7 +2150,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="222"/>
+    <source source="DragonBlooded1st" page="222"/>
   </charm>
   <charm id="Dragon-Blooded.TerribleGlowNauticalValor" exalt="Dragon-Blooded" group="Sail">
     <prerequisite>
@@ -2166,7 +2166,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted: The Outcaste" page="93"/>
+    <source source="Outcaste" page="93"/>
   </charm>
   <charm id="Dragon-Blooded.PleasantConvocationLike-Minded" exalt="Dragon-Blooded" group="Sail">
     <prerequisite>
@@ -2182,7 +2182,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted: The Outcaste" page="93"/>
+    <source source="Outcaste" page="93"/>
   </charm>
   <charm id="Dragon-Blooded.Enemy-FoulingMethod" exalt="Dragon-Blooded" group="Sail">
     <prerequisite>
@@ -2197,7 +2197,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted: The Outcaste" page="93"/>
+    <source source="Outcaste" page="93"/>
   </charm>
   <charm id="Dragon-Blooded.SturdyBulkheadConcentration" exalt="Dragon-Blooded" group="Sail">
     <prerequisite>
@@ -2212,7 +2212,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="223"/>
+    <source source="DragonBlooded1st" page="223"/>
   </charm>
   <charm id="Dragon-Blooded.Pirate-MasqueradingMethod" exalt="Dragon-Blooded" group="Sail">
     <prerequisite>
@@ -2227,7 +2227,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="223"/>
+    <source source="DragonBlooded1st" page="223"/>
   </charm>
   <charm id="Dragon-Blooded.FalseColorFlyingDemonstration" exalt="Dragon-Blooded" group="Sail">
     <prerequisite>
@@ -2242,7 +2242,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Exalted: The Outcaste" page="94"/>
+    <source source="Outcaste" page="94"/>
   </charm>
   <charm id="Dragon-Blooded.SpringFollowsWinter" exalt="Dragon-Blooded" group="Archery">
     <prerequisite>
@@ -2256,7 +2256,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="223"/>
+    <source source="DragonBlooded1st" page="223"/>
   </charm>
   <charm id="Dragon-Blooded.SwallowDefendNest" exalt="Dragon-Blooded" group="Archery">
     <prerequisite>
@@ -2271,7 +2271,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Dragon-Blooded" page="224"/>
+    <source source="DragonBlooded1st" page="224"/>
   </charm>
   <charm id="Dragon-Blooded.HarvestHunter" exalt="Dragon-Blooded" group="Archery">
     <prerequisite>
@@ -2286,7 +2286,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="224"/>
+    <source source="DragonBlooded1st" page="224"/>
   </charm>
   <charm id="Dragon-Blooded.Life-SwellingSapStrike" exalt="Dragon-Blooded" group="Archery">
     <prerequisite>
@@ -2301,7 +2301,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="224"/>
+    <source source="DragonBlooded1st" page="224"/>
   </charm>
   <charm id="Dragon-Blooded.DragonflyFindsMate" exalt="Dragon-Blooded" group="Archery">
     <prerequisite>
@@ -2316,7 +2316,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="225"/>
+    <source source="DragonBlooded1st" page="225"/>
   </charm>
   <charm id="Dragon-Blooded.Seven-YearSwarmVolley" exalt="Dragon-Blooded" group="Archery">
     <prerequisite>
@@ -2332,7 +2332,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="225"/>
+    <source source="DragonBlooded1st" page="225"/>
   </charm>
   <charm id="Dragon-Blooded.SparrowDivesatHawk" exalt="Dragon-Blooded" group="Archery">
     <prerequisite>
@@ -2348,7 +2348,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="225"/>
+    <source source="DragonBlooded1st" page="225"/>
   </charm>
   <charm id="Dragon-Blooded.InfectionBanishingPrana" exalt="Dragon-Blooded" group="Medicine">
     <prerequisite>
@@ -2362,7 +2362,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="226"/>
+    <source source="DragonBlooded1st" page="226"/>
   </charm>
   <charm id="Dragon-Blooded.DreadInfectionStrike" exalt="Dragon-Blooded" group="Medicine">
     <prerequisite>
@@ -2378,7 +2378,7 @@
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="226"/>
+    <source source="DragonBlooded1st" page="226"/>
   </charm>
   <charm id="Dragon-Blooded.Disease-BanishingTechnique" exalt="Dragon-Blooded" group="Medicine">
     <prerequisite>
@@ -2394,7 +2394,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="226"/>
+    <source source="DragonBlooded1st" page="226"/>
   </charm>
   <charm id="Dragon-Blooded.Wound-ClosingTouch" exalt="Dragon-Blooded" group="Medicine">
     <prerequisite>
@@ -2410,7 +2410,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="226"/>
+    <source source="DragonBlooded1st" page="226"/>
   </charm>
   <charm id="Dragon-Blooded.GrievousWoundAlterationEnergy" exalt="Dragon-Blooded" group="Medicine">
     <prerequisite>
@@ -2426,7 +2426,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="227"/>
+    <source source="DragonBlooded1st" page="227"/>
   </charm>
   <charm id="Dragon-Blooded.Madness-AnalyzingStance" exalt="Dragon-Blooded" group="Medicine">
     <prerequisite>
@@ -2441,7 +2441,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="227"/>
+    <source source="DragonBlooded1st" page="227"/>
   </charm>
   <charm id="Dragon-Blooded.PurityMindMethod" exalt="Dragon-Blooded" group="Medicine">
     <prerequisite>
@@ -2458,7 +2458,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="227"/>
+    <source source="DragonBlooded1st" page="227"/>
   </charm>
   <charm id="Dragon-Blooded.MemorablePerformanceTechnique" exalt="Dragon-Blooded" group="Performance">
     <prerequisite>
@@ -2472,7 +2472,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="228"/>
+    <source source="DragonBlooded1st" page="228"/>
   </charm>
   <charm id="Dragon-Blooded.TalentedImprovisation" exalt="Dragon-Blooded" group="Performance">
     <prerequisite>
@@ -2487,7 +2487,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="228"/>
+    <source source="DragonBlooded1st" page="228"/>
   </charm>
   <charm id="Dragon-Blooded.DanceFlashingSwords" exalt="Dragon-Blooded" group="Performance">
     <prerequisite>
@@ -2503,7 +2503,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="228"/>
+    <source source="DragonBlooded1st" page="228"/>
   </charm>
   <charm id="Dragon-Blooded.EnchantingPerformance" exalt="Dragon-Blooded" group="Performance">
     <prerequisite>
@@ -2519,7 +2519,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="229"/>
+    <source source="DragonBlooded1st" page="229"/>
   </charm>
   <charm id="Dragon-Blooded.ProtectivePerformance" exalt="Dragon-Blooded" group="Performance">
     <prerequisite>
@@ -2534,7 +2534,7 @@
     </cost>
     <duration amount="1" unit="performance"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="229"/>
+    <source source="DragonBlooded1st" page="229"/>
   </charm>
   <charm id="Dragon-Blooded.TirelessFootfallsCadence" exalt="Dragon-Blooded" group="Performance">
     <prerequisite>
@@ -2549,7 +2549,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple" synergistic="true"/>
-    <source source="Exalted: The Outcaste" page="44"/>
+    <source source="Outcaste" page="44"/>
   </charm>
   <charm id="Dragon-Blooded.FlawlessTrainingExecution" exalt="Dragon-Blooded" group="Performance">
     <prerequisite>
@@ -2564,7 +2564,7 @@
     </cost>
     <duration amount="2" unit="month"/>
     <charmtype type="Simple" synergistic="true"/>
-    <source source="Exalted: The Outcaste" page="44"/>
+    <source source="Outcaste" page="44"/>
   </charm>
   <charm id="Dragon-Blooded.PeerlessTrainingMethodProtocols" exalt="Dragon-Blooded" group="Performance">
     <prerequisite>
@@ -2580,7 +2580,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple" synergistic="true"/>
-    <source source="Exalted: The Outcaste" page="45"/>
+    <source source="Outcaste" page="45"/>
   </charm>
   <charm id="Dragon-Blooded.ScatteredPearlHoofFalls" exalt="Dragon-Blooded" group="Ride">
     <prerequisite>
@@ -2594,7 +2594,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="229"/>
+    <source source="DragonBlooded1st" page="229"/>
   </charm>
   <charm id="Dragon-Blooded.Heaven-GracingLeap" exalt="Dragon-Blooded" group="Ride">
     <prerequisite>
@@ -2609,7 +2609,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="229"/>
+    <source source="DragonBlooded1st" page="229"/>
   </charm>
   <charm id="Dragon-Blooded.Cloud-HarnessingMethod" exalt="Dragon-Blooded" group="Ride">
     <prerequisite>
@@ -2624,7 +2624,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="230"/>
+    <source source="DragonBlooded1st" page="230"/>
   </charm>
   <charm id="Dragon-Blooded.EbonySpurTechnique" exalt="Dragon-Blooded" group="Ride">
     <prerequisite>
@@ -2640,7 +2640,7 @@
 	<combo allAbilities="true"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="230"/>
+    <source source="DragonBlooded1st" page="230"/>
   </charm>
   <charm id="Dragon-Blooded.ChargeOneHundredGenerals" exalt="Dragon-Blooded" group="Ride">
     <prerequisite>
@@ -2656,7 +2656,7 @@
     </cost>
     <duration amount="1" unit="charge"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="230"/>
+    <source source="DragonBlooded1st" page="230"/>
   </charm>
   <charm id="Dragon-Blooded.GreatHeartCompanion" exalt="Dragon-Blooded" group="Ride">
     <prerequisite>
@@ -2671,7 +2671,7 @@
     </cost>
     <duration amount="Successes" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="231"/>
+    <source source="DragonBlooded1st" page="231"/>
   </charm>
   <charm id="Dragon-Blooded.DanceJadeBridle" exalt="Dragon-Blooded" group="Ride">
     <prerequisite>
@@ -2687,7 +2687,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="231"/>
+    <source source="DragonBlooded1st" page="231"/>
   </charm>
   <charm id="Dragon-Blooded.Wild-WanderingForesterCharm" exalt="Dragon-Blooded" group="Survival">
     <prerequisite>
@@ -2701,7 +2701,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Dragon-Blooded" page="232"/>
+    <source source="DragonBlooded1st" page="232"/>
   </charm>
   <charm id="Dragon-Blooded.Forgivness-of-NatureInvokingPrana" exalt="Dragon-Blooded" group="Survival">
     <prerequisite>
@@ -2716,7 +2716,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Dragon-Blooded" page="232"/>
+    <source source="DragonBlooded1st" page="232"/>
   </charm>
   <charm id="Dragon-Blooded.QuarryRevelationTechnique" exalt="Dragon-Blooded" group="Survival">
     <prerequisite>
@@ -2731,7 +2731,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="232"/>
+    <source source="DragonBlooded1st" page="232"/>
   </charm>
   <charm id="Dragon-Blooded.TrailConcealingMeasurement" exalt="Dragon-Blooded" group="Survival">
     <prerequisite>
@@ -2746,7 +2746,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="233"/>
+    <source source="DragonBlooded1st" page="233"/>
   </charm>
   <charm id="Dragon-Blooded.Ration-EnhancingMethod" exalt="Dragon-Blooded" group="Survival">
     <prerequisite>
@@ -2761,7 +2761,7 @@
     </cost>
     <duration amount="1" unit="hunt"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="233"/>
+    <source source="DragonBlooded1st" page="233"/>
   </charm>
   <charm id="Dragon-Blooded.HostileEnvironmentPreparation" exalt="Dragon-Blooded" group="Survival">
     <prerequisite>
@@ -2776,7 +2776,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="233"/>
+    <source source="DragonBlooded1st" page="233"/>
   </charm>
   <charm id="Dragon-Blooded.ShelterCreationTechnique" exalt="Dragon-Blooded" group="Survival">
     <prerequisite>
@@ -2791,7 +2791,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Dragon-Blooded" page="233"/>
+    <source source="DragonBlooded1st" page="233"/>
   </charm>
   <charm id="Dragon-Blooded.SubtleComprehensionTechnique" exalt="Dragon-Blooded" group="Linguistics">
     <prerequisite>
@@ -2808,7 +2808,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Exalted: The Outcaste" page="150"/>
+    <source source="Outcaste" page="150"/>
   </charm>
   <charm id="Dragon-Blooded.CipherMissive" exalt="Dragon-Blooded" group="Linguistics">
     <prerequisite>
@@ -2823,7 +2823,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Air" page="67"/>
+    <source source="ABAir" page="67"/>
   </charm>
   <charm id="Dragon-Blooded.CraftIcon" exalt="Dragon-Blooded" group="Linguistics">
     <prerequisite>
@@ -2838,7 +2838,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Air" page="68"/>
+    <source source="ABAir" page="68"/>
   </charm>
   <charm id="Dragon-Blooded.SpeechWithoutWords" exalt="Dragon-Blooded" group="Linguistics">
     <prerequisite>
@@ -2854,7 +2854,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Air" page="68"/>
+    <source source="ABAir" page="68"/>
   </charm>
   <charm id="Dragon-Blooded.FavoredQuillMastery" exalt="Dragon-Blooded" group="Linguistics">
     <prerequisite>
@@ -2869,7 +2869,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Aspect Book: Air" page="69"/>
+    <source source="ABAir" page="69"/>
   </charm>
   <charm id="Dragon-Blooded.CarefulInsight-GatheringStudy" exalt="Dragon-Blooded" group="Lore">
     <prerequisite>
@@ -2884,7 +2884,7 @@
     </cost>
     <duration amount="Successes" unit="hour"/>
     <charmtype type="Supplemental"/>
-    <source source="Aspect Book: Air" page="69"/>
+    <source source="ABAir" page="69"/>
   </charm>
   <charm id="Dragon-Blooded.BruteForceContemplation" exalt="Dragon-Blooded" group="Lore">
     <prerequisite>
@@ -2899,7 +2899,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Aspect Book: Air" page="69"/>
+    <source source="ABAir" page="69"/>
   </charm>
   <charm id="Dragon-Blooded.EternalMindMeditation" exalt="Dragon-Blooded" group="Lore">
     <prerequisite>
@@ -2915,7 +2915,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Air" page="70"/>
+    <source source="ABAir" page="70"/>
   </charm>
   <charm id="Dragon-Blooded.SternTutorDiscipline" exalt="Dragon-Blooded" group="Lore">
     <prerequisite>
@@ -2930,7 +2930,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Air" page="70"/>
+    <source source="ABAir" page="70"/>
   </charm>
   <charm id="Dragon-Blooded.FlawlessStudyFocus" exalt="Dragon-Blooded" group="Lore">
     <prerequisite>
@@ -2945,7 +2945,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Aspect Book: Air" page="70"/>
+    <source source="ABAir" page="70"/>
   </charm>
   <charm id="Dragon-Blooded.DiligentEngineerDiscipline" exalt="Dragon-Blooded" group="Craft">
     <prerequisite>
@@ -2963,7 +2963,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Aspect Book: Air" page="74"/>
+    <source source="ABAir" page="74"/>
   </charm>
   <charm id="Dragon-Blooded.CrosswindOffense" exalt="Dragon-Blooded" group="Thrown">
     <prerequisite>
@@ -2978,7 +2978,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Aspect Book: Air" page="73"/>
+    <source source="ABAir" page="73"/>
   </charm>
   <charm id="Dragon-Blooded.CrosswindFeint" exalt="Dragon-Blooded" group="Thrown">
     <prerequisite>
@@ -2993,7 +2993,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="Aspect Book: Air" page="73"/>
+    <source source="ABAir" page="73"/>
   </charm>
   <charm id="Dragon-Blooded.CrosswindGale" exalt="Dragon-Blooded" group="Thrown">
     <prerequisite>
@@ -3008,7 +3008,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Air" page="74"/>
+    <source source="ABAir" page="74"/>
   </charm>
   <charm id="Dragon-Blooded.CrosswindEmpowermentTechnique" exalt="Dragon-Blooded" group="Thrown">
     <prerequisite>
@@ -3023,7 +3023,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Air" page="74"/>
+    <source source="ABAir" page="74"/>
   </charm>
   <charm id="Dragon-Blooded.MindingDragon'sEggs" exalt="Dragon-Blooded" group="Occult">
     <prerequisite>
@@ -3037,7 +3037,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Air" page="70"/>
+    <source source="ABAir" page="70"/>
   </charm>
   <charm id="Dragon-Blooded.FivefoldResonanceSense" exalt="Dragon-Blooded" group="Occult">
     <prerequisite>
@@ -3052,7 +3052,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Air" page="71"/>
+    <source source="ABAir" page="71"/>
   </charm>
   <charm id="Dragon-Blooded.SeeingMaker'sHand" exalt="Dragon-Blooded" group="Occult">
     <prerequisite>
@@ -3068,7 +3068,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Air" page="71"/>
+    <source source="ABAir" page="71"/>
   </charm>
   <charm id="Dragon-Blooded.EmbracingArcane" exalt="Dragon-Blooded" group="Occult">
     <prerequisite>
@@ -3083,7 +3083,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Aspect Book: Air" page="71"/>
+    <source source="ABAir" page="71"/>
   </charm>
   <charm id="Dragon-Blooded.DeliberateInsignificanceMethod" exalt="Dragon-Blooded" group="Stealth">
     <prerequisite>
@@ -3098,7 +3098,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Air" page="72"/>
+    <source source="ABAir" page="72"/>
   </charm>
   <charm id="Dragon-Blooded.EmptyHandPosture" exalt="Dragon-Blooded" group="Stealth">
     <prerequisite>
@@ -3114,7 +3114,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Air" page="72"/>
+    <source source="ABAir" page="72"/>
   </charm>
   <charm id="Dragon-Blooded.SubtleBreezeKata" exalt="Dragon-Blooded" group="Stealth">
     <prerequisite>
@@ -3131,7 +3131,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Aspect Book: Air" page="72"/>
+    <source source="ABAir" page="72"/>
   </charm>
   <charm id="Dragon-Blooded.FavoredHauntStance" exalt="Dragon-Blooded" group="Stealth">
     <prerequisite>
@@ -3146,7 +3146,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Aspect Book: Air" page="72"/>
+    <source source="ABAir" page="72"/>
   </charm>
   <charm id="Dragon-Blooded.UnfailingDragonGlance" exalt="Dragon-Blooded" group="Awareness">
     <prerequisite>
@@ -3160,7 +3160,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Aspect Book: Earth" page="71"/>
+    <source source="ABEarth" page="71"/>
   </charm>
   <charm id="Dragon-Blooded.SightFlutteringTremors" exalt="Dragon-Blooded" group="Awareness">
     <prerequisite>
@@ -3175,7 +3175,7 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Earth" page="71"/>
+    <source source="ABEarth" page="71"/>
   </charm>
   <charm id="Dragon-Blooded.PulseDragon'sSoul" exalt="Dragon-Blooded" group="Awareness">
     <prerequisite>
@@ -3190,7 +3190,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Special"/>
-    <source source="Aspect Book: Earth" page="72"/>
+    <source source="ABEarth" page="72"/>
   </charm>
   <charm id="Dragon-Blooded.ResplendentArtisanMastery" exalt="Dragon-Blooded" group="Craft">
     <prerequisite>
@@ -3205,7 +3205,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Aspect Book: Earth" page="72"/>
+    <source source="ABEarth" page="72"/>
   </charm>
   <charm id="Dragon-Blooded.RampartsObedientEarth" exalt="Dragon-Blooded" group="Craft">
     <prerequisite>
@@ -3220,7 +3220,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Aspect Book: Earth" page="72"/>
+    <source source="ABEarth" page="72"/>
   </charm>
   <charm id="Dragon-Blooded.BreakingDragon'sHeart" exalt="Dragon-Blooded" group="Craft">
     <prerequisite>
@@ -3237,7 +3237,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Earth" page="73"/>
+    <source source="ABEarth" page="73"/>
   </charm>
   <charm id="Dragon-Blooded.SleepStonesTrance" exalt="Dragon-Blooded" group="Endurance">
     <prerequisite>
@@ -3252,7 +3252,7 @@
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Earth" page="74"/>
+    <source source="ABEarth" page="74"/>
   </charm>
   <charm id="Dragon-Blooded.BreathEarthTrance" exalt="Dragon-Blooded" group="Endurance">
     <prerequisite>
@@ -3267,7 +3267,7 @@
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Earth" page="74"/>
+    <source source="ABEarth" page="74"/>
   </charm>
   <charm id="Dragon-Blooded.PurifyingBloodAscendancy" exalt="Dragon-Blooded" group="Endurance">
     <prerequisite>
@@ -3283,7 +3283,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Aspect Book: Earth" page="74"/>
+    <source source="ABEarth" page="74"/>
   </charm>
   <charm id="Dragon-Blooded.SparkKindlingRescueTechnique" exalt="Dragon-Blooded" group="Medicine">
     <prerequisite>
@@ -3297,7 +3297,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Fire" page="77"/>
+    <source source="ABFire" page="77"/>
   </charm>
   <charm id="Dragon-Blooded.JadeDefense" exalt="Dragon-Blooded" group="Socialize">
     <prerequisite>
@@ -3312,7 +3312,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Fire" page="76"/>
+    <source source="ABFire" page="76"/>
   </charm>
   <charm id="Dragon-Blooded.Loyalty-ReadingMeditation" exalt="Dragon-Blooded" group="Socialize">
     <prerequisite>
@@ -3327,7 +3327,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Fire" page="77"/>
+    <source source="ABFire" page="77"/>
   </charm>
   <charm id="Dragon-Blooded.AuspiciousFirstMeetingAttitude" exalt="Dragon-Blooded" group="Presence">
     <prerequisite>
@@ -3341,7 +3341,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Fire" page="76"/>
+    <source source="ABFire" page="76"/>
   </charm>
   <charm id="Dragon-Blooded.PassionTransmutingNuance" exalt="Dragon-Blooded" group="Presence">
     <prerequisite>
@@ -3355,7 +3355,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Fire" page="76"/>
+    <source source="ABFire" page="76"/>
   </charm>
   <charm id="Dragon-Blooded.IncendiaryFireDragonShout" exalt="Dragon-Blooded" group="Presence">
     <prerequisite>
@@ -3370,7 +3370,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Fire" page="76"/>
+    <source source="ABFire" page="76"/>
   </charm>
   <charm id="Dragon-Blooded.FlawlessBalanceDiscipline" exalt="Dragon-Blooded" group="Athletics">
     <prerequisite>
@@ -3385,7 +3385,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Fire" page="74"/>
+    <source source="ABFire" page="74"/>
   </charm>
   <charm id="Dragon-Blooded.UnassailableBodyFlameDefense" exalt="Dragon-Blooded" group="Dodge">
     <prerequisite>
@@ -3401,7 +3401,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Aspect Book: Fire" page="74"/>
+    <source source="ABFire" page="74"/>
   </charm>
   <charm id="Dragon-Blooded.FireIncitesWatertoaRiotClouds" exalt="Dragon-Blooded" group="Melee">
     <prerequisite>
@@ -3416,7 +3416,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Aspect Book: Fire" page="74"/>
+    <source source="ABFire" page="74"/>
   </charm>
   <charm id="Dragon-Blooded.BlindingSparkDistraction" exalt="Dragon-Blooded" group="Melee">
     <prerequisite>
@@ -3431,7 +3431,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Aspect Book: Fire" page="75"/>
+    <source source="ABFire" page="75"/>
   </charm>
   <charm id="Dragon-Blooded.Spirit-BrandingBladeTechnique" exalt="Dragon-Blooded" group="Melee">
     <prerequisite>
@@ -3446,7 +3446,7 @@
     </cost>
     <duration amount="Essence" unit="day"/>
     <charmtype type="Supplemental"/>
-    <source source="Aspect Book: Fire" page="75"/>
+    <source source="ABFire" page="75"/>
   </charm>
   <charm id="Dragon-Blooded.Style-CounteringMeditationMelee" exalt="Dragon-Blooded" group="Melee">
     <prerequisite>
@@ -3461,7 +3461,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Fire" page="75"/>
+    <source source="ABFire" page="75"/>
   </charm>
   <charm id="Dragon-Blooded.Style-CounteringMeditationBrawl" exalt="Dragon-Blooded" group="Melee">
     <prerequisite>
@@ -3476,7 +3476,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Fire" page="75"/>
+    <source source="ABFire" page="75"/>
   </charm>
   <charm id="Dragon-Blooded.Style-CounteringMeditationMartialArts" exalt="Dragon-Blooded" group="Melee">
     <prerequisite>
@@ -3491,7 +3491,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Fire" page="75"/>
+    <source source="ABFire" page="75"/>
   </charm>
   <charm id="Dragon-Blooded.BondsUnbreakableIceTechnique" exalt="Dragon-Blooded" group="Brawl">
     <prerequisite>
@@ -3507,7 +3507,7 @@
     </cost>
     <duration amount="Essence" unit="turn"/>
     <charmtype type="Supplemental"/>
-    <source source="Aspect Book: Water" page="73"/>
+    <source source="ABWater" page="73"/>
   </charm>
   <charm id="Dragon-Blooded.CrushingGlacierPrana" exalt="Dragon-Blooded" group="Brawl">
     <prerequisite>
@@ -3523,7 +3523,7 @@
     </cost>
     <duration amount="Essence" unit="turn"/>
     <charmtype type="Supplemental"/>
-    <source source="Aspect Book: Water" page="73"/>
+    <source source="ABWater" page="73"/>
   </charm>
   <charm id="Dragon-Blooded.SmashingTidalWaveTechnique" exalt="Dragon-Blooded" group="Brawl">
     <prerequisite>
@@ -3539,7 +3539,7 @@
     </cost>
     <duration amount="Brawl" unit="turn"/>
     <charmtype type="Supplemental"/>
-    <source source="Aspect Book: Water" page="74"/>
+    <source source="ABWater" page="74"/>
   </charm>
   <charm id="Dragon-Blooded.SlipperyEscapeMethod" exalt="Dragon-Blooded" group="Brawl">
     <prerequisite>
@@ -3554,7 +3554,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Aspect Book: Water" page="74"/>
+    <source source="ABWater" page="74"/>
   </charm>
   <charm id="Dragon-Blooded.SwiftStreamPrana" exalt="Dragon-Blooded" group="Brawl">
     <prerequisite>
@@ -3569,7 +3569,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Aspect Book: Water" page="74"/>
+    <source source="ABWater" page="74"/>
   </charm>
   <charm id="Dragon-Blooded.DisarmingStrikePrana" exalt="Dragon-Blooded" group="Brawl">
     <prerequisite>
@@ -3585,7 +3585,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Water" page="75"/>
+    <source source="ABWater" page="75"/>
   </charm>
   <charm id="Dragon-Blooded.WaterDropProtectionTechnique" exalt="Dragon-Blooded" group="Sail">
     <prerequisite>
@@ -3601,7 +3601,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Water" page="79"/>
+    <source source="ABWater" page="79"/>
   </charm>
   <charm id="Dragon-Blooded.Deck-WalkingPrana" exalt="Dragon-Blooded" group="Sail">
     <prerequisite>
@@ -3615,7 +3615,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Aspect Book: Water" page="79"/>
+    <source source="ABWater" page="79"/>
   </charm>
   <charm id="Dragon-Blooded.Ship-StridingTechnique" exalt="Dragon-Blooded" group="Sail">
     <prerequisite>
@@ -3630,7 +3630,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Water" page="79"/>
+    <source source="ABWater" page="79"/>
   </charm>
   <charm id="Dragon-Blooded.FindingWaters'Depths" exalt="Dragon-Blooded" group="Bureaucracy">
     <prerequisite>
@@ -3644,7 +3644,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Water" page="75"/>
+    <source source="ABWater" page="75"/>
   </charm>
   <charm id="Dragon-Blooded.SparklingFountainsEloquence" exalt="Dragon-Blooded" group="Bureaucracy">
     <prerequisite>
@@ -3659,7 +3659,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Water" page="75"/>
+    <source source="ABWater" page="75"/>
   </charm>
   <charm id="Dragon-Blooded.DistractionBabblingBrook" exalt="Dragon-Blooded" group="Bureaucracy">
     <prerequisite>
@@ -3675,7 +3675,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Water" page="75"/>
+    <source source="ABWater" page="75"/>
   </charm>
   <charm id="Dragon-Blooded.DashingBrookMethod" exalt="Dragon-Blooded" group="Bureaucracy">
     <prerequisite>
@@ -3691,7 +3691,7 @@
     </cost>
     <duration amount="1" unit="task"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Water" page="75"/>
+    <source source="ABWater" page="75"/>
   </charm>
   <charm id="Dragon-Blooded.TamperingDetectionTechnique" exalt="Dragon-Blooded" group="Investigation">
     <prerequisite>
@@ -3706,7 +3706,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Water" page="76"/>
+    <source source="ABWater" page="76"/>
   </charm>
   <charm id="Dragon-Blooded.ClearWaterPrana" exalt="Dragon-Blooded" group="Investigation">
     <prerequisite>
@@ -3722,7 +3722,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Water" page="76"/>
+    <source source="ABWater" page="76"/>
   </charm>
   <charm id="Dragon-Blooded.EyeEnlightenedReader" exalt="Dragon-Blooded" group="Investigation">
     <prerequisite>
@@ -3737,7 +3737,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Water" page="76"/>
+    <source source="ABWater" page="76"/>
   </charm>
   <charm id="Dragon-Blooded.InformationCarryingTide" exalt="Dragon-Blooded" group="Investigation">
     <prerequisite>
@@ -3752,7 +3752,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Aspect Book: Water" page="76"/>
+    <source source="ABWater" page="76"/>
   </charm>
   <charm id="Dragon-Blooded.NakedThiefStyle" exalt="Dragon-Blooded" group="Larceny">
     <prerequisite>
@@ -3768,7 +3768,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Supplemental"/>
-    <source source="Aspect Book: Water" page="77"/>
+    <source source="ABWater" page="77"/>
   </charm>
   <charm id="Dragon-Blooded.InstantDisguisePrana" exalt="Dragon-Blooded" group="Larceny">
     <prerequisite>
@@ -3783,7 +3783,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Supplemental"/>
-    <source source="Aspect Book: Water" page="77"/>
+    <source source="ABWater" page="77"/>
   </charm>
   <charm id="Dragon-Blooded.NewVoiceTechnique" exalt="Dragon-Blooded" group="Larceny">
     <prerequisite>
@@ -3797,7 +3797,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Water" page="77"/>
+    <source source="ABWater" page="77"/>
   </charm>
   <charm id="Dragon-Blooded.PreciseInkTechnique" exalt="Dragon-Blooded" group="Larceny">
     <prerequisite>
@@ -3811,7 +3811,7 @@
     </cost>
     <duration amount="1" unit="task"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Water" page="77"/>
+    <source source="ABWater" page="77"/>
   </charm>
   <charm id="Dragon-Blooded.WatersHonestyMethod" exalt="Dragon-Blooded" group="Larceny">
     <prerequisite>
@@ -3826,7 +3826,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Water" page="77"/>
+    <source source="ABWater" page="77"/>
   </charm>
   <charm id="Dragon-Blooded.PerfectGamblingPrana" exalt="Dragon-Blooded" group="Larceny">
     <prerequisite>
@@ -3841,7 +3841,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Water" page="78"/>
+    <source source="ABWater" page="78"/>
   </charm>
   <charm id="Dragon-Blooded.FloodVictoryPrana" exalt="Dragon-Blooded" group="Larceny">
     <prerequisite>
@@ -3857,7 +3857,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Water" page="78"/>
+    <source source="ABWater" page="78"/>
   </charm>
   <charm id="Dragon-Blooded.Armor-HardeningConcentration" exalt="Dragon-Blooded" group="Resistance">
     <prerequisite>
@@ -3872,7 +3872,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Earth" page="76"/>
+    <source source="ABEarth" page="76"/>
   </charm>
   <charm id="Dragon-Blooded.MantleFireInvulnerability" exalt="Dragon-Blooded" group="Resistance">
     <prerequisite>
@@ -3891,7 +3891,7 @@
     </learning>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Earth" page="77"/>
+    <source source="ABEarth" page="77"/>
   </charm>
   <charm id="Dragon-Blooded.MantleAirInvulnerability" exalt="Dragon-Blooded" group="Resistance">
     <prerequisite>
@@ -3910,7 +3910,7 @@
     </learning>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Earth" page="77"/>
+    <source source="ABEarth" page="77"/>
   </charm>
   <charm id="Dragon-Blooded.MantleEarthInvulnerability" exalt="Dragon-Blooded" group="Resistance">
     <prerequisite>
@@ -3926,7 +3926,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Earth" page="77"/>
+    <source source="ABEarth" page="77"/>
   </charm>
   <charm id="Dragon-Blooded.MantleWaterInvulnerability" exalt="Dragon-Blooded" group="Resistance">
     <prerequisite>
@@ -3945,7 +3945,7 @@
     </learning>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Earth" page="77"/>
+    <source source="ABEarth" page="77"/>
   </charm>
   <charm id="Dragon-Blooded.MantleWoodInvulnerability" exalt="Dragon-Blooded" group="Resistance">
     <prerequisite>
@@ -3964,7 +3964,7 @@
     </learning>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Earth" page="77"/>
+    <source source="ABEarth" page="77"/>
   </charm>
   <charm id="Dragon-Blooded.PerfectedScalesDragon" exalt="Dragon-Blooded" group="Resistance">
     <prerequisite>
@@ -3988,7 +3988,7 @@
     </learning>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Earth" page="77"/>
+    <source source="ABEarth" page="77"/>
   </charm>
   <charm id="Dragon-Blooded.Taint-CleansingTechnique" exalt="Dragon-Blooded" group="Resistance">
     <prerequisite>
@@ -4008,7 +4008,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Earth" page="78"/>
+    <source source="ABEarth" page="78"/>
   </charm>
   <charm id="Dragon-Blooded.UnobstructedHunter'sAim" exalt="Dragon-Blooded" group="Archery">
     <prerequisite>
@@ -4023,7 +4023,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Aspect Book: Wood" page="75"/>
+    <source source="ABWood" page="75"/>
   </charm>
   <charm id="Dragon-Blooded.RavenousThornTechnique" exalt="Dragon-Blooded" group="Archery">
     <prerequisite>
@@ -4038,7 +4038,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Aspect Book: Wood" page="75"/>
+    <source source="ABWood" page="75"/>
   </charm>
   <charm id="Dragon-Blooded.VerdantCurtainsSerenity" exalt="Dragon-Blooded" group="Medicine">
     <prerequisite>
@@ -4054,7 +4054,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Wood" page="76"/>
+    <source source="ABWood" page="76"/>
   </charm>
   <charm id="Dragon-Blooded.JadeCrucibleMethod" exalt="Dragon-Blooded" group="Medicine">
     <prerequisite>
@@ -4072,7 +4072,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Wood" page="76"/>
+    <source source="ABWood" page="76"/>
   </charm>
   <charm id="Dragon-Blooded.MostBeneficientSeedFiveDragons" exalt="Dragon-Blooded" group="Medicine">
     <prerequisite>
@@ -4088,7 +4088,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Wood" page="76"/>
+    <source source="ABWood" page="76"/>
   </charm>
   <charm id="Dragon-Blooded.HiddenPetalAriaMethod" exalt="Dragon-Blooded" group="Performance">
     <prerequisite>
@@ -4103,7 +4103,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Reflexive"/>
-    <source source="Aspect Book: Wood" page="76"/>
+    <source source="ABWood" page="76"/>
   </charm>
   <charm id="Dragon-Blooded.BlossomHidesThorns" exalt="Dragon-Blooded" group="Performance">
     <prerequisite>
@@ -4118,7 +4118,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Aspect Book: Wood" page="77"/>
+    <source source="ABWood" page="77"/>
   </charm>
   <charm id="Dragon-Blooded.ElementalHalo'sMercy" exalt="Dragon-Blooded" group="Ride">
     <prerequisite>
@@ -4133,7 +4133,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Aspect Book: Wood" page="77"/>
+    <source source="ABWood" page="77"/>
   </charm>
   <charm id="Dragon-Blooded.Nature'sHealingBounty" exalt="Dragon-Blooded" group="Survival">
     <prerequisite>
@@ -4148,6 +4148,6 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Aspect Book: Wood" page="78"/>
+    <source source="ABWood" page="78"/>
   </charm>
 </charmlist>

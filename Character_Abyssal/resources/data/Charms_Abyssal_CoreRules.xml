@@ -13,7 +13,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="157"/>
+    <source source="Abyssals1st" page="157"/>
   </charm>
   <charm id="Abyssal.TwistingSpitefulShaft" exalt="Abyssal" group="Archery">
     <prerequisite>
@@ -28,7 +28,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="157"/>
+    <source source="Abyssals1st" page="157"/>
   </charm>
   <charm id="Abyssal.RelicArrowMethod" exalt="Abyssal" group="Archery">
     <prerequisite>
@@ -43,7 +43,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="158"/>
+    <source source="Abyssals1st" page="158"/>
   </charm>
   <charm id="Abyssal.IronSleetAttack" exalt="Abyssal" group="Archery">
     <prerequisite>
@@ -57,7 +57,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="158"/>
+    <source source="Abyssals1st" page="158"/>
   </charm>
   <charm id="Abyssal.HundredPacesBite" exalt="Abyssal" group="Archery">
     <prerequisite>
@@ -72,7 +72,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="158"/>
+    <source source="Abyssals1st" page="158"/>
   </charm>
   <charm id="Abyssal.PulsePrey" exalt="Abyssal" group="Archery">
     <prerequisite>
@@ -87,7 +87,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="158"/>
+    <source source="Abyssals1st" page="158"/>
   </charm>
   <charm id="Abyssal.WitheringFeatheredMaelstrom" exalt="Abyssal" group="Archery">
     <prerequisite>
@@ -103,7 +103,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Abyssals" page="158"/>
+    <source source="Abyssals1st" page="158"/>
   </charm>
   <charm id="Abyssal.FlawlessArcherDiscipline" exalt="Abyssal" group="Archery">
     <prerequisite>
@@ -119,7 +119,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="158"/>
+    <source source="Abyssals1st" page="158"/>
   </charm>
   <charm id="Abyssal.SplinterVoid" exalt="Abyssal" group="Archery">
     <prerequisite>
@@ -147,7 +147,7 @@
     </combo>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="159"/>
+    <source source="Abyssals1st" page="159"/>
   </charm>
   <charm id="Abyssal.ExquisiteRelicBow" exalt="Abyssal" group="Archery">
     <prerequisite>
@@ -163,7 +163,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="159"/>
+    <source source="Abyssals1st" page="159"/>
   </charm>
   <charm id="Abyssal.PiercingGhostBarb" exalt="Abyssal" group="Archery">
     <prerequisite>
@@ -180,7 +180,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="159"/>
+    <source source="Abyssals1st" page="159"/>
   </charm>
   <charm id="Abyssal.DeadMan'sGrasp" exalt="Abyssal" group="Brawl">
     <prerequisite>
@@ -194,7 +194,7 @@
     </cost>
     <duration event="Released"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="160"/>
+    <source source="Abyssals1st" page="160"/>
   </charm>
   <charm id="Abyssal.InescapableIronGrip" exalt="Abyssal" group="Brawl">
     <prerequisite>
@@ -209,7 +209,7 @@
     </cost>
     <duration event="Released"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="160"/>
+    <source source="Abyssals1st" page="160"/>
   </charm>
   <charm id="Abyssal.RapaciousLampreyTechnique" exalt="Abyssal" group="Brawl">
     <prerequisite>
@@ -224,7 +224,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="160"/>
+    <source source="Abyssals1st" page="160"/>
   </charm>
   <charm id="Abyssal.RavagingStrike" exalt="Abyssal" group="Brawl">
     <prerequisite>
@@ -238,7 +238,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="161"/>
+    <source source="Abyssals1st" page="161"/>
   </charm>
   <charm id="Abyssal.ScouringErosionMethod" exalt="Abyssal" group="Brawl">
     <prerequisite>
@@ -253,7 +253,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="161"/>
+    <source source="Abyssals1st" page="161"/>
   </charm>
   <charm id="Abyssal.LashingTempestAttack" exalt="Abyssal" group="Brawl">
     <prerequisite>
@@ -268,7 +268,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="161"/>
+    <source source="Abyssals1st" page="161"/>
   </charm>
   <charm id="Abyssal.OwlSeizesMouse" exalt="Abyssal" group="Brawl">
     <prerequisite>
@@ -283,7 +283,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="161"/>
+    <source source="Abyssals1st" page="161"/>
   </charm>
   <charm id="Abyssal.FiveKnifeStrike" exalt="Abyssal" group="Brawl">
     <prerequisite>
@@ -298,7 +298,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="162"/>
+    <source source="Abyssals1st" page="162"/>
   </charm>
   <charm id="Abyssal.Bone-ShatteringBlow" exalt="Abyssal" group="Brawl">
     <prerequisite>
@@ -313,7 +313,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="162"/>
+    <source source="Abyssals1st" page="162"/>
   </charm>
   <charm id="Abyssal.Blood-DrinkingPalm" exalt="Abyssal" group="Brawl">
     <prerequisite>
@@ -328,7 +328,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="162"/>
+    <source source="Abyssals1st" page="162"/>
   </charm>
   <charm id="Abyssal.WrithingBloodChainTechnique" exalt="Abyssal" group="Brawl">
     <prerequisite>
@@ -350,7 +350,7 @@
     </combo>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="162"/>
+    <source source="Abyssals1st" page="162"/>
   </charm>
   <charm id="Abyssal.FuriousBlade" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -364,7 +364,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="165"/>
+    <source source="Abyssals1st" page="165"/>
   </charm>
   <charm id="Abyssal.SavageShadeStyle" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -379,7 +379,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="166"/>
+    <source source="Abyssals1st" page="166"/>
   </charm>
   <charm id="Abyssal.SlashingGhostTalon" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -394,7 +394,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="166"/>
+    <source source="Abyssals1st" page="166"/>
   </charm>
   <charm id="Abyssal.ArtfulMaimingOnslaught" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -409,7 +409,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="166"/>
+    <source source="Abyssals1st" page="166"/>
   </charm>
   <charm id="Abyssal.FiveShadowFeint" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -424,7 +424,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="167"/>
+    <source source="Abyssals1st" page="167"/>
   </charm>
   <charm id="Abyssal.Soul-SearingBlow" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -439,7 +439,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="167"/>
+    <source source="Abyssals1st" page="167"/>
   </charm>
   <charm id="Abyssal.CrimsonBanquetMethod" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -455,7 +455,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="167"/>
+    <source source="Abyssals1st" page="167"/>
   </charm>
   <charm id="Abyssal.ReaperMen" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -471,7 +471,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="167"/>
+    <source source="Abyssals1st" page="167"/>
   </charm>
   <charm id="Abyssal.Soul-CleavingStrike" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -489,7 +489,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="167"/>
+    <source source="Abyssals1st" page="167"/>
   </charm>
   <charm id="Abyssal.Blade-SummoningGesture" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -503,7 +503,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="168"/>
+    <source source="Abyssals1st" page="168"/>
   </charm>
   <charm id="Abyssal.UnfurlingIronLotus" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -518,7 +518,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Abyssals" page="168"/>
+    <source source="Abyssals1st" page="168"/>
   </charm>
   <charm id="Abyssal.EbonLightningPrana" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -533,7 +533,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="168"/>
+    <source source="Abyssals1st" page="168"/>
   </charm>
   <charm id="Abyssal.GloriousCarnageTyphoon" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -549,7 +549,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Abyssals" page="168"/>
+    <source source="Abyssals1st" page="168"/>
   </charm>
   <charm id="Abyssal.VoidSheathTechnique" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -564,7 +564,7 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="169"/>
+    <source source="Abyssals1st" page="169"/>
   </charm>
   <charm id="Abyssal.ThievingRaitonClaws" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -579,7 +579,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="169"/>
+    <source source="Abyssals1st" page="169"/>
   </charm>
   <charm id="Abyssal.ResplendentShadowBlade" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -595,7 +595,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="169"/>
+    <source source="Abyssals1st" page="169"/>
   </charm>
   <charm id="Abyssal.ElegantFlowingDeflection" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -609,7 +609,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="170"/>
+    <source source="Abyssals1st" page="170"/>
   </charm>
   <charm id="Abyssal.VengefulRiposte" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -624,7 +624,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="170"/>
+    <source source="Abyssals1st" page="170"/>
   </charm>
   <charm id="Abyssal.FlutheringMothDefense" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -639,7 +639,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="171"/>
+    <source source="Abyssals1st" page="171"/>
   </charm>
   <charm id="Abyssal.CorrossiveParry" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -654,7 +654,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="171"/>
+    <source source="Abyssals1st" page="171"/>
   </charm>
   <charm id="Abyssal.IncomparableSentinelStance" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -670,7 +670,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="171"/>
+    <source source="Abyssals1st" page="171"/>
   </charm>
   <charm id="Abyssal.HundredRazorCircle" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -685,7 +685,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="171"/>
+    <source source="Abyssals1st" page="171"/>
   </charm>
   <charm id="Abyssal.Attunment-ShatteringBlock" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -701,7 +701,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="171"/>
+    <source source="Abyssals1st" page="171"/>
   </charm>
   <charm id="Abyssal.EyeTempest" exalt="Abyssal" group="Melee">
     <prerequisite>
@@ -717,7 +717,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="171"/>
+    <source source="Abyssals1st" page="171"/>
   </charm>
   <charm id="Abyssal.HungryMissileTechnique" exalt="Abyssal" group="Thrown">
     <prerequisite>
@@ -731,7 +731,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="172"/>
+    <source source="Abyssals1st" page="172"/>
   </charm>
   <charm id="Abyssal.IncomparableAssassinMethod" exalt="Abyssal" group="Thrown">
     <prerequisite>
@@ -746,7 +746,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="172"/>
+    <source source="Abyssals1st" page="172"/>
   </charm>
   <charm id="Abyssal.LightningClutchRaptor" exalt="Abyssal" group="Thrown">
     <prerequisite>
@@ -761,7 +761,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="172"/>
+    <source source="Abyssals1st" page="172"/>
   </charm>
   <charm id="Abyssal.AidIllWind" exalt="Abyssal" group="Thrown">
     <prerequisite>
@@ -775,7 +775,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="173"/>
+    <source source="Abyssals1st" page="173"/>
   </charm>
   <charm id="Abyssal.IvorySpineAttack" exalt="Abyssal" group="Thrown">
     <prerequisite>
@@ -790,7 +790,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="173"/>
+    <source source="Abyssals1st" page="173"/>
   </charm>
   <charm id="Abyssal.PitilessScythingRazor" exalt="Abyssal" group="Thrown">
     <prerequisite>
@@ -806,7 +806,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Abyssals" page="173"/>
+    <source source="Abyssals1st" page="173"/>
   </charm>
   <charm id="Abyssal.ThousandNeedleTorrent" exalt="Abyssal" group="Thrown">
     <prerequisite>
@@ -823,7 +823,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="173"/>
+    <source source="Abyssals1st" page="173"/>
   </charm>
   <charm id="Abyssal.BurrowingBoneMaggot" exalt="Abyssal" group="Thrown">
     <prerequisite>
@@ -839,7 +839,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="173"/>
+    <source source="Abyssals1st" page="173"/>
   </charm>
   <charm id="Abyssal.Ox-BodyTechnique" exalt="Abyssal" group="Endurance">
     <prerequisite>
@@ -851,7 +851,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="The Abyssals" page="174"/>
+    <source source="Abyssals1st" page="174"/>
   </charm>
   <charm id="Abyssal.GhostArmorPrana" exalt="Abyssal" group="Endurance">
     <prerequisite>
@@ -865,7 +865,7 @@
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="174"/>
+    <source source="Abyssals1st" page="174"/>
   </charm>
   <charm id="Abyssal.RaveningCrimsonChakram" exalt="Abyssal" group="Thrown">
     <prerequisite>
@@ -881,7 +881,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="The Abyssals" page="174"/>
+    <source source="Abyssals1st" page="174"/>
   </charm>
   <charm id="Abyssal.Pain-EatingFocus" exalt="Abyssal" group="Endurance">
     <prerequisite>
@@ -895,7 +895,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="175"/>
+    <source source="Abyssals1st" page="175"/>
   </charm>
   <charm id="Abyssal.InsensibleCorpseTechniqueTemporary" exalt="Abyssal" group="Endurance">
     <prerequisite>
@@ -910,7 +910,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="175"/>
+    <source source="Abyssals1st" page="175"/>
   </charm>
   <charm id="Abyssal.InsensibleCorpseTechniquePermanent" exalt="Abyssal" group="Endurance">
     <prerequisite>
@@ -923,7 +923,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="The Abyssals" page="175"/>
+    <source source="Abyssals1st" page="175"/>
   </charm>
   <charm id="Abyssal.TirelessSentinelTechnique" exalt="Abyssal" group="Endurance">
     <prerequisite>
@@ -938,7 +938,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="175"/>
+    <source source="Abyssals1st" page="175"/>
   </charm>
   <charm id="Abyssal.RelentlessRevenantSpirit" exalt="Abyssal" group="Endurance">
     <prerequisite>
@@ -951,7 +951,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="The Abyssals" page="175"/>
+    <source source="Abyssals1st" page="175"/>
   </charm>
   <charm id="Abyssal.Agony-SavoringSpirit" exalt="Abyssal" group="Endurance">
     <prerequisite>
@@ -967,7 +967,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="176"/>
+    <source source="Abyssals1st" page="176"/>
   </charm>
   <charm id="Abyssal.HauntingInflectionTechnique" exalt="Abyssal" group="Performance">
     <prerequisite>
@@ -981,7 +981,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="176"/>
+    <source source="Abyssals1st" page="176"/>
   </charm>
   <charm id="Abyssal.WitheringDirge" exalt="Abyssal" group="Performance">
     <prerequisite>
@@ -996,7 +996,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="176"/>
+    <source source="Abyssals1st" page="176"/>
   </charm>
   <charm id="Abyssal.MorbidFascinationStyle" exalt="Abyssal" group="Performance">
     <prerequisite>
@@ -1010,7 +1010,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="177"/>
+    <source source="Abyssals1st" page="177"/>
   </charm>
   <charm id="Abyssal.ElegyforFallen" exalt="Abyssal" group="Performance">
     <prerequisite>
@@ -1025,7 +1025,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="177"/>
+    <source source="Abyssals1st" page="177"/>
   </charm>
   <charm id="Abyssal.Heart-SculptingOration" exalt="Abyssal" group="Performance">
     <prerequisite>
@@ -1042,7 +1042,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="177"/>
+    <source source="Abyssals1st" page="177"/>
   </charm>
   <charm id="Abyssal.LamentingGhostTechnique" exalt="Abyssal" group="Performance">
     <prerequisite>
@@ -1057,7 +1057,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="177"/>
+    <source source="Abyssals1st" page="177"/>
   </charm>
   <charm id="Abyssal.HardenedKillerTrainingStyle" exalt="Abyssal" group="Performance">
     <prerequisite>
@@ -1073,7 +1073,7 @@
     </cost>
     <duration amount="1" unit="week"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="178"/>
+    <source source="Abyssals1st" page="178"/>
   </charm>
   <charm id="Abyssal.Morale-ShatteringMethod" exalt="Abyssal" group="Performance">
     <prerequisite>
@@ -1090,7 +1090,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="178"/>
+    <source source="Abyssals1st" page="178"/>
   </charm>
   <charm id="Abyssal.ElegantTyrant'sMajesty" exalt="Abyssal" group="Presence">
     <prerequisite>
@@ -1104,7 +1104,7 @@
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="179"/>
+    <source source="Abyssals1st" page="179"/>
   </charm>
   <charm id="Abyssal.CommandDead" exalt="Abyssal" group="Presence">
     <prerequisite>
@@ -1120,7 +1120,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="179"/>
+    <source source="Abyssals1st" page="179"/>
   </charm>
   <charm id="Abyssal.SkeletonSummoningGesture" exalt="Abyssal" group="Presence">
     <prerequisite>
@@ -1136,7 +1136,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="179"/>
+    <source source="Abyssals1st" page="179"/>
   </charm>
   <charm id="Abyssal.Soul-FlayingGaze" exalt="Abyssal" group="Presence">
     <prerequisite>
@@ -1152,7 +1152,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="180"/>
+    <source source="Abyssals1st" page="180"/>
   </charm>
   <charm id="Abyssal.Heart-StoppingMien" exalt="Abyssal" group="Presence">
     <prerequisite>
@@ -1168,7 +1168,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="180"/>
+    <source source="Abyssals1st" page="180"/>
   </charm>
   <charm id="Abyssal.CompellingWhisperTechnique" exalt="Abyssal" group="Presence">
     <prerequisite>
@@ -1184,7 +1184,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="180"/>
+    <source source="Abyssals1st" page="180"/>
   </charm>
   <charm id="Abyssal.IrresistibleSuccubusStyle" exalt="Abyssal" group="Presence">
     <prerequisite>
@@ -1199,7 +1199,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="180"/>
+    <source source="Abyssals1st" page="180"/>
   </charm>
   <charm id="Abyssal.Spirit-HardenedFrame" exalt="Abyssal" group="Resistance">
     <prerequisite>
@@ -1213,7 +1213,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="181"/>
+    <source source="Abyssals1st" page="181"/>
   </charm>
   <charm id="Abyssal.IvoryBlossomCarapace" exalt="Abyssal" group="Resistance">
     <prerequisite>
@@ -1229,7 +1229,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="181"/>
+    <source source="Abyssals1st" page="181"/>
   </charm>
   <charm id="Abyssal.PlagueKnowsItsMaster" exalt="Abyssal" group="Resistance">
     <prerequisite>
@@ -1242,7 +1242,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="The Abyssals" page="182"/>
+    <source source="Abyssals1st" page="182"/>
   </charm>
   <charm id="Abyssal.BoneArsenalMethod" exalt="Abyssal" group="Resistance">
     <prerequisite>
@@ -1257,7 +1257,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="182"/>
+    <source source="Abyssals1st" page="182"/>
   </charm>
   <charm id="Abyssal.FlowingWoundDefense" exalt="Abyssal" group="Resistance">
     <prerequisite>
@@ -1274,7 +1274,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="182"/>
+    <source source="Abyssals1st" page="182"/>
   </charm>
   <charm id="Abyssal.CrimsonPetalArmor" exalt="Abyssal" group="Resistance">
     <prerequisite>
@@ -1291,7 +1291,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="182"/>
+    <source source="Abyssals1st" page="182"/>
   </charm>
   <charm id="Abyssal.Armor-CallingKata" exalt="Abyssal" group="Resistance">
     <prerequisite>
@@ -1305,7 +1305,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="183"/>
+    <source source="Abyssals1st" page="183"/>
   </charm>
   <charm id="Abyssal.SnakeBitesItsTail" exalt="Abyssal" group="Resistance">
     <prerequisite>
@@ -1320,7 +1320,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="183"/>
+    <source source="Abyssals1st" page="183"/>
   </charm>
   <charm id="Abyssal.ScarletVenomTechnique" exalt="Abyssal" group="Resistance">
     <prerequisite>
@@ -1333,7 +1333,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="The Abyssals" page="183"/>
+    <source source="Abyssals1st" page="183"/>
   </charm>
   <charm id="Abyssal.Void-BanishedMail" exalt="Abyssal" group="Resistance">
     <prerequisite>
@@ -1348,7 +1348,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="183"/>
+    <source source="Abyssals1st" page="183"/>
   </charm>
   <charm id="Abyssal.InauspiciousShadowPlate" exalt="Abyssal" group="Resistance">
     <prerequisite>
@@ -1364,7 +1364,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="184"/>
+    <source source="Abyssals1st" page="184"/>
   </charm>
   <charm id="Abyssal.EssenceEngorgementTechnique" exalt="Abyssal" group="Survival">
     <prerequisite>
@@ -1376,7 +1376,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="The Abyssals" page="184"/>
+    <source source="Abyssals1st" page="184"/>
   </charm>
   <charm id="Abyssal.SuperiorPredatorStyle" exalt="Abyssal" group="Survival">
     <prerequisite>
@@ -1390,7 +1390,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="184"/>
+    <source source="Abyssals1st" page="184"/>
   </charm>
   <charm id="Abyssal.BloodFeastingTechnique" exalt="Abyssal" group="Survival">
     <prerequisite>
@@ -1403,7 +1403,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="The Abyssals" page="184"/>
+    <source source="Abyssals1st" page="184"/>
   </charm>
   <charm id="Abyssal.FetterBeast" exalt="Abyssal" group="Survival">
     <prerequisite>
@@ -1419,7 +1419,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="185"/>
+    <source source="Abyssals1st" page="185"/>
   </charm>
   <charm id="Abyssal.EnduringHuntsmanMethod" exalt="Abyssal" group="Survival">
     <prerequisite>
@@ -1433,7 +1433,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="186"/>
+    <source source="Abyssals1st" page="186"/>
   </charm>
   <charm id="Abyssal.HunterBecomesPrey" exalt="Abyssal" group="Survival">
     <prerequisite>
@@ -1446,7 +1446,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="The Abyssals" page="186"/>
+    <source source="Abyssals1st" page="186"/>
   </charm>
   <charm id="Abyssal.UnderworldForagingTechnique" exalt="Abyssal" group="Survival">
     <prerequisite>
@@ -1461,7 +1461,7 @@
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="186"/>
+    <source source="Abyssals1st" page="186"/>
   </charm>
   <charm id="Abyssal.ShelteringIntermentPrana" exalt="Abyssal" group="Survival">
     <prerequisite>
@@ -1477,7 +1477,7 @@
     </cost>
     <duration event="Released"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="186"/>
+    <source source="Abyssals1st" page="186"/>
   </charm>
   <charm id="Abyssal.WoodWitheringMethod" exalt="Abyssal" group="Craft">
     <prerequisite>
@@ -1492,7 +1492,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="187"/>
+    <source source="Abyssals1st" page="187"/>
   </charm>
   <charm id="Abyssal.MetalWitheringMethod" exalt="Abyssal" group="Craft">
     <prerequisite>
@@ -1507,7 +1507,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="187"/>
+    <source source="Abyssals1st" page="187"/>
   </charm>
   <charm id="Abyssal.StoneWitheringMethod" exalt="Abyssal" group="Craft">
     <prerequisite>
@@ -1522,7 +1522,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="187"/>
+    <source source="Abyssals1st" page="187"/>
   </charm>
   <charm id="Abyssal.Fault-FindingScrutiny" exalt="Abyssal" group="Craft">
     <prerequisite>
@@ -1536,7 +1536,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="187"/>
+    <source source="Abyssals1st" page="187"/>
   </charm>
   <charm id="Abyssal.Maze-UnravelingConcentration" exalt="Abyssal" group="Survival">
     <prerequisite>
@@ -1551,7 +1551,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="187"/>
+    <source source="Abyssals1st" page="187"/>
   </charm>
   <charm id="Abyssal.InfallibleBarghestMien" exalt="Abyssal" group="Survival">
     <prerequisite>
@@ -1567,7 +1567,7 @@
     </cost>
     <duration event="Released"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="187"/>
+    <source source="Abyssals1st" page="187"/>
   </charm>
   <charm id="Abyssal.GhostLeavesNoTrail" exalt="Abyssal" group="Survival">
     <prerequisite>
@@ -1583,7 +1583,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="187"/>
+    <source source="Abyssals1st" page="187"/>
   </charm>
   <charm id="Abyssal.DecayResistancePreparation" exalt="Abyssal" group="Craft">
     <prerequisite>
@@ -1599,7 +1599,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="188"/>
+    <source source="Abyssals1st" page="188"/>
   </charm>
   <charm id="Abyssal.Form-RestoringTouch" exalt="Abyssal" group="Craft">
     <prerequisite>
@@ -1619,7 +1619,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="188"/>
+    <source source="Abyssals1st" page="188"/>
   </charm>
   <charm id="Abyssal.BoneCraftTechnique" exalt="Abyssal" group="Craft">
     <prerequisite>
@@ -1635,7 +1635,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="188"/>
+    <source source="Abyssals1st" page="188"/>
   </charm>
   <charm id="Abyssal.ExcellentInquisitorAttitude" exalt="Abyssal" group="Investigation">
     <prerequisite>
@@ -1649,7 +1649,7 @@
     </cost>
     <duration event="Relaxed"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="189"/>
+    <source source="Abyssals1st" page="189"/>
   </charm>
   <charm id="Abyssal.Deception-PiercingStare" exalt="Abyssal" group="Investigation">
     <prerequisite>
@@ -1664,7 +1664,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="189"/>
+    <source source="Abyssals1st" page="189"/>
   </charm>
   <charm id="Abyssal.UnsurpassedInterrogationMethod" exalt="Abyssal" group="Investigation">
     <prerequisite>
@@ -1680,7 +1680,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="189"/>
+    <source source="Abyssals1st" page="189"/>
   </charm>
   <charm id="Abyssal.CunningScrutinyStyle" exalt="Abyssal" group="Investigation">
     <prerequisite>
@@ -1695,7 +1695,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="190"/>
+    <source source="Abyssals1st" page="190"/>
   </charm>
   <charm id="Abyssal.LingeringEchoMeditation" exalt="Abyssal" group="Investigation">
     <prerequisite>
@@ -1711,7 +1711,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="190"/>
+    <source source="Abyssals1st" page="190"/>
   </charm>
   <charm id="Abyssal.CorpseQuestionningTechnique" exalt="Abyssal" group="Investigation">
     <prerequisite>
@@ -1728,7 +1728,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="190"/>
+    <source source="Abyssals1st" page="190"/>
   </charm>
   <charm id="Abyssal.IncomparableAgonyTechnique" exalt="Abyssal" group="Investigation">
     <prerequisite>
@@ -1743,7 +1743,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="190"/>
+    <source source="Abyssals1st" page="190"/>
   </charm>
   <charm id="Abyssal.CryptBolt" exalt="Abyssal" group="Lore">
     <prerequisite>
@@ -1757,7 +1757,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="191"/>
+    <source source="Abyssals1st" page="191"/>
   </charm>
   <charm id="Abyssal.Essence-ScatteringBlast" exalt="Abyssal" group="Lore">
     <prerequisite>
@@ -1773,7 +1773,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="191"/>
+    <source source="Abyssals1st" page="191"/>
   </charm>
   <charm id="Abyssal.WyldShieldMeditation" exalt="Abyssal" group="Lore">
     <prerequisite>
@@ -1789,7 +1789,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="192"/>
+    <source source="Abyssals1st" page="192"/>
   </charm>
   <charm id="Abyssal.RadiantBlightTechnique" exalt="Abyssal" group="Lore">
     <prerequisite>
@@ -1804,7 +1804,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="192"/>
+    <source source="Abyssals1st" page="192"/>
   </charm>
   <charm id="Abyssal.Breath-DrainingPrana" exalt="Abyssal" group="Lore">
     <prerequisite>
@@ -1819,7 +1819,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="192"/>
+    <source source="Abyssals1st" page="192"/>
   </charm>
   <charm id="Abyssal.Chaos-SearingTechnique" exalt="Abyssal" group="Lore">
     <prerequisite>
@@ -1834,7 +1834,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="193"/>
+    <source source="Abyssals1st" page="193"/>
   </charm>
   <charm id="Abyssal.Wyld-SlayingBurst" exalt="Abyssal" group="Lore">
     <prerequisite>
@@ -1852,7 +1852,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="193"/>
+    <source source="Abyssals1st" page="193"/>
   </charm>
   <charm id="Abyssal.InfallibleAilmentSense" exalt="Abyssal" group="Medicine">
     <prerequisite>
@@ -1866,7 +1866,7 @@
     </cost>
     <duration amount="5" unit="minute"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="193"/>
+    <source source="Abyssals1st" page="193"/>
   </charm>
   <charm id="Abyssal.ContaminationBody" exalt="Abyssal" group="Medicine">
     <prerequisite>
@@ -1882,7 +1882,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="193"/>
+    <source source="Abyssals1st" page="193"/>
   </charm>
   <charm id="Abyssal.ContaminationSpirit" exalt="Abyssal" group="Medicine">
     <prerequisite>
@@ -1900,7 +1900,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="193"/>
+    <source source="Abyssals1st" page="193"/>
   </charm>
   <charm id="Abyssal.ContaminationMind" exalt="Abyssal" group="Medicine">
     <prerequisite>
@@ -1916,7 +1916,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="193"/>
+    <source source="Abyssals1st" page="193"/>
   </charm>
   <charm id="Abyssal.TaintExtractionTechnique" exalt="Abyssal" group="Medicine">
     <prerequisite>
@@ -1933,7 +1933,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="194"/>
+    <source source="Abyssals1st" page="194"/>
   </charm>
   <charm id="Abyssal.RampantPestilenceMethod" exalt="Abyssal" group="Medicine">
     <prerequisite>
@@ -1949,7 +1949,7 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="194"/>
+    <source source="Abyssals1st" page="194"/>
   </charm>
   <charm id="Abyssal.UnsurpassedPlagueKiss" exalt="Abyssal" group="Medicine">
     <prerequisite>
@@ -1967,7 +1967,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="194"/>
+    <source source="Abyssals1st" page="194"/>
   </charm>
   <charm id="Abyssal.Flesh-MendingDiscipline" exalt="Abyssal" group="Medicine">
     <prerequisite>
@@ -1981,7 +1981,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="195"/>
+    <source source="Abyssals1st" page="195"/>
   </charm>
   <charm id="Abyssal.TouchGentleRepose" exalt="Abyssal" group="Medicine">
     <prerequisite>
@@ -1996,7 +1996,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="195"/>
+    <source source="Abyssals1st" page="195"/>
   </charm>
   <charm id="Abyssal.BloodMasteryTechnique" exalt="Abyssal" group="Medicine">
     <prerequisite>
@@ -2009,7 +2009,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="The Abyssals" page="196"/>
+    <source source="Abyssals1st" page="196"/>
   </charm>
   <charm id="Abyssal.CrimsonWaterfallAttack" exalt="Abyssal" group="Medicine">
     <prerequisite>
@@ -2025,7 +2025,7 @@
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="196"/>
+    <source source="Abyssals1st" page="196"/>
   </charm>
   <charm id="Abyssal.Wound-AbsorbingMethod" exalt="Abyssal" group="Medicine">
     <prerequisite>
@@ -2042,7 +2042,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="196"/>
+    <source source="Abyssals1st" page="196"/>
   </charm>
   <charm id="Abyssal.WinterStrikesForest" exalt="Abyssal" group="Medicine">
     <prerequisite>
@@ -2058,7 +2058,7 @@
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="196"/>
+    <source source="Abyssals1st" page="196"/>
   </charm>
   <charm id="Abyssal.FivefoldWound-AbsorbingMethod" exalt="Abyssal" group="Medicine">
     <prerequisite>
@@ -2074,7 +2074,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="196"/>
+    <source source="Abyssals1st" page="196"/>
   </charm>
   <charm id="Abyssal.TerrestrialCircleSorcery" exalt="Abyssal" group="Occult">
     <prerequisite>
@@ -2090,7 +2090,7 @@
     <combo comboable="false"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="197"/>
+    <source source="Abyssals1st" page="197"/>
   </charm>
   <charm id="Abyssal.ShadowlandsCircleNecromancy" exalt="Abyssal" group="Occult">
     <prerequisite>
@@ -2106,7 +2106,7 @@
     <combo comboable="false"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="197"/>
+    <source source="Abyssals1st" page="197"/>
   </charm>
   <charm id="Abyssal.CelestialCircleSorcery" exalt="Abyssal" group="Occult">
     <prerequisite>
@@ -2123,7 +2123,7 @@
     <combo comboable="false"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="197"/>
+    <source source="Abyssals1st" page="197"/>
   </charm>
   <charm id="Abyssal.SpiritSensingTechnique" exalt="Abyssal" group="Occult">
     <prerequisite>
@@ -2137,7 +2137,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="198"/>
+    <source source="Abyssals1st" page="198"/>
   </charm>
   <charm id="Abyssal.LabyrinthCircleNecromancy" exalt="Abyssal" group="Occult">
     <prerequisite>
@@ -2154,7 +2154,7 @@
     <combo comboable="false"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="198"/>
+    <source source="Abyssals1st" page="198"/>
   </charm>
   <charm id="Abyssal.VoidCircleNecromancy" exalt="Abyssal" group="Occult">
     <prerequisite>
@@ -2171,7 +2171,7 @@
     <combo comboable="false"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="198"/>
+    <source source="Abyssals1st" page="198"/>
   </charm>
   <charm id="Abyssal.Corpus-RendingBlow" exalt="Abyssal" group="Occult">
     <prerequisite>
@@ -2187,7 +2187,7 @@
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="199"/>
+    <source source="Abyssals1st" page="199"/>
   </charm>
   <charm id="Abyssal.ThroughDeadEyes" exalt="Abyssal" group="Occult">
     <prerequisite>
@@ -2202,7 +2202,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="199"/>
+    <source source="Abyssals1st" page="199"/>
   </charm>
   <charm id="Abyssal.Soul-EatingStrike" exalt="Abyssal" group="Occult">
     <prerequisite>
@@ -2218,7 +2218,7 @@
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="199"/>
+    <source source="Abyssals1st" page="199"/>
   </charm>
   <charm id="Abyssal.Raiton'sNimblePerch" exalt="Abyssal" group="Athletics">
     <prerequisite>
@@ -2232,7 +2232,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="200"/>
+    <source source="Abyssals1st" page="200"/>
   </charm>
   <charm id="Abyssal.SpiderPounceTechnique" exalt="Abyssal" group="Athletics">
     <prerequisite>
@@ -2247,7 +2247,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="200"/>
+    <source source="Abyssals1st" page="200"/>
   </charm>
   <charm id="Abyssal.Spirit-DrainingWard" exalt="Abyssal" group="Occult">
     <prerequisite>
@@ -2262,7 +2262,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="200"/>
+    <source source="Abyssals1st" page="200"/>
   </charm>
   <charm id="Abyssal.FallingScytheAttack" exalt="Abyssal" group="Athletics">
     <prerequisite>
@@ -2279,7 +2279,7 @@
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="201"/>
+    <source source="Abyssals1st" page="201"/>
   </charm>
   <charm id="Abyssal.AutumnLeaf'sDescent" exalt="Abyssal" group="Athletics">
     <prerequisite>
@@ -2294,7 +2294,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="201"/>
+    <source source="Abyssals1st" page="201"/>
   </charm>
   <charm id="Abyssal.SoaringRaptorPrana" exalt="Abyssal" group="Athletics">
     <prerequisite>
@@ -2311,7 +2311,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="201"/>
+    <source source="Abyssals1st" page="201"/>
   </charm>
   <charm id="Abyssal.ShadowRacesLight" exalt="Abyssal" group="Athletics">
     <prerequisite>
@@ -2326,7 +2326,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="202"/>
+    <source source="Abyssals1st" page="202"/>
   </charm>
   <charm id="Abyssal.FlickeringImageStrike" exalt="Abyssal" group="Athletics">
     <prerequisite>
@@ -2343,7 +2343,7 @@
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="202"/>
+    <source source="Abyssals1st" page="202"/>
   </charm>
   <charm id="Abyssal.CrouchingGargoyleStance" exalt="Abyssal" group="Athletics">
     <prerequisite>
@@ -2358,7 +2358,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="202"/>
+    <source source="Abyssals1st" page="202"/>
   </charm>
   <charm id="Abyssal.MistOverIce" exalt="Abyssal" group="Athletics">
     <prerequisite>
@@ -2373,7 +2373,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="202"/>
+    <source source="Abyssals1st" page="202"/>
   </charm>
   <charm id="Abyssal.InfirmityInflictingGesture" exalt="Abyssal" group="Athletics">
     <prerequisite>
@@ -2389,7 +2389,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="203"/>
+    <source source="Abyssals1st" page="203"/>
   </charm>
   <charm id="Abyssal.EnhancedStrengthDiscipline" exalt="Abyssal" group="Athletics">
     <prerequisite>
@@ -2403,7 +2403,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="203"/>
+    <source source="Abyssals1st" page="203"/>
   </charm>
   <charm id="Abyssal.EnhancedDexterityDiscipline" exalt="Abyssal" group="Athletics">
     <prerequisite>
@@ -2417,7 +2417,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="203"/>
+    <source source="Abyssals1st" page="203"/>
   </charm>
   <charm id="Abyssal.StrengthStealingTechnique" exalt="Abyssal" group="Athletics">
     <prerequisite>
@@ -2433,7 +2433,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="204"/>
+    <source source="Abyssals1st" page="204"/>
   </charm>
   <charm id="Abyssal.FivefoldSensoryExercise" exalt="Abyssal" group="Awareness">
     <prerequisite>
@@ -2447,7 +2447,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="204"/>
+    <source source="Abyssals1st" page="204"/>
   </charm>
   <charm id="Abyssal.Sense-ErodingGesture" exalt="Abyssal" group="Awareness">
     <prerequisite>
@@ -2462,7 +2462,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="204"/>
+    <source source="Abyssals1st" page="204"/>
   </charm>
   <charm id="Abyssal.SuperiorSightTechnique" exalt="Abyssal" group="Awareness">
     <prerequisite>
@@ -2477,7 +2477,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="205"/>
+    <source source="Abyssals1st" page="205"/>
   </charm>
   <charm id="Abyssal.OwlEyesTreatment" exalt="Abyssal" group="Awareness">
     <prerequisite>
@@ -2492,7 +2492,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="The Abyssals" page="205"/>
+    <source source="Abyssals1st" page="205"/>
   </charm>
   <charm id="Abyssal.SuperiorSmell&amp;TasteTechnique" exalt="Abyssal" group="Awareness">
     <prerequisite>
@@ -2507,7 +2507,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="205"/>
+    <source source="Abyssals1st" page="205"/>
   </charm>
   <charm id="Abyssal.SuperiorHearing&amp;TouchTechnique" exalt="Abyssal" group="Awareness">
     <prerequisite>
@@ -2522,7 +2522,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="205"/>
+    <source source="Abyssals1st" page="205"/>
   </charm>
   <charm id="Abyssal.OminousPortentMethod" exalt="Abyssal" group="Awareness">
     <prerequisite>
@@ -2535,7 +2535,7 @@
     </cost>
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
-    <source source="The Abyssals" page="205"/>
+    <source source="Abyssals1st" page="205"/>
   </charm>
   <charm id="Abyssal.IncomparableHearing&amp;TouchTechnique" exalt="Abyssal" group="Awareness">
     <prerequisite>
@@ -2550,7 +2550,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="205"/>
+    <source source="Abyssals1st" page="205"/>
   </charm>
   <charm id="Abyssal.IncomparableSightTechnique" exalt="Abyssal" group="Awareness">
     <prerequisite>
@@ -2565,7 +2565,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="205"/>
+    <source source="Abyssals1st" page="205"/>
   </charm>
   <charm id="Abyssal.IncomparableSmell&amp;TasteTechnique" exalt="Abyssal" group="Awareness">
     <prerequisite>
@@ -2580,7 +2580,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="205"/>
+    <source source="Abyssals1st" page="205"/>
   </charm>
   <charm id="Abyssal.FlittingShadowTechnique" exalt="Abyssal" group="Dodge">
     <prerequisite>
@@ -2594,7 +2594,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="206"/>
+    <source source="Abyssals1st" page="206"/>
   </charm>
   <charm id="Abyssal.UncannyImpulseEvasion" exalt="Abyssal" group="Dodge">
     <prerequisite>
@@ -2609,7 +2609,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="206"/>
+    <source source="Abyssals1st" page="206"/>
   </charm>
   <charm id="Abyssal.FivefoldShadowForm" exalt="Abyssal" group="Dodge">
     <prerequisite>
@@ -2624,7 +2624,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="206"/>
+    <source source="Abyssals1st" page="206"/>
   </charm>
   <charm id="Abyssal.FlickeringWispTechnique" exalt="Abyssal" group="Dodge">
     <prerequisite>
@@ -2639,7 +2639,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="206"/>
+    <source source="Abyssals1st" page="206"/>
   </charm>
   <charm id="Abyssal.FlowingEvasionTechnique" exalt="Abyssal" group="Dodge">
     <prerequisite>
@@ -2654,7 +2654,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="206"/>
+    <source source="Abyssals1st" page="206"/>
   </charm>
   <charm id="Abyssal.IncomparablePhantomForm" exalt="Abyssal" group="Dodge">
     <prerequisite>
@@ -2671,7 +2671,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="207"/>
+    <source source="Abyssals1st" page="207"/>
   </charm>
   <charm id="Abyssal.TheftFace" exalt="Abyssal" group="Larceny">
     <prerequisite>
@@ -2685,7 +2685,7 @@
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="207"/>
+    <source source="Abyssals1st" page="207"/>
   </charm>
   <charm id="Abyssal.TheftMien" exalt="Abyssal" group="Larceny">
     <prerequisite>
@@ -2701,7 +2701,7 @@
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="207"/>
+    <source source="Abyssals1st" page="207"/>
   </charm>
   <charm id="Abyssal.FlawlessDopplegangerDisguise" exalt="Abyssal" group="Larceny">
     <prerequisite>
@@ -2720,7 +2720,7 @@
     </cost>
     <duration event="Released"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="207"/>
+    <source source="Abyssals1st" page="207"/>
   </charm>
   <charm id="Abyssal.CunningCriminalStyle" exalt="Abyssal" group="Larceny">
     <prerequisite>
@@ -2734,7 +2734,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="208"/>
+    <source source="Abyssals1st" page="208"/>
   </charm>
   <charm id="Abyssal.SolarImpersonationStyle" exalt="Abyssal" group="Larceny">
     <prerequisite>
@@ -2750,7 +2750,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="208"/>
+    <source source="Abyssals1st" page="208"/>
   </charm>
   <charm id="Abyssal.Lock-WeatheringTouch" exalt="Abyssal" group="Larceny">
     <prerequisite>
@@ -2765,7 +2765,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="209"/>
+    <source source="Abyssals1st" page="209"/>
   </charm>
   <charm id="Abyssal.Evidence-ErasingMethod" exalt="Abyssal" group="Larceny">
     <prerequisite>
@@ -2780,7 +2780,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="209"/>
+    <source source="Abyssals1st" page="209"/>
   </charm>
   <charm id="Abyssal.ArtfulConjurationTrick" exalt="Abyssal" group="Larceny">
     <prerequisite>
@@ -2796,7 +2796,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="209"/>
+    <source source="Abyssals1st" page="209"/>
   </charm>
   <charm id="Abyssal.StrikingSnakeGrab" exalt="Abyssal" group="Larceny">
     <prerequisite>
@@ -2811,7 +2811,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="209"/>
+    <source source="Abyssals1st" page="209"/>
   </charm>
   <charm id="Abyssal.ConcealingDistractionDiscipline" exalt="Abyssal" group="Stealth">
     <prerequisite>
@@ -2825,7 +2825,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="210"/>
+    <source source="Abyssals1st" page="210"/>
   </charm>
   <charm id="Abyssal.Encounter-BanishingGesture" exalt="Abyssal" group="Stealth">
     <prerequisite>
@@ -2840,7 +2840,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="210"/>
+    <source source="Abyssals1st" page="210"/>
   </charm>
   <charm id="Abyssal.SplinterinMind'sEye" exalt="Abyssal" group="Stealth">
     <prerequisite>
@@ -2856,7 +2856,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="210"/>
+    <source source="Abyssals1st" page="210"/>
   </charm>
   <charm id="Abyssal.Authority-ErodingTechnique" exalt="Abyssal" group="Bureaucracy">
     <prerequisite>
@@ -2870,7 +2870,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="211"/>
+    <source source="Abyssals1st" page="211"/>
   </charm>
   <charm id="Abyssal.Argument-SlayingRemark" exalt="Abyssal" group="Bureaucracy">
     <prerequisite>
@@ -2885,7 +2885,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="211"/>
+    <source source="Abyssals1st" page="211"/>
   </charm>
   <charm id="Abyssal.NoiselessPhantomStyle" exalt="Abyssal" group="Stealth">
     <prerequisite>
@@ -2900,7 +2900,7 @@
     </cost>
     <duration amount="Stealth" unit="minute"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="211"/>
+    <source source="Abyssals1st" page="211"/>
   </charm>
   <charm id="Abyssal.ShadowCloakTechnique" exalt="Abyssal" group="Stealth">
     <prerequisite>
@@ -2915,7 +2915,7 @@
     </cost>
     <duration amount="Stealth" unit="turn"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="211"/>
+    <source source="Abyssals1st" page="211"/>
   </charm>
   <charm id="Abyssal.StifledCryExercise" exalt="Abyssal" group="Stealth">
     <prerequisite>
@@ -2930,7 +2930,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="211"/>
+    <source source="Abyssals1st" page="211"/>
   </charm>
   <charm id="Abyssal.UnseenWispMethod" exalt="Abyssal" group="Stealth">
     <prerequisite>
@@ -2945,7 +2945,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="211"/>
+    <source source="Abyssals1st" page="211"/>
   </charm>
   <charm id="Abyssal.Corruption-SensingScrutiny" exalt="Abyssal" group="Bureaucracy">
     <prerequisite>
@@ -2959,7 +2959,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="212"/>
+    <source source="Abyssals1st" page="212"/>
   </charm>
   <charm id="Abyssal.AlluringEloquenceMethod" exalt="Abyssal" group="Bureaucracy">
     <prerequisite>
@@ -2974,7 +2974,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="The Abyssals" page="212"/>
+    <source source="Abyssals1st" page="212"/>
   </charm>
   <charm id="Abyssal.CunningSubversionStyle" exalt="Abyssal" group="Bureaucracy">
     <prerequisite>
@@ -2990,7 +2990,7 @@
     </cost>
     <duration amount="1" unit="week"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="212"/>
+    <source source="Abyssals1st" page="212"/>
   </charm>
   <charm id="Abyssal.Regime-TopplingInsinuation" exalt="Abyssal" group="Bureaucracy">
     <prerequisite>
@@ -3006,7 +3006,7 @@
     </cost>
     <duration amount="1" unit="week"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="213"/>
+    <source source="Abyssals1st" page="213"/>
   </charm>
   <charm id="Abyssal.IronTyrantMien" exalt="Abyssal" group="Bureaucracy">
     <prerequisite>
@@ -3023,7 +3023,7 @@
     </cost>
     <duration amount="1" unit="week"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="213"/>
+    <source source="Abyssals1st" page="213"/>
   </charm>
   <charm id="Abyssal.LanguageAbsorbingMethod" exalt="Abyssal" group="Linguistics">
     <prerequisite>
@@ -3038,7 +3038,7 @@
     </cost>
     <duration amount="1" unit="week"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="213"/>
+    <source source="Abyssals1st" page="213"/>
   </charm>
   <charm id="Abyssal.PeerlessFluencyStyle" exalt="Abyssal" group="Linguistics">
     <prerequisite>
@@ -3053,7 +3053,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="213"/>
+    <source source="Abyssals1st" page="213"/>
   </charm>
   <charm id="Abyssal.TheftWords" exalt="Abyssal" group="Linguistics">
     <prerequisite>
@@ -3068,7 +3068,7 @@
     </cost>
     <duration amount="1" unit="hour"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="214"/>
+    <source source="Abyssals1st" page="214"/>
   </charm>
   <charm id="Abyssal.ConfusionTongues" exalt="Abyssal" group="Linguistics">
     <prerequisite>
@@ -3084,7 +3084,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="214"/>
+    <source source="Abyssals1st" page="214"/>
   </charm>
   <charm id="Abyssal.BloodInscriptionTechnique" exalt="Abyssal" group="Linguistics">
     <prerequisite>
@@ -3098,7 +3098,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="215"/>
+    <source source="Abyssals1st" page="215"/>
   </charm>
   <charm id="Abyssal.WordsBeneathaWhisper" exalt="Abyssal" group="Linguistics">
     <prerequisite>
@@ -3114,7 +3114,7 @@
     </cost>
     <duration event="Released"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="215"/>
+    <source source="Abyssals1st" page="215"/>
   </charm>
   <charm id="Abyssal.Ghost-WardingGlyph" exalt="Abyssal" group="Linguistics">
     <prerequisite>
@@ -3130,7 +3130,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="216"/>
+    <source source="Abyssals1st" page="216"/>
   </charm>
   <charm id="Abyssal.Glyph-UnveilingMeditation" exalt="Abyssal" group="Linguistics">
     <prerequisite>
@@ -3146,7 +3146,7 @@
     </cost>
     <duration event="Reading"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="216"/>
+    <source source="Abyssals1st" page="216"/>
   </charm>
   <charm id="Abyssal.ScathingCynicAttitude" exalt="Abyssal" group="Linguistics">
     <prerequisite>
@@ -3163,7 +3163,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="216"/>
+    <source source="Abyssals1st" page="216"/>
   </charm>
   <charm id="Abyssal.SoulReins" exalt="Abyssal" group="Ride">
     <prerequisite>
@@ -3177,7 +3177,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="216"/>
+    <source source="Abyssals1st" page="216"/>
   </charm>
   <charm id="Abyssal.Mount-BreakingMethod" exalt="Abyssal" group="Ride">
     <prerequisite>
@@ -3193,7 +3193,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="216"/>
+    <source source="Abyssals1st" page="216"/>
   </charm>
   <charm id="Abyssal.TirelessChargerTechnique" exalt="Abyssal" group="Ride">
     <prerequisite>
@@ -3209,7 +3209,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="216"/>
+    <source source="Abyssals1st" page="216"/>
   </charm>
   <charm id="Abyssal.ForcefulSpiritSpur" exalt="Abyssal" group="Ride">
     <prerequisite>
@@ -3224,7 +3224,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="217"/>
+    <source source="Abyssals1st" page="217"/>
   </charm>
   <charm id="Abyssal.SpectralSteed" exalt="Abyssal" group="Ride">
     <prerequisite>
@@ -3240,7 +3240,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="217"/>
+    <source source="Abyssals1st" page="217"/>
   </charm>
   <charm id="Abyssal.Mount-SpookingShout" exalt="Abyssal" group="Ride">
     <prerequisite>
@@ -3256,7 +3256,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="218"/>
+    <source source="Abyssals1st" page="218"/>
   </charm>
   <charm id="Abyssal.FounderingFoalGesture" exalt="Abyssal" group="Ride">
     <prerequisite>
@@ -3272,7 +3272,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="218"/>
+    <source source="Abyssals1st" page="218"/>
   </charm>
   <charm id="Abyssal.MasterSailor'sMemory" exalt="Abyssal" group="Sail">
     <prerequisite>
@@ -3286,7 +3286,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="218"/>
+    <source source="Abyssals1st" page="218"/>
   </charm>
   <charm id="Abyssal.PhantomSailTechnique" exalt="Abyssal" group="Sail">
     <prerequisite>
@@ -3301,7 +3301,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="219"/>
+    <source source="Abyssals1st" page="219"/>
   </charm>
   <charm id="Abyssal.GhostonDeck" exalt="Abyssal" group="Sail">
     <prerequisite>
@@ -3316,7 +3316,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="219"/>
+    <source source="Abyssals1st" page="219"/>
   </charm>
   <charm id="Abyssal.GhostWindPrana" exalt="Abyssal" group="Sail">
     <prerequisite>
@@ -3331,7 +3331,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="219"/>
+    <source source="Abyssals1st" page="219"/>
   </charm>
   <charm id="Abyssal.CrewSustainingTechnique" exalt="Abyssal" group="Sail">
     <prerequisite>
@@ -3346,7 +3346,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="219"/>
+    <source source="Abyssals1st" page="219"/>
   </charm>
   <charm id="Abyssal.Wind-KillingStance" exalt="Abyssal" group="Sail">
     <prerequisite>
@@ -3363,7 +3363,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="219"/>
+    <source source="Abyssals1st" page="219"/>
   </charm>
   <charm id="Abyssal.HullHardeningTechnique" exalt="Abyssal" group="Sail">
     <prerequisite>
@@ -3379,7 +3379,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="220"/>
+    <source source="Abyssals1st" page="220"/>
   </charm>
   <charm id="Abyssal.Hull-RestoringMeditation" exalt="Abyssal" group="Sail">
     <prerequisite>
@@ -3395,7 +3395,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="220"/>
+    <source source="Abyssals1st" page="220"/>
   </charm>
   <charm id="Abyssal.UnsinkableDerelictPreservation" exalt="Abyssal" group="Sail">
     <prerequisite>
@@ -3411,7 +3411,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="220"/>
+    <source source="Abyssals1st" page="220"/>
   </charm>
   <charm id="Abyssal.ExquisiteEtiquetteStyle" exalt="Abyssal" group="Socialize">
     <prerequisite>
@@ -3425,7 +3425,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="220"/>
+    <source source="Abyssals1st" page="220"/>
   </charm>
   <charm id="Abyssal.LoyaltyWitheringTechnique" exalt="Abyssal" group="Socialize">
     <prerequisite>
@@ -3440,7 +3440,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="221"/>
+    <source source="Abyssals1st" page="221"/>
   </charm>
   <charm id="Abyssal.ImprecationIllManners" exalt="Abyssal" group="Socialize">
     <prerequisite>
@@ -3455,7 +3455,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="The Abyssals" page="221"/>
+    <source source="Abyssals1st" page="221"/>
   </charm>
   <charm id="Abyssal.Heart-HardeningMethod" exalt="Abyssal" group="Socialize">
     <prerequisite>
@@ -3470,7 +3470,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="221"/>
+    <source source="Abyssals1st" page="221"/>
   </charm>
   <charm id="Abyssal.Sin-SensingMeditation" exalt="Abyssal" group="Socialize">
     <prerequisite>
@@ -3486,7 +3486,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="222"/>
+    <source source="Abyssals1st" page="222"/>
   </charm>
   <charm id="Abyssal.PassionUnveillingGlance" exalt="Abyssal" group="Socialize">
     <prerequisite>
@@ -3500,7 +3500,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="222"/>
+    <source source="Abyssals1st" page="222"/>
   </charm>
   <charm id="Abyssal.IntimationMortality" exalt="Abyssal" group="Socialize">
     <prerequisite>
@@ -3515,7 +3515,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="The Abyssals" page="222"/>
+    <source source="Abyssals1st" page="222"/>
   </charm>
   <alternatives>
     <alternative>

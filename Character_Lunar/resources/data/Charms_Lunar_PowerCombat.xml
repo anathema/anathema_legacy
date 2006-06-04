@@ -14,7 +14,7 @@
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
     <charmAttribute attribute="NotAlienLearnable"/>
-    <source source="Player's Guide" page="206"/>
+    <source source="PlayersGuide" page="206"/>
   </charm>
   <charm id="Lunar.ClawsOfTheSilverMoon" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -29,7 +29,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="209"/>
+    <source source="PlayersGuide" page="209"/>
   </charm>  
   <charm id="Lunar.ScimitarClawTechnique" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -45,7 +45,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="207"/>
+    <source source="PlayersGuide" page="207"/>
   </charm>
   <charm id="Lunar.SpineBreakingTechnique" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -60,7 +60,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Player's Guide" page="209"/>
+    <source source="PlayersGuide" page="209"/>
   </charm>  
   <charm id="Lunar.Throat-BearingHold" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -75,7 +75,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Supplemental"/>
-	<source source="Player's Guide" page="207"/>
+	<source source="PlayersGuide" page="207"/>
   </charm>  
   <charm id="Lunar.HyenaJawTechnique" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -90,7 +90,7 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="207"/>
+    <source source="PlayersGuide" page="207"/>
   </charm>
   <charm id="Lunar.CunningPorcupineDefense" exalt="Lunar" group="UnarmedCombat">
     <prerequisite>
@@ -106,6 +106,6 @@
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="206"/>
+    <source source="PlayersGuide" page="206"/>
   </charm>
 </charmlist>

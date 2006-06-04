@@ -15,7 +15,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="208"/>
+    <source source="PlayersGuide" page="208"/>
   </charm>
   <charm id="Dragon-Blooded.BottomlessDepthsDefense" group="WaterDragonStyle" exalt="Dragon-Blooded">
     <prerequisite>
@@ -33,7 +33,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="Player's Guide" page="208"/>
+    <source source="PlayersGuide" page="208"/>
   </charm>
   <charm id="Abyssal.Soul-FlayingStrike" exalt="Abyssal" group="HungryGhostStyle">
     <prerequisite>
@@ -53,7 +53,7 @@
     <charmAttribute attribute="Celestial"/>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="208"/>
+    <source source="PlayersGuide" page="208"/>
   </charm>
   <charm id="Solar.MantisForm" exalt="Solar" group="MantisStyle">
     <prerequisite>
@@ -70,7 +70,7 @@
     <charmtype type="Simple"/>
     <charmAttribute attribute="Form"/>
   	<charmAttribute attribute="Celestial"/>
-    <source source="Player's Guide" page="208"/>
+    <source source="PlayersGuide" page="208"/>
   </charm>
   <charm id="Solar.Joint-LockingTechnique" exalt="Solar" group="MantisStyle">
     <prerequisite>
@@ -86,7 +86,7 @@
     <duration duration="OneTurnOrOneHold"/>
     <charmtype type="Reflexive"/>
    	<charmAttribute attribute="Celestial"/>
-    <source source="Player's Guide" page="208"/>
+    <source source="PlayersGuide" page="208"/>
   </charm>
   <charm id="Solar.CrushingClawTechnique" exalt="Solar" group="MantisStyle">
     <prerequisite>
@@ -102,7 +102,7 @@
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
    	<charmAttribute attribute="Celestial"/>
-    <source source="Player's Guide" page="208"/>
+    <source source="PlayersGuide" page="208"/>
   </charm>
   <charm id="Solar.EssenceFangsandScalesTechnique" exalt="Solar" group="SnakeStyle">
     <prerequisite>
@@ -118,7 +118,7 @@
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Player's Guide" page="208"/>
+    <source source="PlayersGuide" page="208"/>
   </charm>
   <charm id="Solar.Armor-PenetratingFangStrike" exalt="Solar" group="SnakeStyle">
     <prerequisite>
@@ -135,7 +135,7 @@
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Player's Guide" page="207"/>
+    <source source="PlayersGuide" page="207"/>
   </charm>  
   <charm id="Solar.EssenceVenomStrike" exalt="Solar" group="SnakeStyle">
     <prerequisite>
@@ -154,7 +154,7 @@
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Player's Guide" page="208"/>
+    <source source="PlayersGuide" page="208"/>
   </charm>
   <charm id="Solar.StrikingSerpentSpeed" exalt="Solar" group="SnakeStyle">
     <prerequisite>
@@ -170,6 +170,6 @@
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
 	<charmAttribute attribute="Celestial"/>
-    <source source="Player's Guide" page="208"/>
+    <source source="PlayersGuide" page="208"/>
   </charm>
 </charmlist>

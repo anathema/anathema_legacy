@@ -13,7 +13,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="Player's Guide" page="206"/>
+    <source source="PlayersGuide" page="206"/>
   </charm>
   <charm id="Solar.ImmaculateGoldenBow" exalt="Solar" group="Archery">
     <prerequisite>
@@ -29,7 +29,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="206"/>
+    <source source="PlayersGuide" page="206"/>
   </charm>
   <charm id="Solar.FistIronTechnique" exalt="Solar" group="Brawl">
     <prerequisite>
@@ -44,7 +44,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Player's Guide" page="206"/>
+    <source source="PlayersGuide" page="206"/>
   </charm>
   <charm id="Solar.DragonCoilTechnique" exalt="Solar" group="Brawl">
     <prerequisite>
@@ -64,7 +64,7 @@
     </combo>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="206"/>
+    <source source="PlayersGuide" page="206"/>
   </charm>
   <charm id="Solar.SledgehammerFistPunch" exalt="Solar" group="Brawl">
     <prerequisite>
@@ -78,7 +78,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Player's Guide" page="206"/>
+    <source source="PlayersGuide" page="206"/>
   </charm>
   <charm id="Solar.CrashingWaveThrow" exalt="Solar" group="Brawl">
     <prerequisite>
@@ -93,7 +93,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
-    <source source="Player's Guide" page="206"/>
+    <source source="PlayersGuide" page="206"/>
   </charm>
   <charm id="Solar.OneWeapon,TwoBlows" exalt="Solar" group="Melee">
     <prerequisite>
@@ -108,7 +108,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="Player's Guide" page="208"/>
+    <source source="PlayersGuide" page="208"/>
   </charm>
   <charm id="Solar.PeonyBlossomAttack" exalt="Solar" group="Melee">
     <prerequisite>
@@ -123,7 +123,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="ExtraAction"/>
-    <source source="Player's Guide" page="208"/>   
+    <source source="PlayersGuide" page="208"/>   
   </charm>
   <charm id="Solar.GloriousSolarSaber" exalt="Solar" group="Melee">
     <prerequisite>
@@ -139,7 +139,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="208"/>
+    <source source="PlayersGuide" page="208"/>
   </charm>
   <charm id="Solar.GoldenEssenceBlock" exalt="Solar" group="Melee">
     <prerequisite>
@@ -153,7 +153,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-	<source source="Player's Guide" page="208"/>    
+	<source source="PlayersGuide" page="208"/>    
   </charm>
   <charm id="Solar.BlazingSolarBolt" exalt="Solar" group="Melee">
     <prerequisite>
@@ -170,7 +170,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="208"/>
+    <source source="PlayersGuide" page="208"/>
   </charm>
   <charm id="Solar.ArmoredScout'sInvigoration" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -184,7 +184,7 @@
     </cost>
     <duration amount="1" unit="day"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="207"/>    
+    <source source="PlayersGuide" page="207"/>    
   </charm>
   <charm id="Solar.Front-LineWarrior'sStamina" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -200,7 +200,7 @@
     </cost>
     <duration duration="Special"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="207"/>
+    <source source="PlayersGuide" page="207"/>
   </charm>
   <charm id="Solar.FierySolarChakram" exalt="Solar" group="Thrown">
     <prerequisite>
@@ -215,7 +215,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="209"/>
+    <source source="PlayersGuide" page="209"/>
   </charm>
   <charm id="Solar.Essence-GatheringTemper" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -229,7 +229,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Player's Guide" page="207"/>
+    <source source="PlayersGuide" page="207"/>
   </charm>
   <charm id="Solar.Tiger-Warrior'sEndurance" exalt="Solar" group="Endurance">
     <prerequisite>
@@ -246,7 +246,7 @@
     </cost>
     <duration amount="EssenceAndEndurance" unit="hour" />
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="207"/>
+    <source source="PlayersGuide" page="207"/>
   </charm>
   <charm id="Solar.MajesticRadiantPresence" exalt="Solar" group="Presence">
     <prerequisite>
@@ -261,7 +261,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="208"/>
+    <source source="PlayersGuide" page="208"/>
   </charm>
   <charm id="Solar.TerrifyingApparitionGlory" exalt="Solar" group="Presence">
     <prerequisite>
@@ -277,7 +277,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="208"/>
+    <source source="PlayersGuide" page="208"/>
   </charm>
   <charm id="Solar.DurabilityOakMeditation" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -291,7 +291,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="208"/>
+    <source source="PlayersGuide" page="208"/>
   </charm>
   <charm id="Solar.IronSkinConcentration" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -306,7 +306,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Player's Guide" page="209"/>
+    <source source="PlayersGuide" page="209"/>
   </charm>
   <charm id="Solar.SpiritStrengthensSkin" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -322,7 +322,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Player's Guide" page="209"/>
+    <source source="PlayersGuide" page="209"/>
   </charm>
   <charm id="Solar.UnfailingTortoiseTechnique" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -337,7 +337,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Player's Guide" page="209"/>
+    <source source="PlayersGuide" page="209"/>
   </charm>
   <charm id="Solar.IronKettleBody" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -352,7 +352,7 @@
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Reflexive"/>
-    <source source="Player's Guide" page="209"/>
+    <source source="PlayersGuide" page="209"/>
   </charm>
   <charm id="Solar.GloriousSolarPlate" exalt="Solar" group="Resistance">
     <prerequisite>
@@ -368,7 +368,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="209"/>
+    <source source="PlayersGuide" page="209"/>
   </charm>
   <charm id="Solar.MonkeyLeapTechnique" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -383,7 +383,7 @@
     </cost>
     <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
-    <source source="Player's Guide" page="206"/>
+    <source source="PlayersGuide" page="206"/>
   </charm>
   <charm id="Solar.Spider-FootStyle" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -398,7 +398,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Player's Guide" page="206"/>
+    <source source="PlayersGuide" page="206"/>
   </charm>
   <charm id="Solar.Feather-FootStyle" exalt="Solar" group="Athletics">
     <prerequisite>
@@ -413,7 +413,7 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Reflexive"/>
-    <source source="Player's Guide" page="206"/>
+    <source source="PlayersGuide" page="206"/>
   </charm>
   <charm id="Solar.SteelDevilStyle" exalt="Solar" group="Melee">
     <prerequisite>
@@ -430,6 +430,6 @@
     </cost>
     <duration amount="1" unit="scene"/>
     <charmtype type="Simple"/>
-    <source source="Player's Guide" page="208"/>
+    <source source="PlayersGuide" page="208"/>
   </charm>
 </charmlist>
