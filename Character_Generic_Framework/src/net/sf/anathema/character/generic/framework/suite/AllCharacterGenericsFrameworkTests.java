@@ -12,6 +12,7 @@ public class AllCharacterGenericsFrameworkTests {
     suite.addTest(net.sf.anathema.character.generic.framework.magic.treelayout.ordering.test.AllTests.suite());
     suite.addTest(net.sf.anathema.character.generic.framework.magic.treelayout.util.test.AllTests.suite());
     suite.addTest(net.sf.anathema.character.generic.framework.magic.stringbuilder.test.AllTests.suite());
+    suite.addTest(net.sf.anathema.character.generic.framework.magic.stringbuilder.type.test.AllTests.suite());
     suite.addTest(net.sf.anathema.character.generic.framework.magic.test.AllTests.suite());
     suite.addTest(net.sf.anathema.character.generic.framework.xml.test.AllTests.suite());
     suite.addTest(net.sf.anathema.character.generic.framework.xml.creation.test.AllTests.suite());

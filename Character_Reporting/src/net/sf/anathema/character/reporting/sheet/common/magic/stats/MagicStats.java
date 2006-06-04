@@ -3,11 +3,11 @@ package net.sf.anathema.character.reporting.sheet.common.magic.stats;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.character.generic.framework.magic.stringbuilder.CharmTypeStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.MagicInfoStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.SpellSourceStringBuilder;
+import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.ShortCharmTypeStringBuilder;
 import net.sf.anathema.character.generic.framework.reporting.datasource.CharmDataSource;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
@@ -60,7 +60,7 @@ public class MagicStats implements IMagicStats {
 
       public void visitCharm(ICharm charm) {
         ICharmTypeModel model = charm.getCharmTypeModel();
-        group[0] = new CharmTypeStringBuilder(resources).createTypeString(model);
+        group[0] = new ShortCharmTypeStringBuilder(resources).createTypeString(model);
       }
 
       public void visitSpell(ISpell spell) {
