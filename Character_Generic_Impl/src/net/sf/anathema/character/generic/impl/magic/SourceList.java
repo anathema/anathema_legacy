@@ -3,28 +3,28 @@ package net.sf.anathema.character.generic.impl.magic;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import net.sf.anathema.character.generic.magic.general.IMagicSource;
 import net.sf.anathema.character.generic.magic.general.ISourceList;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
+import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 
 public class SourceList implements ISourceList {
 
-  private final Map<IExaltedEdition, IMagicSource> sourcesByEdition = new LinkedHashMap<IExaltedEdition, IMagicSource>();
-  private IMagicSource primarySource;
+  private final Map<IExaltedEdition, IExaltedSourceBook> sourcesByEdition = new LinkedHashMap<IExaltedEdition, IExaltedSourceBook>();
+  private IExaltedSourceBook primarySource;
 
-  public IMagicSource getPrimarySource() {
+  public IExaltedSourceBook getPrimarySource() {
     return primarySource;
   }
 
-  public IMagicSource getSource(IExaltedEdition edition) {
-    final IMagicSource magicSource = sourcesByEdition.get(edition);
+  public IExaltedSourceBook getSource(IExaltedEdition edition) {
+    final IExaltedSourceBook magicSource = sourcesByEdition.get(edition);
     if (magicSource == null) {
       return primarySource;
     }
     return magicSource;
   }
 
-  public void addSource(IMagicSource source) {
+  public void addSource(IExaltedSourceBook source) {
     if (primarySource == null) {
       this.primarySource = source;
     }

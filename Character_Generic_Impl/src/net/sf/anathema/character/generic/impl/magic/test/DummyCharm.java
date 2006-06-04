@@ -11,7 +11,6 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CostList;
-import net.sf.anathema.character.generic.impl.magic.MagicSource;
 import net.sf.anathema.character.generic.impl.magic.PermanentCostList;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -24,7 +23,7 @@ import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
-import net.sf.anathema.character.generic.magic.general.IMagicSource;
+import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
@@ -46,7 +45,7 @@ public class DummyCharm extends Identificate implements ICharm {
   private List<ICharmAttributeRequirement> requirements = new ArrayList<ICharmAttributeRequirement>();
   private CharacterType characterType;
   private String groupId;
-  private IMagicSource source;
+  private IExaltedSourceBook source;
   private CostList temporaryCost;
   private CharmTypeModel model = new CharmTypeModel();
   private List<ICharmAttribute> attributes = new ArrayList<ICharmAttribute>();
@@ -186,11 +185,11 @@ public class DummyCharm extends Identificate implements ICharm {
     this.groupId = expectedGroup;
   }
 
-  public void setSource(MagicSource source) {
+  public void setSource(IExaltedSourceBook source) {
     this.source = source;
   }
 
-  public IMagicSource getSource() {
+  public IExaltedSourceBook getSource() {
     return source;
   }
 

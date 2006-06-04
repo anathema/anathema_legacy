@@ -1,14 +1,10 @@
 package net.sf.anathema.charmentry.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import net.disy.commons.core.util.StringUtilities;
+import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
+import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.ISourceEntryModel;
-import net.sf.anathema.lib.util.IIdentificate;
-import net.sf.anathema.lib.util.Identificate;
 
 public class SourceEntryModel implements ISourceEntryModel {
 
@@ -19,21 +15,18 @@ public class SourceEntryModel implements ISourceEntryModel {
   }
 
   public boolean enablePageSelection() {
-    return !StringUtilities.isNullOrTrimEmpty(charmData.getSource().getSource());
+    return !StringUtilities.isNullOrTrimEmpty(charmData.getSource().getId());
   }
 
-  public IIdentificate[] getPredefinedSources() {
-    List<IIdentificate> sources = new ArrayList<IIdentificate>();
-    Collections.addAll(sources, ExaltedSourceBook.values());
-    sources.add(new Identificate("Custom"));
-    return sources.toArray(new IIdentificate[sources.size()]);
+  public IExaltedSourceBook[] getPredefinedSources() {
+    return ExaltedSourceBook.values();
   }
 
-  public void setSourceBook(IIdentificate identificate) {
-    charmData.getSource().setSource(identificate.getId());
+  public void setSourceBook(IExaltedSourceBook sourceBook) {
+    charmData.setSource(sourceBook);
   }
 
   public void setSourcePage(int newValue) {
-    charmData.getSource().setPage(newValue);
+    throw new UnsupportedOperationException("Pages müssen in property file");
   }
 }

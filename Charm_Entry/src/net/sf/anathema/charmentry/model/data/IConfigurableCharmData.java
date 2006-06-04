@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.magic.IExtendedCharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
+import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
@@ -14,7 +15,7 @@ public interface IConfigurableCharmData extends IExtendedCharmData {
 
   public ITextualDescription getName();
 
-  public IConfigurableMagicSource getSource();
+  public IExaltedSourceBook getSource();
 
   public IConfigurablePermanentCostList getPermanentCost();
 
@@ -47,4 +48,6 @@ public interface IConfigurableCharmData extends IExtendedCharmData {
   public void setId(String id);
 
   public void setGroupId(String id);
+
+  public void setSource(IExaltedSourceBook sourceBook);
 }

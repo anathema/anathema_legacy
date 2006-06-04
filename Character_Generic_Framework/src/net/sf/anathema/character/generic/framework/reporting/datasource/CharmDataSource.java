@@ -9,11 +9,11 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.CostStrin
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.HealthCostStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicInfoStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.MagicInfoStringBuilder;
+import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
-import net.sf.anathema.character.generic.magic.general.IMagicSource;
 import net.sf.anathema.framework.reporting.IReportDataSource;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -37,26 +37,14 @@ public class CharmDataSource implements IReportDataSource {
   private final IResources resources;
   private final IGenericCharacter character;
   private final IMagicInfoStringBuilder costStringBuilder;
+  private final MagicSourceStringBuilder<IMagic> magicSourceStringBuilder;
 
   public CharmDataSource(final IResources resources, final IGenericCharacter character) {
     this.resources = resources;
+    this.magicSourceStringBuilder = new MagicSourceStringBuilder<IMagic>(resources);
     this.character = character;
     this.costStringBuilder = createMagicInfoStringBuilder(resources);
     this.magicList = character.getAllLearnedMagic();
-    // CharmOrderType preferredOrderType = CharmOrderType.valueOf(CHARACTER_PREFERENCES.get(
-    // CHARMORDER_PREFERENCE,
-    // DEFAULT_CHARMORDER));
-    // final Comparator[] charmComparator = new Comparator[1];
-    // preferredOrderType.accept(new ICharmOrderTypeVisitor() {
-    // public void visitAlphabet(CharmOrderType type) {
-    // charmComparator[0] = new I18nedIdentificateComparator(resources);
-    // }
-    //
-    // public void visitTreeOrder(CharmOrderType type) {
-    // charmComparator[0] = new MagicComparator(character.getTemplate().getTemplateType().getCharacterType());
-    // }
-    // });
-    // Collections.sort(magicList, charmComparator[0]);
     Collections.sort(magicList, new MagicComparator(
         character.getTemplate().getTemplateType().getCharacterType(),
         character.getRules()));
@@ -114,8 +102,7 @@ public class CharmDataSource implements IReportDataSource {
       if (magic.getSource() == null) {
         return resources.getString("CharmDataSource.Source.Custom"); //$NON-NLS-1$
       }
-      IMagicSource source = magic.getSource();
-      return source.getSource() + (source.getPage() == null ? "" : ", " + source.getPage()); //$NON-NLS-1$//$NON-NLS-2$
+      return magicSourceStringBuilder.createShortSourceString(magic);
     }
     throw new IllegalArgumentException("No column with name '" + columnName + "'."); //$NON-NLS-1$ //$NON-NLS-2$  
   }

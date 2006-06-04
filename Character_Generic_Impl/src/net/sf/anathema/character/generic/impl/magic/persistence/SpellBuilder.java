@@ -13,10 +13,10 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.ICostLis
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.SourceBuilder;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.general.ICostList;
-import net.sf.anathema.character.generic.magic.general.IMagicSource;
 import net.sf.anathema.character.generic.magic.general.IPermanentCostList;
 import net.sf.anathema.character.generic.magic.general.ISourceList;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
+import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.lib.exception.PersistenceException;
 
 import org.dom4j.Document;
@@ -97,9 +97,9 @@ public class SpellBuilder {
   }
 
   private ISourceList buildSource(Element spellElement) {
-    final IMagicSource[] sources = sourceBuilder.buildSourceList(spellElement);
+    final IExaltedSourceBook[] sources = sourceBuilder.buildSourceList(spellElement);
     final SourceList sourceList = new SourceList();
-    for (IMagicSource source : sources) {
+    for (IExaltedSourceBook source : sources) {
       sourceList.addSource(source);
     }
     return sourceList;

@@ -29,8 +29,8 @@ import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
-import net.sf.anathema.character.generic.magic.general.IMagicSource;
 import net.sf.anathema.character.generic.magic.general.IPermanentCostList;
+import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.template.magic.IFavoringTraitTypeVisitor;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
@@ -51,7 +51,7 @@ public class Charm extends Identificate implements ICharm {
   private final IDuration duration;
   private final String group;
 
-  private final IMagicSource[] sources;
+  private final IExaltedSourceBook[] sources;
   private final ICostList temporaryCost;
   private final IPermanentCostList permanentCost;
 
@@ -74,7 +74,7 @@ public class Charm extends Identificate implements ICharm {
       IComboRestrictions comboRules,
       IDuration duration,
       ICharmTypeModel charmTypeModel,
-      IMagicSource[] sources) {
+      IExaltedSourceBook[] sources) {
     super(id);
     Ensure.ensureNotNull("Argument must not be null.", prerequisiteList); //$NON-NLS-1$
     Ensure.ensureNotNull("Argument must not be null.", characterType); //$NON-NLS-1$
@@ -108,7 +108,7 @@ public class Charm extends Identificate implements ICharm {
     this.permanentCost = charmData.getPermanentCost();
     this.comboRules = new ComboRestrictions();
     this.duration = charmData.getDuration();
-    this.sources = new IMagicSource[] { charmData.getSource() };
+    this.sources = new IExaltedSourceBook[] { charmData.getSource() };
     this.prerequisisteList = new CharmPrerequisiteList(
         charmData.getPrerequisites(),
         charmData.getEssence(),
@@ -147,7 +147,7 @@ public class Charm extends Identificate implements ICharm {
     return prerequisisteList.getPrerequisites();
   }
 
-  public IMagicSource getSource() {
+  public IExaltedSourceBook getSource() {
     return sources.length > 0 ? sources[0] : null;
   }
 

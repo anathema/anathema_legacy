@@ -16,6 +16,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
+import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
@@ -38,7 +39,7 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
   private ITextualDescription name = new SimpleTextualDescription(""); //$NON-NLS-1$
   private IConfigurableCostList temporaryCost = new ConfigurableCostList();
   private IConfigurablePermanentCostList permanentCost = new ConfigurablePermanentCostList();
-  private IConfigurableMagicSource source = new ConfigurableMagicSource();
+  private IExaltedSourceBook source = null;
   private ITraitType primaryType;
   private IExaltedEdition edition;
   private final List<ICharmAttribute> keywords = new ArrayList<ICharmAttribute>();
@@ -65,8 +66,12 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
     return permanentCost;
   }
 
-  public IConfigurableMagicSource getSource() {
+  public IExaltedSourceBook getSource() {
     return source;
+  }
+  
+  public void setSource(IExaltedSourceBook source) {
+    this.source = source;
   }
 
   public IConfigurableCostList getTemporaryCost() {

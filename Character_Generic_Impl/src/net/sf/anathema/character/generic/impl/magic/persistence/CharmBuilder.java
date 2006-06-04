@@ -28,8 +28,8 @@ import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.magic.general.ICostList;
-import net.sf.anathema.character.generic.magic.general.IMagicSource;
 import net.sf.anathema.character.generic.magic.general.IPermanentCostList;
+import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -87,7 +87,7 @@ public class CharmBuilder implements ICharmBuilder {
       throw new CharmException("Error in Charm duration " + id, e); //$NON-NLS-1$
     }
     ICharmTypeModel charmTypeModel = charmTypeBuilder.build(charmElement);
-    IMagicSource[] sources = sourceBuilder.buildSourceList(charmElement);
+    IExaltedSourceBook[] sources = sourceBuilder.buildSourceList(charmElement);
     CharmPrerequisiteList prerequisiteList = getPrerequisites(charmElement, id);
     IGenericTrait[] prerequisites = prerequisiteList.getPrerequisites();
     final IGenericTrait primaryPrerequisite = (prerequisites.length != 0) ? prerequisites[0] : null;

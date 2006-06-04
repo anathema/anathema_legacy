@@ -14,7 +14,7 @@ import org.dom4j.Element;
 public class GenericAttributeRequirementBuilderTest extends BasicTestCase {
 
   public void testReadGenericAttributeRequirement() throws Exception {
-    String xml = "<element><genericAttributeRequirement attribute=\"generic\"/></element>"; //$NON-NLS-1$
+    String xml = "<element><genericCharmAttributeRequirement attribute=\"generic\"/></element>"; //$NON-NLS-1$
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAttributeRequirementBuilder builder = new GenericAttributeRequirementBuilder();
     builder.setType(AbilityType.Investigation);

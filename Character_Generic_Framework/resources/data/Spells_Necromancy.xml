@@ -6,7 +6,7 @@
 				<essence cost="15"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="224"/>
+		<source source="Abyssals1st" page="224"/>
 	</spell>
 	<spell id="Shadowlands.IronCountermagic" circle="Shadowlands">
 		<cost>
@@ -14,7 +14,7 @@
 				<essence cost="10" text="or 20 motes"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="224"/>
+		<source source="Abyssals1st" page="224"/>
 	</spell>
 	<spell id="Shadowlands.PiercingShroud" circle="Shadowlands">
 		<cost>
@@ -22,7 +22,7 @@
 				<essence cost="10"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="225"/>
+		<source source="Abyssals1st" page="225"/>
 	</spell>
 	<spell id="Shadowlands.RaisingSkeletalHorde" circle="Shadowlands">
 		<cost>
@@ -30,7 +30,7 @@
 				<essence cost="Varies"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="225"/>
+		<source source="Abyssals1st" page="225"/>
 	</spell>
 	<spell id="Shadowlands.RuneSweetPassing" circle="Shadowlands">
 		<cost>
@@ -38,7 +38,7 @@
 				<essence cost="15"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="225"/>
+		<source source="Abyssals1st" page="225"/>
 	</spell>
 	<spell id="Shadowlands.ShadePrisonAmulet" circle="Shadowlands">
 		<cost>
@@ -46,7 +46,7 @@
 				<essence cost="10"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="225"/>
+		<source source="Abyssals1st" page="225"/>
 	</spell>
 	<spell id="Shadowlands.SoulBrand" circle="Shadowlands">
 		<cost>
@@ -54,7 +54,7 @@
 				<essence cost="15"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="225"/>
+		<source source="Abyssals1st" page="225"/>
 	</spell>
 	<spell id="Shadowlands.SummonGhost" circle="Shadowlands">
 		<cost>
@@ -62,7 +62,7 @@
 				<essence cost="15" text="or more"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="225"/>
+		<source source="Abyssals1st" page="225"/>
 	</spell>
 	<spell id="Shadowlands.WalkingWarMachine" circle="Shadowlands">
 		<cost>
@@ -70,7 +70,7 @@
 				<essence cost="Varies"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="226"/>
+		<source source="Abyssals1st" page="226"/>
 	</spell>
 	<spell id="Labyrinth.ExquisiteUndeadAide" circle="Labyrinth">
 		<cost>
@@ -78,7 +78,7 @@
 				<essence cost="20"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="226"/>
+		<source source="Abyssals1st" page="226"/>
 	</spell>
 	<spell id="Labyrinth.HundredShadeBreath" circle="Labyrinth">
 		<cost>
@@ -86,7 +86,7 @@
 				<essence cost="Varies"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="226"/>
+		<source source="Abyssals1st" page="226"/>
 	</spell>
 	<spell id="Labyrinth.IvoryRazorForest" circle="Labyrinth">
 		<cost>
@@ -94,7 +94,7 @@
 				<essence cost="25"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="227"/>
+		<source source="Abyssals1st" page="227"/>
 	</spell>
 	<spell id="Labyrinth.ReapingFallen" circle="Labyrinth">
 		<cost>
@@ -102,7 +102,7 @@
 				<essence cost="25"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="227"/>
+		<source source="Abyssals1st" page="227"/>
 	</spell>
 	<spell id="Labyrinth.SpitefulPassing" circle="Labyrinth">
 		<cost>
@@ -110,7 +110,7 @@
 				<essence cost="Special"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="227"/>
+		<source source="Abyssals1st" page="227"/>
 	</spell>
 	<spell id="Labyrinth.StealingGatheredBreath" circle="Labyrinth">
 		<cost>
@@ -118,7 +118,7 @@
 				<essence cost="15"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="228"/>
+		<source source="Abyssals1st" page="228"/>
 	</spell>
 	<spell id="Labyrinth.StrikingSpectreLash" circle="Labyrinth">
 		<cost>
@@ -126,7 +126,7 @@
 				<essence cost="15" text="plus 2 motes per attack"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="228"/>
+		<source source="Abyssals1st" page="228"/>
 	</spell>
 	<spell id="Void.AbyssalAegis" circle="Void">
 		<cost>
@@ -134,7 +134,7 @@
 				<essence cost="20"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="228"/>
+		<source source="Abyssals1st" page="228"/>
 	</spell>
 	<spell id="Void.AnguishedShadeHarvest" circle="Void">
 		<cost>
@@ -142,7 +142,7 @@
 				<essence cost="60"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="228"/>
+		<source source="Abyssals1st" page="228"/>
 	</spell>
 	<spell id="Void.BloodMonsoon" circle="Void">
 		<cost>
@@ -151,7 +151,7 @@
 				<health cost="1" type="Lethal"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="228"/>
+		<source source="Abyssals1st" page="228"/>
 	</spell>
 	<spell id="Void.DimmingLight" circle="Void">
 		<cost>
@@ -159,7 +159,7 @@
 				<essence cost="80"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="229"/>
+		<source source="Abyssals1st" page="229"/>
 	</spell>
 	<spell id="Void.InauspiciousCitadel" circle="Void">
 		<cost>
@@ -167,7 +167,7 @@
 				<essence cost="60"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="229"/>
+		<source source="Abyssals1st" page="229"/>
 	</spell>
 	<spell id="Void.LordDead" circle="Void">
 		<cost>
@@ -175,7 +175,7 @@
 				<essence cost="25"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="229"/>
+		<source source="Abyssals1st" page="229"/>
 	</spell>
 	<spell id="Void.PoisoningWell" circle="Void">
 		<cost>
@@ -183,7 +183,7 @@
 				<essence cost="50" text="(commited)"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="229"/>
+		<source source="Abyssals1st" page="229"/>
 	</spell>
 	<spell id="Labyrinth.OnyxCountermagic" circle="Labyrinth">
 		<cost>
@@ -191,7 +191,7 @@
 				<essence cost="15" text="or 20 motes"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="225"/>
+		<source source="Abyssals1st" page="225"/>
 	</spell>
 	<spell id="Void.ObsidianCountermagic" circle="Void">
 		<cost>
@@ -199,7 +199,7 @@
 				<essence cost="20" text="or 25 motes"/>
 			</temporary>
 		</cost>
-		<source source="The Abyssals" page="225"/>
+		<source source="Abyssals1st" page="225"/>
 	</spell>	
 	<spell id="Shadowlands.BanishGhost" circle="Shadowlands">
 		<cost>
@@ -207,7 +207,7 @@
 				<essence cost="12" text="+"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="119"/>
+		<source source="BoneEbony" page="119"/>
 	</spell>
 	<spell id="Shadowlands.BlackCandleVisage" circle="Shadowlands">
 		<cost>
@@ -215,7 +215,7 @@
 				<essence cost="18"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="119"/>
+		<source source="BoneEbony" page="119"/>
 	</spell>
 	<spell id="Shadowlands.BlessRapineSoul" circle="Shadowlands">
 		<cost>
@@ -223,7 +223,7 @@
 				<essence cost="16"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="120"/>
+		<source source="BoneEbony" page="120"/>
 	</spell>
 	<spell id="Shadowlands.BlessedDeadFools" circle="Shadowlands">
 		<cost>
@@ -231,7 +231,7 @@
 				<essence cost="13"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="120"/>
+		<source source="BoneEbony" page="120"/>
 	</spell>
 	<spell id="Shadowlands.BloodMirrorSpeech" circle="Shadowlands">
 		<cost>
@@ -240,7 +240,7 @@
 				<health type="Lethal" cost="1"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="120"/>
+		<source source="BoneEbony" page="120"/>
 	</spell>
 	<spell id="Shadowlands.BonePuppetDance" circle="Shadowlands">
 		<cost>
@@ -248,7 +248,7 @@
 				<essence cost="16"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="121"/>
+		<source source="BoneEbony" page="121"/>
 	</spell>
 	<spell id="Shadowlands.BonfireVisions" circle="Shadowlands">
 		<cost>
@@ -256,7 +256,7 @@
 				<essence cost="13"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="121"/>
+		<source source="BoneEbony" page="121"/>
 	</spell>
 	<spell id="Shadowlands.ConsortingWithDevils" circle="Shadowlands">
 		<cost>
@@ -264,7 +264,7 @@
 				<essence cost="10"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="120"/>
+		<source source="BoneEbony" page="120"/>
 	</spell>
 	<spell id="Shadowlands.DeathFliesTwoSails" circle="Shadowlands">
 		<cost>
@@ -272,7 +272,7 @@
 				<essence cost="14" text="(7 commited)"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="121"/>
+		<source source="BoneEbony" page="121"/>
 	</spell>
 	<spell id="Shadowlands.DeathInversionLoop" circle="Shadowlands">
 		<cost>
@@ -280,7 +280,7 @@
 				<essence cost="18"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="122"/>
+		<source source="BoneEbony" page="122"/>
 	</spell>
 	<spell id="Shadowlands.DeathMask" circle="Shadowlands">
 		<cost>
@@ -288,7 +288,7 @@
 				<essence cost="14"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="122"/>
+		<source source="BoneEbony" page="122"/>
 	</spell>
 	<spell id="Shadowlands.DrawingBlindEdge" circle="Shadowlands">
 		<cost>
@@ -296,7 +296,7 @@
 				<essence cost="20"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="123"/>
+		<source source="BoneEbony" page="123"/>
 	</spell>
 	<spell id="Shadowlands.DuskEyes" circle="Shadowlands">
 		<cost>
@@ -304,7 +304,7 @@
 				<essence cost="10"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="123"/>
+		<source source="BoneEbony" page="123"/>
 	</spell>
 	<spell id="Shadowlands.EasingForsakenMemory" circle="Shadowlands">
 		<cost>
@@ -312,7 +312,7 @@
 				<essence cost="12" text="+"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="123"/>
+		<source source="BoneEbony" page="123"/>
 	</spell>
 	<spell id="Shadowlands.EmperorsChains" circle="Shadowlands">
 		<cost>
@@ -320,7 +320,7 @@
 				<essence cost="16"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="124"/>
+		<source source="BoneEbony" page="124"/>
 	</spell>
 	<spell id="Shadowlands.FacesDead" circle="Shadowlands">
 		<cost>
@@ -328,7 +328,7 @@
 				<essence cost="16"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="124"/>
+		<source source="BoneEbony" page="124"/>
 	</spell>
 	<spell id="Shadowlands.FieldFellDreams" circle="Shadowlands">
 		<cost>
@@ -336,7 +336,7 @@
 				<essence cost="16"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="124"/>
+		<source source="BoneEbony" page="124"/>
 	</spell>
 	<spell id="Shadowlands.FiveGifts" circle="Shadowlands">
 		<cost>
@@ -344,7 +344,7 @@
 				<essence cost="12"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="124"/>
+		<source source="BoneEbony" page="124"/>
 	</spell>
 	<spell id="Shadowlands.FleshBoneWinds" circle="Shadowlands">
 		<cost>
@@ -352,7 +352,7 @@
 				<essence cost="18"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="125"/>
+		<source source="BoneEbony" page="125"/>
 	</spell>
 	<spell id="Shadowlands.FleshSloughingWave" circle="Shadowlands">
 		<cost>
@@ -360,7 +360,7 @@
 				<essence cost="16"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="126"/>
+		<source source="BoneEbony" page="126"/>
 	</spell>
 	<spell id="Shadowlands.GatheringAGhostsStrings" circle="Shadowlands">
 		<cost>
@@ -368,7 +368,7 @@
 				<essence cost="10" text="or 20 Motes"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="126"/>
+		<source source="BoneEbony" page="126"/>
 	</spell>
 	<spell id="Shadowlands.GentleCallLethe" circle="Shadowlands">
 		<cost>
@@ -376,7 +376,7 @@
 				<essence cost="13"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="127"/>
+		<source source="BoneEbony" page="127"/>
 	</spell>
 	<spell id="Shadowlands.InvisibleDoorway" circle="Shadowlands">
 		<cost>
@@ -385,7 +385,7 @@
 				<health type="Lethal" cost="1"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="120"/>
+		<source source="BoneEbony" page="120"/>
 	</spell>
 	<spell id="Shadowlands.MasterPuppeteersKnife" circle="Shadowlands">
 		<cost>
@@ -393,7 +393,7 @@
 				<essence cost="14"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="127"/>
+		<source source="BoneEbony" page="127"/>
 	</spell>
 	<spell id="Shadowlands.MidnightShadowSun" circle="Shadowlands">
 		<cost>
@@ -401,7 +401,7 @@
 				<essence cost="8"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="127"/>
+		<source source="BoneEbony" page="127"/>
 	</spell>
 	<spell id="Shadowlands.MotherDarkness" circle="Shadowlands">
 		<cost>
@@ -409,7 +409,7 @@
 				<essence cost="12"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="128"/>
+		<source source="BoneEbony" page="128"/>
 	</spell>
 	<spell id="Shadowlands.PiercingHeel" circle="Shadowlands">
 		<cost>
@@ -418,7 +418,7 @@
 			</temporary>
 		</cost>
 		<arcaneLink required="true"/>
-		<source source="Bone &amp; Ebony" page="128"/>
+		<source source="BoneEbony" page="128"/>
 	</spell>
 	<spell id="Shadowlands.RingingHunRebuke" circle="Shadowlands">
 		<cost>
@@ -426,7 +426,7 @@
 				<essence cost="19"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="128"/>
+		<source source="BoneEbony" page="128"/>
 	</spell>
 	<spell id="Shadowlands.SeatDeadlySplendors" circle="Shadowlands">
 		<cost>
@@ -434,7 +434,7 @@
 				<essence cost="15"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="129"/>
+		<source source="BoneEbony" page="129"/>
 	</spell>
 	<spell id="Shadowlands.ShatteredVoidMirror" circle="Shadowlands">
 		<cost>
@@ -442,7 +442,7 @@
 				<essence cost="20"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="129"/>
+		<source source="BoneEbony" page="129"/>
 	</spell>
 	<spell id="Shadowlands.SilentMastersPollen" circle="Shadowlands">
 		<cost>
@@ -450,7 +450,7 @@
 				<essence cost="18"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="129"/>
+		<source source="BoneEbony" page="129"/>
 	</spell>
 	<spell id="Shadowlands.SmoothingCreaseWornMind" circle="Shadowlands">
 		<cost>
@@ -458,7 +458,7 @@
 				<essence cost="23"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="130"/>
+		<source source="BoneEbony" page="130"/>
 	</spell>
 	<spell id="Shadowlands.StonesWornSmooth" circle="Shadowlands">
 		<cost>
@@ -466,7 +466,7 @@
 				<essence cost="15"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="130"/>
+		<source source="BoneEbony" page="130"/>
 	</spell>
 	<spell id="Shadowlands.TrollingDarkWater" circle="Shadowlands">
 		<cost>
@@ -474,7 +474,7 @@
 				<essence cost="10"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="130"/>
+		<source source="BoneEbony" page="130"/>
 	</spell>
 	<spell id="Shadowlands.WithoutPityWithoutScorn" circle="Shadowlands">
 		<cost>
@@ -482,7 +482,7 @@
 				<essence cost="18"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="130"/>
+		<source source="BoneEbony" page="130"/>
 	</spell>
 	<spell id="Labyrinth.BanefulSun" circle="Labyrinth">
 		<cost>
@@ -490,7 +490,7 @@
 				<essence cost="22"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="131"/>
+		<source source="BoneEbony" page="131"/>
 	</spell>
 	<spell id="Labyrinth.BlackVial" circle="Labyrinth">
 		<cost>
@@ -498,7 +498,7 @@
 				<essence cost="24"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="129"/>
+		<source source="BoneEbony" page="129"/>
 	</spell>
 	<spell id="Labyrinth.BrickByBrickSolitude" circle="Labyrinth">
 		<cost>
@@ -506,7 +506,7 @@
 				<essence cost="19"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="128"/>
+		<source source="BoneEbony" page="128"/>
 	</spell>
 	<spell id="Labyrinth.ClamoringShackles" circle="Labyrinth">
 		<cost>
@@ -514,7 +514,7 @@
 				<essence cost="21"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="132"/>
+		<source source="BoneEbony" page="132"/>
 	</spell>
 	<spell id="Labyrinth.CrystalGhostShard" circle="Labyrinth">
 		<cost>
@@ -522,7 +522,7 @@
 				<essence cost="15" text="(commited)"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="132"/>
+		<source source="BoneEbony" page="132"/>
 	</spell>
 	<spell id="Labyrinth.DeadMansVoice" circle="Labyrinth">
 		<cost>
@@ -531,7 +531,7 @@
 			</temporary>
 		</cost>
 		<arcaneLink required="true"/>
-		<source source="Bone &amp; Ebony" page="133"/>
+		<source source="BoneEbony" page="133"/>
 	</spell>
 	<spell id="Labyrinth.DenyingCall" circle="Labyrinth">
 		<cost>
@@ -539,7 +539,7 @@
 				<essence cost="24"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="133"/>
+		<source source="BoneEbony" page="133"/>
 	</spell>
 	<spell id="Labyrinth.FuneraryMistedVessel" circle="Labyrinth">
 		<cost>
@@ -547,7 +547,7 @@
 				<essence cost="22" text="(11 commited)"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="122"/>
+		<source source="BoneEbony" page="122"/>
 	</spell>
 	<spell id="Labyrinth.GoldenShadowsCastInFrieze" circle="Labyrinth">
 		<cost>
@@ -555,7 +555,7 @@
 				<essence cost="30" text="+"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="134"/>
+		<source source="BoneEbony" page="134"/>
 	</spell>
 	<spell id="Labyrinth.GrayEyesShieldAndShell" circle="Labyrinth">
 		<cost>
@@ -563,7 +563,7 @@
 				<essence cost="25"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="135"/>
+		<source source="BoneEbony" page="135"/>
 	</spell>
 	<spell id="Labyrinth.InfiniteFootsteps" circle="Labyrinth">
 		<cost>
@@ -571,7 +571,7 @@
 				<essence cost="26"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="135"/>
+		<source source="BoneEbony" page="135"/>
 	</spell>
 	<spell id="Labyrinth.JoylessSpiritsCorruption" circle="Labyrinth">
 		<cost>
@@ -579,7 +579,7 @@
 				<essence cost="30"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="135"/>
+		<source source="BoneEbony" page="135"/>
 	</spell>
 	<spell id="Labyrinth.LinksBornTumult" circle="Labyrinth">
 		<cost>
@@ -588,7 +588,7 @@
 				<health type="Lethal" cost="1"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="136"/>
+		<source source="BoneEbony" page="136"/>
 	</spell>
 	<spell id="Labyrinth.PuzzleBoxLove" circle="Labyrinth">
 		<cost>
@@ -596,7 +596,7 @@
 				<essence cost="10" text="or 20 motes"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="127"/>
+		<source source="BoneEbony" page="127"/>
 	</spell>
 	<spell id="Labyrinth.RattledBonesWar" circle="Labyrinth">
 		<cost>
@@ -604,7 +604,7 @@
 				<essence cost="22" text="(commited)"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="136"/>
+		<source source="BoneEbony" page="136"/>
 	</spell>
 	<spell id="Labyrinth.RebirthIntoDarkness" circle="Labyrinth">
 		<cost>
@@ -612,7 +612,7 @@
 				<essence cost="25"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="137"/>
+		<source source="BoneEbony" page="137"/>
 	</spell>
 	<spell id="Labyrinth.SevenVisionsWisdom" circle="Labyrinth">
 		<cost>
@@ -620,7 +620,7 @@
 				<essence cost="34"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="137"/>
+		<source source="BoneEbony" page="137"/>
 	</spell>
 	<spell id="Labyrinth.ShadowStonesTravel" circle="Labyrinth">
 		<cost>
@@ -628,7 +628,7 @@
 				<essence cost="24"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="137"/>
+		<source source="BoneEbony" page="137"/>
 	</spell>
 	<spell id="Labyrinth.ShieldShatteringBones" circle="Labyrinth">
 		<cost>
@@ -636,7 +636,7 @@
 				<essence cost="18"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="138"/>
+		<source source="BoneEbony" page="138"/>
 	</spell>
 	<spell id="Labyrinth.SilencedWhisperedPrayers" circle="Labyrinth">
 		<cost>
@@ -644,7 +644,7 @@
 				<essence cost="27"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="138"/>
+		<source source="BoneEbony" page="138"/>
 	</spell>
 	<spell id="Labyrinth.SweetVoiceFamiliar" circle="Labyrinth">
 		<cost>
@@ -652,7 +652,7 @@
 				<essence cost="32"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="138"/>
+		<source source="BoneEbony" page="138"/>
 	</spell>
 	<spell id="Labyrinth.WalkingGoreTitan" circle="Labyrinth">
 		<cost>
@@ -660,7 +660,7 @@
 				<essence cost="16" text="commited"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="136"/>
+		<source source="BoneEbony" page="136"/>
 	</spell>
 	<spell id="Labyrinth.WhiteShard" circle="Labyrinth">
 		<cost>
@@ -668,7 +668,7 @@
 				<essence cost="28"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="120"/>
+		<source source="BoneEbony" page="120"/>
 	</spell>
 	<spell id="Labyrinth.WillfulFleshCommands" circle="Labyrinth">
 		<cost>
@@ -676,7 +676,7 @@
 				<essence cost="24"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="119"/>
+		<source source="BoneEbony" page="119"/>
 	</spell>
 	<spell id="Void.BarlessGate" circle="Void">
 		<cost>
@@ -684,7 +684,7 @@
 				<essence cost="42"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="120"/>
+		<source source="BoneEbony" page="120"/>
 	</spell>
 	<spell id="Void.BarredTomb" circle="Void">
 		<cost>
@@ -692,7 +692,7 @@
 				<essence cost="24"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="133"/>
+		<source source="BoneEbony" page="133"/>
 	</spell>
 	<spell id="Void.BirthSanitysSorrow" circle="Void">
 		<cost>
@@ -703,7 +703,7 @@
 				<willpower cost="1"/>
 			</permanent>
 		</cost>
-		<source source="Bone &amp; Ebony" page="139"/>
+		<source source="BoneEbony" page="139"/>
 	</spell>
 	<spell id="Void.BlackFaith" circle="Void">
 		<cost>
@@ -712,7 +712,7 @@
 				<health type="Lethal" cost="1"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="140"/>
+		<source source="BoneEbony" page="140"/>
 	</spell>
 	<spell id="Void.BlackstormWagon" circle="Void">
 		<cost>
@@ -720,7 +720,7 @@
 				<essence cost="48"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="132"/>
+		<source source="BoneEbony" page="132"/>
 	</spell>
 	<spell id="Void.ClayWarpedDreams" circle="Void">
 		<cost>
@@ -728,7 +728,7 @@
 				<essence cost="60" text="(commited)"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="140"/>
+		<source source="BoneEbony" page="140"/>
 	</spell>
 	<spell id="Void.EmptyNightFuture" circle="Void">
 		<cost>
@@ -736,7 +736,7 @@
 				<essence cost="32"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="129"/>
+		<source source="BoneEbony" page="129"/>
 	</spell>
 	<spell id="Void.FoldingMidnight" circle="Void">
 		<cost>
@@ -744,7 +744,7 @@
 				<essence cost="46"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="127"/>
+		<source source="BoneEbony" page="127"/>
 	</spell>
 	<spell id="Void.ForsakenLifeEngine" circle="Void">
 		<cost>
@@ -752,7 +752,7 @@
 				<essence cost="50" text="+"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="140"/>
+		<source source="BoneEbony" page="140"/>
 	</spell>
 	<spell id="Void.GrandmotherVoid" circle="Void">
 		<cost>
@@ -761,7 +761,7 @@
 				<health type="Lethal" cost="1"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="141"/>
+		<source source="BoneEbony" page="141"/>
 	</spell>
 	<spell id="Void.MouthVoid" circle="Void">
 		<cost>
@@ -769,7 +769,7 @@
 				<essence cost="50"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="142"/>
+		<source source="BoneEbony" page="142"/>
 	</spell>
 	<spell id="Void.OblivionsAvatar" circle="Void">
 		<cost>
@@ -780,7 +780,7 @@
 				<experience cost="5" text="optional"/>
 			</permanent>
 		</cost>
-		<source source="Bone &amp; Ebony" page="102"/>
+		<source source="BoneEbony" page="102"/>
 	</spell>
 	<spell id="Void.PyreFlameGuardian" circle="Void">
 		<cost>
@@ -788,7 +788,7 @@
 				<essence cost="50"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="142"/>
+		<source source="BoneEbony" page="142"/>
 	</spell>
 	<spell id="Void.RisenAndScreaming" circle="Void">
 		<cost>
@@ -796,7 +796,7 @@
 				<essence cost="40"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="143"/>
+		<source source="BoneEbony" page="143"/>
 	</spell>
 	<spell id="Void.SummonHekatonkhire" circle="Void">
 		<cost>
@@ -804,7 +804,7 @@
 				<essence cost="40"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="143"/>
+		<source source="BoneEbony" page="143"/>
 	</spell>
 	<spell id="Void.SinsFather" circle="Void">
 		<cost>
@@ -815,7 +815,7 @@
 				<willpower cost="1"/>
 			</permanent>
 		</cost>
-		<source source="Bone &amp; Ebony" page="144"/>
+		<source source="BoneEbony" page="144"/>
 	</spell>
 	<spell id="Void.VoidCocoonWarrior" circle="Void">
 		<cost>
@@ -824,6 +824,6 @@
 				<health type="Lethal" cost="1" text="(optional)"/>
 			</temporary>
 		</cost>
-		<source source="Bone &amp; Ebony" page="136"/>	
+		<source source="BoneEbony" page="136"/>	
 	</spell>
 </spelllist>

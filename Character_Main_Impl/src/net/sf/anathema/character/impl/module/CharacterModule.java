@@ -84,8 +84,10 @@ public class CharacterModule extends AbstractAnathemaModule {
     resources.addStringResourceHandler(createStringProvider("CharacterModule", resources.getLocale())); //$NON-NLS-1$    
     resources.addStringResourceHandler(createStringProvider("CharacterSheet", resources.getLocale())); //$NON-NLS-1$
     resources.addStringResourceHandler(createStringProvider("Natures", resources.getLocale())); //$NON-NLS-1$
+    resources.addStringResourceHandler(createStringProvider("Sourcebooks", resources.getLocale())); //$NON-NLS-1$
     resources.addStringResourceHandler(createStringProvider("Spells_Sorcery", resources.getLocale())); //$NON-NLS-1$
     resources.addStringResourceHandler(createStringProvider("Spells_Necromancy", resources.getLocale())); //$NON-NLS-1$
+    resources.addStringResourceHandler(createStringProvider("Spells_Pages", resources.getLocale())); //$NON-NLS-1$
     resources.addStringResourceHandler(createStringProvider("Weapons", resources.getLocale())); //$NON-NLS-1$
   }
 }

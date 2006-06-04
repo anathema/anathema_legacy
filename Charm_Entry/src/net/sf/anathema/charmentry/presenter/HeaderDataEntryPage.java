@@ -4,6 +4,7 @@ import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
+import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.charmentry.model.IHeaderDataModel;
 import net.sf.anathema.charmentry.module.ICharmEntryViewFactory;
@@ -20,7 +21,6 @@ import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
@@ -113,9 +113,9 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
         properties.getBookLabel(),
         properties.getPageLabel(),
         sourceModel.getPredefinedSources());
-    sourceView.addSourceChangeListener(new IObjectValueChangedListener() {
-      public void valueChanged(Object newValue) {
-        sourceModel.setSourceBook((IIdentificate) newValue);
+    sourceView.addSourceChangeListener(new IObjectValueChangedListener<IExaltedSourceBook>() {
+      public void valueChanged(IExaltedSourceBook newValue) {
+        sourceModel.setSourceBook(newValue);
         sourceView.setPageSelectionEnabled(sourceModel.enablePageSelection());
       }
     });

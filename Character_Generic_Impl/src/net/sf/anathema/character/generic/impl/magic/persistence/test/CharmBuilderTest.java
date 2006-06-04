@@ -6,7 +6,6 @@ import net.sf.anathema.character.generic.impl.magic.persistence.ICharmBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.IdStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.AttributeRequirementBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.TraitPrerequisitesBuilder;
-import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -252,35 +251,5 @@ public class CharmBuilderTest extends BasicTestCase implements ICharmXMLConstant
   public void testCorrectCharmWithOtherDuration() throws Exception {
     assertFalse(charmBuilder.buildCharm(charmElement).getDuration() == SimpleDuration.PERMANENT_DURATION);
     assertFalse(charmBuilder.buildCharm(charmElement).getDuration() == SimpleDuration.INSTANT_DURATION);
-  }
-
-  public void testCorrectCharmWithBadSource() throws Exception {
-    charmElement.addElement("source"); //$NON-NLS-1$
-    charmBuilder.buildCharm(charmElement);
-  }
-
-  public void testCorrectCharmWithSourceOnly() throws Exception {
-    Element sourceElement = charmElement.addElement(TAG_SOURCE);
-    sourceElement.addAttribute(ATTRIB_SOURCE, "Source"); //$NON-NLS-1$
-    charmBuilder.buildCharm(charmElement);
-  }
-
-  public void testCorrectCharmWithPageOnly() throws Exception {
-    Element sourceElement = charmElement.addElement(TAG_SOURCE);
-    sourceElement.addAttribute(ATTRIB_PAGE, "pagenumber"); //$NON-NLS-1$
-    ICharm charm = charmBuilder.buildCharm(charmElement);
-    assertEquals(charm.getSource().getSource(), "Custom"); //$NON-NLS-1$
-    assertNull(charm.getSource().getPage());
-  }
-
-  public void testCorrectCharmWithCompleteSource() throws Exception {
-    Element sourceElement = charmElement.addElement(TAG_SOURCE);
-    String source = "Source"; //$NON-NLS-1$
-    sourceElement.addAttribute(ATTRIB_SOURCE, source);
-    String page = "pagenumber"; //$NON-NLS-1$
-    sourceElement.addAttribute(ATTRIB_PAGE, page);
-    ICharm charm = charmBuilder.buildCharm(charmElement);
-    assertEquals(source, charm.getSource().getSource());
-    assertEquals(page, charm.getSource().getPage());
   }
 }
