@@ -15,12 +15,13 @@ public class RulesetPreferenceElement extends AbstractCharacterPreferencesElemen
 
   private ExaltedRuleSet ruleset = ExaltedRuleSet.valueOf(CHARACTER_PREFERENCES.get(RULESET_PREFERENCE, DEFAULT_RULESET));
   private boolean dirty;
+  private LabelledPreferenceComboBox box;
 
   public IDialogComponent getComponent(IResources resources) {
     String labelText = resources.getString("Character.Tools.Preferences.Ruleset") + ":"; //$NON-NLS-1$ //$NON-NLS-2$
     IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer("Ruleset.", resources); //$NON-NLS-1$
     ExaltedRuleSet[] values = ExaltedRuleSet.values();
-    final LabelledPreferenceComboBox box = new LabelledPreferenceComboBox(labelText, renderer, values);
+    box = new LabelledPreferenceComboBox(labelText, renderer, values);
     box.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         Object selectedItem = box.getSelectedItem();
@@ -40,5 +41,11 @@ public class RulesetPreferenceElement extends AbstractCharacterPreferencesElemen
 
   public boolean isDirty() {
     return dirty;
+  }
+
+  public void reset() {
+    ruleset = ExaltedRuleSet.valueOf(CHARACTER_PREFERENCES.get(RULESET_PREFERENCE, DEFAULT_RULESET));
+    box.setSelectedItem(ruleset);
+    dirty = false;
   }
 }

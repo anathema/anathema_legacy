@@ -14,14 +14,15 @@ import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElemen
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
-public abstract class AbstractLabelledComboBoxPreferencesElement implements IPreferencesElement {
+public abstract class AbstractCheckBoxPreferencesElement implements IPreferencesElement {
 
   private boolean dirty = false;
+  private JCheckBox checkBox;
 
   public IDialogComponent getComponent(IResources resources) {
     final JComponent component = createCheckBox(resources);
     return new IDialogComponent() {
-    
+
       public void fillInto(JPanel panel, int columnCount) {
         GridDialogLayoutData singleElementData = new GridDialogLayoutData();
         singleElementData.setHorizontalSpan(2);
@@ -29,7 +30,7 @@ public abstract class AbstractLabelledComboBoxPreferencesElement implements IPre
         singleElementData.setGrabExcessHorizontalSpace(true);
         panel.add(component, singleElementData);
       }
-    
+
       public int getColumnCount() {
         return 1;
       }
@@ -43,17 +44,16 @@ public abstract class AbstractLabelledComboBoxPreferencesElement implements IPre
   protected abstract String getLabelKey();
 
   private JComponent createCheckBox(IResources resources) {
-    final JCheckBox forceMetalBox = new JCheckBox(resources.getString(getLabelKey()), getBooleanParameter());
-    forceMetalBox.addActionListener(new ActionListener() {
+    checkBox = new JCheckBox(resources.getString(getLabelKey()), getBooleanParameter());
+    checkBox.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        if (forceMetalBox.isSelected() != getBooleanParameter()) {
-          setValue(forceMetalBox.isSelected());
+        if (checkBox.isSelected() != getBooleanParameter()) {
+          setValue(checkBox.isSelected());
           dirty = true;
         }
       }
     });
-    //forceMetalBox.setHorizontalTextPosition(SwingConstants.LEADING);
-    return forceMetalBox;
+    return checkBox;
   }
 
   public boolean isDirty() {
@@ -63,4 +63,12 @@ public abstract class AbstractLabelledComboBoxPreferencesElement implements IPre
   public IIdentificate getCategory() {
     return SYSTEM_CATEGORY;
   }
+
+  public void reset() {
+    resetValue();
+    checkBox.setSelected(getBooleanParameter());
+    dirty = false;
+  }
+
+  protected abstract void resetValue();
 }

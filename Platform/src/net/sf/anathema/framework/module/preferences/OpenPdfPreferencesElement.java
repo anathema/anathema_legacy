@@ -2,7 +2,7 @@ package net.sf.anathema.framework.module.preferences;
 
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.OPEN_PDF_PREFERENCE;
 
-public class OpenPdfPreferencesElement extends AbstractLabelledComboBoxPreferencesElement {
+public class OpenPdfPreferencesElement extends AbstractCheckBoxPreferencesElement {
 
   private boolean openPdf = SYSTEM_PREFERENCES.getBoolean(OPEN_PDF_PREFERENCE, true);
 
@@ -27,5 +27,10 @@ public class OpenPdfPreferencesElement extends AbstractLabelledComboBoxPreferenc
   @Override
   protected String getLabelKey() {
     return "AnathemaCore.Tools.Preferences.OpenPdf"; //$NON-NLS-1$
+  }
+
+  @Override
+  protected void resetValue() {
+    openPdf = SYSTEM_PREFERENCES.getBoolean(OPEN_PDF_PREFERENCE, true);
   }
 }

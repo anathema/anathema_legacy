@@ -17,12 +17,13 @@ public class CharmOrderPreferenceElement extends AbstractCharacterPreferencesEle
       CHARMORDER_PREFERENCE,
       DEFAULT_CHARMORDER));
   private boolean dirty;
+  private LabelledPreferenceComboBox box;
 
   public IDialogComponent getComponent(IResources resources) {
     String labelText = resources.getString("Character.Tools.Preferences.CharmOrder") + ":"; //$NON-NLS-1$ //$NON-NLS-2$
     IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer("CharmOrder.", resources); //$NON-NLS-1$
     CharmOrderType[] values = CharmOrderType.values();
-    final LabelledPreferenceComboBox box = new LabelledPreferenceComboBox(labelText, renderer, values);
+    box = new LabelledPreferenceComboBox(labelText, renderer, values);
     box.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         Object selectedItem = box.getSelectedItem();
@@ -42,5 +43,11 @@ public class CharmOrderPreferenceElement extends AbstractCharacterPreferencesEle
 
   public boolean isDirty() {
     return dirty;
+  }
+
+  public void reset() {
+    charmorder = CharmOrderType.valueOf(CHARACTER_PREFERENCES.get(CHARMORDER_PREFERENCE, DEFAULT_CHARMORDER));
+    box.setSelectedItem(charmorder);
+    dirty = false;
   }
 }

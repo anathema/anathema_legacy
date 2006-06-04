@@ -31,14 +31,17 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
   private File defaultFile = new File(DEFAULT_REPOSITORY_LOCATION);
   private boolean dirty;
   boolean modificationAllowed = false;
+  private IResources resources;
+  private JTextField repositoryTextField;
 
-  public IDialogComponent getComponent(final IResources resources) {
+  public IDialogComponent getComponent(final IResources resource) {
+    this.resources = resource;
     final JLabel repositoryLabel = new JLabel(
-        resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.Label") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
-    final JTextField repositoryTextField = new JTextField(45);
+        resource.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.Label") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
+    repositoryTextField = new JTextField(45);
     repositoryTextField.setEditable(false);
-    setDisplayedPath(resources, repositoryTextField, repositoryDirectory);
-    final JButton browseButton = createBrowseButton(resources, repositoryTextField);
+    setDisplayedPath(repositoryTextField, repositoryDirectory);
+    final JButton browseButton = createBrowseButton();
     modificationAllowed = true;
     return new IDialogComponent() {
       public void fillInto(JPanel panel, int columnCount) {
@@ -57,11 +60,11 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
     };
   }
 
-  private void setDisplayedPath(final IResources resources, final JTextField repositoryTextField, File selectedDirectory) {
+  private void setDisplayedPath(final JTextField repositoryTextField, File selectedDirectory) {
     try {
       String displayedPath = selectedDirectory.getAbsolutePath();
       if (repositoryDirectory.getCanonicalFile().equals(defaultFile.getCanonicalFile())) {
-        displayedPath = createDefaultString(resources);
+        displayedPath = createDefaultString();
       }
       repositoryTextField.setText(displayedPath);
     }
@@ -72,13 +75,13 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
     }
   }
 
-  private String createDefaultString(final IResources resources) {
+  private String createDefaultString() {
     String displayedPath;
     displayedPath = "[" + resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.DefaultRepository") + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     return displayedPath;
   }
 
-  private JButton createBrowseButton(final IResources resources, final JTextField repositoryTextField) {
+  private JButton createBrowseButton() {
     return new JButton(new SmartAction(
         resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.BrowseButton")) { //$NON-NLS-1$
           @Override
@@ -87,7 +90,7 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
                 REPOSITORY_PREFERENCE_DIRECTORY_CHOOSER_VALUE,
                 resources.getString("UserDialog.OkayButton.Text")); //$NON-NLS-1$
             if (selectedDir != null) {
-              setDisplayedPath(resources, repositoryTextField, selectedDir);
+              setDisplayedPath(repositoryTextField, selectedDir);
               repositoryDirectory = selectedDir;
               dirty = modificationAllowed;
             }
@@ -117,5 +120,13 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
 
   public IIdentificate getCategory() {
     return SYSTEM_CATEGORY;
+  }
+
+  public void reset() {
+    repositoryDirectory = new File(IPreferencesElement.SYSTEM_PREFERENCES.get(
+        REPOSITORY_PREFERENCE,
+        DEFAULT_REPOSITORY_LOCATION));
+    setDisplayedPath(repositoryTextField, repositoryDirectory);
+    dirty = false;
   }
 }

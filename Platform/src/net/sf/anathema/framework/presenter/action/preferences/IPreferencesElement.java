@@ -21,4 +21,6 @@ public interface IPreferencesElement {
   public boolean isDirty();
 
   public IIdentificate getCategory();
+
+  public void reset();
 }

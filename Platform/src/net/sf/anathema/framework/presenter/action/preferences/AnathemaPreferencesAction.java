@@ -31,6 +31,11 @@ public class AnathemaPreferencesAction extends SmartAction {
     UserDialog userDialog = new UserDialog(parentComponent, page);
     userDialog.show();
     if (userDialog.isCanceled()) {
+      for (IPreferencesElement element : elements) {
+        if (element.isDirty()) {
+          element.reset();
+        }
+      }
       return;
     }
     boolean dirty = false;

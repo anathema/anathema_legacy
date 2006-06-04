@@ -2,7 +2,7 @@ package net.sf.anathema.framework.module.preferences;
 
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.LOOK_AND_FEEL_PREFERENCE;
 
-public class LookAndFeelPreferencesElement extends AbstractLabelledComboBoxPreferencesElement {
+public class LookAndFeelPreferencesElement extends AbstractCheckBoxPreferencesElement {
   private boolean useMetal = SYSTEM_PREFERENCES.getBoolean(LOOK_AND_FEEL_PREFERENCE, false);
 
   public void savePreferences() {
@@ -22,5 +22,10 @@ public class LookAndFeelPreferencesElement extends AbstractLabelledComboBoxPrefe
   @Override
   protected String getLabelKey() {
     return "AnathemaCore.Tools.Preferences.LookFeel"; //$NON-NLS-1$
+  }
+
+  @Override
+  protected void resetValue() {
+    useMetal = SYSTEM_PREFERENCES.getBoolean(LOOK_AND_FEEL_PREFERENCE, false);
   }
 }
