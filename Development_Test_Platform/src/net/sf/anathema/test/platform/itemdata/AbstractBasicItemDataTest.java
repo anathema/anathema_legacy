@@ -6,7 +6,7 @@ import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
-import org.easymock.MockControl;
+import org.easymock.EasyMock;
 
 public abstract class AbstractBasicItemDataTest extends BasicTestCase {
 
@@ -19,13 +19,12 @@ public abstract class AbstractBasicItemDataTest extends BasicTestCase {
   }
 
   public void testPrintNameAdjustment() throws Exception {
-    MockControl itemControl = MockControl.createControl(IItem.class);
-    IItem item = (IItem) itemControl.getMock();
+    IItem item = EasyMock.createMock(IItem.class);
     item.setPrintName("Neuer Name"); //$NON-NLS-1$
-    itemControl.replay();
+    EasyMock.replay();
     IBasicItemData itemData = getObjectUnderTest();
     itemData.setPrintNameAdjuster(new PrintNameAdjuster(item));
     itemData.getDescription().getName().setText("Neuer Name"); //$NON-NLS-1$
-    itemControl.verify();
+    EasyMock.verify();
   }
 }
