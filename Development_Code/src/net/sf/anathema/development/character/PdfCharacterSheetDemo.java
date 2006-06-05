@@ -46,7 +46,7 @@ import com.lowagie.text.pdf.PdfWriter;
 public class PdfCharacterSheetDemo {
 
   public static void main(String[] args) {
-    Document document = new Document(PageSize.LETTER);
+    Document document = new Document(PageSize.A4);
     try {
       System.err.println(document.getPageSize());
       File outputStream = new File("iText.pdf");
