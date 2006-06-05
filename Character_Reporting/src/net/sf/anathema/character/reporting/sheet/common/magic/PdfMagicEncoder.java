@@ -12,6 +12,11 @@ import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.EssenceFlow;
+import net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.FirstExcellency;
+import net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.InfiniteMastery;
+import net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.SecondExcellency;
+import net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.ThirdExcellency;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.IMagicStats;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicStats;
 import net.sf.anathema.character.reporting.util.Bounds;
@@ -41,6 +46,11 @@ public class PdfMagicEncoder implements IPdfContentEncoder {
       });
     }
     List<IMagicStats> printStats = new ArrayList<IMagicStats>();
+    printStats.add(new FirstExcellency());
+    printStats.add(new SecondExcellency());
+    printStats.add(new ThirdExcellency());
+    printStats.add(new InfiniteMastery());
+    printStats.add(new EssenceFlow());
     for (IMagic magic : printMagic) {
       printStats.add(new MagicStats(magic, edition, character));
     }
