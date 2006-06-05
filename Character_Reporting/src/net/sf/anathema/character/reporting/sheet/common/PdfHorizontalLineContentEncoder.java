@@ -10,14 +10,21 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfHorizontalLineContentEncoder implements IPdfContentEncoder {
 
+  private static final int LINE_HEIGHT = IVoidStateFormatConstants.LINE_HEIGHT - 2;
   private final int columnCount;
+  private final String headerKey;
 
-  public PdfHorizontalLineContentEncoder() {
-    this(1);
+  public PdfHorizontalLineContentEncoder(String headerKey) {
+    this(1, headerKey);
+  }
+  
+  public String getHeaderKey() {
+    return headerKey;
   }
 
-  public PdfHorizontalLineContentEncoder(int columnCount) {
+  public PdfHorizontalLineContentEncoder(int columnCount, String headerKey) {
     this.columnCount = columnCount;
+    this.headerKey = headerKey;
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
@@ -25,7 +32,7 @@ public class PdfHorizontalLineContentEncoder implements IPdfContentEncoder {
     for (int columnIndex = 0; columnIndex < columnCount; columnIndex++) {
       float columnX = bounds.x + columnIndex * columnWidth + columnIndex * IVoidStateFormatConstants.TEXT_PADDING;
       Bounds columnBounds = new Bounds(columnX, bounds.y, columnWidth, bounds.height);
-      new HorizontalLineListEncoder().encodeLines(directContent, columnBounds, IVoidStateFormatConstants.LINE_HEIGHT);
+      new HorizontalLineListEncoder().encodeLines(directContent, columnBounds, LINE_HEIGHT);
     }
   }
 }

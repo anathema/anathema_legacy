@@ -19,9 +19,11 @@ public class PdfGenericCharmEncoder implements IPdfContentEncoder {
     this.baseFont = baseFont;
   }
   
+  public String getHeaderKey() {
+    return "GenericCharms";
+  }
+  
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     new PdfGenericCharmTableEncoder(resources, baseFont).encodeTable(directContent, character, bounds);
-    // TODO Auto-generated method stub
-
   }
 }

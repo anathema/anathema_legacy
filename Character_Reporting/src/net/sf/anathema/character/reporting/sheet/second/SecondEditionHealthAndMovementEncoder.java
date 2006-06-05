@@ -35,6 +35,10 @@ public class SecondEditionHealthAndMovementEncoder extends AbstractPdfEncoder im
     this.baseFont = baseFont;
     this.symbolBaseFont = symbolBaseFont;
   }
+  
+  public String getHeaderKey() {
+    return "MovementHealth";
+  }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     Bounds tableBounds = new Bounds(bounds.x, bounds.y, (bounds.width * 0.66f), bounds.height);

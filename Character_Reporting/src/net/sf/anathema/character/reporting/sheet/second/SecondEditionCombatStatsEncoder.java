@@ -32,6 +32,10 @@ public class SecondEditionCombatStatsEncoder extends AbstractPdfEncoder implemen
     this.resources = resources;
     this.baseFont = baseFont;
   }
+  
+  public String getHeaderKey() {
+    return "Combat";
+  }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     float height = encodeValues(directContent, character, bounds);

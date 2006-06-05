@@ -3,11 +3,13 @@ package net.sf.anathema.character.reporting.sheet.common;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
+import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
+import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
@@ -46,8 +48,11 @@ public abstract class AbstractPdfPartEncoder extends AbstractPdfEncoder implemen
     return resources;
   }
 
-  public void encodeEssence(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds) {
-    PdfEssenceEncoder encoder = new PdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);
-    encoder.encodeEssence(directContent, character, contentBounds);
+  public IPdfContentEncoder getEssenceEncoder(IGenericCharacter character) throws DocumentException {
+    CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
+    if (characterType == CharacterType.MORTAL) {
+      return new PdfExperienceEncoder(resources, baseFont);
+    }
+    return new PdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);
   }
 }

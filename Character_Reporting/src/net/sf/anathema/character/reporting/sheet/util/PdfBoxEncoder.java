@@ -43,9 +43,8 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
       PdfContentByte directContent,
       IPdfContentEncoder encoder,
       IGenericCharacter character,
-      Bounds bounds,
-      String headerId) throws DocumentException {
-    String header = resources.getString("Sheet.Header." + headerId); //$NON-NLS-1$
+      Bounds bounds) throws DocumentException {
+    String header = resources.getString("Sheet.Header." + encoder.getHeaderKey()); //$NON-NLS-1$
     Bounds contentBounds = encodeBox(directContent, bounds, header);
     if (encoder != null) {
       encoder.encode(directContent, character, contentBounds);

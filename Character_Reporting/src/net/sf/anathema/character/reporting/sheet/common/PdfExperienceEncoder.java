@@ -24,6 +24,10 @@ public class PdfExperienceEncoder implements IPdfContentEncoder {
     this.resources = resources;
     this.font = PdfTextEncodingUtilities.createFont(baseFont, FONT_SIZE);
   }
+  
+  public String getHeaderKey() {
+    return "Experience";
+  }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     int totalPoints = character.getTotalExperiencePoints();

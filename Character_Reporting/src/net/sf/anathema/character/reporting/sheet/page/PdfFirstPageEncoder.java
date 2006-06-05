@@ -5,6 +5,7 @@ import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
@@ -16,8 +17,6 @@ import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
 import com.lowagie.text.Font;
-import com.lowagie.text.Paragraph;
-import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfFirstPageEncoder implements IPdfPageEncoder {
@@ -75,15 +74,15 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
         Element.ALIGN_RIGHT);
   }
 
-  private void encodeEssence(
+  private float encodeEssence(
       PdfContentByte directContent,
       IGenericCharacter character,
       float distanceFromTop,
-      final float firstRowHeight) throws DocumentException {
-    Bounds essenceBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, firstRowHeight);
-    String title = getHeaderLabel("Essence"); //$NON-NLS-1$
-    Bounds essenceContentBounds = boxEncoder.encodeBox(directContent, essenceBounds, title);
-    partEncoder.encodeEssence(directContent, character, essenceContentBounds);
+      float height) throws DocumentException {
+    Bounds essenceBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
+    IPdfContentEncoder encoder = partEncoder.getEssenceEncoder(character);
+    boxEncoder.encodeBox(directContent, encoder, character, essenceBounds);
+    return height;
   }
 
   private String getHeaderLabel(String key) {

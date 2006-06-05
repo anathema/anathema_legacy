@@ -15,6 +15,7 @@ public class SecondEditionEncodingRegistry {
   private final BaseFont baseFont;
   private final BaseFont symbolBaseFont;
   private final Map<CharacterType, IPdfContentEncoder> greatCurseEncoder = new HashMap<CharacterType, IPdfContentEncoder>();
+  private final Map<CharacterType, IPdfContentEncoder> animaEncoder = new HashMap<CharacterType, IPdfContentEncoder>();
   private IPdfContentEncoder weaponContentEncoder;
   private IPdfContentEncoder armourContentEncoder;
   private IPdfContentEncoder intimaciesEncoder;
@@ -54,6 +55,14 @@ public class SecondEditionEncodingRegistry {
 
   public IPdfContentEncoder getIntimaciesEncoder() {
     return intimaciesEncoder;
+  }
+  
+  public IPdfContentEncoder getAnimaEncoder(CharacterType type) {
+    return animaEncoder.get(type);
+  }
+
+  public void setAnimaEncoder(CharacterType characterType, IPdfContentEncoder encoder) {
+    animaEncoder.put(characterType, encoder);
   }
 
   public IPdfContentEncoder getGreatCurseEncoder(CharacterType type) {

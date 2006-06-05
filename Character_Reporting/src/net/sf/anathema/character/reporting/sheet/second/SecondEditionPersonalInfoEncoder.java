@@ -1,11 +1,11 @@
 package net.sf.anathema.character.reporting.sheet.second;
 
 import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.TEXT_PADDING;
-
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.character.reporting.util.Position;
@@ -29,6 +29,7 @@ public class SecondEditionPersonalInfoEncoder extends AbstractPdfEncoder {
       IGenericCharacter character,
       IGenericDescription description,
       Bounds infoBounds) {
+    CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     float lineHeight = (infoBounds.height - TEXT_PADDING) / 3;
     float entryWidth = (infoBounds.width - TEXT_PADDING) / 2;
     float firstColumnX = infoBounds.x;
@@ -48,10 +49,12 @@ public class SecondEditionPersonalInfoEncoder extends AbstractPdfEncoder {
     String conceptContent = character.getConcept().getConceptText();
     String conceptLabel = getLabel("Concept"); //$NON-NLS-1$
     drawLabelledContent(directContent, conceptLabel, conceptContent, new Position(firstColumnX, secondRowY), entryWidth);
-    String casteContent = getCasteString(character.getConcept().getCasteType());
-    drawLabelledContent(
-        directContent,
-        getLabel("Caste"), casteContent, new Position(secondColumnX, secondRowY), entryWidth); //$NON-NLS-1$
+    if (characterType != CharacterType.MORTAL) {
+      String casteContent = getCasteString(character.getConcept().getCasteType());
+      drawLabelledContent(
+          directContent,
+          getLabel("Caste"), casteContent, new Position(secondColumnX, secondRowY), entryWidth); //$NON-NLS-1$
+    }
 
     float thirdRowY = secondRowY - lineHeight;
     String motivationContent = character.getConcept().getWillpowerRegainingConceptName();

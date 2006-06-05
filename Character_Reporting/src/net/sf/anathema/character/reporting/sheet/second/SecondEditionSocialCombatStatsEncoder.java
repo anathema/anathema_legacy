@@ -38,6 +38,10 @@ public class SecondEditionSocialCombatStatsEncoder implements IPdfContentEncoder
     this.commentFont = TableEncodingUtilities.createCommentFont(baseFont);
     this.font = TableEncodingUtilities.createFont(baseFont);
   }
+  
+  public String getHeaderKey() {
+    return "SocialCombat";
+  }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     float valueWidth = bounds.width;

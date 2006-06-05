@@ -11,4 +11,8 @@ public class NullPdfContentEncoder implements IPdfContentEncoder {
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     //Nothing to do
   }
+
+  public String getHeaderKey() {
+    return "Null";
+  }
 }

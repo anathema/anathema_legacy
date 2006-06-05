@@ -36,6 +36,10 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentEn
     this.symbolBaseFont = symbolBaseFont;
     this.symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
   }
+  
+  public String getHeaderKey() {
+    return "Anima";
+  }
 
   @Override
   protected BaseFont getBaseFont() {

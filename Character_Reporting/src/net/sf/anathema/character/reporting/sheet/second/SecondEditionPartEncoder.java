@@ -8,7 +8,6 @@ import net.sf.anathema.character.reporting.sheet.common.AbstractPdfPartEncoder;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfVirtueEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfWillpowerEncoder;
-import net.sf.anathema.character.reporting.sheet.common.anima.PdfAnimaEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
@@ -46,13 +45,10 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
       IGenericCharacter character,
       float distanceFromTop,
       float height) throws DocumentException {
+    CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     Bounds animaBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
-    boxEncoder.encodeBox(
-        directContent,
-        new PdfAnimaEncoder(getResources(), getBaseFont(), registry.getSymbolBaseFont()),
-        character,
-        animaBounds,
-        "Anima"); //$NON-NLS-1$
+    IPdfContentEncoder encoder = registry.getAnimaEncoder(characterType);
+    boxEncoder.encodeBox(directContent, encoder, character, animaBounds); //$NON-NLS-1$
   }
 
   private float encodeArmourAndSoak(
@@ -62,7 +58,7 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
       float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     IPdfContentEncoder contentEncoder = registry.getArmourContentEncoder();
-    boxEncoder.encodeBox(directContent, contentEncoder, character, bounds, "ArmourSoak"); //$NON-NLS-1$
+    boxEncoder.encodeBox(directContent, contentEncoder, character, bounds); //$NON-NLS-1$
     return height;
   }
 
@@ -73,7 +69,7 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
       float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
     IPdfContentEncoder encoder = new SecondEditionSocialCombatStatsEncoder(getResources(), getBaseFont());
-    boxEncoder.encodeBox(directContent, encoder, character, bounds, "SocialCombat"); //$NON-NLS-1$
+    boxEncoder.encodeBox(directContent, encoder, character, bounds); //$NON-NLS-1$
     return height;
   }
 
@@ -84,7 +80,7 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
       float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     IPdfContentEncoder encoder = new SecondEditionCombatStatsEncoder(getResources(), getBaseFont());
-    boxEncoder.encodeBox(directContent, encoder, character, bounds, "Combat"); //$NON-NLS-1$
+    boxEncoder.encodeBox(directContent, encoder, character, bounds); //$NON-NLS-1$
     return height;
   }
 
@@ -125,7 +121,7 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
         getResources(),
         getBaseFont(),
         registry.getSymbolBaseFont());
-    boxEncoder.encodeBox(directContent, encoder, character, bounds, "MovementHealth"); //$NON-NLS-1$
+    boxEncoder.encodeBox(directContent, encoder, character, bounds); //$NON-NLS-1$
     return height;
   }
 
@@ -157,7 +153,7 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
       float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
     IPdfContentEncoder weaponryEncoder = registry.getWeaponContentEncoder();
-    boxEncoder.encodeBox(directContent, weaponryEncoder, character, bounds, "Weapons"); //$NON-NLS-1$
+    boxEncoder.encodeBox(directContent, weaponryEncoder, character, bounds); //$NON-NLS-1$
     return height;
   }
 
@@ -167,7 +163,7 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds willpowerBounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    boxEncoder.encodeBox(directContent, new PdfWillpowerEncoder(getBaseFont()), character, willpowerBounds, "Willpower"); //$NON-NLS-1$
+    boxEncoder.encodeBox(directContent, new PdfWillpowerEncoder(getBaseFont()), character, willpowerBounds); //$NON-NLS-1$
     return height;
   }
 
@@ -179,8 +175,7 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
     CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     IPdfContentEncoder encoder = registry.getGreatCurseEncoder(characterType);
-    String headerId = "GreatCurse." + characterType.getId(); //$NON-NLS-1$
-    boxEncoder.encodeBox(directContent, encoder, character, bounds, headerId);
+    boxEncoder.encodeBox(directContent, encoder, character, bounds);
     return height;
   }
 
@@ -191,7 +186,7 @@ public class SecondEditionPartEncoder extends AbstractPdfPartEncoder {
       float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
     IPdfContentEncoder encoder = registry.getIntimaciesEncoder();
-    boxEncoder.encodeBox(directContent, encoder, character, bounds, "Intimacies"); //$NON-NLS-1$
+    boxEncoder.encodeBox(directContent, encoder, character, bounds); //$NON-NLS-1$
     return height;
   }
 }

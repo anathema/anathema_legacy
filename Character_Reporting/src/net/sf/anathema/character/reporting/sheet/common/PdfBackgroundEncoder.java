@@ -23,6 +23,10 @@ public class PdfBackgroundEncoder implements IPdfContentEncoder {
     this.resources = resources;
     this.traitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
   }
+  
+  public String getHeaderKey() {
+    return "Backgrounds";
+  }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     float yPosition = bounds.getMaxY() - LINE_HEIGHT;

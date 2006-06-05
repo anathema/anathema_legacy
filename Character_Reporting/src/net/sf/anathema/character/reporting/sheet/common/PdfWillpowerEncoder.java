@@ -17,6 +17,10 @@ public class PdfWillpowerEncoder implements IPdfContentEncoder {
   public PdfWillpowerEncoder(BaseFont baseFont) {
     this.traitEncoder = PdfTraitEncoder.createMediumTraitEncoder(baseFont);
   }
+  
+  public String getHeaderKey() {
+    return "Willpower";
+  }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds) {
     float padding = IVoidStateFormatConstants.PADDING /2f;

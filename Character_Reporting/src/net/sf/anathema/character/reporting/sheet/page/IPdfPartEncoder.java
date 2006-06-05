@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -27,8 +28,7 @@ public interface IPdfPartEncoder {
       IGenericCharacter character,
       float distanceFromTop) throws DocumentException;
 
-  public void encodeEssence(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds)
-      throws DocumentException;
+  public IPdfContentEncoder getEssenceEncoder(IGenericCharacter character) throws DocumentException;
 
   public void encodePersonalInfos(
       PdfContentByte directContent,
