@@ -5,12 +5,12 @@ import java.util.List;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
-import net.sf.anathema.character.reporting.sheet.common.NullPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfExperienceEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfHorizontalLineContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.PdfComboEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.PdfMagicEncoder;
+import net.sf.anathema.character.reporting.sheet.common.magic.generic.PdfGenericCharmEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.IMagicStats;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
@@ -56,7 +56,7 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
     if (comboHeight > 0) {
       distanceFromTop += comboHeight + IVoidStateFormatConstants.PADDING;
     }
-    float genericCharmsHeight = encodeGenericCharms(directContent, character, distanceFromTop, 150);
+    float genericCharmsHeight = encodeGenericCharms(directContent, character, distanceFromTop, 110);
     distanceFromTop += genericCharmsHeight + IVoidStateFormatConstants.PADDING;
     float remainingHeight = configuration.getContentHeight() - distanceFromTop;
 
@@ -128,7 +128,7 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds bounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
-    IPdfContentEncoder encoder = new NullPdfContentEncoder();
+    IPdfContentEncoder encoder = new PdfGenericCharmEncoder(resources, baseFont);
     boxEncoder.encodeBox(directContent, encoder, character, bounds, "GenericCharms"); //$NON-NLS-1$
     return height;
   }

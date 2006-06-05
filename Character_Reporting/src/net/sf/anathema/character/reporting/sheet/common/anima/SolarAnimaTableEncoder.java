@@ -11,6 +11,7 @@ import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 
@@ -27,7 +28,7 @@ public class SolarAnimaTableEncoder extends AbstractTableEncoder {
   }
 
   @Override
-  protected PdfPTable createTable(IGenericCharacter character, Bounds bounds) {
+  protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
     PdfPTable table = new PdfPTable(new float[] { 0.15f, 0.6f, 0.25f });
     table.setWidthPercentage(100);
     table.addCell(createHeaderCell(resources.getString("Sheet.AnimaTable.Header.Motes"))); //$NON-NLS-1$

@@ -13,6 +13,7 @@ import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 
@@ -29,7 +30,7 @@ public class SecondEditionCombatRulesTableEncoder extends AbstractTableEncoder {
   }
 
   @Override
-  protected PdfPTable createTable(IGenericCharacter character, Bounds bounds) {
+  protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
     float cellPadding = 0.05f;
     PdfPTable table = new PdfPTable(new float[] { 1f, cellPadding, 1.1f, cellPadding, 1f });
 

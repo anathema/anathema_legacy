@@ -10,12 +10,12 @@ import com.lowagie.text.pdf.PdfPTable;
 
 public abstract class AbstractTableEncoder implements IPdfTableEncoder {
 
-  protected abstract PdfPTable createTable(IGenericCharacter character, Bounds bounds);
+  protected abstract PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException;
 
   public float encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
       throws DocumentException {
     ColumnText tableColumn = new ColumnText(directContent);
-    PdfPTable table = createTable(character, bounds);
+    PdfPTable table = createTable(directContent, character, bounds);
     table.setWidthPercentage(100);
     tableColumn.setSimpleColumn(bounds.getMinX(), bounds.getMinY(), bounds.getMaxX(), bounds.getMaxY());
     tableColumn.addElement(table);

@@ -12,6 +12,7 @@ import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPTable;
 
 public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEncoder<ISocialCombatStats> {
@@ -24,8 +25,8 @@ public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEn
   }
 
   @Override
-  protected PdfPTable createTable(IGenericCharacter character, Bounds bounds) {
-    PdfPTable table = super.createTable(character, bounds);
+  protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
+    PdfPTable table = super.createTable(directContent, character, bounds);
     return table;
   }
 
