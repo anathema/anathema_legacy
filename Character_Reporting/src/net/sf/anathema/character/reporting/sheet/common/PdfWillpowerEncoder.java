@@ -2,6 +2,7 @@ package net.sf.anathema.character.reporting.sheet.common;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.character.reporting.util.Position;
@@ -14,15 +15,18 @@ public class PdfWillpowerEncoder implements IPdfContentEncoder {
   private PdfTraitEncoder traitEncoder;
 
   public PdfWillpowerEncoder(BaseFont baseFont) {
-    this.traitEncoder = PdfTraitEncoder.createLargeTraitEncoder(baseFont);
+    this.traitEncoder = PdfTraitEncoder.createMediumTraitEncoder(baseFont);
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds) {
-    float width = contentBounds.width;
+    float padding = IVoidStateFormatConstants.PADDING /2f;
+    float width = contentBounds.width - 2 * padding;
+    float leftX = contentBounds.x + padding;
     int value = character.getTrait(OtherTraitType.Willpower).getCurrentValue();
-    float yPosition = (int) contentBounds.getMaxY() - traitEncoder.getTraitHeight();
-    traitEncoder.encodeCenteredAndUngrouped(directContent, new Position(contentBounds.x, yPosition), width, value, 10);
-    yPosition -= traitEncoder.getTraitHeight();
-    traitEncoder.encodeSquaresCenteredAndUngrouped(directContent, new Position(contentBounds.x, yPosition), width, 0, 10);
+    float entryHeight = Math.max((contentBounds.height - padding) / 2, traitEncoder.getTraitHeight());
+    float yPosition = contentBounds.getMaxY() - entryHeight;
+    traitEncoder.encodeCenteredAndUngrouped(directContent, new Position(leftX, yPosition), width, value, 10);
+    yPosition -= entryHeight;
+    traitEncoder.encodeSquaresCenteredAndUngrouped(directContent, new Position(leftX, yPosition), width, 0, 10);
   }
 }
