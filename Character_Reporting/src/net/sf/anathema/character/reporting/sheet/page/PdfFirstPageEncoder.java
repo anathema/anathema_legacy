@@ -5,12 +5,19 @@ import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
+import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.util.Bounds;
 
+import com.lowagie.text.Anchor;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
+import com.lowagie.text.Font;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfFirstPageEncoder implements IPdfPageEncoder {
@@ -40,6 +47,32 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
 
     encodeFirstColumn(directContent, character, distanceFromTop);
     partEncoder.encodeEditionSpecificFirstPagePart(directContent, character, distanceFromTop);
+    encodeCopyright(directContent);
+  }
+
+  private void encodeCopyright(PdfContentByte directContent) throws DocumentException {
+    int lineHeight = IVoidStateFormatConstants.COMMENT_FONT_SIZE + 2;
+    Font copyrightFont = new Font(partEncoder.getBaseFont(), IVoidStateFormatConstants.COMMENT_FONT_SIZE);
+    float copyrightHeight = pageConfiguration.getPageHeight() - pageConfiguration.getContentHeight();
+    Bounds firstColumnBounds = pageConfiguration.getFirstColumnRectangle(CONTENT_HEIGHT, copyrightHeight, 1);
+    Anchor voidstatePhrase = new Anchor("Inspired by Voidstate\nhttp://www.voidstate.com", copyrightFont);
+    voidstatePhrase.setReference("http://www.voidstate.com");
+    PdfTextEncodingUtilities.encodeText(directContent, voidstatePhrase, firstColumnBounds, lineHeight);
+    Anchor anathemaPhrase = new Anchor("Created with Anathema \u00A92006\nhttp://anathema.sf.net", copyrightFont);
+    anathemaPhrase.setReference("http://anathema.sf.net");
+    Bounds anathemaBounds = pageConfiguration.getSecondColumnRectangle(CONTENT_HEIGHT, copyrightHeight, 1);
+    PdfTextEncodingUtilities.encodeText(directContent, anathemaPhrase, anathemaBounds, lineHeight, Element.ALIGN_CENTER);
+    Anchor whitewolfPhrase = new Anchor(
+        "Exalted \u00A92006 by White Wolf, Inc.\nhttp://www.white-wolf.com",
+        copyrightFont);
+    whitewolfPhrase.setReference("http://www.white-wolf.com");
+    Bounds whitewolfBounds = pageConfiguration.getThirdColumnRectangle(CONTENT_HEIGHT, copyrightHeight);
+    PdfTextEncodingUtilities.encodeText(
+        directContent,
+        whitewolfPhrase,
+        whitewolfBounds,
+        lineHeight,
+        Element.ALIGN_RIGHT);
   }
 
   private void encodeEssence(

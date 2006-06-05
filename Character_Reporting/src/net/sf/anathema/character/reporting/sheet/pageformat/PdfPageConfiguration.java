@@ -79,4 +79,8 @@ public class PdfPageConfiguration {
   public float getLeftX() {
     return marginLeft;
   }
+
+  public int getPageHeight() {
+    return pageHeight;
+  }
 }

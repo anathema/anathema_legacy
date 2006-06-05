@@ -6,6 +6,7 @@ import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatCons
 import net.sf.anathema.character.reporting.util.Bounds;
 
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
@@ -24,13 +25,18 @@ public class PdfTextEncodingUtilities {
   
   public static ColumnText encodeText(PdfContentByte directContent, Phrase phrase, Bounds bounds, float lineHeight)
       throws DocumentException {
+    return encodeText(directContent, phrase, bounds, lineHeight, Element.ALIGN_LEFT);
+  }
+
+  public static ColumnText encodeText(PdfContentByte directContent, Phrase phrase, Bounds bounds, float lineHeight, int alignment) throws DocumentException {
     ColumnText columnText = new ColumnText(directContent);
     float minX = bounds.getMinX();
     float minY = bounds.getMinY();
     float maxX = bounds.getMaxX();
     float maxY = bounds.getMaxY();
-    columnText.setSimpleColumn(phrase, minX, minY, maxX, maxY, lineHeight, PdfContentByte.ALIGN_LEFT);
+    columnText.setSimpleColumn(phrase, minX, minY, maxX, maxY, lineHeight, alignment);
     columnText.go();
     return columnText;
+    
   }
 }
