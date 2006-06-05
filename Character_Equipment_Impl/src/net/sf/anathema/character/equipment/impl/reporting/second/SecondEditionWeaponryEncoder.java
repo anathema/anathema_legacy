@@ -19,6 +19,10 @@ public class SecondEditionWeaponryEncoder implements IPdfContentEncoder {
     this.resources = resources;
   }
 
+  public String getHeaderKey() {
+    return "Weapons";
+  }
+  
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     new SecondEditionWeaponryTableEncoder(baseFont, resources).encodeTable(directContent, character, bounds);
   }
