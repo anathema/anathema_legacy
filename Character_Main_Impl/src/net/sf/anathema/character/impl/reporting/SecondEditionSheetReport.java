@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.generic.GenericDescription;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
@@ -56,12 +57,16 @@ public class SecondEditionSheetReport implements IITextReport {
     SecondEditionPartEncoder partEncoder = new SecondEditionPartEncoder(encodingRegistry, resources, 7, configuration);
     try {
       new PdfFirstPageEncoder(partEncoder, configuration).encode(document, directContent, character, description);
+      if (character.getTemplate().getTemplateType().getCharacterType() == CharacterType.MORTAL) {
+        return;
+      }
       document.newPage();
       new PdfSecondPageEncoder(resources, partEncoder.getBaseFont(), configuration).encode(
           document,
           directContent,
           character,
           description);
+      
     }
     catch (Exception e) {
       throw new ReportException(e);

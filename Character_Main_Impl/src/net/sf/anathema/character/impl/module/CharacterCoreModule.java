@@ -53,7 +53,7 @@ public class CharacterCoreModule extends AbstractAnathemaModule {
   //      }
   //    }
   //  }
-
+  
   @Override
   public void initAnathemaResources(IAnathemaResources resources) {
     if (anathemaResources != null) {
