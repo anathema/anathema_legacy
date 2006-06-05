@@ -35,6 +35,10 @@ public class PdfSolarVirtueFlawEncoder extends AbstractPdfEncoder implements IPd
     this.traitEncoder = PdfTraitEncoder.createMediumTraitEncoder(baseFont);
   }
 
+  public String getHeaderKey() {
+    return "GreatCurse.Solar";
+  }
+
   @Override
   protected BaseFont getBaseFont() {
     return baseFont;

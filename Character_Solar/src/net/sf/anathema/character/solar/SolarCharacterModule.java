@@ -12,6 +12,7 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.sheet.SecondEditionEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.common.anima.PdfAnimaEncoder;
 import net.sf.anathema.character.solar.caste.SolarCaste;
 import net.sf.anathema.character.solar.reporting.PdfSolarVirtueFlawEncoder;
 import net.sf.anathema.character.solar.reporting.SolarVoidStateReportTemplate;
@@ -62,6 +63,10 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
         CharacterReportingModule.class);
     SecondEditionEncodingRegistry registry = moduleObject.getSecondEditionEncodingRegistry();
     registry.setGreatCurseEncoder(CharacterType.SOLAR, new PdfSolarVirtueFlawEncoder(registry.getBaseFont()));
+    registry.setAnimaEncoder(CharacterType.SOLAR, new PdfAnimaEncoder(
+        resources,
+        registry.getBaseFont(),
+        registry.getSymbolBaseFont()));
     generics.getReportTemplateRegistry().add(new SolarVoidStateReportTemplate(resources));
   }
 
