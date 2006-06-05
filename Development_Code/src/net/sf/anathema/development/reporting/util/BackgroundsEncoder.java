@@ -6,6 +6,7 @@ import org.dom4j.Element;
 
 public class BackgroundsEncoder extends AbstractJasperEncoder {
 
+  private static final int LINE_HEIGHT = IVoidStateFormatConstants.LINE_HEIGHT - 2;
   private final TraitEncoder traitEncoder;
 
   public BackgroundsEncoder(TraitEncoder traitEncoder) {
@@ -34,7 +35,7 @@ public class BackgroundsEncoder extends AbstractJasperEncoder {
         x,
         y,
         valueLabelXInset - spacing,
-        IVoidStateFormatConstants.LINE_HEIGHT);
+        LINE_HEIGHT);
     addTextElement(
         parent,
         quotify("Level"),
@@ -43,11 +44,11 @@ public class BackgroundsEncoder extends AbstractJasperEncoder {
         x + valueLabelXInset,
         y,
         backgroundValueWidth,
-        IVoidStateFormatConstants.LINE_HEIGHT);
+        LINE_HEIGHT);
     addTextElement(parent, quotify("Details"), IVoidStateFormatConstants.FONT_SIZE, VALUE_LEFT, x
         + backgroundWidth
-        + spacing, y, descriptionWidth, IVoidStateFormatConstants.LINE_HEIGHT);
-    y += IVoidStateFormatConstants.LINE_HEIGHT;
+        + spacing, y, descriptionWidth, LINE_HEIGHT);
+    y += LINE_HEIGHT;
     for (int index = 0; index < rowCount; index++) {
       y += traitEncoder.encodeBackgroundRowWithDescription(
           parent,
