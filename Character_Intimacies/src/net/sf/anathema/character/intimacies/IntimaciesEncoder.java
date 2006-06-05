@@ -35,6 +35,10 @@ public class IntimaciesEncoder extends AbstractPdfEncoder implements IPdfContent
   public IntimaciesEncoder(BaseFont baseFont) {
     this.baseFont = baseFont;
   }
+  
+  public String getHeaderKey() {
+    return "Intimacies";
+  }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     IIntimaciesModel model = (IIntimaciesModel) character.getAdditionalModel(IntimaciesTemplate.ID);
