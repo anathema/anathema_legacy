@@ -22,7 +22,7 @@ public class MagicSourceStringBuilder<T extends IMagic> implements IMagicSourceS
     final IExaltedSourceBook source = getSource(t);
     StringBuilder builder = new StringBuilder();
     builder.append(resources.getString(createSourceBookKey(source)));
-    String pageKey = createPageKey(t, source);
+    String pageKey = createPageKey(t.getId(), source);
     if (resources.supportsKey(pageKey)) {
       builder.append(IMagicStringBuilderConstants.CommaSpace);
       builder.append(resources.getString("CharmTreeView.ToolTip.Page")); //$NON-NLS-1$
@@ -36,23 +36,28 @@ public class MagicSourceStringBuilder<T extends IMagic> implements IMagicSourceS
     return "ExaltedSourceBook." + source.getId(); //$NON-NLS-1$
   }
 
-  private String createPageKey(T t, final IExaltedSourceBook source) {
-    return source.getId() + "." + t.getId() + ".Page"; //$NON-NLS-1$ //$NON-NLS-2$
+  private String createPageKey(String id, final IExaltedSourceBook source) {
+    return source.getId() + "." + id + ".Page"; //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   public String createShortSourceString(T t) {
     final IExaltedSourceBook source = getSource(t);
+    String id = t.getId();
+    return createShortSourceString(source, id);
+  }
+
+  protected IExaltedSourceBook getSource(T t) {
+    return t.getSource();
+  }
+
+  public String createShortSourceString(IExaltedSourceBook source, String magicId) {
     StringBuilder builder = new StringBuilder();
     builder.append(resources.getString(createSourceBookKey(source) + ".Short")); //$NON-NLS-1$
-    String pageKey = createPageKey(t, source);
+    String pageKey = createPageKey(magicId, source);
     if (resources.supportsKey(pageKey)) {
       builder.append(IMagicStringBuilderConstants.CommaSpace);
       builder.append(resources.getString(pageKey));
     }
     return builder.toString();
-  }
-
-  protected IExaltedSourceBook getSource(T t) {
-    return t.getSource();
   }
 }
