@@ -80,7 +80,7 @@ public class CharmDataSource implements IReportDataSource {
         }
 
         public void visitSpell(ISpell spell) {
-          duration[0] = resources.getString("CharmDataSource.Duration.NA"); //$NON-NLS-1$
+          duration[0] = resources.getString("Charm.Duration.NA"); //$NON-NLS-1$
         }
       });
       return duration[0];
