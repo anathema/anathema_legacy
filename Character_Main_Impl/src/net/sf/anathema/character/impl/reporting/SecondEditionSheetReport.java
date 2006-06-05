@@ -49,7 +49,7 @@ public class SecondEditionSheetReport implements IITextReport {
     PdfContentByte directContent = writer.getDirectContent();
     IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
     IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
-    PdfPageConfiguration configuration = PdfPageConfiguration.create(document.getPageSize());
+    PdfPageConfiguration configuration = PdfPageConfiguration.create(pageSize.getRectangle());
     ICharacterModuleObjectMap moduleObjectMap = characterGenerics.getModuleObjectMap();
     CharacterReportingModuleObject moduleObject = moduleObjectMap.getModuleObject(CharacterReportingModule.class);
     SecondEditionEncodingRegistry encodingRegistry = moduleObject.getSecondEditionEncodingRegistry();
