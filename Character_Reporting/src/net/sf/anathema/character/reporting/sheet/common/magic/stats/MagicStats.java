@@ -109,9 +109,12 @@ public class MagicStats implements IMagicStats {
       public void visitCharm(ICharm charm) {
         for (ICharmAttribute attribute : charm.getAttributes()) {
           final String attributeId = attribute.getId();
-          if (attribute.isVisualized() && !attributeId.contains("Combo")) { //$NON-NLS-1$
+          if (attribute.isVisualized()) { //$NON-NLS-1$
             details.add("Keyword." + attributeId); //$NON-NLS-1$
           }
+        }
+        for (String subeffectId : character.getLearnedSubeffects(charm)) {
+          details.add(charm.getId() + ".Subeffects." + subeffectId);
         }
       }
 
