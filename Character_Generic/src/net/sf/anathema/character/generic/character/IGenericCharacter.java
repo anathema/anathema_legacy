@@ -64,4 +64,6 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection 
   public int getTotalExperiencePoints();
 
   public int getSpentExperiencePoints();
+
+  public String[] getLearnedSubeffects(ICharm charm);
 }
