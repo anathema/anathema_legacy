@@ -54,7 +54,7 @@ public class CharmTreeListening {
 
   private final EventListener selectionInvokingListener = new EventListener() {
     public void handleEvent(Event evt) {
-      if (evt instanceof MouseEvent && ((MouseEvent) evt).getButton() == 0) {
+      if (evt instanceof MouseEvent && ((MouseEvent) evt).getButton() == 0 && ((MouseEvent) evt).getDetail() == 1) {
         SVGGElement group = (SVGGElement) evt.getCurrentTarget();
         String charmId = group.getId();
         fireCharmSelectionEvent(charmId);
