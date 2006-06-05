@@ -252,4 +252,8 @@ public class DemoGenericCharacter implements IGenericCharacter {
   public int getTotalExperiencePoints() {
     return totalExperiencePoints;
   }
+
+  public String[] getLearnedSubeffects(ICharm charm) {
+    return new String[0];
+  }
 }
