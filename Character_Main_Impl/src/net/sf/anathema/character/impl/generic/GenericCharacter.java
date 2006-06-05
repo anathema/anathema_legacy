@@ -37,6 +37,8 @@ import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
+import net.sf.anathema.character.model.charm.special.ISubeffect;
+import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
 
 public class GenericCharacter implements IGenericCharacter {
 
@@ -211,5 +213,20 @@ public class GenericCharacter implements IGenericCharacter {
 
   public int getTotalExperiencePoints() {
     return statistics.getExperiencePoints().getTotalExperiencePoints();
+  }
+
+  public String[] getLearnedSubeffects(ICharm charm) {
+    ISpecialCharmConfiguration charmConfiguration = statistics.getCharms().getSpecialCharmConfiguration(charm);
+    if (!(charmConfiguration instanceof ISubeffectCharmConfiguration)) {
+      return new String[0];
+    }
+    ISubeffectCharmConfiguration subeffectConfiguration = (ISubeffectCharmConfiguration) charmConfiguration;
+    List<String> learnedSubeffectIds = new ArrayList<String>();
+    for (ISubeffect subeffect : subeffectConfiguration.getSubeffects()) {
+      if (subeffect.isLearned()) {
+        learnedSubeffectIds.add(subeffect.getId());
+      }
+    }
+    return learnedSubeffectIds.toArray(new String[learnedSubeffectIds.size()]);
   }
 }

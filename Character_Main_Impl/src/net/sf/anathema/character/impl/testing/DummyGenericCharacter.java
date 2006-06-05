@@ -189,4 +189,8 @@ public class DummyGenericCharacter implements IGenericCharacter {
   public int getTotalExperiencePoints() {
     return 0;
   }
+
+  public String[] getLearnedSubeffects(ICharm charm) {
+    return new String[0];
+  }
 }
