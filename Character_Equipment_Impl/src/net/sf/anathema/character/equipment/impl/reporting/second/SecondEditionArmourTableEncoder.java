@@ -14,6 +14,7 @@ import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPTable;
 
 public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncoder<IArmour> {
@@ -26,8 +27,8 @@ public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncod
   }
 
   @Override
-  protected PdfPTable createTable(IGenericCharacter character, Bounds bounds) {
-    PdfPTable armourTable = super.createTable(character, bounds);
+  protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
+    PdfPTable armourTable = super.createTable(directContent, character, bounds);
     IArmour totalArmour = getEquipmentModel(character).getTotalPrintArmour(getLineCount());
     IEquipmentStatsGroup<IArmour>[] groups = createStatsGroups(character);
     for (int index = 0; index < groups.length; index++) {
