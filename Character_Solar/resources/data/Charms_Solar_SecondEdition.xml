@@ -2620,7 +2620,7 @@
     <prerequisite>
       <essence id="Essence" value="5"/>
       <trait id="Craft" value="5"/>
-      <charmReference id="Solar.InfiniteMasteryCraft"/>
+      <charmReference id="Solar.InfiniteMastery.Craft"/>
       <charmReference id="Solar.Crack-MendingTechnique"/>
       <charmReference id="Solar.CraftsmanNeedsNoTools"/>
     </prerequisite>

@@ -71,7 +71,7 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
 
   private PdfTemplate createCharmDotTemplate(PdfContentByte directContent, Color color) {
     float lineWidth = 0.75f;
-    float templateSize = IVoidStateFormatConstants.SMALL_SYMBOL_HEIGHT - 1 + 2* lineWidth;
+    float templateSize = IVoidStateFormatConstants.SMALL_SYMBOL_HEIGHT - 1 + 2 * lineWidth;
     PdfTemplate template = directContent.createTemplate(templateSize, templateSize);
     template.setColorFill(color);
     template.setColorStroke(Color.BLACK);
@@ -89,7 +89,7 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
       String genericId,
       PdfTemplate learnedTemplate,
       PdfTemplate notLearnedTemplate) throws DocumentException {
-    final String charmId = genericId + abilityType.getId();
+    final String charmId = genericId + "." + abilityType.getId();
     List<IMagic> allLearnedMagic = character.getAllLearnedMagic();
     boolean isLearned = CollectionUtilities.find(allLearnedMagic, new IPredicate<IMagic>() {
       public boolean evaluate(IMagic value) {
@@ -110,7 +110,7 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
     float descentPoint = baseFont.getDescentPoint(text, TableEncodingUtilities.FONT_SIZE);
     float templateWidth = baseFont.getWidthPoint(text, TableEncodingUtilities.FONT_SIZE);
     float templateHeight = ascentPoint - descentPoint;
-    
+
     PdfTemplate template = directContent.createTemplate(templateWidth, templateHeight);
     template.beginText();
     template.setFontAndSize(baseFont, TableEncodingUtilities.FONT_SIZE);

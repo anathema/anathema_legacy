@@ -94,11 +94,11 @@
         <Charm name="Solar.DurabilityOakMeditation" experienceLearned="false"/>
       </CharmGroup>
       <CharmGroup name="Athletics" type="Solar">
-        <Charm name="Solar.1stExcellencyAthletics" experienceLearned="false"/>
+        <Charm name="Solar.1stExcellency.Athletics" experienceLearned="false"/>
       </CharmGroup>
       <CharmGroup name="Awareness" type="Solar">
         <Charm name="Solar.KeenHearingandTouchTechnique" experienceLearned="false"/>
-        <Charm name="Solar.1stExcellencyAwareness" experienceLearned="false"/>
+        <Charm name="Solar.1stExcellency.Awareness" experienceLearned="false"/>
       </CharmGroup>
       <CharmGroup name="Archery" type="Solar">
         <Charm name="Solar.EssenceArrowAttack" experienceLearned="false">
@@ -110,7 +110,7 @@
             </Subeffects>
           </Special>
         </Charm>
-        <Charm name="Solar.1stExcellencyArchery" experienceLearned="false"/>
+        <Charm name="Solar.1stExcellency.Archery" experienceLearned="false"/>
       </CharmGroup>
       <CharmGroup name="Larceny" type="Solar">
         <Charm name="Solar.Lock-OpeningTouch" experienceLearned="false"/>

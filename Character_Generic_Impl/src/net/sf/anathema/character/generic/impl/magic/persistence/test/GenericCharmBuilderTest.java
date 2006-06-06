@@ -20,7 +20,7 @@ public class GenericCharmBuilderTest extends BasicTestCase {
     Element xml = CharmXmlTestUtils.createCharmElement("Solar.Generic"); //$NON-NLS-1$
     builder.setType(AbilityType.Archery);
     Charm charm = builder.buildCharm(xml);
-    assertEquals("Solar.GenericArchery", charm.getId()); //$NON-NLS-1$
+    assertEquals("Solar.Generic.Archery", charm.getId()); //$NON-NLS-1$
   }
 
   private void removeAttribute(Element element, String attribute) {

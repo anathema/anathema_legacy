@@ -78,7 +78,7 @@
       <CharmGroup name="Melee" type="Solar">
         <Charm name="Solar.DippingSwallowDefense" experienceLearned="false"/>
         <Charm name="Solar.BulwarkStance" experienceLearned="false"/>
-        <Charm name="Solar.1stExcellencyMelee" experienceLearned="false"/>
+        <Charm name="Solar.1stExcellency.Melee" experienceLearned="false"/>
         <Charm name="Solar.FivefoldBulwarkStance" experienceLearned="false"/>
       </CharmGroup>
       <CharmGroup name="Resistance" type="Solar">
@@ -98,10 +98,10 @@
         <Charm name="Solar.GracefulCraneStance" experienceLearned="true"/>
       </CharmGroup>
       <CharmGroup name="Investigation" type="Solar">
-        <Charm name="Solar.2ndExcellencyInvestigation" experienceLearned="true"/>
+        <Charm name="Solar.2ndExcellency.Investigation" experienceLearned="true"/>
       </CharmGroup>
       <CharmGroup name="Craft" type="Solar">
-        <Charm name="Solar.1stExcellencyCraft" experienceLearned="true"/>
+        <Charm name="Solar.1stExcellency.Craft" experienceLearned="true"/>
         <Charm name="Solar.CraftsmanNeedsNoTools" experienceLearned="true"/>
       </CharmGroup>
       <CharmGroup name="Integrity" type="Solar">
