@@ -16,6 +16,11 @@
     <charmtype type="Reflexive">
       <special primaryStep="1" secondaryStep="2"/>
     </charmtype>
+    <combo>
+    	<restrictions>
+    		<genericCharmReference id="Solar.3rdExcellency"/>
+    	</restrictions>
+    </combo>
     <genericCharmAttribute attribute="Excellency"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="SecondEdition" page="183"/>
@@ -34,6 +39,11 @@
     <charmtype type="Reflexive">
       <special primaryStep="1" secondaryStep="2"/>
     </charmtype>
+        <combo>
+    	<restrictions>
+    		<genericCharmReference id="Solar.3rdExcellency"/>
+    	</restrictions>
+    </combo>
     <genericCharmAttribute attribute="Excellency"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
     <source source="SecondEdition" page="184"/>
@@ -209,6 +219,7 @@
     <prerequisite>
       <essence id="Essence" value="2"/>
       <trait id="Archery" value="3"/>
+      <charmReference id="Solar.EssenceArrowAttack"/>
     </prerequisite>
     <cost>
       <temporary>
