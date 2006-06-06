@@ -391,7 +391,7 @@
   </charm> 
   
   <!-- SecondEdition Solar Generics -->
-  <charm id="Solar.1stExcellencyMartialArts" exalt="Solar" group="Generics">
+  <charm id="Solar.1stExcellency.MartialArts" exalt="Solar" group="Generics">
     <prerequisite>
       <trait id="MartialArts" value="1"/>
       <essence value="1"/>
@@ -405,6 +405,11 @@
     <charmtype type="Reflexive">
       <special primaryStep="1" secondaryStep="2"/>
     </charmtype>
+    <combo>
+    	<restrictions>
+    		<charm id="Solar.3rdExcellency.MartialArts"/>
+    	</restrictions>
+    </combo>
     <charmAttribute attribute="Mortal"/>
     <charmAttribute attribute="NoStyle"/>
     <charmAttribute attribute="Exclusive"/>
@@ -413,7 +418,7 @@
     <charmAttribute attribute="ExcellencyMartialArts"/>
     <source source="SecondEdition" page="183"/>
   </charm>
-  <charm id="Solar.2ndExcellencyMartialArts" exalt="Solar" group="Generics">
+  <charm id="Solar.2ndExcellency.MartialArts" exalt="Solar" group="Generics">
     <prerequisite>
       <trait id="MartialArts" value="1"/>
       <essence value="1"/>
@@ -427,6 +432,11 @@
     <charmtype type="Reflexive">
       <special primaryStep="1" secondaryStep="2"/>
     </charmtype>
+    <combo>
+    	<restrictions>
+    		<charm id="Solar.3rdExcellency.MartialArts"/>
+    	</restrictions>
+    </combo>
     <charmAttribute attribute="Mortal"/>
     <charmAttribute attribute="NoStyle"/>
     <charmAttribute attribute="Exclusive"/>
@@ -435,7 +445,7 @@
     <charmAttribute attribute="ExcellencyMartialArts"/>
     <source source="SecondEdition" page="184"/>
   </charm>
-  <charm id="Solar.3rdExcellencyMartialArts" exalt="Solar" group="Generics">
+  <charm id="Solar.3rdExcellency.MartialArts" exalt="Solar" group="Generics">
     <prerequisite>
       <trait id="MartialArts" value="1"/>
       <essence value="1"/>
@@ -457,7 +467,7 @@
     <charmAttribute attribute="ExcellencyMartialArts"/>
     <source source="SecondEdition" page="185"/>
   </charm>
-  <charm id="Solar.InfiniteMasteryMartialArts" exalt="Solar" group="Generics">
+  <charm id="Solar.InfiniteMastery.MartialArts" exalt="Solar" group="Generics">
     <prerequisite>
       <trait id="MartialArts" value="4"/>
       <essence value="3"/>
@@ -476,7 +486,7 @@
     <charmAttribute attribute="Exclusive"/>
     <source source="SecondEdition" page="185"/>
   </charm>
-  <charm id="Solar.EssenceFlowMartialArts" exalt="Solar" group="Generics">
+  <charm id="Solar.EssenceFlow.MartialArts" exalt="Solar" group="Generics">
     <prerequisite>
       <trait id="MartialArts" value="5"/>
       <essence value="4"/>
