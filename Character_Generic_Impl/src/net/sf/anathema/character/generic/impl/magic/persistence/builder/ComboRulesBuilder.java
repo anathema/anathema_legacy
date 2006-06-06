@@ -20,12 +20,11 @@ import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
-public class ComboRulesBuilder {
+public class ComboRulesBuilder implements IComboRulesBuilder {
 
   private final TraitTypeUtils traitUtils = new TraitTypeUtils();
 
   public IComboRestrictions buildComboRules(Element rulesElement) {
-    String typeAttribute;
     Element comboElement = rulesElement.element(TAG_COMBO);
     if (comboElement == null) {
       return new ComboRestrictions();
@@ -36,21 +35,25 @@ public class ComboRulesBuilder {
     ComboRestrictions comboRules = new ComboRestrictions(allAbilities, comboAllowed);
     Element restrictionElement = comboElement.element(TAG_RESTRICTIONS);
     if (restrictionElement != null) {
-      List<Element> restrictedCharmList = ElementUtilities.elements(restrictionElement, TAG_CHARM);
-      for (Element element : restrictedCharmList) {
-        comboRules.addRestrictedCharmId(element.attributeValue(ATTRIB_ID));
-      }
-      List<Element> restrictedCharmTypeList = ElementUtilities.elements(restrictionElement, TAG_CHARMTYPE);
-      for (Element element : restrictedCharmTypeList) {
-        typeAttribute = element.attributeValue(ATTRIB_TYPE);
-        comboRules.addRestrictedCharmType(CharmType.valueOf(typeAttribute));
-      }
-      List<Element> restrictedTraitTypeList = ElementUtilities.elements(restrictionElement, TAG_TRAIT_REFERENCE);
-      for (Element element : restrictedTraitTypeList) {
-        typeAttribute = element.attributeValue(ATTRIB_ID);
-        comboRules.addRestrictedTraitType(traitUtils.getTraitTypeById(typeAttribute));
-      }
+      buildRestrictionList(comboRules, restrictionElement);
     }
     return comboRules;
+  }
+
+  protected void buildRestrictionList(ComboRestrictions comboRules, Element restrictionElement) {
+    List<Element> restrictedCharmList = ElementUtilities.elements(restrictionElement, TAG_CHARM);
+    for (Element element : restrictedCharmList) {
+      comboRules.addRestrictedCharmId(element.attributeValue(ATTRIB_ID));
+    }
+    List<Element> restrictedCharmTypeList = ElementUtilities.elements(restrictionElement, TAG_CHARMTYPE);
+    for (Element element : restrictedCharmTypeList) {
+      String charmType = element.attributeValue(ATTRIB_TYPE);
+      comboRules.addRestrictedCharmType(CharmType.valueOf(charmType));
+    }
+    List<Element> restrictedTraitTypeList = ElementUtilities.elements(restrictionElement, TAG_TRAIT_REFERENCE);
+    for (Element element : restrictedTraitTypeList) {
+      String traitType = element.attributeValue(ATTRIB_ID);
+      comboRules.addRestrictedTraitType(traitUtils.getTraitTypeById(traitType));
+    }
   }
 }

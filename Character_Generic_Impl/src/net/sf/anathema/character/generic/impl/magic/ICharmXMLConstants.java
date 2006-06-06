@@ -42,6 +42,7 @@ public interface ICharmXMLConstants {
   public static final String TAG_GENERIC_CHARM = "genericCharm"; //$NON-NLS-1$
   public static final String TAG_CHARM_ATTRIBUTE_REQUIREMENT = "charmAttributeRequirement"; //$NON-NLS-1$
   public static final String TAG_CHARM_REFERENCE = "charmReference"; //$NON-NLS-1$
+  public static final String TAG_GENERIC_CHARM_REFERENCE = "genericCharmReference"; //$NON-NLS-1$  
   public static final String TAG_CHARMTYPE = "charmtype"; //$NON-NLS-1$
   public static final String TAG_COMBO = "combo"; //$NON-NLS-1$
   public static final String TAG_COST = "cost"; //$NON-NLS-1$

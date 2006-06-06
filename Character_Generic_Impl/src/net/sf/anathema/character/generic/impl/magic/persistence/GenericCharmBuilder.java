@@ -1,5 +1,6 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericComboRulesBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericIdStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericAttributeRequirementBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.GenericTraitPrerequisitesBuilder;
@@ -9,21 +10,26 @@ public class GenericCharmBuilder extends CharmBuilder implements ICharmBuilder {
 
   private final GenericIdStringBuilder idBuilder;
   private final GenericTraitPrerequisitesBuilder traitBuilder;
-  private final GenericAttributeRequirementBuilder builder;
+  private final GenericAttributeRequirementBuilder attributeRequirementBuilder;
+  private final GenericComboRulesBuilder comboBuilder;
 
   public GenericCharmBuilder(
       GenericIdStringBuilder idBuilder,
       GenericTraitPrerequisitesBuilder traitBuilder,
-      GenericAttributeRequirementBuilder builder) {
-    super(idBuilder, traitBuilder, builder);
+      GenericAttributeRequirementBuilder attributeRequirementBuilder,
+      GenericComboRulesBuilder comboBuilder) {
+    super(idBuilder, traitBuilder, attributeRequirementBuilder, comboBuilder);
     this.idBuilder = idBuilder;
     this.traitBuilder = traitBuilder;
-    this.builder = builder;
+    this.attributeRequirementBuilder = attributeRequirementBuilder;
+    this.comboBuilder = comboBuilder;
+
   }
 
   public void setType(ITraitType type) {
     idBuilder.setType(type);
     traitBuilder.setType(type);
-    builder.setType(type);
+    attributeRequirementBuilder.setType(type);
+    comboBuilder.setType(type);
   }
 }

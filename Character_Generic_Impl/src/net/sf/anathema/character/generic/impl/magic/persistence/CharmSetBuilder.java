@@ -15,6 +15,8 @@ import java.util.Set;
 
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.impl.magic.Charm;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.ComboRulesBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericComboRulesBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericIdStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.IdStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.prerequisite.AttributeRequirementBuilder;
@@ -36,11 +38,13 @@ public class CharmSetBuilder implements ICharmSetBuilder {
   private final ICharmBuilder builder = new CharmBuilder(
       new IdStringBuilder(),
       new TraitPrerequisitesBuilder(),
-      new AttributeRequirementBuilder());
+      new AttributeRequirementBuilder(),
+      new ComboRulesBuilder());
   private final GenericCharmBuilder genericsBuilder = new GenericCharmBuilder(
       new GenericIdStringBuilder(),
       new GenericTraitPrerequisitesBuilder(),
-      new GenericAttributeRequirementBuilder());
+      new GenericAttributeRequirementBuilder(),
+      new GenericComboRulesBuilder());
 
   public ICharm[] buildCharms(Document charmDoc, List<ICharm> existingCharms) throws PersistenceException {
     // TODO NOW: Hier kann man die Reihenfolge richtig drehen

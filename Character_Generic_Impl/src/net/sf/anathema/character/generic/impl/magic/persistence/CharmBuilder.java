@@ -15,6 +15,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.builder.ComboRul
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.CostListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.DurationBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.GroupStringBuilder;
+import net.sf.anathema.character.generic.impl.magic.persistence.builder.IComboRulesBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.ICostListBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.IIdStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.builder.SourceBuilder;
@@ -43,20 +44,22 @@ public class CharmBuilder implements ICharmBuilder {
   private final ICostListBuilder costListBuilder = new CostListBuilder();
   private final DurationBuilder durationBuilder = new DurationBuilder();
   private final GroupStringBuilder groupBuilder = new GroupStringBuilder();
-  private final ComboRulesBuilder comboBuilder = new ComboRulesBuilder();
   private final SourceBuilder sourceBuilder = new SourceBuilder();
   private final CharmAttributeBuilder attributeBuilder = new CharmAttributeBuilder();
   private final IIdStringBuilder idBuilder;
   private final ITraitPrerequisitesBuilder traitsBuilder;
   private final IAttributeRequirementBuilder attributeRequirementsBuilder;
+  private final IComboRulesBuilder comboBuilder;
 
   public CharmBuilder(
       IIdStringBuilder idBuilder,
       ITraitPrerequisitesBuilder traitsBuilder,
-      IAttributeRequirementBuilder attributeRequirementsBuilder) {
+      IAttributeRequirementBuilder attributeRequirementsBuilder,
+      IComboRulesBuilder comboBuilder) {
     this.idBuilder = idBuilder;
     this.traitsBuilder = traitsBuilder;
     this.attributeRequirementsBuilder = attributeRequirementsBuilder;
+    this.comboBuilder = comboBuilder;
   }
 
   public Charm buildCharm(Element charmElement) throws PersistenceException {
@@ -72,14 +75,8 @@ public class CharmBuilder implements ICharmBuilder {
     catch (PersistenceException e) {
       throw new CharmException("Error building costlist for charm " + id, e); //$NON-NLS-1$
     }
-    IComboRestrictions comboRules;
-    try {
-      comboRules = comboBuilder.buildComboRules(charmElement);
-    }
-    catch (IllegalArgumentException e) {
-      throw new CharmException("Error in Charm " + id, e); //$NON-NLS-1$
-    }
-    IDuration duration = null;
+    IComboRestrictions comboRules = comboBuilder.buildComboRules(charmElement);
+    IDuration duration;
     try {
       duration = durationBuilder.buildDuration(charmElement.element(TAG_DURATION));
     }
