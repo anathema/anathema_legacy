@@ -11,4 +11,6 @@ public interface IExperiencePointConfiguration {
   public int getTotalExperiencePoints();
   
   public void addExperiencePointConfigurationListener(IExperiencePointConfigurationListener listener);
+
+  public int getExtraSpendings();
 }

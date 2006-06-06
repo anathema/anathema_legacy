@@ -60,34 +60,25 @@ public class ExperiencedOverviewPresenter {
     statistics.getExperiencePoints().addExperiencePointConfigurationListener(
         new IExperiencePointConfigurationListener() {
           public void entryAdded(IExperiencePointEntry entry) {
-            setAlotment();
+            calculateXPCost();
           }
 
           public void entryRemoved(IExperiencePointEntry entry) {
-            setAlotment();
+            calculateXPCost();
           }
 
           public void entryChanged(IExperiencePointEntry entry) {
-            setAlotment();
+            calculateXPCost();
           }
         });
-    setAlotment();
-  }
-
-  private void setAlotment() {
-    totalView.setAlotment(getTotalXP());
-    setTotalViewColor();
-  }
-
-  private int getTotalXP() {
-    return statistics.getExperiencePoints().getTotalExperiencePoints() + management.getMiscGain();
   }
 
   private void calculateXPCost() {
     for (IOverviewSubPresenter presenter : presenters) {
       presenter.update();
     }
-    setAlotment();
+    totalView.setAlotment(getTotalXP());
+    setTotalViewColor();
     totalView.setValue(management.getTotalCosts());
     setTotalViewColor();
   }
@@ -95,6 +86,10 @@ public class ExperiencedOverviewPresenter {
   private void setTotalViewColor() {
     boolean overspent = management.getTotalCosts() > getTotalXP();
     totalView.setTextColor(overspent ? LegalityColorProvider.COLOR_HIGH : LegalityColorProvider.COLOR_OKAY);
+  }
+
+  private int getTotalXP() {
+    return statistics.getExperiencePoints().getTotalExperiencePoints() + management.getMiscGain();
   }
 
   private String getString(String string) {

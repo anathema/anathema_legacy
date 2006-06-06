@@ -71,7 +71,19 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
   public int getTotalExperiencePoints() {
     int sum = 0;
     for (IExperiencePointEntry entry : getAllEntries()) {
-      sum += entry.getExperiencePoints();
+      if (entry.getExperiencePoints() > 0) {
+        sum += entry.getExperiencePoints();
+      }
+    }
+    return sum;
+  }
+
+  public int getExtraSpendings() {
+    int sum = 0;
+    for (IExperiencePointEntry entry : getAllEntries()) {
+      if (entry.getExperiencePoints() < 0) {
+        sum -= entry.getExperiencePoints();
+      }
     }
     return sum;
   }

@@ -33,6 +33,7 @@ http://anathema.sf.net
 * Revamped the spell selection view
 * 	View now filters illegals spells from mass-selection without throwing an exception
 * Greatly improved speed of Charm trees.
+* Negative experience point entries are now added to "Misc. spendings" instead of reducing the XP total.
 * Charm durations are translated.
 * Charm attribute requirements now use proper spanish language.
 
