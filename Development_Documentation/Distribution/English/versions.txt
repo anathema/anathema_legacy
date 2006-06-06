@@ -10,11 +10,11 @@ http://anathema.sf.net
 -- Features --
 + Support for Exalted, Second Edition with
 +	Both character types from the main rulebook.
-+   All Charms from the core book as well as the first two supplements
++   All Charms from the core book as well as the first two supplements.
 +   Intimacies
 + Character Description now sports a "Player" field.
-+ Anathema now accepts user-defined strings. The file "custom.properties" (or a locale-specific variant) 
-	in the main directory is read at startup.
++ Anathema now accepts user-defined strings. 
+	The file "custom.properties" (or a locale-specific variant) in the main directory is read at startup.
 * There have been major changes to the handling of customized natures. 
 	Refer to "nature_instructions.txt" for details.
 
@@ -29,13 +29,14 @@ http://anathema.sf.net
 -- Usability --
 + CharmCascades now honor the preferred ruleset.
 + Hired wordman to tend to the Mac communities needs.
++ Support for locale-specific sourcebooks.
 * Tried to improve usability on Mac OS X.
 * Revamped the spell selection view
 * 	View now filters illegals spells from mass-selection without throwing an exception
 * Greatly improved speed of Charm trees.
 * Negative experience point entries are now added to "Misc. spendings" instead of reducing the XP total.
 * Charm durations are translated.
-* Charm attribute requirements now use proper spanish language.
+* Charm attribute requirements now use proper spanish grammar.
 
 -- Bugs Fixed --
 * Replaced "Periphrase" by "Periphrasis", as is due in English.
