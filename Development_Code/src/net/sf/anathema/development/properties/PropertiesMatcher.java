@@ -13,9 +13,12 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
 
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import net.sf.anathema.framework.presenter.action.NamedLocale;
+
+import com.l2fprod.common.swing.JDirectoryChooser;
 
 public class PropertiesMatcher {
 
@@ -28,9 +31,13 @@ public class PropertiesMatcher {
     NamedLocale locale = (NamedLocale) JOptionPane.showInputDialog(
         null,
         "Choose Locale:", "Locale", JOptionPane.QUESTION_MESSAGE, null, NamedLocale.values(), null); //$NON-NLS-1$ //$NON-NLS-2$
-
+    JDirectoryChooser chooser = new JDirectoryChooser();
+    int choice = chooser.showOpenDialog(null);
+    if (choice != JFileChooser.APPROVE_OPTION) {
+      return;
+    }
+    File superFolder = chooser.getSelectedFile();
     List<File> defaultPropertiesFiles = new ArrayList<File>();
-    File superFolder = new File("..");
     File[] projectFolders = superFolder.listFiles();
     for (File file : projectFolders) {
       if (file.isDirectory()) {
@@ -75,12 +82,11 @@ public class PropertiesMatcher {
     String defaultPath = defaultPropertiesFile.getCanonicalPath();
     String localizedPath = defaultPath.replace(".properties", "_" + locale.getLanguage() + ".properties");
     localePropertiesFile = new File(localizedPath);
-    if (!localePropertiesFile.exists()) {
-      localePropertiesFile.createNewFile();
+    if (localePropertiesFile.exists()) {
+      InputStream localeStream = new FileInputStream(localePropertiesFile);
+      localeProperties.load(localeStream);
+      localeStream.close();
     }
-    InputStream localeStream = new FileInputStream(localePropertiesFile);
-    localeProperties.load(localeStream);
-    localeStream.close();
   }
 
   private void matchProperties() throws IOException {
@@ -103,6 +109,7 @@ public class PropertiesMatcher {
   }
 
   private void handleProperty(String line) throws IOException {
+    System.err.println(line);
     String[] keyValueArray = line.split(delimiter, 2);
     String key = keyValueArray[0].replaceAll(whiteSpace, "");
     String value = keyValueArray[1];
