@@ -8,7 +8,6 @@
 	<classpathentry kind="src" path="/Lib"/>
 	<classpathentry sourcepath="/Thirdparty/Reporting/jasperreport-src.zip" kind="lib" path="/Thirdparty/Reporting/jasperreports-0.6.2.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/XML/dom4j-1.5.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/XML/xercesImpl-2.6.2.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-awt-util.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-bridge.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-css.jar"/>
