@@ -1,5 +1,5 @@
 ===------------------------------------------------------------------------------===
-	    ANATHEMA v0.9 "ICEHOME"
+	    ANATHEMA v0.11 "KIRIGHAST"
 ===------------------------------------------------------------------------------===
 
 Anathema Leeme
@@ -8,7 +8,7 @@ Anathema Leeme
 Exalted (C) 2001-2005 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
-Anathema todavía esta en etapa alpha.
+Anathema todavía esta en etapa beta.
 Por favor vuelve regularmente para que estés actualizado.
 
 
@@ -35,7 +35,7 @@ Por favor vuelve regularmente para que estés actualizado.
 Anathema es un conjunto exhaustivo de todos los aspectos del manejo de series de 
 Exalted, ofreciendo manejo del personaje y campaña, biblioteca de medios, notas y mas.
 
-Esa es a intención que tenemos. 
+Esa es la intención que tenemos. 
 Este lanzamiento es apenas uno mas de muchos pasos en un camino largo. 
 Disfrutalo.
 
@@ -92,11 +92,7 @@ Una guia cubriendo bajar, instalacion y lanzamiento esta disponible en la pagina
 Después de toda esta charla, seguramente te preguntas: "¿Que es lo que Anathema hace para mi?"
 Aquí va:
 
-+ Genera y mantiene tipos de personajes
-       del libro principal y
-       del libro de "Dragon-Blooded" (Vastagos del Dragon) asi como
-       del libro de "Abyssals" (Abisales) y
-       del libro de "Sidereals" (Siderales)
++ Genera y mantiene los 5 tipos de Exaltados base
 + Genera descripciones de personajes
 + Imprime hojas de personaje y descripciones a PDF
 + Organiza la trama de tus series
@@ -118,7 +114,7 @@ El dialogo te permite cambiar el lenguaje del programa de Ingles a Español.
 (Contactanos si quieres ayudar a que Anathema este en tu lenguaje!)
 
 Aparte de esos ajustes de programa, el usuario podrá customizar la lista de las naturalezas y las condiciones
-para ganar voluntad. Ve las instrucciones en el archivo /data/nature_instructions.txt para los detalles.
+para ganar voluntad. Ve las instrucciones en el archivo /data/nature_instructions_es.txt para los detalles.
 
 Todos los ajusten necesitan que Anathema sea recomenzado para tomar efecto.
 
@@ -138,6 +134,15 @@ Gracias por ayudarnos a mejorar!
 
 Problemas Conocidos:
 ---------------------
+
+Las Reglas de Combo para Lunares ilegalmente permite Encantamientos de Artes Marciales sean puestos en un 
+combo con Encantamientos basados en Atributos.
+
+A los Siderales todavia le falta el trasfondo de Conecciones.
+
+
+La pestaña de "Meritos y Defectos" cambia de tamaño cuando los articulos son seleccionados.
+
 Un problema a sido reportado cunado re-cargas personajes despues de cerrarlos,
 pero es muy elusivo. Favor de contactarnos si encuentras este error de software.
 
@@ -191,15 +196,23 @@ mas fácilmente participar.
 ===------------------------------------------------------------------------------===
 
 Gracias a todas las personas que nos mostraron todos aquellos grandes y pequeños errores de software.
-Alabanzas van a uteck por su Guia de Usuario, y otra vez a Xanatos por el buen icono de escritorio.
-Gracias a Weltenreiter y Bluerps, nuestros avidos Comma-Monkeys.
-Philip "The_Burrito" Markus nos proporciono muchos de los hechizos de Necromancia y Encantamientos Lunares.
+
+Alabanzas a Xanatos por el agradable icono.
+Gracias a uteck por enviar el bosquejo para la Guia de Usuario y por su esposa por hacer pruebas beta.
+
+Philip "The_Burrito" Markus nos proporciono mucha informacion de los hechizos de Necromancia y Encantamientos Lunares.
 Patches hizo lo mismo con los Reyes Dragon.
+Gracias a Weltenreiter y Bluerps quienes nos ayudaron hace tiempo a organizar la informacion.
+
 Extendemos un gran "Gracias" al Sr. Ricardo Rodriguez y Ms. Rafaela Lombardo,
 quienes traducieron el programa y el sitio de web, respectivamente, al español.
-Gracias especiales al Sr. Daniel Hohenberger, que el solo creo una herramienta 
-invaluable para crear los arboles gráficos de los encantamientos. 
-Visitalo en http://hd42.de
+Ricardo tambien merece ser mencionado por encontrar inumerables errores y errores tipograficos
+en el codigo y la base de datos. Como dije antes: You rock!
+
+En http://hd42.de pueden visitar al Sr. Daniel Hohenberger, quien primero escribo el software para
+generar imagenes de las cascadas de encanatmientos. Gracias, nos ahorrastes mucho trabajo e inspirastes a
+crear un sistema completamente automatizado.
+
 Si estas interesado en la versión avanzada de las hojas de personaje, favor de
 visitar a voidstate en http://www.voidstate.com. Alabanzas a el, también.
 

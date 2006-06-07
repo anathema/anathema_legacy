@@ -6,27 +6,27 @@ http://anathema.sf.net
 ===------------------------------------------------------------------------------===
 	            Acerca de este Archivo
 ===------------------------------------------------------------------------------===
-Este archivo detalla el proceso de customizar la lista de naturalezas disponibles para 
-uso con Anathema. Para instrucciones generales de uso, ve el readme_es.txt acompañado y 
-la documentacion provista en la pagina del proyecto.
-(http://sourceforge.net/docman/?group_id=122320)
+Este archivo detalla el proceso para customizar las condiciones de "recuperacion de voluntad"
+para las naturalezas existentes y describe una forma para agrerar nuevas.
+
+Ultima revision importante: Anathema 0.11
+
 
 ===------------------------------------------------------------------------------===
 	            Customizando Naturalezas
 ===------------------------------------------------------------------------------===
-Desde la version 0.5 "Eagle's Launch", Anathema toma un acercamiento editable de usuario
-a las naturalezas.
 El programa viene completo con todas las naturalezas del libro principal de Exaltado,
-pero por razones de copyright permiten la inclusion de las condiciones en la distribucion
-de archivos. ¡Te animamos mucho a que remplaces las descripciones con las que te proveemos
-por unas mas utiles! 
+pero por razones de copyright nos vemos forzados a omitir las condiciones de recuperacion de
+voluntad.
+¡Te animamos mucho a que remplaces las descripciones con las que te proveemos por unas 
+mas utiles!
 
 Una naturaleza en Anathema es representada por tres partes: Un unico ID para propositos de 
-identificacion, el nombre de la naturaleza como aparece en el programa y en las hojas de
-personaje y la condicion opcional de recuperacion de la Fuerza de Voluntad. Para las
-naturalezas basicas ya incluidas, ID y Name las dos son el nombre de la naturaleza como
-en el libro principal, mientras que las condiciones solo te muestra la pagina donde buscar
-la descripcion completa.
+identificar el nombre de la naturaleza como aparece en el programa y en las hojas de
+personaje y la condicion de recuperacion de la Fuerza de Voluntad. Para las naturalezas
+basicas ya incluidas, ID y Name las dos son el nombre de la naturaleza como en el libro
+principal, mientras que las condiciones solo te muestra la pagina donde buscar la descripcion
+completa.
 
 El primer paso en cambiar las naturalezas existentes asi como crear nuevas es crear un nuevo
 archivo llamado "natures.xml" en el subdirectorio de "data", despues editar el contenido de
@@ -34,45 +34,33 @@ este archivo.
 El archivo de naturalezas tiene que empezar con un elemento raiz llamado "<naturelist>" y
 despues especificar el numero de entradas de "nature", antes de terminar con el final
 "</naturelist>".
-
-Cada elemento "<nature>" tiene su id y name guardado en atributos, asi es que un muy simple
-archivo podria ser:
+Un elemento "<nature>" tiene un solo atributo, anunciando su presencia en el programa: "id".
+Un muy simple archivo podria ser:
 //Ejemplo 1:
 <naturelist>
-	<nature id="NaturalezaAnathemaCustomizada" name="MiNaturaleza">
-	</nature>
+	<nature id="NaturalezaAnathemaPersonalizada" />
 </naturelist>
 
-Ester archivo es leido durante el proceso de lanzamiento de Anathema y sus contendiso son
-agregados a la lista de naturalezas. Nuestra nueva naturaleza creada mostraria "MiNaturaleza"
-en la pantalla de concepto de personaje.
-Para crear una naturaleza con la condicion de recuperar Fuerza de Voluntad, el elemento
-nature es extendido con un subelemento "<willpower>", con un atributo "text" dando el texto
-de las condiciones:
-//Ejemplo 2:
-<naturelist>
-	<nature id="NaturalezaAnathemaCustomizada" name="MiNaturaleza">
-		<willpower text="cuando una nueva naturaleza es creada.">
-		</willpower>
-	</nature>
-</naturelist>
+Ester archivo es leido durante el proceso de lanzamiento de Anathema y sus contenidos son
+agregados a la lista de naturalezas. 
+Sin embargo, nuestra nueva naturaleza que creamos se mostrara como "##Nature.NaturalezaAnathemaPersonalizada.Name##"
+en la ventana de concepto del personaje, puesto que el programa solo conoce la identificacion, pero no el nombre.
+Tendremos que decirle al programa que poner en ese espacio, y poner una condicion de recuperacion de voluntad.
 
-NOTA: "Ganas Voluntad" siempre es incluido en frente del texto, asi es que solo tienes que
-poner una frase condicional ("cuando...", "cada vez...").
+Para hacerlo, creamos un simple archivo de texto en el directorio principal de Anathema, llamado
+"custom.properties".
+Dentro, cada naturaleza requiere dos entradas, consistiendo en una llave y el valor, adheriendose al
+formato "key=value".
+La primera linea agrega el nombre a la identificacion, aqui la llave es, "Nature.[Insertar el ID de la Naturaleza].Name",
+mientras que la segunda llave es "Nature.[Insertar el ID de la Naturaleza].Text".
 
-Si el ID de una naturaleza especificada por el usuario es identica a una de las naturalezas
-pre-definidas (nota la correcta capitalizacion), la especificada por el usuario toma precedencia
-y la naturaleza predefinida es quitada de la lista.
-Esto incluye la condicion de recuperacion de Fuerza de Voluntad, asi es que si tu nature.xml
-tiene una entrada
-//Ejemplo 3:
-<naturelist>
-	<nature id="Rebel" name="Naturaleza Revoltosa">
-	</nature>
-</naturelist>
+NOTA: "Ganas Voluntad" siempre es incluido en frente del texto, asi es que necesitas poner la frase condicional
+("cuando...", "cada vez...") solamente.
 
-la naturaleza Rebelde ni siquiera se mostraria en la pagina de referencia de la condicion
-de recuperacion.
+Para nuestro ejemplo de naturaleza, estas lineas pudieran leerse:
+Nature.NaturalezaAnathemaPersonalizada.Name=Naturaleza Personalizada
+Nature.NaturalezaAnathemaPersonalizada.Text=cuando se customiza exitosamente una naturaleza.
 
-Por otra parte, si tu neva entrada incluye el texto correcto de recuperacion, de ahora en
-adelante se mostraria en Anathema.
+Si quieres sobreescribir ya sea el nombre o la condicion de una naturaleza pre-existente, solo llena el
+archivo "custom.properties" con las lineas apropiadas. Los identificadores usados son los titulos de las 
+naturalezas como estan en el libro principal en ingles.
