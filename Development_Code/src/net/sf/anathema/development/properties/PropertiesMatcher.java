@@ -23,11 +23,6 @@ import com.l2fprod.common.swing.JDirectoryChooser;
 public class PropertiesMatcher {
 
   public static void main(String[] args) throws IOException {
-    // File defaultPropertiesFile = FileChoosingUtilities.chooseFile(
-    // "Select default properties file",
-    // javax.swing.JOptionPane.getRootFrame(),
-    // new PropertiesFilter(),
-    // new File(".."));
     NamedLocale locale = (NamedLocale) JOptionPane.showInputDialog(
         null,
         "Choose Locale:", "Locale", JOptionPane.QUESTION_MESSAGE, null, NamedLocale.values(), null); //$NON-NLS-1$ //$NON-NLS-2$
@@ -75,7 +70,8 @@ public class PropertiesMatcher {
     defaultPropertiesReader = new BufferedReader(new FileReader(defaultPropertiesFile));
     this.locale = locale;
     getLocaleProperties(defaultPropertiesFile);
-    localePropertiesWriter = new BufferedWriter(new FileWriter(new File(localePropertiesFile.getName())));
+    new File("./language/").mkdir();
+    localePropertiesWriter = new BufferedWriter(new FileWriter(new File("./language/"+localePropertiesFile.getName())));
   }
 
   private void getLocaleProperties(File defaultPropertiesFile) throws IOException {
