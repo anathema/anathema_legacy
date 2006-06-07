@@ -2,6 +2,7 @@ package net.sf.anathema.character.presenter.charm;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import javax.swing.JLabel;
@@ -9,6 +10,7 @@ import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSourceStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.MagicInfoStringBuilder;
@@ -141,17 +143,17 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
   protected abstract String getTabTitleResourceKey();
 
   private void updateSpellListsInView(final ISpellView spellView) {
-    spellView.setLearnedMagic(getCircleFilteredSpellList(spellConfiguration.getLearnedSpells()).toArray(new ISpell[0]));
+    spellView.setLearnedMagic(getCircleFilteredSpellList(spellConfiguration.getLearnedSpells()));
     spellView.setMagicOptions(getSpellsToShow());
   }
 
   private ISpell[] getSpellsToShow() {
     List<ISpell> showSpells = new ArrayList<ISpell>();
     if (circle == null) {
-      showSpells = getCircleFilteredSpellList(spellConfiguration.getAllSpells());
+      Collections.addAll(showSpells, getCircleFilteredSpellList(spellConfiguration.getAllSpells()));
     }
     else {
-      showSpells.addAll(Arrays.asList(spellConfiguration.getSpellsByCircle(circle)));
+      Collections.addAll(showSpells, spellConfiguration.getSpellsByCircle(circle));
     }
     showSpells.removeAll(Arrays.asList(spellConfiguration.getLearnedSpells()));
     int count = showSpells.size();
@@ -163,16 +165,14 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
     return sortedSpells;
   }
 
-  private List<ISpell> getCircleFilteredSpellList(ISpell[] spells) {
+  private ISpell[] getCircleFilteredSpellList(ISpell[] spells) {
     List<ISpell> spellList = new ArrayList<ISpell>();
     for (ISpell spell : spells) {
-      for (CircleType type : getCircles()) {
-        if (spell.getCircleType() == type) {
-          spellList.add(spell);
-        }
-      }
+      if (ArrayUtilities.contains(getCircles(), spell.getCircleType())) {
+        spellList.add(spell);
+      }     
     }
-    return spellList;
+    return spellList.toArray(new ISpell[spellList.size()]);
   }
 
   protected ICharacterTemplate getCharacterTemplate() {
