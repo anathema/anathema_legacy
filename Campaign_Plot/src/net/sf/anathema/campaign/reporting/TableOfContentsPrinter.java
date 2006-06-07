@@ -72,4 +72,8 @@ public class TableOfContentsPrinter {
     pageLabels.addPageLabel(totalPages - lastContentPage + 1, PdfPageLabels.DECIMAL_ARABIC_NUMERALS);
     writer.setPageLabels(pageLabels);
   }
+
+  public void reset() {
+    entryList.clear();    
+  }
 }

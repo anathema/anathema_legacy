@@ -32,6 +32,7 @@ public class MultiColumnSeriesReport implements IITextReport {
     if (!supports(item)) {
       throw new IllegalArgumentException("Item not supported: " + item.getDisplayName()); //$NON-NLS-1$
     }
+    contentTable.reset();
     writer.setSpaceCharRatio(PdfWriter.NO_SPACE_CHAR_RATIO);
     writer.setViewerPreferences(PdfWriter.PageModeUseOutlines);
     writer.setLinearPageMode();
