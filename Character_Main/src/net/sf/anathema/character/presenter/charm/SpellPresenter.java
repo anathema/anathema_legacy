@@ -20,11 +20,11 @@ import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.ISpellConfiguration;
-import net.sf.anathema.character.model.ISpellModelListener;
 import net.sf.anathema.character.presenter.TabContent;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -91,9 +91,9 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
         view.setMagicOptions(getSpellsToShow());
       }
     });
-    spellConfiguration.addSpellListener(new ISpellModelListener() {
-      public void spellsChanged() {
-        updateSpellListsInView(view);
+    spellConfiguration.addChangeListener(new IChangeListener() {
+      public void changeOccured() {
+        updateSpellListsInView(view);        
       }
     });
     updateSpellListsInView(view);

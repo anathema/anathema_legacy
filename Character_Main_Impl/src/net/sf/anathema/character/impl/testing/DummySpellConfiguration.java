@@ -7,7 +7,7 @@ import java.util.List;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.model.ISpellConfiguration;
-import net.sf.anathema.character.model.ISpellModelListener;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 public class DummySpellConfiguration implements ISpellConfiguration {
@@ -26,7 +26,7 @@ public class DummySpellConfiguration implements ISpellConfiguration {
     throw new NotYetImplementedException();
   }
 
-  public void addSpellListener(ISpellModelListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     throw new NotYetImplementedException();
   }
 

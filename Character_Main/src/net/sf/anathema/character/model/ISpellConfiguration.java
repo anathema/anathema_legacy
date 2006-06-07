@@ -2,6 +2,7 @@ package net.sf.anathema.character.model;
 
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public interface ISpellConfiguration {
 
@@ -11,7 +12,7 @@ public interface ISpellConfiguration {
 
   public ISpell[] getLearnedSpells();
 
-  public void addSpellListener(ISpellModelListener listener);
+  public void addChangeListener(IChangeListener listener);
 
   public ISpell[] getAllSpells();
 

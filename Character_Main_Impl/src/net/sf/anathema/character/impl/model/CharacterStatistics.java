@@ -25,7 +25,6 @@ import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListe
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.ISpellConfiguration;
-import net.sf.anathema.character.model.ISpellModelListener;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -118,8 +117,8 @@ public class CharacterStatistics implements ICharacterStatistics {
     });
     CharacterType characterType = template.getTemplateType().getCharacterType();
     this.spells = new SpellConfiguration(charms, context.getSpellLearnStrategy(), characterType);
-    this.spells.addSpellListener(new ISpellModelListener() {
-      public void spellsChanged() {
+    this.spells.addChangeListener(new IChangeListener() {
+      public void changeOccured() {
         context.getCharacterListening().fireCharacterChanged();
       }
     });

@@ -14,15 +14,16 @@ import net.sf.anathema.character.generic.magic.spells.ICircleTypeVisitor;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.ISpellLearnStrategy;
-import net.sf.anathema.character.model.ISpellModelListener;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
+import net.sf.anathema.lib.control.change.ChangeControl;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class SpellConfiguration implements ISpellConfiguration {
 
   private final List<ISpell> creationLearnedList = new ArrayList<ISpell>();
   private final List<ISpell> experiencedLearnedList = new ArrayList<ISpell>();
-  private final List<ISpellModelListener> spellListeners = new ArrayList<ISpellModelListener>();
+  private final ChangeControl control = new ChangeControl();
   private final Map<CircleType, List<ISpell>> spellsByCircle = new HashMap<CircleType, List<ISpell>>();
   private final ICharmConfiguration charms;
   private final ISpellLearnStrategy strategy;
@@ -54,7 +55,7 @@ public class SpellConfiguration implements ISpellConfiguration {
         creationLearnedList.remove(spell);
       }
     }
-    fireSpellsChanged();
+    control.fireChangedEvent();
   }
 
   public void addSpells(ISpell[] addedSpells) {
@@ -75,7 +76,7 @@ public class SpellConfiguration implements ISpellConfiguration {
         throw new IllegalArgumentException("Cannot learn Spell: " + spell); //$NON-NLS-1$
       }
     }
-    fireSpellsChanged();
+    control.fireChangedEvent();
   }
 
   public boolean isSpellAllowed(ISpell spell) {
@@ -135,14 +136,8 @@ public class SpellConfiguration implements ISpellConfiguration {
     return list.toArray(new ISpell[list.size()]);
   }
 
-  private void fireSpellsChanged() {
-    for (ISpellModelListener listener : new ArrayList<ISpellModelListener>(spellListeners)) {
-      listener.spellsChanged();
-    }
-  }
-
-  public void addSpellListener(ISpellModelListener listener) {
-    spellListeners.add(listener);
+  public void addChangeListener(IChangeListener listener) {
+    control.addChangeListener(listener);
   }
 
   public ISpell[] getAllSpells() {
