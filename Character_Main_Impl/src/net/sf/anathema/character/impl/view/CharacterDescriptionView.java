@@ -22,7 +22,7 @@ import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
 public class CharacterDescriptionView extends AbstractTabView<Object> implements ICharacterDescriptionView {
 
-  private static class EditButtonDialogPanel implements IGridDialogPanel {
+  public static class EditButtonDialogPanel implements IGridDialogPanel {
     private final IGridDialogPanel dialogPanel = new DefaultGridDialogPanel();
     private final Map<Integer, JPanel> editPanelsByRow = new HashMap<Integer, JPanel>();
     private int currentRow = 0;

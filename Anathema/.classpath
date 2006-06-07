@@ -49,6 +49,5 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment_Impl"/>
 	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-io.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-lang-2.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
