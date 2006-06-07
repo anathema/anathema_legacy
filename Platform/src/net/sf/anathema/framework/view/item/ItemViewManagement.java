@@ -71,7 +71,7 @@ public class ItemViewManagement implements IItemViewManagement {
     paneProperties.setTabDeselectable(false);
     paneProperties.setEnsureSelectedTabVisible(true);
     paneProperties.setHighlightPressedTab(true);
-    paneProperties.setTabDropDownListVisiblePolicy(TabDropDownListVisiblePolicy.MORE_THAN_ONE_TAB);
+    paneProperties.setTabDropDownListVisiblePolicy(TabDropDownListVisiblePolicy.TABS_NOT_VISIBLE);
   }
 
   public void addItemView(final IItemView view, Action closeAction) {
