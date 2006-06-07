@@ -14,6 +14,5 @@
 	<classpathentry sourcepath="/Thirdparty/Reporting/jasperreport-src.zip" kind="lib" path="/Thirdparty/Reporting/jasperreports-0.6.2.jar"/>
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-lang-2.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
