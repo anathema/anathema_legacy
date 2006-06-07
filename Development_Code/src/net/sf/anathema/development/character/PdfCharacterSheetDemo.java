@@ -19,6 +19,7 @@ import net.sf.anathema.character.impl.module.CharacterCoreModule;
 import net.sf.anathema.character.impl.module.CharacterModule;
 import net.sf.anathema.character.intimacies.IntimaciesEncoder;
 import net.sf.anathema.character.reporting.sheet.SecondEditionEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.common.anima.PdfAnimaEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfSecondPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
@@ -87,6 +88,10 @@ public class PdfCharacterSheetDemo {
     encodingRegistry.setIntimaciesEncoder(new IntimaciesEncoder(encodingRegistry.getBaseFont()));
     encodingRegistry.setGreatCurseEncoder(CharacterType.SOLAR, new PdfSolarVirtueFlawEncoder(
         encodingRegistry.getBaseFont()));
+    encodingRegistry.setAnimaEncoder(CharacterType.SOLAR, new PdfAnimaEncoder(
+        resources,
+        encodingRegistry.getBaseFont(),
+        encodingRegistry.getSymbolBaseFont()));
     return encodingRegistry;
   }
 

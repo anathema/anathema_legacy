@@ -2,11 +2,8 @@ package net.sf.anathema.character.reporting.sheet.common.magic;
 
 import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.LINE_HEIGHT;
 import net.disy.commons.core.util.ArrayUtilities;
-import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
-import net.sf.anathema.character.reporting.sheet.common.NullPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.util.Bounds;
@@ -45,7 +42,8 @@ public class PdfComboEncoder {
     Phrase phrase = createComboPhrase(combos);
     float yPosition = PdfTextEncodingUtilities.encodeText(directContent, phrase, contentBounds, LINE_HEIGHT).getYLine();
     Bounds actualBoxBounds = calculateActualBoxBounds(restOfPage, yPosition);
-    boxEncoder.encodeBox(directContent, new NullPdfContentEncoder(), null, actualBoxBounds); //$NON-NLS-1$
+    String headerString = resources.getString("Sheet.Header.Combos"); //$NON-NLS-1$
+    boxEncoder.encodeBox(directContent, actualBoxBounds, headerString);
     return actualBoxBounds.getHeight();
   }
 
@@ -55,7 +53,8 @@ public class PdfComboEncoder {
       if (!phrase.isEmpty()) {
         phrase.add(new Chunk("\n", font)); //$NON-NLS-1$
       }
-      phrase.add(new Chunk(combo.getName() + ": ", nameFont)); //$NON-NLS-1$
+      String printName = combo.getName() == null ? "???" : combo.getName(); //$NON-NLS-1$
+      phrase.add(new Chunk(printName + ": ", nameFont)); //$NON-NLS-1$
       String charmString = getCharmString(combo);
       phrase.add(new Chunk(charmString, font));
     }
@@ -68,12 +67,8 @@ public class PdfComboEncoder {
   }
 
   private String getCharmString(IGenericCombo combo) {
-    String[] charmNames = ArrayUtilities.transform(combo.getCharms(), String.class, new ITransformer<ICharm, String>() {
-      public String transform(ICharm input) {
-        return resources.getString(input.getId());
-      }
-    });
-    String charmString = AnathemaStringUtilities.concat(charmNames, ", "); //$NON-NLS-1$
-    return charmString;
+    CharmPrintNameTransformer transformer = new CharmPrintNameTransformer(resources);
+    String[] charmNames = ArrayUtilities.transform(combo.getCharms(), String.class, transformer);
+    return AnathemaStringUtilities.concat(charmNames, ", "); //$NON-NLS-1$
   }
 }
