@@ -68,7 +68,7 @@ public class SpellViewProperties extends AbstractMagicLearnProperties implements
     return new ListSelectionListener() {
       public void valueChanged(ListSelectionEvent e) {
         boolean enabled = !list.isSelectionEmpty();
-        if (statistics.isExperienced()) {
+        if (enabled && statistics.isExperienced()) {
           for (Object spellObject : list.getSelectedValues()) {
             ISpell spell = (ISpell) spellObject;
             if (spellConfiguration.isLearnedOnCreation(spell)) {
