@@ -14,6 +14,8 @@ public interface ISpellConfiguration {
 
   public void addChangeListener(IChangeListener listener);
 
+  public void addMagicLearnListener(IMagicLearnListener<ISpell> listener);
+
   public ISpell[] getAllSpells();
 
   public boolean isSpellAllowed(ISpell spell);

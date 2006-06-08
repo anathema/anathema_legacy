@@ -6,6 +6,7 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
+import net.sf.anathema.character.model.IMagicLearnListener;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
@@ -78,5 +79,9 @@ public class DummySpellConfiguration implements ISpellConfiguration {
 
   public boolean isLearnedOnCreationOrExperience(ISpell spell) {
     return false;
+  }
+
+  public void addMagicLearnListener(IMagicLearnListener<ISpell> listener) {
+    throw new NotYetImplementedException();
   }
 }

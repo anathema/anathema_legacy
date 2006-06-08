@@ -12,10 +12,13 @@ import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.magic.spells.ICircleTypeVisitor;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.model.IMagicLearnListener;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.ISpellLearnStrategy;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
@@ -23,7 +26,8 @@ public class SpellConfiguration implements ISpellConfiguration {
 
   private final List<ISpell> creationLearnedList = new ArrayList<ISpell>();
   private final List<ISpell> experiencedLearnedList = new ArrayList<ISpell>();
-  private final ChangeControl control = new ChangeControl();
+  private final ChangeControl changeControl = new ChangeControl();
+  private final GenericControl<IMagicLearnListener<ISpell>> magicLearnControl = new GenericControl<IMagicLearnListener<ISpell>>();
   private final Map<CircleType, List<ISpell>> spellsByCircle = new HashMap<CircleType, List<ISpell>>();
   private final ICharmConfiguration charms;
   private final ISpellLearnStrategy strategy;
@@ -55,7 +59,7 @@ public class SpellConfiguration implements ISpellConfiguration {
         creationLearnedList.remove(spell);
       }
     }
-    control.fireChangedEvent();
+    fireSpellsForgottenEvent(removedSpells);
   }
 
   public void addSpells(ISpell[] addedSpells) {
@@ -76,7 +80,25 @@ public class SpellConfiguration implements ISpellConfiguration {
         throw new IllegalArgumentException("Cannot learn Spell: " + spell); //$NON-NLS-1$
       }
     }
-    control.fireChangedEvent();
+    fireSpellsAddedEvent(addedSpells);
+  }
+
+  private void fireSpellsAddedEvent(final ISpell[] addedSpells) {
+    magicLearnControl.forAllDo(new IClosure<IMagicLearnListener<ISpell>>() {
+      public void execute(IMagicLearnListener<ISpell> input) {
+        input.magicLearned(addedSpells);
+      }
+    });
+    changeControl.fireChangedEvent();
+  }
+
+  private void fireSpellsForgottenEvent(final ISpell[] removedSpells) {
+    magicLearnControl.forAllDo(new IClosure<IMagicLearnListener<ISpell>>() {
+      public void execute(IMagicLearnListener<ISpell> input) {
+        input.magicForgotten(removedSpells);
+      }
+    });
+    changeControl.fireChangedEvent();
   }
 
   public boolean isSpellAllowed(ISpell spell) {
@@ -137,9 +159,13 @@ public class SpellConfiguration implements ISpellConfiguration {
   }
 
   public void addChangeListener(IChangeListener listener) {
-    control.addChangeListener(listener);
+    changeControl.addChangeListener(listener);
   }
-
+  
+  public void addMagicLearnListener(IMagicLearnListener<ISpell> listener) {
+    magicLearnControl.addListener(listener);
+  }
+  
   public ISpell[] getAllSpells() {
     List<ISpell> allSpells = new ArrayList<ISpell>();
     for (List<ISpell> circleSpells : spellsByCircle.values()) {

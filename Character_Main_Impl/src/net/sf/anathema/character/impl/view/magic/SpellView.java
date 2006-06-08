@@ -3,6 +3,7 @@ package net.sf.anathema.character.impl.view.magic;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Comparator;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -123,6 +124,22 @@ public class SpellView implements ISpellView {
 
   public void setMagicOptions(Object[] spells) {
     magicLearnView.setMagicOptions(spells);
+  }
+
+  public void addLearnedMagic(Object[] magics) {
+    magicLearnView.addLearnedMagic(magics);
+  }
+
+  public void addMagicOptions(IIdentificate[] magics, Comparator<IIdentificate> comparator) {
+    magicLearnView.addMagicOptions(magics, comparator);
+  }
+
+  public void removeLearnedMagic(Object[] magics) {
+    magicLearnView.removeLearnedMagic(magics);
+  }
+
+  public void removeMagicOptions(Object[] magics) {
+    magicLearnView.removeMagicOptions(magics);
   }
 
   public void clearSelection() {

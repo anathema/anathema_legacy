@@ -21,12 +21,13 @@ import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.character.model.IMagicLearnListener;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.presenter.TabContent;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.magic.ISpellView;
+import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
-import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -93,12 +94,16 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
         view.setMagicOptions(getSpellsToShow());
       }
     });
-    spellConfiguration.addChangeListener(new IChangeListener() {
-      public void changeOccured() {
-        updateSpellListsInView(view);        
+    spellConfiguration.addMagicLearnListener(new IMagicLearnListener<ISpell>() {
+      public void magicForgotten(ISpell[] magic) {
+        forgetSpellListsInView(view, magic);
+      }
+
+      public void magicLearned(ISpell[] magic) {
+        learnSpellListsInView(view, magic);
       }
     });
-    updateSpellListsInView(view);
+    initSpellListsInView(view);
     statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
       public void experiencedChanged(boolean experienced) {
@@ -142,9 +147,19 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
 
   protected abstract String getTabTitleResourceKey();
 
-  private void updateSpellListsInView(final ISpellView spellView) {
+  private void initSpellListsInView(final ISpellView spellView) {
     spellView.setLearnedMagic(getCircleFilteredSpellList(spellConfiguration.getLearnedSpells()));
     spellView.setMagicOptions(getSpellsToShow());
+  }
+
+  private void forgetSpellListsInView(final ISpellView spellView, ISpell[] spells) {
+    spellView.removeLearnedMagic(spells);
+    spellView.addMagicOptions(spells, new I18nedIdentificateComparator(resources));
+  }
+
+  private void learnSpellListsInView(final ISpellView spellView, ISpell[] spells) {
+    spellView.addLearnedMagic(spells);
+    spellView.removeMagicOptions(spells);
   }
 
   private ISpell[] getSpellsToShow() {
@@ -170,7 +185,7 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
     for (ISpell spell : spells) {
       if (ArrayUtilities.contains(getCircles(), spell.getCircleType())) {
         spellList.add(spell);
-      }     
+      }
     }
     return spellList.toArray(new ISpell[spellList.size()]);
   }

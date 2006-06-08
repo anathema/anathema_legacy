@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.swing.Action;
@@ -22,6 +23,7 @@ import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.gui.list.ComponentEnablingListSelectionListener;
+import net.sf.anathema.lib.util.IIdentificate;
 
 public class MagicLearnView implements IMagicLearnView {
 
@@ -160,5 +162,33 @@ public class MagicLearnView implements IMagicLearnView {
 
   public void addOptionListListener(ListSelectionListener listener) {
     learnOptionsList.addListSelectionListener(listener);
+  }
+
+  public void addLearnedMagic(Object[] magics) {
+    DefaultListModel listModel = (DefaultListModel) learnedList.getModel();
+    for (Object spell : magics) {
+      listModel.addElement(spell);
+    }
+  }
+
+  public void addMagicOptions(IIdentificate[] magics, Comparator<IIdentificate> comparator) {
+    DefaultListModel listModel = (DefaultListModel) learnOptionsList.getModel();
+    for (IIdentificate spell : magics) {
+      listModel.addElement(spell);
+    }
+  }
+
+  public void removeLearnedMagic(Object[] magics) {
+    DefaultListModel listModel = (DefaultListModel) learnedList.getModel();
+    for (Object spell : magics) {
+      listModel.removeElement(spell);
+    }
+  }
+
+  public void removeMagicOptions(Object[] magics) {
+    DefaultListModel listModel = (DefaultListModel) learnOptionsList.getModel();
+    for (Object spell : magics) {
+      listModel.removeElement(spell);
+    }
   }
 }
