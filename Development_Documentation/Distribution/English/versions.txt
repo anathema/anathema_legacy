@@ -5,7 +5,7 @@ http://anathema.sf.net
 
 
 ===------------------------------------------------------------------------------===
-			Release 0.11 "Kirighast" (1x/06/06)
+			Release 0.11 "Kirighast" (11/06/06)
 ===------------------------------------------------------------------------------===
 -- Features --
 + Support for Exalted, Second Edition with
@@ -22,8 +22,9 @@ http://anathema.sf.net
 + An all new character sheet with advanced features:
 +	Combo-field prints only when combos learned
 +	Prints caste-specific Anima ability: To use, define key "Sheet.AnimaPower.[CASTE/ASPECT].[EDITION]" 
-+	in custom.properties (see below), where [EDITION] can either be "FirstEdition" or "SecondEdition".
-+	Makes use of the incomplete Equipment and Crafts models.
++	in custom.properties (see below), where [EDITION] can either be "FirstEdition" or "SecondEdition"
++	Makes use of the as yet incomplete Equipment and Crafts models
++	Variable paper format
 + Series and Notes (finally) are printable.
 
 -- Usability --
@@ -44,6 +45,9 @@ http://anathema.sf.net
 * Violet Bier of Sorrows' "Conclusion Pursuing Approach" is now attributed as "Prayer Strip".
 * Power Combat's "Glorious Solar Saber" now has a mote cost of 6.
 * The DBT-Gift "Enhanced Senses" can be learned twice (Reported as Bug 1490754)
+
+-- Features Missing --
+- Expererienced second edition Characters' motivation is not yet changeable
 
 ===------------------------------------------------------------------------------===
 			Release 0.10 Patch 1 (26/03/06)
