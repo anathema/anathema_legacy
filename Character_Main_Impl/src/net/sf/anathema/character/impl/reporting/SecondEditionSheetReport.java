@@ -40,7 +40,7 @@ public class SecondEditionSheetReport implements IITextReport {
 
   @Override
   public String toString() {
-    return resources.getString("CharacterModule.Reporting.SecondEdition.Name") + " (" + pageSize.name() + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return resources.getString("CharacterModule.Reporting.SecondEdition.Name") + " (" + resources.getString("PageSize."+pageSize.name()) + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
   }
 
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
