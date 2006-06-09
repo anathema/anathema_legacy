@@ -174,7 +174,21 @@ public class MagicLearnView implements IMagicLearnView {
   public void addMagicOptions(IIdentificate[] magics, Comparator<IIdentificate> comparator) {
     DefaultListModel listModel = (DefaultListModel) learnOptionsList.getModel();
     for (IIdentificate spell : magics) {
-      listModel.addElement(spell);
+      boolean isInserted = false;
+      for (int index = 0; index < listModel.getSize(); index++) {
+        if (isInserted) {
+          break;
+        }
+        IIdentificate magicOption = (IIdentificate) listModel.get(index);
+        if (comparator.compare(spell, magicOption) < 0) {
+          listModel.add(index, spell);
+          isInserted = true;
+          break;
+        }
+      }
+      if (!isInserted) {
+        listModel.addElement(spell);
+      }
     }
   }
 
