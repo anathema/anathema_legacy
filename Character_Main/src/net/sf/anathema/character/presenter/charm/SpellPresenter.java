@@ -52,6 +52,7 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
     this.sourceStringBuilder = new SpellSourceStringBuilder(resources, statistics.getRules().getEdition());
     this.spellConfiguration = statistics.getSpells();
     this.characterTemplate = statistics.getCharacterTemplate();
+    circle = getCircles()[0];
   }
 
   public TabContent init(IMagicViewFactory magicView) {
@@ -80,12 +81,7 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
     });
     view.addCircleSelectionListener(new IObjectValueChangedListener() {
       public void valueChanged(Object newValue) {
-        if (newValue instanceof CircleType) {
-          circle = (CircleType) newValue;
-        }
-        else {
-          circle = null;
-        }
+        circle = (CircleType) newValue;
         view.setMagicOptions(getSpellsToShow());
       }
     });
@@ -149,22 +145,29 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
 
   private void forgetSpellListsInView(final ISpellView spellView, ISpell[] spells) {
     spellView.removeLearnedMagic(spells);
-    spellView.addMagicOptions(spells, new I18nedIdentificateComparator(resources));
+    ISpell[] supportedSpells = getSpellsOfCurrentCircle(spells);
+    spellView.addMagicOptions(supportedSpells, new I18nedIdentificateComparator(resources));
   }
 
   private void learnSpellListsInView(final ISpellView spellView, ISpell[] spells) {
-    spellView.addLearnedMagic(spells);
-    spellView.removeMagicOptions(spells);
+    ISpell[] supportedSpells = getSpellsOfCurrentCircle(spells);
+    spellView.addLearnedMagic(supportedSpells);
+    spellView.removeMagicOptions(supportedSpells);
+  }
+
+  private ISpell[] getSpellsOfCurrentCircle(ISpell[] spells) {
+    List<ISpell> supportedSpells = new ArrayList<ISpell>();
+    for (ISpell spell : spells) {
+      if (circle == spell.getCircleType()) {
+        supportedSpells.add(spell);
+      }
+    }
+    return supportedSpells.toArray(new ISpell[supportedSpells.size()]);
   }
 
   private ISpell[] getSpellsToShow() {
     List<ISpell> showSpells = new ArrayList<ISpell>();
-    if (circle == null) {
-      Collections.addAll(showSpells, getCircleFilteredSpellList(spellConfiguration.getAllSpells()));
-    }
-    else {
-      Collections.addAll(showSpells, spellConfiguration.getSpellsByCircle(circle));
-    }
+    Collections.addAll(showSpells, spellConfiguration.getSpellsByCircle(circle));
     showSpells.removeAll(Arrays.asList(spellConfiguration.getLearnedSpells()));
     int count = showSpells.size();
     ISpell[] sortedSpells = new ISpell[count];
