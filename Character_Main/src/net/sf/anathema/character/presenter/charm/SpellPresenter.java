@@ -79,9 +79,9 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
         spellConfiguration.addSpells(spellList.toArray(new ISpell[spellList.size()]));
       }
     });
-    view.addCircleSelectionListener(new IObjectValueChangedListener() {
-      public void valueChanged(Object newValue) {
-        circle = (CircleType) newValue;
+    view.addCircleSelectionListener(new IObjectValueChangedListener<CircleType>() {
+      public void valueChanged(CircleType circleType) {
+        circle =  circleType;
         view.setMagicOptions(getSpellsToShow());
       }
     });
