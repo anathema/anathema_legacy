@@ -31,7 +31,6 @@ import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
-import net.sf.anathema.lib.util.Identificate;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 public abstract class SpellPresenter implements IMagicSubPresenter {
@@ -57,13 +56,9 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
 
   public TabContent init(IMagicViewFactory magicView) {
     final ISpellView view = magicView.createSpellView(properties);
-    IIdentificate[] circles;
     IIdentificate[] allowedCircles = getCircles();
-    circles = new IIdentificate[allowedCircles.length + 1];
-    circles[0] = new Identificate("AllCircles"); //$NON-NLS-1$
-    System.arraycopy(allowedCircles, 0, circles, 1, allowedCircles.length);
     initDetailsView(view);
-    view.initGui(circles);
+    view.initGui(allowedCircles);
     view.addMagicViewListener(new IMagicViewListener() {
       public void magicRemoved(Object[] removedSpells) {
         List<ISpell> spellList = new ArrayList<ISpell>();
