@@ -29,15 +29,21 @@ http://anathema.sf.net
 
 -- Usability --
 + CharmCascades now honor the preferred ruleset.
-+ Hired wordman to tend to the Mac communities needs.
-+ Support for locale-specific sourcebooks.
-* Tried to improve usability on Mac OS X.
 * Revamped the spell selection view
 * 	View now filters illegals spells from mass-selection without throwing an exception
+*	Removed the "All Spells" filter. It was a major speedbump and we felt it to be largely useless.
 * Greatly improved speed of Charm trees.
 * Negative experience point entries are now added to "Misc. spendings" instead of reducing the XP total.
-* Charm durations are translated.
-* Charm attribute requirements now use proper spanish grammar.
+* Changes to the Magic Database model allowed for
+* 	Charm durations to be translated.
+*	Page numbers to be locales specific
+* Charm attribute requirements now use proper spanish grammar.	
+
+-- Mac OS X --
++ Hired wordman to tend to the Mac's needs.
++ As of this version there will be special archives for Macs.
+* Improved look & feel.
+* Let us know what you think and where to improve even more.
 
 -- Bugs Fixed --
 * Replaced "Periphrase" by "Periphrasis", as is due in English.
@@ -45,9 +51,11 @@ http://anathema.sf.net
 * Violet Bier of Sorrows' "Conclusion Pursuing Approach" is now attributed as "Prayer Strip".
 * Power Combat's "Glorious Solar Saber" now has a mote cost of 6.
 * The DBT-Gift "Enhanced Senses" can be learned twice (Reported as Bug 1490754)
+* Fixed translations for some Necromancy-Spells
 
 -- Features Missing --
-- Expererienced second edition Characters' motivation is not yet changeable
+- Experienced second edition Characters' motivation is not yet changeable
+- The main menu on Mac OS X is still called 'Anathema' instead of the usual 'File'.
 
 ===------------------------------------------------------------------------------===
 			Release 0.10 Patch 1 (26/03/06)
