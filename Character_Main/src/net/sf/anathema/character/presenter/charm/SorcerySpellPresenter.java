@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.lib.resources.IResources;
 
-public class SorcerySpellPresenter extends SpellPresenter {
+public class SorcerySpellPresenter extends AbstractSpellPresenter {
 
   public SorcerySpellPresenter(ICharacterStatistics statistics, IResources resources) {
     super(statistics, resources);

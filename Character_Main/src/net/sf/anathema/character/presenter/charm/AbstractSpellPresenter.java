@@ -33,7 +33,7 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-public abstract class SpellPresenter implements IMagicSubPresenter {
+public abstract class AbstractSpellPresenter implements IMagicSubPresenter {
 
   private final ISpellConfiguration spellConfiguration;
   private final ICharacterStatistics statistics;
@@ -44,7 +44,7 @@ public abstract class SpellPresenter implements IMagicSubPresenter {
   private final IMagicSourceStringBuilder<ISpell> sourceStringBuilder;
   private final SpellViewProperties properties;
 
-  public SpellPresenter(ICharacterStatistics statistics, IResources resources) {
+  public AbstractSpellPresenter(ICharacterStatistics statistics, IResources resources) {
     this.statistics = statistics;
     this.properties = new SpellViewProperties(resources, statistics);
     this.resources = resources;
