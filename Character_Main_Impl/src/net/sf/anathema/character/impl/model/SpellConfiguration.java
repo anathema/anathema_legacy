@@ -171,13 +171,13 @@ public class SpellConfiguration implements ISpellConfiguration {
     for (List<ISpell> circleSpells : spellsByCircle.values()) {
       allSpells.addAll(circleSpells);
     }
-    return allSpells.toArray(new ISpell[0]);
+    return allSpells.toArray(new ISpell[allSpells.size()]);
   }
 
   public ISpell[] getSpellsByCircle(CircleType circle) {
     List<ISpell> spells = spellsByCircle.get(circle);
     if (spells != null) {
-      return spells.toArray(new ISpell[0]);
+      return spells.toArray(new ISpell[spells.size()]);
     }
     return new ISpell[0];
   }
