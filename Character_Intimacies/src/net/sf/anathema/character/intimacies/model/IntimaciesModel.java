@@ -97,6 +97,7 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
   @Override
   protected IIntimacy createEntry() {
     Intimacy intimacy = new Intimacy(name, getIntialValue(), getConviction(), context.getTraitContext());
+    intimacy.setComplete(!context.getBasicCharacterContext().isExperienced());
     return intimacy;
   }
 
