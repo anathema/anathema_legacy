@@ -136,4 +136,17 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
   public void addCharacterChangeListener(ICharacterChangeListener listener) {
     context.getCharacterListening().addChangeListener(listener);
   }
+
+  @Override
+  public IIntimacy commitSelection() {
+    IIntimacy intimacy = super.commitSelection();
+    bonusPointControl.fireChangedEvent();
+    return intimacy;
+  }
+
+  @Override
+  public void removeEntry(IIntimacy entry) {
+    super.removeEntry(entry);
+    bonusPointControl.fireChangedEvent();
+  }
 }
