@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
-import net.sf.anathema.character.intimacies.model.IntimaciesModel;
+import net.sf.anathema.character.intimacies.model.IntimaciesAdditionalModel;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class IntimaciesModelFactory implements IAdditionalModelFactory {
@@ -13,7 +13,6 @@ public class IntimaciesModelFactory implements IAdditionalModelFactory {
       IAdditionalTemplate additionalTemplate,
       ICharacterModelContext context,
       IChangeListener[] listeners) {
-    return new IntimaciesModel(additionalTemplate, context, listeners);
+    return new IntimaciesAdditionalModel(additionalTemplate, context, listeners);
   }
-
 }

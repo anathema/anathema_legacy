@@ -6,7 +6,6 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.xml.presentation.CharacterTemplateResourceProvider;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.intimacies.presenter.IntimaciesPresenter;
 import net.sf.anathema.character.intimacies.view.IntimaciesView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
@@ -35,7 +34,7 @@ public class IntimaciesViewFactory implements IAdditionalViewFactory {
     IntimaciesView view = new IntimaciesView(
         new IntValueDisplayFactory(resources, resources.getImageIcon(ballResource)),
         properties);
-    new IntimaciesPresenter((IIntimaciesModel) model, model, view, resources).initPresentation();
+    new IntimaciesPresenter(((IIntimaciesAdditionalModel) model).getIntimaciesModel(), model, view, resources).initPresentation();
     return view;
   }
 }
