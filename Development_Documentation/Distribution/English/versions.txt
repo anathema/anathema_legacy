@@ -34,9 +34,9 @@ http://anathema.sf.net
 *	Removed the "All Spells" filter. It was a major speedbump and we felt it to be largely useless.
 * Greatly improved speed of Charm trees.
 * Negative experience point entries are now added to "Misc. spendings" instead of reducing the XP total.
-* Changes to the Magic Database model allowed for
+* Changes to the magic database model allowed for
 * 	Charm durations to be translated.
-*	Page numbers to be locales specific
+*	Page numbers to be locale-specific
 * Charm attribute requirements now use proper spanish grammar.	
 
 -- Mac OS X --
