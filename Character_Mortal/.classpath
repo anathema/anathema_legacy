@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Framework"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Impl"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Reporting"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Lib"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
