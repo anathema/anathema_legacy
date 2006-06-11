@@ -11,8 +11,6 @@ import net.sf.anathema.character.reporting.sheet.SecondEditionEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfAbilitiesEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfAttributesEncoder;
-import net.sf.anathema.character.reporting.sheet.common.PdfEssenceEncoder;
-import net.sf.anathema.character.reporting.sheet.common.PdfExperienceEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfVirtueEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfWillpowerEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
@@ -44,12 +42,15 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
   private final SecondEditionEncodingRegistry registry;
+  private final IPdfPartEncoder partEncoder;
 
   public PdfFirstPageEncoder(
+      IPdfPartEncoder partEncoder,
       SecondEditionEncodingRegistry registry,
       IResources resources,
       int essenceMax,
       PdfPageConfiguration pageConfiguration) {
+    this.partEncoder = partEncoder;
     this.baseFont = registry.getBaseFont();
     this.essenceMax = essenceMax;
     this.resources = resources;
@@ -125,7 +126,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds essenceBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
-    IPdfContentEncoder encoder = getEssenceEncoder(character);
+    IPdfContentEncoder encoder = partEncoder.getEssenceEncoder();
     boxEncoder.encodeBox(directContent, encoder, character, essenceBounds);
     return height;
   }
@@ -307,13 +308,5 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
       IGenericTraitCollection traitCollection) {
     PdfAttributesEncoder encoder = new PdfAttributesEncoder(baseFont, resources, essenceMax);
     encoder.encodeAttributes(directContent, contentBounds, attributeGroups, traitCollection);
-  }
-
-  private IPdfContentEncoder getEssenceEncoder(IGenericCharacter character) throws DocumentException {
-    CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-    if (characterType == CharacterType.MORTAL) {
-      return new PdfExperienceEncoder(resources, baseFont);
-    }
-    return new PdfEssenceEncoder(baseFont, resources, essenceMax);
   }
 }

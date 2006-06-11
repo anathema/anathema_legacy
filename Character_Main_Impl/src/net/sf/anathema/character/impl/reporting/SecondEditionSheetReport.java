@@ -12,9 +12,12 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.sheet.SecondEditionEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfSecondPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
+import net.sf.anathema.character.reporting.sheet.second.part.SecondEditionMortalPartEncoder;
+import net.sf.anathema.character.reporting.sheet.second.part.SecondEditionSolarPartEncoder;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.itext.IITextReport;
@@ -22,6 +25,7 @@ import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Document;
+import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfWriter;
 
@@ -54,9 +58,20 @@ public class SecondEditionSheetReport implements IITextReport {
     CharacterReportingModuleObject moduleObject = moduleObjectMap.getModuleObject(CharacterReportingModule.class);
     SecondEditionEncodingRegistry encodingRegistry = moduleObject.getSecondEditionEncodingRegistry();
     try {
-      PdfFirstPageEncoder partEncoder = new PdfFirstPageEncoder(encodingRegistry, resources, 7, configuration);
-      partEncoder.encode(document, directContent, character, description);
-      if (character.getTemplate().getTemplateType().getCharacterType() == CharacterType.MORTAL) {
+      CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
+      BaseFont baseFont = encodingRegistry.getBaseFont();
+      int essenceMax = 7;
+      IPdfPartEncoder partEncoder = characterType == CharacterType.MORTAL ? new SecondEditionMortalPartEncoder(
+          resources,
+          baseFont) : new SecondEditionSolarPartEncoder(resources, baseFont, essenceMax);
+      PdfFirstPageEncoder firstPageEncoder = new PdfFirstPageEncoder(
+          partEncoder,
+          encodingRegistry,
+          resources,
+          essenceMax,
+          configuration);
+      firstPageEncoder.encode(document, directContent, character, description);
+      if (!partEncoder.hasSecondPage()) {
         return;
       }
       document.newPage();
