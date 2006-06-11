@@ -16,7 +16,7 @@ public class GenericIdStringBuilderTest extends BasicTestCase {
     String xml = "<charm id=\"test\"/>"; //$NON-NLS-1$
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     String id = builder.build(rootElement);
-    assertEquals("testBrawl", id); //$NON-NLS-1$
+    assertEquals("test.Brawl", id); //$NON-NLS-1$
   }
 
   public void testTypeNotSet() throws Exception {
