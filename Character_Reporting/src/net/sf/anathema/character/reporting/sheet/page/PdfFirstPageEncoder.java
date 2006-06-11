@@ -6,7 +6,6 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfAbilitiesEncoder;
@@ -179,7 +178,6 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
       IGenericCharacter character,
       float distanceFromTop,
       float height) throws DocumentException {
-    CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     Bounds animaBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
     IPdfContentEncoder encoder = partEncoder.getAnimaEncoder();
     boxEncoder.encodeBox(directContent, encoder, character, animaBounds);
@@ -280,7 +278,6 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     IPdfContentEncoder encoder = partEncoder.getGreatCurseEncoder();
     boxEncoder.encodeBox(directContent, encoder, character, bounds);
     return height;
