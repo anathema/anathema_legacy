@@ -457,7 +457,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   public final boolean isLearned(ICharm charm) {
     ILearningCharmGroup group = getGroup(charm);
-    return group != null & group.isLearned(charm);
+    return group != null && group.isLearned(charm);
   }
 
   private final ILearningCharmGroup getGroupById(CharacterType characterType, String groupId) {
