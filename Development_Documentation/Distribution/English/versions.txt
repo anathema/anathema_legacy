@@ -4,6 +4,9 @@ Exalted (C) 2001-2006 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
 
+-- Bugs Fixed --
+* Corrected charm prerequisites for "Fivefold Bulwark Stance" and "Invincible Fury of the Dawn".
+
 ===------------------------------------------------------------------------------===
 			Release 0.11 "Kirighast" (11/06/06)
 ===------------------------------------------------------------------------------===
