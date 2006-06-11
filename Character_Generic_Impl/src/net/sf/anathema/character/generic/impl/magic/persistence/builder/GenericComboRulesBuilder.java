@@ -21,7 +21,7 @@ public class GenericComboRulesBuilder extends ComboRulesBuilder implements IComb
     List<Element> restrictedCharmList = ElementUtilities.elements(restrictionElement, TAG_GENERIC_CHARM_REFERENCE);
     for (Element element : restrictedCharmList) {
       String charmId = element.attributeValue(ATTRIB_ID);
-      comboRules.addRestrictedCharmId(charmId + "." + type.getId());
+      comboRules.addRestrictedCharmId(charmId + "." + type.getId()); //$NON-NLS-1$
     }
   }
 

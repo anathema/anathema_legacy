@@ -14,7 +14,7 @@ public class GenericIdStringBuilder extends IdStringBuilder implements IIdString
     if (type == null) {
       throw new IllegalStateException("Type not set."); //$NON-NLS-1$
     }
-    return super.build(element) + "." + type.getId();
+    return super.build(element) + "." + type.getId(); //$NON-NLS-1$
   }
 
   public void setType(ITraitType type) {

@@ -9,6 +9,6 @@ public class SourceWriter {
   private final static String CUSTOM = "Custom"; //$NON-NLS-1$
 
   public void write(ICharmData charm, Element charmElement) {
-    throw new UnsupportedOperationException("Sources müssen auf RuleBook umgestellt werden");
+    throw new UnsupportedOperationException("Use new source format (Rulebook)"); //$NON-NLS-1$
   }
 }
