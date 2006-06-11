@@ -209,7 +209,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     if (charm != null) {
       return charm;
     }
-    CharmCache.getInstance().searchCharm(charmId);
+    charm = CharmCache.getInstance().searchCharm(charmId);
     if (charm != null) {
       return charm;
     }
