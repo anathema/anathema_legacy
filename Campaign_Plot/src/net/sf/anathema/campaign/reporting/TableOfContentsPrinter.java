@@ -22,7 +22,7 @@ public class TableOfContentsPrinter {
     entryList.add(new ContentEntry(entry, page));
   }
 
-  public void performPrint(String title, Document document, PdfWriter writer) throws DocumentException {
+  public void performPrint(String seriesTitle, String tableTitle, Document document, PdfWriter writer) throws DocumentException {
     final int lastContentPage = writer.getPageNumber();
     writer.setPageEvent(null);
     writer.setPageEvent(new PdfPageEventHelper() {
@@ -32,10 +32,10 @@ public class TableOfContentsPrinter {
             - lastContentPage).getLowerCaseRoman());
       }
     });
-    Paragraph titleParagraph = reportUtils.createNewParagraph(title, Element.ALIGN_CENTER, Font.BOLD);
+    Paragraph titleParagraph = reportUtils.createNewParagraph(seriesTitle, Element.ALIGN_CENTER, Font.BOLD);
     titleParagraph.font().setSize(15);
     document.add(titleParagraph);
-    Paragraph tocParagraph = reportUtils.createNewParagraph("Table of Contents", Element.ALIGN_CENTER, Font.BOLD);
+    Paragraph tocParagraph = reportUtils.createNewParagraph(tableTitle, Element.ALIGN_CENTER, Font.BOLD);
     tocParagraph.font().setSize(13);
     document.add(tocParagraph);
     float yCoordinate = document.top() - 35;

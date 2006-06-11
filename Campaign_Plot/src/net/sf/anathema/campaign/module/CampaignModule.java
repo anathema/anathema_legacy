@@ -15,7 +15,7 @@ public class CampaignModule extends AbstractAnathemaModule {
   @Override
   public void initModel(IAnathemaModel model) {
     super.initModel(model);
-    new CampaignReportingInitializer().initReporting(model.getReportRegistry());
+    new CampaignReportingInitializer().initReporting(model.getReportRegistry(), getResources());
   }
 
   @Override

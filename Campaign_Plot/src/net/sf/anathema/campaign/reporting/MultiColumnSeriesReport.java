@@ -7,6 +7,7 @@ import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.itext.IITextReport;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
+import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Document;
@@ -27,6 +28,11 @@ public class MultiColumnSeriesReport implements IITextReport {
   private final ITextReportUtils reportUtils = new ITextReportUtils();
   private final SeriesReportUtils seriesUtils = new SeriesReportUtils();
   private final TableOfContentsPrinter contentTable = new TableOfContentsPrinter();
+  private final IResources resources;
+
+  public MultiColumnSeriesReport(IResources resources) {
+    this.resources = resources;
+  }
 
   public void performPrint(IItem item, final Document document, final PdfWriter writer) throws ReportException {
     if (!supports(item)) {
@@ -51,11 +57,15 @@ public class MultiColumnSeriesReport implements IITextReport {
     IPlotElement rootElement = ((ISeries) item.getItemData()).getPlot().getRootElement();
     try {
       String seriesTitle = rootElement.getDescription().getName().getText();
-      new PdfOutline(rootOutline, new PdfAction(PdfAction.FIRSTPAGE), "Table of Contents");
+      new PdfOutline(
+          rootOutline,
+          new PdfAction(PdfAction.FIRSTPAGE),
+          resources.getString("SeriesReport.Header.TableOfContents")); //$NON-NLS-1$
       document.newPage();
-      Paragraph synopsisParagraph = createTitleParagraph("Synopsis", 13);
+      String synopsis = resources.getString("SeriesReport.Header.Synopsis");//$NON-NLS-1$
+      Paragraph synopsisParagraph = createTitleParagraph(synopsis, 13);
       document.add(synopsisParagraph);
-      addOutline(rootOutline, "Synopsis");
+      addOutline(rootOutline, synopsis);
       MultiColumnText synopsisColumnText = new MultiColumnText(document.top() - document.bottom() - 15);
       synopsisColumnText.addRegularColumns(document.left(), document.right(), 20, 2);
       synopsisColumnText.addElement(createContentParagraph(rootElement.getDescription()));
@@ -73,7 +83,11 @@ public class MultiColumnSeriesReport implements IITextReport {
         addTextAndChildren(columnText, story, storyOutline, new int[] { storyNumber++ });
         writeColumnText(document, columnText);
       }
-      contentTable.performPrint(seriesTitle, document, writer);
+      contentTable.performPrint(
+          seriesTitle,
+          resources.getString("SeriesReport.Header.TableOfContents"),
+          document,
+          writer);
     }
     catch (DocumentException e) {
       e.printStackTrace();
