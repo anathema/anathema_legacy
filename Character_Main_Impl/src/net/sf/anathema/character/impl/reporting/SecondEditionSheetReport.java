@@ -15,7 +15,6 @@ import net.sf.anathema.character.reporting.sheet.SecondEditionEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfSecondPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.sheet.second.SecondEditionPartEncoder;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.itext.IITextReport;
@@ -40,7 +39,7 @@ public class SecondEditionSheetReport implements IITextReport {
 
   @Override
   public String toString() {
-    return resources.getString("CharacterModule.Reporting.SecondEdition.Name") + " (" + resources.getString("PageSize."+pageSize.name()) + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+    return resources.getString("CharacterModule.Reporting.SecondEdition.Name") + " (" + resources.getString("PageSize." + pageSize.name()) + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
   }
 
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
@@ -54,19 +53,19 @@ public class SecondEditionSheetReport implements IITextReport {
     ICharacterModuleObjectMap moduleObjectMap = characterGenerics.getModuleObjectMap();
     CharacterReportingModuleObject moduleObject = moduleObjectMap.getModuleObject(CharacterReportingModule.class);
     SecondEditionEncodingRegistry encodingRegistry = moduleObject.getSecondEditionEncodingRegistry();
-    SecondEditionPartEncoder partEncoder = new SecondEditionPartEncoder(encodingRegistry, resources, 7, configuration);
     try {
-      new PdfFirstPageEncoder(partEncoder, configuration).encode(document, directContent, character, description);
+      PdfFirstPageEncoder partEncoder = new PdfFirstPageEncoder(encodingRegistry, resources, 7, configuration);
+      partEncoder.encode(document, directContent, character, description);
       if (character.getTemplate().getTemplateType().getCharacterType() == CharacterType.MORTAL) {
         return;
       }
       document.newPage();
-      new PdfSecondPageEncoder(resources, partEncoder.getBaseFont(), configuration).encode(
+      new PdfSecondPageEncoder(resources, encodingRegistry.getBaseFont(), configuration).encode(
           document,
           directContent,
           character,
           description);
-      
+
     }
     catch (Exception e) {
       throw new ReportException(e);

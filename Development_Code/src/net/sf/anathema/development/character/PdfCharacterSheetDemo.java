@@ -23,7 +23,6 @@ import net.sf.anathema.character.reporting.sheet.common.anima.PdfAnimaEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfSecondPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.sheet.second.SecondEditionPartEncoder;
 import net.sf.anathema.character.solar.reporting.PdfSolarVirtueFlawEncoder;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
 import net.sf.anathema.character.solar.virtueflaw.model.SolarVirtueFlawModel;
@@ -59,14 +58,10 @@ public class PdfCharacterSheetDemo {
       IResources resources = createDemoResources();
       PdfPageConfiguration pageConfiguration = PdfPageConfiguration.create(document.getPageSize());
       SecondEditionEncodingRegistry encodingRegistry = createEncodingRegistry(resources);
-      SecondEditionPartEncoder partEncoder = new SecondEditionPartEncoder(
-          encodingRegistry,
-          resources,
-          7,
-          pageConfiguration);
-      new PdfFirstPageEncoder(partEncoder, pageConfiguration).encode(document, directContent, character, description);
+      PdfFirstPageEncoder partEncoder = new PdfFirstPageEncoder(encodingRegistry, resources, 7, pageConfiguration);
+      partEncoder.encode(document, directContent, character, description);
       document.newPage();
-      new PdfSecondPageEncoder(resources, partEncoder.getBaseFont(), pageConfiguration).encode(
+      new PdfSecondPageEncoder(resources, encodingRegistry.getBaseFont(), pageConfiguration).encode(
           document,
           directContent,
           character,
