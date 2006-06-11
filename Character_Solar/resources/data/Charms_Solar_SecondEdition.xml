@@ -413,6 +413,7 @@
     <prerequisite>
       <essence id="Essence" value="4"/>
       <trait id="Melee" value="5"/>
+      <charmReference id="Solar.IronWhirlwindAttack"/>
     </prerequisite>
     <cost>
       <temporary/>
@@ -576,6 +577,7 @@
     <prerequisite>
       <essence id="Essence" value="2"/>
       <trait id="Melee" value="5"/>
+      <charmReference id="Solar.BulwarkStance"/>
     </prerequisite>
     <cost>
       <temporary>
