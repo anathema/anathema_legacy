@@ -2,6 +2,7 @@ package net.sf.anathema.character.intimacies.persistence;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersister;
+import net.sf.anathema.character.intimacies.IIntimaciesAdditionalModel;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
@@ -20,7 +21,7 @@ public class IntimaciesPersister extends AbstractCharacterPersister implements I
 
   public void save(Element parent, IAdditionalModel model) {
     Element element = parent.addElement(TAG_INTIMACIES);
-    IIntimaciesModel intimaciesModel = (IIntimaciesModel) model;
+    IIntimaciesModel intimaciesModel = ((IIntimaciesAdditionalModel) model).getIntimaciesModel();
     for (IIntimacy intimacy : intimaciesModel.getEntries()) {
       saveIntimacy(element, intimacy);
     }
@@ -35,7 +36,7 @@ public class IntimaciesPersister extends AbstractCharacterPersister implements I
 
   public void load(Element parent, IAdditionalModel model) throws PersistenceException {
     Element element = parent.element(TAG_INTIMACIES);
-    IIntimaciesModel intimaciesModel = (IIntimaciesModel) model;
+    IIntimaciesModel intimaciesModel = ((IIntimaciesAdditionalModel) model).getIntimaciesModel();
     for (Element intimacyElement : ElementUtilities.elements(element, TAG_INTIMACY)) {
       String name = ElementUtilities.getRequiredAttrib(intimacyElement, ATTRIB_NAME);
       intimaciesModel.setCurrentName(name);

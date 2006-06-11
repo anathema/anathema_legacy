@@ -7,14 +7,14 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.persistenc
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.sheet.SecondEditionEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.common.anima.PdfAnimaEncoder;
+import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.solar.caste.SolarCaste;
-import net.sf.anathema.character.solar.reporting.PdfSolarVirtueFlawEncoder;
+import net.sf.anathema.character.solar.reporting.SecondEditionSolarPartEncoder;
 import net.sf.anathema.character.solar.reporting.SolarVoidStateReportTemplate;
 import net.sf.anathema.character.solar.template.ISolarSpecialCharms;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawModelFactory;
@@ -61,12 +61,11 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
         CharacterReportingModule.class);
-    SecondEditionEncodingRegistry registry = moduleObject.getSecondEditionEncodingRegistry();
-    registry.setGreatCurseEncoder(CharacterType.SOLAR, new PdfSolarVirtueFlawEncoder(registry.getBaseFont()));
-    registry.setAnimaEncoder(CharacterType.SOLAR, new PdfAnimaEncoder(
+    PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
+    registry.setPartEncoder(CharacterType.SOLAR, ExaltedEdition.SecondEdition, new SecondEditionSolarPartEncoder(
         resources,
-        registry.getBaseFont(),
-        registry.getSymbolBaseFont()));
+        registry,
+        EssenceTemplate.SYSTEM_ESSENCE_MAX));
     generics.getReportTemplateRegistry().add(new SolarVoidStateReportTemplate(resources));
   }
 

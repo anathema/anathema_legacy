@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.framework.module.NullObjectCharacterMod
 import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.sheet.SecondEditionEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -30,7 +30,7 @@ public class IntimaciesModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
         CharacterReportingModule.class);
-    SecondEditionEncodingRegistry registry = moduleObject.getSecondEditionEncodingRegistry();
+    PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
     registry.setIntimaciesEncoder(new IntimaciesEncoder(registry.getBaseFont()));
   }
 }

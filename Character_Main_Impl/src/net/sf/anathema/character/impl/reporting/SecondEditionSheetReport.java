@@ -5,19 +5,18 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.generic.GenericDescription;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.sheet.SecondEditionEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfSecondPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.sheet.second.part.SecondEditionMortalPartEncoder;
-import net.sf.anathema.character.reporting.sheet.second.part.SecondEditionSolarPartEncoder;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.itext.IITextReport;
@@ -56,14 +55,12 @@ public class SecondEditionSheetReport implements IITextReport {
     PdfPageConfiguration configuration = PdfPageConfiguration.create(pageSize.getRectangle());
     ICharacterModuleObjectMap moduleObjectMap = characterGenerics.getModuleObjectMap();
     CharacterReportingModuleObject moduleObject = moduleObjectMap.getModuleObject(CharacterReportingModule.class);
-    SecondEditionEncodingRegistry encodingRegistry = moduleObject.getSecondEditionEncodingRegistry();
+    PdfEncodingRegistry encodingRegistry = moduleObject.getPdfEncodingRegistry();
     try {
       CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-      BaseFont baseFont = encodingRegistry.getBaseFont();
+      IExaltedEdition edition = character.getTemplate().getEdition();
       int essenceMax = 7;
-      IPdfPartEncoder partEncoder = characterType == CharacterType.MORTAL ? new SecondEditionMortalPartEncoder(
-          resources,
-          baseFont) : new SecondEditionSolarPartEncoder(resources, baseFont, essenceMax);
+      IPdfPartEncoder partEncoder = encodingRegistry.getPartEncoder(characterType, edition);
       PdfFirstPageEncoder firstPageEncoder = new PdfFirstPageEncoder(
           partEncoder,
           encodingRegistry,

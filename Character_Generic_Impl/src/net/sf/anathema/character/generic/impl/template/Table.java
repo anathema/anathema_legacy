@@ -43,4 +43,8 @@ public class Table<K1, K2, V> {
   public Set<K1> getPrimaryKeys() {
     return Collections.unmodifiableSet(primaryKeys);
   }
+
+  public boolean contains(K1 primaryKey, K2 secondaryKey) {
+    return get(primaryKey, secondaryKey) != null;
+  }
 }

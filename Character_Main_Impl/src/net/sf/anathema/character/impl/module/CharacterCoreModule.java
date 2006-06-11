@@ -48,12 +48,12 @@ public class CharacterCoreModule extends AbstractAnathemaModule {
   // if (string.contains(" ") && !(charm.getId().equals("Solar.Spirit Weapons"))) {
   // throw new RuntimeException();
   // }
-  //        // }
+  // // }
   //
-  //      }
-  //    }
-  //  }
-  
+  // }
+  // }
+  // }
+
   @Override
   public void initAnathemaResources(IAnathemaResources resources) {
     if (anathemaResources != null) {

@@ -12,7 +12,6 @@ public class CharacterModuleContainer {
 
   public CharacterModuleContainer(IResources resources) {
     this.resources = resources;
-    addCharacterGenericsModule(new MortalCharacterModule());
     addCharacterGenericsModule(new BasicExaltCharacterModule());
   }
 

@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.character.reporting.sheet.SecondEditionEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfAbilitiesEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfAttributesEncoder;
@@ -41,12 +41,12 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
   private static final int ANIMA_HEIGHT = 128;
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
-  private final SecondEditionEncodingRegistry registry;
+  private final PdfEncodingRegistry registry;
   private final IPdfPartEncoder partEncoder;
 
   public PdfFirstPageEncoder(
       IPdfPartEncoder partEncoder,
-      SecondEditionEncodingRegistry registry,
+      PdfEncodingRegistry registry,
       IResources resources,
       int essenceMax,
       PdfPageConfiguration pageConfiguration) {
@@ -78,6 +78,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
     float greatCurseHeigth = ANIMA_HEIGHT - virtueHeight - IVoidStateFormatConstants.PADDING;
     encodeGreatCurse(directContent, character, distanceFromTop, greatCurseHeigth);
     distanceFromTop += calculateBoxIncrement(greatCurseHeigth);
+    
     float socialCombatHeight = encodeSocialCombatStats(directContent, character, distanceFromTop, 115);
     float willpowerHeight = encodeWillpower(directContent, character, distanceFromTop, 43);
     float willpowerIncrement = calculateBoxIncrement(willpowerHeight);
@@ -150,7 +151,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
 
   private void encodeFirstColumn(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop) {
     int attributeHeight = encodeAttributes(directContent, character, distanceFromTop);
-    encodeAbilities(directContent, character, attributeHeight + PADDING);
+    encodeAbilities(directContent, character, distanceFromTop + attributeHeight + PADDING);
   }
 
   private void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop) {
@@ -180,7 +181,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
       float height) throws DocumentException {
     CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     Bounds animaBounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
-    IPdfContentEncoder encoder = registry.getAnimaEncoder(characterType);
+    IPdfContentEncoder encoder = partEncoder.getAnimaEncoder();
     boxEncoder.encodeBox(directContent, encoder, character, animaBounds);
   }
 
@@ -280,7 +281,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
       float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
     CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-    IPdfContentEncoder encoder = registry.getGreatCurseEncoder(characterType);
+    IPdfContentEncoder encoder = partEncoder.getGreatCurseEncoder();
     boxEncoder.encodeBox(directContent, encoder, character, bounds);
     return height;
   }

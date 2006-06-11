@@ -4,7 +4,11 @@ import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 
 public interface IPdfPartEncoder {
   
+  public IPdfContentEncoder getAnimaEncoder();
+
   public IPdfContentEncoder getEssenceEncoder();
+
+  public IPdfContentEncoder getGreatCurseEncoder();
 
   public boolean hasSecondPage();
 }

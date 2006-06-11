@@ -18,13 +18,11 @@ import net.sf.anathema.character.impl.model.context.CharacterModelContext;
 import net.sf.anathema.character.impl.module.CharacterCoreModule;
 import net.sf.anathema.character.impl.module.CharacterModule;
 import net.sf.anathema.character.intimacies.IntimaciesEncoder;
-import net.sf.anathema.character.reporting.sheet.SecondEditionEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.common.anima.PdfAnimaEncoder;
+import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfSecondPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.sheet.second.part.SecondEditionSolarPartEncoder;
-import net.sf.anathema.character.solar.reporting.PdfSolarVirtueFlawEncoder;
+import net.sf.anathema.character.solar.reporting.SecondEditionSolarPartEncoder;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
 import net.sf.anathema.character.solar.virtueflaw.model.SolarVirtueFlawModel;
 import net.sf.anathema.development.character.additional.DemoAlienArmour;
@@ -58,10 +56,10 @@ public class PdfCharacterSheetDemo {
       DemoGenericDescription description = createDemoDescription();
       IResources resources = createDemoResources();
       PdfPageConfiguration pageConfiguration = PdfPageConfiguration.create(document.getPageSize());
-      SecondEditionEncodingRegistry encodingRegistry = createEncodingRegistry(resources);
+      PdfEncodingRegistry encodingRegistry = createEncodingRegistry(resources);
       PdfFirstPageEncoder partEncoder = new PdfFirstPageEncoder(new SecondEditionSolarPartEncoder(
           resources,
-          encodingRegistry.getBaseFont(),
+          encodingRegistry,
           7), encodingRegistry, resources, 7, pageConfiguration);
       partEncoder.encode(document, directContent, character, description);
       document.newPage();
@@ -80,17 +78,11 @@ public class PdfCharacterSheetDemo {
     }
   }
 
-  private static SecondEditionEncodingRegistry createEncodingRegistry(IResources resources) {
-    SecondEditionEncodingRegistry encodingRegistry = new SecondEditionEncodingRegistry();
+  private static PdfEncodingRegistry createEncodingRegistry(IResources resources) {
+    PdfEncodingRegistry encodingRegistry = new PdfEncodingRegistry();
     encodingRegistry.setArmourContentEncoder(new SecondEditionArmourEncoder(resources, encodingRegistry.getBaseFont()));
     encodingRegistry.setWeaponContentEncoder(new SecondEditionWeaponryEncoder(resources, encodingRegistry.getBaseFont()));
     encodingRegistry.setIntimaciesEncoder(new IntimaciesEncoder(encodingRegistry.getBaseFont()));
-    encodingRegistry.setGreatCurseEncoder(CharacterType.SOLAR, new PdfSolarVirtueFlawEncoder(
-        encodingRegistry.getBaseFont()));
-    encodingRegistry.setAnimaEncoder(CharacterType.SOLAR, new PdfAnimaEncoder(
-        resources,
-        encodingRegistry.getBaseFont(),
-        encodingRegistry.getSymbolBaseFont()));
     return encodingRegistry;
   }
 

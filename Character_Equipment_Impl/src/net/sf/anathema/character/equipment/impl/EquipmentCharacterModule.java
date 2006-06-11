@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.framework.module.NullObjectCharacterMod
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
-import net.sf.anathema.character.reporting.sheet.SecondEditionEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
 public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
@@ -30,11 +30,11 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     ICharacterModuleObjectMap moduleMap = generics.getModuleObjectMap();
     CharacterReportingModuleObject moduleObject = moduleMap.getModuleObject(CharacterReportingModule.class);
-    SecondEditionEncodingRegistry registry = moduleObject.getSecondEditionEncodingRegistry();
+    PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
     fillSecondEditionEncodingRegistry(resources, registry);
   }
 
-  private void fillSecondEditionEncodingRegistry(IResources resources, SecondEditionEncodingRegistry registry) {
+  private void fillSecondEditionEncodingRegistry(IResources resources, PdfEncodingRegistry registry) {
     registry.setArmourContentEncoder(new SecondEditionArmourEncoder(resources, registry.getBaseFont()));
     registry.setWeaponContentEncoder(new SecondEditionWeaponryEncoder(resources, registry.getBaseFont()));
   }

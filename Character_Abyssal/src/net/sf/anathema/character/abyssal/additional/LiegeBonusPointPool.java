@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalBonusPointPo
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.module.BasicExaltCharacterModule;
-import net.sf.anathema.character.generic.framework.module.MortalCharacterModule;
+import net.sf.anathema.character.generic.framework.module.IBackgroundIds;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -26,11 +26,11 @@ public class LiegeBonusPointPool implements IAdditionalBonusPointPool {
     {
       add(AbyssalCharacterModule.BACKGROUND_ID_ABYSSAL_COMMAND);
       add(BasicExaltCharacterModule.BACKGROUND_ID_ARTIFACT);
-      add(MortalCharacterModule.BACKGROUND_ID_FOLLOWERS);
-      add(MortalCharacterModule.BACKGROUND_ID_INFLUENCE);
+      add(IBackgroundIds.BACKGROUND_ID_FOLLOWERS);
+      add(IBackgroundIds.BACKGROUND_ID_INFLUENCE);
       add(BasicExaltCharacterModule.BACKGROUND_ID_MANSE);
       add(AbyssalCharacterModule.BACKGROUND_ID_NECROMANCY);
-      add(MortalCharacterModule.BACKGROUND_ID_RESOURCES);
+      add(IBackgroundIds.BACKGROUND_ID_RESOURCES);
       add(AbyssalCharacterModule.BACKGROUND_ID_UNDERWORLD_MANSE);
       add(AbyssalCharacterModule.BACKGROUND_ID_WHISPERS);
     }

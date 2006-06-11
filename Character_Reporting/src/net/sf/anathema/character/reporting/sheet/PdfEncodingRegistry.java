@@ -1,26 +1,28 @@
 package net.sf.anathema.character.reporting.sheet;
 
 import java.awt.Color;
-import java.util.HashMap;
-import java.util.Map;
 
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.impl.template.Table;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
+import net.sf.anathema.character.reporting.sheet.second.part.SecondEditionMortalPartEncoder;
 
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.BaseFont;
 
-public class SecondEditionEncodingRegistry {
+public class PdfEncodingRegistry {
 
+  private final Table<CharacterType, IExaltedEdition, IPdfPartEncoder> partEncoderTable = new Table<CharacterType, IExaltedEdition, IPdfPartEncoder>();
   private final BaseFont baseFont;
   private final BaseFont symbolBaseFont;
-  private final Map<CharacterType, IPdfContentEncoder> greatCurseEncoder = new HashMap<CharacterType, IPdfContentEncoder>();
-  private final Map<CharacterType, IPdfContentEncoder> animaEncoder = new HashMap<CharacterType, IPdfContentEncoder>();
   private IPdfContentEncoder weaponContentEncoder;
   private IPdfContentEncoder armourContentEncoder;
   private IPdfContentEncoder intimaciesEncoder;
 
-  public SecondEditionEncodingRegistry() {
+  public PdfEncodingRegistry() {
     this.baseFont = new Font(Font.HELVETICA, 7, Font.NORMAL, Color.BLACK).getCalculatedBaseFont(true);
     this.symbolBaseFont = new Font(Font.SYMBOL, 7, Font.NORMAL, Color.BLACK).getCalculatedBaseFont(false);
   }
@@ -56,20 +58,16 @@ public class SecondEditionEncodingRegistry {
   public IPdfContentEncoder getIntimaciesEncoder() {
     return intimaciesEncoder;
   }
+
+  public void setPartEncoder(CharacterType type, IExaltedEdition edition, IPdfPartEncoder partEncoder) {
+    partEncoderTable.add(type, edition, partEncoder);
+  }
+
+  public IPdfPartEncoder getPartEncoder(CharacterType type, IExaltedEdition edition) {
+    return partEncoderTable.get(type, edition);
+  }
   
-  public IPdfContentEncoder getAnimaEncoder(CharacterType type) {
-    return animaEncoder.get(type);
-  }
-
-  public void setAnimaEncoder(CharacterType characterType, IPdfContentEncoder encoder) {
-    animaEncoder.put(characterType, encoder);
-  }
-
-  public IPdfContentEncoder getGreatCurseEncoder(CharacterType type) {
-    return greatCurseEncoder.get(type);
-  }
-
-  public void setGreatCurseEncoder(CharacterType characterType, IPdfContentEncoder encoder) {
-    greatCurseEncoder.put(characterType, encoder);
+  public boolean hasPartEncoder(CharacterType type, IExaltedEdition edition) {
+    return partEncoderTable.contains(type, edition);
   }
 }

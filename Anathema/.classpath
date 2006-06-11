@@ -49,5 +49,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment_Impl"/>
 	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-io.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Mortal"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

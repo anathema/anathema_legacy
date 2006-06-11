@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import net.sf.anathema.character.db.DbCharacterModule;
 import net.sf.anathema.character.generic.additionalrules.ITraitCostModifier;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
-import net.sf.anathema.character.generic.framework.module.MortalCharacterModule;
+import net.sf.anathema.character.generic.framework.module.IBackgroundIds;
 import net.sf.anathema.character.generic.impl.additional.DefaultAdditionalRules;
 import net.sf.anathema.character.generic.impl.additional.DefaultTraitCostModifier;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -15,9 +15,9 @@ public class AdditionalDbRules extends DefaultAdditionalRules {
   public AdditionalDbRules() {
     super(new ArrayList<String>() {
       {
-        add(MortalCharacterModule.BACKGROUND_ID_CONTACTS);
-        add(MortalCharacterModule.BACKGROUND_ID_INFLUENCE);
-        add(MortalCharacterModule.BACKGROUND_ID_FOLLOWERS);
+        add(IBackgroundIds.BACKGROUND_ID_CONTACTS);
+        add(IBackgroundIds.BACKGROUND_ID_INFLUENCE);
+        add(IBackgroundIds.BACKGROUND_ID_FOLLOWERS);
       }
     });
   }

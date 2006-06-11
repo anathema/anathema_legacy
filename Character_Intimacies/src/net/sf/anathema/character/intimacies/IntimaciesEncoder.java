@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
+import net.sf.anathema.character.intimacies.model.IntimaciesAdditionalModel;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
@@ -35,13 +36,14 @@ public class IntimaciesEncoder extends AbstractPdfEncoder implements IPdfContent
   public IntimaciesEncoder(BaseFont baseFont) {
     this.baseFont = baseFont;
   }
-  
+
   public String getHeaderKey() {
     return "Intimacies";
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    IIntimaciesModel model = (IIntimaciesModel) character.getAdditionalModel(IntimaciesTemplate.ID);
+    IIntimaciesAdditionalModel additionalModel = (IntimaciesAdditionalModel) character.getAdditionalModel(IntimaciesTemplate.ID);
+    IIntimaciesModel model = additionalModel.getIntimaciesModel();
     Font font = TableEncodingUtilities.createFont(baseFont);
     Phrase intimacyPhrase = new Phrase();
     for (Iterator<IIntimacy> intimacies = model.getEntries().iterator(); intimacies.hasNext();) {
@@ -54,7 +56,8 @@ public class IntimaciesEncoder extends AbstractPdfEncoder implements IPdfContent
       intimacyPhrase.add(new Chunk(text, font));
     }
     Bounds textBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - 2);
-    float yPosition = PdfTextEncodingUtilities.encodeText(directContent, intimacyPhrase, textBounds, LINE_HEIGHT).getYLine();
+    float yPosition = PdfTextEncodingUtilities.encodeText(directContent, intimacyPhrase, textBounds, LINE_HEIGHT)
+        .getYLine();
     yPosition -= LINE_HEIGHT;
     while (yPosition > bounds.y) {
       Line.createHorizontalByCoordinate(new Position(bounds.x, yPosition), bounds.getMaxX()).encode(directContent);

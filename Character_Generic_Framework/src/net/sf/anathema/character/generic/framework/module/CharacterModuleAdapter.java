@@ -45,7 +45,7 @@ public abstract class CharacterModuleAdapter<M extends ICharacterModuleObject> i
           characterTemplateRegistries.getCharacterTemplateRegistry().get(templateId));
     }
     catch (PersistenceException e) {
-      Logger.getLogger(MortalCharacterModule.class).error(e);
+      Logger.getLogger(CharacterModuleAdapter.class).error(e);
     }
   }
 }
