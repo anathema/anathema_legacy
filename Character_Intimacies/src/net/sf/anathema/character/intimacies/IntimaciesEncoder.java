@@ -4,7 +4,6 @@ import java.util.Iterator;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
-import net.sf.anathema.character.intimacies.model.IntimaciesAdditionalModel;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
@@ -42,7 +41,7 @@ public class IntimaciesEncoder extends AbstractPdfEncoder implements IPdfContent
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    IIntimaciesAdditionalModel additionalModel = (IntimaciesAdditionalModel) character.getAdditionalModel(IntimaciesTemplate.ID);
+    IIntimaciesAdditionalModel additionalModel = (IIntimaciesAdditionalModel) character.getAdditionalModel(IntimaciesTemplate.ID);
     IIntimaciesModel model = additionalModel.getIntimaciesModel();
     Font font = TableEncodingUtilities.createFont(baseFont);
     Phrase intimacyPhrase = new Phrase();
