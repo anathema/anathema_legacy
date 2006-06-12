@@ -1,4 +1,4 @@
-#Mon Jun 12 14:29:02 CEST 2006
+#Mon Jun 12 14:55:28 CEST 2006
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.comment.indent_parameter_description=true
 @org.eclipse.ui.editors=3.2.0.v20060329-1600
 /instance/org.eclipse.ant.core/tasks=for,
@@ -87,7 +87,7 @@
 /instance/org.eclipse.team.ui/org.eclipse.team.ui.sychronizing_default_participant=org.tigris.subversion.subclipse.participant
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_postfix_operator=do not insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_between_empty_parens_in_method_declaration=do not insert
-/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.problem.missingOverrideAnnotation=warning
+/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.problem.missingOverrideAnnotation=error
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.alignment_for_arguments_in_method_invocation=48
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_colon_in_default=do not insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.brace_position_for_block_in_case=end_of_line
