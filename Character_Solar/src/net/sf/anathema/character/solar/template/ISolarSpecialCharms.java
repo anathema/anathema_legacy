@@ -3,12 +3,14 @@ package net.sf.anathema.character.solar.template;
 import java.util.LinkedHashMap;
 
 import net.sf.anathema.character.generic.health.HealthLevelType;
+import net.sf.anathema.character.generic.impl.magic.charm.special.MultipleEffectCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.OxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.StaticMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.SubeffectCharm;
 import net.sf.anathema.character.generic.impl.magic.charm.special.TraitDependentMultiLearnableCharm;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
+import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -57,11 +59,14 @@ public interface ISolarSpecialCharms {
       "Solar.RighteousLionDefense", //$NON-NLS-1$
       2);
 
-  public static final ISubeffectCharm ESSENCE_ARROW_ATTACK = new SubeffectCharm("Solar.EssenceArrowAttack", 0.5, //$NON-NLS-1$
-      new String[] { "FieryArrowAttack", "DazzlingFlare", "RighteousJudgementArrow" }); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+  public static final ISubeffectCharm ESSENCE_ARROW_ATTACK = new SubeffectCharm("Solar.EssenceArrowAttack", //$NON-NLS-1$
+      new String[] { "FieryArrowAttack", "DazzlingFlare", "RighteousJudgementArrow" }, 0.5); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
   public static final ISubeffectCharm MASTER_HORSEMANS_TECHNIQUES = new SubeffectCharm(
-      "Solar.MasterHorseman'sTechniques", 1, //$NON-NLS-1$
+      "Solar.MasterHorseman'sTechniques", //$NON-NLS-1$
       new String[] {
-          "HarmonySpiritsStyle", "Horse-SummoningWhistle", "MasterHorseman'sEye", "Speed-SustainingTechnique", "Spirit-SteadyingAssurances" }); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
+          "HarmonySpiritsStyle", "Horse-SummoningWhistle", "MasterHorseman'sEye", "Speed-SustainingTechnique", "Spirit-SteadyingAssurances" }, 1); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
+
+  public static final IMultipleEffectCharm PHOENIX_RENEWAL_TACTIC = new MultipleEffectCharm(
+      "Solar.PhoenixRenewalTactic", new String[] { "Compassion", "Conviction", "Temperance", "Valor" }); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
 }

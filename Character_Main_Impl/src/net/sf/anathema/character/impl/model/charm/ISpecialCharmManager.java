@@ -1,6 +1,7 @@
 package net.sf.anathema.character.impl.model.charm;
 
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
@@ -30,5 +31,7 @@ public interface ISpecialCharmManager {
       ICharm charm,
       ILearningCharmGroup group,
       ICharmLearnableArbitrator arbitrator);
+
+  public void registerEffectMultilearnableCharm(IMultipleEffectCharm visited, ICharm charm, ILearningCharmGroup group, CharmConfiguration arbitrator);
 
 }

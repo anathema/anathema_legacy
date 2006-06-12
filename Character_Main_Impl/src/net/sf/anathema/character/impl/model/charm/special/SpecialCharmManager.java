@@ -2,12 +2,14 @@ package net.sf.anathema.character.impl.model.charm.special;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.impl.model.charm.CharmConfiguration;
 import net.sf.anathema.character.impl.model.charm.ISpecialCharmManager;
 import net.sf.anathema.character.model.charm.ICharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
@@ -69,6 +71,14 @@ public class SpecialCharmManager implements ISpecialCharmManager {
       ILearningCharmGroup group,
       ICharmLearnableArbitrator arbitrator) {
     addSpecialCharmConfiguration(charm, group, new SubeffectCharmConfiguration(context, charm, visited, arbitrator));
+  }
+
+  public void registerEffectMultilearnableCharm(
+      IMultipleEffectCharm visited,
+      ICharm charm,
+      ILearningCharmGroup group,
+      CharmConfiguration arbitrator) {
+    addSpecialCharmConfiguration(charm, group, new MultipleEffectCharmConfiguration(context, charm, visited, arbitrator));
   }
 
   private void addSpecialCharmConfiguration(

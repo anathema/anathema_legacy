@@ -2,8 +2,8 @@ package net.sf.anathema.character.view.magic;
 
 import java.awt.Color;
 
+import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.presenter.charm.SpellViewProperties;
 import net.sf.anathema.charmtree.batik.intvalue.SVGMultiLearnableCharmView;
 import net.sf.anathema.charmtree.batik.intvalue.SVGSubeffectCharmView;
@@ -21,7 +21,7 @@ public interface IMagicViewFactory {
 
   public SVGMultiLearnableCharmView createMultiLearnableCharmView(ISpecialCharm charm, double width, Color color);
 
-  public SVGSubeffectCharmView createSubeffectCharmView(ISubeffectCharm visited, double charmWidth, Color characterColor);
+  public SVGSubeffectCharmView createSubeffectCharmView(IMultipleEffectCharm visited, double charmWidth, Color characterColor);
 
   public ISVGSpecialCharmView createViewControlButton(ISVGSpecialCharmView view, double width, String label);
 }

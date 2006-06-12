@@ -1,14 +1,14 @@
 package net.sf.anathema.character.impl.persistence.charm;
 
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
+import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ISubeffect;
-import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
-public class SubeffectCharmPersister implements ISpecialCharmPersister {
+public class MultipleEffectCharmPersister implements ISpecialCharmPersister {
 
   private static final String TAG_SUBEFFECTS = "Subeffects"; //$NON-NLS-1$
   private static final String TAG_SUBEFFECT = "Subeffect"; //$NON-NLS-1$
@@ -22,7 +22,7 @@ public class SubeffectCharmPersister implements ISpecialCharmPersister {
     if (subeffectsElement == null) {
       return;
     }
-    ISubeffectCharmConfiguration configuration = (ISubeffectCharmConfiguration) specialCharmConfiguration;
+    IMultipleEffectCharmConfiguration configuration = (IMultipleEffectCharmConfiguration) specialCharmConfiguration;
     for (Element element : ElementUtilities.elements(subeffectsElement, TAG_SUBEFFECT)) {
       String id = ElementUtilities.getRequiredAttrib(element, ATTRIB_ID);
       boolean creationLearned = ElementUtilities.getBooleanAttribute(element, ATTRIB_CREATION_LEARNED, false);
@@ -34,9 +34,9 @@ public class SubeffectCharmPersister implements ISpecialCharmPersister {
   }
 
   public void saveConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration) {
-    ISubeffectCharmConfiguration configuration = (ISubeffectCharmConfiguration) specialCharmConfiguration;
+    IMultipleEffectCharmConfiguration configuration = (IMultipleEffectCharmConfiguration) specialCharmConfiguration;
     Element subeffectsElement = specialElement.addElement(TAG_SUBEFFECTS);
-    for (ISubeffect effect : configuration.getSubeffects()) {
+    for (ISubeffect effect : configuration.getEffects()) {
       Element effectElement = subeffectsElement.addElement(TAG_SUBEFFECT);
       effectElement.addAttribute(ATTRIB_ID, effect.getId());
       ElementUtilities.addAttribute(effectElement, ATTRIB_CREATION_LEARNED, effect.isCreationLearned());

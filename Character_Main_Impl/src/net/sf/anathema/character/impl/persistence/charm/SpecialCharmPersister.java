@@ -5,6 +5,7 @@ import java.util.Map;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
+import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
@@ -36,7 +37,11 @@ public class SpecialCharmPersister implements ISpecialCharmPersister {
         }
 
         public void visitSubeffectCharm(ISubeffectCharm charm) {
-          persisterByCharmId.put(getCharm(charm.getCharmId(), charmTree), new SubeffectCharmPersister());
+          persisterByCharmId.put(getCharm(charm.getCharmId(), charmTree), new MultipleEffectCharmPersister());
+        }
+
+        public void visitMultipleEffectCharm(IMultipleEffectCharm charm) {
+          persisterByCharmId.put(getCharm(charm.getCharmId(), charmTree), new MultipleEffectCharmPersister());
         }
       });
     }

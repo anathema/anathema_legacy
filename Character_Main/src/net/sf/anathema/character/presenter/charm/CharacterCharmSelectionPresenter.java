@@ -15,6 +15,7 @@ import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
+import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
@@ -29,8 +30,8 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
+import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
-import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
 import net.sf.anathema.character.presenter.TabContent;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.charmtree.batik.intvalue.SVGMultiLearnableCharmView;
@@ -298,25 +299,33 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
       }
 
       public void visitSubeffectCharm(ISubeffectCharm visited) {
-        SVGSubeffectCharmView subeffectView = viewFactory.createSubeffectCharmView(
-            visited,
-            getCharmWidth(),
-            characterColor);
-        ICharm originalCharm = statistics.getCharms().getCharmById(visited.getCharmId());
-        ISubeffectCharmConfiguration model = (ISubeffectCharmConfiguration) getCharmConfiguration().getSpecialCharmConfiguration(
-            visited.getCharmId());
-        new SubeffectCharmPresenter(getResources(), subeffectView, model).initPresentation();
-        if ((originalCharm.hasChildren() || originalCharm.isTreeRoot()) && model.getSubeffects().length > 1) {
-          specialCharmViews.add(viewFactory.createViewControlButton(
-              subeffectView,
-              getCharmWidth(),
-              getResources().getString("CharmTreeView.SubeffectCharm.ButtonLabel"))); //$NON-NLS-1$
-        }
-        else {
-          specialCharmViews.add(subeffectView);
-        }
+        createMultipleEffectCharmView(viewFactory, visited, "CharmTreeView.SubeffectCharm.ButtonLabel"); //$NON-NLS-1$
+      }
+
+      public void visitMultipleEffectCharm(IMultipleEffectCharm visited) {
+        createMultipleEffectCharmView(viewFactory, visited, visited.getCharmId() + ".ControlButton"); //$NON-NLS-1$
       }
     });
+  }
+
+  private void createMultipleEffectCharmView(
+      final IMagicViewFactory viewFactory,
+      IMultipleEffectCharm visited,
+      String labelKey) {
+    SVGSubeffectCharmView subeffectView = viewFactory.createSubeffectCharmView(visited, getCharmWidth(), characterColor);
+    ICharm originalCharm = statistics.getCharms().getCharmById(visited.getCharmId());
+    IMultipleEffectCharmConfiguration model = (IMultipleEffectCharmConfiguration) getCharmConfiguration().getSpecialCharmConfiguration(
+        visited.getCharmId());
+    new MultipleEffectCharmPresenter(getResources(), subeffectView, model).initPresentation();
+    if ((originalCharm.hasChildren() || originalCharm.isTreeRoot()) && model.getEffects().length > 1) {
+      specialCharmViews.add(viewFactory.createViewControlButton(
+          subeffectView,
+          getCharmWidth(),
+          getResources().getString(labelKey)));
+    }
+    else {
+      specialCharmViews.add(subeffectView);
+    }
   }
 
   private double getCharmWidth() {

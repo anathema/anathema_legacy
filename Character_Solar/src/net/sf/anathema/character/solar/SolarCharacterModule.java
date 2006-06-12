@@ -42,7 +42,8 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
             ISolarSpecialCharms.IMMANENT_SOLAR_GLORY,
             ISolarSpecialCharms.RIGHTEOUS_LION_DEFENSE,
             ISolarSpecialCharms.ESSENCE_ARROW_ATTACK,
-            ISolarSpecialCharms.MASTER_HORSEMANS_TECHNIQUES });
+            ISolarSpecialCharms.MASTER_HORSEMANS_TECHNIQUES,
+            ISolarSpecialCharms.PHOENIX_RENEWAL_TACTIC });
     characterGenerics.getAdditionalTemplateParserRegistry().register(
         SolarVirtueFlawTemplate.ID,
         new SolarVirtueFlawParser());

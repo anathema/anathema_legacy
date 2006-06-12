@@ -58,8 +58,11 @@ public class CharmExperienceModel extends AbstractIntegerValueModel {
         return specialCharmCost;
       }
       final ISubeffectCharmConfiguration subeffectCharmConfiguration = (ISubeffectCharmConfiguration) specialCharm;
-      final int count = Math.max(0, (subeffectCharmConfiguration.getExperienceLearnedSubeffectCount()
-          - subeffectCharmConfiguration.getCreationLearnedSubeffectCount() - 1));
+      final int count = Math.max(
+          0,
+          (subeffectCharmConfiguration.getExperienceLearnedSubeffectCount() - (subeffectCharmConfiguration.getCreationLearnedSubeffectCount() == 0
+              ? 1
+              : 0)));
       int subeffectCost = (int) Math.ceil(count * subeffectCharmConfiguration.getPointCostPerEffect() * 2);
       return subeffectCost + specialCharmCost;
     }

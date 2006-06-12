@@ -25,6 +25,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
+import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
@@ -144,6 +145,12 @@ public class CharmConfiguration implements ICharmConfiguration {
           final ICharm charm = getCharmTree(characterType).getCharmByID(visitedCharm.getCharmId());
           ILearningCharmGroup group = getGroupById(charm.getCharacterType(), charm.getGroupId());
           manager.registerSubeffectCharm(visitedCharm, charm, group, CharmConfiguration.this);
+        }
+        
+        public void visitMultipleEffectCharm(IMultipleEffectCharm visitedCharm) {
+          final ICharm charm = getCharmTree(characterType).getCharmByID(visitedCharm.getCharmId());
+          ILearningCharmGroup group = getGroupById(charm.getCharacterType(), charm.getGroupId());
+          manager.registerEffectMultilearnableCharm(visitedCharm, charm, group, CharmConfiguration.this);
         }
       });
     }

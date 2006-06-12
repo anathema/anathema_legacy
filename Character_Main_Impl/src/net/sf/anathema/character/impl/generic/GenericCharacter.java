@@ -222,7 +222,7 @@ public class GenericCharacter implements IGenericCharacter {
     }
     ISubeffectCharmConfiguration subeffectConfiguration = (ISubeffectCharmConfiguration) charmConfiguration;
     List<String> learnedSubeffectIds = new ArrayList<String>();
-    for (ISubeffect subeffect : subeffectConfiguration.getSubeffects()) {
+    for (ISubeffect subeffect : subeffectConfiguration.getEffects()) {
       if (subeffect.isLearned()) {
         learnedSubeffectIds.add(subeffect.getId());
       }

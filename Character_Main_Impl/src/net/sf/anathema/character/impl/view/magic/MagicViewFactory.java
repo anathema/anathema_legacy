@@ -2,8 +2,8 @@ package net.sf.anathema.character.impl.view.magic;
 
 import java.awt.Color;
 
+import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.presenter.charm.SpellViewProperties;
 import net.sf.anathema.character.view.magic.IComboConfigurationView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
@@ -33,7 +33,7 @@ public class MagicViewFactory implements IMagicViewFactory {
     return new SVGMultiLearnableCharmView(charm.getCharmId(), width, color);
   }
 
-  public SVGSubeffectCharmView createSubeffectCharmView(ISubeffectCharm charm, double width, Color color) {
+  public SVGSubeffectCharmView createSubeffectCharmView(IMultipleEffectCharm charm, double width, Color color) {
     return new SVGSubeffectCharmView(charm.getCharmId(), width, color);
   }
 
