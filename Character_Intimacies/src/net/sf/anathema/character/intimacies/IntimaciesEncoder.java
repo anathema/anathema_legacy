@@ -38,7 +38,7 @@ public class IntimaciesEncoder extends AbstractPdfEncoder implements IPdfContent
   }
 
   public String getHeaderKey() {
-    return "Intimacies";
+    return "Intimacies"; //$NON-NLS-1$
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
