@@ -3491,6 +3491,7 @@
     </cost>
     <duration duration="Varies"/>
     <charmtype type="Simple"/>
+	<charmAttribute attribute="Mortal"/>
     <source source="ABFire" page="75"/>
   </charm>
   <charm id="Dragon-Blooded.BondsUnbreakableIceTechnique" exalt="Dragon-Blooded" group="Brawl">
