@@ -17,8 +17,9 @@ import net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.Firs
 import net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.InfiniteMastery;
 import net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.SecondExcellency;
 import net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.ThirdExcellency;
+import net.sf.anathema.character.reporting.sheet.common.magic.stats.CharmStats;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.IMagicStats;
-import net.sf.anathema.character.reporting.sheet.common.magic.stats.MagicStats;
+import net.sf.anathema.character.reporting.sheet.common.magic.stats.SpellStats;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -29,30 +30,27 @@ import com.lowagie.text.pdf.PdfContentByte;
 public class PdfMagicEncoder implements IPdfContentEncoder {
 
   public static List<IMagicStats> collectPrintMagic(final IGenericCharacter character) {
-    IExaltedEdition edition = character.getRules().getEdition();
+    final IExaltedEdition edition = character.getRules().getEdition();
     final CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-    final List<IMagic> printMagic = new ArrayList<IMagic>();
-    for (IMagic magic : character.getAllLearnedMagic()) {
-      magic.accept(new IMagicVisitor() {
-        public void visitCharm(ICharm charm) {
-          if (!CharmUtilities.isGenericCharmFor(charm, characterType)) {
-            printMagic.add(charm);
-          }
-        }
-
-        public void visitSpell(ISpell spell) {
-          printMagic.add(spell);
-        }
-      });
-    }
-    List<IMagicStats> printStats = new ArrayList<IMagicStats>();
+    final List<IMagicStats> printStats = new ArrayList<IMagicStats>();
     printStats.add(new FirstExcellency());
     printStats.add(new SecondExcellency());
     printStats.add(new ThirdExcellency());
     printStats.add(new InfiniteMastery());
     printStats.add(new EssenceFlow());
-    for (IMagic magic : printMagic) {
-      printStats.add(new MagicStats(magic, edition, character));
+    for (IMagic magic : character.getAllLearnedMagic()) {
+      magic.accept(new IMagicVisitor() {
+        public void visitCharm(ICharm charm) {
+          if (CharmUtilities.isGenericCharmFor(charm, characterType)) {
+            return;
+          }
+          printStats.add(new CharmStats(charm, character));
+        }
+
+        public void visitSpell(ISpell spell) {
+          printStats.add(new SpellStats(spell, edition));
+        }
+      });
     }
     return printStats;
   }
@@ -66,9 +64,9 @@ public class PdfMagicEncoder implements IPdfContentEncoder {
     this.baseFont = baseFont;
     this.printMagic = printMagic;
   }
-  
+
   public String getHeaderKey() {
-    return "Charms";
+    return "Charms"; //$NON-NLS-1$
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
