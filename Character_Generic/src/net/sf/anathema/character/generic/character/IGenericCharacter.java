@@ -60,10 +60,14 @@ public interface IGenericCharacter extends ILimitationContext, IMagicCollection 
   public int getPainTolerance();
 
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups();
-  
+
   public int getTotalExperiencePoints();
 
   public int getSpentExperiencePoints();
 
-  public String[] getLearnedSubeffects(ICharm charm);
+  public String[] getLearnedEffects(ICharm charm);
+
+  public boolean isMultipleEffectCharm(ICharm magic);
+
+  public boolean isSubeffectCharm(ICharm magic);
 }

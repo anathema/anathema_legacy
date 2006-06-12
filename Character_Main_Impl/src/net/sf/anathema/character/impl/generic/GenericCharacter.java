@@ -19,6 +19,7 @@ import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
+import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
@@ -37,6 +38,7 @@ import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
+import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ISubeffect;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
 
@@ -215,18 +217,29 @@ public class GenericCharacter implements IGenericCharacter {
     return statistics.getExperiencePoints().getTotalExperiencePoints();
   }
 
-  public String[] getLearnedSubeffects(ICharm charm) {
+  public boolean isSubeffectCharm(ICharm charm) {
     ISpecialCharmConfiguration charmConfiguration = statistics.getCharms().getSpecialCharmConfiguration(charm);
-    if (!(charmConfiguration instanceof ISubeffectCharmConfiguration)) {
+    return charmConfiguration instanceof ISubeffectCharmConfiguration;
+  }
+
+  public boolean isMultipleEffectCharm(ICharm charm) {
+    ISpecialCharmConfiguration charmConfiguration = statistics.getCharms().getSpecialCharmConfiguration(charm);
+    return charmConfiguration instanceof IMultipleEffectCharmConfiguration
+        && !(charmConfiguration instanceof ISubeffectCharmConfiguration);
+  }
+
+  public String[] getLearnedEffects(ICharm charm) {
+    ISpecialCharmConfiguration charmConfiguration = statistics.getCharms().getSpecialCharmConfiguration(charm);
+    if (!(charmConfiguration instanceof IMultipleEffectCharmConfiguration)) {
       return new String[0];
     }
-    ISubeffectCharmConfiguration subeffectConfiguration = (ISubeffectCharmConfiguration) charmConfiguration;
-    List<String> learnedSubeffectIds = new ArrayList<String>();
-    for (ISubeffect subeffect : subeffectConfiguration.getEffects()) {
-      if (subeffect.isLearned()) {
-        learnedSubeffectIds.add(subeffect.getId());
+    IMultipleEffectCharmConfiguration configuration = (IMultipleEffectCharmConfiguration) charmConfiguration;
+    List<String> learnedEffectIds = new ArrayList<String>();
+    for (ISubeffect effect : configuration.getEffects()) {
+      if (effect.isLearned()) {
+        learnedEffectIds.add(effect.getId());
       }
     }
-    return learnedSubeffectIds.toArray(new String[learnedSubeffectIds.size()]);
+    return learnedEffectIds.toArray(new String[learnedEffectIds.size()]);
   }
 }

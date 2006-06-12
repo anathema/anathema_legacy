@@ -76,7 +76,7 @@ public class DemoGenericCharacter implements IGenericCharacter {
   public ICharacterPoints getCharacterPoints() {
     return null;
   }
-  
+
   public void addCombo(IGenericCombo combo) {
     allCombos.add(combo);
   }
@@ -232,7 +232,7 @@ public class DemoGenericCharacter implements IGenericCharacter {
   public void addSubbedTrait(ITraitType traitType) {
     subbedTraitTypes.add(traitType);
   }
-  
+
   public DemoIntimaciesModel getIntimaciesModel() {
     return intimaciesModel;
   }
@@ -240,7 +240,7 @@ public class DemoGenericCharacter implements IGenericCharacter {
   public DemoEquipmentAdditionalModel getEquipmentModel() {
     return equipmentModel;
   }
-  
+
   public void addAdditionalModel(IAdditionalModel model) {
     additionalModels.put(model.getTemplateId(), model);
   }
@@ -253,7 +253,15 @@ public class DemoGenericCharacter implements IGenericCharacter {
     return totalExperiencePoints;
   }
 
-  public String[] getLearnedSubeffects(ICharm charm) {
+  public String[] getLearnedEffects(ICharm charm) {
     return new String[0];
+  }
+
+  public boolean isMultipleEffectCharm(ICharm magic) {
+    return false;
+  }
+
+  public boolean isSubeffectCharm(ICharm magic) {
+    return false;
   }
 }

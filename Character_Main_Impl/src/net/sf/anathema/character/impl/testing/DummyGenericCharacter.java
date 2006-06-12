@@ -173,11 +173,11 @@ public class DummyGenericCharacter implements IGenericCharacter {
   public IIdentifiedTraitTypeGroup[] getAbilityTypeGroups() {
     return new IIdentifiedTraitTypeGroup[0];
   }
-  
+
   public IArmour[] getPrintArmours() {
     return new IArmour[0];
   }
-  
+
   public IWeapon[] getPrintWeapons() {
     return new IWeapon[0];
   }
@@ -190,7 +190,15 @@ public class DummyGenericCharacter implements IGenericCharacter {
     return 0;
   }
 
-  public String[] getLearnedSubeffects(ICharm charm) {
+  public String[] getLearnedEffects(ICharm charm) {
     return new String[0];
+  }
+
+  public boolean isMultipleEffectCharm(ICharm magic) {
+    return false;
+  }
+
+  public boolean isSubeffectCharm(ICharm magic) {
+    return false;
   }
 }

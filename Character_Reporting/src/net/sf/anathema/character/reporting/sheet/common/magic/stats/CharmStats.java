@@ -42,8 +42,10 @@ public class CharmStats extends AbstractMagicStats<ICharm> {
         details.add("Keyword." + attributeId); //$NON-NLS-1$
       }
     }
-    for (String subeffectId : character.getLearnedSubeffects(getMagic())) {
-      details.add(getMagic().getId() + ".Subeffects." + subeffectId);//$NON-NLS-1$
+    if (character.isSubeffectCharm(getMagic())) {
+      for (String subeffectId : character.getLearnedEffects(getMagic())) {
+        details.add(getMagic().getId() + ".Subeffects." + subeffectId);//$NON-NLS-1$
+      }
     }
     return details.toArray(new String[details.size()]);
   }

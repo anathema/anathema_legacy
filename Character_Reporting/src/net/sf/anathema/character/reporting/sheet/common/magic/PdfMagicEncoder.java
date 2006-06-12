@@ -44,7 +44,12 @@ public class PdfMagicEncoder implements IPdfContentEncoder {
           if (CharmUtilities.isGenericCharmFor(charm, characterType)) {
             return;
           }
-          printStats.add(new CharmStats(charm, character));
+          if (character.isMultipleEffectCharm(charm)) {
+            // character.getLearnedEffects(charm);
+          }
+          else {
+            printStats.add(new CharmStats(charm, character));
+          }
         }
 
         public void visitSpell(ISpell spell) {
