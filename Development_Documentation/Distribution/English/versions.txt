@@ -7,6 +7,7 @@ http://anathema.sf.net
 -- Bugs Fixed --
 * Corrected charm prerequisites for 
 	"Fivefold Bulwark Stance", "Invincible Fury of the Dawn", "Mist on Water Attack"
+* Fixed a problem with Dragon-Blooded Style-Countering Meditation (MartialArts)
 
 ===------------------------------------------------------------------------------===
 			Release 0.11 "Kirighast" (11/06/06)
