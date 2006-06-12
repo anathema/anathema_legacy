@@ -13,10 +13,12 @@ public class FirstExcellency extends AbstractGenericCharm {
     return "1 m per die";
   }
 
+  @Override
   protected String getId() {
-    return "Solar.1stExcellency";
+    return "Solar.1stExcellency"; //$NON-NLS-1$
   }
 
+  @Override
   protected boolean isComboOk() {
     return false;
   }

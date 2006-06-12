@@ -20,10 +20,12 @@ public class SecondExcellency extends AbstractGenericCharm {
     return SimpleDuration.INSTANT_DURATION.getText(resources);
   }
   
+  @Override
   protected String getId() {
-    return "Solar.2ndExcellency";
+    return "Solar.2ndExcellency"; //$NON-NLS-1$
   }
 
+  @Override
   protected boolean isComboOk() {
     return true;
   }

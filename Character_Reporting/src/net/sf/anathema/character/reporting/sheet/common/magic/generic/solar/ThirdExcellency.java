@@ -20,10 +20,12 @@ public class ThirdExcellency extends AbstractGenericCharm {
     return SimpleDuration.INSTANT_DURATION.getText(resources);
   }
 
+  @Override
   protected String getId() {
     return "Solar.3rdExcellency";
   }
 
+  @Override
   protected boolean isComboOk() {
     return true;
   }
