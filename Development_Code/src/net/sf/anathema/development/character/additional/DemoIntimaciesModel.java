@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
+import net.sf.anathema.character.intimacies.IIntimaciesAdditionalModel;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
-public class DemoIntimaciesModel implements IIntimaciesModel, IAdditionalModel {
+public class DemoIntimaciesModel implements IIntimaciesModel, IIntimaciesAdditionalModel {
 
   private List<IIntimacy> entries = new ArrayList<IIntimacy>();
 
@@ -82,5 +82,9 @@ public class DemoIntimaciesModel implements IIntimaciesModel, IAdditionalModel {
 
   public void addEntry(IIntimacy intimacy) {
     entries.add(intimacy);
+  }
+
+  public IIntimaciesModel getIntimaciesModel() {
+    return this;
   }
 }
