@@ -680,6 +680,7 @@
     <prerequisite>
       <essence id="Essence" value="3"/>
       <trait id="Thrown" value="4"/>
+      <charmReference id="Solar.Observer-DeceivingAttack"/>
     </prerequisite>
     <cost>
       <temporary>
