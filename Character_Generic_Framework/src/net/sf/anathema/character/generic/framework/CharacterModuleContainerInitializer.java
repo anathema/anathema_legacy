@@ -11,9 +11,9 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterModuleContainerInitializer {
 
-  private Logger logger = Logger.getLogger(CharacterModuleContainerInitializer.class);
+  private final Logger logger = Logger.getLogger(CharacterModuleContainerInitializer.class);
 
-  public List<String> moduleNameList = new ArrayList<String>() {
+  private final List<String> moduleNameList = new ArrayList<String>() {
     {
       add("net.sf.anathema.character.reporting.CharacterReportingModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.equipment.impl.EquipmentCharacterModule"); //$NON-NLS-1$
