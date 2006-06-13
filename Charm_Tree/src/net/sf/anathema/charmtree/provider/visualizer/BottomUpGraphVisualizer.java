@@ -221,7 +221,9 @@ public class BottomUpGraphVisualizer extends AbstractCharmCascadeVisualizer {
       if (nextNode == null) {
         nextNodeLeftSide = treeWidth + getProperties().getGapDimension().width;
       }
-      nextNodeLeftSide = nextNode.getLeftSide();
+      else {
+        nextNodeLeftSide = nextNode.getLeftSide();
+      }
       int possibleShift = Math.min(suggestedShift, nextNodeLeftSide
           - getProperties().getGapDimension().width
           - node.getRightSide());
@@ -236,7 +238,9 @@ public class BottomUpGraphVisualizer extends AbstractCharmCascadeVisualizer {
       if (previousNode == null) {
         previousNodeRightSide = -getProperties().getGapDimension().width;
       }
-      previousNodeRightSide = previousNode.getRightSide();
+      else {
+        previousNodeRightSide = previousNode.getRightSide();
+      }
       int possibleShift = Math.min(Math.abs(suggestedShift), node.getLeftSide()
           - previousNodeRightSide
           - getProperties().getGapDimension().width);
@@ -284,7 +288,8 @@ public class BottomUpGraphVisualizer extends AbstractCharmCascadeVisualizer {
         int whiteSpace = node.getRightSide() - nextNode.getLeftSide() + getProperties().getGapDimension().width;
         if (whiteSpace > 0) {
           int projectionIndex = nodeProjection.indexOf(nextNode);
-          while(nodeProjection.get(projectionIndex-1).getLeftSide() == nodeProjection.get(projectionIndex).getLeftSide()) {
+          while (nodeProjection.get(projectionIndex - 1).getLeftSide() == nodeProjection.get(projectionIndex)
+              .getLeftSide()) {
             projectionIndex--;
           }
           moveAllRemainingNodesLeft(nodeProjection, projectionIndex, -whiteSpace);
