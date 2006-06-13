@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.framework.magic.stringbuilder.type;
 
-import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmTypeStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicStringBuilderConstants;
 import net.sf.anathema.character.generic.magic.charms.type.ISimpleSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.type.TurnType;
