@@ -6,7 +6,7 @@
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-core-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-layout_src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-swing-smarttable.jar"/>
+	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-smarttable-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-smarttable.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/disy-commons-fontchooser.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/disy-commons-swing-filechooser.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/disy-commons-swing-mousecursor.jar"/>
