@@ -19,6 +19,7 @@ import net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.Seco
 import net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.ThirdExcellency;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.CharmStats;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.IMagicStats;
+import net.sf.anathema.character.reporting.sheet.common.magic.stats.MultipleEffectCharmStats;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.SpellStats;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
@@ -45,7 +46,10 @@ public class PdfMagicEncoder implements IPdfContentEncoder {
             return;
           }
           if (character.isMultipleEffectCharm(charm)) {
-            // character.getLearnedEffects(charm);
+            String[] effects = character.getLearnedEffects(charm);
+            for (String effect : effects) {
+              printStats.add(new MultipleEffectCharmStats(charm, effect));
+            }
           }
           else {
             printStats.add(new CharmStats(charm, character));

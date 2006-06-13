@@ -1,18 +1,14 @@
 package net.sf.anathema.character.reporting.sheet.common.magic.stats;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.framework.magic.stringbuilder.IMagicSourceStringBuilder;
-import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
-import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.ShortCharmTypeStringBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
-import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.lib.resources.IResources;
 
-public class CharmStats extends AbstractMagicStats<ICharm> {
+public class CharmStats extends AbstractCharmStats {
 
   private final IGenericCharacter character;
 
@@ -21,27 +17,11 @@ public class CharmStats extends AbstractMagicStats<ICharm> {
     this.character = character;
   }
 
-  public String getGroupName(final IResources resources) {
-    return resources.getString(getMagic().getGroupId());
-  }
-
-  public String getType(IResources resources) {
-    ICharmTypeModel model = getMagic().getCharmTypeModel();
-    return new ShortCharmTypeStringBuilder(resources).createTypeString(model);
-  }
-
-  public String getDurationString(final IResources resources) {
-    return getMagic().getDuration().getText(resources);
-  }
-
+  @Override
   public String[] getDetailKeys() {
+    String[] detailKeys = super.getDetailKeys();
     final List<String> details = new ArrayList<String>();
-    for (ICharmAttribute attribute : getMagic().getAttributes()) {
-      final String attributeId = attribute.getId();
-      if (attribute.isVisualized()) {
-        details.add("Keyword." + attributeId); //$NON-NLS-1$
-      }
-    }
+    Collections.addAll(details, detailKeys);
     if (character.isSubeffectCharm(getMagic())) {
       for (String subeffectId : character.getLearnedEffects(getMagic())) {
         details.add(getMagic().getId() + ".Subeffects." + subeffectId);//$NON-NLS-1$
@@ -60,10 +40,5 @@ public class CharmStats extends AbstractMagicStats<ICharm> {
       nameString.append("x)"); //$NON-NLS-1$
     }
     return nameString.toString();
-  }
-
-  public String getSourceString(IResources resources) {
-    final IMagicSourceStringBuilder<ICharm> stringBuilder = new MagicSourceStringBuilder<ICharm>(resources);
-    return stringBuilder.createShortSourceString(getMagic());
   }
 }
