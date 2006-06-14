@@ -10,4 +10,6 @@ public interface ICharmEntryData {
   public ICharmData getCoreData();
 
   public String getName();
+
+  public int getPage();
 }
