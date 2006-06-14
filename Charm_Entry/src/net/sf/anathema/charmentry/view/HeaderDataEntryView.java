@@ -34,8 +34,9 @@ public class HeaderDataEntryView implements IHeaderDataEntryView {
     return textView;
   }
 
-  public ISourceSelectionView addSourceView(String bookLabel, String pageLabel, Object[] predefinedSources) {
+  public ISourceSelectionView addSourceView(String bookLabel, String pageLabel, Object[] predefinedSources, ListCellRenderer renderer) {
     SourceSelectionView view = new SourceSelectionView(bookLabel, pageLabel, predefinedSources);
+    view.setRenderer(renderer);
     builder.addDialogComponent(view);
     return view;
   }

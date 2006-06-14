@@ -45,6 +45,7 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
   private final List<ICharmAttribute> keywords = new ArrayList<ICharmAttribute>();
   private final CharmTypeModel model = new CharmTypeModel();
   private boolean excellencyRequired;
+  private int page;
 
   public void setCharacterType(CharacterType type) {
     this.characterType = type;
@@ -200,5 +201,13 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
     }
     return new ICharmAttributeRequirement[] { new CharmAttributeRequirement(new CharmAttribute("Excellency" //$NON-NLS-1$
         + primaryType.getId(), false), 1) };
+  }
+  
+  public int getPage() {
+    return page;
+  }
+  
+  public void setPage(int page) {
+    this.page = page;    
   }
 }

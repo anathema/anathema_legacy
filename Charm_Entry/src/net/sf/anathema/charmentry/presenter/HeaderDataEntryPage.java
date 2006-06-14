@@ -112,11 +112,11 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
     final ISourceSelectionView sourceView = view.addSourceView(
         properties.getBookLabel(),
         properties.getPageLabel(),
-        sourceModel.getPredefinedSources());
+        sourceModel.getPredefinedSources(),
+        new IdentificateSelectCellRenderer("ExaltedSourceBook.", resources));//$NON-NLS-1$
     sourceView.addSourceChangeListener(new IObjectValueChangedListener<IExaltedSourceBook>() {
       public void valueChanged(IExaltedSourceBook newValue) {
         sourceModel.setSourceBook(newValue);
-        sourceView.setPageSelectionEnabled(sourceModel.enablePageSelection());
       }
     });
     sourceView.addPageChangeListener(new IIntValueChangedListener() {
@@ -124,7 +124,6 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
         sourceModel.setSourcePage(newValue);
       }
     });
-    sourceView.setPageSelectionEnabled(false);
   }
 
   public boolean canFinish() {

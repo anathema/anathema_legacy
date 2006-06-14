@@ -68,6 +68,10 @@ public class WizardCharmEntryModel implements ICharmEntryModel {
       public String getName() {
         return charmData.getName().getText();
       }
+
+      public int getPage() {
+        return charmData.getPage();
+      }
     };
   }
 }

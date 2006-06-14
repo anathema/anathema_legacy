@@ -27,6 +27,6 @@ public class SourceEntryModel implements ISourceEntryModel {
   }
 
   public void setSourcePage(int newValue) {
-    throw new UnsupportedOperationException("Pages müssen in property file");
+    charmData.setPage(newValue);
   }
 }

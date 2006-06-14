@@ -50,4 +50,8 @@ public interface IConfigurableCharmData extends IExtendedCharmData {
   public void setGroupId(String id);
 
   public void setSource(IExaltedSourceBook sourceBook);
+
+  public int getPage();
+
+  public void setPage(int newValue);
 }

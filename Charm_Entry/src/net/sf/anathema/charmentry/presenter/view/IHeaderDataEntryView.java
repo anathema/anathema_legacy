@@ -13,5 +13,5 @@ public interface IHeaderDataEntryView extends IPageContent {
 
   public IObjectSelectionView addComboBoxRow(String label, ListCellRenderer renderer, Object[] objects);
 
-  public ISourceSelectionView addSourceView(String bookLabel, String pageLabel, Object[] predefinedSources);
+  public ISourceSelectionView addSourceView(String bookLabel, String pageLabel, Object[] predefinedSources, ListCellRenderer renderer);
 }

@@ -3,6 +3,7 @@ package net.sf.anathema.charmentry.view;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.ListCellRenderer;
 
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
@@ -51,5 +52,9 @@ public class SourceSelectionView implements ISourceSelectionView, IDialogCompone
     component.add(bookBox.getComponent());
     component.add(new JLabel(pageString));
     component.add(spinner.getComponent());
+  }
+
+  public void setRenderer(ListCellRenderer renderer) {
+    bookBox.setRenderer(renderer);
   }
 }

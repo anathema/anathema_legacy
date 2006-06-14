@@ -7,11 +7,22 @@ import java.io.IOException;
 
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
+import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.type.CharacterType;
 
 public class CharmEntryPropertiesPersister {
 
-  public void addPropertyInternal(CharacterType type, IExaltedEdition edition, String key, String value)
+  public void writeCharmPageProperty(CharacterType type, String key, IExaltedSourceBook book, int page)
+      throws IOException {
+    String fileName = "../Character_" + type.getId() + "/resources/language/Charms_" + type.getId() + "_Pages.properties";//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //;
+    File file = new File(fileName);
+    BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+    writer.newLine();
+    writer.write(book + "." + key + ".Page=" + page); //$NON-NLS-1$ //$NON-NLS-2$
+    writer.close();
+  }
+
+  public void writeCharmNameProperty(CharacterType type, IExaltedEdition edition, String key, String value)
       throws IOException {
     String fileName = null;
     if (edition == ExaltedEdition.SecondEdition) {
@@ -25,6 +36,5 @@ public class CharmEntryPropertiesPersister {
     writer.newLine();
     writer.write(key + "=" + value); //$NON-NLS-1$
     writer.close();
-    System.err.println("Properties written in development file."); //$NON-NLS-1$
   }
 }

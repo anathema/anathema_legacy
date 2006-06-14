@@ -54,11 +54,17 @@ public class ShowCharmEntryAction extends SmartAction {
       final ICharmEntryData entryData = model.getCharmData();
       CharmCache.getInstance().addCharm(entryData);
       final ICharmData coreData = entryData.getCoreData();
-      new CharmEntryPropertiesPersister().addPropertyInternal(
+      CharmEntryPropertiesPersister charmEntryPropertiesPersister = new CharmEntryPropertiesPersister();
+      charmEntryPropertiesPersister.writeCharmNameProperty(
           coreData.getCharacterType(),
           entryData.getEdition(),
           coreData.getId(),
           entryData.getName());
+      charmEntryPropertiesPersister.writeCharmPageProperty(
+          coreData.getCharacterType(),
+          coreData.getId(),
+          coreData.getSource(),
+          entryData.getPage());
     }
     catch (IOException e) {
       // TODO Auto-generated catch block
