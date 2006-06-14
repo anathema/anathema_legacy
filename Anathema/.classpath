@@ -50,5 +50,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment_Impl"/>
 	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-io.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Mortal"/>
+	<classpathentry sourcepath="/Thirdparty/Plugin/jpf_src.zip" kind="lib" path="/Thirdparty/Plugin/jpf.jar"/>
+	<classpathentry sourcepath="/Thirdparty/Plugin/jpf-boot_src.zip" kind="lib" path="/Thirdparty/Plugin/jpf-boot.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
