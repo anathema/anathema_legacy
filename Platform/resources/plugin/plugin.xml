@@ -1,0 +1,9 @@
+<!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.5" "http://jpf.sourceforge.net/plugin_0_5.dtd">
+<plugin id="net.sf.anathema.core" version="1.0">
+	<requires>
+		<import plugin-id="net.sf.anathema.main"/>
+	</requires>
+	<extension plugin-id="net.sf.anathema.main"	point-id="MainModules" id="CoreModule">
+		<parameter id="class" value="net.sf.anathema.framework.module.AnathemaCoreModule"/>
+	</extension>
+</plugin>
