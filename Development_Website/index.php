@@ -137,6 +137,16 @@
 				<tr>
 					<td align="left">
 						<img class="statusimg" src="images/blank.gif" alt="Status" />'
+					</td>
+					<td align="left">
+						<a href="http://www.cenqua.com/fisheye">
+							<img src="http://www.cenqua.com/images/fisheyed2.gif" width="89" height="33" border="0" alt="Source Perspective by FishEye"/>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td align="left">
+						<img class="statusimg" src="images/blank.gif" alt="Status" />'
 					</td>										
 					<td align="left">
 						<a  href="index.php?content=<?php echo $content ?>&language=en">
