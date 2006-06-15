@@ -5,7 +5,5 @@ import net.sf.anathema.lib.control.IClosure;
 
 public interface IModuleCollection {
 
-  public IAnathemaModule[] getAllModules();
-
   public void forAllDo(IClosure<IAnathemaModule> closure);
 }

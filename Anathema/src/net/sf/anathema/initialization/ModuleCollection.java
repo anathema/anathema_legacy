@@ -18,7 +18,7 @@ public class ModuleCollection implements IModuleCollection {
   private Logger logger = Logger.getLogger(ModuleCollection.class);
   private IAnathemaModule[] allModules;
 
-  public IAnathemaModule[] getAllModules() {
+  private IAnathemaModule[] getAllModules() {
     if (allModules == null) {
       allModules = collectModules();
     }
