@@ -5,6 +5,7 @@ import net.sf.anathema.campaign.model.plot.IPlotElement;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.reporting.itext.IITextReport;
+import net.sf.anathema.framework.reporting.itext.ITextReportUtils;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.lib.resources.IResources;
@@ -85,7 +86,7 @@ public class MultiColumnSeriesReport implements IITextReport {
       }
       contentTable.performPrint(
           seriesTitle,
-          resources.getString("SeriesReport.Header.TableOfContents"),
+          resources.getString("SeriesReport.Header.TableOfContents"), //$NON-NLS-1$
           document,
           writer);
     }

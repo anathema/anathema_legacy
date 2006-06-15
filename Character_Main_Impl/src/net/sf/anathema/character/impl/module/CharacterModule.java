@@ -8,6 +8,7 @@ import net.sf.anathema.character.impl.module.preferences.RulesetPreferenceElemen
 import net.sf.anathema.character.impl.reporting.CharacterReportingInitializer;
 import net.sf.anathema.character.impl.reporting.PageSize;
 import net.sf.anathema.character.impl.reporting.SecondEditionSheetReport;
+import net.sf.anathema.character.impl.reporting.TextReport;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IExtensionPoint;
 import net.sf.anathema.framework.item.IItemType;
@@ -50,6 +51,7 @@ public class CharacterModule extends AbstractAnathemaModule {
     ICharacterGenerics characterGenerics = getCharacterGenerics(model);
     model.getReportRegistry().addReport(new SecondEditionSheetReport(resources, characterGenerics, PageSize.A4));
     model.getReportRegistry().addReport(new SecondEditionSheetReport(resources, characterGenerics, PageSize.Letter));
+    model.getReportRegistry().addReport(new TextReport());
     IItemType characterItemType = characterTypeConfiguration.getItemType();
     new CharacterModulePresenter(model, view, resources, characterItemType, characterGenerics);
     new CharacterPerformanceTuner(model, getResources()).startTuning(characterGenerics, characterItemType);
@@ -64,8 +66,6 @@ public class CharacterModule extends AbstractAnathemaModule {
     super.fillPresentationExtensionPoints(extensionPointRegistry, model, resources, view);
     PreferencesElementsExtensionPoint preferencesPoint = (PreferencesElementsExtensionPoint) extensionPointRegistry.get(PreferencesElementsExtensionPoint.ID);
     preferencesPoint.register(ICharacterPreferencesConstants.RULESET_PREFERENCE, new RulesetPreferenceElement());
-    // preferencesPoint.register(ICharacterPreferencesConstants.CHARMORDER_PREFERENCE, new
-    // CharmOrderPreferenceElement());
   }
 
   private final ICharacterGenerics getCharacterGenerics(IAnathemaModel anathemaModel) {

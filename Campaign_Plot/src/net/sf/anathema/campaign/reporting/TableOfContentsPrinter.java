@@ -3,6 +3,8 @@ package net.sf.anathema.campaign.reporting;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.framework.reporting.itext.ITextReportUtils;
+
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
@@ -41,7 +43,7 @@ public class TableOfContentsPrinter {
     float yCoordinate = document.top() - 35;
     yCoordinate -= 15;
     for (ContentEntry entry : entryList) {
-      reportUtils.textLine(writer.getDirectContent(), yCoordinate, document.left(), document.right(), ".", //$NON-NLS-1$
+      seriesUtils.textLine(writer.getDirectContent(), yCoordinate, document.left(), document.right(), ".", //$NON-NLS-1$
           reportUtils.createDefaultFont(11, Font.NORMAL),
           entry.getText(),
           entry.getPageAsString(),
