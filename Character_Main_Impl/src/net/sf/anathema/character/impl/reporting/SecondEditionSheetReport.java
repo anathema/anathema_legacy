@@ -24,7 +24,6 @@ import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Document;
-import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfWriter;
 
