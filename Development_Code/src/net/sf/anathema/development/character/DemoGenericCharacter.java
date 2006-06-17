@@ -10,9 +10,7 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.ICharacterPoints;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.framework.xml.trait.alternate.test.DummyFavorableGenericTrait;
 import net.sf.anathema.character.generic.health.HealthLevelType;
-import net.sf.anathema.character.generic.impl.testing.DummyGenericTrait;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.generic.magic.IMagic;
@@ -32,6 +30,8 @@ import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
 import net.sf.anathema.character.solar.caste.SolarCaste;
 import net.sf.anathema.development.character.additional.DemoEquipmentAdditionalModel;
 import net.sf.anathema.development.character.additional.DemoIntimaciesModel;
+import net.sf.anathema.test.character.dummy.DummyFavorableGenericTrait;
+import net.sf.anathema.test.character.dummy.DummyGenericTrait;
 
 public class DemoGenericCharacter implements IGenericCharacter {
 

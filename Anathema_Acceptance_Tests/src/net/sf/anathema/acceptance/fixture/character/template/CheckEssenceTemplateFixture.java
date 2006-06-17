@@ -1,12 +1,12 @@
 package net.sf.anathema.acceptance.fixture.character.template;
 
-import net.sf.anathema.character.generic.impl.testing.DummyGenericTrait;
 import net.sf.anathema.character.generic.template.essence.FactorizedTrait;
 import net.sf.anathema.character.generic.template.essence.FactorizedTraitSumCalculator;
 import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.test.character.dummy.DummyGenericTrait;
 
 public class CheckEssenceTemplateFixture extends AbstractTemplateColumnFixture {
 

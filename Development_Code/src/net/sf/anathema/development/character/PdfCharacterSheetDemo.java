@@ -9,7 +9,6 @@ import net.sf.anathema.character.equipment.impl.reporting.second.SecondEditionAr
 import net.sf.anathema.character.equipment.impl.reporting.second.SecondEditionWeaponryEncoder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.impl.magic.test.DummyCharm;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -36,6 +35,7 @@ import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.lib.control.BrowserControl;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.test.character.dummy.charm.DummyCharm;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.PageSize;

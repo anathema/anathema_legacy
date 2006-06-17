@@ -49,5 +49,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment_Impl"/>
 	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-logging-api.jar"/>
 	<classpathentry sourcepath="/Thirdparty/Swing/l2fprod-common-0.2dev-src.zip" kind="lib" path="/Thirdparty/Swing/l2fprod-common-directorychooser.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Development_Test_Character"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

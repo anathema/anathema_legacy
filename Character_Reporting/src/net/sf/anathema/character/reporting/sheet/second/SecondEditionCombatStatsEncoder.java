@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.sheet.second;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.impl.CharacterUtiltiies;
+import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
@@ -48,12 +48,12 @@ public class SecondEditionCombatStatsEncoder extends AbstractPdfEncoder implemen
     String dodgeLabel = resources.getString("Sheet.Combat.DodgeDV"); //$NON-NLS-1$
     String knockdownLabel = resources.getString("Sheet.Combat.Knockdown"); //$NON-NLS-1$
     String stunningLabel = resources.getString("Sheet.Combat.Stunning"); //$NON-NLS-1$
-    int joinBattle = CharacterUtiltiies.getTotalValue(character, AttributeType.Wits, AbilityType.Awareness);
+    int joinBattle = CharacterUtilties.getTotalValue(character, AttributeType.Wits, AbilityType.Awareness);
     int dodgeDV = calculateDodgeDV(character);
-    int knockdownThreshold = CharacterUtiltiies.getTotalValue(character, AttributeType.Stamina, AbilityType.Resistance);
-    int knockdownPool = CharacterUtiltiies.getKnockdownPool(character);
-    int stunningThreshold = CharacterUtiltiies.getTotalValue(character, AttributeType.Stamina);
-    int stunningPool = CharacterUtiltiies.getTotalValue(character, AttributeType.Stamina, AbilityType.Resistance);
+    int knockdownThreshold = CharacterUtilties.getTotalValue(character, AttributeType.Stamina, AbilityType.Resistance);
+    int knockdownPool = CharacterUtilties.getKnockdownPool(character);
+    int stunningThreshold = CharacterUtilties.getTotalValue(character, AttributeType.Stamina);
+    int stunningPool = CharacterUtilties.getTotalValue(character, AttributeType.Stamina, AbilityType.Resistance);
 
     Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
     LabelledValueEncoder encoder = new LabelledValueEncoder(baseFont, 4, upperLeftCorner, bounds.width, 3);
@@ -75,6 +75,6 @@ public class SecondEditionCombatStatsEncoder extends AbstractPdfEncoder implemen
   }
 
   private int calculateDodgeDV(IGenericCharacter character) {
-    return CharacterUtiltiies.getDvValue(character, AttributeType.Dexterity, AbilityType.Dodge, OtherTraitType.Essence);
+    return CharacterUtilties.getDv(character, AttributeType.Dexterity, AbilityType.Dodge, OtherTraitType.Essence);
   }
 }

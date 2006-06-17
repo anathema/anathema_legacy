@@ -1,10 +1,9 @@
 package net.sf.anathema.character.reporting.sheet.second;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.impl.CharacterUtiltiies;
+import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.second.social.SocialCombatStatsTableEncoder;
@@ -38,9 +37,9 @@ public class SecondEditionSocialCombatStatsEncoder implements IPdfContentEncoder
     this.commentFont = TableEncodingUtilities.createCommentFont(baseFont);
     this.font = TableEncodingUtilities.createFont(baseFont);
   }
-  
+
   public String getHeaderKey() {
-    return "SocialCombat";
+    return "SocialCombat"; //$NON-NLS-1$
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
@@ -139,12 +138,8 @@ public class SecondEditionSocialCombatStatsEncoder implements IPdfContentEncoder
   private float encodeValues(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
     String joinLabel = resources.getString("Sheet.SocialCombat.JoinDebateBattle"); //$NON-NLS-1$
     String dodgeLabel = resources.getString("Sheet.SocialCombat.DodgeMDV"); //$NON-NLS-1$
-    int joinDebate = CharacterUtiltiies.getTotalValue(character, AttributeType.Wits, AbilityType.Awareness);
-    int dodgeMDV = CharacterUtiltiies.getDvValue(
-        character,
-        OtherTraitType.Willpower,
-        OtherTraitType.Essence,
-        AbilityType.Integrity);
+    int joinDebate = CharacterUtilties.getTotalValue(character, AttributeType.Wits, AbilityType.Awareness);
+    int dodgeMDV = CharacterUtilties.getDodgeMdv(character);
     Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
     LabelledValueEncoder encoder = new LabelledValueEncoder(baseFont, 2, upperLeftCorner, bounds.width, 3);
     encoder.addLabelledValue(directContent, 0, joinLabel, joinDebate);

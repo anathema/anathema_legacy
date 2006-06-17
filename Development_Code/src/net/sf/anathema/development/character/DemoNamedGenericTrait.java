@@ -1,10 +1,10 @@
 package net.sf.anathema.development.character;
 
-import net.sf.anathema.character.generic.impl.testing.DummyGenericTrait;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
+import net.sf.anathema.test.character.dummy.DummyGenericTrait;
 
 public class DemoNamedGenericTrait extends DummyGenericTrait implements INamedGenericTrait {
 

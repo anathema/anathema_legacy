@@ -8,12 +8,9 @@ import net.sf.anathema.character.generic.social.ISocialCombatStats;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.reporting.sheet.util.statstable.AbstractFixedLineStatsTableEncoder;
 import net.sf.anathema.character.reporting.sheet.util.statstable.IStatsGroup;
-import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
-import com.lowagie.text.pdf.PdfPTable;
 
 public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEncoder<ISocialCombatStats> {
 
@@ -22,12 +19,6 @@ public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEn
   public SocialCombatStatsTableEncoder(IResources resources, BaseFont baseFont) {
     super(baseFont);
     this.resources = resources;
-  }
-
-  @Override
-  protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
-    PdfPTable table = super.createTable(directContent, character, bounds);
-    return table;
   }
 
   @SuppressWarnings("unchecked")
