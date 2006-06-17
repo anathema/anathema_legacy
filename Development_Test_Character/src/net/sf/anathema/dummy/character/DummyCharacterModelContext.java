@@ -14,7 +14,7 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.impl.model.context.BasicCharacterContext;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
-import net.sf.anathema.dummy.character.charm.DummyCharmContext;
+import net.sf.anathema.dummy.character.magic.DummyCharmContext;
 import net.sf.anathema.dummy.character.template.DummyCharacterTemplate;
 
 public class DummyCharacterModelContext implements ICharacterModelContext {
