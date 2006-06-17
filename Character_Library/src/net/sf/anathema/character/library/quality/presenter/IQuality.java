@@ -6,5 +6,5 @@ public interface IQuality extends IIdentificate {
 
   public IQualityType getType();
 
-  public boolean prerequisitesFulfilled(IQualitySelection[] selectedQualities);
+  public boolean prerequisitesFulfilled(IQualitySelection< ? extends IQuality>[] selectedQualities);
 }

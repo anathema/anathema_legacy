@@ -16,9 +16,9 @@ public class QualityPrerequisite implements IQualityPredicate {
     this(new IQuality[] { prerequisite });
   }
 
-  public boolean isFulfilled(IQualitySelection[] selectedQualities) {
+  public boolean isFulfilled(IQualitySelection< ? extends IQuality>[] selectedQualities) {
     for (IQuality prerequisite : prerequisites) {
-      for (IQualitySelection selection : selectedQualities) {
+      for (IQualitySelection< ? extends IQuality> selection : selectedQualities) {
         if (selection.getQuality() == prerequisite) {
           return true;
         }

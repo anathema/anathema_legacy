@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
 import net.disy.commons.swing.layout.grid.IDialogComponent;
+import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
@@ -16,18 +17,18 @@ public class SourceSelectionView implements ISourceSelectionView, IDialogCompone
   private final IntegerSpinner spinner;
   private final String bookString;
   private final String pageString;
-  private final ChangeableJComboBox bookBox;
+  private final ChangeableJComboBox<IExaltedSourceBook> bookBox;
 
-  public SourceSelectionView(String bookString, String pageString, Object[] sources) {
+  public SourceSelectionView(String bookString, String pageString, IExaltedSourceBook[] sources) {
     this.bookString = bookString;
     this.pageString = pageString;
-    this.bookBox = new ChangeableJComboBox(sources, false);
+    this.bookBox = new ChangeableJComboBox<IExaltedSourceBook>(sources, false);
     spinner = new IntegerSpinner(0);
     spinner.setPreferredWidth(100);
 
   }
 
-  public void addSourceChangeListener(IObjectValueChangedListener listener) {
+  public void addSourceChangeListener(IObjectValueChangedListener<IExaltedSourceBook> listener) {
     bookBox.addObjectSelectionChangedListener(listener);
   }
 

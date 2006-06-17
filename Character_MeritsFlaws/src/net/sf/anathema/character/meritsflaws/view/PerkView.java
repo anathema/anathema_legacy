@@ -31,6 +31,7 @@ import net.sf.anathema.lib.gui.list.SmartJList;
 import net.sf.anathema.lib.gui.list.actionview.ActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.SingleSelectionActionAddableListView;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
+import net.sf.anathema.lib.util.IIdentificate;
 
 public class PerkView implements IPerkView {
 
@@ -138,8 +139,8 @@ public class PerkView implements IPerkView {
       }
     });
 
-    IObjectValueChangedListener filterListener = new IObjectValueChangedListener() {
-      public void valueChanged(Object newValue) {
+    IObjectValueChangedListener<IIdentificate> filterListener = new IObjectValueChangedListener<IIdentificate>() {
+      public void valueChanged(final IIdentificate newValue) {
         control.forAllDo(new IClosure<IPerkListener>() {
           public void execute(IPerkListener input) {
             input.filterChanged(typeFilterView.getSelectedObject(), categoryFilterView.getComboBox().getSelectedItem());

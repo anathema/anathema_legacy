@@ -12,12 +12,12 @@ import javax.swing.ListCellRenderer;
 import net.sf.anathema.lib.UnselectingComboBoxModel;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
-public class ChangeableJComboBox implements IChangeableJComboBox {
+public class ChangeableJComboBox<V> implements IChangeableJComboBox<V> {
 
   private JComboBox comboBox;
-  private final Map<IObjectValueChangedListener, ItemListener> listenersByListener = new HashMap<IObjectValueChangedListener, ItemListener>();
+  private final Map<IObjectValueChangedListener<V>, ItemListener> listenersByListener = new HashMap<IObjectValueChangedListener<V>, ItemListener>();
 
-  public ChangeableJComboBox(Object[] objects, boolean editable) {
+  public ChangeableJComboBox(V[] objects, boolean editable) {
     this.comboBox = new ColoredJComboBox(new UnselectingComboBoxModel(objects));
     this.comboBox.setEditable(editable);
     setSelectedObject(null);
@@ -31,7 +31,7 @@ public class ChangeableJComboBox implements IChangeableJComboBox {
     comboBox.setSelectedItem(object);
   }
 
-  public void setObjects(Object[] objects) {
+  public void setObjects(V[] objects) {
     Object selectedItem = comboBox.getSelectedItem();
     UnselectingComboBoxModel model = (UnselectingComboBoxModel) comboBox.getModel();
     model.removeAllElements();
@@ -46,25 +46,27 @@ public class ChangeableJComboBox implements IChangeableJComboBox {
     model.removeAllElements();
   }
 
-  public void addObjectSelectionChangedListener(final IObjectValueChangedListener listener) {
+  public void addObjectSelectionChangedListener(final IObjectValueChangedListener<V> listener) {
     ItemListener itemListener = new ItemListener() {
+      @SuppressWarnings("unchecked")
       public void itemStateChanged(ItemEvent e) {
-        listener.valueChanged(e.getItem());
+        listener.valueChanged((V) e.getItem());
       }
     };
     comboBox.addItemListener(itemListener);
     listenersByListener.put(listener, itemListener);
   }
 
-  public Object getSelectedObject() {
-    return comboBox.getSelectedItem();
+  @SuppressWarnings("unchecked")
+  public V getSelectedObject() {
+    return (V) comboBox.getSelectedItem();
   }
 
   public void setRenderer(ListCellRenderer renderer) {
     comboBox.setRenderer(renderer);
   }
 
-  public void removeObjectSelectionChangeListener(IObjectValueChangedListener listener) {
+  public void removeObjectSelectionChangeListener(IObjectValueChangedListener<V> listener) {
     comboBox.removeItemListener(listenersByListener.get(listener));
   }
 

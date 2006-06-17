@@ -65,7 +65,7 @@ public abstract class AbstractQualityModel<Q extends IQuality> implements IQuali
   }
 
   public void removeQualitySelection(IQualitySelection<Q> selection) {
-    for (IQualitySelection existingSelection : getSelectedQualities()) {
+    for (IQualitySelection<Q> existingSelection : getSelectedQualities()) {
       if (existingSelection.equals(selection)) {
         boolean experienced = isCharacterExperienced();
         if (experienced) {
@@ -85,10 +85,11 @@ public abstract class AbstractQualityModel<Q extends IQuality> implements IQuali
     }
   }
 
-  private void removeQualityCompletely(IQualitySelection existingSelection) {
+  private void removeQualityCompletely(IQualitySelection<Q> existingSelection) {
     selectedQualities.remove(existingSelection);
   }
 
+  @SuppressWarnings("unchecked")
   public IQualitySelection<Q>[] getSelectedQualities() {
     List<IQualitySelection<Q>> activeSelectedQualities = new ArrayList<IQualitySelection<Q>>();
     for (IQualitySelection<Q> selection : selectedQualities) {
@@ -101,7 +102,7 @@ public abstract class AbstractQualityModel<Q extends IQuality> implements IQuali
     if (!selection.isCreationActive() && !selection.isExperienceActive()) {
       return;
     }
-    for (IQualitySelection existingSelection : getSelectedQualities()) {
+    for (IQualitySelection<Q> existingSelection : getSelectedQualities()) {
       if (existingSelection.getQuality() == selection.getQuality()) {
         checkForReplacement(selection, existingSelection);
         checkForReacquiredQuality(selection, existingSelection);
@@ -111,13 +112,13 @@ public abstract class AbstractQualityModel<Q extends IQuality> implements IQuali
     addQuality(selection);
   }
 
-  private void checkForReacquiredQuality(IQualitySelection<Q> selection, IQualitySelection existingSelection) {
+  private void checkForReacquiredQuality(IQualitySelection<Q> selection, IQualitySelection<Q> existingSelection) {
     if (!existingSelection.isExperienceActive() && selection.isExperienceActive()) {
       addQuality(selection);
     }
   }
 
-  private void checkForReplacement(IQualitySelection<Q> selection, IQualitySelection existingSelection) {
+  private void checkForReplacement(IQualitySelection<Q> selection, IQualitySelection<Q> existingSelection) {
     if ((existingSelection.isCreationActive()) || !selection.isCreationActive()) {
       return;
     }

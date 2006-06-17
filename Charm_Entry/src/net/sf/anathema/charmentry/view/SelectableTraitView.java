@@ -23,8 +23,9 @@ import net.sf.anathema.lib.util.Identificate;
 
 public class SelectableTraitView implements ISelectableTraitView {
 
-  private IChangeableJComboBox traitSelectionBox = new ChangeableJComboBox(new IIdentificate[] { new Identificate(
-      "Select") }, false);
+  private IChangeableJComboBox<IIdentificate> traitSelectionBox = new ChangeableJComboBox<IIdentificate>(
+      new IIdentificate[] { new Identificate("Select") },
+      false);
 
   private final IIntValueDisplay valueDisplay;
   private final GenericControl<ITraitSelectionChangedListener> control = new GenericControl<ITraitSelectionChangedListener>();
@@ -65,7 +66,7 @@ public class SelectableTraitView implements ISelectableTraitView {
     panel.revalidate();
   }
 
-  public void setSelectableTraits(Object[] traits) {
+  public void setSelectableTraits(IIdentificate[] traits) {
     traitSelectionBox.setObjects(traits);
   }
 
@@ -73,7 +74,7 @@ public class SelectableTraitView implements ISelectableTraitView {
     control.addListener(listener);
   }
 
-  public void setSelectedTrait(Object object) {
+  public void setSelectedTrait(IIdentificate object) {
     traitSelectionBox.setSelectedObject(object);
   }
 

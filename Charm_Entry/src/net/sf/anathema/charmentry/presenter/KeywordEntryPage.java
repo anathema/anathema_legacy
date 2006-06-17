@@ -50,7 +50,7 @@ public class KeywordEntryPage extends AbstractAnathemaWizardPage {
   @Override
   protected void initPageContent() {
     this.view = viewFactory.createKeywordEntryView();
-    final IButtonControlledObjectSelectionView selectionView = view.addObjectSelectionView(
+    final IButtonControlledObjectSelectionView<IIdentificate> selectionView = view.addObjectSelectionView(
         properties.getKeywordRenderer(),
         properties.getKeywordLabel(),
         properties.getAddIcon());

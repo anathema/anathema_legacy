@@ -32,7 +32,7 @@ public class LunarVirtueFlawModel extends VirtueFlawModel {
       public void configuredChangeOccured() {
         ITraitType[] flawVirtueTypes = getFlawVirtueTypes();
         if (!ArrayUtilities.contains(flawVirtueTypes, getVirtueFlaw().getRoot())) {
-          getVirtueFlaw().setRoot((VirtueType) sorter.sortDescending(virtues).get(0).getType());
+          getVirtueFlaw().setRoot(sorter.sortDescending(virtues).get(0).getType());
         }
       }
     });

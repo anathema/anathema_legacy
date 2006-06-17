@@ -20,6 +20,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
 import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
+import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.presenter.charm.SpellViewProperties;
 import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -36,7 +37,7 @@ public class SpellView implements ISpellView {
   private MagicLearnView magicLearnView;
 
   private JPanel content = new JPanel(new GridDialogLayout(1, false));
-  private final ObjectValueControl circleControl = new ObjectValueControl();
+  private final ObjectValueControl<CircleType> circleControl = new ObjectValueControl<CircleType>();
   private final IGridDialogPanel detailPanel = new DefaultGridDialogPanel();
 
   private final SpellViewProperties properties;
@@ -96,7 +97,7 @@ public class SpellView implements ISpellView {
     panel.add(box, GridDialogLayoutData.FILL_HORIZONTAL);
     box.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        circleControl.fireValueChangedEvent(box.getSelectedItem());
+        circleControl.fireValueChangedEvent((CircleType) box.getSelectedItem());
       }
     });
     return panel;
@@ -114,7 +115,7 @@ public class SpellView implements ISpellView {
     magicLearnView.addSelectionListListener(listener);
   }
 
-  public void addCircleSelectionListener(IObjectValueChangedListener listener) {
+  public void addCircleSelectionListener(IObjectValueChangedListener<CircleType> listener) {
     circleControl.addObjectValueChangeListener(listener);
   }
 

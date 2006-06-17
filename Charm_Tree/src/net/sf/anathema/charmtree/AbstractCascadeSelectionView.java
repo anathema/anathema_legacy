@@ -22,8 +22,8 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public abstract class AbstractCascadeSelectionView implements ICascadeSelectionView {
 
-  private IChangeableJComboBox groupComboBox;
-  private IChangeableJComboBox typeComboBox;
+  private IChangeableJComboBox<IIdentificate> groupComboBox;
+  private IChangeableJComboBox<IIdentificate> typeComboBox;
   private final JPanel selectionPanel;
   private final ICharmTreeView charmTreeView;
 
@@ -35,7 +35,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
   public void addCharmTypeSelector(String title, IIdentificate[] types, ListCellRenderer renderer) {
     final JPanel panel = new JPanel(new BorderLayout());
     panel.setBorder(new TitledBorder(title));
-    typeComboBox = new ChangeableJComboBox(types, false);
+    typeComboBox = new ChangeableJComboBox<IIdentificate>(types, false);
     typeComboBox.setSelectedObject(null);
     typeComboBox.setRenderer(renderer);
     panel.add(typeComboBox.getComponent(), BorderLayout.CENTER);
@@ -65,12 +65,12 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
       Dimension preferredSize) {
     final JPanel panel = new JPanel(new BorderLayout());
     panel.setBorder(new TitledBorder(title));
-    groupComboBox = new ChangeableJComboBox(null, false);
+    groupComboBox = new ChangeableJComboBox<IIdentificate>(null, false);
     groupComboBox.setSelectedObject(null);
     groupComboBox.setRenderer(renderer);
     groupComboBox.setPreferredSize(preferredSize);
-    groupComboBox.addObjectSelectionChangedListener(new IObjectValueChangedListener() {
-      public void valueChanged(Object newValue) {
+    groupComboBox.addObjectSelectionChangedListener(new IObjectValueChangedListener<IIdentificate>() {
+      public void valueChanged(IIdentificate newValue) {
         selectionListener.valueChanged(groupComboBox.getSelectedObject(), typeComboBox.getSelectedObject());
       }
     });
@@ -94,7 +94,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
     charmTreeView.dispose();
   }
 
-  protected IChangeableJComboBox getTypeComboBox() {
+  protected IChangeableJComboBox<IIdentificate> getTypeComboBox() {
     return typeComboBox;
   }
 

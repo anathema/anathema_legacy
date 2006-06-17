@@ -10,6 +10,7 @@ import net.sf.anathema.charmentry.presenter.view.IPrerequisitesEntryView;
 import net.sf.anathema.charmentry.presenter.view.ISelectableTraitView;
 import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.lib.util.IIdentificate;
 
 public class PrerequisiteEntryView implements IPrerequisitesEntryView {
 
@@ -20,7 +21,7 @@ public class PrerequisiteEntryView implements IPrerequisitesEntryView {
     this.factory = factory;
   }
 
-  public ISelectableTraitView addSelectablePrerequisiteView(String string, Object[] traits) {
+  public ISelectableTraitView addSelectablePrerequisiteView(String string, IIdentificate[] traits) {
     content.add(new JLabel(string));
     SelectableTraitView view = new SelectableTraitView(factory);
     view.setSelectableTraits(traits);

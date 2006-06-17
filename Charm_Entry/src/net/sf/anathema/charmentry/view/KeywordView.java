@@ -13,6 +13,7 @@ import net.sf.anathema.framework.presenter.view.ButtonControlledObjectSelectionV
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
+import net.sf.anathema.lib.util.IIdentificate;
 
 public class KeywordView implements IKeywordView {
 
@@ -20,8 +21,14 @@ public class KeywordView implements IKeywordView {
   private final JPanel dataPanel = new JPanel(new GridDialogLayout(5, false));
   private final JPanel entryPanel = new JPanel(new GridDialogLayout(2, false));
 
-  public IButtonControlledObjectSelectionView addObjectSelectionView(ListCellRenderer renderer, String label, Icon icon) {
-    ButtonControlledObjectSelectionView view = new ButtonControlledObjectSelectionView(renderer, icon, label);
+  public IButtonControlledObjectSelectionView<IIdentificate> addObjectSelectionView(
+      ListCellRenderer renderer,
+      String label,
+      Icon icon) {
+    ButtonControlledObjectSelectionView<IIdentificate> view = new ButtonControlledObjectSelectionView<IIdentificate>(
+        renderer,
+        icon,
+        label);
     IGridDialogPanel panel = new DefaultGridDialogPanel();
     view.addComponents(panel);
     dataPanel.add(panel.getContent());

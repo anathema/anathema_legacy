@@ -9,7 +9,7 @@ import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
 import net.sf.anathema.character.library.quality.presenter.IQualityType;
 import net.sf.anathema.lib.util.Identificate;
 
-public class Quality extends Identificate implements IQuality {
+public abstract class Quality extends Identificate implements IQuality {
 
   private final List<IQualityPredicate> prerequisites = new ArrayList<IQualityPredicate>();
   private final IQualityType type;
@@ -31,7 +31,7 @@ public class Quality extends Identificate implements IQuality {
     prerequisites.add(prerequisite);
   }
 
-  public boolean prerequisitesFulfilled(IQualitySelection[] selectedQualities) {
+  public boolean prerequisitesFulfilled(IQualitySelection<? extends IQuality>[] selectedQualities) {
     for (IQualityPredicate prerequisite : prerequisites) {
       if (!prerequisite.isFulfilled(selectedQualities)) {
         return false;

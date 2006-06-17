@@ -4,6 +4,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
+import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.charmentry.presenter.view.IHeaderDataEntryView;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.workflow.container.factory.StandardPanelBuilder;
@@ -37,7 +38,7 @@ public class HeaderDataEntryView implements IHeaderDataEntryView {
   public ISourceSelectionView addSourceView(
       String bookLabel,
       String pageLabel,
-      Object[] predefinedSources,
+      IExaltedSourceBook[] predefinedSources,
       ListCellRenderer renderer) {
     SourceSelectionView view = new SourceSelectionView(bookLabel, pageLabel, predefinedSources);
     view.setRenderer(renderer);

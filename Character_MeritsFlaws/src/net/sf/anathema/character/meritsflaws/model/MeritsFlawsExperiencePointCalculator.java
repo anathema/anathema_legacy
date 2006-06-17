@@ -1,6 +1,7 @@
 package net.sf.anathema.character.meritsflaws.model;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
+import net.sf.anathema.character.library.quality.presenter.IQuality;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
 import net.sf.anathema.character.meritsflaws.presenter.IMeritsFlawsModel;
 
@@ -14,12 +15,12 @@ public class MeritsFlawsExperiencePointCalculator implements IAdditionalModelExp
 
   public int calculateCost() {
     int experienceSum = 0;
-    for (IQualitySelection selection : model.getSelectedMerits()) {
+    for (IQualitySelection< ? extends IQuality> selection : model.getSelectedMerits()) {
       if (!selection.isCreationActive() && selection.isExperienceActive()) {
         experienceSum += selection.getPointValue();
       }
     }
-    for (IQualitySelection selection : model.getSelectedFlaws()) {
+    for (IQualitySelection< ? extends IQuality> selection : model.getSelectedFlaws()) {
       if (selection.isCreationActive() && !selection.isExperienceActive()) {
         experienceSum += selection.getPointValue();
       }
@@ -30,12 +31,12 @@ public class MeritsFlawsExperiencePointCalculator implements IAdditionalModelExp
   public int calculateGain() {
     int experienceSum = 0;
     int activeFlawSum = 0;
-    for (IQualitySelection selection : model.getSelectedFlaws()) {
+    for (IQualitySelection< ? extends IQuality> selection : model.getSelectedFlaws()) {
       if (selection.isCreationActive() && selection.isExperienceActive()) {
         activeFlawSum += selection.getPointValue();
       }
     }
-    for (IQualitySelection selection : model.getSelectedFlaws()) {
+    for (IQualitySelection< ? extends IQuality> selection : model.getSelectedFlaws()) {
       if (!selection.isCreationActive() && selection.isExperienceActive()) {
         int pointValue = selection.getPointValue();
         experienceSum += Math.min(10 - activeFlawSum, pointValue);
@@ -48,7 +49,7 @@ public class MeritsFlawsExperiencePointCalculator implements IAdditionalModelExp
       }
     }
     experienceSum = Math.min(10, experienceSum);
-    for (IQualitySelection selection : model.getSelectedMerits()) {
+    for (IQualitySelection< ? extends IQuality> selection : model.getSelectedMerits()) {
       if (selection.isCreationActive() && !selection.isExperienceActive()) {
         experienceSum += selection.getPointValue();
       }

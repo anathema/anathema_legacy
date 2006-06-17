@@ -16,7 +16,7 @@ public class WeaponDamageView implements IWeaponDamageView {
 
   private final JLabel label = new JLabel();
   private final IntegerSpinner valueSpinner = new IntegerSpinner(0);
-  private final IChangeableJComboBox typeBox = new ChangeableJComboBox(new Object[0], false);
+  private final IChangeableJComboBox<HealthType> typeBox = new ChangeableJComboBox<HealthType>(new HealthType[0], false);
 
   public void fillInto(JPanel panel, int columnCount) {
     panel.add(label);
