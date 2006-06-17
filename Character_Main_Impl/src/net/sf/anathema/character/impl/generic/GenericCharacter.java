@@ -6,6 +6,7 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.character.ICharacterPoints;
 import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
@@ -19,7 +20,6 @@ import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
-import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
@@ -111,7 +111,7 @@ public class GenericCharacter implements IGenericCharacter {
     return new INamedGenericTrait[0];
   }
 
-  public ICasteType getCasteType() {
+  public ICasteType< ? extends ICasteTypeVisitor> getCasteType() {
     return statistics.getCharacterConcept().getCaste().getType();
   }
 

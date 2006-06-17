@@ -48,7 +48,7 @@ public class SiderealCollegeView implements ISimpleTabView, ISiderealCollegeView
     content.add(collegePanel);
   }
 
-  public IToggleButtonTraitView addIntValueView(
+  public IToggleButtonTraitView<SimpleTraitView> addIntValueView(
       String label,
       IIntValueDisplayFactory factory,
       IIconToggleButtonProperties viewProperties,
@@ -56,7 +56,7 @@ public class SiderealCollegeView implements ISimpleTabView, ISiderealCollegeView
       int maxValue,
       boolean selected) {
     SimpleTraitView view = new SimpleTraitView(factory, label, value, maxValue);
-    FrontToggleButtonTraitViewWrapper traitView = new FrontToggleButtonTraitViewWrapper(view, viewProperties, selected);
+    FrontToggleButtonTraitViewWrapper<SimpleTraitView> traitView = new FrontToggleButtonTraitViewWrapper<SimpleTraitView>(view, viewProperties, selected);
     collegeGroupPanel.addEntry(traitView);
     return traitView;
   }

@@ -1,13 +1,13 @@
 package net.sf.anathema.character.library.virtueflaw.model;
 
-import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public interface IVirtueFlaw {
-  public VirtueType getRoot();
+  public ITraitType getRoot();
 
-  public void setRoot(VirtueType root);
+  public void setRoot(ITraitType root);
 
   public ITextualDescription getName();
 

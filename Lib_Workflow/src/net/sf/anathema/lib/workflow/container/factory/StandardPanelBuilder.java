@@ -61,14 +61,14 @@ public class StandardPanelBuilder {
     return spinner;
   }
 
-  public IObjectSelectionView addObjectSelectionView(String label, ListCellRenderer renderer, Object[] objects) {
-    ObjectSelectionView view = new ObjectSelectionView(label, renderer, objects);
+  public <V> IObjectSelectionView<V> addObjectSelectionView(String label, ListCellRenderer renderer, V[] objects) {
+    ObjectSelectionView<V> view = new ObjectSelectionView<V>(label, renderer, objects);
     view.addComponents(dialogPanel);
     return view;
   }
 
-  public IObjectSelectionView addEditableObjectSelectionView(String label, ListCellRenderer renderer, Object[] objects) {
-    ObjectSelectionView view = new ObjectSelectionView(label, renderer, objects, true);
+  public <V> IObjectSelectionView<V> addEditableObjectSelectionView(String label, ListCellRenderer renderer, V[] objects) {
+    ObjectSelectionView<V> view = new ObjectSelectionView<V>(label, renderer, objects, true);
     view.addComponents(dialogPanel);
     return view;
   }

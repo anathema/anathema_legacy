@@ -8,6 +8,7 @@ import java.util.Map;
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditonalModelTemplate;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.character.ICharacterPoints;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.health.HealthLevelType;
@@ -163,7 +164,7 @@ public class DemoGenericCharacter implements IGenericCharacter {
     return false;
   }
 
-  public ICasteType getCasteType() {
+  public ICasteType< ? extends ICasteTypeVisitor> getCasteType() {
     return ICasteType.NULL_CASTE_TYPE;
   }
 
@@ -185,6 +186,7 @@ public class DemoGenericCharacter implements IGenericCharacter {
   }
 
   public void setLearnCount(IMultiLearnableCharm multiLearnableCharm, int newValue) {
+    throw new UnsupportedOperationException();
   }
 
   public DemoGenericDescription getDescription() {

@@ -11,6 +11,7 @@ import java.util.Map;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ConfigurableCharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmLearnStrategy;
@@ -25,8 +26,8 @@ import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
-import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
+import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
@@ -51,7 +52,6 @@ import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
-
 
 public class CharmConfiguration implements ICharmConfiguration {
 
@@ -146,7 +146,7 @@ public class CharmConfiguration implements ICharmConfiguration {
           ILearningCharmGroup group = getGroupById(charm.getCharacterType(), charm.getGroupId());
           manager.registerSubeffectCharm(visitedCharm, charm, group, CharmConfiguration.this);
         }
-        
+
         public void visitMultipleEffectCharm(IMultipleEffectCharm visitedCharm) {
           final ICharm charm = getCharmTree(characterType).getCharmByID(visitedCharm.getCharmId());
           ILearningCharmGroup group = getGroupById(charm.getCharacterType(), charm.getGroupId());
@@ -373,7 +373,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   public final boolean isLearnable(ICharm charm) {
     if (isAlienCharm(charm)) {
-      ICasteType casteType = context.getBasicCharacterContext().getCasteType();
+      ICasteType< ? extends ICasteTypeVisitor> casteType = context.getBasicCharacterContext().getCasteType();
       if (!getCharmTemplate(getNativeCharacterType()).isAllowedAlienCharms(casteType)) {
         return false;
       }

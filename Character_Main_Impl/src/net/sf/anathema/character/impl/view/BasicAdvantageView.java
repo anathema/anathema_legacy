@@ -16,7 +16,6 @@ import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.sf.anathema.character.impl.view.advantage.EssencePanelView;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
-import net.sf.anathema.character.library.trait.view.ITraitView;
 import net.sf.anathema.character.library.trait.view.RearButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.view.IAdvantageViewProperties;
@@ -93,12 +92,12 @@ public class BasicAdvantageView extends AbstractTabView<IAdvantageViewProperties
     return willpowerView;
   }
 
-  public IButtonControlledObjectSelectionView addBackgroundSelectionView(
+  public IButtonControlledObjectSelectionView<Object> addBackgroundSelectionView(
       String labelText,
       ComboBoxEditor editor,
       ListCellRenderer renderer,
       Icon addIcon) {
-    ButtonControlledObjectSelectionView objectSelectionView = new ButtonControlledObjectSelectionView(
+    ButtonControlledObjectSelectionView<Object> objectSelectionView = new ButtonControlledObjectSelectionView<Object>(
         renderer,
         addIcon,
         labelText,
@@ -107,9 +106,15 @@ public class BasicAdvantageView extends AbstractTabView<IAdvantageViewProperties
     return objectSelectionView;
   }
 
-  public IRemovableTraitView addBackgroundView(Icon deleteIcon, String labelText, int value, int maxValue) {
+  public IRemovableTraitView<SimpleTraitView> addBackgroundView(
+      Icon deleteIcon,
+      String labelText,
+      int value,
+      int maxValue) {
     SimpleTraitView view = new SimpleTraitView(guiConfiguration, labelText, value, maxValue);
-    RearButtonTraitViewWrapper backgroundView = new RearButtonTraitViewWrapper<ITraitView>(view, deleteIcon);
+    RearButtonTraitViewWrapper<SimpleTraitView> backgroundView = new RearButtonTraitViewWrapper<SimpleTraitView>(
+        view,
+        deleteIcon);
     backgroundView.addComponents(backgroundDisplayPanel);
     return backgroundView;
   }

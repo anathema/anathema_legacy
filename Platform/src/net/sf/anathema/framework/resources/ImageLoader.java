@@ -61,7 +61,7 @@ public final class ImageLoader {
     return readImage(inputStream);
   }
 
-  public static Image getImage(Class relativeClass, String filename) {
+  public static Image getImage(Class<?> relativeClass, String filename) {
     String cacheKey = computeCacheKey(relativeClass, filename);
 
     Image storedImage = imageCache.get(cacheKey);
@@ -86,7 +86,7 @@ public final class ImageLoader {
     return rValue;
   }
 
-  public static ImageIcon getImageIcon(Class relativeClass, String filename) {
+  public static ImageIcon getImageIcon(Class<?> relativeClass, String filename) {
     Image image = getImage(relativeClass, filename);
     if (image == null) {
       return null;
@@ -94,7 +94,7 @@ public final class ImageLoader {
     return new ImageIcon(image);
   }
 
-  public static ImageIcon getMemoryImageIcon(Class relativeClass, String filename) {
+  public static ImageIcon getMemoryImageIcon(Class<?> relativeClass, String filename) {
     String cacheKey = computeCacheKey(relativeClass, filename);
     ImageIcon storedIcon = imageIconCache.get(cacheKey);
     if (storedIcon != null) {
@@ -106,7 +106,7 @@ public final class ImageLoader {
     return icon;
   }
 
-  public static Image getMemoryImage(Class relativeClass, String filename) {
+  public static Image getMemoryImage(Class<?> relativeClass, String filename) {
     try {
       return createMemoryImage(getImage(relativeClass, filename));
     }
@@ -155,7 +155,7 @@ public final class ImageLoader {
     return Toolkit.getDefaultToolkit().createImage(memoryImageSource);
   }
 
-  public static ImageIcon defaultGetImageIcon(Class relativeClass, String filename) {
+  public static ImageIcon defaultGetImageIcon(Class<?> relativeClass, String filename) {
     String cacheKey = computeCacheKey(relativeClass, filename);
     ImageIcon icon = imageIconCache.get(cacheKey);
     if (icon == null) {
@@ -167,7 +167,7 @@ public final class ImageLoader {
     return icon;
   }
 
-  private static String computeCacheKey(Class relativeClass, String filename) {
+  private static String computeCacheKey(Class<?> relativeClass, String filename) {
     String className = relativeClass.getName();
     int index = className.lastIndexOf('.');
     if (index == -1) {
@@ -176,7 +176,7 @@ public final class ImageLoader {
     return className.substring(0, index) + '/' + filename;
   }
 
-  private static Icon defaultMakeIcon(Class relativeClass, final String gifFile) {
+  private static Icon defaultMakeIcon(Class<?> relativeClass, final String gifFile) {
     /*
      * Copy resource into a byte array. This is necessary because several
      * browsers consider Class.getResource a security risk because it can be
@@ -226,7 +226,7 @@ public final class ImageLoader {
   }
 
   public static JButton createImageButton(
-      Class relativeClass,
+      Class<?> relativeClass,
       String label,
       String filename,
       String filename2) {
@@ -241,7 +241,7 @@ public final class ImageLoader {
     return b;
   }
 
-  public static JButton createImageButton(Class relativeClass, String label, String filename) {
+  public static JButton createImageButton(Class<?> relativeClass, String label, String filename) {
     return new JButton(label, getMemoryImageIcon(relativeClass, filename));
   }
 

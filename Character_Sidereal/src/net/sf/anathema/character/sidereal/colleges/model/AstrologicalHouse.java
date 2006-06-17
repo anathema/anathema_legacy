@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
@@ -86,7 +87,11 @@ public class AstrologicalHouse extends Identificate implements IAstrologicalHous
     }
   };
 
-  private AstrologicalHouse(String id, CollegeType[] collegeTypes, ICasteType casteType, ICharacterModelContext context) {
+  private AstrologicalHouse(
+      String id,
+      CollegeType[] collegeTypes,
+      ICasteType< ? extends ICasteTypeVisitor> casteType,
+      ICharacterModelContext context) {
     super(id);
     colleges = new IFavorableTrait[collegeTypes.length];
     for (int index = 0; index < collegeTypes.length; index++) {

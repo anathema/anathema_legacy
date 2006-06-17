@@ -16,7 +16,7 @@ public interface IBasicAdvantageView extends ITabView<IAdvantageViewProperties> 
 
   public IIntValueView addWillpower(String labelText, int value, int maxValue);
 
-  public IButtonControlledObjectSelectionView addBackgroundSelectionView(
+  public IButtonControlledObjectSelectionView<Object> addBackgroundSelectionView(
       String labelText,
       ComboBoxEditor editor,
       ListCellRenderer renderer,

@@ -18,8 +18,8 @@ import net.sf.anathema.character.generic.impl.equipment.IEquippedWeapon;
 import net.sf.anathema.character.generic.impl.equipment.WeaponStatisticsCalculator;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
@@ -86,7 +86,7 @@ public class LunarVoidstateReportTemplate extends ExaltVoidstateReportTemplate {
     IVirtueFlaw virtueFlaw = ((IVirtueFlawModel) character.getAdditionalModel(LunarVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
     parameters.put(ExaltVoidstateReportTemplate.VIRTUE_FLAW, virtueFlaw.getName().getText());
     String virtueString;
-    VirtueType root = virtueFlaw.getRoot();
+    ITraitType root = virtueFlaw.getRoot();
     if (root == null) {
       virtueString = resources.getString("Lunar.VirtueFlaw.Reporting.HighestVirtue"); //$NON-NLS-1$
     }

@@ -2,6 +2,7 @@ package net.sf.anathema.character.library.trait;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
@@ -28,7 +29,7 @@ public class FavorableTrait extends DefaultTrait implements IFavorableTrait {
 
   public FavorableTrait(
       IFavorableTraitRules traitRules,
-      ICasteType caste,
+      ICasteType<? extends ICasteTypeVisitor>  caste,
       ITraitValueStrategy valueStrategy,
       IBasicCharacterData basicData,
       ICharacterListening listening,
@@ -53,8 +54,8 @@ public class FavorableTrait extends DefaultTrait implements IFavorableTrait {
     getFavorization().setCaste(isSupportedCasteType(basicData.getCasteType()));
   }
 
-  public boolean isSupportedCasteType(ICasteType casteType) {
-    ICasteType favorizationCaste = getFavorization().getCaste();
+  public boolean isSupportedCasteType(ICasteType<? extends ICasteTypeVisitor>  casteType) {
+    ICasteType<? extends ICasteTypeVisitor>  favorizationCaste = getFavorization().getCaste();
     return favorizationCaste != null && favorizationCaste == casteType;
   }
 

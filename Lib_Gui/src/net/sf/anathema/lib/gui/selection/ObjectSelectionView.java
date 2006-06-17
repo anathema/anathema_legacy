@@ -14,7 +14,7 @@ import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 
-public class ObjectSelectionView implements IObjectSelectionView, IGridDialogPanelContent {
+public class ObjectSelectionView<V> implements IObjectSelectionView<V>, IGridDialogPanelContent {
 
   private final IChangeableJComboBox comboBox;
   private final JLabel label;
@@ -23,11 +23,11 @@ public class ObjectSelectionView implements IObjectSelectionView, IGridDialogPan
     return comboBox.getComponent();
   }
 
-  public ObjectSelectionView(String labelString, ListCellRenderer renderer, Object[] objects) {
+  public ObjectSelectionView(String labelString, ListCellRenderer renderer, V[] objects) {
     this(labelString, renderer, objects, false);
   }
 
-  public ObjectSelectionView(String labelString, ListCellRenderer renderer, Object[] objects, boolean editable) {
+  public ObjectSelectionView(String labelString, ListCellRenderer renderer, V[] objects, boolean editable) {
     this.label = new JLabel(labelString);
     this.comboBox = new ChangeableJComboBox(objects, editable);
     comboBox.setRenderer(renderer);
@@ -57,15 +57,15 @@ public class ObjectSelectionView implements IObjectSelectionView, IGridDialogPan
     panel.add(comboBox.getComponent(), data);
   }
 
-  public void setSelectedObject(Object object) {
+  public void setSelectedObject(V object) {
     comboBox.setSelectedObject(object);
   }
 
-  public void setObjects(Object[] objects) {
+  public void setObjects(V[] objects) {
     comboBox.setObjects(objects);
   }
 
-  public void addObjectSelectionChangedListener(final IObjectValueChangedListener listener) {
+  public void addObjectSelectionChangedListener(final IObjectValueChangedListener<V> listener) {
     comboBox.addObjectSelectionChangedListener(listener);
   }
 

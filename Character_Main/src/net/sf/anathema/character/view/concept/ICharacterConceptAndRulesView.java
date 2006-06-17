@@ -9,9 +9,9 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 public interface ICharacterConceptAndRulesView extends ITabView<ICharacterConceptAndRulesViewProperties> {
 
-  public IObjectSelectionView addConceptObjectSelectionView(
+  public <V> IObjectSelectionView<V> addConceptObjectSelectionView(
       String labelText,
-      Object[] objects,
+      V[] objects,
       ListCellRenderer renderer,
       boolean editable);
 

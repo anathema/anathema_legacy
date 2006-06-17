@@ -19,7 +19,7 @@ public class NumberTableColumnSettings extends AbstractTableColumnSettings {
 
   private final NumberFormat format;
   private final NullValueStrategy nullValueStrategy;
-  private final Class valueClass;
+  private final Class<?> valueClass;
 
   public static NumberTableColumnSettings getDoubleInstance(
       String format,
@@ -36,13 +36,13 @@ public class NumberTableColumnSettings extends AbstractTableColumnSettings {
         nullValueStrategy);
   }
 
-  public NumberTableColumnSettings(NumberFormat format, Class valueClass) {
+  public NumberTableColumnSettings(NumberFormat format, Class<?> valueClass) {
     this(format, valueClass, NullValueStrategy.DISALLOW);
   }
 
   public NumberTableColumnSettings(
       NumberFormat format,
-      Class valueClass,
+      Class<?> valueClass,
       NullValueStrategy nullValueStrategy) {
     super(format.getMinimumIntegerDigits() + format.getMinimumFractionDigits() + 2);
     Ensure.ensureNotNull(format);

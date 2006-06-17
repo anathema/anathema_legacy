@@ -2,6 +2,7 @@ package net.sf.anathema.character.generic.impl.traits.caste;
 
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.impl.traits.AbstractTraitTemplate;
 import net.sf.anathema.character.generic.impl.traits.limitation.EssenceBasedLimitation;
@@ -22,7 +23,7 @@ public class CasteRangeTraitTemplate extends AbstractTraitTemplate {
 
   public int getMinimumValue(ILimitationContext limiationContext) {
     for (ICasteTraitMinimum casteMinimum : casteMinimums) {
-      ICasteType casteType = limiationContext.getCasteType();
+      ICasteType< ? extends ICasteTypeVisitor> casteType = limiationContext.getCasteType();
       if (ObjectUtilities.equals(casteType, casteMinimum.getCaste())) {
         return casteMinimum.getMinimumValue(limiationContext);
       }

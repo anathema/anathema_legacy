@@ -11,7 +11,10 @@ public class DurationEntryView implements IDurationEntryView {
 
   private final StandardPanelBuilder builder = new StandardPanelBuilder();
 
-  public IObjectSelectionView addObjectSelectionView(String durationLabel, ListCellRenderer renderer, Object[] durations) {
+  public IObjectSelectionView<String> addObjectSelectionView(
+      String durationLabel,
+      ListCellRenderer renderer,
+      String[] durations) {
     return builder.addEditableObjectSelectionView(durationLabel, renderer, durations);
   }
 

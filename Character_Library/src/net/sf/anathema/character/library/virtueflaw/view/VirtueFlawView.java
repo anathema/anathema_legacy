@@ -15,6 +15,7 @@ import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.generic.framework.util.ExperienceUtilities;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawView;
 import net.sf.anathema.lib.gui.GuiUtilities;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
@@ -82,8 +83,13 @@ public class VirtueFlawView implements IVirtueFlawView {
     return textViews;
   }
 
-  public IObjectSelectionView addVirtueFlawRootSelectionView(final String labelText, ListCellRenderer renderer) {
-    final ObjectSelectionView rootSelectionView = new ObjectSelectionView(labelText, renderer, new Object[0]);
+  public IObjectSelectionView<ITraitType> addVirtueFlawRootSelectionView(
+      final String labelText,
+      ListCellRenderer renderer) {
+    final ObjectSelectionView<ITraitType> rootSelectionView = new ObjectSelectionView<ITraitType>(
+        labelText,
+        renderer,
+        new ITraitType[0]);
     rootSelectionView.addComponents(getVirtueFlawPanel(), GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
     return rootSelectionView;
   }

@@ -45,12 +45,12 @@ public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConc
     panel.add(rulesPanel.getContent(), GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
   }
 
-  public IObjectSelectionView addConceptObjectSelectionView(
+  public <V> IObjectSelectionView<V> addConceptObjectSelectionView(
       String labelText,
-      Object[] objects,
+      V[] objects,
       ListCellRenderer renderer,
       boolean editable) {
-    ObjectSelectionView selectionView = new ObjectSelectionView(labelText, renderer, objects, editable);
+    ObjectSelectionView<V> selectionView = new ObjectSelectionView<V>(labelText, renderer, objects, editable);
     selectionView.getComboBox().getEditor().getEditorComponent().setEnabled(true);
     selectionView.addComponents(characterConceptPanel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
     return selectionView;

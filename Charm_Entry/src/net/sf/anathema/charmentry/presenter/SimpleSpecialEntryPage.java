@@ -56,7 +56,7 @@ public class SimpleSpecialEntryPage extends AbstractAnathemaWizardPage {
       }
     });
     speedView.setValue(getPageModel().getSpeed());
-    IObjectSelectionView turnView = view.addObjectSelectionView(
+    IObjectSelectionView<TurnType> turnView = view.addObjectSelectionView(
         properties.getTurnTypeLabel(),
         properties.getDefaultIdentificateRenderer(),
         getPageModel().getTurnTypes());

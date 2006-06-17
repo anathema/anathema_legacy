@@ -22,7 +22,7 @@ public class HeaderDataEntryView implements IHeaderDataEntryView {
     return content;
   }
 
-  public IObjectSelectionView addComboBoxRow(String label, ListCellRenderer renderer, Object[] objects) {
+  public <V> IObjectSelectionView<V> addComboBoxRow(String label, ListCellRenderer renderer, V[] objects) {
     return builder.addObjectSelectionView(label, renderer, objects);
   }
 
@@ -34,7 +34,11 @@ public class HeaderDataEntryView implements IHeaderDataEntryView {
     return textView;
   }
 
-  public ISourceSelectionView addSourceView(String bookLabel, String pageLabel, Object[] predefinedSources, ListCellRenderer renderer) {
+  public ISourceSelectionView addSourceView(
+      String bookLabel,
+      String pageLabel,
+      Object[] predefinedSources,
+      ListCellRenderer renderer) {
     SourceSelectionView view = new SourceSelectionView(bookLabel, pageLabel, predefinedSources);
     view.setRenderer(renderer);
     builder.addDialogComponent(view);

@@ -4,7 +4,6 @@ import java.awt.Component;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.VirtueChangeListener;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.framework.view.AbstractSelectCellRenderer;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
@@ -44,7 +43,7 @@ public class VirtueFlawPresenter {
   }
 
   protected void initRootPresentation(final IVirtueFlaw virtueFlaw) {
-    final IObjectSelectionView rootView = view.addVirtueFlawRootSelectionView(
+    final IObjectSelectionView<ITraitType> rootView = view.addVirtueFlawRootSelectionView(
         resources.getString("VirtueFlaw.Root.Name"), //$NON-NLS-1$
         new AbstractSelectCellRenderer(resources) {
           @Override
@@ -74,9 +73,9 @@ public class VirtueFlawPresenter {
         rootView.setSelectedObject(virtueFlaw.getRoot());
       }
     });
-    rootView.addObjectSelectionChangedListener(new IObjectValueChangedListener() {
-      public void valueChanged(Object newValue) {
-        virtueFlaw.setRoot((VirtueType) newValue);
+    rootView.addObjectSelectionChangedListener(new IObjectValueChangedListener<ITraitType>() {
+      public void valueChanged(ITraitType newValue) {
+        virtueFlaw.setRoot(newValue);
       }
     });
     model.addVirtueChangeListener(new VirtueChangeListener() {
@@ -88,8 +87,8 @@ public class VirtueFlawPresenter {
     updateRootView(rootView);
   }
 
-  private void updateRootView(IObjectSelectionView rootView) {
-    VirtueType rootCopy = model.getVirtueFlaw().getRoot();
+  private void updateRootView(IObjectSelectionView<ITraitType> rootView) {
+    ITraitType rootCopy = model.getVirtueFlaw().getRoot();
     rootView.setObjects(model.getFlawVirtueTypes());
     rootView.setSelectedObject(rootCopy);
   }

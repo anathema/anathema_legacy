@@ -1,6 +1,7 @@
 package net.sf.anathema.character.impl.generic;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.model.concept.ICharacterConcept;
 import net.sf.anathema.character.model.concept.IMotivation;
@@ -35,7 +36,7 @@ public class GenericConcept implements IConcept {
     return conceptName[0];
   }
 
-  public ICasteType getCasteType() {
+  public ICasteType< ? extends ICasteTypeVisitor> getCasteType() {
     return characterConcept.getCaste().getType();
   }
 }

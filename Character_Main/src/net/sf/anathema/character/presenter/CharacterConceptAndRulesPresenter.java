@@ -10,6 +10,7 @@ import javax.swing.text.JTextComponent;
 import net.disy.commons.swing.ui.IObjectUi;
 import net.disy.commons.swing.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.model.ICharacterStatistics;
@@ -118,7 +119,8 @@ public class CharacterConceptAndRulesPresenter {
         return sorterResources.getString("Nature." + type.getId() + ".Name"); //$NON-NLS-1$ //$NON-NLS-2$
       }
     }.sortAscending(unsortedNatures, natures, resources);
-    final IObjectSelectionView natureView = view.addConceptObjectSelectionView(resources.getString("Label.Nature"), //$NON-NLS-1$
+    final IObjectSelectionView<INatureType> natureView = view.addConceptObjectSelectionView(
+        resources.getString("Label.Nature"), //$NON-NLS-1$
         natures,
         new DefaultListCellRenderer() {
           @Override
@@ -142,11 +144,9 @@ public class CharacterConceptAndRulesPresenter {
     final ITypedDescription<INatureType> natureType = nature.getDescription();
     natureView.setSelectedObject(natureType.getType());
     final JTextComponent willpowerConditionLabel = view.addWillpowerConditionView(resources.getString("CharacterConcept.GainWillpower")); //$NON-NLS-1$
-    natureView.addObjectSelectionChangedListener(new IObjectValueChangedListener() {
-      public void valueChanged(Object newValue) {
-        if (newValue instanceof INatureType) {
-          natureType.setType((INatureType) newValue);
-        }
+    natureView.addObjectSelectionChangedListener(new IObjectValueChangedListener<INatureType>() {
+      public void valueChanged(INatureType newValue) {
+        natureType.setType(newValue);
       }
     });
     natureType.addChangeListener(new IChangeListener() {
@@ -163,7 +163,7 @@ public class CharacterConceptAndRulesPresenter {
   }
 
   private void updateNature(
-      final IObjectSelectionView natureView,
+      final IObjectSelectionView<INatureType> natureView,
       final JTextComponent willpowerConditionLabel,
       INatureType natureType) {
     natureView.setSelectedObject(natureType);
@@ -193,16 +193,17 @@ public class CharacterConceptAndRulesPresenter {
                 template.getEdition().getId()));
       }
     };
-    final IObjectSelectionView casteView = view.addConceptObjectSelectionView(
+    final IObjectSelectionView<ICasteType< ? extends ICasteTypeVisitor>> casteView = view.addConceptObjectSelectionView(
         resources.getString(casteLabelResourceKey),
         template.getCasteCollection().getAllCasteTypes(),
         new ObjectUiListCellRenderer(casteUi),
         false);
-    final ITypedDescription<ICasteType> caste = statistics.getCharacterConcept().getCaste();
+    final ITypedDescription<ICasteType< ? extends ICasteTypeVisitor>> caste = statistics.getCharacterConcept()
+        .getCaste();
     casteView.setSelectedObject(caste.getType());
-    casteView.addObjectSelectionChangedListener(new IObjectValueChangedListener() {
-      public void valueChanged(Object newValue) {
-        caste.setType((ICasteType) newValue);
+    casteView.addObjectSelectionChangedListener(new IObjectValueChangedListener<ICasteType< ? extends ICasteTypeVisitor>>() {
+      public void valueChanged(ICasteType< ? extends ICasteTypeVisitor> newValue) {
+        caste.setType(newValue);
       }
     });
     caste.addChangeListener(new IChangeListener() {

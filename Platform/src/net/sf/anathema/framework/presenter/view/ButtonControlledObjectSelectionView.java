@@ -22,8 +22,8 @@ import net.sf.anathema.lib.gui.dialogcomponent.grouped.IGridDialogPanelContent;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.widgets.ColoredJComboBox;
 
-public class ButtonControlledObjectSelectionView implements
-    IButtonControlledObjectSelectionView,
+public class ButtonControlledObjectSelectionView<V> implements
+    IButtonControlledObjectSelectionView<V>,
     IGridDialogPanelContent {
 
   private final JComboBox comboBox;
@@ -66,23 +66,25 @@ public class ButtonControlledObjectSelectionView implements
     comboBox.setSelectedItem(object);
   }
 
-  public void addButtonListener(final IObjectValueChangedListener listener) {
+  public void addButtonListener(final IObjectValueChangedListener<V> listener) {
     addButton.addActionListener(new ActionListener() {
+      @SuppressWarnings("unchecked")
       public void actionPerformed(ActionEvent e) {
-        listener.valueChanged(comboBox.getSelectedItem());
+        listener.valueChanged((V) comboBox.getSelectedItem());
       }
     });
   }
 
-  public void addObjectSelectionChangedListener(final IObjectValueChangedListener listener) {
+  public void addObjectSelectionChangedListener(final IObjectValueChangedListener<V> listener) {
     comboBox.addItemListener(new ItemListener() {
+      @SuppressWarnings("unchecked")
       public void itemStateChanged(ItemEvent e) {
-        listener.valueChanged(comboBox.getSelectedItem());
+        listener.valueChanged((V) comboBox.getSelectedItem());
       }
     });
   }
 
-  public void setObjects(Object[] objects) {
+  public void setObjects(V[] objects) {
     Object selectedItem = comboBox.getSelectedItem();
     DefaultComboBoxModel model = (DefaultComboBoxModel) comboBox.getModel();
     model.removeAllElements();

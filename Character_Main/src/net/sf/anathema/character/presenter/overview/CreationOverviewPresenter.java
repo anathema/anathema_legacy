@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.library.overview.IAdditionalAlotmentView;
@@ -191,7 +192,7 @@ public class CreationOverviewPresenter {
   }
 
   private String getCasteValueResourceKey() {
-    ICasteType casteType = statistics.getCharacterConcept().getCaste().getType();
+    ICasteType< ? extends ICasteTypeVisitor> casteType = statistics.getCharacterConcept().getCaste().getType();
     if (casteType.equals(ICasteType.NULL_CASTE_TYPE)) {
       return null;
     }

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
@@ -18,7 +19,9 @@ public abstract class AbstractTraitTypeGroupFactory {
 
   protected abstract IIdentificate getGroupIdentifier(ICasteCollection casteCollection, String groupId);
 
-  public IIdentifiedCasteTraitTypeGroup[] createTraitGroups(ICasteCollection casteCollection, IGroupedTraitType[] traitTypes) {
+  public IIdentifiedCasteTraitTypeGroup[] createTraitGroups(
+      ICasteCollection casteCollection,
+      IGroupedTraitType[] traitTypes) {
     List<String> groupIds = new ArrayList<String>();
     MultiEntryMap<String, ITraitType> traitTypesByGroupId = new MultiEntryMap<String, ITraitType>();
     Map<String, String> casteIdByGroupId = new HashMap<String, String>();
@@ -39,8 +42,14 @@ public abstract class AbstractTraitTypeGroupFactory {
     return groups;
   }
 
-  private IIdentifiedCasteTraitTypeGroup createTraitGroup(ICasteCollection casteCollection, String groupId, String casteId, List<ITraitType> traitTypes) {
-    ICasteType casteType = casteCollection.containsCasteType(casteId) ? casteCollection.getById(casteId) : null;
+  private IIdentifiedCasteTraitTypeGroup createTraitGroup(
+      ICasteCollection casteCollection,
+      String groupId,
+      String casteId,
+      List<ITraitType> traitTypes) {
+    ICasteType< ? extends ICasteTypeVisitor> casteType = casteCollection.containsCasteType(casteId)
+        ? casteCollection.getById(casteId)
+        : null;
     IIdentificate groupIdentifier = getGroupIdentifier(casteCollection, groupId);
     return new IdentifiedCasteTraitTypeGroup(
         traitTypes.toArray(new ITraitType[traitTypes.size()]),

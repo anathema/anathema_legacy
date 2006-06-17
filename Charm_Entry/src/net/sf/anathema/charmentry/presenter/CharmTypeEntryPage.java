@@ -66,7 +66,7 @@ public class CharmTypeEntryPage extends AbstractAnathemaWizardPage {
   }
 
   private void initTypeView() {
-    IObjectSelectionView typeView = getPageContent().addComboBoxRow(
+    IObjectSelectionView<CharmType> typeView = getPageContent().addComboBoxRow(
         getProperties().getTypeLabel(),
         getProperties().getDefaultIdentificateRenderer(),
         getPageModel().getCharmTypes());

@@ -1,15 +1,16 @@
 package net.sf.anathema.development.character;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.character.IConcept;
 
 public class DemoConcept implements IConcept {
 
-  private ICasteType casteType = ICasteType.NULL_CASTE_TYPE;
+  private ICasteType< ? extends ICasteTypeVisitor> casteType = ICasteType.NULL_CASTE_TYPE;
   private String conceptText;
   private String willpowerRegainingConceptName;
 
-  public ICasteType getCasteType() {
+  public ICasteType< ? extends ICasteTypeVisitor> getCasteType() {
     return casteType;
   }
 
@@ -21,7 +22,7 @@ public class DemoConcept implements IConcept {
     return willpowerRegainingConceptName;
   }
 
-  public void setCasteType(ICasteType casteType) {
+  public void setCasteType(ICasteType< ? extends ICasteTypeVisitor> casteType) {
     this.casteType = casteType;
   }
 

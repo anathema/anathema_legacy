@@ -25,8 +25,8 @@ public class RuleSetSelectionView implements IRuleSetSelectionView {
 
   public void initRulesSelectionView() {
     rulesSelectionPanel = new DefaultGridDialogPanel(false);
-    String label = resources.getString("CharacterDialog.Ruleset.Select.Label");
-    IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer("Ruleset.", resources);
+    String label = resources.getString("CharacterDialog.Ruleset.Select.Label"); //$NON-NLS-1$
+    IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer("Ruleset.", resources); //$NON-NLS-1$
     selectionView = new ObjectSelectionView(label, renderer, ExaltedRuleSet.values(), false);
     selectionView.setSelectedObject(preferredRuleSet);
     selectionView.addComponents(rulesSelectionPanel);

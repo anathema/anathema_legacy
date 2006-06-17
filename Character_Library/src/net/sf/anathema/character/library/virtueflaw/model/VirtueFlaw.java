@@ -1,6 +1,6 @@
 package net.sf.anathema.character.library.virtueflaw.model;
 
-import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
@@ -8,15 +8,15 @@ import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescri
 
 public class VirtueFlaw implements IVirtueFlaw {
 
-  private VirtueType root;
+  private ITraitType root;
   private final ITextualDescription name = new SimpleTextualDescription(""); //$NON-NLS-1$
   private final ChangeControl control = new ChangeControl();
 
-  public VirtueType getRoot() {
+  public ITraitType getRoot() {
     return root;
   }
 
-  public void setRoot(VirtueType root) {
+  public void setRoot(ITraitType root) {
     this.root = root;
     control.fireChangedEvent();
   }

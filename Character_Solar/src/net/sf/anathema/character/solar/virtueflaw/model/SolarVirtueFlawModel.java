@@ -23,7 +23,7 @@ public class SolarVirtueFlawModel extends VirtueFlawModel implements ISolarVirtu
     addVirtueChangeListener(new VirtueChangeListener() {
       @Override
       public void configuredChangeOccured() {
-        VirtueType rootType = getVirtueFlaw().getRoot();
+        ITraitType rootType = getVirtueFlaw().getRoot();
         if (rootType != null && context.getTraitCollection().getTrait(rootType).getCurrentValue() < 3) {
           getVirtueFlaw().setRoot(null);
         }

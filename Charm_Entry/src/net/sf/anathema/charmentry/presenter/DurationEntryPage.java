@@ -48,7 +48,7 @@ public class DurationEntryPage extends AbstractAnathemaWizardPage {
   @Override
   protected void initPageContent() {
     this.view = viewFactory.createDurationView();
-    IObjectSelectionView selectionView = view.addObjectSelectionView(
+    IObjectSelectionView<String> selectionView = view.addObjectSelectionView(
         properties.getDurationLabel(),
         new DefaultListCellRenderer(),
         getPageModel().getDurations());

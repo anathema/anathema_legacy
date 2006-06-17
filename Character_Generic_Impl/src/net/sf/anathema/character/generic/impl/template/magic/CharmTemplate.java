@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -22,8 +23,11 @@ public class CharmTemplate implements ICharmTemplate {
   private final boolean highLevelAtCreation;
   private final List<String> alienAllowedCastes = new ArrayList<String>();
 
-  public CharmTemplate(MartialArtsLevel martialArtsLevel, ICharmCache charmProvider, CharacterType characterType, IExaltedEdition edition)
-      throws PersistenceException {
+  public CharmTemplate(
+      MartialArtsLevel martialArtsLevel,
+      ICharmCache charmProvider,
+      CharacterType characterType,
+      IExaltedEdition edition) throws PersistenceException {
     this(martialArtsLevel, false, CharmSet.createRegularCharmSet(charmProvider, characterType, edition));
   }
 
@@ -67,7 +71,7 @@ public class CharmTemplate implements ICharmTemplate {
     return highLevelAtCreation;
   }
 
-  public boolean isAllowedAlienCharms(ICasteType caste) {
+  public boolean isAllowedAlienCharms(ICasteType< ? extends ICasteTypeVisitor> caste) {
     return alienAllowedCastes.contains(caste.getId());
   }
 

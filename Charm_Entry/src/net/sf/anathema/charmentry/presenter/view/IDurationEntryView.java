@@ -7,5 +7,8 @@ import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 
 public interface IDurationEntryView extends IPageContent {
 
-  public IObjectSelectionView addObjectSelectionView(String durationLabel, ListCellRenderer renderer, Object[] durations);
+  public IObjectSelectionView<String> addObjectSelectionView(
+      String durationLabel,
+      ListCellRenderer renderer,
+      String[] durations);
 }

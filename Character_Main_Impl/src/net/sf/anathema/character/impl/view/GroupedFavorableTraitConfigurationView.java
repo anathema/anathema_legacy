@@ -54,14 +54,17 @@ public class GroupedFavorableTraitConfigurationView extends AbstractTabView<Obje
     return specialtyView;
   }
 
-  public IToggleButtonTraitView addTraitView(
+  public IToggleButtonTraitView<SimpleTraitView> addTraitView(
       String labelText,
       int value,
       int maxValue,
       boolean selected,
       IIconToggleButtonProperties properties) {
     SimpleTraitView view = new SimpleTraitView(intValueDisplayFactory, labelText, value, maxValue);
-    FrontToggleButtonTraitViewWrapper abilityView = new FrontToggleButtonTraitViewWrapper(view, properties, selected);
+    FrontToggleButtonTraitViewWrapper<SimpleTraitView> abilityView = new FrontToggleButtonTraitViewWrapper<SimpleTraitView>(
+        view,
+        properties,
+        selected);
     groupedTraitView.addEntry(abilityView);
     return abilityView;
   }

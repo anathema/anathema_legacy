@@ -84,7 +84,7 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
   }
 
   private void initEditionView(final IdentificateSelectCellRenderer renderer) {
-    IObjectSelectionView editionView = view.addComboBoxRow(
+    IObjectSelectionView<IExaltedEdition> editionView = view.addComboBoxRow(
         properties.getEditionLabel(),
         renderer,
         getPageModel().getEditions());
@@ -96,7 +96,7 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
   }
 
   private void initTypeView(final IdentificateSelectCellRenderer renderer) {
-    IObjectSelectionView typeView = view.addComboBoxRow(
+    IObjectSelectionView<CharacterType> typeView = view.addComboBoxRow(
         properties.getCharacterTypeLabel(),
         renderer,
         getPageModel().getCharacterTypes());

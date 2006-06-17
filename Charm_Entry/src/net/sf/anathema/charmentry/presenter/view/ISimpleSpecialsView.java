@@ -10,6 +10,5 @@ public interface ISimpleSpecialsView extends IPageContent {
 
   public IIntValueView addIntegerSelectionView(String speedLabel, int maximum);
 
-  public IObjectSelectionView addObjectSelectionView(String labelString, ListCellRenderer renderer, Object[] objects);
-
+  public <V> IObjectSelectionView<V> addObjectSelectionView(String labelString, ListCellRenderer renderer, V[] objects);
 }

@@ -2,6 +2,7 @@ package net.sf.anathema.character.reporting.sheet.second;
 
 import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.TEXT_PADDING;
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
@@ -63,7 +64,7 @@ public class SecondEditionPersonalInfoEncoder extends AbstractPdfEncoder {
     drawLabelledContent(directContent, motivationLabel, motivationContent, motivationPosition, infoBounds.width);
   }
 
-  private String getCasteString(ICasteType casteType) {
+  private String getCasteString(ICasteType< ? extends ICasteTypeVisitor> casteType) {
     if (casteType == null || casteType == ICasteType.NULL_CASTE_TYPE) {
       return null;
     }

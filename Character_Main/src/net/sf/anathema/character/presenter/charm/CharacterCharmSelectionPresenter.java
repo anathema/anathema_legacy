@@ -11,6 +11,7 @@ import java.util.List;
 import javax.swing.ToolTipManager;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
@@ -137,7 +138,8 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   }
 
   private void initCasteListening(final ICharmSelectionView selectionView) {
-    final ITypedDescription<ICasteType> caste = statistics.getCharacterConcept().getCaste();
+    final ITypedDescription<ICasteType< ? extends ICasteTypeVisitor>> caste = statistics.getCharacterConcept()
+        .getCaste();
     caste.addChangeListener(new IChangeListener() {
       public void changeOccured() {
         boolean alienCharms = statistics.getCharacterTemplate()

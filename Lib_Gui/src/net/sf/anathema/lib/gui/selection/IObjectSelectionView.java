@@ -2,11 +2,11 @@ package net.sf.anathema.lib.gui.selection;
 
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
-public interface IObjectSelectionView {
-  
-  public void setSelectedObject(Object object);
+public interface IObjectSelectionView<V> {
 
-  public void addObjectSelectionChangedListener(IObjectValueChangedListener listener);
+  public void setSelectedObject(V object);
 
-  public void setObjects(Object[] objects); 
+  public void addObjectSelectionChangedListener(IObjectValueChangedListener<V> listener);
+
+  public void setObjects(V[] objects);
 }

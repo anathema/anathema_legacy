@@ -48,9 +48,9 @@ public class CharacterTemplateTree implements ICharacterTemplateTree {
       }
     });
     templateTree.setCellRenderer(createRenderer());
-    Enumeration typeEnumeration = ((DefaultMutableTreeNode) templateTree.getModel().getRoot()).children();
-    for (; typeEnumeration.hasMoreElements();) {
-      TreeNode[] path = ((DefaultMutableTreeNode) typeEnumeration.nextElement()).getPath();
+    DefaultMutableTreeNode root = (DefaultMutableTreeNode) templateTree.getModel().getRoot();
+    for (Enumeration<DefaultMutableTreeNode> typeEnumeration = root.children(); typeEnumeration.hasMoreElements();) {
+      TreeNode[] path = typeEnumeration.nextElement().getPath();
       templateTree.expandPath(new TreePath(path));
     }
     templateTree.setRootVisible(false);

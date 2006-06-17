@@ -37,8 +37,8 @@ public class SimpleSpecialsView implements ISimpleSpecialsView {
     return view;
   }
 
-  public IObjectSelectionView addObjectSelectionView(String labelString, ListCellRenderer renderer, Object[] objects) {
-    ObjectSelectionView view = new ObjectSelectionView(labelString, renderer, objects);
+  public <V> IObjectSelectionView<V> addObjectSelectionView(String labelString, ListCellRenderer renderer, V[] objects) {
+    ObjectSelectionView<V> view = new ObjectSelectionView<V>(labelString, renderer, objects);
     view.addTo(content, new GridDialogLayoutData());
     return view;
   }

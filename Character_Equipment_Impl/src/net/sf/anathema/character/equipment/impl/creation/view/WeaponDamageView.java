@@ -6,6 +6,7 @@ import javax.swing.ListCellRenderer;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.equipment.creation.view.IWeaponDamageView;
+import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
@@ -41,15 +42,15 @@ public class WeaponDamageView implements IWeaponDamageView {
     this.label.setText(labelText);
   }
 
-  public void addObjectSelectionChangedListener(IObjectValueChangedListener listener) {
+  public void addObjectSelectionChangedListener(IObjectValueChangedListener<HealthType> listener) {
     typeBox.addObjectSelectionChangedListener(listener);
   }
 
-  public void setObjects(Object[] objects) {
+  public void setObjects(HealthType[] objects) {
     typeBox.setObjects(objects);
   }
 
-  public void setSelectedObject(Object object) {
+  public void setSelectedObject(HealthType object) {
     typeBox.setSelectedObject(object);
   }
 }
