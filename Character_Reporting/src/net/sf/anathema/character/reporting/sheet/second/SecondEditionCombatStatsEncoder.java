@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.sheet.util.LabelledValueEncoder;
@@ -49,7 +50,8 @@ public class SecondEditionCombatStatsEncoder extends AbstractPdfEncoder implemen
     String knockdownLabel = resources.getString("Sheet.Combat.Knockdown"); //$NON-NLS-1$
     String stunningLabel = resources.getString("Sheet.Combat.Stunning"); //$NON-NLS-1$
     int joinBattle = CharacterUtilties.getTotalValue(character, AttributeType.Wits, AbilityType.Awareness);
-    int dodgeDV = calculateDodgeDV(character);
+    CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
+    int dodgeDV = CharacterUtilties.getDodgeDv(characterType, character);
     int knockdownThreshold = CharacterUtilties.getTotalValue(character, AttributeType.Stamina, AbilityType.Resistance);
     int knockdownPool = CharacterUtilties.getKnockdownPool(character);
     int stunningThreshold = CharacterUtilties.getTotalValue(character, AttributeType.Stamina);

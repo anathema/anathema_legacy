@@ -40,19 +40,34 @@ public class CharacterUtilties {
     return getRoundUpDv(character, types);
   }
 
-  private static int getRoundUpDv(IGenericCharacter character, ITraitType... types) {
+  public static int getDv(CharacterType characterType, IGenericTraitCollection traitCollection, ITraitType... types) {
+    if (characterType == CharacterType.MORTAL) {
+      return getRoundDownDv(traitCollection, types);
+    }
+    return getRoundUpDv(traitCollection, types);
+  }
+
+  private static int getRoundUpDv(IGenericTraitCollection traitCollection, ITraitType... types) {
     int sum = 0;
     for (ITraitType type : types) {
-      sum += character.getTrait(type).getCurrentValue();
+      sum += traitCollection.getTrait(type).getCurrentValue();
     }
     return (int) Math.ceil(sum * 0.5);
   }
 
-  public static int getTotalValue(IGenericCharacter character, ITraitType... types) {
+  public static int getTotalValue(IGenericTraitCollection traitCollection, ITraitType... types) {
     int sum = 0;
     for (ITraitType type : types) {
-      sum += character.getTrait(type).getCurrentValue();
+      sum += traitCollection.getTrait(type).getCurrentValue();
     }
     return sum;
+  }
+
+  public static int getDodgeDv(CharacterType characterType, IGenericTraitCollection traitCollection) {
+    int essenceValue = traitCollection.getTrait(OtherTraitType.Essence).getCurrentValue();
+     if (essenceValue > 1) {
+      return getDv(characterType, traitCollection, AttributeType.Dexterity, AbilityType.Dodge, OtherTraitType.Essence);
+    }
+    return getDv(characterType, traitCollection, AttributeType.Dexterity, AbilityType.Dodge);
   }
 }
