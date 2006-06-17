@@ -50,7 +50,7 @@ public class AbilityTraitTypeGroupFactoryTest extends BasicTestCase {
   }
 
   public void testCasteAsGroupIdentificate() throws Exception {
-    ICasteType caste = new DummyCasteType("Caste"); //$NON-NLS-1$
+    DummyCasteType caste = new DummyCasteType("Caste"); //$NON-NLS-1$
     ICasteCollection casteCollection = new CasteCollection(new ICasteType[] { caste });
     IGroupedTraitType[] abilityTypes = new IGroupedTraitType[] {
         new GroupedTraitType(AbilityType.Archery, caste.getId(), null),

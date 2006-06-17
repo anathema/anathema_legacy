@@ -10,7 +10,7 @@ import net.sf.anathema.lib.testing.BasicTestCase;
 public class AttributeTypeTest extends BasicTestCase {
 
   public void testAll() throws Exception {
-    List allTypes = Arrays.asList(AttributeType.values());
+    List<AttributeType> allTypes = Arrays.asList(AttributeType.values());
     assertEquals(9, allTypes.size());
     assertTrue(allTypes.contains(AttributeType.Strength));
     assertTrue(allTypes.contains(AttributeType.Dexterity));
@@ -31,7 +31,7 @@ public class AttributeTypeTest extends BasicTestCase {
   }
 
   public void testGetPhysicalGroup() throws Exception {
-    List allTypes = Arrays.asList(AttributeType.getAllFor(AttributeGroupType.Physical));
+    List<AttributeType> allTypes = Arrays.asList(AttributeType.getAllFor(AttributeGroupType.Physical));
     assertEquals(3, allTypes.size());
     assertTrue(allTypes.contains(AttributeType.Strength));
     assertTrue(allTypes.contains(AttributeType.Dexterity));
@@ -39,7 +39,7 @@ public class AttributeTypeTest extends BasicTestCase {
   }
 
   public void testGetSocialGroup() throws Exception {
-    List allTypes = Arrays.asList(AttributeType.getAllFor(AttributeGroupType.Social));
+    List<AttributeType> allTypes = Arrays.asList(AttributeType.getAllFor(AttributeGroupType.Social));
     assertEquals(3, allTypes.size());
     assertTrue(allTypes.contains(AttributeType.Charisma));
     assertTrue(allTypes.contains(AttributeType.Manipulation));
@@ -47,7 +47,7 @@ public class AttributeTypeTest extends BasicTestCase {
   }
 
   public void testGetMentalGroup() throws Exception {
-    List allTypes = Arrays.asList(AttributeType.getAllFor(AttributeGroupType.Mental));
+    List<AttributeType> allTypes = Arrays.asList(AttributeType.getAllFor(AttributeGroupType.Mental));
     assertEquals(3, allTypes.size());
     assertTrue(allTypes.contains(AttributeType.Perception));
     assertTrue(allTypes.contains(AttributeType.Intelligence));

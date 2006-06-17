@@ -36,7 +36,7 @@ public abstract class AbstractBonusPointTestCase extends BasicCharacterTestCase 
         templateCollection,
         new NullAdditionalRules(),
         new IBasicCharacterData() {
-          public ICasteType getCasteType() {
+          public DummyCasteType getCasteType() {
             return new DummyCasteType();
           }
 

@@ -9,7 +9,7 @@ import net.sf.anathema.lib.testing.BasicTestCase;
 public class AttributeGroupTypeTest extends BasicTestCase {
 
   public void testAll() throws Exception {
-    List allTypes = Arrays.asList(AttributeGroupType.values());
+    List<AttributeGroupType> allTypes = Arrays.asList(AttributeGroupType.values());
     assertEquals(3, allTypes.size());
     assertTrue(allTypes.contains(AttributeGroupType.Mental));
     assertTrue(allTypes.contains(AttributeGroupType.Social));
