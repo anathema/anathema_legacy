@@ -9,12 +9,12 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
+import net.sf.anathema.dummy.character.DummyCasteType;
+import net.sf.anathema.dummy.character.charm.DummyCharm;
+import net.sf.anathema.dummy.character.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.xml.DocumentUtilities;
-import net.sf.anathema.test.character.dummy.DummyCasteType;
-import net.sf.anathema.test.character.dummy.DummyXmlTemplateRegistry;
-import net.sf.anathema.test.character.dummy.charm.DummyCharm;
 
 import org.dom4j.Element;
 

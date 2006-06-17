@@ -9,8 +9,8 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.impl.model.creation.bonus.ability.AbilityCostCalculator;
 import net.sf.anathema.character.library.trait.FavorableTraitCost;
 import net.sf.anathema.character.library.trait.IFavorableTrait;
-import net.sf.anathema.test.character.dummy.DummyAdditionalBonusPointManagment;
-import net.sf.anathema.test.character.dummy.DummyCoreTraitConfiguration;
+import net.sf.anathema.dummy.character.DummyAdditionalBonusPointManagment;
+import net.sf.anathema.dummy.character.trait.DummyCoreTraitConfiguration;
 
 public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
 

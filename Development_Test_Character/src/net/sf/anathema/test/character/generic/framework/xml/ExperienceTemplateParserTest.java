@@ -7,11 +7,11 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
+import net.sf.anathema.dummy.character.charm.DummyCharm;
+import net.sf.anathema.dummy.character.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.xml.DocumentUtilities;
-import net.sf.anathema.test.character.dummy.DummyXmlTemplateRegistry;
-import net.sf.anathema.test.character.dummy.charm.DummyCharm;
 
 import org.dom4j.Element;
 

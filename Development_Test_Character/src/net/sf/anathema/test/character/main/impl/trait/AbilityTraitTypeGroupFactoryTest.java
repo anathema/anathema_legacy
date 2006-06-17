@@ -10,8 +10,8 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.impl.model.traits.creation.AbilityTypeGroupFactory;
+import net.sf.anathema.dummy.character.DummyCasteType;
 import net.sf.anathema.lib.testing.BasicTestCase;
-import net.sf.anathema.test.character.dummy.DummyCasteType;
 
 public class AbilityTraitTypeGroupFactoryTest extends BasicTestCase {
 

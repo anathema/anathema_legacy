@@ -7,11 +7,11 @@ import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
+import net.sf.anathema.dummy.character.template.DummyXmlTemplateRegistry;
+import net.sf.anathema.dummy.character.trait.DummyGenericTrait;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.xml.DocumentUtilities;
-import net.sf.anathema.test.character.dummy.DummyGenericTrait;
-import net.sf.anathema.test.character.dummy.DummyXmlTemplateRegistry;
 
 import org.dom4j.Document;
 

@@ -2,9 +2,9 @@ package net.sf.anathema.test.character.generic.framework.xml;
 
 import net.sf.anathema.character.generic.framework.xml.trait.alternate.AlternateMinimumRestriction;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.dummy.character.DummyLimitationContext;
+import net.sf.anathema.dummy.character.trait.DummyFavorableGenericTrait;
 import net.sf.anathema.lib.testing.BasicTestCase;
-import net.sf.anathema.test.character.dummy.DummyFavorableGenericTrait;
-import net.sf.anathema.test.character.dummy.DummyLimitationContext;
 
 public class AlternateMinimumRestrictionTest extends BasicTestCase {
 

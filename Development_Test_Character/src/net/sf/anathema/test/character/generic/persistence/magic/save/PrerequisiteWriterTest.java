@@ -7,11 +7,11 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
+import net.sf.anathema.dummy.character.charm.DummyCharm;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.testing.ExceptionConvertingBlock;
 import net.sf.anathema.lib.xml.ElementUtilities;
-import net.sf.anathema.test.character.dummy.charm.DummyCharm;
 
 import org.dom4j.DocumentFactory;
 import org.dom4j.Element;

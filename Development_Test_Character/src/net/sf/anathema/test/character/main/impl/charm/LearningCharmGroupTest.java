@@ -14,11 +14,11 @@ import net.sf.anathema.character.impl.model.charm.LearningCharmGroup;
 import net.sf.anathema.character.impl.model.context.magic.CreationCharmLearnStrategy;
 import net.sf.anathema.character.model.charm.ICharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
+import net.sf.anathema.dummy.character.charm.DummyCharm;
+import net.sf.anathema.dummy.character.charm.DummyLearnableArbitrator;
+import net.sf.anathema.dummy.character.charm.DummyLearningCharmGroupContainer;
+import net.sf.anathema.dummy.character.template.DummyCharmTemplate;
 import net.sf.anathema.lib.testing.BasicTestCase;
-import net.sf.anathema.test.character.dummy.DummyCharmTemplate;
-import net.sf.anathema.test.character.dummy.charm.DummyCharm;
-import net.sf.anathema.test.character.dummy.charm.DummyLearnableArbitrator;
-import net.sf.anathema.test.character.dummy.charm.DummyLearningCharmGroupContainer;
 
 public class LearningCharmGroupTest extends BasicTestCase {
 

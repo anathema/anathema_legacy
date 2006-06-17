@@ -9,8 +9,8 @@ import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.NodeFa
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.dummy.character.charm.DummyCharm;
 import net.sf.anathema.lib.testing.BasicTestCase;
-import net.sf.anathema.test.character.dummy.charm.DummyCharm;
 
 public class CharmNodeConnectorTest extends BasicTestCase {
 

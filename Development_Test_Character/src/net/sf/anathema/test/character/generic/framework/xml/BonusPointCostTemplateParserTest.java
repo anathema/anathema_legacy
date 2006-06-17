@@ -2,8 +2,8 @@ package net.sf.anathema.test.character.generic.framework.xml;
 
 import net.sf.anathema.character.generic.framework.xml.creation.BonusPointCostTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.creation.GenericBonusPointCosts;
+import net.sf.anathema.dummy.character.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.lib.xml.DocumentUtilities;
-import net.sf.anathema.test.character.dummy.DummyXmlTemplateRegistry;
 
 import org.dom4j.Element;
 

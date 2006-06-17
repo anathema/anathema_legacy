@@ -4,9 +4,9 @@ import net.sf.anathema.character.generic.framework.xml.health.GenericHealthTempl
 import net.sf.anathema.character.generic.framework.xml.health.HealthTemplateParser;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.dummy.character.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.xml.DocumentUtilities;
-import net.sf.anathema.test.character.dummy.DummyXmlTemplateRegistry;
 
 import org.dom4j.Element;
 

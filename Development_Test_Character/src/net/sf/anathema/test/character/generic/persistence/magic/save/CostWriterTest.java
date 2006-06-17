@@ -5,9 +5,9 @@ import net.sf.anathema.character.generic.impl.magic.Cost;
 import net.sf.anathema.character.generic.impl.magic.CostList;
 import net.sf.anathema.character.generic.impl.magic.HealthCost;
 import net.sf.anathema.character.generic.impl.magic.persistence.writer.CostWriter;
+import net.sf.anathema.dummy.character.charm.DummyCharm;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.xml.ElementUtilities;
-import net.sf.anathema.test.character.dummy.charm.DummyCharm;
 
 import org.dom4j.DocumentFactory;
 import org.dom4j.Element;

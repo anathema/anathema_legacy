@@ -8,8 +8,8 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.impl.model.charm.combo.ComboArbitrator;
 import net.sf.anathema.character.impl.model.charm.combo.FirstEditionComboArbitrator;
-import net.sf.anathema.test.character.dummy.charm.DummyCharm;
-import net.sf.anathema.test.character.dummy.charm.DummyCharmUtilities;
+import net.sf.anathema.dummy.character.charm.DummyCharm;
+import net.sf.anathema.dummy.character.charm.DummyCharmUtilities;
 
 public class ComboRulesTest extends AbstractComboRulesTestCase {
 
@@ -33,10 +33,10 @@ public class ComboRulesTest extends AbstractComboRulesTestCase {
   }
 
   public void testRestrictionComboLegal() throws Exception {
-    assertFalse(rules.isCharmComboLegal(DummyCharmUtilities.createCharm("Instant", new ComboRestrictions(
+    assertFalse(rules.isCharmComboLegal(DummyCharmUtilities.createCharm("Instant", new ComboRestrictions( //$NON-NLS-1$
         false,
         Boolean.FALSE))));
-    assertTrue(rules.isCharmComboLegal(DummyCharmUtilities.createCharm("DurationType", new ComboRestrictions(
+    assertTrue(rules.isCharmComboLegal(DummyCharmUtilities.createCharm("DurationType", new ComboRestrictions( //$NON-NLS-1$
         false,
         Boolean.TRUE))));
   }

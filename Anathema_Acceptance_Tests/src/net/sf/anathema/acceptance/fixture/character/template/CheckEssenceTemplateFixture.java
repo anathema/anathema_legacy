@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.test.character.dummy.DummyGenericTrait;
+import net.sf.anathema.dummy.character.trait.DummyGenericTrait;
 
 public class CheckEssenceTemplateFixture extends AbstractTemplateColumnFixture {
 

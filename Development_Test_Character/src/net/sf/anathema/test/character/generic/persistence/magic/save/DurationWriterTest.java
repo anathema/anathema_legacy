@@ -5,7 +5,7 @@ import junit.framework.TestCase;
 import net.sf.anathema.character.generic.impl.magic.persistence.writer.DurationWriter;
 import net.sf.anathema.character.generic.magic.charms.duration.QualifiedAmountDuration;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
-import net.sf.anathema.test.character.dummy.charm.DummyCharm;
+import net.sf.anathema.dummy.character.charm.DummyCharm;
 
 import org.dom4j.DocumentFactory;
 import org.dom4j.Element;

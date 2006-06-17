@@ -6,14 +6,14 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.framework.module.CharacterModuleContainer;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
+import net.sf.anathema.dummy.character.DummyCharacterModelContext;
+import net.sf.anathema.dummy.character.DummyGenericCharacter;
+import net.sf.anathema.dummy.character.template.DummyCharacterTemplate;
+import net.sf.anathema.dummy.character.trait.DummyGenericTrait;
 import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.lib.testing.BasicTestCase;
-import net.sf.anathema.test.character.dummy.DummyCharacterModelContext;
-import net.sf.anathema.test.character.dummy.DummyCharacterTemplate;
-import net.sf.anathema.test.character.dummy.DummyGenericCharacter;
-import net.sf.anathema.test.character.dummy.DummyGenericTrait;
 
-public class BasicCharacterTestCase extends BasicTestCase {
+public abstract class BasicCharacterTestCase extends BasicTestCase {
 
   public final IGenericCharacter createCharacterAbstraction() {
     DummyCharacterTemplate template = new DummyCharacterTemplate();

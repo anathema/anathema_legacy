@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.impl.model.charm.combo.IComboRules;
 import net.sf.anathema.character.impl.model.charm.combo.SimpleCharmComboRules;
-import net.sf.anathema.test.character.dummy.charm.DummyCharmUtilities;
+import net.sf.anathema.dummy.character.charm.DummyCharmUtilities;
 
 public class SimpleCharmComboRulesTest extends AbstractComboRulesTestCase {
 

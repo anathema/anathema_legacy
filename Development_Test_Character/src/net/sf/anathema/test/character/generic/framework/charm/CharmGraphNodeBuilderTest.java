@@ -6,8 +6,8 @@ import java.util.List;
 import net.sf.anathema.character.generic.framework.magic.CharmGraphNodeBuilder;
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.dummy.character.charm.DummyCharm;
 import net.sf.anathema.lib.testing.BasicTestCase;
-import net.sf.anathema.test.character.dummy.charm.DummyCharm;
 
 public class CharmGraphNodeBuilderTest extends BasicTestCase {
 

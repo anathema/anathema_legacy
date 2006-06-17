@@ -19,9 +19,9 @@ import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecke
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.model.charm.OxBodyCategory;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
+import net.sf.anathema.dummy.character.DummyCasteType;
+import net.sf.anathema.dummy.character.DummyCharacterModelContext;
 import net.sf.anathema.test.character.BasicCharacterTestCase;
-import net.sf.anathema.test.character.dummy.DummyCasteType;
-import net.sf.anathema.test.character.dummy.DummyCharacterModelContext;
 
 public class OxBodyTechniqueConfigurationTest extends BasicCharacterTestCase {
 

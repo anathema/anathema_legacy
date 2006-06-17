@@ -4,9 +4,9 @@ import java.util.HashMap;
 
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.dummy.character.charm.DummyCharm;
+import net.sf.anathema.dummy.character.charm.DummyCharmData;
 import net.sf.anathema.lib.testing.BasicTestCase;
-import net.sf.anathema.test.character.dummy.charm.DummyCharm;
-import net.sf.anathema.test.character.dummy.charm.DummyCharmData;
 
 public class CharmTest extends BasicTestCase {
 

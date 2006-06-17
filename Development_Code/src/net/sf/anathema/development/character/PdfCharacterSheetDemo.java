@@ -30,12 +30,12 @@ import net.sf.anathema.development.character.additional.DemoMeleeWeapon;
 import net.sf.anathema.development.character.additional.DemoNaturalArmour;
 import net.sf.anathema.development.character.additional.DemoRangeWeapon;
 import net.sf.anathema.development.character.magic.DemoGenericCombo;
+import net.sf.anathema.dummy.character.charm.DummyCharm;
 import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.lib.control.BrowserControl;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.test.character.dummy.charm.DummyCharm;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.PageSize;

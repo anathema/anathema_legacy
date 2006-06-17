@@ -11,12 +11,12 @@ import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.abilities.AbilityGroupType;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.dummy.character.template.DummyCharacterTemplateResourceProvider;
+import net.sf.anathema.dummy.character.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.xml.DocumentUtilities;
-import net.sf.anathema.test.character.dummy.DummyCharacterTemplateResourceProvider;
-import net.sf.anathema.test.character.dummy.DummyXmlTemplateRegistry;
 
 import org.dom4j.Element;
 

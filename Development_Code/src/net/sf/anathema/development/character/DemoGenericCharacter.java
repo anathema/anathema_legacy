@@ -30,8 +30,8 @@ import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
 import net.sf.anathema.character.solar.caste.SolarCaste;
 import net.sf.anathema.development.character.additional.DemoEquipmentAdditionalModel;
 import net.sf.anathema.development.character.additional.DemoIntimaciesModel;
-import net.sf.anathema.test.character.dummy.DummyFavorableGenericTrait;
-import net.sf.anathema.test.character.dummy.DummyGenericTrait;
+import net.sf.anathema.dummy.character.trait.DummyFavorableGenericTrait;
+import net.sf.anathema.dummy.character.trait.DummyGenericTrait;
 
 public class DemoGenericCharacter implements IGenericCharacter {
 

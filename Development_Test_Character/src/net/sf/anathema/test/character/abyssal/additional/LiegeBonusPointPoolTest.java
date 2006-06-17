@@ -3,7 +3,7 @@ package net.sf.anathema.test.character.abyssal.additional;
 import net.sf.anathema.character.abyssal.additional.LiegeBonusPointPool;
 import net.sf.anathema.character.generic.impl.backgrounds.SimpleBackgroundTemplate;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
-import net.sf.anathema.test.character.dummy.DummyGenericTrait;
+import net.sf.anathema.dummy.character.trait.DummyGenericTrait;
 
 public class LiegeBonusPointPoolTest extends AbstractBackgroundRulesTest {
 

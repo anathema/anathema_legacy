@@ -29,11 +29,11 @@ import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
+import net.sf.anathema.dummy.character.DummyGenericCharacter;
+import net.sf.anathema.dummy.character.template.DummyCharacterTemplate;
+import net.sf.anathema.dummy.character.trait.DummyCoreTraitConfiguration;
+import net.sf.anathema.dummy.character.trait.DummyTraitContext;
 import net.sf.anathema.test.character.BasicCharacterTestCase;
-import net.sf.anathema.test.character.dummy.DummyCharacterTemplate;
-import net.sf.anathema.test.character.dummy.DummyCoreTraitConfiguration;
-import net.sf.anathema.test.character.dummy.DummyGenericCharacter;
-import net.sf.anathema.test.character.dummy.DummyTraitContext;
 
 public class AttributeCostCalculatorTest extends BasicCharacterTestCase {
 

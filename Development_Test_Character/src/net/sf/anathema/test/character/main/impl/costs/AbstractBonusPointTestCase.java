@@ -18,10 +18,10 @@ import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
+import net.sf.anathema.dummy.character.DummyCasteType;
+import net.sf.anathema.dummy.character.trait.DummyCoreTraitConfiguration;
+import net.sf.anathema.dummy.character.trait.DummyTraitContext;
 import net.sf.anathema.test.character.BasicCharacterTestCase;
-import net.sf.anathema.test.character.dummy.DummyCasteType;
-import net.sf.anathema.test.character.dummy.DummyCoreTraitConfiguration;
-import net.sf.anathema.test.character.dummy.DummyTraitContext;
 
 public abstract class AbstractBonusPointTestCase extends BasicCharacterTestCase {
 
