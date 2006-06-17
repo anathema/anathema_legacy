@@ -8,8 +8,8 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.impl.model.charm.combo.ComboArbitrator;
 import net.sf.anathema.character.impl.model.charm.combo.FirstEditionComboArbitrator;
-import net.sf.anathema.dummy.character.charm.DummyCharm;
-import net.sf.anathema.dummy.character.charm.DummyCharmUtilities;
+import net.sf.anathema.dummy.character.magic.DummyCharm;
+import net.sf.anathema.dummy.character.magic.DummyCharmUtilities;
 
 public class ComboRulesTest extends AbstractComboRulesTestCase {
 

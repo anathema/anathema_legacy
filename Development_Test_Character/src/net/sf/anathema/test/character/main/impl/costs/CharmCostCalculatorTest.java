@@ -11,9 +11,9 @@ import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.dummy.character.DummyAdditionalBonusPointManagment;
 import net.sf.anathema.dummy.character.DummyAdditionalSpellPointManagement;
 import net.sf.anathema.dummy.character.DummyGenericCharacter;
-import net.sf.anathema.dummy.character.charm.DummyCharmConfiguration;
-import net.sf.anathema.dummy.character.charm.DummySpell;
-import net.sf.anathema.dummy.character.charm.DummySpellConfiguration;
+import net.sf.anathema.dummy.character.magic.DummyCharmConfiguration;
+import net.sf.anathema.dummy.character.magic.DummySpell;
+import net.sf.anathema.dummy.character.magic.DummySpellConfiguration;
 import net.sf.anathema.dummy.character.template.DummyCharacterTemplate;
 import net.sf.anathema.dummy.character.trait.DummyCoreTraitConfiguration;
 

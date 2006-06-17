@@ -3,7 +3,7 @@ package net.sf.anathema.test.character.generic.magic.charms;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
-import net.sf.anathema.dummy.character.charm.DummyCharm;
+import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.util.IIdentificate;
 

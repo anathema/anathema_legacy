@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.impl.model.advance.CostAnalyzer;
 import net.sf.anathema.dummy.character.DummyBasicCharacterData;
-import net.sf.anathema.dummy.character.charm.DummyCharm;
+import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.dummy.character.trait.DummyCoreTraitConfiguration;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.util.IIdentificate;

@@ -14,9 +14,9 @@ import net.sf.anathema.character.impl.model.charm.LearningCharmGroup;
 import net.sf.anathema.character.impl.model.context.magic.CreationCharmLearnStrategy;
 import net.sf.anathema.character.model.charm.ICharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
-import net.sf.anathema.dummy.character.charm.DummyCharm;
-import net.sf.anathema.dummy.character.charm.DummyLearnableArbitrator;
-import net.sf.anathema.dummy.character.charm.DummyLearningCharmGroupContainer;
+import net.sf.anathema.dummy.character.magic.DummyCharm;
+import net.sf.anathema.dummy.character.magic.DummyLearnableArbitrator;
+import net.sf.anathema.dummy.character.magic.DummyLearningCharmGroupContainer;
 import net.sf.anathema.dummy.character.template.DummyCharmTemplate;
 import net.sf.anathema.lib.testing.BasicTestCase;
 

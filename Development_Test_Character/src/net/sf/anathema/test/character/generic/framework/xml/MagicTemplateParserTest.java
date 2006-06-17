@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.dummy.character.DummyCasteType;
-import net.sf.anathema.dummy.character.charm.DummyCharm;
+import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.dummy.character.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.util.IIdentificate;

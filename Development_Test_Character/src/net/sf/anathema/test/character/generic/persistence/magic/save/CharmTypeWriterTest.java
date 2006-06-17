@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.magic.charms.type.IReflexiveSpecialsMod
 import net.sf.anathema.character.generic.magic.charms.type.ISimpleSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.type.ITypeSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.type.TurnType;
-import net.sf.anathema.dummy.character.charm.DummyCharm;
+import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.xml.ElementUtilities;
 

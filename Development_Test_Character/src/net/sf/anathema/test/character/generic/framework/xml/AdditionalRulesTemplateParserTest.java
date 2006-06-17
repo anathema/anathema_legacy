@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.framework.xml.rules.AdditionalRulesTemp
 import net.sf.anathema.character.generic.framework.xml.rules.GenericAdditionalRules;
 import net.sf.anathema.character.generic.impl.magic.charm.special.StaticMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.dummy.character.charm.DummyMagicCollection;
+import net.sf.anathema.dummy.character.magic.DummyMagicCollection;
 import net.sf.anathema.dummy.character.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.xml.DocumentUtilities;

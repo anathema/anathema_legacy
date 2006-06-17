@@ -16,7 +16,7 @@ import net.sf.anathema.character.impl.model.context.CharacterListening;
 import net.sf.anathema.character.impl.model.context.magic.CreationCharmLearnStrategy;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.dummy.character.DummyGenericCharacter;
-import net.sf.anathema.dummy.character.charm.DummyCharmContext;
+import net.sf.anathema.dummy.character.magic.DummyCharmContext;
 
 public class FrameworkUtilities {
 

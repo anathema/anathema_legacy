@@ -30,7 +30,7 @@ import net.sf.anathema.development.character.additional.DemoMeleeWeapon;
 import net.sf.anathema.development.character.additional.DemoNaturalArmour;
 import net.sf.anathema.development.character.additional.DemoRangeWeapon;
 import net.sf.anathema.development.character.magic.DemoGenericCombo;
-import net.sf.anathema.dummy.character.charm.DummyCharm;
+import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.lib.control.BrowserControl;

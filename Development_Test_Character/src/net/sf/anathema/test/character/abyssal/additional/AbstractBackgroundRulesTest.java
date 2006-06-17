@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.impl.magic.Spell;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
-import net.sf.anathema.dummy.character.charm.DummyCharm;
+import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.dummy.character.trait.DummyGenericTrait;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
