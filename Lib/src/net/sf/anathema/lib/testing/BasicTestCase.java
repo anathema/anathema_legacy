@@ -26,7 +26,7 @@ public class BasicTestCase extends TestCase {
     }
   }
 
-  public final static <T> void assertIsAssignableFrom(Class<T> expected, Class actual) {
+  public final static <T> void assertIsAssignableFrom(Class<T> expected, Class<?> actual) {
     assertTrue("expected: " + expected + ", actual: " + actual, expected.isAssignableFrom(actual)); //$NON-NLS-1$ //$NON-NLS-2$
   }
 

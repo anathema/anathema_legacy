@@ -7,10 +7,10 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 
-public class RearToggleButtonTraitViewWrapper extends AbstractToggleButtonTraitViewWrapper implements
-    IToggleButtonTraitView {
+public class RearToggleButtonTraitViewWrapper<K extends ITraitView< ? >> extends
+    AbstractToggleButtonTraitViewWrapper<K> implements IToggleButtonTraitView<K> {
 
-  public RearToggleButtonTraitViewWrapper(ITraitView view, IIconToggleButtonProperties properties, boolean selected) {
+  public RearToggleButtonTraitViewWrapper(K view, IIconToggleButtonProperties properties, boolean selected) {
     super(view, properties, selected);
   }
 

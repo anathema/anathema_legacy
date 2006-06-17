@@ -7,11 +7,10 @@ import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.lib.gui.dialogcomponent.grouped.IGridDialogPanelContent;
 
-public class FrontToggleButtonTraitViewWrapper extends AbstractToggleButtonTraitViewWrapper implements
-    IToggleButtonTraitView,
-    IGridDialogPanelContent {
+public class FrontToggleButtonTraitViewWrapper<K extends ITraitView< ? >> extends
+    AbstractToggleButtonTraitViewWrapper<K> implements IToggleButtonTraitView<K>, IGridDialogPanelContent {
 
-  public FrontToggleButtonTraitViewWrapper(ITraitView view, IIconToggleButtonProperties properties, boolean selected) {
+  public FrontToggleButtonTraitViewWrapper(K view, IIconToggleButtonProperties properties, boolean selected) {
     super(view, properties, selected);
   }
 

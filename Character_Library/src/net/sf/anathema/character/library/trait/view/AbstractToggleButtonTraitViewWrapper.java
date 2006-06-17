@@ -13,15 +13,16 @@ import net.sf.anathema.framework.value.IconToggleButton;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 
-public abstract class AbstractToggleButtonTraitViewWrapper extends AbstractTraitViewWrapper {
+public abstract class AbstractToggleButtonTraitViewWrapper<K extends ITraitView< ? >> extends
+    AbstractTraitViewWrapper<K> {
 
   private final IconToggleButton button;
   private final IIconToggleButtonProperties properties;
   private JPanel traitViewPanel;
   private JPanel innerViewPanel;
 
-  public AbstractToggleButtonTraitViewWrapper(ITraitView view, IIconToggleButtonProperties properties, boolean selected) {
-    super(view);
+  public AbstractToggleButtonTraitViewWrapper(K innerView, IIconToggleButtonProperties properties, boolean selected) {
+    super(innerView);
     this.properties = properties;
     this.button = new IconToggleButton(properties.createStandardIcon(), properties.createUnselectedIcon());
     setButtonState(selected, true);
