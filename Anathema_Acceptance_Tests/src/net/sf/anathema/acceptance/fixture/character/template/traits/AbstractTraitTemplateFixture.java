@@ -3,6 +3,7 @@ package net.sf.anathema.acceptance.fixture.character.template.traits;
 import net.sf.anathema.acceptance.fixture.character.template.AbstractTemplateColumnFixture;
 import net.sf.anathema.acceptance.fixture.character.template.CharacterTemplateSummary;
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
@@ -26,7 +27,7 @@ public abstract class AbstractTraitTemplateFixture extends AbstractTemplateColum
             .getLimitation();
       }
 
-      public ICasteType getCasteType() {
+      public ICasteType<? extends ICasteTypeVisitor> getCasteType() {
         throw new UnsupportedOperationException("No character defined in template tests."); //$NON-NLS-1$
       }
       

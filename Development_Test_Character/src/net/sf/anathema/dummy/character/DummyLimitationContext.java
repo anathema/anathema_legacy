@@ -18,7 +18,7 @@ public class DummyLimitationContext implements ILimitationContext {
     return new StaticTraitLimitation(7);
   }
 
-  public ICasteType getCasteType() {
+  public ICasteType<IDummyCasteTypeVisitor> getCasteType() {
     return null;
   }
 

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.character.ICharacterPoints;
 import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
@@ -73,7 +74,7 @@ public class DummyGenericCharacter implements IGenericCharacter {
     return new INamedGenericTrait[0];
   }
 
-  public ICasteType getCasteType() {
+  public ICasteType<IDummyCasteTypeVisitor> getCasteType() {
     return null;
   }
 
@@ -124,7 +125,7 @@ public class DummyGenericCharacter implements IGenericCharacter {
         return null;
       }
 
-      public ICasteType getCasteType() {
+      public ICasteType<ICasteTypeVisitor> getCasteType() {
         return ICasteType.NULL_CASTE_TYPE;
       }
     };

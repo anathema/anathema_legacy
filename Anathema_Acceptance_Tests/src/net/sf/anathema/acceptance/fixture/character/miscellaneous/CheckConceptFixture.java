@@ -1,10 +1,10 @@
 package net.sf.anathema.acceptance.fixture.character.miscellaneous;
 
 import net.sf.anathema.acceptance.fixture.character.util.AbstractCharacterColumnFixture;
-import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.model.concept.ICharacterConcept;
 import net.sf.anathema.character.model.concept.INature;
 import net.sf.anathema.character.model.concept.INatureType;
+import net.sf.anathema.lib.util.IIdentificate;
 
 public class CheckConceptFixture extends AbstractCharacterColumnFixture {
 
@@ -21,7 +21,7 @@ public class CheckConceptFixture extends AbstractCharacterColumnFixture {
   }
 
   public String caste() {
-    ICasteType caste = getCharacterConcept().getCaste().getType();
+    IIdentificate caste = getCharacterConcept().getCaste().getType();
     if (caste == null) {
       return null;
     }

@@ -20,9 +20,9 @@ public class AttributeListFixture extends RowFixture {
     }
     return traits;
   }
-
+  
   @Override
-  public Class getTargetClass() {
+  public Class<?> getTargetClass() {
     return AcceptanceTrait.class;
   }
 }

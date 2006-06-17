@@ -4,6 +4,7 @@ import net.sf.anathema.acceptance.fixture.character.util.AbstractCharacterColumn
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
+import net.sf.anathema.character.library.quality.presenter.IQuality;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
 import net.sf.anathema.character.meritsflaws.presenter.IMeritsFlawsAdditionalModel;
 import net.sf.anathema.character.meritsflaws.presenter.IMeritsFlawsModel;
@@ -17,7 +18,7 @@ public class CheckMeritsFlawsFixture extends AbstractCharacterColumnFixture {
   public int getCreationActiveMeritsFlaws() {
     int sum = 0;
     IQualitySelection[] selected = getModel().getSelectedQualities();
-    for (IQualitySelection selection : selected) {
+    for (IQualitySelection< ? extends IQuality> selection : selected) {
       if (selection.isCreationActive()) {
         sum++;
       }
@@ -28,7 +29,7 @@ public class CheckMeritsFlawsFixture extends AbstractCharacterColumnFixture {
   public int getExperienceActiveMeritsFlaws() {
     int sum = 0;
     IQualitySelection[] selected = getModel().getSelectedQualities();
-    for (IQualitySelection selection : selected) {
+    for (IQualitySelection< ? extends IQuality> selection : selected) {
       if (selection.isExperienceActive()) {
         sum++;
       }
@@ -48,7 +49,7 @@ public class CheckMeritsFlawsFixture extends AbstractCharacterColumnFixture {
 
   public int getCreationFlawPointsSelected() {
     int sum = 0;
-    for (IQualitySelection selection : getModel().getSelectedFlaws()) {
+    for (IQualitySelection< ? extends IQuality> selection : getModel().getSelectedFlaws()) {
       if (selection.isCreationActive()) {
         sum += selection.getPointValue();
       }
@@ -58,7 +59,7 @@ public class CheckMeritsFlawsFixture extends AbstractCharacterColumnFixture {
 
   public int getExperienceFlawPointsSelected() {
     int sum = 0;
-    for (IQualitySelection selection : getModel().getSelectedFlaws()) {
+    for (IQualitySelection< ? extends IQuality> selection : getModel().getSelectedFlaws()) {
       if (!selection.isCreationActive() && selection.isExperienceActive()) {
         sum += selection.getPointValue();
       }
