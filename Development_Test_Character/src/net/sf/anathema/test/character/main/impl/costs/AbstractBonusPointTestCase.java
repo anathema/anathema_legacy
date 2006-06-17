@@ -1,7 +1,6 @@
 package net.sf.anathema.test.character.main.impl.costs;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
-import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;

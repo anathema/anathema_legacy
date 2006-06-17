@@ -31,6 +31,10 @@ public class DummyTraitContext implements ITraitContext {
     public IFavorableGenericTrait getFavorableTrait(ITraitType type) {
       return traitCollection.getFavorableTrait(type);
     }
+    
+    public boolean isFavoredOrCasteTrait(ITraitType type) {
+      return traitCollection.isFavoredOrCasteTrait(type);
+    }
   }
   
   private ITraitValueStrategy traitValueStrategy = new CreationTraitValueStrategy();

@@ -37,6 +37,10 @@ public abstract class AbstractTraitTemplateFixture extends AbstractTemplateColum
       public IGenericTrait getTrait(ITraitType type) {
         throw new UnsupportedOperationException("No character defined in template tests."); //$NON-NLS-1$
       }
+      
+      public boolean isFavoredOrCasteTrait(ITraitType type) {
+        throw new UnsupportedOperationException("No character defined in template tests."); //$NON-NLS-1$
+      }
     });
   }
 

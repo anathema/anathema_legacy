@@ -4,20 +4,18 @@ import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.test.character.BasicCharacterTestCase;
 
-import org.easymock.MockControl;
+import org.easymock.EasyMock;
 
 public abstract class AbstractTraitTest extends BasicCharacterTestCase {
 
   private DefaultTrait objectUnderTest;
-  private MockControl intListenerControl;
   private IIntValueChangedListener intListener;
 
   @Override
   protected void setUp() throws Exception {
     super.setUp();
     objectUnderTest = createObjectUnderTest();
-    this.intListenerControl = MockControl.createStrictControl(IIntValueChangedListener.class);
-    this.intListener = (IIntValueChangedListener) intListenerControl.getMock();
+    this.intListener = EasyMock.createStrictMock(IIntValueChangedListener.class);
     objectUnderTest.addCreationPointListener(intListener);
   }
 
@@ -29,25 +27,25 @@ public abstract class AbstractTraitTest extends BasicCharacterTestCase {
 
   public void testExceedCreationValueMaximum() throws Exception {
     intListener.valueChanged(5);
-    intListenerControl.replay();
+    EasyMock.replay(intListener);
     objectUnderTest.setCurrentValue(6);
     assertEquals(5, objectUnderTest.getCreationValue());
-    intListenerControl.verify();
+    EasyMock.verify(intListener);
   }
 
   public void testUnderrunCreationValueMinimum() throws Exception {
     intListener.valueChanged(objectUnderTest.getAbsoluteMinValue());
-    intListenerControl.replay();
+    EasyMock.replay(intListener);
     objectUnderTest.setCurrentValue(-1);
     assertEquals(objectUnderTest.getAbsoluteMinValue(), objectUnderTest.getCreationValue());
-    intListenerControl.verify();
+    EasyMock.verify(intListener);
   }
 
   public void testSetValueInRange() throws Exception {
     intListener.valueChanged(3);
-    intListenerControl.replay();
+    EasyMock.replay(intListener);
     objectUnderTest.setCurrentValue(3);
     assertEquals(3, objectUnderTest.getCreationValue());
-    intListenerControl.verify();
+    EasyMock.verify(intListener);
   }
 }

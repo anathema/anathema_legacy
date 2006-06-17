@@ -3,6 +3,7 @@ package net.sf.anathema.character.db.additional;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
@@ -18,7 +19,7 @@ public abstract class AbstractSorceryLearnPool implements IAdditionalMagicLearnP
     this.sorceryTemplate = sorceryTemplate;
   }
 
-  public int getAdditionalMagicCount(IGenericCharacter traitCollection) {
+  public int getAdditionalMagicCount(IGenericTraitCollection traitCollection) {
     IGenericTrait sorceryBackground = traitCollection.getTrait(sorceryTemplate);
     if (sorceryBackground == null) {
       return 0;
@@ -26,7 +27,7 @@ public abstract class AbstractSorceryLearnPool implements IAdditionalMagicLearnP
     return sorceryBackground.getCurrentValue();
   }
 
-  public boolean isAllowedFor(IGenericCharacter character, IMagic magic) {
+  public boolean isAllowedFor(IGenericTraitCollection traitCollection, IMagic magic) {
     final boolean[] isAllowed = new boolean[1];
     magic.accept(new IMagicVisitor() {
       public void visitSpell(ISpell spell) {

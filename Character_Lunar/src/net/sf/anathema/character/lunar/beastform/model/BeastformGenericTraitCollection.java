@@ -54,4 +54,8 @@ public class BeastformGenericTraitCollection implements IGenericTraitCollection 
   public IFavorableGenericTrait getFavorableTrait(ITraitType type) {
     throw new UnsupportedOperationException("Irrelevant for DBTGenericTraitCollection."); //$NON-NLS-1$
   }
+  
+  public boolean isFavoredOrCasteTrait(ITraitType type) {
+    return false;
+  }
 }

@@ -23,4 +23,8 @@ public class DummyGenericTraitCollection implements IGenericTraitCollection {
   public void setValue(ITraitType type, int value) {
     traits.put(type, new DummyGenericTrait(type, value));
   }
+  
+  public boolean isFavoredOrCasteTrait(ITraitType type) {
+    return getFavorableTrait(type).isCasteOrFavored();
+  }
 }

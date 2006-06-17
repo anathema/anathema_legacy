@@ -22,13 +22,11 @@ import net.sf.anathema.dummy.character.DummyCharacterModelContext;
 import net.sf.anathema.dummy.character.trait.DummyGenericTrait;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
-import org.easymock.MockControl;
+import org.easymock.EasyMock;
 
 public class FavorableTraitTest extends AbstractTraitTest {
 
-  private MockControl incrementCheckerControl;
   private IIncrementChecker incrementChecker;
-  private MockControl abilityStateListenerControl;
   private IFavorableStateChangedListener abilityStateListener;
   private ProxyTraitValueStrategy valueStrategy;
   private FavorableTrait first;
@@ -38,12 +36,10 @@ public class FavorableTraitTest extends AbstractTraitTest {
   protected void setUp() throws Exception {
     this.valueStrategy = new ProxyTraitValueStrategy(new CreationTraitValueStrategy());
     super.setUp();
-    this.incrementCheckerControl = MockControl.createStrictControl(IIncrementChecker.class);
-    this.incrementChecker = (IIncrementChecker) incrementCheckerControl.getMock();
+    this.incrementChecker = EasyMock.createStrictMock(IIncrementChecker.class);
     this.modelContext = createModelContextWithEssence2(valueStrategy);
     first = createObjectUnderTest(modelContext);
-    this.abilityStateListenerControl = MockControl.createStrictControl(IFavorableStateChangedListener.class);
-    this.abilityStateListener = (IFavorableStateChangedListener) abilityStateListenerControl.getMock();
+    this.abilityStateListener = EasyMock.createStrictMock(IFavorableStateChangedListener.class);
   }
 
   public void testSetAbilityToFavored() throws Exception {
@@ -51,24 +47,22 @@ public class FavorableTraitTest extends AbstractTraitTest {
     first.getFavorization().addFavorableStateChangedListener(abilityStateListener);
     assertEquals(0, first.getCreationValue());
     abilityStateListener.favorableStateChanged(FavorableState.Favored);
-    abilityStateListenerControl.replay();
+    EasyMock.replay(abilityStateListener);
     first.getFavorization().setFavorableState(FavorableState.Favored);
-    abilityStateListenerControl.verify();
+    EasyMock.verify(abilityStateListener);
     assertEquals(1, first.getCreationValue());
   }
 
   private void allowOneFavoredIncrement() {
-    incrementChecker.isValidIncrement(1);
-    incrementCheckerControl.setDefaultReturnValue(true);
-    incrementCheckerControl.replay();
+    EasyMock.expect(incrementChecker.isValidIncrement(1)).andReturn(true);
+    EasyMock.replay(incrementChecker);
   }
 
   public void testSetAbiltyToFavoredUnallowed() throws Exception {
-    incrementChecker.isValidIncrement(1);
-    incrementCheckerControl.setReturnValue(false);
-    incrementCheckerControl.replay();
+    EasyMock.expect(incrementChecker.isValidIncrement(1)).andReturn(false);
+    EasyMock.replay(incrementChecker);
     first.getFavorization().setFavorableState(FavorableState.Favored);
-    incrementCheckerControl.verify();
+    EasyMock.verify(incrementChecker);
     assertSame(FavorableState.Default, first.getFavorization().getFavorableState());
     assertEquals(0, first.getCreationValue());
   }
@@ -83,11 +77,11 @@ public class FavorableTraitTest extends AbstractTraitTest {
 
   public void testCasteAbilityNotSetToFavored() throws Exception {
     first.getFavorization().setFavorableState(FavorableState.Caste);
-    abilityStateListenerControl.replay();
+    EasyMock.replay(abilityStateListener);
     first.getFavorization().addFavorableStateChangedListener(abilityStateListener);
     first.getFavorization().setFavorableState(FavorableState.Favored);
     assertSame(FavorableState.Caste, first.getFavorization().getFavorableState());
-    abilityStateListenerControl.verify();
+    EasyMock.verify(abilityStateListener);
   }
 
   @Override

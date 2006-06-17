@@ -2,7 +2,7 @@ package net.sf.anathema.character.abyssal.additional;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
@@ -18,7 +18,7 @@ public class NecromancyLearnPool implements IAdditionalMagicLearnPool {
     this.necromancyTemplate = necromancyTemplate;
   }
 
-  public boolean isAllowedFor(IGenericCharacter traitCollection, IMagic magic) {
+  public boolean isAllowedFor(IGenericTraitCollection traitCollection, IMagic magic) {
     final IGenericTrait necromancyBackground = traitCollection.getTrait(necromancyTemplate);
     if (necromancyBackground == null) {
       return false;
@@ -44,7 +44,7 @@ public class NecromancyLearnPool implements IAdditionalMagicLearnPool {
     return isAllowed[0];
   }
 
-  public int getAdditionalMagicCount(IGenericCharacter traitCollection) {
+  public int getAdditionalMagicCount(IGenericTraitCollection traitCollection) {
     IGenericTrait necromancyBackground = traitCollection.getTrait(necromancyTemplate);
     if (necromancyBackground == null) {
       return 0;

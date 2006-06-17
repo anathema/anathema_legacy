@@ -33,4 +33,8 @@ public class DummyLimitationContext implements ILimitationContext {
   public void addTrait(IGenericTrait trait) {
     traits.put(trait.getType(), trait);
   }
+
+  public boolean isFavoredOrCasteTrait(ITraitType type) {
+    return getFavorableTrait(type).isCasteOrFavored();
+  }
 }

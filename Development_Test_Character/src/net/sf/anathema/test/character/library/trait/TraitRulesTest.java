@@ -7,12 +7,11 @@ import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.dummy.character.DummyLimitationContext;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
-import org.easymock.MockControl;
+import org.easymock.EasyMock;
 
 public class TraitRulesTest extends BasicTestCase {
 
   private DummyLimitationContext limitationContext;
-  private MockControl templateControl;
   private ITraitTemplate template;
   private TraitRules traitRules;
 
@@ -20,22 +19,18 @@ public class TraitRulesTest extends BasicTestCase {
   protected void setUp() throws Exception {
     super.setUp();
     this.limitationContext = new DummyLimitationContext();
-    this.templateControl = MockControl.createControl(ITraitTemplate.class);
-    this.template = (ITraitTemplate) templateControl.getMock();
+    this.template = EasyMock.createMock(ITraitTemplate.class);
     this.traitRules = new TraitRules(AbilityType.Archery, template, limitationContext);
   }
 
   public void testAbsoluteMaximumValue() throws Exception {
     int absoluteMaxValue = 9;
-    MockControl limitationControl = MockControl.createControl(ITraitLimitation.class);
-    ITraitLimitation limitation = (ITraitLimitation) limitationControl.getMock();
-    limitationControl.expectAndReturn(limitation.getAbsoluteLimit(limitationContext), absoluteMaxValue);
-    templateControl.expectAndReturn(template.getLimitation(), limitation);
-    templateControl.replay();
-    limitationControl.replay();
+    ITraitLimitation limitation = EasyMock.createMock(ITraitLimitation.class);
+    EasyMock.expect(limitation.getAbsoluteLimit(limitationContext)).andReturn(absoluteMaxValue);
+    EasyMock.expect(template.getLimitation()).andReturn(limitation);
+    EasyMock.replay(template, limitation);
     int actualMaximalValue = traitRules.getAbsoluteMaximumValue();
-    limitationControl.verify();
-    templateControl.verify();
+    EasyMock.verify(template, limitation);
     assertEquals(absoluteMaxValue, actualMaximalValue);
   }
 }

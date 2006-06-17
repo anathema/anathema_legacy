@@ -11,7 +11,7 @@ import net.sf.anathema.dummy.character.trait.DummyCoreTraitConfiguration;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.util.IIdentificate;
 
-import org.easymock.MockControl;
+import org.easymock.EasyMock;
 
 public class CostAnalyzerTest extends BasicTestCase {
 
@@ -29,22 +29,17 @@ public class CostAnalyzerTest extends BasicTestCase {
   }
 
   public void testIsFavoredMagicDelegatesToMagic() throws Exception {
-    MockControl magicControl = MockControl.createStrictControl(IMagic.class);
-    IMagic magic = (IMagic) magicControl.getMock();
+    IMagic magic = EasyMock.createStrictMock(IMagic.class);
     IBasicCharacterData trueCharacterData = new DummyBasicCharacterData();
-    magicControl.expectAndReturn(magic.isFavored(
-        trueCharacterData,
-        dummyCoreTraitConfiguration,
-        FavoringTraitType.AbilityType), true);
+    EasyMock.expect(magic.isFavored(trueCharacterData, dummyCoreTraitConfiguration, FavoringTraitType.AbilityType))
+        .andReturn(true);
     IBasicCharacterData falseCharacterData = new DummyBasicCharacterData();
-    magicControl.expectAndReturn(magic.isFavored(
-        falseCharacterData,
-        dummyCoreTraitConfiguration,
-        FavoringTraitType.AbilityType), false);
-    magicControl.replay();
+    EasyMock.expect(magic.isFavored(falseCharacterData, dummyCoreTraitConfiguration, FavoringTraitType.AbilityType))
+        .andReturn(false);
+    EasyMock.replay(magic);
     assertTrue(new CostAnalyzer(trueCharacterData, dummyCoreTraitConfiguration, FavoringTraitType.AbilityType).isMagicFavored(magic));
     assertFalse(new CostAnalyzer(falseCharacterData, dummyCoreTraitConfiguration, FavoringTraitType.AbilityType).isMagicFavored(magic));
-    magicControl.verify();
+    EasyMock.verify(magic);
   }
 
   public void testGetMartialArtsLevelFromMartialArtsCharm() throws Exception {

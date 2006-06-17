@@ -1,41 +1,32 @@
 package net.sf.anathema.test.character.abyssal.additional;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.backgrounds.SimpleBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.magic.Spell;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
-import net.sf.anathema.dummy.character.trait.DummyGenericTrait;
+import net.sf.anathema.dummy.character.trait.DummyGenericTraitCollection;
 import net.sf.anathema.lib.testing.BasicTestCase;
-
-import org.easymock.MockControl;
-import org.easymock.internal.MocksControl;
 
 public abstract class AbstractBackgroundRulesTest extends BasicTestCase {
 
   private IBackgroundTemplate backgroundTemplate;
-  private IGenericCharacter traitCollection;
-  private MockControl traitCollectionControl;
+  private DummyGenericTraitCollection traitCollection = new DummyGenericTraitCollection();
 
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    traitCollectionControl = MockControl.createNiceControl(IGenericCharacter.class);
-    traitCollection = (IGenericCharacter) traitCollectionControl.getMock();
     backgroundTemplate = new SimpleBackgroundTemplate("Test"); //$NON-NLS-1$
   }
 
   protected final void initTraitCollectionControlForValue(int value) {
-    DummyGenericTrait dummyTrait = new DummyGenericTrait(backgroundTemplate, value);
-    traitCollection.getTrait(backgroundTemplate);
-    traitCollectionControl.setReturnValue(dummyTrait, MocksControl.AT_LEAST_ONCE);
-    traitCollectionControl.replay();
+    traitCollection.setValue(getBackgroundTemplate(), value);
   }
 
-  protected final IGenericCharacter getTraitCollection() {
+  protected final IGenericTraitCollection getTraitCollection() {
     return traitCollection;
   }
 

@@ -6,7 +6,7 @@ import java.util.List;
 import net.sf.anathema.character.abyssal.AbyssalCharacterModule;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalBonusPointPool;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.module.BasicExaltCharacterModule;
 import net.sf.anathema.character.generic.framework.module.IBackgroundIds;
 import net.sf.anathema.character.generic.magic.IMagic;
@@ -36,7 +36,7 @@ public class LiegeBonusPointPool implements IAdditionalBonusPointPool {
     }
   };
 
-  public int getAmount(IGenericCharacter traitCollection) {
+  public int getAmount(IGenericTraitCollection traitCollection) {
     IGenericTrait liegeBackground = traitCollection.getTrait(liegeTemplate);
     if (liegeBackground == null || liegeBackground.getCurrentValue() == 0) {
       return 0;
@@ -48,7 +48,7 @@ public class LiegeBonusPointPool implements IAdditionalBonusPointPool {
     return (currentValue) * 3 - 3;
   }
 
-  public boolean isAllowedForTrait(final IGenericCharacter traitCollection, final IGenericTrait trait) {
+  public boolean isAllowedForTrait(final IGenericTraitCollection traitCollection, final IGenericTrait trait) {
     final boolean[] mayBeSpent = new boolean[1];
     trait.getType().accept(new AbstractTraitTypeVisitor() {
       @Override
@@ -65,7 +65,7 @@ public class LiegeBonusPointPool implements IAdditionalBonusPointPool {
     return mayBeSpent[0];
   }
 
-  public boolean isAllowedForMagic(IGenericCharacter characterAbstraction, IMagic magic) {
+  public boolean isAllowedForMagic(IGenericTraitCollection traitCollection, IMagic magic) {
     return true;
   }
 }
