@@ -4,27 +4,23 @@ import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfExperienceEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfHorizontalLineContentEncoder;
-import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
+import net.sf.anathema.character.reporting.sheet.page.AbstractSecondEditionPartEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
 
-public class SecondEditionMortalPartEncoder implements IPdfPartEncoder {
+public class SecondEditionMortalPartEncoder extends AbstractSecondEditionPartEncoder {
 
-  private final IResources resources;
-  private final BaseFont baseFont;
-
-  public SecondEditionMortalPartEncoder(IResources resources, BaseFont baseFont) {
-    this.resources = resources;
-    this.baseFont = baseFont;
+  public SecondEditionMortalPartEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont) {
+    super(resources, baseFont, symbolBaseFont);
   }
 
   public IPdfContentEncoder getAnimaEncoder() {
-    return new PdfBackgroundEncoder(resources, baseFont);
+    return new PdfBackgroundEncoder(getResources(), getBaseFont());
   }
 
   public IPdfContentEncoder getEssenceEncoder() {
-    return new PdfExperienceEncoder(resources, baseFont);
+    return new PdfExperienceEncoder(getResources(), getBaseFont());
   }
 
   public boolean hasSecondPage() {

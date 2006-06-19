@@ -32,7 +32,7 @@ public class SecondEditionCombatStatsEncoder extends AbstractPdfEncoder implemen
     this.resources = resources;
     this.baseFont = baseFont;
   }
-  
+
   public String getHeaderKey() {
     return "Combat"; //$NON-NLS-1$
   }

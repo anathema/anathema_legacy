@@ -14,10 +14,7 @@ import net.sf.anathema.character.reporting.sheet.common.PdfVirtueEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfWillpowerEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
-import net.sf.anathema.character.reporting.sheet.second.SecondEditionCombatStatsEncoder;
-import net.sf.anathema.character.reporting.sheet.second.SecondEditionHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionPersonalInfoEncoder;
-import net.sf.anathema.character.reporting.sheet.second.SecondEditionSocialCombatStatsEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.util.Bounds;
@@ -77,7 +74,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
     float greatCurseHeigth = ANIMA_HEIGHT - virtueHeight - IVoidStateFormatConstants.PADDING;
     encodeGreatCurse(directContent, character, distanceFromTop, greatCurseHeigth);
     distanceFromTop += calculateBoxIncrement(greatCurseHeigth);
-    
+
     float socialCombatHeight = encodeSocialCombatStats(directContent, character, distanceFromTop, 115);
     float willpowerHeight = encodeWillpower(directContent, character, distanceFromTop, 43);
     float willpowerIncrement = calculateBoxIncrement(willpowerHeight);
@@ -200,7 +197,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
-    IPdfContentEncoder encoder = new SecondEditionSocialCombatStatsEncoder(resources, baseFont);
+    IPdfContentEncoder encoder = partEncoder.getSocialCombatEncoder();
     boxEncoder.encodeBox(directContent, encoder, character, bounds);
     return height;
   }
@@ -211,7 +208,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IPdfContentEncoder encoder = new SecondEditionCombatStatsEncoder(resources, baseFont);
+    IPdfContentEncoder encoder = partEncoder.getCombatStatsEncoder();
     boxEncoder.encodeBox(directContent, encoder, character, bounds);
     return height;
   }
@@ -222,10 +219,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IPdfContentEncoder encoder = new SecondEditionHealthAndMovementEncoder(
-        resources,
-        baseFont,
-        registry.getSymbolBaseFont());
+    IPdfContentEncoder encoder = partEncoder.getHealthAndMovementEncoder();
     boxEncoder.encodeBox(directContent, encoder, character, bounds);
     return height;
   }
@@ -289,7 +283,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    IPdfContentEncoder encoder = registry.getIntimaciesEncoder();
+    IPdfContentEncoder encoder = partEncoder.getIntimaciesEncoder(registry);
     boxEncoder.encodeBox(directContent, encoder, character, bounds);
     return height;
   }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.magic.CharmUtilities;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
@@ -34,11 +35,13 @@ public class PdfMagicEncoder implements IPdfContentEncoder {
     final IExaltedEdition edition = character.getRules().getEdition();
     final CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     final List<IMagicStats> printStats = new ArrayList<IMagicStats>();
-    printStats.add(new FirstExcellency());
-    printStats.add(new SecondExcellency());
-    printStats.add(new ThirdExcellency());
-    printStats.add(new InfiniteMastery());
-    printStats.add(new EssenceFlow());
+    if (edition == ExaltedEdition.SecondEdition) {
+      printStats.add(new FirstExcellency());
+      printStats.add(new SecondExcellency());
+      printStats.add(new ThirdExcellency());
+      printStats.add(new InfiniteMastery());
+      printStats.add(new EssenceFlow());
+    }
     for (IMagic magic : character.getAllLearnedMagic()) {
       magic.accept(new IMagicVisitor() {
         public void visitCharm(ICharm charm) {

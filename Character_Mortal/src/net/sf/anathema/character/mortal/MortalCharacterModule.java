@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
 import net.sf.anathema.character.reporting.sheet.second.part.SecondEditionMortalPartEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -27,9 +28,10 @@ public class MortalCharacterModule extends NullObjectCharacterModuleAdapter {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
         CharacterReportingModule.class);
     PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
-    SecondEditionMortalPartEncoder secondEdtionMortalPartEncoder = new SecondEditionMortalPartEncoder(
+    IPdfPartEncoder secondEdtionMortalPartEncoder = new SecondEditionMortalPartEncoder(
         resources,
-        registry.getBaseFont());
+        registry.getBaseFont(),
+        registry.getSymbolBaseFont());
     registry.setPartEncoder(CharacterType.MORTAL, ExaltedEdition.SecondEdition, secondEdtionMortalPartEncoder);
     generics.getReportTemplateRegistry().add(new CharacterDescriptionReportTemplate(resources));
     generics.getReportTemplateRegistry().add(new MortalBasicsCharacterTemplate(resources));

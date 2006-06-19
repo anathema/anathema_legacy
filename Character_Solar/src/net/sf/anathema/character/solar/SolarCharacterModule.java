@@ -13,7 +13,9 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
 import net.sf.anathema.character.solar.caste.SolarCaste;
+import net.sf.anathema.character.solar.reporting.FirstEditionSolarPartEncoder;
 import net.sf.anathema.character.solar.reporting.SecondEditionSolarPartEncoder;
 import net.sf.anathema.character.solar.reporting.SolarVoidStateReportTemplate;
 import net.sf.anathema.character.solar.template.ISolarSpecialCharms;
@@ -25,6 +27,8 @@ import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
+
+  private static final int ESSENCE_MAX = EssenceTemplate.SYSTEM_ESSENCE_MAX;
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
@@ -63,10 +67,10 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
         CharacterReportingModule.class);
     PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
-    registry.setPartEncoder(CharacterType.SOLAR, ExaltedEdition.SecondEdition, new SecondEditionSolarPartEncoder(
-        resources,
-        registry,
-        EssenceTemplate.SYSTEM_ESSENCE_MAX));
+    IPdfPartEncoder secondEditionEncoder = new SecondEditionSolarPartEncoder(resources, registry, ESSENCE_MAX);
+    registry.setPartEncoder(CharacterType.SOLAR, ExaltedEdition.SecondEdition, secondEditionEncoder);
+    IPdfPartEncoder firstEditionEncoder = new FirstEditionSolarPartEncoder(resources, registry, ESSENCE_MAX);
+    registry.setPartEncoder(CharacterType.SOLAR, ExaltedEdition.FirstEdition, firstEditionEncoder);
     generics.getReportTemplateRegistry().add(new SolarVoidStateReportTemplate(resources));
   }
 

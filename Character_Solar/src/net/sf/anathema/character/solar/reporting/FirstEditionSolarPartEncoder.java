@@ -2,12 +2,12 @@ package net.sf.anathema.character.solar.reporting;
 
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
-import net.sf.anathema.character.reporting.sheet.page.AbstractSecondEditionExaltPdfPartEncoder;
+import net.sf.anathema.character.reporting.sheet.page.AbstractFirstEditionExaltPdfPartEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-public class SecondEditionSolarPartEncoder extends AbstractSecondEditionExaltPdfPartEncoder {
+public class FirstEditionSolarPartEncoder extends AbstractFirstEditionExaltPdfPartEncoder {
 
-  public SecondEditionSolarPartEncoder(IResources resources, PdfEncodingRegistry registry, int essenceMax) {
+  public FirstEditionSolarPartEncoder(IResources resources, PdfEncodingRegistry registry, int essenceMax) {
     super(resources, registry, essenceMax);
   }
 
