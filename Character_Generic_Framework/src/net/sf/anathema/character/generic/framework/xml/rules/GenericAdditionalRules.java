@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 
-public class GenericAdditionalRules extends NullAdditionalRules implements IAdditionalRules, ICloneable {
+public class GenericAdditionalRules extends NullAdditionalRules implements IAdditionalRules, ICloneable<GenericAdditionalRules> {
 
   private String[] compulsiveCharmIds = new String[0];
   private IAdditionalEssencePool[] pools = new IAdditionalEssencePool[0];

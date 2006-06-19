@@ -126,7 +126,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
   }
 
   public ICasteCollection getCasteCollection() {
-    return new CasteCollection(new ICasteType[0]);
+    return new CasteCollection (new ICasteType[0]);
   }
 
   public IMagicTemplate getMagicTemplate() {

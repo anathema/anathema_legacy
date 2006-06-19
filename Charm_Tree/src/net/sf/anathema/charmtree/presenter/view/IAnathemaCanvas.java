@@ -1,7 +1,9 @@
 package net.sf.anathema.charmtree.presenter.view;
 
 import java.awt.Cursor;
+import java.util.List;
 
+import org.apache.batik.swing.gvt.Interactor;
 import org.w3c.dom.Element;
 import org.w3c.dom.events.EventListener;
 import org.w3c.dom.svg.SVGDocument;
@@ -17,4 +19,6 @@ public interface IAnathemaCanvas {
   public Element getElementById(String id);
 
   public SVGDocument getSVGDocument();
+
+  public List<Interactor> getInteractors();
 }

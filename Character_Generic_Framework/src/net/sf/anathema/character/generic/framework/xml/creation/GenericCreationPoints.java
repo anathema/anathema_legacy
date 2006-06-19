@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.template.points.IAttributeCreationPoint
 import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
-public class GenericCreationPoints extends ReflectionCloneableObject implements ICreationPoints {
+public class GenericCreationPoints extends ReflectionCloneableObject<GenericCreationPoints> implements ICreationPoints {
 
   private IFavorableTraitCreationPoints abilityCreationPoints = new FavorableTraitCreationPoints(0, 0, 0);
   private IAttributeCreationPoints attributeCreationPoints = new AttributeCreationPoints(0, 0, 0);
@@ -83,9 +83,9 @@ public class GenericCreationPoints extends ReflectionCloneableObject implements 
 
   @Override
   public GenericCreationPoints clone() {
-    GenericCreationPoints clone = (GenericCreationPoints) super.clone();
-    clone.attributeCreationPoints = (IAttributeCreationPoints) clone.attributeCreationPoints.clone();
-    clone.abilityCreationPoints = (IFavorableTraitCreationPoints) clone.abilityCreationPoints.clone();
+    GenericCreationPoints clone = super.clone();
+    clone.attributeCreationPoints = clone.attributeCreationPoints.clone();
+    clone.abilityCreationPoints = clone.abilityCreationPoints.clone();
     return clone;
   }
 }

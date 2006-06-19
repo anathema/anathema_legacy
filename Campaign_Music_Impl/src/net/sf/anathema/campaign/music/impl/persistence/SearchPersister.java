@@ -16,10 +16,10 @@ public class SearchPersister {
   public IMp3Track[] executeSearch(ObjectContainer db, IExtendedSearchParameter[] parameters) {
     Query query = db.query();
     configureQuery(parameters, query);
-    ObjectSet set = query.execute();
+    ObjectSet<DbMp3Track> set = query.execute();
     List<DbMp3Track> tracks = new ArrayList<DbMp3Track>();
     while (set.hasNext()) {
-      tracks.add((DbMp3Track) set.next());
+      tracks.add(set.next());
     }
     return tracks.toArray(new DbMp3Track[tracks.size()]);
   }

@@ -22,7 +22,7 @@ public interface IBasicAdvantageView extends ITabView<IAdvantageViewProperties> 
       ListCellRenderer renderer,
       Icon addIcon);
 
-  public IRemovableTraitView addBackgroundView(Icon deleteIcon, String labelText, int creationValue, int maxValue);
+  public IRemovableTraitView<?> addBackgroundView(Icon deleteIcon, String labelText, int creationValue, int maxValue);
 
   public abstract IIntValueView addEssenceView(String labelText, int value, int maxValue);
 

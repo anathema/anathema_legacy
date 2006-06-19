@@ -35,8 +35,8 @@ public class TabbedViewDemo extends SwingDemoCase {
       private TabbedPanel tabbedPanel = new TabbedPanel() {
         {
           JPanel panel = new JPanel(new BorderLayout());
-          panel.add(new JLabel("Content"), BorderLayout.CENTER);
-          addTab(new TitledTab("Title", null, panel, null));
+          panel.add(new JLabel("Content"), BorderLayout.CENTER); //$NON-NLS-1$
+          addTab(new TitledTab("Title", null, panel, null)); //$NON-NLS-1$
         }
       };
 

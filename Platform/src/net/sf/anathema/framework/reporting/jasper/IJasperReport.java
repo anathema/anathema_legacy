@@ -12,7 +12,7 @@ public interface IJasperReport extends IReport {
 
   public IReportDataSource getDataSource(IItem item);
 
-  public Map getParameters(IItem item) throws ReportException;
+  public Map<Object, Object> getParameters(IItem item) throws ReportException;
 
   public InputStream createReportInputStream();
 }

@@ -14,7 +14,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class RuleSetSelectionView implements IRuleSetSelectionView {
 
   private IGridDialogPanel rulesSelectionPanel;
-  private ObjectSelectionView selectionView;
+  private ObjectSelectionView<IExaltedRuleSet> selectionView;
   private final IResources resources;
   private final IExaltedRuleSet preferredRuleSet;
 
@@ -27,7 +27,7 @@ public class RuleSetSelectionView implements IRuleSetSelectionView {
     rulesSelectionPanel = new DefaultGridDialogPanel(false);
     String label = resources.getString("CharacterDialog.Ruleset.Select.Label"); //$NON-NLS-1$
     IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer("Ruleset.", resources); //$NON-NLS-1$
-    selectionView = new ObjectSelectionView(label, renderer, ExaltedRuleSet.values(), false);
+    selectionView = new ObjectSelectionView<IExaltedRuleSet>(label, renderer, ExaltedRuleSet.values(), false);
     selectionView.setSelectedObject(preferredRuleSet);
     selectionView.addComponents(rulesSelectionPanel);
   }

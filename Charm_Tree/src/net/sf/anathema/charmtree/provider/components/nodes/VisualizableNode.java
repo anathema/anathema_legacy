@@ -52,6 +52,7 @@ public class VisualizableNode extends AbstractSingleVisualizableNode {
     }
   }
 
+  @SuppressWarnings("unused")
   private void addFlowTextElement(Element g) {
     QName textName = SVGCreationUtils.createSVGQName(SVG12Constants.SVG_FLOW_ROOT_TAG);
     Element flowText = g.addElement(textName);
@@ -61,15 +62,15 @@ public class VisualizableNode extends AbstractSingleVisualizableNode {
     regionRect.addAttribute(SVGConstants.SVG_Y_ATTRIBUTE, String.valueOf(getLayer().getYPosition()));
     regionRect.addAttribute(SVGConstants.SVG_WIDTH_ATTRIBUTE, String.valueOf(getCharmDimension().getWidth()));
     regionRect.addAttribute(SVGConstants.SVG_HEIGHT_ATTRIBUTE, String.valueOf(getCharmDimension().getHeight()));
-    regionRect.addAttribute("visibility", "hidden");
+    regionRect.addAttribute("visibility", "hidden"); //$NON-NLS-1$ //$NON-NLS-2$
     Element flowDiv = flowText.addElement(SVGCreationUtils.createSVGQName(SVG12Constants.SVG_FLOW_DIV_TAG));
     Element paragraph = flowDiv.addElement(SVGCreationUtils.createSVGQName(SVG12Constants.SVG_FLOW_PARA_TAG));
     paragraph.addAttribute(SVGConstants.SVG_FONT_SIZE_ATTRIBUTE, ISVGCascadeXMLConstants.VALUE_15);
-    paragraph.addAttribute("text-align", SVGConstants.SVG_MIDDLE_VALUE);
-    paragraph.addAttribute("margin-top", "10");
-    paragraph.addAttribute("margin-bottom", "10");
-    paragraph.addAttribute("margin-left", "10");
-    paragraph.addAttribute("margin-right", "10");
+    paragraph.addAttribute("text-align", SVGConstants.SVG_MIDDLE_VALUE); //$NON-NLS-1$
+    paragraph.addAttribute("margin-top", "10"); //$NON-NLS-1$ //$NON-NLS-2$
+    paragraph.addAttribute("margin-bottom", "10"); //$NON-NLS-1$ //$NON-NLS-2$
+    paragraph.addAttribute("margin-left", "10"); //$NON-NLS-1$ //$NON-NLS-2$
+    paragraph.addAttribute("margin-right", "10"); //$NON-NLS-1$ //$NON-NLS-2$
     paragraph.setText(getContentNode().getId());
   }
 

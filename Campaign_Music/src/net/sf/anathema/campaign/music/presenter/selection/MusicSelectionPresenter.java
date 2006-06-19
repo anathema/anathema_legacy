@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import net.sf.anathema.campaign.music.model.selection.IMusicSelection;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.view.selection.IMusicSelectionView;
@@ -47,8 +48,8 @@ public class MusicSelectionPresenter {
     });
     updateTrackList();
     updateSelectionList();
-    final IMultiSelectionActionAddableListView trackListView = selectionView.getTrackListView();
-    IActionAddableListView selectionListView = selectionView.getSelectionListView();
+    final IMultiSelectionActionAddableListView<IMp3Track> trackListView = selectionView.getTrackListView();
+    IActionAddableListView<IMusicSelection> selectionListView = selectionView.getSelectionListView();
     selectionListView.addAction(new NewSelectionAction(resources, selectionModel));
     selectionListView.addAction(new DeleteSelectionAction(resources, selectionListView, selectionModel));
     selectionListView.addAction(new PersistReplaceSelectionAction(selectionListView, selectionModel, resources));
@@ -60,10 +61,9 @@ public class MusicSelectionPresenter {
     trackListView.addListSelectionListener(new ListSelectionListener() {
       public void valueChanged(ListSelectionEvent e) {
         List<IMp3Track> trackList = new ArrayList<IMp3Track>();
-        for (Object trackObject : trackListView.getSelectedItems()) {
-          if (trackObject instanceof IMp3Track) {
-            trackList.add((IMp3Track) trackObject);
-          }
+        IMp3Track[] selectedItems = trackListView.getSelectedItems();
+        for (IMp3Track trackObject : selectedItems) {
+          trackList.add(trackObject);
         }
         selectionModel.setMarkedTracks(trackList.toArray(new IMp3Track[trackList.size()]));
       }

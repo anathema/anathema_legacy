@@ -32,7 +32,7 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
   private final IIntimaciesModel model;
   private final IIntimaciesView view;
   private final IResources resources;
-  private final Map<IIntimacy, IRemovableTraitView> viewsByIntimacy = new HashMap<IIntimacy, IRemovableTraitView>();
+  private final Map<IIntimacy, IRemovableTraitView<?>> viewsByIntimacy = new HashMap<IIntimacy, IRemovableTraitView<?>>();
   private final IAdditionalModel additionalModel;
 
   public IntimaciesPresenter(
@@ -154,7 +154,7 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
   }
 
   private void addIntimacyView(final BasicUi basicUi, final IIntimacy intimacy) {
-    final IRemovableTraitView<IToggleButtonTraitView> intimacyView = view.addEntryView(
+    final IRemovableTraitView<IToggleButtonTraitView<?>> intimacyView = view.addEntryView(
         basicUi.getMediumRemoveIcon(),
         intimacy.getName());
     intimacyView.setMaximum(model.getCompletionValue());

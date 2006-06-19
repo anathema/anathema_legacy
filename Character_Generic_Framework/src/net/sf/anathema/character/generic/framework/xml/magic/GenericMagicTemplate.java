@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.lib.collection.Predicate;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
-public class GenericMagicTemplate extends ReflectionCloneableObject implements IMagicTemplate {
+public class GenericMagicTemplate extends ReflectionCloneableObject<GenericMagicTemplate> implements IMagicTemplate {
 
   private Predicate<IMagic> predicate;
   private ICharmTemplate charmTemplate;

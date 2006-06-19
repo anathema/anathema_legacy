@@ -1,5 +1,7 @@
 package net.sf.anathema.campaign.reporting;
 
+import java.util.HashMap;
+
 import net.sf.anathema.campaign.model.ISeries;
 import net.sf.anathema.campaign.model.plot.IPlotElement;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
@@ -145,11 +147,16 @@ public class MultiColumnSeriesReport implements IITextReport {
     Font font = reportUtils.createDefaultFont(headerSize, Font.BOLD);
     Chunk title = new Chunk(titleString, font);
     title.setLocalDestination(titleString);
-    title.getAttributes().put(Chunk.GENERICTAG, titleString);
+    getAttributeMap(title).put(Chunk.GENERICTAG, titleString);
     Paragraph paragraph = new Paragraph(title);
     paragraph.setAlignment(Element.ALIGN_JUSTIFIED);
     paragraph.setLeading(font.size() * 1.2f);
     return paragraph;
+  }
+
+  @SuppressWarnings("unchecked")
+  private HashMap<Object, Object> getAttributeMap(Chunk title) {
+    return title.getAttributes();
   }
 
   private String createSectionTitle(IItemDescription description, int[] sectionMarking) {

@@ -15,12 +15,11 @@ import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.overview.OverviewCategory;
 import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
-import net.sf.anathema.character.library.trait.view.ITraitView;
 import net.sf.anathema.character.library.trait.view.RearButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.RearToggleButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 
-public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitView<IToggleButtonTraitView>> implements
+public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitView<IToggleButtonTraitView<?>>> implements
     IIntimaciesView {
 
   private final JPanel content = new JPanel(new GridDialogLayout(2, false));
@@ -57,10 +56,10 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
     return view;
   }
 
-  public IRemovableTraitView<IToggleButtonTraitView> addEntryView(Icon removeIcon, String string) {
-    ITraitView view = new SimpleTraitView(factory, string, 0, 5);
-    RearToggleButtonTraitViewWrapper oneButtonView = new RearToggleButtonTraitViewWrapper(view, properties, false);
-    RearButtonTraitViewWrapper<IToggleButtonTraitView> twoButtonView = new RearButtonTraitViewWrapper<IToggleButtonTraitView>(
+  public IRemovableTraitView<IToggleButtonTraitView<?>> addEntryView(Icon removeIcon, String string) {
+    SimpleTraitView view = new SimpleTraitView(factory, string, 0, 5);
+    RearToggleButtonTraitViewWrapper<SimpleTraitView> oneButtonView = new RearToggleButtonTraitViewWrapper<SimpleTraitView>(view, properties, false);
+    RearButtonTraitViewWrapper<IToggleButtonTraitView<?>> twoButtonView = new RearButtonTraitViewWrapper<IToggleButtonTraitView<?>>(
         oneButtonView,
         removeIcon);
     twoButtonView.addComponents(entryPanel);

@@ -8,7 +8,7 @@ import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntriesView;
 
-public interface IIntimaciesView extends IRemovableEntriesView<IRemovableTraitView<IToggleButtonTraitView>> {
+public interface IIntimaciesView extends IRemovableEntriesView<IRemovableTraitView<IToggleButtonTraitView<?>>> {
 
   public IIntimaciesSelectionView addSelectionView(String labelText, Icon addIcon);
 

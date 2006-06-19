@@ -52,6 +52,7 @@ public class GiftViewLearnProperties extends AbstractMagicLearnProperties implem
   @Override
   public ListCellRenderer getLearnedMagicRenderer() {
     return new DefaultListCellRenderer() {
+      @SuppressWarnings("unchecked")
       @Override
       public Component getListCellRendererComponent(
           JList list,

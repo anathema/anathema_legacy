@@ -25,7 +25,7 @@ public class WeightedObject<V> implements Comparable<WeightedObject<V>> {
     if (!(obj instanceof WeightedObject)) {
       return false;
     }
-    WeightedObject weightedObject = (WeightedObject) obj;
+    WeightedObject<?> weightedObject = (WeightedObject) obj;
     return weight == weightedObject.getWeight() && ObjectUtilities.equals(value, weightedObject.getValue());
   }
 
@@ -34,7 +34,7 @@ public class WeightedObject<V> implements Comparable<WeightedObject<V>> {
     return weight;
   }
 
-  public int compareTo(WeightedObject o) {
+  public int compareTo(WeightedObject<V> o) {
     return weight - o.weight;
   }
 }

@@ -2,20 +2,18 @@ package net.sf.anathema.character.reporting.sheet;
 
 import java.awt.Color;
 
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.template.Table;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
-import net.sf.anathema.character.reporting.sheet.second.part.SecondEditionMortalPartEncoder;
 
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.BaseFont;
 
 public class PdfEncodingRegistry {
 
-  private final Table<CharacterType, IExaltedEdition, IPdfPartEncoder> partEncoderTable = new Table<CharacterType, IExaltedEdition, IPdfPartEncoder>();
+  private final Table<CharacterType, IExaltedEdition, IPdfPartEncoder> partEncoderTable = new Table<CharacterType, IExaltedEdition, IPdfPartEncoder>(IPdfPartEncoder.class);
   private final BaseFont baseFont;
   private final BaseFont symbolBaseFont;
   private IPdfContentEncoder weaponContentEncoder;

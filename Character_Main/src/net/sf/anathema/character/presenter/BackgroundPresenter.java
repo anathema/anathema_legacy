@@ -36,7 +36,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
   private final IBackgroundConfiguration configuration;
   private final IBasicAdvantageView configurationView;
   private final IResources resources;
-  private final IdentityMapping<ITrait, IRemovableTraitView> viewsByBackground = new IdentityMapping<ITrait, IRemovableTraitView>();
+  private final IdentityMapping<ITrait, IRemovableTraitView<?>> viewsByBackground = new IdentityMapping<ITrait, IRemovableTraitView<?>>();
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
   private final Map<String, IBackgroundTemplate> templatesByDisplayName = new HashMap<String, IBackgroundTemplate>();
 
@@ -134,7 +134,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
 
   private synchronized void addBackgroundView(final ITrait background) {
     Icon deleteIcon = new BasicUi(resources).getMediumRemoveIcon();
-    IRemovableTraitView backgroundView = configurationView.addBackgroundView(
+    IRemovableTraitView<?> backgroundView = configurationView.addBackgroundView(
         deleteIcon,
         getDisplayObject(background).toString(),
         background.getCurrentValue(),
@@ -150,7 +150,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
   }
 
   private synchronized void removeBackgroundView(ITrait background) {
-    IRemovableTraitView view = viewsByBackground.get(background);
+    IRemovableTraitView<?> view = viewsByBackground.get(background);
     viewsByBackground.remove(background);
     view.delete();
   }
@@ -170,7 +170,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
   public void allowRemoveCreationBackground(boolean allowed) {
     for (ITrait background : viewsByBackground.getAllKeys()) {
       if (background.isCreationLearned()) {
-        IRemovableTraitView view = viewsByBackground.get(background);
+        IRemovableTraitView<?> view = viewsByBackground.get(background);
         view.setButtonEnabled(allowed);
       }
     }

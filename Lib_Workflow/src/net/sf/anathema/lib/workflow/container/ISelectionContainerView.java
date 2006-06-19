@@ -2,13 +2,13 @@ package net.sf.anathema.lib.workflow.container;
 
 import net.sf.anathema.lib.control.change.IChangeListener;
 
-public interface ISelectionContainerView {
+public interface ISelectionContainerView<V> {
 
-  public void populate(Object[] contentValues);
+  public void populate(V[] contentValues);
 
-  public void setSelectedValues(Object[] selectedValues);
+  public void setSelectedValues(V[] selectedValues);
 
   public void addSelectionChangeListener(IChangeListener listener);
 
-  public Object[] getSelectedValues();
+  public V[] getSelectedValues();
 }

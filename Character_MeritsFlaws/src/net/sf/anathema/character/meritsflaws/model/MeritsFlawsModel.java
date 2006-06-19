@@ -40,6 +40,7 @@ public class MeritsFlawsModel extends AbstractQualityModel<IPerk> implements IMe
     return getPerkSelections(PerkType.Flaw);
   }
 
+  @SuppressWarnings("unchecked")
   private IQualitySelection<IPerk>[] getPerkSelections(PerkType type) {
     List<IQualitySelection<IPerk>> selection = new ArrayList<IQualitySelection<IPerk>>();
     for (IQualitySelection<IPerk> perkSelection : getSelectedQualities()) {

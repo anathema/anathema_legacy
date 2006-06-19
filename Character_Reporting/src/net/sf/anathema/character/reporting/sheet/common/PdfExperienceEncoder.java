@@ -26,7 +26,7 @@ public class PdfExperienceEncoder implements IPdfContentEncoder {
   }
   
   public String getHeaderKey() {
-    return "Experience";
+    return "Experience"; //$NON-NLS-1$
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {

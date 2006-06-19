@@ -10,6 +10,8 @@ import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.campaign.music.impl.view.categorization.MusicCategorizationView;
+import net.sf.anathema.campaign.music.model.libary.ILibrary;
+import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.presenter.ILibraryControlProperties;
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationProperties;
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationView;
@@ -26,8 +28,8 @@ import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
 public class LibraryControlView implements ILibraryControlView {
 
   private final JPanel content = new JPanel();
-  private EditableActionAddableListView libraryListView;
-  private final ActionAddableListView mp3ListView;
+  private EditableActionAddableListView<ILibrary> libraryListView;
+  private final ActionAddableListView<IMp3Track> mp3ListView;
   private final JButton searchButton = new JButton();
   private final MusicCategorizationView searchMusicCategorizationView = new MusicCategorizationView();
   private final JPanel searchParameterPanel = new JPanel(new GridDialogLayout(
@@ -39,8 +41,8 @@ public class LibraryControlView implements ILibraryControlView {
 
   public LibraryControlView(ITableColumnViewSettings settings, ILibraryControlProperties properties) {
     this.viewProperties = properties;
-    libraryListView = new EditableActionAddableListView(viewProperties.getLibrariesString(), settings);
-    mp3ListView = new ActionAddableListView(viewProperties.getNoContentString());
+    libraryListView = new EditableActionAddableListView<ILibrary>(viewProperties.getLibrariesString(), settings, ILibrary.class);
+    mp3ListView = new ActionAddableListView<IMp3Track>(viewProperties.getNoContentString(),IMp3Track.class);
   }
 
   public void addLibraryListSelectionListener(ListSelectionListener listener) {
@@ -63,8 +65,8 @@ public class LibraryControlView implements ILibraryControlView {
     return mp3ListView.getContent();
   }
 
-  private ITabView createTabView(final JComponent component) {
-    return new ITabView() {
+  private ITabView<?> createTabView(final JComponent component) {
+    return new ITabView<Object>() {
 
       public JComponent getComponent() {
         return component;
@@ -84,7 +86,7 @@ public class LibraryControlView implements ILibraryControlView {
     return content;
   }
 
-  public IActionAddableListView getLibraryView() {
+  public IActionAddableListView<ILibrary> getLibraryView() {
     return libraryListView;
   }
 
@@ -100,7 +102,7 @@ public class LibraryControlView implements ILibraryControlView {
     return selectedItems[0];
   }
 
-  public IActionAddableListView getTrackListView() {
+  public IActionAddableListView<IMp3Track> getTrackListView() {
     return mp3ListView;
   }
 

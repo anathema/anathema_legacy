@@ -80,7 +80,7 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
 
   private float[] calculateColumnWidths(IStatsGroup[] groups) {
     Float[] columnWidths = new Float[0];
-    for (IStatsGroup group : groups) {
+    for (IStatsGroup<T> group : groups) {
       if (columnWidths.length != 0) {
         columnWidths = ArrayUtilities.concat(columnWidths, new Float(0.2));
       }

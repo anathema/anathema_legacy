@@ -7,11 +7,11 @@ import javax.swing.event.ListSelectionListener;
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 
-public abstract class AbstractListViewSelectionEnabledAction extends SmartAction {
+public abstract class AbstractListViewSelectionEnabledAction<V> extends SmartAction {
 
-  private final IActionAddableListView view;
+  private final IActionAddableListView<V> view;
 
-  public AbstractListViewSelectionEnabledAction(Icon icon, IActionAddableListView view) {
+  public AbstractListViewSelectionEnabledAction(Icon icon, IActionAddableListView<V> view) {
     super(icon);
     this.view = view;
     view.addListSelectionListener(new ListSelectionListener() {
@@ -30,7 +30,7 @@ public abstract class AbstractListViewSelectionEnabledAction extends SmartAction
     setEnabled(isSelectionEmpty());
   }
 
-  protected final Object[] getSelectedItems() {
+  protected final V[] getSelectedItems() {
     return view.getSelectedItems();
   }
 }

@@ -92,7 +92,7 @@ public class SVGIntValueDisplayDemo extends SwingDemoCase {
     final BoundsCalculator boundsCalculator = new BoundsCalculator();
     final SVGViewControlButton buttonView = new SVGViewControlButton(display, 190, "Categories"); //$NON-NLS-1$
     Element circle = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_CIRCLE_TAG);
-    circle.setAttributeNS(null, SVGConstants.SVG_R_ATTRIBUTE, "50");
+    circle.setAttributeNS(null, SVGConstants.SVG_R_ATTRIBUTE, "50"); //$NON-NLS-1$
     canvas.getSVGDocument().getRootElement().appendChild(circle);
     Element buttonElement = buttonView.initGui((SVGOMDocument) canvas.getSVGDocument(), boundsCalculator);
     canvas.getSVGDocument().getRootElement().appendChild(buttonElement);

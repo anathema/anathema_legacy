@@ -2,7 +2,6 @@ package net.sf.anathema.character.reporting.sheet.common.magic.generic.solar;
 
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.type.ShortCharmTypeStringBuilder;
 import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
-import net.sf.anathema.character.generic.impl.magic.charm.type.ReflexiveSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.duration.QualifiedAmountDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.lib.resources.IResources;
@@ -11,7 +10,7 @@ public class InfiniteMastery extends AbstractGenericCharm{
 
   @Override
   protected String getId() {
-    return "Solar.InfiniteMastery";
+    return "Solar.InfiniteMastery"; //$NON-NLS-1$
   }
 
   @Override
@@ -24,7 +23,7 @@ public class InfiniteMastery extends AbstractGenericCharm{
   }
 
   public String getDurationString(IResources resources) {
-    return new QualifiedAmountDuration("1", "scene").getText(resources);
+    return new QualifiedAmountDuration("1", "scene").getText(resources); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   public String getType(IResources resources) {

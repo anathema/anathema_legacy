@@ -180,7 +180,7 @@ public class SeriesPersister extends AbstractPersister implements IRepositoryIte
   private void loadPlotElement(Element element, IPlotElement parentElement, IRepositoryReadAccess readAccess)
       throws RepositoryException,
       PersistenceException {
-    List subXMLElements = element.elements();
+    List<Element> subXMLElements = ElementUtilities.elements(element);
     for (Object elementObject : subXMLElements) {
       Element plotItemXMLElement = (Element) elementObject;
       String repositoryId = plotItemXMLElement.attributeValue(ATTRIB_REPOSITORY_ID);

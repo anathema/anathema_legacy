@@ -16,10 +16,10 @@ public class SelectionPersister {
   public DbMusicSelection[] getAllSelections(ObjectContainer db) {
     Query query = db.query();
     query.constrain(DbMusicSelection.class);
-    ObjectSet set = query.execute();
+    ObjectSet<DbMusicSelection> set = query.execute();
     List<DbMusicSelection> selections = new ArrayList<DbMusicSelection>();
     while (set.hasNext()) {
-      selections.add((DbMusicSelection) set.next());
+      selections.add(set.next());
     }
     return selections.toArray(new DbMusicSelection[selections.size()]);
   }
@@ -28,8 +28,8 @@ public class SelectionPersister {
     Query query = db.query();
     query.constrain(DbMusicSelection.class);
     query.descend("name").constrain(string); //$NON-NLS-1$
-    ObjectSet set = query.execute();
-    return (DbMusicSelection) set.next();
+    ObjectSet<DbMusicSelection> set = query.execute();
+    return set.next();
   }
 
   public void removeSelection(ObjectContainer db, DbMusicSelection selection) {

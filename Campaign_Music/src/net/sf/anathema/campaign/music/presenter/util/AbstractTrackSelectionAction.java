@@ -5,9 +5,9 @@ import javax.swing.Icon;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 
-public abstract class AbstractTrackSelectionAction extends AbstractListViewSelectionEnabledAction {
+public abstract class AbstractTrackSelectionAction extends AbstractListViewSelectionEnabledAction<IMp3Track> {
 
-  public AbstractTrackSelectionAction(IActionAddableListView view, Icon icon) {
+  public AbstractTrackSelectionAction(IActionAddableListView<IMp3Track> view, Icon icon) {
     super(icon, view);
   }
 

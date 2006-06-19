@@ -13,7 +13,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.util.LayoutUtilities;
 
-public abstract class AbstractActionAddableListView implements IActionAddableListView {
+public abstract class AbstractActionAddableListView<T> implements IActionAddableListView<T> {
   private final JPanel buttonPanel = new JPanel(new GridLayout(
       1,
       0,

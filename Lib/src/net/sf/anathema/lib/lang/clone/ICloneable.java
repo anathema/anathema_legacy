@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.lang.clone;
 
-public interface ICloneable extends Cloneable {
+public interface ICloneable<C extends Cloneable> extends Cloneable {
 
-  public Object clone();
+  public C clone();
 }

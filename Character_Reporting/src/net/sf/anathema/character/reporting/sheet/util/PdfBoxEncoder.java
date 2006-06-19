@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.DocumentException;
@@ -13,7 +12,6 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfBoxEncoder extends AbstractPdfEncoder {
 
-  private static final Logger logger = Logger.getLogger(PdfBoxEncoder.class);
   private static final int CONTENT_INSET = 5;
   private static final int HEADER_FONT_PADDING = 3;
   private static final int HEADER_FONT_SIZE = IVoidStateFormatConstants.HEADER_FONT_SIZE;

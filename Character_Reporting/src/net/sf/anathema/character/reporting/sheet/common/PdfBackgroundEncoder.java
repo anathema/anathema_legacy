@@ -25,7 +25,7 @@ public class PdfBackgroundEncoder implements IPdfContentEncoder {
   }
   
   public String getHeaderKey() {
-    return "Backgrounds";
+    return "Backgrounds"; //$NON-NLS-1$
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {

@@ -12,7 +12,8 @@ import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
-public class GenericBonusPointCosts extends ReflectionCloneableObject implements IBonusPointCosts {
+public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBonusPointCosts> implements
+    IBonusPointCosts {
 
   private int generalAbilityCost = 0;
   private int favoredAbilityCost = 0;
@@ -143,11 +144,6 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject implements
   public void setAbilityCosts(int generalCost, int favoredCost) {
     this.generalAbilityCost = generalCost;
     this.favoredAbilityCost = favoredCost;
-  }
-
-  @Override
-  public GenericBonusPointCosts clone() {
-    return (GenericBonusPointCosts) super.clone();
   }
 
   public void setMaximumFreeVirtueRank(int rank) {

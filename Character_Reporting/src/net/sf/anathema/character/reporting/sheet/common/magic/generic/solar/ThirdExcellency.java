@@ -22,7 +22,7 @@ public class ThirdExcellency extends AbstractGenericCharm {
 
   @Override
   protected String getId() {
-    return "Solar.3rdExcellency";
+    return "Solar.3rdExcellency"; //$NON-NLS-1$
   }
 
   @Override

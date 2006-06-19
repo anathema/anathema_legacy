@@ -8,12 +8,12 @@ import net.sf.anathema.lib.lang.IArrayFactory;
 public class SelectionContainerPresenter<V> {
 
   private final ISelectionContainerModel<V> model;
-  private final ISelectionContainerView view;
+  private final ISelectionContainerView<V> view;
   private final IArrayFactory<V> arrayFactory;
 
   public SelectionContainerPresenter(
       ISelectionContainerModel<V> model,
-      ISelectionContainerView view,
+      ISelectionContainerView<V> view,
       Class<V> componentType) {
     this.model = model;
     this.view = view;

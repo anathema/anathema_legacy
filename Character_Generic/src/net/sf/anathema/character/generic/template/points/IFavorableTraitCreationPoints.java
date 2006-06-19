@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.template.points;
 
 import net.sf.anathema.lib.lang.clone.ICloneable;
 
-public interface IFavorableTraitCreationPoints extends ICloneable {
+public interface IFavorableTraitCreationPoints extends ICloneable<IFavorableTraitCreationPoints> {
 
   public int getFavoredDotCount();
 

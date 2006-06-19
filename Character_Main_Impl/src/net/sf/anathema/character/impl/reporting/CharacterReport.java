@@ -69,7 +69,7 @@ public final class CharacterReport implements IJasperReport {
     return createSheetDataSource();
   }
 
-  public Map getParameters(IItem item) throws ReportException {
+  public Map<Object, Object> getParameters(IItem item) throws ReportException {
     ICharacter characterData = (ICharacter) item.getItemData();
     Map<Object, Object> parameters = new HashMap<Object, Object>();
     GenericCharacter character = GenericCharacterUtilities.createGenericCharacter(characterData.getStatistics());

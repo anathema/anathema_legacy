@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
-public class StaticTraitLimitation extends ReflectionCloneableObject implements ITraitLimitation {
+public class StaticTraitLimitation extends ReflectionCloneableObject<ITraitLimitation> implements ITraitLimitation {
 
   private final int staticLimit;
 

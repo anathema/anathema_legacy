@@ -22,7 +22,7 @@ public class LibraryPersister {
   }
 
   public boolean isRegisteredLibrary(ObjectContainer db, String name) {
-    ObjectSet set = getLibraryObjectSet(db, name);
+    ObjectSet<DbLibrary> set = getLibraryObjectSet(db, name);
     return set.size() > 0;
   }
 
@@ -47,8 +47,8 @@ public class LibraryPersister {
   }
 
   public void addTracks(ObjectContainer db, String name, List<IMp3Track> tracksToAdd) {
-    ObjectSet set = getLibraryObjectSet(db, name);
-    DbLibrary dbLibrary = (DbLibrary) set.next();
+    ObjectSet<DbLibrary> set = getLibraryObjectSet(db, name);
+    DbLibrary dbLibrary = set.next();
     for (IMp3Track track : tracksToAdd) {
       DbMp3Track dbTrack = findTrack(db, track.getCheckSum());
       if (dbTrack == null) {
@@ -82,8 +82,8 @@ public class LibraryPersister {
   }
 
   public void removeLibrary(ObjectContainer db, String name) {
-    ObjectSet libraryObjectSet = getLibraryObjectSet(db, name);
-    DbLibrary library = (DbLibrary) libraryObjectSet.next();
+    ObjectSet<DbLibrary> libraryObjectSet = getLibraryObjectSet(db, name);
+    DbLibrary library = libraryObjectSet.next();
     for (IMp3Track track : library.getMp3Items()) {
       decreaseReferenceCount(db, (DbMp3Track) track);
     }
@@ -92,8 +92,8 @@ public class LibraryPersister {
   }
 
   public void removeTrackFromLibrary(ObjectContainer db, String name, IMp3Track track) {
-    ObjectSet libraryObjectSet = getLibraryObjectSet(db, name);
-    DbLibrary library = (DbLibrary) libraryObjectSet.next();
+    ObjectSet<DbLibrary> libraryObjectSet = getLibraryObjectSet(db, name);
+    DbLibrary library = libraryObjectSet.next();
     library.removeTrack(track);
     decreaseReferenceCount(db, (DbMp3Track) track);
     db.set(library);

@@ -12,7 +12,7 @@ import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.lib.gui.dialogcomponent.grouped.IGridDialogPanelContent;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 
-public class SimpleTraitView extends AbstractTraitView implements IGridDialogPanelContent, ITraitView {
+public class SimpleTraitView extends AbstractTraitView implements IGridDialogPanelContent, ITraitView<SimpleTraitView> {
 
   private final JLabel label;
   private final Component displayComponent;
@@ -61,7 +61,7 @@ public class SimpleTraitView extends AbstractTraitView implements IGridDialogPan
     traitViewPanel.revalidate();
   }
 
-  public ITraitView getInnerView() {
+  public SimpleTraitView getInnerView() {
     return this;
   }
 }

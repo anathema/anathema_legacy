@@ -8,6 +8,9 @@ import javax.swing.border.TitledBorder;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.sf.anathema.campaign.music.presenter.IMusicEvent;
+import net.sf.anathema.campaign.music.presenter.IMusicMood;
+import net.sf.anathema.campaign.music.presenter.IMusicTheme;
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationProperties;
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationView;
 import net.sf.anathema.lib.workflow.container.ISelectionContainerView;
@@ -15,9 +18,9 @@ import net.sf.anathema.lib.workflow.container.view.SelectionContainerListView;
 
 public class MusicCategorizationView implements IMusicCategorizationView {
 
-  private final SelectionContainerListView eventsView = new SelectionContainerListView();
-  private final SelectionContainerListView themesView = new SelectionContainerListView();
-  private final SelectionContainerListView moodsView = new SelectionContainerListView();
+  private final SelectionContainerListView<IMusicEvent> eventsView = new SelectionContainerListView<IMusicEvent>(IMusicEvent.class);
+  private final SelectionContainerListView<IMusicTheme> themesView = new SelectionContainerListView<IMusicTheme>(IMusicTheme.class);
+  private final SelectionContainerListView<IMusicMood> moodsView = new SelectionContainerListView<IMusicMood>(IMusicMood.class);
   private JPanel content;
 
   public JComponent getContent(IMusicCategorizationProperties properties) {
@@ -48,15 +51,15 @@ public class MusicCategorizationView implements IMusicCategorizationView {
     return panel;
   }
 
-  public ISelectionContainerView getMoodsView() {
+  public ISelectionContainerView<IMusicMood> getMoodsView() {
     return moodsView;
   }
 
-  public ISelectionContainerView getEventsView() {
+  public ISelectionContainerView<IMusicEvent> getEventsView() {
     return eventsView;
   }
 
-  public ISelectionContainerView getThemesView() {
+  public ISelectionContainerView<IMusicTheme> getThemesView() {
     return themesView;
   }
 }

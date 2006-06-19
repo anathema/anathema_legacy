@@ -20,7 +20,7 @@ public class SecondEditionWeaponryEncoder implements IPdfContentEncoder {
   }
 
   public String getHeaderKey() {
-    return "Weapons";
+    return "Weapons"; //$NON-NLS-1$
   }
   
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {

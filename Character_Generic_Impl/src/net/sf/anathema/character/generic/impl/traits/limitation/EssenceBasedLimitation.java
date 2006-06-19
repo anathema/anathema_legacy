@@ -17,7 +17,7 @@ public class EssenceBasedLimitation implements ITraitLimitation {
   }
 
   @Override
-  public Object clone() {
+  public EssenceBasedLimitation clone() {
     return this;
   }
 }

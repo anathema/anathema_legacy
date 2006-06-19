@@ -7,7 +7,7 @@ import net.sf.anathema.lib.lang.clone.ICloneable;
 
 import org.dom4j.Element;
 
-public abstract class AbstractXmlTemplateParser<T extends ICloneable> implements ITemplateParser<T> {
+public abstract class AbstractXmlTemplateParser<T extends ICloneable<T>> implements ITemplateParser<T> {
 
   private final IXmlTemplateRegistry<T> templateRegistry;
 

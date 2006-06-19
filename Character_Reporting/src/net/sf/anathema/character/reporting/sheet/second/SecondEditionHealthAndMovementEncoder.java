@@ -37,7 +37,7 @@ public class SecondEditionHealthAndMovementEncoder extends AbstractPdfEncoder im
   }
   
   public String getHeaderKey() {
-    return "MovementHealth";
+    return "MovementHealth"; //$NON-NLS-1$
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {

@@ -2,8 +2,9 @@ package net.sf.anathema.character.generic.framework.xml.health;
 
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.lib.lang.clone.ICloneable;
 
-public class GenericHealthTemplate implements IHealthTemplate {
+public class GenericHealthTemplate implements IHealthTemplate, ICloneable<GenericHealthTemplate> {
 
   private ITraitType toughnessTraitType = AbilityType.Endurance;
 

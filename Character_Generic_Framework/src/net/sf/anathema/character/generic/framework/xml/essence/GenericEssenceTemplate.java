@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.template.essence.IEssenceTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
-public class GenericEssenceTemplate extends ReflectionCloneableObject implements IEssenceTemplate {
+public class GenericEssenceTemplate extends ReflectionCloneableObject<GenericEssenceTemplate> implements IEssenceTemplate {
 
   private boolean isEssenceUser = false;
   private IEssencePoolConfiguration personalPoolConfiguration;

@@ -49,7 +49,7 @@ public class PrerequisiteCharmsPage extends AbstractAnathemaWizardPage {
   @Override
   protected void initPageContent() {
     this.view = viewFactory.createPrerequisiteCharmsView();
-    final ISelectionContainerView charmView = view.addPrerequisiteCharmView(new IdentificateListCellRenderer(resources));
+    final ISelectionContainerView<ICharm> charmView = view.addPrerequisiteCharmView(new IdentificateListCellRenderer(resources));
     charmView.addSelectionChangeListener(new IChangeListener() {
       public void changeOccured() {
         Object[] selectedValues = charmView.getSelectedValues();

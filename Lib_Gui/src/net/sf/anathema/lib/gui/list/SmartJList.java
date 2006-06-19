@@ -7,14 +7,19 @@ import javax.swing.DefaultListModel;
 import javax.swing.DefaultListSelectionModel;
 import javax.swing.JList;
 
-public class SmartJList extends JList {
+import net.disy.commons.core.util.ArrayUtilities;
 
-  public SmartJList() {
+public class SmartJList<T> extends JList {
+
+  private Class<T> clazz;
+
+  public SmartJList(Class<T> contentClass) {
+    this.clazz = contentClass;
     setModel(new DefaultListModel());
     setSelectionModel(new DefaultListSelectionModel());
   }
 
-  public void setObjects(Object[] objects) {
+  public void setObjects(T[] objects) {
     DefaultListModel listModel = (DefaultListModel) getModel();
     listModel.clear();
     for (Object object : objects) {
@@ -22,7 +27,7 @@ public class SmartJList extends JList {
     }
   }
 
-  public void setSelectedObjects(Object[] objects) {
+  public void setSelectedObjects(T[] objects) {
     DefaultListModel model = (DefaultListModel) getModel();
     List<Integer> indexList = new ArrayList<Integer>();
     for (Object object : objects) {
@@ -35,5 +40,17 @@ public class SmartJList extends JList {
       selectionModel.addSelectionInterval(index, index);
     }
     selectionModel.setValueIsAdjusting(false);
+  }
+
+  @SuppressWarnings("unchecked")
+  @Override
+  public T getSelectedValue() {
+    return (T) super.getSelectedValue();
+  }
+
+  @SuppressWarnings("unchecked")
+  @Override
+  public T[] getSelectedValues() {
+    return ArrayUtilities.transform(super.getSelectedValues(), clazz);
   }
 }

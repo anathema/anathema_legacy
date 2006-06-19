@@ -5,6 +5,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import net.disy.commons.swing.action.SmartAction;
+import net.sf.anathema.campaign.music.model.selection.IMusicSelection;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
@@ -12,12 +13,12 @@ import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 public abstract class AbstractPersistSelectionAction extends SmartAction {
 
   private IMusicSelectionModel selectionModel;
-  private IActionAddableListView selectionListView;
+  private IActionAddableListView<IMusicSelection> selectionListView;
 
   public AbstractPersistSelectionAction(
       Icon icon,
       String tooltip,
-      final IActionAddableListView selectionListView,
+      final IActionAddableListView<IMusicSelection> selectionListView,
       final IMusicSelectionModel selectionModel) {
     super(icon);
     this.selectionListView = selectionListView;
@@ -36,7 +37,7 @@ public abstract class AbstractPersistSelectionAction extends SmartAction {
     setToolTipText(tooltip);
   }
 
-  protected IActionAddableListView getSelectionListView() {
+  protected IActionAddableListView<IMusicSelection> getSelectionListView() {
     return selectionListView;
   }
 

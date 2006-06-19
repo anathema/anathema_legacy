@@ -38,7 +38,7 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentEn
   }
   
   public String getHeaderKey() {
-    return "Anima";
+    return "Anima"; //$NON-NLS-1$
   }
 
   @Override

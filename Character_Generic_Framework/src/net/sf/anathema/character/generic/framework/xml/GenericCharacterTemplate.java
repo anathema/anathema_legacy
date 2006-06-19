@@ -33,7 +33,7 @@ import net.sf.anathema.character.generic.template.presentation.IPresentationProp
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 
-public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable {
+public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable<GenericCharacterTemplate> {
 
   private IAdditionalRules additionalRules = new GenericAdditionalRules();
   private ITemplateType templateType;
@@ -164,13 +164,13 @@ public class GenericCharacterTemplate implements ICharacterTemplate, ICloneable 
       clone.creationPoints = creationPoints.clone();
     }
     if (essenceTemplate != null) {
-      clone.essenceTemplate = (GenericEssenceTemplate) essenceTemplate.clone();
+      clone.essenceTemplate = essenceTemplate.clone();
     }
     if (experienceCosts != null) {
-      clone.experienceCosts = (GenericExperiencePointCosts) experienceCosts.clone();
+      clone.experienceCosts = experienceCosts.clone();
     }
     if (magicTemplate != null) {
-      clone.magicTemplate = (GenericMagicTemplate) magicTemplate.clone();
+      clone.magicTemplate = magicTemplate.clone();
     }
     if (presentationTemplate != null) {
       clone.presentationTemplate = presentationTemplate.clone();

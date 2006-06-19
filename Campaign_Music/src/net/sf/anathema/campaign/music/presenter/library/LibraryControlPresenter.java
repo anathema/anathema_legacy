@@ -65,7 +65,7 @@ public class LibraryControlPresenter {
   }
 
   private void initLibraryListView() {
-    IActionAddableListView libraryView = controlView.getLibraryView();
+    IActionAddableListView<ILibrary> libraryView = controlView.getLibraryView();
     libraryView.addAction(new AddLibraryAction(libraryModel, resources));
     libraryView.addAction(new DeleteLibraryAction(resources, controlView, libraryModel));
     libraryView.addAction(new AddMusicFolderAction(resources, searchControl, libraryModel, controlView));

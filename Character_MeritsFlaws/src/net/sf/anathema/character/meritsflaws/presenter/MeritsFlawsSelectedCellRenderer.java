@@ -21,6 +21,7 @@ public class MeritsFlawsSelectedCellRenderer extends DefaultListCellRenderer {
     this.model = model;
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public Component getListCellRendererComponent(
       JList list,

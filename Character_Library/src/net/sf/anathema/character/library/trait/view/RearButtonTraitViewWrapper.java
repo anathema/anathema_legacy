@@ -12,7 +12,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 
-public class RearButtonTraitViewWrapper<K extends ITraitView> extends AbstractTraitViewWrapper<K> implements
+public class RearButtonTraitViewWrapper<K extends ITraitView< ? >> extends AbstractTraitViewWrapper<K> implements
     IRemovableTraitView<K> {
 
   private final JButton button;

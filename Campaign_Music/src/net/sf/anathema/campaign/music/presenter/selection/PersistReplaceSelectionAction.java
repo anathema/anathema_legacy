@@ -11,7 +11,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class PersistReplaceSelectionAction extends AbstractPersistSelectionAction {
 
   public PersistReplaceSelectionAction(
-      IActionAddableListView selectionListView,
+      IActionAddableListView<IMusicSelection> selectionListView,
       final IMusicSelectionModel selectionModel,
       IResources resources) {
     super(new BasicUi(resources).getReplaceToLeftIcon(), resources.getString("Music.Actions.ReplaceSelection.Tooltip"), //$NON-NLS-1$
@@ -21,7 +21,7 @@ public class PersistReplaceSelectionAction extends AbstractPersistSelectionActio
   @Override
   protected void execute(Component parentComponent) {
     IMusicSelection currentSelection = getSelectionModel().getCurrentSelection();
-    IMusicSelection persistSelection = (IMusicSelection) getSelectionListView().getSelectedItems()[0];
+    IMusicSelection persistSelection = getSelectionListView().getSelectedItems()[0];
     persistSelection.clear();
     persistSelection.addTracks(currentSelection.getContent());
     getSelectionModel().persistSelection(persistSelection);

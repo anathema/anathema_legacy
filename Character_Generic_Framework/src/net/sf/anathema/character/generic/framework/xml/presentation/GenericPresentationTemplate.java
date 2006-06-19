@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.template.presentation.IPresentationProp
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
-public class GenericPresentationTemplate extends ReflectionCloneableObject implements IPresentationProperties {
+public class GenericPresentationTemplate extends ReflectionCloneableObject<GenericPresentationTemplate> implements IPresentationProperties {
 
   private GenericCharmPresentationProperties charmPresentationProperties;
   private Color color;
@@ -57,9 +57,9 @@ public class GenericPresentationTemplate extends ReflectionCloneableObject imple
 
   @Override
   public GenericPresentationTemplate clone() {
-    GenericPresentationTemplate clone = (GenericPresentationTemplate) super.clone();
+    GenericPresentationTemplate clone = super.clone();
     if (clone.charmPresentationProperties != null) {
-      clone.charmPresentationProperties = (GenericCharmPresentationProperties) clone.charmPresentationProperties.clone();
+      clone.charmPresentationProperties = clone.charmPresentationProperties.clone();
     }
     return clone;
   }

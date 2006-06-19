@@ -193,9 +193,10 @@ public class CharacterConceptAndRulesPresenter {
                 template.getEdition().getId()));
       }
     };
+    ICasteType< ? extends ICasteTypeVisitor>[] allCasteTypes = template.getCasteCollection().getAllCasteTypes();
     final IObjectSelectionView<ICasteType< ? extends ICasteTypeVisitor>> casteView = view.addConceptObjectSelectionView(
         resources.getString(casteLabelResourceKey),
-        template.getCasteCollection().getAllCasteTypes(),
+        allCasteTypes,
         new ObjectUiListCellRenderer(casteUi),
         false);
     final ITypedDescription<ICasteType< ? extends ICasteTypeVisitor>> caste = statistics.getCharacterConcept()

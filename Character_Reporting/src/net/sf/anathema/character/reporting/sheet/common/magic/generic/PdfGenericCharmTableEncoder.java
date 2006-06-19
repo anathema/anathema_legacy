@@ -32,7 +32,6 @@ import com.lowagie.text.pdf.PdfTemplate;
 
 public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
 
-  private static final float CELL_WIDTH = TableEncodingUtilities.FONT_SIZE;
   private final IResources resources;
   private final BaseFont baseFont;
 
@@ -57,13 +56,7 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
       Phrase charmPhrase = new Phrase(resources.getString(genericId), font);
       table.addCell(new TableCell(charmPhrase, Rectangle.NO_BORDER));
       for (AbilityType abilityType : AbilityType.getAbilityTypes(ExaltedEdition.SecondEdition)) {
-        table.addCell(createGenericCell(
-            directContent,
-            character,
-            abilityType,
-            genericId,
-            learnedTemplate,
-            notLearnedTemplate));
+        table.addCell(createGenericCell(character, abilityType, genericId, learnedTemplate, notLearnedTemplate));
       }
     }
     return table;
@@ -83,13 +76,12 @@ public class PdfGenericCharmTableEncoder extends AbstractTableEncoder {
   }
 
   private PdfPCell createGenericCell(
-      PdfContentByte directContent,
       IGenericCharacter character,
       AbilityType abilityType,
       String genericId,
       PdfTemplate learnedTemplate,
       PdfTemplate notLearnedTemplate) throws DocumentException {
-    final String charmId = genericId + "." + abilityType.getId();
+    final String charmId = genericId + "." + abilityType.getId(); //$NON-NLS-1$
     List<IMagic> allLearnedMagic = character.getAllLearnedMagic();
     boolean isLearned = CollectionUtilities.find(allLearnedMagic, new IPredicate<IMagic>() {
       public boolean evaluate(IMagic value) {

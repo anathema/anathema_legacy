@@ -63,7 +63,7 @@ public class SiderealCollegePresenter extends AbstractTraitPresenter {
             return null;
           }
         };
-        final IToggleButtonTraitView collegeView = view.addIntValueView(
+        final IToggleButtonTraitView<?> collegeView = view.addIntValueView(
             collegeName,
             factory,
             properties,

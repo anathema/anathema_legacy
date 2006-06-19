@@ -6,16 +6,17 @@ import javax.swing.event.ListSelectionListener;
 
 import net.sf.anathema.lib.gui.list.SmartJList;
 
-public class ActionAddableListView extends AbstractActionAddableListView implements
-    IMultiSelectionActionAddableListView {
+public class ActionAddableListView<T> extends AbstractActionAddableListView<T> implements
+    IMultiSelectionActionAddableListView<T> {
 
-  private final SmartJList list = new SmartJList();
+  private final SmartJList<T> list;
 
-  public ActionAddableListView(String title) {
+  public ActionAddableListView(String title, Class<T> contentClass) {
     super(title);
+    list = new SmartJList<T>(contentClass);
   }
 
-  public void setListItems(Object[] items) {
+  public void setListItems(T[] items) {
     list.setObjects(items);
   }
 
@@ -23,7 +24,7 @@ public class ActionAddableListView extends AbstractActionAddableListView impleme
     list.addListSelectionListener(listener);
   }
 
-  public Object[] getSelectedItems() {
+  public T[] getSelectedItems() {
     return list.getSelectedValues();
   }
 
@@ -41,7 +42,7 @@ public class ActionAddableListView extends AbstractActionAddableListView impleme
     return true;
   }
 
-  protected SmartJList getList() {
+  protected SmartJList<T> getList() {
     return list;
   }
 

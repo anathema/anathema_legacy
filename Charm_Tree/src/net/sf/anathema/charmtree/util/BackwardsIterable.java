@@ -20,8 +20,8 @@ public class BackwardsIterable<T> implements Iterable<T> {
     this(Arrays.asList(array));
   }
 
-  public Iterator iterator() {
-    return new Iterator() {
+  public Iterator<T> iterator() {
+    return new Iterator<T>() {
       public boolean hasNext() {
         return currentIndex > 0;
       }

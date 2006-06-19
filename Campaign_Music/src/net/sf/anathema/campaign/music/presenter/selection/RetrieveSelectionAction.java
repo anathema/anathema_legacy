@@ -14,12 +14,12 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class RetrieveSelectionAction extends SmartAction {
 
-  private final IActionAddableListView selectionListView;
+  private final IActionAddableListView<IMusicSelection> selectionListView;
   private final IMusicSelectionModel selectionModel;
 
   public RetrieveSelectionAction(
       IResources resources,
-      final IActionAddableListView selectionListView,
+      final IActionAddableListView<IMusicSelection> selectionListView,
       IMusicSelectionModel selectionModel) {
     super(new BasicUi(resources).getDoubleRightArrowIcon());
     this.selectionListView = selectionListView;
@@ -35,7 +35,7 @@ public class RetrieveSelectionAction extends SmartAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    IMusicSelection selectedSelection = (IMusicSelection) selectionListView.getSelectedItems()[0];
+    IMusicSelection selectedSelection = selectionListView.getSelectedItems()[0];
     selectionModel.addToCurrentSelection(selectedSelection.getContent());
   }
 }

@@ -10,7 +10,7 @@ public class EssenceFlow extends AbstractGenericCharm {
 
   @Override
   protected String getId() {
-    return "Solar.EssenceFlow";
+    return "Solar.EssenceFlow"; //$NON-NLS-1$
   }
 
   @Override
@@ -19,7 +19,7 @@ public class EssenceFlow extends AbstractGenericCharm {
   }
 
   public String getCostString(IResources resources) {
-    return "-";
+    return "-"; //$NON-NLS-1$
   }
 
   public String getDurationString(IResources resources) {

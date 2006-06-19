@@ -10,6 +10,7 @@ import javax.swing.ScrollPaneConstants;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.charmentry.presenter.view.IPrerequisiteCharmsEntryView;
 import net.sf.anathema.lib.workflow.container.ISelectionContainerView;
 import net.sf.anathema.lib.workflow.container.view.SelectionContainerListView;
@@ -18,8 +19,8 @@ public class PrerequisiteCharmsEntryView implements IPrerequisiteCharmsEntryView
 
   private final JPanel content = new JPanel(new GridDialogLayout(1, false));
 
-  public ISelectionContainerView addPrerequisiteCharmView(ListCellRenderer renderer) {
-    SelectionContainerListView view = new SelectionContainerListView();
+  public ISelectionContainerView<ICharm> addPrerequisiteCharmView(ListCellRenderer renderer) {
+    SelectionContainerListView<ICharm> view = new SelectionContainerListView<ICharm>(ICharm.class);
     view.setRenderer(renderer);
     content.add(new JScrollPane(
         view.getContent(),

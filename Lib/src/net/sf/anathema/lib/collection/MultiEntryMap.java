@@ -42,7 +42,7 @@ public class MultiEntryMap<K, V> {
 
   public boolean containsValue(V value) {
     for (Iterator<K> allKeys = keySet().iterator(); allKeys.hasNext();) {
-      List list = getList(allKeys.next());
+      List<V> list = getList(allKeys.next());
       if (list.contains(value)) {
         return true;
       }

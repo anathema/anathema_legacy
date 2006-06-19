@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 
-public class GenericGroupedTraitTypeProvider implements ICloneable {
+public class GenericGroupedTraitTypeProvider implements ICloneable<GenericGroupedTraitTypeProvider> {
 
   private final List<IGroupedTraitType> groupedTraitTypes = new ArrayList<IGroupedTraitType>();
   private final ITraitTypeGroup traitTypeGroup;
@@ -28,7 +28,7 @@ public class GenericGroupedTraitTypeProvider implements ICloneable {
   }
 
   @Override
-  public Object clone() {
+  public GenericGroupedTraitTypeProvider clone() {
     GenericGroupedTraitTypeProvider clone = new GenericGroupedTraitTypeProvider(traitTypeGroup);
     clone.groupedTraitTypes.addAll(groupedTraitTypes);
     return clone;

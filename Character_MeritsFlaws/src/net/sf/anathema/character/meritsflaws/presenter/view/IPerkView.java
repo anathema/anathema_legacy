@@ -1,10 +1,12 @@
 package net.sf.anathema.character.meritsflaws.presenter.view;
 
+import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
+import net.sf.anathema.character.meritsflaws.model.perk.IPerk;
 import net.sf.anathema.character.meritsflaws.presenter.IPerkListener;
 
 public interface IPerkView {
 
-  public void setAvailablePerks(Object[] perks);
+  public void setAvailablePerks(IPerk[] perks);
 
   public void addPerkListener(IPerkListener listener);
 
@@ -12,9 +14,9 @@ public interface IPerkView {
 
   public void setAddEnabled(boolean enabled);
 
-  public void setSelectedPerks(Object[] selectedPerks);
+  public void setSelectedPerks(IQualitySelection<IPerk>[] selectedPerks);
 
   public void setRemoveEnabled(boolean enabled);
 
-  public void setAvailableListSelection(Object perk);
+  public void setAvailableListSelection(IPerk perk);
 }

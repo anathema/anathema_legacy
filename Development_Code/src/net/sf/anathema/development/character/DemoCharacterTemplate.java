@@ -22,7 +22,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.type.CharacterType;
 
 public class DemoCharacterTemplate implements ICharacterTemplate {
-  
+
   private final ITemplateType templateType;
 
   public DemoCharacterTemplate(CharacterType characterType) {

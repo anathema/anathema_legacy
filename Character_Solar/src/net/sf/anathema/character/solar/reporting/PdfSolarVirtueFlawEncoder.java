@@ -36,7 +36,7 @@ public class PdfSolarVirtueFlawEncoder extends AbstractPdfEncoder implements IPd
   }
 
   public String getHeaderKey() {
-    return "GreatCurse.Solar";
+    return "GreatCurse.Solar"; //$NON-NLS-1$
   }
 
   @Override

@@ -2,7 +2,6 @@ package net.sf.anathema.character.reporting.sheet.common.magic.generic.solar;
 
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.source.MagicSourceStringBuilder;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
-import net.sf.anathema.character.generic.magic.IExtendedCharmData;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.reporting.sheet.common.magic.stats.IMagicStats;
 import net.sf.anathema.lib.resources.IResources;
@@ -18,7 +17,7 @@ public abstract class AbstractGenericCharm implements IMagicStats {
   }
 
   public String[] getDetailKeys() {
-    return new String[] { getId() + ".Description" };
+    return new String[] { getId() + ".Description" }; //$NON-NLS-1$
   }
 
   public final String getGroupName(IResources resources) {

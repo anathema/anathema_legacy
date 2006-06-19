@@ -9,13 +9,13 @@ import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.resources.IResources;
 
-public class DeleteSelectionAction extends AbstractListViewSelectionEnabledAction {
+public class DeleteSelectionAction extends AbstractListViewSelectionEnabledAction<IMusicSelection> {
 
   private final IMusicSelectionModel selectionModel;
 
   public DeleteSelectionAction(
       IResources resources,
-      IActionAddableListView selectionListView,
+      IActionAddableListView<IMusicSelection> selectionListView,
       IMusicSelectionModel selectionModel) {
     super(new BasicUi(resources).getMediumRemoveIcon(), selectionListView);
     this.selectionModel = selectionModel;
@@ -24,6 +24,6 @@ public class DeleteSelectionAction extends AbstractListViewSelectionEnabledActio
 
   @Override
   protected void execute(Component parentComponent) {
-    selectionModel.deleteSelection((IMusicSelection) getSelectedItems()[0]);
+    selectionModel.deleteSelection(getSelectedItems()[0]);
   }
 }

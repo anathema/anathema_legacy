@@ -12,7 +12,7 @@ import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
-public class GenericExperiencePointCosts extends ReflectionCloneableObject implements IExperiencePointCosts {
+public class GenericExperiencePointCosts extends ReflectionCloneableObject<GenericExperiencePointCosts> implements IExperiencePointCosts {
 
   private ICurrentRatingCosts generalAttributeCost;
   private ICurrentRatingCosts generalAbilityCost;

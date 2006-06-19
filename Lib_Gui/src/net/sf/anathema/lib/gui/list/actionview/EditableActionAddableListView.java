@@ -8,17 +8,20 @@ import javax.swing.table.DefaultTableModel;
 
 import net.sf.anathema.lib.gui.table.SmartTable;
 import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
+import net.sf.anathema.lib.lang.ArrayFactory;
 
-public class EditableActionAddableListView extends AbstractActionAddableListView {
+public class EditableActionAddableListView<V> extends AbstractActionAddableListView<V> {
 
   private final SmartTable table;
   private final DefaultTableModel tableModel = new DefaultTableModel(10, 1);
+  private final ArrayFactory<V> factory;
 
-  public EditableActionAddableListView(String title, ITableColumnViewSettings columnSetting) {
+  public EditableActionAddableListView(String title, ITableColumnViewSettings columnSetting, Class<V> contentClass) {
     super(title);
     table = new SmartTable(tableModel, new ITableColumnViewSettings[] { columnSetting });
     table.getTable().setTableHeader(null);
     table.getTable().setGridColor(new Color(0, 0, 0, 0));
+    factory = new ArrayFactory<V>(contentClass);
   }
 
   @Override
@@ -26,12 +29,12 @@ public class EditableActionAddableListView extends AbstractActionAddableListView
     return table.getContent();
   }
 
-  public void setListItems(Object[] items) {
+  public void setListItems(V[] items) {
     for (int index = 0; index < tableModel.getRowCount(); index++) {
       tableModel.removeRow(index);
     }
     tableModel.setRowCount(0);
-    for (Object value : items) {
+    for (V value : items) {
       tableModel.addRow(new Object[] { value });
     }
   }
@@ -40,12 +43,15 @@ public class EditableActionAddableListView extends AbstractActionAddableListView
     table.getTable().getSelectionModel().addListSelectionListener(listener);
   }
 
-  public Object[] getSelectedItems() {
+  @SuppressWarnings("unchecked")
+  public V[] getSelectedItems() {
     int selectedRowIndex = table.getSelectedRowIndex();
     if (selectedRowIndex < 0) {
-      return new Object[0];
+      return factory.createArray(0);
     }
-    return new Object[] { tableModel.getValueAt(selectedRowIndex, 0) };
+    V[] array = factory.createArray(1);
+    array[0] = (V) tableModel.getValueAt(selectedRowIndex, 0);
+    return array;
   }
 
   @Override

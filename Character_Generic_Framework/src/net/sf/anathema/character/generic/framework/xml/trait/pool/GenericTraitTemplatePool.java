@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 
-public class GenericTraitTemplatePool implements ICloneable {
+public class GenericTraitTemplatePool implements ICloneable<GenericTraitTemplatePool> {
 
   private GenericTraitTemplate defaultTraitTemplate;
   private Map<ITraitType, IClonableTraitTemplate> specialTraitTemplates = new HashMap<ITraitType, IClonableTraitTemplate>();

@@ -19,7 +19,7 @@ public class PdfWillpowerEncoder implements IPdfContentEncoder {
   }
   
   public String getHeaderKey() {
-    return "Willpower";
+    return "Willpower"; //$NON-NLS-1$
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds) {

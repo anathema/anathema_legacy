@@ -33,7 +33,7 @@ public class PdfEssenceEncoder extends AbstractPdfEncoder implements IPdfContent
   }
 
   public String getHeaderKey() {
-    return "Essence";
+    return "Essence"; //$NON-NLS-1$
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {

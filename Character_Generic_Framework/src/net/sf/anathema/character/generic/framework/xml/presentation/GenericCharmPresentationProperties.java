@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import net.sf.anathema.character.generic.template.presentation.ICharmPresentationProperties;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
-public class GenericCharmPresentationProperties extends ReflectionCloneableObject implements
+public class GenericCharmPresentationProperties extends ReflectionCloneableObject<GenericCharmPresentationProperties> implements
     ICharmPresentationProperties {
 
   private String polygonString;

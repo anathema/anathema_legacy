@@ -13,6 +13,6 @@ public class NullPdfContentEncoder implements IPdfContentEncoder {
   }
 
   public String getHeaderKey() {
-    return "Null";
+    return "Null"; //$NON-NLS-1$
   }
 }

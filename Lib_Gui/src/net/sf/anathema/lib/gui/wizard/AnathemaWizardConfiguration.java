@@ -50,10 +50,6 @@ public class AnathemaWizardConfiguration implements IBasicWizardConfiguration {
     return false;
   }
 
-  public void performAfterDispose(boolean canceled) {
-    // Nothing to do
-  }
-
   public boolean isHeaderPanelVisible() {
     return true;
   }
@@ -70,7 +66,7 @@ public class AnathemaWizardConfiguration implements IBasicWizardConfiguration {
   public IBasicWizardPage getStartingPage() {
     return startPage;
   }
-  
+
   public Icon getLargeDialogIcon() {
     return null;
   }

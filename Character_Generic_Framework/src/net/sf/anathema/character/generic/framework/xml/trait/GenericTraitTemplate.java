@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
-public class GenericTraitTemplate extends ReflectionCloneableObject implements IClonableTraitTemplate {
+public class GenericTraitTemplate extends ReflectionCloneableObject<IClonableTraitTemplate> implements IClonableTraitTemplate {
 
   private Integer minimumValue;
   private Integer zeroLevelValue;

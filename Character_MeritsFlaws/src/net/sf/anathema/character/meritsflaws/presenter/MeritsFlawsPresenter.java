@@ -38,9 +38,8 @@ public class MeritsFlawsPresenter {
     setAvailablePerks(meritsView);
     meritsView.addPerkListener(new IPerkListener() {
 
-      public void perkAdded(Object selectedObject, Object detailsViewObject) {
-        IPerk perk = (IPerk) selectedObject;
-        final IPerkDetailsView detailsView = (IPerkDetailsView) detailsViewObject;
+      @SuppressWarnings("unchecked")
+      public void perkAdded(IPerk perk, final IPerkDetailsView detailsView) {
         final IQualitySelection<IPerk>[] selection = new IQualitySelection[1];
         perk.accept(new IPerkVisitor() {
           public void visitMultiValuePerk(MultiValuePerk visitedPerk) {
@@ -50,8 +49,7 @@ public class MeritsFlawsPresenter {
         model.addQualitySelection(selection[0]);
       }
 
-      public void perkSelected(Object object) {
-        IPerk perk = (IPerk) object;
+      public void perkSelected(IPerk perk) {
         if (model.isSelectable(perk)) {
           model.setCurrentQuality(perk);
           createDetailsView(meritsView, perk);
@@ -64,12 +62,11 @@ public class MeritsFlawsPresenter {
         setAvailablePerks(meritsView);
       }
 
-      public void perkRemoved(Object selection) {
-        IQualitySelection<IPerk> perkSelection = (IQualitySelection<IPerk>) selection;
-        model.removeQualitySelection(perkSelection);
+      public void perkRemoved(IQualitySelection<IPerk> selection) {
+        model.removeQualitySelection(selection);
       }
 
-      public void selectionSelected(Object perkSelection) {
+      public void selectionSelected(IQualitySelection<IPerk> perkSelection) {
         meritsView.setRemoveEnabled(perkSelection != null);
       }
     });

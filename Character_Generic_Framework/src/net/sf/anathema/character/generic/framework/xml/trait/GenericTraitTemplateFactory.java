@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 
-public class GenericTraitTemplateFactory implements ITraitTemplateFactory, ICloneable {
+public class GenericTraitTemplateFactory implements ITraitTemplateFactory, ICloneable<GenericTraitTemplateFactory> {
 
   private GenericTraitTemplatePool backgroundPool;
   private GenericTraitTemplatePool abilitiesPool;

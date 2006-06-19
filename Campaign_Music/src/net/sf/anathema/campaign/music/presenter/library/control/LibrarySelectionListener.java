@@ -4,6 +4,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
+import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.presenter.IMusicSearchControl;
 import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
@@ -26,13 +27,13 @@ public final class LibrarySelectionListener implements ListSelectionListener {
   }
 
   private void updateTracks(ILibrary selectedLibrary) {
-    IActionAddableListView trackListView = view.getTrackListView();
+    IActionAddableListView<IMp3Track> trackListView = view.getTrackListView();
     if (selectedLibrary == null) {
-      trackListView.setListItems(new Object[0]);
+      trackListView.setListItems(new IMp3Track[0]);
       trackListView.setListTitle(resources.getString("Music.Labels.LibraryTrackView.NoContentTitle")); //$NON-NLS-1$
     }
     else {
-      Object[] tracks = searchControl.getTracks(selectedLibrary.getName());
+      IMp3Track[] tracks = searchControl.getTracks(selectedLibrary.getName());
       trackListView.setListItems(tracks);
       trackListView.setListTitle(resources.getString("Music.Labels.LibraryTrackView.ContentTitleSnippet") + " \"" + selectedLibrary.getName() + "\":"); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
     }

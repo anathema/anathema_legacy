@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.template.points.IAttributeCreationPoint
 import net.sf.anathema.character.generic.template.points.IAttributeGroupPriorityVisitor;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
-public class AttributeCreationPoints extends ReflectionCloneableObject implements IAttributeCreationPoints {
+public class AttributeCreationPoints extends ReflectionCloneableObject<IAttributeCreationPoints> implements IAttributeCreationPoints {
 
   private final int primary;
   private final int secondary;
@@ -49,5 +49,10 @@ public class AttributeCreationPoints extends ReflectionCloneableObject implement
       }
     });
     return count[0];
+  }
+  
+  @Override
+  public AttributeCreationPoints clone() {
+    return (AttributeCreationPoints) super.clone();
   }
 }

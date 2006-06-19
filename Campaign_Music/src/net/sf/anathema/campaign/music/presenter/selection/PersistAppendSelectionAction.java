@@ -11,7 +11,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class PersistAppendSelectionAction extends AbstractPersistSelectionAction {
 
   public PersistAppendSelectionAction(
-      IActionAddableListView selectionListView,
+      IActionAddableListView<IMusicSelection> selectionListView,
       IMusicSelectionModel selectionModel,
       IResources resources) {
     super(
@@ -24,7 +24,7 @@ public class PersistAppendSelectionAction extends AbstractPersistSelectionAction
   @Override
   protected void execute(Component parentComponent) {
     IMusicSelection currentSelection = getSelectionModel().getCurrentSelection();
-    IMusicSelection persistSelection = (IMusicSelection) getSelectionListView().getSelectedItems()[0];
+    IMusicSelection persistSelection = getSelectionListView().getSelectedItems()[0];
     persistSelection.addTracks(currentSelection.getContent());
     getSelectionModel().persistSelection(persistSelection);
   }

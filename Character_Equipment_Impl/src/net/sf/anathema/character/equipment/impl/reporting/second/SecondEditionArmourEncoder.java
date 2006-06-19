@@ -20,7 +20,7 @@ public class SecondEditionArmourEncoder implements IPdfContentEncoder {
   }
   
   public String getHeaderKey() {
-    return "ArmourSoak";
+    return "ArmourSoak"; //$NON-NLS-1$
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {

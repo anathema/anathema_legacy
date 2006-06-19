@@ -227,9 +227,6 @@ public class SVGIntValueDisplay implements IIntValueView {
   }
 
   public void setVisible(boolean visible) {
-    // if (this.visible && !visible) {
-    // stopListening();
-    // }
     this.visible = visible;
     if (visible) {
       setValue(value);
@@ -241,14 +238,5 @@ public class SVGIntValueDisplay implements IIntValueView {
     glassPane.addEventListener("mousedown", displayRectangleListener, false); //$NON-NLS-1$
     document.addEventListener("mousemove", rectangleChangeListener, false); //$NON-NLS-1$
     document.addEventListener("mouseup", selectionListener, false); //$NON-NLS-1$
-  }
-
-  private void stopListening() {
-    if (document == null) {
-      return;
-    }
-    glassPane.removeEventListener("mousedown", displayRectangleListener, false); //$NON-NLS-1$
-    document.removeEventListener("mousemove", rectangleChangeListener, false); //$NON-NLS-1$
-    document.removeEventListener("mouseup", selectionListener, false); //$NON-NLS-1$
   }
 }

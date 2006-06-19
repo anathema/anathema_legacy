@@ -20,7 +20,7 @@ public class PdfGenericCharmEncoder implements IPdfContentEncoder {
   }
   
   public String getHeaderKey() {
-    return "GenericCharms";
+    return "GenericCharms"; //$NON-NLS-1$
   }
   
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {

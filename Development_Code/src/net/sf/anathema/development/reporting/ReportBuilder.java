@@ -48,6 +48,7 @@ import net.sf.anathema.lib.xml.DocumentUtilities;
 
 import org.dom4j.Document;
 
+@SuppressWarnings("unused")
 public class ReportBuilder {
 
   public static final IPageFormat VOID_STATE_PAGE_FORMAT = PageFormat.createDefault(15, 15);

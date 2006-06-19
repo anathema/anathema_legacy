@@ -18,6 +18,8 @@ import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
+import net.sf.anathema.character.meritsflaws.model.perk.IPerk;
 import net.sf.anathema.character.meritsflaws.presenter.IMeritsFlawsViewProperties;
 import net.sf.anathema.character.meritsflaws.presenter.IPerkListener;
 import net.sf.anathema.character.meritsflaws.presenter.view.IPerkDetailsView;
@@ -37,14 +39,16 @@ public class PerkView implements IPerkView {
 
   private JPanel content;
   private JPanel detailsPanel = new JPanel(new GridDialogLayout(2, false));
-  private final SmartJList perkList = new SmartJList();
-  private ObjectSelectionView typeFilterView;
-  private ObjectSelectionView categoryFilterView;
+  private final SmartJList<IPerk> perkList = new SmartJList<IPerk>(IPerk.class);
+  private ObjectSelectionView<IIdentificate> typeFilterView;
+  private ObjectSelectionView<IIdentificate> categoryFilterView;
   private final GenericControl<IPerkListener> control = new GenericControl<IPerkListener>();
   private final JButton addButton = new JButton();
   private Action removeAction;
   private IPerkDetailsView detailsView;
-  private final ActionAddableListView selectedPerksView = new SingleSelectionActionAddableListView(null);
+  private final ActionAddableListView<IQualitySelection<IPerk>> selectedPerksView = new SingleSelectionActionAddableListView(
+      null,
+      Object.class);
   private final IMeritsFlawsViewProperties properties;
 
   public PerkView(IMeritsFlawsViewProperties properties) {
@@ -61,11 +65,11 @@ public class PerkView implements IPerkView {
 
   private IGridDialogPanel createFilterPanel() {
     IGridDialogPanel panel = new DefaultGridDialogPanel();
-    typeFilterView = new ObjectSelectionView(
+    typeFilterView = new ObjectSelectionView<IIdentificate>(
         properties.getTypeString(),
         properties.getTypeFilterListRenderer(),
         properties.getTypeFilters());
-    categoryFilterView = new ObjectSelectionView(
+    categoryFilterView = new ObjectSelectionView<IIdentificate>(
         properties.getCategoryString(),
         properties.getCategoryFilterListRenderer(),
         properties.getCategoryFilters());
@@ -114,7 +118,7 @@ public class PerkView implements IPerkView {
       protected void execute(Component parentComponent) {
         control.forAllDo(new IClosure<IPerkListener>() {
           public void execute(IPerkListener input) {
-            Object object = selectedPerksView.getSelectedItems()[0];
+            IQualitySelection<IPerk> object = selectedPerksView.getSelectedItems()[0];
             if (object != null) {
               input.perkRemoved(object);
             }
@@ -165,7 +169,7 @@ public class PerkView implements IPerkView {
       public void valueChanged(ListSelectionEvent e) {
         control.forAllDo(new IClosure<IPerkListener>() {
           public void execute(IPerkListener input) {
-            Object[] selectedItems = selectedPerksView.getSelectedItems();
+            IQualitySelection<IPerk>[] selectedItems = selectedPerksView.getSelectedItems();
             if (selectedItems.length > 0) {
               input.selectionSelected(selectedItems[0]);
             }
@@ -177,7 +181,7 @@ public class PerkView implements IPerkView {
     });
   }
 
-  public void setAvailablePerks(Object[] perks) {
+  public void setAvailablePerks(IPerk[] perks) {
     perkList.setObjects(perks);
   }
 
@@ -185,7 +189,7 @@ public class PerkView implements IPerkView {
     control.addListener(listener);
   }
 
-  public void setSelectedPerks(Object[] selectedPerks) {
+  public void setSelectedPerks(IQualitySelection<IPerk>[] selectedPerks) {
     selectedPerksView.setListItems(selectedPerks);
   }
 
@@ -208,7 +212,7 @@ public class PerkView implements IPerkView {
     removeAction.setEnabled(enabled);
   }
 
-  public void setAvailableListSelection(Object perk) {
+  public void setAvailableListSelection(IPerk perk) {
     perkList.setSelectedValue(perk, true);
   }
 }

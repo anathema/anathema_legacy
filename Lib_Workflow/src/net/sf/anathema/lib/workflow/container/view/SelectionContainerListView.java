@@ -10,12 +10,13 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.gui.list.SmartJList;
 import net.sf.anathema.lib.workflow.container.ISelectionContainerView;
 
-public class SelectionContainerListView implements ISelectionContainerView {
+public class SelectionContainerListView<V> implements ISelectionContainerView<V> {
 
-  private final SmartJList smartList = new SmartJList();
+  private final SmartJList<V> smartList;
   private final ChangeControl changeControl = new ChangeControl();
 
-  public SelectionContainerListView() {
+  public SelectionContainerListView(Class<V> contentClass) {
+    smartList = new SmartJList<V>(contentClass);
     smartList.addListSelectionListener(new ListSelectionListener() {
       public void valueChanged(ListSelectionEvent e) {
         if (e.getValueIsAdjusting()) {
@@ -26,11 +27,11 @@ public class SelectionContainerListView implements ISelectionContainerView {
     });
   }
 
-  public void populate(Object[] contentValues) {
+  public void populate(V[] contentValues) {
     smartList.setObjects(contentValues);
   }
 
-  public void setSelectedValues(Object[] selectedValues) {
+  public void setSelectedValues(V[] selectedValues) {
     smartList.setSelectedObjects(selectedValues);
   }
 
@@ -42,7 +43,7 @@ public class SelectionContainerListView implements ISelectionContainerView {
     changeControl.addChangeListener(listener);
   }
 
-  public Object[] getSelectedValues() {
+  public V[] getSelectedValues() {
     return smartList.getSelectedValues();
   }
 

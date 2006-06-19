@@ -1,12 +1,7 @@
 package net.sf.anathema.initialization;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Enumeration;
 import java.util.List;
-import java.util.Properties;
 
 import net.sf.anathema.campaign.module.CampaignModule;
 import net.sf.anathema.cascades.module.CharmCascadesModule;
@@ -17,15 +12,6 @@ import net.sf.anathema.framework.module.IAnathemaModule;
 import net.sf.anathema.initialization.modules.IModuleCollection;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.logging.Logger;
-
-import org.java.plugin.JpfException;
-import org.java.plugin.ObjectFactory;
-import org.java.plugin.PluginManager;
-import org.java.plugin.PluginManager.PluginLocation;
-import org.java.plugin.boot.DefaultPluginsCollector;
-import org.java.plugin.registry.Extension;
-import org.java.plugin.registry.ExtensionPoint;
-import org.java.plugin.util.ExtendedProperties;
 
 public class ModuleCollection implements IModuleCollection {
 

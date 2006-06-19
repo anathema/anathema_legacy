@@ -4,7 +4,6 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
@@ -35,7 +34,7 @@ public class SecondEditionCombatStatsEncoder extends AbstractPdfEncoder implemen
   }
   
   public String getHeaderKey() {
-    return "Combat";
+    return "Combat"; //$NON-NLS-1$
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
@@ -74,9 +73,5 @@ public class SecondEditionCombatStatsEncoder extends AbstractPdfEncoder implemen
   private void encodeRules(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
       throws DocumentException {
     new SecondEditionCombatRulesTableEncoder(resources, baseFont).encodeTable(directContent, character, bounds);
-  }
-
-  private int calculateDodgeDV(IGenericCharacter character) {
-    return CharacterUtilties.getDv(character, AttributeType.Dexterity, AbilityType.Dodge, OtherTraitType.Essence);
   }
 }
