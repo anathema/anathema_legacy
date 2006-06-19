@@ -14,7 +14,6 @@ public interface IRepository {
   public IRepositoryReadAccess openReadAccess(IItemType type, IRepositoryFileChooser fileChooser)
       throws RepositoryException;
 
-  // TODO: auf IItemType umstellen?
   public IPrintNameFileAccess getPrintNameFileAccess();
 
   public boolean containsClosed(IItemType type);
