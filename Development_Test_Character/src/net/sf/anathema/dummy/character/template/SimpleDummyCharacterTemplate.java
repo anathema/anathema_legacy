@@ -32,47 +32,38 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
   }
 
   public IGroupedTraitType[] getAbilityGroups() {
-    // TODO Auto-generated method stub
     return null;
   }
 
   public IGroupedTraitType[] getAttributeGroups() {
-    // TODO Auto-generated method stub
     return null;
   }
 
   public IAdditionalRules getAdditionalRules() {
-    // TODO Auto-generated method stub
     return null;
   }
 
   public IBonusPointCosts getBonusPointCosts() {
-    // TODO Auto-generated method stub
     return null;
   }
 
   public ICasteCollection getCasteCollection() {
-    // TODO Auto-generated method stub
     return null;
   }
 
   public ICreationPoints getCreationPoints() {
-    // TODO Auto-generated method stub
     return null;
   }
 
   public IEssenceTemplate getEssenceTemplate() {
-    // TODO Auto-generated method stub
     return null;
   }
 
   public IExperiencePointCosts getExperienceCost() {
-    // TODO Auto-generated method stub
     return null;
   }
 
   public IPresentationProperties getPresentationProperties() {
-    // TODO Auto-generated method stub
     return null;
   }
 
@@ -84,22 +75,18 @@ public class SimpleDummyCharacterTemplate implements ICharacterTemplate {
   }
 
   public ITraitTemplateCollection getTraitTemplateCollection() {
-    // TODO Auto-generated method stub
     return null;
   }
 
   public ITraitType getToughnessControllingTraitType() {
-    // TODO Auto-generated method stub
     return null;
   }
 
   public IAdditionalTemplate[] getAdditionalTemplates() {
-    // TODO Auto-generated method stub
     return null;
   }
 
   public IMagicTemplate getMagicTemplate() {
-    // TODO Auto-generated method stub
     return null;
   }
 

@@ -47,7 +47,7 @@ public class ReflexiveSpecialEntryPage extends AbstractAnathemaWizardPage {
 
   @Override
   protected void initModelListening(CheckInputListener inputListener) {
-    // TODO Auto-generated method stub
+    // nothing to do
   }
 
   @Override

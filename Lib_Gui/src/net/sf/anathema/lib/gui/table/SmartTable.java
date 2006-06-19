@@ -59,7 +59,6 @@ public class SmartTable {
       }
     });
 
-    // TODO 09.11.2004 (gebhard): Minimum row height should be maximum of all minimum row heights from all settings
     table.setRowHeight(Math.max(table.getRowHeight(), 21));
     TableColumnConfigurator.configureTableColumns(table, settings);
     setSelectionMode(ListSelectionMode.SINGLE_SELECTION);

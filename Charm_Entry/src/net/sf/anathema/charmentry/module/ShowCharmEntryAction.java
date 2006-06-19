@@ -2,10 +2,10 @@ package net.sf.anathema.charmentry.module;
 
 import java.awt.Component;
 import java.awt.Cursor;
-import java.io.IOException;
 
 import javax.swing.Action;
 
+import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.core.ISwingFrameOrDialog;
 import net.disy.commons.swing.dialog.wizard.WizardDialog;
@@ -17,10 +17,9 @@ import net.sf.anathema.charmentry.model.WizardCharmEntryModel;
 import net.sf.anathema.charmentry.persistence.CharmEntryPropertiesPersister;
 import net.sf.anathema.charmentry.presenter.HeaderDataEntryPage;
 import net.sf.anathema.charmentry.presenter.model.ICharmEntryModel;
+import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.resources.IResources;
-
-import org.dom4j.DocumentException;
 
 public class ShowCharmEntryAction extends SmartAction {
 
@@ -66,13 +65,9 @@ public class ShowCharmEntryAction extends SmartAction {
           coreData.getSource(),
           entryData.getPage());
     }
-    catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-    catch (DocumentException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+    catch (Exception e) {
+      Message message = new Message("Error occurred while entering charm.", e);
+      MessageUtilities.indicateMessage(ShowCharmEntryAction.class, parentComponent, message);
     }
     finally {
       parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));

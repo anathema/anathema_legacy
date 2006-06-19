@@ -5,11 +5,6 @@ import javax.swing.JComponent;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
-/*
- * TODO 12.11.2004 (gebhard): Unfortunately the JSpinner does not work well as Cell Editor :-( Try an IntegerField
- * instead?
- */
-
 // NOT_PUBLISHED
 public class IntegerCellEditor extends AbstractDelegatingCellEditor {
 
