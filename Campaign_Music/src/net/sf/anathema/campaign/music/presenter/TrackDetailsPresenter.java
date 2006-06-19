@@ -1,5 +1,6 @@
 package net.sf.anathema.campaign.music.presenter;
 
+import net.disy.commons.core.util.IClosure;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.campaign.music.model.selection.ITrackDetailModel;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
@@ -11,17 +12,17 @@ import net.sf.anathema.lib.workflow.container.SelectionContainerPresenter;
 
 public class TrackDetailsPresenter {
 
-  private final IResources resources;
   private final ITrackDetailModel trackDetailModel;
   private final ITrackDetailsView trackDetailsView;
+  private final String unknownString;
 
   public TrackDetailsPresenter(
       IResources resources,
       ITrackDetailsView trackDetailsView,
       ITrackDetailModel trackDetailModel) {
-    this.resources = resources;
     this.trackDetailModel = trackDetailModel;
     this.trackDetailsView = trackDetailsView;
+    this.unknownString = resources.getString("Music.TrackDetails.Unknown"); //$NON-NLS-1$
   }
 
   public void initPresentation() {
@@ -54,44 +55,40 @@ public class TrackDetailsPresenter {
       trackDetailsView.showTrackInfo(false);
       return;
     }
-    // TODO NOW: vom (13.08.2005) (sieroux): Duplikation entfernen
     trackDetailsView.showTrackInfo(true);
-    String title = mp3Track.getTitle();
-    String unknownString = resources.getString("Music.TrackDetails.Unknown"); //$NON-NLS-1$
-    boolean titleEmpty = false;
-    if (StringUtilities.isNullOrEmpty(title)) {
-      titleEmpty = true;
-      trackDetailsView.setOriginalTitle(unknownString);
-    }
-    else {
-      trackDetailsView.setOriginalTitle(title);
-    }
-    String album = mp3Track.getAlbum();
-    if (StringUtilities.isNullOrEmpty(album)) {
-      trackDetailsView.setAlbumTitle(unknownString);
-    }
-    else {
-      trackDetailsView.setAlbumTitle(album);
-    }
-    String track = mp3Track.getTrack();
-    if (StringUtilities.isNullOrEmpty(track)) {
-      trackDetailsView.setTrackNumber(unknownString);
-    }
-    else {
-      trackDetailsView.setTrackNumber(track);
-    }
-    String artist = mp3Track.getArtist();
-    if (StringUtilities.isNullOrEmpty(artist)) {
-      trackDetailsView.setArtistName(unknownString);
-    }
-    else {
-      trackDetailsView.setArtistName(artist);
-    }
+    setStringValue(mp3Track.getTitle(), new IClosure<String>() {
+      public void execute(String input) {
+        trackDetailsView.setOriginalTitle(input);
+      }
+    });
+    setStringValue(mp3Track.getAlbum(), new IClosure<String>() {
+      public void execute(String input) {
+        trackDetailsView.setAlbumTitle(input);
+      }
+    });
+    setStringValue(mp3Track.getTrack(), new IClosure<String>() {
+      public void execute(String input) {
+        trackDetailsView.setTrackNumber(input);
+      }
+    });
+    setStringValue(mp3Track.getArtist(), new IClosure<String>() {
+      public void execute(String input) {
+        trackDetailsView.setArtistName(input);
+      }
+    });
     String givenName = mp3Track.getGivenName();
     if (StringUtilities.isNullOrEmpty(givenName)) {
-      givenName = titleEmpty ? unknownString : title;
+      givenName = mp3Track.getTitle();
     }
-    trackDetailsView.getGivenNameView().setText(givenName);
+    setStringValue(givenName, new IClosure<String>() {
+      public void execute(String input) {
+        trackDetailsView.getGivenNameView().setText(input);
+      }
+    });
   }
 
+  private void setStringValue(String value, IClosure<String> setter) {
+    String setValue = StringUtilities.isNullOrEmpty(value) ? unknownString : value;
+    setter.execute(setValue);
+  }
 }
