@@ -64,7 +64,7 @@ public class PrerequisiteCharmsPage extends AbstractAnathemaWizardPage {
           charmView.populate(getPageModel().getAvailableCharms());
         }
         catch (PersistenceException e) {
-          // TODO Handle
+          // TODO : Handle
           e.printStackTrace();
         }
       }
