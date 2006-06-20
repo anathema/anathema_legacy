@@ -47,7 +47,7 @@ public class CharmSetBuilder implements ICharmSetBuilder {
       new GenericComboRulesBuilder());
 
   public ICharm[] buildCharms(Document charmDoc, List<ICharm> existingCharms) throws PersistenceException {
-    // TODO NOW: Hier kann man die Reihenfolge richtig drehen
+    // TODO : Hier kann man die Reihenfolge richtig drehen
     Set<Charm> allCharms = new HashSet<Charm>();
     Map<String, Charm> charmsById = new HashMap<String, Charm>();
     for (ICharm charm : existingCharms) {
