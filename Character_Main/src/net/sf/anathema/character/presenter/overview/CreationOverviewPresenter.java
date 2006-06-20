@@ -58,7 +58,7 @@ public class CreationOverviewPresenter {
     for (final IOverviewModel model : allModels) {
       model.accept(new IOverviewModelVisitor() {
         public void visitStringValueModel(IValueModel<String> visitedModel) {
-          // TODO Implement
+          // TODO : Implement
         }
 
         public void visitIntegerValueModel(IValueModel<Integer> visitedModel) {
