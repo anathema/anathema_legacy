@@ -21,7 +21,7 @@ public abstract class AbstractGenericCharm implements IMagicStats {
   }
 
   public final String getGroupName(IResources resources) {
-    return resources.getString("Generics");
+    return resources.getString("Generics"); //$NON-NLS-1$
   }
 
   public final IIdentificate getName() {
