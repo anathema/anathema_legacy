@@ -4,6 +4,20 @@ Exalted (C) 2001-2006 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
 
+===------------------------------------------------------------------------------===
+			Release 0.12 "Lap" (Upcoming)
+===------------------------------------------------------------------------------===
+-- ATTENTION --
+Characters knowing 2e "Phoenix Renewal Tactic" or 1e "(Type) Exalt Ways" are in an illegal state
+after loading (but should load nonetheless). To fix this, select those effects you learned and re-save
+your character. This might lead to problems if you try to "un-learn" the charm altogether.
+1st Edition Solar "Elemental Protection Prana" will be switched over as soon as Solars and Abyssals 
+are migrated to the new printing engine.
+Please contact us if you encounter any problems, we will fix your character file.
+
+-- Features --
++ Added proper support for Charms with multiple variants.
+
 -- Bugs Fixed --
 * Corrected charm prerequisites for 
 	"Fivefold Bulwark Stance", "Invincible Fury of the Dawn", "Mist on Water Attack"
