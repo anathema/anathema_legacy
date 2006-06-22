@@ -14,6 +14,7 @@ import net.sf.anathema.initialization.modules.ModelInitializer;
 import net.sf.anathema.initialization.repository.IOFileSystemAbstraction;
 import net.sf.anathema.initialization.repository.RepositoryFolderCreator;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
+import net.sf.anathema.lib.resources.IResources;
 
 public class AnathemaModelInitializer {
 
@@ -23,12 +24,13 @@ public class AnathemaModelInitializer {
     this.anathemaPreferences = anathemaPreferences;
   }
 
-  public IAnathemaModel initializeModel(IModuleCollection moduleCollection) throws RepositoryException {
+  public IAnathemaModel initializeModel(IModuleCollection moduleCollection, IResources resources)
+      throws RepositoryException {
     AnathemaModel model = new AnathemaModel(createRepositoryFolder());
-    new ModelExtensionPointInitializer(moduleCollection, model.getExtensionPointRegistry(), model).initialize();
+    new ModelExtensionPointInitializer(moduleCollection, model.getExtensionPointRegistry(), model, resources).initialize();
     new ModelExtensionPointFiller(moduleCollection, model.getExtensionPointRegistry(), model).initialize();
     new ItemTypeInitializer(moduleCollection, model.getItemTypeRegistry()).initialize();
-    new ModelInitializer(moduleCollection, model).initialize();
+    new ModelInitializer(moduleCollection, model, resources).initialize();
     return model;
   }
 

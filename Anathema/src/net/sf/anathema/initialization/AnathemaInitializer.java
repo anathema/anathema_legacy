@@ -1,6 +1,7 @@
 package net.sf.anathema.initialization;
 
 import java.awt.AWTException;
+import java.util.Collection;
 
 import net.disy.commons.core.exception.CentralExceptionHandling;
 import net.sf.anathema.framework.IAnathemaModel;
@@ -14,28 +15,39 @@ import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.framework.view.AnathemaView;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.initialization.modules.IModuleCollection;
-import net.sf.anathema.initialization.modules.ResourcesInitializer;
+import net.sf.anathema.initialization.plugin.AnathemaPluginManager;
+import net.sf.anathema.initialization.plugin.IPluginConstants;
+import net.sf.anathema.lib.resources.IResources;
+
+import org.java.plugin.registry.Extension;
+import org.java.plugin.registry.Extension.Parameter;
 
 public class AnathemaInitializer {
 
-  private final IModuleCollection moduleCollection = new ModuleCollection();
+  private static final String EXTENSION_POINT_RESOURCES = "AnathemaResources"; //$NON-NLS-1$
+  private static final String PARAM_BUNDLE = "bundle"; //$NON-NLS-1$
+  private final IModuleCollection moduleCollection;
   private final IAnathemaPreferences anathemaPreferences;
+  private final AnathemaPluginManager pluginManager;
 
   public AnathemaInitializer(IAnathemaPreferences anathemaPreferences) throws InitializationException {
+    this.pluginManager = new AnathemaPluginManager();
+    pluginManager.collectPlugins();
+    this.moduleCollection = new ModuleCollection(pluginManager);
     this.anathemaPreferences = anathemaPreferences;
   }
 
   public IAnathemaView initialize() throws Exception {
     IAnathemaResources resources = initResources();
     CentralExceptionHandling.setHandler(new CentralExceptionHandler(resources));
-    IAnathemaModel anathemaModel = initModel();
+    IAnathemaModel anathemaModel = initModel(resources);
     IAnathemaView view = initView(resources);
     new AnathemaPresenter(anathemaModel, view, resources).initPresentation(moduleCollection);
     return view;
   }
 
-  private IAnathemaModel initModel() throws RepositoryException {
-    return new AnathemaModelInitializer(anathemaPreferences).initializeModel(moduleCollection);
+  private IAnathemaModel initModel(IResources resources) throws RepositoryException {
+    return new AnathemaModelInitializer(anathemaPreferences).initializeModel(moduleCollection, resources);
   }
 
   private IAnathemaView initView(IAnathemaResources resources) throws AWTException {
@@ -45,7 +57,12 @@ public class AnathemaInitializer {
 
   private IAnathemaResources initResources() {
     IAnathemaResources resources = new AnathemaResources();
-    new ResourcesInitializer(moduleCollection, resources).initialize();
+    for (Extension extension : pluginManager.getExtension(IPluginConstants.PLUGIN_CORE, EXTENSION_POINT_RESOURCES)) {
+      Collection<Parameter> bundleParams = extension.getParameters(PARAM_BUNDLE);
+      for (Parameter param : bundleParams) {
+        resources.addResourceBundle(param.valueAsString());
+      }
+    }
     return resources;
   }
 }

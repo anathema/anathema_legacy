@@ -1,11 +1,13 @@
 <!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.5" "http://jpf.sourceforge.net/plugin_0_5.dtd">
 <plugin id="net.sf.anathema.charm.cascades" version="0.12">
 	<requires>
-		<import plugin-id="net.sf.anathema.main"/>
 		<import plugin-id="net.sf.anathema.core"/>
 		<import plugin-id="net.sf.anathema.character"/>
 	</requires>
-	<extension plugin-id="net.sf.anathema.main"	point-id="MainModules" id="CharmCascades">
+	<extension plugin-id="net.sf.anathema.core"	point-id="MainModules" id="CharmCascades">
 		<parameter id="class" value="net.sf.anathema.cascades.module.CharmCascadesModule"/>
+	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
+		<parameter id="bundle" value="Cascades"/>
 	</extension>
 </plugin>

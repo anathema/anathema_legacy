@@ -2,24 +2,19 @@ package net.sf.anathema.framework.module;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IExtensionPoint;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
-import net.sf.anathema.framework.resources.IAnathemaResources;
-import net.sf.anathema.framework.resources.StringProvider;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.resources.IStringResourceHandler;
 
 public abstract class AbstractAnathemaModule implements IAnathemaModule {
 
   private IAnathemaView anathemaView;
   private IAnathemaModel anathemaModel;
   private List<AbstractItemTypeConfiguration> itemTypeConfigurations = new ArrayList<AbstractItemTypeConfiguration>();
-  private IResources anathemaResources;
 
   protected AbstractAnathemaModule() {
     // Nothing to do
@@ -29,11 +24,7 @@ public abstract class AbstractAnathemaModule implements IAnathemaModule {
     itemTypeConfigurations.add(typeConfiguration);
   }
 
-  public void initAnathemaResources(IAnathemaResources resources) {
-    this.anathemaResources = resources;
-  }
-
-  public void initModelExtensionPoints(IRegistry<String, IExtensionPoint> registry, IAnathemaModel model) {
+  public void initModelExtensionPoints(IRegistry<String, IExtensionPoint> registry, IAnathemaModel model, IResources resources) {
     // Nothing to do
   }
 
@@ -47,7 +38,7 @@ public abstract class AbstractAnathemaModule implements IAnathemaModule {
     }
   }
 
-  public void initModel(IAnathemaModel model) {
+  public void initModel(IAnathemaModel model, IResources resources) {
     this.anathemaModel = model;
     for (AbstractItemTypeConfiguration configuration : itemTypeConfigurations) {
       configuration.initModel(model);
@@ -75,19 +66,11 @@ public abstract class AbstractAnathemaModule implements IAnathemaModule {
     }
   }
 
-  protected final IStringResourceHandler createStringProvider(String propertiesName, Locale locale) {
-    return new StringProvider("language." + propertiesName, locale); //$NON-NLS-1$
-  }
-
   protected final IAnathemaModel getAnathemaModel() {
     return anathemaModel;
   }
 
   protected final IAnathemaView getAnathemaView() {
     return anathemaView;
-  }
-
-  protected final IResources getResources() {
-    return anathemaResources;
   }
 }

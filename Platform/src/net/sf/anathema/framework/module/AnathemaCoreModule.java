@@ -31,8 +31,6 @@ import net.sf.anathema.framework.presenter.menu.IMenuItem;
 import net.sf.anathema.framework.presenter.menu.MenuExtensionPoint;
 import net.sf.anathema.framework.reporting.controller.AnathemaPrintAction;
 import net.sf.anathema.framework.repository.filechooser.RepositoryFileChooserPropertiesExtensionPoint;
-import net.sf.anathema.framework.resources.IAnathemaResources;
-import net.sf.anathema.framework.resources.StringProvider;
 import net.sf.anathema.framework.view.IAnathemaMenu;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.framework.view.menu.IMenuBar;
@@ -43,14 +41,8 @@ import net.sf.anathema.lib.resources.IResources;
 public class AnathemaCoreModule extends AbstractAnathemaModule {
 
   @Override
-  public void initAnathemaResources(IAnathemaResources resources) {
-    resources.addStringResourceHandler(new StringProvider("language.anathema", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(new StringProvider("language.About", resources.getLocale())); //$NON-NLS-1$
-  }
-
-  @Override
-  public void initModel(IAnathemaModel model) {
-    super.initModel(model);
+  public void initModel(IAnathemaModel model, IResources resources) {
+    super.initModel(model, resources);
   }
 
   @Override

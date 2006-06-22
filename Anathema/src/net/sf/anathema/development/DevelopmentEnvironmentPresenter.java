@@ -5,7 +5,6 @@ import javax.swing.JMenu;
 import net.sf.anathema.charmentry.module.ShowCharmEntryAction;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.resources.IAnathemaResources;
-import net.sf.anathema.framework.resources.StringProvider;
 import net.sf.anathema.framework.view.IAnathemaView;
 
 public class DevelopmentEnvironmentPresenter {
@@ -28,7 +27,7 @@ public class DevelopmentEnvironmentPresenter {
   }
 
   private void initCharmEntry(JMenu developmentMenu) {
-    resources.addStringResourceHandler(new StringProvider("language.CharmEntry", resources.getLocale())); //$NON-NLS-1$
+    resources.addResourceBundle("CharmEntry"); //$NON-NLS-1$
     developmentMenu.add(new ShowCharmEntryAction("Charm Entry", resources)); //$NON-NLS-1$
   }
 

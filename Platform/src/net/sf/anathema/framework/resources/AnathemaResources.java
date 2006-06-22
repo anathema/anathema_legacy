@@ -22,15 +22,15 @@ public class AnathemaResources implements IAnathemaResources {
 
   public AnathemaResources() {
     try {
-      addStringResourceHandler(new FileStringProvider("custom", getLocale())); //$NON-NLS-1$
+      stringResourceHandlers.add(new FileStringProvider("custom", getLocale())); //$NON-NLS-1$
     }
     catch (IOException ioException) {
       logger.error("Error loading custom properties.", ioException); //$NON-NLS-1$
     }
   }
 
-  public void addStringResourceHandler(IStringResourceHandler handler) {
-    stringResourceHandlers.add(handler);
+  public void addResourceBundle(String bundleName) {
+    stringResourceHandlers.add(new StringProvider("language." + bundleName, getLocale())); //$NON-NLS-1$
   }
 
   public boolean supportsKey(String key) {
@@ -56,10 +56,12 @@ public class AnathemaResources implements IAnathemaResources {
     return MessageFormat.format(formatPattern, arguments);
   }
 
+  @SuppressWarnings("deprecation")
   public Image getImage(String relativePath) {
     return imageProvider.getImage(relativePath);
   }
 
+  @SuppressWarnings("deprecation")
   public Image getAnimatedImage(String relativePath) {
     return imageProvider.getAnimatedImage(relativePath);
   }
@@ -76,8 +78,7 @@ public class AnathemaResources implements IAnathemaResources {
     return getString("MainFrame.Title"); //$NON-NLS-1$
   }
 
-  public Locale getLocale() {
+  private Locale getLocale() {
     return Locale.getDefault();
   }
-
 }

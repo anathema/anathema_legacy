@@ -1,10 +1,12 @@
 <!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.5" "http://jpf.sourceforge.net/plugin_0_5.dtd">
 <plugin id="net.sf.anathema.namegenerator" version="0.12">
 	<requires>
-		<import plugin-id="net.sf.anathema.main"/>
 		<import plugin-id="net.sf.anathema.core"/>
 	</requires>
-	<extension plugin-id="net.sf.anathema.main"	point-id="MainModules" id="NameGenerator">
+	<extension plugin-id="net.sf.anathema.core"	point-id="MainModules" id="NameGenerator">
 		<parameter id="class" value="net.sf.anathema.namegenerator.anathema.NameGeneratorModule"/>
+	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
+		<parameter id="bundle" value="NameGenerator"/>
 	</extension>
 </plugin>

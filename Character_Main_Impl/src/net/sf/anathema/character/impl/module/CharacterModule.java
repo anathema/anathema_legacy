@@ -17,7 +17,6 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.module.AbstractAnathemaModule;
 import net.sf.anathema.framework.module.PreferencesElementsExtensionPoint;
 import net.sf.anathema.framework.reporting.IReportRegistry;
-import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.registry.ICollectionRegistry;
@@ -34,9 +33,12 @@ public class CharacterModule extends AbstractAnathemaModule {
   }
 
   @Override
-  public void initModelExtensionPoints(IRegistry<String, IExtensionPoint> registry, IAnathemaModel model) {
-    super.initModelExtensionPoints(registry, model);
-    CharacterModuleContainer container = new CharacterModuleContainerInitializer().initContainer(getResources());
+  public void initModelExtensionPoints(
+      IRegistry<String, IExtensionPoint> registry,
+      IAnathemaModel model,
+      IResources resources) {
+    super.initModelExtensionPoints(registry, model, resources);
+    CharacterModuleContainer container = new CharacterModuleContainerInitializer().initContainer(resources);
     registry.register(ICharacterGenericsExtension.ID, new CharacterGenericsExtension(container.getCharacterGenerics()));
   }
 
@@ -47,11 +49,11 @@ public class CharacterModule extends AbstractAnathemaModule {
   }
 
   @Override
-  public void initModel(IAnathemaModel model) {
-    super.initModel(model);
+  public void initModel(IAnathemaModel model, IResources resources) {
+    super.initModel(model, resources);
     ICollectionRegistry<ICharacterReportTemplate> reportTemplates = getCharacterGenerics(model).getReportTemplateRegistry();
     IReportRegistry reportRegistry = model.getReportRegistry();
-    new CharacterReportingInitializer().initReporting(reportTemplates, reportRegistry, getResources());
+    new CharacterReportingInitializer().initReporting(reportTemplates, reportRegistry, resources);
   }
 
   @Override
@@ -63,7 +65,7 @@ public class CharacterModule extends AbstractAnathemaModule {
     model.getReportRegistry().addReport(new TextReport());
     IItemType characterItemType = characterTypeConfiguration.getItemType();
     new CharacterModulePresenter(model, view, resources, characterItemType, characterGenerics);
-    new CharacterPerformanceTuner(model, getResources()).startTuning(characterGenerics, characterItemType);
+    new CharacterPerformanceTuner(model, resources).startTuning(characterGenerics, characterItemType);
   }
 
   @Override
@@ -81,49 +83,5 @@ public class CharacterModule extends AbstractAnathemaModule {
     IRegistry<String, IExtensionPoint> extensionPointRegistry = anathemaModel.getExtensionPointRegistry();
     ICharacterGenericsExtension extension = (ICharacterGenericsExtension) extensionPointRegistry.get(ICharacterGenericsExtension.ID);
     return extension.getCharacterGenerics();
-  }
-
-  @Override
-  public void initAnathemaResources(IAnathemaResources resources) {
-    super.initAnathemaResources(resources);
-    resources.addStringResourceHandler(createStringProvider("Abyssal", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Backgrounds", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Cascades", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Castes", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Character", resources.getLocale())); //$NON-NLS-1$    
-    resources.addStringResourceHandler(createStringProvider("CharacterControl", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("CharacterModule", resources.getLocale())); //$NON-NLS-1$    
-    resources.addStringResourceHandler(createStringProvider("CharacterSheet", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("CharmDuration", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Charmgroups", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Charms_Abyssal", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Charms_Abyssal_Pages", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Charms_Dragon-Blooded", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Charms_Dragon-Blooded_Pages", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Charms_Lunar", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Charms_Lunar_Pages", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Charms_MartialArts_Pages", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Charms_Sidereal", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Charms_Sidereal_Pages", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Charms_Solar", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Charms_Solar_Pages", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Charms_Solar_SecondEdition", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("CharmTreeView", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Dragon-Blooded", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Equipment", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Health", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Intimacies", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Lunar", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("MeritsFlaws", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Natures", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Overview", resources.getLocale())); //$NON-NLS-1$    
-    resources.addStringResourceHandler(createStringProvider("Sidereal", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Solar", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Sourcebooks", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Spells_Necromancy", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Spells_Pages", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Spells_Sorcery", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Traits", resources.getLocale())); //$NON-NLS-1$
-    resources.addStringResourceHandler(createStringProvider("Weapons", resources.getLocale())); //$NON-NLS-1$
   }
 }

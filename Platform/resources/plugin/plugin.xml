@@ -1,9 +1,16 @@
 <!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.5" "http://jpf.sourceforge.net/plugin_0_5.dtd">
 <plugin id="net.sf.anathema.core" version="1.0">
-	<requires>
-		<import plugin-id="net.sf.anathema.main"/>
-	</requires>
-	<extension plugin-id="net.sf.anathema.main"	point-id="MainModules" id="AnathemaCore">
+	<extension-point id="AnathemaResources">
+		<parameter-def id="bundle" multiplicity="any"/>
+	</extension-point>
+	<extension-point id="MainModules">
+		<parameter-def id="class"/>
+	</extension-point>
+	<extension plugin-id="net.sf.anathema.core"	point-id="MainModules" id="AnathemaCore">
 		<parameter id="class" value="net.sf.anathema.framework.module.AnathemaCoreModule"/>
+	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
+		<parameter id="bundle" value="anathema"/>
+		<parameter id="bundle" value="About"/>
 	</extension>
 </plugin>

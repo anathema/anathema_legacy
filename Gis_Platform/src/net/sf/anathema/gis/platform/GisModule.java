@@ -6,7 +6,6 @@ import net.disy.commons.swing.filechooser.SmartFileChooser;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.module.AbstractAnathemaModule;
 import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
-import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.gis.data.impl.GisDataDirectory;
 import net.sf.anathema.gis.main.impl.model.AnathemaLayerPopupFactory;
@@ -28,19 +27,13 @@ public class GisModule extends AbstractAnathemaModule {
   }
 
   @Override
-  public void initModel(IAnathemaModel model) {
-    super.initModel(model);
+  public void initModel(IAnathemaModel model, IResources resources) {
+    super.initModel(model, resources);
     customizeGisTermFramework();
   }
 
   private void customizeGisTermFramework() {
     LayerPanel.popupFactory = new AnathemaLayerPopupFactory();
-  }
-
-  @Override
-  public void initAnathemaResources(IAnathemaResources resources) {
-    super.initAnathemaResources(resources);
-    // resources.addStringResourceHandler(createStringProvider("Gis", resources.getLocale())); //$NON-NLS-1$
   }
 
   @Override

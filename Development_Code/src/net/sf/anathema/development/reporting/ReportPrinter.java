@@ -40,7 +40,6 @@ public class ReportPrinter {
 
   public static void main(String[] args) throws Exception {
     AnathemaResources resources = new AnathemaResources();
-    new CharacterModule().initAnathemaResources(resources);
     ReportPrinter printer = new ReportPrinter();
     IGenerationData[] generationDatas = new IGenerationData[] {
 //        new VoidStateAbyssalGenerationData(resources),
