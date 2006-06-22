@@ -14,7 +14,6 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.context.CharacterModelContext;
-import net.sf.anathema.character.impl.module.CharacterCoreModule;
 import net.sf.anathema.character.impl.module.CharacterModule;
 import net.sf.anathema.character.intimacies.IntimaciesEncoder;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
@@ -89,7 +88,6 @@ public class PdfCharacterSheetDemo {
   private static IResources createDemoResources() throws AnathemaException {
     Locale.setDefault(Locale.ENGLISH);
     IAnathemaResources resources = new AnathemaResources();
-    new CharacterCoreModule().initAnathemaResources(resources);
     new CharacterModule().initAnathemaResources(resources);
     return resources;
   }

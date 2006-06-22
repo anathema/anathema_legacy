@@ -1,0 +1,10 @@
+<!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.5" "http://jpf.sourceforge.net/plugin_0_5.dtd">
+<plugin id="net.sf.anathema.character" version="0.12">
+	<requires>
+		<import plugin-id="net.sf.anathema.main"/>
+		<import plugin-id="net.sf.anathema.core"/>
+	</requires>
+	<extension plugin-id="net.sf.anathema.main"	point-id="MainModules" id="CharacterCore">
+		<parameter id="class" value="net.sf.anathema.character.impl.module.CharacterModule"/>
+	</extension>
+</plugin>

@@ -1,5 +1,5 @@
 <!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.5" "http://jpf.sourceforge.net/plugin_0_5.dtd">
-<plugin id="net.sf.anathema.main" version="1.0">
+<plugin id="net.sf.anathema.main" version="0.12">
 	<extension-point id="MainModules">
 		<parameter-def id="class"/>
 	</extension-point>

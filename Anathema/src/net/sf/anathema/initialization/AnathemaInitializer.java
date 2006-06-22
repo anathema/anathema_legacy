@@ -4,6 +4,7 @@ import java.awt.AWTException;
 
 import net.disy.commons.core.exception.CentralExceptionHandling;
 import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.InitializationException;
 import net.sf.anathema.framework.configuration.IAnathemaPreferences;
 import net.sf.anathema.framework.exception.CentralExceptionHandler;
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
@@ -20,7 +21,7 @@ public class AnathemaInitializer {
   private final IModuleCollection moduleCollection = new ModuleCollection();
   private final IAnathemaPreferences anathemaPreferences;
 
-  public AnathemaInitializer(IAnathemaPreferences anathemaPreferences) {
+  public AnathemaInitializer(IAnathemaPreferences anathemaPreferences) throws InitializationException {
     this.anathemaPreferences = anathemaPreferences;
   }
 

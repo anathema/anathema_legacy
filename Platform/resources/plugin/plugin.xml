@@ -3,7 +3,7 @@
 	<requires>
 		<import plugin-id="net.sf.anathema.main"/>
 	</requires>
-	<extension plugin-id="net.sf.anathema.main"	point-id="MainModules" id="CoreModule">
+	<extension plugin-id="net.sf.anathema.main"	point-id="MainModules" id="AnathemaCore">
 		<parameter id="class" value="net.sf.anathema.framework.module.AnathemaCoreModule"/>
 	</extension>
 </plugin>
