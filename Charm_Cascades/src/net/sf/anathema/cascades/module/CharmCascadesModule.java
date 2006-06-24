@@ -1,5 +1,7 @@
 package net.sf.anathema.cascades.module;
 
+import javax.swing.Action;
+
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.module.AbstractAnathemaModule;
 import net.sf.anathema.framework.view.IAnathemaView;
@@ -10,6 +12,6 @@ public class CharmCascadesModule extends AbstractAnathemaModule {
   @Override
   public void initPresentation(IResources resources, IAnathemaModel model, IAnathemaView view) {
     super.initPresentation(resources, model, view);
-    new CharmCascadesModulePresenter(view, getAnathemaModel(), resources);
+    view.addTools(new Action[] { ShowCascadesAction.createToolAction(resources, model) });
   }
 }
