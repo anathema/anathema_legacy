@@ -6,4 +6,9 @@
 	<extension plugin-id="net.sf.anathema.core"	point-id="MainModules" id="GisCore">
 		<parameter id="class" value="net.sf.anathema.gis.platform.GisModule"/>
 	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="ItemTypes" id="ItemType">
+		<parameter id="type">
+			<parameter id="class" value="net.sf.anathema.gis.platform.GisItemTypeConfiguration"/>
+		</parameter>
+	</extension>
 </plugin>

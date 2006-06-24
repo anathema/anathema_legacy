@@ -5,7 +5,6 @@ import java.io.File;
 import net.disy.commons.swing.filechooser.SmartFileChooser;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.module.AbstractAnathemaModule;
-import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.gis.data.impl.GisDataDirectory;
 import net.sf.anathema.gis.main.impl.model.AnathemaLayerPopupFactory;
@@ -16,12 +15,10 @@ import de.disy.gis.gisterm.pro.map.layer.LayerPanel;
 
 public class GisModule extends AbstractAnathemaModule {
 
-  private final AbstractItemTypeConfiguration gisItemConfiguration = new GisItemTypeConfiguration();
   private final GisDataDirectory gisDataDirectory = new GisDataDirectory();
 
   public GisModule() {
     gisDataDirectory.setDirectory(new File("./gisdata/"));
-    addItemTypeConfiguration(gisItemConfiguration);
     customizeGisTermFramework();
   }
 
