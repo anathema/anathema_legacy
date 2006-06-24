@@ -43,7 +43,8 @@ public class ItemTypeConfigurationCollection {
   }
 
   private AbstractItemTypeConfiguration createItemType(Parameter typeParameter) throws InitializationException {
-    boolean developmentOnly = typeParameter.getSubParameter(PARAM_DEVELOPMENT).valueAsBoolean();
+    Parameter subParameter = typeParameter.getSubParameter(PARAM_DEVELOPMENT);
+    boolean developmentOnly = subParameter != null && subParameter.valueAsBoolean();
     if (!isDevelopment && developmentOnly) {
       return null;
     }

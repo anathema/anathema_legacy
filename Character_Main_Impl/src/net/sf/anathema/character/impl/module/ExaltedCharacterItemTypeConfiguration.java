@@ -3,6 +3,7 @@ package net.sf.anathema.character.impl.module;
 import javax.swing.Icon;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.generic.framework.ICharacterGenericsExtension;
 import net.sf.anathema.character.generic.impl.IIconConstants;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.type.AbstractSupportedCharacterTypeVisitor;
@@ -42,8 +43,6 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractItemTyp
     return new ItemType(CHARACTER_ITEM_TYPE_ID, new RepositoryConfiguration(".ecg", "ExaltedCharacter/")); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
-  private ICharacterGenerics generics;
-
   public ExaltedCharacterItemTypeConfiguration() throws AnathemaException {
     super(createCharacterItemType());
     NatureProvider.getInstance().init();
@@ -51,11 +50,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractItemTyp
 
   @Override
   protected IRepositoryItemPersister createPersister(IAnathemaModel model) {
-    return new ExaltedCharacterPersister(getItemType(), generics);
-  }
-
-  public void setCharacterGenerics(ICharacterGenerics generics) {
-    this.generics = generics;
+    return new ExaltedCharacterPersister(getItemType(), getGenerics(model));
   }
 
   @Override
@@ -74,7 +69,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractItemTyp
   }
 
   @Override
-  protected IItemViewFactory createItemViewFactory(IAnathemaModel anathemaModel, final IResources resources) {
+  protected IItemViewFactory createItemViewFactory(final IAnathemaModel anathemaModel, final IResources resources) {
     return new IItemViewFactory() {
       public IItemView createView(IItem item) throws AnathemaException {
         String printName = item.getDisplayName();
@@ -83,7 +78,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractItemTyp
         if (statistics == null) {
           Icon icon = resources.getImageIcon("CharacterTabIcon.png"); //$NON-NLS-1$
           ICharacterView characterView = new CharacterView(null, printName, icon);
-          new CharacterPresenter(character, characterView, resources, generics, null, null).initPresentation();
+          new CharacterPresenter(character, characterView, resources, getGenerics(anathemaModel), null, null).initPresentation();
           return characterView;
         }
         IPresentationProperties presentationProperties = statistics.getCharacterTemplate().getPresentationProperties();
@@ -102,7 +97,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractItemTyp
             character,
             characterView,
             resources,
-            generics,
+            getGenerics(anathemaModel),
             bonusPointManagement,
             experiencePointManagement).initPresentation();
         return characterView;
@@ -110,11 +105,17 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractItemTyp
     };
   }
 
+  private ICharacterGenerics getGenerics(IAnathemaModel model) {
+    ICharacterGenericsExtension genericsExtension = (ICharacterGenericsExtension) model.getExtensionPointRegistry()
+        .get(ICharacterGenericsExtension.ID);
+    return genericsExtension.getCharacterGenerics();
+  }
+
   @Override
   protected IMenuItem[] createAddMenuEntries(IAnathemaView view, IAnathemaModel anathemaModel, IResources resources) {
     return new IMenuItem[] {
         new ActionMenuItem(AddNewFullCharacterAction.createMenuAction(
-            generics,
+            getGenerics(anathemaModel),
             resources,
             anathemaModel,
             "CharacterGenerator.NewCharacter.StattedCharacter.Name")), //$NON-NLS-1$

@@ -43,12 +43,6 @@ public class CharacterModule extends AbstractAnathemaModule {
   }
 
   @Override
-  public void fillModelExtensionPoints(IRegistry<String, IExtensionPoint> extensionPointRegistry, IAnathemaModel model) {
-    super.fillModelExtensionPoints(extensionPointRegistry, model);
-    characterTypeConfiguration.setCharacterGenerics(getCharacterGenerics(model));
-  }
-
-  @Override
   public void initModel(IAnathemaModel model, IResources resources) {
     super.initModel(model, resources);
     ICollectionRegistry<ICharacterReportTemplate> reportTemplates = getCharacterGenerics(model).getReportTemplateRegistry();
