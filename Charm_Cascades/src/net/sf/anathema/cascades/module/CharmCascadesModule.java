@@ -12,6 +12,6 @@ public class CharmCascadesModule extends AbstractAnathemaModule {
   @Override
   public void initPresentation(IResources resources, IAnathemaModel model, IAnathemaView view) {
     super.initPresentation(resources, model, view);
-    view.addTools(new Action[] { ShowCascadesAction.createToolAction(resources, model) });
+    view.addTools(new Action[] { ShowCascadesAction.createToolAction(resources, getAnathemaModel()) });
   }
 }
