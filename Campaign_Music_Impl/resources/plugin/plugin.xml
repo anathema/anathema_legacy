@@ -6,6 +6,11 @@
 	<extension plugin-id="net.sf.anathema.core"	point-id="MainModules" id="CampaignMusic">
 		<parameter id="class" value="net.sf.anathema.campaign.music.impl.module.MusicDatabaseModule"/>
 	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="ItemTypes" id="ItemType">
+		<parameter id="type">
+			<parameter id="class" value="net.sf.anathema.campaign.music.impl.module.MusicDatabaseItemTypeConfiguration"/>
+		</parameter>
+	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
 		<parameter id="bundle" value="MusicModule"/>
 		<parameter id="bundle" value="MusicView"/>
