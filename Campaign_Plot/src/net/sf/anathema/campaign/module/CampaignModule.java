@@ -7,11 +7,6 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class CampaignModule extends AbstractAnathemaModule {
 
-  public CampaignModule() {
-    addItemTypeConfiguration(new NoteTypeConfiguration());
-    addItemTypeConfiguration(new SeriesTypeConfiguration());
-  }
-
   @Override
   public void initModel(IAnathemaModel model, IResources resources) {
     super.initModel(model, resources);

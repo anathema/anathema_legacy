@@ -18,19 +18,11 @@ import net.sf.anathema.framework.module.AbstractAnathemaModule;
 import net.sf.anathema.framework.module.PreferencesElementsExtensionPoint;
 import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.view.IAnathemaView;
-import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.registry.ICollectionRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterModule extends AbstractAnathemaModule {
-
-  private final ExaltedCharacterItemTypeConfiguration characterTypeConfiguration;
-
-  public CharacterModule() throws AnathemaException {
-    characterTypeConfiguration = new ExaltedCharacterItemTypeConfiguration();
-    addItemTypeConfiguration(characterTypeConfiguration);
-  }
 
   @Override
   public void initModelExtensionPoints(
@@ -57,7 +49,8 @@ public class CharacterModule extends AbstractAnathemaModule {
     model.getReportRegistry().addReport(new PdfSheetReport(resources, characterGenerics, PageSize.A4));
     model.getReportRegistry().addReport(new PdfSheetReport(resources, characterGenerics, PageSize.Letter));
     model.getReportRegistry().addReport(new TextReport());
-    IItemType characterItemType = characterTypeConfiguration.getItemType();
+    IItemType characterItemType = model.getItemTypeRegistry().getById(
+        ExaltedCharacterItemTypeConfiguration.CHARACTER_ITEM_TYPE_ID);
     new CharacterModulePresenter(model, view, resources, characterItemType, characterGenerics);
     new CharacterPerformanceTuner(model, resources).startTuning(characterGenerics, characterItemType);
   }

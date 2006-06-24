@@ -9,7 +9,6 @@ import net.sf.anathema.framework.model.AnathemaModel;
 import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.initialization.modules.IModuleCollection;
-import net.sf.anathema.initialization.modules.ItemTypeInitializer;
 import net.sf.anathema.initialization.modules.ModelExtensionPointFiller;
 import net.sf.anathema.initialization.modules.ModelExtensionPointInitializer;
 import net.sf.anathema.initialization.modules.ModelInitializer;
@@ -38,7 +37,6 @@ public class AnathemaModelInitializer {
     for (AbstractItemTypeConfiguration itemTypeConfiguration : itemTypeConfigurations) {
       model.getItemTypeRegistry().registerItemType(itemTypeConfiguration.getItemType());
     }
-    new ItemTypeInitializer(moduleCollection, model.getItemTypeRegistry()).initialize();
     new ModelInitializer(moduleCollection, model, resources).initialize();
     for (AbstractItemTypeConfiguration itemTypeConfiguration : itemTypeConfigurations) {
       itemTypeConfiguration.initModel(model);

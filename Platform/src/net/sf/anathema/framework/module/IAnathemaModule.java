@@ -2,7 +2,6 @@ package net.sf.anathema.framework.module;
 
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IExtensionPoint;
-import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -10,8 +9,6 @@ import net.sf.anathema.lib.resources.IResources;
 public interface IAnathemaModule {
 
   public void initModelExtensionPoints(IRegistry<String, IExtensionPoint> registry, IAnathemaModel model, IResources resources);
-
-  public void initItemTypes(IItemTypeRegistry itemRegistry);
 
   public void initModel(IAnathemaModel anathemaModel, IResources resources);
 
