@@ -32,7 +32,7 @@ public abstract class AbstractAnathemaModule implements IAnathemaModule {
     // Nothing to do
   }
 
-  public void initItemTypes(IItemTypeRegistry itemRegistry) {
+  public final void initItemTypes(IItemTypeRegistry itemRegistry) {
     for (AbstractItemTypeConfiguration configuration : itemTypeConfigurations) {
       itemRegistry.registerItemType(configuration.getItemType());
     }

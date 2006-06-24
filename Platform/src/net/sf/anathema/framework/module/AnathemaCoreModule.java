@@ -41,11 +41,6 @@ import net.sf.anathema.lib.resources.IResources;
 public class AnathemaCoreModule extends AbstractAnathemaModule {
 
   @Override
-  public void initModel(IAnathemaModel model, IResources resources) {
-    super.initModel(model, resources);
-  }
-
-  @Override
   public void initPresentationExtensionPoints(IRegistry<String, IExtensionPoint> registry, IResources resources) {
     registry.register(
         RepositoryFileChooserPropertiesExtensionPoint.ID,

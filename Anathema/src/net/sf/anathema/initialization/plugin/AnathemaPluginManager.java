@@ -16,9 +16,15 @@ import org.java.plugin.PluginManager.PluginLocation;
 import org.java.plugin.boot.DefaultPluginsCollector;
 import org.java.plugin.registry.Extension;
 import org.java.plugin.registry.ExtensionPoint;
+import org.java.plugin.registry.Extension.Parameter;
 import org.java.plugin.util.ExtendedProperties;
 
 public class AnathemaPluginManager implements IAnathemaPluginManager {
+
+  @SuppressWarnings("unchecked")
+  public static Collection<Parameter> getParameters(Extension extension, String parameterName) {
+    return extension.getParameters(parameterName);
+  }
 
   private final PluginManager manager = ObjectFactory.newInstance().createManager();
 

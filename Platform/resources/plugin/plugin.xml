@@ -3,6 +3,12 @@
 	<extension-point id="AnathemaResources">
 		<parameter-def id="bundle" multiplicity="any"/>
 	</extension-point>
+	<extension-point id="ItemTypes">
+		<parameter-def id="type" multiplicity="any">
+			<parameter-def id="class" multiplicity="one"/>
+			<parameter-def id="development" type="boolean" multiplicity="none-or-one"/>
+		</parameter-def>
+	</extension-point>
 	<extension-point id="MainModules">
 		<parameter-def id="class"/>
 	</extension-point>
