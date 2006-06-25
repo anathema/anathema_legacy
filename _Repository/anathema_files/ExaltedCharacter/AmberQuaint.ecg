@@ -3,6 +3,7 @@
 <ExaltedCharacter repositoryId="AmberQuaint" repositoryPrintName="Amber Quaint">
   <Description>
     <CharacterName><![CDATA[Amber Quaint]]></CharacterName>
+    <Player><![CDATA[Sandra]]></Player>
     <PhysicalDescription><![CDATA[eisblaues langes Haar]]></PhysicalDescription>
   </Description>
   <Statistics experienced="true">
@@ -58,7 +59,7 @@
       <Occult creationValue="5">
         <Specialty creationValue="0" experiencedValue="3" name="Sidereals"/>
       </Occult>
-      <Athletics creationValue="1" favored="true"/>
+      <Athletics creationValue="1" experiencedValue="4" favored="true"/>
       <Awareness creationValue="1" experiencedValue="2"/>
       <Dodge creationValue="1"/>
       <Larceny creationValue="0"/>
@@ -81,6 +82,10 @@
         <Charm name="Solar.1stExcellency.Melee" experienceLearned="false"/>
         <Charm name="Solar.FivefoldBulwarkStance" experienceLearned="false"/>
       </CharmGroup>
+      <CharmGroup name="Occult" type="Solar">
+        <Charm name="Solar.TerrestrialCircleSorcery" experienceLearned="false"/>
+        <Charm name="Solar.CelestialCircleSorcery" experienceLearned="true"/>
+      </CharmGroup>
       <CharmGroup name="Resistance" type="Solar">
         <Charm name="Solar.Ox-BodyTechnique" experienceLearned="false">
           <Special>
@@ -100,16 +105,12 @@
       <CharmGroup name="Investigation" type="Solar">
         <Charm name="Solar.2ndExcellency.Investigation" experienceLearned="true"/>
       </CharmGroup>
-      <CharmGroup name="Craft" type="Solar">
-        <Charm name="Solar.1stExcellency.Craft" experienceLearned="true"/>
-        <Charm name="Solar.CraftsmanNeedsNoTools" experienceLearned="true"/>
-      </CharmGroup>
       <CharmGroup name="Integrity" type="Solar">
         <Charm name="Solar.Integrity-PotectingPrana" experienceLearned="true"/>
       </CharmGroup>
-      <CharmGroup name="Occult" type="Solar">
-        <Charm name="Solar.TerrestrialCircleSorcery" experienceLearned="false"/>
-        <Charm name="Solar.CelestialCircleSorcery" experienceLearned="true"/>
+      <CharmGroup name="Craft" type="Solar">
+        <Charm name="Solar.CraftsmanNeedsNoTools" experienceLearned="true"/>
+        <Charm name="Solar.1stExcellency.Craft" experienceLearned="true"/>
       </CharmGroup>
       <Combos/>
     </Charms>
@@ -171,7 +172,7 @@
       <Entry points="6">
         <Description><![CDATA[Heuschrecken in Fanshu]]></Description>
       </Entry>
-      <Entry points="8">
+      <Entry points="15">
         <Description><![CDATA[Politics in Gem]]></Description>
       </Entry>
     </Experience>
