@@ -12,6 +12,9 @@
 	<extension-point id="MainModules">
 		<parameter-def id="class"/>
 	</extension-point>
+	<extension-point id="ReportFactories">
+		<parameter-def id="class" multiplicity="any"/>
+	</extension-point>
 	<extension-point id="Toolbar">
 		<parameter-def id="class" multiplicity="any"/>
 	</extension-point>

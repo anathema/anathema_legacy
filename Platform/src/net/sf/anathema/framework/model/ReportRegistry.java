@@ -1,6 +1,7 @@
 package net.sf.anathema.framework.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import net.sf.anathema.framework.reporting.IReport;
@@ -15,8 +16,8 @@ public class ReportRegistry implements IReportRegistry {
     super();
   }
 
-  public void addReport(IReport report) {
-    reports.add(report);
+  public void addReports(IReport... newReports) {
+    Collections.addAll(this.reports, newReports);
   }
 
   public IReport[] getReports(IItem item) {

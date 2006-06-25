@@ -11,6 +11,12 @@
 			<parameter id="class" value="net.sf.anathema.character.impl.module.ExaltedCharacterItemTypeConfiguration"/>
 		</parameter>
 	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="ReportFactories" id="ReportFactories">
+		<parameter id="class" value="net.sf.anathema.character.impl.module.reporting.JasperReportFactory"/>
+		<parameter id="class" value="net.sf.anathema.character.impl.module.reporting.A4SheetReportFactory"/>
+		<parameter id="class" value="net.sf.anathema.character.impl.module.reporting.LetterSheetReportFactory"/>
+		<parameter id="class" value="net.sf.anathema.character.impl.module.reporting.TextReportFactory"/>
+	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
 		<parameter id="bundle" value="Abyssal"/>
 		<parameter id="bundle" value="Backgrounds"/>
