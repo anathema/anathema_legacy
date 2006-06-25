@@ -4,15 +4,15 @@ import java.awt.event.WindowListener;
 
 import javax.swing.Action;
 
+import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
+
 public interface IAnathemaView {
 
   public IAnathemaMenu getMenuBar();
+  
+  public IAnathemaToolbar getToolbar();
 
   public void addItemView(IItemView view, Action action);
-
-  public void addTool(Action action);
-
-  public void addTools(Action[] action);
 
   public void addViewSelectionListener(IViewSelectionListener listener);
 

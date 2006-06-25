@@ -32,7 +32,7 @@ public class CharacterModulePresenter {
       IItemType typeCharacter,
       ICharacterGenerics generics) {
     this.generics = generics;
-    view.addTools(createTools(anathemaModel, resources, typeCharacter));
+    view.getToolbar().addTools(createTools(anathemaModel, resources, typeCharacter));
     view.getMenuBar().addMenu(createCharacterMenu(anathemaModel, resources));
   }
 

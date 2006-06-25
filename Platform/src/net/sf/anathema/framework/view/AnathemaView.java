@@ -14,13 +14,14 @@ import net.sf.anathema.framework.presenter.AnathemaViewProperties;
 import net.sf.anathema.framework.view.item.IItemViewManagement;
 import net.sf.anathema.framework.view.item.ItemViewManagement;
 import net.sf.anathema.framework.view.menu.AnathemaMenuBar;
+import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
 import net.sf.anathema.lib.gui.GuiUtilities;
 import net.sf.anathema.lib.gui.TranslucentSplashScreen;
 
 public class AnathemaView implements IAnathemaView {
 
   private final JFrame mainFrame;
-  private final AnathemaToolBar toolBar = new AnathemaToolBar();
+  private final AnathemaToolBar toolbar = new AnathemaToolBar();
   private final AnathemaMenuBar menu;
   private final IItemViewManagement itemViewManagement;
   private final AnathemaViewProperties properties;
@@ -30,10 +31,6 @@ public class AnathemaView implements IAnathemaView {
     this.itemViewManagement = new ItemViewManagement();
     this.menu = new AnathemaMenuBar(properties.getMainMenuName(), properties.getHelpMenuName());
     this.mainFrame = initGui();
-  }
-
-  public void addTool(Action action) {
-    addTools(new Action[] { action });
   }
 
   private JFrame initGui() throws AWTException {
@@ -56,7 +53,7 @@ public class AnathemaView implements IAnathemaView {
   }
 
   private void initApplicationPanel(JPanel applicationPanel) {
-    applicationPanel.add(toolBar.getComponent(), BorderLayout.NORTH);
+    applicationPanel.add(toolbar.getComponent(), BorderLayout.NORTH);
     applicationPanel.add(itemViewManagement.getComponent(), BorderLayout.CENTER);
   }
 
@@ -64,8 +61,8 @@ public class AnathemaView implements IAnathemaView {
     GuiUtilities.displayOnScreenCenter(mainFrame, new Dimension(1024, 768));
   }
 
-  public void addTools(Action[] actions) {
-    toolBar.addTools(actions);
+  public IAnathemaToolbar getToolbar() {
+    return toolbar;
   }
 
   public void addItemView(IItemView view, Action action) {

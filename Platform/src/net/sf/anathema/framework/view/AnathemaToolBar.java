@@ -6,7 +6,9 @@ import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JToolBar;
 
-public class AnathemaToolBar {
+import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
+
+public class AnathemaToolBar implements IAnathemaToolbar {
 
   private JToolBar toolBar;
 
@@ -19,7 +21,7 @@ public class AnathemaToolBar {
     return toolBar;
   }
 
-  public void addTools(Action[] toolBarActions) {
+  public void addTools(Action... toolBarActions) {
     toolBar.addSeparator();
     for (int i = 0; i < toolBarActions.length; i++) {
       Action action = toolBarActions[i];

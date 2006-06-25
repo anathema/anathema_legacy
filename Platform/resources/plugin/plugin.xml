@@ -12,6 +12,9 @@
 	<extension-point id="MainModules">
 		<parameter-def id="class"/>
 	</extension-point>
+	<extension-point id="Toolbar">
+		<parameter-def id="class" multiplicity="any"/>
+	</extension-point>
 	<extension plugin-id="net.sf.anathema.core"	point-id="MainModules" id="AnathemaCore">
 		<parameter id="class" value="net.sf.anathema.framework.module.AnathemaCoreModule"/>
 	</extension>

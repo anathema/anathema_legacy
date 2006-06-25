@@ -17,6 +17,7 @@ import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.initialization.modules.IModuleCollection;
 import net.sf.anathema.initialization.plugin.AnathemaPluginManager;
 import net.sf.anathema.initialization.plugin.IPluginConstants;
+import net.sf.anathema.initialization.plugin.PluginUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
 import org.java.plugin.registry.Extension;
@@ -44,7 +45,7 @@ public class AnathemaInitializer {
     CentralExceptionHandling.setHandler(new CentralExceptionHandler(resources));
     IAnathemaModel anathemaModel = initModel(resources);
     IAnathemaView view = initView(resources);
-    new AnathemaPresenter(anathemaModel, view, resources, itemTypeCollection.getItemTypes()).initPresentation(moduleCollection);
+    new AnathemaPresenter(pluginManager, anathemaModel, view, resources, itemTypeCollection.getItemTypes()).initPresentation(moduleCollection);
     return view;
   }
 
@@ -62,7 +63,7 @@ public class AnathemaInitializer {
   private IAnathemaResources initResources() {
     IAnathemaResources resources = new AnathemaResources();
     for (Extension extension : pluginManager.getExtension(IPluginConstants.PLUGIN_CORE, EXTENSION_POINT_RESOURCES)) {
-      for (Parameter param : AnathemaPluginManager.getParameters(extension, PARAM_BUNDLE)) {
+      for (Parameter param : PluginUtilities.getParameters(extension, PARAM_BUNDLE)) {
         resources.addResourceBundle(param.valueAsString());
       }
     }

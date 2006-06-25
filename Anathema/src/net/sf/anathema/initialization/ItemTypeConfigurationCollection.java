@@ -5,9 +5,9 @@ import java.util.Collection;
 
 import net.sf.anathema.framework.InitializationException;
 import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
-import net.sf.anathema.initialization.plugin.AnathemaPluginManager;
 import net.sf.anathema.initialization.plugin.IAnathemaPluginManager;
 import net.sf.anathema.initialization.plugin.IPluginConstants;
+import net.sf.anathema.initialization.plugin.PluginUtilities;
 
 import org.java.plugin.registry.Extension;
 import org.java.plugin.registry.Extension.Parameter;
@@ -29,7 +29,7 @@ public class ItemTypeConfigurationCollection {
 
   private void collectItemTypes(IAnathemaPluginManager pluginManager) throws InitializationException {
     for (Extension extension : pluginManager.getExtension(IPluginConstants.PLUGIN_CORE, EXTENSION_POINT_ITEM_TYPES)) {
-      for (Parameter typeParameter : AnathemaPluginManager.getParameters(extension, PARAM_TYPE)) {
+      for (Parameter typeParameter : PluginUtilities.getParameters(extension, PARAM_TYPE)) {
         AbstractItemTypeConfiguration itemType = createItemType(typeParameter);
         if (itemType != null) {
           itemTypeConfigurations.add(itemType);

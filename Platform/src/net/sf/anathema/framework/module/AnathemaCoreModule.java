@@ -93,9 +93,9 @@ public class AnathemaCoreModule extends AbstractAnathemaModule {
   }
 
   private void initTools(IResources resources) {
-    getAnathemaView().addTool(AnathemaSaveAction.createToolAction(getAnathemaModel(), resources));
-    getAnathemaView().addTool(AnathemaSaveAllAction.createToolAction(getAnathemaModel(), resources));
-    getAnathemaView().addTool(AnathemaPrintAction.createToolAction(getAnathemaModel(), resources));
+    getAnathemaView().getToolbar().addTools(AnathemaSaveAction.createToolAction(getAnathemaModel(), resources));
+    getAnathemaView().getToolbar().addTools(AnathemaSaveAllAction.createToolAction(getAnathemaModel(), resources));
+    getAnathemaView().getToolbar().addTools(AnathemaPrintAction.createToolAction(getAnathemaModel(), resources));
   }
 
   private void initMenu(IResources resources) {
