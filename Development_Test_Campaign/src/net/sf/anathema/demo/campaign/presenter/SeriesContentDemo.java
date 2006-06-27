@@ -10,11 +10,11 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.campaign.concrete.SeriesContentModel;
+import net.sf.anathema.demo.platform.repository.tree.DemoRepositoryTreeModel;
+import net.sf.anathema.demo.platform.repository.tree.DemoResources;
 import net.sf.anathema.framework.repository.tree.IRepositoryTreeView;
 import net.sf.anathema.framework.repository.tree.RepositoryTreePresenter;
 import net.sf.anathema.framework.repository.tree.RepositoryTreeView;
-import net.sf.anathema.framework.repository.tree.demo.DemoRepositoryTreeModel;
-import net.sf.anathema.framework.repository.tree.demo.DemoResources;
 import net.sf.anathema.framework.view.PrintNameFile;
 import de.jdemo.extensions.SwingDemoCase;
 

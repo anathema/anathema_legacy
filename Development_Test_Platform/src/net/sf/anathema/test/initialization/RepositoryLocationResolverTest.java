@@ -1,8 +1,8 @@
 package net.sf.anathema.test.initialization;
 
-import net.sf.anathema.framework.environment.test.DummyAnathemaPreferences;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import net.sf.anathema.lib.testing.BasicTestCase;
+import net.sf.anathema.test.platform.environment.DummyAnathemaPreferences;
 
 public class RepositoryLocationResolverTest extends BasicTestCase {
   private static final String SYSTEM_PROPERTY_REPOSITORY = "repository"; //$NON-NLS-1$

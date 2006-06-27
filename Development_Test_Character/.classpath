@@ -31,5 +31,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Sidereal"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Solar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Charm_Tree"/>
+	<classpathentry sourcepath="/Thirdparty/Testing/easymock-src.zip" kind="lib" path="/Thirdparty/Testing/easymock.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Charm_Entry"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

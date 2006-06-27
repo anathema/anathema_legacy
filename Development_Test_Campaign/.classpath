@@ -14,5 +14,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Platform"/>
 	<classpathentry kind="lib" path="/Thirdparty/Testing/jdemo_core.jar"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Development_Test_Platform"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
