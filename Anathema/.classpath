@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="/Lib"/>
 	<classpathentry kind="src" path="/Character_Main"/>
 	<classpathentry kind="src" path="/Platform"/>
-	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="src" path="/Charm_Tree"/>
 	<classpathentry kind="src" path="/Charm_Cascades"/>
 	<classpathentry kind="src" path="/Campaign_Plot"/>
@@ -36,8 +35,5 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Mortal"/>
 	<classpathentry sourcepath="/Thirdparty/Plugin/jpf_src.zip" kind="lib" path="/Thirdparty/Plugin/jpf.jar"/>
 	<classpathentry sourcepath="/Thirdparty/Plugin/jpf-boot_src.zip" kind="lib" path="/Thirdparty/Plugin/jpf-boot.jar"/>
-	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
-	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-core-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-io.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
