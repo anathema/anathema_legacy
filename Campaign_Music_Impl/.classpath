@@ -10,9 +10,6 @@
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-dialog-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-dialog.jar"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-layout_src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib"/>
-	<classpathentry kind="lib" path="/Thirdparty/Testing/jdemo_core.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Testing/easymock-src.zip" kind="lib" path="/Thirdparty/Testing/easymock.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
 	<classpathentry sourcepath="/Thirdparty/Multimedia/BasicPlayer-2.3-src.zip" kind="lib" path="/Thirdparty/Multimedia/basicplayer2.3.jar"/>
 	<classpathentry sourcepath="/Thirdparty/Swing/itp-gpl-1.3.0-src.zip" kind="lib" path="/Thirdparty/Swing/itp-gpl-1.3.0.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
