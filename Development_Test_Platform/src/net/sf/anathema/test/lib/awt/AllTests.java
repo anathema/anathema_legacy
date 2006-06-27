@@ -9,8 +9,6 @@ public class AllTests {
     TestSuite suite = new TestSuite("Test for net.sf.anathema.lib.awt.test"); //$NON-NLS-1$
     //$JUnit-BEGIN$
     suite.addTestSuite(ColorUtilitiesTest.class);
-    suite.addTestSuite(DimensionsTest.class);
-    suite.addTestSuite(PointsTest.class);
     //$JUnit-END$
     return suite;
   }

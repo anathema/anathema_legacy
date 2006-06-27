@@ -1,6 +1,8 @@
-package net.sf.anathema.lib.io.file;
+package net.sf.anathema.development.character.charm;
 
 import java.io.File;
+
+import net.sf.anathema.lib.io.file.AbstractFileTypeFilter;
 
 public class XMLFilter extends AbstractFileTypeFilter {
 

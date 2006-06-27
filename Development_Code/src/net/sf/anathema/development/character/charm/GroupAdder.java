@@ -10,7 +10,6 @@ import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.UIManager;
 
-import net.sf.anathema.lib.io.file.XMLFilter;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Document;

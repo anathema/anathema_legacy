@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public class AnathemaStringUtilities extends net.disy.commons.core.util.StringUtilities {
+import net.disy.commons.core.util.StringUtilities;
+
+public class AnathemaStringUtilities extends StringUtilities {
 
   public static final String EMPTY_STRING = new String(""); //$NON-NLS-1$
 
