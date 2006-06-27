@@ -8,10 +8,11 @@ import net.sf.anathema.framework.itemdata.model.IBasicItemData;
 import net.sf.anathema.framework.itemdata.view.IBasicItemDescriptionView;
 import net.sf.anathema.framework.presenter.TextEditorProperties;
 import net.sf.anathema.framework.styledtext.presentation.StyledTextManager;
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
-public abstract class AbstractBasicItemPresenter {
+public abstract class AbstractBasicItemPresenter implements IPresenter {
 
   private IBasicItemData item;
   private final IResources resources;
@@ -20,8 +21,6 @@ public abstract class AbstractBasicItemPresenter {
     this.resources = resources;
     this.item = item;
   }
-
-  public abstract void initPresentation();
 
   protected final void initDescriptionPresentation(String nameLabel, IBasicItemDescriptionView descriptionView) {
     new TextualPresentation().initView(descriptionView.addLineTextView(nameLabel), item.getDescription().getName());

@@ -31,7 +31,6 @@ public class NotePresenter extends AbstractBasicItemPresenter {
     return "NoteDescription.BorderTitle"; //$NON-NLS-1$
   }
 
-  @Override
   public void initPresentation() {
     initDescriptionPresentation(
         resources.getString(getNameLabelKey()),
