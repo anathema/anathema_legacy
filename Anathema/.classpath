@@ -10,7 +10,6 @@
 	<classpathentry kind="src" path="/Charm_Cascades"/>
 	<classpathentry kind="src" path="/Campaign_Plot"/>
 	<classpathentry kind="src" path="/Character_Abyssal"/>
-	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
 	<classpathentry kind="src" path="/Character_Generic"/>
 	<classpathentry kind="src" path="/Character_Generic_Impl"/>
 	<classpathentry kind="src" path="/Character_Solar"/>
