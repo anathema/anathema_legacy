@@ -8,5 +8,7 @@
 	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
 	<classpathentry sourcepath="/Thirdparty/Testing/easymock-src.zip" kind="lib" path="/Thirdparty/Testing/easymock.jar"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
+	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-core-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Anathema"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
