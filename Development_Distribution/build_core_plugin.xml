@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<project name="Copy Core" default="Build core module">
+	<property name="projectset" value="Lib_Thirdparty,Lib,Lib_Gui,Lib_Workflow,Platform,Anathema" />
+
+	<target name="Build core module">
+		<foreach list="${projectset}" target="Build Project" param="project.name" />
+	</target>
+
+	<target name="Build Project">
+		<echo message="Building ${project.name}" />
+		<getEclipseClasspath property="classpath" workspace="${workspace.dir}" projectName="${project.name}" runtime="true" relative="false" initialiseWorkspace="true" />
+		<executebuilders workspace="${workspace.dir}" projectName="${project.name}" />
+		<foreach list="${classpath}" delimiter=";" target="Copy JAR" param="classpath.entry" />
+	</target>
+
+	<target name="javabuilder">
+		<getSourcepath property="path" workspace="${workspace.dir}" projectName="${project.name}" allowMultipleFolders="true" />
+		<javac classpath="${classpath}" srcdir="${path}" destdir="build" />
+	</target>
+
+	<target name="default-builder"/>
+
+	<target name="Copy JAR">
+		<if>
+			<and>
+				<isfileselected file="${classpath.entry}">
+					<filename name="**/*.jar" />
+				</isfileselected>
+				<or>
+					<contains string="${classpath.entry}" substring="Database" />
+					<contains string="${classpath.entry}" substring="disy" />
+					<contains string="${classpath.entry}" substring="Jakarta" />
+					<!--<contains string="${classpath.entry}" substring="GISterm" />-->
+					<contains string="${classpath.entry}" substring="Multimedia" />
+					<contains string="${classpath.entry}" substring="Plugin" />
+					<contains string="${classpath.entry}" substring="Reporting" />
+					<contains string="${classpath.entry}" substring="SVG" />
+					<contains string="${classpath.entry}" substring="Swing" />
+					<contains string="${classpath.entry}" substring="XML" />
+				</or>
+			</and>
+			<then>
+				<echo message="${classpath.entry}" />
+				<!--   <copy file="${classpath.entry}" tofile="${dest.dir}"/>-->
+			</then>
+		</if>
+	</target>
+</project>
