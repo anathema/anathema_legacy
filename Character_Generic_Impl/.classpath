@@ -5,9 +5,6 @@
 	<classpathentry kind="src" path="/Character_Generic"/>
 	<classpathentry kind="src" path="/Lib"/>
 	<classpathentry sourcepath="/Thirdparty/XML/dom4j-src.zip" kind="lib" path="/Thirdparty/XML/dom4j-1.5.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Testing/easymock-src.zip" kind="lib" path="/Thirdparty/Testing/easymock.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/Testing/jdemo_core.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Lib_Gui"/>
