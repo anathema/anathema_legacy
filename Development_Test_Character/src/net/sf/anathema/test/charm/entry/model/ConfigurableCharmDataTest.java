@@ -1,8 +1,6 @@
 package net.sf.anathema.test.charm.entry.model;
 
 import net.disy.commons.core.util.ArrayUtilities;
-import net.sf.anathema.character.generic.impl.magic.Cost;
-import net.sf.anathema.character.generic.impl.magic.HealthCost;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;

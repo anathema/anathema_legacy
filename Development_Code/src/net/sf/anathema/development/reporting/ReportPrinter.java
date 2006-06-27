@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 
 import net.disy.commons.core.io.IOUtilities;
-import net.sf.anathema.character.impl.module.CharacterModule;
 import net.sf.anathema.development.reporting.generation.IGenerationData;
 import net.sf.anathema.development.reporting.generation.VoidStateSiderealGenerationData;
 import net.sf.anathema.development.reporting.generation.VoidstateLunarGenerationData;
