@@ -12,8 +12,6 @@
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-layout_src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Framework"/>
 	<classpathentry sourcepath="/Thirdparty/XML/dom4j-src.zip" kind="lib" path="/Thirdparty/XML/dom4j-1.5.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Testing/easymock-src.zip" kind="lib" path="/Thirdparty/Testing/easymock.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Reporting"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
