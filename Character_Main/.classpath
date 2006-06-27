@@ -5,15 +5,9 @@
 	<classpathentry kind="src" path="/Lib"/>
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="lib" path="/Thirdparty/XML/dom4j-1.5.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Testing/easymock-src.zip" kind="lib" path="/Thirdparty/Testing/easymock.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/Testing/bcel.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/Testing/hansel.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/Testing/junit.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/Testing/jemmy.zip"/>
 	<classpathentry kind="src" path="/Platform"/>
 	<classpathentry kind="src" path="/Charm_Tree"/>
 	<classpathentry sourcepath="/Thirdparty/Swing/l2fprod-common-0.2dev-src.zip" kind="lib" path="/Thirdparty/Swing/l2fprod-common-tasks.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/Testing/jdemo_core.jar"/>
 	<classpathentry sourcepath="/Thirdparty/Reporting/jasperreport-src.zip" kind="lib" path="/Thirdparty/Reporting/jasperreports-0.6.2.jar"/>
 	<classpathentry sourcepath="/Thirdparty/Swing/itp-gpl-1.3.0-src.zip" kind="lib" path="/Thirdparty/Swing/itp-gpl-1.3.0.jar"/>
 	<classpathentry kind="src" path="/Character_Generic"/>
