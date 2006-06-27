@@ -2,8 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/Thirdparty/Testing/jdemo_core.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
 	<classpathentry kind="src" path="/Platform"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-core-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
