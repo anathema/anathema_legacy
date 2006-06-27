@@ -16,13 +16,11 @@
 	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-swing.jar"/>
 	<classpathentry kind="src" path="/Character_Generic"/>
 	<classpathentry kind="src" path="/Character_Generic_Impl"/>
-	<classpathentry kind="lib" path="/Thirdparty/Testing/jdemo_core.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
 	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-gui-util.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Framework"/>
 	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-css.jar"/>
 	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-script.jar"/>
