@@ -2,7 +2,6 @@ package net.sf.anathema.development;
 
 import javax.swing.JMenu;
 
-import net.sf.anathema.charmentry.module.ShowCharmEntryAction;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.framework.view.IAnathemaView;
@@ -23,13 +22,7 @@ public class DevelopmentEnvironmentPresenter {
     JMenu developmentMenu = new JMenu("Development"); //$NON-NLS-1$
     view.getMenuBar().addMenu(developmentMenu);
     developmentMenu.add(new RepositoryViewAction("Show repository tree", model, resources)); //$NON-NLS-1$
-    initCharmEntry(developmentMenu);
-  }
-
-  private void initCharmEntry(JMenu developmentMenu) {
-    resources.addResourceBundle("CharmEntry"); //$NON-NLS-1$
-    developmentMenu.add(new ShowCharmEntryAction("Charm Entry", resources)); //$NON-NLS-1$
-  }
+   }
 
   public void initPresentation() {
     addMenu();
