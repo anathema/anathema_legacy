@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.module;
 
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.extension.IExtensionPoint;
+import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -16,13 +16,13 @@ public abstract class AbstractAnathemaModule implements IAnathemaModule {
   }
 
   public void initModelExtensionPoints(
-      IRegistry<String, IExtensionPoint> registry,
+      IRegistry<String, IAnathemaExtension> registry,
       IAnathemaModel model,
       IResources resources) {
     // Nothing to do
   }
 
-  public void fillModelExtensionPoints(IRegistry<String, IExtensionPoint> extensionPointRegistry, IAnathemaModel model) {
+  public void fillModelExtensionPoints(IRegistry<String, IAnathemaExtension> extensionPointRegistry, IAnathemaModel model) {
     // Nothing to do
   }
 
@@ -30,12 +30,12 @@ public abstract class AbstractAnathemaModule implements IAnathemaModule {
     this.anathemaModel = model;
   }
 
-  public void initPresentationExtensionPoints(IRegistry<String, IExtensionPoint> registry, IResources resources) {
+  public void initPresentationExtensionPoints(IRegistry<String, IAnathemaExtension> registry, IResources resources) {
     // Nothing to do
   }
 
   public void fillPresentationExtensionPoints(
-      IRegistry<String, IExtensionPoint> extensionPointRegistry,
+      IRegistry<String, IAnathemaExtension> extensionPointRegistry,
       IAnathemaModel model,
       IResources resources,
       IAnathemaView view) {

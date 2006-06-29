@@ -6,58 +6,38 @@ import java.util.Collection;
 import net.sf.anathema.framework.InitializationException;
 import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
 import net.sf.anathema.initialization.plugin.IAnathemaPluginManager;
-import net.sf.anathema.initialization.plugin.IPluginConstants;
-import net.sf.anathema.initialization.plugin.PluginUtilities;
 
-import org.java.plugin.registry.Extension;
 import org.java.plugin.registry.Extension.Parameter;
 
-public class ItemTypeConfigurationCollection {
+public class ItemTypeConfigurationCollection extends AbstractInitializationCollection<AbstractItemTypeConfiguration> {
 
   private static final String EXTENSION_POINT_ITEM_TYPES = "ItemTypes"; //$NON-NLS-1$
-  private static final String PARAM_CLASS = "class"; //$NON-NLS-1$
   private static final String PARAM_DEVELOPMENT = "development"; //$NON-NLS-1$
-  private static final String PARAM_TYPE = "type"; //$NON-NLS-1$
   private final Collection<AbstractItemTypeConfiguration> itemTypeConfigurations = new ArrayList<AbstractItemTypeConfiguration>();
   private final boolean isDevelopment;
 
   public ItemTypeConfigurationCollection(IAnathemaPluginManager pluginManager, boolean isDevelopment)
       throws InitializationException {
     this.isDevelopment = isDevelopment;
-    collectItemTypes(pluginManager);
+    collectContent(pluginManager);
   }
 
-  private void collectItemTypes(IAnathemaPluginManager pluginManager) throws InitializationException {
-    for (Extension extension : pluginManager.getExtension(IPluginConstants.PLUGIN_CORE, EXTENSION_POINT_ITEM_TYPES)) {
-      for (Parameter typeParameter : PluginUtilities.getParameters(extension, PARAM_TYPE)) {
-        AbstractItemTypeConfiguration itemType = createItemType(typeParameter);
-        if (itemType != null) {
-          itemTypeConfigurations.add(itemType);
-        }
-      }
-    }
+  @Override
+  protected String getExtensionPointId() {
+    return EXTENSION_POINT_ITEM_TYPES;
   }
 
   public Collection<AbstractItemTypeConfiguration> getItemTypes() {
     return new ArrayList<AbstractItemTypeConfiguration>(itemTypeConfigurations);
   }
 
-  private AbstractItemTypeConfiguration createItemType(Parameter typeParameter) throws InitializationException {
+  @Override
+  protected void addItemForTypeParameter(Parameter typeParameter, AbstractItemTypeConfiguration itemType) {
     Parameter subParameter = typeParameter.getSubParameter(PARAM_DEVELOPMENT);
     boolean developmentOnly = subParameter != null && subParameter.valueAsBoolean();
     if (!isDevelopment && developmentOnly) {
-      return null;
+      return;
     }
-    return instantiateItemType(typeParameter.getSubParameter(PARAM_CLASS));
-  }
-
-  private AbstractItemTypeConfiguration instantiateItemType(Parameter classParameter) throws InitializationException {
-    String className = classParameter.valueAsString();
-    try {
-      return (AbstractItemTypeConfiguration) Class.forName(className).newInstance();
-    }
-    catch (Throwable throwable) {
-      throw new InitializationException(throwable);
-    }
+    itemTypeConfigurations.add(itemType);
   }
 }

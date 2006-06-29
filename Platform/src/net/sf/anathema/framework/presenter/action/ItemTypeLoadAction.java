@@ -15,7 +15,7 @@ import net.disy.commons.core.progress.IRunnableWithProgress;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.progress.ProgressMonitorDialog;
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.extension.IExtensionPoint;
+import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
@@ -38,7 +38,7 @@ public final class ItemTypeLoadAction extends SmartAction {
   private final RepositoryFileChooserPropertiesExtensionPoint propertiesExtensionPoint;
 
   public static Action createMenuAction(IAnathemaModel anathemaModel, IItemType itemType, IResources resources) {
-    IRegistry<String, IExtensionPoint> extensionPointRegistry = anathemaModel.getExtensionPointRegistry();
+    IRegistry<String, IAnathemaExtension> extensionPointRegistry = anathemaModel.getExtensionPointRegistry();
     RepositoryFileChooserPropertiesExtensionPoint repositoryExtensionPoint = (RepositoryFileChooserPropertiesExtensionPoint) extensionPointRegistry.get(RepositoryFileChooserPropertiesExtensionPoint.ID);
     ItemTypeViewPropertiesExtensionPoint itemExtensionPoint = (ItemTypeViewPropertiesExtensionPoint) extensionPointRegistry.get(ItemTypeViewPropertiesExtensionPoint.ID);
     IItemTypeViewProperties properties = itemExtensionPoint.get(itemType);
@@ -53,7 +53,7 @@ public final class ItemTypeLoadAction extends SmartAction {
       IResources resources,
       Icon icon,
       String toolTip) {
-    IRegistry<String, IExtensionPoint> extensionPointRegistry = anathemaModel.getExtensionPointRegistry();
+    IRegistry<String, IAnathemaExtension> extensionPointRegistry = anathemaModel.getExtensionPointRegistry();
     RepositoryFileChooserPropertiesExtensionPoint repositoryExtensionPoint = (RepositoryFileChooserPropertiesExtensionPoint) extensionPointRegistry.get(RepositoryFileChooserPropertiesExtensionPoint.ID);
     SmartAction action = new ItemTypeLoadAction(anathemaModel, itemType, resources, repositoryExtensionPoint);
     action.setIcon(icon);

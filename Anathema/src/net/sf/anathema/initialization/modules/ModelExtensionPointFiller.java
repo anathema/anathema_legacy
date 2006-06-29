@@ -1,18 +1,18 @@
 package net.sf.anathema.initialization.modules;
 
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.extension.IExtensionPoint;
+import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.module.IAnathemaModule;
 import net.sf.anathema.lib.registry.IRegistry;
 
 public class ModelExtensionPointFiller extends AbstractModuleInitializer {
 
-  private final IRegistry<String, IExtensionPoint> extensionPointRegistry;
+  private final IRegistry<String, IAnathemaExtension> extensionPointRegistry;
   private final IAnathemaModel model;
 
   public ModelExtensionPointFiller(
       IModuleCollection moduleCollection,
-      IRegistry<String, IExtensionPoint> extensionPointRegistry,
+      IRegistry<String, IAnathemaExtension> extensionPointRegistry,
       IAnathemaModel model) {
     super(moduleCollection);
     this.extensionPointRegistry = extensionPointRegistry;

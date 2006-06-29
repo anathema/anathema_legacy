@@ -3,7 +3,7 @@ package net.sf.anathema.framework.model;
 import java.io.File;
 
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.extension.IExtensionPoint;
+import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
@@ -17,7 +17,7 @@ import net.sf.anathema.lib.registry.Registry;
 
 public class AnathemaModel implements IAnathemaModel {
 
-  private final IRegistry<String, IExtensionPoint> extensionRegistry = new Registry<String, IExtensionPoint>();
+  private final IRegistry<String, IAnathemaExtension> extensionRegistry = new Registry<String, IAnathemaExtension>();
   private final IRegistry<IItemType, IRepositoryItemPersister> persisterRegistry = new Registry<IItemType, IRepositoryItemPersister>();
   private final IItemMangementModel itemManagment = new ItemManagmentModel();
   private final IReportRegistry reportRegistry = new ReportRegistry();
@@ -37,7 +37,7 @@ public class AnathemaModel implements IAnathemaModel {
     return reportRegistry;
   }
 
-  public final IRegistry<String, IExtensionPoint> getExtensionPointRegistry() {
+  public final IRegistry<String, IAnathemaExtension> getExtensionPointRegistry() {
     return extensionRegistry;
   }
 

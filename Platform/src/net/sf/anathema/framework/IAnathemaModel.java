@@ -1,6 +1,6 @@
 package net.sf.anathema.framework;
 
-import net.sf.anathema.framework.extension.IExtensionPoint;
+import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
@@ -18,7 +18,7 @@ public interface IAnathemaModel {
   
   public IItemTypeRegistry getItemTypeRegistry();
 
-  public IRegistry<String, IExtensionPoint> getExtensionPointRegistry();
+  public IRegistry<String, IAnathemaExtension> getExtensionPointRegistry();
 
   public IRegistry<IItemType, IRepositoryItemPersister> getPersisterRegistry();
 

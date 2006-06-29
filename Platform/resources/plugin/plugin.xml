@@ -1,5 +1,11 @@
 <!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.5" "http://jpf.sourceforge.net/plugin_0_5.dtd">
 <plugin id="net.sf.anathema.core" version="1.0">
+	<extension-point id="AnathemaExtensions">
+		<parameter-def id="type" multiplicity="any">
+			<parameter-def id="class" multiplicity="one"/>
+			<parameter-def id="id" multiplicity="one"/>
+		</parameter-def>
+	</extension-point>
 	<extension-point id="AnathemaResources">
 		<parameter-def id="bundle" multiplicity="any"/>
 	</extension-point>

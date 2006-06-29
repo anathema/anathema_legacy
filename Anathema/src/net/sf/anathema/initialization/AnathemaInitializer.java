@@ -31,12 +31,14 @@ public class AnathemaInitializer {
   private final IAnathemaPreferences anathemaPreferences;
   private final AnathemaPluginManager pluginManager;
   private final ItemTypeConfigurationCollection itemTypeCollection;
+  private final AnathemaExtensionCollection extensionCollection;
 
   public AnathemaInitializer(IAnathemaPreferences anathemaPreferences) throws InitializationException {
     this.pluginManager = new AnathemaPluginManager();
     pluginManager.collectPlugins();
     this.moduleCollection = new ModuleCollection(pluginManager);
     this.itemTypeCollection = new ItemTypeConfigurationCollection(pluginManager, AnathemaEnvironment.isDevelopment());
+    this.extensionCollection = new AnathemaExtensionCollection(pluginManager);
     this.anathemaPreferences = anathemaPreferences;
   }
 
@@ -50,9 +52,10 @@ public class AnathemaInitializer {
   }
 
   private IAnathemaModel initModel(IResources resources) throws RepositoryException {
-    return new AnathemaModelInitializer(anathemaPreferences, itemTypeCollection.getItemTypes()).initializeModel(
-        moduleCollection,
-        resources);
+    return new AnathemaModelInitializer(
+        anathemaPreferences,
+        itemTypeCollection.getItemTypes(),
+        extensionCollection.getExtensionsById()).initializeModel(moduleCollection, resources);
   }
 
   private IAnathemaView initView(IAnathemaResources resources) throws AWTException {

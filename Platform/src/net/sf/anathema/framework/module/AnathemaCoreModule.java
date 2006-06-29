@@ -3,7 +3,7 @@ package net.sf.anathema.framework.module;
 import javax.swing.JMenu;
 
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.extension.IExtensionPoint;
+import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.model.ItemManagmentModelListener;
 import net.sf.anathema.framework.module.preferences.LanguagePreferencesElement;
@@ -41,7 +41,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class AnathemaCoreModule extends AbstractAnathemaModule {
 
   @Override
-  public void initPresentationExtensionPoints(IRegistry<String, IExtensionPoint> registry, IResources resources) {
+  public void initPresentationExtensionPoints(IRegistry<String, IAnathemaExtension> registry, IResources resources) {
     registry.register(
         RepositoryFileChooserPropertiesExtensionPoint.ID,
         new RepositoryFileChooserPropertiesExtensionPoint(resources));
@@ -53,7 +53,7 @@ public class AnathemaCoreModule extends AbstractAnathemaModule {
 
   @Override
   public void fillPresentationExtensionPoints(
-      IRegistry<String, IExtensionPoint> extensionPointRegistry,
+      IRegistry<String, IAnathemaExtension> extensionPointRegistry,
       IAnathemaModel model,
       IResources resources,
       IAnathemaView view) {
@@ -61,7 +61,7 @@ public class AnathemaCoreModule extends AbstractAnathemaModule {
     fillPreferencesExtensionPoint(extensionPointRegistry);
   }
 
-  private void fillPreferencesExtensionPoint(IRegistry<String, IExtensionPoint> extensionPointRegistry) {
+  private void fillPreferencesExtensionPoint(IRegistry<String, IAnathemaExtension> extensionPointRegistry) {
     PreferencesElementsExtensionPoint preferencesPoint = (PreferencesElementsExtensionPoint) extensionPointRegistry.get(PreferencesElementsExtensionPoint.ID);
     if (WindowsUtilities.isWindows()) {
       preferencesPoint.register(
@@ -139,7 +139,7 @@ public class AnathemaCoreModule extends AbstractAnathemaModule {
 
   private JMenu createMenuFromExtensionPoint(IAnathemaModel anathemaModel, String menuName, String extensionPointId) {
     JMenu menu = new JMenu(menuName);
-    IRegistry<String, IExtensionPoint> extensionPointRegistry = anathemaModel.getExtensionPointRegistry();
+    IRegistry<String, IAnathemaExtension> extensionPointRegistry = anathemaModel.getExtensionPointRegistry();
     MenuExtensionPoint newExtensionPoint = (MenuExtensionPoint) extensionPointRegistry.get(extensionPointId);
     for (IMenuItem item : newExtensionPoint.getMenuItems()) {
       item.addToMenu(menu);

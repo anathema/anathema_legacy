@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.module;
 
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.extension.IExtensionPoint;
+import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
@@ -24,7 +24,7 @@ public abstract class AbstractItemTypeConfiguration {
   }
 
   public final void fillPresentationExtensionPoints(
-      IRegistry<String, IExtensionPoint> extensionPointRegistry,
+      IRegistry<String, IAnathemaExtension> extensionPointRegistry,
       IResources resources,
       IAnathemaModel model,
       IAnathemaView view) {
@@ -49,7 +49,7 @@ public abstract class AbstractItemTypeConfiguration {
   }
 
   private void registerRepositoryFileChooserProperties(
-      IRegistry<String, IExtensionPoint> extensionPointRegistry,
+      IRegistry<String, IAnathemaExtension> extensionPointRegistry,
       IResources resources) {
     RepositoryFileChooserPropertiesExtensionPoint repositoryExtensionPoint = (RepositoryFileChooserPropertiesExtensionPoint) extensionPointRegistry.get(RepositoryFileChooserPropertiesExtensionPoint.ID);
     repositoryExtensionPoint.register(type, new DefaultObjectSelectionProperties(

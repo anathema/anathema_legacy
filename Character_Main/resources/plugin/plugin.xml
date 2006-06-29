@@ -3,7 +3,13 @@
 	<requires>
 		<import plugin-id="net.sf.anathema.core"/>
 	</requires>
-	<extension plugin-id="net.sf.anathema.core"	point-id="MainModules" id="CharacterCore">
+	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaExtensions" id="AnathemaExtensions">
+	  <parameter id="type">
+		<parameter id="class" value="net.sf.anathema.character.impl.module.CharacterGenericsExtension"/>
+		<parameter id="id" value="net.sf.anathema.character.generic.framework.ICharacterGenericsExtension"/>
+	  </parameter>
+	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="MainModules" id="MainModules">
 		<parameter id="class" value="net.sf.anathema.character.impl.module.CharacterModule"/>
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="ItemTypes" id="ItemType">
