@@ -1,24 +1,83 @@
-<?xml version="1.0"?>
-<project name="Copy Core" default="Build core module">
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Copy Core" default="Build Core JAR">
 	<property name="projectset" value="Lib_Thirdparty,Lib,Lib_Gui,Lib_Workflow,Platform,Anathema" />
+	<property name="build.dir" location="build" />
+	<property name="class.dir" location="${build.dir}/core/classes" />
+	<property name="library.dir" location="${build.dir}/core/libraries" />
+	<property name="resource.dir" location="${build.dir}/core/resources" />
+	<property name="lib" value="./lib" />
 
-	<target name="Build core module">
-		<foreach list="${projectset}" target="Build Project" param="project.name" />
+	<property name="classpath" value="" />
+
+	<target name="Build Core JAR" depends="Build module, Compile classpath, Copy resources">
+		<jar destfile="${build.dir}/anathema.jar">
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<attribute name="Main-Class" value="net.sf.anathema.Anathema" />
+				<attribute name="Class-Path" value="${classpath}" />
+				<section name="net/sf/anathema/Anathema.class" />
+			</manifest>
+			<fileset dir="${class.dir}" includes="**/*" />
+			<fileset dir="${resource.dir}" includes="**/*" />
+		</jar>
 	</target>
 
-	<target name="Build Project">
-		<echo message="Building ${project.name}" />
-		<getEclipseClasspath property="classpath" workspace="${workspace.dir}" projectName="${project.name}" runtime="true" relative="false" initialiseWorkspace="true" />
-		<executebuilders workspace="${workspace.dir}" projectName="${project.name}" />
+	<target name="Build module">
+		<echo message="Building module: Core" />
+		<foreach list="${projectset}" target="Build project" param="project.name" />
+	</target>
+
+
+	<target name="Compile classpath" depends="Copy libraries">
+		<foreach target="Add to path" param="jarfile">
+			<path>
+				<fileset dir="${library.dir}">
+					<include name="*.jar"/>
+				</fileset>
+			</path>
+		</foreach>
+	</target>
+
+	<target name="Add to path">
+		<variable name="classpath" value="${classpath} ${lib}/${jarfile}" />
+		<echo message="${classpath}"/>
+	</target>
+
+	<target name="Copy resources">
+		<foreach list="${projectset}" target="Copy project resources" param="project.name" />
+	</target>
+
+	<target name="Copy libraries">
+		<foreach list="${projectset}" target="Copy project libraries" param="project.name" />
+	</target>
+
+	<target name="Copy project resources">
+		<copy todir="${resource.dir}" failonerror="false">
+			<fileset dir="../${project.name}/resources">
+				<include name="**/*" />
+				<exclude name="**/*.xcf" />
+				<exclude name="**/*.svg" />
+				<exclude name="**/Thumbs.db" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="Copy project libraries">
+		<getEclipseClasspath property="classpath" workspace="${workspace.dir}" projectName="${project.name}" relative="false" initialiseWorkspace="true" />
 		<foreach list="${classpath}" delimiter=";" target="Copy JAR" param="classpath.entry" />
+	</target>
+
+	<target name="Build project">
+		<getEclipseClasspath property="classpath" workspace="${workspace.dir}" projectName="${project.name}" relative="false" initialiseWorkspace="true" />
+		<executebuilders workspace="${workspace.dir}" projectName="${project.name}" />
 	</target>
 
 	<target name="javabuilder">
 		<getSourcepath property="path" workspace="${workspace.dir}" projectName="${project.name}" allowMultipleFolders="true" />
-		<javac classpath="${classpath}" srcdir="${path}" destdir="build" />
+		<javac classpath="${classpath}" srcdir="${path}" destdir="${class.dir}" />
 	</target>
 
-	<target name="default-builder"/>
+	<target name="default-builder" />
 
 	<target name="Copy JAR">
 		<if>
@@ -40,8 +99,7 @@
 				</or>
 			</and>
 			<then>
-				<echo message="${classpath.entry}" />
-				<!--   <copy file="${classpath.entry}" tofile="${dest.dir}"/>-->
+				<copy file="${classpath.entry}" todir="${library.dir}" />
 			</then>
 		</if>
 	</target>
