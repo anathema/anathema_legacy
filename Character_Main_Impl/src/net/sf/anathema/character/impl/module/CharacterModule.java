@@ -15,9 +15,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterModule extends AbstractAnathemaModule {
 
-  @Override
   public void initPresentation(IResources resources, IAnathemaModel model, IAnathemaView view) {
-    super.initPresentation(resources, model, view);
     ICharacterGenerics characterGenerics = getCharacterGenerics(model);
     IItemType characterItemType = model.getItemTypeRegistry().getById(
         ExaltedCharacterItemTypeConfiguration.CHARACTER_ITEM_TYPE_ID);

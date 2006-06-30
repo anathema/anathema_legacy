@@ -8,21 +8,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractAnathemaModule implements IAnathemaModule {
 
-  private IAnathemaView anathemaView;
   private IAnathemaModel anathemaModel;
-
-  public void initModelExtensionPoints(
-      IRegistry<String, IAnathemaExtension> registry,
-      IAnathemaModel model,
-      IResources resources) {
-    // Nothing to do
-  }
-
-  public void fillModelExtensionPoints(
-      IRegistry<String, IAnathemaExtension> extensionPointRegistry,
-      IAnathemaModel model) {
-    // Nothing to do
-  }
 
   public void initModel(IAnathemaModel model) {
     this.anathemaModel = model;
@@ -40,15 +26,7 @@ public abstract class AbstractAnathemaModule implements IAnathemaModule {
     // Nothing to do
   }
 
-  public void initPresentation(IResources resources, IAnathemaModel model, IAnathemaView view) {
-    this.anathemaView = view;
-  }
-
   protected final IAnathemaModel getAnathemaModel() {
     return anathemaModel;
-  }
-
-  protected final IAnathemaView getAnathemaView() {
-    return anathemaView;
   }
 }

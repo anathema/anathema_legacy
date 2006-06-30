@@ -26,9 +26,7 @@ public class GisModule extends AbstractAnathemaModule {
     LayerPanel.popupFactory = new AnathemaLayerPopupFactory();
   }
 
-  @Override
   public void initPresentation(IResources resources, IAnathemaModel model, IAnathemaView view) {
-    super.initPresentation(resources, model, view);
     SmartFileChooser.getInstance().setFileChooserProvider(new DefaultFileChooserProvider());
     view.getMenuBar().addMenu(new GisModuleMenuFactory(gisDataDirectory).createMapMenu(resources, getAnathemaModel()));
   }

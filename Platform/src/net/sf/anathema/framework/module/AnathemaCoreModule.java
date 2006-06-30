@@ -40,6 +40,8 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class AnathemaCoreModule extends AbstractAnathemaModule {
 
+  private IAnathemaView anathemaView;
+
   @Override
   public void initPresentationExtensionPoints(IRegistry<String, IAnathemaExtension> registry, IResources resources) {
     registry.register(
@@ -77,9 +79,8 @@ public class AnathemaCoreModule extends AbstractAnathemaModule {
     preferencesPoint.register(IAnathemaPreferencesConstants.REPOSITORY_PREFERENCE, new RepositoryPreferencesElement());
   }
 
-  @Override
   public void initPresentation(IResources resources, IAnathemaModel model, IAnathemaView view) {
-    super.initPresentation(resources, model, view);
+    this.anathemaView = view;
     IModelViewMapping mapping = new ModelViewMapping();
     initMenu(resources);
     initTools(resources);
@@ -93,13 +94,13 @@ public class AnathemaCoreModule extends AbstractAnathemaModule {
   }
 
   private void initTools(IResources resources) {
-    getAnathemaView().getToolbar().addTools(AnathemaSaveAction.createToolAction(getAnathemaModel(), resources));
-    getAnathemaView().getToolbar().addTools(AnathemaSaveAllAction.createToolAction(getAnathemaModel(), resources));
-    getAnathemaView().getToolbar().addTools(AnathemaPrintAction.createToolAction(getAnathemaModel(), resources));
+    anathemaView.getToolbar().addTools(AnathemaSaveAction.createToolAction(getAnathemaModel(), resources));
+    anathemaView.getToolbar().addTools(AnathemaSaveAllAction.createToolAction(getAnathemaModel(), resources));
+    anathemaView.getToolbar().addTools(AnathemaPrintAction.createToolAction(getAnathemaModel(), resources));
   }
 
   private void initMenu(IResources resources) {
-    IAnathemaMenu menuBar = getAnathemaView().getMenuBar();
+    IAnathemaMenu menuBar = anathemaView.getMenuBar();
     IMenuBar mainMenu = menuBar.getMainMenu();
     mainMenu.addMenuItem(createNewMenu(getAnathemaModel(), resources));
     mainMenu.addMenuItem(createLoadMenu(getAnathemaModel(), resources));
