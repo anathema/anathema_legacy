@@ -11,10 +11,6 @@ public abstract class AbstractAnathemaModule implements IAnathemaModule {
   private IAnathemaView anathemaView;
   private IAnathemaModel anathemaModel;
 
-  protected AbstractAnathemaModule() {
-    // Nothing to do
-  }
-
   public void initModelExtensionPoints(
       IRegistry<String, IAnathemaExtension> registry,
       IAnathemaModel model,
@@ -22,7 +18,9 @@ public abstract class AbstractAnathemaModule implements IAnathemaModule {
     // Nothing to do
   }
 
-  public void fillModelExtensionPoints(IRegistry<String, IAnathemaExtension> extensionPointRegistry, IAnathemaModel model) {
+  public void fillModelExtensionPoints(
+      IRegistry<String, IAnathemaExtension> extensionPointRegistry,
+      IAnathemaModel model) {
     // Nothing to do
   }
 
