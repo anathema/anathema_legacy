@@ -24,7 +24,7 @@ public abstract class AbstractAnathemaModule implements IAnathemaModule {
     // Nothing to do
   }
 
-  public void initModel(IAnathemaModel model, IResources resources) {
+  public void initModel(IAnathemaModel model) {
     this.anathemaModel = model;
   }
 
