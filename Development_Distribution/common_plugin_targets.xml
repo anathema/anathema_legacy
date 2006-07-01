@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<project name="Common Targets">
+	
+	<property name="build.dir" location="build" />
+	<property name="module.dir" location="${build.dir}/${module.name}" />
+	<property name="class.dir" location="${module.dir}/classes" />
+	<property name="library.dir" location="${module.dir}/libraries" />
+	<property name="resource.dir" location="${module.dir}/resources" />
+	<property name="classpath.file" location="${module.dir}/classpath" />
+	<property name="lib" value="./lib" />
+	
+	
+	<target name="Build module">
+		<echo message="Building module: ${module.name}" />
+		<foreach list="${projectset}" target="Build project" param="project.name" />
+	</target>
+
+	<target name="Compile classpath" depends="Copy libraries">
+		<echo message="module.classpath=" file="${classpath.file}" append="false" />
+		<foreach target="Add to path" param="jarfile">
+			<path>
+				<fileset dir="${library.dir}">
+					<include name="*.jar" />
+				</fileset>
+			</path>
+		</foreach>
+	</target>
+
+	<target name="Add to path">
+		<basename property="jar.filename" file="${jarfile}" />
+		<echo message=" ${lib}/${jar.filename}" file="${classpath.file}" append="true" />
+	</target>
+
+	<target name="Copy resources">
+		<foreach list="${projectset}" target="Copy project resources" param="project.name" />
+	</target>
+
+	<target name="Copy libraries">
+		<foreach list="${projectset}" target="Copy project libraries" param="project.name" />
+	</target>
+
+	<target name="Copy project resources">
+		<copy todir="${resource.dir}" failonerror="false">
+			<fileset dir="../${project.name}/resources">
+				<include name="**/*" />
+				<exclude name="**/*.xcf" />
+				<exclude name="**/*.svg" />
+				<exclude name="**/Thumbs.db" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="Copy project libraries">
+		<getEclipseClasspath property="classpath" workspace="${workspace.dir}" projectName="${project.name}" relative="false" initialiseWorkspace="true" />
+		<foreach list="${classpath}" delimiter=";" target="Copy JAR" param="classpath.entry" />
+	</target>
+
+	<target name="Build project">
+		<getEclipseClasspath property="classpath" workspace="${workspace.dir}" projectName="${project.name}" relative="false" initialiseWorkspace="true" />
+		<executebuilders workspace="${workspace.dir}" projectName="${project.name}" />
+	</target>
+
+	<target name="javabuilder">
+		<getSourcepath property="path" workspace="${workspace.dir}" projectName="${project.name}" allowMultipleFolders="true" />
+		<javac classpath="${classpath}" srcdir="${path}" destdir="${class.dir}" />
+	</target>
+
+	<target name="default-builder" />
+
+	<target name="Copy JAR">
+		<if>
+			<and>
+				<isfileselected file="${classpath.entry}">
+					<filename name="**/*.jar" />
+				</isfileselected>
+				<or>
+					<contains string="${classpath.entry}" substring="Database" />
+					<contains string="${classpath.entry}" substring="disy" />
+					<contains string="${classpath.entry}" substring="Jakarta" />
+					<!--<contains string="${classpath.entry}" substring="GISterm" />-->
+					<contains string="${classpath.entry}" substring="Multimedia" />
+					<contains string="${classpath.entry}" substring="Plugin" />
+					<contains string="${classpath.entry}" substring="Reporting" />
+					<contains string="${classpath.entry}" substring="SVG" />
+					<contains string="${classpath.entry}" substring="Swing" />
+					<contains string="${classpath.entry}" substring="XML" />
+				</or>
+			</and>
+			<then>
+				<copy file="${classpath.entry}" todir="${library.dir}" />
+			</then>
+		</if>
+	</target>
+
+</project>
