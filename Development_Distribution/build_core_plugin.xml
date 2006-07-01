@@ -2,19 +2,20 @@
 <project name="Copy Core" default="Build Core JAR">
 	<property name="projectset" value="Lib_Thirdparty,Lib,Lib_Gui,Lib_Workflow,Platform,Anathema" />
 	<property name="build.dir" location="build" />
-	<property name="class.dir" location="${build.dir}/core/classes" />
-	<property name="library.dir" location="${build.dir}/core/libraries" />
-	<property name="resource.dir" location="${build.dir}/core/resources" />
+	<property name="core.dir" location="build/core" />
+	<property name="class.dir" location="${core.dir}/classes" />
+	<property name="library.dir" location="${core.dir}/libraries" />
+	<property name="resource.dir" location="${core.dir}/resources" />
+	<property name="classpath.file" location="${core.dir}/classpath" />
 	<property name="lib" value="./lib" />
 
-	<property name="classpath" value="" />
-
 	<target name="Build Core JAR" depends="Build module, Compile classpath, Copy resources">
+		<property file="${classpath.file}" />
 		<jar destfile="${build.dir}/anathema.jar">
 			<manifest>
 				<attribute name="Built-By" value="${user.name}" />
 				<attribute name="Main-Class" value="net.sf.anathema.Anathema" />
-				<attribute name="Class-Path" value="${classpath}" />
+				<attribute name="Class-Path" value="${core.classpath}" />
 				<section name="net/sf/anathema/Anathema.class" />
 			</manifest>
 			<fileset dir="${class.dir}" includes="**/*" />
@@ -29,18 +30,19 @@
 
 
 	<target name="Compile classpath" depends="Copy libraries">
+		<echo message="core.classpath=" file="${classpath.file}" append="false" />
 		<foreach target="Add to path" param="jarfile">
 			<path>
 				<fileset dir="${library.dir}">
-					<include name="*.jar"/>
+					<include name="*.jar" />
 				</fileset>
 			</path>
 		</foreach>
 	</target>
 
 	<target name="Add to path">
-		<variable name="classpath" value="${classpath} ${lib}/${jarfile}" />
-		<echo message="${classpath}"/>
+		<basename property="jar.filename" file="${jarfile}" />
+		<echo message=" ${lib}/${jar.filename}" file="${classpath.file}" append="true" />
 	</target>
 
 	<target name="Copy resources">
