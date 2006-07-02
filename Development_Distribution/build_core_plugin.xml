@@ -20,9 +20,11 @@
 		</jar>
 	</target>
 
-	<target name="Build Windows executable" depends="Build Core JAR">
-		<launch4j configFile="launch4j.xml">
-			<config dontwrapjar="true" headertype="0" jar="${build.dir}/anathema.jar" outfile="anathema.exe" icon="anathema.ico">
+	<!--Depends on "Build Core JAR"-->
+	<target name="Build Windows executable">
+		<!--configFile="launch4j.xml"-->
+		<launch4j >
+			<config dontwrapjar="true" headertype="0" jarpath="./build/anathema.jar" outfile="./anathema.exe" icon="anathema.ico">
 				<jre minVersion="1.5.0" />
 				<versionInfo fileVersion="0.12.0.0" productVersion="0.12.0.0" txtFileVersion="v0.12" txtProductVersion="v0.12" fileDescription="Anathema" copyright="2006 by Urs Reupke and Sandra Sieroux" productName="Anathema" internalName="Anathema Core 0.12" originalFilename="Anathema.exe" />
 			</config>
