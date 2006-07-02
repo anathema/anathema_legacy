@@ -34,7 +34,7 @@ public class EquipmentObjectPresenterTest extends BasicTestCase {
     IEquipmentObjectView view = EasyMock.createMock(IEquipmentObjectView.class);
     view.setItemTitle("First and Forsaken Weapon"); //$NON-NLS-1$
     EasyMock.replay(view);
-    new EquipmentObjectPresenter(resources, model, view, equipmentStringBuilder).initPresentation();
+    new EquipmentObjectPresenter(model, view, equipmentStringBuilder).initPresentation();
     EasyMock.verify(view);
   }
 
@@ -45,7 +45,7 @@ public class EquipmentObjectPresenterTest extends BasicTestCase {
     EasyMock.replay(view);
     DummyEquipmentObject model = new DummyEquipmentObject("First and Forsaken Weapon", //$NON-NLS-1$
         "Abyssal-Weapon mit Bums"); //$NON-NLS-1$
-    new EquipmentObjectPresenter(resources, model, view, equipmentStringBuilder).initPresentation();
+    new EquipmentObjectPresenter(model, view, equipmentStringBuilder).initPresentation();
     EasyMock.verify(view);
   }
 
@@ -57,7 +57,7 @@ public class EquipmentObjectPresenterTest extends BasicTestCase {
     EasyMock.replay(view);
     DummyEquipmentObject model = new DummyEquipmentObject("Title", null); //$NON-NLS-1$
     model.addEquipment(new DemoMeleeWeapon(new Identificate("Sword"), 5, 2, 7, HealthType.Lethal, -1, 2)); //$NON-NLS-1$
-    new EquipmentObjectPresenter(resources, model, view, equipmentStringBuilder).initPresentation();
+    new EquipmentObjectPresenter(model, view, equipmentStringBuilder).initPresentation();
     EasyMock.verify(view);
   }
   
@@ -69,7 +69,23 @@ public class EquipmentObjectPresenterTest extends BasicTestCase {
     EasyMock.replay(view);
     DummyEquipmentObject model = new DummyEquipmentObject("Title", null); //$NON-NLS-1$
     model.addEquipment(new DemoMeleeWeapon(new Identificate("Sword"), 5, 2, 7, HealthType.Lethal, -1, 2)); //$NON-NLS-1$
-    new EquipmentObjectPresenter(resources, model, view, equipmentStringBuilder).initPresentation();
+    new EquipmentObjectPresenter(model, view, equipmentStringBuilder).initPresentation();
     assertFalse(isPrintSelectedModel.getValue());
+  }
+  
+  public void testPrintModelEvent() throws Exception {
+    IEquipmentObjectView view = EasyMock.createMock(IEquipmentObjectView.class);
+    view.setItemTitle("Title"); //$NON-NLS-1$
+    BooleanModel isPrintSelectedModel = new BooleanModel();
+    EasyMock.expect(view.addStats("Passt!")).andReturn(isPrintSelectedModel); //$NON-NLS-1$
+    IEquipmentObject object = EasyMock.createMock(IEquipmentObject.class);
+    DemoMeleeWeapon demoMeleeWeapon = new DemoMeleeWeapon(new Identificate("Sword"), 5, 2, 7, HealthType.Lethal, -1, 2); //$NON-NLS-1$
+    object.setPrintEnabled(demoMeleeWeapon, true);
+    EasyMock.replay(view, object);
+    DummyEquipmentObject model = new DummyEquipmentObject("Title", null); //$NON-NLS-1$
+    model.addEquipment(demoMeleeWeapon);
+    new EquipmentObjectPresenter(model, view, equipmentStringBuilder).initPresentation();
+    isPrintSelectedModel.setValue(true);
+    EasyMock.verify(object);
   }
 }

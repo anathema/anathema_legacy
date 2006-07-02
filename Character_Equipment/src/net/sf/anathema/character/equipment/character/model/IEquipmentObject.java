@@ -9,4 +9,6 @@ public interface IEquipmentObject {
   public String getDescription();
 
   public IEquipment[] getEquipments();
+
+  public void setPrintEnabled(IEquipment equipment, boolean enabled);
 }

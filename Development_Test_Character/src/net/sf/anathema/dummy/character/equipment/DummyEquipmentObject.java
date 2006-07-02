@@ -32,4 +32,8 @@ public class DummyEquipmentObject implements IEquipmentObject {
   public String getDescription() {
     return description;
   }
+
+  public void setPrintEnabled(IEquipment equipment, boolean enabled) {
+    //nothing to do;    
+  }
 }
