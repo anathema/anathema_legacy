@@ -1,61 +1,59 @@
-package net.sf.anathema.development.character.additional;
+package net.sf.anathema.dummy.character.equipment;
 
-import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-public class DemoMeleeWeapon implements IWeapon {
+public class DemoRangeWeapon implements IWeapon {
 
   public int getAccuracy() {
-    return -5;
+    return 12;
   }
 
   public int getDamage() {
-    return 3;
+    return 15;
   }
 
   public HealthType getDamageType() {
-    return HealthType.Aggravated;
+    return HealthType.Bashing;
   }
 
   public Integer getDefence() {
-    return -1;
-  }
-
-  public Integer getRange() {
     return null;
   }
 
+  public Integer getRange() {
+    return new Integer(200);
+  }
+
   public Integer getRate() {
-    return 6;
+    return 3;
   }
 
   public int getSpeed() {
-    return 2;
+    return 0;
   }
 
   public IIdentificate[] getTags() {
-    return new IIdentificate[] { WeaponTag.ClinchEnhancer, WeaponTag.Piercing };
+    return new IIdentificate[0];
   }
 
   public ITraitType getTraitType() {
-    return AbilityType.Melee;
+    return AbilityType.MartialArts;
   }
 
   public ITraitType getDamageTraitType() {
-    return AttributeType.Strength;
+    return null;
   }
 
   public boolean inflictsNoDamage() {
-    return false;
+    return true;
   }
 
   public IIdentificate getName() {
-    return new Identificate("Melee");
+    return new Identificate("Range");
   }
 }

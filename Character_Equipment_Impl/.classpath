@@ -17,5 +17,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Framework"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Impl"/>
 	<classpathentry sourcepath="/Thirdparty/XML/dom4j-src.zip" kind="lib" path="/Thirdparty/XML/dom4j-1.5.jar"/>
+	<classpathentry sourcepath="/Thirdparty/Swing/l2fprod-common-0.2dev-src.zip" kind="lib" path="/Thirdparty/Swing/l2fprod-common-tasks.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -47,5 +47,6 @@
 	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-util.jar"/>
 	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-xml.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/XML/xml-apis-dom3.jar"/>
+	<classpathentry sourcepath="/Thirdparty/Swing/l2fprod-common-0.2dev-src.zip" kind="lib" path="/Thirdparty/Swing/l2fprod-common-tasks.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
