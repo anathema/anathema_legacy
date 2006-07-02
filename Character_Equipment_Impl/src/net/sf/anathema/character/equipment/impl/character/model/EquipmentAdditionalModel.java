@@ -1,12 +1,12 @@
-package net.sf.anathema.character.equipment.impl.character;
+package net.sf.anathema.character.equipment.impl.character.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.character.equipment.impl.character.natural.Clinch;
-import net.sf.anathema.character.equipment.impl.character.natural.Kick;
-import net.sf.anathema.character.equipment.impl.character.natural.NaturalSoak;
-import net.sf.anathema.character.equipment.impl.character.natural.Punch;
+import net.sf.anathema.character.equipment.impl.character.model.natural.Clinch;
+import net.sf.anathema.character.equipment.impl.character.model.natural.Kick;
+import net.sf.anathema.character.equipment.impl.character.model.natural.NaturalSoak;
+import net.sf.anathema.character.equipment.impl.character.model.natural.Punch;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.equipment.weapon.IArmour;
 import net.sf.anathema.character.generic.equipment.weapon.IWeapon;

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.character.natural;
+package net.sf.anathema.character.equipment.impl.character.model.natural;
 
 import java.util.HashMap;
 import java.util.Map;

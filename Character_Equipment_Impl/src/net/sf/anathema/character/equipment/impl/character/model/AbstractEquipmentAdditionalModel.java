@@ -1,7 +1,7 @@
-package net.sf.anathema.character.equipment.impl.character;
+package net.sf.anathema.character.equipment.impl.character.model;
 
-import net.sf.anathema.character.equipment.character.IEquipmentAdditionalModel;
-import net.sf.anathema.character.equipment.impl.character.natural.TotalArmour;
+import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
+import net.sf.anathema.character.equipment.impl.character.model.natural.TotalArmour;
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.equipment.weapon.IArmour;

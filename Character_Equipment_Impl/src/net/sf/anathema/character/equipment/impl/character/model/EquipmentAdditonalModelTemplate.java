@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.character;
+package net.sf.anathema.character.equipment.impl.character.model;
 
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;

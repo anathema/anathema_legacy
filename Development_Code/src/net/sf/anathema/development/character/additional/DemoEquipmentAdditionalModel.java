@@ -3,7 +3,7 @@ package net.sf.anathema.development.character.additional;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.character.equipment.impl.character.AbstractEquipmentAdditionalModel;
+import net.sf.anathema.character.equipment.impl.character.model.AbstractEquipmentAdditionalModel;
 import net.sf.anathema.character.generic.equipment.weapon.IArmour;
 import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
 

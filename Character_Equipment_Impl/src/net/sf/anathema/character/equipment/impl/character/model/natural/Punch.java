@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.character.natural;
+package net.sf.anathema.character.equipment.impl.character.model.natural;
 
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
@@ -9,10 +9,10 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-public class Clinch implements IWeapon {
+public class Punch implements IWeapon {
 
   public int getAccuracy() {
-    return 0;
+    return 1;
   }
 
   public int getDamage() {
@@ -24,7 +24,7 @@ public class Clinch implements IWeapon {
   }
 
   public Integer getDefence() {
-    return 0;
+    return 2;
   }
 
   public Integer getRange() {
@@ -32,15 +32,15 @@ public class Clinch implements IWeapon {
   }
 
   public Integer getRate() {
-    return 1;
+    return 3;
   }
 
   public int getSpeed() {
-    return 6;
+    return 5;
   }
 
   public IIdentificate[] getTags() {
-    return new IIdentificate[] { WeaponTag.ClinchEnhancer, WeaponTag.Natural, WeaponTag.Piercing };
+    return new IIdentificate[] { WeaponTag.Natural };
   }
 
   public ITraitType getTraitType() {
@@ -56,6 +56,6 @@ public class Clinch implements IWeapon {
   }
 
   public IIdentificate getName() {
-    return new Identificate("Clinch"); //$NON-NLS-1$
+    return new Identificate("Punch"); //$NON-NLS-1$
   }
 }

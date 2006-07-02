@@ -1,8 +1,9 @@
 package net.sf.anathema.character.equipment.impl;
 
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalModelFactory;
-import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalModelPersisterFactory;
-import net.sf.anathema.character.equipment.impl.character.EquipmentAdditonalModelTemplate;
+import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalPersisterFactory;
+import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalViewFactory;
+import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditonalModelTemplate;
 import net.sf.anathema.character.equipment.impl.reporting.second.SecondEditionArmourEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.second.SecondEditionWeaponryEncoder;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
@@ -22,7 +23,10 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
         new EquipmentAdditionalModelFactory());
     characterGenerics.getAdditonalPersisterFactoryRegistry().register(
         EquipmentAdditonalModelTemplate.ID,
-        new EquipmentAdditionalModelPersisterFactory());
+        new EquipmentAdditionalPersisterFactory());
+    characterGenerics.getAdditionalViewFactoryRegistry().register(
+        EquipmentAdditonalModelTemplate.ID,
+        new EquipmentAdditionalViewFactory());
     characterGenerics.getGlobalAdditionalTemplateRegistry().add(new EquipmentAdditonalModelTemplate());
   }
 

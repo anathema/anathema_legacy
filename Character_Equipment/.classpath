@@ -10,5 +10,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Platform"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic"/>
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-layout_src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Gui"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

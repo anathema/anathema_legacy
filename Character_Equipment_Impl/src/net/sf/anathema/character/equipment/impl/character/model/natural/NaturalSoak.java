@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.character.natural;
+package net.sf.anathema.character.equipment.impl.character.model.natural;
 
 import net.sf.anathema.character.generic.equipment.weapon.IArmour;
 import net.sf.anathema.character.generic.health.HealthType;

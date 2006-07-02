@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.character;
+package net.sf.anathema.character.equipment.impl.character.persister;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersister;
