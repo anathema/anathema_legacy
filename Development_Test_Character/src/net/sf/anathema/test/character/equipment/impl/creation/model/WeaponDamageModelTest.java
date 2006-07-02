@@ -26,20 +26,18 @@ public class WeaponDamageModelTest extends BasicTestCase {
   public void testEventOnHealthTypeChange() throws Exception {
     IChangeListener changeListener = EasyMock.createMock(IChangeListener.class);
     damageModel.addHealthTypeChangeListener(changeListener);
-    Object[] mocks = new Object[] { changeListener };
     changeListener.changeOccured();
-    EasyMock.replay(mocks);
+    EasyMock.replay(changeListener);
     damageModel.setHealthType(HealthType.Aggravated);
-    EasyMock.verify(mocks);
+    EasyMock.verify(changeListener);
   }
 
   public void testEventOnIntValueChange() throws Exception {
     IIntValueChangedListener changeListener = EasyMock.createMock(IIntValueChangedListener.class);
     damageModel.addIntValueChangeListener(changeListener);
-    Object[] mocks = new Object[] { changeListener };
     changeListener.valueChanged(2);
-    EasyMock.replay(mocks);
+    EasyMock.replay(changeListener);
     damageModel.setValue(2);
-    EasyMock.verify(mocks);
+    EasyMock.verify(changeListener);
   }
 }
