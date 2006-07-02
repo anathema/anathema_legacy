@@ -39,16 +39,10 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     return " " + resources.getString("Equipment.Stats.Short." + keyPart) + ":" + signum + value;
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see net.sf.anathema.character.equipment.IEquipmentStringBuilder#createString(net.sf.anathema.character.generic.equipment.weapon.IEquipment)
-   */
   public String createString(IEquipment equipment) {
     if (equipment instanceof IWeapon) {
       return createWeaponString((IWeapon) equipment);
     }
     throw new UnsupportedOperationException();
-
   }
 }

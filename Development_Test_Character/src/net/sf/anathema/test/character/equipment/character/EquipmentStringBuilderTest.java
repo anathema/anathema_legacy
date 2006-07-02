@@ -43,5 +43,4 @@ public class EquipmentStringBuilderTest extends BasicTestCase {
     DemoRangeWeapon weapon = new DemoRangeWeapon(new Identificate("Bow"), 5, 2, 17, HealthType.Bashing, 200, 4, true); //$NON-NLS-1$
     assertEquals("Bow: Speed:5 Acc:+2 Dam:- Range:200 Rate:4", equipmentStringBuilder.createString(weapon)); //$NON-NLS-1$
   }
-
 }

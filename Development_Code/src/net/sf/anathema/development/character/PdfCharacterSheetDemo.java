@@ -32,7 +32,6 @@ import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.lib.control.BrowserControl;
-import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Document;
@@ -84,7 +83,7 @@ public class PdfCharacterSheetDemo {
     return encodingRegistry;
   }
 
-  private static IResources createDemoResources() throws AnathemaException {
+  private static IResources createDemoResources() {
     Locale.setDefault(Locale.ENGLISH);
     IAnathemaResources resources = new AnathemaResources();
     return resources;

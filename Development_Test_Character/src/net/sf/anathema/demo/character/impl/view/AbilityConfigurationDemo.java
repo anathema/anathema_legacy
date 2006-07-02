@@ -6,11 +6,10 @@ import javax.swing.Icon;
 import net.sf.anathema.character.impl.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.framework.resources.AnathemaResources;
-import net.sf.anathema.lib.exception.AnathemaException;
 
 public class AbilityConfigurationDemo extends BasicCharacterDemoCase {
 
-  public void demo() throws AnathemaException {
+  public void demo() {
     AnathemaResources resources = new AnathemaResources();
     GroupedFavorableTraitConfigurationView configurationView = new GroupedFavorableTraitConfigurationView(
         1,
