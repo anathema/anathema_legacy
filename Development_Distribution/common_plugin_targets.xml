@@ -9,6 +9,18 @@
 	<property name="classpath.file" location="${module.dir}/classpath" />
 	<property name="lib" value="./lib" />
 	
+	<target name="Clean">
+		<delete dir="${build.dir}" />
+	</target>
+
+	<target name="Prepare" depends="Clean" description="Create directory structure">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${module.dir}" />
+		<mkdir dir="${class.dir}" />
+		<mkdir dir="${library.dir}" />
+		<mkdir dir="${resource.dir}" />
+	</target>
+	
 	
 	<target name="Build module">
 		<echo message="Building module: ${module.name}" />
@@ -62,7 +74,7 @@
 
 	<target name="javabuilder">
 		<getSourcepath property="path" workspace="${workspace.dir}" projectName="${project.name}" allowMultipleFolders="true" />
-		<javac classpath="${classpath}" srcdir="${path}" destdir="${class.dir}" />
+		<javac classpath="${classpath}" srcdir="${path}" destdir="${class.dir}" debug="true" />
 	</target>
 
 	<target name="default-builder" />

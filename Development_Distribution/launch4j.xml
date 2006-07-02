@@ -1,0 +1,32 @@
+<launch4jConfig>
+  <dontWrapJar>true</dontWrapJar>
+  <headerType>0</headerType>
+  <jar>anathema.jar</jar>
+  <outfile>anathema.exe</outfile>
+  <errTitle></errTitle>
+  <jarArgs></jarArgs>
+  <chdir></chdir>
+  <customProcName>false</customProcName>
+  <stayAlive>false</stayAlive>
+  <icon>anathema.ico</icon>
+  <jre>
+    <path></path>
+    <minVersion>1.5.0</minVersion>
+    <maxVersion></maxVersion>
+    <initialHeapSize>0</initialHeapSize>
+    <maxHeapSize>0</maxHeapSize>
+    <args></args>
+  </jre>
+  <versionInfo>
+    <fileVersion>0.11.0.0</fileVersion>
+    <txtFileVersion>V0.11</txtFileVersion>
+    <fileDescription>Anathema</fileDescription>
+    <copyright>UrsKR &amp; Vestrial</copyright>
+    <productVersion>0.11.0.0</productVersion>
+    <txtProductVersion>v0.11</txtProductVersion>
+    <productName>Anathema</productName>
+    <companyName></companyName>
+    <internalName>anathema-user-v0.11</internalName>
+    <originalFilename>Anathema.exe</originalFilename>
+  </versionInfo>
+</launch4jConfig>
