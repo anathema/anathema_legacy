@@ -9,16 +9,48 @@ import net.sf.anathema.lib.util.Identificate;
 
 public class DemoRangeWeapon implements IWeapon {
 
+  private final int speed;
+  private final int accuracy;
+  private final int damage;
+  private final HealthType damageType;
+  private final int range;
+  private final IIdentificate name;
+  private final int rate;
+  private final boolean isNoDamage;
+
+  public DemoRangeWeapon() {
+    this(new Identificate("Range"), 0, 12, 15, HealthType.Bashing, 200, 3, true); //$NON-NLS-1$
+  }
+
+  public DemoRangeWeapon(
+      Identificate name,
+      int speed,
+      int accuracy,
+      int damage,
+      HealthType damageType,
+      int range,
+      int rate, boolean isNoDamage) {
+    this.name = name;
+    this.speed = speed;
+    this.accuracy = accuracy;
+    this.damage = damage;
+    this.damageType = damageType;
+    this.range = range;
+    this.rate = rate;
+    this.isNoDamage = isNoDamage;
+
+  }
+
   public int getAccuracy() {
-    return 12;
+    return accuracy;
   }
 
   public int getDamage() {
-    return 15;
+    return damage;
   }
 
   public HealthType getDamageType() {
-    return HealthType.Bashing;
+    return damageType;
   }
 
   public Integer getDefence() {
@@ -26,15 +58,15 @@ public class DemoRangeWeapon implements IWeapon {
   }
 
   public Integer getRange() {
-    return new Integer(200);
+    return range;
   }
 
   public Integer getRate() {
-    return 3;
+    return rate;
   }
 
   public int getSpeed() {
-    return 0;
+    return speed;
   }
 
   public IIdentificate[] getTags() {
@@ -50,10 +82,10 @@ public class DemoRangeWeapon implements IWeapon {
   }
 
   public boolean inflictsNoDamage() {
-    return true;
+    return isNoDamage;
   }
 
   public IIdentificate getName() {
-    return new Identificate("Range");
+    return name;
   }
 }

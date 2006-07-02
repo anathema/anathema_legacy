@@ -7,7 +7,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class EquipmentStringBuilder implements IEquipmentStringBuilder {
 
   private final IResources resources;
-  
+
   public EquipmentStringBuilder(IResources resources) {
     this.resources = resources;
   }
@@ -18,14 +18,19 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     stringBuilder.append(":");
     stringBuilder.append(getStatsString("Speed", weapon.getSpeed(), false));
     stringBuilder.append(getStatsString("Accuracy", weapon.getAccuracy(), true));
-    stringBuilder.append(getStatsString("Damage", weapon.getDamage(), true));
-    stringBuilder.append(resources.getString("Weapons.Damage." + weapon.getDamageType().getId() + ".Short"));
+    if (weapon.inflictsNoDamage()) {
+      stringBuilder.append(" " + resources.getString("Equipment.Stats.Short.Damage") + ":-");
+    }
+    else {
+      stringBuilder.append(getStatsString("Damage", weapon.getDamage(), weapon.getDamageTraitType() != null));
+      stringBuilder.append(resources.getString("Weapons.Damage." + weapon.getDamageType().getId() + ".Short"));
+    }
     stringBuilder.append(getStatsString("Defence", weapon.getDefence(), true));
     stringBuilder.append(getStatsString("Range", weapon.getRange(), false));
     stringBuilder.append(getStatsString("Rate", weapon.getRate(), false));
     return stringBuilder.toString();
   }
-  
+
   private String getStatsString(String keyPart, Integer value, boolean printSignum) {
     if (value == null) {
       return "";
@@ -34,7 +39,9 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     return " " + resources.getString("Equipment.Stats.Short." + keyPart) + ":" + signum + value;
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see net.sf.anathema.character.equipment.IEquipmentStringBuilder#createString(net.sf.anathema.character.generic.equipment.weapon.IEquipment)
    */
   public String createString(IEquipment equipment) {
