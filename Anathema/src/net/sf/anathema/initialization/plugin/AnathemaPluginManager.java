@@ -27,6 +27,7 @@ public class AnathemaPluginManager implements IAnathemaPluginManager {
     try {
       DefaultPluginsCollector collector = new DefaultPluginsCollector();
       String pluginRepositories = getPluginRepositories();
+      System.out.println(pluginRepositories);
       Properties properties = new Properties();
       properties.put("org.java.plugin.boot.pluginsRepositories", pluginRepositories); //$NON-NLS-1$
       collector.configure(new ExtendedProperties(properties));
@@ -47,12 +48,12 @@ public class AnathemaPluginManager implements IAnathemaPluginManager {
 
   private String getPluginRepositories() throws IOException, MalformedURLException {
     StringBuilder builder = new StringBuilder();
+    builder.append(new File(".").toURL().getPath()); //$NON-NLS-1$
+    builder.append(","); //$NON-NLS-1$
     builder.append(new File("./plugins").toURL().getPath()); //$NON-NLS-1$
-    Enumeration<URL> systemResources = ClassLoader.getSystemResources("./plugin"); //$NON-NLS-1$
+    builder.append(","); //$NON-NLS-1$
+    Enumeration<URL> systemResources = ClassLoader.getSystemResources("."); //$NON-NLS-1$
     while (systemResources.hasMoreElements()) {
-      if (builder.length() > 0) {
-        builder.append(","); //$NON-NLS-1$
-      }
       builder.append(systemResources.nextElement().getPath());
     }
     return builder.toString();
