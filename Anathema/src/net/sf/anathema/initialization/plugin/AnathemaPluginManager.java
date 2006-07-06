@@ -50,10 +50,10 @@ public class AnathemaPluginManager implements IAnathemaPluginManager {
     StringBuilder builder = new StringBuilder();
     builder.append(new File(".").toURL().getPath()); //$NON-NLS-1$
     builder.append(","); //$NON-NLS-1$
-    builder.append(new File("./plugins").toURL().getPath()); //$NON-NLS-1$
-    builder.append(","); //$NON-NLS-1$
+    builder.append(new File("./plugins").toURL().getPath()); //$NON-NLS-1$   
     Enumeration<URL> systemResources = ClassLoader.getSystemResources("."); //$NON-NLS-1$
     while (systemResources.hasMoreElements()) {
+      builder.append(","); //$NON-NLS-1$
       builder.append(systemResources.nextElement().getPath());
     }
     return builder.toString();
