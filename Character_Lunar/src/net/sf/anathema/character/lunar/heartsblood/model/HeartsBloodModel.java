@@ -63,7 +63,7 @@ public class HeartsBloodModel extends AbstractRemovableEntryModel<IAnimalForm> i
 
   @Override
   protected boolean isEntryAllowed() {
-    return StringUtilities.isNullOrEmpty(currentName);
+    return !StringUtilities.isNullOrEmpty(currentName);
   }
 
   @Override
