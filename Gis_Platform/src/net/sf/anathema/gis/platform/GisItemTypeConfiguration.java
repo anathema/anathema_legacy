@@ -1,5 +1,6 @@
 package net.sf.anathema.gis.platform;
 
+import net.disy.commons.swing.filechooser.SmartFileChooser;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.module.AbstractNonPersistableItemTypeConfiguration;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
@@ -8,10 +9,13 @@ import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.framework.view.IItemView;
+import net.sf.anathema.gis.main.impl.model.AnathemaLayerPopupFactory;
 import net.sf.anathema.gis.main.model.IGisModel;
 import net.sf.anathema.gis.main.presenter.GisPresenter;
+import net.sf.anathema.gis.platform.util.DefaultFileChooserProvider;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
+import de.disy.gis.gisterm.pro.map.layer.LayerPanel;
 
 public final class GisItemTypeConfiguration extends AbstractNonPersistableItemTypeConfiguration {
 
@@ -19,8 +23,15 @@ public final class GisItemTypeConfiguration extends AbstractNonPersistableItemTy
 
   public GisItemTypeConfiguration() {
     super(new ItemType(GIS_ITEM_TYPE_ID, null));
+    customizeGisTermFramework();
   }
-  
+
+  // TODO In start-Methode von Plugin-Klasse verlagern
+  private void customizeGisTermFramework() {
+    LayerPanel.popupFactory = new AnathemaLayerPopupFactory();
+    SmartFileChooser.getInstance().setFileChooserProvider(new DefaultFileChooserProvider());
+  }
+
   @Override
   protected IItemViewFactory createItemViewFactory(final IAnathemaModel anathemaModel, final IResources resources) {
     return new IItemViewFactory() {
