@@ -15,12 +15,8 @@ public class RepositoryFileChooserPropertiesExtensionPoint extends Registry<IIte
 
   public static final String ID = RepositoryFileChooserPropertiesExtensionPoint.class.getName();
 
-  public void initialize(IResources resources) {
-    // nothing to do
-  }
-
-  public RepositoryFileChooserPropertiesExtensionPoint(IResources resources) {
-    super(new AbstractObjectSelectionProperties(resources) {
+  public void initialize(final IResources resources) {
+    setDefaultValue(new AbstractObjectSelectionProperties(resources) {
       public IBasicMessage getDefaultMessage() {
         return new BasicMessage(
             getResources().getString("AnathemaPersistence.LoadAction.Message.Default"), MessageType.NORMAL); //$NON-NLS-1$
