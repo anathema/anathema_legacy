@@ -4,7 +4,7 @@ import javax.swing.JMenu;
 
 import net.sf.anathema.framework.view.menu.IMenuBar;
 
-public interface IAnathemaMenu {
+public interface IMenu {
 
   public IMenuBar getMainMenu();
 
