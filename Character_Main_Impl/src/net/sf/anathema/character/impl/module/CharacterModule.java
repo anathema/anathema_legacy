@@ -15,27 +15,25 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.AbstractSelectedItemEnabler;
 import net.sf.anathema.framework.itemdata.model.IItemData;
-import net.sf.anathema.framework.module.AbstractAnathemaModule;
+import net.sf.anathema.framework.module.IAnathemaModule;
 import net.sf.anathema.framework.module.PreferencesElementsExtensionPoint;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
-public class CharacterModule extends AbstractAnathemaModule {
+public class CharacterModule implements IAnathemaModule {
 
   public void initPresentation(IResources resources, IAnathemaModel model, IAnathemaView view) {
     view.getMenuBar().addMenu(createCharacterMenu(model, resources));
     new CharacterPerformanceTuner(model, resources).startTuning();
   }
 
-  @Override
   public void fillPresentationExtensionPoints(
       IRegistry<String, IAnathemaExtension> extensionPointRegistry,
       IAnathemaModel model,
       IResources resources,
       IAnathemaView view) {
-    super.fillPresentationExtensionPoints(extensionPointRegistry, model, resources, view);
     PreferencesElementsExtensionPoint preferencesPoint = (PreferencesElementsExtensionPoint) extensionPointRegistry.get(PreferencesElementsExtensionPoint.ID);
     preferencesPoint.register(ICharacterPreferencesConstants.RULESET_PREFERENCE, new RulesetPreferenceElement());
   }

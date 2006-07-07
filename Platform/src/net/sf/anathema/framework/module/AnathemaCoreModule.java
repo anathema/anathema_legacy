@@ -36,17 +36,15 @@ import net.sf.anathema.lib.control.WindowsUtilities;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
-public class AnathemaCoreModule extends AbstractAnathemaModule {
+public class AnathemaCoreModule implements IAnathemaModule {
 
   private IAnathemaView anathemaView;
 
-  @Override
   public void fillPresentationExtensionPoints(
       IRegistry<String, IAnathemaExtension> extensionPointRegistry,
       IAnathemaModel model,
       IResources resources,
       IAnathemaView view) {
-    super.fillPresentationExtensionPoints(extensionPointRegistry, model, resources, view);
     fillPreferencesExtensionPoint(extensionPointRegistry);
   }
 
