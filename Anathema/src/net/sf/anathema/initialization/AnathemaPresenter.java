@@ -8,6 +8,7 @@ import net.sf.anathema.framework.InitializationException;
 import net.sf.anathema.framework.environment.AnathemaEnvironment;
 import net.sf.anathema.framework.initialization.IReportFactory;
 import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
+import net.sf.anathema.framework.presenter.menu.IAnathemaMenu;
 import net.sf.anathema.framework.presenter.toolbar.IAnathemaTool;
 import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.framework.view.IAnathemaView;
@@ -25,6 +26,7 @@ public class AnathemaPresenter {
 
   private static final String PARAM_CLASS = "class"; //$NON-NLS-1$
   private static final String EXTENSION_POINT_TOOLBAR = "Toolbar"; //$NON-NLS-1$
+  private static final String EXTENSION_POINT_MENUBAR = "Menubar"; //$NON-NLS-1$
   private static final String EXTENSION_POINT_REPORT_FACTORIES = "ReportFactories"; //$NON-NLS-1$
   private final IAnathemaModel model;
   private final IAnathemaView view;
@@ -54,6 +56,7 @@ public class AnathemaPresenter {
       configuration.registerViewFactory(model, resources);
     }
     new PresentationInitializer(moduleCollection, resources, model, view).initialize();
+    initializeMenus();
     initializeTools();
     initializeReports();
     if (AnathemaEnvironment.isDevelopment()) {
@@ -68,6 +71,16 @@ public class AnathemaPresenter {
       for (Parameter parameter : PluginUtilities.getParameters(extension, PARAM_CLASS)) {
         IReportFactory reportFactory = (IReportFactory) PluginUtilities.instantiate(parameter);
         model.getReportRegistry().addReports(reportFactory.createReport(resources, model.getExtensionPointRegistry()));
+      }
+    }
+  }
+
+
+  private void initializeMenus() throws InitializationException {
+    for (Extension extension : pluginManager.getExtension(IPluginConstants.PLUGIN_CORE, EXTENSION_POINT_MENUBAR)) {
+      for (Parameter parameter : PluginUtilities.getParameters(extension, PARAM_CLASS)) {
+        IAnathemaMenu tool = (IAnathemaMenu) PluginUtilities.instantiate(parameter);
+        tool.add(resources, model, view.getMenuBar());
       }
     }
   }
