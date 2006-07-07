@@ -3,9 +3,9 @@ package net.sf.anathema.framework.view.menu;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 
-import net.sf.anathema.framework.view.IMenu;
+import net.sf.anathema.framework.view.IMenuBar;
 
-public class AnathemaMenuBar implements IMenu {
+public class AnathemaMenuBar implements IMenuBar {
 
   private final JMenuBar menuBar = new JMenuBar();
   private final IMenuBarView mainMenu;
@@ -31,11 +31,11 @@ public class AnathemaMenuBar implements IMenu {
     menuBar.add(menu, menuBar.getComponentCount() - 1);
   }
 
-  public IMenuBar getMainMenu() {
+  public IMenu getMainMenu() {
     return mainMenu;
   }
 
-  public IMenuBar getHelpMenu() {
+  public IMenu getHelpMenu() {
     return helpMenu;
   }
 

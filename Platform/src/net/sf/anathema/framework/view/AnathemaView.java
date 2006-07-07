@@ -92,7 +92,7 @@ public class AnathemaView implements IAnathemaView {
     mainFrame.addWindowListener(listener);
   }
 
-  public IMenu getMenuBar() {
+  public IMenuBar getMenuBar() {
     return menu;
   }
 }

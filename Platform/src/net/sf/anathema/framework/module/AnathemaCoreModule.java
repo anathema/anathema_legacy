@@ -29,9 +29,9 @@ import net.sf.anathema.framework.presenter.menu.IMenuExtensionPoint;
 import net.sf.anathema.framework.presenter.menu.IMenuItem;
 import net.sf.anathema.framework.presenter.menu.MenuExtensionPoint;
 import net.sf.anathema.framework.reporting.controller.AnathemaPrintAction;
-import net.sf.anathema.framework.view.IMenu;
 import net.sf.anathema.framework.view.IAnathemaView;
-import net.sf.anathema.framework.view.menu.IMenuBar;
+import net.sf.anathema.framework.view.IMenuBar;
+import net.sf.anathema.framework.view.menu.IMenu;
 import net.sf.anathema.lib.control.WindowsUtilities;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -87,8 +87,8 @@ public class AnathemaCoreModule extends AbstractAnathemaModule {
   }
 
   private void initMenu(IResources resources) {
-    IMenu menuBar = anathemaView.getMenuBar();
-    IMenuBar mainMenu = menuBar.getMainMenu();
+    IMenuBar menuBar = anathemaView.getMenuBar();
+    IMenu mainMenu = menuBar.getMainMenu();
     mainMenu.addMenuItem(createNewMenu(getAnathemaModel(), resources));
     mainMenu.addMenuItem(createLoadMenu(getAnathemaModel(), resources));
     mainMenu.addMenuItem(AnathemaCloseAction.createMenuAction(getAnathemaModel().getItemManagement(), resources));

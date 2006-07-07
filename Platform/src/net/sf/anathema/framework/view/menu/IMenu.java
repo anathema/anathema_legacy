@@ -3,7 +3,7 @@ package net.sf.anathema.framework.view.menu;
 import javax.swing.Action;
 import javax.swing.JMenuItem;
 
-public interface IMenuBar {
+public interface IMenu {
 
   public void addSubMenu(String menuName, Action[] actions);
 

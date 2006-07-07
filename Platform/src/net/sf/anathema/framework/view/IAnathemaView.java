@@ -8,7 +8,7 @@ import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
 
 public interface IAnathemaView {
 
-  public IMenu getMenuBar();
+  public IMenuBar getMenuBar();
   
   public IAnathemaToolbar getToolbar();
 
