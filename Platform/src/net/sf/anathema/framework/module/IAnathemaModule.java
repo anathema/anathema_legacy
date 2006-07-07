@@ -8,8 +8,6 @@ import net.sf.anathema.lib.resources.IResources;
 
 public interface IAnathemaModule {
 
-  public void initModel(IAnathemaModel anathemaModel);
-
   public void initPresentation(IResources resources, IAnathemaModel model, IAnathemaView anathemaView);
 
   public void fillPresentationExtensionPoints(

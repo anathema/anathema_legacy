@@ -69,8 +69,8 @@ public class AnathemaCoreModule extends AbstractAnathemaModule {
   public void initPresentation(IResources resources, IAnathemaModel model, IAnathemaView view) {
     this.anathemaView = view;
     IModelViewMapping mapping = new ModelViewMapping();
-    initMenu(resources);
-    initTools(resources);
+    initMenu(resources, model);
+    initTools(resources, model);
     IItemMangementModel itemManagement = model.getItemManagement();
     itemManagement.addListener(new ItemManagmentModelListener(
         model.getViewFactoryRegistry(),
@@ -80,27 +80,27 @@ public class AnathemaCoreModule extends AbstractAnathemaModule {
     view.addViewSelectionListener(new ItemViewSelectionListener(itemManagement, mapping));
   }
 
-  private void initTools(IResources resources) {
-    anathemaView.getToolbar().addTools(AnathemaSaveAction.createToolAction(getAnathemaModel(), resources));
-    anathemaView.getToolbar().addTools(AnathemaSaveAllAction.createToolAction(getAnathemaModel(), resources));
-    anathemaView.getToolbar().addTools(AnathemaPrintAction.createToolAction(getAnathemaModel(), resources));
+  private void initTools(IResources resources, IAnathemaModel model) {
+    anathemaView.getToolbar().addTools(AnathemaSaveAction.createToolAction(model, resources));
+    anathemaView.getToolbar().addTools(AnathemaSaveAllAction.createToolAction(model, resources));
+    anathemaView.getToolbar().addTools(AnathemaPrintAction.createToolAction(model, resources));
   }
 
-  private void initMenu(IResources resources) {
+  private void initMenu(IResources resources, IAnathemaModel model) {
     IMenuBar menuBar = anathemaView.getMenuBar();
     IMenu mainMenu = menuBar.getMainMenu();
-    mainMenu.addMenuItem(createNewMenu(getAnathemaModel(), resources));
-    mainMenu.addMenuItem(createLoadMenu(getAnathemaModel(), resources));
-    mainMenu.addMenuItem(AnathemaCloseAction.createMenuAction(getAnathemaModel().getItemManagement(), resources));
+    mainMenu.addMenuItem(createNewMenu(model, resources));
+    mainMenu.addMenuItem(createLoadMenu(model, resources));
+    mainMenu.addMenuItem(AnathemaCloseAction.createMenuAction(model.getItemManagement(), resources));
     mainMenu.addSeparator();
-    mainMenu.addMenuItem(AnathemaSaveAction.createMenuAction(getAnathemaModel(), resources));
-    mainMenu.addMenuItem(AnathemaSaveAllAction.createMenuAction(getAnathemaModel(), resources));
+    mainMenu.addMenuItem(AnathemaSaveAction.createMenuAction(model, resources));
+    mainMenu.addMenuItem(AnathemaSaveAllAction.createMenuAction(model, resources));
     mainMenu.addSeparator();
-    mainMenu.addMenuItem(AnathemaPrintAction.createMenuAction(getAnathemaModel(), resources));
+    mainMenu.addMenuItem(AnathemaPrintAction.createMenuAction(model, resources));
     mainMenu.addSeparator();
     mainMenu.addMenuItem(AnathemaExitAction.createMenuAction(resources));
     menuBar.getHelpMenu().addMenuItem(new AnathemaAboutAction(resources));
-    menuBar.addMenu(createExtraMenu(getAnathemaModel(), resources));
+    menuBar.addMenu(createExtraMenu(model, resources));
   }
 
   private JMenu createNewMenu(IAnathemaModel anathemaModel, IResources resources) {

@@ -55,7 +55,7 @@ public class AnathemaInitializer {
     return new AnathemaModelInitializer(
         anathemaPreferences,
         itemTypeCollection.getItemTypes(),
-        extensionCollection.getExtensionsById()).initializeModel(moduleCollection, resources);
+        extensionCollection.getExtensionsById()).initializeModel(resources);
   }
 
   private IAnathemaView initView(IAnathemaResources resources) throws AWTException {

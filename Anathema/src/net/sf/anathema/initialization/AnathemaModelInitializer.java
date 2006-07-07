@@ -10,8 +10,6 @@ import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.model.AnathemaModel;
 import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
 import net.sf.anathema.framework.repository.RepositoryException;
-import net.sf.anathema.initialization.modules.IModuleCollection;
-import net.sf.anathema.initialization.modules.ModelInitializer;
 import net.sf.anathema.initialization.repository.IOFileSystemAbstraction;
 import net.sf.anathema.initialization.repository.RepositoryFolderCreator;
 import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
@@ -32,8 +30,7 @@ public class AnathemaModelInitializer {
     this.extensionById = extensionById;
   }
 
-  public IAnathemaModel initializeModel(IModuleCollection moduleCollection, IResources resources)
-      throws RepositoryException {
+  public IAnathemaModel initializeModel(IResources resources) throws RepositoryException {
     AnathemaModel model = new AnathemaModel(createRepositoryFolder());
     for (Map.Entry<String, IAnathemaExtension> entry : extensionById.entrySet()) {
       IAnathemaExtension extension = entry.getValue();
@@ -43,7 +40,6 @@ public class AnathemaModelInitializer {
     for (AbstractItemTypeConfiguration itemTypeConfiguration : itemTypeConfigurations) {
       model.getItemTypeRegistry().registerItemType(itemTypeConfiguration.getItemType());
     }
-    new ModelInitializer(moduleCollection, model).initialize();
     for (AbstractItemTypeConfiguration itemTypeConfiguration : itemTypeConfigurations) {
       itemTypeConfiguration.initModel(model);
     }
