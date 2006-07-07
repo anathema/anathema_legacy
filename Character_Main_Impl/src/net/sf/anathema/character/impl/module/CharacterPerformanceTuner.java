@@ -36,7 +36,10 @@ public class CharacterPerformanceTuner {
     this.resources = resources;
   }
 
-  public void startTuning(final ICharacterGenerics characterGenerics, final IItemType characterItemType) {
+  public void startTuning() {
+    final ICharacterGenerics characterGenerics = CharacterGenericsExtension.getCharacterGenerics(model);
+    final IItemType characterItemType = model.getItemTypeRegistry().getById(
+        ExaltedCharacterItemTypeConfiguration.CHARACTER_ITEM_TYPE_ID);
     new Thread(new Runnable() {
       public void run() {
         try {
