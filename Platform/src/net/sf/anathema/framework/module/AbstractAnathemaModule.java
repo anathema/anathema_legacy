@@ -14,10 +14,6 @@ public abstract class AbstractAnathemaModule implements IAnathemaModule {
     this.anathemaModel = model;
   }
 
-  public void initPresentationExtensionPoints(IRegistry<String, IAnathemaExtension> registry, IResources resources) {
-    // Nothing to do
-  }
-
   public void fillPresentationExtensionPoints(
       IRegistry<String, IAnathemaExtension> extensionPointRegistry,
       IAnathemaModel model,

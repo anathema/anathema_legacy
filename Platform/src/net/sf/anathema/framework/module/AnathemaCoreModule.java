@@ -43,17 +43,6 @@ public class AnathemaCoreModule extends AbstractAnathemaModule {
   private IAnathemaView anathemaView;
 
   @Override
-  public void initPresentationExtensionPoints(IRegistry<String, IAnathemaExtension> registry, IResources resources) {
-    registry.register(
-        RepositoryFileChooserPropertiesExtensionPoint.ID,
-        new RepositoryFileChooserPropertiesExtensionPoint(resources));
-    registry.register(ItemTypeViewPropertiesExtensionPoint.ID, new ItemTypeViewPropertiesExtensionPoint());
-    registry.register(IMenuExtensionPoint.NEW_MENU_EXTENSION_POINT_ID, new MenuExtensionPoint());
-    registry.register(IMenuExtensionPoint.EXTRA_MENU_EXTENSION_POINT_ID, new MenuExtensionPoint());
-    registry.register(PreferencesElementsExtensionPoint.ID, new PreferencesElementsExtensionPoint());
-  }
-
-  @Override
   public void fillPresentationExtensionPoints(
       IRegistry<String, IAnathemaExtension> extensionPointRegistry,
       IAnathemaModel model,

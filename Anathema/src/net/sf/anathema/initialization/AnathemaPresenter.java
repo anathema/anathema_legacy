@@ -13,7 +13,6 @@ import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.initialization.modules.IModuleCollection;
 import net.sf.anathema.initialization.modules.PresentationExtensionPointFiller;
-import net.sf.anathema.initialization.modules.PresentationExtensionPointInitializer;
 import net.sf.anathema.initialization.modules.PresentationInitializer;
 import net.sf.anathema.initialization.plugin.IAnathemaPluginManager;
 import net.sf.anathema.initialization.plugin.IPluginConstants;
@@ -47,7 +46,6 @@ public class AnathemaPresenter {
   }
 
   public void initPresentation(IModuleCollection moduleCollection) throws InitializationException {
-    new PresentationExtensionPointInitializer(moduleCollection, model.getExtensionPointRegistry(), resources).initialize();
     for (AbstractItemTypeConfiguration configuration : itemTypeConfigurations) {
       configuration.fillPresentationExtensionPoints(model.getExtensionPointRegistry(), resources, model, view);
     }

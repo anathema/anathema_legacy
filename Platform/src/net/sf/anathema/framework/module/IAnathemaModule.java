@@ -10,8 +10,6 @@ public interface IAnathemaModule {
 
   public void initModel(IAnathemaModel anathemaModel);
 
-  public void initPresentationExtensionPoints(IRegistry<String, IAnathemaExtension> registry, IResources resources);
-
   public void initPresentation(IResources resources, IAnathemaModel model, IAnathemaView anathemaView);
 
   public void fillPresentationExtensionPoints(
