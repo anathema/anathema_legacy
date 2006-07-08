@@ -6,6 +6,7 @@
 	<property name="class.dir" location="${module.dir}/classes" />
 	<property name="library.dir" location="${module.dir}/libraries" />
 	<property name="resource.dir" location="${module.dir}/resources" />
+	<property name="files.dir" location="${module.dir}/files" />
 	<property name="classpath.file" location="${module.dir}/classpath" />
 	<property name="lib" value="./lib" />
 	
@@ -19,6 +20,7 @@
 		<mkdir dir="${class.dir}" />
 		<mkdir dir="${library.dir}" />
 		<mkdir dir="${resource.dir}" />
+		<mkdir dir="${files.dir}" />
 	</target>
 	
 	

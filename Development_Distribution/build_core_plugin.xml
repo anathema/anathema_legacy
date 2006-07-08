@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<project name="Copy Core" default="Build Core JAR">
+<project name="Copy Core" default="Distribute ZIP">
 
+	<property name="version" value="0.12" />
+	<property name="name" value="Lap" />
 	<property name="projectset" value="Lib_Thirdparty,Lib,Lib_Gui,Lib_Workflow,Platform,Anathema" />
 	<property name="module.name" value="core" />
 
 	<import file="common_plugin_targets.xml" />
 
-	<target name="Build Core JAR" depends="Prepare, Build module, Compile classpath, Copy resources">
+	<property name="dist_misc_spanish" value="${files.dir}/doc/spanish" />
+	<property name="documentation" value="../Development_Documentation/Distribution" />
+
+	<target name="Distribute ZIP" depends="Build Core JAR, copyText, copyExtras">
+		<zip destfile="anathema_v${version}.zip">
+			<fileset dir="${build.dir}" includes="anathema.jar" />
+			<fileset dir="${files.dir}" includes="*.*" />
+			<zipfileset dir="${library.dir}" prefix="lib" includes="*" />
+			<zipfileset dir="${dist_misc_spanish}/" prefix="doc/spanish" includes="*" />
+		</zip>
+	</target>
+
+
+	<target name="Build Core JAR" depends="Prepare, Build module, Compile classpath, Add version data">
 		<property file="${classpath.file}" />
 		<jar destfile="${build.dir}/anathema.jar">
 			<manifest>
@@ -20,10 +35,32 @@
 		</jar>
 	</target>
 
+	<target name="copyText" depends="Prepare" description="Copy Anathema documentation files">
+		<copy todir="${files.dir}">
+			<fileset dir="${documentation}/English" includes="*.txt" />
+		</copy>
+		<copy todir="${dist_misc_spanish}">
+			<fileset dir="${documentation}/Spanish" includes="*.txt" />
+		</copy>
+	</target>
+
+	<target name="copyExtras" depends="Prepare">
+		<copy todir="${files.dir}" file="anathema.sh" />
+	</target>
+
+	<target name="Add version data" depends="Copy resources">
+		<propertyfile file="${resource.dir}/language/About.properties">
+			<entry key="Anathema.Version.Numeric" value="${version}" />
+			<entry key="Anathema.Version.Title" value="${name}" />
+			<entry key="Anathema.Version.Built" type="date" value="now" pattern="MM/dd/yy" />
+		</propertyfile>
+	</target>
+
+
 	<!--Depends on "Build Core JAR"-->
 	<target name="Build Windows executable">
 		<!--configFile="launch4j.xml"-->
-		<launch4j >
+		<launch4j>
 			<config dontwrapjar="true" headertype="0" jarpath="./build/anathema.jar" outfile="./anathema.exe" icon="anathema.ico">
 				<jre minVersion="1.5.0" />
 				<versionInfo fileVersion="0.12.0.0" productVersion="0.12.0.0" txtFileVersion="v0.12" txtProductVersion="v0.12" fileDescription="Anathema" copyright="2006 by Urs Reupke and Sandra Sieroux" productName="Anathema" internalName="Anathema Core 0.12" originalFilename="Anathema.exe" />

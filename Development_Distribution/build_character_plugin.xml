@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Build Character Plugin" default="Build Character JAR">
+
+	<property name="projectset" value="Lib_Thirdparty,Lib,Lib_Gui,Lib_Workflow,Platform,Anathema" />
+	<property name="module.name" value="character" />
+
+	<import file="common_plugin_targets.xml" />
+
+	<target name="Build Character JAR" depends="Prepare, Build module, Compile classpath, Copy resources">
+		<property file="${classpath.file}" />
+		<jar destfile="${build.dir}/character.jar">
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<attribute name="Class-Path" value="${module.classpath}" />
+				<section name="net/sf/anathema/Anathema.class" />
+			</manifest>
+			<fileset dir="${class.dir}" includes="**/*" />
+			<fileset dir="${resource.dir}" includes="**/*" />
+		</jar>
+	</target>
+</project>
