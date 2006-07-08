@@ -4,8 +4,8 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry exported="true" kind="src" path="/Charm_Tree"/>
-	<classpathentry exported="true" sourcepath="/Thirdparty/Swing/l2fprod-common-0.2dev-src.zip" kind="lib" path="/Thirdparty/Swing/l2fprod-common-tasks.jar"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Character_Library"/>
 	<classpathentry exported="true" kind="src" path="/Namegenerator"/>
+	<classpathentry exported="true" sourcepath="/Thirdparty/Swing/l2fprod-common-0.2dev-src.zip" kind="lib" path="/Thirdparty/Swing/l2fprod-common-tasks.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

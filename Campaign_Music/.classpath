@@ -2,15 +2,10 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Lib"/>
-	<classpathentry kind="src" path="/Platform"/>
-	<classpathentry sourcepath="/Thirdparty/Multimedia/mp3spi1.9.2-src.zip" kind="lib" path="/Thirdparty/Multimedia/mp3spi1.9.2.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/Multimedia/tritonus_share.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
-	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
-	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-dialog-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-dialog.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
+	<classpathentry exported="true" kind="src" path="/Platform"/>
+	<classpathentry exported="true" sourcepath="/Thirdparty/Multimedia/mp3spi1.9.2-src.zip" kind="lib" path="/Thirdparty/Multimedia/mp3spi1.9.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Thirdparty/Multimedia/tritonus_share.jar"/>
 	<classpathentry kind="src" path="resources"/>
-	<classpathentry sourcepath="/Thirdparty/Database/db4o-5.2-src.zip" kind="lib" path="/Thirdparty/Database/db4o-5.2-java5.jar"/>
+	<classpathentry exported="true" sourcepath="/Thirdparty/Database/db4o-5.2-src.zip" kind="lib" path="/Thirdparty/Database/db4o-5.2-java5.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
