@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Build Namegenerator Plugin" default="Build Namegenerator JAR">
+
+	<property name="projectset" value="Namegenerator" />
+	<property name="module.name" value="namegenerator" />
+
+	<import file="common_plugin_targets.xml" />
+
+	<target name="Build Namegenerator JAR" depends="Prepare, Build module, Compile classpath, Copy resources">
+		<property file="${classpath.file}" />
+		<jar destfile="${build.dir}/namegenerator.jar">
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<attribute name="Class-Path" value="${module.classpath}" />
+			</manifest>
+			<fileset dir="${class.dir}" includes="**/*" />
+			<fileset dir="${resource.dir}" includes="**/*" />
+		</jar>
+	</target>
+</project>

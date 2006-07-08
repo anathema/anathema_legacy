@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="Common Targets">
+<project name="Common Targets" default="Purge">
 	
 	<property name="build.dir" location="build" />
 	<property name="module.dir" location="${build.dir}/${module.name}" />
@@ -10,8 +10,12 @@
 	<property name="classpath.file" location="${module.dir}/classpath" />
 	<property name="lib" value="./lib" />
 	
-	<target name="Clean">
+	<target name="Purge">
 		<delete dir="${build.dir}" />
+	</target>
+	
+	<target name="Clean">
+		<delete dir="${module.dir}" />
 	</target>
 
 	<target name="Prepare" depends="Clean" description="Create directory structure">
