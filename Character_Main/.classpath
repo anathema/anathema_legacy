@@ -2,24 +2,10 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="/Lib"/>
 	<classpathentry kind="src" path="resources"/>
-	<classpathentry kind="lib" path="/Thirdparty/XML/dom4j-1.5.jar"/>
-	<classpathentry kind="src" path="/Platform"/>
-	<classpathentry kind="src" path="/Charm_Tree"/>
-	<classpathentry sourcepath="/Thirdparty/Swing/l2fprod-common-0.2dev-src.zip" kind="lib" path="/Thirdparty/Swing/l2fprod-common-tasks.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Reporting/jasperreport-src.zip" kind="lib" path="/Thirdparty/Reporting/jasperreports-0.6.2.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Swing/itp-gpl-1.3.0-src.zip" kind="lib" path="/Thirdparty/Swing/itp-gpl-1.3.0.jar"/>
-	<classpathentry kind="src" path="/Character_Generic"/>
-	<classpathentry kind="src" path="/Character_Generic_Impl"/>
-	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-swing-dialog.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
-	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-layout-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Framework"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Character_Library"/>
-	<classpathentry kind="src" path="/Namegenerator"/>
-	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-io.jar"/>
+	<classpathentry exported="true" kind="src" path="/Charm_Tree"/>
+	<classpathentry exported="true" sourcepath="/Thirdparty/Swing/l2fprod-common-0.2dev-src.zip" kind="lib" path="/Thirdparty/Swing/l2fprod-common-tasks.jar"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Character_Library"/>
+	<classpathentry exported="true" kind="src" path="/Namegenerator"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

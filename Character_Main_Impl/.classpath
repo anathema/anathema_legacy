@@ -2,24 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="/Namegenerator"/>
 	<classpathentry kind="src" path="/Character_Main"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Framework"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Impl"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Character_Library"/>
-	<classpathentry kind="src" path="/Charm_Tree"/>
-	<classpathentry kind="src" path="/Platform"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Lib"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
-	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-core-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
-	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
-	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-layout_src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
-	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-dialog-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-dialog.jar"/>
-	<classpathentry sourcepath="/Thirdparty/XML/dom4j-src.zip" kind="lib" path="/Thirdparty/XML/dom4j-1.5.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Swing/itp-gpl-1.3.0-src.zip" kind="lib" path="/Thirdparty/Swing/itp-gpl-1.3.0.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Swing/l2fprod-common-tasks-src.zip" kind="lib" path="/Thirdparty/Swing/l2fprod-common-tasks.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Reporting"/>
-	<classpathentry sourcepath="/Thirdparty/Reporting/itext-1.4-src.zip" kind="lib" path="/Thirdparty/Reporting/itext-1.4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
