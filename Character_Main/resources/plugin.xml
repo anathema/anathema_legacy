@@ -1,7 +1,7 @@
 <!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.5" "http://jpf.sourceforge.net/plugin_0_5.dtd">
 <plugin id="net.sf.anathema.character" version="0.12">
 	<requires>
-		<import plugin-id="net.sf.anathema.core"/>
+		<import plugin-id="net.sf.anathema.core" reverse-lookup="true"/>
 	</requires>
 	<extension plugin-id="net.sf.anathema.core"	point-id="Toolbar" id="Toolbar">
 		<parameter id="class" value="net.sf.anathema.character.impl.module.view.CharacterTool"/>
