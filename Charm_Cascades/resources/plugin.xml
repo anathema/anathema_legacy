@@ -1,4 +1,4 @@
-<!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.5" "http://jpf.sourceforge.net/plugin_0_5.dtd">
+<!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.6" "http://jpf.sourceforge.net/plugin_0_6.dtd">
 <plugin id="net.sf.anathema.charm.cascades" version="0.12">
 	<requires>
 		<import plugin-id="net.sf.anathema.core reverse-lookup="true""/>
