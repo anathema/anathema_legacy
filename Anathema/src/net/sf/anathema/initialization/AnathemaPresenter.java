@@ -51,7 +51,7 @@ public class AnathemaPresenter {
     for (AbstractItemTypeConfiguration configuration : itemTypeConfigurations) {
       configuration.fillPresentationExtensionPoints(model.getExtensionPointRegistry(), resources, model, view);
     }
-    new PresentationExtensionPointFiller(moduleCollection, model, view, resources).initialize();
+    initializePreferences(moduleCollection);
     for (AbstractItemTypeConfiguration configuration : itemTypeConfigurations) {
       configuration.registerViewFactory(model, resources);
     }
@@ -62,6 +62,10 @@ public class AnathemaPresenter {
     if (AnathemaEnvironment.isDevelopment()) {
       new DevelopmentEnvironmentPresenter(model, view, resources).initPresentation();
     }
+  }
+
+  private void initializePreferences(IModuleCollection moduleCollection) {
+    new PresentationExtensionPointFiller(moduleCollection, model, view, resources).initialize();
   }
 
   private void initializeReports() throws InitializationException {
