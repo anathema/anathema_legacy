@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Build Windows" default="Distribute ZIP">
+
+	<!--Runs on Windows only.-->
+	<import file="common_plugin_targets.xml" />
+	<import file="build_core_plugin.xml" />
+	<import file="build_namegenerator_plugin.xml" />
+	<import file="build_character_plugin.xml" />
+	<import file="build_plot_plugin.xml" />
+	<import file="build_music_plugin.xml" />
+
+	<!--Requires the property "launch4j.dir" to point to the launch4j installation.-->
+	<taskdef name="launch4j" classname="net.sf.launch4j.ant.Launch4jTask" classpath="${launch4j.dir}/launch4j.jar
+	    :${launch4j.dir}/xstream.jar" />
+
+	<property name="dist_misc_spanish" value="${files.dir}/doc/spanish" />
+	<property name="documentation" value="../Development_Documentation/Distribution" />
+
+	<!--Replace with "Build Installer"-->
+	<target name="Distribute ZIP" depends="Build Windows executable, Build Namegenerator JAR, Build Character JAR, Build Plot JAR, Build Music JAR, Copy Text, Copy Extras">
+		<zip destfile="anathema_v${version}.zip">
+			<fileset dir="${build.dir}" includes="anathema.jar" />
+			<fileset dir="${files.dir}" includes="*.*" />
+			<zipfileset dir="${library.dir}" prefix="lib" includes="*" />
+			<zipfileset dir="${dist_misc_spanish}/" prefix="doc/spanish" includes="*" />
+		</zip>
+	</target>
+
+	<target name="Copy Text" depends="Prepare" description="Copy Anathema documentation files">
+		<copy todir="${files.dir}">
+			<fileset dir="${documentation}/English" includes="*.txt" />
+		</copy>
+		<copy todir="${dist_misc_spanish}">
+			<fileset dir="${documentation}/Spanish" includes="*.txt" />
+		</copy>
+	</target>
+
+	<target name="Copy Extras" depends="Prepare">
+		<copy todir="${files.dir}" file="anathema.sh" />
+	</target>
+
+	<!--depends="Build Core JAR"-->
+	<target name="Build Windows executable">
+		<launch4j configFile="launch4j.xml"/>
+		<!--<launch4j>
+			<config dontwrapjar="true" headertype="0" jarpath="./build/anathema.jar" outfile="./anathema.exe" icon="anathema.ico">
+				<jre minVersion="1.5.0" />
+				<versionInfo fileVersion="0.12.0.0" productVersion="0.12.0.0" txtFileVersion="v0.12" txtProductVersion="v0.12" fileDescription="Anathema" copyright="2006 by Urs Reupke and Sandra Sieroux" productName="Anathema" internalName="Anathema Core 0.12" originalFilename="Anathema.exe" />
+			</config>
+		</launch4j>-->
+	</target>
+</project>

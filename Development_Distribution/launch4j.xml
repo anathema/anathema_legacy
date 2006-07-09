@@ -8,7 +8,7 @@
   <chdir></chdir>
   <customProcName>false</customProcName>
   <stayAlive>false</stayAlive>
-  <icon>anathema.ico</icon>
+  <icon></icon>
   <jre>
     <path></path>
     <minVersion>1.5.0</minVersion>
