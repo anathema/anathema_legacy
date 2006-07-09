@@ -108,8 +108,4 @@ public class AnathemaCoreModule implements IAnathemaModule {
     }
     return menu;
   }
-
-  public void exit() {
-    System.exit(0);
-  }
 }
