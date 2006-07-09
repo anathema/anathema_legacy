@@ -16,6 +16,7 @@ import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.framework.presenter.DirectoryFileChooser;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
@@ -34,7 +35,11 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
   private IResources resources;
   private JTextField repositoryTextField;
 
-  public IDialogComponent getComponent(final IResources resource) {
+  public void addCompoment(GridDialogPanel panel, IResources resources) {
+    panel.add(getComponent(resources));    
+  }
+  
+  private IDialogComponent getComponent(final IResources resource) {
     this.resources = resource;
     final JLabel repositoryLabel = new JLabel(
         resource.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.Label") + ":"); //$NON-NLS-1$ //$NON-NLS-2$

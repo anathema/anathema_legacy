@@ -5,6 +5,7 @@ import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPr
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
@@ -19,7 +20,11 @@ public class ToolTipTimePreferencesElement implements IPreferencesElement {
   boolean modificationAllowed = false;
   private IntegerSpinner spinner;
 
-  public IDialogComponent getComponent(IResources resources) {
+  public void addCompoment(GridDialogPanel panel, IResources resources) {
+    panel.add(getComponent(resources));    
+  }
+  
+  private IDialogComponent getComponent(IResources resources) {
     final JLabel toolTipTimeLabel = new JLabel(resources.getString("AnathemaCore.Tools.Preferences.ToolTipTime") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
     spinner = new IntegerSpinner(toolTipTime);
     spinner.setPreferredWidth(70);

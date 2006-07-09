@@ -8,12 +8,13 @@ import net.sf.anathema.framework.InitializationException;
 import net.sf.anathema.framework.environment.AnathemaEnvironment;
 import net.sf.anathema.framework.initialization.IReportFactory;
 import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
+import net.sf.anathema.framework.module.PreferencesElementsExtensionPoint;
+import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.framework.presenter.menu.IAnathemaMenu;
 import net.sf.anathema.framework.presenter.toolbar.IAnathemaTool;
 import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.initialization.modules.IModuleCollection;
-import net.sf.anathema.initialization.modules.PresentationExtensionPointFiller;
 import net.sf.anathema.initialization.modules.PresentationInitializer;
 import net.sf.anathema.initialization.plugin.IAnathemaPluginManager;
 import net.sf.anathema.initialization.plugin.IPluginConstants;
@@ -25,9 +26,12 @@ import org.java.plugin.registry.Extension.Parameter;
 public class AnathemaPresenter {
 
   private static final String PARAM_CLASS = "class"; //$NON-NLS-1$
+  private static final String PARAM_KEY = "preferencekey"; //$NON-NLS-1$
+  private static final String PARAM_TYPE = "type"; //$NON-NLS-1$
   private static final String EXTENSION_POINT_TOOLBAR = "Toolbar"; //$NON-NLS-1$
   private static final String EXTENSION_POINT_MENUBAR = "Menubar"; //$NON-NLS-1$
   private static final String EXTENSION_POINT_REPORT_FACTORIES = "ReportFactories"; //$NON-NLS-1$
+  private static final String EXTENSION_POINT_PREFERENCE_ELEMENTS = "PreferenceElements"; //$NON-NLS-1$
   private final IAnathemaModel model;
   private final IAnathemaView view;
   private final IAnathemaResources resources;
@@ -51,7 +55,7 @@ public class AnathemaPresenter {
     for (AbstractItemTypeConfiguration configuration : itemTypeConfigurations) {
       configuration.fillPresentationExtensionPoints(model.getExtensionPointRegistry(), resources, model, view);
     }
-    initializePreferences(moduleCollection);
+    initializePreferences();
     for (AbstractItemTypeConfiguration configuration : itemTypeConfigurations) {
       configuration.registerViewFactory(model, resources);
     }
@@ -64,8 +68,19 @@ public class AnathemaPresenter {
     }
   }
 
-  private void initializePreferences(IModuleCollection moduleCollection) {
-    new PresentationExtensionPointFiller(moduleCollection, model, view, resources).initialize();
+  private void initializePreferences() throws InitializationException {
+    PreferencesElementsExtensionPoint extensionPoint = (PreferencesElementsExtensionPoint) model.getExtensionPointRegistry()
+        .get(PreferencesElementsExtensionPoint.ID);
+    for (Extension extension : pluginManager.getExtension(
+        IPluginConstants.PLUGIN_CORE,
+        EXTENSION_POINT_PREFERENCE_ELEMENTS)) {
+      for (Parameter parameter : PluginUtilities.getParameters(extension, PARAM_TYPE)) {
+        Parameter classParameter = parameter.getSubParameter(PARAM_CLASS);
+        Parameter keyParameter = parameter.getSubParameter(PARAM_KEY);
+        IPreferencesElement element = (IPreferencesElement) PluginUtilities.instantiate(classParameter);
+        extensionPoint.register(keyParameter.valueAsString(), element);
+      }
+    }
   }
 
   private void initializeReports() throws InitializationException {
@@ -78,7 +93,6 @@ public class AnathemaPresenter {
       }
     }
   }
-
 
   private void initializeMenus() throws InitializationException {
     for (Extension extension : pluginManager.getExtension(IPluginConstants.PLUGIN_CORE, EXTENSION_POINT_MENUBAR)) {

@@ -6,6 +6,7 @@ import static net.sf.anathema.character.generic.framework.configuration.ICharact
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
@@ -17,7 +18,11 @@ public class RulesetPreferenceElement extends AbstractCharacterPreferencesElemen
   private boolean dirty;
   private LabelledPreferenceComboBox box;
 
-  public IDialogComponent getComponent(IResources resources) {
+  public void addCompoment(GridDialogPanel panel, IResources resources) {
+    panel.add(getComponent(resources));
+  }
+
+  private IDialogComponent getComponent(IResources resources) {
     String labelText = resources.getString("Character.Tools.Preferences.Ruleset") + ":"; //$NON-NLS-1$ //$NON-NLS-2$
     IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer("Ruleset.", resources); //$NON-NLS-1$
     ExaltedRuleSet[] values = ExaltedRuleSet.values();

@@ -8,18 +8,13 @@ import javax.swing.JMenu;
 import javax.swing.KeyStroke;
 
 import net.disy.commons.swing.action.SmartAction;
-import net.sf.anathema.character.generic.framework.configuration.ICharacterPreferencesConstants;
-import net.sf.anathema.character.impl.module.preferences.RulesetPreferenceElement;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.AbstractSelectedItemEnabler;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.module.IAnathemaModule;
-import net.sf.anathema.framework.module.PreferencesElementsExtensionPoint;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.view.IAnathemaView;
-import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterModule implements IAnathemaModule {
@@ -27,15 +22,6 @@ public class CharacterModule implements IAnathemaModule {
   public void initPresentation(IResources resources, IAnathemaModel model, IAnathemaView view) {
     view.getMenuBar().addMenu(createCharacterMenu(model, resources));
     new CharacterPerformanceTuner(model, resources).startTuning();
-  }
-
-  public void fillPresentationExtensionPoints(
-      IRegistry<String, IAnathemaExtension> extensionPointRegistry,
-      IAnathemaModel model,
-      IResources resources,
-      IAnathemaView view) {
-    PreferencesElementsExtensionPoint preferencesPoint = (PreferencesElementsExtensionPoint) extensionPointRegistry.get(PreferencesElementsExtensionPoint.ID);
-    preferencesPoint.register(ICharacterPreferencesConstants.RULESET_PREFERENCE, new RulesetPreferenceElement());
   }
 
   private JMenu createCharacterMenu(final IAnathemaModel anathemaModel, final IResources resources) {

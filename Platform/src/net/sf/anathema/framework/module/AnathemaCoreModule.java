@@ -6,12 +6,6 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.model.ItemManagmentModelListener;
-import net.sf.anathema.framework.module.preferences.LanguagePreferencesElement;
-import net.sf.anathema.framework.module.preferences.LookAndFeelPreferencesElement;
-import net.sf.anathema.framework.module.preferences.MaximizePreferencesElement;
-import net.sf.anathema.framework.module.preferences.OpenPdfPreferencesElement;
-import net.sf.anathema.framework.module.preferences.RepositoryPreferencesElement;
-import net.sf.anathema.framework.module.preferences.ToolTipTimePreferencesElement;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
 import net.sf.anathema.framework.presenter.IModelViewMapping;
 import net.sf.anathema.framework.presenter.ModelViewMapping;
@@ -19,7 +13,6 @@ import net.sf.anathema.framework.presenter.action.AnathemaAboutAction;
 import net.sf.anathema.framework.presenter.action.AnathemaExitAction;
 import net.sf.anathema.framework.presenter.action.ItemTypeLoadAction;
 import net.sf.anathema.framework.presenter.action.preferences.AnathemaPreferencesAction;
-import net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaCloseAction;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAction;
@@ -32,33 +25,12 @@ import net.sf.anathema.framework.reporting.controller.AnathemaPrintAction;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.framework.view.IMenuBar;
 import net.sf.anathema.framework.view.menu.IMenu;
-import net.sf.anathema.lib.control.WindowsUtilities;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
 public class AnathemaCoreModule implements IAnathemaModule {
 
   private IAnathemaView anathemaView;
-
-  public void fillPresentationExtensionPoints(
-      IRegistry<String, IAnathemaExtension> extensionPointRegistry,
-      IAnathemaModel model,
-      IResources resources,
-      IAnathemaView view) {
-    PreferencesElementsExtensionPoint preferencesPoint = (PreferencesElementsExtensionPoint) extensionPointRegistry.get(PreferencesElementsExtensionPoint.ID);
-    if (WindowsUtilities.isWindows()) {
-      preferencesPoint.register(
-          IAnathemaPreferencesConstants.LOOK_AND_FEEL_PREFERENCE,
-          new LookAndFeelPreferencesElement());
-    }
-    preferencesPoint.register(IAnathemaPreferencesConstants.MAXIMIZE_PREFERENCE, new MaximizePreferencesElement());
-    preferencesPoint.register(IAnathemaPreferencesConstants.OPEN_PDF_PREFERENCE, new OpenPdfPreferencesElement());
-    preferencesPoint.register(IAnathemaPreferencesConstants.LOCALE_PREFERENCE, new LanguagePreferencesElement());
-    preferencesPoint.register(
-        IAnathemaPreferencesConstants.TOOL_TIP_TIME_PREFERENCE,
-        new ToolTipTimePreferencesElement());
-    preferencesPoint.register(IAnathemaPreferencesConstants.REPOSITORY_PREFERENCE, new RepositoryPreferencesElement());
-  }
 
   public void initPresentation(IResources resources, IAnathemaModel model, IAnathemaView view) {
     this.anathemaView = view;
