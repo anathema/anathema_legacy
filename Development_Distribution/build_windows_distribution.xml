@@ -41,12 +41,8 @@
 
 	<!--depends="Build Core JAR"-->
 	<target name="Build Windows executable">
-		<launch4j configFile="launch4j.xml"/>
-		<!--<launch4j>
-			<config dontwrapjar="true" headertype="0" jarpath="./build/anathema.jar" outfile="./anathema.exe" icon="anathema.ico">
-				<jre minVersion="1.5.0" />
-				<versionInfo fileVersion="0.12.0.0" productVersion="0.12.0.0" txtFileVersion="v0.12" txtProductVersion="v0.12" fileDescription="Anathema" copyright="2006 by Urs Reupke and Sandra Sieroux" productName="Anathema" internalName="Anathema Core 0.12" originalFilename="Anathema.exe" />
-			</config>
-		</launch4j>-->
+		<property file="version.properties" />
+		<property name="versionString" value="${version.major}.${version.minor}.${version.revision}.0" />
+		<launch4j configFile="launch4j.xml" fileVersion="${versionString}" productVersion="${versionString}" txtFileVersion="${version.text}" txtProductVersion="${version.text}"/>
 	</target>
 </project>

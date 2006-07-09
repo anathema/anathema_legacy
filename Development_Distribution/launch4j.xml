@@ -8,7 +8,7 @@
   <chdir></chdir>
   <customProcName>false</customProcName>
   <stayAlive>false</stayAlive>
-  <icon></icon>
+  <icon>anathema.ico</icon>
   <jre>
     <path></path>
     <minVersion>1.5.0</minVersion>
@@ -18,15 +18,14 @@
     <args></args>
   </jre>
   <versionInfo>
+    <fileDescription>Anathema</fileDescription>
+    <copyright>Urs Reupke &amp; Sandra Sieroux</copyright>
+    <productName>Anathema</productName>
+    <internalName>Anathema Core Windows Launcher</internalName>
+    <originalFilename>Anathema.exe</originalFilename>
     <fileVersion>0.11.0.0</fileVersion>
     <txtFileVersion>V0.11</txtFileVersion>
-    <fileDescription>Anathema</fileDescription>
-    <copyright>UrsKR &amp; Vestrial</copyright>
     <productVersion>0.11.0.0</productVersion>
     <txtProductVersion>v0.11</txtProductVersion>
-    <productName>Anathema</productName>
-    <companyName></companyName>
-    <internalName>anathema-user-v0.11</internalName>
-    <originalFilename>Anathema.exe</originalFilename>
   </versionInfo>
 </launch4jConfig>
