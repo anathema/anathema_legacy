@@ -45,10 +45,6 @@ public class AnathemaCoreModule implements IAnathemaModule {
       IAnathemaModel model,
       IResources resources,
       IAnathemaView view) {
-    fillPreferencesExtensionPoint(extensionPointRegistry);
-  }
-
-  private void fillPreferencesExtensionPoint(IRegistry<String, IAnathemaExtension> extensionPointRegistry) {
     PreferencesElementsExtensionPoint preferencesPoint = (PreferencesElementsExtensionPoint) extensionPointRegistry.get(PreferencesElementsExtensionPoint.ID);
     if (WindowsUtilities.isWindows()) {
       preferencesPoint.register(
