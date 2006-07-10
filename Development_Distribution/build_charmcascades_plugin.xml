@@ -8,7 +8,7 @@
 
 	<target name="Build Charm Cascades JAR" depends="Prepare, Build module, Compile classpath, Copy resources">
 		<property file="${classpath.file}" />
-		<jar destfile="${build.dir}/charmcascades.jar">
+		<jar destfile="${plugins.dir}/charmcascades.jar">
 			<manifest>
 				<attribute name="Built-By" value="${user.name}" />
 				<attribute name="Class-Path" value="${module.classpath}" />
