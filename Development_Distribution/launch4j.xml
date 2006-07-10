@@ -23,9 +23,5 @@
     <productName>Anathema</productName>
     <internalName>Anathema Core Windows Launcher</internalName>
     <originalFilename>Anathema.exe</originalFilename>
-    <fileVersion>0.11.0.0</fileVersion>
-    <txtFileVersion>V0.11</txtFileVersion>
-    <productVersion>0.11.0.0</productVersion>
-    <txtProductVersion>v0.11</txtProductVersion>
   </versionInfo>
 </launch4jConfig>

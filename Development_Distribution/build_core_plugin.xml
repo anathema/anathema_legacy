@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <project name="Build Core plugin" default="Build Core JAR">
 
-	<property name="version" value="0.12" />
-	<property name="name" value="Lap" />
 	<property name="projectset" value="Lib_Thirdparty,Lib,Lib_Gui,Lib_Workflow,Platform,Anathema" />
 	<property name="module.name" value="core" />
 
@@ -23,9 +21,10 @@
 	</target>
 
 	<target name="Add version data" depends="Copy resources">
+		<property file="version.properties"/>
 		<propertyfile file="${resource.dir}/language/About.properties">
-			<entry key="Anathema.Version.Numeric" value="${version}" />
-			<entry key="Anathema.Version.Title" value="${name}" />
+			<entry key="Anathema.Version.Numeric" value="${version.major}.${version.minor}" />
+			<entry key="Anathema.Version.Title" value="${version.name}" />
 			<entry key="Anathema.Version.Built" type="date" value="now" pattern="MM/dd/yy" />
 		</propertyfile>
 	</target>

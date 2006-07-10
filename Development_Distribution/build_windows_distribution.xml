@@ -17,7 +17,7 @@
 	<property name="documentation" value="../Development_Documentation/Distribution" />
 
 	<!--Replace with "Build Installer"-->
-	<target name="Distribute ZIP" depends="Build Windows executable, Build Namegenerator JAR, Build Character JAR, Build Plot JAR, Build Music JAR, Copy Text, Copy Extras">
+	<target name="Distribute ZIP" depends="Build Core JAR, Build Namegenerator JAR, Build Character JAR, Build Plot JAR, Build Music JAR, Build Windows executable, Copy Text, Copy Extras">
 		<zip destfile="anathema_v${version}.zip">
 			<fileset dir="${build.dir}" includes="anathema.jar" />
 			<fileset dir="${files.dir}" includes="*.*" />
@@ -39,7 +39,6 @@
 		<copy todir="${files.dir}" file="anathema.sh" />
 	</target>
 
-	<!--depends="Build Core JAR"-->
 	<target name="Build Windows executable">
 		<property file="version.properties" />
 		<property name="versionString" value="${version.major}.${version.minor}.${version.revision}.0" />
