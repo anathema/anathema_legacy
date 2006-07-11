@@ -12,7 +12,7 @@
 	<property name="files.dir" location="${build.dir}/files" />
 
 	<target name="Distribute ZIP" depends="Build Core JAR, Build Namegenerator JAR, Build Character JAR, Build Plot JAR, Build Music JAR, Copy Text, Copy Extras">
-		<zip destfile="anathema_v${version.major}.{version.minor}.zip">
+		<zip destfile="anathema_v${version.major}.${version.minor}.zip">
 			<fileset dir="${build.dir}" includes="anathema.jar" />
 			<fileset dir="${files.dir}" includes="*.*" />
 			<!--include libraries-->
