@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <project name="Build Core plugin" default="Build Core JAR">
 
-	<property name="projectset" value="Lib_Thirdparty,Lib,Lib_Gui,Lib_Workflow,Platform,Anathema" />
-	<property name="module.name" value="core" />
-
 	<import file="common_plugin_targets.xml" />
 
-	<target name="Build Core JAR" depends="Prepare, Build module, Compile classpath, Add version data">
+	<target name="Build Core JAR" depends="Build Core Module, Add version data">
 		<property file="${classpath.file}" />
 		<jar destfile="${build.dir}/anathema.jar">
 			<manifest>
@@ -20,12 +17,28 @@
 		</jar>
 	</target>
 
-	<target name="Add version data" depends="Copy resources">
+	<target name="Add version data" depends="Build Core Module">
 		<property file="version.properties"/>
 		<propertyfile file="${resource.dir}/language/About.properties">
 			<entry key="Anathema.Version.Numeric" value="${version.major}.${version.minor}" />
 			<entry key="Anathema.Version.Title" value="${version.name}" />
 			<entry key="Anathema.Version.Built" type="date" value="now" pattern="MM/dd/yy" />
 		</propertyfile>
+	</target>
+	
+	<target name="Build Core Module">
+		<variable name="projectset" value="Lib_Thirdparty,Lib,Lib_Gui,Lib_Workflow,Platform,Anathema" />
+		<variable name="module.name" value="core" />
+		
+		<variable name="module.dir" value="${build.dir}/${module.name}" />
+		<variable name="class.dir" value="${module.dir}/classes" />
+		<variable name="library.dir" value="${module.dir}/libraries" />
+		<variable name="resource.dir" value="${module.dir}/resources" />
+		<variable name="classpath.file" value="${module.dir}/classpath" />
+		
+		<prepareModule module.name="${module.name}" />
+		<buildModule projectset="${projectset}" />
+		<compileClasspath projectset="${projectset}" />
+		<copyResources projectset="${projectset}" />
 	</target>
 </project>

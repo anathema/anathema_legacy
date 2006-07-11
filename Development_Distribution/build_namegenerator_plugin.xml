@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <project name="Build Namegenerator Plugin" default="Build Namegenerator JAR">
 
-	<property name="projectset" value="Namegenerator" />
-	<property name="module.name" value="namegenerator" />
-
 	<import file="common_plugin_targets.xml" />
 
-	<target name="Build Namegenerator JAR" depends="Prepare, Build module, Compile classpath, Copy resources">
+	<target name="Build Namegenerator JAR" depends="Build Namegenerator Module">
 		<property file="${classpath.file}" />
 		<jar destfile="${plugins.dir}/namegenerator.jar">
 			<manifest>
@@ -16,5 +13,21 @@
 			<fileset dir="${class.dir}" includes="**/*" />
 			<fileset dir="${resource.dir}" includes="**/*" />
 		</jar>
+	</target>
+
+	<target name="Build Namegenerator Module">
+		<variable name="projectset" value="Namegenerator" />
+		<variable name="module.name" value="namegenerator" />
+		
+		<variable name="module.dir" value="${build.dir}/${module.name}" />
+		<variable name="class.dir" value="${module.dir}/classes" />
+		<variable name="library.dir" value="${module.dir}/libraries" />
+		<variable name="resource.dir" value="${module.dir}/resources" />
+		<variable name="classpath.file" value="${module.dir}/classpath" />
+		
+		<prepareModule module.name="${module.name}" />
+		<buildModule projectset="${projectset}" />
+		<compileClasspath projectset="${projectset}" />
+		<copyResources projectset="${projectset}" />
 	</target>
 </project>

@@ -1,60 +1,73 @@
 <?xml version="1.0"?>
 <project name="Common Targets" default="Purge">
-	
+
 	<property name="build.dir" location="build" />
-	<property name="module.dir" location="${build.dir}/${module.name}" />
-	<property name="class.dir" location="${module.dir}/classes" />
-	<property name="library.dir" location="${module.dir}/libraries" />
-	<property name="resource.dir" location="${module.dir}/resources" />
-	<property name="files.dir" location="${module.dir}/files" />
-	<property name="classpath.file" location="${module.dir}/classpath" />
-	<property name="lib" value="./lib" />
-	
+	<property name="plugins.dir" location="${build.dir}/plugins" />
+	<property name="lib" location="lib" />
+
 	<target name="Purge">
 		<delete dir="${build.dir}" />
 	</target>
-	
-	<target name="Clean">
-		<delete dir="${module.dir}" />
-	</target>
 
-	<target name="Prepare" depends="Clean" description="Create directory structure">
-		<mkdir dir="${build.dir}" />
-		<mkdir dir="${module.dir}" />
-		<mkdir dir="${class.dir}" />
-		<mkdir dir="${library.dir}" />
-		<mkdir dir="${resource.dir}" />
-		<mkdir dir="${files.dir}" />
-	</target>
-	
-	
-	<target name="Build module">
-		<echo message="Building module: ${module.name}" />
-		<foreach list="${projectset}" target="Build project" param="project.name" />
-	</target>
+	<macrodef name="clean">
+		<attribute name="module.name" />
+		<sequential>
+			<delete dir="${build.dir}/@{module.name}" />
+		</sequential>
+	</macrodef>
 
-	<target name="Compile classpath" depends="Copy libraries">
-		<echo message="module.classpath=" file="${classpath.file}" append="false" />
-		<foreach target="Add to path" param="jarfile">
-			<path>
-				<fileset dir="${library.dir}">
-					<include name="*.jar" />
-				</fileset>
-			</path>
-		</foreach>
-	</target>
+	<macrodef name="prepareModule">
+		<attribute name="module.name" />
+		<sequential>
+			<mkdir dir="${build.dir}" />
+			<mkdir dir="${plugins.dir}" />
+			<mkdir dir="${module.dir}" />
+			<mkdir dir="${class.dir}" />
+			<mkdir dir="${library.dir}" />
+			<mkdir dir="${resource.dir}" />
+			<mkdir dir="${files.dir}" />
+		</sequential>
+	</macrodef>
+
+	<macrodef name="buildModule">
+		<attribute name="projectset" />
+		<sequential>
+			<foreach list="@{projectset}" target="Build project" param="project.name" />
+		</sequential>
+	</macrodef>
+
+	<macrodef name="copyLibraries">
+		<attribute name="projectset" />
+		<sequential>
+			<foreach list="${projectset}" target="Copy project libraries" param="project.name" />
+		</sequential>
+	</macrodef>
+
+	<macrodef name="copyResources">
+		<attribute name="projectset" />
+		<sequential>
+			<foreach list="${projectset}" target="Copy project resources" param="project.name" />
+		</sequential>
+	</macrodef>
+
+	<macrodef name="compileClasspath">
+		<attribute name="projectset" />
+		<sequential>
+			<copyLibraries projectset="@projectset" />
+			<echo message="module.classpath=" file="${classpath.file}" append="false" />
+			<foreach target="Add to path" param="jarfile">
+				<path>
+					<fileset dir="${library.dir}">
+						<include name="*.jar" />
+					</fileset>
+				</path>
+			</foreach>
+		</sequential>
+	</macrodef>
 
 	<target name="Add to path">
 		<basename property="jar.filename" file="${jarfile}" />
 		<echo message=" ${lib}/${jar.filename}" file="${classpath.file}" append="true" />
-	</target>
-
-	<target name="Copy resources">
-		<foreach list="${projectset}" target="Copy project resources" param="project.name" />
-	</target>
-
-	<target name="Copy libraries">
-		<foreach list="${projectset}" target="Copy project libraries" param="project.name" />
 	</target>
 
 	<target name="Copy project resources">
@@ -109,5 +122,4 @@
 			</then>
 		</if>
 	</target>
-
 </project>
