@@ -11,9 +11,9 @@ import net.disy.commons.core.util.ArrayUtilities;
 
 public class SmartJList<T> extends JList {
 
-  private Class<T> clazz;
+  private Class<? extends T> clazz;
 
-  public SmartJList(Class<T> contentClass) {
+  public SmartJList(Class<? extends T> contentClass) {
     this.clazz = contentClass;
     setModel(new DefaultListModel());
     setSelectionModel(new DefaultListSelectionModel());

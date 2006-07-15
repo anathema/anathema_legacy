@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.impl.character.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.character.equipment.character.model.IEquipmentObject;
 import net.sf.anathema.character.equipment.impl.character.model.natural.Clinch;
 import net.sf.anathema.character.equipment.impl.character.model.natural.Kick;
 import net.sf.anathema.character.equipment.impl.character.model.natural.NaturalSoak;
@@ -37,5 +38,9 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
 
   public IWeapon[] getPrintWeapons() {
     return weapons.toArray(new IWeapon[weapons.size()]);
+  }
+
+  public IEquipmentObject[] getAvailableObjects() {
+    return new IEquipmentObject[0];
   }
 }

@@ -3,6 +3,7 @@ package net.sf.anathema.development.character.additional;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.character.equipment.character.model.IEquipmentObject;
 import net.sf.anathema.character.equipment.impl.character.model.AbstractEquipmentAdditionalModel;
 import net.sf.anathema.character.generic.equipment.weapon.IArmour;
 import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
@@ -26,5 +27,9 @@ public class DemoEquipmentAdditionalModel extends AbstractEquipmentAdditionalMod
 
   public IWeapon[] getPrintWeapons() {
     return weapons.toArray(new IWeapon[weapons.size()]);
+  }
+
+  public IEquipmentObject[] getAvailableObjects() {
+    return new IEquipmentObject[0];
   }
 }
