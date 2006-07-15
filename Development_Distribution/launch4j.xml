@@ -2,7 +2,7 @@
   <dontWrapJar>true</dontWrapJar>
   <headerType>0</headerType>
   <jar>anathema.jar</jar>
-  <outfile>anathema.exe</outfile>
+  <outfile>build\anathema.exe</outfile>
   <errTitle></errTitle>
   <jarArgs></jarArgs>
   <chdir></chdir>
