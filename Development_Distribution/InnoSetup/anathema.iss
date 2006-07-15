@@ -53,11 +53,11 @@ LanguageDetectionMethod=uilanguage
 LicenseFile=build\files\license.txt
 TimeStampsInUTC=yes
 ; COSMETIC COMMANDS
-SetupIconFile=innosetup\installer.ico
-WizardImageFile=innosetup\anathema-wizard.bmp
+SetupIconFile=innosetup\anathema_installer.ico
+WizardImageFile=innosetup\Anathema_Install.bmp
 WizardImageStretch=no
 WizardImageBackColor=clBlack
-WizardSmallImageFile=innosetup\anathema-wizard-small.bmp
+WizardSmallImageFile=innosetup\Anathema_Install_small.bmp
 ;
 ; The following lines relate to the background window for the installer.
 ; Without "WindowVisible" being enabled none of the rest function.
@@ -70,7 +70,7 @@ WizardSmallImageFile=innosetup\anathema-wizard-small.bmp
 ; ENGLISH LANGUAGE
   Name: english; MessagesFile: compiler:Default.isl
 ; SPANISH LANGUAGE
-  Name: spanish; MessagesFile: compiler:Languages\Spanish.isl; LicenseFile: anathema\files\application\doc\spanish\license_es.txt; InfoBeforeFile: anathema\files\application\installer-readme.txt; InfoAfterFile: anathema\files\application\doc\spanish\readme_es.txt
+  Name: spanish; MessagesFile: innosetup\SpanishStd-2-5.1.0.isl; LicenseFile: build\files\license.txt; InfoBeforeFile: innosetup\installer-readme.txt; InfoAfterFile: build\files\doc\spanish\readme_es.txt
 
 [Tasks]
 Name: desktopicon; Description: {cm:CreateDesktopIcon}; GroupDescription: {cm:AdditionalIcons}; Flags: unchecked
@@ -84,33 +84,30 @@ Source: build\anathema.exe; DestDir: {app}; Components: main; Flags: ignoreversi
 Source: build\anathema.jar; DestDir: {app}; Components: main; Flags: ignoreversion
 Source: build\plugins\*.jar; DestDir: {app}\plugins; Components: music; Flags: ignoreversion
 ;Source: anathema\files\application\data\*; DestDir: {app}\data; Components: main; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: build\core\libraries\*; DestDir: {app}\lib; Components: main; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: build\charmcascades\libraries\*; DestDir: {app}\plugins\libraries\; Components: main; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: build\libraries\*; DestDir: {app}\lib; Components: main; Flags: ignoreversion recursesubdirs
 ; Eventually, I want to be able to replace the following two files with locale specific versions.
 Source: InnoSetup\installer-readme.txt; DestDir: {app}; Components: main; Flags: ignoreversion
 
-Source: buildlib\*; DestDir: {app}\modules\lib; Components: music; Flags: ignoreversion recursesubdirs createallsubdirs
-
 ; [Code] files
-Source: anathema\files\images\Green-PDF.bmp; Flags: dontcopy
-Source: anathema\files\images\Green-JRE.bmp; Flags: dontcopy
-Source: anathema\files\images\Red-PDF.bmp; Flags: dontcopy
-Source: anathema\files\images\Red-JRE.bmp; Flags: dontcopy
+Source: innosetup\Green-PDF.bmp; Flags: dontcopy
+Source: innosetup\Red-PDF.bmp; Flags: dontcopy
+Source: innosetup\Green-JRE.bmp; Flags: dontcopy
+Source: innosetup\Red-JRE.bmp; Flags: dontcopy
 ; ENGLISH LANGUAGE
-  Source: anathema\files\application\FAQ.txt; DestDir: {app}; Components: main; Languages: english; Flags: ignoreversion
-  Source: anathema\files\application\license.txt; DestDir: {app}; Components: main; Languages: english; Flags: ignoreversion
-  Source: anathema\files\application\data\nature_instructions.txt; DestDir: {app}\data; Components: main; Languages: english; Flags: ignoreversion recursesubdirs createallsubdirs
-  Source: anathema\files\application\readme.txt; DestDir: {app}; Components: main; Languages: english; Flags: ignoreversion
+  Source: build\files\FAQ.txt; DestDir: {app}; Components: main; Languages: english; Flags: ignoreversion
+  Source: build\files\license.txt; DestDir: {app}; Components: main; Languages: english; Flags: ignoreversion
+;  Source: build\files\data\nature_instructions.txt; DestDir: {app}\data; Components: main; Languages: english; Flags: ignoreversion recursesubdirs createallsubdirs
+  Source: build\files\readme.txt; DestDir: {app}; Components: main; Languages: english; Flags: ignoreversion
 ; isreadme <-- This flag can be appended to the above command to place a "view readme" box at the end of the installer.  All things considered, this is a bit overkill at this point.
 ; The following commands are waiting for a language specific versions.
 ;  Source: anathema\files\application\installer-readme.txt; DestDir: {app}; Components: main; Languages: english; Flags: ignoreversion
 ;  Source: anathema\files\application\versions.txt; DestDir: {app}; Components: main; Languages: english; Flags: ignoreversion
 ;
 ; SPANISH LANGUAGE
-  Source: anathema\files\application\doc\Spanish\FAQ_es.txt; DestDir: {app}; DestName: FAQ.txt; Languages: spanish; Components: main; Flags: ignoreversion
-  Source: anathema\files\application\doc\Spanish\license_es.txt; DestDir: {app}; DestName: license.txt; Languages: spanish; Components: main; Flags: ignoreversion
-  Source: anathema\files\application\data\nature_instructions_es.txt; DestDir: {app}\data; DestName: nature_instructions.txt; Components: main; Languages: spanish; Flags: ignoreversion recursesubdirs createallsubdirs
-  Source: anathema\files\application\doc\Spanish\readme_es.txt; DestDir: {app}; DestName: readme.txt; Languages: spanish; Components: main; Flags: ignoreversion
+  Source: build\files\doc\Spanish\FAQ_es.txt; DestDir: {app}; DestName: FAQ.txt; Languages: spanish; Components: main; Flags: ignoreversion
+;  Source: anathema\files\application\doc\Spanish\license_es.txt; DestDir: {app}; DestName: license.txt; Languages: spanish; Components: main; Flags: ignoreversion
+;  Source: anathema\files\application\data\nature_instructions_es.txt; DestDir: {app}\data; DestName: nature_instructions.txt; Components: main; Languages: spanish; Flags: ignoreversion recursesubdirs createallsubdirs
+  Source: build\files\doc\Spanish\readme_es.txt; DestDir: {app}; DestName: readme.txt; Languages: spanish; Components: main; Flags: ignoreversion
 ; isreadme <-- This flag can be appended to the above command to place a "view readme" box at the end of the installer.  All things considered, this is a bit overkill at this point.
 ; The following commands are waiting for a language specific versions.
 ;  Source: anathema\files\application\doc\Spanish\installer-readme_es.txt; DestDir: {app}; DestName: installer-readme.txt; Languages: spanish; Components: main; Flags: ignoreversion
