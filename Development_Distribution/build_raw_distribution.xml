@@ -6,16 +6,23 @@
 	<import file="build_character_plugin.xml" />
 	<import file="build_plot_plugin.xml" />
 	<import file="build_music_plugin.xml" />
+	<import file="build_charmcascades_plugin.xml" />
 
+	<property name="files.dir" location="${build.dir}/files" />
 	<property name="dist_misc_spanish" value="${files.dir}/doc/spanish" />
 	<property name="documentation" value="../Development_Documentation/Distribution" />
-	<property name="files.dir" location="${build.dir}/files" />
 
-	<target name="Distribute ZIP" depends="Build Core JAR, Build Namegenerator JAR, Build Character JAR, Build Plot JAR, Build Music JAR, Copy Text, Copy Extras">
+	<target name="Distribute ZIP" depends="Build Core JAR, Build Namegenerator JAR, Build Character JAR, Build Charm Cascades JAR, Build Plot JAR, Build Music JAR, Copy Text, Copy Extras">
 		<zip destfile="anathema_v${version.major}.${version.minor}.zip">
 			<fileset dir="${build.dir}" includes="anathema.jar" />
 			<fileset dir="${files.dir}" includes="*.*" />
-			<!--include libraries-->
+			<zipfileset dir="${plugins.dir}/" prefix="plugins" includes="*" />
+			<zipfileset dir="${libraries.dir}/core" prefix="lib" includes="*" />
+			<zipfileset dir="${libraries.dir}/namegenerator" prefix="lib" includes="*" />
+			<zipfileset dir="${libraries.dir}/character" prefix="lib" includes="*" />
+			<zipfileset dir="${libraries.dir}/charmcascades" prefix="lib" includes="*" />
+			<zipfileset dir="${libraries.dir}/plot" prefix="lib" includes="*" />
+			<zipfileset dir="${libraries.dir}/music" prefix="lib" includes="*" />
 			<zipfileset dir="${dist_misc_spanish}/" prefix="doc/spanish" includes="*" />
 		</zip>
 	</target>

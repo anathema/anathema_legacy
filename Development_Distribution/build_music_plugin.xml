@@ -21,7 +21,7 @@
 		
 		<variable name="module.dir" value="${build.dir}/${module.name}" />
 		<variable name="class.dir" value="${module.dir}/classes" />
-		<variable name="library.dir" value="${module.dir}/libraries" />
+		<variable name="library.dir" value="${build.dir}/libraries/${module.name}" />
 		<variable name="resource.dir" value="${module.dir}/resources" />
 		<variable name="classpath.file" value="${module.dir}/classpath" />
 

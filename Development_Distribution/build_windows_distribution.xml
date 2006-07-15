@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <project name="Build Windows" default="Build Installer">
 
-	<!--Runs on Windows only.-->
+	<!--Run on Windows only.-->
 	<!--Requires the property "launch4j.dir" to point to the launch4j installation.-->
 	<!--Requires the property "inno.dir" to point to the Inno Setup installation.-->
 	<import file="common_plugin_targets.xml" />

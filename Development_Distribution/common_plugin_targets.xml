@@ -2,8 +2,9 @@
 <project name="Common Targets" default="Purge">
 
 	<property name="build.dir" location="build" />
+	<property name="libraries.dir" location="${build.dir}/libraries" />
 	<property name="plugins.dir" location="${build.dir}/plugins" />
-	<property name="lib" location="lib" />
+	<property name="lib" value="./lib" />
 
 	<target name="Purge">
 		<delete dir="${build.dir}" />
@@ -21,11 +22,10 @@
 		<sequential>
 			<mkdir dir="${build.dir}" />
 			<mkdir dir="${plugins.dir}" />
+			<mkdir dir="${library.dir}" />
 			<mkdir dir="${module.dir}" />
 			<mkdir dir="${class.dir}" />
-			<mkdir dir="${library.dir}" />
 			<mkdir dir="${resource.dir}" />
-			<mkdir dir="${files.dir}" />
 		</sequential>
 	</macrodef>
 
