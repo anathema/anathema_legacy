@@ -27,7 +27,6 @@ public class AnathemaPluginManager implements IAnathemaPluginManager {
     try {
       DefaultPluginsCollector collector = new DefaultPluginsCollector();
       String pluginRepositories = getPluginRepositories();
-      System.out.println(pluginRepositories);
       Properties properties = new Properties();
       properties.put("org.java.plugin.boot.pluginsRepositories", pluginRepositories); //$NON-NLS-1$
       collector.configure(new ExtendedProperties(properties));
