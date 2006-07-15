@@ -19,15 +19,9 @@
 	<property name="files.dir" location="${build.dir}/files" />
 
 	<target name="Build Installer" depends="Build Core JAR, Build Namegenerator JAR, Build Character JAR, Build Plot JAR, Build Music JAR, Build Windows executable, Copy Text, Copy Extras">
-		<exec executable="iscc" dir="${inno.dir}">
-			<arg file="anathema.iss" />
+		<exec executable="${inno.dir}\iscc" dir="${inno.dir}">
+			<arg file="innosetup\anathema.iss" />
 		</exec>
-		<!--	<zip destfile="anathema_v${version}.zip">
-			<fileset dir="${build.dir}" includes="anathema.jar" />
-			<fileset dir="${files.dir}" includes="*.*" />
-			<zipfileset dir="${library.dir}" prefix="lib" includes="*" />
-			<zipfileset dir="${dist_misc_spanish}/" prefix="doc/spanish" includes="*" />
-		</zip>-->
 	</target>
 
 	<target name="Copy Text">
@@ -42,6 +36,13 @@
 	<target name="Copy Extras">
 		<copy todir="${files.dir}" file="anathema.sh" />
 	</target>
+	
+	<target name="Compile Installer">
+		<exec executable="${inno.dir}\iscc.exe" dir="${inno.dir}">
+			<arg file="innosetup\anathema.iss" />
+		</exec>
+	</target>
+		
 
 	<target name="Build Windows executable">
 		<property file="version.properties" />
