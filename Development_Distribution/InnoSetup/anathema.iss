@@ -23,20 +23,23 @@
 ;
 
 [Setup]
-; COMPILER RELATED
-Compression=zip/9
-OutputBaseFilename=anathema-v0.11-test
-OutputDir=anathema\executables\inno
-; To compile the Anathema installer correctly, set the following command to which ever directory contains "Anathema".
-OutputManifestFile=anathema-v0.11-test.txt
-SourceDir=C:\Documents and Settings\Administrator\Desktop\workspace
-VersionInfoCopyright=2004-2006 by Sandra Sieroux and Urs Reupke
+; DYNAMIC COMPILER RELATED
+OutputBaseFilename=anathema-setup-v0.12
+OutputManifestFile=anathema-setup-v0.12.txt
 VersionInfoTextVersion=v0.11
 VersionInfoVersion=0.11.0.0
+; DYNAMIC INSTALLER RELATED
+AppVersion=v0.12
+AppVerName=Anathema v0.12
+OutputDir=..\
+; To compile the Anathema installer correctly, set the following command to which ever directory contains "Anathema".
+SourceDir=..\
+
+; STATIC COMPILER RELATED
+Compression=zip/9
 ; INSTALLER RELATED
+VersionInfoCopyright=2004-2006 by Sandra Sieroux and Urs Reupke
 AppName=Anathema
-AppVersion=v0.11
-AppVerName=Anathema v0.11
 AppPublisher=Anathema Team
 AppPublisherURL=http://anathema.sourceforge.net
 AppSupportURL=http://sourceforge.net/tracker/?group_id=122320&atid=693109
@@ -44,17 +47,17 @@ AppUpdatesURL=http://sourceforge.net/project/showfiles.php?group_id=122320
 AppReadmeFile={app}\readme.txt
 DefaultDirName={pf}\Anathema
 DefaultGroupName=Anathema
-InfoBeforeFile=anathema\files\application\installer-readme.txt
-InfoAfterFile=anathema\files\application\readme.txt
+InfoBeforeFile=innosetup\installer-readme.txt
+InfoAfterFile=build\files\readme.txt
 LanguageDetectionMethod=uilanguage
-LicenseFile=anathema\files\application\license.txt
+LicenseFile=build\files\license.txt
 TimeStampsInUTC=yes
 ; COSMETIC COMMANDS
-SetupIconFile=anathema\files\icons\DarkStarLarge.ico
-WizardImageFile=anathema\files\images\anathema-wizard.bmp
+SetupIconFile=innosetup\installer.ico
+WizardImageFile=innosetup\anathema-wizard.bmp
 WizardImageStretch=no
 WizardImageBackColor=clBlack
-WizardSmallImageFile=anathema\files\images\anathema-wizard-small.bmp
+WizardSmallImageFile=innosetup\anathema-wizard-small.bmp
 ;
 ; The following lines relate to the background window for the installer.
 ; Without "WindowVisible" being enabled none of the rest function.
