@@ -22,9 +22,9 @@ import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration
 import net.sf.anathema.character.solar.reporting.SecondEditionSolarPartEncoder;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawTemplate;
 import net.sf.anathema.character.solar.virtueflaw.model.SolarVirtueFlawModel;
-import net.sf.anathema.development.character.additional.DemoAlienArmour;
-import net.sf.anathema.development.character.additional.DemoIntimacy;
 import net.sf.anathema.development.character.magic.DemoGenericCombo;
+import net.sf.anathema.dummy.character.additional.DemoAlienArmour;
+import net.sf.anathema.dummy.character.additional.DemoIntimacy;
 import net.sf.anathema.dummy.character.equipment.DemoMeleeWeapon;
 import net.sf.anathema.dummy.character.equipment.DemoNaturalArmour;
 import net.sf.anathema.dummy.character.equipment.DemoRangeWeapon;
