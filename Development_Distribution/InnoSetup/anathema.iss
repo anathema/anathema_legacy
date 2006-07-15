@@ -31,7 +31,7 @@ VersionInfoVersion=0.11.0.0
 ; DYNAMIC INSTALLER RELATED
 AppVersion=v0.12
 AppVerName=Anathema v0.12
-OutputDir=..\
+OutputDir=.\
 ; To compile the Anathema installer correctly, set the following command to which ever directory contains "Anathema".
 SourceDir=..\
 
