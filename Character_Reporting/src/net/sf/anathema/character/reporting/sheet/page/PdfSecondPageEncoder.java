@@ -5,7 +5,7 @@ import java.util.List;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfExperienceEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfHorizontalLineContentEncoder;
@@ -87,7 +87,7 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds bounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
-    IPdfContentEncoder encoder = new PdfExperienceEncoder(resources, baseFont);
+    IPdfContentBoxEncoder encoder = new PdfExperienceEncoder(resources, baseFont);
     boxEncoder.encodeBox(directContent, encoder, character, bounds);
     return height;
   }
@@ -98,7 +98,7 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds languageBounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
-    IPdfContentEncoder encoder = new PdfHorizontalLineContentEncoder(2, "Languages"); //$NON-NLS-1$
+    IPdfContentBoxEncoder encoder = new PdfHorizontalLineContentEncoder(2, "Languages"); //$NON-NLS-1$
     boxEncoder.encodeBox(directContent, encoder, character, languageBounds);
     return height;
   }
@@ -109,7 +109,7 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds backgroundBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
-    IPdfContentEncoder encoder = new PdfBackgroundEncoder(resources, baseFont);
+    IPdfContentBoxEncoder encoder = new PdfBackgroundEncoder(resources, baseFont);
     boxEncoder.encodeBox(directContent, encoder, character, backgroundBounds);
     return height;
   }
@@ -120,7 +120,7 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds bounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    IPdfContentEncoder encoder = new PdfHorizontalLineContentEncoder(1, "Possessions"); //$NON-NLS-1$
+    IPdfContentBoxEncoder encoder = new PdfHorizontalLineContentEncoder(1, "Possessions"); //$NON-NLS-1$
     boxEncoder.encodeBox(directContent, encoder, character, bounds);
     return height;
   }
@@ -131,7 +131,7 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds bounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
-    IPdfContentEncoder encoder = new PdfGenericCharmEncoder(resources, baseFont);
+    IPdfContentBoxEncoder encoder = new PdfGenericCharmEncoder(resources, baseFont);
     boxEncoder.encodeBox(directContent, encoder, character, bounds);
     return height;
   }
@@ -142,7 +142,7 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds bounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
-    IPdfContentEncoder encoder = new PdfMagicEncoder(resources, baseFont, printMagic);
+    IPdfContentBoxEncoder encoder = new PdfMagicEncoder(resources, baseFont, printMagic);
     boxEncoder.encodeBox(directContent, encoder, null, bounds);
     return height;
   }

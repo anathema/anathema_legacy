@@ -1,7 +1,7 @@
 package net.sf.anathema.character.solar.reporting;
 
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.page.AbstractFirstEditionExaltPdfPartEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -11,7 +11,7 @@ public class FirstEditionSolarPartEncoder extends AbstractFirstEditionExaltPdfPa
     super(resources, registry, essenceMax);
   }
 
-  public IPdfContentEncoder getGreatCurseEncoder() {
+  public IPdfContentBoxEncoder getGreatCurseEncoder() {
     return new PdfSolarVirtueFlawEncoder(getBaseFont());
   }
 }

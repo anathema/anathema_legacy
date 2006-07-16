@@ -14,7 +14,7 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class PdfBackgroundEncoder implements IPdfContentEncoder {
+public class PdfBackgroundEncoder implements IPdfContentBoxEncoder {
 
   private final IResources resources;
   private final PdfTraitEncoder traitEncoder;

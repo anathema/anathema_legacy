@@ -10,7 +10,7 @@ import net.sf.anathema.character.reporting.util.Position;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class PdfWillpowerEncoder implements IPdfContentEncoder {
+public class PdfWillpowerEncoder implements IPdfContentBoxEncoder {
 
   private PdfTraitEncoder traitEncoder;
 

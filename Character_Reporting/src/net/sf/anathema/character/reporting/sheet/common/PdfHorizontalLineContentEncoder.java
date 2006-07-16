@@ -8,7 +8,7 @@ import net.sf.anathema.character.reporting.util.Bounds;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class PdfHorizontalLineContentEncoder implements IPdfContentEncoder {
+public class PdfHorizontalLineContentEncoder implements IPdfContentBoxEncoder {
 
   private static final int LINE_HEIGHT = IVoidStateFormatConstants.LINE_HEIGHT - 2;
   private final int columnCount;

@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
@@ -21,7 +21,7 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentEncoder {
+public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
 
   private static final int FONT_SIZE = IVoidStateFormatConstants.FONT_SIZE - 1;
   private static final float LINE_HEIGHT = FONT_SIZE * 1.5f;

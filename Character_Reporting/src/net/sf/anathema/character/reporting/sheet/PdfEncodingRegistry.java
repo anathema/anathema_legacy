@@ -5,7 +5,7 @@ import java.awt.Color;
 import net.sf.anathema.character.generic.impl.template.Table;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
 
 import com.lowagie.text.Font;
@@ -16,9 +16,9 @@ public class PdfEncodingRegistry {
   private final Table<CharacterType, IExaltedEdition, IPdfPartEncoder> partEncoderTable = new Table<CharacterType, IExaltedEdition, IPdfPartEncoder>(IPdfPartEncoder.class);
   private final BaseFont baseFont;
   private final BaseFont symbolBaseFont;
-  private IPdfContentEncoder weaponContentEncoder;
-  private IPdfContentEncoder armourContentEncoder;
-  private IPdfContentEncoder intimaciesEncoder;
+  private IPdfContentBoxEncoder weaponContentEncoder;
+  private IPdfContentBoxEncoder armourContentEncoder;
+  private IPdfContentBoxEncoder intimaciesEncoder;
 
   public PdfEncodingRegistry() {
     this.baseFont = new Font(Font.HELVETICA, 7, Font.NORMAL, Color.BLACK).getCalculatedBaseFont(true);
@@ -33,27 +33,27 @@ public class PdfEncodingRegistry {
     return symbolBaseFont;
   }
 
-  public void setWeaponContentEncoder(IPdfContentEncoder encoder) {
+  public void setWeaponContentEncoder(IPdfContentBoxEncoder encoder) {
     this.weaponContentEncoder = encoder;
   }
 
-  public void setArmourContentEncoder(IPdfContentEncoder encoder) {
+  public void setArmourContentEncoder(IPdfContentBoxEncoder encoder) {
     this.armourContentEncoder = encoder;
   }
 
-  public void setIntimaciesEncoder(IPdfContentEncoder intimaciesEncoder) {
+  public void setIntimaciesEncoder(IPdfContentBoxEncoder intimaciesEncoder) {
     this.intimaciesEncoder = intimaciesEncoder;
   }
 
-  public IPdfContentEncoder getWeaponContentEncoder() {
+  public IPdfContentBoxEncoder getWeaponContentEncoder() {
     return weaponContentEncoder;
   }
 
-  public IPdfContentEncoder getArmourContentEncoder() {
+  public IPdfContentBoxEncoder getArmourContentEncoder() {
     return armourContentEncoder;
   }
 
-  public IPdfContentEncoder getIntimaciesEncoder() {
+  public IPdfContentBoxEncoder getIntimaciesEncoder() {
     return intimaciesEncoder;
   }
 

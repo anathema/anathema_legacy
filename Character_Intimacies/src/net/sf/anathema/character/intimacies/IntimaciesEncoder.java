@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.elements.Line;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
@@ -22,7 +22,7 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class IntimaciesEncoder extends AbstractPdfEncoder implements IPdfContentEncoder {
+public class IntimaciesEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
 
   private final static int LINE_HEIGHT = IVoidStateFormatConstants.LINE_HEIGHT - 2;
   private final BaseFont baseFont;

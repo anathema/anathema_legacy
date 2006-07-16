@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.sheet.util;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
@@ -39,7 +39,7 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
 
   public Bounds encodeBox(
       PdfContentByte directContent,
-      IPdfContentEncoder encoder,
+      IPdfContentBoxEncoder encoder,
       IGenericCharacter character,
       Bounds bounds) throws DocumentException {
     String header = resources.getString("Sheet.Header." + encoder.getHeaderKey()); //$NON-NLS-1$

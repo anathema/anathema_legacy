@@ -12,7 +12,7 @@ import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.EssenceFlow;
 import net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.FirstExcellency;
 import net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.InfiniteMastery;
@@ -29,7 +29,7 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class PdfMagicEncoder implements IPdfContentEncoder {
+public class PdfMagicEncoder implements IPdfContentBoxEncoder {
 
   public static List<IMagicStats> collectPrintMagic(final IGenericCharacter character) {
     final IExaltedEdition edition = character.getRules().getEdition();

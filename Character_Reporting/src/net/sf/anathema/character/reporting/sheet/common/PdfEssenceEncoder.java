@@ -13,7 +13,7 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class PdfEssenceEncoder extends AbstractPdfEncoder implements IPdfContentEncoder {
+public class PdfEssenceEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
 
   private BaseFont baseFont;
   private final IResources resources;

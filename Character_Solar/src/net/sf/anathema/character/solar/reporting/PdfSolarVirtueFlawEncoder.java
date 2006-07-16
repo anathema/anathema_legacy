@@ -3,7 +3,7 @@ package net.sf.anathema.character.solar.reporting;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.elements.Line;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
@@ -23,7 +23,7 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class PdfSolarVirtueFlawEncoder extends AbstractPdfEncoder implements IPdfContentEncoder {
+public class PdfSolarVirtueFlawEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
 
   private final BaseFont baseFont;
   private final PdfTraitEncoder traitEncoder;

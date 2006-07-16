@@ -1,23 +1,23 @@
 package net.sf.anathema.character.reporting.sheet.page;
 
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 
 public interface IPdfPartEncoder {
 
-  public IPdfContentEncoder getAnimaEncoder();
+  public IPdfContentBoxEncoder getAnimaEncoder();
 
-  public IPdfContentEncoder getEssenceEncoder();
+  public IPdfContentBoxEncoder getEssenceEncoder();
 
-  public IPdfContentEncoder getGreatCurseEncoder();
+  public IPdfContentBoxEncoder getGreatCurseEncoder();
 
-  public IPdfContentEncoder getCombatStatsEncoder();
+  public IPdfContentBoxEncoder getCombatStatsEncoder();
 
-  public IPdfContentEncoder getSocialCombatEncoder();
+  public IPdfContentBoxEncoder getSocialCombatEncoder();
 
-  public IPdfContentEncoder getIntimaciesEncoder(PdfEncodingRegistry registry);
+  public IPdfContentBoxEncoder getIntimaciesEncoder(PdfEncodingRegistry registry);
 
-  public IPdfContentEncoder getHealthAndMovementEncoder();
+  public IPdfContentBoxEncoder getHealthAndMovementEncoder();
 
   public boolean hasSecondPage();
 

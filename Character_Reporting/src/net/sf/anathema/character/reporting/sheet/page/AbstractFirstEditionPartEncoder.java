@@ -1,7 +1,7 @@
 package net.sf.anathema.character.reporting.sheet.page;
 
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.NullPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.first.FirstEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionCombatStatsEncoder;
@@ -27,19 +27,19 @@ public abstract class AbstractFirstEditionPartEncoder implements IPdfPartEncoder
     return baseFont;
   }
 
-  public final IPdfContentEncoder getCombatStatsEncoder() {
+  public final IPdfContentBoxEncoder getCombatStatsEncoder() {
     return new SecondEditionCombatStatsEncoder(resources, baseFont, new FirstEditionCombatRulesTableEncoder(resources, baseFont));
   }
 
-  public IPdfContentEncoder getSocialCombatEncoder() {
+  public IPdfContentBoxEncoder getSocialCombatEncoder() {
     return new NullPdfContentEncoder();
   }
 
-  public IPdfContentEncoder getIntimaciesEncoder(PdfEncodingRegistry registry) {
+  public IPdfContentBoxEncoder getIntimaciesEncoder(PdfEncodingRegistry registry) {
     return new NullPdfContentEncoder();
   }
 
-  public IPdfContentEncoder getHealthAndMovementEncoder() {
+  public IPdfContentBoxEncoder getHealthAndMovementEncoder() {
     return new NullPdfContentEncoder("HealthAndMovement"); //$NON-NLS-1$
   }
   

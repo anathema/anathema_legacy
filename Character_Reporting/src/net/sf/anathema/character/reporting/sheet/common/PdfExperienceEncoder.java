@@ -14,7 +14,7 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class PdfExperienceEncoder implements IPdfContentEncoder {
+public class PdfExperienceEncoder implements IPdfContentBoxEncoder {
 
   private static final int FONT_SIZE = IVoidStateFormatConstants.FONT_SIZE;
   private final Font font;

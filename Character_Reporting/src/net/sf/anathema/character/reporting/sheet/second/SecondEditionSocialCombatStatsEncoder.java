@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.second.social.SocialCombatStatsTableEncoder;
 import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
@@ -24,7 +24,7 @@ import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class SecondEditionSocialCombatStatsEncoder implements IPdfContentEncoder {
+public class SecondEditionSocialCombatStatsEncoder implements IPdfContentBoxEncoder {
 
   private final IResources resources;
   private final BaseFont baseFont;

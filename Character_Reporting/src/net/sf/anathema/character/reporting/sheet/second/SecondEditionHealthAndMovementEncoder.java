@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.sheet.second;
 import java.awt.Color;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
@@ -24,7 +24,7 @@ import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfTemplate;
 
-public class SecondEditionHealthAndMovementEncoder extends AbstractPdfEncoder implements IPdfContentEncoder {
+public class SecondEditionHealthAndMovementEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
 
   private final IResources resources;
   private final BaseFont baseFont;

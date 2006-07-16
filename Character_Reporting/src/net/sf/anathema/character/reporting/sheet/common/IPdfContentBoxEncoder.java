@@ -6,7 +6,7 @@ import net.sf.anathema.character.reporting.util.Bounds;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public interface IPdfContentEncoder {
+public interface IPdfContentBoxEncoder {
   
   public String getHeaderKey();
 

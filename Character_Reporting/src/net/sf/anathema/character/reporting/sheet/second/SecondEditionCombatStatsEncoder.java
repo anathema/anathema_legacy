@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.sheet.util.LabelledValueEncoder;
@@ -17,7 +17,7 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class SecondEditionCombatStatsEncoder extends AbstractPdfEncoder implements IPdfContentEncoder {
+public class SecondEditionCombatStatsEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
 
   private final static float PADDING = 3;
 
@@ -75,6 +75,6 @@ public class SecondEditionCombatStatsEncoder extends AbstractPdfEncoder implemen
 
   private void encodeRules(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
       throws DocumentException {
-    combatRulesEncoder.encodeTable(directContent, character, bounds);    
+    combatRulesEncoder.encodeTable(directContent, character, bounds);
   }
 }

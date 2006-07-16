@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.sheet.second.part;
 
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfExperienceEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfHorizontalLineContentEncoder;
@@ -15,11 +15,11 @@ public class SecondEditionMortalPartEncoder extends AbstractSecondEditionPartEnc
     super(resources, baseFont, symbolBaseFont);
   }
 
-  public IPdfContentEncoder getAnimaEncoder() {
+  public IPdfContentBoxEncoder getAnimaEncoder() {
     return new PdfBackgroundEncoder(getResources(), getBaseFont());
   }
 
-  public IPdfContentEncoder getEssenceEncoder() {
+  public IPdfContentBoxEncoder getEssenceEncoder() {
     return new PdfExperienceEncoder(getResources(), getBaseFont());
   }
 
@@ -27,7 +27,7 @@ public class SecondEditionMortalPartEncoder extends AbstractSecondEditionPartEnc
     return false;
   }
 
-  public IPdfContentEncoder getGreatCurseEncoder() {
+  public IPdfContentBoxEncoder getGreatCurseEncoder() {
     return new PdfHorizontalLineContentEncoder(2, "Languages"); //$NON-NLS-1$
   }
 }
