@@ -38,6 +38,9 @@
 	<extension-point id="Toolbar">
 		<parameter-def id="class" multiplicity="any"/>
 	</extension-point>
+	<extension plugin-id="net.sf.anathema.core"	point-id="Toolbar" id="Toolbar">
+		<parameter id="class" value="net.sf.anathema.framework.module.AnathemaCoreTool"/>
+	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="PreferenceElements" id="PreferenceElements">
 	  <parameter id="type">
 		<parameter id="class" value="net.sf.anathema.framework.module.preferences.LookAndFeelPreferencesElement"/>

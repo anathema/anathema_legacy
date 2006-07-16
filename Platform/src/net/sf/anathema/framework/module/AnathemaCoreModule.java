@@ -30,13 +30,9 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class AnathemaCoreModule implements IAnathemaModule {
 
-  private IAnathemaView anathemaView;
-
   public void initPresentation(IResources resources, IAnathemaModel model, IAnathemaView view) {
-    this.anathemaView = view;
     IModelViewMapping mapping = new ModelViewMapping();
-    initMenu(resources, model);
-    initTools(resources, model);
+    initMenu(resources, model, view);
     IItemMangementModel itemManagement = model.getItemManagement();
     itemManagement.addListener(new ItemManagmentModelListener(
         model.getViewFactoryRegistry(),
@@ -46,13 +42,7 @@ public class AnathemaCoreModule implements IAnathemaModule {
     view.addViewSelectionListener(new ItemViewSelectionListener(itemManagement, mapping));
   }
 
-  private void initTools(IResources resources, IAnathemaModel model) {
-    anathemaView.getToolbar().addTools(AnathemaSaveAction.createToolAction(model, resources));
-    anathemaView.getToolbar().addTools(AnathemaSaveAllAction.createToolAction(model, resources));
-    anathemaView.getToolbar().addTools(AnathemaPrintAction.createToolAction(model, resources));
-  }
-
-  private void initMenu(IResources resources, IAnathemaModel model) {
+  private void initMenu(IResources resources, IAnathemaModel model, IAnathemaView anathemaView) {
     IMenuBar menuBar = anathemaView.getMenuBar();
     IMenu mainMenu = menuBar.getMainMenu();
     mainMenu.addMenuItem(createNewMenu(model, resources));
