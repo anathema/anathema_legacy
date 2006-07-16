@@ -1,15 +1,15 @@
 package net.sf.anathema.character.reporting.sheet.first;
 
+import net.sf.anathema.character.reporting.sheet.elements.TableList;
+import net.sf.anathema.character.reporting.sheet.second.AbstractCombatRulesTableEncoder;
+import net.sf.anathema.character.reporting.sheet.util.TableCell;
+import net.sf.anathema.lib.resources.IResources;
+
 import com.lowagie.text.Chunk;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPTable;
-
-import net.sf.anathema.character.reporting.sheet.elements.TableList;
-import net.sf.anathema.character.reporting.sheet.second.AbstractCombatRulesTableEncoder;
-import net.sf.anathema.character.reporting.sheet.util.TableCell;
-import net.sf.anathema.lib.resources.IResources;
 
 public class FirstEditionCombatRulesTableEncoder extends AbstractCombatRulesTableEncoder {
 
@@ -19,7 +19,9 @@ public class FirstEditionCombatRulesTableEncoder extends AbstractCombatRulesTabl
 
   @Override
   protected void addFirstCell(PdfPTable table) {
-    table.addCell(new TableCell(createCombatAttackList(), Rectangle.BOX));
+    TableCell cell = new TableCell(createCombatAttackList(), Rectangle.BOX);
+    cell.setPaddingBottom(2f);
+    table.addCell(cell);
   }
 
   private TableList createCombatAttackList() {
@@ -40,14 +42,18 @@ public class FirstEditionCombatRulesTableEncoder extends AbstractCombatRulesTabl
   @Override
   protected void addSecondCell(PdfPTable table) {
     Phrase knockdownPhrase = new Phrase(getResources().getString("Sheet.Combat.Knockdown.Header") + "\n", getFont()); //$NON-NLS-1$ //$NON-NLS-2$
-    knockdownPhrase.add(new Chunk(getResources().getString("Sheet.Combat.Knockdown.First.Comment") + "\n\n", getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
+    knockdownPhrase.add(new Chunk(
+        "\n" + getResources().getString("Sheet.Combat.Knockdown.First.Comment"), getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
+    knockdownPhrase.add(new Chunk(
+        "\n\n" + getResources().getString("Sheet.Combat.Comment.First.Rules"), getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
     table.addCell(createContentCell(knockdownPhrase));
   }
 
   @Override
   protected void addThirdCell(PdfPTable table) {
     Phrase stunningPhrase = new Phrase(getResources().getString("Sheet.Combat.Stunning.Header") + "\n", getFont()); //$NON-NLS-1$ //$NON-NLS-2$
-    stunningPhrase.add(new Chunk(getResources().getString("Sheet.Combat.Stunning.First.Comment"), getCommentFont())); //$NON-NLS-1$
+    stunningPhrase.add(new Chunk(
+        "\n" + getResources().getString("Sheet.Combat.Stunning.First.Comment"), getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
     table.addCell(createContentCell(stunningPhrase));
   }
 }

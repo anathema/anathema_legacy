@@ -47,4 +47,8 @@ public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncode
   public IPdfContentEncoder getHealthAndMovementEncoder() {
     return new SecondEditionHealthAndMovementEncoder(resources, baseFont, symbolBaseFont);
   }
+
+  public float getWeaponryHeight() {
+    return 113;
+  }
 }

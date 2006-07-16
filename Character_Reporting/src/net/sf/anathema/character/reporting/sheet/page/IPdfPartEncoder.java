@@ -20,4 +20,6 @@ public interface IPdfPartEncoder {
   public IPdfContentEncoder getHealthAndMovementEncoder();
 
   public boolean hasSecondPage();
+
+  public float getWeaponryHeight();
 }

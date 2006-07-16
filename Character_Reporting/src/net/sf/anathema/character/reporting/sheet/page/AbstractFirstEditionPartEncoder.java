@@ -42,4 +42,8 @@ public abstract class AbstractFirstEditionPartEncoder implements IPdfPartEncoder
   public IPdfContentEncoder getHealthAndMovementEncoder() {
     return new NullPdfContentEncoder("HealthAndMovement"); //$NON-NLS-1$
   }
+  
+  public float getWeaponryHeight() {
+    return 140;
+  }
 }

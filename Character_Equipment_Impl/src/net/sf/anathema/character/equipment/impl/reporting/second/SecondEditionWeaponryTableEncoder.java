@@ -41,7 +41,7 @@ public class SecondEditionWeaponryTableEncoder extends AbstractEquipmentTableEnc
 
   @Override
   protected int getLineCount() {
-    return 8;
+    return 20;
   }
 
   @Override
