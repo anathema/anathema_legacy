@@ -2,6 +2,8 @@ package net.sf.anathema.character.generic.impl;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -15,6 +17,9 @@ public class CharacterUtilties {
   }
 
   public static int getKnockdownPool(IGenericCharacter character) {
+    if (character.getRules().getEdition() == ExaltedEdition.FirstEdition) {
+      return getTotalValue(character, AttributeType.Stamina, AbilityType.Resistance);
+    }
     int attribute = getMaxValue(character, AttributeType.Dexterity, AttributeType.Stamina);
     int ability = getMaxValue(character, AbilityType.Athletics, AbilityType.Resistance);
     return attribute + ability;
@@ -47,7 +52,7 @@ public class CharacterUtilties {
     return getRoundUpDv(traitCollection, types);
   }
 
-  private static int getRoundUpDv(IGenericTraitCollection traitCollection, ITraitType... types) {
+  public static int getRoundUpDv(IGenericTraitCollection traitCollection, ITraitType... types) {
     int sum = 0;
     for (ITraitType type : types) {
       sum += traitCollection.getTrait(type).getCurrentValue();
@@ -65,9 +70,34 @@ public class CharacterUtilties {
 
   public static int getDodgeDv(CharacterType characterType, IGenericTraitCollection traitCollection) {
     int essenceValue = traitCollection.getTrait(OtherTraitType.Essence).getCurrentValue();
-     if (essenceValue > 1) {
+    if (essenceValue > 1) {
       return getDv(characterType, traitCollection, AttributeType.Dexterity, AbilityType.Dodge, OtherTraitType.Essence);
     }
     return getDv(characterType, traitCollection, AttributeType.Dexterity, AbilityType.Dodge);
+  }
+
+  public static int getUntrainedActionModifier(IGenericCharacter character, ITraitType traitType) {
+    CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
+    boolean isExaltPunished = character.getRules() == ExaltedRuleSet.CoreRules;
+    if (character.getTrait(traitType).getCurrentValue() > 0) {
+      return 0;
+    }
+    if (isExaltPunished || !CharacterType.isExaltType(characterType)) {
+      return -2;
+    }
+    return 0;
+  }
+
+  public static int getDodgePool(IGenericCharacter character) {
+    int dodgeValue = character.getTrait(AbilityType.Dodge).getCurrentValue();
+    int value = character.getTrait(AttributeType.Dexterity).getCurrentValue() + dodgeValue;
+    value += Math.max(0, value - getUntrainedActionModifier(character, AbilityType.Dodge));
+    if (character.getRules() != ExaltedRuleSet.PowerCombat) {
+      int essenceValue = character.getTrait(OtherTraitType.Essence).getCurrentValue();
+      if (essenceValue > 1) {
+        value += essenceValue;
+      }
+    }
+    return value;
   }
 }

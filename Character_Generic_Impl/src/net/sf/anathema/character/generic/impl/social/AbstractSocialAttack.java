@@ -19,7 +19,7 @@ public abstract class AbstractSocialAttack implements ISocialCombatStats {
   }
 
   public final int getDeceptionMDV() {
-    return CharacterUtilties.getDv(character, AttributeType.Manipulation, getName());
+    return CharacterUtilties.getRoundUpDv(character, AttributeType.Manipulation, getName());
   }
 
   public final int getHonestyAttackValue() {
@@ -27,7 +27,7 @@ public abstract class AbstractSocialAttack implements ISocialCombatStats {
   }
 
   public final int getHonestyMDV() {
-    return CharacterUtilties.getDv(character, AttributeType.Charisma, getName());
+    return CharacterUtilties.getRoundUpDv(character, AttributeType.Charisma, getName());
   }
 
   public abstract ITraitType getName();

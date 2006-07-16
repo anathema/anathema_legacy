@@ -2,9 +2,12 @@ package net.sf.anathema.character.reporting.sheet.page;
 
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.NullPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.first.FirstEditionCombatRulesTableEncoder;
+import net.sf.anathema.character.reporting.sheet.first.FirstEditionCombatValueEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionCombatStatsEncoder;
+import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
@@ -28,7 +31,9 @@ public abstract class AbstractFirstEditionPartEncoder implements IPdfPartEncoder
   }
 
   public final IPdfContentBoxEncoder getCombatStatsEncoder() {
-    return new SecondEditionCombatStatsEncoder(resources, baseFont, new FirstEditionCombatRulesTableEncoder(resources, baseFont));
+    IPdfContentEncoder valueEncoder = new FirstEditionCombatValueEncoder(resources, baseFont);
+    IPdfTableEncoder rulesEncoder = new FirstEditionCombatRulesTableEncoder(resources, baseFont);
+    return new SecondEditionCombatStatsEncoder(rulesEncoder, valueEncoder, baseFont);
   }
 
   public IPdfContentBoxEncoder getSocialCombatEncoder() {

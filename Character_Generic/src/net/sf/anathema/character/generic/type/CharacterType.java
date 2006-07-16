@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public enum CharacterType implements IIdentificate {
@@ -91,5 +92,9 @@ public enum CharacterType implements IIdentificate {
   @Override
   public String toString() {
     return getId();
+  }
+
+  public static boolean isExaltType(CharacterType characterType) {
+    return ArrayUtilities.contains(getAllExaltTypes(), characterType);
   }
 }
