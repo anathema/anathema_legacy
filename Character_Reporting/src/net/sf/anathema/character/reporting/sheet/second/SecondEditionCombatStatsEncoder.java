@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
+import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.sheet.util.LabelledValueEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.character.reporting.util.Position;
@@ -22,15 +23,17 @@ public class SecondEditionCombatStatsEncoder extends AbstractPdfEncoder implemen
 
   private final IResources resources;
   private final BaseFont baseFont;
+  private final IPdfTableEncoder combatRulesEncoder;
 
   @Override
   protected BaseFont getBaseFont() {
     return baseFont;
   }
 
-  public SecondEditionCombatStatsEncoder(IResources resources, BaseFont baseFont) {
+  public SecondEditionCombatStatsEncoder(IResources resources, BaseFont baseFont, IPdfTableEncoder combatRulesEncoder) {
     this.resources = resources;
     this.baseFont = baseFont;
+    this.combatRulesEncoder = combatRulesEncoder;
   }
 
   public String getHeaderKey() {
@@ -72,6 +75,6 @@ public class SecondEditionCombatStatsEncoder extends AbstractPdfEncoder implemen
 
   private void encodeRules(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
       throws DocumentException {
-    new SecondEditionCombatRulesTableEncoder(resources, baseFont).encodeTable(directContent, character, bounds);
+    combatRulesEncoder.encodeTable(directContent, character, bounds);    
   }
 }

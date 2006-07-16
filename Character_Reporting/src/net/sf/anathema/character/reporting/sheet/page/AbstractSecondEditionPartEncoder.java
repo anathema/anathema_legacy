@@ -2,6 +2,7 @@ package net.sf.anathema.character.reporting.sheet.page;
 
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.second.SecondEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionCombatStatsEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionSocialCombatStatsEncoder;
@@ -30,7 +31,9 @@ public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncode
   }
 
   public final IPdfContentEncoder getCombatStatsEncoder() {
-    return new SecondEditionCombatStatsEncoder(resources, baseFont);
+    return new SecondEditionCombatStatsEncoder(resources, baseFont, new SecondEditionCombatRulesTableEncoder(
+        resources,
+        baseFont));
   }
 
   public IPdfContentEncoder getSocialCombatEncoder() {
