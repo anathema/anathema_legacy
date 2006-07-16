@@ -3,6 +3,11 @@
 	<requires>
 		<import plugin-id="net.sf.anathema.core" reverse-lookup="true"/>
 	</requires>
+	<runtime>
+		<library id="core" path="./" type="code">
+			<export prefix="*"/>
+		</library>
+	</runtime>
 	<extension plugin-id="net.sf.anathema.core"	point-id="ItemTypes" id="ItemType">
 		<parameter id="type">
 			<parameter id="class" value="net.sf.anathema.campaign.module.NoteTypeConfiguration"/>
