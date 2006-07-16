@@ -26,7 +26,7 @@
 			<parameter-def id="preferencekey" multiplicity="one"/>
 		</parameter-def>
 	</extension-point>
-	<extension-point id="MainModules">
+	<extension-point id="Bootjobs">
 		<parameter-def id="class"/>
 	</extension-point>
 	<extension-point id="Menubar">
@@ -38,6 +38,9 @@
 	<extension-point id="Toolbar">
 		<parameter-def id="class" multiplicity="any"/>
 	</extension-point>
+	<extension plugin-id="net.sf.anathema.core"	point-id="Menubar" id="Menubar">
+		<parameter id="class" value="net.sf.anathema.framework.module.AnathemaCoreMenu"/>
+	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="Toolbar" id="Toolbar">
 		<parameter id="class" value="net.sf.anathema.framework.module.AnathemaCoreTool"/>
 	</extension>
@@ -67,8 +70,8 @@
 		<parameter id="preferencekey" value="Repository"/>
 	  </parameter>	   
 	</extension>
-	<extension plugin-id="net.sf.anathema.core"	point-id="MainModules" id="AnathemaCore">
-		<parameter id="class" value="net.sf.anathema.framework.module.AnathemaCoreModule"/>
+	<extension plugin-id="net.sf.anathema.core"	point-id="Bootjobs" id="AnathemaCore">
+		<parameter id="class" value="net.sf.anathema.framework.module.ItemViewBootJob"/>
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
 		<parameter id="bundle" value="anathema"/>

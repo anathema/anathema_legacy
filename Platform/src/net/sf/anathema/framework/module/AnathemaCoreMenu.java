@@ -5,10 +5,6 @@ import javax.swing.JMenu;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.model.ItemManagmentModelListener;
-import net.sf.anathema.framework.presenter.IItemMangementModel;
-import net.sf.anathema.framework.presenter.IModelViewMapping;
-import net.sf.anathema.framework.presenter.ModelViewMapping;
 import net.sf.anathema.framework.presenter.action.AnathemaAboutAction;
 import net.sf.anathema.framework.presenter.action.AnathemaExitAction;
 import net.sf.anathema.framework.presenter.action.ItemTypeLoadAction;
@@ -17,38 +13,20 @@ import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElemen
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaCloseAction;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAction;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAllAction;
-import net.sf.anathema.framework.presenter.itemmanagement.ItemViewSelectionListener;
+import net.sf.anathema.framework.presenter.menu.IAnathemaMenu;
 import net.sf.anathema.framework.presenter.menu.IMenuExtensionPoint;
 import net.sf.anathema.framework.presenter.menu.IMenuItem;
 import net.sf.anathema.framework.presenter.menu.MenuExtensionPoint;
 import net.sf.anathema.framework.reporting.controller.AnathemaPrintAction;
-import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.framework.view.IMenuBar;
 import net.sf.anathema.framework.view.menu.IMenu;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
-public class AnathemaCoreModule implements IAnathemaModule {
+public class AnathemaCoreMenu implements IAnathemaMenu {
 
-  public void initPresentation(IResources resources, IAnathemaModel model, IAnathemaView view) {
-    initMenu(resources, model, view);
-    initModelViewMapping(resources, model, view);
-  }
-
-  private void initModelViewMapping(IResources resources, IAnathemaModel model, IAnathemaView view) {
-    IModelViewMapping mapping = new ModelViewMapping();
-    IItemMangementModel itemManagement = model.getItemManagement();
-    itemManagement.addListener(new ItemManagmentModelListener(
-        model.getViewFactoryRegistry(),
-        view,
-        mapping,
-        new ItemActionFactory(itemManagement, resources)));
-    view.addViewSelectionListener(new ItemViewSelectionListener(itemManagement, mapping));
-  }
-
-  private void initMenu(IResources resources, IAnathemaModel model, IAnathemaView anathemaView) {
-    IMenuBar menuBar = anathemaView.getMenuBar();
-    IMenu mainMenu = menuBar.getMainMenu();
+  public void add(IResources resources, IAnathemaModel model, IMenuBar menubar) {
+    IMenu mainMenu = menubar.getMainMenu();
     mainMenu.addMenuItem(createNewMenu(model, resources));
     mainMenu.addMenuItem(createLoadMenu(model, resources));
     mainMenu.addMenuItem(AnathemaCloseAction.createMenuAction(model.getItemManagement(), resources));
@@ -59,8 +37,8 @@ public class AnathemaCoreModule implements IAnathemaModule {
     mainMenu.addMenuItem(AnathemaPrintAction.createMenuAction(model, resources));
     mainMenu.addSeparator();
     mainMenu.addMenuItem(AnathemaExitAction.createMenuAction(resources));
-    menuBar.getHelpMenu().addMenuItem(new AnathemaAboutAction(resources));
-    menuBar.addMenu(createExtraMenu(model, resources));
+    menubar.getHelpMenu().addMenuItem(new AnathemaAboutAction(resources));
+    menubar.addMenu(createExtraMenu(model, resources));
   }
 
   private JMenu createNewMenu(IAnathemaModel anathemaModel, IResources resources) {

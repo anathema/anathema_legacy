@@ -26,8 +26,8 @@
 		<parameter id="preferencekey" value="Ruleset"/>
 	  </parameter>
 	</extension>
-	<extension plugin-id="net.sf.anathema.core"	point-id="MainModules" id="MainModules">
-		<parameter id="class" value="net.sf.anathema.character.impl.module.CharacterModule"/>
+	<extension plugin-id="net.sf.anathema.core"	point-id="Bootjobs" id="Bootjob">
+		<parameter id="class" value="net.sf.anathema.character.impl.module.CharacterPerformanceBootJob"/>
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="ItemTypes" id="ItemType">
 		<parameter id="type">

@@ -14,7 +14,6 @@ import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.framework.view.AnathemaView;
 import net.sf.anathema.framework.view.IAnathemaView;
-import net.sf.anathema.initialization.modules.IModuleCollection;
 import net.sf.anathema.initialization.plugin.AnathemaPluginManager;
 import net.sf.anathema.initialization.plugin.IPluginConstants;
 import net.sf.anathema.initialization.plugin.PluginUtilities;
@@ -27,7 +26,6 @@ public class AnathemaInitializer {
 
   private static final String EXTENSION_POINT_RESOURCES = "AnathemaResources"; //$NON-NLS-1$
   private static final String PARAM_BUNDLE = "bundle"; //$NON-NLS-1$
-  private final IModuleCollection moduleCollection;
   private final IAnathemaPreferences anathemaPreferences;
   private final AnathemaPluginManager pluginManager;
   private final ItemTypeConfigurationCollection itemTypeCollection;
@@ -36,7 +34,6 @@ public class AnathemaInitializer {
   public AnathemaInitializer(IAnathemaPreferences anathemaPreferences) throws InitializationException {
     this.pluginManager = new AnathemaPluginManager();
     pluginManager.collectPlugins();
-    this.moduleCollection = new ModuleCollection(pluginManager);
     this.itemTypeCollection = new ItemTypeConfigurationCollection(pluginManager, AnathemaEnvironment.isDevelopment());
     this.extensionCollection = new AnathemaExtensionCollection(pluginManager);
     this.anathemaPreferences = anathemaPreferences;
@@ -47,7 +44,7 @@ public class AnathemaInitializer {
     CentralExceptionHandling.setHandler(new CentralExceptionHandler(resources));
     IAnathemaModel anathemaModel = initModel(resources);
     IAnathemaView view = initView(resources);
-    new AnathemaPresenter(pluginManager, anathemaModel, view, resources, itemTypeCollection.getItemTypes()).initPresentation(moduleCollection);
+    new AnathemaPresenter(pluginManager, anathemaModel, view, resources, itemTypeCollection.getItemTypes()).initPresentation();
     return view;
   }
 
