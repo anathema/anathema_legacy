@@ -31,8 +31,12 @@ import net.sf.anathema.lib.resources.IResources;
 public class AnathemaCoreModule implements IAnathemaModule {
 
   public void initPresentation(IResources resources, IAnathemaModel model, IAnathemaView view) {
-    IModelViewMapping mapping = new ModelViewMapping();
     initMenu(resources, model, view);
+    initModelViewMapping(resources, model, view);
+  }
+
+  private void initModelViewMapping(IResources resources, IAnathemaModel model, IAnathemaView view) {
+    IModelViewMapping mapping = new ModelViewMapping();
     IItemMangementModel itemManagement = model.getItemManagement();
     itemManagement.addListener(new ItemManagmentModelListener(
         model.getViewFactoryRegistry(),
