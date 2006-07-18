@@ -3,7 +3,6 @@ package net.sf.anathema.character.mortal;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.framework.reporting.template.CharacterDescriptionReportTemplate;
-import net.sf.anathema.character.generic.framework.reporting.template.MortalBasicsCharacterTemplate;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
@@ -38,6 +37,5 @@ public class MortalCharacterModule extends NullObjectCharacterModuleAdapter {
     registry.setPartEncoder(CharacterType.MORTAL, ExaltedEdition.SecondEdition, secondEdtionMortalPartEncoder);
     registry.setPartEncoder(CharacterType.MORTAL, ExaltedEdition.FirstEdition, firstEditionMortalPartEncoder);
     generics.getReportTemplateRegistry().add(new CharacterDescriptionReportTemplate(resources));
-    generics.getReportTemplateRegistry().add(new MortalBasicsCharacterTemplate(resources));
   }
 }
