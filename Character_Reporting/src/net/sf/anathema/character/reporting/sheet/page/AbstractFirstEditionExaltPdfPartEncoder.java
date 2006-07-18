@@ -6,21 +6,17 @@ import net.sf.anathema.character.reporting.sheet.common.PdfEssenceEncoder;
 import net.sf.anathema.character.reporting.sheet.common.anima.PdfAnimaEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-import com.lowagie.text.pdf.BaseFont;
-
 public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFirstEditionPartEncoder {
 
   private final int essenceMax;
-  private final BaseFont symbolBaseFont;
 
   public AbstractFirstEditionExaltPdfPartEncoder(IResources resources, PdfEncodingRegistry registry, int essenceMax) {
-    super(resources, registry.getBaseFont());
-    this.symbolBaseFont = registry.getSymbolBaseFont();
+    super(resources, registry.getBaseFont(), registry.getSymbolBaseFont());
     this.essenceMax = essenceMax;
   }
 
   public IPdfContentBoxEncoder getAnimaEncoder() {
-    return new PdfAnimaEncoder(getResources(), getBaseFont(), symbolBaseFont);
+    return new PdfAnimaEncoder(getResources(), getBaseFont(), getSymbolBaseFont());
   }
 
   public IPdfContentBoxEncoder getEssenceEncoder() {

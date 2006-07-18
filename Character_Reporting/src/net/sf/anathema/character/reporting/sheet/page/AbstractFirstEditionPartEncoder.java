@@ -7,6 +7,7 @@ import net.sf.anathema.character.reporting.sheet.common.NullPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.combat.PdfCombatStatsEncoder;
 import net.sf.anathema.character.reporting.sheet.first.FirstEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.sheet.first.FirstEditionCombatValueEncoder;
+import net.sf.anathema.character.reporting.sheet.first.FirstEditionHealthAndMovementEncoder;
 import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -16,10 +17,12 @@ public abstract class AbstractFirstEditionPartEncoder implements IPdfPartEncoder
 
   private final IResources resources;
   private final BaseFont baseFont;
+  private final BaseFont symbolBaseFont;
 
-  public AbstractFirstEditionPartEncoder(IResources resources, BaseFont baseFont) {
+  public AbstractFirstEditionPartEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont) {
     this.resources = resources;
     this.baseFont = baseFont;
+    this.symbolBaseFont = symbolBaseFont;
   }
 
   public final IResources getResources() {
@@ -28,6 +31,10 @@ public abstract class AbstractFirstEditionPartEncoder implements IPdfPartEncoder
 
   public final BaseFont getBaseFont() {
     return baseFont;
+  }
+  
+  public final BaseFont getSymbolBaseFont() {
+    return symbolBaseFont;
   }
 
   public final IPdfContentBoxEncoder getCombatStatsEncoder() {
@@ -45,7 +52,7 @@ public abstract class AbstractFirstEditionPartEncoder implements IPdfPartEncoder
   }
 
   public IPdfContentBoxEncoder getHealthAndMovementEncoder() {
-    return new NullPdfContentEncoder("HealthAndMovement"); //$NON-NLS-1$
+    return new FirstEditionHealthAndMovementEncoder(getResources(), getBaseFont(), symbolBaseFont);
   }
 
   public float getWeaponryHeight() {

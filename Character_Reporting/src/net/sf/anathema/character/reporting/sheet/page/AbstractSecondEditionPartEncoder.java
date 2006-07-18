@@ -32,6 +32,10 @@ public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncode
   public final BaseFont getBaseFont() {
     return baseFont;
   }
+  
+  public final BaseFont getSymbolBaseFont() {
+    return symbolBaseFont;
+  }
 
   public final IPdfContentBoxEncoder getCombatStatsEncoder() {
     IPdfContentEncoder valueEncoder = new SecondEditionCombatValueEncoder(resources, baseFont);
