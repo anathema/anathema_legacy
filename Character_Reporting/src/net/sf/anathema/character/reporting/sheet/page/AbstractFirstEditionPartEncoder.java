@@ -4,6 +4,7 @@ import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.NullPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.PdfHorizontalLineContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.combat.PdfCombatStatsEncoder;
 import net.sf.anathema.character.reporting.sheet.first.FirstEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.sheet.first.FirstEditionCombatValueEncoder;
@@ -44,11 +45,11 @@ public abstract class AbstractFirstEditionPartEncoder implements IPdfPartEncoder
   }
 
   public IPdfContentBoxEncoder getSocialCombatEncoder() {
-    return new NullPdfContentEncoder();
+    return new PdfHorizontalLineContentEncoder(1, "MeritsFlaws"); //$NON-NLS-1$
   }
 
   public IPdfContentBoxEncoder getIntimaciesEncoder(PdfEncodingRegistry registry) {
-    return new NullPdfContentEncoder();
+    return new PdfHorizontalLineContentEncoder(1, "Notes"); //$NON-NLS-1$
   }
 
   public IPdfContentBoxEncoder getHealthAndMovementEncoder() {
