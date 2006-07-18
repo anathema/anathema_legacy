@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.sheet.page;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
-import net.sf.anathema.character.reporting.sheet.common.combat.CombatStatsEncoder;
+import net.sf.anathema.character.reporting.sheet.common.combat.PdfCombatStatsEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionCombatValueEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionHealthAndMovementEncoder;
@@ -36,7 +36,7 @@ public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncode
   public final IPdfContentBoxEncoder getCombatStatsEncoder() {
     IPdfContentEncoder valueEncoder = new SecondEditionCombatValueEncoder(resources, baseFont);
     IPdfTableEncoder rulesEncoder = new SecondEditionCombatRulesTableEncoder(resources, baseFont);
-    return new CombatStatsEncoder(rulesEncoder, valueEncoder, baseFont);
+    return new PdfCombatStatsEncoder(rulesEncoder, valueEncoder, baseFont);
   }
 
   public IPdfContentBoxEncoder getSocialCombatEncoder() {
