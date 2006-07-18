@@ -1,4 +1,4 @@
-package net.sf.anathema.character.reporting.sheet.second;
+package net.sf.anathema.character.reporting.sheet.common.combat;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;

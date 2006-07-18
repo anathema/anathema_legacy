@@ -4,9 +4,9 @@ import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.NullPdfContentEncoder;
+import net.sf.anathema.character.reporting.sheet.common.combat.CombatStatsEncoder;
 import net.sf.anathema.character.reporting.sheet.first.FirstEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.sheet.first.FirstEditionCombatValueEncoder;
-import net.sf.anathema.character.reporting.sheet.second.CombatStatsEncoder;
 import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 

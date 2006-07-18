@@ -1,5 +1,6 @@
 package net.sf.anathema.character.reporting.sheet.second;
 
+import net.sf.anathema.character.reporting.sheet.common.combat.AbstractCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.sheet.elements.TableList;
 import net.sf.anathema.character.reporting.sheet.util.TableCell;
 import net.sf.anathema.lib.resources.IResources;
