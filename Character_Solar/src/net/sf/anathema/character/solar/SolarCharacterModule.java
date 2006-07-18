@@ -17,7 +17,6 @@ import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
 import net.sf.anathema.character.solar.caste.SolarCaste;
 import net.sf.anathema.character.solar.reporting.FirstEditionSolarPartEncoder;
 import net.sf.anathema.character.solar.reporting.SecondEditionSolarPartEncoder;
-import net.sf.anathema.character.solar.reporting.SolarVoidStateReportTemplate;
 import net.sf.anathema.character.solar.template.ISolarSpecialCharms;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawModelFactory;
 import net.sf.anathema.character.solar.virtueflaw.SolarVirtueFlawPersisterFactory;
@@ -71,7 +70,6 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
     registry.setPartEncoder(CharacterType.SOLAR, ExaltedEdition.SecondEdition, secondEditionEncoder);
     IPdfPartEncoder firstEditionEncoder = new FirstEditionSolarPartEncoder(resources, registry, ESSENCE_MAX);
     registry.setPartEncoder(CharacterType.SOLAR, ExaltedEdition.FirstEdition, firstEditionEncoder);
-    generics.getReportTemplateRegistry().add(new SolarVoidStateReportTemplate(resources));
   }
 
   @Override
