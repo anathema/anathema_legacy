@@ -41,8 +41,16 @@ public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
     V[] values = ArrayUtilities.transform(new Object[] { object }, contentClazz);
     smartList.setSelectedObjects(values);
   }
-  
+
   public JComponent getContent() {
     return smartList;
+  }
+
+  public V getSelectedObject() {
+    return smartList.getSelectedValue();
+  }
+
+  public boolean isObjectSelected() {
+    return getSelectedObject() != null;
   }
 }

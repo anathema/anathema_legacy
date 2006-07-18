@@ -9,4 +9,8 @@ public interface IObjectSelectionView<V> {
   public void addObjectSelectionChangedListener(IObjectValueChangedListener<V> listener);
 
   public void setObjects(V[] objects);
+  
+  public V getSelectedObject();
+  
+  public boolean isObjectSelected();
 }

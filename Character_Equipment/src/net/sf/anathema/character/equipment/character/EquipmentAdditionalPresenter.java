@@ -1,8 +1,13 @@
 package net.sf.anathema.character.equipment.character;
 
+import java.awt.Component;
+
+import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.character.equipment.character.model.IEquipmentObject;
 import net.sf.anathema.character.equipment.character.model.IEquipmentObjectCollection;
 import net.sf.anathema.character.equipment.character.view.IEquipmentAdditionalView;
+import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.resources.IResources;
@@ -23,8 +28,26 @@ public class EquipmentAdditionalPresenter implements IPresenter {
   }
 
   public void initPresentation() {
-    IListObjectSelectionView<IEquipmentObject> equipmentPickList = view.getEquipmentObjectPickList();
+    final IListObjectSelectionView<IEquipmentObject> equipmentPickList = view.getEquipmentObjectPickList();
     equipmentPickList.setCellRenderer(new EquipmentObjectCellRenderer());
     equipmentPickList.setObjects(model.getAvailableObjects());
+    // TODO über model nicht über view gehen
+    final SmartAction addAction = new SmartAction("Add") {
+      
+      @Override
+      protected void execute(Component parentComponent) {
+        IEquipmentObject selectedObject = equipmentPickList.getSelectedObject();
+        IEquipmentObjectView objectView = view.addEquipmentObjectView();
+        IEquipmentStringBuilder resourceBuilder = new EquipmentStringBuilder(resources);
+        new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder).initPresentation();
+      }
+    };
+    equipmentPickList.addObjectSelectionChangedListener(new IObjectValueChangedListener<IEquipmentObject>() {
+      public void valueChanged(IEquipmentObject newValue) {
+        addAction.setEnabled(view.getEquipmentObjectPickList().isObjectSelected());
+      }
+    });
+    addAction.setEnabled(view.getEquipmentObjectPickList().isObjectSelected());
+    view.setSelectButtonAction(addAction);
   }
 }

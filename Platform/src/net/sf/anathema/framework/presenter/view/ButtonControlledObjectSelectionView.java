@@ -97,4 +97,13 @@ public class ButtonControlledObjectSelectionView<V> implements
   public void setButtonEnabled(boolean enabled) {
     addButton.setEnabled(enabled);
   }
+  
+  @SuppressWarnings("unchecked")
+  public V getSelectedObject() {
+    return (V) comboBox.getSelectedItem();
+  }
+  
+  public boolean isObjectSelected() {
+    return getSelectedObject() != null;
+  }
 }

@@ -43,6 +43,6 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     if (equipment instanceof IWeapon) {
       return createWeaponString((IWeapon) equipment);
     }
-    throw new UnsupportedOperationException();
+    throw new UnsupportedOperationException("Unsupported equipment class:" + equipment.getClass());
   }
 }

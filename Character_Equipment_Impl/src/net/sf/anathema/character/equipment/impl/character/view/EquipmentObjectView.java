@@ -6,11 +6,12 @@ import net.disy.commons.core.model.BooleanModel;
 import net.disy.commons.swing.action.ActionWidgetFactory;
 import net.disy.commons.swing.action.SmartToggleAction;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
+import net.sf.anathema.character.library.taskpane.ITaskPaneGroupView;
 import net.sf.anathema.lib.gui.GuiUtilities;
 
 import com.l2fprod.common.swing.JTaskPaneGroup;
 
-public class EquipmentObjectView implements IEquipmentObjectView {
+public class EquipmentObjectView implements IEquipmentObjectView, ITaskPaneGroupView {
 
   private final JTaskPaneGroup taskGroup = new JTaskPaneGroup();
   private final JLabel descriptionLabel = new JLabel();

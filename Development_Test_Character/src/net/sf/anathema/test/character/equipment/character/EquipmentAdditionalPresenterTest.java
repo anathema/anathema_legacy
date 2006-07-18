@@ -17,8 +17,8 @@ public class EquipmentAdditionalPresenterTest extends BasicTestCase {
   public void testInitPresentation() throws Exception {
     DummyResources resources = new DummyResources();
     IEquipmentObject[] equipmentObjects = new IEquipmentObject[0];
-    IEquipmentObjectCollection model = EasyMock.createMock(IEquipmentObjectCollection.class);
-    IEquipmentAdditionalView view = EasyMock.createMock(IEquipmentAdditionalView.class);
+    IEquipmentObjectCollection model = EasyMock.createNiceMock(IEquipmentObjectCollection.class);
+    IEquipmentAdditionalView view = EasyMock.createNiceMock(IEquipmentAdditionalView.class);
     EasyMock.expect(model.getAvailableObjects()).andReturn(equipmentObjects).once();
     IListObjectSelectionView<IEquipmentObject> equipmentPickList = EasyMock.createMock(IListObjectSelectionView.class);
     equipmentPickList.setObjects(equipmentObjects);

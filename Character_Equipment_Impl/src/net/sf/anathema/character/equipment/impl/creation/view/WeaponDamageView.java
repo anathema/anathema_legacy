@@ -53,4 +53,12 @@ public class WeaponDamageView implements IWeaponDamageView {
   public void setSelectedObject(HealthType object) {
     typeBox.setSelectedObject(object);
   }
+
+  public HealthType getSelectedObject() {
+    return typeBox.getSelectedObject();
+  }
+
+  public boolean isObjectSelected() {
+    return getSelectedObject() != null;
+  }
 }

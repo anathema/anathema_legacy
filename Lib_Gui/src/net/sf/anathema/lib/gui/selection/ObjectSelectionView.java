@@ -74,7 +74,11 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V>, IGridDia
     comboBox.getComponent().setEnabled(enabled);
   }
 
-  public Object getSelectedObject() {
-    return getComboBox().getSelectedItem();
+  public V getSelectedObject() {
+    return comboBox.getSelectedObject();
+  }
+  
+  public boolean isObjectSelected() {
+    return getSelectedObject() != null;
   }
 }
