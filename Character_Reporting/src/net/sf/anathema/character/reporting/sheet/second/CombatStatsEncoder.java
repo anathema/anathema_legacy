@@ -11,7 +11,7 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class SecondEditionCombatStatsEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
+public class CombatStatsEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
 
   private final static float PADDING = 3;
 
@@ -24,7 +24,7 @@ public class SecondEditionCombatStatsEncoder extends AbstractPdfEncoder implemen
     return baseFont;
   }
 
-  public SecondEditionCombatStatsEncoder(
+  public CombatStatsEncoder(
       IPdfTableEncoder combatRulesEncoder,
       IPdfContentEncoder combatValueEncoder,
       BaseFont baseFont) {

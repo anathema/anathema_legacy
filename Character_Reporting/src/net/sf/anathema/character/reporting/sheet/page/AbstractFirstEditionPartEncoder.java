@@ -6,7 +6,7 @@ import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.NullPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.first.FirstEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.sheet.first.FirstEditionCombatValueEncoder;
-import net.sf.anathema.character.reporting.sheet.second.SecondEditionCombatStatsEncoder;
+import net.sf.anathema.character.reporting.sheet.second.CombatStatsEncoder;
 import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -33,7 +33,7 @@ public abstract class AbstractFirstEditionPartEncoder implements IPdfPartEncoder
   public final IPdfContentBoxEncoder getCombatStatsEncoder() {
     IPdfContentEncoder valueEncoder = new FirstEditionCombatValueEncoder(resources, baseFont);
     IPdfTableEncoder rulesEncoder = new FirstEditionCombatRulesTableEncoder(resources, baseFont);
-    return new SecondEditionCombatStatsEncoder(rulesEncoder, valueEncoder, baseFont);
+    return new CombatStatsEncoder(rulesEncoder, valueEncoder, baseFont);
   }
 
   public IPdfContentBoxEncoder getSocialCombatEncoder() {
@@ -47,7 +47,7 @@ public abstract class AbstractFirstEditionPartEncoder implements IPdfPartEncoder
   public IPdfContentBoxEncoder getHealthAndMovementEncoder() {
     return new NullPdfContentEncoder("HealthAndMovement"); //$NON-NLS-1$
   }
-  
+
   public float getWeaponryHeight() {
     return 140;
   }
