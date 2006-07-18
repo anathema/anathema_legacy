@@ -28,6 +28,7 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.lib.resources.IResources;
 
 public class DummyGenericCharacter implements IGenericCharacter {
 
@@ -127,6 +128,10 @@ public class DummyGenericCharacter implements IGenericCharacter {
 
       public ICasteType<ICasteTypeVisitor> getCasteType() {
         return ICasteType.NULL_CASTE_TYPE;
+      }
+      
+      public String getWillpowerRegainingComment(IResources resources) {
+        return null;
       }
     };
   }

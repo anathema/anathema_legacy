@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
@@ -58,8 +59,9 @@ public class SecondEditionPersonalInfoEncoder extends AbstractPdfEncoder {
     }
 
     float thirdRowY = secondRowY - lineHeight;
-    String motivationContent = character.getConcept().getWillpowerRegainingConceptName();
-    String motivationLabel = getLabel("Motivation"); //$NON-NLS-1$
+    String motivationContent = character.getConcept().getWillpowerRegainingComment(resources);
+    String motivationLabel = character.getRules().getEdition() == ExaltedEdition.SecondEdition
+        ? getLabel("Motivation") : getLabel("Nature"); //$NON-NLS-1$ //$NON-NLS-2$
     Position motivationPosition = new Position(firstColumnX, thirdRowY);
     drawLabelledContent(directContent, motivationLabel, motivationContent, motivationPosition, infoBounds.width);
   }

@@ -3,6 +3,7 @@ package net.sf.anathema.development.character;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.character.IConcept;
+import net.sf.anathema.lib.resources.IResources;
 
 public class DemoConcept implements IConcept {
 
@@ -32,5 +33,9 @@ public class DemoConcept implements IConcept {
 
   public void setWillpowerRegainingConceptName(String willpowerRegainingConceptName) {
     this.willpowerRegainingConceptName = willpowerRegainingConceptName;
+  }
+
+  public String getWillpowerRegainingComment(IResources resources) {
+    return getWillpowerRegainingConceptName();
   }
 }
