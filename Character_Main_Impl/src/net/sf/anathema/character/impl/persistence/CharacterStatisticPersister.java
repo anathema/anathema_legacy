@@ -56,7 +56,6 @@ public class CharacterStatisticPersister {
     this.characterConceptPersister = new CharacterConceptPersister();
     this.backgroundPersister = new BackgroundConfigurationPersister(generics.getBackgroundRegistry());
     this.additonalModelPersister = new AdditionalModelPersister(generics.getAdditonalPersisterFactoryRegistry());
-
   }
 
   public void save(Element parent, ICharacterStatistics statistics) {
