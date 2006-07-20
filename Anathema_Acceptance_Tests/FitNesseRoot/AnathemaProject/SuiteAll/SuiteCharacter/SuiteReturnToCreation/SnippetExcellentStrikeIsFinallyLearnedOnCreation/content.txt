@@ -1,9 +1,0 @@
-!3 Excellent Strike is learned on creation
-
-Now we have to assure that the charm is learned on creation, when we switch to experienced again
-
-!|Set Experienced|
-
-!|Check Charm|
-|id|isLearnedOnCreation?|isLearnedOnExperience?|
-|Solar.ExcellentStrike|true|false|

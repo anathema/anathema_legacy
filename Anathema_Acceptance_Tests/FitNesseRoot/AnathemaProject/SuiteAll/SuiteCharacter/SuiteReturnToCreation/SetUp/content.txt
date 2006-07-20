@@ -1,9 +1,0 @@
-!include .AnathemaProject.SuiteAll.SuiteCharacter.SetUp
-
-!3 Prepare a Solar with Melee 5
-
-!include .AnathemaProject.SuiteAll.SuiteCharacter.SnippetCreateDefaultSolar
-
-!|Set Abilities|
-|trait type|value|
-|Melee|5|

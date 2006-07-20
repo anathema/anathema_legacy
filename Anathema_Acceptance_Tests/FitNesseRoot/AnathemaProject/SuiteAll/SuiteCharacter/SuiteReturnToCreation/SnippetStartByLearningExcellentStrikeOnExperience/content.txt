@@ -1,9 +1,0 @@
-!3 Learn Excellent Strike on Experience
-
-We learn no charms on creation and switch to experienced at once,
-
-!|Set Experienced|
-
-where wie learn the Melee entry charm 'Excellent Strike'.
-
-!include SnippetToggleExcellentStrike
