@@ -11,6 +11,5 @@
 	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-core-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Anathema"/>
 	<classpathentry kind="lib" path="/Thirdparty/Testing/jdemo_core.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Swing/itp-gpl-1.3.0-src.zip" kind="lib" path="/Thirdparty/Swing/itp-gpl-1.3.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
