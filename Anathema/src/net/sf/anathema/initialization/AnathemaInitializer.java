@@ -34,6 +34,7 @@ public class AnathemaInitializer {
   public AnathemaInitializer(IAnathemaPreferences anathemaPreferences) throws InitializationException {
     this.pluginManager = new AnathemaPluginManager();
     pluginManager.collectPlugins();
+    pluginManager.activatePlugins();
     this.itemTypeCollection = new ItemTypeConfigurationCollection(pluginManager, AnathemaEnvironment.isDevelopment());
     this.extensionCollection = new AnathemaExtensionCollection(pluginManager);
     this.anathemaPreferences = anathemaPreferences;

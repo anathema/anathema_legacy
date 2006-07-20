@@ -16,7 +16,7 @@ public abstract class AbstractInitializationCollection<T> {
   protected final void collectContent(IAnathemaPluginManager pluginManager) throws InitializationException {
     for (Extension extension : pluginManager.getExtension(IPluginConstants.PLUGIN_CORE, getExtensionPointId())) {
       for (Parameter typeParameter : PluginUtilities.getParameters(extension, PARAM_TYPE)) {
-        T itemType = createItemType(typeParameter);
+        T itemType = createItemType(typeParameter, extension, pluginManager);
         addItemForTypeParameter(typeParameter, itemType);
       }
     }
@@ -26,15 +26,15 @@ public abstract class AbstractInitializationCollection<T> {
 
   protected abstract String getExtensionPointId();
 
-  private T createItemType(Parameter typeParameter) throws InitializationException {
-    return instantiateItemType(typeParameter.getSubParameter(PARAM_CLASS));
+  private T createItemType(Parameter typeParameter, Extension extension, IAnathemaPluginManager pluginManager) throws InitializationException {
+    return instantiateItemType(typeParameter.getSubParameter(PARAM_CLASS), extension, pluginManager);
   }
 
   @SuppressWarnings("unchecked")
-  private final T instantiateItemType(Parameter classParameter) throws InitializationException {
+  private final T instantiateItemType(Parameter classParameter, Extension extension, IAnathemaPluginManager pluginManager) throws InitializationException {
     String className = classParameter.valueAsString();
     try {
-      return (T) Class.forName(className).newInstance();
+      return (T) pluginManager.getClass(className, extension.getDeclaringPluginDescriptor()).newInstance();
     }
     catch (Throwable throwable) {
       throw new InitializationException(throwable);

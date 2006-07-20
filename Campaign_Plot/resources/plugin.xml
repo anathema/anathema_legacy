@@ -7,6 +7,9 @@
 		<library id="core" path="./" type="code">
 			<export prefix="*"/>
 		</library>
+		<library id="resources" path="./" type="resources">
+			<export prefix="*"/>
+		</library>
 	</runtime>
 	<extension plugin-id="net.sf.anathema.core"	point-id="ItemTypes" id="ItemType">
 		<parameter id="type">

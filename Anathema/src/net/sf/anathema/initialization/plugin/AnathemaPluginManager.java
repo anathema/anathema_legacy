@@ -11,11 +11,13 @@ import java.util.Properties;
 import net.sf.anathema.framework.InitializationException;
 
 import org.java.plugin.ObjectFactory;
+import org.java.plugin.PluginLifecycleException;
 import org.java.plugin.PluginManager;
 import org.java.plugin.PluginManager.PluginLocation;
 import org.java.plugin.boot.DefaultPluginsCollector;
 import org.java.plugin.registry.Extension;
 import org.java.plugin.registry.ExtensionPoint;
+import org.java.plugin.registry.PluginDescriptor;
 import org.java.plugin.util.ExtendedProperties;
 
 public class AnathemaPluginManager implements IAnathemaPluginManager {
@@ -56,5 +58,24 @@ public class AnathemaPluginManager implements IAnathemaPluginManager {
       builder.append(systemResources.nextElement().getPath());
     }
     return builder.toString();
+  }
+
+  @SuppressWarnings("unchecked")
+  public void activatePlugins() throws InitializationException {
+    Collection<PluginDescriptor> pluginDescriptors = manager.getRegistry().getPluginDescriptors();
+    for (PluginDescriptor descriptor : pluginDescriptors) {
+      try {
+        String id = descriptor.getId();
+        System.out.println("Plugin activated: " + id);
+        manager.activatePlugin(id);
+      }
+      catch (PluginLifecycleException e) {
+        throw new InitializationException(e);
+      }
+    }
+  }
+
+  public Class getClass(String className, PluginDescriptor descriptor) throws ClassNotFoundException {
+    return Class.forName(className, true, manager.getPluginClassLoader(descriptor));
   }
 }
