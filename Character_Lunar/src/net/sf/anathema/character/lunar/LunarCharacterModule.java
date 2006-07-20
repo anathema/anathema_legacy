@@ -41,7 +41,6 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
   public static final String BACKGROUND_ID_HEARTS_BLOOD = "HeartsBlood"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_HEARTS_BLOOD_HUMAN = "HeartsBloodHuman"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_RENOWN = "Renown"; //$NON-NLS-1$
-  public static final String BACKGROUND_ID_CULT = "Cult"; //$NON-NLS-1$
   private static final ITemplateType[] lunarTemplateType = new ITemplateType[] { new TemplateType(CharacterType.LUNAR) };
   public static final IBackgroundTemplate RENOWN_BACKGROUND_TYPE = new TemplateTypeBackgroundTemplate(
       BACKGROUND_ID_RENOWN,
@@ -76,7 +75,6 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addBackgroundTemplates(ICharacterGenerics generics) {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_CULT, lunarTemplateType));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_HEARTS_BLOOD, lunarTemplateType));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_HEARTS_BLOOD_HUMAN, lunarTemplateType));
     backgroundRegistry.add(RENOWN_BACKGROUND_TYPE);

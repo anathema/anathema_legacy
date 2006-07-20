@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
+import net.sf.anathema.character.generic.framework.backgrounds.BackgroundRegistry;
 import net.sf.anathema.character.generic.framework.module.object.CharacterModuleObjectMap;
 import net.sf.anathema.character.generic.framework.reporting.template.ICharacterReportTemplate;
 import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTemplateParser;
@@ -19,12 +20,11 @@ import net.sf.anathema.lib.registry.CollectionRegistry;
 import net.sf.anathema.lib.registry.ICollectionRegistry;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.registry.IdentificateRegistry;
 import net.sf.anathema.lib.registry.Registry;
 
 public class CharacterGenerics implements ICharacterGenerics {
 
-  private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = new IdentificateRegistry<IBackgroundTemplate>();
+  private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = new BackgroundRegistry();
   private final ITemplateRegistry templateRegistry = new TemplateRegistry();
   private final IRegistry<String, IAdditionalModelFactory> additionalModelRegistry = new Registry<String, IAdditionalModelFactory>();
   private final IRegistry<String, IAdditionalViewFactory> additionalViewRegistry = new Registry<String, IAdditionalViewFactory>();

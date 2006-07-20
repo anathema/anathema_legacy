@@ -3,11 +3,9 @@ package net.sf.anathema.character.generic.framework.module;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.unsupported.UnsupportedDragonKingTemplate;
-import net.sf.anathema.character.generic.impl.backgrounds.EditionSpecificBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.EssenceUserBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.SimpleBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
@@ -25,6 +23,7 @@ public class BasicExaltCharacterModule extends NullObjectCharacterModuleAdapter 
     registry.add(new EssenceUserBackgroundTemplate(BACKGROUND_ID_ARTIFACT, templateRegistry));
     registry.add(new EssenceUserBackgroundTemplate(BACKGROUND_ID_FACE, templateRegistry));
     registry.add(new EssenceUserBackgroundTemplate(BACKGROUND_ID_MANSE, templateRegistry));
+    registry.add(new EssenceUserBackgroundTemplate(IBackgroundIds.BACKGROUND_ID_CULT, templateRegistry));
     registry.add(new SimpleBackgroundTemplate(IBackgroundIds.BACKGROUND_ID_ALLIES));
     registry.add(new SimpleBackgroundTemplate(IBackgroundIds.BACKGROUND_ID_BACKING));
     registry.add(new SimpleBackgroundTemplate(IBackgroundIds.BACKGROUND_ID_CONTACTS));
@@ -33,7 +32,6 @@ public class BasicExaltCharacterModule extends NullObjectCharacterModuleAdapter 
     registry.add(new SimpleBackgroundTemplate(IBackgroundIds.BACKGROUND_ID_INFLUENCE));
     registry.add(new SimpleBackgroundTemplate(IBackgroundIds.BACKGROUND_ID_MENTOR));
     registry.add(new SimpleBackgroundTemplate(IBackgroundIds.BACKGROUND_ID_RESOURCES));
-    registry.add(new EditionSpecificBackgroundTemplate(IBackgroundIds.BACKGROUND_ID_CULT, ExaltedEdition.SecondEdition));
   }
 
   @Override

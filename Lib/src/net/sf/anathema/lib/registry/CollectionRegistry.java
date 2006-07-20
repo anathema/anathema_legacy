@@ -9,13 +9,9 @@ public class CollectionRegistry<E> implements ICollectionRegistry<E> {
 
   private Set<E> elements = new ListOrderedSet<E>();
 
-  public void add(E element) {
-    elements.add(element);
-  }
-
-  public void add(E[] newElements) {
+  public void add(E... newElements) {
     for (E element : newElements) {
-      add(element);
+      elements.add(element);
     }
   }
 
