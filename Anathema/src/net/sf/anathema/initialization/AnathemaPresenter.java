@@ -71,7 +71,7 @@ public class AnathemaPresenter {
   private void runBootJobs() throws InitializationException {
     for (Extension extension : pluginManager.getExtension(IPluginConstants.PLUGIN_CORE, EXTENSION_POINT_BOOTJOBS)) {
       for (Parameter parameter : PluginUtilities.getParameters(extension, PARAM_CLASS)) {
-        ((IAnathemaBootJob) PluginUtilities.instantiate(parameter)).run(resources, model, view);
+        ((IAnathemaBootJob) PluginUtilities.instantiate(parameter, pluginManager)).run(resources, model, view);
       }
     }
   }
@@ -85,7 +85,7 @@ public class AnathemaPresenter {
       for (Parameter parameter : PluginUtilities.getParameters(extension, PARAM_TYPE)) {
         Parameter classParameter = parameter.getSubParameter(PARAM_CLASS);
         Parameter keyParameter = parameter.getSubParameter(PARAM_KEY);
-        IPreferencesElement element = (IPreferencesElement) PluginUtilities.instantiate(classParameter);
+        IPreferencesElement element = (IPreferencesElement) PluginUtilities.instantiate(classParameter, pluginManager);
         extensionPoint.register(keyParameter.valueAsString(), element);
       }
     }
@@ -96,7 +96,7 @@ public class AnathemaPresenter {
         IPluginConstants.PLUGIN_CORE,
         EXTENSION_POINT_REPORT_FACTORIES)) {
       for (Parameter parameter : PluginUtilities.getParameters(extension, PARAM_CLASS)) {
-        IReportFactory reportFactory = (IReportFactory) PluginUtilities.instantiate(parameter);
+        IReportFactory reportFactory = (IReportFactory) PluginUtilities.instantiate(parameter, pluginManager);
         model.getReportRegistry().addReports(reportFactory.createReport(resources, model.getExtensionPointRegistry()));
       }
     }
@@ -105,7 +105,7 @@ public class AnathemaPresenter {
   private void initializeMenus() throws InitializationException {
     for (Extension extension : pluginManager.getExtension(IPluginConstants.PLUGIN_CORE, EXTENSION_POINT_MENUBAR)) {
       for (Parameter parameter : PluginUtilities.getParameters(extension, PARAM_CLASS)) {
-        IAnathemaMenu menu = (IAnathemaMenu) PluginUtilities.instantiate(parameter);
+        IAnathemaMenu menu = (IAnathemaMenu) PluginUtilities.instantiate(parameter, pluginManager);
         menu.add(resources, model, view.getMenuBar());
       }
     }
@@ -114,7 +114,7 @@ public class AnathemaPresenter {
   private void initializeTools() throws InitializationException {
     for (Extension extension : pluginManager.getExtension(IPluginConstants.PLUGIN_CORE, EXTENSION_POINT_TOOLBAR)) {
       for (Parameter parameter : PluginUtilities.getParameters(extension, PARAM_CLASS)) {
-        IAnathemaTool tool = (IAnathemaTool) PluginUtilities.instantiate(parameter);
+        IAnathemaTool tool = (IAnathemaTool) PluginUtilities.instantiate(parameter, pluginManager);
         tool.add(resources, model, view.getToolbar());
       }
     }

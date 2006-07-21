@@ -65,7 +65,7 @@ public class AnathemaInitializer {
     IAnathemaResources resources = new AnathemaResources();
     for (Extension extension : pluginManager.getExtension(IPluginConstants.PLUGIN_CORE, EXTENSION_POINT_RESOURCES)) {
       for (Parameter param : PluginUtilities.getParameters(extension, PARAM_BUNDLE)) {
-        resources.addResourceBundle(param.valueAsString());
+        resources.addResourceBundle(param.valueAsString(), pluginManager.getClassLoader(extension));
       }
     }
     return resources;

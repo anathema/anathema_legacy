@@ -24,9 +24,10 @@ public class AnathemaViewProperties {
   }
 
   public String getDefaultFrameTitle() {
-    return resources.getDefaultFrameTitle();
+    return resources.getString("MainFrame.Title"); //$NON-NLS-1$;
   }
 
+  @SuppressWarnings("deprecation")
   public Image getFrameIcon() {
     return resources.getImage("core/AnathemaIcon.png"); //$NON-NLS-1$
   }

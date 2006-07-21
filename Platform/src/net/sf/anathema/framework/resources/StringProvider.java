@@ -16,19 +16,15 @@ public class StringProvider implements IStringResourceHandler {
   private ResourceBundle resourceBundle;
   private final List<String> keyList = new ArrayList<String>();
 
-  protected StringProvider(String resourceBundle) {
-    this(resourceBundle, Locale.getDefault());
+  public StringProvider(String bundleName, Locale locale, ClassLoader classLoader) {
+    setLocale(locale, bundleName, classLoader);
   }
 
-  public StringProvider(String bundleName, Locale locale) {
-    setLocale(locale, bundleName);
-  }
-
-  private void setLocale(Locale locale, String resourceBundleName) {
+  private void setLocale(Locale locale, String resourceBundleName, ClassLoader classLoader) {
     if (locale == null) {
       throw new IllegalArgumentException("locale is null."); //$NON-NLS-1$
     }
-    resourceBundle = ResourceBundle.getBundle(resourceBundleName, locale);
+    resourceBundle = ResourceBundle.getBundle(resourceBundleName, locale, classLoader);
     for (Enumeration<String> keys = resourceBundle.getKeys(); keys.hasMoreElements();) {
       this.keyList.add(keys.nextElement());
     }

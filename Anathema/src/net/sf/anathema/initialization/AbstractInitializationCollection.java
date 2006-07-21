@@ -31,10 +31,10 @@ public abstract class AbstractInitializationCollection<T> {
   }
 
   @SuppressWarnings("unchecked")
-  private final T instantiateItemType(Parameter classParameter, Extension extension, IAnathemaPluginManager pluginManager) throws InitializationException {
+  private final T instantiateItemType(Parameter classParameter, Extension extension, IAnathemaPluginManager manager) throws InitializationException {
     String className = classParameter.valueAsString();
-    try {
-      return (T) pluginManager.getClass(className, extension.getDeclaringPluginDescriptor()).newInstance();
+    try {      
+      return (T) Class.forName(className, true, manager.getClassLoader(extension)).newInstance();
     }
     catch (Throwable throwable) {
       throw new InitializationException(throwable);

@@ -4,7 +4,5 @@ import net.sf.anathema.lib.resources.IResources;
 
 public interface IAnathemaResources extends IResources {
 
-  public void addResourceBundle(String bundleName);
-
-  public String getDefaultFrameTitle();
+  public void addResourceBundle(String bundleName, ClassLoader classLoader);
 }

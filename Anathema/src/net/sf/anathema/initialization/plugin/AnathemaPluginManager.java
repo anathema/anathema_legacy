@@ -75,7 +75,7 @@ public class AnathemaPluginManager implements IAnathemaPluginManager {
     }
   }
 
-  public Class getClass(String className, PluginDescriptor descriptor) throws ClassNotFoundException {
-    return Class.forName(className, true, manager.getPluginClassLoader(descriptor));
+  public ClassLoader getClassLoader(Extension extension) {
+    return manager.getPluginClassLoader(extension.getDeclaringPluginDescriptor());
   }
 }

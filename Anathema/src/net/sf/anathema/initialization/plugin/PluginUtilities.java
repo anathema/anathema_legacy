@@ -19,10 +19,10 @@ public class PluginUtilities {
     return extension.getParameters(parameterName);
   }
 
-  public static Object instantiate(Parameter classParameter) throws InitializationException {
+  public static Object instantiate(Parameter classParameter, IClassLoaderProvider provider) throws InitializationException {
     String className = classParameter.valueAsString();
     try {
-      return Class.forName(className).newInstance();
+      return Class.forName(className, true, provider.getClassLoader(classParameter.getDeclaringExtension())).newInstance();
     }
     catch (Throwable e) {
       throw new InitializationException(e);

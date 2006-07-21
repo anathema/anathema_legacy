@@ -29,8 +29,8 @@ public class AnathemaResources implements IAnathemaResources {
     }
   }
 
-  public void addResourceBundle(String bundleName) {
-    stringResourceHandlers.add(new StringProvider("language." + bundleName, getLocale())); //$NON-NLS-1$
+  public void addResourceBundle(String bundleName, ClassLoader classLoader) {
+    stringResourceHandlers.add(new StringProvider("language." + bundleName, getLocale(), classLoader)); //$NON-NLS-1$    
   }
 
   public boolean supportsKey(String key) {
@@ -72,10 +72,6 @@ public class AnathemaResources implements IAnathemaResources {
 
   public Icon getAnimatedImageIcon(String relativePath) {
     return imageProvider.getAnimatedImageIcon(relativePath);
-  }
-
-  public String getDefaultFrameTitle() {
-    return getString("MainFrame.Title"); //$NON-NLS-1$
   }
 
   private Locale getLocale() {
