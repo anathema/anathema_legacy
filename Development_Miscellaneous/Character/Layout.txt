@@ -1,11 +1,14 @@
 Charm-Colors:
 Dragonblooded	"darkred" 	rgb(139, 0, 0) 
 Solar			"gold" 		rgb(255, 215, 0) 
+Solar, 2nd Ed.  			rgb(247,234,130)
 Raksha 			"forestgreen" rgb( 34, 139, 34) 
-Lunar 			"aliceblue" rgb(240, 248, 255) 
+Lunar ursprünglich "aliceblue" rgb(240, 248, 255) wegen Kontrast aber geändert auf
+							rgb(167,195,220)
 Abyssal			"darkgrey" 	rgb(169, 169, 169)
 Sidereal		"mediumpurple" rgb(147, 112, 219) 
 Mortal						rgb (177,177,253)
+
 
 Charm-Dimension:
 Solar: new Dimension(190, 72);
