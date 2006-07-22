@@ -1,6 +1,8 @@
 package net.sf.anathema.framework.reporting.controller;
 
 import java.awt.Component;
+import java.awt.Event;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -8,6 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import javax.swing.Action;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 
 import net.disy.commons.core.io.IOUtilities;
 import net.disy.commons.core.message.BasicMessage;
@@ -73,11 +76,12 @@ public class AnathemaPrintAction extends SmartAction {
 
   public static Action createMenuAction(IAnathemaModel model, IResources resources) {
     SmartAction action = new AnathemaPrintAction(model, resources);
-    action.setName(resources.getString("Anathema.Reporting.Menu.PrintItem.Name")); //$NON-NLS-1$
+    action.setName(resources.getString("Anathema.Reporting.Menu.PrintItem.Name") + "\u2026"); //$NON-NLS-1$ //$NON-NLS-2$
     return action;
   }
 
   private AnathemaPrintAction(final IAnathemaModel anathemaModel, IResources resources) {
+    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_P, Event.CTRL_MASK));
     this.anathemaModel = anathemaModel;
     this.resources = resources;
     PrintEnabledListener listener = new PrintEnabledListener(anathemaModel.getReportRegistry(), this);

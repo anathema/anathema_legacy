@@ -2,8 +2,11 @@ package net.sf.anathema.framework.presenter.itemmanagement;
 
 import java.awt.Component;
 import java.awt.Cursor;
+import java.awt.Event;
+import java.awt.event.KeyEvent;
 
 import javax.swing.Action;
+import javax.swing.KeyStroke;
 
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
@@ -36,6 +39,7 @@ public class AnathemaCloseAction extends SmartAction {
   }
 
   private AnathemaCloseAction(IItemMangementModel management, IItem item) {
+    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_W, Event.CTRL_MASK));
     this.management = management;
     this.item = item;
     management.addListener(new SelectedItemActionEnabler(this, management.getSelectedItem()));
