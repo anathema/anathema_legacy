@@ -54,7 +54,7 @@ public class AnathemaSaveAction extends SmartAction {
   public static Action createToolAction(IAnathemaModel model, IResources resources) {
     SmartAction action = new AnathemaSaveAction(model, resources);
     action.setToolTipText(resources.getString("AnathemaPersistence.SaveAction.Tooltip")); //$NON-NLS-1$
-    action.setIcon(resources.getImageIcon("tools/Save24.gif")); //$NON-NLS-1$
+    action.setIcon(resources.getImageIcon("tools/TaskBarSave24.png")); //$NON-NLS-1$
     return action;
   }
 

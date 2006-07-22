@@ -24,7 +24,7 @@ public class CharacterTool implements IAnathemaTool {
 
   private Action[] createTools(final IAnathemaModel anathemaModel, final IResources resources, IItemType typeCharacter) {
     ICharacterGenerics generics = CharacterGenericsExtension.getCharacterGenerics(anathemaModel);
-    Icon addIcon = resources.getImageIcon("toolbar/Add24.gif"); //$NON-NLS-1$
+    Icon addIcon = resources.getImageIcon("toolbar/TaskBarOpen24.png"); //$NON-NLS-1$
     String tooltip = resources.getString("CharacterGenerator.LoadAction.Tooltip"); //$NON-NLS-1$
     return new Action[] {
         AddNewFullCharacterAction.createToolAction(generics, resources, anathemaModel),

@@ -38,7 +38,7 @@ public class AddNewFullCharacterAction extends AbstractAddNewItemAction<Characte
 
   public static Action createToolAction(ICharacterGenerics generics, IResources resources, IAnathemaModel anathemaModel) {
     SmartAction action = new AddNewFullCharacterAction(generics, anathemaModel, resources);
-    action.setIcon(resources.getImageIcon("toolbar/New24.gif")); //$NON-NLS-1$
+    action.setIcon(resources.getImageIcon("toolbar/TaskBarNew24.png")); //$NON-NLS-1$
     action.setToolTipText(resources.getString("CharacterGenerator.NewCharacter.ToolTip.Text")); //$NON-NLS-1$
     return action;
   }
