@@ -34,7 +34,7 @@ public class MusicDatabaseItemTypeConfiguration extends AbstractNonPersistableIt
       public IItemView createView(IItem item) throws AnathemaException {
         IMusicDatabase database = (IMusicDatabase) item.getItemData();
         MusicDatabaseView view = new MusicDatabaseView(
-            resources.getString("ItemType.MusicDatabase.PrintName"), resources.getImageIcon("MusicIcon16.png")); //$NON-NLS-1$ //$NON-NLS-2$
+            resources.getString("ItemType.MusicDatabase.PrintName"), resources.getImageIcon("TabMusic16.png")); //$NON-NLS-1$ //$NON-NLS-2$
         new MusicDataBasePresenter(resources, database, view).initPresentation();
         return view;
       }

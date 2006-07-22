@@ -68,7 +68,7 @@ public class StartDatabaseAction extends SmartAction {
 
   public static Action createToolAction(IResources resources, IAnathemaModel anathemaModel) {
     SmartAction action = new StartDatabaseAction(anathemaModel, resources);
-    action.setIcon(resources.getImageIcon("MusicIcon20.png")); //$NON-NLS-1$
+    action.setIcon(resources.getImageIcon("TaskBarMusic24.png")); //$NON-NLS-1$
     action.setToolTipText(resources.getString("MusicDatabase.NewAction.Tooltip")); //$NON-NLS-1$
     return action;
   }
