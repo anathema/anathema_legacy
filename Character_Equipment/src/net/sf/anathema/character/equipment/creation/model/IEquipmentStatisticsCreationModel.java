@@ -8,6 +8,8 @@ public interface IEquipmentStatisticsCreationModel {
   public void setEquipmentType(EquipmentStatisticsType type);
 
   public ICloseCombatStatsticsModel getCloseCombatStatsticsModel();
+  
+  public IRangedCombatStatisticsModel getRangedWeaponStatisticsModel();
 
   public void addEquipmentTypeChangeListener(IChangeListener changeListener);
 

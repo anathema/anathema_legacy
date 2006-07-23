@@ -56,6 +56,10 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
         EquipmentStatisticsType.CloseCombat,
         new CloseCombatStatisticsPresenterPage(resources, model, viewFactory),
         inputListener);
+    addPage(
+        EquipmentStatisticsType.RangedCombat,
+        new RangedCombatStatisticsPresenterPage(resources, model, viewFactory),
+        inputListener);
   }
 
   @Override

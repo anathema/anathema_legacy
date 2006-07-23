@@ -4,11 +4,11 @@ import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
 
-public class CloseCombatStatisticsProperties extends AbstractOffensiveCombatStatisticsProperties {
+public class RangedCombatStatisticsProperties extends AbstractOffensiveCombatStatisticsProperties {
 
-  private final BasicMessage defaultMessage = new BasicMessage("Please fill the close combat weapon statstics.");
+  private final BasicMessage defaultMessage = new BasicMessage("Please fill the ranged weapon statstics.");
 
-  public CloseCombatStatisticsProperties(IResources resources) {
+  public RangedCombatStatisticsProperties(IResources resources) {
     super(resources);
   }
 
@@ -19,10 +19,10 @@ public class CloseCombatStatisticsProperties extends AbstractOffensiveCombatStat
 
   @Override
   public String getPageDescription() {
-    return "Close Combat Weapon Stats";
+    return "Ranged Weapon Stats";
   }
 
-  public String getDefenseLabel() {
-    return "Defense:";
+  public String getRangeLabel() {
+    return "Range:";
   }
 }

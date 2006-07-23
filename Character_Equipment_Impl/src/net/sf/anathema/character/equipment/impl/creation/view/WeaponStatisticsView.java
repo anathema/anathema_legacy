@@ -4,12 +4,12 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.IDialogComponent;
-import net.sf.anathema.character.equipment.creation.view.ICloseCombatStatisticsView;
+import net.sf.anathema.character.equipment.creation.view.IWeaponStatisticsView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.container.factory.StandardPanelBuilder;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
-public class CloseCombatStatisticsView implements ICloseCombatStatisticsView {
+public class WeaponStatisticsView implements IWeaponStatisticsView {
 
   private static final int COLUMN_COUNT = 30;
   private final StandardPanelBuilder panelBuilder = new StandardPanelBuilder();
