@@ -4,7 +4,7 @@ import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
 
-public class RangedCombatStatisticsProperties extends AbstractOffensiveCombatStatisticsProperties {
+public class RangedCombatStatisticsProperties extends OffensiveStatisticsProperties {
 
   private final BasicMessage defaultMessage = new BasicMessage("Please fill the ranged weapon statstics.");
 

@@ -13,7 +13,7 @@ import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.equipment.creation.model.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.IOffensiveStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.IWeaponDamageModel;
-import net.sf.anathema.character.equipment.creation.properties.AbstractOffensiveCombatStatisticsProperties;
+import net.sf.anathema.character.equipment.creation.properties.OffensiveStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.view.IWeaponDamageView;
 import net.sf.anathema.character.equipment.creation.view.IWeaponStatisticsView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
@@ -29,7 +29,7 @@ import net.sf.anathema.lib.workflow.textualdescription.ICheckableTextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
-public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffensiveStatisticsModel, P extends AbstractOffensiveCombatStatisticsProperties> extends
+public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffensiveStatisticsModel, P extends OffensiveStatisticsProperties> extends
     AbstractAnathemaWizardPage {
 
   private final O pageModel;

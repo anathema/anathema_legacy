@@ -4,7 +4,7 @@ import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
 
-public class CloseCombatStatisticsProperties extends AbstractOffensiveCombatStatisticsProperties {
+public class CloseCombatStatisticsProperties extends OffensiveStatisticsProperties {
 
   private final BasicMessage defaultMessage = new BasicMessage("Please fill the close combat weapon statstics.");
 
