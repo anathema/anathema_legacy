@@ -5,7 +5,7 @@ import java.awt.Component;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
 
-import net.sf.anathema.character.equipment.character.model.IEquipmentObject;
+import net.sf.anathema.character.equipment.character.model.IEquipmentTemplate;
 
 public class EquipmentObjectCellRenderer extends DefaultListCellRenderer {
 
@@ -16,7 +16,7 @@ public class EquipmentObjectCellRenderer extends DefaultListCellRenderer {
       int index,
       boolean isSelected,
       boolean cellHasFocus) {
-    IEquipmentObject equipmentObject = (IEquipmentObject) value;
+    IEquipmentTemplate equipmentObject = (IEquipmentTemplate) value;
     return super.getListCellRendererComponent(list, equipmentObject.getName(), index, isSelected, cellHasFocus);
   }
   

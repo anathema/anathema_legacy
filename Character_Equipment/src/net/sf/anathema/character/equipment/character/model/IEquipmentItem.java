@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.character.model;
 
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 
-public interface IEquipmentObject {
+public interface IEquipmentItem {
 
   public String getName();
 

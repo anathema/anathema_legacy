@@ -3,32 +3,29 @@ package net.sf.anathema.character.equipment.impl.character.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.character.equipment.character.model.IEquipmentObject;
+import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
+import net.sf.anathema.character.equipment.character.model.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 
-public class EquipmentObject implements IEquipmentObject {
+public class EquipmentItem implements IEquipmentItem {
 
   private List<IEquipmentStats> printedEquipments = new ArrayList<IEquipmentStats>();
-  private final IEquipmentStats[] equipments;
-  private final String description;
-  private final String name;
+  private final IEquipmentTemplate template;
 
-  public EquipmentObject(IEquipmentStats[] equipments, String name, String description) {
-    this.equipments = equipments;
-    this.name = name;
-    this.description = description;
+  public EquipmentItem(IEquipmentTemplate template) {
+    this.template = template;
   }
 
   public String getDescription() {
-    return description;
+    return template.getDescription();
   }
 
   public IEquipmentStats[] getEquipments() {
-    return equipments;
+    return template.getEquipmentStats();
   }
 
   public String getName() {
-    return name;
+    return template.getName();
   }
 
   public void setPrintEnabled(IEquipmentStats equipment, boolean enabled) {

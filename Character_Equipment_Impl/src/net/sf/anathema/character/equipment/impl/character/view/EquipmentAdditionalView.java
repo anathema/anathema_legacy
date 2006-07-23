@@ -11,7 +11,7 @@ import javax.swing.JScrollPane;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.sf.anathema.character.equipment.character.model.IEquipmentObject;
+import net.sf.anathema.character.equipment.character.model.IEquipmentTemplate;
 import net.sf.anathema.character.equipment.character.view.IEquipmentAdditionalView;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
 import net.sf.anathema.character.library.taskpane.ITaskPaneGroupViewFactory;
@@ -21,8 +21,8 @@ import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
 
 public class EquipmentAdditionalView implements IEquipmentAdditionalView {
 
-  private final ListObjectSelectionView<IEquipmentObject> equipmentPickList = new ListObjectSelectionView<IEquipmentObject>(
-      IEquipmentObject.class);
+  private final ListObjectSelectionView<IEquipmentTemplate> equipmentPickList = new ListObjectSelectionView<IEquipmentTemplate>(
+      IEquipmentTemplate.class);
   private final JLabel pickListLabel = new JLabel();
   private final JPanel panel = new JPanel(new GridDialogLayout(1, false));
   private final JButton selectButton = new JButton();
@@ -53,7 +53,7 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView {
   public void removeEquipmentObjectView(IEquipmentObjectView objectView) {
     taskPaneView.removeEquipmentObjectView((EquipmentObjectView) objectView);
   }
-  
+
   public void setSelectButtonAction(Action action) {
     selectButton.setAction(action);
   }
@@ -62,7 +62,7 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView {
     return false;
   }
 
-  public IListObjectSelectionView<IEquipmentObject> getEquipmentObjectPickList() {
+  public IListObjectSelectionView<IEquipmentTemplate> getEquipmentTemplatePickList() {
     return equipmentPickList;
   }
 }

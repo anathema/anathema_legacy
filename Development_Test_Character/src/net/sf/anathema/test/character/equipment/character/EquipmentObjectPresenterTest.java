@@ -3,7 +3,7 @@ package net.sf.anathema.test.character.equipment.character;
 import net.disy.commons.core.model.BooleanModel;
 import net.sf.anathema.character.equipment.character.EquipmentObjectPresenter;
 import net.sf.anathema.character.equipment.character.IEquipmentStringBuilder;
-import net.sf.anathema.character.equipment.character.model.IEquipmentObject;
+import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.health.HealthType;
@@ -26,7 +26,7 @@ public class EquipmentObjectPresenterTest extends BasicTestCase {
   };
 
   public void testNameOnlyEquipment() throws Exception {
-    IEquipmentObject model = new DummyEquipmentObject("First and Forsaken Weapon", null); //$NON-NLS-1$
+    IEquipmentItem model = new DummyEquipmentObject("First and Forsaken Weapon", null); //$NON-NLS-1$
     IEquipmentObjectView view = EasyMock.createMock(IEquipmentObjectView.class);
     view.setItemTitle("First and Forsaken Weapon"); //$NON-NLS-1$
     EasyMock.replay(view);
@@ -74,7 +74,7 @@ public class EquipmentObjectPresenterTest extends BasicTestCase {
     view.setItemTitle("Title"); //$NON-NLS-1$
     BooleanModel isPrintSelectedModel = new BooleanModel();
     EasyMock.expect(view.addStats("Passt!")).andReturn(isPrintSelectedModel); //$NON-NLS-1$
-    IEquipmentObject object = EasyMock.createMock(IEquipmentObject.class);
+    IEquipmentItem object = EasyMock.createMock(IEquipmentItem.class);
     DemoMeleeWeapon demoMeleeWeapon = new DemoMeleeWeapon(new Identificate("Sword"), 5, 2, 7, HealthType.Lethal, -1, 2); //$NON-NLS-1$
     object.setPrintEnabled(demoMeleeWeapon, true);
     EasyMock.replay(view, object);

@@ -4,9 +4,9 @@ import net.sf.anathema.lib.control.collection.ICollectionListener;
 
 public interface IEquipmentObjectCollection {
 
-  public IEquipmentObject[] getAvailableObjects();
+  public IEquipmentTemplate[] getAvailableTemplates();
 
-  public void addEquipmentObject(IEquipmentObject object);
+  public void addEquipmentObject(IEquipmentTemplate template);
 
-  public void addEquipmentObjectListener(ICollectionListener<IEquipmentObject> listener);
+  public void addEquipmentObjectListener(ICollectionListener<IEquipmentItem> listener);
 }

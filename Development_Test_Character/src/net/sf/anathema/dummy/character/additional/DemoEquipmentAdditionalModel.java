@@ -3,8 +3,10 @@ package net.sf.anathema.dummy.character.additional;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.character.equipment.character.model.IEquipmentObject;
+import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
+import net.sf.anathema.character.equipment.character.model.IEquipmentTemplate;
 import net.sf.anathema.character.equipment.impl.character.model.AbstractEquipmentAdditionalModel;
+import net.sf.anathema.character.equipment.impl.character.model.EquipmentItem;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.control.GenericControl;
@@ -15,9 +17,9 @@ public class DemoEquipmentAdditionalModel extends AbstractEquipmentAdditionalMod
 
   private final List<IArmourStats> printArmourStats = new ArrayList<IArmourStats>();
   private final List<IWeaponStats> printWeaponStats = new ArrayList<IWeaponStats>();
-  private final List<IEquipmentObject> availableEquipmentObjects = new ArrayList<IEquipmentObject>();
-  private final List<IEquipmentObject> equipmentObjects = new ArrayList<IEquipmentObject>();
-  private final GenericControl<ICollectionListener<IEquipmentObject>> equipmentObjectControl = new GenericControl<ICollectionListener<IEquipmentObject>>();
+  private final List<IEquipmentTemplate> availableTemplates = new ArrayList<IEquipmentTemplate>();
+  private final List<IEquipmentItem> equipmentObjects = new ArrayList<IEquipmentItem>();
+  private final GenericControl<ICollectionListener<IEquipmentItem>> equipmentObjectControl = new GenericControl<ICollectionListener<IEquipmentItem>>();
 
   public void addPrintArmour(IArmourStats armour) {
     this.printArmourStats.add(armour);
@@ -35,24 +37,25 @@ public class DemoEquipmentAdditionalModel extends AbstractEquipmentAdditionalMod
     return printWeaponStats.toArray(new IWeaponStats[printWeaponStats.size()]);
   }
 
-  public void addAvailableObject(IEquipmentObject object) {
-    availableEquipmentObjects.add(object);
+  public void addAvailableTemplates(IEquipmentTemplate template) {
+    availableTemplates.add(template);
   }
 
-  public void addEquipmentObject(final IEquipmentObject object) {
-    equipmentObjects.add(object);
-    equipmentObjectControl.forAllDo(new IClosure<ICollectionListener<IEquipmentObject>>() {
-      public void execute(ICollectionListener<IEquipmentObject> input) {
-        input.itemAdded(object);
+  public void addEquipmentObject(final IEquipmentTemplate template) {
+    final IEquipmentItem item = new EquipmentItem(template);
+    equipmentObjects.add(item);
+    equipmentObjectControl.forAllDo(new IClosure<ICollectionListener<IEquipmentItem>>() {
+      public void execute(ICollectionListener<IEquipmentItem> input) {
+        input.itemAdded(item);
       }
     });
   }
 
-  public IEquipmentObject[] getAvailableObjects() {
-    return availableEquipmentObjects.toArray(new IEquipmentObject[availableEquipmentObjects.size()]);
+  public IEquipmentTemplate[] getAvailableTemplates() {
+    return availableTemplates.toArray(new IEquipmentTemplate[availableTemplates.size()]);
   }
 
-  public void addEquipmentObjectListener(ICollectionListener<IEquipmentObject> listener) {
+  public void addEquipmentObjectListener(ICollectionListener<IEquipmentItem> listener) {
     equipmentObjectControl.addListener(listener);
   }
 }
