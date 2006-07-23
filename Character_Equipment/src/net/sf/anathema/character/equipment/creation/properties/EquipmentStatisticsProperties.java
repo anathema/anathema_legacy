@@ -5,7 +5,7 @@ import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.core.message.MessageType;
 import net.sf.anathema.lib.resources.IResources;
 
-public class EquipmentStatisticsProperties {
+public abstract class EquipmentStatisticsProperties {
 
   private final BasicMessage nameUndefinedMessage = new BasicMessage(
       "Please select a name for the equipment statstics or deselect the associated checkbox.",
@@ -27,4 +27,8 @@ public class EquipmentStatisticsProperties {
   public IBasicMessage getUndefinedNameMessage() {
     return nameUndefinedMessage;
   }
+
+  public abstract IBasicMessage getDefaultMessage();
+
+  public abstract String getPageDescription();
 }

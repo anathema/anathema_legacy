@@ -9,7 +9,7 @@ public interface IEquipmentStatisticsCreationViewFactory {
 
   public IEquipmentTypeChoiceView createTypeChoiceView();
 
-  public IWeaponStatisticsView createCloseCombatStatisticsView();
+  public IWeaponStatisticsView createEquipmentStatisticsView();
 
   public IWeaponDamageView createWeaponDamageView();
 

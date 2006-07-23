@@ -7,6 +7,8 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class ArmourStatisticsProperties extends EquipmentStatisticsProperties {
 
+  private final BasicMessage defaultMessage = new BasicMessage("Please fill the armour statstics.");
+
   public ArmourStatisticsProperties(IResources resources) {
     super(resources);
   }
@@ -37,5 +39,15 @@ public class ArmourStatisticsProperties extends EquipmentStatisticsProperties {
 
   public String getFatigueLabel() {
     return "Fatigue:";
+  }
+
+  @Override
+  public IBasicMessage getDefaultMessage() {
+    return defaultMessage;
+  }
+
+  @Override
+  public String getPageDescription() {
+    return "Armour Stats";
   }
 }

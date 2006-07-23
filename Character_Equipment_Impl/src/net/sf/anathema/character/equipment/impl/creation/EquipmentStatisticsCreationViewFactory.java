@@ -16,7 +16,7 @@ public class EquipmentStatisticsCreationViewFactory implements IEquipmentStatist
     return new EquipmentTypeChoiceView();
   }
 
-  public IWeaponStatisticsView createCloseCombatStatisticsView() {
+  public IWeaponStatisticsView createEquipmentStatisticsView() {
     return new WeaponStatisticsView();
   }
 
