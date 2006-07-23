@@ -4,7 +4,6 @@ import java.awt.Color;
 
 import net.sf.anathema.character.generic.framework.xml.GenericCharacterTemplate;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
 public class GenericPresentationTemplate extends ReflectionCloneableObject<GenericPresentationTemplate> implements
@@ -16,11 +15,11 @@ public class GenericPresentationTemplate extends ReflectionCloneableObject<Gener
   private GenericCharacterTemplate template;
 
   public String getMediumCasteIconResource(String casteId, String editionId) {
-    return getCharacterType().getId() + "Button" + casteId + editionId + "20.png"; //$NON-NLS-1$//$NON-NLS-2$
+    return getCharacterTypeId() + "Button" + casteId + editionId + "20.png"; //$NON-NLS-1$//$NON-NLS-2$
   }
 
   public String getSmallCasteIconResource(String casteId, String editionId) {
-    return getCharacterType().getId() + "Button" + casteId + editionId + "16.png"; //$NON-NLS-1$//$NON-NLS-2$
+    return getCharacterTypeId() + "Button" + casteId + editionId + "16.png"; //$NON-NLS-1$//$NON-NLS-2$
   }
 
   public Color getColor() {
@@ -32,7 +31,7 @@ public class GenericPresentationTemplate extends ReflectionCloneableObject<Gener
   }
 
   public String getCasteLabelResource() {
-    return getCharacterType().getId() + ".Caste.Label"; //$NON-NLS-1$;
+    return getCharacterTypeId() + ".Caste.Label"; //$NON-NLS-1$;
   }
 
   public GenericCharmPresentationProperties getCharmPresentationProperties() {
@@ -60,8 +59,8 @@ public class GenericPresentationTemplate extends ReflectionCloneableObject<Gener
     this.template = template;
   }
 
-  private CharacterType getCharacterType() {
-    return template.getTemplateType().getCharacterType();
+  private String getCharacterTypeId() {
+    return template.getTemplateType().getCharacterType().getId();
   }
 
   public void setCharmPresentationProperties(GenericCharmPresentationProperties properties) {
