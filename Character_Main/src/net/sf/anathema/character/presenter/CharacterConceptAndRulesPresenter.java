@@ -183,16 +183,7 @@ public class CharacterConceptAndRulesPresenter {
       return;
     }
     String casteLabelResourceKey = template.getPresentationProperties().getCasteLabelResource();
-    IObjectUi casteUi = new IdentificateObjectUi(resources) {
-      @Override
-      protected Icon getNonNullIcon(IIdentificate value) {
-        //TODO: Caste Icon Handling
-        return getResources().getImageIcon(
-            statistics.getCharacterTemplate().getPresentationProperties().getSmallCasteIconResource(
-                value.getId(),
-                template.getEdition().getId()));
-      }
-    };
+    IObjectUi casteUi = new CasteSelectObjectUi(resources, template.getPresentationProperties(), template.getEdition());
     ICasteType< ? extends ICasteTypeVisitor>[] allCasteTypes = template.getCasteCollection().getAllCasteTypes();
     final IObjectSelectionView<ICasteType< ? extends ICasteTypeVisitor>> casteView = view.addConceptObjectSelectionView(
         resources.getString(casteLabelResourceKey),

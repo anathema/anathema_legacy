@@ -27,7 +27,6 @@ public abstract class AbstractToggleButtonTraitViewWrapper<K extends ITraitView<
     this.button = new IconToggleButton(properties.createStandardIcon(), properties.createUnselectedIcon());
     setButtonState(selected, true);
     button.setToolTipText(properties.getToolTipText());
-
   }
 
   public void setButtonState(boolean selected, boolean enabled) {
