@@ -14,7 +14,7 @@ import net.sf.anathema.lib.util.Identificate;
 
 import org.easymock.EasyMock;
 
-public class EquipmentObjectPresenterTest extends BasicTestCase {
+public class EquipmentItemPresenterTest extends BasicTestCase {
 
   private IEquipmentStringBuilder equipmentStringBuilder = new IEquipmentStringBuilder() {
     public String createString(IEquipmentStats equipment) {

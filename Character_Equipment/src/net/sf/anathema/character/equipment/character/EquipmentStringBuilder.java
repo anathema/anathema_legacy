@@ -1,7 +1,9 @@
 package net.sf.anathema.character.equipment.character;
 
+import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
+import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.resources.IResources;
 
 public class EquipmentStringBuilder implements IEquipmentStringBuilder {
@@ -36,13 +38,42 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
       return "";
     }
     String signum = printSignum && value >= 0 ? "+" : "";
-    return " " + resources.getString("Equipment.Stats.Short." + keyPart) + ":" + signum + value;
+    return createtNewStatsStart(keyPart) + signum + value;
+  }
+
+  private String createtNewStatsStart(String keyPart) {
+    return " " + resources.getString("Equipment.Stats.Short." + keyPart) + ":";
   }
 
   public String createString(IEquipmentStats equipment) {
     if (equipment instanceof IWeaponStats) {
       return createWeaponString((IWeaponStats) equipment);
     }
-    throw new UnsupportedOperationException("Unsupported equipment class:" + equipment.getClass());
+    return createArmourString((IArmourStats) equipment);
+  }
+
+  private String createArmourString(IArmourStats armourStats) {
+    StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append(armourStats.getName().getId());
+    stringBuilder.append(":");
+    stringBuilder.append(createtNewStatsStart("Soak"));
+    stringBuilder.append(createArmourStat(armourStats.getSoak(HealthType.Bashing), "+"));
+    stringBuilder.append("/");
+    stringBuilder.append(createArmourStat(armourStats.getSoak(HealthType.Lethal), "+"));
+    stringBuilder.append("/");
+    stringBuilder.append(createArmourStat(armourStats.getSoak(HealthType.Aggravated), "+"));
+    stringBuilder.append(createtNewStatsStart("Hardness"));
+    stringBuilder.append(createArmourStat(armourStats.getHardness(HealthType.Bashing), ""));
+    stringBuilder.append("/");
+    stringBuilder.append(createArmourStat(armourStats.getHardness(HealthType.Lethal), ""));
+    stringBuilder.append("/");
+    stringBuilder.append(createArmourStat(armourStats.getHardness(HealthType.Aggravated), "-"));
+    stringBuilder.append(getStatsString("MobilityPenalty", armourStats.getMobilityPenalty(), false));
+    stringBuilder.append(getStatsString("Fatigue", armourStats.getFatigue(), false));
+    return stringBuilder.toString();
+  }
+
+  private CharSequence createArmourStat(Integer soak, String prefix) {
+    return soak == null ? "-" : prefix + soak;
   }
 }

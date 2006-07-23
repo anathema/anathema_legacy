@@ -6,6 +6,20 @@ import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
 public class DemoNaturalArmour implements IArmourStats {
+  
+  private final int bashingSoak;
+  private final int lethalSoak;
+  private final IIdentificate name;
+  
+  public DemoNaturalArmour() {
+    this(new Identificate("Natural"), 2, 1); //$NON-NLS-1$
+  }
+
+  public DemoNaturalArmour(IIdentificate identificate, int bashingSoak, int lethalSoak) {
+    this.name = identificate;
+    this.bashingSoak = bashingSoak;
+    this.lethalSoak = lethalSoak;
+  }
 
   public Integer getFatigue() {
     return null;
@@ -24,12 +38,12 @@ public class DemoNaturalArmour implements IArmourStats {
       return null;
     }
     if (type == HealthType.Lethal) {
-      return 1;
+      return lethalSoak;
     }
-    return 2;
+    return bashingSoak;
   }
 
   public IIdentificate getName() {
-    return new Identificate("Natural");
+    return name;
   }
 }

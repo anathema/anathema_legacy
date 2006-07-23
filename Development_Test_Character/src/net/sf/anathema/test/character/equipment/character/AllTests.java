@@ -9,7 +9,7 @@ public class AllTests {
     TestSuite suite = new TestSuite("Test for net.sf.anathema.test.character.equipment.character"); //$NON-NLS-1$
     //$JUnit-BEGIN$
     suite.addTestSuite(EquipmentStringBuilderTest.class);
-    suite.addTestSuite(EquipmentObjectPresenterTest.class);
+    suite.addTestSuite(EquipmentItemPresenterTest.class);
     suite.addTestSuite(EquipmentAdditionalPresenterTest.class);
     //$JUnit-END$
     return suite;
