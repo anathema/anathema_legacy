@@ -3,7 +3,8 @@ package net.sf.anathema.character.sidereal.colleges.presenter;
 import javax.swing.Icon;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
-import net.sf.anathema.character.generic.impl.IIconConstants;
+import net.sf.anathema.character.generic.framework.resources.CharacterTemplateResourceProvider;
+import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
@@ -44,7 +45,7 @@ public class SiderealCollegePresenter extends AbstractTraitPresenter {
     final IValueView<Integer> experienceView = experienceOverview.addIntegerValueView(
         resources.getString("Astrology.Overview.Experience"), 3); //$NON-NLS-1$
 
-    Icon siderealBall = resources.getImageIcon(IIconConstants.SIDEREAL_BALL);
+    Icon siderealBall = new CharacterTemplateResourceProvider(resources).getMediumBallResource(CharacterType.SIDEREAL);
     IIntValueDisplayFactory factory = new IntValueDisplayFactory(resources, siderealBall);
     for (final IAstrologicalHouse house : model.getAllHouses()) {
       view.startGroup(resources.getString("AstrologicalHouses.GroupLabel." + house.getId())); //$NON-NLS-1$
