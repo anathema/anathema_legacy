@@ -7,6 +7,7 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentObject;
 import net.sf.anathema.character.equipment.character.model.IEquipmentObjectCollection;
 import net.sf.anathema.character.equipment.character.view.IEquipmentAdditionalView;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
+import net.sf.anathema.lib.control.collection.CollectionAdapter;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
@@ -31,15 +32,11 @@ public class EquipmentAdditionalPresenter implements IPresenter {
     final IListObjectSelectionView<IEquipmentObject> equipmentPickList = view.getEquipmentObjectPickList();
     equipmentPickList.setCellRenderer(new EquipmentObjectCellRenderer());
     equipmentPickList.setObjects(model.getAvailableObjects());
-    // TODO über model nicht über view gehen
     final SmartAction addAction = new SmartAction("Add") {
-      
       @Override
       protected void execute(Component parentComponent) {
         IEquipmentObject selectedObject = equipmentPickList.getSelectedObject();
-        IEquipmentObjectView objectView = view.addEquipmentObjectView();
-        IEquipmentStringBuilder resourceBuilder = new EquipmentStringBuilder(resources);
-        new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder).initPresentation();
+        model.addEquipmentObject(selectedObject);
       }
     };
     equipmentPickList.addObjectSelectionChangedListener(new IObjectValueChangedListener<IEquipmentObject>() {
@@ -47,7 +44,19 @@ public class EquipmentAdditionalPresenter implements IPresenter {
         addAction.setEnabled(view.getEquipmentObjectPickList().isObjectSelected());
       }
     });
+    model.addEquipmentObjectListener(new CollectionAdapter<IEquipmentObject>() {
+      @Override
+      public void itemAdded(IEquipmentObject item) {
+        initEquipmentObjectPresentation(item);
+      }
+    });
     addAction.setEnabled(view.getEquipmentObjectPickList().isObjectSelected());
     view.setSelectButtonAction(addAction);
+  }
+
+  private void initEquipmentObjectPresentation(IEquipmentObject selectedObject) {
+    IEquipmentObjectView objectView = view.addEquipmentObjectView();
+    IEquipmentStringBuilder resourceBuilder = new EquipmentStringBuilder(resources);
+    new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder).initPresentation();
   }
 }

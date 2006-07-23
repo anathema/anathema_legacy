@@ -14,33 +14,51 @@ import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
+import net.sf.anathema.lib.control.collection.ICollectionListener;
 
 public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
 
-  private final List<IArmourStats> armours = new ArrayList<IArmourStats>();
-  private final List<IWeaponStats> weapons = new ArrayList<IWeaponStats>();
+  private final List<IArmourStats> printArmourStats = new ArrayList<IArmourStats>();
+  private final List<IWeaponStats> printWeaponsStats = new ArrayList<IWeaponStats>();
+  private final List<IEquipmentObject> equipmentObjects = new ArrayList<IEquipmentObject>();
+  private final GenericControl<ICollectionListener<IEquipmentObject>> equipmentObjectControl = new GenericControl<ICollectionListener<IEquipmentObject>>();
 
   public EquipmentAdditionalModel(ICharacterModelContext context) {
     IBasicCharacterData basicCharacterContext = context.getBasicCharacterContext();
-    armours.add(new NaturalSoak(
+    printArmourStats.add(new NaturalSoak(
         context.getTraitCollection().getTrait(AttributeType.Stamina),
         basicCharacterContext.getCharacterType()));
     if (basicCharacterContext.getRuleSet().getEdition() == ExaltedEdition.SecondEdition) {
-      weapons.add(new Punch());
-      weapons.add(new Kick());
-      weapons.add(new Clinch());
+      printWeaponsStats.add(new Punch());
+      printWeaponsStats.add(new Kick());
+      printWeaponsStats.add(new Clinch());
     }
   }
 
   public IArmourStats[] getPrintArmours() {
-    return armours.toArray(new IArmourStats[armours.size()]);
+    return printArmourStats.toArray(new IArmourStats[printArmourStats.size()]);
   }
 
   public IWeaponStats[] getPrintWeapons() {
-    return weapons.toArray(new IWeaponStats[weapons.size()]);
+    return printWeaponsStats.toArray(new IWeaponStats[printWeaponsStats.size()]);
   }
 
   public IEquipmentObject[] getAvailableObjects() {
     return new IEquipmentObject[0];
+  }
+
+  public void addEquipmentObject(final IEquipmentObject object) {
+    equipmentObjects.add(object);
+    equipmentObjectControl.forAllDo(new IClosure<ICollectionListener<IEquipmentObject>>() {
+      public void execute(ICollectionListener<IEquipmentObject> input) {
+        input.itemAdded(object);
+      }
+    });
+  }
+
+  public void addEquipmentObjectListener(ICollectionListener<IEquipmentObject> listener) {
+    equipmentObjectControl.addListener(listener);
   }
 }

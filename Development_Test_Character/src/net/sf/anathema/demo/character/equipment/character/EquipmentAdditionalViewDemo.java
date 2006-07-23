@@ -16,7 +16,7 @@ public class EquipmentAdditionalViewDemo extends SwingDemoCase {
     AnathemaResources resources = new AnathemaResources();
     DemoEquipmentAdditionalModel equipmentModel = new DemoEquipmentAdditionalModel();
     IEquipmentStats[] equipments = new IEquipmentStats[] { new Punch(), new Kick() };
-    equipmentModel.addObject(new EquipmentObject(equipments, "Character Data", //$NON-NLS-1$
+    equipmentModel.addAvailableObject(new EquipmentObject(equipments, "Character Data", //$NON-NLS-1$
         "The characters natural weapons and armour.")); //$NON-NLS-1$
     EquipmentAdditionalView view = new EquipmentAdditionalView();
     new EquipmentAdditionalPresenter(resources, equipmentModel, view).initPresentation();
