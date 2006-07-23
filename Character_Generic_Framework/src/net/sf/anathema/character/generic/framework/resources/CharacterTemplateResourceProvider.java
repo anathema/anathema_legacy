@@ -33,35 +33,35 @@ public class CharacterTemplateResourceProvider extends AbstractUI {
           ballResourcesByCharacterType.put(visitedType, IIconConstants.DB_BALL);
           tinyBallResourcesByCharacterType.put(visitedType, IIconConstants.DB_BALL_TINY);
           smalltypeIconsByCharacterType.put(visitedType, IIconConstants.DB_ICON_SMALL);
-          smalltypeIconsByCharacterType.put(visitedType, IIconConstants.DB_ICON_TINY);
+          tinyTypeIconsByCharacterType.put(visitedType, IIconConstants.DB_ICON_TINY);
         }
 
         public void visitLunar(CharacterType visitedType) {
           ballResourcesByCharacterType.put(visitedType, IIconConstants.LUNAR_BALL);
           tinyBallResourcesByCharacterType.put(visitedType, IIconConstants.LUNAR_BALL_TINY);
           smalltypeIconsByCharacterType.put(visitedType, IIconConstants.LUNAR_ICON_SMALL);
-          smalltypeIconsByCharacterType.put(visitedType, IIconConstants.LUNAR_ICON_TINY);
+          tinyTypeIconsByCharacterType.put(visitedType, IIconConstants.LUNAR_ICON_TINY);
         }
 
         public void visitMortal(CharacterType visitedType) {
           ballResourcesByCharacterType.put(visitedType, IIconConstants.MORTAL_BALL);
           tinyBallResourcesByCharacterType.put(visitedType, IIconConstants.MORTAL_BALL_TINY);
           smalltypeIconsByCharacterType.put(visitedType, IIconConstants.MORTAL_ICON_SMALL);
-          smalltypeIconsByCharacterType.put(visitedType, IIconConstants.MORTAL_ICON_TINY);
+          tinyTypeIconsByCharacterType.put(visitedType, IIconConstants.MORTAL_ICON_TINY);
         }
 
         public void visitSidereal(CharacterType visitedType) {
           ballResourcesByCharacterType.put(visitedType, IIconConstants.SIDEREAL_BALL);
           tinyBallResourcesByCharacterType.put(visitedType, IIconConstants.SIDEREAL_BALL_TINY);
           smalltypeIconsByCharacterType.put(visitedType, IIconConstants.SIDEREAL_ICON_SMALL);
-          smalltypeIconsByCharacterType.put(visitedType, IIconConstants.SIDEREAL_ICON_TINY);
+          tinyTypeIconsByCharacterType.put(visitedType, IIconConstants.SIDEREAL_ICON_TINY);
         }
 
         public void visitSolar(CharacterType visitedType) {
           ballResourcesByCharacterType.put(visitedType, IIconConstants.SOLAR_BALL);
           tinyBallResourcesByCharacterType.put(visitedType, IIconConstants.SOLAR_BALL_TINY);
           smalltypeIconsByCharacterType.put(visitedType, IIconConstants.SOLAR_ICON_SMALL);
-          smalltypeIconsByCharacterType.put(visitedType, IIconConstants.SOLAR_ICON_TINY);
+          tinyTypeIconsByCharacterType.put(visitedType, IIconConstants.SOLAR_ICON_TINY);
         }
 
         public void visitDragonKing(CharacterType visitedType) {
