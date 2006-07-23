@@ -36,10 +36,6 @@ public class CharacterGenerics implements ICharacterGenerics {
   private final IRegistry<String, IAdditionalTemplateParser> additionalTemplateParserRegistry = new Registry<String, IAdditionalTemplateParser>();
   private final ICharmProvider charmProvider = new CharmProvider();
   private final CharacterModuleObjectMap moduleObjectMap = new CharacterModuleObjectMap();
-  
-  public CharacterGenerics() {
-    // TODO Auto-generated constructor stub
-  }
 
   public IIdentificateRegistry<IBackgroundTemplate> getBackgroundRegistry() {
     return backgroundRegistry;
@@ -84,7 +80,7 @@ public class CharacterGenerics implements ICharacterGenerics {
   public ICharmProvider getCharmProvider() {
     return charmProvider;
   }
-  
+
   public CharacterModuleObjectMap getModuleObjectMap() {
     return moduleObjectMap;
   }
