@@ -61,6 +61,10 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
         new RangedCombatStatisticsPresenterPage(resources, model, viewFactory),
         inputListener);
     addPage(
+        EquipmentStatisticsType.Armor,
+        new ArmourStatisticsPresenterPage(resources, model, viewFactory),
+        inputListener);
+    addPage(
         EquipmentStatisticsType.Shield,
         new ShieldStatisticsPresenterPage(resources, model, viewFactory),
         inputListener);
