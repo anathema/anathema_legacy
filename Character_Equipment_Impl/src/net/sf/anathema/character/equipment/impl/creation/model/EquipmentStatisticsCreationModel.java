@@ -1,8 +1,10 @@
 package net.sf.anathema.character.equipment.impl.creation.model;
 
+import net.sf.anathema.character.equipment.creation.model.IArmourStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.ICloseCombatStatsticsModel;
 import net.sf.anathema.character.equipment.creation.model.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.IRangedCombatStatisticsModel;
+import net.sf.anathema.character.equipment.creation.model.IShieldStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.IWeaponTagsModel;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.lib.control.change.ChangeControl;
@@ -12,6 +14,8 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
 
   private final ICloseCombatStatsticsModel closeCombatStatisticsModel = new CloseCombatStatsticsModel();
   private final IRangedCombatStatisticsModel rangedWeaponStatisticsModel = new RangedWeaponStatisticsModel();
+  private final IShieldStatisticsModel shieldStatisticsModel = new ShieldStatisticsModel();
+  private final IArmourStatisticsModel armourStatisticsModel = new ArmourStatsticsModel();
   private final ChangeControl equpimentTypeChangeControl = new ChangeControl();
   private final IWeaponTagsModel weaponTagsModel = new WeaponTagsModel();
   private EquipmentStatisticsType statisticsType;
@@ -42,5 +46,13 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
   
   public IRangedCombatStatisticsModel getRangedWeaponStatisticsModel() {
     return rangedWeaponStatisticsModel;
+  }
+  
+  public IShieldStatisticsModel getShieldStatisticsModel() {
+    return shieldStatisticsModel;
+  }
+
+  public IArmourStatisticsModel getArmourStatisticsModel() {
+    return armourStatisticsModel;
   }
 }

@@ -10,6 +10,10 @@ public interface IEquipmentStatisticsCreationModel {
   public ICloseCombatStatsticsModel getCloseCombatStatsticsModel();
   
   public IRangedCombatStatisticsModel getRangedWeaponStatisticsModel();
+  
+  public IShieldStatisticsModel getShieldStatisticsModel();
+  
+  public IArmourStatisticsModel getArmourStatisticsModel();
 
   public void addEquipmentTypeChangeListener(IChangeListener changeListener);
 
