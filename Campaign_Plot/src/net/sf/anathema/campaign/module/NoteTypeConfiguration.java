@@ -54,7 +54,7 @@ public class NoteTypeConfiguration extends AbstractItemTypeConfiguration {
     return new IItemViewFactory() {
       public IItemView createView(IItem item) throws AnathemaException {
         String printName = item.getDisplayName();
-        Icon icon = resources.getImageIcon("TabNotes16.png"); //$NON-NLS-1$
+        Icon icon = new PlotUI(resources).getNoteTabIcon();
         IBasicItemView basicItemView = new BasicItemView(printName, icon);
         IBasicItemData basicItem = (IBasicItemData) item.getItemData();
         new NotePresenter(basicItemView, resources, basicItem).initPresentation();

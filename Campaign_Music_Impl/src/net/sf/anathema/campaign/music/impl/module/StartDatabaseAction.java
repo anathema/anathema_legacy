@@ -14,6 +14,7 @@ import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.disy.commons.swing.dialog.progress.ProgressMonitorDialog;
 import net.sf.anathema.campaign.music.impl.model.MusicDatabase;
+import net.sf.anathema.campaign.music.presenter.MusicUI;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
@@ -68,7 +69,7 @@ public class StartDatabaseAction extends SmartAction {
 
   public static Action createToolAction(IResources resources, IAnathemaModel anathemaModel) {
     SmartAction action = new StartDatabaseAction(anathemaModel, resources);
-    action.setIcon(resources.getImageIcon("TaskBarMusic24.png")); //$NON-NLS-1$
+    action.setIcon(new MusicUI(resources).getMusicToolBarIcon());
     action.setToolTipText(resources.getString("MusicDatabase.NewAction.Tooltip")); //$NON-NLS-1$
     return action;
   }

@@ -12,10 +12,6 @@ public class DragonKingPresentationProperties extends AbstractPresentationProper
     super(templateType);
   }
 
-  public String getBallResource() {
-    return null;
-  }
-
   public String getMediumCasteIconResource(String groupId, String editionId) {
     return null;
   }

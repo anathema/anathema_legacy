@@ -27,6 +27,7 @@ import net.sf.anathema.framework.ObjectSelectionDialogPage;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.module.preferences.OpenPdfPreferencesElement;
 import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
+import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.reporting.IReport;
 import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.reporting.ReportException;
@@ -70,7 +71,7 @@ public class AnathemaPrintAction extends SmartAction {
   public static Action createToolAction(IAnathemaModel model, IResources resources) {
     SmartAction action = new AnathemaPrintAction(model, resources);
     action.setToolTipText(resources.getString("Anathema.Reporting.Menu.PrintItem.Tooltip")); //$NON-NLS-1$
-    action.setIcon(resources.getImageIcon("tools/TaskBarPDF24.png")); //$NON-NLS-1$
+    action.setIcon(new PlatformUI(resources).getPDFTaskBarIcon());
     return action;
   }
 

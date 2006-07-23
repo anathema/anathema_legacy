@@ -11,6 +11,7 @@ import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.campaign.music.model.selection.ITrackDetailModel;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
+import net.sf.anathema.campaign.music.presenter.MusicUI;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.exception.AnathemaException;
@@ -63,7 +64,8 @@ public class MusicPlayerPresenter {
   public void initPresentation() {
     initSelectionModelListening();
     initPlayerModelListening();
-    pauseAction = new SmartAction(resources.getImageIcon("PauseButton20.png")) { //$NON-NLS-1$
+    MusicUI musicUI = new MusicUI(resources);
+    pauseAction = new SmartAction(musicUI.getPauseButtonIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         try {
@@ -75,7 +77,7 @@ public class MusicPlayerPresenter {
         }
       }
     };
-    resumeAction = new SmartAction(resources.getImageIcon("ResumeButton20.png")) { //$NON-NLS-1$
+    resumeAction = new SmartAction(musicUI.getResumeButtonIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         try {
@@ -88,7 +90,7 @@ public class MusicPlayerPresenter {
       }
     };
 
-    playAction = new SmartAction(resources.getImageIcon("PlayButton20.png")) { //$NON-NLS-1$
+    playAction = new SmartAction(musicUI.getPlayButtonIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         try {
@@ -102,7 +104,7 @@ public class MusicPlayerPresenter {
     };
     view.setPlayAction(playAction);
 
-    view.setStopAction(new SmartAction(resources.getImageIcon("StopButton20.png")) { //$NON-NLS-1$
+    view.setStopAction(new SmartAction(musicUI.getStopButtonIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         try {

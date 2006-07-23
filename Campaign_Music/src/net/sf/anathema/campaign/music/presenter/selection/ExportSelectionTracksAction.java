@@ -11,6 +11,7 @@ import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.campaign.music.export.PlayListExporter;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
+import net.sf.anathema.campaign.music.presenter.MusicUI;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
@@ -22,7 +23,7 @@ public class ExportSelectionTracksAction extends SmartAction {
   private final IResources resources;
 
   public ExportSelectionTracksAction(IResources resources, IMusicSelectionModel selectionModel) {
-    super(resources.getImageIcon("tools/Save24.gif")); //$NON-NLS-1$
+    super(new MusicUI(resources).getExportPlaylistIcon());
     this.resources = resources;
     this.selectionModel = selectionModel;
     setToolTipText(resources.getString("Music.Actions.ExportList.Tooltip")); //$NON-NLS-1$

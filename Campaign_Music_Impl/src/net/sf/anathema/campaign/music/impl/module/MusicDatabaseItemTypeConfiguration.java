@@ -1,8 +1,11 @@
 package net.sf.anathema.campaign.music.impl.module;
 
+import javax.swing.Icon;
+
 import net.sf.anathema.campaign.music.impl.view.MusicDatabaseView;
 import net.sf.anathema.campaign.music.model.IMusicDatabase;
 import net.sf.anathema.campaign.music.presenter.MusicDataBasePresenter;
+import net.sf.anathema.campaign.music.presenter.MusicUI;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.module.AbstractNonPersistableItemTypeConfiguration;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
@@ -33,8 +36,9 @@ public class MusicDatabaseItemTypeConfiguration extends AbstractNonPersistableIt
     return new IItemViewFactory() {
       public IItemView createView(IItem item) throws AnathemaException {
         IMusicDatabase database = (IMusicDatabase) item.getItemData();
+        Icon icon = new MusicUI(resources).getMusicTabIcon();
         MusicDatabaseView view = new MusicDatabaseView(
-            resources.getString("ItemType.MusicDatabase.PrintName"), resources.getImageIcon("TabMusic16.png")); //$NON-NLS-1$ //$NON-NLS-2$
+            resources.getString("ItemType.MusicDatabase.PrintName"), icon); //$NON-NLS-1$
         new MusicDataBasePresenter(resources, database, view).initPresentation();
         return view;
       }

@@ -13,6 +13,7 @@ import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
+import net.sf.anathema.character.generic.framework.util.CharacterUI;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
@@ -27,6 +28,7 @@ import net.sf.anathema.character.view.magic.IComboConfigurationView;
 import net.sf.anathema.character.view.magic.IComboView;
 import net.sf.anathema.character.view.magic.IComboViewListener;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
+import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -145,14 +147,14 @@ public class ComboConfigurationPresenter implements IMagicSubPresenter {
 
   private void addComboToView(final IComboConfigurationView comboConfigurationView, final ICombo combo) {
     SmartAction deleteAction = new SmartAction(
-        resources.getString("CardView.CharmConfiguration.ComboCreation.DeleteLabel"), resources.getImageIcon("tools/RedX20.png")) { //$NON-NLS-1$//$NON-NLS-2$
+        resources.getString("CardView.CharmConfiguration.ComboCreation.DeleteLabel"), new BasicUi(resources).getMediumRemoveIcon()) { //$NON-NLS-1$
       @Override
       protected void execute(Component parentComponent) {
         comboConfiguration.deleteCombo(combo);
       }
     };
     SmartAction editAction = new SmartAction(
-        resources.getString("CardView.CharmConfiguration.ComboCreation.EditLabel"), resources.getImageIcon("Recycle20.png")) {//$NON-NLS-1$//$NON-NLS-2$
+        resources.getString("CardView.CharmConfiguration.ComboCreation.EditLabel"), new CharacterUI(resources).getEditComboIcon()) {//$NON-NLS-1$
       @Override
       protected void execute(Component parentComponent) {
         comboConfiguration.beginComboEdit(combo);

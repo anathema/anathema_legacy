@@ -17,6 +17,7 @@ import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
 import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
+import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
@@ -66,7 +67,7 @@ public class AnathemaSaveAllAction extends SmartAction {
   public static Action createToolAction(IAnathemaModel model, IResources resources) {
     SmartAction action = new AnathemaSaveAllAction(model, resources);
     action.setToolTipText(resources.getString("AnathemaPersistence.SaveAllAction.Tooltip")); //$NON-NLS-1$
-    action.setIcon(resources.getImageIcon("tools/TaskBarSaveAll24.png")); //$NON-NLS-1$
+    action.setIcon(new PlatformUI(resources).getSaveAllTaskBarIcon());
     return action;
   }
 

@@ -23,6 +23,7 @@ import net.sf.anathema.campaign.music.model.libary.IMusicFolderWalker;
 import net.sf.anathema.campaign.music.model.libary.ITrackHandler;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.presenter.IMusicSearchControl;
+import net.sf.anathema.campaign.music.presenter.MusicUI;
 import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.DirectoryFileChooser;
@@ -41,7 +42,7 @@ public class AddMusicFolderAction extends SmartAction {
       IMusicSearchControl searchControl,
       ILibraryControl model,
       ILibraryControlView view) {
-    super(new BasicUi(resources).getMediumBrowseIcon());
+    super(new MusicUI(resources).getAddFolderIcon());
     this.resources = resources;
     this.searchControl = searchControl;
     setToolTipText(resources.getString("Music.Actions.AddFolder.Tooltip")); //$NON-NLS-1$

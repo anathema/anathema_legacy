@@ -56,6 +56,7 @@ public class SiderealCollegePresenter extends AbstractTraitPresenter {
           }
 
           public Icon createStandardIcon() {
+            //TODO: Caste Icon Handling
             return resources.getImageIcon(SiderealPresentationProperties.getSideralCasteIconResource(house.getId()));
           }
 

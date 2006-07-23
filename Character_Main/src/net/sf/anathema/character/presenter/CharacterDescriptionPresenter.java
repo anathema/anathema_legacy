@@ -1,5 +1,6 @@
 package net.sf.anathema.character.presenter;
 
+import net.sf.anathema.character.generic.framework.util.CharacterUI;
 import net.sf.anathema.character.model.ICharacterDescription;
 import net.sf.anathema.character.presenter.description.NameGeneratorAction;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
@@ -39,11 +40,14 @@ public class CharacterDescriptionPresenter {
 
   private void initNameLineView(int row, TextualPresentation presentation) {
     initLineView("CharacterDescription.Label.Name", description.getName(), presentation); //$NON-NLS-1$
-    descriptionView.addEditAction(new NameGeneratorAction(resources.getImageIcon("util/question-mark-purple.gif"), //$NON-NLS-1$
+    CharacterUI characterUI = new CharacterUI(resources);
+    descriptionView.addEditAction(new NameGeneratorAction(
+        characterUI.getRandomRealmNameIcon(),
         resources.getString("CharacterDescription.Tooltip.RealmName"), //$NON-NLS-1$
         description.getName(),
         new RealmNameGenerator()), row);
-    descriptionView.addEditAction(new NameGeneratorAction(resources.getImageIcon("util/question-mark.gif"), //$NON-NLS-1$
+    descriptionView.addEditAction(new NameGeneratorAction(
+        characterUI.getRandomThresholdNameIcon(),
         resources.getString("CharacterDescription.Tooltip.ThresholdName"), //$NON-NLS-1$
         description.getName(),
         new ThresholdNameGenerator()), row);

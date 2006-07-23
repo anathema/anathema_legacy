@@ -2,6 +2,8 @@ package net.sf.anathema.campaign.presenter;
 
 import javax.swing.Icon;
 
+import net.sf.anathema.campaign.module.PlotUI;
+import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CampaignContentViewProperties implements ICampaignContentViewProperties {
@@ -13,11 +15,11 @@ public class CampaignContentViewProperties implements ICampaignContentViewProper
   }
 
   public Icon getAddButtonIcon() {
-    return resources.getImageIcon("GreenArrowLeft20.png"); //$NON-NLS-1$
+    return new PlotUI(resources).getAddButtonIcon();
   }
 
   public Icon getRemoveButtonIcon() {
-    return resources.getImageIcon("tools/RedX20.png"); //$NON-NLS-1$
+    return new BasicUi(resources).getMediumRemoveIcon();
   }
 
   public String getAddToolTip() {

@@ -1,6 +1,5 @@
 <presentation>
-   <color red="167" green="195" blue="220" />
-  <ballResource type="Lunar" />
+  <color red="167" green="195" blue="220" />
   <newResources>
     <newAction>CharacterGenerator.NewCharacter.Lunar.Name</newAction>
   </newResources>

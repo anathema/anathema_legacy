@@ -36,7 +36,7 @@ public final class SeriesTypeConfiguration extends AbstractItemTypeConfiguration
     return new IItemViewFactory() {
       public IItemView createView(IItem item) throws AnathemaException {
         String printName = item.getDisplayName();
-        Icon icon = resources.getImageIcon("TabSeries16.png"); //$NON-NLS-1$
+        Icon icon = new PlotUI(resources).getSeriesTabIcon();
         ISeriesView campaignView = new CampaignView(printName, icon);
         ISeries seriesData = (ISeries) item.getItemData();
         new CampaignPresenter(campaignView, resources, seriesData).initPresentation();

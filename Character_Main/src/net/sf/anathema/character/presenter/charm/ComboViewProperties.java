@@ -11,6 +11,7 @@ import javax.swing.ListSelectionModel;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.CharmInfoStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmInfoStringBuilder;
 import net.sf.anathema.character.generic.framework.magic.view.AbstractMagicLearnProperties;
+import net.sf.anathema.character.generic.framework.util.CharacterUI;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.view.magic.IComboViewProperties;
@@ -30,7 +31,7 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
   }
 
   public Icon getFinalizeButtonIcon() {
-    return getResources().getImageIcon("Green+20.png"); //$NON-NLS-1$
+    return new BasicUi(getResources()).getMediumAddIcon();
   }
 
   public String getAvailableComboCharmsLabel() {
@@ -122,7 +123,7 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
   }
 
   public Icon getCancelEditButtonIcon() {
-    return getResources().getImageIcon("CancelEdit20.png"); //$NON-NLS-1$  
+    return new CharacterUI(getResources()).getCancelComboEditIcon();  
   }
 
   public String getFinalizeButtonEditToolTip() {

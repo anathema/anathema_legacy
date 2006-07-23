@@ -7,17 +7,13 @@ import net.sf.anathema.character.generic.template.presentation.IPresentationProp
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
-public class GenericPresentationTemplate extends ReflectionCloneableObject<GenericPresentationTemplate> implements IPresentationProperties {
+public class GenericPresentationTemplate extends ReflectionCloneableObject<GenericPresentationTemplate> implements
+    IPresentationProperties {
 
   private GenericCharmPresentationProperties charmPresentationProperties;
   private Color color;
-  private String ballResource;
   private String newActionResource;
   private GenericCharacterTemplate template;
-
-  public String getBallResource() {
-    return ballResource;
-  }
 
   public String getMediumCasteIconResource(String casteId, String editionId) {
     return getCharacterType().getId() + "Button" + casteId + editionId + "20.png"; //$NON-NLS-1$//$NON-NLS-2$
@@ -45,10 +41,6 @@ public class GenericPresentationTemplate extends ReflectionCloneableObject<Gener
 
   public void setColor(Color color) {
     this.color = color;
-  }
-
-  public void setBallResource(String ballResource) {
-    this.ballResource = ballResource;
   }
 
   public void setNewActionResource(String newActionResource) {

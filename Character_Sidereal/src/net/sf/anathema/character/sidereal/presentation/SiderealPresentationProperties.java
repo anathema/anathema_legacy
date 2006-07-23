@@ -45,10 +45,6 @@ public class SiderealPresentationProperties extends AbstractPresentationProperti
     super(new TemplateType(CharacterType.SIDEREAL));
   }
 
-  public String getBallResource() {
-    return IIconConstants.SIDEREAL_BALL;
-  }
-
   public String getSmallCasteIconResource(String casteId, String editionId) {
     final String[] iconName = new String[1];
     SiderealCaste caste = SiderealCaste.valueOf(casteId);

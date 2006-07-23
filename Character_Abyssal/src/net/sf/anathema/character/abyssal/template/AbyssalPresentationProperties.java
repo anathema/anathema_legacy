@@ -24,10 +24,6 @@ public class AbyssalPresentationProperties extends AbstractPresentationPropertie
     return newActionResoure;
   }
 
-  public String getBallResource() {
-    return IIconConstants.ABYSSAL_BALL;
-  }
-
   public String getSmallCasteIconResource(String casteId, String editionId) {
     final String[] iconName = new String[1];
     AbyssalCaste abyssalCaste = AbyssalCaste.valueOf(casteId);

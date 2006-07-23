@@ -3,7 +3,6 @@ package net.sf.anathema.character.impl.view.repository;
 import java.awt.Component;
 import java.util.Enumeration;
 
-import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
@@ -17,8 +16,8 @@ import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.impl.IIconConstants;
-import net.sf.anathema.character.generic.type.AbstractSupportedCharacterTypeVisitor;
+import net.sf.anathema.character.generic.framework.util.CharacterUI;
+import net.sf.anathema.character.generic.framework.xml.presentation.CharacterTemplateResourceProvider;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.view.repository.ICharacterTemplateTree;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
@@ -82,7 +81,7 @@ public class CharacterTemplateTree implements ICharacterTemplateTree {
               leaf,
               row,
               focus);
-          setIcon(getCharacterTypeIcon(characterType));
+          setIcon(new CharacterUI(resources).getTinyCharacterTypeIcon(characterType));
           return renderComponent;
         }
         if (object instanceof ITemplateTypeAggregation) {
@@ -96,76 +95,12 @@ public class CharacterTemplateTree implements ICharacterTemplateTree {
               leaf,
               row,
               focus);
-          setIcon(getCharacterTemplateIcon(template.getTemplateType().getCharacterType()));
+          setIcon(new CharacterTemplateResourceProvider(resources).getTinyBallResource(template.getTemplateType().getCharacterType()));
           return renderComponent;
         }
         return super.getTreeCellRendererComponent(templateTree, value, sel, expanded, leaf, row, focus);
       }
     };
-  }
-
-  private Icon getCharacterTemplateIcon(CharacterType characterType) {
-    final Icon[] typeIcon = new Icon[1];
-    characterType.accept(new AbstractSupportedCharacterTypeVisitor() {
-      public void visitSolar(CharacterType visitedType) {
-        typeIcon[0] = resources.getImageIcon(IIconConstants.SOLAR_BALL_TINY);
-      }
-
-      public void visitMortal(CharacterType visitedType) {
-        typeIcon[0] = resources.getImageIcon(IIconConstants.MORTAL_BALL_TINY);
-
-      }
-
-      public void visitSidereal(CharacterType visitedType) {
-        typeIcon[0] = resources.getImageIcon(IIconConstants.SIDEREAL_BALL_TINY);
-
-      }
-
-      public void visitDB(CharacterType visitedType) {
-        typeIcon[0] = resources.getImageIcon(IIconConstants.DB_BALL_TINY);
-      }
-
-      public void visitAbyssal(CharacterType visitedType) {
-        typeIcon[0] = resources.getImageIcon(IIconConstants.ABYSSAL_BALL_TINY);
-      }
-
-      public void visitLunar(CharacterType type) {
-        typeIcon[0] = resources.getImageIcon(IIconConstants.LUNAR_BALL_TINY);
-      }
-    });
-    return typeIcon[0];
-  }
-
-  private Icon getCharacterTypeIcon(CharacterType characterType) {
-    final Icon[] typeIcon = new Icon[1];
-    characterType.accept(new AbstractSupportedCharacterTypeVisitor() {
-      public void visitSolar(CharacterType visitedType) {
-        typeIcon[0] = resources.getImageIcon(IIconConstants.SOLAR_ICON_TINY);
-      }
-
-      public void visitMortal(CharacterType visitedType) {
-        typeIcon[0] = resources.getImageIcon(IIconConstants.MORTAL_ICON_TINY);
-
-      }
-
-      public void visitSidereal(CharacterType visitedType) {
-        typeIcon[0] = resources.getImageIcon(IIconConstants.SIDEREAL_ICON_TINY);
-
-      }
-
-      public void visitDB(CharacterType visitedType) {
-        typeIcon[0] = resources.getImageIcon(IIconConstants.DB_ICON_TINY);
-      }
-
-      public void visitAbyssal(CharacterType visitedType) {
-        typeIcon[0] = resources.getImageIcon(IIconConstants.ABYSSAL_ICON_TINY);
-      }
-
-      public void visitLunar(CharacterType type) {
-        typeIcon[0] = resources.getImageIcon(IIconConstants.LUNAR_ICON_TINY);
-      }
-    });
-    return typeIcon[0];
   }
 
   private DefaultTreeModel createTreeModel() {

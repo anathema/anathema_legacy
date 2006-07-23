@@ -1,6 +1,5 @@
 <presentation>
   <color red="255" green="215" blue="0" />
-  <ballResource type="Solar" />
   <newResources>
     <newAction>CharacterGenerator.NewCharacter.Solar.Name</newAction>
   </newResources>

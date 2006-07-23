@@ -5,6 +5,7 @@ import javax.swing.Icon;
 
 import net.sf.anathema.character.impl.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
+import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.resources.AnathemaResources;
 
 public class AbilityConfigurationDemo extends BasicCharacterDemoCase {
@@ -32,7 +33,7 @@ public class AbilityConfigurationDemo extends BasicCharacterDemoCase {
     configurationView.addSpecialtySelectionView("Specialties", //$NON-NLS-1$
         new Object[] { "Ability1 ganz lang", "Ability2 jawoll" }, //$NON-NLS-1$ //$NON-NLS-2$
         new DefaultListCellRenderer(),
-        resources.getImageIcon("Green+20.png")); //$NON-NLS-1$
+        new BasicUi(resources).getMediumAddIcon());
     configurationView.initGui(null);
     show(configurationView.getComponent());
   }

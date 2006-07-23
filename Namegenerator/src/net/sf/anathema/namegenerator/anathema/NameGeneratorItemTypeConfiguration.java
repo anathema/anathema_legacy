@@ -34,7 +34,7 @@ public final class NameGeneratorItemTypeConfiguration extends AbstractNonPersist
     return new IItemViewFactory() {
       public IItemView createView(IItem item) throws AnathemaException {
         String printName = item.getDisplayName();
-        Icon icon = resources.getImageIcon("NoteTabIcon.png"); //$NON-NLS-1$
+        Icon icon = new NamegeneratorUI(resources).getNameGeneratorTabIcon();
         INameGeneratorView view = new NameGeneratorView();
         INameGeneratorModel model = new ExaltedNameGeneratorModel();
         INameGeneratorTypePresentation typePresentation = new ExaltedNameGeneratorTypePresentation();

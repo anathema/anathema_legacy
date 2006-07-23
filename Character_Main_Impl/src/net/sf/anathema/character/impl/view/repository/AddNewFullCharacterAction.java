@@ -8,6 +8,7 @@ import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
+import net.sf.anathema.character.generic.framework.util.CharacterUI;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
@@ -38,7 +39,7 @@ public class AddNewFullCharacterAction extends AbstractAddNewItemAction<Characte
 
   public static Action createToolAction(ICharacterGenerics generics, IResources resources, IAnathemaModel anathemaModel) {
     SmartAction action = new AddNewFullCharacterAction(generics, anathemaModel, resources);
-    action.setIcon(resources.getImageIcon("toolbar/TaskBarNew24.png")); //$NON-NLS-1$
+    action.setIcon(new CharacterUI(resources).getNewCharacterToolBarIcon());
     action.setToolTipText(resources.getString("CharacterGenerator.NewCharacter.ToolTip.Text")); //$NON-NLS-1$
     return action;
   }

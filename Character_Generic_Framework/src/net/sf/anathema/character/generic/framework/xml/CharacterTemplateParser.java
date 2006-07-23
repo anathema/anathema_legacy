@@ -20,7 +20,6 @@ import net.sf.anathema.character.generic.framework.xml.health.GenericHealthTempl
 import net.sf.anathema.character.generic.framework.xml.health.HealthTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplate;
 import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplateParser;
-import net.sf.anathema.character.generic.framework.xml.presentation.CharacterTemplateResourceProvider;
 import net.sf.anathema.character.generic.framework.xml.presentation.GenericPresentationTemplate;
 import net.sf.anathema.character.generic.framework.xml.presentation.PresentationPropertiesParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
@@ -272,7 +271,6 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     }
     PresentationPropertiesParser parser = new PresentationPropertiesParser(
         registryCollection.getPresentationTemplateRegistry(),
-        new CharacterTemplateResourceProvider(),
         registryCollection.getCharmPresentationTemplateRegistry());
     GenericPresentationTemplate template = parser.parseTemplate(presentationTemplateElement);
     characterTemplate.setPresentationTemplate(template);

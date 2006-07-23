@@ -22,7 +22,7 @@ public class ShowCascadesAction extends SmartAction {
 
   public static Action createToolAction(IResources resources, IAnathemaModel anathemaModel) {
     SmartAction action = new ShowCascadesAction(resources, anathemaModel);
-    action.setIcon(resources.getImageIcon("toolbar/TaskBarCharms24.png")); //$NON-NLS-1$
+    action.setIcon(new CascadesUI(resources).getCascadesToolBarIcon());
     action.setToolTipText(resources.getString("CharmCascades.ShowCascades.Tooltip")); //$NON-NLS-1$
     return action;
   }

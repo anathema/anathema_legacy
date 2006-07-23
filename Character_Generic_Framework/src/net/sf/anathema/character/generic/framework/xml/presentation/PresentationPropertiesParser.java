@@ -4,7 +4,6 @@ import java.awt.Color;
 
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
@@ -13,17 +12,13 @@ import org.dom4j.Element;
 public class PresentationPropertiesParser extends AbstractXmlTemplateParser<GenericPresentationTemplate> {
 
   private static final String TAG_COLOR = "color"; //$NON-NLS-1$
-  private static final String TAG_BALL_RESOURCE = "ballResource"; //$NON-NLS-1$
   private static final String TAG_CHARM_PRESENTATION = "charmPresentation";//$NON-NLS-1$
-  private final ICharacterTemplateResourceProvider resourceProvider;
   private final AbstractXmlTemplateParser<GenericCharmPresentationProperties> charmPresentationParser;
 
   public PresentationPropertiesParser(
       IXmlTemplateRegistry<GenericPresentationTemplate> templateRegistry,
-      ICharacterTemplateResourceProvider resourceProvider,
       IXmlTemplateRegistry<GenericCharmPresentationProperties> charmPresentationTemplateRegistry) {
     super(templateRegistry);
-    this.resourceProvider = resourceProvider;
     this.charmPresentationParser = new CharmPresentationPropertiesParser(charmPresentationTemplateRegistry);
   }
 
@@ -35,7 +30,6 @@ public class PresentationPropertiesParser extends AbstractXmlTemplateParser<Gene
   public GenericPresentationTemplate parseTemplate(Element element) throws PersistenceException {
     GenericPresentationTemplate basicTemplate = getBasicTemplate(element);
     updateColor(element, basicTemplate);
-    updateBallResource(element, basicTemplate);
     updateNewResources(element, basicTemplate);
     updateCharmPresentation(element, basicTemplate);
     return basicTemplate;
@@ -49,17 +43,6 @@ public class PresentationPropertiesParser extends AbstractXmlTemplateParser<Gene
     }
     GenericCharmPresentationProperties properties = charmPresentationParser.parseTemplate(charmPresentationElement);
     basicTemplate.setCharmPresentationProperties(properties);
-  }
-
-  private void updateBallResource(Element parent, GenericPresentationTemplate basicTemplate)
-      throws PersistenceException {
-    Element resourceElement = parent.element(TAG_BALL_RESOURCE);
-    if (resourceElement == null) {
-      return;
-    }
-    CharacterType characterType = CharacterType.getById(ElementUtilities.getRequiredAttrib(resourceElement, "type")); //$NON-NLS-1$
-    String ballResource = resourceProvider.getBallResource(characterType);
-    basicTemplate.setBallResource(ballResource);
   }
 
   private void updateNewResources(Element parent, GenericPresentationTemplate basicTemplate) {

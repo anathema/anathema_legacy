@@ -11,7 +11,6 @@ import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.abilities.AbilityGroupType;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.dummy.character.template.DummyCharacterTemplateResourceProvider;
 import net.sf.anathema.dummy.character.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -23,7 +22,6 @@ import org.dom4j.Element;
 public class PresentationPropertiesParserTest extends BasicTestCase {
 
   private DummyXmlTemplateRegistry<GenericPresentationTemplate> templateRegistry;
-  private DummyCharacterTemplateResourceProvider resourceProvider;
   private PresentationPropertiesParser parser;
 
   private GenericPresentationTemplate parseXml(String xmlCode) throws AnathemaException, PersistenceException {
@@ -36,8 +34,7 @@ public class PresentationPropertiesParserTest extends BasicTestCase {
     super.setUp();
     this.templateRegistry = new DummyXmlTemplateRegistry<GenericPresentationTemplate>();
     DummyXmlTemplateRegistry<GenericCharmPresentationProperties> charmRegistry = new DummyXmlTemplateRegistry<GenericCharmPresentationProperties>();
-    this.resourceProvider = new DummyCharacterTemplateResourceProvider();
-    this.parser = new PresentationPropertiesParser(templateRegistry, resourceProvider, charmRegistry);
+    this.parser = new PresentationPropertiesParser(templateRegistry, charmRegistry);
   }
 
   public void testParseXmlWithoutColor() throws Exception {
@@ -50,18 +47,6 @@ public class PresentationPropertiesParserTest extends BasicTestCase {
     String xml = "<presentation><color red=\"111\" green=\"133\" blue=\"255\" /></presentation>"; //$NON-NLS-1$
     IPresentationProperties presentationProperties = parseXml(xml);
     assertEquals(new Color(111, 133, 255), presentationProperties.getColor());
-  }
-
-  public void testParseXmlWithoutBallResource() throws Exception {
-    String xml = "<presentation />"; //$NON-NLS-1$
-    IPresentationProperties presentationProperties = parseXml(xml);
-    assertNull(presentationProperties.getBallResource());
-  }
-
-  public void testUpdateBallResourceWithParsing() throws Exception {
-    String xml = "<presentation><ballResource type=\"Mortal\" /></presentation>"; //$NON-NLS-1$
-    IPresentationProperties presentationProperties = parseXml(xml);
-    assertEquals(DummyCharacterTemplateResourceProvider.MORTAL_BALL_RESOURCE, presentationProperties.getBallResource());
   }
 
   public void testParseXmlWithoutAbilityBallResources() throws Exception {

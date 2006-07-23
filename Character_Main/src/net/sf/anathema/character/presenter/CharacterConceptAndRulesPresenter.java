@@ -187,6 +187,7 @@ public class CharacterConceptAndRulesPresenter {
     IObjectUi casteUi = new IdentificateObjectUi(resources) {
       @Override
       protected Icon getNonNullIcon(IIdentificate value) {
+        //TODO: Caste Icon Handling
         return getResources().getImageIcon(
             statistics.getCharacterTemplate().getPresentationProperties().getSmallCasteIconResource(
                 value.getId(),

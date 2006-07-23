@@ -13,6 +13,7 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 
 import net.sf.anathema.campaign.concrete.plot.PlotModel;
 import net.sf.anathema.campaign.model.plot.IPlotElement;
+import net.sf.anathema.campaign.module.PlotUI;
 import net.sf.anathema.lib.resources.IResources;
 
 public class PlotTreeCellRenderer extends DefaultTreeCellRenderer {
@@ -20,10 +21,11 @@ public class PlotTreeCellRenderer extends DefaultTreeCellRenderer {
   private final Map<String, Icon> iconsByTimeUnitId = new HashMap<String, Icon>();
 
   public PlotTreeCellRenderer(IResources resources) {
-    iconsByTimeUnitId.put(PlotModel.ID_EPISODE, resources.getImageIcon("plot/Scrolls.gif")); //$NON-NLS-1$
-    iconsByTimeUnitId.put(PlotModel.ID_SERIES, resources.getImageIcon("plot/BookStack.gif")); //$NON-NLS-1$
-    iconsByTimeUnitId.put(PlotModel.ID_STORY, resources.getImageIcon("plot/Book.gif")); //$NON-NLS-1$
-    iconsByTimeUnitId.put(PlotModel.ID_SCENE, resources.getImageIcon("plot/Scroll_Open.gif")); //$NON-NLS-1$
+    PlotUI plotUI = new PlotUI(resources);
+    iconsByTimeUnitId.put(PlotModel.ID_EPISODE, plotUI.getEpisodeIcon());
+    iconsByTimeUnitId.put(PlotModel.ID_SERIES, plotUI.getSeriesIcon());
+    iconsByTimeUnitId.put(PlotModel.ID_STORY, plotUI.getStoryIcon());
+    iconsByTimeUnitId.put(PlotModel.ID_SCENE, plotUI.getSceneIcon());
   }
 
   @Override

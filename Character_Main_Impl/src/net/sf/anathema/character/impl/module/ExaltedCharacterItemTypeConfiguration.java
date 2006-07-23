@@ -4,9 +4,8 @@ import javax.swing.Icon;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.ICharacterGenericsExtension;
-import net.sf.anathema.character.generic.impl.IIconConstants;
-import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
-import net.sf.anathema.character.generic.type.AbstractSupportedCharacterTypeVisitor;
+import net.sf.anathema.character.generic.framework.util.CharacterUI;
+import net.sf.anathema.character.generic.framework.xml.presentation.CharacterTemplateResourceProvider;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.impl.model.creation.bonus.BonusPointManagement;
@@ -75,22 +74,22 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractItemTyp
         String printName = item.getDisplayName();
         ICharacter character = (ICharacter) item.getItemData();
         ICharacterStatistics statistics = character.getStatistics();
+        CharacterUI characterUI = new CharacterUI(resources);
         if (statistics == null) {
-          Icon icon = resources.getImageIcon("CharacterTabIcon.png"); //$NON-NLS-1$
+          Icon icon = characterUI.getCharacterDescriptionTabIcon();
           ICharacterView characterView = new CharacterView(null, printName, icon);
           new CharacterPresenter(character, characterView, resources, getGenerics(anathemaModel), null, null).initPresentation();
           return characterView;
         }
-        IPresentationProperties presentationProperties = statistics.getCharacterTemplate().getPresentationProperties();
-        IntValueDisplayFactory intValueDisplayFactory = new IntValueDisplayFactory(
-            resources,
-            resources.getImageIcon(presentationProperties.getBallResource()));
         CharacterType characterType = character.getStatistics()
             .getCharacterTemplate()
             .getTemplateType()
             .getCharacterType();
-        final Icon[] typeIcon = getCharacterTypeIcon(resources, characterType);
-        ICharacterView characterView = new CharacterView(intValueDisplayFactory, printName, typeIcon[0]);
+        IntValueDisplayFactory intValueDisplayFactory = new IntValueDisplayFactory(
+            resources,
+            new CharacterTemplateResourceProvider(resources).getMediumBallResource(characterType));
+        final Icon typeIcon = characterUI.getSmallCharacterTypeIcon(characterType);
+        ICharacterView characterView = new CharacterView(intValueDisplayFactory, printName, typeIcon);
         IBonusPointManagement bonusPointManagement = new BonusPointManagement(character.getStatistics());
         IExperiencePointManagement experiencePointManagement = new ExperiencePointManagement(character.getStatistics());
         new CharacterPresenter(
@@ -123,35 +122,5 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractItemTyp
             resources,
             anathemaModel,
             "CharacterGenerator.NewCharacter.Description.Name")) }; //$NON-NLS-1$
-  }
-
-  private Icon[] getCharacterTypeIcon(final IResources resources, CharacterType characterType) {
-    final Icon[] typeIcon = new Icon[1];
-    characterType.accept(new AbstractSupportedCharacterTypeVisitor() {
-      public void visitSolar(CharacterType visitedType) {
-        typeIcon[0] = resources.getImageIcon(IIconConstants.SOLAR_ICON_SMALL);
-      }
-
-      public void visitMortal(CharacterType visitedType) {
-        typeIcon[0] = resources.getImageIcon(IIconConstants.MORTAL_ICON_SMALL);
-      }
-
-      public void visitLunar(CharacterType type) {
-        typeIcon[0] = resources.getImageIcon(IIconConstants.LUNAR_ICON_SMALL);
-      }
-
-      public void visitSidereal(CharacterType visitedType) {
-        typeIcon[0] = resources.getImageIcon(IIconConstants.SIDEREAL_ICON_SMALL);
-      }
-
-      public void visitDB(CharacterType visitedType) {
-        typeIcon[0] = resources.getImageIcon(IIconConstants.DB_ICON_SMALL);
-      }
-
-      public void visitAbyssal(CharacterType visitedType) {
-        typeIcon[0] = resources.getImageIcon(IIconConstants.ABYSSAL_ICON_SMALL);
-      }
-    });
-    return typeIcon;
   }
 }

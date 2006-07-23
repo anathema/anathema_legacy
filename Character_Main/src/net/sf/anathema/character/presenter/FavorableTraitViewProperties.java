@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import javax.swing.Icon;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
+import net.sf.anathema.character.generic.framework.xml.presentation.CharacterTemplateResourceProvider;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.trait.IFavorableTrait;
@@ -50,9 +51,10 @@ public class FavorableTraitViewProperties implements IIconToggleButtonProperties
     if (ability.getFavorization().isCaste()) {
       String casteId = ability.getFavorization().getCaste().getId();
       String editionId = context.getRuleSet().getEdition().getId();
+      //TODO: Caste Icon Handling
       return resources.getImageIcon(properties.getSmallCasteIconResource(casteId, editionId));
     }
-    return resources.getImageIcon(properties.getBallResource());
+    return new CharacterTemplateResourceProvider(resources).getMediumBallResource(context.getCharacterType());
   }
 
   public Icon createUnselectedIcon() {

@@ -30,7 +30,7 @@ public final class CharmCascadeItemTypeConfiguration extends AbstractNonPersista
     return new IItemViewFactory() {
       public IItemView createView(IItem item) throws AnathemaException {
         String printName = item.getDisplayName();
-        Icon icon = resources.getImageIcon("TabCharms16.png"); //$NON-NLS-1$
+        Icon icon = new CascadesUI(resources).getCascadesTabIcon();
         CharmCascadeModuleView view = new CharmCascadeModuleView(printName, icon);
         ICharacterGenericsExtension extension = (ICharacterGenericsExtension) anathemaModel.getExtensionPointRegistry()
             .get(ICharacterGenericsExtension.ID);

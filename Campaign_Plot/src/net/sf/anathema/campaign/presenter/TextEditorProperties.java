@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.presenter;
+package net.sf.anathema.campaign.presenter;
 
 import java.awt.Component;
 import java.awt.Font;
@@ -9,6 +9,7 @@ import java.awt.SystemColor;
 import javax.swing.Action;
 import javax.swing.Icon;
 
+import net.sf.anathema.campaign.module.PlotUI;
 import net.sf.anathema.framework.styledtext.ITextEditorProperties;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -29,7 +30,7 @@ public class TextEditorProperties implements ITextEditorProperties {
   }
 
   public void initUnderlineAction(Action action) {
-    action.putValue(Action.SMALL_ICON, resources.getImageIcon("text/underline.gif")); //$NON-NLS-1$
+    action.putValue(Action.SMALL_ICON, new PlotUI(resources).getUnderlineButtonIcon());
   }
 
   private void initWithIcon(final Action action, final Font font, final String letter) {

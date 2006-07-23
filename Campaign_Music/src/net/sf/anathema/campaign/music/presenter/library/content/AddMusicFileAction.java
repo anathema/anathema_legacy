@@ -11,6 +11,7 @@ import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
 import net.sf.anathema.campaign.music.model.libary.ILibraryControl;
 import net.sf.anathema.campaign.music.presenter.IMusicSearchControl;
+import net.sf.anathema.campaign.music.presenter.MusicUI;
 import net.sf.anathema.campaign.music.presenter.util.Mp3FileFilter;
 import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
 import net.sf.anathema.framework.message.MessageUtilities;
@@ -28,7 +29,7 @@ public class AddMusicFileAction extends SmartAction {
       IMusicSearchControl searchControl,
       ILibraryControl model,
       ILibraryControlView view) {
-    super(resources.getImageIcon("MP3FileIcon20.png")); //$NON-NLS-1$
+    super(new MusicUI(resources).getAddFileIcon());
     this.resources = resources;
     this.searchControl = searchControl;
     setToolTipText(resources.getString("Music.Actions.AddFile.Tooltip")); //$NON-NLS-1$

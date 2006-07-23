@@ -30,7 +30,6 @@ public class AnathemaCloseAction extends SmartAction {
   public static Action createMenuAction(IItemMangementModel model, IResources resources) {
     SmartAction action = new AnathemaCloseAction(model);
     action.setName(resources.getString("AnathemaCore.Tools.Close.Name")); //$NON-NLS-1$
-    action.setIcon(resources.getImageIcon("tools/RedX16.png")); //$NON-NLS-1$
     return action;
   }
 

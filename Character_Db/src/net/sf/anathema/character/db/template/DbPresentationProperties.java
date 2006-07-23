@@ -17,10 +17,6 @@ public final class DbPresentationProperties extends AbstractPresentationProperti
     super(templateType);
   }
 
-  public String getBallResource() {
-    return IIconConstants.DB_BALL;
-  }
-
   public String getSmallCasteIconResource(String casteId, String editionId) {
     final String[] iconName = new String[1];
     DBAspect dbAspect = DBAspect.valueOf(casteId);

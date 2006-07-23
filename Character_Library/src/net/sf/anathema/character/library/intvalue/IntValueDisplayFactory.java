@@ -2,7 +2,7 @@ package net.sf.anathema.character.library.intvalue;
 
 import javax.swing.Icon;
 
-import net.sf.anathema.character.generic.impl.IIconConstants;
+import net.sf.anathema.character.generic.framework.xml.presentation.CharacterTemplateResourceProvider;
 import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -13,7 +13,7 @@ public class IntValueDisplayFactory implements IIntValueDisplayFactory {
 
   public IntValueDisplayFactory(IResources resources, Icon ballIcon) {
     this.activeBallIcon = ballIcon;
-    this.passiveBallIcon = resources.getImageIcon(IIconConstants.UNSELECTED_BALL);
+    this.passiveBallIcon = new CharacterTemplateResourceProvider(resources).getUnselectedBallResource();
   }
 
   public IIntValueDisplay createIntValueDisplay(int maxValue, int value) {

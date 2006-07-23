@@ -7,7 +7,6 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class EquipmentTypeChoiceProperties {
 
-  private static final int ICON_SIZE = 20;
   private final IResources resources;
 
   public EquipmentTypeChoiceProperties(IResources resources) {
@@ -15,7 +14,7 @@ public class EquipmentTypeChoiceProperties {
   }
 
   public Icon getIcon(EquipmentStatisticsType type) {
-    return resources.getImageIcon(type.name() + ICON_SIZE + ".png"); //$NON-NLS-1$
+    return new EquipmentUI(resources).getIcon(type);
   }
 
   public String getLabel(EquipmentStatisticsType type) {

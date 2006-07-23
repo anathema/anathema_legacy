@@ -12,6 +12,7 @@ import net.sf.anathema.character.library.trait.specialty.ISpecialty;
 import net.sf.anathema.character.library.trait.specialty.ISpecialtyListener;
 import net.sf.anathema.character.view.ISpecialtyView;
 import net.sf.anathema.character.view.basic.IButtonControlledComboEditView;
+import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.view.AbstractSelectCellRenderer;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -69,7 +70,7 @@ public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
 
   public void initPresentation() {
     initTraitListening();
-    Icon addIcon = resources.getImageIcon("Green+20.png"); //$NON-NLS-1$
+    Icon addIcon = new BasicUi(resources).getMediumAddIcon();
     final IButtonControlledComboEditView specialtySelectionView = configurationView.addSpecialtySelectionView(
         resources.getString("SpecialtyConfigurationView.SelectionCombo.Label"), //$NON-NLS-1$
         getAllTraits(),
@@ -134,7 +135,7 @@ public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
     String traitTypeId = specialty.getBasicTrait().getType().getId();
     String traitName = resources.getString(traitTypeId);
     String specialtyName = specialty.getName();
-    Icon deleteIcon = resources.getImageIcon("tools/RedX20.png"); //$NON-NLS-1$
+    Icon deleteIcon = new BasicUi(resources).getMediumRemoveIcon();
     final ISpecialtyView specialtyView = configurationView.addSpecialtyView(
         traitName,
         specialtyName,

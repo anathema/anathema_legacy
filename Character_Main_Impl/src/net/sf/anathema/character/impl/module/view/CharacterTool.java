@@ -4,6 +4,7 @@ import javax.swing.Action;
 import javax.swing.Icon;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.generic.framework.util.CharacterUI;
 import net.sf.anathema.character.impl.module.CharacterGenericsExtension;
 import net.sf.anathema.character.impl.module.ExaltedCharacterItemTypeConfiguration;
 import net.sf.anathema.character.impl.view.repository.AddNewFullCharacterAction;
@@ -24,10 +25,10 @@ public class CharacterTool implements IAnathemaTool {
 
   private Action[] createTools(final IAnathemaModel anathemaModel, final IResources resources, IItemType typeCharacter) {
     ICharacterGenerics generics = CharacterGenericsExtension.getCharacterGenerics(anathemaModel);
-    Icon addIcon = resources.getImageIcon("toolbar/TaskBarOpen24.png"); //$NON-NLS-1$
     String tooltip = resources.getString("CharacterGenerator.LoadAction.Tooltip"); //$NON-NLS-1$
+    Icon loadIcon = new CharacterUI(resources).getLoadCharacterToolBarIcon();
     return new Action[] {
         AddNewFullCharacterAction.createToolAction(generics, resources, anathemaModel),
-        ItemTypeLoadAction.createToolAction(anathemaModel, typeCharacter, resources, addIcon, tooltip) };
+        ItemTypeLoadAction.createToolAction(anathemaModel, typeCharacter, resources, loadIcon, tooltip) };
   }
 }
