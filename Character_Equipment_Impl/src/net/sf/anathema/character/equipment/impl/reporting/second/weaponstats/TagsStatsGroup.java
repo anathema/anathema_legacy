@@ -5,7 +5,7 @@ import java.awt.Color;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.IEquipmentStatsGroup;
-import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
+import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
@@ -17,7 +17,7 @@ import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 
-public final class TagsStatsGroup implements IEquipmentStatsGroup<IWeapon> {
+public final class TagsStatsGroup implements IEquipmentStatsGroup<IWeaponStats> {
   private final String title;
   private final IResources resources;
 
@@ -38,7 +38,7 @@ public final class TagsStatsGroup implements IEquipmentStatsGroup<IWeapon> {
     return new Float[] { new Float(1.7) };
   }
 
-  public void addContent(PdfPTable table, Font font, IWeapon weapon) {
+  public void addContent(PdfPTable table, Font font, IWeaponStats weapon) {
     if (weapon == null) {
       table.addCell(createEmptyNameCell(font));
     }

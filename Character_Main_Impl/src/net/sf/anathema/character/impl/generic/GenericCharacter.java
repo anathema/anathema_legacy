@@ -10,8 +10,8 @@ import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.character.ICharacterPoints;
 import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.equipment.weapon.IArmour;
-import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
+import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
+import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
@@ -199,14 +199,14 @@ public class GenericCharacter implements IGenericCharacter {
     return statistics.getTraitConfiguration().getAbilityTypeGroups();
   }
 
-  public IArmour[] getPrintArmours() {
+  public IArmourStats[] getPrintArmours() {
     // todo vom (14.05.2006) (sieroux): Equipments
-    return new IArmour[0];
+    return new IArmourStats[0];
   }
 
-  public IWeapon[] getPrintWeapons() {
+  public IWeaponStats[] getPrintWeapons() {
     // todo vom (14.05.2006) (sieroux): Equipments
-    return new IWeapon[0];
+    return new IWeaponStats[0];
   }
 
   public int getSpentExperiencePoints() {

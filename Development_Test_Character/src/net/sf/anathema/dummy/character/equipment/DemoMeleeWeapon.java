@@ -1,7 +1,7 @@
 package net.sf.anathema.dummy.character.equipment;
 
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
-import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
+import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-public class DemoMeleeWeapon implements IWeapon {
+public class DemoMeleeWeapon implements IWeaponStats {
 
   private final int accuracy;
   private final int damage;

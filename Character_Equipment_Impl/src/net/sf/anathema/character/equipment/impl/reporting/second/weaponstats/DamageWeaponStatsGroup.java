@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.impl.reporting.second.weaponstats;
 
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
+import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -10,7 +10,7 @@ import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeapon> {
+public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeaponStats> {
 
   private final IGenericCharacter character;
 
@@ -30,7 +30,7 @@ public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWe
     return 3;
   }
 
-  public void addContent(PdfPTable table, Font font, IWeapon weapon) {
+  public void addContent(PdfPTable table, Font font, IWeaponStats weapon) {
     if (weapon == null) {
       table.addCell(createEmptyValueCell(font));
       table.addCell(createFinalValueCell(font));

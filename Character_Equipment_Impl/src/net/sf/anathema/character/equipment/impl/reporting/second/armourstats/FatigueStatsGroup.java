@@ -1,13 +1,13 @@
 package net.sf.anathema.character.equipment.impl.reporting.second.armourstats;
 
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.AbstractValueEquipmentStatsGroup;
-import net.sf.anathema.character.generic.equipment.weapon.IArmour;
+import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class FatigueStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour> implements IArmourStatsGroup {
+public class FatigueStatsGroup extends AbstractValueEquipmentStatsGroup<IArmourStats> implements IArmourStatsGroup {
 
   public FatigueStatsGroup(IResources resources) {
     super(resources, "Fatigue"); //$NON-NLS-1$
@@ -17,7 +17,7 @@ public class FatigueStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour>
     return 1;
   }
 
-  public void addContent(PdfPTable table, Font font, IArmour armour) {
+  public void addContent(PdfPTable table, Font font, IArmourStats armour) {
     if (armour == null) {
       table.addCell(createEmptyValueCell(font));
     }
@@ -26,7 +26,7 @@ public class FatigueStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour>
     }
   }
 
-  public void addTotal(PdfPTable table, Font font, IArmour totalArmour) {
+  public void addTotal(PdfPTable table, Font font, IArmourStats totalArmour) {
     table.addCell(createFinalValueCell(font, totalArmour.getFatigue()));
   }
 

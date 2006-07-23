@@ -3,12 +3,12 @@ package net.sf.anathema.character.equipment.impl.character.model.natural;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.sf.anathema.character.generic.equipment.weapon.IArmour;
+import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-public class TotalArmour implements IArmour {
+public class TotalArmour implements IArmourStats {
 
   private int fatigue;
   private int mobilityPenalty;
@@ -47,7 +47,7 @@ public class TotalArmour implements IArmour {
     return new Identificate("TotalArmour"); //$NON-NLS-1$
   }
 
-  public void addArmour(IArmour armour) {
+  public void addArmour(IArmourStats armour) {
     fatigue = getIncrementedValue(fatigue, armour.getFatigue());
     mobilityPenalty = getIncrementedValue(mobilityPenalty, armour.getMobilityPenalty());
     for (HealthType healthType : HealthType.values()) {

@@ -1,14 +1,14 @@
 package net.sf.anathema.character.equipment.character.model;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
-import net.sf.anathema.character.generic.equipment.weapon.IArmour;
-import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
+import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
+import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 
 public interface IEquipmentAdditionalModel extends IAdditionalModel, IEquipmentObjectCollection {
 
-  public IWeapon[] getPrintWeapons();
+  public IWeaponStats[] getPrintWeapons();
 
-  public IArmour[] getPrintArmours();
+  public IArmourStats[] getPrintArmours();
 
-  public IArmour getTotalPrintArmour(int lineCount);
+  public IArmourStats getTotalPrintArmour(int lineCount);
 }

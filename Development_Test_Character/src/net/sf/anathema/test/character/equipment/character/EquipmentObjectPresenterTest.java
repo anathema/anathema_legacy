@@ -5,7 +5,7 @@ import net.sf.anathema.character.equipment.character.EquipmentObjectPresenter;
 import net.sf.anathema.character.equipment.character.IEquipmentStringBuilder;
 import net.sf.anathema.character.equipment.character.model.IEquipmentObject;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
-import net.sf.anathema.character.generic.equipment.weapon.IEquipment;
+import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.dummy.character.equipment.DemoMeleeWeapon;
 import net.sf.anathema.dummy.character.equipment.DummyEquipmentObject;
@@ -17,7 +17,7 @@ import org.easymock.EasyMock;
 public class EquipmentObjectPresenterTest extends BasicTestCase {
 
   private IEquipmentStringBuilder equipmentStringBuilder = new IEquipmentStringBuilder() {
-    public String createString(IEquipment equipment) {
+    public String createString(IEquipmentStats equipment) {
       if (equipment.getName().getId().equals("Sword")) { //$NON-NLS-1$
         return "Passt!"; //$NON-NLS-1$
       }

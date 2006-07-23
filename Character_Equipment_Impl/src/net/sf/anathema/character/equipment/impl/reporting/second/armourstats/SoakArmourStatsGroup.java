@@ -1,14 +1,14 @@
 package net.sf.anathema.character.equipment.impl.reporting.second.armourstats;
 
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.AbstractValueEquipmentStatsGroup;
-import net.sf.anathema.character.generic.equipment.weapon.IArmour;
+import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class SoakArmourStatsGroup extends AbstractValueEquipmentStatsGroup<IArmour> implements IArmourStatsGroup {
+public class SoakArmourStatsGroup extends AbstractValueEquipmentStatsGroup<IArmourStats> implements IArmourStatsGroup {
 
   private String valuePrefix = ""; //$NON-NLS-1$
 
@@ -16,7 +16,7 @@ public class SoakArmourStatsGroup extends AbstractValueEquipmentStatsGroup<IArmo
     super(resources, "Soak"); //$NON-NLS-1$
   }
 
-  public void addContent(PdfPTable table, Font font, IArmour armour) {
+  public void addContent(PdfPTable table, Font font, IArmourStats armour) {
     if (armour == null) {
       table.addCell(createEmptyValueCell(font));
       table.addCell(createEmptyValueCell(font));
@@ -30,7 +30,7 @@ public class SoakArmourStatsGroup extends AbstractValueEquipmentStatsGroup<IArmo
     valuePrefix = "+"; //$NON-NLS-1$
   }
 
-  public void addTotal(PdfPTable table, Font font, IArmour armour) {
+  public void addTotal(PdfPTable table, Font font, IArmourStats armour) {
     table.addCell(createFinalValueCell(font, armour.getSoak(HealthType.Bashing)));
     table.addCell(createFinalValueCell(font, armour.getSoak(HealthType.Lethal)));
     table.addCell(createFinalValueCell(font, armour.getSoak(HealthType.Aggravated)));

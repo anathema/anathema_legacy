@@ -6,7 +6,7 @@ import javax.swing.event.ChangeListener;
 import net.disy.commons.core.model.BooleanModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentObject;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
-import net.sf.anathema.character.generic.equipment.weapon.IEquipment;
+import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.lib.gui.IPresenter;
 
 public class EquipmentObjectPresenter implements IPresenter {
@@ -30,7 +30,7 @@ public class EquipmentObjectPresenter implements IPresenter {
     if (description != null) {
       view.setItemDescription(description);
     }
-    for (final IEquipment equipment : model.getEquipments()) {
+    for (final IEquipmentStats equipment : model.getEquipments()) {
       final BooleanModel booleanModel = view.addStats(createEquipmentDescription(equipment));
       booleanModel.addChangeListener(new ChangeListener() {
         public void stateChanged(ChangeEvent e) {
@@ -40,7 +40,7 @@ public class EquipmentObjectPresenter implements IPresenter {
     }
   }
 
-  private String createEquipmentDescription(IEquipment equipment) {
+  private String createEquipmentDescription(IEquipmentStats equipment) {
     return stringBuilder.createString(equipment);
   }
 }

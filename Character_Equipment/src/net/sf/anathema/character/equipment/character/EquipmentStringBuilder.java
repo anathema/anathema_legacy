@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.character;
 
-import net.sf.anathema.character.generic.equipment.weapon.IEquipment;
-import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
+import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.lib.resources.IResources;
 
 public class EquipmentStringBuilder implements IEquipmentStringBuilder {
@@ -12,7 +12,7 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     this.resources = resources;
   }
 
-  private String createWeaponString(IWeapon weapon) {
+  private String createWeaponString(IWeaponStats weapon) {
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append(weapon.getName().getId());
     stringBuilder.append(":");
@@ -39,9 +39,9 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     return " " + resources.getString("Equipment.Stats.Short." + keyPart) + ":" + signum + value;
   }
 
-  public String createString(IEquipment equipment) {
-    if (equipment instanceof IWeapon) {
-      return createWeaponString((IWeapon) equipment);
+  public String createString(IEquipmentStats equipment) {
+    if (equipment instanceof IWeaponStats) {
+      return createWeaponString((IWeaponStats) equipment);
     }
     throw new UnsupportedOperationException("Unsupported equipment class:" + equipment.getClass());
   }

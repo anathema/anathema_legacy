@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentObject;
-import net.sf.anathema.character.generic.equipment.weapon.IEquipment;
+import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 
 public class DummyEquipmentObject implements IEquipmentObject {
 
-  private final List<IEquipment> allEquipments = new ArrayList<IEquipment>();
+  private final List<IEquipmentStats> allEquipments = new ArrayList<IEquipmentStats>();
   private final String name;
   private final String description;
 
@@ -17,12 +17,12 @@ public class DummyEquipmentObject implements IEquipmentObject {
     this.description = description;
   }
   
-  public void addEquipment(IEquipment equipment) {
+  public void addEquipment(IEquipmentStats equipment) {
     this.allEquipments.add(equipment);
   }
   
-  public IEquipment[] getEquipments() {
-    return allEquipments.toArray(new IEquipment[allEquipments.size()]);
+  public IEquipmentStats[] getEquipments() {
+    return allEquipments.toArray(new IEquipmentStats[allEquipments.size()]);
   }
   
   public String getName() {
@@ -33,7 +33,7 @@ public class DummyEquipmentObject implements IEquipmentObject {
     return description;
   }
 
-  public void setPrintEnabled(IEquipment equipment, boolean enabled) {
+  public void setPrintEnabled(IEquipmentStats equipment, boolean enabled) {
     //nothing to do;    
   }
 }

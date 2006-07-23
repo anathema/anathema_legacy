@@ -8,7 +8,7 @@ import net.sf.anathema.character.equipment.impl.reporting.second.armourstats.Soa
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.EquipmentNameStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.IEquipmentStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.equipment.weapon.IArmour;
+import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
@@ -17,7 +17,7 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncoder<IArmour> {
+public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncoder<IArmourStats> {
 
   private final IResources resources;
 
@@ -29,13 +29,13 @@ public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncod
   @Override
   protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
     PdfPTable armourTable = super.createTable(directContent, character, bounds);
-    IArmour totalArmour = getEquipmentModel(character).getTotalPrintArmour(getLineCount());
-    IEquipmentStatsGroup<IArmour>[] groups = createStatsGroups(character);
+    IArmourStats totalArmour = getEquipmentModel(character).getTotalPrintArmour(getLineCount());
+    IEquipmentStatsGroup<IArmourStats>[] groups = createStatsGroups(character);
     for (int index = 0; index < groups.length; index++) {
       if (index != 0) {
         armourTable.addCell(createSpaceCell());
       }
-      IEquipmentStatsGroup<IArmour> group = groups[index];
+      IEquipmentStatsGroup<IArmourStats> group = groups[index];
       if (group instanceof IArmourStatsGroup) {
         ((IArmourStatsGroup) group).addTotal(armourTable, getFont(), totalArmour);
       }
@@ -48,9 +48,9 @@ public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncod
 
   @SuppressWarnings("unchecked")
   @Override
-  protected IEquipmentStatsGroup<IArmour>[] createStatsGroups(IGenericCharacter character) {
+  protected IEquipmentStatsGroup<IArmourStats>[] createStatsGroups(IGenericCharacter character) {
     return new IEquipmentStatsGroup[] {
-        new EquipmentNameStatsGroup<IArmour>(resources),
+        new EquipmentNameStatsGroup<IArmourStats>(resources),
         new SoakArmourStatsGroup(resources),
         new HardnessStatsGroup(resources),
         new MobilityPenaltyStatsGroup(resources),
@@ -63,12 +63,12 @@ public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncod
   }
 
   @Override
-  protected IArmour[] getPrintStats(IGenericCharacter character) {
+  protected IArmourStats[] getPrintStats(IGenericCharacter character) {
     return getEquipmentModel(character).getPrintArmours();
   }
 
   @Override
-  protected IGenericTrait getTrait(IGenericCharacter character, IArmour equipment) {
+  protected IGenericTrait getTrait(IGenericCharacter character, IArmourStats equipment) {
     return null;
   }
 }

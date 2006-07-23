@@ -1,13 +1,13 @@
 package net.sf.anathema.character.equipment.impl.character.model.natural;
 
-import net.sf.anathema.character.generic.equipment.weapon.IArmour;
+import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-public class NaturalSoak implements IArmour {
+public class NaturalSoak implements IArmourStats {
 
   private final IGenericTrait stamina;
   private final CharacterType characterType;

@@ -11,8 +11,8 @@ import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.character.ICharacterPoints;
 import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.equipment.weapon.IArmour;
-import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
+import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
+import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.traits.limitation.StaticTraitLimitation;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -180,12 +180,12 @@ public class DummyGenericCharacter implements IGenericCharacter {
     return new IIdentifiedTraitTypeGroup[0];
   }
 
-  public IArmour[] getPrintArmours() {
-    return new IArmour[0];
+  public IArmourStats[] getPrintArmours() {
+    return new IArmourStats[0];
   }
 
-  public IWeapon[] getPrintWeapons() {
-    return new IWeapon[0];
+  public IWeaponStats[] getPrintWeapons() {
+    return new IWeaponStats[0];
   }
 
   public int getSpentExperiencePoints() {

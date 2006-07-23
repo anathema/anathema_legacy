@@ -5,29 +5,29 @@ import java.util.List;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentObject;
 import net.sf.anathema.character.equipment.impl.character.model.AbstractEquipmentAdditionalModel;
-import net.sf.anathema.character.generic.equipment.weapon.IArmour;
-import net.sf.anathema.character.generic.equipment.weapon.IWeapon;
+import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
+import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 
 public class DemoEquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
 
-  private final List<IArmour> armours = new ArrayList<IArmour>();
-  private final List<IWeapon> weapons = new ArrayList<IWeapon>();
+  private final List<IArmourStats> armours = new ArrayList<IArmourStats>();
+  private final List<IWeaponStats> weapons = new ArrayList<IWeaponStats>();
   private final List<IEquipmentObject> objects = new ArrayList<IEquipmentObject>();
 
-  public void addPrintArmour(IArmour armour) {
+  public void addPrintArmour(IArmourStats armour) {
     this.armours.add(armour);
   }
 
-  public void addPrintWeapon(IWeapon weapon) {
+  public void addPrintWeapon(IWeaponStats weapon) {
     this.weapons.add(weapon);
   }
 
-  public IArmour[] getPrintArmours() {
-    return armours.toArray(new IArmour[armours.size()]);
+  public IArmourStats[] getPrintArmours() {
+    return armours.toArray(new IArmourStats[armours.size()]);
   }
 
-  public IWeapon[] getPrintWeapons() {
-    return weapons.toArray(new IWeapon[weapons.size()]);
+  public IWeaponStats[] getPrintWeapons() {
+    return weapons.toArray(new IWeaponStats[weapons.size()]);
   }
   
   public void addObject(IEquipmentObject object) {

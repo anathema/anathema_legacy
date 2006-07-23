@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.util.IIdentificate;
 
-public interface IWeapon extends IEquipment {
+public interface IWeaponStats extends IEquipmentStats {
 
   public int getAccuracy();
 

@@ -4,7 +4,7 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalM
 import net.sf.anathema.character.equipment.impl.character.model.natural.TotalArmour;
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
-import net.sf.anathema.character.generic.equipment.weapon.IArmour;
+import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 
 public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditionalModelAdapter implements
     IEquipmentAdditionalModel {
@@ -17,9 +17,9 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
     return EquipmentAdditonalModelTemplate.ID;
   }
 
-  public final IArmour getTotalPrintArmour(int lineCount) {
+  public final IArmourStats getTotalPrintArmour(int lineCount) {
     TotalArmour armour = new TotalArmour();
-    IArmour[] printArmours = getPrintArmours();
+    IArmourStats[] printArmours = getPrintArmours();
     for (int index = 0; index < Math.min(lineCount, printArmours.length); index++) {
       armour.addArmour(printArmours[index]);
     }

@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentObject;
-import net.sf.anathema.character.generic.equipment.weapon.IEquipment;
+import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 
 public class EquipmentObject implements IEquipmentObject {
 
-  private List<IEquipment> printedEquipments = new ArrayList<IEquipment>();
-  private final IEquipment[] equipments;
+  private List<IEquipmentStats> printedEquipments = new ArrayList<IEquipmentStats>();
+  private final IEquipmentStats[] equipments;
   private final String description;
   private final String name;
 
-  public EquipmentObject(IEquipment[] equipments, String name, String description) {
+  public EquipmentObject(IEquipmentStats[] equipments, String name, String description) {
     this.equipments = equipments;
     this.name = name;
     this.description = description;
@@ -23,7 +23,7 @@ public class EquipmentObject implements IEquipmentObject {
     return description;
   }
 
-  public IEquipment[] getEquipments() {
+  public IEquipmentStats[] getEquipments() {
     return equipments;
   }
 
@@ -31,7 +31,7 @@ public class EquipmentObject implements IEquipmentObject {
     return name;
   }
 
-  public void setPrintEnabled(IEquipment equipment, boolean enabled) {
+  public void setPrintEnabled(IEquipmentStats equipment, boolean enabled) {
     if (enabled) {
       printedEquipments.add(equipment);
     }
