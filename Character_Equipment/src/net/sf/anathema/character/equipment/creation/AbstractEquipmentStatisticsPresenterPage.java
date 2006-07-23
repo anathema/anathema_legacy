@@ -1,16 +1,27 @@
 package net.sf.anathema.character.equipment.creation;
 
+import java.awt.Component;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 import net.disy.commons.core.message.IBasicMessage;
+import net.disy.commons.core.util.Ensure;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.equipment.creation.model.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.IEquipmentStatisticsModel;
 import net.sf.anathema.character.equipment.creation.properties.EquipmentStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.view.IWeaponStatisticsView;
+import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValuePresentation;
+import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
+import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
 import net.sf.anathema.lib.workflow.textualdescription.ICheckableTextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
@@ -45,11 +56,11 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
   protected final M getPageModel() {
     return pageModel;
   }
-  
+
   protected final IEquipmentStatisticsCreationViewFactory getViewFactory() {
     return viewFactory;
   }
-  
+
   protected final IResources getResources() {
     return resources;
   }
@@ -88,12 +99,17 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
 
   @Override
   protected void addFollowUpPages(CheckInputListener inputListener) {
+    if (!isTagsSupported()) {
+      return;
+    }
     addFollowupPage(new WeaponTagsPresenterPage(resources, overallModel, viewFactory), inputListener, new ICondition() {
       public boolean isFullfilled() {
         return canFinish();
       }
     });
   }
+
+  protected abstract boolean isTagsSupported();
 
   protected abstract void addAdditionalContent();
 
@@ -105,5 +121,33 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
 
   public final IWeaponStatisticsView getPageContent() {
     return view;
+  }
+
+  protected final void addLabelledComponentRow(final String[] labels, final Component[] contents) {
+    Ensure.ensureArgumentTrue("Same number of labels required", labels.length == contents.length); //$NON-NLS-1$
+    getPageContent().addDialogComponent(new IDialogComponent() {
+      public void fillInto(JPanel panel, int columnCount) {
+        for (int index = 0; index < contents.length; index++) {
+          panel.add(new JLabel(labels[index]));
+          panel.add(contents[index], GridDialogLayoutData.FILL_HORIZONTAL);
+        }
+      }
+
+      public int getColumnCount() {
+        return contents.length * 2;
+      }
+    });
+  }
+
+  protected final IntegerSpinner initIntegerSpinner(IIntValueModel intModel) {
+    final IntegerSpinner spinner = new IntegerSpinner(intModel.getValue());
+    new IntValuePresentation().initView(spinner, intModel);
+    return spinner;
+  }
+
+  protected final IntegerSpinner initIntegerSpinner(IIntValueModel intModel, int minimumValue) {
+    final IntegerSpinner spinner = initIntegerSpinner(intModel);
+    spinner.setMinimum(minimumValue);
+    return spinner;
   }
 }
