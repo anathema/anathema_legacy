@@ -1,4 +1,4 @@
-package net.sf.anathema.character.generic.framework.util;
+package net.sf.anathema.character.generic.framework.resources;
 
 import javax.swing.Icon;
 

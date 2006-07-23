@@ -4,8 +4,8 @@ import javax.swing.Icon;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
-import net.sf.anathema.character.generic.framework.util.CharacterUI;
-import net.sf.anathema.character.generic.framework.xml.presentation.CharacterTemplateResourceProvider;
+import net.sf.anathema.character.generic.framework.resources.CharacterTemplateResourceProvider;
+import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.intimacies.presenter.IntimaciesPresenter;
 import net.sf.anathema.character.intimacies.view.IntimaciesView;

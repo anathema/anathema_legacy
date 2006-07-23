@@ -4,7 +4,7 @@ import javax.swing.Action;
 import javax.swing.Icon;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.framework.util.CharacterUI;
+import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.impl.module.CharacterGenericsExtension;
 import net.sf.anathema.character.impl.module.ExaltedCharacterItemTypeConfiguration;
 import net.sf.anathema.character.impl.view.repository.AddNewFullCharacterAction;

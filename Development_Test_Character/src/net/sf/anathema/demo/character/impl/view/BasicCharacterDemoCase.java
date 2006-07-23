@@ -1,6 +1,6 @@
 package net.sf.anathema.demo.character.impl.view;
 
-import net.sf.anathema.character.generic.framework.xml.presentation.CharacterTemplateResourceProvider;
+import net.sf.anathema.character.generic.framework.resources.CharacterTemplateResourceProvider;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;

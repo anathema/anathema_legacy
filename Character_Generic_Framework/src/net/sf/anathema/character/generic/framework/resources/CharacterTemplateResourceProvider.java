@@ -1,4 +1,4 @@
-package net.sf.anathema.character.generic.framework.xml.presentation;
+package net.sf.anathema.character.generic.framework.resources;
 
 import java.util.HashMap;
 import java.util.Map;
