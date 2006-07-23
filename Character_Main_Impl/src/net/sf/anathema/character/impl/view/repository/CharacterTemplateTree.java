@@ -81,7 +81,7 @@ public class CharacterTemplateTree implements ICharacterTemplateTree {
               leaf,
               row,
               focus);
-          setIcon(new CharacterUI(resources).getTinyCharacterTypeIcon(characterType));
+          setIcon(new CharacterTemplateResourceProvider(resources).getTinyTypeIcon(characterType));
           return renderComponent;
         }
         if (object instanceof ITemplateTypeAggregation) {

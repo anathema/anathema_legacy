@@ -88,7 +88,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractItemTyp
         IntValueDisplayFactory intValueDisplayFactory = new IntValueDisplayFactory(
             resources,
             new CharacterTemplateResourceProvider(resources).getMediumBallResource(characterType));
-        final Icon typeIcon = characterUI.getSmallCharacterTypeIcon(characterType);
+        final Icon typeIcon = new CharacterTemplateResourceProvider(resources).getSmallTypeIcon(characterType);
         ICharacterView characterView = new CharacterView(intValueDisplayFactory, printName, typeIcon);
         IBonusPointManagement bonusPointManagement = new BonusPointManagement(character.getStatistics());
         IExperiencePointManagement experiencePointManagement = new ExperiencePointManagement(character.getStatistics());
