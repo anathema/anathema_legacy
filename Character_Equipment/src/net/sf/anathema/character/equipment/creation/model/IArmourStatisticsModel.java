@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.creation.model;
 
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 
-public interface IArmourStatisticsModel {
+public interface IArmourStatisticsModel extends IEquipmentStatisticsModel {
 
   public IIntValueModel getBashingSoakModel();
 

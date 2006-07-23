@@ -4,7 +4,7 @@ import net.sf.anathema.character.equipment.creation.model.IArmourStatisticsModel
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.intvalue.SimpleIntValueModel;
 
-public class ArmourStatsticsModel implements IArmourStatisticsModel {
+public class ArmourStatsticsModel extends EquipmentStatisticsModel implements IArmourStatisticsModel {
 
   private final IIntValueModel bashingHardness = new SimpleIntValueModel(0);
   private final IIntValueModel bashingSoak = new SimpleIntValueModel(0);
