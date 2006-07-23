@@ -14,7 +14,7 @@ import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
 import net.sf.anathema.character.sidereal.colleges.model.CollegeModelBonusPointCalculator;
-import net.sf.anathema.character.sidereal.presentation.SiderealPresentationProperties;
+import net.sf.anathema.character.sidereal.presentation.SiderealCasteUI;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
@@ -56,15 +56,14 @@ public class SiderealCollegePresenter extends AbstractTraitPresenter {
           }
 
           public Icon createStandardIcon() {
-            //TODO: Caste Icon Handling
-            return resources.getImageIcon(SiderealPresentationProperties.getSideralCasteIconResource(house.getId()));
+            return new SiderealCasteUI(resources).getCasteIcon(house);
           }
 
           public String getToolTipText() {
             return null;
           }
         };
-        final IToggleButtonTraitView<?> collegeView = view.addIntValueView(
+        final IToggleButtonTraitView< ? > collegeView = view.addIntValueView(
             collegeName,
             factory,
             properties,
