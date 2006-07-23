@@ -13,11 +13,11 @@ import net.sf.anathema.framework.module.PreferencesElementsExtensionPoint;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.framework.presenter.menu.IAnathemaMenu;
 import net.sf.anathema.framework.presenter.toolbar.IAnathemaTool;
-import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.initialization.plugin.IAnathemaPluginManager;
 import net.sf.anathema.initialization.plugin.IPluginConstants;
 import net.sf.anathema.initialization.plugin.PluginUtilities;
+import net.sf.anathema.lib.resources.IResources;
 
 import org.java.plugin.registry.Extension;
 import org.java.plugin.registry.Extension.Parameter;
@@ -34,7 +34,7 @@ public class AnathemaPresenter {
   private static final String EXTENSION_POINT_PREFERENCE_ELEMENTS = "PreferenceElements"; //$NON-NLS-1$
   private final IAnathemaModel model;
   private final IAnathemaView view;
-  private final IAnathemaResources resources;
+  private final IResources resources;
   private final Collection<AbstractItemTypeConfiguration> itemTypeConfigurations;
   private final IAnathemaPluginManager pluginManager;
 
@@ -42,7 +42,7 @@ public class AnathemaPresenter {
       IAnathemaPluginManager pluginManager,
       IAnathemaModel model,
       IAnathemaView view,
-      IAnathemaResources resources,
+      IResources resources,
       Collection<AbstractItemTypeConfiguration> itemTypeConfigurations) {
     this.pluginManager = pluginManager;
     this.model = model;

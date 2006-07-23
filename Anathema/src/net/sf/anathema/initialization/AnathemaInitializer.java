@@ -11,7 +11,6 @@ import net.sf.anathema.framework.exception.CentralExceptionHandler;
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.resources.AnathemaResources;
-import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.framework.view.AnathemaView;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.initialization.plugin.AnathemaPluginManager;
@@ -41,7 +40,7 @@ public class AnathemaInitializer {
   }
 
   public IAnathemaView initialize() throws Exception {
-    IAnathemaResources resources = initResources();
+    IResources resources = initResources();
     CentralExceptionHandling.setHandler(new CentralExceptionHandler(resources));
     IAnathemaModel anathemaModel = initModel(resources);
     IAnathemaView view = initView(resources);
@@ -56,13 +55,13 @@ public class AnathemaInitializer {
         extensionCollection.getExtensionsById()).initializeModel(resources);
   }
 
-  private IAnathemaView initView(IAnathemaResources resources) throws AWTException {
+  private IAnathemaView initView(IResources resources) throws AWTException {
     AnathemaViewProperties viewProperties = new AnathemaViewProperties(resources, anathemaPreferences.initMaximized());
     return new AnathemaView(viewProperties);
   }
 
-  private IAnathemaResources initResources() {
-    IAnathemaResources resources = new AnathemaResources();
+  private IResources initResources() {
+    AnathemaResources resources = new AnathemaResources();
     for (Extension extension : pluginManager.getExtension(IPluginConstants.PLUGIN_CORE, EXTENSION_POINT_RESOURCES)) {
       for (Parameter param : PluginUtilities.getParameters(extension, PARAM_BUNDLE)) {
         resources.addResourceBundle(param.valueAsString(), pluginManager.getClassLoader(extension));

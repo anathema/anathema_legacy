@@ -6,14 +6,14 @@ import java.util.Random;
 
 import javax.swing.Icon;
 
-import net.sf.anathema.framework.resources.IAnathemaResources;
+import net.sf.anathema.lib.resources.IResources;
 
 public class AnathemaViewProperties {
 
-  private final IAnathemaResources resources;
+  private final IResources resources;
   private final boolean maximized;
 
-  public AnathemaViewProperties(IAnathemaResources resources, boolean maximized) {
+  public AnathemaViewProperties(IResources resources, boolean maximized) {
     this.resources = resources;
     this.maximized = maximized;
   }

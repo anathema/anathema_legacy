@@ -9,7 +9,7 @@ import de.jdemo.extensions.SwingDemoCase;
 
 public class BasicCharacterDemoCase extends SwingDemoCase {
 
-  protected final IIntValueDisplayFactory createMortalGuiConfiguration(IAnathemaResources resources) {
+  protected final IIntValueDisplayFactory createMortalGuiConfiguration(IResources resources) {
     return new IntValueDisplayFactory(
         resources,
         new CharacterTemplateResourceProvider(resources).getMediumBallResource(CharacterType.MORTAL));

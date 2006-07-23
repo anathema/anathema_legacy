@@ -9,16 +9,16 @@ import java.util.Locale;
 
 import javax.swing.Icon;
 
-import net.disy.commons.swing.image.IImageProvider;
-import net.disy.commons.swing.image.ImageProvider;
 import net.sf.anathema.lib.logging.Logger;
+import net.sf.anathema.lib.resources.IAnathemaImageProvider;
+import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.resources.IStringResourceHandler;
 
-public class AnathemaResources implements IAnathemaResources {
+public class AnathemaResources implements IResources {
 
   private final Logger logger = Logger.getLogger(AnathemaResources.class);
   private final List<IStringResourceHandler> stringResourceHandlers = new ArrayList<IStringResourceHandler>();
-  private final IImageProvider imageProvider = new ImageProvider("icons"); //$NON-NLS-1$
+  private final IAnathemaImageProvider imageProvider = new ImageProvider("icons"); //$NON-NLS-1$
 
   public AnathemaResources() {
     try {
@@ -56,22 +56,12 @@ public class AnathemaResources implements IAnathemaResources {
     return MessageFormat.format(formatPattern, arguments);
   }
 
-  @SuppressWarnings("deprecation")
   public Image getImage(String relativePath) {
     return imageProvider.getImage(relativePath);
   }
 
-  @SuppressWarnings("deprecation")
-  public Image getAnimatedImage(String relativePath) {
-    return imageProvider.getAnimatedImage(relativePath);
-  }
-
   public Icon getImageIcon(String relativePath) {
     return imageProvider.getImageIcon(relativePath);
-  }
-
-  public Icon getAnimatedImageIcon(String relativePath) {
-    return imageProvider.getAnimatedImageIcon(relativePath);
   }
 
   private Locale getLocale() {

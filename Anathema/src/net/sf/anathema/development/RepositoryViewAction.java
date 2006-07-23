@@ -13,14 +13,14 @@ import net.sf.anathema.framework.repository.tree.RepositoryTreeCellRenderer;
 import net.sf.anathema.framework.repository.tree.RepositoryTreeModel;
 import net.sf.anathema.framework.repository.tree.RepositoryTreePresenter;
 import net.sf.anathema.framework.repository.tree.RepositoryTreeView;
-import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.lib.gui.GuiUtilities;
+import net.sf.anathema.lib.resources.IResources;
 
 public final class RepositoryViewAction extends SmartAction {
   private final IAnathemaModel model;
-  private final IAnathemaResources resources;
+  private final IResources resources;
 
-  public RepositoryViewAction(String name, IAnathemaModel model, IAnathemaResources resources) {
+  public RepositoryViewAction(String name, IAnathemaModel model, IResources resources) {
     super(name);
     this.model = model;
     this.resources = resources;

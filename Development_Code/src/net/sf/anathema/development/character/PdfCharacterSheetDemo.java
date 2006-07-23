@@ -30,7 +30,6 @@ import net.sf.anathema.dummy.character.equipment.DemoNaturalArmour;
 import net.sf.anathema.dummy.character.equipment.DemoRangeWeapon;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.framework.resources.AnathemaResources;
-import net.sf.anathema.framework.resources.IAnathemaResources;
 import net.sf.anathema.lib.control.BrowserControl;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -85,7 +84,7 @@ public class PdfCharacterSheetDemo {
 
   private static IResources createDemoResources() {
     Locale.setDefault(Locale.ENGLISH);
-    IAnathemaResources resources = new AnathemaResources();
+    IResources resources = new AnathemaResources();
     return resources;
   }
 

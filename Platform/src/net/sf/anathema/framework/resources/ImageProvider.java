@@ -9,8 +9,9 @@ import javax.swing.ImageIcon;
 import net.disy.commons.core.util.Ensure;
 import net.disy.commons.swing.image.ImageLoader;
 import net.disy.commons.swing.image.ImageLoadingException;
+import net.sf.anathema.lib.resources.IAnathemaImageProvider;
 
-public class ImageProvider {
+public class ImageProvider implements IAnathemaImageProvider {
 
   private final String rootPath;
 
