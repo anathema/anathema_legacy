@@ -32,6 +32,7 @@ public class EquipmentObjectPresenter implements IPresenter {
     }
     for (final IEquipmentStats equipment : model.getEquipments()) {
       final BooleanModel booleanModel = view.addStats(createEquipmentDescription(equipment));
+      booleanModel.setValue(model.isPrintEnabled(equipment));
       booleanModel.addChangeListener(new ChangeListener() {
         public void stateChanged(ChangeEvent e) {
           model.setPrintEnabled(equipment, booleanModel.getValue());

@@ -36,4 +36,8 @@ public class DummyEquipmentObject implements IEquipmentItem {
   public void setPrintEnabled(IEquipmentStats equipment, boolean enabled) {
     //nothing to do;    
   }
+
+  public boolean isPrintEnabled(IEquipmentStats stats) {
+    return false;
+  }
 }
