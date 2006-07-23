@@ -30,29 +30,37 @@ public class EquipmentAdditionalPresenter implements IPresenter {
   }
 
   public void initPresentation() {
+    for (IEquipmentItem item : model.getEquipmentItems()) {
+      initEquipmentObjectPresentation(item);
+    }
     final IListObjectSelectionView<IEquipmentTemplate> equipmentTemplatePickList = view.getEquipmentTemplatePickList();
-    equipmentTemplatePickList.setCellRenderer(new EquipmentObjectCellRenderer());
-    equipmentTemplatePickList.setObjects(model.getAvailableTemplates());
-    final SmartAction addAction = new SmartAction("Add") {
-      @Override
-      protected void execute(Component parentComponent) {
-        IEquipmentTemplate selectedObject = equipmentTemplatePickList.getSelectedObject();
-        model.addEquipmentObject(selectedObject);
-      }
-    };
-    equipmentTemplatePickList.addObjectSelectionChangedListener(new IObjectValueChangedListener<IEquipmentTemplate>() {
-      public void valueChanged(IEquipmentTemplate newValue) {
-        addAction.setEnabled(view.getEquipmentTemplatePickList().isObjectSelected());
-      }
-    });
     model.addEquipmentObjectListener(new CollectionAdapter<IEquipmentItem>() {
       @Override
       public void itemAdded(IEquipmentItem item) {
         initEquipmentObjectPresentation(item);
       }
     });
-    addAction.setEnabled(view.getEquipmentTemplatePickList().isObjectSelected());
+    equipmentTemplatePickList.setCellRenderer(new EquipmentObjectCellRenderer());
+    equipmentTemplatePickList.setObjects(model.getAvailableTemplates());
+    final SmartAction addAction = createTemplateAddAction(equipmentTemplatePickList);
     view.setSelectButtonAction(addAction);
+  }
+
+  private SmartAction createTemplateAddAction(
+      final IListObjectSelectionView<IEquipmentTemplate> equipmentTemplatePickList) {
+    final SmartAction addAction = new SmartAction("Add") {
+      @Override
+      protected void execute(Component parentComponent) {
+        model.addEquipmentObject(equipmentTemplatePickList.getSelectedObject());
+      }
+    };
+    equipmentTemplatePickList.addObjectSelectionChangedListener(new IObjectValueChangedListener<IEquipmentTemplate>() {
+      public void valueChanged(IEquipmentTemplate newValue) {
+        addAction.setEnabled(equipmentTemplatePickList.isObjectSelected());
+      }
+    });
+    addAction.setEnabled(equipmentTemplatePickList.isObjectSelected());
+    return addAction;
   }
 
   private void initEquipmentObjectPresentation(IEquipmentItem selectedObject) {
