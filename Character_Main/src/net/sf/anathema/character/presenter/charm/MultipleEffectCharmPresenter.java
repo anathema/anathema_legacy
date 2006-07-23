@@ -3,11 +3,11 @@ package net.sf.anathema.character.presenter.charm;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ISubeffect;
 import net.sf.anathema.charmtree.batik.intvalue.SVGSubeffectCharmView;
-import net.sf.anathema.framework.value.IBooleanValueView;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 
 public class MultipleEffectCharmPresenter implements IPresenter {
 

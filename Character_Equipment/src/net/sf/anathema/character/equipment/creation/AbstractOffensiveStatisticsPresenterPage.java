@@ -21,9 +21,11 @@ import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
+import net.sf.anathema.lib.workflow.booleanvalue.BooleanValuePresentation;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
-import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+import net.sf.anathema.lib.workflow.textualdescription.ICheckableTextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
@@ -49,27 +51,20 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
     this.overallModel = overallModel;
     this.viewFactory = viewFactory;
   }
-  
+
   protected final P getProperties() {
     return properties;
   }
-  
+
   protected final O getPageModel() {
     return pageModel;
   }
 
   public final boolean canFinish() {
-    return isNameDefined();
-  }
-
-  private final boolean isNameDefined() {
-    return !pageModel.getName().isEmpty();
+    return true;
   }
 
   public final IBasicMessage getMessage() {
-    if (!isNameDefined()) {
-      return properties.getUndefinedNameMessage();
-    }
     return properties.getDefaultMessage();
   }
 
@@ -80,7 +75,7 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
   @Override
   protected final void initPageContent() {
     this.view = viewFactory.createCloseCombatStatisticsView();
-    initTextRow(properties.getNameLabel(), pageModel.getName());
+    initNameRow(properties.getNameLabel(), pageModel.getName(), pageModel.getNameSpecified());
     addIndividualRows();
     initAccuracyAndRateRow();
     initWeaponDamageRow(pageModel.getWeaponDamageModel());
@@ -116,9 +111,10 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
     view.addDialogComponent(damageView);
   }
 
-  private void initTextRow(String label, ITextualDescription textModel) {
-    ITextView textView = view.addLineTextView(label);
-    new TextualPresentation().initView(textView, textModel);
+  private void initNameRow(String label, ITextualDescription textModel, BooleanValueModel isNameDefinedModel) {
+    ICheckableTextView textView = view.addCheckableLineTextView(label);
+    new TextualPresentation().initView(textView.getTextView(), textModel);
+    new BooleanValuePresentation().initPresentation(textView.getBooleanValueView(), isNameDefinedModel);
   }
 
   protected final IntegerSpinner initIntegerSpinner(IIntValueModel intModel) {
@@ -137,7 +133,7 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
   protected void addFollowUpPages(CheckInputListener inputListener) {
     addFollowupPage(new WeaponTagsPresenterPage(resources, overallModel, viewFactory), inputListener, new ICondition() {
       public boolean isFullfilled() {
-        return isNameDefined();
+        return true;
       }
     });
   }

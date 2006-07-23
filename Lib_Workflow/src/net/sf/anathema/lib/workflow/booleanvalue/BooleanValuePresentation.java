@@ -22,4 +22,18 @@ public class BooleanValuePresentation {
     });
     button.setSelected(model.getValue());
   }
+
+  public void initPresentation(final IBooleanValueView view, final BooleanValueModel model) {
+    view.addChangeListener(new IBooleanValueChangedListener() {
+      public void valueChanged(boolean newValue) {
+        model.setValue(newValue);
+      }
+    });
+    model.addChangeListener(new IBooleanValueChangedListener() {
+      public void valueChanged(boolean newValue) {
+        view.setSelected(newValue);
+      }
+    });
+    view.setSelected(model.getValue());
+  }
 }

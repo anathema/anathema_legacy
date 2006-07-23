@@ -4,9 +4,9 @@ import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VAL
 
 import java.awt.Color;
 
-import net.sf.anathema.framework.value.IBooleanValueView;
 import net.sf.anathema.lib.control.booleanvalue.BooleanValueControl;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
+import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;

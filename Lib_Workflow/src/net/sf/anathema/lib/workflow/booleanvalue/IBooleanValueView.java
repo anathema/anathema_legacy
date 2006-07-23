@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.value;
+package net.sf.anathema.lib.workflow.booleanvalue;
 
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 

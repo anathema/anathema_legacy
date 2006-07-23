@@ -7,7 +7,7 @@ import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.equipment.creation.view.IWeaponStatisticsView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.container.factory.StandardPanelBuilder;
-import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+import net.sf.anathema.lib.workflow.textualdescription.ICheckableTextView;
 
 public class WeaponStatisticsView implements IWeaponStatisticsView {
 
@@ -23,20 +23,22 @@ public class WeaponStatisticsView implements IWeaponStatisticsView {
     return content;
   }
 
-  public ITextView addLineTextView(String label) {
-    ITextView textView = panelBuilder.addLineTextView(label, COLUMN_COUNT);
-    if (focusComponent == null) {
-      focusComponent = textView.getComponent();
-    }
-    return textView;
+  public ICheckableTextView addCheckableLineTextView(String label) {
+    return panelBuilder.addCheckableLineTextView(label, COLUMN_COUNT);
   }
 
   public IntegerSpinner addIntegerSpinner(String label, int startValue) {
-    return panelBuilder.addIntegerSpinner(label, startValue);
+    IntegerSpinner spinner = panelBuilder.addIntegerSpinner(label, startValue);
+    if (focusComponent == null) {
+      focusComponent = spinner.getComponent();
+    }
+    return spinner;
   }
 
   public void requestFocus() {
-    focusComponent.requestFocus();
+    if (focusComponent != null) {
+      focusComponent.requestFocus();
+    }
   }
 
   public void dispose() {

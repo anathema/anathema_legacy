@@ -4,20 +4,13 @@ import net.sf.anathema.character.equipment.creation.model.IOffensiveStatisticsMo
 import net.sf.anathema.character.equipment.creation.model.IWeaponDamageModel;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.intvalue.SimpleIntValueModel;
-import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
-import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
-public class OffensiveStatisticsModel implements IOffensiveStatisticsModel {
+public class OffensiveStatisticsModel extends EquipmentStatisticsModel implements IOffensiveStatisticsModel {
 
-  private final ITextualDescription name = new SimpleTextualDescription();
   private final IIntValueModel speedModel = new SimpleIntValueModel(1);
   private final IIntValueModel accuracyModel = new SimpleIntValueModel(0);
   private final IIntValueModel rateModel = new SimpleIntValueModel(1);
   private final IWeaponDamageModel weaponDamageModel = new WeaponDamageModel();
-
-  public ITextualDescription getName() {
-    return name;
-  }
 
   public IIntValueModel getSpeedModel() {
     return speedModel;

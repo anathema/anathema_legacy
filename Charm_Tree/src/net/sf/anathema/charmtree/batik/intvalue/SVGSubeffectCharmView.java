@@ -6,7 +6,7 @@ import java.util.List;
 
 import net.sf.anathema.charmtree.batik.IBoundsCalculator;
 import net.sf.anathema.charmtree.presenter.view.ISVGSpecialCharmView;
-import net.sf.anathema.framework.value.IBooleanValueView;
+import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;

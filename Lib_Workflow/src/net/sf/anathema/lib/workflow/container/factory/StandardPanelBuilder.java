@@ -1,17 +1,23 @@
 package net.sf.anathema.lib.workflow.container.factory;
 
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
 import net.disy.commons.swing.border.TitledPanel;
+import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
+import net.disy.commons.swing.util.ToggleComponentEnabler;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
+import net.sf.anathema.lib.workflow.booleanvalue.CheckBoxBooleanView;
+import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
+import net.sf.anathema.lib.workflow.textualdescription.ICheckableTextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
@@ -27,6 +33,38 @@ public class StandardPanelBuilder {
 
   public ITextView addLineTextView(final String labelName, int columnCount) {
     return addLabelledTextView(labelName, new LineTextView(columnCount), false);
+  }
+
+  public ICheckableTextView addCheckableLineTextView(String labelName, int textFieldColumns) {
+    final CheckBoxBooleanView checkBoxView = new CheckBoxBooleanView(labelName);
+    final ITextView textView = new LineTextView(textFieldColumns);
+    ToggleComponentEnabler.connect(checkBoxView.getContent(), textView.getComponent());
+    dialogPanel.add(new IDialogComponent() {
+      public int getColumnCount() {
+        return 2;
+      }
+
+      public void fillInto(JPanel panel, int columnCount) {
+        GridDialogLayoutData labelLayoutData = new GridDialogLayoutData();
+        labelLayoutData.setHorizontalAlignment(GridAlignment.BEGINNING);
+        labelLayoutData.setVerticalAlignment(GridAlignment.BEGINNING);
+        panel.add(checkBoxView.getContent(), labelLayoutData);
+        JComponent textContent = textView.getComponent();
+        GridDialogLayoutData contentData = new GridDialogLayoutData(GridDialogLayoutData.FILL_HORIZONTAL);
+        contentData.setHorizontalSpan(columnCount - 1);
+        panel.add(textContent, contentData);
+      }
+    });
+    return new ICheckableTextView() {
+
+      public IBooleanValueView getBooleanValueView() {
+        return checkBoxView;
+      }
+
+      public ITextView getTextView() {
+        return textView;
+      }
+    };
   }
 
   public ITextView addAreaTextView(final String labelName, int rowCount, int columnCount) {
