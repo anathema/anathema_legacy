@@ -56,12 +56,12 @@ public class AnathemaResources implements IResources {
     return MessageFormat.format(formatPattern, arguments);
   }
 
-  public Image getImage(String relativePath) {
-    return imageProvider.getImage(relativePath);
+  public Image getImage(Class< ? > requestor, String relativePath) {
+    return imageProvider.getImage(requestor, relativePath);
   }
 
-  public Icon getImageIcon(String relativePath) {
-    return imageProvider.getImageIcon(relativePath);
+  public Icon getImageIcon(Class< ? > requestor, String relativePath) {
+    return imageProvider.getImageIcon(requestor, relativePath);
   }
 
   private Locale getLocale() {

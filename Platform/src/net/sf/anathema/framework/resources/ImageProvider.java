@@ -20,15 +20,15 @@ public class ImageProvider implements IAnathemaImageProvider {
     this.rootPath = rootPath;
   }
 
-  public Image getImage(String relativePath) {
-    InputStream inputStream = getInputStream(relativePath);
+  public Image getImage(Class< ? > requestor, String relativePath) {
+    InputStream inputStream = getInputStream(requestor, relativePath);
     return loadImage(inputStream);
   }
 
-  private InputStream getInputStream(String relativePath) {
+  private InputStream getInputStream(Class< ? > requestor, String relativePath) {
     Ensure.ensureNotNull("RelativePath to image is null.", relativePath); //$NON-NLS-1$
     String resourceName = rootPath + "/" + relativePath; //$NON-NLS-1$
-    InputStream inputStream = getClass().getClassLoader().getResourceAsStream(resourceName);
+    InputStream inputStream = requestor.getClassLoader().getResourceAsStream(resourceName);
     if (inputStream == null) {
       throw new ImageLoadingException("Cannot find image resource: " + resourceName); //$NON-NLS-1$
     }
@@ -44,9 +44,8 @@ public class ImageProvider implements IAnathemaImageProvider {
     }
   }
 
-  public ImageIcon getImageIcon(String relativePath) {
-    Image image = getImage(relativePath);
+  public ImageIcon getImageIcon(Class< ? > requestor, String relativePath) {
+    Image image = getImage(requestor, relativePath);
     return image == null ? null : new ImageIcon(image);
-
   }
 }

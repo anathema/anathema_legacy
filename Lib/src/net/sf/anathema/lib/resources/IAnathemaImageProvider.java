@@ -6,7 +6,7 @@ import javax.swing.Icon;
 
 public interface IAnathemaImageProvider {
 
-  public Image getImage(String relativePath);
+  public Image getImage(Class< ? > requestor, String relativePath);
 
-  public Icon getImageIcon(String relativePath);
+  public Icon getImageIcon(Class< ? > requestor, String relativePath);
 }

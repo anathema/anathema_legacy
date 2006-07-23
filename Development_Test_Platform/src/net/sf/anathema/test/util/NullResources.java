@@ -27,19 +27,11 @@ public class NullResources implements IResources {
     return true;
   }
 
-  public Image getAnimatedImage(String relativePath) {
+  public Image getImage(Class< ? > requestor, String relativePath) {
     return null;
   }
 
-  public Icon getAnimatedImageIcon(String relativePath) {
-    return null;
-  }
-
-  public Image getImage(String relativePath) {
-    return null;
-  }
-
-  public Icon getImageIcon(String relativePath) {
+  public Icon getImageIcon(Class< ? > requestor, String relativePath) {
     return null;
   }
 }

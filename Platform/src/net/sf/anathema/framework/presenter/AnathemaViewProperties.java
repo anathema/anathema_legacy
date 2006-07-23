@@ -20,7 +20,7 @@ public class AnathemaViewProperties {
 
   public Icon getSplashImage() {
     int random = new Random().nextInt(5);
-    return resources.getImageIcon("core/AnathemaSplash" + (random + 3) + ".png"); //$NON-NLS-1$ //$NON-NLS-2$
+    return resources.getImageIcon(this.getClass(), "core/AnathemaSplash" + (random + 3) + ".png"); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   public String getDefaultFrameTitle() {
@@ -29,7 +29,7 @@ public class AnathemaViewProperties {
 
   @SuppressWarnings("deprecation")
   public Image getFrameIcon() {
-    return resources.getImage("core/AnathemaIcon.png"); //$NON-NLS-1$
+    return resources.getImage(this.getClass(), "core/AnathemaIcon.png"); //$NON-NLS-1$
   }
 
   public String getMainMenuName() {
