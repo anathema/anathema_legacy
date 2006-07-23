@@ -14,9 +14,9 @@ import net.sf.anathema.lib.resources.IResources;
 public class CharacterTemplateResourceProvider extends AbstractUI {
 
   private final Map<CharacterType, String> ballResourcesByCharacterType = new HashMap<CharacterType, String>();
-  private Map<CharacterType, String> tinyBallResourcesByCharacterType = new HashMap<CharacterType, String>();
-  private Map<CharacterType, String> smalltypeIconsByCharacterType = new HashMap<CharacterType, String>();
-  private Map<CharacterType, String> tinyTypeIconsByCharacterType = new HashMap<CharacterType, String>();
+  private final Map<CharacterType, String> tinyBallResourcesByCharacterType = new HashMap<CharacterType, String>();
+  private final Map<CharacterType, String> smalltypeIconsByCharacterType = new HashMap<CharacterType, String>();
+  private final Map<CharacterType, String> tinyTypeIconsByCharacterType = new HashMap<CharacterType, String>();
 
   public CharacterTemplateResourceProvider(IResources resources) {
     super(resources);
