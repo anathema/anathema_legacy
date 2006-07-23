@@ -61,10 +61,17 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
   }
 
   public final boolean canFinish() {
-    return true;
+    return isNameCorrectlyDefined();
+  }
+
+  private boolean isNameCorrectlyDefined() {
+    return !pageModel.getNameSpecified().getValue() || !pageModel.getName().isEmpty();
   }
 
   public final IBasicMessage getMessage() {
+    if (!isNameCorrectlyDefined()) {
+      return properties.getUndefinedNameMessage();
+    }
     return properties.getDefaultMessage();
   }
 
@@ -133,7 +140,7 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
   protected void addFollowUpPages(CheckInputListener inputListener) {
     addFollowupPage(new WeaponTagsPresenterPage(resources, overallModel, viewFactory), inputListener, new ICondition() {
       public boolean isFullfilled() {
-        return true;
+        return isNameCorrectlyDefined();
       }
     });
   }
@@ -141,6 +148,7 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
   @Override
   protected final void initModelListening(CheckInputListener inputListener) {
     pageModel.getName().addTextChangedListener(inputListener);
+    pageModel.getNameSpecified().addChangeListener(inputListener);
   }
 
   public final IPageContent getPageContent() {
