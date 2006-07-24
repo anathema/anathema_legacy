@@ -27,7 +27,6 @@ import net.sf.anathema.campaign.music.presenter.MusicUI;
 import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.DirectoryFileChooser;
-import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.resources.IResources;
 
 public class AddMusicFolderAction extends SmartAction {

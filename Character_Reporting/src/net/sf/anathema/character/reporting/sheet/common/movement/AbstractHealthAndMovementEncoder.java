@@ -67,9 +67,9 @@ public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncode
     float rectYPosition = text.getYLine() - rectangleOffset - additionalOffset;
     float textYPosition = text.getYLine() - leading - additionalOffset;
     float xPosition = textBounds.x;
-    PdfTemplate rectTemplate = SecondEditionHealthAndMovemenTableEncoder.createRectTemplate(directContent, Color.BLACK);
+    PdfTemplate rectTemplate = AbstractHealthAndMovemenTableEncoder.createRectTemplate(directContent, Color.BLACK);
     directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
-    PdfTemplate bashingTemplate = SecondEditionHealthAndMovemenTableEncoder.createBashingTemplate(
+    PdfTemplate bashingTemplate = AbstractHealthAndMovemenTableEncoder.createBashingTemplate(
         directContent,
         Color.GRAY);
     directContent.addTemplate(bashingTemplate, xPosition, rectYPosition);
@@ -79,7 +79,7 @@ public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncode
     drawComment(directContent, bashingString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += getCommentTextWidth(bashingString);
     directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
-    PdfTemplate lethalTemplate = SecondEditionHealthAndMovemenTableEncoder.createLethalTemplate(
+    PdfTemplate lethalTemplate = AbstractHealthAndMovemenTableEncoder.createLethalTemplate(
         directContent,
         Color.GRAY);
     directContent.addTemplate(lethalTemplate, xPosition, rectYPosition);

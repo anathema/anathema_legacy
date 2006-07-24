@@ -31,18 +31,18 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
       DEFAULT_REPOSITORY_LOCATION));
   private File defaultFile = new File(DEFAULT_REPOSITORY_LOCATION);
   private boolean dirty;
-  boolean modificationAllowed = false;
-  private IResources resources;
+  private boolean modificationAllowed = false;
   private JTextField repositoryTextField;
+  private IResources resources;
 
-  public void addCompoment(GridDialogPanel panel, IResources resources) {
-    panel.add(getComponent(resources));    
-  }
-  
-  private IDialogComponent getComponent(final IResources resource) {
+  public void addCompoment(GridDialogPanel panel, IResources resource) {
     this.resources = resource;
+    panel.add(getComponent());
+  }
+
+  private IDialogComponent getComponent() {
     final JLabel repositoryLabel = new JLabel(
-        resource.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.Label") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
+        resources.getString("AnathemaCore.Tools.Preferences.RepositoryDirectory.Label") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
     repositoryTextField = new JTextField(45);
     repositoryTextField.setEditable(false);
     setDisplayedPath(repositoryTextField, repositoryDirectory);

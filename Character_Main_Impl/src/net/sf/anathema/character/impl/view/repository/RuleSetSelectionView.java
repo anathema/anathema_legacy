@@ -37,7 +37,7 @@ public class RuleSetSelectionView implements IRuleSetSelectionView {
   }
 
   public IExaltedRuleSet getSelectedRules() {
-    return (IExaltedRuleSet) selectionView.getSelectedObject();
+    return selectionView.getSelectedObject();
   }
 
   public void setAvailableRulesets(IExaltedRuleSet[] supportedRuleSets) {

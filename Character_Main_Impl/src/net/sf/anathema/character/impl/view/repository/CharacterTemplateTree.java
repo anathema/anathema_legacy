@@ -17,7 +17,6 @@ import javax.swing.tree.TreeSelectionModel;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.resources.CharacterTemplateResourceProvider;
-import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.view.repository.ICharacterTemplateTree;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
