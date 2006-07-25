@@ -4,7 +4,10 @@
 		<import plugin-id="net.sf.anathema.core" reverse-lookup="true"/>
 	</requires>
 	<runtime>
-		<library id="core" path="/" type="code">
+		<library id="core" path="./" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="resources" path="./" type="resources">
 			<export prefix="*"/>
 		</library>
 	</runtime>
@@ -43,7 +46,6 @@
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
 		<parameter id="bundle" value="Abyssal"/>
 		<parameter id="bundle" value="Backgrounds"/>
-		<parameter id="bundle" value="Cascades"/>
 		<parameter id="bundle" value="Castes"/>
 		<parameter id="bundle" value="Character"/>
 		<parameter id="bundle" value="CharacterControl"/>

@@ -4,6 +4,14 @@
 		<import plugin-id="net.sf.anathema.core" reverse-lookup="true"/>
 		<import plugin-id="net.sf.anathema.character"/>
 	</requires>
+	<runtime>
+		<library id="core" path="./" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="resources" path="./" type="resources">
+			<export prefix="*"/>
+		</library>
+	</runtime>
 	<extension plugin-id="net.sf.anathema.core"	point-id="ItemTypes" id="ItemType">
 		<parameter id="type">
 			<parameter id="class" value="net.sf.anathema.cascades.module.CharmCascadeItemTypeConfiguration"/>
