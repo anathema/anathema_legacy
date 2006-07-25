@@ -19,7 +19,7 @@ public class CharmIO {
 
   public Document readCharms(IIdentificate type, IExaltedRuleSet rules) throws DocumentException {
     String urlString = createFileName(type, rules);
-    final URL charmURL = type.getClass().getClassLoader().getResource(urlString);
+    final URL charmURL = getClass().getClassLoader().getResource(urlString);
     if (charmURL == null) {
       throw new NullPointerException("Resource not found in classpath: " + urlString); //$NON-NLS-1$
     }
