@@ -30,7 +30,7 @@ public class CloseCombatStatisticsPresenterPage extends
   private void initSpeedAndDefenseRow() {
     String[] labels = new String[] { getProperties().getSpeedLabel(), getProperties().getDefenseLabel() };
     addLabelledComponentRow(labels, new Component[] {
-        initIntegerSpinner(getPageModel().getSpeedModel(), 1).getComponent(),
+        initIntegerSpinner(getPageModel().getSpeedModel()).getComponent(),
         initIntegerSpinner(getPageModel().getDefenseModel()).getComponent() });
   }
 }

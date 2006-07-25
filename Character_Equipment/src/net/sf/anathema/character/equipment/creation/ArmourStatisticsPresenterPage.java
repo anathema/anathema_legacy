@@ -22,18 +22,18 @@ public class ArmourStatisticsPresenterPage extends
     addLabelledComponentRow(new String[] {
         getProperties().getBashingSoakLabel(),
         getProperties().getBashingHardnessLabel() }, new Component[] {
-        initIntegerSpinner(getPageModel().getBashingSoakModel(), 1).getComponent(),
-        initIntegerSpinner(getPageModel().getBashingHardnessModel(), 1).getComponent() });
+        initIntegerSpinner(getPageModel().getBashingSoakModel()).getComponent(),
+        initIntegerSpinner(getPageModel().getBashingHardnessModel()).getComponent() });
     addLabelledComponentRow(new String[] {
         getProperties().getLethalSoakLabel(),
         getProperties().getLethalHardnessLabel() }, new Component[] {
-        initIntegerSpinner(getPageModel().getLethalSoakModel(), 1).getComponent(),
-        initIntegerSpinner(getPageModel().getLethalHardnessModel(), 1).getComponent() });
-    addLabelledComponentRow(new String[] {
-        getProperties().getMobilityPenaltyLabel(),
-        getProperties().getFatigueLabel() }, new Component[] {
-        initIntegerSpinner(getPageModel().getMobilityPenaltyModel(), 1).getComponent(),
-        initIntegerSpinner(getPageModel().getFatigueModel(), 1).getComponent() });
+        initIntegerSpinner(getPageModel().getLethalSoakModel()).getComponent(),
+        initIntegerSpinner(getPageModel().getLethalHardnessModel()).getComponent() });
+    addLabelledComponentRow(
+        new String[] { getProperties().getMobilityPenaltyLabel(), getProperties().getFatigueLabel() },
+        new Component[] {
+            initIntegerSpinner(getPageModel().getMobilityPenaltyModel()).getComponent(),
+            initIntegerSpinner(getPageModel().getFatigueModel()).getComponent() });
   }
 
   @Override

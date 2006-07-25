@@ -6,7 +6,6 @@ import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 public class IntValuePresentation {
 
   public void initView(final IntegerSpinner integerSpinner, final IIntValueModel intValueModel) {
-    integerSpinner.setMinimum(new Integer(1));
     integerSpinner.addChangeListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
         intValueModel.setValue(newValue);
@@ -17,6 +16,8 @@ public class IntValuePresentation {
         integerSpinner.setValue(newValue);
       }
     });
+    integerSpinner.setMinimum(intValueModel.getMinimum());
+    integerSpinner.setMaximum(intValueModel.getMaximum());
     integerSpinner.setValue(intValueModel.getValue());
   }
 }

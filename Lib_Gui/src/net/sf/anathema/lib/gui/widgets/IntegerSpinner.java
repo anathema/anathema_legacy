@@ -24,7 +24,7 @@ public class IntegerSpinner {
   private final SpinnerNumberModel numberModel;
 
   public IntegerSpinner(int initialValue) {
-    numberModel = new SpinnerNumberModel(0, 0, null, 1);
+    numberModel = new SpinnerNumberModel(initialValue, null, null, 1);
     spinner = new JSpinner(numberModel);
     DecimalFormat decimalFormat = new DecimalFormat();
     decimalFormat.setGroupingSize(0);

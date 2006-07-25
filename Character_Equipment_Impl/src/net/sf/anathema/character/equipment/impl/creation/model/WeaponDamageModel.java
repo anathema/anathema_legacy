@@ -13,7 +13,7 @@ public class WeaponDamageModel extends RangedIntValueModel implements IWeaponDam
   private HealthType healthType = HealthType.Lethal;
 
   public WeaponDamageModel() {
-    super(new Range(0, Integer.MAX_VALUE));
+    super(new Range(0, Integer.MAX_VALUE), 0);
   }
 
   public HealthType getHealthType() {

@@ -28,6 +28,7 @@ public class WeaponDamagePresenter implements IPresenter {
     view.setLabelText(properties.getDamageLabel());
     IntegerSpinner integerSpinner = view.getIntegerSpinner();
     new IntValuePresentation().initView(integerSpinner, model);
+    integerSpinner.setMinimum(0);
     view.setObjects(HealthType.values());
     model.addHealthTypeChangeListener(new IChangeListener() {
       public void changeOccured() {

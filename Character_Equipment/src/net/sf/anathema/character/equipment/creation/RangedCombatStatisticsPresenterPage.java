@@ -30,7 +30,7 @@ public class RangedCombatStatisticsPresenterPage extends
   private void initSpeedAndRangeRow() {
     String[] labels = new String[] { getProperties().getSpeedLabel(), getProperties().getRangeLabel() };
     addLabelledComponentRow(labels, new Component[] {
-        initIntegerSpinner(getPageModel().getSpeedModel(), 1).getComponent(),
+        initIntegerSpinner(getPageModel().getSpeedModel()).getComponent(),
         initIntegerSpinner(getPageModel().getRangeModel()).getComponent() });
   }
 }

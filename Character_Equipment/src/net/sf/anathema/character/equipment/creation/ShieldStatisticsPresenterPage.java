@@ -22,8 +22,8 @@ public class ShieldStatisticsPresenterPage extends
     addLabelledComponentRow(new String[] {
         getProperties().getCloseCombatDvBonusLabel(),
         getProperties().getRangedCombatDvBonusLabel() }, new Component[] {
-        initIntegerSpinner(getPageModel().getCloseCombatDvBonusModel(), 1).getComponent(),
-        initIntegerSpinner(getPageModel().getRangedCombatDvBonusModel(), 1).getComponent() });
+        initIntegerSpinner(getPageModel().getCloseCombatDvBonusModel()).getComponent(),
+        initIntegerSpinner(getPageModel().getRangedCombatDvBonusModel()).getComponent() });
   }
 
   @Override

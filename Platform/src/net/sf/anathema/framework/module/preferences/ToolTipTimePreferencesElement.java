@@ -28,6 +28,7 @@ public class ToolTipTimePreferencesElement implements IPreferencesElement {
     final JLabel toolTipTimeLabel = new JLabel(resources.getString("AnathemaCore.Tools.Preferences.ToolTipTime") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
     spinner = new IntegerSpinner(toolTipTime);
     spinner.setPreferredWidth(70);
+    spinner.setMinimum(0);
     spinner.addChangeListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
         if (toolTipTime == newValue) {

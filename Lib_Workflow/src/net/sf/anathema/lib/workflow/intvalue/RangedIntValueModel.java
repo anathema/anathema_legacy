@@ -1,18 +1,55 @@
 package net.sf.anathema.lib.workflow.intvalue;
 
+import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.control.intvalue.IntValueControl;
 import net.sf.anathema.lib.data.Range;
 
-public class RangedIntValueModel extends SimpleIntValueModel {
+public class RangedIntValueModel implements IIntValueModel {
 
   private final Range range;
 
+  private final IntValueControl intValueControl = new IntValueControl();
+  private int value;
+
+  public RangedIntValueModel(int initialValue) {
+    this(new Range(Integer.MIN_VALUE, Integer.MAX_VALUE), initialValue);
+  }
+
   public RangedIntValueModel(Range range) {
-    super(range.getLowerBound());
+    this(range, range.getLowerBound());
+  }
+
+  public RangedIntValueModel(Range range, int initialValue) {
+    this.value = initialValue;
     this.range = range;
   }
 
-  @Override
+  public final void addIntValueChangeListener(IIntValueChangedListener changeListener) {
+    intValueControl.addIntValueChangeListener(changeListener);
+  }
+
+  public Range getRange() {
+    return range;
+  }
+
+  public int getValue() {
+    return value;
+  }
+
   public void setValue(int value) {
-    super.setValue(range.getNearestValue(value));
+    value = range.getNearestValue(value);
+    if (this.value == value) {
+      return;
+    }
+    this.value = value;
+    intValueControl.fireValueChangedEvent(value);
+  }
+
+  public Integer getMaximum() {
+    return range.getUpperBound();
+  }
+
+  public Integer getMinimum() {
+    return range.getLowerBound();
   }
 }

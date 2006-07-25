@@ -144,10 +144,4 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
     new IntValuePresentation().initView(spinner, intModel);
     return spinner;
   }
-
-  protected final IntegerSpinner initIntegerSpinner(IIntValueModel intModel, int minimumValue) {
-    final IntegerSpinner spinner = initIntegerSpinner(intModel);
-    spinner.setMinimum(minimumValue);
-    return spinner;
-  }
 }

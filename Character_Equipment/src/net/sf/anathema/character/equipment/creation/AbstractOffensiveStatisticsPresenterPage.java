@@ -34,7 +34,7 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
     String[] labels = new String[] { getProperties().getAccuracyLabel(), getProperties().getRateLabel() };
     addLabelledComponentRow(labels, new Component[] {
         initIntegerSpinner(getPageModel().getAccuracyModel()).getComponent(),
-        initIntegerSpinner(getPageModel().getRateModel(), 1).getComponent() });
+        initIntegerSpinner(getPageModel().getRateModel()).getComponent() });
   }
 
   private void initWeaponDamageRow(final IWeaponDamageModel damageModel) {
