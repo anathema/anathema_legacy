@@ -147,7 +147,7 @@ public class ComboConfigurationPresenter implements IMagicSubPresenter {
 
   private void addComboToView(final IComboConfigurationView comboConfigurationView, final ICombo combo) {
     SmartAction deleteAction = new SmartAction(
-        resources.getString("CardView.CharmConfiguration.ComboCreation.DeleteLabel"), new BasicUi(resources).getMediumRemoveIcon()) { //$NON-NLS-1$
+        resources.getString("CardView.CharmConfiguration.ComboCreation.DeleteLabel"), new BasicUi(resources).getMediumClearIcon()) { //$NON-NLS-1$
       @Override
       protected void execute(Component parentComponent) {
         comboConfiguration.deleteCombo(combo);

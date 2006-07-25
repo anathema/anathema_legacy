@@ -19,7 +19,7 @@ public class IntimaciesViewFactory implements IAdditionalViewFactory {
   public ISimpleTabView createView(IAdditionalModel model, final IResources resources, CharacterType type) {
     IIconToggleButtonProperties properties = new IIconToggleButtonProperties() {
       public Icon createStandardIcon() {
-        return new CharacterUI(resources).getMediumLockIcon();
+        return new CharacterUI(resources).getLinkIcon();
       }
 
       public Icon createUnselectedIcon() {

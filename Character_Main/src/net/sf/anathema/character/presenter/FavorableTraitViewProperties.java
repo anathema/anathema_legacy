@@ -49,7 +49,7 @@ public class FavorableTraitViewProperties implements IIconToggleButtonProperties
       };
     }
     if (ability.getFavorization().isCaste()) {
-      return new CasteUI(resources, context.getRuleSet().getEdition(), properties).getMediumCasteIcon(ability.getFavorization()
+      return new CasteUI(resources, context.getRuleSet().getEdition(), properties).getSmallCasteIcon(ability.getFavorization()
           .getCaste());
     }
     return new CharacterTemplateResourceProvider(resources).getMediumBallResource(context.getCharacterType());

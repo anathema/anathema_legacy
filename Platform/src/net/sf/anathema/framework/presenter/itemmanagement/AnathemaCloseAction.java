@@ -23,7 +23,7 @@ public class AnathemaCloseAction extends SmartAction {
   public static Action createForItem(IItemMangementModel model, IResources resources, IItem item) {
     SmartAction action = new AnathemaCloseAction(model, item);
     action.setToolTipText(resources.getString("AnathemaCore.Tools.Close.Tooltip")); //$NON-NLS-1$
-    action.setIcon(new BasicUi(resources).getMediumRemoveIcon());
+    action.setIcon(new BasicUi(resources).getMediumClearIcon());
     return action;
   }
 

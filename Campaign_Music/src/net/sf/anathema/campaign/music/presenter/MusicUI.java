@@ -20,34 +20,38 @@ public class MusicUI extends AbstractUI {
   }
 
   public Icon getAddFileIcon() {
-    return getIcon("MP3FileIcon20.png"); //$NON-NLS-1$
+    return getIcon("ButtonAddFile16.png"); //$NON-NLS-1$
   }
 
   public Icon getAddFolderIcon() {
-    return getIcon("Folder20.gif"); //$NON-NLS-1$
+    return getIcon("ButtonAddFolder16.png"); //$NON-NLS-1$
   }
 
   public Icon getExportPlaylistIcon() {
-    return getIcon("tools/Save24.gif"); //$NON-NLS-1$
+    return getIcon("ButtonExport16.png"); //$NON-NLS-1$
   }
 
   public Icon getReplaceToLeftIcon() {
-    return getIcon("GreenArrowLeftWithRedX20.png"); //$NON-NLS-1$
+    return getIcon("ButtonArrowLeftCross16.png"); //$NON-NLS-1$
   }
 
   public Icon getPauseButtonIcon() {
-    return getIcon("PauseButton20.png"); //$NON-NLS-1$
+    return getIcon("ButtonPause16.png"); //$NON-NLS-1$
   }
 
   public Icon getResumeButtonIcon() {
-    return getIcon("ResumeButton20.png"); //$NON-NLS-1$
+    return getIcon("ButtonResume16.png"); //$NON-NLS-1$
   }
 
   public Icon getPlayButtonIcon() {
-    return getIcon("PlayButton20.png"); //$NON-NLS-1$
+    return getIcon("ButtonPlay16.png"); //$NON-NLS-1$
   }
 
   public Icon getStopButtonIcon() {
-    return getIcon("StopButton20.png"); //$NON-NLS-1$
+    return getIcon("ButtonStop16.png"); //$NON-NLS-1$
+  }
+
+  public Icon getRemoveTrackIcon() {
+    return getIcon("ButtonRemoveFile16.png"); //$NON-NLS-1$
   }
 }

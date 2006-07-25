@@ -19,10 +19,6 @@ public class CasteUI extends AbstractUI {
     this.properties = properties;
   }
 
-  public Icon getMediumCasteIcon(ICasteType< ? > type) {
-    return getIcon(properties.getMediumCasteIconResource(type.getId(), edition.getId()));
-  }
-
   public Icon getSmallCasteIcon(ICasteType< ? > type) {
     return getIcon(properties.getSmallCasteIconResource(type.getId(), edition.getId()));
   }

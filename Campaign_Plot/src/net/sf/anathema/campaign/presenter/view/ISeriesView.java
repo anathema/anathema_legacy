@@ -6,6 +6,4 @@ import net.sf.anathema.framework.view.IItemView;
 public interface ISeriesView extends IItemView {
 
   public IPlotView addPlotView(String title);
-  
-  public ISeriesContentView addContentView(String title);
 }

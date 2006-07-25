@@ -12,11 +12,11 @@ public class CharacterUI extends AbstractUI {
   }
 
   public Icon getCharacterDescriptionTabIcon() {
-    return getIcon("CharacterTabIcon.png"); //$NON-NLS-1$
+    return getIcon("TabDescription16.png"); //$NON-NLS-1$
   }
 
-  public Icon getMediumLockIcon() {
-    return getIcon("Lock20.png"); //$NON-NLS-1$
+  public Icon getLinkIcon() {
+    return getIcon("ButtonLink16b.png"); //$NON-NLS-1$
   }
 
   public Icon getNewCharacterToolBarIcon() {
@@ -28,18 +28,18 @@ public class CharacterUI extends AbstractUI {
   }
 
   public Icon getRandomRealmNameIcon() {
-    return getIcon("util/question-mark-purple.gif"); //$NON-NLS-1$
+    return getIcon("ButtonRandomNameC16.png"); //$NON-NLS-1$
   }
 
   public Icon getRandomThresholdNameIcon() {
-    return getIcon("util/question-mark.gif"); //$NON-NLS-1$
+    return getIcon("ButtonRandomNameB16.png"); //$NON-NLS-1$
   }
 
   public Icon getEditComboIcon() {
-    return getIcon("Recycle20.png"); //$NON-NLS-1$
+    return getIcon("ButtonEdit16.png"); //$NON-NLS-1$
   }
 
   public Icon getCancelComboEditIcon() {
-    return getIcon("CancelEdit20.png"); //$NON-NLS-1$
+    return getIcon("ButtonUndo16.png"); //$NON-NLS-1$
   }
 }

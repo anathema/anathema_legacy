@@ -19,24 +19,20 @@ public class PlotUI extends AbstractUI {
     return getIcon("TabSeries16.png"); //$NON-NLS-1$
   }
 
-  public Icon getAddButtonIcon() {
-    return getIcon("GreenArrowLeft20.png"); //$NON-NLS-1$
-  }
-
   public Icon getSeriesIcon() {
-    return getIcon("plot/BookStack.gif"); //$NON-NLS-1$
+    return getIcon("FolderSeries16.png"); //$NON-NLS-1$
   }
 
   public Icon getStoryIcon() {
-    return getIcon("plot/Book.gif"); //$NON-NLS-1$
+    return getIcon("FolderStory16.png"); //$NON-NLS-1$
   }
 
   public Icon getEpisodeIcon() {
-    return getIcon("plot/Scrolls.gif"); //$NON-NLS-1$
+    return getIcon("FolderEpisode16.png"); //$NON-NLS-1$
   }
 
   public Icon getSceneIcon() {
-    return getIcon("plot/Scroll_Open.gif"); //$NON-NLS-1$
+    return getIcon("FolderScene16.png"); //$NON-NLS-1$
   }
 
   public Object getUnderlineButtonIcon() {

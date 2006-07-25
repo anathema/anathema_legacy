@@ -3,7 +3,6 @@ package net.sf.anathema.campaign.view;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 
-import net.sf.anathema.campaign.presenter.view.ISeriesContentView;
 import net.sf.anathema.campaign.presenter.view.ISeriesView;
 import net.sf.anathema.campaign.presenter.view.plot.IPlotView;
 import net.sf.anathema.campaign.view.plot.PlotView;
@@ -24,11 +23,5 @@ public class CampaignView extends AbstractTabbedItemView implements ISeriesView 
     IPlotView plotView = new PlotView(title);
     addTab(plotView, title);
     return plotView;
-  }
-  
-  public ISeriesContentView addContentView(String title) {
-    ISeriesContentView contentView = new CampaignContentView(title);
-    addTab(contentView, title);
-    return contentView;
   }
 }
