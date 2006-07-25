@@ -16,6 +16,8 @@ import javax.swing.event.DocumentListener;
 import javax.swing.text.JTextComponent;
 
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.data.IOverline;
+import net.sf.anathema.lib.data.Range;
 
 public class IntegerSpinner {
 
@@ -65,7 +67,21 @@ public class IntegerSpinner {
   }
 
   private void initDigitsOnlyDocument(final JTextComponent textField) {
-    DigitsOnlyDocument document = new DigitsOnlyDocument(true);
+    DigitsOnlyDocument document = new DigitsOnlyDocument(true, new IOverline() {
+      public int getNearestValue(int value) {
+        return createRange().getNearestValue(value);
+      }
+      
+      public int getLowerBound() {
+        return createRange().getLowerBound();
+      }
+
+      private Range createRange() {
+        Integer maximum = (Integer) getSpinnerModel().getMaximum();
+        Integer minimum = (Integer) getSpinnerModel().getMinimum();
+        return new Range(minimum, maximum);
+      }
+    });
     textField.setDocument(document);
     document.addDocumentListener(new DocumentListener() {
 

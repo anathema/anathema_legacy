@@ -1,17 +1,17 @@
 package net.sf.anathema.lib.data;
 
-public class Range {
+public class Range implements IOverline {
   private int high;
   private int low;
   private final boolean variable;
 
-  public Range(int low, int high) {
+  public Range(Integer low, Integer high) {
     this(low, high, false);
   }
 
-  public Range(int low, int high, boolean variable) {
-    this.low = low;
-    this.high = high;
+  public Range(Integer low, Integer high, boolean variable) {
+    this.low = low == null ? Integer.MIN_VALUE : low;
+    this.high = high == null ? Integer.MAX_VALUE : high;
     this.variable = variable;
   }
 

@@ -7,13 +7,29 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
 import net.disy.commons.core.util.ObjectUtilities;
+import net.sf.anathema.lib.data.IOverline;
 
 public class DigitsOnlyDocument extends PlainDocument {
 
   private final boolean beepOnInvalidCharacter;
+  private final IOverline overline;
 
   public DigitsOnlyDocument(boolean beepOnInvalidCharacter) {
+    this(beepOnInvalidCharacter, new IOverline() {
+
+      public int getNearestValue(int value) {
+        return value;
+      }
+      
+      public int getLowerBound() {
+        return Integer.MIN_VALUE;
+      }
+    });
+  }
+
+  public DigitsOnlyDocument(boolean beepOnInvalidCharacter, IOverline overline) {
     this.beepOnInvalidCharacter = beepOnInvalidCharacter;
+    this.overline = overline;
   }
 
   @Override
@@ -23,13 +39,50 @@ public class DigitsOnlyDocument extends PlainDocument {
       return;
     }
     String correctedString = getCorrectedString(offset, text);
-    super.replace(offset, length, correctedString, attrs);
+    StringBuilder overallString = new StringBuilder();
+    if (offset > 0) {
+      overallString.append(getText(0, offset));
+    }
+    overallString.append(correctedString);
+    int suffixStartIndex = offset + length;
+    if (suffixStartIndex < getLength()) {
+      overallString.append(getText(suffixStartIndex, getLength() - suffixStartIndex));
+    }
+    setValue(overallString, attrs);
+  }
+
+  private String getAdjustedValue(String value) throws BadLocationException {
+    boolean isMinus = value.equals("-"); //$NON-NLS-1$
+    if (overline.getLowerBound() < 0 && isMinus) {
+      return value;
+    }
+    if (isMinus) {
+      return getText(0, getLength());
+    }
+    int currentValue = Integer.parseInt(value);
+    int nearestValue = overline.getNearestValue(currentValue);
+    return String.valueOf(nearestValue);
   }
 
   @Override
-  public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
-    String correctedString = getCorrectedString(offs, str);
-    super.insertString(offs, correctedString, a);
+  public void insertString(int offset, String string, AttributeSet a) throws BadLocationException {
+    StringBuilder overallString = new StringBuilder();
+    if (offset > 0) {
+      overallString.append(getText(0, offset));
+    }
+    String correctedString = getCorrectedString(offset, string);
+    overallString.append(correctedString);
+    int suffixStartIndex = offset;
+    if (suffixStartIndex < getLength()) {
+      overallString.append(getText(suffixStartIndex, getLength() - suffixStartIndex));
+    }
+    setValue(overallString, a);
+  }
+
+  private void setValue(StringBuilder overallString, AttributeSet a) throws BadLocationException {
+    String adjustedValue = getAdjustedValue(overallString.toString());
+    super.remove(0, getLength());
+    super.insertString(0, adjustedValue, a);
   }
 
   private String getCorrectedString(int offs, String str) {
