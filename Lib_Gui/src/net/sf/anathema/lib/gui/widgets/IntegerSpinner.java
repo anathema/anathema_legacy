@@ -2,26 +2,30 @@ package net.sf.anathema.lib.gui.widgets;
 
 import java.awt.Dimension;
 import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JComponent;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JSpinner.NumberEditor;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.JTextComponent;
 
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
-import net.sf.anathema.lib.control.intvalue.IntValueControl;
 
 public class IntegerSpinner {
 
-  private int value;
   private final JSpinner spinner;
-  private final IntValueControl control = new IntValueControl();
+  private final Map<IIntValueChangedListener, ChangeListener> listenerMap = new HashMap<IIntValueChangedListener, ChangeListener>();
+  private final SpinnerNumberModel numberModel;
 
   public IntegerSpinner(int initialValue) {
-    spinner = new JSpinner(new SpinnerNumberModel(0, 0, null, 1));
+    numberModel = new SpinnerNumberModel(0, 0, null, 1);
+    spinner = new JSpinner(numberModel);
     DecimalFormat decimalFormat = new DecimalFormat();
     decimalFormat.setGroupingSize(0);
     final JSpinner.NumberEditor numberEditor = new JSpinner.NumberEditor(spinner, decimalFormat.toPattern());
@@ -50,48 +54,48 @@ public class IntegerSpinner {
     return spinner;
   }
 
-  public void addChangeListener(IIntValueChangedListener listener) {
-    control.addIntValueChangeListener(listener);
-  }
-
-  private void fireChangeEvent(int newValue) {
-    control.fireValueChangedEvent(newValue);
+  public void addChangeListener(final IIntValueChangedListener listener) {
+    ChangeListener changeListener = new ChangeListener() {
+      public void stateChanged(ChangeEvent e) {
+        listener.valueChanged(getValue());
+      }
+    };
+    listenerMap.put(listener, changeListener);
+    numberModel.addChangeListener(changeListener);
   }
 
   private void initDigitsOnlyDocument(final JTextComponent textField) {
-    DigitsOnlyDocument document = new DigitsOnlyDocument();
+    DigitsOnlyDocument document = new DigitsOnlyDocument(true);
     textField.setDocument(document);
     document.addDocumentListener(new DocumentListener() {
-      String oldText;
 
       public void changedUpdate(DocumentEvent evt) {
-        // Nothing to do
+        updateSpinnerModel();
       }
 
       public void insertUpdate(DocumentEvent evt) {
+        updateSpinnerModel();
+      }
+
+      private void updateSpinnerModel() {
         try {
-          oldText = textField.getText();
-          value = Integer.parseInt(oldText);
-          fireChangeEvent(value);
+          String newText = textField.getText();
+          int value = Integer.parseInt(newText);
+          numberModel.setValue(value);
         }
         catch (NumberFormatException exc) {
-          textField.getDocument().removeDocumentListener(this);
-          DigitsOnlyDocument newDocument = new DigitsOnlyDocument();
-          textField.setDocument(newDocument);
-          newDocument.addDocumentListener(this);
-          textField.setText(String.valueOf(value));
-          textField.requestFocus();
+          // nothing to do
         }
       }
 
-      public void removeUpdate(DocumentEvent evt) {
-        oldText = textField.getText();
+      public void removeUpdate(DocumentEvent e) {
+        updateSpinnerModel();
       }
     });
   }
 
   public int getValue() {
-    return value;
+    return ((Number) numberModel.getValue()).intValue();
   }
 
   public void setValue(Object newValue) {
@@ -103,7 +107,7 @@ public class IntegerSpinner {
   }
 
   public void removeChangeListener(IIntValueChangedListener listener) {
-    control.removeIntValueChangeListener(listener);
+    numberModel.removeChangeListener(listenerMap.get(listener));
   }
 
   public void setEditable(boolean editable) {
