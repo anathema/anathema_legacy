@@ -2,6 +2,7 @@
 <plugin id="net.sf.anathema.character" version="0.12">
 	<requires>
 		<import plugin-id="net.sf.anathema.core" reverse-lookup="true"/>
+		<import plugin-id="net.sf.anathema.namegenerator"/>
 	</requires>
 	<runtime>
 		<library id="core" path="./" type="code">
