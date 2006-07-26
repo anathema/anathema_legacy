@@ -2,7 +2,6 @@ package net.sf.anathema.test.character.equipment.character;
 
 import net.sf.anathema.character.equipment.character.EquipmentAdditionalPresenter;
 import net.sf.anathema.character.equipment.character.EquipmentObjectCellRenderer;
-import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentObjectCollection;
 import net.sf.anathema.character.equipment.character.model.IEquipmentTemplate;
 import net.sf.anathema.character.equipment.character.view.IEquipmentAdditionalView;

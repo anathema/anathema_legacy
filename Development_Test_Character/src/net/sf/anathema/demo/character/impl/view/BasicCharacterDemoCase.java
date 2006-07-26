@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.framework.resources.CharacterTemplateRe
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
-import net.sf.anathema.framework.resources.IAnathemaResources;
+import net.sf.anathema.lib.resources.IResources;
 import de.jdemo.extensions.SwingDemoCase;
 
 public class BasicCharacterDemoCase extends SwingDemoCase {

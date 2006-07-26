@@ -28,19 +28,12 @@ public class DummyResources implements IResources {
     throw new NotYetImplementedException();
   }
 
-  public Image getImage(String relativePath) {
+  public Image getImage(Class< ? > requestor, String relativePath) {
     throw new NotYetImplementedException();
   }
 
-  public Image getAnimatedImage(String relativePath) {
+  public Icon getImageIcon(Class< ? > requestor, String relativePath) {
     throw new NotYetImplementedException();
   }
 
-  public Icon getImageIcon(String relativePath) {
-    throw new NotYetImplementedException();
-  }
-
-  public Icon getAnimatedImageIcon(String relativePath) {
-    throw new NotYetImplementedException();
-  }
 }
