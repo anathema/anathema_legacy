@@ -8,6 +8,7 @@ import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.campaign.music.model.IMusicDatabase;
 import net.sf.anathema.campaign.music.presenter.IMusicSearchControl;
 import net.sf.anathema.campaign.music.presenter.ISearchParameter;
+import net.sf.anathema.campaign.music.presenter.MusicUI;
 import net.sf.anathema.campaign.music.presenter.util.MusicCategorizationPresenter;
 import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
 import net.sf.anathema.campaign.music.view.search.ISearchComponent;
@@ -33,7 +34,7 @@ public class MusicSearchPresenter {
       ISearchComponent component = controlView.addSearchParameter(resources.getString(parameter.getDisplayKey()));
       parametersByView.put(component, parameter);
     }
-    SmartAction searchAction = new SmartAction(resources.getString("Music.Buttons.Search.Text")) { //$NON-NLS-1$
+    SmartAction searchAction = new SmartAction(new MusicUI(resources).getSearchIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         Map<ISearchParameter, String> constraintsByParamter = new HashMap<ISearchParameter, String>();

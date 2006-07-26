@@ -11,6 +11,10 @@ public class MusicUI extends AbstractUI {
     super(resources);
   }
 
+  public Icon getSearchIcon() {
+    return getIcon("ButtonSearch16.png"); //$NON-NLS-1$
+  }
+  
   public Icon getMusicTabIcon() {
     return getIcon("TabMusic16.png"); //$NON-NLS-1$    
   }
