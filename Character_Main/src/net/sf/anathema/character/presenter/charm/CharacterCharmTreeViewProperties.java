@@ -22,10 +22,10 @@ public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewPrope
     this.configuration = configuration;
     addCursor = Toolkit.getDefaultToolkit()
         .createCustomCursor(
-            resources.getImage(this.getClass(), "CursorPlus.png"), new Point(1, 2), resources.getString("CharmTreeView.GUI.AddCursor")); //$NON-NLS-1$ //$NON-NLS-2$
+            resources.getImage(this.getClass(), "CursorPlus.png"), new Point(0, 0), resources.getString("CharmTreeView.GUI.AddCursor")); //$NON-NLS-1$ //$NON-NLS-2$
     removeCursor = Toolkit.getDefaultToolkit()
         .createCustomCursor(
-            resources.getImage(this.getClass(), "CursorMinus.png"), new Point(1, 2), resources.getString("CharmTreeView.GUI.RemoveCursor")); //$NON-NLS-1$ //$NON-NLS-2$
+            resources.getImage(this.getClass(), "CursorMinus.png"), new Point(0, 0), resources.getString("CharmTreeView.GUI.RemoveCursor")); //$NON-NLS-1$ //$NON-NLS-2$
     setDimension(dimension);
   }
 
