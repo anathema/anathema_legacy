@@ -43,10 +43,7 @@ public class CharmTreeListening {
       if (evt instanceof MouseEvent) {
         SVGGElement group = (SVGGElement) evt.getCurrentTarget();
         String charmId = group.getId();
-        boolean isCharmSelected = properties.isCharmSelected(charmId);
-        boolean isCharmUnlearnable = properties.isCharmUnlearnable(charmId);
-        boolean isCharmLearnable = properties.isCharmLearnable(charmId);
-        setCursorForCharm(isCharmSelected, isCharmLearnable, isCharmUnlearnable);
+        setCursor(charmId);
         setCanvasTooltip(charmId);
       }
     }
@@ -58,6 +55,7 @@ public class CharmTreeListening {
         SVGGElement group = (SVGGElement) evt.getCurrentTarget();
         String charmId = group.getId();
         fireCharmSelectionEvent(charmId);
+        setCursor(charmId);
       }
     }
   };
@@ -129,6 +127,22 @@ public class CharmTreeListening {
     canvas.setToolTipText(properties.getToolTip(charmId));
   }
 
+  public void setProperties(ICharmTreeViewProperties viewProperties) {
+    this.properties = viewProperties;
+  }
+
+  public IBoundsCalculator getBoundsCalculator() {
+    return boundsCalculator;
+  }
+
+  private void setCursor(String charmId) {
+    boolean isCharmSelected = properties.isCharmSelected(charmId);
+    boolean isCharmUnlearnable = properties.isCharmUnlearnable(charmId);
+    boolean isCharmLearnable = properties.isCharmLearnable(charmId);
+    setCursorForCharm(isCharmSelected, isCharmLearnable, isCharmUnlearnable);
+    setCanvasTooltip(charmId);
+  }
+
   private void setCursorForCharm(boolean isCharmSelected, boolean isCharmLearnable, boolean isCharmUnlearnable) {
     Cursor currentCursor;
     if (!isCharmSelected) {
@@ -138,13 +152,5 @@ public class CharmTreeListening {
       currentCursor = !isCharmUnlearnable ? properties.getDefaultCursor() : properties.getRemoveCursor();
     }
     canvas.setCursorInternal(currentCursor);
-  }
-
-  public void setProperties(ICharmTreeViewProperties viewProperties) {
-    this.properties = viewProperties;
-  }
-
-  public IBoundsCalculator getBoundsCalculator() {
-    return boundsCalculator;
   }
 }
