@@ -22,7 +22,12 @@ import org.java.plugin.util.ExtendedProperties;
 
 public class AnathemaPluginManager implements IAnathemaPluginManager {
 
-  private final PluginManager manager = ObjectFactory.newInstance().createManager();
+  private final PluginManager manager;
+
+  public AnathemaPluginManager() {
+    ObjectFactory factory = ObjectFactory.newInstance();
+    this.manager = factory.createManager(factory.createRegistry(), new AnathemaPathResolver());
+  }
 
   @SuppressWarnings("unchecked")
   public void collectPlugins() throws InitializationException {
