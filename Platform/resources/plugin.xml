@@ -1,7 +1,10 @@
 <!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.6" "http://jpf.sourceforge.net/plugin_0_6.dtd">
-<plugin id="net.sf.anathema.core" version="0.12">
+<plugin id="net.sf.anathema.core" version="0.12" class="net.sf.anathema.AnathemaApplicationPlugin">
 	<runtime>
 		<library id="core" path="./" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="thirdpartyFolder" path="${ANATHEMA_LIB}/idw-gpl-1.4.0.jar" type="code">
 			<export prefix="*"/>
 		</library>
 	</runtime>
