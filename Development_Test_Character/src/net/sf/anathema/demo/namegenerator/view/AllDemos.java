@@ -1,4 +1,4 @@
-package net.sf.anathema.namegenerator.view.demo;
+package net.sf.anathema.demo.namegenerator.view;
 
 import de.jdemo.framework.DemoSuite;
 import de.jdemo.framework.IDemo;

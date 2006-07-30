@@ -1,4 +1,4 @@
-package net.sf.anathema.namegenerator.exalted.demo;
+package net.sf.anathema.demo.namegenerator.exalted;
 
 import net.sf.anathema.namegenerator.domain.INameGenerator;
 import net.sf.anathema.namegenerator.domain.realm.RealmNameGenerator;

@@ -1,4 +1,4 @@
-package net.sf.anathema.namegenerator.view.demo;
+package net.sf.anathema.demo.namegenerator.view;
 
 import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.namegenerator.exalted.ExaltedNameGeneratorModel;
