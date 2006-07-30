@@ -18,6 +18,7 @@ import net.sf.anathema.initialization.plugin.IPluginConstants;
 import net.sf.anathema.initialization.plugin.PluginUtilities;
 import net.sf.anathema.lib.resources.IResources;
 
+import org.java.plugin.PluginManager;
 import org.java.plugin.registry.Extension;
 import org.java.plugin.registry.Extension.Parameter;
 
@@ -30,9 +31,9 @@ public class AnathemaInitializer {
   private final ItemTypeConfigurationCollection itemTypeCollection;
   private final AnathemaExtensionCollection extensionCollection;
 
-  public AnathemaInitializer(IAnathemaPreferences anathemaPreferences) throws InitializationException {
-    this.pluginManager = new AnathemaPluginManager();
-    pluginManager.collectPlugins();
+  public AnathemaInitializer(PluginManager manager, IAnathemaPreferences anathemaPreferences)
+      throws InitializationException {
+    this.pluginManager = new AnathemaPluginManager(manager);
     pluginManager.activatePlugins();
     this.itemTypeCollection = new ItemTypeConfigurationCollection(pluginManager, AnathemaEnvironment.isDevelopment());
     this.extensionCollection = new AnathemaExtensionCollection(pluginManager);

@@ -38,7 +38,6 @@ public class ItemTypeConfigurationCollection extends AbstractInitializationColle
     if (!isDevelopment && developmentOnly) {
       return;
     }
-    System.out.println("Adding: "+ itemType.getClass().getCanonicalName());
     itemTypeConfigurations.add(itemType);
   }
 }

@@ -8,7 +8,7 @@ public class AnathemaApplicationPlugin extends ApplicationPlugin {
 
   @Override
   protected Application initApplication(ExtendedProperties config, String[] args) throws Exception {
-    return new Anathema();
+    return new Anathema(getManager());
   }
 
   @Override
