@@ -5,6 +5,9 @@
 		<import plugin-id="net.sf.anathema.namegenerator"/>
 	</requires>
 	<runtime>
+		<library id="Taskpane" path="${ANATHEMA_LIB}/l2fprod-common-tasks.jar" type="code">
+			<export prefix="*"/>
+		</library>
 		<library id="core" path="./" type="code">
 			<export prefix="*"/>
 		</library>
