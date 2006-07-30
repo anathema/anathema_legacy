@@ -8,9 +8,6 @@
 		<jar destfile="${plugins.dir}/core.jar">
 			<manifest>
 				<attribute name="Built-By" value="${user.name}" />
-				<attribute name="Main-Class" value="net.sf.anathema.Anathema" />
-				<attribute name="Class-Path" value="${module.classpath}" />
-				<section name="net/sf/anathema/Anathema.class" />
 			</manifest>
 			<fileset dir="${class.dir}" includes="**/*" />
 			<fileset dir="${resource.dir}" includes="**/*" />
