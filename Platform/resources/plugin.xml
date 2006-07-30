@@ -4,7 +4,34 @@
 		<library id="core" path="./" type="code">
 			<export prefix="*"/>
 		</library>
-		<library id="thirdpartyFolder" path="${ANATHEMA_LIB}/idw-gpl-1.4.0.jar" type="code">
+		<library id="disyCore" path="${ANATHEMA_LIB}/disy-commons-core.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="disySwing" path="${ANATHEMA_LIB}/disy-commons-swing.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="dom4j" path="${ANATHEMA_LIB}/dom4j-1.5.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="disySwingLayout" path="${ANATHEMA_LIB}/disy-commons-swing-layout.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="disySwingDialog" path="${ANATHEMA_LIB}/disy-commons-swing-dialog.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="TabbedPane" path="${ANATHEMA_LIB}/idw-gpl-1.4.0.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="TaskPane" path="${ANATHEMA_LIB}/l2fprod-common-directorychooser.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="iText" path="${ANATHEMA_LIB}/itext-1.4.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="JasperReports" path="${ANATHEMA_LIB}/jasperreports-0.6.2.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="CommonsIO" path="${ANATHEMA_LIB}/commons-io.jar" type="code">
 			<export prefix="*"/>
 		</library>
 	</runtime>
