@@ -7,5 +7,6 @@
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="lib" path="/Thirdparty/Development/jl1.0.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-logging-api.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/Multimedia/javalayer.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

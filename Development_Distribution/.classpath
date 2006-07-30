@@ -6,22 +6,6 @@
 	<classpathentry kind="src" path="/Charm_Tree"/>
 	<classpathentry kind="src" path="/Platform"/>
 	<classpathentry kind="src" path="/Lib"/>
-	<classpathentry sourcepath="/Thirdparty/Reporting/jasperreport-src.zip" kind="lib" path="/Thirdparty/Reporting/jasperreports-0.6.2.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/XML/dom4j-1.5.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-awt-util.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-bridge.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-css.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-dom.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-ext.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-gvt.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-parser.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-svg-dom.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-swing.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-util.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-xml.jar"/>
 	<classpathentry kind="src" path="/Character_Generic_Impl"/>
-	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-layout_src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Reporting/itext-src-1.4.zip" kind="lib" path="/Thirdparty/Reporting/itext-1.4.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-io.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

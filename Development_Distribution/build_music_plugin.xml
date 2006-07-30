@@ -4,11 +4,9 @@
 	<import file="common_plugin_targets.xml" />
 
 	<target name="Build Music JAR" depends="Build Music Module">
-		<property file="${classpath.file}" />
 		<jar destfile="${plugins.dir}/music.jar">
 			<manifest>
 				<attribute name="Built-By" value="${user.name}" />
-				<attribute name="Class-Path" value="${module.classpath}" />
 			</manifest>
 			<fileset dir="${class.dir}" includes="**/*" />
 			<fileset dir="${resource.dir}" includes="**/*" />
@@ -18,16 +16,14 @@
 	<target name="Build Music Module">
 		<variable name="projectset" value="Campaign_Music,Campaign_Music_Impl" />
 		<variable name="module.name" value="music" />
-		
+
 		<variable name="module.dir" value="${build.dir}/${module.name}" />
 		<variable name="class.dir" value="${module.dir}/classes" />
-		<variable name="library.dir" value="${build.dir}/libraries/${module.name}" />
 		<variable name="resource.dir" value="${module.dir}/resources" />
-		<variable name="classpath.file" value="${module.dir}/classpath" />
-
+		
 		<prepareModule module.name="${module.name}" />
 		<buildModule projectset="${projectset}" />
-		<compileClasspath projectset="${projectset}" />
+		<copyLibraries projectset="${projectset}" />
 		<copyResources projectset="${projectset}" />
 	</target>
 </project>

@@ -50,26 +50,6 @@
 		</sequential>
 	</macrodef>
 
-	<macrodef name="compileClasspath">
-		<attribute name="projectset" />
-		<sequential>
-			<copyLibraries projectset="@projectset" />
-			<echo message="module.classpath=" file="${classpath.file}" append="false" />
-			<foreach target="Add to path" param="jarfile">
-				<path>
-					<fileset dir="${library.dir}">
-						<include name="*.jar" />
-					</fileset>
-				</path>
-			</foreach>
-		</sequential>
-	</macrodef>
-
-	<target name="Add to path">
-		<basename property="jar.filename" file="${jarfile}" />
-		<echo message=" ${lib}/${jar.filename}" file="${classpath.file}" append="true" />
-	</target>
-
 	<target name="Copy project resources">
 		<copy todir="${resource.dir}" failonerror="false">
 			<fileset dir="../${project.name}/resources">
@@ -118,7 +98,7 @@
 				</or>
 			</and>
 			<then>
-				<copy file="${classpath.entry}" todir="${library.dir}" />
+				<copy file="${classpath.entry}" todir="${libraries.dir}" overwrite="true" />
 			</then>
 		</if>
 	</target>

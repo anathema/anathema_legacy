@@ -5,7 +5,7 @@
 
 	<target name="Build Core JAR" depends="Build Core Module, Add version data">
 		<property file="${classpath.file}" />
-		<jar destfile="${build.dir}/anathema.jar">
+		<jar destfile="${plugins.dir}/core.jar">
 			<manifest>
 				<attribute name="Built-By" value="${user.name}" />
 				<attribute name="Main-Class" value="net.sf.anathema.Anathema" />
@@ -32,13 +32,11 @@
 		
 		<variable name="module.dir" value="${build.dir}/${module.name}" />
 		<variable name="class.dir" value="${module.dir}/classes" />
-		<variable name="library.dir" value="${libraries.dir}/${module.name}" />
 		<variable name="resource.dir" value="${module.dir}/resources" />
-		<variable name="classpath.file" value="${module.dir}/classpath" />
 		
 		<prepareModule module.name="${module.name}" />
 		<buildModule projectset="${projectset}" />
-		<compileClasspath projectset="${projectset}" />
+		<copyLibraries projectset="${projectset}" />
 		<copyResources projectset="${projectset}" />
 	</target>
 </project>
