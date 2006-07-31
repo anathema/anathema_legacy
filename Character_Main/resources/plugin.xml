@@ -8,6 +8,48 @@
 		<library id="Taskpane" path="${ANATHEMA_LIB}/l2fprod-common-tasks.jar" type="code">
 			<export prefix="*"/>
 		</library>
+		<library id="BatikExt" path="${ANATHEMA_LIB}/batik-ext.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikGVT" path="${ANATHEMA_LIB}/batik-gvt.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikUtil" path="${ANATHEMA_LIB}/batik-util.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikBridge" path="${ANATHEMA_LIB}/batik-bridge.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikDOM" path="${ANATHEMA_LIB}/batik-dom.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikSVGDOM" path="${ANATHEMA_LIB}/batik-svg-dom.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikXML" path="${ANATHEMA_LIB}/batik-xml.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikAWT" path="${ANATHEMA_LIB}/batik-awt-util.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikParser" path="${ANATHEMA_LIB}/batik-parser.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikSwing" path="${ANATHEMA_LIB}/batik-swing.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikGUI" path="${ANATHEMA_LIB}/batik-gui-util.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikCSS" path="${ANATHEMA_LIB}/batik-css.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikScript" path="${ANATHEMA_LIB}/batik-script.jar" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="BatikDOM3API" path="${ANATHEMA_LIB}/xml-apis-dom3.jar" type="code">
+			<export prefix="*"/>
+		</library>
 		<library id="core" path="./" type="code">
 			<export prefix="*"/>
 		</library>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <project name="Build raw" default="Distribute ZIP">
 
+	<import file="build_boot.xml" />
 	<import file="build_core_plugin.xml" />
 	<import file="build_namegenerator_plugin.xml" />
 	<import file="build_character_plugin.xml" />
@@ -12,7 +13,7 @@
 	<property name="dist_misc_spanish" value="${files.dir}/doc/spanish" />
 	<property name="documentation" value="../Development_Documentation/Distribution" />
 
-	<target name="Distribute ZIP" depends="Build Core JAR, Build Namegenerator JAR, Build Character JAR, Build Charm Cascades JAR, Build Plot JAR, Build Music JAR, Copy Text, Copy Extras">
+	<target name="Distribute ZIP" depends="Build Bootloader, Build Core JAR, Build Namegenerator JAR, Build Character JAR, Build Charm Cascades JAR, Build Plot JAR, Build Music JAR, Copy Text, Copy Extras">
 		<zip destfile="anathema_v${version.major}.${version.minor}.zip">
 			<fileset dir="${build.dir}" includes="anathema.jar" />
 			<fileset dir="${files.dir}" includes="*.*" />

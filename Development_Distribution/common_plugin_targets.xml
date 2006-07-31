@@ -22,7 +22,6 @@
 		<sequential>
 			<mkdir dir="${build.dir}" />
 			<mkdir dir="${plugins.dir}" />
-			<mkdir dir="${library.dir}" />
 			<mkdir dir="${module.dir}" />
 			<mkdir dir="${class.dir}" />
 			<mkdir dir="${resource.dir}" />

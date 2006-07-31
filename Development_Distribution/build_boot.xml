@@ -5,17 +5,24 @@
 
 	<property name="boot.dir" location="${build.dir}/boot" />
 
-	<target name="Build Bootloader" depends="Prepare,Compile Bootloader">
+	<target name="Build Bootloader" depends="Prepare,Compile Bootloader, Create Properties">
 		<jar destfile="${build.dir}/anathema.jar">
 			<manifest>
 				<attribute name="Built-By" value="${user.name}" />
 				<attribute name="Main-Class" value="net.sf.anathema.AnathemaBootLoader" />
-				<attribute name="Class-Path" value="${lib}/jpf.jar ${lib}/jpf-boot.jar ${lib}/commons-logging-api-1.0.2.jar" />
+				<attribute name="Class-Path" value="${lib}/jpf.jar ${lib}/jpf-boot.jar ${lib}/commons-logging-api.jar" />
 				<section name="net/sf/anathema/AnathemaBootLoader.class" />
 			</manifest>
 			<fileset dir="${boot.dir}" includes="**/*" />
 			<fileset dir="../Anathema/resources" includes="**/*" />
 		</jar>
+	</target>
+	
+	<target name="Create Properties" depends="Prepare">
+		<propertyfile file="${boot.dir}/boot.properties">
+			<entry key="org.java.plugin.boot.applicationPlugin" value="net.sf.anathema.core" />
+			<entry key="org.java.plugin.PathResolver" value="net.sf.anathema.AnathemaPathResolver" />
+		</propertyfile>		
 	</target>
 
 	<target name="Compile Bootloader" depends="Prepare">
