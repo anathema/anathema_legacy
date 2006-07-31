@@ -8,15 +8,10 @@ import net.sf.anathema.initialization.AnathemaInitializer;
 
 import org.java.plugin.PluginManager;
 import org.java.plugin.boot.Application;
-import org.java.plugin.boot.Boot;
 
 public class Anathema implements Application {
 
   private final PluginManager manager;
-
-  public static void main(String[] arguments) throws Exception {
-    Boot.main(arguments);
-  }
 
   public Anathema(PluginManager manager) {
     this.manager = manager;

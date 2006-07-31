@@ -33,8 +33,8 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment_Impl"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Mortal"/>
+	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-logging-api-1.0.2.jar"/>
 	<classpathentry sourcepath="/JPF/source" kind="lib" path="/Thirdparty/Plugin/jpf.jar"/>
 	<classpathentry sourcepath="/JPF/source-boot" kind="lib" path="/Thirdparty/Plugin/jpf-boot.jar"/>
-	<classpathentry kind="lib" path="/Thirdparty/Jakarta/commons-logging-api-1.0.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

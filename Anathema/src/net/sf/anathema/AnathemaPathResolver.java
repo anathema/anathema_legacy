@@ -1,4 +1,4 @@
-package net.sf.anathema.initialization.plugin;
+package net.sf.anathema;
 
 import java.io.File;
 import java.net.MalformedURLException;

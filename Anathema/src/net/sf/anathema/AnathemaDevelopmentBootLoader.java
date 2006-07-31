@@ -9,7 +9,6 @@ import java.util.Enumeration;
 import java.util.Properties;
 
 import net.sf.anathema.framework.InitializationException;
-import net.sf.anathema.initialization.plugin.AnathemaPathResolver;
 
 import org.java.plugin.ObjectFactory;
 import org.java.plugin.PluginManager;
