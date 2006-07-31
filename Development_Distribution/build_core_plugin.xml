@@ -21,7 +21,7 @@
 	</target>
 	
 	<target name="Build Core Module">
-		<variable name="projectset" value="Lib_Thirdparty,Lib,Lib_Gui,Lib_Workflow,Platform,Anathema" />
+		<variable name="projectset" value="Lib_Thirdparty,Lib,Lib_Gui,Lib_Workflow,Platform" />
 		<variable name="module.name" value="core" />
 		
 		<variable name="module.dir" value="${build.dir}/${module.name}" />

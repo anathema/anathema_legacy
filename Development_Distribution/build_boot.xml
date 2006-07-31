@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Build Anathema Bootloader" default="Build Bootloader">
+
+	<import file="common_plugin_targets.xml" />
+
+	<property name="boot.dir" location="${build.dir}/boot" />
+
+	<target name="Build Bootloader" depends="Prepare,Compile Bootloader">
+		<jar destfile="${build.dir}/anathema.jar">
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<attribute name="Main-Class" value="net.sf.anathema.AnathemaBootLoader" />
+				<attribute name="Class-Path" value="${lib}/jpf.jar ${lib}/jpf-boot.jar ${lib}/commons-logging-api-1.0.2.jar" />
+				<section name="net/sf/anathema/AnathemaBootLoader.class" />
+			</manifest>
+			<fileset dir="${boot.dir}" includes="**/*" />
+			<fileset dir="../Anathema/resources" includes="**/*" />
+		</jar>
+	</target>
+
+	<target name="Compile Bootloader" depends="Prepare">
+		<getEclipseClasspath property="classpath" workspace="${workspace.dir}" projectName="Anathema" relative="false" initialiseWorkspace="true" />
+		<javac classpath="${classpath}" srcdir="../Anathema/src" destdir="${boot.dir}" target="1.5" debug="true">
+			<include name="**/AnathemaBootLoader.java" />
+			<include name="**/AnathemaPathResolver.java" />
+		</javac>
+	</target>
+
+	<target name="Prepare">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${boot.dir}" />
+	</target>
+</project>
