@@ -5,9 +5,6 @@
 
 	<target name="Build Character JAR" depends="Build Character Module">
 		<jar destfile="${plugins.dir}/character.jar">
-			<manifest>
-				<attribute name="Built-By" value="${user.name}" />
-			</manifest>
 			<fileset dir="${class.dir}" includes="**/*" />
 			<fileset dir="${resource.dir}" includes="**/*" />
 		</jar>
@@ -16,7 +13,7 @@
 	<target name="Build Character Module">
 		<variable name="projectset" value="Character_Generic,Character_Generic_Impl,Character_Generic_Framework,Character_Reporting,Character_Library,Charm_Tree,Character_Intimacies,Character_Equipment,Character_Equipment_Impl,Character_MeritsFlaws,Character_Main,Character_Main_Impl,Charm_Entry,Character_Mortal,Character_Solar,Character_Db,Character_Lunar,Character_Abyssal,Character_Sidereal" />
 		<variable name="module.name" value="character" />
-		
+
 		<variable name="module.dir" value="${build.dir}/${module.name}" />
 		<variable name="class.dir" value="${module.dir}/classes" />
 		<variable name="resource.dir" value="${module.dir}/resources" />

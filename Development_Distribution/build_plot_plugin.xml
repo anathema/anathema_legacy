@@ -5,9 +5,6 @@
 
 	<target name="Build Plot JAR" depends="Build Plot Module">
 		<jar destfile="${plugins.dir}/plot.jar">
-			<manifest>
-				<attribute name="Built-By" value="${user.name}" />
-			</manifest>
 			<fileset dir="${class.dir}" includes="**/*" />
 			<fileset dir="${resource.dir}" includes="**/*" />
 		</jar>

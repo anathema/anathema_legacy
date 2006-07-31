@@ -5,9 +5,6 @@
 
 	<target name="Build Namegenerator JAR" depends="Build Namegenerator Module">
 		<jar destfile="${plugins.dir}/namegenerator.jar">
-			<manifest>
-				<attribute name="Built-By" value="${user.name}" />
-			</manifest>
 			<fileset dir="${class.dir}" includes="**/*" />
 			<fileset dir="${resource.dir}" includes="**/*" />
 		</jar>

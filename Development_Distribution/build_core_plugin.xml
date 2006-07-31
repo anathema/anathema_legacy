@@ -6,9 +6,6 @@
 	<target name="Build Core JAR" depends="Build Core Module, Add version data">
 		<property file="${classpath.file}" />
 		<jar destfile="${plugins.dir}/core.jar">
-			<manifest>
-				<attribute name="Built-By" value="${user.name}" />
-			</manifest>
 			<fileset dir="${class.dir}" includes="**/*" />
 			<fileset dir="${resource.dir}" includes="**/*" />
 		</jar>
