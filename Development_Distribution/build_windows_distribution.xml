@@ -19,8 +19,8 @@
 	<property name="files.dir" location="${build.dir}/files" />
 
 	<target name="Build Installer" depends="Build Core JAR, Build Namegenerator JAR, Build Character JAR, Build Plot JAR, Build Music JAR, Build Windows executable, Copy Text">
-		<exec executable="${inno.dir}\iscc" dir="${inno.dir}">
-			<arg file="innosetup\anathema.iss" />
+		<exec executable="${inno.dir}\iscc.exe" dir="${inno.dir}">
+			<arg file="windows\innosetup\anathema.iss" />
 		</exec>
 	</target>
 
@@ -35,7 +35,7 @@
 	
 	<target name="Compile Installer">
 		<exec executable="${inno.dir}\iscc.exe" dir="${inno.dir}">
-			<arg file="innosetup\anathema.iss" />
+			<arg file="windows\innosetup\anathema.iss" />
 		</exec>
 	</target>
 		
@@ -43,6 +43,6 @@
 	<target name="Build Windows executable">
 		<property file="version.properties" />
 		<property name="versionString" value="${version.major}.${version.minor}.${version.revision}.0" />
-		<launch4j configFile="launch4j.xml" fileVersion="${versionString}" productVersion="${versionString}" txtFileVersion="${version.text}" txtProductVersion="${version.text}" />
+		<launch4j configFile="windows/launch4j.xml" outfile="${build.dir}/anathema.exe" fileVersion="${versionString}" productVersion="${versionString}" txtFileVersion="${version.text}" txtProductVersion="${version.text}" />
 	</target>
 </project>
