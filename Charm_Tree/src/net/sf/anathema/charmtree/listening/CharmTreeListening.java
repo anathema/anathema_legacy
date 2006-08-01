@@ -38,7 +38,7 @@ public class CharmTreeListening {
     }
   };
 
-  private EventListener cursorTooltipInitListener = new EventListener() {
+  private final EventListener cursorTooltipInitListener = new EventListener() {
     public void handleEvent(Event evt) {
       if (evt instanceof MouseEvent) {
         SVGGElement group = (SVGGElement) evt.getCurrentTarget();
