@@ -33,7 +33,7 @@ AppVersion=v0.12
 AppVerName=Anathema v0.12
 OutputDir=.\
 ; To compile the Anathema installer correctly, set the following command to which ever directory contains "Anathema".
-SourceDir=..\
+SourceDir=..\..\
 
 ; STATIC COMPILER RELATED
 Compression=zip/9
@@ -47,17 +47,17 @@ AppUpdatesURL=http://sourceforge.net/project/showfiles.php?group_id=122320
 AppReadmeFile={app}\readme.txt
 DefaultDirName={pf}\Anathema
 DefaultGroupName=Anathema
-InfoBeforeFile=innosetup\installer-readme.txt
+InfoBeforeFile=windows\innosetup\installer-readme.txt
 InfoAfterFile=build\files\readme.txt
 LanguageDetectionMethod=uilanguage
 LicenseFile=build\files\license.txt
 TimeStampsInUTC=yes
 ; COSMETIC COMMANDS
-SetupIconFile=innosetup\anathema_installer.ico
-WizardImageFile=innosetup\Anathema_Install.bmp
+SetupIconFile=windows\innosetup\anathema_installer.ico
+WizardImageFile=windows\innosetup\Anathema_Install.bmp
 WizardImageStretch=no
 WizardImageBackColor=clBlack
-WizardSmallImageFile=innosetup\Anathema_Install_small.bmp
+WizardSmallImageFile=windows\innosetup\Anathema_Install_small.bmp
 ;
 ; The following lines relate to the background window for the installer.
 ; Without "WindowVisible" being enabled none of the rest function.
@@ -70,7 +70,7 @@ WizardSmallImageFile=innosetup\Anathema_Install_small.bmp
 ; ENGLISH LANGUAGE
   Name: english; MessagesFile: compiler:Default.isl
 ; SPANISH LANGUAGE
-  Name: spanish; MessagesFile: innosetup\SpanishStd-2-5.1.0.isl; LicenseFile: build\files\license.txt; InfoBeforeFile: innosetup\installer-readme.txt; InfoAfterFile: build\files\doc\spanish\readme_es.txt
+  Name: spanish; MessagesFile: windows\innosetup\SpanishStd-2-5.1.0.isl; LicenseFile: build\files\license.txt; InfoBeforeFile: windows\innosetup\installer-readme.txt; InfoAfterFile: build\files\doc\spanish\readme_es.txt
 
 [Tasks]
 Name: desktopicon; Description: {cm:CreateDesktopIcon}; GroupDescription: {cm:AdditionalIcons}; Flags: unchecked
@@ -82,17 +82,23 @@ Name: quicklaunchicon; Description: {cm:CreateQuickLaunchIcon}; GroupDescription
 ; COMMON
 Source: build\anathema.exe; DestDir: {app}; Components: main; Flags: ignoreversion
 Source: build\anathema.jar; DestDir: {app}; Components: main; Flags: ignoreversion
-Source: build\plugins\*.jar; DestDir: {app}\plugins; Components: music; Flags: ignoreversion
-;Source: anathema\files\application\data\*; DestDir: {app}\data; Components: main; Flags: ignoreversion recursesubdirs createallsubdirs
+
+Source: build\plugins\core.jar; DestDir: {app}\plugins; Components: core; Flags: ignoreversion
+Source: build\plugins\music.jar; DestDir: {app}\plugins; Components: music; Flags: ignoreversion
+Source: build\plugins\plot.jar; DestDir: {app}\plugins; Components: plot; Flags: ignoreversion
+Source: build\plugins\character.jar; DestDir: {app}\plugins; Components: character; Flags: ignoreversion
+Source: build\plugins\namegenerator.jar; DestDir: {app}\plugins; Components: namegenerator character; Flags: ignoreversion
+Source: build\plugins\charmcascades.jar; DestDir: {app}\plugins; Components: charmcascades; Flags: ignoreversion
+
 Source: build\libraries\*; DestDir: {app}\lib; Components: main; Flags: ignoreversion recursesubdirs
 ; Eventually, I want to be able to replace the following two files with locale specific versions.
-Source: InnoSetup\installer-readme.txt; DestDir: {app}; Components: main; Flags: ignoreversion
+Source: windows\innosetup\installer-readme.txt; DestDir: {app}; Components: main; Flags: ignoreversion
 
 ; [Code] files
-Source: innosetup\Green-PDF.bmp; Flags: dontcopy
-Source: innosetup\Red-PDF.bmp; Flags: dontcopy
-Source: innosetup\Green-JRE.bmp; Flags: dontcopy
-Source: innosetup\Red-JRE.bmp; Flags: dontcopy
+Source: windows\innosetup\Green-PDF.bmp; Flags: dontcopy
+Source: windows\innosetup\Red-PDF.bmp; Flags: dontcopy
+Source: windows\innosetup\Green-JRE.bmp; Flags: dontcopy
+Source: windows\innosetup\Red-JRE.bmp; Flags: dontcopy
 ; ENGLISH LANGUAGE
   Source: build\files\FAQ.txt; DestDir: {app}; Components: main; Languages: english; Flags: ignoreversion
   Source: build\files\license.txt; DestDir: {app}; Components: main; Languages: english; Flags: ignoreversion
@@ -116,12 +122,16 @@ Source: innosetup\Red-JRE.bmp; Flags: dontcopy
 [CustomMessages]
 ; ENGLISH LANGUAGE
 ;   [TYPES]
-  Anathema_Compact=Compact Installation
   Anathema_Custom=Custom Installation
   Anathema_Full=Full Installation
 ;    [COMPONENTS]
-  Anathema_DeveloperFiles=Developer Files
   Anathema_MusicPlugin=Music Plugin
+  Anathema_CorePlugin=Core Plugin
+  Anathema_CharacterPlugin=Character Plugin
+  Anathema_NamegeneratorPlugin=Namegenerator Plugin
+  Anathema_PlotPlugin=Series Plugin
+  Anathema_CharmCascadesPlugin=Charm Cascades Plugin
+
 ;    [ICONS]
   Anathema_Comment=Anathema: A nascent approach to harmonic Exalted management.
   Anathema_License=License
@@ -143,7 +153,13 @@ Source: innosetup\Red-JRE.bmp; Flags: dontcopy
   spanish.Anathema_Full=Instalación Completa
 ;    [COMPONENTS]
   spanish.Anathema_MusicPlugin=Plugin de Música
-  spanish.Anathema_DeveloperFiles=Archivos del revelador
+  spanish.Anathema_MusicPlugin=Music Plugin
+  spanish.Anathema_CorePlugin=Core Plugin
+  spanish.Anathema_CharacterPlugin=Character Plugin
+  spanish.Anathema_NamegeneratorPlugin=Namegenerator Plugin
+  spanish.Anathema_PlotPlugin=Series Plugin
+  spanish.Anathema_CharmCascadesPlugin=Charm Cascades Plugin
+
 ;    [ICONS]
   spanish.Anathema_Comment=Anathema: Un acercamiento naciente a la gerencia Exalted armónica.
   spanish.Anathema_License=Licencia
@@ -168,8 +184,12 @@ Name: "full"; Description: {cm:Anathema_Full};
 [Components]
 ; COMMON
 Name: main; Description: Anathema; Types: full compact custom; Flags: fixed
+Name: core; Description: {cm:Anathema_CorePlugin}; Types: full compact custom; Flags: fixed
 Name: music; Description: {cm:Anathema_MusicPlugin}; Types: full custom
-Name: developer; Description: {cm:Anathema_DeveloperFiles}; Types: full custom
+Name: character; Description: {cm:Anathema_CharacterPlugin}; Types: full custom
+Name: namegenerator; Description: {cm:Anathema_NamegeneratorPlugin}; Types: full custom
+Name: charmcascades; Description: {cm:Anathema_CharmCascadesPlugin}; Types: full custom
+Name: plot; Description: {cm:Anathema_PlotPlugin}; Types: full custom
 
 [Registry]
 ; COMMON
@@ -186,7 +206,6 @@ Filename: {app}\anathema.url; Section: InternetShortcut; Key: URL; String: http:
 
 [Icons]
 ; COMMON
-Name: {group}\{cm:Anathema_DeveloperFiles}; Filename: {app}\src; Components: developer
 Name: {group}\Anathema; Filename: {app}\anathema.exe; WorkingDir: {app}; Comment: {cm:Anathema_Comment}
 Name: {group}\{cm:ProgramOnTheWeb,Anathema}; Filename: {app}\anathema.url; IconFilename: {app}\anathema.exe
 Name: {group}\FAQ; Filename: {app}\FAQ.txt
