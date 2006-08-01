@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <project name="Build Windows" default="Build Installer">
 
-	<!--Run on Windows only.-->
+	<!--Runs on Windows only.-->
 	<!--Requires the property "launch4j.dir" to point to the launch4j installation.-->
 	<!--Requires the property "inno.dir" to point to the Inno Setup installation.-->
 	<import file="common_plugin_targets.xml" />
@@ -18,7 +18,7 @@
 	<property name="documentation" value="../Development_Documentation/Distribution" />
 	<property name="files.dir" location="${build.dir}/files" />
 
-	<target name="Build Installer" depends="Build Core JAR, Build Namegenerator JAR, Build Character JAR, Build Plot JAR, Build Music JAR, Build Windows executable, Copy Text, Copy Extras">
+	<target name="Build Installer" depends="Build Core JAR, Build Namegenerator JAR, Build Character JAR, Build Plot JAR, Build Music JAR, Build Windows executable, Copy Text">
 		<exec executable="${inno.dir}\iscc" dir="${inno.dir}">
 			<arg file="innosetup\anathema.iss" />
 		</exec>
@@ -31,10 +31,6 @@
 		<copy todir="${dist_misc_spanish}">
 			<fileset dir="${documentation}/Spanish" includes="*.txt" />
 		</copy>
-	</target>
-
-	<target name="Copy Extras">
-		<copy todir="${files.dir}" file="anathema.sh" />
 	</target>
 	
 	<target name="Compile Installer">
