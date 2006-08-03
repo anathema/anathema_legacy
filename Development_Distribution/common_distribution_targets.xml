@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<project name="Common Targets">
+
+	<target name="Build Plugins">
+		<ant antfile="build_core_plugin.xml" />
+		<ant antfile="build_namegenerator_plugin.xml" />
+		<ant antfile="build_character_plugin.xml" />
+		<ant antfile="build_plot_plugin.xml" />
+		<ant antfile="build_music_plugin.xml" />
+		<ant antfile="build_charmcascades_plugin.xml" />
+	</target>
+
+	<target name="Build Bootloader">
+		<ant antfile="build_boot.xml" />
+	</target>
+
+	<target name="Copy Text">
+		<copy todir="${files.dir}">
+			<fileset dir="${documentation.dir}/English" includes="*.txt" />
+		</copy>
+		<copy todir="${spanish.files.dir}">
+			<fileset dir="${documentation.dir}/Spanish" includes="*.txt" />
+		</copy>
+	</target>
+</project>

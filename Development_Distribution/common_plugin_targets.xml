@@ -1,10 +1,7 @@
 <?xml version="1.0"?>
 <project name="Common Targets" default="Purge">
 
-	<property name="build.dir" location="build" />
-	<property name="libraries.dir" location="${build.dir}/libraries" />
-	<property name="plugins.dir" location="${build.dir}/plugins" />
-	<property name="lib" value="./lib" />
+	<property file="directories.properties" />
 
 	<target name="Purge">
 		<delete dir="${build.dir}" />
@@ -18,7 +15,6 @@
 	</macrodef>
 
 	<macrodef name="prepareModule">
-		<attribute name="module.name" />
 		<sequential>
 			<mkdir dir="${build.dir}" />
 			<mkdir dir="${plugins.dir}" />
@@ -29,25 +25,36 @@
 	</macrodef>
 
 	<macrodef name="buildModule">
-		<attribute name="projectset" />
 		<sequential>
-			<foreach list="@{projectset}" target="Build project" param="project.name" />
+			<foreach list="${projectset}" target="Build project" param="project.name" />
 		</sequential>
 	</macrodef>
 
 	<macrodef name="copyLibraries">
-		<attribute name="projectset" />
 		<sequential>
 			<foreach list="${projectset}" target="Copy project libraries" param="project.name" />
 		</sequential>
 	</macrodef>
 
 	<macrodef name="copyResources">
-		<attribute name="projectset" />
 		<sequential>
 			<foreach list="${projectset}" target="Copy project resources" param="project.name" />
 		</sequential>
 	</macrodef>
+
+	<target name="Compile">
+		<prepareModule />
+		<buildModule />
+		<copyLibraries />
+		<copyResources />
+	</target>
+
+	<target name="Build JAR">
+		<jar destfile="${plugins.dir}/${module.name}.jar">
+			<fileset dir="${class.dir}" includes="**/*" />
+			<fileset dir="${resource.dir}" includes="**/*" />
+		</jar>
+	</target>
 
 	<target name="Copy project resources">
 		<copy todir="${resource.dir}" failonerror="false">

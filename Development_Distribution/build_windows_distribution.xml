@@ -1,44 +1,23 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<project name="Build Windows" default="Build Installer">
+<project name="Build Windows distribution" default="Distribute">
 
 	<!--Runs on Windows only.-->
 	<!--Requires the property "launch4j.dir" to point to the launch4j installation.-->
 	<!--Requires the property "inno.dir" to point to the Inno Setup installation.-->
-	<import file="common_plugin_targets.xml" />
-	<import file="build_core_plugin.xml" />
-	<import file="build_namegenerator_plugin.xml" />
-	<import file="build_character_plugin.xml" />
-	<import file="build_plot_plugin.xml" />
-	<import file="build_music_plugin.xml" />
+	<import file="common_distribution_targets.xml" />
+
+	<property file="directories.properties" />
 
 	<taskdef name="launch4j" classname="net.sf.launch4j.ant.Launch4jTask" classpath="${launch4j.dir}/launch4j.jar
 	    :${launch4j.dir}/xstream.jar" />
 
-	<property name="dist_misc_spanish" value="${files.dir}/doc/spanish" />
-	<property name="documentation" value="../Development_Documentation/Distribution" />
-	<property name="files.dir" location="${build.dir}/files" />
+	<target name="Distribute" depends="Build Plugins, Build Windows executable, Copy Text, Compile Installer" />
 
-	<target name="Build Installer" depends="Build Core JAR, Build Namegenerator JAR, Build Character JAR, Build Plot JAR, Build Music JAR, Build Windows executable, Copy Text">
-		<exec executable="${inno.dir}\iscc.exe" dir="${inno.dir}">
-			<arg file="windows\innosetup\anathema.iss" />
-		</exec>
-	</target>
-
-	<target name="Copy Text">
-		<copy todir="${files.dir}">
-			<fileset dir="${documentation}/English" includes="*.txt" />
-		</copy>
-		<copy todir="${dist_misc_spanish}">
-			<fileset dir="${documentation}/Spanish" includes="*.txt" />
-		</copy>
-	</target>
-	
 	<target name="Compile Installer">
 		<exec executable="${inno.dir}\iscc.exe" dir="${inno.dir}">
 			<arg file="windows\innosetup\anathema.iss" />
 		</exec>
 	</target>
-		
 
 	<target name="Build Windows executable">
 		<property file="version.properties" />

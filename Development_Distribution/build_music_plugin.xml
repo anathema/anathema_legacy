@@ -1,26 +1,12 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<project name="Build Music Plugin" default="Build Music JAR">
+<project name="Build Music Plugin" default="Build Music">
 
 	<import file="common_plugin_targets.xml" />
 
-	<target name="Build Music JAR" depends="Build Music Module">
-		<jar destfile="${plugins.dir}/music.jar">
-			<fileset dir="${class.dir}" includes="**/*" />
-			<fileset dir="${resource.dir}" includes="**/*" />
-		</jar>
-	</target>
+	<property name="projectset" value="Campaign_Music,Campaign_Music_Impl" />
+	<property name="module.name" value="music" />
 
-	<target name="Build Music Module">
-		<variable name="projectset" value="Campaign_Music,Campaign_Music_Impl" />
-		<variable name="module.name" value="music" />
-
-		<variable name="module.dir" value="${build.dir}/${module.name}" />
-		<variable name="class.dir" value="${module.dir}/classes" />
-		<variable name="resource.dir" value="${module.dir}/resources" />
-		
-		<prepareModule module.name="${module.name}" />
-		<buildModule projectset="${projectset}" />
-		<copyLibraries projectset="${projectset}" />
-		<copyResources projectset="${projectset}" />
-	</target>
+	<property file="plugin.directories.properties" />
+	
+	<target name="Build Music" depends="Compile, Build JAR" />
 </project>
