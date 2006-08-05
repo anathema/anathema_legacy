@@ -8,8 +8,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>Anathema: A Nascent Approach To Harmonic Exalted MAnagement</title>
+<title>Anathema: A Nascent Approach To Harmonic Exalted Management</title>
 <link href="styles.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <script language="JavaScript">
 	image = new Image(); image.src = "images/link_external2.gif";
 </script>

@@ -27,6 +27,13 @@
 				?></li>
 			<li class="menu"
 				<?php 
+					if ( $page != 'development' )
+						{ echo '><a href="?page=development">Development</a>'; }
+					else
+						{ echo ' style="list-style-type: disc;"><b>Development</b>'; }
+				?></li>
+			<li class="menu"
+				<?php 
 					if ( $page != 'faq' )
 						{ echo '><a href="?page=faq">FAQ</a>'; }
 					else 
