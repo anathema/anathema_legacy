@@ -59,12 +59,15 @@ public class CharacterCreationWizardPage extends AbstractAnathemaWizardPage {
     rulesView.setSelectedObject(model.getSelectedRuleset());
     rulesView.addObjectSelectionChangedListener(new IObjectValueChangedListener<IExaltedRuleSet>() {
       public void valueChanged(IExaltedRuleSet newValue) {
-        model.setSelectedRuleset(newValue);        
-      }      
+        model.setSelectedRuleset(newValue);
+      }
     });
     final IListObjectSelectionView<ITemplateTypeAggregation> list = view.addObjectSelectionList();
     list.addObjectSelectionChangedListener(new IObjectValueChangedListener<ITemplateTypeAggregation>() {
       public void valueChanged(ITemplateTypeAggregation newValue) {
+        if (newValue == null) {
+          return;
+        }
         model.setSelectedTemplate(newValue);
       }
     });
@@ -83,7 +86,7 @@ public class CharacterCreationWizardPage extends AbstractAnathemaWizardPage {
   }
 
   public boolean canFinish() {
-    return model.isCharacterTypeSelected();
+    return model.isSelectionComplete();
   }
 
   public String getDescription() {
@@ -91,10 +94,13 @@ public class CharacterCreationWizardPage extends AbstractAnathemaWizardPage {
   }
 
   public IBasicMessage getMessage() {
-    if (model.isCharacterTypeSelected()) {
-      return properties.getConfirmMessage();
+    if (!model.isCharacterTypeSelected()) {
+      return properties.getSelectCharacterTypeMessage();
     }
-    return properties.getSelectCharacterTypeMessage();
+    if (model.getAvailableTemplates().length == 0) {
+      return properties.getNoTemplatesAvailableMessage();
+    }
+    return properties.getConfirmMessage();
   }
 
   public IPageContent getPageContent() {

@@ -7,8 +7,6 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 
 public interface ICharacterItemCreationModel {
 
-  public boolean isCharacterTypeSelected();
-
   public CharacterType[] getAvailableCharacterTypes();
 
   public void setCharacterType(CharacterType type);
@@ -27,4 +25,7 @@ public interface ICharacterItemCreationModel {
 
   public void setSelectedRuleset(IExaltedRuleSet newValue);
 
+  public boolean isSelectionComplete();
+
+  public boolean isCharacterTypeSelected();
 }

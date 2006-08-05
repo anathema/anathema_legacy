@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
+import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.presentation.ICommonPresentationProperties;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
@@ -25,6 +26,14 @@ public class TemplateTypeAggregation implements ITemplateTypeAggregation {
 
   public IExaltedEdition[] getSupportedEditions() {
     return editions.toArray(new IExaltedEdition[editions.size()]);
+  }
+
+  public boolean supportsEdition(IExaltedEdition edition) {
+    return editions.contains(edition);
+  }
+
+  public boolean contains(ICharacterTemplate template) {
+    return templateType.equals(template.getTemplateType());
   }
 
   public ITemplateType getTemplateType() {

@@ -27,7 +27,7 @@ public class SmartJList<T> extends JList {
     }
   }
 
-  public void setSelectedObjects(T[] objects) {
+  public void setSelectedObjects(T... objects) {
     DefaultListModel model = (DefaultListModel) getModel();
     List<Integer> indexList = new ArrayList<Integer>();
     for (Object object : objects) {

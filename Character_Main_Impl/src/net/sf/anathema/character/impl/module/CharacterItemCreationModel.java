@@ -6,6 +6,7 @@ import java.util.List;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
@@ -57,12 +58,16 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
     }
   }
 
-  public CharacterType[] getAvailableCharacterTypes() {
-    return types;
+  public boolean isSelectionComplete() {
+    return configuration.getTemplate() != null && configuration.getRuleSet() != null;
   }
 
   public boolean isCharacterTypeSelected() {
     return selectedType != null;
+  }
+
+  public CharacterType[] getAvailableCharacterTypes() {
+    return types;
   }
 
   public void setCharacterType(CharacterType type) {
@@ -70,20 +75,58 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
       return;
     }
     this.selectedType = type;
-    //TODO Set default template 
+    setTemplateToDefault();
     control.fireChangedEvent();
   }
 
+  private void setTemplateToDefault() {
+    if (getAvailableTemplates().length == 0) {
+      setSelectedTemplate(null);
+    }
+    else {
+      ICharacterTemplate defaultTemplate = generics.getTemplateRegistry().getDefaultTemplate(
+          selectedType,
+          configuration.getRuleSet().getEdition());
+      for (ITemplateTypeAggregation aggregation : aggregationsByType.get(selectedType)) {
+        if (aggregation.contains(defaultTemplate)) {
+          setSelectedTemplate(aggregation);
+          return;
+        }
+      }
+      throw new IllegalStateException("Template not contained in aggregations."); //$NON-NLS-1$
+    }
+  }
+
   public ITemplateTypeAggregation[] getAvailableTemplates() {
-    if (selectedType == null) {
+    List<ITemplateTypeAggregation> list = aggregationsByType.get(selectedType);
+    if (list == null) {
       return new ITemplateTypeAggregation[0];
     }
-    return aggregationsByType.get(selectedType).toArray(new ITemplateTypeAggregation[0]);
+    List<ITemplateTypeAggregation> copyList = new ArrayList<ITemplateTypeAggregation>(list);
+    for (ITemplateTypeAggregation aggregation : list) {
+      if (!aggregation.supportsEdition(configuration.getRuleSet().getEdition())) {
+        copyList.remove(aggregation);
+      }
+    }
+    return copyList.toArray(new ITemplateTypeAggregation[copyList.size()]);
   }
 
   public void setSelectedTemplate(ITemplateTypeAggregation newValue) {
+    if (selectedTemplate == newValue) {
+      return;
+    }
     this.selectedTemplate = newValue;
-    this.configuration.setTemplate(generics.getTemplateRegistry().getTemplate(
+    if (selectedTemplate == null) {
+      configuration.setTemplate(null);
+    }
+    else {
+      setEditionDependentTemplate();
+    }
+    control.fireChangedEvent();
+  }
+
+  private void setEditionDependentTemplate() {
+    configuration.setTemplate(generics.getTemplateRegistry().getTemplate(
         selectedTemplate.getTemplateType(),
         configuration.getRuleSet().getEdition()));
   }
@@ -101,7 +144,17 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
   }
 
   public void setSelectedRuleset(IExaltedRuleSet newValue) {
-    this.configuration.setRuleSet(newValue);
+    if (configuration.getRuleSet() == newValue) {
+      return;
+    }
+    configuration.setRuleSet(newValue);
+    if (selectedTemplate != null && selectedTemplate.supportsEdition(newValue.getEdition())) {
+      setEditionDependentTemplate();
+    }
+    else {
+      setTemplateToDefault();
+    }
+    control.fireChangedEvent();
   }
 
   public void addListener(IChangeListener listener) {

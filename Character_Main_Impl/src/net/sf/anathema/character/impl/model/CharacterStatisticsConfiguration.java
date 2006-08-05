@@ -9,15 +9,6 @@ public class CharacterStatisticsConfiguration implements IItemCreationTemplate {
   private ICharacterTemplate template;
   private IExaltedRuleSet ruleSet;
 
-  public CharacterStatisticsConfiguration(ICharacterTemplate template, IExaltedRuleSet ruleSet) {
-    this.template = template;
-    this.ruleSet = ruleSet;
-  }
-
-  public CharacterStatisticsConfiguration() {
-    //nothing to do
-  }
-
   public ICharacterTemplate getTemplate() {
     return template;
   }

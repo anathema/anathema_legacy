@@ -60,7 +60,7 @@ public class AnathemaNewAction extends SmartAction {
     try {
       IRegistry<IItemType, IWizardFactory> registry = anathemaModel.getCreationWizardFactoryRegistry();
       INewItemWizardModel model = new NewItemWizardModel(collectItemTypes(), registry);
-      IItemTypeSelectionView view = new ItemTypeSelectionView();      
+      IItemTypeSelectionView view = new ItemTypeSelectionView();
       SelectItemTypePage startPage = new SelectItemTypePage(resources, registry, model, view);
       WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
       final ISwingFrameOrDialog configuredDialog = dialog.getConfiguredDialog();

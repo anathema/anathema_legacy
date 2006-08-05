@@ -65,7 +65,10 @@ public class AddNewFullCharacterAction extends AbstractAddNewItemAction<Characte
     ICharacterTemplate template = generics.getTemplateRegistry().getTemplate(
         tree.getSelectedTemplate().getTemplateType(),
         ruleSet.getEdition());
-    return new CharacterStatisticsConfiguration(template, ruleSet);
+    CharacterStatisticsConfiguration characterStatisticsConfiguration = new CharacterStatisticsConfiguration();
+    characterStatisticsConfiguration.setRuleSet(ruleSet);
+    characterStatisticsConfiguration.setTemplate(template);
+    return characterStatisticsConfiguration;
   }
 
   @Override

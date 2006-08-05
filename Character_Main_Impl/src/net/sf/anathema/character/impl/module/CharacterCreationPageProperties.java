@@ -35,7 +35,11 @@ public class CharacterCreationPageProperties {
   }
 
   public IBasicMessage getSelectCharacterTypeMessage() {
-    return new BasicMessage(resources.getString("CharacterDialog.Message.Select"), MessageType.ERROR); //$NON-NLS-1$
+    return new BasicMessage(resources.getString("CharacterDialog.Message.SelectType"), MessageType.ERROR); //$NON-NLS-1$
+  }
+
+  public IBasicMessage getNoTemplatesAvailableMessage() {
+    return new BasicMessage(resources.getString("CharacterDialog.Message.NoTemplates"), MessageType.ERROR); //$NON-NLS-1$
   }
 
   public String getTypeString(CharacterType type) {

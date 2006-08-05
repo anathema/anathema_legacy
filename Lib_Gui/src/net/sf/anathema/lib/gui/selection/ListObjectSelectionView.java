@@ -5,7 +5,6 @@ import javax.swing.ListCellRenderer;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.list.ListSelectionMode;
 import net.sf.anathema.lib.gui.list.SmartJList;
@@ -39,8 +38,7 @@ public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
   }
 
   public void setSelectedObject(V object) {
-    V[] values = ArrayUtilities.transform(new Object[] { object }, contentClazz);
-    smartList.setSelectedObjects(values);
+    smartList.setSelectedObjects(object);
   }
 
   public JComponent getContent() {

@@ -15,5 +15,5 @@ public interface IRepositoryItemPersister {
 
   public IItem load(IRepositoryReadAccess readAccess) throws PersistenceException, RepositoryException;
 
-  public IItem createNew(IItemCreationTemplate template) throws PersistenceException;  
+  public IItem createNew(IItemCreationTemplate template) throws PersistenceException;
 }

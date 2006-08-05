@@ -21,9 +21,10 @@ public class CharacterItemCreationView implements ICharacterItemCreationView {
   public IToggleButtonPanel addToggleButtonPanel() {
     ToggleButtonPanel panel = new ToggleButtonPanel();
     GridDialogLayoutData data = new GridDialogLayoutData(GridDialogLayoutData.FILL_VERTICAL);
-    data.setGrabExcessHorizontalSpace(true);
+    data.setHorizontalAlignment(GridAlignment.FILL);
     data.setVerticalSpan(2);
-    component.add(panel.getContent(), data);
+    JComponent content = panel.getContent();
+    component.add(content, data);
     return panel;
   }
 
@@ -44,7 +45,8 @@ public class CharacterItemCreationView implements ICharacterItemCreationView {
         ITemplateTypeAggregation.class);
     GridDialogLayoutData data = new GridDialogLayoutData(GridDialogLayoutData.FILL_BOTH);
     data.setVerticalAlignment(GridAlignment.BEGINNING);
-    component.add(new JScrollPane(view.getContent()), data);
+    JScrollPane scrollPane = new JScrollPane(view.getContent());
+    component.add(scrollPane, data);
     return view;
   }
 

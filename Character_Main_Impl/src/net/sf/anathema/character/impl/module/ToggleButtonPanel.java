@@ -1,9 +1,8 @@
 package net.sf.anathema.character.impl.module;
 
-import java.awt.Component;
-
 import javax.swing.Action;
 import javax.swing.ButtonGroup;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
@@ -15,7 +14,7 @@ public class ToggleButtonPanel implements IToggleButtonPanel {
   private final ButtonGroup buttonGroup = new ButtonGroup();
   private final JPanel panel = new JPanel(new GridDialogLayout(2, false));
 
-  public Component getContent() {
+  public JComponent getContent() {
     return panel;
   }
 
