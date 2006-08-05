@@ -7,6 +7,7 @@ import javax.swing.event.ListSelectionListener;
 
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.gui.list.ListSelectionMode;
 import net.sf.anathema.lib.gui.list.SmartJList;
 
 public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
@@ -52,5 +53,9 @@ public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
 
   public boolean isObjectSelected() {
     return getSelectedObject() != null;
+  }
+
+  public void setSelectionType(ListSelectionMode mode) {
+    smartList.setSelectionMode(mode);
   }
 }

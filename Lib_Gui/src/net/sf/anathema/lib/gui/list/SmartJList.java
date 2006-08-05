@@ -11,9 +11,9 @@ import net.disy.commons.core.util.ArrayUtilities;
 
 public class SmartJList<T> extends JList {
 
-  private Class<? extends T> clazz;
+  private Class< ? extends T> clazz;
 
-  public SmartJList(Class<? extends T> contentClass) {
+  public SmartJList(Class< ? extends T> contentClass) {
     this.clazz = contentClass;
     setModel(new DefaultListModel());
     setSelectionModel(new DefaultListSelectionModel());
@@ -52,5 +52,9 @@ public class SmartJList<T> extends JList {
   @Override
   public T[] getSelectedValues() {
     return ArrayUtilities.transform(super.getSelectedValues(), clazz);
+  }
+
+  public void setSelectionMode(ListSelectionMode mode) {
+    setSelectionMode(mode.getMode());
   }
 }
