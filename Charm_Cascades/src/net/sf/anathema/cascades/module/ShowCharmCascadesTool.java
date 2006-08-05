@@ -8,6 +8,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class ShowCharmCascadesTool implements IAnathemaTool {
 
   public void add(IResources resources, IAnathemaModel model, IAnathemaToolbar toolbar) {
+    toolbar.addSeparator();
     toolbar.addTools(ShowCascadesAction.createToolAction(resources, model));
   }
 }

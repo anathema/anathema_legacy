@@ -13,8 +13,6 @@ import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.impl.model.creation.bonus.BonusPointManagement;
 import net.sf.anathema.character.impl.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.character.impl.view.CharacterView;
-import net.sf.anathema.character.impl.view.repository.AddNewCharacterDescriptionAction;
-import net.sf.anathema.character.impl.view.repository.AddNewFullCharacterAction;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterStatistics;
@@ -28,7 +26,6 @@ import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
 import net.sf.anathema.framework.presenter.IWizardFactory;
-import net.sf.anathema.framework.presenter.action.ActionMenuItem;
 import net.sf.anathema.framework.presenter.menu.IMenuItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
@@ -115,16 +112,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractItemTyp
 
   @Override
   protected IMenuItem[] createAddMenuEntries(IAnathemaView view, IAnathemaModel anathemaModel, IResources resources) {
-    return new IMenuItem[] {
-        new ActionMenuItem(AddNewFullCharacterAction.createMenuAction(
-            getGenerics(anathemaModel),
-            resources,
-            anathemaModel,
-            "CharacterGenerator.NewCharacter.StattedCharacter.Name")), //$NON-NLS-1$
-        new ActionMenuItem(AddNewCharacterDescriptionAction.createMenuAction(
-            resources,
-            anathemaModel,
-            "CharacterGenerator.NewCharacter.Description.Name")) }; //$NON-NLS-1$
+    return new IMenuItem[0];
   }
 
   @Override

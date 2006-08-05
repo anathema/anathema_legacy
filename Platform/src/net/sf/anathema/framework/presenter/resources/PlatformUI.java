@@ -22,4 +22,12 @@ public class PlatformUI extends AbstractUI {
   public Icon getSaveAllTaskBarIcon() {
     return getIcon("tools/TaskBarSaveAll24.png"); //$NON-NLS-1$
   }
+
+  public Icon getNewToolBarIcon() {
+    return getIcon("tools/TaskBarNewArrow24.png"); //$NON-NLS-1$
+  }
+
+  public Icon getLoadToolBarIcon() {
+    return getIcon("tools/TaskBarOpenArrow24.png"); //$NON-NLS-1$;
+  }
 }

@@ -13,4 +13,8 @@ public class NullWizardPageFactory implements IWizardFactory {
   public IItemCreationTemplate createTemplate() {
     return null;
   }
+
+  public boolean needsFurtherDetails() {
+    return false;
+  }
 }

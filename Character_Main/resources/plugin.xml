@@ -60,9 +60,6 @@
 	<extension plugin-id="net.sf.anathema.core"	point-id="Menubar" id="Menubar">
 		<parameter id="class" value="net.sf.anathema.character.impl.module.CharacterMenu"/>
 	</extension>
-	<extension plugin-id="net.sf.anathema.core"	point-id="Toolbar" id="Toolbar">
-		<parameter id="class" value="net.sf.anathema.character.impl.module.view.CharacterTool"/>
-	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaExtensions" id="AnathemaExtensions">
 	  <parameter id="type">
 		<parameter id="class" value="net.sf.anathema.character.impl.module.CharacterGenericsExtension"/>

@@ -4,6 +4,8 @@ import java.awt.Component;
 import java.awt.Cursor;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.Action;
 import javax.swing.Icon;
@@ -20,6 +22,7 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
 import net.sf.anathema.framework.presenter.item.ItemTypeViewPropertiesExtensionPoint;
+import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IRepositoryFileChooser;
@@ -47,18 +50,29 @@ public final class ItemTypeLoadAction extends SmartAction {
     return action;
   }
 
-  public static Action createToolAction(
-      IAnathemaModel anathemaModel,
-      IItemType itemType,
-      IResources resources,
-      Icon icon,
-      String toolTip) {
+  private static SmartAction createToolAction(IAnathemaModel anathemaModel, IItemType itemType, IResources resources) {
     IRegistry<String, IAnathemaExtension> extensionPointRegistry = anathemaModel.getExtensionPointRegistry();
     RepositoryFileChooserPropertiesExtensionPoint repositoryExtensionPoint = (RepositoryFileChooserPropertiesExtensionPoint) extensionPointRegistry.get(RepositoryFileChooserPropertiesExtensionPoint.ID);
     SmartAction action = new ItemTypeLoadAction(anathemaModel, itemType, resources, repositoryExtensionPoint);
-    action.setIcon(icon);
-    action.setToolTipText(toolTip);
     return action;
+  }
+
+  public static Action[] createToolActions(IAnathemaModel model, IResources resources) {
+    List<Action> actions = new ArrayList<Action>();
+    for (IItemType type : collectItemTypes(model)) {
+      SmartAction action = createToolAction(model, type, resources);
+      action.setName(resources.getString("ItemType." + type.getId() + ".PrintName")); //$NON-NLS-1$ //$NON-NLS-2$
+      actions.add(action);
+    }
+    return actions.toArray(new Action[actions.size()]);
+  }
+
+  public static Icon getButtonIcon(IResources resources) {
+    return new PlatformUI(resources).getLoadToolBarIcon();
+  }
+
+  public static String createToolTip(IResources resources) {
+    return resources.getString("AnathemaCore.Tools.LoadMenu.Name"); //$NON-NLS-1$
   }
 
   private ItemTypeLoadAction(
@@ -131,5 +145,15 @@ public final class ItemTypeLoadAction extends SmartAction {
       IOUtilities.close(stream);
       parentComponent.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
     }
+  }
+
+  private static IItemType[] collectItemTypes(IAnathemaModel model) {
+    List<IItemType> types = new ArrayList<IItemType>();
+    for (IItemType type : model.getItemTypeRegistry().getAllItemTypes()) {
+      if (type.supportsRepository()) {
+        types.add(type);
+      }
+    }
+    return types.toArray(new IItemType[types.size()]);
   }
 }

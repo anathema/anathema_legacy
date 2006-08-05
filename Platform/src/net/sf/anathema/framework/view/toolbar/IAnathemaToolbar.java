@@ -7,5 +7,7 @@ public interface IAnathemaToolbar {
 
   public void addTools(Action... action);
 
-  public void addMenu(Icon buttonIcon, Action... menuActions);
+  public void addMenu(Icon buttonIcon, Action[] menuActions, String toolTip);
+
+  public void addSeparator();
 }

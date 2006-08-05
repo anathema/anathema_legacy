@@ -67,7 +67,7 @@ public class SelectItemTypePage extends AbstractAnathemaWizardPage {
 
   public boolean canFinish() {
     IItemType type = model.getSelectedItemType();
-    return type != null && followUpRegistry.get(type) == null;
+    return type != null && !followUpRegistry.get(type).needsFurtherDetails();
   }
 
   public String getDescription() {

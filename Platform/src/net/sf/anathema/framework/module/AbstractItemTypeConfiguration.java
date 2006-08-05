@@ -32,10 +32,7 @@ public abstract class AbstractItemTypeConfiguration {
     ItemTypeViewPropertiesExtensionPoint itemExtensionPoint = (ItemTypeViewPropertiesExtensionPoint) extensionPointRegistry.get(ItemTypeViewPropertiesExtensionPoint.ID);
     itemExtensionPoint.register(type, new DefaultItemTypeViewProperties(resources, getPrintNameKey()));
     if (isPersistable()) {
-      IMenuItem[] addMenuItems = createAddMenuEntries(view, model, resources);
       registerRepositoryFileChooserProperties(extensionPointRegistry, resources);
-      MenuExtensionPoint newExtensionPoint = (MenuExtensionPoint) extensionPointRegistry.get(IMenuExtensionPoint.NEW_MENU_EXTENSION_POINT_ID);
-      addToMenuExtensionPoint(addMenuItems, newExtensionPoint);
     }
     else {
       IMenuItem[] addMenuItems = createAddMenuEntries(view, model, resources);
@@ -99,7 +96,5 @@ public abstract class AbstractItemTypeConfiguration {
     viewFactoryRegistry.register(type, createCreationWizardPageFactory(anathemaModel, resources));
   }
 
-  protected abstract IWizardFactory createCreationWizardPageFactory(
-      IAnathemaModel anathemaModel,
-      IResources resources);
+  protected abstract IWizardFactory createCreationWizardPageFactory(IAnathemaModel anathemaModel, IResources resources);
 }

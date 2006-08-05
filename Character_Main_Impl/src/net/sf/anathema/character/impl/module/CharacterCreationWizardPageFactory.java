@@ -38,4 +38,8 @@ public class CharacterCreationWizardPageFactory implements IWizardFactory {
   public IItemCreationTemplate createTemplate() {
     return new CharacterStatisticsConfiguration();
   }
+
+  public boolean needsFurtherDetails() {
+    return true;
+  }
 }

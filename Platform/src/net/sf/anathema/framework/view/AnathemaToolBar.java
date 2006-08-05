@@ -19,23 +19,37 @@ public class AnathemaToolBar implements IAnathemaToolbar {
   public AnathemaToolBar() {
     this.toolBar = new JToolBar();
     this.toolBar.setFloatable(false);
-//    this.toolBar.setRollover(true);
+    this.toolBar.setRollover(true);
   }
 
   public JToolBar getComponent() {
     return toolBar;
   }
 
-  public void addTools(Action... toolBarActions) {
+  public void addSeparator() {
     toolBar.addSeparator();
+  }
+
+  public void addTools(Action... toolBarActions) {
     for (int i = 0; i < toolBarActions.length; i++) {
       Action action = toolBarActions[i];
       JButton button = toolBar.add(action);
-      button.setPreferredSize(new Dimension(24, 24));
+      setButtonSize(button, createDimension(button.getIcon()));
     }
   }
 
-  public void addMenu(Icon buttonIcon, Action... menuActions) {
+  private Dimension createDimension(Icon icon) {
+    return new Dimension(icon.getIconWidth() + 4, icon.getIconHeight() + 4);
+
+  }
+
+  private void setButtonSize(JButton button, Dimension dimension) {
+    button.setPreferredSize(dimension);
+    button.setMinimumSize(dimension);
+    button.setSize(dimension);
+  }
+
+  public void addMenu(Icon buttonIcon, Action[] menuActions, String toolTip) {
     final JButton button = new JButton(buttonIcon);
     final JPopupMenu menu = new JPopupMenu();
     for (Action action : menuActions) {
@@ -47,6 +61,10 @@ public class AnathemaToolBar implements IAnathemaToolbar {
       }
     });
     button.add(menu);
+    button.setToolTipText(toolTip);
     toolBar.add(button);
+    Dimension dimension = createDimension(buttonIcon);
+    setButtonSize(button, dimension);
+    button.setMaximumSize(dimension);
   }
 }

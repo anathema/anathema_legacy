@@ -1,14 +1,12 @@
 package net.sf.anathema.framework.module;
 
 import java.awt.Component;
-import java.awt.Event;
-import java.awt.event.KeyEvent;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.Action;
-import javax.swing.KeyStroke;
+import javax.swing.Icon;
 
 import net.disy.commons.core.message.Message;
 import net.disy.commons.core.progress.IProgressMonitor;
@@ -21,66 +19,73 @@ import net.disy.commons.swing.dialog.wizard.WizardDialog;
 import net.disy.commons.swing.util.GuiUtilities;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.item.repository.creation.IItemTypeSelectionView;
-import net.sf.anathema.framework.item.repository.creation.INewItemWizardModel;
-import net.sf.anathema.framework.item.repository.creation.ItemTypeSelectionView;
-import net.sf.anathema.framework.item.repository.creation.NewItemWizardModel;
-import net.sf.anathema.framework.item.repository.creation.SelectItemTypePage;
+import net.sf.anathema.framework.item.repository.creation.IItemCreationTemplate;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IWizardFactory;
+import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
-import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
-public class AnathemaNewAction extends SmartAction {
+public class ItemTypeNewAction extends SmartAction {
 
-  private final IResources resources;
+  private final IItemType type;
   private final IAnathemaModel anathemaModel;
+  private final IResources resources;
 
-  public static Action createMenuAction(IAnathemaModel anathemaModel, IResources resources) {
-    SmartAction action = new AnathemaNewAction(anathemaModel, resources);
-    action.setName(resources.getString("AnathemaCore.Tools.New.Name") + "\u2026"); //$NON-NLS-1$ //$NON-NLS-2$       
-    return action;
+  public static Action[] createToolActions(IAnathemaModel model, IResources resources) {
+    List<Action> actions = new ArrayList<Action>();
+    for (IItemType type : collectItemTypes(model)) {
+      ItemTypeNewAction action = new ItemTypeNewAction(type, model, resources);
+      action.setName(resources.getString("ItemType." + type.getId() + ".PrintName")); //$NON-NLS-1$ //$NON-NLS-2$
+      actions.add(action);
+    }
+    return actions.toArray(new Action[actions.size()]);
   }
 
-  public AnathemaNewAction(IAnathemaModel anathemaModel, IResources resources) {
-    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_N, Event.CTRL_MASK));
-    this.anathemaModel = anathemaModel;
+
+  public static String createToolTip(IResources resources) {
+    return resources.getString("AnathemaCore.Tools.New.Name"); //$NON-NLS-1$
+  }
+  
+  public static Icon getButtonIcon(IResources resources) {
+    return new PlatformUI(resources).getNewToolBarIcon();
+  }
+
+  public ItemTypeNewAction(IItemType type, IAnathemaModel model, IResources resources) {
+    this.type = type;
+    this.anathemaModel = model;
     this.resources = resources;
   }
 
   @Override
   protected void execute(Component parentComponent) {
-    try {
-      IRegistry<IItemType, IWizardFactory> registry = anathemaModel.getCreationWizardFactoryRegistry();
-      INewItemWizardModel model = new NewItemWizardModel(collectItemTypes(anathemaModel), registry);
-      IItemTypeSelectionView view = new ItemTypeSelectionView();
-      SelectItemTypePage startPage = new SelectItemTypePage(resources, registry, model, view);
-      createItemFromWizard(parentComponent, model, startPage);
+    IWizardFactory factory = anathemaModel.getCreationWizardFactoryRegistry().get(type);
+    IItemCreationTemplate template = factory.createTemplate();
+    if (factory.needsFurtherDetails()) {
+      IAnathemaWizardPage startPage = factory.createPage(template);
+      WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
+      final ISwingFrameOrDialog configuredDialog = dialog.getConfiguredDialog();
+      configuredDialog.setResizable(false);
+      GuiUtilities.centerToParent(configuredDialog.getWindow());
+      configuredDialog.show();
+      if (dialog.isCanceled()) {
+        return;
+      }
     }
-    catch (Exception e) {
+
+    try {
+      IItem item = createItem(template);
+      createView(parentComponent, item);
+    }
+    catch (PersistenceException e) {
       Message message = new Message(resources.getString("AnathemaPersistence.NewMenu.Message.Error"), e); //$NON-NLS-1$
       MessageUtilities.indicateMessage(AnathemaNewAction.class, parentComponent, message);
     }
-  }
-
-  private void createItemFromWizard(Component parentComponent, INewItemWizardModel model, IAnathemaWizardPage startPage)
-      throws PersistenceException {
-    WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
-    final ISwingFrameOrDialog configuredDialog = dialog.getConfiguredDialog();
-    configuredDialog.setResizable(false);
-    GuiUtilities.centerToParent(configuredDialog.getWindow());
-    configuredDialog.show();
-    if (dialog.isCanceled()) {
-      return;
-    }
-    IItem item = createItem(model);
-    createView(parentComponent, item);
   }
 
   private void createView(Component parentComponent, final IItem item) {
@@ -113,9 +118,9 @@ public class AnathemaNewAction extends SmartAction {
     }
   }
 
-  private IItem createItem(INewItemWizardModel model) throws PersistenceException {
-    IRepositoryItemPersister persister = anathemaModel.getPersisterRegistry().get(model.getSelectedItemType());
-    return persister.createNew(model.getTemplate(model.getSelectedItemType()));
+  private IItem createItem(IItemCreationTemplate template) throws PersistenceException {
+    IRepositoryItemPersister persister = anathemaModel.getPersisterRegistry().get(type);
+    return persister.createNew(template);
   }
 
   private static IItemType[] collectItemTypes(IAnathemaModel model) {
