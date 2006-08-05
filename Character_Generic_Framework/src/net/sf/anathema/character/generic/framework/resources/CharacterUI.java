@@ -42,4 +42,8 @@ public class CharacterUI extends AbstractUI {
   public Icon getCancelComboEditIcon() {
     return getIcon("ButtonUndo16.png"); //$NON-NLS-1$
   }
+
+  public Icon getFinalizeIcon() {
+    return getIcon("ButtonCheck16.png"); //$NON-NLS-1$
+  }
 }

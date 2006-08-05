@@ -31,7 +31,7 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
   }
 
   public Icon getFinalizeButtonIcon() {
-    return new BasicUi(getResources()).getMediumAddIcon();
+    return new CharacterUI(getResources()).getFinalizeIcon();
   }
 
   public String getAvailableComboCharmsLabel() {
