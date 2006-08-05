@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.framework.item.repository.creation.IItemCreationTemplate;
 import net.sf.anathema.framework.itemdata.model.BasicItemData;
 import net.sf.anathema.framework.itemdata.model.IBasicItemData;
 import net.sf.anathema.framework.persistence.AbstractSingleFileItemPersister;
@@ -46,5 +47,9 @@ public class BasicDataItemPersister extends AbstractSingleFileItemPersister {
     repositoryItemPerister.load(rootElement, item);
     basicItemDataPersister.load(rootElement, (IBasicItemData) item.getItemData());
     return item;
+  }
+
+  public IItem createNew(IItemCreationTemplate template) {
+    return new AnathemaItem(type, new BasicItemData());
   }
 }

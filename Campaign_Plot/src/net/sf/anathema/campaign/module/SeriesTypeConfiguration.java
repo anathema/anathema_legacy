@@ -11,8 +11,10 @@ import net.sf.anathema.campaign.presenter.view.ISeriesView;
 import net.sf.anathema.campaign.view.CampaignView;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
+import net.sf.anathema.framework.module.NullWizardPageFactory;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
+import net.sf.anathema.framework.presenter.IWizardFactory;
 import net.sf.anathema.framework.presenter.action.ActionMenuItem;
 import net.sf.anathema.framework.presenter.menu.IMenuItem;
 import net.sf.anathema.framework.repository.IItem;
@@ -73,5 +75,10 @@ public final class SeriesTypeConfiguration extends AbstractItemTypeConfiguration
   @Override
   protected IMenuItem[] createAddMenuEntries(IAnathemaView view, IAnathemaModel anathemaModel, IResources resources) {
     return new IMenuItem[] { new ActionMenuItem(AddNewSeriesAction.createMenuAction(resources, anathemaModel)) };
+  }
+  
+  @Override
+  protected IWizardFactory createCreationWizardPageFactory(IAnathemaModel anathemaModel, IResources resources) {
+    return new NullWizardPageFactory();
   }
 }

@@ -11,8 +11,10 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.itemdata.model.IBasicItemData;
 import net.sf.anathema.framework.itemdata.view.IBasicItemView;
 import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
+import net.sf.anathema.framework.module.NullWizardPageFactory;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
+import net.sf.anathema.framework.presenter.IWizardFactory;
 import net.sf.anathema.framework.presenter.action.ActionMenuItem;
 import net.sf.anathema.framework.presenter.menu.IMenuItem;
 import net.sf.anathema.framework.repository.IItem;
@@ -70,5 +72,10 @@ public class NoteTypeConfiguration extends AbstractItemTypeConfiguration {
         anathemaModel,
         getItemType(),
         "Note.MenuName.New")) }; //$NON-NLS-1$
+  }
+
+  @Override
+  protected IWizardFactory createCreationWizardPageFactory(IAnathemaModel anathemaModel, IResources resources) {
+    return new NullWizardPageFactory();
   }
 }

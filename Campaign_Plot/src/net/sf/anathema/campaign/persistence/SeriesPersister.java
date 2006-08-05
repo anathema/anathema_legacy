@@ -23,6 +23,7 @@ import net.sf.anathema.campaign.model.plot.IPlotElement;
 import net.sf.anathema.campaign.model.plot.IPlotModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
+import net.sf.anathema.framework.item.repository.creation.IItemCreationTemplate;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.framework.itemdata.model.ItemDescription;
 import net.sf.anathema.framework.persistence.AbstractPersister;
@@ -73,7 +74,9 @@ public class SeriesPersister extends AbstractPersister implements IRepositoryIte
     DocumentUtilities.save(mainDocument, writeAccess.createMainOutputStream());
   }
 
-  private void saveSeries(IRepositoryWriteAccess writeAccess, Element rootElement, ISeries series) throws RepositoryException, IOException {
+  private void saveSeries(IRepositoryWriteAccess writeAccess, Element rootElement, ISeries series)
+      throws RepositoryException,
+      IOException {
     saveItemDescription(rootElement, series.getPlot().getRootElement().getDescription());
     saveContents(series.getContentModel(), rootElement);
     savePlot(series.getPlot(), rootElement, writeAccess);
@@ -216,7 +219,7 @@ public class SeriesPersister extends AbstractPersister implements IRepositoryIte
     if (contentElement == null) {
       return;
     }
-    List<Element> elementList=ElementUtilities.elements(contentElement, TAG_CONTENT_ITEM); 
+    List<Element> elementList = ElementUtilities.elements(contentElement, TAG_CONTENT_ITEM);
     for (Iterator<Element> contentItemElements = elementList.iterator(); contentItemElements.hasNext();) {
       Element contentItemElement = contentItemElements.next();
       String repositoryId = contentItemElement.attributeValue(ATTRIB_REPOSITORY_ID);
@@ -227,5 +230,10 @@ public class SeriesPersister extends AbstractPersister implements IRepositoryIte
         contentModel.addItem(printNameFile);
       }
     }
+  }
+
+  public IItem createNew(IItemCreationTemplate template) {
+    ISeries seriesData = new Series(supportedTypes);
+    return new AnathemaItem(campaignType, seriesData);
   }
 }

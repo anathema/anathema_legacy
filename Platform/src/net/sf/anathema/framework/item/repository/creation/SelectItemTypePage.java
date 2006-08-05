@@ -1,7 +1,9 @@
-package net.sf.anathema.demo.platform.item;
+package net.sf.anathema.framework.item.repository.creation;
 
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.core.IPageContent;
+import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.framework.presenter.IWizardFactory;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.list.ListSelectionMode;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
@@ -17,14 +19,14 @@ public class SelectItemTypePage extends AbstractAnathemaWizardPage {
   private final SelectedItemTypeProperties properties;
   private final IItemTypeSelectionView view;
   private final INewItemWizardModel model;
-  private final IRegistry<CreationItemType, IAnathemaWizardPage> followUpRegistry;
+  private final IRegistry<IItemType, IWizardFactory> followUpRegistry;
 
   public SelectItemTypePage(
       IResources resources,
-      IRegistry<CreationItemType, IAnathemaWizardPage> followUpRegistry,
+      IRegistry<IItemType, IWizardFactory> registry,
       INewItemWizardModel model,
       IItemTypeSelectionView view) {
-    this.followUpRegistry = followUpRegistry;
+    this.followUpRegistry = registry;
     this.model = model;
     this.view = view;
     this.properties = new SelectedItemTypeProperties(resources);
@@ -32,14 +34,14 @@ public class SelectItemTypePage extends AbstractAnathemaWizardPage {
 
   @Override
   protected void addFollowUpPages(CheckInputListener inputListener) {
-    for (final CreationItemType type : model.getRegisteredItemTypes()) {
-      IAnathemaWizardPage followUpPage = followUpRegistry.get(type);
+    for (final IItemType type : model.getRegisteredItemTypes()) {
+      IAnathemaWizardPage followUpPage = followUpRegistry.get(type).createPage(model.getTemplate(type));
       if (followUpPage == null) {
         continue;
       }
       addFollowupPage(followUpPage, inputListener, new ICondition() {
         public boolean isFullfilled() {
-          return model.getSelectedValue() == type;
+          return model.getSelectedItemType() == type;
         }
       });
     }
@@ -47,24 +49,24 @@ public class SelectItemTypePage extends AbstractAnathemaWizardPage {
 
   @Override
   protected void initModelListening(CheckInputListener inputListener) {
-    // nothing to do
+    model.addListener(inputListener);
   }
 
   @Override
   protected void initPageContent() {
-    IListObjectSelectionView<CreationItemType> listView = view.addSelectionView();
+    IListObjectSelectionView<IItemType> listView = view.addSelectionView();
     listView.setObjects(model.getRegisteredItemTypes());
     listView.setSelectionType(ListSelectionMode.SingleSelection);
     listView.setCellRenderer(properties.getCellRenderer());
-    listView.addObjectSelectionChangedListener(new IObjectValueChangedListener<CreationItemType>() {
-      public void valueChanged(CreationItemType newValue) {
+    listView.addObjectSelectionChangedListener(new IObjectValueChangedListener<IItemType>() {
+      public void valueChanged(IItemType newValue) {
         model.setSelectedValue(newValue);
       }
     });
   }
 
   public boolean canFinish() {
-    CreationItemType type = model.getSelectedValue();
+    IItemType type = model.getSelectedItemType();
     return type != null && followUpRegistry.get(type) == null;
   }
 

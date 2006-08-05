@@ -59,6 +59,9 @@ public class AnathemaPresenter {
     for (AbstractItemTypeConfiguration configuration : itemTypeConfigurations) {
       configuration.registerViewFactory(model, resources);
     }
+    for (AbstractItemTypeConfiguration configuration : itemTypeConfigurations) {
+      configuration.registerCreationWizardFactory(model, resources);
+    }
     runBootJobs();
     initializeMenus();
     initializeTools();

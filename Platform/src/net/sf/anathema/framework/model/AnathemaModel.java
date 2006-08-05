@@ -9,6 +9,7 @@ import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
+import net.sf.anathema.framework.presenter.IWizardFactory;
 import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.Repository;
@@ -22,6 +23,7 @@ public class AnathemaModel implements IAnathemaModel {
   private final IItemMangementModel itemManagment = new ItemManagmentModel();
   private final IReportRegistry reportRegistry = new ReportRegistry();
   private final IRegistry<IItemType, IItemViewFactory> viewFactoryRegistry = new Registry<IItemType, IItemViewFactory>();
+  private final IRegistry<IItemType, IWizardFactory> wizardRegistry = new Registry<IItemType, IWizardFactory>();
   private final IItemTypeRegistry itemTypes = new ItemTypeRegistry();
   private final IRepository repository;
 
@@ -55,5 +57,9 @@ public class AnathemaModel implements IAnathemaModel {
 
   public IItemTypeRegistry getItemTypeRegistry() {
     return itemTypes;
+  }
+
+  public IRegistry<IItemType, IWizardFactory> getCreationWizardFactoryRegistry() {
+    return wizardRegistry;
   }
 }

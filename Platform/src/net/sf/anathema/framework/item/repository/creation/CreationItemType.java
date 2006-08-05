@@ -1,4 +1,4 @@
-package net.sf.anathema.demo.platform.item;
+package net.sf.anathema.framework.item.repository.creation;
 
 import net.sf.anathema.lib.util.IIdentificate;
 

@@ -1,4 +1,4 @@
-package net.sf.anathema.demo.platform.item;
+package net.sf.anathema.framework.item.repository.creation;
 
 import javax.swing.ListCellRenderer;
 
@@ -16,14 +16,14 @@ public class SelectedItemTypeProperties {
   }
 
   public ListCellRenderer getCellRenderer() {
-    return new IdentificateSelectCellRenderer("ItemType.", resources);
+    return new IdentificateSelectCellRenderer("ItemType.", ".PrintName", resources); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   public String getItemSelectionTitle() {
-    return resources.getString("NewItemWizard.SelectItemHeader"); //$NON-NLS-1$
+    return resources.getString("AnathemaPersistence.NewWizard.SelectItem.Title"); //$NON-NLS-1$
   }
 
   public IBasicMessage getSelectMessage() {
-    return new BasicMessage(resources.getString("NewItemWizard.SelectItemMessage")); //$NON-NLS-1$
+    return new BasicMessage(resources.getString("AnathemaPersistence.NewWizard.SelectItem.Message")); //$NON-NLS-1$
   }
 }

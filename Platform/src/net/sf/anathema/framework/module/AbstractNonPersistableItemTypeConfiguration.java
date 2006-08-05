@@ -3,6 +3,8 @@ package net.sf.anathema.framework.module;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
+import net.sf.anathema.framework.presenter.IWizardFactory;
+import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractNonPersistableItemTypeConfiguration extends AbstractItemTypeConfiguration {
 
@@ -28,5 +30,10 @@ public abstract class AbstractNonPersistableItemTypeConfiguration extends Abstra
   @Override
   protected final boolean isPersistable() {
     return false;
+  }
+
+  @Override
+  protected IWizardFactory createCreationWizardPageFactory(IAnathemaModel anathemaModel, IResources resources) {
+    return new NullWizardPageFactory();
   }
 }

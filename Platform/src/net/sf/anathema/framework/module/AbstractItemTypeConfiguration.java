@@ -5,6 +5,7 @@ import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
+import net.sf.anathema.framework.presenter.IWizardFactory;
 import net.sf.anathema.framework.presenter.item.DefaultItemTypeViewProperties;
 import net.sf.anathema.framework.presenter.item.ItemTypeViewPropertiesExtensionPoint;
 import net.sf.anathema.framework.presenter.menu.IMenuExtensionPoint;
@@ -30,13 +31,14 @@ public abstract class AbstractItemTypeConfiguration {
       IAnathemaView view) {
     ItemTypeViewPropertiesExtensionPoint itemExtensionPoint = (ItemTypeViewPropertiesExtensionPoint) extensionPointRegistry.get(ItemTypeViewPropertiesExtensionPoint.ID);
     itemExtensionPoint.register(type, new DefaultItemTypeViewProperties(resources, getPrintNameKey()));
-    IMenuItem[] addMenuItems = createAddMenuEntries(view, model, resources);
     if (isPersistable()) {
+      IMenuItem[] addMenuItems = createAddMenuEntries(view, model, resources);
       registerRepositoryFileChooserProperties(extensionPointRegistry, resources);
       MenuExtensionPoint newExtensionPoint = (MenuExtensionPoint) extensionPointRegistry.get(IMenuExtensionPoint.NEW_MENU_EXTENSION_POINT_ID);
       addToMenuExtensionPoint(addMenuItems, newExtensionPoint);
     }
     else {
+      IMenuItem[] addMenuItems = createAddMenuEntries(view, model, resources);
       MenuExtensionPoint extraExtensionPoint = (MenuExtensionPoint) extensionPointRegistry.get(IMenuExtensionPoint.EXTRA_MENU_EXTENSION_POINT_ID);
       addToMenuExtensionPoint(addMenuItems, extraExtensionPoint);
     }
@@ -82,13 +84,22 @@ public abstract class AbstractItemTypeConfiguration {
   protected boolean isPersistable() {
     return true;
   }
-  
+
   public final IItemType getItemType() {
     return type;
   }
 
   protected abstract IMenuItem[] createAddMenuEntries(
       IAnathemaView view,
+      IAnathemaModel anathemaModel,
+      IResources resources);
+
+  public void registerCreationWizardFactory(IAnathemaModel anathemaModel, IResources resources) {
+    IRegistry<IItemType, IWizardFactory> viewFactoryRegistry = anathemaModel.getCreationWizardFactoryRegistry();
+    viewFactoryRegistry.register(type, createCreationWizardPageFactory(anathemaModel, resources));
+  }
+
+  protected abstract IWizardFactory createCreationWizardPageFactory(
       IAnathemaModel anathemaModel,
       IResources resources);
 }

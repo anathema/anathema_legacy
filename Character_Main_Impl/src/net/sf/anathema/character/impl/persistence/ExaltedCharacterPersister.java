@@ -6,9 +6,12 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.generic.impl.magic.SpellException;
+import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.framework.item.repository.creation.IItemCreationTemplate;
 import net.sf.anathema.framework.persistence.AbstractSingleFileItemPersister;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.repository.AnathemaItem;
@@ -26,9 +29,11 @@ public class ExaltedCharacterPersister extends AbstractSingleFileItemPersister {
   private final CharacterDescriptionPersister descriptionPersister = new CharacterDescriptionPersister();
   private final CharacterStatisticPersister statisticsPersister;
   private final IItemType characterType;
+  private final ICharacterGenerics generics;
 
   public ExaltedCharacterPersister(IItemType characterType, ICharacterGenerics generics) {
     this.characterType = characterType;
+    this.generics = generics;
     this.statisticsPersister = new CharacterStatisticPersister(generics);
   }
 
@@ -56,5 +61,20 @@ public class ExaltedCharacterPersister extends AbstractSingleFileItemPersister {
     descriptionPersister.load(documentRoot, character.getDescription());
     statisticsPersister.load(documentRoot, character);
     return item;
+  }
+
+  public IItem createNew(IItemCreationTemplate template) throws PersistenceException {
+    if (!(template instanceof CharacterStatisticsConfiguration)) {
+      throw new IllegalArgumentException("Bad template type for character creation."); //$NON-NLS-1$
+    }
+    CharacterStatisticsConfiguration configuration = (CharacterStatisticsConfiguration) template;
+    ExaltedCharacter character = new ExaltedCharacter();
+    try {
+      character.createCharacterStatistics(configuration.getTemplate(), generics, configuration.getRuleSet());
+      return new AnathemaItem(characterType, character);
+    }
+    catch (SpellException e) {
+      throw new PersistenceException("A problem occured while creating a new character", e); //$NON-NLS-1$
+    }
   }
 }

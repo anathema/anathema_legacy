@@ -27,7 +27,7 @@ public class AnathemaCoreMenu implements IAnathemaMenu {
 
   public void add(IResources resources, IAnathemaModel model, IMenuBar menubar) {
     IMenu mainMenu = menubar.getMainMenu();
-    mainMenu.addMenuItem(createNewMenu(model, resources));
+    mainMenu.addMenuItem(AnathemaNewAction.createMenuAction(model, resources));
     mainMenu.addMenuItem(createLoadMenu(model, resources));
     mainMenu.addMenuItem(AnathemaCloseAction.createMenuAction(model.getItemManagement(), resources));
     mainMenu.addSeparator();
@@ -39,11 +39,6 @@ public class AnathemaCoreMenu implements IAnathemaMenu {
     mainMenu.addMenuItem(AnathemaExitAction.createMenuAction(resources));
     menubar.getHelpMenu().addMenuItem(new AnathemaAboutAction(resources));
     menubar.addMenu(createExtraMenu(model, resources));
-  }
-
-  private JMenu createNewMenu(IAnathemaModel anathemaModel, IResources resources) {
-    String menuName = resources.getString("AnathemaCore.Tools.New.Name"); //$NON-NLS-1$
-    return createMenuFromExtensionPoint(anathemaModel, menuName, IMenuExtensionPoint.NEW_MENU_EXTENSION_POINT_ID);
   }
 
   private JMenu createExtraMenu(IAnathemaModel anathemaModel, IResources resources) {

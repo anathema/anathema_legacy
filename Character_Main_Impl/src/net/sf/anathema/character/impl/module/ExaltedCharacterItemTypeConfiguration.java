@@ -4,8 +4,10 @@ import javax.swing.Icon;
 
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.ICharacterGenericsExtension;
+import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.framework.resources.CharacterTemplateResourceProvider;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
+import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.impl.model.creation.bonus.BonusPointManagement;
@@ -25,6 +27,7 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
+import net.sf.anathema.framework.presenter.IWizardFactory;
 import net.sf.anathema.framework.presenter.action.ActionMenuItem;
 import net.sf.anathema.framework.presenter.menu.IMenuItem;
 import net.sf.anathema.framework.repository.IItem;
@@ -122,5 +125,11 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractItemTyp
             resources,
             anathemaModel,
             "CharacterGenerator.NewCharacter.Description.Name")) }; //$NON-NLS-1$
+  }
+
+  @Override
+  protected IWizardFactory createCreationWizardPageFactory(IAnathemaModel anathemaModel, IResources resources) {
+    IExaltedRuleSet preferredRuleset = AnathemaCharacterPreferences.getDefaultPreferences().getPreferredRuleset();
+    return new CharacterCreationWizardPageFactory(getGenerics(anathemaModel), preferredRuleset, resources);
   }
 }
