@@ -72,7 +72,7 @@ public final class ItemTypeLoadAction extends SmartAction {
   }
 
   public static String createToolTip(IResources resources) {
-    return resources.getString("AnathemaCore.Tools.LoadMenu.Name"); //$NON-NLS-1$
+    return resources.getString("AnathemaPersistence.LoadMenu.Name"); //$NON-NLS-1$
   }
 
   private ItemTypeLoadAction(
