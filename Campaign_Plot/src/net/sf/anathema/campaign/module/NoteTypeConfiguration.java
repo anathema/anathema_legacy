@@ -5,7 +5,6 @@ import javax.swing.Icon;
 import net.sf.anathema.campaign.persistence.BasicDataItemPersister;
 import net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants;
 import net.sf.anathema.campaign.presenter.NotePresenter;
-import net.sf.anathema.campaign.presenter.action.AddNewBasicItemAction;
 import net.sf.anathema.campaign.view.BasicItemView;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.itemdata.model.IBasicItemData;
@@ -15,7 +14,6 @@ import net.sf.anathema.framework.module.NullWizardPageFactory;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
 import net.sf.anathema.framework.presenter.IWizardFactory;
-import net.sf.anathema.framework.presenter.action.ActionMenuItem;
 import net.sf.anathema.framework.presenter.menu.IMenuItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
@@ -67,11 +65,7 @@ public class NoteTypeConfiguration extends AbstractItemTypeConfiguration {
 
   @Override
   protected IMenuItem[] createAddMenuEntries(IAnathemaView view, IAnathemaModel anathemaModel, IResources resources) {
-    return new IMenuItem[] { new ActionMenuItem(AddNewBasicItemAction.createMenuAction(
-        resources,
-        anathemaModel,
-        getItemType(),
-        "Note.MenuName.New")) }; //$NON-NLS-1$
+    return new IMenuItem[0];
   }
 
   @Override
