@@ -22,20 +22,18 @@ import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.presenter.CharacterPresenter;
 import net.sf.anathema.character.view.ICharacterView;
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
+import net.sf.anathema.framework.module.AbstractPersistableItemTypeConfiguration;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
 import net.sf.anathema.framework.presenter.IWizardFactory;
-import net.sf.anathema.framework.presenter.menu.IMenuItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
-import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
 
-public final class ExaltedCharacterItemTypeConfiguration extends AbstractItemTypeConfiguration {
+public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
   public static final String CHARACTER_ITEM_TYPE_ID = "ExaltedCharacter"; //$NON-NLS-1$
 
   public static ItemType createCharacterItemType() {
@@ -108,11 +106,6 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractItemTyp
     ICharacterGenericsExtension genericsExtension = (ICharacterGenericsExtension) model.getExtensionPointRegistry()
         .get(ICharacterGenericsExtension.ID);
     return genericsExtension.getCharacterGenerics();
-  }
-
-  @Override
-  protected IMenuItem[] createAddMenuEntries(IAnathemaView view, IAnathemaModel anathemaModel, IResources resources) {
-    return new IMenuItem[0];
   }
 
   @Override

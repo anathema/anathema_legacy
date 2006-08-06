@@ -9,21 +9,19 @@ import net.sf.anathema.campaign.presenter.CampaignPresenter;
 import net.sf.anathema.campaign.presenter.view.ISeriesView;
 import net.sf.anathema.campaign.view.CampaignView;
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
+import net.sf.anathema.framework.module.AbstractPersistableItemTypeConfiguration;
 import net.sf.anathema.framework.module.NullWizardPageFactory;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
 import net.sf.anathema.framework.presenter.IWizardFactory;
-import net.sf.anathema.framework.presenter.menu.IMenuItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
-import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
 
-public final class SeriesTypeConfiguration extends AbstractItemTypeConfiguration {
+public final class SeriesTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
 
   public static final String SERIES_ITEM_TYPE_ID = "Series"; //$NON-NLS-1$
 
@@ -68,11 +66,6 @@ public final class SeriesTypeConfiguration extends AbstractItemTypeConfiguration
   @Override
   protected String getLoadTitleKey() {
     return "CampaignPersistence.LoadDialog.Title"; //$NON-NLS-1$
-  }
-
-  @Override
-  protected IMenuItem[] createAddMenuEntries(IAnathemaView view, IAnathemaModel anathemaModel, IResources resources) {
-    return new IMenuItem[0];
   }
 
   @Override

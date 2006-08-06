@@ -9,21 +9,19 @@ import net.sf.anathema.campaign.view.BasicItemView;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.itemdata.model.IBasicItemData;
 import net.sf.anathema.framework.itemdata.view.IBasicItemView;
-import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
+import net.sf.anathema.framework.module.AbstractPersistableItemTypeConfiguration;
 import net.sf.anathema.framework.module.NullWizardPageFactory;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
 import net.sf.anathema.framework.presenter.IWizardFactory;
-import net.sf.anathema.framework.presenter.menu.IMenuItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
-import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
 
-public class NoteTypeConfiguration extends AbstractItemTypeConfiguration {
+public final class NoteTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
 
   public NoteTypeConfiguration() {
     super(new ItemType("Note", new RepositoryConfiguration(".not", "Notes/"))); //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$
@@ -61,11 +59,6 @@ public class NoteTypeConfiguration extends AbstractItemTypeConfiguration {
         return basicItemView;
       }
     };
-  }
-
-  @Override
-  protected IMenuItem[] createAddMenuEntries(IAnathemaView view, IAnathemaModel anathemaModel, IResources resources) {
-    return new IMenuItem[0];
   }
 
   @Override

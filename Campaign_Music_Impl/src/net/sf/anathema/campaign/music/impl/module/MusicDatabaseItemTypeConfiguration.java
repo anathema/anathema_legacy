@@ -18,7 +18,7 @@ import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
 
-public class MusicDatabaseItemTypeConfiguration extends AbstractNonPersistableItemTypeConfiguration {
+public final class MusicDatabaseItemTypeConfiguration extends AbstractNonPersistableItemTypeConfiguration {
 
   public static final String MUSIC_DATABASE_ITEM_TYPE_ID = "MusicDatabase"; //$NON-NLS-1$
 
