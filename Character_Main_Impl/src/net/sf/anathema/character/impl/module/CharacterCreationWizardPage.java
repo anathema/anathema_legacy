@@ -52,16 +52,6 @@ public class CharacterCreationWizardPage extends AbstractAnathemaWizardPage {
         }
       }, properties.getTypeString(type));
     }
-    ObjectSelectionView<IExaltedRuleSet> rulesView = view.addRulesetSelectionView(
-        properties.getRulesetLabel(),
-        properties.getRulesetRenderer(),
-        model.getAvailableRulesets());
-    rulesView.setSelectedObject(model.getSelectedRuleset());
-    rulesView.addObjectSelectionChangedListener(new IObjectValueChangedListener<IExaltedRuleSet>() {
-      public void valueChanged(IExaltedRuleSet newValue) {
-        model.setSelectedRuleset(newValue);
-      }
-    });
     final IListObjectSelectionView<ITemplateTypeAggregation> list = view.addObjectSelectionList();
     list.addObjectSelectionChangedListener(new IObjectValueChangedListener<ITemplateTypeAggregation>() {
       public void valueChanged(ITemplateTypeAggregation newValue) {
@@ -72,6 +62,17 @@ public class CharacterCreationWizardPage extends AbstractAnathemaWizardPage {
       }
     });
     list.setCellRenderer(properties.getTemplateRenderer());
+    ObjectSelectionView<IExaltedRuleSet> rulesView = view.addRulesetSelectionView(
+        properties.getRulesetLabel(),
+        properties.getRulesetRenderer(),
+        model.getAvailableRulesets());
+    rulesView.setSelectedObject(model.getSelectedRuleset());
+    rulesView.addObjectSelectionChangedListener(new IObjectValueChangedListener<IExaltedRuleSet>() {
+      public void valueChanged(IExaltedRuleSet newValue) {
+        model.setSelectedRuleset(newValue);
+      }
+    });
+    
     model.addListener(new IChangeListener() {
       public void changeOccured() {
         refreshList(list);

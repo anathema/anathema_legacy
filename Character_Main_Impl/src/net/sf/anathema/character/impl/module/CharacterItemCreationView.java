@@ -8,6 +8,7 @@ import javax.swing.ListCellRenderer;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.util.LayoutUtilities;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
@@ -16,7 +17,13 @@ import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 
 public class CharacterItemCreationView implements ICharacterItemCreationView {
 
-  private final JPanel component = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel component;
+
+  public CharacterItemCreationView() {
+    int horizontalSpacing = LayoutUtilities.getDpiAdjusted(10);
+    int vertialSpacing = LayoutUtilities.getComponentSpacing();
+    this.component = new JPanel(new GridDialogLayout(2, false, horizontalSpacing, vertialSpacing));
+  }
 
   public IToggleButtonPanel addToggleButtonPanel() {
     ToggleButtonPanel panel = new ToggleButtonPanel();
@@ -44,7 +51,6 @@ public class CharacterItemCreationView implements ICharacterItemCreationView {
     ListObjectSelectionView<ITemplateTypeAggregation> view = new ListObjectSelectionView<ITemplateTypeAggregation>(
         ITemplateTypeAggregation.class);
     GridDialogLayoutData data = new GridDialogLayoutData(GridDialogLayoutData.FILL_BOTH);
-    data.setVerticalAlignment(GridAlignment.BEGINNING);
     JScrollPane scrollPane = new JScrollPane(view.getContent());
     component.add(scrollPane, data);
     return view;
