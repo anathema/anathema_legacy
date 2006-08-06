@@ -38,6 +38,7 @@ public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
   }
 
   public void setSelectedObject(V object) {
+    //URS: Ich habe die Array-Konversion an dieser Stelle entfernt, weil ich einen Fehler vermutete.
     smartList.setSelectedObjects(object);
   }
 
