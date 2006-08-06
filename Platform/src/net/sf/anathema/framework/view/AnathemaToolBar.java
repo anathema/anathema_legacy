@@ -1,8 +1,7 @@
 package net.sf.anathema.framework.view;
 
+import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.Action;
 import javax.swing.Icon;
@@ -10,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JPopupMenu;
 import javax.swing.JToolBar;
 
+import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
 
 public class AnathemaToolBar implements IAnathemaToolbar {
@@ -31,40 +31,37 @@ public class AnathemaToolBar implements IAnathemaToolbar {
   }
 
   public void addTools(Action... toolBarActions) {
-    for (int i = 0; i < toolBarActions.length; i++) {
-      Action action = toolBarActions[i];
-      JButton button = toolBar.add(action);
-      setButtonSize(button, createDimension(button.getIcon()));
+    for (Action action : toolBarActions) {
+      addComponent(new JButton(action));
     }
   }
 
-  private Dimension createDimension(Icon icon) {
-    return new Dimension(icon.getIconWidth() + 4, icon.getIconHeight() + 4);
-
+  private void addComponent(JButton button) {
+    toolBar.add(button);
+    setButtonSize(button);
   }
 
-  private void setButtonSize(JButton button, Dimension dimension) {
+  private void setButtonSize(JButton button) {
+    Dimension dimension = new Dimension(button.getIcon().getIconWidth() + 4, button.getIcon().getIconHeight() + 4);
     button.setPreferredSize(dimension);
     button.setMinimumSize(dimension);
     button.setSize(dimension);
   }
 
   public void addMenu(Icon buttonIcon, Action[] menuActions, String toolTip) {
-    final JButton button = new JButton(buttonIcon);
     final JPopupMenu menu = new JPopupMenu();
     for (Action action : menuActions) {
       menu.add(action);
     }
-    button.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent ae) {
+    final JButton button = new JButton();
+    SmartAction action = new SmartAction(buttonIcon) {
+      @Override
+      protected void execute(Component parentComponent) {
         menu.show(button, 0, button.getHeight());
       }
-    });
-    button.add(menu);
-    button.setToolTipText(toolTip);
-    toolBar.add(button);
-    Dimension dimension = createDimension(buttonIcon);
-    setButtonSize(button, dimension);
-    button.setMaximumSize(dimension);
+    };
+    action.setToolTipText(toolTip);
+    button.setAction(action);
+    addComponent(button);
   }
 }
