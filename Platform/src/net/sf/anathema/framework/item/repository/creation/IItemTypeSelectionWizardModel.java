@@ -3,7 +3,7 @@ package net.sf.anathema.framework.item.repository.creation;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
-public interface INewItemWizardModel {
+public interface IItemTypeSelectionWizardModel {
 
   public void setSelectedValue(IItemType newValue);
 

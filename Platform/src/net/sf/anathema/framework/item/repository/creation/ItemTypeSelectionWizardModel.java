@@ -9,14 +9,14 @@ import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.registry.IRegistry;
 
-public class NewItemWizardModel implements INewItemWizardModel {
+public class ItemTypeSelectionWizardModel implements IItemTypeSelectionWizardModel {
 
   private IItemType value;
   private final IItemType[] itemTypes;
   private final ChangeControl control = new ChangeControl();
   private final Map<IItemType, IItemCreationTemplate> templatesByType = new HashMap<IItemType, IItemCreationTemplate>();
 
-  public NewItemWizardModel(IItemType[] allItemTypes, IRegistry<IItemType, IWizardFactory> registry) {
+  public ItemTypeSelectionWizardModel(IItemType[] allItemTypes, IRegistry<IItemType, IWizardFactory> registry) {
     this.itemTypes = allItemTypes;
     for (IItemType type : itemTypes) {
       templatesByType.put(type, registry.get(type).createTemplate());

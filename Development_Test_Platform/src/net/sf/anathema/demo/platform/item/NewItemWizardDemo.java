@@ -4,8 +4,8 @@ import net.sf.anathema.demo.platform.repository.tree.DemoResources;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IRepositoryConfiguration;
 import net.sf.anathema.framework.item.repository.creation.ItemTypeSelectionView;
-import net.sf.anathema.framework.item.repository.creation.NewItemWizardModel;
-import net.sf.anathema.framework.item.repository.creation.SelectItemTypePage;
+import net.sf.anathema.framework.item.repository.creation.ItemTypeSelectionWizardModel;
+import net.sf.anathema.framework.item.repository.creation.ItemTypeSelectionPage;
 import net.sf.anathema.framework.presenter.IWizardFactory;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
@@ -17,7 +17,7 @@ public class NewItemWizardDemo extends SwingDemoCase {
   public void demo() {
     DemoResources resources = new DemoResources();
     Registry<IItemType, IWizardFactory> registry = new Registry<IItemType, IWizardFactory>();
-    IAnathemaWizardPage page = new SelectItemTypePage(resources, registry, new NewItemWizardModel(
+    IAnathemaWizardPage page = new ItemTypeSelectionPage(resources, registry, new ItemTypeSelectionWizardModel(
         new IItemType[] { new IItemType() {
 
           public IRepositoryConfiguration getRepositoryConfiguration() {

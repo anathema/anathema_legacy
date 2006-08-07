@@ -7,11 +7,11 @@ import net.disy.commons.core.message.IBasicMessage;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.resources.IResources;
 
-public class SelectedItemTypeProperties {
+public class ItemTypeSelectionProperties {
 
   private final IResources resources;
 
-  public SelectedItemTypeProperties(IResources resources) {
+  public ItemTypeSelectionProperties(IResources resources) {
     this.resources = resources;
   }
 

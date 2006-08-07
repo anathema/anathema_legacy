@@ -14,22 +14,22 @@ import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
-public class SelectItemTypePage extends AbstractAnathemaWizardPage {
+public class ItemTypeSelectionPage extends AbstractAnathemaWizardPage {
 
-  private final SelectedItemTypeProperties properties;
+  private final ItemTypeSelectionProperties properties;
   private final IItemTypeSelectionView view;
-  private final INewItemWizardModel model;
+  private final IItemTypeSelectionWizardModel model;
   private final IRegistry<IItemType, IWizardFactory> followUpRegistry;
 
-  public SelectItemTypePage(
+  public ItemTypeSelectionPage(
       IResources resources,
       IRegistry<IItemType, IWizardFactory> registry,
-      INewItemWizardModel model,
+      IItemTypeSelectionWizardModel model,
       IItemTypeSelectionView view) {
     this.followUpRegistry = registry;
     this.model = model;
     this.view = view;
-    this.properties = new SelectedItemTypeProperties(resources);
+    this.properties = new ItemTypeSelectionProperties(resources);
   }
 
   @Override

@@ -22,10 +22,10 @@ import net.disy.commons.swing.util.GuiUtilities;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.repository.creation.IItemTypeSelectionView;
-import net.sf.anathema.framework.item.repository.creation.INewItemWizardModel;
+import net.sf.anathema.framework.item.repository.creation.IItemTypeSelectionWizardModel;
 import net.sf.anathema.framework.item.repository.creation.ItemTypeSelectionView;
-import net.sf.anathema.framework.item.repository.creation.NewItemWizardModel;
-import net.sf.anathema.framework.item.repository.creation.SelectItemTypePage;
+import net.sf.anathema.framework.item.repository.creation.ItemTypeSelectionWizardModel;
+import net.sf.anathema.framework.item.repository.creation.ItemTypeSelectionPage;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IWizardFactory;
@@ -58,9 +58,9 @@ public class AnathemaNewAction extends SmartAction {
   protected void execute(Component parentComponent) {
     try {
       IRegistry<IItemType, IWizardFactory> registry = anathemaModel.getCreationWizardFactoryRegistry();
-      INewItemWizardModel model = new NewItemWizardModel(collectItemTypes(anathemaModel), registry);
+      IItemTypeSelectionWizardModel model = new ItemTypeSelectionWizardModel(collectItemTypes(anathemaModel), registry);
       IItemTypeSelectionView view = new ItemTypeSelectionView();
-      SelectItemTypePage startPage = new SelectItemTypePage(resources, registry, model, view);
+      ItemTypeSelectionPage startPage = new ItemTypeSelectionPage(resources, registry, model, view);
       createItemFromWizard(parentComponent, model, startPage);
     }
     catch (Exception e) {
@@ -69,7 +69,7 @@ public class AnathemaNewAction extends SmartAction {
     }
   }
 
-  private void createItemFromWizard(Component parentComponent, INewItemWizardModel model, IAnathemaWizardPage startPage)
+  private void createItemFromWizard(Component parentComponent, IItemTypeSelectionWizardModel model, IAnathemaWizardPage startPage)
       throws PersistenceException {
     WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
     final ISwingFrameOrDialog configuredDialog = dialog.getConfiguredDialog();
@@ -113,7 +113,7 @@ public class AnathemaNewAction extends SmartAction {
     }
   }
 
-  private IItem createItem(INewItemWizardModel model) throws PersistenceException {
+  private IItem createItem(IItemTypeSelectionWizardModel model) throws PersistenceException {
     IRepositoryItemPersister persister = anathemaModel.getPersisterRegistry().get(model.getSelectedItemType());
     return persister.createNew(model.getTemplate(model.getSelectedItemType()));
   }
