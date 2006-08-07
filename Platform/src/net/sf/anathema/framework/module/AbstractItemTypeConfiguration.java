@@ -39,7 +39,7 @@ public abstract class AbstractItemTypeConfiguration {
   }
 
   public void registerCreationWizardFactory(IAnathemaModel anathemaModel, IResources resources) {
-    IRegistry<IItemType, IWizardFactory> viewFactoryRegistry = anathemaModel.getCreationWizardFactoryRegistry();
+    IRegistry<IItemType, IWizardFactory> viewFactoryRegistry = anathemaModel.getNewItemWizardFactoryRegistry();
     viewFactoryRegistry.register(type, createCreationWizardPageFactory(anathemaModel, resources));
   }
 

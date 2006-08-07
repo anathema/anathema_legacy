@@ -27,5 +27,5 @@ public interface IAnathemaModel {
 
   public IItemMangementModel getItemManagement();
 
-  public IRegistry<IItemType, IWizardFactory> getCreationWizardFactoryRegistry();
+  public IRegistry<IItemType, IWizardFactory> getNewItemWizardFactoryRegistry();
 }

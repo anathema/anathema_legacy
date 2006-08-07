@@ -7,7 +7,7 @@ import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.workflow.wizard.selection.IItemCreationTemplate;
+import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
 
 public interface IRepositoryItemPersister {
 
@@ -15,5 +15,5 @@ public interface IRepositoryItemPersister {
 
   public IItem load(IRepositoryReadAccess readAccess) throws PersistenceException, RepositoryException;
 
-  public IItem createNew(IItemCreationTemplate template) throws PersistenceException;
+  public IItem createNew(IAnathemaWizardModelTemplate template) throws PersistenceException;
 }

@@ -10,6 +10,4 @@ public interface IObjectSelectionWizardModel<T> {
   public T[] getRegisteredObjects();
 
   public void addListener(IChangeListener inputListener);
-
-  public IItemCreationTemplate getTemplate(T type);
 }

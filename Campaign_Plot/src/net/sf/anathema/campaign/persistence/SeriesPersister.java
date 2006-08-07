@@ -36,7 +36,7 @@ import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.workflow.wizard.selection.IItemCreationTemplate;
+import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
@@ -232,7 +232,7 @@ public class SeriesPersister extends AbstractPersister implements IRepositoryIte
     }
   }
 
-  public IItem createNew(IItemCreationTemplate template) {
+  public IItem createNew(IAnathemaWizardModelTemplate template) {
     ISeries seriesData = new Series(supportedTypes);
     return new AnathemaItem(campaignType, seriesData);
   }

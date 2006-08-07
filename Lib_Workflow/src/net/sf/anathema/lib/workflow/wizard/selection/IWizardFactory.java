@@ -6,7 +6,7 @@ public interface IWizardFactory {
 
   public boolean needsFurtherDetails();
   
-  public IAnathemaWizardPage createPage(IItemCreationTemplate template);
+  public IAnathemaWizardPage createPage(IAnathemaWizardModelTemplate template);
 
-  public IItemCreationTemplate createTemplate();
+  public IAnathemaWizardModelTemplate createTemplate();
 }

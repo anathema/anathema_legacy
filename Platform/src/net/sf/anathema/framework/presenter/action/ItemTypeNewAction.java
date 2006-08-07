@@ -21,10 +21,10 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.workflow.wizard.selection.IItemCreationTemplate;
+import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
 import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
 
-public class ItemTypeNewAction extends AbstractNewAction {
+public class ItemTypeNewAction extends AbstractItemAction {
 
   private final IItemType type;
 
@@ -53,8 +53,8 @@ public class ItemTypeNewAction extends AbstractNewAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    IWizardFactory factory = getAnathemaModel().getCreationWizardFactoryRegistry().get(type);
-    IItemCreationTemplate template = factory.createTemplate();
+    IWizardFactory factory = getAnathemaModel().getNewItemWizardFactoryRegistry().get(type);
+    IAnathemaWizardModelTemplate template = factory.createTemplate();
     if (factory.needsFurtherDetails()) {
       IAnathemaWizardPage startPage = factory.createPage(template);
       WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
@@ -76,7 +76,7 @@ public class ItemTypeNewAction extends AbstractNewAction {
     }
   }
 
-  private IItem createItem(IItemCreationTemplate template) throws PersistenceException {
+  private IItem createItem(IAnathemaWizardModelTemplate template) throws PersistenceException {
     IRepositoryItemPersister persister = getAnathemaModel().getPersisterRegistry().get(type);
     return persister.createNew(template);
   }

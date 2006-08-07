@@ -2,6 +2,7 @@ package net.sf.anathema.framework.presenter.action;
 
 import java.awt.Component;
 import java.awt.Cursor;
+import java.io.File;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -109,7 +110,14 @@ public final class ItemTypeLoadAction extends SmartAction {
     try {
       IRepositoryFileChooser fileChooser = new RepositoryFileChooser(anathemaModel.getRepository()
           .getPrintNameFileAccess(), anathemaModel.getItemManagement(), propertiesExtensionPoint);
-      final IRepositoryReadAccess readAccess = anathemaModel.getRepository().openReadAccess(itemType, fileChooser);
+      final File file = fileChooser.getRepositoryFile(itemType);
+      final IRepositoryReadAccess readAccess = anathemaModel.getRepository().openReadAccess(
+          itemType,
+          new IFileProvider() {
+            public File getFile() {
+              return file;
+            }
+          });
       final String itemTypeDisplay = resources.getString("ItemType." + itemType.getId() + ".PrintName"); //$NON-NLS-1$ //$NON-NLS-2$
       String title = resources.getString(
           "AnathemaPersistence.LoadAction.Progress.Title", new Object[] { itemTypeDisplay }); //$NON-NLS-1$

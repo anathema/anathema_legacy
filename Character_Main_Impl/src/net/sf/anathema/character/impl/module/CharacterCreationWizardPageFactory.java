@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.workflow.wizard.selection.IItemCreationTemplate;
+import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
 import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
 
 public class CharacterCreationWizardPageFactory implements IWizardFactory {
@@ -23,7 +23,7 @@ public class CharacterCreationWizardPageFactory implements IWizardFactory {
     this.resources = resources;
   }
 
-  public IAnathemaWizardPage createPage(IItemCreationTemplate template) {
+  public IAnathemaWizardPage createPage(IAnathemaWizardModelTemplate template) {
     if (!(template instanceof CharacterStatisticsConfiguration)) {
       throw new IllegalArgumentException("Bad template type for character creation wizard"); //$NON-NLS-1$
     }
@@ -35,7 +35,7 @@ public class CharacterCreationWizardPageFactory implements IWizardFactory {
     return new CharacterCreationWizardPage(model, view, resources);
   }
 
-  public IItemCreationTemplate createTemplate() {
+  public IAnathemaWizardModelTemplate createTemplate() {
     return new CharacterStatisticsConfiguration();
   }
 

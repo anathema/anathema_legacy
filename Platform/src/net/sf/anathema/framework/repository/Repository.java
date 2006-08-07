@@ -8,6 +8,7 @@ import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IRepositoryConfiguration;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
+import net.sf.anathema.framework.presenter.action.IFileProvider;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.repository.access.MultiFileReadAccess;
@@ -103,18 +104,16 @@ public class Repository implements IRepository {
     return getFile(type, id).exists();
   }
 
-  public IRepositoryReadAccess openReadAccess(IItemType type, IRepositoryFileChooser fileChooser)
-      throws RepositoryException {
-    File file = fileChooser.getRepositoryFile(type);
-    if (file == null) {
+  public IRepositoryReadAccess openReadAccess(IItemType type, IFileProvider provider) {
+    if (provider.getFile() == null) {
       return null;
     }
     if (type.getRepositoryConfiguration().isItemSavedToSingleFile()) {
-      return new SingleFileReadAccess(file);
+      return new SingleFileReadAccess(provider.getFile());
     }
     IRepositoryConfiguration repositoryConfiguration = type.getRepositoryConfiguration();
     return new MultiFileReadAccess(
-        file,
+        provider.getFile(),
         repositoryConfiguration.getMainFileName(),
         repositoryConfiguration.getFileExtension());
   }

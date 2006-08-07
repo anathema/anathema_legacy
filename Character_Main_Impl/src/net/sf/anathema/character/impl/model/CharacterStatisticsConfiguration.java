@@ -2,9 +2,9 @@ package net.sf.anathema.character.impl.model;
 
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.lib.workflow.wizard.selection.IItemCreationTemplate;
+import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
 
-public class CharacterStatisticsConfiguration implements IItemCreationTemplate {
+public class CharacterStatisticsConfiguration implements IAnathemaWizardModelTemplate {
 
   private ICharacterTemplate template;
   private IExaltedRuleSet ruleSet;

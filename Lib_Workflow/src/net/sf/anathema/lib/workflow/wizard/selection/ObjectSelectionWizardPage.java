@@ -10,19 +10,23 @@ import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.registry.IRegistry;
+import net.sf.anathema.lib.registry.Registry;
 
 public class ObjectSelectionWizardPage<V> extends AbstractAnathemaWizardPage {
   private final IRegistry<V, IWizardFactory> followUpRegistry;
   private final IObjectSelectionWizardModel<V> model;
   private final IObjectSelectionView<V> view;
   private final IObjectSelectionProperties properties;
+  private final Registry<V, IAnathemaWizardModelTemplate> modelTemplateRegistry;
 
   public ObjectSelectionWizardPage(
-      IRegistry<V, IWizardFactory> registry,
+      IRegistry<V, IWizardFactory> followUpRegistry,
+      Registry<V, IAnathemaWizardModelTemplate> modelTemplateRegistry,
       IObjectSelectionWizardModel<V> model,
       IObjectSelectionView<V> view,
       IObjectSelectionProperties properties) {
-    this.followUpRegistry = registry;
+    this.followUpRegistry = followUpRegistry;
+    this.modelTemplateRegistry = modelTemplateRegistry;
     this.model = model;
     this.view = view;
     this.properties = properties;
@@ -31,10 +35,11 @@ public class ObjectSelectionWizardPage<V> extends AbstractAnathemaWizardPage {
   @Override
   protected void addFollowUpPages(CheckInputListener inputListener) {
     for (final V type : model.getRegisteredObjects()) {
-      IAnathemaWizardPage followUpPage = followUpRegistry.get(type).createPage(model.getTemplate(type));
-      if (followUpPage == null) {
+      IWizardFactory wizardFactory = followUpRegistry.get(type);
+      if (!wizardFactory.needsFurtherDetails()) {
         continue;
       }
+      IAnathemaWizardPage followUpPage = wizardFactory.createPage(modelTemplateRegistry.get(type));
       addFollowupPage(followUpPage, inputListener, new ICondition() {
         public boolean isFullfilled() {
           return model.getSelectedObject() == type;

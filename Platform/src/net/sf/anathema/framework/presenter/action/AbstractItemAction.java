@@ -18,12 +18,12 @@ import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
 
-public abstract class AbstractNewAction extends SmartAction {
+public abstract class AbstractItemAction extends SmartAction {
 
   private final IResources resources;
   private final IAnathemaModel anathemaModel;
 
-  public AbstractNewAction(IAnathemaModel anathemaModel, IResources resources) {
+  public AbstractItemAction(IAnathemaModel anathemaModel, IResources resources) {
     this.anathemaModel = anathemaModel;
     this.resources = resources;
   }

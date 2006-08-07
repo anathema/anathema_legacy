@@ -59,7 +59,7 @@ public class AnathemaModel implements IAnathemaModel {
     return itemTypes;
   }
 
-  public IRegistry<IItemType, IWizardFactory> getCreationWizardFactoryRegistry() {
+  public IRegistry<IItemType, IWizardFactory> getNewItemWizardFactoryRegistry() {
     return wizardRegistry;
   }
 }

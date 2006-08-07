@@ -4,11 +4,10 @@ import javax.swing.JMenu;
 
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
-import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.action.AnathemaAboutAction;
 import net.sf.anathema.framework.presenter.action.AnathemaExitAction;
+import net.sf.anathema.framework.presenter.action.AnathemaLoadAction;
 import net.sf.anathema.framework.presenter.action.AnathemaNewAction;
-import net.sf.anathema.framework.presenter.action.ItemTypeLoadAction;
 import net.sf.anathema.framework.presenter.action.preferences.AnathemaPreferencesAction;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaCloseAction;
@@ -29,7 +28,7 @@ public class AnathemaCoreMenu implements IAnathemaMenu {
   public void add(IResources resources, IAnathemaModel model, IMenuBar menubar) {
     IMenu mainMenu = menubar.getMainMenu();
     mainMenu.addMenuItem(AnathemaNewAction.createMenuAction(model, resources));
-    mainMenu.addMenuItem(createLoadMenu(model, resources));
+    mainMenu.addMenuItem(AnathemaLoadAction.createMenuAction(model, resources));
     mainMenu.addMenuItem(AnathemaCloseAction.createMenuAction(model.getItemManagement(), resources));
     mainMenu.addSeparator();
     mainMenu.addMenuItem(AnathemaSaveAction.createMenuAction(model, resources));
@@ -65,14 +64,6 @@ public class AnathemaCoreMenu implements IAnathemaMenu {
     MenuExtensionPoint newExtensionPoint = (MenuExtensionPoint) extensionPointRegistry.get(extensionPointId);
     for (IMenuItem item : newExtensionPoint.getMenuItems()) {
       item.addToMenu(menu);
-    }
-    return menu;
-  }
-
-  private JMenu createLoadMenu(IAnathemaModel anathemaModel, IResources resources) {
-    JMenu menu = new JMenu(resources.getString("AnathemaPersistence.LoadMenu.Name")); //$NON-NLS-1$
-    for (IItemType itemType : anathemaModel.getPersisterRegistry().getIds(new IItemType[0])) {
-      menu.add(ItemTypeLoadAction.createMenuAction(anathemaModel, itemType, resources));
     }
     return menu;
   }
