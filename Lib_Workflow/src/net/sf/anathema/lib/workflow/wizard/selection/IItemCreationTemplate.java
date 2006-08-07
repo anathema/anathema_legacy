@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.item.repository.creation;
+package net.sf.anathema.lib.workflow.wizard.selection;
 
 public interface IItemCreationTemplate {
   //Tagging interface

@@ -21,14 +21,10 @@ import net.disy.commons.swing.dialog.wizard.WizardDialog;
 import net.disy.commons.swing.util.GuiUtilities;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.item.repository.creation.IItemTypeSelectionView;
-import net.sf.anathema.framework.item.repository.creation.IItemTypeSelectionWizardModel;
-import net.sf.anathema.framework.item.repository.creation.ItemTypeSelectionView;
+import net.sf.anathema.framework.item.repository.creation.ItemTypeSelectionProperties;
 import net.sf.anathema.framework.item.repository.creation.ItemTypeSelectionWizardModel;
-import net.sf.anathema.framework.item.repository.creation.ItemTypeSelectionPage;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
-import net.sf.anathema.framework.presenter.IWizardFactory;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -36,6 +32,11 @@ import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.workflow.wizard.selection.IObjectSelectionView;
+import net.sf.anathema.lib.workflow.wizard.selection.IObjectSelectionWizardModel;
+import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
+import net.sf.anathema.lib.workflow.wizard.selection.ListObjectSelectionPageView;
+import net.sf.anathema.lib.workflow.wizard.selection.ObjectSelectionWizardPage;
 
 public class AnathemaNewAction extends SmartAction {
 
@@ -58,9 +59,15 @@ public class AnathemaNewAction extends SmartAction {
   protected void execute(Component parentComponent) {
     try {
       IRegistry<IItemType, IWizardFactory> registry = anathemaModel.getCreationWizardFactoryRegistry();
-      IItemTypeSelectionWizardModel model = new ItemTypeSelectionWizardModel(collectItemTypes(anathemaModel), registry);
-      IItemTypeSelectionView view = new ItemTypeSelectionView();
-      ItemTypeSelectionPage startPage = new ItemTypeSelectionPage(resources, registry, model, view);
+      IObjectSelectionWizardModel<IItemType> model = new ItemTypeSelectionWizardModel(
+          collectItemTypes(anathemaModel),
+          registry);
+      IObjectSelectionView<IItemType> view = new ListObjectSelectionPageView<IItemType>(IItemType.class);
+      IAnathemaWizardPage startPage = new ObjectSelectionWizardPage<IItemType>(
+          registry,
+          model,
+          view,
+          new ItemTypeSelectionProperties(resources));
       createItemFromWizard(parentComponent, model, startPage);
     }
     catch (Exception e) {
@@ -69,8 +76,10 @@ public class AnathemaNewAction extends SmartAction {
     }
   }
 
-  private void createItemFromWizard(Component parentComponent, IItemTypeSelectionWizardModel model, IAnathemaWizardPage startPage)
-      throws PersistenceException {
+  private void createItemFromWizard(
+      Component parentComponent,
+      IObjectSelectionWizardModel<IItemType> model,
+      IAnathemaWizardPage startPage) throws PersistenceException {
     WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
     final ISwingFrameOrDialog configuredDialog = dialog.getConfiguredDialog();
     configuredDialog.setResizable(false);
@@ -113,9 +122,9 @@ public class AnathemaNewAction extends SmartAction {
     }
   }
 
-  private IItem createItem(IItemTypeSelectionWizardModel model) throws PersistenceException {
-    IRepositoryItemPersister persister = anathemaModel.getPersisterRegistry().get(model.getSelectedItemType());
-    return persister.createNew(model.getTemplate(model.getSelectedItemType()));
+  private IItem createItem(IObjectSelectionWizardModel<IItemType> model) throws PersistenceException {
+    IRepositoryItemPersister persister = anathemaModel.getPersisterRegistry().get(model.getSelectedObject());
+    return persister.createNew(model.getTemplate(model.getSelectedObject()));
   }
 
   private static IItemType[] collectItemTypes(IAnathemaModel model) {

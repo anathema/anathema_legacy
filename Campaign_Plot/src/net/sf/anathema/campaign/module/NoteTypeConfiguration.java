@@ -13,13 +13,13 @@ import net.sf.anathema.framework.module.AbstractPersistableItemTypeConfiguration
 import net.sf.anathema.framework.module.NullWizardPageFactory;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
-import net.sf.anathema.framework.presenter.IWizardFactory;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
 
 public final class NoteTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
 

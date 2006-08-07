@@ -4,13 +4,13 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.model.AnathemaModel;
-import net.sf.anathema.framework.presenter.IWizardFactory;
 import net.sf.anathema.framework.presenter.menu.IMenuExtensionPoint;
 import net.sf.anathema.framework.presenter.menu.IMenuItem;
 import net.sf.anathema.framework.presenter.menu.MenuExtensionPoint;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
 
 public abstract class AbstractNonPersistableItemTypeConfiguration extends AbstractItemTypeConfiguration {
 

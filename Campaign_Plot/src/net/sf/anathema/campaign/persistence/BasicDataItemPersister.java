@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.item.repository.creation.IItemCreationTemplate;
 import net.sf.anathema.framework.itemdata.model.BasicItemData;
 import net.sf.anathema.framework.itemdata.model.IBasicItemData;
 import net.sf.anathema.framework.persistence.AbstractSingleFileItemPersister;
@@ -12,6 +11,7 @@ import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.repository.AnathemaItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.workflow.wizard.selection.IItemCreationTemplate;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 
 import org.dom4j.Document;

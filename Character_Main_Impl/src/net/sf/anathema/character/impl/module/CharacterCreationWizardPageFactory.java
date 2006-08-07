@@ -3,10 +3,10 @@ package net.sf.anathema.character.impl.module;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
-import net.sf.anathema.framework.item.repository.creation.IItemCreationTemplate;
-import net.sf.anathema.framework.presenter.IWizardFactory;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.workflow.wizard.selection.IItemCreationTemplate;
+import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
 
 public class CharacterCreationWizardPageFactory implements IWizardFactory {
 

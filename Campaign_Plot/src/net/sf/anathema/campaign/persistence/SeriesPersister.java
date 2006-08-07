@@ -23,7 +23,6 @@ import net.sf.anathema.campaign.model.plot.IPlotElement;
 import net.sf.anathema.campaign.model.plot.IPlotModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
-import net.sf.anathema.framework.item.repository.creation.IItemCreationTemplate;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.framework.itemdata.model.ItemDescription;
 import net.sf.anathema.framework.persistence.AbstractPersister;
@@ -37,6 +36,7 @@ import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.workflow.wizard.selection.IItemCreationTemplate;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 import net.sf.anathema.lib.xml.ElementUtilities;
 

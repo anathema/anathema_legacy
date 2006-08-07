@@ -6,10 +6,10 @@ import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
-import net.sf.anathema.framework.presenter.IWizardFactory;
 import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.lib.registry.IRegistry;
+import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
 
 public interface IAnathemaModel {
 

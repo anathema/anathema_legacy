@@ -5,12 +5,12 @@ import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.model.AnathemaModel;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
-import net.sf.anathema.framework.presenter.IWizardFactory;
 import net.sf.anathema.framework.presenter.item.DefaultItemTypeViewProperties;
 import net.sf.anathema.framework.presenter.item.ItemTypeViewPropertiesExtensionPoint;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
 
 public abstract class AbstractItemTypeConfiguration {
 

@@ -4,12 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.presenter.IWizardFactory;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.registry.IRegistry;
+import net.sf.anathema.lib.workflow.wizard.selection.IItemCreationTemplate;
+import net.sf.anathema.lib.workflow.wizard.selection.IObjectSelectionWizardModel;
+import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
 
-public class ItemTypeSelectionWizardModel implements IItemTypeSelectionWizardModel {
+public class ItemTypeSelectionWizardModel implements IObjectSelectionWizardModel<IItemType> {
 
   private IItemType value;
   private final IItemType[] itemTypes;
@@ -23,16 +25,16 @@ public class ItemTypeSelectionWizardModel implements IItemTypeSelectionWizardMod
     }
   }
 
-  public IItemType getSelectedItemType() {
+  public IItemType getSelectedObject() {
     return value;
   }
 
-  public void setSelectedValue(IItemType value) {
+  public void setSelectedObject(IItemType value) {
     this.value = value;
     control.fireChangedEvent();
   }
 
-  public IItemType[] getRegisteredItemTypes() {
+  public IItemType[] getRegisteredObjects() {
     return itemTypes;
   }
 

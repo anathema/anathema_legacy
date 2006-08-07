@@ -1,6 +1,5 @@
-package net.sf.anathema.framework.presenter;
+package net.sf.anathema.lib.workflow.wizard.selection;
 
-import net.sf.anathema.framework.item.repository.creation.IItemCreationTemplate;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 
 public interface IWizardFactory {
