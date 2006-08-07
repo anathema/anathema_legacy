@@ -109,7 +109,6 @@ public final class ItemTypeLoadAction extends SmartAction {
     try {
       IRepositoryFileChooser fileChooser = new RepositoryFileChooser(anathemaModel.getRepository()
           .getPrintNameFileAccess(), anathemaModel.getItemManagement(), propertiesExtensionPoint);
-      // todo: unterschiedliche FileChooser für Single und Multi...
       final IRepositoryReadAccess readAccess = anathemaModel.getRepository().openReadAccess(itemType, fileChooser);
       final String itemTypeDisplay = resources.getString("ItemType." + itemType.getId() + ".PrintName"); //$NON-NLS-1$ //$NON-NLS-2$
       String title = resources.getString(
