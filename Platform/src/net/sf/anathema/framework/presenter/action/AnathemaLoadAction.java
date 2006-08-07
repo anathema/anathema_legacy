@@ -9,9 +9,12 @@ import javax.swing.KeyStroke;
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.framework.item.repository.creation.ItemTypeSelectionProperties;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
+import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
 import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
@@ -20,6 +23,7 @@ import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
+import net.sf.anathema.lib.workflow.wizard.selection.ILegalityProvider;
 import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
 
 public class AnathemaLoadAction extends AbstractAnathemaItemAction {
@@ -33,15 +37,38 @@ public class AnathemaLoadAction extends AbstractAnathemaItemAction {
   public AnathemaLoadAction(IAnathemaModel model, IResources resources) {
     super(model, resources);
     setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_L, Event.CTRL_MASK));
+    adjustEnabled();
+    model.getItemManagement().addListener(new ItemManagementModelAdapter() {
+      @Override
+      public void itemRemoved(IItem item) {
+        adjustEnabled();
+      }
+
+      @Override
+      public void itemAdded(IItem item) {
+        adjustEnabled();
+      }
+    });
+  }
+
+  @Override
+  protected ILegalityProvider<IItemType> getLegalityProvider() {
+    return new ILegalityProvider<IItemType>() {
+      public boolean isLegal(IItemType value) {
+        return getRepository().containsClosed(value);
+      }
+    };
+  }
+
+  private void adjustEnabled() {
+    setEnabled(getRepository().containsClosed(collectItemTypes(getAnathemaModel())));
   }
 
   @Override
   protected IItem createItem(IItemType type, IAnathemaWizardModelTemplate template) throws PersistenceException {
     IRepositoryItemPersister persister = getAnathemaModel().getPersisterRegistry().get(type);
     try {
-      IRepositoryReadAccess readAccess = getAnathemaModel().getRepository().openReadAccess(
-          type,
-          (IFileProvider) template);
+      IRepositoryReadAccess readAccess = getRepository().openReadAccess(type, (IFileProvider) template);
       return persister.load(readAccess);
     }
     catch (RepositoryException e) {
@@ -49,11 +76,15 @@ public class AnathemaLoadAction extends AbstractAnathemaItemAction {
     }
   }
 
+  private IRepository getRepository() {
+    return getAnathemaModel().getRepository();
+  }
+
   @Override
   protected IRegistry<IItemType, IWizardFactory> getFollowUpWizardFactoryRegistry() {
     Registry<IItemType, IWizardFactory> registry = new Registry<IItemType, IWizardFactory>();
     IItemType[] types = collectItemTypes(getAnathemaModel());
-    IPrintNameFileAccess printNameFileAccess = getAnathemaModel().getRepository().getPrintNameFileAccess();
+    IPrintNameFileAccess printNameFileAccess = getRepository().getPrintNameFileAccess();
     IItemMangementModel itemManagement = getAnathemaModel().getItemManagement();
     for (IItemType type : types) {
       registry.register(type, new LoadItemWizardPageFactory(type, printNameFileAccess, itemManagement, getResources()));

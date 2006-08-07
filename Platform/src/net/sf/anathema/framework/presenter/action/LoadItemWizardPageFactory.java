@@ -15,6 +15,7 @@ import net.sf.anathema.lib.workflow.wizard.selection.IObjectSelectionProperties;
 import net.sf.anathema.lib.workflow.wizard.selection.IObjectSelectionView;
 import net.sf.anathema.lib.workflow.wizard.selection.IObjectSelectionWizardModel;
 import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
+import net.sf.anathema.lib.workflow.wizard.selection.LenientLegalityProvider;
 import net.sf.anathema.lib.workflow.wizard.selection.ListObjectSelectionPageView;
 import net.sf.anathema.lib.workflow.wizard.selection.ObjectSelectionWizardModel;
 import net.sf.anathema.lib.workflow.wizard.selection.ObjectSelectionWizardPage;
@@ -43,7 +44,8 @@ public class LoadItemWizardPageFactory implements IWizardFactory {
     }
     PrintNameFile[] printNameFiles = access.collectPrintNameFiles(type, itemManagement);
     final IObjectSelectionWizardModel<PrintNameFile> model = new ObjectSelectionWizardModel<PrintNameFile>(
-        printNameFiles);
+        printNameFiles,
+        new LenientLegalityProvider<PrintNameFile>());
     model.addListener(new IChangeListener() {
       public void changeOccured() {
         ((ConfigurableFileProvider) template).setFile(model.getSelectedObject().getFile());

@@ -14,6 +14,7 @@ import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
+import net.sf.anathema.lib.workflow.wizard.selection.ILegalityProvider;
 import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
 import net.sf.anathema.lib.workflow.wizard.selection.ListObjectSelectionPageView;
 import net.sf.anathema.lib.workflow.wizard.selection.ObjectSelectionWizardModel;
@@ -29,7 +30,8 @@ public abstract class AbstractAnathemaItemAction extends AbstractItemAction {
   protected final void execute(Component parentComponent) {
     try {
       ObjectSelectionWizardModel<IItemType> model = new ObjectSelectionWizardModel<IItemType>(
-          collectItemTypes(getAnathemaModel()));
+          collectItemTypes(getAnathemaModel()),
+          getLegalityProvider());
       IRegistry<IItemType, IWizardFactory> followUpWizardFactoryRegistry = getFollowUpWizardFactoryRegistry();
       Registry<IItemType, IAnathemaWizardModelTemplate> registry = createModelTemplateRegistry(followUpWizardFactoryRegistry);
       IAnathemaWizardPage startPage = new ObjectSelectionWizardPage<IItemType>(
@@ -37,7 +39,7 @@ public abstract class AbstractAnathemaItemAction extends AbstractItemAction {
           registry,
           model,
           new ListObjectSelectionPageView<IItemType>(IItemType.class),
-          new ItemTypeSelectionProperties(getResources()));
+          createSelectionProperties());
       boolean canceled = showDialog(parentComponent, startPage);
       if (canceled) {
         return;
@@ -52,8 +54,9 @@ public abstract class AbstractAnathemaItemAction extends AbstractItemAction {
     }
   }
 
-  protected abstract IItem createItem(IItemType type, IAnathemaWizardModelTemplate template)
-      throws PersistenceException;
+  private ItemTypeSelectionProperties createSelectionProperties() {
+    return new ItemTypeSelectionProperties(getResources(), getLegalityProvider());
+  }
 
   private Registry<IItemType, IAnathemaWizardModelTemplate> createModelTemplateRegistry(
       IRegistry<IItemType, IWizardFactory> followUpWizardFactoryRegistry) {
@@ -64,5 +67,10 @@ public abstract class AbstractAnathemaItemAction extends AbstractItemAction {
     return registry;
   }
 
+  protected abstract ILegalityProvider<IItemType> getLegalityProvider();
+
   protected abstract IRegistry<IItemType, IWizardFactory> getFollowUpWizardFactoryRegistry();
+
+  protected abstract IItem createItem(IItemType type, IAnathemaWizardModelTemplate template)
+      throws PersistenceException;
 }

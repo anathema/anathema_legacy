@@ -118,7 +118,11 @@ public class Repository implements IRepository {
         repositoryConfiguration.getFileExtension());
   }
 
-  public boolean containsClosed(IItemType type) {
-    return printNameFileAccess.collectPrintNameFiles(type, itemManagement).length > 0;
+  public boolean containsClosed(IItemType... types) {
+    int closedObjects = 0;
+    for (IItemType type : types) {
+      closedObjects += printNameFileAccess.collectPrintNameFiles(type, itemManagement).length;
+    }
+    return closedObjects > 0;
   }
 }

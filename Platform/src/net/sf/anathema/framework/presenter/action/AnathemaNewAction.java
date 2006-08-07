@@ -15,7 +15,9 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
+import net.sf.anathema.lib.workflow.wizard.selection.ILegalityProvider;
 import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
+import net.sf.anathema.lib.workflow.wizard.selection.LenientLegalityProvider;
 
 public class AnathemaNewAction extends AbstractAnathemaItemAction {
 
@@ -28,6 +30,11 @@ public class AnathemaNewAction extends AbstractAnathemaItemAction {
   public AnathemaNewAction(IAnathemaModel anathemaModel, IResources resources) {
     super(anathemaModel, resources);
     setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_N, Event.CTRL_MASK));
+  }
+
+  @Override
+  protected ILegalityProvider<IItemType> getLegalityProvider() {
+    return new LenientLegalityProvider<IItemType>();
   }
 
   @Override

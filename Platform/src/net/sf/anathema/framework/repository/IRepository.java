@@ -16,7 +16,7 @@ public interface IRepository {
 
   public IPrintNameFileAccess getPrintNameFileAccess();
 
-  public boolean containsClosed(IItemType type);
-
   public File getRepositoryFolder();
+
+  public boolean containsClosed(IItemType... type);
 }

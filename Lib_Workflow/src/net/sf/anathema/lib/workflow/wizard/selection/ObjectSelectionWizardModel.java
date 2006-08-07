@@ -8,9 +8,11 @@ public class ObjectSelectionWizardModel<V> implements IObjectSelectionWizardMode
   private V value;
   private final V[] allObjects;
   private final ChangeControl control = new ChangeControl();
+  private final ILegalityProvider<V> provider;
 
-  public ObjectSelectionWizardModel(V[] allObjects) {
+  public ObjectSelectionWizardModel(V[] allObjects, ILegalityProvider<V> provider) {
     this.allObjects = allObjects;
+    this.provider = provider;
   }
 
   public V getSelectedObject() {
@@ -21,7 +23,9 @@ public class ObjectSelectionWizardModel<V> implements IObjectSelectionWizardMode
     if (value == this.value) {
       return;
     }
-    this.value = value;
+    if (provider.isLegal(value)) {
+      this.value = value;
+    }
     control.fireChangedEvent();
   }
 

@@ -2,6 +2,7 @@ package net.sf.anathema.lib.workflow.wizard.selection;
 
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.core.IPageContent;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.list.ListSelectionMode;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
@@ -55,13 +56,21 @@ public class ObjectSelectionWizardPage<V> extends AbstractAnathemaWizardPage {
 
   @Override
   protected void initPageContent() {
-    IListObjectSelectionView<V> listView = view.addSelectionView();
+    final IListObjectSelectionView<V> listView = view.addSelectionView();
     listView.setObjects(model.getRegisteredObjects());
     listView.setSelectionType(ListSelectionMode.SingleSelection);
     listView.setCellRenderer(properties.getCellRenderer());
     listView.addObjectSelectionChangedListener(new IObjectValueChangedListener<V>() {
       public void valueChanged(V newValue) {
+        if (newValue == null) {
+          return;
+        }
         model.setSelectedObject(newValue);
+      }
+    });
+    model.addListener(new IChangeListener() {
+      public void changeOccured() {
+        listView.setSelectedObject(model.getSelectedObject());
       }
     });
   }
