@@ -9,13 +9,18 @@ import net.disy.commons.core.message.Message;
 import net.disy.commons.core.progress.IProgressMonitor;
 import net.disy.commons.core.progress.IRunnableWithProgress;
 import net.disy.commons.swing.action.SmartAction;
+import net.disy.commons.swing.dialog.core.ISwingFrameOrDialog;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.disy.commons.swing.dialog.progress.ProgressMonitorDialog;
+import net.disy.commons.swing.dialog.wizard.WizardDialog;
+import net.disy.commons.swing.util.GuiUtilities;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.AnathemaException;
+import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
+import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractItemAction extends SmartAction {
@@ -26,6 +31,15 @@ public abstract class AbstractItemAction extends SmartAction {
   public AbstractItemAction(IAnathemaModel anathemaModel, IResources resources) {
     this.anathemaModel = anathemaModel;
     this.resources = resources;
+  }
+
+  protected final boolean showDialog(Component parentComponent, IAnathemaWizardPage startPage) {
+    WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
+    final ISwingFrameOrDialog configuredDialog = dialog.getConfiguredDialog();
+    configuredDialog.setResizable(false);
+    GuiUtilities.centerToParent(configuredDialog.getWindow());
+    configuredDialog.show();
+    return dialog.isCanceled();
   }
 
   protected final void createView(Component parentComponent, final IItem item) {

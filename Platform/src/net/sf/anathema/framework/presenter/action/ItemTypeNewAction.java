@@ -8,9 +8,6 @@ import javax.swing.Action;
 import javax.swing.Icon;
 
 import net.disy.commons.core.message.Message;
-import net.disy.commons.swing.dialog.core.ISwingFrameOrDialog;
-import net.disy.commons.swing.dialog.wizard.WizardDialog;
-import net.disy.commons.swing.util.GuiUtilities;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
@@ -18,7 +15,6 @@ import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
@@ -57,12 +53,8 @@ public class ItemTypeNewAction extends AbstractItemAction {
     IAnathemaWizardModelTemplate template = factory.createTemplate();
     if (factory.needsFurtherDetails()) {
       IAnathemaWizardPage startPage = factory.createPage(template);
-      WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
-      final ISwingFrameOrDialog configuredDialog = dialog.getConfiguredDialog();
-      configuredDialog.setResizable(false);
-      GuiUtilities.centerToParent(configuredDialog.getWindow());
-      configuredDialog.show();
-      if (dialog.isCanceled()) {
+      boolean canceled = showDialog(parentComponent, startPage);
+      if (canceled) {
         return;
       }
     }
