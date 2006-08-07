@@ -4,6 +4,7 @@ import javax.swing.Action;
 
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.presenter.action.ItemTypeLoadAction;
+import net.sf.anathema.framework.presenter.action.ItemTypeNewAction;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAction;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAllAction;
 import net.sf.anathema.framework.presenter.toolbar.IAnathemaTool;

@@ -7,6 +7,7 @@ import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.action.AnathemaAboutAction;
 import net.sf.anathema.framework.presenter.action.AnathemaExitAction;
+import net.sf.anathema.framework.presenter.action.AnathemaNewAction;
 import net.sf.anathema.framework.presenter.action.ItemTypeLoadAction;
 import net.sf.anathema.framework.presenter.action.preferences.AnathemaPreferencesAction;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;

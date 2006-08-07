@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.module;
+package net.sf.anathema.framework.presenter.action;
 
 import java.awt.Component;
 import java.awt.Event;
