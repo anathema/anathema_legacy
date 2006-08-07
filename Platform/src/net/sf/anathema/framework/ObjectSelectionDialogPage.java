@@ -12,8 +12,8 @@ import net.sf.anathema.framework.repository.IObjectSelectionProperties;
 
 public class ObjectSelectionDialogPage extends AbstractDialogPage {
 
-  private JPanel content = new JPanel(new BorderLayout());
-  private JComboBox comboBox;
+  private final JPanel content = new JPanel(new BorderLayout());
+  private final JComboBox comboBox;
   private final IObjectSelectionProperties properties;
 
   public ObjectSelectionDialogPage(Object[] objects, IObjectSelectionProperties properties) {
