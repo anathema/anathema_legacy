@@ -3,7 +3,6 @@ package net.sf.anathema.initialization;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import net.sf.anathema.framework.InitializationException;
 import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
 import net.sf.anathema.initialization.plugin.IAnathemaPluginManager;
 

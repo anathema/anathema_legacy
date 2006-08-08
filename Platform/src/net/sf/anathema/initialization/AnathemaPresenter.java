@@ -3,9 +3,7 @@ package net.sf.anathema.initialization;
 import java.util.Collection;
 
 import net.sf.anathema.development.DevelopmentEnvironmentPresenter;
-import net.sf.anathema.framework.IAnathemaBootJob;
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.InitializationException;
 import net.sf.anathema.framework.environment.AnathemaEnvironment;
 import net.sf.anathema.framework.initialization.IReportFactory;
 import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;

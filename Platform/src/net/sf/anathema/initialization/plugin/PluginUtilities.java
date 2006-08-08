@@ -3,7 +3,7 @@ package net.sf.anathema.initialization.plugin;
 import java.util.Collection;
 
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
-import net.sf.anathema.framework.InitializationException;
+import net.sf.anathema.initialization.InitializationException;
 
 import org.java.plugin.registry.Extension;
 import org.java.plugin.registry.Extension.Parameter;

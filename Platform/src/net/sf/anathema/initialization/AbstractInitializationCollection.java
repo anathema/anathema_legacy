@@ -1,6 +1,5 @@
 package net.sf.anathema.initialization;
 
-import net.sf.anathema.framework.InitializationException;
 import net.sf.anathema.initialization.plugin.IAnathemaPluginManager;
 import net.sf.anathema.initialization.plugin.IPluginConstants;
 import net.sf.anathema.initialization.plugin.PluginUtilities;

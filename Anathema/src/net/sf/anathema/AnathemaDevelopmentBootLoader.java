@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Properties;
 
-import net.sf.anathema.framework.InitializationException;
+import net.sf.anathema.initialization.InitializationException;
 
 import org.java.plugin.ObjectFactory;
 import org.java.plugin.PluginManager;

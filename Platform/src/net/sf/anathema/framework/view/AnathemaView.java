@@ -14,6 +14,7 @@ import net.sf.anathema.framework.presenter.AnathemaViewProperties;
 import net.sf.anathema.framework.view.item.IItemViewManagement;
 import net.sf.anathema.framework.view.item.ItemViewManagement;
 import net.sf.anathema.framework.view.menu.AnathemaMenuBar;
+import net.sf.anathema.framework.view.toolbar.AnathemaToolBar;
 import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
 import net.sf.anathema.lib.gui.GuiUtilities;
 import net.sf.anathema.lib.gui.TranslucentSplashScreen;

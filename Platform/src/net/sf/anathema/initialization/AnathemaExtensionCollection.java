@@ -3,7 +3,6 @@ package net.sf.anathema.initialization;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import net.sf.anathema.framework.InitializationException;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.initialization.plugin.IAnathemaPluginManager;
 

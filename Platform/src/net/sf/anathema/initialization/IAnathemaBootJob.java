@@ -1,5 +1,6 @@
-package net.sf.anathema.framework;
+package net.sf.anathema.initialization;
 
+import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.lib.resources.IResources;
 

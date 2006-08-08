@@ -4,7 +4,6 @@ import java.awt.AWTException;
 
 import net.disy.commons.core.exception.CentralExceptionHandling;
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.InitializationException;
 import net.sf.anathema.framework.configuration.IAnathemaPreferences;
 import net.sf.anathema.framework.environment.AnathemaEnvironment;
 import net.sf.anathema.framework.exception.CentralExceptionHandler;

@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.view;
+package net.sf.anathema.framework.view.toolbar;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -10,7 +10,6 @@ import javax.swing.JPopupMenu;
 import javax.swing.JToolBar;
 
 import net.disy.commons.swing.action.SmartAction;
-import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
 
 public class AnathemaToolBar implements IAnathemaToolbar {
 

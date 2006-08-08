@@ -2,7 +2,7 @@ package net.sf.anathema.initialization.plugin;
 
 import java.util.Collection;
 
-import net.sf.anathema.framework.InitializationException;
+import net.sf.anathema.initialization.InitializationException;
 
 import org.java.plugin.PluginLifecycleException;
 import org.java.plugin.PluginManager;
