@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 
 public class CheckAttributeAllowedFixture extends AbstractCharacterColumnFixture {
 
@@ -12,8 +13,8 @@ public class CheckAttributeAllowedFixture extends AbstractCharacterColumnFixture
   public int essenceValue;
 
   public boolean isAppearanceValueAllowed() {
-    getCharacterStatistics().getTraitConfiguration().getTrait(AttributeType.Appearance).setCurrentValue(0);
-    getCharacterStatistics().getTraitConfiguration().getTrait(OtherTraitType.Essence).setCurrentValue(essenceValue);
+    getAppearance().setCurrentValue(0);
+    getEssence().setCurrentValue(essenceValue);
     ValuedTraitType appearance = new ValuedTraitType(AttributeType.Appearance, appearanceValue);
     ILimitationContext limitationContext = getCharacterStatistics().getCharacterContext()
         .getTraitContext()
@@ -25,10 +26,12 @@ public class CheckAttributeAllowedFixture extends AbstractCharacterColumnFixture
 
   }
 
+  private IModifiableTrait getEssence() {
+    return (IModifiableTrait) getCharacterStatistics().getTraitConfiguration().getTrait(OtherTraitType.Essence);
+  }
+
   public boolean isEssenceValueAllowed() {
-    getCharacterStatistics().getTraitConfiguration()
-        .getTrait(AttributeType.Appearance)
-        .setCurrentValue(appearanceValue);
+    getAppearance().setCurrentValue(appearanceValue);
     ValuedTraitType essence = new ValuedTraitType(OtherTraitType.Essence, essenceValue);
     ILimitationContext limitationContext = getCharacterStatistics().getCharacterContext()
         .getTraitContext()
@@ -37,5 +40,9 @@ public class CheckAttributeAllowedFixture extends AbstractCharacterColumnFixture
         .getAdditionalRules()
         .getAdditionalTraitRules()
         .isAllowedTraitValue(essence, limitationContext);
+  }
+
+  private IModifiableTrait getAppearance() {
+    return (IModifiableTrait) getCharacterStatistics().getTraitConfiguration().getTrait(AttributeType.Appearance);
   }
 }

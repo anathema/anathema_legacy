@@ -7,10 +7,11 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
-import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
 import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
+import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
@@ -28,12 +29,12 @@ public class CharacterTraitListening {
   }
 
   public void initListening() {
-    for (IModifiableTrait attribute : traitConfiguration.getTraits(AttributeType.values())) {
+    for (ITrait attribute : traitConfiguration.getTraits(AttributeType.values())) {
       listening.addTraitListening(attribute);
     }
     initAbilityListening();
     initBackgroundListening();
-    for (IModifiableTrait virtue : traitConfiguration.getTraits(VirtueType.values())) {
+    for (ITrait virtue : traitConfiguration.getTraits(VirtueType.values())) {
       listening.addTraitListening(virtue);
     }
     listening.addTraitListening(traitConfiguration.getTrait(OtherTraitType.Willpower));
@@ -59,7 +60,7 @@ public class CharacterTraitListening {
     ITraitType[] allAbilityTypes = TraitTypeGroup.getAllTraitTypes(groups);
     ISpecialtyConfiguration specialtyConfiguration = traitConfiguration.getSpecialtyConfiguration();
     for (ITraitType traitType : allAbilityTypes) {
-      IFavorableModifiableTrait ability = traitConfiguration.getFavorableTrait(traitType);
+      IFavorableTrait ability = traitConfiguration.getFavorableTrait(traitType);
       listening.addTraitListening(ability);
       ability.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
         public void favorableStateChanged(FavorableState state) {

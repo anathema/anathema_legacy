@@ -5,22 +5,23 @@ import java.util.Map;
 import java.util.Set;
 
 import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
+import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.lib.collection.ListOrderedSet;
 
 public abstract class AbstractFavorableTraitCostCalculator implements IFavorableTraitCostCalculator {
 
-  private final Map<IFavorableModifiableTrait, FavorableTraitCost> costsByTrait = new HashMap<IFavorableModifiableTrait, FavorableTraitCost>();
+  private final Map<IFavorableTrait, FavorableTraitCost> costsByTrait = new HashMap<IFavorableTrait, FavorableTraitCost>();
   private int favoredPicksSpent;
   private int favoredDotSum = 0;
   private int generalDotSum = 0;
   private final IAdditionalTraitBonusPointManagement additionalPools;
   private final IFavorableTraitCreationPoints points;
-  private final IFavorableModifiableTrait[] traits;
+  private final IFavorableTrait[] traits;
 
   public AbstractFavorableTraitCostCalculator(
       IAdditionalTraitBonusPointManagement additionalPools,
       IFavorableTraitCreationPoints points,
-      IFavorableModifiableTrait[] traits) {
+      IFavorableTrait[] traits) {
     this.additionalPools = additionalPools;
     this.points = points;
     this.traits = traits;
@@ -32,11 +33,11 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     generalDotSum = 0;
     costsByTrait.clear();
   }
-  
+
   public void calculateCosts() {
     clear();
-    Set<IFavorableModifiableTrait> sortedTraits = sortTraitsByStatus();
-    for (IFavorableModifiableTrait trait : sortedTraits) {
+    Set<IFavorableTrait> sortedTraits = sortTraitsByStatus();
+    for (IFavorableTrait trait : sortedTraits) {
       int costFactor = getCostFactor(trait);
       FavorableTraitCost cost;
       if (trait.getFavorization().isCasteOrFavored()) {
@@ -50,7 +51,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     }
   }
 
-  private FavorableTraitCost handleGeneralTrait(IFavorableModifiableTrait trait, int bonusPointCostFactor) {
+  private FavorableTraitCost handleGeneralTrait(IFavorableTrait trait, int bonusPointCostFactor) {
     int pointsToAdd = Math.min(trait.getCalculationValue(), 3);
     int generalDotsSpent = 0;
     int bonusPointsSpent = 0;
@@ -67,7 +68,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     return new FavorableTraitCost(bonusPointsSpent, generalDotsSpent, 0);
   }
 
-  private FavorableTraitCost handleFavoredTrait(IFavorableModifiableTrait trait, int bonusPointCostFactor) {
+  private FavorableTraitCost handleFavoredTrait(IFavorableTrait trait, int bonusPointCostFactor) {
     if (trait.getFavorization().isFavored()) {
       increaseFavoredPicksSpent();
     }
@@ -96,24 +97,24 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     return new FavorableTraitCost(bonusPointsSpent, generalDotsSpent, favoredDotsSpent);
   }
 
-  protected abstract int getCostFactor(IFavorableModifiableTrait trait);
+  protected abstract int getCostFactor(IFavorableTrait trait);
 
   public int getFreePointsSpent(boolean favored) {
     return favored ? favoredDotSum : generalDotSum;
   }
 
-  public FavorableTraitCost getCosts(IFavorableModifiableTrait trait) {
+  public FavorableTraitCost getCosts(IFavorableTrait trait) {
     return costsByTrait.get(trait);
   }
 
-  protected Set<IFavorableModifiableTrait> sortTraitsByStatus() {
-    Set<IFavorableModifiableTrait> orderedTraits = new ListOrderedSet<IFavorableModifiableTrait>();
-    for (IFavorableModifiableTrait trait : traits) {
+  protected Set<IFavorableTrait> sortTraitsByStatus() {
+    Set<IFavorableTrait> orderedTraits = new ListOrderedSet<IFavorableTrait>();
+    for (IFavorableTrait trait : traits) {
       if (!trait.getFavorization().isCasteOrFavored()) {
         orderedTraits.add(trait);
       }
     }
-    for (IFavorableModifiableTrait trait : traits) {
+    for (IFavorableTrait trait : traits) {
       if (!orderedTraits.contains(trait)) {
         orderedTraits.add(trait);
       }

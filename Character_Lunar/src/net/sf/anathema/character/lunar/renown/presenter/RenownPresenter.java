@@ -1,7 +1,7 @@
 package net.sf.anathema.character.lunar.renown.presenter;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
 import net.sf.anathema.character.lunar.renown.view.RenownView;
 import net.sf.anathema.framework.value.IIntValueView;
@@ -92,7 +92,7 @@ public class RenownPresenter extends AbstractTraitPresenter {
   }
 
   private void initTraitPresentation(final IValueView<Integer> totalView) {
-    for (IModifiableTrait trait : model.getAllTraits()) {
+    for (ITrait trait : model.getAllTraits()) {
       final IIntValueView renownView = view.addIntValueView(resources.getString("Lunar.Renown." + trait.getType().getId())); //$NON-NLS-1$
       addModelValueListener(trait, renownView);
       addViewValueListener(renownView, trait);

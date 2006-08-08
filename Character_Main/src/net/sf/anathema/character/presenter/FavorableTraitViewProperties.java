@@ -9,21 +9,21 @@ import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.framework.resources.CharacterTemplateResourceProvider;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
-import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
+import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.lib.resources.IResources;
 
 public class FavorableTraitViewProperties implements IIconToggleButtonProperties {
 
   private final IResources resources;
-  private final IFavorableModifiableTrait ability;
+  private final IFavorableTrait ability;
   private final IPresentationProperties properties;
   private final IBasicCharacterData context;
 
   public FavorableTraitViewProperties(
       IPresentationProperties properties,
       IBasicCharacterData context,
-      IFavorableModifiableTrait ability,
+      IFavorableTrait ability,
       IResources resources) {
     this.properties = properties;
     this.context = context;

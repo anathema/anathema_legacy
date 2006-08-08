@@ -10,7 +10,7 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
+import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
@@ -25,12 +25,12 @@ public class AbilityConfigurationPersister extends AbstractCharacterPersister {
 
   public void save(Element parent, ICoreTraitConfiguration configuration) {
     Element abilitiesElement = parent.addElement(TAG_ABILITIES);
-    for (IFavorableModifiableTrait ability : configuration.getAllAbilities()) {
+    for (IFavorableTrait ability : configuration.getAllAbilities()) {
       saveAbility(abilitiesElement, ability, configuration.getSpecialtyConfiguration());
     }
   }
 
-  private void saveAbility(Element parent, IFavorableModifiableTrait ability, ISpecialtyConfiguration specialtyConfiguration) {
+  private void saveAbility(Element parent, IFavorableTrait ability, ISpecialtyConfiguration specialtyConfiguration) {
     ITraitType traitType = ability.getType();
     Element abilityElement = saveTrait(parent, traitType.getId(), ability);
     if (ability.getFavorization().isFavored()) {
@@ -52,7 +52,7 @@ public class AbilityConfigurationPersister extends AbstractCharacterPersister {
 
   private void loadAbility(Element abilityElement, ICoreTraitConfiguration configuration) throws PersistenceException {
     AbilityType abilityType = AbilityType.valueOf(abilityElement.getName());
-    IFavorableModifiableTrait ability = configuration.getFavorableTrait(abilityType);
+    IFavorableTrait ability = configuration.getFavorableTrait(abilityType);
     restoreTrait(abilityElement, ability);
     boolean favored = ElementUtilities.getBooleanAttribute(abilityElement, ATTRIB_FAVORED, false);
     ability.getFavorization().setFavored(favored);

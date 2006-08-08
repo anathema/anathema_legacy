@@ -4,26 +4,20 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
-import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
+import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 public class SpecialtyExperienceModel extends AbstractIntegerValueModel {
 
   private final IPointCostCalculator calculator;
   private final ICoreTraitConfiguration configuration;
-  private final ICharacterStatistics statistics;
 
-  public SpecialtyExperienceModel(
-      ICoreTraitConfiguration configuration,
-      IPointCostCalculator calculator,
-      ICharacterStatistics statistics) {
+  public SpecialtyExperienceModel(ICoreTraitConfiguration configuration, IPointCostCalculator calculator) {
     super("Experience", "Specialties"); //$NON-NLS-1$//$NON-NLS-2$
     this.configuration = configuration;
     this.calculator = calculator;
-    this.statistics = statistics;
   }
 
   public Integer getValue() {
@@ -35,7 +29,7 @@ public class SpecialtyExperienceModel extends AbstractIntegerValueModel {
     ISpecialtyConfiguration specialtyConfiguration = configuration.getSpecialtyConfiguration();
     for (ITraitType abilityType : getAllAbilityTypes()) {
       ISubTraitContainer specialtiesContainer = specialtyConfiguration.getSpecialtiesContainer(abilityType);
-      IFavorableModifiableTrait ability = configuration.getFavorableTrait(abilityType);
+      IFavorableTrait ability = configuration.getFavorableTrait(abilityType);
       experienceCosts += specialtiesContainer.getExperienceDotTotal()
           * calculator.getSpecialtyCosts(ability.getFavorization().isCasteOrFavored());
     }

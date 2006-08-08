@@ -24,6 +24,7 @@ import net.sf.anathema.character.impl.model.traits.creation.AdditionRulesTraitVa
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
@@ -62,12 +63,12 @@ public class AttributeCostCalculatorTest extends BasicCharacterTestCase {
   }
 
   public void spendPoints(AttributeGroupType groupType, int pointsToSpent) {
-    IModifiableTrait[] groupAttributes = traitConfiguration.getAllTraits(groupType);
+    ITrait[] groupAttributes = traitConfiguration.getAllTraits(groupType);
     int perAttribute = (int) Math.ceil((double) pointsToSpent / groupAttributes.length);
     int remainingPointsToSpent = pointsToSpent;
-    for (IModifiableTrait attribute : groupAttributes) {
+    for (ITrait attribute : groupAttributes) {
       int toSpent = Math.min(perAttribute, remainingPointsToSpent);
-      attribute.setCreationValue(1 + toSpent);
+      ((IModifiableTrait) attribute).setCreationValue(1 + toSpent);
       remainingPointsToSpent -= toSpent;
     }
   }

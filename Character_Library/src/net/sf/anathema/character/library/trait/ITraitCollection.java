@@ -2,14 +2,15 @@ package net.sf.anathema.character.library.trait;
 
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 
 public interface ITraitCollection extends IGenericTraitCollection {
 
-  public IModifiableTrait getTrait(ITraitType type);
+  public ITrait getTrait(ITraitType type);
 
-  public IFavorableModifiableTrait getFavorableTrait(ITraitType type);
+  public IFavorableTrait getFavorableTrait(ITraitType type);
 
-  public IModifiableTrait[] getTraits(ITraitType[] traitTypes);
+  public ITrait[] getTraits(ITraitType[] traitTypes);
 
-  public IFavorableModifiableTrait[] getFavorableTraits(ITraitType[] traitTypes);
+  public IFavorableTrait[] getFavorableTraits(ITraitType[] traitTypes);
 }

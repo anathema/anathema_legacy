@@ -5,7 +5,7 @@ import java.util.Map;
 
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.ITrait;
 
 public class VirtueCostCalculator {
 
@@ -13,9 +13,9 @@ public class VirtueCostCalculator {
   private final int maxVirtuePoints;
   private final IBonusPointCosts costs;
   private final Map<ITraitType, IVirtueCost> costsByVirtue = new HashMap<ITraitType, IVirtueCost>();
-  private final IModifiableTrait[] virtues;
+  private final ITrait[] virtues;
 
-  public VirtueCostCalculator(IModifiableTrait[] virtues, int maxVirtuePoints, IBonusPointCosts costs) {
+  public VirtueCostCalculator(ITrait[] virtues, int maxVirtuePoints, IBonusPointCosts costs) {
     this.virtues = virtues;
     this.maxVirtuePoints = maxVirtuePoints;
     this.costs = costs;
@@ -23,14 +23,14 @@ public class VirtueCostCalculator {
 
   public void calculateVirtuePoints() {
     clear();
-    for (IModifiableTrait virtue : virtues) {
+    for (ITrait virtue : virtues) {
       int costFactor = costs.getVirtueCosts().getRatingCosts(virtue.getCalculationValue());
       IVirtueCost cost = handleVirtue(virtue, costFactor);
       costsByVirtue.put(virtue.getType(), cost);
     }
   }
 
-  private IVirtueCost handleVirtue(IModifiableTrait virtue, int costFactor) {
+  private IVirtueCost handleVirtue(ITrait virtue, int costFactor) {
     final int maximumFreeVirtueRank = costs.getMaximumFreeVirtueRank();
     int dotsToAdd = Math.min(virtue.getCalculationValue(), maximumFreeVirtueRank) - virtue.getMinimalValue();
     int dotsRemaining = maxVirtuePoints - dotsSpent;

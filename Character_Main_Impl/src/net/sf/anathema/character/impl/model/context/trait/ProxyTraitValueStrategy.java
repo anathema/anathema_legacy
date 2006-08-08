@@ -1,5 +1,6 @@
 package net.sf.anathema.character.impl.model.context.trait;
 
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.IBasicTrait;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IModifiableBasicTrait;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
@@ -12,11 +13,11 @@ public class ProxyTraitValueStrategy implements ITraitValueStrategy {
     this.strategy = strategy;
   }
 
-  public int getCurrentValue(IModifiableBasicTrait trait) {
+  public int getCurrentValue(IBasicTrait trait) {
     return strategy.getCurrentValue(trait);
   }
 
-  public int getMinimalValue(IModifiableBasicTrait trait) {
+  public int getMinimalValue(IBasicTrait trait) {
     return strategy.getMinimalValue(trait);
   }
 

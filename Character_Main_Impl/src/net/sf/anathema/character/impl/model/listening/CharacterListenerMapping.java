@@ -5,7 +5,7 @@ import java.util.Map;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.lib.control.GenericControl;
 
 public class CharacterListenerMapping {
@@ -17,7 +17,7 @@ public class CharacterListenerMapping {
     this.control = control;
   }
   
-  public void addTraitListening(IModifiableTrait trait) {
+  public void addTraitListening(ITrait trait) {
     ITraitType traitType = trait.getType();
     if (traitListeners.containsKey(traitType)) {
       return;
@@ -27,7 +27,7 @@ public class CharacterListenerMapping {
     trait.addCurrentValueListener(traitListener);
   }
 
-  public void removeTraitListening(IModifiableTrait trait) {
+  public void removeTraitListening(ITrait trait) {
     ITraitType traitType = trait.getType();
     if (!traitListeners.containsKey(traitType)) {
       return;

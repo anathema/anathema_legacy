@@ -1,5 +1,6 @@
 package net.sf.anathema.character.impl.model.context.trait;
 
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.IBasicTrait;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IModifiableBasicTrait;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
@@ -7,11 +8,11 @@ import net.sf.anathema.lib.control.intvalue.IntValueControl;
 
 public class ExperiencedTraitValueStrategy implements ITraitValueStrategy {
 
-  public int getMinimalValue(IModifiableBasicTrait trait) {
+  public int getMinimalValue(IBasicTrait trait) {
     return trait.isLowerable() ? trait.getAbsoluteMinValue() : trait.getCreationValue();
   }
 
-  public int getCurrentValue(IModifiableBasicTrait trait) {
+  public int getCurrentValue(IBasicTrait trait) {
     if (trait.getExperiencedValue() == ITraitRules.UNEXPERIENCED) {
       return trait.getCreationValue();
     }

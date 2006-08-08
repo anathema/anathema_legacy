@@ -21,7 +21,7 @@ public abstract class AbstractSetTraitFixture extends RowEntryFixture {
   protected final IModifiableTrait getTrait() {
     ICharacter character = new CharacterSummary(summary).getCharacter();
     ICharacterStatistics statistics = character.getStatistics();
-    return statistics.getTraitConfiguration().getTrait(getTraitType());
+    return (IModifiableTrait) statistics.getTraitConfiguration().getTrait(getTraitType());
   }
 
   protected abstract ITraitType getTraitType();

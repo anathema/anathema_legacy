@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
-import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
+import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 
@@ -34,18 +34,18 @@ public class FavorableTraitFactory extends AbstractTraitFactory {
     this.characterListening = characterListening;
   }
 
-  public IFavorableModifiableTrait[] createTraits(
+  public IFavorableTrait[] createTraits(
       ITraitType[] traitTypes,
       ICasteType< ? extends ICasteTypeVisitor> casteType,
       IIncrementChecker favoredIncrementChecker) {
-    IFavorableModifiableTrait[] newTraits = new IFavorableModifiableTrait[traitTypes.length];
+    IFavorableTrait[] newTraits = new IFavorableTrait[traitTypes.length];
     for (int index = 0; index < newTraits.length; index++) {
       newTraits[index] = createTrait(traitTypes[index], casteType, favoredIncrementChecker);
     }
     return newTraits;
   }
 
-  public IFavorableModifiableTrait createTrait(
+  public IFavorableTrait createTrait(
       ITraitType traitType,
       ICasteType< ? extends ICasteTypeVisitor> casteType,
       IIncrementChecker favoredIncrementChecker) {

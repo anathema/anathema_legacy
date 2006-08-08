@@ -1,6 +1,6 @@
 package net.sf.anathema.acceptance.fixture.character.traits;
 
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.ITrait;
 
 public class AcceptanceTrait {
 
@@ -9,7 +9,7 @@ public class AcceptanceTrait {
   public int experiencedValue;
   public int currentValue;
   
-  public AcceptanceTrait(IModifiableTrait trait) {
+  public AcceptanceTrait(ITrait trait) {
     traitType = trait.getType().getId();
     creationValue = trait.getCreationValue();
     experiencedValue = trait.getExperiencedValue();

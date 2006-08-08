@@ -4,9 +4,9 @@ import net.sf.anathema.lib.control.intvalue.IntValueControl;
 
 public interface ITraitValueStrategy {
 
-  public int getMinimalValue(IModifiableBasicTrait trait);
+  public int getMinimalValue(IBasicTrait trait);
 
-  public int getCurrentValue(IModifiableBasicTrait trait);
+  public int getCurrentValue(IBasicTrait trait);
 
   public void setValue(IModifiableBasicTrait trait, int value);
 

@@ -21,9 +21,10 @@ import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactor
 import net.sf.anathema.character.impl.model.traits.creation.FavoredIncrementChecker;
 import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
-import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
 import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
+import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
 import net.sf.anathema.character.library.trait.specialties.SpecialtyConfiguration;
@@ -65,7 +66,9 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     addTraits(traitFactory.createTraits(VirtueType.values()));
     addTrait(traitFactory.createTrait(OtherTraitType.Willpower));
     addAttributes();
-    new WillpowerListening().initListening(getTrait(OtherTraitType.Willpower), getTraits(VirtueType.values()));
+    IModifiableTrait willpower = (IModifiableTrait) getTrait(OtherTraitType.Willpower);
+    ITrait[] virtues = getTraits(VirtueType.values());
+    new WillpowerListening().initListening(willpower, virtues);
     addAbilities(template);
     this.backgrounds = new BackgroundConfiguration(
         template.getTemplateType(),
@@ -97,7 +100,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   }
 
   @Override
-  public IModifiableTrait getTrait(ITraitType traitType) {
+  public ITrait getTrait(ITraitType traitType) {
     if (contains(traitType)) {
       return super.getTrait(traitType);
     }
@@ -128,7 +131,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     throw new IllegalStateException("Ability type in no group: " + abilityType); //$NON-NLS-1$
   }
 
-  public IFavorableModifiableTrait[] getAllAbilities() {
+  public IFavorableTrait[] getAllAbilities() {
     List<ITraitType> abilityTypes = new ArrayList<ITraitType>();
     for (IIdentifiedTraitTypeGroup group : getAbilityTypeGroups()) {
       Collections.addAll(abilityTypes, group.getAllGroupTypes());

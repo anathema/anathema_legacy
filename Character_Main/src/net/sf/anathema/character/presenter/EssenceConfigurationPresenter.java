@@ -1,7 +1,7 @@
 package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.model.traits.essence.IEssencePoolConfiguration;
@@ -30,7 +30,7 @@ public class EssenceConfigurationPresenter extends AbstractTraitPresenter implem
   }
 
   public void init() {
-    IModifiableTrait essenceTrait = traitConfiguration.getTrait(OtherTraitType.Essence);
+    ITrait essenceTrait = traitConfiguration.getTrait(OtherTraitType.Essence);
     IIntValueView essenceView = view.addEssenceView(resources.getString("Essence.Name"), //$NON-NLS-1$
         essenceTrait.getCurrentValue(),
         essenceTrait.getMaximalValue());

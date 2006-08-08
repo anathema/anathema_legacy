@@ -7,8 +7,6 @@ import net.sf.anathema.character.generic.framework.reporting.template.ICharacter
 import net.sf.anathema.character.generic.framework.reporting.template.voidstate.ExaltVoidstateReportTemplate;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.impl.reporting.CharacterReport;
@@ -31,12 +29,6 @@ public class VoidstateDbGenerationData extends AbstractGenerationData implements
     ICharacterStatistics statistics = character.getStatistics();
     fillBasicStatistics(statistics);
     statistics.getCharacterConcept().getCaste().setType(DBAspect.Earth);
-    statistics.getTraitConfiguration().getTrait(AbilityType.MartialArts).setCurrentValue(5);
-    statistics.getTraitConfiguration().getTrait(OtherTraitType.Essence).setCurrentValue(4);
-    //    ICharmConfiguration charmConfiguration = statistics.getCharms();
-    //    ILearningCharmGroup woodDragonGroup = charmConfiguration.getGroupById("WoodDragonStyle");
-    //    ICharm charm = charmConfiguration.getCharmTree().getCharmByID("Dragon-Blooded.SoulMastery");
-    //    woodDragonGroup.toggleLearned(charm);
     return createItem(character);
   }
 

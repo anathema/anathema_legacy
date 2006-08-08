@@ -2,7 +2,7 @@ package net.sf.anathema.character.impl.model.advance.models;
 
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 public class AttributeExperienceModel extends AbstractIntegerValueModel {
@@ -23,7 +23,7 @@ public class AttributeExperienceModel extends AbstractIntegerValueModel {
   private int getAttributeCosts() {
     int experienceCosts = 0;
     for (IIdentifiedTraitTypeGroup group : traitConfiguration.getAttributeTypeGroups()) {
-      for (IModifiableTrait attribute : traitConfiguration.getTraits(group.getAllGroupTypes())) {
+      for (ITrait attribute : traitConfiguration.getTraits(group.getAllGroupTypes())) {
         experienceCosts += calculator.getAttributeCosts(attribute);
       }
     }

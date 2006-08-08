@@ -7,11 +7,8 @@ import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.impl.module.ExaltedCharacterItemTypeConfiguration;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterDescription;
 import net.sf.anathema.character.model.ICharacterStatistics;
@@ -43,11 +40,6 @@ public abstract class AbstractGenerationData implements IGenerationData {
 
   protected final void fillBasicStatistics(ICharacterStatistics statistics) {
     ICoreTraitConfiguration traitConfiguration = statistics.getTraitConfiguration();
-    traitConfiguration.getTrait(AttributeType.Strength).setCurrentValue(2);
-    IModifiableTrait endurance = traitConfiguration.getTrait(AbilityType.Endurance);
-    endurance.setCurrentValue(3);
-    traitConfiguration.getTrait(AttributeType.Dexterity).setCurrentValue(5);
-    traitConfiguration.getTrait(AttributeType.Wits).setCurrentValue(5);
     traitConfiguration.getSpecialtyConfiguration().getSpecialtiesContainer(AbilityType.Occult).addSubTrait(
         "Unconquered Sun"); //$NON-NLS-1$
     IBackgroundConfiguration backgrounds = traitConfiguration.getBackgrounds();
@@ -63,12 +55,6 @@ public abstract class AbstractGenerationData implements IGenerationData {
         motivation.getDescription().setText("Scheinbar gar keine.");
       }
     });
-    // "Gallant",
-    // "whenever your deeds are particularly impressive, awe-inspiring or likely to land you smack in the
-    // center of attention.";
-    // return "Gallant";
-
-    traitConfiguration.getTrait(VirtueType.Compassion).setCurrentValue(5);
   }
 
   protected final void createTestDescription(ICharacterDescription description) {

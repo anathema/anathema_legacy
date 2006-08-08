@@ -7,6 +7,8 @@ import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
 public interface ITrait extends IBasicTrait, IGenericTrait {
 
+  public int getMinimalValue();
+
   public int getInitialValue();
 
   public int getMaximalValue();
@@ -26,4 +28,6 @@ public interface ITrait extends IBasicTrait, IGenericTrait {
   public boolean isCreationLearned();
 
   public ISubTraitContainer createSpecialtiesContainer();
+  
+  public void accept(ITraitVisitor visitor);
 }

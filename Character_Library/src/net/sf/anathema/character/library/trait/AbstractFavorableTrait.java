@@ -104,4 +104,8 @@ public abstract class AbstractFavorableTrait implements IFavorableTrait {
   protected ITraitValueStrategy getTraitValueStrategy() {
     return traitValueStrategy;
   }
+
+  public final int getMinimalValue() {
+    return getTraitValueStrategy().getMinimalValue(this);
+  }
 }

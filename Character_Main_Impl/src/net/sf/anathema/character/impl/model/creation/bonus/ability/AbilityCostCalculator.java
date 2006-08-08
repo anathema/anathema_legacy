@@ -13,14 +13,14 @@ import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditiona
 import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalSpecialtyBonusPointManagement;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.AbstractFavorableTraitCostCalculator;
-import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
+import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator implements IAbilityCostCalculator {
 
-  private static IFavorableModifiableTrait[] getAllAbilities(ICoreTraitConfiguration traitConfiguration) {
+  private static IFavorableTrait[] getAllAbilities(ICoreTraitConfiguration traitConfiguration) {
     List<ITraitType> abilityTypes = new ArrayList<ITraitType>();
     for (IIdentifiedTraitTypeGroup group : traitConfiguration.getAbilityTypeGroups()) {
       Collections.addAll(abilityTypes, group.getAllGroupTypes());
@@ -29,7 +29,7 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
   }
 
   private final IAbilityPointCosts costs;
-  private final IFavorableModifiableTrait[] abilities;
+  private final IFavorableTrait[] abilities;
   private int specialtyBonusPointCosts;
   private SpecialtyCalculator specialtyCalculator;
   private final IAdditionalSpecialtyBonusPointManagement additionalPools;
@@ -55,7 +55,7 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
   }
 
   @Override
-  protected int getCostFactor(IFavorableModifiableTrait ability) {
+  protected int getCostFactor(IFavorableTrait ability) {
     ITraitFavorization favorization = ability.getFavorization();
     int costFactor = costs.getAbilityCosts(favorization.isCasteOrFavored()).getRatingCosts(
         ability.getCalculationValue());
@@ -70,7 +70,7 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
 
   private IGenericSpecialty[] createGenericSpecialties() {
     List<IGenericSpecialty> specialties = new ArrayList<IGenericSpecialty>();
-    for (IFavorableModifiableTrait ability : abilities) {
+    for (IFavorableTrait ability : abilities) {
       ISpecialtyConfiguration specialtyConfiguration = traitConfiguration.getSpecialtyConfiguration();
       for (ISubTrait specialty : specialtyConfiguration.getSpecialtiesContainer(ability.getType()).getSubTraits()) {
         for (int index = 0; index < specialty.getCalculationValue(); index++) {

@@ -4,14 +4,13 @@ import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
-import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
-import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateVisitor;
+import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
@@ -24,7 +23,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class FavorableTraitConfigurationPresenter extends AbstractTraitPresenter {
 
   private final IGroupedFavorableTraitConfigurationView configurationView;
-  private final IdentityMapping<IFavorableModifiableTrait, IToggleButtonTraitView< ? >> traitViewsByTrait = new IdentityMapping<IFavorableModifiableTrait, IToggleButtonTraitView< ? >>();
+  private final IdentityMapping<IFavorableTrait, IToggleButtonTraitView< ? >> traitViewsByTrait = new IdentityMapping<IFavorableTrait, IToggleButtonTraitView< ? >>();
   private final IResources resources;
   private final IIdentifiedTraitTypeGroup[] traitTypeGroups;
   private final ICoreTraitConfiguration traitConfiguration;
@@ -70,7 +69,7 @@ public class FavorableTraitConfigurationPresenter extends AbstractTraitPresenter
   }
 
   private void updateButtons() {
-    for (IFavorableModifiableTrait trait : getAllTraits()) {
+    for (IFavorableTrait trait : getAllTraits()) {
       IToggleButtonTraitView< ? > view = traitViewsByTrait.get(trait);
       boolean disabled = basicCharacterData.isExperienced() || trait.getFavorization().isCaste();
       boolean favored = trait.getFavorization().isCasteOrFavored();
@@ -78,17 +77,17 @@ public class FavorableTraitConfigurationPresenter extends AbstractTraitPresenter
     }
   }
 
-  private IFavorableModifiableTrait[] getAllTraits() {
+  private IFavorableTrait[] getAllTraits() {
     return traitConfiguration.getFavorableTraits(TraitTypeGroup.getAllTraitTypes(traitTypeGroups));
   }
 
-  private void addAbilityViews(final IFavorableModifiableTrait[] abilityGroup) {
-    for (IFavorableModifiableTrait ability : abilityGroup) {
+  private void addAbilityViews(final IFavorableTrait[] abilityGroup) {
+    for (IFavorableTrait ability : abilityGroup) {
       traitViewsByTrait.put(ability, addAbilityView(ability));
     }
   }
 
-  private IToggleButtonTraitView< ? > addAbilityView(final IFavorableModifiableTrait favorableTrait) {
+  private IToggleButtonTraitView< ? > addAbilityView(final IFavorableTrait favorableTrait) {
     String id = favorableTrait.getType().getId();
     final IToggleButtonTraitView< ? > abilityView = configurationView.addTraitView(
         resources.getString(id),

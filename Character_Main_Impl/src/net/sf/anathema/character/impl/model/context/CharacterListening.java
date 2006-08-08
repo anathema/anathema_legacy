@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.listening.
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.impl.model.listening.CharacterListenerMapping;
 import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 
@@ -20,7 +21,7 @@ public class CharacterListening implements ICharacterListening {
     listenerMapping.removeTraitListening(trait);
   }
     
-  public void addTraitListening(IModifiableTrait trait) {
+  public void addTraitListening(ITrait trait) {
     listenerMapping.addTraitListening(trait);
   }
 

@@ -2,7 +2,7 @@ package net.sf.anathema.character.impl.model.advance;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.IModifiableBasicTrait;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.IBasicTrait;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
@@ -18,27 +18,27 @@ public class ExperiencePointCostCalculator implements IPointCostCalculator {
     this.costs = costs;
   }
 
-  protected int getTraitRatingCosts(IModifiableBasicTrait trait, ICurrentRatingCosts ratingCosts) {
+  protected int getTraitRatingCosts(IBasicTrait trait, ICurrentRatingCosts ratingCosts) {
     return TraitRatingCostCalculator.getTraitRatingCosts(trait, ratingCosts);
   }
 
-  public int getAbilityCosts(IModifiableBasicTrait ability, boolean favored) {
+  public int getAbilityCosts(IBasicTrait ability, boolean favored) {
     return getTraitRatingCosts(ability, costs.getAbilityCosts(favored));
   }
 
-  public int getAttributeCosts(IModifiableBasicTrait attribute) {
+  public int getAttributeCosts(IBasicTrait attribute) {
     return getTraitRatingCosts(attribute, costs.getAttributeCosts());
   }
 
-  public int getEssenceCosts(IModifiableBasicTrait essence) {
+  public int getEssenceCosts(IBasicTrait essence) {
     return getTraitRatingCosts(essence, costs.getEssenceCosts());
   }
 
-  public int getVirtueCosts(IModifiableBasicTrait virtue) {
+  public int getVirtueCosts(IBasicTrait virtue) {
     return getTraitRatingCosts(virtue, costs.getVirtueCosts());
   }
 
-  public int getWillpowerCosts(IModifiableBasicTrait willpower) {
+  public int getWillpowerCosts(IBasicTrait willpower) {
     return getTraitRatingCosts(willpower, costs.getWillpowerCosts());
   }
 

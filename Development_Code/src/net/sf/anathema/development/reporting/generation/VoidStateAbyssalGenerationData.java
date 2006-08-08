@@ -9,8 +9,6 @@ import net.sf.anathema.character.generic.framework.reporting.template.voidstate.
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.impl.reporting.CharacterReport;
@@ -35,8 +33,6 @@ public class VoidStateAbyssalGenerationData extends AbstractGenerationData {
     ICharacterStatistics statistics = character.getStatistics();
     fillBasicStatistics(statistics);
     statistics.getCharacterConcept().getCaste().setType(AbyssalCaste.Daybreak);
-    statistics.getTraitConfiguration().getTrait(AbilityType.MartialArts).setCurrentValue(5);
-    statistics.getTraitConfiguration().getTrait(OtherTraitType.Essence).setCurrentValue(4);
     ICharmConfiguration charmConfiguration = statistics.getCharms();
     ICharm soulMasteryCharm = charmConfiguration.getCharmById("Dragon-Blooded.SoulMastery");
     ILearningCharmGroup woodDragonGroup = charmConfiguration.getGroup(soulMasteryCharm);

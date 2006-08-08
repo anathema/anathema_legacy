@@ -15,6 +15,6 @@ public class SetRenownFixture extends AbstractRenownRowEntryFixture {
   }
 
   protected final IModifiableTrait getTrait() {
-    return getModel().getTrait(RenownType.valueOf(id));
+    return (IModifiableTrait) getModel().getTrait(RenownType.valueOf(id));
   }
 }

@@ -5,7 +5,7 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersister;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -22,7 +22,7 @@ public class VirtueConfigurationPersister extends AbstractCharacterPersister {
 
   public void save(Element parent, ICoreTraitConfiguration traitConfiguration) {
     Element virtuesElement = parent.addElement(TAG_VIRTUES);
-    for (IModifiableTrait virtue : traitConfiguration.getTraits(VirtueType.values())) {
+    for (ITrait virtue : traitConfiguration.getTraits(VirtueType.values())) {
       saveTrait(virtuesElement, virtue.getType().getId(), virtue);
     }
   }

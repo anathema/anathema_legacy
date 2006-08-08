@@ -32,7 +32,7 @@ import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
@@ -54,7 +54,7 @@ public class GenericCharacter implements IGenericCharacter {
   }
 
   public boolean isFavoredOrCasteTrait(ITraitType type) {
-    IModifiableTrait trait = statistics.getTraitConfiguration().getTrait(type);
+    ITrait trait = statistics.getTraitConfiguration().getTrait(type);
     if (trait instanceof IFavorableModifiableTrait) {
       return ((IFavorableModifiableTrait) trait).getFavorization().isCasteOrFavored();
     }

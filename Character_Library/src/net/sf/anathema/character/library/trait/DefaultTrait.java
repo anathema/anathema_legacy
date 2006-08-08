@@ -92,10 +92,6 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableMo
     rangeControl.addChangeListener(listener);
   }
 
-  public final int getMinimalValue() {
-    return getTraitValueStrategy().getMinimalValue(this);
-  }
-
   @Override
   public String toString() {
     return getType() + ":" + getCreationValue(); //$NON-NLS-1$
@@ -149,5 +145,9 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableMo
   public void setModifiedCreationRange(int lowerBound, int upperBound) {
     getTraitRules().setModifiedCreationRange(new Range(lowerBound, upperBound));
     resetCreationValue();
+  }
+  
+  public void accept(ITraitVisitor visitor) {
+    visitor.visitModifiableTrait(this);
   }
 }

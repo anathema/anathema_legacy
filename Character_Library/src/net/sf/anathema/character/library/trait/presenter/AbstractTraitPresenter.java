@@ -1,6 +1,9 @@
 package net.sf.anathema.character.library.trait.presenter;
 
 import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.ITraitVisitor;
+import net.sf.anathema.character.library.trait.aggregated.IAggregatedTrait;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
@@ -11,23 +14,39 @@ public abstract class AbstractTraitPresenter {
     // nothing to do
   }
 
-  protected final void addModelValueListener(final IModifiableTrait trait, final IIntValueView view) {
+  protected final void addModelValueListener(final ITrait trait, final IIntValueView view) {
     trait.addCurrentValueListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
         view.setValue(newValue);
       }
     });
-    trait.addRangeListener(new IChangeListener() {
-      public void changeOccured() {
-        view.setMaximum(trait.getMaximalValue());
+    trait.accept(new ITraitVisitor() {
+      public void visitModifiableTrait(final IModifiableTrait visitedTrait) {
+        visitedTrait.addRangeListener(new IChangeListener() {
+          public void changeOccured() {
+            view.setMaximum(visitedTrait.getMaximalValue());
+          }
+        });
+      }
+
+      public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
+        // nothing to do
       }
     });
   }
 
-  protected final void addViewValueListener(IIntValueView view, final IModifiableTrait trait) {
-    view.addIntValueChangedListener(new IIntValueChangedListener() {
-      public void valueChanged(int newValue) {
-        trait.setCurrentValue(newValue);
+  protected final void addViewValueListener(final IIntValueView view, final ITrait trait) {
+    trait.accept(new ITraitVisitor() {
+      public void visitModifiableTrait(final IModifiableTrait visitedTrait) {
+        view.addIntValueChangedListener(new IIntValueChangedListener() {
+          public void valueChanged(int newValue) {
+            visitedTrait.setCurrentValue(newValue);
+          }
+        });
+      }
+
+      public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
+        // nothing to do
       }
     });
   }

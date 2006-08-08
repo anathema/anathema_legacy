@@ -20,6 +20,7 @@ import net.sf.anathema.character.generic.traits.types.ITraitTypeVisitor;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.character.lunar.LunarCharacterModule;
@@ -127,19 +128,19 @@ public class RenownModel implements IRenownModel {
     return new NullAdditionalModelExperienceCalculator();
   }
 
-  public IModifiableTrait getTrait(RenownType type) {
+  public ITrait getTrait(RenownType type) {
     return collection.getTrait(type);
   }
 
   public int calculateTotalRenown() {
     int total = 0;
-    for (IModifiableTrait trait : getAllTraits()) {
+    for (ITrait trait : getAllTraits()) {
       total += trait.getCurrentValue();
     }
     return total;
   }
 
-  public IModifiableTrait[] getAllTraits() {
+  public ITrait[] getAllTraits() {
     return collection.getTraits(RenownType.values());
   }
 
@@ -218,7 +219,7 @@ public class RenownModel implements IRenownModel {
   }
 
   public void addRenownChangedListener(IIntValueChangedListener listener) {
-    for (IModifiableTrait trait : getAllTraits()) {
+    for (ITrait trait : getAllTraits()) {
       trait.addCurrentValueListener(listener);
     }
   }
