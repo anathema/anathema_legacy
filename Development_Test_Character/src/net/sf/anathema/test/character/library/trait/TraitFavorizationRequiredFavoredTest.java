@@ -1,11 +1,13 @@
 package net.sf.anathema.test.character.library.trait;
 
 import net.disy.commons.core.util.ISimpleBlock;
+import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
+import net.sf.anathema.dummy.character.DummyBasicCharacterData;
 import net.sf.anathema.dummy.character.trait.DummyModifiableGenericTrait;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
@@ -19,7 +21,8 @@ public class TraitFavorizationRequiredFavoredTest extends BasicTestCase {
   }
 
   private TraitFavorization createObjectUnderTest(boolean isRequiredFavored) {
-    return new TraitFavorization(null, new FriendlyIncrementChecker(), trait, isRequiredFavored);
+    IBasicCharacterData characterData = new DummyBasicCharacterData();
+    return new TraitFavorization(characterData, null, new FriendlyIncrementChecker(), trait, isRequiredFavored);
   }
 
   public void testCreationWithIsRequiredFavoredTrue() throws Exception {
@@ -39,7 +42,8 @@ public class TraitFavorizationRequiredFavoredTest extends BasicTestCase {
   }
 
   public void testSetCasteNotAllowedForRequiredFavored() throws Exception {
-    final TraitFavorization favorization = new TraitFavorization(null, new GrumpyIncrementChecker(), trait, true);
+    IBasicCharacterData characterData = new DummyBasicCharacterData();
+    final TraitFavorization favorization = new TraitFavorization(characterData, null, new GrumpyIncrementChecker(), trait, true);
     assertThrowsException(IllegalStateException.class, new ISimpleBlock() {
       public void execute() {
         favorization.setCaste(true);

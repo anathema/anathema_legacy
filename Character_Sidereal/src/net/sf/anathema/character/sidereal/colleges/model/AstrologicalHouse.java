@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.library.trait.FavorableTrait;
+import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.library.trait.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
@@ -100,7 +100,7 @@ public class AstrologicalHouse extends Identificate implements IAstrologicalHous
           collegeTypes[index],
           houseTemplate,
           traitContext.getLimitationContext());
-      colleges[index] = new FavorableTrait(
+      colleges[index] = new DefaultTrait(
           rules,
           casteType,
           traitContext.getTraitValueStrategy(),

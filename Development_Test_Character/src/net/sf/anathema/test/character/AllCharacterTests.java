@@ -20,6 +20,7 @@ public class AllCharacterTests {
     suite.addTest(net.sf.anathema.test.character.library.trait.AllTests.suite());
     suite.addTest(net.sf.anathema.test.character.main.impl.charm.AllTests.suite());
     suite.addTest(net.sf.anathema.test.character.main.impl.combo.AllTests.suite());
+    suite.addTest(net.sf.anathema.test.character.main.impl.costs.AllTests.suite());
     suite.addTest(Demo2TestConverter.createTest(AllCharacterDemos.suite()));
     //$JUnit-BEGIN$
     suite.addTestSuite(CharacterUtilitiesTest.class);

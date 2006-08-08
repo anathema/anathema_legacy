@@ -1,11 +1,13 @@
 package net.sf.anathema.test.character.library.trait;
 
+import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.IModifiableGenericTrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
+import net.sf.anathema.dummy.character.DummyBasicCharacterData;
 import net.sf.anathema.dummy.character.DummyCasteType;
 import net.sf.anathema.dummy.character.trait.DummyModifiableGenericTrait;
 import net.sf.anathema.lib.testing.BasicTestCase;
@@ -19,7 +21,8 @@ public class TraitFavorizationSetCasteTest extends BasicTestCase {
   }
 
   private TraitFavorization createTraitFavorization(IIncrementChecker incrementChecker) {
-    return new TraitFavorization(new DummyCasteType(), incrementChecker, archeryTrait, false);
+    IBasicCharacterData characterData = new DummyBasicCharacterData();
+    return new TraitFavorization(characterData, new DummyCasteType(), incrementChecker, archeryTrait, false);
   }
 
   @Override

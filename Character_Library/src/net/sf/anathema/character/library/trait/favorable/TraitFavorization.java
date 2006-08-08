@@ -1,5 +1,6 @@
 package net.sf.anathema.character.library.trait.favorable;
 
+import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.library.ITraitFavorization;
@@ -15,12 +16,15 @@ public class TraitFavorization implements ITraitFavorization {
   private final IModifiableGenericTrait trait;
   private final ICasteType< ? extends ICasteTypeVisitor> caste;
   private final boolean isRequiredFavored;
+  private final IBasicCharacterData basicData;
 
   public TraitFavorization(
+      IBasicCharacterData basicData,
       ICasteType< ? extends ICasteTypeVisitor> caste,
       IIncrementChecker favoredIncrementChecker,
       IModifiableGenericTrait trait,
       boolean isRequiredFavored) {
+    this.basicData = basicData;
     this.caste = caste;
     this.favoredIncrementChecker = favoredIncrementChecker;
     this.trait = trait;
@@ -95,5 +99,17 @@ public class TraitFavorization implements ITraitFavorization {
 
   public ICasteType< ? extends ICasteTypeVisitor> getCaste() {
     return caste;
+  }
+  
+  public void updateFavorableStateToCaste() {
+    ICasteType< ? extends ICasteTypeVisitor> casteType = basicData.getCasteType();
+    if (isCaste() != isSupportedCasteType(casteType)) {
+      setCaste(isSupportedCasteType(casteType));
+    }
+  }
+
+  private boolean isSupportedCasteType(ICasteType<? extends ICasteTypeVisitor>  casteType) {
+    ICasteType<? extends ICasteTypeVisitor>  favorizationCaste = getCaste();
+    return favorizationCaste != null && favorizationCaste == casteType;
   }
 }

@@ -1,7 +1,18 @@
 package net.sf.anathema.character.library.trait;
 
+import net.sf.anathema.character.generic.IBasicCharacterData;
+import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
+import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
+import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
-import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.library.ITraitFavorization;
+import net.sf.anathema.character.library.trait.favorable.FavorableState;
+import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
+import net.sf.anathema.character.library.trait.favorable.NullFavorization;
+import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
+import net.sf.anathema.character.library.trait.rules.IFavorableTraitRules;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.specialty.ISpecialtiesContainer;
 import net.sf.anathema.character.library.trait.specialty.SpecialtiesContainer;
@@ -11,7 +22,7 @@ import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
 import net.sf.anathema.lib.data.Range;
 
-public class DefaultTrait implements ITrait {
+public class DefaultTrait extends AbstractFavorableTrait {
 
   private final IntValueControl creationPointControl = new IntValueControl();
   private final IntValueControl currentValueControl = new IntValueControl();
@@ -20,11 +31,38 @@ public class DefaultTrait implements ITrait {
   private int experiencedValue = ITraitRules.UNEXPERIENCED;
   private final IValueChangeChecker checker;
   private final ITraitValueStrategy traitValueStrategy;
-  private final ITraitRules traitRules;
+  private ITraitFavorization traitFavorization;
+  private ICharacterChangeListener changeListener = new DedicatedCharacterChangeAdapter() {
+    @Override
+    public void casteChanged() {
+      resetCurrentValue();
+      getFavorization().updateFavorableStateToCaste();
+    }
+  };
+
+  public DefaultTrait(
+      IFavorableTraitRules traitRules,
+      ICasteType< ? extends ICasteTypeVisitor> caste,
+      ITraitValueStrategy valueStrategy,
+      IBasicCharacterData basicData,
+      ICharacterListening listening,
+      IValueChangeChecker valueChangeChecker,
+      IIncrementChecker favoredIncrementChecker) {
+    this(traitRules, valueStrategy, valueChangeChecker);
+    traitFavorization = new TraitFavorization(
+        basicData,
+        caste,
+        favoredIncrementChecker,
+        this,
+        traitRules.isRequiredFavored());
+    listening.addChangeListener(changeListener);
+    getFavorization().updateFavorableStateToCaste();
+  }
 
   public DefaultTrait(ITraitRules traitRules, ITraitValueStrategy traitValueStrategy, IValueChangeChecker checker) {
+    super(traitRules);
+    this.traitFavorization = new NullFavorization();
     this.checker = checker;
-    this.traitRules = traitRules;
     this.traitValueStrategy = traitValueStrategy;
     this.creationValue = traitRules.getStartValue();
   }
@@ -33,15 +71,18 @@ public class DefaultTrait implements ITrait {
     return new SpecialtiesContainer(this, traitRules, traitValueStrategy);
   }
 
-  public final ITraitType getType() {
-    return traitRules.getType();
-  }
-
   public final int getCreationValue() {
     return creationValue;
   }
 
-  public void setCreationValue(int value) {
+  public ITraitFavorization getFavorization() {
+    return traitFavorization;
+  }
+
+  public final void setCreationValue(int value) {
+    if (getFavorization().getFavorableState() == FavorableState.Favored) {
+      value = Math.max(value, 1);
+    }
     int correctedValue = traitRules.getCreationValue(value);
     if (this.creationValue == correctedValue) {
       return;
@@ -83,30 +124,6 @@ public class DefaultTrait implements ITrait {
     return traitValueStrategy.getMinimalValue(this);
   }
 
-  public final int getMaximalValue() {
-    return traitRules.getAbsoluteMaximumValue();
-  }
-
-  public final boolean isLowerable() {
-    return traitRules.isLowerable();
-  }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (!(obj instanceof DefaultTrait)) {
-      return false;
-    }
-    DefaultTrait other = (DefaultTrait) obj;
-    return other.getCreationValue() == getCreationValue()
-        && other.getType() == getType()
-        && other.getExperiencedValue() == getExperiencedValue();
-  }
-
-  @Override
-  public int hashCode() {
-    return 13 * getCreationValue();
-  }
-
   @Override
   public String toString() {
     return getType() + ":" + getCreationValue(); //$NON-NLS-1$
@@ -126,14 +143,6 @@ public class DefaultTrait implements ITrait {
 
   public int getExperiencedCalculationValue() {
     return traitRules.getExperienceCalculationValue(creationValue, experiencedValue, getCurrentValue());
-  }
-
-  public int getAbsoluteMinValue() {
-    return traitRules.getAbsoluteMinimumValue();
-  }
-
-  public final int getZeroCalculationValue() {
-    return traitRules.getZeroCalculationCost();
   }
 
   public void setCurrentValue(int value) {
@@ -163,14 +172,6 @@ public class DefaultTrait implements ITrait {
 
   public final void resetCurrentValue() {
     traitValueStrategy.resetCurrentValue(this);
-  }
-
-  public int getInitialValue() {
-    return traitRules.getStartValue();
-  }
-
-  public boolean isCreationLearned() {
-    return getCreationValue() > 0;
   }
 
   public void setModifiedCreationRange(int lowerBound, int upperBound) {

@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
 import net.sf.anathema.character.intimacies.model.IntimacyType;
+import net.sf.anathema.character.library.trait.AbstractFavorableTrait;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.library.trait.ITrait;
@@ -35,7 +36,7 @@ public class DemoIntimacy implements IIntimacy{
 
   public ITrait getTrait() {
     ITraitRules traitRules = createTraitRules();
-    DefaultTrait trait = new DefaultTrait(traitRules, new CreationTraitValueStrategy(), new FriendlyValueChangeChecker());
+    AbstractFavorableTrait trait = new DefaultTrait(traitRules, new CreationTraitValueStrategy(), new FriendlyValueChangeChecker());
     trait.setCurrentValue(value);
     return trait;
   }

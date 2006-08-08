@@ -44,7 +44,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
 
   private IFavorableTrait setFavoredAbilityTo(AbilityType abilityType, int value) {
     IFavorableTrait trait = traitConfiguration.getFavorableTrait(abilityType);
-    trait.getFavorization().setCaste(false);
+    trait.getFavorization().updateFavorableStateToCaste();
     trait.getFavorization().setFavored(true);
     trait.setCreationValue(value);
     return trait;
@@ -52,7 +52,7 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
 
   private IFavorableTrait setUnfavoredAbilityTo(AbilityType abilityType, int value) {
     IFavorableTrait ability = traitConfiguration.getFavorableTrait(abilityType);
-    ability.getFavorization().setCaste(false);
+    ability.getFavorization().updateFavorableStateToCaste();
     ability.getFavorization().setFavored(false);
     ability.setCreationValue(value);
     return ability;

@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITra
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.library.trait.FavorableTrait;
+import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
@@ -50,7 +50,7 @@ public class FavorableTraitFactory extends AbstractTraitFactory {
       ICasteType< ? extends ICasteTypeVisitor> casteType,
       IIncrementChecker favoredIncrementChecker) {
     ITraitTemplate traitTemplate = templateCollection.getTraitTemplate(traitType);
-    return new FavorableTrait(
+    return new DefaultTrait(
         new FavorableTraitRules(traitType, traitTemplate, traitContext.getLimitationContext()),
         casteType,
         traitContext.getTraitValueStrategy(),

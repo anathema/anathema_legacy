@@ -12,7 +12,7 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.impl.model.HealthConfiguration;
 import net.sf.anathema.character.impl.model.charm.special.OxBodyTechniqueConfiguration;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
-import net.sf.anathema.character.library.trait.FavorableTrait;
+import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.library.trait.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
@@ -39,7 +39,7 @@ public class OxBodyTechniqueConfigurationTest extends BasicCharacterTestCase {
         AbilityType.Endurance,
         enduranceTemplate,
         traitContext.getLimitationContext());
-    endurance = new FavorableTrait(
+    endurance = new DefaultTrait(
         enduranceRules,
         new DummyCasteType(),
         traitContext.getTraitValueStrategy(),

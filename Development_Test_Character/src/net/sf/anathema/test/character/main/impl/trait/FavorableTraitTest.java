@@ -9,7 +9,8 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.impl.model.context.trait.ExperiencedTraitValueStrategy;
 import net.sf.anathema.character.impl.model.context.trait.ProxyTraitValueStrategy;
-import net.sf.anathema.character.library.trait.FavorableTrait;
+import net.sf.anathema.character.library.trait.AbstractFavorableTrait;
+import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
@@ -30,7 +31,7 @@ public class FavorableTraitTest extends AbstractTraitTest {
   private IIncrementChecker incrementChecker;
   private IFavorableStateChangedListener abilityStateListener;
   private ProxyTraitValueStrategy valueStrategy;
-  private FavorableTrait first;
+  private AbstractFavorableTrait first;
   private DummyCharacterModelContext modelContext;
 
   @Override
@@ -98,19 +99,19 @@ public class FavorableTraitTest extends AbstractTraitTest {
   }
 
   @Override
-  protected FavorableTrait createObjectUnderTest() {
+  protected AbstractFavorableTrait createObjectUnderTest() {
     ICharacterModelContext context = createModelContextWithEssence2(valueStrategy);
     return createObjectUnderTest(context);
   }
 
-  private FavorableTrait createObjectUnderTest(ICharacterModelContext context) {
+  private AbstractFavorableTrait createObjectUnderTest(ICharacterModelContext context) {
     ITraitTemplate archeryTemplate = SimpleTraitTemplate.createEssenceLimitedTemplate(0);
     ITraitContext traitContext = context.getTraitContext();
     FavorableTraitRules rules = new FavorableTraitRules(
         AbilityType.Archery,
         archeryTemplate,
         traitContext.getLimitationContext());
-    return new FavorableTrait(
+    return new DefaultTrait(
         rules,
         new DummyCasteType(),
         traitContext.getTraitValueStrategy(),

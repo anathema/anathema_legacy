@@ -1,6 +1,6 @@
 package net.sf.anathema.test.character.main.impl.trait;
 
-import net.sf.anathema.character.library.trait.DefaultTrait;
+import net.sf.anathema.character.library.trait.AbstractFavorableTrait;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.test.character.BasicCharacterTestCase;
 
@@ -8,7 +8,7 @@ import org.easymock.EasyMock;
 
 public abstract class AbstractTraitTest extends BasicCharacterTestCase {
 
-  private DefaultTrait objectUnderTest;
+  private AbstractFavorableTrait objectUnderTest;
   private IIntValueChangedListener intListener;
 
   @Override
@@ -19,11 +19,11 @@ public abstract class AbstractTraitTest extends BasicCharacterTestCase {
     objectUnderTest.addCreationPointListener(intListener);
   }
 
-  public DefaultTrait getObjectUnderTest() {
+  public AbstractFavorableTrait getObjectUnderTest() {
     return objectUnderTest;
   }
 
-  protected abstract DefaultTrait createObjectUnderTest();
+  protected abstract AbstractFavorableTrait createObjectUnderTest();
 
   public void testExceedCreationValueMaximum() throws Exception {
     intListener.valueChanged(5);

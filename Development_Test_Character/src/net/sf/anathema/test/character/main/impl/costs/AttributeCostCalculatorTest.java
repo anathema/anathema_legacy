@@ -22,7 +22,6 @@ import net.sf.anathema.character.impl.model.creation.bonus.attribute.AttributeCo
 import net.sf.anathema.character.impl.model.creation.bonus.util.TraitGroupCost;
 import net.sf.anathema.character.impl.model.traits.creation.AdditionRulesTraitValueChangeChecker;
 import net.sf.anathema.character.library.trait.DefaultTrait;
-import net.sf.anathema.character.library.trait.FavorableTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
@@ -119,7 +118,7 @@ public class AttributeCostCalculatorTest extends BasicCharacterTestCase {
           traitType,
           limitationContext,
           additionalRules.getAdditionalTraitRules());
-      coreTraits.addTestTrait(new FavorableTrait(
+      coreTraits.addTestTrait(new DefaultTrait(
           new FavorableTraitRules(traitType, traitTemplate, limitationContext),
           null,
           valueStrategy,

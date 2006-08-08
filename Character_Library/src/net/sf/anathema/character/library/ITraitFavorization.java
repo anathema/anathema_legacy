@@ -19,9 +19,9 @@ public interface ITraitFavorization {
 
   public boolean isFavored();
 
-  public void setCaste(boolean caste);
-
   public void setFavorableState(FavorableState state);
 
   public void setFavored(boolean favored);
+
+  public void updateFavorableStateToCaste();
 }
