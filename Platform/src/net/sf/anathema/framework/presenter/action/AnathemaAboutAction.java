@@ -2,6 +2,8 @@ package net.sf.anathema.framework.presenter.action;
 
 import java.awt.Component;
 
+import javax.swing.Action;
+
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.sf.anathema.framework.AboutDialogPage;
@@ -11,9 +13,14 @@ public class AnathemaAboutAction extends SmartAction {
 
   private final IResources resources;
 
-  public AnathemaAboutAction(IResources resources) {
+  public static Action createMenuAction(IResources resources) {
+    SmartAction action = new AnathemaAboutAction(resources);
+    action.setName(resources.getString("Help.AboutDialog.Title")); //$NON-NLS-1$
+    return action;
+  }
+  
+  private AnathemaAboutAction(IResources resources) {
     this.resources = resources;
-    setName(resources.getString("Help.AboutDialog.Title")); //$NON-NLS-1$
   }
 
   @Override

@@ -37,7 +37,8 @@ public class AnathemaCoreMenu implements IAnathemaMenu {
     mainMenu.addMenuItem(AnathemaPrintAction.createMenuAction(model, resources));
     mainMenu.addSeparator();
     mainMenu.addMenuItem(AnathemaExitAction.createMenuAction(resources));
-    menubar.getHelpMenu().addMenuItem(new AnathemaAboutAction(resources));
+    IMenu helpMenu = menubar.getHelpMenu();
+    helpMenu.addMenuItem(AnathemaAboutAction.createMenuAction(resources));
     menubar.addMenu(createExtraMenu(model, resources));
   }
 
