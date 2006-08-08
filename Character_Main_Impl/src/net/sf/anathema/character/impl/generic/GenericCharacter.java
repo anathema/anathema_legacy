@@ -33,6 +33,7 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.library.trait.IFavorableTrait;
 import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -103,7 +104,8 @@ public class GenericCharacter implements IGenericCharacter {
   }
 
   public INamedGenericTrait[] getSpecialties(ITraitType traitType) {
-    return statistics.getTraitConfiguration().getTrait(traitType).getSpecialtiesContainer().getSpecialties();
+    ISpecialtyConfiguration specialtyConfiguration = statistics.getTraitConfiguration().getSpecialtyConfiguration();
+    return specialtyConfiguration.getSpecialtiesContainer(traitType).getSpecialties();
   }
 
   public INamedGenericTrait[] getSubTraits(ITraitType traitType) {

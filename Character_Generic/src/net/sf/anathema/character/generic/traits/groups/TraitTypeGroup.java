@@ -1,11 +1,22 @@
 package net.sf.anathema.character.generic.traits.groups;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.traits.ITraitType;
 
-
 public class TraitTypeGroup implements ITraitTypeGroup {
-  
+
+  public static ITraitType[] getAllTraitTypes(ITraitTypeGroup... traitTypeGroups) {
+    List<ITraitType> traitTypes = new ArrayList<ITraitType>();
+    for (ITraitTypeGroup group : traitTypeGroups) {
+      Collections.addAll(traitTypes, group.getAllGroupTypes());
+    }
+    return traitTypes.toArray(new ITraitType[traitTypes.size()]);
+  }
+
   private final ITraitType[] traitTypes;
 
   public TraitTypeGroup(ITraitType[] traitTypes) {
@@ -24,7 +35,7 @@ public class TraitTypeGroup implements ITraitTypeGroup {
   public final ITraitType[] getAllGroupTypes() {
     return traitTypes;
   }
-  
+
   public final boolean contains(ITraitType traitType) {
     return ArrayUtilities.contains(traitTypes, traitType);
   }

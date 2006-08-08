@@ -1,11 +1,8 @@
 package net.sf.anathema.character.impl.model.traits.listening;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
+import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
@@ -14,6 +11,7 @@ import net.sf.anathema.character.library.trait.IFavorableTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
+import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
 import net.sf.anathema.character.library.trait.specialty.ISpecialty;
 import net.sf.anathema.character.library.trait.specialty.ISpecialtyListener;
 import net.sf.anathema.character.model.background.IBackgroundListener;
@@ -57,18 +55,18 @@ public class CharacterTraitListening {
   }
 
   private void initAbilityListening() {
-    List<ITraitType> abilityTypes = new ArrayList<ITraitType>();
-    for (IIdentifiedTraitTypeGroup group : traitConfiguration.getAbilityTypeGroups()) {
-      Collections.addAll(abilityTypes, group.getAllGroupTypes());
-    }
-    for (IFavorableTrait ability : traitConfiguration.getFavorableTraits(abilityTypes.toArray(new ITraitType[abilityTypes.size()]))) {
+    ITraitTypeGroup[] groups = traitConfiguration.getAbilityTypeGroups();
+    ITraitType[] allAbilityTypes = TraitTypeGroup.getAllTraitTypes(groups);
+    ISpecialtyConfiguration specialtyConfiguration = traitConfiguration.getSpecialtyConfiguration();
+    for (ITraitType traitType : allAbilityTypes) {
+      IFavorableTrait ability = traitConfiguration.getFavorableTrait(traitType);
       listening.addTraitListening(ability);
       ability.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
         public void favorableStateChanged(FavorableState state) {
           listening.fireCharacterChanged();
         }
       });
-      ability.getSpecialtiesContainer().addSpecialtyListener(new ISpecialtyListener() {
+      specialtyConfiguration.getSpecialtiesContainer(traitType).addSpecialtyListener(new ISpecialtyListener() {
         public void specialtyRemoved(ISpecialty specialty) {
           listening.fireCharacterChanged();
         }

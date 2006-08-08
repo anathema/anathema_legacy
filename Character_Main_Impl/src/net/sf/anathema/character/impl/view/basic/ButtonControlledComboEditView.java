@@ -8,7 +8,6 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.Icon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -19,18 +18,18 @@ import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.view.basic.IButtonControlledComboEditView;
 import net.sf.anathema.lib.control.objectvalue.ITwoObjectsValueChangedListener;
+import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 
-public class ButtonControlledComboEditView implements IButtonControlledComboEditView {
+public class ButtonControlledComboEditView<V> implements IButtonControlledComboEditView<V> {
 
-  private final JComboBox comboBox;
+  private final ChangeableJComboBox<V> comboBox;
   private final JButton addButton;
   private final JTextField text;
   private final boolean headerRow;
 
-  public ButtonControlledComboEditView(Object[] objects, int textFieldWidth, Icon addIcon, boolean headerRow) {
+  public ButtonControlledComboEditView(V[] objects, int textFieldWidth, Icon addIcon, boolean headerRow) {
     this.headerRow = headerRow;
-    this.comboBox = new JComboBox(objects);
-    this.comboBox.setEditable(false);
+    this.comboBox = new ChangeableJComboBox<V>(objects, false);
     this.text = new JTextField(textFieldWidth);
     addButton = new JButton(null, addIcon);
     addButton.setPreferredSize(new Dimension(addIcon.getIconWidth() + 4, addIcon.getIconHeight() + 4));
@@ -49,28 +48,28 @@ public class ButtonControlledComboEditView implements IButtonControlledComboEdit
         if (headerRow) {
           layoutedPanel.add(new EndOfLineMarkerComponent());
         }
-        layoutedPanel.add(comboBox);
+        layoutedPanel.add(comboBox.getComponent());
         layoutedPanel.add(text);
         layoutedPanel.add(addButton);
       }
     });
   }
 
-  public void setSelectedObject(Object object) {
-    comboBox.setSelectedItem(object);
+  public void setSelectedObject(V object) {
+    comboBox.setSelectedObject(object);
   }
 
-  public void addObjectSelectionChangedListener(final ITwoObjectsValueChangedListener listener) {
+  public void addObjectSelectionChangedListener(final ITwoObjectsValueChangedListener<V, String> listener) {
     addButton.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        listener.valueChanged(null, null, comboBox.getSelectedItem(), text.getText());
+        listener.valueChanged(null, null, comboBox.getSelectedObject(), text.getText());
       }
     });
     text.addKeyListener(new KeyAdapter() {
       @Override
       public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-          listener.valueChanged(null, null, comboBox.getSelectedItem(), text.getText());
+          listener.valueChanged(null, null, comboBox.getSelectedObject(), text.getText());
         }
       }
     });

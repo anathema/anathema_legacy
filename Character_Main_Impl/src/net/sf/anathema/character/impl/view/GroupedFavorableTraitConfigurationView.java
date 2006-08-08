@@ -8,6 +8,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.impl.view.basic.ButtonControlledComboEditView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
@@ -101,13 +102,17 @@ public class GroupedFavorableTraitConfigurationView extends AbstractTabView<Obje
     groupedTraitView.startNewGroup(groupLabel);
   }
 
-  public IButtonControlledComboEditView addSpecialtySelectionView(
+  public IButtonControlledComboEditView<ITraitType> addSpecialtySelectionView(
       String labelText,
-      Object[] abilities,
+      ITraitType[] traitTypes,
       ListCellRenderer renderer,
       Icon addIcon) {
     initSpecialtyPanels();
-    ButtonControlledComboEditView objectSelectionView = new ButtonControlledComboEditView(abilities, 12, addIcon, true);
+    ButtonControlledComboEditView<ITraitType> objectSelectionView = new ButtonControlledComboEditView<ITraitType>(
+        traitTypes,
+        12,
+        addIcon,
+        true);
     objectSelectionView.addTo(specialtyDialogPanel, labelText, renderer);
     return objectSelectionView;
   }

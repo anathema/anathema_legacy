@@ -11,7 +11,6 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.impl.module.ExaltedCharacterItemTypeConfiguration;
-import net.sf.anathema.character.library.trait.IFavorableTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterDescription;
@@ -21,6 +20,7 @@ import net.sf.anathema.character.model.concept.IMotivation;
 import net.sf.anathema.character.model.concept.INature;
 import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
 import net.sf.anathema.character.model.concept.NatureType;
+import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.framework.repository.AnathemaItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.resources.AnathemaResources;
@@ -42,14 +42,15 @@ public abstract class AbstractGenerationData implements IGenerationData {
   }
 
   protected final void fillBasicStatistics(ICharacterStatistics statistics) {
-    statistics.getTraitConfiguration().getTrait(AttributeType.Strength).setCurrentValue(2);
-    ITrait endurance = statistics.getTraitConfiguration().getTrait(AbilityType.Endurance);
+    ICoreTraitConfiguration traitConfiguration = statistics.getTraitConfiguration();
+    traitConfiguration.getTrait(AttributeType.Strength).setCurrentValue(2);
+    ITrait endurance = traitConfiguration.getTrait(AbilityType.Endurance);
     endurance.setCurrentValue(3);
-    statistics.getTraitConfiguration().getTrait(AttributeType.Dexterity).setCurrentValue(5);
-    statistics.getTraitConfiguration().getTrait(AttributeType.Wits).setCurrentValue(5);
-    IFavorableTrait occult = statistics.getTraitConfiguration().getFavorableTrait(AbilityType.Occult);
-    occult.getSpecialtiesContainer().addSpecialty("Unconquered Sun"); //$NON-NLS-1$
-    IBackgroundConfiguration backgrounds = statistics.getTraitConfiguration().getBackgrounds();
+    traitConfiguration.getTrait(AttributeType.Dexterity).setCurrentValue(5);
+    traitConfiguration.getTrait(AttributeType.Wits).setCurrentValue(5);
+    traitConfiguration.getSpecialtyConfiguration().getSpecialtiesContainer(AbilityType.Occult).addSpecialty(
+        "Unconquered Sun"); //$NON-NLS-1$
+    IBackgroundConfiguration backgrounds = traitConfiguration.getBackgrounds();
     backgrounds.addBackground(new SimpleBackgroundTemplate("Allies")).setCurrentValue(3);
     backgrounds.addBackground("Plot Device").setCurrentValue(4); //$NON-NLS-1$    
     statistics.getCharacterConcept().getConcept().setText("Held"); //$NON-NLS-1$
@@ -67,7 +68,7 @@ public abstract class AbstractGenerationData implements IGenerationData {
     // center of attention.";
     // return "Gallant";
 
-    statistics.getTraitConfiguration().getTrait(VirtueType.Compassion).setCurrentValue(5);
+    traitConfiguration.getTrait(VirtueType.Compassion).setCurrentValue(5);
   }
 
   protected final void createTestDescription(ICharacterDescription description) {

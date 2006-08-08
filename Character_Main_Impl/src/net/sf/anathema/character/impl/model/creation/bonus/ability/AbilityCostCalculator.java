@@ -14,6 +14,7 @@ import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditiona
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.AbstractFavorableTraitCostCalculator;
 import net.sf.anathema.character.library.trait.IFavorableTrait;
+import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
 import net.sf.anathema.character.library.trait.specialty.ISpecialty;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
@@ -32,6 +33,7 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
   private int specialtyBonusPointCosts;
   private SpecialtyCalculator specialtyCalculator;
   private final IAdditionalSpecialtyBonusPointManagement additionalPools;
+  private final ICoreTraitConfiguration traitConfiguration;
 
   public AbilityCostCalculator(
       ICoreTraitConfiguration traitConfiguration,
@@ -39,6 +41,7 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
       IAbilityPointCosts costs,
       IAdditionalBonusPointManagment additionalPools) {
     super(additionalPools, points, getAllAbilities(traitConfiguration));
+    this.traitConfiguration = traitConfiguration;
     this.abilities = getAllAbilities(traitConfiguration);
     this.costs = costs;
     this.additionalPools = additionalPools;
@@ -68,7 +71,8 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
   private IGenericSpecialty[] createGenericSpecialties() {
     List<IGenericSpecialty> specialties = new ArrayList<IGenericSpecialty>();
     for (IFavorableTrait ability : abilities) {
-      for (ISpecialty specialty : ability.getSpecialtiesContainer().getSpecialties()) {
+      ISpecialtyConfiguration specialtyConfiguration = traitConfiguration.getSpecialtyConfiguration();
+      for (ISpecialty specialty : specialtyConfiguration.getSpecialtiesContainer(ability.getType()).getSpecialties()) {
         for (int index = 0; index < specialty.getCalculationValue(); index++) {
           specialties.add(new GenericSpecialty(ability));
         }

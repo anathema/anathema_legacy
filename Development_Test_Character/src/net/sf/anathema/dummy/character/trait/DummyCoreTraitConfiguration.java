@@ -17,6 +17,8 @@ import net.sf.anathema.character.library.trait.AbstractTraitCollection;
 import net.sf.anathema.character.library.trait.IFavorableTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.TraitGroup;
+import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
+import net.sf.anathema.character.library.trait.specialties.SpecialtyConfiguration;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.collection.MultiEntryMap;
@@ -27,6 +29,7 @@ import net.sf.anathema.lib.util.Identificate;
 public class DummyCoreTraitConfiguration extends AbstractTraitCollection implements ICoreTraitConfiguration {
 
   private final MultiEntryMap<String, ITraitType> abilityGroupsByType = new MultiEntryMap<String, ITraitType>();
+  private ISpecialtyConfiguration specialtyConfiguration;
 
   public IBackgroundConfiguration getBackgrounds() {
     throw new NotYetImplementedException();
@@ -68,7 +71,13 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
           new Identificate(groupId)));
     }
     return groups.toArray(new IIdentifiedTraitTypeGroup[groups.size()]);
-
+  }
+  
+  public ISpecialtyConfiguration getSpecialtyConfiguration() {
+    if (specialtyConfiguration == null) {
+      specialtyConfiguration = new SpecialtyConfiguration(this, getAbilityTypeGroups());
+    }
+    return specialtyConfiguration ;
   }
 
   public final IIdentifiedCasteTraitTypeGroup[] getAttributeTypeGroups() {

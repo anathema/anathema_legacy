@@ -12,12 +12,19 @@ public class Specialty extends DefaultTrait implements ISpecialty {
 
   private final ITrait trait;
   private final String specialtyName;
+  private final SpecialtiesContainer container;
 
-  public Specialty(ITrait ability, String specialtyName, ITraitRules traitRules, ITraitValueStrategy traitValueStrategy) {
+  public Specialty(
+      SpecialtiesContainer container,
+      ITrait ability,
+      String specialtyName,
+      ITraitRules traitRules,
+      ITraitValueStrategy traitValueStrategy) {
     super(
         traitRules.derive(OtherTraitType.Specialty, SimpleTraitTemplate.createStaticLimitedTemplate(0, 3)),
         traitValueStrategy,
         new FriendlyValueChangeChecker());
+    this.container = container;
     this.trait = ability;
     this.specialtyName = specialtyName;
     this.setCurrentValue(1);
@@ -34,7 +41,7 @@ public class Specialty extends DefaultTrait implements ISpecialty {
   @Override
   public void setCurrentValue(int value) {
     int increment = value - getCurrentValue();
-    if (trait.getSpecialtiesContainer().getCurrentSpecialtyCount() + increment <= SpecialtiesContainer.ALLOWED_SPECIALTY_COUNT) {
+    if (container.getCurrentSpecialtyCount() + increment <= SpecialtiesContainer.ALLOWED_SPECIALTY_COUNT) {
       super.setCurrentValue(value);
     }
     else {

@@ -3,6 +3,8 @@ package net.sf.anathema.demo.character.impl.view;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.Icon;
 
+import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.impl.view.GroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
@@ -31,7 +33,7 @@ public class AbilityConfigurationDemo extends BasicCharacterDemoCase {
           }
         });
     configurationView.addSpecialtySelectionView("Specialties", //$NON-NLS-1$
-        new Object[] { "Ability1 ganz lang", "Ability2 jawoll" }, //$NON-NLS-1$ //$NON-NLS-2$
+        new ITraitType[] { AbilityType.Archery, AbilityType.Athletics },
         new DefaultListCellRenderer(),
         new BasicUi(resources).getMediumAddIcon());
     configurationView.initGui(null);

@@ -32,7 +32,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     generalDotSum = 0;
     costsByTrait.clear();
   }
-
+  
   public void calculateCosts() {
     clear();
     Set<IFavorableTrait> sortedTraits = sortTraitsByStatus();

@@ -19,7 +19,6 @@ public class DefaultTrait implements ITrait {
   private int creationValue;
   private int experiencedValue = ITraitRules.UNEXPERIENCED;
   private final IValueChangeChecker checker;
-  private final ISpecialtiesContainer specialtyContainer;
   private final ITraitValueStrategy traitValueStrategy;
   private final ITraitRules traitRules;
 
@@ -28,7 +27,10 @@ public class DefaultTrait implements ITrait {
     this.traitRules = traitRules;
     this.traitValueStrategy = traitValueStrategy;
     this.creationValue = traitRules.getStartValue();
-    this.specialtyContainer = new SpecialtiesContainer(this, traitRules, traitValueStrategy);
+  }
+
+  public ISpecialtiesContainer createSpecialtiesContainer() {
+    return new SpecialtiesContainer(this, traitRules, traitValueStrategy);
   }
 
   public final ITraitType getType() {
@@ -174,9 +176,5 @@ public class DefaultTrait implements ITrait {
   public void setModifiedCreationRange(int lowerBound, int upperBound) {
     traitRules.setModifiedCreationRange(new Range(lowerBound, upperBound));
     resetCreationValue();
-  }
-
-  public ISpecialtiesContainer getSpecialtiesContainer() {
-    return specialtyContainer;
   }
 }

@@ -5,9 +5,10 @@ import javax.swing.Icon;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
-import net.sf.anathema.character.library.trait.IFavorableTrait;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
+import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
+import net.sf.anathema.character.library.trait.specialty.ISpecialtiesContainer;
 import net.sf.anathema.character.library.trait.specialty.ISpecialty;
 import net.sf.anathema.character.library.trait.specialty.ISpecialtyListener;
 import net.sf.anathema.character.view.ISpecialtyView;
@@ -38,19 +39,19 @@ public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
     }
   };
 
-  private final ITrait[] allTraits;
   private final IResources resources;
   private final ISpecialtyConfigurationView configurationView;
   private final IBasicCharacterData basicCharacterData;
   private final ICharacterListening characterListening;
+  private final ISpecialtyConfiguration specialtyManagement;
 
   public SpecialtyConfigurationPresenter(
-      ITrait[] allTraits,
+      ISpecialtyConfiguration specialtyManagement,
       IBasicCharacterData basicCharacterData,
       ICharacterListening characterListening,
       ISpecialtyConfigurationView configurationView,
       IResources resources) {
-    this.allTraits = allTraits;
+    this.specialtyManagement = specialtyManagement;
     this.basicCharacterData = basicCharacterData;
     this.characterListening = characterListening;
     this.configurationView = configurationView;
@@ -58,12 +59,16 @@ public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
   }
 
   private void initTraitListening() {
-    for (ITrait trait : getAllTraits()) {
-      trait.getSpecialtiesContainer().addSpecialtyListener(specialtyListener);
+    for (ITraitType traitType : getAllTraitsTypes()) {
+      getSpecialtyContainerType(traitType).addSpecialtyListener(specialtyListener);
     }
   }
 
-  private void resetSpecialtyView(final IButtonControlledComboEditView specialtySelectionView) {
+  private ISpecialtiesContainer getSpecialtyContainerType(ITraitType traitType) {
+    return specialtyManagement.getSpecialtiesContainer(traitType);
+  }
+
+  private void resetSpecialtyView(final IButtonControlledComboEditView<ITraitType> specialtySelectionView) {
     specialtySelectionView.setText(""); //$NON-NLS-1$
     specialtySelectionView.setSelectedObject(null);
   }
@@ -71,31 +76,27 @@ public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
   public void initPresentation() {
     initTraitListening();
     Icon addIcon = new BasicUi(resources).getMediumAddIcon();
-    final IButtonControlledComboEditView specialtySelectionView = configurationView.addSpecialtySelectionView(
+    final IButtonControlledComboEditView<ITraitType> specialtySelectionView = configurationView.addSpecialtySelectionView(
         resources.getString("SpecialtyConfigurationView.SelectionCombo.Label"), //$NON-NLS-1$
-        getAllTraits(),
+        getAllTraitsTypes(),
         new AbstractSelectCellRenderer(resources) {
           @Override
           protected Object getCustomizedDisplayValue(Object value) {
-            return resources.getString(((IFavorableTrait) value).getType().getId());
+            return resources.getString(((ITraitType) value).getId());
           }
         },
         addIcon);
-    specialtySelectionView.addObjectSelectionChangedListener(new ITwoObjectsValueChangedListener() {
-      public void valueChanged(Object oldValue1, Object oldValue2, Object newValue1, Object newValue2) {
-        if (newValue1 instanceof IFavorableTrait) {
-          IFavorableTrait ability = (IFavorableTrait) newValue1;
-          String specialtyName = newValue2.toString();
-          if (!specialtyName.equals("")) { //$NON-NLS-1$
-            ability.getSpecialtiesContainer().addSpecialty(specialtyName);
-            resetSpecialtyView(specialtySelectionView);
-          }
+    specialtySelectionView.addObjectSelectionChangedListener(new ITwoObjectsValueChangedListener<ITraitType, String>() {
+      public void valueChanged(ITraitType oldValue1, String oldValue2, ITraitType newTraitType, String newSpecialtyName) {
+        if (!newSpecialtyName.equals("")) { //$NON-NLS-1$
+          getSpecialtyContainerType(newTraitType).addSpecialty(newSpecialtyName);
+          resetSpecialtyView(specialtySelectionView);
         }
       }
     });
     resetSpecialtyView(specialtySelectionView);
-    for (ITrait trait : getAllTraits()) {
-      for (ISpecialty specialty : trait.getSpecialtiesContainer().getSpecialties()) {
+    for (ITraitType traitType : getAllTraitsTypes()) {
+      for (ISpecialty specialty : getSpecialtyContainerType(traitType).getSpecialties()) {
         addSpecialtyView(specialty);
       }
     }
@@ -118,13 +119,13 @@ public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
     view.delete();
   }
 
-  private ITrait[] getAllTraits() {
-    return allTraits;
+  private ITraitType[] getAllTraitsTypes() {
+    return specialtyManagement.getAllTraitTypes();
   }
 
   private void updateSpecialtyViewButtons() {
-    for (ITrait trait : getAllTraits()) {
-      for (ISpecialty specialty : trait.getSpecialtiesContainer().getSpecialties()) {
+    for (ITraitType trait : getAllTraitsTypes()) {
+      for (ISpecialty specialty : getSpecialtyContainerType(trait).getSpecialties()) {
         ISpecialtyView view = viewsBySpecialty.get(specialty);
         view.setDeleteButtonEnabled(specialty.getCreationValue() == 0 || !basicCharacterData.isExperienced());
       }
@@ -146,7 +147,8 @@ public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
     addViewValueListener(specialtyView, specialty);
     specialtyView.addDeleteListener(new IChangeListener() {
       public void changeOccured() {
-        specialty.getBasicTrait().getSpecialtiesContainer().removeSpecialty(specialty);
+        ITraitType traitType = specialty.getBasicTrait().getType();
+        getSpecialtyContainerType(traitType).removeSpecialty(specialty);
       }
     });
     viewsBySpecialty.put(specialty, specialtyView);

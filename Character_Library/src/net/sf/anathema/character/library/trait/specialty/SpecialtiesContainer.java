@@ -38,7 +38,7 @@ public class SpecialtiesContainer implements ISpecialtiesContainer {
     if (specialtyCount < ALLOWED_SPECIALTY_COUNT) {
       ISpecialty specialty = getContainedEquivalent(specialtyName);
       if (specialty == null) {
-        specialty = new Specialty(trait, specialtyName, traitRules, traitValueStrategy);
+        specialty = new Specialty(this, trait, specialtyName, traitRules, traitValueStrategy);
         specialties.add(specialty);
         specialty.addCurrentValueListener(specialtyCreationPointListener);
         fireSpecialtyAddedEvent(specialty);

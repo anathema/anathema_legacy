@@ -25,6 +25,8 @@ import net.sf.anathema.character.library.trait.IFavorableTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
+import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
+import net.sf.anathema.character.library.trait.specialties.SpecialtyConfiguration;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
@@ -37,6 +39,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   private final BackgroundConfiguration backgrounds;
   private final IIdentifiedCasteTraitTypeGroup[] abilityTraitGroups;
   private final IIdentifiedCasteTraitTypeGroup[] attributeTraitGroups;
+  private final SpecialtyConfiguration specialtyConfiguration;
 
   public CoreTraitConfiguration(
       ICharacterTemplate template,
@@ -71,6 +74,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
         modelContext.getTraitContext(),
         backgroundRegistry,
         modelContext.getBasicCharacterContext().getRuleSet().getEdition());
+    this.specialtyConfiguration = new SpecialtyConfiguration(this, abilityTraitGroups);
   }
 
   private void addAttributes() {
@@ -130,5 +134,9 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
       Collections.addAll(abilityTypes, group.getAllGroupTypes());
     }
     return getFavorableTraits(abilityTypes.toArray(new ITraitType[abilityTypes.size()]));
+  }
+  
+  public ISpecialtyConfiguration getSpecialtyConfiguration() {
+    return specialtyConfiguration;
   }
 }

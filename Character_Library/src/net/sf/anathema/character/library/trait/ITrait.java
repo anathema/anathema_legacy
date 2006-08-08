@@ -31,7 +31,7 @@ public interface ITrait extends IBasicTrait, IModifiableGenericTrait {
 
   public void setModifiedCreationRange(int newInitialValue, int newUpperValue);
 
-  public ISpecialtiesContainer getSpecialtiesContainer();
-
   public void addRangeListener(IChangeListener listener);
+
+  public ISpecialtiesContainer createSpecialtiesContainer();
 }
