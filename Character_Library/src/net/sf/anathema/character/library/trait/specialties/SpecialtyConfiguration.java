@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.library.trait.ITraitCollection;
-import net.sf.anathema.character.library.trait.specialty.ISubTraitContainer;
+import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 
 public class SpecialtyConfiguration implements ISpecialtyConfiguration {
 

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.library.trait.specialty;
+package net.sf.anathema.character.library.trait.specialties;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
@@ -7,6 +7,7 @@ import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
+import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 
 public class Specialty extends DefaultTrait implements ISubTrait {
 

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.library.trait.specialty;
+package net.sf.anathema.character.library.trait.subtrait;
 
 public interface ISubTraitContainer {
 

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.library.trait.specialty;
+package net.sf.anathema.character.library.trait.specialties;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,9 @@ import java.util.List;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
+import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
+import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
+import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
 public class SpecialtiesContainer implements ISubTraitContainer {

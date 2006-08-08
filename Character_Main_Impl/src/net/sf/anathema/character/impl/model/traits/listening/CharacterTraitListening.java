@@ -12,8 +12,8 @@ import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
-import net.sf.anathema.character.library.trait.specialty.ISubTrait;
-import net.sf.anathema.character.library.trait.specialty.ISubTraitListener;
+import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
+import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
 import net.sf.anathema.character.model.background.IBackgroundListener;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
