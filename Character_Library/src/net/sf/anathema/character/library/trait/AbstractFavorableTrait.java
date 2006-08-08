@@ -1,15 +1,28 @@
 package net.sf.anathema.character.library.trait;
 
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
+import net.sf.anathema.character.library.trait.specialty.ISpecialtiesContainer;
+import net.sf.anathema.character.library.trait.specialty.SpecialtiesContainer;
+import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.lib.control.intvalue.IntValueControl;
 
 public abstract class AbstractFavorableTrait implements IFavorableTrait {
 
-  protected final ITraitRules traitRules;
+  private final ITraitRules traitRules;
+  private final IntValueControl creationPointControl = new IntValueControl();
+  private final IntValueControl currentValueControl = new IntValueControl();
+  protected final ITraitValueStrategy traitValueStrategy;
 
-  public AbstractFavorableTrait(ITraitRules traitRules) {
+  public AbstractFavorableTrait(ITraitRules traitRules, ITraitValueStrategy traitValueStrategy) {
     this.traitRules = traitRules;
+    this.traitValueStrategy = traitValueStrategy;
+  }
+
+  public final ISpecialtiesContainer createSpecialtiesContainer() {
+    return new SpecialtiesContainer(this, getTraitRules(), traitValueStrategy);
   }
 
   public boolean isCasteOrFavored() {
@@ -21,15 +34,15 @@ public abstract class AbstractFavorableTrait implements IFavorableTrait {
   }
 
   public final ITraitType getType() {
-    return traitRules.getType();
+    return getTraitRules().getType();
   }
 
   public final int getMaximalValue() {
-    return traitRules.getAbsoluteMaximumValue();
+    return getTraitRules().getAbsoluteMaximumValue();
   }
 
   public final boolean isLowerable() {
-    return traitRules.isLowerable();
+    return getTraitRules().isLowerable();
   }
 
   @Override
@@ -49,14 +62,42 @@ public abstract class AbstractFavorableTrait implements IFavorableTrait {
   }
 
   public int getAbsoluteMinValue() {
-    return traitRules.getAbsoluteMinimumValue();
+    return getTraitRules().getAbsoluteMinimumValue();
   }
 
   public final int getZeroCalculationValue() {
-    return traitRules.getZeroCalculationCost();
+    return getTraitRules().getZeroCalculationCost();
   }
 
   public int getInitialValue() {
-    return traitRules.getStartValue();
+    return getTraitRules().getStartValue();
+  }
+
+  public final void addCreationPointListener(IIntValueChangedListener listener) {
+    getCreationPointControl().addIntValueChangeListener(listener);
+  }
+
+  public final void removeCreationPointListener(IIntValueChangedListener listener) {
+    getCreationPointControl().removeIntValueChangeListener(listener);
+  }
+
+  public final void addCurrentValueListener(IIntValueChangedListener listener) {
+    getCurrentValueControl().addIntValueChangeListener(listener);
+  }
+
+  public final void removeCurrentValueListener(IIntValueChangedListener listener) {
+    getCurrentValueControl().removeIntValueChangeListener(listener);
+  }
+
+  protected ITraitRules getTraitRules() {
+    return traitRules;
+  }
+
+  protected IntValueControl getCreationPointControl() {
+    return creationPointControl;
+  }
+
+  protected IntValueControl getCurrentValueControl() {
+    return currentValueControl;
   }
 }

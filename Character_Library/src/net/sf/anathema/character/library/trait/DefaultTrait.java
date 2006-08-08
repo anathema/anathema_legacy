@@ -14,23 +14,16 @@ import net.sf.anathema.character.library.trait.favorable.NullFavorization;
 import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
 import net.sf.anathema.character.library.trait.rules.IFavorableTraitRules;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
-import net.sf.anathema.character.library.trait.specialty.ISpecialtiesContainer;
-import net.sf.anathema.character.library.trait.specialty.SpecialtiesContainer;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
-import net.sf.anathema.lib.control.intvalue.IntValueControl;
 import net.sf.anathema.lib.data.Range;
 
 public class DefaultTrait extends AbstractFavorableTrait implements IFavorableModifiableTrait {
 
-  private final IntValueControl creationPointControl = new IntValueControl();
-  private final IntValueControl currentValueControl = new IntValueControl();
   private final ChangeControl rangeControl = new ChangeControl();
   private int creationValue;
   private int experiencedValue = ITraitRules.UNEXPERIENCED;
   private final IValueChangeChecker checker;
-  private final ITraitValueStrategy traitValueStrategy;
   private ITraitFavorization traitFavorization;
   private ICharacterChangeListener changeListener = new DedicatedCharacterChangeAdapter() {
     @Override
@@ -60,15 +53,10 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableMo
   }
 
   public DefaultTrait(ITraitRules traitRules, ITraitValueStrategy traitValueStrategy, IValueChangeChecker checker) {
-    super(traitRules);
+    super(traitRules, traitValueStrategy);
     this.traitFavorization = new NullFavorization();
     this.checker = checker;
-    this.traitValueStrategy = traitValueStrategy;
     this.creationValue = traitRules.getStartValue();
-  }
-
-  public ISpecialtiesContainer createSpecialtiesContainer() {
-    return new SpecialtiesContainer(this, traitRules, traitValueStrategy);
   }
 
   public final int getCreationValue() {
@@ -83,13 +71,13 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableMo
     if (getFavorization().getFavorableState() == FavorableState.Favored) {
       value = Math.max(value, 1);
     }
-    int correctedValue = traitRules.getCreationValue(value);
+    int correctedValue = getTraitRules().getCreationValue(value);
     if (this.creationValue == correctedValue) {
       return;
     }
     this.creationValue = correctedValue;
-    creationPointControl.fireValueChangedEvent(this.creationValue);
-    traitValueStrategy.notifyOnCreationValueChange(getCurrentValue(), currentValueControl);
+    getCreationPointControl().fireValueChangedEvent(this.creationValue);
+    traitValueStrategy.notifyOnCreationValueChange(getCurrentValue(), getCurrentValueControl());
   }
 
   public final void resetCreationValue() {
@@ -100,24 +88,8 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableMo
     setExperiencedValue(Math.max(getCreationValue(), getExperiencedValue()));
   }
 
-  public final void addCreationPointListener(IIntValueChangedListener listener) {
-    creationPointControl.addIntValueChangeListener(listener);
-  }
-
-  public final void removeCreationPointListener(IIntValueChangedListener listener) {
-    creationPointControl.removeIntValueChangeListener(listener);
-  }
-
-  public final void addCurrentValueListener(IIntValueChangedListener listener) {
-    currentValueControl.addIntValueChangeListener(listener);
-  }
-
   public final void addRangeListener(IChangeListener listener) {
     rangeControl.addChangeListener(listener);
-  }
-
-  public final void removeCurrentValueListener(IIntValueChangedListener listener) {
-    currentValueControl.removeIntValueChangeListener(listener);
   }
 
   public final int getMinimalValue() {
@@ -142,7 +114,7 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableMo
   }
 
   public int getExperiencedCalculationValue() {
-    return traitRules.getExperienceCalculationValue(creationValue, experiencedValue, getCurrentValue());
+    return getTraitRules().getExperienceCalculationValue(creationValue, experiencedValue, getCurrentValue());
   }
 
   public void setCurrentValue(int value) {
@@ -162,12 +134,12 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableMo
   }
 
   public final void setExperiencedValue(int value) {
-    int correctedValue = traitRules.getExperiencedValue(getCreationValue(), value);
+    int correctedValue = getTraitRules().getExperiencedValue(getCreationValue(), value);
     if (correctedValue == experiencedValue) {
       return;
     }
     this.experiencedValue = correctedValue;
-    traitValueStrategy.notifyOnLearnedValueChange(getCurrentValue(), currentValueControl);
+    traitValueStrategy.notifyOnLearnedValueChange(getCurrentValue(), getCurrentValueControl());
   }
 
   public final void resetCurrentValue() {
@@ -175,7 +147,7 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableMo
   }
 
   public void setModifiedCreationRange(int lowerBound, int upperBound) {
-    traitRules.setModifiedCreationRange(new Range(lowerBound, upperBound));
+    getTraitRules().setModifiedCreationRange(new Range(lowerBound, upperBound));
     resetCreationValue();
   }
 }
