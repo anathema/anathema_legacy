@@ -9,6 +9,7 @@ import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
 public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
 
+  private final List<ISubTrait> unremovableSubTraits = new ArrayList<ISubTrait>();
   private final List<ISubTrait> subtraits = new ArrayList<ISubTrait>();
   private final GenericControl<ISubTraitListener> subTraitListeners = new GenericControl<ISubTraitListener>();
   private final IIntValueChangedListener subTraitCreationPointListener = new IIntValueChangedListener() {
@@ -16,11 +17,22 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
       fireSubTraitValueChangedEvent();
     }
   };
+  
+  public AbstractSubTraitContainer(String... unremovableSubTraitNames) {
+    for (String traitName : unremovableSubTraitNames) {
+      ISubTrait subTrait = addSubTrait(traitName);
+      unremovableSubTraits.add(subTrait);
+    }
+  }
+  
+  public boolean isRemovable(ISubTrait subTrait) {
+    return !unremovableSubTraits.contains(subTrait);
+  }
 
-  private void fireSubTraitAddedEvent(final ISubTrait specialty) {
+  private void fireSubTraitAddedEvent(final ISubTrait subTrait) {
     subTraitListeners.forAllDo(new IClosure<ISubTraitListener>() {
       public void execute(ISubTraitListener input) {
-        input.subTraitAdded(specialty);
+        input.subTraitAdded(subTrait);
       }
     });
   }
@@ -33,10 +45,10 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
     });
   }
 
-  private void fireSubTraitRemovedEvent(final ISubTrait specialty) {
+  private void fireSubTraitRemovedEvent(final ISubTrait subTrait) {
     subTraitListeners.forAllDo(new IClosure<ISubTraitListener>() {
       public void execute(ISubTraitListener input) {
-        input.subTraitRemoved(specialty);
+        input.subTraitRemoved(subTrait);
       }
     });
   }

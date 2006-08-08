@@ -12,13 +12,13 @@ import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 
 public class Specialty extends DefaultTrait implements ISubTrait {
 
-  private final ITrait trait;
-  private final String specialtyName;
+  private final ITrait parent;
+  private final String subTraitName;
   private final AbstractSubTraitContainer container;
 
   public Specialty(
       AbstractSubTraitContainer container,
-      ITrait ability,
+      ITrait parent,
       String specialtyName,
       ITraitRules traitRules,
       ITraitValueStrategy traitValueStrategy) {
@@ -27,17 +27,17 @@ public class Specialty extends DefaultTrait implements ISubTrait {
         traitValueStrategy,
         new FriendlyValueChangeChecker());
     this.container = container;
-    this.trait = ability;
-    this.specialtyName = specialtyName;
+    this.parent = parent;
+    this.subTraitName = specialtyName;
     this.setCurrentValue(1);
   }
 
   public String getName() {
-    return specialtyName;
+    return subTraitName;
   }
 
   public ITrait getBasicTrait() {
-    return trait;
+    return parent;
   }
 
   @Override

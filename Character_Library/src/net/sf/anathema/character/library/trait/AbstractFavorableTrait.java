@@ -14,7 +14,7 @@ public abstract class AbstractFavorableTrait implements IFavorableTrait {
   private final ITraitRules traitRules;
   private final IntValueControl creationPointControl = new IntValueControl();
   private final IntValueControl currentValueControl = new IntValueControl();
-  protected final ITraitValueStrategy traitValueStrategy;
+  private final ITraitValueStrategy traitValueStrategy;
 
   public AbstractFavorableTrait(ITraitRules traitRules, ITraitValueStrategy traitValueStrategy) {
     this.traitRules = traitRules;
@@ -22,7 +22,7 @@ public abstract class AbstractFavorableTrait implements IFavorableTrait {
   }
 
   public final ISubTraitContainer createSpecialtiesContainer() {
-    return new SpecialtiesContainer(this, getTraitRules(), traitValueStrategy);
+    return new SpecialtiesContainer(this, getTraitRules(), getTraitValueStrategy());
   }
 
   public boolean isCasteOrFavored() {
@@ -99,5 +99,9 @@ public abstract class AbstractFavorableTrait implements IFavorableTrait {
 
   protected IntValueControl getCurrentValueControl() {
     return currentValueControl;
+  }
+
+  protected ITraitValueStrategy getTraitValueStrategy() {
+    return traitValueStrategy;
   }
 }

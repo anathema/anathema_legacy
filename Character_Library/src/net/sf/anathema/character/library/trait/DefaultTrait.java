@@ -77,7 +77,7 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableMo
     }
     this.creationValue = correctedValue;
     getCreationPointControl().fireValueChangedEvent(this.creationValue);
-    traitValueStrategy.notifyOnCreationValueChange(getCurrentValue(), getCurrentValueControl());
+    getTraitValueStrategy().notifyOnCreationValueChange(getCurrentValue(), getCurrentValueControl());
   }
 
   public final void resetCreationValue() {
@@ -93,7 +93,7 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableMo
   }
 
   public final int getMinimalValue() {
-    return traitValueStrategy.getMinimalValue(this);
+    return getTraitValueStrategy().getMinimalValue(this);
   }
 
   @Override
@@ -102,11 +102,11 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableMo
   }
 
   public int getCurrentValue() {
-    return traitValueStrategy.getCurrentValue(this);
+    return getTraitValueStrategy().getCurrentValue(this);
   }
 
   public final int getCalculationValue() {
-    return traitValueStrategy.getCalculationValue(this);
+    return getTraitValueStrategy().getCalculationValue(this);
   }
 
   public int getCreationCalculationValue() {
@@ -125,7 +125,7 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableMo
       if (value == getCurrentValue()) {
         return;
       }
-      traitValueStrategy.setValue(this, value);
+      getTraitValueStrategy().setValue(this, value);
     }
   }
 
@@ -139,11 +139,11 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableMo
       return;
     }
     this.experiencedValue = correctedValue;
-    traitValueStrategy.notifyOnLearnedValueChange(getCurrentValue(), getCurrentValueControl());
+    getTraitValueStrategy().notifyOnLearnedValueChange(getCurrentValue(), getCurrentValueControl());
   }
 
   public final void resetCurrentValue() {
-    traitValueStrategy.resetCurrentValue(this);
+    getTraitValueStrategy().resetCurrentValue(this);
   }
 
   public void setModifiedCreationRange(int lowerBound, int upperBound) {
