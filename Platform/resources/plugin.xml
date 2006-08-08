@@ -109,16 +109,8 @@
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaExtensions" id="AnathemaExtensions">
 	  <parameter id="type">
-		<parameter id="class" value="net.sf.anathema.framework.repository.filechooser.RepositoryFileChooserPropertiesExtensionPoint"/>
-		<parameter id="id" value="net.sf.anathema.framework.repository.filechooser.RepositoryFileChooserPropertiesExtensionPoint"/>
-	  </parameter>
-	  <parameter id="type">
 		<parameter id="class" value="net.sf.anathema.framework.presenter.item.ItemTypeViewPropertiesExtensionPoint"/>
 		<parameter id="id" value="net.sf.anathema.framework.presenter.item.ItemTypeViewPropertiesExtensionPoint"/>
-	  </parameter>
-	  <parameter id="type">
-		<parameter id="class" value="net.sf.anathema.framework.presenter.menu.MenuExtensionPoint"/>
-		<parameter id="id" value="Menu.New"/>
 	  </parameter>
 	  <parameter id="type">
 		<parameter id="class" value="net.sf.anathema.framework.presenter.menu.MenuExtensionPoint"/>
