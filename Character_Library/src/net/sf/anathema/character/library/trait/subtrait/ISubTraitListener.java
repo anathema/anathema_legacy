@@ -2,9 +2,9 @@ package net.sf.anathema.character.library.trait.subtrait;
 
 public interface ISubTraitListener {
   
-  public void specialtyValueChanged();
+  public void subTraitValueChanged();
 
-  public void specialtyAdded(ISubTrait specialty);
+  public void subTraitAdded(ISubTrait subTrait);
 
-  public void specialtyRemoved(ISubTrait specialty);
+  public void subTraitRemoved(ISubTrait subTrait);
 }

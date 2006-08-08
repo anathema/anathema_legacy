@@ -67,15 +67,15 @@ public class CharacterTraitListening {
         }
       });
       specialtyConfiguration.getSpecialtiesContainer(traitType).addSubTraitListener(new ISubTraitListener() {
-        public void specialtyRemoved(ISubTrait specialty) {
+        public void subTraitRemoved(ISubTrait specialty) {
           listening.fireCharacterChanged();
         }
 
-        public void specialtyAdded(ISubTrait specialty) {
+        public void subTraitAdded(ISubTrait specialty) {
           listening.fireCharacterChanged();
         }
 
-        public void specialtyValueChanged() {
+        public void subTraitValueChanged() {
           listening.fireCharacterChanged();
         }
       });

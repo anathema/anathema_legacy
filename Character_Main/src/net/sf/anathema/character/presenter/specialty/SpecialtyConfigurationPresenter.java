@@ -26,15 +26,15 @@ public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
 
   private final ISubTraitListener specialtyListener = new ISubTraitListener() {
 
-    public void specialtyAdded(ISubTrait specialty) {
+    public void subTraitAdded(ISubTrait specialty) {
       addSpecialtyView(specialty);
     }
 
-    public void specialtyRemoved(ISubTrait specialty) {
+    public void subTraitRemoved(ISubTrait specialty) {
       removeSpecialtyView(specialty);
     }
 
-    public void specialtyValueChanged() {
+    public void subTraitValueChanged() {
       // Nothing to do
     }
   };

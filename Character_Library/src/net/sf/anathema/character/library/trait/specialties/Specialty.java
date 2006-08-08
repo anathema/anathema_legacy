@@ -7,16 +7,17 @@ import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
+import net.sf.anathema.character.library.trait.subtrait.AbstractSubTraitContainer;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 
 public class Specialty extends DefaultTrait implements ISubTrait {
 
   private final ITrait trait;
   private final String specialtyName;
-  private final SpecialtiesContainer container;
+  private final AbstractSubTraitContainer container;
 
   public Specialty(
-      SpecialtiesContainer container,
+      AbstractSubTraitContainer container,
       ITrait ability,
       String specialtyName,
       ITraitRules traitRules,
