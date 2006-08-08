@@ -1,6 +1,6 @@
 package net.sf.anathema.lib.control.objectvalue;
 
-public interface ITwoObjectsValueChangedListener {
+public interface ITwoObjectsValueChangedListener<K,V> {
 
-  public void valueChanged(Object oldValue1, Object oldValue2, Object newValue1, Object newValue2);
+  public void valueChanged(K oldValue1, V oldValue2, K newValue1, V newValue2);
 }
