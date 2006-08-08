@@ -12,12 +12,9 @@ import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
-import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.repository.IItem;
-import net.sf.anathema.framework.repository.RepositoryException;
-import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.resources.IResources;
@@ -46,7 +43,7 @@ public final class ItemTypeLoadAction extends AbstractItemAction {
   }
 
   private ItemTypeLoadAction(IAnathemaModel anathemaModel, IItemType itemType, IResources resources) {
-    super(anathemaModel, resources);
+    super(anathemaModel, resources, new LoadItemCreator(anathemaModel));
     this.itemType = itemType;
     adjustEnabled();
     anathemaModel.getItemManagement().addListener(new ItemManagementModelAdapter() {
@@ -77,25 +74,11 @@ public final class ItemTypeLoadAction extends AbstractItemAction {
       return;
     }
     try {
-      IItem item = createItem(template);
-      createView(parentComponent, item);
+      createItem(parentComponent, itemType, template);
     }
     catch (PersistenceException e) {
       Message message = new Message(getResources().getString("AnathemaPersistence.NewMenu.Message.Error"), e); //$NON-NLS-1$
       MessageUtilities.indicateMessage(AnathemaNewAction.class, parentComponent, message);
-    }
-  }
-
-  private IItem createItem(IAnathemaWizardModelTemplate template) throws PersistenceException {
-    IRepositoryItemPersister persister = getAnathemaModel().getPersisterRegistry().get(itemType);
-    try {
-      IRepositoryReadAccess readAccess = getAnathemaModel().getRepository().openReadAccess(
-          itemType,
-          (IFileProvider) template);
-      return persister.load(readAccess);
-    }
-    catch (RepositoryException e) {
-      throw new PersistenceException("An exception occured while loading.", e); //$NON-NLS-1$
     }
   }
 }

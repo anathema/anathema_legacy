@@ -9,20 +9,14 @@ import javax.swing.KeyStroke;
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.item.repository.creation.ItemTypeSelectionProperties;
-import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
 import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IRepository;
-import net.sf.anathema.framework.repository.RepositoryException;
-import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
-import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
 import net.sf.anathema.lib.workflow.wizard.selection.ILegalityProvider;
 import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
 
@@ -35,7 +29,7 @@ public class AnathemaLoadAction extends AbstractAnathemaItemAction {
   }
 
   public AnathemaLoadAction(IAnathemaModel model, IResources resources) {
-    super(model, resources);
+    super(model, resources, new LoadItemCreator(model));
     setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_L, Event.CTRL_MASK));
     adjustEnabled();
     model.getItemManagement().addListener(new ItemManagementModelAdapter() {
@@ -62,18 +56,6 @@ public class AnathemaLoadAction extends AbstractAnathemaItemAction {
 
   private void adjustEnabled() {
     setEnabled(getRepository().containsClosed(collectItemTypes(getAnathemaModel())));
-  }
-
-  @Override
-  protected IItem createItem(IItemType type, IAnathemaWizardModelTemplate template) throws PersistenceException {
-    IRepositoryItemPersister persister = getAnathemaModel().getPersisterRegistry().get(type);
-    try {
-      IRepositoryReadAccess readAccess = getRepository().openReadAccess(type, (IFileProvider) template);
-      return persister.load(readAccess);
-    }
-    catch (RepositoryException e) {
-      throw new PersistenceException("An exception occured while loading.", e); //$NON-NLS-1$
-    }
   }
 
   private IRepository getRepository() {

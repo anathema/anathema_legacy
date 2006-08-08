@@ -19,18 +19,22 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.AnathemaException;
+import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
 
 public abstract class AbstractItemAction extends SmartAction {
 
   private final IResources resources;
   private final IAnathemaModel anathemaModel;
+  private final IItemCreator creator;
 
-  public AbstractItemAction(IAnathemaModel anathemaModel, IResources resources) {
+  public AbstractItemAction(IAnathemaModel anathemaModel, IResources resources, IItemCreator creator) {
     this.anathemaModel = anathemaModel;
     this.resources = resources;
+    this.creator = creator;
   }
 
   protected final boolean showDialog(Component parentComponent, IAnathemaWizardPage startPage) {
@@ -42,7 +46,9 @@ public abstract class AbstractItemAction extends SmartAction {
     return dialog.isCanceled();
   }
 
-  protected final void createView(Component parentComponent, final IItem item) {
+  protected final void createItem(Component parentComponent, IItemType type, IAnathemaWizardModelTemplate template)
+      throws PersistenceException {
+    final IItem item = creator.createItem(type, template);
     final Object[] internationalizedType = new Object[] { resources.getString("ItemType." + item.getItemType() + ".PrintName") }; //$NON-NLS-1$ //$NON-NLS-2$
     String title = resources.getString("AnathemaCore.AddItem.Progress.Title", internationalizedType); //$NON-NLS-1$
     try {

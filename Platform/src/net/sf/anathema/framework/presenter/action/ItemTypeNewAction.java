@@ -11,9 +11,7 @@ import net.disy.commons.core.message.Message;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
-import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
-import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.resources.IResources;
@@ -43,7 +41,7 @@ public class ItemTypeNewAction extends AbstractItemAction {
   }
 
   public ItemTypeNewAction(IItemType type, IAnathemaModel model, IResources resources) {
-    super(model, resources);
+    super(model, resources, new NewItemCreator(model));
     this.type = type;
   }
 
@@ -59,17 +57,11 @@ public class ItemTypeNewAction extends AbstractItemAction {
       }
     }
     try {
-      IItem item = createItem(template);
-      createView(parentComponent, item);
+      createItem(parentComponent, type, template);
     }
     catch (PersistenceException e) {
       Message message = new Message(getResources().getString("AnathemaPersistence.NewMenu.Message.Error"), e); //$NON-NLS-1$
       MessageUtilities.indicateMessage(AnathemaNewAction.class, parentComponent, message);
     }
-  }
-
-  private IItem createItem(IAnathemaWizardModelTemplate template) throws PersistenceException {
-    IRepositoryItemPersister persister = getAnathemaModel().getPersisterRegistry().get(type);
-    return persister.createNew(template);
   }
 }
