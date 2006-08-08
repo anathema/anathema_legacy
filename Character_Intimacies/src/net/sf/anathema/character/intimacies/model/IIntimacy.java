@@ -1,13 +1,13 @@
 package net.sf.anathema.character.intimacies.model;
 
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 
 public interface IIntimacy {
 
   public String getName();
 
-  public ITrait getTrait();
+  public IModifiableTrait getTrait();
 
   public void resetCurrentValue();
 

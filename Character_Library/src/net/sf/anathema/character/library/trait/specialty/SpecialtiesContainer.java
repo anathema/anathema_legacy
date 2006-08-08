@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
@@ -18,11 +18,11 @@ public class SpecialtiesContainer implements ISpecialtiesContainer {
       fireSpecialtyValueChangedEvent();
     }
   };
-  private final ITrait trait;
+  private final IModifiableTrait trait;
   private final ITraitRules traitRules;
   private final ITraitValueStrategy traitValueStrategy;
 
-  public SpecialtiesContainer(ITrait trait, ITraitRules traitRules, ITraitValueStrategy traitValueStrategy) {
+  public SpecialtiesContainer(IModifiableTrait trait, ITraitRules traitRules, ITraitValueStrategy traitValueStrategy) {
     this.trait = trait;
     this.traitRules = traitRules;
     this.traitValueStrategy = traitValueStrategy;

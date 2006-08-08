@@ -1,10 +1,10 @@
 package net.sf.anathema.character.model.background;
 
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 
 public interface IBackgroundListener {
 
-  public void backgroundAdded(ITrait background);
+  public void backgroundAdded(IModifiableTrait background);
 
-  public void backgroundRemoved(ITrait background);
+  public void backgroundRemoved(IModifiableTrait background);
 }

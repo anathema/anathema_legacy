@@ -1,6 +1,6 @@
 package net.sf.anathema.acceptance.fixture.character.lunar.renown;
 
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.lunar.renown.model.RenownType;
 
 public class SetRenownFixture extends AbstractRenownRowEntryFixture {
@@ -10,11 +10,11 @@ public class SetRenownFixture extends AbstractRenownRowEntryFixture {
 
   @Override
   public void enterRow() throws Exception {
-    ITrait trait = getTrait();
+    IModifiableTrait trait = getTrait();
     trait.setCurrentValue(value);
   }
 
-  protected final ITrait getTrait() {
+  protected final IModifiableTrait getTrait() {
     return getModel().getTrait(RenownType.valueOf(id));
   }
 }

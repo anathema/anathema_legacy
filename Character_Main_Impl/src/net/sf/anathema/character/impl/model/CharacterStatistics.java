@@ -22,7 +22,7 @@ import net.sf.anathema.character.impl.model.statistics.ExtendedConfiguration;
 import net.sf.anathema.character.impl.model.traits.CoreTraitConfiguration;
 import net.sf.anathema.character.impl.model.traits.essence.EssencePoolConfiguration;
 import net.sf.anathema.character.impl.model.traits.listening.CharacterTraitListening;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
@@ -83,7 +83,7 @@ public class CharacterStatistics implements ICharacterStatistics {
     this.concept = initConcept();
     traitConfiguration = new CoreTraitConfiguration(template, context, generics.getBackgroundRegistry());
     new CharacterTraitListening(traitConfiguration, context.getCharacterListening()).initListening();
-    ITrait toughnessTrait = getTraitConfiguration().getTrait(template.getToughnessControllingTraitType());
+    IModifiableTrait toughnessTrait = getTraitConfiguration().getTrait(template.getToughnessControllingTraitType());
     health = new HealthConfiguration(toughnessTrait);
     this.charms = new CharmConfiguration(health, context, generics.getTemplateRegistry(), generics.getCharmProvider());
     initCharmListening(charms);

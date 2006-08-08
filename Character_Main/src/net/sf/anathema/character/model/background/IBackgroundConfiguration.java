@@ -1,21 +1,21 @@
 package net.sf.anathema.character.model.background;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 
 public interface IBackgroundConfiguration {
 
   public IBackgroundTemplate[] getAllAvailableBackgroundTemplates();
 
-  public ITrait addBackground(String customBackgroundName);
+  public IModifiableTrait addBackground(String customBackgroundName);
 
-  public ITrait addBackground(IBackgroundTemplate type);
+  public IModifiableTrait addBackground(IBackgroundTemplate type);
 
-  public ITrait[] getBackgrounds();
+  public IModifiableTrait[] getBackgrounds();
 
   public void addBackgroundListener(IBackgroundListener listener);
 
-  public void removeBackground(ITrait background);
+  public void removeBackground(IModifiableTrait background);
 
-  public ITrait getBackgroundByTemplate(IBackgroundTemplate type);
+  public IModifiableTrait getBackgroundByTemplate(IBackgroundTemplate type);
 }

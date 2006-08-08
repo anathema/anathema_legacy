@@ -21,8 +21,8 @@ import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactor
 import net.sf.anathema.character.impl.model.traits.creation.FavoredIncrementChecker;
 import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
-import net.sf.anathema.character.library.trait.IFavorableTrait;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
@@ -97,7 +97,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   }
 
   @Override
-  public ITrait getTrait(ITraitType traitType) {
+  public IModifiableTrait getTrait(ITraitType traitType) {
     if (contains(traitType)) {
       return super.getTrait(traitType);
     }
@@ -128,7 +128,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     throw new IllegalStateException("Ability type in no group: " + abilityType); //$NON-NLS-1$
   }
 
-  public IFavorableTrait[] getAllAbilities() {
+  public IFavorableModifiableTrait[] getAllAbilities() {
     List<ITraitType> abilityTypes = new ArrayList<ITraitType>();
     for (IIdentifiedTraitTypeGroup group : getAbilityTypeGroups()) {
       Collections.addAll(abilityTypes, group.getAllGroupTypes());

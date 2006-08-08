@@ -22,7 +22,7 @@ import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
 import net.sf.anathema.lib.data.Range;
 
-public class DefaultTrait extends AbstractFavorableTrait {
+public class DefaultTrait extends AbstractFavorableTrait implements IFavorableModifiableTrait {
 
   private final IntValueControl creationPointControl = new IntValueControl();
   private final IntValueControl currentValueControl = new IntValueControl();

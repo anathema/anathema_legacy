@@ -16,7 +16,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.listening.
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTemplate;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.background.IBackgroundListener;
@@ -36,7 +36,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
   private final IBackgroundConfiguration configuration;
   private final IBasicAdvantageView configurationView;
   private final IResources resources;
-  private final IdentityMapping<ITrait, IRemovableTraitView<?>> viewsByBackground = new IdentityMapping<ITrait, IRemovableTraitView<?>>();
+  private final IdentityMapping<IModifiableTrait, IRemovableTraitView<?>> viewsByBackground = new IdentityMapping<IModifiableTrait, IRemovableTraitView<?>>();
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
   private final Map<String, IBackgroundTemplate> templatesByDisplayName = new HashMap<String, IBackgroundTemplate>();
 
@@ -51,11 +51,11 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
     this.configurationView = backgroundView;
     this.backgroundRegistry = backgroundRegistry;
     this.configuration.addBackgroundListener(new IBackgroundListener() {
-      public void backgroundAdded(ITrait background) {
+      public void backgroundAdded(IModifiableTrait background) {
         addBackgroundView(background);
       }
 
-      public void backgroundRemoved(ITrait background) {
+      public void backgroundRemoved(IModifiableTrait background) {
         removeBackgroundView(background);
       }
     });
@@ -68,8 +68,8 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
   }
 
   private Object getDisplayObject(Object anObject) {
-    if (anObject instanceof ITrait) {
-      anObject = ((ITrait) anObject).getType();
+    if (anObject instanceof IModifiableTrait) {
+      anObject = ((IModifiableTrait) anObject).getType();
     }
     if (anObject instanceof IBackgroundTemplate) {
       return getDisplayName((IBackgroundTemplate) anObject);
@@ -121,7 +121,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
     for (IBackgroundTemplate template : configuration.getAllAvailableBackgroundTemplates()) {
       templatesByDisplayName.put(getDisplayName(template), template);
     }
-    for (ITrait background : configuration.getBackgrounds()) {
+    for (IModifiableTrait background : configuration.getBackgrounds()) {
       addBackgroundView(background);
     }
   }
@@ -132,7 +132,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
     return backgroundTemplates;
   }
 
-  private synchronized void addBackgroundView(final ITrait background) {
+  private synchronized void addBackgroundView(final IModifiableTrait background) {
     Icon deleteIcon = new BasicUi(resources).getMediumRemoveIcon();
     IRemovableTraitView<?> backgroundView = configurationView.addBackgroundView(
         deleteIcon,
@@ -149,7 +149,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
     viewsByBackground.put(background, backgroundView);
   }
 
-  private synchronized void removeBackgroundView(ITrait background) {
+  private synchronized void removeBackgroundView(IModifiableTrait background) {
     IRemovableTraitView<?> view = viewsByBackground.get(background);
     viewsByBackground.remove(background);
     view.delete();
@@ -168,7 +168,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
   }
 
   public void allowRemoveCreationBackground(boolean allowed) {
-    for (ITrait background : viewsByBackground.getAllKeys()) {
+    for (IModifiableTrait background : viewsByBackground.getAllKeys()) {
       if (background.isCreationLearned()) {
         IRemovableTraitView<?> view = viewsByBackground.get(background);
         view.setButtonEnabled(allowed);

@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
-import net.sf.anathema.character.library.trait.IFavorableTrait;
+import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
@@ -73,7 +73,7 @@ public class AstrologicalHouse extends Identificate implements IAstrologicalHous
     return new AstrologicalHouse(caste.getId(), collegeyTypes, caste, context);
   }
 
-  private IFavorableTrait[] colleges;
+  private IFavorableModifiableTrait[] colleges;
   private final ChangeControl collegeValueChangeControl = new ChangeControl();
   private final IIntValueChangedListener collegeValueChangeListener = new IIntValueChangedListener() {
     public void valueChanged(int newValue) {
@@ -92,7 +92,7 @@ public class AstrologicalHouse extends Identificate implements IAstrologicalHous
       ICasteType<ISiderealCasteVisitor> casteType,
       ICharacterModelContext context) {
     super(id);
-    colleges = new IFavorableTrait[collegeTypes.length];
+    colleges = new IFavorableModifiableTrait[collegeTypes.length];
     for (int index = 0; index < collegeTypes.length; index++) {
       ITraitContext traitContext = context.getTraitContext();
       ITraitTemplate houseTemplate = SimpleTraitTemplate.createEssenceLimitedTemplate(0);
@@ -113,7 +113,7 @@ public class AstrologicalHouse extends Identificate implements IAstrologicalHous
     }
   }
 
-  public IFavorableTrait[] getColleges() {
+  public IFavorableModifiableTrait[] getColleges() {
     return colleges;
   }
 

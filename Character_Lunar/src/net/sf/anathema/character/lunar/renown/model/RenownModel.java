@@ -19,7 +19,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.ITraitTypeVisitor;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.character.lunar.LunarCharacterModule;
@@ -33,7 +33,7 @@ public class RenownModel implements IRenownModel {
 
   private final RenownTraitCollection collection = new RenownTraitCollection();
   private final ICharacterModelContext context;
-  private ITrait face;
+  private IModifiableTrait face;
   private final IntValueControl control = new IntValueControl();
 
   public RenownModel(final ICharacterModelContext context) {
@@ -50,7 +50,7 @@ public class RenownModel implements IRenownModel {
     });
   }
 
-  public ITrait getFace() {
+  public IModifiableTrait getFace() {
     return face;
   }
 
@@ -97,7 +97,7 @@ public class RenownModel implements IRenownModel {
     for (int index = 0; index < RenownType.values().length; index++) {
       ITraitType type = RenownType.values()[index];
       ITraitRules rules = new TraitRules(type, renownTemplate, traitContext.getLimitationContext());
-      ITrait trait = new DefaultTrait(rules, traitContext.getTraitValueStrategy(), new FriendlyValueChangeChecker());
+      IModifiableTrait trait = new DefaultTrait(rules, traitContext.getTraitValueStrategy(), new FriendlyValueChangeChecker());
       collection.addRenownTrait(trait);
       trait.addCurrentValueListener(new IIntValueChangedListener() {
         public void valueChanged(int newValue) {
@@ -127,19 +127,19 @@ public class RenownModel implements IRenownModel {
     return new NullAdditionalModelExperienceCalculator();
   }
 
-  public ITrait getTrait(RenownType type) {
+  public IModifiableTrait getTrait(RenownType type) {
     return collection.getTrait(type);
   }
 
   public int calculateTotalRenown() {
     int total = 0;
-    for (ITrait trait : getAllTraits()) {
+    for (IModifiableTrait trait : getAllTraits()) {
       total += trait.getCurrentValue();
     }
     return total;
   }
 
-  public ITrait[] getAllTraits() {
+  public IModifiableTrait[] getAllTraits() {
     return collection.getTraits(RenownType.values());
   }
 
@@ -218,7 +218,7 @@ public class RenownModel implements IRenownModel {
   }
 
   public void addRenownChangedListener(IIntValueChangedListener listener) {
-    for (ITrait trait : getAllTraits()) {
+    for (IModifiableTrait trait : getAllTraits()) {
       trait.addCurrentValueListener(listener);
     }
   }

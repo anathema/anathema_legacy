@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
 
@@ -24,15 +24,15 @@ public class DefaultTraitFactory extends AbstractTraitFactory {
     this.templateCollection = templateCollection;
   }
 
-  public ITrait[] createTraits(ITraitType[] traitTypes) {
-    ITrait[] newTraits = new ITrait[traitTypes.length];
+  public IModifiableTrait[] createTraits(ITraitType[] traitTypes) {
+    IModifiableTrait[] newTraits = new IModifiableTrait[traitTypes.length];
     for (int index = 0; index < newTraits.length; index++) {
       newTraits[index] = createTrait(traitTypes[index]);
     }
     return newTraits;
   }
 
-  public ITrait createTrait(ITraitType traitType) {
+  public IModifiableTrait createTrait(ITraitType traitType) {
     ITraitTemplate traitTemplate = templateCollection.getTraitTemplate(traitType);
     IValueChangeChecker checker = createValueIncrementChecker(traitType);
     TraitRules rules = new TraitRules(traitType, traitTemplate, traitContext.getLimitationContext());

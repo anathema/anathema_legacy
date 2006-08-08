@@ -1,8 +1,8 @@
 package net.sf.anathema.character.library.trait;
 
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
-
 
 public abstract class AbstractFavorableTrait implements IFavorableTrait {
 

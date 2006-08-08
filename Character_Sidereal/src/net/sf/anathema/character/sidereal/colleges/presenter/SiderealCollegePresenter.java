@@ -10,7 +10,7 @@ import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
-import net.sf.anathema.character.library.trait.IFavorableTrait;
+import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
@@ -49,7 +49,7 @@ public class SiderealCollegePresenter extends AbstractTraitPresenter {
     IIntValueDisplayFactory factory = new IntValueDisplayFactory(resources, siderealBall);
     for (final IAstrologicalHouse house : model.getAllHouses()) {
       view.startGroup(resources.getString("AstrologicalHouses.GroupLabel." + house.getId())); //$NON-NLS-1$
-      for (final IFavorableTrait college : house.getColleges()) {
+      for (final IFavorableModifiableTrait college : house.getColleges()) {
         String collegeName = resources.getString("AstrologicalCollege.Label." + college.getType().getId()); //$NON-NLS-1$
         IIconToggleButtonProperties properties = new IIconToggleButtonProperties() {
           public Icon createUnselectedIcon() {

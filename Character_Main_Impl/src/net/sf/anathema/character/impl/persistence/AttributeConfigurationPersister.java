@@ -6,7 +6,7 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -25,7 +25,7 @@ public class AttributeConfigurationPersister extends AbstractCharacterPersister 
 
   private void saveAttributeGroup(Element parent, ICoreTraitConfiguration traitConfiguration, IIdentifiedTraitTypeGroup typeGroup) {
     Element groupElement = parent.addElement(typeGroup.getGroupId().getId());
-    for (ITrait attribute : traitConfiguration.getTraits(typeGroup.getAllGroupTypes())) {
+    for (IModifiableTrait attribute : traitConfiguration.getTraits(typeGroup.getAllGroupTypes())) {
       saveTrait(groupElement, attribute.getType().getId(), attribute);
     }
   }

@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.impl.module.ExaltedCharacterItemTypeConfiguration;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterDescription;
 import net.sf.anathema.character.model.ICharacterStatistics;
@@ -44,7 +44,7 @@ public abstract class AbstractGenerationData implements IGenerationData {
   protected final void fillBasicStatistics(ICharacterStatistics statistics) {
     ICoreTraitConfiguration traitConfiguration = statistics.getTraitConfiguration();
     traitConfiguration.getTrait(AttributeType.Strength).setCurrentValue(2);
-    ITrait endurance = traitConfiguration.getTrait(AbilityType.Endurance);
+    IModifiableTrait endurance = traitConfiguration.getTrait(AbilityType.Endurance);
     endurance.setCurrentValue(3);
     traitConfiguration.getTrait(AttributeType.Dexterity).setCurrentValue(5);
     traitConfiguration.getTrait(AttributeType.Wits).setCurrentValue(5);

@@ -12,7 +12,7 @@ import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.generic.template.experience.IAbilityPointCosts;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.model.ICharacterStatistics;
 
 public class AdditionalBonusPointPoolManagement implements IAdditionalBonusPointManagment {
@@ -81,22 +81,22 @@ public class AdditionalBonusPointPoolManagement implements IAdditionalBonusPoint
     }
   }
 
-  public ITrait[] sortBackgrounds(ITrait[] backgrounds) {
-    List<ITrait> sortedBackgrounds = new ArrayList<ITrait>();
-    for (ITrait background : backgrounds) {
+  public IModifiableTrait[] sortBackgrounds(IModifiableTrait[] backgrounds) {
+    List<IModifiableTrait> sortedBackgrounds = new ArrayList<IModifiableTrait>();
+    for (IModifiableTrait background : backgrounds) {
       if (!isFavoredBackground(background)) {
         sortedBackgrounds.add(background);
       }
     }
-    for (ITrait background : backgrounds) {
+    for (IModifiableTrait background : backgrounds) {
       if (!sortedBackgrounds.contains(background)) {
         sortedBackgrounds.add(background);
       }
     }
-    return sortedBackgrounds.toArray(new ITrait[sortedBackgrounds.size()]);
+    return sortedBackgrounds.toArray(new IModifiableTrait[sortedBackgrounds.size()]);
   }
 
-  private boolean isFavoredBackground(ITrait background) {
+  private boolean isFavoredBackground(IModifiableTrait background) {
     if (background.getType() == null) {
       return false;
     }

@@ -9,18 +9,18 @@ import net.sf.anathema.lib.collection.ListOrderedSet;
 
 public abstract class AbstractFavorableTraitCostCalculator implements IFavorableTraitCostCalculator {
 
-  private final Map<IFavorableTrait, FavorableTraitCost> costsByTrait = new HashMap<IFavorableTrait, FavorableTraitCost>();
+  private final Map<IFavorableModifiableTrait, FavorableTraitCost> costsByTrait = new HashMap<IFavorableModifiableTrait, FavorableTraitCost>();
   private int favoredPicksSpent;
   private int favoredDotSum = 0;
   private int generalDotSum = 0;
   private final IAdditionalTraitBonusPointManagement additionalPools;
   private final IFavorableTraitCreationPoints points;
-  private final IFavorableTrait[] traits;
+  private final IFavorableModifiableTrait[] traits;
 
   public AbstractFavorableTraitCostCalculator(
       IAdditionalTraitBonusPointManagement additionalPools,
       IFavorableTraitCreationPoints points,
-      IFavorableTrait[] traits) {
+      IFavorableModifiableTrait[] traits) {
     this.additionalPools = additionalPools;
     this.points = points;
     this.traits = traits;
@@ -35,8 +35,8 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
   
   public void calculateCosts() {
     clear();
-    Set<IFavorableTrait> sortedTraits = sortTraitsByStatus();
-    for (IFavorableTrait trait : sortedTraits) {
+    Set<IFavorableModifiableTrait> sortedTraits = sortTraitsByStatus();
+    for (IFavorableModifiableTrait trait : sortedTraits) {
       int costFactor = getCostFactor(trait);
       FavorableTraitCost cost;
       if (trait.getFavorization().isCasteOrFavored()) {
@@ -50,7 +50,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     }
   }
 
-  private FavorableTraitCost handleGeneralTrait(IFavorableTrait trait, int bonusPointCostFactor) {
+  private FavorableTraitCost handleGeneralTrait(IFavorableModifiableTrait trait, int bonusPointCostFactor) {
     int pointsToAdd = Math.min(trait.getCalculationValue(), 3);
     int generalDotsSpent = 0;
     int bonusPointsSpent = 0;
@@ -67,7 +67,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     return new FavorableTraitCost(bonusPointsSpent, generalDotsSpent, 0);
   }
 
-  private FavorableTraitCost handleFavoredTrait(IFavorableTrait trait, int bonusPointCostFactor) {
+  private FavorableTraitCost handleFavoredTrait(IFavorableModifiableTrait trait, int bonusPointCostFactor) {
     if (trait.getFavorization().isFavored()) {
       increaseFavoredPicksSpent();
     }
@@ -96,24 +96,24 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     return new FavorableTraitCost(bonusPointsSpent, generalDotsSpent, favoredDotsSpent);
   }
 
-  protected abstract int getCostFactor(IFavorableTrait trait);
+  protected abstract int getCostFactor(IFavorableModifiableTrait trait);
 
   public int getFreePointsSpent(boolean favored) {
     return favored ? favoredDotSum : generalDotSum;
   }
 
-  public FavorableTraitCost getCosts(IFavorableTrait trait) {
+  public FavorableTraitCost getCosts(IFavorableModifiableTrait trait) {
     return costsByTrait.get(trait);
   }
 
-  protected Set<IFavorableTrait> sortTraitsByStatus() {
-    Set<IFavorableTrait> orderedTraits = new ListOrderedSet<IFavorableTrait>();
-    for (IFavorableTrait trait : traits) {
+  protected Set<IFavorableModifiableTrait> sortTraitsByStatus() {
+    Set<IFavorableModifiableTrait> orderedTraits = new ListOrderedSet<IFavorableModifiableTrait>();
+    for (IFavorableModifiableTrait trait : traits) {
       if (!trait.getFavorization().isCasteOrFavored()) {
         orderedTraits.add(trait);
       }
     }
-    for (IFavorableTrait trait : traits) {
+    for (IFavorableModifiableTrait trait : traits) {
       if (!orderedTraits.contains(trait)) {
         orderedTraits.add(trait);
       }

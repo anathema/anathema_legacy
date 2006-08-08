@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.model.advance.models;
 
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 public class BackgroundExperienceModel extends AbstractIntegerValueModel {
@@ -18,7 +18,7 @@ public class BackgroundExperienceModel extends AbstractIntegerValueModel {
 
   private int getBackgroundExperience() {
     int xpSum = 0;
-    for (ITrait background : configuration.getBackgrounds().getBackgrounds()) {
+    for (IModifiableTrait background : configuration.getBackgrounds().getBackgrounds()) {
       int difference = background.getCalculationValue() - background.getCreationValue();
       xpSum += difference * 3;
     }

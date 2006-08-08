@@ -8,9 +8,9 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 
 public abstract class AbstractTraitCollection implements ITraitCollection {
 
-  private final Map<ITraitType, ITrait> traitsByType = new HashMap<ITraitType, ITrait>();
+  private final Map<ITraitType, IModifiableTrait> traitsByType = new HashMap<ITraitType, IModifiableTrait>();
 
-  public ITrait getTrait(ITraitType traitType) {
+  public IModifiableTrait getTrait(ITraitType traitType) {
     return traitsByType.get(traitType);
   }
 
@@ -18,41 +18,41 @@ public abstract class AbstractTraitCollection implements ITraitCollection {
     return traitsByType.containsKey(traitType);
   }
 
-  public final ITrait[] getTraits(ITraitType[] traitTypes) {
-    ITrait[] traits = new ITrait[traitTypes.length];
+  public final IModifiableTrait[] getTraits(ITraitType[] traitTypes) {
+    IModifiableTrait[] traits = new IModifiableTrait[traitTypes.length];
     for (int index = 0; index < traitTypes.length; index++) {
       traits[index] = getTrait(traitTypes[index]);
     }
     return traits;
   }
 
-  public IFavorableTrait getFavorableTrait(ITraitType traitType) {
-    ITrait favorableTrait = getTrait(traitType);
-    Ensure.ensureArgumentTrue("No favorable trait type " + traitType, favorableTrait instanceof IFavorableTrait); //$NON-NLS-1$
-    return (IFavorableTrait) favorableTrait;
+  public IFavorableModifiableTrait getFavorableTrait(ITraitType traitType) {
+    IModifiableTrait favorableTrait = getTrait(traitType);
+    Ensure.ensureArgumentTrue("No favorable trait type " + traitType, favorableTrait instanceof IFavorableModifiableTrait); //$NON-NLS-1$
+    return (IFavorableModifiableTrait) favorableTrait;
   }
 
-  public IFavorableTrait[] getFavorableTraits(ITraitType[] traitTypes) {
-    IFavorableTrait[] favorableTraits = new IFavorableTrait[traitTypes.length];
+  public IFavorableModifiableTrait[] getFavorableTraits(ITraitType[] traitTypes) {
+    IFavorableModifiableTrait[] favorableTraits = new IFavorableModifiableTrait[traitTypes.length];
     for (int index = 0; index < favorableTraits.length; index++) {
       favorableTraits[index] = getFavorableTrait(traitTypes[index]);
     }
     return favorableTraits;
   }
 
-  protected final void addTrait(ITrait trait) {
+  protected final void addTrait(IModifiableTrait trait) {
     Ensure.ensureArgumentFalse("Trait of type already contained " + trait.getType(), contains(trait.getType())); //$NON-NLS-1$
     traitsByType.put(trait.getType(), trait);
   }
 
-  protected final void addTraits(ITrait[] traits) {
-    for (ITrait trait : traits) {
+  protected final void addTraits(IModifiableTrait[] traits) {
+    for (IModifiableTrait trait : traits) {
       addTrait(trait);
     }
   }
 
   public final boolean isFavoredOrCasteTrait(ITraitType type) {
-    ITrait trait = getTrait(type);
-    return trait instanceof IFavorableTrait && ((IFavorableTrait) trait).isCasteOrFavored();
+    IModifiableTrait trait = getTrait(type);
+    return trait instanceof IFavorableModifiableTrait && ((IFavorableModifiableTrait) trait).isCasteOrFavored();
   }
 }

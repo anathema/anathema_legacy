@@ -13,13 +13,13 @@ public class TraitGroup {
     this.groupType = groupType;
   }
 
-  public IFavorableTrait[] getGroupTraits() {
+  public IFavorableModifiableTrait[] getGroupTraits() {
     return traitCollection.getFavorableTraits(groupType.getAllGroupTypes());
   }
 
   public int getInitialSum() {
     int initialSum = 0;
-    for (ITrait trait : getGroupTraits()) {
+    for (IModifiableTrait trait : getGroupTraits()) {
       initialSum += trait.getInitialValue();
     }
     return initialSum;
@@ -27,13 +27,13 @@ public class TraitGroup {
 
   public int getCreationValueSum() {
     int creationValueSum = 0;
-    for (ITrait trait : getGroupTraits()) {
+    for (IModifiableTrait trait : getGroupTraits()) {
       creationValueSum += getModifiedTraitValue(trait);
     }
     return creationValueSum;
   }
 
-  protected int getModifiedTraitValue(ITrait trait) {
+  protected int getModifiedTraitValue(IModifiableTrait trait) {
     return trait.getCreationValue();
   }
 

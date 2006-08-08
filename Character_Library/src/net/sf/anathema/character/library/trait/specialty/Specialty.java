@@ -5,18 +5,18 @@ import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 
 public class Specialty extends DefaultTrait implements ISpecialty {
 
-  private final ITrait trait;
+  private final IModifiableTrait trait;
   private final String specialtyName;
   private final SpecialtiesContainer container;
 
   public Specialty(
       SpecialtiesContainer container,
-      ITrait ability,
+      IModifiableTrait ability,
       String specialtyName,
       ITraitRules traitRules,
       ITraitValueStrategy traitValueStrategy) {
@@ -34,7 +34,7 @@ public class Specialty extends DefaultTrait implements ISpecialty {
     return specialtyName;
   }
 
-  public ITrait getBasicTrait() {
+  public IModifiableTrait getBasicTrait() {
     return trait;
   }
 

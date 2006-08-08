@@ -6,7 +6,7 @@ import java.util.Map;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformAttribute;
 
 public class BeastformTraitCollection extends AbstractTraitCollection implements IBeastformTraitCollection {
@@ -22,7 +22,7 @@ public class BeastformTraitCollection extends AbstractTraitCollection implements
     return attributesByType.get(traitType);
   }
 
-  public int getTraitPointCost(ITrait trait) {
+  public int getTraitPointCost(IModifiableTrait trait) {
     Ensure.ensureArgumentTrue("Trait not in collection.", contains(trait.getType())); //$NON-NLS-1$
     return ((BeastformAttribute) trait).getPointCost();
   }

@@ -1,9 +1,9 @@
 package net.sf.anathema.dummy.character.trait;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.IBasicTrait;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.IModifiableBasicTrait;
 import net.sf.anathema.lib.data.Range;
 
-public class DummyBasicTrait implements IBasicTrait {
+public class DummyBasicTrait implements IModifiableBasicTrait {
 
   private int experiencedValue;
   private int creationValue;

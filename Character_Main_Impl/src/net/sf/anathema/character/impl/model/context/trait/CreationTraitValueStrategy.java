@@ -1,20 +1,20 @@
 package net.sf.anathema.character.impl.model.context.trait;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.IBasicTrait;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.IModifiableBasicTrait;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
 
 public class CreationTraitValueStrategy implements ITraitValueStrategy {
 
-  public int getCurrentValue(IBasicTrait trait) {
+  public int getCurrentValue(IModifiableBasicTrait trait) {
     return trait.getCreationValue();
   }
 
-  public int getMinimalValue(IBasicTrait trait) {
+  public int getMinimalValue(IModifiableBasicTrait trait) {
     return trait.getAbsoluteMinValue();
   }
 
-  public void setValue(IBasicTrait trait, int value) {
+  public void setValue(IModifiableBasicTrait trait, int value) {
     trait.setCreationValue(value);
   }
 
@@ -26,11 +26,11 @@ public class CreationTraitValueStrategy implements ITraitValueStrategy {
     // throw new IllegalStateException("No changes on learn value should occur in character creation."); //$NON-NLS-1$
   }
 
-  public void resetCurrentValue(IBasicTrait trait) {
+  public void resetCurrentValue(IModifiableBasicTrait trait) {
     trait.resetCreationValue();
   }
 
-  public int getCalculationValue(IBasicTrait trait) {
+  public int getCalculationValue(IModifiableBasicTrait trait) {
     return trait.getCreationCalculationValue();
   }
 }

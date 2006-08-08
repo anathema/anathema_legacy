@@ -17,14 +17,14 @@ import net.sf.anathema.character.impl.model.creation.bonus.basic.ICostElement;
 import net.sf.anathema.character.impl.model.creation.bonus.trait.TraitCostElement;
 import net.sf.anathema.character.impl.model.creation.bonus.util.TraitGroupCost;
 import net.sf.anathema.character.impl.model.creation.bonus.util.TraitGroupSorter;
-import net.sf.anathema.character.library.trait.IFavorableTrait;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 public class AttributeCostCalculator implements IAttributeCostCalculator {
 
-  private final Map<ITrait, ElementCreationCost> costsByAttribute = new HashMap<ITrait, ElementCreationCost>();
+  private final Map<IModifiableTrait, ElementCreationCost> costsByAttribute = new HashMap<IModifiableTrait, ElementCreationCost>();
   private List<TraitGroupCost> orderedGroups;
   private final TraitGroup[] traitGroups;
   private final IAttributeCreationPoints attributePoints;
@@ -53,7 +53,7 @@ public class AttributeCostCalculator implements IAttributeCostCalculator {
     orderedGroups = calculateGroupPriorites(attributePoints);
     for (TraitGroupCost group : orderedGroups) {
       int freePointsLeft = group.getPointsToSpend();
-      for (IFavorableTrait attribute : group.getTraits()) {
+      for (IFavorableModifiableTrait attribute : group.getTraits()) {
         int costFactor = costs.getAttributeCosts(attribute.getFavorization().isCasteOrFavored()).getRatingCosts(
             attribute.getCurrentValue());
         ElementCreationCost cost = handleAttribute(attribute, freePointsLeft, costFactor);
@@ -68,7 +68,7 @@ public class AttributeCostCalculator implements IAttributeCostCalculator {
     costsByAttribute.clear();
   }
 
-  private ElementCreationCost handleAttribute(ITrait attribute, int freeDots, int bonusPointCostFactor) {
+  private ElementCreationCost handleAttribute(IModifiableTrait attribute, int freeDots, int bonusPointCostFactor) {
     ICostElement element = new TraitCostElement(attribute);
     return new ElementCreationCostCalculator().calculateElementCreationCost(element, freeDots, bonusPointCostFactor);
   }
@@ -132,7 +132,7 @@ public class AttributeCostCalculator implements IAttributeCostCalculator {
     return pointsSpent;
   }
 
-  public ElementCreationCost getCosts(ITrait attribute) {
+  public ElementCreationCost getCosts(IModifiableTrait attribute) {
     return costsByAttribute.get(attribute);
   }
 }

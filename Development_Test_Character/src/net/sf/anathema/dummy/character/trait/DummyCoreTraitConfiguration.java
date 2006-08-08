@@ -14,8 +14,8 @@ import net.sf.anathema.character.generic.traits.groups.IdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
-import net.sf.anathema.character.library.trait.IFavorableTrait;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
 import net.sf.anathema.character.library.trait.specialties.SpecialtyConfiguration;
@@ -44,14 +44,14 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
     });
   }
 
-  public ITrait[] getAllTraits(AttributeGroupType groupType) {
+  public IModifiableTrait[] getAllTraits(AttributeGroupType groupType) {
     IIdentifiedTraitTypeGroup attributeTypeGroup = getAttributeTypeGroup(groupType);
     TraitGroup traitGroup = new TraitGroup(this, attributeTypeGroup);
     return traitGroup.getGroupTraits();
   }
 
-  public boolean containsAllTraits(AttributeGroupType attributeGroupType, ITrait[] traits) {
-    for (ITrait trait : traits) {
+  public boolean containsAllTraits(AttributeGroupType attributeGroupType, IModifiableTrait[] traits) {
+    for (IModifiableTrait trait : traits) {
       if (!ArrayUtilities.contains(getAllTraits(attributeGroupType), trait)) {
         return false;
       }
@@ -59,7 +59,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
     return true;
   }
 
-  public void addTestTrait(ITrait trait) {
+  public void addTestTrait(IModifiableTrait trait) {
     addTrait(trait);
   }
 
@@ -100,7 +100,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
     abilityGroupsByType.add(id, traitType);
   }
 
-  public IFavorableTrait[] getAllAbilities() {
+  public IFavorableModifiableTrait[] getAllAbilities() {
     List<ITraitType> abilityTypes = new ArrayList<ITraitType>();
     for (IIdentifiedTraitTypeGroup group : getAbilityTypeGroups()) {
       Collections.addAll(abilityTypes, group.getAllGroupTypes());

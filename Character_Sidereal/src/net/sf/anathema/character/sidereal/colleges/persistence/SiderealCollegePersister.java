@@ -2,7 +2,7 @@ package net.sf.anathema.character.sidereal.colleges.persistence;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersister;
-import net.sf.anathema.character.library.trait.IFavorableTrait;
+import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
 import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
 import net.sf.anathema.character.sidereal.colleges.model.CollegeType;
 import net.sf.anathema.character.sidereal.colleges.model.SiderealCollegeModel;
@@ -20,7 +20,7 @@ public class SiderealCollegePersister extends AbstractCharacterPersister impleme
     Element collegesElement = parent.addElement(TAG_COLLEGES);
     SiderealCollegeModel collegeModel = (SiderealCollegeModel) model;
     for (IAstrologicalHouse house : collegeModel.getAllHouses()) {
-      for (IFavorableTrait college : house.getColleges()) {
+      for (IFavorableModifiableTrait college : house.getColleges()) {
         saveTrait(collegesElement, college.getType().getId(), college);
       }
     }

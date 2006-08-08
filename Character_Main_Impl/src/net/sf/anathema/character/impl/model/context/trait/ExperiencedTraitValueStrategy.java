@@ -1,24 +1,24 @@
 package net.sf.anathema.character.impl.model.context.trait;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.IBasicTrait;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.IModifiableBasicTrait;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
 
 public class ExperiencedTraitValueStrategy implements ITraitValueStrategy {
 
-  public int getMinimalValue(IBasicTrait trait) {
+  public int getMinimalValue(IModifiableBasicTrait trait) {
     return trait.isLowerable() ? trait.getAbsoluteMinValue() : trait.getCreationValue();
   }
 
-  public int getCurrentValue(IBasicTrait trait) {
+  public int getCurrentValue(IModifiableBasicTrait trait) {
     if (trait.getExperiencedValue() == ITraitRules.UNEXPERIENCED) {
       return trait.getCreationValue();
     }
     return trait.getExperiencedValue();
   }
 
-  public void setValue(IBasicTrait trait, int value) {
+  public void setValue(IModifiableBasicTrait trait, int value) {
     trait.setExperiencedValue(value);
   }
 
@@ -30,11 +30,11 @@ public class ExperiencedTraitValueStrategy implements ITraitValueStrategy {
     currentValueControl.fireValueChangedEvent(value);
   }
 
-  public void resetCurrentValue(IBasicTrait trait) {
+  public void resetCurrentValue(IModifiableBasicTrait trait) {
     trait.resetExperiencedValue();
   }
 
-  public int getCalculationValue(IBasicTrait trait) {
+  public int getCalculationValue(IModifiableBasicTrait trait) {
     return trait.getExperiencedCalculationValue();
   }
 }

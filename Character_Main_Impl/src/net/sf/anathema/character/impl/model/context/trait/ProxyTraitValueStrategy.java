@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.model.context.trait;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.IBasicTrait;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.IModifiableBasicTrait;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
 
@@ -12,15 +12,15 @@ public class ProxyTraitValueStrategy implements ITraitValueStrategy {
     this.strategy = strategy;
   }
 
-  public int getCurrentValue(IBasicTrait trait) {
+  public int getCurrentValue(IModifiableBasicTrait trait) {
     return strategy.getCurrentValue(trait);
   }
 
-  public int getMinimalValue(IBasicTrait trait) {
+  public int getMinimalValue(IModifiableBasicTrait trait) {
     return strategy.getMinimalValue(trait);
   }
 
-  public void setValue(IBasicTrait trait, int value) {
+  public void setValue(IModifiableBasicTrait trait, int value) {
     strategy.setValue(trait, value);
   }
 
@@ -36,11 +36,11 @@ public class ProxyTraitValueStrategy implements ITraitValueStrategy {
     strategy.notifyOnLearnedValueChange(value, currentValueControl);
   }
 
-  public void resetCurrentValue(IBasicTrait trait) {
+  public void resetCurrentValue(IModifiableBasicTrait trait) {
     strategy.resetCurrentValue(trait);
   }
 
-  public int getCalculationValue(IBasicTrait trait) {
+  public int getCalculationValue(IModifiableBasicTrait trait) {
     return strategy.getCalculationValue(trait);
   }
 }

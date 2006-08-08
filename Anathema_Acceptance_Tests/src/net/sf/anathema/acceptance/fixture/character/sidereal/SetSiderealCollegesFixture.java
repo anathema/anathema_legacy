@@ -2,7 +2,7 @@ package net.sf.anathema.acceptance.fixture.character.sidereal;
 
 import net.sf.anathema.acceptance.fixture.character.util.AbstractCharacterRowEntryFixture;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
-import net.sf.anathema.character.library.trait.IFavorableTrait;
+import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
 import net.sf.anathema.character.sidereal.colleges.model.CollegeType;
 import net.sf.anathema.character.sidereal.colleges.model.SiderealCollegeModel;
 
@@ -14,7 +14,7 @@ public class SetSiderealCollegesFixture extends AbstractCharacterRowEntryFixture
   @Override
   public void enterRow() throws Exception {
     SiderealCollegeModel collegeModel = getSiderealCollegeModel();
-    IFavorableTrait college = collegeModel.getCollege(CollegeType.valueOf(traitType));
+    IFavorableModifiableTrait college = collegeModel.getCollege(CollegeType.valueOf(traitType));
     college.setCurrentValue(value);
   }
 

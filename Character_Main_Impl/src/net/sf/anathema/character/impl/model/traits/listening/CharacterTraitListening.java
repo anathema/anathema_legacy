@@ -7,8 +7,8 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
-import net.sf.anathema.character.library.trait.IFavorableTrait;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
@@ -28,12 +28,12 @@ public class CharacterTraitListening {
   }
 
   public void initListening() {
-    for (ITrait attribute : traitConfiguration.getTraits(AttributeType.values())) {
+    for (IModifiableTrait attribute : traitConfiguration.getTraits(AttributeType.values())) {
       listening.addTraitListening(attribute);
     }
     initAbilityListening();
     initBackgroundListening();
-    for (ITrait virtue : traitConfiguration.getTraits(VirtueType.values())) {
+    for (IModifiableTrait virtue : traitConfiguration.getTraits(VirtueType.values())) {
       listening.addTraitListening(virtue);
     }
     listening.addTraitListening(traitConfiguration.getTrait(OtherTraitType.Willpower));
@@ -42,12 +42,12 @@ public class CharacterTraitListening {
 
   private void initBackgroundListening() {
     traitConfiguration.getBackgrounds().addBackgroundListener(new IBackgroundListener() {
-      public void backgroundRemoved(ITrait background) {
+      public void backgroundRemoved(IModifiableTrait background) {
         listening.removeTraitListening(background);
         listening.fireCharacterChanged();
       }
 
-      public void backgroundAdded(ITrait background) {
+      public void backgroundAdded(IModifiableTrait background) {
         listening.addTraitListening(background);
         listening.fireCharacterChanged();
       }
@@ -59,7 +59,7 @@ public class CharacterTraitListening {
     ITraitType[] allAbilityTypes = TraitTypeGroup.getAllTraitTypes(groups);
     ISpecialtyConfiguration specialtyConfiguration = traitConfiguration.getSpecialtyConfiguration();
     for (ITraitType traitType : allAbilityTypes) {
-      IFavorableTrait ability = traitConfiguration.getFavorableTrait(traitType);
+      IFavorableModifiableTrait ability = traitConfiguration.getFavorableTrait(traitType);
       listening.addTraitListening(ability);
       ability.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
         public void favorableStateChanged(FavorableState state) {

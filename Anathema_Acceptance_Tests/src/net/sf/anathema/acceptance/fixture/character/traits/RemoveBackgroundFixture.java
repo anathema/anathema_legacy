@@ -1,7 +1,7 @@
 package net.sf.anathema.acceptance.fixture.character.traits;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 
 public class RemoveBackgroundFixture extends AbstractBackgroundFixture {
@@ -10,7 +10,7 @@ public class RemoveBackgroundFixture extends AbstractBackgroundFixture {
   public void enterRow() throws Exception {
     IBackgroundTemplate template = getTraitType();
     IBackgroundConfiguration backgrounds = getCharacterStatistics().getTraitConfiguration().getBackgrounds();
-    ITrait background = backgrounds.getBackgroundByTemplate(template);
+    IModifiableTrait background = backgrounds.getBackgroundByTemplate(template);
     backgrounds.removeBackground(background);
   }
 }

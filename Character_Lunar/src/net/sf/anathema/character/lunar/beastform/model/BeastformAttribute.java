@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.library.trait.DefaultTrait;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformAttribute;
@@ -23,7 +23,7 @@ public class BeastformAttribute implements IBeastformAttribute {
 
   private final int pointCost;
   private final IGenericTrait baseTrait;
-  private final ITrait beastmanTrait;
+  private final IModifiableTrait beastmanTrait;
   private int additionalValue = 0;
 
   // TODO: Available dots limit max. value
@@ -54,7 +54,7 @@ public class BeastformAttribute implements IBeastformAttribute {
     return pointCost;
   }
 
-  public ITrait getTrait() {
+  public IModifiableTrait getTrait() {
     return beastmanTrait;
   }
 

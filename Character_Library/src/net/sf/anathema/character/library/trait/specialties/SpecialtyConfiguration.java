@@ -6,7 +6,7 @@ import java.util.Map;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.library.trait.ITraitCollection;
 import net.sf.anathema.character.library.trait.specialty.ISpecialtiesContainer;
 
@@ -17,7 +17,7 @@ public class SpecialtyConfiguration implements ISpecialtyConfiguration {
 
   public SpecialtyConfiguration(ITraitCollection traitCollection, ITraitTypeGroup[] groups) {
     this.traitTypes = TraitTypeGroup.getAllTraitTypes(groups);
-    for (ITrait ability : traitCollection.getTraits(getAllTraitTypes())) {
+    for (IModifiableTrait ability : traitCollection.getTraits(getAllTraitTypes())) {
       specialtiesByTrait.put(ability.getType(), ability.createSpecialtiesContainer());
     }
   }

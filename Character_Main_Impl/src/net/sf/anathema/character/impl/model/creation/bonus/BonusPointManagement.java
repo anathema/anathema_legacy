@@ -30,7 +30,7 @@ import net.sf.anathema.character.impl.model.creation.bonus.magic.MagicCostCalcul
 import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueCostCalculator;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
@@ -50,10 +50,10 @@ public class BonusPointManagement implements IBonusPointManagement {
   private final VirtueCostCalculator virtueCalculator;
   private final BackgroundBonusPointCostCalculator backgroundCalculator;
   private final MagicCostCalculator magicCalculator;
-  private final ITrait willpower;
+  private final IModifiableTrait willpower;
   private final IBonusPointCosts cost;
   private final IComboConfiguration combos;
-  private final ITrait essence;
+  private final IModifiableTrait essence;
   private final List<IAdditionalModelBonusPointCalculator> additionalCalculators = new ArrayList<IAdditionalModelBonusPointCalculator>();
   private final ICreationPoints creationPoints;
   private final ICharacterStatistics statistics;

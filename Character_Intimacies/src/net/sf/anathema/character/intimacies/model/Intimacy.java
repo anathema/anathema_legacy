@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.lib.control.booleanvalue.BooleanValueControl;
@@ -16,7 +16,7 @@ import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 public class Intimacy implements IIntimacy {
 
   private final String name;
-  private final ITrait trait;
+  private final IModifiableTrait trait;
   private TraitRules traitRules;
   private final IGenericTrait maxValueTrait;
   private boolean complete;
@@ -47,7 +47,7 @@ public class Intimacy implements IIntimacy {
     return name;
   }
 
-  public ITrait getTrait() {
+  public IModifiableTrait getTrait() {
     return trait;
   }
 

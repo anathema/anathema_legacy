@@ -14,7 +14,7 @@ import net.sf.anathema.character.impl.model.charm.special.OxBodyTechniqueConfigu
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
-import net.sf.anathema.character.library.trait.IFavorableTrait;
+import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.model.charm.OxBodyCategory;
@@ -25,7 +25,7 @@ import net.sf.anathema.test.character.BasicCharacterTestCase;
 
 public class OxBodyTechniqueConfigurationTest extends BasicCharacterTestCase {
 
-  private IFavorableTrait endurance;
+  private IFavorableModifiableTrait endurance;
   private IOxBodyTechniqueConfiguration configuration;
   private HealthConfiguration health;
 
