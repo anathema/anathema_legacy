@@ -16,8 +16,8 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedL
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
-import net.sf.anathema.character.library.trait.specialty.ISpecialtiesContainer;
-import net.sf.anathema.character.library.trait.specialty.ISpecialty;
+import net.sf.anathema.character.library.trait.specialty.ISubTraitContainer;
+import net.sf.anathema.character.library.trait.specialty.ISubTrait;
 import net.sf.anathema.dummy.character.DummyCasteType;
 import net.sf.anathema.dummy.character.DummyCharacterModelContext;
 import net.sf.anathema.dummy.character.trait.DummyGenericTrait;
@@ -152,13 +152,13 @@ public class FavorableTraitTest extends AbstractTraitTest {
 
   // TODO Test für den SpecialtyContainer
   public void testExperienceSpecialtyCount() throws Exception {
-    ISpecialtiesContainer container = first.createSpecialtiesContainer();
-    ISpecialty specialty = container.addSpecialty("TestSpecialty"); //$NON-NLS-1$
+    ISubTraitContainer container = first.createSpecialtiesContainer();
+    ISubTrait specialty = container.addSubTrait("TestSpecialty"); //$NON-NLS-1$
     specialty.setCreationValue(1);
     valueStrategy.setStrategy(new ExperiencedTraitValueStrategy());
     specialty.setExperiencedValue(2);
     assertEquals(2, specialty.getCurrentValue());
-    assertEquals(1, container.getCreationSpecialtyCount());
-    assertEquals(1, container.getExperienceLearnedSpecialtyCount());
+    assertEquals(1, container.getCreationDotTotal());
+    assertEquals(1, container.getExperienceDotTotal());
   }
 }

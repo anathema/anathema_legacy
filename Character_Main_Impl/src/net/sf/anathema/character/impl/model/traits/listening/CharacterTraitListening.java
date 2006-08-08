@@ -12,8 +12,8 @@ import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
-import net.sf.anathema.character.library.trait.specialty.ISpecialty;
-import net.sf.anathema.character.library.trait.specialty.ISpecialtyListener;
+import net.sf.anathema.character.library.trait.specialty.ISubTrait;
+import net.sf.anathema.character.library.trait.specialty.ISubTraitListener;
 import net.sf.anathema.character.model.background.IBackgroundListener;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
@@ -66,12 +66,12 @@ public class CharacterTraitListening {
           listening.fireCharacterChanged();
         }
       });
-      specialtyConfiguration.getSpecialtiesContainer(traitType).addSpecialtyListener(new ISpecialtyListener() {
-        public void specialtyRemoved(ISpecialty specialty) {
+      specialtyConfiguration.getSpecialtiesContainer(traitType).addSubTraitListener(new ISubTraitListener() {
+        public void specialtyRemoved(ISubTrait specialty) {
           listening.fireCharacterChanged();
         }
 
-        public void specialtyAdded(ISpecialty specialty) {
+        public void specialtyAdded(ISubTrait specialty) {
           listening.fireCharacterChanged();
         }
 

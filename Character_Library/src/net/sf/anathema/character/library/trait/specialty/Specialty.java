@@ -8,7 +8,7 @@ import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 
-public class Specialty extends DefaultTrait implements ISpecialty {
+public class Specialty extends DefaultTrait implements ISubTrait {
 
   private final ITrait trait;
   private final String specialtyName;
@@ -41,7 +41,7 @@ public class Specialty extends DefaultTrait implements ISpecialty {
   @Override
   public void setCurrentValue(int value) {
     int increment = value - getCurrentValue();
-    if (container.getCurrentSpecialtyCount() + increment <= SpecialtiesContainer.ALLOWED_SPECIALTY_COUNT) {
+    if (container.getCurrentDotTotal() + increment <= SpecialtiesContainer.ALLOWED_SPECIALTY_COUNT) {
       super.setCurrentValue(value);
     }
     else {

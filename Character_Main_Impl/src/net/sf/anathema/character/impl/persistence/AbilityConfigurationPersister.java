@@ -13,8 +13,8 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
 import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
-import net.sf.anathema.character.library.trait.specialty.ISpecialtiesContainer;
-import net.sf.anathema.character.library.trait.specialty.ISpecialty;
+import net.sf.anathema.character.library.trait.specialty.ISubTraitContainer;
+import net.sf.anathema.character.library.trait.specialty.ISubTrait;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -36,7 +36,7 @@ public class AbilityConfigurationPersister extends AbstractCharacterPersister {
     if (ability.getFavorization().isFavored()) {
       ElementUtilities.addAttribute(abilityElement, ATTRIB_FAVORED, ability.getFavorization().isFavored());
     }
-    for (ISpecialty specialty : specialtyConfiguration.getSpecialtiesContainer(traitType).getSpecialties()) {
+    for (ISubTrait specialty : specialtyConfiguration.getSpecialtiesContainer(traitType).getSubTraits()) {
       Element specialtyElement = saveTrait(abilityElement, TAG_SPECIALTY, specialty);
       specialtyElement.addAttribute(ATTRIB_NAME, specialty.getName());
     }
@@ -61,8 +61,8 @@ public class AbilityConfigurationPersister extends AbstractCharacterPersister {
     for (Iterator<Element> allSpecialties = specialtyElements.iterator(); allSpecialties.hasNext();) {
       Element specialtyElement = allSpecialties.next();
       String specialtyName = (specialtyElement).attributeValue(ATTRIB_NAME);
-      ISpecialtiesContainer specialtiesContainer = specialtyConfiguration.getSpecialtiesContainer(abilityType);
-      ISpecialty specialty = specialtiesContainer.addSpecialty(specialtyName);
+      ISubTraitContainer specialtiesContainer = specialtyConfiguration.getSpecialtiesContainer(abilityType);
+      ISubTrait specialty = specialtiesContainer.addSubTrait(specialtyName);
       restoreTrait(specialtyElement, specialty);
     }
   }

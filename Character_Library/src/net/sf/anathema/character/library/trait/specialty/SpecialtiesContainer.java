@@ -8,11 +8,11 @@ import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
-public class SpecialtiesContainer implements ISpecialtiesContainer {
+public class SpecialtiesContainer implements ISubTraitContainer {
 
   public static final int ALLOWED_SPECIALTY_COUNT = 3;
-  private final List<ISpecialty> specialties = new ArrayList<ISpecialty>();
-  private final List<ISpecialtyListener> specialtyListenerList = new ArrayList<ISpecialtyListener>();
+  private final List<ISubTrait> specialties = new ArrayList<ISubTrait>();
+  private final List<ISubTraitListener> specialtyListenerList = new ArrayList<ISubTraitListener>();
   private final IIntValueChangedListener specialtyCreationPointListener = new IIntValueChangedListener() {
     public void valueChanged(int newValue) {
       fireSpecialtyValueChangedEvent();
@@ -28,14 +28,14 @@ public class SpecialtiesContainer implements ISpecialtiesContainer {
     this.traitValueStrategy = traitValueStrategy;
   }
 
-  public ISpecialty[] getSpecialties() {
-    return specialties.toArray(new ISpecialty[specialties.size()]);
+  public ISubTrait[] getSubTraits() {
+    return specialties.toArray(new ISubTrait[specialties.size()]);
   }
 
-  public ISpecialty addSpecialty(String specialtyName) {
-    int specialtyCount = getCurrentSpecialtyCount();
+  public ISubTrait addSubTrait(String specialtyName) {
+    int specialtyCount = getCurrentDotTotal();
     if (specialtyCount < ALLOWED_SPECIALTY_COUNT) {
-      ISpecialty specialty = getContainedEquivalent(specialtyName);
+      ISubTrait specialty = getContainedEquivalent(specialtyName);
       if (specialty == null) {
         specialty = new Specialty(this, trait, specialtyName, traitRules, traitValueStrategy);
         specialties.add(specialty);
@@ -52,8 +52,8 @@ public class SpecialtiesContainer implements ISpecialtiesContainer {
     return null;
   }
 
-  private ISpecialty getContainedEquivalent(String name) {
-    for (ISpecialty specialty : getSpecialties()) {
+  private ISubTrait getContainedEquivalent(String name) {
+    for (ISubTrait specialty : getSubTraits()) {
       if (specialty.getName().equals(name)) {
         return specialty;
       }
@@ -61,60 +61,60 @@ public class SpecialtiesContainer implements ISpecialtiesContainer {
     return null;
   }
 
-  public int getCreationSpecialtyCount() {
+  public int getCreationDotTotal() {
     int count = 0;
-    for (ISpecialty specialty : getSpecialties()) {
+    for (ISubTrait specialty : getSubTraits()) {
       count += specialty.getCreationValue();
     }
     return count;
   }
 
-  public int getCurrentSpecialtyCount() {
+  public int getCurrentDotTotal() {
     int count = 0;
-    for (ISpecialty specialty : getSpecialties()) {
+    for (ISubTrait specialty : getSubTraits()) {
       count += Math.max(0, specialty.getCurrentValue());
     }
     return count;
   }
 
-  public void removeSpecialty(ISpecialty specialty) {
+  public void removeSubTrait(ISubTrait specialty) {
     specialties.remove(specialty);
     specialty.removeCreationPointListener(specialtyCreationPointListener);
     fireSpecialtyRemovedEvent(specialty);
   }
 
-  private synchronized void fireSpecialtyAddedEvent(ISpecialty specialty) {
-    List<ISpecialtyListener> cloneList = new ArrayList<ISpecialtyListener>(specialtyListenerList);
-    for (ISpecialtyListener listener : cloneList) {
+  private synchronized void fireSpecialtyAddedEvent(ISubTrait specialty) {
+    List<ISubTraitListener> cloneList = new ArrayList<ISubTraitListener>(specialtyListenerList);
+    for (ISubTraitListener listener : cloneList) {
       listener.specialtyAdded(specialty);
     }
   }
 
   private synchronized void fireSpecialtyValueChangedEvent() {
-    List<ISpecialtyListener> cloneList = new ArrayList<ISpecialtyListener>(specialtyListenerList);
-    for (ISpecialtyListener listener : cloneList) {
+    List<ISubTraitListener> cloneList = new ArrayList<ISubTraitListener>(specialtyListenerList);
+    for (ISubTraitListener listener : cloneList) {
       listener.specialtyValueChanged();
     }
   }
 
-  private synchronized void fireSpecialtyRemovedEvent(ISpecialty specialty) {
-    List<ISpecialtyListener> cloneList = new ArrayList<ISpecialtyListener>(specialtyListenerList);
-    for (ISpecialtyListener listener : cloneList) {
+  private synchronized void fireSpecialtyRemovedEvent(ISubTrait specialty) {
+    List<ISubTraitListener> cloneList = new ArrayList<ISubTraitListener>(specialtyListenerList);
+    for (ISubTraitListener listener : cloneList) {
       listener.specialtyRemoved(specialty);
     }
   }
 
-  public synchronized void addSpecialtyListener(ISpecialtyListener listener) {
+  public synchronized void addSubTraitListener(ISubTraitListener listener) {
     specialtyListenerList.add(listener);
   }
 
-  public synchronized void removeSpecialtyListener(ISpecialtyListener listener) {
+  public synchronized void removeSubTraitListener(ISubTraitListener listener) {
     specialtyListenerList.remove(listener);
   }
 
-  public int getExperienceLearnedSpecialtyCount() {
+  public int getExperienceDotTotal() {
     int count = 0;
-    for (ISpecialty specialty : getSpecialties()) {
+    for (ISubTrait specialty : getSubTraits()) {
       count += Math.max(0, specialty.getExperiencedValue() - specialty.getCreationValue());
     }
     return count;

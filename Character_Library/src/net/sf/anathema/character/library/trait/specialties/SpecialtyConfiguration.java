@@ -8,11 +8,11 @@ import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.library.trait.IModifiableTrait;
 import net.sf.anathema.character.library.trait.ITraitCollection;
-import net.sf.anathema.character.library.trait.specialty.ISpecialtiesContainer;
+import net.sf.anathema.character.library.trait.specialty.ISubTraitContainer;
 
 public class SpecialtyConfiguration implements ISpecialtyConfiguration {
 
-  private Map<ITraitType, ISpecialtiesContainer> specialtiesByTrait = new HashMap<ITraitType, ISpecialtiesContainer>();
+  private Map<ITraitType, ISubTraitContainer> specialtiesByTrait = new HashMap<ITraitType, ISubTraitContainer>();
   private final ITraitType[] traitTypes;
 
   public SpecialtyConfiguration(ITraitCollection traitCollection, ITraitTypeGroup[] groups) {
@@ -22,7 +22,7 @@ public class SpecialtyConfiguration implements ISpecialtyConfiguration {
     }
   }
 
-  public ISpecialtiesContainer getSpecialtiesContainer(ITraitType traitType) {
+  public ISubTraitContainer getSpecialtiesContainer(ITraitType traitType) {
     return specialtiesByTrait.get(traitType);
   }
 

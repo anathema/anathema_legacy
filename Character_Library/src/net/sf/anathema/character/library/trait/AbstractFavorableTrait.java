@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITra
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
-import net.sf.anathema.character.library.trait.specialty.ISpecialtiesContainer;
+import net.sf.anathema.character.library.trait.specialty.ISubTraitContainer;
 import net.sf.anathema.character.library.trait.specialty.SpecialtiesContainer;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
@@ -21,7 +21,7 @@ public abstract class AbstractFavorableTrait implements IFavorableTrait {
     this.traitValueStrategy = traitValueStrategy;
   }
 
-  public final ISpecialtiesContainer createSpecialtiesContainer() {
+  public final ISubTraitContainer createSpecialtiesContainer() {
     return new SpecialtiesContainer(this, getTraitRules(), traitValueStrategy);
   }
 

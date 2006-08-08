@@ -1,7 +1,7 @@
 package net.sf.anathema.character.library.trait;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IModifiableBasicTrait;
-import net.sf.anathema.character.library.trait.specialty.ISpecialtiesContainer;
+import net.sf.anathema.character.library.trait.specialty.ISubTraitContainer;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
 public interface IModifiableTrait extends ITrait, IModifiableBasicTrait, IModifiableGenericTrait {
@@ -14,5 +14,5 @@ public interface IModifiableTrait extends ITrait, IModifiableBasicTrait, IModifi
 
   public void addRangeListener(IChangeListener listener);
 
-  public ISpecialtiesContainer createSpecialtiesContainer();
+  public ISubTraitContainer createSpecialtiesContainer();
 }

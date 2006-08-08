@@ -8,9 +8,9 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
-import net.sf.anathema.character.library.trait.specialty.ISpecialtiesContainer;
-import net.sf.anathema.character.library.trait.specialty.ISpecialty;
-import net.sf.anathema.character.library.trait.specialty.ISpecialtyListener;
+import net.sf.anathema.character.library.trait.specialty.ISubTraitContainer;
+import net.sf.anathema.character.library.trait.specialty.ISubTrait;
+import net.sf.anathema.character.library.trait.specialty.ISubTraitListener;
 import net.sf.anathema.character.view.ISpecialtyView;
 import net.sf.anathema.character.view.basic.IButtonControlledComboEditView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
@@ -22,15 +22,15 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
 
-  private final IdentityMapping<ISpecialty, ISpecialtyView> viewsBySpecialty = new IdentityMapping<ISpecialty, ISpecialtyView>();
+  private final IdentityMapping<ISubTrait, ISpecialtyView> viewsBySpecialty = new IdentityMapping<ISubTrait, ISpecialtyView>();
 
-  private final ISpecialtyListener specialtyListener = new ISpecialtyListener() {
+  private final ISubTraitListener specialtyListener = new ISubTraitListener() {
 
-    public void specialtyAdded(ISpecialty specialty) {
+    public void specialtyAdded(ISubTrait specialty) {
       addSpecialtyView(specialty);
     }
 
-    public void specialtyRemoved(ISpecialty specialty) {
+    public void specialtyRemoved(ISubTrait specialty) {
       removeSpecialtyView(specialty);
     }
 
@@ -60,11 +60,11 @@ public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
 
   private void initTraitListening() {
     for (ITraitType traitType : getAllTraitsTypes()) {
-      getSpecialtyContainerType(traitType).addSpecialtyListener(specialtyListener);
+      getSpecialtyContainerType(traitType).addSubTraitListener(specialtyListener);
     }
   }
 
-  private ISpecialtiesContainer getSpecialtyContainerType(ITraitType traitType) {
+  private ISubTraitContainer getSpecialtyContainerType(ITraitType traitType) {
     return specialtyManagement.getSpecialtiesContainer(traitType);
   }
 
@@ -89,14 +89,14 @@ public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
     specialtySelectionView.addObjectSelectionChangedListener(new ITwoObjectsValueChangedListener<ITraitType, String>() {
       public void valueChanged(ITraitType oldValue1, String oldValue2, ITraitType newTraitType, String newSpecialtyName) {
         if (!newSpecialtyName.equals("")) { //$NON-NLS-1$
-          getSpecialtyContainerType(newTraitType).addSpecialty(newSpecialtyName);
+          getSpecialtyContainerType(newTraitType).addSubTrait(newSpecialtyName);
           resetSpecialtyView(specialtySelectionView);
         }
       }
     });
     resetSpecialtyView(specialtySelectionView);
     for (ITraitType traitType : getAllTraitsTypes()) {
-      for (ISpecialty specialty : getSpecialtyContainerType(traitType).getSpecialties()) {
+      for (ISubTrait specialty : getSpecialtyContainerType(traitType).getSubTraits()) {
         addSpecialtyView(specialty);
       }
     }
@@ -113,7 +113,7 @@ public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
     updateSpecialtyViewButtons();
   }
 
-  protected void removeSpecialtyView(ISpecialty specialty) {
+  protected void removeSpecialtyView(ISubTrait specialty) {
     ISpecialtyView view = viewsBySpecialty.get(specialty);
     viewsBySpecialty.remove(specialty);
     view.delete();
@@ -125,14 +125,14 @@ public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
 
   private void updateSpecialtyViewButtons() {
     for (ITraitType trait : getAllTraitsTypes()) {
-      for (ISpecialty specialty : getSpecialtyContainerType(trait).getSpecialties()) {
+      for (ISubTrait specialty : getSpecialtyContainerType(trait).getSubTraits()) {
         ISpecialtyView view = viewsBySpecialty.get(specialty);
         view.setDeleteButtonEnabled(specialty.getCreationValue() == 0 || !basicCharacterData.isExperienced());
       }
     }
   }
 
-  private void addSpecialtyView(final ISpecialty specialty) {
+  private void addSpecialtyView(final ISubTrait specialty) {
     String traitTypeId = specialty.getBasicTrait().getType().getId();
     String traitName = resources.getString(traitTypeId);
     String specialtyName = specialty.getName();
@@ -148,7 +148,7 @@ public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
     specialtyView.addDeleteListener(new IChangeListener() {
       public void changeOccured() {
         ITraitType traitType = specialty.getBasicTrait().getType();
-        getSpecialtyContainerType(traitType).removeSpecialty(specialty);
+        getSpecialtyContainerType(traitType).removeSubTrait(specialty);
       }
     });
     viewsBySpecialty.put(specialty, specialtyView);

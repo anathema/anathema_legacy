@@ -105,7 +105,7 @@ public class GenericCharacter implements IGenericCharacter {
 
   public INamedGenericTrait[] getSpecialties(ITraitType traitType) {
     ISpecialtyConfiguration specialtyConfiguration = statistics.getTraitConfiguration().getSpecialtyConfiguration();
-    return specialtyConfiguration.getSpecialtiesContainer(traitType).getSpecialties();
+    return specialtyConfiguration.getSpecialtiesContainer(traitType).getSubTraits();
   }
 
   public INamedGenericTrait[] getSubTraits(ITraitType traitType) {

@@ -48,7 +48,7 @@ public abstract class AbstractGenerationData implements IGenerationData {
     endurance.setCurrentValue(3);
     traitConfiguration.getTrait(AttributeType.Dexterity).setCurrentValue(5);
     traitConfiguration.getTrait(AttributeType.Wits).setCurrentValue(5);
-    traitConfiguration.getSpecialtyConfiguration().getSpecialtiesContainer(AbilityType.Occult).addSpecialty(
+    traitConfiguration.getSpecialtyConfiguration().getSpecialtiesContainer(AbilityType.Occult).addSubTrait(
         "Unconquered Sun"); //$NON-NLS-1$
     IBackgroundConfiguration backgrounds = traitConfiguration.getBackgrounds();
     backgrounds.addBackground(new SimpleBackgroundTemplate("Allies")).setCurrentValue(3);
