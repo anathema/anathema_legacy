@@ -8,6 +8,8 @@ public interface ITraitRules {
 
   public static final int UNEXPERIENCED = -1;
 
+  public ITraitRules derive();
+
   public ITraitRules derive(ITraitType traitType, ITraitTemplate template);
 
   public int getAbsoluteMaximumValue();

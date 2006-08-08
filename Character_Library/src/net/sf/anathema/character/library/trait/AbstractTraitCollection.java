@@ -29,8 +29,7 @@ public abstract class AbstractTraitCollection implements ITraitCollection {
 
   public IFavorableTrait getFavorableTrait(ITraitType traitType) {
     ITrait favorableTrait = getTrait(traitType);
-    Ensure.ensureArgumentTrue(
-        "No favorable trait type " + traitType, favorableTrait instanceof IFavorableModifiableTrait); //$NON-NLS-1$
+    Ensure.ensureArgumentTrue("No favorable trait type " + traitType, favorableTrait instanceof IFavorableTrait); //$NON-NLS-1$
     return (IFavorableTrait) favorableTrait;
   }
 

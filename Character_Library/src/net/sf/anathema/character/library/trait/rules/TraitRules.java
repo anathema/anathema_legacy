@@ -47,6 +47,10 @@ public class TraitRules implements ITraitRules {
   public int getStartValue() {
     return template.getStartValue();
   }
+  
+  public ITraitRules derive() {
+    return derive(traitType, template);
+  }
 
   public ITraitRules derive(ITraitType type, ITraitTemplate deriveTemplate) {
     return new TraitRules(type, deriveTemplate, limitationContext);

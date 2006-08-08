@@ -1,5 +1,6 @@
 package net.sf.anathema.character.library.trait;
 
+import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
@@ -17,6 +18,7 @@ public abstract class AbstractFavorableTrait implements IFavorableTrait {
   private final ITraitValueStrategy traitValueStrategy;
 
   public AbstractFavorableTrait(ITraitRules traitRules, ITraitValueStrategy traitValueStrategy) {
+    Ensure.ensureArgumentNotNull(traitRules);
     this.traitRules = traitRules;
     this.traitValueStrategy = traitValueStrategy;
   }
@@ -43,17 +45,6 @@ public abstract class AbstractFavorableTrait implements IFavorableTrait {
 
   public final boolean isLowerable() {
     return getTraitRules().isLowerable();
-  }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (!(obj instanceof DefaultTrait)) {
-      return false;
-    }
-    AbstractFavorableTrait other = (AbstractFavorableTrait) obj;
-    return other.getCreationValue() == getCreationValue()
-        && other.getType() == getType()
-        && other.getExperiencedValue() == getExperiencedValue();
   }
 
   @Override

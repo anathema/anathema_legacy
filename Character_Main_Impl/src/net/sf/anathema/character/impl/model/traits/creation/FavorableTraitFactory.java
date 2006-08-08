@@ -9,7 +9,10 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITra
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
+import net.sf.anathema.character.library.trait.IValueChangeChecker;
+import net.sf.anathema.character.library.trait.aggregated.AggregatedTrait;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
@@ -50,13 +53,22 @@ public class FavorableTraitFactory extends AbstractTraitFactory {
       ICasteType< ? extends ICasteTypeVisitor> casteType,
       IIncrementChecker favoredIncrementChecker) {
     ITraitTemplate traitTemplate = templateCollection.getTraitTemplate(traitType);
+    FavorableTraitRules favorableTraitRules = new FavorableTraitRules(
+        traitType,
+        traitTemplate,
+        traitContext.getLimitationContext());
+    IValueChangeChecker valueChecker = createValueIncrementChecker(traitType);
+    if (traitType == AbilityType.Craft) {
+      String[] elements = new String[] { "Air", "Earth", "Fire", "Water", "Wood" };
+      return new AggregatedTrait(favorableTraitRules, traitContext.getTraitValueStrategy(), valueChecker, elements);
+    }
     return new DefaultTrait(
-        new FavorableTraitRules(traitType, traitTemplate, traitContext.getLimitationContext()),
+        favorableTraitRules,
         casteType,
         traitContext.getTraitValueStrategy(),
         basicCharacterData,
         characterListening,
-        createValueIncrementChecker(traitType),
+        valueChecker,
         favoredIncrementChecker);
   }
 }

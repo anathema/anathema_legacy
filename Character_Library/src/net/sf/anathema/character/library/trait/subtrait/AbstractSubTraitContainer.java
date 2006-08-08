@@ -17,14 +17,14 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
       fireSubTraitValueChangedEvent();
     }
   };
-  
-  public AbstractSubTraitContainer(String... unremovableSubTraitNames) {
+
+  protected final void addUnremovableSubTraits(String... unremovableSubTraitNames) {
     for (String traitName : unremovableSubTraitNames) {
       ISubTrait subTrait = addSubTrait(traitName);
       unremovableSubTraits.add(subTrait);
     }
   }
-  
+
   public boolean isRemovable(ISubTrait subTrait) {
     return !unremovableSubTraits.contains(subTrait);
   }

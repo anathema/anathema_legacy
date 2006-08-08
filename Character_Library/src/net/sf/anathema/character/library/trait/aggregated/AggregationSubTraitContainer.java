@@ -2,6 +2,7 @@ package net.sf.anathema.character.library.trait.aggregated;
 
 import java.awt.Toolkit;
 
+import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
@@ -22,11 +23,12 @@ public class AggregationSubTraitContainer extends AbstractSubTraitContainer {
       IValueChangeChecker valueChangeChecker,
       ITrait parent,
       String... unremovableNames) {
-    super(unremovableNames);
+    Ensure.ensureArgumentNotNull(traitRules);
     this.traitRules = traitRules;
     this.traitValueStrategy = traitValueStrategy;
     this.valueChangeChecker = valueChangeChecker;
     this.parent = parent;
+    addUnremovableSubTraits(unremovableNames);
   }
 
   @Override

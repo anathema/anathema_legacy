@@ -22,7 +22,7 @@ public class AggregatedTrait extends AbstractFavorableTrait implements IAggregat
       String... unremovableSubTraits) {
     super(traitRules, traitValueStrategy);
     subTraits = new AggregationSubTraitContainer(
-        traitRules,
+        traitRules.derive(),
         traitValueStrategy,
         valueChangeChecker,
         this,
@@ -35,24 +35,29 @@ public class AggregatedTrait extends AbstractFavorableTrait implements IAggregat
     return traitFavorization;
   }
 
+  // TODO Punkteberechnung umstellen
   public int getCalculationValue() {
-    throw new UnsupportedOperationException("Use subtraits instead.");
+    return 0;
   }
 
+  // TODO Punkteberechnung umstellen
   public int getCreationCalculationValue() {
-    throw new UnsupportedOperationException("Use subtraits instead.");
+    return 0;
   }
 
+  // TODO Punkteberechnung umstellen
   public int getCreationValue() {
-    throw new UnsupportedOperationException("Use subtraits instead.");
+    return 0;
   }
 
+  // TODO Punkteberechnung umstellen
   public int getExperiencedCalculationValue() {
-    throw new UnsupportedOperationException("Use subtraits instead.");
+    return 0;
   }
 
+  // TODO Punkteberechnung umstellen
   public int getExperiencedValue() {
-    throw new UnsupportedOperationException("Use subtraits instead.");
+    return 0;
   }
 
   public int getCurrentValue() {
