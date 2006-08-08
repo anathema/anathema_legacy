@@ -1,9 +1,9 @@
 package net.sf.anathema.framework.presenter.action;
 
 import javax.swing.Action;
-import javax.swing.JMenu;
 
 import net.sf.anathema.framework.presenter.menu.IMenuItem;
+import net.sf.anathema.framework.view.menu.IMenu;
 
 public class ActionMenuItem implements IMenuItem {
 
@@ -13,7 +13,7 @@ public class ActionMenuItem implements IMenuItem {
     this.action = action;
   }
 
-  public void addToMenu(JMenu menu) {
-    menu.add(action);
+  public void addToMenu(IMenu menu) {
+    menu.addMenuItem(action);
   }
 }

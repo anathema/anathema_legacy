@@ -13,6 +13,6 @@ public class GisMenu implements IAnathemaMenu {
   public void add(IResources resources, IAnathemaModel model, IMenuBar menubar) {
     GisDataDirectory gisDataDirectory = new GisDataDirectory();
     gisDataDirectory.setDirectory(new File("./gisdata/"));
-    menubar.addMenu(new GisModuleMenuFactory(gisDataDirectory).createMapMenu(resources, model));
+    new GisModuleMenuFactory(gisDataDirectory).createMapMenu(resources, model, menubar);
   }
 }

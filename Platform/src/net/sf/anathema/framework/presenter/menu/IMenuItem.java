@@ -1,8 +1,8 @@
 package net.sf.anathema.framework.presenter.menu;
 
-import javax.swing.JMenu;
+import net.sf.anathema.framework.view.menu.IMenu;
 
 public interface IMenuItem {
   
-  public void addToMenu(JMenu menu);
+  public void addToMenu(IMenu menu);
 }

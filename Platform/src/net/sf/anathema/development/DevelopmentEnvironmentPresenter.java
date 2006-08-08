@@ -1,9 +1,8 @@
 package net.sf.anathema.development;
 
-import javax.swing.JMenu;
-
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.view.IAnathemaView;
+import net.sf.anathema.framework.view.menu.IMenu;
 import net.sf.anathema.lib.resources.IResources;
 
 public class DevelopmentEnvironmentPresenter {
@@ -19,9 +18,8 @@ public class DevelopmentEnvironmentPresenter {
   }
 
   private void addMenu() {
-    JMenu developmentMenu = new JMenu("Development"); //$NON-NLS-1$
-    view.getMenuBar().addMenu(developmentMenu);
-    developmentMenu.add(new RepositoryViewAction("Show repository tree", model, resources)); //$NON-NLS-1$
+    IMenu menu = view.getMenuBar().addMenu("Development"); //$NON-NLS-1$
+    menu.addMenuItem(new RepositoryViewAction("Show repository tree", model, resources)); //$NON-NLS-1$
   }
 
   public void initPresentation() {
