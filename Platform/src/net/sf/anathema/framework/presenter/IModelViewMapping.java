@@ -12,5 +12,4 @@ public interface IModelViewMapping {
   public IItemView getViewByModel(IItem model);
 
   public void removeModelAndView(IItem item, IItemView view);
-
 }

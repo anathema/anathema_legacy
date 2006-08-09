@@ -2,7 +2,6 @@ package net.sf.anathema.framework.presenter;
 
 import net.sf.anathema.framework.repository.IItem;
 
-
 public abstract class ItemManagementModelAdapter implements IItemManagementModelListener {
 
   public void itemAdded(IItem item) {
