@@ -21,7 +21,7 @@ import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactor
 import net.sf.anathema.character.impl.model.traits.creation.FavoredIncrementChecker;
 import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
@@ -66,7 +66,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     addTraits(traitFactory.createTraits(VirtueType.values()));
     addTrait(traitFactory.createTrait(OtherTraitType.Willpower));
     addAttributes();
-    IModifiableTrait willpower = (IModifiableTrait) getTrait(OtherTraitType.Willpower);
+    IDefaultTrait willpower = (IDefaultTrait) getTrait(OtherTraitType.Willpower);
     ITrait[] virtues = getTraits(VirtueType.values());
     new WillpowerListening().initListening(willpower, virtues);
     addAbilities(template);

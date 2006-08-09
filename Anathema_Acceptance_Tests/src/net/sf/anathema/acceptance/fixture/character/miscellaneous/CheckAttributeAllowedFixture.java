@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 
 public class CheckAttributeAllowedFixture extends AbstractCharacterColumnFixture {
 
@@ -26,8 +26,8 @@ public class CheckAttributeAllowedFixture extends AbstractCharacterColumnFixture
 
   }
 
-  private IModifiableTrait getEssence() {
-    return (IModifiableTrait) getCharacterStatistics().getTraitConfiguration().getTrait(OtherTraitType.Essence);
+  private IDefaultTrait getEssence() {
+    return (IDefaultTrait) getCharacterStatistics().getTraitConfiguration().getTrait(OtherTraitType.Essence);
   }
 
   public boolean isEssenceValueAllowed() {
@@ -42,7 +42,7 @@ public class CheckAttributeAllowedFixture extends AbstractCharacterColumnFixture
         .isAllowedTraitValue(essence, limitationContext);
   }
 
-  private IModifiableTrait getAppearance() {
-    return (IModifiableTrait) getCharacterStatistics().getTraitConfiguration().getTrait(AttributeType.Appearance);
+  private IDefaultTrait getAppearance() {
+    return (IDefaultTrait) getCharacterStatistics().getTraitConfiguration().getTrait(AttributeType.Appearance);
   }
 }

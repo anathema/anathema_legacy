@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.model.context;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.impl.model.listening.CharacterListenerMapping;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
@@ -17,7 +17,7 @@ public class CharacterListening implements ICharacterListening {
     changeControl.addListener(changeListener);
   }
 
-  public void removeTraitListening(IModifiableTrait trait) {
+  public void removeTraitListening(IDefaultTrait trait) {
     listenerMapping.removeTraitListening(trait);
   }
     

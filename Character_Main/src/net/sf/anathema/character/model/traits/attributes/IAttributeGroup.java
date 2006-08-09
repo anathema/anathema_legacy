@@ -1,18 +1,18 @@
 package net.sf.anathema.character.model.traits.attributes;
 
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public interface IAttributeGroup extends IIdentificate {
 
   public boolean containsAttribute(AttributeType type);
 
-  public IModifiableTrait getAttributeById(String id);
+  public IDefaultTrait getAttributeById(String id);
 
-  public IModifiableTrait getAttributeByType(AttributeType type);
+  public IDefaultTrait getAttributeByType(AttributeType type);
 
-  public IModifiableTrait[] getAttributes();
+  public IDefaultTrait[] getAttributes();
 
   public int getCreationValueSum();
 

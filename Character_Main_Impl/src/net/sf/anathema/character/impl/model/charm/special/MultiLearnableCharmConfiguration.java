@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.LimitedTrait;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
@@ -21,7 +21,7 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
 
   private final GenericControl<ISpecialCharmLearnListener> control = new GenericControl<ISpecialCharmLearnListener>();
   private final ICharm charm;
-  private final IModifiableTrait trait;
+  private final IDefaultTrait trait;
 
   public MultiLearnableCharmConfiguration(
       final ICharacterModelContext context,
@@ -80,7 +80,7 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
     return charm;
   }
 
-  public IModifiableTrait getCategory() {
+  public IDefaultTrait getCategory() {
     return trait;
   }
 

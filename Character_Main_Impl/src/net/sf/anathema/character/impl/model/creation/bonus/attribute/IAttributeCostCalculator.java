@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.model.creation.bonus.attribute;
 
 import net.sf.anathema.character.impl.model.creation.bonus.basic.ElementCreationCost;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 
 public interface IAttributeCostCalculator {
 
@@ -9,5 +9,5 @@ public interface IAttributeCostCalculator {
 
   public abstract int getBonusPoints();
 
-  public abstract ElementCreationCost getCosts(IModifiableTrait attribute);
+  public abstract ElementCreationCost getCosts(IDefaultTrait attribute);
 }

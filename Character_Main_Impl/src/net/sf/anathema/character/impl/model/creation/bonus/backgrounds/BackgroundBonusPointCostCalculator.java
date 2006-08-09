@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.additionalrules.ITraitCostModifier;
 import net.sf.anathema.character.generic.template.creation.IBackgroundCreationPointCosts;
 import net.sf.anathema.character.impl.model.creation.bonus.additional.AdditionalBonusPointPoolManagement;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 
 public class BackgroundBonusPointCostCalculator {
@@ -32,14 +32,14 @@ public class BackgroundBonusPointCostCalculator {
 
   public void calculateBonusPoints() {
     clear();
-    IModifiableTrait[] backgrounds = backgroundConfiguration.getBackgrounds();
-    IModifiableTrait[] sortedBackgrounds = additionalPools.sortBackgrounds(backgrounds);
-    for (IModifiableTrait background : sortedBackgrounds) {
+    IDefaultTrait[] backgrounds = backgroundConfiguration.getBackgrounds();
+    IDefaultTrait[] sortedBackgrounds = additionalPools.sortBackgrounds(backgrounds);
+    for (IDefaultTrait background : sortedBackgrounds) {
       handleBackground(background);
     }
   }
 
-  private void handleBackground(IModifiableTrait background) {
+  private void handleBackground(IDefaultTrait background) {
     int backgroundValue = background.getCalculationValue();
     ITraitCostModifier costModifier = rules.getCostModifier(background.getType());
     int additionalDotsToSpend = costModifier.getAdditionalDotsToSpend(backgroundValue);

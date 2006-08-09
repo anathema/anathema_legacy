@@ -2,13 +2,13 @@ package net.sf.anathema.character.impl.model.traits.listening;
 
 import java.util.Arrays;
 
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
 public class WillpowerListening {
 
-  public void initListening(final IModifiableTrait willpower, final ITrait[] virtues) {
+  public void initListening(final IDefaultTrait willpower, final ITrait[] virtues) {
     for (ITrait virtue : virtues) {
       virtue.addCreationPointListener(new IIntValueChangedListener() {
         public void valueChanged(int newValue) {
@@ -19,7 +19,7 @@ public class WillpowerListening {
     updateWillpowerCreationRange(willpower, virtues);
   }
   
-  private void updateWillpowerCreationRange(final IModifiableTrait willpower, final ITrait[] virtues) {
+  private void updateWillpowerCreationRange(final IDefaultTrait willpower, final ITrait[] virtues) {
     int newInitialValue = Math.min(calculateAbsoluteMinimalValue(virtues), willpower.getMaximalValue());
     int newUpperValue = Math.min(calculateUpperValue(virtues), willpower.getMaximalValue());
     willpower.setModifiedCreationRange(newInitialValue, newUpperValue);

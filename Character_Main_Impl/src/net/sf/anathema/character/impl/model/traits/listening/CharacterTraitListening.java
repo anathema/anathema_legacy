@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.impl.model.context.CharacterListening;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
@@ -43,12 +43,12 @@ public class CharacterTraitListening {
 
   private void initBackgroundListening() {
     traitConfiguration.getBackgrounds().addBackgroundListener(new IBackgroundListener() {
-      public void backgroundRemoved(IModifiableTrait background) {
+      public void backgroundRemoved(IDefaultTrait background) {
         listening.removeTraitListening(background);
         listening.fireCharacterChanged();
       }
 
-      public void backgroundAdded(IModifiableTrait background) {
+      public void backgroundAdded(IDefaultTrait background) {
         listening.addTraitListening(background);
         listening.fireCharacterChanged();
       }

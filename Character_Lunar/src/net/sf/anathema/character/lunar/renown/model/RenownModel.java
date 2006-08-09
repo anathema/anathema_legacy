@@ -19,7 +19,7 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.ITraitTypeVisitor;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
@@ -34,7 +34,7 @@ public class RenownModel implements IRenownModel {
 
   private final RenownTraitCollection collection = new RenownTraitCollection();
   private final ICharacterModelContext context;
-  private IModifiableTrait face;
+  private IDefaultTrait face;
   private final IntValueControl control = new IntValueControl();
 
   public RenownModel(final ICharacterModelContext context) {
@@ -51,7 +51,7 @@ public class RenownModel implements IRenownModel {
     });
   }
 
-  public IModifiableTrait getFace() {
+  public IDefaultTrait getFace() {
     return face;
   }
 
@@ -98,7 +98,7 @@ public class RenownModel implements IRenownModel {
     for (int index = 0; index < RenownType.values().length; index++) {
       ITraitType type = RenownType.values()[index];
       ITraitRules rules = new TraitRules(type, renownTemplate, traitContext.getLimitationContext());
-      IModifiableTrait trait = new DefaultTrait(rules, traitContext.getTraitValueStrategy(), new FriendlyValueChangeChecker());
+      IDefaultTrait trait = new DefaultTrait(rules, traitContext.getTraitValueStrategy(), new FriendlyValueChangeChecker());
       collection.addRenownTrait(trait);
       trait.addCurrentValueListener(new IIntValueChangedListener() {
         public void valueChanged(int newValue) {

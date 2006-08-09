@@ -1,7 +1,7 @@
 package net.sf.anathema.acceptance.fixture.character.traits;
 
 import net.sf.anathema.acceptance.fixture.character.CharacterSummary;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterStatistics;
@@ -12,7 +12,7 @@ public class SetBackgroundFixture extends AbstractBackgroundFixture {
 
   @Override
   public void enterRow() throws Exception {
-    IModifiableTrait trait = (IModifiableTrait) getTrait();
+    IDefaultTrait trait = (IDefaultTrait) getTrait();
     if (value == 0 && trait == null) {
       return;
     }

@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener
 import net.sf.anathema.character.library.quality.model.QualitySelection;
 import net.sf.anathema.character.library.quality.presenter.IQualityModel;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
 import net.sf.anathema.character.lunar.beastform.model.IAlotmentChangedListener;
 import net.sf.anathema.character.lunar.beastform.model.gift.IGift;
@@ -110,7 +110,7 @@ public class BeastformPresenter extends AbstractTraitPresenter {
 
   private void initAttributePresentation() {
     for (IBeastformAttribute attribute : model.getAttributes()) {
-      IModifiableTrait trait = attribute.getTrait();
+      IDefaultTrait trait = attribute.getTrait();
       IIntValueView traitView = view.addAttributeValueView(
           resources.getString(trait.getType().getId()),
           trait.getCurrentValue(),

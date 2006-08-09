@@ -2,7 +2,7 @@ package net.sf.anathema.acceptance.fixture.character.traits;
 
 import net.sf.anathema.acceptance.fixture.character.CharacterSummary;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import fitnesse.fixtures.RowEntryFixture;
@@ -14,14 +14,14 @@ public abstract class AbstractSetTraitFixture extends RowEntryFixture {
 
   @Override
   public void enterRow() throws Exception {
-    IModifiableTrait ability = getTrait();
+    IDefaultTrait ability = getTrait();
     ability.setCurrentValue(value);
   }
 
-  protected final IModifiableTrait getTrait() {
+  protected final IDefaultTrait getTrait() {
     ICharacter character = new CharacterSummary(summary).getCharacter();
     ICharacterStatistics statistics = character.getStatistics();
-    return (IModifiableTrait) statistics.getTraitConfiguration().getTrait(getTraitType());
+    return (IDefaultTrait) statistics.getTraitConfiguration().getTrait(getTraitType());
   }
 
   protected abstract ITraitType getTraitType();

@@ -1,12 +1,12 @@
 package net.sf.anathema.character.library.trait.persistence;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IBasicTrait;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.ITrait;
-import net.sf.anathema.character.library.trait.ITraitVisitor;
-import net.sf.anathema.character.library.trait.aggregated.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
+import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
+import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.framework.persistence.AbstractPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -35,7 +35,7 @@ public class AbstractCharacterPersister extends AbstractPersister {
 
   protected final void restoreTrait(final Element traitElement, ITrait trait) throws PersistenceException {
     if (traitElement != null) {
-      final IModifiableTrait[] modifiableTrait = new IModifiableTrait[1];
+      final IDefaultTrait[] modifiableTrait = new IDefaultTrait[1];
       trait.accept(new ITraitVisitor() {
 
         public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
@@ -43,7 +43,7 @@ public class AbstractCharacterPersister extends AbstractPersister {
           modifiableTrait[0] = container.getSubTraits()[0];
         }
 
-        public void visitModifiableTrait(IModifiableTrait visitedTrait) {
+        public void visitDefaultTrait(IDefaultTrait visitedTrait) {
           modifiableTrait[0] = visitedTrait;
         }
       });
@@ -51,7 +51,7 @@ public class AbstractCharacterPersister extends AbstractPersister {
     }
   }
 
-  private void restoreModifiableTrait(Element traitElement, IModifiableTrait trait) throws PersistenceException {
+  private void restoreModifiableTrait(Element traitElement, IDefaultTrait trait) throws PersistenceException {
     trait.setCreationValue(ElementUtilities.getRequiredIntAttrib(traitElement, ATTRIB_CREATION_VALUE));
     int experiencedValue = ElementUtilities.getIntAttrib(
         traitElement,

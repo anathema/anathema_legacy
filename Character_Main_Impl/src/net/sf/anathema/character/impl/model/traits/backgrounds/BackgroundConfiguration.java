@@ -15,7 +15,7 @@ import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.background.IBackgroundListener;
@@ -24,7 +24,7 @@ import net.sf.anathema.lib.registry.IIdentificateRegistry;
 
 public class BackgroundConfiguration implements IBackgroundConfiguration {
 
-  private final List<IModifiableTrait> backgrounds = new ArrayList<IModifiableTrait>();
+  private final List<IDefaultTrait> backgrounds = new ArrayList<IDefaultTrait>();
   private final List<IBackgroundListener> listeners = new ArrayList<IBackgroundListener>();
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
   private final IAdditionalRules additionalRules;
@@ -58,15 +58,15 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
     return backgroundList.toArray(new IBackgroundTemplate[backgroundList.size()]);
   }
 
-  public IModifiableTrait addBackground(String customBackgroundName) {
+  public IDefaultTrait addBackground(String customBackgroundName) {
     Ensure.ensureNotNull(customBackgroundName);
     return addBackground(new CustomizedBackgroundTemplate(customBackgroundName));
   }
 
-  public IModifiableTrait addBackground(final IBackgroundTemplate backgroundType) {
+  public IDefaultTrait addBackground(final IBackgroundTemplate backgroundType) {
     Ensure.ensureNotNull(backgroundType);
-    IModifiableTrait foundBackground = new Predicate<IModifiableTrait>() {
-      public boolean evaluate(IModifiableTrait listBackground) {
+    IDefaultTrait foundBackground = new Predicate<IDefaultTrait>() {
+      public boolean evaluate(IDefaultTrait listBackground) {
         return ObjectUtilities.equals(backgroundType, listBackground.getType());
       }
     }.find(backgrounds);
@@ -75,42 +75,42 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
     }
     ITraitTemplate traitTemplate = traitTemplates.getTraitTemplate(backgroundType);
     TraitRules rules = new TraitRules(backgroundType, traitTemplate, context.getLimitationContext());
-    IModifiableTrait background = new DefaultTrait(rules, context.getTraitValueStrategy(), new FriendlyValueChangeChecker());
+    IDefaultTrait background = new DefaultTrait(rules, context.getTraitValueStrategy(), new FriendlyValueChangeChecker());
     backgrounds.add(background);
     fireBackgroundAddedEvent(background);
     return background;
   }
 
-  public IModifiableTrait[] getBackgrounds() {
-    return backgrounds.toArray(new IModifiableTrait[backgrounds.size()]);
+  public IDefaultTrait[] getBackgrounds() {
+    return backgrounds.toArray(new IDefaultTrait[backgrounds.size()]);
   }
 
   public synchronized void addBackgroundListener(IBackgroundListener listener) {
     listeners.add(listener);
   }
 
-  private synchronized void fireBackgroundAddedEvent(IModifiableTrait background) {
+  private synchronized void fireBackgroundAddedEvent(IDefaultTrait background) {
     List<IBackgroundListener> cloneListeners = new ArrayList<IBackgroundListener>(listeners);
     for (IBackgroundListener listener : cloneListeners) {
       listener.backgroundAdded(background);
     }
   }
 
-  public void removeBackground(IModifiableTrait background) {
+  public void removeBackground(IDefaultTrait background) {
     backgrounds.remove(background);
     fireBackgroundRemovedEvent(background);
   }
 
-  private synchronized void fireBackgroundRemovedEvent(IModifiableTrait background) {
+  private synchronized void fireBackgroundRemovedEvent(IDefaultTrait background) {
     List<IBackgroundListener> cloneListeners = new ArrayList<IBackgroundListener>(listeners);
     for (IBackgroundListener listener : cloneListeners) {
       listener.backgroundRemoved(background);
     }
   }
 
-  public IModifiableTrait getBackgroundByTemplate(IBackgroundTemplate type) {
+  public IDefaultTrait getBackgroundByTemplate(IBackgroundTemplate type) {
     Ensure.ensureNotNull("Background type must not be null.", type); //$NON-NLS-1$
-    for (IModifiableTrait background : getBackgrounds()) {
+    for (IDefaultTrait background : getBackgrounds()) {
       if (type.equals(background.getType())) {
         return background;
       }

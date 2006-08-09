@@ -10,13 +10,13 @@ import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueCostCalculator;
 import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.test.character.BasicCharacterTestCase;
 
 public class VirtueCostCalculatorTest extends BasicCharacterTestCase {
 
   private VirtueCostCalculator calculator;
-  private IModifiableTrait[] virtues;
+  private IDefaultTrait[] virtues;
 
   @Override
   protected void setUp() throws Exception {
@@ -75,7 +75,7 @@ public class VirtueCostCalculatorTest extends BasicCharacterTestCase {
   }
 
   public void testAllVirtuesMaximal() throws Exception {
-    for (IModifiableTrait virtue : virtues) {
+    for (IDefaultTrait virtue : virtues) {
       virtue.setCreationValue(5);
     }
     calculator.calculateVirtuePoints();

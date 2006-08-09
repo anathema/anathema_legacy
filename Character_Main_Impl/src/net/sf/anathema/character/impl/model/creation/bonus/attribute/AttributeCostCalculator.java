@@ -17,7 +17,7 @@ import net.sf.anathema.character.impl.model.creation.bonus.basic.ICostElement;
 import net.sf.anathema.character.impl.model.creation.bonus.trait.TraitCostElement;
 import net.sf.anathema.character.impl.model.creation.bonus.util.TraitGroupCost;
 import net.sf.anathema.character.impl.model.creation.bonus.util.TraitGroupSorter;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
@@ -133,7 +133,7 @@ public class AttributeCostCalculator implements IAttributeCostCalculator {
     return pointsSpent;
   }
 
-  public ElementCreationCost getCosts(IModifiableTrait attribute) {
+  public ElementCreationCost getCosts(IDefaultTrait attribute) {
     return costsByAttribute.get(attribute);
   }
 }

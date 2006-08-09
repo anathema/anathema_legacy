@@ -1,7 +1,7 @@
 package net.sf.anathema.acceptance.fixture.character.traits;
 
 import net.sf.anathema.acceptance.fixture.character.CharacterSummary;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import fit.RowFixture;
 
 public class BackgroundListFixture extends RowFixture {
@@ -9,7 +9,7 @@ public class BackgroundListFixture extends RowFixture {
   @Override
   public Object[] query() throws Exception {
     CharacterSummary characterSummary = new CharacterSummary(summary);
-    IModifiableTrait[] allBackgrounds = characterSummary.getCharacter()
+    IDefaultTrait[] allBackgrounds = characterSummary.getCharacter()
         .getStatistics()
         .getTraitConfiguration()
         .getBackgrounds()

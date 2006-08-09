@@ -1,4 +1,4 @@
-package net.sf.anathema.character.library.trait.aggregated;
+package net.sf.anathema.character.library.trait.visitor;
 
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;

@@ -4,11 +4,12 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITra
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.AbstractFavorableTrait;
-import net.sf.anathema.character.library.trait.ITraitVisitor;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.favorable.NullFavorization;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
+import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
+import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 
 public class AggregatedTrait extends AbstractFavorableTrait implements IAggregatedTrait {
 

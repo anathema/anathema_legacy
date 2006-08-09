@@ -1,10 +1,10 @@
 package net.sf.anathema.character.model.background;
 
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 
 public interface IBackgroundPointsCalculator {
 
-  int calculateBackgroundPoints(IModifiableTrait[] backgrounds);
+  int calculateBackgroundPoints(IDefaultTrait[] backgrounds);
 
-  int calculateBonusPoints(IModifiableTrait[] backgrounds);
+  int calculateBonusPoints(IDefaultTrait[] backgrounds);
 }

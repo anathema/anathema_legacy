@@ -1,12 +1,12 @@
 package net.sf.anathema.character.lunar.beastform.presenter;
 
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 
 public interface IBeastformAttribute {
 
   public int getPointCost();
 
-  public IModifiableTrait getTrait();
+  public IDefaultTrait getTrait();
 
   public void recalculate();
 

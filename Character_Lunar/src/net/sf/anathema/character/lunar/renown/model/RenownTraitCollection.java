@@ -1,11 +1,11 @@
 package net.sf.anathema.character.lunar.renown.model;
 
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 
 public class RenownTraitCollection extends AbstractTraitCollection {
 
-  public void addRenownTrait(IModifiableTrait trait) {
+  public void addRenownTrait(IDefaultTrait trait) {
     super.addTrait(trait);
   }
 }

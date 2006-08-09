@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IMod
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
-public interface IModifiableTrait extends ITrait, IModifiableBasicTrait, IModifiableGenericTrait {
+public interface IDefaultTrait extends ITrait, IModifiableBasicTrait, IModifiableGenericTrait {
 
   public void resetCurrentValue();
 

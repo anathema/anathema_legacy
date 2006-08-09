@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.persistence;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_BACKGROUNDS;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.library.trait.IModifiableTrait;
+import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -22,7 +22,7 @@ public class BackgroundConfigurationPersister extends AbstractCharacterPersister
 
   public void save(Element parent, IBackgroundConfiguration backgrounds) {
     Element backgroundsElement = parent.addElement(TAG_BACKGROUNDS);
-    for (IModifiableTrait background : backgrounds.getBackgrounds()) {
+    for (IDefaultTrait background : backgrounds.getBackgrounds()) {
       ITraitType backgroundTemplate = background.getType();
       String backgroundId = backgroundTemplate.getId();
       Element backgroundElement = saveTrait(backgroundsElement, TAG_BACKGROUND, background);
@@ -46,7 +46,7 @@ public class BackgroundConfigurationPersister extends AbstractCharacterPersister
     if (backgroundId.equals(TAG_BACKGROUND)) {
       backgroundId = element.getText();
     }
-    IModifiableTrait background;
+    IDefaultTrait background;
     if (backgroundRegistry.idRegistered(backgroundId)) {
       background = backgrounds.addBackground(backgroundRegistry.getById(backgroundId));
     }
