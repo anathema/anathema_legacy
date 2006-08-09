@@ -13,4 +13,8 @@ public interface IBasicTrait {
   public int getExperiencedCalculationValue();
 
   public boolean isLowerable();
+
+  public int getCalculationValue();
+
+  public int getZeroCalculationValue();
 }

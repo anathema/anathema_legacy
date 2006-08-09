@@ -64,4 +64,12 @@ public class DummyBasicTrait implements IModifiableBasicTrait {
   public int getAbsoluteMaxValue() {
     return getCreationPointRange().getUpperBound();
   }
+
+  public int getCalculationValue() {
+    return 0;
+  }
+
+  public int getZeroCalculationValue() {
+    return 0;
+  }
 }

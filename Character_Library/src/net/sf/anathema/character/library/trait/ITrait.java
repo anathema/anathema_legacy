@@ -22,11 +22,7 @@ public interface ITrait extends IBasicTrait, IGenericTrait {
 
   public void removeCurrentValueListener(IIntValueChangedListener listener);
 
-  public int getCalculationValue();
-
-  public int getZeroCalculationValue();
-
   public ISubTraitContainer createSpecialtiesContainer();
-  
+
   public void accept(ITraitVisitor visitor);
 }
