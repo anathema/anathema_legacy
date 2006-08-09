@@ -14,7 +14,9 @@ import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
 import net.sf.anathema.character.library.trait.rules.IFavorableTraitRules;
+import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
+import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 
@@ -45,6 +47,19 @@ public class AggregatedTrait extends AbstractFavorableTrait implements IAggregat
         valueChangeChecker,
         this,
         unremovableSubTraits);
+    subTraits.addSubTraitListener(new ISubTraitListener() {
+      public void subTraitAdded(ISubTrait subTrait) {
+        fireValueChangedEvent();
+      }
+
+      public void subTraitRemoved(ISubTrait subTrait) {
+        fireValueChangedEvent();
+      }
+
+      public void subTraitValueChanged() {
+        fireValueChangedEvent();
+      }
+    });
     this.traitFavorization = new TraitFavorization(
         basicData,
         caste,
@@ -53,6 +68,10 @@ public class AggregatedTrait extends AbstractFavorableTrait implements IAggregat
         traitRules.isRequiredFavored());
     listening.addChangeListener(changeListener);
     getFavorization().updateFavorableStateToCaste();
+  }
+
+  private void fireValueChangedEvent() {
+    getCurrentValueControl().fireValueChangedEvent(getCurrentValue());
   }
 
   public ITraitFavorization getFavorization() {
