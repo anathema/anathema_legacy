@@ -52,7 +52,29 @@
       <Presence creationValue="0"/>
       <Resistance creationValue="2"/>
       <Survival creationValue="0" experiencedValue="1"/>
-      <Craft creationValue="0" experiencedValue="4"/>
+      <Craft>
+        <subTrait creationValue="0" experiencedValue="2">
+          <traitName><![CDATA[Air]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Earth]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0" experiencedValue="2">
+          <traitName><![CDATA[Fire]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Water]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Wood]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0" experiencedValue="4">
+          <traitName><![CDATA[Magitech]]></traitName>
+        </subTrait>
+        <subTrait creationValue="0" experiencedValue="1">
+          <traitName><![CDATA[Genesis]]></traitName>
+        </subTrait>
+      </Craft>
       <Investigation creationValue="1" experiencedValue="3"/>
       <Lore creationValue="3" experiencedValue="4"/>
       <Medicine creationValue="2"/>
@@ -147,9 +169,6 @@
       </Entry>
       <Entry points="20">
         <Description><![CDATA[Downtime for Abilities]]></Description>
-      </Entry>
-      <Entry points="-11">
-        <Description><![CDATA[Craft(Air)2, Craft(Fire)2, Craft(Genesis)1]]></Description>
       </Entry>
       <Entry points="15">
         <Description><![CDATA[Downtime for Charms (First Excellency)]]></Description>
