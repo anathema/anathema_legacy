@@ -56,7 +56,7 @@ public class AbilityConfigurationPersister extends AbstractCharacterPersister {
     restoreTrait(abilityElement, ability);
     boolean favored = ElementUtilities.getBooleanAttribute(abilityElement, ATTRIB_FAVORED, false);
     ability.getFavorization().setFavored(favored);
-    List<Element> specialtyElements = ElementUtilities.elements(abilityElement);
+    List<Element> specialtyElements = ElementUtilities.elements(abilityElement, TAG_SPECIALTY);
     ISpecialtyConfiguration specialtyConfiguration = configuration.getSpecialtyConfiguration();
     for (Iterator<Element> allSpecialties = specialtyElements.iterator(); allSpecialties.hasNext();) {
       Element specialtyElement = allSpecialties.next();

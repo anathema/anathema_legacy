@@ -1,12 +1,16 @@
 package net.sf.anathema.character.library.trait.persistence;
 
+import java.util.List;
+
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
+import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.framework.persistence.AbstractPersister;
+import net.sf.anathema.lib.exception.NestedRuntimeException;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
@@ -14,20 +18,62 @@ import org.dom4j.Element;
 
 public class AbstractCharacterPersister extends AbstractPersister {
 
+  private final class LoadTraitVisitor implements ITraitVisitor {
+    private final Element element;
+
+    private LoadTraitVisitor(Element element) {
+      this.element = element;
+    }
+
+    public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
+      try {
+        List<Element> subTraitElements = ElementUtilities.elements(element, TAG_SUB_TRAIT);
+        ISubTraitContainer container = visitedTrait.getSubTraits();
+        if (subTraitElements.size() == 0) {
+          restoreDefaultTrait(element, container.getSubTraits()[0]);
+        }
+        else {
+          for (Element subTraitElement : subTraitElements) {
+            String traitName = ElementUtilities.getRequiredText(subTraitElement, TAG_TRAIT_NAME);
+            ISubTrait subTrait = container.addSubTrait(traitName);
+            restoreDefaultTrait(subTraitElement, subTrait);
+          }
+        }
+      }
+      catch (PersistenceException e) {
+        throw new NestedRuntimeException(e);
+      }
+    }
+
+    public void visitDefaultTrait(IDefaultTrait visitedTrait) {
+      try {
+        restoreDefaultTrait(element, visitedTrait);
+      }
+      catch (PersistenceException e) {
+        throw new NestedRuntimeException(e);
+      }
+    }
+  }
+
+  private static final String TAG_TRAIT_NAME = "traitName"; //$NON-NLS-1$
+  private static final String TAG_SUB_TRAIT = "subTrait"; //$NON-NLS-1$
   public static final String ATTRIB_CREATION_VALUE = "creationValue"; //$NON-NLS-1$
   public static final String ATTRIB_EXPERIENCED_VALUE = "experiencedValue"; //$NON-NLS-1$
 
   protected final Element saveTrait(Element parent, String tagName, ITrait trait) {
     final Element traitElement = parent.addElement(tagName);
     trait.accept(new ITraitVisitor() {
-    
+
       public void visitDefaultTrait(IDefaultTrait visitedTrait) {
         saveTrait(traitElement, visitedTrait);
       }
-    
+
       public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
-        // TODO 09.08.2006 (sieroux): Speichern von AggregatedTraits
-        throw new UnsupportedOperationException("Speichern von Aggregated Traits noch nicht implementiert"); //$NON-NLS-1$
+        for (ISubTrait subTrait : visitedTrait.getSubTraits().getSubTraits()) {
+          final Element subTraitElement = traitElement.addElement(TAG_SUB_TRAIT);
+          subTraitElement.addElement(TAG_TRAIT_NAME).addCDATA(subTrait.getName());
+          saveTrait(subTraitElement, subTrait);
+        }
       }
     });
     return traitElement;
@@ -49,24 +95,16 @@ public class AbstractCharacterPersister extends AbstractPersister {
 
   protected final void restoreTrait(final Element traitElement, ITrait trait) throws PersistenceException {
     if (traitElement != null) {
-      final IDefaultTrait[] modifiableTrait = new IDefaultTrait[1];
-      // TODO 09.08.2006 (sieroux): Laden von Aggregated Traits 
-      trait.accept(new ITraitVisitor() {
-
-        public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
-          ISubTraitContainer container = visitedTrait.getSubTraits();
-          modifiableTrait[0] = container.getSubTraits()[0];
-        }
-
-        public void visitDefaultTrait(IDefaultTrait visitedTrait) {
-          modifiableTrait[0] = visitedTrait;
-        }
-      });
-      restoreModifiableTrait(traitElement, modifiableTrait[0]);
+      try {
+        trait.accept(new LoadTraitVisitor(traitElement));
+      }
+      catch (NestedRuntimeException e) {
+        throw (PersistenceException) e.getCause();
+      }
     }
   }
 
-  private void restoreModifiableTrait(Element traitElement, IDefaultTrait trait) throws PersistenceException {
+  private void restoreDefaultTrait(Element traitElement, IDefaultTrait trait) throws PersistenceException {
     trait.setCreationValue(ElementUtilities.getRequiredIntAttrib(traitElement, ATTRIB_CREATION_VALUE));
     int experiencedValue = ElementUtilities.getIntAttrib(
         traitElement,
