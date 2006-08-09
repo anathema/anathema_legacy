@@ -1,6 +1,5 @@
 package net.sf.anathema.character.library.trait.persistence;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.IBasicTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
@@ -18,8 +17,23 @@ public class AbstractCharacterPersister extends AbstractPersister {
   public static final String ATTRIB_CREATION_VALUE = "creationValue"; //$NON-NLS-1$
   public static final String ATTRIB_EXPERIENCED_VALUE = "experiencedValue"; //$NON-NLS-1$
 
-  protected final Element saveTrait(Element parent, String tagName, IBasicTrait trait) {
-    Element traitElement = parent.addElement(tagName);
+  protected final Element saveTrait(Element parent, String tagName, ITrait trait) {
+    final Element traitElement = parent.addElement(tagName);
+    trait.accept(new ITraitVisitor() {
+    
+      public void visitDefaultTrait(IDefaultTrait visitedTrait) {
+        saveTrait(traitElement, visitedTrait);
+      }
+    
+      public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
+        // TODO 09.08.2006 (sieroux): Speichern von AggregatedTraits
+        throw new UnsupportedOperationException("Speichern von Aggregated Traits noch nicht implementiert"); //$NON-NLS-1$
+      }
+    });
+    return traitElement;
+  }
+
+  private final Element saveTrait(Element traitElement, IDefaultTrait trait) {
     ElementUtilities.addAttribute(traitElement, ATTRIB_CREATION_VALUE, trait.getCreationValue());
     if (trait.getExperiencedValue() != ITraitRules.UNEXPERIENCED) {
       ElementUtilities.addAttribute(traitElement, ATTRIB_EXPERIENCED_VALUE, trait.getExperiencedValue());
@@ -36,6 +50,7 @@ public class AbstractCharacterPersister extends AbstractPersister {
   protected final void restoreTrait(final Element traitElement, ITrait trait) throws PersistenceException {
     if (traitElement != null) {
       final IDefaultTrait[] modifiableTrait = new IDefaultTrait[1];
+      // TODO 09.08.2006 (sieroux): Laden von Aggregated Traits 
       trait.accept(new ITraitVisitor() {
 
         public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {

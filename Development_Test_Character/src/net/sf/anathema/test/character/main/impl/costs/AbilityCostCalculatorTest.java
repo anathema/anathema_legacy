@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.template.points.IFavorableTraitCreation
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.impl.model.creation.bonus.ability.AbilityCostCalculator;
 import net.sf.anathema.character.library.trait.FavorableTraitCost;
-import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
+import net.sf.anathema.character.library.trait.IFavorableDefaultTrait;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.dummy.character.DummyAdditionalBonusPointManagment;
 import net.sf.anathema.dummy.character.trait.DummyCoreTraitConfiguration;
@@ -33,26 +33,26 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
   }
 
   private static void assertEmptyCosts(AbilityCostCalculator calculator, IFavorableTrait ability) {
-    FavorableTraitCost abilityCost = calculator.getCosts(ability);
-    assertEquals("Ability " + ability, 0, abilityCost.getBonusCost()); //$NON-NLS-1$
-    assertEquals("Ability " + ability, 0, abilityCost.getFavoredPointCost()); //$NON-NLS-1$
-    assertEquals("Ability " + ability, 0, abilityCost.getGeneralPointCost()); //$NON-NLS-1$
+    FavorableTraitCost[] abilityCost = calculator.getCosts(ability);
+    assertEquals("Ability " + ability, 0, abilityCost[0].getBonusCost()); //$NON-NLS-1$
+    assertEquals("Ability " + ability, 0, abilityCost[0].getFavoredPointCost()); //$NON-NLS-1$
+    assertEquals("Ability " + ability, 0, abilityCost[0].getGeneralPointCost()); //$NON-NLS-1$
   }
 
   private DummyCoreTraitConfiguration traitConfiguration;
   private IAbilityPointCosts costs;
   private DummyAdditionalBonusPointManagment additionalBonusPointManagment;
 
-  private IFavorableModifiableTrait setFavoredAbilityTo(AbilityType abilityType, int value) {
-    IFavorableModifiableTrait trait = (IFavorableModifiableTrait) traitConfiguration.getFavorableTrait(abilityType);
+  private IFavorableDefaultTrait setFavoredAbilityTo(AbilityType abilityType, int value) {
+    IFavorableDefaultTrait trait = (IFavorableDefaultTrait) traitConfiguration.getFavorableTrait(abilityType);
     trait.getFavorization().updateFavorableStateToCaste();
     trait.getFavorization().setFavored(true);
     trait.setCreationValue(value);
     return trait;
   }
 
-  private IFavorableModifiableTrait setUnfavoredAbilityTo(AbilityType abilityType, int value) {
-    IFavorableModifiableTrait ability = (IFavorableModifiableTrait) traitConfiguration.getFavorableTrait(abilityType);
+  private IFavorableDefaultTrait setUnfavoredAbilityTo(AbilityType abilityType, int value) {
+    IFavorableDefaultTrait ability = (IFavorableDefaultTrait) traitConfiguration.getFavorableTrait(abilityType);
     ability.getFavorization().updateFavorableStateToCaste();
     ability.getFavorization().setFavored(false);
     ability.setCreationValue(value);
@@ -93,27 +93,30 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
 
   public void testPreferFavoredForBonusPoint() throws Exception {
     IFavorableTraitCreationPoints abilityCreationPoints = new FavorableTraitCreationPoints(2, 3, 2);
-    IFavorableModifiableTrait firstFavored = setFavoredAbilityTo(AbilityType.Melee, 3);
-    IFavorableModifiableTrait secondFavored = setFavoredAbilityTo(AbilityType.Ride, 3);
-    IFavorableModifiableTrait unfavoredAbility = setUnfavoredAbilityTo(AbilityType.Archery, 3);
+    IFavorableDefaultTrait firstFavored = setFavoredAbilityTo(AbilityType.Melee, 3);
+    IFavorableDefaultTrait secondFavored = setFavoredAbilityTo(AbilityType.Ride, 3);
+    IFavorableDefaultTrait unfavoredAbility = setUnfavoredAbilityTo(AbilityType.Archery, 3);
     AbilityCostCalculator calculator = startCalculation(abilityCreationPoints);
     assertEquals(3, calculator.getFreePointsSpent(true));
     assertEquals(2, calculator.getFreePointsSpent(false));
     for (IFavorableTrait ability : getAllAbilities()) {
       if (ability == firstFavored) {
-        FavorableTraitCost abilityCost = calculator.getCosts(ability);
+        FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
+        FavorableTraitCost abilityCost = allAbilityCost[0];
         assertEquals("Ability " + ability, 0, abilityCost.getBonusCost()); //$NON-NLS-1$
         assertEquals("Ability " + ability, 3, abilityCost.getFavoredPointCost()); //$NON-NLS-1$
         assertEquals("Ability " + ability, 0, abilityCost.getGeneralPointCost()); //$NON-NLS-1$
       }
       else if (ability == secondFavored) {
-        FavorableTraitCost abilityCost = calculator.getCosts(ability);
+        FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
+        FavorableTraitCost abilityCost = allAbilityCost[0];
         assertEquals("Ability " + ability, 3, abilityCost.getBonusCost()); //$NON-NLS-1$
         assertEquals("Ability " + ability, 0, abilityCost.getFavoredPointCost()); //$NON-NLS-1$
         assertEquals("Ability " + ability, 0, abilityCost.getGeneralPointCost()); //$NON-NLS-1$
       }
       else if (ability == unfavoredAbility) {
-        FavorableTraitCost abilityCost = calculator.getCosts(ability);
+        FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
+        FavorableTraitCost abilityCost = allAbilityCost[0];
         assertEquals("Ability " + ability, 2, abilityCost.getBonusCost()); //$NON-NLS-1$
         assertEquals("Ability " + ability, 0, abilityCost.getFavoredPointCost()); //$NON-NLS-1$
         assertEquals("Ability " + ability, 2, abilityCost.getGeneralPointCost()); //$NON-NLS-1$
@@ -126,20 +129,22 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
 
   public void testGeneralDotsUsedForFavoredAbiltiesOverFavoredDots() throws Exception {
     IFavorableTraitCreationPoints abilityCreationPoints = new FavorableTraitCreationPoints(2, 4, 5);
-    IFavorableModifiableTrait firstFavored = setFavoredAbilityTo(AbilityType.Melee, 3);
-    IFavorableModifiableTrait secondFavored = setFavoredAbilityTo(AbilityType.Occult, 3);
+    IFavorableDefaultTrait firstFavored = setFavoredAbilityTo(AbilityType.Melee, 3);
+    IFavorableDefaultTrait secondFavored = setFavoredAbilityTo(AbilityType.Occult, 3);
     AbilityCostCalculator calculator = startCalculation(abilityCreationPoints);
     assertEquals(4, calculator.getFreePointsSpent(true));
     assertEquals(2, calculator.getFreePointsSpent(false));
     for (IFavorableTrait ability : getAllAbilities()) {
       if (ability == firstFavored) {
-        FavorableTraitCost abilityCost = calculator.getCosts(ability);
+        FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
+        FavorableTraitCost abilityCost = allAbilityCost[0];
         assertEquals("Ability " + ability, 0, abilityCost.getBonusCost()); //$NON-NLS-1$
         assertEquals("Ability " + ability, 3, abilityCost.getFavoredPointCost()); //$NON-NLS-1$
         assertEquals("Ability " + ability, 0, abilityCost.getGeneralPointCost()); //$NON-NLS-1$
       }
       else if (ability == secondFavored) {
-        FavorableTraitCost abilityCost = calculator.getCosts(ability);
+        FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
+        FavorableTraitCost abilityCost = allAbilityCost[0];
         assertEquals("Ability " + ability, 0, abilityCost.getBonusCost()); //$NON-NLS-1$
         assertEquals("Ability " + ability, 1, abilityCost.getFavoredPointCost()); //$NON-NLS-1$
         assertEquals("Ability " + ability, 2, abilityCost.getGeneralPointCost()); //$NON-NLS-1$
@@ -152,13 +157,14 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
 
   public void testFavoredDotsForFavoredAbilitesLessThan3() throws Exception {
     IFavorableTraitCreationPoints abilityCreationPoints = new FavorableTraitCreationPoints(2, 3, 4);
-    IFavorableModifiableTrait favoredAbility = setFavoredAbilityTo(AbilityType.Melee, 3);
+    IFavorableDefaultTrait favoredAbility = setFavoredAbilityTo(AbilityType.Melee, 3);
     AbilityCostCalculator calculator = startCalculation(abilityCreationPoints);
     assertEquals(3, calculator.getFreePointsSpent(true));
     assertEquals(0, calculator.getFreePointsSpent(false));
     for (IFavorableTrait ability : getAllAbilities()) {
       if (ability == favoredAbility) {
-        FavorableTraitCost abilityCost = calculator.getCosts(ability);
+        FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
+        FavorableTraitCost abilityCost = allAbilityCost[0];
         assertEquals("Ability " + ability, 0, abilityCost.getBonusCost()); //$NON-NLS-1$
         assertEquals("Ability " + ability, 3, abilityCost.getFavoredPointCost()); //$NON-NLS-1$
         assertEquals("Ability " + ability, 0, abilityCost.getGeneralPointCost()); //$NON-NLS-1$
@@ -177,7 +183,8 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     assertEquals(3, calculator.getFreePointsSpent(false));
     for (IFavorableTrait ability : getAllAbilities()) {
       if (ability == unfavoredAbility) {
-        FavorableTraitCost abilityCost = calculator.getCosts(ability);
+        FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
+        FavorableTraitCost abilityCost = allAbilityCost[0];
         assertEquals("Ability " + ability, 0, abilityCost.getBonusCost()); //$NON-NLS-1$
         assertEquals("Ability " + ability, 0, abilityCost.getFavoredPointCost()); //$NON-NLS-1$
         assertEquals("Ability " + ability, 3, abilityCost.getGeneralPointCost()); //$NON-NLS-1$
@@ -196,7 +203,8 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     assertEquals(0, calculator.getFreePointsSpent(false));
     for (IFavorableTrait ability : getAllAbilities()) {
       if (ability == favoredAbility) {
-        FavorableTraitCost abilityCost = calculator.getCosts(ability);
+        FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
+        FavorableTraitCost abilityCost = allAbilityCost[0];
         assertEquals("Ability " + ability, 1, abilityCost.getBonusCost()); //$NON-NLS-1$
         assertEquals("Ability " + ability, 3, abilityCost.getFavoredPointCost()); //$NON-NLS-1$
         assertEquals("Ability " + ability, 0, abilityCost.getGeneralPointCost()); //$NON-NLS-1$
@@ -215,7 +223,8 @@ public class AbilityCostCalculatorTest extends AbstractBonusPointTestCase {
     assertEquals(3, calculator.getFreePointsSpent(false));
     for (IFavorableTrait ability : getAllAbilities()) {
       if (ability == unfavoredAbility) {
-        FavorableTraitCost abilityCost = calculator.getCosts(ability);
+        FavorableTraitCost[] allAbilityCost = calculator.getCosts(ability);
+        FavorableTraitCost abilityCost = allAbilityCost[0];
         assertEquals("Ability " + ability, 2, abilityCost.getBonusCost()); //$NON-NLS-1$
         assertEquals("Ability " + ability, 0, abilityCost.getFavoredPointCost()); //$NON-NLS-1$
         assertEquals("Ability " + ability, 3, abilityCost.getGeneralPointCost()); //$NON-NLS-1$

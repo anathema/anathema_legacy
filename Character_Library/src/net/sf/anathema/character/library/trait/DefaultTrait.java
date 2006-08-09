@@ -19,7 +19,7 @@ import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.data.Range;
 
-public class DefaultTrait extends AbstractFavorableTrait implements IFavorableModifiableTrait {
+public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDefaultTrait {
 
   private final ChangeControl rangeControl = new ChangeControl();
   private int creationValue;
@@ -147,8 +147,12 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableMo
     getTraitRules().setModifiedCreationRange(new Range(lowerBound, upperBound));
     resetCreationValue();
   }
-  
+
   public void accept(ITraitVisitor visitor) {
     visitor.visitDefaultTrait(this);
+  }
+
+  public final int getMinimalValue() {
+    return getTraitValueStrategy().getMinimalValue(this);
   }
 }

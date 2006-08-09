@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.model.creation.bonus;
 
 import net.sf.anathema.character.library.trait.FavorableTraitCost;
-import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
+import net.sf.anathema.character.library.trait.IFavorableDefaultTrait;
 
 public interface IAbilityCostCalculator {
 
@@ -11,6 +11,6 @@ public interface IAbilityCostCalculator {
 
   public abstract int getBonusPoints();
 
-  public abstract FavorableTraitCost getCosts(IFavorableModifiableTrait ability);
+  public abstract FavorableTraitCost getCosts(IFavorableDefaultTrait ability);
 
 }

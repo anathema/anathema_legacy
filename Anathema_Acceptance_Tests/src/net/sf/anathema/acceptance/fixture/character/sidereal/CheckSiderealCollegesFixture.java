@@ -2,7 +2,7 @@ package net.sf.anathema.acceptance.fixture.character.sidereal;
 
 import net.sf.anathema.acceptance.fixture.character.util.AbstractCharacterColumnFixture;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
-import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
+import net.sf.anathema.character.library.trait.IFavorableDefaultTrait;
 import net.sf.anathema.character.sidereal.colleges.model.CollegeType;
 import net.sf.anathema.character.sidereal.colleges.model.SiderealCollegeModel;
 
@@ -14,9 +14,9 @@ public class CheckSiderealCollegesFixture extends AbstractCharacterColumnFixture
     return getCollege().getFavorization().isCasteOrFavored();
   }
 
-  private IFavorableModifiableTrait getCollege() {
+  private IFavorableDefaultTrait getCollege() {
     SiderealCollegeModel collegeModel = getSiderealCollegeModel();
-    IFavorableModifiableTrait college = collegeModel.getCollege(CollegeType.valueOf(traitType));
+    IFavorableDefaultTrait college = collegeModel.getCollege(CollegeType.valueOf(traitType));
     return college;
   }
 

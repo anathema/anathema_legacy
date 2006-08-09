@@ -57,7 +57,7 @@ public class AttributeCostCalculator implements IAttributeCostCalculator {
       for (IFavorableTrait attribute : group.getTraits()) {
         int costFactor = costs.getAttributeCosts(attribute.getFavorization().isCasteOrFavored()).getRatingCosts(
             attribute.getCurrentValue());
-        ElementCreationCost cost = handleAttribute(attribute, freePointsLeft, costFactor);
+        ElementCreationCost cost = handleAttribute((IDefaultTrait) attribute, freePointsLeft, costFactor);
         freePointsLeft -= cost.getDotsSpent();
         costsByAttribute.put(attribute, cost);
         group.addTraitToCost(attribute, cost);
@@ -69,7 +69,7 @@ public class AttributeCostCalculator implements IAttributeCostCalculator {
     costsByAttribute.clear();
   }
 
-  private ElementCreationCost handleAttribute(ITrait attribute, int freeDots, int bonusPointCostFactor) {
+  private ElementCreationCost handleAttribute(IDefaultTrait attribute, int freeDots, int bonusPointCostFactor) {
     ICostElement element = new TraitCostElement(attribute);
     return new ElementCreationCostCalculator().calculateElementCreationCost(element, freeDots, bonusPointCostFactor);
   }

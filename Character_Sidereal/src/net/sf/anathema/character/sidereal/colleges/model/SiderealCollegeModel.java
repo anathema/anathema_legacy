@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonu
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
+import net.sf.anathema.character.library.trait.IFavorableDefaultTrait;
 import net.sf.anathema.character.sidereal.caste.SiderealCaste;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeTemplate;
 import net.sf.anathema.character.sidereal.colleges.presenter.IAstrologicalHouse;
@@ -54,9 +54,9 @@ public class SiderealCollegeModel implements ISiderealCollegeModel {
     return template.getId();
   }
 
-  public IFavorableModifiableTrait getCollege(CollegeType type) {
+  public IFavorableDefaultTrait getCollege(CollegeType type) {
     for (IAstrologicalHouse house : getAllHouses()) {
-      for (IFavorableModifiableTrait college : house.getColleges()) {
+      for (IFavorableDefaultTrait college : house.getColleges()) {
         if (college.getType() == type) {
           return college;
         }

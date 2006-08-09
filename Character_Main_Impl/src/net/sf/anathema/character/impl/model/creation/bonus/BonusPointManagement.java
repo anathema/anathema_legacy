@@ -10,8 +10,6 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.points.AttributeGroupPriority;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.impl.generic.GenericCharacter;
 import net.sf.anathema.character.impl.model.advance.models.AbstractAdditionalSpendingModel;
 import net.sf.anathema.character.impl.model.creation.bonus.ability.AbilityCostCalculator;
@@ -30,7 +28,8 @@ import net.sf.anathema.character.impl.model.creation.bonus.magic.MagicCostCalcul
 import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueCostCalculator;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.TraitCollectionUtitlies;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
@@ -50,14 +49,13 @@ public class BonusPointManagement implements IBonusPointManagement {
   private final VirtueCostCalculator virtueCalculator;
   private final BackgroundBonusPointCostCalculator backgroundCalculator;
   private final MagicCostCalculator magicCalculator;
-  private final ITrait willpower;
+  private final IDefaultTrait willpower;
   private final IBonusPointCosts cost;
   private final IComboConfiguration combos;
-  private final ITrait essence;
+  private final IDefaultTrait essence;
   private final List<IAdditionalModelBonusPointCalculator> additionalCalculators = new ArrayList<IAdditionalModelBonusPointCalculator>();
   private final ICreationPoints creationPoints;
   private final ICharacterStatistics statistics;
-
   private int essenceBonusPoints;
   private int willpowerBonusPoints;
   private int comboBonusPoints;
@@ -88,10 +86,8 @@ public class BonusPointManagement implements IBonusPointManagement {
         cost,
         creationPoints.getBackgroundPointCount(),
         characterTemplate.getAdditionalRules());
-    this.virtueCalculator = new VirtueCostCalculator(
-        traitConfiguration.getTraits(VirtueType.values()),
-        creationPoints.getVirtueCreationPoints(),
-        cost);
+    IDefaultTrait[] virtues = TraitCollectionUtitlies.getVirtues(traitConfiguration);
+    this.virtueCalculator = new VirtueCostCalculator(virtues, creationPoints.getVirtueCreationPoints(), cost);
     magicAdditionalPools = new AdditionalMagicLearnPointManagement(characterTemplate.getAdditionalRules()
         .getAdditionalMagicLearnPools(), characterAbstraction);
     this.magicCalculator = new MagicCostCalculator(
@@ -106,8 +102,8 @@ public class BonusPointManagement implements IBonusPointManagement {
         statistics.getCharacterContext().getBasicCharacterContext(),
         statistics.getCharacterContext().getTraitCollection());
     this.combos = statistics.getCombos();
-    this.willpower = traitConfiguration.getTrait(OtherTraitType.Willpower);
-    this.essence = traitConfiguration.getTrait(OtherTraitType.Essence);
+    this.willpower = TraitCollectionUtitlies.getWillpower(traitConfiguration);
+    this.essence = TraitCollectionUtitlies.getEssence(traitConfiguration);
   }
 
   public void recalculate() {

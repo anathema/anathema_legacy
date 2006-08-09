@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.model.advance.models;
 
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
+import net.sf.anathema.character.library.trait.TraitCollectionUtitlies;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 public class WillpowerExperienceModel extends AbstractIntegerValueModel {
@@ -20,6 +20,6 @@ public class WillpowerExperienceModel extends AbstractIntegerValueModel {
   }
 
   private int getWillpowerCosts() {
-    return calculator.getWillpowerCosts(traitConfiguration.getTrait(OtherTraitType.Willpower));
+    return calculator.getWillpowerCosts(TraitCollectionUtitlies.getWillpower(traitConfiguration));
   }
 }

@@ -5,7 +5,7 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.reporting.datasource.ITraitDataSource;
-import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
+import net.sf.anathema.character.library.trait.IFavorableDefaultTrait;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeTemplate;
 import net.sf.anathema.character.sidereal.colleges.presenter.IAstrologicalHouse;
 import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeModel;
@@ -14,21 +14,21 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class SiderealCollegesDataSource implements IReportDataSource, ITraitDataSource {
 
-  private final IFavorableModifiableTrait[] colleges;
+  private final IFavorableDefaultTrait[] colleges;
   private final IResources resources;
 
   public SiderealCollegesDataSource(IGenericCharacter character, IResources resources) {
     this.resources = resources;
     ISiderealCollegeModel collegeModels = (ISiderealCollegeModel) character.getAdditionalModel(SiderealCollegeTemplate.ID);
-    List<IFavorableModifiableTrait> learnedColleges = new ArrayList<IFavorableModifiableTrait>();
+    List<IFavorableDefaultTrait> learnedColleges = new ArrayList<IFavorableDefaultTrait>();
     for (IAstrologicalHouse house : collegeModels.getAllHouses()) {
-      for (IFavorableModifiableTrait college : house.getColleges()) {
+      for (IFavorableDefaultTrait college : house.getColleges()) {
         if (college.getCurrentValue() > 0) {
           learnedColleges.add(college);
         }
       }
     }
-    this.colleges = learnedColleges.toArray(new IFavorableModifiableTrait[learnedColleges.size()]);
+    this.colleges = learnedColleges.toArray(new IFavorableDefaultTrait[learnedColleges.size()]);
   }
 
   public int getRowCount() {

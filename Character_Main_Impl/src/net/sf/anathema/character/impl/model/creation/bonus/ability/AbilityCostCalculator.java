@@ -13,6 +13,7 @@ import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditiona
 import net.sf.anathema.character.impl.model.creation.bonus.additional.IAdditionalSpecialtyBonusPointManagement;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.AbstractFavorableTraitCostCalculator;
+import net.sf.anathema.character.library.trait.IFavorableDefaultTrait;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
@@ -55,10 +56,9 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
   }
 
   @Override
-  protected int getCostFactor(IFavorableTrait ability) {
-    ITraitFavorization favorization = ability.getFavorization();
-    int costFactor = costs.getAbilityCosts(favorization.isCasteOrFavored()).getRatingCosts(
-        ability.getCalculationValue());
+  protected int getCostFactor(IFavorableDefaultTrait trait) {
+    ITraitFavorization favorization = trait.getFavorization();
+    int costFactor = costs.getAbilityCosts(favorization.isCasteOrFavored()).getRatingCosts(trait.getCalculationValue());
     return costFactor;
   }
 

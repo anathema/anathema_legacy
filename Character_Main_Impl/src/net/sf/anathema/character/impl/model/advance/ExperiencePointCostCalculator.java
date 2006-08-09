@@ -8,7 +8,12 @@ import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
 import net.sf.anathema.character.generic.template.experience.IExperiencePointCosts;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
+import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.experience.TraitRatingCostCalculator;
+import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
+import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 
 public class ExperiencePointCostCalculator implements IPointCostCalculator {
 
@@ -22,8 +27,24 @@ public class ExperiencePointCostCalculator implements IPointCostCalculator {
     return TraitRatingCostCalculator.getTraitRatingCosts(trait, ratingCosts);
   }
 
-  public int getAbilityCosts(IBasicTrait ability, boolean favored) {
-    return getTraitRatingCosts(ability, costs.getAbilityCosts(favored));
+  public int getAbilityCosts(ITrait ability, final boolean favored) {
+    final int[] abilityCosts = new int[1];
+    ability.accept(new ITraitVisitor() {
+
+      public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
+        int sumCost = 0;
+        for (ISubTrait subTrait : visitedTrait.getSubTraits().getSubTraits()) {
+          sumCost += getTraitRatingCosts(subTrait, costs.getAbilityCosts(favored));
+        }
+        abilityCosts[0] = sumCost;
+      }
+
+      public void visitDefaultTrait(IDefaultTrait visitedTrait) {
+        abilityCosts[0] = getTraitRatingCosts(visitedTrait, costs.getAbilityCosts(favored));
+      }
+
+    });
+    return abilityCosts[0];
   }
 
   public int getAttributeCosts(IBasicTrait attribute) {
@@ -50,11 +71,19 @@ public class ExperiencePointCostCalculator implements IPointCostCalculator {
     return costs.getSpecialtyCosts(favored);
   }
 
-  public int getSpellCosts(ISpell spell, IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection, FavoringTraitType type) {
+  public int getSpellCosts(
+      ISpell spell,
+      IBasicCharacterData basicCharacter,
+      IGenericTraitCollection traitCollection,
+      FavoringTraitType type) {
     return costs.getSpellCosts(spell, basicCharacter, traitCollection, type);
   }
 
-  public int getCharmCosts(ICharm charm, IBasicCharacterData basicCharacter, IGenericTraitCollection traitCollection, FavoringTraitType type) {
+  public int getCharmCosts(
+      ICharm charm,
+      IBasicCharacterData basicCharacter,
+      IGenericTraitCollection traitCollection,
+      FavoringTraitType type) {
     return costs.getCharmCosts(charm, new CostAnalyzer(basicCharacter, traitCollection, type));
   }
 }

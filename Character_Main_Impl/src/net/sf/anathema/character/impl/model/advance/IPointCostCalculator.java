@@ -6,10 +6,11 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IBas
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
+import net.sf.anathema.character.library.trait.ITrait;
 
 public interface IPointCostCalculator {
 
-  public int getAbilityCosts(IBasicTrait ability, boolean favored);
+  public int getAbilityCosts(ITrait ability, boolean favored);
 
   public int getAttributeCosts(IBasicTrait attribute);
 

@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonu
 import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.library.trait.IAdditionalTraitBonusPointManagement;
-import net.sf.anathema.character.library.trait.IFavorableModifiableTrait;
+import net.sf.anathema.character.library.trait.IFavorableDefaultTrait;
 import net.sf.anathema.character.sidereal.colleges.presenter.IAstrologicalHouse;
 
 public class CollegeModelBonusPointCalculator implements IAdditionalModelBonusPointCalculator {
@@ -19,7 +19,7 @@ public class CollegeModelBonusPointCalculator implements IAdditionalModelBonusPo
       IAstrologicalHouse[] allHouses,
       ICollegeBonusPointCosts costs,
       IFavorableTraitCreationPoints points) {
-    List<IFavorableModifiableTrait> colleges = new ArrayList<IFavorableModifiableTrait>();
+    List<IFavorableDefaultTrait> colleges = new ArrayList<IFavorableDefaultTrait>();
     for (IAstrologicalHouse house : allHouses) {
       Collections.addAll(colleges, house.getColleges());
     }
@@ -27,7 +27,7 @@ public class CollegeModelBonusPointCalculator implements IAdditionalModelBonusPo
       public void spendOn(IGenericTrait trait, int bonusCost) {
         // nothing to do
       }
-    }, points, colleges.toArray(new IFavorableModifiableTrait[colleges.size()]), costs);
+    }, points, colleges.toArray(new IFavorableDefaultTrait[colleges.size()]), costs);
   }
 
   public void recalculate() {
