@@ -60,7 +60,15 @@ public class FavorableTraitFactory extends AbstractTraitFactory {
     IValueChangeChecker valueChecker = createValueIncrementChecker(traitType);
     if (traitType == AbilityType.Craft) {
       String[] elements = new String[] { "Air", "Earth", "Fire", "Water", "Wood" };
-      return new AggregatedTrait(favorableTraitRules, traitContext.getTraitValueStrategy(), valueChecker, elements);
+      return new AggregatedTrait(
+          favorableTraitRules,
+          basicCharacterData,
+          characterListening,
+          traitContext.getTraitValueStrategy(),
+          valueChecker,
+          casteType,
+          favoredIncrementChecker,
+          elements);
     }
     return new DefaultTrait(
         favorableTraitRules,

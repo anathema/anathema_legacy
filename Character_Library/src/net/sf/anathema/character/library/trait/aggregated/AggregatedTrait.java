@@ -1,12 +1,19 @@
 package net.sf.anathema.character.library.trait.aggregated;
 
+import net.sf.anathema.character.generic.IBasicCharacterData;
+import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
+import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
+import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.AbstractFavorableTrait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
-import net.sf.anathema.character.library.trait.favorable.NullTraitFavorization;
-import net.sf.anathema.character.library.trait.rules.ITraitRules;
+import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
+import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
+import net.sf.anathema.character.library.trait.rules.IFavorableTraitRules;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
@@ -15,11 +22,21 @@ public class AggregatedTrait extends AbstractFavorableTrait implements IAggregat
 
   private final ITraitFavorization traitFavorization;
   private final ISubTraitContainer subTraits;
+  private ICharacterChangeListener changeListener = new DedicatedCharacterChangeAdapter() {
+    @Override
+    public void casteChanged() {
+      getFavorization().updateFavorableStateToCaste();
+    }
+  };
 
   public AggregatedTrait(
-      ITraitRules traitRules,
+      IFavorableTraitRules traitRules,
+      IBasicCharacterData basicData,
+      ICharacterListening listening,
       ITraitValueStrategy traitValueStrategy,
       IValueChangeChecker valueChangeChecker,
+      ICasteType< ? extends ICasteTypeVisitor> caste,
+      IIncrementChecker favoredIncrementChecker,
       String... unremovableSubTraits) {
     super(traitRules, traitValueStrategy);
     subTraits = new AggregationSubTraitContainer(
@@ -28,8 +45,14 @@ public class AggregatedTrait extends AbstractFavorableTrait implements IAggregat
         valueChangeChecker,
         this,
         unremovableSubTraits);
-    // TODO Favorization umstellen
-    this.traitFavorization = new NullTraitFavorization();
+    this.traitFavorization = new TraitFavorization(
+        basicData,
+        caste,
+        favoredIncrementChecker,
+        this,
+        traitRules.isRequiredFavored());
+    listening.addChangeListener(changeListener);
+    getFavorization().updateFavorableStateToCaste();
   }
 
   public ITraitFavorization getFavorization() {

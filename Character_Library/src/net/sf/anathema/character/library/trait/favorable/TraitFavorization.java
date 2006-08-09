@@ -4,7 +4,10 @@ import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.library.ITraitFavorization;
-import net.sf.anathema.character.library.trait.IModifiableGenericTrait;
+import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 
@@ -13,7 +16,7 @@ public class TraitFavorization implements ITraitFavorization {
   private FavorableState state;
   private final GenericControl<IFavorableStateChangedListener> favorableStateControl = new GenericControl<IFavorableStateChangedListener>();
   private final IIncrementChecker favoredIncrementChecker;
-  private final IModifiableGenericTrait trait;
+  private final ITrait trait;
   private final ICasteType< ? extends ICasteTypeVisitor> caste;
   private final boolean isRequiredFavored;
   private final IBasicCharacterData basicData;
@@ -22,7 +25,7 @@ public class TraitFavorization implements ITraitFavorization {
       IBasicCharacterData basicData,
       ICasteType< ? extends ICasteTypeVisitor> caste,
       IIncrementChecker favoredIncrementChecker,
-      IModifiableGenericTrait trait,
+      ITrait trait,
       boolean isRequiredFavored) {
     this.basicData = basicData;
     this.caste = caste;
@@ -49,8 +52,17 @@ public class TraitFavorization implements ITraitFavorization {
       state = FavorableState.Favored;
     }
     this.state = state;
-    if (this.state == FavorableState.Favored) {
-      trait.setCurrentValue(Math.max(trait.getCurrentValue(), 1));
+    if (this.state == FavorableState.Favored && trait.getCurrentValue() < 1) {
+      trait.accept(new ITraitVisitor() {
+
+        public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
+          visitedTrait.getSubTraits().getSubTraits()[0].setCurrentValue(1);
+        }
+
+        public void visitDefaultTrait(IDefaultTrait visitedTrait) {
+          visitedTrait.setCurrentValue(1);
+        }
+      });
     }
     fireFavorableStateChangedEvent(state);
   }
