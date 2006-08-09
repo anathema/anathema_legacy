@@ -3,6 +3,7 @@ package net.sf.anathema.character.library.trait.subtrait;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
@@ -62,9 +63,9 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
   }
 
   private ISubTrait getContainedEquivalent(String name) {
-    for (ISubTrait specialty : getSubTraits()) {
-      if (specialty.getName().equals(name)) {
-        return specialty;
+    for (ISubTrait subtrait : getSubTraits()) {
+      if (subtrait.getName().equals(name)) {
+        return subtrait;
       }
     }
     return null;
@@ -110,11 +111,12 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
 
   protected abstract void handleAdditionOfContainedEquivalent(ISubTrait subTrait);
 
-  public final ISubTrait addSubTrait(String specialtyName) {
+  public final ISubTrait addSubTrait(String traitName) {
+    Ensure.ensureArgumentNotNull(traitName);
     if (isNewSubTraitAllowed()) {
-      ISubTrait subTrait = getContainedEquivalent(specialtyName);
+      ISubTrait subTrait = getContainedEquivalent(traitName);
       if (subTrait == null) {
-        subTrait = createSubTrait(specialtyName);
+        subTrait = createSubTrait(traitName);
         subtraits.add(subTrait);
         subTrait.addCurrentValueListener(subTraitCreationPointListener);
         fireSubTraitAddedEvent(subTrait);
