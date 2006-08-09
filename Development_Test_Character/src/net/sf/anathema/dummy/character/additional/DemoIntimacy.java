@@ -8,9 +8,9 @@ import net.sf.anathema.character.intimacies.model.IIntimacy;
 import net.sf.anathema.character.intimacies.model.IntimacyType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 
 public class DemoIntimacy implements IIntimacy{

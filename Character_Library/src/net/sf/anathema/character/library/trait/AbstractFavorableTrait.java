@@ -31,10 +31,6 @@ public abstract class AbstractFavorableTrait implements IFavorableTrait {
     return getFavorization().isCasteOrFavored();
   }
 
-  public boolean isCreationLearned() {
-    return getCreationValue() > 0;
-  }
-
   public final ITraitType getType() {
     return getTraitRules().getType();
   }

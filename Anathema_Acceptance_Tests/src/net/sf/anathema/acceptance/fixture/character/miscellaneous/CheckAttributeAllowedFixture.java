@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 
 public class CheckAttributeAllowedFixture extends AbstractCharacterColumnFixture {
 

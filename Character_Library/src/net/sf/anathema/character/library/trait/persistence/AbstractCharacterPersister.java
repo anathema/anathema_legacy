@@ -1,11 +1,11 @@
 package net.sf.anathema.character.library.trait.persistence;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IBasicTrait;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.framework.persistence.AbstractPersister;
 import net.sf.anathema.lib.exception.PersistenceException;

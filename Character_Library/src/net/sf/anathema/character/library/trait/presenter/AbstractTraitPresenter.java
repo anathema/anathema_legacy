@@ -1,8 +1,8 @@
 package net.sf.anathema.character.library.trait.presenter;
 
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.change.IChangeListener;

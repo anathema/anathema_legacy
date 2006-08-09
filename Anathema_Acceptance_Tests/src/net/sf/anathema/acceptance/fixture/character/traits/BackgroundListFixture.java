@@ -1,7 +1,7 @@
 package net.sf.anathema.acceptance.fixture.character.traits;
 
 import net.sf.anathema.acceptance.fixture.character.CharacterSummary;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import fit.RowFixture;
 
 public class BackgroundListFixture extends RowFixture {

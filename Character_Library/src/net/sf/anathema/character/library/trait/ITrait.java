@@ -26,8 +26,6 @@ public interface ITrait extends IBasicTrait, IGenericTrait {
 
   public int getZeroCalculationValue();
 
-  public boolean isCreationLearned();
-
   public ISubTraitContainer createSpecialtiesContainer();
   
   public void accept(ITraitVisitor visitor);

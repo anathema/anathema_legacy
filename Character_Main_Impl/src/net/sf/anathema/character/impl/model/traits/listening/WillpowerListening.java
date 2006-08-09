@@ -2,8 +2,8 @@ package net.sf.anathema.character.impl.model.traits.listening;
 
 import java.util.Arrays;
 
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
 public class WillpowerListening {

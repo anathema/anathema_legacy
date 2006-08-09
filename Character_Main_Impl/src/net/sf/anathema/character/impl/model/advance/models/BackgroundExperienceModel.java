@@ -1,6 +1,6 @@
 package net.sf.anathema.character.impl.model.advance.models;
 
-import net.sf.anathema.character.library.trait.IDefaultTrait;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 public class BackgroundExperienceModel extends AbstractIntegerValueModel {

@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.additionalrules.ITraitCostModifier;
 import net.sf.anathema.character.generic.template.creation.IBackgroundCreationPointCosts;
 import net.sf.anathema.character.impl.model.creation.bonus.additional.AdditionalBonusPointPoolManagement;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 
 public class BackgroundBonusPointCostCalculator {

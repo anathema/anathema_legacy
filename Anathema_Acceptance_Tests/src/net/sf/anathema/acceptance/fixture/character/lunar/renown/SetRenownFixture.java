@@ -1,6 +1,6 @@
 package net.sf.anathema.acceptance.fixture.character.lunar.renown;
 
-import net.sf.anathema.character.library.trait.IDefaultTrait;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.lunar.renown.model.RenownType;
 
 public class SetRenownFixture extends AbstractRenownRowEntryFixture {

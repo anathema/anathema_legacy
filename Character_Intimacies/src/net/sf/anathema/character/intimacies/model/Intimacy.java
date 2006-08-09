@@ -7,9 +7,9 @@ import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.lib.control.booleanvalue.BooleanValueControl;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 

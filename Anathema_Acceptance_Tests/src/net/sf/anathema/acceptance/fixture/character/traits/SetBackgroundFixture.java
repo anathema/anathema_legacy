@@ -1,8 +1,8 @@
 package net.sf.anathema.acceptance.fixture.character.traits;
 
 import net.sf.anathema.acceptance.fixture.character.CharacterSummary;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterStatistics;
 

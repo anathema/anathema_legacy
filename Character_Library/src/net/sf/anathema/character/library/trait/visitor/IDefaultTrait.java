@@ -1,6 +1,8 @@
-package net.sf.anathema.character.library.trait;
+package net.sf.anathema.character.library.trait.visitor;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IModifiableBasicTrait;
+import net.sf.anathema.character.library.trait.IModifiableGenericTrait;
+import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.lib.control.change.IChangeListener;
 

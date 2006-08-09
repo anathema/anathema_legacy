@@ -6,7 +6,7 @@ import java.util.Map;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformAttribute;
 
 public class BeastformTraitCollection extends AbstractTraitCollection implements IBeastformTraitCollection {

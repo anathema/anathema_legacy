@@ -17,10 +17,10 @@ import net.sf.anathema.character.impl.model.creation.bonus.basic.ICostElement;
 import net.sf.anathema.character.impl.model.creation.bonus.trait.TraitCostElement;
 import net.sf.anathema.character.impl.model.creation.bonus.util.TraitGroupCost;
 import net.sf.anathema.character.impl.model.creation.bonus.util.TraitGroupSorter;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.TraitGroup;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 public class AttributeCostCalculator implements IAttributeCostCalculator {

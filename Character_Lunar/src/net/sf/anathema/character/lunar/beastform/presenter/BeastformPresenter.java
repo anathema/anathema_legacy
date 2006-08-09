@@ -5,8 +5,8 @@ import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener
 import net.sf.anathema.character.library.quality.model.QualitySelection;
 import net.sf.anathema.character.library.quality.presenter.IQualityModel;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.lunar.beastform.model.IAlotmentChangedListener;
 import net.sf.anathema.character.lunar.beastform.model.gift.IGift;
 import net.sf.anathema.character.lunar.beastform.model.gift.IGiftModel;

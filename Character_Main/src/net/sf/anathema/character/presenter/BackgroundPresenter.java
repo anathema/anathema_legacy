@@ -16,8 +16,8 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.listening.
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTemplate;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.background.IBackgroundListener;
 import net.sf.anathema.character.presenter.util.I18nComparator;
@@ -169,7 +169,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
 
   public void allowRemoveCreationBackground(boolean allowed) {
     for (IDefaultTrait background : viewsByBackground.getAllKeys()) {
-      if (background.isCreationLearned()) {
+      if (background.getCalculationValue() > 0) {
         IRemovableTraitView<?> view = viewsByBackground.get(background);
         view.setButtonEnabled(allowed);
       }

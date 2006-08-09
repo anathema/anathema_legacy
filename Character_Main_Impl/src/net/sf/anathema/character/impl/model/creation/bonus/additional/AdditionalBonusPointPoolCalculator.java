@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.generic.template.experience.IAbilityPointCosts;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.impl.model.creation.bonus.ability.SpecialtyCalculator;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 public class AdditionalBonusPointPoolCalculator {

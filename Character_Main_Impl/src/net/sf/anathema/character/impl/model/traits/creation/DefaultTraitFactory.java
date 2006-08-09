@@ -6,9 +6,9 @@ import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 
 public class DefaultTraitFactory extends AbstractTraitFactory {
 

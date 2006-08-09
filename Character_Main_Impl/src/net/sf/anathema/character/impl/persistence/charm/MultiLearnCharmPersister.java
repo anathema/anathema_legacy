@@ -1,8 +1,8 @@
 package net.sf.anathema.character.impl.persistence.charm;
 
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.lib.exception.PersistenceException;
 

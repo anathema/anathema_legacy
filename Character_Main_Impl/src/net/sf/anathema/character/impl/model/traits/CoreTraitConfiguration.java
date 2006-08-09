@@ -21,13 +21,13 @@ import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactor
 import net.sf.anathema.character.impl.model.traits.creation.FavoredIncrementChecker;
 import net.sf.anathema.character.impl.model.traits.listening.WillpowerListening;
 import net.sf.anathema.character.library.trait.AbstractTraitCollection;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
 import net.sf.anathema.character.library.trait.specialties.SpecialtyConfiguration;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;

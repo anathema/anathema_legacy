@@ -1,8 +1,8 @@
 package net.sf.anathema.character.presenter.charm;
 
 import net.sf.anathema.character.generic.framework.magic.view.IMultiLearnableCharmView;
-import net.sf.anathema.character.library.trait.IDefaultTrait;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.resources.IResources;
