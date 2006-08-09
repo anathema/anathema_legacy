@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.AbstractFavorableTrait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
-import net.sf.anathema.character.library.trait.favorable.NullFavorization;
+import net.sf.anathema.character.library.trait.favorable.NullTraitFavorization;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
@@ -29,36 +29,11 @@ public class AggregatedTrait extends AbstractFavorableTrait implements IAggregat
         this,
         unremovableSubTraits);
     // TODO Favorization umstellen
-    this.traitFavorization = new NullFavorization();
+    this.traitFavorization = new NullTraitFavorization();
   }
 
   public ITraitFavorization getFavorization() {
     return traitFavorization;
-  }
-
-  // TODO Punkteberechnung umstellen
-  public int getCalculationValue() {
-    return 0;
-  }
-
-  // TODO Punkteberechnung umstellen
-  public int getCreationCalculationValue() {
-    return 0;
-  }
-
-  // TODO Punkteberechnung umstellen
-  public int getCreationValue() {
-    return 0;
-  }
-
-  // TODO Punkteberechnung umstellen
-  public int getExperiencedCalculationValue() {
-    return 0;
-  }
-
-  // TODO Punkteberechnung umstellen
-  public int getExperiencedValue() {
-    return 0;
   }
 
   public int getCurrentValue() {

@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITra
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
-import net.sf.anathema.character.library.trait.favorable.NullFavorization;
+import net.sf.anathema.character.library.trait.favorable.NullTraitFavorization;
 import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
 import net.sf.anathema.character.library.trait.rules.IFavorableTraitRules;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
@@ -55,7 +55,7 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
 
   public DefaultTrait(ITraitRules traitRules, ITraitValueStrategy traitValueStrategy, IValueChangeChecker checker) {
     super(traitRules, traitValueStrategy);
-    this.traitFavorization = new NullFavorization();
+    this.traitFavorization = new NullTraitFavorization();
     this.checker = checker;
     this.creationValue = traitRules.getStartValue();
   }

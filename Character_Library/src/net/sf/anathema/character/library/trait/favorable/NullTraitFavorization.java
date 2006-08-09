@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.library.ITraitFavorization;
 
-public class NullFavorization implements ITraitFavorization {
+public class NullTraitFavorization implements ITraitFavorization {
 
   public void addFavorableStateChangedListener(IFavorableStateChangedListener listener) {
     // nothing to do
