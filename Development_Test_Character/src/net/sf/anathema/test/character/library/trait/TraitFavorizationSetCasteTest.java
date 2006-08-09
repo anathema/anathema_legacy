@@ -2,19 +2,19 @@ package net.sf.anathema.test.character.library.trait;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.library.trait.IModifiableGenericTrait;
+import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
 import net.sf.anathema.dummy.character.DummyBasicCharacterData;
 import net.sf.anathema.dummy.character.DummyCasteType;
-import net.sf.anathema.dummy.character.trait.DummyModifiableGenericTrait;
+import net.sf.anathema.dummy.character.trait.DummyDefaultTrait;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
 public class TraitFavorizationSetCasteTest extends BasicTestCase {
 
-  private IModifiableGenericTrait archeryTrait;
+  private ITrait archeryTrait;
 
   private TraitFavorization createFriendlyTraitFavorization() {
     return createTraitFavorization(new FriendlyIncrementChecker());
@@ -28,7 +28,7 @@ public class TraitFavorizationSetCasteTest extends BasicTestCase {
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    this.archeryTrait = new DummyModifiableGenericTrait(AbilityType.Archery);
+    this.archeryTrait = new DummyDefaultTrait(AbilityType.Archery);
   }
 
   public void testCasteAfterSettingCasteOnCaste() throws Exception {

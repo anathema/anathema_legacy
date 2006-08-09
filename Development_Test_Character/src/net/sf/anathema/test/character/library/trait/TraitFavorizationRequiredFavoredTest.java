@@ -8,16 +8,16 @@ import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecke
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
 import net.sf.anathema.dummy.character.DummyBasicCharacterData;
-import net.sf.anathema.dummy.character.trait.DummyModifiableGenericTrait;
+import net.sf.anathema.dummy.character.trait.DummyDefaultTrait;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
 public class TraitFavorizationRequiredFavoredTest extends BasicTestCase {
 
-  private DummyModifiableGenericTrait trait;
+  private DummyDefaultTrait trait;
 
   @Override
   protected void setUp() throws Exception {
-    this.trait = new DummyModifiableGenericTrait(AbilityType.Performance);
+    this.trait = new DummyDefaultTrait(AbilityType.Performance);
   }
 
   private TraitFavorization createObjectUnderTest(boolean isRequiredFavored) {

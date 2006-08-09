@@ -2,22 +2,22 @@ package net.sf.anathema.test.character.library.trait;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.character.library.trait.IModifiableGenericTrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.dummy.character.DummyBasicCharacterData;
 import net.sf.anathema.dummy.character.DummyCasteType;
-import net.sf.anathema.dummy.character.trait.DummyModifiableGenericTrait;
+import net.sf.anathema.dummy.character.trait.DummyDefaultTrait;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
 import org.easymock.EasyMock;
 
 public class TraitFavorizationSetFavoredTest extends BasicTestCase {
 
-  private IModifiableGenericTrait archeryTrait;
+  private IDefaultTrait archeryTrait;
   private IFavorableStateChangedListener listener;
 
   private TraitFavorization createFriendlyTraitFavorization() {
@@ -32,7 +32,7 @@ public class TraitFavorizationSetFavoredTest extends BasicTestCase {
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    this.archeryTrait = new DummyModifiableGenericTrait(AbilityType.Archery);
+    this.archeryTrait = new DummyDefaultTrait(AbilityType.Archery);
     this.listener = EasyMock.createStrictMock(IFavorableStateChangedListener.class);
   }
 
