@@ -1,8 +1,5 @@
 package net.sf.anathema.character.presenter;
 
-import java.awt.Component;
-import java.awt.Graphics;
-
 import javax.swing.Icon;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
@@ -32,25 +29,12 @@ public class FavorableTraitViewProperties implements IIconToggleButtonProperties
   }
 
   public Icon createStandardIcon() {
+    CasteUI casteUI = new CasteUI(resources, context.getRuleSet().getEdition(), properties);
     if (context.isExperienced() && ability.getFavorization().getFavorableState() == FavorableState.Default) {
-      return new Icon() {
-
-        public void paintIcon(Component c, Graphics g, int x, int y) {
-          // Nothing to do
-        }
-
-        public int getIconWidth() {
-          return 20;
-        }
-
-        public int getIconHeight() {
-          return 20;
-        }
-      };
+      return casteUI.getEmptyIcon();
     }
     if (ability.getFavorization().isCaste()) {
-      return new CasteUI(resources, context.getRuleSet().getEdition(), properties).getSmallCasteIcon(ability.getFavorization()
-          .getCaste());
+      return casteUI.getSmallCasteIcon(ability.getFavorization().getCaste());
     }
     return new CharacterTemplateResourceProvider(resources).getMediumBallResource(context.getCharacterType());
   }

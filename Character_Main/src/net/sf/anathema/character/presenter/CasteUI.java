@@ -1,5 +1,8 @@
 package net.sf.anathema.character.presenter;
 
+import java.awt.Component;
+import java.awt.Graphics;
+
 import javax.swing.Icon;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
@@ -21,5 +24,22 @@ public class CasteUI extends AbstractUI {
 
   public Icon getSmallCasteIcon(ICasteType< ? > type) {
     return getIcon(properties.getSmallCasteIconResource(type.getId(), edition.getId()));
+  }
+
+  public Icon getEmptyIcon() {
+    return new Icon() {
+
+      public void paintIcon(Component c, Graphics g, int x, int y) {
+        // Nothing to do
+      }
+
+      public int getIconWidth() {
+        return 16;
+      }
+
+      public int getIconHeight() {
+        return 16;
+      }
+    };
   }
 }
