@@ -60,18 +60,21 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
   }
 
   private FavorableTraitCost[] handleFavoredTrait(ITrait trait, final int bonusPointCostFactor) {
-    final boolean isFavored = ((IFavorableTrait) trait).getFavorization().isFavored();
+    boolean isFavored = ((IFavorableTrait) trait).getFavorization().isFavored();
+    if (isFavored) {
+      increaseFavoredPicksSpent();
+    }
     final List<FavorableTraitCost> allCosts = new ArrayList<FavorableTraitCost>();
     trait.accept(new ITraitVisitor() {
 
       public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
         for (ISubTrait subTrait : visitedTrait.getSubTraits().getSubTraits()) {
-          allCosts.add(handleFavoredSingleTrait(subTrait, bonusPointCostFactor, isFavored));
+          allCosts.add(handleFavoredSingleTrait(subTrait, bonusPointCostFactor));
         }
       }
 
       public void visitDefaultTrait(IDefaultTrait visitedTrait) {
-        allCosts.add(handleFavoredSingleTrait(visitedTrait, bonusPointCostFactor, isFavored));
+        allCosts.add(handleFavoredSingleTrait(visitedTrait, bonusPointCostFactor));
       }
     });
     return allCosts.toArray(new FavorableTraitCost[allCosts.size()]);
@@ -111,10 +114,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     return new FavorableTraitCost(bonusPointsSpent, generalDotsSpent, 0);
   }
 
-  private FavorableTraitCost handleFavoredSingleTrait(IDefaultTrait trait, int bonusPointCostFactor, boolean isFavored) {
-    if (isFavored) {
-      increaseFavoredPicksSpent();
-    }
+  private FavorableTraitCost handleFavoredSingleTrait(IDefaultTrait trait, int bonusPointCostFactor) {
     int pointsToAdd = Math.min(trait.getCalculationValue(), 3);
     int favoredDotsSpent = 0;
     int generalDotsSpent = 0;
