@@ -34,6 +34,9 @@ import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.library.trait.IFavorableDefaultTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
+import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -109,8 +112,20 @@ public class GenericCharacter implements IGenericCharacter {
   }
 
   public INamedGenericTrait[] getSubTraits(ITraitType traitType) {
-    // todo vom (14.05.2006) (sieroux): Multiple Crafts
-    return new INamedGenericTrait[0];
+    class CollectSubTraitVisitor implements ITraitVisitor {
+      INamedGenericTrait[] subtraits;
+
+      public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
+        subtraits = visitedTrait.getSubTraits().getSubTraits();
+      }
+
+      public void visitDefaultTrait(IDefaultTrait visitedTrait) {
+        subtraits = new INamedGenericTrait[0];
+      }
+    }
+    CollectSubTraitVisitor collectVisitor = new CollectSubTraitVisitor();
+    statistics.getTraitConfiguration().getTrait(traitType).accept(collectVisitor);
+    return collectVisitor.subtraits;
   }
 
   public ICasteType< ? extends ICasteTypeVisitor> getCasteType() {
