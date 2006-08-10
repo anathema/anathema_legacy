@@ -21,28 +21,28 @@ public class PlotViewProperties implements IPlotViewProperties {
   }
 
   public Dimension initHierarchyRemoveAction(SmartAction action) {
-    Icon icon = basicUi.getMediumRemoveIcon();
+    Icon icon = basicUi.getRemoveIcon();
     action.setIcon(icon);
     action.setToolTipText(resources.getString("SeriesPlot.RemoveToolTip")); //$NON-NLS-1$
     return IconToggleButton.getPreferredSize(icon);
   }
 
   public Dimension initHierarchyAddAction(SmartAction action) {
-    Icon icon = basicUi.getMediumAddIcon();
+    Icon icon = basicUi.getAddIcon();
     action.setIcon(icon);
     action.setToolTipText(resources.getString("SeriesPlot.AddToolTip")); //$NON-NLS-1$    
     return IconToggleButton.getPreferredSize(icon);
   }
 
   public Dimension initHierarchyUpAction(SmartAction action) {
-    Icon icon = basicUi.getSingleUpArrowIcon();
+    Icon icon = basicUi.getUpArrowIcon();
     action.setIcon(icon);
     action.setToolTipText(resources.getString("SeriesPlot.UpToolTip")); //$NON-NLS-1$    
     return IconToggleButton.getPreferredSize(icon);
   }
 
   public Dimension initHierarchyDownAction(SmartAction action) {
-    Icon icon = basicUi.getSingleDownArrowIcon();
+    Icon icon = basicUi.getDownArrowIcon();
     action.setIcon(icon);
     action.setToolTipText(resources.getString("SeriesPlot.DownToolTip")); //$NON-NLS-1$    
     return IconToggleButton.getPreferredSize(icon);

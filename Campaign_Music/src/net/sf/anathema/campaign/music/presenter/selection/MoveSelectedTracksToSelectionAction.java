@@ -17,7 +17,7 @@ public class MoveSelectedTracksToSelectionAction extends AbstractTrackSelectionA
       IResources resources,
       IActionAddableListView<IMp3Track> trackListView,
       IMusicSelectionModel selectionModel) {
-    super(trackListView, new BasicUi(resources).getDoubleDownArrowIcon());
+    super(trackListView, new BasicUi(resources).getDownArrowIcon());
     setToolTipText(resources.getString("Music.Actions.MoveTracksToSelection.Tooltip")); //$NON-NLS-1$
     this.selectionModel = selectionModel;
   }

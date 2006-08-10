@@ -13,7 +13,7 @@ public class ClearSelectionAction extends SmartAction {
   private final IMusicSelectionModel selectionModel;
 
   public ClearSelectionAction(IResources resources, final IMusicSelectionModel selectionModel) {
-    super(new BasicUi(resources).getMediumClearIcon());
+    super(new BasicUi(resources).getClearIcon());
     setToolTipText(resources.getString("Music.Actions.ClearSelection.Tooltip")); //$NON-NLS-1$
     this.selectionModel = selectionModel;
     selectionModel.addCurrentSelectionChangeListener(new IChangeListener() {

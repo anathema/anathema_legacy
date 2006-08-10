@@ -38,11 +38,11 @@ public class MeritsFlawsViewProperties implements IMeritsFlawsViewProperties {
   }
 
   public Icon getAddIcon() {
-    return new BasicUi(resources).getMediumAddIcon();
+    return new BasicUi(resources).getAddIcon();
   }
 
   public Icon getRemoveIcon() {
-    return new BasicUi(resources).getMediumRemoveIcon();
+    return new BasicUi(resources).getRemoveIcon();
   }
 
   public String getTypeString() {

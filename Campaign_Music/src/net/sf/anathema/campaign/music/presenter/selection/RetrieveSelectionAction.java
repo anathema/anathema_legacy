@@ -21,7 +21,7 @@ public class RetrieveSelectionAction extends SmartAction {
       IResources resources,
       final IActionAddableListView<IMusicSelection> selectionListView,
       IMusicSelectionModel selectionModel) {
-    super(new BasicUi(resources).getDoubleRightArrowIcon());
+    super(new BasicUi(resources).getRightArrowIcon());
     this.selectionListView = selectionListView;
     this.selectionModel = selectionModel;
     setToolTipText(resources.getString("Music.Actions.RetrieveSelection.Tooltip")); //$NON-NLS-1$

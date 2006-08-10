@@ -58,7 +58,7 @@ public class PlotPopUpMenuProvider {
   private void showPopupMenu(final IPlotElement element, int x, int y) {
     final IPlotElement parentElement = plotModel.getParentElement(element);
     JPopupMenu menu = new JPopupMenu();
-    SmartAction addAction = new SmartAction(resources.getString("SeriesPlot.PopUp.AddAction"), basicUi.getSmallAddIcon()) { //$NON-NLS-1$
+    SmartAction addAction = new SmartAction(resources.getString("SeriesPlot.PopUp.AddAction"), basicUi.getAddIcon()) { //$NON-NLS-1$
       @Override 
       protected void execute(Component parentComponent) {
         String childUnitId = element.getTimeUnit().getSuccessor().getId();
@@ -67,7 +67,7 @@ public class PlotPopUpMenuProvider {
     };
     addAction.setEnabled(element.getTimeUnit().hasSuccessor());
     menu.add(addAction);
-    SmartAction removeAction = new SmartAction(resources.getString("SeriesPlot.PopUp.RemoveAction"), basicUi.getMediumRemoveIcon()) { //$NON-NLS-1$
+    SmartAction removeAction = new SmartAction(resources.getString("SeriesPlot.PopUp.RemoveAction"), basicUi.getRemoveIcon()) { //$NON-NLS-1$
       @Override protected void execute(Component parentComponent) {
         if (parentElement != null) {
           parentElement.removeChild(element);

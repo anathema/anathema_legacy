@@ -29,7 +29,7 @@ public class KeywordEntryPageProperties implements IKeywordEntryPageProperties {
   }
 
   public Icon getAddIcon() {
-    return ui.getMediumAddIcon();
+    return ui.getAddIcon();
   }
 
   public String getKeywordLabel() {
@@ -37,7 +37,7 @@ public class KeywordEntryPageProperties implements IKeywordEntryPageProperties {
   }
 
   public Icon getRemoveIcon() {
-    return ui.getMediumRemoveIcon();
+    return ui.getRemoveIcon();
   }
 
   public ListCellRenderer getKeywordRenderer() {

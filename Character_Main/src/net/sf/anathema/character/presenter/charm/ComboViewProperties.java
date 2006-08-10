@@ -104,7 +104,7 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
   }
 
   public Icon getClearButtonIcon() {
-    return new BasicUi(getResources()).getMediumClearIcon();
+    return new BasicUi(getResources()).getClearIcon();
   }
 
   public String getFinalizeButtonToolTip() {

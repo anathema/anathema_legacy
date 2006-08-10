@@ -17,7 +17,7 @@ public class DeleteSelectionAction extends AbstractListViewSelectionEnabledActio
       IResources resources,
       IActionAddableListView<IMusicSelection> selectionListView,
       IMusicSelectionModel selectionModel) {
-    super(new BasicUi(resources).getMediumRemoveIcon(), selectionListView);
+    super(new BasicUi(resources).getRemoveIcon(), selectionListView);
     this.selectionModel = selectionModel;
     setToolTipText(resources.getString("Music.Actions.DeleteMusicSelection.Tooltip")); //$NON-NLS-1$
   }

@@ -18,7 +18,7 @@ public class DeleteLibraryAction extends SmartAction {
   private final ILibraryControl libraryModel;
 
   public DeleteLibraryAction(IResources resources, ILibraryControlView controlView, ILibraryControl model) {
-    super(new BasicUi(resources).getMediumRemoveIcon());
+    super(new BasicUi(resources).getRemoveIcon());
     this.controlView = controlView;
     this.libraryModel = model;
     setToolTipText(resources.getString("Music.Actions.DeleteLibrary.Tooltip")); //$NON-NLS-1$

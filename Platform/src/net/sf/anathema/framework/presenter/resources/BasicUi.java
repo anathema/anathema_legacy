@@ -11,47 +11,31 @@ public class BasicUi extends AbstractUI {
     super(resources);
   }
 
-  public Icon getMediumRemoveIcon() {
+  public Icon getRemoveIcon() {
     return getIcon("ButtonMinus16.png"); //$NON-NLS-1$
   }
 
-  public Icon getSmallRemoveIcon() {
-    return getIcon("tools/ButtonCross16.png"); //$NON-NLS-1$
-  }
-
-  public Icon getMediumAddIcon() {
+  public Icon getAddIcon() {
     return getIcon("ButtonPlus16.png"); //$NON-NLS-1$
   }
 
-  public Icon getSmallAddIcon() {
-    return getIcon("ButtonPlus16.png"); //$NON-NLS-1$
+  public Icon getClearIcon() {
+    return getIcon("ButtonCross16.png"); //$NON-NLS-1$
   }
 
-  public Icon getDoubleLeftArrowIcon() {
+  public Icon getLeftArrowIcon() {
     return getIcon("ButtonArrowLeft16.png"); //$NON-NLS-1$
   }
 
-  public Icon getDoubleRightArrowIcon() {
+  public Icon getRightArrowIcon() {
     return getIcon("ButtonArrowRight16.png"); //$NON-NLS-1$
   }
 
-  public Icon getSingleUpArrowIcon() {
+  public Icon getUpArrowIcon() {
     return getIcon("ButtonArrowUp16.png"); //$NON-NLS-1$
   }
 
-  public Icon getSingleDownArrowIcon() {
+  public Icon getDownArrowIcon() {
     return getIcon("ButtonArrowDown16.png"); //$NON-NLS-1$
-  }
-
-  public Icon getDoubleUpArrowIcon() {
-    return getIcon("ButtonArrowUp16.png"); //$NON-NLS-1$
-  }
-
-  public Icon getDoubleDownArrowIcon() {
-    return getIcon("ButtonArrowDown16.png"); //$NON-NLS-1$
-  }
-
-  public Icon getMediumClearIcon() {
-    return getIcon("tools/ButtonCross16.png"); //$NON-NLS-1$
   }
 }

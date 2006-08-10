@@ -35,7 +35,7 @@ public class AbilityConfigurationDemo extends BasicCharacterDemoCase {
     configurationView.addSpecialtySelectionView("Specialties", //$NON-NLS-1$
         new ITraitType[] { AbilityType.Archery, AbilityType.Athletics },
         new DefaultListCellRenderer(),
-        new BasicUi(resources).getMediumAddIcon());
+        new BasicUi(resources).getAddIcon());
     configurationView.initGui(null);
     show(configurationView.getComponent());
   }

@@ -85,7 +85,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
   }
 
   public void init() {
-    Icon addIcon = new BasicUi(resources).getMediumAddIcon();
+    Icon addIcon = new BasicUi(resources).getAddIcon();
     IButtonControlledObjectSelectionView<Object> view = configurationView.addBackgroundSelectionView(
         resources.getString("BackgroundConfigurationView.SelectionCombo.Label"), //$NON-NLS-1$
         new ProxyComboBoxEditor() {
@@ -133,7 +133,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
   }
 
   private synchronized void addBackgroundView(final IDefaultTrait background) {
-    Icon deleteIcon = new BasicUi(resources).getMediumRemoveIcon();
+    Icon deleteIcon = new BasicUi(resources).getRemoveIcon();
     IRemovableTraitView<?> backgroundView = configurationView.addBackgroundView(
         deleteIcon,
         getDisplayObject(background).toString(),

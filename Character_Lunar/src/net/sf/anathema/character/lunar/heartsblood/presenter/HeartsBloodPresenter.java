@@ -34,7 +34,7 @@ public class HeartsBloodPresenter {
     String animalStrengthString = resources.getString("Lunar.HeartsBlood.AnimalStrength"); //$NON-NLS-1$
     final BasicUi basicUi = new BasicUi(resources);
     IAnimalFormSelectionView selectionView = view.createAnimalFormSelectionView(
-        basicUi.getMediumAddIcon(),
+        basicUi.getAddIcon(),
         animalFormString,
         animalStrengthString,
         animalStaminaString);
@@ -70,7 +70,7 @@ public class HeartsBloodPresenter {
   }
 
   private void addAnimalFormView(final BasicUi basicUi, final IAnimalForm form) {
-    IRemovableEntryView formView = view.addEntryView(basicUi.getMediumRemoveIcon(), form.getName()
+    IRemovableEntryView formView = view.addEntryView(basicUi.getRemoveIcon(), form.getName()
         + " (" + form.getStrength() + "/" + form.getStamina() + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     viewsByForm.put(form, formView);
     formView.addButtonListener(new ActionListener() {

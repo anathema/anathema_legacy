@@ -13,7 +13,7 @@ public class AddLibraryAction extends SmartAction {
   private final String unknownLibraryBase;
 
   public AddLibraryAction(ILibraryControl libraryModel, IResources resources) {
-    super(new BasicUi(resources).getMediumAddIcon());
+    super(new BasicUi(resources).getAddIcon());
     setToolTipText(resources.getString("Music.Actions.AddLibrary.Tooltip")); //$NON-NLS-1$
     unknownLibraryBase = resources.getString("Music.Libraries.NewLibrary.UnnamedBaseString"); //$NON-NLS-1$
     this.libraryModel = libraryModel;

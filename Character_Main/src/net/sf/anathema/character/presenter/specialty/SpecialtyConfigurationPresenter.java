@@ -75,7 +75,7 @@ public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
 
   public void initPresentation() {
     initTraitListening();
-    Icon addIcon = new BasicUi(resources).getMediumAddIcon();
+    Icon addIcon = new BasicUi(resources).getAddIcon();
     final IButtonControlledComboEditView<ITraitType> specialtySelectionView = configurationView.addSpecialtySelectionView(
         resources.getString("SpecialtyConfigurationView.SelectionCombo.Label"), //$NON-NLS-1$
         getAllTraitsTypes(),
@@ -136,7 +136,7 @@ public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
     String traitTypeId = specialty.getBasicTrait().getType().getId();
     String traitName = resources.getString(traitTypeId);
     String specialtyName = specialty.getName();
-    Icon deleteIcon = new BasicUi(resources).getMediumRemoveIcon();
+    Icon deleteIcon = new BasicUi(resources).getRemoveIcon();
     final ISpecialtyView specialtyView = configurationView.addSpecialtyView(
         traitName,
         specialtyName,

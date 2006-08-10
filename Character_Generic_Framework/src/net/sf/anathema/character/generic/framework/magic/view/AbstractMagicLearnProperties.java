@@ -16,11 +16,11 @@ public abstract class AbstractMagicLearnProperties implements IMagicLearnPropert
   }
 
   public Icon getAddButtonIcon() {
-    return new BasicUi(resources).getDoubleRightArrowIcon();
+    return new BasicUi(resources).getRightArrowIcon();
   }
 
   public Icon getRemoveButtonIcon() {
-    return new BasicUi(resources).getMediumRemoveIcon();
+    return new BasicUi(resources).getRemoveIcon();
   }
 
   protected final IResources getResources() {

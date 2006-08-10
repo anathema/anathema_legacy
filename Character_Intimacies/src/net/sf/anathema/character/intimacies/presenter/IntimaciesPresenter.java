@@ -49,7 +49,7 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
   public void initPresentation() {
     String labelText = resources.getString("Intimacies.SelectionLabel"); //$NON-NLS-1$
     BasicUi basicUi = new BasicUi(resources);
-    IIntimaciesSelectionView selectionView = view.addSelectionView(labelText, basicUi.getMediumAddIcon());
+    IIntimaciesSelectionView selectionView = view.addSelectionView(labelText, basicUi.getAddIcon());
     initSelectionViewListening(selectionView);
     initOverviewView();
     initModelListening(basicUi, selectionView);
@@ -155,7 +155,7 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
 
   private void addIntimacyView(final BasicUi basicUi, final IIntimacy intimacy) {
     final IRemovableTraitView<IToggleButtonTraitView<?>> intimacyView = view.addEntryView(
-        basicUi.getMediumRemoveIcon(),
+        basicUi.getRemoveIcon(),
         intimacy.getName());
     intimacyView.setMaximum(model.getCompletionValue());
     intimacyView.setValue(intimacy.getTrait().getCurrentValue());

@@ -18,7 +18,7 @@ public class DeleteSelectionTracksAction extends AbstractTrackSelectionAction {
       IResources resources,
       IMultiSelectionActionAddableListView<IMp3Track> trackListView,
       IMusicSelectionModel selectionModel) {
-    super(trackListView, new BasicUi(resources).getMediumRemoveIcon());
+    super(trackListView, new BasicUi(resources).getRemoveIcon());
     this.trackListView = trackListView;
     this.selectionModel = selectionModel;
     setToolTipText(resources.getString("Music.Actions.DeleteSelection.Tooltip")); //$NON-NLS-1$

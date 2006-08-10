@@ -13,7 +13,7 @@ public class NewSelectionAction extends SmartAction {
   private final String unnamedSelectionBase;
 
   public NewSelectionAction(IResources resources, IMusicSelectionModel selectionModel) {
-    super(new BasicUi(resources).getMediumAddIcon());
+    super(new BasicUi(resources).getAddIcon());
     this.selectionModel = selectionModel;
     setToolTipText(resources.getString("Music.Actions.NewSelection.Tooltip")); //$NON-NLS-1$
     unnamedSelectionBase = resources.getString("Music.Selections.NewSelection.UnnamedBaseString"); //$NON-NLS-1$

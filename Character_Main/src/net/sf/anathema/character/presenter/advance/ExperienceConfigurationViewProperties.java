@@ -35,11 +35,11 @@ public class ExperienceConfigurationViewProperties implements IExperienceConfigu
   }
 
   public Icon getDeleteIcon() {
-    return basicUi.getMediumRemoveIcon();
+    return basicUi.getRemoveIcon();
   }
 
   public Icon getAddIcon() {
-    return basicUi.getMediumAddIcon();
+    return basicUi.getAddIcon();
   }
 
   public String getTotalString() {
