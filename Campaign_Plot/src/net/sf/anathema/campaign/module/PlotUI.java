@@ -16,7 +16,7 @@ public class PlotUI extends AbstractUI {
   }
 
   public Icon getSeriesTabIcon() {
-    return getIcon("TabSeries16c.png"); //$NON-NLS-1$
+    return getIcon("TabSeries16.png"); //$NON-NLS-1$
   }
 
   public Icon getSeriesIcon() {
