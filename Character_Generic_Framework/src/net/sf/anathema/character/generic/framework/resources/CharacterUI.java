@@ -19,10 +19,6 @@ public class CharacterUI extends AbstractUI {
     return getIcon("ButtonLink16b.png"); //$NON-NLS-1$
   }
 
-  public Icon getLoadCharacterToolBarIcon() {
-    return getIcon("toolbar/TaskBarOpen24.png"); //$NON-NLS-1$
-  }
-
   public Icon getRandomRealmNameIcon() {
     return getIcon("ButtonRandomNameC16.png"); //$NON-NLS-1$
   }
