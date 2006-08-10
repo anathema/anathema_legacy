@@ -2,11 +2,11 @@ package net.sf.anathema.character.generic.framework.resources;
 
 import javax.swing.Icon;
 
+import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.resources.AbstractUI;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterUI extends AbstractUI {
-
   public CharacterUI(IResources resources) {
     super(resources);
   }
@@ -37,5 +37,17 @@ public class CharacterUI extends AbstractUI {
 
   public Icon getFinalizeIcon() {
     return getIcon("ButtonCheck16.png"); //$NON-NLS-1$
+  }
+
+  public Icon getSmallTypeIcon(CharacterType characterType) {
+    return getIcon(characterType.name() + "Icon16.png"); //$NON-NLS-1$
+  }
+
+  public Icon getMediumBallResource(CharacterType characterType) {
+    return getIcon("Border" + characterType.name() + "Button16.png"); //$NON-NLS-1$ //$NON-NLS-2$
+  }
+
+  public Icon getUnselectedBallResource() {
+    return getIcon("BorderUnselectedButton16.png"); //$NON-NLS-1$
   }
 }

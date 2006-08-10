@@ -5,7 +5,6 @@ import javax.swing.Icon;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.ICharacterGenericsExtension;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
-import net.sf.anathema.character.generic.framework.resources.CharacterTemplateResourceProvider;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -86,8 +85,8 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
             .getCharacterType();
         IntValueDisplayFactory intValueDisplayFactory = new IntValueDisplayFactory(
             resources,
-            new CharacterTemplateResourceProvider(resources).getMediumBallResource(characterType));
-        final Icon typeIcon = new CharacterTemplateResourceProvider(resources).getSmallTypeIcon(characterType);
+            characterUI.getMediumBallResource(characterType));
+        final Icon typeIcon = characterUI.getSmallTypeIcon(characterType);
         ICharacterView characterView = new CharacterView(intValueDisplayFactory, printName, typeIcon);
         IBonusPointManagement bonusPointManagement = new BonusPointManagement(character.getStatistics());
         IExperiencePointManagement experiencePointManagement = new ExperiencePointManagement(character.getStatistics());

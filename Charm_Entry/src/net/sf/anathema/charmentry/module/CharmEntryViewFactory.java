@@ -1,6 +1,6 @@
 package net.sf.anathema.charmentry.module;
 
-import net.sf.anathema.character.generic.framework.resources.CharacterTemplateResourceProvider;
+import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
@@ -29,7 +29,9 @@ public class CharmEntryViewFactory implements ICharmEntryViewFactory {
   private final IIntValueDisplayFactory factory;
 
   public CharmEntryViewFactory(IResources resources) {
-    this.factory = new IntValueDisplayFactory(resources, new CharacterTemplateResourceProvider(resources).getMediumBallResource(CharacterType.MORTAL));
+    this.factory = new IntValueDisplayFactory(
+        resources,
+        new CharacterUI(resources).getMediumBallResource(CharacterType.MORTAL));
   }
 
   public IHeaderDataEntryView createHeaderDataEntryView() {

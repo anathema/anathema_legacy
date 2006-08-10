@@ -4,7 +4,6 @@ import javax.swing.Icon;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
-import net.sf.anathema.character.generic.framework.resources.CharacterTemplateResourceProvider;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.intimacies.presenter.IntimaciesPresenter;
@@ -30,7 +29,7 @@ public class IntimaciesViewFactory implements IAdditionalViewFactory {
         return resources.getString("Intimacies.LockButton.Tooltip"); //$NON-NLS-1$
       }
     };
-    Icon ballResource = new CharacterTemplateResourceProvider(resources).getMediumBallResource(type);
+    Icon ballResource = new CharacterUI(resources).getMediumBallResource(type);
     IntimaciesView view = new IntimaciesView(new IntValueDisplayFactory(resources, ballResource), properties);
     new IntimaciesPresenter(((IIntimaciesAdditionalModel) model).getIntimaciesModel(), model, view, resources).initPresentation();
     return view;

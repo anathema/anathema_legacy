@@ -10,7 +10,7 @@ import javax.swing.ListCellRenderer;
 import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.core.message.MessageType;
-import net.sf.anathema.character.generic.framework.resources.CharacterTemplateResourceProvider;
+import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
@@ -19,11 +19,11 @@ import net.sf.anathema.lib.resources.IResources;
 public class CharacterCreationPageProperties {
 
   private final IResources resources;
-  private CharacterTemplateResourceProvider iconProvider;
+  private final CharacterUI iconProvider;
 
   public CharacterCreationPageProperties(IResources resources) {
     this.resources = resources;
-    this.iconProvider = new CharacterTemplateResourceProvider(resources);
+    this.iconProvider = new CharacterUI(resources);
   }
 
   public String getDescription() {
