@@ -1,9 +1,10 @@
-package net.sf.anathema.character.impl.module;
+package net.sf.anathema.character.impl.module.repository;
 
 import javax.swing.ListCellRenderer;
 
 import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.impl.module.IToggleButtonPanel;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;

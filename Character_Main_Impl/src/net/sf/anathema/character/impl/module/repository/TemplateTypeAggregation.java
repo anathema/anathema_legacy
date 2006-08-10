@@ -1,4 +1,4 @@
-package net.sf.anathema.character.impl.view.repository;
+package net.sf.anathema.character.impl.module.repository;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -11,6 +11,7 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.impl.model.creation.bonus.BonusPointManagement;
+import net.sf.anathema.character.impl.module.repository.CharacterCreationWizardPageFactory;
 import net.sf.anathema.character.impl.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.character.impl.view.CharacterView;
 import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;

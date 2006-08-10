@@ -1,4 +1,4 @@
-package net.sf.anathema.character.impl.module;
+package net.sf.anathema.character.impl.module.repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,6 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
-import net.sf.anathema.character.impl.view.repository.TemplateTypeAggregator;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.control.change.ChangeControl;

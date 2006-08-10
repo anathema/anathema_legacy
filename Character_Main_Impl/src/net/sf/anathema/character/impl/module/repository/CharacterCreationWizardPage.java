@@ -1,4 +1,4 @@
-package net.sf.anathema.character.impl.module;
+package net.sf.anathema.character.impl.module.repository;
 
 import java.awt.Component;
 
@@ -7,6 +7,7 @@ import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.impl.module.IToggleButtonPanel;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;

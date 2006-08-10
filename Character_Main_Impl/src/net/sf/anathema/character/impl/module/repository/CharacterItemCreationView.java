@@ -1,4 +1,4 @@
-package net.sf.anathema.character.impl.module;
+package net.sf.anathema.character.impl.module.repository;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -10,6 +10,8 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.util.LayoutUtilities;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.impl.module.IToggleButtonPanel;
+import net.sf.anathema.character.impl.module.ToggleButtonPanel;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;

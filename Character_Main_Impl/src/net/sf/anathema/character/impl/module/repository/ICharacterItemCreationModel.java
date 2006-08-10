@@ -1,4 +1,4 @@
-package net.sf.anathema.character.impl.module;
+package net.sf.anathema.character.impl.module.repository;
 
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
