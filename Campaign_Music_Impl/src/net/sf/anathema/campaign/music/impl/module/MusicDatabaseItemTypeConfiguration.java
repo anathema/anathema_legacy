@@ -27,18 +27,12 @@ public final class MusicDatabaseItemTypeConfiguration extends AbstractNonPersist
   }
 
   @Override
-  protected String getPrintNameKey() {
-    return "ItemType.MusicDatabase.PrintName"; //$NON-NLS-1$
-  }
-
-  @Override
   protected IItemViewFactory createItemViewFactory(IAnathemaModel anathemaModel, final IResources resources) {
     return new IItemViewFactory() {
       public IItemView createView(IItem item) throws AnathemaException {
         IMusicDatabase database = (IMusicDatabase) item.getItemData();
         Icon icon = new MusicUI(resources).getMusicTabIcon();
-        MusicDatabaseView view = new MusicDatabaseView(
-            resources.getString("ItemType.MusicDatabase.PrintName"), icon); //$NON-NLS-1$
+        MusicDatabaseView view = new MusicDatabaseView(resources.getString("ItemType.MusicDatabase.PrintName"), icon); //$NON-NLS-1$
         new MusicDataBasePresenter(resources, database, view).initPresentation();
         return view;
       }

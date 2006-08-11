@@ -14,7 +14,6 @@ import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.Repository;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
-import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
 
 public class AnathemaModel implements IAnathemaModel {
 
@@ -23,7 +22,6 @@ public class AnathemaModel implements IAnathemaModel {
   private final IItemMangementModel itemManagment = new ItemManagmentModel();
   private final IReportRegistry reportRegistry = new ReportRegistry();
   private final IRegistry<IItemType, IItemViewFactory> viewFactoryRegistry = new Registry<IItemType, IItemViewFactory>();
-  private final IRegistry<IItemType, IWizardFactory> wizardRegistry = new Registry<IItemType, IWizardFactory>();
   private final IItemTypeRegistry itemTypes = new ItemTypeRegistry();
   private final IRepository repository;
 
@@ -57,9 +55,5 @@ public class AnathemaModel implements IAnathemaModel {
 
   public IItemTypeRegistry getItemTypeRegistry() {
     return itemTypes;
-  }
-
-  public IRegistry<IItemType, IWizardFactory> getNewItemWizardFactoryRegistry() {
-    return wizardRegistry;
   }
 }

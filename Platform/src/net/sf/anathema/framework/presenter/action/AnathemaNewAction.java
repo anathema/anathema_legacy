@@ -9,7 +9,9 @@ import javax.swing.KeyStroke;
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.lib.registry.IRegistry;
+import net.sf.anathema.lib.registry.Registry;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.wizard.selection.ILegalityProvider;
 import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
@@ -35,6 +37,12 @@ public class AnathemaNewAction extends AbstractAnathemaItemAction {
 
   @Override
   protected IRegistry<IItemType, IWizardFactory> getFollowUpWizardFactoryRegistry() {
-    return getAnathemaModel().getNewItemWizardFactoryRegistry();
+    ItemTypeCreationViewPropertiesExtensionPoint extension = (ItemTypeCreationViewPropertiesExtensionPoint) getAnathemaModel().getExtensionPointRegistry()
+        .get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
+    Registry<IItemType, IWizardFactory> registry = new Registry<IItemType, IWizardFactory>();
+    for (IItemType type : extension.getIds(new IItemType[0])) {
+      registry.register(type, extension.get(type).getNewItemWizardFactory());
+    }
+    return registry;
   }
 }

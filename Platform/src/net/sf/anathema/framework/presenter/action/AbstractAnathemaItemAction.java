@@ -2,11 +2,15 @@ package net.sf.anathema.framework.presenter.action;
 
 import java.awt.Component;
 
+import javax.swing.Icon;
+
 import net.disy.commons.core.message.Message;
+import net.disy.commons.swing.ui.IObjectUi;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.repository.creation.ItemTypeSelectionProperties;
 import net.sf.anathema.framework.message.MessageUtilities;
+import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.Registry;
@@ -52,7 +56,17 @@ public abstract class AbstractAnathemaItemAction extends AbstractItemAction {
   }
 
   private ItemTypeSelectionProperties createSelectionProperties() {
-    return new ItemTypeSelectionProperties(getResources(), getLegalityProvider());
+    final ItemTypeCreationViewPropertiesExtensionPoint extension = (ItemTypeCreationViewPropertiesExtensionPoint) getAnathemaModel().getExtensionPointRegistry()
+        .get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
+    return new ItemTypeSelectionProperties(getResources(), getLegalityProvider(), new IObjectUi() {
+      public Icon getIcon(Object value) {
+        return extension.get((IItemType) value).getIcon();
+      }
+
+      public String getLabel(Object value) {
+        return getResources().getString(extension.get((IItemType) value).getLabelKey());
+      }
+    });
   }
 
   private Registry<IItemType, IAnathemaWizardModelTemplate> createModelTemplateRegistry(
@@ -66,5 +80,5 @@ public abstract class AbstractAnathemaItemAction extends AbstractItemAction {
 
   protected abstract ILegalityProvider<IItemType> getLegalityProvider();
 
-  protected abstract IRegistry<IItemType, IWizardFactory> getFollowUpWizardFactoryRegistry(); 
+  protected abstract IRegistry<IItemType, IWizardFactory> getFollowUpWizardFactoryRegistry();
 }

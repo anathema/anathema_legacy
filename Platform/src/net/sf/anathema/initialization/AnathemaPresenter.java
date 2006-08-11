@@ -6,7 +6,7 @@ import net.sf.anathema.development.DevelopmentEnvironmentPresenter;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.environment.AnathemaEnvironment;
 import net.sf.anathema.framework.initialization.IReportFactory;
-import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
+import net.sf.anathema.framework.module.IItemTypeConfiguration;
 import net.sf.anathema.framework.module.PreferencesElementsExtensionPoint;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.framework.presenter.menu.IAnathemaMenu;
@@ -33,7 +33,7 @@ public class AnathemaPresenter {
   private final IAnathemaModel model;
   private final IAnathemaView view;
   private final IResources resources;
-  private final Collection<AbstractItemTypeConfiguration> itemTypeConfigurations;
+  private final Collection<IItemTypeConfiguration> itemTypeConfigurations;
   private final IAnathemaPluginManager pluginManager;
 
   public AnathemaPresenter(
@@ -41,7 +41,7 @@ public class AnathemaPresenter {
       IAnathemaModel model,
       IAnathemaView view,
       IResources resources,
-      Collection<AbstractItemTypeConfiguration> itemTypeConfigurations) {
+      Collection<IItemTypeConfiguration> itemTypeConfigurations) {
     this.pluginManager = pluginManager;
     this.model = model;
     this.view = view;
@@ -50,15 +50,12 @@ public class AnathemaPresenter {
   }
 
   public void initPresentation() throws InitializationException {
-    for (AbstractItemTypeConfiguration configuration : itemTypeConfigurations) {
+    for (IItemTypeConfiguration configuration : itemTypeConfigurations) {
       configuration.fillPresentationExtensionPoints(model.getExtensionPointRegistry(), resources, model, view);
     }
     initializePreferences();
-    for (AbstractItemTypeConfiguration configuration : itemTypeConfigurations) {
+    for (IItemTypeConfiguration configuration : itemTypeConfigurations) {
       configuration.registerViewFactory(model, resources);
-    }
-    for (AbstractItemTypeConfiguration configuration : itemTypeConfigurations) {
-      configuration.registerCreationWizardFactory(model, resources);
     }
     runBootJobs();
     initializeMenus();

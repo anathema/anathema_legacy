@@ -13,33 +13,19 @@ import net.sf.anathema.framework.module.AbstractPersistableItemTypeConfiguration
 import net.sf.anathema.framework.module.NullWizardPageFactory;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
+import net.sf.anathema.framework.presenter.view.IItemTypeCreationViewProperties;
+import net.sf.anathema.framework.presenter.view.ItemTypeCreationViewProperties;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
 
 public final class NoteTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
 
   public NoteTypeConfiguration() {
     super(new ItemType("Note", new RepositoryConfiguration(".not", "Notes/"))); //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$
-  }
-
-  @Override
-  protected String getPrintNameKey() {
-    return "ItemType.Note.PrintName"; //$NON-NLS-1$
-  }
-
-  @Override
-  protected String getLoadMessageKey() {
-    return "NotePersistence.LoadDialog.DefaultMessage"; //$NON-NLS-1$
-  }
-
-  @Override
-  protected String getLoadTitleKey() {
-    return "NotePersistence.LoadDialog.Title"; //$NON-NLS-1$
   }
 
   @Override
@@ -62,7 +48,9 @@ public final class NoteTypeConfiguration extends AbstractPersistableItemTypeConf
   }
 
   @Override
-  protected IWizardFactory createCreationWizardPageFactory(IAnathemaModel anathemaModel, IResources resources) {
-    return new NullWizardPageFactory();
+  protected IItemTypeCreationViewProperties createItemTypeCreationProperties(
+      IAnathemaModel anathemaModel,
+      IResources resources) {
+    return new ItemTypeCreationViewProperties(getItemType(),new PlotUI(resources).getNoteTabIcon(), new NullWizardPageFactory());
   }
 }

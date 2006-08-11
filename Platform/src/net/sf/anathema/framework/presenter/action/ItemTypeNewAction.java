@@ -11,6 +11,7 @@ import net.disy.commons.core.message.Message;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
+import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
@@ -47,7 +48,9 @@ public class ItemTypeNewAction extends AbstractItemAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    IWizardFactory factory = getAnathemaModel().getNewItemWizardFactoryRegistry().get(type);
+    ItemTypeCreationViewPropertiesExtensionPoint extension = (ItemTypeCreationViewPropertiesExtensionPoint) getAnathemaModel().getExtensionPointRegistry()
+        .get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
+    IWizardFactory factory = extension.get(type).getNewItemWizardFactory();
     IAnathemaWizardModelTemplate template = factory.createTemplate();
     if (factory.needsFurtherDetails()) {
       IAnathemaWizardPage startPage = factory.createPage(template);

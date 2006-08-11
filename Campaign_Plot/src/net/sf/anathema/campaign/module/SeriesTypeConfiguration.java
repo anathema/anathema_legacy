@@ -13,13 +13,14 @@ import net.sf.anathema.framework.module.AbstractPersistableItemTypeConfiguration
 import net.sf.anathema.framework.module.NullWizardPageFactory;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
+import net.sf.anathema.framework.presenter.view.IItemTypeCreationViewProperties;
+import net.sf.anathema.framework.presenter.view.ItemTypeCreationViewProperties;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
 
 public final class SeriesTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
 
@@ -54,22 +55,12 @@ public final class SeriesTypeConfiguration extends AbstractPersistableItemTypeCo
   }
 
   @Override
-  protected String getPrintNameKey() {
-    return "ItemType.Campaign.PrintName"; //$NON-NLS-1$
-  }
-
-  @Override
-  protected String getLoadMessageKey() {
-    return "CampaignPersistence.LoadDialog.DefaultMessage"; //$NON-NLS-1$
-  }
-
-  @Override
-  protected String getLoadTitleKey() {
-    return "CampaignPersistence.LoadDialog.Title"; //$NON-NLS-1$
-  }
-
-  @Override
-  protected IWizardFactory createCreationWizardPageFactory(IAnathemaModel anathemaModel, IResources resources) {
-    return new NullWizardPageFactory();
+  protected IItemTypeCreationViewProperties createItemTypeCreationProperties(
+      IAnathemaModel anathemaModel,
+      IResources resources) {
+    return new ItemTypeCreationViewProperties(
+        getItemType(),
+        new PlotUI(resources).getSeriesTabIcon(),
+        new NullWizardPageFactory());
   }
 }

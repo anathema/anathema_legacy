@@ -1,7 +1,5 @@
 package net.sf.anathema.initialization;
 
-import java.awt.AWTException;
-
 import net.disy.commons.core.exception.CentralExceptionHandling;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.configuration.IAnathemaPreferences;
@@ -55,7 +53,7 @@ public class AnathemaInitializer {
         extensionCollection.getExtensionsById()).initializeModel(resources);
   }
 
-  private IAnathemaView initView(IResources resources) throws AWTException {
+  private IAnathemaView initView(IResources resources) {
     AnathemaViewProperties viewProperties = new AnathemaViewProperties(resources, anathemaPreferences.initMaximized());
     return new AnathemaView(viewProperties);
   }

@@ -35,11 +35,6 @@ public final class GisItemTypeConfiguration extends AbstractNonPersistableItemTy
   }
 
   @Override
-  protected String getPrintNameKey() {
-    return "ItemType.Gis.PrintName"; //$NON-NLS-1$
-  }
-
-  @Override
   protected IMenuItem[] createAddMenuEntries(IAnathemaView view, IAnathemaModel anathemaModel, IResources resources) {
     return new IMenuItem[0];
   }

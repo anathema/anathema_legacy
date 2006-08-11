@@ -45,11 +45,6 @@ public final class NameGeneratorItemTypeConfiguration extends AbstractNonPersist
   }
 
   @Override
-  protected String getPrintNameKey() {
-    return "ItemType.NameGenerator.PrintName"; //$NON-NLS-1$
-  }
-
-  @Override
   protected IMenuItem[] createAddMenuEntries(IAnathemaView view, IAnathemaModel anathemaModel, IResources resources) {
     return new IMenuItem[] { new ActionMenuItem(ShowNameGeneratorAction.createMenuAction(resources, anathemaModel)) };
   }

@@ -42,11 +42,6 @@ public final class CharmCascadeItemTypeConfiguration extends AbstractNonPersista
   }
 
   @Override
-  protected String getPrintNameKey() {
-    return "ItemType.CharmCascades.PrintName"; //$NON-NLS-1$
-  }
-
-  @Override
   protected IMenuItem[] createAddMenuEntries(IAnathemaView view, IAnathemaModel anathemaModel, IResources resources) {
     return new IMenuItem[] { new ActionMenuItem(ShowCascadesAction.createMenuAction(resources, anathemaModel)) };
   }

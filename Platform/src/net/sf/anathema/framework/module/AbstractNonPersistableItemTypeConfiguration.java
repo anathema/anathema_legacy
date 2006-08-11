@@ -3,14 +3,12 @@ package net.sf.anathema.framework.module;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.model.AnathemaModel;
 import net.sf.anathema.framework.presenter.menu.IMenuExtensionPoint;
 import net.sf.anathema.framework.presenter.menu.IMenuItem;
 import net.sf.anathema.framework.presenter.menu.MenuExtensionPoint;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
 
 public abstract class AbstractNonPersistableItemTypeConfiguration extends AbstractItemTypeConfiguration {
 
@@ -18,13 +16,11 @@ public abstract class AbstractNonPersistableItemTypeConfiguration extends Abstra
     super(type);
   }
 
-  @Override
   public final void fillPresentationExtensionPoints(
       IRegistry<String, IAnathemaExtension> extensionPointRegistry,
       IResources resources,
       IAnathemaModel model,
       IAnathemaView view) {
-    super.fillPresentationExtensionPoints(extensionPointRegistry, resources, model, view);
     IMenuItem[] addMenuItems = createAddMenuEntries(view, model, resources);
     MenuExtensionPoint extraExtensionPoint = (MenuExtensionPoint) extensionPointRegistry.get(IMenuExtensionPoint.EXTRA_MENU_EXTENSION_POINT_ID);
     for (IMenuItem item : addMenuItems) {
@@ -37,13 +33,7 @@ public abstract class AbstractNonPersistableItemTypeConfiguration extends Abstra
       IAnathemaModel anathemaModel,
       IResources resources);
 
-  @Override
-  protected IWizardFactory createCreationWizardPageFactory(IAnathemaModel anathemaModel, IResources resources) {
-    return new NullWizardPageFactory();
-  }
-
-  @Override
-  public void initModel(AnathemaModel model) {
+  public void initModel(IAnathemaModel model) {
     //nothing to do    
   }
 }

@@ -25,13 +25,14 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.module.AbstractPersistableItemTypeConfiguration;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
+import net.sf.anathema.framework.presenter.view.IItemTypeCreationViewProperties;
+import net.sf.anathema.framework.presenter.view.ItemTypeCreationViewProperties;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
 
 public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
   public static final String CHARACTER_ITEM_TYPE_ID = "ExaltedCharacter"; //$NON-NLS-1$
@@ -48,21 +49,6 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
   @Override
   protected IRepositoryItemPersister createPersister(IAnathemaModel model) {
     return new ExaltedCharacterPersister(getItemType(), getGenerics(model));
-  }
-
-  @Override
-  protected String getPrintNameKey() {
-    return "ItemType.ExaltedCharacter.PrintName"; //$NON-NLS-1$
-  }
-
-  @Override
-  protected String getLoadTitleKey() {
-    return "LoadCharacter.Dialog.Title"; //$NON-NLS-1$
-  }
-
-  @Override
-  protected String getLoadMessageKey() {
-    return "LoadCharacter.Dialog.Message.Default"; //$NON-NLS-1$
   }
 
   @Override
@@ -107,8 +93,15 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
   }
 
   @Override
-  protected IWizardFactory createCreationWizardPageFactory(IAnathemaModel anathemaModel, IResources resources) {
+  protected IItemTypeCreationViewProperties createItemTypeCreationProperties(
+      IAnathemaModel anathemaModel,
+      IResources resources) {
     IExaltedRuleSet preferredRuleset = AnathemaCharacterPreferences.getDefaultPreferences().getPreferredRuleset();
-    return new CharacterCreationWizardPageFactory(getGenerics(anathemaModel), preferredRuleset, resources);
+    CharacterCreationWizardPageFactory factory = new CharacterCreationWizardPageFactory(
+        getGenerics(anathemaModel),
+        preferredRuleset,
+        resources);
+    return new ItemTypeCreationViewProperties(
+        getItemType(), new CharacterUI(resources).getCharacterDescriptionTabIcon(), factory);
   }
 }

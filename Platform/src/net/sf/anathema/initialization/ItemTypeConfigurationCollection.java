@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import net.sf.anathema.framework.module.AbstractItemTypeConfiguration;
+import net.sf.anathema.framework.module.IItemTypeConfiguration;
 import net.sf.anathema.initialization.plugin.IAnathemaPluginManager;
 
 import org.java.plugin.registry.Extension.Parameter;
@@ -26,8 +27,8 @@ public class ItemTypeConfigurationCollection extends AbstractInitializationColle
     return EXTENSION_POINT_ITEM_TYPES;
   }
 
-  public Collection<AbstractItemTypeConfiguration> getItemTypes() {
-    return new ArrayList<AbstractItemTypeConfiguration>(itemTypeConfigurations);
+  public Collection<IItemTypeConfiguration> getItemTypes() {
+    return new ArrayList<IItemTypeConfiguration>(itemTypeConfigurations);
   }
 
   @Override

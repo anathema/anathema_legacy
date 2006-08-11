@@ -109,8 +109,8 @@
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaExtensions" id="AnathemaExtensions">
 	  <parameter id="type">
-		<parameter id="class" value="net.sf.anathema.framework.presenter.item.ItemTypeViewPropertiesExtensionPoint"/>
-		<parameter id="id" value="net.sf.anathema.framework.presenter.item.ItemTypeViewPropertiesExtensionPoint"/>
+		<parameter id="class" value="net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint"/>
+		<parameter id="id" value="net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint"/>
 	  </parameter>
 	  <parameter id="type">
 		<parameter id="class" value="net.sf.anathema.framework.presenter.menu.MenuExtensionPoint"/>
