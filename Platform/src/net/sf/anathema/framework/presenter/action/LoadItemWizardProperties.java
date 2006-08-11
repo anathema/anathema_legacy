@@ -1,36 +1,26 @@
 package net.sf.anathema.framework.presenter.action;
 
-import java.awt.Component;
-
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
 import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
+import net.disy.commons.swing.ui.IObjectUi;
+import net.disy.commons.swing.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.wizard.selection.IObjectSelectionProperties;
 
 public class LoadItemWizardProperties implements IObjectSelectionProperties {
 
   private final IResources resources;
+  private final ListCellRenderer renderer;
 
-  public LoadItemWizardProperties(IResources resources) {
+  public LoadItemWizardProperties(IResources resources, IObjectUi ui) {
     this.resources = resources;
+    this.renderer = new ObjectUiListCellRenderer(ui);
   }
 
   public ListCellRenderer getCellRenderer() {
-    return new DefaultListCellRenderer() {
-      @Override
-      public Component getListCellRendererComponent(
-          JList list,
-          Object value,
-          int index,
-          boolean isSelected,
-          boolean cellHasFocus) {
-        return super.getListCellRendererComponent(list, value.toString(), index, isSelected, cellHasFocus);
-      }
-    };
+    return renderer;
   }
 
   public IBasicMessage getSelectMessage() {

@@ -1,8 +1,12 @@
 package net.sf.anathema.framework.presenter.action;
 
+import javax.swing.Icon;
+
+import net.disy.commons.swing.ui.IObjectUi;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.module.NullWizardPageFactory;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
+import net.sf.anathema.framework.presenter.view.IItemTypeCreationViewProperties;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -26,16 +30,19 @@ public class LoadItemWizardPageFactory implements IWizardFactory {
   private final IItemMangementModel itemManagement;
   private final IPrintNameFileAccess access;
   private final IResources resources;
+  private final IItemTypeCreationViewProperties properties;
 
   public LoadItemWizardPageFactory(
       IItemType type,
       IPrintNameFileAccess access,
       IItemMangementModel itemManagement,
-      IResources resources) {
+      IResources resources,
+      IItemTypeCreationViewProperties properties) {
     this.type = type;
     this.access = access;
     this.itemManagement = itemManagement;
     this.resources = resources;
+    this.properties = properties;
   }
 
   public IAnathemaWizardPage createPage(final IAnathemaWizardModelTemplate template) {
@@ -59,13 +66,21 @@ public class LoadItemWizardPageFactory implements IWizardFactory {
       }
     };
     Registry<PrintNameFile, IAnathemaWizardModelTemplate> modelTemplateRegistry = new Registry<PrintNameFile, IAnathemaWizardModelTemplate>();
-    IObjectSelectionProperties properties = new LoadItemWizardProperties(resources);
+    IObjectSelectionProperties pageProperties = new LoadItemWizardProperties(resources, new IObjectUi() {
+      public Icon getIcon(Object value) {
+        return properties.getIcon();
+      }
+
+      public String getLabel(Object value) {
+        return value.toString();
+      }
+    });
     return new ObjectSelectionWizardPage<PrintNameFile>(
         followUpRegistry,
         modelTemplateRegistry,
         model,
         view,
-        properties);
+        pageProperties);
   }
 
   public IAnathemaWizardModelTemplate createTemplate() {

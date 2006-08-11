@@ -11,6 +11,7 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
 import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
+import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
@@ -69,7 +70,14 @@ public class AnathemaLoadAction extends AbstractAnathemaItemAction {
     IPrintNameFileAccess printNameFileAccess = getRepository().getPrintNameFileAccess();
     IItemMangementModel itemManagement = getAnathemaModel().getItemManagement();
     for (IItemType type : types) {
-      registry.register(type, new LoadItemWizardPageFactory(type, printNameFileAccess, itemManagement, getResources()));
+      ItemTypeCreationViewPropertiesExtensionPoint extension = (ItemTypeCreationViewPropertiesExtensionPoint) getAnathemaModel().getExtensionPointRegistry()
+          .get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
+      registry.register(type, new LoadItemWizardPageFactory(
+          type,
+          printNameFileAccess,
+          itemManagement,
+          getResources(),
+          extension.get(type)));
     }
     return registry;
   }
