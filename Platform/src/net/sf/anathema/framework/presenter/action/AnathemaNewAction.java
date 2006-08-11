@@ -40,7 +40,7 @@ public class AnathemaNewAction extends AbstractAnathemaItemAction {
     ItemTypeCreationViewPropertiesExtensionPoint extension = (ItemTypeCreationViewPropertiesExtensionPoint) getAnathemaModel().getExtensionPointRegistry()
         .get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
     Registry<IItemType, IWizardFactory> registry = new Registry<IItemType, IWizardFactory>();
-    for (IItemType type : extension.getIds(new IItemType[0])) {
+    for (IItemType type : collectItemTypes(getAnathemaModel())) {
       registry.register(type, extension.get(type).getNewItemWizardFactory());
     }
     return registry;
