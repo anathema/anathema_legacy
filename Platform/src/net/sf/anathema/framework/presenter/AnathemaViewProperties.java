@@ -2,9 +2,6 @@ package net.sf.anathema.framework.presenter;
 
 import java.awt.Frame;
 import java.awt.Image;
-import java.util.Random;
-
-import javax.swing.Icon;
 
 import net.sf.anathema.lib.resources.IResources;
 
@@ -18,18 +15,13 @@ public class AnathemaViewProperties {
     this.maximized = maximized;
   }
 
-  public Icon getSplashImage() {
-    int random = new Random().nextInt(5);
-    return resources.getImageIcon(this.getClass(), "core/AnathemaSplash" + (random + 3) + ".png"); //$NON-NLS-1$ //$NON-NLS-2$
-  }
-
   public String getDefaultFrameTitle() {
     return resources.getString("MainFrame.Title"); //$NON-NLS-1$;
   }
 
   @SuppressWarnings("deprecation")
   public Image getFrameIcon() {
-    return resources.getImage(this.getClass(), "core/AnathemaIcon.png"); //$NON-NLS-1$
+    return resources.getImage(this.getClass(), "AnathemaIcon.png"); //$NON-NLS-1$
   }
 
   public String getMainMenuName() {

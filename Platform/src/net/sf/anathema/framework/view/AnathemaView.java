@@ -1,6 +1,5 @@
 package net.sf.anathema.framework.view;
 
-import java.awt.AWTException;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.WindowListener;
@@ -17,7 +16,6 @@ import net.sf.anathema.framework.view.menu.AnathemaMenuBar;
 import net.sf.anathema.framework.view.toolbar.AnathemaToolBar;
 import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
 import net.sf.anathema.lib.gui.GuiUtilities;
-import net.sf.anathema.lib.gui.TranslucentSplashScreen;
 
 public class AnathemaView implements IAnathemaView {
 
@@ -27,15 +25,14 @@ public class AnathemaView implements IAnathemaView {
   private final IItemViewManagement itemViewManagement;
   private final AnathemaViewProperties properties;
 
-  public AnathemaView(AnathemaViewProperties properties) throws AWTException {
+  public AnathemaView(AnathemaViewProperties properties) {
     this.properties = properties;
     this.itemViewManagement = new ItemViewManagement();
     this.menu = new AnathemaMenuBar(properties.getMainMenuName(), properties.getHelpMenuName());
     this.mainFrame = initGui();
   }
 
-  private JFrame initGui() throws AWTException {
-    new TranslucentSplashScreen(properties.getSplashImage(), 4000);
+  private JFrame initGui() {
     JFrame applicationFrame = createApplicationFrame();
     applicationFrame.setExtendedState(properties.getLaunchState());
     JPanel applicationPanel = new JPanel(new BorderLayout());

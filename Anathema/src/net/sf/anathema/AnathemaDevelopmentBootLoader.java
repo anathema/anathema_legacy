@@ -1,5 +1,9 @@
 package net.sf.anathema;
 
+import java.awt.AWTException;
+import java.awt.Toolkit;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -7,6 +11,7 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Properties;
+import java.util.Random;
 
 import net.sf.anathema.initialization.InitializationException;
 
@@ -19,10 +24,24 @@ import org.java.plugin.util.ExtendedProperties;
 public class AnathemaDevelopmentBootLoader {
 
   public static void main(String[] arguments) throws Exception {
+    showSplashScreen();
     ObjectFactory factory = ObjectFactory.newInstance();
     PluginManager manager = factory.createManager(factory.createRegistry(), new AnathemaPathResolver());
     collectPlugins(manager);
     new Anathema(manager).startApplication();
+  }
+
+  private static void showSplashScreen() throws IOException, AWTException {
+    int random = new Random().nextInt(5);
+    BufferedInputStream inputStream = new BufferedInputStream(
+        AnathemaBootLoader.class.getResourceAsStream("/icons/core/AnathemaSplash" + (random + 3) + ".png")); //$NON-NLS-1$
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    byte[] buffer = new byte[4096];
+    int numChars;
+    while ((numChars = inputStream.read(buffer)) > 0) {
+      outputStream.write(buffer, 0, numChars);
+    }
+    new TranslucentSplashScreen(Toolkit.getDefaultToolkit().createImage(outputStream.toByteArray())).showSplash(4000);
   }
 
   @SuppressWarnings("unchecked")
