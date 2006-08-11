@@ -34,7 +34,7 @@ public class AnathemaDevelopmentBootLoader {
   private static void showSplashScreen() throws IOException, AWTException {
     int random = new Random().nextInt(5);
     BufferedInputStream inputStream = new BufferedInputStream(
-        AnathemaBootLoader.class.getResourceAsStream("/icons/core/AnathemaSplash" + (random + 3) + ".png")); //$NON-NLS-1$
+        AnathemaBootLoader.class.getResourceAsStream("/icons/core/AnathemaSplash" + (random + 3) + ".png")); //$NON-NLS-1$ //$NON-NLS-2$
     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     byte[] buffer = new byte[4096];
     int numChars;
