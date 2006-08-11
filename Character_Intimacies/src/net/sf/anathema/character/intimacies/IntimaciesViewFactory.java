@@ -29,8 +29,7 @@ public class IntimaciesViewFactory implements IAdditionalViewFactory {
         return resources.getString("Intimacies.LockButton.Tooltip"); //$NON-NLS-1$
       }
     };
-    Icon ballResource = new CharacterUI(resources).getMediumBallResource(type);
-    IntimaciesView view = new IntimaciesView(new IntValueDisplayFactory(resources, ballResource), properties);
+    IntimaciesView view = new IntimaciesView(new IntValueDisplayFactory(resources, type), properties);
     new IntimaciesPresenter(((IIntimaciesAdditionalModel) model).getIntimaciesModel(), model, view, resources).initPresentation();
     return view;
   }

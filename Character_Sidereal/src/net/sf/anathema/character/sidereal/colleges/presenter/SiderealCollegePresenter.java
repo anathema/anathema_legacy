@@ -44,9 +44,7 @@ public class SiderealCollegePresenter extends AbstractTraitPresenter {
     final IOverviewCategory experienceOverview = view.createOverview(resources.getString("Overview.Title")); //$NON-NLS-1$
     final IValueView<Integer> experienceView = experienceOverview.addIntegerValueView(
         resources.getString("Astrology.Overview.Experience"), 3); //$NON-NLS-1$
-
-    Icon siderealBall = new CharacterUI(resources).getMediumBallResource(CharacterType.SIDEREAL);
-    IIntValueDisplayFactory factory = new IntValueDisplayFactory(resources, siderealBall);
+    IIntValueDisplayFactory factory = new IntValueDisplayFactory(resources, CharacterType.SIDEREAL);
     for (final IAstrologicalHouse house : model.getAllHouses()) {
       view.startGroup(resources.getString("AstrologicalHouses.GroupLabel." + house.getId())); //$NON-NLS-1$
       for (final IFavorableDefaultTrait college : house.getColleges()) {

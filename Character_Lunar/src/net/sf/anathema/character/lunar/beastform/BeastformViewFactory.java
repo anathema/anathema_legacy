@@ -15,9 +15,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class BeastformViewFactory implements IAdditionalViewFactory {
 
   public ISimpleTabView createView(IAdditionalModel model, final IResources resources, CharacterType type) {
-    IntValueDisplayFactory intValueDisplayFactory = new IntValueDisplayFactory(
-        resources,
-        new CharacterUI(resources).getMediumBallResource(type));
+    IntValueDisplayFactory intValueDisplayFactory = new IntValueDisplayFactory(resources, type);
     BeastformView view = new BeastformView(intValueDisplayFactory, new IBeastformViewProperties() {
       public String getCharmString() {
         return resources.getString("Lunar.DeadlyBeastmanTransformation"); //$NON-NLS-1$

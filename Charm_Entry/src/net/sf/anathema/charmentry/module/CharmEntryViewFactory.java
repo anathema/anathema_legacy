@@ -29,9 +29,7 @@ public class CharmEntryViewFactory implements ICharmEntryViewFactory {
   private final IIntValueDisplayFactory factory;
 
   public CharmEntryViewFactory(IResources resources) {
-    this.factory = new IntValueDisplayFactory(
-        resources,
-        new CharacterUI(resources).getMediumBallResource(CharacterType.MORTAL));
+    this.factory = new IntValueDisplayFactory(resources, CharacterType.MORTAL);
   }
 
   public IHeaderDataEntryView createHeaderDataEntryView() {

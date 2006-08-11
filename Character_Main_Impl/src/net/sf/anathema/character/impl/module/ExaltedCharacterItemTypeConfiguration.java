@@ -83,9 +83,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
             .getCharacterTemplate()
             .getTemplateType()
             .getCharacterType();
-        IntValueDisplayFactory intValueDisplayFactory = new IntValueDisplayFactory(
-            resources,
-            characterUI.getMediumBallResource(characterType));
+        IntValueDisplayFactory intValueDisplayFactory = new IntValueDisplayFactory(resources, characterType);
         final Icon typeIcon = characterUI.getSmallTypeIcon(characterType);
         ICharacterView characterView = new CharacterView(intValueDisplayFactory, printName, typeIcon);
         IBonusPointManagement bonusPointManagement = new BonusPointManagement(character.getStatistics());
