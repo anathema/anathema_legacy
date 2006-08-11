@@ -56,7 +56,7 @@ public class PresentationPropertiesParserTest extends BasicTestCase {
     parentTemplate.setTemplateType(new TemplateType(CharacterType.SOLAR));
     presentationProperties.setParentTemplate(parentTemplate);
     assertEquals(
-        "SolarButtonLifeFirstEdition20.png", presentationProperties.getMediumCasteIconResource(AbilityGroupType.Life.getId(), ExaltedEdition.FirstEdition.getId())); //$NON-NLS-1$
+        "SolarButtonLifeFirstEdition16.png", presentationProperties.getSmallCasteIconResource(AbilityGroupType.Life.getId(), ExaltedEdition.FirstEdition.getId())); //$NON-NLS-1$
   }
 
   public void testParseXmlWithoutNewActionResource() throws Exception {
