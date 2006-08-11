@@ -40,11 +40,11 @@ public class CharacterUI extends AbstractUI {
   }
 
   public Icon getSmallTypeIcon(CharacterType characterType) {
-    return getIcon(characterType.name() + "Icon16.png"); //$NON-NLS-1$
+    return getIcon(characterType.getId() + "Icon16.png"); //$NON-NLS-1$
   }
 
   public Icon getMediumBallResource(CharacterType characterType) {
-    return getIcon("Border" + characterType.name() + "Button16.png"); //$NON-NLS-1$ //$NON-NLS-2$
+    return getIcon("Border" + characterType.getId() + "Button16.png"); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   public Icon getUnselectedBallResource() {
