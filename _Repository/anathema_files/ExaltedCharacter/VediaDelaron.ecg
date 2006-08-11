@@ -6,7 +6,7 @@
     <PhysicalDescription><![CDATA[Fights with Great Sword and Reinforced Breastplate]]></PhysicalDescription>
   </Description>
   <Statistics experienced="true">
-    <CharacterType>HeroicMortal</CharacterType>
+    <CharacterType>Mortal</CharacterType>
     <CharacterConcept>
       <Nature type="Survivor"/>
       <Concept>General-Prince</Concept>

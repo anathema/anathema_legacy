@@ -6,7 +6,7 @@
     <Periphrase><![CDATA[Loyal Follower and Leader of the Sun Ascending]]></Periphrase>
   </Description>
   <Statistics experienced="false">
-    <CharacterType>HeroicMortal</CharacterType>
+    <CharacterType>Mortal</CharacterType>
     <CharacterConcept>
       <Nature type="Follower"/>
       <Concept>Military Officer gone Smith</Concept>
