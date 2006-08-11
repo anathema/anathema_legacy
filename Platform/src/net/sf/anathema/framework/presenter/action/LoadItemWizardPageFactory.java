@@ -49,7 +49,7 @@ public class LoadItemWizardPageFactory implements IWizardFactory {
     if (!(template instanceof ConfigurableFileProvider)) {
       throw new IllegalArgumentException("Bad template type."); //$NON-NLS-1$
     }
-    PrintNameFile[] printNameFiles = access.collectPrintNameFiles(type, itemManagement);
+    PrintNameFile[] printNameFiles = access.collectPrintNameFiles(type, itemManagement, properties.getScanner());
     final IObjectSelectionWizardModel<PrintNameFile> model = new ObjectSelectionWizardModel<PrintNameFile>(
         printNameFiles,
         new LenientLegalityProvider<PrintNameFile>());
@@ -68,11 +68,11 @@ public class LoadItemWizardPageFactory implements IWizardFactory {
     Registry<PrintNameFile, IAnathemaWizardModelTemplate> modelTemplateRegistry = new Registry<PrintNameFile, IAnathemaWizardModelTemplate>();
     IObjectSelectionProperties pageProperties = new LoadItemWizardProperties(resources, new IObjectUi() {
       public Icon getIcon(Object value) {
-        return properties.getIcon();
+        return properties.getPrintNameFileIcon((PrintNameFile) value);
       }
 
       public String getLabel(Object value) {
-        return value.toString();
+        return properties.getPrintNameFileLabel((PrintNameFile) value);
       }
     });
     return new ObjectSelectionWizardPage<PrintNameFile>(

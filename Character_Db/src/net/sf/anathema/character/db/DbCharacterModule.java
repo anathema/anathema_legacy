@@ -6,6 +6,7 @@ import net.sf.anathema.character.db.additional.AdditionalOutcasteDbRules;
 import net.sf.anathema.character.db.additional.AdditionalSequesteredTabernacleDbRules;
 import net.sf.anathema.character.db.additional.BasicAdditionalLookshyDbRules;
 import net.sf.anathema.character.db.additional.NativeLookshyDbRules;
+import net.sf.anathema.character.db.aspect.DBAspect;
 import net.sf.anathema.character.db.reporting.DbVoidStateReportTemplate;
 import net.sf.anathema.character.db.template.IDbSpecialCharms;
 import net.sf.anathema.character.db.template.cult.KetherRockDbTemplate;
@@ -25,6 +26,7 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
+import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
@@ -62,6 +64,9 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     ISpecialCharm[] specialCharms = new ISpecialCharm[] { IDbSpecialCharms.OX_BODY_TECHNIQUE };
     characterGenerics.getCharmProvider().setSpecialCharms(CharacterType.DB, ExaltedEdition.FirstEdition, specialCharms);
+    characterGenerics.getCasteCollectionRegistry().register(
+        CharacterType.DB,
+        new CasteCollection(DBAspect.values()));
   }
 
   @Override

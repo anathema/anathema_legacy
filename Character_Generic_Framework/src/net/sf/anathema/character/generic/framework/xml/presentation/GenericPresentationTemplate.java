@@ -14,10 +14,6 @@ public class GenericPresentationTemplate extends ReflectionCloneableObject<Gener
   private String newActionResource;
   private GenericCharacterTemplate template;
 
-  public String getMediumCasteIconResource(String casteId, String editionId) {
-    return getCharacterTypeId() + "Button" + casteId + editionId + "20.png"; //$NON-NLS-1$//$NON-NLS-2$
-  }
-
   public String getSmallCasteIconResource(String casteId, String editionId) {
     return getCharacterTypeId() + "Button" + casteId + editionId + "16.png"; //$NON-NLS-1$//$NON-NLS-2$
   }

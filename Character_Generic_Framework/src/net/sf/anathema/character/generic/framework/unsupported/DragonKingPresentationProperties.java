@@ -13,11 +13,6 @@ public class DragonKingPresentationProperties extends AbstractPresentationProper
   }
 
   @Override
-  public String getMediumCasteIconResource(String groupId, String editionId) {
-    return null;
-  }
-
-  @Override
   public String getSmallCasteIconResource(String casteId, String editionId) {
     return null;
   }

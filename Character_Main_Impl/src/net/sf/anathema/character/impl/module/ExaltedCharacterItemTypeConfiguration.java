@@ -26,7 +26,6 @@ import net.sf.anathema.framework.module.AbstractPersistableItemTypeConfiguration
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
 import net.sf.anathema.framework.presenter.view.IItemTypeCreationViewProperties;
-import net.sf.anathema.framework.presenter.view.ItemTypeCreationViewProperties;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
@@ -97,11 +96,11 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
       IAnathemaModel anathemaModel,
       IResources resources) {
     IExaltedRuleSet preferredRuleset = AnathemaCharacterPreferences.getDefaultPreferences().getPreferredRuleset();
+    ICharacterGenerics generics = getGenerics(anathemaModel);
     CharacterCreationWizardPageFactory factory = new CharacterCreationWizardPageFactory(
-        getGenerics(anathemaModel),
+        generics,
         preferredRuleset,
         resources);
-    return new ItemTypeCreationViewProperties(
-        getItemType(), new CharacterUI(resources).getCharacterDescriptionTabIcon(), factory);
+    return new CharacterCreationViewProperties(getItemType(), resources, factory, generics.getCasteCollectionRegistry());
   }
 }

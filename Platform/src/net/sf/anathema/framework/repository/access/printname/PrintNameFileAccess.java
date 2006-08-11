@@ -28,6 +28,10 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
   }
 
   public PrintNameFile[] collectPrintNameFiles(IItemType type) {
+    return collectPrintNameFiles(type, new NullPrintNameFileScanner());
+  }
+
+  private PrintNameFile[] collectPrintNameFiles(IItemType type, IPrintNameFileScanner scanner) {
     File repositoryFolder = getRepositoryFolder(type.getRepositoryConfiguration());
     File[] subfiles = repositoryFolder.listFiles();
     List<PrintNameFile> printNameFiles = new ArrayList<PrintNameFile>();
@@ -35,7 +39,7 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
       return new PrintNameFile[0];
     }
     for (File subFile : subfiles) {
-      PrintNameFile printNameFile = createPrintNameFile(subFile, type);
+      PrintNameFile printNameFile = createPrintNameFile(subFile, type, scanner);
       if (printNameFile != null) {
         printNameFiles.add(printNameFile);
       }
@@ -47,10 +51,10 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
     return new File(repositoryFile, configuration.getFolderName());
   }
 
-  private static PrintNameFile createPrintNameFile(File file, IItemType itemType) {
+  private static PrintNameFile createPrintNameFile(File file, IItemType itemType, IPrintNameFileScanner scanner) {
     IRepositoryConfiguration repositoryConfiguration = itemType.getRepositoryConfiguration();
     if (repositoryConfiguration.isItemSavedToSingleFile()) {
-      return createSingleFilePrintNameFile(file, itemType);
+      return createSingleFilePrintNameFile(file, itemType, scanner);
     }
     if (!file.isDirectory() || !file.exists()) {
       return null;
@@ -60,7 +64,7 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
     if (!mainFile.exists()) {
       return null;
     }
-    PrintNameFile mainPrintNameFile = createSingleFilePrintNameFile(mainFile, itemType);
+    PrintNameFile mainPrintNameFile = createSingleFilePrintNameFile(mainFile, itemType, scanner);
     return new PrintNameFile(
         mainPrintNameFile.getFile().getParentFile(),
         mainPrintNameFile.getPrintName(),
@@ -68,7 +72,10 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
         mainPrintNameFile.getItemType());
   }
 
-  private static PrintNameFile createSingleFilePrintNameFile(File file, IItemType itemType) {
+  private static PrintNameFile createSingleFilePrintNameFile(
+      File file,
+      IItemType itemType,
+      IPrintNameFileScanner scanner) {
     if (file.isDirectory() || !file.exists()) {
       return null;
     }
@@ -82,7 +89,9 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
       if (!idMatcher.find()) {
         return null;
       }
-      return new PrintNameFile(file, printNameMatcher.group(1), idMatcher.group(1), itemType);
+      PrintNameFile printNameFile = new PrintNameFile(file, printNameMatcher.group(1), idMatcher.group(1), itemType);
+      scanner.scan(string, printNameFile.getRepositoryId());
+      return printNameFile;
     }
     catch (IOException e) {
       logger.debug(e);
@@ -90,14 +99,21 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
     }
   }
 
-  public PrintNameFile[] collectPrintNameFiles(IItemType type, IItemMangementModel itemManagement) {
+  public PrintNameFile[] collectPrintNameFiles(
+      IItemType type,
+      IItemMangementModel itemManagement,
+      IPrintNameFileScanner scanner) {
     List<PrintNameFile> closedFiles = new ArrayList<PrintNameFile>();
-    for (PrintNameFile file : collectPrintNameFiles(type)) {
+    for (PrintNameFile file : collectPrintNameFiles(type, scanner)) {
       if (!itemManagement.isOpen(file.getRepositoryId(), type)) {
         closedFiles.add(file);
       }
     }
     return closedFiles.toArray(new PrintNameFile[closedFiles.size()]);
+  }
+
+  public PrintNameFile[] collectPrintNameFiles(IItemType type, IItemMangementModel itemManagement) {
+    return collectPrintNameFiles(type, itemManagement, new NullPrintNameFileScanner());
   }
 
   public PrintNameFile getPrintNameFile(IItemType itemType, String repositoryId) {

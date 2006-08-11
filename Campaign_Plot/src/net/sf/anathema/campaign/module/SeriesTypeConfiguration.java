@@ -10,11 +10,10 @@ import net.sf.anathema.campaign.presenter.view.ISeriesView;
 import net.sf.anathema.campaign.view.CampaignView;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.module.AbstractPersistableItemTypeConfiguration;
-import net.sf.anathema.framework.module.NullWizardPageFactory;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
 import net.sf.anathema.framework.presenter.view.IItemTypeCreationViewProperties;
-import net.sf.anathema.framework.presenter.view.ItemTypeCreationViewProperties;
+import net.sf.anathema.framework.presenter.view.SimpleItemTypeCreationViewProperties;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
@@ -58,9 +57,6 @@ public final class SeriesTypeConfiguration extends AbstractPersistableItemTypeCo
   protected IItemTypeCreationViewProperties createItemTypeCreationProperties(
       IAnathemaModel anathemaModel,
       IResources resources) {
-    return new ItemTypeCreationViewProperties(
-        getItemType(),
-        new PlotUI(resources).getSeriesTabIcon(),
-        new NullWizardPageFactory());
+    return new SimpleItemTypeCreationViewProperties(getItemType(), new PlotUI(resources).getSeriesTabIcon());
   }
 }

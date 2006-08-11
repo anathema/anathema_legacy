@@ -6,12 +6,9 @@ public interface IPresentationProperties extends ICommonPresentationProperties {
 
   public String getSmallCasteIconResource(String casteId, String editionId);
 
-  public String getMediumCasteIconResource(String casteId, String editionId);
-
   public Color getColor();
 
   public String getCasteLabelResource();
 
   public ICharmPresentationProperties getCharmPresentationProperties();
-
 }
