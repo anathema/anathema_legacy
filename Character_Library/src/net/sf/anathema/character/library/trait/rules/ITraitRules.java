@@ -8,7 +8,7 @@ public interface ITraitRules {
 
   public static final int UNEXPERIENCED = -1;
 
-  public ITraitRules derive();
+  public ITraitRules deriveAggregatedRules(String subname, int startValue);
 
   public ITraitRules derive(ITraitType traitType, ITraitTemplate template);
 

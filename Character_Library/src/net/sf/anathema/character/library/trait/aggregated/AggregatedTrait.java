@@ -42,7 +42,7 @@ public class AggregatedTrait extends AbstractFavorableTrait implements IAggregat
       String... unremovableSubTraits) {
     super(traitRules, traitValueStrategy);
     subTraits = new AggregationSubTraitContainer(
-        traitRules.derive(),
+        traitRules,
         traitValueStrategy,
         valueChangeChecker,
         this,

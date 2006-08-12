@@ -33,7 +33,9 @@ public class AggregationSubTraitContainer extends AbstractSubTraitContainer {
 
   @Override
   protected ISubTrait createSubTrait(String name) {
-    return new AggregatedSubTrait(traitRules, traitValueStrategy, valueChangeChecker, parent, name);
+    int startValue = getSubTraits().length == 0 ? traitRules.getStartValue() : 0;
+    ITraitRules aggregatedTraitRules = traitRules.deriveAggregatedRules(name, startValue);
+    return new AggregatedSubTrait(aggregatedTraitRules, traitValueStrategy, valueChangeChecker, parent, name);
   }
 
   @Override
