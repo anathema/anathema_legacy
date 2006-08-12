@@ -18,6 +18,7 @@ import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 
 public class AggregatedTrait extends AbstractFavorableTrait implements IAggregatedTrait {
@@ -27,9 +28,14 @@ public class AggregatedTrait extends AbstractFavorableTrait implements IAggregat
   private ICharacterChangeListener changeListener = new DedicatedCharacterChangeAdapter() {
     @Override
     public void casteChanged() {
+      getFallbackTrait().resetCurrentValue();
       getFavorization().updateFavorableStateToCaste();
     }
   };
+  
+  public IDefaultTrait getFallbackTrait() {
+    return getSubTraits().getSubTraits()[0];
+  }
 
   public AggregatedTrait(
       IFavorableTraitRules traitRules,

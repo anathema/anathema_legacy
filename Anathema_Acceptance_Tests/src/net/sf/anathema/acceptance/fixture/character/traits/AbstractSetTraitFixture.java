@@ -33,7 +33,7 @@ public abstract class AbstractSetTraitFixture extends RowEntryFixture {
       }
     
       public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
-        defaultTrait[0] = visitedTrait.getSubTraits().getSubTraits()[0];
+        defaultTrait[0] = visitedTrait.getFallbackTrait();
       }
     });
     return defaultTrait[0];

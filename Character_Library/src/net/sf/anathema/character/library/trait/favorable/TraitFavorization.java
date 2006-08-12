@@ -56,7 +56,7 @@ public class TraitFavorization implements ITraitFavorization {
       trait.accept(new ITraitVisitor() {
 
         public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
-          visitedTrait.getSubTraits().getSubTraits()[0].setCurrentValue(1);
+          visitedTrait.getFallbackTrait().setCurrentValue(1);
         }
 
         public void visitDefaultTrait(IDefaultTrait visitedTrait) {

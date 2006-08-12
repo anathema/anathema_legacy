@@ -28,11 +28,11 @@ public class AbstractCharacterPersister extends AbstractPersister {
     public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
       try {
         List<Element> subTraitElements = ElementUtilities.elements(element, TAG_SUB_TRAIT);
-        ISubTraitContainer container = visitedTrait.getSubTraits();
         if (subTraitElements.size() == 0) {
-          restoreDefaultTrait(element, container.getSubTraits()[0]);
+          restoreDefaultTrait(element, visitedTrait.getFallbackTrait());
         }
         else {
+          ISubTraitContainer container = visitedTrait.getSubTraits();
           for (Element subTraitElement : subTraitElements) {
             String traitName = ElementUtilities.getRequiredText(subTraitElement, TAG_TRAIT_NAME);
             ISubTrait subTrait = container.addSubTrait(traitName);
