@@ -16,12 +16,14 @@
 !path ../Character_Equipment/build/classes
 !path ../Character_Intimacies/build/classes
 !path ../Character_Lunar/build/classes
+!path ../Character_Mortal/build/classes
 !path ../Character_Reporting/build/classes
 !path ../Character_Solar/build/classes
 !path ../Character_Sidereal/build/classes
 !path ../Character_MeritsFlaws/build/classes
 !path ../Charm_Tree/build/classes
 !path ../Charm_Cascades/build/classes
+!path ../Development_Test_Character/build/classes
 !path ../Platform/build/classes
 !path ../Lib/build/classes
 !path ../Lib_Gui/build/classes

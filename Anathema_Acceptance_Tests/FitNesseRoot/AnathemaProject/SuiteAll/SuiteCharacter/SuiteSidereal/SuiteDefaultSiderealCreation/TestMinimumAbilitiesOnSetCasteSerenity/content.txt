@@ -24,8 +24,8 @@ Check their initial state.
 
 !|Check Abilities|
 |Trait Type|value?|
-|Craft|2|
-|Performance|0|
+|Craft|0|
+|Performance|2|
 |Linguistics|3|
 |Medicine|2|
 |Presence|2|
@@ -35,7 +35,7 @@ Check that the new minimum abilities may not be lowered any more.
 
 !|Set Abilities|
 |Trait Type|value|
-|Craft|1|
+|Performance|1|
 |Linguistics|2|
 |Medicine|1|
 |Presence|1|
@@ -43,7 +43,7 @@ Check that the new minimum abilities may not be lowered any more.
 
 !|Check Abilities|
 |Trait Type|value?|
-|Craft|2|
+|Performance|2|
 |Linguistics|3|
 |Medicine|2|
 |Presence|2|

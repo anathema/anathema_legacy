@@ -1,1 +1,4 @@
-!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTemplate.SuiteSolar.SuiteMagicTemplate.SnippetTestSolarSorceryCircles
+!3 Solar Circle
+!|Check Magic Template|
+|getMaximumSorceryCircle?|
+|Solar|
