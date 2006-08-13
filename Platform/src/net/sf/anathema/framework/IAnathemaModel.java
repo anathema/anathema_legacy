@@ -9,7 +9,6 @@ import net.sf.anathema.framework.presenter.IItemViewFactory;
 import net.sf.anathema.framework.reporting.IReportRegistry;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
 
 public interface IAnathemaModel {
 

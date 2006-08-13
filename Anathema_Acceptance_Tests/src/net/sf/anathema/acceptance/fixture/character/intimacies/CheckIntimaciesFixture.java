@@ -4,9 +4,7 @@ import net.sf.anathema.acceptance.fixture.character.util.AbstractCharacterColumn
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.intimacies.IIntimaciesAdditionalModel;
-import net.sf.anathema.character.intimacies.model.IIntimacy;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
-import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryModel;
 
 public class CheckIntimaciesFixture extends AbstractCharacterColumnFixture {
 

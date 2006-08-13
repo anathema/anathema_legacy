@@ -1,6 +1,5 @@
 package net.sf.anathema.character.library.trait.aggregated;
 
-import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.ITrait;
