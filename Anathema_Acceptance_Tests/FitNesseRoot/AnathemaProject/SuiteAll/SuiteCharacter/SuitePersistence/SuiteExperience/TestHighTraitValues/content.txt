@@ -18,4 +18,4 @@
 
 !|Check Attributes|
 |trait type|value?|
-|Strength|7|
+|Strength|6|

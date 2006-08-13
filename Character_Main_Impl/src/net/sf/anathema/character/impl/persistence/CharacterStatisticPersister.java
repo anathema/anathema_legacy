@@ -93,6 +93,7 @@ public class CharacterStatisticPersister {
       ICharacterStatistics statistics = character.createCharacterStatistics(template, generics, rules);
       ICasteCollection casteCollection = template.getCasteCollection();
       characterConceptPersister.load(statisticsElement, statistics.getCharacterConcept(), casteCollection);
+      statistics.setExperienced(experienced);
       essencePersister.load(statisticsElement, statistics.getTraitConfiguration());
       IAdditionalModel virtueFlawModel = statistics.getExtendedConfiguration().getAdditionalModel(
           IAdditionalTemplate.SOLAR_VIRTUE_FLAW_ID);
@@ -103,7 +104,6 @@ public class CharacterStatisticPersister {
       charmPersister.load(statisticsElement, statistics);
       spellPersister.load(statisticsElement, statistics.getSpells());
       experiencePersister.load(statisticsElement, statistics.getExperiencePoints());
-      statistics.setExperienced(experienced);
       willpowerPersister.load(statisticsElement, statistics.getTraitConfiguration().getTrait(OtherTraitType.Willpower));
       additonalModelPersister.load(statisticsElement, statistics.getExtendedConfiguration().getAdditionalModels());
     }
