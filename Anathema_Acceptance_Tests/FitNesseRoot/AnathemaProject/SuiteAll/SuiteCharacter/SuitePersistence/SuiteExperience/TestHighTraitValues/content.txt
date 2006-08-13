@@ -1,0 +1,21 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SnippetCreateDefaultSolar
+
+!|Set Experienced|
+
+!|Set Other Traits|
+|trait type|value|
+|Essence|7|
+
+!|Set Attributes|
+|trait type|value|
+|Strength|6|
+
+!|Save And Load Character|
+
+!|Check Other Traits|
+|trait type|value?|
+|Essence|7|
+
+!|Check Attributes|
+|trait type|value?|
+|Strength|7|
