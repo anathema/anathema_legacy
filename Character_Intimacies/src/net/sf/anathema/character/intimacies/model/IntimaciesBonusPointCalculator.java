@@ -13,7 +13,7 @@ public class IntimaciesBonusPointCalculator implements IAdditionalModelBonusPoin
   }
 
   public void recalculate() {
-    this.cost = Math.max(0, (model.getEntries().size() - model.getFreeIntimacies()) * 3);
+    this.cost = model.getEntries().size() > model.getFreeIntimacies() ? 3 : 0;
   }
 
   public int getBonusPointCost() {
