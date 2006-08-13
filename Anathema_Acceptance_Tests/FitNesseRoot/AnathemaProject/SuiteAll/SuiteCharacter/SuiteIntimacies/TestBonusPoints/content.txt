@@ -1,0 +1,32 @@
+!3 Assert that no Intimacies are selected.
+!|Check Intimacies|
+|intimaciesSelected?|getBonusPointsSpent?|getFreeIntimacies?|getMaximumIntimacies?|
+|0|0|1|3|
+
+!3 Choose an Intimacy
+!|Select Intimacies|
+|name|
+|Peace in our time|
+
+!|Check Intimacies|
+|intimaciesSelected?|getBonusPointsSpent?|
+|1|0|
+
+
+!3 Choose another Intimacy
+!|Select Intimacies|
+|name|
+|...and justice for all|
+
+!|Check Intimacies|
+|intimaciesSelected?|getBonusPointsSpent?|
+|2|3|
+
+!3 Make sure no additional bonus points are spent
+!|Select Intimacies|
+|name|
+|Dreams|
+
+!|Check Intimacies|
+|intimaciesSelected?|getBonusPointsSpent?|
+|3|3|

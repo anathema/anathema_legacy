@@ -10,6 +10,7 @@
 |net.sf.anathema.acceptance.fixture.character.template|
 |net.sf.anathema.acceptance.fixture.character.template.traits|
 |net.sf.anathema.acceptance.fixture.character.traits|
+|net.sf.anathema.acceptance.fixture.character.intimacies|
 |net.sf.anathema.acceptance.fixture.character.meritsflaws|
 |net.sf.anathema.acceptance.fixture.character.lunar.renown|
 
