@@ -2,8 +2,8 @@ package net.sf.anathema.character.equipment.creation.presenter.stats;
 
 import java.awt.Component;
 
-import net.sf.anathema.character.equipment.creation.model.IEquipmentStatisticsCreationModel;
-import net.sf.anathema.character.equipment.creation.model.IShieldStatisticsModel;
+import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
+import net.sf.anathema.character.equipment.creation.model.stats.IShieldStatisticsModel;
 import net.sf.anathema.character.equipment.creation.properties.ShieldStatisticsProperties;
 import net.sf.anathema.lib.resources.IResources;
 

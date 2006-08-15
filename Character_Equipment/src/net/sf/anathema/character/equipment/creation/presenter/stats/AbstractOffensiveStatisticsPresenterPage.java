@@ -2,9 +2,9 @@ package net.sf.anathema.character.equipment.creation.presenter.stats;
 
 import java.awt.Component;
 
-import net.sf.anathema.character.equipment.creation.model.IEquipmentStatisticsCreationModel;
-import net.sf.anathema.character.equipment.creation.model.IOffensiveStatisticsModel;
-import net.sf.anathema.character.equipment.creation.model.IWeaponDamageModel;
+import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
+import net.sf.anathema.character.equipment.creation.model.stats.IOffensiveStatisticsModel;
+import net.sf.anathema.character.equipment.creation.model.stats.IWeaponDamageModel;
 import net.sf.anathema.character.equipment.creation.properties.OffensiveStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.view.IWeaponDamageView;
 import net.sf.anathema.lib.resources.IResources;

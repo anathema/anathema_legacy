@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.creation.presenter.stats;
 
 import net.disy.commons.swing.ui.ObjectUiListCellRenderer;
-import net.sf.anathema.character.equipment.creation.model.IWeaponDamageModel;
+import net.sf.anathema.character.equipment.creation.model.stats.IWeaponDamageModel;
 import net.sf.anathema.character.equipment.creation.properties.WeaponDamageProperties;
 import net.sf.anathema.character.equipment.creation.view.IWeaponDamageView;
 import net.sf.anathema.character.generic.health.HealthType;
