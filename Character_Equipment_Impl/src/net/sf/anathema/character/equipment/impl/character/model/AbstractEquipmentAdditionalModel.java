@@ -5,8 +5,8 @@ import java.util.List;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.character.equipment.character.model.IEquipmentTemplate;
 import net.sf.anathema.character.equipment.impl.character.model.natural.TotalArmour;
+import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
@@ -47,7 +47,7 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
     return equipmentItems.toArray(new IEquipmentItem[equipmentItems.size()]);
   }
 
-  public final void addEquipmentObject(final IEquipmentTemplate template) {
+  public final void addEquipmentObjectFor(final IEquipmentTemplate template) {
     final IEquipmentItem item = new EquipmentItem(template, ruleSet);
     equipmentItems.add(item);
     equipmentItemControl.forAllDo(new IClosure<ICollectionListener<IEquipmentItem>>() {

@@ -5,7 +5,7 @@ import java.awt.Component;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
 
-import net.sf.anathema.character.equipment.character.model.IEquipmentTemplate;
+import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 
 public class EquipmentObjectCellRenderer extends DefaultListCellRenderer {
 

@@ -2,9 +2,9 @@ package net.sf.anathema.test.character.equipment.character;
 
 import net.sf.anathema.character.equipment.character.EquipmentAdditionalPresenter;
 import net.sf.anathema.character.equipment.character.EquipmentObjectCellRenderer;
-import net.sf.anathema.character.equipment.character.model.IEquipmentObjectCollection;
-import net.sf.anathema.character.equipment.character.model.IEquipmentTemplate;
+import net.sf.anathema.character.equipment.character.model.IEquipmentItemCollection;
 import net.sf.anathema.character.equipment.character.view.IEquipmentAdditionalView;
+import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.test.character.generic.framework.magic.stringbuilder.DummyResources;
@@ -17,7 +17,7 @@ public class EquipmentAdditionalPresenterTest extends BasicTestCase {
   public void testInitPresentation() throws Exception {
     DummyResources resources = new DummyResources();
     IEquipmentTemplate[] equipmentTemplates = new IEquipmentTemplate[0];
-    IEquipmentObjectCollection model = EasyMock.createNiceMock(IEquipmentObjectCollection.class);
+    IEquipmentItemCollection model = EasyMock.createNiceMock(IEquipmentItemCollection.class);
     IEquipmentAdditionalView view = EasyMock.createNiceMock(IEquipmentAdditionalView.class);
     EasyMock.expect(model.getAvailableTemplates()).andReturn(equipmentTemplates).once();
     IListObjectSelectionView<IEquipmentTemplate> equipmentPickList = EasyMock.createMock(IListObjectSelectionView.class);

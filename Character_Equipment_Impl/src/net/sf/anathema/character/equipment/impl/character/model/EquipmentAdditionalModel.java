@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.character.equipment.character.model.IEquipmentTemplate;
+import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
@@ -23,7 +23,7 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
     this.naturalArmour = naturalArmour;
     this.availableTemplates = availableTemplates;
     if (naturalWeapons != null) {
-      addEquipmentObject(naturalWeapons);
+      addEquipmentObjectFor(naturalWeapons);
     }
   }
 

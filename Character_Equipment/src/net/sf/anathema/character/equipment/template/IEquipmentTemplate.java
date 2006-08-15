@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.character.model;
+package net.sf.anathema.character.equipment.template;
 
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;

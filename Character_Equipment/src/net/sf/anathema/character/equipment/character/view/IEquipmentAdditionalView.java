@@ -2,7 +2,7 @@ package net.sf.anathema.character.equipment.character.view;
 
 import javax.swing.Action;
 
-import net.sf.anathema.character.equipment.character.model.IEquipmentTemplate;
+import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.framework.presenter.view.ISimpleTabView;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 

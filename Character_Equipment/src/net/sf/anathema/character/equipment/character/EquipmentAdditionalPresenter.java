@@ -4,10 +4,10 @@ import java.awt.Component;
 
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.character.equipment.character.model.IEquipmentObjectCollection;
-import net.sf.anathema.character.equipment.character.model.IEquipmentTemplate;
+import net.sf.anathema.character.equipment.character.model.IEquipmentItemCollection;
 import net.sf.anathema.character.equipment.character.view.IEquipmentAdditionalView;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
+import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.lib.control.collection.CollectionAdapter;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.IPresenter;
@@ -17,12 +17,12 @@ import net.sf.anathema.lib.resources.IResources;
 public class EquipmentAdditionalPresenter implements IPresenter {
 
   private final IResources resources;
-  private final IEquipmentObjectCollection model;
+  private final IEquipmentItemCollection model;
   private final IEquipmentAdditionalView view;
 
   public EquipmentAdditionalPresenter(
       IResources resources,
-      IEquipmentObjectCollection model,
+      IEquipmentItemCollection model,
       IEquipmentAdditionalView view) {
     this.resources = resources;
     this.model = model;
@@ -51,7 +51,7 @@ public class EquipmentAdditionalPresenter implements IPresenter {
     final SmartAction addAction = new SmartAction(resources.getString("AdditionalTemplateView.AddTemplate.Action.Name")) {
       @Override
       protected void execute(Component parentComponent) {
-        model.addEquipmentObject(equipmentTemplatePickList.getSelectedObject());
+        model.addEquipmentObjectFor(equipmentTemplatePickList.getSelectedObject());
       }
     };
     equipmentTemplatePickList.addObjectSelectionChangedListener(new IObjectValueChangedListener<IEquipmentTemplate>() {
