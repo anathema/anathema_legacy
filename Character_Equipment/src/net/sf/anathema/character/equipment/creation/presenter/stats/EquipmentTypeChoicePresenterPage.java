@@ -11,7 +11,7 @@ import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
-import net.sf.anathema.character.equipment.creation.properties.EquipmentTypeChoiceProperties;
+import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentTypeChoiceProperties;
 import net.sf.anathema.character.equipment.creation.view.IEquipmentTypeChoiceView;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;

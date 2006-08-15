@@ -4,7 +4,7 @@ import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTag;
-import net.sf.anathema.character.equipment.creation.properties.TagPageProperties;
+import net.sf.anathema.character.equipment.creation.presenter.stats.properties.TagPageProperties;
 import net.sf.anathema.character.equipment.creation.view.IWeaponTagsView;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;

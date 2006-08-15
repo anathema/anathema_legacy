@@ -11,7 +11,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsModel;
-import net.sf.anathema.character.equipment.creation.properties.EquipmentStatisticsProperties;
+import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentStatisticsProperties;
 import net.sf.anathema.character.equipment.creation.view.IWeaponStatisticsView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;

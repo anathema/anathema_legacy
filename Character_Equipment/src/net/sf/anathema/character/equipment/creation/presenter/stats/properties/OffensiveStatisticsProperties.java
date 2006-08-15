@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.creation.properties;
+package net.sf.anathema.character.equipment.creation.presenter.stats.properties;
 
 import net.sf.anathema.lib.resources.IResources;
 

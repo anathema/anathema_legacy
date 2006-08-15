@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.creation.properties;
+package net.sf.anathema.character.equipment.creation.presenter.stats.properties;
 
 import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;

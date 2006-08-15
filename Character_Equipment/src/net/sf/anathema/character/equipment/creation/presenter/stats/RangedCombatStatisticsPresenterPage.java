@@ -4,7 +4,7 @@ import java.awt.Component;
 
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IRangedCombatStatisticsModel;
-import net.sf.anathema.character.equipment.creation.properties.RangedCombatStatisticsProperties;
+import net.sf.anathema.character.equipment.creation.presenter.stats.properties.RangedCombatStatisticsProperties;
 import net.sf.anathema.lib.resources.IResources;
 
 public class RangedCombatStatisticsPresenterPage extends
