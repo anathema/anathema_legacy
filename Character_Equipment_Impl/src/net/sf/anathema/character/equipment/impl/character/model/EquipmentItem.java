@@ -7,13 +7,14 @@ import java.util.List;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public class EquipmentItem implements IEquipmentItem {
 
   private List<IEquipmentStats> printedStats = new ArrayList<IEquipmentStats>();
   private final IEquipmentTemplate template;
 
-  public EquipmentItem(IEquipmentTemplate template) {
+  public EquipmentItem(IEquipmentTemplate template, IExaltedRuleSet ruleSet) {
     this.template = template;
     Collections.addAll(printedStats, template.getEquipmentStats());
   }

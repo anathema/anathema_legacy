@@ -8,6 +8,7 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
+import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
   private final IEquipmentTemplate[] availableTemplates;
@@ -16,7 +17,9 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
   public EquipmentAdditionalModel(
       IArmourStats naturalArmour,
       IEquipmentTemplate naturalWeapons,
-      IEquipmentTemplate[] availableTemplates) {
+      IEquipmentTemplate[] availableTemplates,
+      IExaltedRuleSet ruleSet) {
+    super(ruleSet);
     this.naturalArmour = naturalArmour;
     this.availableTemplates = availableTemplates;
     if (naturalWeapons != null) {

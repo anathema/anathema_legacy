@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -28,6 +29,7 @@ public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory 
     if (basicCharacterContext.getRuleSet().getEdition() == ExaltedEdition.SecondEdition) {
       naturalWeapons = new NaturalWeaponTemplate();
     }
-    return new EquipmentAdditionalModel(naturalArmour, naturalWeapons, new IEquipmentTemplate[0]);
+    IExaltedRuleSet ruleSet = context.getBasicCharacterContext().getRuleSet();
+    return new EquipmentAdditionalModel(naturalArmour, naturalWeapons, new IEquipmentTemplate[0], ruleSet);
   }
 }
