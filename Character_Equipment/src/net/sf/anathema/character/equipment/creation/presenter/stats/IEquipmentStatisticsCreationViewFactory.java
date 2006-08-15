@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.creation;
+package net.sf.anathema.character.equipment.creation.presenter.stats;
 
 import net.sf.anathema.character.equipment.creation.view.IWeaponStatisticsView;
 import net.sf.anathema.character.equipment.creation.view.IEquipmentTypeChoiceView;

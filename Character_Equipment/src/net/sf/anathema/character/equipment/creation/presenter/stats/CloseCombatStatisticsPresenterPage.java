@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.creation;
+package net.sf.anathema.character.equipment.creation.presenter.stats;
 
 import java.awt.Component;
 

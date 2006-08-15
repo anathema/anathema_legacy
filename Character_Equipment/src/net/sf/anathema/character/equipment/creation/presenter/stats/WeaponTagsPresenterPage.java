@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.creation;
+package net.sf.anathema.character.equipment.creation.presenter.stats;
 
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.core.IPageContent;

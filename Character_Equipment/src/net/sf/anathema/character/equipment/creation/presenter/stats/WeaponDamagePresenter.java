@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.creation;
+package net.sf.anathema.character.equipment.creation.presenter.stats;
 
 import net.disy.commons.swing.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.character.equipment.creation.model.IWeaponDamageModel;
