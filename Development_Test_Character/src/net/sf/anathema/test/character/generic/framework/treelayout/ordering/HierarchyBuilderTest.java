@@ -1,7 +1,6 @@
 package net.sf.anathema.test.character.generic.framework.treelayout.ordering;
 
 import junit.framework.TestCase;
-
 import net.sf.anathema.character.generic.framework.magic.treelayout.hierarchy.HierarchyBuilder;
 import net.sf.anathema.character.generic.framework.magic.treelayout.hierarchy.IHierachyBuilder;
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IRegularNode;

@@ -2,8 +2,8 @@ package net.sf.anathema.test.character.generic.framework.treelayout.layering;
 
 import net.sf.anathema.character.generic.framework.magic.treelayout.layering.LongestPathLayerer;
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IRegularNode;
-import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.NodeFactory;
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IdentifiedRegularNode;
+import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.NodeFactory;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
 public class LongestPathLayererTest extends BasicTestCase {

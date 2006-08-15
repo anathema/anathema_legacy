@@ -1,7 +1,6 @@
 package net.sf.anathema.test.character.main.impl.charm;
 
 import junit.framework.TestCase;
-
 import net.disy.commons.core.util.ContractFailedException;
 import net.sf.anathema.character.generic.impl.magic.Charm;
 import net.sf.anathema.character.generic.impl.magic.CostList;

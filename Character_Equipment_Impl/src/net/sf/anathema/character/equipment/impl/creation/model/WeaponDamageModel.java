@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.impl.creation.model;
 
-import net.sf.anathema.character.equipment.creation.model.IWeaponDamageModel;
+import net.sf.anathema.character.equipment.creation.model.stats.IWeaponDamageModel;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;

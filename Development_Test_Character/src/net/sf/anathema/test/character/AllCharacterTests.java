@@ -1,8 +1,8 @@
 package net.sf.anathema.test.character;
 
-import net.sf.anathema.demo.character.AllCharacterDemos;
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import net.sf.anathema.demo.character.AllCharacterDemos;
 import de.jdemo.junit.Demo2TestConverter;
 
 public class AllCharacterTests {

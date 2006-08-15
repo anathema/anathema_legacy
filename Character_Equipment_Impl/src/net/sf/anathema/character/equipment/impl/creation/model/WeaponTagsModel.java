@@ -3,8 +3,8 @@ package net.sf.anathema.character.equipment.impl.creation.model;
 import java.util.EnumMap;
 import java.util.Map;
 
-import net.sf.anathema.character.equipment.creation.model.IWeaponTag;
-import net.sf.anathema.character.equipment.creation.model.IWeaponTagsModel;
+import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTag;
+import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 
 public class WeaponTagsModel implements IWeaponTagsModel {

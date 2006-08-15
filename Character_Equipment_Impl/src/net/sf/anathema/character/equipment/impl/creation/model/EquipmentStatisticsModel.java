@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.impl.creation.model;
 
-import net.sf.anathema.character.equipment.creation.model.IEquipmentStatisticsModel;
+import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsModel;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;

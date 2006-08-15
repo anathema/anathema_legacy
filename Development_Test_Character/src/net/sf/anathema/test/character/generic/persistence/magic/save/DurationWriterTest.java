@@ -1,7 +1,6 @@
 package net.sf.anathema.test.character.generic.persistence.magic.save;
 
 import junit.framework.TestCase;
-
 import net.sf.anathema.character.generic.impl.magic.persistence.writer.DurationWriter;
 import net.sf.anathema.character.generic.magic.charms.duration.QualifiedAmountDuration;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;

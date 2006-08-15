@@ -1,11 +1,11 @@
 package net.sf.anathema.character.equipment.impl.creation.model;
 
-import net.sf.anathema.character.equipment.creation.model.IArmourStatisticsModel;
-import net.sf.anathema.character.equipment.creation.model.ICloseCombatStatsticsModel;
-import net.sf.anathema.character.equipment.creation.model.IEquipmentStatisticsCreationModel;
-import net.sf.anathema.character.equipment.creation.model.IRangedCombatStatisticsModel;
-import net.sf.anathema.character.equipment.creation.model.IShieldStatisticsModel;
-import net.sf.anathema.character.equipment.creation.model.IWeaponTagsModel;
+import net.sf.anathema.character.equipment.creation.model.stats.IArmourStatisticsModel;
+import net.sf.anathema.character.equipment.creation.model.stats.ICloseCombatStatsticsModel;
+import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
+import net.sf.anathema.character.equipment.creation.model.stats.IRangedCombatStatisticsModel;
+import net.sf.anathema.character.equipment.creation.model.stats.IShieldStatisticsModel;
+import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;

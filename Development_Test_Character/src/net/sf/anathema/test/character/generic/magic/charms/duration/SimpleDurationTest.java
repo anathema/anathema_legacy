@@ -1,7 +1,7 @@
 package net.sf.anathema.test.character.generic.magic.charms.duration;
 
-import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
+import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
 public class SimpleDurationTest extends BasicTestCase {

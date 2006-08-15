@@ -1,9 +1,9 @@
 package net.sf.anathema.demo.character.equipment.statscreation;
 
 import net.disy.commons.swing.dialog.wizard.WizardDialog;
-import net.sf.anathema.character.equipment.creation.EquipmentTypeChoicePresenterPage;
-import net.sf.anathema.character.equipment.creation.IEquipmentStatisticsCreationViewFactory;
-import net.sf.anathema.character.equipment.creation.model.IEquipmentStatisticsCreationModel;
+import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
+import net.sf.anathema.character.equipment.creation.presenter.stats.EquipmentTypeChoicePresenterPage;
+import net.sf.anathema.character.equipment.creation.presenter.stats.IEquipmentStatisticsCreationViewFactory;
 import net.sf.anathema.character.equipment.impl.creation.EquipmentStatisticsCreationViewFactory;
 import net.sf.anathema.character.equipment.impl.creation.model.EquipmentStatisticsCreationModel;
 import net.sf.anathema.framework.resources.AnathemaResources;

@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment.impl.creation.model;
 
-import net.sf.anathema.character.equipment.creation.model.IArmourStatisticsModel;
+import net.sf.anathema.character.equipment.creation.model.stats.IArmourStatisticsModel;
 import net.sf.anathema.lib.data.Range;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.intvalue.RangedIntValueModel;

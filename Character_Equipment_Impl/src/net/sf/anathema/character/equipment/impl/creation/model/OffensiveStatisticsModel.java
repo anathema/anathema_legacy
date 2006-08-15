@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.creation.model;
 
-import net.sf.anathema.character.equipment.creation.model.IOffensiveStatisticsModel;
-import net.sf.anathema.character.equipment.creation.model.IWeaponDamageModel;
+import net.sf.anathema.character.equipment.creation.model.stats.IOffensiveStatisticsModel;
+import net.sf.anathema.character.equipment.creation.model.stats.IWeaponDamageModel;
 import net.sf.anathema.lib.data.Range;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.intvalue.RangedIntValueModel;

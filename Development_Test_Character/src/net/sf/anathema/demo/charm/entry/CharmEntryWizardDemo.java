@@ -8,7 +8,6 @@ import net.sf.anathema.charmentry.presenter.HeaderDataEntryPage;
 import net.sf.anathema.charmentry.presenter.model.ICharmEntryModel;
 import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
-
 import de.jdemo.extensions.SwingDemoCase;
 
 public class CharmEntryWizardDemo extends SwingDemoCase {
