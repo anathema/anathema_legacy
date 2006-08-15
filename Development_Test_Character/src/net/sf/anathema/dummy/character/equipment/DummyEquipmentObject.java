@@ -21,7 +21,7 @@ public class DummyEquipmentObject implements IEquipmentItem {
     this.allEquipments.add(equipment);
   }
   
-  public IEquipmentStats[] getEquipments() {
+  public IEquipmentStats[] getStats() {
     return allEquipments.toArray(new IEquipmentStats[allEquipments.size()]);
   }
   

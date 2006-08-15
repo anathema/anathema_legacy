@@ -8,7 +8,7 @@ public interface IEquipmentItem {
 
   public String getDescription();
 
-  public IEquipmentStats[] getEquipments();
+  public IEquipmentStats[] getStats();
 
   public void setPrintEnabled(IEquipmentStats equipment, boolean enabled);
 

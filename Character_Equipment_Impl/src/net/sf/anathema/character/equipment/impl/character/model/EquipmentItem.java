@@ -13,18 +13,20 @@ public class EquipmentItem implements IEquipmentItem {
 
   private List<IEquipmentStats> printedStats = new ArrayList<IEquipmentStats>();
   private final IEquipmentTemplate template;
+  private final IExaltedRuleSet ruleSet;
 
   public EquipmentItem(IEquipmentTemplate template, IExaltedRuleSet ruleSet) {
     this.template = template;
-    Collections.addAll(printedStats, template.getEquipmentStats());
+    this.ruleSet = ruleSet;
+    Collections.addAll(printedStats, template.getStats(ruleSet));
   }
 
   public String getDescription() {
     return template.getDescription();
   }
 
-  public IEquipmentStats[] getEquipments() {
-    return template.getEquipmentStats();
+  public IEquipmentStats[] getStats() {
+    return template.getStats(ruleSet);
   }
 
   public String getName() {

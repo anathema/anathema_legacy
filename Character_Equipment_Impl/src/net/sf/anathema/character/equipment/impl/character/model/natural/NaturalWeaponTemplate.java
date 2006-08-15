@@ -2,6 +2,8 @@ package net.sf.anathema.character.equipment.impl.character.model.natural;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
+import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public class NaturalWeaponTemplate implements IEquipmentTemplate {
 
@@ -11,7 +13,10 @@ public class NaturalWeaponTemplate implements IEquipmentTemplate {
     return "The Characters natural weapons";
   }
 
-  public IEquipmentStats[] getEquipmentStats() {
+  public IEquipmentStats[] getStats(IExaltedRuleSet ruleSet) {
+    if (ruleSet != ExaltedRuleSet.SecondEdition) {
+      return new IEquipmentStats[0];
+    }
     return equipmentStats;
   }
 

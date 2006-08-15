@@ -30,7 +30,7 @@ public class EquipmentObjectPresenter implements IPresenter {
     if (description != null) {
       view.setItemDescription(description);
     }
-    for (final IEquipmentStats equipment : model.getEquipments()) {
+    for (final IEquipmentStats equipment : model.getStats()) {
       final BooleanModel booleanModel = view.addStats(createEquipmentDescription(equipment));
       booleanModel.setValue(model.isPrintEnabled(equipment));
       booleanModel.addChangeListener(new ChangeListener() {
