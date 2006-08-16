@@ -27,10 +27,11 @@ import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.framework.presenter.view.IMultiTabView;
 import net.sf.anathema.lib.gui.IDisposable;
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
-public class CharacterPresenter {
+public class CharacterPresenter implements IPresenter{
 
   private final ICharacter character;
   private final ICharacterView characterView;
@@ -102,13 +103,13 @@ public class CharacterPresenter {
 
   private void initMiscellaneousPresentation() {
     String miscellaneousTitle = getString("CardView.MiscellaneousConfiguration.Title"); //$NON-NLS-1$
-    initMultiTabViewPresentation(miscellaneousTitle, new TabContent[0], AdditionalModelType.Miscellaneous);
+    initMultiTabViewPresentation(miscellaneousTitle, AdditionalModelType.Miscellaneous);
   }
 
   private void initMultiTabViewPresentation(
       String viewTitle,
-      TabContent[] coreViews,
-      AdditionalModelType additionalModelType) {
+      AdditionalModelType additionalModelType,
+      TabContent... coreViews) {
     IRegistry<String, IAdditionalViewFactory> factoryRegistry = generics.getAdditionalViewFactoryRegistry();
     IAdditionalModel[] additionalModels = getStatistics().getExtendedConfiguration().getAdditionalModels(
         additionalModelType);
@@ -155,7 +156,7 @@ public class CharacterPresenter {
         characterView.addDisposable(disposable);
       }
     }
-    initMultiTabViewPresentation(magicViewHeader, basicMagicViews, AdditionalModelType.Magic);
+    initMultiTabViewPresentation(magicViewHeader, AdditionalModelType.Magic, basicMagicViews);
   }
 
   private ICharacterStatistics getStatistics() {
@@ -165,44 +166,50 @@ public class CharacterPresenter {
   private void initCharacterConceptPresentation() {
     String viewTitle = getString("CardView.CharacterConcept.Title"); //$NON-NLS-1$
     ICharacterConceptAndRulesViewFactory viewFactory = characterView.createConceptViewFactory();
-    TabContent[] conceptViews = new CharacterConceptAndRulesPresenter(getStatistics(), viewFactory, resources).init();
-    initMultiTabViewPresentation(viewTitle, conceptViews, AdditionalModelType.Concept);
+    TabContent conceptView = new CharacterConceptAndRulesPresenter(getStatistics(), viewFactory, resources).init();
+    initMultiTabViewPresentation(viewTitle, AdditionalModelType.Concept, conceptView);
   }
 
-  public void initAttributePresentation() {
+  private void initAttributePresentation() {
     String title = getString("CardView.AttributeConfiguration.Title"); //$NON-NLS-1$
-    IGroupedFavorableTraitConfigurationView attributeView = characterView.addGroupedFavorableTraitConfigurationView(
+    IGroupedFavorableTraitConfigurationView attributeView = characterView.addGroupedFavorableTraitConfigurationTab(
         title,
         1);
     IIdentifiedTraitTypeGroup[] attributeTypeGroups = getStatistics().getTraitConfiguration().getAttributeTypeGroups();
     new FavorableTraitConfigurationPresenter(attributeTypeGroups, getStatistics(), attributeView, resources).init(
+        "AttributeConfiguration", //$NON-NLS-1$
         "AttributeGroupType.Name", //$NON-NLS-1$
         false);
   }
 
   private void initAdvantagePresentation() {
     String basicAdvantageHeader = getString("CardView.Advantages.Title"); //$NON-NLS-1$
-    TabContent[] basicAdvantageTabs = new BasicAdvantagePresenter(
+    TabContent basicAdvantageTab = new BasicAdvantagePresenter(
         resources,
         getStatistics(),
         characterView.createAdvantageViewFactory(),
         generics).init();
-    initMultiTabViewPresentation(basicAdvantageHeader, basicAdvantageTabs, AdditionalModelType.Advantages);
+    initMultiTabViewPresentation(basicAdvantageHeader, AdditionalModelType.Advantages, basicAdvantageTab);
   }
 
   private String getString(String resourceKey) {
     return resources.getString(resourceKey);
   }
 
-  public void initAbilityPresentation() {
+  private void initAbilityPresentation() {
+    String basicAbilitiesHeader = getString("CardView.AbilityConfiguration.Title"); //$NON-NLS-1$
     IIdentifiedTraitTypeGroup[] traitTypeGroups = getStatistics().getTraitConfiguration().getAbilityTypeGroups();
     int groupCount = traitTypeGroups.length;
     int columnCount = groupCount / 2 + 1;
     IGroupedFavorableTraitConfigurationView abilityView = characterView.addGroupedFavorableTraitConfigurationView(
         getString("CardView.AbilityConfiguration.Title"), columnCount); //$NON-NLS-1$
-    new FavorableTraitConfigurationPresenter(traitTypeGroups, getStatistics(), abilityView, resources).init(
-        "AbilityGroup", //$NON-NLS-1$
+    TabContent basicAbilitiesTab = new FavorableTraitConfigurationPresenter(
+        traitTypeGroups,
+        getStatistics(),
+        abilityView,
+        resources).init("AbilityConfiguration", "AbilityGroup", //$NON-NLS-1$ //$NON-NLS-2$
         true);
+    initMultiTabViewPresentation(basicAbilitiesHeader, AdditionalModelType.Abilities, basicAbilitiesTab);
   }
 
   private void initCharacterDescriptionPresentation() {

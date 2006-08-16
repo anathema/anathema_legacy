@@ -62,7 +62,7 @@ public class ExaltedCharacter implements ICharacter, IItemData {
     }
   }
 
-  private void addAdditionalModels(ICharacterGenerics generics, IAdditionalTemplate[] additionalTemplates) {
+  private void addAdditionalModels(ICharacterGenerics generics, IAdditionalTemplate... additionalTemplates) {
     IRegistry<String, IAdditionalModelFactory> additionalModelFactoryRegistry = generics.getAdditionalModelFactoryRegistry();
     for (IAdditionalTemplate additionalTemplate : additionalTemplates) {
       IAdditionalModelFactory factory = additionalModelFactoryRegistry.get(additionalTemplate.getId());

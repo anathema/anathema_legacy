@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.ListCellRenderer;
 
 import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.view.basic.IButtonControlledComboEditView;
@@ -25,32 +26,27 @@ public class ButtonControlledComboEditView<V> implements IButtonControlledComboE
   private final ChangeableJComboBox<V> comboBox;
   private final JButton addButton;
   private final JTextField text;
-  private final boolean headerRow;
 
-  public ButtonControlledComboEditView(V[] objects, int textFieldWidth, Icon addIcon, boolean headerRow) {
-    this.headerRow = headerRow;
+  public ButtonControlledComboEditView(V[] objects, Icon addIcon) {
     this.comboBox = new ChangeableJComboBox<V>(objects, false);
-    this.text = new JTextField(textFieldWidth);
-    addButton = new JButton(null, addIcon);
+    this.text = new JTextField();
+    this.addButton = new JButton(null, addIcon);
     addButton.setPreferredSize(new Dimension(addIcon.getIconWidth() + 4, addIcon.getIconHeight() + 4));
   }
 
   public void addTo(GridDialogPanel panel, final String labelText, final ListCellRenderer renderer) {
     panel.add(new IDialogComponent() {
-
       public int getColumnCount() {
-        return headerRow ? 3 : 4;
+        return 3;
       }
 
       public void fillInto(JPanel layoutedPanel, int columnCount) {
         comboBox.setRenderer(renderer);
         layoutedPanel.add(new JLabel(labelText));
-        if (headerRow) {
-          layoutedPanel.add(new EndOfLineMarkerComponent());
-        }
+        layoutedPanel.add(new EndOfLineMarkerComponent());
         layoutedPanel.add(comboBox.getComponent());
-        layoutedPanel.add(text);
-        layoutedPanel.add(addButton);
+        layoutedPanel.add(text, GridDialogLayoutData.FILL_HORIZONTAL);
+        layoutedPanel.add(addButton, GridDialogLayoutData.RIGHT);
       }
     });
   }

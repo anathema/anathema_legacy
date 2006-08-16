@@ -45,13 +45,17 @@ public class CharacterView extends AbstractTabbedItemView implements ICharacterV
   public IGroupedFavorableTraitConfigurationView addGroupedFavorableTraitConfigurationView(
       String header,
       int columnCount) {
-    IGroupedFavorableTraitConfigurationView groupedConfigurationView = new GroupedFavorableTraitConfigurationView(
+    return new GroupedFavorableTraitConfigurationView(
         columnCount,
         header,
         intValueDisplayFactory,
         intValueDisplayFactoryWithoutMarker);
-    addTab(groupedConfigurationView, header);
-    return groupedConfigurationView;
+  }
+
+  public IGroupedFavorableTraitConfigurationView addGroupedFavorableTraitConfigurationTab(String header, int columnCount) {
+    IGroupedFavorableTraitConfigurationView view = addGroupedFavorableTraitConfigurationView(header, columnCount);
+    addTab(view, header);
+    return view;
   }
 
   public ICharacterDescriptionView addCharacterDescriptionView(String header) {

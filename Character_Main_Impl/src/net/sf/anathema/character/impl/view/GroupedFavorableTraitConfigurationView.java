@@ -135,9 +135,7 @@ public class GroupedFavorableTraitConfigurationView extends AbstractTabView<Obje
     initSpecialtyPanels();
     ButtonControlledComboEditView<ITraitType> objectSelectionView = new ButtonControlledComboEditView<ITraitType>(
         traitTypes,
-        12,
-        addIcon,
-        true);
+        addIcon);
     objectSelectionView.addTo(specialtyDialogPanel, labelText, renderer);
     return objectSelectionView;
   }

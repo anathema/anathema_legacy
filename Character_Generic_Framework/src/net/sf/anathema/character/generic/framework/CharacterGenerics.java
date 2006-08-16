@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
+import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.NullAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.backgrounds.BackgroundRegistry;
 import net.sf.anathema.character.generic.framework.module.object.CharacterModuleObjectMap;
 import net.sf.anathema.character.generic.framework.reporting.template.ICharacterReportTemplate;
@@ -28,7 +29,7 @@ public class CharacterGenerics implements ICharacterGenerics {
   private final ITemplateRegistry templateRegistry = new TemplateRegistry();
   private final IRegistry<String, IAdditionalModelFactory> additionalModelRegistry = new Registry<String, IAdditionalModelFactory>();
   private final IRegistry<String, IAdditionalViewFactory> additionalViewRegistry = new Registry<String, IAdditionalViewFactory>();
-  private final IRegistry<String, IAdditionalPersisterFactory> additionalPersisterRegistry = new Registry<String, IAdditionalPersisterFactory>();
+  private final IRegistry<String, IAdditionalPersisterFactory> additionalPersisterRegistry;
   private final ICollectionRegistry<IGlobalAdditionalTemplate> additionalTemplateRegistry = new CollectionRegistry<IGlobalAdditionalTemplate>();
   private final ICollectionRegistry<ICharacterReportTemplate> reportTemplateRegistry = new CollectionRegistry<ICharacterReportTemplate>();
   private final ICharacterTemplateRegistryCollection templateRegistries = new CharacterTemplateRegistryCollection();
@@ -36,6 +37,11 @@ public class CharacterGenerics implements ICharacterGenerics {
   private final IRegistry<String, IAdditionalTemplateParser> additionalTemplateParserRegistry = new Registry<String, IAdditionalTemplateParser>();
   private final ICharmProvider charmProvider = new CharmProvider();
   private final CharacterModuleObjectMap moduleObjectMap = new CharacterModuleObjectMap();
+
+  public CharacterGenerics() {
+    this.additionalPersisterRegistry = new Registry<String, IAdditionalPersisterFactory>(
+        new NullAdditionalPersisterFactory());
+  }
 
   public IIdentificateRegistry<IBackgroundTemplate> getBackgroundRegistry() {
     return backgroundRegistry;

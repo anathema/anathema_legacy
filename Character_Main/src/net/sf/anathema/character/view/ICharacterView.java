@@ -14,6 +14,8 @@ public interface ICharacterView extends IItemView {
       String header,
       int columnCount);
 
+  public IGroupedFavorableTraitConfigurationView addGroupedFavorableTraitConfigurationTab(String header, int columnCount);
+
   public ICharacterDescriptionView addCharacterDescriptionView(String header);
 
   public IOverviewView addCreationOverviewView();

@@ -45,7 +45,7 @@ public class CharacterConceptAndRulesPresenter {
     this.resources = resources;
   }
 
-  public TabContent[] init() {
+  public TabContent init() {
     initRulesPresentation();
     initCastePresentation();
     statistics.getCharacterConcept().getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
@@ -60,7 +60,7 @@ public class CharacterConceptAndRulesPresenter {
     initConceptPresentation();
     initExperienceListening();
     initGui();
-    return new TabContent[] { new TabContent(resources.getString("CardView.CharacterConcept.Title"), view) }; //$NON-NLS-1$
+    return new TabContent(resources.getString("CardView.CharacterConcept.Title"), view); //$NON-NLS-1$
   }
 
   private void initExperienceListening() {

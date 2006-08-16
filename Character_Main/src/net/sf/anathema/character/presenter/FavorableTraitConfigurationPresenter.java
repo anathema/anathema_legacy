@@ -48,7 +48,7 @@ public class FavorableTraitConfigurationPresenter extends AbstractTraitPresenter
     this.configurationView = configurationView;
   }
 
-  public void init(String typePrefix, final boolean initSpecialties) {
+  public TabContent init(String viewKey, String typePrefix, final boolean initSpecialties) {
     for (IIdentifiedTraitTypeGroup traitTypeGroup : traitTypeGroups) {
       configurationView.startNewTraitGroup(resources.getString(typePrefix + "." + traitTypeGroup.getGroupId().getId())); //$NON-NLS-1$
       addAbilityViews(traitConfiguration.getFavorableTraits(traitTypeGroup.getAllGroupTypes()));
@@ -69,6 +69,7 @@ public class FavorableTraitConfigurationPresenter extends AbstractTraitPresenter
       }
     });
     updateButtons();
+    return new TabContent(resources.getString("CardView." + viewKey + ".Title"), configurationView); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   private void updateButtons() {
