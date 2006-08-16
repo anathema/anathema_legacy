@@ -3,7 +3,7 @@ package net.sf.anathema.character.lunar.beastform;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
+import net.sf.anathema.character.library.intvalue.MarkerIntValueDisplayFactory;
 import net.sf.anathema.character.lunar.beastform.presenter.BeastformPresenter;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.lunar.beastform.view.BeastformView;
@@ -14,7 +14,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class BeastformViewFactory implements IAdditionalViewFactory {
 
   public ISimpleTabView createView(IAdditionalModel model, final IResources resources, CharacterType type) {
-    IntValueDisplayFactory intValueDisplayFactory = new IntValueDisplayFactory(resources, type);
+    MarkerIntValueDisplayFactory intValueDisplayFactory = new MarkerIntValueDisplayFactory(resources, type);
     BeastformView view = new BeastformView(intValueDisplayFactory, new IBeastformViewProperties() {
       public String getCharmString() {
         return resources.getString("Lunar.DeadlyBeastmanTransformation"); //$NON-NLS-1$

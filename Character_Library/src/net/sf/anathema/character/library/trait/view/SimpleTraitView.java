@@ -19,17 +19,17 @@ public class SimpleTraitView extends AbstractTraitView implements IGridDialogPan
   private final GridAlignment dotAlignment;
   private JPanel traitViewPanel;
 
-  public SimpleTraitView(IIntValueDisplayFactory configuration, String labelText, int value, int maxValue) {
-    this(configuration, labelText, value, maxValue, GridAlignment.END);
+  public SimpleTraitView(IIntValueDisplayFactory factory, String labelText, int value, int maxValue) {
+    this(factory, labelText, value, maxValue, GridAlignment.END);
   }
 
   public SimpleTraitView(
-      IIntValueDisplayFactory configuration,
+      IIntValueDisplayFactory factory,
       String labelText,
       int value,
       int maxValue,
       GridAlignment dotAlignment) {
-    super(configuration, labelText, value, maxValue);
+    super(factory, labelText, value, maxValue);
     this.label = new JLabel(getLabelText());
     this.displayComponent = getValueDisplay().getComponent();
     this.dotAlignment = dotAlignment;

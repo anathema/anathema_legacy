@@ -7,7 +7,14 @@ import net.sf.anathema.framework.presenter.view.ITabView;
 
 public interface IGroupedFavorableTraitConfigurationView extends ISpecialtyConfigurationView, ITabView<Object> {
 
-  public IToggleButtonTraitView<?> addTraitView(
+  public IToggleButtonTraitView< ? > addTraitView(
+      String labelText,
+      int value,
+      int maxValue,
+      boolean selected,
+      IIconToggleButtonProperties properties);
+
+  public IToggleButtonTraitView< ? > addMarkerLessTraitView(
       String labelText,
       int value,
       int maxValue,

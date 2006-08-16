@@ -30,10 +30,16 @@ public class CharacterView extends AbstractTabbedItemView implements ICharacterV
   private OverviewView experienceOverviewView;
   private OverviewView overviewView;
   private final List<IDisposable> disposables = new ArrayList<IDisposable>();
+  private final IIntValueDisplayFactory intValueDisplayFactoryWithoutMarker;
 
-  public CharacterView(IIntValueDisplayFactory factory, String name, Icon icon) {
+  public CharacterView(
+      IIntValueDisplayFactory factory,
+      String name,
+      Icon icon,
+      IIntValueDisplayFactory factoryWithoutMarker) {
     super(name, icon);
     this.intValueDisplayFactory = factory;
+    this.intValueDisplayFactoryWithoutMarker = factoryWithoutMarker;
   }
 
   public IGroupedFavorableTraitConfigurationView addGroupedFavorableTraitConfigurationView(
@@ -42,7 +48,8 @@ public class CharacterView extends AbstractTabbedItemView implements ICharacterV
     IGroupedFavorableTraitConfigurationView groupedConfigurationView = new GroupedFavorableTraitConfigurationView(
         columnCount,
         header,
-        intValueDisplayFactory);
+        intValueDisplayFactory,
+        intValueDisplayFactoryWithoutMarker);
     addTab(groupedConfigurationView, header);
     return groupedConfigurationView;
   }

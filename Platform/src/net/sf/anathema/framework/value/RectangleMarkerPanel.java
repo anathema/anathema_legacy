@@ -4,17 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import javax.swing.BoxLayout;
-import javax.swing.JPanel;
-
-public class RectangleMarkerPanel extends JPanel {
-
+public class RectangleMarkerPanel extends AbstractMarkerPanel {
   private final Rectangle rectangleToDraw = new Rectangle();
-
-  public RectangleMarkerPanel() {
-    setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-    setOpaque(false);
-  }
 
   @Override
   protected void paintComponent(Graphics g) {
@@ -24,6 +15,7 @@ public class RectangleMarkerPanel extends JPanel {
     g.fillRect(rectangleToDraw.x, rectangleToDraw.y, rectangleToDraw.width - 1, rectangleToDraw.height - 1);
   }
 
+  @Override
   public void resizeMarkerRectangle(int width) {
     width = Math.min(width, getWidth());
     rectangleToDraw.setSize(width, getHeight());

@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
-import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
+import net.sf.anathema.character.library.intvalue.MarkerIntValueDisplayFactory;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.trait.IFavorableDefaultTrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
@@ -43,7 +43,7 @@ public class SiderealCollegePresenter extends AbstractTraitPresenter {
     final IOverviewCategory experienceOverview = view.createOverview(resources.getString("Overview.Title")); //$NON-NLS-1$
     final IValueView<Integer> experienceView = experienceOverview.addIntegerValueView(
         resources.getString("Astrology.Overview.Experience"), 3); //$NON-NLS-1$
-    IIntValueDisplayFactory factory = new IntValueDisplayFactory(resources, CharacterType.SIDEREAL);
+    IIntValueDisplayFactory factory = new MarkerIntValueDisplayFactory(resources, CharacterType.SIDEREAL);
     for (final IAstrologicalHouse house : model.getAllHouses()) {
       view.startGroup(resources.getString("AstrologicalHouses.GroupLabel." + house.getId())); //$NON-NLS-1$
       for (final IFavorableDefaultTrait college : house.getColleges()) {

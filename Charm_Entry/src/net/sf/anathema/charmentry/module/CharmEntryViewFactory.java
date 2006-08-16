@@ -2,7 +2,7 @@ package net.sf.anathema.charmentry.module;
 
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
-import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
+import net.sf.anathema.character.library.intvalue.MarkerIntValueDisplayFactory;
 import net.sf.anathema.charmentry.presenter.view.ICharmTypeEntryView;
 import net.sf.anathema.charmentry.presenter.view.ICostEntryPageView;
 import net.sf.anathema.charmentry.presenter.view.IDurationEntryView;
@@ -28,7 +28,7 @@ public class CharmEntryViewFactory implements ICharmEntryViewFactory {
   private final IIntValueDisplayFactory factory;
 
   public CharmEntryViewFactory(IResources resources) {
-    this.factory = new IntValueDisplayFactory(resources, CharacterType.MORTAL);
+    this.factory = new MarkerIntValueDisplayFactory(resources, CharacterType.MORTAL);
   }
 
   public IHeaderDataEntryView createHeaderDataEntryView() {

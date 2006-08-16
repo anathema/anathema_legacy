@@ -29,12 +29,18 @@ public class GroupedFavorableTraitConfigurationView extends AbstractTabView<Obje
   private GroupedGridDialogPanel groupedTraitView;
   private GridDialogPanel specialtyDialogPanel;
   private JPanel specialtyPanel;
-  private final IIntValueDisplayFactory intValueDisplayFactory;
+  private final IIntValueDisplayFactory markerIntValueDisplayFactory;
+  private final IIntValueDisplayFactory markerLessIntValueDisplayFactory;
 
-  public GroupedFavorableTraitConfigurationView(int columnCount, String header, IIntValueDisplayFactory guiConfiguration) {
+  public GroupedFavorableTraitConfigurationView(
+      int columnCount,
+      String header,
+      IIntValueDisplayFactory factoryWithMarker,
+      IIntValueDisplayFactory factoryWithoutMarker) {
     super(header);
     this.groupedTraitView = new GroupedGridDialogPanel(columnCount);
-    this.intValueDisplayFactory = guiConfiguration;
+    this.markerIntValueDisplayFactory = factoryWithMarker;
+    this.markerLessIntValueDisplayFactory = factoryWithoutMarker;
   }
 
   public ISpecialtyView addSpecialtyView(
@@ -45,7 +51,7 @@ public class GroupedFavorableTraitConfigurationView extends AbstractTabView<Obje
       int maxValue) {
     initSpecialtyPanels();
     SpecialtyView specialtyView = new SpecialtyView(
-        intValueDisplayFactory,
+        markerIntValueDisplayFactory,
         abilityName,
         deleteIcon,
         specialtyName,
@@ -61,7 +67,26 @@ public class GroupedFavorableTraitConfigurationView extends AbstractTabView<Obje
       int maxValue,
       boolean selected,
       IIconToggleButtonProperties properties) {
-    SimpleTraitView view = new SimpleTraitView(intValueDisplayFactory, labelText, value, maxValue);
+    return createTraitView(labelText, value, maxValue, selected, properties, markerIntValueDisplayFactory);
+  }
+
+  public IToggleButtonTraitView< ? > addMarkerLessTraitView(
+      String labelText,
+      int value,
+      int maxValue,
+      boolean selected,
+      IIconToggleButtonProperties properties) {
+    return createTraitView(labelText, value, maxValue, selected, properties, markerLessIntValueDisplayFactory);
+  }
+
+  private IToggleButtonTraitView<SimpleTraitView> createTraitView(
+      String labelText,
+      int value,
+      int maxValue,
+      boolean selected,
+      IIconToggleButtonProperties properties,
+      IIntValueDisplayFactory factory) {
+    SimpleTraitView view = new SimpleTraitView(factory, labelText, value, maxValue);
     FrontToggleButtonTraitViewWrapper<SimpleTraitView> abilityView = new FrontToggleButtonTraitViewWrapper<SimpleTraitView>(
         view,
         properties,

@@ -13,7 +13,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicLearnView;
 import net.sf.anathema.character.generic.framework.magic.view.MagicLearnView;
-import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
+import net.sf.anathema.character.library.intvalue.MarkerIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformView;
 import net.sf.anathema.framework.value.IIntValueView;
@@ -28,12 +28,12 @@ public class BeastformView implements IBeastformView {
   private final IGridDialogPanel baseContentPanel = new DefaultGridDialogPanel();
   private final IGridDialogPanel attributePanel = new DefaultGridDialogPanel();
   private final JPanel giftPanel = new JPanel(new GridDialogLayout(4, false));
-  private final IntValueDisplayFactory intValueDisplayFactory;
+  private final MarkerIntValueDisplayFactory intValueDisplayFactory;
   private final JPanel content = new JPanel(new GridDialogLayout(2, false));
   private final JPanel overviewPanel = new JPanel();
   private final IBeastformViewProperties properties;
 
-  public BeastformView(IntValueDisplayFactory intValueDisplayFactory, IBeastformViewProperties properties) {
+  public BeastformView(MarkerIntValueDisplayFactory intValueDisplayFactory, IBeastformViewProperties properties) {
     this.intValueDisplayFactory = intValueDisplayFactory;
     this.properties = properties;
   }

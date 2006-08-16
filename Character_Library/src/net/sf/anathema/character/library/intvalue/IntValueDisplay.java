@@ -12,15 +12,25 @@ import javax.swing.event.MouseInputAdapter;
 import javax.swing.event.MouseInputListener;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.sf.anathema.framework.value.AbstractMarkerPanel;
 import net.sf.anathema.framework.value.IIntValueDisplay;
+import net.sf.anathema.framework.value.NoMarkerPanel;
 import net.sf.anathema.framework.value.RectangleMarkerPanel;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
 
 public class IntValueDisplay implements IIntValueDisplay {
 
+  public static IIntValueDisplay createMarkerDisplay(Icon passiveIcon, Icon activeIcon, int maxValue) {
+    return new IntValueDisplay(passiveIcon, activeIcon, maxValue, new RectangleMarkerPanel());
+  }
+
+  public static IIntValueDisplay createMarkerLessDisplay(Icon passiveIcon, Icon activeIcon, int maxValue) {
+    return new IntValueDisplay(passiveIcon, activeIcon, maxValue, new NoMarkerPanel());
+  }
+
   private final IntValueControl valueControl = new IntValueControl();
-  private final RectangleMarkerPanel panel = new RectangleMarkerPanel();
+  private final AbstractMarkerPanel panel;
   private final Icon activeImage;
   private final Icon passiveImage;
   private final List<JLabel> imageList = new ArrayList<JLabel>();
@@ -47,9 +57,10 @@ public class IntValueDisplay implements IIntValueDisplay {
     }
   };
 
-  public IntValueDisplay(Icon passiveIcon, Icon activeIcon, int maxValue) {
+  private IntValueDisplay(Icon passiveIcon, Icon activeIcon, int maxValue, AbstractMarkerPanel panel) {
     this.activeImage = activeIcon;
     this.passiveImage = passiveIcon;
+    this.panel = panel;
     panel.setLayout(new GridDialogLayout(maxValue + maxValue / 5, false, 2, 0));
     initializeLabels(maxValue);
     panel.addMouseListener(mouseListener);

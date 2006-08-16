@@ -13,7 +13,9 @@ import net.sf.anathema.character.impl.model.creation.bonus.BonusPointManagement;
 import net.sf.anathema.character.impl.module.repository.CharacterCreationWizardPageFactory;
 import net.sf.anathema.character.impl.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.character.impl.view.CharacterView;
-import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
+import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.character.library.intvalue.MarkerIntValueDisplayFactory;
+import net.sf.anathema.character.library.intvalue.MarkerLessIntValueDisplayFactory;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
@@ -60,7 +62,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
         CharacterUI characterUI = new CharacterUI(resources);
         if (statistics == null) {
           Icon icon = characterUI.getCharacterDescriptionTabIcon();
-          ICharacterView characterView = new CharacterView(null, printName, icon);
+          ICharacterView characterView = new CharacterView(null, printName, icon, null);
           new CharacterPresenter(character, characterView, resources, getGenerics(anathemaModel), null, null).initPresentation();
           return characterView;
         }
@@ -68,9 +70,16 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
             .getCharacterTemplate()
             .getTemplateType()
             .getCharacterType();
-        IntValueDisplayFactory intValueDisplayFactory = new IntValueDisplayFactory(resources, characterType);
+        IIntValueDisplayFactory intValueDisplayFactory = new MarkerIntValueDisplayFactory(resources, characterType);
+        IIntValueDisplayFactory markerLessIntValueDisplayFactory = new MarkerLessIntValueDisplayFactory(
+            resources,
+            characterType);
         final Icon typeIcon = characterUI.getSmallTypeIcon(characterType);
-        ICharacterView characterView = new CharacterView(intValueDisplayFactory, printName, typeIcon);
+        ICharacterView characterView = new CharacterView(
+            intValueDisplayFactory,
+            printName,
+            typeIcon,
+            markerLessIntValueDisplayFactory);
         IBonusPointManagement bonusPointManagement = new BonusPointManagement(character.getStatistics());
         IExperiencePointManagement experiencePointManagement = new ExperiencePointManagement(character.getStatistics());
         new CharacterPresenter(

@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.intimacies.presenter.IntimaciesPresenter;
 import net.sf.anathema.character.intimacies.view.IntimaciesView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
-import net.sf.anathema.character.library.intvalue.IntValueDisplayFactory;
+import net.sf.anathema.character.library.intvalue.MarkerIntValueDisplayFactory;
 import net.sf.anathema.framework.presenter.view.ISimpleTabView;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -29,7 +29,7 @@ public class IntimaciesViewFactory implements IAdditionalViewFactory {
         return resources.getString("Intimacies.LockButton.Tooltip"); //$NON-NLS-1$
       }
     };
-    IntimaciesView view = new IntimaciesView(new IntValueDisplayFactory(resources, type), properties);
+    IntimaciesView view = new IntimaciesView(new MarkerIntValueDisplayFactory(resources, type), properties);
     new IntimaciesPresenter(((IIntimaciesAdditionalModel) model).getIntimaciesModel(), model, view, resources).initPresentation();
     return view;
   }

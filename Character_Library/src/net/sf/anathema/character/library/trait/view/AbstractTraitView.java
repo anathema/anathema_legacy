@@ -10,9 +10,9 @@ public abstract class AbstractTraitView implements IIntValueView {
   private final IIntValueDisplay valueDisplay;
   private final String labelText;
 
-  public AbstractTraitView(IIntValueDisplayFactory configuration, String labelText, int value, int maxValue) {
+  public AbstractTraitView(IIntValueDisplayFactory factory, String labelText, int value, int maxValue) {
     this.labelText = labelText;
-    this.valueDisplay = configuration.createIntValueDisplay(maxValue, value);
+    this.valueDisplay = factory.createIntValueDisplay(maxValue, value);
   }
 
   public void setValue(int newValue) {
