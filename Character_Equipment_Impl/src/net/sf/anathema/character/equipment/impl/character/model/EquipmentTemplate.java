@@ -1,18 +1,21 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public class EquipmentTemplate implements IEquipmentTemplate {
 
-  private final IEquipmentStats[] equipments;
-  private final String description;
-  private final String name;
+  private final Map<IExaltedRuleSet, List<IEquipmentStats>> statsByRuleSet = new HashMap<IExaltedRuleSet, List<IEquipmentStats>>();
+  private String description;
+  private String name;
 
-  public EquipmentTemplate(IEquipmentStats[] equipments, String name, String description) {
-    this.equipments = equipments;
+  public EquipmentTemplate(String name, String description) {
     this.name = name;
     this.description = description;
   }
@@ -22,10 +25,21 @@ public class EquipmentTemplate implements IEquipmentTemplate {
   }
 
   public IEquipmentStats[] getStats(IExaltedRuleSet ruleSet) {
-    if (ruleSet != ExaltedRuleSet.SecondEdition) {
+    List<IEquipmentStats> relevantStats = statsByRuleSet.get(ruleSet);
+    if (relevantStats == null) {
       return new IEquipmentStats[0];
     }
-    return equipments;
+    return relevantStats.toArray(new IEquipmentStats[relevantStats.size()]);
+  }
+  
+  public synchronized void addStats(IExaltedRuleSet ruleSet, IEquipmentStats stats) {
+    List<IEquipmentStats> relevantRules = statsByRuleSet.get(stats);
+    // TODO Hier muss bei Umstellung auf Datenbank eine richtige Liste erzeugt werden
+    if (relevantRules == null) {
+      relevantRules = new ArrayList<IEquipmentStats>();
+      statsByRuleSet.put(ruleSet, relevantRules);
+    }
+    relevantRules.add(stats);
   }
 
   public String getName() {
