@@ -18,6 +18,7 @@ public class CharacterModuleContainerInitializer {
       add("net.sf.anathema.character.reporting.CharacterReportingModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.equipment.impl.EquipmentCharacterModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.meritsflaws.MeritsFlawsModule"); //$NON-NLS-1$
+      add("net.sf.anathema.character.craft.CraftModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.intimacies.IntimaciesModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.mortal.MortalCharacterModule"); //$NON-NLS-1$
       add("net.sf.anathema.character.abyssal.AbyssalCharacterModule"); //$NON-NLS-1$

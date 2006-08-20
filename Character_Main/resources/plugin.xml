@@ -110,6 +110,7 @@
 		<parameter id="bundle" value="Charms_Solar_Pages"/>
 		<parameter id="bundle" value="Charms_Solar_SecondEdition"/>
 		<parameter id="bundle" value="CharmTreeView"/>
+		<parameter id="bundle" value="Craft"/>
 		<parameter id="bundle" value="Dragon-Blooded"/>
 		<parameter id="bundle" value="Equipment"/>
 		<parameter id="bundle" value="Health"/>

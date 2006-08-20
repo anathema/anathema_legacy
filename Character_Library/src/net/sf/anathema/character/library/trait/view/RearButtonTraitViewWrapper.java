@@ -30,9 +30,7 @@ public class RearButtonTraitViewWrapper<K extends ITraitView< ? >> extends Abstr
     this.innerViewPanel = new JPanel(new GridDialogLayout(2, false));
     getInnerView().addComponents(innerViewPanel);
     panel.add(innerViewPanel, GridDialogLayoutData.FILL_HORIZONTAL);
-    GridDialogLayoutData data = new GridDialogLayoutData();
-    data.setHorizontalAlignment(GridAlignment.END);
-    panel.add(button, data);
+    panel.add(button, GridDialogLayoutData.RIGHT);
     panel.revalidate();
   }
 

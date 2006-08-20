@@ -2,44 +2,40 @@ package net.sf.anathema.character.intimacies.presenter;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
-import java.util.Map;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
-import net.sf.anathema.character.intimacies.view.IIntimaciesSelectionView;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
-import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
-import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
+import net.sf.anathema.character.library.selection.AbstractStringEntryTraitPresenter;
+import net.sf.anathema.character.library.selection.IStringSelectionView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.legality.LegalityFontProvider;
 import net.sf.anathema.lib.control.legality.ValueLegalityState;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-public class IntimaciesPresenter extends AbstractTraitPresenter {
+public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IIntimacy> {
 
-  private final IIntimaciesModel model;
   private final IIntimaciesView view;
   private final IResources resources;
-  private final Map<IIntimacy, IRemovableTraitView<?>> viewsByIntimacy = new HashMap<IIntimacy, IRemovableTraitView<?>>();
   private final IAdditionalModel additionalModel;
+  private final IIntimaciesModel model;
 
   public IntimaciesPresenter(
       IIntimaciesModel model,
       IAdditionalModel additionalModel,
       IIntimaciesView view,
       IResources resources) {
+    super(model, view);
     this.model = model;
     this.additionalModel = additionalModel;
     this.view = view;
@@ -49,12 +45,12 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
   public void initPresentation() {
     String labelText = resources.getString("Intimacies.SelectionLabel"); //$NON-NLS-1$
     BasicUi basicUi = new BasicUi(resources);
-    IIntimaciesSelectionView selectionView = view.addSelectionView(labelText, basicUi.getAddIcon());
+    IStringSelectionView selectionView = view.addSelectionView(labelText, basicUi.getAddIcon());
     initSelectionViewListening(selectionView);
     initOverviewView();
     initModelListening(basicUi, selectionView);
     for (IIntimacy intimacy : model.getEntries()) {
-      addIntimacyView(basicUi, intimacy);
+      addSubView(basicUi, intimacy);
     }
     reset(selectionView);
   }
@@ -135,33 +131,15 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
     alotmentView.setFontStyle(new LegalityFontProvider().getFontStyle(state));
   }
 
-  private void initModelListening(final BasicUi basicUi, final IIntimaciesSelectionView selectionView) {
-    model.addModelChangeListener(new IRemovableEntryListener<IIntimacy>() {
-      public void entryAdded(final IIntimacy intimacy) {
-        addIntimacyView(basicUi, intimacy);
-        reset(selectionView);
-      }
-
-      public void entryRemoved(IIntimacy form) {
-        IRemovableEntryView removableView = viewsByIntimacy.get(form);
-        view.removeEntryView(removableView);
-      }
-
-      public void entryAllowed(boolean complete) {
-        selectionView.setAddButtonEnabled(complete);
-      }
-    });
-  }
-
-  private void addIntimacyView(final BasicUi basicUi, final IIntimacy intimacy) {
-    final IRemovableTraitView<IToggleButtonTraitView<?>> intimacyView = view.addEntryView(
+  @Override
+  protected IRemovableTraitView< ? > createSubView(final BasicUi basicUi, final IIntimacy intimacy) {
+    final IRemovableTraitView<IToggleButtonTraitView< ? >> intimacyView = view.addEntryView(
         basicUi.getRemoveIcon(),
         intimacy.getName());
     intimacyView.setMaximum(model.getCompletionValue());
     intimacyView.setValue(intimacy.getTrait().getCurrentValue());
     addModelValueListener(intimacy.getTrait(), intimacyView);
     addViewValueListener(intimacyView, intimacy.getTrait());
-    viewsByIntimacy.put(intimacy, intimacyView);
     intimacyView.addButtonListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         model.removeEntry(intimacy);
@@ -178,23 +156,6 @@ public class IntimaciesPresenter extends AbstractTraitPresenter {
       }
     });
     intimacyView.getInnerView().setButtonState(intimacy.isComplete(), true);
-  }
-
-  private void initSelectionViewListening(IIntimaciesSelectionView selectionView) {
-    selectionView.addTextChangeListener(new IObjectValueChangedListener<String>() {
-      public void valueChanged(String newValue) {
-        model.setCurrentName(newValue);
-      }
-    });
-    selectionView.addAddButtonListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        model.commitSelection();
-      }
-    });
-  }
-
-  private void reset(final IIntimaciesSelectionView selectionView) {
-    selectionView.setName(null);
-    model.setCurrentName(null);
+    return intimacyView;
   }
 }

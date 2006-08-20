@@ -1,4 +1,4 @@
-package net.sf.anathema.character.intimacies.view;
+package net.sf.anathema.character.library.selection;
 
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
@@ -15,12 +15,12 @@ import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
-public class IntimaciesSelectionView implements IIntimaciesSelectionView {
+public class StringSelectionView implements IStringSelectionView {
 
   private final LabelTextView labelTextView;
   private final JButton button;
 
-  public IntimaciesSelectionView(String labelText, Icon addButtonIcon) {
+  public StringSelectionView(String labelText, Icon addButtonIcon) {
     LineTextView lineTextView = new LineTextView(45);
     labelTextView = new LabelTextView(labelText, lineTextView);
     this.button = new JButton(addButtonIcon);
@@ -48,7 +48,7 @@ public class IntimaciesSelectionView implements IIntimaciesSelectionView {
     button.setEnabled(enabled);
   }
 
-  public void setName(String name) {
-    labelTextView.setText(name);
+  public void clear() {
+    labelTextView.setText(null);
   }
 }
