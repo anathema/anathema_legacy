@@ -11,4 +11,6 @@ public interface IGenericDescription {
   public String getPhysicalAppearance();
 
   public String getPlayer();
+
+  public String getNotes();
 }

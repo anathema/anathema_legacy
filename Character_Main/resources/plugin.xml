@@ -125,6 +125,7 @@
 		<parameter id="bundle" value="Spells_Necromancy"/>
 		<parameter id="bundle" value="Spells_Pages"/>
 		<parameter id="bundle" value="Spells_Sorcery"/>
+		<parameter id="bundle" value="TextSheet"/>
 		<parameter id="bundle" value="Traits"/>
 		<parameter id="bundle" value="Weapons"/>
 	</extension>

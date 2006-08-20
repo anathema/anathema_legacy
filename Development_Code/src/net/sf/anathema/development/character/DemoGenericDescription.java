@@ -1,6 +1,7 @@
 package net.sf.anathema.development.character;
 
 import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 public class DemoGenericDescription implements IGenericDescription {
 
@@ -52,5 +53,9 @@ public class DemoGenericDescription implements IGenericDescription {
 
   public void setPlayer(String player) {
     this.player = player;
+  }
+
+  public String getNotes() {
+    throw new NotYetImplementedException();
   }
 }

@@ -30,4 +30,8 @@ public class GenericDescription implements IGenericDescription {
   public String getPlayer() {
     return description.getPlayer().getText();
   }
+
+  public String getNotes() {
+    return description.getNotes().getText();
+  }
 }

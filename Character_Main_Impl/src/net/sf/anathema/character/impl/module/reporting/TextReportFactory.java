@@ -10,6 +10,6 @@ import net.sf.anathema.lib.resources.IResources;
 public class TextReportFactory implements IReportFactory {
 
   public IReport[] createReport(IResources resources, IRegistry<String, IAnathemaExtension> extensionPointRegistry) {
-    return new IReport[] { new TextReport() };
+    return new IReport[] { new TextReport(resources) };
   }
 }
