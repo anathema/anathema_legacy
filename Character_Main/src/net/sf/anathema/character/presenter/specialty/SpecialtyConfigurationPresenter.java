@@ -1,5 +1,8 @@
 package net.sf.anathema.character.presenter.specialty;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.Icon;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
@@ -17,7 +20,7 @@ import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.view.AbstractSelectCellRenderer;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.control.objectvalue.ITwoObjectsValueChangedListener;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
@@ -25,13 +28,14 @@ public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
   private final IdentityMapping<ISubTrait, ISpecialtyView> viewsBySpecialty = new IdentityMapping<ISubTrait, ISpecialtyView>();
 
   private final ISubTraitListener specialtyListener = new ISubTraitListener() {
-
     public void subTraitAdded(ISubTrait specialty) {
       addSpecialtyView(specialty);
     }
 
     public void subTraitRemoved(ISubTrait specialty) {
-      removeSpecialtyView(specialty);
+      ISpecialtyView view = viewsBySpecialty.get(specialty);
+      viewsBySpecialty.remove(specialty);
+      view.delete();
     }
 
     public void subTraitValueChanged() {
@@ -58,21 +62,6 @@ public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
     this.resources = resources;
   }
 
-  private void initTraitListening() {
-    for (ITraitType traitType : getAllTraitsTypes()) {
-      getSpecialtyContainerType(traitType).addSubTraitListener(specialtyListener);
-    }
-  }
-
-  private ISubTraitContainer getSpecialtyContainerType(ITraitType traitType) {
-    return specialtyManagement.getSpecialtiesContainer(traitType);
-  }
-
-  private void resetSpecialtyView(final IButtonControlledComboEditView<ITraitType> specialtySelectionView) {
-    specialtySelectionView.setText(""); //$NON-NLS-1$
-    specialtySelectionView.setSelectedObject(null);
-  }
-
   public void initPresentation() {
     initTraitListening();
     Icon addIcon = new BasicUi(resources).getAddIcon();
@@ -86,21 +75,49 @@ public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
           }
         },
         addIcon);
-    specialtySelectionView.addObjectSelectionChangedListener(new ITwoObjectsValueChangedListener<ITraitType, String>() {
-      public void valueChanged(ITraitType oldValue1, String oldValue2, ITraitType newTraitType, String newSpecialtyName) {
-        if (!newSpecialtyName.equals("")) { //$NON-NLS-1$
-          getSpecialtyContainerType(newTraitType).addSubTrait(newSpecialtyName);
-          resetSpecialtyView(specialtySelectionView);
-        }
+    specialtySelectionView.addSelectionChangedListener(new IObjectValueChangedListener<ITraitType>() {
+      public void valueChanged(ITraitType newValue) {
+        specialtyManagement.setCurrentTraitType(newValue);
       }
     });
-    resetSpecialtyView(specialtySelectionView);
+    specialtySelectionView.addEditChangedListener(new IObjectValueChangedListener<String>() {
+      public void valueChanged(String newSpecialtyName) {
+        specialtyManagement.setCurrentSpecialtyName(newSpecialtyName);
+      }
+    });
+    specialtySelectionView.addButtonListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        specialtyManagement.commitSelection();
+        reset(specialtySelectionView);
+      }
+    });
+    specialtyManagement.addCurrentSelectionListener(new IChangeListener() {
+      public void changeOccured() {
+        specialtySelectionView.setButtonEnabled(specialtyManagement.isEntryComplete());
+      }
+    });
+    reset(specialtySelectionView);
     for (ITraitType traitType : getAllTraitsTypes()) {
       for (ISubTrait specialty : getSpecialtyContainerType(traitType).getSubTraits()) {
         addSpecialtyView(specialty);
       }
     }
     initExperiencedListening();
+  }
+
+  private void initTraitListening() {
+    for (ITraitType traitType : getAllTraitsTypes()) {
+      getSpecialtyContainerType(traitType).addSubTraitListener(specialtyListener);
+    }
+  }
+
+  private ISubTraitContainer getSpecialtyContainerType(ITraitType traitType) {
+    return specialtyManagement.getSpecialtiesContainer(traitType);
+  }
+
+  private void reset(final IButtonControlledComboEditView<ITraitType> specialtySelectionView) {
+    specialtyManagement.clear();
+    specialtySelectionView.clear();
   }
 
   private void initExperiencedListening() {
