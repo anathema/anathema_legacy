@@ -3,6 +3,7 @@ package net.sf.anathema.character.craft.presenter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.selection.AbstractStringEntryTraitPresenter;
 import net.sf.anathema.character.library.selection.IRemovableStringEntriesView;
@@ -41,6 +42,30 @@ public class CraftPresenter extends AbstractStringEntryTraitPresenter<ISubTrait>
       }
     }
     reset(selectionView);
+    initButtons(model.isExperienced());
+  }
+
+  @Override
+  protected void initModelListening(BasicUi basicUi, IStringSelectionView selectionView) {
+    super.initModelListening(basicUi, selectionView);
+    model.addCharacterChangeListener(new DedicatedCharacterChangeAdapter() {
+      @Override
+      public void experiencedChanged(boolean experienced) {
+        initButtons(experienced);
+      }
+    });
+  }
+
+  private void initButtons(boolean experienced) {
+    for (ISubTrait trait : model.getEntries()) {
+      if (!model.isRemovable(trait)) {
+        continue;
+      }
+      IRemovableTraitView< ? > subView = getSubView(trait);
+      if (trait.getCreationValue() > 0) {
+        subView.setButtonEnabled(!experienced);
+      }
+    }
   }
 
   private void addFixedSubView(BasicUi basicUi, ISubTrait craft) {

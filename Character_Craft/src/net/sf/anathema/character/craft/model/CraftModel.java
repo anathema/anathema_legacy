@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.craft.presenter.ICraftModel;
+import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
@@ -19,8 +20,10 @@ public class CraftModel implements ICraftModel {
   private final GenericControl<IRemovableEntryListener<ISubTrait>> control = new GenericControl<IRemovableEntryListener<ISubTrait>>();
   private String currentName;
   private final IAggregatedTrait trait;
+  private final ICharacterModelContext context;
 
   public CraftModel(ICharacterModelContext context) {
+    this.context = context;
     this.trait = (IAggregatedTrait) context.getTraitCollection().getFavorableTrait(AbilityType.Craft);
     trait.getSubTraits().addSubTraitListener(new ISubTraitListener() {
       public void subTraitAdded(final ISubTrait subTrait) {
@@ -40,7 +43,7 @@ public class CraftModel implements ICraftModel {
       }
 
       public void subTraitValueChanged() {
-        //nothing to do; 
+        // nothing to do;
       }
     });
     for (ISubTrait subTrait : trait.getSubTraits().getSubTraits()) {
@@ -67,7 +70,7 @@ public class CraftModel implements ICraftModel {
   }
 
   public void removeEntry(final ISubTrait entry) {
-    trait.getSubTraits().removeSubTrait(entry);   
+    trait.getSubTraits().removeSubTrait(entry);
   }
 
   private boolean isEntryAllowed() {
@@ -94,5 +97,13 @@ public class CraftModel implements ICraftModel {
 
   public void addModelChangeListener(IRemovableEntryListener<ISubTrait> listener) {
     control.addListener(listener);
+  }
+
+  public void addCharacterChangeListener(ICharacterChangeListener listener) {
+    context.getCharacterListening().addChangeListener(listener);
+  }
+
+  public boolean isExperienced() {
+    return context.getBasicCharacterContext().isExperienced();
   }
 }

@@ -9,4 +9,6 @@ public interface ICraftModel extends IStringEntryTraitModel<ISubTrait> {
 
   public boolean isRemovable(ISubTrait craft);
 
+  public boolean isExperienced();
+
 }

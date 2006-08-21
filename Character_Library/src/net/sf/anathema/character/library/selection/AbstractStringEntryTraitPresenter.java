@@ -23,7 +23,7 @@ public abstract class AbstractStringEntryTraitPresenter<V> extends AbstractTrait
     this.view = view;
   }
 
-  protected final void initModelListening(final BasicUi basicUi, final IStringSelectionView selectionView) {
+  protected void initModelListening(final BasicUi basicUi, final IStringSelectionView selectionView) {
     model.addModelChangeListener(new IRemovableEntryListener<V>() {
       public void entryAdded(final V v) {
         addSubView(basicUi, v);
@@ -48,6 +48,10 @@ public abstract class AbstractStringEntryTraitPresenter<V> extends AbstractTrait
 
   protected final void addSubView(V v, IRemovableTraitView< ? > subView) {
     viewsByEntry.put(v, subView);
+  }
+
+  protected final IRemovableTraitView< ? > getSubView(V v) {
+    return viewsByEntry.get(v);
   }
 
   protected abstract IRemovableTraitView< ? > createSubView(BasicUi basicUi, V v);
