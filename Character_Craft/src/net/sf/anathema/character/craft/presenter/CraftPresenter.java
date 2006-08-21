@@ -52,7 +52,6 @@ public class CraftPresenter extends AbstractStringEntryTraitPresenter<ISubTrait>
   @Override
   protected IRemovableTraitView< ? > createSubView(BasicUi basicUi, final ISubTrait craft) {
     final IRemovableTraitView< ? > craftView = view.addEntryView(basicUi.getRemoveIcon(), craft.getName());
-    craftView.setMaximum(model.getAbsoluteMaximum());
     craftView.setValue(craft.getCurrentValue());
     addModelValueListener(craft, craftView);
     addViewValueListener(craftView, craft);

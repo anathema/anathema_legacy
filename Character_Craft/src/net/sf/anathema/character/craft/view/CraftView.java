@@ -23,9 +23,11 @@ public class CraftView extends AbstractRemovableEntryView<IRemovableTraitView<Si
   private final IIntValueDisplayFactory factory;
   private final JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
   private final JPanel entryPanel = new JPanel(new GridDialogLayout(2, false));
+  private final int traitMaximum;
 
-  public CraftView(IIntValueDisplayFactory factory) {
+  public CraftView(IIntValueDisplayFactory factory, int maximum) {
     this.factory = factory;
+    this.traitMaximum = maximum;
   }
 
   public JComponent getComponent() {
@@ -47,11 +49,11 @@ public class CraftView extends AbstractRemovableEntryView<IRemovableTraitView<Si
   }
 
   public IRemovableTraitView<SimpleTraitView> addEntryView(Icon removeIcon, String string) {
-    SimpleTraitView view = new SimpleTraitView(factory, string, 0, 5, GridAlignment.FILL);
-    RearButtonTraitViewWrapper<SimpleTraitView> oneButtonView = new RearButtonTraitViewWrapper<SimpleTraitView>(
+    SimpleTraitView view = new SimpleTraitView(factory, string, 0, traitMaximum, GridAlignment.FILL);
+    RearButtonTraitViewWrapper<SimpleTraitView> traitView = new RearButtonTraitViewWrapper<SimpleTraitView>(
         view,
         removeIcon);
-    oneButtonView.addComponents(entryPanel);
-    return oneButtonView;
+    traitView.addComponents(entryPanel);
+    return traitView;
   }
 }

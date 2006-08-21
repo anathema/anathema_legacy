@@ -31,7 +31,7 @@ public class CraftViewDemo extends SwingDemoCase {
     context.getCharacter().addTrait(craftTrait);
     ICraftModel craftModel = new CraftModel(context);
     IIntValueDisplayFactory displayFactory = new MarkerIntValueDisplayFactory(resources, CharacterType.SIDEREAL);
-    CraftView view = new CraftView(displayFactory);
+    CraftView view = new CraftView(displayFactory, 7);
     new CraftPresenter(craftModel, view, resources).initPresentation();
     show(view.getComponent());
   }
