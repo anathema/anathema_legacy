@@ -1,12 +1,12 @@
 package net.sf.anathema.character.library.trait.specialties;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
-import net.sf.anathema.character.library.trait.rules.ITraitRules;
+import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.character.library.trait.subtrait.AbstractSubTraitContainer;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 
@@ -16,16 +16,11 @@ public class Specialty extends DefaultTrait implements ISubTrait {
   private final AbstractSubTraitContainer container;
   private final ITraitType parentType;
 
-  public Specialty(
-      AbstractSubTraitContainer container,
-      ITraitType type,
-      String specialtyName,
-      ITraitRules traitRules,
-      ITraitValueStrategy traitValueStrategy) {
-    super(
-        traitRules.derive(OtherTraitType.Specialty, SimpleTraitTemplate.createStaticLimitedTemplate(0, 3)),
-        traitValueStrategy,
-        new FriendlyValueChangeChecker());
+  public Specialty(AbstractSubTraitContainer container, ITraitType type, String specialtyName, ITraitContext context) {
+    super(new TraitRules(
+        OtherTraitType.Specialty,
+        SimpleTraitTemplate.createStaticLimitedTemplate(0, 3),
+        context.getLimitationContext()), context, new FriendlyValueChangeChecker());
     this.container = container;
     this.parentType = type;
     this.subTraitName = specialtyName;
