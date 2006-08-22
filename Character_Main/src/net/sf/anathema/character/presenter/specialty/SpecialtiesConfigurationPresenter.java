@@ -8,7 +8,7 @@ import javax.swing.Icon;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
-import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
+import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
@@ -44,10 +44,10 @@ public class SpecialtiesConfigurationPresenter extends AbstractTraitPresenter im
 
   private final IResources resources;
   private final ISpecialtiesConfigurationView configurationView;
-  private final ISpecialtyConfiguration specialtyManagement;
+  private final ISpecialtiesConfiguration specialtyManagement;
 
   public SpecialtiesConfigurationPresenter(
-      ISpecialtyConfiguration specialtyManagement,
+      ISpecialtiesConfiguration specialtyManagement,
       ISpecialtiesConfigurationView configurationView,
       IResources resources) {
     this.specialtyManagement = specialtyManagement;

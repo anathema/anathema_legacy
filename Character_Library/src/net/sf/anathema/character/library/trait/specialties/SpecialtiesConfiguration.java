@@ -13,7 +13,7 @@ import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
-public class SpecialtyConfiguration implements ISpecialtyConfiguration {
+public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
 
   private final Map<ITraitType, ISubTraitContainer> specialtiesByTrait = new HashMap<ITraitType, ISubTraitContainer>();
   private final ITraitType[] traitTypes;
@@ -22,7 +22,7 @@ public class SpecialtyConfiguration implements ISpecialtyConfiguration {
   private final ChangeControl control = new ChangeControl();
   private final ICharacterModelContext context;
 
-  public SpecialtyConfiguration(ICharacterModelContext context) {
+  public SpecialtiesConfiguration(ICharacterModelContext context) {
     this.context = context;
     IExaltedEdition edition = context.getBasicCharacterContext().getRuleSet().getEdition();
     this.traitTypes = AbilityType.getAbilityTypes(edition);

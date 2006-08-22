@@ -26,8 +26,8 @@ import net.sf.anathema.character.library.trait.TraitCollectionUtitlies;
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
-import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
-import net.sf.anathema.character.library.trait.specialties.SpecialtyConfiguration;
+import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
+import net.sf.anathema.character.library.trait.specialties.SpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
@@ -41,7 +41,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
   private final BackgroundConfiguration backgrounds;
   private final IIdentifiedCasteTraitTypeGroup[] abilityTraitGroups;
   private final IIdentifiedCasteTraitTypeGroup[] attributeTraitGroups;
-  private final SpecialtyConfiguration specialtyConfiguration;
+  private final SpecialtiesConfiguration specialtyConfiguration;
 
   public CoreTraitConfiguration(
       ICharacterTemplate template,
@@ -78,7 +78,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
         modelContext.getTraitContext(),
         backgroundRegistry,
         modelContext.getBasicCharacterContext().getRuleSet().getEdition());
-    this.specialtyConfiguration = new SpecialtyConfiguration(modelContext);
+    this.specialtyConfiguration = new SpecialtiesConfiguration(modelContext);
   }
 
   private void addAttributes() {
@@ -140,7 +140,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     return getFavorableTraits(abilityTypes.toArray(new ITraitType[abilityTypes.size()]));
   }
 
-  public ISpecialtyConfiguration getSpecialtyConfiguration() {
+  public ISpecialtiesConfiguration getSpecialtyConfiguration() {
     return specialtyConfiguration;
   }
 }

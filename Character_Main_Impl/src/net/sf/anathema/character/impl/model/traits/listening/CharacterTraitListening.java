@@ -11,7 +11,7 @@ import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
-import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
+import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
@@ -58,7 +58,7 @@ public class CharacterTraitListening {
   private void initAbilityListening() {
     ITraitTypeGroup[] groups = traitConfiguration.getAbilityTypeGroups();
     ITraitType[] allAbilityTypes = TraitTypeGroup.getAllTraitTypes(groups);
-    ISpecialtyConfiguration specialtyConfiguration = traitConfiguration.getSpecialtyConfiguration();
+    ISpecialtiesConfiguration specialtyConfiguration = traitConfiguration.getSpecialtyConfiguration();
     for (ITraitType traitType : allAbilityTypes) {
       IFavorableTrait ability = traitConfiguration.getFavorableTrait(traitType);
       listening.addTraitListening(ability);

@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
-public interface ISpecialtyConfiguration {
+public interface ISpecialtiesConfiguration {
 
   public ISubTraitContainer getSpecialtiesContainer(ITraitType traitType);
 

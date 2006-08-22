@@ -12,7 +12,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
-import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
+import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
@@ -30,7 +30,7 @@ public class AbilityConfigurationPersister extends AbstractCharacterPersister {
     }
   }
 
-  private void saveAbility(Element parent, IFavorableTrait ability, ISpecialtyConfiguration specialtyConfiguration) {
+  private void saveAbility(Element parent, IFavorableTrait ability, ISpecialtiesConfiguration specialtyConfiguration) {
     ITraitType traitType = ability.getType();
     Element abilityElement = saveTrait(parent, traitType.getId(), ability);
     if (ability.getFavorization().isFavored()) {
@@ -57,7 +57,7 @@ public class AbilityConfigurationPersister extends AbstractCharacterPersister {
     boolean favored = ElementUtilities.getBooleanAttribute(abilityElement, ATTRIB_FAVORED, false);
     ability.getFavorization().setFavored(favored);
     List<Element> specialtyElements = ElementUtilities.elements(abilityElement, TAG_SPECIALTY);
-    ISpecialtyConfiguration specialtyConfiguration = configuration.getSpecialtyConfiguration();
+    ISpecialtiesConfiguration specialtyConfiguration = configuration.getSpecialtyConfiguration();
     for (Iterator<Element> allSpecialties = specialtyElements.iterator(); allSpecialties.hasNext();) {
       Element specialtyElement = allSpecialties.next();
       String specialtyName = (specialtyElement).attributeValue(ATTRIB_NAME);
