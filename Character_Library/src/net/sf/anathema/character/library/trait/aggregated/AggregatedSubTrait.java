@@ -1,6 +1,6 @@
 package net.sf.anathema.character.library.trait.aggregated;
 
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.ITrait;
@@ -15,11 +15,11 @@ public class AggregatedSubTrait extends DefaultTrait implements ISubTrait {
 
   public AggregatedSubTrait(
       ITraitRules traitRules,
-      ITraitValueStrategy traitValueStrategy,
+      ITraitContext traitContext,
       IValueChangeChecker checker,
       ITrait parent,
       String name) {
-    super(traitRules, traitValueStrategy, checker);
+    super(traitRules, traitContext, checker);
     this.parent = parent;
     this.name = name;
   }

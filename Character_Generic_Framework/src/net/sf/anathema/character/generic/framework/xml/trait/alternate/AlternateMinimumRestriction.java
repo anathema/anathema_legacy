@@ -21,7 +21,7 @@ public class AlternateMinimumRestriction extends ReflectionEqualsObject implemen
   public boolean isFullfilledWithout(ILimitationContext limitationContext, ITraitType traitType) {
     int fullfillingTraitCount = 0;
     for (ITraitType type : alternateTraitTypes) {
-      if (type != traitType && limitationContext.getTrait(type).getCurrentValue() >= strictMinimumValue) {
+      if (type != traitType && limitationContext.getTraitCollection().getTrait(type).getCurrentValue() >= strictMinimumValue) {
         fullfillingTraitCount++;
       }
     }

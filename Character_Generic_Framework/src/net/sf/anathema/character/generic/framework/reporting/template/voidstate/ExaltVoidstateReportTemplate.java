@@ -202,7 +202,7 @@ public class ExaltVoidstateReportTemplate extends DefaultExaltCharacterReportTem
   protected void fillInBrawlWeapons(final Map<Object, Object> parameters, final IGenericCharacter character) {
     IWeaponType[] brawlWeaponList = new BrawlWeaponConfiguration(character.getRules()).getBrawlWeaponList();
     WeaponStatisticsCalculator weaponStatisticsCalculator = new WeaponStatisticsCalculator(
-        character,
+        character.getTraitCollection(),
         character.getRules(),
         isExalted(character));
     final List<IEquippedWeapon> weapons = new ArrayList<IEquippedWeapon>();

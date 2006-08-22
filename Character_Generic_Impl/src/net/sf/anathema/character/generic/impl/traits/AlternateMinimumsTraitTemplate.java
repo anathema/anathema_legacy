@@ -27,7 +27,7 @@ public class AlternateMinimumsTraitTemplate extends AbstractTraitTemplate {
 
   public int getMinimumValue(ILimitationContext limitationContext) {
     ITraitType alternateType = alternativeType.getType();
-    IGenericTrait trait = limitationContext.getTrait(alternateType);
+    IGenericTrait trait = limitationContext.getTraitCollection().getTrait(alternateType);
     if (trait.getCurrentValue() < alternativeType.getCurrentValue()) {
       return demandedMinimum;
     }

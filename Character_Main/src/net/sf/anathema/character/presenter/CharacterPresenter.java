@@ -31,7 +31,7 @@ import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
-public class CharacterPresenter implements IPresenter{
+public class CharacterPresenter implements IPresenter {
 
   private final ICharacter character;
   private final ICharacterView characterView;
@@ -178,8 +178,7 @@ public class CharacterPresenter implements IPresenter{
     IIdentifiedTraitTypeGroup[] attributeTypeGroups = getStatistics().getTraitConfiguration().getAttributeTypeGroups();
     new FavorableTraitConfigurationPresenter(attributeTypeGroups, getStatistics(), attributeView, resources).init(
         "AttributeConfiguration", //$NON-NLS-1$
-        "AttributeGroupType.Name", //$NON-NLS-1$
-        false);
+        "AttributeGroupType.Name"); //$NON-NLS-1$
   }
 
   private void initAdvantagePresentation() {
@@ -207,8 +206,7 @@ public class CharacterPresenter implements IPresenter{
         traitTypeGroups,
         getStatistics(),
         abilityView,
-        resources).init("AbilityConfiguration", "AbilityGroup", //$NON-NLS-1$ //$NON-NLS-2$
-        true);
+        resources).init("AbilityConfiguration", "AbilityGroup"); //$NON-NLS-1$//$NON-NLS-2$
     initMultiTabViewPresentation(basicAbilitiesHeader, AdditionalModelType.Abilities, basicAbilitiesTab);
   }
 

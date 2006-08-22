@@ -40,7 +40,7 @@ public class BeastformAttribute implements IBeastformAttribute {
             && cost.getUnspentDots() >= pointCost * (value - additionalValue - baseTrait.getCurrentValue());
       }
     };
-    this.beastmanTrait = new DefaultTrait(traitRules, context.getTraitValueStrategy(), incrementChecker);
+    this.beastmanTrait = new DefaultTrait(traitRules, context, incrementChecker);
     beastmanTrait.addCurrentValueListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
         additionalValue = newValue - baseTrait.getCurrentValue();

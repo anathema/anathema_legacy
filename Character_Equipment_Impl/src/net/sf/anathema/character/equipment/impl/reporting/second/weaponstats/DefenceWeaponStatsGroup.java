@@ -2,6 +2,7 @@ package net.sf.anathema.character.equipment.impl.reporting.second.weaponstats;
 
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -34,10 +35,11 @@ public class DefenceWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IW
         table.addCell(createFinalValueCell(font, (Integer) null));
       }
       else {
+        IGenericTraitCollection traitCollection = character.getTraitCollection();
         double finalValue = calculateFinalValue(
             weapon.getDefence(),
-            character.getTrait(AttributeType.Dexterity),
-            character.getTrait(weapon.getTraitType()));
+            traitCollection.getTrait(AttributeType.Dexterity),
+            traitCollection.getTrait(weapon.getTraitType()));
         boolean isMortal = character.getTemplate().getTemplateType().getCharacterType() == CharacterType.MORTAL;
         if (isMortal) {
           finalValue = Math.floor(finalValue / 2);

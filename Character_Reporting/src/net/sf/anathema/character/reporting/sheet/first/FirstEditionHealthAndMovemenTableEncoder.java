@@ -40,7 +40,7 @@ public class FirstEditionHealthAndMovemenTableEncoder extends AbstractHealthAndM
       HealthLevelType level,
       int painTolerance) {
     int penalty = getPenalty(level, painTolerance);
-    int dexValue = character.getTrait(AttributeType.Dexterity).getCurrentValue();
+    int dexValue = character.getTraitCollection().getTrait(AttributeType.Dexterity).getCurrentValue();
     int moveValue = 5;
     table.addCell(createMovementCell(moveValue + penalty, 1));
     addSpaceCells(table, 1);

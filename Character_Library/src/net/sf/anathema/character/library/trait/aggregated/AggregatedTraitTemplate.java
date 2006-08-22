@@ -43,7 +43,7 @@ public class AggregatedTraitTemplate implements ITraitTemplate {
   }
 
   public int getMinimumValue(ILimitationContext collection) {
-    IAggregatedTrait trait = (IAggregatedTrait) collection.getTrait(traitType);
+    IAggregatedTrait trait = (IAggregatedTrait) collection.getTraitCollection().getTrait(traitType);
     int necessaryMinimumValue = template.getMinimumValue(collection);
     for(ISubTrait subTrait : trait.getSubTraits().getSubTraits()) {
       if (subTrait.getName().equals(subname)) {

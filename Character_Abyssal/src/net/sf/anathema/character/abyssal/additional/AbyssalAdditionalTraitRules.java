@@ -27,7 +27,7 @@ public class AbyssalAdditionalTraitRules extends DefaultAdditionalTraitRules {
           allowed[0] = true;
         }
         else {
-          IGenericTrait essence = limitationContext.getTrait(OtherTraitType.Essence);
+          IGenericTrait essence = limitationContext.getTraitCollection().getTrait(OtherTraitType.Essence);
           allowed[0] = checkAppearanceEssenceRelation(essence, trait);
         }
       }
@@ -37,7 +37,7 @@ public class AbyssalAdditionalTraitRules extends DefaultAdditionalTraitRules {
       }
 
       public void visitEssence(OtherTraitType type) {
-        IGenericTrait appearance = limitationContext.getTrait(AttributeType.Appearance);
+        IGenericTrait appearance = limitationContext.getTraitCollection().getTrait(AttributeType.Appearance);
         allowed[0] = checkAppearanceEssenceRelation(trait, appearance);
       }
 

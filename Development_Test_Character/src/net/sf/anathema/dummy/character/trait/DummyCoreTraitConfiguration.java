@@ -21,6 +21,7 @@ import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfigurati
 import net.sf.anathema.character.library.trait.specialties.SpecialtyConfiguration;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
+import net.sf.anathema.dummy.character.DummyCharacterModelContext;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -75,7 +76,7 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
   
   public ISpecialtyConfiguration getSpecialtyConfiguration() {
     if (specialtyConfiguration == null) {
-      specialtyConfiguration = new SpecialtyConfiguration(this, getAbilityTypeGroups());
+      specialtyConfiguration = new SpecialtyConfiguration(new DummyCharacterModelContext());
     }
     return specialtyConfiguration ;
   }

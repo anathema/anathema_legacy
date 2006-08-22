@@ -50,7 +50,7 @@ public class CraftViewDemo extends SwingDemoCase {
         traitRules,
         context.getBasicCharacterContext(),
         context.getCharacterListening(),
-        context.getTraitContext().getTraitValueStrategy(),
+        context.getTraitContext(),
         valueChecker,
         ICasteType.NULL_CASTE_TYPE,
         new FriendlyIncrementChecker(),

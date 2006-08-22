@@ -138,8 +138,8 @@ public class SecondEditionSocialCombatStatsEncoder implements IPdfContentBoxEnco
   private float encodeValues(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
     String joinLabel = resources.getString("Sheet.SocialCombat.JoinDebateBattle"); //$NON-NLS-1$
     String dodgeLabel = resources.getString("Sheet.SocialCombat.DodgeMDV"); //$NON-NLS-1$
-    int joinDebate = CharacterUtilties.getTotalValue(character, AttributeType.Wits, AbilityType.Awareness);
-    int dodgeMDV = CharacterUtilties.getDodgeMdv(character);
+    int joinDebate = CharacterUtilties.getTotalValue(character.getTraitCollection(), AttributeType.Wits, AbilityType.Awareness);
+    int dodgeMDV = CharacterUtilties.getDodgeMdv(character.getTraitCollection());
     Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
     LabelledValueEncoder encoder = new LabelledValueEncoder(baseFont, 2, upperLeftCorner, bounds.width, 3);
     encoder.addLabelledValue(directContent, 0, joinLabel, joinDebate);

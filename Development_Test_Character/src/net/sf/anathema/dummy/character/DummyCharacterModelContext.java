@@ -62,7 +62,7 @@ public class DummyCharacterModelContext implements ICharacterModelContext {
   }
 
   public IGenericTraitCollection getTraitCollection() {
-    return getCharacter();
+    return getCharacter().getTraitCollection();
   }
 
   public ITraitContext getTraitContext() {

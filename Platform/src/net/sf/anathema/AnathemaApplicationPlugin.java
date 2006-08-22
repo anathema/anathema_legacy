@@ -13,11 +13,11 @@ public class AnathemaApplicationPlugin extends ApplicationPlugin {
 
   @Override
   protected void doStart() throws Exception {
-    // TODO Auto-generated method stub
+    // nothing to do
   }
 
   @Override
   protected void doStop() throws Exception {
-    // TODO Auto-generated method stub
+    // nothing to do
   }
 }

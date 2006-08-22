@@ -162,7 +162,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
     Bounds attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 1);
     Bounds attributesContentBounds = boxEncoder.encodeBox(directContent, attributeBounds, getHeaderLabel("Attributes")); //$NON-NLS-1$
     IGroupedTraitType[] attributeGroups = character.getTemplate().getAttributeGroups();
-    encodeAttributes(directContent, attributesContentBounds, attributeGroups, character);
+    encodeAttributes(directContent, attributesContentBounds, attributeGroups, character.getTraitCollection());
     return attributeHeight;
   }
 

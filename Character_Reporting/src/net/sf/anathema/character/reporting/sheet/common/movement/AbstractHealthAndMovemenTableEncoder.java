@@ -256,7 +256,7 @@ public abstract class AbstractHealthAndMovemenTableEncoder implements IPdfTableE
     if (level == HealthLevelType.INCAPACITATED) {
       addSpaceCells(table, 1);
       for (int index = 0; index < additionalCount - 1; index++) {
-        if (index < character.getTrait(AttributeType.Stamina).getCurrentValue()) {
+        if (index < character.getTraitCollection().getTrait(AttributeType.Stamina).getCurrentValue()) {
           table.addCell(createHealthCell(activeImage));
         }
         else {

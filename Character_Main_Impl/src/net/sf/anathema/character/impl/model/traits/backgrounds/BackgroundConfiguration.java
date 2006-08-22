@@ -75,7 +75,7 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
     }
     ITraitTemplate traitTemplate = traitTemplates.getTraitTemplate(backgroundType);
     TraitRules rules = new TraitRules(backgroundType, traitTemplate, context.getLimitationContext());
-    IDefaultTrait background = new DefaultTrait(rules, context.getTraitValueStrategy(), new FriendlyValueChangeChecker());
+    IDefaultTrait background = new DefaultTrait(rules, context, new FriendlyValueChangeChecker());
     backgrounds.add(background);
     fireBackgroundAddedEvent(background);
     return background;

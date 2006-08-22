@@ -15,19 +15,19 @@ public abstract class AbstractSocialAttack implements ISocialCombatStats {
   }
 
   public final int getDeceptionAttackValue() {
-    return CharacterUtilties.getTotalValue(character, AttributeType.Manipulation, getName());
+    return CharacterUtilties.getTotalValue(character.getTraitCollection(), AttributeType.Manipulation, getName());
   }
 
   public final int getDeceptionMDV() {
-    return CharacterUtilties.getRoundUpDv(character, AttributeType.Manipulation, getName());
+    return CharacterUtilties.getRoundUpDv(character.getTraitCollection(), AttributeType.Manipulation, getName());
   }
 
   public final int getHonestyAttackValue() {
-    return CharacterUtilties.getTotalValue(character, AttributeType.Charisma, getName());
+    return CharacterUtilties.getTotalValue(character.getTraitCollection(), AttributeType.Charisma, getName());
   }
 
   public final int getHonestyMDV() {
-    return CharacterUtilties.getRoundUpDv(character, AttributeType.Charisma, getName());
+    return CharacterUtilties.getRoundUpDv(character.getTraitCollection(), AttributeType.Charisma, getName());
   }
 
   public abstract ITraitType getName();

@@ -2,6 +2,7 @@ package net.sf.anathema.character.equipment.impl.reporting.second.weaponstats;
 
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.resources.IResources;
@@ -30,10 +31,11 @@ public class AccuracyWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<I
     else {
       final int weaponValue = weapon.getAccuracy();
       table.addCell(createEquipmentValueCell(font, weaponValue));
+      IGenericTraitCollection traitCollection = character.getTraitCollection();
       final int calculateFinalValue = calculateFinalValue(
           weaponValue,
-          character.getTrait(AttributeType.Dexterity),
-          character.getTrait(weapon.getTraitType()));
+          traitCollection.getTrait(AttributeType.Dexterity),
+          traitCollection.getTrait(weapon.getTraitType()));
       table.addCell(createFinalValueCell(font, calculateFinalValue));
     }
   }

@@ -36,11 +36,11 @@ public class AdditionalBonusPointPoolCalculator {
   }
 
   public int getRemainingPoints() {
-    return poolTemplate.getAmount(character) - pointsSpent;
+    return poolTemplate.getAmount(character.getTraitCollection()) - pointsSpent;
   }
 
   public int getAmount() {
-    return poolTemplate.getAmount(character);
+    return poolTemplate.getAmount(character.getTraitCollection());
   }
 
   public void reset() {
@@ -48,7 +48,7 @@ public class AdditionalBonusPointPoolCalculator {
   }
 
   public int spend(IGenericTrait trait, int pointsToSpent) {
-    if (trait.getType() == null || !poolTemplate.isAllowedForTrait(character, trait)) {
+    if (trait.getType() == null || !poolTemplate.isAllowedForTrait(character.getTraitCollection(), trait)) {
       return 0;
     }
     int availableBonusPoints = Math.min(pointsToSpent, getRemainingPoints());
@@ -57,7 +57,7 @@ public class AdditionalBonusPointPoolCalculator {
   }
 
   public int spend(IMagic magic, int pointsToSpent) {
-    if (!poolTemplate.isAllowedForMagic(character, magic)) {
+    if (!poolTemplate.isAllowedForMagic(character.getTraitCollection(), magic)) {
       return 0;
     }
     int availableBonusPoints = Math.min(pointsToSpent, getRemainingPoints());
@@ -68,7 +68,7 @@ public class AdditionalBonusPointPoolCalculator {
   public int spend(List<IGenericSpecialty> allSpecialties, IAbilityPointCosts costs) {
     List<IGenericSpecialty> allowedSpecialties = new ArrayList<IGenericSpecialty>();
     for (IGenericSpecialty specialty : allSpecialties) {
-      if (poolTemplate.isAllowedForTrait(character, specialty.getBasicTrait())) {
+      if (poolTemplate.isAllowedForTrait(character.getTraitCollection(), specialty.getBasicTrait())) {
         allowedSpecialties.add(specialty);
       }
     }
@@ -84,6 +84,6 @@ public class AdditionalBonusPointPoolCalculator {
   }
 
   public boolean isFavoredBackground(IDefaultTrait background) {
-    return poolTemplate.isAllowedForTrait(character, background);
+    return poolTemplate.isAllowedForTrait(character.getTraitCollection(), background);
   }
 }

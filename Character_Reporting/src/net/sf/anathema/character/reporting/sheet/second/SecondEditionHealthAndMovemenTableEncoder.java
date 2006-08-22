@@ -41,13 +41,13 @@ public class SecondEditionHealthAndMovemenTableEncoder extends AbstractHealthAnd
       HealthLevelType level,
       int painTolerance) {
     int penalty = getPenalty(level, painTolerance);
-    int dexValue = character.getTrait(AttributeType.Dexterity).getCurrentValue();
+    int dexValue = character.getTraitCollection().getTrait(AttributeType.Dexterity).getCurrentValue();
     int moveValue = dexValue + penalty;
     table.addCell(createMovementCell(moveValue, 1));
     addSpaceCells(table, 1);
     table.addCell(createMovementCell(moveValue + 6, 2));
-    int verticalJump = character.getTrait(AttributeType.Strength).getCurrentValue()
-        + character.getTrait(AbilityType.Athletics).getCurrentValue()
+    int verticalJump = character.getTraitCollection().getTrait(AttributeType.Strength).getCurrentValue()
+        + character.getTraitCollection().getTrait(AbilityType.Athletics).getCurrentValue()
         + penalty;
     addSpaceCells(table, 1);
     table.addCell(createMovementCell(verticalJump * 2, 0));

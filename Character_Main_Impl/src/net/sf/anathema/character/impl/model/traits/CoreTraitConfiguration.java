@@ -78,7 +78,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
         modelContext.getTraitContext(),
         backgroundRegistry,
         modelContext.getBasicCharacterContext().getRuleSet().getEdition());
-    this.specialtyConfiguration = new SpecialtyConfiguration(this, abilityTraitGroups);
+    this.specialtyConfiguration = new SpecialtyConfiguration(modelContext);
   }
 
   private void addAttributes() {
@@ -139,7 +139,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
     }
     return getFavorableTraits(abilityTypes.toArray(new ITraitType[abilityTypes.size()]));
   }
-  
+
   public ISpecialtyConfiguration getSpecialtyConfiguration() {
     return specialtyConfiguration;
   }

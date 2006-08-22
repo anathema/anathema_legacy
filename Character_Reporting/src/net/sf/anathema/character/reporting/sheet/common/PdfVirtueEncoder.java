@@ -37,10 +37,10 @@ public class PdfVirtueEncoder extends AbstractPdfEncoder {
     float rightVirtueX = (int) (bounds.x + width + virtuePadding * 1.5);
     float upperY = (int) (bounds.getMaxY());
     float centerY = (int) (bounds.getCenterY());
-    encodeVirtue(directContent, character.getTrait(VirtueType.Compassion), new Position(leftVirtueX, upperY), width);
-    encodeVirtue(directContent, character.getTrait(VirtueType.Temperance), new Position(rightVirtueX, upperY), width);
-    encodeVirtue(directContent, character.getTrait(VirtueType.Conviction), new Position(leftVirtueX, centerY), width);
-    encodeVirtue(directContent, character.getTrait(VirtueType.Valor), new Position(rightVirtueX, centerY), width);
+    encodeVirtue(directContent, character.getTraitCollection().getTrait(VirtueType.Compassion), new Position(leftVirtueX, upperY), width);
+    encodeVirtue(directContent, character.getTraitCollection().getTrait(VirtueType.Temperance), new Position(rightVirtueX, upperY), width);
+    encodeVirtue(directContent, character.getTraitCollection().getTrait(VirtueType.Conviction), new Position(leftVirtueX, centerY), width);
+    encodeVirtue(directContent, character.getTraitCollection().getTrait(VirtueType.Valor), new Position(rightVirtueX, centerY), width);
   }
 
   private void encodeVirtue(PdfContentByte directContent, IGenericTrait trait, Position position, float width) {

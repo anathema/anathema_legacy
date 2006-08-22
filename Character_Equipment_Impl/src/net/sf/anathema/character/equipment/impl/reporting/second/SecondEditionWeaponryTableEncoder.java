@@ -51,6 +51,6 @@ public class SecondEditionWeaponryTableEncoder extends AbstractEquipmentTableEnc
 
   @Override
   protected IGenericTrait getTrait(IGenericCharacter character, IWeaponStats equipment) {
-    return character.getTrait(equipment.getTraitType());
+    return character.getTraitCollection().getTrait(equipment.getTraitType());
   }
 }

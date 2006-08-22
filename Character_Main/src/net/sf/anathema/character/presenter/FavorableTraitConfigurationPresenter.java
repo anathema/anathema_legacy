@@ -17,7 +17,6 @@ import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
-import net.sf.anathema.character.presenter.specialty.SpecialtyConfigurationPresenter;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
@@ -48,18 +47,10 @@ public class FavorableTraitConfigurationPresenter extends AbstractTraitPresenter
     this.configurationView = configurationView;
   }
 
-  public TabContent init(String viewKey, String typePrefix, final boolean initSpecialties) {
+  public TabContent init(String viewKey, String typePrefix) {
     for (IIdentifiedTraitTypeGroup traitTypeGroup : traitTypeGroups) {
       configurationView.startNewTraitGroup(resources.getString(typePrefix + "." + traitTypeGroup.getGroupId().getId())); //$NON-NLS-1$
       addAbilityViews(traitConfiguration.getFavorableTraits(traitTypeGroup.getAllGroupTypes()));
-    }
-    if (initSpecialties) {
-      new SpecialtyConfigurationPresenter(
-          traitConfiguration.getSpecialtyConfiguration(),
-          basicCharacterData,
-          characterListening,
-          configurationView,
-          resources).initPresentation();
     }
     configurationView.initGui(null);
     characterListening.addChangeListener(new DedicatedCharacterChangeAdapter() {

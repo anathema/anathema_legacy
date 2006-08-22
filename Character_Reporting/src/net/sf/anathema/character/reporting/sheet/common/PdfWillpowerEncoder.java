@@ -26,7 +26,7 @@ public class PdfWillpowerEncoder implements IPdfContentBoxEncoder {
     float padding = IVoidStateFormatConstants.PADDING /2f;
     float width = contentBounds.width - 2 * padding;
     float leftX = contentBounds.x + padding;
-    int value = character.getTrait(OtherTraitType.Willpower).getCurrentValue();
+    int value = character.getTraitCollection().getTrait(OtherTraitType.Willpower).getCurrentValue();
     float entryHeight = Math.max((contentBounds.height - padding) / 2, traitEncoder.getTraitHeight());
     float yPosition = contentBounds.getMaxY() - entryHeight;
     traitEncoder.encodeCenteredAndUngrouped(directContent, new Position(leftX, yPosition), width, value, 10);

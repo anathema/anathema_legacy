@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.AbstractFavorableTrait;
@@ -41,15 +41,15 @@ public class AggregatedTrait extends AbstractFavorableTrait implements IAggregat
       IFavorableTraitRules traitRules,
       IBasicCharacterData basicData,
       ICharacterListening listening,
-      ITraitValueStrategy traitValueStrategy,
+      ITraitContext traitContext,
       IValueChangeChecker valueChangeChecker,
       ICasteType< ? extends ICasteTypeVisitor> caste,
       IIncrementChecker favoredIncrementChecker,
       String... unremovableSubTraits) {
-    super(traitRules, traitValueStrategy);
+    super(traitRules, traitContext);
     subTraits = new AggregationSubTraitContainer(
         traitRules,
-        traitValueStrategy,
+        traitContext,
         valueChangeChecker,
         this,
         unremovableSubTraits);

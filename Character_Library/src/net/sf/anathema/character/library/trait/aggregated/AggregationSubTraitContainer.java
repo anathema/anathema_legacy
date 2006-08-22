@@ -3,7 +3,7 @@ package net.sf.anathema.character.library.trait.aggregated;
 import java.awt.Toolkit;
 
 import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
@@ -14,18 +14,18 @@ public class AggregationSubTraitContainer extends AbstractSubTraitContainer {
 
   private final ITraitRules traitRules;
   private final ITrait parent;
-  private final ITraitValueStrategy traitValueStrategy;
+  private final ITraitContext traitContext;
   private final IValueChangeChecker valueChangeChecker;
 
   public AggregationSubTraitContainer(
       ITraitRules traitRules,
-      ITraitValueStrategy traitValueStrategy,
+      ITraitContext traitContext,
       IValueChangeChecker valueChangeChecker,
       ITrait parent,
       String... unremovableNames) {
     Ensure.ensureArgumentNotNull(traitRules);
     this.traitRules = traitRules;
-    this.traitValueStrategy = traitValueStrategy;
+    this.traitContext = traitContext;
     this.valueChangeChecker = valueChangeChecker;
     this.parent = parent;
     addUnremovableSubTraits(unremovableNames);
@@ -35,7 +35,7 @@ public class AggregationSubTraitContainer extends AbstractSubTraitContainer {
   protected ISubTrait createSubTrait(String name) {
     int startValue = getSubTraits().length == 0 ? traitRules.getStartValue() : 0;
     ITraitRules aggregatedTraitRules = traitRules.deriveAggregatedRules(name, startValue);
-    return new AggregatedSubTrait(aggregatedTraitRules, traitValueStrategy, valueChangeChecker, parent, name);
+    return new AggregatedSubTrait(aggregatedTraitRules, traitContext, valueChangeChecker, parent, name);
   }
 
   @Override

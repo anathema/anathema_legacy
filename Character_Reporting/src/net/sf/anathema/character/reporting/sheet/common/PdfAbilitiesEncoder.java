@@ -58,7 +58,7 @@ public class PdfAbilitiesEncoder extends AbstractPdfEncoder {
     float yPosition = position.y;
     for (IIdentifiedTraitTypeGroup group : groups) {
       Position groupPosition = new Position(position.x, yPosition);
-      yPosition -= encodeAbilityGroup(directContent, character, group, groupPosition, width);
+      yPosition -= encodeAbilityGroup(directContent, character.getTraitCollection(), group, groupPosition, width);
       yPosition -= IVoidStateFormatConstants.TEXT_PADDING;
     }
     yPosition -= IVoidStateFormatConstants.LINE_HEIGHT;

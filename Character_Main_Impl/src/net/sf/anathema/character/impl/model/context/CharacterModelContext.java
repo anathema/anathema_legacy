@@ -95,7 +95,7 @@ public class CharacterModelContext extends GenericCharmConfiguration implements
   }
 
   public IGenericTraitCollection getTraitCollection() {
-    return character;
+    return character.getTraitCollection();
   }
 
   public IMagicCollection getMagicCollection() {

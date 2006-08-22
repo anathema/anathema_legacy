@@ -24,7 +24,7 @@ public class AbyssalVoidstateReportTemplate extends ExaltVoidstateReportTemplate
   protected void fillInBrawlWeapons(final Map<Object, Object> parameters, final IGenericCharacter character) {
     IWeaponType[] brawlWeaponList = new AbyssalBrawlWeaponConfiguration(character.getRules()).getBrawlWeaponList();
     WeaponStatisticsCalculator weaponStatisticsCalculator = new WeaponStatisticsCalculator(
-        character,
+        character.getTraitCollection(),
         character.getRules(),
         isExalted(character));
     final List<IEquippedWeapon> weapons = new ArrayList<IEquippedWeapon>();

@@ -8,24 +8,24 @@ import net.sf.anathema.character.generic.magic.IMagic;
 public class AdditionalMagicLearnPoolCalculator implements IAdditionalMagicLearnPoolCalculator {
 
   private final IAdditionalMagicLearnPool pool;
-  private final IGenericCharacter abstraction;
+  private final IGenericCharacter character;
   private int pointsSpent = 0;
 
   public AdditionalMagicLearnPoolCalculator(IAdditionalMagicLearnPool pool, IGenericCharacter abstraction) {
     this.pool = pool;
-    this.abstraction = abstraction;
+    this.character = abstraction;
   }
 
   public boolean canSpendOn(IMagic magic) {
-    if (!pool.isAllowedFor(abstraction, magic)) {
+    if (!pool.isAllowedFor(character.getTraitCollection(), magic)) {
       return false;
     }
-    return pointsSpent < pool.getAdditionalMagicCount(abstraction);
+    return pointsSpent < pool.getAdditionalMagicCount(character.getTraitCollection());
   }
 
   public void spendPointsFor(IMagic magic) {
     if (canSpendOn(magic)) {
-      if (magic instanceof ICharm && abstraction.isAlienCharm((ICharm) magic)) {
+      if (magic instanceof ICharm && character.isAlienCharm((ICharm) magic)) {
         pointsSpent++;
       }
       pointsSpent++;
@@ -37,7 +37,7 @@ public class AdditionalMagicLearnPoolCalculator implements IAdditionalMagicLearn
   }
 
   public int getTotalPoints() {
-    return pool.getAdditionalMagicCount(abstraction);
+    return pool.getAdditionalMagicCount(character.getTraitCollection());
   }
 
   public void reset() {

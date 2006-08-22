@@ -113,7 +113,7 @@ public class FavorableTraitTest extends AbstractTraitTest {
     return new DefaultTrait(
         rules,
         new DummyCasteType(),
-        traitContext.getTraitValueStrategy(),
+        traitContext,
         context.getBasicCharacterContext(),
         context.getCharacterListening(),
         new FriendlyValueChangeChecker(),

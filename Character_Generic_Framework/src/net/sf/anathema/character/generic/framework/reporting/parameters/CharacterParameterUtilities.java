@@ -29,7 +29,7 @@ public class CharacterParameterUtilities {
 
   public static final void fillInAttributes(IGenericCharacter character, Map<Object, Object> parameters) {
     for (AttributeType type : AttributeType.values()) {
-      CharacterParameterUtilities.fillInTrait(character.getTrait(type), parameters);
+      CharacterParameterUtilities.fillInTrait(character.getTraitCollection().getTrait(type), parameters);
     }
   }
 

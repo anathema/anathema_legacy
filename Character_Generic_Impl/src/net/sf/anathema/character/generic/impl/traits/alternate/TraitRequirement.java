@@ -24,7 +24,7 @@ public class TraitRequirement implements ITraitRequirement {
   }
 
   public boolean isCurrentlyStrict(ILimitationContext limitationContext) {
-    int currentValue = limitationContext.getTrait(traitType).getCurrentValue();
+    int currentValue = limitationContext.getTraitCollection().getTrait(traitType).getCurrentValue();
     return currentValue >= getStrictMinimum();
   }
 

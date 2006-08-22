@@ -65,7 +65,7 @@ public class LunarVoidstateReportTemplate extends ExaltVoidstateReportTemplate {
 
   private void fillInAttributeFavorization(Map<Object, Object> parameters, IGenericCharacter character) {
     for (AttributeType type : AttributeType.values()) {
-      parameters.put(type.getId() + "_boolean", ((IFavorableGenericTrait) character.getTrait(type)).isCasteOrFavored()); //$NON-NLS-1$         
+      parameters.put(type.getId() + "_boolean", ((IFavorableGenericTrait) character.getTraitCollection().getTrait(type)).isCasteOrFavored()); //$NON-NLS-1$         
     }
   }
 

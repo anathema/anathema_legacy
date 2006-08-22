@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.view.ISpecialtyView;
 import net.sf.anathema.character.view.basic.IButtonControlledComboEditView;
 
-public interface ISpecialtyConfigurationView {
+public interface ISpecialtiesConfigurationView {
 
   public ISpecialtyView addSpecialtyView(
       String abilityName,

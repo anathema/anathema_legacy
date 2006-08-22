@@ -3,7 +3,6 @@ package net.sf.anathema.dummy.character.additional;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
-import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
 import net.sf.anathema.character.intimacies.model.IntimacyType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
@@ -11,9 +10,11 @@ import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.dummy.character.trait.DummyCoreTraitConfiguration;
+import net.sf.anathema.dummy.character.trait.DummyTraitContext;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 
-public class DemoIntimacy implements IIntimacy{
+public class DemoIntimacy implements IIntimacy {
 
   private final String name;
   private final int value;
@@ -24,9 +25,9 @@ public class DemoIntimacy implements IIntimacy{
     this.value = value;
     this.character = character;
   }
-  
+
   public void addCompletionListener(IBooleanValueChangedListener listener) {
-    //Nothing to do
+    // Nothing to do
   }
 
   public String getName() {
@@ -35,7 +36,10 @@ public class DemoIntimacy implements IIntimacy{
 
   public IDefaultTrait getTrait() {
     ITraitRules traitRules = createTraitRules();
-    DefaultTrait trait = new DefaultTrait(traitRules, new CreationTraitValueStrategy(), new FriendlyValueChangeChecker());
+    DefaultTrait trait = new DefaultTrait(
+        traitRules,
+        new DummyTraitContext(new DummyCoreTraitConfiguration()),
+        new FriendlyValueChangeChecker());
     trait.setCurrentValue(value);
     return trait;
   }
@@ -50,10 +54,10 @@ public class DemoIntimacy implements IIntimacy{
   }
 
   public void resetCurrentValue() {
-    //Nothing to do
+    // Nothing to do
   }
 
   public void setComplete(boolean complete) {
-    //Nothing to do
+    // Nothing to do
   }
 }

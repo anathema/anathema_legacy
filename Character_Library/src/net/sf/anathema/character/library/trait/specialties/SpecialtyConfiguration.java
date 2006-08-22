@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.disy.commons.core.util.StringUtilities;
+import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
-import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
-import net.sf.anathema.character.library.trait.ITrait;
-import net.sf.anathema.character.library.trait.ITraitCollection;
+import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -20,11 +20,14 @@ public class SpecialtyConfiguration implements ISpecialtyConfiguration {
   private String currentName;
   private ITraitType currentType;
   private final ChangeControl control = new ChangeControl();
+  private final ICharacterModelContext context;
 
-  public SpecialtyConfiguration(ITraitCollection traitCollection, ITraitTypeGroup[] groups) {
-    this.traitTypes = TraitTypeGroup.getAllTraitTypes(groups);
-    for (ITrait ability : traitCollection.getTraits(getAllTraitTypes())) {
-      specialtiesByTrait.put(ability.getType(), ability.createSpecialtiesContainer());
+  public SpecialtyConfiguration(ICharacterModelContext context) {
+    this.context = context;
+    IExaltedEdition edition = context.getBasicCharacterContext().getRuleSet().getEdition();
+    this.traitTypes = AbilityType.getAbilityTypes(edition);
+    for (ITraitType type : traitTypes) {
+      specialtiesByTrait.put(type, new SpecialtiesContainer(type, context.getTraitContext()));
     }
   }
 
@@ -62,5 +65,13 @@ public class SpecialtyConfiguration implements ISpecialtyConfiguration {
 
   public boolean isEntryComplete() {
     return !StringUtilities.isNullOrEmpty(currentName) && currentType != null;
+  }
+
+  public boolean isExperienced() {
+    return context.getBasicCharacterContext().isExperienced();
+  }
+
+  public void addCharacterChangeListener(ICharacterChangeListener listener) {
+    context.getCharacterListening().addChangeListener(listener);
   }
 }

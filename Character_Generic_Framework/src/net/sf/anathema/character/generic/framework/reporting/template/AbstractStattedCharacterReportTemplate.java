@@ -62,13 +62,19 @@ public abstract class AbstractStattedCharacterReportTemplate extends AbstractCha
     AdvantageParameterUtilities.fillInVirtues(character, parameters);
     AbilityParameterUtilities.fillInAbilities(character, parameters, getResources());
     CharacterParameterUtilities.fillInAttributes(character, parameters);
-    CombatParameterUtilities.fillInCombatStats(character, character.getRules(), isExalted(character), parameters);
+    CombatParameterUtilities.fillInCombatStats(
+        character.getTraitCollection(),
+        character.getRules(),
+        isExalted(character),
+        parameters);
     CharacterParameterUtilities.fillExperienceParameters(parameters, character);
     CharacterParameterUtilities.fillInConcept(character, parameters);
     CharacterParameterUtilities.fillInNature(character, parameters, getResources());
     CharacterParameterUtilities.fillInTemplate(character, parameters, getResources());
     HealthParameterUtilities.fillInHealth(character, parameters);
-    HealthParameterUtilities.fillInSoak(character.getTrait(AttributeType.Stamina).getCurrentValue(), parameters);
+    HealthParameterUtilities.fillInSoak(character.getTraitCollection()
+        .getTrait(AttributeType.Stamina)
+        .getCurrentValue(), parameters);
     parameters.put(MERIT_AND_FLAW_DATA_SOURCE, new MeritsAndFlawsDataSource());
     fillInExtendedParameters(parameters, character);
   }

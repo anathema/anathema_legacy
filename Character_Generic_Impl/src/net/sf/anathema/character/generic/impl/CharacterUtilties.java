@@ -17,16 +17,18 @@ public class CharacterUtilties {
   }
 
   public static int getKnockdownPool(IGenericCharacter character) {
+    IGenericTraitCollection traitCollection = character.getTraitCollection();
     if (character.getRules().getEdition() == ExaltedEdition.FirstEdition) {
-      return getTotalValue(character, AttributeType.Stamina, AbilityType.Resistance);
+      return getTotalValue(traitCollection, AttributeType.Stamina, AbilityType.Resistance);
     }
-    int attribute = getMaxValue(character, AttributeType.Dexterity, AttributeType.Stamina);
-    int ability = getMaxValue(character, AbilityType.Athletics, AbilityType.Resistance);
+    int attribute = getMaxValue(traitCollection, AttributeType.Dexterity, AttributeType.Stamina);
+    int ability = getMaxValue(traitCollection, AbilityType.Athletics, AbilityType.Resistance);
     return attribute + ability;
   }
 
-  private static int getMaxValue(IGenericCharacter character, ITraitType second, ITraitType first) {
-    return Math.max(character.getTrait(first).getCurrentValue(), character.getTrait(second).getCurrentValue());
+  private static int getMaxValue(IGenericTraitCollection traitCollection, ITraitType second, ITraitType first) {
+    return Math.max(traitCollection.getTrait(first).getCurrentValue(), traitCollection.getTrait(second)
+        .getCurrentValue());
   }
 
   private static int getRoundDownDv(IGenericTraitCollection traitCollection, ITraitType... types) {
@@ -40,9 +42,9 @@ public class CharacterUtilties {
   public static int getDv(IGenericCharacter character, ITraitType... types) {
     CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     if (characterType == CharacterType.MORTAL) {
-      return getRoundDownDv(character, types);
+      return getRoundDownDv(character.getTraitCollection(), types);
     }
-    return getRoundUpDv(character, types);
+    return getRoundUpDv(character.getTraitCollection(), types);
   }
 
   public static int getDv(CharacterType characterType, IGenericTraitCollection traitCollection, ITraitType... types) {
@@ -79,7 +81,7 @@ public class CharacterUtilties {
   public static int getUntrainedActionModifier(IGenericCharacter character, ITraitType traitType) {
     CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     boolean isExaltPunished = character.getRules() == ExaltedRuleSet.CoreRules;
-    if (character.getTrait(traitType).getCurrentValue() > 0) {
+    if (character.getTraitCollection().getTrait(traitType).getCurrentValue() > 0) {
       return 0;
     }
     if (isExaltPunished || !CharacterType.isExaltType(characterType)) {
@@ -89,11 +91,12 @@ public class CharacterUtilties {
   }
 
   public static int getDodgePool(IGenericCharacter character) {
-    int dodgeValue = character.getTrait(AbilityType.Dodge).getCurrentValue();
-    int value = character.getTrait(AttributeType.Dexterity).getCurrentValue() + dodgeValue;
+    IGenericTraitCollection traitCollection = character.getTraitCollection();
+    int dodgeValue = traitCollection.getTrait(AbilityType.Dodge).getCurrentValue();
+    int value = traitCollection.getTrait(AttributeType.Dexterity).getCurrentValue() + dodgeValue;
     value += Math.max(0, value - getUntrainedActionModifier(character, AbilityType.Dodge));
     if (character.getRules() != ExaltedRuleSet.PowerCombat) {
-      int essenceValue = character.getTrait(OtherTraitType.Essence).getCurrentValue();
+      int essenceValue = traitCollection.getTrait(OtherTraitType.Essence).getCurrentValue();
       if (essenceValue > 1) {
         value += essenceValue;
       }

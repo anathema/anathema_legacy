@@ -103,7 +103,7 @@ public class AstrologicalHouse extends Identificate implements IAstrologicalHous
       colleges[index] = new DefaultTrait(
           rules,
           casteType,
-          traitContext.getTraitValueStrategy(),
+          traitContext,
           context.getBasicCharacterContext(),
           context.getCharacterListening(),
           new FriendlyValueChangeChecker(),

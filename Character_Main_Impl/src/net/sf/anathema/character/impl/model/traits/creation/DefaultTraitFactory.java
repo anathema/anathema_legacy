@@ -36,6 +36,6 @@ public class DefaultTraitFactory extends AbstractTraitFactory {
     ITraitTemplate traitTemplate = templateCollection.getTraitTemplate(traitType);
     IValueChangeChecker checker = createValueIncrementChecker(traitType);
     TraitRules rules = new TraitRules(traitType, traitTemplate, traitContext.getLimitationContext());
-    return new DefaultTrait(rules, traitContext.getTraitValueStrategy(), checker);
+    return new DefaultTrait(rules, traitContext, checker);
   }
 }

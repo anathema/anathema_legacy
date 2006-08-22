@@ -22,7 +22,7 @@ public abstract class AbstractTraitTextEncoder<T extends ITraitType> extends Abs
       if (addSeparator(type)) {
         traitPhrase.add(createTextChunk(", ")); //$NON-NLS-1$
       }
-      IFavorableGenericTrait trait = genericCharacter.getFavorableTrait(type);
+      IFavorableGenericTrait trait = genericCharacter.getTraitCollection().getFavorableTrait(type);
       if (trait.isCasteOrFavored()) {
         traitPhrase.add(createTextChunk("*")); //$NON-NLS-1$
       }

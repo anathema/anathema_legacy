@@ -29,13 +29,13 @@ public class SecondEditionCombatValueEncoder implements IPdfContentEncoder {
     String dodgeLabel = resources.getString("Sheet.Combat.DodgeDV"); //$NON-NLS-1$
     String knockdownLabel = resources.getString("Sheet.Combat.Knockdown"); //$NON-NLS-1$
     String stunningLabel = resources.getString("Sheet.Combat.Stunning"); //$NON-NLS-1$
-    int joinBattle = CharacterUtilties.getTotalValue(character, AttributeType.Wits, AbilityType.Awareness);
+    int joinBattle = CharacterUtilties.getTotalValue(character.getTraitCollection(), AttributeType.Wits, AbilityType.Awareness);
     CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-    int dodgeDV = CharacterUtilties.getDodgeDv(characterType, character);
-    int knockdownThreshold = CharacterUtilties.getTotalValue(character, AttributeType.Stamina, AbilityType.Resistance);
+    int dodgeDV = CharacterUtilties.getDodgeDv(characterType, character.getTraitCollection());
+    int knockdownThreshold = CharacterUtilties.getTotalValue(character.getTraitCollection(), AttributeType.Stamina, AbilityType.Resistance);
     int knockdownPool = CharacterUtilties.getKnockdownPool(character);
-    int stunningThreshold = CharacterUtilties.getTotalValue(character, AttributeType.Stamina);
-    int stunningPool = CharacterUtilties.getTotalValue(character, AttributeType.Stamina, AbilityType.Resistance);
+    int stunningThreshold = CharacterUtilties.getTotalValue(character.getTraitCollection(), AttributeType.Stamina);
+    int stunningPool = CharacterUtilties.getTotalValue(character.getTraitCollection(), AttributeType.Stamina, AbilityType.Resistance);
 
     Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
     LabelledValueEncoder encoder = new LabelledValueEncoder(baseFont, 4, upperLeftCorner, bounds.width, 3);

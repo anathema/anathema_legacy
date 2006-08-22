@@ -12,7 +12,7 @@ public class EssenceBasedLimitation implements ITraitLimitation {
   }
 
   public int getCurrentMaximum(ILimitationContext limitationContext) {
-    int currentEssenceValue = Math.max(limitationContext.getTrait(OtherTraitType.Essence).getCurrentValue(), 5);
+    int currentEssenceValue = Math.max(limitationContext.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue(), 5);
     return Math.min(getAbsoluteLimit(limitationContext), currentEssenceValue);
   }
 

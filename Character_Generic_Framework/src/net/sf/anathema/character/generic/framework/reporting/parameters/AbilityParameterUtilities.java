@@ -52,8 +52,8 @@ public class AbilityParameterUtilities {
 
   private static void fillInClassicAbilities(IGenericCharacter character, Map<Object, Object> parameters) {
     for (AbilityType abilityType : AbilityType.getAbilityTypes(character.getRules().getEdition())) {
-      CharacterParameterUtilities.fillInTrait(character.getTrait(abilityType), parameters);
-      Boolean marked = character.isFavoredOrCasteTrait(abilityType);
+      CharacterParameterUtilities.fillInTrait(character.getTraitCollection().getTrait(abilityType), parameters);
+      Boolean marked = character.getTraitCollection().isFavoredOrCasteTrait(abilityType);
       parameters.put(abilityType.getId() + "_boolean", marked); //$NON-NLS-1$
     }
     parameters.put(ICharacterReportConstants.SPECIALTIES_DATA_SOURCE, new SpecialtiesDataSource(character));

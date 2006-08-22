@@ -8,6 +8,8 @@ public interface IGenericTraitCollection {
 
   public IGenericTrait getTrait(ITraitType type);
 
+  public IGenericTrait[] getTraits(ITraitType[] traitTypes);
+
   public IFavorableGenericTrait getFavorableTrait(ITraitType type);
 
   public boolean isFavoredOrCasteTrait(ITraitType type);

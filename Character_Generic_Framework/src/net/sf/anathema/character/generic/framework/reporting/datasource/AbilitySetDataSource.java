@@ -57,7 +57,7 @@ public class AbilitySetDataSource implements IReportDataSource {
           + abilityTypeGroups[currentRow].getGroupId());
     }
     if (COLUMN_GROUP_DATASOURCE.equals(columnName)) {
-      return new AbilityGroupDataSource(resources, character, abilityTypeGroups[currentRow].getAllGroupTypes());
+      return new AbilityGroupDataSource(resources, character.getTraitCollection(), abilityTypeGroups[currentRow].getAllGroupTypes());
     }
     throw new IllegalArgumentException("Illegal Colum Name:" + columnName); //$NON-NLS-1$
   }

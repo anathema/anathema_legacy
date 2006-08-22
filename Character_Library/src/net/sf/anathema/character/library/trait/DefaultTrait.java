@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
@@ -37,12 +37,12 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
   public DefaultTrait(
       IFavorableTraitRules traitRules,
       ICasteType< ? extends ICasteTypeVisitor> caste,
-      ITraitValueStrategy valueStrategy,
+      ITraitContext valueContext,
       IBasicCharacterData basicData,
       ICharacterListening listening,
       IValueChangeChecker valueChangeChecker,
       IIncrementChecker favoredIncrementChecker) {
-    this(traitRules, valueStrategy, valueChangeChecker);
+    this(traitRules, valueContext, valueChangeChecker);
     traitFavorization = new TraitFavorization(
         basicData,
         caste,
@@ -53,8 +53,8 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
     getFavorization().updateFavorableStateToCaste();
   }
 
-  public DefaultTrait(ITraitRules traitRules, ITraitValueStrategy traitValueStrategy, IValueChangeChecker checker) {
-    super(traitRules, traitValueStrategy);
+  public DefaultTrait(ITraitRules traitRules, ITraitContext traitContext, IValueChangeChecker checker) {
+    super(traitRules, traitContext);
     this.traitFavorization = new NullTraitFavorization();
     this.checker = checker;
     this.creationValue = traitRules.getStartValue();

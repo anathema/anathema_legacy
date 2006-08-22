@@ -1,6 +1,7 @@
 package net.sf.anathema.character.library.trait;
 
 import net.disy.commons.core.util.Ensure;
+import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
@@ -15,16 +16,16 @@ public abstract class AbstractFavorableTrait implements IFavorableTrait {
   private final ITraitRules traitRules;
   private final IntValueControl creationPointControl = new IntValueControl();
   private final IntValueControl currentValueControl = new IntValueControl();
-  private final ITraitValueStrategy traitValueStrategy;
+  private final ITraitContext traitContext;
 
-  public AbstractFavorableTrait(ITraitRules traitRules, ITraitValueStrategy traitValueStrategy) {
+  public AbstractFavorableTrait(ITraitRules traitRules, ITraitContext traitContext) {
     Ensure.ensureArgumentNotNull(traitRules);
     this.traitRules = traitRules;
-    this.traitValueStrategy = traitValueStrategy;
+    this.traitContext = traitContext;
   }
 
   public final ISubTraitContainer createSpecialtiesContainer() {
-    return new SpecialtiesContainer(getType(), getTraitRules(), getTraitValueStrategy());
+    return new SpecialtiesContainer(getType(), traitContext);
   }
 
   public boolean isCasteOrFavored() {
@@ -89,6 +90,6 @@ public abstract class AbstractFavorableTrait implements IFavorableTrait {
   }
 
   protected ITraitValueStrategy getTraitValueStrategy() {
-    return traitValueStrategy;
+    return traitContext.getTraitValueStrategy();
   }
 }

@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.character.ICharacterPoints;
 import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthLevelType;
@@ -24,15 +25,12 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfi
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
-import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
-import net.sf.anathema.character.library.trait.IFavorableDefaultTrait;
-import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtyConfiguration;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
@@ -56,20 +54,8 @@ public class GenericCharacter implements IGenericCharacter {
     this.characterPoints = new CharacterPoints(statistics, experiencePointManagement);
   }
 
-  public boolean isFavoredOrCasteTrait(ITraitType type) {
-    ITrait trait = statistics.getTraitConfiguration().getTrait(type);
-    if (trait instanceof IFavorableDefaultTrait) {
-      return ((IFavorableDefaultTrait) trait).getFavorization().isCasteOrFavored();
-    }
-    return false;
-  }
-
-  public IGenericTrait getTrait(ITraitType traitType) {
-    return statistics.getTraitConfiguration().getTrait(traitType);
-  }
-
-  public IFavorableGenericTrait getFavorableTrait(ITraitType type) {
-    return statistics.getTraitConfiguration().getFavorableTrait(type);
+  public IGenericTraitCollection getTraitCollection() {
+    return statistics.getTraitConfiguration();
   }
 
   public int getLearnCount(IMultiLearnableCharm charm) {

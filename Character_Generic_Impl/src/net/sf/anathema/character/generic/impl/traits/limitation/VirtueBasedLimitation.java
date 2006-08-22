@@ -18,7 +18,7 @@ public class VirtueBasedLimitation implements ITraitLimitation {
   }
 
   public int getCurrentMaximum(ILimitationContext limitationContext) {
-    return limitationContext.getTrait(limitingType).getCurrentValue();
+    return limitationContext.getTraitCollection().getTrait(limitingType).getCurrentValue();
   }
 
   @Override

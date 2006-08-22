@@ -64,7 +64,7 @@ public class FavorableTraitFactory extends AbstractTraitFactory {
           favorableTraitRules,
           basicCharacterData,
           characterListening,
-          traitContext.getTraitValueStrategy(),
+          traitContext,
           valueChecker,
           casteType,
           favoredIncrementChecker,
@@ -73,7 +73,7 @@ public class FavorableTraitFactory extends AbstractTraitFactory {
     return new DefaultTrait(
         favorableTraitRules,
         casteType,
-        traitContext.getTraitValueStrategy(),
+        traitContext,
         basicCharacterData,
         characterListening,
         valueChecker,

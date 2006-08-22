@@ -42,7 +42,7 @@ public class OxBodyTechniqueConfigurationTest extends BasicCharacterTestCase {
     endurance = new DefaultTrait(
         enduranceRules,
         new DummyCasteType(),
-        traitContext.getTraitValueStrategy(),
+        traitContext,
         modelContext.getBasicCharacterContext(),
         modelContext.getCharacterListening(),
         new FriendlyValueChangeChecker(),

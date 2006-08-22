@@ -17,8 +17,6 @@ import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup
 
 public interface IGenericCharacter extends ILimitationContext, IMagicCollection {
 
-  public boolean isFavoredOrCasteTrait(ITraitType type);
-
   public boolean isLearned(IMagic magic);
 
   public boolean isAlienCharm(ICharm charm);

@@ -42,18 +42,18 @@ public class AdvantageParameterUtilities {
 
   public static final void fillInVirtues(IGenericCharacter character, Map<Object, Object> parameters) {
     for (VirtueType virtueType : VirtueType.values()) {
-      parameters.put(virtueType.getId(), new Integer(character.getTrait(virtueType).getCurrentValue()));
+      parameters.put(virtueType.getId(), new Integer(character.getTraitCollection().getTrait(virtueType).getCurrentValue()));
     }
   }
 
   public static void fillInWillpower(IGenericCharacter abstraction, Map<Object, Object> parameters) {
     ITraitType traitType = OtherTraitType.Willpower;
-    parameters.put(traitType.getId(), new Integer(abstraction.getTrait(traitType).getCurrentValue()));
+    parameters.put(traitType.getId(), new Integer(abstraction.getTraitCollection().getTrait(traitType).getCurrentValue()));
   }
 
   public static void fillInEssence(IGenericCharacter abstraction, Map<Object, Object> parameters) {
     ITraitType traitType = OtherTraitType.Essence;
-    parameters.put(traitType.getId(), new Integer(abstraction.getTrait(traitType).getCurrentValue()));
+    parameters.put(traitType.getId(), new Integer(abstraction.getTraitCollection().getTrait(traitType).getCurrentValue()));
   }
 
   public static void fillInEssencePools(IGenericCharacter character, Map<Object, Object> parameters) {

@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 public class DummyGenericTraitCollection implements IGenericTraitCollection {
 
@@ -20,10 +21,14 @@ public class DummyGenericTraitCollection implements IGenericTraitCollection {
     return traits.get(type);
   }
 
+  public IGenericTrait[] getTraits(ITraitType[] traitTypes) {
+    throw new NotYetImplementedException();
+  }
+
   public void setValue(ITraitType type, int value) {
     traits.put(type, new DummyGenericTrait(type, value));
   }
-  
+
   public boolean isFavoredOrCasteTrait(ITraitType type) {
     return getFavorableTrait(type).isCasteOrFavored();
   }

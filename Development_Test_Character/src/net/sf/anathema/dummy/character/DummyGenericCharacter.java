@@ -11,6 +11,7 @@ import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.character.ICharacterPoints;
 import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthLevelType;
@@ -28,6 +29,7 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
+import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.resources.IResources;
 
 public class DummyGenericCharacter implements IGenericCharacter {
@@ -39,16 +41,29 @@ public class DummyGenericCharacter implements IGenericCharacter {
     this.template = template;
   }
 
-  public boolean isFavoredOrCasteTrait(ITraitType type) {
-    return getFavorableTrait(type).isCasteOrFavored();
+  public IGenericTraitCollection getTraitCollection() {
+    return new IGenericTraitCollection() {
+
+      public IGenericTrait getTrait(ITraitType type) {
+        return traitsByType.get(type);
+      }
+
+      public IGenericTrait[] getTraits(ITraitType[] traitTypes) {
+        throw new NotYetImplementedException();
+      }
+
+      public boolean isFavoredOrCasteTrait(ITraitType type) {
+        return getFavorableTrait(type).isCasteOrFavored();
+      }
+
+      public IFavorableGenericTrait getFavorableTrait(ITraitType type) {
+        return (IFavorableGenericTrait) getTrait(type);
+      }
+    };
   }
 
   public void addTrait(IGenericTrait trait) {
     traitsByType.put(trait.getType(), trait);
-  }
-
-  public IGenericTrait getTrait(ITraitType type) {
-    return traitsByType.get(type);
   }
 
   public int getLearnCount(IMultiLearnableCharm charm) {
@@ -129,7 +144,7 @@ public class DummyGenericCharacter implements IGenericCharacter {
       public ICasteType<ICasteTypeVisitor> getCasteType() {
         return ICasteType.NULL_CASTE_TYPE;
       }
-      
+
       public String getWillpowerRegainingComment(IResources resources) {
         return null;
       }
@@ -166,10 +181,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
 
   public ITraitLimitation getEssenceLimitation() {
     return new StaticTraitLimitation(7);
-  }
-
-  public IFavorableGenericTrait getFavorableTrait(ITraitType type) {
-    return (IFavorableGenericTrait) getTrait(type);
   }
 
   public void setLearnCount(IMultiLearnableCharm multiLearnableCharm, int newValue) {

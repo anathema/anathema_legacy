@@ -51,7 +51,7 @@ public class FrameworkUtilities {
       }
 
       public IGenericTraitCollection getTraitCollection() {
-        return genericCharacter;
+        return genericCharacter.getTraitCollection();
       }
 
       public ITraitContext getTraitContext() {

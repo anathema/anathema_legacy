@@ -11,6 +11,7 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.character.ICharacterPoints;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IGenericCombo;
@@ -33,6 +34,7 @@ import net.sf.anathema.dummy.character.additional.DemoEquipmentAdditionalModel;
 import net.sf.anathema.dummy.character.additional.DemoIntimaciesModel;
 import net.sf.anathema.dummy.character.trait.DummyFavorableGenericTrait;
 import net.sf.anathema.dummy.character.trait.DummyGenericTrait;
+import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 public class DemoGenericCharacter implements IGenericCharacter {
 
@@ -51,6 +53,27 @@ public class DemoGenericCharacter implements IGenericCharacter {
   private int painTolerance = 0;
   private int totalExperiencePoints = 500;
   private int spentExperiencePoints = 125;
+
+  public IGenericTraitCollection getTraitCollection() {
+    return new IGenericTraitCollection() {
+      public IGenericTrait getTrait(ITraitType type) {
+        return new DummyGenericTrait(type, 1);
+      }
+
+      public IGenericTrait[] getTraits(ITraitType[] traitTypes) {
+        throw new NotYetImplementedException();
+      }
+
+      public boolean isFavoredOrCasteTrait(ITraitType type) {
+        return false;
+      }
+
+      public IFavorableGenericTrait getFavorableTrait(ITraitType type) {
+        boolean isFavored = net.sf.anathema.lib.random.RandomUtilities.nextPercent() < 50;
+        return new DummyFavorableGenericTrait(type, 2, isFavored);
+      }
+    };
+  }
 
   public DemoGenericCharacter(CharacterType characterType) {
     this.characterTemplate = new DemoCharacterTemplate(characterType);
@@ -152,10 +175,6 @@ public class DemoGenericCharacter implements IGenericCharacter {
     return false;
   }
 
-  public boolean isFavoredOrCasteTrait(ITraitType type) {
-    return false;
-  }
-
   public boolean isLearned(IMagic magic) {
     return false;
   }
@@ -170,15 +189,6 @@ public class DemoGenericCharacter implements IGenericCharacter {
 
   public ITraitLimitation getEssenceLimitation() {
     return null;
-  }
-
-  public IFavorableGenericTrait getFavorableTrait(ITraitType type) {
-    boolean isFavored = net.sf.anathema.lib.random.RandomUtilities.nextPercent() < 50;
-    return new DummyFavorableGenericTrait(type, 2, isFavored);
-  }
-
-  public IGenericTrait getTrait(ITraitType type) {
-    return new DummyGenericTrait(type, 1);
   }
 
   public int getLearnCount(IMultiLearnableCharm multiLearnableCharm) {

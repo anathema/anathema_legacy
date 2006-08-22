@@ -61,7 +61,7 @@ public class HealthParameterUtilities {
     for (HealthLevelType type : HealthLevelType.values()) {
       parameters.put(type.getId(), new Integer(character.getHealthLevelTypeCount(type)));
     }
-    int dexterityValue = character.getTrait(AttributeType.Dexterity).getCurrentValue();
+    int dexterityValue = character.getTraitCollection().getTrait(AttributeType.Dexterity).getCurrentValue();
     parameters.put(ICharacterReportConstants.MOVE_AT_HEALTH_0, dexterityValue + 12);
     parameters.put(ICharacterReportConstants.MOVE_AT_HEALTH_1, dexterityValue + 8);
     parameters.put(ICharacterReportConstants.MOVE_AT_HEALTH_2, dexterityValue + 4);

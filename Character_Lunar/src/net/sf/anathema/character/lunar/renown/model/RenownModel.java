@@ -68,7 +68,7 @@ public class RenownModel implements IRenownModel {
       }
     };
     ITraitRules rules = new TraitRules(faceType, renownTemplate, traitContext.getLimitationContext());
-    this.face = new DefaultTrait(rules, traitContext.getTraitValueStrategy(), new FaceValueChangeChecker(this));
+    this.face = new DefaultTrait(rules, traitContext, new FaceValueChangeChecker(this));
     ConfigurableCharacterChangeListener attributeChangeListener = new ConfigurableCharacterChangeListener() {
       @Override
       public void configuredChangeOccured() {
@@ -98,7 +98,7 @@ public class RenownModel implements IRenownModel {
     for (int index = 0; index < RenownType.values().length; index++) {
       ITraitType type = RenownType.values()[index];
       ITraitRules rules = new TraitRules(type, renownTemplate, traitContext.getLimitationContext());
-      IDefaultTrait trait = new DefaultTrait(rules, traitContext.getTraitValueStrategy(), new FriendlyValueChangeChecker());
+      IDefaultTrait trait = new DefaultTrait(rules, traitContext, new FriendlyValueChangeChecker());
       collection.addRenownTrait(trait);
       trait.addCurrentValueListener(new IIntValueChangedListener() {
         public void valueChanged(int newValue) {
