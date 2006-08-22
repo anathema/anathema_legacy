@@ -1,7 +1,6 @@
 package net.sf.anathema.character.library.trait;
 
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
@@ -18,8 +17,6 @@ public interface ITrait extends IGenericTrait {
   public void addCurrentValueListener(IIntValueChangedListener listener);
 
   public void removeCurrentValueListener(IIntValueChangedListener listener);
-
-  public ISubTraitContainer createSpecialtiesContainer();
 
   public void accept(ITraitVisitor visitor);
 }

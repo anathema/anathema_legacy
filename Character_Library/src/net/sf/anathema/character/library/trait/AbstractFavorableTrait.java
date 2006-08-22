@@ -6,8 +6,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITra
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
-import net.sf.anathema.character.library.trait.specialties.SpecialtiesContainer;
-import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
 
@@ -22,10 +20,6 @@ public abstract class AbstractFavorableTrait implements IFavorableTrait {
     Ensure.ensureArgumentNotNull(traitRules);
     this.traitRules = traitRules;
     this.traitContext = traitContext;
-  }
-
-  public final ISubTraitContainer createSpecialtiesContainer() {
-    return new SpecialtiesContainer(getType(), traitContext);
   }
 
   public boolean isCasteOrFavored() {

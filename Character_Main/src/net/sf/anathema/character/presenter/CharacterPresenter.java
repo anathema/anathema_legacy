@@ -201,7 +201,8 @@ public class CharacterPresenter implements IPresenter {
     int groupCount = traitTypeGroups.length;
     int columnCount = groupCount / 2 + 1;
     IGroupedFavorableTraitConfigurationView abilityView = characterView.addGroupedFavorableTraitConfigurationView(
-        getString("CardView.AbilityConfiguration.Title"), columnCount); //$NON-NLS-1$
+        null,
+        columnCount);
     TabContent basicAbilitiesTab = new FavorableTraitConfigurationPresenter(
         traitTypeGroups,
         getStatistics(),
