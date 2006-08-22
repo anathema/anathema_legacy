@@ -69,14 +69,18 @@ public class CraftPresenter extends AbstractStringEntryTraitPresenter<ISubTrait>
   }
 
   private void addFixedSubView(BasicUi basicUi, ISubTrait craft) {
-    IRemovableTraitView< ? > subView = createSubView(basicUi, craft);
+    IRemovableTraitView< ? > subView = createSubView(basicUi, craft, resources.getString("Craft." + craft.getName())); //$NON-NLS-1$
     subView.setButtonEnabled(false);
     addSubView(craft, subView);
   }
 
   @Override
-  protected IRemovableTraitView< ? > createSubView(BasicUi basicUi, final ISubTrait craft) {
-    final IRemovableTraitView< ? > craftView = view.addEntryView(basicUi.getRemoveIcon(), craft.getName());
+  protected IRemovableTraitView< ? > createSubView(BasicUi basicUi, ISubTrait craft) {
+    return createSubView(basicUi, craft, craft.getName());
+  }
+
+  private IRemovableTraitView< ? > createSubView(BasicUi basicUi, final ISubTrait craft, String name) {
+    final IRemovableTraitView< ? > craftView = view.addEntryView(basicUi.getRemoveIcon(), name);
     craftView.setValue(craft.getCurrentValue());
     addModelValueListener(craft, craftView);
     addViewValueListener(craftView, craft);
