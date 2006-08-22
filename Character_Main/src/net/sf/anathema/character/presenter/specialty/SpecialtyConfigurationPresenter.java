@@ -150,7 +150,7 @@ public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
   }
 
   private void addSpecialtyView(final ISubTrait specialty) {
-    String traitTypeId = specialty.getBasicTrait().getType().getId();
+    String traitTypeId = specialty.getBasicTraitType().getId();
     String traitName = resources.getString(traitTypeId);
     String specialtyName = specialty.getName();
     Icon deleteIcon = new BasicUi(resources).getRemoveIcon();
@@ -164,8 +164,7 @@ public class SpecialtyConfigurationPresenter extends AbstractTraitPresenter {
     addViewValueListener(specialtyView, specialty);
     specialtyView.addDeleteListener(new IChangeListener() {
       public void changeOccured() {
-        ITraitType traitType = specialty.getBasicTrait().getType();
-        getSpecialtyContainerType(traitType).removeSubTrait(specialty);
+        getSpecialtyContainerType(specialty.getBasicTraitType()).removeSubTrait(specialty);
       }
     });
     viewsBySpecialty.put(specialty, specialtyView);

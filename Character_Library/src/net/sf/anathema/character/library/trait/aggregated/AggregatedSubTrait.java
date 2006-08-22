@@ -1,6 +1,7 @@
 package net.sf.anathema.character.library.trait.aggregated;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
@@ -23,8 +24,8 @@ public class AggregatedSubTrait extends DefaultTrait implements ISubTrait {
     this.name = name;
   }
 
-  public ITrait getBasicTrait() {
-    return parent;
+  public ITraitType getBasicTraitType() {
+    return parent.getType();
   }
 
   public String getName() {

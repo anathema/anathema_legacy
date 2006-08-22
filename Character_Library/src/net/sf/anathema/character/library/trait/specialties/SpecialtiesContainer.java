@@ -1,7 +1,7 @@
 package net.sf.anathema.character.library.trait.specialties;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
-import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.subtrait.AbstractSubTraitContainer;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
@@ -9,12 +9,12 @@ import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 public class SpecialtiesContainer extends AbstractSubTraitContainer {
 
   public static final int ALLOWED_SPECIALTY_COUNT = 3;
-  private final ITrait trait;
   private final ITraitRules traitRules;
   private final ITraitValueStrategy traitValueStrategy;
+  private final ITraitType type;
 
-  public SpecialtiesContainer(ITrait trait, ITraitRules traitRules, ITraitValueStrategy traitValueStrategy) {
-    this.trait = trait;
+  public SpecialtiesContainer(ITraitType type, ITraitRules traitRules, ITraitValueStrategy traitValueStrategy) {
+    this.type = type;
     this.traitRules = traitRules;
     this.traitValueStrategy = traitValueStrategy;
   }
@@ -33,6 +33,6 @@ public class SpecialtiesContainer extends AbstractSubTraitContainer {
 
   @Override
   public ISubTrait createSubTrait(String name) {
-    return new Specialty(this, trait, name, traitRules, traitValueStrategy);
+    return new Specialty(this, type, name, traitRules, traitValueStrategy);
   }
 }

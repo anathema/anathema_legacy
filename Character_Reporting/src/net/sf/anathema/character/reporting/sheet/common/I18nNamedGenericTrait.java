@@ -1,6 +1,5 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
-import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.resources.IResources;
@@ -16,7 +15,7 @@ public class I18nNamedGenericTrait implements INamedGenericTrait {
   }
 
   public String getName() {
-    return resources.getString(getBasicTrait().getType().getId()) + " - " + trait.getName(); //$NON-NLS-1$
+    return resources.getString(trait.getType().getId()) + " - " + trait.getName(); //$NON-NLS-1$
   }
 
   public int getCurrentValue() {
@@ -25,9 +24,5 @@ public class I18nNamedGenericTrait implements INamedGenericTrait {
 
   public ITraitType getType() {
     return trait.getType();
-  }
-
-  public IGenericTrait getBasicTrait() {
-    return trait.getBasicTrait();
   }
 }

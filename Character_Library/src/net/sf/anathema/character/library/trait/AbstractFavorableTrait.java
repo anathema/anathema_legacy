@@ -24,7 +24,7 @@ public abstract class AbstractFavorableTrait implements IFavorableTrait {
   }
 
   public final ISubTraitContainer createSpecialtiesContainer() {
-    return new SpecialtiesContainer(this, getTraitRules(), getTraitValueStrategy());
+    return new SpecialtiesContainer(getType(), getTraitRules(), getTraitValueStrategy());
   }
 
   public boolean isCasteOrFavored() {
