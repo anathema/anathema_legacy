@@ -13,14 +13,10 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory {
 
-  public IAdditionalModel createModel(
-      IAdditionalTemplate additionalTemplate,
-      ICharacterModelContext context,
-      IChangeListener[] listeners) {
+  public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     IBasicCharacterData basicCharacterContext = context.getBasicCharacterContext();
     IArmourStats naturalArmour = new NaturalSoak(
         context.getTraitCollection().getTrait(AttributeType.Stamina),

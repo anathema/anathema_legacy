@@ -22,10 +22,10 @@ public class ExtendedConfiguration implements IExtendedConfiguration {
   }
 
   public void addAdditionalModel(IAdditionalModelFactory factory, IAdditionalTemplate template) {
-    IAdditionalModel model = factory.createModel(
-        template,
-        context,
-        listeners.toArray(new IChangeListener[listeners.size()]));
+    IAdditionalModel model = factory.createModel(template, context);
+    for (IChangeListener listener : listeners) {
+      model.addBonusPointsChangeListener(listener);
+    }
     additionalModels.add(model);
   }
 

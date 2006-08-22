@@ -17,10 +17,7 @@ public class IntimaciesAdditionalModel implements IIntimaciesAdditionalModel {
   private final IAdditionalTemplate additionalTemplate;
   private final ChangeControl control = new ChangeControl();
 
-  public IntimaciesAdditionalModel(
-      IAdditionalTemplate additionalTemplate,
-      ICharacterModelContext context,
-      IChangeListener[] listeners) {
+  public IntimaciesAdditionalModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     this.additionalTemplate = additionalTemplate;
     this.model = new IntimaciesModel(context);
     model.addModelChangeListener(new IRemovableEntryListener<IIntimacy>() {
@@ -36,9 +33,6 @@ public class IntimaciesAdditionalModel implements IIntimaciesAdditionalModel {
         control.fireChangedEvent();
       }
     });
-    for (IChangeListener listener : listeners) {
-      control.addChangeListener(listener);
-    }
   }
 
   public void addBonusPointsChangeListener(IChangeListener listener) {

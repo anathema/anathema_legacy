@@ -14,15 +14,9 @@ public class MeritsFlawsAdditionalModel implements IMeritsFlawsAdditionalModel {
   private final IMeritsFlawsModel model;
   private final IAdditionalTemplate additionalTemplate;
 
-  public MeritsFlawsAdditionalModel(
-      IAdditionalTemplate additionalTemplate,
-      ICharacterModelContext context,
-      IChangeListener[] listeners) {
+  public MeritsFlawsAdditionalModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     this.additionalTemplate = additionalTemplate;
     this.model = new MeritsFlawsModel(context);
-    for (IChangeListener listener : listeners) {
-      model.addModelChangeListener(listener);
-    }
   }
 
   public IMeritsFlawsModel getMeritsFlawsModel() {

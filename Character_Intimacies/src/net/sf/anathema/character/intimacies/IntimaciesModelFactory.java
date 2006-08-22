@@ -5,14 +5,10 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdd
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.intimacies.model.IntimaciesAdditionalModel;
-import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class IntimaciesModelFactory implements IAdditionalModelFactory {
 
-  public IAdditionalModel createModel(
-      IAdditionalTemplate additionalTemplate,
-      ICharacterModelContext context,
-      IChangeListener[] listeners) {
-    return new IntimaciesAdditionalModel(additionalTemplate, context, listeners);
+  public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
+    return new IntimaciesAdditionalModel(additionalTemplate, context);
   }
 }
