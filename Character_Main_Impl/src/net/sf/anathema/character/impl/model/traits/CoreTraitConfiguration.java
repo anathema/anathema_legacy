@@ -78,7 +78,7 @@ public class CoreTraitConfiguration extends AbstractTraitCollection implements I
         modelContext.getTraitContext(),
         backgroundRegistry,
         modelContext.getBasicCharacterContext().getRuleSet().getEdition());
-    this.specialtyConfiguration = new SpecialtiesConfiguration(modelContext);
+    this.specialtyConfiguration = new SpecialtiesConfiguration(this, abilityTraitGroups, modelContext);
   }
 
   private void addAttributes() {

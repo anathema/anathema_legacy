@@ -73,12 +73,15 @@ public class DummyCoreTraitConfiguration extends AbstractTraitCollection impleme
     }
     return groups.toArray(new IIdentifiedTraitTypeGroup[groups.size()]);
   }
-  
+
   public ISpecialtiesConfiguration getSpecialtyConfiguration() {
     if (specialtyConfiguration == null) {
-      specialtyConfiguration = new SpecialtiesConfiguration(new DummyCharacterModelContext());
+      specialtyConfiguration = new SpecialtiesConfiguration(
+          this,
+          getAbilityTypeGroups(),
+          new DummyCharacterModelContext());
     }
-    return specialtyConfiguration ;
+    return specialtyConfiguration;
   }
 
   public final IIdentifiedCasteTraitTypeGroup[] getAttributeTypeGroups() {
