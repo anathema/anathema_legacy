@@ -8,7 +8,7 @@ import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.demo.platform.repository.tree.DemoResources;
 import de.jdemo.extensions.SwingDemoCase;
 
-public class EquipmentItemDataViewDemo extends SwingDemoCase {
+public class EquipmentDatabaseViewDemo extends SwingDemoCase {
 
   public void demoEmptyEquipmentItem() {
     IEquipmentDatabaseView view = new EquimentDatabaseView();

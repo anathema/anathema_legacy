@@ -22,6 +22,18 @@ public class EquipmentDatabasePresenter implements IPresenter {
   }
 
   public void initPresentation() {
+    initTemplateList();
+    initDescriptionView();
+    view.setTemplateListHeader("Available Templates");
+    view.setEditTemplateHeader("Edit Template");
+  }
+
+  private void initTemplateList() {
+    view.setTemplateListHeader("Available Templates");
+    view.getTemplateView().setObjects(model.getAllAvailableTemplates());
+  }
+
+  private void initDescriptionView() {
     StandardPanelBuilder panelBuilder = new StandardPanelBuilder();
     ITextView nameView = panelBuilder.addLineTextView("Name:", COLUMN_COUNT);
     new TextualPresentation().initView(nameView, model.getTemplateEditModel().getDescription().getName());
