@@ -5,7 +5,6 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.character.ILimitationContext;
-import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitValueStrategy;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.character.generic.impl.template.points.AttributeCreationPoints;
 import net.sf.anathema.character.generic.impl.template.points.DefaultBonusPointCosts;
@@ -116,7 +115,7 @@ public class AttributeCostCalculatorTest extends BasicCharacterTestCase {
       ITraitTemplate traitTemplate = templateCollection.getTraitTemplate(traitType);
       IValueChangeChecker checker = new AdditionRulesTraitValueChangeChecker(
           traitType,
-          limitationContext,
+          limitationContext.getTraitCollection(),
           additionalRules.getAdditionalTraitRules());
       coreTraits.addTestTrait(new DefaultTrait(
           new FavorableTraitRules(traitType, traitTemplate, limitationContext),

@@ -10,6 +10,7 @@ import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.Rat
 import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.SpeedWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.TagsStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.lib.resources.IResources;
@@ -28,11 +29,12 @@ public class SecondEditionWeaponryTableEncoder extends AbstractEquipmentTableEnc
   @SuppressWarnings("unchecked")
   @Override
   protected IEquipmentStatsGroup<IWeaponStats>[] createStatsGroups(IGenericCharacter character) {
+    IGenericTraitCollection traitCollection = character.getTraitCollection();
     return new IEquipmentStatsGroup[] {
         new EquipmentNameStatsGroup(resources),
         new SpeedWeaponStatsGroup(resources),
-        new AccuracyWeaponStatsGroup(resources, character),
-        new DamageWeaponStatsGroup(resources, character),
+        new AccuracyWeaponStatsGroup(resources, traitCollection),
+        new DamageWeaponStatsGroup(resources, traitCollection),
         new DefenceWeaponStatsGroup(resources, character),
         new RateWeaponStatsGroup(resources),
         new RangeWeaponStatsGroup(resources),
@@ -50,7 +52,7 @@ public class SecondEditionWeaponryTableEncoder extends AbstractEquipmentTableEnc
   }
 
   @Override
-  protected IGenericTrait getTrait(IGenericCharacter character, IWeaponStats equipment) {
-    return character.getTraitCollection().getTrait(equipment.getTraitType());
+  protected IGenericTrait getTrait(IGenericTraitCollection collection, IWeaponStats equipment) {
+    return collection.getTrait(equipment.getTraitType());
   }
 }

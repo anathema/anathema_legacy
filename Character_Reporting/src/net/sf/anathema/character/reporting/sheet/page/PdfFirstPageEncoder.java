@@ -69,7 +69,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
 
     encodeFirstColumn(directContent, character, distanceFromTop);
     encodeAnima(directContent, character, distanceFromTop, ANIMA_HEIGHT);
-    float virtueHeight = encodeVirtues(directContent, character, distanceFromTop, 72);
+    float virtueHeight = encodeVirtues(directContent, distanceFromTop, 72, character.getTraitCollection());
     distanceFromTop += calculateBoxIncrement(virtueHeight);
     float greatCurseHeigth = ANIMA_HEIGHT - virtueHeight - IVoidStateFormatConstants.PADDING;
     encodeGreatCurse(directContent, character, distanceFromTop, greatCurseHeigth);
@@ -235,13 +235,13 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
 
   private float encodeVirtues(
       PdfContentByte directContent,
-      IGenericCharacter character,
       float distanceFromTop,
-      float height) {
+      float height,
+      IGenericTraitCollection collection) {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
     String header = resources.getString("Sheet.Header.Virtues"); //$NON-NLS-1$
     Bounds contentBounds = boxEncoder.encodeBox(directContent, bounds, header);
-    new PdfVirtueEncoder(resources, baseFont).encodeVirtues(directContent, character, contentBounds);
+    new PdfVirtueEncoder(resources, baseFont).encodeVirtues(directContent, contentBounds, collection);
     return height;
   }
 

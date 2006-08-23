@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
 import net.sf.anathema.character.generic.additionalrules.ITraitCostModifier;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
-import net.sf.anathema.character.generic.character.ILimitationContext;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 
@@ -33,7 +33,7 @@ public class NullAdditionalRules implements IAdditionalRules, IAdditionalTraitRu
     return new IAdditionalEssencePool[0];
   }
 
-  public boolean isAllowedTraitValue(IGenericTrait trait, ILimitationContext limitationContext) {
+  public boolean isAllowedTraitValue(IGenericTrait trait, IGenericTraitCollection collection) {
     return true;
   }
 

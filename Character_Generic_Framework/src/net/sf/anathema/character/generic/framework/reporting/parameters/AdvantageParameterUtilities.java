@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.framework.reporting.parameters;
 import java.util.Map;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.reporting.ICharacterReportConstants;
 import net.sf.anathema.character.generic.framework.reporting.datasource.BackgroundsDataSource;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -40,20 +41,20 @@ public class AdvantageParameterUtilities {
     parameterClassesByName.put(ICharacterReportConstants.BACKGROUND_DATA_SOURCE, IReportDataSource.class.getName());
   }
 
-  public static final void fillInVirtues(IGenericCharacter character, Map<Object, Object> parameters) {
+  public static final void fillInVirtues(IGenericTraitCollection collection, Map<Object, Object> parameters) {
     for (VirtueType virtueType : VirtueType.values()) {
-      parameters.put(virtueType.getId(), new Integer(character.getTraitCollection().getTrait(virtueType).getCurrentValue()));
+      parameters.put(virtueType.getId(), new Integer(collection.getTrait(virtueType).getCurrentValue()));
     }
   }
 
-  public static void fillInWillpower(IGenericCharacter abstraction, Map<Object, Object> parameters) {
+  public static void fillInWillpower(IGenericTraitCollection collection, Map<Object, Object> parameters) {
     ITraitType traitType = OtherTraitType.Willpower;
-    parameters.put(traitType.getId(), new Integer(abstraction.getTraitCollection().getTrait(traitType).getCurrentValue()));
+    parameters.put(traitType.getId(), new Integer(collection.getTrait(traitType).getCurrentValue()));
   }
 
-  public static void fillInEssence(IGenericCharacter abstraction, Map<Object, Object> parameters) {
+  public static void fillInEssence(IGenericTraitCollection collection, Map<Object, Object> parameters) {
     ITraitType traitType = OtherTraitType.Essence;
-    parameters.put(traitType.getId(), new Integer(abstraction.getTraitCollection().getTrait(traitType).getCurrentValue()));
+    parameters.put(traitType.getId(), new Integer(collection.getTrait(traitType).getCurrentValue()));
   }
 
   public static void fillInEssencePools(IGenericCharacter character, Map<Object, Object> parameters) {

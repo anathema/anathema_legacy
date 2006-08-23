@@ -58,14 +58,14 @@ public class LunarVoidstateReportTemplate extends ExaltVoidstateReportTemplate {
     addSubreportParameter(parameters, PARAM_LUNAR_GIFTS_SUBREPORT, subreports.loadLunarGiftsSubreport());
     BeastformModel beastformModel = (BeastformModel) character.getAdditionalModel(BeastformTemplate.TEMPLATE_ID);
     fillInBeastformParameters(parameters, character, beastformModel);
-    fillInAttributeFavorization(parameters, character);
+    fillInAttributeFavorization(parameters, character.getTraitCollection());
     fillInDescription(parameters, character);
     fillInVirtueFlaw(parameters, character);
   }
 
-  private void fillInAttributeFavorization(Map<Object, Object> parameters, IGenericCharacter character) {
+  private void fillInAttributeFavorization(Map<Object, Object> parameters, IGenericTraitCollection collection) {
     for (AttributeType type : AttributeType.values()) {
-      parameters.put(type.getId() + "_boolean", ((IFavorableGenericTrait) character.getTraitCollection().getTrait(type)).isCasteOrFavored()); //$NON-NLS-1$         
+      parameters.put(type.getId() + "_boolean", ((IFavorableGenericTrait) collection.getTrait(type)).isCasteOrFavored()); //$NON-NLS-1$         
     }
   }
 

@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.framework.xml.trait.alternate;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.character.generic.character.ILimitationContext;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.lang.ReflectionEqualsObject;
 
@@ -18,10 +18,10 @@ public class AlternateMinimumRestriction extends ReflectionEqualsObject implemen
     this.strictMinimumValue = strictMinimumValue;
   }
 
-  public boolean isFullfilledWithout(ILimitationContext limitationContext, ITraitType traitType) {
+  public boolean isFullfilledWithout(IGenericTraitCollection collection, ITraitType traitType) {
     int fullfillingTraitCount = 0;
     for (ITraitType type : alternateTraitTypes) {
-      if (type != traitType && limitationContext.getTraitCollection().getTrait(type).getCurrentValue() >= strictMinimumValue) {
+      if (type != traitType && collection.getTrait(type).getCurrentValue() >= strictMinimumValue) {
         fullfillingTraitCount++;
       }
     }

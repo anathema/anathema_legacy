@@ -5,7 +5,7 @@ import java.util.List;
 
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalBonusPointPool;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.generic.template.experience.IAbilityPointCosts;
@@ -17,16 +17,16 @@ import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 public class AdditionalBonusPointPoolCalculator {
 
   private final IAdditionalBonusPointPool poolTemplate;
-  private final IGenericCharacter character;
   private int pointsSpent;
   private final SpecialtyCalculator specialtyCalculator;
+  private final IGenericTraitCollection collection;
 
   public AdditionalBonusPointPoolCalculator(
       IAdditionalBonusPointPool poolTemplate,
       ICoreTraitConfiguration traitConfiguration,
-      IGenericCharacter character) {
+      IGenericTraitCollection collection) {
     this.poolTemplate = poolTemplate;
-    this.character = character;
+    this.collection = collection;
     this.specialtyCalculator = new SpecialtyCalculator(traitConfiguration);
   }
 
@@ -36,11 +36,11 @@ public class AdditionalBonusPointPoolCalculator {
   }
 
   public int getRemainingPoints() {
-    return poolTemplate.getAmount(character.getTraitCollection()) - pointsSpent;
+    return poolTemplate.getAmount(collection) - pointsSpent;
   }
 
   public int getAmount() {
-    return poolTemplate.getAmount(character.getTraitCollection());
+    return poolTemplate.getAmount(collection);
   }
 
   public void reset() {
@@ -48,7 +48,7 @@ public class AdditionalBonusPointPoolCalculator {
   }
 
   public int spend(IGenericTrait trait, int pointsToSpent) {
-    if (trait.getType() == null || !poolTemplate.isAllowedForTrait(character.getTraitCollection(), trait)) {
+    if (trait.getType() == null || !poolTemplate.isAllowedForTrait(collection, trait)) {
       return 0;
     }
     int availableBonusPoints = Math.min(pointsToSpent, getRemainingPoints());
@@ -57,7 +57,7 @@ public class AdditionalBonusPointPoolCalculator {
   }
 
   public int spend(IMagic magic, int pointsToSpent) {
-    if (!poolTemplate.isAllowedForMagic(character.getTraitCollection(), magic)) {
+    if (!poolTemplate.isAllowedForMagic(collection, magic)) {
       return 0;
     }
     int availableBonusPoints = Math.min(pointsToSpent, getRemainingPoints());
@@ -68,7 +68,7 @@ public class AdditionalBonusPointPoolCalculator {
   public int spend(List<IGenericSpecialty> allSpecialties, IAbilityPointCosts costs) {
     List<IGenericSpecialty> allowedSpecialties = new ArrayList<IGenericSpecialty>();
     for (IGenericSpecialty specialty : allSpecialties) {
-      if (poolTemplate.isAllowedForTrait(character.getTraitCollection(), specialty.getBasicTrait())) {
+      if (poolTemplate.isAllowedForTrait(collection, specialty.getBasicTrait())) {
         allowedSpecialties.add(specialty);
       }
     }
@@ -84,6 +84,6 @@ public class AdditionalBonusPointPoolCalculator {
   }
 
   public boolean isFavoredBackground(IDefaultTrait background) {
-    return poolTemplate.isAllowedForTrait(character.getTraitCollection(), background);
+    return poolTemplate.isAllowedForTrait(collection, background);
   }
 }

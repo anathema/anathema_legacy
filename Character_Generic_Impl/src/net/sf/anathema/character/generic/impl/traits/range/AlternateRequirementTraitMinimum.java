@@ -16,7 +16,7 @@ public class AlternateRequirementTraitMinimum implements ITraitMinimum {
   }
 
   public int getMinimumValue(ILimitationContext limitationContext) {
-    return requirementCollection.isStrictWithout(requirement, limitationContext)
+    return requirementCollection.isStrictWithout(requirement, limitationContext.getTraitCollection())
         ? requirement.getFreeMinimum()
         : requirement.getStrictMinimum();
   }

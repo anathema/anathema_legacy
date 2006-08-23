@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.sheet.second;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -45,7 +46,7 @@ public class SecondEditionSocialCombatStatsEncoder implements IPdfContentBoxEnco
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     float valueWidth = bounds.width;
     Bounds valueBounds = new Bounds(bounds.x, bounds.y, valueWidth, bounds.height);
-    float valueHeight = encodeValues(directContent, character, valueBounds);
+    float valueHeight = encodeValues(directContent, valueBounds, character.getTraitCollection());
     Bounds attackTableBounds = new Bounds(bounds.x, bounds.y, valueWidth, bounds.height - valueHeight);
 
     IPdfTableEncoder tableEncoder = new SocialCombatStatsTableEncoder(resources, baseFont);
@@ -135,11 +136,11 @@ public class SecondEditionSocialCombatStatsEncoder implements IPdfContentBoxEnco
     return cell;
   }
 
-  private float encodeValues(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
+  private float encodeValues(PdfContentByte directContent, Bounds bounds, IGenericTraitCollection traitCollection) {
     String joinLabel = resources.getString("Sheet.SocialCombat.JoinDebateBattle"); //$NON-NLS-1$
     String dodgeLabel = resources.getString("Sheet.SocialCombat.DodgeMDV"); //$NON-NLS-1$
-    int joinDebate = CharacterUtilties.getTotalValue(character.getTraitCollection(), AttributeType.Wits, AbilityType.Awareness);
-    int dodgeMDV = CharacterUtilties.getDodgeMdv(character.getTraitCollection());
+    int joinDebate = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Wits, AbilityType.Awareness);
+    int dodgeMDV = CharacterUtilties.getDodgeMdv(traitCollection);
     Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
     LabelledValueEncoder encoder = new LabelledValueEncoder(baseFont, 2, upperLeftCorner, bounds.width, 3);
     encoder.addLabelledValue(directContent, 0, joinLabel, joinDebate);

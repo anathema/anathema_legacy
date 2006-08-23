@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
@@ -30,17 +30,17 @@ public class PdfVirtueEncoder extends AbstractPdfEncoder {
     return baseFont;
   }
 
-  public void encodeVirtues(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
+  public void encodeVirtues(PdfContentByte directContent, Bounds bounds, IGenericTraitCollection collection) {
     float virtuePadding = bounds.width / 8;
     float leftVirtueX = bounds.x + virtuePadding / 2;
     float width = (bounds.width - 2 * virtuePadding) / 2;
     float rightVirtueX = (int) (bounds.x + width + virtuePadding * 1.5);
     float upperY = (int) (bounds.getMaxY());
     float centerY = (int) (bounds.getCenterY());
-    encodeVirtue(directContent, character.getTraitCollection().getTrait(VirtueType.Compassion), new Position(leftVirtueX, upperY), width);
-    encodeVirtue(directContent, character.getTraitCollection().getTrait(VirtueType.Temperance), new Position(rightVirtueX, upperY), width);
-    encodeVirtue(directContent, character.getTraitCollection().getTrait(VirtueType.Conviction), new Position(leftVirtueX, centerY), width);
-    encodeVirtue(directContent, character.getTraitCollection().getTrait(VirtueType.Valor), new Position(rightVirtueX, centerY), width);
+    encodeVirtue(directContent, collection.getTrait(VirtueType.Compassion), new Position(leftVirtueX, upperY), width);
+    encodeVirtue(directContent, collection.getTrait(VirtueType.Temperance), new Position(rightVirtueX, upperY), width);
+    encodeVirtue(directContent, collection.getTrait(VirtueType.Conviction), new Position(leftVirtueX, centerY), width);
+    encodeVirtue(directContent, collection.getTrait(VirtueType.Valor), new Position(rightVirtueX, centerY), width);
   }
 
   private void encodeVirtue(PdfContentByte directContent, IGenericTrait trait, Position position, float width) {

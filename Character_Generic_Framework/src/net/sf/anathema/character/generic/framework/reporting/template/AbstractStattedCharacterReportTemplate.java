@@ -4,6 +4,7 @@ import java.util.Map;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.reporting.datasource.MeritsAndFlawsDataSource;
 import net.sf.anathema.character.generic.framework.reporting.parameters.AbilityParameterUtilities;
 import net.sf.anathema.character.generic.framework.reporting.parameters.AdvantageParameterUtilities;
@@ -56,25 +57,20 @@ public abstract class AbstractStattedCharacterReportTemplate extends AbstractCha
       IGenericDescription description) throws ReportException {
     super.fillInParameters(parameters, character, description);
     AdvantageParameterUtilities.fillInBackgrounds(character, parameters, getResources());
-    AdvantageParameterUtilities.fillInEssence(character, parameters);
+    IGenericTraitCollection traitCollection = character.getTraitCollection();
+    AdvantageParameterUtilities.fillInEssence(traitCollection, parameters);
     AdvantageParameterUtilities.fillInEssencePools(character, parameters);
-    AdvantageParameterUtilities.fillInWillpower(character, parameters);
-    AdvantageParameterUtilities.fillInVirtues(character, parameters);
+    AdvantageParameterUtilities.fillInWillpower(traitCollection, parameters);
+    AdvantageParameterUtilities.fillInVirtues(traitCollection, parameters);
     AbilityParameterUtilities.fillInAbilities(character, parameters, getResources());
-    CharacterParameterUtilities.fillInAttributes(character, parameters);
-    CombatParameterUtilities.fillInCombatStats(
-        character.getTraitCollection(),
-        character.getRules(),
-        isExalted(character),
-        parameters);
+    CharacterParameterUtilities.fillInAttributes(traitCollection, parameters);
+    CombatParameterUtilities.fillInCombatStats(traitCollection, character.getRules(), isExalted(character), parameters);
     CharacterParameterUtilities.fillExperienceParameters(parameters, character);
     CharacterParameterUtilities.fillInConcept(character, parameters);
     CharacterParameterUtilities.fillInNature(character, parameters, getResources());
     CharacterParameterUtilities.fillInTemplate(character, parameters, getResources());
     HealthParameterUtilities.fillInHealth(character, parameters);
-    HealthParameterUtilities.fillInSoak(character.getTraitCollection()
-        .getTrait(AttributeType.Stamina)
-        .getCurrentValue(), parameters);
+    HealthParameterUtilities.fillInSoak(traitCollection.getTrait(AttributeType.Stamina).getCurrentValue(), parameters);
     parameters.put(MERIT_AND_FLAW_DATA_SOURCE, new MeritsAndFlawsDataSource());
     fillInExtendedParameters(parameters, character);
   }

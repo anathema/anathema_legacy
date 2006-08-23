@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.sheet.first;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.reporting.sheet.common.movement.AbstractHealthAndMovemenTableEncoder;
@@ -36,11 +36,11 @@ public class FirstEditionHealthAndMovemenTableEncoder extends AbstractHealthAndM
   @Override
   protected final void addMovementCells(
       PdfPTable table,
-      IGenericCharacter character,
       HealthLevelType level,
-      int painTolerance) {
+      int painTolerance,
+      IGenericTraitCollection collection) {
     int penalty = getPenalty(level, painTolerance);
-    int dexValue = character.getTraitCollection().getTrait(AttributeType.Dexterity).getCurrentValue();
+    int dexValue = collection.getTrait(AttributeType.Dexterity).getCurrentValue();
     int moveValue = 5;
     table.addCell(createMovementCell(moveValue + penalty, 1));
     addSpaceCells(table, 1);

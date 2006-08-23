@@ -5,6 +5,7 @@ import java.util.Map;
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.reporting.ICharacterReportConstants;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -27,9 +28,9 @@ public class CharacterParameterUtilities {
     }
   }
 
-  public static final void fillInAttributes(IGenericCharacter character, Map<Object, Object> parameters) {
+  public static final void fillInAttributes(IGenericTraitCollection collection, Map<Object, Object> parameters) {
     for (AttributeType type : AttributeType.values()) {
-      CharacterParameterUtilities.fillInTrait(character.getTraitCollection().getTrait(type), parameters);
+      CharacterParameterUtilities.fillInTrait(collection.getTrait(type), parameters);
     }
   }
 

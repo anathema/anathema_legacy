@@ -1,6 +1,6 @@
 package net.sf.anathema.character.reporting.sheet.second;
 
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -37,17 +37,17 @@ public class SecondEditionHealthAndMovemenTableEncoder extends AbstractHealthAnd
   @Override
   protected final void addMovementCells(
       PdfPTable table,
-      IGenericCharacter character,
       HealthLevelType level,
-      int painTolerance) {
+      int painTolerance,
+      IGenericTraitCollection collection) {
     int penalty = getPenalty(level, painTolerance);
-    int dexValue = character.getTraitCollection().getTrait(AttributeType.Dexterity).getCurrentValue();
+    int dexValue = collection.getTrait(AttributeType.Dexterity).getCurrentValue();
     int moveValue = dexValue + penalty;
     table.addCell(createMovementCell(moveValue, 1));
     addSpaceCells(table, 1);
     table.addCell(createMovementCell(moveValue + 6, 2));
-    int verticalJump = character.getTraitCollection().getTrait(AttributeType.Strength).getCurrentValue()
-        + character.getTraitCollection().getTrait(AbilityType.Athletics).getCurrentValue()
+    int verticalJump = collection.getTrait(AttributeType.Strength).getCurrentValue()
+        + collection.getTrait(AbilityType.Athletics).getCurrentValue()
         + penalty;
     addSpaceCells(table, 1);
     table.addCell(createMovementCell(verticalJump * 2, 0));

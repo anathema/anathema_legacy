@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -20,12 +21,12 @@ public class AbilitySetDataSource implements IReportDataSource {
   public static final String COLUMN_GROUP_DATASOURCE = "groupDataSource"; //$NON-NLS-1$
 
   private final IResources resources;
-  private final IGenericCharacter character;
   private final IIdentifiedTraitTypeGroup[] abilityTypeGroups;
+  private final IGenericTraitCollection collection;
 
   public AbilitySetDataSource(IResources resources, IGenericCharacter character) {
     this.resources = resources;
-    this.character = character;
+    this.collection = character.getTraitCollection();
     List<String> groupIds = new ArrayList<String>();
     MultiEntryMap<String, ITraitType> groupMap = new MultiEntryMap<String, ITraitType>();
     ICharacterTemplate template = character.getTemplate();
@@ -57,7 +58,7 @@ public class AbilitySetDataSource implements IReportDataSource {
           + abilityTypeGroups[currentRow].getGroupId());
     }
     if (COLUMN_GROUP_DATASOURCE.equals(columnName)) {
-      return new AbilityGroupDataSource(resources, character.getTraitCollection(), abilityTypeGroups[currentRow].getAllGroupTypes());
+      return new AbilityGroupDataSource(resources, collection, abilityTypeGroups[currentRow].getAllGroupTypes());
     }
     throw new IllegalArgumentException("Illegal Colum Name:" + columnName); //$NON-NLS-1$
   }

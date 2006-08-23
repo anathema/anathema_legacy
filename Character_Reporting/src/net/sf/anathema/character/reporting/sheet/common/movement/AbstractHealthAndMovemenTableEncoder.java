@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
@@ -99,7 +100,7 @@ public abstract class AbstractHealthAndMovemenTableEncoder implements IPdfTableE
           addIncapacitatedMovement(table);
         }
         else {
-          addMovementCells(table, character, type, painTolerance);
+          addMovementCells(table, type, painTolerance, character.getTraitCollection());
         }
         addHealthTypeCells(table, type, painTolerance);
       }
@@ -189,9 +190,9 @@ public abstract class AbstractHealthAndMovemenTableEncoder implements IPdfTableE
 
   protected abstract void addMovementCells(
       PdfPTable table,
-      IGenericCharacter character,
       HealthLevelType level,
-      int painTolerance);
+      int painTolerance,
+      IGenericTraitCollection collection);
 
   protected final PdfPCell createMovementCell(int value, int minValue) {
     return TableEncodingUtilities.createContentCellTable(

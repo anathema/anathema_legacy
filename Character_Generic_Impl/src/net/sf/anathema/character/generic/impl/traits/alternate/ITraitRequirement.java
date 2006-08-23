@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.impl.traits.alternate;
 
-import net.sf.anathema.character.generic.character.ILimitationContext;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 
 public interface ITraitRequirement {
 
@@ -8,5 +8,5 @@ public interface ITraitRequirement {
 
   public int getFreeMinimum();
 
-  public boolean isCurrentlyStrict(ILimitationContext limitationContext);
+  public boolean isCurrentlyStrict(IGenericTraitCollection collection);
 }

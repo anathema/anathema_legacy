@@ -1,7 +1,7 @@
 package net.sf.anathema.acceptance.fixture.character.miscellaneous;
 
 import net.sf.anathema.acceptance.fixture.character.util.AbstractCharacterColumnFixture;
-import net.sf.anathema.character.generic.character.ILimitationContext;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
@@ -16,13 +16,14 @@ public class CheckAttributeAllowedFixture extends AbstractCharacterColumnFixture
     getAppearance().setCurrentValue(0);
     getEssence().setCurrentValue(essenceValue);
     ValuedTraitType appearance = new ValuedTraitType(AttributeType.Appearance, appearanceValue);
-    ILimitationContext limitationContext = getCharacterStatistics().getCharacterContext()
+    IGenericTraitCollection traitCollection = getCharacterStatistics().getCharacterContext()
         .getTraitContext()
-        .getLimitationContext();
+        .getLimitationContext()
+        .getTraitCollection();
     return getCharacterStatistics().getCharacterTemplate()
         .getAdditionalRules()
         .getAdditionalTraitRules()
-        .isAllowedTraitValue(appearance, limitationContext);
+        .isAllowedTraitValue(appearance, traitCollection);
 
   }
 
@@ -33,13 +34,14 @@ public class CheckAttributeAllowedFixture extends AbstractCharacterColumnFixture
   public boolean isEssenceValueAllowed() {
     getAppearance().setCurrentValue(appearanceValue);
     ValuedTraitType essence = new ValuedTraitType(OtherTraitType.Essence, essenceValue);
-    ILimitationContext limitationContext = getCharacterStatistics().getCharacterContext()
+    IGenericTraitCollection collection = getCharacterStatistics().getCharacterContext()
         .getTraitContext()
-        .getLimitationContext();
+        .getLimitationContext()
+        .getTraitCollection();
     return getCharacterStatistics().getCharacterTemplate()
         .getAdditionalRules()
         .getAdditionalTraitRules()
-        .isAllowedTraitValue(essence, limitationContext);
+        .isAllowedTraitValue(essence, collection);
   }
 
   private IDefaultTrait getAppearance() {

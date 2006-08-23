@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.sheet.second;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -29,13 +30,14 @@ public class SecondEditionCombatValueEncoder implements IPdfContentEncoder {
     String dodgeLabel = resources.getString("Sheet.Combat.DodgeDV"); //$NON-NLS-1$
     String knockdownLabel = resources.getString("Sheet.Combat.Knockdown"); //$NON-NLS-1$
     String stunningLabel = resources.getString("Sheet.Combat.Stunning"); //$NON-NLS-1$
-    int joinBattle = CharacterUtilties.getTotalValue(character.getTraitCollection(), AttributeType.Wits, AbilityType.Awareness);
+    IGenericTraitCollection traitCollection = character.getTraitCollection();
+    int joinBattle = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Wits, AbilityType.Awareness);
     CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-    int dodgeDV = CharacterUtilties.getDodgeDv(characterType, character.getTraitCollection());
-    int knockdownThreshold = CharacterUtilties.getTotalValue(character.getTraitCollection(), AttributeType.Stamina, AbilityType.Resistance);
+    int dodgeDV = CharacterUtilties.getDodgeDv(characterType, traitCollection);
+    int knockdownThreshold = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Stamina, AbilityType.Resistance);
     int knockdownPool = CharacterUtilties.getKnockdownPool(character);
-    int stunningThreshold = CharacterUtilties.getTotalValue(character.getTraitCollection(), AttributeType.Stamina);
-    int stunningPool = CharacterUtilties.getTotalValue(character.getTraitCollection(), AttributeType.Stamina, AbilityType.Resistance);
+    int stunningThreshold = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Stamina);
+    int stunningPool = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Stamina, AbilityType.Resistance);
 
     Position upperLeftCorner = new Position(bounds.x, bounds.getMaxY());
     LabelledValueEncoder encoder = new LabelledValueEncoder(baseFont, 4, upperLeftCorner, bounds.width, 3);

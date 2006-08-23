@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.sheet.second.social;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.social.InvestigationSocialAttack;
 import net.sf.anathema.character.generic.impl.social.PerformanceSocialAttack;
 import net.sf.anathema.character.generic.impl.social.PresenceSocialAttack;
@@ -39,14 +40,15 @@ public class SocialCombatStatsTableEncoder extends AbstractFixedLineStatsTableEn
 
   @Override
   protected ISocialCombatStats[] getPrintStats(IGenericCharacter character) {
+    IGenericTraitCollection traitCollection = character.getTraitCollection();
     return new ISocialCombatStats[] {
-        new PresenceSocialAttack(character),
-        new PerformanceSocialAttack(character),
-        new InvestigationSocialAttack(character) };
+        new PresenceSocialAttack(traitCollection),
+        new PerformanceSocialAttack(traitCollection),
+        new InvestigationSocialAttack(traitCollection) };
   }
 
   @Override
-  protected IGenericTrait getTrait(IGenericCharacter character, ISocialCombatStats equipment) {
+  protected IGenericTrait getTrait(IGenericTraitCollection collection, ISocialCombatStats equipment) {
     return null;
   }
 }

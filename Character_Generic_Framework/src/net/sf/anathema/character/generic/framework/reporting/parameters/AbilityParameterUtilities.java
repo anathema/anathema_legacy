@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.framework.reporting.parameters;
 import java.util.Map;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.reporting.IAbilityReportConstants;
 import net.sf.anathema.character.generic.framework.reporting.ICharacterReportConstants;
 import net.sf.anathema.character.generic.framework.reporting.datasource.AbilitySetDataSource;
@@ -52,8 +53,9 @@ public class AbilityParameterUtilities {
 
   private static void fillInClassicAbilities(IGenericCharacter character, Map<Object, Object> parameters) {
     for (AbilityType abilityType : AbilityType.getAbilityTypes(character.getRules().getEdition())) {
-      CharacterParameterUtilities.fillInTrait(character.getTraitCollection().getTrait(abilityType), parameters);
-      Boolean marked = character.getTraitCollection().isFavoredOrCasteTrait(abilityType);
+      IGenericTraitCollection traitCollection = character.getTraitCollection();
+      CharacterParameterUtilities.fillInTrait(traitCollection.getTrait(abilityType), parameters);
+      Boolean marked = traitCollection.isFavoredOrCasteTrait(abilityType);
       parameters.put(abilityType.getId() + "_boolean", marked); //$NON-NLS-1$
     }
     parameters.put(ICharacterReportConstants.SPECIALTIES_DATA_SOURCE, new SpecialtiesDataSource(character));

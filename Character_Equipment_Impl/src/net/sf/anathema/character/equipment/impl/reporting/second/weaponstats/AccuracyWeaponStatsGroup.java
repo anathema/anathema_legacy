@@ -1,7 +1,6 @@
 package net.sf.anathema.character.equipment.impl.reporting.second.weaponstats;
 
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.AbstractValueEquipmentStatsGroup;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -12,11 +11,11 @@ import com.lowagie.text.pdf.PdfPTable;
 
 public class AccuracyWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeaponStats> {
 
-  private final IGenericCharacter character;
+  private final IGenericTraitCollection collection;
 
-  public AccuracyWeaponStatsGroup(IResources resources, IGenericCharacter character) {
+  public AccuracyWeaponStatsGroup(IResources resources, IGenericTraitCollection collection) {
     super(resources, "Accuracy"); //$NON-NLS-1$
-    this.character = character;
+    this.collection = collection;
   }
 
   public int getColumnCount() {
@@ -31,11 +30,10 @@ public class AccuracyWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<I
     else {
       final int weaponValue = weapon.getAccuracy();
       table.addCell(createEquipmentValueCell(font, weaponValue));
-      IGenericTraitCollection traitCollection = character.getTraitCollection();
       final int calculateFinalValue = calculateFinalValue(
           weaponValue,
-          traitCollection.getTrait(AttributeType.Dexterity),
-          traitCollection.getTrait(weapon.getTraitType()));
+          collection.getTrait(AttributeType.Dexterity),
+          collection.getTrait(weapon.getTraitType()));
       table.addCell(createFinalValueCell(font, calculateFinalValue));
     }
   }

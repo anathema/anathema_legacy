@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.impl.traits.alternate;
 import java.util.List;
 
 import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.character.generic.character.ILimitationContext;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 
 public class TraitRequirementCollection {
 
@@ -15,7 +15,7 @@ public class TraitRequirementCollection {
     this.threshold = threshold;
   }
 
-  public boolean isStrictWithout(ITraitRequirement testRequirement, ILimitationContext limitationContext) {
+  public boolean isStrictWithout(ITraitRequirement testRequirement, IGenericTraitCollection collection) {
     Ensure.ensureArgumentTrue("Foreign requirement", requirements.contains(testRequirement)); //$NON-NLS-1$
     Ensure.ensureArgumentNotNull(testRequirement);
     int strictCount = 0;
@@ -23,7 +23,7 @@ public class TraitRequirementCollection {
       if (requirement.equals(testRequirement)) {
         continue;
       }
-      if (requirement.isCurrentlyStrict(limitationContext)) {
+      if (requirement.isCurrentlyStrict(collection)) {
         strictCount++;
       }
     }

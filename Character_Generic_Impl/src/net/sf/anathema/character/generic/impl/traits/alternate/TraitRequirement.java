@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.impl.traits.alternate;
 
-import net.sf.anathema.character.generic.character.ILimitationContext;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.ITraitType;
 
 public class TraitRequirement implements ITraitRequirement {
@@ -23,8 +23,8 @@ public class TraitRequirement implements ITraitRequirement {
     return strictMinimum;
   }
 
-  public boolean isCurrentlyStrict(ILimitationContext limitationContext) {
-    int currentValue = limitationContext.getTraitCollection().getTrait(traitType).getCurrentValue();
+  public boolean isCurrentlyStrict(IGenericTraitCollection collection) {
+    int currentValue = collection.getTrait(traitType).getCurrentValue();
     return currentValue >= getStrictMinimum();
   }
 

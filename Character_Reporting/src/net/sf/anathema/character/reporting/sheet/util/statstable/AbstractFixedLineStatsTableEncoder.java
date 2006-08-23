@@ -1,6 +1,7 @@
 package net.sf.anathema.character.reporting.sheet.util.statstable;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.util.IStats;
 import net.sf.anathema.character.reporting.util.Bounds;
@@ -28,7 +29,7 @@ public abstract class AbstractFixedLineStatsTableEncoder<T extends IStats> exten
 
   protected abstract int getLineCount();
 
-  protected abstract IGenericTrait getTrait(IGenericCharacter character, T equipment);
+  protected abstract IGenericTrait getTrait(IGenericTraitCollection collection, T equipment);
 
   protected abstract T[] getPrintStats(IGenericCharacter character);
 }

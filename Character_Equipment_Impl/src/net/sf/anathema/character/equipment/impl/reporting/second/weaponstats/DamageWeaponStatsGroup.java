@@ -1,7 +1,7 @@
 package net.sf.anathema.character.equipment.impl.reporting.second.weaponstats;
 
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.AbstractValueEquipmentStatsGroup;
-import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.resources.IResources;
@@ -12,11 +12,11 @@ import com.lowagie.text.pdf.PdfPTable;
 
 public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWeaponStats> {
 
-  private final IGenericCharacter character;
+  private final IGenericTraitCollection collection;
 
-  public DamageWeaponStatsGroup(IResources resources, IGenericCharacter character) {
+  public DamageWeaponStatsGroup(IResources resources, IGenericTraitCollection collection) {
     super(resources, "Damage"); //$NON-NLS-1$
-    this.character = character;
+    this.collection = collection;
   }
 
   @Override
@@ -46,7 +46,7 @@ public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWe
       table.addCell(createEquipmentValueCell(font, weaponValue));
       int finalValue = weaponValue;
       if (weapon.getDamageTraitType() != null) {
-        finalValue = calculateFinalValue(weaponValue, character.getTraitCollection().getTrait(weapon.getDamageTraitType()));
+        finalValue = calculateFinalValue(weaponValue, collection.getTrait(weapon.getDamageTraitType()));
       }
       table.addCell(createFinalValueCell(font, finalValue));
       table.addCell(createFinalValueCell(font, getDamageTypeLabel(weapon.getDamageType()), Element.ALIGN_CENTER));

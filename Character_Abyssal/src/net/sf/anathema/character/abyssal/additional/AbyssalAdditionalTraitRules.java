@@ -1,7 +1,7 @@
 package net.sf.anathema.character.abyssal.additional;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
-import net.sf.anathema.character.generic.character.ILimitationContext;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.additional.DefaultAdditionalTraitRules;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -15,7 +15,7 @@ import net.sf.anathema.lib.data.Range;
 public class AbyssalAdditionalTraitRules extends DefaultAdditionalTraitRules {
 
   @Override
-  public boolean isAllowedTraitValue(final IGenericTrait trait, final ILimitationContext limitationContext) {
+  public boolean isAllowedTraitValue(final IGenericTrait trait, final IGenericTraitCollection collection) {
     final boolean[] allowed = new boolean[1];
     trait.getType().accept(new ITraitTypeVisitor() {
       public void visitAbility(AbilityType type) {
@@ -27,7 +27,7 @@ public class AbyssalAdditionalTraitRules extends DefaultAdditionalTraitRules {
           allowed[0] = true;
         }
         else {
-          IGenericTrait essence = limitationContext.getTraitCollection().getTrait(OtherTraitType.Essence);
+          IGenericTrait essence = collection.getTrait(OtherTraitType.Essence);
           allowed[0] = checkAppearanceEssenceRelation(essence, trait);
         }
       }
@@ -37,7 +37,7 @@ public class AbyssalAdditionalTraitRules extends DefaultAdditionalTraitRules {
       }
 
       public void visitEssence(OtherTraitType type) {
-        IGenericTrait appearance = limitationContext.getTraitCollection().getTrait(AttributeType.Appearance);
+        IGenericTrait appearance = collection.getTrait(AttributeType.Appearance);
         allowed[0] = checkAppearanceEssenceRelation(trait, appearance);
       }
 

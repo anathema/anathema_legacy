@@ -1,5 +1,6 @@
 package net.sf.anathema.test.character.generic.framework.xml;
 
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.xml.trait.alternate.AlternateMinimumRestriction;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.dummy.character.DummyLimitationContext;
@@ -15,7 +16,8 @@ public class AlternateMinimumRestrictionTest extends BasicTestCase {
     DummyLimitationContext context = new DummyLimitationContext();
     context.addTrait(new DummyFavorableGenericTrait(AbilityType.Endurance, 3));
     context.addTrait(new DummyFavorableGenericTrait(AbilityType.Sail, 0));
-    assertTrue(restriction.isFullfilledWithout(context, AbilityType.Sail));
-    assertFalse(restriction.isFullfilledWithout(context, AbilityType.Endurance));
+    IGenericTraitCollection traitCollection = context.getTraitCollection();
+    assertTrue(restriction.isFullfilledWithout(traitCollection, AbilityType.Sail));
+    assertFalse(restriction.isFullfilledWithout(traitCollection, AbilityType.Endurance));
   }
 }

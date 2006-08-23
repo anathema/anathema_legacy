@@ -16,7 +16,7 @@ public abstract class AbstractTraitFactory {
   }
 
   protected final IValueChangeChecker createValueIncrementChecker(ITraitType traitType) {
-    return new AdditionRulesTraitValueChangeChecker(traitType, traitContext.getLimitationContext(), additionalRules);
+    return new AdditionRulesTraitValueChangeChecker(traitType, traitContext.getLimitationContext().getTraitCollection(), additionalRules);
   }
 
   protected final IAdditionalTraitRules getAdditionalRules() {

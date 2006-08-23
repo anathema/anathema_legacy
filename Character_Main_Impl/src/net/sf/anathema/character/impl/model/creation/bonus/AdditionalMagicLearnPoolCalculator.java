@@ -2,6 +2,7 @@ package net.sf.anathema.character.impl.model.creation.bonus;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 
@@ -17,10 +18,11 @@ public class AdditionalMagicLearnPoolCalculator implements IAdditionalMagicLearn
   }
 
   public boolean canSpendOn(IMagic magic) {
-    if (!pool.isAllowedFor(character.getTraitCollection(), magic)) {
+    IGenericTraitCollection traitCollection = character.getTraitCollection();
+    if (!pool.isAllowedFor(traitCollection, magic)) {
       return false;
     }
-    return pointsSpent < pool.getAdditionalMagicCount(character.getTraitCollection());
+    return pointsSpent < pool.getAdditionalMagicCount(traitCollection);
   }
 
   public void spendPointsFor(IMagic magic) {
