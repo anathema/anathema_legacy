@@ -4,9 +4,9 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.sf.anathema.character.equipment.item.view.IEquipmentItemDataView;
+import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 
-public class EquimentItemDataView implements IEquipmentItemDataView {
+public class EquimentDatabaseView implements IEquipmentDatabaseView {
 
   private JPanel content = new JPanel(new GridDialogLayout(1, false));
 

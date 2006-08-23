@@ -4,7 +4,7 @@ import javax.swing.JComponent;
 
 import net.sf.anathema.lib.gui.IView;
 
-public interface IEquipmentItemDataView extends IView {
+public interface IEquipmentDatabaseView extends IView {
 
   public void fillDescriptionPanel(JComponent content);
 }
