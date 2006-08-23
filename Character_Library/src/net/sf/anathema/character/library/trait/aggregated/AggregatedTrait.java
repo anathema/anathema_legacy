@@ -51,7 +51,7 @@ public class AggregatedTrait extends AbstractFavorableTrait implements IAggregat
         traitRules,
         traitContext,
         valueChangeChecker,
-        this,
+        getType(),
         unremovableSubTraits);
     subTraits.addSubTraitListener(new ISubTraitListener() {
       public void subTraitAdded(ISubTrait subTrait) {

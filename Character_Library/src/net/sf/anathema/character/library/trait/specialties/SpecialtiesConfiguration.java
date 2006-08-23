@@ -11,9 +11,7 @@ import net.sf.anathema.character.generic.traits.groups.ITraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.TraitTypeGroup;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.ITraitCollection;
-import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
-import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
@@ -51,20 +49,20 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
 
   private void initializeAggregatedTrait(IAggregatedTrait trait) {
     ITraitType traitType = trait.getType();
-    // specialtiesByTrait.put(traitType, new AggregatedSpecialtiesContainer());
-    // trait.getSubTraits().addSubTraitListener(new ISubTraitListener() {
-    // public void subTraitAdded(ISubTrait subTrait) {
-    // // TODO Auto-generated method stub
-    // }
-    //
-    // public void subTraitRemoved(ISubTrait subTrait) {
-    // // TODO Auto-generated method stub
-    // }
-    //
-    // public void subTraitValueChanged() {
-    // // nothing to do
-    // }
-    // });
+//    specialtiesByTrait.put(traitType, new AggregatedSpecialtiesContainer());
+//    trait.getSubTraits().addSubTraitListener(new ISubTraitListener() {
+//      public void subTraitAdded(ISubTrait subTrait) {
+//        // TODO Auto-generated method stub
+//      }
+//
+//      public void subTraitRemoved(ISubTrait subTrait) {
+//        // TODO Auto-generated method stub
+//      }
+//
+//      public void subTraitValueChanged() {
+//        // nothing to do
+//      }
+//    });
     specialtiesByTrait.put(traitType, new SpecialtiesContainer(traitType, context.getTraitContext()));
   }
 
