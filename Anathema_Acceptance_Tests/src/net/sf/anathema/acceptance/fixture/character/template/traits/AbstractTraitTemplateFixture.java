@@ -4,6 +4,7 @@ import net.sf.anathema.acceptance.fixture.character.template.AbstractTemplateCol
 import net.sf.anathema.acceptance.fixture.character.template.CharacterTemplateSummary;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.template.ITraitLimitation;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
@@ -27,20 +28,29 @@ public abstract class AbstractTraitTemplateFixture extends AbstractTemplateColum
             .getLimitation();
       }
 
-      public ICasteType<? extends ICasteTypeVisitor> getCasteType() {
-        throw new UnsupportedOperationException("No character defined in template tests."); //$NON-NLS-1$
-      }
-      
-      public IFavorableGenericTrait getFavorableTrait(ITraitType type) {
+      public ICasteType< ? extends ICasteTypeVisitor> getCasteType() {
         throw new UnsupportedOperationException("No character defined in template tests."); //$NON-NLS-1$
       }
 
-      public IGenericTrait getTrait(ITraitType type) {
-        throw new UnsupportedOperationException("No character defined in template tests."); //$NON-NLS-1$
-      }
-      
-      public boolean isFavoredOrCasteTrait(ITraitType type) {
-        throw new UnsupportedOperationException("No character defined in template tests."); //$NON-NLS-1$
+      public IGenericTraitCollection getTraitCollection() {
+        return new IGenericTraitCollection() {
+          public IFavorableGenericTrait getFavorableTrait(ITraitType type) {
+            throw new UnsupportedOperationException("No character defined in template tests."); //$NON-NLS-1$
+          }
+
+          public IGenericTrait getTrait(ITraitType type) {
+            throw new UnsupportedOperationException("No character defined in template tests."); //$NON-NLS-1$
+          }
+
+          public boolean isFavoredOrCasteTrait(ITraitType type) {
+            throw new UnsupportedOperationException("No character defined in template tests."); //$NON-NLS-1$
+          }
+
+          public IGenericTrait[] getTraits(ITraitType[] traitTypes) {
+            throw new UnsupportedOperationException("No character defined in template tests."); //$NON-NLS-1$          }
+          }
+
+        };
       }
     });
   }
