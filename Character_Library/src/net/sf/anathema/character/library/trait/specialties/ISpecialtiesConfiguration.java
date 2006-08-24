@@ -7,11 +7,13 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 
 public interface ISpecialtiesConfiguration {
 
+  public ISubTraitContainer getSpecialtiesContainer(ITraitReference reference);
+
   public ISubTraitContainer getSpecialtiesContainer(ITraitType traitType);
 
-  public ITraitType[] getAllTraitTypes();
+  public ITraitReference[] getAllTraits();
 
-  public void setCurrentTraitType(ITraitType newValue);
+  public void setCurrentTrait(ITraitReference newValue);
 
   public void setCurrentSpecialtyName(String newSpecialtyName);
 
@@ -21,9 +23,11 @@ public interface ISpecialtiesConfiguration {
 
   public boolean isEntryComplete();
 
-  public void addCurrentSelectionListener(IChangeListener listener);
 
   public boolean isExperienced();
 
   public void addCharacterChangeListener(ICharacterChangeListener listener);
+  public void addSelectionChangeListener(IChangeListener listener);
+
+  public void addTraitListChangeListener(IChangeListener listener);
 }

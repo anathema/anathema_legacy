@@ -17,8 +17,16 @@ public class ChangeableJComboBox<V> implements IChangeableJComboBox<V> {
   private JComboBox comboBox;
   private final Map<IObjectValueChangedListener<V>, ItemListener> listenersByListener = new HashMap<IObjectValueChangedListener<V>, ItemListener>();
 
+  public ChangeableJComboBox(boolean editable) {
+    this(new UnselectingComboBoxModel(), editable);
+  }
+
   public ChangeableJComboBox(V[] objects, boolean editable) {
-    this.comboBox = new ColoredJComboBox(new UnselectingComboBoxModel(objects));
+    this(new UnselectingComboBoxModel(objects), editable);
+  }
+
+  private ChangeableJComboBox(UnselectingComboBoxModel model, boolean editable) {
+    this.comboBox = new ColoredJComboBox(model);
     this.comboBox.setEditable(editable);
     setSelectedObject(null);
   }

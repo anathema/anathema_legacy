@@ -8,9 +8,9 @@ import javax.swing.ListCellRenderer;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.impl.view.SpecialtyView;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
+import net.sf.anathema.character.library.trait.specialties.ITraitReference;
 import net.sf.anathema.character.presenter.specialty.ISpecialtiesConfigurationView;
 import net.sf.anathema.character.view.ISpecialtyView;
 import net.sf.anathema.character.view.basic.IButtonControlledComboEditView;
@@ -37,13 +37,11 @@ public class SpecialtiesView implements ISpecialtiesConfigurationView, ISimpleTa
     return specialtyView;
   }
 
-  public IButtonControlledComboEditView<ITraitType> addSpecialtySelectionView(
+  public IButtonControlledComboEditView<ITraitReference> addSpecialtySelectionView(
       String labelText,
-      ITraitType[] traitTypes,
       ListCellRenderer renderer,
       Icon addIcon) {
-    ButtonControlledComboEditView<ITraitType> objectSelectionView = new ButtonControlledComboEditView<ITraitType>(
-        traitTypes,
+    ButtonControlledComboEditView<ITraitReference> objectSelectionView = new ButtonControlledComboEditView<ITraitReference>(
         addIcon,
         renderer);
     mainPanel.add(objectSelectionView.getComponent());

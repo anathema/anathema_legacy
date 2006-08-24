@@ -17,6 +17,7 @@ import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.specialties.SpecialtiesContainer;
+import net.sf.anathema.character.library.trait.specialties.TraitReference;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.dummy.character.DummyCasteType;
@@ -153,7 +154,7 @@ public class FavorableTraitTest extends AbstractTraitTest {
 
   // TODO Test für den SpecialtyContainer
   public void testExperienceSpecialtyCount() throws Exception {
-    ISubTraitContainer container = new SpecialtiesContainer(first.getType(), modelContext.getTraitContext());
+    ISubTraitContainer container = new SpecialtiesContainer(new TraitReference(first), modelContext.getTraitContext());
     ISubTrait specialty = container.addSubTrait("TestSpecialty"); //$NON-NLS-1$
     specialty.setCreationValue(1);
     valueStrategy.setStrategy(new ExperiencedTraitValueStrategy());

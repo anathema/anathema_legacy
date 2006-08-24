@@ -1,19 +1,18 @@
 package net.sf.anathema.character.library.trait.specialties;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
-import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.subtrait.AbstractSubTraitContainer;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 
 public class SpecialtiesContainer extends AbstractSubTraitContainer {
 
   public static final int ALLOWED_SPECIALTY_COUNT = 3;
-  private final ITraitContext context;
-  private final ITraitType type;
+  private final ITraitReference reference;
+  private final ITraitContext traitContext;
 
-  public SpecialtiesContainer(ITraitType type, ITraitContext traitContext) {
-    this.type = type;
-    this.context = traitContext;
+  public SpecialtiesContainer(ITraitReference reference, ITraitContext traitContext) {
+    this.reference = reference;
+    this.traitContext = traitContext;
   }
 
   @Override
@@ -30,6 +29,6 @@ public class SpecialtiesContainer extends AbstractSubTraitContainer {
 
   @Override
   public ISubTrait createSubTrait(String name) {
-    return new Specialty(this, type, name, context);
+    return new Specialty(this, reference, name, traitContext);
   }
 }

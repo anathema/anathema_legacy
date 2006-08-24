@@ -6,7 +6,6 @@ import net.sf.anathema.character.generic.impl.backgrounds.SimpleBackgroundTempla
 import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.impl.module.ExaltedCharacterItemTypeConfiguration;
 import net.sf.anathema.character.model.ICharacter;
@@ -40,8 +39,6 @@ public abstract class AbstractGenerationData implements IGenerationData {
 
   protected final void fillBasicStatistics(ICharacterStatistics statistics) {
     ICoreTraitConfiguration traitConfiguration = statistics.getTraitConfiguration();
-    traitConfiguration.getSpecialtyConfiguration().getSpecialtiesContainer(AbilityType.Occult).addSubTrait(
-        "Unconquered Sun"); //$NON-NLS-1$
     IBackgroundConfiguration backgrounds = traitConfiguration.getBackgrounds();
     backgrounds.addBackground(new SimpleBackgroundTemplate("Allies")).setCurrentValue(3);
     backgrounds.addBackground("Plot Device").setCurrentValue(4); //$NON-NLS-1$    

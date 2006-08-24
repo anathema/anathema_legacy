@@ -55,8 +55,8 @@ public class AbstractCharacterPersister extends AbstractPersister {
     }
   }
 
-  private static final String TAG_TRAIT_NAME = "traitName"; //$NON-NLS-1$
-  private static final String TAG_SUB_TRAIT = "subTrait"; //$NON-NLS-1$
+  protected static final String TAG_TRAIT_NAME = "traitName"; //$NON-NLS-1$
+  protected static final String TAG_SUB_TRAIT = "subTrait"; //$NON-NLS-1$
   public static final String ATTRIB_CREATION_VALUE = "creationValue"; //$NON-NLS-1$
   public static final String ATTRIB_EXPERIENCED_VALUE = "experiencedValue"; //$NON-NLS-1$
 

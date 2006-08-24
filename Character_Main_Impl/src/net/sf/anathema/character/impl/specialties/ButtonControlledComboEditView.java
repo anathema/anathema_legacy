@@ -24,8 +24,8 @@ public class ButtonControlledComboEditView<V> implements IButtonControlledComboE
   private final JButton addButton;
   private final JTextField text;
 
-  public ButtonControlledComboEditView(V[] objects, Icon addIcon, ListCellRenderer renderer) {
-    this.comboBox = new ChangeableJComboBox<V>(objects, false);
+  public ButtonControlledComboEditView(Icon addIcon, ListCellRenderer renderer) {
+    this.comboBox = new ChangeableJComboBox<V>(false);
     comboBox.setRenderer(renderer);
     this.text = new JTextField(30);
     this.addButton = new JButton(null, addIcon);
@@ -38,14 +38,6 @@ public class ButtonControlledComboEditView<V> implements IButtonControlledComboE
     panel.add(text, GridDialogLayoutData.FILL_HORIZONTAL);
     panel.add(addButton, GridDialogLayoutData.RIGHT);
     return panel;
-  }
-
-  public void setSelectedObject(V object) {
-    comboBox.setSelectedObject(object);
-  }
-
-  public void setText(String text) {
-    this.text.setText(text);
   }
 
   public void addEditChangedListener(final IObjectValueChangedListener<String> listener) {
@@ -62,6 +54,10 @@ public class ButtonControlledComboEditView<V> implements IButtonControlledComboE
         listener.valueChanged(text.getText());
       }
     });
+  }
+
+  public void setObjects(V[] objects) {
+    comboBox.setObjects(objects);
   }
 
   public void addSelectionChangedListener(final IObjectValueChangedListener<V> listener) {

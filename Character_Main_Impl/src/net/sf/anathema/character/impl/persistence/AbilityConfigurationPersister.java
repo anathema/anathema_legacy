@@ -13,9 +13,14 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
+import net.sf.anathema.character.library.trait.specialties.TraitReference;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
+import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
+import net.sf.anathema.lib.exception.NestedRuntimeException;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
@@ -30,13 +35,49 @@ public class AbilityConfigurationPersister extends AbstractCharacterPersister {
     }
   }
 
-  private void saveAbility(Element parent, IFavorableTrait ability, ISpecialtiesConfiguration specialtyConfiguration) {
+  private void saveAbility(
+      Element parent,
+      IFavorableTrait ability,
+      final ISpecialtiesConfiguration specialtyConfiguration) {
     ITraitType traitType = ability.getType();
-    Element abilityElement = saveTrait(parent, traitType.getId(), ability);
+    final Element abilityElement = saveTrait(parent, traitType.getId(), ability);
     if (ability.getFavorization().isFavored()) {
       ElementUtilities.addAttribute(abilityElement, ATTRIB_FAVORED, ability.getFavorization().isFavored());
     }
-    for (ISubTrait specialty : specialtyConfiguration.getSpecialtiesContainer(traitType).getSubTraits()) {
+    ability.accept(new ITraitVisitor() {
+      public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
+        try {
+          for (ISubTrait subTrait : visitedTrait.getSubTraits().getSubTraits()) {
+            Element subTraitElement = getSubTraitElement(abilityElement, subTrait);
+            saveSpecialties(specialtyConfiguration, subTraitElement, subTrait);
+          }
+        }
+        catch (PersistenceException e) {
+          throw new NestedRuntimeException(e);
+        }
+      }
+
+      public void visitDefaultTrait(IDefaultTrait visitedTrait) {
+        saveSpecialties(specialtyConfiguration, abilityElement, visitedTrait);
+      }
+    });
+  }
+
+  private Element getSubTraitElement(Element abilityElement, ISubTrait subTrait) throws PersistenceException {
+    for (Element subTraitElement : ElementUtilities.elements(abilityElement, TAG_SUB_TRAIT)) {
+      if (subTrait.getName().equals(ElementUtilities.getRequiredText(subTraitElement, TAG_TRAIT_NAME))) {
+        return subTraitElement;
+      }
+    }
+    throw new PersistenceException("No element found for SubTrait " + subTrait.getName()); //$NON-NLS-1$
+  }
+
+  private void saveSpecialties(
+      final ISpecialtiesConfiguration specialtyConfiguration,
+      final Element abilityElement,
+      IDefaultTrait visitedTrait) {
+    TraitReference reference = new TraitReference(visitedTrait);
+    for (ISubTrait specialty : specialtyConfiguration.getSpecialtiesContainer(reference).getSubTraits()) {
       Element specialtyElement = saveTrait(abilityElement, TAG_SPECIALTY, specialty);
       specialtyElement.addAttribute(ATTRIB_NAME, specialty.getName());
     }
@@ -50,18 +91,48 @@ public class AbilityConfigurationPersister extends AbstractCharacterPersister {
     }
   }
 
-  private void loadAbility(Element abilityElement, ICoreTraitConfiguration configuration) throws PersistenceException {
+  private void loadAbility(final Element abilityElement, ICoreTraitConfiguration configuration)
+      throws PersistenceException {
     AbilityType abilityType = AbilityType.valueOf(abilityElement.getName());
     IFavorableTrait ability = configuration.getFavorableTrait(abilityType);
     restoreTrait(abilityElement, ability);
     boolean favored = ElementUtilities.getBooleanAttribute(abilityElement, ATTRIB_FAVORED, false);
     ability.getFavorization().setFavored(favored);
+    final ISpecialtiesConfiguration specialtyConfiguration = configuration.getSpecialtyConfiguration();
+    ability.accept(new ITraitVisitor() {
+      public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
+        try {
+          for (ISubTrait subTrait : visitedTrait.getSubTraits().getSubTraits()) {
+            Element subTraitElement = getSubTraitElement(abilityElement, subTrait);
+            loadSpecialties(subTraitElement, specialtyConfiguration, subTrait);
+          }
+
+        }
+        catch (PersistenceException e) {
+          throw new NestedRuntimeException(e);
+        }
+      }
+
+      public void visitDefaultTrait(IDefaultTrait visitedTrait) {
+        try {
+          loadSpecialties(abilityElement, specialtyConfiguration, visitedTrait);
+        }
+        catch (PersistenceException e) {
+          throw new NestedRuntimeException(e);
+        }
+      }
+    });
+  }
+
+  private void loadSpecialties(
+      final Element abilityElement,
+      final ISpecialtiesConfiguration specialtyConfiguration,
+      IDefaultTrait visitedTrait) throws PersistenceException {
     List<Element> specialtyElements = ElementUtilities.elements(abilityElement, TAG_SPECIALTY);
-    ISpecialtiesConfiguration specialtyConfiguration = configuration.getSpecialtyConfiguration();
-    for (Iterator<Element> allSpecialties = specialtyElements.iterator(); allSpecialties.hasNext();) {
-      Element specialtyElement = allSpecialties.next();
+    for (Element specialtyElement : specialtyElements) {
       String specialtyName = (specialtyElement).attributeValue(ATTRIB_NAME);
-      ISubTraitContainer specialtiesContainer = specialtyConfiguration.getSpecialtiesContainer(abilityType);
+      TraitReference reference = new TraitReference(visitedTrait);
+      ISubTraitContainer specialtiesContainer = specialtyConfiguration.getSpecialtiesContainer(reference);
       ISubTrait specialty = specialtiesContainer.addSubTrait(specialtyName);
       restoreTrait(specialtyElement, specialty);
     }
