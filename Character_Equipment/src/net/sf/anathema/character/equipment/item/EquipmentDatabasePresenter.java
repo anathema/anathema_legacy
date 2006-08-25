@@ -5,7 +5,7 @@ import net.disy.commons.core.message.Message;
 import net.disy.commons.core.message.MessageType;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
-import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
+import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.IPresenter;
@@ -19,9 +19,9 @@ public class EquipmentDatabasePresenter implements IPresenter {
   private static final int COLUMN_COUNT = 45;
   private final IResources resources;
   private final IEquipmentDatabaseView view;
-  private final IEquipmentDatabase model;
+  private final IEquipmentDatabaseManagement model;
 
-  public EquipmentDatabasePresenter(IResources resources, IEquipmentDatabase model, IEquipmentDatabaseView view) {
+  public EquipmentDatabasePresenter(IResources resources, IEquipmentDatabaseManagement model, IEquipmentDatabaseView view) {
     this.resources = resources;
     this.model = model;
     this.view = view;
