@@ -10,25 +10,21 @@ public class EquipmentDatabaseManagement implements IEquipmentDatabaseManagement
 
   private final IEquipmentTemplateEditModel templateEditModel;
   private final IEquipmentDatabase database;
-  
+
   public EquipmentDatabaseManagement(IEquipmentDatabase database) {
     this.database = database;
-    this.templateEditModel = new EquipmentTemplateEditModel();
+    this.templateEditModel = new EquipmentTemplateEditModel(database);
   }
 
   public IEquipmentTemplateEditModel getTemplateEditModel() {
     return templateEditModel;
   }
 
-  public String[] getAllAvailableTemplateIds() {
-    return new String[0];
+  public IEquipmentDatabase getDatabase() {
+    return database;
   }
 
   public void setPrintNameAdjuster(PrintNameAdjuster adjuster) {
     // nothing to do
-  }
-
-  public IEquipmentDatabase getDatabase() {
-    return database;
   }
 }

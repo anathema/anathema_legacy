@@ -6,6 +6,7 @@ import net.disy.commons.core.message.MessageType;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
+import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.IPresenter;
@@ -21,7 +22,10 @@ public class EquipmentDatabasePresenter implements IPresenter {
   private final IEquipmentDatabaseView view;
   private final IEquipmentDatabaseManagement model;
 
-  public EquipmentDatabasePresenter(IResources resources, IEquipmentDatabaseManagement model, IEquipmentDatabaseView view) {
+  public EquipmentDatabasePresenter(
+      IResources resources,
+      IEquipmentDatabaseManagement model,
+      IEquipmentDatabaseView view) {
     this.resources = resources;
     this.model = model;
     this.view = view;
@@ -39,16 +43,17 @@ public class EquipmentDatabasePresenter implements IPresenter {
     view.getTemplateListView().setObjects(model.getDatabase().getAllAvailableTemplateIds());
     view.getTemplateListView().addObjectSelectionChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
-        if (model.getTemplateEditModel().isDirty()) {
-          IMessage message = new Message(
-              "Sie haben noch ungespeicherte Änderungen. Wollen Sie diese verwerfen?",
-              MessageType.WARNING);
+        IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
+        if (editModel.isDirty()) {
+          String messageText = "Sie haben noch ungespeicherte Änderungen. Wollen Sie diese verwerfen?";
+          IMessage message = new Message(messageText, MessageType.WARNING);
           UserDialog userDialog = MessageDialogFactory.createMessageDialog(view.getComponent(), message);
           userDialog.show();
-          if (!userDialog.isCanceled()) {
-            model.getTemplateEditModel().loadTemplate(newValue);
+          if (userDialog.isCanceled()) {
+            return;
           }
         }
+        editModel.setEditTemplate(newValue);
       }
     });
   }
