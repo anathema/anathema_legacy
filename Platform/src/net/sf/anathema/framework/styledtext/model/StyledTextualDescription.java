@@ -45,7 +45,12 @@ public class StyledTextualDescription extends AbstractTextualDescription impleme
   }
 
   public void setText(String text) {
-    setText(new ITextPart[] { new net.sf.anathema.framework.styledtext.presentation.TextPart(text, new TextFormat()) });
+    if (text == null) {
+      setText(new ITextPart[0]);
+    }
+    else {
+      setText(new ITextPart[] { new net.sf.anathema.framework.styledtext.presentation.TextPart(text, new TextFormat()) });
+    }
   }
 
   public void addTextChangedListener(final IObjectValueChangedListener<String> listener) {
