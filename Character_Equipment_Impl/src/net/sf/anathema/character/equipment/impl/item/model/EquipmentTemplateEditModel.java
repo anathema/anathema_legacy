@@ -11,4 +11,14 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   public IItemDescription getDescription() {
     return description;
   }
+
+  public void loadTemplate(String templateId) {
+    // TODO Auto-generated method stub
+    
+  }
+  
+  public boolean isDirty() {
+    // TODO Auto-generated method stub
+    return false;
+  }
 }

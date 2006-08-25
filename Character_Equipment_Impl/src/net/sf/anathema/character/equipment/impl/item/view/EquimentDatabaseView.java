@@ -8,7 +8,6 @@ import javax.swing.JScrollPane;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
-import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
 
@@ -18,8 +17,7 @@ public class EquimentDatabaseView implements IEquipmentDatabaseView {
   private JPanel editTemplateView = new JPanel(new GridDialogLayout(1, false));
   private JLabel templateListHeaderLabel = new JLabel();
   private JLabel editTemplateHeaderLabel = new JLabel();
-  private ListObjectSelectionView<IEquipmentTemplate> templateListView = new ListObjectSelectionView<IEquipmentTemplate>(
-      IEquipmentTemplate.class);
+  private ListObjectSelectionView<String> templateListView = new ListObjectSelectionView<String>(String.class);
 
   public JComponent getComponent() {
     if (contentPanel == null) {
@@ -44,7 +42,7 @@ public class EquimentDatabaseView implements IEquipmentDatabaseView {
     editTemplateView.add(descriptionPanel);
   }
 
-  public IListObjectSelectionView<IEquipmentTemplate> getTemplateView() {
+  public IListObjectSelectionView<String> getTemplateListView() {
     return templateListView;
   }
 }
