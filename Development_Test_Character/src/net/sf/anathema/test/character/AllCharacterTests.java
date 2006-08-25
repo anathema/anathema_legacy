@@ -9,7 +9,6 @@ public class AllCharacterTests {
 
   public static Test suite() {
     TestSuite suite = new TestSuite("Test for net.sf.anathema.character"); //$NON-NLS-1$
-    suite.addTest(net.sf.anathema.demo.character.equipment.item.AllTests.suite());
     suite.addTest(net.sf.anathema.test.character.abyssal.additional.AllTests.suite());
     suite.addTest(net.sf.anathema.test.character.equipment.character.AllTests.suite());
     suite.addTest(net.sf.anathema.test.character.equipment.impl.creation.model.AllTests.suite());
