@@ -6,7 +6,9 @@ public interface IEquipmentTemplateEditModel {
 
   public IItemDescription getDescription();
 
-  public void setEditTemplate(String templateId);
-
   public boolean isDirty();
+
+  public boolean isEditing(String templateId);
+
+  public void setEditTemplate(String templateId);
 }

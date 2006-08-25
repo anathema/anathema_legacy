@@ -3,8 +3,9 @@ package net.sf.anathema.character.equipment.item;
 import net.disy.commons.core.message.IMessage;
 import net.disy.commons.core.message.Message;
 import net.disy.commons.core.message.MessageType;
-import net.disy.commons.swing.dialog.message.MessageDialogFactory;
+import net.disy.commons.swing.dialog.message.MessageUserDialogConfiguration;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
+import net.disy.commons.swing.dialog.userdialog.buttons.AbstractDialogButtonConfiguration;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
@@ -44,10 +45,16 @@ public class EquipmentDatabasePresenter implements IPresenter {
     view.getTemplateListView().addObjectSelectionChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
+        if(editModel.isEditing(newValue)) {
+          return;
+        }
         if (editModel.isDirty()) {
           String messageText = "Sie haben noch ungespeicherte Änderungen. Wollen Sie diese verwerfen?";
           IMessage message = new Message(messageText, MessageType.WARNING);
-          UserDialog userDialog = MessageDialogFactory.createMessageDialog(view.getComponent(), message);
+          MessageUserDialogConfiguration configuration = new MessageUserDialogConfiguration(
+              message,
+              new AbstractDialogButtonConfiguration());
+          UserDialog userDialog = new UserDialog(view.getComponent(), configuration);
           userDialog.show();
           if (userDialog.isCanceled()) {
             return;

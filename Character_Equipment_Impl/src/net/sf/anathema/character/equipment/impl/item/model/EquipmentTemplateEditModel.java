@@ -41,4 +41,8 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     return !ObjectUtilities.equals(editedTemplate.getName(), getDescription().getName().getText())
         && !ObjectUtilities.equals(editedTemplate.getDescription(), getDescription().getContent().getText());
   }
+
+  public boolean isEditing(String templateId) {
+    return templateId == null ? editedTemplate == null : templateId.equals(editedTemplate.getName());
+  }
 }
