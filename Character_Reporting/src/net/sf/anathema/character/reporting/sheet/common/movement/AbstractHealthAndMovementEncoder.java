@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.sheet.second.SecondEditionHealthAndMovemenTableEncoder;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
@@ -62,16 +61,14 @@ public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncode
     Paragraph healthText = createHealthRulesPhrase(headerFont, commentFont, commentTitleFont);
     int leading = IVoidStateFormatConstants.COMMENT_FONT_SIZE + 1;
     ColumnText text = PdfTextEncodingUtilities.encodeText(directContent, healthText, textBounds, leading);
-    int rectangleOffset = SecondEditionHealthAndMovemenTableEncoder.HEALTH_RECT_SIZE + 1;
+    int rectangleOffset = AbstractHealthAndMovemenTableEncoder.HEALTH_RECT_SIZE + 1;
     final float additionalOffset = 2.5f;
     float rectYPosition = text.getYLine() - rectangleOffset - additionalOffset;
     float textYPosition = text.getYLine() - leading - additionalOffset;
     float xPosition = textBounds.x;
     PdfTemplate rectTemplate = AbstractHealthAndMovemenTableEncoder.createRectTemplate(directContent, Color.BLACK);
     directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
-    PdfTemplate bashingTemplate = AbstractHealthAndMovemenTableEncoder.createBashingTemplate(
-        directContent,
-        Color.GRAY);
+    PdfTemplate bashingTemplate = AbstractHealthAndMovemenTableEncoder.createBashingTemplate(directContent, Color.GRAY);
     directContent.addTemplate(bashingTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     final String createSpacedString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageBashing")); //$NON-NLS-1$
@@ -79,16 +76,14 @@ public abstract class AbstractHealthAndMovementEncoder extends AbstractPdfEncode
     drawComment(directContent, bashingString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += getCommentTextWidth(bashingString);
     directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
-    PdfTemplate lethalTemplate = AbstractHealthAndMovemenTableEncoder.createLethalTemplate(
-        directContent,
-        Color.GRAY);
+    PdfTemplate lethalTemplate = AbstractHealthAndMovemenTableEncoder.createLethalTemplate(directContent, Color.GRAY);
     directContent.addTemplate(lethalTemplate, xPosition, rectYPosition);
     xPosition += rectangleOffset;
     String lethalString = createSpacedString(resources.getString("Sheet.Health.Comment.MarkDamageLethal")); //$NON-NLS-1$
     drawComment(directContent, lethalString, new Position(xPosition, textYPosition), Element.ALIGN_LEFT);
     xPosition += getCommentTextWidth(lethalString);
     directContent.addTemplate(rectTemplate, xPosition, rectYPosition);
-    PdfTemplate aggravatedTemplate = SecondEditionHealthAndMovemenTableEncoder.createAggravatedTemplate(
+    PdfTemplate aggravatedTemplate = AbstractHealthAndMovemenTableEncoder.createAggravatedTemplate(
         directContent,
         Color.GRAY);
     directContent.addTemplate(aggravatedTemplate, xPosition, rectYPosition);
