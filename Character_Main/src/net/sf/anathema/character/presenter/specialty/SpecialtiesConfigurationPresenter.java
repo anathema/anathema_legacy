@@ -2,14 +2,18 @@ package net.sf.anathema.character.presenter.specialty;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.Comparator;
 
 import javax.swing.Icon;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
+import net.sf.anathema.character.library.trait.presenter.TraitInternationalizer;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.ISpecialty;
 import net.sf.anathema.character.library.trait.specialties.ITraitReference;
+import net.sf.anathema.character.library.trait.specialties.ITraitReferencesChangeListener;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
@@ -26,6 +30,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class SpecialtiesConfigurationPresenter extends AbstractTraitPresenter implements IPresenter {
 
   private final IdentityMapping<ISubTrait, ISpecialtyView> viewsBySpecialty = new IdentityMapping<ISubTrait, ISpecialtyView>();
+  private final TraitInternationalizer i18ner;
 
   private final ISubTraitListener specialtyListener = new ISubTraitListener() {
     public void subTraitAdded(ISubTrait specialty) {
@@ -54,6 +59,7 @@ public class SpecialtiesConfigurationPresenter extends AbstractTraitPresenter im
     this.specialtyManagement = specialtyManagement;
     this.configurationView = configurationView;
     this.resources = resources;
+    this.i18ner = new TraitInternationalizer(resources);
   }
 
   public void initPresentation() {
@@ -64,11 +70,11 @@ public class SpecialtiesConfigurationPresenter extends AbstractTraitPresenter im
         new AbstractSelectCellRenderer(resources) {
           @Override
           protected Object getCustomizedDisplayValue(Object value) {
-            return value.toString();
+            return i18ner.getName((ITraitReference) value);
           }
         },
         addIcon);
-    specialtySelectionView.setObjects(getAllTraits());
+    setObjects(specialtySelectionView);
     specialtySelectionView.addSelectionChangedListener(new IObjectValueChangedListener<ITraitReference>() {
       public void valueChanged(ITraitReference newValue) {
         specialtyManagement.setCurrentTrait(newValue);
@@ -90,8 +96,13 @@ public class SpecialtiesConfigurationPresenter extends AbstractTraitPresenter im
         specialtySelectionView.setButtonEnabled(specialtyManagement.isEntryComplete());
       }
     });
-    specialtyManagement.addTraitListChangeListener(new IChangeListener() {
-      public void changeOccured() {
+    specialtyManagement.addTraitListChangeListener(new ITraitReferencesChangeListener() {
+      public void referenceAdded(ITraitReference reference) {
+        setObjects(specialtySelectionView);
+        getSpecialtyContainer(reference).addSubTraitListener(specialtyListener);
+      }
+
+      public void referenceRemoved(ITraitReference reference) {
         specialtySelectionView.setObjects(specialtyManagement.getAllTraits());
       }
     });
@@ -102,6 +113,18 @@ public class SpecialtiesConfigurationPresenter extends AbstractTraitPresenter im
       }
     }
     initExperiencedListening();
+  }
+
+  private void setObjects(IButtonControlledComboEditView<ITraitReference> specialtySelectionView) {
+    ITraitReference[] allTraits = getAllTraits();
+    Arrays.sort(allTraits, new Comparator<ITraitReference>() {
+      public int compare(ITraitReference o1, ITraitReference o2) {
+        String name1 = i18ner.getName(o1);
+        String name2 = i18ner.getName(o2);
+        return name1.compareToIgnoreCase(name2);
+      }
+    });
+    specialtySelectionView.setObjects(allTraits);
   }
 
   private void initTraitListening() {
@@ -150,7 +173,7 @@ public class SpecialtiesConfigurationPresenter extends AbstractTraitPresenter im
 
   private void addSpecialtyView(final ISpecialty specialty) {
     final ITraitReference traitReference = specialty.getTraitReference();
-    String traitName = traitReference.createName(resources);
+    String traitName = i18ner.getName(traitReference);
     String specialtyName = specialty.getName();
     Icon deleteIcon = new BasicUi(resources).getRemoveIcon();
     final ISpecialtyView specialtyView = configurationView.addSpecialtyView(

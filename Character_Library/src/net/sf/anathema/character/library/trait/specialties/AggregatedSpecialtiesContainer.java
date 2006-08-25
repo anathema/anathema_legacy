@@ -40,10 +40,6 @@ public class AggregatedSpecialtiesContainer implements ISubTraitContainer {
     }
   };
 
-  public ISubTrait addSubTrait(String subName) {
-    throw new UnsupportedOperationException("Add to subcontainers instead."); //$NON-NLS-1$
-  }
-
   public void addSubTraitListener(ISubTraitListener newListener) {
     listeners.addListener(newListener);
   }
@@ -80,14 +76,6 @@ public class AggregatedSpecialtiesContainer implements ISubTraitContainer {
     return traits.toArray(new ISubTrait[traits.size()]);
   }
 
-  public boolean isRemovable(ISubTrait subTrait) {
-    throw new UnsupportedOperationException("Ask subcontainers instead."); //$NON-NLS-1$
-  }
-
-  public void removeSubTrait(ISubTrait specialty) {
-    throw new UnsupportedOperationException("Remove from subcontainers instead."); //$NON-NLS-1$
-  }
-
   public void removeSubTraitListener(ISubTraitListener newListener) {
     listeners.removeListener(newListener);
   }
@@ -100,5 +88,21 @@ public class AggregatedSpecialtiesContainer implements ISubTraitContainer {
   public void removeContainer(ISubTraitContainer subContainer) {
     subContainer.removeSubTraitListener(listener);
     containers.remove(subContainer);
+  }
+
+  public ISubTrait addSubTrait(String subName) {
+    throw new UnsupportedOperationException("Add to subcontainers instead."); //$NON-NLS-1$
+  }
+
+  public boolean isRemovable(ISubTrait subTrait) {
+    throw new UnsupportedOperationException("Ask subcontainers instead."); //$NON-NLS-1$
+  }
+
+  public void removeSubTrait(ISubTrait specialty) {
+    throw new UnsupportedOperationException("Remove from subcontainers instead."); //$NON-NLS-1$
+  }
+
+  public void dispose() {
+    throw new UnsupportedOperationException("Dispose subcontainers instead."); //$NON-NLS-1$
   }
 }

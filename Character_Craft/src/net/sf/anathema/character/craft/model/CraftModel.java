@@ -79,7 +79,6 @@ public class CraftModel implements ICraftModel {
 
   public ISubTrait commitSelection() {
     final ISubTrait subTrait = trait.getSubTraits().addSubTrait(currentName);
-
     return subTrait;
   }
 

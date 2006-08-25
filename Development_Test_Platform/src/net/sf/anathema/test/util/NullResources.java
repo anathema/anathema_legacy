@@ -8,11 +8,10 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class NullResources implements IResources {
 
-  public String getString(String key) {
-    return key;
-  }
-
-  public String getString(String key, Object[] arguments) {
+  public String getString(String key, Object... arguments) {
+    if (arguments.length == 0) {
+      return key;
+    }
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append(key);
     stringBuilder.append(","); //$NON-NLS-1$

@@ -42,7 +42,7 @@ public class AnathemaResources implements IResources {
     return false;
   }
 
-  public String getString(String key) {
+  private String getString(String key) {
     for (IStringResourceHandler handler : stringResourceHandlers) {
       if (handler.supportsKey(key)) {
         return handler.getString(key);
@@ -51,7 +51,10 @@ public class AnathemaResources implements IResources {
     return "##" + key + "##"; //$NON-NLS-1$ //$NON-NLS-2$
   }
 
-  public String getString(String key, Object[] arguments) {
+  public String getString(String key, Object... arguments) {
+    if (arguments.length == 0) {
+      return getString(key);
+    }
     String formatPattern = getString(key);
     return MessageFormat.format(formatPattern, arguments);
   }

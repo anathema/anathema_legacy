@@ -12,12 +12,8 @@ public class DemoResources implements IResources {
     return true;
   }
 
-  public String getString(String key) {
+  public String getString(String key, Object... arguments) {
     return key.substring(1);
-  }
-
-  public String getString(String key, Object[] arguments) {
-    return null;
   }
 
   public Image getImage(Class< ? > requestor, String relativePath) {

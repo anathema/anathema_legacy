@@ -18,6 +18,8 @@ import net.sf.anathema.character.library.trait.subtrait.ISubTraitListener;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
@@ -26,7 +28,7 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
   private final Map<ITraitType, ISubTraitContainer> specialtiesByType = new HashMap<ITraitType, ISubTraitContainer>();
   private final Map<ITraitReference, ISubTraitContainer> specialtiesByTrait = new HashMap<ITraitReference, ISubTraitContainer>();
   private final ChangeControl control = new ChangeControl();
-  private final ChangeControl traitControl = new ChangeControl();
+  private final GenericControl<ITraitReferencesChangeListener> traitControl = new GenericControl<ITraitReferencesChangeListener>();
   private final ICharacterModelContext context;
   private String currentName;
   private ITraitReference currentType;
@@ -44,7 +46,8 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
         }
 
         public void visitDefaultTrait(IDefaultTrait visitedTrait) {
-          SpecialtiesContainer container = addSpecialtiesContainer(visitedTrait);
+          ITraitReference reference = new DefaultTraitReference(visitedTrait);
+          SpecialtiesContainer container = addSpecialtiesContainer(reference);
           specialtiesByType.put(visitedTrait.getType(), container);
         }
       });
@@ -56,15 +59,11 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
       public void subTraitAdded(ISubTrait subTrait) {
         ISubTraitContainer container = specialtiesByType.get(visitedTrait.getType());
         addSubTraitSpecialtiesContainer(subTrait, (AggregatedSpecialtiesContainer) container);
-        traitControl.fireChangedEvent();
       }
 
-      public void subTraitRemoved(ISubTrait subTrait) {
-        ITraitReference reference = new TraitReference(subTrait);
-        ISubTraitContainer subContainer = specialtiesByTrait.remove(reference);
+      public void subTraitRemoved(final ISubTrait subTrait) {
         ISubTraitContainer container = specialtiesByType.get(visitedTrait.getType());
-        ((AggregatedSpecialtiesContainer) container).removeContainer(subContainer);
-        traitControl.fireChangedEvent();
+        removeSubTraitSpecialtiesContainer(subTrait, (AggregatedSpecialtiesContainer) container);
       }
 
       public void subTraitValueChanged() {
@@ -78,13 +77,30 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
     specialtiesByType.put(visitedTrait.getType(), container);
   }
 
-  private void addSubTraitSpecialtiesContainer(ISubTrait subTrait, AggregatedSpecialtiesContainer container) {
-    SpecialtiesContainer subContainer = addSpecialtiesContainer(subTrait);
-    container.addContainer(subContainer);
+  private void removeSubTraitSpecialtiesContainer(final ISubTrait subTrait, AggregatedSpecialtiesContainer container) {
+    ITraitReference reference = new SubTraitReference(subTrait);
+    ISubTraitContainer subContainer = specialtiesByTrait.remove(reference);
+    subContainer.dispose();
+    container.removeContainer(subContainer);
+    traitControl.forAllDo(new IClosure<ITraitReferencesChangeListener>() {
+      public void execute(ITraitReferencesChangeListener input) {
+        input.referenceRemoved(new SubTraitReference(subTrait));
+      }
+    });
   }
 
-  private SpecialtiesContainer addSpecialtiesContainer(ITrait trait) {
-    ITraitReference reference = new TraitReference(trait);
+  private void addSubTraitSpecialtiesContainer(ISubTrait subTrait, AggregatedSpecialtiesContainer container) {
+    final SubTraitReference reference = new SubTraitReference(subTrait);
+    SpecialtiesContainer subContainer = addSpecialtiesContainer(reference);
+    container.addContainer(subContainer);
+    traitControl.forAllDo(new IClosure<ITraitReferencesChangeListener>() {
+      public void execute(ITraitReferencesChangeListener input) {
+        input.referenceAdded(reference);
+      }
+    });
+  }
+
+  private SpecialtiesContainer addSpecialtiesContainer(ITraitReference reference) {
     SpecialtiesContainer specialtiesContainer = new SpecialtiesContainer(reference, context.getTraitContext());
     specialtiesByTrait.put(reference, specialtiesContainer);
     return specialtiesContainer;
@@ -139,8 +155,7 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
     context.getCharacterListening().addChangeListener(listener);
   }
 
-  public void addTraitListChangeListener(IChangeListener listener) {
-    traitControl.addChangeListener(listener);
+  public void addTraitListChangeListener(ITraitReferencesChangeListener listener) {
+    traitControl.addListener(listener);
   }
-
 }

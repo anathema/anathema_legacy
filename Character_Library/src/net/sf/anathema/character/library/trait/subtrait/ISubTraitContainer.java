@@ -19,4 +19,6 @@ public interface ISubTraitContainer {
   public int getExperienceDotTotal();
 
   public boolean isRemovable(ISubTrait subTrait);
+
+  public void dispose();
 }

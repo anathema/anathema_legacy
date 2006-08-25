@@ -30,11 +30,10 @@ public class StringProvider implements IStringResourceHandler {
     }
   }
 
-  public String getString(String key) {
-    return resourceBundle.getString(key);
-  }
-
-  public String getString(String key, Object[] arguments) {
+  public String getString(String key, Object... arguments) {
+    if (arguments.length == 0) {
+      return resourceBundle.getString(key);
+    }
     String formatPattern = getString(key);
     return MessageFormat.format(formatPattern, arguments);
   }

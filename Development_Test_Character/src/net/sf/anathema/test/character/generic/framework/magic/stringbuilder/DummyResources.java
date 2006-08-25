@@ -20,11 +20,10 @@ public class DummyResources implements IResources {
     stringMap.put(key, value);
   }
 
-  public String getString(String key) {
-    return stringMap.get(key);
-  }
-
-  public String getString(String key, Object[] arguments) {
+  public String getString(String key, Object... arguments) {
+    if (arguments.length == 0) {
+      return stringMap.get(key);
+    }
     throw new NotYetImplementedException();
   }
 

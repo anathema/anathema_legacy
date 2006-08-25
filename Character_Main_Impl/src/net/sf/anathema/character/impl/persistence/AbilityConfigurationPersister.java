@@ -12,8 +12,10 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
+import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
-import net.sf.anathema.character.library.trait.specialties.TraitReference;
+import net.sf.anathema.character.library.trait.specialties.ITraitReference;
+import net.sf.anathema.character.library.trait.specialties.SubTraitReference;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
@@ -49,7 +51,11 @@ public class AbilityConfigurationPersister extends AbstractCharacterPersister {
         try {
           for (ISubTrait subTrait : visitedTrait.getSubTraits().getSubTraits()) {
             Element subTraitElement = getSubTraitElement(abilityElement, subTrait);
-            saveSpecialties(specialtyConfiguration, subTraitElement, subTrait);
+            if (subTraitElement == null) {
+              throw new PersistenceException("No element found for SubTrait " + subTrait.getName()); //$NON-NLS-1$
+            }
+            SubTraitReference reference = new SubTraitReference(subTrait);
+            saveSpecialties(specialtyConfiguration, subTraitElement, reference);
           }
         }
         catch (PersistenceException e) {
@@ -58,7 +64,8 @@ public class AbilityConfigurationPersister extends AbstractCharacterPersister {
       }
 
       public void visitDefaultTrait(IDefaultTrait visitedTrait) {
-        saveSpecialties(specialtyConfiguration, abilityElement, visitedTrait);
+        DefaultTraitReference reference = new DefaultTraitReference(visitedTrait);
+        saveSpecialties(specialtyConfiguration, abilityElement, reference);
       }
     });
   }
@@ -69,14 +76,13 @@ public class AbilityConfigurationPersister extends AbstractCharacterPersister {
         return subTraitElement;
       }
     }
-    throw new PersistenceException("No element found for SubTrait " + subTrait.getName()); //$NON-NLS-1$
+    return null;
   }
 
   private void saveSpecialties(
       final ISpecialtiesConfiguration specialtyConfiguration,
       final Element abilityElement,
-      IDefaultTrait visitedTrait) {
-    TraitReference reference = new TraitReference(visitedTrait);
+      ITraitReference reference) {
     for (ISubTrait specialty : specialtyConfiguration.getSpecialtiesContainer(reference).getSubTraits()) {
       Element specialtyElement = saveTrait(abilityElement, TAG_SPECIALTY, specialty);
       specialtyElement.addAttribute(ATTRIB_NAME, specialty.getName());
@@ -104,6 +110,9 @@ public class AbilityConfigurationPersister extends AbstractCharacterPersister {
         try {
           for (ISubTrait subTrait : visitedTrait.getSubTraits().getSubTraits()) {
             Element subTraitElement = getSubTraitElement(abilityElement, subTrait);
+            if (subTraitElement == null) {
+              return;
+            }
             loadSpecialties(subTraitElement, specialtyConfiguration, subTrait);
           }
 
@@ -131,7 +140,7 @@ public class AbilityConfigurationPersister extends AbstractCharacterPersister {
     List<Element> specialtyElements = ElementUtilities.elements(abilityElement, TAG_SPECIALTY);
     for (Element specialtyElement : specialtyElements) {
       String specialtyName = (specialtyElement).attributeValue(ATTRIB_NAME);
-      TraitReference reference = new TraitReference(visitedTrait);
+      DefaultTraitReference reference = new DefaultTraitReference(visitedTrait);
       ISubTraitContainer specialtiesContainer = specialtyConfiguration.getSpecialtiesContainer(reference);
       ISubTrait specialty = specialtiesContainer.addSubTrait(specialtyName);
       restoreTrait(specialtyElement, specialty);

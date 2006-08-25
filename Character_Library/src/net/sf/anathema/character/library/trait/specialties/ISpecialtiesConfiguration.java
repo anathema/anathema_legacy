@@ -23,11 +23,11 @@ public interface ISpecialtiesConfiguration {
 
   public boolean isEntryComplete();
 
-
   public boolean isExperienced();
 
   public void addCharacterChangeListener(ICharacterChangeListener listener);
+
   public void addSelectionChangeListener(IChangeListener listener);
 
-  public void addTraitListChangeListener(IChangeListener listener);
+  public void addTraitListChangeListener(ITraitReferencesChangeListener listener);
 }

@@ -128,4 +128,10 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
     }
     return null;
   }
+  
+  public void dispose() {    
+    for (ISubTrait trait : getSubTraits()) {
+      removeSubTrait(trait);
+    }    
+  }
 }
