@@ -36,7 +36,7 @@ public class EquipmentDatabasePresenter implements IPresenter {
 
   private void initTemplateList() {
     view.setTemplateListHeader("Available Templates");
-    view.getTemplateListView().setObjects(model.getAllAvailableTemplateIds());
+    view.getTemplateListView().setObjects(model.getDatabase().getAllAvailableTemplateIds());
     view.getTemplateListView().addObjectSelectionChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         if (model.getTemplateEditModel().isDirty()) {

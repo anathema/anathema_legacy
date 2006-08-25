@@ -5,6 +5,6 @@ import net.sf.anathema.framework.itemdata.model.IItemData;
 public interface IEquipmentDatabaseManagement extends IItemData {
 
   public IEquipmentTemplateEditModel getTemplateEditModel();
-
-  public String[] getAllAvailableTemplateIds();
+  
+  public IEquipmentDatabase getDatabase();
 }

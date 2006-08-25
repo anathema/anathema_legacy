@@ -12,7 +12,8 @@ public class EquipmentDatabaseViewDemo extends SwingDemoCase {
 
   public void demoEmptyEquipmentItem() {
     IEquipmentDatabaseView view = new EquimentDatabaseView();
-    IEquipmentDatabaseManagement model = new EquipmentDatabaseManagement();
+    DemoEquipmentDatabase equipmentDatabase = new DemoEquipmentDatabase();
+    IEquipmentDatabaseManagement model = new EquipmentDatabaseManagement(equipmentDatabase);
     new EquipmentDatabasePresenter(new DemoResources(), model, view).initPresentation();
     show(view.getComponent());
   }
