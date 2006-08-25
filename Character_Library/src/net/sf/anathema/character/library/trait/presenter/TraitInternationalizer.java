@@ -13,9 +13,15 @@ public class TraitInternationalizer {
 
   public String getName(ITraitReference reference) {
     String id = reference.getTraitType().getId();
-    if (reference.getName() == null) {
+    String name = reference.getName();
+    if (name == null) {
       return resources.getString(id);
     }
-    return resources.getString("SubtraitMessage", id, reference.getName()); //$NON-NLS-1$
+    String subtraitNameKey = id + "." + name; //$NON-NLS-1$
+    if (!resources.supportsKey(subtraitNameKey)) {
+      return resources.getString("SubtraitMessage", id, name); //$NON-NLS-1$
+    }
+    String i18nedSubtraitName = resources.getString(subtraitNameKey);
+    return resources.getString("SubtraitMessage", id, i18nedSubtraitName); //$NON-NLS-1$
   }
 }

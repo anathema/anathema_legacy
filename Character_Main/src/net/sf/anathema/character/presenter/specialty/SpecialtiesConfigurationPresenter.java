@@ -31,6 +31,13 @@ public class SpecialtiesConfigurationPresenter extends AbstractTraitPresenter im
 
   private final IdentityMapping<ISubTrait, ISpecialtyView> viewsBySpecialty = new IdentityMapping<ISubTrait, ISpecialtyView>();
   private final TraitInternationalizer i18ner;
+  private final Comparator<ITraitReference> comparator = new Comparator<ITraitReference>() {
+    public int compare(ITraitReference o1, ITraitReference o2) {
+      String name1 = i18ner.getName(o1);
+      String name2 = i18ner.getName(o2);
+      return name1.compareToIgnoreCase(name2);
+    }
+  };
 
   private final ISubTraitListener specialtyListener = new ISubTraitListener() {
     public void subTraitAdded(ISubTrait specialty) {
@@ -117,13 +124,7 @@ public class SpecialtiesConfigurationPresenter extends AbstractTraitPresenter im
 
   private void setObjects(IButtonControlledComboEditView<ITraitReference> specialtySelectionView) {
     ITraitReference[] allTraits = getAllTraits();
-    Arrays.sort(allTraits, new Comparator<ITraitReference>() {
-      public int compare(ITraitReference o1, ITraitReference o2) {
-        String name1 = i18ner.getName(o1);
-        String name2 = i18ner.getName(o2);
-        return name1.compareToIgnoreCase(name2);
-      }
-    });
+    Arrays.sort(allTraits, comparator);
     specialtySelectionView.setObjects(allTraits);
   }
 
