@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.impl.item.model;
 
+import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
@@ -34,6 +35,10 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   }
 
   public boolean isDirty() {
-    return false;
+    if (editedTemplate == null) {
+      return !getDescription().getName().isEmpty() || !getDescription().getContent().isEmpty();
+    }
+    return !ObjectUtilities.equals(editedTemplate.getName(), getDescription().getName().getText())
+        && !ObjectUtilities.equals(editedTemplate.getDescription(), getDescription().getContent().getText());
   }
 }
