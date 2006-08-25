@@ -71,6 +71,14 @@
 		<parameter id="class" value="net.sf.anathema.character.impl.module.preferences.RulesetPreferenceElement"/>
 		<parameter id="preferencekey" value="Ruleset"/>
 	  </parameter>
+	  <parameter id="type">
+		<parameter id="class" value="net.sf.anathema.character.impl.module.preferences.PrintZeroCraftsPreferencesElement"/>
+		<parameter id="preferencekey" value="PrintZeroCrafts"/>
+	  </parameter>
+	  <parameter id="type">
+		<parameter id="class" value="net.sf.anathema.character.impl.module.preferences.PrintZeroBackgroundsPreferencesElement"/>
+		<parameter id="preferencekey" value="PrintZeroBackgrounds"/>
+	  </parameter>  
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="Bootjobs" id="Bootjob">
 		<parameter id="class" value="net.sf.anathema.character.impl.module.CharacterPerformanceBootJob"/>

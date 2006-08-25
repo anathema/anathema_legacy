@@ -2,6 +2,7 @@ package net.sf.anathema.character.reporting.sheet.common;
 
 import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.LINE_HEIGHT;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTemplate;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -23,16 +24,20 @@ public class PdfBackgroundEncoder implements IPdfContentBoxEncoder {
     this.resources = resources;
     this.traitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
   }
-  
+
   public String getHeaderKey() {
     return "Backgrounds"; //$NON-NLS-1$
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     float yPosition = bounds.getMaxY() - LINE_HEIGHT;
+    boolean printZeroBackgrounds = AnathemaCharacterPreferences.getDefaultPreferences().printZeroBackgrounds();
     for (IGenericTrait background : character.getBackgrounds()) {
       if (yPosition < bounds.getMinY()) {
         return;
+      }
+      if (!printZeroBackgrounds && background.getCurrentValue() == 0) {
+        continue;
       }
       ITraitType backgroundType = background.getType();
       String backgroundName = getBackgroundName(backgroundType);

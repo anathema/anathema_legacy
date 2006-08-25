@@ -4,6 +4,7 @@ import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPr
 import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.sf.anathema.lib.control.WindowsUtilities;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.util.IIdentificate;
 
 public class LookAndFeelPreferencesElement extends AbstractCheckBoxPreferencesElement {
   private boolean useMetal = SYSTEM_PREFERENCES.getBoolean(LOOK_AND_FEEL_PREFERENCE, false);
@@ -37,5 +38,9 @@ public class LookAndFeelPreferencesElement extends AbstractCheckBoxPreferencesEl
   @Override
   protected void resetValue() {
     useMetal = SYSTEM_PREFERENCES.getBoolean(LOOK_AND_FEEL_PREFERENCE, false);
+  }
+
+  public IIdentificate getCategory() {
+    return SYSTEM_CATEGORY;
   }
 }

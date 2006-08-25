@@ -13,7 +13,6 @@ import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.util.IIdentificate;
 
 public abstract class AbstractCheckBoxPreferencesElement implements IPreferencesElement {
 
@@ -63,10 +62,6 @@ public abstract class AbstractCheckBoxPreferencesElement implements IPreferences
 
   public boolean isDirty() {
     return dirty;
-  }
-
-  public IIdentificate getCategory() {
-    return SYSTEM_CATEGORY;
   }
 
   public void reset() {

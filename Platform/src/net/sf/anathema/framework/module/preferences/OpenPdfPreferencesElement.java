@@ -1,6 +1,7 @@
 package net.sf.anathema.framework.module.preferences;
 
 import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants.OPEN_PDF_PREFERENCE;
+import net.sf.anathema.lib.util.IIdentificate;
 
 public class OpenPdfPreferencesElement extends AbstractCheckBoxPreferencesElement {
 
@@ -32,5 +33,9 @@ public class OpenPdfPreferencesElement extends AbstractCheckBoxPreferencesElemen
   @Override
   protected void resetValue() {
     openPdf = SYSTEM_PREFERENCES.getBoolean(OPEN_PDF_PREFERENCE, true);
+  }
+
+  public IIdentificate getCategory() {
+    return SYSTEM_CATEGORY;
   }
 }

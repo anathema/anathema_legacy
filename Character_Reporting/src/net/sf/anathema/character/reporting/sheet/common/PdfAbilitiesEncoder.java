@@ -8,6 +8,7 @@ import java.util.List;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -71,6 +72,15 @@ public class PdfAbilitiesEncoder extends AbstractPdfEncoder {
   private int encodeCrafts(PdfContentByte directContent, IGenericCharacter character, Position position, float width) {
     String title = resources.getString("Sheet.AbilitySubHeader.Crafts"); //$NON-NLS-1$
     INamedGenericTrait[] traits = character.getSubTraits(AbilityType.Craft);
+    if (!AnathemaCharacterPreferences.getDefaultPreferences().printZeroCrafts()) {
+      List<INamedGenericTrait> nonZeroCrafts = new ArrayList<INamedGenericTrait>();
+      for (INamedGenericTrait trait : traits) {
+        if (trait.getCurrentValue() != 0) {
+          nonZeroCrafts.add(trait);
+        }
+      }
+      traits = nonZeroCrafts.toArray(new INamedGenericTrait[nonZeroCrafts.size()]);
+    }
     return drawNamedTraitSection(directContent, title, traits, position, width, essenceMax);
   }
 
