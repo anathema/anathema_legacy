@@ -14,6 +14,12 @@ public class DemoEquipmentDatabase implements IEquipmentDatabase {
 
   public DemoEquipmentDatabase() {
     addTemplate(new NaturalWeaponTemplate());
+    addTemplate(new NaturalWeaponTemplate() {
+      @Override
+      public String getName() {
+        return "Second Template"; //$NON-NLS-1$
+      }
+    });
   }
 
   private void addTemplate(IEquipmentTemplate template) {
