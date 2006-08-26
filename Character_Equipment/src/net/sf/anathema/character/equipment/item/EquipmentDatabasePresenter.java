@@ -1,16 +1,11 @@
 package net.sf.anathema.character.equipment.item;
 
-import net.disy.commons.core.message.IMessage;
-import net.disy.commons.core.message.Message;
-import net.disy.commons.core.message.MessageType;
-import net.disy.commons.swing.dialog.message.MessageUserDialogConfiguration;
-import net.disy.commons.swing.dialog.userdialog.UserDialog;
-import net.disy.commons.swing.dialog.userdialog.buttons.AbstractDialogButtonConfiguration;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.container.factory.StandardPanelBuilder;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -42,24 +37,18 @@ public class EquipmentDatabasePresenter implements IPresenter {
   private void initTemplateList() {
     view.setTemplateListHeader("Available Templates");
     view.getTemplateListView().setObjects(model.getDatabase().getAllAvailableTemplateIds());
+    view.getTemplateListView().addSelectionVetor(new DiscardChangesVetor(new ICondition() {
+      public boolean isFullfilled() {
+        final IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
+        return editModel.isDirty();
+      }
+    }, view.getComponent()));
     view.getTemplateListView().addObjectSelectionChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
-        IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
-        if(editModel.isEditing(newValue)) {
+        if (newValue == null) {
           return;
         }
-        if (editModel.isDirty()) {
-          String messageText = "Sie haben noch ungespeicherte Änderungen. Wollen Sie diese verwerfen?";
-          IMessage message = new Message(messageText, MessageType.WARNING);
-          MessageUserDialogConfiguration configuration = new MessageUserDialogConfiguration(
-              message,
-              new AbstractDialogButtonConfiguration());
-          UserDialog userDialog = new UserDialog(view.getComponent(), configuration);
-          userDialog.show();
-          if (userDialog.isCanceled()) {
-            return;
-          }
-        }
+        IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
         editModel.setEditTemplate(newValue);
       }
     });
