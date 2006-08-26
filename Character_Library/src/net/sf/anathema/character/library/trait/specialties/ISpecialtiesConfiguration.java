@@ -1,5 +1,6 @@
 package net.sf.anathema.character.library.trait.specialties;
 
+import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;

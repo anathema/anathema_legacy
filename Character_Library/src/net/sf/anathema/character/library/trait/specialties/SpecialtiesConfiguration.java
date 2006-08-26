@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Set;
 
 import net.disy.commons.core.util.StringUtilities;
+import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.traits.ITraitType;

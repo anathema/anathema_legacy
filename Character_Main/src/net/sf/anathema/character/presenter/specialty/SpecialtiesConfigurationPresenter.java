@@ -7,12 +7,12 @@ import java.util.Comparator;
 
 import javax.swing.Icon;
 
+import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
+import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
-import net.sf.anathema.character.library.trait.presenter.TraitInternationalizer;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.ISpecialty;
-import net.sf.anathema.character.library.trait.specialties.ITraitReference;
 import net.sf.anathema.character.library.trait.specialties.ITraitReferencesChangeListener;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
@@ -33,8 +33,8 @@ public class SpecialtiesConfigurationPresenter extends AbstractTraitPresenter im
   private final TraitInternationalizer i18ner;
   private final Comparator<ITraitReference> comparator = new Comparator<ITraitReference>() {
     public int compare(ITraitReference o1, ITraitReference o2) {
-      String name1 = i18ner.getName(o1);
-      String name2 = i18ner.getName(o2);
+      String name1 = i18ner.getScreenName(o1);
+      String name2 = i18ner.getScreenName(o2);
       return name1.compareToIgnoreCase(name2);
     }
   };
@@ -77,7 +77,7 @@ public class SpecialtiesConfigurationPresenter extends AbstractTraitPresenter im
         new AbstractSelectCellRenderer(resources) {
           @Override
           protected Object getCustomizedDisplayValue(Object value) {
-            return i18ner.getName((ITraitReference) value);
+            return i18ner.getScreenName((ITraitReference) value);
           }
         },
         addIcon);
@@ -174,7 +174,7 @@ public class SpecialtiesConfigurationPresenter extends AbstractTraitPresenter im
 
   private void addSpecialtyView(final ISpecialty specialty) {
     final ITraitReference traitReference = specialty.getTraitReference();
-    String traitName = i18ner.getName(traitReference);
+    String traitName = i18ner.getScreenName(traitReference);
     String specialtyName = specialty.getName();
     Icon deleteIcon = new BasicUi(resources).getRemoveIcon();
     final ISpecialtyView specialtyView = configurationView.addSpecialtyView(

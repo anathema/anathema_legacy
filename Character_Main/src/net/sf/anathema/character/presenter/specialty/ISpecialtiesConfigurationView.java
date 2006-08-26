@@ -3,7 +3,7 @@ package net.sf.anathema.character.presenter.specialty;
 import javax.swing.Icon;
 import javax.swing.ListCellRenderer;
 
-import net.sf.anathema.character.library.trait.specialties.ITraitReference;
+import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.view.ISpecialtyView;
 import net.sf.anathema.character.view.basic.IButtonControlledComboEditView;
 

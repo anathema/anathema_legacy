@@ -8,13 +8,13 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 import java.util.Iterator;
 import java.util.List;
 
+import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
 import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
-import net.sf.anathema.character.library.trait.specialties.ITraitReference;
 import net.sf.anathema.character.library.trait.specialties.SubTraitReference;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;

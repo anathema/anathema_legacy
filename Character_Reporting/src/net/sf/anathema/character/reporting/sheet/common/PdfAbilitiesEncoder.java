@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
+import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -108,11 +109,11 @@ public class PdfAbilitiesEncoder extends AbstractPdfEncoder {
       float width,
       int dotCount) {
     int height = drawSubsectionHeader(directContent, title, position, width);
+    TraitInternationalizer internationalizer = new TraitInternationalizer(resources);
     for (INamedGenericTrait trait : traits) {
-      trait = new I18nNamedGenericTrait(trait, resources);
+      String name = internationalizer.getSheetName(new NamedGenericTraitReference(trait));
       Position traitPosition = new Position(position.x, position.y - height);
       int value = trait.getCurrentValue();
-      String name = trait.getName();
       traitEncoder.encodeWithText(directContent, name, traitPosition, width, value, dotCount);
       height += traitEncoder.getTraitHeight();
     }

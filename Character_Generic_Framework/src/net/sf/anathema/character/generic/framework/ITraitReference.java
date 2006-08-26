@@ -1,4 +1,4 @@
-package net.sf.anathema.character.library.trait.specialties;
+package net.sf.anathema.character.generic.framework;
 
 import net.sf.anathema.character.generic.traits.ITraitType;
 
