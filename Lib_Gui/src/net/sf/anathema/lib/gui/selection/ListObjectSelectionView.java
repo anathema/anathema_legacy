@@ -8,15 +8,20 @@ import javax.swing.event.ListSelectionListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.list.ListSelectionMode;
 import net.sf.anathema.lib.gui.list.SmartJList;
+import net.sf.anathema.lib.gui.list.veto.IVetor;
+import net.sf.anathema.lib.gui.list.veto.VetoableListSelectionModel;
 
 public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
 
   private final SmartJList<V> smartList;
   private final Class< ? extends V> contentClazz;
+  private final VetoableListSelectionModel selectionModel;
 
   public ListObjectSelectionView(Class< ? extends V> contentClazz) {
     this.contentClazz = contentClazz;
     this.smartList = new SmartJList<V>(contentClazz);
+    this.selectionModel = new VetoableListSelectionModel();
+    this.smartList.setSelectionModel(selectionModel);
   }
 
   public void setCellRenderer(ListCellRenderer renderer) {
@@ -38,7 +43,7 @@ public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
   }
 
   public void setSelectedObject(V object) {
-    //URS: Ich habe die Array-Konversion an dieser Stelle entfernt, weil ich einen Fehler vermutete.
+    // URS: Ich habe die Array-Konversion an dieser Stelle entfernt, weil ich einen Fehler vermutete.
     smartList.setSelectedObjects(object);
   }
 
@@ -56,5 +61,13 @@ public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
 
   public void setSelectionType(ListSelectionMode mode) {
     smartList.setSelectionMode(mode);
+  }
+
+  public void addSelectionVetor(IVetor vetor) {
+    selectionModel.addVetor(vetor);
+  }
+
+  public void removeSelectionVetor(IVetor vetor) {
+    selectionModel.removeVetor(vetor);
   }
 }
