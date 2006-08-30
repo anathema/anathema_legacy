@@ -78,4 +78,8 @@ public class MultiEntryMap<K, V> {
     }
     getList(key).remove(value);
   }
+
+  public void clear() {
+    map.clear();
+  }
 }
