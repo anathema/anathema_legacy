@@ -106,7 +106,7 @@ public class StandardPanelBuilder {
   }
 
   public <V> IObjectSelectionView<V> addEditableObjectSelectionView(String label, ListCellRenderer renderer, V[] objects) {
-    ObjectSelectionView<V> view = new ObjectSelectionView<V>(label, renderer, objects, true);
+    ObjectSelectionView<V> view = new ObjectSelectionView<V>(label, renderer, true, objects);
     view.addComponents(dialogPanel);
     return view;
   }

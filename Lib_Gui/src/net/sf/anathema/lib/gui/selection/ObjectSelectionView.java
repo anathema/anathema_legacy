@@ -23,15 +23,23 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V>, IGridDia
     return comboBox.getComponent();
   }
 
-  public ObjectSelectionView(String labelString, ListCellRenderer renderer, V[] objects) {
-    this(labelString, renderer, objects, false);
+  public ObjectSelectionView(String labelString, ListCellRenderer renderer, V... objects) {
+    this(labelString, renderer, false, objects);
   }
 
-  public ObjectSelectionView(String labelString, ListCellRenderer renderer, V[] objects, boolean editable) {
+  public ObjectSelectionView(String labelString, ListCellRenderer renderer, boolean editable, V... objects) {
     this.label = new JLabel(labelString);
     this.comboBox = new ChangeableJComboBox<V>(objects, editable);
-    comboBox.setRenderer(renderer);
+    setCellRenderer(renderer);
     setSelectedObject(null);
+  }
+
+  public void setCellRenderer(ListCellRenderer renderer) {
+    comboBox.setRenderer(renderer);
+  }
+  
+  public void setLabelText(String text) {
+    this.label.setText(text);
   }
 
   public void addComponents(IGridDialogPanel dialogPanel) {
