@@ -4,12 +4,18 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ListCellRenderer;
 
+import net.disy.commons.swing.border.TitledPanel;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
+import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 
 public class EquimentDatabaseView implements IEquipmentDatabaseView {
 
@@ -18,6 +24,9 @@ public class EquimentDatabaseView implements IEquipmentDatabaseView {
   private JLabel templateListHeaderLabel = new JLabel();
   private JLabel editTemplateHeaderLabel = new JLabel();
   private ListObjectSelectionView<String> templateListView = new ListObjectSelectionView<String>(String.class);
+  private ListObjectSelectionView<IEquipmentStats> statsListView = new ListObjectSelectionView<IEquipmentStats>(
+      IEquipmentStats.class);
+  private JPanel ruleSetPanel = new JPanel(new GridDialogLayout(2, false));
 
   public JComponent getComponent() {
     if (contentPanel == null) {
@@ -26,8 +35,26 @@ public class EquimentDatabaseView implements IEquipmentDatabaseView {
       contentPanel.add(editTemplateHeaderLabel, GridDialogLayoutData.FILL_HORIZONTAL);
       contentPanel.add(new JScrollPane(templateListView.getContent()), GridDialogLayoutData.FILL_BOTH);
       contentPanel.add(editTemplateView, GridDialogLayoutData.FILL_BOTH);
+      editTemplateView.add(ceateStatsPanel(), GridDialogLayoutData.FILL_BOTH);
     }
     return contentPanel;
+  }
+
+  public IListObjectSelectionView<IEquipmentStats> getStatsListView() {
+    return statsListView;
+  }
+
+  private JPanel ceateStatsPanel() {
+    JPanel statsPanel = new JPanel(new GridDialogLayout(1, false));
+    statsPanel.add(ruleSetPanel, GridDialogLayoutData.FILL_HORIZONTAL);
+    statsPanel.add(new JScrollPane(statsListView.getContent()), GridDialogLayoutData.FILL_BOTH);
+    return new TitledPanel("Stats", statsPanel);
+  }
+
+  public IObjectSelectionView<IExaltedRuleSet> initRuleSetSelectionView(String label, ListCellRenderer renderer) {
+    ObjectSelectionView<IExaltedRuleSet> view = new ObjectSelectionView<IExaltedRuleSet>(label, renderer);
+    view.addTo(ruleSetPanel, GridDialogLayoutData.FILL_HORIZONTAL);
+    return view;
   }
 
   public void setTemplateListHeader(String headerText) {

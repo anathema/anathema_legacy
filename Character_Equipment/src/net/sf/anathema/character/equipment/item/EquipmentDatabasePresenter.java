@@ -1,10 +1,18 @@
 package net.sf.anathema.character.equipment.item;
 
+import javax.swing.Icon;
+
+import net.disy.commons.swing.ui.IObjectUi;
+import net.disy.commons.swing.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
+import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.container.factory.StandardPanelBuilder;
@@ -30,8 +38,50 @@ public class EquipmentDatabasePresenter implements IPresenter {
   public void initPresentation() {
     initTemplateList();
     initDescriptionView();
+    initStatsView();
     view.setTemplateListHeader("Available Templates");
     view.setEditTemplateHeader("Edit Template");
+  }
+
+  private void initStatsView() {
+    final IObjectSelectionView<IExaltedRuleSet> ruleSetView = view.initRuleSetSelectionView(
+        "Ruleset",
+        new ObjectUiListCellRenderer(new IObjectUi() {
+          public Icon getIcon(Object value) {
+            return null;
+          }
+
+          public String getLabel(Object value) {
+            if (value == null) {
+              return "Select...";
+            }
+            return ((IExaltedRuleSet) value).getId();
+          }
+        }));
+    ruleSetView.setObjects(model.getSupportedExaltedRuleSets());
+    ruleSetView.addObjectSelectionChangedListener(new IObjectValueChangedListener<IExaltedRuleSet>() {
+      public void valueChanged(IExaltedRuleSet newValue) {
+        updateStatListContent(newValue);
+      }
+    });
+    view.getStatsListView().setCellRenderer(new ObjectUiListCellRenderer(new IObjectUi() {
+      public String getLabel(Object value) {
+        return ((IEquipmentStats) value).getName().getId();
+      }
+
+      public Icon getIcon(Object value) {
+        return null;
+      }
+    }));
+    model.getTemplateEditModel().addStatsChangeListener(new IChangeListener() {
+      public void changeOccured() {
+        updateStatListContent(ruleSetView.getSelectedObject());
+      }
+    });
+  }
+
+  private void updateStatListContent(IExaltedRuleSet newValue) {
+    view.getStatsListView().setObjects(model.getTemplateEditModel().getStats(newValue));
   }
 
   private void initTemplateList() {
@@ -42,7 +92,7 @@ public class EquipmentDatabasePresenter implements IPresenter {
         final IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
         return editModel.isDirty();
       }
-    }, view.getComponent()));
+    }, view.getTemplateListView().getContent()));
     view.getTemplateListView().addObjectSelectionChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         if (newValue == null) {

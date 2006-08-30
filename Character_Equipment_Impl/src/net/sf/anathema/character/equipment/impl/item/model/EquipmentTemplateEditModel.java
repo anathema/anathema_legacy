@@ -14,6 +14,8 @@ import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.framework.itemdata.model.ItemDescription;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 import net.sf.anathema.lib.collection.MultiEntryMap;
+import net.sf.anathema.lib.control.change.ChangeControl;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
 
@@ -21,6 +23,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   private final IEquipmentDatabase database;
   private IEquipmentTemplate editedTemplate;
   private final MultiEntryMap<IExaltedRuleSet, IEquipmentStats> statsByRuleSet = new MultiEntryMap<IExaltedRuleSet, IEquipmentStats>();
+  private final ChangeControl statsChangeControl = new ChangeControl();
 
   public EquipmentTemplateEditModel(IEquipmentDatabase database) {
     this.database = database;
@@ -44,7 +47,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   }
 
   private void fireStatsChangedEvent() {
-    // TODO Listening für Stats
+    statsChangeControl.fireChangedEvent();
   }
 
   public void setNewTemplate() {
@@ -70,6 +73,13 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
 
   public IEquipmentStats[] getStats(IExaltedRuleSet ruleSet) {
     List<IEquipmentStats> allStats = statsByRuleSet.get(ruleSet);
+    if (allStats == null) {
+      return new IEquipmentStats[0];
+    }
     return allStats.toArray(new IEquipmentStats[allStats.size()]);
+  }
+
+  public void addStatsChangeListener(IChangeListener changeListener) {
+    statsChangeControl.addChangeListener(changeListener);
   }
 }

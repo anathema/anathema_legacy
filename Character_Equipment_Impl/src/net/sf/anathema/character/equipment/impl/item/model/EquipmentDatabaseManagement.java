@@ -3,6 +3,8 @@ package net.sf.anathema.character.equipment.impl.item.model;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
+import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 
@@ -26,5 +28,9 @@ public class EquipmentDatabaseManagement implements IEquipmentDatabaseManagement
 
   public void setPrintNameAdjuster(PrintNameAdjuster adjuster) {
     // nothing to do
+  }
+
+  public IExaltedRuleSet[] getSupportedExaltedRuleSets() {
+    return ExaltedRuleSet.values();
   }
 }

@@ -65,8 +65,8 @@ public class CharacterItemCreationView implements ICharacterItemCreationView {
     ObjectSelectionView<IExaltedRuleSet> view = new ObjectSelectionView<IExaltedRuleSet>(
         label,
         renderer,
-        objects,
-        false);
+        false,
+        objects);
     JPanel panel = new JPanel(new GridDialogLayout(2, false));
     view.addTo(panel, GridDialogLayoutData.FILL_HORIZONTAL);
     component.add(panel, GridDialogLayoutData.FILL_HORIZONTAL);
