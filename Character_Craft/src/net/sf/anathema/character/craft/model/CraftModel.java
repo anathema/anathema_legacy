@@ -46,14 +46,6 @@ public class CraftModel implements ICraftModel {
         // nothing to do;
       }
     });
-    for (ISubTrait subTrait : trait.getSubTraits().getSubTraits()) {
-      addSubTraitEntry(subTrait);
-    }
-  }
-
-  private void addSubTraitEntry(ISubTrait subTrait) {
-    currentName = subTrait.getName();
-    commitSelection();
   }
 
   public int getAbsoluteMaximum() {
