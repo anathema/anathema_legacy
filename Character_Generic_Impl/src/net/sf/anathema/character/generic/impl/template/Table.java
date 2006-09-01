@@ -29,14 +29,8 @@ public class Table<K1, K2, V> {
 
   public V get(K1 key1, K2 key2) {
     List<V> rowList = rowMap.get(key1);
-    if (rowList == null) {
-      return null;
-    }
     Set<V> rowEntries = new HashSet<V>(rowList);
     List<V> columnList = columnMap.get(key2);
-    if (columnList == null) {
-      return null;
-    }
     Set<V> columnEntries = new HashSet<V>(columnList);
     rowEntries.retainAll(columnEntries);
     if (rowEntries.size() == 0) {

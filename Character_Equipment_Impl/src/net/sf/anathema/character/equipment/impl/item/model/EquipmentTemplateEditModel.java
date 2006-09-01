@@ -73,9 +73,6 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
 
   public IEquipmentStats[] getStats(IExaltedRuleSet ruleSet) {
     List<IEquipmentStats> allStats = statsByRuleSet.get(ruleSet);
-    if (allStats == null) {
-      return new IEquipmentStats[0];
-    }
     return allStats.toArray(new IEquipmentStats[allStats.size()]);
   }
 

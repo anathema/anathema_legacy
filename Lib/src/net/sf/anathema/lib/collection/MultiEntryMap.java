@@ -41,8 +41,8 @@ public class MultiEntryMap<K, V> {
   }
 
   public boolean containsValue(V value) {
-    for (Iterator<K> allKeys = keySet().iterator(); allKeys.hasNext();) {
-      List<V> list = getList(allKeys.next());
+    for (K key : keySet()) {
+      List<V> list = getList(key);
       if (list.contains(value)) {
         return true;
       }
@@ -52,7 +52,7 @@ public class MultiEntryMap<K, V> {
 
   public List<V> get(K key) {
     if (!containsKey(key)) {
-      return null;
+      return Collections.emptyList();
     }
     return Collections.unmodifiableList(getList(key));
   }
