@@ -21,4 +21,6 @@ public interface ISubTraitContainer {
   public boolean isRemovable(ISubTrait subTrait);
 
   public void dispose();
+
+  public ISubTrait getSubTrait(String traitName);
 }

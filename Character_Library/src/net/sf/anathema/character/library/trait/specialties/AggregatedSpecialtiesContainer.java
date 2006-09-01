@@ -93,6 +93,10 @@ public class AggregatedSpecialtiesContainer implements ISubTraitContainer {
   public ISubTrait addSubTrait(String subName) {
     throw new UnsupportedOperationException("Add to subcontainers instead."); //$NON-NLS-1$
   }
+  
+  public ISubTrait getSubTrait(String traitName) {
+    throw new UnsupportedOperationException("Get from subcontainers instead."); //$NON-NLS-1$
+  }
 
   public boolean isRemovable(ISubTrait subTrait) {
     throw new UnsupportedOperationException("Ask subcontainers instead."); //$NON-NLS-1$

@@ -35,7 +35,10 @@ public class AbstractCharacterPersister extends AbstractPersister {
           ISubTraitContainer container = visitedTrait.getSubTraits();
           for (Element subTraitElement : subTraitElements) {
             String traitName = ElementUtilities.getRequiredText(subTraitElement, TAG_TRAIT_NAME);
-            ISubTrait subTrait = container.addSubTrait(traitName);
+            ISubTrait subTrait = container.getSubTrait(traitName);
+            if (subTrait == null) {
+              subTrait = container.addSubTrait(traitName);
+            }
             restoreDefaultTrait(subTraitElement, subTrait);
           }
         }

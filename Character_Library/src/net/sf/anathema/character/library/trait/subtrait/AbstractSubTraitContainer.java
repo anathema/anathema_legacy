@@ -62,7 +62,7 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
     subTraitListeners.removeListener(listener);
   }
 
-  private ISubTrait getContainedEquivalent(String name) {
+  public ISubTrait getSubTrait(String name) {
     for (ISubTrait subtrait : getSubTraits()) {
       if (subtrait.getName().equals(name)) {
         return subtrait;
@@ -114,7 +114,7 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
   public final ISubTrait addSubTrait(String traitName) {
     Ensure.ensureArgumentNotNull(traitName);
     if (isNewSubTraitAllowed()) {
-      ISubTrait subTrait = getContainedEquivalent(traitName);
+      ISubTrait subTrait = getSubTrait(traitName);
       if (subTrait == null) {
         subTrait = createSubTrait(traitName);
         subtraits.add(subTrait);
@@ -128,10 +128,10 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
     }
     return null;
   }
-  
-  public void dispose() {    
+
+  public void dispose() {
     for (ISubTrait trait : getSubTraits()) {
       removeSubTrait(trait);
-    }    
+    }
   }
 }
