@@ -10,8 +10,8 @@ public class MultiEntryMapTest {
   @Test
   public void testContainsValue() {
     MultiEntryMap<String, String> map = new MultiEntryMap<String, String>();
-    Assert.assertFalse(map.containsValue("Value"));
-    map.add("Expected", "Value");
-    Assert.assertTrue(map.containsValue("Value"));
+    Assert.assertFalse(map.containsValue("Value")); //$NON-NLS-1$
+    map.add("Expected", "Value");  //$NON-NLS-1$//$NON-NLS-2$
+    Assert.assertTrue(map.containsValue("Value")); //$NON-NLS-1$
   }
 }
