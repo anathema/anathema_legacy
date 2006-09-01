@@ -14,6 +14,7 @@ import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.generic.framework.util.ExperienceUtilities;
+import net.sf.anathema.character.impl.view.EditButtonDialogPanel;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
 import net.sf.anathema.framework.presenter.view.AbstractTabView;
@@ -29,8 +30,8 @@ import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConceptAndRulesViewProperties> implements
     ICharacterConceptAndRulesView {
 
-  private IGridDialogPanel characterConceptPanel = new DefaultGridDialogPanel(false);
-  private IGridDialogPanel rulesPanel = new DefaultGridDialogPanel(false);
+  private final EditButtonDialogPanel characterConceptPanel = new EditButtonDialogPanel();
+  private final IGridDialogPanel rulesPanel = new DefaultGridDialogPanel(false);
 
   public CharacterConceptAndRulesView() {
     super(null, false);
