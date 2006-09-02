@@ -42,7 +42,7 @@ Please contact us if you encounter any problems, we will fix your character file
 + An all new character sheet with advanced features:
 +	Combo-field prints only when combos learned
 +	Prints caste-specific Anima ability: To use, define key "Sheet.AnimaPower.[CASTE/ASPECT].[EDITION]" 
-+	in custom.properties (see below), where [EDITION] can either be "FirstEdition" or "SecondEdition"
++	in custom.properties (see above), where [EDITION] can either be "FirstEdition" or "SecondEdition"
 +	Makes use of the as yet incomplete Equipment and Crafts models
 +	Variable paper format
 + Series and Notes (finally) are printable.
