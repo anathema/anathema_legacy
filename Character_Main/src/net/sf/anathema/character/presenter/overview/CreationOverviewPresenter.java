@@ -183,7 +183,7 @@ public class CreationOverviewPresenter {
       }
 
       public void accept(IMotivation motivation) {
-        if (motivation.getDescription().getText() != null) {
+        if (!motivation.getDescription().isEmpty()) {
           value[0] = "Overview.Creation.Concept.Motivation.Selected"; //$NON-NLS-1$
         }
       }
