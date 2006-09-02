@@ -137,7 +137,7 @@ public class CharacterStatistics implements ICharacterStatistics {
       }
 
       public void visitSecondEdition(IExaltedEdition visitedEdition) {
-        willpowerConcept[0] = new Motivation();
+        willpowerConcept[0] = new Motivation(experiencePoints);
       }
     });
     CharacterConcept characterConcept = new CharacterConcept(willpowerConcept[0]);

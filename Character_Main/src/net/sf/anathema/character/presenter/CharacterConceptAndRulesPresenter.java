@@ -3,6 +3,7 @@ package net.sf.anathema.character.presenter;
 import java.awt.Component;
 
 import javax.swing.DefaultListCellRenderer;
+import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.text.JTextComponent;
 
@@ -16,6 +17,7 @@ import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.ITypedDescription;
+import net.sf.anathema.character.model.concept.IEditMotivationListener;
 import net.sf.anathema.character.model.concept.IMotivation;
 import net.sf.anathema.character.model.concept.INature;
 import net.sf.anathema.character.model.concept.INatureType;
@@ -75,27 +77,53 @@ public class CharacterConceptAndRulesPresenter {
     view.setEnabled(!statistics.isExperienced());
   }
 
-  private void initMotivationPresentation(IMotivation motivation) {
-    initTextualDescriptionPresentation(motivation.getDescription(), "Label.Motivation"); //$NON-NLS-1$
+  private void initMotivationPresentation(final IMotivation motivation) {
+    final ITextView textView = initTextualDescriptionPresentation(motivation.getDescription(), "Label.Motivation"); //$NON-NLS-1$
     CharacterUI characterUI = new CharacterUI(resources);
-    SmartAction beginEditAction = new SmartAction(characterUI.getEditIcon()) {
+    final SmartAction beginEditAction = new SmartAction(characterUI.getEditIcon()) {
       @Override
       protected void execute(Component parentComponent) {
-        // TODO Auto-generated method stub
+        motivation.beginEdit();
       }
     };
-    SmartAction endEditAction = new SmartAction(characterUI.getFinalizeIcon()) {
+    JButton switchButton = new JButton(beginEditAction);
+    final SmartAction endEditAction = new SmartAction(characterUI.getFinalizeIcon()) {
       @Override
       protected void execute(Component parentComponent) {
-        // TODO Auto-generated method stub
+        motivation.endEdit();
       }
     };
-    SmartAction endEditXPAction = new SmartAction(characterUI.getFinalizeXPIcon()) {
+    final SmartAction endEditXPAction = new SmartAction(characterUI.getFinalizeXPIcon()) {
       @Override
       protected void execute(Component parentComponent) {
-        // TODO Auto-generated method stub
+        motivation.endEditXPSpending();
       }
     };
+    beginEditAction.setEnabled(false);
+    endEditAction.setEnabled(false);
+    endEditXPAction.setEnabled(false);
+    motivation.addEditingListener(new IEditMotivationListener() {
+      public void editBegun() {
+        textView.setEnabled(true);
+        beginEditAction.setEnabled(false);
+        endEditAction.setEnabled(true);
+        endEditXPAction.setEnabled(true);
+      }
+
+      public void editEnded() {
+        textView.setEnabled(false);
+        beginEditAction.setEnabled(true);
+        endEditAction.setEnabled(false);
+        endEditXPAction.setEnabled(false);
+      }
+    });
+
+    statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
+      @Override
+      public void experiencedChanged(boolean experienced) {
+        beginEditAction.setEnabled(experienced);
+      }
+    });
     view.addAction(beginEditAction, 1);
     view.addAction(endEditAction, 1);
     view.addAction(endEditXPAction, 1);
@@ -105,7 +133,7 @@ public class CharacterConceptAndRulesPresenter {
     initTextualDescriptionPresentation(statistics.getCharacterConcept().getConcept(), "Label.Concept"); //$NON-NLS-1$
   }
 
-  private void initTextualDescriptionPresentation(final ITextualDescription description, String resourceKey) {
+  private ITextView initTextualDescriptionPresentation(final ITextualDescription description, String resourceKey) {
     final ITextView textView = view.addLabelTextView(resources.getString(resourceKey));
     textView.addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
@@ -118,6 +146,7 @@ public class CharacterConceptAndRulesPresenter {
       }
     });
     textView.setText(description.getText());
+    return textView;
   }
 
   private void initGui() {
