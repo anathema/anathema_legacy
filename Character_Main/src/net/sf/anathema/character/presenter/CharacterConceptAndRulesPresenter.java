@@ -77,12 +77,28 @@ public class CharacterConceptAndRulesPresenter {
 
   private void initMotivationPresentation(IMotivation motivation) {
     initTextualDescriptionPresentation(motivation.getDescription(), "Label.Motivation"); //$NON-NLS-1$
-    view.addAction(new SmartAction(new CharacterUI(resources).getEditIcon()) {
+    CharacterUI characterUI = new CharacterUI(resources);
+    SmartAction beginEditAction = new SmartAction(characterUI.getEditIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         // TODO Auto-generated method stub
       }
-    }, 1);
+    };
+    SmartAction endEditAction = new SmartAction(characterUI.getFinalizeIcon()) {
+      @Override
+      protected void execute(Component parentComponent) {
+        // TODO Auto-generated method stub
+      }
+    };
+    SmartAction endEditXPAction = new SmartAction(characterUI.getFinalizeXPIcon()) {
+      @Override
+      protected void execute(Component parentComponent) {
+        // TODO Auto-generated method stub
+      }
+    };
+    view.addAction(beginEditAction, 1);
+    view.addAction(endEditAction, 1);
+    view.addAction(endEditXPAction, 1);
   }
 
   private void initConceptPresentation() {

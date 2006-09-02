@@ -38,6 +38,10 @@ public class CharacterUI extends AbstractUI {
   public Icon getFinalizeIcon() {
     return getIcon("ButtonCheck16.png"); //$NON-NLS-1$
   }
+  
+  public Icon getFinalizeXPIcon() {
+    return getIcon("ButtonCheckXP16.png"); //$NON-NLS-1$
+  }
 
   public Icon getSmallTypeIcon(CharacterType characterType) {
     return getIcon(characterType.getId() + "Icon16.png"); //$NON-NLS-1$
