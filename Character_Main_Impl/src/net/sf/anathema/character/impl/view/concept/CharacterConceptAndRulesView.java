@@ -10,6 +10,7 @@ import javax.swing.ListCellRenderer;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.JTextComponent;
 
+import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
@@ -60,9 +61,9 @@ public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConc
   public ITextView addLabelTextView(String labelText) {
     LineTextView lineTextView = new LineTextView(45);
     lineTextView.getTextComponent().setDisabledTextColor(Color.DARK_GRAY);
-    LabelTextView conceptView = new LabelTextView(labelText, lineTextView);
-    conceptView.addTo(characterConceptPanel);
-    return conceptView;
+    LabelTextView labelView = new LabelTextView(labelText, lineTextView);
+    labelView.addTo(characterConceptPanel, false);
+    return labelView;
   }
 
   public void addRulesLabel(final String labelText) {
@@ -96,5 +97,9 @@ public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConc
       }
     }
     ExperienceUtilities.setLabelColor(container, enabled);
+  }
+
+  public void addAction(SmartAction action, int row) {
+    characterConceptPanel.addEditAction(action, row);
   }
 }

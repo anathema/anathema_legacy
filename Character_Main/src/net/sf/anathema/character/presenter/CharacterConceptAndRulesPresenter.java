@@ -6,11 +6,13 @@ import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
 import javax.swing.text.JTextComponent;
 
+import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.ui.IObjectUi;
 import net.disy.commons.swing.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
+import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.ITypedDescription;
@@ -75,6 +77,12 @@ public class CharacterConceptAndRulesPresenter {
 
   private void initMotivationPresentation(IMotivation motivation) {
     initTextualDescriptionPresentation(motivation.getDescription(), "Label.Motivation"); //$NON-NLS-1$
+    view.addAction(new SmartAction(new CharacterUI(resources).getEditIcon()) {
+      @Override
+      protected void execute(Component parentComponent) {
+        // TODO Auto-generated method stub
+      }
+    }, 1);
   }
 
   private void initConceptPresentation() {

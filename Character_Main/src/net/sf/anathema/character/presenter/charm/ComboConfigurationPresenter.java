@@ -154,7 +154,7 @@ public class ComboConfigurationPresenter implements IMagicSubPresenter {
       }
     };
     SmartAction editAction = new SmartAction(
-        resources.getString("CardView.CharmConfiguration.ComboCreation.EditLabel"), new CharacterUI(resources).getEditComboIcon()) {//$NON-NLS-1$
+        resources.getString("CardView.CharmConfiguration.ComboCreation.EditLabel"), new CharacterUI(resources).getEditIcon()) {//$NON-NLS-1$
       @Override
       protected void execute(Component parentComponent) {
         comboConfiguration.beginComboEdit(combo);
@@ -169,10 +169,8 @@ public class ComboConfigurationPresenter implements IMagicSubPresenter {
   }
 
   private String convertToHtml(ICombo combo) {
-    return convertToHtml(combo.getDescription().getText(), combo.getCharms());
-  }
-
-  private String convertToHtml(String description, ICharm[] charms) {
+    String text = combo.getDescription().getText();
+    ICharm[] charms = combo.getCharms();
     String charmList = "<b>"; //$NON-NLS-1$
     Iterator<ICharm> charmIterator = Arrays.asList(charms).iterator();
     if (charmIterator.hasNext()) {
@@ -182,10 +180,10 @@ public class ComboConfigurationPresenter implements IMagicSubPresenter {
       charmList = charmList.concat(", " + resources.getString(charmIterator.next().getId())); //$NON-NLS-1$
     }
     charmList += "</b>"; //$NON-NLS-1$
-    if (StringUtilities.isNullOrEmpty(description)) {
+    if (StringUtilities.isNullOrEmpty(text)) {
       return wrapHtml(charmList);
     }
-    String converted = description.replace("\n", "<br>"); //$NON-NLS-1$ //$NON-NLS-2$
+    String converted = text.replace("\n", "<br>"); //$NON-NLS-1$ //$NON-NLS-2$
     return wrapHtml(charmList + " - <i>" + converted + "</i>"); //$NON-NLS-1$//$NON-NLS-2$
   }
 

@@ -27,7 +27,7 @@ public class CharacterUI extends AbstractUI {
     return getIcon("ButtonRandomNameB16.png"); //$NON-NLS-1$
   }
 
-  public Icon getEditComboIcon() {
+  public Icon getEditIcon() {
     return getIcon("ButtonEdit16.png"); //$NON-NLS-1$
   }
 
