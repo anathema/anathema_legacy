@@ -4,9 +4,13 @@ import java.awt.Image;
 
 import javax.swing.Icon;
 
+import net.sf.anathema.framework.resources.ImageProvider;
+import net.sf.anathema.lib.resources.IAnathemaImageProvider;
 import net.sf.anathema.lib.resources.IResources;
 
 public class DemoResources implements IResources {
+
+  private final IAnathemaImageProvider imageProvider = new ImageProvider("icons"); //$NON-NLS-1$
 
   public boolean supportsKey(String key) {
     return true;
@@ -17,10 +21,10 @@ public class DemoResources implements IResources {
   }
 
   public Image getImage(Class< ? > requestor, String relativePath) {
-    return null;
+    return imageProvider.getImage(requestor, relativePath);
   }
 
   public Icon getImageIcon(Class< ? > requestor, String relativePath) {
-    return null;
+    return imageProvider.getImageIcon(requestor, relativePath);
   }
 }
