@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.item;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
@@ -35,7 +36,12 @@ public class EquipmentTemplateListPresenter implements IPresenter {
 
   public void initPresentation() {
     view.setTemplateListHeader("Available Templates");
-    view.getTemplateListView().setObjects(model.getDatabase().getAllAvailableTemplateIds());
+    model.getDatabase().addAvailableTemplateChangeListener(new IChangeListener() {
+      public void changeOccured() {
+        updateAvailableTemplates();
+      }
+    });
+    updateAvailableTemplates();
     view.getTemplateListView().addSelectionVetor(new DiscardChangesVetor(new ICondition() {
       public boolean isFullfilled() {
         final IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
@@ -43,5 +49,9 @@ public class EquipmentTemplateListPresenter implements IPresenter {
       }
     }, view.getTemplateListView().getContent()));
     view.getTemplateListView().addObjectSelectionChangedListener(new EquipmentTemplateLoadListener());
+  }
+
+  private void updateAvailableTemplates() {
+    view.getTemplateListView().setObjects(model.getDatabase().getAllAvailableTemplateIds());
   }
 }

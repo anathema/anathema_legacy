@@ -9,11 +9,15 @@ import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.demo.character.equipment.DemoCollectionFactory;
+import net.sf.anathema.lib.control.change.ChangeControl;
+import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.exception.PersistenceException;
 
 public class DemoEquipmentDatabase implements IEquipmentDatabase {
 
   private Map<String, IEquipmentTemplate> templatesById = new HashMap<String, IEquipmentTemplate>();
   private ICollectionFactory collectionFactory = new DemoCollectionFactory();
+  private final ChangeControl availableTemplatesChangeControl = new ChangeControl();
 
   public DemoEquipmentDatabase() {
     addTemplate(new NaturalWeaponTemplate());
@@ -27,6 +31,7 @@ public class DemoEquipmentDatabase implements IEquipmentDatabase {
 
   private void addTemplate(IEquipmentTemplate template) {
     templatesById.put(template.getName(), template);
+    availableTemplatesChangeControl.fireChangedEvent();
   }
 
   public String[] getAllAvailableTemplateIds() {
@@ -40,5 +45,23 @@ public class DemoEquipmentDatabase implements IEquipmentDatabase {
 
   public ICollectionFactory getCollectionFactory() {
     return collectionFactory;
+  }
+
+  public void saveTemplate(IEquipmentTemplate template) throws PersistenceException {
+    addTemplate(template);
+  }
+
+  public void addAvailableTemplateChangeListener(IChangeListener listener) {
+    availableTemplatesChangeControl.addChangeListener(listener);
+  }
+
+  public void deleteTemplate(String editTemplateId) {
+    templatesById.remove(editTemplateId);
+    availableTemplatesChangeControl.fireChangedEvent();
+  }
+
+  public void updateTemplate(String editTemplateId, IEquipmentTemplate saveTemplate) {
+    templatesById.remove(editTemplateId);
+    addTemplate(saveTemplate);
   }
 }

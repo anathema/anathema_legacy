@@ -11,7 +11,7 @@ import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 
 public class EquipmentDatabaseManagement implements IEquipmentDatabaseManagement, IItemData {
 
-  private final IEquipmentTemplateEditModel templateEditModel;
+  private final EquipmentTemplateEditModel templateEditModel;
   private final IEquipmentDatabase database;
   private final IEquipmentStatsCreationFactory statsFactory;
 

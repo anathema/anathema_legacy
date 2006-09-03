@@ -1,5 +1,8 @@
 package net.sf.anathema.character.equipment.impl.item.view;
 
+import java.awt.GridLayout;
+
+import javax.swing.Action;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -9,6 +12,7 @@ import javax.swing.ListCellRenderer;
 import net.disy.commons.swing.border.TitledPanel;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.toolbar.ToolBarUtilities;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
@@ -28,17 +32,25 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
   private ListObjectSelectionView<String> templateListView = new ListObjectSelectionView<String>(String.class);
   private SingleSelectionActionAddableListView<IEquipmentStats> statsListView;
   private JPanel ruleSetPanel = new JPanel(new GridDialogLayout(2, false));
+  private JPanel editTemplateButtonPanel = new JPanel(new GridLayout(1, 0));
 
   public JComponent getComponent() {
     if (contentPanel == null) {
       contentPanel = new JPanel(new GridDialogLayout(2, false));
       contentPanel.add(templateListHeaderLabel, GridDialogLayoutData.FILL_HORIZONTAL);
-      contentPanel.add(editTemplateHeaderLabel, GridDialogLayoutData.FILL_HORIZONTAL);
+      contentPanel.add(createEditTemplateHeader(), GridDialogLayoutData.FILL_HORIZONTAL);
       contentPanel.add(new JScrollPane(templateListView.getContent()), GridDialogLayoutData.FILL_BOTH);
       contentPanel.add(editTemplateView, GridDialogLayoutData.FILL_BOTH);
       editTemplateView.add(ceateStatsPanel(), GridDialogLayoutData.FILL_BOTH);
     }
     return contentPanel;
+  }
+
+  private JPanel createEditTemplateHeader() {
+    JPanel headerPanel = new JPanel(new GridDialogLayout(2, false));
+    headerPanel.add(editTemplateHeaderLabel);
+    headerPanel.add(editTemplateButtonPanel);
+    return headerPanel;
   }
 
   public IActionAddableListView<IEquipmentStats> initStatsListView(ListCellRenderer renderer) {
@@ -74,5 +86,9 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
 
   public IListObjectSelectionView<String> getTemplateListView() {
     return templateListView;
+  }
+  
+  public void addEditTemplateAction(Action action) {
+    editTemplateButtonPanel.add(ToolBarUtilities.createToolBarButton(action));
   }
 }

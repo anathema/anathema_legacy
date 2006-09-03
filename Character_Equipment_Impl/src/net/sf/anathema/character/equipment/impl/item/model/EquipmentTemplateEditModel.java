@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.disy.commons.core.util.Ensure;
 import net.disy.commons.core.util.ObjectUtilities;
+import net.sf.anathema.character.equipment.impl.character.model.EquipmentTemplate;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
@@ -24,6 +25,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   private IEquipmentTemplate editedTemplate;
   private final MultiEntryMap<IExaltedRuleSet, IEquipmentStats> statsByRuleSet = new MultiEntryMap<IExaltedRuleSet, IEquipmentStats>();
   private final ChangeControl statsChangeControl = new ChangeControl();
+  private String editTemplateId;
 
   public EquipmentTemplateEditModel(IEquipmentDatabase database) {
     this.database = database;
@@ -35,6 +37,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
 
   public void setEditTemplate(String templateId) {
     Ensure.ensureArgumentNotNull(templateId);
+    this.editTemplateId = templateId;
     editedTemplate = database.loadTemplate(templateId);
     // TODO Fehlerbehandlung bei Template nicht gefunden
     getDescription().getName().setText(editedTemplate.getName());
@@ -45,12 +48,17 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     }
     fireStatsChangedEvent();
   }
+  
+  public String getEditTemplateId() {
+    return editTemplateId;
+  }
 
   private void fireStatsChangedEvent() {
     statsChangeControl.fireChangedEvent();
   }
 
   public void setNewTemplate() {
+    editTemplateId = null;
     editedTemplate = null;
     getDescription().getName().setText(null);
     getDescription().getContent().setText(new ITextPart[0]);
@@ -78,5 +86,17 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
 
   public void addStatsChangeListener(IChangeListener changeListener) {
     statsChangeControl.addChangeListener(changeListener);
+  }
+
+  public IEquipmentTemplate createTemplate() {
+    String name = getDescription().getName().getText();
+    String descriptionText = getDescription().getContent().getText();
+    EquipmentTemplate template = new EquipmentTemplate(name, descriptionText, database.getCollectionFactory());
+    for (IExaltedRuleSet ruleSet : statsByRuleSet.keySet()) {
+      for (IEquipmentStats stats : statsByRuleSet.get(ruleSet)) {
+        template.addStats(ruleSet, stats);
+      }
+    }
+    return template;
   }
 }

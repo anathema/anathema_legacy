@@ -26,10 +26,15 @@ public class EquipmentDatabasePresenter implements IPresenter {
 
   public void initPresentation() {
     new EquipmentTemplateListPresenter(resources, model, view).initPresentation();
+    addEditTemplateActions();
     initDescriptionView();
     new EquipmentEditStatsPresenter(resources, model, view).initPresentation();
     view.setTemplateListHeader("Available Templates");
     view.setEditTemplateHeader("Edit Template");
+  }
+
+  private void addEditTemplateActions() {
+    view.addEditTemplateAction(new SaveEquipmentTemplateAction(resources, model));
   }
 
   private void initDescriptionView() {

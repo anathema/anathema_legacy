@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.item.model;
 
+import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
@@ -18,4 +19,8 @@ public interface IEquipmentTemplateEditModel {
   public void setEditTemplate(String templateId);
 
   public void addStatsChangeListener(IChangeListener changeListener);
+
+  public IEquipmentTemplate createTemplate();
+
+  public String getEditTemplateId();
 }

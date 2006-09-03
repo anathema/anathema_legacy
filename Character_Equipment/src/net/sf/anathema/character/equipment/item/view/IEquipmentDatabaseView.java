@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.item.view;
 
+import javax.swing.Action;
 import javax.swing.JComponent;
 import javax.swing.ListCellRenderer;
 
@@ -23,4 +24,6 @@ public interface IEquipmentDatabaseView extends IView {
   public void setEditTemplateHeader(String headerText);
 
   public void setTemplateListHeader(String headerText);
+
+  public void addEditTemplateAction(Action action);
 }
