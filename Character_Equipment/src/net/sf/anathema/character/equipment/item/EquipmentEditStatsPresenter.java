@@ -1,14 +1,10 @@
 package net.sf.anathema.character.equipment.item;
 
-import java.awt.Component;
-
-import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.IPresenter;
@@ -53,19 +49,17 @@ public class EquipmentEditStatsPresenter implements IPresenter {
         updateStatListContent(ruleSetView.getSelectedObject(), statsListView);
       }
     });
-    initButtons(statsListView);
+    initButtons(statsListView, ruleSetView);
   }
 
-  private void initButtons(IActionAddableListView<IEquipmentStats> statsListView) {
-    SmartAction addAction = new SmartAction(new BasicUi(resources).getAddIcon()) {
-      @Override
-      protected void execute(Component parentComponent) {
-        // TODO Auto-generated method stub
-
-      }
-    };
-    addAction.setToolTipText("&Add new stats...");
-    statsListView.addAction(addAction);
+  private void initButtons(
+      IActionAddableListView<IEquipmentStats> statsListView,
+      IObjectSelectionView<IExaltedRuleSet> ruleSetView) {
+    statsListView.addAction(new AddNewStatsAction(
+        resources,
+        model.getTemplateEditModel(),
+        ruleSetView,
+        model.getStatsCreationFactory()));
   }
 
   private IObjectSelectionView<IExaltedRuleSet> initRuleSetPresentation(

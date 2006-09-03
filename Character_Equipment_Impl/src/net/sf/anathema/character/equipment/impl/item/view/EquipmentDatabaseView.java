@@ -19,7 +19,7 @@ import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 
-public class EquimentDatabaseView implements IEquipmentDatabaseView {
+public class EquipmentDatabaseView implements IEquipmentDatabaseView {
 
   private JPanel contentPanel;
   private JPanel editTemplateView = new JPanel(new GridDialogLayout(1, false));

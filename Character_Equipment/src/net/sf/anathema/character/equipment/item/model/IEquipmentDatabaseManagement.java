@@ -10,4 +10,6 @@ public interface IEquipmentDatabaseManagement extends IItemData {
   public IEquipmentDatabase getDatabase();
 
   public IExaltedRuleSet[] getSupportedExaltedRuleSets();
+
+  public IEquipmentStatsCreationFactory getStatsCreationFactory();
 }
