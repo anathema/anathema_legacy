@@ -21,6 +21,7 @@ public class MusicDatabaseConnectionManager {
     Db4o.configure().objectClass(DbLibrary.class).cascadeOnDelete(true);
     Db4o.configure().objectClass(Md5Checksum.class).cascadeOnUpdate(true);
     Db4o.configure().objectClass(Md5Checksum.class).cascadeOnDelete(true);
+    Db4o.configure().allowVersionUpdates(true);
     Db4o.configure().automaticShutDown(true);
     connection = Db4o.openFile(dbFile.getAbsolutePath());
     return connection;

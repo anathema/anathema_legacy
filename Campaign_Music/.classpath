@@ -6,6 +6,6 @@
 	<classpathentry exported="true" sourcepath="/Thirdparty/Multimedia/mp3spi1.9.2-src.zip" kind="lib" path="/Thirdparty/Multimedia/mp3spi1.9.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="/Thirdparty/Multimedia/tritonus_share.jar"/>
 	<classpathentry kind="src" path="resources"/>
-	<classpathentry exported="true" sourcepath="/Thirdparty/Database/db4o-5.2-src.zip" kind="lib" path="/Thirdparty/Database/db4o-5.2-java5.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Thirdparty/Database/db4o-5.5-java5.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

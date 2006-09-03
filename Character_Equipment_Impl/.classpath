@@ -6,5 +6,6 @@
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Character_Reporting"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Library"/>
+	<classpathentry sourcepath="/Thirdparty/Database/db4o-5.5-src.zip" kind="lib" path="/Thirdparty/Database/db4o-5.5-java5.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

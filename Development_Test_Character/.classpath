@@ -50,5 +50,6 @@
 	<classpathentry sourcepath="/Thirdparty/Swing/l2fprod-common-0.2dev-src.zip" kind="lib" path="/Thirdparty/Swing/l2fprod-common-tasks.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Craft"/>
+	<classpathentry sourcepath="/Thirdparty/Database/db4o-5.5-src.zip" kind="lib" path="/Thirdparty/Database/db4o-5.5-java5.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
