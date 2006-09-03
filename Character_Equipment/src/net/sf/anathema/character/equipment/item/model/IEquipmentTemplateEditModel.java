@@ -23,4 +23,6 @@ public interface IEquipmentTemplateEditModel {
   public IEquipmentTemplate createTemplate();
 
   public String getEditTemplateId();
+
+  public void setNewTemplate();
 }

@@ -8,7 +8,6 @@ import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManageme
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.framework.message.MessageUtilities;
-import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -28,7 +27,7 @@ public final class SaveEquipmentTemplateAction extends SmartAction {
   };
 
   public SaveEquipmentTemplateAction(IResources resources, IEquipmentDatabaseManagement model) {
-    super(new BasicUi(resources).getAddIcon());
+    super("save");
     this.model = model;
     model.getTemplateEditModel().getDescription().getName().addTextChangedListener(stringChangeListener);
     model.getTemplateEditModel().getDescription().getContent().addTextChangedListener(stringChangeListener);

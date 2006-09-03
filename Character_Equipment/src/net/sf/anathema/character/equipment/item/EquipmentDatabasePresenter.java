@@ -34,6 +34,7 @@ public class EquipmentDatabasePresenter implements IPresenter {
   }
 
   private void addEditTemplateActions() {
+    view.addEditTemplateAction(new NewEquipmentTemplateAction(resources, model));
     view.addEditTemplateAction(new SaveEquipmentTemplateAction(resources, model));
   }
 
