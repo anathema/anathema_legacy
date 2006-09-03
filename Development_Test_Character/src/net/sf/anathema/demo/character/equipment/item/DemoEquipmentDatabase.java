@@ -5,12 +5,15 @@ import java.util.Map;
 import java.util.Set;
 
 import net.sf.anathema.character.equipment.impl.character.model.natural.NaturalWeaponTemplate;
+import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
+import net.sf.anathema.demo.character.equipment.DemoCollectionFactory;
 
 public class DemoEquipmentDatabase implements IEquipmentDatabase {
 
   private Map<String, IEquipmentTemplate> templatesById = new HashMap<String, IEquipmentTemplate>();
+  private ICollectionFactory collectionFactory = new DemoCollectionFactory();
 
   public DemoEquipmentDatabase() {
     addTemplate(new NaturalWeaponTemplate());
@@ -33,5 +36,9 @@ public class DemoEquipmentDatabase implements IEquipmentDatabase {
 
   public IEquipmentTemplate loadTemplate(String templateId) {
     return templatesById.get(templateId);
+  }
+
+  public ICollectionFactory getCollectionFactory() {
+    return collectionFactory;
   }
 }

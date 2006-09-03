@@ -7,4 +7,6 @@ public interface IEquipmentDatabase {
   public String[] getAllAvailableTemplateIds();
 
   public IEquipmentTemplate loadTemplate(String templateId);
+
+  public ICollectionFactory getCollectionFactory();
 }

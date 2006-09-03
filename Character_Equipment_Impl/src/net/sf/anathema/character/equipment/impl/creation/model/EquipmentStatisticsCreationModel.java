@@ -43,16 +43,20 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
   public IWeaponTagsModel getWeaponTagsModel() {
     return weaponTagsModel;
   }
-  
+
   public IRangedCombatStatisticsModel getRangedWeaponStatisticsModel() {
     return rangedWeaponStatisticsModel;
   }
-  
+
   public IShieldStatisticsModel getShieldStatisticsModel() {
     return shieldStatisticsModel;
   }
 
   public IArmourStatisticsModel getArmourStatisticsModel() {
     return armourStatisticsModel;
+  }
+
+  public EquipmentStatisticsType getEquipmentType() {
+    return statisticsType;
   }
 }

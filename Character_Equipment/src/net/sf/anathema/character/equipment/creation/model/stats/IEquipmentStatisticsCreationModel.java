@@ -8,11 +8,11 @@ public interface IEquipmentStatisticsCreationModel {
   public void setEquipmentType(EquipmentStatisticsType type);
 
   public ICloseCombatStatsticsModel getCloseCombatStatsticsModel();
-  
+
   public IRangedCombatStatisticsModel getRangedWeaponStatisticsModel();
-  
+
   public IShieldStatisticsModel getShieldStatisticsModel();
-  
+
   public IArmourStatisticsModel getArmourStatisticsModel();
 
   public void addEquipmentTypeChangeListener(IChangeListener changeListener);
@@ -20,4 +20,6 @@ public interface IEquipmentStatisticsCreationModel {
   public boolean isEquipmentTypeSelected(EquipmentStatisticsType type);
 
   public IWeaponTagsModel getWeaponTagsModel();
+
+  public EquipmentStatisticsType getEquipmentType();
 }
