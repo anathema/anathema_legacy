@@ -1,5 +1,7 @@
 package net.sf.anathema.character.equipment.impl.item.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import net.disy.commons.core.util.Ensure;
@@ -48,7 +50,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     }
     fireStatsChangedEvent();
   }
-  
+
   public String getEditTemplateId() {
     return editTemplateId;
   }
@@ -67,11 +69,34 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   }
 
   public boolean isDirty() {
+    List<IEquipmentStats> currentStats = getAllCurrentStats();
+    List<IEquipmentStats> previousStats = getAllPreviousStats();
+    if (currentStats.size() != previousStats.size() || !currentStats.containsAll(previousStats)) {
+      return true;
+    }
     if (editedTemplate == null) {
       return !getDescription().getName().isEmpty() || !getDescription().getContent().isEmpty();
     }
     return !ObjectUtilities.equals(editedTemplate.getName(), getDescription().getName().getText())
         || !ObjectUtilities.equals(editedTemplate.getDescription(), getDescription().getContent().getText());
+  }
+
+  private List<IEquipmentStats> getAllPreviousStats() {
+    List<IEquipmentStats> allStats = new ArrayList<IEquipmentStats>();
+    if (editedTemplate != null) {
+      for (ExaltedRuleSet ruleSet : ExaltedRuleSet.values()) {
+        allStats.addAll(Arrays.asList(editedTemplate.getStats(ruleSet)));
+      }
+    }
+    return allStats;
+  }
+
+  private List<IEquipmentStats> getAllCurrentStats() {
+    List<IEquipmentStats> allStats = new ArrayList<IEquipmentStats>();
+    for (IExaltedRuleSet ruleSet : statsByRuleSet.keySet()) {
+      allStats.addAll(statsByRuleSet.get(ruleSet));
+    }
+    return allStats;
   }
 
   public void addStatistics(IExaltedRuleSet ruleSet, IEquipmentStats stats) {
