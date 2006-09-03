@@ -29,12 +29,12 @@ public final class LibrarySelectionListener implements ListSelectionListener {
   private void updateTracks(ILibrary selectedLibrary) {
     IActionAddableListView<IMp3Track> trackListView = view.getTrackListView();
     if (selectedLibrary == null) {
-      trackListView.setListItems(new IMp3Track[0]);
+      trackListView.setObjects(new IMp3Track[0]);
       trackListView.setListTitle(resources.getString("Music.Labels.LibraryTrackView.NoContentTitle")); //$NON-NLS-1$
     }
     else {
       IMp3Track[] tracks = searchControl.getTracks(selectedLibrary.getName());
-      trackListView.setListItems(tracks);
+      trackListView.setObjects(tracks);
       trackListView.setListTitle(resources.getString("Music.Labels.LibraryTrackView.ContentTitleSnippet") + " \"" + selectedLibrary.getName() + "\":"); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
     }
   }

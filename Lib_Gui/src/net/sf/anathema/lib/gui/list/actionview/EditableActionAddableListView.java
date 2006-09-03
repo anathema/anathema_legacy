@@ -29,7 +29,7 @@ public class EditableActionAddableListView<V> extends AbstractActionAddableListV
     return table.getContent();
   }
 
-  public void setListItems(V[] items) {
+  public void setObjects(V[] items) {
     for (int index = 0; index < tableModel.getRowCount(); index++) {
       tableModel.removeRow(index);
     }

@@ -88,7 +88,7 @@ public class AddMusicFolderAction extends SmartAction {
               });
               String selectedLibraryName = ((ILibrary) view.getSelectedLibrary()).getName();
               model.addTracks(selectedLibraryName, foundTracks);
-              view.getTrackListView().setListItems(
+              view.getTrackListView().setObjects(
                   searchControl.getTracks(((ILibrary) view.getSelectedLibrary()).getName()));
               monitor.done();
             }

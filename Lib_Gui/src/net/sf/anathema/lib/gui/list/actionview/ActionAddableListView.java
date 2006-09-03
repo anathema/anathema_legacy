@@ -16,7 +16,7 @@ public class ActionAddableListView<T> extends AbstractActionAddableListView<T> i
     list = new SmartJList<T>(contentClass);
   }
 
-  public void setListItems(T[] items) {
+  public void setObjects(T[] items) {
     list.setObjects(items);
   }
 

@@ -21,10 +21,10 @@ public abstract class AbstractActionAddableListView<T> implements IActionAddable
       LayoutUtilities.getComponentSpacing()));
   private JPanel content;
 
-  private final JLabel titleLabel = new JLabel();
+  private final JLabel titleLabel;
 
   public AbstractActionAddableListView(String title) {
-    titleLabel.setText(title);
+    titleLabel = title != null ? new JLabel(title) : null;
   }
 
   public void addAction(Action action) {
@@ -33,7 +33,9 @@ public abstract class AbstractActionAddableListView<T> implements IActionAddable
 
   private JPanel createContent() {
     JPanel panel = new JPanel(new GridDialogLayout(1, false));
-    panel.add(titleLabel);
+    if (titleLabel != null) {
+      panel.add(titleLabel);
+    }
     panel.add(
         isScrollable() ? new JScrollPane(getDisplayComponent()) : getDisplayComponent(),
         GridDialogLayoutData.FILL_BOTH);

@@ -57,7 +57,7 @@ public class MusicSearchPresenter {
   private void initListening() {
     searchControl.addSearchResultChangedListener(new IChangeListener() {
       public void changeOccured() {
-        controlView.getTrackListView().setListItems(searchControl.getSearchResult());
+        controlView.getTrackListView().setObjects(searchControl.getSearchResult());
         controlView.getTrackListView().setListTitle(
             resources.getString("Music.Labels.LibraryTrackView.SearchResultsTitle")); //$NON-NLS-1$
       }

@@ -12,6 +12,8 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
+import net.sf.anathema.lib.gui.list.actionview.SingleSelectionActionAddableListView;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
@@ -24,8 +26,7 @@ public class EquimentDatabaseView implements IEquipmentDatabaseView {
   private JLabel templateListHeaderLabel = new JLabel();
   private JLabel editTemplateHeaderLabel = new JLabel();
   private ListObjectSelectionView<String> templateListView = new ListObjectSelectionView<String>(String.class);
-  private ListObjectSelectionView<IEquipmentStats> statsListView = new ListObjectSelectionView<IEquipmentStats>(
-      IEquipmentStats.class);
+  private SingleSelectionActionAddableListView<IEquipmentStats> statsListView;
   private JPanel ruleSetPanel = new JPanel(new GridDialogLayout(2, false));
 
   public JComponent getComponent() {
@@ -40,7 +41,9 @@ public class EquimentDatabaseView implements IEquipmentDatabaseView {
     return contentPanel;
   }
 
-  public IListObjectSelectionView<IEquipmentStats> getStatsListView() {
+  public IActionAddableListView<IEquipmentStats> initStatsListView(ListCellRenderer renderer) {
+    statsListView = new SingleSelectionActionAddableListView<IEquipmentStats>(null, IEquipmentStats.class);
+    statsListView.setListCellRenderer(renderer);
     return statsListView;
   }
 

@@ -44,7 +44,7 @@ public class LibraryControlPresenter {
     controlView.addLibraryListSelectionListener(new LibrarySelectionListener(controlView, searchControl, resources));
     libraryModel.addLibraryChangedListener(new ILibraryChangedListener() {
       public void librariesChanged(ILibrary[] allLibraries, ILibrary selectedLibrary) {
-        controlView.getLibraryView().setListItems(allLibraries);
+        controlView.getLibraryView().setObjects(allLibraries);
       }
     });
     selectionModel.addCurrentSelectionChangeListener(new IChangeListener() {
@@ -70,7 +70,7 @@ public class LibraryControlPresenter {
     libraryView.addAction(new DeleteLibraryAction(resources, controlView, libraryModel));
     libraryView.addAction(new AddMusicFolderAction(resources, searchControl, libraryModel, controlView));
     libraryView.addAction(new AddMusicFileAction(resources, searchControl, libraryModel, controlView));
-    libraryView.setListItems(libraryModel.getAllLibraries());
+    libraryView.setObjects(libraryModel.getAllLibraries());
   }
 
   private void refreshTrackView() {

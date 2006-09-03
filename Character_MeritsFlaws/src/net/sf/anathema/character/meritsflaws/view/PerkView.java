@@ -190,7 +190,7 @@ public class PerkView implements IPerkView {
   }
 
   public void setSelectedPerks(IQualitySelection<IPerk>[] selectedPerks) {
-    selectedPerksView.setListItems(selectedPerks);
+    selectedPerksView.setObjects(selectedPerks);
   }
 
   public void setPerkDetails(IPerkDetailsView view) {

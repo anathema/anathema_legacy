@@ -6,6 +6,7 @@ import javax.swing.ListCellRenderer;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 
@@ -13,7 +14,7 @@ public interface IEquipmentDatabaseView extends IView {
 
   public void fillDescriptionPanel(JComponent content);
 
-  public IListObjectSelectionView<IEquipmentStats> getStatsListView();
+  public IActionAddableListView<IEquipmentStats> initStatsListView(ListCellRenderer renderer);
 
   public IListObjectSelectionView<String> getTemplateListView();
 

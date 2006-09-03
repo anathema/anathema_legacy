@@ -75,10 +75,10 @@ public class MusicSelectionPresenter {
   }
 
   private void updateTrackList() {
-    selectionView.getTrackListView().setListItems(selectionModel.getCurrentSelection().getContent());
+    selectionView.getTrackListView().setObjects(selectionModel.getCurrentSelection().getContent());
   }
 
   private void updateSelectionList() {
-    selectionView.getSelectionListView().setListItems(selectionModel.getPersistedSelections());
+    selectionView.getSelectionListView().setObjects(selectionModel.getPersistedSelections());
   }
 }
