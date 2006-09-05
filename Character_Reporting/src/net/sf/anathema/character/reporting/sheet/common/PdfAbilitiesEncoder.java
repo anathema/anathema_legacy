@@ -1,8 +1,8 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
@@ -82,7 +82,16 @@ public class PdfAbilitiesEncoder extends AbstractPdfEncoder {
       }
       traits = nonZeroCrafts.toArray(new INamedGenericTrait[nonZeroCrafts.size()]);
     }
-    return drawNamedTraitSection(directContent, title, traits, position, width, essenceMax);
+    IValuedTraitReference[] crafts = getTraitReferences(traits, AbilityType.Craft);
+    return drawNamedTraitSection(directContent, title, crafts, position, width, essenceMax);
+  }
+
+  private IValuedTraitReference[] getTraitReferences(INamedGenericTrait[] traits, ITraitType type) {
+    List<IValuedTraitReference> references = new ArrayList<IValuedTraitReference>();
+    for (INamedGenericTrait trait : traits) {
+      references.add(new NamedGenericTraitReference(trait, type));
+    }
+    return references.toArray(new IValuedTraitReference[references.size()]);
   }
 
   private int encodeSpecialties(
@@ -91,29 +100,29 @@ public class PdfAbilitiesEncoder extends AbstractPdfEncoder {
       Position position,
       float width) {
     String title = resources.getString("Sheet.AbilitySubHeader.Specialties"); //$NON-NLS-1$
-    List<INamedGenericTrait> allTraits = new ArrayList<INamedGenericTrait>();
+    List<IValuedTraitReference> references = new ArrayList<IValuedTraitReference>();
     for (IIdentifiedTraitTypeGroup group : character.getAbilityTypeGroups()) {
       for (ITraitType traitType : group.getAllGroupTypes()) {
-        allTraits.addAll(Arrays.asList(character.getSpecialties(traitType)));
+        Collections.addAll(references, getTraitReferences(character.getSpecialties(traitType), traitType));
       }
     }
-    INamedGenericTrait[] specialties = allTraits.toArray(new INamedGenericTrait[allTraits.size()]);
+    IValuedTraitReference[] specialties = references.toArray(new IValuedTraitReference[references.size()]);
     return drawNamedTraitSection(directContent, title, specialties, position, width, 3);
   }
 
   private int drawNamedTraitSection(
       PdfContentByte directContent,
       String title,
-      INamedGenericTrait[] traits,
+      IValuedTraitReference[] traits,
       Position position,
       float width,
       int dotCount) {
     int height = drawSubsectionHeader(directContent, title, position, width);
     TraitInternationalizer internationalizer = new TraitInternationalizer(resources);
-    for (INamedGenericTrait trait : traits) {
-      String name = internationalizer.getSheetName(new NamedGenericTraitReference(trait));
+    for (IValuedTraitReference trait : traits) {
+      String name = internationalizer.getSheetName(trait);
       Position traitPosition = new Position(position.x, position.y - height);
-      int value = trait.getCurrentValue();
+      int value = trait.getValue();
       traitEncoder.encodeWithText(directContent, name, traitPosition, width, value, dotCount);
       height += traitEncoder.getTraitHeight();
     }
