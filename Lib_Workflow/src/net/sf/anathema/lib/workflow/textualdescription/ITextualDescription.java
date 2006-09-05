@@ -14,5 +14,7 @@ public interface ITextualDescription {
 
   public void addTextChangedListener(IObjectValueChangedListener<String> listener);
 
+  public void removeTextChangeListener(IObjectValueChangedListener<String> listener);
+
   public String getText();
 }

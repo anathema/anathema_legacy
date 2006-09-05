@@ -36,6 +36,10 @@ public class SimpleTextualDescription extends AbstractTextualDescription impleme
     textControl.addObjectValueChangeListener(listener);
   }
 
+  public void removeTextChangeListener(IObjectValueChangedListener<String> listener) {
+    textControl.removeObjectValueChangeListener(listener);
+  }
+
   public boolean isEmpty() {
     return StringUtilities.isNullOrEmpty(getText());
   }

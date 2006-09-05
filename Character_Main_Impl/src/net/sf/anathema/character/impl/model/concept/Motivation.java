@@ -1,5 +1,6 @@
 package net.sf.anathema.character.impl.model.concept;
 
+import net.sf.anathema.character.impl.model.ProxyTextualDescription;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
 import net.sf.anathema.character.model.concept.IEditMotivationListener;
@@ -12,12 +13,13 @@ import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescri
 
 public class Motivation implements IMotivation {
 
-  private final ITextualDescription description = new SimpleTextualDescription();
+  private final ProxyTextualDescription description;
   private final IExperiencePointConfiguration experiencePoints;
   private final GenericControl<IEditMotivationListener> control = new GenericControl<IEditMotivationListener>();
 
   public Motivation(IExperiencePointConfiguration experiencePoints) {
     this.experiencePoints = experiencePoints;
+    this.description = new ProxyTextualDescription(new SimpleTextualDescription(), new SimpleTextualDescription());
   }
 
   public ITextualDescription getDescription() {
@@ -29,6 +31,7 @@ public class Motivation implements IMotivation {
   }
 
   public void beginEdit() {
+    description.setCurrentDescription(1);
     control.forAllDo(new IClosure<IEditMotivationListener>() {
       public void execute(IEditMotivationListener input) {
         input.editBegun();
@@ -40,10 +43,13 @@ public class Motivation implements IMotivation {
     IExperiencePointEntry entry = experiencePoints.addEntry();
     entry.getTextualDescription().setText("Changed motivation");
     entry.setExperiencePoints(2);
-    fireEditEnded();
+    endEdit();
   }
 
   public void endEdit() {
+    String text = description.getText();
+    description.setCurrentDescription(0);
+    description.setText(text);
     fireEditEnded();
   }
 

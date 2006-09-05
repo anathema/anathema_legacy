@@ -1,17 +1,20 @@
 package net.sf.anathema.framework.styledtext.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import net.sf.anathema.framework.styledtext.presentation.TextFormat;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.workflow.textualdescription.model.AbstractTextualDescription;
 
 public class StyledTextualDescription extends AbstractTextualDescription implements IStyledTextualDescription {
 
-  private final List<IStyledTextChangeListener> textListeners = new ArrayList<IStyledTextChangeListener>();
+  private final GenericControl<IStyledTextChangeListener> textListeners = new GenericControl<IStyledTextChangeListener>();
   private ITextPart[] textParts = new ITextPart[0];
+  private final Map<IObjectValueChangedListener<String>, IStyledTextChangeListener> listenerMap = new HashMap<IObjectValueChangedListener<String>, IStyledTextChangeListener>();
 
   public void setText(ITextPart[] textParts) {
     if (ArrayUtilities.equals(this.textParts, textParts)) {
@@ -26,18 +29,20 @@ public class StyledTextualDescription extends AbstractTextualDescription impleme
     return textParts;
   }
 
-  private synchronized final void fireTextChangedEvent(final ITextPart[] parts) {
-    for (IStyledTextChangeListener listener : new ArrayList<IStyledTextChangeListener>(textListeners)) {
-      listener.textChanged(parts);
-    }
+  private void fireTextChangedEvent(final ITextPart[] parts) {
+    textListeners.forAllDo(new IClosure<IStyledTextChangeListener>() {
+      public void execute(IStyledTextChangeListener input) {
+        input.textChanged(parts);
+      }
+    });
   }
 
-  public synchronized void addTextChangedListener(IStyledTextChangeListener listener) {
-    textListeners.add(listener);
+  public void addTextChangedListener(IStyledTextChangeListener listener) {
+    textListeners.addListener(listener);
   }
 
-  public synchronized void removeTextChangedListener(IStyledTextChangeListener listener) {
-    textListeners.remove(listener);
+  public void removeTextChangedListener(IStyledTextChangeListener listener) {
+    textListeners.removeListener(listener);
   }
 
   public boolean isEmpty() {
@@ -54,11 +59,17 @@ public class StyledTextualDescription extends AbstractTextualDescription impleme
   }
 
   public void addTextChangedListener(final IObjectValueChangedListener<String> listener) {
-    addTextChangedListener(new IStyledTextChangeListener() {
+    IStyledTextChangeListener styledListener = new IStyledTextChangeListener() {
       public void textChanged(ITextPart[] newParts) {
         listener.valueChanged(getText(newParts));
       }
-    });
+    };
+    addTextChangedListener(styledListener);
+    listenerMap.put(listener, styledListener);
+  }
+
+  public void removeTextChangeListener(IObjectValueChangedListener<String> listener) {
+    removeTextChangedListener(listenerMap.get(listener));
   }
 
   private String getText(ITextPart[] parts) {
