@@ -212,6 +212,16 @@ li.menu:hover
 	{
 	list-style-type: disc;
 	}
+li.image
+	{
+	margin: 5px 2px 5px 5px;
+	list-style-type: none;
+	}
+li.image:hover
+	{
+	margin: 5px 2px 5px 5px;
+	list-style-type: none;
+	}
 ul {
 	border: 1px solid #08298D;
 	background: #060D1C;
