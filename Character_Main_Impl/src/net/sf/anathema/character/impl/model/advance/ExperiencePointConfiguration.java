@@ -3,22 +3,20 @@ package net.sf.anathema.character.impl.model.advance;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
 import net.sf.anathema.character.model.advance.IExperiencePointConfigurationListener;
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
 public class ExperiencePointConfiguration implements IExperiencePointConfiguration {
 
   private final List<IExperiencePointEntry> entries = new ArrayList<IExperiencePointEntry>();
   private final GenericControl<IExperiencePointConfigurationListener> control = new GenericControl<IExperiencePointConfigurationListener>();
-  private final ChangeListener entryChangeListener = new ChangeListener() {
-    public void stateChanged(ChangeEvent e) {
-      fireEntryChangedEvent((IExperiencePointEntry) e.getSource());
+  private final IObjectValueChangedListener<IExperiencePointEntry> entryChangeListener = new IObjectValueChangedListener<IExperiencePointEntry>() {
+    public void valueChanged(IExperiencePointEntry entry) {
+      fireEntryChangedEvent(entry);
     }
   };
 

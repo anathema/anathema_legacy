@@ -52,8 +52,7 @@ public class ExperienceConfigurationPresenter {
     });
     experiencePoints.addExperiencePointConfigurationListener(new IExperiencePointConfigurationListener() {
       public void entryRemoved(IExperiencePointEntry entry) {
-        removeFromView(entry);
-        updateTotal();
+        removeFromView(entry);        
       }
 
       public void entryAdded(IExperiencePointEntry entry) {
@@ -62,7 +61,6 @@ public class ExperienceConfigurationPresenter {
 
       public void entryChanged(IExperiencePointEntry entry) {
         updateView(entry);
-        updateTotal();
       }
     });
     experienceView.initGui(new ExperienceConfigurationViewProperties(resources, tableModel));
@@ -102,6 +100,7 @@ public class ExperienceConfigurationPresenter {
   private void removeFromView(IExperiencePointEntry entry) {
     int rowIndex = indexByEntry.get(entry);
     tableModel.removeRow(rowIndex);
+    updateTotal();
   }
 
   protected void updateView(IExperiencePointEntry entry) {
