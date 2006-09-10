@@ -1,26 +1,21 @@
 package net.sf.anathema.character.impl.view.concept;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 import javax.swing.border.TitledBorder;
-import javax.swing.text.JTextComponent;
 
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
-import net.sf.anathema.character.generic.framework.util.ExperienceUtilities;
 import net.sf.anathema.character.impl.view.EditButtonDialogPanel;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
+import net.sf.anathema.character.view.concept.IWillpowerConditionView;
 import net.sf.anathema.framework.presenter.view.AbstractTabView;
-import net.sf.anathema.lib.gui.GuiUtilities;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
@@ -48,13 +43,14 @@ public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConc
     panel.add(rulesPanel.getContent(), GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
   }
 
-  public <V> IObjectSelectionView<V> addConceptObjectSelectionView(
+  public <V> IObjectSelectionView<V> addObjectSelectionView(
       String labelText,
       V[] objects,
       ListCellRenderer renderer,
       boolean editable) {
     ObjectSelectionView<V> selectionView = new ObjectSelectionView<V>(labelText, renderer, editable, objects);
     selectionView.getComboBox().getEditor().getEditorComponent().setEnabled(true);
+    selectionView.setDisabledLabelColor(Color.DARK_GRAY);
     selectionView.addComponents(characterConceptPanel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
     return selectionView;
   }
@@ -63,13 +59,13 @@ public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConc
     LineTextView lineTextView = new LineTextView(45);
     lineTextView.getTextComponent().setDisabledTextColor(Color.DARK_GRAY);
     LabelTextView labelView = new LabelTextView(labelText, lineTextView);
+    labelView.setDisabledLabelColor(Color.DARK_GRAY);
     labelView.addTo(characterConceptPanel, false);
     return labelView;
   }
 
   public void addRulesLabel(final String labelText) {
     rulesPanel.add(new IDialogComponent() {
-
       public int getColumnCount() {
         return 1;
       }
@@ -80,28 +76,10 @@ public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConc
     });
   }
 
-  public JTextComponent addWillpowerConditionView(final String headerLabelText) {
+  public IWillpowerConditionView addWillpowerConditionView(final String headerLabelText) {
     WillpowerConditionView view = new WillpowerConditionView(headerLabelText);
     view.addComponents(characterConceptPanel);
-    return view.getTextComponent();
-  }
-
-  public void setEnabled(boolean enabled) {
-    GuiUtilities.setEnabled(characterConceptPanel.getContent(), enabled);
-    handleSpecialComponents(characterConceptPanel.getContent(), enabled);
-  }
-
-  private void handleSpecialComponents(Container container, boolean enabled) {
-    for (Component component : container.getComponents()) {
-      if (component instanceof Container) {
-        handleSpecialComponents((Container) component, enabled);
-      }
-    }
-    if (container instanceof JButton) {
-      container.setEnabled(true);
-      return;      
-    }
-    ExperienceUtilities.setLabelColor(container, enabled);
+    return view;
   }
 
   public void addAction(SmartAction action, int row) {

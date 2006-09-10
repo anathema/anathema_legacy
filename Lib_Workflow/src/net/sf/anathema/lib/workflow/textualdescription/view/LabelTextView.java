@@ -1,5 +1,8 @@
 package net.sf.anathema.lib.workflow.textualdescription.view;
 
+import java.awt.Color;
+import java.awt.SystemColor;
+
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,16 +18,17 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 public class LabelTextView implements ITextView {
 
   private final ITextView textView;
-  private final String labelText;
   private final boolean scrollPane;
   private JComponent content;
+  private Color disabledLabelColor = SystemColor.textInactiveText;
+  private final JLabel label;
 
   public LabelTextView(String labelText, ITextView textView) {
     this(labelText, textView, false);
   }
 
   public LabelTextView(String labelText, ITextView textView, boolean scrollPane) {
-    this.labelText = labelText;
+    this.label = new JLabel(labelText);
     this.textView = textView;
     this.scrollPane = scrollPane;
   }
@@ -43,7 +47,7 @@ public class LabelTextView implements ITextView {
         GridDialogLayoutData labelLayoutData = new GridDialogLayoutData();
         labelLayoutData.setHorizontalAlignment(GridAlignment.BEGINNING);
         labelLayoutData.setVerticalAlignment(GridAlignment.BEGINNING);
-        panel.add(new JLabel(labelText), labelLayoutData);
+        panel.add(label, labelLayoutData);
         JComponent initializedContent = getInitializedContent();
         GridDialogLayoutData contentData = new GridDialogLayoutData((scrollPane
             ? GridDialogLayoutData.FILL_BOTH
@@ -76,5 +80,15 @@ public class LabelTextView implements ITextView {
 
   public void setEnabled(boolean enabled) {
     textView.setEnabled(enabled);
+    if (enabled) {
+      label.setForeground(SystemColor.textText);      
+    }
+    else {
+      label.setForeground(disabledLabelColor);
+    }
+  }
+
+  public void setDisabledLabelColor(Color color) {
+    this.disabledLabelColor = color;
   }
 }

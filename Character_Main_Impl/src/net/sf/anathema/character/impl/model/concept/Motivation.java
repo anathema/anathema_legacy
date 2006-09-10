@@ -36,7 +36,7 @@ public class Motivation implements IMotivation {
   }
 
   public void beginEdit() {
-    editableDescription.setCurrentDescription(1);
+    switchDescription(1);
     control.forAllDo(new IClosure<IEditMotivationListener>() {
       public void execute(IEditMotivationListener input) {
         input.editBegun();
@@ -44,18 +44,22 @@ public class Motivation implements IMotivation {
     });
   }
 
-  public void endEditXPSpending() {
+  public void endEditXPSpending(String xpMessage) {
     IExperiencePointEntry entry = experiencePoints.addEntry();
-    entry.getTextualDescription().setText("Changed motivation");
+    entry.getTextualDescription().setText(xpMessage);
     entry.setExperiencePoints(2);
     endEdit();
   }
 
   public void endEdit() {
-    String text = editableDescription.getText();
-    editableDescription.setCurrentDescription(0);
-    editableDescription.setText(text);
+    switchDescription(0);
     fireEditEnded();
+  }
+
+  private void switchDescription(int newDescriptionIndex) {
+    String text = editableDescription.getText();
+    editableDescription.setCurrentDescription(newDescriptionIndex);
+    editableDescription.setText(text);
   }
 
   private void fireEditEnded() {

@@ -8,6 +8,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.equipment.creation.view.IWeaponDamageView;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
@@ -24,6 +25,10 @@ public class WeaponDamageView implements IWeaponDamageView {
     GridDialogLayoutData boxData = new GridDialogLayoutData(GridDialogLayoutData.FILL_HORIZONTAL);
     boxData.setHorizontalSpan(columnCount - 2);
     panel.add(typeBox.getComponent(), boxData);
+  }
+  
+  public void setEnabled(boolean enabled) {
+    throw new NotYetImplementedException();
   }
 
   public int getColumnCount() {

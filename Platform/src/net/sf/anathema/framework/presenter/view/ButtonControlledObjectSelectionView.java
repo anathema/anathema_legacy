@@ -38,6 +38,12 @@ public class ButtonControlledObjectSelectionView<V> implements
     addButton.setPreferredSize(new Dimension(addIcon.getIconWidth() + 4, addIcon.getIconHeight() + 4));
   }
 
+  public void setEnabled(boolean enabled) {
+    comboBox.setEnabled(enabled);
+    addButton.setEnabled(enabled);
+    label.setEnabled(enabled);    
+  }
+  
   public ButtonControlledObjectSelectionView(
       ListCellRenderer renderer,
       Icon addIcon,

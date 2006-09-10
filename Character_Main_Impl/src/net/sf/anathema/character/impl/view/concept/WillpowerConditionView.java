@@ -1,19 +1,20 @@
 package net.sf.anathema.character.impl.view.concept;
 
 import java.awt.Color;
+import java.awt.SystemColor;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.text.JTextComponent;
 
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
+import net.sf.anathema.character.view.concept.IWillpowerConditionView;
 import net.sf.anathema.lib.gui.dialogcomponent.grouped.IGridDialogPanelContent;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 
-public class WillpowerConditionView implements IGridDialogPanelContent {
+public class WillpowerConditionView implements IGridDialogPanelContent, IWillpowerConditionView {
   private final JTextArea conditionLabel;
   private final JLabel headerLabel;
 
@@ -48,7 +49,17 @@ public class WillpowerConditionView implements IGridDialogPanelContent {
     });
   }
 
-  public JTextComponent getTextComponent() {
-    return conditionLabel;
+  public void setEnabled(boolean enabled) {
+    if (enabled) {
+      headerLabel.setForeground(SystemColor.textText);
+    }
+    else {
+      headerLabel.setForeground(Color.DARK_GRAY);
+    }
+    conditionLabel.setEnabled(enabled);
+  }
+  
+  public void setText(String text) {
+    conditionLabel.setText(text);    
   }
 }

@@ -4,7 +4,6 @@ import java.awt.Component;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
-import javax.swing.text.JTextComponent;
 
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.ui.IObjectUi;
@@ -25,6 +24,7 @@ import net.sf.anathema.character.model.concept.NatureProvider;
 import net.sf.anathema.character.view.ICharacterConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
+import net.sf.anathema.character.view.concept.IWillpowerConditionView;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -43,10 +43,10 @@ public class CharacterConceptAndRulesPresenter {
   private SmartAction endEditXPAction;
 
   public CharacterConceptAndRulesPresenter(
-      ICharacterStatistics statstics,
+      ICharacterStatistics statistics,
       ICharacterConceptAndRulesViewFactory viewFactory,
       IResources resources) {
-    this.statistics = statstics;
+    this.statistics = statistics;
     this.view = viewFactory.createCharacterConceptView();
     this.resources = resources;
   }
@@ -64,27 +64,8 @@ public class CharacterConceptAndRulesPresenter {
       }
     });
     initConceptPresentation();
-    initExperienceListening();
     initGui();
     return new TabContent(resources.getString("CardView.CharacterConcept.Title"), view); //$NON-NLS-1$
-  }
-
-  private void initExperienceListening() {
-    statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
-      @Override
-      public void experiencedChanged(boolean experienced) {
-        view.setEnabled(!experienced);
-        beginEditAction.setEnabled(experienced);
-        endEditAction.setEnabled(false);
-        endEditXPAction.setEnabled(false);
-      }
-    });
-    view.setEnabled(!statistics.isExperienced());
-    if (beginEditAction != null) {
-      beginEditAction.setEnabled(statistics.isExperienced());
-      endEditAction.setEnabled(false);
-      endEditXPAction.setEnabled(false);
-    }
   }
 
   private void initMotivationPresentation(final IMotivation motivation) {
@@ -107,7 +88,7 @@ public class CharacterConceptAndRulesPresenter {
     endEditXPAction = new SmartAction(characterUI.getFinalizeXPIcon()) {
       @Override
       protected void execute(Component parentComponent) {
-        motivation.endEditXPSpending();
+        motivation.endEditXPSpending(resources.getString("Motivation.Changed.XPSpending")); //$NON-NLS-1$
       }
     };
     motivation.addEditingListener(new IEditMotivationListener() {
@@ -130,6 +111,17 @@ public class CharacterConceptAndRulesPresenter {
     view.addAction(beginEditAction, 1);
     view.addAction(endEditAction, 1);
     view.addAction(endEditXPAction, 1);
+    beginEditAction.setEnabled(statistics.isExperienced());
+    endEditAction.setEnabled(false);
+    endEditXPAction.setEnabled(false);
+    statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
+      @Override
+      public void experiencedChanged(boolean experienced) {
+        beginEditAction.setEnabled(experienced);
+        endEditAction.setEnabled(false);
+        endEditXPAction.setEnabled(false);
+      }
+    });
   }
 
   private void initConceptPresentation() {
@@ -149,6 +141,13 @@ public class CharacterConceptAndRulesPresenter {
       }
     });
     textView.setText(description.getText());
+    statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
+      @Override
+      public void experiencedChanged(boolean experienced) {
+        textView.setEnabled(!experienced);
+      }
+    });
+    textView.setEnabled(!statistics.isExperienced());
     return textView;
   }
 
@@ -172,7 +171,7 @@ public class CharacterConceptAndRulesPresenter {
         return sorterResources.getString("Nature." + type.getId() + ".Name"); //$NON-NLS-1$ //$NON-NLS-2$
       }
     }.sortAscending(unsortedNatures, natures, resources);
-    final IObjectSelectionView<INatureType> natureView = view.addConceptObjectSelectionView(
+    final IObjectSelectionView<INatureType> natureView = view.addObjectSelectionView(
         resources.getString("Label.Nature"), //$NON-NLS-1$
         natures,
         new DefaultListCellRenderer() {
@@ -196,7 +195,7 @@ public class CharacterConceptAndRulesPresenter {
         false);
     final ITypedDescription<INatureType> natureType = nature.getDescription();
     natureView.setSelectedObject(natureType.getType());
-    final JTextComponent willpowerConditionLabel = view.addWillpowerConditionView(resources.getString("CharacterConcept.GainWillpower")); //$NON-NLS-1$
+    final IWillpowerConditionView willpowerConditionLabel = view.addWillpowerConditionView(resources.getString("CharacterConcept.GainWillpower")); //$NON-NLS-1$
     natureView.addObjectSelectionChangedListener(new IObjectValueChangedListener<INatureType>() {
       public void valueChanged(INatureType newValue) {
         natureType.setType(newValue);
@@ -208,6 +207,15 @@ public class CharacterConceptAndRulesPresenter {
       }
     });
     updateNature(natureView, willpowerConditionLabel, natureType.getType());
+    statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
+      @Override
+      public void experiencedChanged(boolean experienced) {
+        natureView.setEnabled(!experienced);
+        willpowerConditionLabel.setEnabled(!experienced);
+      }
+    });
+    natureView.setEnabled(!statistics.isExperienced());
+    willpowerConditionLabel.setEnabled(!statistics.isExperienced());
   }
 
   private void initRulesPresentation() {
@@ -217,7 +225,7 @@ public class CharacterConceptAndRulesPresenter {
 
   private void updateNature(
       final IObjectSelectionView<INatureType> natureView,
-      final JTextComponent willpowerConditionLabel,
+      final IWillpowerConditionView willpowerConditionLabel,
       INatureType natureType) {
     natureView.setSelectedObject(natureType);
     if (natureType == null) {
@@ -239,7 +247,7 @@ public class CharacterConceptAndRulesPresenter {
     String casteLabelResourceKey = template.getPresentationProperties().getCasteLabelResource();
     IObjectUi casteUi = new CasteSelectObjectUi(resources, template.getPresentationProperties(), template.getEdition());
     ICasteType< ? extends ICasteTypeVisitor>[] allCasteTypes = template.getCasteCollection().getAllCasteTypes();
-    final IObjectSelectionView<ICasteType< ? extends ICasteTypeVisitor>> casteView = view.addConceptObjectSelectionView(
+    final IObjectSelectionView<ICasteType< ? extends ICasteTypeVisitor>> casteView = view.addObjectSelectionView(
         resources.getString(casteLabelResourceKey),
         allCasteTypes,
         new ObjectUiListCellRenderer(casteUi),
@@ -257,5 +265,12 @@ public class CharacterConceptAndRulesPresenter {
         casteView.setSelectedObject(caste.getType());
       }
     });
+    statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
+      @Override
+      public void experiencedChanged(boolean experienced) {
+        casteView.setEnabled(!experienced);
+      }
+    });
+    casteView.setEnabled(!statistics.isExperienced());
   }
 }

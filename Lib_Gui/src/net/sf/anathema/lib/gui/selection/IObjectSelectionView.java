@@ -13,4 +13,6 @@ public interface IObjectSelectionView<V> {
   public V getSelectedObject();
   
   public boolean isObjectSelected();
+
+  public void setEnabled(boolean enabled);
 }

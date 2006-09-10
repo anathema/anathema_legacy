@@ -1,5 +1,8 @@
 package net.sf.anathema.lib.gui.selection;
 
+import java.awt.Color;
+import java.awt.SystemColor;
+
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,6 +21,7 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V>, IGridDia
 
   private final IChangeableJComboBox<V> comboBox;
   private final JLabel label;
+  private Color disabledLabelColor = SystemColor.textInactiveText;
 
   public JComboBox getComboBox() {
     return comboBox.getComponent();
@@ -78,7 +82,12 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V>, IGridDia
   }
 
   public void setEnabled(boolean enabled) {
-    label.setEnabled(enabled);
+    if (enabled) {
+      label.setForeground(SystemColor.textText);
+    }
+    else {
+      label.setForeground(disabledLabelColor);
+    }
     comboBox.getComponent().setEnabled(enabled);
   }
 
@@ -88,5 +97,9 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V>, IGridDia
   
   public boolean isObjectSelected() {
     return getSelectedObject() != null;
+  }
+
+  public void setDisabledLabelColor(Color color) {
+    this.disabledLabelColor = color;        
   }
 }
