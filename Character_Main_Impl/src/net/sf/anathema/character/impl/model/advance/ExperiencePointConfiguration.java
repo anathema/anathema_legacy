@@ -25,10 +25,19 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
   }
 
   public IExperiencePointEntry addEntry() {
-    IExperiencePointEntry newEntry = new ExperiencePointEntry();
-    entries.add(newEntry);
+    IExperiencePointEntry newEntry = addEntryWithoutEvent();
+    addEntryListeningAndFireEvent(newEntry);
+    return newEntry;
+  }
+
+  private void addEntryListeningAndFireEvent(IExperiencePointEntry newEntry) {
     fireEntryAddedEvent(newEntry);
     newEntry.addChangeListener(entryChangeListener);
+  }
+
+  private IExperiencePointEntry addEntryWithoutEvent() {
+    IExperiencePointEntry newEntry = new ExperiencePointEntry();
+    entries.add(newEntry);
     return newEntry;
   }
 
@@ -84,5 +93,12 @@ public class ExperiencePointConfiguration implements IExperiencePointConfigurati
       }
     }
     return sum;
+  }
+
+  public void addEntry(String description, int xpCost) {
+    IExperiencePointEntry entry = addEntryWithoutEvent();
+    entry.getTextualDescription().setText(description);
+    entry.setExperiencePoints(xpCost);
+    addEntryListeningAndFireEvent(entry);
   }
 }

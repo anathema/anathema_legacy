@@ -2,7 +2,6 @@ package net.sf.anathema.character.impl.model.concept;
 
 import net.sf.anathema.character.impl.model.ProxyTextualDescription;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
-import net.sf.anathema.character.model.advance.IExperiencePointEntry;
 import net.sf.anathema.character.model.concept.IEditMotivationListener;
 import net.sf.anathema.character.model.concept.IMotivation;
 import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
@@ -50,9 +49,7 @@ public class Motivation implements IMotivation {
   }
 
   public void endEditXPSpending(String xpMessage) {
-    IExperiencePointEntry entry = experiencePoints.addEntry();
-    entry.getTextualDescription().setText(xpMessage);
-    entry.setExperiencePoints(2);
+    experiencePoints.addEntry(xpMessage, -2);
     endEdit();
   }
 
