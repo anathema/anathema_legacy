@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
@@ -95,6 +96,10 @@ public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConc
       if (component instanceof Container) {
         handleSpecialComponents((Container) component, enabled);
       }
+    }
+    if (container instanceof JButton) {
+      container.setEnabled(true);
+      return;      
     }
     ExperienceUtilities.setLabelColor(container, enabled);
   }

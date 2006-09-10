@@ -8,7 +8,6 @@ import net.sf.anathema.character.model.concept.IMotivation;
 import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
-import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
@@ -21,11 +20,6 @@ public class Motivation implements IMotivation {
 
   public Motivation(IExperiencePointConfiguration experiencePoints) {
     this.experiencePoints = experiencePoints;
-    persistenceDescription.addTextChangedListener(new IObjectValueChangedListener<String>() {
-      public void valueChanged(String newValue) {
-        editableDescription.setText(newValue);
-      }      
-    });
     this.editableDescription = new ProxyTextualDescription(persistenceDescription, new SimpleTextualDescription());
   }
 
