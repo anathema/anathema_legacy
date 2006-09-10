@@ -2,6 +2,7 @@ package net.sf.anathema.character.impl.view.concept;
 
 import java.awt.Color;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
@@ -82,7 +83,7 @@ public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConc
     return view;
   }
 
-  public void addAction(SmartAction action, int row) {
-    characterConceptPanel.addEditAction(action, row);
+  public JButton addAction(SmartAction action, int row) {
+    return characterConceptPanel.addEditAction(action, row);
   }
 }

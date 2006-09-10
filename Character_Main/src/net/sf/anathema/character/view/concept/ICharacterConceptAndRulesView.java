@@ -1,5 +1,6 @@
 package net.sf.anathema.character.view.concept;
 
+import javax.swing.JButton;
 import javax.swing.ListCellRenderer;
 
 import net.disy.commons.swing.action.SmartAction;
@@ -21,5 +22,5 @@ public interface ICharacterConceptAndRulesView extends ITabView<ICharacterConcep
 
   public void addRulesLabel(String labelText);
 
-  public void addAction(SmartAction action, int row);
+  public JButton addAction(SmartAction action, int row);
 }

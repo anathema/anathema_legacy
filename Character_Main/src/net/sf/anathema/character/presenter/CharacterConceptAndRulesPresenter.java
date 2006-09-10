@@ -3,6 +3,7 @@ package net.sf.anathema.character.presenter;
 import java.awt.Component;
 
 import javax.swing.DefaultListCellRenderer;
+import javax.swing.JButton;
 import javax.swing.JList;
 
 import net.disy.commons.swing.action.SmartAction;
@@ -38,9 +39,6 @@ public class CharacterConceptAndRulesPresenter {
   private final ICharacterConceptAndRulesView view;
   private final ICharacterStatistics statistics;
   private final IResources resources;
-  private SmartAction beginEditAction;
-  private SmartAction endEditAction;
-  private SmartAction endEditXPAction;
 
   public CharacterConceptAndRulesPresenter(
       ICharacterStatistics statistics,
@@ -73,29 +71,38 @@ public class CharacterConceptAndRulesPresenter {
         motivation.getEditableDescription(),
         "Label.Motivation"); //$NON-NLS-1$
     CharacterUI characterUI = new CharacterUI(resources);
-    beginEditAction = new SmartAction(characterUI.getEditIcon()) {
+    final SmartAction beginEditAction = new SmartAction(characterUI.getEditIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         motivation.beginEdit();
       }
     };
-    endEditAction = new SmartAction(characterUI.getFinalizeIcon()) {
+    final SmartAction cancelEditAction = new SmartAction(characterUI.getCancelComboEditIcon()) {
+      @Override
+      protected void execute(Component parentComponent) {
+        motivation.cancelEdit();
+      }
+    };
+    final SmartAction endEditAction = new SmartAction(characterUI.getFinalizeIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         motivation.endEdit();
       }
     };
-    endEditXPAction = new SmartAction(characterUI.getFinalizeXPIcon()) {
+    final SmartAction endEditXPAction = new SmartAction(characterUI.getFinalizeXPIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         motivation.endEditXPSpending(resources.getString("Motivation.Changed.XPSpending")); //$NON-NLS-1$
       }
     };
+    final JButton beginButton = view.addAction(beginEditAction, 1);
+    view.addAction(endEditAction, 1);
+    view.addAction(endEditXPAction, 1);
     motivation.addEditingListener(new IEditMotivationListener() {
       public void editBegun() {
         textView.setEnabled(true);
         textView.setText(motivation.getEditableDescription().getText());
-        beginEditAction.setEnabled(false);
+        beginButton.setAction(cancelEditAction);
         endEditAction.setEnabled(true);
         endEditXPAction.setEnabled(true);
       }
@@ -103,14 +110,12 @@ public class CharacterConceptAndRulesPresenter {
       public void editEnded() {
         textView.setEnabled(false);
         textView.setText(motivation.getDescription().getText());
-        beginEditAction.setEnabled(true);
+        beginButton.setAction(beginEditAction);
         endEditAction.setEnabled(false);
         endEditXPAction.setEnabled(false);
       }
     });
-    view.addAction(beginEditAction, 1);
-    view.addAction(endEditAction, 1);
-    view.addAction(endEditXPAction, 1);
+
     beginEditAction.setEnabled(statistics.isExperienced());
     endEditAction.setEnabled(false);
     endEditXPAction.setEnabled(false);

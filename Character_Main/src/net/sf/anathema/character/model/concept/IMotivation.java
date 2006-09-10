@@ -8,6 +8,8 @@ public interface IMotivation extends IWillpowerRegainingConcept {
 
   public void beginEdit();
 
+  public void cancelEdit();
+
   public void endEditXPSpending(String xpMessage);
 
   public void endEdit();
@@ -15,4 +17,5 @@ public interface IMotivation extends IWillpowerRegainingConcept {
   public void addEditingListener(IEditMotivationListener listener);
 
   public ITextualDescription getEditableDescription();
+
 }

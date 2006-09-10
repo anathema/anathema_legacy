@@ -44,6 +44,11 @@ public class Motivation implements IMotivation {
     });
   }
 
+  public void cancelEdit() {
+    editableDescription.setCurrentDescription(0);
+    fireEditEnded();
+  }
+
   public void endEditXPSpending(String xpMessage) {
     IExperiencePointEntry entry = experiencePoints.addEntry();
     entry.getTextualDescription().setText(xpMessage);

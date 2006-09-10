@@ -41,12 +41,13 @@ public class EditButtonDialogPanel implements IGridDialogPanel {
     return dialogPanel.getContent();
   }
 
-  public void addEditAction(SmartAction action, int row) {
+  public JButton addEditAction(SmartAction action, int row) {
     JPanel panel = editPanelsByRow.get(row);
     JButton button = new JButton(action);
     if (action.getName() == null && action.getIcon() != null) {
       button.setPreferredSize(IconToggleButton.getPreferredSize(action.getIcon()));
     }
     panel.add(button);
+    return button;
   }
 }
