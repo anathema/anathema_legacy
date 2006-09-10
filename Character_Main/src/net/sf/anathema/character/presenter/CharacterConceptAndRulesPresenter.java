@@ -3,7 +3,6 @@ package net.sf.anathema.character.presenter;
 import java.awt.Component;
 
 import javax.swing.DefaultListCellRenderer;
-import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.text.JTextComponent;
 
@@ -39,6 +38,9 @@ public class CharacterConceptAndRulesPresenter {
   private final ICharacterConceptAndRulesView view;
   private final ICharacterStatistics statistics;
   private final IResources resources;
+  private SmartAction beginEditAction;
+  private SmartAction endEditAction;
+  private SmartAction endEditXPAction;
 
   public CharacterConceptAndRulesPresenter(
       ICharacterStatistics statstics,
@@ -72,39 +74,46 @@ public class CharacterConceptAndRulesPresenter {
       @Override
       public void experiencedChanged(boolean experienced) {
         view.setEnabled(!experienced);
+        beginEditAction.setEnabled(experienced);
+        endEditAction.setEnabled(false);
+        endEditXPAction.setEnabled(false);
       }
     });
     view.setEnabled(!statistics.isExperienced());
+    if (beginEditAction != null) {
+      beginEditAction.setEnabled(statistics.isExperienced());
+      endEditAction.setEnabled(false);
+      endEditXPAction.setEnabled(false);
+    }
   }
 
   private void initMotivationPresentation(final IMotivation motivation) {
-    final ITextView textView = initTextualDescriptionPresentation(motivation.getDescription(), "Label.Motivation"); //$NON-NLS-1$
+    final ITextView textView = initTextualDescriptionPresentation(
+        motivation.getEditableDescription(),
+        "Label.Motivation"); //$NON-NLS-1$
     CharacterUI characterUI = new CharacterUI(resources);
-    final SmartAction beginEditAction = new SmartAction(characterUI.getEditIcon()) {
+    beginEditAction = new SmartAction(characterUI.getEditIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         motivation.beginEdit();
       }
     };
-    JButton switchButton = new JButton(beginEditAction);
-    final SmartAction endEditAction = new SmartAction(characterUI.getFinalizeIcon()) {
+    endEditAction = new SmartAction(characterUI.getFinalizeIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         motivation.endEdit();
       }
     };
-    final SmartAction endEditXPAction = new SmartAction(characterUI.getFinalizeXPIcon()) {
+    endEditXPAction = new SmartAction(characterUI.getFinalizeXPIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         motivation.endEditXPSpending();
       }
     };
-    beginEditAction.setEnabled(false);
-    endEditAction.setEnabled(false);
-    endEditXPAction.setEnabled(false);
     motivation.addEditingListener(new IEditMotivationListener() {
       public void editBegun() {
         textView.setEnabled(true);
+        textView.setText(motivation.getEditableDescription().getText());
         beginEditAction.setEnabled(false);
         endEditAction.setEnabled(true);
         endEditXPAction.setEnabled(true);
@@ -112,16 +121,10 @@ public class CharacterConceptAndRulesPresenter {
 
       public void editEnded() {
         textView.setEnabled(false);
+        textView.setText(motivation.getDescription().getText());
         beginEditAction.setEnabled(true);
         endEditAction.setEnabled(false);
         endEditXPAction.setEnabled(false);
-      }
-    });
-
-    statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
-      @Override
-      public void experiencedChanged(boolean experienced) {
-        beginEditAction.setEnabled(experienced);
       }
     });
     view.addAction(beginEditAction, 1);

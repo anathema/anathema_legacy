@@ -13,4 +13,6 @@ public interface IMotivation extends IWillpowerRegainingConcept {
   public void endEdit();
 
   public void addEditingListener(IEditMotivationListener listener);
+
+  public ITextualDescription getEditableDescription();
 }

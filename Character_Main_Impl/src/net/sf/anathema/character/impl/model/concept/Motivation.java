@@ -8,22 +8,33 @@ import net.sf.anathema.character.model.concept.IMotivation;
 import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
 public class Motivation implements IMotivation {
 
-  private final ProxyTextualDescription description;
+  private final SimpleTextualDescription persistenceDescription = new SimpleTextualDescription();
+  private final ProxyTextualDescription editableDescription;
   private final IExperiencePointConfiguration experiencePoints;
   private final GenericControl<IEditMotivationListener> control = new GenericControl<IEditMotivationListener>();
 
   public Motivation(IExperiencePointConfiguration experiencePoints) {
     this.experiencePoints = experiencePoints;
-    this.description = new ProxyTextualDescription(new SimpleTextualDescription(), new SimpleTextualDescription());
+    persistenceDescription.addTextChangedListener(new IObjectValueChangedListener<String>() {
+      public void valueChanged(String newValue) {
+        editableDescription.setText(newValue);
+      }      
+    });
+    this.editableDescription = new ProxyTextualDescription(persistenceDescription, new SimpleTextualDescription());
   }
 
   public ITextualDescription getDescription() {
-    return description;
+    return persistenceDescription;
+  }
+
+  public ITextualDescription getEditableDescription() {
+    return editableDescription;
   }
 
   public void accept(IWillpowerRegainingConceptVisitor visitor) {
@@ -31,7 +42,7 @@ public class Motivation implements IMotivation {
   }
 
   public void beginEdit() {
-    description.setCurrentDescription(1);
+    editableDescription.setCurrentDescription(1);
     control.forAllDo(new IClosure<IEditMotivationListener>() {
       public void execute(IEditMotivationListener input) {
         input.editBegun();
@@ -47,9 +58,9 @@ public class Motivation implements IMotivation {
   }
 
   public void endEdit() {
-    String text = description.getText();
-    description.setCurrentDescription(0);
-    description.setText(text);
+    String text = editableDescription.getText();
+    editableDescription.setCurrentDescription(0);
+    editableDescription.setText(text);
     fireEditEnded();
   }
 
