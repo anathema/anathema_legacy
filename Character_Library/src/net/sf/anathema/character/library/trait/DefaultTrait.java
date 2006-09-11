@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.listening.
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.library.ITraitFavorization;
-import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.NullTraitFavorization;
 import net.sf.anathema.character.library.trait.favorable.TraitFavorization;
@@ -69,7 +68,7 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
   }
 
   public final void setCreationValue(int value) {
-    if (getFavorization().getFavorableState() == FavorableState.Favored) {
+    if (getFavorization().isFavored()) {
       value = Math.max(value, 1);
     }
     int correctedValue = getTraitRules().getCreationValue(value);

@@ -6,7 +6,6 @@ import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
-import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -30,7 +29,7 @@ public class FavorableTraitViewProperties implements IIconToggleButtonProperties
 
   public Icon createStandardIcon() {
     CasteUI casteUI = new CasteUI(resources, context.getRuleSet().getEdition(), properties);
-    if (context.isExperienced() && ability.getFavorization().getFavorableState() == FavorableState.Default) {
+    if (context.isExperienced() && !ability.getFavorization().isCasteOrFavored()) {
       return casteUI.getEmptyIcon();
     }
     if (ability.getFavorization().isCaste()) {
