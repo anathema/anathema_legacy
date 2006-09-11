@@ -75,9 +75,8 @@ public class RenownModel implements IRenownModel {
         checkFaceTrait();
       }
     };
-    for (AttributeType attributeType : AttributeType.values()) {
-      attributeChangeListener.addTraitType(attributeType);
-    }
+    ITraitType[] values = AttributeType.values();
+    attributeChangeListener.addTraitTypes(values);
     context.getCharacterListening().addChangeListener(attributeChangeListener);
   }
 

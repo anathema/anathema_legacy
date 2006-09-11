@@ -30,7 +30,7 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
         fireModelChangedEvent();
       }
     };
-    convictionListener.addTraitType(VirtueType.Conviction);
+    convictionListener.addTraitTypes(VirtueType.Conviction);
     ConfigurableCharacterChangeListener maximumListener = new ConfigurableCharacterChangeListener() {
       @Override
       public void configuredChangeOccured() {
@@ -38,8 +38,7 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
         fireEntryChanged();
       }
     };
-    maximumListener.addTraitType(VirtueType.Compassion);
-    maximumListener.addTraitType(OtherTraitType.Willpower);
+    maximumListener.addTraitTypes(VirtueType.Compassion, OtherTraitType.Willpower);
     context.getCharacterListening().addChangeListener(convictionListener);
     context.getCharacterListening().addChangeListener(maximumListener);
   }

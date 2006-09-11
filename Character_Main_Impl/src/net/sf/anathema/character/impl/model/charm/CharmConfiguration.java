@@ -2,7 +2,6 @@ package net.sf.anathema.character.impl.model.charm;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -340,10 +339,10 @@ public class CharmConfiguration implements ICharmConfiguration {
     addCharmLearnListener(learnableListener);
   }
 
-  private Collection<ITraitType> createPrerequisiteSet() {
+  private ITraitType[] createPrerequisiteSet() {
     PrerequisiteSetBuilder prerequisiteSetBuilder = new PrerequisiteSetBuilder();
     prerequisiteSetBuilder.addCharms(getAllCharms());
-    return prerequisiteSetBuilder.getAllPrerequisites();
+    return prerequisiteSetBuilder.getAllPrerequisites().toArray(new ITraitType[0]);
   }
 
   public void addLearnableListener(IChangeListener listener) {
