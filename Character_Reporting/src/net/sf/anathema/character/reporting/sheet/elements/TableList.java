@@ -10,17 +10,18 @@ import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class TableList extends PdfPTable {
+public class TableList {
 
   private final Font font;
   private int index = 1;
+  private final PdfPTable table;
 
   public TableList(Font font) {
-    super(new float[] { 1, 9 });
-    setWidthPercentage(100);
+    this.table = new PdfPTable(new float[] { 1, 9 });
+    table.setWidthPercentage(100);
     this.font = font;
   }
-  
+
   public void addHeader(Chunk chunk, boolean paddingTop) {
     addHeader(new Phrase(chunk), paddingTop);
   }
@@ -35,12 +36,12 @@ public class TableList extends PdfPTable {
     }
     cell.setHorizontalAlignment(Element.ALIGN_LEFT);
     cell.setColspan(2);
-    addCell(cell);
+    table.addCell(cell);
   }
 
   public void addItem(String text) {
-    addCell(createCell(index++ + ".", Element.ALIGN_RIGHT)); //$NON-NLS-1$
-    addCell(createCell(text, Element.ALIGN_LEFT));
+    table.addCell(createCell(index++ + ".", Element.ALIGN_RIGHT)); //$NON-NLS-1$
+    table.addCell(createCell(text, Element.ALIGN_LEFT));
   }
 
   private PdfPCell createCell(String content, int horizontalAlignment) {
@@ -54,5 +55,13 @@ public class TableList extends PdfPTable {
     cell.setPaddingRight(1);
     cell.setHorizontalAlignment(horizontalAlignment);
     return cell;
+  }
+
+  public PdfPTable getTable() {
+    return table;
+  }
+
+  public void addCell(TableCell cell) {
+    table.addCell(cell);
   }
 }

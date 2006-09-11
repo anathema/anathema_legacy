@@ -24,11 +24,13 @@ public class SecondEditionCombatRulesTableEncoder extends AbstractCombatRulesTab
 
   @Override
   protected void addSecondCell(PdfPTable table) {
-    Phrase knockdownAndStunningPhrase = new Phrase(getResources().getString("Sheet.Combat.Knockdown.Header") + "\n", getFont()); //$NON-NLS-1$ //$NON-NLS-2$
+    Phrase knockdownAndStunningPhrase = new Phrase(
+        getResources().getString("Sheet.Combat.Knockdown.Header") + "\n", getFont()); //$NON-NLS-1$ //$NON-NLS-2$
     knockdownAndStunningPhrase.add(new Chunk(
         getResources().getString("Sheet.Combat.Knockdown.Second.Comment") + "\n\n", getCommentFont())); //$NON-NLS-1$ //$NON-NLS-2$
     knockdownAndStunningPhrase.add(new Chunk(getResources().getString("Sheet.Combat.Stunning.Header") + "\n", getFont())); //$NON-NLS-1$ //$NON-NLS-2$
-    knockdownAndStunningPhrase.add(new Chunk(getResources().getString("Sheet.Combat.Stunning.Second.Comment"), getCommentFont())); //$NON-NLS-1$
+    knockdownAndStunningPhrase.add(new Chunk(
+        getResources().getString("Sheet.Combat.Stunning.Second.Comment"), getCommentFont())); //$NON-NLS-1$
     table.addCell(createContentCell(knockdownAndStunningPhrase));
   }
 
@@ -37,7 +39,7 @@ public class SecondEditionCombatRulesTableEncoder extends AbstractCombatRulesTab
     table.addCell(createCommonActionsTable());
   }
 
-  private TableList createCombatAttackList() {
+  private PdfPTable createCombatAttackList() {
     TableList list = new TableList(getCommentFont());
     list.addHeader(new Chunk(getResources().getString("Sheet.Combat.OrderAttackEvents"), getFont()), true); //$NON-NLS-1$
     list.addHeader(new Chunk("\n", getCommentFont()), false); //$NON-NLS-1$
@@ -61,7 +63,7 @@ public class SecondEditionCombatRulesTableEncoder extends AbstractCombatRulesTab
         getResources().getString("Sheet.Combat.Comment.Rules"), getCommentFont()), Rectangle.NO_BORDER); //$NON-NLS-1$
     rulesCommentCell.setPadding(0);
     list.addCell(rulesCommentCell);
-    return list;
+    return list.getTable();
   }
 
   private PdfPTable createCommonActionsTable() {

@@ -24,7 +24,7 @@ public class FirstEditionCombatRulesTableEncoder extends AbstractCombatRulesTabl
     table.addCell(cell);
   }
 
-  private TableList createCombatAttackList() {
+  private PdfPTable createCombatAttackList() {
     TableList list = new TableList(getCommentFont());
     list.addHeader(new Chunk(getResources().getString("Sheet.Combat.Sequence"), getFont()), true); //$NON-NLS-1$
     list.addItem(getResources().getString("Sheet.Combat.Sequence.AttackRoll")); //$NON-NLS-1$
@@ -36,7 +36,7 @@ public class FirstEditionCombatRulesTableEncoder extends AbstractCombatRulesTabl
     list.addItem(getResources().getString("Sheet.Combat.Sequence.RollDamage")); //$NON-NLS-1$
     list.addItem(getResources().getString("Sheet.Combat.Sequence.ApplyDamage")); //$NON-NLS-1$
     list.addItem(getResources().getString("Sheet.Combat.Sequence.CheckStun")); //$NON-NLS-1$
-    return list;
+    return list.getTable();
   }
 
   @Override
