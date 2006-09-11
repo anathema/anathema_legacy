@@ -39,7 +39,7 @@ public class CharmTree implements ICharmTree {
     return allCharms;
   }
 
-  protected final void addCharmGroupsFor(Collection<String> groupIds, List<ICharmGroup> charmGroups, ICharm[] charms) {
+  private final void addCharmGroupsFor(Collection<String> groupIds, List<ICharmGroup> charmGroups, ICharm[] charms) {
     for (ICharm charm : charms) {
       String groupId = charm.getGroupId();
       if (!groupIds.contains(groupId) && isLearnableCharm(charm)) {
