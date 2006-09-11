@@ -5,10 +5,11 @@ import java.awt.Dimension;
 import java.awt.event.ActionListener;
 
 import javax.swing.Icon;
+import javax.swing.JButton;
 
 public class IconToggleButton {
 
-  private final NoFocusButton button = new NoFocusButton();
+  private final JButton button = new NoFocusButton();
   private boolean selected;
   private Icon selectedIcon;
   private Icon unselectedIcon;
