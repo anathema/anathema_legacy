@@ -50,11 +50,8 @@
 			<parameter-def id="development" type="boolean" multiplicity="none-or-one"/>
 		</parameter-def>
 	</extension-point>
-	<extension-point id="PreferenceElements">
-		<parameter-def id="type" multiplicity="any">
-			<parameter-def id="class" multiplicity="one"/>
-			<parameter-def id="preferencekey" multiplicity="one"/>
-		</parameter-def>
+	<extension-point id="PreferenceElements" >
+		<parameter-def id="class" multiplicity="any"/>
 	</extension-point>
 	<extension-point id="Bootjobs">
 		<parameter-def id="class"/>
@@ -75,30 +72,12 @@
 		<parameter id="class" value="net.sf.anathema.framework.module.AnathemaCoreTool"/>
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="PreferenceElements" id="PreferenceElements">
-	  <parameter id="type">
 		<parameter id="class" value="net.sf.anathema.framework.module.preferences.LookAndFeelPreferencesElement"/>
-		<parameter id="preferencekey" value="ForceMetalLookAndFeel"/>
-	  </parameter>
-	  <parameter id="type">
 		<parameter id="class" value="net.sf.anathema.framework.module.preferences.MaximizePreferencesElement"/>
-		<parameter id="preferencekey" value="Maximize"/>
-	  </parameter>
- 	  <parameter id="type">
 		<parameter id="class" value="net.sf.anathema.framework.module.preferences.OpenPdfPreferencesElement"/>
-		<parameter id="preferencekey" value="OpenPdf"/>
-	  </parameter>
-  	  <parameter id="type">
 		<parameter id="class" value="net.sf.anathema.framework.module.preferences.LanguagePreferencesElement"/>
-		<parameter id="preferencekey" value="Locale"/>
-	  </parameter>
-  	  <parameter id="type">
 		<parameter id="class" value="net.sf.anathema.framework.module.preferences.ToolTipTimePreferencesElement"/>
-		<parameter id="preferencekey" value="ToolTipTime"/>
-	  </parameter>
-	  <parameter id="type">
 		<parameter id="class" value="net.sf.anathema.framework.module.preferences.RepositoryPreferencesElement"/>
-		<parameter id="preferencekey" value="Repository"/>
-	  </parameter>	   
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="Bootjobs" id="AnathemaCore">
 		<parameter id="class" value="net.sf.anathema.framework.module.ItemViewBootJob"/>

@@ -23,8 +23,6 @@ import org.java.plugin.registry.Extension.Parameter;
 public class AnathemaPresenter {
 
   private static final String PARAM_CLASS = "class"; //$NON-NLS-1$
-  private static final String PARAM_KEY = "preferencekey"; //$NON-NLS-1$
-  private static final String PARAM_TYPE = "type"; //$NON-NLS-1$
   private static final String EXTENSION_POINT_BOOTJOBS = "Bootjobs"; //$NON-NLS-1$
   private static final String EXTENSION_POINT_TOOLBAR = "Toolbar"; //$NON-NLS-1$
   private static final String EXTENSION_POINT_MENUBAR = "Menubar"; //$NON-NLS-1$
@@ -80,11 +78,9 @@ public class AnathemaPresenter {
     for (Extension extension : pluginManager.getExtension(
         IPluginConstants.PLUGIN_CORE,
         EXTENSION_POINT_PREFERENCE_ELEMENTS)) {
-      for (Parameter parameter : PluginUtilities.getParameters(extension, PARAM_TYPE)) {
-        Parameter classParameter = parameter.getSubParameter(PARAM_CLASS);
-        Parameter keyParameter = parameter.getSubParameter(PARAM_KEY);
-        IPreferencesElement element = (IPreferencesElement) PluginUtilities.instantiate(classParameter, pluginManager);
-        extensionPoint.register(keyParameter.valueAsString(), element);
+      for (Parameter parameter : PluginUtilities.getParameters(extension, PARAM_CLASS)) {
+        IPreferencesElement element = (IPreferencesElement) PluginUtilities.instantiate(parameter, pluginManager);
+        extensionPoint.addPreferencesElement(element);
       }
     }
   }
