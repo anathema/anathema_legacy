@@ -5,15 +5,10 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Window;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Iterator;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.ListCellRenderer;
 import javax.swing.SwingUtilities;
@@ -37,20 +32,6 @@ public class GuiUtilities extends net.disy.commons.swing.util.GuiUtilities {
     frame.setVisible(true);
   }
 
-  public static void setJMenuBar(JFrame frame, Iterator<JMenu> menus) {
-    JMenuBar menuBar = new JMenuBar();
-    while (menus.hasNext()) {
-      menuBar.add(menus.next());
-    }
-    frame.setJMenuBar(menuBar);
-  }
-
-  public static JMenuItem addJMenuItem(JMenu menu, String label) {
-    JMenuItem menuItem = new JMenuItem(label);
-    menu.add(menuItem);
-    return menuItem;
-  }
-
   public static JDialog createDialog(Component component, String title, boolean modal) {
     Window parent = getParentWindow(component);
     if (parent instanceof JDialog) {
@@ -59,7 +40,7 @@ public class GuiUtilities extends net.disy.commons.swing.util.GuiUtilities {
     return new JDialog((JFrame) parent, title, modal);
   }
 
-  public static Window getParentWindow(Component parent) {
+  private static Window getParentWindow(Component parent) {
     Container container = parent.getParent();
     if (container instanceof JFrame) {
       return (JFrame) container;
@@ -127,13 +108,6 @@ public class GuiUtilities extends net.disy.commons.swing.util.GuiUtilities {
       catch (InvocationTargetException e) {
         throw new RuntimeException(e);
       }
-    }
-  }
-
-  public static void setObjects(DefaultListModel model, Object[] objects) {
-    model.clear();
-    for (Object element : objects) {
-      model.addElement(element);
     }
   }
 
