@@ -13,10 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 import net.disy.commons.core.io.IOUtilities;
-import net.disy.commons.core.message.BasicMessage;
-import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.core.message.Message;
-import net.disy.commons.core.message.MessageType;
 import net.disy.commons.core.progress.IProgressMonitor;
 import net.disy.commons.core.progress.IRunnableWithProgress;
 import net.disy.commons.swing.action.SmartAction;
@@ -25,6 +22,7 @@ import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.ObjectSelectionDialogPage;
 import net.sf.anathema.framework.message.MessageUtilities;
+import net.sf.anathema.framework.module.DefaultObjectSelectionProperties;
 import net.sf.anathema.framework.module.preferences.OpenPdfPreferencesElement;
 import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
@@ -35,7 +33,6 @@ import net.sf.anathema.framework.reporting.itext.IITextReport;
 import net.sf.anathema.framework.reporting.itext.ITextReportPrinter;
 import net.sf.anathema.framework.reporting.jasper.IJasperReport;
 import net.sf.anathema.framework.reporting.jasper.JasperReportPrinter;
-import net.sf.anathema.framework.repository.AbstractObjectSelectionProperties;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IObjectSelectionProperties;
 import net.sf.anathema.lib.control.BrowserControl;
@@ -174,16 +171,7 @@ public class AnathemaPrintAction extends SmartAction {
   }
 
   private IReport selectReport(Component parentComponent, IReport[] reports) {
-    IObjectSelectionProperties properties = new AbstractObjectSelectionProperties(resources) {
-      public String getTitle() {
-        return getResources().getString("Anathema.Reporting.PrintSelection.Title"); //$NON-NLS-1$
-      }
-
-      public IBasicMessage getDefaultMessage() {
-        return new BasicMessage(
-            getResources().getString("Anathema.Reporting.PrintSelection.Message"), MessageType.NORMAL); //$NON-NLS-1$
-      }
-    };
+    IObjectSelectionProperties properties = new DefaultObjectSelectionProperties(resources, "Anathema.Reporting.PrintSelection.Message", "Anathema.Reporting.PrintSelection.Title"); //$NON-NLS-1$ //$NON-NLS-2$
     ObjectSelectionDialogPage dialogPage = new ObjectSelectionDialogPage(reports, properties);
     UserDialog userDialog = new UserDialog(parentComponent, dialogPage);
     userDialog.show();
