@@ -57,8 +57,8 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     List<IIdentificate> supportedCharmTypes = new ArrayList<IIdentificate>();
     List<ICharmGroup> allCharmGroups = new ArrayList<ICharmGroup>();
     initCharacterTypeCharms(supportedCharmTypes, allCharmGroups);
-    initFirstEditionMartialArts(allCharmGroups);
-    initSecondEditionMartialArts(allCharmGroups);
+    initMartialArts(allCharmGroups, CharacterType.SIDEREAL, ExaltedEdition.FirstEdition);
+    initMartialArts(allCharmGroups, CharacterType.SOLAR, ExaltedEdition.SecondEdition);
     supportedCharmTypes.add(MARTIAL_ARTS);
     createCharmTypeSelector(
         supportedCharmTypes.toArray(new IIdentificate[supportedCharmTypes.size()]),
@@ -96,25 +96,10 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     }
   }
 
-  private void initSecondEditionMartialArts(List<ICharmGroup> allCharmGroups) {
-    ICharacterTemplate template = getTemplateRegistry().getDefaultTemplate(
-        CharacterType.SOLAR,
-        ExaltedEdition.SecondEdition);
-    for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(ExaltedEdition.SecondEdition)) {
+  private void initMartialArts(List<ICharmGroup> allCharmGroups, CharacterType type, ExaltedEdition rules) {
+    ICharacterTemplate template = getTemplateRegistry().getDefaultTemplate(type, rules);
+    for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(rules)) {
       ICharmTree martialArtsTree = new MartialArtsCharmTree(template.getMagicTemplate().getCharmTemplate(), ruleSet);
-      getCharmTreeMap(ruleSet).put(MARTIAL_ARTS, martialArtsTree);
-      allCharmGroups.addAll(Arrays.asList(martialArtsTree.getAllCharmGroups()));
-    }
-  }
-
-  private void initFirstEditionMartialArts(List<ICharmGroup> allCharmGroups) {
-    ICharacterTemplate siderealTemplate = getTemplateRegistry().getDefaultTemplate(
-        CharacterType.SIDEREAL,
-        ExaltedEdition.FirstEdition);
-    for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(ExaltedEdition.FirstEdition)) {
-      ICharmTree martialArtsTree = new MartialArtsCharmTree(
-          siderealTemplate.getMagicTemplate().getCharmTemplate(),
-          ruleSet);
       getCharmTreeMap(ruleSet).put(MARTIAL_ARTS, martialArtsTree);
       allCharmGroups.addAll(Arrays.asList(martialArtsTree.getAllCharmGroups()));
     }
