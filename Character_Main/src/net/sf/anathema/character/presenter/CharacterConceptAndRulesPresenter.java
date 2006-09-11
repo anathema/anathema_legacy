@@ -77,24 +77,28 @@ public class CharacterConceptAndRulesPresenter {
         motivation.beginEdit();
       }
     };
+    beginEditAction.setToolTipText(resources.getString("CharacterConcept.Motivation.BeginEdit.Tooltip")); //$NON-NLS-1$
     final SmartAction cancelEditAction = new SmartAction(characterUI.getCancelComboEditIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         motivation.cancelEdit();
       }
     };
+    cancelEditAction.setToolTipText(resources.getString("CharacterConcept.Motivation.Cancel.Tooltip")); //$NON-NLS-1$
     final SmartAction endEditAction = new SmartAction(characterUI.getFinalizeIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         motivation.endEdit();
       }
     };
+    endEditAction.setToolTipText(resources.getString("CharacterConcept.Motivation.EndEdit.Tooltip")); //$NON-NLS-1$
     final SmartAction endEditXPAction = new SmartAction(characterUI.getFinalizeXPIcon()) {
       @Override
       protected void execute(Component parentComponent) {
-        motivation.endEditXPSpending(resources.getString("Motivation.Changed.XPSpending")); //$NON-NLS-1$
+        motivation.endEditXPSpending(resources.getString("CharacterConcept.Motivation.XPSpent")); //$NON-NLS-1$
       }
     };
+    endEditXPAction.setToolTipText(resources.getString("CharacterConcept.Motivation.EndEditXP.Tooltip")); //$NON-NLS-1$
     final JButton beginButton = view.addAction(beginEditAction, 1);
     view.addAction(endEditAction, 1);
     view.addAction(endEditXPAction, 1);
