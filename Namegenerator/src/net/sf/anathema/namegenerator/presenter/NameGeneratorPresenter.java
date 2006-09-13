@@ -6,13 +6,14 @@ import javax.swing.JComponent;
 
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.namegenerator.presenter.model.INameGeneratorModel;
 import net.sf.anathema.namegenerator.presenter.view.INameGeneratorView;
 
-public class NameGeneratorPresenter {
+public class NameGeneratorPresenter implements IPresenter {
 
   private final INameGeneratorView view;
   private final INameGeneratorModel model;
