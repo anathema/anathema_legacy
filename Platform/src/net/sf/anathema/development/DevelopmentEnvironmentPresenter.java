@@ -3,9 +3,10 @@ package net.sf.anathema.development;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.framework.view.menu.IMenu;
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 
-public class DevelopmentEnvironmentPresenter {
+public class DevelopmentEnvironmentPresenter implements IPresenter {
 
   private final IAnathemaView view;
   private final IAnathemaModel model;

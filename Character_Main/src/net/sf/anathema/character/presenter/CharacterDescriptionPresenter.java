@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.model.ICharacterDescription;
 import net.sf.anathema.character.presenter.description.NameGeneratorAction;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
@@ -11,7 +12,7 @@ import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 import net.sf.anathema.namegenerator.domain.realm.RealmNameGenerator;
 import net.sf.anathema.namegenerator.exalted.domain.ThresholdNameGenerator;
 
-public class CharacterDescriptionPresenter {
+public class CharacterDescriptionPresenter implements IPresenter{
 
   private final ICharacterDescription description;
   private final ICharacterDescriptionView descriptionView;
@@ -26,7 +27,7 @@ public class CharacterDescriptionPresenter {
     this.descriptionView = descriptionView;
   }
 
-  public void init() {
+  public void initPresentation() {
     TextualPresentation presentation = new TextualPresentation();
     initNameLineView(0, presentation);
     initLineView("CharacterDescription.Label.Player", description.getPlayer(), presentation); //$NON-NLS-1$

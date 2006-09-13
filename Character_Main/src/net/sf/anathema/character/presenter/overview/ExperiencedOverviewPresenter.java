@@ -11,11 +11,12 @@ import net.sf.anathema.character.model.advance.IExperiencePointEntry;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.lib.control.legality.LegalityColorProvider;
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-public class ExperiencedOverviewPresenter {
+public class ExperiencedOverviewPresenter implements IPresenter{
 
   private final IExperiencePointManagement management;
   private final IOverviewView view;
@@ -44,7 +45,7 @@ public class ExperiencedOverviewPresenter {
     this.view = experiencePointView;
   }
 
-  public void init() {
+  public void initPresentation() {
     IOverviewCategory category = view.addOverviewCategory(getString("Overview.Experience.Title")); //$NON-NLS-1$
     for (IValueModel<Integer> model : management.getAllModels()) {
       IValueView<Integer> valueView = category.addIntegerValueView(getString("Overview.Experience." + model.getId()), 2); //$NON-NLS-1$

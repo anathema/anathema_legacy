@@ -18,11 +18,12 @@ import net.sf.anathema.character.model.concept.INatureType;
 import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.view.overview.IOverviewView;
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-public class CreationOverviewPresenter {
+public class CreationOverviewPresenter implements IPresenter {
 
   private final IResources resources;
   private final IOverviewView view;
@@ -50,7 +51,7 @@ public class CreationOverviewPresenter {
     this.view = overviewView;
   }
 
-  public void init() {
+  public void initPresentation() {
     this.management.recalculate();
     IOverviewModel[] allModels = management.getAllModels();
     initConcept();

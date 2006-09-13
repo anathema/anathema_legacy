@@ -12,9 +12,10 @@ import net.sf.anathema.character.model.advance.IExperiencePointConfigurationList
 import net.sf.anathema.character.model.advance.IExperiencePointEntry;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewListener;
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 
-public class ExperienceConfigurationPresenter {
+public class ExperienceConfigurationPresenter implements IPresenter {
 
   private static final int VALUE_INDEX = 1;
   private static final int DESCRIPTION_INDEX = 0;
@@ -52,7 +53,7 @@ public class ExperienceConfigurationPresenter {
     });
     experiencePoints.addExperiencePointConfigurationListener(new IExperiencePointConfigurationListener() {
       public void entryRemoved(IExperiencePointEntry entry) {
-        removeFromView(entry);        
+        removeFromView(entry);
       }
 
       public void entryAdded(IExperiencePointEntry entry) {

@@ -9,12 +9,13 @@ import net.sf.anathema.framework.view.AbstractSelectCellRenderer;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
-public class VirtueFlawPresenter {
+public class VirtueFlawPresenter implements IPresenter {
 
   private final IResources resources;
   private final IVirtueFlawView view;

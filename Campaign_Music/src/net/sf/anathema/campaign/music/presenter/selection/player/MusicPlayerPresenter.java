@@ -15,9 +15,10 @@ import net.sf.anathema.campaign.music.presenter.MusicUI;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.exception.AnathemaException;
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 
-public class MusicPlayerPresenter {
+public class MusicPlayerPresenter implements IPresenter {
 
   private final IMusicPlayerView view;
   private final IMusicPlayerModel playerModel;

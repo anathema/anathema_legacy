@@ -13,12 +13,13 @@ import net.sf.anathema.gis.main.model.IGisModel;
 import net.sf.anathema.gis.main.model.layerfactory.LayerCreationException;
 import net.sf.anathema.gis.main.view.IAnathemaGisView;
 import net.sf.anathema.gis.main.view.ICoordinateView;
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 import de.disy.gis.gisterm.map.IMapModel;
 import de.disy.gis.gisterm.map.theme.LayerTheme;
 
-public class GisPresenter {
+public class GisPresenter implements IPresenter {
 
   private static final Logger logger = Logger.getLogger(GisPresenter.class);
   private final IGisModel model;

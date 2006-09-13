@@ -8,17 +8,20 @@ import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.namegenerator.domain.category.AggregatedTokenCategory;
 import net.sf.anathema.namegenerator.domain.category.ICategorizedTokenConfiguration;
 import net.sf.anathema.namegenerator.domain.category.TokenCategory;
 import net.sf.anathema.namegenerator.view.category.ICategorizedNameGeneratorView;
 
-public class CategorizedNamegeneratorPresenter {
+public class CategorizedNamegeneratorPresenter implements IPresenter {
 
   private final ICategorizedNameGeneratorView view;
   private final ICategorizedTokenConfiguration tokenRegistry;
 
-  public CategorizedNamegeneratorPresenter(ICategorizedNameGeneratorView view, ICategorizedTokenConfiguration tokenRegistry) {
+  public CategorizedNamegeneratorPresenter(
+      ICategorizedNameGeneratorView view,
+      ICategorizedTokenConfiguration tokenRegistry) {
     this.view = view;
     this.tokenRegistry = tokenRegistry;
   }
@@ -27,7 +30,12 @@ public class CategorizedNamegeneratorPresenter {
     Object[] categories = getAllVoidStateCategories();
     ListCellRenderer renderer = new DefaultListCellRenderer() {
       @Override
-      public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+      public Component getListCellRendererComponent(
+          JList list,
+          Object value,
+          int index,
+          boolean isSelected,
+          boolean cellHasFocus) {
         if (value == null) {
           value = "Select";
         }

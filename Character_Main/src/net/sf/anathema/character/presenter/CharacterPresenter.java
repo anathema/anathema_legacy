@@ -84,9 +84,9 @@ public class CharacterPresenter implements IPresenter {
 
   private void initOverviewPresentation() {
     IOverviewView creationPointView = characterView.addCreationOverviewView();
-    new CreationOverviewPresenter(resources, getStatistics(), creationPointView, bonusPointManagement).init();
+    new CreationOverviewPresenter(resources, getStatistics(), creationPointView, bonusPointManagement).initPresentation();
     IOverviewView experiencePointView = characterView.addExperienceOverviewView();
-    new ExperiencedOverviewPresenter(resources, getStatistics(), experiencePointView, experiencePointManagement).init();
+    new ExperiencedOverviewPresenter(resources, getStatistics(), experiencePointView, experiencePointManagement).initPresentation();
     setOverviewView(getStatistics().isExperienced());
   }
 
@@ -213,6 +213,6 @@ public class CharacterPresenter implements IPresenter {
 
   private void initCharacterDescriptionPresentation() {
     ICharacterDescriptionView descriptionView = characterView.addCharacterDescriptionView(resources.getString("CardView.CharacterDescription.Title")); //$NON-NLS-1$
-    new CharacterDescriptionPresenter(resources, character.getDescription(), descriptionView).init();
+    new CharacterDescriptionPresenter(resources, character.getDescription(), descriptionView).initPresentation();
   }
 }

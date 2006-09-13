@@ -15,10 +15,11 @@ import net.sf.anathema.campaign.music.presenter.library.control.DeleteLibraryAct
 import net.sf.anathema.campaign.music.presenter.library.control.LibrarySelectionListener;
 import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.resources.IResources;
 
-public class LibraryControlPresenter {
+public class LibraryControlPresenter implements IPresenter {
 
   private final ILibraryControlView controlView;
   private final ILibraryControl libraryModel;

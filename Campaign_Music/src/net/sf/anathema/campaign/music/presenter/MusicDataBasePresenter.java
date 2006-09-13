@@ -13,9 +13,10 @@ import net.sf.anathema.campaign.music.view.IMusicDatabaseView;
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationProperties;
 import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
 import net.sf.anathema.campaign.music.view.selection.IMusicSelectionView;
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 
-public class MusicDataBasePresenter {
+public class MusicDataBasePresenter implements IPresenter {
 
   private final IMusicDatabaseView view;
   private final IMusicDatabase dataBase;

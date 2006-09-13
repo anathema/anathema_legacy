@@ -272,7 +272,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
             characterColor);
         IMultiLearnableCharmConfiguration model = (IMultiLearnableCharmConfiguration) getCharmConfiguration().getSpecialCharmConfiguration(
             visitedCharm.getCharmId());
-        new MultiLearnableCharmPresenter(getResources(), multiLearnableCharmView, model).init();
+        new MultiLearnableCharmPresenter(getResources(), multiLearnableCharmView, model).initPresentation();
         specialCharmViews.add(multiLearnableCharmView);
       }
 
@@ -284,7 +284,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
         ICharm originalCharm = statistics.getCharms().getCharmById(visited.getCharmId());
         IOxBodyTechniqueConfiguration model = (IOxBodyTechniqueConfiguration) getCharmConfiguration().getSpecialCharmConfiguration(
             visited.getCharmId());
-        new OxBodyTechniquePresenter(getResources(), oxBodyTechniqueView, model).init();
+        new OxBodyTechniquePresenter(getResources(), oxBodyTechniqueView, model).initPresentation();
         if ((originalCharm.hasChildren() || originalCharm.isTreeRoot()) && model.getCategories().length > 1) {
           specialCharmViews.add(viewFactory.createViewControlButton(
               oxBodyTechniqueView,

@@ -7,9 +7,10 @@ import javax.swing.tree.TreeCellRenderer;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 
-public class RepositoryTreePresenter {
+public class RepositoryTreePresenter implements IPresenter {
 
   private final DefaultMutableTreeNode root;
   private final DefaultTreeModel treeModel;
@@ -79,7 +80,7 @@ public class RepositoryTreePresenter {
           if (file == fileNode.getUserObject()) {
             foundNode = fileNode;
             break;
-          }          
+          }
         }
         break;
       }

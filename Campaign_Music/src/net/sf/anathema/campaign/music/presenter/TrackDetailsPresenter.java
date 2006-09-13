@@ -7,10 +7,11 @@ import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.view.selection.ITrackDetailsView;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.container.SelectionContainerPresenter;
 
-public class TrackDetailsPresenter {
+public class TrackDetailsPresenter implements IPresenter {
 
   private final ITrackDetailModel trackDetailModel;
   private final ITrackDetailsView trackDetailsView;

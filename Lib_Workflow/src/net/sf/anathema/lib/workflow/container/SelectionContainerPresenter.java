@@ -1,11 +1,12 @@
 package net.sf.anathema.lib.workflow.container;
 
 import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.lang.ArrayFactory;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.lang.IArrayFactory;
 
-public class SelectionContainerPresenter<V> {
+public class SelectionContainerPresenter<V> implements IPresenter {
 
   private final ISelectionContainerModel<V> model;
   private final ISelectionContainerView<V> view;

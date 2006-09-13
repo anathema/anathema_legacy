@@ -16,9 +16,10 @@ import net.sf.anathema.framework.repository.tree.RepositoryTreeCellRenderer;
 import net.sf.anathema.framework.repository.tree.RepositoryTreeModel;
 import net.sf.anathema.framework.repository.tree.RepositoryTreePresenter;
 import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 
-public class CampaignContentPresenter {
+public class CampaignContentPresenter implements IPresenter {
 
   private final ISeriesContentView contentView;
   private final ISeries campaign;
