@@ -29,7 +29,7 @@ public class PdfWillpowerEncoder implements IPdfContentBoxEncoder {
     int value = character.getTraitCollection().getTrait(OtherTraitType.Willpower).getCurrentValue();
     float entryHeight = Math.max((contentBounds.height - padding) / 2, traitEncoder.getTraitHeight());
     float yPosition = contentBounds.getMaxY() - entryHeight;
-    traitEncoder.encodeCenteredAndUngrouped(directContent, new Position(leftX, yPosition), width, value, 10);
+    traitEncoder.encodeDotsCenteredAndUngrouped(directContent, new Position(leftX, yPosition), width, value, 10);
     yPosition -= entryHeight;
     traitEncoder.encodeSquaresCenteredAndUngrouped(directContent, new Position(leftX, yPosition), width, 0, 10);
   }

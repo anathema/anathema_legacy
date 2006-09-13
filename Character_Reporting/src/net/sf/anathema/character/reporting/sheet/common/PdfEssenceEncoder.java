@@ -39,7 +39,7 @@ public class PdfEssenceEncoder extends AbstractPdfEncoder implements IPdfContent
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     int value = character.getTraitCollection().getTrait(OtherTraitType.Essence).getCurrentValue();
     Position essencePosition = new Position(bounds.x, bounds.y + bounds.height - largeTraitEncoder.getTraitHeight());
-    largeTraitEncoder.encodeCenteredAndUngrouped(directContent, essencePosition, bounds.width, value, essenceMax);
+    largeTraitEncoder.encodeDotsCenteredAndUngrouped(directContent, essencePosition, bounds.width, value, essenceMax);
     float poolHeight = bounds.height - largeTraitEncoder.getTraitHeight() - IVoidStateFormatConstants.TEXT_PADDING;
     float poolLineHeight = poolHeight / 2;
     Position personalPosition = new Position(bounds.x, essencePosition.y - poolLineHeight);

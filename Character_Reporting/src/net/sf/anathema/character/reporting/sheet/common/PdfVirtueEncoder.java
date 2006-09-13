@@ -52,7 +52,7 @@ public class PdfVirtueEncoder extends AbstractPdfEncoder {
     yPosition -= traitEncoder.getTraitHeight() - 1;
     Position traitPosition = new Position(position.x, yPosition);
     int value = trait.getCurrentValue();
-    traitEncoder.encodeCenteredAndUngrouped(directContent, traitPosition, width, value, 5);
+    traitEncoder.encodeDotsCenteredAndUngrouped(directContent, traitPosition, width, value, 5);
     yPosition -= traitEncoder.getTraitHeight() - 1;
     traitEncoder.encodeSquaresCenteredAndUngrouped(directContent, new Position(position.x, yPosition), width, 0, 5);
   }

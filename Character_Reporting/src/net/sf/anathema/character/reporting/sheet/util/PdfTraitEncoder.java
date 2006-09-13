@@ -58,7 +58,7 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
     }
   }
 
-  public int encodeCenteredAndUngrouped(
+  public int encodeDotsCenteredAndUngrouped(
       PdfContentByte directContent,
       Position position,
       float width,
