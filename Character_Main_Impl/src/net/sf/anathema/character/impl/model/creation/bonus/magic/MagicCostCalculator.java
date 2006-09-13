@@ -72,12 +72,11 @@ public class MagicCostCalculator {
         magicToHandle.toArray(new IMagic[magicToHandle.size()]),
         weights);
     for (IMagic magic : sortedMagicList) {
-      boolean favored = analyzer.isMagicFavored(magic);
-      handleMagic(magic, favored);
+      handleMagic(magic);
     }
   }
 
-  private void handleMagic(IMagic magic, boolean favored) {
+  private void handleMagic(IMagic magic) {
     final int bonusPointFactor = costs.getMagicCosts(magic, analyzer);
     final int[] learnCount = new int[1];
     magic.accept(new IMagicVisitor() {
@@ -89,6 +88,7 @@ public class MagicCostCalculator {
         learnCount[0] = 1;
       }
     });
+    boolean favored = analyzer.isMagicFavored(magic);
     for (int timesHandled = 0; timesHandled < learnCount[0]; timesHandled++) {
       if (favored) {
         handleFavoredMagic(bonusPointFactor, magic);
