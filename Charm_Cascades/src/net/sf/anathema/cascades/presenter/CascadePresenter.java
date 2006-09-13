@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.sf.anathema.cascades.module.CharmCascadeModuleView;
+import net.sf.anathema.cascades.module.ICascadeViewFactory;
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
@@ -38,19 +38,16 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
   private IIdentificate selectedType;
   private final Map<IExaltedRuleSet, CharmTreeIdentificateMap> charmMapsByRules = new HashMap<IExaltedRuleSet, CharmTreeIdentificateMap>();
   private final CascadeCharmTreeViewProperties viewProperties;
+  private final ICascadeView view;
 
-  public CascadePresenter(IResources resources, ITemplateRegistry templateRegistry) {
+  public CascadePresenter(IResources resources, ITemplateRegistry templateRegistry, ICascadeViewFactory factory) {
     super(resources, templateRegistry);
     this.viewProperties = new CascadeCharmTreeViewProperties(resources);
+    this.view = factory.createCascadeView(viewProperties);
   }
 
-  public void initPresentation(CharmCascadeModuleView view) {
-    final ICascadeView cascadeView = view.addCascadeView(viewProperties);
-    this.selectionListener = new CascadeCharmGroupChangeListener(
-        cascadeView,
-        viewProperties,
-        this,
-        getTemplateRegistry());
+  public void initPresentation() {
+    this.selectionListener = new CascadeCharmGroupChangeListener(view, viewProperties, this, getTemplateRegistry());
     for (IExaltedRuleSet ruleSet : ExaltedRuleSet.values()) {
       charmMapsByRules.put(ruleSet, new CharmTreeIdentificateMap());
     }
@@ -62,15 +59,12 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     supportedCharmTypes.add(MARTIAL_ARTS);
     createCharmTypeSelector(
         supportedCharmTypes.toArray(new IIdentificate[supportedCharmTypes.size()]),
-        cascadeView,
+        view,
         "CharmTreeView.GUI.CharmType"); //$NON-NLS-1$
-    createCharmGroupSelector(
-        cascadeView,
-        selectionListener,
-        allCharmGroups.toArray(new ICharmGroup[allCharmGroups.size()]));
-    initRules(cascadeView);
-    initCharmTypeSelectionListening(cascadeView);
-    cascadeView.addDocumentLoadedListener(new IDocumentLoadedListener() {
+    createCharmGroupSelector(view, selectionListener, allCharmGroups.toArray(new ICharmGroup[allCharmGroups.size()]));
+    initRules();
+    initCharmTypeSelectionListening();
+    view.addDocumentLoadedListener(new IDocumentLoadedListener() {
       public void documentLoaded() {
         selectionListener.updateColors();
       }
@@ -105,7 +99,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     }
   }
 
-  private void initRules(final ICascadeView view) {
+  private void initRules() {
     IChangeableJComboBox<IExaltedRuleSet> rulesComboBox = new ChangeableJComboBox<IExaltedRuleSet>(
         ExaltedRuleSet.values(),
         false);
@@ -152,15 +146,15 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     return charmMapsByRules.get(ruleSet);
   }
 
-  private void initCharmTypeSelectionListening(final ICascadeView view) {
+  private void initCharmTypeSelectionListening() {
     view.addCharmTypeSelectionListener(new IExaltTypeChangedListener() {
       public void valueChanged(Object cascadeType) {
-        handleTypeSelectionChange(cascadeType, view);
+        handleTypeSelectionChange(cascadeType);
       }
     });
   }
 
-  private void handleTypeSelectionChange(Object cascadeType, ICascadeView view) {
+  private void handleTypeSelectionChange(Object cascadeType) {
     this.selectedType = (IIdentificate) cascadeType;
     if (cascadeType == null) {
       view.fillCharmGroupBox(new IIdentificate[0]);

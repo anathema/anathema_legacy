@@ -11,7 +11,7 @@ import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
-public class CharmCascadeModuleView implements IItemView {
+public class CharmCascadeModuleView implements IItemView, ICascadeViewFactory {
   private final JPanel panel = new JPanel(new GridDialogLayout(1, false));
   private final String printName;
   private final Icon icon;
@@ -21,7 +21,7 @@ public class CharmCascadeModuleView implements IItemView {
     this.icon = icon;
   }
 
-  public CascadeView addCascadeView(ICharmTreeViewProperties properties) {
+  public CascadeView createCascadeView(ICharmTreeViewProperties properties) {
     CascadeView view = new CascadeView(properties);
     panel.add(view.getComponent(), GridDialogLayoutData.FILL_BOTH);
     return view;

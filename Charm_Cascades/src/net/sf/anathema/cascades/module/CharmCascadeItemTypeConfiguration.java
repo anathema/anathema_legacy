@@ -35,7 +35,7 @@ public final class CharmCascadeItemTypeConfiguration extends AbstractNonPersista
         ICharacterGenericsExtension extension = (ICharacterGenericsExtension) anathemaModel.getExtensionPointRegistry()
             .get(ICharacterGenericsExtension.ID);
         ICharacterGenerics characterGenerics = extension.getCharacterGenerics();
-        new CascadePresenter(resources, characterGenerics.getTemplateRegistry()).initPresentation(view);
+        new CascadePresenter(resources, characterGenerics.getTemplateRegistry(), view).initPresentation();
         return view;
       }
     };

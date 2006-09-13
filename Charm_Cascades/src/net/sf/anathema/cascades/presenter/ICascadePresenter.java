@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.util.IIdentificate;
 
-public interface ICascadePresenter {
+public interface ICascadePresenter extends IPresenter {
 
   public ICharmTree getCharmTree(IIdentificate type);
 }
