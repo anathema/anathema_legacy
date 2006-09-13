@@ -71,7 +71,7 @@ public class PlotView extends AbstractTabView<IPlotViewProperties> implements IP
     tree.expandPath(new TreePath(node.getPath()));
   }
 
-  public DefaultMutableTreeNode getSelectedHierachyNode() {
+  private DefaultMutableTreeNode getSelectedHierachyNode() {
     TreePath selectionPath = tree.getSelectionPath();
     if (selectionPath == null) {
       return null;
