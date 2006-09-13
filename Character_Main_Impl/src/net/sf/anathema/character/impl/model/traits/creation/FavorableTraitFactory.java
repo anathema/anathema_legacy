@@ -6,6 +6,8 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
+import net.sf.anathema.character.generic.rules.IEditionVisitor;
+import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITraitTemplateCollection;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -59,7 +61,16 @@ public class FavorableTraitFactory extends AbstractTraitFactory {
         traitContext.getLimitationContext());
     IValueChangeChecker valueChecker = createValueIncrementChecker(traitType);
     if (traitType == AbilityType.Craft) {
-      String[] elements = new String[] { "Air", "Earth", "Fire", "Water", "Wood" };
+      final String[][] crafts = new String[1][]; 
+      basicCharacterData.getRuleSet().getEdition().accept(new IEditionVisitor() {
+        public void visitFirstEdition(IExaltedEdition visitedEdition) {
+          crafts[0] = new String[] { "Generic" };//$NON-NLS-1$
+        }
+
+        public void visitSecondEdition(IExaltedEdition visitedEdition) {
+          crafts[0] = new String[] { "Air", "Earth", "Fire", "Water", "Wood" };//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$          
+        }        
+      });      
       return new AggregatedTrait(
           favorableTraitRules,
           basicCharacterData,
@@ -68,7 +79,7 @@ public class FavorableTraitFactory extends AbstractTraitFactory {
           valueChecker,
           casteType,
           favoredIncrementChecker,
-          elements);
+          crafts[0]);
     }
     return new DefaultTrait(
         favorableTraitRules,
