@@ -9,13 +9,15 @@ import net.sf.anathema.campaign.model.plot.IPlotElementContainer;
 import net.sf.anathema.campaign.model.plot.IPlotElementContainerListener;
 import net.sf.anathema.campaign.model.plot.IPlotTimeUnit;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.util.Identificate;
 
 public class PlotElementContainer extends Identificate implements IPlotElementContainer {
 
   private final IPlotTimeUnit unit;
   private final List<IPlotElement> children = new ArrayList<IPlotElement>();
-  private final List<IPlotElementContainerListener> listeners = new ArrayList<IPlotElementContainerListener>();
+  private final GenericControl<IPlotElementContainerListener> listeners = new GenericControl<IPlotElementContainerListener>();
   private final PlotIDProvider provider;
 
   public PlotElementContainer(PlotIDProvider provider, IPlotTimeUnit unit) {
@@ -53,28 +55,36 @@ public class PlotElementContainer extends Identificate implements IPlotElementCo
     return plotElement;
   }
 
-  private synchronized void fireChildAddedEvent(IPlotElement element) {
-    for (IPlotElementContainerListener listener : new ArrayList<IPlotElementContainerListener>(listeners)) {
-      listener.childAdded(this, element);
-    }
+  private void fireChildAddedEvent(final IPlotElement element) {
+    listeners.forAllDo(new IClosure<IPlotElementContainerListener>() {
+      public void execute(IPlotElementContainerListener input) {
+        input.childAdded(PlotElementContainer.this, element);
+      }
+    });
   }
 
-  private synchronized void fireChildMovedEvent(IPlotElement element, int newIndex) {
-    for (IPlotElementContainerListener listener : new ArrayList<IPlotElementContainerListener>(listeners)) {
-      listener.childMoved(element, newIndex);
-    }
+  private void fireChildMovedEvent(final IPlotElement element, final int newIndex) {
+    listeners.forAllDo(new IClosure<IPlotElementContainerListener>() {
+      public void execute(IPlotElementContainerListener input) {
+        input.childMoved(element, newIndex);
+      }
+    });
   }
 
-  private synchronized void fireChildRemovedEvent(IPlotElement element) {
-    for (IPlotElementContainerListener listener : new ArrayList<IPlotElementContainerListener>(listeners)) {
-      listener.childRemoved(element);
-    }
+  private void fireChildRemovedEvent(final IPlotElement element) {
+    listeners.forAllDo(new IClosure<IPlotElementContainerListener>() {
+      public void execute(IPlotElementContainerListener input) {
+        input.childRemoved(element);
+      }
+    });
   }
 
-  private synchronized void fireChildInsertedEvent(IPlotElement element, int index) {
-    for (IPlotElementContainerListener listener : new ArrayList<IPlotElementContainerListener>(listeners)) {
-      listener.childInserted(element, this, index);
-    }
+  private void fireChildInsertedEvent(final IPlotElement element, final int index) {
+    listeners.forAllDo(new IClosure<IPlotElementContainerListener>() {
+      public void execute(IPlotElementContainerListener input) {
+        input.childInserted(element, PlotElementContainer.this, index);
+      }
+    });
   }
 
   public void removeChild(IPlotElement element) {
@@ -101,12 +111,12 @@ public class PlotElementContainer extends Identificate implements IPlotElementCo
     }
   }
 
-  public synchronized void removePlotElementContainerListener(IPlotElementContainerListener listener) {
-    listeners.remove(listener);
+  public void removePlotElementContainerListener(IPlotElementContainerListener listener) {
+    listeners.removeListener(listener);
   }
 
-  public synchronized void addPlotElementContainerListener(IPlotElementContainerListener listener) {
-    listeners.add(listener);
+  public void addPlotElementContainerListener(IPlotElementContainerListener listener) {
+    listeners.addListener(listener);
   }
 
   @Override
