@@ -4,7 +4,7 @@ import javax.swing.Action;
 
 import net.sf.anathema.framework.model.IItemActionFactory;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
-import net.sf.anathema.framework.presenter.itemmanagement.AnathemaCloseAction;
+import net.sf.anathema.framework.presenter.itemmanagement.AnathemaItemCloseAction;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -19,6 +19,6 @@ public class ItemActionFactory implements IItemActionFactory {
   }
 
   public Action createAction(IItem item) {
-    return AnathemaCloseAction.createForItem(model, resources, item);
+    return AnathemaItemCloseAction.createForItem(model, resources, item);
   }
 }
