@@ -44,10 +44,11 @@ public class CharmTree implements ICharmTree {
       String groupId = charm.getGroupId();
       if (!groupIds.contains(groupId) && isLearnableCharm(charm)) {
         groupIds.add(groupId);
+        List<ICharm> groupCharms = getAllCharmsForGroup(groupId);
         charmGroups.add(new CharmGroup(
             charm.getCharacterType(),
             groupId,
-            getAllCharmsForGroup(groupId),
+            groupCharms.toArray(new ICharm[groupCharms.size()]),
             MartialArtsUtilities.isMartialArtsCharm(charm)));
       }
     }

@@ -13,10 +13,6 @@ public class CharmGroup extends Identificate implements ICharmGroup {
   private final CharacterType type;
   private final boolean isMartialArtsGroup;
 
-  public CharmGroup(CharacterType type, String id, List<? extends ICharm> charms, boolean isMartialArtsGroup) {
-    this(type, id, charms.toArray(new ICharm[charms.size()]), isMartialArtsGroup);
-  }
-
   public CharmGroup(CharacterType type, String id, ICharm[] charms, boolean isMartialArtsGroup) {
     super(id);
     this.type = type;

@@ -31,7 +31,7 @@ public class LearningCharmGroupTest extends BasicTestCase {
   private LearningCharmGroup createSolarGroup(ICharmLearnableArbitrator learnableArbitrator, String groupId) {
     ICharmLearnStrategy learnSrategy = new CreationCharmLearnStrategy();
     CharmTree charmTree = new CharmTree(new DummyCharmTemplate(), ExaltedRuleSet.CoreRules);
-    CharmGroup group = new CharmGroup(CharacterType.SOLAR, groupId, charmTree.getAllCharmsForGroup(groupId), false);
+    CharmGroup group = new CharmGroup(CharacterType.SOLAR, groupId, charmTree.getAllCharmsForGroup(groupId).toArray(new ICharm[0]), false);
     return new LearningCharmGroup(learnSrategy, group, learnableArbitrator, container);
   }
 
@@ -40,7 +40,7 @@ public class LearningCharmGroupTest extends BasicTestCase {
       ICharmTree charmTree,
       String groupId) {
     ICharmLearnStrategy learnSrategy = new CreationCharmLearnStrategy();
-    CharmGroup group = new CharmGroup(CharacterType.SOLAR, groupId, charmTree.getAllCharmsForGroup(groupId), false);
+    CharmGroup group = new CharmGroup(CharacterType.SOLAR, groupId, charmTree.getAllCharmsForGroup(groupId).toArray(new ICharm[0]), false);
     return new LearningCharmGroup(learnSrategy, group, learnableArbitrator, container);
   }
 
