@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.sf.anathema.framework.styledtext.presentation.TextFormat;
+import net.sf.anathema.framework.styledtext.presentation.TextPart;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -54,7 +55,7 @@ public class StyledTextualDescription extends AbstractTextualDescription impleme
       setText(new ITextPart[0]);
     }
     else {
-      setText(new ITextPart[] { new net.sf.anathema.framework.styledtext.presentation.TextPart(text, new TextFormat()) });
+      setText(new ITextPart[] { new TextPart(text, new TextFormat()) });
     }
   }
 
