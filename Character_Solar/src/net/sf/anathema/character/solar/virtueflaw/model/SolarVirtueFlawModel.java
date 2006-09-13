@@ -45,8 +45,4 @@ public class SolarVirtueFlawModel extends VirtueFlawModel implements ISolarVirtu
     }
     return flawVirtues.toArray(new ITraitType[0]);
   }
-
-  public boolean isFlawComplete() {
-    return getVirtueFlaw().isFlawComplete();
-  }
 }
