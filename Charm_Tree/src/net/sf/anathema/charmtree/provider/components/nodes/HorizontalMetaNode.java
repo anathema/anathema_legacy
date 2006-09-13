@@ -7,11 +7,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.dom4j.Element;
+
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.ISimpleNode;
 import net.sf.anathema.charmtree.provider.components.ILayer;
 import net.sf.anathema.lib.collection.ListOrderedSet;
 
-public class HorizontalMetaNode extends AbstractMetaNode {
+public class HorizontalMetaNode extends AbstractVisualizableNode {
 
   private final List<ISimpleNode> contentNodes = new ArrayList<ISimpleNode>();
   private final Dimension gapDimension;
@@ -55,8 +57,7 @@ public class HorizontalMetaNode extends AbstractMetaNode {
     return width + gapDimension.width * (contentNodes.size() - 1);
   }
 
-  @Override
-  protected void positionInnerNodes() {
+  private void positionInnerNodes() {
     IVisualizableNode[] innerNodes = getInnerNodes();
     int nodePosition = getLeftSide() + innerNodes[0].getWidth() / 2;
     for (int nodeIndex = 0; nodeIndex < innerNodes.length; nodeIndex++) {
@@ -68,7 +69,6 @@ public class HorizontalMetaNode extends AbstractMetaNode {
     }
   }
 
-  @Override
   public boolean isOfSameLeafGroup(IVisualizableNode node) {
     for (IVisualizableNode visualizableNode : getInnerNodes()) {
       if (visualizableNode.isOfSameLeafGroup(node)) {
@@ -82,7 +82,6 @@ public class HorizontalMetaNode extends AbstractMetaNode {
     visitor.visitHorizontalMetaNode(this);
   }
 
-  @Override
   public IVisualizableNode[] getInnerNodes() {
     List<IVisualizableNode> innerVisualizableNodes = new ArrayList<IVisualizableNode>();
     for (ISimpleNode node : contentNodes) {
@@ -99,8 +98,7 @@ public class HorizontalMetaNode extends AbstractMetaNode {
     super.setLayer(layer);
   }
 
-  @Override
-  protected void refreshContentMap() {
+  private void refreshContentMap() {
     Map<ISimpleNode, IVisualizableNode> contentNodeMap = getContentNodeMap();
     for (ISimpleNode node : contentNodes) {
       contentNodeMap.put(node, innerVisualizableNodesByContent.get(node));
@@ -109,5 +107,14 @@ public class HorizontalMetaNode extends AbstractMetaNode {
 
   public boolean isRootNode() {
     return false;
+  }
+
+  public final void toXML(Element element) {
+    throw new UnsupportedOperationException("Metanodes should be unrolled before creating XML."); //$NON-NLS-1$
+  }
+
+  public void resolveMetanode() {
+    positionInnerNodes();
+    refreshContentMap();
   }
 }
