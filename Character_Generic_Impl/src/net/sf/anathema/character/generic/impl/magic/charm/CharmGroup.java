@@ -1,7 +1,5 @@
 package net.sf.anathema.character.generic.impl.magic.charm;
 
-import java.util.List;
-
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.type.CharacterType;
