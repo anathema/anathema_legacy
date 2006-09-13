@@ -27,10 +27,11 @@ import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
-public class BackgroundPresenter extends AbstractTraitPresenter implements IAdvantageSubPresenter {
+public class BackgroundPresenter extends AbstractTraitPresenter implements IPresenter {
 
   private static final String BACKGROUND_TYPE_RESOURCE_KEY_PREFIX = "BackgroundType.Name."; //$NON-NLS-1$
   private final IBackgroundConfiguration configuration;
@@ -84,7 +85,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IAdva
     return resources.getString(BACKGROUND_TYPE_RESOURCE_KEY_PREFIX + template.getId());
   }
 
-  public void init() {
+  public void initPresentation() {
     Icon addIcon = new BasicUi(resources).getAddIcon();
     IButtonControlledObjectSelectionView<Object> view = configurationView.addBackgroundSelectionView(
         resources.getString("BackgroundConfigurationView.SelectionCombo.Label"), //$NON-NLS-1$

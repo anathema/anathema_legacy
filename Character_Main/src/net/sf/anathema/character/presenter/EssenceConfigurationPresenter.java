@@ -8,10 +8,11 @@ import net.sf.anathema.character.model.traits.essence.IEssencePoolConfiguration;
 import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-public class EssenceConfigurationPresenter extends AbstractTraitPresenter implements IAdvantageSubPresenter {
+public class EssenceConfigurationPresenter extends AbstractTraitPresenter implements IPresenter {
 
   private final IBasicAdvantageView view;
   private final IEssencePoolConfiguration essence;
@@ -29,7 +30,7 @@ public class EssenceConfigurationPresenter extends AbstractTraitPresenter implem
     this.view = view;
   }
 
-  public void init() {
+  public void initPresentation() {
     ITrait essenceTrait = traitConfiguration.getTrait(OtherTraitType.Essence);
     IIntValueView essenceView = view.addEssenceView(resources.getString("Essence.Name"), //$NON-NLS-1$
         essenceTrait.getCurrentValue(),

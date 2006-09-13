@@ -10,10 +10,11 @@ import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.view.IAdvantageViewFactory;
 import net.sf.anathema.character.view.IAdvantageViewProperties;
 import net.sf.anathema.character.view.IBasicAdvantageView;
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 
 public class BasicAdvantagePresenter {
-  private final List<IAdvantageSubPresenter> subPresenters = new ArrayList<IAdvantageSubPresenter>();
+  private final List<IPresenter> subPresenters = new ArrayList<IPresenter>();
   private final IBasicAdvantageView view;
   private final IResources resources;
 
@@ -44,8 +45,8 @@ public class BasicAdvantagePresenter {
   }
 
   public TabContent init() {
-    for (IAdvantageSubPresenter presenter : subPresenters) {
-      presenter.init();
+    for (IPresenter presenter : subPresenters) {
+      presenter.initPresentation();
     }
     view.initGui(new IAdvantageViewProperties() {
       public String getVirtueTitle() {

@@ -4,9 +4,10 @@ import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
 import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 
-public class WillpowerConfigurationPresenter extends AbstractTraitPresenter implements IAdvantageSubPresenter {
+public class WillpowerConfigurationPresenter extends AbstractTraitPresenter implements IPresenter {
 
   private final ITrait willpower;
   private final IBasicAdvantageView view;
@@ -18,7 +19,7 @@ public class WillpowerConfigurationPresenter extends AbstractTraitPresenter impl
     this.view = view;
   }
 
-  public void init() {
+  public void initPresentation() {
     String labelText = resources.getString("WillpowerType.Name"); //$NON-NLS-1$
     IIntValueView willpowerView = view.addWillpower(labelText, willpower.getCurrentValue(), willpower.getMaximalValue());
     addModelValueListener(willpower, willpowerView);
