@@ -6,7 +6,7 @@ import javax.swing.filechooser.FileFilter;
 
 public abstract class AbstractFileTypeFilter extends FileFilter implements java.io.FileFilter{
 
-  protected final static String getExtension(File file) {
+  private String getExtension(File file) {
     String fileName = file.getName();
     int lastDotIndex = fileName.lastIndexOf('.');
     if (lastDotIndex < 0) {
