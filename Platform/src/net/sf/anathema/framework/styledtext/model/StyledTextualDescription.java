@@ -73,11 +73,11 @@ public class StyledTextualDescription extends AbstractTextualDescription impleme
   }
 
   private String getText(ITextPart[] parts) {
-    StringBuffer buffer = new StringBuffer();
+    StringBuilder builder = new StringBuilder();
     for (ITextPart part : parts) {
-      buffer.append(part.getText());
+      builder.append(part.getText());
     }
-    return buffer.toString();
+    return builder.toString();
   }
 
   public String getText() {
