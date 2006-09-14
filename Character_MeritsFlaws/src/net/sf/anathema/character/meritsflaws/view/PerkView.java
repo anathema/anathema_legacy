@@ -48,7 +48,7 @@ public class PerkView implements IPerkView {
   private IPerkDetailsView detailsView;
   private final ActionAddableListView<IQualitySelection<IPerk>> selectedPerksView = new SingleSelectionActionAddableListView(
       null,
-      Object.class);
+      IQualitySelection.class);
   private final IMeritsFlawsViewProperties properties;
 
   public PerkView(IMeritsFlawsViewProperties properties) {
@@ -118,9 +118,9 @@ public class PerkView implements IPerkView {
       protected void execute(Component parentComponent) {
         control.forAllDo(new IClosure<IPerkListener>() {
           public void execute(IPerkListener input) {
-            Object[] object = selectedPerksView.getSelectedItems();
+            IQualitySelection<IPerk>[] object = selectedPerksView.getSelectedItems();
             if (object != null) {
-              input.perkRemoved((IQualitySelection<IPerk>) object[0]);
+              input.perkRemoved(object[0]);
             }
           }
         });
@@ -169,9 +169,9 @@ public class PerkView implements IPerkView {
       public void valueChanged(ListSelectionEvent e) {
         control.forAllDo(new IClosure<IPerkListener>() {
           public void execute(IPerkListener input) {
-            Object[] selectedItems = selectedPerksView.getSelectedItems();
+            IQualitySelection<IPerk>[] selectedItems = selectedPerksView.getSelectedItems();
             if (selectedItems.length > 0) {
-              input.selectionSelected((IQualitySelection<IPerk>) selectedItems[0]);
+              input.selectionSelected(selectedItems[0]);
             }
             else
               input.selectionSelected(null);
