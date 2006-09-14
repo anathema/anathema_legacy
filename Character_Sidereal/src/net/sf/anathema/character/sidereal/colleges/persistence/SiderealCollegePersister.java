@@ -7,13 +7,12 @@ import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.sidereal.colleges.model.CollegeType;
 import net.sf.anathema.character.sidereal.colleges.model.SiderealCollegeModel;
 import net.sf.anathema.character.sidereal.colleges.presenter.IAstrologicalHouse;
-import net.sf.anathema.framework.persistence.AbstractPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
-public class SiderealCollegePersister extends AbstractPersister implements IAdditionalPersister {
+public class SiderealCollegePersister implements IAdditionalPersister {
 
   private static final String TAG_COLLEGES = "Colleges"; //$NON-NLS-1$
   private final TraitPersister traitPersister = new TraitPersister();

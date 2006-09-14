@@ -6,13 +6,12 @@ import net.sf.anathema.character.intimacies.IIntimaciesAdditionalModel;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
-import net.sf.anathema.framework.persistence.AbstractPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
-public class IntimaciesPersister extends AbstractPersister implements IAdditionalPersister {
+public class IntimaciesPersister implements IAdditionalPersister {
 
   private static final String TAG_INTIMACIES = "Intimacies"; //$NON-NLS-1$
   private static final String TAG_INTIMACY = "Intimacy"; //$NON-NLS-1$

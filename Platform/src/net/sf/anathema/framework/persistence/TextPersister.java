@@ -14,7 +14,7 @@ import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
-public abstract class AbstractPersister {
+public class TextPersister {
 
   private static final String TAG_TEXT = "Text"; //$NON-NLS-1$
   private static final String ATTRIB_FONT_STYLE = "fontStyle"; //$NON-NLS-1$
@@ -22,7 +22,7 @@ public abstract class AbstractPersister {
   private static final String TAG_FORMAT = "Format"; //$NON-NLS-1$
   private static final String TAG_PART = "Part"; //$NON-NLS-1$
 
-  protected final void saveNonEmptyText(Element parent, String tagName, String text) {
+  public final void saveNonEmptyText(Element parent, String tagName, String text) {
     if (StringUtilities.isNullOrEmpty(text)) {
       return;
     }
@@ -45,10 +45,7 @@ public abstract class AbstractPersister {
     }
   }
 
-  protected final void saveTextualDescription(
-      Element parent,
-      String tagName,
-      ITextualDescription textualDescription) {
+  public final void saveTextualDescription(Element parent, String tagName, ITextualDescription textualDescription) {
     saveNonEmptyText(parent, tagName, textualDescription.getText());
   }
 
@@ -89,7 +86,7 @@ public abstract class AbstractPersister {
     return new TextFormat(fontStyle, isUnderline);
   }
 
-  protected final void restoreTextualDescription(Element parent, String tagName, ITextualDescription description) {
+  public final void restoreTextualDescription(Element parent, String tagName, ITextualDescription description) {
     Element textualElement = parent.element(tagName);
     if (textualElement != null) {
       description.setText(textualElement.getText());

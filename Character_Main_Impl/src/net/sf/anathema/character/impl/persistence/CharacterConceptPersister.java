@@ -16,13 +16,15 @@ import net.sf.anathema.character.model.concept.INature;
 import net.sf.anathema.character.model.concept.INatureType;
 import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
 import net.sf.anathema.character.model.concept.NatureProvider;
-import net.sf.anathema.framework.persistence.AbstractPersister;
+import net.sf.anathema.framework.persistence.TextPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
-public class CharacterConceptPersister extends AbstractPersister {
+public class CharacterConceptPersister {
+
+  private final TextPersister textPersister = new TextPersister();
 
   public void save(Element parent, ICharacterConcept characterConcept) {
     final Element characterConceptElement = parent.addElement(TAG_CHARACTER_CONCEPT);
@@ -33,10 +35,10 @@ public class CharacterConceptPersister extends AbstractPersister {
       }
 
       public void accept(IMotivation motivation) {
-        saveTextualDescription(characterConceptElement, TAG_MOTIVATION, motivation.getDescription());
+        textPersister.saveTextualDescription(characterConceptElement, TAG_MOTIVATION, motivation.getDescription());
       }
     });
-    saveTextualDescription(characterConceptElement, TAG_CONCEPT, characterConcept.getConcept());
+    textPersister.saveTextualDescription(characterConceptElement, TAG_CONCEPT, characterConcept.getConcept());
   }
 
   private void saveCaste(Element parent, ITypedDescription<ICasteType< ? extends ICasteTypeVisitor>> caste) {
@@ -65,10 +67,10 @@ public class CharacterConceptPersister extends AbstractPersister {
       }
 
       public void accept(IMotivation motivation) {
-        restoreTextualDescription(conceptElement, TAG_MOTIVATION, motivation.getDescription());
+        textPersister.restoreTextualDescription(conceptElement, TAG_MOTIVATION, motivation.getDescription());
       }
     });
-    restoreTextualDescription(conceptElement, TAG_CONCEPT, characterConcept.getConcept());
+    textPersister.restoreTextualDescription(conceptElement, TAG_CONCEPT, characterConcept.getConcept());
   }
 
   private void loadNature(Element parent, INature nature) {

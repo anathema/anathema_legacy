@@ -5,12 +5,11 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.persistenc
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.lunar.renown.presenter.IRenownModel;
-import net.sf.anathema.framework.persistence.AbstractPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 
 import org.dom4j.Element;
 
-public class RenownPersister extends AbstractPersister implements IAdditionalPersister {
+public class RenownPersister implements IAdditionalPersister {
 
   private static final String TAG_RENOWN = "Renown"; //$NON-NLS-1$
   private final TraitPersister traitPersister = new TraitPersister();

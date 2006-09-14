@@ -5,12 +5,11 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfi
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.model.charm.OxBodyCategory;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
-import net.sf.anathema.framework.persistence.AbstractPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 
 import org.dom4j.Element;
 
-public class OxBodyTechniquePersister extends AbstractPersister implements ISpecialCharmPersister {
+public class OxBodyTechniquePersister implements ISpecialCharmPersister {
   private final TraitPersister traitPersister = new TraitPersister();
 
   public void saveConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration) {

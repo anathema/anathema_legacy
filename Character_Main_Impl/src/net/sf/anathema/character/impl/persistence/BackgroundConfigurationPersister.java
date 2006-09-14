@@ -6,13 +6,12 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
-import net.sf.anathema.framework.persistence.AbstractPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 
 import org.dom4j.Element;
 
-public class BackgroundConfigurationPersister extends AbstractPersister {
+public class BackgroundConfigurationPersister {
 
   private static final String TAG_BACKGROUND = "Background"; //$NON-NLS-1$
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;

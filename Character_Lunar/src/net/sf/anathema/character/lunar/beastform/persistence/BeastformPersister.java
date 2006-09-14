@@ -6,13 +6,12 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.lunar.beastform.model.BeastformModel;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformAttribute;
-import net.sf.anathema.framework.persistence.AbstractPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
-public class BeastformPersister extends AbstractPersister implements IAdditionalPersister {
+public class BeastformPersister implements IAdditionalPersister {
   private static final String TAG_BEASTFORM = "Beastform"; //$NON-NLS-1$
   private static final String TAG_BEAST_ATTRIBUTES = "BeastAttributes"; //$NON-NLS-1$
   private final TraitPersister traitPersister = new TraitPersister();

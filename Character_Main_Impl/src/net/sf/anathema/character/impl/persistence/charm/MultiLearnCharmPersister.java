@@ -4,12 +4,11 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfi
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
-import net.sf.anathema.framework.persistence.AbstractPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 
 import org.dom4j.Element;
 
-public class MultiLearnCharmPersister extends AbstractPersister implements ISpecialCharmPersister {
+public class MultiLearnCharmPersister implements ISpecialCharmPersister {
 
   private static final String TAG_LEARN_COUNT = "LearnCount"; //$NON-NLS-1$
   private final TraitPersister traitPersister = new TraitPersister();

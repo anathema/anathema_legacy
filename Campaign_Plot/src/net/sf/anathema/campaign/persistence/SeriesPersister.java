@@ -25,9 +25,9 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.framework.itemdata.model.ItemDescription;
-import net.sf.anathema.framework.persistence.AbstractPersister;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
+import net.sf.anathema.framework.persistence.TextPersister;
 import net.sf.anathema.framework.repository.AnathemaItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.RepositoryException;
@@ -46,7 +46,7 @@ import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
-public class SeriesPersister extends AbstractPersister implements IRepositoryItemPersister {
+public class SeriesPersister implements IRepositoryItemPersister {
 
   private final RepositoryItemPersister repositoryItemPerister = new RepositoryItemPersister();
 
@@ -54,6 +54,7 @@ public class SeriesPersister extends AbstractPersister implements IRepositoryIte
   private final IItemType[] supportedTypes;
   private final IItemTypeRegistry registry;
   private final IPrintNameFileAccess printNameFileAccess;
+  private final TextPersister textPersister = new TextPersister();
 
   public SeriesPersister(
       IPrintNameFileAccess printNameFileAccess,
@@ -83,8 +84,8 @@ public class SeriesPersister extends AbstractPersister implements IRepositoryIte
   }
 
   private void saveItemDescription(Element rootElement, IItemDescription description) {
-    saveTextualDescription(rootElement, TAG_NAME, description.getName());
-    saveTextualDescription(rootElement, TAG_SUMMARY, description.getContent());
+    textPersister.saveTextualDescription(rootElement, TAG_NAME, description.getName());
+    textPersister.saveTextualDescription(rootElement, TAG_SUMMARY, description.getContent());
   }
 
   private void savePlot(IPlotModel plot, Element parent, IRepositoryWriteAccess writeAccess)
@@ -134,8 +135,8 @@ public class SeriesPersister extends AbstractPersister implements IRepositoryIte
   }
 
   protected final void restoreItemDescription(Element documentRoot, IItemDescription description) {
-    restoreTextualDescription(documentRoot, TAG_NAME, description.getName());
-    restoreTextualDescription(documentRoot, TAG_SUMMARY, description.getContent());
+    textPersister.restoreTextualDescription(documentRoot, TAG_NAME, description.getName());
+    textPersister.restoreTextualDescription(documentRoot, TAG_SUMMARY, description.getContent());
   }
 
   public final IItem load(IRepositoryReadAccess readAccess) throws PersistenceException, RepositoryException {

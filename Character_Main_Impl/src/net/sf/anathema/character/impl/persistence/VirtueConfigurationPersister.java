@@ -8,12 +8,11 @@ import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
-import net.sf.anathema.framework.persistence.AbstractPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 
 import org.dom4j.Element;
 
-public class VirtueConfigurationPersister extends AbstractPersister {
+public class VirtueConfigurationPersister {
 
   private final IAdditionalPersister virtueFlawPersister;
   private final TraitPersister traitPersister = new TraitPersister();

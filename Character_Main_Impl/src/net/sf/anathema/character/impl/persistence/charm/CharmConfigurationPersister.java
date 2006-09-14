@@ -20,13 +20,15 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
-import net.sf.anathema.framework.persistence.AbstractPersister;
+import net.sf.anathema.framework.persistence.TextPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
-public class CharmConfigurationPersister extends AbstractPersister {
+public class CharmConfigurationPersister {
+
+  private final TextPersister textPersister = new TextPersister();
 
   public void save(Element parent, ICharacterStatistics statistics) {
     ICharacterTemplate template = statistics.getCharacterTemplate();
@@ -99,8 +101,8 @@ public class CharmConfigurationPersister extends AbstractPersister {
       comboElement.addAttribute(
           ATTRIB_EXPERIENCE_LEARNED,
           String.valueOf(!comboConfiguration.isLearnedOnCreation(combo)));
-      saveTextualDescription(comboElement, TAG_NAME, combo.getName());
-      saveTextualDescription(comboElement, TAG_DESCRIPTION, combo.getDescription());
+      textPersister.saveTextualDescription(comboElement, TAG_NAME, combo.getName());
+      textPersister.saveTextualDescription(comboElement, TAG_DESCRIPTION, combo.getDescription());
       for (ICharm charm : combo.getCharms()) {
         Element charmElement = comboElement.addElement(TAG_CHARM);
         charmElement.addAttribute(ATTRIB_NAME, charm.getId());
@@ -172,8 +174,8 @@ public class CharmConfigurationPersister extends AbstractPersister {
       Element comboElement = (Element) comboElementObject;
       ICombo combo = comboConfiguration.getEditCombo();
       boolean experienceLearned = ElementUtilities.getBooleanAttribute(comboElement, ATTRIB_EXPERIENCE_LEARNED, false);
-      restoreTextualDescription(comboElement, TAG_NAME, combo.getName());
-      restoreTextualDescription(comboElement, TAG_DESCRIPTION, combo.getDescription());
+      textPersister.restoreTextualDescription(comboElement, TAG_NAME, combo.getName());
+      textPersister.restoreTextualDescription(comboElement, TAG_DESCRIPTION, combo.getDescription());
       for (Object charmElementObject : comboElement.elements(TAG_CHARM)) {
         Element charmElement = (Element) charmElementObject;
         ICharm comboCharm = charms.getCharmById(charmElement.attributeValue(ATTRIB_NAME));

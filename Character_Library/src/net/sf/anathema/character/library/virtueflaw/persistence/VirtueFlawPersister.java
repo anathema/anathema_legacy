@@ -6,17 +6,18 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
-import net.sf.anathema.framework.persistence.AbstractPersister;
+import net.sf.anathema.framework.persistence.TextPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 
 import org.dom4j.Element;
 
-public class VirtueFlawPersister extends AbstractPersister implements IAdditionalPersister {
+public class VirtueFlawPersister implements IAdditionalPersister {
 
   public static final String TAG_ROOT_VIRTUE = "RootVirtue"; //$NON-NLS-1$
   public static final String TAG_VIRTUE_FLAW = "VirtueFlaw"; //$NON-NLS-1$
   public static final String TAG_NAME = "Name"; //$NON-NLS-1$
   public static final String ATTRIB_NAME = "name"; //$NON-NLS-1$
+  private final TextPersister textPersister = new TextPersister();
 
   public void save(Element parent, IAdditionalModel model) {
     IVirtueFlawModel virtueFlawModel = (IVirtueFlawModel) model;
@@ -26,7 +27,7 @@ public class VirtueFlawPersister extends AbstractPersister implements IAdditiona
   private void saveVirtueFlaw(Element parent, IVirtueFlaw virtueFlaw) {
     Element flawElement = createFlawElement(parent);
     saveRootVirtue(flawElement, virtueFlaw);
-    saveTextualDescription(flawElement, TAG_NAME, virtueFlaw.getName());
+    textPersister.saveTextualDescription(flawElement, TAG_NAME, virtueFlaw.getName());
     saveAdditionalData(flawElement, virtueFlaw);
   }
 
@@ -61,7 +62,7 @@ public class VirtueFlawPersister extends AbstractPersister implements IAdditiona
     if (rootElement != null) {
       virtueFlaw.setRoot(VirtueType.valueOf(rootElement.attributeValue(ATTRIB_NAME)));
     }
-    restoreTextualDescription(flawElement, TAG_NAME, virtueFlaw.getName());
+    textPersister.restoreTextualDescription(flawElement, TAG_NAME, virtueFlaw.getName());
     loadAdditionalData(flawElement, virtueFlaw);
   }
 
