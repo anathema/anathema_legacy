@@ -46,11 +46,10 @@ public class VirtueFlawPresenter implements IPresenter {
   protected void initRootPresentation(final IVirtueFlaw virtueFlaw) {
     final IObjectSelectionView<ITraitType> rootView = view.addVirtueFlawRootSelectionView(
         resources.getString("VirtueFlaw.Root.Name"), //$NON-NLS-1$
-        new AbstractSelectCellRenderer(resources) {
+        new AbstractSelectCellRenderer<ITraitType>(resources) {
           @Override
-          protected Object getCustomizedDisplayValue(Object value) {
-            ITraitType traitType = (ITraitType) value;
-            return resources.getString("VirtueType.Name." + traitType.getId()); //$NON-NLS-1$
+          protected String getCustomizedDisplayValue(ITraitType value) {
+            return resources.getString("VirtueType.Name." + value.getId()); //$NON-NLS-1$
           }
 
           @Override

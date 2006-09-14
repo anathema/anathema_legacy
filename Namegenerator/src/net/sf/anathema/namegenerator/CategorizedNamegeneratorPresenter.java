@@ -28,6 +28,7 @@ public class CategorizedNamegeneratorPresenter implements IPresenter {
 
   public void initPresentation() {
     Object[] categories = getAllVoidStateCategories();
+    //TODO Replace with AbstractSelectCellRenderer once IResources are available
     ListCellRenderer renderer = new DefaultListCellRenderer() {
       @Override
       public Component getListCellRendererComponent(

@@ -2,9 +2,7 @@ package net.sf.anathema.character.presenter;
 
 import java.awt.Component;
 
-import javax.swing.DefaultListCellRenderer;
 import javax.swing.JButton;
-import javax.swing.JList;
 
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.ui.IObjectUi;
@@ -26,6 +24,7 @@ import net.sf.anathema.character.view.ICharacterConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
 import net.sf.anathema.character.view.concept.IWillpowerConditionView;
+import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -183,24 +182,7 @@ public class CharacterConceptAndRulesPresenter {
     final IObjectSelectionView<INatureType> natureView = view.addObjectSelectionView(
         resources.getString("Label.Nature"), //$NON-NLS-1$
         natures,
-        new DefaultListCellRenderer() {
-          @Override
-          public Component getListCellRendererComponent(
-              JList list,
-              Object value,
-              int index,
-              boolean isSelected,
-              boolean cellHasFocus) {
-            String printName;
-            if (value == null) {
-              printName = resources.getString("ComboBox.SelectLabel"); //$NON-NLS-1$
-            }
-            else {
-              printName = resources.getString("Nature." + ((INatureType) value).getId() + ".Name"); //$NON-NLS-1$ //$NON-NLS-2$
-            }
-            return super.getListCellRendererComponent(list, printName, index, isSelected, cellHasFocus);
-          }
-        },
+        new IdentificateSelectCellRenderer("Nature.", ".Name", resources),//$NON-NLS-1$ //$NON-NLS-2$
         false);
     final ITypedDescription<INatureType> natureType = nature.getDescription();
     natureView.setSelectedObject(natureType.getType());

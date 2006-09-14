@@ -7,7 +7,7 @@ import javax.swing.JList;
 
 import net.sf.anathema.lib.resources.IResources;
 
-public abstract class AbstractSelectCellRenderer extends DefaultListCellRenderer {
+public abstract class AbstractSelectCellRenderer<T> extends DefaultListCellRenderer {
 
   private final IResources resources;
 
@@ -15,6 +15,7 @@ public abstract class AbstractSelectCellRenderer extends DefaultListCellRenderer
     this.resources = resources;
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public Component getListCellRendererComponent(
       JList list,
@@ -23,17 +24,21 @@ public abstract class AbstractSelectCellRenderer extends DefaultListCellRenderer
       boolean isSelected,
       boolean cellHasFocus) {
     if (value == null) {
-      Object selectString = getNullValue();
-      return super.getListCellRendererComponent(list, selectString, index, isSelected, cellHasFocus);
+      return super.getListCellRendererComponent(list, getNullValue(), index, isSelected, cellHasFocus);
     }
-    return super.getListCellRendererComponent(list, getCustomizedDisplayValue(value), index, isSelected, cellHasFocus);
+    return super.getListCellRendererComponent(
+        list,
+        getCustomizedDisplayValue((T) value),
+        index,
+        isSelected,
+        cellHasFocus);
   }
 
-  protected Object getNullValue() {
+  protected String getNullValue() {
     return resources.getString("ComboBox.SelectLabel"); //$NON-NLS-1$
   }
 
-  protected abstract Object getCustomizedDisplayValue(Object value);
+  protected abstract String getCustomizedDisplayValue(T value);
 
   protected final IResources getResources() {
     return resources;

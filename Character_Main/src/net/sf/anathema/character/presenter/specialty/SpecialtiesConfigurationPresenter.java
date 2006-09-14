@@ -74,10 +74,10 @@ public class SpecialtiesConfigurationPresenter implements IPresenter {
     Icon addIcon = new BasicUi(resources).getAddIcon();
     final IButtonControlledComboEditView<ITraitReference> specialtySelectionView = configurationView.addSpecialtySelectionView(
         resources.getString("SpecialtyConfigurationView.SelectionCombo.Label"), //$NON-NLS-1$
-        new AbstractSelectCellRenderer(resources) {
+        new AbstractSelectCellRenderer<ITraitReference>(resources) {
           @Override
-          protected Object getCustomizedDisplayValue(Object value) {
-            return i18ner.getScreenName((ITraitReference) value);
+          protected String getCustomizedDisplayValue(ITraitReference value) {
+            return i18ner.getScreenName(value);
           }
         },
         addIcon);
