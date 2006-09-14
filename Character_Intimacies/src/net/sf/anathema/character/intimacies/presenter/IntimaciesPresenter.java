@@ -13,6 +13,7 @@ import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
 import net.sf.anathema.character.library.selection.AbstractStringEntryTraitPresenter;
 import net.sf.anathema.character.library.selection.IStringSelectionView;
+import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -139,8 +140,7 @@ public class IntimaciesPresenter extends AbstractStringEntryTraitPresenter<IInti
         intimacy.getName());
     intimacyView.setMaximum(model.getCompletionValue());
     intimacyView.setValue(intimacy.getTrait().getCurrentValue());
-    addModelValueListener(intimacy.getTrait(), intimacyView);
-    addViewValueListener(intimacyView, intimacy.getTrait());
+    new TraitPresenter(intimacy.getTrait(), intimacyView).initPresentation();
     intimacyView.addButtonListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         model.removeEntry(intimacy);

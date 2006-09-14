@@ -8,6 +8,7 @@ import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.selection.AbstractStringEntryTraitPresenter;
 import net.sf.anathema.character.library.selection.IRemovableStringEntriesView;
 import net.sf.anathema.character.library.selection.IStringSelectionView;
+import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
@@ -82,8 +83,7 @@ public class CraftPresenter extends AbstractStringEntryTraitPresenter<ISubTrait>
   private IRemovableTraitView< ? > createSubView(BasicUi basicUi, final ISubTrait craft, String name) {
     final IRemovableTraitView< ? > craftView = view.addEntryView(basicUi.getRemoveIcon(), name);
     craftView.setValue(craft.getCurrentValue());
-    addModelValueListener(craft, craftView);
-    addViewValueListener(craftView, craft);
+    new TraitPresenter(craft, craftView).initPresentation();
     craftView.addButtonListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         model.removeEntry(craft);

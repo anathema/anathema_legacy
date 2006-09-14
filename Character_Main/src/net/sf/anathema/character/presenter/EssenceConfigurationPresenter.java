@@ -2,7 +2,7 @@ package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.library.trait.ITrait;
-import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
+import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.model.traits.essence.IEssencePoolConfiguration;
 import net.sf.anathema.character.view.IBasicAdvantageView;
@@ -12,7 +12,7 @@ import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-public class EssenceConfigurationPresenter extends AbstractTraitPresenter implements IPresenter {
+public class EssenceConfigurationPresenter implements IPresenter {
 
   private final IBasicAdvantageView view;
   private final IEssencePoolConfiguration essence;
@@ -56,7 +56,6 @@ public class EssenceConfigurationPresenter extends AbstractTraitPresenter implem
         });
       }
     }
-    addModelValueListener(essenceTrait, essenceView);
-    addViewValueListener(essenceView, essenceTrait);
+    new TraitPresenter(essenceTrait, essenceView).initPresentation();
   }
 }

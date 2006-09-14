@@ -10,7 +10,7 @@ import javax.swing.Icon;
 import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
-import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
+import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.ISpecialty;
 import net.sf.anathema.character.library.trait.specialties.ITraitReferencesChangeListener;
@@ -27,7 +27,7 @@ import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 
-public class SpecialtiesConfigurationPresenter extends AbstractTraitPresenter implements IPresenter {
+public class SpecialtiesConfigurationPresenter implements IPresenter {
 
   private final IdentityMapping<ISubTrait, ISpecialtyView> viewsBySpecialty = new IdentityMapping<ISubTrait, ISpecialtyView>();
   private final TraitInternationalizer i18ner;
@@ -183,8 +183,7 @@ public class SpecialtiesConfigurationPresenter extends AbstractTraitPresenter im
         deleteIcon,
         specialty.getCurrentValue(),
         specialty.getMaximalValue());
-    addModelValueListener(specialty, specialtyView);
-    addViewValueListener(specialtyView, specialty);
+    new TraitPresenter(specialty, specialtyView).initPresentation();
     specialtyView.addDeleteListener(new IChangeListener() {
       public void changeOccured() {
         getSpecialtyContainer(traitReference).removeSubTrait(specialty);

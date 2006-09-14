@@ -1,14 +1,14 @@
 package net.sf.anathema.character.presenter.charm;
 
 import net.sf.anathema.character.generic.framework.magic.view.IMultiLearnableCharmView;
-import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
+import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.model.charm.OxBodyCategory;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 
-public class OxBodyTechniquePresenter extends AbstractTraitPresenter implements IPresenter {
+public class OxBodyTechniquePresenter implements IPresenter {
 
   private final IMultiLearnableCharmView view;
   private final IOxBodyTechniqueConfiguration model;
@@ -27,8 +27,7 @@ public class OxBodyTechniquePresenter extends AbstractTraitPresenter implements 
     for (OxBodyCategory category : model.getCategories()) {
       String label = resources.getString("OxBodyTechnique." + category.getId()); //$NON-NLS-1$
       IIntValueView display = view.addCategory(label, category.getMaximalValue(), category.getCurrentValue());
-      addModelValueListener(category, display);
-      addViewValueListener(display, category);
+      new TraitPresenter(category, display).initPresentation();
     }
   }
 }

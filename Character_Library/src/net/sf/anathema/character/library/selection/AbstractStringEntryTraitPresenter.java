@@ -8,11 +8,10 @@ import java.util.Map;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
-import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
-public abstract class AbstractStringEntryTraitPresenter<V> extends AbstractTraitPresenter {
+public abstract class AbstractStringEntryTraitPresenter<V> {
 
   private final IStringEntryTraitModel<V> model;
   private final Map<V, IRemovableTraitView< ? >> viewsByEntry = new HashMap<V, IRemovableTraitView< ? >>();

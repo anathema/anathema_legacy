@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener
 import net.sf.anathema.character.library.quality.model.QualitySelection;
 import net.sf.anathema.character.library.quality.presenter.IQualityModel;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
-import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
+import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.lunar.beastform.model.IAlotmentChangedListener;
 import net.sf.anathema.character.lunar.beastform.model.gift.IGift;
@@ -22,7 +22,7 @@ import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 
-public class BeastformPresenter extends AbstractTraitPresenter implements IPresenter {
+public class BeastformPresenter implements IPresenter {
 
   private final IResources resources;
   private final IBeastformView view;
@@ -116,8 +116,7 @@ public class BeastformPresenter extends AbstractTraitPresenter implements IPrese
           resources.getString(trait.getType().getId()),
           trait.getCurrentValue(),
           trait.getMaximalValue());
-      addModelValueListener(trait, traitView);
-      addViewValueListener(traitView, trait);
+      new TraitPresenter(trait, traitView).initPresentation();
     }
     model.getAttributeCostModel().addCostChangeListener(new IAlotmentChangedListener() {
       public void totalChanged(int newValue) {

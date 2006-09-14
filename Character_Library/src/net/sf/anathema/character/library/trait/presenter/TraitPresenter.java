@@ -8,13 +8,22 @@ import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
-public abstract class AbstractTraitPresenter {
+public class TraitPresenter {
 
-  protected AbstractTraitPresenter() {
-    // nothing to do
+  private final ITrait trait;
+  private final IIntValueView view;
+
+  public TraitPresenter(ITrait trait, IIntValueView view) {
+    this.trait = trait;
+    this.view = view;
   }
 
-  protected final void addModelValueListener(final ITrait trait, final IIntValueView view) {
+  public void initPresentation() {
+    initModelValueListening();
+    initViewValueListening();
+  }
+
+  private void initModelValueListening() {
     trait.addCurrentValueListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
         view.setValue(newValue);
@@ -35,7 +44,7 @@ public abstract class AbstractTraitPresenter {
     });
   }
 
-  protected final void addViewValueListener(final IIntValueView view, final ITrait trait) {
+  private void initViewValueListening() {
     trait.accept(new ITraitVisitor() {
       public void visitDefaultTrait(final IDefaultTrait visitedTrait) {
         view.addIntValueChangedListener(new IIntValueChangedListener() {

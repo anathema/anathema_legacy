@@ -2,7 +2,7 @@ package net.sf.anathema.character.lunar.renown.presenter;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.library.trait.ITrait;
-import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
+import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.lunar.renown.view.RenownView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
@@ -13,7 +13,7 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-public class RenownPresenter extends AbstractTraitPresenter implements IPresenter {
+public class RenownPresenter implements IPresenter {
 
   private final IResources resources;
   private final RenownView view;
@@ -88,15 +88,13 @@ public class RenownPresenter extends AbstractTraitPresenter implements IPresente
         },
         model.getUltimateFaceRank());
     faceView.setValue(model.getFace().getCurrentValue());
-    addModelValueListener(model.getFace(), faceView);
-    addViewValueListener(faceView, model.getFace());
+    new TraitPresenter(model.getFace(), faceView).initPresentation();
   }
 
   private void initTraitPresentation(final IValueView<Integer> totalView) {
     for (ITrait trait : model.getAllTraits()) {
       final IIntValueView renownView = view.addIntValueView(resources.getString("Lunar.Renown." + trait.getType().getId())); //$NON-NLS-1$
-      addModelValueListener(trait, renownView);
-      addViewValueListener(renownView, trait);
+      new TraitPresenter(trait, renownView).initPresentation();
       renownView.setValue(trait.getCurrentValue());
     }
     totalView.setValue(model.calculateTotalRenown());

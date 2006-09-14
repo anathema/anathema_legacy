@@ -11,7 +11,7 @@ import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateVisitor;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
-import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
+import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
@@ -22,7 +22,7 @@ import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 
-public class FavorableTraitConfigurationPresenter extends AbstractTraitPresenter {
+public class FavorableTraitConfigurationPresenter {
 
   private final IGroupedFavorableTraitConfigurationView configurationView;
   private final IdentityMapping<IFavorableTrait, IToggleButtonTraitView< ? >> traitViewsByTrait = new IdentityMapping<IFavorableTrait, IToggleButtonTraitView< ? >>();
@@ -105,8 +105,7 @@ public class FavorableTraitConfigurationPresenter extends AbstractTraitPresenter
       }
     });
     final IToggleButtonTraitView< ? > abilityView = view[0];
-    addModelValueListener(favorableTrait, abilityView);
-    addViewValueListener(abilityView, favorableTrait);
+    new TraitPresenter(favorableTrait, abilityView).initPresentation();
     abilityView.addButtonSelectedListener(new IBooleanValueChangedListener() {
       public void valueChanged(boolean newValue) {
         favorableTrait.getFavorization().setFavored(newValue);

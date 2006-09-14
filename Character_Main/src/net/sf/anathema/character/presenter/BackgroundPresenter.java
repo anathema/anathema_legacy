@@ -16,7 +16,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.listening.
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTemplate;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
-import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
+import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.background.IBackgroundListener;
@@ -31,13 +31,13 @@ import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
-public class BackgroundPresenter extends AbstractTraitPresenter implements IPresenter {
+public class BackgroundPresenter implements IPresenter {
 
   private static final String BACKGROUND_TYPE_RESOURCE_KEY_PREFIX = "BackgroundType.Name."; //$NON-NLS-1$
   private final IBackgroundConfiguration configuration;
   private final IBasicAdvantageView configurationView;
   private final IResources resources;
-  private final IdentityMapping<IDefaultTrait, IRemovableTraitView<?>> viewsByBackground = new IdentityMapping<IDefaultTrait, IRemovableTraitView<?>>();
+  private final IdentityMapping<IDefaultTrait, IRemovableTraitView< ? >> viewsByBackground = new IdentityMapping<IDefaultTrait, IRemovableTraitView< ? >>();
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
   private final Map<String, IBackgroundTemplate> templatesByDisplayName = new HashMap<String, IBackgroundTemplate>();
 
@@ -135,13 +135,9 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IPres
 
   private synchronized void addBackgroundView(final IDefaultTrait background) {
     Icon deleteIcon = new BasicUi(resources).getRemoveIcon();
-    IRemovableTraitView<?> backgroundView = configurationView.addBackgroundView(
-        deleteIcon,
-        getDisplayObject(background).toString(),
-        background.getCurrentValue(),
-        background.getMaximalValue());
-    addModelValueListener(background, backgroundView);
-    addViewValueListener(backgroundView, background);
+    IRemovableTraitView< ? > backgroundView = configurationView.addBackgroundView(deleteIcon, getDisplayObject(
+        background).toString(), background.getCurrentValue(), background.getMaximalValue());
+    new TraitPresenter(background, backgroundView).initPresentation();
     backgroundView.addButtonListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         configuration.removeBackground(background);
@@ -151,7 +147,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IPres
   }
 
   private synchronized void removeBackgroundView(IDefaultTrait background) {
-    IRemovableTraitView<?> view = viewsByBackground.get(background);
+    IRemovableTraitView< ? > view = viewsByBackground.get(background);
     viewsByBackground.remove(background);
     view.delete();
   }
@@ -171,7 +167,7 @@ public class BackgroundPresenter extends AbstractTraitPresenter implements IPres
   public void allowRemoveCreationBackground(boolean allowed) {
     for (IDefaultTrait background : viewsByBackground.getAllKeys()) {
       if (background.getCalculationValue() > 0) {
-        IRemovableTraitView<?> view = viewsByBackground.get(background);
+        IRemovableTraitView< ? > view = viewsByBackground.get(background);
         view.setButtonEnabled(allowed);
       }
     }

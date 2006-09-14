@@ -12,7 +12,7 @@ import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.trait.IFavorableDefaultTrait;
 import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
-import net.sf.anathema.character.library.trait.presenter.AbstractTraitPresenter;
+import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.sidereal.colleges.model.CollegeModelBonusPointCalculator;
 import net.sf.anathema.character.sidereal.presentation.SiderealCasteUI;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -21,7 +21,7 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-public class SiderealCollegePresenter extends AbstractTraitPresenter implements IPresenter {
+public class SiderealCollegePresenter implements IPresenter {
 
   private final IResources resources;
   private final ISiderealCollegeView view;
@@ -69,8 +69,7 @@ public class SiderealCollegePresenter extends AbstractTraitPresenter implements 
             college.getCurrentValue(),
             college.getMaximalValue(),
             college.getFavorization().isCasteOrFavored());
-        addModelValueListener(college, collegeView);
-        addViewValueListener(collegeView, college);
+        new TraitPresenter(college, collegeView).initPresentation();
         college.getFavorization().addFavorableStateChangedListener(new IFavorableStateChangedListener() {
           public void favorableStateChanged(FavorableState state) {
             collegeView.setButtonState(college.getFavorization().isCasteOrFavored(), false);
