@@ -7,14 +7,17 @@ import java.util.List;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.library.trait.ITrait;
-import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
+import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
+import net.sf.anathema.framework.persistence.AbstractPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
-public class AttributeConfigurationPersister extends AbstractCharacterPersister {
+public class AttributeConfigurationPersister extends AbstractPersister {
+
+  private final TraitPersister persister = new TraitPersister();
 
   public void save(Element parent, ICoreTraitConfiguration traitConfiguration) {
     Element attributeElement = parent.addElement(TAG_ATTRIBUTES);
@@ -23,10 +26,13 @@ public class AttributeConfigurationPersister extends AbstractCharacterPersister 
     }
   }
 
-  private void saveAttributeGroup(Element parent, ICoreTraitConfiguration traitConfiguration, IIdentifiedTraitTypeGroup typeGroup) {
+  private void saveAttributeGroup(
+      Element parent,
+      ICoreTraitConfiguration traitConfiguration,
+      IIdentifiedTraitTypeGroup typeGroup) {
     Element groupElement = parent.addElement(typeGroup.getGroupId().getId());
     for (ITrait attribute : traitConfiguration.getTraits(typeGroup.getAllGroupTypes())) {
-      saveTrait(groupElement, attribute.getType().getId(), attribute);
+      persister.saveTrait(groupElement, attribute.getType().getId(), attribute);
     }
   }
 
@@ -42,7 +48,7 @@ public class AttributeConfigurationPersister extends AbstractCharacterPersister 
     for (int index = 0; index < attributeElements.size(); index++) {
       Element attributeElement = attributeElements.get(index);
       AttributeType attributeType = AttributeType.valueOf(attributeElement.getName());
-      restoreTrait(attributeElement, configuration.getTrait(attributeType));
+      persister.restoreTrait(attributeElement, configuration.getTrait(attributeType));
     }
   }
 }

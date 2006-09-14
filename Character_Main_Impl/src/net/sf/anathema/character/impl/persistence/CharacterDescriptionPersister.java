@@ -7,13 +7,12 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_PERIPHRASE;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_PHYSICAL_DESCRIPTION;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_PLAYER;
-
-import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
 import net.sf.anathema.character.model.ICharacterDescription;
+import net.sf.anathema.framework.persistence.AbstractPersister;
 
 import org.dom4j.Element;
 
-public class CharacterDescriptionPersister extends AbstractCharacterPersister {
+public class CharacterDescriptionPersister extends AbstractPersister {
 
   public void load(Element parent, ICharacterDescription description) {
     Element descriptionElement = parent.element(TAG_DESCRIPTION);

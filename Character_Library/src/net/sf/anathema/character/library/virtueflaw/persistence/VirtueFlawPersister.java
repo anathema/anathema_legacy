@@ -4,14 +4,14 @@ import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersister;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
-import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
+import net.sf.anathema.framework.persistence.AbstractPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 
 import org.dom4j.Element;
 
-public class VirtueFlawPersister extends AbstractCharacterPersister implements IAdditionalPersister {
+public class VirtueFlawPersister extends AbstractPersister implements IAdditionalPersister {
 
   public static final String TAG_ROOT_VIRTUE = "RootVirtue"; //$NON-NLS-1$
   public static final String TAG_VIRTUE_FLAW = "VirtueFlaw"; //$NON-NLS-1$

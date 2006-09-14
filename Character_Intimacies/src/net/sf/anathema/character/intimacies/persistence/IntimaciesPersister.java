@@ -5,19 +5,21 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.persistenc
 import net.sf.anathema.character.intimacies.IIntimaciesAdditionalModel;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
-import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
+import net.sf.anathema.character.library.trait.persistence.TraitPersister;
+import net.sf.anathema.framework.persistence.AbstractPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
-public class IntimaciesPersister extends AbstractCharacterPersister implements IAdditionalPersister {
+public class IntimaciesPersister extends AbstractPersister implements IAdditionalPersister {
 
   private static final String TAG_INTIMACIES = "Intimacies"; //$NON-NLS-1$
   private static final String TAG_INTIMACY = "Intimacy"; //$NON-NLS-1$
   private static final String ATTRIB_NAME = "name"; //$NON-NLS-1$
   private static final String TAG_TRAIT = "Trait"; //$NON-NLS-1$
   private static final String ATTRIB_COMPLETE = "complete"; //$NON-NLS-1$
+  private final TraitPersister traitPersister = new TraitPersister();
 
   public void save(Element parent, IAdditionalModel model) {
     Element element = parent.addElement(TAG_INTIMACIES);
@@ -31,7 +33,7 @@ public class IntimaciesPersister extends AbstractCharacterPersister implements I
     Element intimacyElement = element.addElement(TAG_INTIMACY);
     intimacyElement.addAttribute(ATTRIB_NAME, intimacy.getName());
     ElementUtilities.addAttribute(intimacyElement, ATTRIB_COMPLETE, intimacy.isComplete());
-    saveTrait(intimacyElement, TAG_TRAIT, intimacy.getTrait());
+    traitPersister.saveTrait(intimacyElement, TAG_TRAIT, intimacy.getTrait());
   }
 
   public void load(Element parent, IAdditionalModel model) throws PersistenceException {
@@ -41,7 +43,7 @@ public class IntimaciesPersister extends AbstractCharacterPersister implements I
       String name = ElementUtilities.getRequiredAttrib(intimacyElement, ATTRIB_NAME);
       intimaciesModel.setCurrentName(name);
       IIntimacy intimacy = intimaciesModel.commitSelection();
-      restoreTrait(intimacyElement, TAG_TRAIT, intimacy.getTrait());
+      traitPersister.restoreTrait(intimacyElement, TAG_TRAIT, intimacy.getTrait());
       boolean complete = ElementUtilities.getBooleanAttribute(intimacyElement, ATTRIB_COMPLETE, false);
       intimacy.setComplete(complete);
     }

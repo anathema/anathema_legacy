@@ -11,23 +11,22 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_DESCRIPTION;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_NAME;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_SPECIAL;
-
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
+import net.sf.anathema.framework.persistence.AbstractPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
-public class CharmConfigurationPersister extends AbstractCharacterPersister {
+public class CharmConfigurationPersister extends AbstractPersister {
 
   public void save(Element parent, ICharacterStatistics statistics) {
     ICharacterTemplate template = statistics.getCharacterTemplate();

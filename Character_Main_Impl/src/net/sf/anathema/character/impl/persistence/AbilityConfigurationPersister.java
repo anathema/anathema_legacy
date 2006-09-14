@@ -12,7 +12,7 @@ import net.sf.anathema.character.generic.framework.ITraitReference;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.library.trait.favorable.IFavorableTrait;
-import net.sf.anathema.character.library.trait.persistence.AbstractCharacterPersister;
+import net.sf.anathema.character.library.trait.persistence.TraitPersister;
 import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.library.trait.specialties.SubTraitReference;
@@ -22,13 +22,14 @@ import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
+import net.sf.anathema.framework.persistence.AbstractPersister;
 import net.sf.anathema.lib.exception.NestedRuntimeException;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
-public class AbilityConfigurationPersister extends AbstractCharacterPersister {
+public class AbilityConfigurationPersister extends AbstractPersister {
 
   public void save(Element parent, ICoreTraitConfiguration configuration) {
     Element abilitiesElement = parent.addElement(TAG_ABILITIES);
@@ -37,12 +38,14 @@ public class AbilityConfigurationPersister extends AbstractCharacterPersister {
     }
   }
 
+  private final TraitPersister persister = new TraitPersister();
+
   private void saveAbility(
       Element parent,
       IFavorableTrait ability,
       final ISpecialtiesConfiguration specialtyConfiguration) {
     ITraitType traitType = ability.getType();
-    final Element abilityElement = saveTrait(parent, traitType.getId(), ability);
+    final Element abilityElement = persister.saveTrait(parent, traitType.getId(), ability);
     if (ability.getFavorization().isFavored()) {
       ElementUtilities.addAttribute(abilityElement, ATTRIB_FAVORED, ability.getFavorization().isFavored());
     }
@@ -71,8 +74,8 @@ public class AbilityConfigurationPersister extends AbstractCharacterPersister {
   }
 
   private Element getSubTraitElement(Element abilityElement, ISubTrait subTrait) throws PersistenceException {
-    for (Element subTraitElement : ElementUtilities.elements(abilityElement, TAG_SUB_TRAIT)) {
-      if (subTrait.getName().equals(ElementUtilities.getRequiredText(subTraitElement, TAG_TRAIT_NAME))) {
+    for (Element subTraitElement : ElementUtilities.elements(abilityElement, TraitPersister.TAG_SUB_TRAIT)) {
+      if (subTrait.getName().equals(ElementUtilities.getRequiredText(subTraitElement, TraitPersister.TAG_TRAIT_NAME))) {
         return subTraitElement;
       }
     }
@@ -84,7 +87,7 @@ public class AbilityConfigurationPersister extends AbstractCharacterPersister {
       final Element abilityElement,
       ITraitReference reference) {
     for (ISubTrait specialty : specialtyConfiguration.getSpecialtiesContainer(reference).getSubTraits()) {
-      Element specialtyElement = saveTrait(abilityElement, TAG_SPECIALTY, specialty);
+      Element specialtyElement = persister.saveTrait(abilityElement, TAG_SPECIALTY, specialty);
       specialtyElement.addAttribute(ATTRIB_NAME, specialty.getName());
     }
   }
@@ -101,7 +104,7 @@ public class AbilityConfigurationPersister extends AbstractCharacterPersister {
       throws PersistenceException {
     AbilityType abilityType = AbilityType.valueOf(abilityElement.getName());
     IFavorableTrait ability = configuration.getFavorableTrait(abilityType);
-    restoreTrait(abilityElement, ability);
+    persister.restoreTrait(abilityElement, ability);
     boolean favored = ElementUtilities.getBooleanAttribute(abilityElement, ATTRIB_FAVORED, false);
     ability.getFavorization().setFavored(favored);
     final ISpecialtiesConfiguration specialtyConfiguration = configuration.getSpecialtyConfiguration();
@@ -143,7 +146,7 @@ public class AbilityConfigurationPersister extends AbstractCharacterPersister {
       DefaultTraitReference reference = new DefaultTraitReference(visitedTrait);
       ISubTraitContainer specialtiesContainer = specialtyConfiguration.getSpecialtiesContainer(reference);
       ISubTrait specialty = specialtiesContainer.addSubTrait(specialtyName);
-      restoreTrait(specialtyElement, specialty);
+      persister.restoreTrait(specialtyElement, specialty);
     }
   }
 }

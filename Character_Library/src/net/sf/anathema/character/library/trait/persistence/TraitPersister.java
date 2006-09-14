@@ -9,15 +9,13 @@ import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
-import net.sf.anathema.framework.persistence.AbstractPersister;
 import net.sf.anathema.lib.exception.NestedRuntimeException;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
-public class AbstractCharacterPersister extends AbstractPersister {
-
+public class TraitPersister {
   private final class LoadTraitVisitor implements ITraitVisitor {
     private final Element element;
 
@@ -58,12 +56,12 @@ public class AbstractCharacterPersister extends AbstractPersister {
     }
   }
 
-  protected static final String TAG_TRAIT_NAME = "traitName"; //$NON-NLS-1$
-  protected static final String TAG_SUB_TRAIT = "subTrait"; //$NON-NLS-1$
+  public static final String TAG_TRAIT_NAME = "traitName"; //$NON-NLS-1$
+  public static final String TAG_SUB_TRAIT = "subTrait"; //$NON-NLS-1$
   public static final String ATTRIB_CREATION_VALUE = "creationValue"; //$NON-NLS-1$
   public static final String ATTRIB_EXPERIENCED_VALUE = "experiencedValue"; //$NON-NLS-1$
 
-  protected final Element saveTrait(Element parent, String tagName, ITrait trait) {
+  public final Element saveTrait(Element parent, String tagName, ITrait trait) {
     final Element traitElement = parent.addElement(tagName);
     trait.accept(new ITraitVisitor() {
 
@@ -90,13 +88,13 @@ public class AbstractCharacterPersister extends AbstractPersister {
     return traitElement;
   }
 
-  protected final Element restoreTrait(Element parent, String tagName, ITrait trait) throws PersistenceException {
+  public final Element restoreTrait(Element parent, String tagName, ITrait trait) throws PersistenceException {
     Element traitElement = parent.element(tagName);
     restoreTrait(traitElement, trait);
     return traitElement;
   }
 
-  protected final void restoreTrait(final Element traitElement, ITrait trait) throws PersistenceException {
+  public final void restoreTrait(final Element traitElement, ITrait trait) throws PersistenceException {
     if (traitElement != null) {
       try {
         trait.accept(new LoadTraitVisitor(traitElement));
