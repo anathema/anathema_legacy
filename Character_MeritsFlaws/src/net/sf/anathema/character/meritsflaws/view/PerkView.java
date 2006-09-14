@@ -118,9 +118,9 @@ public class PerkView implements IPerkView {
       protected void execute(Component parentComponent) {
         control.forAllDo(new IClosure<IPerkListener>() {
           public void execute(IPerkListener input) {
-            IQualitySelection<IPerk> object = selectedPerksView.getSelectedItems()[0];
+            Object[] object = selectedPerksView.getSelectedItems();
             if (object != null) {
-              input.perkRemoved(object);
+              input.perkRemoved((IQualitySelection<IPerk>) object[0]);
             }
           }
         });
@@ -169,9 +169,9 @@ public class PerkView implements IPerkView {
       public void valueChanged(ListSelectionEvent e) {
         control.forAllDo(new IClosure<IPerkListener>() {
           public void execute(IPerkListener input) {
-            IQualitySelection<IPerk>[] selectedItems = selectedPerksView.getSelectedItems();
+            Object[] selectedItems = selectedPerksView.getSelectedItems();
             if (selectedItems.length > 0) {
-              input.selectionSelected(selectedItems[0]);
+              input.selectionSelected((IQualitySelection<IPerk>) selectedItems[0]);
             }
             else
               input.selectionSelected(null);
