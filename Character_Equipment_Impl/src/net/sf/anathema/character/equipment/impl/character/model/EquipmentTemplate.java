@@ -35,12 +35,12 @@ public class EquipmentTemplate implements IEquipmentTemplate {
   }
 
   public synchronized void addStats(IExaltedRuleSet ruleSet, IEquipmentStats stats) {
-    List<IEquipmentStats> relevantRules = statsByRuleSet.get(stats);
-    if (relevantRules == null) {
-      relevantRules = collectionFactory.createList();
-      statsByRuleSet.put(ruleSet, relevantRules);
+    List<IEquipmentStats> statList = statsByRuleSet.get(ruleSet);
+    if (statList == null) {
+      statList = collectionFactory.createList();
+      statsByRuleSet.put(ruleSet, statList);
     }
-    relevantRules.add(stats);
+    statList.add(stats);
   }
 
   public String getName() {
