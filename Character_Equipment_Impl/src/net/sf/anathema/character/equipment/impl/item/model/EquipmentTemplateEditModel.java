@@ -104,6 +104,13 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     fireStatsChangedEvent();
   }
 
+  public void removeStatistics(IExaltedRuleSet ruleSet, IEquipmentStats... stats) {
+    for (IEquipmentStats stat : stats) {
+      statsByRuleSet.removeValue(ruleSet, stat);
+    }
+    fireStatsChangedEvent();
+  }
+
   public IEquipmentStats[] getStats(IExaltedRuleSet ruleSet) {
     List<IEquipmentStats> allStats = statsByRuleSet.get(ruleSet);
     return allStats.toArray(new IEquipmentStats[allStats.size()]);

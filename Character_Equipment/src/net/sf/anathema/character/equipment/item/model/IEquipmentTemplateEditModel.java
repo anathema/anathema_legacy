@@ -10,6 +10,8 @@ public interface IEquipmentTemplateEditModel {
 
   public void addStatistics(IExaltedRuleSet ruleSet, IEquipmentStats stats);
 
+  public void removeStatistics(IExaltedRuleSet ruleSet, IEquipmentStats... stats);
+
   public IItemDescription getDescription();
 
   public IEquipmentStats[] getStats(IExaltedRuleSet ruleSet);

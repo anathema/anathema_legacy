@@ -60,6 +60,7 @@ public class EquipmentEditStatsPresenter implements IPresenter {
         model.getTemplateEditModel(),
         ruleSetView,
         model.getStatsCreationFactory()));
+    statsListView.addAction(new RemoveStatsAction(resources, model.getTemplateEditModel(), ruleSetView, statsListView));
   }
 
   private IObjectSelectionView<IExaltedRuleSet> initRuleSetPresentation(
