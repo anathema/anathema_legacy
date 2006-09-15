@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public class EquipmentTemplate implements IEquipmentTemplate {
 
-  private final Map<IExaltedRuleSet, List<IEquipmentStats>> statsByRuleSet;
+  private final Map<String, List<IEquipmentStats>> statsByRuleSet;
   private String description;
   private String name;
   private final ICollectionFactory collectionFactory;
@@ -27,7 +27,7 @@ public class EquipmentTemplate implements IEquipmentTemplate {
   }
 
   public IEquipmentStats[] getStats(IExaltedRuleSet ruleSet) {
-    List<IEquipmentStats> relevantStats = statsByRuleSet.get(ruleSet);
+    List<IEquipmentStats> relevantStats = statsByRuleSet.get(ruleSet.getId());
     if (relevantStats == null) {
       return new IEquipmentStats[0];
     }
@@ -35,10 +35,10 @@ public class EquipmentTemplate implements IEquipmentTemplate {
   }
 
   public synchronized void addStats(IExaltedRuleSet ruleSet, IEquipmentStats stats) {
-    List<IEquipmentStats> statList = statsByRuleSet.get(ruleSet);
+    List<IEquipmentStats> statList = statsByRuleSet.get(ruleSet.getId());
     if (statList == null) {
       statList = collectionFactory.createList();
-      statsByRuleSet.put(ruleSet, statList);
+      statsByRuleSet.put(ruleSet.getId(), statList);
     }
     statList.add(stats);
   }
