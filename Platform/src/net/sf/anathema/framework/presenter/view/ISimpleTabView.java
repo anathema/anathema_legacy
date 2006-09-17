@@ -1,10 +1,8 @@
 package net.sf.anathema.framework.presenter.view;
 
-import javax.swing.JComponent;
+import net.sf.anathema.lib.gui.IView;
 
-public interface ISimpleTabView {
-
-  public JComponent getComponent();
+public interface ISimpleTabView extends IView {
   
   public boolean needsScrollbar();
 }

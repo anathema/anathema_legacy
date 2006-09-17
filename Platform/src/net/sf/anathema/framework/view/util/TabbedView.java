@@ -4,13 +4,13 @@ import java.awt.FlowLayout;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 import net.infonode.tabbedpanel.TabDropDownListVisiblePolicy;
 import net.infonode.tabbedpanel.TabbedPanel;
 import net.infonode.tabbedpanel.TabbedPanelProperties;
 import net.infonode.tabbedpanel.titledtab.TitledTab;
 import net.sf.anathema.framework.presenter.view.ISimpleTabView;
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.widgets.RevalidatingScrollPane;
 
 public class TabbedView {
@@ -37,16 +37,18 @@ public class TabbedView {
   }
 
   public final void addTab(ISimpleTabView tabView, final String name) {
+    addTab(tabView, new TabProperties(name).setNeedsScrollbar(tabView.needsScrollbar()));
+  }
+
+  public void addTab(IView content, TabProperties properties) {
     TitledTab tab;
-    if (tabView.needsScrollbar()) {
+    JComponent tabContent = content.getComponent();
+    if (properties.isNeedsScrollbar()) {
       JPanel viewComponent = new JPanel(new FlowLayout(FlowLayout.LEFT));
-      viewComponent.add(tabView.getComponent());
-      JScrollPane card = new RevalidatingScrollPane(viewComponent);
-      tab = new TitledTab(name, null, card, null);
+      viewComponent.add(tabContent);
+      tabContent = new RevalidatingScrollPane(viewComponent);
     }
-    else {
-      tab = new TitledTab(name, null, tabView.getComponent(), null);
-    }
+    tab = new TitledTab(properties.getName(), null, tabContent, null);
     tabbedPane.addTab(tab);
   }
 
