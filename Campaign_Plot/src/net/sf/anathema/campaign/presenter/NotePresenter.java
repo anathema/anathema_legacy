@@ -37,9 +37,7 @@ public class NotePresenter implements IPresenter {
   }
 
   public void initPresentation() {
-    initDescriptionPresentation(
-        resources.getString(getNameLabelKey()),
-        view.addDescriptionView(resources.getString(getBorderTitleKey())));
+    initDescriptionPresentation(resources.getString(getNameLabelKey()), view.addDescriptionView());
   }
 
   private final void initDescriptionPresentation(String nameLabel, IBasicItemDescriptionView descriptionView) {

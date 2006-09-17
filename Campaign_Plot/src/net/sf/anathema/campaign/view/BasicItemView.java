@@ -21,9 +21,9 @@ public class BasicItemView extends AbstractItemView implements IBasicItemView {
     // Nothing to do
   }
 
-  public IBasicItemDescriptionView addDescriptionView(String title) {
+  public IBasicItemDescriptionView addDescriptionView() {
     Ensure.ensureNull("Only one description view allowed.", descriptionView); //$NON-NLS-1$
-    descriptionView = new BasicItemDescriptionView(title);
+    descriptionView = new BasicItemDescriptionView();
     return descriptionView;
   }
 

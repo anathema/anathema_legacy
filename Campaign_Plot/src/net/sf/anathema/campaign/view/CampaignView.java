@@ -20,7 +20,7 @@ public class CampaignView extends AbstractTabbedItemView implements ISeriesView 
   }
 
   public IPlotView addPlotView(String title) {
-    IPlotView plotView = new PlotView(title);
+    IPlotView plotView = new PlotView();
     addTab(plotView, title);
     return plotView;
   }

@@ -210,7 +210,8 @@ public class PlotPresenter implements IPresenter {
         treeModel,
         new PlotTreeCellRenderer(resources),
         resources.getString("SeriesPlot.PlotTree.BorderTitle") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
-    IBasicItemDescriptionView descriptionView = view.initBasicItemDescriptionView(resources.getString("SeriesPlot.ElementContent.BorderTitle") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
+    // String title = resources.getString("SeriesPlot.ElementContent.BorderTitle") + ":";
+    IBasicItemDescriptionView descriptionView = view.initBasicItemDescriptionView();
     initDescriptionViewPresentation(descriptionView);
     view.initGui(new PlotViewProperties(resources));
     updateButtons(null);

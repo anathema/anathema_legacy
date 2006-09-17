@@ -47,4 +47,8 @@ public class PlotViewProperties implements IPlotViewProperties {
     action.setToolTipText(resources.getString("SeriesPlot.DownToolTip")); //$NON-NLS-1$    
     return IconToggleButton.getPreferredSize(icon);
   }
+
+  public String getBorderTitle() {
+    return resources.getString("CampaignDescription.BorderTitle");
+  }
 }

@@ -12,7 +12,7 @@ public interface IPlotView extends ITabView<IPlotViewProperties> {
 
   public void addPlotViewListener(IPlotViewListener listener);
 
-  public IBasicItemDescriptionView initBasicItemDescriptionView(String title);
+  public IBasicItemDescriptionView initBasicItemDescriptionView();
 
   public ITreeView getHierarchyTreeView();
 

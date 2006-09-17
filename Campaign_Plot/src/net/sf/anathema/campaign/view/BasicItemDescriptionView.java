@@ -23,10 +23,6 @@ public class BasicItemDescriptionView extends AbstractTabView<Object> implements
 
   private final StandardPanelBuilder standardPanelBuilder = new StandardPanelBuilder();
 
-  public BasicItemDescriptionView(String header) {
-    super(header, true);
-  }
-
   private static final int COLUMN_COUNT = 45;
 
   public ITextView addLineTextView(final String labelName) {

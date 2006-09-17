@@ -6,7 +6,9 @@ import java.awt.Dimension;
 import java.awt.dnd.DnDConstants;
 import java.awt.event.MouseMotionAdapter;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -46,8 +48,8 @@ public class PlotView extends AbstractTabView<IPlotViewProperties> implements IP
   private JButton downButton;
   private DefaultMutableTreeNode selectedNode;
 
-  public PlotView(String header) {
-    super(header, false);
+  public PlotView() {
+    super(false);
   }
 
   public synchronized void addPlotViewListener(IPlotViewListener listener) {
@@ -63,7 +65,9 @@ public class PlotView extends AbstractTabView<IPlotViewProperties> implements IP
     panel.setLayout(new BorderLayout());
     initTreePanelGui(properties);
     splitPane.setLeftComponent(treePanel);
-    splitPane.setRightComponent(itemDescriptionView.getComponent());
+    JComponent component = itemDescriptionView.getComponent();
+    component.setBorder(BorderFactory.createTitledBorder(properties.getBorderTitle()));
+    splitPane.setRightComponent(component);
     panel.add(splitPane, BorderLayout.CENTER);
   }
 
@@ -83,8 +87,8 @@ public class PlotView extends AbstractTabView<IPlotViewProperties> implements IP
     tree.setSelectionPath(new TreePath(node.getPath()));
   }
 
-  public IBasicItemDescriptionView initBasicItemDescriptionView(String title) {
-    this.itemDescriptionView = new BasicItemDescriptionView(title);
+  public IBasicItemDescriptionView initBasicItemDescriptionView() {
+    this.itemDescriptionView = new BasicItemDescriptionView();
     return itemDescriptionView;
   }
 

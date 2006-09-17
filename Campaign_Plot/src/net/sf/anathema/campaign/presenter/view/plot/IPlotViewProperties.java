@@ -13,4 +13,6 @@ public interface IPlotViewProperties {
   public Dimension initHierarchyUpAction(SmartAction action);
 
   public Dimension initHierarchyDownAction(SmartAction action);
+
+  public String getBorderTitle();
 }
