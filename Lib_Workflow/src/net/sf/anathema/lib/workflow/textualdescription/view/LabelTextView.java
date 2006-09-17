@@ -7,6 +7,7 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
@@ -33,10 +34,16 @@ public class LabelTextView implements ITextView {
     this.scrollPane = scrollPane;
   }
 
+  /**
+   * @deprecated should no longer be used
+   */
   public ITextView addTo(IGridDialogPanel dialogPanel) {
     return addTo(dialogPanel, true);
   }
 
+  /**
+   * @deprecated should no longer be used
+   */
   public ITextView addTo(IGridDialogPanel dialogPanel, final boolean fillAllColumns) {
     dialogPanel.add(new IDialogComponent() {
       public int getColumnCount() {
@@ -74,6 +81,9 @@ public class LabelTextView implements ITextView {
     textView.addTextChangedListener(listener);
   }
 
+  /**
+   * @deprecated should no longer be used
+   */
   public JComponent getComponent() {
     return getInitializedContent();
   }
@@ -81,14 +91,24 @@ public class LabelTextView implements ITextView {
   public void setEnabled(boolean enabled) {
     textView.setEnabled(enabled);
     if (enabled) {
-      label.setForeground(SystemColor.textText);      
+      label.setForeground(SystemColor.textText);
     }
-    else {
-      label.setForeground(disabledLabelColor);
-    }
+    adjustLabelToDisabledColor();
   }
 
   public void setDisabledLabelColor(Color color) {
     this.disabledLabelColor = color;
+    adjustLabelToDisabledColor();
+  }
+
+  private void adjustLabelToDisabledColor() {
+    if (!label.isEnabled()) {
+      label.setForeground(disabledLabelColor);
+    }
+  }
+
+  public void addToStandardPanel(JPanel panel) {
+    panel.add(label, GridDialogLayoutDataUtilities.createTopData());
+    panel.add(textView.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
   }
 }
