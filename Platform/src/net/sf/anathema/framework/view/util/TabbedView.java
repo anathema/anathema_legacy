@@ -37,7 +37,7 @@ public class TabbedView {
   }
 
   public final void addTab(ISimpleTabView tabView, final String name) {
-    addTab(tabView, new TabProperties(name).setNeedsScrollbar(tabView.needsScrollbar()));
+    addTab(tabView, new TabProperties(name).needsScrollbar());
   }
 
   public void addTab(IView content, TabProperties properties) {

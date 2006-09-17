@@ -17,8 +17,8 @@ public class TabProperties {
     return needsScrollbar;
   }
 
-  public TabProperties setNeedsScrollbar(boolean needsScrollbar) {
-    this.needsScrollbar = needsScrollbar;
+  public TabProperties needsScrollbar() {
+    this.needsScrollbar = true;
     return this;
   }
 }
