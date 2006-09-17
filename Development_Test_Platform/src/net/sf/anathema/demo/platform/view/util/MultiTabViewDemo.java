@@ -2,7 +2,6 @@ package net.sf.anathema.demo.platform.view.util;
 
 import net.sf.anathema.framework.view.util.MultiTabView;
 import net.sf.anathema.framework.view.util.TabbedView;
-
 import de.jdemo.extensions.SwingDemoCase;
 
 public class MultiTabViewDemo extends SwingDemoCase {
@@ -20,7 +19,7 @@ public class MultiTabViewDemo extends SwingDemoCase {
   }
 
   private MultiTabView createDemoView() {
-    MultiTabView view = new MultiTabView("Header"); //$NON-NLS-1$
+    MultiTabView view = new MultiTabView(); //$NON-NLS-1$
     view.addTabView(new DemoTabView(true), "First Scroll Needed"); //$NON-NLS-1$
     view.addTabView(new DemoTabView(true), "Second Scroll Needed"); //$NON-NLS-1$
     view.addTabView(new DemoTabView(false), "First No Scroll Needed"); //$NON-NLS-1$
