@@ -2,7 +2,9 @@ package net.sf.anathema.test.character.generic.framework.xml;
 
 import net.sf.anathema.character.generic.framework.xml.creation.BonusPointCostTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.creation.GenericBonusPointCosts;
+import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.dummy.character.template.DummyXmlTemplateRegistry;
+import net.sf.anathema.dummy.character.trait.DummyFavorableGenericTrait;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 
 import org.dom4j.Element;
@@ -27,32 +29,32 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
     originalTemplate.setAttributeCost(3, 3);
     String changeContent = "<attributes><generalAttribute><fixedCost cost=\"4\" /></generalAttribute></attributes>"; //$NON-NLS-1$
     GenericBonusPointCosts parsedTemplate = parser.parseTemplate(getDocumentRoot(createUsesOriginalTemplate(changeContent)));
-    assertEquals(3, originalTemplate.getAttributeCosts(false).getRatingCosts(1));
-    assertEquals(4, parsedTemplate.getAttributeCosts(false).getRatingCosts(1));
+    assertEquals(3, originalTemplate.getAttributeCosts(new DummyFavorableGenericTrait(AttributeType.Wits, 1, false)));
+    assertEquals(4, parsedTemplate.getAttributeCosts(new DummyFavorableGenericTrait(AttributeType.Wits, 1, false)));
   }
 
   public void testNoFavoredAttributeCost() throws Exception {
     String xml = "<root><attributes><generalAttribute><fixedCost cost=\"4\" /></generalAttribute></attributes></root>"; //$NON-NLS-1$
     Element element = DocumentUtilities.read(xml).getRootElement();
     GenericBonusPointCosts costs = parser.parseTemplate(element);
-    assertEquals(4, costs.getAttributeCosts(false).getRatingCosts(1));
-    assertEquals(4, costs.getAttributeCosts(true).getRatingCosts(1));
+    assertEquals(4, costs.getAttributeCosts(new DummyFavorableGenericTrait(AttributeType.Wits, 1, false)));
+    assertEquals(4, costs.getAttributeCosts(new DummyFavorableGenericTrait(AttributeType.Wits, 1, true)));
   }
 
   public void testMissingFavoredValueIsOverwrittenByNewGeneralValue() throws Exception {
     originalTemplate.setAttributeCost(3, 3);
     String changeContent = "<attributes><generalAttribute><fixedCost cost=\"4\" /></generalAttribute></attributes>"; //$NON-NLS-1$
     GenericBonusPointCosts parsedTemplate = parser.parseTemplate(getDocumentRoot(createUsesOriginalTemplate(changeContent)));
-    assertEquals(4, parsedTemplate.getAttributeCosts(false).getRatingCosts(1));
-    assertEquals(4, parsedTemplate.getAttributeCosts(true).getRatingCosts(1));
+    assertEquals(4, parsedTemplate.getAttributeCosts(new DummyFavorableGenericTrait(AttributeType.Wits, 1, false)));
+    assertEquals(4, parsedTemplate.getAttributeCosts(new DummyFavorableGenericTrait(AttributeType.Wits, 1, true)));
   }
 
   public void testFavoredAttributeCostSpecified() throws Exception {
     String xml = "<root><attributes><generalAttribute><fixedCost cost=\"4\" /></generalAttribute><favoredAttribute><fixedCost cost=\"3\" /></favoredAttribute></attributes></root>"; //$NON-NLS-1$
     Element element = DocumentUtilities.read(xml).getRootElement();
     GenericBonusPointCosts costs = parser.parseTemplate(element);
-    assertEquals(4, costs.getAttributeCosts(false).getRatingCosts(1));
-    assertEquals(3, costs.getAttributeCosts(true).getRatingCosts(1));
+    assertEquals(4, costs.getAttributeCosts(new DummyFavorableGenericTrait(AttributeType.Wits, 1, false)));
+    assertEquals(3, costs.getAttributeCosts(new DummyFavorableGenericTrait(AttributeType.Wits, 1, true)));
   }
 
   private String createUsesOriginalTemplate(String content) {
