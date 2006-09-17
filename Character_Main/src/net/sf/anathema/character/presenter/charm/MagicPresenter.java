@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.model.ICharacterStatistics;
-import net.sf.anathema.character.presenter.TabContent;
+import net.sf.anathema.character.presenter.SimpleViewTabContent;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -40,11 +40,11 @@ public class MagicPresenter {
     }
   }
 
-  public TabContent[] init() {
-    List<TabContent> basicMagicViews = new ArrayList<TabContent>();
+  public SimpleViewTabContent[] init() {
+    List<SimpleViewTabContent> basicMagicViews = new ArrayList<SimpleViewTabContent>();
     for (IMagicSubPresenter presenter : subPresenters) {
       basicMagicViews.add(presenter.init(factory));
     }
-    return basicMagicViews.toArray(new TabContent[basicMagicViews.size()]);
+    return basicMagicViews.toArray(new SimpleViewTabContent[basicMagicViews.size()]);
   }
 }

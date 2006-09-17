@@ -23,7 +23,7 @@ import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfigurationListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
-import net.sf.anathema.character.presenter.TabContent;
+import net.sf.anathema.character.presenter.SimpleViewTabContent;
 import net.sf.anathema.character.view.magic.IComboConfigurationView;
 import net.sf.anathema.character.view.magic.IComboView;
 import net.sf.anathema.character.view.magic.IComboViewListener;
@@ -49,7 +49,7 @@ public class ComboConfigurationPresenter implements IMagicSubPresenter {
     this.comboConfiguration = statistics.getCombos();
   }
 
-  public TabContent init(IMagicViewFactory charmView) {
+  public SimpleViewTabContent init(IMagicViewFactory charmView) {
     final IComboConfigurationView comboView = charmView.createCharmComboView();
     comboView.initGui(new ComboViewProperties(resources, comboConfiguration));
     initCharmLearnListening(comboView);
@@ -77,7 +77,7 @@ public class ComboConfigurationPresenter implements IMagicSubPresenter {
     enableCrossPrerequisiteTypeCombos();
     updateComboButtons();
     String header = resources.getString("CardView.CharmConfiguration.ComboCreation.Title"); //$NON-NLS-1$
-    return new TabContent(header, comboView);
+    return new SimpleViewTabContent(header, comboView);
   }
 
   private void enableCrossPrerequisiteTypeCombos() {

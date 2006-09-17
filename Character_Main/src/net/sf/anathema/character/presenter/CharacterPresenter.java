@@ -27,8 +27,10 @@ import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.framework.presenter.view.IMultiTabView;
 import net.sf.anathema.framework.presenter.view.ISimpleTabView;
+import net.sf.anathema.framework.view.util.TabProperties;
 import net.sf.anathema.lib.gui.IDisposable;
 import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -70,7 +72,7 @@ public class CharacterPresenter implements IPresenter {
     int groupCount = traitTypeGroups.length;
     int columnCount = groupCount / 2 + 1;
     IGroupedFavorableTraitConfigurationView abilityView = characterView.createGroupedFavorableTraitConfigurationView(columnCount);
-    TabContent basicAbilitiesTab = new FavorableTraitConfigurationPresenter(
+    SimpleViewTabContent basicAbilitiesTab = new FavorableTraitConfigurationPresenter(
         traitTypeGroups,
         getStatistics(),
         abilityView,
@@ -80,7 +82,7 @@ public class CharacterPresenter implements IPresenter {
 
   private void initAdvantagePresentation() {
     String basicAdvantageHeader = getString("CardView.Advantages.Title"); //$NON-NLS-1$
-    TabContent basicAdvantageTab = new BasicAdvantagePresenter(
+    SimpleViewTabContent basicAdvantageTab = new BasicAdvantagePresenter(
         resources,
         getStatistics(),
         characterView.createAdvantageViewFactory(),
@@ -92,7 +94,7 @@ public class CharacterPresenter implements IPresenter {
     String title = getString("CardView.AttributeConfiguration.Title"); //$NON-NLS-1$
     IGroupedFavorableTraitConfigurationView attributeView = characterView.createGroupedFavorableTraitConfigurationView(1);
     IIdentifiedTraitTypeGroup[] attributeTypeGroups = getStatistics().getTraitConfiguration().getAttributeTypeGroups();
-    TabContent basicAbilitiesTab = new FavorableTraitConfigurationPresenter(
+    SimpleViewTabContent basicAbilitiesTab = new FavorableTraitConfigurationPresenter(
         attributeTypeGroups,
         getStatistics(),
         attributeView,
@@ -103,7 +105,7 @@ public class CharacterPresenter implements IPresenter {
   private void initCharacterConceptPresentation() {
     String viewTitle = getString("CardView.CharacterConcept.Title"); //$NON-NLS-1$
     ICharacterConceptAndRulesViewFactory viewFactory = characterView.createConceptViewFactory();
-    TabContent conceptView = new CharacterConceptAndRulesPresenter(getStatistics(), viewFactory, resources).init();
+    SimpleViewTabContent conceptView = new CharacterConceptAndRulesPresenter(getStatistics(), viewFactory, resources).init();
     initMultiTabViewPresentation(viewTitle, AdditionalModelType.Concept, conceptView);
   }
 
@@ -111,7 +113,11 @@ public class CharacterPresenter implements IPresenter {
     ICharacterDescriptionView descriptionView = characterView.createCharacterDescriptionView();
     String title = resources.getString("CardView.CharacterDescription.Title");//$NON-NLS-1$
     IPresenter presenter = new CharacterDescriptionPresenter(resources, character.getDescription(), descriptionView);
-    initMultiTabViewPresentation(descriptionView, presenter, title, AdditionalModelType.Description);
+    initMultiTabViewPresentation(
+        descriptionView,
+        new TabProperties(title).needsScrollbar(),
+        presenter,
+        AdditionalModelType.Description);
   }
 
   private void initExperiencePointPresentation(boolean experienced) {
@@ -132,19 +138,19 @@ public class CharacterPresenter implements IPresenter {
       return;
     }
     String magicViewHeader = getString("CardView.CharmConfiguration.Title"); //$NON-NLS-1$
-    TabContent[] basicMagicViews = new MagicPresenter(
+    SimpleViewTabContent[] basicMagicViews = new MagicPresenter(
         getStatistics(),
         characterView.createMagicViewFactory(),
         resources,
         generics.getTemplateRegistry(),
         generics.getCharmProvider()).init();
-    for (TabContent magicTab : basicMagicViews) {
+    for (ITabContent magicTab : basicMagicViews) {
       IDisposable disposable = magicTab.getDisposable();
       if (disposable != null) {
         characterView.addDisposable(disposable);
       }
     }
-    initMultiTabViewPresentation(magicViewHeader, AdditionalModelType.Magic, basicMagicViews);
+    initMultiTabViewPresentation(magicViewHeader, AdditionalModelType.Magic, (ITabContent[]) basicMagicViews);
   }
 
   private void initMultiTabViewPresentation(
@@ -153,13 +159,22 @@ public class CharacterPresenter implements IPresenter {
       String title,
       AdditionalModelType modelType) {
     presenter.initPresentation();
-    initMultiTabViewPresentation(title, modelType, new TabContent(title, view));
+    initMultiTabViewPresentation(title, modelType, new SimpleViewTabContent(title, view));
+  }
+
+  private void initMultiTabViewPresentation(
+      IView view,
+      TabProperties tabProperties,
+      IPresenter presenter,
+      AdditionalModelType modelType) {
+    presenter.initPresentation();
+    initMultiTabViewPresentation(tabProperties.getName(), modelType, new ViewTabContent(view, tabProperties));
   }
 
   private void initMultiTabViewPresentation(
       String viewTitle,
       AdditionalModelType additionalModelType,
-      TabContent... coreViews) {
+      ITabContent... coreViews) {
     IRegistry<String, IAdditionalViewFactory> factoryRegistry = generics.getAdditionalViewFactoryRegistry();
     IAdditionalModel[] additionalModels = getStatistics().getExtendedConfiguration().getAdditionalModels(
         additionalModelType);
@@ -174,7 +189,7 @@ public class CharacterPresenter implements IPresenter {
       return;
     }
     IMultiTabView multiTabView = characterView.addMultiTabView(viewTitle);
-    for (TabContent coreView : coreViews) {
+    for (ITabContent coreView : coreViews) {
       coreView.addTo(multiTabView);
     }
     for (Entry<IAdditionalModel, IAdditionalViewFactory> entry : additionalViewFactories.entrySet()) {

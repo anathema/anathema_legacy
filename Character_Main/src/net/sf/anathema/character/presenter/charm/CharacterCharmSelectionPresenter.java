@@ -33,7 +33,7 @@ import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
-import net.sf.anathema.character.presenter.TabContent;
+import net.sf.anathema.character.presenter.SimpleViewTabContent;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.charmtree.batik.intvalue.SVGMultiLearnableCharmView;
 import net.sf.anathema.charmtree.batik.intvalue.SVGSubeffectCharmView;
@@ -75,7 +75,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     this.statistics = statistics;
   }
 
-  public TabContent init(IMagicViewFactory viewFactory) {
+  public SimpleViewTabContent init(IMagicViewFactory viewFactory) {
     final ICharmConfiguration charms = getCharmConfiguration();
     final ICharmSelectionView selectionView = viewFactory.createCharmSelectionView(viewProperties);
     boolean alienCharms = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().isAllowedAlienCharms(
@@ -134,7 +134,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     });
     selectionView.initGui();
     String header = getResources().getString("CardView.CharmConfiguration.CharmSelection.Title"); //$NON-NLS-1$
-    return new TabContent(header, selectionView);
+    return new SimpleViewTabContent(header, selectionView);
   }
 
   private void initCasteListening(final ICharmSelectionView selectionView) {

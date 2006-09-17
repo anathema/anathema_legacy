@@ -23,7 +23,7 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.IMagicLearnListener;
 import net.sf.anathema.character.model.ISpellConfiguration;
-import net.sf.anathema.character.presenter.TabContent;
+import net.sf.anathema.character.presenter.SimpleViewTabContent;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
@@ -55,7 +55,7 @@ public abstract class AbstractSpellPresenter implements IMagicSubPresenter {
     circle = getCircles()[0];
   }
 
-  public TabContent init(IMagicViewFactory magicView) {
+  public SimpleViewTabContent init(IMagicViewFactory magicView) {
     final ISpellView view = magicView.createSpellView(properties);
     IIdentificate[] allowedCircles = getCircles();
     initDetailsView(view);
@@ -102,7 +102,7 @@ public abstract class AbstractSpellPresenter implements IMagicSubPresenter {
       }
     });
     String header = resources.getString(getTabTitleResourceKey());
-    return new TabContent(header, view);
+    return new SimpleViewTabContent(header, view);
   }
 
   private void initDetailsView(final ISpellView view) {

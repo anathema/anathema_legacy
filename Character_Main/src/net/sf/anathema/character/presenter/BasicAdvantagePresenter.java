@@ -44,7 +44,7 @@ public class BasicAdvantagePresenter {
         view));
   }
 
-  public TabContent init() {
+  public SimpleViewTabContent init() {
     for (IPresenter presenter : subPresenters) {
       presenter.initPresentation();
     }
@@ -66,6 +66,6 @@ public class BasicAdvantagePresenter {
       }
     });
     String basicAdvantageHeader = resources.getString("CardView.Advantages.Title"); //$NON-NLS-1$
-    return new TabContent(basicAdvantageHeader, view);
+    return new SimpleViewTabContent(basicAdvantageHeader, view);
   }
 }

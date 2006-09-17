@@ -12,7 +12,7 @@ import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 import net.sf.anathema.namegenerator.domain.realm.RealmNameGenerator;
 import net.sf.anathema.namegenerator.exalted.domain.ThresholdNameGenerator;
 
-public class CharacterDescriptionPresenter implements IPresenter{
+public class CharacterDescriptionPresenter implements IPresenter {
 
   private final ICharacterDescription description;
   private final ICharacterDescriptionView descriptionView;
@@ -36,7 +36,6 @@ public class CharacterDescriptionPresenter implements IPresenter{
     initAreaView(
         "CharacterDescription.Label.PhysicalDescription", 5, description.getPhysicalDescription(), presentation); //$NON-NLS-1$
     initAreaView("CharacterDescription.Label.Notes", 5, description.getNotes(), presentation); //$NON-NLS-1$
-    descriptionView.initGui(null);
   }
 
   private void initNameLineView(int row, TextualPresentation presentation) {
