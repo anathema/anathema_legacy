@@ -16,7 +16,7 @@ import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 import net.sf.anathema.character.presenter.CharacterPresenter;
-import net.sf.anathema.character.presenter.TabContent;
+import net.sf.anathema.character.presenter.ITabContent;
 import net.sf.anathema.character.presenter.charm.MagicPresenter;
 import net.sf.anathema.character.view.ICharacterView;
 import net.sf.anathema.framework.IAnathemaModel;
@@ -57,13 +57,13 @@ public class CharacterPerformanceTuner {
     ExaltedCharacter character = createStattedCharacter(generics);
     ICharacterStatistics statistics = character.getStatistics();
     MagicViewFactory magicView = new MagicViewFactory();
-    TabContent[] contents = new MagicPresenter(
+    ITabContent[] contents = new MagicPresenter(
         statistics,
         magicView,
         resources,
         generics.getTemplateRegistry(),
         generics.getCharmProvider()).init();
-    for (TabContent content : contents) {
+    for (ITabContent content : contents) {
       if (content.getDisposable() instanceof CharmSelectionView) {
         ((CharmSelectionView) content.getDisposable()).fillCharmComboBoxes(CharacterType.SOLAR, AbilityType.Melee);
       }
