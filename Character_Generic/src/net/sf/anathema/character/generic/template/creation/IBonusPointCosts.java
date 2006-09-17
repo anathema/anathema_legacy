@@ -5,12 +5,13 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.template.experience.IAbilityPointCosts;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
+import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 
 public interface IBonusPointCosts extends IAbilityPointCosts, IBackgroundCreationPointCosts {
 
   public int getCharmCosts(ICharm charm, ICostAnalyzer analyzer);
 
-  public ICurrentRatingCosts getAttributeCosts(boolean favored);
+  public int getAttributeCosts(IFavorableGenericTrait trait);
 
   public ICurrentRatingCosts getVirtueCosts();
 
