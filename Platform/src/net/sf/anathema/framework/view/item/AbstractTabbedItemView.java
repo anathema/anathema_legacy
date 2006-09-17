@@ -3,8 +3,9 @@ package net.sf.anathema.framework.view.item;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 
-import net.sf.anathema.framework.presenter.view.ITabView;
+import net.sf.anathema.framework.view.util.TabProperties;
 import net.sf.anathema.framework.view.util.TabbedView;
+import net.sf.anathema.lib.gui.IView;
 
 public abstract class AbstractTabbedItemView extends AbstractItemView {
 
@@ -15,8 +16,8 @@ public abstract class AbstractTabbedItemView extends AbstractItemView {
     super(name, icon);
   }
 
-  protected final void addTab(ITabView<?> cardView, final String name) {
-    tabbedView.addTab(cardView, name);
+  protected final void addTab(IView viewContent, final String name) {
+    tabbedView.addTab(viewContent, new TabProperties(name));
   }
 
   public final JComponent getComponent() {
@@ -28,8 +29,8 @@ public abstract class AbstractTabbedItemView extends AbstractItemView {
   }
 
   protected abstract JComponent[] getTabAreaComponents();
-  
+
   protected final void setTabAreaComponents(JComponent[] components) {
-    tabbedView.setTabAreaComponents(components);    
+    tabbedView.setTabAreaComponents(components);
   }
 }
