@@ -10,8 +10,8 @@ import net.sf.anathema.framework.presenter.view.ISimpleTabView;
 
 public class MultiTabView extends AbstractTabView<Object> implements IMultiTabView {
 
-  public MultiTabView(String header) {
-    super(header, false);
+  public MultiTabView() {
+    super(false);
   }
 
   private TabbedView tabbedView = new TabbedView(TabDirection.Up);

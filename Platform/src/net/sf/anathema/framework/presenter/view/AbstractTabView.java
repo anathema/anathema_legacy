@@ -2,28 +2,21 @@ package net.sf.anathema.framework.presenter.view;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.border.TitledBorder;
-
 
 public abstract class AbstractTabView<P> implements ITabView<P> {
 
   private final JPanel content = new JPanel();
-  private final String header;
   private final boolean scrollable;
 
-  protected AbstractTabView(String header, boolean scrollable) {
-    this.header = header;
+  protected AbstractTabView(boolean scrollable) {
     this.scrollable = scrollable;
   }
 
-  protected AbstractTabView(String header) {
-    this(header, true);
+  protected AbstractTabView() {
+    this(true);
   }
 
   public final void initGui(P properties) {
-    if (header != null) {
-      content.setBorder(new TitledBorder(header));
-    }
     createContent(content, properties);
   }
 
