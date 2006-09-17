@@ -4,7 +4,6 @@ import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
-import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.rules.IEditionVisitor;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
@@ -26,11 +25,8 @@ import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
-import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
-import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
-import net.sf.anathema.character.model.charm.IComboConfigurationListener;
 import net.sf.anathema.character.model.concept.ICharacterConcept;
 import net.sf.anathema.character.model.concept.IMotivation;
 import net.sf.anathema.character.model.concept.INature;
@@ -93,28 +89,7 @@ public class CharacterStatistics implements ICharacterStatistics {
         context);
     charms.initListening();
     this.combos = new ComboConfiguration(charms, context.getComboLearnStrategy(), rules.getEdition());
-    combos.addComboConfigurationListener(new IComboConfigurationListener() {
-
-      public void editEnded() {
-        // Nothing to do
-      }
-
-      public void editBegun(ICombo combo) {
-        // Nothing to do
-      }
-
-      public void comboDeleted(ICombo combo) {
-        context.getCharacterListening().fireCharacterChanged();
-      }
-
-      public void comboChanged(ICombo combo) {
-        context.getCharacterListening().fireCharacterChanged();
-      }
-
-      public void comboAdded(ICombo combo) {
-        context.getCharacterListening().fireCharacterChanged();
-      }
-    });
+    combos.addComboConfigurationListener(new CharacterChangeComboListener(context.getCharacterListening()));
     CharacterType characterType = template.getTemplateType().getCharacterType();
     this.spells = new SpellConfiguration(charms, context.getSpellLearnStrategy(), characterType);
     this.spells.addChangeListener(new IChangeListener() {
@@ -155,22 +130,7 @@ public class CharacterStatistics implements ICharacterStatistics {
   }
 
   private void initCharmListening(ICharmConfiguration charmConfiguration) {
-    charmConfiguration.addCharmLearnListener(new CharmLearnAdapter() {
-      @Override
-      public void charmForgotten(ICharm charm) {
-        context.getCharacterListening().fireCharacterChanged();
-      }
-
-      @Override
-      public void charmLearned(ICharm charm) {
-        context.getCharacterListening().fireCharacterChanged();
-      }
-
-      @Override
-      public void recalculateRequested() {
-        context.getCharacterListening().fireCharacterChanged();
-      }
-    });
+    charmConfiguration.addCharmLearnListener(new CharacterChangeCharmListener(context.getCharacterListening()));
   }
 
   public ICharacterConcept getCharacterConcept() {
