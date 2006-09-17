@@ -6,15 +6,17 @@ import javax.swing.tree.TreeModel;
 
 import net.sf.anathema.campaign.presenter.view.IPlotViewListener;
 import net.sf.anathema.framework.itemdata.view.IBasicItemDescriptionView;
-import net.sf.anathema.framework.presenter.view.ITabView;
+import net.sf.anathema.lib.gui.IView;
 
-public interface IPlotView extends ITabView<IPlotViewProperties> {
+public interface IPlotView extends IView {
+  
+  public void initGui(IPlotViewProperties properties);
 
   public void addPlotViewListener(IPlotViewListener listener);
 
   public IBasicItemDescriptionView initBasicItemDescriptionView();
 
-  public ITreeView getHierarchyTreeView();
+  public ITreeView createHierarchyTreeView();
 
   public void initSeriesHierarchyView(TreeModel model, TreeCellRenderer renderer, String title);
 
@@ -30,7 +32,7 @@ public interface IPlotView extends ITabView<IPlotViewProperties> {
 
   public void collapseNode(DefaultMutableTreeNode node);
 
-  public void updateHierarchieTreeCellRenderer(TreeCellRenderer renderer);
+  public void setHierarchieTreeCellRenderer(TreeCellRenderer renderer);
 
   public void setSelectedHierarchyNode(DefaultMutableTreeNode node);
 }

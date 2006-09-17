@@ -178,7 +178,7 @@ public class PlotPresenter implements IPresenter {
           return;
         }
         ((IPlotElement) selectedNode.getUserObject()).getDescription().getName().setText(newValue);
-        view.updateHierarchieTreeCellRenderer(new PlotTreeCellRenderer(resources));
+        view.setHierarchieTreeCellRenderer(new PlotTreeCellRenderer(resources));
       }
     });
     DefaultStyledDocument document = new DefaultStyledDocument();
@@ -210,12 +210,11 @@ public class PlotPresenter implements IPresenter {
         treeModel,
         new PlotTreeCellRenderer(resources),
         resources.getString("SeriesPlot.PlotTree.BorderTitle") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
-    // String title = resources.getString("SeriesPlot.ElementContent.BorderTitle") + ":";
     IBasicItemDescriptionView descriptionView = view.initBasicItemDescriptionView();
     initDescriptionViewPresentation(descriptionView);
     view.initGui(new PlotViewProperties(resources));
     updateButtons(null);
-    new PlotPopUpMenuProvider(view.getHierarchyTreeView(), plotModel, resources).initPopupMousing();
+    new PlotPopUpMenuProvider(view.createHierarchyTreeView(), plotModel, resources).initPopupMousing();
   }
 
   private void removeFromListening(IPlotElementContainer container) {

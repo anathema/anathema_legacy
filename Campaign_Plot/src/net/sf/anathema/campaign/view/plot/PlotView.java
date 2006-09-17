@@ -32,11 +32,11 @@ import net.sf.anathema.campaign.presenter.view.plot.ITreeView;
 import net.sf.anathema.campaign.view.BasicItemDescriptionView;
 import net.sf.anathema.campaign.view.util.DefaultTreeView;
 import net.sf.anathema.framework.itemdata.view.IBasicItemDescriptionView;
-import net.sf.anathema.framework.presenter.view.AbstractTabView;
 import net.sf.anathema.lib.gui.layout.AnathemaLayoutUtilities;
 
-public class PlotView extends AbstractTabView<IPlotViewProperties> implements IPlotView {
+public class PlotView implements IPlotView {
 
+  private final JPanel content = new JPanel();
   private final PlotViewListenerControl listenerControl = new PlotViewListenerControl();
   private final JSplitPane splitPane = AnathemaLayoutUtilities.createSplitPane(0.3);
   private JTree tree;
@@ -48,8 +48,8 @@ public class PlotView extends AbstractTabView<IPlotViewProperties> implements IP
   private JButton downButton;
   private DefaultMutableTreeNode selectedNode;
 
-  public PlotView() {
-    super(false);
+  public final void initGui(IPlotViewProperties properties) {
+    createContent(content, properties);
   }
 
   public synchronized void addPlotViewListener(IPlotViewListener listener) {
@@ -60,8 +60,7 @@ public class PlotView extends AbstractTabView<IPlotViewProperties> implements IP
     tree.collapsePath(new TreePath(node.getPath()));
   }
 
-  @Override
-  protected void createContent(JPanel panel, IPlotViewProperties properties) {
+  private void createContent(JPanel panel, IPlotViewProperties properties) {
     panel.setLayout(new BorderLayout());
     initTreePanelGui(properties);
     splitPane.setLeftComponent(treePanel);
@@ -141,21 +140,21 @@ public class PlotView extends AbstractTabView<IPlotViewProperties> implements IP
   public void initSeriesHierarchyView(TreeModel model, TreeCellRenderer renderer, String title) {
     tree = new JTree(model);
     tree.setCellRenderer(renderer);
-    new PlotDnD(getHierarchyTreeView(), listenerControl).initDragAndDrop();
+    new PlotDnD(createHierarchyTreeView(), listenerControl).initDragAndDrop();
     tree.addTreeSelectionListener(new TreeSelectionListener() {
       public void valueChanged(TreeSelectionEvent e) {
         if (selectedNode == getSelectedHierachyNode()) {
           return;
         }
-        selectedNode = getSelectedHierachyNode();        
-        listenerControl.fireSelectionChangedTo(getSelectedHierachyNode());        
+        selectedNode = getSelectedHierachyNode();
+        listenerControl.fireSelectionChangedTo(getSelectedHierachyNode());
       }
     });
     tree.addMouseMotionListener(new MouseMotionAdapter() {
       @Override
       public void mouseDragged(java.awt.event.MouseEvent e) {
-       tree.getTransferHandler().exportAsDrag(tree, e, DnDConstants.ACTION_MOVE);
-      }      
+        tree.getTransferHandler().exportAsDrag(tree, e, DnDConstants.ACTION_MOVE);
+      }
     });
     tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
     treePanel = new JPanel();
@@ -186,7 +185,7 @@ public class PlotView extends AbstractTabView<IPlotViewProperties> implements IP
     removeButton.setEnabled(enabled);
   }
 
-  public void updateHierarchieTreeCellRenderer(TreeCellRenderer renderer) {
+  public void setHierarchieTreeCellRenderer(TreeCellRenderer renderer) {
     tree.setCellRenderer(renderer);
   }
 
@@ -198,7 +197,11 @@ public class PlotView extends AbstractTabView<IPlotViewProperties> implements IP
     downButton.setEnabled(enabled);
   }
 
-  public ITreeView getHierarchyTreeView() {
+  public ITreeView createHierarchyTreeView() {
     return new DefaultTreeView(tree);
+  }
+
+  public JComponent getComponent() {
+    return content;
   }
 }
