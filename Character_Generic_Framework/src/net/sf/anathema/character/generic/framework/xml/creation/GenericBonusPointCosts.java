@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
 import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
+import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
 public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBonusPointCosts> implements
@@ -34,7 +35,12 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
     return getCharmCosts(analyzer.isMagicFavored(charm), analyzer.getMartialArtsLevel(charm));
   }
 
-  public ICurrentRatingCosts getAttributeCosts(boolean favored) {
+  public int getAttributeCosts(IFavorableGenericTrait trait) {
+    ICurrentRatingCosts attributeCosts = getAttributeCosts(trait.isCasteOrFavored());
+    return attributeCosts.getRatingCosts(trait.getCurrentValue());
+  }
+
+  private ICurrentRatingCosts getAttributeCosts(boolean favored) {
     return getFavorableFixedRatingCost(favored, favoredAttributeCost, generalAttributeCost);
   }
 
