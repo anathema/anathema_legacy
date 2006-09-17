@@ -9,7 +9,7 @@ import net.sf.anathema.framework.resources.AnathemaResources;
 public class ExperienceConfigurationViewDemo extends BasicCharacterDemoCase {
 
   public void demo() {
-    ExperienceConfigurationView view = new ExperienceConfigurationView("Ich bin ein Header"); //$NON-NLS-1$
+    ExperienceConfigurationView view = new ExperienceConfigurationView(); //$NON-NLS-1$
     IExperiencePointConfiguration model = new ExperiencePointConfiguration();
     ExperienceConfigurationPresenter presenter = new ExperienceConfigurationPresenter(
         new AnathemaResources(),

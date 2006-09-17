@@ -12,7 +12,6 @@ public class AbilityConfigurationDemo extends BasicCharacterDemoCase {
     AnathemaResources resources = new AnathemaResources();
     GroupedFavorableTraitConfigurationView configurationView = new GroupedFavorableTraitConfigurationView(
         1,
-        "Abilities", //$NON-NLS-1$
         createMortalGuiConfiguration(resources),
         createMortalGuiConfiguration(resources));
     configurationView.startNewTraitGroup("TestGroup"); //$NON-NLS-1$
