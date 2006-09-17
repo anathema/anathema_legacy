@@ -17,10 +17,6 @@ public class CharacterDescriptionView extends AbstractTabView<Object> implements
   private static final int TEXT_COLUMS = 45;
   private EditButtonDialogPanel dialogPanel = new EditButtonDialogPanel();
 
-  public CharacterDescriptionView(String header) {
-    super(header);
-  }
-
   @Override
   protected void createContent(JPanel panel, Object object) {
     panel.setLayout(new BorderLayout());

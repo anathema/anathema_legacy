@@ -32,7 +32,7 @@ public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConc
   private final IGridDialogPanel rulesPanel = new DefaultGridDialogPanel(false);
 
   public CharacterConceptAndRulesView() {
-    super(null, false);
+    super(false);
   }
 
   @Override

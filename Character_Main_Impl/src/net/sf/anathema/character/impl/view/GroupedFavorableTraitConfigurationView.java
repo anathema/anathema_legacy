@@ -20,10 +20,8 @@ public class GroupedFavorableTraitConfigurationView extends AbstractTabView<Obje
 
   public GroupedFavorableTraitConfigurationView(
       int columnCount,
-      String header,
       IIntValueDisplayFactory factoryWithMarker,
       IIntValueDisplayFactory factoryWithoutMarker) {
-    super(header);
     this.groupedTraitView = new GroupedGridDialogPanel(columnCount);
     this.markerIntValueDisplayFactory = factoryWithMarker;
     this.markerLessIntValueDisplayFactory = factoryWithoutMarker;

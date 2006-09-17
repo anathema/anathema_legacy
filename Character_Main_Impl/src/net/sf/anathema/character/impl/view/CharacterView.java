@@ -42,30 +42,19 @@ public class CharacterView extends AbstractTabbedItemView implements ICharacterV
     this.intValueDisplayFactoryWithoutMarker = factoryWithoutMarker;
   }
 
-  public IGroupedFavorableTraitConfigurationView addGroupedFavorableTraitConfigurationView(
-      String header,
-      int columnCount) {
+  public IGroupedFavorableTraitConfigurationView createGroupedFavorableTraitConfigurationView(int columnCount) {
     return new GroupedFavorableTraitConfigurationView(
         columnCount,
-        header,
         intValueDisplayFactory,
         intValueDisplayFactoryWithoutMarker);
   }
 
-  public IGroupedFavorableTraitConfigurationView addGroupedFavorableTraitConfigurationTab(String header, int columnCount) {
-    IGroupedFavorableTraitConfigurationView view = addGroupedFavorableTraitConfigurationView(header, columnCount);
-    addTab(view, header);
-    return view;
-  }
-
-  public ICharacterDescriptionView addCharacterDescriptionView(String header) {
-    ICharacterDescriptionView descriptionView = new CharacterDescriptionView(header);
-    addTab(descriptionView, header);
-    return descriptionView;
+  public ICharacterDescriptionView createCharacterDescriptionView() {
+    return new CharacterDescriptionView();
   }
 
   public IMultiTabView addMultiTabView(String header) {
-    IMultiTabView multiTabView = new MultiTabView(null);
+    IMultiTabView multiTabView = new MultiTabView();
     addTab(multiTabView, header);
     return multiTabView;
   }
@@ -76,10 +65,8 @@ public class CharacterView extends AbstractTabbedItemView implements ICharacterV
     return newView;
   }
 
-  public IExperienceConfigurationView addExperienceConfigurationView(String header) {
-    ExperienceConfigurationView newView = new ExperienceConfigurationView(header);
-    addTab(newView, header);
-    return newView;
+  public IExperienceConfigurationView createExperienceConfigurationView() {
+    return new ExperienceConfigurationView();
   }
 
   @Override

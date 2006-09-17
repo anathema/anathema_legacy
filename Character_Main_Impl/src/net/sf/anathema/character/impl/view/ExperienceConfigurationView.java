@@ -32,10 +32,6 @@ public class ExperienceConfigurationView extends AbstractTabView<IExperienceConf
   private Action deleteAction;
   private LabelledIntegerValueView labelledIntValueView;
 
-  public ExperienceConfigurationView(String header) {
-    super(header);
-  }
-
   @Override
   protected void createContent(JPanel panel, final IExperienceConfigurationViewProperties properties) {
     smartTable = new SmartTable(properties.getTableModel(), properties.getColumnSettings());

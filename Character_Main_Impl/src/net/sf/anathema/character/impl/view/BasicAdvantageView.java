@@ -40,7 +40,7 @@ public class BasicAdvantageView extends AbstractTabView<IAdvantageViewProperties
   private JPanel backgroundPanel;
 
   public BasicAdvantageView(IIntValueDisplayFactory intValueDisplayFactory) {
-    super(null, false);
+    super(false);
     this.guiConfiguration = intValueDisplayFactory;
     essencePanelView = new EssencePanelView(intValueDisplayFactory);
   }
