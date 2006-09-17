@@ -26,6 +26,7 @@ import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.framework.presenter.view.IMultiTabView;
+import net.sf.anathema.framework.presenter.view.ISimpleTabView;
 import net.sf.anathema.lib.gui.IDisposable;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -55,55 +56,104 @@ public class CharacterPresenter implements IPresenter {
     this.experiencePointManagement = experiencePointManagement;
   }
 
-  public void initPresentation() {
-    initCharacterDescriptionPresentation();
-    initStatisticsPresentation();
+  private ICharacterStatistics getStatistics() {
+    return character.getStatistics();
   }
 
-  private void initStatisticsPresentation() {
-    if (!character.hasStatistics()) {
-      return;
-    }
-    initCharacterConceptPresentation();
-    initAttributePresentation();
-    initAbilityPresentation();
-    initAdvantagePresentation();
-    initMagicPresentation();
-    initMiscellaneousPresentation();
-    initOverviewPresentation();
-    initExperiencePointPresentation(getStatistics().isExperienced());
-    getStatistics().getCharacterContext().getCharacterListening().addChangeListener(
-        new DedicatedCharacterChangeAdapter() {
-          @Override
-          public void experiencedChanged(boolean experienced) {
-            initExperiencePointPresentation(experienced);
-            setOverviewView(experienced);
-          }
-        });
+  private String getString(String resourceKey) {
+    return resources.getString(resourceKey);
   }
 
-  private void initOverviewPresentation() {
-    IOverviewView creationPointView = characterView.addCreationOverviewView();
-    new CreationOverviewPresenter(resources, getStatistics(), creationPointView, bonusPointManagement).initPresentation();
-    IOverviewView experiencePointView = characterView.addExperienceOverviewView();
-    new ExperiencedOverviewPresenter(resources, getStatistics(), experiencePointView, experiencePointManagement).initPresentation();
-    setOverviewView(getStatistics().isExperienced());
+  private void initAbilityPresentation() {
+    String basicAbilitiesHeader = getString("CardView.AbilityConfiguration.Title"); //$NON-NLS-1$
+    IIdentifiedTraitTypeGroup[] traitTypeGroups = getStatistics().getTraitConfiguration().getAbilityTypeGroups();
+    int groupCount = traitTypeGroups.length;
+    int columnCount = groupCount / 2 + 1;
+    IGroupedFavorableTraitConfigurationView abilityView = characterView.createGroupedFavorableTraitConfigurationView(columnCount);
+    TabContent basicAbilitiesTab = new FavorableTraitConfigurationPresenter(
+        traitTypeGroups,
+        getStatistics(),
+        abilityView,
+        resources).init("AbilityConfiguration", "AbilityGroup"); //$NON-NLS-1$//$NON-NLS-2$
+    initMultiTabViewPresentation(basicAbilitiesHeader, AdditionalModelType.Abilities, basicAbilitiesTab);
   }
 
-  private void setOverviewView(boolean experienced) {
-    characterView.toogleOverviewView(experienced);
+  private void initAdvantagePresentation() {
+    String basicAdvantageHeader = getString("CardView.Advantages.Title"); //$NON-NLS-1$
+    TabContent basicAdvantageTab = new BasicAdvantagePresenter(
+        resources,
+        getStatistics(),
+        characterView.createAdvantageViewFactory(),
+        generics).init();
+    initMultiTabViewPresentation(basicAdvantageHeader, AdditionalModelType.Advantages, basicAdvantageTab);
+  }
+
+  private void initAttributePresentation() {
+    String title = getString("CardView.AttributeConfiguration.Title"); //$NON-NLS-1$
+    IGroupedFavorableTraitConfigurationView attributeView = characterView.createGroupedFavorableTraitConfigurationView(1);
+    IIdentifiedTraitTypeGroup[] attributeTypeGroups = getStatistics().getTraitConfiguration().getAttributeTypeGroups();
+    TabContent basicAbilitiesTab = new FavorableTraitConfigurationPresenter(
+        attributeTypeGroups,
+        getStatistics(),
+        attributeView,
+        resources).init("AttributeConfiguration", "AttributeGroupType.Name"); //$NON-NLS-1$//$NON-NLS-2$
+    initMultiTabViewPresentation(title, AdditionalModelType.Attributes, basicAbilitiesTab);
+  }
+
+  private void initCharacterConceptPresentation() {
+    String viewTitle = getString("CardView.CharacterConcept.Title"); //$NON-NLS-1$
+    ICharacterConceptAndRulesViewFactory viewFactory = characterView.createConceptViewFactory();
+    TabContent conceptView = new CharacterConceptAndRulesPresenter(getStatistics(), viewFactory, resources).init();
+    initMultiTabViewPresentation(viewTitle, AdditionalModelType.Concept, conceptView);
+  }
+
+  private void initCharacterDescriptionPresentation() {
+    ICharacterDescriptionView descriptionView = characterView.createCharacterDescriptionView();
+    String title = resources.getString("CardView.CharacterDescription.Title");//$NON-NLS-1$
+    IPresenter presenter = new CharacterDescriptionPresenter(resources, character.getDescription(), descriptionView);
+    initMultiTabViewPresentation(descriptionView, presenter, title, AdditionalModelType.Description);
   }
 
   private void initExperiencePointPresentation(boolean experienced) {
     if (experienced) {
-      IExperienceConfigurationView experienceView = characterView.addExperienceConfigurationView(getString("CardView.ExperienceConfiguration.Title")); //$NON-NLS-1$
-      new ExperienceConfigurationPresenter(resources, getStatistics().getExperiencePoints(), experienceView).initPresentation();
+      IExperienceConfigurationView experienceView = characterView.createExperienceConfigurationView(); //$NON-NLS-1$
+      IPresenter presenter = new ExperienceConfigurationPresenter(
+          resources,
+          getStatistics().getExperiencePoints(),
+          experienceView);
+      String title = getString("CardView.ExperienceConfiguration.Title");
+      initMultiTabViewPresentation(experienceView, presenter, title, AdditionalModelType.Experience);
     }
   }
 
-  private void initMiscellaneousPresentation() {
-    String miscellaneousTitle = getString("CardView.MiscellaneousConfiguration.Title"); //$NON-NLS-1$
-    initMultiTabViewPresentation(miscellaneousTitle, AdditionalModelType.Miscellaneous);
+  private void initMagicPresentation() {
+    final ICharacterTemplate characterTemplate = getStatistics().getCharacterTemplate();
+    if (!characterTemplate.getMagicTemplate().getCharmTemplate().knowsCharms(getStatistics().getRules())) {
+      return;
+    }
+    String magicViewHeader = getString("CardView.CharmConfiguration.Title"); //$NON-NLS-1$
+    TabContent[] basicMagicViews = new MagicPresenter(
+        getStatistics(),
+        characterView.createMagicViewFactory(),
+        resources,
+        generics.getTemplateRegistry(),
+        generics.getCharmProvider()).init();
+    for (TabContent magicTab : basicMagicViews) {
+      IDisposable disposable = magicTab.getDisposable();
+      if (disposable != null) {
+        characterView.addDisposable(disposable);
+      }
+    }
+    initMultiTabViewPresentation(magicViewHeader, AdditionalModelType.Magic, basicMagicViews);
+  }
+
+  private void initMultiTabViewPresentation(
+      ISimpleTabView view,
+      IPresenter presenter,
+      String title,
+      AdditionalModelType modelType) {
+    presenter.initPresentation();
+    initMultiTabViewPresentation(title, modelType, new TabContent(title, view));
   }
 
   private void initMultiTabViewPresentation(
@@ -138,81 +188,44 @@ public class CharacterPresenter implements IPresenter {
     multiTabView.initGui(null);
   }
 
-  private void initMagicPresentation() {
-    final ICharacterTemplate characterTemplate = getStatistics().getCharacterTemplate();
-    if (!characterTemplate.getMagicTemplate().getCharmTemplate().knowsCharms(getStatistics().getRules())) {
+  private void initOverviewPresentation() {
+    IOverviewView creationPointView = characterView.addCreationOverviewView();
+    new CreationOverviewPresenter(resources, getStatistics(), creationPointView, bonusPointManagement).initPresentation();
+    IOverviewView experiencePointView = characterView.addExperienceOverviewView();
+    new ExperiencedOverviewPresenter(resources, getStatistics(), experiencePointView, experiencePointManagement).initPresentation();
+    setOverviewView(getStatistics().isExperienced());
+  }
+
+  public void initPresentation() {
+    initCharacterDescriptionPresentation();
+    initStatisticsPresentation();
+  }
+
+  private void initStatisticsPresentation() {
+    if (!character.hasStatistics()) {
       return;
     }
-    String magicViewHeader = getString("CardView.CharmConfiguration.Title"); //$NON-NLS-1$
-    TabContent[] basicMagicViews = new MagicPresenter(
-        getStatistics(),
-        characterView.createMagicViewFactory(),
-        resources,
-        generics.getTemplateRegistry(),
-        generics.getCharmProvider()).init();
-    for (TabContent magicTab : basicMagicViews) {
-      IDisposable disposable = magicTab.getDisposable();
-      if (disposable != null) {
-        characterView.addDisposable(disposable);
-      }
-    }
-    initMultiTabViewPresentation(magicViewHeader, AdditionalModelType.Magic, basicMagicViews);
+    initCharacterConceptPresentation();
+    initAttributePresentation();
+    initAbilityPresentation();
+    initAdvantagePresentation();
+    initMagicPresentation();
+    initMultiTabViewPresentation(
+        getString("CardView.MiscellaneousConfiguration.Title"),
+        AdditionalModelType.Miscellaneous);
+    initOverviewPresentation();
+    initExperiencePointPresentation(getStatistics().isExperienced());
+    getStatistics().getCharacterContext().getCharacterListening().addChangeListener(
+        new DedicatedCharacterChangeAdapter() {
+          @Override
+          public void experiencedChanged(boolean experienced) {
+            initExperiencePointPresentation(experienced);
+            setOverviewView(experienced);
+          }
+        });
   }
 
-  private ICharacterStatistics getStatistics() {
-    return character.getStatistics();
-  }
-
-  private void initCharacterConceptPresentation() {
-    String viewTitle = getString("CardView.CharacterConcept.Title"); //$NON-NLS-1$
-    ICharacterConceptAndRulesViewFactory viewFactory = characterView.createConceptViewFactory();
-    TabContent conceptView = new CharacterConceptAndRulesPresenter(getStatistics(), viewFactory, resources).init();
-    initMultiTabViewPresentation(viewTitle, AdditionalModelType.Concept, conceptView);
-  }
-
-  private void initAttributePresentation() {
-    String title = getString("CardView.AttributeConfiguration.Title"); //$NON-NLS-1$
-    IGroupedFavorableTraitConfigurationView attributeView = characterView.addGroupedFavorableTraitConfigurationTab(
-        title,
-        1);
-    IIdentifiedTraitTypeGroup[] attributeTypeGroups = getStatistics().getTraitConfiguration().getAttributeTypeGroups();
-    new FavorableTraitConfigurationPresenter(attributeTypeGroups, getStatistics(), attributeView, resources).init(
-        "AttributeConfiguration", //$NON-NLS-1$
-        "AttributeGroupType.Name"); //$NON-NLS-1$
-  }
-
-  private void initAdvantagePresentation() {
-    String basicAdvantageHeader = getString("CardView.Advantages.Title"); //$NON-NLS-1$
-    TabContent basicAdvantageTab = new BasicAdvantagePresenter(
-        resources,
-        getStatistics(),
-        characterView.createAdvantageViewFactory(),
-        generics).init();
-    initMultiTabViewPresentation(basicAdvantageHeader, AdditionalModelType.Advantages, basicAdvantageTab);
-  }
-
-  private String getString(String resourceKey) {
-    return resources.getString(resourceKey);
-  }
-
-  private void initAbilityPresentation() {
-    String basicAbilitiesHeader = getString("CardView.AbilityConfiguration.Title"); //$NON-NLS-1$
-    IIdentifiedTraitTypeGroup[] traitTypeGroups = getStatistics().getTraitConfiguration().getAbilityTypeGroups();
-    int groupCount = traitTypeGroups.length;
-    int columnCount = groupCount / 2 + 1;
-    IGroupedFavorableTraitConfigurationView abilityView = characterView.addGroupedFavorableTraitConfigurationView(
-        null,
-        columnCount);
-    TabContent basicAbilitiesTab = new FavorableTraitConfigurationPresenter(
-        traitTypeGroups,
-        getStatistics(),
-        abilityView,
-        resources).init("AbilityConfiguration", "AbilityGroup"); //$NON-NLS-1$//$NON-NLS-2$
-    initMultiTabViewPresentation(basicAbilitiesHeader, AdditionalModelType.Abilities, basicAbilitiesTab);
-  }
-
-  private void initCharacterDescriptionPresentation() {
-    ICharacterDescriptionView descriptionView = characterView.addCharacterDescriptionView(resources.getString("CardView.CharacterDescription.Title")); //$NON-NLS-1$
-    new CharacterDescriptionPresenter(resources, character.getDescription(), descriptionView).initPresentation();
+  private void setOverviewView(boolean experienced) {
+    characterView.toogleOverviewView(experienced);
   }
 }

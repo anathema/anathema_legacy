@@ -10,19 +10,15 @@ import net.sf.anathema.lib.gui.IDisposable;
 
 public interface ICharacterView extends IItemView {
 
-  public IGroupedFavorableTraitConfigurationView addGroupedFavorableTraitConfigurationView(
-      String header,
-      int columnCount);
+  public IGroupedFavorableTraitConfigurationView createGroupedFavorableTraitConfigurationView(int columnCount);
 
-  public IGroupedFavorableTraitConfigurationView addGroupedFavorableTraitConfigurationTab(String header, int columnCount);
-
-  public ICharacterDescriptionView addCharacterDescriptionView(String header);
+  public ICharacterDescriptionView createCharacterDescriptionView();
 
   public IOverviewView addCreationOverviewView();
 
   public IOverviewView addExperienceOverviewView();
 
-  public IExperienceConfigurationView addExperienceConfigurationView(String header);
+  public IExperienceConfigurationView createExperienceConfigurationView();
 
   public void toogleOverviewView(boolean experienced);
 
