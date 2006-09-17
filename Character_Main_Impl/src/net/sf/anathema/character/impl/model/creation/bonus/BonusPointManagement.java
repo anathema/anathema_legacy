@@ -174,31 +174,31 @@ public class BonusPointManagement implements IBonusPointManagement {
     return new VirtueBonusModel(virtueCalculator, creationPoints);
   }
 
-  private ISpendingModel getBackgroundModel() {
+  public ISpendingModel getBackgroundModel() {
     return new BackgroundBonusModel(backgroundCalculator, creationPoints);
   }
 
-  private ISpendingModel getDefaultAbilityModel() {
+  public ISpendingModel getDefaultAbilityModel() {
     return new DefaultAbilityBonusModel(abilityCalculator, creationPoints);
   }
 
-  private ISpendingModel getFavoredAbilityModel() {
+  public ISpendingModel getFavoredAbilityModel() {
     return new FavoredAbilityBonusModel(abilityCalculator, creationPoints);
   }
 
-  private ISpendingModel getFavoredAbilityPickModel() {
+  public ISpendingModel getFavoredAbilityPickModel() {
     return new FavoredAbilityPickModel(abilityCalculator, creationPoints);
   }
 
-  private ISpendingModel getAttributeModel(final AttributeGroupPriority priority) {
+  public ISpendingModel getAttributeModel(final AttributeGroupPriority priority) {
     return new AttributeBonusModel(attributeCalculator, priority, creationPoints);
   }
 
-  private ISpendingModel getFavoredCharmModel() {
+  public ISpendingModel getFavoredCharmModel() {
     return new FavoredCharmModel(magicCalculator, creationPoints);
   }
 
-  private IAdditionalSpendingModel getDefaultCharmModel() {
+  public IAdditionalSpendingModel getDefaultCharmModel() {
     IAdditionalRules additionalRules = statistics.getCharacterTemplate().getAdditionalRules();
     return new DefaultCharmModel(magicCalculator, magicAdditionalPools, creationPoints, additionalRules);
   }
