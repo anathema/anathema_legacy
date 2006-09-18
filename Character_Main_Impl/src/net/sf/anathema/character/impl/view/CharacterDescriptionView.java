@@ -5,13 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import net.disy.commons.swing.action.SmartAction;
-import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.toolbar.ToolBarUtilities;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
