@@ -34,6 +34,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
     setSelectedRuleset(preferredRuleset);
     aggregateTemplates();
     this.types = collectCharacterTypes(generics.getTemplateRegistry());
+    setCharacterType(CharacterType.SOLAR);
   }
 
   private CharacterType[] collectCharacterTypes(ITemplateRegistry registry) {

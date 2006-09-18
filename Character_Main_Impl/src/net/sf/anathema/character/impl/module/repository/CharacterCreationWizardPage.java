@@ -2,6 +2,8 @@ package net.sf.anathema.character.impl.module.repository;
 
 import java.awt.Component;
 
+import javax.swing.JToggleButton;
+
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.core.IPageContent;
@@ -46,12 +48,13 @@ public class CharacterCreationWizardPage extends AbstractAnathemaWizardPage {
   protected void initPageContent() {
     IToggleButtonPanel panel = view.addToggleButtonPanel();
     for (final CharacterType type : model.getAvailableCharacterTypes()) {
-      panel.addButton(new SmartAction(properties.getTypeIcon(type)) {
+      JToggleButton button = panel.addButton(new SmartAction(properties.getTypeIcon(type)) {
         @Override
         protected void execute(Component parentComponent) {
           model.setCharacterType(type);
         }
       }, properties.getTypeString(type));
+      button.setSelected(type == model.getSelectedTemplate().getTemplateType().getCharacterType());
     }
     final IListObjectSelectionView<ITemplateTypeAggregation> list = view.addObjectSelectionList();
     list.addObjectSelectionChangedListener(new IObjectValueChangedListener<ITemplateTypeAggregation>() {
@@ -73,7 +76,7 @@ public class CharacterCreationWizardPage extends AbstractAnathemaWizardPage {
         model.setSelectedRuleset(newValue);
       }
     });
-    
+
     model.addListener(new IChangeListener() {
       public void changeOccured() {
         refreshList(list);
