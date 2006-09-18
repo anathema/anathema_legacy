@@ -10,8 +10,6 @@ import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
@@ -28,10 +26,8 @@ public class StringSelectionView implements IStringSelectionView {
   }
 
   public JComponent getComponent() {
-    JPanel panel = new JPanel(new GridDialogLayout(2, false));
-    IGridDialogPanel dialogPanel = new DefaultGridDialogPanel();
-    labelTextView.addTo(dialogPanel);
-    panel.add(dialogPanel.getContent());
+    JPanel panel = new JPanel(new GridDialogLayout(3, false));
+    labelTextView.addToStandardPanel(panel);
     panel.add(button);
     return panel;
   }

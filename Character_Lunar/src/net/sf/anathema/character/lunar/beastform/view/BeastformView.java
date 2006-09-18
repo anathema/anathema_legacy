@@ -19,13 +19,10 @@ import net.sf.anathema.character.lunar.beastform.presenter.IBeastformView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
-import net.sf.anathema.lib.workflow.textualdescription.ITextView;
-import net.sf.anathema.lib.workflow.textualdescription.view.AreaTextView;
-import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 
 public class BeastformView implements IBeastformView {
 
-  private final IGridDialogPanel baseContentPanel = new DefaultGridDialogPanel();
+  private final JPanel baseContentPanel = new JPanel(new GridDialogLayout(2, false));
   private final IGridDialogPanel attributePanel = new DefaultGridDialogPanel();
   private final JPanel giftPanel = new JPanel(new GridDialogLayout(4, false));
   private final MarkerIntValueDisplayFactory intValueDisplayFactory;
@@ -39,9 +36,8 @@ public class BeastformView implements IBeastformView {
   }
 
   public JComponent getComponent() {
-    JPanel charmPanel = baseContentPanel.getContent();
-    charmPanel.setBorder(new TitledBorder(properties.getCharmString()));
-    content.add(charmPanel);
+    baseContentPanel.setBorder(new TitledBorder(properties.getCharmString()));
+    content.add(baseContentPanel);
     content.add(new EndOfLineMarkerComponent());
     JPanel panel = attributePanel.getContent();
     panel.setBorder(new TitledBorder(properties.getAttributesString()));
@@ -66,12 +62,6 @@ public class BeastformView implements IBeastformView {
     SimpleTraitView traitView = new SimpleTraitView(intValueDisplayFactory, label, value, maxValue);
     traitView.addComponents(baseContentPanel);
     return traitView;
-  }
-
-  public ITextView addTextArea(String label) {
-    LabelTextView labelledView = new LabelTextView(label, new AreaTextView(10, 20));
-    labelledView.addTo(baseContentPanel);
-    return labelledView;
   }
 
   public SimpleTraitView addAttributeValueView(String label, int value, int maxValue) {

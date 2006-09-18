@@ -1,7 +1,8 @@
 package net.sf.anathema.demo.lib.workflow.textualdescription.view;
 
-import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
+import javax.swing.JPanel;
+
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 import de.jdemo.extensions.SwingDemoCase;
@@ -12,8 +13,8 @@ public class LabelTextViewDemo extends SwingDemoCase {
     LineTextView lineTextView = new LineTextView(18);
     lineTextView.setText("Content"); //$NON-NLS-1$
     LabelTextView labelTextView = new LabelTextView("Label:", lineTextView); //$NON-NLS-1$
-    IGridDialogPanel dialogPanel = new DefaultGridDialogPanel();
-    labelTextView.addTo(dialogPanel);
-    show(dialogPanel.getContent());
+    JPanel panel = new JPanel(new GridDialogLayout(2, false));
+    labelTextView.addToStandardPanel(panel);
+    show(panel);
   }
 }
