@@ -10,11 +10,11 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.framework.presenter.action.NamedLocale;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
@@ -24,10 +24,10 @@ public class LanguagePreferencesElement implements IPreferencesElement {
   private boolean dirty;
   private JComboBox languageBox;
 
-  public void addCompoment(GridDialogPanel panel, IResources resources) {
-    panel.add(getComponent(resources));    
+  public void addCompoment(IGridDialogPanel panel, IResources resources) {
+    panel.add(getComponent(resources));
   }
-  
+
   private IDialogComponent getComponent(IResources resources) {
     final JLabel languageLabel = new JLabel(resources.getString("AnathemaCore.Tools.Preferences.Language") + ":"); //$NON-NLS-1$ //$NON-NLS-2$
     languageBox = new JComboBox(NamedLocale.values());

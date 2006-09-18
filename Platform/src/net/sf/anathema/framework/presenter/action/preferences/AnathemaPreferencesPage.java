@@ -11,10 +11,11 @@ import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.userdialog.AbstractDialogPage;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.infonode.tabbedpanel.Tab;
 import net.infonode.tabbedpanel.TabbedPanel;
 import net.infonode.tabbedpanel.titledtab.TitledTab;
+import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
 
 public class AnathemaPreferencesPage extends AbstractDialogPage {
@@ -22,7 +23,7 @@ public class AnathemaPreferencesPage extends AbstractDialogPage {
   private IResources resources;
   private IPreferencesElement[] elements;
   private final Map<String, Tab> tabsByName = new LinkedHashMap<String, Tab>();
-  private final Map<String, GridDialogPanel> panelsByName = new HashMap<String, GridDialogPanel>();
+  private final Map<String, IGridDialogPanel> panelsByName = new HashMap<String, IGridDialogPanel>();
 
   public AnathemaPreferencesPage(IResources resources, IPreferencesElement[] elements) {
     super(new BasicMessage(resources.getString("AnathemaCore.Tools.Preferences.Instruction"))); //$NON-NLS-1$
@@ -45,7 +46,7 @@ public class AnathemaPreferencesPage extends AbstractDialogPage {
       Tab categoryTab = tabsByName.get(category);
       if (categoryTab == null) {
         categoryTab = createCategoryTab(panel, category);
-        panelsByName.put(category, new GridDialogPanel(false));
+        panelsByName.put(category, new DefaultGridDialogPanel(false));
       }
       element.addCompoment(panelsByName.get(category), resources);
     }

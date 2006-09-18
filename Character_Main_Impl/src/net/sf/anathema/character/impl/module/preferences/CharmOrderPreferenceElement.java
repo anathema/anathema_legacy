@@ -6,10 +6,10 @@ import static net.sf.anathema.character.generic.framework.configuration.ICharact
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.generic.framework.reporting.datasource.CharmOrderType;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharmOrderPreferenceElement extends AbstractCharacterPreferencesElement {
@@ -20,7 +20,7 @@ public class CharmOrderPreferenceElement extends AbstractCharacterPreferencesEle
   private boolean dirty;
   private LabelledPreferenceComboBox box;
 
-  public void addCompoment(GridDialogPanel panel, IResources resources) {
+  public void addCompoment(IGridDialogPanel panel, IResources resources) {
     panel.add(getComponent(resources));
   }
 

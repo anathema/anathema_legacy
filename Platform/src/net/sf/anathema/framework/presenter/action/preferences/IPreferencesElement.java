@@ -4,7 +4,7 @@ import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPr
 
 import java.util.prefs.Preferences;
 
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
@@ -22,5 +22,5 @@ public interface IPreferencesElement {
 
   public void reset();
 
-  public void addCompoment(GridDialogPanel panel, IResources resources);
+  public void addCompoment(IGridDialogPanel panel, IResources resources);
 }

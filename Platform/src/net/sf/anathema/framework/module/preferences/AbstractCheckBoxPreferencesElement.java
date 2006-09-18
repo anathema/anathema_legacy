@@ -9,9 +9,9 @@ import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.GridDialogPanel;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
+import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractCheckBoxPreferencesElement implements IPreferencesElement {
@@ -19,10 +19,10 @@ public abstract class AbstractCheckBoxPreferencesElement implements IPreferences
   private boolean dirty = false;
   private JCheckBox checkBox;
 
-  public void addCompoment(GridDialogPanel panel, IResources resources) {
-    panel.add(getComponent(resources));    
+  public void addCompoment(IGridDialogPanel panel, IResources resources) {
+    panel.add(getComponent(resources));
   }
-  
+
   private IDialogComponent getComponent(IResources resources) {
     final JComponent component = createCheckBox(resources);
     return new IDialogComponent() {
