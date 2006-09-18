@@ -2,7 +2,7 @@ package net.sf.anathema.character.presenter;
 
 import java.awt.Component;
 
-import javax.swing.JButton;
+import javax.swing.AbstractButton;
 
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.ui.IObjectUi;
@@ -98,7 +98,7 @@ public class CharacterConceptAndRulesPresenter {
       }
     };
     endEditXPAction.setToolTipText(resources.getString("CharacterConcept.Motivation.EndEditXP.Tooltip")); //$NON-NLS-1$
-    final JButton beginButton = view.addAction(beginEditAction, 1);
+    final AbstractButton beginButton = view.addAction(beginEditAction, 1);
     view.addAction(endEditAction, 1);
     view.addAction(endEditXPAction, 1);
     motivation.addEditingListener(new IEditMotivationListener() {

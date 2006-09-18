@@ -1,8 +1,11 @@
 package net.sf.anathema.character.impl.view.concept;
 
 import java.awt.Color;
+import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.swing.JButton;
+import javax.swing.AbstractButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
@@ -12,7 +15,7 @@ import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
-import net.sf.anathema.character.impl.view.EditButtonDialogPanel;
+import net.disy.commons.swing.toolbar.ToolBarUtilities;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
 import net.sf.anathema.character.view.concept.IWillpowerConditionView;
@@ -28,7 +31,8 @@ import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConceptAndRulesViewProperties> implements
     ICharacterConceptAndRulesView {
 
-  private final EditButtonDialogPanel characterConceptPanel = new EditButtonDialogPanel();
+  private final JPanel conceptPanel = new JPanel(new GridDialogLayout(3, false));
+  private final List<JPanel> buttonPanels = new ArrayList<JPanel>();
   private final IGridDialogPanel rulesPanel = new DefaultGridDialogPanel(false);
 
   public CharacterConceptAndRulesView() {
@@ -37,10 +41,10 @@ public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConc
 
   @Override
   protected void createContent(JPanel panel, ICharacterConceptAndRulesViewProperties properties) {
-    characterConceptPanel.getContent().setBorder(new TitledBorder(properties.getConceptTitle()));
+    conceptPanel.setBorder(new TitledBorder(properties.getConceptTitle()));
     rulesPanel.getContent().setBorder(new TitledBorder(properties.getRulesTitle()));
     panel.setLayout(new GridDialogLayout(1, false));
-    panel.add(characterConceptPanel.getContent(), GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
+    panel.add(conceptPanel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
     panel.add(rulesPanel.getContent(), GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
   }
 
@@ -52,7 +56,8 @@ public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConc
     ObjectSelectionView<V> selectionView = new ObjectSelectionView<V>(labelText, renderer, editable, objects);
     selectionView.getComboBox().getEditor().getEditorComponent().setEnabled(true);
     selectionView.setDisabledLabelColor(Color.DARK_GRAY);
-    selectionView.addComponents(characterConceptPanel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
+    selectionView.addTo(conceptPanel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
+    addButtonPanel();
     return selectionView;
   }
 
@@ -61,8 +66,15 @@ public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConc
     lineTextView.getTextComponent().setDisabledTextColor(Color.DARK_GRAY);
     LabelTextView labelView = new LabelTextView(labelText, lineTextView);
     labelView.setDisabledLabelColor(Color.DARK_GRAY);
-    labelView.addTo(characterConceptPanel, false);
+    labelView.addToStandardPanel(conceptPanel);
+    addButtonPanel();
     return labelView;
+  }
+
+  private void addButtonPanel() {
+    JPanel buttonPanel = new JPanel(new GridLayout(1, 0));
+    buttonPanels.add(buttonPanel);
+    conceptPanel.add(buttonPanel);
   }
 
   public void addRulesLabel(final String labelText) {
@@ -79,11 +91,14 @@ public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConc
 
   public IWillpowerConditionView addWillpowerConditionView(final String headerLabelText) {
     WillpowerConditionView view = new WillpowerConditionView(headerLabelText);
-    view.addComponents(characterConceptPanel);
+    view.addToStandardPanel(conceptPanel);
+    addButtonPanel();
     return view;
   }
 
-  public JButton addAction(SmartAction action, int row) {
-    return characterConceptPanel.addEditAction(action, row);
+  public AbstractButton addAction(SmartAction action, int row) {
+    AbstractButton button = ToolBarUtilities.createToolBarButton(action);
+    buttonPanels.get(row).add(button);
+    return button;
   }
 }

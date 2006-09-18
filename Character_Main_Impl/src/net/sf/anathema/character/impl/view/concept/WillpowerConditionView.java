@@ -49,6 +49,17 @@ public class WillpowerConditionView implements IGridDialogPanelContent, IWillpow
     });
   }
 
+  public void addToStandardPanel(JPanel panel) {
+    GridDialogLayoutData labelLayoutData = new GridDialogLayoutData();
+    labelLayoutData.setHorizontalAlignment(GridAlignment.BEGINNING);
+    labelLayoutData.setVerticalAlignment(GridAlignment.BEGINNING);
+    panel.add(headerLabel, labelLayoutData);
+    GridDialogLayoutData contentData = new GridDialogLayoutData();
+    contentData.setHorizontalAlignment(GridAlignment.FILL);
+    contentData.setVerticalAlignment(GridAlignment.FILL);
+    panel.add(conditionLabel, contentData);
+  }
+
   public void setEnabled(boolean enabled) {
     if (enabled) {
       headerLabel.setForeground(SystemColor.textText);
@@ -58,8 +69,8 @@ public class WillpowerConditionView implements IGridDialogPanelContent, IWillpow
     }
     conditionLabel.setEnabled(enabled);
   }
-  
+
   public void setText(String text) {
-    conditionLabel.setText(text);    
+    conditionLabel.setText(text);
   }
 }

@@ -19,8 +19,8 @@ import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 public class CharacterDescriptionView implements ICharacterDescriptionView {
 
   private static final int TEXT_COLUMS = 45;
-  private JPanel content = new JPanel(new GridDialogLayout(3, false));
-  private List<JPanel> buttonPanels = new ArrayList<JPanel>();
+  private final JPanel content = new JPanel(new GridDialogLayout(3, false));
+  private final List<JPanel> buttonPanels = new ArrayList<JPanel>();
 
   public ITextView addLineView(final String labelText) {
     return addTextView(labelText, new LineTextView(TEXT_COLUMS));
