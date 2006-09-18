@@ -43,6 +43,7 @@ public class BeastformView implements IBeastformView {
     panel.setBorder(new TitledBorder(properties.getAttributesString()));
     GridDialogLayoutData data = new GridDialogLayoutData();
     data.setHorizontalSpan(2);
+    data.setHorizontalAlignment(GridAlignment.FILL);
     content.add(panel, data);
     content.add(new EndOfLineMarkerComponent());
     giftPanel.setBorder(new TitledBorder(properties.getGiftsString()));
