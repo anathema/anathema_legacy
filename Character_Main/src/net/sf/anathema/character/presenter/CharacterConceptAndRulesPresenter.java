@@ -50,14 +50,14 @@ public class CharacterConceptAndRulesPresenter {
 
   public SimpleViewTabContent init() {
     initRulesPresentation();
-    initCastePresentation();
+    final boolean casteRow = initCastePresentation();
     statistics.getCharacterConcept().getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
       public void accept(INature nature) {
         initNaturePresentation(nature);
       }
 
       public void accept(IMotivation motivation) {
-        initMotivationPresentation(motivation);
+        initMotivationPresentation(motivation, casteRow);
       }
     });
     initConceptPresentation();
@@ -65,7 +65,7 @@ public class CharacterConceptAndRulesPresenter {
     return new SimpleViewTabContent(resources.getString("CardView.CharacterConcept.Title"), view); //$NON-NLS-1$
   }
 
-  private void initMotivationPresentation(final IMotivation motivation) {
+  private void initMotivationPresentation(final IMotivation motivation, boolean casteRow) {
     final ITextView textView = initTextualDescriptionPresentation(
         motivation.getEditableDescription(),
         "Label.Motivation"); //$NON-NLS-1$
@@ -98,9 +98,10 @@ public class CharacterConceptAndRulesPresenter {
       }
     };
     endEditXPAction.setToolTipText(resources.getString("CharacterConcept.Motivation.EndEditXP.Tooltip")); //$NON-NLS-1$
-    final AbstractButton beginButton = view.addAction(beginEditAction, 1);
-    view.addAction(endEditAction, 1);
-    view.addAction(endEditXPAction, 1);
+    int row = casteRow ? 1 : 0;
+    final AbstractButton beginButton = view.addAction(beginEditAction, row);
+    view.addAction(endEditAction, row);
+    view.addAction(endEditXPAction, row);
     motivation.addEditingListener(new IEditMotivationListener() {
       public void editBegun() {
         textView.setEnabled(true);
@@ -230,10 +231,10 @@ public class CharacterConceptAndRulesPresenter {
     willpowerConditionLabel.setText(willpowerCondition);
   }
 
-  private void initCastePresentation() {
+  private boolean initCastePresentation() {
     final ICharacterTemplate template = statistics.getCharacterTemplate();
     if (template.getCasteCollection().getAllCasteTypes().length <= 0) {
-      return;
+      return false;
     }
     String casteLabelResourceKey = template.getPresentationProperties().getCasteLabelResource();
     IObjectUi casteUi = new CasteSelectObjectUi(resources, template.getPresentationProperties(), template.getEdition());
@@ -263,5 +264,6 @@ public class CharacterConceptAndRulesPresenter {
       }
     });
     casteView.setEnabled(!statistics.isExperienced());
+    return true;
   }
 }
