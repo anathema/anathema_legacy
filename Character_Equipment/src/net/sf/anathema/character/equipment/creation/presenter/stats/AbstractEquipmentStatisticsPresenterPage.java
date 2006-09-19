@@ -18,11 +18,9 @@ import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
-import net.sf.anathema.lib.workflow.booleanvalue.BooleanValuePresentation;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.intvalue.IntValuePresentation;
-import net.sf.anathema.lib.workflow.textualdescription.ICheckableTextView;
+import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
@@ -66,7 +64,7 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
   }
 
   private boolean isNameCorrectlyDefined() {
-    return !pageModel.getNameSpecified().getValue() || !pageModel.getName().isEmpty();
+    return !pageModel.getName().isEmpty();
   }
 
   public final IBasicMessage getMessage() {
@@ -87,14 +85,13 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
   @Override
   protected final void initPageContent() {
     this.view = viewFactory.createEquipmentStatisticsView();
-    initNameRow(getProperties().getNameLabel(), getPageModel().getName(), getPageModel().getNameSpecified());
+    initNameRow(getProperties().getNameLabel(), getPageModel().getName());
     addAdditionalContent();
   }
 
-  private void initNameRow(String label, ITextualDescription textModel, BooleanValueModel isNameDefinedModel) {
-    ICheckableTextView textView = view.addCheckableLineTextView(label);
-    new TextualPresentation().initView(textView.getTextView(), textModel);
-    new BooleanValuePresentation().initPresentation(textView.getBooleanValueView(), isNameDefinedModel);
+  private void initNameRow(String label, ITextualDescription textModel) {
+    ITextView textView = view.addLineTextView(label);
+    new TextualPresentation().initView(textView, textModel);
   }
 
   @Override
@@ -116,7 +113,6 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
   @Override
   protected final void initModelListening(CheckInputListener inputListener) {
     getPageModel().getName().addTextChangedListener(inputListener);
-    getPageModel().getNameSpecified().addChangeListener(inputListener);
   }
 
   public final IWeaponStatisticsView getPageContent() {

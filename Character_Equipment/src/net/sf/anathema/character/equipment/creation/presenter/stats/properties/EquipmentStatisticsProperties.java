@@ -8,7 +8,7 @@ import net.sf.anathema.lib.resources.IResources;
 public abstract class EquipmentStatisticsProperties {
 
   private final BasicMessage nameUndefinedMessage = new BasicMessage(
-      "Please select a name for the equipment statstics or deselect the associated checkbox.",
+      "Please enter a name for this set of statistics.",
       MessageType.ERROR);
   private final IResources resources;
 
