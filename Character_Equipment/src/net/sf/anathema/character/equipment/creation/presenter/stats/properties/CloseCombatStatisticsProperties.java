@@ -25,4 +25,9 @@ public class CloseCombatStatisticsProperties extends OffensiveStatisticsProperti
   public String getDefenseLabel() {
     return "Defense:";
   }
+
+  @Override
+  public String getDefaultName() {
+    return "Close";
+  }
 }

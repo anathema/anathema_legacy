@@ -12,7 +12,7 @@ public class ArmourStatisticsProperties extends EquipmentStatisticsProperties {
   public ArmourStatisticsProperties(IResources resources) {
     super(resources);
   }
-  
+
   public IBasicMessage getPositiveMobilityPenaltyMessage() {
     return new BasicMessage("Mobility penalties should be negative numbers.", MessageType.WARNING);
   }
@@ -49,5 +49,10 @@ public class ArmourStatisticsProperties extends EquipmentStatisticsProperties {
   @Override
   public String getPageDescription() {
     return "Armour Stats";
+  }
+
+  @Override
+  public String getDefaultName() {
+    return "Armour";
   }
 }

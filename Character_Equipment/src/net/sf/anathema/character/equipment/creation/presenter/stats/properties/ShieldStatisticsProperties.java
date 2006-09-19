@@ -11,7 +11,7 @@ public class ShieldStatisticsProperties extends EquipmentStatisticsProperties {
   public ShieldStatisticsProperties(IResources resources) {
     super(resources);
   }
-  
+
   public String getCloseCombatDvBonusLabel() {
     return "Close combat DV bonus:";
   }
@@ -28,5 +28,10 @@ public class ShieldStatisticsProperties extends EquipmentStatisticsProperties {
   @Override
   public String getPageDescription() {
     return "Shield Stats";
+  }
+
+  @Override
+  public String getDefaultName() {
+    return "Shield";
   }
 }

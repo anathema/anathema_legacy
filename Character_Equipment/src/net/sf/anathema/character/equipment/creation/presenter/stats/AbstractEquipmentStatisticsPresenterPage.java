@@ -45,6 +45,7 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
     this.resources = resources;
     this.overallModel = overallModel;
     this.viewFactory = viewFactory;
+    getPageModel().getName().setText(properties.getDefaultName());
   }
 
   protected final P getProperties() {

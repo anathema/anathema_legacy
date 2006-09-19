@@ -25,4 +25,9 @@ public class RangedCombatStatisticsProperties extends OffensiveStatisticsPropert
   public String getRangeLabel() {
     return "Range:";
   }
+
+  @Override
+  public String getDefaultName() {
+    return "Ranged";
+  }
 }

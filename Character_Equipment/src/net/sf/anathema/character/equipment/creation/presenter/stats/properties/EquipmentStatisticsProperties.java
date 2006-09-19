@@ -28,6 +28,8 @@ public abstract class EquipmentStatisticsProperties {
     return nameUndefinedMessage;
   }
 
+  public abstract String getDefaultName();
+
   public abstract IBasicMessage getDefaultMessage();
 
   public abstract String getPageDescription();
