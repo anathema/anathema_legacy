@@ -1,8 +1,13 @@
 package net.sf.anathema.character.equipment.item;
 
+import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
+import net.sf.anathema.framework.presenter.view.IdentificateListCellRenderer;
+import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.container.factory.StandardPanelBuilder;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -27,7 +32,7 @@ public class EquipmentDatabasePresenter implements IPresenter {
   public void initPresentation() {
     new EquipmentTemplateListPresenter(resources, model, view).initPresentation();
     addEditTemplateActions();
-    initDescriptionView();
+    initBasicDetailsView();
     new EquipmentEditStatsPresenter(resources, model, view).initPresentation();
     view.setTemplateListHeader("Available Templates");
     view.setEditTemplateHeader("Edit Template");
@@ -39,12 +44,27 @@ public class EquipmentDatabasePresenter implements IPresenter {
     view.addEditTemplateAction(new RemoveEquipmentTemplateAction(resources, model, view));
   }
 
-  private void initDescriptionView() {
+  private void initBasicDetailsView() {
     StandardPanelBuilder panelBuilder = new StandardPanelBuilder();
     ITextView nameView = panelBuilder.addLineTextView("Name:", COLUMN_COUNT);
     new TextualPresentation().initView(nameView, model.getTemplateEditModel().getDescription().getName());
     ITextView descriptionView = panelBuilder.addAreaTextView("Description:", 5, COLUMN_COUNT);
     new TextualPresentation().initView(descriptionView, model.getTemplateEditModel().getDescription().getContent());
+    final IObjectSelectionView<MagicalMaterial> selectionView = panelBuilder.addObjectSelectionView(
+        "Magical Material:",
+        new IdentificateListCellRenderer(resources),
+        MagicalMaterial.values());
+    selectionView.addObjectSelectionChangedListener(new IObjectValueChangedListener<MagicalMaterial>() {
+      public void valueChanged(MagicalMaterial newValue) {
+        model.getTemplateEditModel().setMagicalMaterial(newValue);
+      }
+    });
+    model.getTemplateEditModel().addMagicalMaterialChangeListener(new IChangeListener() {
+      public void changeOccured() {
+        selectionView.setSelectedObject(model.getTemplateEditModel().getMagicalMaterial());
+
+      }
+    });
     view.fillDescriptionPanel(panelBuilder.getTitledContent("Basics"));
   }
 }

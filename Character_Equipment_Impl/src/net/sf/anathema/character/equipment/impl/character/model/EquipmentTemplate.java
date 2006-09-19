@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.impl.character.model;
 import java.util.List;
 import java.util.Map;
 
+import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
@@ -11,13 +12,19 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 public class EquipmentTemplate implements IEquipmentTemplate {
 
   private final Map<String, List<IEquipmentStats>> statsByRuleSet;
-  private String description;
-  private String name;
+  private final String description;
+  private final String name;
   private final ICollectionFactory collectionFactory;
+  private final String material;
 
-  public EquipmentTemplate(String name, String description, ICollectionFactory collectionFactory) {
+  public EquipmentTemplate(
+      String name,
+      String description,
+      MagicalMaterial material,
+      ICollectionFactory collectionFactory) {
     this.name = name;
     this.description = description;
+    this.material = material.getId();
     this.collectionFactory = collectionFactory;
     this.statsByRuleSet = collectionFactory.createHashMap();
   }
@@ -45,5 +52,9 @@ public class EquipmentTemplate implements IEquipmentTemplate {
 
   public String getName() {
     return name;
+  }
+
+  public MagicalMaterial getMaterial() {
+    return MagicalMaterial.valueOf(material);
   }
 }

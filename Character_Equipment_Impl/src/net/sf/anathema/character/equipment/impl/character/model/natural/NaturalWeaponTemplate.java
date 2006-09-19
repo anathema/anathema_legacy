@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.model.natural;
 
+import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
@@ -22,5 +23,9 @@ public class NaturalWeaponTemplate implements IEquipmentTemplate {
 
   public String getName() {
     return "Natural Weapons";
+  }
+
+  public MagicalMaterial getMaterial() {
+    return MagicalMaterial.None;
   }
 }

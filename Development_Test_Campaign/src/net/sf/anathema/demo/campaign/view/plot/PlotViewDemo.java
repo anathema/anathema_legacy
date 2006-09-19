@@ -11,7 +11,7 @@ import de.jdemo.extensions.SwingDemoCase;
 public class PlotViewDemo extends SwingDemoCase {
 
   public void demo() {
-    final IPlotView view = new PlotView(); //$NON-NLS-1$
+    final IPlotView view = new PlotView();
     IResources resources = new AnathemaResources();
     new PlotPresenter(resources, view, new PlotModel()).initPresentation();
     show(view.getComponent());

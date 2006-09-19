@@ -19,7 +19,7 @@ public class MultiTabViewDemo extends SwingDemoCase {
   }
 
   private MultiTabView createDemoView() {
-    MultiTabView view = new MultiTabView(); //$NON-NLS-1$
+    MultiTabView view = new MultiTabView();
     view.addTabView(new DemoTabView(true), "First Scroll Needed"); //$NON-NLS-1$
     view.addTabView(new DemoTabView(true), "Second Scroll Needed"); //$NON-NLS-1$
     view.addTabView(new DemoTabView(false), "First No Scroll Needed"); //$NON-NLS-1$

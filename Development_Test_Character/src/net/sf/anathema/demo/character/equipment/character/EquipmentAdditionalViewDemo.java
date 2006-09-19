@@ -1,5 +1,6 @@
 package net.sf.anathema.demo.character.equipment.character;
 
+import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.character.EquipmentAdditionalPresenter;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentTemplate;
 import net.sf.anathema.character.equipment.impl.character.model.natural.Kick;
@@ -17,7 +18,7 @@ public class EquipmentAdditionalViewDemo extends SwingDemoCase {
     AnathemaResources resources = new AnathemaResources();
     DemoEquipmentAdditionalModel equipmentModel = new DemoEquipmentAdditionalModel();
     EquipmentTemplate template = new EquipmentTemplate("Character Data", //$NON-NLS-1$
-        "The characters natural weapons and armour.", new DemoCollectionFactory()); //$NON-NLS-1$
+        "The characters natural weapons and armour.", MagicalMaterial.None, new DemoCollectionFactory()); //$NON-NLS-1$
     template.addStats(ExaltedRuleSet.SecondEdition, new Punch());
     template.addStats(ExaltedRuleSet.SecondEdition, new Kick());
     equipmentModel.addAvailableTemplates(template);
