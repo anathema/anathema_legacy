@@ -2,9 +2,12 @@ package net.sf.anathema.character.presenter;
 
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.model.ICharacterDescription;
+import net.sf.anathema.character.presenter.charm.IContentPresenter;
 import net.sf.anathema.character.presenter.description.NameGeneratorAction;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
-import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.framework.presenter.view.ITabContent;
+import net.sf.anathema.framework.presenter.view.ViewTabContent;
+import net.sf.anathema.framework.view.util.TabProperties;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
@@ -12,7 +15,7 @@ import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 import net.sf.anathema.namegenerator.domain.realm.RealmNameGenerator;
 import net.sf.anathema.namegenerator.exalted.domain.ThresholdNameGenerator;
 
-public class CharacterDescriptionPresenter implements IPresenter {
+public class CharacterDescriptionPresenter implements IContentPresenter {
 
   private final ICharacterDescription description;
   private final ICharacterDescriptionView descriptionView;
@@ -36,6 +39,12 @@ public class CharacterDescriptionPresenter implements IPresenter {
     initAreaView(
         "CharacterDescription.Label.PhysicalDescription", 5, description.getPhysicalDescription(), presentation); //$NON-NLS-1$
     initAreaView("CharacterDescription.Label.Notes", 5, description.getNotes(), presentation); //$NON-NLS-1$
+  }
+
+  public ITabContent getTabContent() {
+    String title = resources.getString("CardView.CharacterDescription.Title");//$NON-NLS-1$
+    TabProperties tabProperties = new TabProperties(title).needsScrollbar();
+    return new ViewTabContent(descriptionView, tabProperties);
   }
 
   private void initNameLineView(int row, TextualPresentation presentation) {

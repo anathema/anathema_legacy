@@ -7,14 +7,16 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
+import net.sf.anathema.character.presenter.charm.IContentPresenter;
 import net.sf.anathema.character.view.IAdvantageViewFactory;
 import net.sf.anathema.character.view.IAdvantageViewProperties;
 import net.sf.anathema.character.view.IBasicAdvantageView;
+import net.sf.anathema.framework.presenter.view.ITabContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 
-public class BasicAdvantagePresenter {
+public class BasicAdvantagePresenter implements IContentPresenter {
   private final List<IPresenter> subPresenters = new ArrayList<IPresenter>();
   private final IBasicAdvantageView view;
   private final IResources resources;
@@ -45,7 +47,7 @@ public class BasicAdvantagePresenter {
         view));
   }
 
-  public SimpleViewTabContent init() {
+  public void initPresentation() {
     for (IPresenter presenter : subPresenters) {
       presenter.initPresentation();
     }
@@ -66,6 +68,9 @@ public class BasicAdvantagePresenter {
         return resources.getString("AdvantagesView.Backgrounds.Title"); //$NON-NLS-1$
       }
     });
+  }
+
+  public ITabContent getTabContent() {
     String basicAdvantageHeader = resources.getString("CardView.Advantages.Title"); //$NON-NLS-1$
     return new SimpleViewTabContent(basicAdvantageHeader, view);
   }

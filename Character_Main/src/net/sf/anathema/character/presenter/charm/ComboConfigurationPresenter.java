@@ -35,7 +35,7 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
-public class ComboConfigurationPresenter implements IMagicSubPresenter {
+public class ComboConfigurationPresenter implements IContentPresenter {
 
   private final ICharmConfiguration charmConfiguration;
   private final IComboConfiguration comboConfiguration;

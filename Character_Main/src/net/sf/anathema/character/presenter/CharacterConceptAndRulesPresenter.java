@@ -20,10 +20,12 @@ import net.sf.anathema.character.model.concept.INature;
 import net.sf.anathema.character.model.concept.INatureType;
 import net.sf.anathema.character.model.concept.IWillpowerRegainingConceptVisitor;
 import net.sf.anathema.character.model.concept.NatureProvider;
+import net.sf.anathema.character.presenter.charm.IContentPresenter;
 import net.sf.anathema.character.view.ICharacterConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
 import net.sf.anathema.character.view.concept.IWillpowerConditionView;
+import net.sf.anathema.framework.presenter.view.ITabContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
@@ -34,7 +36,7 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
-public class CharacterConceptAndRulesPresenter {
+public class CharacterConceptAndRulesPresenter implements IContentPresenter {
 
   private final ICharacterConceptAndRulesView view;
   private final ICharacterStatistics statistics;
@@ -49,7 +51,7 @@ public class CharacterConceptAndRulesPresenter {
     this.resources = resources;
   }
 
-  public SimpleViewTabContent init() {
+  public void initPresentation() {
     initRulesPresentation();
     final boolean casteRow = initCastePresentation();
     statistics.getCharacterConcept().getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
@@ -63,6 +65,9 @@ public class CharacterConceptAndRulesPresenter {
     });
     initConceptPresentation();
     initGui();
+  }
+
+  public ITabContent getTabContent() {
     return new SimpleViewTabContent(resources.getString("CardView.CharacterConcept.Title"), view); //$NON-NLS-1$
   }
 

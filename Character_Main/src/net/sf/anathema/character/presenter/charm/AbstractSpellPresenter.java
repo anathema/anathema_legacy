@@ -34,7 +34,7 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-public abstract class AbstractSpellPresenter implements IMagicSubPresenter {
+public abstract class AbstractSpellPresenter implements IContentPresenter {
 
   private final ISpellConfiguration spellConfiguration;
   private final ICharacterStatistics statistics;

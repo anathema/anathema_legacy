@@ -51,7 +51,7 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPresenter implements
     ICharacterCharmSelectionPresenter,
-    IMagicSubPresenter {
+    IContentPresenter {
 
   private final ICharmTreeViewProperties viewProperties;
   private CharacterCharmGroupChangeListener charmSelectionChangeListener;

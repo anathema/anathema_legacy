@@ -15,7 +15,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class MagicPresenter {
 
-  private final List<IMagicSubPresenter> subPresenters = new ArrayList<IMagicSubPresenter>();
+  private final List<IContentPresenter> subPresenters = new ArrayList<IContentPresenter>();
 
   public MagicPresenter(
       ICharacterStatistics statistics,
@@ -40,7 +40,7 @@ public class MagicPresenter {
 
   public ITabContent[] init() {
     List<ITabContent> basicMagicViews = new ArrayList<ITabContent>();
-    for (IMagicSubPresenter presenter : subPresenters) {
+    for (IContentPresenter presenter : subPresenters) {
       presenter.initPresentation();
       basicMagicViews.add(presenter.getTabContent());
     }
