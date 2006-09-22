@@ -6,7 +6,6 @@ import javax.swing.JPanel;
 
 import net.sf.anathema.framework.presenter.view.AbstractTabView;
 import net.sf.anathema.framework.presenter.view.IMultiTabView;
-import net.sf.anathema.framework.presenter.view.ISimpleTabView;
 import net.sf.anathema.lib.gui.IView;
 
 public class MultiTabView extends AbstractTabView<Object> implements IMultiTabView {
@@ -21,11 +20,6 @@ public class MultiTabView extends AbstractTabView<Object> implements IMultiTabVi
   protected void createContent(JPanel panel, Object properties) {
     panel.setLayout(new BorderLayout());
     panel.add(tabbedView.getComponent(), BorderLayout.CENTER);
-  }
-
-  public void addTabView(ISimpleTabView view, String name) {
-    tabbedView.addTab(view, name);
-    tabbedView.getComponent().revalidate();
   }
 
   public void addTabView(IView view, TabProperties tabProperties) {

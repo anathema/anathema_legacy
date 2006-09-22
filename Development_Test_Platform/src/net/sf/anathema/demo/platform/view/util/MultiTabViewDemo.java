@@ -1,5 +1,6 @@
 package net.sf.anathema.demo.platform.view.util;
 
+import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
 import net.sf.anathema.framework.view.util.MultiTabView;
 import net.sf.anathema.framework.view.util.TabbedView;
 import de.jdemo.extensions.SwingDemoCase;
@@ -20,10 +21,10 @@ public class MultiTabViewDemo extends SwingDemoCase {
 
   private MultiTabView createDemoView() {
     MultiTabView view = new MultiTabView();
-    view.addTabView(new DemoTabView(true), "First Scroll Needed"); //$NON-NLS-1$
-    view.addTabView(new DemoTabView(true), "Second Scroll Needed"); //$NON-NLS-1$
-    view.addTabView(new DemoTabView(false), "First No Scroll Needed"); //$NON-NLS-1$
-    view.addTabView(new DemoTabView(false), "Second No Scroll Needed"); //$NON-NLS-1$
+    new SimpleViewTabContent("First Scroll Needed", new DemoTabView(true)).addTo(view); //$NON-NLS-1$
+    new SimpleViewTabContent("Second Scroll Needed", new DemoTabView(true)).addTo(view); //$NON-NLS-1$
+    new SimpleViewTabContent("First No Scroll Needed", new DemoTabView(false)).addTo(view); //$NON-NLS-1$
+    new SimpleViewTabContent("Second No Scroll Needed", new DemoTabView(false)).addTo(view); //$NON-NLS-1$
     view.initGui(null);
     return view;
   }

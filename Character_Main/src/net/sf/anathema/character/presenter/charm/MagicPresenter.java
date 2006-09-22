@@ -9,8 +9,8 @@ import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.model.ICharacterStatistics;
-import net.sf.anathema.character.presenter.SimpleViewTabContent;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
+import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
 import net.sf.anathema.lib.resources.IResources;
 
 public class MagicPresenter {

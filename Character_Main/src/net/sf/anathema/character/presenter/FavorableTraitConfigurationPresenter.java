@@ -18,6 +18,7 @@ import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
+import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;

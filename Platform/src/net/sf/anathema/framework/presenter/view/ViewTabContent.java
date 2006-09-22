@@ -1,6 +1,5 @@
-package net.sf.anathema.character.presenter;
+package net.sf.anathema.framework.presenter.view;
 
-import net.sf.anathema.framework.presenter.view.IMultiTabView;
 import net.sf.anathema.framework.view.util.TabProperties;
 import net.sf.anathema.lib.gui.IDisposable;
 import net.sf.anathema.lib.gui.IView;

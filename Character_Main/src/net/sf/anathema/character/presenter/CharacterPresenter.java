@@ -27,6 +27,9 @@ import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.framework.presenter.view.IMultiTabView;
 import net.sf.anathema.framework.presenter.view.ISimpleTabView;
+import net.sf.anathema.framework.presenter.view.ITabContent;
+import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
+import net.sf.anathema.framework.presenter.view.ViewTabContent;
 import net.sf.anathema.framework.view.util.TabProperties;
 import net.sf.anathema.lib.gui.IDisposable;
 import net.sf.anathema.lib.gui.IPresenter;
@@ -196,10 +199,12 @@ public class CharacterPresenter implements IPresenter {
     for (Entry<IAdditionalModel, IAdditionalViewFactory> entry : additionalViewFactories.entrySet()) {
       IAdditionalModel model = entry.getKey();
       String tabName = getString("AdditionalTemplateView.TabName." + model.getTemplateId()); //$NON-NLS-1$
-      multiTabView.addTabView(entry.getValue().createView(
+      ISimpleTabView additionalView = entry.getValue().createView(
           model,
           resources,
-          getStatistics().getCharacterTemplate().getTemplateType().getCharacterType()), tabName);
+          getStatistics().getCharacterTemplate().getTemplateType().getCharacterType());
+      new SimpleViewTabContent(tabName, additionalView).addTo(multiTabView);
+      //      multiTabView.addTabView(additionalView, tabName);
     }
     multiTabView.initGui(null);
   }
