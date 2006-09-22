@@ -1,8 +1,8 @@
 package net.sf.anathema.character.presenter;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
@@ -177,34 +177,29 @@ public class CharacterPresenter implements IPresenter {
 
   private void initMultiTabViewPresentation(
       String viewTitle,
-      AdditionalModelType additionalModelType,
+      AdditionalModelType additionalsType,
       ITabContent... coreViews) {
+    List<ITabContent> contents = new ArrayList<ITabContent>();
+    Collections.addAll(contents, coreViews);
     IRegistry<String, IAdditionalViewFactory> factoryRegistry = generics.getAdditionalViewFactoryRegistry();
-    IAdditionalModel[] additionalModels = getStatistics().getExtendedConfiguration().getAdditionalModels(
-        additionalModelType);
-    Map<IAdditionalModel, IAdditionalViewFactory> additionalViewFactories = new LinkedHashMap<IAdditionalModel, IAdditionalViewFactory>();
-    for (IAdditionalModel model : additionalModels) {
+    IAdditionalModel[] additionals = getStatistics().getExtendedConfiguration().getAdditionalModels(additionalsType);
+    for (IAdditionalModel model : additionals) {
       IAdditionalViewFactory viewFactory = factoryRegistry.get(model.getTemplateId());
-      if (viewFactory != null) {
-        additionalViewFactories.put(model, viewFactory);
+      if (viewFactory == null) {
+        continue;
       }
+      String tabName = getString("AdditionalTemplateView.TabName." + model.getTemplateId()); //$NON-NLS-1$
+      ISimpleTabView additionalView = viewFactory.createView(model, resources, getStatistics().getCharacterTemplate()
+          .getTemplateType()
+          .getCharacterType());
+      contents.add(new SimpleViewTabContent(tabName, additionalView));
     }
-    if (coreViews.length <= 0 && additionalViewFactories.size() <= 0) {
+    if (contents.size() == 0) {
       return;
     }
     IMultiTabView multiTabView = characterView.addMultiTabView(viewTitle);
-    for (ITabContent coreView : coreViews) {
-      coreView.addTo(multiTabView);
-    }
-    for (Entry<IAdditionalModel, IAdditionalViewFactory> entry : additionalViewFactories.entrySet()) {
-      IAdditionalModel model = entry.getKey();
-      String tabName = getString("AdditionalTemplateView.TabName." + model.getTemplateId()); //$NON-NLS-1$
-      ISimpleTabView additionalView = entry.getValue().createView(
-          model,
-          resources,
-          getStatistics().getCharacterTemplate().getTemplateType().getCharacterType());
-      new SimpleViewTabContent(tabName, additionalView).addTo(multiTabView);
-      //      multiTabView.addTabView(additionalView, tabName);
+    for (ITabContent content : contents) {
+      content.addTo(multiTabView);
     }
     multiTabView.initGui(null);
   }
