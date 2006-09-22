@@ -1,7 +1,10 @@
 package net.sf.anathema.dummy.character.additional;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import net.sf.anathema.character.equipment.impl.character.model.AbstractEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
@@ -13,8 +16,8 @@ public class DemoEquipmentAdditionalModel extends AbstractEquipmentAdditionalMod
 
   private final List<IArmourStats> printArmourStats = new ArrayList<IArmourStats>();
   private final List<IWeaponStats> printWeaponStats = new ArrayList<IWeaponStats>();
-  private final List<IEquipmentTemplate> availableTemplates = new ArrayList<IEquipmentTemplate>();
-  
+  private final Map<String, IEquipmentTemplate> availableTemplates = new HashMap<String, IEquipmentTemplate>();
+
   public DemoEquipmentAdditionalModel() {
     super(ExaltedRuleSet.SecondEdition);
   }
@@ -36,10 +39,16 @@ public class DemoEquipmentAdditionalModel extends AbstractEquipmentAdditionalMod
   }
 
   public void addAvailableTemplates(IEquipmentTemplate template) {
-    availableTemplates.add(template);
+    availableTemplates.put(template.getName(), template);
   }
 
-  public IEquipmentTemplate[] getAvailableTemplates() {
-    return availableTemplates.toArray(new IEquipmentTemplate[availableTemplates.size()]);
+  @Override
+  protected IEquipmentTemplate loadEquipmentTemplate(String templateId) {
+    return availableTemplates.get(templateId);
+  }
+
+  public String[] getAvailableTemplateIds() {
+    Set<String> templateIds = availableTemplates.keySet();
+    return templateIds.toArray(new String[templateIds.size()]);
   }
 }

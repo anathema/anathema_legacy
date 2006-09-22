@@ -21,7 +21,7 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
   private final GenericControl<ICollectionListener<IEquipmentItem>> equipmentItemControl = new GenericControl<ICollectionListener<IEquipmentItem>>();
   private final List<IEquipmentItem> equipmentItems = new ArrayList<IEquipmentItem>();
   private final IExaltedRuleSet ruleSet;
-  
+
   public AbstractEquipmentAdditionalModel(IExaltedRuleSet ruleSet) {
     this.ruleSet = ruleSet;
   }
@@ -47,7 +47,14 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
     return equipmentItems.toArray(new IEquipmentItem[equipmentItems.size()]);
   }
 
-  public final void addEquipmentObjectFor(final IEquipmentTemplate template) {
+  public void addEquipmentObjectFor(String templateId) {
+    final IEquipmentTemplate template = loadEquipmentTemplate(templateId);
+    addEquipmentObjectFor(template);
+  }
+
+  protected abstract IEquipmentTemplate loadEquipmentTemplate(String templateId);
+
+  protected final void addEquipmentObjectFor(final IEquipmentTemplate template) {
     final IEquipmentItem item = new EquipmentItem(template, ruleSet);
     equipmentItems.add(item);
     equipmentItemControl.forAllDo(new IClosure<ICollectionListener<IEquipmentItem>>() {

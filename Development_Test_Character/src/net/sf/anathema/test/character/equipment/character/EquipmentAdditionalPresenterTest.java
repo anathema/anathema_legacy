@@ -16,11 +16,11 @@ public class EquipmentAdditionalPresenterTest extends BasicTestCase {
   @SuppressWarnings("unchecked")
   public void testInitPresentation() throws Exception {
     DummyResources resources = new DummyResources();
-    IEquipmentTemplate[] equipmentTemplates = new IEquipmentTemplate[0];
+    String[] equipmentTemplates = new String[0];
     IEquipmentItemCollection model = EasyMock.createNiceMock(IEquipmentItemCollection.class);
     IEquipmentAdditionalView view = EasyMock.createNiceMock(IEquipmentAdditionalView.class);
-    EasyMock.expect(model.getAvailableTemplates()).andReturn(equipmentTemplates).once();
-    IListObjectSelectionView<IEquipmentTemplate> equipmentPickList = EasyMock.createMock(IListObjectSelectionView.class);
+    EasyMock.expect(model.getAvailableTemplateIds()).andReturn(equipmentTemplates).once();
+    IListObjectSelectionView<String> equipmentPickList = EasyMock.createMock(IListObjectSelectionView.class);
     equipmentPickList.setObjects(equipmentTemplates);
     equipmentPickList.setCellRenderer(new EquipmentObjectCellRenderer());
     EasyMock.expect(view.getEquipmentTemplatePickList()).andReturn(equipmentPickList);

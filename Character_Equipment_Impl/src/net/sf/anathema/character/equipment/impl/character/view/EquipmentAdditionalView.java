@@ -13,7 +13,6 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.equipment.character.view.IEquipmentAdditionalView;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
-import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.library.taskpane.ITaskPaneGroupViewFactory;
 import net.sf.anathema.character.library.taskpane.TaskPaneView;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
@@ -21,8 +20,7 @@ import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
 
 public class EquipmentAdditionalView implements IEquipmentAdditionalView {
 
-  private final ListObjectSelectionView<IEquipmentTemplate> equipmentPickList = new ListObjectSelectionView<IEquipmentTemplate>(
-      IEquipmentTemplate.class);
+  private final ListObjectSelectionView<String> equipmentPickList = new ListObjectSelectionView<String>(String.class);
   private final JLabel pickListLabel = new JLabel();
   private final JPanel panel = new JPanel(new GridDialogLayout(1, false));
   private final JButton selectButton = new JButton();
@@ -62,7 +60,7 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView {
     return false;
   }
 
-  public IListObjectSelectionView<IEquipmentTemplate> getEquipmentTemplatePickList() {
+  public IListObjectSelectionView<String> getEquipmentTemplatePickList() {
     return equipmentPickList;
   }
 }

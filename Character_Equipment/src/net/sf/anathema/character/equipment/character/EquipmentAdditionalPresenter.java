@@ -7,7 +7,6 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItemCollection;
 import net.sf.anathema.character.equipment.character.view.IEquipmentAdditionalView;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
-import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.lib.control.collection.CollectionAdapter;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.IPresenter;
@@ -33,7 +32,7 @@ public class EquipmentAdditionalPresenter implements IPresenter {
     for (IEquipmentItem item : model.getEquipmentItems()) {
       initEquipmentObjectPresentation(item);
     }
-    final IListObjectSelectionView<IEquipmentTemplate> equipmentTemplatePickList = view.getEquipmentTemplatePickList();
+    final IListObjectSelectionView<String> equipmentTemplatePickList = view.getEquipmentTemplatePickList();
     model.addEquipmentObjectListener(new CollectionAdapter<IEquipmentItem>() {
       @Override
       public void itemAdded(IEquipmentItem item) {
@@ -41,21 +40,20 @@ public class EquipmentAdditionalPresenter implements IPresenter {
       }
     });
     equipmentTemplatePickList.setCellRenderer(new EquipmentObjectCellRenderer());
-    equipmentTemplatePickList.setObjects(model.getAvailableTemplates());
+    equipmentTemplatePickList.setObjects(model.getAvailableTemplateIds());
     final SmartAction addAction = createTemplateAddAction(equipmentTemplatePickList);
     view.setSelectButtonAction(addAction);
   }
 
-  private SmartAction createTemplateAddAction(
-      final IListObjectSelectionView<IEquipmentTemplate> equipmentTemplatePickList) {
+  private SmartAction createTemplateAddAction(final IListObjectSelectionView<String> equipmentTemplatePickList) {
     final SmartAction addAction = new SmartAction(resources.getString("AdditionalTemplateView.AddTemplate.Action.Name")) {
       @Override
       protected void execute(Component parentComponent) {
         model.addEquipmentObjectFor(equipmentTemplatePickList.getSelectedObject());
       }
     };
-    equipmentTemplatePickList.addObjectSelectionChangedListener(new IObjectValueChangedListener<IEquipmentTemplate>() {
-      public void valueChanged(IEquipmentTemplate newValue) {
+    equipmentTemplatePickList.addObjectSelectionChangedListener(new IObjectValueChangedListener<String>() {
+      public void valueChanged(String newValue) {
         addAction.setEnabled(equipmentTemplatePickList.isObjectSelected());
       }
     });

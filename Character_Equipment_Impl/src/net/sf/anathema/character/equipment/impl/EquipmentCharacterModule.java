@@ -6,6 +6,8 @@ import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalVie
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditonalModelTemplate;
 import net.sf.anathema.character.equipment.impl.reporting.second.SecondEditionArmourEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.second.SecondEditionWeaponryEncoder;
+import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
+import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
@@ -18,9 +20,20 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void addAdditionalTemplateData(ICharacterGenerics characterGenerics) {
+    // TODO (Urs) hier muss eine lesende EquipmentDatenbankinstanz aufgemacht werden
+    IEquipmentTemplateProvider equipmentDatabase = new IEquipmentTemplateProvider() {
+
+      public String[] getAllAvailableTemplateIds() {
+        return new String[0];
+      }
+
+      public IEquipmentTemplate loadTemplate(String templateId) {
+        return null;
+      }
+    };
     characterGenerics.getAdditionalModelFactoryRegistry().register(
         EquipmentAdditonalModelTemplate.ID,
-        new EquipmentAdditionalModelFactory());
+        new EquipmentAdditionalModelFactory(equipmentDatabase));
     characterGenerics.getAdditonalPersisterFactoryRegistry().register(
         EquipmentAdditonalModelTemplate.ID,
         new EquipmentAdditionalPersisterFactory());

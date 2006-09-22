@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.impl.character;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.impl.character.model.natural.NaturalSoak;
 import net.sf.anathema.character.equipment.impl.character.model.natural.NaturalWeaponTemplate;
+import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
@@ -16,6 +17,12 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 
 public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory {
 
+  private final IEquipmentTemplateProvider equipmentTemplateProvider;
+
+  public EquipmentAdditionalModelFactory(IEquipmentTemplateProvider equipmentTemplateProvider) {
+    this.equipmentTemplateProvider = equipmentTemplateProvider;
+  }
+
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     IBasicCharacterData basicCharacterContext = context.getBasicCharacterContext();
     IArmourStats naturalArmour = new NaturalSoak(
@@ -26,6 +33,6 @@ public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory 
       naturalWeapons = new NaturalWeaponTemplate();
     }
     IExaltedRuleSet ruleSet = context.getBasicCharacterContext().getRuleSet();
-    return new EquipmentAdditionalModel(naturalArmour, naturalWeapons, new IEquipmentTemplate[0], ruleSet);
+    return new EquipmentAdditionalModel(naturalArmour, naturalWeapons, equipmentTemplateProvider, ruleSet);
   }
 }
