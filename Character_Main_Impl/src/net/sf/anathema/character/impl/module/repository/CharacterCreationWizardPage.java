@@ -76,7 +76,6 @@ public class CharacterCreationWizardPage extends AbstractAnathemaWizardPage {
         model.setSelectedRuleset(newValue);
       }
     });
-
     model.addListener(new IChangeListener() {
       public void changeOccured() {
         refreshList(list);
