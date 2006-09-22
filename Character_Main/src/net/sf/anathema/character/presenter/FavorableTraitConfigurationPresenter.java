@@ -18,6 +18,7 @@ import net.sf.anathema.character.library.trait.visitor.ITraitVisitor;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
+import net.sf.anathema.framework.presenter.view.ITabContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
 import net.sf.anathema.lib.collection.IdentityMapping;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
@@ -48,7 +49,7 @@ public class FavorableTraitConfigurationPresenter {
     this.configurationView = configurationView;
   }
 
-  public SimpleViewTabContent init(String viewKey, String typePrefix) {
+  public ITabContent init(String viewKey, String typePrefix) {
     for (IIdentifiedTraitTypeGroup traitTypeGroup : traitTypeGroups) {
       configurationView.startNewTraitGroup(resources.getString(typePrefix + "." + traitTypeGroup.getGroupId().getId())); //$NON-NLS-1$
       addAbilityViews(traitConfiguration.getFavorableTraits(traitTypeGroup.getAllGroupTypes()));

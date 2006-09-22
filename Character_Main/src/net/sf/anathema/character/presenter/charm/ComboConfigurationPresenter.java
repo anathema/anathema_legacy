@@ -28,6 +28,7 @@ import net.sf.anathema.character.view.magic.IComboView;
 import net.sf.anathema.character.view.magic.IComboViewListener;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
+import net.sf.anathema.framework.presenter.view.ITabContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
@@ -51,7 +52,7 @@ public class ComboConfigurationPresenter implements IMagicSubPresenter {
     this.view = factory.createCharmComboView();
   }
 
-  public SimpleViewTabContent init() {
+  public void initPresentation() {
     view.initGui(new ComboViewProperties(resources, comboConfiguration));
     initCharmLearnListening(view);
     ITextView nameView = view.addComboNameView(resources.getString("CardView.CharmConfiguration.ComboCreation.NameLabel")); //$NON-NLS-1$);
@@ -77,6 +78,9 @@ public class ComboConfigurationPresenter implements IMagicSubPresenter {
     });
     enableCrossPrerequisiteTypeCombos();
     updateComboButtons();
+  }
+
+  public ITabContent getTabContent() {
     String header = resources.getString("CardView.CharmConfiguration.ComboCreation.Title"); //$NON-NLS-1$
     return new SimpleViewTabContent(header, view);
   }
@@ -229,27 +233,27 @@ public class ComboConfigurationPresenter implements IMagicSubPresenter {
   }
 
   private void setViewToEditing(ICombo combo) {
-    IComboView view = viewsByCombo.get(combo);
-    view.setEditText(resources.getString("CardView.CharmConfiguration.ComboCreation.RestartEditLabel")); //$NON-NLS-1$
+    IComboView comboView = viewsByCombo.get(combo);
+    comboView.setEditText(resources.getString("CardView.CharmConfiguration.ComboCreation.RestartEditLabel")); //$NON-NLS-1$
     createComboNameString(combo);
-    view.updateCombo(createComboNameString(combo) + " (" //$NON-NLS-1$
+    comboView.updateCombo(createComboNameString(combo) + " (" //$NON-NLS-1$
         + resources.getString("CardView.CharmConfiguration.ComboCreation.EditingLabel") //$NON-NLS-1$
         + ")", convertToHtml(combo)); //$NON-NLS-1$
   }
 
   private void setViewsToNotEditing() {
     for (ICombo currentCombo : viewsByCombo.keySet()) {
-      IComboView view = viewsByCombo.get(currentCombo);
-      view.setEditText(resources.getString("CardView.CharmConfiguration.ComboCreation.EditLabel")); //$NON-NLS-1$
-      view.updateCombo(createComboNameString(currentCombo), convertToHtml(currentCombo));
+      IComboView comboView = viewsByCombo.get(currentCombo);
+      comboView.setEditText(resources.getString("CardView.CharmConfiguration.ComboCreation.EditLabel")); //$NON-NLS-1$
+      comboView.updateCombo(createComboNameString(currentCombo), convertToHtml(currentCombo));
     }
   }
 
   private void updateComboButtons() {
     for (ICombo combo : comboConfiguration.getCurrentCombos()) {
-      IComboView view = viewsByCombo.get(combo);
+      IComboView comboView = viewsByCombo.get(combo);
       boolean disabled = comboConfiguration.isLearnedOnCreation(combo) && statistics.isExperienced();
-      view.setEditButtonsVisible(!disabled);
+      comboView.setEditButtonsVisible(!disabled);
     }
   }
 }

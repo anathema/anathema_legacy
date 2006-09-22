@@ -1,8 +1,9 @@
 package net.sf.anathema.character.presenter.charm;
 
-import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
+import net.sf.anathema.framework.presenter.view.ITabContent;
+import net.sf.anathema.lib.gui.IPresenter;
 
-public interface IMagicSubPresenter {
+public interface IMagicSubPresenter extends IPresenter {
 
-  public SimpleViewTabContent init();
+  public ITabContent getTabContent();
 }

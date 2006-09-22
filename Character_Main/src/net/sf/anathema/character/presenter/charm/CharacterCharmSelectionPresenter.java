@@ -43,6 +43,7 @@ import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.charmtree.presenter.view.IDocumentLoadedListener;
 import net.sf.anathema.charmtree.presenter.view.IExaltTypeChangedListener;
 import net.sf.anathema.charmtree.presenter.view.ISVGSpecialCharmView;
+import net.sf.anathema.framework.presenter.view.ITabContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
@@ -80,7 +81,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     this.view = factory.createCharmSelectionView(viewProperties);
   }
 
-  public SimpleViewTabContent init() {
+  public void initPresentation() {
     final ICharmConfiguration charms = getCharmConfiguration();
     boolean alienCharms = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().isAllowedAlienCharms(
         statistics.getCharacterConcept().getCaste().getType());
@@ -137,6 +138,9 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
       }
     });
     view.initGui();
+  }
+
+  public ITabContent getTabContent() {
     String header = getResources().getString("CardView.CharmConfiguration.CharmSelection.Title"); //$NON-NLS-1$
     return new SimpleViewTabContent(header, view);
   }

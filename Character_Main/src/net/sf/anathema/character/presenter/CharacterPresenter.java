@@ -75,7 +75,7 @@ public class CharacterPresenter implements IPresenter {
     int groupCount = traitTypeGroups.length;
     int columnCount = groupCount / 2 + 1;
     IGroupedFavorableTraitConfigurationView abilityView = characterView.createGroupedFavorableTraitConfigurationView(columnCount);
-    SimpleViewTabContent basicAbilitiesTab = new FavorableTraitConfigurationPresenter(
+    ITabContent basicAbilitiesTab = new FavorableTraitConfigurationPresenter(
         traitTypeGroups,
         getStatistics(),
         abilityView,
@@ -85,7 +85,7 @@ public class CharacterPresenter implements IPresenter {
 
   private void initAdvantagePresentation() {
     String basicAdvantageHeader = getString("CardView.Advantages.Title"); //$NON-NLS-1$
-    SimpleViewTabContent basicAdvantageTab = new BasicAdvantagePresenter(
+    ITabContent basicAdvantageTab = new BasicAdvantagePresenter(
         resources,
         getStatistics(),
         characterView.createAdvantageViewFactory(),
@@ -97,7 +97,7 @@ public class CharacterPresenter implements IPresenter {
     String title = getString("CardView.AttributeConfiguration.Title"); //$NON-NLS-1$
     IGroupedFavorableTraitConfigurationView attributeView = characterView.createGroupedFavorableTraitConfigurationView(1);
     IIdentifiedTraitTypeGroup[] attributeTypeGroups = getStatistics().getTraitConfiguration().getAttributeTypeGroups();
-    SimpleViewTabContent basicAbilitiesTab = new FavorableTraitConfigurationPresenter(
+    ITabContent basicAbilitiesTab = new FavorableTraitConfigurationPresenter(
         attributeTypeGroups,
         getStatistics(),
         attributeView,
@@ -108,7 +108,7 @@ public class CharacterPresenter implements IPresenter {
   private void initCharacterConceptPresentation() {
     String viewTitle = getString("CardView.CharacterConcept.Title"); //$NON-NLS-1$
     ICharacterConceptAndRulesViewFactory viewFactory = characterView.createConceptViewFactory();
-    SimpleViewTabContent conceptView = new CharacterConceptAndRulesPresenter(getStatistics(), viewFactory, resources).init();
+    ITabContent conceptView = new CharacterConceptAndRulesPresenter(getStatistics(), viewFactory, resources).init();
     initMultiTabViewPresentation(viewTitle, AdditionalModelType.Concept, conceptView);
   }
 
@@ -141,7 +141,7 @@ public class CharacterPresenter implements IPresenter {
       return;
     }
     String magicViewHeader = getString("CardView.CharmConfiguration.Title"); //$NON-NLS-1$
-    SimpleViewTabContent[] basicMagicViews = new MagicPresenter(
+    ITabContent[] basicMagicViews = new MagicPresenter(
         getStatistics(),
         characterView.createMagicViewFactory(),
         resources,
@@ -153,8 +153,7 @@ public class CharacterPresenter implements IPresenter {
         characterView.addDisposable(disposable);
       }
     }
-    ITabContent[] tabContents = basicMagicViews;
-    initMultiTabViewPresentation(magicViewHeader, AdditionalModelType.Magic, tabContents);
+    initMultiTabViewPresentation(magicViewHeader, AdditionalModelType.Magic, basicMagicViews);
   }
 
   private void initMultiTabViewPresentation(
