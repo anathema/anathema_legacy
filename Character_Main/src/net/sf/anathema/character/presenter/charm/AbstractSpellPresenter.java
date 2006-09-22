@@ -43,8 +43,9 @@ public abstract class AbstractSpellPresenter implements IMagicSubPresenter {
   private CircleType circle;
   private final IMagicSourceStringBuilder<ISpell> sourceStringBuilder;
   private final SpellViewProperties properties;
+  private final ISpellView view;
 
-  public AbstractSpellPresenter(ICharacterStatistics statistics, IResources resources) {
+  public AbstractSpellPresenter(ICharacterStatistics statistics, IResources resources, IMagicViewFactory factory) {
     this.statistics = statistics;
     this.properties = new SpellViewProperties(resources, statistics);
     this.resources = resources;
@@ -52,13 +53,13 @@ public abstract class AbstractSpellPresenter implements IMagicSubPresenter {
     this.sourceStringBuilder = new SpellSourceStringBuilder(resources, statistics.getRules().getEdition());
     this.spellConfiguration = statistics.getSpells();
     this.characterTemplate = statistics.getCharacterTemplate();
+    this.view = factory.createSpellView(properties);
     circle = getCircles()[0];
   }
 
-  public SimpleViewTabContent init(IMagicViewFactory magicView) {
-    final ISpellView view = magicView.createSpellView(properties);
+  public SimpleViewTabContent init() {
     IIdentificate[] allowedCircles = getCircles();
-    initDetailsView(view);
+    initDetailsView();
     view.initGui(allowedCircles);
     view.addMagicViewListener(new IMagicViewListener() {
       public void magicRemoved(Object[] removedSpells) {
@@ -81,7 +82,7 @@ public abstract class AbstractSpellPresenter implements IMagicSubPresenter {
     });
     view.addCircleSelectionListener(new IObjectValueChangedListener<CircleType>() {
       public void valueChanged(CircleType circleType) {
-        circle =  circleType;
+        circle = circleType;
         view.setMagicOptions(getSpellsToShow());
       }
     });
@@ -105,7 +106,7 @@ public abstract class AbstractSpellPresenter implements IMagicSubPresenter {
     return new SimpleViewTabContent(header, view);
   }
 
-  private void initDetailsView(final ISpellView view) {
+  private void initDetailsView() {
     final JLabel titleView = view.addDetailTitleView();
     titleView.setText(" "); //$NON-NLS-1$
     final IValueView<String> circleView = view.addDetailValueView(properties.getCircleString() + ":"); //$NON-NLS-1$

@@ -41,28 +41,29 @@ public class ComboConfigurationPresenter implements IMagicSubPresenter {
   private final Map<ICombo, IComboView> viewsByCombo = new HashMap<ICombo, IComboView>();
   private final ICharacterStatistics statistics;
   private final IResources resources;
+  private final IComboConfigurationView view;
 
-  public ComboConfigurationPresenter(IResources resources, ICharacterStatistics statistics) {
+  public ComboConfigurationPresenter(IResources resources, ICharacterStatistics statistics, IMagicViewFactory factory) {
     this.resources = resources;
     this.statistics = statistics;
     this.charmConfiguration = statistics.getCharms();
     this.comboConfiguration = statistics.getCombos();
+    this.view = factory.createCharmComboView();
   }
 
-  public SimpleViewTabContent init(IMagicViewFactory charmView) {
-    final IComboConfigurationView comboView = charmView.createCharmComboView();
-    comboView.initGui(new ComboViewProperties(resources, comboConfiguration));
-    initCharmLearnListening(comboView);
-    ITextView nameView = comboView.addComboNameView(resources.getString("CardView.CharmConfiguration.ComboCreation.NameLabel")); //$NON-NLS-1$);
+  public SimpleViewTabContent init() {
+    view.initGui(new ComboViewProperties(resources, comboConfiguration));
+    initCharmLearnListening(view);
+    ITextView nameView = view.addComboNameView(resources.getString("CardView.CharmConfiguration.ComboCreation.NameLabel")); //$NON-NLS-1$);
     ICombo editCombo = comboConfiguration.getEditCombo();
     TextualPresentation textualPresentation = new TextualPresentation();
     textualPresentation.initView(nameView, editCombo.getName());
-    ITextView descriptionView = comboView.addComboDescriptionView(resources.getString("CardView.CharmConfiguration.ComboCreation.DescriptionLabel")); //$NON-NLS-1$);
+    ITextView descriptionView = view.addComboDescriptionView(resources.getString("CardView.CharmConfiguration.ComboCreation.DescriptionLabel")); //$NON-NLS-1$);
     textualPresentation.initView(descriptionView, editCombo.getDescription());
-    updateCharmListsInView(comboView);
-    initViewListening(comboView);
-    initComboModelListening(comboView);
-    initComboConfigurationListening(comboView);
+    updateCharmListsInView(view);
+    initViewListening(view);
+    initComboModelListening(view);
+    initComboConfigurationListening(view);
     statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
       public void experiencedChanged(boolean experienced) {
@@ -77,7 +78,7 @@ public class ComboConfigurationPresenter implements IMagicSubPresenter {
     enableCrossPrerequisiteTypeCombos();
     updateComboButtons();
     String header = resources.getString("CardView.CharmConfiguration.ComboCreation.Title"); //$NON-NLS-1$
-    return new SimpleViewTabContent(header, comboView);
+    return new SimpleViewTabContent(header, view);
   }
 
   private void enableCrossPrerequisiteTypeCombos() {
@@ -94,13 +95,11 @@ public class ComboConfigurationPresenter implements IMagicSubPresenter {
       }
 
       public void comboChanged(ICombo combo) {
-        IComboView view = viewsByCombo.get(combo);
-        view.updateCombo(createComboNameString(combo), convertToHtml(combo));
+        viewsByCombo.get(combo).updateCombo(createComboNameString(combo), convertToHtml(combo));
       }
 
       public void comboDeleted(ICombo combo) {
-        IComboView view = viewsByCombo.get(combo);
-        comboView.deleteView(view);
+        view.deleteView(viewsByCombo.get(combo));
       }
 
       public void editBegun(ICombo combo) {

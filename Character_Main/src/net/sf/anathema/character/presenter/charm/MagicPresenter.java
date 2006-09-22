@@ -15,7 +15,6 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class MagicPresenter {
 
-  private final IMagicViewFactory factory;
   private final List<IMagicSubPresenter> subPresenters = new ArrayList<IMagicSubPresenter>();
 
   public MagicPresenter(
@@ -24,26 +23,25 @@ public class MagicPresenter {
       IResources resources,
       ITemplateRegistry templateRegistry,
       ICharmProvider provider) {
-    this.factory = factory;
     ICharacterTemplate characterTemplate = statistics.getCharacterTemplate();
     ICharmTemplate charmTemplate = characterTemplate.getMagicTemplate().getCharmTemplate();
     if (charmTemplate.knowsCharms(statistics.getRules())) {
-      subPresenters.add(new CharacterCharmSelectionPresenter(statistics, resources, templateRegistry, provider));
-      subPresenters.add(new ComboConfigurationPresenter(resources, statistics));
+      subPresenters.add(new CharacterCharmSelectionPresenter(statistics, resources, templateRegistry, provider, factory));
+      subPresenters.add(new ComboConfigurationPresenter(resources, statistics, factory));
     }
     ISpellMagicTemplate spellMagic = statistics.getCharacterTemplate().getMagicTemplate().getSpellMagic();
     if (spellMagic.knowsSorcery()) {
-      subPresenters.add(new SorcerySpellPresenter(statistics, resources));
+      subPresenters.add(new SorcerySpellPresenter(statistics, resources, factory));
     }
     if (spellMagic.knowsNecromancy()) {
-      subPresenters.add(new NecromancyPresenter(statistics, resources));
+      subPresenters.add(new NecromancyPresenter(statistics, resources, factory));
     }
   }
 
   public SimpleViewTabContent[] init() {
     List<SimpleViewTabContent> basicMagicViews = new ArrayList<SimpleViewTabContent>();
     for (IMagicSubPresenter presenter : subPresenters) {
-      basicMagicViews.add(presenter.init(factory));
+      basicMagicViews.add(presenter.init());
     }
     return basicMagicViews.toArray(new SimpleViewTabContent[basicMagicViews.size()]);
   }

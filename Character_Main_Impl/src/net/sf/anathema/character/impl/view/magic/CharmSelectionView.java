@@ -17,7 +17,7 @@ import net.sf.anathema.charmtree.presenter.view.ISpecialCharmViewManager;
 
 public class CharmSelectionView extends AbstractCascadeSelectionView implements ICharmSelectionView {
 
-  private JPanel content;
+  private final JPanel content = new JPanel(new GridDialogLayout(1, false));
   private final ISpecialCharmViewManager<ISVGSpecialCharmView> svgManager = new SVGSpecialCharmViewManager(
       getCharmTreeView());
 
@@ -26,11 +26,8 @@ public class CharmSelectionView extends AbstractCascadeSelectionView implements 
   }
 
   public void initGui() {
-    JPanel panel = new JPanel(new GridDialogLayout(1, false));
-    panel.add(getSelectionComponent());
-    JComponent treeViewComponent = getCharmTreeView().getComponent();
-    panel.add(treeViewComponent, GridDialogLayoutData.FILL_BOTH);
-    this.content = panel;
+    content.add(getSelectionComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
+    content.add(getCharmTreeView().getComponent(), GridDialogLayoutData.FILL_BOTH);
   }
 
   public void addCharmSelectionListener(ICharmSelectionListener listener) {
