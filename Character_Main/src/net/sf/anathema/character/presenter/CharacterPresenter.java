@@ -10,7 +10,6 @@ import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
@@ -20,10 +19,11 @@ import net.sf.anathema.character.presenter.charm.IContentPresenter;
 import net.sf.anathema.character.presenter.charm.MagicPresenter;
 import net.sf.anathema.character.presenter.overview.CreationOverviewPresenter;
 import net.sf.anathema.character.presenter.overview.ExperiencedOverviewPresenter;
+import net.sf.anathema.character.view.IAdvantageViewFactory;
 import net.sf.anathema.character.view.ICharacterConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.character.view.ICharacterView;
-import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
+import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.framework.presenter.view.IMultiTabView;
@@ -68,40 +68,24 @@ public class CharacterPresenter implements IPresenter {
   }
 
   private void initAbilityPresentation() {
-    String basicAbilitiesHeader = getString("CardView.AbilityConfiguration.Title"); //$NON-NLS-1$
-    IIdentifiedTraitTypeGroup[] traitTypeGroups = getStatistics().getTraitConfiguration().getAbilityTypeGroups();
-    int groupCount = traitTypeGroups.length;
-    int columnCount = groupCount / 2 + 1;
-    IGroupedFavorableTraitConfigurationView abilityView = characterView.createGroupedFavorableTraitConfigurationView(columnCount);
-    ITabContent basicAbilitiesTab = new FavorableTraitConfigurationPresenter(
-        traitTypeGroups,
-        getStatistics(),
-        abilityView,
-        resources).init("AbilityConfiguration", "AbilityGroup"); //$NON-NLS-1$//$NON-NLS-2$
-    initMultiTabViewPresentation(basicAbilitiesHeader, AdditionalModelType.Abilities, basicAbilitiesTab);
+    IGroupedFavorableTraitViewFactory viewFactory = characterView.createGroupedFavorableTraitViewFactory();
+    AbilitiesPresenter presenter = new AbilitiesPresenter(getStatistics(), resources, viewFactory);
+    String title = getString("CardView.AbilityConfiguration.Title"); //$NON-NLS-1$
+    initMultiTabViewPresentation(title, presenter, AdditionalModelType.Abilities);
   }
 
   private void initAdvantagePresentation() {
-    String basicAdvantageHeader = getString("CardView.Advantages.Title"); //$NON-NLS-1$
-    BasicAdvantagePresenter presenter = new BasicAdvantagePresenter(
-        resources,
-        getStatistics(),
-        characterView.createAdvantageViewFactory(),
-        generics);
-    presenter.initPresentation();
-    initMultiTabViewPresentation(basicAdvantageHeader, AdditionalModelType.Advantages, presenter.getTabContent());
+    IAdvantageViewFactory viewFactory = characterView.createAdvantageViewFactory();
+    BasicAdvantagePresenter presenter = new BasicAdvantagePresenter(resources, getStatistics(), viewFactory, generics);
+    String title = getString("CardView.Advantages.Title"); //$NON-NLS-1$
+    initMultiTabViewPresentation(title, presenter, AdditionalModelType.Advantages);
   }
 
   private void initAttributePresentation() {
+    IGroupedFavorableTraitViewFactory viewFactory = characterView.createGroupedFavorableTraitViewFactory();
+    AttributesPresenter presenter = new AttributesPresenter(getStatistics(), resources, viewFactory);
     String title = getString("CardView.AttributeConfiguration.Title"); //$NON-NLS-1$
-    IGroupedFavorableTraitConfigurationView attributeView = characterView.createGroupedFavorableTraitConfigurationView(1);
-    IIdentifiedTraitTypeGroup[] attributeTypeGroups = getStatistics().getTraitConfiguration().getAttributeTypeGroups();
-    ITabContent basicAbilitiesTab = new FavorableTraitConfigurationPresenter(
-        attributeTypeGroups,
-        getStatistics(),
-        attributeView,
-        resources).init("AttributeConfiguration", "AttributeGroupType.Name"); //$NON-NLS-1$//$NON-NLS-2$
-    initMultiTabViewPresentation(title, AdditionalModelType.Attributes, basicAbilitiesTab);
+    initMultiTabViewPresentation(title, presenter, AdditionalModelType.Attributes);
   }
 
   private void initCharacterConceptPresentation() {
@@ -112,11 +96,8 @@ public class CharacterPresenter implements IPresenter {
   }
 
   private void initCharacterDescriptionPresentation() {
-    ICharacterDescriptionView descriptionView = characterView.createCharacterDescriptionView();
-    IContentPresenter presenter = new CharacterDescriptionPresenter(
-        resources,
-        character.getDescription(),
-        descriptionView);
+    ICharacterDescriptionView view = characterView.createCharacterDescriptionView();
+    IContentPresenter presenter = new CharacterDescriptionPresenter(resources, character.getDescription(), view);
     String title = getString("CardView.CharacterDescription.Title"); //$NON-NLS-1$
     initMultiTabViewPresentation(title, presenter, AdditionalModelType.Description);
   }

@@ -14,7 +14,7 @@ import net.sf.anathema.character.view.IAdvantageViewFactory;
 import net.sf.anathema.character.view.ICharacterConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.character.view.ICharacterView;
-import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
+import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.overview.IOverviewView;
@@ -42,11 +42,8 @@ public class CharacterView extends AbstractTabbedItemView implements ICharacterV
     this.intValueDisplayFactoryWithoutMarker = factoryWithoutMarker;
   }
 
-  public IGroupedFavorableTraitConfigurationView createGroupedFavorableTraitConfigurationView(int columnCount) {
-    return new GroupedFavorableTraitConfigurationView(
-        columnCount,
-        intValueDisplayFactory,
-        intValueDisplayFactoryWithoutMarker);
+  public IGroupedFavorableTraitViewFactory createGroupedFavorableTraitViewFactory() {
+    return new GroupedFavorableTraitViewFactory(intValueDisplayFactory, intValueDisplayFactoryWithoutMarker);
   }
 
   public ICharacterDescriptionView createCharacterDescriptionView() {

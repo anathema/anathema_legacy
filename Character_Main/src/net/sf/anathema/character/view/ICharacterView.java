@@ -10,8 +10,6 @@ import net.sf.anathema.lib.gui.IDisposable;
 
 public interface ICharacterView extends IItemView {
 
-  public IGroupedFavorableTraitConfigurationView createGroupedFavorableTraitConfigurationView(int columnCount);
-
   public ICharacterDescriptionView createCharacterDescriptionView();
 
   public IOverviewView addCreationOverviewView();
@@ -33,4 +31,6 @@ public interface ICharacterView extends IItemView {
   public IAdvantageViewFactory createAdvantageViewFactory();
 
   public IMagicViewFactory createMagicViewFactory();
+
+  public IGroupedFavorableTraitViewFactory createGroupedFavorableTraitViewFactory();
 }
