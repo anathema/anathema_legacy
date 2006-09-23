@@ -13,9 +13,6 @@ public class SimpleViewTabContent implements ITabContent {
     this.tabView = tabView;
   }
 
-  /* (non-Javadoc)
-   * @see net.sf.anathema.character.presenter.ITabContent#addTo(net.sf.anathema.framework.presenter.view.IMultiTabView)
-   */
   public void addTo(IMultiTabView view) {
     TabProperties tabProperties = new TabProperties(header);
     if (tabView.needsScrollbar()) {
@@ -24,9 +21,6 @@ public class SimpleViewTabContent implements ITabContent {
     view.addTabView(tabView, tabProperties);
   }
 
-  /* (non-Javadoc)
-   * @see net.sf.anathema.character.presenter.ITabContent#getDisposable()
-   */
   public IDisposable getDisposable() {
     return tabView instanceof IDisposable ? (IDisposable) tabView : null;
   }
