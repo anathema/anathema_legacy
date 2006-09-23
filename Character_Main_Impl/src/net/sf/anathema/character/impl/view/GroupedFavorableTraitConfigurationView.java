@@ -14,7 +14,7 @@ import net.sf.anathema.lib.gui.dialogcomponent.grouped.GroupedGridDialogPanel;
 public class GroupedFavorableTraitConfigurationView extends AbstractTabView<Object> implements
     IGroupedFavorableTraitConfigurationView {
 
-  private GroupedGridDialogPanel groupedTraitView;
+  private final GroupedGridDialogPanel groupedTraitView;
   private final IIntValueDisplayFactory markerIntValueDisplayFactory;
   private final IIntValueDisplayFactory markerLessIntValueDisplayFactory;
 
