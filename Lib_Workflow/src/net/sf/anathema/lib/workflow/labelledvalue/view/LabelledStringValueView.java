@@ -12,8 +12,8 @@ import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 public class LabelledStringValueView implements IValueView<String> {
 
-  protected final JLabel titleLabel;
-  protected final JLabel valueLabel;
+  private final JLabel titleLabel;
+  private final JLabel valueLabel;
   private final GridDialogLayoutData textData;
 
   public LabelledStringValueView(String labelText) {
@@ -42,10 +42,6 @@ public class LabelledStringValueView implements IValueView<String> {
   }
 
   public void setValue(String value) {
-    setText(value);
-  }
-
-  public final void setText(String value) {
     valueLabel.setText(value);
   }
 }
