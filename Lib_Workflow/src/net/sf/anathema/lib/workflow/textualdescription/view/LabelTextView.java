@@ -57,29 +57,6 @@ public class LabelTextView implements ITextView {
     return textView;
   }
 
-  @Deprecated
-  public ITextView addTo(IGridDialogPanel dialogPanel, final boolean fillAllColumns) {
-    dialogPanel.add(new IDialogComponent() {
-      public int getColumnCount() {
-        return 2;
-      }
-
-      public void fillInto(JPanel panel, int columnCount) {
-        GridDialogLayoutData labelLayoutData = new GridDialogLayoutData();
-        labelLayoutData.setHorizontalAlignment(GridAlignment.BEGINNING);
-        labelLayoutData.setVerticalAlignment(GridAlignment.BEGINNING);
-        panel.add(label, labelLayoutData);
-        JComponent initializedContent = getInitializedContent();
-        GridDialogLayoutData contentData = new GridDialogLayoutData((scrollPane
-            ? GridDialogLayoutData.FILL_BOTH
-            : GridDialogLayoutData.FILL_HORIZONTAL));
-        contentData.setHorizontalSpan(fillAllColumns ? columnCount - 1 : 1);
-        panel.add(initializedContent, contentData);
-      }
-    });
-    return textView;
-  }
-
   private JComponent getInitializedContent() {
     if (content == null) {
       content = scrollPane ? new RevalidatingScrollPane(textView.getComponent()) : textView.getComponent();
