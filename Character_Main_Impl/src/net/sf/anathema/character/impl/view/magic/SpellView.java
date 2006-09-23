@@ -25,9 +25,6 @@ import net.sf.anathema.character.presenter.charm.SpellViewProperties;
 import net.sf.anathema.character.view.magic.ISpellView;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.ObjectValueControl;
-import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
-import net.sf.anathema.lib.gui.layout.SingleOverallComponent;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledStringValueView;
@@ -36,9 +33,9 @@ public class SpellView implements ISpellView {
 
   private MagicLearnView magicLearnView;
 
-  private JPanel content = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel content = new JPanel(new GridDialogLayout(1, false));
   private final ObjectValueControl<CircleType> circleControl = new ObjectValueControl<CircleType>();
-  private final IGridDialogPanel detailPanel = new DefaultGridDialogPanel();
+  private final JPanel detailPanel = new JPanel(new GridDialogLayout(2, false));
 
   private final SpellViewProperties properties;
 
@@ -58,14 +55,16 @@ public class SpellView implements ISpellView {
 
   public IValueView<String> addDetailValueView(String label) {
     LabelledStringValueView view = new LabelledStringValueView(label, new GridDialogLayoutData());
-    view.addComponents(detailPanel);
+    view.addToStandardPanel(detailPanel);
     return view;
   }
 
   public JLabel addDetailTitleView() {
     JLabel label = new JLabel();
     label.setFont(label.getFont().deriveFont(Font.BOLD));
-    detailPanel.add(new SingleOverallComponent(label));
+    GridDialogLayoutData data = new GridDialogLayoutData();
+    data.setHorizontalSpan(2);
+    detailPanel.add(label, data);
     return label;
   }
 
@@ -74,9 +73,8 @@ public class SpellView implements ISpellView {
     GridDialogLayoutData data = new GridDialogLayoutData();
     data.setHorizontalAlignment(GridAlignment.FILL);
     content.add(selectionPanel, data);
-    final JPanel detailContent = detailPanel.getContent();
-    detailContent.setBorder(new TitledBorder(properties.getDetailTitle()));
-    content.add(detailContent, data);
+    detailPanel.setBorder(new TitledBorder(properties.getDetailTitle()));
+    content.add(detailPanel, data);
   }
 
   private JPanel createSelectionPanel(IIdentificate[] circles) {

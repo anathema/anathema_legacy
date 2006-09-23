@@ -15,8 +15,6 @@ import net.sf.anathema.campaign.music.presenter.ITrackDetailsProperties;
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationProperties;
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationView;
 import net.sf.anathema.campaign.music.view.selection.ITrackDetailsView;
-import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledStringValueView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
@@ -75,15 +73,14 @@ public class TrackDetailsView implements ITrackDetailsView {
     albumView = new LabelledStringValueView(properties.getAlbumLabel() + ":"); //$NON-NLS-1$
     trackNumberView = new LabelledStringValueView(properties.getTrackNumberLabel() + ":"); //$NON-NLS-1$
     artistView = new LabelledStringValueView(properties.getArtistLabel() + ":"); //$NON-NLS-1$
-    IGridDialogPanel dialogPanel = new DefaultGridDialogPanel();
-    new LabelTextView(properties.getGivenNameLabel() + ":", givenNameView).addTo(dialogPanel); //$NON-NLS-1$
-    titleView.addComponents(dialogPanel);
-    artistView.addComponents(dialogPanel);
-    albumView.addComponents(dialogPanel);
-    trackNumberView.addComponents(dialogPanel);
-    JPanel trackInfoPanel = dialogPanel.getContent();
-    trackInfoPanel.setBorder(new TitledBorder(properties.getInfoBorder()));
-    return trackInfoPanel;
+    JPanel panel = new JPanel(new GridDialogLayout(2, false));
+    new LabelTextView(properties.getGivenNameLabel() + ":", givenNameView).addToStandardPanel(panel); //$NON-NLS-1$
+    titleView.addToStandardPanel(panel);
+    artistView.addToStandardPanel(panel);
+    albumView.addToStandardPanel(panel);
+    trackNumberView.addToStandardPanel(panel);
+    panel.setBorder(new TitledBorder(properties.getInfoBorder()));
+    return panel;
   }
 
   public void setOriginalTitle(String title) {
