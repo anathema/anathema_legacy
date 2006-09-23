@@ -7,11 +7,9 @@ import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.framework.value.IconToggleButton;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 
 public abstract class AbstractToggleButtonTraitViewWrapper<K extends ITraitView< ? >> extends
     AbstractTraitViewWrapper<K> {
@@ -45,18 +43,6 @@ public abstract class AbstractToggleButtonTraitViewWrapper<K extends ITraitView<
     traitViewPanel.remove(innerViewPanel);
     traitViewPanel.remove(button.getComponent());
     traitViewPanel.revalidate();
-  }
-
-  public void addComponents(IGridDialogPanel abilityPanel) {
-    abilityPanel.add(new IDialogComponent() {
-      public int getColumnCount() {
-        return 2;
-      }
-
-      public void fillInto(JPanel panel, int columnCount) {
-        addComponents(panel);
-      }
-    });
   }
 
   public void addButtonSelectedListener(final IBooleanValueChangedListener listener) {
