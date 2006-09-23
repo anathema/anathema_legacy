@@ -9,12 +9,9 @@ import javax.swing.JTextArea;
 
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.view.concept.IWillpowerConditionView;
-import net.sf.anathema.lib.gui.dialogcomponent.grouped.IGridDialogPanelContent;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 
-public class WillpowerConditionView implements IGridDialogPanelContent, IWillpowerConditionView {
+public class WillpowerConditionView implements IWillpowerConditionView {
   private final JTextArea conditionLabel;
   private final JLabel headerLabel;
 
@@ -28,25 +25,6 @@ public class WillpowerConditionView implements IGridDialogPanelContent, IWillpow
     conditionLabel.setFont(label.getFont());
     conditionLabel.setBackground(label.getBackground());
     this.headerLabel = new JLabel(labelText);
-  }
-
-  public void addComponents(IGridDialogPanel dialogPanel) {
-    dialogPanel.add(new IDialogComponent() {
-      public int getColumnCount() {
-        return 2;
-      }
-
-      public void fillInto(JPanel panel, int columnCount) {
-        GridDialogLayoutData labelLayoutData = new GridDialogLayoutData();
-        labelLayoutData.setHorizontalAlignment(GridAlignment.BEGINNING);
-        labelLayoutData.setVerticalAlignment(GridAlignment.BEGINNING);
-        panel.add(headerLabel, labelLayoutData);
-        GridDialogLayoutData contentData = new GridDialogLayoutData();
-        contentData.setHorizontalAlignment(GridAlignment.FILL);
-        contentData.setVerticalAlignment(GridAlignment.FILL);
-        panel.add(conditionLabel, contentData);
-      }
-    });
   }
 
   public void addToStandardPanel(JPanel panel) {
