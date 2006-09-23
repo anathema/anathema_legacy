@@ -34,9 +34,7 @@ public class LabelTextView implements ITextView {
     this.scrollPane = scrollPane;
   }
 
-  /**
-   * @deprecated should no longer be used
-   */
+  @Deprecated
   public ITextView addTo(IGridDialogPanel dialogPanel) {
     dialogPanel.add(new IDialogComponent() {
       public int getColumnCount() {
@@ -59,9 +57,7 @@ public class LabelTextView implements ITextView {
     return textView;
   }
 
-  /**
-   * @deprecated should no longer be used
-   */
+  @Deprecated
   public ITextView addTo(IGridDialogPanel dialogPanel, final boolean fillAllColumns) {
     dialogPanel.add(new IDialogComponent() {
       public int getColumnCount() {
@@ -99,9 +95,7 @@ public class LabelTextView implements ITextView {
     textView.addTextChangedListener(listener);
   }
 
-  /**
-   * @deprecated should no longer be used
-   */
+  @Deprecated
   public JComponent getComponent() {
     return getInitializedContent();
   }
