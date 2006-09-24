@@ -2,14 +2,13 @@ package net.sf.anathema.charmtree.presenter.view;
 
 import java.awt.Color;
 
-import javax.swing.JComponent;
-
 import net.sf.anathema.charmtree.batik.IBoundsCalculator;
+import net.sf.anathema.lib.gui.IDisposable;
+import net.sf.anathema.lib.gui.IView;
 
 import org.w3c.dom.svg.SVGDocument;
 
-public interface ICharmTreeView {
-  public JComponent getComponent();
+public interface ICharmTreeView extends IView, IDisposable {
 
   public IAnathemaCanvas getCanvas();
 
@@ -22,8 +21,6 @@ public interface ICharmTreeView {
   public void addDocumentLoadedListener(IDocumentLoadedListener listener);
 
   public void setCanvasBackground(Color color);
-
-  public void dispose();
 
   public void setProperties(ICharmTreeViewProperties viewProperties);
 
