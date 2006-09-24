@@ -69,21 +69,21 @@ public class CharacterPresenter implements IPresenter {
 
   private void initAbilityPresentation() {
     IGroupedFavorableTraitViewFactory viewFactory = characterView.createGroupedFavorableTraitViewFactory();
-    AbilitiesPresenter presenter = new AbilitiesPresenter(getStatistics(), resources, viewFactory);
+    IContentPresenter presenter = new AbilitiesPresenter(getStatistics(), resources, viewFactory);
     String title = getString("CardView.AbilityConfiguration.Title"); //$NON-NLS-1$
     initMultiTabViewPresentation(title, presenter, AdditionalModelType.Abilities);
   }
 
   private void initAdvantagePresentation() {
     IAdvantageViewFactory viewFactory = characterView.createAdvantageViewFactory();
-    BasicAdvantagePresenter presenter = new BasicAdvantagePresenter(resources, getStatistics(), viewFactory, generics);
+    IContentPresenter presenter = new BasicAdvantagePresenter(resources, getStatistics(), viewFactory, generics);
     String title = getString("CardView.Advantages.Title"); //$NON-NLS-1$
     initMultiTabViewPresentation(title, presenter, AdditionalModelType.Advantages);
   }
 
   private void initAttributePresentation() {
     IGroupedFavorableTraitViewFactory viewFactory = characterView.createGroupedFavorableTraitViewFactory();
-    AttributesPresenter presenter = new AttributesPresenter(getStatistics(), resources, viewFactory);
+    IContentPresenter presenter = new AttributesPresenter(getStatistics(), resources, viewFactory);
     String title = getString("CardView.AttributeConfiguration.Title"); //$NON-NLS-1$
     initMultiTabViewPresentation(title, presenter, AdditionalModelType.Attributes);
   }
@@ -120,19 +120,19 @@ public class CharacterPresenter implements IPresenter {
       return;
     }
     String magicViewHeader = getString("CardView.CharmConfiguration.Title"); //$NON-NLS-1$
-    ITabContent[] basicMagicViews = new MagicPresenter(
+    MagicPresenter presenter = new MagicPresenter(
         getStatistics(),
         characterView.createMagicViewFactory(),
         resources,
         generics.getTemplateRegistry(),
-        generics.getCharmProvider()).init();
-    for (ITabContent magicTab : basicMagicViews) {
-      IDisposable disposable = magicTab.getDisposable();
-      if (disposable != null) {
-        characterView.addDisposable(disposable);
-      }
+        generics.getCharmProvider());
+    presenter.initPresentation();
+    ITabContent content = presenter.getTabContent();
+    IDisposable disposable = content.getDisposable();
+    if (disposable != null) {
+      characterView.addDisposable(disposable);
     }
-    initMultiTabViewPresentation(magicViewHeader, AdditionalModelType.Magic, basicMagicViews);
+    initMultiTabViewPresentation(magicViewHeader, AdditionalModelType.Magic, content);
   }
 
   private void initMultiTabViewPresentation(

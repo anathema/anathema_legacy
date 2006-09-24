@@ -5,12 +5,10 @@ import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.impl.model.creation.bonus.BonusPointManagement;
-import net.sf.anathema.character.impl.view.magic.CharmSelectionView;
 import net.sf.anathema.character.impl.view.magic.MagicViewFactory;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.advance.IExperiencePointManagement;
@@ -21,7 +19,6 @@ import net.sf.anathema.character.view.ICharacterView;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
-import net.sf.anathema.framework.presenter.view.ITabContent;
 import net.sf.anathema.framework.repository.AnathemaItem;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
@@ -57,17 +54,13 @@ public class CharacterPerformanceTuner {
     ExaltedCharacter character = createStattedCharacter(generics);
     ICharacterStatistics statistics = character.getStatistics();
     MagicViewFactory magicView = new MagicViewFactory();
-    ITabContent[] contents = new MagicPresenter(
-        statistics,
-        magicView,
-        resources,
-        generics.getTemplateRegistry(),
-        generics.getCharmProvider()).init();
-    for (ITabContent content : contents) {
-      if (content.getDisposable() instanceof CharmSelectionView) {
-        ((CharmSelectionView) content.getDisposable()).fillCharmComboBoxes(CharacterType.SOLAR, AbilityType.Melee);
-      }
-    }
+    new MagicPresenter(statistics, magicView, resources, generics.getTemplateRegistry(), generics.getCharmProvider()).initPresentation();
+    //    
+    //    for (ITabContent content : contents) {
+    //      if (content.getDisposable() instanceof CharmSelectionView) {
+    //        ((CharmSelectionView) content.getDisposable()).fillCharmComboBoxes(CharacterType.SOLAR, AbilityType.Melee);
+    //      }
+    //    }
   }
 
   private ICharacterView initCharacterView(ICharacterGenerics characterGenerics, IItemType characterItemType)

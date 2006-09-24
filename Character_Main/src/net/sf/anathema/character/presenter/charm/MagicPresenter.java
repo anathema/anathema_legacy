@@ -10,10 +10,12 @@ import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
+import net.sf.anathema.framework.presenter.view.IMultiTabView;
 import net.sf.anathema.framework.presenter.view.ITabContent;
+import net.sf.anathema.lib.gui.IDisposable;
 import net.sf.anathema.lib.resources.IResources;
 
-public class MagicPresenter {
+public class MagicPresenter implements IContentPresenter {
 
   private final List<IContentPresenter> subPresenters = new ArrayList<IContentPresenter>();
 
@@ -38,12 +40,39 @@ public class MagicPresenter {
     }
   }
 
-  public ITabContent[] init() {
-    List<ITabContent> basicMagicViews = new ArrayList<ITabContent>();
+  public void initPresentation() {
     for (IContentPresenter presenter : subPresenters) {
       presenter.initPresentation();
-      basicMagicViews.add(presenter.getTabContent());
     }
-    return basicMagicViews.toArray(new ITabContent[basicMagicViews.size()]);
+  }
+
+  public ITabContent getTabContent() {
+    return new ITabContent() {
+      public void addTo(IMultiTabView view) {
+        for (IContentPresenter presenter : subPresenters) {
+          presenter.getTabContent().addTo(view);
+        }
+      }
+
+      public IDisposable getDisposable() {
+        final List<IDisposable> disposables = new ArrayList<IDisposable>();
+        for (IContentPresenter presenter : subPresenters) {
+          IDisposable disposable = presenter.getTabContent().getDisposable();
+          if (disposable != null) {
+            disposables.add(disposable);
+          }
+        }
+        if (disposables.size() == 0) {
+          return null;
+        }
+        return new IDisposable() {
+          public void dispose() {
+            for (IDisposable disposable : disposables) {
+              disposable.dispose();
+            }
+          }
+        };
+      }
+    };
   }
 }
