@@ -15,10 +15,7 @@ public class EquipmentObjectPresenter implements IPresenter {
   private final IEquipmentObjectView view;
   private final IEquipmentStringBuilder stringBuilder;
 
-  public EquipmentObjectPresenter(
-      IEquipmentItem model,
-      IEquipmentObjectView view,
-      IEquipmentStringBuilder stringBuilder) {
+  public EquipmentObjectPresenter(IEquipmentItem model, IEquipmentObjectView view, IEquipmentStringBuilder stringBuilder) {
     this.model = model;
     this.view = view;
     this.stringBuilder = stringBuilder;

@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.view;
 
+import javax.swing.Action;
 import javax.swing.JLabel;
 
 import net.disy.commons.core.model.BooleanModel;
@@ -37,5 +38,9 @@ public class EquipmentObjectView implements IEquipmentObjectView, ITaskPaneGroup
 
   public JTaskPaneGroup getTaskGroup() {
     return taskGroup;
+  }
+
+  public void addAction(Action action) {
+    taskGroup.add(action);
   }
 }

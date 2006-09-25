@@ -64,6 +64,15 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
     });
   }
 
+  public void removeItem(final IEquipmentItem item) {
+    equipmentItems.remove(item);
+    equipmentItemControl.forAllDo(new IClosure<ICollectionListener<IEquipmentItem>>() {
+      public void execute(ICollectionListener<IEquipmentItem> input) {
+        input.itemRemoved(item);
+      }
+    });
+  }
+
   public final void addEquipmentObjectListener(ICollectionListener<IEquipmentItem> listener) {
     equipmentItemControl.addListener(listener);
   }

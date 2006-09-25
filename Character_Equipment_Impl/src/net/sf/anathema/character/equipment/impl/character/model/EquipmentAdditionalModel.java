@@ -32,7 +32,11 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
     List<IArmourStats> printStats = new ArrayList<IArmourStats>();
     printStats.add(naturalArmour);
     for (IEquipmentItem item : getEquipmentItems()) {
-      for (IEquipmentStats stats : item.getStats()) {
+      IEquipmentStats[] statsArray = item.getStats();
+      if (statsArray.length == 1) {
+        //TODO: Clone, change name to template name, then add
+      }
+      for (IEquipmentStats stats : statsArray) {
         if (stats instanceof IArmourStats && item.isPrintEnabled(stats)) {
           printStats.add((IArmourStats) stats);
         }
@@ -44,7 +48,11 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
   public IWeaponStats[] getPrintWeapons() {
     List<IWeaponStats> printStats = new ArrayList<IWeaponStats>();
     for (IEquipmentItem item : getEquipmentItems()) {
-      for (IEquipmentStats stats : item.getStats()) {
+      IEquipmentStats[] statsArray = item.getStats();
+      if (statsArray.length == 1) {
+        //TODO: Clone, change name to template name, then add
+      }
+      for (IEquipmentStats stats : statsArray) {
         if (stats instanceof IWeaponStats && item.isPrintEnabled(stats)) {
           printStats.add((IWeaponStats) stats);
         }

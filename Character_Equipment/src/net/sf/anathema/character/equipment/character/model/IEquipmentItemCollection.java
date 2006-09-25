@@ -11,4 +11,6 @@ public interface IEquipmentItemCollection {
   public void addEquipmentObjectFor(String templateId);
 
   public void addEquipmentObjectListener(ICollectionListener<IEquipmentItem> listener);
+
+  public void removeItem(IEquipmentItem selectedObject);
 }
