@@ -114,7 +114,7 @@ public class ItemViewManagement implements IItemViewManagement {
     view.addNameChangedListener(listener);
   }
 
-  public Component getComponent() {
+  public JComponent getComponent() {
     return tabbedPane;
   }
 

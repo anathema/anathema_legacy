@@ -51,7 +51,7 @@ public class GroupedGridDialogPanel {
     for (IGridDialogPanel column : columns) {
       GridDialogLayoutData data = new GridDialogLayoutData();
       data.setVerticalAlignment(GridAlignment.BEGINNING);
-      container.add(column.getContent(), data);
+      container.add(column.getComponent(), data);
     }
   }
 }

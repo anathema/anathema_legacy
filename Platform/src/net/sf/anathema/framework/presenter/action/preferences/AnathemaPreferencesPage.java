@@ -52,7 +52,7 @@ public class AnathemaPreferencesPage extends AbstractDialogPage {
     }
     for (String key : tabsByName.keySet()) {
       Tab tab = tabsByName.get(key);
-      tab.getContentComponent().add(panelsByName.get(key).getContent());
+      tab.getContentComponent().add(panelsByName.get(key).getComponent());
     }
     return panel;
   }

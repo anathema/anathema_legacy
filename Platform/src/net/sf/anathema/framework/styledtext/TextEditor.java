@@ -29,7 +29,9 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 import javax.swing.text.StyledEditorKit;
 
-public class TextEditor implements IStyledTextView {
+import net.sf.anathema.lib.gui.IView;
+
+public class TextEditor implements IStyledTextView, IView {
 
   private JPanel content;
   private final StyledDocument document;
@@ -122,7 +124,7 @@ public class TextEditor implements IStyledTextView {
     textPane.addKeyListener(new KeyAdapter() {
       @Override
       public void keyTyped(KeyEvent e) {
-        button.setSelected(textPane.getInputAttributes().containsAttribute(styleConstant, true));        
+        button.setSelected(textPane.getInputAttributes().containsAttribute(styleConstant, true));
       }
     });
     textPane.addMouseListener(new MouseAdapter() {

@@ -4,12 +4,13 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledAlotmentView;
 
-public class BeastformOverviewView implements IBeastformOverviewView {
+public class BeastformOverviewView implements IBeastformOverviewView, IView {
   private LabelledAlotmentView attributeView;
   private LabelledAlotmentView giftView;
   private JPanel content;
@@ -19,7 +20,7 @@ public class BeastformOverviewView implements IBeastformOverviewView {
     this.properties = properties;
   }
 
-  public JComponent getContent() {
+  public JComponent getComponent() {
     if (content == null) {
       content = createContent();
     }
@@ -33,7 +34,7 @@ public class BeastformOverviewView implements IBeastformOverviewView {
     attributeView.addComponents(panel);
     giftView = new LabelledAlotmentView(properties.getGiftPicksString(), 0, 0, 2);
     giftView.addComponents(panel);
-    overview.add(panel.getContent());
+    overview.add(panel.getComponent());
     return overview;
   }
 

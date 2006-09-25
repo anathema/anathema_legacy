@@ -7,11 +7,12 @@ import javax.swing.JCheckBox;
 import javax.swing.JToggleButton;
 
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
+import net.sf.anathema.lib.gui.IView;
 
-public class CheckBoxBooleanView implements IBooleanValueView {
-  
+public class CheckBoxBooleanView implements IBooleanValueView, IView {
+
   private JCheckBox checkBox;
-  
+
   public CheckBoxBooleanView(String label) {
     checkBox = new JCheckBox(label);
   }
@@ -27,8 +28,8 @@ public class CheckBoxBooleanView implements IBooleanValueView {
   public void setSelected(boolean selected) {
     checkBox.setSelected(selected);
   }
-  
-  public JToggleButton getContent() {
+
+  public JToggleButton getComponent() {
     return checkBox;
   }
 }

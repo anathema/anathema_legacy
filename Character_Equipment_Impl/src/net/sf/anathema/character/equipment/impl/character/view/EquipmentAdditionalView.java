@@ -32,12 +32,12 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView {
       });
 
   public EquipmentAdditionalView() {
-    JScrollPane itemScrollpane = new JScrollPane(equipmentPickList.getContent());
+    JScrollPane itemScrollpane = new JScrollPane(equipmentPickList.getComponent());
     itemScrollpane.setPreferredSize(new Dimension(150, 250));
     panel.add(pickListLabel);
     panel.add(itemScrollpane, GridDialogLayoutData.FILL_HORIZONTAL);
     panel.add(selectButton, GridDialogLayoutData.CENTER);
-    panel.add(taskPaneView.getContent(), GridDialogLayoutData.FILL_BOTH);
+    panel.add(taskPaneView.getComponent(), GridDialogLayoutData.FILL_BOTH);
   }
 
   public JComponent getComponent() {

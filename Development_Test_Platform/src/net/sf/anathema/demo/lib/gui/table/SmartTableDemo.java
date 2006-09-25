@@ -17,6 +17,6 @@ public class SmartTableDemo extends SwingDemoCase {
     SmartTable smartTable = new SmartTable(tableModel, tableColumnViewSettings);
     smartTable.getTable().setTableHeader(null);
     smartTable.getTable().setGridColor(new Color(0, 0, 0, 0));
-    show(smartTable.getContent());
+    show(smartTable.getComponent());
   }
 }

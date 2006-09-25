@@ -31,7 +31,7 @@ public class KeywordView implements IKeywordView {
         label);
     IGridDialogPanel panel = new DefaultGridDialogPanel();
     view.addComponents(panel);
-    dataPanel.add(panel.getContent());
+    dataPanel.add(panel.getComponent());
     return view;
   }
 

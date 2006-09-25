@@ -48,7 +48,7 @@ public class ReflexiveCharmSpecialsView implements IDialogComponent, IReflexiveC
   private void addView(JPanel panel, ObjectSelectionIntValueView view) {
     IGridDialogPanel gridPanel = new DefaultGridDialogPanel();
     view.addComponents(gridPanel);
-    panel.add(gridPanel.getContent());
+    panel.add(gridPanel.getComponent());
   }
 
   public void setEnabled(boolean enabled) {

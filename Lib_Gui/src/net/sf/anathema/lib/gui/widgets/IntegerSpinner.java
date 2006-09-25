@@ -18,8 +18,9 @@ import javax.swing.text.JTextComponent;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.data.IOverline;
 import net.sf.anathema.lib.data.Range;
+import net.sf.anathema.lib.gui.IView;
 
-public class IntegerSpinner {
+public class IntegerSpinner implements IView {
 
   private final JSpinner spinner;
   private final Map<IIntValueChangedListener, ChangeListener> listenerMap = new HashMap<IIntValueChangedListener, ChangeListener>();
@@ -71,7 +72,7 @@ public class IntegerSpinner {
       public int getNearestValue(int value) {
         return createRange().getNearestValue(value);
       }
-      
+
       public int getLowerBound() {
         return createRange().getLowerBound();
       }

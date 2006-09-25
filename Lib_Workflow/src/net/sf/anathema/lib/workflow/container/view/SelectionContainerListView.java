@@ -7,10 +7,11 @@ import javax.swing.event.ListSelectionListener;
 
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.list.SmartJList;
 import net.sf.anathema.lib.workflow.container.ISelectionContainerView;
 
-public class SelectionContainerListView<V> implements ISelectionContainerView<V> {
+public class SelectionContainerListView<V> implements ISelectionContainerView<V>, IView {
 
   private final SmartJList<V> smartList;
   private final ChangeControl changeControl = new ChangeControl();
@@ -35,7 +36,7 @@ public class SelectionContainerListView<V> implements ISelectionContainerView<V>
     smartList.setSelectedObjects(selectedValues);
   }
 
-  public JList getContent() {
+  public JList getComponent() {
     return smartList;
   }
 

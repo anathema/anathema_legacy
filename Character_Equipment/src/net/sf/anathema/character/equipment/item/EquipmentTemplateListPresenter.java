@@ -47,7 +47,7 @@ public class EquipmentTemplateListPresenter implements IPresenter {
         final IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
         return editModel.isDirty();
       }
-    }, view.getTemplateListView().getContent()));
+    }, view.getTemplateListView().getComponent()));
     view.getTemplateListView().addObjectSelectionChangedListener(new EquipmentTemplateLoadListener());
   }
 

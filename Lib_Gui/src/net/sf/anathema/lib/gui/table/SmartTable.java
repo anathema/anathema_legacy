@@ -25,11 +25,12 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.util.ButtonPanelBuilder;
 import net.disy.commons.swing.layout.util.LayoutDirection;
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.table.actions.ITableActionFactory;
 import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
 
 // NOT_PUBLISHED
-public class SmartTable {
+public class SmartTable implements IView {
 
   private boolean enabled = true;
   private final JTable table;
@@ -103,7 +104,7 @@ public class SmartTable {
     }
   }
 
-  public final JPanel getContent() {
+  public final JPanel getComponent() {
     if (content == null) {
       content = createContent();
       updateEnabled();

@@ -38,7 +38,7 @@ public class StandardPanelBuilder {
   public ICheckableTextView addCheckableLineTextView(String labelName, int textFieldColumns) {
     final CheckBoxBooleanView checkBoxView = new CheckBoxBooleanView(labelName);
     final ITextView textView = new LineTextView(textFieldColumns);
-    ToggleComponentEnabler.connect(checkBoxView.getContent(), textView.getComponent());
+    ToggleComponentEnabler.connect(checkBoxView.getComponent(), textView.getComponent());
     dialogPanel.add(new IDialogComponent() {
       public int getColumnCount() {
         return 2;
@@ -48,7 +48,7 @@ public class StandardPanelBuilder {
         GridDialogLayoutData labelLayoutData = new GridDialogLayoutData();
         labelLayoutData.setHorizontalAlignment(GridAlignment.BEGINNING);
         labelLayoutData.setVerticalAlignment(GridAlignment.BEGINNING);
-        panel.add(checkBoxView.getContent(), labelLayoutData);
+        panel.add(checkBoxView.getComponent(), labelLayoutData);
         JComponent textContent = textView.getComponent();
         GridDialogLayoutData contentData = new GridDialogLayoutData(GridDialogLayoutData.FILL_HORIZONTAL);
         contentData.setHorizontalSpan(columnCount - 1);
@@ -77,11 +77,11 @@ public class StandardPanelBuilder {
   }
 
   public JPanel getTitledContent(String title) {
-    return new TitledPanel(title, dialogPanel.getContent());
+    return new TitledPanel(title, dialogPanel.getComponent());
   }
 
   public JPanel getUntitledContent() {
-    return dialogPanel.getContent();
+    return dialogPanel.getComponent();
   }
 
   public IntegerSpinner addIntegerSpinner(final String labelString, int startValue) {

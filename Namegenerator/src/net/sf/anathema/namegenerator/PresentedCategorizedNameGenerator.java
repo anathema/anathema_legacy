@@ -50,6 +50,6 @@ public class PresentedCategorizedNameGenerator {
   }
 
   public JComponent getViewComponent() {
-    return view.getContent();
+    return view.getComponent();
   }
 }

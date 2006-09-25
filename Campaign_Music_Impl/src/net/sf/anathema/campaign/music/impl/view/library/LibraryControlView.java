@@ -20,12 +20,13 @@ import net.sf.anathema.campaign.music.view.search.ISearchComponent;
 import net.sf.anathema.framework.presenter.view.ITabView;
 import net.sf.anathema.framework.view.util.TabDirection;
 import net.sf.anathema.framework.view.util.TabbedView;
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.list.actionview.ActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.EditableActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.IActionAddableListView;
 import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
 
-public class LibraryControlView implements ILibraryControlView {
+public class LibraryControlView implements ILibraryControlView, IView {
 
   private final JPanel content = new JPanel();
   private EditableActionAddableListView<ILibrary> libraryListView;
@@ -41,8 +42,11 @@ public class LibraryControlView implements ILibraryControlView {
 
   public LibraryControlView(ITableColumnViewSettings settings, ILibraryControlProperties properties) {
     this.viewProperties = properties;
-    libraryListView = new EditableActionAddableListView<ILibrary>(viewProperties.getLibrariesString(), settings, ILibrary.class);
-    mp3ListView = new ActionAddableListView<IMp3Track>(viewProperties.getNoContentString(),IMp3Track.class);
+    libraryListView = new EditableActionAddableListView<ILibrary>(
+        viewProperties.getLibrariesString(),
+        settings,
+        ILibrary.class);
+    mp3ListView = new ActionAddableListView<IMp3Track>(viewProperties.getNoContentString(), IMp3Track.class);
   }
 
   public void addLibraryListSelectionListener(ListSelectionListener listener) {
@@ -57,15 +61,15 @@ public class LibraryControlView implements ILibraryControlView {
 
   private JPanel createLibraryListPanel() {
     JPanel libraryListPanel = new JPanel(new GridDialogLayout(1, false));
-    libraryListPanel.add(libraryListView.getContent(), GridDialogLayoutData.FILL_BOTH);
+    libraryListPanel.add(libraryListView.getComponent(), GridDialogLayoutData.FILL_BOTH);
     return libraryListPanel;
   }
 
   private JComponent createMp3ListPanel() {
-    return mp3ListView.getContent();
+    return mp3ListView.getComponent();
   }
 
-  private ITabView<?> createTabView(final JComponent component) {
+  private ITabView< ? > createTabView(final JComponent component) {
     return new ITabView<Object>() {
 
       public JComponent getComponent() {

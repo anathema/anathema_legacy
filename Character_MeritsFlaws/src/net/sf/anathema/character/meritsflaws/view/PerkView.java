@@ -27,6 +27,7 @@ import net.sf.anathema.character.meritsflaws.presenter.view.IPerkView;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.list.SmartJList;
@@ -35,7 +36,7 @@ import net.sf.anathema.lib.gui.list.actionview.SingleSelectionActionAddableListV
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.util.IIdentificate;
 
-public class PerkView implements IPerkView {
+public class PerkView implements IPerkView, IView {
 
   private JPanel content;
   private JPanel detailsPanel = new JPanel(new GridDialogLayout(2, false));
@@ -56,7 +57,7 @@ public class PerkView implements IPerkView {
     perkList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
   }
 
-  public JComponent getContent() {
+  public JComponent getComponent() {
     if (content == null) {
       content = createContent();
     }
@@ -97,7 +98,7 @@ public class PerkView implements IPerkView {
     perkList.setCellRenderer(properties.getAvailableListRenderer());
     JPanel availablePanel = new JPanel(new GridDialogLayout(1, false));
     availablePanel.setBorder(new TitledBorder(properties.getSelectionString()));
-    availablePanel.add(createFilterPanel().getContent(), GridDialogLayoutData.FILL_HORIZONTAL);
+    availablePanel.add(createFilterPanel().getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
     availablePanel.add(new JScrollPane(perkList), GridDialogLayoutData.FILL_BOTH);
     return availablePanel;
   }
@@ -128,7 +129,7 @@ public class PerkView implements IPerkView {
     };
     selectedPerksView.addAction(removeAction);
     selectedPerksView.setListCellRenderer(properties.getSelectionListRenderer());
-    selectedPanel.add(selectedPerksView.getContent(), GridDialogLayoutData.FILL_HORIZONTAL);
+    selectedPanel.add(selectedPerksView.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
     return selectedPanel;
   }
 
@@ -196,7 +197,7 @@ public class PerkView implements IPerkView {
   public void setPerkDetails(IPerkDetailsView view) {
     this.detailsView = view;
     detailsPanel.removeAll();
-    detailsPanel.add(view.getContent(), GridDialogLayoutData.FILL_HORIZONTAL);
+    detailsPanel.add(view.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
     GridDialogLayoutData addData = new GridDialogLayoutData();
     addData.setHorizontalAlignment(GridAlignment.END);
     detailsPanel.add(addButton, addData);

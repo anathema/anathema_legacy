@@ -63,7 +63,7 @@ public class ExperienceConfigurationView extends AbstractTabView<IExperienceConf
         fireSelectionChanged();
       }
     });
-    JPanel smartTablePanel = smartTable.getContent();
+    JPanel smartTablePanel = smartTable.getComponent();
     smartTablePanel.setPreferredSize(new Dimension(700, 400));
     final TableColumn descriptionColumn = smartTable.getTable().getTableHeader().getColumnModel().getColumn(0);
     descriptionColumn.setPreferredWidth(500);
@@ -74,7 +74,7 @@ public class ExperienceConfigurationView extends AbstractTabView<IExperienceConf
     labelledIntValueView.addComponents(totalPanel);
     labelledIntValueView.getValueLabel().setHorizontalAlignment(SwingConstants.RIGHT);
     // todo vom (02.07.2005) (sieroux): Hier muss eine besser Lösung her im Zusammenspiel mit der SmartTable
-    smartTablePanel.add(totalPanel.getContent(), GridDialogLayoutData.FILL_HORIZONTAL);
+    smartTablePanel.add(totalPanel.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
     panel.add(smartTablePanel);
   }
 

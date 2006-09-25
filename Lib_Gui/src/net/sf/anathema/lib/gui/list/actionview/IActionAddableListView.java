@@ -1,11 +1,11 @@
 package net.sf.anathema.lib.gui.list.actionview;
 
-import java.awt.Component;
-
 import javax.swing.Action;
 import javax.swing.event.ListSelectionListener;
 
-public interface IActionAddableListView<T> {
+import net.sf.anathema.lib.gui.IView;
+
+public interface IActionAddableListView<T> extends IView {
 
   public void setObjects(T[] items);
 
@@ -18,6 +18,4 @@ public interface IActionAddableListView<T> {
   public void addAction(Action action);
 
   public void refreshView();
-
-  public Component getContent();
 }

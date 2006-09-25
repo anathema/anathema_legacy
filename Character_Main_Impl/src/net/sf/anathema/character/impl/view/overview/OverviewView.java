@@ -12,8 +12,9 @@ import javax.swing.ScrollPaneConstants;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.overview.OverviewCategory;
 import net.sf.anathema.character.view.overview.IOverviewView;
+import net.sf.anathema.lib.gui.IView;
 
-public class OverviewView implements IOverviewView {
+public class OverviewView implements IOverviewView, IView {
 
   private final Box panel = new Box(BoxLayout.Y_AXIS);
   private final JComponent content = new JScrollPane(

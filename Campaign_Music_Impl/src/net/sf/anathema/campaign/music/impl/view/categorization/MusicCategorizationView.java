@@ -33,13 +33,13 @@ public class MusicCategorizationView implements IMusicCategorizationView {
   private JPanel createContent(IMusicCategorizationProperties properties) {
     JPanel musicCatagorizePanel = new JPanel(new GridDialogLayout(3, true));
     musicCatagorizePanel.add(
-        createListPanel(properties.getThemesString(), themesView.getContent()),
+        createListPanel(properties.getThemesString(), themesView.getComponent()),
         GridDialogLayoutData.FILL_BOTH);
     musicCatagorizePanel.add(
-        createListPanel(properties.getEventsString(), eventsView.getContent()),
+        createListPanel(properties.getEventsString(), eventsView.getComponent()),
         GridDialogLayoutData.FILL_BOTH);
     musicCatagorizePanel.add(
-        createListPanel(properties.getMoodsString(), moodsView.getContent()),
+        createListPanel(properties.getMoodsString(), moodsView.getComponent()),
         GridDialogLayoutData.FILL_BOTH);
     return musicCatagorizePanel;
   }

@@ -10,10 +10,11 @@ import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
-public class StringSelectionView implements IStringSelectionView {
+public class StringSelectionView implements IStringSelectionView, IView {
 
   private final LabelTextView labelTextView;
   private final JButton button;

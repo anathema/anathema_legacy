@@ -39,7 +39,7 @@ public class BeastformView implements IBeastformView {
     baseContentPanel.setBorder(new TitledBorder(properties.getCharmString()));
     content.add(baseContentPanel);
     content.add(new EndOfLineMarkerComponent());
-    JPanel panel = attributePanel.getContent();
+    JPanel panel = attributePanel.getComponent();
     panel.setBorder(new TitledBorder(properties.getAttributesString()));
     GridDialogLayoutData data = new GridDialogLayoutData();
     data.setHorizontalSpan(2);
@@ -90,7 +90,7 @@ public class BeastformView implements IBeastformView {
 
   public IBeastformOverviewView addOverviewView(IBeastformOverviewViewProperties overviewProperties) {
     BeastformOverviewView overviewView = new BeastformOverviewView(overviewProperties);
-    overviewPanel.add(overviewView.getContent());
+    overviewPanel.add(overviewView.getComponent());
     return overviewView;
   }
 }

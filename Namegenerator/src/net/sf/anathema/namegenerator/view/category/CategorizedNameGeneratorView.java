@@ -22,7 +22,7 @@ public class CategorizedNameGeneratorView implements ICategorizedNameGeneratorVi
     }
   }
 
-  public JComponent getContent() {
+  public JComponent getComponent() {
     return content;
   }
 

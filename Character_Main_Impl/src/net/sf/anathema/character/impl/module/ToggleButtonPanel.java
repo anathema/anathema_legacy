@@ -9,12 +9,13 @@ import javax.swing.JToggleButton;
 
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.toolbar.ToolBarUtilities;
+import net.sf.anathema.lib.gui.IView;
 
-public class ToggleButtonPanel implements IToggleButtonPanel {
+public class ToggleButtonPanel implements IToggleButtonPanel, IView {
   private final ButtonGroup buttonGroup = new ButtonGroup();
   private final JPanel panel = new JPanel(new GridDialogLayout(2, false));
 
-  public JComponent getContent() {
+  public JComponent getComponent() {
     return panel;
   }
 

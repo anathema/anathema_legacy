@@ -13,7 +13,7 @@ import net.sf.anathema.framework.presenter.view.ISimpleTabView;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.widgets.RevalidatingScrollPane;
 
-public class TabbedView {
+public class TabbedView implements IView {
 
   private static void initTabbedPaneProperties(TabbedPanelProperties paneProperties, TabDirection tabDirection) {
     paneProperties.removeSuperObject(paneProperties);

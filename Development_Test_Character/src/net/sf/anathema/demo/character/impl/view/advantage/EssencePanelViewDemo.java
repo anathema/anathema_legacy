@@ -14,6 +14,6 @@ public class EssencePanelViewDemo extends BasicCharacterDemoCase {
     essencePanelView.addEssenceView("Essence", 2, 5); //$NON-NLS-1$
     essencePanelView.addPoolView("Personal Essence", "18"); //$NON-NLS-1$ //$NON-NLS-2$
     essencePanelView.addPoolView("Peripheral Essence", "25"); //$NON-NLS-1$ //$NON-NLS-2$
-    show(essencePanelView.getPanel().getContent());
+    show(essencePanelView.getPanel().getComponent());
   }
 }

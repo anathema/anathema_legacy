@@ -6,8 +6,9 @@ import javax.swing.JComboBox;
 import javax.swing.ListCellRenderer;
 
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.gui.IView;
 
-public interface IChangeableJComboBox<V> {
+public interface IChangeableJComboBox<V> extends IView {
 
   public JComboBox getComponent();
 

@@ -28,10 +28,10 @@ public class RenownView implements ISimpleTabView {
   private final IGridDialogPanel facePanel = new DefaultGridDialogPanel();
 
   public JComponent getComponent() {
-    mainPanel.add(renownPanel.getContent());
+    mainPanel.add(renownPanel.getComponent());
     mainPanel.add(new HorizontalLine(), GridDialogLayoutData.FILL_HORIZONTAL);
-    mainPanel.add(totalPanel.getContent());
-    mainPanel.add(facePanel.getContent());
+    mainPanel.add(totalPanel.getComponent());
+    mainPanel.add(facePanel.getComponent());
     content.add(mainPanel);
     GridDialogLayoutData data = new GridDialogLayoutData();
     data.setVerticalAlignment(GridAlignment.BEGINNING);

@@ -12,8 +12,9 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
 import net.sf.anathema.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
+import net.sf.anathema.lib.gui.IView;
 
-public class CascadeView extends AbstractCascadeSelectionView implements ICascadeView {
+public class CascadeView extends AbstractCascadeSelectionView implements ICascadeView, IView {
 
   private JPanel content;
   private final JPanel rulesPanel = new JPanel();

@@ -23,7 +23,7 @@ public class PrerequisiteCharmsEntryView implements IPrerequisiteCharmsEntryView
     SelectionContainerListView<ICharm> view = new SelectionContainerListView<ICharm>(ICharm.class);
     view.setRenderer(renderer);
     content.add(new JScrollPane(
-        view.getContent(),
+        view.getComponent(),
         ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
         ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED), GridDialogLayoutData.FILL_VERTICAL);
     return view;

@@ -14,7 +14,7 @@ public class NullPerkDetailsView implements IPerkDetailsView {
     this.labeltext = labeltext;
   }
 
-  public JComponent getContent() {
+  public JComponent getComponent() {
     return new JLabel(labeltext);
   }
 

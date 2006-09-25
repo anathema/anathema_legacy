@@ -20,9 +20,11 @@ import net.sf.anathema.character.library.selection.StringSelectionView;
 import net.sf.anathema.character.library.trait.view.RearButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.RearToggleButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
+import net.sf.anathema.lib.gui.IView;
 
 public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitView<IToggleButtonTraitView< ? >>> implements
-    IIntimaciesView {
+    IIntimaciesView,
+    IView {
 
   private final JPanel content = new JPanel(new GridDialogLayout(2, false));
   private final JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));

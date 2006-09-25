@@ -12,11 +12,12 @@ import javax.swing.JPanel;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
-public class AnimalFormSelectionView implements IAnimalFormSelectionView {
+public class AnimalFormSelectionView implements IAnimalFormSelectionView, IView {
 
   private ITextView textField;
   private IntegerSpinner staminaSpinner;

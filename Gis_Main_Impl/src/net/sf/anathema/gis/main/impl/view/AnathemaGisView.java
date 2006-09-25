@@ -5,17 +5,18 @@ import gis.gisterm.map.GisView;
 import gis.gisterm.map.IGisView;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.text.NumberFormat;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import net.sf.anathema.gis.main.view.IAnathemaGisView;
 import net.sf.anathema.gis.main.view.ICoordinateView;
+import net.sf.anathema.lib.gui.IView;
 import de.disy.gis.gisterm.customization.GisTermCustomizations;
 import de.disy.gis.gisterm.map.IMapModel;
 
-public class AnathemaGisView implements IAnathemaGisView {
+public class AnathemaGisView implements IAnathemaGisView, IView {
 
   private final JPanel content = new JPanel(new BorderLayout());
   private IGisView gisView;
@@ -33,7 +34,7 @@ public class AnathemaGisView implements IAnathemaGisView {
     return displayToolbar;
   }
 
-  public Component getContent() {
+  public JComponent getComponent() {
     return content;
   }
 

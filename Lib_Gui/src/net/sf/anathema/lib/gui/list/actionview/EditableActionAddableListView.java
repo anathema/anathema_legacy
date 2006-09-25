@@ -26,7 +26,7 @@ public class EditableActionAddableListView<V> extends AbstractActionAddableListV
 
   @Override
   protected JComponent getDisplayComponent() {
-    return table.getContent();
+    return table.getComponent();
   }
 
   public void setObjects(V[] items) {

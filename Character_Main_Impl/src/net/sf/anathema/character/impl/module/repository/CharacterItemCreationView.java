@@ -32,7 +32,7 @@ public class CharacterItemCreationView implements ICharacterItemCreationView {
     GridDialogLayoutData data = new GridDialogLayoutData(GridDialogLayoutData.FILL_VERTICAL);
     data.setHorizontalAlignment(GridAlignment.FILL);
     data.setVerticalSpan(2);
-    JComponent content = panel.getContent();
+    JComponent content = panel.getComponent();
     component.add(content, data);
     return panel;
   }
@@ -53,7 +53,7 @@ public class CharacterItemCreationView implements ICharacterItemCreationView {
     ListObjectSelectionView<ITemplateTypeAggregation> view = new ListObjectSelectionView<ITemplateTypeAggregation>(
         ITemplateTypeAggregation.class);
     GridDialogLayoutData data = new GridDialogLayoutData(GridDialogLayoutData.FILL_BOTH);
-    JScrollPane scrollPane = new JScrollPane(view.getContent());
+    JScrollPane scrollPane = new JScrollPane(view.getComponent());
     component.add(scrollPane, data);
     return view;
   }

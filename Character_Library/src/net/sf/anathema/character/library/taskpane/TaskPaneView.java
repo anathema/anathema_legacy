@@ -1,10 +1,10 @@
 package net.sf.anathema.character.library.taskpane;
 
-import java.awt.Component;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 
 import net.disy.commons.core.util.Ensure;
@@ -12,6 +12,7 @@ import net.sf.anathema.lib.gui.GuiUtilities;
 
 import com.l2fprod.common.swing.JTaskPane;
 
+//TODO: Cannot implement IView, because the interface resides in Lib_GUI. Move?
 public class TaskPaneView<V extends ITaskPaneGroupView> {
 
   private final JTaskPane taskPane = new JTaskPane() {
@@ -48,7 +49,7 @@ public class TaskPaneView<V extends ITaskPaneGroupView> {
     GuiUtilities.revalidate(taskScrollPane);
   }
 
-  public Component getContent() {
+  public JComponent getComponent() {
     return taskScrollPane;
   }
 }

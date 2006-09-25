@@ -1,13 +1,15 @@
 package net.sf.anathema.framework.value;
 
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 
 import javax.swing.Icon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 
-public class IconToggleButton {
+import net.sf.anathema.lib.gui.IView;
+
+public class IconToggleButton implements IView {
 
   private final JButton button = new NoFocusButton();
   private boolean selected;
@@ -47,7 +49,7 @@ public class IconToggleButton {
     button.setEnabled(enabled);
   }
 
-  public Component getComponent() {
+  public JComponent getComponent() {
     return button;
   }
 

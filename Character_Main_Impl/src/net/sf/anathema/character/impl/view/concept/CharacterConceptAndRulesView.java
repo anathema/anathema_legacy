@@ -42,10 +42,10 @@ public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConc
   @Override
   protected void createContent(JPanel panel, ICharacterConceptAndRulesViewProperties properties) {
     conceptPanel.setBorder(new TitledBorder(properties.getConceptTitle()));
-    rulesPanel.getContent().setBorder(new TitledBorder(properties.getRulesTitle()));
+    rulesPanel.getComponent().setBorder(new TitledBorder(properties.getRulesTitle()));
     panel.setLayout(new GridDialogLayout(1, false));
     panel.add(conceptPanel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
-    panel.add(rulesPanel.getContent(), GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
+    panel.add(rulesPanel.getComponent(), GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
   }
 
   public <V> IObjectSelectionView<V> addObjectSelectionView(

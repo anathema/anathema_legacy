@@ -1,13 +1,12 @@
 package net.sf.anathema.framework.view;
 
 import javax.swing.Icon;
-import javax.swing.JComponent;
 
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.gui.IDisposable;
+import net.sf.anathema.lib.gui.IView;
 
-public interface IItemView {
-
-  public JComponent getComponent();
+public interface IItemView extends IView, IDisposable {
 
   public void setName(String newName);
 
@@ -18,6 +17,4 @@ public interface IItemView {
   public void addNameChangedListener(IObjectValueChangedListener<String> nameListener);
 
   public void removeNameChangedListener(IObjectValueChangedListener<String> nameListener);
-
-  public void dispose();
 }

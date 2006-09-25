@@ -10,7 +10,7 @@ public class EditableActionAddableListViewDemo extends SwingDemoCase {
 
   public void demo() {
     EditableActionAddableListView<String> view = new EditableActionAddableListView<String>("Demo:", new StringTableColumnSettings(), String.class); //$NON-NLS-1$
-    JComponent content = view.getContent();
+    JComponent content = view.getComponent();
     view.setObjects(new String[] { "Hallo", "Sandra", "String" }); //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$
     show(content);
   }

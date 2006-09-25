@@ -25,7 +25,7 @@ public class DefaultGridDialogPanel implements IGridDialogPanel {
     panel.addVerticalSpacing(verticalSpacing);
   }
 
-  public JPanel getContent() {
+  public JPanel getComponent() {
     return panel.getContent();
   }
 }

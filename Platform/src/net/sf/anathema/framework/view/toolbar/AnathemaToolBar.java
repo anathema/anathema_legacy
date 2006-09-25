@@ -10,8 +10,9 @@ import javax.swing.JPopupMenu;
 import javax.swing.JToolBar;
 
 import net.disy.commons.swing.action.SmartAction;
+import net.sf.anathema.lib.gui.IView;
 
-public class AnathemaToolBar implements IAnathemaToolbar {
+public class AnathemaToolBar implements IAnathemaToolbar, IView {
 
   private JToolBar toolBar;
 

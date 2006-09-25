@@ -51,7 +51,7 @@ public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
     smartList.setSelectedObjects(object);
   }
 
-  public JComponent getContent() {
+  public JComponent getComponent() {
     return smartList;
   }
 

@@ -1,12 +1,9 @@
 package net.sf.anathema.character.meritsflaws.presenter.view;
 
-import javax.swing.JComponent;
-
 import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.gui.IView;
 
-public interface IPerkDetailsView {
-
-  public JComponent getContent();
+public interface IPerkDetailsView extends IView {
 
   public boolean isComplete();
 

@@ -68,7 +68,7 @@ public class VirtueFlawView implements IVirtueFlawView {
   }
 
   public JComponent getComponent() {
-    return virtueFlawPanel.getContent();
+    return virtueFlawPanel.getComponent();
   }
 
   public boolean needsScrollbar() {

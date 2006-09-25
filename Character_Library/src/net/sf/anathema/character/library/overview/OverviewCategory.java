@@ -4,6 +4,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
@@ -12,7 +13,7 @@ import net.sf.anathema.lib.workflow.labelledvalue.view.AbstractLabelledValueView
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;
 
-public class OverviewCategory implements IOverviewCategory {
+public class OverviewCategory implements IOverviewCategory, IView {
 
   private final IGridDialogPanel panel = new DefaultGridDialogPanel();
   private JPanel content;
@@ -26,7 +27,7 @@ public class OverviewCategory implements IOverviewCategory {
 
   public JComponent getComponent() {
     if (content == null) {
-      content = panel.getContent();
+      content = panel.getComponent();
       TitledBorder titledBorder = new TitledBorder(borderTitle);
       if (useSmallFont) {
         titledBorder.setTitleFont(AbstractLabelledValueView.deriveSmallerFont(titledBorder.getTitleFont()));

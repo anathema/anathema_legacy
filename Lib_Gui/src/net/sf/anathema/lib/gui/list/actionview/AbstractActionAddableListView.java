@@ -47,7 +47,7 @@ public abstract class AbstractActionAddableListView<T> implements IActionAddable
 
   protected abstract JComponent getDisplayComponent();
 
-  public JComponent getContent() {
+  public JComponent getComponent() {
     if (content == null) {
       content = createContent();
     }

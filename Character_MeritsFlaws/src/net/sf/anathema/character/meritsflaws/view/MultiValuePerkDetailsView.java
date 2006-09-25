@@ -26,7 +26,7 @@ public class MultiValuePerkDetailsView implements IPerkDetailsView {
     this.pointValueLabel = label;
   }
 
-  public JComponent getContent() {
+  public JComponent getComponent() {
     if (content == null) {
       content = createContent();
     }

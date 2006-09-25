@@ -75,7 +75,7 @@ public class BasicAdvantageView extends AbstractTabView<IAdvantageViewProperties
   private JPanel createBackgroundPanel(String title) {
     JPanel panel = new JPanel(new BorderLayout());
     panel.setBorder(new TitledBorder(title));
-    panel.add(backgroundSelectionPanel.getContent(), BorderLayout.CENTER);
+    panel.add(backgroundSelectionPanel.getComponent(), BorderLayout.CENTER);
     panel.add(backgroundDisplayPanel, BorderLayout.SOUTH);
     return panel;
   }
@@ -136,7 +136,7 @@ public class BasicAdvantageView extends AbstractTabView<IAdvantageViewProperties
       JPanel container,
       IGridDialogPanel contentPanel,
       IGridDialogLayoutData constraint) {
-    JPanel newPanel = contentPanel.getContent();
+    JPanel newPanel = contentPanel.getComponent();
     newPanel.setBorder(new TitledBorder(title));
     container.add(newPanel, constraint);
     return newPanel;

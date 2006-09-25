@@ -21,7 +21,7 @@ public class ListObjectSelectionPageView<V> implements IObjectSelectionView<V> {
 
   public IListObjectSelectionView<V> addSelectionView() {
     ListObjectSelectionView<V> view = new ListObjectSelectionView<V>(clazz);
-    JComponent content = view.getContent();
+    JComponent content = view.getComponent();
     this.focusComponent = content;
     panel.add(new JScrollPane(content), GridDialogLayoutData.FILL_BOTH);
     return view;

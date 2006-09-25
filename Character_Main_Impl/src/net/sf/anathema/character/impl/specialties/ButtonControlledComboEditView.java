@@ -16,9 +16,10 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.sf.anathema.character.view.basic.IButtonControlledComboEditView;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 
-public class ButtonControlledComboEditView<V> implements IButtonControlledComboEditView<V> {
+public class ButtonControlledComboEditView<V> implements IButtonControlledComboEditView<V>, IView {
 
   private final ChangeableJComboBox<V> comboBox;
   private final JButton addButton;

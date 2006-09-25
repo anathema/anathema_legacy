@@ -50,7 +50,7 @@ public class GisModuleView implements IItemView {
 
   public IAnathemaGisView addGisView() {
     AnathemaGisView anathemaGisView = new AnathemaGisView();
-    panel.add(anathemaGisView.getContent());
+    panel.add(anathemaGisView.getComponent());
     return anathemaGisView;
   }
 }

@@ -24,7 +24,7 @@ public class MeritsFlawsTabView implements IMeritsFlawsTabView {
 
   public IPerkView addPerkView() {
     PerkView perkView = new PerkView(properties);
-    panel.add(perkView.getContent(), BorderLayout.CENTER);
+    panel.add(perkView.getComponent(), BorderLayout.CENTER);
     return perkView;
   }
 

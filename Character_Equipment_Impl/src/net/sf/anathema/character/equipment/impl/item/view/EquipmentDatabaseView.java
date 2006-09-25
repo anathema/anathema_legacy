@@ -39,7 +39,7 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
       contentPanel = new JPanel(new GridDialogLayout(2, false));
       contentPanel.add(templateListHeaderLabel, GridDialogLayoutData.FILL_HORIZONTAL);
       contentPanel.add(createEditTemplateHeader(), GridDialogLayoutData.FILL_HORIZONTAL);
-      contentPanel.add(new JScrollPane(templateListView.getContent()), GridDialogLayoutData.FILL_BOTH);
+      contentPanel.add(new JScrollPane(templateListView.getComponent()), GridDialogLayoutData.FILL_BOTH);
       contentPanel.add(editTemplateView, GridDialogLayoutData.FILL_BOTH);
       editTemplateView.add(ceateStatsPanel(), GridDialogLayoutData.FILL_BOTH);
     }
@@ -62,7 +62,7 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
   private JPanel ceateStatsPanel() {
     JPanel statsPanel = new JPanel(new GridDialogLayout(1, false));
     statsPanel.add(ruleSetPanel, GridDialogLayoutData.FILL_HORIZONTAL);
-    statsPanel.add(new JScrollPane(statsListView.getContent()), GridDialogLayoutData.FILL_BOTH);
+    statsPanel.add(new JScrollPane(statsListView.getComponent()), GridDialogLayoutData.FILL_BOTH);
     return new TitledPanel("Stats", statsPanel);
   }
 
