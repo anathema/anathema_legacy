@@ -17,6 +17,7 @@ import com.db4o.query.Predicate;
 
 public class Db4OEquipmentDatabase implements IEquipmentDatabase {
 
+  public static final File DATABASE_FILE = new File("Equipment.yap"); //$NON-NLS-1$
   private ICollectionFactory collectionFactory;
   private final ChangeControl availableTemplatesChangeControl = new ChangeControl();
   private final ObjectContainer container;

@@ -18,12 +18,7 @@ import com.db4o.ObjectContainer;
 
 public class EquipmentDatabaseConnectionManager {
 
-  private static ObjectContainer connection = null;
-
   public static ObjectContainer createConnection(File dbFile) {
-    if (connection != null) {
-      return connection;
-    }
     Db4o.configure().objectClass(EquipmentTemplate.class).cascadeOnUpdate(true);
     Db4o.configure().objectClass(ArmourStats.class).cascadeOnUpdate(true);
     Db4o.configure().objectClass(ShieldStats.class).cascadeOnUpdate(true);
@@ -36,7 +31,7 @@ public class EquipmentDatabaseConnectionManager {
     Db4o.configure().objectClass(OtherTraitType.class).persistStaticFieldValues();
     Db4o.configure().allowVersionUpdates(true);
     Db4o.configure().automaticShutDown(true);
-    connection = Db4o.openFile(dbFile.getAbsolutePath());
-    return connection;
+    Db4o.configure().readOnly(false);
+    return Db4o.openFile(dbFile.getAbsolutePath());
   }
 }

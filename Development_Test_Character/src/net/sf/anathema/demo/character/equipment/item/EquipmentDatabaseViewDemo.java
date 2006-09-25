@@ -22,6 +22,10 @@ public class EquipmentDatabaseViewDemo extends SwingDemoCase {
     showForDatabase(new Db4OEquipmentDatabase(new File("DemoEquipment.yap")));
   }
 
+  public void demoWithProductionDataBase() {
+    showForDatabase(new Db4OEquipmentDatabase(Db4OEquipmentDatabase.DATABASE_FILE));
+  }
+
   private void showForDatabase(IEquipmentDatabase equipmentDatabase) {
     IEquipmentDatabaseView view = new EquipmentDatabaseView();
     IEquipmentDatabaseManagement model = new EquipmentDatabaseManagement(equipmentDatabase);
