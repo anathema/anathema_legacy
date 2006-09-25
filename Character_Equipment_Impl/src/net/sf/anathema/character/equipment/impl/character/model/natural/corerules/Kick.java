@@ -1,6 +1,5 @@
-package net.sf.anathema.character.equipment.impl.character.model.natural;
+package net.sf.anathema.character.equipment.impl.character.model.natural.corerules;
 
-import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -9,14 +8,14 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-public class Punch implements IWeaponStats {
+public class Kick implements IWeaponStats {
 
   public int getAccuracy() {
-    return 1;
+    return -1;
   }
 
   public int getDamage() {
-    return 0;
+    return 2;
   }
 
   public HealthType getDamageType() {
@@ -24,7 +23,7 @@ public class Punch implements IWeaponStats {
   }
 
   public Integer getDefence() {
-    return 2;
+    return -1;
   }
 
   public Integer getRange() {
@@ -32,19 +31,19 @@ public class Punch implements IWeaponStats {
   }
 
   public Integer getRate() {
-    return 3;
+    return null;
   }
 
   public int getSpeed() {
-    return 5;
+    return -3;
   }
 
   public IIdentificate[] getTags() {
-    return new IIdentificate[] { WeaponTag.Natural };
+    return new IIdentificate[0];
   }
 
   public ITraitType getTraitType() {
-    return AbilityType.MartialArts;
+    return AbilityType.Brawl;
   }
 
   public ITraitType getDamageTraitType() {
@@ -56,6 +55,6 @@ public class Punch implements IWeaponStats {
   }
 
   public IIdentificate getName() {
-    return new Identificate("Punch"); //$NON-NLS-1$
+    return new Identificate("Kick"); //$NON-NLS-1$
   }
 }

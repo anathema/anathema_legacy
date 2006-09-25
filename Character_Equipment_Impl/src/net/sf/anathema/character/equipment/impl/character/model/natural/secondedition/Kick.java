@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.character.model.natural;
+package net.sf.anathema.character.equipment.impl.character.model.natural.secondedition;
 
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
@@ -9,14 +9,14 @@ import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-public class Clinch implements IWeaponStats {
+public class Kick implements IWeaponStats {
 
   public int getAccuracy() {
     return 0;
   }
 
   public int getDamage() {
-    return 0;
+    return 3;
   }
 
   public HealthType getDamageType() {
@@ -24,7 +24,7 @@ public class Clinch implements IWeaponStats {
   }
 
   public Integer getDefence() {
-    return 0;
+    return -2;
   }
 
   public Integer getRange() {
@@ -32,15 +32,15 @@ public class Clinch implements IWeaponStats {
   }
 
   public Integer getRate() {
-    return 1;
+    return 2;
   }
 
   public int getSpeed() {
-    return 6;
+    return 5;
   }
 
   public IIdentificate[] getTags() {
-    return new IIdentificate[] { WeaponTag.ClinchEnhancer, WeaponTag.Natural, WeaponTag.Piercing };
+    return new IIdentificate[] { WeaponTag.Natural };
   }
 
   public ITraitType getTraitType() {
@@ -56,6 +56,6 @@ public class Clinch implements IWeaponStats {
   }
 
   public IIdentificate getName() {
-    return new Identificate("Clinch"); //$NON-NLS-1$
+    return new Identificate("Kick"); //$NON-NLS-1$
   }
 }

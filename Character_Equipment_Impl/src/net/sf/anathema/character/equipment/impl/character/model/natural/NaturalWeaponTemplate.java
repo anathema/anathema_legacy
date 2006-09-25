@@ -3,22 +3,31 @@ package net.sf.anathema.character.equipment.impl.character.model.natural;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
 
 public class NaturalWeaponTemplate implements IEquipmentTemplate {
 
-  private IEquipmentStats[] equipmentStats = new IEquipmentStats[] { new Punch(), new Kick(), new Clinch() };
-
   public String getDescription() {
-    return "The Characters natural weapons";
+    return "The Character's natural weapons";
   }
 
   public IEquipmentStats[] getStats(IExaltedRuleSet ruleSet) {
-    if (ruleSet != ExaltedRuleSet.SecondEdition) {
-      return new IEquipmentStats[0];
-    }
-    return equipmentStats;
+    final IEquipmentStats[][] stats = new IEquipmentStats[1][];
+    ruleSet.accept(new IRuleSetVisitor() {
+      public void visitCoreRules(IExaltedRuleSet set) {
+        stats[0] = INaturalWeaponConstants.CORE_RULES;
+      }
+
+      public void visitPowerCombat(IExaltedRuleSet set) {
+        stats[0] = INaturalWeaponConstants.POWER_COMBAT;
+      }
+
+      public void visitSecondEdition(IExaltedRuleSet set) {
+        stats[0] = INaturalWeaponConstants.SECOND_EDITION;
+      }
+    });
+    return stats[0];
   }
 
   public String getName() {
