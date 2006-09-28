@@ -14,6 +14,7 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
   private final IArmourStats naturalArmour;
   private final IEquipmentTemplateProvider equipmentTemplateProvider;
+  private IEquipmentItem naturalWeaponsItem;
 
   public EquipmentAdditionalModel(
       IArmourStats naturalArmour,
@@ -24,8 +25,12 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
     this.naturalArmour = naturalArmour;
     this.equipmentTemplateProvider = equipmentTemplateProvider;
     if (naturalWeapons != null) {
-      addEquipmentObjectFor(naturalWeapons);
+      naturalWeaponsItem = addEquipmentObjectFor(naturalWeapons);
     }
+  }
+
+  public boolean canBeRemoved(IEquipmentItem item) {
+    return item != naturalWeaponsItem;
   }
 
   public IArmourStats[] getPrintArmours() {

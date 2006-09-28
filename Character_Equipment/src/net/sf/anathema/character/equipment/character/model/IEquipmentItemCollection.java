@@ -12,5 +12,7 @@ public interface IEquipmentItemCollection {
 
   public void addEquipmentObjectListener(ICollectionListener<IEquipmentItem> listener);
 
-  public void removeItem(IEquipmentItem selectedObject);
+  public void removeItem(IEquipmentItem item);
+
+  public boolean canBeRemoved(IEquipmentItem item);
 }

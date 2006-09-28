@@ -54,7 +54,7 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
 
   protected abstract IEquipmentTemplate loadEquipmentTemplate(String templateId);
 
-  protected final void addEquipmentObjectFor(final IEquipmentTemplate template) {
+  protected final IEquipmentItem addEquipmentObjectFor(final IEquipmentTemplate template) {
     final IEquipmentItem item = new EquipmentItem(template, ruleSet);
     equipmentItems.add(item);
     equipmentItemControl.forAllDo(new IClosure<ICollectionListener<IEquipmentItem>>() {
@@ -62,6 +62,7 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
         input.itemAdded(item);
       }
     });
+    return item;
   }
 
   public void removeItem(final IEquipmentItem item) {
