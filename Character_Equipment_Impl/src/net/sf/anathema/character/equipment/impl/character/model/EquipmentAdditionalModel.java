@@ -31,34 +31,38 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
   public IArmourStats[] getPrintArmours() {
     List<IArmourStats> printStats = new ArrayList<IArmourStats>();
     printStats.add(naturalArmour);
-    for (IEquipmentItem item : getEquipmentItems()) {
-      IEquipmentStats[] statsArray = item.getStats();
-      if (statsArray.length == 1) {
-        //TODO: Clone, change name to template name, then add
-      }
-      for (IEquipmentStats stats : statsArray) {
-        if (stats instanceof IArmourStats && item.isPrintEnabled(stats)) {
-          printStats.add((IArmourStats) stats);
-        }
-      }
-    }
+    fillPrintEquipmentList(printStats, IArmourStats.class);
     return printStats.toArray(new IArmourStats[printStats.size()]);
   }
 
   public IWeaponStats[] getPrintWeapons() {
     List<IWeaponStats> printStats = new ArrayList<IWeaponStats>();
+    fillPrintEquipmentList(printStats, IWeaponStats.class);
+    return printStats.toArray(new IWeaponStats[printStats.size()]);
+  }
+
+  @SuppressWarnings("unchecked")
+  private <K extends IEquipmentStats> void fillPrintEquipmentList(List<K> printStats, Class<K> printedClass) {
     for (IEquipmentItem item : getEquipmentItems()) {
       IEquipmentStats[] statsArray = item.getStats();
       if (statsArray.length == 1) {
-        //TODO: Clone, change name to template name, then add
+        IEquipmentStats stats = statsArray[0];
+        if (doPrint(item, stats, printedClass)) {
+          printStats.add((K) EquipmentCloneUtilities.getRenamedPrintClone(stats, item.getName()));
+        }
       }
-      for (IEquipmentStats stats : statsArray) {
-        if (stats instanceof IWeaponStats && item.isPrintEnabled(stats)) {
-          printStats.add((IWeaponStats) stats);
+      else {
+        for (IEquipmentStats stats : statsArray) {
+          if (doPrint(item, stats, printedClass)) {
+            printStats.add((K) stats);
+          }
         }
       }
     }
-    return printStats.toArray(new IWeaponStats[printStats.size()]);
+  }
+
+  private <K> boolean doPrint(IEquipmentItem item, IEquipmentStats stats, Class<K> printedClass) {
+    return (printedClass.isInstance(stats) && item.isPrintEnabled(stats));
   }
 
   public String[] getAvailableTemplateIds() {
