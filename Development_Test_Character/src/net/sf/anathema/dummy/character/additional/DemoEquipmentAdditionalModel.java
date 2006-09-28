@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.impl.character.model.AbstractEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
@@ -28,6 +29,10 @@ public class DemoEquipmentAdditionalModel extends AbstractEquipmentAdditionalMod
 
   public void addPrintWeapon(IWeaponStats weapon) {
     this.printWeaponStats.add(weapon);
+  }
+
+  public boolean canBeRemoved(IEquipmentItem item) {
+    return true;
   }
 
   public IArmourStats[] getPrintArmours() {
