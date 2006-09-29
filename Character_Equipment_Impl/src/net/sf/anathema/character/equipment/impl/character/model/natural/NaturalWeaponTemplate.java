@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
 public class NaturalWeaponTemplate implements IEquipmentTemplate {
 
   public String getDescription() {
-    return "The Character's natural weapons";
+    return "The character's natural weapons";
   }
 
   public IEquipmentStats[] getStats(IExaltedRuleSet ruleSet) {

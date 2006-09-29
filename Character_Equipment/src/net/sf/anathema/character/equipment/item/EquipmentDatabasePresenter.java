@@ -45,6 +45,7 @@ public class EquipmentDatabasePresenter implements IPresenter {
     view.addEditTemplateAction(new RemoveEquipmentTemplateAction(resources, model, view));
   }
 
+  //TODO: Create ObjectSelectionViews externally and add them to PanelBuilder (they should be in the same row)
   private void initBasicDetailsView() {
     StandardPanelBuilder panelBuilder = new StandardPanelBuilder();
     ITextView nameView = panelBuilder.addLineTextView("Name:", COLUMN_COUNT);
