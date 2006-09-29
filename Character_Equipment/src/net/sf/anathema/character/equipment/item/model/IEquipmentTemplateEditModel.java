@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.item.model;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
@@ -31,7 +32,13 @@ public interface IEquipmentTemplateEditModel {
 
   public void setMagicalMaterial(MagicalMaterial newValue);
 
+  public void setMaterialComposition(MaterialComposition newValue);
+
   public MagicalMaterial getMagicalMaterial();
 
+  public MaterialComposition getMaterialComposition();
+
   public void addMagicalMaterialChangeListener(IChangeListener listener);
+
+  public void addCompositionChangeListener(IChangeListener listener);
 }

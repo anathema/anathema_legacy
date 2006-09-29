@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.item;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.framework.presenter.view.IdentificateListCellRenderer;
@@ -50,19 +51,34 @@ public class EquipmentDatabasePresenter implements IPresenter {
     new TextualPresentation().initView(nameView, model.getTemplateEditModel().getDescription().getName());
     ITextView descriptionView = panelBuilder.addAreaTextView("Description:", 5, COLUMN_COUNT);
     new TextualPresentation().initView(descriptionView, model.getTemplateEditModel().getDescription().getContent());
-    final IObjectSelectionView<MagicalMaterial> selectionView = panelBuilder.addObjectSelectionView(
-        "Magical Material:",
+    final IObjectSelectionView<MaterialComposition> compositionView = panelBuilder.addObjectSelectionView(
+        "Composition:",
+        new IdentificateListCellRenderer(resources),
+        MaterialComposition.values());
+    final IObjectSelectionView<MagicalMaterial> materialView = panelBuilder.addObjectSelectionView(
+        "Material:",
         new IdentificateListCellRenderer(resources),
         MagicalMaterial.values());
-    selectionView.addObjectSelectionChangedListener(new IObjectValueChangedListener<MagicalMaterial>() {
+    compositionView.addObjectSelectionChangedListener(new IObjectValueChangedListener<MaterialComposition>() {
+      public void valueChanged(MaterialComposition newValue) {
+        model.getTemplateEditModel().setMaterialComposition(newValue);
+      }
+    });
+    model.getTemplateEditModel().addCompositionChangeListener(new IChangeListener() {
+      public void changeOccured() {
+        MaterialComposition materialComposition = model.getTemplateEditModel().getMaterialComposition();
+        compositionView.setSelectedObject(materialComposition);
+        materialView.setEnabled(materialComposition.requiresMaterial());
+      }
+    });
+    materialView.addObjectSelectionChangedListener(new IObjectValueChangedListener<MagicalMaterial>() {
       public void valueChanged(MagicalMaterial newValue) {
         model.getTemplateEditModel().setMagicalMaterial(newValue);
       }
     });
     model.getTemplateEditModel().addMagicalMaterialChangeListener(new IChangeListener() {
       public void changeOccured() {
-        selectionView.setSelectedObject(model.getTemplateEditModel().getMagicalMaterial());
-
+        materialView.setSelectedObject(model.getTemplateEditModel().getMagicalMaterial());
       }
     });
     view.fillDescriptionPanel(panelBuilder.getTitledContent("Basics"));

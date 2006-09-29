@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
@@ -16,15 +17,23 @@ public class EquipmentTemplate implements IEquipmentTemplate {
   private final String name;
   private final ICollectionFactory collectionFactory;
   private final String material;
+  private final String composition;
 
   public EquipmentTemplate(
       String name,
       String description,
+      MaterialComposition composition,
       MagicalMaterial material,
       ICollectionFactory collectionFactory) {
     this.name = name;
     this.description = description;
-    this.material = material.getId();
+    this.composition = composition.getId();
+    if (material == null) {
+      this.material = null;
+    }
+    else {
+      this.material = material.getId();
+    }
     this.collectionFactory = collectionFactory;
     this.statsByRuleSet = collectionFactory.createHashMap();
   }
@@ -55,6 +64,13 @@ public class EquipmentTemplate implements IEquipmentTemplate {
   }
 
   public MagicalMaterial getMaterial() {
+    if (material == null) {
+      return null;
+    }
     return MagicalMaterial.valueOf(material);
+  }
+
+  public MaterialComposition getComposition() {
+    return MaterialComposition.valueOf(composition);
   }
 }

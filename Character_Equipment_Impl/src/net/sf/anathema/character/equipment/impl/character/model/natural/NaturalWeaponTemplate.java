@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.model.natural;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
@@ -34,7 +35,11 @@ public class NaturalWeaponTemplate implements IEquipmentTemplate {
     return "Natural Weapons";
   }
 
+  public MaterialComposition getComposition() {
+    return MaterialComposition.None;
+  }
+
   public MagicalMaterial getMaterial() {
-    return MagicalMaterial.None;
+    return null;
   }
 }

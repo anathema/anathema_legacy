@@ -7,6 +7,7 @@ import java.util.List;
 import net.disy.commons.core.util.Ensure;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentTemplate;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
@@ -29,7 +30,9 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   private final MultiEntryMap<IExaltedRuleSet, IEquipmentStats> statsByRuleSet = new MultiEntryMap<IExaltedRuleSet, IEquipmentStats>();
   private final ChangeControl statsChangeControl = new ChangeControl();
   private final ChangeControl magicalMaterialControl = new ChangeControl();
+  private final ChangeControl compositionControl = new ChangeControl();
   private String editTemplateId;
+  private MaterialComposition composition;
   private MagicalMaterial material;
 
   public EquipmentTemplateEditModel(IEquipmentDatabase database) {
@@ -47,6 +50,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     // TODO Fehlerbehandlung bei Template nicht gefunden
     getDescription().getName().setText(editedTemplate.getName());
     getDescription().getContent().setText(editedTemplate.getDescription());
+    setMaterialComposition(editedTemplate.getComposition());
     setMagicalMaterial(editedTemplate.getMaterial());
     statsByRuleSet.clear();
     for (ExaltedRuleSet ruleSet : ExaltedRuleSet.values()) {
@@ -68,7 +72,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     editedTemplate = null;
     getDescription().getName().setText(null);
     getDescription().getContent().setText(new ITextPart[0]);
-    setMagicalMaterial(MagicalMaterial.None);
+    setMaterialComposition(MaterialComposition.None);
     statsByRuleSet.clear();
     fireStatsChangedEvent();
   }
@@ -129,7 +133,12 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   public IEquipmentTemplate createTemplate() {
     String name = getDescription().getName().getText();
     String descriptionText = getDescription().getContent().getText();
-    EquipmentTemplate template = new EquipmentTemplate(name, descriptionText, material, database.getCollectionFactory());
+    EquipmentTemplate template = new EquipmentTemplate(
+        name,
+        descriptionText,
+        composition,
+        material,
+        database.getCollectionFactory());
     for (IExaltedRuleSet ruleSet : statsByRuleSet.keySet()) {
       for (IEquipmentStats stats : statsByRuleSet.get(ruleSet)) {
         template.addStats(ruleSet, stats);
@@ -142,6 +151,10 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     magicalMaterialControl.addChangeListener(listener);
   }
 
+  public void addCompositionChangeListener(IChangeListener listener) {
+    compositionControl.addChangeListener(listener);
+  }
+
   public MagicalMaterial getMagicalMaterial() {
     return material;
   }
@@ -150,7 +163,25 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     if (material == this.material) {
       return;
     }
+    if (!composition.requiresMaterial() && material != null) {
+      return;
+    }
     this.material = material;
     magicalMaterialControl.fireChangedEvent();
+  }
+
+  public void setMaterialComposition(MaterialComposition composition) {
+    if (composition == this.composition) {
+      return;
+    }
+    this.composition = composition;
+    if (!composition.requiresMaterial()) {
+      setMagicalMaterial(null);
+    }
+    compositionControl.fireChangedEvent();
+  }
+
+  public MaterialComposition getMaterialComposition() {
+    return composition;
   }
 }
