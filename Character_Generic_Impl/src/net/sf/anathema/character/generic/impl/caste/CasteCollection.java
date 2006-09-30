@@ -34,7 +34,7 @@ public class CasteCollection implements ICasteCollection {
     return allTypes.length <= 0;
   }
 
-  public ICasteType[] getAllCasteTypes() {
+  public ICasteType< ? >[] getAllCasteTypes() {
     return allTypes;
   }
 }
