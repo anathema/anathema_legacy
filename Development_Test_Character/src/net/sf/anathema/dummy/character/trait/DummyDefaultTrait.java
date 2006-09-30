@@ -14,6 +14,7 @@ public class DummyDefaultTrait extends DummyModifiableGenericTrait implements ID
   }
 
   public void addRangeListener(IChangeListener listener) {
+    //not yet implemented
   }
 
   public ISubTraitContainer createSpecialtiesContainer() {
@@ -25,9 +26,11 @@ public class DummyDefaultTrait extends DummyModifiableGenericTrait implements ID
   }
 
   public void resetCurrentValue() {
+    //not yet implemented
   }
 
   public void setModifiedCreationRange(int newInitialValue, int newUpperValue) {
+    //not yet implemented
   }
 
   public void accept(ITraitVisitor visitor) {
@@ -35,9 +38,11 @@ public class DummyDefaultTrait extends DummyModifiableGenericTrait implements ID
   }
 
   public void addCreationPointListener(IIntValueChangedListener listener) {
+    //not yet implemented
   }
 
   public void addCurrentValueListener(IIntValueChangedListener listener) {
+    //not yet implemented
   }
 
   public int getInitialValue() {
@@ -49,21 +54,27 @@ public class DummyDefaultTrait extends DummyModifiableGenericTrait implements ID
   }
 
   public void removeCreationPointListener(IIntValueChangedListener listener) {
+    //not yet implemented
   }
 
   public void removeCurrentValueListener(IIntValueChangedListener listener) {
+    //not yet implemented
   }
 
   public void resetCreationValue() {
+    //not yet implemented
   }
 
   public void resetExperiencedValue() {
+    //not yet implemented
   }
 
   public void setCreationValue(int value) {
+    //not yet implemented
   }
 
   public void setExperiencedValue(int value) {
+    //not yet implemented
   }
 
   public int getAbsoluteMinValue() {
