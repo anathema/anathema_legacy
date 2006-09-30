@@ -1,7 +1,6 @@
 package net.sf.anathema.lib.collection;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -9,17 +8,6 @@ import java.util.Map;
 import java.util.Set;
 
 public class MultiEntryMap<K, V> {
-
-  public static <K, V> MultiEntryMap<K, V> convertMap(Map<K, Collection<V>> map) {
-    MultiEntryMap<K, V> multiEntryMap = new MultiEntryMap<K, V>();
-    for (K key : map.keySet()) {
-      Collection<V> valueCollection = map.get(key);
-      for (V value : valueCollection) {
-        multiEntryMap.add(key, value);
-      }
-    }
-    return multiEntryMap;
-  }
 
   private Map<K, List<V>> map = new HashMap<K, List<V>>();
 
