@@ -49,6 +49,6 @@ public class PlotViewProperties implements IPlotViewProperties {
   }
 
   public String getBorderTitle() {
-    return resources.getString("CampaignDescription.BorderTitle");
+    return resources.getString("CampaignDescription.BorderTitle"); //$NON-NLS-1$
   }
 }
