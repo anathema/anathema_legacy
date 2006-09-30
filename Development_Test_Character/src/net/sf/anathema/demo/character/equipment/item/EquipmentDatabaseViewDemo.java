@@ -19,7 +19,7 @@ public class EquipmentDatabaseViewDemo extends SwingDemoCase {
   }
 
   public void demoWithDb4oDataBase() {
-    showForDatabase(new Db4OEquipmentDatabase(new File("DemoEquipment.yap")));
+    showForDatabase(new Db4OEquipmentDatabase(new File("DemoEquipment.yap"))); //$NON-NLS-1$
   }
 
   private void showForDatabase(IEquipmentDatabase equipmentDatabase) {
