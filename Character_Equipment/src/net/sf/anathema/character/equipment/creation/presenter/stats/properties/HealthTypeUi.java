@@ -20,7 +20,7 @@ public class HealthTypeUi implements IObjectUi {
 
   public String getLabel(Object value) {
     if (value == null) {
-      return "Select";
+      return resources.getString("ComboBox.SelectLabel");
     }
     HealthType healthType = (HealthType) value;
     return healthType.name();
