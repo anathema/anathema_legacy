@@ -9,6 +9,7 @@
 	<classpathentry exported="true" kind="lib" path="/Thirdparty/Jakarta/commons-io.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" sourcepath="/Thirdparty/Swing/idw-gpl-1.4.0-src.zip" kind="lib" path="/Thirdparty/Swing/idw-gpl-1.4.0.jar"/>
+	<classpathentry exported="true" sourcepath="/Thirdparty/Database/db4o-5.5-src.zip" kind="lib" path="/Thirdparty/Database/db4o-5.5-java5.jar"/>
 	<classpathentry sourcepath="/JPF/source" kind="lib" path="/Thirdparty/Plugin/jpf.jar"/>
 	<classpathentry sourcepath="/JPF/source-boot" kind="lib" path="/Thirdparty/Plugin/jpf-boot.jar"/>
 	<classpathentry kind="output" path="build/classes"/>

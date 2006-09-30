@@ -78,6 +78,9 @@
 		<parameter id="type">
 			<parameter id="class" value="net.sf.anathema.character.impl.module.ExaltedCharacterItemTypeConfiguration"/>
 		</parameter>
+		<parameter id="type">
+			<parameter id="class" value="net.sf.anathema.character.equipment.impl.module.EquipmentDatabaseItemTypeConfiguration"/>
+		</parameter>
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="ReportFactories" id="ReportFactories">
 		<parameter id="class" value="net.sf.anathema.character.impl.module.reporting.JasperReportFactory"/>

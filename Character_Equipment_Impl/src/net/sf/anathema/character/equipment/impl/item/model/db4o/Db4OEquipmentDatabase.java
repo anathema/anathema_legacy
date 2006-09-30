@@ -7,6 +7,8 @@ import java.util.Set;
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
+import net.sf.anathema.framework.itemdata.model.IItemData;
+import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -15,9 +17,9 @@ import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.query.Predicate;
 
-public class Db4OEquipmentDatabase implements IEquipmentDatabase {
+public class Db4OEquipmentDatabase implements IEquipmentDatabase, IItemData {
 
-  public static final File DATABASE_FILE = new File("Equipment.yap"); //$NON-NLS-1$
+  public static final String DATABASE_FILE = "Equipment.yap"; //$NON-NLS-1$
   private ICollectionFactory collectionFactory;
   private final ChangeControl availableTemplatesChangeControl = new ChangeControl();
   private final ObjectContainer container;
@@ -77,5 +79,9 @@ public class Db4OEquipmentDatabase implements IEquipmentDatabase {
     container.set(saveTemplate);
     container.commit();
     availableTemplatesChangeControl.fireChangedEvent();
+  }
+
+  public void setPrintNameAdjuster(PrintNameAdjuster adjuster) {
+    // nothing to do    
   }
 }

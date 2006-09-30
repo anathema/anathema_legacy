@@ -1,4 +1,6 @@
-package net.sf.anathema.character.equipment.impl;
+package net.sf.anathema.character.equipment.impl.module;
+
+import java.io.File;
 
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalModelFactory;
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalPersisterFactory;
@@ -20,7 +22,8 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void addAdditionalTemplateData(ICharacterGenerics characterGenerics) {
-    IEquipmentTemplateProvider equipmentDatabase = new Db4OEquipmentDatabase(Db4OEquipmentDatabase.DATABASE_FILE);
+    IEquipmentTemplateProvider equipmentDatabase = new Db4OEquipmentDatabase(new File(
+        Db4OEquipmentDatabase.DATABASE_FILE));
     characterGenerics.getAdditionalModelFactoryRegistry().register(
         EquipmentAdditonalModelTemplate.ID,
         new EquipmentAdditionalModelFactory(equipmentDatabase));

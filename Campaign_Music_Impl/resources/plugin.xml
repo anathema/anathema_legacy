@@ -7,9 +7,6 @@
 		<library id="MP3SPI" path="${ANATHEMA_LIB}/mp3spi1.9.2.jar" type="code">
 			<export prefix="*"/>
 		</library>
-		<library id="db4o" path="${ANATHEMA_LIB}/db4o-5.2-java5.jar" type="code">
-			<export prefix="*"/>
-		</library>
 		<library id="tritonus" path="${ANATHEMA_LIB}/tritonus_share.jar" type="code">
 			<export prefix="*"/>
 		</library>
