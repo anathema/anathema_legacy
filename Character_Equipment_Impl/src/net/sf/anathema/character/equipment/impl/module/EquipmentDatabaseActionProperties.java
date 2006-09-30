@@ -57,6 +57,6 @@ public class EquipmentDatabaseActionProperties extends AbstractDatabaseActionPro
 
   public IItemData createItemData(File repositoryFolder) throws IOException {
     File parentFolder = getParentFolder(repositoryFolder);
-    return new Db4OEquipmentDatabase(new File(parentFolder, Db4OEquipmentDatabase.DATABASE_FILE));
+    return new Db4OEquipmentDatabase(new File(/*parentFolder,*/Db4OEquipmentDatabase.DATABASE_FILE));
   }
 }
