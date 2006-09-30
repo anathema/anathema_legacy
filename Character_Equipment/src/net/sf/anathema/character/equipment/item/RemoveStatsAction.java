@@ -17,7 +17,6 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class RemoveStatsAction extends SmartAction {
 
-  private final IResources resources;
   private final IObjectSelectionView<IExaltedRuleSet> ruleSetView;
   private final IEquipmentTemplateEditModel editModel;
   private final IActionAddableListView<IEquipmentStats> statsListView;
@@ -28,7 +27,6 @@ public class RemoveStatsAction extends SmartAction {
       IObjectSelectionView<IExaltedRuleSet> ruleSetView,
       final IActionAddableListView<IEquipmentStats> statsListView) {
     super(new BasicUi(resources).getRemoveIcon());
-    this.resources = resources;
     this.editModel = editModel;
     this.ruleSetView = ruleSetView;
     this.statsListView = statsListView;
@@ -43,7 +41,7 @@ public class RemoveStatsAction extends SmartAction {
       }
     });
     updateEnabled();
-    setToolTipText("Remove selected stats...");
+    setToolTipText(resources.getString("Equipment.Stats.Action.Remove.Tooltip"));
   }
 
   private void updateEnabled() {
