@@ -31,7 +31,7 @@ public class QualifiedAmountDuration extends ReflectionEqualsObject implements I
   public String getText(IResources resources) {
     String amountText = resources.getString("Charm.Amount." + getAmount()); //$NON-NLS-1$
     String unitText = resources.getString(getUnitKey());
-    return resources.getString("Charm.QualifiedAmount", new String[] { amountText, unitText }); //$NON-NLS-1$
+    return resources.getString("Charm.QualifiedAmount", new Object[] { amountText, unitText }); //$NON-NLS-1$
   }
 
   private String getUnitKey() {
