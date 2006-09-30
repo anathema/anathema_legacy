@@ -6,6 +6,8 @@ public class ShieldStats extends AbstractStats implements IShieldStats {
 
   private int rangedCombatDv;
   private int closeCombatDv;
+  private Integer fatigue;
+  private Integer mobilityPenalty;
 
   public int getCloseCombatDvBonus() {
     return closeCombatDv;
@@ -21,5 +23,21 @@ public class ShieldStats extends AbstractStats implements IShieldStats {
 
   public void setRangedCombatDv(int rangedCombatDv) {
     this.rangedCombatDv = rangedCombatDv;
+  }
+
+  public Integer getFatigue() {
+    return fatigue;
+  }
+
+  public Integer getMobilityPenalty() {
+    return mobilityPenalty;
+  }
+
+  public void setFatigue(Integer fatigue) {
+    this.fatigue = fatigue;
+  }
+
+  public void setMobilityPenalty(Integer mobilityPenalty) {
+    this.mobilityPenalty = mobilityPenalty;
   }
 }

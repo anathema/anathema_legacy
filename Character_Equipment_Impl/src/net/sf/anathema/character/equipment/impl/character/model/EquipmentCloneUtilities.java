@@ -114,6 +114,14 @@ public class EquipmentCloneUtilities {
       public IIdentificate getName() {
         return new Identificate(name);
       }
+
+      public Integer getFatigue() {
+        return stats.getFatigue();
+      }
+
+      public Integer getMobilityPenalty() {
+        return stats.getMobilityPenalty();
+      }
     };
   }
 }

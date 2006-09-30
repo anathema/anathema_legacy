@@ -5,4 +5,8 @@ public interface IShieldStats extends IEquipmentStats {
   public int getCloseCombatDvBonus();
 
   public int getRangedCombatDvBonus();
+
+  public Integer getMobilityPenalty();
+
+  public Integer getFatigue();
 }

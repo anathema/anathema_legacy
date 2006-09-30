@@ -34,4 +34,12 @@ public class ShieldStatisticsProperties extends EquipmentStatisticsProperties {
   public String getDefaultName() {
     return "Shield";
   }
+
+  public String getMobilityPenaltyLabel() {
+    return "Mobility Penalty:";
+  }
+
+  public String getFatigueLabel() {
+    return "Fatigue:";
+  }
 }

@@ -9,6 +9,8 @@ public class ShieldStatisticsModel extends EquipmentStatisticsModel implements I
 
   private final IIntValueModel closeCombatBonusModel = new RangedIntValueModel(new Range(0, Integer.MAX_VALUE), 0);
   private final IIntValueModel rangedCombatBonusModel = new RangedIntValueModel(new Range(0, Integer.MAX_VALUE), 0);
+  private final IIntValueModel fatigue = new RangedIntValueModel(new Range(0, Integer.MAX_VALUE), 0);
+  private final IIntValueModel mobilityPenalty = new RangedIntValueModel(new Range(Integer.MIN_VALUE, 0), 0);
 
   public IIntValueModel getCloseCombatDvBonusModel() {
     return closeCombatBonusModel;
@@ -16,5 +18,13 @@ public class ShieldStatisticsModel extends EquipmentStatisticsModel implements I
 
   public IIntValueModel getRangedCombatDvBonusModel() {
     return rangedCombatBonusModel;
+  }
+
+  public IIntValueModel getFatigueModel() {
+    return fatigue;
+  }
+
+  public IIntValueModel getMobilityPenaltyModel() {
+    return mobilityPenalty;
   }
 }

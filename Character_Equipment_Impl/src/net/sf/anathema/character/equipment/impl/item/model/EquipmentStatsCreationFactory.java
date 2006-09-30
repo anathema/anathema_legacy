@@ -65,6 +65,8 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
         setName(shieldStats, shieldModel);
         shieldStats.setCloseCombatDv(shieldModel.getCloseCombatDvBonusModel().getValue());
         shieldStats.setRangedCombatDv(shieldModel.getRangedCombatDvBonusModel().getValue());
+        shieldStats.setFatigue(shieldModel.getFatigueModel().getValue());
+        shieldStats.setMobilityPenalty(shieldModel.getMobilityPenaltyModel().getValue());
         return shieldStats;
       case CloseCombat:
         WeaponStats closeCombatStats = new WeaponStats(collectionFactory, true);

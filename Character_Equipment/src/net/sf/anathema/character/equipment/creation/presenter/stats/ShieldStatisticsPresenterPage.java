@@ -24,6 +24,11 @@ public class ShieldStatisticsPresenterPage extends
         getProperties().getRangedCombatDvBonusLabel() }, new Component[] {
         initIntegerSpinner(getPageModel().getCloseCombatDvBonusModel()).getComponent(),
         initIntegerSpinner(getPageModel().getRangedCombatDvBonusModel()).getComponent() });
+    addLabelledComponentRow(
+        new String[] { getProperties().getMobilityPenaltyLabel(), getProperties().getFatigueLabel() },
+        new Component[] {
+            initIntegerSpinner(getPageModel().getMobilityPenaltyModel()).getComponent(),
+            initIntegerSpinner(getPageModel().getFatigueModel()).getComponent() });
   }
 
   @Override

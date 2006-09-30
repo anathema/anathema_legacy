@@ -1,7 +1,9 @@
 package net.sf.anathema.character.equipment.character;
 
+import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.resources.IResources;
@@ -49,7 +51,24 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     if (equipment instanceof IWeaponStats) {
       return createWeaponString((IWeaponStats) equipment);
     }
-    return createArmourString((IArmourStats) equipment);
+    if (equipment instanceof IArmourStats) {
+      return createArmourString((IArmourStats) equipment);
+    }
+    if (equipment instanceof IShieldStats) {
+      return createShieldString((IShieldStats) equipment);
+    }
+    throw new UnreachableCodeReachedException("All subclasses covered. Something appears to be wrong."); //$NON-NLS-1$
+  }
+
+  private String createShieldString(IShieldStats stats) {
+    StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append(stats.getName().getId());
+    stringBuilder.append(":");
+    stringBuilder.append(getStatsString("CloseDV", stats.getCloseCombatDvBonus(), true));
+    stringBuilder.append(getStatsString("RangedDV", stats.getRangedCombatDvBonus(), true));
+    stringBuilder.append(getStatsString("MobilityPenalty", stats.getMobilityPenalty(), false));
+    stringBuilder.append(getStatsString("Fatigue", stats.getFatigue(), false));
+    return stringBuilder.toString();
   }
 
   private String createArmourString(IArmourStats armourStats) {
