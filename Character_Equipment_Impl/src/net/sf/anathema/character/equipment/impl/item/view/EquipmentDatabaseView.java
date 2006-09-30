@@ -81,13 +81,13 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
   }
 
   public void fillDescriptionPanel(JComponent descriptionPanel) {
-    editTemplateView.add(descriptionPanel);
+    editTemplateView.add(descriptionPanel, GridDialogLayoutData.FILL_HORIZONTAL);
   }
 
   public IListObjectSelectionView<String> getTemplateListView() {
     return templateListView;
   }
-  
+
   public void addEditTemplateAction(Action action) {
     editTemplateButtonPanel.add(ToolBarUtilities.createToolBarButton(action));
   }
