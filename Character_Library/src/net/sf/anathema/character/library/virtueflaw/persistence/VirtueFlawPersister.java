@@ -21,25 +21,19 @@ public class VirtueFlawPersister implements IAdditionalPersister {
 
   public void save(Element parent, IAdditionalModel model) {
     IVirtueFlawModel virtueFlawModel = (IVirtueFlawModel) model;
-    saveVirtueFlaw(parent, virtueFlawModel.getVirtueFlaw());
+    saveVirtueFlaw(createFlawElement(parent), virtueFlawModel.getVirtueFlaw());
   }
 
-  private void saveVirtueFlaw(Element parent, IVirtueFlaw virtueFlaw) {
-    Element flawElement = createFlawElement(parent);
+  protected void saveVirtueFlaw(Element flawElement, IVirtueFlaw virtueFlaw) {
     saveRootVirtue(flawElement, virtueFlaw);
     textPersister.saveTextualDescription(flawElement, TAG_NAME, virtueFlaw.getName());
-    saveAdditionalData(flawElement, virtueFlaw);
   }
 
-  protected void saveAdditionalData(Element flawElement, IVirtueFlaw virtueFlaw) {
-    // Nothing to do
-  }
-
-  private final Element createFlawElement(Element parent) {
+  private Element createFlawElement(Element parent) {
     return parent.addElement(TAG_VIRTUE_FLAW);
   }
 
-  private final void saveRootVirtue(Element flawElement, IVirtueFlaw virtueFlaw) {
+  private void saveRootVirtue(Element flawElement, IVirtueFlaw virtueFlaw) {
     ITraitType rootVirtue = virtueFlaw.getRoot();
     if (rootVirtue != null) {
       Element rootElement = flawElement.addElement(TAG_ROOT_VIRTUE);
@@ -49,12 +43,10 @@ public class VirtueFlawPersister implements IAdditionalPersister {
 
   public void load(Element parent, IAdditionalModel model) throws PersistenceException {
     IVirtueFlawModel virtueFlawModel = (IVirtueFlawModel) model;
-    loadVirtueFlaw(parent, virtueFlawModel.getVirtueFlaw());
-
+    loadVirtueFlaw(parent.element(TAG_VIRTUE_FLAW), virtueFlawModel.getVirtueFlaw());
   }
 
-  private void loadVirtueFlaw(Element parent, IVirtueFlaw virtueFlaw) {
-    Element flawElement = parent.element(TAG_VIRTUE_FLAW);
+  protected void loadVirtueFlaw(Element flawElement, IVirtueFlaw virtueFlaw) {
     if (flawElement == null) {
       return;
     }
@@ -63,10 +55,5 @@ public class VirtueFlawPersister implements IAdditionalPersister {
       virtueFlaw.setRoot(VirtueType.valueOf(rootElement.attributeValue(ATTRIB_NAME)));
     }
     textPersister.restoreTextualDescription(flawElement, TAG_NAME, virtueFlaw.getName());
-    loadAdditionalData(flawElement, virtueFlaw);
-  }
-
-  protected void loadAdditionalData(Element flawElement, IVirtueFlaw virtueFlaw) {
-    // Nothing to do
   }
 }

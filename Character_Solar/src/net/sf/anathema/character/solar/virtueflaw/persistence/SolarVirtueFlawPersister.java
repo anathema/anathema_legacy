@@ -14,14 +14,16 @@ public class SolarVirtueFlawPersister extends VirtueFlawPersister {
   private final TextPersister textPersister = new TextPersister();
 
   @Override
-  protected void saveAdditionalData(Element flawElement, IVirtueFlaw virtueFlaw) {
+  protected void saveVirtueFlaw(Element flawElement, IVirtueFlaw virtueFlaw) {
+    super.saveVirtueFlaw(flawElement, virtueFlaw);
     ISolarVirtueFlaw solarFlaw = (ISolarVirtueFlaw) virtueFlaw;
     textPersister.saveTextualDescription(flawElement, TAG_LIMIT_BREAK, solarFlaw.getLimitBreak());
     textPersister.saveTextualDescription(flawElement, TAG_DESCRIPTION, solarFlaw.getDescription());
   }
 
   @Override
-  protected void loadAdditionalData(Element flawElement, IVirtueFlaw virtueFlaw) {
+  protected void loadVirtueFlaw(Element flawElement, IVirtueFlaw virtueFlaw) {
+    super.loadVirtueFlaw(flawElement, virtueFlaw);
     ISolarVirtueFlaw solarFlaw = (ISolarVirtueFlaw) virtueFlaw;
     textPersister.restoreTextualDescription(flawElement, TAG_LIMIT_BREAK, solarFlaw.getLimitBreak());
     textPersister.restoreTextualDescription(flawElement, TAG_DESCRIPTION, solarFlaw.getDescription());
