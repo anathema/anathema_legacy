@@ -22,6 +22,6 @@ public class TagPageProperties {
   }
 
   public String getLabel(IWeaponTag tag) {
-    return tag.getId();
+    return resources.getString("Equipment.Tag." + tag.getId());
   }
 }
