@@ -18,7 +18,7 @@ public class RemoveEquipmentTemplateAction extends SmartAction {
       IResources resources,
       IEquipmentDatabaseManagement model,
       IEquipmentDatabaseView view) {
-    super(new BasicUi(resources).getRemoveIcon());
+    super(new BasicUi(resources).getClearIcon());
     this.resources = resources;
     this.model = model;
     this.view = view;
