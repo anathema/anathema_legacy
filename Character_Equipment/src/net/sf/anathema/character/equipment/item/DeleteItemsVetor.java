@@ -21,7 +21,7 @@ public class DeleteItemsVetor {
   }
 
   public boolean vetos() {
-    String messageText = resources.getString("Equipment.Creation.OverwriteMessage.Text"); //$NON-NLS-1$
+    String messageText = resources.getString("Equipment.Creation.DeleteMessage.Text"); //$NON-NLS-1$
     IMessage message = new Message(messageText, MessageType.WARNING);
     MessageUserDialogConfiguration configuration = new MessageUserDialogConfiguration(
         message,
