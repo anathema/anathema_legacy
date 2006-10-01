@@ -5,6 +5,7 @@ import java.awt.Component;
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
+import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -16,7 +17,7 @@ public class RemoveEquipmentTemplateAction extends SmartAction {
       IResources resources,
       IEquipmentDatabaseManagement model,
       IEquipmentDatabaseView view) {
-    super("remove");
+    super(new BasicUi(resources).getRemoveIcon());
     this.model = model;
     this.view = view;
     view.getTemplateListView().addObjectSelectionChangedListener(new IObjectValueChangedListener<String>() {

@@ -4,6 +4,7 @@ import java.awt.Component;
 
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
+import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -11,7 +12,7 @@ public final class NewEquipmentTemplateAction extends SmartAction {
   private final IEquipmentDatabaseManagement model;
 
   public NewEquipmentTemplateAction(IResources resources, IEquipmentDatabaseManagement model) {
-    super("new");
+    super(new PlatformUI(resources).getNewToolBarIcon());
     this.model = model;
   }
 
