@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -21,8 +20,7 @@ import net.sf.anathema.lib.gui.selection.ListObjectSelectionView;
 public class EquipmentAdditionalView implements IEquipmentAdditionalView {
 
   private final ListObjectSelectionView<String> equipmentPickList = new ListObjectSelectionView<String>(String.class);
-  private final JLabel pickListLabel = new JLabel();
-  private final JPanel panel = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel panel = new JPanel(new GridDialogLayout(3, false));
   private final JButton selectButton = new JButton();
   private final TaskPaneView<EquipmentObjectView> taskPaneView = new TaskPaneView<EquipmentObjectView>(
       new ITaskPaneGroupViewFactory<EquipmentObjectView>() {
@@ -34,9 +32,9 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView {
   public EquipmentAdditionalView() {
     JScrollPane itemScrollpane = new JScrollPane(equipmentPickList.getComponent());
     itemScrollpane.setPreferredSize(new Dimension(150, 250));
-    panel.add(pickListLabel);
-    panel.add(itemScrollpane, GridDialogLayoutData.FILL_HORIZONTAL);
+    panel.add(itemScrollpane, GridDialogLayoutData.FILL_BOTH);
     panel.add(selectButton, GridDialogLayoutData.CENTER);
+    taskPaneView.getComponent().setPreferredSize(new Dimension(150, 250));
     panel.add(taskPaneView.getComponent(), GridDialogLayoutData.FILL_BOTH);
   }
 
