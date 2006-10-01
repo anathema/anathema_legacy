@@ -22,6 +22,7 @@ public final class EquipmentNameStatsGroup<T extends IEquipmentStats> extends Ab
     return "Sheet.Equipment.Header.Name"; //$NON-NLS-1$
   }
 
+  @Override
   public void addContent(PdfPTable table, Font font, T stats) {
     if (stats == null) {
       table.addCell(createTextCell(font, "")); //$NON-NLS-1$
