@@ -9,14 +9,14 @@ public abstract class OffensiveStatisticsProperties extends EquipmentStatisticsP
   }
 
   public String getAccuracyLabel() {
-    return "Accuracy:";
+    return getLabelString("Equipment.Stats.Long.Accuracy"); //$NON-NLS-1$    
   }
 
   public String getSpeedLabel() {
-    return "Speed:";
+    return getLabelString("Equipment.Stats.Long.Speed"); //$NON-NLS-1$
   }
 
   public String getRateLabel() {
-    return "Rate:";
+    return getLabelString("Equipment.Stats.Long.Rate"); //$NON-NLS-1$
   }
 }
