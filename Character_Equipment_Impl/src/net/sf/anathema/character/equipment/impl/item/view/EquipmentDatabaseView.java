@@ -77,8 +77,8 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
     titledBorder.setTitle(headerText);
   }
 
-  public void fillDescriptionPanel(JComponent descriptionPanel) {
-    this.descriptionPanel.add(descriptionPanel, GridDialogLayoutData.FILL_HORIZONTAL);
+  public void fillDescriptionPanel(JComponent component) {
+    this.descriptionPanel.add(component, GridDialogLayoutData.FILL_HORIZONTAL);
   }
 
   public IListObjectSelectionView<String> getTemplateListView() {
