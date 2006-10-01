@@ -10,7 +10,6 @@ import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
   private final IArmourStats naturalArmour;

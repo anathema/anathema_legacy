@@ -4,7 +4,6 @@ import net.sf.anathema.character.equipment.character.EquipmentAdditionalPresente
 import net.sf.anathema.character.equipment.character.EquipmentObjectCellRenderer;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItemCollection;
 import net.sf.anathema.character.equipment.character.view.IEquipmentAdditionalView;
-import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.test.character.generic.framework.magic.stringbuilder.DummyResources;
