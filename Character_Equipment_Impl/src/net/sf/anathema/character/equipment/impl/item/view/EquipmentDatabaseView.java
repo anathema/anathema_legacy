@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.impl.item.view;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.Action;
@@ -8,6 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.TitledBorder;
 
 import net.disy.commons.swing.border.TitledPanel;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
@@ -27,30 +30,25 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
 
   private JPanel contentPanel;
   private JPanel editTemplateView = new JPanel(new GridDialogLayout(1, false));
-  private JLabel templateListHeaderLabel = new JLabel();
-  private JLabel editTemplateHeaderLabel = new JLabel();
+  private JPanel descriptionPanel = new JPanel(new GridDialogLayout(1, false));
   private ListObjectSelectionView<String> templateListView = new ListObjectSelectionView<String>(String.class);
   private SingleSelectionActionAddableListView<IEquipmentStats> statsListView;
   private JPanel ruleSetPanel = new JPanel(new GridDialogLayout(2, false));
   private JPanel editTemplateButtonPanel = new JPanel(new GridLayout(1, 0));
-
+  private TitledPanel templateListPanel = new TitledPanel("", new JScrollPane(templateListView.getComponent()));
+  private TitledPanel editTemplatePanel = new TitledPanel("", editTemplateView);
+  
   public JComponent getComponent() {
     if (contentPanel == null) {
+      templateListView.getComponent().setPreferredSize(new Dimension(150, 200));
       contentPanel = new JPanel(new GridDialogLayout(2, false));
-      contentPanel.add(templateListHeaderLabel, GridDialogLayoutData.FILL_HORIZONTAL);
-      contentPanel.add(createEditTemplateHeader(), GridDialogLayoutData.FILL_HORIZONTAL);
-      contentPanel.add(new JScrollPane(templateListView.getComponent()), GridDialogLayoutData.FILL_BOTH);
-      contentPanel.add(editTemplateView, GridDialogLayoutData.FILL_BOTH);
+      contentPanel.add(templateListPanel, GridDialogLayoutData.FILL_BOTH);
+      contentPanel.add(editTemplatePanel, GridDialogLayoutData.FILL_BOTH);
+      editTemplateView.add(editTemplateButtonPanel);
+      editTemplateView.add(descriptionPanel, GridDialogLayoutData.FILL_HORIZONTAL);
       editTemplateView.add(ceateStatsPanel(), GridDialogLayoutData.FILL_BOTH);
     }
     return contentPanel;
-  }
-
-  private JPanel createEditTemplateHeader() {
-    JPanel headerPanel = new JPanel(new GridDialogLayout(2, false));
-    headerPanel.add(editTemplateHeaderLabel);
-    headerPanel.add(editTemplateButtonPanel);
-    return headerPanel;
   }
 
   public IActionAddableListView<IEquipmentStats> initStatsListView(ListCellRenderer renderer) {
@@ -73,15 +71,20 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
   }
 
   public void setTemplateListHeader(String headerText) {
-    templateListHeaderLabel.setText(headerText);
+    setTitleText(headerText, templateListPanel);
+  }
+
+  private void setTitleText(String headerText, TitledPanel panel) {
+    TitledBorder titledBorder = (TitledBorder) ((CompoundBorder) panel.getBorder()).getOutsideBorder(); 
+    titledBorder.setTitle(headerText);
   }
 
   public void setEditTemplateHeader(String headerText) {
-    editTemplateHeaderLabel.setText(headerText);
+    setTitleText(headerText, editTemplatePanel);
   }
 
   public void fillDescriptionPanel(JComponent descriptionPanel) {
-    editTemplateView.add(descriptionPanel, GridDialogLayoutData.FILL_HORIZONTAL);
+    this.descriptionPanel.add(descriptionPanel, GridDialogLayoutData.FILL_HORIZONTAL);
   }
 
   public IListObjectSelectionView<String> getTemplateListView() {
