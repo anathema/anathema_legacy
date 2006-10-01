@@ -2,57 +2,50 @@ package net.sf.anathema.character.equipment.creation.presenter.stats.properties;
 
 import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
-import net.disy.commons.core.message.MessageType;
 import net.sf.anathema.lib.resources.IResources;
 
 public class ArmourStatisticsProperties extends EquipmentStatisticsProperties {
-
-  private final BasicMessage defaultMessage = new BasicMessage("Please fill the armour statstics.");
 
   public ArmourStatisticsProperties(IResources resources) {
     super(resources);
   }
 
-  public IBasicMessage getPositiveMobilityPenaltyMessage() {
-    return new BasicMessage("Mobility penalties should be negative numbers.", MessageType.WARNING);
-  }
-
   public String getBashingSoakLabel() {
-    return "Bashing Soak:";
+    return getLabelString("Equipment.Stats.Long.BashingSoak"); //$NON-NLS-1$
   }
 
   public String getLethalSoakLabel() {
-    return "Lethal Soak:";
+    return getLabelString("Equipment.Stats.Long.LethalSoak"); //$NON-NLS-1$
   }
 
   public String getBashingHardnessLabel() {
-    return "Bashing Hardness:";
+    return getLabelString("Equipment.Stats.Long.BashingHardness"); //$NON-NLS-1$
   }
 
   public String getLethalHardnessLabel() {
-    return "Lethal Hardness:";
+    return getLabelString("Equipment.Stats.Long.LethalHardness"); //$NON-NLS-1$
   }
 
   public String getMobilityPenaltyLabel() {
-    return "Mobility Penalty:";
+    return getLabelString("Equipment.Stats.Long.MobilityPenalty"); //$NON-NLS-1$
   }
 
   public String getFatigueLabel() {
-    return "Fatigue:";
+    return getLabelString("Equipment.Stats.Long.Fatigue"); //$NON-NLS-1$
   }
 
   @Override
   public IBasicMessage getDefaultMessage() {
-    return defaultMessage;
+    return new BasicMessage("Equipment.Creation.Armour.DefaultMessage"); //$NON-NLS-1$
   }
 
   @Override
   public String getPageDescription() {
-    return "Armour Stats";
+    return getString("Equipment.Creation.Armour.PageTitle"); //$NON-NLS-1$
   }
 
   @Override
   public String getDefaultName() {
-    return "Armour";
+    return getString("Equipment.Creation.Armour.DefaultName"); //$NON-NLS-1$
   }
 }

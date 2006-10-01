@@ -1,7 +1,6 @@
 package net.sf.anathema.character.equipment.item;
 
 import java.awt.Component;
-import java.awt.Dimension;
 
 import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;

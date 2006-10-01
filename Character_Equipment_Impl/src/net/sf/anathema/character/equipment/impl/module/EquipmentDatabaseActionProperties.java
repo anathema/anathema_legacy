@@ -39,11 +39,11 @@ public class EquipmentDatabaseActionProperties extends AbstractDatabaseActionPro
   }
 
   public String getProgressMonitorTitle() {
-    return resources.getString("Equipment.DatabaseStart.Progress.Title"); //$NON-NLS-1$;
+    return resources.getString("EquipmentDatabase.Start.Progress.Title"); //$NON-NLS-1$;
   }
 
   public String getProgressTaskTitle() {
-    return resources.getString("Equipment.DatabaseStart.Progress.Presentation"); //$NON-NLS-1$
+    return resources.getString("EquipmentDatabase.Start.Progress.Presentation"); //$NON-NLS-1$
   }
 
   @Override

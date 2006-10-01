@@ -20,10 +20,6 @@ public abstract class EquipmentStatisticsProperties {
     return "Name:";
   }
 
-  protected final IResources getResources() {
-    return resources;
-  }
-
   public IBasicMessage getUndefinedNameMessage() {
     return nameUndefinedMessage;
   }
@@ -33,4 +29,12 @@ public abstract class EquipmentStatisticsProperties {
   public abstract IBasicMessage getDefaultMessage();
 
   public abstract String getPageDescription();
+
+  protected final String getString(String key) {
+    return resources.getString(key);
+  }
+  
+  protected final String getLabelString(String key) {
+    return getString(key) + ":"; //$NON-NLS-1$
+  }
 }
