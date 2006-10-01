@@ -67,7 +67,7 @@ public final class SaveEquipmentTemplateAction extends SmartAction {
       editModel.setEditTemplate(saveTemplate.getName());
     }
     catch (PersistenceException e) {
-      Message message = new Message("Error occured saving equipment template", e);
+      Message message = new Message(resources.getString("Errors.EquipmentDatabase.PersistTemplate"), e); //$NON-NLS-1$
       MessageUtilities.indicateMessage(SaveEquipmentTemplateAction.class, parentComponent, message);
     }
   }

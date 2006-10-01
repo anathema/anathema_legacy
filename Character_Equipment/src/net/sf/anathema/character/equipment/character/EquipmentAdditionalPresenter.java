@@ -11,6 +11,7 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItemCollection;
 import net.sf.anathema.character.equipment.character.view.IEquipmentAdditionalView;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
+import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentUI;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.collection.ICollectionListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -56,12 +57,14 @@ public class EquipmentAdditionalPresenter implements IPresenter {
   }
 
   private SmartAction createRefreshAction(final IListObjectSelectionView<String> equipmentTemplatePickList) {
-    return new SmartAction("Refresh") {
+    SmartAction refreshAction = new SmartAction(new EquipmentUI(resources).getRefreshIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         setObjects(equipmentTemplatePickList);
-      }      
+      }
     };
+    refreshAction.setToolTipText(resources.getString("AdditionalTemplateView.RefreshDatabase.Action.Tooltip")); //$NON-NLS-1$
+    return refreshAction;
   }
 
   private void setObjects(final IListObjectSelectionView<String> equipmentTemplatePickList) {
@@ -75,6 +78,7 @@ public class EquipmentAdditionalPresenter implements IPresenter {
         model.addEquipmentObjectFor(equipmentTemplatePickList.getSelectedObject());
       }
     };
+    addAction.setToolTipText(resources.getString("AdditionalTemplateView.AddTemplate.Action.Tooltip")); //$NON-NLS-1$
     equipmentTemplatePickList.addObjectSelectionChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         addAction.setEnabled(equipmentTemplatePickList.isObjectSelected());
@@ -91,8 +95,7 @@ public class EquipmentAdditionalPresenter implements IPresenter {
     viewsByItem.put(selectedObject, objectView);
     new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder).initPresentation();
     if (model.canBeRemoved(selectedObject)) {
-      objectView.addAction(new SmartAction(
-          resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"), //$NON-NLS-1$
+      objectView.addAction(new SmartAction(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"), //$NON-NLS-1$
           removeIcon) {
         @Override
         protected void execute(Component parentComponent) {

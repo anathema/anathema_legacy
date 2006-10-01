@@ -12,7 +12,7 @@ public final class NewEquipmentTemplateAction extends SmartAction {
   private final IEquipmentDatabaseManagement model;
 
   public NewEquipmentTemplateAction(IResources resources, IEquipmentDatabaseManagement model) {
-    super(new PlatformUI(resources).getNewToolBarIcon());
+    super(new PlatformUI(resources).getNewIcon());
     this.model = model;
   }
 

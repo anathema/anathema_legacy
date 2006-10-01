@@ -14,11 +14,11 @@ public class TagPageProperties {
   }
 
   public IBasicMessage getDefaultMessage() {
-    return new BasicMessage("Select Weapon Tags");
+    return new BasicMessage(resources.getString("Equipment.Creation.Tags.DefaultMessage")); //$NON-NLS-1$
   }
 
   public String getPageTitle() {
-    return "Weapon Tags";
+    return resources.getString("Equipment.Creation.Tags.PageTitle"); //$NON-NLS-1$
   }
 
   public String getLabel(IWeaponTag tag) {

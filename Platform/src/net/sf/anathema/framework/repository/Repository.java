@@ -34,8 +34,8 @@ public class Repository implements IRepository {
   private final File defaultDataFolder;
 
   public Repository(File repositoryFolder, IItemMangementModel itemManagement) {
-    Ensure.ensureArgumentTrue("Repositoryfolder must exist.", repositoryFolder.exists());
-    this.defaultDataFolder = createDataFolder(repositoryFolder, "data");
+    Ensure.ensureArgumentTrue("Repositoryfolder must exist.", repositoryFolder.exists()); //$NON-NLS-1$
+    this.defaultDataFolder = createDataFolder(repositoryFolder, "data"); //$NON-NLS-1$
     this.repositoryFolder = repositoryFolder;
     this.itemManagement = itemManagement;
     this.printNameFileAccess = new PrintNameFileAccess(repositoryFolder);

@@ -17,4 +17,7 @@ public class EquipmentUI extends AbstractUI {
     return getIcon(type.name() + ICON_SIZE + ".png"); //$NON-NLS-1$    
   }
 
+  public Icon getRefreshIcon() {
+    return getIcon("ButtonRefresh16.png"); //$NON-NLS-1$
+  }
 }

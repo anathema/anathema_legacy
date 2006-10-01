@@ -5,8 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.db4o.query.Predicate;
-
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
@@ -15,6 +13,8 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+
+import com.db4o.query.Predicate;
 
 public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
   private final IArmourStats naturalArmour;
@@ -67,7 +67,7 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
           if (doPrint(item, stats, printedClass)) {
             String itemName = item.getName();
             if (statsArray.length > 1) {
-              itemName += " - " + stats.getName();
+              itemName += " - " + stats.getName(); //$NON-NLS-1$
             }
             printStats.add((K) EquipmentCloneUtilities.getRenamedPrintClone(stats, itemName));
           }

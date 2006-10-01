@@ -34,7 +34,7 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
   private SingleSelectionActionAddableListView<IEquipmentStats> statsListView;
   private JPanel ruleSetPanel = new JPanel(new GridDialogLayout(2, false));
   private JPanel editTemplateButtonPanel = new JPanel(new GridLayout(0, 1));
-  private TitledPanel templateListPanel = new TitledPanel("", new JScrollPane(templateListView.getComponent()));
+  private TitledPanel templateListPanel = new TitledPanel("", new JScrollPane(templateListView.getComponent())); //$NON-NLS-1$
 
   public JComponent getComponent() {
     if (contentPanel == null) {
@@ -44,7 +44,7 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
       contentPanel.add(editTemplateButtonPanel);
       contentPanel.add(editTemplateView, GridDialogLayoutData.FILL_BOTH);
       editTemplateView.add(descriptionPanel, GridDialogLayoutData.FILL_HORIZONTAL);
-      editTemplateView.add(ceateStatsPanel(), GridDialogLayoutData.FILL_BOTH);
+      editTemplateView.add(createStatsPanel("Stats"), GridDialogLayoutData.FILL_BOTH);
     }
     return contentPanel;
   }
@@ -55,11 +55,11 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
     return statsListView;
   }
 
-  private JPanel ceateStatsPanel() {
+  private JPanel createStatsPanel(String panelTitle) {
     JPanel statsPanel = new JPanel(new GridDialogLayout(1, false));
     statsPanel.add(ruleSetPanel, GridDialogLayoutData.FILL_HORIZONTAL);
     statsPanel.add(new JScrollPane(statsListView.getComponent()), GridDialogLayoutData.FILL_BOTH);
-    return new TitledPanel("Stats", statsPanel);
+    return new TitledPanel(panelTitle, statsPanel);
   }
 
   public IObjectSelectionView<IExaltedRuleSet> initRuleSetSelectionView(String label, ListCellRenderer renderer) {

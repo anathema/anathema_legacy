@@ -20,7 +20,7 @@ import com.db4o.query.Predicate;
 public class Db4OEquipmentDatabase implements IEquipmentDatabase, IItemData {
 
   public static final String DATABASE_FILE = "Equipment.yap"; //$NON-NLS-1$
-  public static final String DATABASE_FOLDER = "equipment";
+  public static final String DATABASE_FOLDER = "equipment"; //$NON-NLS-1$
   private ICollectionFactory collectionFactory;
   private final ChangeControl availableTemplatesChangeControl = new ChangeControl();
   private final ObjectContainer container;
