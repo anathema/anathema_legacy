@@ -1,9 +1,9 @@
 package net.sf.anathema.character.equipment.impl.item.view;
 
 import java.awt.Dimension;
-import java.awt.GridLayout;
 
 import javax.swing.Action;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -14,7 +14,6 @@ import javax.swing.border.TitledBorder;
 import net.disy.commons.swing.border.TitledPanel;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.toolbar.ToolBarUtilities;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
@@ -33,7 +32,7 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
   private ListObjectSelectionView<String> templateListView = new ListObjectSelectionView<String>(String.class);
   private SingleSelectionActionAddableListView<IEquipmentStats> statsListView;
   private JPanel ruleSetPanel = new JPanel(new GridDialogLayout(2, false));
-  private JPanel editTemplateButtonPanel = new JPanel(new GridLayout(0, 1));
+  private JPanel editTemplateButtonPanel = new JPanel(new GridDialogLayout(1, false));
   private TitledPanel templateListPanel = new TitledPanel("", new JScrollPane(templateListView.getComponent())); //$NON-NLS-1$
 
   public JComponent getComponent() {
@@ -86,6 +85,6 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
   }
 
   public void addEditTemplateAction(Action action) {
-    editTemplateButtonPanel.add(ToolBarUtilities.createToolBarButton(action));
+    editTemplateButtonPanel.add(new JButton(action));
   }
 }
