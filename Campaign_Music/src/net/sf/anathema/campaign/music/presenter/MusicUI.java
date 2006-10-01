@@ -14,7 +14,7 @@ public class MusicUI extends AbstractUI {
   public Icon getSearchIcon() {
     return getIcon("ButtonSearch16.png"); //$NON-NLS-1$
   }
-  
+
   public Icon getMusicTabIcon() {
     return getIcon("TabMusic16.png"); //$NON-NLS-1$    
   }
@@ -29,10 +29,6 @@ public class MusicUI extends AbstractUI {
 
   public Icon getAddFolderIcon() {
     return getIcon("ButtonAddFolder16.png"); //$NON-NLS-1$
-  }
-
-  public Icon getExportPlaylistIcon() {
-    return getIcon("ButtonExport16.png"); //$NON-NLS-1$
   }
 
   public Icon getReplaceToLeftIcon() {

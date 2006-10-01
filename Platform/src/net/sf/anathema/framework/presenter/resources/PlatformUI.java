@@ -18,6 +18,10 @@ public class PlatformUI extends AbstractUI {
   public Icon getSaveTaskBarIcon() {
     return getIcon("TaskBarSave24.png"); //$NON-NLS-1$
   }
+  
+  public Icon getSaveIcon() {
+    return getIcon("ButtonSave16.png");
+  }
 
   public Icon getSaveAllTaskBarIcon() {
     return getIcon("TaskBarSaveAll24.png"); //$NON-NLS-1$
