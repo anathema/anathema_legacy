@@ -56,7 +56,7 @@ public class EquipmentAdditionalPresenter implements IPresenter {
   }
 
   private SmartAction createTemplateAddAction(final IListObjectSelectionView<String> equipmentTemplatePickList) {
-    final SmartAction addAction = new SmartAction(resources.getString("AdditionalTemplateView.AddTemplate.Action.Name")) {
+    final SmartAction addAction = new SmartAction(resources.getString("AdditionalTemplateView.AddTemplate.Action.Name")) { //$NON-NLS-1$
       @Override
       protected void execute(Component parentComponent) {
         model.addEquipmentObjectFor(equipmentTemplatePickList.getSelectedObject());
@@ -79,7 +79,7 @@ public class EquipmentAdditionalPresenter implements IPresenter {
     new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder).initPresentation();
     if (model.canBeRemoved(selectedObject)) {
       objectView.addAction(new SmartAction(
-          resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"),
+          resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"), //$NON-NLS-1$
           removeIcon) {
         @Override
         protected void execute(Component parentComponent) {

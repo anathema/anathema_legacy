@@ -22,6 +22,6 @@ public class TagPageProperties {
   }
 
   public String getLabel(IWeaponTag tag) {
-    return resources.getString("Equipment.Tag." + tag.getId());
+    return resources.getString("Equipment.Tag." + tag.getId()); //$NON-NLS-1$
   }
 }

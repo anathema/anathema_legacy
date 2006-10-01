@@ -41,7 +41,7 @@ public class RemoveStatsAction extends SmartAction {
       }
     });
     updateEnabled();
-    setToolTipText(resources.getString("Equipment.Stats.Action.Remove.Tooltip"));
+    setToolTipText(resources.getString("Equipment.Stats.Action.Remove.Tooltip")); //$NON-NLS-1$
   }
 
   private void updateEnabled() {
