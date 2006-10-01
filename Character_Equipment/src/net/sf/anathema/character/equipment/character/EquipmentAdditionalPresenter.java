@@ -50,9 +50,22 @@ public class EquipmentAdditionalPresenter implements IPresenter {
       }
     });
     equipmentTemplatePickList.setCellRenderer(new EquipmentObjectCellRenderer());
+    setObjects(equipmentTemplatePickList);
+    view.setSelectButtonAction(createTemplateAddAction(equipmentTemplatePickList));
+    view.setRefreshButtonAction(createRefreshAction(equipmentTemplatePickList));
+  }
+
+  private SmartAction createRefreshAction(final IListObjectSelectionView<String> equipmentTemplatePickList) {
+    return new SmartAction("Refresh") {
+      @Override
+      protected void execute(Component parentComponent) {
+        setObjects(equipmentTemplatePickList);
+      }      
+    };
+  }
+
+  private void setObjects(final IListObjectSelectionView<String> equipmentTemplatePickList) {
     equipmentTemplatePickList.setObjects(model.getAvailableTemplateIds());
-    final SmartAction addAction = createTemplateAddAction(equipmentTemplatePickList);
-    view.setSelectButtonAction(addAction);
   }
 
   private SmartAction createTemplateAddAction(final IListObjectSelectionView<String> equipmentTemplatePickList) {

@@ -14,4 +14,6 @@ public interface IEquipmentAdditionalView extends ISimpleTabView {
   public void removeEquipmentObjectView(IEquipmentObjectView objectView);
 
   public void setSelectButtonAction(Action action);
+
+  public void setRefreshButtonAction(Action action);
 }

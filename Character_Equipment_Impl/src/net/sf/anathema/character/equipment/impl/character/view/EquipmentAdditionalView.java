@@ -21,7 +21,9 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView {
 
   private final ListObjectSelectionView<String> equipmentPickList = new ListObjectSelectionView<String>(String.class);
   private final JPanel panel = new JPanel(new GridDialogLayout(3, false));
+  private final JPanel buttonPanel = new JPanel(new GridDialogLayout(1, false));
   private final JButton selectButton = new JButton();
+  private final JButton refreshButton = new JButton();
   private final TaskPaneView<EquipmentObjectView> taskPaneView = new TaskPaneView<EquipmentObjectView>(
       new ITaskPaneGroupViewFactory<EquipmentObjectView>() {
         public EquipmentObjectView createView() {
@@ -33,7 +35,9 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView {
     JScrollPane itemScrollpane = new JScrollPane(equipmentPickList.getComponent());
     itemScrollpane.setPreferredSize(new Dimension(150, 250));
     panel.add(itemScrollpane, GridDialogLayoutData.FILL_BOTH);
-    panel.add(selectButton, GridDialogLayoutData.CENTER);
+    panel.add(buttonPanel, GridDialogLayoutData.CENTER);
+    buttonPanel.add(selectButton);
+    buttonPanel.add(refreshButton);
     taskPaneView.getComponent().setPreferredSize(new Dimension(150, 250));
     panel.add(taskPaneView.getComponent(), GridDialogLayoutData.FILL_BOTH);
   }
@@ -52,6 +56,10 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView {
 
   public void setSelectButtonAction(Action action) {
     selectButton.setAction(action);
+  }
+
+  public void setRefreshButtonAction(Action action) {
+    refreshButton.setAction(action);
   }
 
   public boolean needsScrollbar() {
