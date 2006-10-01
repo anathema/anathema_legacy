@@ -5,7 +5,6 @@ import java.awt.GridLayout;
 
 import javax.swing.Action;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
@@ -34,17 +33,16 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
   private ListObjectSelectionView<String> templateListView = new ListObjectSelectionView<String>(String.class);
   private SingleSelectionActionAddableListView<IEquipmentStats> statsListView;
   private JPanel ruleSetPanel = new JPanel(new GridDialogLayout(2, false));
-  private JPanel editTemplateButtonPanel = new JPanel(new GridLayout(1, 0));
+  private JPanel editTemplateButtonPanel = new JPanel(new GridLayout(0, 1));
   private TitledPanel templateListPanel = new TitledPanel("", new JScrollPane(templateListView.getComponent()));
-  private TitledPanel editTemplatePanel = new TitledPanel("", editTemplateView);
-  
+
   public JComponent getComponent() {
     if (contentPanel == null) {
       templateListView.getComponent().setPreferredSize(new Dimension(150, 200));
-      contentPanel = new JPanel(new GridDialogLayout(2, false));
+      contentPanel = new JPanel(new GridDialogLayout(3, false));
       contentPanel.add(templateListPanel, GridDialogLayoutData.FILL_BOTH);
-      contentPanel.add(editTemplatePanel, GridDialogLayoutData.FILL_BOTH);
-      editTemplateView.add(editTemplateButtonPanel);
+      contentPanel.add(editTemplateButtonPanel);
+      contentPanel.add(editTemplateView, GridDialogLayoutData.FILL_BOTH);
       editTemplateView.add(descriptionPanel, GridDialogLayoutData.FILL_HORIZONTAL);
       editTemplateView.add(ceateStatsPanel(), GridDialogLayoutData.FILL_BOTH);
     }
@@ -75,12 +73,8 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
   }
 
   private void setTitleText(String headerText, TitledPanel panel) {
-    TitledBorder titledBorder = (TitledBorder) ((CompoundBorder) panel.getBorder()).getOutsideBorder(); 
+    TitledBorder titledBorder = (TitledBorder) ((CompoundBorder) panel.getBorder()).getOutsideBorder();
     titledBorder.setTitle(headerText);
-  }
-
-  public void setEditTemplateHeader(String headerText) {
-    setTitleText(headerText, editTemplatePanel);
   }
 
   public void fillDescriptionPanel(JComponent descriptionPanel) {

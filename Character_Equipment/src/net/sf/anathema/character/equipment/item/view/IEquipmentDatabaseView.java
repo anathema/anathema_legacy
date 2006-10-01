@@ -21,8 +21,6 @@ public interface IEquipmentDatabaseView extends IView {
 
   public IObjectSelectionView<IExaltedRuleSet> initRuleSetSelectionView(String label, ListCellRenderer renderer);
 
-  public void setEditTemplateHeader(String headerText);
-
   public void setTemplateListHeader(String headerText);
 
   public void addEditTemplateAction(Action action);
