@@ -115,6 +115,7 @@
 		<parameter id="bundle" value="Craft"/>
 		<parameter id="bundle" value="Dragon-Blooded"/>
 		<parameter id="bundle" value="Equipment"/>
+		<parameter id="bundle" value="Equipment_Database"/>
 		<parameter id="bundle" value="Health"/>
 		<parameter id="bundle" value="Intimacies"/>
 		<parameter id="bundle" value="Lunar"/>
