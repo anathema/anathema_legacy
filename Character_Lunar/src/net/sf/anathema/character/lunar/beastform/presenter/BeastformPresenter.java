@@ -60,6 +60,7 @@ public class BeastformPresenter implements IPresenter {
     final IMagicLearnView giftView = view.addGiftsView(new GiftViewLearnProperties(resources, giftModel));
 
     giftView.addMagicViewListener(new IMagicViewListener() {
+      @SuppressWarnings("unchecked")
       public void magicRemoved(Object[] removedMagic) {
         giftModel.removeQualitySelection((IQualitySelection<IGift>) removedMagic[0]);
       }
