@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
   private final IArmourStats naturalArmour;
@@ -82,5 +83,13 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
   @Override
   protected IEquipmentTemplate loadEquipmentTemplate(String templateId) {
     return equipmentTemplateProvider.loadTemplate(templateId);
+  }
+  
+  @Override
+  protected IEquipmentItem getSpecialManagedItem(String templateId) {
+    if (templateId.equals(naturalWeaponsItem.getName())) {
+      return naturalWeaponsItem;
+    }
+    return null;
   }
 }

@@ -8,7 +8,7 @@ public interface IEquipmentItemCollection {
 
   public String[] getAvailableTemplateIds();
 
-  public void addEquipmentObjectFor(String templateId);
+  public IEquipmentItem addEquipmentObjectFor(String templateId);
 
   public void addEquipmentObjectListener(ICollectionListener<IEquipmentItem> listener);
 

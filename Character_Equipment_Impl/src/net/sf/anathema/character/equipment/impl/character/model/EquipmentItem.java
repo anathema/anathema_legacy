@@ -45,4 +45,16 @@ public class EquipmentItem implements IEquipmentItem {
       printedStats.remove(stats);
     }
   }
+  
+  public void setUnprinted() {
+    printedStats.clear();
+  }
+  
+  public void setPrinted(String printedStatId) {
+    for (IEquipmentStats stats : getStats()) {
+      if (stats.getName().getId().equals(printedStatId)) {
+        printedStats.add(stats);
+      }
+    }    
+  }
 }

@@ -49,6 +49,9 @@ public class Db4OEquipmentDatabase implements IEquipmentDatabase, IItemData {
         return candidate.getName().equals(templateId);
       }
     });
+    if (results.isEmpty()) {
+      return null;
+    }
     return results.next();
   }
 

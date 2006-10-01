@@ -40,4 +40,12 @@ public class DummyEquipmentObject implements IEquipmentItem {
   public boolean isPrintEnabled(IEquipmentStats stats) {
     return false;
   }
+  
+  public void setUnprinted() {
+    //nothing to do    
+  }
+  
+  public void setPrinted(String printedStatId) {
+    //nothing to do
+  }
 }

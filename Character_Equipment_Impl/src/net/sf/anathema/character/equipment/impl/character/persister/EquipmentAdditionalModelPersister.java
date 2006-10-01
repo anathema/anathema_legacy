@@ -1,18 +1,50 @@
 package net.sf.anathema.character.equipment.impl.character.persister;
 
+import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
+import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
+import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModel;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
+import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.logging.Logger;
+import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
 public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
-
-  public void load(Element parent, IAdditionalModel model) throws PersistenceException {
-    //Nothing to do
-  }
+  private static final Logger logger = Logger.getLogger(EquipmentAdditionalModelPersister.class);
+  private static final String TAG_ITEM = "item";
+  private static final String TAG_TEMPLATE_ID = "templateId";
+  private static final String TAG_PRINT_STATS = "printedStats";
 
   public void save(Element parent, IAdditionalModel model) {
-    //Nothing to do
+    IEquipmentItem[] equipmentItems = ((IEquipmentAdditionalModel) model).getEquipmentItems();
+    for (IEquipmentItem item : equipmentItems) {
+      Element itemElement = parent.addElement(TAG_ITEM);
+      itemElement.addElement(TAG_TEMPLATE_ID).addCDATA(item.getName());
+      for (IEquipmentStats stats : item.getStats()) {
+        if (item.isPrintEnabled(stats)) {
+          itemElement.addElement(TAG_PRINT_STATS).addCDATA(stats.getName().getId());
+        }
+      }
+    }
+  }
+
+  public void load(Element parent, IAdditionalModel model) throws PersistenceException {
+    IEquipmentAdditionalModel equipmentModel = (EquipmentAdditionalModel) model;
+    for (Element itemElement : ElementUtilities.elements(parent, TAG_ITEM)) {
+      String templateId = itemElement.elementText(TAG_TEMPLATE_ID);
+      IEquipmentItem item = equipmentModel.addEquipmentObjectFor(templateId);
+      if (item == null) {
+        logger.warn("No equipment template registered for id: " + templateId + ".");
+        continue;
+      }
+      item.setUnprinted();
+      for (Element statsElement : ElementUtilities.elements(itemElement, TAG_PRINT_STATS)) {
+        String printedStatId = statsElement.getText();
+        item.setPrinted(printedStatId);
+      }
+    }
   }
 }

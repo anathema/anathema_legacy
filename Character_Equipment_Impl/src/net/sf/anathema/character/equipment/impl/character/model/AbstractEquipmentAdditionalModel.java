@@ -47,10 +47,15 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
     return equipmentItems.toArray(new IEquipmentItem[equipmentItems.size()]);
   }
 
-  public void addEquipmentObjectFor(String templateId) {
+  public IEquipmentItem addEquipmentObjectFor(String templateId) {
     final IEquipmentTemplate template = loadEquipmentTemplate(templateId);
-    addEquipmentObjectFor(template);
+    if (template == null) {
+      return getSpecialManagedItem(templateId);
+    }
+    return addEquipmentObjectFor(template);
   }
+
+  protected abstract IEquipmentItem getSpecialManagedItem(String templateId);
 
   protected abstract IEquipmentTemplate loadEquipmentTemplate(String templateId);
 

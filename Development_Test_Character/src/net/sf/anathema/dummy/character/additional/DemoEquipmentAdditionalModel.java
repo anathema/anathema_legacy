@@ -56,4 +56,9 @@ public class DemoEquipmentAdditionalModel extends AbstractEquipmentAdditionalMod
     Set<String> templateIds = availableTemplates.keySet();
     return templateIds.toArray(new String[templateIds.size()]);
   }
+
+  @Override
+  protected IEquipmentItem getSpecialManagedItem(String templateId) {
+    return null;
+  }
 }

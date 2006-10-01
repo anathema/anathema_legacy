@@ -13,4 +13,8 @@ public interface IEquipmentItem {
   public void setPrintEnabled(IEquipmentStats equipment, boolean enabled);
 
   public boolean isPrintEnabled(IEquipmentStats stats);
+
+  public void setUnprinted();
+
+  public void setPrinted(String printedStatId);
 }
