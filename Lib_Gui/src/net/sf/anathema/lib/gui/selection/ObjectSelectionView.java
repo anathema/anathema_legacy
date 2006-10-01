@@ -49,7 +49,7 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V>, IGridDia
   public void addComponents(IGridDialogPanel dialogPanel) {
     addComponents(dialogPanel, new GridDialogLayoutData());
   }
-
+  
   public void addComponents(IGridDialogPanel panel, final IGridDialogLayoutData selectionData) {
     panel.add(new IDialogComponent() {
       public int getColumnCount() {
@@ -57,8 +57,7 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V>, IGridDia
       }
 
       public void fillInto(JPanel layoutPanel, int columnCount) {
-        layoutPanel.add(label);
-        layoutPanel.add(comboBox.getComponent(), selectionData);
+        addTo(layoutPanel, selectionData);
       }
     });
   }
