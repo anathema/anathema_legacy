@@ -32,7 +32,7 @@ public class Db4OEquipmentDatabase implements IEquipmentDatabase, IItemData {
 
   public String[] getAllAvailableTemplateIds() {
     final Set<String> idSet = new HashSet<String>();
-    container.query(new Predicate<IEquipmentTemplate>() {
+    queryContainer(new Predicate<IEquipmentTemplate>() {
       @Override
       public boolean match(IEquipmentTemplate candidate) {
         idSet.add(candidate.getName());
@@ -40,6 +40,10 @@ public class Db4OEquipmentDatabase implements IEquipmentDatabase, IItemData {
       }
     });
     return idSet.toArray(new String[idSet.size()]);
+  }
+
+  public void queryContainer(Predicate<IEquipmentTemplate> predicate) {
+    container.query(predicate);
   }
 
   public IEquipmentTemplate loadTemplate(final String templateId) {
@@ -86,6 +90,6 @@ public class Db4OEquipmentDatabase implements IEquipmentDatabase, IItemData {
   }
 
   public void setPrintNameAdjuster(PrintNameAdjuster adjuster) {
-    // nothing to do    
+    // nothing to do
   }
 }

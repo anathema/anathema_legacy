@@ -1,7 +1,11 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import com.db4o.query.Predicate;
 
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
@@ -9,6 +13,7 @@ import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
@@ -76,14 +81,32 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
   }
 
   public String[] getAvailableTemplateIds() {
-    return equipmentTemplateProvider.getAllAvailableTemplateIds();
+    final Set<String> idSet = new HashSet<String>();
+    equipmentTemplateProvider.queryContainer(new Predicate<IEquipmentTemplate>() {
+      @Override
+      public boolean match(IEquipmentTemplate candidate) {
+        if (candidate.getStats(getRuleSet()).length > 0) {
+          idSet.add(candidate.getName());
+        }
+        else {
+          for (IExaltedRuleSet rules : ExaltedRuleSet.values()) {
+            if (candidate.getStats(rules).length > 0) {
+              return false;
+            }
+          }
+          idSet.add(candidate.getName());
+        }
+        return false;
+      }
+    });
+    return idSet.toArray(new String[idSet.size()]);
   }
 
   @Override
   protected IEquipmentTemplate loadEquipmentTemplate(String templateId) {
     return equipmentTemplateProvider.loadTemplate(templateId);
   }
-  
+
   @Override
   protected IEquipmentItem getSpecialManagedItem(String templateId) {
     if (templateId.equals(naturalWeaponsItem.getName())) {

@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import com.db4o.query.Predicate;
+
 import net.sf.anathema.character.equipment.impl.character.model.natural.NaturalWeaponTemplate;
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
@@ -37,6 +39,10 @@ public class DemoEquipmentDatabase implements IEquipmentDatabase {
   public String[] getAllAvailableTemplateIds() {
     Set<String> idSet = templatesById.keySet();
     return idSet.toArray(new String[idSet.size()]);
+  }
+  
+  public void queryContainer(Predicate<IEquipmentTemplate> predicate) {
+    // nothing to do    
   }
 
   public IEquipmentTemplate loadTemplate(String templateId) {

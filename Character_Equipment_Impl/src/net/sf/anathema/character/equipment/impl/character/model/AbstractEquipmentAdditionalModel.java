@@ -82,4 +82,8 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
   public final void addEquipmentObjectListener(ICollectionListener<IEquipmentItem> listener) {
     equipmentItemControl.addListener(listener);
   }
+  
+  protected final IExaltedRuleSet getRuleSet() {
+    return ruleSet;
+  }
 }
