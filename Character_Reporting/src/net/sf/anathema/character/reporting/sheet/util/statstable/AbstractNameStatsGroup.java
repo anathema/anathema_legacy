@@ -23,7 +23,7 @@ public abstract class AbstractNameStatsGroup<T extends IStats> extends AbstractT
     return new Float[] { new Float(6) };
   }
 
-  public final void addContent(PdfPTable table, Font font, T stats) {
+  public void addContent(PdfPTable table, Font font, T stats) {
     if (stats == null) {
       table.addCell(createTextCell(font, "")); //$NON-NLS-1$
     }

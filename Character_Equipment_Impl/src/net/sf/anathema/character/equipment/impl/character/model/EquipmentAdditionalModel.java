@@ -49,17 +49,22 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
   @SuppressWarnings("unchecked")
   private <K extends IEquipmentStats> void fillPrintEquipmentList(List<K> printStats, Class<K> printedClass) {
     for (IEquipmentItem item : getEquipmentItems()) {
-      IEquipmentStats[] statsArray = item.getStats();
-      if (statsArray.length == 1) {
-        IEquipmentStats stats = statsArray[0];
-        if (doPrint(item, stats, printedClass)) {
-          printStats.add((K) EquipmentCloneUtilities.getRenamedPrintClone(stats, item.getName()));
+      if (item == naturalWeaponsItem) {
+        for (IEquipmentStats stats : naturalWeaponsItem.getStats()) {
+          if (doPrint(naturalWeaponsItem, stats, printedClass)) {
+            printStats.add((K) stats);
+          }
         }
       }
       else {
+        IEquipmentStats[] statsArray = item.getStats();
         for (IEquipmentStats stats : statsArray) {
           if (doPrint(item, stats, printedClass)) {
-            printStats.add((K) stats);
+            String itemName = item.getName();
+            if (statsArray.length > 1) {
+              itemName += " - " + stats.getName();
+            }
+            printStats.add((K) EquipmentCloneUtilities.getRenamedPrintClone(stats, itemName));
           }
         }
       }
