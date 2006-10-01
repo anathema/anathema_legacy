@@ -7,9 +7,6 @@ import net.sf.anathema.lib.resources.IResources;
 
 public abstract class EquipmentStatisticsProperties {
 
-  private final BasicMessage nameUndefinedMessage = new BasicMessage(
-      "Please enter a name for this set of statistics.",
-      MessageType.ERROR);
   private final IResources resources;
 
   public EquipmentStatisticsProperties(IResources resources) {
@@ -17,11 +14,11 @@ public abstract class EquipmentStatisticsProperties {
   }
 
   public String getNameLabel() {
-    return "Name:";
+    return getLabelString("Equipment.Creation.Stats.Name"); //$NON-NLS-1$
   }
 
   public IBasicMessage getUndefinedNameMessage() {
-    return nameUndefinedMessage;
+    return new BasicMessage(getString("Equipment.Creation.Stats.NoNameMessage"), MessageType.ERROR); //$NON-NLS-1$
   }
 
   public abstract String getDefaultName();
@@ -33,7 +30,7 @@ public abstract class EquipmentStatisticsProperties {
   protected final String getString(String key) {
     return resources.getString(key);
   }
-  
+
   protected final String getLabelString(String key) {
     return getString(key) + ":"; //$NON-NLS-1$
   }
