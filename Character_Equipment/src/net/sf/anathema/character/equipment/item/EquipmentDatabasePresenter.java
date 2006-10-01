@@ -40,6 +40,7 @@ public class EquipmentDatabasePresenter implements IPresenter {
     initBasicDetailsView();
     new EquipmentEditStatsPresenter(resources, model, view).initPresentation();
     view.setTemplateListHeader("Available Templates");
+    model.getTemplateEditModel().setNewTemplate();
   }
 
   private void addEditTemplateActions() {

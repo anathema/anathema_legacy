@@ -47,7 +47,6 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     Ensure.ensureArgumentNotNull(templateId);
     this.editTemplateId = templateId;
     editedTemplate = database.loadTemplate(templateId);
-    // TODO Fehlerbehandlung bei Template nicht gefunden
     getDescription().getName().setText(editedTemplate.getName());
     getDescription().getContent().setText(editedTemplate.getDescription());
     setMaterialComposition(editedTemplate.getComposition());

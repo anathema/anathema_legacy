@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.item;
 
 import java.awt.Component;
+import java.awt.Dimension;
 
 import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
@@ -43,11 +44,19 @@ public final class SaveEquipmentTemplateAction extends SmartAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    // TODO Speichern des Templates im ProgressMonitor
     try {
       IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
       IEquipmentTemplate saveTemplate = editModel.createTemplate();
       String editTemplateId = editModel.getEditTemplateId();
+      if (!saveTemplate.getName().equals(editTemplateId)) {
+        IEquipmentTemplate existingTemplate = model.getDatabase().loadTemplate(saveTemplate.getName());
+        if (existingTemplate != null) {
+          if (new OverwriteItemsVetor(parentComponent).vetos()) {
+            return;
+          }
+          model.getDatabase().deleteTemplate(existingTemplate.getName());
+        }
+      }
       if (editTemplateId != null) {
         model.getDatabase().updateTemplate(editTemplateId, saveTemplate);
       }
