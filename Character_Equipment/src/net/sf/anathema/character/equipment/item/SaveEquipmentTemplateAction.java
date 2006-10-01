@@ -15,6 +15,7 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.resources.IResources;
 
 public final class SaveEquipmentTemplateAction extends SmartAction {
+  private final IResources resources;
   private final IEquipmentDatabaseManagement model;
   private final IChangeListener changeListener = new IChangeListener() {
     public void changeOccured() {
@@ -29,6 +30,7 @@ public final class SaveEquipmentTemplateAction extends SmartAction {
 
   public SaveEquipmentTemplateAction(IResources resources, IEquipmentDatabaseManagement model) {
     super(new PlatformUI(resources).getSaveIcon());
+    this.resources = resources;
     this.model = model;
     model.getTemplateEditModel().getDescription().getName().addTextChangedListener(stringChangeListener);
     model.getTemplateEditModel().getDescription().getContent().addTextChangedListener(stringChangeListener);
@@ -50,7 +52,7 @@ public final class SaveEquipmentTemplateAction extends SmartAction {
       if (!saveTemplate.getName().equals(editTemplateId)) {
         IEquipmentTemplate existingTemplate = model.getDatabase().loadTemplate(saveTemplate.getName());
         if (existingTemplate != null) {
-          if (new OverwriteItemsVetor(parentComponent).vetos()) {
+          if (new OverwriteItemsVetor(parentComponent, resources).vetos()) {
             return;
           }
           model.getDatabase().deleteTemplate(existingTemplate.getName());

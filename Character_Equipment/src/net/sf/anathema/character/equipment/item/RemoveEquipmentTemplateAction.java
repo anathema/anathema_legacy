@@ -12,12 +12,14 @@ import net.sf.anathema.lib.resources.IResources;
 public class RemoveEquipmentTemplateAction extends SmartAction {
   private final IEquipmentDatabaseManagement model;
   private final IEquipmentDatabaseView view;
+  private final IResources resources;
 
   public RemoveEquipmentTemplateAction(
       IResources resources,
       IEquipmentDatabaseManagement model,
       IEquipmentDatabaseView view) {
     super(new BasicUi(resources).getRemoveIcon());
+    this.resources = resources;
     this.model = model;
     this.view = view;
     view.getTemplateListView().addObjectSelectionChangedListener(new IObjectValueChangedListener<String>() {
@@ -34,7 +36,7 @@ public class RemoveEquipmentTemplateAction extends SmartAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    DeleteItemsVetor vetor = new DeleteItemsVetor(parentComponent);
+    DeleteItemsVetor vetor = new DeleteItemsVetor(parentComponent, resources);
     if (vetor.vetos()) {
       return;
     }
