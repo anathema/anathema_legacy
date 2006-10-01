@@ -47,14 +47,14 @@ public class PerkView implements IPerkView, IView {
   private final JButton addButton = new JButton();
   private Action removeAction;
   private IPerkDetailsView detailsView;
-  private final ActionAddableListView<IQualitySelection<IPerk>> selectedPerksView = new SingleSelectionActionAddableListView(
-      null,
-      IQualitySelection.class);
+  private final ActionAddableListView<IQualitySelection<IPerk>> selectedPerksView;
   private final IMeritsFlawsViewProperties properties;
 
+  @SuppressWarnings("unchecked")
   public PerkView(IMeritsFlawsViewProperties properties) {
     this.properties = properties;
     perkList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    this.selectedPerksView = new SingleSelectionActionAddableListView(null, IQualitySelection.class);
   }
 
   public JComponent getComponent() {
