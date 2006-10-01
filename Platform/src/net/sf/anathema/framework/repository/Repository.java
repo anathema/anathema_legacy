@@ -141,8 +141,6 @@ public class Repository implements IRepository {
     if (subfolder == null) {
       return defaultDataFolder;
     }
-    else {
-      return createDataFolder(getRepositoryFolder(), subfolder);
-    }
+    return createDataFolder(getRepositoryFolder(), subfolder);
   }
 }
