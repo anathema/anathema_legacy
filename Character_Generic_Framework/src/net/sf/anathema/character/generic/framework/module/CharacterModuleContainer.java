@@ -3,15 +3,17 @@ package net.sf.anathema.character.generic.framework.module;
 import net.sf.anathema.character.generic.framework.CharacterGenerics;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObject;
+import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterModuleContainer {
 
-  private CharacterGenerics characterGenerics = new CharacterGenerics();
+  private CharacterGenerics characterGenerics;
   private final IResources resources;
 
-  public CharacterModuleContainer(IResources resources) {
+  public CharacterModuleContainer(IResources resources, IDataFileProvider dataFileProvider) {
     this.resources = resources;
+    this.characterGenerics = new CharacterGenerics(dataFileProvider);
     addCharacterGenericsModule(new BasicExaltCharacterModule());
   }
 

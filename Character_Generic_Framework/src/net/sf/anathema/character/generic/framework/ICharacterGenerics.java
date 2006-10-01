@@ -12,6 +12,7 @@ import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.registry.ICollectionRegistry;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -41,4 +42,6 @@ public interface ICharacterGenerics {
   public ICharmProvider getCharmProvider();
   
   public ICharacterModuleObjectMap getModuleObjectMap();
+
+  public IDataFileProvider getDataFileProvider();
 }

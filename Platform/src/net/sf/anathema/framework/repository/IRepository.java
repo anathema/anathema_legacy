@@ -7,8 +7,9 @@ import net.sf.anathema.framework.presenter.action.IFileProvider;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
+import net.sf.anathema.initialization.repository.IDataFileProvider;
 
-public interface IRepository {
+public interface IRepository extends IDataFileProvider {
 
   public IRepositoryWriteAccess createWriteAccess(IItem item) throws RepositoryException;
 

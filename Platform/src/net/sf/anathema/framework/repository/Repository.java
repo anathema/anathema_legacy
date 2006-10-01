@@ -20,11 +20,22 @@ import net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess
 
 public class Repository implements IRepository {
 
+  private static File createDataFolder(File repositoryFolder, String folderName) {
+    File folder = new File(repositoryFolder, folderName);
+    if (!folder.exists()) {
+      folder.mkdir();
+    }
+    return folder;
+  }
+
   private final IItemMangementModel itemManagement;
   private final PrintNameFileAccess printNameFileAccess;
   private final File repositoryFolder;
+  private final File defaultDataFolder;
 
   public Repository(File repositoryFolder, IItemMangementModel itemManagement) {
+    Ensure.ensureArgumentTrue("Repositoryfolder must exist.", repositoryFolder.exists());
+    this.defaultDataFolder = createDataFolder(repositoryFolder, "data");
     this.repositoryFolder = repositoryFolder;
     this.itemManagement = itemManagement;
     this.printNameFileAccess = new PrintNameFileAccess(repositoryFolder);
@@ -124,5 +135,14 @@ public class Repository implements IRepository {
       closedObjects += printNameFileAccess.collectPrintNameFiles(type, itemManagement).length;
     }
     return closedObjects > 0;
+  }
+
+  public File getDataBaseDirectory(String subfolder) {
+    if (subfolder == null) {
+      return defaultDataFolder;
+    }
+    else {
+      return createDataFolder(getRepositoryFolder(), subfolder);
+    }
   }
 }

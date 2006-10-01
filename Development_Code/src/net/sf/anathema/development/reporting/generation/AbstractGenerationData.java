@@ -20,10 +20,13 @@ import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.framework.repository.AnathemaItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.resources.AnathemaResources;
+import net.sf.anathema.test.character.DemoDataFileProvider;
 
 public abstract class AbstractGenerationData implements IGenerationData {
 
-  protected final CharacterModuleContainer container = new CharacterModuleContainerInitializer().initContainer(new AnathemaResources());
+  protected final CharacterModuleContainer container = new CharacterModuleContainerInitializer().initContainer(
+      new AnathemaResources(),
+      new DemoDataFileProvider());
 
   protected final IItem createItem(ICharacter character) {
     return new AnathemaItem(ExaltedCharacterItemTypeConfiguration.createCharacterItemType(), character);

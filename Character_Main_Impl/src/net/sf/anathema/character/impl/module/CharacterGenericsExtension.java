@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.framework.ICharacterGenericsExtension;
 import net.sf.anathema.character.generic.framework.module.CharacterModuleContainer;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
+import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -19,8 +20,10 @@ public class CharacterGenericsExtension implements ICharacterGenericsExtension, 
 
   private ICharacterGenerics characterGenerics;
 
-  public void initialize(IResources resources) {
-    CharacterModuleContainer container = new CharacterModuleContainerInitializer().initContainer(resources);
+  public void initialize(IResources resources, IDataFileProvider dataFileProvider) {
+    CharacterModuleContainer container = new CharacterModuleContainerInitializer().initContainer(
+        resources,
+        dataFileProvider);
     this.characterGenerics = container.getCharacterGenerics();
   }
 

@@ -6,6 +6,7 @@ import java.util.List;
 import net.sf.anathema.character.generic.framework.module.CharacterModuleContainer;
 import net.sf.anathema.character.generic.framework.module.ICharacterModule;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObject;
+import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -30,8 +31,8 @@ public class CharacterModuleContainerInitializer {
     }
   };
 
-  public CharacterModuleContainer initContainer(IResources resources) {
-    CharacterModuleContainer container = new CharacterModuleContainer(resources);
+  public CharacterModuleContainer initContainer(IResources resources, IDataFileProvider dataFileProvider) {
+    CharacterModuleContainer container = new CharacterModuleContainer(resources, dataFileProvider);
     for (String moduleName : moduleNameList) {
       addModule(container, moduleName);
     }

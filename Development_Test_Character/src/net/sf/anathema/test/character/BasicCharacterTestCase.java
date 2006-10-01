@@ -22,7 +22,7 @@ public abstract class BasicCharacterTestCase extends BasicTestCase {
 
   protected final ICharacterGenerics createCharacterGenerics() {
     CharacterModuleContainerInitializer initializer = new CharacterModuleContainerInitializer();
-    CharacterModuleContainer container = initializer.initContainer(new AnathemaResources());
+    CharacterModuleContainer container = initializer.initContainer(new AnathemaResources(), new DemoDataFileProvider());
     return container.getCharacterGenerics();
   }
 

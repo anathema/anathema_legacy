@@ -15,7 +15,7 @@ public interface IAnathemaModel {
   public IRepository getRepository();
 
   public IReportRegistry getReportRegistry();
-  
+
   public IItemTypeRegistry getItemTypeRegistry();
 
   public IRegistry<String, IAnathemaExtension> getExtensionPointRegistry();

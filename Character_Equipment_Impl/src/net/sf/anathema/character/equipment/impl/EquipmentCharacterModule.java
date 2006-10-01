@@ -22,8 +22,9 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void addAdditionalTemplateData(ICharacterGenerics characterGenerics) {
-    IEquipmentTemplateProvider equipmentDatabase = new Db4OEquipmentDatabase(new File(
-        Db4OEquipmentDatabase.DATABASE_FILE));
+    File dataBaseFile = new File(characterGenerics.getDataFileProvider().getDataBaseDirectory(
+        Db4OEquipmentDatabase.DATABASE_FOLDER), Db4OEquipmentDatabase.DATABASE_FILE);
+    IEquipmentTemplateProvider equipmentDatabase = new Db4OEquipmentDatabase(dataBaseFile);
     characterGenerics.getAdditionalModelFactoryRegistry().register(
         EquipmentAdditonalModelTemplate.ID,
         new EquipmentAdditionalModelFactory(equipmentDatabase));

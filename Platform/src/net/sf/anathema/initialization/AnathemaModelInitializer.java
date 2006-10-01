@@ -34,7 +34,7 @@ public class AnathemaModelInitializer {
     AnathemaModel model = new AnathemaModel(createRepositoryFolder());
     for (Map.Entry<String, IAnathemaExtension> entry : extensionById.entrySet()) {
       IAnathemaExtension extension = entry.getValue();
-      extension.initialize(resources);
+      extension.initialize(resources, model.getRepository());
       model.getExtensionPointRegistry().register(entry.getKey(), extension);
     }
     for (IItemTypeConfiguration itemTypeConfiguration : itemTypeConfigurations) {

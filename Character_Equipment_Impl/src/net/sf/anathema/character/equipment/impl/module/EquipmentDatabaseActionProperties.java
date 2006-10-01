@@ -48,7 +48,7 @@ public class EquipmentDatabaseActionProperties extends AbstractDatabaseActionPro
 
   @Override
   protected String getFolderName() {
-    return "equipment"; //$NON-NLS-1$
+    return Db4OEquipmentDatabase.DATABASE_FOLDER;
   }
 
   public String getItemId() {
@@ -57,6 +57,6 @@ public class EquipmentDatabaseActionProperties extends AbstractDatabaseActionPro
 
   public IItemData createItemData(File repositoryFolder) throws IOException {
     File parentFolder = getParentFolder(repositoryFolder);
-    return new Db4OEquipmentDatabase(new File(/*parentFolder,*/Db4OEquipmentDatabase.DATABASE_FILE));
+    return new Db4OEquipmentDatabase(new File(parentFolder, Db4OEquipmentDatabase.DATABASE_FILE));
   }
 }

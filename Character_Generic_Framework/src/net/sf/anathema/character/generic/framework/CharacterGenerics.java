@@ -17,6 +17,7 @@ import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.registry.CollectionRegistry;
 import net.sf.anathema.lib.registry.ICollectionRegistry;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
@@ -37,10 +38,12 @@ public class CharacterGenerics implements ICharacterGenerics {
   private final IRegistry<String, IAdditionalTemplateParser> additionalTemplateParserRegistry = new Registry<String, IAdditionalTemplateParser>();
   private final ICharmProvider charmProvider = new CharmProvider();
   private final CharacterModuleObjectMap moduleObjectMap = new CharacterModuleObjectMap();
+  private final IDataFileProvider dataFileProvider;
 
-  public CharacterGenerics() {
+  public CharacterGenerics(IDataFileProvider dataFileProvider) {
     this.additionalPersisterRegistry = new Registry<String, IAdditionalPersisterFactory>(
         new NullAdditionalPersisterFactory());
+    this.dataFileProvider = dataFileProvider;
   }
 
   public IIdentificateRegistry<IBackgroundTemplate> getBackgroundRegistry() {
@@ -89,5 +92,9 @@ public class CharacterGenerics implements ICharacterGenerics {
 
   public CharacterModuleObjectMap getModuleObjectMap() {
     return moduleObjectMap;
+  }
+  
+  public IDataFileProvider getDataFileProvider() {
+    return dataFileProvider;
   }
 }

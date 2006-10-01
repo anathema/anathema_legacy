@@ -23,7 +23,7 @@ public class AnathemaModel implements IAnathemaModel {
   private final IReportRegistry reportRegistry = new ReportRegistry();
   private final IRegistry<IItemType, IItemViewFactory> viewFactoryRegistry = new Registry<IItemType, IItemViewFactory>();
   private final IItemTypeRegistry itemTypes = new ItemTypeRegistry();
-  private final IRepository repository;
+  private final Repository repository;
 
   public AnathemaModel(File repositoryFolder) {
     this.repository = new Repository(repositoryFolder, itemManagment);
