@@ -56,7 +56,7 @@ public class EquipmentAdditionalPresenter implements IPresenter {
   }
 
   private SmartAction createTemplateAddAction(final IListObjectSelectionView<String> equipmentTemplatePickList) {
-    final SmartAction addAction = new SmartAction(resources.getString("AdditionalTemplateView.AddTemplate.Action.Name")) { //$NON-NLS-1$
+    final SmartAction addAction = new SmartAction(new BasicUi(resources).getRightArrowIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         model.addEquipmentObjectFor(equipmentTemplatePickList.getSelectedObject());
