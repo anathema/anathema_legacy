@@ -1,17 +1,19 @@
 package net.sf.anathema.character.presenter.util;
 
-import java.awt.Component;
 import java.awt.event.ActionListener;
 
 import javax.swing.ComboBoxEditor;
-import javax.swing.JComboBox;
+import javax.swing.JTextField;
+import javax.swing.plaf.basic.BasicComboBoxEditor;
 
-public class ProxyComboBoxEditor implements ComboBoxEditor {
+import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 
-  private ComboBoxEditor editor = new JComboBox().getEditor();
+public class ProxyComboBoxEditor implements ITextFieldComboBoxEditor {
+
+  private ComboBoxEditor editor = new BasicComboBoxEditor();
   
-  public Component getEditorComponent() {
-    return editor.getEditorComponent();
+  public JTextField getEditorComponent() {
+    return (JTextField) editor.getEditorComponent();
   }
 
   public void setItem(Object anObject) {

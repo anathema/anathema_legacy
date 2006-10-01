@@ -6,15 +6,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import javax.swing.ComboBoxEditor;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.ListCellRenderer;
 
+import net.disy.commons.core.util.StringUtilities;
+import net.disy.commons.swing.events.AbstractDocumentChangeListener;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -31,45 +33,31 @@ public class ButtonControlledObjectSelectionView<V> implements
   private final JLabel label;
 
   public ButtonControlledObjectSelectionView(ListCellRenderer renderer, Icon addIcon, String labelText) {
+    this(renderer, addIcon, labelText, null);
+  }
+
+  public ButtonControlledObjectSelectionView(
+      ListCellRenderer renderer,
+      Icon addIcon,
+      String labelText,
+      ITextFieldComboBoxEditor editor) {
     this.comboBox = new ColoredJComboBox(new DefaultComboBoxModel(new Object[0]));
     this.label = new JLabel(labelText);
     this.comboBox.setRenderer(renderer);
     addButton = new JButton(addIcon);
     addButton.setPreferredSize(new Dimension(addIcon.getIconWidth() + 4, addIcon.getIconHeight() + 4));
-  }
-
-  public void setEnabled(boolean enabled) {
-    comboBox.setEnabled(enabled);
-    addButton.setEnabled(enabled);
-    label.setEnabled(enabled);    
-  }
-  
-  public ButtonControlledObjectSelectionView(
-      ListCellRenderer renderer,
-      Icon addIcon,
-      String labelText,
-      ComboBoxEditor editor) {
-    this(renderer, addIcon, labelText);
-    this.comboBox.setEditable(true);
-    this.comboBox.setEditor(editor);
-  }
-
-  public void addComponents(IGridDialogPanel panel) {
-    panel.add(new IDialogComponent() {
-      public int getColumnCount() {
-        return 3;
-      }
-
-      public void fillInto(JPanel layoutPanel, int columnCount) {
-        layoutPanel.add(label);
-        layoutPanel.add(comboBox, GridDialogLayoutData.FILL_HORIZONTAL);
-        layoutPanel.add(addButton);
-      }
-    });
-  }
-
-  public void setSelectedObject(Object object) {
-    comboBox.setSelectedItem(object);
+    if (editor != null) {
+      this.comboBox.setEditable(true);
+      this.comboBox.setEditor(editor);
+      final JTextField editField = editor.getEditorComponent();
+      editField.getDocument().addDocumentListener(new AbstractDocumentChangeListener() {
+        @Override
+        protected void documentChanged() {
+          addButton.setEnabled(!StringUtilities.isNullOrEmpty(editField.getText()));
+        }
+      });
+      addButton.setEnabled(!StringUtilities.isNullOrEmpty(editField.getText()));
+    }
   }
 
   public void addButtonListener(final IObjectValueChangedListener<V> listener) {
@@ -77,6 +65,20 @@ public class ButtonControlledObjectSelectionView<V> implements
       @SuppressWarnings("unchecked")
       public void actionPerformed(ActionEvent e) {
         listener.valueChanged((V) comboBox.getSelectedItem());
+      }
+    });
+  }
+
+  public void addComponents(IGridDialogPanel panel) {
+    panel.add(new IDialogComponent() {
+      public void fillInto(JPanel layoutPanel, int columnCount) {
+        layoutPanel.add(label);
+        layoutPanel.add(comboBox, GridDialogLayoutData.FILL_HORIZONTAL);
+        layoutPanel.add(addButton);
+      }
+
+      public int getColumnCount() {
+        return 3;
       }
     });
   }
@@ -90,6 +92,25 @@ public class ButtonControlledObjectSelectionView<V> implements
     });
   }
 
+  @SuppressWarnings("unchecked")
+  public V getSelectedObject() {
+    return (V) comboBox.getSelectedItem();
+  }
+
+  public boolean isObjectSelected() {
+    return getSelectedObject() != null;
+  }
+
+  public void setButtonEnabled(boolean enabled) {
+    addButton.setEnabled(enabled);
+  }
+
+  public void setEnabled(boolean enabled) {
+    comboBox.setEnabled(enabled);
+    addButton.setEnabled(enabled);
+    label.setEnabled(enabled);
+  }
+
   public void setObjects(V[] objects) {
     Object selectedItem = comboBox.getSelectedItem();
     DefaultComboBoxModel model = (DefaultComboBoxModel) comboBox.getModel();
@@ -100,16 +121,7 @@ public class ButtonControlledObjectSelectionView<V> implements
     comboBox.setSelectedItem(selectedItem);
   }
 
-  public void setButtonEnabled(boolean enabled) {
-    addButton.setEnabled(enabled);
-  }
-  
-  @SuppressWarnings("unchecked")
-  public V getSelectedObject() {
-    return (V) comboBox.getSelectedItem();
-  }
-  
-  public boolean isObjectSelected() {
-    return getSelectedObject() != null;
+  public void setSelectedObject(Object object) {
+    comboBox.setSelectedItem(object);
   }
 }
