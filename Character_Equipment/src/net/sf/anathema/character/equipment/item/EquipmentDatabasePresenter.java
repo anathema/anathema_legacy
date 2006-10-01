@@ -1,5 +1,9 @@
 package net.sf.anathema.character.equipment.item;
 
+import javax.swing.JPanel;
+
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
@@ -8,7 +12,7 @@ import net.sf.anathema.framework.presenter.view.IdentificateListCellRenderer;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.IPresenter;
-import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
+import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.container.factory.StandardPanelBuilder;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -45,21 +49,31 @@ public class EquipmentDatabasePresenter implements IPresenter {
     view.addEditTemplateAction(new RemoveEquipmentTemplateAction(resources, model, view));
   }
 
-  //TODO: Create ObjectSelectionViews externally and add them to PanelBuilder (they should be in the same row)
   private void initBasicDetailsView() {
     StandardPanelBuilder panelBuilder = new StandardPanelBuilder();
     ITextView nameView = panelBuilder.addLineTextView("Name:", COLUMN_COUNT);
     new TextualPresentation().initView(nameView, model.getTemplateEditModel().getDescription().getName());
     ITextView descriptionView = panelBuilder.addAreaTextView("Description:", 5, COLUMN_COUNT);
     new TextualPresentation().initView(descriptionView, model.getTemplateEditModel().getDescription().getContent());
-    final IObjectSelectionView<MaterialComposition> compositionView = panelBuilder.addObjectSelectionView(
+    final ObjectSelectionView<MaterialComposition> compositionView = new ObjectSelectionView<MaterialComposition>(
         "Composition:",
         new IdentificateListCellRenderer(resources),
         MaterialComposition.values());
-    final IObjectSelectionView<MagicalMaterial> materialView = panelBuilder.addObjectSelectionView(
+    final ObjectSelectionView<MagicalMaterial> materialView = new ObjectSelectionView<MagicalMaterial>(
         "Material:",
         new IdentificateListCellRenderer(resources),
         MagicalMaterial.values());
+    panelBuilder.addDialogComponent(new IDialogComponent() {
+
+      public void fillInto(JPanel panel, int columnCount) {
+        compositionView.addTo(panel, GridDialogLayoutData.FILL_HORIZONTAL);
+        materialView.addTo(panel, GridDialogLayoutData.FILL_HORIZONTAL);
+      }
+
+      public int getColumnCount() {
+        return 4;
+      }
+    });
     compositionView.addObjectSelectionChangedListener(new IObjectValueChangedListener<MaterialComposition>() {
       public void valueChanged(MaterialComposition newValue) {
         model.getTemplateEditModel().setMaterialComposition(newValue);
