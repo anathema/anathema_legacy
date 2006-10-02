@@ -4,25 +4,38 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import net.disy.commons.core.model.BooleanModel;
+import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.resources.IResources;
 
 public class EquipmentObjectPresenter implements IPresenter {
 
   private final IEquipmentItem model;
   private final IEquipmentObjectView view;
   private final IEquipmentStringBuilder stringBuilder;
+  private final IResources resources;
 
-  public EquipmentObjectPresenter(IEquipmentItem model, IEquipmentObjectView view, IEquipmentStringBuilder stringBuilder) {
+  public EquipmentObjectPresenter(
+      IEquipmentItem model,
+      IEquipmentObjectView view,
+      IEquipmentStringBuilder stringBuilder,
+      IResources resources) {
     this.model = model;
     this.view = view;
     this.stringBuilder = stringBuilder;
+    this.resources = resources;
   }
 
   public void initPresentation() {
-    view.setItemTitle(model.getName());
+    String itemTitle = model.getTemplateId();
+    if (model.getMaterialComposition() == MaterialComposition.Variable) {
+      String materialString = resources.getString("MagicMaterial." + model.getMaterial().name()); //$NON-NLS-1$
+      itemTitle += " (" + materialString + ")"; //$NON-NLS-1$ //$NON-NLS-2$
+    }
+    view.setItemTitle(itemTitle);
     String description = model.getDescription();
     if (description != null) {
       view.setItemDescription(description);

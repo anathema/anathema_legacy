@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import net.disy.commons.core.util.Ensure;
+import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
@@ -14,10 +17,15 @@ public class EquipmentItem implements IEquipmentItem {
   private List<IEquipmentStats> printedStats = new ArrayList<IEquipmentStats>();
   private final IEquipmentTemplate template;
   private final IExaltedRuleSet ruleSet;
+  private final MagicalMaterial material;
 
-  public EquipmentItem(IEquipmentTemplate template, IExaltedRuleSet ruleSet) {
+  public EquipmentItem(IEquipmentTemplate template, IExaltedRuleSet ruleSet, MagicalMaterial material) {
+    if (template.getComposition() == MaterialComposition.Variable) {
+      Ensure.ensureArgumentNotNull("Variable material items must be created with material." + material);
+    }
     this.template = template;
     this.ruleSet = ruleSet;
+    this.material = material != null ? material : template.getMaterial();
     Collections.addAll(printedStats, template.getStats(ruleSet));
   }
 
@@ -29,10 +37,18 @@ public class EquipmentItem implements IEquipmentItem {
     return template.getStats(ruleSet);
   }
 
-  public String getName() {
+  public String getTemplateId() {
     return template.getName();
   }
+
+  public MagicalMaterial getMaterial() {
+    return material;
+  }
   
+  public MaterialComposition getMaterialComposition() {
+    return template.getComposition();
+  }
+
   public boolean isPrintEnabled(IEquipmentStats stats) {
     return printedStats.contains(stats);
   }
@@ -45,16 +61,16 @@ public class EquipmentItem implements IEquipmentItem {
       printedStats.remove(stats);
     }
   }
-  
+
   public void setUnprinted() {
     printedStats.clear();
   }
-  
+
   public void setPrinted(String printedStatId) {
     for (IEquipmentStats stats : getStats()) {
       if (stats.getName().getId().equals(printedStatId)) {
         printedStats.add(stats);
       }
-    }    
+    }
   }
 }

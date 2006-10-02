@@ -34,7 +34,7 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
     this.naturalArmour = naturalArmour;
     this.equipmentTemplateProvider = equipmentTemplateProvider;
     if (naturalWeapons != null) {
-      naturalWeaponsItem = addEquipmentObjectFor(naturalWeapons);
+      naturalWeaponsItem = addEquipmentObjectFor(naturalWeapons, null);
     }
   }
 
@@ -69,7 +69,7 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
         IEquipmentStats[] statsArray = item.getStats();
         for (IEquipmentStats stats : statsArray) {
           if (doPrint(item, stats, printedClass)) {
-            String itemName = item.getName();
+            String itemName = item.getTemplateId();
             if (statsArray.length > 1) {
               itemName += " - " + stats.getName(); //$NON-NLS-1$
             }
@@ -113,7 +113,7 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
 
   @Override
   protected IEquipmentItem getSpecialManagedItem(String templateId) {
-    if (templateId.equals(naturalWeaponsItem.getName())) {
+    if (templateId.equals(naturalWeaponsItem.getTemplateId())) {
       return naturalWeaponsItem;
     }
     return null;

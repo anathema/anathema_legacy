@@ -3,6 +3,8 @@ package net.sf.anathema.dummy.character.equipment;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 
@@ -25,7 +27,7 @@ public class DummyEquipmentObject implements IEquipmentItem {
     return allEquipments.toArray(new IEquipmentStats[allEquipments.size()]);
   }
   
-  public String getName() {
+  public String getTemplateId() {
     return name;
   }
   
@@ -47,5 +49,13 @@ public class DummyEquipmentObject implements IEquipmentItem {
   
   public void setPrinted(String printedStatId) {
     //nothing to do
+  }
+
+  public MagicalMaterial getMaterial() {
+    return null;
+  }
+
+  public MaterialComposition getMaterialComposition() {
+    return MaterialComposition.None;
   }
 }

@@ -12,7 +12,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.equipment.character.view.IEquipmentAdditionalView;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
-import net.sf.anathema.character.equipment.character.view.IMagicMaterialView;
+import net.sf.anathema.character.equipment.character.view.IMagicalMaterialView;
 import net.sf.anathema.character.library.taskpane.ITaskPaneGroupViewFactory;
 import net.sf.anathema.character.library.taskpane.TaskPaneView;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
@@ -77,7 +77,7 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView {
     return equipmentPickList;
   }
   
-  public IMagicMaterialView getMagicMaterialView() {
+  public IMagicalMaterialView getMagicMaterialView() {
     return magicMaterialView;
   }
 }

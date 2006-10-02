@@ -1,10 +1,12 @@
 package net.sf.anathema.character.equipment.character.model;
 
+import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 
 public interface IEquipmentItem {
 
-  public String getName();
+  public String getTemplateId();
 
   public String getDescription();
 
@@ -17,4 +19,8 @@ public interface IEquipmentItem {
   public void setUnprinted();
 
   public void setPrinted(String printedStatId);
+
+  public MagicalMaterial getMaterial();
+
+  public MaterialComposition getMaterialComposition();
 }

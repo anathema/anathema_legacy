@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.impl.character.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
@@ -48,20 +49,20 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
     return equipmentItems.toArray(new IEquipmentItem[equipmentItems.size()]);
   }
 
-  public IEquipmentItem addEquipmentObjectFor(String templateId) {
+  public IEquipmentItem addEquipmentObjectFor(String templateId, MagicalMaterial material) {
     final IEquipmentTemplate template = loadEquipmentTemplate(templateId);
     if (template == null) {
       return getSpecialManagedItem(templateId);
     }
-    return addEquipmentObjectFor(template);
+    return addEquipmentObjectFor(template, material);
   }
 
   protected abstract IEquipmentItem getSpecialManagedItem(String templateId);
 
   protected abstract IEquipmentTemplate loadEquipmentTemplate(String templateId);
 
-  protected final IEquipmentItem addEquipmentObjectFor(final IEquipmentTemplate template) {
-    final IEquipmentItem item = new EquipmentItem(template, ruleSet);
+  protected final IEquipmentItem addEquipmentObjectFor(final IEquipmentTemplate template, MagicalMaterial material) {
+    final IEquipmentItem item = new EquipmentItem(template, ruleSet, material);
     equipmentItems.add(item);
     equipmentItemControl.forAllDo(new IClosure<ICollectionListener<IEquipmentItem>>() {
       public void execute(ICollectionListener<IEquipmentItem> input) {

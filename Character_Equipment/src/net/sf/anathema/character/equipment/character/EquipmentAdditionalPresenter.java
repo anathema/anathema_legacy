@@ -14,6 +14,7 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalM
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.character.view.IEquipmentAdditionalView;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
+import net.sf.anathema.character.equipment.character.view.IMagicalMaterialView;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentUI;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.collection.ICollectionListener;
@@ -53,13 +54,12 @@ public class EquipmentAdditionalPresenter implements IPresenter {
         view.removeEquipmentObjectView(objectView);
       }
     });
+    IMagicalMaterialView magicMaterialView = view.getMagicMaterialView(); 
+    initMaterialView(magicMaterialView);
     equipmentTemplatePickList.setCellRenderer(new EquipmentObjectCellRenderer());
     setObjects(equipmentTemplatePickList);
-    view.setSelectButtonAction(createTemplateAddAction(equipmentTemplatePickList));
+    view.setSelectButtonAction(createTemplateAddAction(equipmentTemplatePickList, magicMaterialView));
     view.setRefreshButtonAction(createRefreshAction(equipmentTemplatePickList));
-    String label = resources.getString("MagicMaterial.Label") + ":"; //$NON-NLS-1$ //$NON-NLS-2$
-    DefaultListCellRenderer renderer = new MagicMaterialCellRenderer(resources);
-    view.getMagicMaterialView().initView(label, renderer, MagicalMaterial.values(), null);
     equipmentTemplatePickList.addObjectSelectionChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String templateId) {
         MaterialComposition composition = templateId == null
@@ -71,6 +71,12 @@ public class EquipmentAdditionalPresenter implements IPresenter {
         view.getMagicMaterialView().setSelectedMaterial(defaultMagicMaterial);
       }
     });
+  }
+
+  private void initMaterialView(IMagicalMaterialView magicMaterialView) {
+    String label = resources.getString("MagicMaterial.Label") + ":"; //$NON-NLS-1$ //$NON-NLS-2$
+    DefaultListCellRenderer renderer = new MagicMaterialCellRenderer(resources);
+    magicMaterialView.initView(label, renderer, MagicalMaterial.values(), null);
   }
 
   private SmartAction createRefreshAction(final IListObjectSelectionView<String> equipmentTemplatePickList) {
@@ -88,11 +94,13 @@ public class EquipmentAdditionalPresenter implements IPresenter {
     equipmentTemplatePickList.setObjects(model.getAvailableTemplateIds());
   }
 
-  private SmartAction createTemplateAddAction(final IListObjectSelectionView<String> equipmentTemplatePickList) {
+  private SmartAction createTemplateAddAction(
+      final IListObjectSelectionView<String> equipmentTemplatePickList,
+      final IMagicalMaterialView materialView) {
     final SmartAction addAction = new SmartAction(new BasicUi(resources).getRightArrowIcon()) {
       @Override
       protected void execute(Component parentComponent) {
-        model.addEquipmentObjectFor(equipmentTemplatePickList.getSelectedObject());
+        model.addEquipmentObjectFor(equipmentTemplatePickList.getSelectedObject(), materialView.getSelectedMaterial());
       }
     };
     addAction.setToolTipText(resources.getString("AdditionalTemplateView.AddTemplate.Action.Tooltip")); //$NON-NLS-1$
@@ -110,7 +118,7 @@ public class EquipmentAdditionalPresenter implements IPresenter {
     IEquipmentStringBuilder resourceBuilder = new EquipmentStringBuilder(resources);
     Icon removeIcon = new BasicUi(resources).getRemoveIcon();
     viewsByItem.put(selectedObject, objectView);
-    new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder).initPresentation();
+    new EquipmentObjectPresenter(selectedObject, objectView, resourceBuilder, resources).initPresentation();
     if (model.canBeRemoved(selectedObject)) {
       objectView.addAction(new SmartAction(resources.getString("AdditionalTemplateView.RemoveTemplate.Action.Name"), //$NON-NLS-1$
           removeIcon) {

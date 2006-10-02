@@ -8,11 +8,11 @@ import javax.swing.ListCellRenderer;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.equipment.MagicalMaterial;
-import net.sf.anathema.character.equipment.character.view.IMagicMaterialView;
+import net.sf.anathema.character.equipment.character.view.IMagicalMaterialView;
 import net.sf.anathema.lib.gui.GuiUtilities;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 
-public class MagicMaterialView implements IMagicMaterialView {
+public class MagicMaterialView implements IMagicalMaterialView {
 
   private final ChangeableJComboBox<MagicalMaterial> materialCombo = new ChangeableJComboBox<MagicalMaterial>(
       new MagicalMaterial[0],
