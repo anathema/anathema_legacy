@@ -4,7 +4,6 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.ATTRIB_SUB_TYPE;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CHARACTER_TYPE;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_STATISTICS;
-
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
@@ -22,6 +21,7 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.persistence.charm.CharmConfigurationPersister;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterStatistics;
+import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
@@ -48,14 +48,16 @@ public class CharacterStatisticPersister {
   private final ICharacterGenerics generics;
   private final AdditionalModelPersister additonalModelPersister;
 
-  public CharacterStatisticPersister(ICharacterGenerics generics) {
+  public CharacterStatisticPersister(ICharacterGenerics generics, IAnathemaMessaging messaging) {
     IAdditionalPersister virtueFlawPersister = generics.getAdditonalPersisterFactoryRegistry().get(
-        IAdditionalTemplate.SOLAR_VIRTUE_FLAW_ID).createPersister();
+        IAdditionalTemplate.SOLAR_VIRTUE_FLAW_ID).createPersister(messaging);
     this.virtuePersister = new VirtueConfigurationPersister(virtueFlawPersister);
     this.generics = generics;
     this.characterConceptPersister = new CharacterConceptPersister();
     this.backgroundPersister = new BackgroundConfigurationPersister(generics.getBackgroundRegistry());
-    this.additonalModelPersister = new AdditionalModelPersister(generics.getAdditonalPersisterFactoryRegistry());
+    this.additonalModelPersister = new AdditionalModelPersister(
+        generics.getAdditonalPersisterFactoryRegistry(),
+        messaging);
   }
 
   public void save(Element parent, ICharacterStatistics statistics) {

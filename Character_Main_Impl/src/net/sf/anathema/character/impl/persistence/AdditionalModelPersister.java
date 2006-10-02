@@ -2,6 +2,7 @@ package net.sf.anathema.character.impl.persistence;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
+import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 import net.sf.anathema.lib.collection.Predicate;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.lang.ArrayUtilities;
@@ -18,9 +19,11 @@ public class AdditionalModelPersister {
   private static final String TAG_CONTENT = "Content"; //$NON-NLS-1$
 
   private final IRegistry<String, IAdditionalPersisterFactory> registry;
+  private final IAnathemaMessaging messaging;
 
-  public AdditionalModelPersister(IRegistry<String, IAdditionalPersisterFactory> registry) {
+  public AdditionalModelPersister(IRegistry<String, IAdditionalPersisterFactory> registry, IAnathemaMessaging messaging) {
     this.registry = registry;
+    this.messaging = messaging;
   }
 
   public void load(Element parent, IAdditionalModel[] additionalModels) throws PersistenceException {
@@ -35,7 +38,7 @@ public class AdditionalModelPersister {
         throw new PersistenceException("No model for template id " + templateId); //$NON-NLS-1$
       }
       IAdditionalPersisterFactory factory = registry.get(templateId);
-      factory.createPersister().load(modelElement.element(TAG_CONTENT), model);
+      factory.createPersister(messaging).load(modelElement.element(TAG_CONTENT), model);
     }
   }
 
@@ -58,7 +61,7 @@ public class AdditionalModelPersister {
     for (IAdditionalModel model : additionalModels) {
       Element contentElement = createModelContentElement(overallElement, model);
       IAdditionalPersisterFactory factory = registry.get(model.getTemplateId());
-      factory.createPersister().save(contentElement, model);
+      factory.createPersister(messaging).save(contentElement, model);
     }
   }
 }

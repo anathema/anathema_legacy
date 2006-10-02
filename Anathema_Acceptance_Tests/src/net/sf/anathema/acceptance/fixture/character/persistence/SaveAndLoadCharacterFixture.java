@@ -8,12 +8,13 @@ import net.sf.anathema.character.impl.module.ExaltedCharacterItemTypeConfigurati
 import net.sf.anathema.character.impl.persistence.ExaltedCharacterPersister;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.framework.messaging.AnathemaMessaging;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.repository.AnathemaItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
-
+import net.sf.anathema.framework.resources.AnathemaResources;
 import fit.Fixture;
 import fit.Parse;
 
@@ -30,7 +31,8 @@ public class SaveAndLoadCharacterFixture extends Fixture {
     AnathemaItem anathemaItem = new AnathemaItem(itemType, character);
     IRepositoryItemPersister persister = new ExaltedCharacterPersister(
         itemType,
-        characterSummary.getCharacterGenerics());
+        characterSummary.getCharacterGenerics(),
+        new AnathemaMessaging(new AnathemaResources()));
     anathemaItem.getRepositoryLocation().setId("TestRepositoryId"); //$NON-NLS-1$
     try {
       ByteArrayOutputStream outputStream = new ByteArrayOutputStream();

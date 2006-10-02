@@ -3,6 +3,7 @@ package net.sf.anathema.framework;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
+import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
@@ -25,4 +26,6 @@ public interface IAnathemaModel {
   public IRegistry<IItemType, IItemViewFactory> getViewFactoryRegistry();
 
   public IItemMangementModel getItemManagement();
+
+  public IAnathemaMessaging getMessaging();
 }

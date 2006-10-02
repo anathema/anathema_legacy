@@ -5,12 +5,14 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 import java.io.IOException;
 import java.io.OutputStream;
 
+import net.disy.commons.core.message.MessageType;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 import net.sf.anathema.framework.persistence.AbstractSingleFileItemPersister;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.repository.AnathemaItem;
@@ -30,15 +32,18 @@ public class ExaltedCharacterPersister extends AbstractSingleFileItemPersister {
   private final CharacterStatisticPersister statisticsPersister;
   private final IItemType characterType;
   private final ICharacterGenerics generics;
+  private final IAnathemaMessaging messaging;
 
-  public ExaltedCharacterPersister(IItemType characterType, ICharacterGenerics generics) {
+  public ExaltedCharacterPersister(IItemType characterType, ICharacterGenerics generics, IAnathemaMessaging messaging) {
     this.characterType = characterType;
     this.generics = generics;
-    this.statisticsPersister = new CharacterStatisticPersister(generics);
+    this.messaging = messaging;
+    this.statisticsPersister = new CharacterStatisticPersister(generics, messaging);
   }
 
   @Override
   public void save(OutputStream stream, IItem item) throws IOException {
+    messaging.addMessage("CharacterPersistence.SavingCharacter", new Object[] {item.getDisplayName()}, MessageType.INFORMATION);
     Element rootElement = DocumentHelper.createElement(TAG_EXALTED_CHARACTER_ROOT);
     repositoryItemPerister.save(rootElement, item);
     save(rootElement, (ICharacter) item.getItemData());

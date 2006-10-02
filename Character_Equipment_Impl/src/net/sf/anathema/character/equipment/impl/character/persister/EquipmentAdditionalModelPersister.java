@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.persister;
 
+import net.disy.commons.core.message.MessageType;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
@@ -9,18 +10,23 @@ import net.sf.anathema.character.equipment.impl.character.model.MissingMaterialE
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersister;
+import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
 public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
-  private static final Logger logger = Logger.getLogger(EquipmentAdditionalModelPersister.class);
+
   private static final String TAG_ITEM = "item";
   private static final String TAG_TEMPLATE_ID = "templateId";
   private static final String TAG_PRINT_STATS = "printedStats";
   private static final String TAG_MATERIAL = "material";
+  private IAnathemaMessaging messageIndicator;
+
+  public EquipmentAdditionalModelPersister(IAnathemaMessaging messageIndicator) {
+    this.messageIndicator = messageIndicator;
+  }
 
   public void save(Element parent, IAdditionalModel model) {
     IEquipmentItem[] equipmentItems = ((IEquipmentAdditionalModel) model).getEquipmentItems();
@@ -53,11 +59,17 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
         item = equipmentModel.addEquipmentObjectFor(templateId, magicalMaterial);
       }
       catch (MissingMaterialException e) {
-        logger.warn("No naterial found for equipment template " + templateId + ".");
+        messageIndicator.addMessage(
+            "EquipmentPersistence.NoMaterialFound",
+            new Object[] { templateId },
+            MessageType.WARNING);
         continue;
       }
       if (item == null) {
-        logger.warn("No equipment template registered for id: " + templateId + ".");
+        messageIndicator.addMessage(
+            "EquipmentPersistence.NoTemplateFound",
+            new Object[] { templateId },
+            MessageType.WARNING);
         continue;
       }
       item.setUnprinted();

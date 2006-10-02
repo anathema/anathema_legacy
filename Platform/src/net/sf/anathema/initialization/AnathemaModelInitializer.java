@@ -31,7 +31,7 @@ public class AnathemaModelInitializer {
   }
 
   public IAnathemaModel initializeModel(IResources resources) throws RepositoryException {
-    AnathemaModel model = new AnathemaModel(createRepositoryFolder());
+    AnathemaModel model = new AnathemaModel(createRepositoryFolder(), resources);
     for (Map.Entry<String, IAnathemaExtension> entry : extensionById.entrySet()) {
       IAnathemaExtension extension = entry.getValue();
       extension.initialize(resources, model.getRepository());

@@ -49,7 +49,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
 
   @Override
   protected IRepositoryItemPersister createPersister(IAnathemaModel model) {
-    return new ExaltedCharacterPersister(getItemType(), getGenerics(model));
+    return new ExaltedCharacterPersister(getItemType(), getGenerics(model), model.getMessaging());
   }
 
   @Override
