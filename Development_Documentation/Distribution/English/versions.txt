@@ -5,7 +5,7 @@ http://anathema.sf.net
 
 
 ===------------------------------------------------------------------------------===
-			Release 0.12 "Lap" (Upcoming)
+			Release 1.0 "Lap" (22/10/06)
 ===------------------------------------------------------------------------------===
 -- ATTENTION --
 Characters knowing 2e "Phoenix Renewal Tactic" or 1e "(Type) Exalt Ways" are in an illegal state
@@ -16,13 +16,24 @@ are migrated to the new printing engine.
 Please contact us if you encounter any problems, we will fix your character file.
 
 -- Features --
++ Equipment
++ Crafts
 + Added proper support for Charms with multiple variants.
++ Motivation now is changeable
+
+-- Usability --
++ New art through and through
++ New "New" and "Load" dialogs
+
+-- Miscellaneous --
++ New website
 
 -- Bugs Fixed --
 * Corrected charm prerequisites for 
 	"Fivefold Bulwark Stance", "Invincible Fury of the Dawn", "Mist on Water Attack"
 * Fixed a problem with Dragon-Blooded Style-Countering Meditation (MartialArts)
 * Fixed a problem with Heart's Blood (Name had to be null for the button to go green.)
+* Corrected enablement/disablement of background-addition button (Must not be empty for button to go green.)
 
 ===------------------------------------------------------------------------------===
 			Release 0.11 "Kirighast" (11/06/06)
