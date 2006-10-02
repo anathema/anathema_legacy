@@ -13,12 +13,14 @@ import com.lowagie.text.pdf.BaseFont;
 
 public class PdfEncodingRegistry {
 
-  private final Table<CharacterType, IExaltedEdition, IPdfPartEncoder> partEncoderTable = new Table<CharacterType, IExaltedEdition, IPdfPartEncoder>(IPdfPartEncoder.class);
+  private final Table<CharacterType, IExaltedEdition, IPdfPartEncoder> partEncoderTable = new Table<CharacterType, IExaltedEdition, IPdfPartEncoder>(
+      IPdfPartEncoder.class);
   private final BaseFont baseFont;
   private final BaseFont symbolBaseFont;
   private IPdfContentBoxEncoder weaponContentEncoder;
   private IPdfContentBoxEncoder armourContentEncoder;
   private IPdfContentBoxEncoder intimaciesEncoder;
+  private IPdfContentBoxEncoder possessionsEncoder;
 
   public PdfEncodingRegistry() {
     this.baseFont = new Font(Font.HELVETICA, 7, Font.NORMAL, Color.BLACK).getCalculatedBaseFont(true);
@@ -57,6 +59,10 @@ public class PdfEncodingRegistry {
     return intimaciesEncoder;
   }
 
+  public IPdfContentBoxEncoder getPossessionsEncoder() {
+    return possessionsEncoder;
+  }
+
   public void setPartEncoder(CharacterType type, IExaltedEdition edition, IPdfPartEncoder partEncoder) {
     partEncoderTable.add(type, edition, partEncoder);
   }
@@ -64,8 +70,12 @@ public class PdfEncodingRegistry {
   public IPdfPartEncoder getPartEncoder(CharacterType type, IExaltedEdition edition) {
     return partEncoderTable.get(type, edition);
   }
-  
+
   public boolean hasPartEncoder(CharacterType type, IExaltedEdition edition) {
     return partEncoderTable.contains(type, edition);
+  }
+
+  public void setPossessionsEncoder(IPdfContentBoxEncoder encoder) {
+    this.possessionsEncoder = encoder;
   }
 }

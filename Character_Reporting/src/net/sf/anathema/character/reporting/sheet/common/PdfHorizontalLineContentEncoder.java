@@ -14,10 +14,6 @@ public class PdfHorizontalLineContentEncoder implements IPdfContentBoxEncoder {
   private final int columnCount;
   private final String headerKey;
 
-  public PdfHorizontalLineContentEncoder(String headerKey) {
-    this(1, headerKey);
-  }
-  
   public String getHeaderKey() {
     return headerKey;
   }

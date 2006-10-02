@@ -7,6 +7,7 @@ import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalPer
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalViewFactory;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditonalModelTemplate;
 import net.sf.anathema.character.equipment.impl.item.model.db4o.Db4OEquipmentDatabase;
+import net.sf.anathema.character.equipment.impl.reporting.PossessionsEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.second.SecondEditionArmourEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.second.SecondEditionWeaponryEncoder;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
@@ -43,6 +44,7 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
     CharacterReportingModuleObject moduleObject = moduleMap.getModuleObject(CharacterReportingModule.class);
     PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
     fillSecondEditionEncodingRegistry(resources, registry);
+    registry.setPossessionsEncoder(new PossessionsEncoder(registry.getBaseFont()));
   }
 
   private void fillSecondEditionEncodingRegistry(IResources resources, PdfEncodingRegistry registry) {

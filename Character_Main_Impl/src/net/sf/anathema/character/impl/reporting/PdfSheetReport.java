@@ -68,7 +68,7 @@ public class PdfSheetReport implements IITextReport {
         return;
       }
       document.newPage();
-      new PdfSecondPageEncoder(resources, encodingRegistry.getBaseFont(), configuration).encode(
+      new PdfSecondPageEncoder(resources, encodingRegistry, configuration).encode(
           document,
           directContent,
           character,
