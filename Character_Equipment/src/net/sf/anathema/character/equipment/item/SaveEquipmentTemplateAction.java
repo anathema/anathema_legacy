@@ -35,6 +35,7 @@ public final class SaveEquipmentTemplateAction extends SmartAction {
     model.getTemplateEditModel().getDescription().getName().addTextChangedListener(stringChangeListener);
     model.getTemplateEditModel().getDescription().getContent().addTextChangedListener(stringChangeListener);
     model.getTemplateEditModel().addStatsChangeListener(changeListener);
+    model.getTemplateEditModel().addCompositionChangeListener(changeListener);
     model.getTemplateEditModel().addMagicalMaterialChangeListener(changeListener);
     updateEnabled();
   }

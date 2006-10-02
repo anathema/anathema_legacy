@@ -87,6 +87,7 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
     }
     return !ObjectUtilities.equals(editedTemplate.getName(), getDescription().getName().getText())
         || !ObjectUtilities.equals(editedTemplate.getDescription(), getDescription().getContent().getText())
+        || !(editedTemplate.getComposition() == getMaterialComposition())
         || !(editedTemplate.getMaterial() == getMagicalMaterial());
   }
 
