@@ -4,6 +4,7 @@ import java.awt.event.WindowListener;
 
 import javax.swing.Action;
 
+import net.sf.anathema.framework.view.messaging.AnathemaStatusBar;
 import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
 
 public interface IAnathemaView {
@@ -25,4 +26,6 @@ public interface IAnathemaView {
   public void setSelectedItemView(IItemView view);
 
   public void showFrame();
+
+  public AnathemaStatusBar getStatusBar();
 }

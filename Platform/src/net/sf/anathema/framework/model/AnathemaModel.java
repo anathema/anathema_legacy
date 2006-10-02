@@ -7,6 +7,7 @@ import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.messaging.AnathemaMessaging;
+import net.sf.anathema.framework.messaging.IAnathemaMessageContainer;
 import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
@@ -27,7 +28,7 @@ public class AnathemaModel implements IAnathemaModel {
   private final IRegistry<IItemType, IItemViewFactory> viewFactoryRegistry = new Registry<IItemType, IItemViewFactory>();
   private final IItemTypeRegistry itemTypes = new ItemTypeRegistry();
   private final Repository repository;
-  private final IAnathemaMessaging messaging;
+  private final AnathemaMessaging messaging;
 
   public AnathemaModel(File repositoryFolder, IResources resources) {
     this.repository = new Repository(repositoryFolder, itemManagment);
@@ -63,6 +64,10 @@ public class AnathemaModel implements IAnathemaModel {
   }
 
   public IAnathemaMessaging getMessaging() {
+    return messaging;
+  }
+
+  public IAnathemaMessageContainer getMessageContainer() {
     return messaging;
   }
 }

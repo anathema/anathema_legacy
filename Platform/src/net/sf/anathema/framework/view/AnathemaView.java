@@ -13,6 +13,7 @@ import net.sf.anathema.framework.presenter.AnathemaViewProperties;
 import net.sf.anathema.framework.view.item.IItemViewManagement;
 import net.sf.anathema.framework.view.item.ItemViewManagement;
 import net.sf.anathema.framework.view.menu.AnathemaMenuBar;
+import net.sf.anathema.framework.view.messaging.AnathemaStatusBar;
 import net.sf.anathema.framework.view.toolbar.AnathemaToolBar;
 import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
 import net.sf.anathema.lib.gui.GuiUtilities;
@@ -24,11 +25,13 @@ public class AnathemaView implements IAnathemaView {
   private final AnathemaMenuBar menu;
   private final IItemViewManagement itemViewManagement;
   private final AnathemaViewProperties properties;
+  private final AnathemaStatusBar statusBar = new AnathemaStatusBar();
 
   public AnathemaView(AnathemaViewProperties properties) {
     this.properties = properties;
     this.itemViewManagement = new ItemViewManagement();
     this.menu = new AnathemaMenuBar(properties.getMainMenuName(), properties.getHelpMenuName());
+    itemViewManagement.setTabAreaComponents(statusBar.getComponent());
     this.mainFrame = initGui();
   }
 
@@ -53,6 +56,10 @@ public class AnathemaView implements IAnathemaView {
   private void initApplicationPanel(JPanel applicationPanel) {
     applicationPanel.add(toolbar.getComponent(), BorderLayout.NORTH);
     applicationPanel.add(itemViewManagement.getComponent(), BorderLayout.CENTER);
+  }
+
+  public AnathemaStatusBar getStatusBar() {
+    return statusBar;
   }
 
   public void showFrame() {

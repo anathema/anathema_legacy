@@ -6,6 +6,7 @@ import net.sf.anathema.development.DevelopmentEnvironmentPresenter;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.environment.AnathemaEnvironment;
 import net.sf.anathema.framework.initialization.IReportFactory;
+import net.sf.anathema.framework.messaging.IAnathemaMessageContainer;
 import net.sf.anathema.framework.module.IItemTypeConfiguration;
 import net.sf.anathema.framework.module.PreferencesElementsExtensionPoint;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
@@ -15,6 +16,7 @@ import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.initialization.plugin.IAnathemaPluginManager;
 import net.sf.anathema.initialization.plugin.IPluginConstants;
 import net.sf.anathema.initialization.plugin.PluginUtilities;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 
 import org.java.plugin.registry.Extension;
@@ -62,6 +64,17 @@ public class AnathemaPresenter {
     if (AnathemaEnvironment.isDevelopment()) {
       new DevelopmentEnvironmentPresenter(model, view, resources).initPresentation();
     }
+    IAnathemaMessageContainer messageContainer = model.getMessageContainer();
+    init(messageContainer);
+  }
+
+  private void init(final IAnathemaMessageContainer messageContainer) {
+    messageContainer.addChangeListener(new IChangeListener() {
+      public void changeOccured() {
+        view.getStatusBar().setLatestMessage(messageContainer.getLatestMessage());
+      }
+    });
+    view.getStatusBar().setLatestMessage(messageContainer.getLatestMessage());
   }
 
   private void runBootJobs() throws InitializationException {
