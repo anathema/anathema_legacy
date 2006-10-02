@@ -12,6 +12,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.equipment.character.view.IEquipmentAdditionalView;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
+import net.sf.anathema.character.equipment.character.view.IMagicMaterialView;
 import net.sf.anathema.character.library.taskpane.ITaskPaneGroupViewFactory;
 import net.sf.anathema.character.library.taskpane.TaskPaneView;
 import net.sf.anathema.lib.gui.selection.IListObjectSelectionView;
@@ -30,15 +31,21 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView {
           return new EquipmentObjectView();
         }
       });
+  private final MagicMaterialView magicMaterialView = new MagicMaterialView();
 
   public EquipmentAdditionalView() {
     JScrollPane itemScrollpane = new JScrollPane(equipmentPickList.getComponent());
     itemScrollpane.setPreferredSize(new Dimension(150, 250));
-    panel.add(itemScrollpane, GridDialogLayoutData.FILL_BOTH);
-    panel.add(buttonPanel, GridDialogLayoutData.CENTER);
     buttonPanel.add(selectButton);
     buttonPanel.add(refreshButton);
     taskPaneView.getComponent().setPreferredSize(new Dimension(150, 250));
+    
+    JPanel selectionPanel = new JPanel(new GridDialogLayout(1, false));
+    selectionPanel.add(itemScrollpane, GridDialogLayoutData.FILL_BOTH);
+    selectionPanel.add(magicMaterialView.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
+    
+    panel.add(selectionPanel, GridDialogLayoutData.FILL_BOTH);
+    panel.add(buttonPanel, GridDialogLayoutData.CENTER);
     panel.add(taskPaneView.getComponent(), GridDialogLayoutData.FILL_BOTH);
   }
 
@@ -68,5 +75,9 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView {
 
   public IListObjectSelectionView<String> getEquipmentTemplatePickList() {
     return equipmentPickList;
+  }
+  
+  public IMagicMaterialView getMagicMaterialView() {
+    return magicMaterialView;
   }
 }

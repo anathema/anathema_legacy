@@ -4,11 +4,14 @@ import java.awt.Component;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.Icon;
 
 import net.disy.commons.swing.action.SmartAction;
+import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.character.equipment.MaterialComposition;
+import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.character.equipment.character.model.IEquipmentItemCollection;
 import net.sf.anathema.character.equipment.character.view.IEquipmentAdditionalView;
 import net.sf.anathema.character.equipment.character.view.IEquipmentObjectView;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.EquipmentUI;
@@ -22,13 +25,13 @@ import net.sf.anathema.lib.resources.IResources;
 public class EquipmentAdditionalPresenter implements IPresenter {
 
   private final IResources resources;
-  private final IEquipmentItemCollection model;
+  private final IEquipmentAdditionalModel model;
   private final IEquipmentAdditionalView view;
   private final Map<IEquipmentItem, IEquipmentObjectView> viewsByItem = new HashMap<IEquipmentItem, IEquipmentObjectView>();
 
   public EquipmentAdditionalPresenter(
       IResources resources,
-      IEquipmentItemCollection model,
+      IEquipmentAdditionalModel model,
       IEquipmentAdditionalView view) {
     this.resources = resources;
     this.model = model;
@@ -54,6 +57,20 @@ public class EquipmentAdditionalPresenter implements IPresenter {
     setObjects(equipmentTemplatePickList);
     view.setSelectButtonAction(createTemplateAddAction(equipmentTemplatePickList));
     view.setRefreshButtonAction(createRefreshAction(equipmentTemplatePickList));
+    String label = resources.getString("MagicMaterial.Label") + ":"; //$NON-NLS-1$ //$NON-NLS-2$
+    DefaultListCellRenderer renderer = new MagicMaterialCellRenderer(resources);
+    view.getMagicMaterialView().initView(label, renderer, MagicalMaterial.values(), null);
+    equipmentTemplatePickList.addObjectSelectionChangedListener(new IObjectValueChangedListener<String>() {
+      public void valueChanged(String templateId) {
+        MaterialComposition composition = templateId == null
+            ? MaterialComposition.None
+            : model.getMaterialComposition(templateId);
+        MagicalMaterial defaultMagicMaterial = composition != MaterialComposition.Variable
+            ? null
+            : model.getDefaultMaterial();
+        view.getMagicMaterialView().setSelectedMaterial(defaultMagicMaterial);
+      }
+    });
   }
 
   private SmartAction createRefreshAction(final IListObjectSelectionView<String> equipmentTemplatePickList) {

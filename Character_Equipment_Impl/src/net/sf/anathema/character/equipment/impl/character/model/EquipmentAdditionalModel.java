@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
@@ -20,13 +21,16 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
   private final IArmourStats naturalArmour;
   private final IEquipmentTemplateProvider equipmentTemplateProvider;
   private IEquipmentItem naturalWeaponsItem;
+  private final MagicalMaterial defaultMaterial;
 
   public EquipmentAdditionalModel(
+      MagicalMaterial defaultMaterial,
       IArmourStats naturalArmour,
       IEquipmentTemplate naturalWeapons,
       IEquipmentTemplateProvider equipmentTemplateProvider,
       IExaltedRuleSet ruleSet) {
     super(ruleSet);
+    this.defaultMaterial = defaultMaterial;
     this.naturalArmour = naturalArmour;
     this.equipmentTemplateProvider = equipmentTemplateProvider;
     if (naturalWeapons != null) {
@@ -113,5 +117,9 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
       return naturalWeaponsItem;
     }
     return null;
+  }
+
+  public MagicalMaterial getDefaultMaterial() {
+    return defaultMaterial;
   }
 }

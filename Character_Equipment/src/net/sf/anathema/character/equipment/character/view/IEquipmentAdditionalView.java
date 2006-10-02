@@ -16,4 +16,6 @@ public interface IEquipmentAdditionalView extends ISimpleTabView {
   public void setSelectButtonAction(Action action);
 
   public void setRefreshButtonAction(Action action);
+
+  public IMagicMaterialView getMagicMaterialView();
 }

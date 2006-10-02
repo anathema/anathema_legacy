@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.impl.character.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.impl.character.model.natural.TotalArmour;
@@ -82,8 +83,13 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
   public final void addEquipmentObjectListener(ICollectionListener<IEquipmentItem> listener) {
     equipmentItemControl.addListener(listener);
   }
-  
+
   protected final IExaltedRuleSet getRuleSet() {
     return ruleSet;
+  }
+
+  public MaterialComposition getMaterialComposition(String templateId) {
+    IEquipmentTemplate template = loadEquipmentTemplate(templateId);
+    return template.getComposition();
   }
 }

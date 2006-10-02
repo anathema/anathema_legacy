@@ -4,15 +4,15 @@ import net.sf.anathema.lib.control.collection.ICollectionListener;
 
 public interface IEquipmentItemCollection {
 
-  public IEquipmentItem[] getEquipmentItems();
-
-  public String[] getAvailableTemplateIds();
-
   public IEquipmentItem addEquipmentObjectFor(String templateId);
 
   public void addEquipmentObjectListener(ICollectionListener<IEquipmentItem> listener);
 
-  public void removeItem(IEquipmentItem item);
-
   public boolean canBeRemoved(IEquipmentItem item);
+
+  public String[] getAvailableTemplateIds();
+
+  public IEquipmentItem[] getEquipmentItems();
+
+  public void removeItem(IEquipmentItem item);
 }

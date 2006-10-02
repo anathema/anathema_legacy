@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.impl.character.model.AbstractEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
@@ -60,5 +61,9 @@ public class DemoEquipmentAdditionalModel extends AbstractEquipmentAdditionalMod
   @Override
   protected IEquipmentItem getSpecialManagedItem(String templateId) {
     return null;
+  }
+
+  public MagicalMaterial getDefaultMaterial() {
+    return MagicalMaterial.Soulsteel;
   }
 }
