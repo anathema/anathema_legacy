@@ -52,7 +52,6 @@ Meldungen für
 	In ComboConfigurationPresenter.InitComboConfigurationListening event auslösen
 	=> im CharmSelectionPresenter event bekommen
 	=> im CharmSelectionView Nachricht einblenden.
-	Statuszeile?
 	- Charm aus Combo entfernt
 	- Combo entfernt			
 	(Getrennt oder einfach : "Combos changed")

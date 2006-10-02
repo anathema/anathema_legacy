@@ -6,13 +6,9 @@ Ricardo
 -Forest witches
 -Character type on the sheet
 -Restrict the charmgroups in the charms section to those with charms available / ability learned
--In load screen, display type or even the concept
--i18n for sourcebooks / pages differ by national settings
 -Lookshy prerequisites for *all* lookshy characters
--Allow for Anima Effect to be set by users (like nature file)
 -Color the spell selections allowed for sorcery
 
-* Character sheets in spanish
 * The Shillouette or visualization thing, that when you chage your
 stats it changes the drawing.
 * When you select a background like Artifact or Manse, you can select
@@ -27,8 +23,6 @@ liege, Appearence and Essence for Abyssals, etc.
 are shown, whith the "Don't check prerequisites", "fulfill all
 prerequisites", "Don't check prerequisites", and "Enforce
 prerequisites" that you mentioned.
-* The problem with the Connections background for DBs, Sidereals
-overwrite that, so in DBs dont show up that background.
 * Anima effects in Concept and Rules, and that user can change the
 description like in natures.
 * Links in the Help menu.
@@ -44,10 +38,6 @@ show up in the program, with that character.
 * Put the User and maybe Instalation Guides in the zip file, so when
 you download the program you have that guides along with the readme,
 versions, and faq files.
-* In the load menu, maybe instead of the showing the character type
-(Solar - Dawn) like i proposed, show the icon of the character so if
-you want to load a Fire DB, then it shows the icon of Fire, and then
-the name of the character and maybe the concept.
 *Remove Sorcery BG for Immaculates
 *Change min Traits for Immaculate MArtist to MA3 / Ess 3 (for spirit walk / sight)
 
@@ -60,6 +50,3 @@ figure that out).
 
 Jason Hardin
 -Don't use "description" tag more than once in XML files
-
-Craig and others
--Change distribution format to "bin" and "src"
