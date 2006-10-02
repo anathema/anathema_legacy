@@ -59,7 +59,7 @@ public class PdfCharacterSheetDemo {
           7), encodingRegistry, resources, 7, pageConfiguration);
       partEncoder.encode(document, directContent, character, description);
       document.newPage();
-      new PdfSecondPageEncoder(resources, encodingRegistry.getBaseFont(), pageConfiguration).encode(
+      new PdfSecondPageEncoder(resources, encodingRegistry, pageConfiguration).encode(
           document,
           directContent,
           character,
