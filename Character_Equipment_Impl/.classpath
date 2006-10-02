@@ -6,5 +6,6 @@
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Character_Reporting"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Library"/>
+	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
