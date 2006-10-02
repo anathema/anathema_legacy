@@ -30,6 +30,11 @@ public class TextReport implements IITextReport {
     utils = new ITextReportUtils();
   }
 
+  @Override
+  public String toString() {
+    return resources.getString("CharacterModule.Reporting.Text.Name"); //$NON-NLS-1$
+  }
+
   public void performPrint(IItem item, Document document, PdfWriter writer) throws ReportException {
     MultiColumnText columnText = new MultiColumnText(document.top() - document.bottom() - 15);
     columnText.addRegularColumns(document.left(), document.right(), 20, 2);
