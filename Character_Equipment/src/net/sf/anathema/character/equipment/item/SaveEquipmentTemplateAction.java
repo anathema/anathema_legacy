@@ -41,7 +41,8 @@ public final class SaveEquipmentTemplateAction extends SmartAction {
   }
 
   private void updateEnabled() {
-    setEnabled(model.getTemplateEditModel().isDirty());
+    setEnabled(!model.getTemplateEditModel().getDescription().getName().isEmpty()
+        && model.getTemplateEditModel().isDirty());
   }
 
   @Override
