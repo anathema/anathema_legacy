@@ -24,6 +24,7 @@ Please contact us if you encounter any problems, we will fix your character file
 -- Usability --
 + New art through and through
 + New "New" and "Load" dialogs
+* Predefined "Connections"-Background available for Sidereals and Dragon-Blooded (Thanks to Ricardo)
 
 -- Miscellaneous --
 + New website
