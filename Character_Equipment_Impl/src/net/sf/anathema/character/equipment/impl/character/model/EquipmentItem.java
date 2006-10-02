@@ -4,11 +4,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import net.disy.commons.core.util.ArrayUtilities;
+import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
+import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyArmourStats;
+import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyShieldStats;
+import net.sf.anathema.character.equipment.impl.character.model.stats.ProxyWeaponStats;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
+import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
+import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public class EquipmentItem implements IEquipmentItem {
@@ -33,7 +41,23 @@ public class EquipmentItem implements IEquipmentItem {
   }
 
   public IEquipmentStats[] getStats() {
-    return template.getStats(ruleSet);
+    if (template.getComposition() != MaterialComposition.Variable) {
+      return template.getStats(ruleSet);
+    }
+    return ArrayUtilities.transform(
+        template.getStats(ruleSet),
+        IEquipmentStats.class,
+        new ITransformer<IEquipmentStats, IEquipmentStats>() {
+          public IEquipmentStats transform(IEquipmentStats input) {
+            if (input instanceof IArmourStats) {
+              return new ProxyArmourStats((IArmourStats) input, material, ruleSet);
+            }
+            if (input instanceof IWeaponStats) {
+              return new ProxyWeaponStats((IWeaponStats) input, material, ruleSet);
+            }
+            return new ProxyShieldStats((IShieldStats) input, material, ruleSet);
+          }
+        });
   }
 
   public String getTemplateId() {
@@ -43,7 +67,7 @@ public class EquipmentItem implements IEquipmentItem {
   public MagicalMaterial getMaterial() {
     return material;
   }
-  
+
   public MaterialComposition getMaterialComposition() {
     return template.getComposition();
   }
