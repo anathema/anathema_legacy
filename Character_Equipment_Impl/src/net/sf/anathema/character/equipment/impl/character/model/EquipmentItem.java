@@ -28,7 +28,7 @@ public class EquipmentItem implements IEquipmentItem {
 
   public EquipmentItem(IEquipmentTemplate template, IExaltedRuleSet ruleSet, MagicalMaterial material) {
     if (template.getComposition() == MaterialComposition.Variable && material == null) {
-      throw new MissingMaterialException("Variable material items must be created with material.");
+      throw new MissingMaterialException("Variable material items must be created with material."); //$NON-NLS-1$
     }
     this.template = template;
     this.ruleSet = ruleSet;

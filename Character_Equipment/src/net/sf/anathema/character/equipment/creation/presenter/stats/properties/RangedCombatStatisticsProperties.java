@@ -6,28 +6,26 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class RangedCombatStatisticsProperties extends OffensiveStatisticsProperties {
 
-  private final BasicMessage defaultMessage = new BasicMessage("Please fill the ranged weapon statstics.");
-
   public RangedCombatStatisticsProperties(IResources resources) {
     super(resources);
   }
 
   @Override
   public IBasicMessage getDefaultMessage() {
-    return defaultMessage;
+    return new BasicMessage(getString("Equipment.Creation.RangedCombat.DefaultMessage")); //$NON-NLS-1$
   }
 
   @Override
   public String getPageDescription() {
-    return "Ranged Weapon Stats";
+    return getString("Equipment.Creation.RangedCombat.PageTitle"); //$NON-NLS-1$
   }
 
   public String getRangeLabel() {
-    return "Range:";
+    return getLabelString("Equipment.Stats.Long.Range"); //$NON-NLS-1$
   }
 
   @Override
   public String getDefaultName() {
-    return "Ranged";
+    return getString("Equipment.Creation.RangedCombat.DefaultName"); //$NON-NLS-1$
   }
 }

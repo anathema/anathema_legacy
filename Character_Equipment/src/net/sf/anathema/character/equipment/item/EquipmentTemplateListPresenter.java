@@ -35,7 +35,7 @@ public class EquipmentTemplateListPresenter implements IPresenter {
   }
 
   public void initPresentation() {
-    view.setTemplateListHeader("Available Templates");
+    view.setTemplateListHeader(resources.getString("Equipment.Creation.AvailableTemplates")); //$NON-NLS-1$
     model.getDatabase().addAvailableTemplateChangeListener(new IChangeListener() {
       public void changeOccured() {
         updateAvailableTemplates();

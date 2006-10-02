@@ -18,23 +18,22 @@ public class EquipmentTypeChoiceProperties {
   }
 
   public String getLabel(EquipmentStatisticsType type) {
-    // todo vom (26.04.2006) (sieroux): Richtige i18n
-    return type.name();
+    return resources.getString("EquipmentStats." + type.name()); //$NON-NLS-1$
   }
 
   public String getOffensiveLabel() {
-    return "Offensive:";
+    return resources.getString("Equipment.Creation.SelectType.OffensiveLabel") + ":"; //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   public String getDefensiveLabel() {
-    return "Defensive:";
+    return resources.getString("Equipment.Creation.SelectType.DefensiveLabel") + ":"; //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   public String getTypeChoiceTitle() {
-    return "Statistics Type Selection";
+    return resources.getString("Equipment.Creation.SelectType.PageTitle"); //$NON-NLS-1$
   }
 
   public String getTypeChoiceMessage() {
-    return "Please select the type of the statstics to add.";
+    return resources.getString("Equipment.Creation.SelectType.DefaultMessage"); //$NON-NLS-1$    
   }
 }

@@ -15,14 +15,14 @@ public class AnathemaStatusBar implements IAnathemaStatusBar {
   public AnathemaStatusBar() {
     label.setPreferredSize(new Dimension(350, 25));
   }
-  
+
   public JComponent getComponent() {
     return label;
   }
-  
+
   public void setLatestMessage(IBasicMessage message) {
     label.setIcon(message == null ? null : MessageTypeUi.getSmallIcon(message.getType()));
-    label.setText(message == null ? "  " : message.getText());
+    label.setText(message == null ? "  " : message.getText()); //$NON-NLS-1$
     label.revalidate();
   }
 }

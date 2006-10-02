@@ -34,7 +34,7 @@ public final class AddNewStatsAction extends SmartAction {
       }
     });
     updateEnabled(ruleSetView.getSelectedObject());
-    setToolTipText("Add new stats...");
+    setToolTipText(resources.getString("Equipment.Creation.Stats.AddActionTooltip")); //$NON-NLS-1$
   }
 
   private void updateEnabled(IExaltedRuleSet selectedObject) {

@@ -43,7 +43,8 @@ public class ExaltedCharacterPersister extends AbstractSingleFileItemPersister {
 
   @Override
   public void save(OutputStream stream, IItem item) throws IOException {
-    messaging.addMessage("CharacterPersistence.SavingCharacter", new Object[] {item.getDisplayName()}, MessageType.INFORMATION);
+    messaging.addMessage(
+        "CharacterPersistence.SavingCharacter", new Object[] { item.getDisplayName() }, MessageType.INFORMATION); //$NON-NLS-1$
     Element rootElement = DocumentHelper.createElement(TAG_EXALTED_CHARACTER_ROOT);
     repositoryItemPerister.save(rootElement, item);
     save(rootElement, (ICharacter) item.getItemData());
