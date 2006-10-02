@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
@@ -20,8 +19,8 @@ public class EquipmentItem implements IEquipmentItem {
   private final MagicalMaterial material;
 
   public EquipmentItem(IEquipmentTemplate template, IExaltedRuleSet ruleSet, MagicalMaterial material) {
-    if (template.getComposition() == MaterialComposition.Variable) {
-      Ensure.ensureArgumentNotNull("Variable material items must be created with material." + material);
+    if (template.getComposition() == MaterialComposition.Variable && material == null) {
+      throw new MissingMaterialException("Variable material items must be created with material.");
     }
     this.template = template;
     this.ruleSet = ruleSet;

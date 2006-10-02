@@ -5,6 +5,7 @@ import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModel;
+import net.sf.anathema.character.equipment.impl.character.model.MissingMaterialException;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersister;
@@ -47,7 +48,14 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
       if (magicalMaterialElement != null) {
         magicalMaterial = MagicalMaterial.valueOf(magicalMaterialElement.getTextTrim());
       }
-      IEquipmentItem item = equipmentModel.addEquipmentObjectFor(templateId, magicalMaterial);
+      IEquipmentItem item;
+      try {
+        item = equipmentModel.addEquipmentObjectFor(templateId, magicalMaterial);
+      }
+      catch (MissingMaterialException e) {
+        logger.warn("No naterial found for equipment template " + templateId + ".");
+        continue;
+      }
       if (item == null) {
         logger.warn("No equipment template registered for id: " + templateId + ".");
         continue;
