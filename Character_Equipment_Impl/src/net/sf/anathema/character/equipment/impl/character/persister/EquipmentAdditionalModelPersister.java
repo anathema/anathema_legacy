@@ -18,10 +18,10 @@ import org.dom4j.Element;
 
 public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
 
-  private static final String TAG_ITEM = "item";
-  private static final String TAG_TEMPLATE_ID = "templateId";
-  private static final String TAG_PRINT_STATS = "printedStats";
-  private static final String TAG_MATERIAL = "material";
+  private static final String TAG_ITEM = "item"; //$NON-NLS-1$
+  private static final String TAG_TEMPLATE_ID = "templateId"; //$NON-NLS-1$
+  private static final String TAG_PRINT_STATS = "printedStats"; //$NON-NLS-1$
+  private static final String TAG_MATERIAL = "material"; //$NON-NLS-1$
   private IAnathemaMessaging messageIndicator;
 
   public EquipmentAdditionalModelPersister(IAnathemaMessaging messageIndicator) {
@@ -59,15 +59,13 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
         item = equipmentModel.addEquipmentObjectFor(templateId, magicalMaterial);
       }
       catch (MissingMaterialException e) {
-        messageIndicator.addMessage(
-            "EquipmentPersistence.NoMaterialFound",
+        messageIndicator.addMessage("EquipmentPersistence.NoMaterialFound", //$NON-NLS-1$
             new Object[] { templateId },
             MessageType.WARNING);
         continue;
       }
       if (item == null) {
-        messageIndicator.addMessage(
-            "EquipmentPersistence.NoTemplateFound",
+        messageIndicator.addMessage("EquipmentPersistence.NoTemplateFound", //$NON-NLS-1$
             new Object[] { templateId },
             MessageType.WARNING);
         continue;

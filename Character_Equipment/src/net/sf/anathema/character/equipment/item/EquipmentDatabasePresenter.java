@@ -39,8 +39,11 @@ public class EquipmentDatabasePresenter implements IPresenter {
     addEditTemplateActions();
     initBasicDetailsView();
     new EquipmentEditStatsPresenter(resources, model, view).initPresentation();
-    view.setTemplateListHeader("Available Templates");
     model.getTemplateEditModel().setNewTemplate();
+  }
+
+  private String getColonString(String key) {
+    return resources.getString(key) + ":"; //$NON-NLS-1$
   }
 
   private void addEditTemplateActions() {
@@ -51,16 +54,18 @@ public class EquipmentDatabasePresenter implements IPresenter {
 
   private void initBasicDetailsView() {
     StandardPanelBuilder panelBuilder = new StandardPanelBuilder();
-    ITextView nameView = panelBuilder.addLineTextView("Name:", COLUMN_COUNT);
+    ITextView nameView = panelBuilder.addLineTextView(getColonString("Equipment.Creation.Basics.Name"), COLUMN_COUNT); //$NON-NLS-1$
     new TextualPresentation().initView(nameView, model.getTemplateEditModel().getDescription().getName());
-    ITextView descriptionView = panelBuilder.addAreaTextView("Description:", 5, COLUMN_COUNT);
+    ITextView descriptionView = panelBuilder.addAreaTextView(getColonString("Equipment.Creation.Basics.Description"), //$NON-NLS-1$
+        5,
+        COLUMN_COUNT);
     new TextualPresentation().initView(descriptionView, model.getTemplateEditModel().getDescription().getContent());
     final ObjectSelectionView<MaterialComposition> compositionView = new ObjectSelectionView<MaterialComposition>(
-        "Composition:",
+        getColonString("Equipment.Creation.Basics.Composition"), //$NON-NLS-1$
         new IdentificateListCellRenderer(resources),
         MaterialComposition.values());
     final ObjectSelectionView<MagicalMaterial> materialView = new ObjectSelectionView<MagicalMaterial>(
-        "Material:",
+        getColonString("Equipment.Creation.Basics.Material"), //$NON-NLS-1$
         new IdentificateListCellRenderer(resources),
         MagicalMaterial.values());
     panelBuilder.addDialogComponent(new IDialogComponent() {
@@ -96,6 +101,6 @@ public class EquipmentDatabasePresenter implements IPresenter {
         materialView.setSelectedObject(model.getTemplateEditModel().getMagicalMaterial());
       }
     });
-    view.fillDescriptionPanel(panelBuilder.getTitledContent("Basics"));
+    view.fillDescriptionPanel(panelBuilder.getTitledContent(resources.getString("Equipment.Creation.Basics"))); //$NON-NLS-1$
   }
 }

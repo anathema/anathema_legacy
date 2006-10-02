@@ -6,40 +6,38 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class ShieldStatisticsProperties extends EquipmentStatisticsProperties {
 
-  private final BasicMessage defaultMessage = new BasicMessage("Please fill the shield statstics.");
-
   public ShieldStatisticsProperties(IResources resources) {
     super(resources);
   }
 
   public String getCloseCombatDvBonusLabel() {
-    return "Close combat DV bonus:";
+    return getLabelString("Equipment.Stats.Long.CloseDV"); //$NON-NLS-1$
   }
 
   public String getRangedCombatDvBonusLabel() {
-    return "Ranged combat DV bonus:";
+    return getLabelString("Equipment.Stats.Long.RangedDV"); //$NON-NLS-1$
   }
 
   @Override
   public IBasicMessage getDefaultMessage() {
-    return defaultMessage;
+    return new BasicMessage(getString("Equipment.Creation.Shield.DefaultMessage")); //$NON-NLS-1$
   }
 
   @Override
   public String getPageDescription() {
-    return "Shield Stats";
+    return getString("Equipment.Creation.Shield.PageTitle"); //$NON-NLS-1$
   }
 
   @Override
   public String getDefaultName() {
-    return "Shield";
+    return getString("Equipment.Creation.Shield.DefaultName"); //$NON-NLS-1$
   }
 
   public String getMobilityPenaltyLabel() {
-    return "Mobility Penalty:";
+    return getLabelString("Equipment.Stats.Long.MobilityPenalty"); //$NON-NLS-1$
   }
 
   public String getFatigueLabel() {
-    return "Fatigue:";
+    return getLabelString("Equipment.Stats.Long.Fatigue"); //$NON-NLS-1$
   }
 }
