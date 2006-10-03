@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public class AccuracyModification {
@@ -19,6 +20,9 @@ public class AccuracyModification {
     }
     if (material == MagicalMaterial.Moonsilver) {
       return type.isRanged() ? input + 1 : input+ 2;
+    }
+    if (material == MagicalMaterial.Starmetal && ruleSet.getEdition() == ExaltedEdition.SecondEdition) {
+      return input + 1;
     }
     return input;
   }

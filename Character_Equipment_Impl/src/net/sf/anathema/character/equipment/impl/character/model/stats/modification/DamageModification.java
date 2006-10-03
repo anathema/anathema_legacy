@@ -15,10 +15,13 @@ public class DamageModification {
   }
 
   public int getModifiedValue(int input, WeaponStatsType type) {
+    boolean isSecondEdition = ruleSet == ExaltedRuleSet.SecondEdition;
     if (material == MagicalMaterial.Starmetal) {
+      if (type == WeaponStatsType.Melee && isSecondEdition) {
+        return input + 3;
+      }
       return input + 2;
     }
-    boolean isSecondEdition = ruleSet == ExaltedRuleSet.SecondEdition;
     if (material == MagicalMaterial.Jade && type == WeaponStatsType.Melee && isSecondEdition) {
       return input + 1;
     }
