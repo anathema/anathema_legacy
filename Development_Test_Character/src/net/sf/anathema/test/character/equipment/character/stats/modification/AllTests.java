@@ -9,9 +9,12 @@ import org.junit.runners.Suite.SuiteClasses;
     CoreRulesJadeModificationTest.class,
     CoreRulesMoonsilverModificationTest.class,
     CoreRulesOrichalcumModificationTest.class,
+    CoreRulesStarmetalModificationTest.class,
     PowerCombatJadeModificationTest.class,
     PowerCombatMoonsilverModificationTest.class,
-    PowerCombatOrichalcumModificationTest.class })
+    PowerCombatOrichalcumModificationTest.class,
+    PowerCombatStarmetalModificationTest.class
+    })
 public class AllTests {
 
 }

@@ -14,6 +14,9 @@ public class DamageModification {
   }
 
   public int getModifiedValue(int input, WeaponStatsType type) {
+    if (material == MagicalMaterial.Starmetal) {
+      return input + 2;
+    }
     return input;
   }
 }
