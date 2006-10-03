@@ -9,16 +9,17 @@ import org.junit.runners.Suite.SuiteClasses;
     CoreRulesJadeModificationTest.class,
     CoreRulesMoonsilverModificationTest.class,
     CoreRulesOrichalcumModificationTest.class,
-    CoreRulesStarmetalModificationTest.class,
     CoreRulesSoulsteelModificationTest.class,
+    CoreRulesStarmetalModificationTest.class,
     PowerCombatJadeModificationTest.class,
     PowerCombatMoonsilverModificationTest.class,
     PowerCombatOrichalcumModificationTest.class,
-    PowerCombatStarmetalModificationTest.class,
     PowerCombatSoulsteelModificationTest.class,
+    PowerCombatStarmetalModificationTest.class,
     SecondEditionJadeModificationTest.class,
     SecondEditionMoonsilverModificationTest.class,
     SecondEditionOrichalcumModificationTest.class,
+    SecondEditionSoulsteelModificationTest.class,
     SecondEditionStarmetalModificationTest.class })
 public class AllTests {
 

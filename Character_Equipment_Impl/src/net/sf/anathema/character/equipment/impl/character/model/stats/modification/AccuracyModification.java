@@ -17,7 +17,7 @@ public class AccuracyModification {
   public int getModifiedValue(int input, WeaponStatsType type) {
     boolean isSecondEdition = ruleSet.getEdition() == ExaltedEdition.SecondEdition;
     if (material == MagicalMaterial.Soulsteel && !type.isRanged()) {
-      return input + 1;
+      return isSecondEdition ? input + 2 : input + 1;
     }
     if (material == MagicalMaterial.Orichalcum) {
       return input + 1;
