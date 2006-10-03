@@ -4,7 +4,7 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
-public class HardnessModification {
+public class HardnessModification implements IArmourStatsModification {
 
   private final MagicalMaterial magicMaterial;
   private final IExaltedRuleSet ruleSet;

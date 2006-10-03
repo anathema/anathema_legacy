@@ -1,16 +1,13 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
-public class MobilityPenaltyModification {
+public class MobilityPenaltyModification implements IArmourStatsModification {
 
   private final MagicalMaterial magicMaterial;
-  private final IExaltedRuleSet ruleSet;
 
-  public MobilityPenaltyModification(MagicalMaterial magicMaterial, IExaltedRuleSet ruleSet) {
+  public MobilityPenaltyModification(MagicalMaterial magicMaterial) {
     this.magicMaterial = magicMaterial;
-    this.ruleSet = ruleSet;
   }
 
   public int getModifiedValue(int original) {

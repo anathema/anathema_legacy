@@ -2,6 +2,11 @@ package net.sf.anathema.character.equipment.impl.character.model.stats;
 
 import net.disy.commons.core.util.ObjectUtilities;
 import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.FatigueModification;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.HardnessModification;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.IArmourStatsModification;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.MobilityPenaltyModification;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.SoakModification;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
@@ -21,19 +26,29 @@ public class ProxyArmourStats implements IArmourStats {
 
   public Integer getFatigue() {
     Integer fatigue = delegate.getFatigue();
-    return fatigue;
+    return getModifiedValue(new FatigueModification(material), fatigue);
   }
 
   public Integer getHardness(HealthType type) {
-    return delegate.getHardness(type);
+    Integer hardness = delegate.getHardness(type);
+    return getModifiedValue(new HardnessModification(material, ruleSet), hardness);
+  }
+
+  private Integer getModifiedValue(IArmourStatsModification modification, Integer original) {
+    if (original == null) {
+      return null;
+    }
+    return modification.getModifiedValue(original);
   }
 
   public Integer getMobilityPenalty() {
-    return delegate.getMobilityPenalty();
+    Integer mobilityPenalty = delegate.getMobilityPenalty();
+    return getModifiedValue(new MobilityPenaltyModification(material), mobilityPenalty);
   }
 
   public Integer getSoak(HealthType type) {
-    return delegate.getSoak(type);
+    Integer soak = delegate.getSoak(type);
+    return getModifiedValue(new SoakModification(material), soak);
   }
 
   public IIdentificate getName() {
