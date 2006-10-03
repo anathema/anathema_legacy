@@ -15,6 +15,9 @@ public class SpeedModification {
   }
 
   public int getModifiedValue(int input, WeaponStatsType type) {
+    if (material == MagicalMaterial.Jade && ruleSet == ExaltedRuleSet.SecondEdition) {
+      return Math.max(1, input - 1);
+    }
     if (material == MagicalMaterial.Jade && type == WeaponStatsType.Melee) {
       return input + 3;
     }

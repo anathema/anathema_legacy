@@ -11,23 +11,36 @@ public class SecondEditionOrichalcumModificationTest extends AbstractEquipmentMo
 
   @Test
   public void addsOneToAccuracy() throws Exception {
-    assertAccuracyModification(2, 1, WeaponStatsType.Bow);
-    assertAccuracyModification(4, 3, WeaponStatsType.Bow);
-    assertAccuracyModification(2, 1, WeaponStatsType.Thrown);
-    assertAccuracyModification(4, 3, WeaponStatsType.Thrown);
     assertAccuracyModification(2, 1, WeaponStatsType.Melee);
-    assertAccuracyModification(4, 3, WeaponStatsType.Melee);
+    assertAccuracyModification(2, 1, WeaponStatsType.Bow);
+    assertAccuracyModification(2, 1, WeaponStatsType.Thrown);
+    assertAccuracyModification(2, 1, WeaponStatsType.Flame);
   }
 
   @Test
   public void addsOneToDefense() throws Exception {
     assertDefenseModification(2, 1, WeaponStatsType.Melee);
-    assertDefenseModification(4, 3, WeaponStatsType.Melee);
   }
 
-  @Override
-  protected MagicalMaterial getMagicMaterial() {
-    return MagicalMaterial.Orichalcum;
+  @Test
+  public void rateIncreasedForMeleeBy1() throws Exception {
+    assertRateModification(2, 1, WeaponStatsType.Melee);
+    assertRateModification(1, 1, WeaponStatsType.Bow);
+    assertRateModification(1, 1, WeaponStatsType.Thrown);
+    assertRateModification(1, 1, WeaponStatsType.Flame);
+  }
+
+  @Test
+  public void speedUnmodified() {
+    assertSpeedUnmodified();
+  }
+
+  @Test
+  public void damageIncreasedForRangedWeaponsBy1() throws Exception {
+    assertDamageModification(1, 1, WeaponStatsType.Melee);
+    assertDamageModification(2, 1, WeaponStatsType.Bow);
+    assertDamageModification(2, 1, WeaponStatsType.Thrown);
+    assertDamageModification(2, 1, WeaponStatsType.Flame);
   }
 
   @Test
@@ -40,5 +53,10 @@ public class SecondEditionOrichalcumModificationTest extends AbstractEquipmentMo
   @Override
   protected IExaltedRuleSet getRuleSet() {
     return ExaltedRuleSet.SecondEdition;
+  }
+
+  @Override
+  protected MagicalMaterial getMagicMaterial() {
+    return MagicalMaterial.Orichalcum;
   }
 }

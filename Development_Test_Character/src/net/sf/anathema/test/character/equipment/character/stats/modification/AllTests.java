@@ -13,7 +13,9 @@ import org.junit.runners.Suite.SuiteClasses;
     PowerCombatJadeModificationTest.class,
     PowerCombatMoonsilverModificationTest.class,
     PowerCombatOrichalcumModificationTest.class,
-    PowerCombatStarmetalModificationTest.class
+    PowerCombatStarmetalModificationTest.class,
+    SecondEditionJadeModificationTest.class,
+    SecondEditionOrichalcumModificationTest.class
     })
 public class AllTests {
 
