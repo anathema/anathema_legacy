@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public class DefenseModification {
@@ -16,6 +17,9 @@ public class DefenseModification {
   public int getModifiedValue(int input, WeaponStatsType type) {
     if (material == MagicalMaterial.Orichalcum) {
       return input + 1;
+    }
+    if (material == MagicalMaterial.Moonsilver && ruleSet.getEdition() == ExaltedEdition.SecondEdition) {
+      return input + 2;
     }
     return input;
   }
