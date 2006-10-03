@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
-public class RateModification {
+public class RateModification implements IStatsModification{
 
   private final MagicalMaterial material;
   private final IExaltedRuleSet ruleSet;
