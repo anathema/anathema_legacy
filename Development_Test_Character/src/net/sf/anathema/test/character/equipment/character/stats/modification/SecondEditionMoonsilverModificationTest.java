@@ -42,6 +42,26 @@ public class SecondEditionMoonsilverModificationTest extends AbstractEquipmentMo
   }
 
   @Test
+  public void soakUnmodified() {
+    assertSoakUnmodified();
+  }
+
+  @Test
+  public void hardnessUnmodified() {
+    assertHardnessUnmodified();
+  }
+
+  @Test
+  public void mobilityZero() {
+    assertMobilityPenaltyModification(0, 5);
+  }
+
+  @Test
+  public void fatigueUnmodified() {
+    assertFatigueUnmodified();
+  }
+
+  @Test
   public void rangeIncreasedForBowAndThrown() {
     assertRangeModification(101, 1, WeaponStatsType.Bow);
     assertRangeModification(21, 1, WeaponStatsType.Thrown);

@@ -6,7 +6,6 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.modificati
 import org.junit.Test;
 
 public abstract class AbstractFirstEditionJadeModificationTest extends AbstractEquipmentModificationTest {
-
   @Test
   public final void unmodifiedAccuracy() throws Exception {
     assertAccuracyUnmodified();
@@ -18,30 +17,55 @@ public abstract class AbstractFirstEditionJadeModificationTest extends AbstractE
   }
 
   @Test
-  public final void speedUnmodified() throws Exception {
-    assertSpeedUnmodified();
+  public final void speedForMeleeIncreasedBy3() throws Exception {
+    assertSpeedModification(4, 1, WeaponStatsType.Melee);
+    assertSpeedModification(1, 1, WeaponStatsType.Bow);
+    assertSpeedModification(1, 1, WeaponStatsType.Thrown);
+    assertSpeedModification(1, 1, WeaponStatsType.Flame);
   }
 
   @Test
-  public final void rangeUnmodified() throws Exception {
-    assertRangeUnmodified();
+  public final void bowRangeIncreasedBy50() throws Exception {
+    assertRangeModification(51, 1, WeaponStatsType.Bow);
+    assertRangeModification(1, 1, WeaponStatsType.Thrown);
+    assertRangeModification(1, 1, WeaponStatsType.Flame);
   }
 
   @Test
-  public final void rateUnmodified() throws Exception {
-    assertRateUnmodified();
+  public final void rateForRangedCombatIncreasedBy1() throws Exception {
+    assertRateModification(2, 1, WeaponStatsType.Bow);
+    assertRateModification(2, 1, WeaponStatsType.Thrown);
+    assertRateModification(2, 1, WeaponStatsType.Flame);
+    assertRateModification(1, 1, WeaponStatsType.Melee);
   }
 
   @Test
-  public final void damageIncreasedBy2() throws Exception {
-    assertDamageModification(3, 1, WeaponStatsType.Bow);
-    assertDamageModification(3, 1, WeaponStatsType.Thrown);
-    assertDamageModification(3, 1, WeaponStatsType.Melee);
-    assertDamageModification(3, 1, WeaponStatsType.Flame);
+  public final void damageUnmodified() throws Exception {
+    assertDamageUnmodified();
   }
 
+  @Test
+  public void soakUnmodified() {
+    assertSoakUnmodified();
+  }
+
+  @Test
+  public void hardnessUnmodified() {
+    assertHardnessUnmodified();
+  }
+
+  @Test
+  public void mobilityUnmodified() {
+    assertMobilityPenaltyUnmodified();
+  }
+
+  @Test
+  public void fatigueZero() {
+    assertFatigueModification(0, 5);
+  }
+  
   @Override
   protected final MagicalMaterial getMagicMaterial() {
-    return MagicalMaterial.Starmetal;
+    return MagicalMaterial.Jade;
   }
 }

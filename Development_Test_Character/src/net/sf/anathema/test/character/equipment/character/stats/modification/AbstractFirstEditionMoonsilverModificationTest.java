@@ -46,6 +46,26 @@ public abstract class AbstractFirstEditionMoonsilverModificationTest extends Abs
     assertDamageUnmodified();
   }
 
+  @Test
+  public void soakUnmodified() {
+    assertSoakUnmodified();
+  }
+
+  @Test
+  public void hardnessUnmodified() {
+    assertHardnessUnmodified();
+  }
+
+  @Test
+  public void mobilityZero() {
+    assertMobilityPenaltyModification(0,7);
+  }
+
+  @Test
+  public void fatigueUnmodified() {
+    assertFatigueUnmodified();
+  }
+  
   @Override
   protected final MagicalMaterial getMagicMaterial() {
     return MagicalMaterial.Moonsilver;

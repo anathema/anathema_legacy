@@ -33,22 +33,42 @@ public class SecondEditionStarmetalModificationTest extends AbstractEquipmentMod
     assertDamageModification(3, 1, WeaponStatsType.Thrown);
     assertDamageModification(3, 1, WeaponStatsType.Flame);
   }
-  
+
   @Test
   public void unmodifiedSpeed() {
     assertSpeedUnmodified();
   }
-  
+
   @Test
   public void rateUnmodified() {
     assertRateUnmodified();
   }
-  
+
   @Test
   public void unmodifiedRange() {
     assertRangeUnmodified();
   }
-  
+
+  @Test
+  public void soakUnmodified() {
+    assertSoakUnmodified();
+  }
+
+  @Test
+  public void hardnessIncreasedBy1() {
+    assertHardnessModification(2, 1);
+  }
+
+  @Test
+  public void mobilityUnmodified() {
+    assertMobilityPenaltyUnmodified();
+  }
+
+  @Test
+  public void fatigueUnmodified() {
+    assertFatigueUnmodified();
+  }
+
   @Override
   protected IExaltedRuleSet getRuleSet() {
     return ExaltedRuleSet.SecondEdition;

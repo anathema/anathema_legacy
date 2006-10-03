@@ -18,35 +18,50 @@ public abstract class AbstractFirstEditionStarmetalModificationTest extends Abst
   }
 
   @Test
-  public final void speedForMeleeIncreasedBy3() throws Exception {
-    assertSpeedModification(4, 1, WeaponStatsType.Melee);
-    assertSpeedModification(1, 1, WeaponStatsType.Bow);
-    assertSpeedModification(1, 1, WeaponStatsType.Thrown);
-    assertSpeedModification(1, 1, WeaponStatsType.Flame);
+  public final void speedUnmodified() throws Exception {
+    assertSpeedUnmodified();
   }
 
   @Test
-  public final void bowRangeIncreasedBy50() throws Exception {
-    assertRangeModification(51, 1, WeaponStatsType.Bow);
-    assertRangeModification(1, 1, WeaponStatsType.Thrown);
-    assertRangeModification(1, 1, WeaponStatsType.Flame);
+  public final void rangeUnmodified() throws Exception {
+    assertRangeUnmodified();
   }
 
   @Test
-  public final void rateForRangedCombatIncreasedBy1() throws Exception {
-    assertRateModification(2, 1, WeaponStatsType.Bow);
-    assertRateModification(2, 1, WeaponStatsType.Thrown);
-    assertRateModification(2, 1, WeaponStatsType.Flame);
-    assertRateModification(1, 1, WeaponStatsType.Melee);
+  public final void rateUnmodified() throws Exception {
+    assertRateUnmodified();
   }
 
   @Test
-  public final void damageUnmodified() throws Exception {
-    assertDamageUnmodified();
+  public final void damageIncreasedBy2() throws Exception {
+    assertDamageModification(3, 1, WeaponStatsType.Bow);
+    assertDamageModification(3, 1, WeaponStatsType.Thrown);
+    assertDamageModification(3, 1, WeaponStatsType.Melee);
+    assertDamageModification(3, 1, WeaponStatsType.Flame);
+  }
+
+  @Test
+  public void soakUnmodified() {
+    assertSoakUnmodified();
+  }
+
+  @Test
+  public void hardnessUnmodified() {
+    assertHardnessUnmodified();
+  }
+
+  @Test
+  public void mobilityUnmodified() {
+    assertMobilityPenaltyUnmodified();
+  }
+
+  @Test
+  public void fatigueUnmodified() {
+    assertFatigueUnmodified();
   }
 
   @Override
   protected final MagicalMaterial getMagicMaterial() {
-    return MagicalMaterial.Jade;
+    return MagicalMaterial.Starmetal;
   }
 }

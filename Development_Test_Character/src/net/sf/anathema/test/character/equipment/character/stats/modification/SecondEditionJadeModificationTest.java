@@ -34,24 +34,44 @@ public class SecondEditionJadeModificationTest extends AbstractEquipmentModifica
     assertSpeedModification(1, 2, WeaponStatsType.Melee);
     assertSpeedModification(1, 2, WeaponStatsType.Flame);
   }
-  
+
   @Test
   public void speedReductionLimitedTo1() {
     assertSpeedModification(1, 1, WeaponStatsType.Bow);
   }
-  
+
   @Test
   public void rateUnmodified() {
     assertRateUnmodified();
   }
-  
+
   @Test
   public void rangeIncreasedForBowAndThrown() {
     assertRangeModification(51, 1, WeaponStatsType.Bow);
     assertRangeModification(11, 1, WeaponStatsType.Thrown);
     assertRangeModification(1, 1, WeaponStatsType.Flame);
   }
-  
+
+  @Test
+  public void soakUnmodified() {
+    assertSoakUnmodified();
+  }
+
+  @Test
+  public void hardnessUnmodified() {
+    assertHardnessUnmodified();
+  }
+
+  @Test
+  public void mobilityUnmodified() {
+    assertMobilityPenaltyUnmodified();
+  }
+
+  @Test
+  public void fatigueZero() {
+    assertFatigueModification(0, 5);
+  }
+
   @Override
   protected IExaltedRuleSet getRuleSet() {
     return ExaltedRuleSet.SecondEdition;

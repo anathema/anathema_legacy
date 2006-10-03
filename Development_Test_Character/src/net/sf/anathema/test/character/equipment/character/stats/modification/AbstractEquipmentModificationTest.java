@@ -4,8 +4,12 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.AccuracyModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.DamageModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.DefenseModification;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.FatigueModification;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.HardnessModification;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.MobilityPenaltyModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.RangeModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.RateModification;
+import net.sf.anathema.character.equipment.impl.character.model.stats.modification.SoakModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.SpeedModification;
 import net.sf.anathema.character.equipment.impl.character.model.stats.modification.WeaponStatsType;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
@@ -55,6 +59,41 @@ public abstract class AbstractEquipmentModificationTest {
     assertSpeedModification(1, 1, WeaponStatsType.Flame);
   }
 
+  protected final void assertSoakModification(int expected, int original) {
+    SoakModification modification = new SoakModification(getMagicMaterial(), getRuleSet());
+    Assert.assertEquals(expected, modification.getModifiedValue(original));
+  }
+
+  protected final void assertSoakUnmodified() {
+    assertSoakModification(1, 1);
+  }
+
+  protected final void assertHardnessModification(int expected, int original) {
+    HardnessModification modification = new HardnessModification(getMagicMaterial(), getRuleSet());
+    Assert.assertEquals(expected, modification.getModifiedValue(original));
+  }
+
+  protected final void assertHardnessUnmodified() {
+    assertHardnessModification(1, 1);
+  }
+
+  protected final void assertMobilityPenaltyUnmodified() {
+    assertMobilityPenaltyModification(1, 1);
+  }
+  
+  protected final void assertFatigueUnmodified() {
+    assertFatigueModification(1, 1);
+  }
+
+  protected final void assertFatigueModification(int expected, int original) {
+    FatigueModification modification = new FatigueModification(getMagicMaterial(), getRuleSet());
+    Assert.assertEquals(expected, modification.getModifiedValue(original));
+  }
+
+  protected final void assertMobilityPenaltyModification(int expected, int original) {
+    MobilityPenaltyModification modification = new MobilityPenaltyModification(getMagicMaterial(), getRuleSet());
+    Assert.assertEquals(expected, modification.getModifiedValue(original));
+  }
 
   protected final void assertRangeUnmodified() {
     assertRangeModification(1, 1, WeaponStatsType.Bow);

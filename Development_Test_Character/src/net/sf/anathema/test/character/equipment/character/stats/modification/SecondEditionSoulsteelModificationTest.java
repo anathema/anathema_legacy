@@ -16,6 +16,11 @@ public class SecondEditionSoulsteelModificationTest extends AbstractSoulsteelMod
     assertAccuracyModification(1, 1, WeaponStatsType.Flame);
   }
 
+  @Test
+  public void hardnessIncreasedBy1() {
+    assertHardnessModification(2, 1);
+  }
+
   @Override
   protected IExaltedRuleSet getRuleSet() {
     return ExaltedRuleSet.SecondEdition;

@@ -50,6 +50,26 @@ public class SecondEditionOrichalcumModificationTest extends AbstractEquipmentMo
     assertRangeModification(1, 1, WeaponStatsType.Flame);
   }
 
+  @Test
+  public void soakIncreasedBy2() throws Exception {
+    assertSoakModification(3, 1);
+  }
+
+  @Test
+  public void hardnessIncreasedBy1() throws Exception {
+    assertHardnessModification(2, 1);
+  }
+
+  @Test
+  public void mobilityUnmodified() {
+    assertMobilityPenaltyUnmodified();
+  }
+  
+  @Test
+  public void fatigueUnmodified() {
+    assertFatigueUnmodified();
+  }
+
   @Override
   protected IExaltedRuleSet getRuleSet() {
     return ExaltedRuleSet.SecondEdition;

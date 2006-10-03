@@ -31,6 +31,26 @@ public abstract class AbstractFirstEditionOrichalcumModificationTest extends Abs
     assertDamageUnmodified();
   }
 
+  @Test
+  public void soakIncreasedBy2() {
+    assertSoakModification(3,1);
+  }
+
+  @Test
+  public void hardnessUnmodified() {
+    assertHardnessUnmodified();
+  }
+
+  @Test
+  public void mobilityUnmodified() {
+    assertMobilityPenaltyUnmodified();
+  }
+
+  @Test
+  public void fatigueUnmodified() {
+    assertFatigueUnmodified();
+  }
+  
   @Override
   protected final MagicalMaterial getMagicMaterial() {
     return MagicalMaterial.Orichalcum;

@@ -31,6 +31,21 @@ public abstract class AbstractSoulsteelModificationTest extends AbstractEquipmen
     assertDefenseUnmodified();
   }
 
+  @Test
+  public void soakIncreasedBy2() {
+    assertSoakModification(3, 1);
+  }
+
+  @Test
+  public void mobilityUnmodified() {
+    assertMobilityPenaltyUnmodified();
+  }
+
+  @Test
+  public void fatigueUnmodified() {
+    assertFatigueUnmodified();
+  }
+
   @Override
   protected final MagicalMaterial getMagicMaterial() {
     return MagicalMaterial.Soulsteel;

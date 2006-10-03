@@ -13,4 +13,9 @@ public abstract class AbstractFirstEditionSoulsteelModificationTest extends Abst
     assertAccuracyModification(1, 1, WeaponStatsType.Thrown);
     assertAccuracyModification(1, 1, WeaponStatsType.Flame);
   }
+
+  @Test
+  public void hardnessUnmodified() {
+    assertHardnessUnmodified();
+  }
 }
