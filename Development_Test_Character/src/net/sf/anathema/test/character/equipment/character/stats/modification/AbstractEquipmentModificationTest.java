@@ -60,7 +60,7 @@ public abstract class AbstractEquipmentModificationTest {
   }
 
   protected final void assertSoakModification(int expected, int original) {
-    SoakModification modification = new SoakModification(getMagicMaterial(), getRuleSet());
+    SoakModification modification = new SoakModification(getMagicMaterial());
     Assert.assertEquals(expected, modification.getModifiedValue(original));
   }
 
@@ -86,12 +86,12 @@ public abstract class AbstractEquipmentModificationTest {
   }
 
   protected final void assertFatigueModification(int expected, int original) {
-    FatigueModification modification = new FatigueModification(getMagicMaterial(), getRuleSet());
+    FatigueModification modification = new FatigueModification(getMagicMaterial());
     Assert.assertEquals(expected, modification.getModifiedValue(original));
   }
 
   protected final void assertMobilityPenaltyModification(int expected, int original) {
-    MobilityPenaltyModification modification = new MobilityPenaltyModification(getMagicMaterial(), getRuleSet());
+    MobilityPenaltyModification modification = new MobilityPenaltyModification(getMagicMaterial());
     Assert.assertEquals(expected, modification.getModifiedValue(original));
   }
 
