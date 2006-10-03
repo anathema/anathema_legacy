@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public class RangeModification {
@@ -14,9 +15,23 @@ public class RangeModification {
   }
 
   public int getModifiedValue(int input, WeaponStatsType type) {
-    if (material == MagicalMaterial.Moonsilver && type == WeaponStatsType.Bow) {
-      return input + 100;
+    int modificationFactor = getModificationFactor();
+    if (type == WeaponStatsType.Bow) {
+      return input + 50 * modificationFactor;
+    }
+    if (type == WeaponStatsType.Thrown && ruleSet == ExaltedRuleSet.SecondEdition) {
+      return input + 10 * modificationFactor;
     }
     return input;
+  }
+
+  private int getModificationFactor() {
+    if (material == MagicalMaterial.Moonsilver) {
+      return 2;
+    }
+    if (material == MagicalMaterial.Jade || material == MagicalMaterial.Orichalcum) {
+      return 1;
+    }
+    return 0;
   }
 }

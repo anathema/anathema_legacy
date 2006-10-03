@@ -52,35 +52,41 @@ public abstract class AbstractEquipmentModificationTest {
     assertSpeedModification(1, 1, WeaponStatsType.Bow);
     assertSpeedModification(1, 1, WeaponStatsType.Thrown);
     assertSpeedModification(1, 1, WeaponStatsType.Melee);
+    assertSpeedModification(1, 1, WeaponStatsType.Flame);
   }
 
 
   protected final void assertRangeUnmodified() {
     assertRangeModification(1, 1, WeaponStatsType.Bow);
     assertRangeModification(1, 1, WeaponStatsType.Thrown);
+    assertRangeModification(1, 1, WeaponStatsType.Flame);
   }
 
   protected final void assertRateUnmodified() {
     assertRateModification(1, 1, WeaponStatsType.Bow);
     assertRateModification(1, 1, WeaponStatsType.Thrown);
     assertRateModification(1, 1, WeaponStatsType.Melee);
+    assertRateModification(1, 1, WeaponStatsType.Flame);
   }
 
   protected final void assertDamageUnmodified() {
     assertDamageModification(1, 1, WeaponStatsType.Bow);
     assertDamageModification(1, 1, WeaponStatsType.Thrown);
     assertDamageModification(1, 1, WeaponStatsType.Melee);
+    assertDamageModification(1, 1, WeaponStatsType.Flame);
   }
 
   protected final void assertAccuracyUnmodified() {
     assertAccuracyModification(1, 1, WeaponStatsType.Bow);
     assertAccuracyModification(1, 1, WeaponStatsType.Thrown);
     assertAccuracyModification(1, 1, WeaponStatsType.Melee);
+    assertAccuracyModification(1, 1, WeaponStatsType.Flame);
   }
 
   protected final void assertDefenseUnmodified() {
     assertDefenseModification(1, 1, WeaponStatsType.Bow);
     assertDefenseModification(1, 1, WeaponStatsType.Thrown);
     assertDefenseModification(1, 1, WeaponStatsType.Melee);
+    assertDefenseModification(1, 1, WeaponStatsType.Flame);
   }
 }

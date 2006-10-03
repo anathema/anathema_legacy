@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.impl.character.model.stats.modification;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public class SpeedModification {
@@ -14,7 +15,10 @@ public class SpeedModification {
   }
 
   public int getModifiedValue(int input, WeaponStatsType type) {
-    if (material == MagicalMaterial.Orichalcum && !type.isRanged()) {
+    if (material == MagicalMaterial.Jade && type == WeaponStatsType.Melee) {
+      return input + 3;
+    }
+    if (material == MagicalMaterial.Orichalcum && ruleSet == ExaltedRuleSet.CoreRules && !type.isRanged()) {
       return input + 1;
     }
     return input;

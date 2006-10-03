@@ -31,8 +31,10 @@ public class SecondEditionOrichalcumModificationTest extends AbstractEquipmentMo
   }
 
   @Test
-  public void rangeUnmodified() throws Exception {
-    assertRangeUnmodified();
+  public void rangeIncreasedForBowAndThrown() throws Exception {
+    assertRangeModification(51, 1, WeaponStatsType.Bow);
+    assertRangeModification(11, 1, WeaponStatsType.Thrown);
+    assertRangeModification(1, 1, WeaponStatsType.Flame);
   }
 
   @Override
