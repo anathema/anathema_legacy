@@ -32,8 +32,7 @@ public class MeritsFlawsProvider {
     MultiValuePerk addiction = createAddiction();
     MultiValuePerk priest = createPriest();
     MultiValuePerk swornBrotherhood = createSwornBrotherHood();
-    IPerk[] perks = new IPerk[] {
-        new MultiValuePerk(PerkType.Merit, PerkCategory.Physical, "SelectiveConception", 1), //$NON-NLS-1$
+    IPerk[] perks = new IPerk[] { new MultiValuePerk(PerkType.Merit, PerkCategory.Physical, "SelectiveConception", 1), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Merit, PerkCategory.Physical, "Ambidextrous", (new int[] { 1, 2 })), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Merit, PerkCategory.Physical, "Double-Jointed", (new int[] { 1, 3 })), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Merit, PerkCategory.Physical, "PainTolerance", (new int[] { 3, 5, 7 })), //$NON-NLS-1$
@@ -55,11 +54,14 @@ public class MeritsFlawsProvider {
         new MultiValuePerk(PerkType.Merit, PerkCategory.Supernatural, "Innocuous", 4), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Merit, PerkCategory.Supernatural, "TerrestrialBloodline", 1), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Merit, PerkCategory.Supernatural, "TaintsWarning", //$NON-NLS-1$
-            new int[] { 2 }, new CharacterType[] { CharacterType.SOLAR }),
+            new int[] { 2 },
+            new CharacterType[] { CharacterType.SOLAR }),
         new MultiValuePerk(PerkType.Merit, PerkCategory.Supernatural, "TaintsWarning", //$NON-NLS-1$
-            new int[] { 1 }, new CharacterType[] { CharacterType.ABYSSAL }),
+            new int[] { 1 },
+            new CharacterType[] { CharacterType.ABYSSAL }),
         new MultiValuePerk(PerkType.Merit, PerkCategory.Supernatural, "EternalVowMerit", //$NON-NLS-1$
-            new int[] { 3 }, new CharacterType[] { CharacterType.ABYSSAL, CharacterType.SOLAR }),
+            new int[] { 3 },
+            new CharacterType[] { CharacterType.ABYSSAL, CharacterType.SOLAR, CharacterType.LUNAR }),
         swornBrotherhood,
         priest,
         destiny,
@@ -82,7 +84,8 @@ public class MeritsFlawsProvider {
         new MultiValuePerk(PerkType.Flaw, PerkCategory.Supernatural, "DarkFate", (new int[] { 1, 2, 3, 4, 5 })), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Flaw, PerkCategory.Supernatural, "UnbiddenOracle", 1), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Flaw, PerkCategory.Supernatural, "EternalVowFlaw", //$NON-NLS-1$
-            new int[] { 1 }, new CharacterType[] { CharacterType.ABYSSAL }),
+            new int[] { 1 },
+            new CharacterType[] { CharacterType.ABYSSAL, CharacterType.LUNAR }),
         createPermanentCastemark(),
         new MultiValuePerk(PerkType.Flaw, PerkCategory.Social, "Child", 3), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Flaw, PerkCategory.Social, "Disturbing", (new int[] { 2, 3 })), //$NON-NLS-1$
@@ -115,7 +118,8 @@ public class MeritsFlawsProvider {
 
   private static MultiValuePerk createSwornBrotherHood() {
     MultiValuePerk swornBrotherhood = new MultiValuePerk(PerkType.Merit, PerkCategory.Supernatural, "SwornBrotherhood", //$NON-NLS-1$
-        new int[] { 2 }, CharacterType.getAllExaltTypes());
+        new int[] { 2 },
+        CharacterType.getAllExaltTypes());
     return swornBrotherhood;
   }
 
@@ -171,7 +175,8 @@ public class MeritsFlawsProvider {
 
   private static IPerk createPastLives() {
     IPerk pastLives = createCharacterTypeLimitedPerk(PerkType.Merit, PerkCategory.Supernatural, "PastLives", new int[] { //$NON-NLS-1$
-        1, 2, 3, 4, 5 }, new CharacterType[] { CharacterType.SIDEREAL });
+        1, 2, 3, 4, 5 },
+        new CharacterType[] { CharacterType.SIDEREAL });
     setMultiCharacterTypeSpecialCost(
         pastLives,
         new CharacterType[] { CharacterType.DB, CharacterType.MORTAL },
