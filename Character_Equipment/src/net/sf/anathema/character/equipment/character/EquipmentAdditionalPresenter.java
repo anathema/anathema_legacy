@@ -54,7 +54,7 @@ public class EquipmentAdditionalPresenter implements IPresenter {
         view.removeEquipmentObjectView(objectView);
       }
     });
-    IMagicalMaterialView magicMaterialView = view.getMagicMaterialView(); 
+    IMagicalMaterialView magicMaterialView = view.getMagicMaterialView();
     initMaterialView(magicMaterialView);
     equipmentTemplatePickList.setCellRenderer(new EquipmentObjectCellRenderer());
     setObjects(equipmentTemplatePickList);
@@ -65,10 +65,14 @@ public class EquipmentAdditionalPresenter implements IPresenter {
         MaterialComposition composition = templateId == null
             ? MaterialComposition.None
             : model.getMaterialComposition(templateId);
-        MagicalMaterial defaultMagicMaterial = composition != MaterialComposition.Variable
-            ? null
-            : model.getDefaultMaterial();
-        view.getMagicMaterialView().setSelectedMaterial(defaultMagicMaterial);
+        MagicalMaterial magicMaterial = null;
+        if (composition == MaterialComposition.Variable) {
+          magicMaterial = model.getDefaultMaterial();
+        }
+        else if (composition == MaterialComposition.Fixed) {
+          magicMaterial = model.getMagicalMaterial(templateId);
+        }
+        view.getMagicMaterialView().setSelectedMaterial(magicMaterial, composition == MaterialComposition.Variable);
       }
     });
   }
@@ -76,7 +80,7 @@ public class EquipmentAdditionalPresenter implements IPresenter {
   private void initMaterialView(IMagicalMaterialView magicMaterialView) {
     String label = resources.getString("MagicMaterial.Label") + ":"; //$NON-NLS-1$ //$NON-NLS-2$
     DefaultListCellRenderer renderer = new MagicMaterialCellRenderer(resources);
-    magicMaterialView.initView(label, renderer, MagicalMaterial.values(), null);
+    magicMaterialView.initView(label, renderer, MagicalMaterial.values());
   }
 
   private SmartAction createRefreshAction(final IListObjectSelectionView<String> equipmentTemplatePickList) {

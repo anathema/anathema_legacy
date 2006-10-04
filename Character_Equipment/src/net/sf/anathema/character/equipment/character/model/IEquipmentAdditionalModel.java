@@ -12,6 +12,8 @@ public interface IEquipmentAdditionalModel extends IAdditionalModel, IEquipmentI
 
   public MaterialComposition getMaterialComposition(String templateId);
 
+  public MagicalMaterial getMagicalMaterial(String templateId);
+
   public IArmourStats[] getPrintArmours();
 
   public IWeaponStats[] getPrintWeapons();

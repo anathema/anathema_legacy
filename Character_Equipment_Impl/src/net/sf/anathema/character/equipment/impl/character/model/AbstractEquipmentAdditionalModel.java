@@ -93,4 +93,9 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
     IEquipmentTemplate template = loadEquipmentTemplate(templateId);
     return template.getComposition();
   }
+
+  public MagicalMaterial getMagicalMaterial(String templateId) {
+    IEquipmentTemplate template = loadEquipmentTemplate(templateId);
+    return template.getMaterial();
+  }
 }

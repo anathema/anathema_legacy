@@ -7,9 +7,9 @@ import net.sf.anathema.lib.gui.IView;
 
 public interface IMagicalMaterialView extends IView {
 
-  public void initView(String label, ListCellRenderer renderer, MagicalMaterial[] materials, MagicalMaterial selection);
+  public void initView(String label, ListCellRenderer renderer, MagicalMaterial[] materials);
 
-  public void setSelectedMaterial(MagicalMaterial selection);
+  public void setSelectedMaterial(MagicalMaterial selection, boolean viewEnabled);
 
   public MagicalMaterial getSelectedMaterial();
 }

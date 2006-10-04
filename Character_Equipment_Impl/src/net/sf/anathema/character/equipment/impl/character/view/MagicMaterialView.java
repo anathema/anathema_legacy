@@ -29,21 +29,21 @@ public class MagicMaterialView implements IMagicalMaterialView {
     return content;
   }
 
-  public void initView(String label, ListCellRenderer renderer, MagicalMaterial[] materials, MagicalMaterial selection) {
-    this.label.setText(label);
+  public void initView(String labelString, ListCellRenderer renderer, MagicalMaterial[] materials) {
+    this.label.setText(labelString);
     materialCombo.setObjects(materials);
     materialCombo.setRenderer(renderer);
-    setSelectedMaterial(selection);
+    setSelectedMaterial(null, false);
     if (content != null) {
       GuiUtilities.revalidateTree(content);
     }
   }
 
-  public void setSelectedMaterial(MagicalMaterial selection) {
+  public void setSelectedMaterial(MagicalMaterial selection, boolean viewEnabled) {
     materialCombo.setSelectedObject(selection);
-    materialCombo.getComponent().setEnabled(selection != null);
+    materialCombo.getComponent().setEnabled(viewEnabled);
   }
-  
+
   public MagicalMaterial getSelectedMaterial() {
     return materialCombo.getSelectedObject();
   }
