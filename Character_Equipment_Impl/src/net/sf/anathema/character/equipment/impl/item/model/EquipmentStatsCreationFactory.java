@@ -34,8 +34,8 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
     this.collectionFactory = collectionFactory;
   }
 
-  public IEquipmentStats createNewStats(Component parentComponent, IResources resources) {
-    IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel();
+  public IEquipmentStats createNewStats(Component parentComponent, IResources resources, String[] definedNames) {
+    IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames);
     IEquipmentStatisticsCreationViewFactory viewFactory = new EquipmentStatisticsCreationViewFactory();
     EquipmentTypeChoicePresenterPage startPage = new EquipmentTypeChoicePresenterPage(resources, model, viewFactory);
     WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);

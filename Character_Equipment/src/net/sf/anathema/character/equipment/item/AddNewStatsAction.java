@@ -1,6 +1,8 @@
 package net.sf.anathema.character.equipment.item;
 
 import java.awt.Component;
+import java.util.ArrayList;
+import java.util.List;
 
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.character.equipment.item.model.IEquipmentStatsCreationFactory;
@@ -43,10 +45,16 @@ public final class AddNewStatsAction extends SmartAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    IEquipmentStats equipmentStats = statsFactory.createNewStats(parentComponent, resources);
+    IExaltedRuleSet ruleset = ruleSetView.getSelectedObject();
+    List<String> definedNames = new ArrayList<String>();
+    for (IEquipmentStats stats : editModel.getStats(ruleset)) {
+      definedNames.add(stats.getName().getId());
+    }
+    String[] nameArray = definedNames.toArray(new String[definedNames.size()]);
+    IEquipmentStats equipmentStats = statsFactory.createNewStats(parentComponent, resources, nameArray);
     if (equipmentStats == null) {
       return;
     }
-    editModel.addStatistics(ruleSetView.getSelectedObject(), equipmentStats);
+    editModel.addStatistics(ruleset, equipmentStats);
   }
 }

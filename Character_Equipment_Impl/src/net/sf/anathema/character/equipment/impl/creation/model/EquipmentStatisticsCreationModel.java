@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.impl.creation.model;
 
+import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.equipment.creation.model.stats.IArmourStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.ICloseCombatStatsticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
@@ -19,6 +20,11 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
   private final ChangeControl equpimentTypeChangeControl = new ChangeControl();
   private final IWeaponTagsModel weaponTagsModel = new WeaponTagsModel();
   private EquipmentStatisticsType statisticsType;
+  private final String[] existingNames;
+
+  public EquipmentStatisticsCreationModel(String[] existingNames) {
+    this.existingNames = existingNames;
+  }
 
   public void setEquipmentType(EquipmentStatisticsType statisticsType) {
     if (this.statisticsType == statisticsType) {
@@ -64,5 +70,9 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
 
   public EquipmentStatisticsType getEquipmentType() {
     return statisticsType;
+  }
+
+  public boolean isNameUnique(String name) {
+    return !ArrayUtilities.contains(existingNames, name);
   }
 }

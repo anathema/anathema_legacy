@@ -22,4 +22,6 @@ public interface IEquipmentStatisticsCreationModel {
   public IWeaponTagsModel getWeaponTagsModel();
 
   public EquipmentStatisticsType getEquipmentType();
+
+  public boolean isNameUnique(String name);
 }

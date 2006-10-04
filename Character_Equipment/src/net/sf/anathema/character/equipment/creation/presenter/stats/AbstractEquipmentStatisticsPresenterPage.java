@@ -64,15 +64,22 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
     return resources;
   }
 
-  private boolean isNameCorrectlyDefined() {
+  private boolean isNameDefined() {
     return !pageModel.getName().isEmpty();
   }
 
   public IBasicMessage getMessage() {
-    if (!isNameCorrectlyDefined()) {
+    if (!isNameDefined()) {
       return properties.getUndefinedNameMessage();
     }
+    if (!isNameUnique()) {
+      return properties.getDuplicateNameMessage();
+    }
     return properties.getDefaultMessage();
+  }
+
+  private boolean isNameUnique() {
+    return overallModel.isNameUnique(pageModel.getName().getText());
   }
 
   public final String getDescription() {
@@ -80,7 +87,7 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
   }
 
   public boolean canFinish() {
-    return isNameCorrectlyDefined();
+    return isNameDefined() && isNameUnique();
   }
 
   @Override

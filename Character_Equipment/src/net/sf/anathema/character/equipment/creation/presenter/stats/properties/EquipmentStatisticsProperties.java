@@ -21,6 +21,10 @@ public abstract class EquipmentStatisticsProperties {
     return new BasicMessage(getString("Equipment.Creation.Stats.NoNameMessage"), MessageType.ERROR); //$NON-NLS-1$
   }
 
+  public IBasicMessage getDuplicateNameMessage() {
+    return new BasicMessage(getString("Equipment.Creation.Stats.NameExistsMessage"), MessageType.ERROR); //$NON-NLS-1$
+  }
+
   public abstract String getDefaultName();
 
   public abstract IBasicMessage getDefaultMessage();
