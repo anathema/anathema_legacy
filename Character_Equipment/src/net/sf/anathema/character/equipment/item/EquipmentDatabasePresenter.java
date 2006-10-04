@@ -8,7 +8,7 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
-import net.sf.anathema.framework.presenter.view.IdentificateListCellRenderer;
+import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.IPresenter;
@@ -62,11 +62,11 @@ public class EquipmentDatabasePresenter implements IPresenter {
     new TextualPresentation().initView(descriptionView, model.getTemplateEditModel().getDescription().getContent());
     final ObjectSelectionView<MaterialComposition> compositionView = new ObjectSelectionView<MaterialComposition>(
         getColonString("Equipment.Creation.Basics.Composition"), //$NON-NLS-1$
-        new IdentificateListCellRenderer(resources),
+        new IdentificateSelectCellRenderer("MaterialComposition.", resources), //$NON-NLS-1$
         MaterialComposition.values());
     final ObjectSelectionView<MagicalMaterial> materialView = new ObjectSelectionView<MagicalMaterial>(
         getColonString("Equipment.Creation.Basics.Material"), //$NON-NLS-1$
-        new IdentificateListCellRenderer(resources),
+        new IdentificateSelectCellRenderer("MagicMaterial.", resources), //$NON-NLS-1$
         MagicalMaterial.values());
     panelBuilder.addDialogComponent(new IDialogComponent() {
 
