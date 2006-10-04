@@ -6,8 +6,11 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class ArmourStatisticsProperties extends EquipmentStatisticsProperties {
 
+  private final BasicMessage defaultMessage;
+
   public ArmourStatisticsProperties(IResources resources) {
     super(resources);
+    this.defaultMessage = new BasicMessage(getString("Equipment.Creation.Armour.DefaultMessage")); //$NON-NLS-1$
   }
 
   public String getBashingSoakLabel() {
@@ -36,7 +39,7 @@ public class ArmourStatisticsProperties extends EquipmentStatisticsProperties {
 
   @Override
   public IBasicMessage getDefaultMessage() {
-    return new BasicMessage("Equipment.Creation.Armour.DefaultMessage"); //$NON-NLS-1$
+    return defaultMessage;
   }
 
   @Override

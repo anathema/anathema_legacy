@@ -6,8 +6,11 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class ShieldStatisticsProperties extends EquipmentStatisticsProperties {
 
+  private final IBasicMessage defaultMessage;
+
   public ShieldStatisticsProperties(IResources resources) {
     super(resources);
+    this.defaultMessage = new BasicMessage(getString("Equipment.Creation.Shield.DefaultMessage")); //$NON-NLS-1$
   }
 
   public String getCloseCombatDvBonusLabel() {
@@ -20,7 +23,7 @@ public class ShieldStatisticsProperties extends EquipmentStatisticsProperties {
 
   @Override
   public IBasicMessage getDefaultMessage() {
-    return new BasicMessage(getString("Equipment.Creation.Shield.DefaultMessage")); //$NON-NLS-1$
+    return defaultMessage;
   }
 
   @Override

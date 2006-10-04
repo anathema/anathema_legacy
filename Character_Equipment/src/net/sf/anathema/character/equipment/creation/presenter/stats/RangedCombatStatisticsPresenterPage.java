@@ -33,4 +33,14 @@ public class RangedCombatStatisticsPresenterPage extends
         initIntegerSpinner(getPageModel().getSpeedModel()).getComponent(),
         initIntegerSpinner(getPageModel().getRangeModel()).getComponent() });
   }
+
+  @Override
+  public boolean canFinish() {
+    return false;
+  }
+
+  @Override
+  protected boolean isInLegalState() {
+    return super.canFinish();
+  }
 }

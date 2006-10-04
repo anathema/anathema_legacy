@@ -6,13 +6,16 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class CloseCombatStatisticsProperties extends OffensiveStatisticsProperties {
 
+  private final IBasicMessage defaultMessage;
+
   public CloseCombatStatisticsProperties(IResources resources) {
     super(resources);
+    this.defaultMessage= new BasicMessage(getString("Equipment.Creation.CloseCombat.DefaultMessage")); //$NON-NLS-1$
   }
 
   @Override
   public IBasicMessage getDefaultMessage() {
-    return new BasicMessage(getString("Equipment.Creation.CloseCombat.DefaultMessage")); //$NON-NLS-1$
+    return defaultMessage;
   }
 
   @Override

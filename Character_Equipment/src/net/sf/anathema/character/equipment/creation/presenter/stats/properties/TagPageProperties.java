@@ -24,4 +24,8 @@ public class TagPageProperties {
   public String getLabel(IWeaponTag tag) {
     return resources.getString("Equipment.Tag." + tag.getId()); //$NON-NLS-1$
   }
+
+  public IBasicMessage getSelectRangedWeaponTagMessage() {
+    return new BasicMessage(resources.getString("Equipment.Creation.Tags.SelectRangedTagMessage")); //$NON-NLS-1$
+  }
 }

@@ -24,6 +24,12 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
     if (this.statisticsType == statisticsType) {
       return;
     }
+    if (statisticsType == EquipmentStatisticsType.RangedCombat) {
+      getWeaponTagsModel().setTagsRangedCombatStyle();
+    }
+    else {
+      getWeaponTagsModel().setTagsCloseCombatStyle();
+    }
     this.statisticsType = statisticsType;
     equpimentTypeChangeControl.fireChangedEvent();
   }

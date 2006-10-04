@@ -68,7 +68,7 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
     return !pageModel.getName().isEmpty();
   }
 
-  public final IBasicMessage getMessage() {
+  public IBasicMessage getMessage() {
     if (!isNameCorrectlyDefined()) {
       return properties.getUndefinedNameMessage();
     }
@@ -79,7 +79,7 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
     return properties.getPageDescription();
   }
 
-  public final boolean canFinish() {
+  public boolean canFinish() {
     return isNameCorrectlyDefined();
   }
 
@@ -96,15 +96,19 @@ public abstract class AbstractEquipmentStatisticsPresenterPage<M extends IEquipm
   }
 
   @Override
-  protected void addFollowUpPages(CheckInputListener inputListener) {
+  protected final void addFollowUpPages(CheckInputListener inputListener) {
     if (!isTagsSupported()) {
       return;
     }
     addFollowupPage(new WeaponTagsPresenterPage(resources, overallModel, viewFactory), inputListener, new ICondition() {
       public boolean isFullfilled() {
-        return canFinish();
+        return isInLegalState();
       }
     });
+  }
+
+  protected boolean isInLegalState() {
+    return canFinish();
   }
 
   protected abstract boolean isTagsSupported();

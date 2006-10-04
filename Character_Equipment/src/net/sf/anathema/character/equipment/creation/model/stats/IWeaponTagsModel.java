@@ -6,6 +6,13 @@ public interface IWeaponTagsModel {
 
   public IWeaponTag[] getAllTags();
 
-  public BooleanValueModel getBooleanModel(IWeaponTag tag);
+  public BooleanValueModel getEnabledModel(IWeaponTag tag);
 
+  public BooleanValueModel getSelectedModel(IWeaponTag tag);
+
+  public int getSelectedRangedWeaponTagCount();
+
+  public void setTagsCloseCombatStyle();
+
+  public void setTagsRangedCombatStyle();
 }
