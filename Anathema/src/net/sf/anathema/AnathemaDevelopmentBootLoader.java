@@ -56,8 +56,8 @@ public class AnathemaDevelopmentBootLoader {
       PluginLocation[] locations = collection.toArray(new PluginLocation[collection.size()]);
       manager.publishPlugins(locations);
     }
-    catch (Throwable throwable) {
-      throw new InitializationException(throwable);
+    catch (Exception e) {
+      throw new InitializationException("An error occured while Anathema was collecting plugins.", e); //$NON-NLS-1$
     }
   }
 
