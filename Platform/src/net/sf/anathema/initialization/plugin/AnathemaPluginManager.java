@@ -32,7 +32,7 @@ public class AnathemaPluginManager implements IAnathemaPluginManager {
         manager.activatePlugin(descriptor.getId());
       }
       catch (PluginLifecycleException e) {
-        throw new InitializationException(e);
+        throw new InitializationException("Failed to activate plugin " + descriptor.getId() + ".", e); //$NON-NLS-1$ //$NON-NLS-2$
       }
     }
   }

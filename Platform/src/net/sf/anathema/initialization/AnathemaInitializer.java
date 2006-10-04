@@ -6,7 +6,6 @@ import net.sf.anathema.framework.configuration.IAnathemaPreferences;
 import net.sf.anathema.framework.environment.AnathemaEnvironment;
 import net.sf.anathema.framework.exception.CentralExceptionHandler;
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
-import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.resources.AnathemaResources;
 import net.sf.anathema.framework.view.AnathemaView;
 import net.sf.anathema.framework.view.IAnathemaView;
@@ -37,16 +36,17 @@ public class AnathemaInitializer {
     this.anathemaPreferences = anathemaPreferences;
   }
 
-  public IAnathemaView initialize() throws Exception {
+  public IAnathemaView initialize() throws InitializationException {
     IResources resources = initResources();
     CentralExceptionHandling.setHandler(new CentralExceptionHandler(resources));
     IAnathemaModel anathemaModel = initModel(resources);
     IAnathemaView view = initView(resources);
     new AnathemaPresenter(pluginManager, anathemaModel, view, resources, itemTypeCollection.getItemTypes()).initPresentation();
     return view;
+
   }
 
-  private IAnathemaModel initModel(IResources resources) throws RepositoryException {
+  private IAnathemaModel initModel(IResources resources) throws InitializationException {
     return new AnathemaModelInitializer(
         anathemaPreferences,
         itemTypeCollection.getItemTypes(),

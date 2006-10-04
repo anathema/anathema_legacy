@@ -25,18 +25,20 @@ public abstract class AbstractInitializationCollection<T> {
 
   protected abstract String getExtensionPointId();
 
-  private T createItemType(Parameter typeParameter, Extension extension, IAnathemaPluginManager pluginManager) throws InitializationException {
+  private T createItemType(Parameter typeParameter, Extension extension, IAnathemaPluginManager pluginManager)
+      throws InitializationException {
     return instantiateItemType(typeParameter.getSubParameter(PARAM_CLASS), extension, pluginManager);
   }
 
   @SuppressWarnings("unchecked")
-  private final T instantiateItemType(Parameter classParameter, Extension extension, IAnathemaPluginManager manager) throws InitializationException {
+  private final T instantiateItemType(Parameter classParameter, Extension extension, IAnathemaPluginManager manager)
+      throws InitializationException {
     String className = classParameter.valueAsString();
-    try {      
+    try {
       return (T) Class.forName(className, true, manager.getClassLoader(extension)).newInstance();
     }
     catch (Throwable throwable) {
-      throw new InitializationException(throwable);
+      throw new InitializationException("Failed to create item type from class " + className + ".", throwable); //$NON-NLS-1$ //$NON-NLS-2$
     }
   }
 }

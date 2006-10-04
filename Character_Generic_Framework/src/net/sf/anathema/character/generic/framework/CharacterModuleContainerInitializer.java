@@ -6,6 +6,7 @@ import java.util.List;
 import net.sf.anathema.character.generic.framework.module.CharacterModuleContainer;
 import net.sf.anathema.character.generic.framework.module.ICharacterModule;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObject;
+import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
@@ -31,7 +32,8 @@ public class CharacterModuleContainerInitializer {
     }
   };
 
-  public CharacterModuleContainer initContainer(IResources resources, IDataFileProvider dataFileProvider) {
+  public CharacterModuleContainer initContainer(IResources resources, IDataFileProvider dataFileProvider)
+      throws InitializationException {
     CharacterModuleContainer container = new CharacterModuleContainer(resources, dataFileProvider);
     for (String moduleName : moduleNameList) {
       addModule(container, moduleName);
@@ -39,7 +41,7 @@ public class CharacterModuleContainerInitializer {
     return container;
   }
 
-  private void addModule(CharacterModuleContainer container, String moduleName) {
+  private void addModule(CharacterModuleContainer container, String moduleName) throws InitializationException {
     try {
       Object clazz = Class.forName(moduleName).newInstance();
       ICharacterModule< ? extends ICharacterModuleObject> module = (ICharacterModule< ? extends ICharacterModuleObject>) clazz;
@@ -48,7 +50,10 @@ public class CharacterModuleContainerInitializer {
     catch (ClassNotFoundException e) {
       logger.info(moduleName + " not installed."); //$NON-NLS-1$
     }
-    catch (Exception e) {
+    catch (InstantiationException e) {
+      logger.error("Error initializing module " + moduleName, e); //$NON-NLS-1$
+    }
+    catch (IllegalAccessException e) {
       logger.error("Error initializing module " + moduleName, e); //$NON-NLS-1$
     }
   }

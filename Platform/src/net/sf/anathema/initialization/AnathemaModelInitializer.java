@@ -30,8 +30,14 @@ public class AnathemaModelInitializer {
     this.extensionById = extensionById;
   }
 
-  public IAnathemaModel initializeModel(IResources resources) throws RepositoryException {
-    AnathemaModel model = new AnathemaModel(createRepositoryFolder(), resources);
+  public IAnathemaModel initializeModel(IResources resources) throws InitializationException {
+    AnathemaModel model;
+    try {
+      model = new AnathemaModel(createRepositoryFolder(), resources);
+    }
+    catch (RepositoryException e) {
+      throw new InitializationException("Failed to create repository folder.\nPlease check read/write permissions.", e); //$NON-NLS-1$
+    }
     for (Map.Entry<String, IAnathemaExtension> entry : extensionById.entrySet()) {
       IAnathemaExtension extension = entry.getValue();
       extension.initialize(resources, model.getRepository());

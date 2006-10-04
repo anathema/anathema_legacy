@@ -19,13 +19,15 @@ public class PluginUtilities {
     return extension.getParameters(parameterName);
   }
 
-  public static Object instantiate(Parameter classParameter, IClassLoaderProvider provider) throws InitializationException {
+  public static Object instantiate(Parameter classParameter, IClassLoaderProvider provider)
+      throws InitializationException {
     String className = classParameter.valueAsString();
     try {
-      return Class.forName(className, true, provider.getClassLoader(classParameter.getDeclaringExtension())).newInstance();
+      return Class.forName(className, true, provider.getClassLoader(classParameter.getDeclaringExtension()))
+          .newInstance();
     }
     catch (Throwable e) {
-      throw new InitializationException(e);
+      throw new InitializationException("Failed to load required class " + className + ".", e); //$NON-NLS-1$ //$NON-NLS-2$
     }
   }
 }
