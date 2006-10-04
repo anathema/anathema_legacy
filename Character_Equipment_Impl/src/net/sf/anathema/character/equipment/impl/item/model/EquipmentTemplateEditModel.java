@@ -175,7 +175,10 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
       return;
     }
     this.composition = composition;
-    if (!composition.requiresMaterial()) {
+    if (composition.requiresMaterial()) {
+      setMagicalMaterial(MagicalMaterial.Orichalcum);
+    }
+    else {
       setMagicalMaterial(null);
     }
     compositionControl.fireChangedEvent();
