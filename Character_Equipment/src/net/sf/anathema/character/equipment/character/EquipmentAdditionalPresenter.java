@@ -59,7 +59,7 @@ public class EquipmentAdditionalPresenter implements IPresenter {
     equipmentTemplatePickList.setCellRenderer(new EquipmentObjectCellRenderer());
     setObjects(equipmentTemplatePickList);
     view.setSelectButtonAction(createTemplateAddAction(equipmentTemplatePickList, magicMaterialView));
-    view.setRefreshButtonAction(createRefreshAction(equipmentTemplatePickList));
+    //    view.setRefreshButtonAction(createRefreshAction(equipmentTemplatePickList));
     equipmentTemplatePickList.addObjectSelectionChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String templateId) {
         MaterialComposition composition = templateId == null

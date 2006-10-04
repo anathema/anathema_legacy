@@ -37,13 +37,13 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView {
     JScrollPane itemScrollpane = new JScrollPane(equipmentPickList.getComponent());
     itemScrollpane.setPreferredSize(new Dimension(150, 250));
     buttonPanel.add(selectButton);
-    buttonPanel.add(refreshButton);
+    //    buttonPanel.add(refreshButton);
     taskPaneView.getComponent().setPreferredSize(new Dimension(150, 250));
-    
+
     JPanel selectionPanel = new JPanel(new GridDialogLayout(1, false));
     selectionPanel.add(itemScrollpane, GridDialogLayoutData.FILL_BOTH);
     selectionPanel.add(magicMaterialView.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
-    
+
     panel.add(selectionPanel, GridDialogLayoutData.FILL_BOTH);
     panel.add(buttonPanel, GridDialogLayoutData.CENTER);
     panel.add(taskPaneView.getComponent(), GridDialogLayoutData.FILL_BOTH);
@@ -76,7 +76,7 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView {
   public IListObjectSelectionView<String> getEquipmentTemplatePickList() {
     return equipmentPickList;
   }
-  
+
   public IMagicalMaterialView getMagicMaterialView() {
     return magicMaterialView;
   }
