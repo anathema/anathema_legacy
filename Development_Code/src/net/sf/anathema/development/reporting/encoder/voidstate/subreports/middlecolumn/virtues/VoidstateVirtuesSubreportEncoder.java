@@ -9,6 +9,7 @@ import net.sf.anathema.development.reporting.encoder.ICharacterSheetPageEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.VoidstateBasicsEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.util.SubreportUtilities;
 import net.sf.anathema.development.reporting.util.TraitEncoder;
+import net.sf.anathema.initialization.InitializationException;
 
 public class VoidstateVirtuesSubreportEncoder extends AbstractPagedCharacterSheetEncoder implements
     IVoidStateFormatConstants {
@@ -16,7 +17,8 @@ public class VoidstateVirtuesSubreportEncoder extends AbstractPagedCharacterShee
   private final TraitEncoder traitEncoder;
   private final VoidstateBasicsEncoder basicsEncoder;
 
-  public VoidstateVirtuesSubreportEncoder(VoidstateBasicsEncoder basicsEncoder, TraitEncoder traitEncoder) {
+  public VoidstateVirtuesSubreportEncoder(VoidstateBasicsEncoder basicsEncoder, TraitEncoder traitEncoder)
+      throws InitializationException {
     super(SubreportUtilities.createPageFormat(VoidstateVirtuesPageEncoder.getExtents(basicsEncoder)));
     this.basicsEncoder = basicsEncoder;
     this.traitEncoder = traitEncoder;

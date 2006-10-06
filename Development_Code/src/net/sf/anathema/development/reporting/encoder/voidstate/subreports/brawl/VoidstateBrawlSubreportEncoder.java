@@ -7,10 +7,11 @@ import net.sf.anathema.development.reporting.encoder.AbstractPagedCharacterSheet
 import net.sf.anathema.development.reporting.encoder.ICharacterSheetPageEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.util.SubreportUtilities;
 import net.sf.anathema.framework.reporting.IReportDataSource;
+import net.sf.anathema.initialization.InitializationException;
 
 public class VoidstateBrawlSubreportEncoder extends AbstractPagedCharacterSheetEncoder {
 
-  public VoidstateBrawlSubreportEncoder() {
+  public VoidstateBrawlSubreportEncoder() throws InitializationException {
     super(SubreportUtilities.createPageFormat(VoidstateBrawlPageEncoder.calculateBounds()));
   }
 

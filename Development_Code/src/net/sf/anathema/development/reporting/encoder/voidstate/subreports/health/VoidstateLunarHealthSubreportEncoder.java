@@ -6,9 +6,10 @@ import net.sf.anathema.character.generic.framework.reporting.parameters.HealthPa
 import net.sf.anathema.development.reporting.encoder.AbstractPagedCharacterSheetEncoder;
 import net.sf.anathema.development.reporting.encoder.ICharacterSheetPageEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.util.SubreportUtilities;
+import net.sf.anathema.initialization.InitializationException;
 
 public class VoidstateLunarHealthSubreportEncoder extends AbstractPagedCharacterSheetEncoder {
-  public VoidstateLunarHealthSubreportEncoder() {
+  public VoidstateLunarHealthSubreportEncoder() throws InitializationException {
     super(SubreportUtilities.createPageFormat(AbstractVoidstateHealthEncoder.calculateBounds()));
   }
 

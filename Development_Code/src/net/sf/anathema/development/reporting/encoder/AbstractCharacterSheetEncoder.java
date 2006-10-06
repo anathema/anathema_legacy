@@ -9,17 +9,19 @@ import net.sf.anathema.development.reporting.AbstractReportEncoder;
 import net.sf.anathema.development.reporting.IReportEncoder;
 import net.sf.anathema.development.reporting.encoder.page.IPageFormat;
 import net.sf.anathema.framework.resources.AnathemaResources;
+import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.test.character.DemoDataFileProvider;
 
 public abstract class AbstractCharacterSheetEncoder extends AbstractReportEncoder implements IReportEncoder {
 
-  public AbstractCharacterSheetEncoder(IPageFormat pageFormat) {
+  public AbstractCharacterSheetEncoder(IPageFormat pageFormat) throws InitializationException {
     super(pageFormat);
+    this.container = new CharacterModuleContainerInitializer().initContainer(
+        new AnathemaResources(),
+        new DemoDataFileProvider());
   }
 
-  private static final CharacterModuleContainer container = new CharacterModuleContainerInitializer().initContainer(
-      new AnathemaResources(),
-      new DemoDataFileProvider());
+  private final CharacterModuleContainer container;
 
   protected final ICharacterTemplate getDefaultTemplate(CharacterType characterType) {
     return container.getCharacterGenerics().getTemplateRegistry().getDefaultTemplate(

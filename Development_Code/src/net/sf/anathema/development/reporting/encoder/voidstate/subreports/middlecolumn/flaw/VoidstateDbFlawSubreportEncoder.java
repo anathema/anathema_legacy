@@ -7,12 +7,13 @@ import net.sf.anathema.development.reporting.encoder.AbstractPagedCharacterSheet
 import net.sf.anathema.development.reporting.encoder.ICharacterSheetPageEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.columns.IOneColumnEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.util.SubreportUtilities;
+import net.sf.anathema.initialization.InitializationException;
 
 public class VoidstateDbFlawSubreportEncoder extends AbstractPagedCharacterSheetEncoder {
 
   private final IOneColumnEncoder columnEncoder;
 
-  public VoidstateDbFlawSubreportEncoder(IOneColumnEncoder columnEncoder) {
+  public VoidstateDbFlawSubreportEncoder(IOneColumnEncoder columnEncoder) throws InitializationException {
     super(SubreportUtilities.createPageFormat(AbstractVoidstateFlawPageEncoder.calculateBounds(columnEncoder)));
     this.columnEncoder = columnEncoder;
   }

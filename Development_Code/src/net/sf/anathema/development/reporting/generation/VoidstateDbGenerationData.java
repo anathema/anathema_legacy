@@ -13,13 +13,14 @@ import net.sf.anathema.character.impl.reporting.CharacterReport;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.framework.reporting.jasper.IJasperReport;
 import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.resources.IResources;
 
 public class VoidstateDbGenerationData extends AbstractGenerationData implements IGenerationData {
 
   private final IResources resources;
 
-  public VoidstateDbGenerationData(IResources resources) {
+  public VoidstateDbGenerationData(IResources resources) throws InitializationException {
     this.resources = resources;
   }
 

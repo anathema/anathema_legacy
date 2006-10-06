@@ -11,6 +11,7 @@ import net.sf.anathema.dummy.character.DummyGenericCharacter;
 import net.sf.anathema.dummy.character.template.DummyCharacterTemplate;
 import net.sf.anathema.dummy.character.trait.DummyGenericTrait;
 import net.sf.anathema.framework.resources.AnathemaResources;
+import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
 public abstract class BasicCharacterTestCase extends BasicTestCase {
@@ -20,7 +21,7 @@ public abstract class BasicCharacterTestCase extends BasicTestCase {
     return new DummyGenericCharacter(template);
   }
 
-  protected final ICharacterGenerics createCharacterGenerics() {
+  protected final ICharacterGenerics createCharacterGenerics() throws InitializationException {
     CharacterModuleContainerInitializer initializer = new CharacterModuleContainerInitializer();
     CharacterModuleContainer container = initializer.initContainer(new AnathemaResources(), new DemoDataFileProvider());
     return container.getCharacterGenerics();

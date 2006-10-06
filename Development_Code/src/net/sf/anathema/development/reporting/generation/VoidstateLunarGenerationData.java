@@ -11,12 +11,13 @@ import net.sf.anathema.character.impl.reporting.CharacterReport;
 import net.sf.anathema.character.lunar.reporting.LunarVoidstateReportTemplate;
 import net.sf.anathema.framework.reporting.jasper.IJasperReport;
 import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.resources.IResources;
 
 public class VoidstateLunarGenerationData extends AbstractGenerationData {
   private final IResources resources;
 
-  public VoidstateLunarGenerationData(IResources resources) {
+  public VoidstateLunarGenerationData(IResources resources) throws InitializationException {
     this.resources = resources;
   }
 

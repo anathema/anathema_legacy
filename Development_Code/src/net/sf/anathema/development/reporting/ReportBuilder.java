@@ -43,6 +43,7 @@ import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middle
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middlecolumn.willpower.VoidstateDefaultWillpowerSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.traits.VoidStateAbilityEncoder;
 import net.sf.anathema.development.reporting.util.TraitEncoder;
+import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 
 import org.dom4j.Document;
@@ -58,7 +59,7 @@ public class ReportBuilder {
       IVoidStateFormatConstants.LINE_HEIGHT,
       IVoidStateFormatConstants.FONT_SIZE);
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws InitializationException {
     buildReportDesign(new File("VoidStateCharacterSheet.xml"), new VoidstateSheetEncoder()); //$NON-NLS-1$
     // buildReportDesign(new File("VoidstateNullPage.xml"), new VoidstateNullPageSubreportEncoder()); //$NON-NLS-1$
     // buildReportDesign(new File("VoidstateBeastformPage.xml"), new VoidstateBeastformSubreportEncoder());
@@ -78,11 +79,11 @@ public class ReportBuilder {
     // createBasicSheets();
   }
 
-  private static void createBasicSheets() {
+  private static void createBasicSheets() throws InitializationException {
     buildReportDesign(new File("BasicSolarCharacterSheet.xml"), new BasicSolarSheetEncoder()); //$NON-NLS-1$
   }
 
-  private static void createAttributeSubreports() {
+  private static void createAttributeSubreports() throws InitializationException {
     buildReportDesign(
         new File("VoidstateDefaultAttributeSubreport.xml"), new VoidstateDefaultAttributeSubreportEncoder(basicsEncoder, traitEncoder)); //$NON-NLS-1$
     buildReportDesign(
@@ -91,7 +92,7 @@ public class ReportBuilder {
         new File("VoidstateBeastformAttributeSubreport.xml"), new VoidstateBeastformAttributeSubreportEncoder(basicsEncoder, traitEncoder)); //$NON-NLS-1$
   }
 
-  private static void createMiddleColumnSubreports() {
+  private static void createMiddleColumnSubreports() throws InitializationException {
     createFlawSubreports();
     buildReportDesign(new File("VoidstateBeastformGiftsSubreport.xml"), new VoidstateBeastformGiftsSubreportEncoder(
         basicsEncoder));
@@ -110,12 +111,12 @@ public class ReportBuilder {
         basicsEncoder));
   }
 
-  private static void createHealthSubreports() {
+  private static void createHealthSubreports() throws InitializationException {
     buildReportDesign(new File("VoidstateDefaultHealthSubreport.xml"), new VoidstateDefaultHealthSubreportEncoder());
     buildReportDesign(new File("VoidstateLunarHealthSubreport.xml"), new VoidstateLunarHealthSubreportEncoder());
   }
 
-  private static void createAnimaSubreports() {
+  private static void createAnimaSubreports() throws InitializationException {
     buildReportDesign(new File("VoidStateSolarAnimaSubreport.xml"), new VoidstateSolarAnimaSubreportEncoder(
         basicsEncoder));
     buildReportDesign(new File("VoidStateDbAnimaSubreport.xml"), new VoidstateDbAnimaSubreportEncoder(basicsEncoder));
@@ -127,7 +128,7 @@ public class ReportBuilder {
         basicsEncoder));
   }
 
-  private static void createDescriptionSubreports() {
+  private static void createDescriptionSubreports() throws InitializationException {
     buildReportDesign(
         new File("VoidstateSiderealDescriptionSubreport.xml"),
         new VoidstateSiderealDescriptionSubreportEncoder(basicsEncoder, traitEncoder));
@@ -139,7 +140,7 @@ public class ReportBuilder {
         new VoidstateDefaultDescriptionSubreportEncoder(basicsEncoder));
   }
 
-  private static void createFlawSubreports() {
+  private static void createFlawSubreports() throws InitializationException {
     buildReportDesign(
         new File("VoidStateSolarFlawSubreport.xml"),
         new VoidstateSolarFlawSubreportEncoder(basicsEncoder));
@@ -153,7 +154,7 @@ public class ReportBuilder {
         basicsEncoder));
   }
 
-  private static void createAbilitySubreports() {
+  private static void createAbilitySubreports() throws InitializationException {
     VoidStateAbilityEncoder abilityEncoder = new VoidStateAbilityEncoder(basicsEncoder, traitEncoder);
     buildReportDesign(new File("VoidstateAbilitySubreport.xml"), new VoidstateAbilitySubreportEncoder(abilityEncoder)); //$NON-NLS-1$
     buildReportDesign(new File("VoidstateSingleAbilitySubreport.xml"), new VoidstateSingleAbilitySubreportEncoder(

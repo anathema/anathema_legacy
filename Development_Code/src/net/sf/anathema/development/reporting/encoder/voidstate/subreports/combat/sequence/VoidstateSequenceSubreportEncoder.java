@@ -8,12 +8,13 @@ import net.sf.anathema.development.reporting.encoder.ICharacterSheetPageEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.VoidstateBasicsEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middlecolumn.flaw.AbstractVoidstateFlawPageEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.util.SubreportUtilities;
+import net.sf.anathema.initialization.InitializationException;
 
 public class VoidstateSequenceSubreportEncoder extends AbstractPagedCharacterSheetEncoder {
 
   private VoidstateBasicsEncoder basicsEncoder;
 
-  public VoidstateSequenceSubreportEncoder(VoidstateBasicsEncoder basicsEncoder) {
+  public VoidstateSequenceSubreportEncoder(VoidstateBasicsEncoder basicsEncoder) throws InitializationException {
     super(SubreportUtilities.createPageFormat(AbstractVoidstateFlawPageEncoder.calculateBounds(basicsEncoder)));
     this.basicsEncoder = basicsEncoder;
   }

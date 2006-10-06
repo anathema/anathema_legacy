@@ -8,10 +8,11 @@ import net.sf.anathema.development.reporting.encoder.AbstractPagedCharacterSheet
 import net.sf.anathema.development.reporting.encoder.ICharacterSheetPageEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.pages.VoidstateSpecialPageEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.util.SubreportUtilities;
+import net.sf.anathema.initialization.InitializationException;
 
 public class VoidstateBeastformSubreportEncoder extends AbstractPagedCharacterSheetEncoder {
 
-  public VoidstateBeastformSubreportEncoder() {
+  public VoidstateBeastformSubreportEncoder() throws InitializationException {
     super(SubreportUtilities.createPageFormat(VoidstateSpecialPageEncoder.getSpecialPageExtents()));
   }
 

@@ -10,10 +10,11 @@ import net.sf.anathema.development.reporting.encoder.voidstate.pages.VoidstateCh
 import net.sf.anathema.development.reporting.encoder.voidstate.pages.VoidstateFirstPageEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.pages.VoidstateSecondPageEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.pages.VoidstateSpecialPageEncoder;
+import net.sf.anathema.initialization.InitializationException;
 
 public class VoidstateSheetEncoder extends AbstractPagedCharacterSheetEncoder {
 
-  public VoidstateSheetEncoder() {
+  public VoidstateSheetEncoder() throws InitializationException {
     super(ReportBuilder.VOID_STATE_PAGE_FORMAT);
   }
 

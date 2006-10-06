@@ -7,11 +7,12 @@ import net.sf.anathema.development.reporting.encoder.AbstractPagedCharacterSheet
 import net.sf.anathema.development.reporting.encoder.ICharacterSheetPageEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.VoidstateBasicsEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.util.SubreportUtilities;
+import net.sf.anathema.initialization.InitializationException;
 
 public class DefaultMiddleColumnSubreportEncoder extends AbstractPagedCharacterSheetEncoder {
   private final VoidstateBasicsEncoder basicsEncoder;
 
-  public DefaultMiddleColumnSubreportEncoder(VoidstateBasicsEncoder basicsEncoder) {
+  public DefaultMiddleColumnSubreportEncoder(VoidstateBasicsEncoder basicsEncoder) throws InitializationException {
     super(SubreportUtilities.createPageFormat(DefaultMiddleColumnPageEncoder.getExtents(basicsEncoder)));
     this.basicsEncoder = basicsEncoder;
   }

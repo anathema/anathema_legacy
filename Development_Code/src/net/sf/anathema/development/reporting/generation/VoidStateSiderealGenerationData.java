@@ -7,13 +7,14 @@ import net.sf.anathema.character.generic.framework.reporting.template.voidstate.
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.reporting.CharacterReport;
 import net.sf.anathema.framework.reporting.jasper.IJasperReport;
+import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.resources.IResources;
 
 public class VoidStateSiderealGenerationData extends AbstractSiderealGenerationData {
 
   private final IResources resources;
 
-  public VoidStateSiderealGenerationData(IResources resources) {
+  public VoidStateSiderealGenerationData(IResources resources) throws InitializationException{
     this.resources = resources;
   }
 

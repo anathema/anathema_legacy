@@ -8,13 +8,15 @@ import net.sf.anathema.development.reporting.encoder.ICharacterSheetPageEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.VoidstateBasicsEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.util.SubreportUtilities;
 import net.sf.anathema.development.reporting.util.TraitEncoder;
+import net.sf.anathema.initialization.InitializationException;
 
 public class VoidstateSiderealDescriptionSubreportEncoder extends AbstractPagedCharacterSheetEncoder {
 
   private final VoidstateBasicsEncoder basicsEncoder;
   private final TraitEncoder traitEncoder;
 
-  public VoidstateSiderealDescriptionSubreportEncoder(VoidstateBasicsEncoder basicsEncoder, TraitEncoder traitEncoder) {
+  public VoidstateSiderealDescriptionSubreportEncoder(VoidstateBasicsEncoder basicsEncoder, TraitEncoder traitEncoder)
+      throws InitializationException {
     super(SubreportUtilities.createPageFormat(AbstractVoidstateDescriptionPageEncoder.calculateExtents(basicsEncoder)));
     this.basicsEncoder = basicsEncoder;
     this.traitEncoder = traitEncoder;

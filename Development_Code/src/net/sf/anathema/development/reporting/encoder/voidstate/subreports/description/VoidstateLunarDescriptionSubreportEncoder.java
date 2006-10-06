@@ -7,12 +7,13 @@ import net.sf.anathema.development.reporting.encoder.AbstractPagedCharacterSheet
 import net.sf.anathema.development.reporting.encoder.ICharacterSheetPageEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.VoidstateBasicsEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.util.SubreportUtilities;
+import net.sf.anathema.initialization.InitializationException;
 
 public class VoidstateLunarDescriptionSubreportEncoder extends AbstractPagedCharacterSheetEncoder {
 
   private final VoidstateBasicsEncoder basicsEncoder;
 
-  public VoidstateLunarDescriptionSubreportEncoder(VoidstateBasicsEncoder basicsEncoder) {
+  public VoidstateLunarDescriptionSubreportEncoder(VoidstateBasicsEncoder basicsEncoder) throws InitializationException {
     super(SubreportUtilities.createPageFormat(AbstractVoidstateDescriptionPageEncoder.calculateExtents(basicsEncoder)));
     this.basicsEncoder = basicsEncoder;
   }

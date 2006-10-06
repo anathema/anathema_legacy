@@ -25,6 +25,7 @@ import net.sf.anathema.development.reporting.util.TraitEncoder;
 import net.sf.anathema.development.reporting.util.WillpowerEncoder;
 import net.sf.anathema.framework.reporting.ExaltedReportUtilities;
 import net.sf.anathema.framework.reporting.encoding.TextEncoding;
+import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 
 import org.dom4j.Element;
@@ -44,7 +45,7 @@ public abstract class AbstractBasicCharacterSheetEncoder extends AbstractCharact
   protected final BackgroundsEncoder backgroundsEncoder = new BackgroundsEncoder(traitEncoder);
   protected final WillpowerEncoder willpowerEncoder = new WillpowerEncoder();
 
-  public AbstractBasicCharacterSheetEncoder() {
+  public AbstractBasicCharacterSheetEncoder() throws InitializationException {
     super(PageFormat.createDefault(40, 40));
   }
 

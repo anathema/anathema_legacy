@@ -6,10 +6,11 @@ import java.util.Map;
 import net.sf.anathema.development.reporting.encoder.AbstractPagedCharacterSheetEncoder;
 import net.sf.anathema.development.reporting.encoder.ICharacterSheetPageEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.util.SubreportUtilities;
+import net.sf.anathema.initialization.InitializationException;
 
 public class VoidstateNullPageSubreportEncoder extends AbstractPagedCharacterSheetEncoder {
 
-  public VoidstateNullPageSubreportEncoder() {
+  public VoidstateNullPageSubreportEncoder() throws InitializationException {
     super(SubreportUtilities.createPageFormat(new Rectangle(0,0)));
   }
 

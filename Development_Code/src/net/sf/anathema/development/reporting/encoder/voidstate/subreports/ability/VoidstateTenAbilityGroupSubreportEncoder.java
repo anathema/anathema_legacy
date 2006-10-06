@@ -9,6 +9,7 @@ import net.sf.anathema.development.reporting.encoder.ICharacterSheetPageEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.format.VoidstateBasicsEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.util.SubreportUtilities;
 import net.sf.anathema.framework.reporting.IReportDataSource;
+import net.sf.anathema.initialization.InitializationException;
 import net.sf.jasperreports.engine.JasperReport;
 
 public class VoidstateTenAbilityGroupSubreportEncoder extends AbstractPagedCharacterSheetEncoder implements
@@ -16,7 +17,7 @@ public class VoidstateTenAbilityGroupSubreportEncoder extends AbstractPagedChara
 
   private final VoidstateBasicsEncoder basicsEncoder;
 
-  public VoidstateTenAbilityGroupSubreportEncoder(VoidstateBasicsEncoder basicsEncoder) {
+  public VoidstateTenAbilityGroupSubreportEncoder(VoidstateBasicsEncoder basicsEncoder) throws InitializationException {
     super(SubreportUtilities.createPageFormat(VoidstateTenAbilityGroupPageEncoder.calculateExtents(basicsEncoder)));
     this.basicsEncoder = basicsEncoder;
   }

@@ -16,13 +16,19 @@ import net.sf.anathema.character.sidereal.colleges.SiderealCollegeTemplate;
 import net.sf.anathema.character.sidereal.colleges.model.CollegeType;
 import net.sf.anathema.character.sidereal.colleges.model.SiderealCollegeModel;
 import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.initialization.InitializationException;
 
 public abstract class AbstractSiderealGenerationData extends AbstractGenerationData {
+
+  public AbstractSiderealGenerationData() throws InitializationException {
+    super();
+  }
 
   private IItem createEmptySidereal() throws Exception {
     ExaltedCharacter emptyCharacter = createEmptyCharacter();
     ICharacterTemplate defaultTemplate = container.getCharacterGenerics().getTemplateRegistry().getDefaultTemplate(
-        CharacterType.SIDEREAL,ExaltedEdition.FirstEdition);
+        CharacterType.SIDEREAL,
+        ExaltedEdition.FirstEdition);
     createStatistics(emptyCharacter, defaultTemplate);
     return createItem(emptyCharacter);
   }

@@ -9,10 +9,15 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.development.reporting.util.HeaderData;
 import net.sf.anathema.development.reporting.util.ParameterUtilities;
 import net.sf.anathema.development.reporting.util.ReportDataSourceEncoder;
+import net.sf.anathema.initialization.InitializationException;
 
 import org.dom4j.Element;
 
 public class BasicSolarSheetEncoder extends AbstractBasicCharacterSheetEncoder {
+
+  public BasicSolarSheetEncoder() throws InitializationException {
+    super();
+  }
 
   @Override
   protected void addParameterClasses(Map<String, String> parameterClassesByName) {

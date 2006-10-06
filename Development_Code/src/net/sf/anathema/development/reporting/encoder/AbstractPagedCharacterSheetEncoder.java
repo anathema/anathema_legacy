@@ -1,13 +1,14 @@
 package net.sf.anathema.development.reporting.encoder;
 
 import net.sf.anathema.development.reporting.encoder.page.IPageFormat;
+import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
 
 public abstract class AbstractPagedCharacterSheetEncoder extends AbstractCharacterSheetEncoder {
 
-  public AbstractPagedCharacterSheetEncoder(IPageFormat pageFormat) {
+  public AbstractPagedCharacterSheetEncoder(IPageFormat pageFormat) throws InitializationException {
     super(pageFormat);
   }
 

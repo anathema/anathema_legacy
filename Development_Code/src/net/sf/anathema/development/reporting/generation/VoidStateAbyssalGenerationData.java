@@ -17,13 +17,14 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.framework.reporting.jasper.IJasperReport;
 import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.resources.IResources;
 
 public class VoidStateAbyssalGenerationData extends AbstractGenerationData {
 
   private final IResources resources;
 
-  public VoidStateAbyssalGenerationData(IResources resources) {
+  public VoidStateAbyssalGenerationData(IResources resources) throws InitializationException {
     this.resources = resources;
   }
 
