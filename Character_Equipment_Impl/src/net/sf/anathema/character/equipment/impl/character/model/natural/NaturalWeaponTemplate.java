@@ -9,8 +9,10 @@ import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
 
 public class NaturalWeaponTemplate implements IEquipmentTemplate {
 
+  private static final String NATURAL = "Natural";
+
   public String getDescription() {
-    return "The character's natural weapons";
+    return NATURAL;
   }
 
   public IEquipmentStats[] getStats(IExaltedRuleSet ruleSet) {
@@ -32,7 +34,7 @@ public class NaturalWeaponTemplate implements IEquipmentTemplate {
   }
 
   public String getName() {
-    return "Natural Weapons";
+    return NATURAL;
   }
 
   public MaterialComposition getComposition() {

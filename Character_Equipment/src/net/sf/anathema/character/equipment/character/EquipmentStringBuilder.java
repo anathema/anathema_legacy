@@ -18,7 +18,11 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
 
   private String createWeaponString(IWeaponStats weapon) {
     StringBuilder stringBuilder = new StringBuilder();
-    stringBuilder.append(weapon.getName().getId());
+    String name = weapon.getName().getId();
+    if (resources.supportsKey(EquipmentObjectPresenter.EQUIPMENT_NAME_PREFIX + name)) {
+      name = resources.getString(EquipmentObjectPresenter.EQUIPMENT_NAME_PREFIX + name);
+    }
+    stringBuilder.append(name);
     stringBuilder.append(":"); //$NON-NLS-1$
     stringBuilder.append(getStatsString("Speed", weapon.getSpeed(), false)); //$NON-NLS-1$
     stringBuilder.append(getStatsString("Accuracy", weapon.getAccuracy(), true)); //$NON-NLS-1$
@@ -44,7 +48,7 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
   }
 
   private String createtNewStatsStart(String keyPart) {
-    return " " + resources.getString("Equipment.Stats.Short." + keyPart) + ":";  //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
+    return " " + resources.getString("Equipment.Stats.Short." + keyPart) + ":"; //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$
   }
 
   public String createString(IEquipmentStats equipment) {

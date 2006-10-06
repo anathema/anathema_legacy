@@ -13,6 +13,8 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class EquipmentObjectPresenter implements IPresenter {
 
+  public static final String EQUIPMENT_NAME_PREFIX = "Equipment.Name."; //$NON-NLS-1$
+  private static final String DESCRIPTION_PREFIX = "Equipment.Description."; //$NON-NLS-1$
   private final IEquipmentItem model;
   private final IEquipmentObjectView view;
   private final IEquipmentStringBuilder stringBuilder;
@@ -31,12 +33,18 @@ public class EquipmentObjectPresenter implements IPresenter {
 
   public void initPresentation() {
     String itemTitle = model.getTemplateId();
+    if (resources.supportsKey(EQUIPMENT_NAME_PREFIX + itemTitle)) {
+      itemTitle = resources.getString(EQUIPMENT_NAME_PREFIX + itemTitle);
+    }
     if (model.getMaterialComposition() == MaterialComposition.Variable) {
       String materialString = resources.getString("MagicMaterial." + model.getMaterial().name()); //$NON-NLS-1$
       itemTitle += " (" + materialString + ")"; //$NON-NLS-1$ //$NON-NLS-2$
     }
     view.setItemTitle(itemTitle);
     String description = model.getDescription();
+    if (resources.supportsKey(DESCRIPTION_PREFIX + description)) {
+      description = resources.getString(DESCRIPTION_PREFIX + description);
+    } 
     if (description != null) {
       view.setItemDescription(description);
     }
