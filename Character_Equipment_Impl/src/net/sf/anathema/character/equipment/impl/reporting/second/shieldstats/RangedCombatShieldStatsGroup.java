@@ -22,9 +22,8 @@ public class RangedCombatShieldStatsGroup extends AbstractValueEquipmentStatsGro
   }
 
   public void addContent(PdfPTable table, Font font, IShieldStats shield) {
-    PdfPCell cell = TableEncodingUtilities.createContentCellTable(
-        null,
-        "Ranged",
+    PdfPCell cell = TableEncodingUtilities.createContentCellTable(null, getResources().getString(
+        "Sheet.Equipment.Header.RangeBonus"), //$NON-NLS-1$
         font,
         0f,
         Rectangle.NO_BORDER,

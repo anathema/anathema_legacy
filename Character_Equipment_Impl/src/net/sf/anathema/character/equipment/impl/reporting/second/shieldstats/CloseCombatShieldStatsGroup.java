@@ -20,13 +20,8 @@ public class CloseCombatShieldStatsGroup extends AbstractValueEquipmentStatsGrou
   }
 
   public void addContent(PdfPTable table, Font font, IShieldStats shield) {
-    PdfPCell cell = TableEncodingUtilities.createContentCellTable(
-        null,
-        "Close Combat",
-        font,
-        0f,
-        Rectangle.NO_BORDER,
-        Element.ALIGN_LEFT);
+    PdfPCell cell = TableEncodingUtilities.createContentCellTable(null, getResources().getString(
+        "Sheet.Equipment.Header.CloseCombatBonus"), font, 0f, Rectangle.NO_BORDER, Element.ALIGN_LEFT); //$NON-NLS-1$
     cell.setColspan(2);
     table.addCell(cell);
     if (shield == null) {
