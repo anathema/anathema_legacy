@@ -47,5 +47,6 @@ public class SecondEditionArmourEncoder implements IPdfContentBoxEncoder {
     directContent.setColorStroke(Color.GRAY);
     directContent.setLineWidth(0.75f);
     directContent.stroke();
+    directContent.setColorStroke(Color.BLACK);
   }
 }
