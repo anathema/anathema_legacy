@@ -68,7 +68,7 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append(stats.getName().getId());
     stringBuilder.append(":"); //$NON-NLS-1$
-    stringBuilder.append(getStatsString("CloseDV", stats.getCloseCombatDvBonus(), true)); //$NON-NLS-1$
+    stringBuilder.append(getStatsString("CloseDV", stats.getCloseCombatBonus(), true)); //$NON-NLS-1$
     stringBuilder.append(getStatsString("RangedDV", stats.getRangedCombatBonus(), true)); //$NON-NLS-1$
     stringBuilder.append(getStatsString("MobilityPenalty", stats.getMobilityPenalty(), false)); //$NON-NLS-1$
     stringBuilder.append(getStatsString("Fatigue", stats.getFatigue(), false)); //$NON-NLS-1$

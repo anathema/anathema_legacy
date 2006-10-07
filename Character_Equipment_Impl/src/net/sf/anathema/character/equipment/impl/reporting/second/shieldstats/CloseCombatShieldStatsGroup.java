@@ -28,7 +28,7 @@ public class CloseCombatShieldStatsGroup extends AbstractValueEquipmentStatsGrou
       table.addCell(createFinalValueCell(font));
     }
     else {
-      table.addCell(createFinalValueCell(font, shield.getCloseCombatDvBonus()));
+      table.addCell(createFinalValueCell(font, shield.getCloseCombatBonus()));
     }
   }
 

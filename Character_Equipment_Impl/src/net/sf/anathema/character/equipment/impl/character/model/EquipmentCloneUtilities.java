@@ -103,8 +103,8 @@ public class EquipmentCloneUtilities {
 
   private static IShieldStats getRenamedPrintClone(final IShieldStats stats, final String name) {
     return new IShieldStats() {
-      public int getCloseCombatDvBonus() {
-        return stats.getCloseCombatDvBonus();
+      public int getCloseCombatBonus() {
+        return stats.getCloseCombatBonus();
       }
 
       public int getRangedCombatBonus() {

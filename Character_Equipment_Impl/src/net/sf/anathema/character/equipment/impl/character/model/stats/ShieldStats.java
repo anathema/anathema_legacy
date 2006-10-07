@@ -9,7 +9,7 @@ public class ShieldStats extends AbstractStats implements IShieldStats {
   private Integer fatigue;
   private Integer mobilityPenalty;
 
-  public int getCloseCombatDvBonus() {
+  public int getCloseCombatBonus() {
     return closeCombatDv;
   }
 
