@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
 
 public class NaturalWeaponTemplate implements IEquipmentTemplate {
 
-  private static final String NATURAL = "Natural";
+  private static final String NATURAL = "Natural"; //$NON-NLS-1$
 
   public String getDescription() {
     return NATURAL;
