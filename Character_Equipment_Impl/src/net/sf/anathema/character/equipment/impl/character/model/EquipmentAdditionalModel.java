@@ -11,6 +11,7 @@ import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
@@ -53,6 +54,12 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
     List<IWeaponStats> printStats = new ArrayList<IWeaponStats>();
     fillPrintEquipmentList(printStats, IWeaponStats.class);
     return printStats.toArray(new IWeaponStats[printStats.size()]);
+  }
+
+  public IShieldStats[] getPrintShield() {
+    List<IShieldStats> printStats = new ArrayList<IShieldStats>();
+    fillPrintEquipmentList(printStats, IShieldStats.class);
+    return printStats.toArray(new IShieldStats[printStats.size()]);
   }
 
   @SuppressWarnings("unchecked")

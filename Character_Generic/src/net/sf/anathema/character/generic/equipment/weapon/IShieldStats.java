@@ -1,12 +1,8 @@
 package net.sf.anathema.character.generic.equipment.weapon;
 
-public interface IShieldStats extends IEquipmentStats {
+public interface IShieldStats extends IDefensiveStats {
 
   public int getCloseCombatDvBonus();
 
-  public int getRangedCombatDvBonus();
-
-  public Integer getMobilityPenalty();
-
-  public Integer getFatigue();
+  public int getRangedCombatBonus();
 }

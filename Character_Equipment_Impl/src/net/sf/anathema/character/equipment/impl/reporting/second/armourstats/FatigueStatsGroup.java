@@ -2,12 +2,13 @@ package net.sf.anathema.character.equipment.impl.reporting.second.armourstats;
 
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
+import net.sf.anathema.character.generic.equipment.weapon.IDefensiveStats;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class FatigueStatsGroup extends AbstractValueEquipmentStatsGroup<IArmourStats> implements IArmourStatsGroup {
+public class FatigueStatsGroup extends AbstractValueEquipmentStatsGroup<IDefensiveStats> implements IArmourStatsGroup {
 
   public FatigueStatsGroup(IResources resources) {
     super(resources, "Fatigue"); //$NON-NLS-1$
@@ -17,12 +18,12 @@ public class FatigueStatsGroup extends AbstractValueEquipmentStatsGroup<IArmourS
     return 1;
   }
 
-  public void addContent(PdfPTable table, Font font, IArmourStats armour) {
-    if (armour == null) {
+  public void addContent(PdfPTable table, Font font, IDefensiveStats stats) {
+    if (stats == null) {
       table.addCell(createEmptyValueCell(font));
     }
     else {
-      table.addCell(createEquipmentValueCell(font, armour.getFatigue()));
+      table.addCell(createEquipmentValueCell(font, stats.getFatigue()));
     }
   }
 

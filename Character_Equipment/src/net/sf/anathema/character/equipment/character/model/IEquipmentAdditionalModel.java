@@ -4,6 +4,7 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
+import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 
 public interface IEquipmentAdditionalModel extends IAdditionalModel, IEquipmentItemCollection {
@@ -19,4 +20,6 @@ public interface IEquipmentAdditionalModel extends IAdditionalModel, IEquipmentI
   public IWeaponStats[] getPrintWeapons();
 
   public IArmourStats getTotalPrintArmour(int lineCount);
+
+  public IShieldStats[] getPrintShield();
 }

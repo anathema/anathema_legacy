@@ -13,7 +13,7 @@ public class ShieldStats extends AbstractStats implements IShieldStats {
     return closeCombatDv;
   }
 
-  public int getRangedCombatDvBonus() {
+  public int getRangedCombatBonus() {
     return rangedCombatDv;
   }
 

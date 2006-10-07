@@ -107,8 +107,8 @@ public class EquipmentCloneUtilities {
         return stats.getCloseCombatDvBonus();
       }
 
-      public int getRangedCombatDvBonus() {
-        return stats.getRangedCombatDvBonus();
+      public int getRangedCombatBonus() {
+        return stats.getRangedCombatBonus();
       }
 
       public IIdentificate getName() {

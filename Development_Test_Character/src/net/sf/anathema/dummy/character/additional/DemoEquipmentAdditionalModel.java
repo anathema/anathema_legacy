@@ -11,6 +11,7 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.equipment.impl.character.model.AbstractEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
+import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 
@@ -42,6 +43,10 @@ public class DemoEquipmentAdditionalModel extends AbstractEquipmentAdditionalMod
 
   public IWeaponStats[] getPrintWeapons() {
     return printWeaponStats.toArray(new IWeaponStats[printWeaponStats.size()]);
+  }
+
+  public IShieldStats[] getPrintShield() {
+    return new IShieldStats[0];
   }
 
   public void addAvailableTemplates(IEquipmentTemplate template) {

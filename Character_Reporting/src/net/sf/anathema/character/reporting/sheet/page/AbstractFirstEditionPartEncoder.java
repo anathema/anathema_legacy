@@ -32,7 +32,7 @@ public abstract class AbstractFirstEditionPartEncoder implements IPdfPartEncoder
   public final BaseFont getBaseFont() {
     return baseFont;
   }
-  
+
   public final BaseFont getSymbolBaseFont() {
     return symbolBaseFont;
   }
@@ -56,6 +56,6 @@ public abstract class AbstractFirstEditionPartEncoder implements IPdfPartEncoder
   }
 
   public float getWeaponryHeight() {
-    return 140;
+    return 129;
   }
 }

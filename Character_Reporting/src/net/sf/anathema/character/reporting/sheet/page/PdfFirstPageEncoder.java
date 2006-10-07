@@ -84,7 +84,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
     distanceFromTop += calculateBoxIncrement(intimaciesHeight);
     float weaponryHeight = encodeWeaponry(directContent, character, distanceFromTop, partEncoder.getWeaponryHeight());
     distanceFromTop += calculateBoxIncrement(weaponryHeight);
-    float armourHeight = encodeArmourAndSoak(directContent, character, distanceFromTop, 69);
+    float armourHeight = encodeArmourAndSoak(directContent, character, distanceFromTop, 80);
     distanceFromTop += calculateBoxIncrement(armourHeight);
     float healthHeight = encodeMovementAndHealth(directContent, character, distanceFromTop, 99);
     distanceFromTop += calculateBoxIncrement(healthHeight);

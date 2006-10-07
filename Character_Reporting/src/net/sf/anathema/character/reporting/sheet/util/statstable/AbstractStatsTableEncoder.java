@@ -51,10 +51,7 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
     return table;
   }
 
-  protected abstract void encodeContent(
-      PdfPTable table,
-      IGenericCharacter character,
-      Bounds bounds);
+  protected abstract void encodeContent(PdfPTable table, IGenericCharacter character, Bounds bounds);
 
   protected abstract IStatsGroup<T>[] createStatsGroups(IGenericCharacter character);
 
@@ -67,7 +64,6 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
     }
   }
 
-
   protected final void encodeSectionLine(PdfPTable table, String sectionName) {
     int columnCount = table.getAbsoluteWidths().length;
     Phrase phrase = new Phrase(sectionName, sectionFont);
@@ -78,7 +74,7 @@ public abstract class AbstractStatsTableEncoder<T extends IStats> extends Abstra
     table.addCell(cell);
   }
 
-  private float[] calculateColumnWidths(IStatsGroup[] groups) {
+  protected final float[] calculateColumnWidths(IStatsGroup[] groups) {
     Float[] columnWidths = new Float[0];
     for (IStatsGroup<T> group : groups) {
       if (columnWidths.length != 0) {

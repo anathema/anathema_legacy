@@ -50,7 +50,7 @@ public class ProxyShieldStats implements IShieldStats {
     return delegate.getCloseCombatDvBonus();
   }
 
-  public int getRangedCombatDvBonus() {
-    return delegate.getRangedCombatDvBonus();
+  public int getRangedCombatBonus() {
+    return delegate.getRangedCombatBonus();
   }
 }
