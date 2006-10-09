@@ -17,7 +17,7 @@ public class AnathemaBootLoader {
 
   private static void showSplashScreen() throws IOException, InterruptedException {
     BufferedInputStream inputStream = new BufferedInputStream(
-        AnathemaBootLoader.class.getResourceAsStream("/icons/core/AnathemaSplash3.png")); //$NON-NLS-1$
+        AnathemaBootLoader.class.getResourceAsStream("/icons/core/AnathemaSplashNew.png")); //$NON-NLS-1$
     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     byte[] buffer = new byte[4096];
     int numChars;
