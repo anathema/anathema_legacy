@@ -55,8 +55,8 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
         armourStats.setFatigue(armourModel.getFatigueModel().getValue());
         armourStats.setMobilityPenalty(armourModel.getMobilityPenaltyModel().getValue());
         for (HealthType healthType : HealthType.values()) {
-          armourStats.setSoak(healthType, armourStats.getSoak(healthType));
-          armourStats.setHardness(healthType, armourStats.getHardness(healthType));
+          armourStats.setSoak(healthType, armourModel.getSoakModel(healthType).getValue());
+          armourStats.setHardness(healthType, armourModel.getHardnessModel(healthType).getValue());
         }
         return armourStats;
       case Shield:
