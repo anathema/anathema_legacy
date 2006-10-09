@@ -89,8 +89,6 @@ public class EquipmentStringBuilder implements IEquipmentStringBuilder {
     stringBuilder.append(createArmourStat(armourStats.getHardness(HealthType.Bashing), "")); //$NON-NLS-1$
     stringBuilder.append("/"); //$NON-NLS-1$
     stringBuilder.append(createArmourStat(armourStats.getHardness(HealthType.Lethal), "")); //$NON-NLS-1$
-    stringBuilder.append("/"); //$NON-NLS-1$
-    stringBuilder.append(createArmourStat(armourStats.getHardness(HealthType.Aggravated), "-")); //$NON-NLS-1$
     stringBuilder.append(getStatsString("MobilityPenalty", armourStats.getMobilityPenalty(), false)); //$NON-NLS-1$
     stringBuilder.append(getStatsString("Fatigue", armourStats.getFatigue(), false)); //$NON-NLS-1$
     return stringBuilder.toString();
