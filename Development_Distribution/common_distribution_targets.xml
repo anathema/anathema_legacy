@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="Common Targets">
+<project name="Common Distribution Targets">
 
 	<target name="Build Plugins">
 		<ant antfile="build_core_plugin.xml" />

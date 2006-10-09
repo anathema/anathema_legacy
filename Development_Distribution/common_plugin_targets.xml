@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="Common Targets" default="Purge">
+<project name="Common Plugin Targets" default="Purge">
 
 	<property file="directories.properties" />
 
