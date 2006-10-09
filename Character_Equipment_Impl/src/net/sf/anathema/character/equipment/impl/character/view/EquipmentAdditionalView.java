@@ -69,6 +69,10 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView {
     refreshButton.setAction(action);
   }
 
+  public void revalidateEquipmentViews() {
+    taskPaneView.revalidateView();
+  }
+
   public boolean needsScrollbar() {
     return false;
   }

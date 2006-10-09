@@ -44,7 +44,7 @@ public class TaskPaneView<V extends ITaskPaneGroupView> {
     revalidateView();
   }
 
-  private void revalidateView() {
+  public void revalidateView() {
     GuiUtilities.revalidate(taskPane);
     GuiUtilities.revalidate(taskScrollPane);
   }

@@ -44,7 +44,7 @@ public class EquipmentObjectPresenter implements IPresenter {
     String description = model.getDescription();
     if (resources.supportsKey(DESCRIPTION_PREFIX + description)) {
       description = resources.getString(DESCRIPTION_PREFIX + description);
-    } 
+    }
     if (description != null) {
       view.setItemDescription(description);
     }

@@ -132,5 +132,6 @@ public class EquipmentAdditionalPresenter implements IPresenter {
         }
       });
     }
+    view.revalidateEquipmentViews();
   }
 }
