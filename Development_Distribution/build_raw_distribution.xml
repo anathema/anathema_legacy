@@ -10,7 +10,7 @@
 	<taskdef name="launch4j" classname="net.sf.launch4j.ant.Launch4jTask" classpath="${launch4j.dir}/launch4j.jar
 	    :${launch4j.dir}/xstream.jar" />
 	
-	<target name="Distribute" depends="Build Bootloader, Build Plugins, Build Windows executable, Copy Text, Copy Extras, Build ZIP" />
+	<target name="Distribute" depends="Build Bootloader, Build Plugins, Copy Text, Build Windows executable, Copy Extras, Build ZIP" />
 
 	<target name="Build ZIP">
 		<zip destfile="anathema_v${version.major}.${version.minor}.zip">
