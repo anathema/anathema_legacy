@@ -15,4 +15,6 @@ public interface IWeaponTagsModel {
   public void setTagsCloseCombatStyle();
 
   public void setTagsRangedCombatStyle();
+
+  public IWeaponTag[] getSelectedTags();
 }

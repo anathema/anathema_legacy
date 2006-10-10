@@ -1,6 +1,8 @@
 package net.sf.anathema.character.equipment.impl.creation.model;
 
+import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTag;
@@ -85,6 +87,16 @@ public class WeaponTagsModel implements IWeaponTagsModel {
 
   public IWeaponTag[] getAllTags() {
     return WeaponTag.values();
+  }
+
+  public IWeaponTag[] getSelectedTags() {
+    List<IWeaponTag> tags = new ArrayList<IWeaponTag>();
+    for (WeaponTag tag : selectedMap.keySet()) {
+      if (isSelected(tag)) {
+        tags.add(tag);
+      }
+    }
+    return tags.toArray(new IWeaponTag[tags.size()]);
   }
 
   public BooleanValueModel getSelectedModel(IWeaponTag tag) {

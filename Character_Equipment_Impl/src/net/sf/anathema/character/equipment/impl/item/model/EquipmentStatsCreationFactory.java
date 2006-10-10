@@ -10,6 +10,8 @@ import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatis
 import net.sf.anathema.character.equipment.creation.model.stats.IOffensiveStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IRangedCombatStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IShieldStatisticsModel;
+import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTag;
+import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.EquipmentTypeChoicePresenterPage;
 import net.sf.anathema.character.equipment.creation.presenter.stats.IEquipmentStatisticsCreationViewFactory;
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractStats;
@@ -71,26 +73,29 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
       case CloseCombat:
         WeaponStats closeCombatStats = new WeaponStats(collectionFactory, true);
         ICloseCombatStatsticsModel closeCombatModel = model.getCloseCombatStatsticsModel();
-        setBasicWeaponStats(closeCombatStats, closeCombatModel);
+        setBasicWeaponStats(closeCombatStats, closeCombatModel, model.getWeaponTagsModel());
         closeCombatStats.setDefence(closeCombatModel.getDefenseModel().getValue());
         return closeCombatStats;
       case RangedCombat:
         WeaponStats rangedCombatStats = new WeaponStats(collectionFactory, false);
         IRangedCombatStatisticsModel rangedCombatModel = model.getRangedWeaponStatisticsModel();
-        setBasicWeaponStats(rangedCombatStats, rangedCombatModel);
+        setBasicWeaponStats(rangedCombatStats, rangedCombatModel, model.getWeaponTagsModel());
         rangedCombatStats.setRange(rangedCombatModel.getRangeModel().getValue());
         return rangedCombatStats;
     }
     return null;
   }
 
-  private void setBasicWeaponStats(WeaponStats stats, IOffensiveStatisticsModel model) {
+  private void setBasicWeaponStats(WeaponStats stats, IOffensiveStatisticsModel model, IWeaponTagsModel tagsModel) {
     setName(stats, model);
     stats.setAccuracy(model.getAccuracyModel().getValue());
     stats.setDamage(model.getWeaponDamageModel().getValue());
     stats.setDamageType(model.getWeaponDamageModel().getHealthType());
     stats.setRate(model.getRateModel().getValue());
     stats.setSpeed(model.getSpeedModel().getValue());
+    for (IWeaponTag tag : tagsModel.getSelectedTags()) {
+      stats.addTag(tag);
+    }
   }
 
   private void setName(AbstractStats stats, IEquipmentStatisticsModel model) {
