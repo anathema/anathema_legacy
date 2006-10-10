@@ -12,6 +12,6 @@ public class MeleeWeaponStats extends AbstractWeaponStats {
 
   @Override
   protected AbilityType getCombatTrait() {
-    return hasTag(WeaponTag.Natural) ? AbilityType.MartialArts : AbilityType.Melee;
+    return hasTag(WeaponTag.Natural) || hasTag(WeaponTag.ClinchEnhancer) ? AbilityType.MartialArts : AbilityType.Melee;
   }
 }
