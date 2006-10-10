@@ -4,6 +4,7 @@ import net.sf.anathema.character.equipment.impl.reporting.second.stats.AbstractV
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
+import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Element;
@@ -43,10 +44,14 @@ public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWe
     }
     else {
       final int weaponValue = weapon.getDamage();
-      table.addCell(createEquipmentValueCell(font, weaponValue));
       int finalValue = weaponValue;
-      if (weapon.getDamageTraitType() != null) {
-        finalValue = calculateFinalValue(weaponValue, collection.getTrait(weapon.getDamageTraitType()));
+      ITraitType damageTraitType = weapon.getDamageTraitType();
+      if (damageTraitType != null) {
+        finalValue = calculateFinalValue(weaponValue, collection.getTrait(damageTraitType));
+        table.addCell(createEquipmentValueCell(font, weaponValue));
+      }
+      else {
+        table.addCell(createEquipmentValueCell(font, null));
       }
       table.addCell(createFinalValueCell(font, finalValue));
       table.addCell(createFinalValueCell(font, getDamageTypeLabel(weapon.getDamageType()), Element.ALIGN_CENTER));
