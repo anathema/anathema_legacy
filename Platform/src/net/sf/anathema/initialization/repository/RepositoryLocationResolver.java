@@ -16,10 +16,11 @@ public class RepositoryLocationResolver implements IStringResolver {
   }
 
   private String findRepositoryLocationDescription() {
-    String property = System.getProperty("repository"); //$NON-NLS-1$
-    if (property != null) {
-      return property;
+    String repository = System.getProperty("repository"); //$NON-NLS-1$
+    if (repository != null) {
+      return repository;
     }
-    return preferences.getRepositoryLocationPreference();
+    String defaultrepository = System.getProperty("defaultrepository"); //$NON-NLS-1$
+    return preferences.getRepositoryLocationPreference(defaultrepository);
   }
 }

@@ -44,9 +44,13 @@ public class AnathemaPreferences implements IAnathemaPreferences {
     return systemPreferences.getInt(IAnathemaPreferencesConstants.TOOL_TIP_TIME_PREFERENCE, 10);
   }
 
-  public String getRepositoryLocationPreference() {
-    return systemPreferences.get(
+  public String getRepositoryLocationPreference(String defaultLocation) {
+    String location = systemPreferences.get(
         IAnathemaPreferencesConstants.REPOSITORY_PREFERENCE,
         IAnathemaPreferencesConstants.DEFAULT_REPOSITORY_LOCATION);
+    if (IAnathemaPreferencesConstants.DEFAULT_REPOSITORY_LOCATION.equals(location) && defaultLocation != null) {
+      return defaultLocation;
+    }
+    return location;
   }
 }

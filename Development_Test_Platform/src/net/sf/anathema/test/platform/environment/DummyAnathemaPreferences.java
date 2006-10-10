@@ -16,7 +16,7 @@ public class DummyAnathemaPreferences implements IAnathemaPreferences {
     throw new NotYetImplementedException();
   }
 
-  public String getRepositoryLocationPreference() {
+  public String getRepositoryLocationPreference(String string) {
     return repositoryLocation;
   }
 

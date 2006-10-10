@@ -12,5 +12,5 @@ public interface IAnathemaPreferences {
 
   public int getTooltipTimePreference();
 
-  public String getRepositoryLocationPreference();
+  public String getRepositoryLocationPreference(String defaultrepository);
 }
