@@ -18,6 +18,12 @@ public class WeaponTagsModel implements IWeaponTagsModel {
       WeaponTag.BowType,
       WeaponTag.Thrown,
       WeaponTag.FlameType };
+  private final WeaponTag[] meleeWeaponTags = new WeaponTag[] {
+      WeaponTag.ClinchEnhancer,
+      WeaponTag.LanceType,
+      WeaponTag.MartialArts,
+      WeaponTag.Natural };
+
   private final IBooleanValueChangedListener updateRangeEnabledListener = new IBooleanValueChangedListener() {
     public void valueChanged(boolean newValue) {
       setTagsRangedCombatStyle();
@@ -36,6 +42,7 @@ public class WeaponTagsModel implements IWeaponTagsModel {
 
   public void setTagsRangedCombatStyle() {
     int selectedCount = getSelectedRangedWeaponTagCount();
+    setAllCloseCombatTagsEnabled(false);
     if (selectedCount == 0) {
       setAllRangedWeaponTagsEnabled(true);
     }
@@ -43,6 +50,12 @@ public class WeaponTagsModel implements IWeaponTagsModel {
       for (WeaponTag tag : rangedWeaponTags) {
         getEnabledModel(tag).setValue(isSelected(tag));
       }
+    }
+  }
+
+  private void setAllCloseCombatTagsEnabled(boolean enabled) {
+    for (WeaponTag tag : meleeWeaponTags) {
+      getEnabledModel(tag).setValue(enabled);
     }
   }
 
