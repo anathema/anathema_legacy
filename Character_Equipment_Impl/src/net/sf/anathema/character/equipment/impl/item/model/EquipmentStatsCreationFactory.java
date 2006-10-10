@@ -15,9 +15,11 @@ import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel
 import net.sf.anathema.character.equipment.creation.presenter.stats.EquipmentTypeChoicePresenterPage;
 import net.sf.anathema.character.equipment.creation.presenter.stats.IEquipmentStatisticsCreationViewFactory;
 import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractStats;
+import net.sf.anathema.character.equipment.impl.character.model.stats.AbstractWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ArmourStats;
+import net.sf.anathema.character.equipment.impl.character.model.stats.MeleeWeaponStats;
+import net.sf.anathema.character.equipment.impl.character.model.stats.RangedWeaponStats;
 import net.sf.anathema.character.equipment.impl.character.model.stats.ShieldStats;
-import net.sf.anathema.character.equipment.impl.character.model.stats.WeaponStats;
 import net.sf.anathema.character.equipment.impl.creation.EquipmentStatisticsCreationViewFactory;
 import net.sf.anathema.character.equipment.impl.creation.model.EquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
@@ -71,13 +73,13 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
         shieldStats.setMobilityPenalty(shieldModel.getMobilityPenaltyModel().getValue());
         return shieldStats;
       case CloseCombat:
-        WeaponStats closeCombatStats = new WeaponStats(collectionFactory, true);
+        AbstractWeaponStats closeCombatStats = new MeleeWeaponStats(collectionFactory);
         ICloseCombatStatsticsModel closeCombatModel = model.getCloseCombatStatsticsModel();
         setBasicWeaponStats(closeCombatStats, closeCombatModel, model.getWeaponTagsModel());
         closeCombatStats.setDefence(closeCombatModel.getDefenseModel().getValue());
         return closeCombatStats;
       case RangedCombat:
-        WeaponStats rangedCombatStats = new WeaponStats(collectionFactory, false);
+        AbstractWeaponStats rangedCombatStats = new RangedWeaponStats(collectionFactory);
         IRangedCombatStatisticsModel rangedCombatModel = model.getRangedWeaponStatisticsModel();
         setBasicWeaponStats(rangedCombatStats, rangedCombatModel, model.getWeaponTagsModel());
         rangedCombatStats.setRange(rangedCombatModel.getRangeModel().getValue());
@@ -86,7 +88,10 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
     return null;
   }
 
-  private void setBasicWeaponStats(WeaponStats stats, IOffensiveStatisticsModel model, IWeaponTagsModel tagsModel) {
+  private void setBasicWeaponStats(
+      AbstractWeaponStats stats,
+      IOffensiveStatisticsModel model,
+      IWeaponTagsModel tagsModel) {
     setName(stats, model);
     stats.setAccuracy(model.getAccuracyModel().getValue());
     stats.setDamage(model.getWeaponDamageModel().getValue());

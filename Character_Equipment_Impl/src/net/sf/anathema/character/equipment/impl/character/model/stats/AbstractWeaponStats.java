@@ -7,11 +7,10 @@ import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.util.IIdentificate;
 
-public class WeaponStats extends AbstractStats implements IWeaponStats {
+public abstract class AbstractWeaponStats extends AbstractStats implements IWeaponStats {
 
   private int accuracy;
   private int damage;
@@ -22,10 +21,8 @@ public class WeaponStats extends AbstractStats implements IWeaponStats {
   private int speed;
   private boolean inflictsNoDamage;
   private final List<IIdentificate> tags;
-  private final boolean isMelee;
 
-  public WeaponStats(ICollectionFactory collectionFactory, boolean isMelee) {
-    this.isMelee = isMelee;
+  public AbstractWeaponStats(ICollectionFactory collectionFactory) {
     tags = collectionFactory.createList();
   }
 
@@ -66,7 +63,13 @@ public class WeaponStats extends AbstractStats implements IWeaponStats {
   }
 
   public ITraitType getTraitType() {
-    return isMelee ? AbilityType.Melee : (tags.contains(WeaponTag.Thrown) ? AbilityType.Thrown : AbilityType.Archery);
+    return getCombatTrait();
+  }
+
+  protected abstract ITraitType getCombatTrait();
+
+  protected final boolean hasTag(WeaponTag tag) {
+    return tags.contains(tag);
   }
 
   public boolean inflictsNoDamage() {
