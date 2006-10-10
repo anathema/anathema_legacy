@@ -16,10 +16,11 @@ public class WeaponTagsModel implements IWeaponTagsModel {
       WeaponTag.class);
   private final Map<WeaponTag, BooleanValueModel> enabledMap = new EnumMap<WeaponTag, BooleanValueModel>(
       WeaponTag.class);
-  private final WeaponTag[] rangedWeaponTags = new WeaponTag[] {
+  private final WeaponTag[] rangedWeaponTypeTags = new WeaponTag[] {
       WeaponTag.BowType,
       WeaponTag.Thrown,
       WeaponTag.FlameType };
+  private final WeaponTag[] rangedWeaponTags = new WeaponTag[] { WeaponTag.SingleShot };
   private final WeaponTag[] meleeWeaponTags = new WeaponTag[] {
       WeaponTag.ClinchEnhancer,
       WeaponTag.LanceType,
@@ -37,7 +38,7 @@ public class WeaponTagsModel implements IWeaponTagsModel {
       selectedMap.put(tag, new BooleanValueModel(false));
       enabledMap.put(tag, new BooleanValueModel(true));
     }
-    for (WeaponTag rangedTag : rangedWeaponTags) {
+    for (WeaponTag rangedTag : rangedWeaponTypeTags) {
       getSelectedModel(rangedTag).addChangeListener(updateRangeEnabledListener);
     }
   }
@@ -49,7 +50,7 @@ public class WeaponTagsModel implements IWeaponTagsModel {
       setAllRangedWeaponTagsEnabled(true);
     }
     else {
-      for (WeaponTag tag : rangedWeaponTags) {
+      for (WeaponTag tag : rangedWeaponTypeTags) {
         getEnabledModel(tag).setValue(isSelected(tag));
       }
     }
@@ -62,6 +63,9 @@ public class WeaponTagsModel implements IWeaponTagsModel {
   }
 
   private void setAllRangedWeaponTagsEnabled(boolean enabled) {
+    for (WeaponTag tag : rangedWeaponTypeTags) {
+      getEnabledModel(tag).setValue(enabled);
+    }
     for (WeaponTag tag : rangedWeaponTags) {
       getEnabledModel(tag).setValue(enabled);
     }
@@ -73,7 +77,7 @@ public class WeaponTagsModel implements IWeaponTagsModel {
 
   public int getSelectedRangedWeaponTagCount() {
     int selectionCount = 0;
-    for (WeaponTag tag : rangedWeaponTags) {
+    for (WeaponTag tag : rangedWeaponTypeTags) {
       if (isSelected(tag)) {
         selectionCount++;
       }
