@@ -6,6 +6,8 @@ import net.sf.anathema.framework.configuration.AnathemaPreferences;
 import net.sf.anathema.framework.configuration.IAnathemaPreferences;
 import net.sf.anathema.lib.testing.BasicTestCase;
 
+import org.junit.Test;
+
 public class AnathemaPreferencesTest extends BasicTestCase {
 
   private Preferences preferences;
@@ -27,7 +29,8 @@ public class AnathemaPreferencesTest extends BasicTestCase {
     assertEquals("C:/exalted/ist/toll/", anathemaPreferences.getRepositoryLocationPreference(null)); //$NON-NLS-1$
   }
 
-  public void testCustomizedDefaultRepository() throws Exception {
+  @Test
+  public void customizedDefaultRepository() throws Exception {
     assertEquals("C:/exalted/ist/toll/", anathemaPreferences.getRepositoryLocationPreference("C:/exalted/ist/toll/")); //$NON-NLS-1$ //$NON-NLS-2$
   }
 

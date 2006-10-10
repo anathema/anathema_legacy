@@ -4,8 +4,12 @@ import net.sf.anathema.initialization.repository.RepositoryLocationResolver;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.test.platform.environment.DummyAnathemaPreferences;
 
+import org.junit.Test;
+
 public class RepositoryLocationResolverTest extends BasicTestCase {
   private static final String SYSTEM_PROPERTY_REPOSITORY = "repository"; //$NON-NLS-1$
+  private static final String SYSTEM_PROPERTY_DEFAULT_REPOSITORY = "defaultrepository"; //$NON-NLS-1$
+
   private DummyAnathemaPreferences anathemaPreferences;
 
   private void assertRepositoryLocation(String expected) {
@@ -32,6 +36,12 @@ public class RepositoryLocationResolverTest extends BasicTestCase {
     assertRepositoryLocation("parameter"); //$NON-NLS-1$
   }
 
+  @Test
+  public void defaultRepositoryProperty() throws Exception {
+    System.setProperty(SYSTEM_PROPERTY_DEFAULT_REPOSITORY, "parametum"); //$NON-NLS-1$
+    assertRepositoryLocation("parametum"); //$NON-NLS-1$
+  }
+
   public void testPreferenceWithUserHomeWildcard() throws Exception {
     anathemaPreferences.setRepositoryLocationPreference("%USER_HOME%"); //$NON-NLS-1$
     assertRepositoryLocation(getUserHomeSystemProperty());
@@ -46,5 +56,6 @@ public class RepositoryLocationResolverTest extends BasicTestCase {
   protected void tearDown() throws Exception {
     super.tearDown();
     System.clearProperty(SYSTEM_PROPERTY_REPOSITORY);
+    System.clearProperty(SYSTEM_PROPERTY_DEFAULT_REPOSITORY);
   }
 }

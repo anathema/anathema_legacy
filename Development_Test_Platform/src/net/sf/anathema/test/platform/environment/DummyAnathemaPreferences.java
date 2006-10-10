@@ -17,6 +17,9 @@ public class DummyAnathemaPreferences implements IAnathemaPreferences {
   }
 
   public String getRepositoryLocationPreference(String string) {
+    if (string != null) {
+      return string;
+    }
     return repositoryLocation;
   }
 
