@@ -19,12 +19,16 @@ public class AnathemaPreferencesTest extends BasicTestCase {
   }
 
   public void testDefaultRepository() throws Exception {
-    assertEquals("./repository/", anathemaPreferences.getRepositoryLocationPreference()); //$NON-NLS-1$
+    assertEquals("./repository/", anathemaPreferences.getRepositoryLocationPreference(null)); //$NON-NLS-1$
   }
 
   public void testCustomizedRepository() throws Exception {
     preferences.put("Repository", "C:/exalted/ist/toll/"); //$NON-NLS-1$//$NON-NLS-2$
-    assertEquals("C:/exalted/ist/toll/", anathemaPreferences.getRepositoryLocationPreference()); //$NON-NLS-1$
+    assertEquals("C:/exalted/ist/toll/", anathemaPreferences.getRepositoryLocationPreference(null)); //$NON-NLS-1$
+  }
+
+  public void testCustomizedDefaultRepository() throws Exception {
+    assertEquals("C:/exalted/ist/toll/", anathemaPreferences.getRepositoryLocationPreference("C:/exalted/ist/toll/")); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   public void testMaximizedDefault() throws Exception {
