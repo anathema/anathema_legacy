@@ -48,7 +48,7 @@ public class EquipmentCloneUtilities {
       }
 
       public Integer getRange() {
-        return stats.getRate();
+        return stats.getRange();
       }
 
       public Integer getRate() {
