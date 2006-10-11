@@ -38,6 +38,6 @@ public class ArmourStatisticsPresenterPage extends
 
   @Override
   protected boolean isTagsSupported() {
-    return true;
+    return false;
   }
 }
