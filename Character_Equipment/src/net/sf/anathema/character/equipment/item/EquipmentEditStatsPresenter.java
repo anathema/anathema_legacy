@@ -1,6 +1,12 @@
 package net.sf.anathema.character.equipment.item;
 
+import java.awt.Component;
+
+import javax.swing.JComponent;
+import javax.swing.JList;
+
 import net.disy.commons.swing.ui.ObjectUiListCellRenderer;
+import net.sf.anathema.character.equipment.character.EquipmentStringBuilder;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
@@ -41,7 +47,25 @@ public class EquipmentEditStatsPresenter implements IPresenter {
   }
 
   public void initPresentation() {
-    ObjectUiListCellRenderer statsRenderer = new ObjectUiListCellRenderer(new EquipmentStatsUi());
+    final EquipmentStringBuilder equipmentStringBuilder = new EquipmentStringBuilder(resources);
+    ObjectUiListCellRenderer statsRenderer = new ObjectUiListCellRenderer(new EquipmentStatsUi()) {
+      @Override
+      public Component getListCellRendererComponent(
+          JList list,
+          Object value,
+          int index,
+          boolean isSelected,
+          boolean cellHasFocus) {
+        JComponent component = (JComponent) super.getListCellRendererComponent(
+            list,
+            value,
+            index,
+            isSelected,
+            cellHasFocus);
+        component.setToolTipText(equipmentStringBuilder.createString((IEquipmentStats) value));
+        return component;
+      }
+    };
     final IActionAddableListView<IEquipmentStats> statsListView = view.initStatsListView(statsRenderer);
     final IObjectSelectionView<IExaltedRuleSet> ruleSetView = initRuleSetPresentation(statsListView);
     model.getTemplateEditModel().addStatsChangeListener(new IChangeListener() {
@@ -66,7 +90,8 @@ public class EquipmentEditStatsPresenter implements IPresenter {
   private IObjectSelectionView<IExaltedRuleSet> initRuleSetPresentation(
       IActionAddableListView<IEquipmentStats> statsListView) {
     ObjectUiListCellRenderer ruleSetRenderer = new ObjectUiListCellRenderer(new ExaltedRuleSetUi(resources));
-    final IObjectSelectionView<IExaltedRuleSet> ruleSetView = view.initRuleSetSelectionView(resources.getString("Equipment.Creation.Ruleset")+":", ruleSetRenderer); //$NON-NLS-1$ //$NON-NLS-2$
+    final IObjectSelectionView<IExaltedRuleSet> ruleSetView = view.initRuleSetSelectionView(
+        resources.getString("Equipment.Creation.Ruleset") + ":", ruleSetRenderer); //$NON-NLS-1$ //$NON-NLS-2$
     ruleSetView.setObjects(model.getSupportedExaltedRuleSets());
     ruleSetView.addObjectSelectionChangedListener(new RuleSetSelectionListener(statsListView));
     return ruleSetView;
