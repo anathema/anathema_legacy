@@ -943,6 +943,7 @@
         <essence cost="30"/>
       </temporary>
     </cost>
+    <target target="Demesne"/>
     <source source="SavantSorcerer" page="57"/>
   </spell>
   <spell circle="Solar" id="Solar.CraftPuissantSanctum">
@@ -951,6 +952,7 @@
         <essence cost="50"/>
       </temporary>
     </cost>
+    <target target="Demesne"/>
     <source source="SavantSorcerer" page="57"/>
   </spell>
   <spell circle="Solar" id="Solar.AbjurationMaidens">
