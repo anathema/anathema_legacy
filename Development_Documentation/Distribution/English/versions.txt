@@ -35,6 +35,7 @@ Please contact us if you encounter any problems, we will fix your character file
 	"Fivefold Bulwark Stance", "Invincible Fury of the Dawn", "Mist on Water Attack"
 * Corrected min. Bureaucracy value for "Underling Invisibility Practice" (Spotted by ever-vigilant Ricardo)
 * Corrected charm type for "Heart-Brightening Presentation Style" (Same here)
+* Added two spells from Savant & Sorcerer (...)
 * Fixed a problem with Dragon-Blooded Style-Countering Meditation (MartialArts)
 * Fixed a problem with Heart's Blood (Name had to be null for the button to go green.)
 * Corrected enablement/disablement of background-addition button (Must not be empty for button to go green.)

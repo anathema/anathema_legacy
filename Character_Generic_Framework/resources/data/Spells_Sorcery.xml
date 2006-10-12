@@ -937,6 +937,22 @@
     </cost>
     <source source="SavantSorcerer" page="138"/>
   </spell>
+  <spell circle="Celestial" id="Celestial.RaisePuissantSanctum">
+    <cost>
+      <temporary>
+        <essence cost="30"/>
+      </temporary>
+    </cost>
+    <source source="SavantSorcerer" page="57"/>
+  </spell>
+  <spell circle="Solar" id="Solar.CraftPuissantSanctum">
+    <cost>
+      <temporary>
+        <essence cost="50"/>
+      </temporary>
+    </cost>
+    <source source="SavantSorcerer" page="57"/>
+  </spell>
   <spell circle="Solar" id="Solar.AbjurationMaidens">
     <cost>
       <temporary>
