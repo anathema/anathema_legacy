@@ -4,7 +4,7 @@ import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
 import net.sf.anathema.lib.resources.IResources;
 
-public class ArmourStatisticsProperties extends EquipmentStatisticsProperties {
+public class ArmourStatisticsProperties extends AbstractEquipmentStatisticsProperties {
 
   private final BasicMessage defaultMessage;
 
