@@ -793,7 +793,7 @@
     </cost>
     <combo allAbilities="true"/>
     <duration duration="Instant"/>
-    <charmtype type="Simple"/>
+    <charmtype type="Supplemental"/>
     <source source="Sidereals1st" page="151"/>
   </charm>
   <charm id="Sidereal.HarmonicCompletion" exalt="Sidereal" group="Performance">
@@ -2193,7 +2193,7 @@
   </charm>
   <charm id="Sidereal.UnderlingInvisibilityPractice" exalt="Sidereal" group="Bureaucracy">
     <prerequisite>
-      <trait id="Bureaucracy" value="4"/>
+      <trait id="Bureaucracy" value="3"/>
       <essence value="2"/>
     </prerequisite>
     <cost>
