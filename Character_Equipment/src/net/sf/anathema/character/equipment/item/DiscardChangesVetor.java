@@ -10,13 +10,16 @@ import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.disy.commons.swing.dialog.userdialog.buttons.AbstractDialogButtonConfiguration;
 import net.sf.anathema.lib.gui.list.veto.IVetor;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
+import net.sf.anathema.lib.resources.IResources;
 
 public class DiscardChangesVetor implements IVetor {
 
   private final ICondition preCondition;
   private final Component parentComponent;
+  private final IResources resources;
 
-  public DiscardChangesVetor(ICondition preCondition, Component parentComponent) {
+  public DiscardChangesVetor(IResources resources, ICondition preCondition, Component parentComponent) {
+    this.resources = resources;
     this.preCondition = preCondition;
     this.parentComponent = parentComponent;
   }
@@ -25,14 +28,14 @@ public class DiscardChangesVetor implements IVetor {
     if (!preCondition.isFullfilled()) {
       return false;
     }
-    String messageText = "You have unsaved changes. Discard them?";
+    String messageText = resources.getString("Equipment.Creation.UnsavedChangesMessage.Text"); //$NON-NLS-1$
     IMessage message = new Message(messageText, MessageType.WARNING);
     MessageUserDialogConfiguration configuration = new MessageUserDialogConfiguration(
         message,
         new AbstractDialogButtonConfiguration() {
           @Override
           public String getOkayButtonText() {
-            return "Discard changes";
+            return resources.getString("Equipment.Creation.UnsavedChangesMessage.OKButton"); //$NON-NLS-1$
           }
         });
     UserDialog userDialog = new UserDialog(parentComponent, configuration);
