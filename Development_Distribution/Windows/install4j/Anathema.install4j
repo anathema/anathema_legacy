@@ -128,56 +128,6 @@
         <actions />
         <formComponents />
       </screen>
-      <screen name="Acrobat installed" id="116" beanClass="com.install4j.runtime.beans.screens.FormScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
-        <serializedBean>
-          <java class="java.beans.XMLDecoder">
-            <object class="com.install4j.runtime.beans.screens.FormScreen">
-              <void property="fillVertically">
-                <boolean>false</boolean>
-              </void>
-              <void property="subTitle">
-                <string>${i18n:Screens.SoftwareCheck.SubTitle}</string>
-              </void>
-              <void property="title">
-                <string>${i18n:Screens.SoftwareCheck.Title}</string>
-              </void>
-            </object>
-          </java>
-        </serializedBean>
-        <condition>WinRegistry.keyExists(RegistryRoot.HKEY_CURRENT_USER, "Software\\Adobe\\Acrobat Reader")</condition>
-        <validation />
-        <actions />
-        <formComponents>
-          <formComponent name="" id="117" beanClass="com.install4j.runtime.beans.formcomponents.LabelComponent" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
-            <serializedBean>
-              <java class="java.beans.XMLDecoder">
-                <object class="com.install4j.runtime.beans.formcomponents.LabelComponent">
-                  <void property="labelIconFile">
-                    <object class="com.install4j.api.beans.ExternalFile">
-                      <string>./InstallerPDF.png</string>
-                    </object>
-                  </void>
-                  <void property="labelText">
-                    <string>${i18n:SoftwareCheck.Message.NoPDFInstalled}</string>
-                  </void>
-                </object>
-              </java>
-            </serializedBean>
-            <initScript />
-          </formComponent>
-        </formComponents>
-      </screen>
-      <screen name="Acrobat not installed" id="133" beanClass="com.install4j.runtime.beans.screens.FormScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
-        <serializedBean>
-          <java class="java.beans.XMLDecoder">
-            <object class="com.install4j.runtime.beans.screens.FormScreen" />
-          </java>
-        </serializedBean>
-        <condition>WinRegistry.keyExists(RegistryRoot.HKEY_CURRENT_USER, "Software\\Adobe\\Acrobat Reader")</condition>
-        <validation />
-        <actions />
-        <formComponents />
-      </screen>
       <screen name="" id="2" beanClass="com.install4j.runtime.beans.screens.InstallationDirectoryScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
         <serializedBean>
           <java class="java.beans.XMLDecoder">
@@ -272,10 +222,34 @@
         </actions>
         <formComponents />
       </screen>
+      <screen name="Acrobat not installed" id="133" beanClass="com.install4j.runtime.beans.screens.FormScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.FormScreen">
+              <void property="subTitle">
+                <string>${i18n:SoftwareCheck.SubTitle}</string>
+              </void>
+              <void property="title">
+                <string>${i18n:SoftwareCheck.Title}</string>
+              </void>
+            </object>
+          </java>
+        </serializedBean>
+        <condition>!WinRegistry.keyExists(RegistryRoot.HKEY_CURRENT_USER, "Software\\Adobe\\Acrobat Reader")</condition>
+        <validation />
+        <actions />
+        <formComponents />
+      </screen>
       <screen name="" id="9" beanClass="com.install4j.runtime.beans.screens.FinishedScreen" rollbackBarrier="false" backButton="2" finishScreen="true">
         <serializedBean>
           <java class="java.beans.XMLDecoder">
-            <object class="com.install4j.runtime.beans.screens.FinishedScreen" />
+            <object class="com.install4j.runtime.beans.screens.FinishedScreen">
+              <void property="bannerImageFile">
+                <object class="com.install4j.api.beans.ExternalFile">
+                  <string>./Anathema_Install.png</string>
+                </object>
+              </void>
+            </object>
           </java>
         </serializedBean>
         <condition />
