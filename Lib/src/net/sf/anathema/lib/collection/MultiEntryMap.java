@@ -23,6 +23,22 @@ public class MultiEntryMap<K, V> {
     Collections.addAll(list, value);
   }
 
+  public void replace(K key, V oldValue, V newValue) {
+    if (!containsKey(key)) {
+      add(key, newValue);
+      return;
+    }
+    List<V> list = getList(key);
+    if (list.contains(oldValue)) {
+      int index = list.indexOf(oldValue);
+      list.remove(index);
+      list.add(index, newValue);
+    }
+    else {
+      list.add(newValue);
+    }
+  }
+
   public boolean containsKey(K key) {
     return map.containsKey(key);
   }

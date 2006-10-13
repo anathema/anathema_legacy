@@ -187,4 +187,9 @@ public class EquipmentTemplateEditModel implements IEquipmentTemplateEditModel {
   public MaterialComposition getMaterialComposition() {
     return composition;
   }
+
+  public void replaceStatistics(IExaltedRuleSet ruleset, IEquipmentStats oldStats, IEquipmentStats newStats) {
+    statsByRuleSet.replace(ruleset, oldStats, newStats);
+    fireStatsChangedEvent();
+  }
 }

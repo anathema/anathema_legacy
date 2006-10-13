@@ -38,4 +38,8 @@ public class BasicUi extends AbstractUI {
   public Icon getDownArrowIcon() {
     return getIcon("ButtonArrowDown16.png"); //$NON-NLS-1$
   }
+
+  public Icon getEditIcon() {
+    return getIcon("ButtonEdit16.png"); //$NON-NLS-1$
+  }
 }

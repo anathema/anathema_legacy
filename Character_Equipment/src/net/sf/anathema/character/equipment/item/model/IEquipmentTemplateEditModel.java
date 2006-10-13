@@ -41,4 +41,6 @@ public interface IEquipmentTemplateEditModel {
   public void addMagicalMaterialChangeListener(IChangeListener listener);
 
   public void addCompositionChangeListener(IChangeListener listener);
+
+  public void replaceStatistics(IExaltedRuleSet ruleset, IEquipmentStats selectedStats, IEquipmentStats equipmentStats);
 }

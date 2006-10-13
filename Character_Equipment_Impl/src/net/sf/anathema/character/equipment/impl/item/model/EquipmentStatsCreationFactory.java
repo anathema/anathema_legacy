@@ -26,6 +26,7 @@ import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentStatsCreationFactory;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.health.HealthType;
+import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
@@ -48,6 +49,27 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
       return null;
     }
     return createStats(model);
+  }
+
+  public IEquipmentStats editStats(
+      Component parentComponent,
+      IResources resources,
+      String[] definedNames,
+      IEquipmentStats stats) {
+    IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames);
+    createModel(model, stats);
+    IEquipmentStatisticsCreationViewFactory viewFactory = new EquipmentStatisticsCreationViewFactory();
+    EquipmentTypeChoicePresenterPage startPage = new EquipmentTypeChoicePresenterPage(resources, model, viewFactory);
+    WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
+    dialog.show();
+    if (dialog.isCanceled()) {
+      return null;
+    }
+    return createStats(model);
+  }
+
+  private void createModel(IEquipmentStatisticsCreationModel model, IEquipmentStats stats) {
+    throw new NotYetImplementedException();
   }
 
   private IEquipmentStats createStats(IEquipmentStatisticsCreationModel model) {

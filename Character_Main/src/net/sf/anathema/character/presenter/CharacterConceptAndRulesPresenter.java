@@ -25,6 +25,7 @@ import net.sf.anathema.character.view.ICharacterConceptAndRulesViewFactory;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
 import net.sf.anathema.character.view.concept.IWillpowerConditionView;
+import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.ITabContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
@@ -74,14 +75,14 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   private void initMotivationPresentation(final IMotivation motivation, boolean casteRow) {
     final ITextView textView = initTextualDescriptionPresentation(
         motivation.getEditableDescription(),
-        "Label.Motivation"); //$NON-NLS-1$
-    CharacterUI characterUI = new CharacterUI(resources);
-    final SmartAction beginEditAction = new SmartAction(characterUI.getEditIcon()) {
+        "Label.Motivation"); //$NON-NLS-1$    
+    final SmartAction beginEditAction = new SmartAction(new BasicUi(resources).getEditIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         motivation.beginEdit();
       }
     };
+    CharacterUI characterUI = new CharacterUI(resources);
     beginEditAction.setToolTipText(resources.getString("CharacterConcept.Motivation.BeginEdit.Tooltip")); //$NON-NLS-1$
     final SmartAction cancelEditAction = new SmartAction(characterUI.getCancelComboEditIcon()) {
       @Override

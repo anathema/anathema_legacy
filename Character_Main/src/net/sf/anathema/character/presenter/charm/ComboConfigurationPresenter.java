@@ -13,7 +13,6 @@ import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
-import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
@@ -157,7 +156,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
       }
     };
     SmartAction editAction = new SmartAction(
-        resources.getString("CardView.CharmConfiguration.ComboCreation.EditLabel"), new CharacterUI(resources).getEditIcon()) {//$NON-NLS-1$
+        resources.getString("CardView.CharmConfiguration.ComboCreation.EditLabel"), new BasicUi(resources).getEditIcon()) {//$NON-NLS-1$
       @Override
       protected void execute(Component parentComponent) {
         comboConfiguration.beginComboEdit(combo);

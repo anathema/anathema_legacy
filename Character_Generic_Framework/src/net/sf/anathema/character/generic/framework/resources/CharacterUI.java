@@ -27,10 +27,6 @@ public class CharacterUI extends AbstractUI {
     return getIcon("ButtonRandomNameB16.png"); //$NON-NLS-1$
   }
 
-  public Icon getEditIcon() {
-    return getIcon("ButtonEdit16.png"); //$NON-NLS-1$
-  }
-
   public Icon getCancelComboEditIcon() {
     return getIcon("ButtonUndo16.png"); //$NON-NLS-1$
   }
@@ -38,7 +34,7 @@ public class CharacterUI extends AbstractUI {
   public Icon getFinalizeIcon() {
     return getIcon("ButtonCheck16.png"); //$NON-NLS-1$
   }
-  
+
   public Icon getFinalizeXPIcon() {
     return getIcon("ButtonCheckXP16.png"); //$NON-NLS-1$
   }
