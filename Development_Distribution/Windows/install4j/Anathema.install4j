@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install4j version="4.0" transformSequenceNumber="1">
+  <directoryPresets config="./InstallerPDF.png" />
+  <application name="Anathema" distributionSourceDir="" applicationId="1767-2668-0185-7732" mediaDir="." mediaFilePattern="${compiler:sys.shortName}_v${compiler:sys.version}_${compiler:sys.platform}" compression="6" lzmaCompression="false" pack200Compression="true" keepModificationTimes="false" shortName="Anathema" publisher="" publisherWeb="http://anathema.sf.net" version="1.0" allPathsRelative="true" backupOnSave="false" autoSave="true" convertDotsToUnderscores="false" macSignature="????" javaMinVersion="1.5" javaMaxVersion="" allowBetaVM="true">
+    <languages skipLanguageSelection="true">
+      <principalLanguage id="en" customLocalizationFile="F:/Anathema/trunk/Development_Distribution/Windows/install4j/Installer.properties" />
+      <additionalLanguages>
+        <language id="es" customLocalizationFile="F:/Anathema/trunk/Development_Distribution/Windows/install4j/Installer_es.properties" />
+      </additionalLanguages>
+    </languages>
+    <searchSequence>
+      <registry />
+      <envVar name="JAVA_HOME" />
+      <envVar name="JDK_HOME" />
+    </searchSequence>
+    <variables />
+  </application>
+  <files>
+    <roots />
+    <mountPoints>
+      <mountPoint id="32" root="" location="lib" mode="755" />
+      <mountPoint id="33" root="" location="plugins" mode="755" />
+      <mountPoint id="34" root="" location="doc" mode="755" />
+      <mountPoint id="35" root="" location="doc/spanish" mode="755" />
+      <mountPoint id="25" root="" location="" mode="755" />
+    </mountPoints>
+    <entries>
+      <dirEntry mountPoint="32" file="C:/Documents and Settings/Urs/Desktop/Anathema/lib" overwrite="4" shared="false" mode="644" uninstallMode="0" excludeSuffixes="" dirMode="755">
+        <exclude />
+      </dirEntry>
+      <dirEntry mountPoint="33" file="C:/Documents and Settings/Urs/Desktop/Anathema/plugins" overwrite="4" shared="false" mode="644" uninstallMode="0" excludeSuffixes="" dirMode="755">
+        <exclude />
+      </dirEntry>
+      <dirEntry mountPoint="35" file="C:/Documents and Settings/Urs/Desktop/Anathema/doc/spanish" overwrite="4" shared="false" mode="644" uninstallMode="0" excludeSuffixes="" dirMode="755">
+        <exclude />
+      </dirEntry>
+      <fileEntry mountPoint="25" file="C:/Documents and Settings/Urs/Desktop/Anathema/anathema.exe" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="25" file="C:/Documents and Settings/Urs/Desktop/Anathema/anathema.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="25" file="C:/Documents and Settings/Urs/Desktop/Anathema/FAQ.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="25" file="C:/Documents and Settings/Urs/Desktop/Anathema/license.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="25" file="C:/Documents and Settings/Urs/Desktop/Anathema/readme.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="25" file="C:/Documents and Settings/Urs/Desktop/Anathema/versions.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="25" file="./InstallerCheck32.png" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="25" file="./InstallerCross32.png" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="25" file="./InstallerPDF.png" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+    </entries>
+    <components>
+      <component name="${i18n:Modules.Core.Name}" id="26" displayDescription="false" selected="true" mandatory="true" downloadable="false">
+        <description>${i18n:Modules.Core.Description}</description>
+        <include all="false">
+          <entry location="anathema.exe" launcher="false" />
+          <entry location="anathema.jar" launcher="false" />
+          <entry location="FAQ.txt" launcher="false" />
+          <entry location="license.txt" launcher="false" />
+          <entry location="readme.txt" launcher="false" />
+          <entry location="versions.txt" launcher="false" />
+          <entry location="lib" launcher="false" />
+          <entry location="plugins/core.jar" launcher="false" />
+          <entry location="doc" launcher="false" />
+        </include>
+        <dependencies />
+      </component>
+      <component name="${i18n:Modules.NameGenerator.Name}" id="27" displayDescription="false" selected="true" mandatory="false" downloadable="false">
+        <description>${i18n:Modules.NameGenerator.Description}</description>
+        <include all="false">
+          <entry location="plugins/namegenerator.jar" launcher="false" />
+        </include>
+        <dependencies>
+          <component id="26" />
+        </dependencies>
+      </component>
+      <component name="${i18n:Modules.CharacterManagement.Name}" id="28" displayDescription="false" selected="true" mandatory="false" downloadable="false">
+        <description>${i18n:Modules.CharacterManagement.Description}</description>
+        <include all="false">
+          <entry location="plugins/character.jar" launcher="false" />
+        </include>
+        <dependencies>
+          <component id="27" />
+        </dependencies>
+      </component>
+      <component name="${i18n:Modules.CharmCascades.Name}" id="29" displayDescription="false" selected="true" mandatory="false" downloadable="false">
+        <description>${i18n:Modules.CharmCascades.Description}</description>
+        <include all="false">
+          <entry location="plugins/charmcascades.jar" launcher="false" />
+        </include>
+        <dependencies>
+          <component id="28" />
+        </dependencies>
+      </component>
+      <component name="${i18n:Modules.MusicDatabase.Name}" id="30" displayDescription="false" selected="true" mandatory="false" downloadable="false">
+        <description>${i18n:Modules.MusicDatabase.Description}</description>
+        <include all="false">
+          <entry location="plugins/music.jar" launcher="false" />
+        </include>
+        <dependencies>
+          <component id="26" />
+        </dependencies>
+      </component>
+      <component name="${i18n:Modules.PlotManagement.Name}" id="31" displayDescription="false" selected="true" mandatory="false" downloadable="false">
+        <description>${i18n:Modules.PlotManagement.Description}</description>
+        <include all="false">
+          <entry location="plugins/plot.jar" launcher="false" />
+        </include>
+        <dependencies>
+          <component id="26" />
+        </dependencies>
+      </component>
+    </components>
+  </files>
+  <launchers />
+  <installerGui installerType="1" suggestPreviousProgramGroup="true" addOnAppId="" suggestPreviousLocations="true" allowUnattended="false" allowConsole="false" useCustomInstallerHeaderImage="true" customInstallerHeaderImage="./Anathema_Install_small.png" useCustomUninstallerHeaderImage="true" customUninstallerHeaderImage="./Anathema_Install_small.png" customSize="false" customWidth="500" customHeight="390" useCustomIcon="true" customIcnsFile="" customPngIcon16File="F:/Anathema/trunk/Development_Distribution/Windows/install4j/Anathema_Install_Icon_48.png" customPngIcon32File="F:/Anathema/trunk/Development_Distribution/Windows/install4j/Anathema_Install_Icon_48.png" customIcoFile="F:/Anathema/trunk/Development_Distribution/Windows/install4j/sungearInstall.ico" vmParameters="" watermark="false" resizable="false">
+    <customCode useInstalledFiles="false" />
+    <installerScreens>
+      <screen name="" id="1" beanClass="com.install4j.runtime.beans.screens.WelcomeScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.WelcomeScreen">
+              <void property="bannerImageFile">
+                <object class="com.install4j.api.beans.ExternalFile">
+                  <string>./Anathema_Install.png</string>
+                </object>
+              </void>
+            </object>
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions />
+        <formComponents />
+      </screen>
+      <screen name="Acrobat installed" id="116" beanClass="com.install4j.runtime.beans.screens.FormScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.FormScreen">
+              <void property="fillVertically">
+                <boolean>false</boolean>
+              </void>
+              <void property="subTitle">
+                <string>${i18n:Screens.SoftwareCheck.SubTitle}</string>
+              </void>
+              <void property="title">
+                <string>${i18n:Screens.SoftwareCheck.Title}</string>
+              </void>
+            </object>
+          </java>
+        </serializedBean>
+        <condition>WinRegistry.keyExists(RegistryRoot.HKEY_CURRENT_USER, "Software\\Adobe\\Acrobat Reader")</condition>
+        <validation />
+        <actions />
+        <formComponents>
+          <formComponent name="" id="117" beanClass="com.install4j.runtime.beans.formcomponents.LabelComponent" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.formcomponents.LabelComponent">
+                  <void property="labelIconFile">
+                    <object class="com.install4j.api.beans.ExternalFile">
+                      <string>./InstallerPDF.png</string>
+                    </object>
+                  </void>
+                  <void property="labelText">
+                    <string>${i18n:SoftwareCheck.Message.NoPDFInstalled}</string>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <initScript />
+          </formComponent>
+        </formComponents>
+      </screen>
+      <screen name="Acrobat not installed" id="133" beanClass="com.install4j.runtime.beans.screens.FormScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.FormScreen" />
+          </java>
+        </serializedBean>
+        <condition>WinRegistry.keyExists(RegistryRoot.HKEY_CURRENT_USER, "Software\\Adobe\\Acrobat Reader")</condition>
+        <validation />
+        <actions />
+        <formComponents />
+      </screen>
+      <screen name="" id="2" beanClass="com.install4j.runtime.beans.screens.InstallationDirectoryScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.InstallationDirectoryScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions />
+        <formComponents />
+      </screen>
+      <screen name="" id="3" beanClass="com.install4j.runtime.beans.screens.ComponentsScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.ComponentsScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions />
+        <formComponents />
+      </screen>
+      <screen name="" id="4" beanClass="com.install4j.runtime.beans.screens.StandardProgramGroupScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.StandardProgramGroupScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions />
+        <formComponents />
+      </screen>
+      <screen name="" id="5" beanClass="com.install4j.runtime.beans.screens.InstallationScreen" rollbackBarrier="true" backButton="2" finishScreen="false">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.InstallationScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions>
+          <action name="" id="6" beanClass="com.install4j.runtime.beans.actions.InstallFilesAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.InstallFilesAction" />
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+          <action name="" id="8" beanClass="com.install4j.runtime.beans.actions.desktop.RegisterAddRemoveAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.desktop.RegisterAddRemoveAction">
+                  <void property="itemName">
+                    <string>${compiler:sys.fullName} ${compiler:sys.version}</string>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+          <action name="" id="7" beanClass="com.install4j.runtime.beans.actions.desktop.CreateProgramGroupAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.desktop.CreateProgramGroupAction">
+                  <void property="programGroupName">
+                    <string>${compiler:sys.fullName}</string>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+          <action name="" id="115" beanClass="com.install4j.runtime.beans.actions.desktop.CreateStartMenuEntryAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.desktop.CreateStartMenuEntryAction">
+                  <void property="entryName">
+                    <string>Anathema</string>
+                  </void>
+                  <void property="file">
+                    <object class="java.io.File">
+                      <string>anathema.exe</string>
+                    </object>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+        </actions>
+        <formComponents />
+      </screen>
+      <screen name="" id="9" beanClass="com.install4j.runtime.beans.screens.FinishedScreen" rollbackBarrier="false" backButton="2" finishScreen="true">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.FinishedScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions />
+        <formComponents />
+      </screen>
+    </installerScreens>
+    <uninstallerScreens>
+      <screen name="" id="10" beanClass="com.install4j.runtime.beans.screens.UninstallWelcomeScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.UninstallWelcomeScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions />
+        <formComponents />
+      </screen>
+      <screen name="" id="11" beanClass="com.install4j.runtime.beans.screens.UninstallationScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.UninstallationScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions>
+          <action name="" id="12" beanClass="com.install4j.runtime.beans.actions.UninstallFilesAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.UninstallFilesAction" />
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+        </actions>
+        <formComponents />
+      </screen>
+      <screen name="" id="14" beanClass="com.install4j.runtime.beans.screens.UninstallFailureScreen" rollbackBarrier="false" backButton="2" finishScreen="true">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.UninstallFailureScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions />
+        <formComponents />
+      </screen>
+      <screen name="" id="13" beanClass="com.install4j.runtime.beans.screens.UninstallSuccessScreen" rollbackBarrier="false" backButton="2" finishScreen="true">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.UninstallSuccessScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions />
+        <formComponents />
+      </screen>
+    </uninstallerScreens>
+    <installerStartup>
+      <screen name="" id="15" beanClass="com.install4j.runtime.beans.screens.StartupScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.StartupScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions />
+        <formComponents />
+      </screen>
+    </installerStartup>
+    <uninstallerStartup>
+      <screen name="" id="16" beanClass="com.install4j.runtime.beans.screens.StartupScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.StartupScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions />
+        <formComponents />
+      </screen>
+    </uninstallerStartup>
+  </installerGui>
+  <mediaSets>
+    <win32 name="Windows" id="17" mediaFileName="" installDir="Anathema" overridePrincipalLanguage="false" requires64bit="false" runPostProcessor="false" postProcessor="" includedJRE="" manualJREEntry="false" bundleType="1" jreURL="" jreFtpURL="" jreShared="false" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="" runAsAdmin="false">
+      <excludedLaunchers />
+      <excludedComponents />
+      <overriddenPrincipalLanguage id="en" customLocalizationFile="" />
+      <exclude />
+      <variables />
+      <excludedInstallerScreens />
+      <excludedUninstallerScreens />
+    </win32>
+  </mediaSets>
+  <buildIds buildAll="true" />
+</install4j>
+
