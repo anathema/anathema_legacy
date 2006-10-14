@@ -161,7 +161,7 @@ public class BackgroundPresenter implements IPresenter {
     if (template != null) {
       return template;
     }
-    return backgroundRegistry.getById(anObject.toString());
+    return backgroundRegistry.getById(displayName);
   }
 
   public void allowRemoveCreationBackground(boolean allowed) {
