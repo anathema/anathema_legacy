@@ -37,5 +37,6 @@
 	<classpathentry sourcepath="/JPF/source" kind="lib" path="/Thirdparty/Plugin/jpf.jar"/>
 	<classpathentry sourcepath="/JPF/source-boot" kind="lib" path="/Thirdparty/Plugin/jpf-boot.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Craft"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Linguistics"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

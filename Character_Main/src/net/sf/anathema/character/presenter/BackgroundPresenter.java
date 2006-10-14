@@ -18,10 +18,10 @@ import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTe
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
+import net.sf.anathema.character.library.util.ProxyComboBoxEditor;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.background.IBackgroundListener;
 import net.sf.anathema.character.presenter.util.I18nComparator;
-import net.sf.anathema.character.presenter.util.ProxyComboBoxEditor;
 import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;

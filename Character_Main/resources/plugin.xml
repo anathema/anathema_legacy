@@ -119,6 +119,7 @@
 		<parameter id="bundle" value="Health"/>
 		<parameter id="bundle" value="Intimacies"/>
 		<parameter id="bundle" value="Lunar"/>
+		<parameter id="bundle" value="Linguistics"/>
 		<parameter id="bundle" value="MeritsFlaws"/>
 		<parameter id="bundle" value="Natures"/>
 		<parameter id="bundle" value="Overview"/>

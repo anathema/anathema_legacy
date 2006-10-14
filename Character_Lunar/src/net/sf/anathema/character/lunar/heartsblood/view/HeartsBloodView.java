@@ -20,10 +20,6 @@ public class HeartsBloodView extends AbstractRemovableEntryView<IRemovableEntryV
     return content;
   }
 
-  public boolean needsScrollbar() {
-    return false;
-  }
-
   public IAnimalFormSelectionView createAnimalFormSelectionView(
       Icon icon,
       String animalFormString,

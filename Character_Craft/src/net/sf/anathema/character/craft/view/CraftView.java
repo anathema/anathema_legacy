@@ -38,10 +38,6 @@ public class CraftView extends AbstractRemovableEntryView<IRemovableTraitView<Si
     return mainPanel;
   }
 
-  public boolean needsScrollbar() {
-    return false;
-  }
-
   public IStringSelectionView addSelectionView(String labelText, Icon addIcon) {
     StringSelectionView view = new StringSelectionView(labelText, addIcon);
     mainPanel.add(view.getComponent());

@@ -50,10 +50,6 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
     return content;
   }
 
-  public boolean needsScrollbar() {
-    return false;
-  }
-
   public IStringSelectionView addSelectionView(String labelText, Icon addIcon) {
     StringSelectionView view = new StringSelectionView(labelText, addIcon);
     mainPanel.add(view.getComponent());
