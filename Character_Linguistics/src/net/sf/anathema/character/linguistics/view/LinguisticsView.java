@@ -21,7 +21,7 @@ public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryV
 
   private final IGridDialogPanel selectionPanel = new DefaultGridDialogPanel();
   private final JPanel entryPanel = new JPanel(new GridDialogLayout(2, false));
-  private final JPanel panel = new JPanel();
+  private final JPanel panel = new JPanel(new GridDialogLayout(1, false));
 
   public JComponent getComponent() {
     panel.add(selectionPanel.getComponent());

@@ -27,6 +27,7 @@ public class LinguisticsPresenter implements IPresenter {
   private final ILinguisticsView view;
   private final IResources resources;
   private final Map<IIdentificate, IRemovableEntryView> viewsByEntry = new HashMap<IIdentificate, IRemovableEntryView>();
+  private final Map<String, IIdentificate> languagesByDisplayName = new HashMap<String, IIdentificate>();
 
   public LinguisticsPresenter(ILinguisticsModel model, ILinguisticsView view, IResources resources) {
     this.model = model;
@@ -63,11 +64,15 @@ public class LinguisticsPresenter implements IPresenter {
     selectionView.setObjects(model.getPredefinedLanguages());
     selectionView.addObjectSelectionChangedListener(new IObjectValueChangedListener<Object>() {
       public void valueChanged(Object newValue) {
-        if (model.isPredefinedLanguage(newValue)) {
-          model.languageSelected((IIdentificate) newValue);
+        if (newValue == null) {
+          return;
+        }
+        IIdentificate definedLanguage = getLanguage(newValue);
+        if (definedLanguage == null) {
+          model.selectBarbarianLanguage(newValue.toString());
         }
         else {
-          model.barbarianLanguageSelected((String) newValue);
+          model.selectLanguage(definedLanguage);
         }
       }
     });
@@ -97,6 +102,21 @@ public class LinguisticsPresenter implements IPresenter {
         view.removeEntryView(entryView);
       }
     });
+    for (IIdentificate language : model.getPredefinedLanguages()) {
+      languagesByDisplayName.put(getDisplayString(language), language);
+    }
+  }
+
+  private IIdentificate getLanguage(Object anObject) {
+    if (anObject instanceof IIdentificate) {
+      return (IIdentificate) anObject;
+    }
+    String displayName = anObject.toString();
+    IIdentificate language = languagesByDisplayName.get(displayName);
+    if (language != null) {
+      return language;
+    }
+    return model.getPredefinedLanguageById(displayName);
   }
 
   private String getDisplayString(Object object) {

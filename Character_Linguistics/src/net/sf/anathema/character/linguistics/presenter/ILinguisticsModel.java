@@ -9,8 +9,9 @@ public interface ILinguisticsModel extends IRemovableEntryModel<IIdentificate> {
 
   public boolean isPredefinedLanguage(Object object);
 
-  public void languageSelected(IIdentificate identificate);
+  public IIdentificate getPredefinedLanguageById(String displayName);
 
-  public void barbarianLanguageSelected(String string);
+  public void selectBarbarianLanguage(String customName);
 
+  public void selectLanguage(IIdentificate language);
 }
