@@ -16,7 +16,7 @@ import net.sf.anathema.lib.util.Identificate;
 public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate> implements ILinguisticsModel {
 
   private final IIdentificate[] languages = new IIdentificate[] { new Identificate("HighRealm"), //$NON-NLS-1$
-      new Identificate("LowRealm") }; //$NON-NLS-1$
+      new Identificate("LowRealm"), new Identificate("OldRealm"), new Identificate("Riverspeak"), new Identificate("Skytongue"), new Identificate("Flametongue"), new Identificate("Seatongue"), new Identificate("Foresttongue"), new Identificate("GuildCant") }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$
 
   private IIdentificate selection;
 
