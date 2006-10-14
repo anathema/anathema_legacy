@@ -78,6 +78,9 @@ public class LinguisticsPresenter implements IPresenter {
     });
     selectionView.addButtonListener(new IObjectValueChangedListener<Object>() {
       public void valueChanged(Object newValue) {
+        if (!model.isEntryAllowed()) {
+          return;
+        }
         model.commitSelection();
       }
     });

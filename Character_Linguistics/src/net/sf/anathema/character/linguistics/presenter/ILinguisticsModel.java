@@ -14,4 +14,6 @@ public interface ILinguisticsModel extends IRemovableEntryModel<IIdentificate> {
   public void selectBarbarianLanguage(String customName);
 
   public void selectLanguage(IIdentificate language);
+
+  public boolean isEntryAllowed();
 }

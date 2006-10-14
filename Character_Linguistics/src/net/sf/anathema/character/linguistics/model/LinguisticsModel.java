@@ -39,7 +39,7 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
   }
 
   @Override
-  protected boolean isEntryAllowed() {
+  public boolean isEntryAllowed() {
     return selection != null && !getEntries().contains(selection);
   }
 
