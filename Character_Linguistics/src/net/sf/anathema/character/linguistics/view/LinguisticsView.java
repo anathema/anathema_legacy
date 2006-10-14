@@ -5,6 +5,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
@@ -25,7 +26,7 @@ public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryV
 
   public JComponent getComponent() {
     panel.add(selectionPanel.getComponent());
-    panel.add(entryPanel);
+    panel.add(entryPanel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
     return panel;
   }
 
