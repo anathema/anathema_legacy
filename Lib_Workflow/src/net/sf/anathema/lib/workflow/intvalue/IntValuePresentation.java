@@ -6,11 +6,6 @@ import net.sf.anathema.lib.gui.widgets.IntegerSpinner;
 public class IntValuePresentation {
 
   public void initView(final IntegerSpinner integerSpinner, final IIntValueModel intValueModel) {
-    integerSpinner.addChangeListener(new IIntValueChangedListener() {
-      public void valueChanged(int newValue) {
-        intValueModel.setValue(newValue);
-      }
-    });
     intValueModel.addIntValueChangeListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
         integerSpinner.setValue(newValue);
@@ -19,5 +14,12 @@ public class IntValuePresentation {
     integerSpinner.setMinimum(intValueModel.getMinimum());
     integerSpinner.setMaximum(intValueModel.getMaximum());
     integerSpinner.setValue(intValueModel.getValue());
+    // SpinnerListening umbedingt erst nach Initialisierung des Spinners durchführen, weil dieser
+    // sonst bei setMinimum potentiell den value auf Minimum setzt und der Startwert verloren geht.
+    integerSpinner.addChangeListener(new IIntValueChangedListener() {
+      public void valueChanged(int newValue) {
+        intValueModel.setValue(newValue);
+      }
+    });
   }
 }
