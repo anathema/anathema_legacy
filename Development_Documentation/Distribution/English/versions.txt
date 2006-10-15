@@ -16,9 +16,10 @@ are migrated to the new printing engine.
 Please contact us if you encounter any problems.
 
 -- Features --
-+ Equipment
-+ Crafts as written
-+ Languages managed in the program
++More rules supported, including:
++	Equipment
++ 	Craft
++ 	Linguistics
 + Added proper support for Charms with multiple variants.
 + Motivation now is changeable
 
