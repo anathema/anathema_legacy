@@ -13,11 +13,12 @@ after loading (but should load nonetheless). To fix this, select those effects y
 your character. This might lead to problems if you try to "un-learn" the charm altogether.
 1st Edition Solar "Elemental Protection Prana" will be switched over as soon as Solars and Abyssals 
 are migrated to the new printing engine.
-Please contact us if you encounter any problems, we will fix your character file.
+Please contact us if you encounter any problems.
 
 -- Features --
 + Equipment
-+ Crafts
++ Crafts as written
++ Languages managed in the program
 + Added proper support for Charms with multiple variants.
 + Motivation now is changeable
 
@@ -29,6 +30,7 @@ Please contact us if you encounter any problems, we will fix your character file
 
 -- Miscellaneous --
 + New website
++ Some tinkering with linux shell script & Mac OS launcher
 
 -- Bugs Fixed --
 * Corrected charm prerequisites for 
