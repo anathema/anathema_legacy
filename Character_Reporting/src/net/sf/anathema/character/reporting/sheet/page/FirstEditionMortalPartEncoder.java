@@ -1,17 +1,24 @@
 package net.sf.anathema.character.reporting.sheet.page;
 
+import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfExperienceEncoder;
-import net.sf.anathema.character.reporting.sheet.common.PdfHorizontalLineContentEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
 
 public class FirstEditionMortalPartEncoder extends AbstractFirstEditionPartEncoder {
 
-  public FirstEditionMortalPartEncoder(IResources resources, BaseFont baseFont, BaseFont symbolBaseFont) {
+  private final PdfEncodingRegistry registry;
+
+  public FirstEditionMortalPartEncoder(
+      IResources resources,
+      BaseFont baseFont,
+      BaseFont symbolBaseFont,
+      PdfEncodingRegistry registry) {
     super(resources, baseFont, symbolBaseFont);
+    this.registry = registry;
   }
 
   public IPdfContentBoxEncoder getAnimaEncoder() {
@@ -27,6 +34,6 @@ public class FirstEditionMortalPartEncoder extends AbstractFirstEditionPartEncod
   }
 
   public IPdfContentBoxEncoder getGreatCurseEncoder() {
-    return new PdfHorizontalLineContentEncoder(2, "Languages"); //$NON-NLS-1$
+    return registry.getLinguisticsEncoder(); //No Great Curse for Mortals
   }
 }

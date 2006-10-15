@@ -9,7 +9,6 @@ import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfBackgroundEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfExperienceEncoder;
-import net.sf.anathema.character.reporting.sheet.common.PdfHorizontalLineContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.PdfComboEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.PdfMagicEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.generic.PdfGenericCharmEncoder;
@@ -103,9 +102,9 @@ public class PdfSecondPageEncoder implements IPdfPageEncoder {
       IGenericCharacter character,
       float distanceFromTop,
       float height) throws DocumentException {
-    Bounds languageBounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
-    IPdfContentBoxEncoder encoder = new PdfHorizontalLineContentEncoder(2, "Languages"); //$NON-NLS-1$
-    boxEncoder.encodeBox(directContent, encoder, character, languageBounds);
+    Bounds bounds = configuration.getThirdColumnRectangle(distanceFromTop, height);
+    IPdfContentBoxEncoder encoder = encodingRegistry.getLinguisticsEncoder();
+    boxEncoder.encodeBox(directContent, encoder, character, bounds);
     return height;
   }
 

@@ -35,7 +35,7 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
   private final JPanel editTemplateButtonPanel = new JPanel(new GridDialogLayout(1, false));
   private final TitledPanel templateListPanel = new TitledPanel("", new JScrollPane(templateListView.getComponent())); //$NON-NLS-1$
   private final JPanel statsPanel = new JPanel(new GridDialogLayout(1, false));
-  private TitledPanel statsTitlePanel = new TitledPanel("", statsPanel);
+  private TitledPanel statsTitlePanel = new TitledPanel("", statsPanel); //$NON-NLS-1$
 
   public JComponent getComponent() {
     if (contentPanel == null) {

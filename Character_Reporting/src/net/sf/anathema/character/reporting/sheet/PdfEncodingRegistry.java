@@ -21,6 +21,7 @@ public class PdfEncodingRegistry {
   private IPdfContentBoxEncoder armourContentEncoder;
   private IPdfContentBoxEncoder intimaciesEncoder;
   private IPdfContentBoxEncoder possessionsEncoder;
+  private IPdfContentBoxEncoder linguisticsEncoder;
 
   public PdfEncodingRegistry() {
     this.baseFont = new Font(Font.HELVETICA, 7, Font.NORMAL, Color.BLACK).getCalculatedBaseFont(true);
@@ -63,6 +64,10 @@ public class PdfEncodingRegistry {
     return possessionsEncoder;
   }
 
+  public IPdfContentBoxEncoder getLinguisticsEncoder() {
+    return linguisticsEncoder;
+  }
+
   public void setPartEncoder(CharacterType type, IExaltedEdition edition, IPdfPartEncoder partEncoder) {
     partEncoderTable.add(type, edition, partEncoder);
   }
@@ -77,5 +82,9 @@ public class PdfEncodingRegistry {
 
   public void setPossessionsEncoder(IPdfContentBoxEncoder encoder) {
     this.possessionsEncoder = encoder;
+  }
+
+  public void setLinguisticsEncoder(IPdfContentBoxEncoder encoder) {
+    this.linguisticsEncoder = encoder;
   }
 }

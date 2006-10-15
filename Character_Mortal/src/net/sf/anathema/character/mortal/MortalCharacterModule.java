@@ -31,8 +31,16 @@ public class MortalCharacterModule extends NullObjectCharacterModuleAdapter {
     PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
     BaseFont baseFont = registry.getBaseFont();
     BaseFont symbolFont = registry.getSymbolBaseFont();
-    IPdfPartEncoder secondEditionMortalPartEncoder = new SecondEditionMortalPartEncoder(resources, baseFont, symbolFont);
-    IPdfPartEncoder firstEditionMortalPartEncoder = new FirstEditionMortalPartEncoder(resources, baseFont, symbolFont);
+    IPdfPartEncoder secondEditionMortalPartEncoder = new SecondEditionMortalPartEncoder(
+        resources,
+        baseFont,
+        symbolFont,
+        registry);
+    IPdfPartEncoder firstEditionMortalPartEncoder = new FirstEditionMortalPartEncoder(
+        resources,
+        baseFont,
+        symbolFont,
+        registry);
     registry.setPartEncoder(CharacterType.MORTAL, ExaltedEdition.SecondEdition, secondEditionMortalPartEncoder);
     registry.setPartEncoder(CharacterType.MORTAL, ExaltedEdition.FirstEdition, firstEditionMortalPartEncoder);
   }

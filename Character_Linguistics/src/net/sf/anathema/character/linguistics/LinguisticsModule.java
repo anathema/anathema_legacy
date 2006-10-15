@@ -5,7 +5,11 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditiona
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
+import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
 import net.sf.anathema.character.linguistics.template.LinguisticsTemplate;
+import net.sf.anathema.character.reporting.CharacterReportingModule;
+import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
+import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -25,6 +29,9 @@ public class LinguisticsModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    //included in PdfSecondPageEncoder
+    ICharacterModuleObjectMap moduleMap = generics.getModuleObjectMap();
+    CharacterReportingModuleObject moduleObject = moduleMap.getModuleObject(CharacterReportingModule.class);
+    PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
+    registry.setLinguisticsEncoder(new LinguisticsEncoder(resources, registry.getBaseFont()));
   }
 }

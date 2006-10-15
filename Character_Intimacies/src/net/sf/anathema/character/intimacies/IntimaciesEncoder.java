@@ -6,45 +6,27 @@ import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.intimacies.model.IIntimacy;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
 import net.sf.anathema.character.intimacies.template.IntimaciesTemplate;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
-import net.sf.anathema.character.reporting.sheet.elements.Line;
-import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
-import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
+import net.sf.anathema.character.reporting.sheet.util.AbstractLineTextEncoder;
 
 import com.lowagie.text.Chunk;
-import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
 
-public class IntimaciesEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
-
-  private final static int LINE_HEIGHT = IVoidStateFormatConstants.LINE_HEIGHT - 2;
-  private final BaseFont baseFont;
-
-  @Override
-  protected BaseFont getBaseFont() {
-    return baseFont;
-  }
+public class IntimaciesEncoder extends AbstractLineTextEncoder {
 
   public IntimaciesEncoder(BaseFont baseFont) {
-    this.baseFont = baseFont;
+    super(baseFont);
   }
 
   public String getHeaderKey() {
     return "Intimacies"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  @Override
+  protected void addToPhrase(IGenericCharacter character, Font font, Phrase intimacyPhrase) {
     IIntimaciesAdditionalModel additionalModel = (IIntimaciesAdditionalModel) character.getAdditionalModel(IntimaciesTemplate.ID);
     IIntimaciesModel model = additionalModel.getIntimaciesModel();
-    Font font = TableEncodingUtilities.createFont(baseFont);
-    Phrase intimacyPhrase = new Phrase();
     for (Iterator<IIntimacy> intimacies = model.getEntries().iterator(); intimacies.hasNext();) {
       IIntimacy intimacy = intimacies.next();
       String text = intimacy.getName();
@@ -53,14 +35,6 @@ public class IntimaciesEncoder extends AbstractPdfEncoder implements IPdfContent
       }
       text += intimacies.hasNext() ? ", " : ""; //$NON-NLS-1$ //$NON-NLS-2$
       intimacyPhrase.add(new Chunk(text, font));
-    }
-    Bounds textBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - 2);
-    float yPosition = PdfTextEncodingUtilities.encodeText(directContent, intimacyPhrase, textBounds, LINE_HEIGHT)
-        .getYLine();
-    yPosition -= LINE_HEIGHT;
-    while (yPosition > bounds.y) {
-      Line.createHorizontalByCoordinate(new Position(bounds.x, yPosition), bounds.getMaxX()).encode(directContent);
-      yPosition -= LINE_HEIGHT;
     }
   }
 }
