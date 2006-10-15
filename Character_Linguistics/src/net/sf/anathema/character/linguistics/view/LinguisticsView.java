@@ -7,6 +7,8 @@ import javax.swing.ListCellRenderer;
 
 import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.sf.anathema.character.library.overview.IOverviewCategory;
+import net.sf.anathema.character.library.overview.OverviewCategory;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.library.removableentry.view.AbstractRemovableEntryView;
 import net.sf.anathema.character.library.removableentry.view.RemovableStringView;
@@ -22,11 +24,17 @@ public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryV
 
   private final IGridDialogPanel selectionPanel = new DefaultGridDialogPanel();
   private final JPanel entryPanel = new JPanel(new GridDialogLayout(2, false));
-  private final JPanel panel = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel panel = new JPanel(new GridDialogLayout(2, false));
+  private IOverviewCategory category;
 
   public JComponent getComponent() {
-    panel.add(selectionPanel.getComponent());
-    panel.add(entryPanel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
+    mainPanel.add(selectionPanel.getComponent());
+    mainPanel.add(entryPanel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
+    panel.add(mainPanel, GridDialogLayoutDataUtilities.createTopData());
+    if (category != null) {
+      panel.add(category.getComponent(), GridDialogLayoutDataUtilities.createTopData());
+    }
     return panel;
   }
 
@@ -49,5 +57,10 @@ public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryV
         editor);
     objectSelectionView.addComponents(selectionPanel);
     return objectSelectionView;
+  }
+
+  public IOverviewCategory addOverview(String border) {
+    this.category = new OverviewCategory(border, false);
+    return category;
   }
 }

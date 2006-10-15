@@ -11,15 +11,20 @@ import javax.swing.Icon;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
+import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
 import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryView;
 import net.sf.anathema.character.library.util.ProxyComboBoxEditor;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
+import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.legality.LegalityColorProvider;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
+import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 public class LinguisticsPresenter implements IPresenter {
 
@@ -36,6 +41,58 @@ public class LinguisticsPresenter implements IPresenter {
   }
 
   public void initPresentation() {
+    initEntryPresentation();
+    initPointPresentation();
+  }
+
+  private void initPointPresentation() {
+    IOverviewCategory overview = view.addOverview(resources.getString("Linguistics.Overview.Border")); //$NON-NLS-1$
+    final IValueView<Integer> familyView = overview.addIntegerValueView(
+        resources.getString("Linguistics.Overview.Families"), 1); //$NON-NLS-1$
+    final IValueView<Integer> barbarianView = overview.addIntegerValueView(
+        resources.getString("Linguistics.Overview.Barbarian"), 2); //$NON-NLS-1$
+    final ILabelledAlotmentView totalView = overview.addAlotmentView(
+        resources.getString("Linguistics.Overview.Total"), 2); //$NON-NLS-1$
+    model.addModelChangeListener(new IRemovableEntryListener<IIdentificate>() {
+      public void entryAdded(IIdentificate entry) {
+        updateOverview(familyView, totalView, barbarianView);
+      }
+
+      public void entryAllowed(boolean complete) {
+        //nothing to do;
+      }
+
+      public void entryRemoved(IIdentificate entry) {
+        updateOverview(familyView, totalView, barbarianView);
+      }
+    });
+    model.addCharacterChangedListener(new IChangeListener() {
+      public void changeOccured() {
+        updateOverview(familyView, totalView, barbarianView);
+      }
+    });
+    updateOverview(familyView, totalView, barbarianView);
+  }
+
+  private void updateOverview(
+      IValueView<Integer> familyView,
+      ILabelledAlotmentView totalView,
+      IValueView<Integer> barbarianView) {
+    familyView.setValue(model.getPredefinedLanguageCount());
+    barbarianView.setValue(model.getBarbarianLanguageCount());
+    int pointsSpent = model.getLanguagePointsSpent();
+    totalView.setValue(pointsSpent);
+    int pointsAllowed = model.getLanguagePointsAllowed();
+    totalView.setAlotment(pointsAllowed);
+    if (pointsSpent > pointsAllowed) {
+      totalView.setTextColor(LegalityColorProvider.COLOR_HIGH);
+    }
+    else {
+      totalView.setTextColor(LegalityColorProvider.COLOR_OKAY);
+    }
+  }
+
+  private void initEntryPresentation() {
     String labelText = resources.getString("Linguistics.SelectionView.Label"); //$NON-NLS-1$
     final BasicUi basicUi = new BasicUi(resources);
     Icon addIcon = basicUi.getAddIcon();
