@@ -86,13 +86,7 @@ public class LinguisticsPresenter implements IPresenter {
     });
     model.addModelChangeListener(new IRemovableEntryListener<IIdentificate>() {
       public void entryAdded(final IIdentificate entry) {
-        IRemovableEntryView entryView = view.addEntryView(basicUi.getRemoveIcon(), getDisplayString(entry));
-        viewsByEntry.put(entry, entryView);
-        entryView.addButtonListener(new ActionListener() {
-          public void actionPerformed(ActionEvent e) {
-            model.removeEntry(entry);
-          }
-        });
+        addEntry(basicUi, entry);
         selectionView.setSelectedObject(null);
       }
 
@@ -108,6 +102,19 @@ public class LinguisticsPresenter implements IPresenter {
     for (IIdentificate language : model.getPredefinedLanguages()) {
       languagesByDisplayName.put(getDisplayString(language), language);
     }
+    for (IIdentificate language : model.getEntries()) {
+      addEntry(basicUi, language);
+    }
+  }
+
+  private void addEntry(final BasicUi basicUi, final IIdentificate language) {
+    IRemovableEntryView entryView = view.addEntryView(basicUi.getRemoveIcon(), getDisplayString(language));
+    viewsByEntry.put(language, entryView);
+    entryView.addButtonListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        model.removeEntry(language);
+      }
+    });
   }
 
   private IIdentificate getLanguage(Object anObject) {
