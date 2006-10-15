@@ -53,10 +53,10 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
     ICharacterModuleObjectMap moduleMap = generics.getModuleObjectMap();
     CharacterReportingModuleObject moduleObject = moduleMap.getModuleObject(CharacterReportingModule.class);
     PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
-    fillSecondEditionEncodingRegistry(resources, registry);
+    fillEncodingRegistry(resources, registry);
   }
 
-  private void fillSecondEditionEncodingRegistry(IResources resources, PdfEncodingRegistry registry) {
+  private void fillEncodingRegistry(IResources resources, PdfEncodingRegistry registry) {
     BaseFont baseFont = registry.getBaseFont();
     registry.setArmourContentEncoder(new SecondEditionArmourEncoder(resources, baseFont));
     registry.setWeaponContentEncoder(new SecondEditionWeaponryEncoder(resources, baseFont));
