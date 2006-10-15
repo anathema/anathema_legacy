@@ -98,7 +98,7 @@ public class EquipmentTypeChoicePresenterPage extends AbstractAnathemaWizardPage
       }
     };
     String typeLabel = properties.getLabel(type);
-    view.addStatisticsRow(label, action, typeLabel);
+    view.addStatisticsRow(label, action, typeLabel, model.getEquipmentType() == type);
   }
 
   public IPageContent getPageContent() {

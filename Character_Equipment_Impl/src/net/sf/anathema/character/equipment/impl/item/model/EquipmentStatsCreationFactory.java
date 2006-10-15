@@ -22,6 +22,7 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.RangedWeap
 import net.sf.anathema.character.equipment.impl.character.model.stats.ShieldStats;
 import net.sf.anathema.character.equipment.impl.creation.EquipmentStatisticsCreationViewFactory;
 import net.sf.anathema.character.equipment.impl.creation.model.EquipmentStatisticsCreationModel;
+import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentStatsCreationFactory;
@@ -33,6 +34,7 @@ import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
 public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFactory {
@@ -75,6 +77,7 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
   private void createModel(IEquipmentStatisticsCreationModel model, IEquipmentStats stats) {
     if (stats instanceof IWeaponStats) {
       IWeaponStats weaponStats = (IWeaponStats) stats;
+      fillWeaponTagsModel(model.getWeaponTagsModel(), weaponStats);
       if (!weaponStats.isRangedCombat()) {
         model.setEquipmentType(EquipmentStatisticsType.CloseCombat);
         fillOffensiveModel(model.getCloseCombatStatsticsModel(), weaponStats);
@@ -110,6 +113,12 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
     }
     else {
       throw new NotYetImplementedException();
+    }
+  }
+
+  private void fillWeaponTagsModel(IWeaponTagsModel weaponTagsModel, IWeaponStats weaponStats) {
+    for (IIdentificate tag : weaponStats.getTags()) {
+      weaponTagsModel.getSelectedModel((WeaponTag) tag).setValue(true);
     }
   }
 

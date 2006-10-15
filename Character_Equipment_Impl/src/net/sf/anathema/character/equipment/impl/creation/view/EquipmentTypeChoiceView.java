@@ -28,9 +28,9 @@ public class EquipmentTypeChoiceView implements IPageContent, IEquipmentTypeChoi
     return content;
   }
 
-  public void addStatisticsRow(String categoryLabel, Action action, String typeLabel) {
+  public void addStatisticsRow(String categoryLabel, Action action, String typeLabel, boolean isSelected) {
     content.add(new JLabel(categoryLabel));
-    content.add(createToggleButton(action));
+    content.add(createToggleButton(action, isSelected));
     content.add(new JLabel(typeLabel));
   }
 
@@ -42,11 +42,12 @@ public class EquipmentTypeChoiceView implements IPageContent, IEquipmentTypeChoi
     focusComponent.requestFocus();
   }
 
-  private JToggleButton createToggleButton(Action action) {
+  private JToggleButton createToggleButton(Action action, boolean isSelected) {
     JToggleButton toggleButton = new JToggleButton(action);
     if (focusComponent == null) {
       focusComponent = toggleButton;
     }
+    toggleButton.setSelected(isSelected);
     ToolBarUtilities.configureToolBarButton(toggleButton);
     buttonGroup.add(toggleButton);
     return toggleButton;
