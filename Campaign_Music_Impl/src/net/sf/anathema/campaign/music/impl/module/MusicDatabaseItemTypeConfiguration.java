@@ -8,6 +8,7 @@ import net.sf.anathema.campaign.music.presenter.MusicDataBasePresenter;
 import net.sf.anathema.campaign.music.presenter.MusicUI;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.module.AbstractNonPersistableItemTypeConfiguration;
+import net.sf.anathema.framework.module.StartDatabaseAction;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
 import net.sf.anathema.framework.presenter.action.ActionMenuItem;
 import net.sf.anathema.framework.presenter.menu.IMenuItem;
@@ -41,6 +42,10 @@ public final class MusicDatabaseItemTypeConfiguration extends AbstractNonPersist
 
   @Override
   protected IMenuItem[] createAddMenuEntries(IAnathemaView view, IAnathemaModel anathemaModel, IResources resources) {
-    return new IMenuItem[] { new ActionMenuItem(StartDatabaseAction.createMenuAction(resources, anathemaModel)) };
+    MusicDatabaseActionProperties properties = new MusicDatabaseActionProperties(resources);
+    return new IMenuItem[] { new ActionMenuItem(StartDatabaseAction.createMenuAction(
+        resources,
+        anathemaModel,
+        properties)) };
   }
 }
