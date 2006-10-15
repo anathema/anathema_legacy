@@ -37,7 +37,9 @@ public class StartDatabaseAction extends SmartAction {
     this.properties = properties;
     anathemaModel.getItemManagement().addListener(new IItemManagementModelListener() {
       public void itemAdded(IItem item) throws AnathemaException {
-        StartDatabaseAction.this.setEnabled(!isOwnItem(item));
+        if (isOwnItem(item)) {
+          StartDatabaseAction.this.setEnabled(false);
+        }
       }
 
       public void itemSelected(IItem item) {
@@ -45,7 +47,9 @@ public class StartDatabaseAction extends SmartAction {
       }
 
       public void itemRemoved(IItem item) {
-        StartDatabaseAction.this.setEnabled(isOwnItem(item));
+        if (isOwnItem(item)) {
+          StartDatabaseAction.this.setEnabled(true);
+        }
       }
     });
   }
