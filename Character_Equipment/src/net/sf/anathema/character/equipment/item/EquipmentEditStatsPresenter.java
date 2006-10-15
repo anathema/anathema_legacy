@@ -10,6 +10,7 @@ import net.sf.anathema.character.equipment.character.EquipmentStringBuilder;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -100,7 +101,7 @@ public class EquipmentEditStatsPresenter implements IPresenter {
     final IObjectSelectionView<IExaltedRuleSet> ruleSetView = view.initRuleSetSelectionView(
         resources.getString("Equipment.Creation.Ruleset") + ":", ruleSetRenderer); //$NON-NLS-1$ //$NON-NLS-2$
     ruleSetView.setObjects(model.getSupportedExaltedRuleSets());
-    //    AnathemaCharacterPreferences.getDefaultPreferences().get
+    ruleSetView.setSelectedObject(AnathemaCharacterPreferences.getDefaultPreferences().getPreferredRuleset());
     ruleSetView.addObjectSelectionChangedListener(new RuleSetSelectionListener(statsListView));
     return ruleSetView;
   }
