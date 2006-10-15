@@ -22,9 +22,12 @@ import net.sf.anathema.character.equipment.impl.character.model.stats.RangedWeap
 import net.sf.anathema.character.equipment.impl.character.model.stats.ShieldStats;
 import net.sf.anathema.character.equipment.impl.creation.EquipmentStatisticsCreationViewFactory;
 import net.sf.anathema.character.equipment.impl.creation.model.EquipmentStatisticsCreationModel;
+import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentStatsCreationFactory;
+import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
@@ -72,15 +75,51 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
   private void createModel(IEquipmentStatisticsCreationModel model, IEquipmentStats stats) {
     if (stats instanceof IWeaponStats) {
       IWeaponStats weaponStats = (IWeaponStats) stats;
-      if (weaponStats.isRangedCombat()) {
-        
+      if (!weaponStats.isRangedCombat()) {
+        model.setEquipmentType(EquipmentStatisticsType.CloseCombat);
+        fillOffensiveModel(model.getCloseCombatStatsticsModel(), weaponStats);
+        model.getCloseCombatStatsticsModel().getDefenseModel().setValue(weaponStats.getDefence());
       }
-      Integer range = weaponStats.getRange();
-      if (range == null) {
-        
+      else {
+        model.setEquipmentType(EquipmentStatisticsType.RangedCombat);
+        fillOffensiveModel(model.getRangedWeaponStatisticsModel(), weaponStats);
+        model.getRangedWeaponStatisticsModel().getRangeModel().setValue(weaponStats.getRange());
       }
     }
-    throw new NotYetImplementedException();
+    else if (stats instanceof IArmourStats) {
+      IArmourStats armourStats = (IArmourStats) stats;
+      model.setEquipmentType(EquipmentStatisticsType.Armor);
+      IArmourStatisticsModel armourModel = model.getArmourStatisticsModel();
+      armourModel.getName().setText(armourStats.getName().getId());
+      armourModel.getBashingHardnessModel().setValue(armourStats.getHardness(HealthType.Bashing));
+      armourModel.getBashingSoakModel().setValue(armourStats.getSoak(HealthType.Bashing));
+      armourModel.getLethalHardnessModel().setValue(armourStats.getHardness(HealthType.Lethal));
+      armourModel.getLethalSoakModel().setValue(armourStats.getSoak(HealthType.Lethal));
+      armourModel.getFatigueModel().setValue(armourStats.getFatigue());
+      armourModel.getMobilityPenaltyModel().setValue(armourStats.getMobilityPenalty());
+    }
+    else if (stats instanceof IShieldStats) {
+      IShieldStats shieldStats = (IShieldStats) stats;
+      model.setEquipmentType(EquipmentStatisticsType.Shield);
+      IShieldStatisticsModel shieldModel = model.getShieldStatisticsModel();
+      shieldModel.getName().setText(shieldStats.getName().getId());
+      shieldModel.getCloseCombatDvBonusModel().setValue(shieldStats.getCloseCombatBonus());
+      shieldModel.getFatigueModel().setValue(shieldStats.getFatigue());
+      shieldModel.getMobilityPenaltyModel().setValue(shieldStats.getMobilityPenalty());
+      shieldModel.getRangedCombatDvBonusModel().setValue(shieldStats.getRangedCombatBonus());
+    }
+    else {
+      throw new NotYetImplementedException();
+    }
+  }
+
+  private void fillOffensiveModel(IOffensiveStatisticsModel offensiveModel, IWeaponStats weaponStats) {
+    offensiveModel.getAccuracyModel().setValue(weaponStats.getAccuracy());
+    offensiveModel.getName().setText(weaponStats.getName().getId());
+    offensiveModel.getRateModel().setValue(weaponStats.getRate());
+    offensiveModel.getSpeedModel().setValue(weaponStats.getSpeed());
+    offensiveModel.getWeaponDamageModel().setValue(weaponStats.getDamage());
+    offensiveModel.getWeaponDamageModel().setHealthType(weaponStats.getDamageType());
   }
 
   private IEquipmentStats createStats(IEquipmentStatisticsCreationModel model) {
