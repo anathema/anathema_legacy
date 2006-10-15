@@ -209,8 +209,8 @@
       <Model templateId="Equipment">
         <Content>
           <item>
-            <templateId><![CDATA[Natural Weapons]]></templateId>
-            <templateId><![CDATA[Natural Weapons]]></templateId>
+            <templateId><![CDATA[Natural]]></templateId>
+            <templateId><![CDATA[Natural]]></templateId>
             <printedStats><![CDATA[Punch]]></printedStats>
             <printedStats><![CDATA[Kick]]></printedStats>
             <printedStats><![CDATA[Clinch]]></printedStats>
@@ -221,12 +221,25 @@
             <templateId><![CDATA[Daiklave]]></templateId>
             <printedStats><![CDATA[Close]]></printedStats>
           </item>
+          <item>
+            <templateId><![CDATA[Dragon-King Toy]]></templateId>
+            <templateId><![CDATA[Dragon-King Toy]]></templateId>
+            <printedStats><![CDATA[Close]]></printedStats>
+          </item>
+          <item>
+            <templateId><![CDATA[Armor of the Unseen Assassin]]></templateId>
+            <templateId><![CDATA[Armor of the Unseen Assassin]]></templateId>
+            <printedStats><![CDATA[Armour]]></printedStats>
+          </item>
         </Content>
       </Model>
       <Model templateId="Specialties">
         <Content/>
       </Model>
       <Model templateId="Craft">
+        <Content/>
+      </Model>
+      <Model templateId="Linguistics">
         <Content/>
       </Model>
       <Model templateId="Intimacies">
