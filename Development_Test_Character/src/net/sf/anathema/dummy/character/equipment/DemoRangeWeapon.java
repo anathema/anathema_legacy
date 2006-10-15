@@ -88,4 +88,8 @@ public class DemoRangeWeapon implements IWeaponStats {
   public IIdentificate getName() {
     return name;
   }
+  
+  public boolean isRangedCombat() {
+    return true;
+  }
 }

@@ -99,4 +99,8 @@ public class DemoMeleeWeapon implements IWeaponStats {
   public IIdentificate getName() {
     return name;
   }
+  
+  public boolean isRangedCombat() {
+    return false;
+  }
 }

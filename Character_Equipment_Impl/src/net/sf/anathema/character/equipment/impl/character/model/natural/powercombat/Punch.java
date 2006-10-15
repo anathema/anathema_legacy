@@ -1,14 +1,13 @@
 package net.sf.anathema.character.equipment.impl.character.model.natural.powercombat;
 
-import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
-import net.sf.anathema.character.generic.health.HealthType;
+import net.sf.anathema.character.equipment.impl.character.model.natural.AbstractNaturalWeaponStats;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-public class Punch implements IWeaponStats {
+public class Punch extends AbstractNaturalWeaponStats {
 
   public int getAccuracy() {
     return 1;
@@ -18,16 +17,8 @@ public class Punch implements IWeaponStats {
     return 0;
   }
 
-  public HealthType getDamageType() {
-    return HealthType.Bashing;
-  }
-
   public Integer getDefence() {
     return 2;
-  }
-
-  public Integer getRange() {
-    return null;
   }
 
   public Integer getRate() {

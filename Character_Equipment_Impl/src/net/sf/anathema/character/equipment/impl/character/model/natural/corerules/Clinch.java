@@ -1,14 +1,13 @@
 package net.sf.anathema.character.equipment.impl.character.model.natural.corerules;
 
-import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
-import net.sf.anathema.character.generic.health.HealthType;
+import net.sf.anathema.character.equipment.impl.character.model.natural.AbstractNaturalWeaponStats;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-public class Clinch implements IWeaponStats {
+public class Clinch extends AbstractNaturalWeaponStats {
 
   public int getAccuracy() {
     return 0;
@@ -18,19 +17,7 @@ public class Clinch implements IWeaponStats {
     return 2;
   }
 
-  public HealthType getDamageType() {
-    return HealthType.Bashing;
-  }
-
   public Integer getDefence() {
-    return null;
-  }
-
-  public Integer getRange() {
-    return null;
-  }
-
-  public Integer getRate() {
     return null;
   }
 

@@ -25,6 +25,7 @@ import net.sf.anathema.character.equipment.impl.creation.model.EquipmentStatisti
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentStatsCreationFactory;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
@@ -69,6 +70,16 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
   }
 
   private void createModel(IEquipmentStatisticsCreationModel model, IEquipmentStats stats) {
+    if (stats instanceof IWeaponStats) {
+      IWeaponStats weaponStats = (IWeaponStats) stats;
+      if (weaponStats.isRangedCombat()) {
+        
+      }
+      Integer range = weaponStats.getRange();
+      if (range == null) {
+        
+      }
+    }
     throw new NotYetImplementedException();
   }
 

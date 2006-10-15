@@ -10,22 +10,22 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-public class EquipmentCloneUtilities {
+public class EquipmentDEcorationUtilities {
 
-  public static IEquipmentStats getRenamedPrintClone(IEquipmentStats stats, String name) {
+  public static IEquipmentStats getRenamedPrintDecoration(IEquipmentStats stats, String name) {
     if (stats instanceof IWeaponStats) {
-      return getRenamedPrintClone((IWeaponStats) stats, name);
+      return getRenamedPrintDecoration((IWeaponStats) stats, name);
     }
     if (stats instanceof IArmourStats) {
-      return getRenamedPrintClone((IArmourStats) stats, name);
+      return getRenamedPrintDecoration((IArmourStats) stats, name);
     }
     if (stats instanceof IShieldStats) {
-      return getRenamedPrintClone((IShieldStats) stats, name);
+      return getRenamedPrintDecoration((IShieldStats) stats, name);
     }
     throw new UnreachableCodeReachedException("All subclasses covered. Something appears to be wrong."); //$NON-NLS-1$
   }
 
-  private static IWeaponStats getRenamedPrintClone(final IWeaponStats stats, final String name) {
+  private static IWeaponStats getRenamedPrintDecoration(final IWeaponStats stats, final String name) {
     return new IWeaponStats() {
       public int getAccuracy() {
         return stats.getAccuracy();
@@ -74,10 +74,14 @@ public class EquipmentCloneUtilities {
       public IIdentificate getName() {
         return new Identificate(name);
       }
+      
+      public boolean isRangedCombat() {
+        return stats.isRangedCombat();
+      }
     };
   }
 
-  private static IArmourStats getRenamedPrintClone(final IArmourStats stats, final String newName) {
+  private static IArmourStats getRenamedPrintDecoration(final IArmourStats stats, final String newName) {
     return new IArmourStats() {
       public Integer getFatigue() {
         return stats.getFatigue();
@@ -101,7 +105,7 @@ public class EquipmentCloneUtilities {
     };
   }
 
-  private static IShieldStats getRenamedPrintClone(final IShieldStats stats, final String name) {
+  private static IShieldStats getRenamedPrintDecoration(final IShieldStats stats, final String name) {
     return new IShieldStats() {
       public int getCloseCombatBonus() {
         return stats.getCloseCombatBonus();

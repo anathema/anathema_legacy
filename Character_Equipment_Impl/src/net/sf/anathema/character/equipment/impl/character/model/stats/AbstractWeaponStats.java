@@ -111,4 +111,8 @@ public abstract class AbstractWeaponStats extends AbstractStats implements IWeap
   public void addTag(IIdentificate tag) {
     tags.add(tag);
   }
+
+  public boolean isRangedCombat() {
+    return hasTag(WeaponTag.BowType) || hasTag(WeaponTag.FlameType) || hasTag(WeaponTag.Thrown);
+  }
 }

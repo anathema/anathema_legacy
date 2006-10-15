@@ -80,7 +80,7 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
             if (statsArray.length > 1) {
               itemName += " - " + stats.getName(); //$NON-NLS-1$
             }
-            printStats.add((K) EquipmentCloneUtilities.getRenamedPrintClone(stats, itemName));
+            printStats.add((K) EquipmentDEcorationUtilities.getRenamedPrintDecoration(stats, itemName));
           }
         }
       }
