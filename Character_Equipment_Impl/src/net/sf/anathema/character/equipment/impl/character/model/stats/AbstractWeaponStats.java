@@ -2,6 +2,8 @@ package net.sf.anathema.character.equipment.impl.character.model.stats;
 
 import java.util.List;
 
+import net.disy.commons.core.util.ArrayUtilities;
+import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.character.equipment.impl.creation.model.WeaponTag;
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
@@ -20,7 +22,7 @@ public abstract class AbstractWeaponStats extends AbstractStats implements IWeap
   private Integer rate;
   private int speed;
   private boolean inflictsNoDamage;
-  private final List<IIdentificate> tags;
+  private final List<String> tags;
 
   public AbstractWeaponStats(ICollectionFactory collectionFactory) {
     tags = collectionFactory.createList();
@@ -59,7 +61,12 @@ public abstract class AbstractWeaponStats extends AbstractStats implements IWeap
   }
 
   public IIdentificate[] getTags() {
-    return tags.toArray(new IIdentificate[tags.size()]);
+    String[] tagIds = tags.toArray(new String[tags.size()]);
+    return ArrayUtilities.transform(tagIds, WeaponTag.class, new ITransformer<String, WeaponTag>() {
+      public WeaponTag transform(String input) {
+        return WeaponTag.valueOf(input);
+      }
+    });
   }
 
   public ITraitType getTraitType() {
@@ -69,7 +76,7 @@ public abstract class AbstractWeaponStats extends AbstractStats implements IWeap
   protected abstract ITraitType getCombatTrait();
 
   protected final boolean hasTag(WeaponTag tag) {
-    return tags.contains(tag);
+    return tags.contains(tag.getId());
   }
 
   public boolean inflictsNoDamage() {
@@ -109,7 +116,7 @@ public abstract class AbstractWeaponStats extends AbstractStats implements IWeap
   }
 
   public void addTag(IIdentificate tag) {
-    tags.add(tag);
+    tags.add(tag.getId());
   }
 
   public boolean isRangedCombat() {
