@@ -21,6 +21,7 @@ import net.sf.anathema.initialization.InitializationException;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.db4o.ext.DatabaseFileLockedException;
+import com.lowagie.text.pdf.BaseFont;
 
 public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
 
@@ -53,11 +54,12 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
     CharacterReportingModuleObject moduleObject = moduleMap.getModuleObject(CharacterReportingModule.class);
     PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
     fillSecondEditionEncodingRegistry(resources, registry);
-    registry.setPossessionsEncoder(new PossessionsEncoder(registry.getBaseFont()));
   }
 
   private void fillSecondEditionEncodingRegistry(IResources resources, PdfEncodingRegistry registry) {
-    registry.setArmourContentEncoder(new SecondEditionArmourEncoder(resources, registry.getBaseFont()));
-    registry.setWeaponContentEncoder(new SecondEditionWeaponryEncoder(resources, registry.getBaseFont()));
+    BaseFont baseFont = registry.getBaseFont();
+    registry.setArmourContentEncoder(new SecondEditionArmourEncoder(resources, baseFont));
+    registry.setWeaponContentEncoder(new SecondEditionWeaponryEncoder(resources, baseFont));
+    registry.setPossessionsEncoder(new PossessionsEncoder(baseFont));
   }
 }
