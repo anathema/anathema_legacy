@@ -22,6 +22,7 @@ public class Clinch extends AbstractNaturalWeaponStats {
     return 0;
   }
 
+  @Override
   public Integer getRate() {
     return 1;
   }

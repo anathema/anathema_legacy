@@ -22,6 +22,7 @@ public class Punch extends AbstractNaturalWeaponStats {
     return 2;
   }
 
+  @Override
   public Integer getRate() {
     return 3;
   }
