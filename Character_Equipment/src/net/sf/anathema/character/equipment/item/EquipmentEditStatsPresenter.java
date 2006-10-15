@@ -67,6 +67,7 @@ public class EquipmentEditStatsPresenter implements IPresenter {
       }
     };
     final IActionAddableListView<IEquipmentStats> statsListView = view.initStatsListView(statsRenderer);
+    view.setStatsListHeader(resources.getString("Equipment.Creation.Stats")); //$NON-NLS-1$
     final IObjectSelectionView<IExaltedRuleSet> ruleSetView = initRuleSetPresentation(statsListView);
     model.getTemplateEditModel().addStatsChangeListener(new IChangeListener() {
       public void changeOccured() {
@@ -99,6 +100,7 @@ public class EquipmentEditStatsPresenter implements IPresenter {
     final IObjectSelectionView<IExaltedRuleSet> ruleSetView = view.initRuleSetSelectionView(
         resources.getString("Equipment.Creation.Ruleset") + ":", ruleSetRenderer); //$NON-NLS-1$ //$NON-NLS-2$
     ruleSetView.setObjects(model.getSupportedExaltedRuleSets());
+    //    AnathemaCharacterPreferences.getDefaultPreferences().get
     ruleSetView.addObjectSelectionChangedListener(new RuleSetSelectionListener(statsListView));
     return ruleSetView;
   }

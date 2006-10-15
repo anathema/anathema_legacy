@@ -27,13 +27,15 @@ import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 public class EquipmentDatabaseView implements IEquipmentDatabaseView {
 
   private JPanel contentPanel;
-  private JPanel editTemplateView = new JPanel(new GridDialogLayout(1, false));
-  private JPanel descriptionPanel = new JPanel(new GridDialogLayout(1, false));
-  private ListObjectSelectionView<String> templateListView = new ListObjectSelectionView<String>(String.class);
+  private final JPanel editTemplateView = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel descriptionPanel = new JPanel(new GridDialogLayout(1, false));
+  private final ListObjectSelectionView<String> templateListView = new ListObjectSelectionView<String>(String.class);
   private SingleSelectionActionAddableListView<IEquipmentStats> statsListView;
-  private JPanel ruleSetPanel = new JPanel(new GridDialogLayout(2, false));
-  private JPanel editTemplateButtonPanel = new JPanel(new GridDialogLayout(1, false));
-  private TitledPanel templateListPanel = new TitledPanel("", new JScrollPane(templateListView.getComponent())); //$NON-NLS-1$
+  private final JPanel ruleSetPanel = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel editTemplateButtonPanel = new JPanel(new GridDialogLayout(1, false));
+  private final TitledPanel templateListPanel = new TitledPanel("", new JScrollPane(templateListView.getComponent())); //$NON-NLS-1$
+  private final JPanel statsPanel = new JPanel(new GridDialogLayout(1, false));
+  private TitledPanel statsTitlePanel = new TitledPanel("", statsPanel);
 
   public JComponent getComponent() {
     if (contentPanel == null) {
@@ -43,7 +45,8 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
       contentPanel.add(editTemplateButtonPanel);
       contentPanel.add(editTemplateView, GridDialogLayoutData.FILL_BOTH);
       editTemplateView.add(descriptionPanel, GridDialogLayoutData.FILL_HORIZONTAL);
-      editTemplateView.add(createStatsPanel("Stats"), GridDialogLayoutData.FILL_BOTH);
+      fillStatsPanel();
+      editTemplateView.add(statsTitlePanel, GridDialogLayoutData.FILL_BOTH);
     }
     return contentPanel;
   }
@@ -54,11 +57,9 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
     return statsListView;
   }
 
-  private JPanel createStatsPanel(String panelTitle) {
-    JPanel statsPanel = new JPanel(new GridDialogLayout(1, false));
+  private void fillStatsPanel() {
     statsPanel.add(ruleSetPanel, GridDialogLayoutData.FILL_HORIZONTAL);
     statsPanel.add(new JScrollPane(statsListView.getComponent()), GridDialogLayoutData.FILL_BOTH);
-    return new TitledPanel(panelTitle, statsPanel);
   }
 
   public IObjectSelectionView<IExaltedRuleSet> initRuleSetSelectionView(String label, ListCellRenderer renderer) {
@@ -69,6 +70,10 @@ public class EquipmentDatabaseView implements IEquipmentDatabaseView {
 
   public void setTemplateListHeader(String headerText) {
     setTitleText(headerText, templateListPanel);
+  }
+
+  public void setStatsListHeader(String headerText) {
+    setTitleText(headerText, statsTitlePanel);
   }
 
   private void setTitleText(String headerText, TitledPanel panel) {

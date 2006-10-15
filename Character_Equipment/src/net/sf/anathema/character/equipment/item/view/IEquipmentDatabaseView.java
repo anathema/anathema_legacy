@@ -24,4 +24,6 @@ public interface IEquipmentDatabaseView extends IView {
   public void setTemplateListHeader(String headerText);
 
   public void addEditTemplateAction(Action action);
+
+  public void setStatsListHeader(String headerText);
 }
