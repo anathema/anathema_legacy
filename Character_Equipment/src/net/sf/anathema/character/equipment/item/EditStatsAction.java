@@ -48,7 +48,7 @@ public class EditStatsAction extends SmartAction {
       }
     });
     updateEnabled();
-    setToolTipText(resources.getString("Equipment.Creation.Stats.AddActionTooltip")); //$NON-NLS-1$
+    setToolTipText(resources.getString("Equipment.Creation.Stats.EditActionTooltip")); //$NON-NLS-1$
   }
 
   private void updateEnabled() {
