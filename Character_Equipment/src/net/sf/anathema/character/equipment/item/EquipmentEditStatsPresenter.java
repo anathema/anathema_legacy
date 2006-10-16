@@ -49,7 +49,7 @@ public class EquipmentEditStatsPresenter implements IPresenter {
 
   public void initPresentation() {
     final EquipmentStringBuilder equipmentStringBuilder = new EquipmentStringBuilder(resources);
-    ObjectUiListCellRenderer statsRenderer = new ObjectUiListCellRenderer(new EquipmentStatsUi()) {
+    ObjectUiListCellRenderer statsRenderer = new ObjectUiListCellRenderer(new EquipmentStatsUi(resources)) {
       @Override
       public Component getListCellRendererComponent(
           JList list,
