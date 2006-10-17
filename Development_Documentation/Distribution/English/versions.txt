@@ -39,6 +39,7 @@ Please contact us if you encounter any problems.
 * Corrected min. Bureaucracy value for "Underling Invisibility Practice" (Spotted by ever-vigilant Ricardo)
 * Corrected charm type for "Heart-Brightening Presentation Style" (Same here)
 * Added two spells from Savant & Sorcerer (...)
+* Corrected cost entry for "Durability of Oak Meditation" (Thanks to ipsi, for a change) 
 * Fixed a problem with Dragon-Blooded Style-Countering Meditation (MartialArts)
 * Fixed a problem with Heart's Blood (Name had to be null for the button to go green.)
 * Corrected enablement/disablement of background-addition button (Must not be empty for button to go green.)

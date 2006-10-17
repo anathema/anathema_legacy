@@ -286,7 +286,7 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="1" test="per 2B soak"/>
+        <essence cost="1" text="per 2B soak"/>
       </temporary>
     </cost>
     <duration amount="1" unit="scene"/>
