@@ -62,7 +62,7 @@ public class LinguisticsModel extends AbstractRemovableEntryModel<IIdentificate>
   }
 
   private void updateLanguagePointAllowance() {
-    languagePointsAllowed = context.getTraitCollection().getTrait(AbilityType.Linguistics).getCurrentValue();
+    languagePointsAllowed = context.getTraitCollection().getTrait(AbilityType.Linguistics).getCurrentValue() + 1;
     pointControl.fireChangedEvent();
   }
 
