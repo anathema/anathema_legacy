@@ -3,20 +3,23 @@
 
 	<!--Runs on Windows only.-->
 	<!--Requires the property "launch4j.dir" to point to the launch4j installation.-->
-	<!--Requires the property "inno.dir" to point to the Inno Setup installation.-->
+	<!--Requires the property "install4j.dir" to point to the install4j installation.-->
 	<import file="common_distribution_targets.xml" />
-
+	
 	<property file="directories.properties" />
 
 	<taskdef name="launch4j" classname="net.sf.launch4j.ant.Launch4jTask" classpath="${launch4j.dir}/launch4j.jar
-	    :${launch4j.dir}/xstream.jar" />
+	   :${launch4j.dir}/xstream.jar" />
+	
+	<taskdef name="install4j" classname="com.install4j.Install4JTask" classpath="${install4j.dir}\bin\ant.jar"/>
+
 
 	<target name="Distribute" depends="Build Plugins, Build Windows executable, Copy Text, Compile Installer" />
 
 	<target name="Compile Installer">
-		<exec executable="${inno.dir}\iscc.exe" dir="${inno.dir}">
-			<arg file="windows\innosetup\anathema.iss" />
-		</exec>
+		<property file="version.properties" />
+		<property name="versionString" value="${version.major}.${version.minor}.${version.revision}" />
+		<install4j projectfile="windows/install4j/Anathema.install4j" release="${versionString}" destination="${basedir}"/>
 	</target>
 
 	<target name="Build Windows executable">
