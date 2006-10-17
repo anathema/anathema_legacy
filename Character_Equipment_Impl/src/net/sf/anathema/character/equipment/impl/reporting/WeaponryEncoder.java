@@ -1,7 +1,7 @@
-package net.sf.anathema.character.equipment.impl.reporting.second;
+package net.sf.anathema.character.equipment.impl.reporting;
 
-import net.sf.anathema.character.equipment.impl.reporting.AbstractWeaponryTableEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.first.FirstEditionWeaponryTableEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.second.SecondEditionWeaponryTableEncoder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.rules.IEditionVisitor;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
@@ -13,12 +13,12 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class SecondEditionWeaponryEncoder implements IPdfContentBoxEncoder {
+public class WeaponryEncoder implements IPdfContentBoxEncoder {
 
   private final IResources resources;
   private final BaseFont baseFont;
 
-  public SecondEditionWeaponryEncoder(IResources resources, BaseFont baseFont) {
+  public WeaponryEncoder(IResources resources, BaseFont baseFont) {
     this.baseFont = baseFont;
     this.resources = resources;
   }

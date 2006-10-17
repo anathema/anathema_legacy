@@ -5,8 +5,8 @@ import java.io.FileOutputStream;
 import java.util.Locale;
 
 import net.sf.anathema.character.abyssal.caste.AbyssalCaste;
+import net.sf.anathema.character.equipment.impl.reporting.WeaponryEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.second.SecondEditionArmourEncoder;
-import net.sf.anathema.character.equipment.impl.reporting.second.SecondEditionWeaponryEncoder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
@@ -77,7 +77,7 @@ public class PdfCharacterSheetDemo {
   private static PdfEncodingRegistry createEncodingRegistry(IResources resources) {
     PdfEncodingRegistry encodingRegistry = new PdfEncodingRegistry();
     encodingRegistry.setArmourContentEncoder(new SecondEditionArmourEncoder(resources, encodingRegistry.getBaseFont()));
-    encodingRegistry.setWeaponContentEncoder(new SecondEditionWeaponryEncoder(resources, encodingRegistry.getBaseFont()));
+    encodingRegistry.setWeaponContentEncoder(new WeaponryEncoder(resources, encodingRegistry.getBaseFont()));
     encodingRegistry.setIntimaciesEncoder(new IntimaciesEncoder(encodingRegistry.getBaseFont()));
     return encodingRegistry;
   }
