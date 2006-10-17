@@ -38,7 +38,7 @@ public final class EquipmentDatabaseItemTypeConfiguration extends AbstractNonPer
         EquipmentDatabaseView view = new EquipmentDatabaseView();
         IEquipmentDatabaseManagement model = new EquipmentDatabaseManagement(database);
         new EquipmentDatabasePresenter(resources, model, view).initPresentation();
-        Icon icon = new EquipmentUI(resources).getIcon(EquipmentStatisticsType.CloseCombat);
+        Icon icon = new EquipmentUI(resources).getStandardIcon(EquipmentStatisticsType.CloseCombat);
         return new EquipmentDatabaseItemView(resources.getString("ItemType.EquipmentDatabase.PrintName"), icon, view); //$NON-NLS-1$
       }
     };
