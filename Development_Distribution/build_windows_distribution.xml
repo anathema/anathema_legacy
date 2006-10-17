@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <project name="Build Windows distribution" default="Distribute">
 
-	<!--Runs on Windows only.-->
+	<!--Target "Build Windows executable" runs on Windows only.-->
 	<!--Requires the property "launch4j.dir" to point to the launch4j installation.-->
 	<!--Requires the property "install4j.dir" to point to the install4j installation.-->
 	<import file="common_distribution_targets.xml" />
