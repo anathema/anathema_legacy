@@ -6,8 +6,6 @@ import javax.swing.plaf.metal.MetalLookAndFeel;
 
 import net.sf.anathema.framework.configuration.IAnathemaPreferences;
 
-import com.l2fprod.common.swing.plaf.LookAndFeelAddons;
-import com.l2fprod.common.swing.plaf.aqua.AquaLookAndFeelAddons;
 import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 
 public class LookAndFeelInitializer {
@@ -35,7 +33,7 @@ public class LookAndFeelInitializer {
       System.setProperty(AQUA_USE_SCREEN_MENU_BAR, "true"); //$NON-NLS-1$
       System.setProperty(AQUA_APPLICATION_NAME, "Anathema"); //$NON-NLS-1$
     }
-    LookAndFeelAddons.setAddon(AquaLookAndFeelAddons.class);
+    System.getProperties().put("swing.addon", "com.l2fprod.common.swing.plaf.aqua.AquaLookAndFeelAddons"); //$NON-NLS-1$//$NON-NLS-2$
     UIManager.setLookAndFeel(lookAndFeelClassName);
   }
 
