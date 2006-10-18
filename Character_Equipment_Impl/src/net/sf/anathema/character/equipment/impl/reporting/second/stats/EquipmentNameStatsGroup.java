@@ -40,6 +40,6 @@ public final class EquipmentNameStatsGroup<T extends IEquipmentStats> extends Ab
 
   @Override
   protected String getResourceBase() {
-    return EquipmentObjectPresenter.EQUIPMENT_NAME_PREFIX; //$NON-NLS-1$
+    return EquipmentObjectPresenter.EQUIPMENT_NAME_PREFIX;
   }
 }
