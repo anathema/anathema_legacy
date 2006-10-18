@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="4.0" transformSequenceNumber="1">
-  <directoryPresets config="./InstallerPDF.png" />
-  <application name="Anathema" distributionSourceDir="" applicationId="1767-2668-0185-7732" mediaDir="." mediaFilePattern="${compiler:sys.shortName}_v${compiler:sys.version}_${compiler:sys.platform}" compression="6" lzmaCompression="false" pack200Compression="true" keepModificationTimes="false" shortName="Anathema" publisher="" publisherWeb="http://anathema.sf.net" version="1.0" allPathsRelative="true" backupOnSave="false" autoSave="true" convertDotsToUnderscores="false" macSignature="????" javaMinVersion="1.5" javaMaxVersion="" allowBetaVM="true">
-    <languages skipLanguageSelection="true">
+  <directoryPresets config="../../build/anathema.jar" />
+  <application name="Anathema" distributionSourceDir="" applicationId="1767-2668-0185-7732" mediaDir="." mediaFilePattern="${compiler:sys.shortName}_v${compiler:sys.version}_${compiler:sys.platform}" compression="6" lzmaCompression="false" pack200Compression="true" keepModificationTimes="false" shortName="Anathema" publisher="" publisherWeb="http://anathema.sf.net" version="1.0.0" allPathsRelative="true" backupOnSave="false" autoSave="true" convertDotsToUnderscores="false" macSignature="????" javaMinVersion="1.5" javaMaxVersion="" allowBetaVM="true">
+    <languages skipLanguageSelection="false">
       <principalLanguage id="en" customLocalizationFile="F:/Anathema/trunk/Development_Distribution/Windows/install4j/Installer.properties" />
       <additionalLanguages>
         <language id="es" customLocalizationFile="F:/Anathema/trunk/Development_Distribution/Windows/install4j/Installer_es.properties" />
@@ -25,24 +25,20 @@
       <mountPoint id="25" root="" location="" mode="755" />
     </mountPoints>
     <entries>
-      <dirEntry mountPoint="32" file="C:/Documents and Settings/Urs/Desktop/Anathema/lib" overwrite="4" shared="false" mode="644" uninstallMode="0" excludeSuffixes="" dirMode="755">
+      <dirEntry mountPoint="32" file="../../build/libraries" overwrite="4" shared="false" mode="644" uninstallMode="0" excludeSuffixes="" dirMode="755">
         <exclude />
       </dirEntry>
-      <dirEntry mountPoint="33" file="C:/Documents and Settings/Urs/Desktop/Anathema/plugins" overwrite="4" shared="false" mode="644" uninstallMode="0" excludeSuffixes="" dirMode="755">
+      <dirEntry mountPoint="33" file="../../build/plugins" overwrite="4" shared="false" mode="644" uninstallMode="0" excludeSuffixes="" dirMode="755">
         <exclude />
       </dirEntry>
-      <dirEntry mountPoint="35" file="C:/Documents and Settings/Urs/Desktop/Anathema/doc/spanish" overwrite="4" shared="false" mode="644" uninstallMode="0" excludeSuffixes="" dirMode="755">
-        <exclude />
-      </dirEntry>
-      <fileEntry mountPoint="25" file="C:/Documents and Settings/Urs/Desktop/Anathema/anathema.exe" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="25" file="C:/Documents and Settings/Urs/Desktop/Anathema/anathema.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="25" file="C:/Documents and Settings/Urs/Desktop/Anathema/FAQ.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="25" file="C:/Documents and Settings/Urs/Desktop/Anathema/license.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="25" file="C:/Documents and Settings/Urs/Desktop/Anathema/readme.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="25" file="C:/Documents and Settings/Urs/Desktop/Anathema/versions.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="25" file="./InstallerCheck32.png" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="25" file="./InstallerCross32.png" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="25" file="./InstallerPDF.png" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="35" file="../../build/files/doc/spanish/FAQ_es.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="35" file="../../build/files/doc/spanish/readme_es.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="25" file="../../build/anathema.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="25" file="../../build/files/anathema.exe" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="25" file="../../build/files/FAQ.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="25" file="../../build/files/license.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="25" file="../../build/files/readme.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="25" file="../../build/files/versions.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
     </entries>
     <components>
       <component name="${i18n:Modules.Core.Name}" id="26" displayDescription="false" selected="true" mandatory="true" downloadable="false">
@@ -60,19 +56,11 @@
         </include>
         <dependencies />
       </component>
-      <component name="${i18n:Modules.NameGenerator.Name}" id="27" displayDescription="false" selected="true" mandatory="false" downloadable="false">
-        <description>${i18n:Modules.NameGenerator.Description}</description>
-        <include all="false">
-          <entry location="plugins/namegenerator.jar" launcher="false" />
-        </include>
-        <dependencies>
-          <component id="26" />
-        </dependencies>
-      </component>
       <component name="${i18n:Modules.CharacterManagement.Name}" id="28" displayDescription="false" selected="true" mandatory="false" downloadable="false">
         <description>${i18n:Modules.CharacterManagement.Description}</description>
         <include all="false">
           <entry location="plugins/character.jar" launcher="false" />
+          <entry location="plugins/namegenerator.jar" launcher="false" />
         </include>
         <dependencies>
           <component id="27" />
@@ -194,6 +182,20 @@
             <serializedBean>
               <java class="java.beans.XMLDecoder">
                 <object class="com.install4j.runtime.beans.actions.desktop.CreateProgramGroupAction">
+                  <void property="programGroupEntryConfigs">
+                    <void method="add">
+                      <object class="com.install4j.runtime.beans.screens.components.ProgramGroupEntryConfig">
+                        <void property="name">
+                          <string>Anathema</string>
+                        </void>
+                        <void property="target">
+                          <object class="java.io.File">
+                            <string>anathema.exe</string>
+                          </object>
+                        </void>
+                      </object>
+                    </void>
+                  </void>
                   <void property="programGroupName">
                     <string>${compiler:sys.fullName}</string>
                   </void>
@@ -202,22 +204,55 @@
             </serializedBean>
             <condition />
           </action>
-          <action name="" id="115" beanClass="com.install4j.runtime.beans.actions.desktop.CreateStartMenuEntryAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+          <action name="" id="141" beanClass="com.install4j.runtime.beans.actions.files.CopyFileAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
-                <object class="com.install4j.runtime.beans.actions.desktop.CreateStartMenuEntryAction">
-                  <void property="entryName">
-                    <string>Anathema</string>
-                  </void>
-                  <void property="file">
+                <object class="com.install4j.runtime.beans.actions.files.CopyFileAction">
+                  <void property="destinationFile">
                     <object class="java.io.File">
-                      <string>anathema.exe</string>
+                      <string>readme.txt</string>
                     </object>
+                  </void>
+                  <void property="overwriteMode">
+                    <object class="com.install4j.api.context.OverwriteMode" field="ALWAYS" />
+                  </void>
+                  <void property="sourceFile">
+                    <object class="java.io.File">
+                      <string>doc/spanish/readme_es.txt</string>
+                    </object>
+                  </void>
+                  <void property="uninstallMode">
+                    <object class="com.install4j.api.context.UninstallMode" field="ALWAYS" />
                   </void>
                 </object>
               </java>
             </serializedBean>
-            <condition />
+            <condition>context.getLanguageId().equals("es")</condition>
+          </action>
+          <action name="" id="143" beanClass="com.install4j.runtime.beans.actions.files.CopyFileAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.files.CopyFileAction">
+                  <void property="destinationFile">
+                    <object class="java.io.File">
+                      <string>FAQ.txt</string>
+                    </object>
+                  </void>
+                  <void property="overwriteMode">
+                    <object class="com.install4j.api.context.OverwriteMode" field="ALWAYS" />
+                  </void>
+                  <void property="sourceFile">
+                    <object class="java.io.File">
+                      <string>doc/spanish/FAQ_es.txt</string>
+                    </object>
+                  </void>
+                  <void property="uninstallMode">
+                    <object class="com.install4j.api.context.UninstallMode" field="ALWAYS" />
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition>context.getLanguageId().equals("es")</condition>
           </action>
         </actions>
         <formComponents />
@@ -341,13 +376,15 @@
     </uninstallerStartup>
   </installerGui>
   <mediaSets>
-    <win32 name="Windows" id="17" mediaFileName="" installDir="Anathema" overridePrincipalLanguage="false" requires64bit="false" runPostProcessor="false" postProcessor="" includedJRE="" manualJREEntry="false" bundleType="1" jreURL="" jreFtpURL="" jreShared="false" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="" runAsAdmin="false">
+    <win32 name="Windows" id="17" mediaFileName="" installDir="Anathema" overridePrincipalLanguage="false" requires64bit="false" runPostProcessor="false" postProcessor="" includedJRE="" manualJREEntry="false" bundleType="1" jreURL="http://www.java.com/en/download/windows_xpi.jsp" jreFtpURL="" jreShared="false" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="" runAsAdmin="false">
       <excludedLaunchers />
       <excludedComponents />
       <overriddenPrincipalLanguage id="en" customLocalizationFile="" />
       <exclude />
       <variables />
-      <excludedInstallerScreens />
+      <excludedInstallerScreens>
+        <screen refId="133" />
+      </excludedInstallerScreens>
       <excludedUninstallerScreens />
     </win32>
   </mediaSets>
