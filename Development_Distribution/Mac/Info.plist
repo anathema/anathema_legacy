@@ -4,11 +4,11 @@
 <dict>
 	<!-- Change these with each version -->
 	<key>CFBundleVersion</key>
-	<string>0.10.1</string>
+	<string>1.0-rc2</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.10.1</string>
+	<string>1.0-rc2</string>
 	<key>CFBundleGetInfoString</key>
-	<string>0.10 Patch 1</string>
+	<string>1.0-rc2</string>
 	<!-- Should never need changing -->	
 	<key>CFBundleName</key>
 	<string>Anathema</string>
@@ -25,17 +25,20 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleIconFile</key>
-	<string>anathema.icns</string>
+	<string>sungear.icns</string>
 	<key>Java</key>
 	<dict>
 		<key>MainClass</key>
-		<string>net.sf.anathema.Anathema</string>
+		<string>net.sf.anathema.AnathemaBootLoader</string>
+		<key>WorkingDirectory</key>
+		<string>$APP_PACKAGE/Contents/Resources/Java</string>
 		<key>JVMVersion</key>
-		<string>1.4+</string>
+		<string>1.5+</string>
 		<!-- May need to update this if any jars get added to the project. -->
 		<key>ClassPath</key>
 			<array>
 			<string>$JAVAROOT/anathema.jar</string>
+			<string>$JAVAROOT/lib/basicplayer2.3.jar</string>
 			<string>$JAVAROOT/lib/batik-awt-util.jar</string>
 			<string>$JAVAROOT/lib/batik-bridge.jar</string>
 			<string>$JAVAROOT/lib/batik-css.jar</string>
@@ -50,29 +53,31 @@
 			<string>$JAVAROOT/lib/batik-util.jar</string>
 			<string>$JAVAROOT/lib/batik-xml.jar</string>
 			<string>$JAVAROOT/lib/commons-io.jar</string>
-			<string>$JAVAROOT/lib/commons-lang-2.1.jar</string>
-			<string>$JAVAROOT/lib/commons-logging-api-1.0.2.jar</string>
 			<string>$JAVAROOT/lib/commons-logging-api.jar</string>
+			<string>$JAVAROOT/lib/db4o-5.5-java5.jar</string>
 			<string>$JAVAROOT/lib/disy-commons-core.jar</string>
 			<string>$JAVAROOT/lib/disy-commons-swing-dialog.jar</string>
 			<string>$JAVAROOT/lib/disy-commons-swing-layout.jar</string>
-			<string>$JAVAROOT/lib/disy-commons-swing-smarttable.jar</string>
 			<string>$JAVAROOT/lib/disy-commons-swing.jar</string>
 			<string>$JAVAROOT/lib/dom4j-1.5.jar</string>
-			<string>$JAVAROOT/lib/itext-1.01.jar</string>
-			<string>$JAVAROOT/lib/itp-gpl-1.3.0.jar</string>
+			<string>$JAVAROOT/lib/idw-gpl-1.4.0.jar</string>
+			<string>$JAVAROOT/lib/itext-1.4.jar</string>
 			<string>$JAVAROOT/lib/jasperreports-0.6.2.jar</string>
+			<string>$JAVAROOT/lib/javalayer.jar</string>
+			<string>$JAVAROOT/lib/jpf-boot.jar</string>
+			<string>$JAVAROOT/lib/jpf.jar</string>
 			<string>$JAVAROOT/lib/l2fprod-common-directorychooser.jar</string>
-			<string>$JAVAROOT/lib/l2fprod-common-sheet.jar</string>
 			<string>$JAVAROOT/lib/l2fprod-common-tasks.jar</string>
-			<string>$JAVAROOT/lib/xalan.jar</string>
-			<string>$JAVAROOT/lib/xercesImpl-2.6.2.jar</string>
-			<string>$JAVAROOT/lib/xml-apis-2.0.2.jar</string>
+			<string>$JAVAROOT/lib/mp3spi1.9.2.jar</string>
+			<string>$JAVAROOT/lib/tritonus_share.jar</string>
+			<string>$JAVAROOT/lib/xml-apis-dom3.jar</string>
 			</array>
 		<key>Properties</key>
 		<dict>
 			<key>apple.laf.useScreenMenuBar</key>
 			<string>true</string>
+			<key>defaultrepository</key>
+			<string>%USER_HOME%/Library/Application Support/Anathema</string>
 		</dict>
 	</dict>
 </dict>

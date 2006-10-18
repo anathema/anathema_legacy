@@ -1,7 +1,7 @@
 <project name="BuildMac" default="dist-mac" basedir=".">
 	<description>Assemble a distribution directory of Anathema into a double-clickable Mac OS X application.</description>
 
-	<property name="dist-loc" value="/Download/anathema_user_v0.10.1"/>
+	<property name="dist-loc" value="/Users/lward/Downloads/anathema_v1.0"/>
 	<property name="mac-src" value="."/>
 	<property name="app-name" value="Anathema"/>
 
@@ -27,7 +27,7 @@
 				
 		<!-- Copy files and directories where we need them -->
 		<copy file="${mac-src}/Info.plist" todir="${appdir}/Contents"/>
-		<copy file="${mac-src}/anathema.icns" todir="${appdir}/Contents/Resources"/>
+		<copy file="${mac-src}/sungear.icns" todir="${appdir}/Contents/Resources"/>
 		<copy todir="${appdir}/Contents/Resources/Java">
 		    <fileset dir="${dist-loc}">
 		        <include name="*.jar"/>
@@ -39,14 +39,14 @@
 		<copy todir="${appdir}/Contents/Resources/Java/lib">
 	    	<fileset dir="${dist-loc}/lib"/>
 	  	</copy>
-		<copy todir="${appdir}/Contents/Resources/Java/data">
-	    	<fileset dir="${dist-loc}/data"/>
-	  	</copy>
+		<!-- <copy todir="${appdir}/Contents/Resources/Java/data">
+	    	<fileset dir="${dist-loc}/data"/> 
+	  	</copy>-->
 		<copy todir="${appdir}/Contents/Resources/Java/doc">
 	    	<fileset dir="${dist-loc}/doc"/>
 	  	</copy>
-		<copy todir="${appdir}/Contents/Resources/Java/modules">
-	    	<fileset dir="${dist-loc}/modules"/>
+		<copy todir="${appdir}/Contents/Resources/Java/plugins">
+	    	<fileset dir="${dist-loc}/plugins"/>
 	  	</copy>
 	
 		<!-- The Mac command to "bless" the directory into an app bundle. Will fail on other platforms. -->
