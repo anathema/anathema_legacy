@@ -1,7 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character.model.natural.corerules;
 
 import net.sf.anathema.character.equipment.impl.character.model.natural.AbstractNaturalWeaponStats;
-import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
@@ -21,6 +20,7 @@ public class Punch extends AbstractNaturalWeaponStats {
   public Integer getDefence() {
     return 0;
   }
+
   public int getSpeed() {
     return 0;
   }
