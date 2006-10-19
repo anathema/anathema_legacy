@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="4.0" transformSequenceNumber="1">
-  <directoryPresets config="../../build/anathema.jar" />
-  <application name="Anathema" distributionSourceDir="" applicationId="1767-2668-0185-7732" mediaDir="." mediaFilePattern="${compiler:sys.shortName}_v${compiler:sys.version}_${compiler:sys.platform}" compression="6" lzmaCompression="false" pack200Compression="true" keepModificationTimes="false" shortName="Anathema" publisher="" publisherWeb="http://anathema.sf.net" version="1.0.0" allPathsRelative="true" backupOnSave="false" autoSave="true" convertDotsToUnderscores="false" macSignature="????" javaMinVersion="1.5" javaMaxVersion="" allowBetaVM="true">
+  <directoryPresets config="../../build/anathema.exe" />
+  <application name="Anathema" distributionSourceDir="" applicationId="1767-2668-0185-7732" mediaDir="." mediaFilePattern="${compiler:sys.shortName}_v${compiler:sys.version}_${compiler:sys.platform}" compression="6" lzmaCompression="false" pack200Compression="true" keepModificationTimes="false" shortName="Anathema" publisher="" publisherWeb="http://anathema.sf.net" version="1.0" allPathsRelative="true" backupOnSave="false" autoSave="true" convertDotsToUnderscores="false" macSignature="????" javaMinVersion="1.5" javaMaxVersion="" allowBetaVM="true">
     <languages skipLanguageSelection="false">
       <principalLanguage id="en" customLocalizationFile="F:/Anathema/trunk/Development_Distribution/Windows/install4j/Installer.properties" />
       <additionalLanguages>
@@ -34,7 +34,7 @@
       <fileEntry mountPoint="35" file="../../build/files/doc/spanish/FAQ_es.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="35" file="../../build/files/doc/spanish/readme_es.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="25" file="../../build/anathema.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="25" file="../../build/files/anathema.exe" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="25" file="../../build/anathema.exe" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="25" file="../../build/files/FAQ.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="25" file="../../build/files/license.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="25" file="../../build/files/readme.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />

@@ -14,12 +14,12 @@
 	<taskdef name="install4j" classname="com.install4j.Install4JTask" classpath="${install4j.dir}\bin\ant.jar"/>
 
 
-	<target name="Distribute" depends="Build Plugins, Build Windows executable, Copy Text, Compile Installer" />
+	<target name="Distribute" depends="Build Bootloader, Build Plugins, Build Windows executable, Copy Text, Compile Installer" />
 
 	<target name="Compile Installer">
 		<property file="version.properties" />
-		<property name="versionString" value="${version.major}.${version.minor}.${version.revision}" />
-		<install4j projectfile="windows/install4j/Anathema.install4j" release="${versionString}" destination="${basedir}"/>
+		<property name="releaseVersion" value="${version.major}.${version.minor}" />
+		<install4j projectfile="windows/install4j/Anathema.install4j" release="${releaseVersion}" destination="${basedir}"/>
 	</target>
 
 	<target name="Build Windows executable">
