@@ -32,6 +32,7 @@ Please contact us if you encounter any problems.
 -- Miscellaneous --
 + New website
 + Some tinkering with linux shell script & Mac OS launcher
++ Supports Mac "Command" key in menu hotkeys
 
 -- Bugs Fixed --
 * Corrected charm prerequisites for 
