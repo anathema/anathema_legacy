@@ -44,15 +44,14 @@
       <component name="${i18n:Modules.Core.Name}" id="26" displayDescription="false" selected="true" mandatory="true" downloadable="false">
         <description>${i18n:Modules.Core.Description}</description>
         <include all="false">
-          <entry location="anathema.exe" launcher="false" />
+          <entry location="lib" launcher="false" />
+          <entry location="plugins/core.jar" launcher="false" />
           <entry location="anathema.jar" launcher="false" />
+          <entry location="anathema.exe" launcher="false" />
           <entry location="FAQ.txt" launcher="false" />
           <entry location="license.txt" launcher="false" />
           <entry location="readme.txt" launcher="false" />
           <entry location="versions.txt" launcher="false" />
-          <entry location="lib" launcher="false" />
-          <entry location="plugins/core.jar" launcher="false" />
-          <entry location="doc" launcher="false" />
         </include>
         <dependencies />
       </component>
@@ -95,7 +94,9 @@
       </component>
     </components>
   </files>
-  <launchers />
+  <launchers>
+    <launcher name="Anathema" id="364" external="true" excludeFromMenu="false" menuName="" externalFile="anathema.exe" />
+  </launchers>
   <installerGui installerType="1" suggestPreviousProgramGroup="true" addOnAppId="" suggestPreviousLocations="true" allowUnattended="false" allowConsole="false" useCustomInstallerHeaderImage="true" customInstallerHeaderImage="./Anathema_Install_small.png" useCustomUninstallerHeaderImage="true" customUninstallerHeaderImage="./Anathema_Install_small.png" customSize="false" customWidth="500" customHeight="390" useCustomIcon="true" customIcnsFile="" customPngIcon16File="F:/Anathema/trunk/Development_Distribution/Windows/install4j/Anathema_Install_Icon_48.png" customPngIcon32File="F:/Anathema/trunk/Development_Distribution/Windows/install4j/Anathema_Install_Icon_48.png" customIcoFile="F:/Anathema/trunk/Development_Distribution/Windows/install4j/sungearInstall.ico" vmParameters="" watermark="false" resizable="false">
     <customCode useInstalledFiles="false" />
     <installerScreens>
@@ -182,20 +183,6 @@
             <serializedBean>
               <java class="java.beans.XMLDecoder">
                 <object class="com.install4j.runtime.beans.actions.desktop.CreateProgramGroupAction">
-                  <void property="programGroupEntryConfigs">
-                    <void method="add">
-                      <object class="com.install4j.runtime.beans.screens.components.ProgramGroupEntryConfig">
-                        <void property="name">
-                          <string>Anathema</string>
-                        </void>
-                        <void property="target">
-                          <object class="java.io.File">
-                            <string>anathema.exe</string>
-                          </object>
-                        </void>
-                      </object>
-                    </void>
-                  </void>
                   <void property="programGroupName">
                     <string>${compiler:sys.fullName}</string>
                   </void>
