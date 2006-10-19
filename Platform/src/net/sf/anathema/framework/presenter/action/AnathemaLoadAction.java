@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.presenter.action;
 
-import java.awt.Event;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 
 import javax.swing.Action;
@@ -31,7 +31,7 @@ public class AnathemaLoadAction extends AbstractAnathemaItemAction {
 
   public AnathemaLoadAction(IAnathemaModel model, IResources resources) {
     super(model, resources, new LoadItemCreator(model));
-    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_L, Event.CTRL_MASK));
+    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_L, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
     adjustEnabled();
     model.getItemManagement().addListener(new ItemManagementModelAdapter() {
       @Override

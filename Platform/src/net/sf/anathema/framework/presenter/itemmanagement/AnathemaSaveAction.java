@@ -2,7 +2,7 @@ package net.sf.anathema.framework.presenter.itemmanagement;
 
 import java.awt.Component;
 import java.awt.Cursor;
-import java.awt.Event;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -67,7 +67,7 @@ public class AnathemaSaveAction extends SmartAction {
 
   private AnathemaSaveAction(IAnathemaModel model, IResources resources) {
     SaveEnabledListener listener = new SaveEnabledListener(model.getPersisterRegistry(), this);
-    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_S, Event.CTRL_MASK));
+    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_S, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
     model.getItemManagement().addListener(listener);
     listener.itemSelected(model.getItemManagement().getSelectedItem());
     this.model = model;

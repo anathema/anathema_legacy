@@ -3,6 +3,7 @@ package net.sf.anathema.framework.presenter.itemmanagement;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Event;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 
@@ -82,7 +83,8 @@ public class AnathemaSaveAllAction extends SmartAction {
         model.getItemManagement(),
         model.getPersisterRegistry(),
         this);
-    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_S, Event.SHIFT_MASK | Event.CTRL_MASK));
+    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_S, Event.SHIFT_MASK
+        | Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
     model.getItemManagement().addListener(listener);
     listener.itemAdded(null);
     this.model = model;

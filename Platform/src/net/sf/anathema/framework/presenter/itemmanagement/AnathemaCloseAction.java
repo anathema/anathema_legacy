@@ -2,7 +2,7 @@ package net.sf.anathema.framework.presenter.itemmanagement;
 
 import java.awt.Component;
 import java.awt.Cursor;
-import java.awt.Event;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 
 import javax.swing.Action;
@@ -24,7 +24,7 @@ public class AnathemaCloseAction extends SmartAction {
   }
 
   private AnathemaCloseAction(IItemMangementModel management) {
-    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_W, Event.CTRL_MASK));
+    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_W, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
     this.management = management;
     management.addListener(new SelectedItemActionEnabler(this, management.getSelectedItem()));
   }

@@ -1,7 +1,7 @@
 package net.sf.anathema.framework.reporting.controller;
 
 import java.awt.Component;
-import java.awt.Event;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -79,7 +79,7 @@ public class AnathemaPrintAction extends SmartAction {
   }
 
   private AnathemaPrintAction(final IAnathemaModel anathemaModel, IResources resources) {
-    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_P, Event.CTRL_MASK));
+    setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_P, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
     this.anathemaModel = anathemaModel;
     this.resources = resources;
     PrintEnabledListener listener = new PrintEnabledListener(anathemaModel.getReportRegistry(), this);
@@ -171,7 +171,9 @@ public class AnathemaPrintAction extends SmartAction {
   }
 
   private IReport selectReport(Component parentComponent, IReport[] reports) {
-    IObjectSelectionProperties properties = new DefaultObjectSelectionProperties(resources, "Anathema.Reporting.PrintSelection.Message", "Anathema.Reporting.PrintSelection.Title"); //$NON-NLS-1$ //$NON-NLS-2$
+    IObjectSelectionProperties properties = new DefaultObjectSelectionProperties(
+        resources,
+        "Anathema.Reporting.PrintSelection.Message", "Anathema.Reporting.PrintSelection.Title"); //$NON-NLS-1$ //$NON-NLS-2$
     ObjectSelectionDialogPage dialogPage = new ObjectSelectionDialogPage(reports, properties);
     UserDialog userDialog = new UserDialog(parentComponent, dialogPage);
     userDialog.show();

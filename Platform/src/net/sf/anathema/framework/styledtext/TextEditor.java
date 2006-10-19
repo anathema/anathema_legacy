@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Event;
 import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -52,12 +53,13 @@ public class TextEditor implements IStyledTextView, IView {
         KeyStroke.getKeyStroke(KeyEvent.VK_BACK_SPACE, Event.SHIFT_MASK),
         DefaultEditorKit.deletePrevCharAction);
 
+    int keyMask = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
     // styles
-    inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_B, Event.CTRL_MASK), "font-bold"); //$NON-NLS-1$
-    inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_F, Event.CTRL_MASK), "font-bold"); //$NON-NLS-1$
-    inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_I, Event.CTRL_MASK), "font-italic"); //$NON-NLS-1$
-    inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_K, Event.CTRL_MASK), "font-italic"); //$NON-NLS-1$
-    inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_U, Event.CTRL_MASK), "font-underline"); //$NON-NLS-1$
+    inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_B, keyMask), "font-bold"); //$NON-NLS-1$
+    inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_F, keyMask), "font-bold"); //$NON-NLS-1$
+    inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_I, keyMask), "font-italic"); //$NON-NLS-1$
+    inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_K, keyMask), "font-italic"); //$NON-NLS-1$
+    inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_U, keyMask), "font-underline"); //$NON-NLS-1$
     // selection
     inputMap.put(createSelectKeyStroke(KeyEvent.VK_BEGIN), DefaultEditorKit.selectionBeginAction);
     inputMap.put(createSelectKeyStroke(KeyEvent.VK_DOWN), DefaultEditorKit.selectionDownAction);
