@@ -115,7 +115,7 @@ public class AttributeCostCalculatorTest extends BasicCharacterTestCase {
       ITraitTemplate traitTemplate = templateCollection.getTraitTemplate(traitType);
       IValueChangeChecker checker = new AdditionRulesTraitValueChangeChecker(
           traitType,
-          limitationContext.getTraitCollection(),
+          limitationContext,
           additionalRules.getAdditionalTraitRules());
       coreTraits.addTestTrait(new DefaultTrait(
           new FavorableTraitRules(traitType, traitTemplate, limitationContext),

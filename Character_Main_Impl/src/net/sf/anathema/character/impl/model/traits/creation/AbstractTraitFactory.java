@@ -18,10 +18,7 @@ public abstract class AbstractTraitFactory {
   protected final IValueChangeChecker createValueIncrementChecker(ITraitType traitType) {
     //TODO: traitcontext.getLimitationContext().getTraitCollection is null when this method is called.
     //Statistics.getTraitConfiguration is not yet initialized.
-    return new AdditionRulesTraitValueChangeChecker(
-        traitType,
-        traitContext.getLimitationContext().getTraitCollection(),
-        additionalRules);
+    return new AdditionRulesTraitValueChangeChecker(traitType, traitContext.getLimitationContext(), additionalRules);
   }
 
   protected final IAdditionalTraitRules getAdditionalRules() {
