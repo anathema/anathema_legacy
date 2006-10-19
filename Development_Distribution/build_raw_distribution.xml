@@ -10,7 +10,7 @@
 	<taskdef name="launch4j" classname="net.sf.launch4j.ant.Launch4jTask" classpath="${launch4j.dir}/launch4j.jar
 	    :${launch4j.dir}/xstream.jar" />
 	
-	<target name="Distribute" depends="Build Bootloader, Build Plugins, Copy Text, Build Windows executable, Copy Extras, Build ZIP" />
+	<target name="Distribute" depends="Build Bootloader, Build Plugins, Copy Text, Copy Extras, Build ZIP" />
 
 	<target name="Build ZIP">
 		<zip destfile="anathema_v${version.major}.${version.minor}.zip">
@@ -24,13 +24,4 @@
 	<target name="Copy Extras">
 		<copy todir="${files.dir}" file="linux/anathema.sh" />
 	</target>
-	
-	<!--this can be removed once windows gets its own build-->
-	<target name="Build Windows executable">
-			<property file="version.properties" />
-			<property name="versionString" value="${version.major}.${version.minor}.${version.revision}.0" />
-			<launch4j configFile="windows/launch4j.xml" outfile="${files.dir}/anathema.exe" fileVersion="${versionString}" productVersion="${versionString}" txtFileVersion="${version.text}" txtProductVersion="${version.text}" />
-		</target>
-	
-
 </project>
