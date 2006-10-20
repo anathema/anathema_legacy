@@ -14,6 +14,7 @@ public class ArmourStatsticsModel extends EquipmentStatisticsModel implements IA
   private final IIntValueModel fatigue = new RangedIntValueModel(new Range(0, Integer.MAX_VALUE), 0);
   private final IIntValueModel lethalHardness = new RangedIntValueModel(new Range(0, Integer.MAX_VALUE), 0);
   private final IIntValueModel lethalSoak = new RangedIntValueModel(new Range(0, Integer.MAX_VALUE), 0);
+  private final IIntValueModel aggravatedSoak = new RangedIntValueModel(new Range(0, Integer.MAX_VALUE), 0);
   private final IIntValueModel mobilityPenalty = new RangedIntValueModel(new Range(Integer.MIN_VALUE, 0), 0);
 
   public IIntValueModel getBashingHardnessModel() {
@@ -62,7 +63,7 @@ public class ArmourStatsticsModel extends EquipmentStatisticsModel implements IA
     final IIntValueModel[] model = new IIntValueModel[1];
     healthType.accept(new IHealthTypeVisitor() {
       public void visitAggravated(HealthType aggrevated) {
-        model[0] = getLethalSoakModel();
+        model[0] = getAggravatedSoakModel();
       }
 
       public void visitBashing(HealthType bashing) {
@@ -74,5 +75,9 @@ public class ArmourStatsticsModel extends EquipmentStatisticsModel implements IA
       }
     });
     return model[0];
+  }
+
+  public IIntValueModel getAggravatedSoakModel() {
+    return aggravatedSoak;
   }
 }

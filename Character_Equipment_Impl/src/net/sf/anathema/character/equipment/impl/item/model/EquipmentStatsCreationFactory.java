@@ -98,6 +98,7 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
       armourModel.getBashingSoakModel().setValue(armourStats.getSoak(HealthType.Bashing));
       armourModel.getLethalHardnessModel().setValue(armourStats.getHardness(HealthType.Lethal));
       armourModel.getLethalSoakModel().setValue(armourStats.getSoak(HealthType.Lethal));
+      armourModel.getAggravatedSoakModel().setValue(armourStats.getSoak(HealthType.Aggravated));
       armourModel.getFatigueModel().setValue(armourStats.getFatigue());
       armourModel.getMobilityPenaltyModel().setValue(armourStats.getMobilityPenalty());
     }
