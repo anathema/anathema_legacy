@@ -51,4 +51,12 @@ public class ArmourStatisticsProperties extends AbstractEquipmentStatisticsPrope
   public String getDefaultName() {
     return getString("Equipment.Creation.Armour.DefaultName"); //$NON-NLS-1$
   }
+
+  public String getLinkSoakLabel() {
+    return getString("Equipment.Creation.Armour.LinkSoak"); //$NON-NLS-1$
+  }
+
+  public String getAggravatedSoakLabel() {
+    return getLabelString("Equipment.Stats.Long.AggravatedSoak"); //$NON-NLS-1$
+  }
 }

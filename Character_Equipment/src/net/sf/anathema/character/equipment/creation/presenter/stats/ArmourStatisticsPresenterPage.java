@@ -42,9 +42,9 @@ public class ArmourStatisticsPresenterPage extends
     final IconToggleButton linkToggleButton = new IconToggleButton(new CharacterUI(getResources()).getLinkIcon());
     final IIntValueModel aggravatedSoakModel = getPageModel().getSoakModel(HealthType.Aggravated);
     final JComponent aggravatedSoakSpinner = initIntegerSpinner(aggravatedSoakModel).getComponent();
-    addLabelledComponentRow(new String[] { "Aggravated Soak", "Link Lethal/Aggravated Soak" }, new Component[] {
-        aggravatedSoakSpinner,
-        linkToggleButton.getComponent() });
+    addLabelledComponentRow(
+        new String[] { getProperties().getAggravatedSoakLabel(), getProperties().getLinkSoakLabel() },
+        new Component[] { aggravatedSoakSpinner, linkToggleButton.getComponent() });
     linkToggleButton.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         boolean isLinkToggled = !linkToggleButton.isSelected();
