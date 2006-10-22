@@ -7,15 +7,15 @@ If you are already using Java, you can find out what version you are running by 
 \medskip
 \newline
 \small
-\texttt{java version "1.5.0\_04"
+\texttt{java version "1.5.0\_06"
 \newline
-Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0\_04-b05)
+Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0\_06-b05)
 \newline
-Java HotSpot(TM) Client VM (build 1.5.0\_04-b05, mixed mode, sharing)}
+Java HotSpot(TM) Client VM (build 1.5.0\_06-b05, mixed mode)}
 \medskip
 \newline
 \normalsize
-The version in this case, repeated in each line, is ``1.5.0\_04''. The relevant digit in our case is the second one: If it is 5 or greater, you're fine.
+The version in this case, repeated in each line, is ``1.5.0\_06''. The relevant digit in our case is the second one: If it is 5 or greater, you're fine.
 
 If it reads lower than 5 or if you do not yet have a copy of the Java Runtime Environment installed, point your web browser to the Java website\footnote{http://java.com/en/download/manual.jsp}, where you can always download the latest version for free.
 \medskip
@@ -36,62 +36,45 @@ Going from top to bottom, select the first version not labelled as a patch.
 
 Mission accomplished? Great.
 
-Know now that each package contains several flavours of Anathema:  \emph{User}, \emph{developer} and \emph{upgrade}.
+Know now that within each package are at least two flavours of Anathema: A \emph{raw} .zip archhive suitable for any operating system and a \emph{Mac OS X} .dmg file. These archive contain everything you need to run Anathema, that is the program itself and a flock of supportive files. 
 
-User archives contain everything you need to run Anathema, that is the program itself and a flock of supportive files. Developer archives have all that and additionally contain a snapshot of the sourcecode the version was built off.
-Upgrade archives are different. Read the appropriate section below for more details.
+Occasionally, there might be a third kind of archive, designated \emph{upgrade}. Don't worry about them now, we'll cover them in detail below.
 
-Assuming that you are a first time user, choose the the user package of the latest version, and your download will start. While it is running, you could read on to familiarize yourself with the steps ahead or maybe have a look at our web forums to learn about current proceedings.
+To continue, simply choose the most appropriate package for your operating system, and your download will start. While it is running, you could read on to familiarize yourself with the steps ahead or maybe have a look at our web site to learn about current proceedings.
 \medskip
-\newline
+
 Once the download is finished, you are ready to proceed with the installation.
 
 \subsection{Upgrades and Patches}
 If this is your first experience with Anathema, please continue your installation and come back here later to upgrade.
 
-Still there? Alright. So either we screwed up (->Patch) or there is cool new stuff to behold (->Upgrade). No matter what, your Anathema is outdated, and you want to change it. Here's how.
+Still there? Alright. So either we screwed up ($\rightarrow$ Patch) or there is cool new stuff to behold ($\rightarrow$ Upgrade). No matter what, your Anathema is outdated, and you want to change it. Here's how.
 
 If there is a more recent version than the one on your system, but we didn't provide an upgrade archive, you will need to go through the installation procedure again. You can safely install the new files over the old installation, just make sure everything is properly overwritten.
-If there is an upgrade, download it and extract the files into the old installation directory, overwriting existing files. \textit{Et voil\`a}, you are up to date again.
 
-Upgrade archives are functionally identical to the two larger archives of their version, but are intended for those who already have a running version of Anathema installed. Lacking the supporting files, they are meant as a way to update the previous version (which also might have been attained by means of upgrade) to the current one. They do not necessarily function with \emph{any} prior version. Not every package contains an upgrade.
+If there is an upgrade, download it and extract the files into the old installation directory, overwriting existing files. \emph{Et voil\`a}, you are up to date again.
 
-Finally, if the new release is a patch, do as you would with an upgrade. The only notable difference between patch releases and regulars is that patches do \emph{only} contain updates to existing code. Patch archives are not sufficient to run Anathema if it is not already installed. As with regular releases, however, patch files are classified as user and developer archives.
+Upgrade archives are functionally identical to the \emph{raw} version, but are intended for those who already have a running copy of Anathema installed. Lacking the supporting files, they are meant as a way to update the previous version (which also might have been attained by means of upgrade) to the current one. They do not necessarily function with \emph{any} prior version. Not every package contains an upgrade.
+
+Finally, if the new release is a patch, do as you would with an upgrade.As with upgrades, patch archives are not sufficient to run Anathema if it is not already installed and are clearly designated for use with a specific release.
 
 No matter which of the three options it is, your saved files as well as previously made setting stay intact.
 
 \section{Installation}
 This step is really simple. Just unzip all the files within to an empty directory, using your favorite archive manager. Make sure that all relative path names are kept, lest Anathema misses some files.
 
-Since there is no automated installation mechanism, you will have to make your way to the directory manually, there to launch Anathema. And while you're browsing, you might as well have a look at the newly created files.
-
-\subsection{Package Contents}\label{sub:PackageContents}
-If everything went according to plan, your previously empty directory is now
-filled with six files and some subfolders. 
-
-Four of the files are text files (.txt). There is an abbreviated version of this guide (readme.txt and FAQ.txt), a history of Anathema versions and the license Anathema is distributed under (if you \emph{really} care).
-
-The fifth file is an icon in .ico-Format, created by Xanatos for your perusal. 
-
-Last but not least, there is Anathema.jar, containing the main program.
-
-Of the folders, ``lib'' is by far the most important. It holds all third party libraries Anathema uses. ``doc'' holds parts of the documentations that were already translated to spanish. ``data'' is mostly empty, it only contains a short notice on how to create custom natures. We'll look at that later on, so for now you can just leave it alone. 
-
-Finally, if you chose to download the developer archive, there is a folder ``src'' containing the source code we developed.
-If it's there, you will know what you want to do with it, so there's no need to explain here.
+Unless you are using Mac OS X, there is no automated installation mechanism. You will have to make your way to the directory manually, there to launch Anathema. 
 \medskip
-\newline
+
 Let's continue the exploration by starting the program.
 
 \section{Launching Anathema }
 There are several ways of starting the program, depending on your operating system.
 
-On most systems you can launch Anathema by opening a console window, changing to the Anathema directory and typing \texttt{java --jar anathema.jar}, followed by a stroke of \textsc{Enter}. Windows users can opt to use \linebreak
-\texttt{javaw --jar anathema.jar} instead, but this will swallow any error reports that might come up during launch.
-Also, a freshly installed Java is configured to launch .jar files when they are double clicked in Windows. This is the most convenient option if you have not changed any settings. Similiar behaviour should be easily attained on most Linux GUIs.
+On most systems you can launch Anathema by opening a console window, changing to the Anathema directory and typing \texttt{java --jar anathema.jar}, followed by a stroke of \textsc{Enter}.
+Windows users may opt to use the executable file anathema.exe that comes with the archive or type \texttt{javaw --jar anathema.jar} instead, but this will swallow any error reports that might come up during launch. Also, a freshly installed Java is configured to launch .jar files when they are double clicked in Windows.
 
-Linux users should make sure that either read-- and write--access are granted on the Anathema directory or
-that a proper directory is specified at startup. See ``Command Line Options'' below for details.
+A shell script, anathema.sh, is provided for Linux systems. Linux users should make sure that either read-- and write--access are granted on the Anathema directory or that a proper directory is specified at startup. See ``Command Line Options'' below for details.
   
 \subsection{Command Line Options}
 To submit any optional command line parameter to the launcher, you can put \linebreak
