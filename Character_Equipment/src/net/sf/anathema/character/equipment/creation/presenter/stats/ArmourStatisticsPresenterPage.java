@@ -28,6 +28,11 @@ public class ArmourStatisticsPresenterPage extends
 
   @Override
   protected void addAdditionalContent() {
+    addLabelledComponentRow(
+        new String[] { getProperties().getMobilityPenaltyLabel(), getProperties().getFatigueLabel() },
+        new Component[] {
+            initIntegerSpinner(getPageModel().getMobilityPenaltyModel()).getComponent(),
+            initIntegerSpinner(getPageModel().getFatigueModel()).getComponent() });
     addLabelledComponentRow(new String[] {
         getProperties().getBashingSoakLabel(),
         getProperties().getBashingHardnessLabel() }, new Component[] {
@@ -55,9 +60,9 @@ public class ArmourStatisticsPresenterPage extends
         linkToggleButton.setSelected(isLinkToggled);
       }
     });
-
-    linkToggleButton.setSelected(true);
-    aggravatedSoakSpinner.setEnabled(false);
+    boolean linked = lethalSoakModel.getValue() == aggravatedSoakModel.getValue();
+    linkToggleButton.setSelected(linked);
+    aggravatedSoakSpinner.setEnabled(!linked);
     lethalSoakModel.addIntValueChangeListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
         if (linkToggleButton.isSelected()) {
@@ -65,11 +70,6 @@ public class ArmourStatisticsPresenterPage extends
         }
       }
     });
-    addLabelledComponentRow(
-        new String[] { getProperties().getMobilityPenaltyLabel(), getProperties().getFatigueLabel() },
-        new Component[] {
-            initIntegerSpinner(getPageModel().getMobilityPenaltyModel()).getComponent(),
-            initIntegerSpinner(getPageModel().getFatigueModel()).getComponent() });
   }
 
   @Override
