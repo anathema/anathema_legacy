@@ -5,7 +5,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.equipment.creation.model.stats.IArmourStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.presenter.stats.properties.ArmourStatisticsProperties;
@@ -28,11 +34,7 @@ public class ArmourStatisticsPresenterPage extends
 
   @Override
   protected void addAdditionalContent() {
-    addLabelledComponentRow(
-        new String[] { getProperties().getMobilityPenaltyLabel(), getProperties().getFatigueLabel() },
-        new Component[] {
-            initIntegerSpinner(getPageModel().getMobilityPenaltyModel()).getComponent(),
-            initIntegerSpinner(getPageModel().getFatigueModel()).getComponent() });
+
     addLabelledComponentRow(new String[] {
         getProperties().getBashingSoakLabel(),
         getProperties().getBashingHardnessLabel() }, new Component[] {
@@ -47,9 +49,25 @@ public class ArmourStatisticsPresenterPage extends
     final IconToggleButton linkToggleButton = new IconToggleButton(new CharacterUI(getResources()).getLinkIcon());
     final IIntValueModel aggravatedSoakModel = getPageModel().getSoakModel(HealthType.Aggravated);
     final JComponent aggravatedSoakSpinner = initIntegerSpinner(aggravatedSoakModel).getComponent();
+    getPageContent().addDialogComponent(new IDialogComponent() {
+      public void fillInto(JPanel panel, int columnCount) {
+        panel.add(new JLabel(getProperties().getAggravatedSoakLabel()));
+        panel.add(aggravatedSoakSpinner, GridDialogLayoutData.FILL_HORIZONTAL);
+        JPanel internalPanel = new JPanel(new GridDialogLayout(2, false));
+        internalPanel.add(linkToggleButton.getComponent());
+        internalPanel.add(new JLabel(getProperties().getLinkSoakLabel()));
+        panel.add(internalPanel, GridDialogLayoutDataUtilities.createHorizontalSpanData(columnCount - 2));
+      }
+
+      public int getColumnCount() {
+        return 4;
+      }
+    });
     addLabelledComponentRow(
-        new String[] { getProperties().getAggravatedSoakLabel(), getProperties().getLinkSoakLabel() },
-        new Component[] { aggravatedSoakSpinner, linkToggleButton.getComponent() });
+        new String[] { getProperties().getMobilityPenaltyLabel(), getProperties().getFatigueLabel() },
+        new Component[] {
+            initIntegerSpinner(getPageModel().getMobilityPenaltyModel()).getComponent(),
+            initIntegerSpinner(getPageModel().getFatigueModel()).getComponent() });
     linkToggleButton.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         boolean isLinkToggled = !linkToggleButton.isSelected();
