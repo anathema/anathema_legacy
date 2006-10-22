@@ -244,23 +244,126 @@
         </actions>
         <formComponents />
       </screen>
-      <screen name="Acrobat not installed" id="133" beanClass="com.install4j.runtime.beans.screens.FormScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
+      <screen name="PDF not supported (Windows)" id="133" beanClass="com.install4j.runtime.beans.screens.FormScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
         <serializedBean>
           <java class="java.beans.XMLDecoder">
             <object class="com.install4j.runtime.beans.screens.FormScreen">
               <void property="subTitle">
-                <string>${i18n:SoftwareCheck.SubTitle}</string>
+                <string>${i18n:PDFCheck.SubTitle}</string>
               </void>
               <void property="title">
-                <string>${i18n:SoftwareCheck.Title}</string>
+                <string>${i18n:PDFCheck.Title}</string>
               </void>
             </object>
           </java>
         </serializedBean>
-        <condition>!WinRegistry.keyExists(RegistryRoot.HKEY_CURRENT_USER, "Software\\Adobe\\Acrobat Reader")</condition>
+        <condition>/*if (WinRegistry.keyExists(RegistryRoot.HKEY_CURRENT_USER, "Software\\Adobe\\Acrobat Reader")){
+    return false;
+} 
+if (WinRegistry.getValue(RegistryRoot.HKEY_CLASSES_ROOT, ".pdf", "(Default)") != null){
+    return false;
+}
+String[] openWithKeys  = WinRegistry.getSubKeyNames(RegistryRoot.HKEY_CLASSES_ROOT, ".pdf\\OpenWithList");
+if (openWithKeys != null &amp;&amp; openWithKeys.length &gt; 0){
+    return false;
+}*/
+return true;</condition>
         <validation />
         <actions />
-        <formComponents />
+        <formComponents>
+          <formComponent name="" id="383" beanClass="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent">
+                  <void property="labelText">
+                    <string>${i18n:PDFCheck.Message.NoProgram}</string>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <initScript />
+          </formComponent>
+          <formComponent name="" id="385" beanClass="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent">
+                  <void property="labelText">
+                    <string>${i18n:PDFCheck.Message.AnathemaUses}</string>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <initScript />
+          </formComponent>
+          <formComponent name="" id="442" beanClass="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent">
+                  <void property="labelText">
+                    <string>${i18n:PDFCheck.Message.URL}</string>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <initScript />
+          </formComponent>
+          <formComponent name="" id="384" beanClass="com.install4j.runtime.beans.formcomponents.LabelComponent" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.formcomponents.LabelComponent">
+                  <void property="labelColor">
+                    <object class="java.awt.Color">
+                      <int>0</int>
+                      <int>0</int>
+                      <int>255</int>
+                      <int>255</int>
+                    </object>
+                  </void>
+                  <void property="labelText">
+                    <string>${i18n:PDFCheck.Label.Link}</string>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <initScript>configurationObject.addMouseListener(new java.awt.event.MouseAdapter(){
+    public void MouseClicked(){
+        try{
+       java.lang.Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler http://www.adobe.com/products/acrobat/readstep2.html");
+       } catch (IOException e){
+           //nothing to do
+       }
+    }
+ });</initScript>
+          </formComponent>
+          <formComponent name="" id="443" beanClass="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent">
+                  <void property="labelColor">
+                    <object class="java.awt.Color">
+                      <int>0</int>
+                      <int>0</int>
+                      <int>255</int>
+                      <int>255</int>
+                    </object>
+                  </void>
+                  <void property="labelText">
+                    <string>${i18n:PDFCheck.Label.Link}</string>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <initScript>configurationObject.addMouseListener(new java.awt.event.MouseAdapter(){
+    public void MouseClicked(){
+        try{
+       java.lang.Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler http://www.adobe.com/products/acrobat/readstep2.html");
+       } catch (IOException e){
+           //nothing to do
+       }
+    }
+ });</initScript>
+          </formComponent>
+        </formComponents>
       </screen>
       <screen name="" id="9" beanClass="com.install4j.runtime.beans.screens.FinishedScreen" rollbackBarrier="false" backButton="2" finishScreen="true">
         <serializedBean>
@@ -369,9 +472,7 @@
       <overriddenPrincipalLanguage id="en" customLocalizationFile="" />
       <exclude />
       <variables />
-      <excludedInstallerScreens>
-        <screen refId="133" />
-      </excludedInstallerScreens>
+      <excludedInstallerScreens />
       <excludedUninstallerScreens />
     </win32>
   </mediaSets>
