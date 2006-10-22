@@ -1,8 +1,13 @@
 package net.sf.anathema.character.equipment.impl.reporting.first;
 
+import net.sf.anathema.character.equipment.impl.reporting.AbstractDefenceWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.AbstractSpeedWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.AbstractWeaponryTableEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.AccuracyWeaponStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.first.weaponstats.FirstEditionAccuracyWeaponStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.first.weaponstats.FirstEditionDefenceWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.first.weaponstats.FirstEditionSpeedWeaponStatsGroup;
+import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -20,5 +25,15 @@ public class FirstEditionWeaponryTableEncoder extends AbstractWeaponryTableEncod
   @Override
   protected AbstractSpeedWeaponStatsGroup getSpeedWeaponStatsGroup() {
     return new FirstEditionSpeedWeaponStatsGroup(getResources(), collection);
+  }
+
+  @Override
+  protected AbstractDefenceWeaponStatsGroup getDefenceWeaponStatsGroup(IGenericCharacter character) {
+    return new FirstEditionDefenceWeaponStatsGroup(getResources(), character);
+  }
+
+  @Override
+  protected AccuracyWeaponStatsGroup getAccuracyWeaponStatsGroup(IGenericCharacter character) {
+    return new FirstEditionAccuracyWeaponStatsGroup(getResources(), character);
   }
 }

@@ -3,9 +3,7 @@ package net.sf.anathema.character.equipment.impl.reporting;
 import net.sf.anathema.character.equipment.impl.reporting.second.AbstractEquipmentTableEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.EquipmentNameStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.IEquipmentStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.AccuracyWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.DamageWeaponStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.DefenceWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.RangeWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.RateWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.TagsStatsGroup;
@@ -32,13 +30,19 @@ public abstract class AbstractWeaponryTableEncoder extends AbstractEquipmentTabl
     return new IEquipmentStatsGroup[] {
         new EquipmentNameStatsGroup(resources),
         getSpeedWeaponStatsGroup(),
-        new AccuracyWeaponStatsGroup(resources, traitCollection),
+        getAccuracyWeaponStatsGroup(character),
         new DamageWeaponStatsGroup(resources, traitCollection),
-        new DefenceWeaponStatsGroup(resources, character),
+        getDefenceWeaponStatsGroup(character),
         new RateWeaponStatsGroup(resources),
         new RangeWeaponStatsGroup(resources),
         new TagsStatsGroup(resources) };
   }
+
+  protected AccuracyWeaponStatsGroup getAccuracyWeaponStatsGroup(IGenericCharacter character) {
+    return new AccuracyWeaponStatsGroup(resources, character.getTraitCollection());
+  }
+
+  protected abstract AbstractDefenceWeaponStatsGroup getDefenceWeaponStatsGroup(IGenericCharacter character);
 
   protected abstract AbstractSpeedWeaponStatsGroup getSpeedWeaponStatsGroup();
 

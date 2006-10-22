@@ -85,7 +85,7 @@ public class CharacterUtilties {
       return 0;
     }
     if (isExaltPunished || !CharacterType.isExaltType(characterType)) {
-      return -2;
+      return 2;
     }
     return 0;
   }
@@ -94,8 +94,8 @@ public class CharacterUtilties {
     IGenericTraitCollection traitCollection = character.getTraitCollection();
     int dodgeValue = traitCollection.getTrait(AbilityType.Dodge).getCurrentValue();
     int value = traitCollection.getTrait(AttributeType.Dexterity).getCurrentValue() + dodgeValue;
-    value += Math.max(0, value - getUntrainedActionModifier(character, AbilityType.Dodge));
-    if (character.getRules() != ExaltedRuleSet.PowerCombat) {
+    value = Math.max(0, value - getUntrainedActionModifier(character, AbilityType.Dodge));
+    if (character.getRules() == ExaltedRuleSet.PowerCombat) {
       int essenceValue = traitCollection.getTrait(OtherTraitType.Essence).getCurrentValue();
       if (essenceValue > 1) {
         value += essenceValue;
