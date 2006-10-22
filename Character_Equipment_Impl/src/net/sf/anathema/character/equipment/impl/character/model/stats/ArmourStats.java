@@ -8,8 +8,8 @@ import net.sf.anathema.character.generic.health.HealthType;
 
 public class ArmourStats extends AbstractStats implements IArmourStats {
 
-  private final Map<HealthType, Integer> hardnessByHealthType;
-  private final Map<HealthType, Integer> soakByHealthType;
+  private final Map<String, Integer> hardnessByHealthType;
+  private final Map<String, Integer> soakByHealthType;
   private Integer fatigue;
   private Integer mobilityPenalty;
 
@@ -23,7 +23,7 @@ public class ArmourStats extends AbstractStats implements IArmourStats {
   }
 
   public Integer getHardness(HealthType type) {
-    return hardnessByHealthType.get(type);
+    return hardnessByHealthType.get(type.name());
   }
 
   public Integer getMobilityPenalty() {
@@ -31,7 +31,7 @@ public class ArmourStats extends AbstractStats implements IArmourStats {
   }
 
   public Integer getSoak(HealthType type) {
-    return soakByHealthType.get(type);
+    return soakByHealthType.get(type.name());
   }
 
   public void setFatigue(Integer fatigue) {
@@ -44,19 +44,19 @@ public class ArmourStats extends AbstractStats implements IArmourStats {
 
   public void setSoak(HealthType healthType, Integer soak) {
     if (soak == null) {
-      soakByHealthType.remove(healthType);
+      soakByHealthType.remove(healthType.name());
     }
     else {
-      soakByHealthType.put(healthType, soak);
+      soakByHealthType.put(healthType.name(), soak);
     }
   }
 
   public void setHardness(HealthType healthType, Integer hardness) {
     if (hardness == null) {
-      hardnessByHealthType.remove(healthType);
+      hardnessByHealthType.remove(healthType.name());
     }
     else {
-      hardnessByHealthType.put(healthType, hardness);
+      hardnessByHealthType.put(healthType.name(), hardness);
     }
   }
 }

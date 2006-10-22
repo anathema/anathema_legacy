@@ -55,6 +55,7 @@ public class ArmourStatisticsPresenterPage extends
         linkToggleButton.setSelected(isLinkToggled);
       }
     });
+
     linkToggleButton.setSelected(true);
     aggravatedSoakSpinner.setEnabled(false);
     lethalSoakModel.addIntValueChangeListener(new IIntValueChangedListener() {
