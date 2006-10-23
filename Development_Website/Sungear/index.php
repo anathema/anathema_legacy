@@ -1,8 +1,16 @@
 <?php
-
-	if (isset($_REQUEST['page'])) $page = $_REQUEST['page'];
-	else $page = 'news';
-
+	if (isset($_REQUEST['page'])){
+	  $pages = array("news", "about", "features", "downloads", "development", "faq", "contact", "credits");
+	  if (in_array($_REQUEST['page'],$pages)) {
+	    $page = $_REQUEST['page'];
+	  }
+	  else{
+	   $page = 'news';
+	  }
+	}
+	else {
+	 $page = 'news';
+	}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
