@@ -37,12 +37,11 @@ public class ItemViewManagement implements IComponentItemViewManagement {
   private final Map<Component, IItemView> itemViewsByComponent = new HashMap<Component, IItemView>();
   private final Map<IItemView, IObjectValueChangedListener<String>> nameListenersByView = new HashMap<IItemView, IObjectValueChangedListener<String>>();
   private final List<IViewSelectionListener> viewSelectionListeners = new ArrayList<IViewSelectionListener>();
-  private TitledTabProperties titledTabProperties = new TitledTabProperties();
-  private ShapedGradientTheme theme = new ShapedGradientTheme(
-      0f,
-      0.5f,
-      new FixedColorProvider(new Color(150, 150, 150)),
-      null);
+  private final TitledTabProperties titledTabProperties = new TitledTabProperties();
+  private final ShapedGradientTheme theme = new ShapedGradientTheme(0f, 0.5f, new FixedColorProvider(new Color(
+      150,
+      150,
+      150)), null);
 
   public ItemViewManagement() {
     initPaneProperties();
