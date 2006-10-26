@@ -159,7 +159,7 @@ public class ItemViewManagement implements IComponentItemViewManagement {
     view.dispose();
   }
 
-  public void setItemViewName(IItemView view, String name) {
+  private void setItemViewName(IItemView view, String name) {
     getTab(view).setText(name);
   }
 
