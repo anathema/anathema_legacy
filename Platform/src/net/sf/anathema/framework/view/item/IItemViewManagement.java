@@ -18,7 +18,5 @@ public interface IItemViewManagement extends IView {
 
   public void removeItemView(IItemView view);
 
-  public void setItemViewName(IItemView view, String name);
-
   public void setTabAreaComponents(JComponent... components);
 }
