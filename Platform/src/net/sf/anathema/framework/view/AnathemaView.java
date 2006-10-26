@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
-import net.sf.anathema.framework.view.item.IItemViewManagement;
+import net.sf.anathema.framework.view.item.IComponentItemViewManagement;
 import net.sf.anathema.framework.view.item.ItemViewManagement;
 import net.sf.anathema.framework.view.menu.AnathemaMenuBar;
 import net.sf.anathema.framework.view.messaging.AnathemaStatusBar;
@@ -21,7 +21,7 @@ public class AnathemaView implements IAnathemaView {
 
   private final AnathemaToolBar toolbar = new AnathemaToolBar();
   private final AnathemaMenuBar menu;
-  private final IItemViewManagement itemViewManagement;
+  private final IComponentItemViewManagement itemViewManagement;
   private final AnathemaViewProperties properties;
   private final AnathemaStatusBar statusBar = new AnathemaStatusBar();
 
@@ -31,7 +31,7 @@ public class AnathemaView implements IAnathemaView {
     this.itemViewManagement = createItemViewManagement();
   }
 
-  private IItemViewManagement createItemViewManagement() {
+  private IComponentItemViewManagement createItemViewManagement() {
     ItemViewManagement management = new ItemViewManagement();
     management.setTabAreaComponents(statusBar.getComponent());
     return management;

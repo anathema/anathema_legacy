@@ -1,12 +1,8 @@
-package net.sf.anathema.framework.view.item;
+package net.sf.anathema.framework.view;
 
 import javax.swing.Action;
 
-import net.sf.anathema.framework.view.IItemView;
-import net.sf.anathema.framework.view.IViewSelectionListener;
-import net.sf.anathema.lib.gui.IView;
-
-public interface IItemViewManagement extends IView {
+public interface IItemViewManagement {
   public void addItemView(final IItemView view, Action action);
 
   public void addViewSelectionListener(IViewSelectionListener listener);

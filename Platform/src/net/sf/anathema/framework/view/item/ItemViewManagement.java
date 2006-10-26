@@ -31,7 +31,7 @@ import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.framework.view.IViewSelectionListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
-public class ItemViewManagement implements IItemViewManagement {
+public class ItemViewManagement implements IComponentItemViewManagement {
 
   private final TabbedPanel tabbedPane = new TabbedPanel();
   private final Map<Component, IItemView> itemViewsByComponent = new HashMap<Component, IItemView>();
@@ -162,7 +162,7 @@ public class ItemViewManagement implements IItemViewManagement {
   public void setItemViewName(IItemView view, String name) {
     getTab(view).setText(name);
   }
-  
+
   public void setTabAreaComponents(JComponent... components) {
     tabbedPane.setTabAreaComponents(components);
   }
