@@ -71,13 +71,11 @@ public class AnathemaView implements IAnathemaView {
   }
 
   public void addItemView(IItemView view, Action action) {
-    IItemViewManagement management = itemViewManagement;
-    management.addItemView(view, action);
+    itemViewManagement.addItemView(view, action);
   }
 
   public void removeItemView(IItemView view) {
-    IItemViewManagement management = itemViewManagement;
-    management.removeItemView(view);
+    itemViewManagement.removeItemView(view);
   }
 
   public void addViewSelectionListener(IViewSelectionListener listener) {
@@ -89,8 +87,7 @@ public class AnathemaView implements IAnathemaView {
   }
 
   public void setSelectedItemView(IItemView view) {
-    IItemViewManagement management = itemViewManagement;
-    management.setSelectedItemView(view);
+    itemViewManagement.setSelectedItemView(view);
   }
 
   public void addWindowListener(WindowListener listener) {
