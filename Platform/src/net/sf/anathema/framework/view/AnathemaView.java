@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 import net.sf.anathema.framework.presenter.AnathemaViewProperties;
 import net.sf.anathema.framework.view.item.IComponentItemViewManagement;
-import net.sf.anathema.framework.view.item.ItemViewManagement;
+import net.sf.anathema.framework.view.item.WindowItemViewManagement;
 import net.sf.anathema.framework.view.menu.AnathemaMenuBar;
 import net.sf.anathema.framework.view.messaging.AnathemaStatusBar;
 import net.sf.anathema.framework.view.messaging.IAnathemaStatusBar;
@@ -33,8 +33,8 @@ public class AnathemaView implements IAnathemaView {
   }
 
   private IComponentItemViewManagement createItemViewManagement() {
-    ItemViewManagement management = new ItemViewManagement();
-    management.setTabAreaComponents(statusBar.getComponent());
+    WindowItemViewManagement management = new WindowItemViewManagement();
+    //    management.setTabAreaComponents(statusBar.getComponent());
     return management;
   }
 
