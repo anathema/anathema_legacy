@@ -1,7 +1,6 @@
 package net.sf.anathema.framework.view.item;
 
 import javax.swing.Action;
-import javax.swing.JComponent;
 
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.framework.view.IViewSelectionListener;
@@ -17,6 +16,4 @@ public interface IItemViewManagement extends IView {
   public void setSelectedItemView(IItemView view);
 
   public void removeItemView(IItemView view);
-
-  public void setTabAreaComponents(JComponent... components);
 }

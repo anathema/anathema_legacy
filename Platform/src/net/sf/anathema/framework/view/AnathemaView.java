@@ -2,7 +2,6 @@ package net.sf.anathema.framework.view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.event.WindowListener;
 
 import javax.swing.Action;
 import javax.swing.JFrame;
@@ -29,10 +28,15 @@ public class AnathemaView implements IAnathemaView {
 
   public AnathemaView(AnathemaViewProperties properties) {
     this.properties = properties;
-    this.itemViewManagement = new ItemViewManagement();
     this.menu = new AnathemaMenuBar(properties.getMainMenuName(), properties.getHelpMenuName());
-    itemViewManagement.setTabAreaComponents(statusBar.getComponent());
+    this.itemViewManagement = createItemViewManagement();
     this.mainFrame = initGui();
+  }
+
+  private IItemViewManagement createItemViewManagement() {
+    ItemViewManagement management = new ItemViewManagement();
+    management.setTabAreaComponents(statusBar.getComponent());
+    return management;
   }
 
   private JFrame initGui() {
@@ -88,10 +92,6 @@ public class AnathemaView implements IAnathemaView {
 
   public void setSelectedItemView(IItemView view) {
     itemViewManagement.setSelectedItemView(view);
-  }
-
-  public void addWindowListener(WindowListener listener) {
-    mainFrame.addWindowListener(listener);
   }
 
   public IMenuBar getMenuBar() {
