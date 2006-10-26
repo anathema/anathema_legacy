@@ -1,6 +1,6 @@
 package net.sf.anathema.framework.view;
 
-import net.sf.anathema.framework.view.messaging.AnathemaStatusBar;
+import net.sf.anathema.framework.view.messaging.IAnathemaStatusBar;
 import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
 
 public interface IAnathemaView extends IItemViewManagement {
@@ -11,5 +11,5 @@ public interface IAnathemaView extends IItemViewManagement {
 
   public void showFrame();
 
-  public AnathemaStatusBar getStatusBar();
+  public IAnathemaStatusBar getStatusBar();
 }

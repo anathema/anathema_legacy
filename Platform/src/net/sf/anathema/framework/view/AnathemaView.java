@@ -13,6 +13,7 @@ import net.sf.anathema.framework.view.item.IComponentItemViewManagement;
 import net.sf.anathema.framework.view.item.ItemViewManagement;
 import net.sf.anathema.framework.view.menu.AnathemaMenuBar;
 import net.sf.anathema.framework.view.messaging.AnathemaStatusBar;
+import net.sf.anathema.framework.view.messaging.IAnathemaStatusBar;
 import net.sf.anathema.framework.view.toolbar.AnathemaToolBar;
 import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
 import net.sf.anathema.lib.gui.GuiUtilities;
@@ -60,7 +61,7 @@ public class AnathemaView implements IAnathemaView {
     applicationPanel.add(itemViewManagement.getComponent(), BorderLayout.CENTER);
   }
 
-  public AnathemaStatusBar getStatusBar() {
+  public IAnathemaStatusBar getStatusBar() {
     return statusBar;
   }
 
