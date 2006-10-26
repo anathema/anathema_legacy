@@ -19,7 +19,6 @@ import net.sf.anathema.lib.gui.GuiUtilities;
 
 public class AnathemaView implements IAnathemaView {
 
-  private final JFrame mainFrame;
   private final AnathemaToolBar toolbar = new AnathemaToolBar();
   private final AnathemaMenuBar menu;
   private final IItemViewManagement itemViewManagement;
@@ -30,7 +29,6 @@ public class AnathemaView implements IAnathemaView {
     this.properties = properties;
     this.menu = new AnathemaMenuBar(properties.getMainMenuName(), properties.getHelpMenuName());
     this.itemViewManagement = createItemViewManagement();
-    this.mainFrame = initGui();
   }
 
   private IItemViewManagement createItemViewManagement() {
@@ -67,6 +65,7 @@ public class AnathemaView implements IAnathemaView {
   }
 
   public void showFrame() {
+    JFrame mainFrame = initGui();
     GuiUtilities.displayOnScreenCenter(mainFrame, new Dimension(1024, 768));
   }
 
