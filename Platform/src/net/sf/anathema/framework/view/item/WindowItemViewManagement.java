@@ -85,14 +85,23 @@ public class WindowItemViewManagement implements IComponentItemViewManagement {
   }
 
   private View getView(IItemView view) {
-    JComponent viewComponent = view.getComponent();
-    for (int index = 0; index < window.getChildWindowCount(); index++) {
-      if (!(window.getChildWindow(index) instanceof View)) {
-        continue;
+    return findChildWindow(view.getComponent(), window);
+  }
+
+  private View findChildWindow(JComponent viewComponent, DockingWindow parentWindow) {
+    for (int index = 0; index < parentWindow.getChildWindowCount(); index++) {
+      DockingWindow childWindow = parentWindow.getChildWindow(index);
+      if (!(childWindow instanceof View)) {
+        View view = findChildWindow(viewComponent, childWindow);
+        if (view != null) {
+          return view;
+        }
       }
-      View childWindow = (View) window.getChildWindow(index);
-      if (childWindow.getComponent() == viewComponent) {
-        return childWindow;
+      else {
+        View childView = (View) childWindow;
+        if (childView.getComponent() == viewComponent) {
+          return childView;
+        }
       }
     }
     return null;
@@ -107,6 +116,6 @@ public class WindowItemViewManagement implements IComponentItemViewManagement {
   }
 
   private void setItemViewName(IItemView view, String name) {
-    getView(view).setName(name);
+    getView(view).getViewProperties().setTitle(name);
   }
 }
