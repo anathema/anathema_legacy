@@ -7,8 +7,6 @@ public interface IItemViewManagement {
 
   public void addViewSelectionListener(IViewSelectionListener listener);
 
-  public void removeViewSelectionListener(IViewSelectionListener listener);
-
   public void setSelectedItemView(IItemView view);
 
   public void removeItemView(IItemView view);

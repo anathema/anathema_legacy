@@ -125,10 +125,6 @@ public class ItemViewManagement implements IComponentItemViewManagement {
     viewSelectionListeners.add(listener);
   }
 
-  public synchronized void removeViewSelectionListener(IViewSelectionListener listener) {
-    viewSelectionListeners.remove(listener);
-  }
-
   private synchronized void fireItemViewChanged(final IItemView view) {
     for (IViewSelectionListener listener : new ArrayList<IViewSelectionListener>(viewSelectionListeners)) {
       listener.viewSelectionChangedTo(view);

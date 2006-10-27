@@ -86,10 +86,6 @@ public class AnathemaView implements IAnathemaView {
     itemViewManagement.addViewSelectionListener(listener);
   }
 
-  public void removeViewSelectionListener(IViewSelectionListener listener) {
-    itemViewManagement.removeViewSelectionListener(listener);
-  }
-
   public void setSelectedItemView(IItemView view) {
     itemViewManagement.setSelectedItemView(view);
   }
