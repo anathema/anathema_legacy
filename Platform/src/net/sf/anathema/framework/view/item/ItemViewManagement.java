@@ -4,9 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Insets;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.swing.AbstractButton;
@@ -29,6 +27,8 @@ import net.infonode.tabbedpanel.titledtab.TitledTabProperties;
 import net.infonode.util.Direction;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.framework.view.IViewSelectionListener;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
 public class ItemViewManagement implements IComponentItemViewManagement {
@@ -36,7 +36,7 @@ public class ItemViewManagement implements IComponentItemViewManagement {
   private final TabbedPanel tabbedPane = new TabbedPanel();
   private final Map<Component, IItemView> itemViewsByComponent = new HashMap<Component, IItemView>();
   private final Map<IItemView, IObjectValueChangedListener<String>> nameListenersByView = new HashMap<IItemView, IObjectValueChangedListener<String>>();
-  private final List<IViewSelectionListener> viewSelectionListeners = new ArrayList<IViewSelectionListener>();
+  private final GenericControl<IViewSelectionListener> control = new GenericControl<IViewSelectionListener>();
   private final TitledTabProperties titledTabProperties = new TitledTabProperties();
   private final ShapedGradientTheme theme = new ShapedGradientTheme(0f, 0.5f, new FixedColorProvider(new Color(
       150,
@@ -122,13 +122,15 @@ public class ItemViewManagement implements IComponentItemViewManagement {
   }
 
   public synchronized void addViewSelectionListener(IViewSelectionListener listener) {
-    viewSelectionListeners.add(listener);
+    control.addListener(listener);
   }
 
   private synchronized void fireItemViewChanged(final IItemView view) {
-    for (IViewSelectionListener listener : new ArrayList<IViewSelectionListener>(viewSelectionListeners)) {
-      listener.viewSelectionChangedTo(view);
-    }
+    control.forAllDo(new IClosure<IViewSelectionListener>() {
+      public void execute(IViewSelectionListener input) {
+        input.viewSelectionChangedTo(view);
+      }
+    });
   }
 
   public void setSelectedItemView(IItemView view) {
