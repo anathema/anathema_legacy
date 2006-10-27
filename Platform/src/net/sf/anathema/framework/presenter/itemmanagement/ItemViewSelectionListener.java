@@ -18,5 +18,4 @@ public class ItemViewSelectionListener implements IViewSelectionListener {
   public void viewSelectionChangedTo(IItemView view) {
     model.setSelectedItem(mapping.getModelByView(view));
   }
-
 }
