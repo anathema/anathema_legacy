@@ -2,7 +2,6 @@ package net.sf.anathema.campaign.view.plot;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.dnd.DnDConstants;
 import java.awt.event.MouseMotionAdapter;
 
@@ -98,18 +97,18 @@ public class PlotView implements IPlotView {
         listenerControl.fireAddRequested(getSelectedHierachyNode());
       }
     };
-    Dimension preferredAddSize = properties.initHierarchyAddAction(addAction);
+    properties.initHierarchyAddAction(addAction);
     addButton = new JButton(addAction);
-    addButton.setPreferredSize(preferredAddSize);
+
     SmartAction removeAction = new SmartAction() {
       @Override
       protected void execute(Component parentComponent) {
         listenerControl.fireRemoveRequested(getSelectedHierachyNode());
       }
     };
-    Dimension preferredRemoveSize = properties.initHierarchyRemoveAction(removeAction);
+    properties.initHierarchyRemoveAction(removeAction);
     removeButton = new JButton(removeAction);
-    removeButton.setPreferredSize(preferredRemoveSize);
+
     SmartAction upAction = new SmartAction() {
       @Override
       protected void execute(Component parentComponent) {
@@ -119,9 +118,8 @@ public class PlotView implements IPlotView {
         listenerControl.fireMoveToRequested(node, originalIndex - 1);
       }
     };
-    Dimension upButtonSize = properties.initHierarchyUpAction(upAction);
+    properties.initHierarchyUpAction(upAction);
     upButton = new JButton(upAction);
-    upButton.setPreferredSize(upButtonSize);
 
     SmartAction downAction = new SmartAction() {
       @Override
@@ -132,9 +130,8 @@ public class PlotView implements IPlotView {
         listenerControl.fireMoveToRequested(node, originalIndex + 1);
       }
     };
-    Dimension downButtonSize = properties.initHierarchyDownAction(downAction);
+    properties.initHierarchyDownAction(downAction);
     downButton = new JButton(downAction);
-    downButton.setPreferredSize(downButtonSize);
   }
 
   public void initSeriesHierarchyView(TreeModel model, TreeCellRenderer renderer, String title) {

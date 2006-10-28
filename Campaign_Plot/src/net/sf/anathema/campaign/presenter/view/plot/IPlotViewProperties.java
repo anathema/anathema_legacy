@@ -1,18 +1,16 @@
 package net.sf.anathema.campaign.presenter.view.plot;
 
-import java.awt.Dimension;
-
 import net.disy.commons.swing.action.SmartAction;
 
 public interface IPlotViewProperties {
 
-  public Dimension initHierarchyRemoveAction(SmartAction action);
+  public void initHierarchyRemoveAction(SmartAction action);
 
-  public Dimension initHierarchyAddAction(SmartAction action);
+  public void initHierarchyAddAction(SmartAction action);
 
-  public Dimension initHierarchyUpAction(SmartAction action);
+  public void initHierarchyUpAction(SmartAction action);
 
-  public Dimension initHierarchyDownAction(SmartAction action);
+  public void initHierarchyDownAction(SmartAction action);
 
   public String getBorderTitle();
 }
