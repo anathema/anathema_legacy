@@ -41,14 +41,13 @@ public class TabbedView implements IView {
   }
 
   public void addTab(IView content, TabProperties properties) {
-    TitledTab tab;
     JComponent tabContent = content.getComponent();
     if (properties.isNeedsScrollbar()) {
       JPanel viewComponent = new JPanel(new FlowLayout(FlowLayout.LEFT));
       viewComponent.add(tabContent);
       tabContent = new RevalidatingScrollPane(viewComponent);
     }
-    tab = new TitledTab(properties.getName(), null, tabContent, null);
+    TitledTab tab = new TitledTab(properties.getName(), null, tabContent, null);
     tabbedPane.addTab(tab);
   }
 
