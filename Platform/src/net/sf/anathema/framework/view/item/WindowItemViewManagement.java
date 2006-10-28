@@ -62,22 +62,12 @@ public class WindowItemViewManagement implements IComponentItemViewManagement {
     return window;
   }
 
-  private IItemView getSelectedItemView() {
-    return itemViewsByComponent.get(window.getFocusedView().getComponent());
-  }
-
   public synchronized void addViewSelectionListener(IViewSelectionListener listener) {
     viewSelectionListeners.add(listener);
   }
 
   public synchronized void removeViewSelectionListener(IViewSelectionListener listener) {
     viewSelectionListeners.remove(listener);
-  }
-
-  private synchronized void fireItemViewChanged(final IItemView view) {
-    for (IViewSelectionListener listener : new ArrayList<IViewSelectionListener>(viewSelectionListeners)) {
-      listener.viewSelectionChangedTo(view);
-    }
   }
 
   public void setSelectedItemView(IItemView view) {
@@ -110,7 +100,6 @@ public class WindowItemViewManagement implements IComponentItemViewManagement {
   public void removeItemView(IItemView view) {
     Component component = view.getComponent();
     itemViewsByComponent.remove(component);
-    getView(view).close();
     disposeNameListening(view);
     view.dispose();
   }
