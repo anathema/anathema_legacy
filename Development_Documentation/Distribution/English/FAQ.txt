@@ -1,11 +1,12 @@
 Q: I'm trying to run Anathema on a Mac, but it won't work.
-A: (Thanks to Nadine and Four Willows Weeping)
+A: (Thanks to Nadine, Four Willows Weeping and wordman)
    Macs do support Java 5 on Tiger (Mac OS 10.4).  
    However, it's an additional package available at:
    http://www.apple.com/support/downloads/java2se50release1.html   
    To successfully run Anathema, you need to set the default Java version.
    A tool for this is provided by the J2SE 5.0 update at: 
    /Applications/Utilities/Java/J2SE 5.0/
+   Afterwards, use download and run the .dmg provided on the website.
 
 Q: I get a popup window "Could not find the main class. Program will exit."
 Q: Running Anathema from the console yields "Exception in thread "main" java.lang.UnsupportedClassVersionError: net/sf/anathema/Anathema (Unsupported major.minor version 49.0)"
@@ -45,3 +46,12 @@ A: (Thanks to Shattercrack)
 	This should be done by typing 
 		su
 	before creating the directory.
+	
+Q: Anathema doesn't run properly on my Linux-Box with Compiz-3D-Desktop.
+A: (Thanks to pippo_jedi, using bash)
+		$export AWT_TOOLKIT=MToolkit
+	So now I'm adding
+		AWT_TOOLKIT=MToolkit
+		export AWT_TOOLKIT
+	to my ~/.bash_profile in my home directory.
+	Now anathema works fine.
