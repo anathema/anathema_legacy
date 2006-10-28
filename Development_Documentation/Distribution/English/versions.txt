@@ -3,6 +3,13 @@ Anathema Version History
 Exalted (C) 2001-2006 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
+===------------------------------------------------------------------------------===
+			Release x "Meru" (Upcoming)
+===------------------------------------------------------------------------------===
+
+-- Usability --
+* Some twiddling with the series view
+* Fixed layout issues in music view
 
 ===------------------------------------------------------------------------------===
 			Release 1.0 "Lap" (22/10/06)

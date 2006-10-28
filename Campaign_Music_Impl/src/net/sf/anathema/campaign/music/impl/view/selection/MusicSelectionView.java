@@ -21,6 +21,7 @@ import net.sf.anathema.campaign.music.view.selection.IMusicSelectionView;
 import net.sf.anathema.campaign.music.view.selection.ITrackDetailsView;
 import net.sf.anathema.framework.presenter.view.ITabView;
 import net.sf.anathema.framework.view.util.TabDirection;
+import net.sf.anathema.framework.view.util.TabProperties;
 import net.sf.anathema.framework.view.util.TabbedView;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.list.actionview.ActionAddableListView;
@@ -69,10 +70,11 @@ public class MusicSelectionView implements IMusicSelectionView, IView {
     JPanel panel = new JPanel(new GridDialogLayout(3, true));
     panel.setBorder(new TitledBorder(selectionProperties.getMusicSelectionBorderTitle()));
     TabbedView selectionActionsView = new TabbedView(TabDirection.Down);
-    selectionActionsView.addTab(createITabView(selectionsView.getComponent()), selectionProperties.getSelectionsString());
+    selectionActionsView.addTab(createITabView(selectionsView.getComponent()), new TabProperties(
+        selectionProperties.getSelectionsString()));
     selectionActionsView.addTab(
         createITabView(trackDetailsView.getContent(categoryProperties, detailsProperties)),
-        selectionProperties.getTrackDetailsString());
+        new TabProperties(selectionProperties.getTrackDetailsString()));
     if (includePlayerView) {
       playerView = new MusicPlayerView();
       trackDetailsView.setPlayerComponent(playerView.getContent(playerProperties));
@@ -86,8 +88,9 @@ public class MusicSelectionView implements IMusicSelectionView, IView {
     panel.add(selectionActionsView.getComponent(), tabbedPaneData);
     TabbedView tracksView = new TabbedView(TabDirection.Down);
     trackListView = new ActionAddableListView<IMp3Track>(
-        selectionProperties.getCurrentlySelectedTracksString() + ":", IMp3Track.class); //$NON-NLS-1$
-    tracksView.addTab(createITabView(trackListView.getComponent()), selectionProperties.getCurrentSelectionString());
+        selectionProperties.getCurrentlySelectedTracksString() + ":", IMp3Track.class); //$NON-NLS-1$    
+    tracksView.addTab(createITabView(trackListView.getComponent()), new TabProperties(
+        selectionProperties.getCurrentSelectionString()));
     panel.add(tracksView.getComponent(), GridDialogLayoutData.FILL_BOTH);
     return panel;
   }

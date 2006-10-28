@@ -19,6 +19,7 @@ import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
 import net.sf.anathema.campaign.music.view.search.ISearchComponent;
 import net.sf.anathema.framework.presenter.view.ITabView;
 import net.sf.anathema.framework.view.util.TabDirection;
+import net.sf.anathema.framework.view.util.TabProperties;
 import net.sf.anathema.framework.view.util.TabbedView;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.list.actionview.ActionAddableListView;
@@ -114,16 +115,16 @@ public class LibraryControlView implements ILibraryControlView, IView {
     content.setLayout(new GridDialogLayout(3, true));
     TabbedView leftTabbedView = new TabbedView(TabDirection.Up);
     if (libraryPanel != null) {
-      leftTabbedView.addTab(createTabView(libraryPanel), viewProperties.getLibrariesString());
+      leftTabbedView.addTab(createTabView(libraryPanel), new TabProperties(viewProperties.getLibrariesString()));
     }
     if (searchPanel != null) {
-      leftTabbedView.addTab(createTabView(searchPanel), viewProperties.getSearchString());
+      leftTabbedView.addTab(createTabView(searchPanel), new TabProperties(viewProperties.getSearchString()));
     }
     GridDialogLayoutData tabbedPanelData = new GridDialogLayoutData(GridDialogLayoutData.FILL_BOTH);
     tabbedPanelData.setHorizontalSpan(2);
     content.add(leftTabbedView.getComponent(), tabbedPanelData);
     TabbedView rightTabbedView = new TabbedView(TabDirection.Up);
-    rightTabbedView.addTab(createTabView(createMp3ListPanel()), viewProperties.getTracksString());
+    rightTabbedView.addTab(createTabView(createMp3ListPanel()), new TabProperties(viewProperties.getTracksString()));
     content.add(rightTabbedView.getComponent(), GridDialogLayoutData.FILL_BOTH);
     content.setBorder(new TitledBorder(viewProperties.getLibraryControlBorderTitle()));
   }
