@@ -22,7 +22,7 @@ public abstract class AbstractTabbedItemView extends AbstractItemView {
 
   public final JComponent getComponent() {
     if (content == null) {
-      tabbedView.setTabAreaComponents(getTabAreaComponents());
+      setTabAreaComponents(getTabAreaComponents());
       content = tabbedView.getComponent();
     }
     return content;
