@@ -9,6 +9,7 @@ import javax.swing.event.ListSelectionListener;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.sf.anathema.campaign.music.impl.view.SimpleTabViewFactory;
 import net.sf.anathema.campaign.music.impl.view.categorization.MusicCategorizationView;
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
@@ -17,7 +18,6 @@ import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationPr
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationView;
 import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
 import net.sf.anathema.campaign.music.view.search.ISearchComponent;
-import net.sf.anathema.framework.presenter.view.ITabView;
 import net.sf.anathema.framework.view.util.TabDirection;
 import net.sf.anathema.framework.view.util.TabProperties;
 import net.sf.anathema.framework.view.util.TabbedView;
@@ -30,6 +30,7 @@ import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
 public class LibraryControlView implements ILibraryControlView, IView {
 
   private final JPanel content = new JPanel();
+  private final SimpleTabViewFactory factory = new SimpleTabViewFactory();
   private EditableActionAddableListView<ILibrary> libraryListView;
   private final ActionAddableListView<IMp3Track> mp3ListView;
   private final JButton searchButton = new JButton();
@@ -70,23 +71,6 @@ public class LibraryControlView implements ILibraryControlView, IView {
     return mp3ListView.getComponent();
   }
 
-  private ITabView< ? > createTabView(final JComponent component) {
-    return new ITabView<Object>() {
-
-      public JComponent getComponent() {
-        return component;
-      }
-
-      public void initGui(Object properties) {
-        // Nothing to do
-      }
-
-      public boolean needsScrollbar() {
-        return false;
-      }
-    };
-  }
-
   public JComponent getComponent() {
     return content;
   }
@@ -115,16 +99,17 @@ public class LibraryControlView implements ILibraryControlView, IView {
     content.setLayout(new GridDialogLayout(3, true));
     TabbedView leftTabbedView = new TabbedView(TabDirection.Up);
     if (libraryPanel != null) {
-      leftTabbedView.addTab(createTabView(libraryPanel), new TabProperties(viewProperties.getLibrariesString()));
+      leftTabbedView.addTab(factory.createTabView(libraryPanel), new TabProperties(viewProperties.getLibrariesString()));
     }
     if (searchPanel != null) {
-      leftTabbedView.addTab(createTabView(searchPanel), new TabProperties(viewProperties.getSearchString()));
+      leftTabbedView.addTab(factory.createTabView(searchPanel), new TabProperties(viewProperties.getSearchString()));
     }
     GridDialogLayoutData tabbedPanelData = new GridDialogLayoutData(GridDialogLayoutData.FILL_BOTH);
     tabbedPanelData.setHorizontalSpan(2);
     content.add(leftTabbedView.getComponent(), tabbedPanelData);
     TabbedView rightTabbedView = new TabbedView(TabDirection.Up);
-    rightTabbedView.addTab(createTabView(createMp3ListPanel()), new TabProperties(viewProperties.getTracksString()));
+    rightTabbedView.addTab(factory.createTabView(createMp3ListPanel()), new TabProperties(
+        viewProperties.getTracksString()));
     content.add(rightTabbedView.getComponent(), GridDialogLayoutData.FILL_BOTH);
     content.setBorder(new TitledBorder(viewProperties.getLibraryControlBorderTitle()));
   }

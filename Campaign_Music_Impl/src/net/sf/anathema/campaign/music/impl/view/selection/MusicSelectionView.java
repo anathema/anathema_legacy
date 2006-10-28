@@ -9,6 +9,7 @@ import javax.swing.border.TitledBorder;
 import net.disy.commons.swing.border.TitledPanel;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
+import net.sf.anathema.campaign.music.impl.view.SimpleTabViewFactory;
 import net.sf.anathema.campaign.music.impl.view.player.MusicPlayerView;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelection;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
@@ -19,7 +20,6 @@ import net.sf.anathema.campaign.music.presenter.selection.player.IMusicPlayerVie
 import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationProperties;
 import net.sf.anathema.campaign.music.view.selection.IMusicSelectionView;
 import net.sf.anathema.campaign.music.view.selection.ITrackDetailsView;
-import net.sf.anathema.framework.presenter.view.ITabView;
 import net.sf.anathema.framework.view.util.TabDirection;
 import net.sf.anathema.framework.view.util.TabProperties;
 import net.sf.anathema.framework.view.util.TabbedView;
@@ -33,6 +33,7 @@ import net.sf.anathema.lib.gui.table.columsettings.ITableColumnViewSettings;
 public class MusicSelectionView implements IMusicSelectionView, IView {
 
   private JComponent content;
+  private final SimpleTabViewFactory factory = new SimpleTabViewFactory();
   private ActionAddableListView<IMp3Track> trackListView;
   private EditableActionAddableListView<IMusicSelection> selectionsView;
   private final TrackDetailsView trackDetailsView = new TrackDetailsView();
@@ -70,10 +71,10 @@ public class MusicSelectionView implements IMusicSelectionView, IView {
     JPanel panel = new JPanel(new GridDialogLayout(3, true));
     panel.setBorder(new TitledBorder(selectionProperties.getMusicSelectionBorderTitle()));
     TabbedView selectionActionsView = new TabbedView(TabDirection.Down);
-    selectionActionsView.addTab(createITabView(selectionsView.getComponent()), new TabProperties(
+    selectionActionsView.addTab(factory.createTabView(selectionsView.getComponent()), new TabProperties(
         selectionProperties.getSelectionsString()));
     selectionActionsView.addTab(
-        createITabView(trackDetailsView.getContent(categoryProperties, detailsProperties)),
+        factory.createTabView(trackDetailsView.getContent(categoryProperties, detailsProperties)),
         new TabProperties(selectionProperties.getTrackDetailsString()));
     if (includePlayerView) {
       playerView = new MusicPlayerView();
@@ -89,27 +90,10 @@ public class MusicSelectionView implements IMusicSelectionView, IView {
     TabbedView tracksView = new TabbedView(TabDirection.Down);
     trackListView = new ActionAddableListView<IMp3Track>(
         selectionProperties.getCurrentlySelectedTracksString() + ":", IMp3Track.class); //$NON-NLS-1$    
-    tracksView.addTab(createITabView(trackListView.getComponent()), new TabProperties(
+    tracksView.addTab(factory.createTabView(trackListView.getComponent()), new TabProperties(
         selectionProperties.getCurrentSelectionString()));
     panel.add(tracksView.getComponent(), GridDialogLayoutData.FILL_BOTH);
     return panel;
-  }
-
-  private ITabView< ? > createITabView(final JComponent component) {
-    return new ITabView<Object>() {
-
-      public void initGui(Object properties) {
-        // Nothing to do
-      }
-
-      public JComponent getComponent() {
-        return component;
-      }
-
-      public boolean needsScrollbar() {
-        return false;
-      }
-    };
   }
 
   public IMultiSelectionActionAddableListView<IMp3Track> getTrackListView() {
