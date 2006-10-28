@@ -240,7 +240,9 @@
         <Content/>
       </Model>
       <Model templateId="Linguistics">
-        <Content/>
+        <Content>
+          <linguistics/>
+        </Content>
       </Model>
       <Model templateId="Intimacies">
         <Content>
