@@ -32,11 +32,12 @@ public class AnathemaToolBar implements IAnathemaToolbar, IView {
 
   public void addTools(Action... toolBarActions) {
     for (Action action : toolBarActions) {
-      addComponent(new JButton(action));
+      addComponent(new ToolBarButton(), action);
     }
   }
 
-  private void addComponent(JButton button) {
+  private void addComponent(JButton button, Action action) {
+    button.setAction(action);
     toolBar.add(button);
     setButtonSize(button);
   }
@@ -53,7 +54,7 @@ public class AnathemaToolBar implements IAnathemaToolbar, IView {
     for (Action action : menuActions) {
       menu.add(action);
     }
-    final JButton button = new JButton();
+    final ToolBarButton button = new ToolBarButton();
     SmartAction action = new SmartAction(buttonIcon) {
       @Override
       protected void execute(Component parentComponent) {
@@ -61,7 +62,6 @@ public class AnathemaToolBar implements IAnathemaToolbar, IView {
       }
     };
     action.setToolTipText(toolTip);
-    button.setAction(action);
-    addComponent(button);
+    addComponent(button, action);
   }
 }
