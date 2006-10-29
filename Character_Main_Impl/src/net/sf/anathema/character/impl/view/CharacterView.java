@@ -20,11 +20,10 @@ import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.framework.presenter.view.IMultiContentView;
 import net.sf.anathema.framework.view.item.AbstractItemView;
-import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.framework.view.util.MultiTabContentView;
-import net.sf.anathema.framework.view.util.TabbedView;
+import net.sf.anathema.framework.view.util.TabDirection;
+import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.gui.IDisposable;
-import net.sf.anathema.lib.gui.IView;
 
 public class CharacterView extends AbstractItemView implements ICharacterView {
 
@@ -34,6 +33,9 @@ public class CharacterView extends AbstractItemView implements ICharacterView {
   private OverviewView overviewView;
   private final List<IDisposable> disposables = new ArrayList<IDisposable>();
   private final IIntValueDisplayFactory intValueDisplayFactoryWithoutMarker;
+  private final IMultiContentView contentView = new MultiTabContentView();
+
+  private JComponent content;
 
   public CharacterView(
       IIntValueDisplayFactory factory,
@@ -45,47 +47,50 @@ public class CharacterView extends AbstractItemView implements ICharacterView {
     this.intValueDisplayFactoryWithoutMarker = factoryWithoutMarker;
   }
 
-  private final TabbedView tabbedView = new TabbedView();
-  private JComponent content;
-
-  protected final void addTab(IView viewContent, final String name) {
-    tabbedView.addTab(viewContent, new ContentProperties(name));
-  }
-
-  public final JComponent getComponent() {
-    if (content == null) {
-      setTabAreaComponents(getTabAreaComponents());
-      content = tabbedView.getComponent();
-    }
-    return content;
-  }
-
-  protected final void setTabAreaComponents(JComponent[] components) {
-    tabbedView.setTabAreaComponents(components);
-  }
-
-  public IGroupedFavorableTraitViewFactory createGroupedFavorableTraitViewFactory() {
-    return new GroupedFavorableTraitViewFactory(intValueDisplayFactory, intValueDisplayFactoryWithoutMarker);
-  }
-
-  public ICharacterDescriptionView createCharacterDescriptionView() {
-    return new CharacterDescriptionView();
-  }
-
-  public IMultiContentView addMultiContentView(String header) {
-    IMultiContentView multiTabView = new MultiTabContentView();
-    addTab(multiTabView, header);
-    return multiTabView;
-  }
-
   public IOverviewView addCreationOverviewView() {
     OverviewView newView = new OverviewView();
     this.creationOverviewView = newView;
     return newView;
   }
 
+  public void addDisposable(IDisposable disposable) {
+    disposables.add(disposable);
+  }
+
+  public IOverviewView addExperienceOverviewView() {
+    OverviewView newView = new OverviewView();
+    this.experienceOverviewView = newView;
+    return newView;
+  }
+
+  public IMultiContentView addMultiContentView(String header) {
+    IMultiContentView multiTabView = new MultiTabContentView(TabDirection.Up);
+    contentView.addView(multiTabView, new ContentProperties(header));
+    return multiTabView;
+  }
+
+  public IAdvantageViewFactory createAdvantageViewFactory() {
+    return new AdvantageViewFactory(intValueDisplayFactory);
+  }
+
+  public ICharacterDescriptionView createCharacterDescriptionView() {
+    return new CharacterDescriptionView();
+  }
+
+  public ICharacterConceptAndRulesViewFactory createConceptViewFactory() {
+    return new CharacterConceptAndRulesViewFactory();
+  }
+
   public IExperienceConfigurationView createExperienceConfigurationView() {
     return new ExperienceConfigurationView();
+  }
+
+  public IGroupedFavorableTraitViewFactory createGroupedFavorableTraitViewFactory() {
+    return new GroupedFavorableTraitViewFactory(intValueDisplayFactory, intValueDisplayFactoryWithoutMarker);
+  }
+
+  public IMagicViewFactory createMagicViewFactory() {
+    return new MagicViewFactory();
   }
 
   @Override
@@ -93,6 +98,18 @@ public class CharacterView extends AbstractItemView implements ICharacterView {
     for (IDisposable disposable : disposables) {
       disposable.dispose();
     }
+  }
+
+  public final JComponent getComponent() {
+    if (content == null) {
+      contentView.setAdditionalComponents(getTabAreaComponents());
+      content = contentView.getComponent();
+    }
+    return content;
+  }
+
+  public IIntValueDisplayFactory getIntValueDisplayFactory() {
+    return intValueDisplayFactory;
   }
 
   private JComponent[] getTabAreaComponents() {
@@ -104,32 +121,6 @@ public class CharacterView extends AbstractItemView implements ICharacterView {
 
   public void toogleOverviewView(boolean experienced) {
     this.overviewView = experienced ? experienceOverviewView : creationOverviewView;
-    setTabAreaComponents(getTabAreaComponents());
-  }
-
-  public IOverviewView addExperienceOverviewView() {
-    OverviewView newView = new OverviewView();
-    this.experienceOverviewView = newView;
-    return newView;
-  }
-
-  public IIntValueDisplayFactory getIntValueDisplayFactory() {
-    return intValueDisplayFactory;
-  }
-
-  public IMagicViewFactory createMagicViewFactory() {
-    return new MagicViewFactory();
-  }
-
-  public IAdvantageViewFactory createAdvantageViewFactory() {
-    return new AdvantageViewFactory(intValueDisplayFactory);
-  }
-
-  public ICharacterConceptAndRulesViewFactory createConceptViewFactory() {
-    return new CharacterConceptAndRulesViewFactory();
-  }
-
-  public void addDisposable(IDisposable disposable) {
-    disposables.add(disposable);
+    contentView.setAdditionalComponents(getTabAreaComponents());
   }
 }

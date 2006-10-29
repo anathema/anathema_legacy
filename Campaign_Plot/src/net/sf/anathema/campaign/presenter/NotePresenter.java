@@ -49,5 +49,4 @@ public class NotePresenter implements IPresenter {
         resources));
     descriptionView.initGui(resources.getString(getBorderTitleKey()));
   }
-
 }

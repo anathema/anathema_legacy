@@ -5,8 +5,8 @@ import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.presenter.charm.IContentPresenter;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
-import net.sf.anathema.framework.presenter.view.ITabContent;
-import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
+import net.sf.anathema.framework.presenter.view.IViewContent;
+import net.sf.anathema.framework.presenter.view.SimpleViewContent;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.resources.IResources;
@@ -27,8 +27,8 @@ public class AttributesPresenter implements IContentPresenter {
     this.contentHeader = resources.getString("CardView.AttributeConfiguration.Title"); //$NON-NLS-1$
   }
 
-  public ITabContent getTabContent() {
-    return new SimpleViewTabContent(new ContentProperties(contentHeader).needsScrollbar(), (IView) attributeView);
+  public IViewContent getTabContent() {
+    return new SimpleViewContent(new ContentProperties(contentHeader).needsScrollbar(), (IView) attributeView);
   }
 
   public void initPresentation() {

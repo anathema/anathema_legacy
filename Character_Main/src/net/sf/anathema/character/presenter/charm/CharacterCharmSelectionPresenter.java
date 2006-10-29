@@ -43,8 +43,8 @@ import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.charmtree.presenter.view.IDocumentLoadedListener;
 import net.sf.anathema.charmtree.presenter.view.IExaltTypeChangedListener;
 import net.sf.anathema.charmtree.presenter.view.ISVGSpecialCharmView;
-import net.sf.anathema.framework.presenter.view.ITabContent;
-import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
+import net.sf.anathema.framework.presenter.view.IViewContent;
+import net.sf.anathema.framework.presenter.view.SimpleViewContent;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
@@ -141,9 +141,9 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     view.initGui();
   }
 
-  public ITabContent getTabContent() {
+  public IViewContent getTabContent() {
     String header = getResources().getString("CardView.CharmConfiguration.CharmSelection.Title"); //$NON-NLS-1$
-    return new SimpleViewTabContent(new ContentProperties(header), view);
+    return new SimpleViewContent(new ContentProperties(header), view);
   }
 
   private void initCasteListening(final ICharmSelectionView selectionView) {

@@ -5,7 +5,7 @@ import net.sf.anathema.character.model.ICharacterDescription;
 import net.sf.anathema.character.presenter.charm.IContentPresenter;
 import net.sf.anathema.character.presenter.description.NameGeneratorAction;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
-import net.sf.anathema.framework.presenter.view.ITabContent;
+import net.sf.anathema.framework.presenter.view.IViewContent;
 import net.sf.anathema.framework.presenter.view.ViewTabContent;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.resources.IResources;
@@ -41,7 +41,7 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
     initAreaView("CharacterDescription.Label.Notes", 5, description.getNotes(), presentation); //$NON-NLS-1$
   }
 
-  public ITabContent getTabContent() {
+  public IViewContent getTabContent() {
     String title = resources.getString("CardView.CharacterDescription.Title");//$NON-NLS-1$
     ContentProperties tabProperties = new ContentProperties(title).needsScrollbar();
     return new ViewTabContent(descriptionView, tabProperties);

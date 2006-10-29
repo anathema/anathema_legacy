@@ -26,8 +26,8 @@ import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
 import net.sf.anathema.character.view.concept.IWillpowerConditionView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.framework.presenter.view.ITabContent;
-import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
+import net.sf.anathema.framework.presenter.view.IViewContent;
+import net.sf.anathema.framework.presenter.view.SimpleViewContent;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
@@ -69,9 +69,9 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     initGui();
   }
 
-  public ITabContent getTabContent() {
+  public IViewContent getTabContent() {
     String conceptHeader = resources.getString("CardView.CharacterConcept.Title");
-    return new SimpleViewTabContent(new ContentProperties(conceptHeader), view); //$NON-NLS-1$
+    return new SimpleViewContent(new ContentProperties(conceptHeader), view); //$NON-NLS-1$
   }
 
   private void initMotivationPresentation(final IMotivation motivation, boolean casteRow) {

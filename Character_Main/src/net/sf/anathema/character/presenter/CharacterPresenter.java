@@ -27,8 +27,8 @@ import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.framework.presenter.view.IMultiContentView;
-import net.sf.anathema.framework.presenter.view.ITabContent;
-import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
+import net.sf.anathema.framework.presenter.view.IViewContent;
+import net.sf.anathema.framework.presenter.view.SimpleViewContent;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.gui.IDisposable;
 import net.sf.anathema.lib.gui.IPresenter;
@@ -128,7 +128,7 @@ public class CharacterPresenter implements IPresenter {
         generics.getTemplateRegistry(),
         generics.getCharmProvider());
     presenter.initPresentation();
-    ITabContent content = presenter.getTabContent();
+    IViewContent content = presenter.getTabContent();
     IDisposable disposable = content.getDisposable();
     if (disposable != null) {
       characterView.addDisposable(disposable);
@@ -147,8 +147,8 @@ public class CharacterPresenter implements IPresenter {
   private void initMultiTabViewPresentation(
       String viewTitle,
       AdditionalModelType additionalsType,
-      ITabContent... coreViews) {
-    List<ITabContent> contents = new ArrayList<ITabContent>();
+      IViewContent... coreViews) {
+    List<IViewContent> contents = new ArrayList<IViewContent>();
     Collections.addAll(contents, coreViews);
     IRegistry<String, IAdditionalViewFactory> factoryRegistry = generics.getAdditionalViewFactoryRegistry();
     IAdditionalModel[] additionals = getStatistics().getExtendedConfiguration().getAdditionalModels(additionalsType);
@@ -161,16 +161,15 @@ public class CharacterPresenter implements IPresenter {
       IView additionalView = viewFactory.createView(model, resources, getStatistics().getCharacterTemplate()
           .getTemplateType()
           .getCharacterType());
-      contents.add(new SimpleViewTabContent(new ContentProperties(tabName), additionalView));
+      contents.add(new SimpleViewContent(new ContentProperties(tabName), additionalView));
     }
     if (contents.size() == 0) {
       return;
     }
     IMultiContentView multiTabView = characterView.addMultiContentView(viewTitle);
-    for (ITabContent content : contents) {
+    for (IViewContent content : contents) {
       content.addTo(multiTabView);
     }
-    multiTabView.initGui(null);
   }
 
   private void initOverviewPresentation() {

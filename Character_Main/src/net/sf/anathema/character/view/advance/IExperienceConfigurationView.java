@@ -1,8 +1,8 @@
 package net.sf.anathema.character.view.advance;
 
-import net.sf.anathema.framework.presenter.view.IContentView;
+import net.sf.anathema.framework.presenter.view.IInitializableContentView;
 
-public interface IExperienceConfigurationView extends IContentView<IExperienceConfigurationViewProperties> {
+public interface IExperienceConfigurationView extends IInitializableContentView<IExperienceConfigurationViewProperties> {
 
   public void addExperienceConfigurationViewListener(IExperienceConfigurationViewListener listener);
 

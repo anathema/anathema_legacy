@@ -17,14 +17,14 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewListener;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewProperties;
-import net.sf.anathema.framework.presenter.view.AbstractContentView;
+import net.sf.anathema.framework.presenter.view.AbstractInitializableContentView;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.table.SmartTable;
 import net.sf.anathema.lib.gui.table.actions.ITableActionFactory;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;
 
-public class ExperienceConfigurationView extends AbstractContentView<IExperienceConfigurationViewProperties> implements
+public class ExperienceConfigurationView extends AbstractInitializableContentView<IExperienceConfigurationViewProperties> implements
     IExperienceConfigurationView {
 
   private final List<IExperienceConfigurationViewListener> listeners = new ArrayList<IExperienceConfigurationViewListener>();

@@ -13,8 +13,8 @@ import net.sf.anathema.character.model.advance.IExperiencePointEntry;
 import net.sf.anathema.character.presenter.charm.IContentPresenter;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewListener;
-import net.sf.anathema.framework.presenter.view.ITabContent;
-import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
+import net.sf.anathema.framework.presenter.view.IViewContent;
+import net.sf.anathema.framework.presenter.view.SimpleViewContent;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -82,9 +82,9 @@ public class ExperienceConfigurationPresenter implements IContentPresenter {
     updateTotal();
   }
 
-  public ITabContent getTabContent() {
+  public IViewContent getTabContent() {
     String title = resources.getString("CardView.ExperienceConfiguration.Title");//$NON-NLS-1$
-    return new SimpleViewTabContent(new ContentProperties(title).needsScrollbar(), experienceView);
+    return new SimpleViewContent(new ContentProperties(title).needsScrollbar(), experienceView);
   }
 
   private void initTableModel() {

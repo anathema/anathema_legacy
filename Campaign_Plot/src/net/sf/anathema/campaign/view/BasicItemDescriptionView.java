@@ -12,14 +12,14 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.framework.itemdata.view.IBasicItemDescriptionView;
-import net.sf.anathema.framework.presenter.view.AbstractContentView;
+import net.sf.anathema.framework.presenter.view.AbstractInitializableContentView;
 import net.sf.anathema.framework.styledtext.IStyledTextView;
 import net.sf.anathema.framework.styledtext.ITextEditorProperties;
 import net.sf.anathema.framework.styledtext.TextEditor;
 import net.sf.anathema.lib.workflow.container.factory.StandardPanelBuilder;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
-public class BasicItemDescriptionView extends AbstractContentView<Object> implements IBasicItemDescriptionView {
+public class BasicItemDescriptionView extends AbstractInitializableContentView<Object> implements IBasicItemDescriptionView {
 
   private final StandardPanelBuilder standardPanelBuilder = new StandardPanelBuilder();
 

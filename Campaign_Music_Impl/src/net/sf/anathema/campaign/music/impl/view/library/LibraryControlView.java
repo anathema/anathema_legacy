@@ -99,16 +99,16 @@ public class LibraryControlView implements ILibraryControlView, IView {
     content.setLayout(new GridDialogLayout(3, true));
     TabbedView leftTabbedView = new TabbedView(TabDirection.Up);
     if (libraryPanel != null) {
-      leftTabbedView.addTab(factory.createTabView(libraryPanel), new ContentProperties(viewProperties.getLibrariesString()));
+      leftTabbedView.addView(factory.createTabView(libraryPanel), new ContentProperties(viewProperties.getLibrariesString()));
     }
     if (searchPanel != null) {
-      leftTabbedView.addTab(factory.createTabView(searchPanel), new ContentProperties(viewProperties.getSearchString()));
+      leftTabbedView.addView(factory.createTabView(searchPanel), new ContentProperties(viewProperties.getSearchString()));
     }
     GridDialogLayoutData tabbedPanelData = new GridDialogLayoutData(GridDialogLayoutData.FILL_BOTH);
     tabbedPanelData.setHorizontalSpan(2);
     content.add(leftTabbedView.getComponent(), tabbedPanelData);
     TabbedView rightTabbedView = new TabbedView(TabDirection.Up);
-    rightTabbedView.addTab(factory.createTabView(createMp3ListPanel()), new ContentProperties(
+    rightTabbedView.addView(factory.createTabView(createMp3ListPanel()), new ContentProperties(
         viewProperties.getTracksString()));
     content.add(rightTabbedView.getComponent(), GridDialogLayoutData.FILL_BOTH);
     content.setBorder(new TitledBorder(viewProperties.getLibraryControlBorderTitle()));

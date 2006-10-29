@@ -2,9 +2,9 @@ package net.sf.anathema.character.view;
 
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
-import net.sf.anathema.framework.presenter.view.IContentView;
+import net.sf.anathema.framework.presenter.view.IInitializableContentView;
 
-public interface IGroupedFavorableTraitConfigurationView extends IContentView<Object> {
+public interface IGroupedFavorableTraitConfigurationView extends IInitializableContentView<Object> {
 
   public IToggleButtonTraitView< ? > addTraitView(
       String labelText,

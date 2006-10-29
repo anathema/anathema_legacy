@@ -35,11 +35,11 @@ public class TabbedView implements IView {
     initTabbedPaneProperties(tabbedPane.getProperties(), tabDirection);
   }
 
-  public final void addTab(IView tabView, final String name) {
-    addTab(tabView, new ContentProperties(name).needsScrollbar());
+  public final void addView(IView tabView, final String name) {
+    addView(tabView, new ContentProperties(name).needsScrollbar());
   }
 
-  public void addTab(IView content, ContentProperties properties) {
+  public void addView(IView content, ContentProperties properties) {
     JComponent tabContent = content.getComponent();
     if (properties.isNeedsScrollbar()) {
       JPanel viewComponent = new JPanel(new FlowLayout(FlowLayout.LEFT));

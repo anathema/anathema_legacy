@@ -25,8 +25,8 @@ import net.sf.anathema.character.model.IMagicLearnListener;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.magic.ISpellView;
-import net.sf.anathema.framework.presenter.view.ITabContent;
-import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
+import net.sf.anathema.framework.presenter.view.IViewContent;
+import net.sf.anathema.framework.presenter.view.SimpleViewContent;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.compare.I18nedIdentificateComparator;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
@@ -106,9 +106,9 @@ public abstract class AbstractSpellPresenter implements IContentPresenter {
     });
   }
 
-  public ITabContent getTabContent() {
+  public IViewContent getTabContent() {
     String header = resources.getString(getTabTitleResourceKey());
-    return new SimpleViewTabContent(new ContentProperties(header), view);
+    return new SimpleViewContent(new ContentProperties(header), view);
   }
 
   private void initDetailsView() {

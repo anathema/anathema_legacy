@@ -19,7 +19,7 @@ import net.sf.anathema.character.library.trait.view.RearButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.view.IAdvantageViewProperties;
 import net.sf.anathema.character.view.IBasicAdvantageView;
-import net.sf.anathema.framework.presenter.view.AbstractContentView;
+import net.sf.anathema.framework.presenter.view.AbstractInitializableContentView;
 import net.sf.anathema.framework.presenter.view.ButtonControlledObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
@@ -29,7 +29,7 @@ import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-public class BasicAdvantageView extends AbstractContentView<IAdvantageViewProperties> implements IBasicAdvantageView {
+public class BasicAdvantageView extends AbstractInitializableContentView<IAdvantageViewProperties> implements IBasicAdvantageView {
 
   private final IGridDialogPanel virtuePanel = new DefaultGridDialogPanel(false);
   private final IGridDialogPanel willpowerPanel = new DefaultGridDialogPanel(false);

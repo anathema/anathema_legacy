@@ -71,9 +71,9 @@ public class MusicSelectionView implements IMusicSelectionView, IView {
     JPanel panel = new JPanel(new GridDialogLayout(3, true));
     panel.setBorder(new TitledBorder(selectionProperties.getMusicSelectionBorderTitle()));
     TabbedView selectionActionsView = new TabbedView(TabDirection.Down);
-    selectionActionsView.addTab(factory.createTabView(selectionsView.getComponent()), new ContentProperties(
+    selectionActionsView.addView(factory.createTabView(selectionsView.getComponent()), new ContentProperties(
         selectionProperties.getSelectionsString()));
-    selectionActionsView.addTab(
+    selectionActionsView.addView(
         factory.createTabView(trackDetailsView.getContent(categoryProperties, detailsProperties)),
         new ContentProperties(selectionProperties.getTrackDetailsString()));
     if (includePlayerView) {
@@ -90,7 +90,7 @@ public class MusicSelectionView implements IMusicSelectionView, IView {
     TabbedView tracksView = new TabbedView(TabDirection.Down);
     trackListView = new ActionAddableListView<IMp3Track>(
         selectionProperties.getCurrentlySelectedTracksString() + ":", IMp3Track.class); //$NON-NLS-1$    
-    tracksView.addTab(factory.createTabView(trackListView.getComponent()), new ContentProperties(
+    tracksView.addView(factory.createTabView(trackListView.getComponent()), new ContentProperties(
         selectionProperties.getCurrentSelectionString()));
     panel.add(tracksView.getComponent(), GridDialogLayoutData.FILL_BOTH);
     return panel;

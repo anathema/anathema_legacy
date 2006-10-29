@@ -2,24 +2,40 @@ package net.sf.anathema.framework.view.util;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import net.sf.anathema.framework.presenter.view.AbstractContentView;
 import net.sf.anathema.framework.presenter.view.IMultiContentView;
 import net.sf.anathema.lib.gui.IView;
 
-public class MultiTabContentView extends AbstractContentView<Object> implements IMultiContentView {
+public class MultiTabContentView implements IMultiContentView {
 
-  private TabbedView tabbedView = new TabbedView(TabDirection.Up);
+  private final TabbedView tabbedView;
+  private JPanel content;
 
-  @Override
-  protected void createContent(JPanel panel, Object properties) {
-    panel.setLayout(new BorderLayout());
-    panel.add(tabbedView.getComponent(), BorderLayout.CENTER);
+  public MultiTabContentView() {
+    this(TabDirection.Left);
+  }
+
+  public MultiTabContentView(TabDirection direction) {
+    this.tabbedView = new TabbedView(direction);
+  }
+
+  public final JComponent getComponent() {
+    if (content == null) {
+      content = new JPanel(new BorderLayout());
+      content.add(tabbedView.getComponent(), BorderLayout.CENTER);
+    }
+    return content;
   }
 
   public void addView(IView view, ContentProperties tabProperties) {
-    tabbedView.addTab(view, tabProperties);
+    tabbedView.addView(view, tabProperties);
+    tabbedView.getComponent().revalidate();
+  }
+
+  public void setAdditionalComponents(JComponent[] components) {
+    tabbedView.setTabAreaComponents(components);
     tabbedView.getComponent().revalidate();
   }
 }
