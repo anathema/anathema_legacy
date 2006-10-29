@@ -7,12 +7,12 @@ import net.sf.anathema.character.library.intvalue.MarkerIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.presenter.specialty.ISpecialtiesAdditionalModel;
 import net.sf.anathema.character.presenter.specialty.SpecialtiesConfigurationPresenter;
-import net.sf.anathema.framework.presenter.view.ISimpleTabView;
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SpecialtiesViewFactory implements IAdditionalViewFactory {
 
-  public ISimpleTabView createView(IAdditionalModel model, IResources resources, CharacterType type) {
+  public IView createView(IAdditionalModel model, IResources resources, CharacterType type) {
     ISpecialtiesConfiguration specialtiesModel = ((ISpecialtiesAdditionalModel) model).getSpecialtiesModel();
     SpecialtiesView view = new SpecialtiesView(new MarkerIntValueDisplayFactory(resources, type));
     new SpecialtiesConfigurationPresenter(specialtiesModel, view, resources).initPresentation();

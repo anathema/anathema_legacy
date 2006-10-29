@@ -6,12 +6,12 @@ import net.sf.anathema.character.equipment.impl.character.view.EquipmentAddition
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditionalViewFactory;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.framework.presenter.view.ISimpleTabView;
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.resources.IResources;
 
 public class EquipmentAdditionalViewFactory implements IAdditionalViewFactory {
 
-  public ISimpleTabView createView(IAdditionalModel model, IResources resources, CharacterType type) {
+  public IView createView(IAdditionalModel model, IResources resources, CharacterType type) {
     IEquipmentAdditionalModel equipmentModel = (IEquipmentAdditionalModel) model;
     EquipmentAdditionalView view = new EquipmentAdditionalView();
     new EquipmentAdditionalPresenter(resources, equipmentModel, view).initPresentation();

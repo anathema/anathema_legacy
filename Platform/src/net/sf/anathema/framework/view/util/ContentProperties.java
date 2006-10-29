@@ -1,11 +1,11 @@
 package net.sf.anathema.framework.view.util;
 
-public class TabProperties {
+public class ContentProperties {
 
   private final String name;
   private boolean needsScrollbar = false;
 
-  public TabProperties(String name) {
+  public ContentProperties(String name) {
     this.name = name;
   }
 
@@ -17,7 +17,7 @@ public class TabProperties {
     return needsScrollbar;
   }
 
-  public TabProperties needsScrollbar() {
+  public ContentProperties needsScrollbar() {
     this.needsScrollbar = true;
     return this;
   }

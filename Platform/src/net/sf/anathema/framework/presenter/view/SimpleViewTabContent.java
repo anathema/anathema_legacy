@@ -1,24 +1,21 @@
 package net.sf.anathema.framework.presenter.view;
 
-import net.sf.anathema.framework.view.util.TabProperties;
+import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.gui.IDisposable;
+import net.sf.anathema.lib.gui.IView;
 
 public class SimpleViewTabContent implements ITabContent {
 
-  private final String header;
-  private final ISimpleTabView tabView;
+  private final ContentProperties properties;
+  private final IView tabView;
 
-  public SimpleViewTabContent(String header, ISimpleTabView tabView) {
-    this.header = header;
+  public SimpleViewTabContent(ContentProperties properties, IView tabView) {
+    this.properties = properties;
     this.tabView = tabView;
   }
 
-  public void addTo(IMultiTabView view) {
-    TabProperties tabProperties = new TabProperties(header);
-    if (tabView.needsScrollbar()) {
-      tabProperties = tabProperties.needsScrollbar();
-    }
-    view.addTabView(tabView, tabProperties);
+  public void addTo(IMultiContentView view) {
+    view.addTabView(tabView, properties);
   }
 
   public IDisposable getDisposable() {

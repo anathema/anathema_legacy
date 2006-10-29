@@ -14,10 +14,10 @@ import net.sf.anathema.character.library.trait.view.FrontToggleButtonTraitViewWr
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeView;
 import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeViewProperties;
-import net.sf.anathema.framework.presenter.view.ISimpleTabView;
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.dialogcomponent.grouped.GroupedGridDialogPanel;
 
-public class SiderealCollegeView implements ISimpleTabView, ISiderealCollegeView {
+public class SiderealCollegeView implements IView, ISiderealCollegeView {
 
   private GroupedGridDialogPanel collegeGroupPanel = new GroupedGridDialogPanel(3);
   private JPanel content;

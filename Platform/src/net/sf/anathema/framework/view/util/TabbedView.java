@@ -9,7 +9,6 @@ import net.infonode.tabbedpanel.TabDropDownListVisiblePolicy;
 import net.infonode.tabbedpanel.TabbedPanel;
 import net.infonode.tabbedpanel.TabbedPanelProperties;
 import net.infonode.tabbedpanel.titledtab.TitledTab;
-import net.sf.anathema.framework.presenter.view.ISimpleTabView;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.widgets.RevalidatingScrollPane;
 
@@ -36,11 +35,11 @@ public class TabbedView implements IView {
     initTabbedPaneProperties(tabbedPane.getProperties(), tabDirection);
   }
 
-  public final void addTab(ISimpleTabView tabView, final String name) {
-    addTab(tabView, new TabProperties(name).needsScrollbar());
+  public final void addTab(IView tabView, final String name) {
+    addTab(tabView, new ContentProperties(name).needsScrollbar());
   }
 
-  public void addTab(IView content, TabProperties properties) {
+  public void addTab(IView content, ContentProperties properties) {
     JComponent tabContent = content.getComponent();
     if (properties.isNeedsScrollbar()) {
       JPanel viewComponent = new JPanel(new FlowLayout(FlowLayout.LEFT));

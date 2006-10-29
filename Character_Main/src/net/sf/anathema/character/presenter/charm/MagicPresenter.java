@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
-import net.sf.anathema.framework.presenter.view.IMultiTabView;
+import net.sf.anathema.framework.presenter.view.IMultiContentView;
 import net.sf.anathema.framework.presenter.view.ITabContent;
 import net.sf.anathema.lib.gui.IDisposable;
 import net.sf.anathema.lib.resources.IResources;
@@ -48,7 +48,7 @@ public class MagicPresenter implements IContentPresenter {
 
   public ITabContent getTabContent() {
     return new ITabContent() {
-      public void addTo(IMultiTabView view) {
+      public void addTo(IMultiContentView view) {
         for (IContentPresenter presenter : subPresenters) {
           presenter.getTabContent().addTo(view);
         }

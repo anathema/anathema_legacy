@@ -5,10 +5,10 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
 import net.sf.anathema.framework.presenter.view.AbstractTabView;
-import net.sf.anathema.framework.presenter.view.IMultiTabView;
+import net.sf.anathema.framework.presenter.view.IMultiContentView;
 import net.sf.anathema.lib.gui.IView;
 
-public class MultiTabView extends AbstractTabView<Object> implements IMultiTabView {
+public class MultiTabView extends AbstractTabView<Object> implements IMultiContentView {
 
   public MultiTabView() {
     super(false);
@@ -22,7 +22,7 @@ public class MultiTabView extends AbstractTabView<Object> implements IMultiTabVi
     panel.add(tabbedView.getComponent(), BorderLayout.CENTER);
   }
 
-  public void addTabView(IView view, TabProperties tabProperties) {
+  public void addTabView(IView view, ContentProperties tabProperties) {
     tabbedView.addTab(view, tabProperties);
     tabbedView.getComponent().revalidate();
   }

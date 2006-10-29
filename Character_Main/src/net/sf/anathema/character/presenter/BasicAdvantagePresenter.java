@@ -13,6 +13,7 @@ import net.sf.anathema.character.view.IAdvantageViewProperties;
 import net.sf.anathema.character.view.IBasicAdvantageView;
 import net.sf.anathema.framework.presenter.view.ITabContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
+import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -72,6 +73,6 @@ public class BasicAdvantagePresenter implements IContentPresenter {
 
   public ITabContent getTabContent() {
     String basicAdvantageHeader = resources.getString("CardView.Advantages.Title"); //$NON-NLS-1$
-    return new SimpleViewTabContent(basicAdvantageHeader, view);
+    return new SimpleViewTabContent(new ContentProperties(basicAdvantageHeader), view);
   }
 }

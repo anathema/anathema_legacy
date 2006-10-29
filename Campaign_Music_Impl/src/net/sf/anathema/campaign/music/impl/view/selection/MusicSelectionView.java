@@ -21,7 +21,7 @@ import net.sf.anathema.campaign.music.view.categorization.IMusicCategorizationPr
 import net.sf.anathema.campaign.music.view.selection.IMusicSelectionView;
 import net.sf.anathema.campaign.music.view.selection.ITrackDetailsView;
 import net.sf.anathema.framework.view.util.TabDirection;
-import net.sf.anathema.framework.view.util.TabProperties;
+import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.framework.view.util.TabbedView;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.gui.list.actionview.ActionAddableListView;
@@ -71,11 +71,11 @@ public class MusicSelectionView implements IMusicSelectionView, IView {
     JPanel panel = new JPanel(new GridDialogLayout(3, true));
     panel.setBorder(new TitledBorder(selectionProperties.getMusicSelectionBorderTitle()));
     TabbedView selectionActionsView = new TabbedView(TabDirection.Down);
-    selectionActionsView.addTab(factory.createTabView(selectionsView.getComponent()), new TabProperties(
+    selectionActionsView.addTab(factory.createTabView(selectionsView.getComponent()), new ContentProperties(
         selectionProperties.getSelectionsString()));
     selectionActionsView.addTab(
         factory.createTabView(trackDetailsView.getContent(categoryProperties, detailsProperties)),
-        new TabProperties(selectionProperties.getTrackDetailsString()));
+        new ContentProperties(selectionProperties.getTrackDetailsString()));
     if (includePlayerView) {
       playerView = new MusicPlayerView();
       trackDetailsView.setPlayerComponent(playerView.getContent(playerProperties));
@@ -90,7 +90,7 @@ public class MusicSelectionView implements IMusicSelectionView, IView {
     TabbedView tracksView = new TabbedView(TabDirection.Down);
     trackListView = new ActionAddableListView<IMp3Track>(
         selectionProperties.getCurrentlySelectedTracksString() + ":", IMp3Track.class); //$NON-NLS-1$    
-    tracksView.addTab(factory.createTabView(trackListView.getComponent()), new TabProperties(
+    tracksView.addTab(factory.createTabView(trackListView.getComponent()), new ContentProperties(
         selectionProperties.getCurrentSelectionString()));
     panel.add(tracksView.getComponent(), GridDialogLayoutData.FILL_BOTH);
     return panel;

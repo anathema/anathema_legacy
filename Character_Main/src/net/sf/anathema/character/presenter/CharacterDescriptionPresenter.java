@@ -7,7 +7,7 @@ import net.sf.anathema.character.presenter.description.NameGeneratorAction;
 import net.sf.anathema.character.view.ICharacterDescriptionView;
 import net.sf.anathema.framework.presenter.view.ITabContent;
 import net.sf.anathema.framework.presenter.view.ViewTabContent;
-import net.sf.anathema.framework.view.util.TabProperties;
+import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
@@ -43,7 +43,7 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
 
   public ITabContent getTabContent() {
     String title = resources.getString("CardView.CharacterDescription.Title");//$NON-NLS-1$
-    TabProperties tabProperties = new TabProperties(title).needsScrollbar();
+    ContentProperties tabProperties = new ContentProperties(title).needsScrollbar();
     return new ViewTabContent(descriptionView, tabProperties);
   }
 

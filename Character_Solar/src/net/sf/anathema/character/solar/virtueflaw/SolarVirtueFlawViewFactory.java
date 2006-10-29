@@ -7,12 +7,12 @@ import net.sf.anathema.character.solar.virtueflaw.presenter.ISolarVirtueFlawMode
 import net.sf.anathema.character.solar.virtueflaw.presenter.ISolarVirtueFlawView;
 import net.sf.anathema.character.solar.virtueflaw.presenter.SolarVirtueFlawPresenter;
 import net.sf.anathema.character.solar.virtueflaw.view.SolarVirtueFlawView;
-import net.sf.anathema.framework.presenter.view.ISimpleTabView;
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.resources.IResources;
 
 public class SolarVirtueFlawViewFactory implements IAdditionalViewFactory {
 
-  public ISimpleTabView createView(IAdditionalModel model, IResources resources, CharacterType type) {
+  public IView createView(IAdditionalModel model, IResources resources, CharacterType type) {
     ISolarVirtueFlawView virtueFlawView = new SolarVirtueFlawView();
     new SolarVirtueFlawPresenter(resources, virtueFlawView, ((ISolarVirtueFlawModel) model)).initPresentation();
     return virtueFlawView;

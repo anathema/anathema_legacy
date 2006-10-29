@@ -29,6 +29,7 @@ import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.ITabContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
+import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -81,7 +82,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
 
   public ITabContent getTabContent() {
     String header = resources.getString("CardView.CharmConfiguration.ComboCreation.Title"); //$NON-NLS-1$
-    return new SimpleViewTabContent(header, view);
+    return new SimpleViewTabContent(new ContentProperties(header), view);
   }
 
   private void enableCrossPrerequisiteTypeCombos() {

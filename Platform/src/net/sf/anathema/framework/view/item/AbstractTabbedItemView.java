@@ -3,7 +3,7 @@ package net.sf.anathema.framework.view.item;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 
-import net.sf.anathema.framework.view.util.TabProperties;
+import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.framework.view.util.TabbedView;
 import net.sf.anathema.lib.gui.IView;
 
@@ -17,7 +17,7 @@ public abstract class AbstractTabbedItemView extends AbstractItemView {
   }
 
   protected final void addTab(IView viewContent, final String name) {
-    tabbedView.addTab(viewContent, new TabProperties(name));
+    tabbedView.addTab(viewContent, new ContentProperties(name));
   }
 
   public final JComponent getComponent() {

@@ -6,12 +6,12 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.lunar.heartsblood.presenter.HeartsBloodPresenter;
 import net.sf.anathema.character.lunar.heartsblood.presenter.IHeartsBloodModel;
 import net.sf.anathema.character.lunar.heartsblood.view.HeartsBloodView;
-import net.sf.anathema.framework.presenter.view.ISimpleTabView;
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.resources.IResources;
 
 public class HeartsBloodViewFactory implements IAdditionalViewFactory {
 
-  public ISimpleTabView createView(IAdditionalModel model, IResources resources, CharacterType type) {
+  public IView createView(IAdditionalModel model, IResources resources, CharacterType type) {
     HeartsBloodView view  = new HeartsBloodView();
     new HeartsBloodPresenter((IHeartsBloodModel) model, view, resources).initPresentation();
     return view;

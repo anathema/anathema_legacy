@@ -1,6 +1,8 @@
 package net.sf.anathema.framework.presenter.view;
 
-public interface ITabView<P> extends ISimpleTabView {
+import net.sf.anathema.lib.gui.IView;
+
+public interface ITabView<P> extends IView {
 
   public void initGui(P properties);
 }

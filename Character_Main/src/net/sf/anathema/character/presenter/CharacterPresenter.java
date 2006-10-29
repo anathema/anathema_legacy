@@ -26,12 +26,13 @@ import net.sf.anathema.character.view.ICharacterView;
 import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.overview.IOverviewView;
-import net.sf.anathema.framework.presenter.view.IMultiTabView;
-import net.sf.anathema.framework.presenter.view.ISimpleTabView;
+import net.sf.anathema.framework.presenter.view.IMultiContentView;
 import net.sf.anathema.framework.presenter.view.ITabContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
+import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.gui.IDisposable;
 import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -157,15 +158,15 @@ public class CharacterPresenter implements IPresenter {
         continue;
       }
       String tabName = getString("AdditionalTemplateView.TabName." + model.getTemplateId()); //$NON-NLS-1$
-      ISimpleTabView additionalView = viewFactory.createView(model, resources, getStatistics().getCharacterTemplate()
+      IView additionalView = viewFactory.createView(model, resources, getStatistics().getCharacterTemplate()
           .getTemplateType()
           .getCharacterType());
-      contents.add(new SimpleViewTabContent(tabName, additionalView));
+      contents.add(new SimpleViewTabContent(new ContentProperties(tabName), additionalView));
     }
     if (contents.size() == 0) {
       return;
     }
-    IMultiTabView multiTabView = characterView.addMultiTabView(viewTitle);
+    IMultiContentView multiTabView = characterView.addMultiTabView(viewTitle);
     for (ITabContent content : contents) {
       content.addTo(multiTabView);
     }

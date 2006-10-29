@@ -2,9 +2,9 @@ package net.sf.anathema.charmtree.presenter.view;
 
 import java.awt.Color;
 
-import net.sf.anathema.framework.presenter.view.ISimpleTabView;
+import net.sf.anathema.lib.gui.IView;
 
-public interface ICharmSelectionView extends ICascadeSelectionView, ISimpleTabView {
+public interface ICharmSelectionView extends ICascadeSelectionView, IView {
 
   public void addCharmSelectionListener(ICharmSelectionListener listener);
 

@@ -10,12 +10,12 @@ import net.sf.anathema.character.intimacies.presenter.IntimaciesPresenter;
 import net.sf.anathema.character.intimacies.view.IntimaciesView;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.MarkerIntValueDisplayFactory;
-import net.sf.anathema.framework.presenter.view.ISimpleTabView;
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.resources.IResources;
 
 public class IntimaciesViewFactory implements IAdditionalViewFactory {
 
-  public ISimpleTabView createView(IAdditionalModel model, final IResources resources, CharacterType type) {
+  public IView createView(IAdditionalModel model, final IResources resources, CharacterType type) {
     IIconToggleButtonProperties properties = new IIconToggleButtonProperties() {
       public Icon createStandardIcon() {
         return new CharacterUI(resources).getLinkIcon();

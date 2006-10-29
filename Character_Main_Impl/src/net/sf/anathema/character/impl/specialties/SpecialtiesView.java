@@ -14,9 +14,9 @@ import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.presenter.specialty.ISpecialtiesConfigurationView;
 import net.sf.anathema.character.view.ISpecialtyView;
 import net.sf.anathema.character.view.basic.IButtonControlledComboEditView;
-import net.sf.anathema.framework.presenter.view.ISimpleTabView;
+import net.sf.anathema.lib.gui.IView;
 
-public class SpecialtiesView implements ISpecialtiesConfigurationView, ISimpleTabView {
+public class SpecialtiesView implements ISpecialtiesConfigurationView, IView {
 
   private final IIntValueDisplayFactory factory;
   private JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));

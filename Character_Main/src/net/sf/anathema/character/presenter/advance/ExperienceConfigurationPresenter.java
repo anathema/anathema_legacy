@@ -15,6 +15,7 @@ import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewListener;
 import net.sf.anathema.framework.presenter.view.ITabContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
+import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.resources.IResources;
 
 public class ExperienceConfigurationPresenter implements IContentPresenter {
@@ -83,7 +84,7 @@ public class ExperienceConfigurationPresenter implements IContentPresenter {
 
   public ITabContent getTabContent() {
     String title = resources.getString("CardView.ExperienceConfiguration.Title");//$NON-NLS-1$
-    return new SimpleViewTabContent(title, experienceView);
+    return new SimpleViewTabContent(new ContentProperties(title).needsScrollbar(), experienceView);
   }
 
   private void initTableModel() {

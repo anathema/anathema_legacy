@@ -18,7 +18,7 @@ import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.overview.IOverviewView;
-import net.sf.anathema.framework.presenter.view.IMultiTabView;
+import net.sf.anathema.framework.presenter.view.IMultiContentView;
 import net.sf.anathema.framework.view.item.AbstractTabbedItemView;
 import net.sf.anathema.framework.view.util.MultiTabView;
 import net.sf.anathema.lib.gui.IDisposable;
@@ -50,8 +50,8 @@ public class CharacterView extends AbstractTabbedItemView implements ICharacterV
     return new CharacterDescriptionView();
   }
 
-  public IMultiTabView addMultiTabView(String header) {
-    IMultiTabView multiTabView = new MultiTabView();
+  public IMultiContentView addMultiTabView(String header) {
+    IMultiContentView multiTabView = new MultiTabView();
     addTab(multiTabView, header);
     return multiTabView;
   }

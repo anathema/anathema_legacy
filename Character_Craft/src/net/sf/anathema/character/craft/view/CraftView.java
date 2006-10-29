@@ -15,10 +15,10 @@ import net.sf.anathema.character.library.selection.IStringSelectionView;
 import net.sf.anathema.character.library.selection.StringSelectionView;
 import net.sf.anathema.character.library.trait.view.RearButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
-import net.sf.anathema.framework.presenter.view.ISimpleTabView;
+import net.sf.anathema.lib.gui.IView;
 
 public class CraftView extends AbstractRemovableEntryView<IRemovableTraitView<SimpleTraitView>> implements
-    ISimpleTabView,
+    IView,
     IRemovableStringEntriesView<SimpleTraitView> {
   private final IIntValueDisplayFactory factory;
   private final JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));

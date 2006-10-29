@@ -29,6 +29,7 @@ import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.presenter.view.ITabContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
+import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.compare.I18nedIdentificateSorter;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -69,7 +70,8 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   }
 
   public ITabContent getTabContent() {
-    return new SimpleViewTabContent(resources.getString("CardView.CharacterConcept.Title"), view); //$NON-NLS-1$
+    String conceptHeader = resources.getString("CardView.CharacterConcept.Title");
+    return new SimpleViewTabContent(new ContentProperties(conceptHeader), view); //$NON-NLS-1$
   }
 
   private void initMotivationPresentation(final IMotivation motivation, boolean casteRow) {

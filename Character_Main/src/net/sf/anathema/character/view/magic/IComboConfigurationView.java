@@ -2,10 +2,10 @@ package net.sf.anathema.character.view.magic;
 
 import javax.swing.Action;
 
-import net.sf.anathema.framework.presenter.view.ISimpleTabView;
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
-public interface IComboConfigurationView extends ISimpleTabView {
+public interface IComboConfigurationView extends IView {
 
   public void initGui(IComboViewProperties properties);
 

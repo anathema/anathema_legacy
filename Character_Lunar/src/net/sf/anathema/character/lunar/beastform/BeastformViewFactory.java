@@ -8,12 +8,12 @@ import net.sf.anathema.character.lunar.beastform.presenter.BeastformPresenter;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.lunar.beastform.view.BeastformView;
 import net.sf.anathema.character.lunar.beastform.view.IBeastformViewProperties;
-import net.sf.anathema.framework.presenter.view.ISimpleTabView;
+import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.resources.IResources;
 
 public class BeastformViewFactory implements IAdditionalViewFactory {
 
-  public ISimpleTabView createView(IAdditionalModel model, final IResources resources, CharacterType type) {
+  public IView createView(IAdditionalModel model, final IResources resources, CharacterType type) {
     MarkerIntValueDisplayFactory intValueDisplayFactory = new MarkerIntValueDisplayFactory(resources, type);
     BeastformView view = new BeastformView(intValueDisplayFactory, new IBeastformViewProperties() {
       public String getCharmString() {
