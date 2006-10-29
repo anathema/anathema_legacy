@@ -31,6 +31,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.health.HealthType;
+import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.gui.wizard.AnathemaWizardDialog;
 import net.sf.anathema.lib.resources.IResources;
@@ -45,8 +46,12 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
     this.collectionFactory = collectionFactory;
   }
 
-  public IEquipmentStats createNewStats(Component parentComponent, IResources resources, String[] definedNames) {
-    IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames);
+  public IEquipmentStats createNewStats(
+      Component parentComponent,
+      IResources resources,
+      String[] definedNames,
+      IExaltedRuleSet ruleset) {
+    IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames, ruleset);
     IEquipmentStatisticsCreationViewFactory viewFactory = new EquipmentStatisticsCreationViewFactory();
     EquipmentTypeChoicePresenterPage startPage = new EquipmentTypeChoicePresenterPage(resources, model, viewFactory);
     WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
@@ -61,8 +66,9 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
       Component parentComponent,
       IResources resources,
       String[] definedNames,
-      IEquipmentStats stats) {
-    IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames);
+      IEquipmentStats stats,
+      IExaltedRuleSet ruleset) {
+    IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames, ruleset);
     createModel(model, stats);
     IEquipmentStatisticsCreationViewFactory viewFactory = new EquipmentStatisticsCreationViewFactory();
     EquipmentTypeChoicePresenterPage startPage = new EquipmentTypeChoicePresenterPage(resources, model, viewFactory);

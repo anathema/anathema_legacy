@@ -6,6 +6,10 @@ import net.sf.anathema.lib.workflow.intvalue.RangedIntValueModel;
 
 public class CloseCombatStatsticsModel extends OffensiveStatisticsModel implements ICloseCombatStatsticsModel {
 
+  public CloseCombatStatsticsModel(IIntValueModel speedModel) {
+    super(speedModel);
+  }
+
   private final IIntValueModel defenseModel = new RangedIntValueModel(0);
 
   public IIntValueModel getDefenseModel() {

@@ -8,13 +8,18 @@ import net.sf.anathema.character.equipment.creation.model.stats.IRangedCombatSta
 import net.sf.anathema.character.equipment.creation.model.stats.IShieldStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponTagsModel;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
+import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.data.Range;
+import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
+import net.sf.anathema.lib.workflow.intvalue.RangedIntValueModel;
 
 public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCreationModel {
 
-  private final ICloseCombatStatsticsModel closeCombatStatisticsModel = new CloseCombatStatsticsModel();
-  private final IRangedCombatStatisticsModel rangedWeaponStatisticsModel = new RangedWeaponStatisticsModel();
+  private final ICloseCombatStatsticsModel closeCombatStatisticsModel;
+  private final IRangedCombatStatisticsModel rangedWeaponStatisticsModel;
   private final IShieldStatisticsModel shieldStatisticsModel = new ShieldStatisticsModel();
   private final IArmourStatisticsModel armourStatisticsModel = new ArmourStatsticsModel();
   private final ChangeControl equpimentTypeChangeControl = new ChangeControl();
@@ -22,8 +27,28 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
   private EquipmentStatisticsType statisticsType;
   private final String[] existingNames;
 
-  public EquipmentStatisticsCreationModel(String[] existingNames) {
+  public EquipmentStatisticsCreationModel(String[] existingNames, IExaltedRuleSet ruleset) {
     this.existingNames = existingNames;
+    this.closeCombatStatisticsModel = new CloseCombatStatsticsModel(createOffensiveSpeedModel(ruleset));
+    this.rangedWeaponStatisticsModel = new RangedWeaponStatisticsModel(createOffensiveSpeedModel(ruleset));
+  }
+
+  private IIntValueModel createOffensiveSpeedModel(IExaltedRuleSet ruleset) {
+    final IIntValueModel[] speedModel = new IIntValueModel[1];
+    ruleset.accept(new IRuleSetVisitor() {
+      public void visitCoreRules(IExaltedRuleSet set) {
+        speedModel[0] = new RangedIntValueModel(new Range(Integer.MIN_VALUE, Integer.MAX_VALUE), 1);
+      }
+
+      public void visitPowerCombat(IExaltedRuleSet set) {
+        speedModel[0] = new RangedIntValueModel(new Range(Integer.MIN_VALUE, Integer.MAX_VALUE), 1);
+      }
+
+      public void visitSecondEdition(IExaltedRuleSet set) {
+        speedModel[0] = new RangedIntValueModel(new Range(1, Integer.MAX_VALUE), 1);
+      }
+    });
+    return speedModel[0];
   }
 
   public void setEquipmentType(EquipmentStatisticsType statisticsType) {

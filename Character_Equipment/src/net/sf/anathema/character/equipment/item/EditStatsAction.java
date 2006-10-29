@@ -67,7 +67,7 @@ public class EditStatsAction extends SmartAction {
       definedNames.add(stats.getName().getId());
     }
     String[] nameArray = definedNames.toArray(new String[definedNames.size()]);
-    IEquipmentStats equipmentStats = factory.editStats(parentComponent, resources, nameArray, selectedStats);
+    IEquipmentStats equipmentStats = factory.editStats(parentComponent, resources, nameArray, selectedStats, ruleset);
     if (equipmentStats == null) {
       return;
     }

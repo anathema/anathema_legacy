@@ -8,8 +8,12 @@ http://anathema.sf.net
 ===------------------------------------------------------------------------------===
 
 -- Usability --
++ Toolbar with transparent icons (As seen in Firefox, proposed by Democritus)
 * Some twiddling with the series view
 * Fixed layout issues in music view
+
+-- Bugs Fixed --
+* [1E] Weapon speeds can be negative
 
 ===------------------------------------------------------------------------------===
 			Release 1.0 "Lap" (22/10/06)

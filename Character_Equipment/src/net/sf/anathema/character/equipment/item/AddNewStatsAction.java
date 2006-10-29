@@ -51,7 +51,7 @@ public final class AddNewStatsAction extends SmartAction {
       definedNames.add(stats.getName().getId());
     }
     String[] nameArray = definedNames.toArray(new String[definedNames.size()]);
-    IEquipmentStats equipmentStats = statsFactory.createNewStats(parentComponent, resources, nameArray);
+    IEquipmentStats equipmentStats = statsFactory.createNewStats(parentComponent, resources, nameArray, ruleset);
     if (equipmentStats == null) {
       return;
     }
