@@ -19,10 +19,11 @@ import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.framework.presenter.view.IMultiContentView;
+import net.sf.anathema.framework.presenter.view.MultiWindowContentView;
 import net.sf.anathema.framework.view.item.AbstractItemView;
+import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.framework.view.util.MultiTabContentView;
 import net.sf.anathema.framework.view.util.TabDirection;
-import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.gui.IDisposable;
 
 public class CharacterView extends AbstractItemView implements ICharacterView {
@@ -33,7 +34,7 @@ public class CharacterView extends AbstractItemView implements ICharacterView {
   private OverviewView overviewView;
   private final List<IDisposable> disposables = new ArrayList<IDisposable>();
   private final IIntValueDisplayFactory intValueDisplayFactoryWithoutMarker;
-  private final IMultiContentView contentView = new MultiTabContentView();
+  private final IMultiContentView contentView = new MultiWindowContentView();
 
   private JComponent content;
 
@@ -102,7 +103,7 @@ public class CharacterView extends AbstractItemView implements ICharacterView {
 
   public final JComponent getComponent() {
     if (content == null) {
-      contentView.setAdditionalComponents(getTabAreaComponents());
+      contentView.setAdditionalComponent(getTabAreaComponent());
       content = contentView.getComponent();
     }
     return content;
@@ -112,15 +113,15 @@ public class CharacterView extends AbstractItemView implements ICharacterView {
     return intValueDisplayFactory;
   }
 
-  private JComponent[] getTabAreaComponents() {
+  private JComponent getTabAreaComponent() {
     if (overviewView == null) {
-      return new JComponent[0];
+      return null;
     }
-    return new JComponent[] { overviewView.getComponent() };
+    return overviewView.getComponent();
   }
 
   public void toogleOverviewView(boolean experienced) {
     this.overviewView = experienced ? experienceOverviewView : creationOverviewView;
-    contentView.setAdditionalComponents(getTabAreaComponents());
+    contentView.setAdditionalComponent(getTabAreaComponent());
   }
 }

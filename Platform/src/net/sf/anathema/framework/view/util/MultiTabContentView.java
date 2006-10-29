@@ -34,8 +34,8 @@ public class MultiTabContentView implements IMultiContentView {
     tabbedView.getComponent().revalidate();
   }
 
-  public void setAdditionalComponents(JComponent[] components) {
-    tabbedView.setTabAreaComponents(components);
+  public void setAdditionalComponent(JComponent component) {
+    tabbedView.setTabAreaComponents(new JComponent[] { component });
     tabbedView.getComponent().revalidate();
   }
 }
