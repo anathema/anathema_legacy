@@ -5,7 +5,6 @@ import net.sf.anathema.character.equipment.impl.reporting.second.stats.Equipment
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.IEquipmentStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.DamageWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.RangeWeaponStatsGroup;
-import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.RateWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.TagsStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
@@ -29,22 +28,22 @@ public abstract class AbstractWeaponryTableEncoder extends AbstractEquipmentTabl
     IGenericTraitCollection traitCollection = character.getTraitCollection();
     return new IEquipmentStatsGroup[] {
         new EquipmentNameStatsGroup(resources),
-        getSpeedWeaponStatsGroup(),
-        getAccuracyWeaponStatsGroup(character),
+        createSpeedGroup(),
+        createAccuracyGroup(character),
         new DamageWeaponStatsGroup(resources, traitCollection),
-        getDefenceWeaponStatsGroup(character),
-        new RateWeaponStatsGroup(resources),
+        createDefenceGroup(character),
+        createRateGroup(character),
         new RangeWeaponStatsGroup(resources),
         new TagsStatsGroup(resources) };
   }
 
-  protected AccuracyWeaponStatsGroup getAccuracyWeaponStatsGroup(IGenericCharacter character) {
-    return new AccuracyWeaponStatsGroup(resources, character.getTraitCollection());
-  }
+  protected abstract RateWeaponStatsGroup createRateGroup(IGenericCharacter character);
 
-  protected abstract AbstractDefenceWeaponStatsGroup getDefenceWeaponStatsGroup(IGenericCharacter character);
+  protected abstract AccuracyWeaponStatsGroup createAccuracyGroup(IGenericCharacter character);
 
-  protected abstract AbstractSpeedWeaponStatsGroup getSpeedWeaponStatsGroup();
+  protected abstract AbstractDefenceWeaponStatsGroup createDefenceGroup(IGenericCharacter character);
+
+  protected abstract AbstractSpeedWeaponStatsGroup createSpeedGroup();
 
   protected IResources getResources() {
     return resources;

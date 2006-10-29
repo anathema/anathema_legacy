@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.impl.reporting.second.weaponstats;
+package net.sf.anathema.character.equipment.impl.reporting;
 
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.AbstractValueEquipmentStatsGroup;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;

@@ -2,6 +2,8 @@ package net.sf.anathema.character.equipment.impl.reporting.second;
 
 import net.sf.anathema.character.equipment.impl.reporting.AbstractDefenceWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.AbstractWeaponryTableEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.AccuracyWeaponStatsGroup;
+import net.sf.anathema.character.equipment.impl.reporting.RateWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.SecondEditionDefenceWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.SecondEditionSpeedWeaponStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
@@ -16,12 +18,22 @@ public class SecondEditionWeaponryTableEncoder extends AbstractWeaponryTableEnco
   }
 
   @Override
-  protected SecondEditionSpeedWeaponStatsGroup getSpeedWeaponStatsGroup() {
+  protected SecondEditionSpeedWeaponStatsGroup createSpeedGroup() {
     return new SecondEditionSpeedWeaponStatsGroup(getResources());
   }
 
   @Override
-  protected AbstractDefenceWeaponStatsGroup getDefenceWeaponStatsGroup(IGenericCharacter character) {
+  protected AbstractDefenceWeaponStatsGroup createDefenceGroup(IGenericCharacter character) {
     return new SecondEditionDefenceWeaponStatsGroup(getResources(), character);
+  }
+
+  @Override
+  protected AccuracyWeaponStatsGroup createAccuracyGroup(IGenericCharacter character) {
+    return new AccuracyWeaponStatsGroup(getResources(), character.getTraitCollection());
+  }
+
+  @Override
+  protected RateWeaponStatsGroup createRateGroup(IGenericCharacter character) {
+    return new RateWeaponStatsGroup(getResources());
   }
 }
