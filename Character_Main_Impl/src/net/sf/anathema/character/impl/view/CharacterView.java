@@ -19,11 +19,14 @@ import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.framework.presenter.view.IMultiContentView;
-import net.sf.anathema.framework.view.item.AbstractTabbedItemView;
-import net.sf.anathema.framework.view.util.MultiTabView;
+import net.sf.anathema.framework.view.item.AbstractItemView;
+import net.sf.anathema.framework.view.util.ContentProperties;
+import net.sf.anathema.framework.view.util.MultiTabContentView;
+import net.sf.anathema.framework.view.util.TabbedView;
 import net.sf.anathema.lib.gui.IDisposable;
+import net.sf.anathema.lib.gui.IView;
 
-public class CharacterView extends AbstractTabbedItemView implements ICharacterView {
+public class CharacterView extends AbstractItemView implements ICharacterView {
 
   private final IIntValueDisplayFactory intValueDisplayFactory;
   private OverviewView creationOverviewView;
@@ -42,6 +45,25 @@ public class CharacterView extends AbstractTabbedItemView implements ICharacterV
     this.intValueDisplayFactoryWithoutMarker = factoryWithoutMarker;
   }
 
+  private final TabbedView tabbedView = new TabbedView();
+  private JComponent content;
+
+  protected final void addTab(IView viewContent, final String name) {
+    tabbedView.addTab(viewContent, new ContentProperties(name));
+  }
+
+  public final JComponent getComponent() {
+    if (content == null) {
+      setTabAreaComponents(getTabAreaComponents());
+      content = tabbedView.getComponent();
+    }
+    return content;
+  }
+
+  protected final void setTabAreaComponents(JComponent[] components) {
+    tabbedView.setTabAreaComponents(components);
+  }
+
   public IGroupedFavorableTraitViewFactory createGroupedFavorableTraitViewFactory() {
     return new GroupedFavorableTraitViewFactory(intValueDisplayFactory, intValueDisplayFactoryWithoutMarker);
   }
@@ -50,8 +72,8 @@ public class CharacterView extends AbstractTabbedItemView implements ICharacterV
     return new CharacterDescriptionView();
   }
 
-  public IMultiContentView addMultiTabView(String header) {
-    IMultiContentView multiTabView = new MultiTabView();
+  public IMultiContentView addMultiContentView(String header) {
+    IMultiContentView multiTabView = new MultiTabContentView();
     addTab(multiTabView, header);
     return multiTabView;
   }
@@ -73,8 +95,7 @@ public class CharacterView extends AbstractTabbedItemView implements ICharacterV
     }
   }
 
-  @Override
-  protected JComponent[] getTabAreaComponents() {
+  private JComponent[] getTabAreaComponents() {
     if (overviewView == null) {
       return new JComponent[0];
     }

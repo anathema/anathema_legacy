@@ -2,14 +2,14 @@ package net.sf.anathema.demo.platform.view.util;
 
 import net.sf.anathema.framework.presenter.view.SimpleViewTabContent;
 import net.sf.anathema.framework.view.util.ContentProperties;
-import net.sf.anathema.framework.view.util.MultiTabView;
+import net.sf.anathema.framework.view.util.MultiTabContentView;
 import net.sf.anathema.framework.view.util.TabbedView;
 import de.jdemo.extensions.SwingDemoCase;
 
 public class MultiTabViewDemo extends SwingDemoCase {
 
   public void demoMultiTabView() {
-    MultiTabView view = createDemoView();
+    MultiTabContentView view = createDemoView();
     show(view.getComponent());
   }
 
@@ -20,8 +20,8 @@ public class MultiTabViewDemo extends SwingDemoCase {
     show(tabbedView.getComponent());
   }
 
-  private MultiTabView createDemoView() {
-    MultiTabView view = new MultiTabView();
+  private MultiTabContentView createDemoView() {
+    MultiTabContentView view = new MultiTabContentView();
     new SimpleViewTabContent(new ContentProperties("First Scroll Needed").needsScrollbar(), new DemoView()).addTo(view); //$NON-NLS-1$
     new SimpleViewTabContent(new ContentProperties("Second Scroll Needed").needsScrollbar(), new DemoView()).addTo(view); //$NON-NLS-1$
     new SimpleViewTabContent(new ContentProperties("First No Scroll Needed"), new DemoView()).addTo(view); //$NON-NLS-1$

@@ -20,7 +20,7 @@ public interface ICharacterView extends IItemView {
 
   public void toogleOverviewView(boolean experienced);
 
-  public IMultiContentView addMultiTabView(String header);
+  public IMultiContentView addMultiContentView(String header);
 
   public IIntValueDisplayFactory getIntValueDisplayFactory();
 

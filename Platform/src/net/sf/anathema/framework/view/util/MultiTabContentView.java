@@ -8,7 +8,7 @@ import net.sf.anathema.framework.presenter.view.AbstractContentView;
 import net.sf.anathema.framework.presenter.view.IMultiContentView;
 import net.sf.anathema.lib.gui.IView;
 
-public class MultiTabView extends AbstractContentView<Object> implements IMultiContentView {
+public class MultiTabContentView extends AbstractContentView<Object> implements IMultiContentView {
 
   private TabbedView tabbedView = new TabbedView(TabDirection.Up);
 

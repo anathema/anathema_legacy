@@ -166,7 +166,7 @@ public class CharacterPresenter implements IPresenter {
     if (contents.size() == 0) {
       return;
     }
-    IMultiContentView multiTabView = characterView.addMultiTabView(viewTitle);
+    IMultiContentView multiTabView = characterView.addMultiContentView(viewTitle);
     for (ITabContent content : contents) {
       content.addTo(multiTabView);
     }
