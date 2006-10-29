@@ -10,10 +10,6 @@ import net.sf.anathema.lib.gui.IView;
 
 public class MultiTabView extends AbstractTabView<Object> implements IMultiContentView {
 
-  public MultiTabView() {
-    super(false);
-  }
-
   private TabbedView tabbedView = new TabbedView(TabDirection.Up);
 
   @Override

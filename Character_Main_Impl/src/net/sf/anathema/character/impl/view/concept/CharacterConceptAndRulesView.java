@@ -35,10 +35,6 @@ public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConc
   private final List<JPanel> buttonPanels = new ArrayList<JPanel>();
   private final IGridDialogPanel rulesPanel = new DefaultGridDialogPanel(false);
 
-  public CharacterConceptAndRulesView() {
-    super(false);
-  }
-
   @Override
   protected void createContent(JPanel panel, ICharacterConceptAndRulesViewProperties properties) {
     conceptPanel.setBorder(new TitledBorder(properties.getConceptTitle()));
