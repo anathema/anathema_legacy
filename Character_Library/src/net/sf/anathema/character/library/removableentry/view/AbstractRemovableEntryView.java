@@ -11,8 +11,4 @@ public abstract class AbstractRemovableEntryView<V extends IRemovableEntryView> 
   public void removeEntryView(IRemovableEntryView removableView) {
     removableView.delete();
   }
-
-  public boolean needsScrollbar() {
-    return false;
-  }
 }

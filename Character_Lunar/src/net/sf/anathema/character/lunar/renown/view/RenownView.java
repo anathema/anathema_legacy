@@ -39,10 +39,6 @@ public class RenownView implements IView {
     return content;
   }
 
-  public boolean needsScrollbar() {
-    return false;
-  }
-
   public IIntValueView addIntValueView(String label) {
     SpinnerTraitView view = new SpinnerTraitView(label);
     view.addTo(renownPanel);

@@ -61,10 +61,6 @@ public class SiderealCollegeView implements IView, ISiderealCollegeView {
     return traitView;
   }
 
-  public boolean needsScrollbar() {
-    return false;
-  }
-
   public IOverviewCategory createOverview(String borderLabel) {
     return new OverviewCategory(borderLabel, false);
   }

@@ -55,10 +55,6 @@ public class BeastformView implements IBeastformView {
     return content;
   }
 
-  public boolean needsScrollbar() {
-    return false;
-  }
-
   public IIntValueView addIntValueView(String label, int value, int maxValue) {
     SimpleTraitView traitView = new SimpleTraitView(intValueDisplayFactory, label, value, maxValue);
     traitView.addComponents(baseContentPanel);

@@ -219,8 +219,4 @@ public class ComboConfigurationView implements IComboConfigurationView {
         ? properties.getFinalizeButtonEditToolTip()
         : properties.getFinalizeButtonToolTip());
   }
-
-  public boolean needsScrollbar() {
-    return false;
-  }
 }

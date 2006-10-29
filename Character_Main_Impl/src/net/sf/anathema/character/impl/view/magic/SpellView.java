@@ -144,8 +144,4 @@ public class SpellView implements ISpellView {
   public void clearSelection() {
     magicLearnView.clearSelection();
   }
-
-  public boolean needsScrollbar() {
-    return false;
-  }
 }

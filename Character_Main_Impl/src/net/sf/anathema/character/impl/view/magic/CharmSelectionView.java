@@ -46,8 +46,4 @@ public class CharmSelectionView extends AbstractCascadeSelectionView implements 
   public void setSpecialCharmViewVisible(ISVGSpecialCharmView charmView, boolean visible) {
     svgManager.setSpecialCharmViewVisible(getCharmTreeView(), charmView, visible);
   }
-
-  public boolean needsScrollbar() {
-    return false;
-  }
 }

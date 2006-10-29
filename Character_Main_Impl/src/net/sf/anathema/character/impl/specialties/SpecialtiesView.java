@@ -55,8 +55,4 @@ public class SpecialtiesView implements ISpecialtiesConfigurationView, IView {
     mainPanel.add(specialtyPanel, data);
     return mainPanel;
   }
-
-  public boolean needsScrollbar() {
-    return false;
-  }
 }

@@ -71,10 +71,6 @@ public class VirtueFlawView implements IVirtueFlawView {
     return virtueFlawPanel.getComponent();
   }
 
-  public boolean needsScrollbar() {
-    return false;
-  }
-
   protected IGridDialogPanel getVirtueFlawPanel() {
     return virtueFlawPanel;
   }

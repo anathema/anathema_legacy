@@ -19,7 +19,7 @@ import net.disy.commons.swing.toolbar.ToolBarUtilities;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
 import net.sf.anathema.character.view.concept.IWillpowerConditionView;
-import net.sf.anathema.framework.presenter.view.AbstractTabView;
+import net.sf.anathema.framework.presenter.view.AbstractContentView;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
@@ -28,7 +28,7 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
-public class CharacterConceptAndRulesView extends AbstractTabView<ICharacterConceptAndRulesViewProperties> implements
+public class CharacterConceptAndRulesView extends AbstractContentView<ICharacterConceptAndRulesViewProperties> implements
     ICharacterConceptAndRulesView {
 
   private final JPanel conceptPanel = new JPanel(new GridDialogLayout(3, false));

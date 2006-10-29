@@ -4,11 +4,11 @@ import javax.swing.AbstractButton;
 import javax.swing.ListCellRenderer;
 
 import net.disy.commons.swing.action.SmartAction;
-import net.sf.anathema.framework.presenter.view.ITabView;
+import net.sf.anathema.framework.presenter.view.IContentView;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
-public interface ICharacterConceptAndRulesView extends ITabView<ICharacterConceptAndRulesViewProperties> {
+public interface ICharacterConceptAndRulesView extends IContentView<ICharacterConceptAndRulesViewProperties> {
 
   public <V> IObjectSelectionView<V> addObjectSelectionView(
       String labelText,

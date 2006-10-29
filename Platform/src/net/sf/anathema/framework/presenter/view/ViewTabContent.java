@@ -15,7 +15,7 @@ public class ViewTabContent implements ITabContent {
   }
 
   public void addTo(IMultiContentView view) {
-    view.addTabView(this.contentView, tabProperties);
+    view.addView(this.contentView, tabProperties);
   }
 
   public IDisposable getDisposable() {

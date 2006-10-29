@@ -17,13 +17,13 @@ public class TabbedViewDemo extends SwingDemoCase {
 
   public void demoViewThatNeedsScrollbar() {
     TabbedView view = new TabbedView(TabDirection.Up);
-    view.addTab(new DemoTabView(true), "TabName"); //$NON-NLS-1$
+    view.addTab(new DemoView(), "TabName"); //$NON-NLS-1$
     show(view.getComponent());
   }
 
   public void demoViewDoesNotNeedScrollbar() {
     TabbedView view = new TabbedView(TabDirection.Up);
-    view.addTab(new DemoTabView(false), "TabName"); //$NON-NLS-1$
+    view.addTab(new DemoView(), "TabName"); //$NON-NLS-1$
     show(view.getComponent());
   }
 

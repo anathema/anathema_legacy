@@ -5,12 +5,12 @@ import javax.swing.ListCellRenderer;
 
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
-import net.sf.anathema.framework.presenter.view.ITabView;
+import net.sf.anathema.framework.presenter.view.IContentView;
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-public interface IBasicAdvantageView extends ITabView<IAdvantageViewProperties> {
+public interface IBasicAdvantageView extends IContentView<IAdvantageViewProperties> {
 
   public IIntValueView addVirtue(String labelText, int value, int maxValue);
 

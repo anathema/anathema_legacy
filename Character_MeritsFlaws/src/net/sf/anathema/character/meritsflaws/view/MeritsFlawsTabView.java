@@ -27,8 +27,4 @@ public class MeritsFlawsTabView implements IMeritsFlawsTabView {
     panel.add(perkView.getComponent(), BorderLayout.CENTER);
     return perkView;
   }
-
-  public boolean needsScrollbar() {
-    return false;
-  }
 }

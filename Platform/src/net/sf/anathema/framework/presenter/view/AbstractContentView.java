@@ -3,7 +3,7 @@ package net.sf.anathema.framework.presenter.view;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-public abstract class AbstractTabView<P> implements ITabView<P> {
+public abstract class AbstractContentView<P> implements IContentView<P> {
 
   private final JPanel content = new JPanel();
 

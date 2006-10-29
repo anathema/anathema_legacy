@@ -73,10 +73,6 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView {
     taskPaneView.revalidateView();
   }
 
-  public boolean needsScrollbar() {
-    return false;
-  }
-
   public IListObjectSelectionView<String> getEquipmentTemplatePickList() {
     return equipmentPickList;
   }

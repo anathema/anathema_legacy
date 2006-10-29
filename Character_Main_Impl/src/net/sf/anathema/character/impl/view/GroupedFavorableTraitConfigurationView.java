@@ -8,10 +8,10 @@ import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.trait.view.FrontToggleButtonTraitViewWrapper;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
-import net.sf.anathema.framework.presenter.view.AbstractTabView;
+import net.sf.anathema.framework.presenter.view.AbstractContentView;
 import net.sf.anathema.lib.gui.dialogcomponent.grouped.GroupedGridDialogPanel;
 
-public class GroupedFavorableTraitConfigurationView extends AbstractTabView<Object> implements
+public class GroupedFavorableTraitConfigurationView extends AbstractContentView<Object> implements
     IGroupedFavorableTraitConfigurationView {
 
   private final GroupedGridDialogPanel groupedTraitView;
