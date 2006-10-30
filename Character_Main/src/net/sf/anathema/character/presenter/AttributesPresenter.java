@@ -8,7 +8,6 @@ import net.sf.anathema.character.view.IGroupedFavorableTraitViewFactory;
 import net.sf.anathema.framework.presenter.view.IViewContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewContent;
 import net.sf.anathema.framework.view.util.ContentProperties;
-import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.resources.IResources;
 
 public class AttributesPresenter implements IContentPresenter {
@@ -28,7 +27,7 @@ public class AttributesPresenter implements IContentPresenter {
   }
 
   public IViewContent getTabContent() {
-    return new SimpleViewContent(new ContentProperties(contentHeader).needsScrollbar(), (IView) attributeView);
+    return new SimpleViewContent(new ContentProperties(contentHeader).needsScrollbar(), attributeView);
   }
 
   public void initPresentation() {

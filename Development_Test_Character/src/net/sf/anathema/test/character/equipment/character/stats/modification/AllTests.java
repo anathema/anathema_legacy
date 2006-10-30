@@ -22,5 +22,5 @@ import org.junit.runners.Suite.SuiteClasses;
     SecondEditionSoulsteelModificationTest.class,
     SecondEditionStarmetalModificationTest.class })
 public class AllTests {
-
+  //nothing to do
 }

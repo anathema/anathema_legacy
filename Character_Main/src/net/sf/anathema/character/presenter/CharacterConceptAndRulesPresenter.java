@@ -70,8 +70,8 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
   }
 
   public IViewContent getTabContent() {
-    String conceptHeader = resources.getString("CardView.CharacterConcept.Title");
-    return new SimpleViewContent(new ContentProperties(conceptHeader), view); //$NON-NLS-1$
+    String conceptHeader = resources.getString("CardView.CharacterConcept.Title"); //$NON-NLS-1$
+    return new SimpleViewContent(new ContentProperties(conceptHeader), view);
   }
 
   private void initMotivationPresentation(final IMotivation motivation, boolean casteRow) {
