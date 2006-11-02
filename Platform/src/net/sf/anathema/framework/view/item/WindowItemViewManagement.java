@@ -1,6 +1,7 @@
 package net.sf.anathema.framework.view.item;
 
 import java.awt.Component;
+import java.awt.SystemColor;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,7 +14,11 @@ import net.infonode.docking.DockingWindow;
 import net.infonode.docking.DockingWindowAdapter;
 import net.infonode.docking.RootWindow;
 import net.infonode.docking.View;
+import net.infonode.docking.theme.BlueHighlightDockingTheme;
+import net.infonode.docking.theme.LookAndFeelDockingTheme;
 import net.infonode.docking.util.DockingUtil;
+import net.infonode.docking.util.WindowMenuUtil;
+import net.infonode.util.Direction;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.framework.view.IViewSelectionListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -26,6 +31,11 @@ public class WindowItemViewManagement implements IComponentItemViewManagement {
   private final List<IViewSelectionListener> viewSelectionListeners = new ArrayList<IViewSelectionListener>();
 
   public void addItemView(final IItemView view, final Action closeAction) {
+    BlueHighlightDockingTheme theme = new BlueHighlightDockingTheme();
+    window.getRootWindowProperties().addSuperObject(theme.getRootWindowProperties());
+    window.getRootWindowProperties().getTabWindowProperties().getTabbedPanelProperties().setTabAreaOrientation(Direction.DOWN);
+     
+    
     JComponent component = view.getComponent();
     itemViewsByComponent.put(component, view);
     final View windowView = new View(view.getName(), view.getIcon(), component);
