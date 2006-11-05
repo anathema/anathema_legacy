@@ -8,6 +8,8 @@ import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
+import net.sf.anathema.lib.control.change.ChangeControl;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public class AnathemaItem implements IItem {
@@ -93,5 +95,27 @@ public class AnathemaItem implements IItem {
 
   public IItemData getItemData() {
     return itemData;
+  }
+
+  public boolean isDirty() {
+    return itemData != null && itemData.isDirty();
+  }
+
+  public void setClean() {
+    if (itemData != null) {
+      itemData.setClean();
+    }
+  }
+
+  public void addDirtyListener(IChangeListener changeListener) {
+    if (itemData != null) {
+      itemData.addDirtyListener(changeListener);
+    }
+  }
+
+  public void removeDirtyListener(IChangeListener changeListener) {
+    if (itemData != null) {
+      itemData.removeDirtyListener(changeListener);
+    }
   }
 }

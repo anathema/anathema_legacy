@@ -22,13 +22,21 @@ import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
 public class AnathemaSaveAction extends SmartAction {
 
-  private static class SaveEnabledListener extends ItemManagementModelAdapter {
+  private IItem currentItem;
+  private final IChangeListener changeListener = new IChangeListener() {
+    public void changeOccured() {
+      AnathemaSaveAction.this.setEnabled(currentItem.isDirty());
+    }
+  };
+
+  private class SaveEnabledListener extends ItemManagementModelAdapter {
 
     private final IRegistry<IItemType, IRepositoryItemPersister> persisterRegistry;
     private final Action action;
@@ -39,13 +47,23 @@ public class AnathemaSaveAction extends SmartAction {
     }
 
     @Override
-    public void itemSelected(IItem item) {
+    public void itemSelected(final IItem item) {
+      if (currentItem != null) {
+        currentItem.removeDirtyListener(changeListener);
+      }
+      AnathemaSaveAction.this.currentItem = item;
       if (item == null) {
         action.setEnabled(false);
         return;
       }
       IRepositoryItemPersister itemPersister = persisterRegistry.get(item.getItemType());
-      action.setEnabled(itemPersister != null);
+      boolean persistable = itemPersister != null;
+      if (!persistable) {
+        action.setEnabled(false);
+        return;
+      }
+      item.addDirtyListener(changeListener);
+      action.setEnabled(item.isDirty());
     }
   }
 
@@ -83,6 +101,7 @@ public class AnathemaSaveAction extends SmartAction {
       IRepositoryWriteAccess writeAccess = model.getRepository().createWriteAccess(selectedItem);
       IRepositoryItemPersister persister = model.getPersisterRegistry().get(selectedItem.getItemType());
       persister.save(writeAccess, selectedItem);
+      selectedItem.setClean();
     }
     catch (IOException e) {
       MessageDialogFactory.showMessageDialog(parentComponent, new Message(

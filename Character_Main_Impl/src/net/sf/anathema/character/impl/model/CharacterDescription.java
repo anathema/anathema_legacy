@@ -36,4 +36,14 @@ public class CharacterDescription implements ICharacterDescription {
   public ITextualDescription getNotes() {
     return notes;
   }
+
+  public ITextualDescription[] getAllDescriptions() {
+    return new ITextualDescription[] {
+        nameDescription,
+        periphraseDescription,
+        characterization,
+        physicalDescription,
+        notes,
+        player };
+  }
 }

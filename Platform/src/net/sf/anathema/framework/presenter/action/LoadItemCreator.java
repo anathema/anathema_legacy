@@ -21,7 +21,9 @@ public class LoadItemCreator implements IItemCreator {
     IRepositoryItemPersister persister = model.getPersisterRegistry().get(type);
     try {
       IRepositoryReadAccess readAccess = model.getRepository().openReadAccess(type, (IFileProvider) template);
-      return persister.load(readAccess);
+      IItem item = persister.load(readAccess);
+      item.setClean();
+      return item;
     }
     catch (RepositoryException e) {
       throw new PersistenceException("An exception occured while loading.", e); //$NON-NLS-1$

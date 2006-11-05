@@ -7,6 +7,7 @@ import net.sf.anathema.campaign.model.plot.IPlotModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public class Series implements ISeries, IItemData {
@@ -29,5 +30,21 @@ public class Series implements ISeries, IItemData {
   public void setPrintNameAdjuster(PrintNameAdjuster adjuster) {
     ITextualDescription rootName = plotModel.getRootElement().getDescription().getName();
     rootName.addTextChangedListener(adjuster);
+  }
+
+  public void addDirtyListener(IChangeListener changeListener) {
+    // nothing to do
+  }
+
+  public boolean isDirty() {
+    return true;
+  }
+
+  public void setClean() {
+    // nothing to do
+  }
+
+  public void removeDirtyListener(IChangeListener changeListener) {
+    // nothing to do
   }
 }

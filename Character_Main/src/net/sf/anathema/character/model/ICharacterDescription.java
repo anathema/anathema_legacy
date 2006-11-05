@@ -15,4 +15,6 @@ public interface ICharacterDescription {
   public ITextualDescription getNotes();
 
   public ITextualDescription getPlayer();
+
+  public ITextualDescription[] getAllDescriptions();
 }

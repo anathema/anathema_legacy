@@ -2,6 +2,7 @@ package net.sf.anathema.framework.repository;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.itemdata.model.IItemData;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public interface IItem extends IIdentificate {
@@ -21,4 +22,12 @@ public interface IItem extends IIdentificate {
   public void addItemListener(IItemListener listener);
 
   public void removeItemListener(IItemListener listener);
+
+  public boolean isDirty();
+
+  public void setClean();
+
+  public void removeDirtyListener(IChangeListener changeListener);
+
+  public void addDirtyListener(IChangeListener changeListener);
 }

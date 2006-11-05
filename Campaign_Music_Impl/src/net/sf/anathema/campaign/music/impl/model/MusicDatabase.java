@@ -12,12 +12,12 @@ import net.sf.anathema.campaign.music.model.libary.ILibraryControl;
 import net.sf.anathema.campaign.music.model.selection.IMusicSelectionModel;
 import net.sf.anathema.campaign.music.presenter.IMusicSearchControl;
 import net.sf.anathema.campaign.music.presenter.selection.player.IMusicPlayerModel;
-import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
+import net.sf.anathema.framework.itemdata.model.NonPersistableItemData;
 import net.sf.anathema.lib.logging.Logger;
 
 import com.db4o.ObjectContainer;
 
-public class MusicDatabase implements IMusicDatabase {
+public class MusicDatabase extends NonPersistableItemData implements IMusicDatabase {
 
   private static final Logger logger = Logger.getLogger(MusicDatabase.class);
   private final IMusicSelectionModel musicSelection;
@@ -53,9 +53,5 @@ public class MusicDatabase implements IMusicDatabase {
 
   public IMusicSearchControl getMusicSearchControl() {
     return musicSearchControl;
-  }
-
-  public void setPrintNameAdjuster(PrintNameAdjuster adjuster) {
-    // Nothing to do
   }
 }

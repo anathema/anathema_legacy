@@ -16,12 +16,21 @@ import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.registry.IRegistry;
+import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public class ExaltedCharacter implements ICharacter, IItemData {
 
   private CharacterStatistics statistics;
   private final ICharacterDescription description = new CharacterDescription();
+  private final CharacterChangeManagement management = new CharacterChangeManagement();
+
+  public ExaltedCharacter() {
+    for (ITextualDescription currentDescription : description.getAllDescriptions()) {
+      currentDescription.addTextChangedListener(management.getDescriptionChangeListener());
+    }
+  }
 
   public ICharacterStatistics getStatistics() {
     return statistics;
@@ -50,6 +59,9 @@ public class ExaltedCharacter implements ICharacter, IItemData {
       }
     }
     addCompulsiveCharms(template);
+    statistics.getCharacterContext()
+        .getCharacterListening()
+        .addChangeListener(management.getStatisticsChangeListener());
     return statistics;
   }
 
@@ -76,5 +88,21 @@ public class ExaltedCharacter implements ICharacter, IItemData {
 
   public void setPrintNameAdjuster(PrintNameAdjuster adjuster) {
     description.getName().addTextChangedListener(adjuster);
+  }
+
+  public void addDirtyListener(IChangeListener changeListener) {
+    management.addChangeListener(changeListener);
+  }
+
+  public boolean isDirty() {
+    return management.isDirty();
+  }
+
+  public void removeDirtyListener(IChangeListener changeListener) {
+    management.removeChangeListener(changeListener);
+  }
+
+  public void setClean() {
+    management.setClean();
   }
 }
