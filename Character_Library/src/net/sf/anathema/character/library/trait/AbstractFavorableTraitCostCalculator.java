@@ -150,7 +150,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     return costsByTrait.get(trait);
   }
 
-  protected Set<IFavorableDefaultTrait> sortTraitsByStatus() {
+  private Set<IFavorableDefaultTrait> sortTraitsByStatus() {
     Set<IFavorableDefaultTrait> orderedTraits = new ListOrderedSet<IFavorableDefaultTrait>();
     for (IFavorableTrait trait : traits) {
       if (!trait.getFavorization().isCasteOrFavored()) {
@@ -180,7 +180,7 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     });
   }
 
-  protected void increaseFavoredPicksSpent() {
+  private void increaseFavoredPicksSpent() {
     favoredPicksSpent++;
   }
 
@@ -188,11 +188,11 @@ public abstract class AbstractFavorableTraitCostCalculator implements IFavorable
     return favoredPicksSpent;
   }
 
-  protected void increaseFavoredDotSum(int favoredDotsSpent) {
+  private void increaseFavoredDotSum(int favoredDotsSpent) {
     favoredDotSum += favoredDotsSpent;
   }
 
-  protected void increaseGeneralDotSum(int generalDotsSpent) {
+  private void increaseGeneralDotSum(int generalDotsSpent) {
     generalDotSum += generalDotsSpent;
   }
 
