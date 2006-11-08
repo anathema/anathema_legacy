@@ -16,8 +16,8 @@ import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedL
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
-import net.sf.anathema.character.library.trait.specialties.SpecialtiesContainer;
 import net.sf.anathema.character.library.trait.specialties.DefaultTraitReference;
+import net.sf.anathema.character.library.trait.specialties.SpecialtiesContainer;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
 import net.sf.anathema.dummy.character.DummyCasteType;
@@ -154,7 +154,9 @@ public class FavorableTraitTest extends AbstractTraitTest {
 
   // TODO Test für den SpecialtyContainer
   public void testExperienceSpecialtyCount() throws Exception {
-    ISubTraitContainer container = new SpecialtiesContainer(new DefaultTraitReference(first), modelContext.getTraitContext());
+    ISubTraitContainer container = new SpecialtiesContainer(
+        new DefaultTraitReference(first),
+        modelContext.getTraitContext());
     ISubTrait specialty = container.addSubTrait("TestSpecialty"); //$NON-NLS-1$
     specialty.setCreationValue(1);
     valueStrategy.setStrategy(new ExperiencedTraitValueStrategy());
@@ -162,5 +164,17 @@ public class FavorableTraitTest extends AbstractTraitTest {
     assertEquals(2, specialty.getCurrentValue());
     assertEquals(1, container.getCreationDotTotal());
     assertEquals(1, container.getExperienceDotTotal());
+  }
+
+  public void testCreationSpecialtyDuringExperienced() throws Exception {
+    ICharacterModelContext context = createModelContextWithEssence2(new ExperiencedTraitValueStrategy());
+    ISubTraitContainer container = new SpecialtiesContainer(new DefaultTraitReference(first), context.getTraitContext());
+    ISubTrait specialty = container.addSubTrait("TestSpecialty"); //$NON-NLS-1$
+    specialty.setCreationValue(2);
+    assertEquals(2, specialty.getCreationValue());
+    assertEquals(-1, specialty.getExperiencedValue());
+    assertEquals(2, specialty.getCurrentValue());
+    assertEquals(2, container.getCreationDotTotal());
+    assertEquals(0, container.getExperienceDotTotal());
   }
 }
