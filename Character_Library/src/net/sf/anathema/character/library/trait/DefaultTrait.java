@@ -36,12 +36,12 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
   public DefaultTrait(
       IFavorableTraitRules traitRules,
       ICasteType< ? extends ICasteTypeVisitor> caste,
-      ITraitContext valueContext,
+      ITraitContext traitContext,
       IBasicCharacterData basicData,
       ICharacterListening listening,
       IValueChangeChecker valueChangeChecker,
       IIncrementChecker favoredIncrementChecker) {
-    this(traitRules, valueContext, valueChangeChecker);
+    this(traitRules, traitContext, valueChangeChecker);
     traitFavorization = new TraitFavorization(
         basicData,
         caste,
