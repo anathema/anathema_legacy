@@ -25,7 +25,7 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
   private int experiencedValue = ITraitRules.UNEXPERIENCED;
   private final IValueChangeChecker checker;
   private ITraitFavorization traitFavorization;
-  private ICharacterChangeListener changeListener = new DedicatedCharacterChangeAdapter() {
+  private final ICharacterChangeListener changeListener = new DedicatedCharacterChangeAdapter() {
     @Override
     public void casteChanged() {
       resetCurrentValue();
@@ -53,9 +53,17 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
   }
 
   public DefaultTrait(ITraitRules traitRules, ITraitContext traitContext, IValueChangeChecker checker) {
+    this(traitRules, traitContext, checker, new NullTraitFavorization());
+  }
+
+  protected DefaultTrait(
+      ITraitRules traitRules,
+      ITraitContext traitContext,
+      IValueChangeChecker checker,
+      ITraitFavorization traitFavorization) {
     super(traitRules, traitContext);
-    this.traitFavorization = new NullTraitFavorization();
     this.checker = checker;
+    this.traitFavorization = traitFavorization;
     this.creationValue = traitRules.getStartValue();
   }
 

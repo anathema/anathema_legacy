@@ -47,11 +47,18 @@ public class AggregatedTrait extends AbstractFavorableTrait implements IAggregat
       IIncrementChecker favoredIncrementChecker,
       String... unremovableSubTraits) {
     super(traitRules, traitContext);
-    subTraits = new AggregationSubTraitContainer(
+    this.traitFavorization = new TraitFavorization(
+        basicData,
+        caste,
+        favoredIncrementChecker,
+        this,
+        traitRules.isRequiredFavored());
+    this.subTraits = new AggregationSubTraitContainer(
         traitRules,
         traitContext,
         valueChangeChecker,
         getType(),
+        traitFavorization,
         unremovableSubTraits);
     subTraits.addSubTraitListener(new ISubTraitListener() {
       public void subTraitAdded(ISubTrait subTrait) {
@@ -66,12 +73,6 @@ public class AggregatedTrait extends AbstractFavorableTrait implements IAggregat
         fireValueChangedEvent();
       }
     });
-    this.traitFavorization = new TraitFavorization(
-        basicData,
-        caste,
-        favoredIncrementChecker,
-        this,
-        traitRules.isRequiredFavored());
     listening.addChangeListener(changeListener);
     getFavorization().updateFavorableStateToCaste();
   }
