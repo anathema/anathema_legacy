@@ -32,7 +32,7 @@ public class AggregatedTrait extends AbstractFavorableTrait implements IAggregat
       getFavorization().updateFavorableStateToCaste();
     }
   };
-  
+
   public IDefaultTrait getFallbackTrait() {
     return getSubTraits().getSubTraits()[0];
   }
@@ -98,5 +98,10 @@ public class AggregatedTrait extends AbstractFavorableTrait implements IAggregat
 
   public void accept(ITraitVisitor visitor) {
     visitor.visitAggregatedTrait(this);
+  }
+
+  @Override
+  public String toString() {
+    return getType().getId();
   }
 }

@@ -30,4 +30,9 @@ public class AggregatedSubTrait extends DefaultTrait implements ISubTrait {
   public String getName() {
     return name;
   }
+
+  @Override
+  public String toString() {
+    return getType() + " (" + getName() + "):" + getCreationValue(); //$NON-NLS-1$ //$NON-NLS-2$
+  }
 }
