@@ -29,12 +29,11 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
     return traitConfiguration.getFavorableTraits(abilityTypes.toArray(new ITraitType[abilityTypes.size()]));
   }
 
-  private final IAbilityPointCosts costs;
-  private final IFavorableTrait[] abilities;
-  private int specialtyBonusPointCosts;
-  private SpecialtyCalculator specialtyCalculator;
   private final IAdditionalSpecialtyBonusPointManagement additionalPools;
   private final ICoreTraitConfiguration traitConfiguration;
+  private final IAbilityPointCosts costs;
+  private int specialtyBonusPointCosts;
+  private SpecialtyCalculator specialtyCalculator;
 
   public AbilityCostCalculator(
       ICoreTraitConfiguration traitConfiguration,
@@ -43,7 +42,6 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
       IAdditionalBonusPointManagment additionalPools) {
     super(additionalPools, points, getAllAbilities(traitConfiguration));
     this.traitConfiguration = traitConfiguration;
-    this.abilities = getAllAbilities(traitConfiguration);
     this.costs = costs;
     this.additionalPools = additionalPools;
     this.specialtyCalculator = new SpecialtyCalculator(traitConfiguration);
@@ -55,22 +53,21 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
     calculateSpecialtyCosts();
   }
 
-  @Override
-  protected int getCostFactor(IFavorableDefaultTrait trait) {
-    ITraitFavorization favorization = trait.getFavorization();
-    int costFactor = costs.getAbilityCosts(favorization.isCasteOrFavored()).getRatingCosts(trait.getCalculationValue());
-    return costFactor;
-  }
-
   private void calculateSpecialtyCosts() {
     IGenericSpecialty[] specialties = createGenericSpecialties();
     specialtyBonusPointCosts = specialtyCalculator.getSpecialtyCosts(specialties);
     additionalPools.spendOn(specialties, costs);
   }
 
+  @Override
+  protected void clear() {
+    super.clear();
+    specialtyBonusPointCosts = 0;
+  }
+
   private IGenericSpecialty[] createGenericSpecialties() {
     List<IGenericSpecialty> specialties = new ArrayList<IGenericSpecialty>();
-    for (IFavorableTrait ability : abilities) {
+    for (IFavorableTrait ability : getTraits()) {
       ISpecialtiesConfiguration specialtyConfiguration = traitConfiguration.getSpecialtyConfiguration();
       for (ISubTrait specialty : specialtyConfiguration.getSpecialtiesContainer(ability.getType()).getSubTraits()) {
         for (int index = 0; index < specialty.getCalculationValue(); index++) {
@@ -82,9 +79,10 @@ public class AbilityCostCalculator extends AbstractFavorableTraitCostCalculator 
   }
 
   @Override
-  protected void clear() {
-    super.clear();
-    specialtyBonusPointCosts = 0;
+  protected int getCostFactor(IFavorableDefaultTrait trait) {
+    ITraitFavorization favorization = trait.getFavorization();
+    int costFactor = costs.getAbilityCosts(favorization.isCasteOrFavored()).getRatingCosts(trait.getCalculationValue());
+    return costFactor;
   }
 
   public int getSpecialtyBonusPointCosts() {
