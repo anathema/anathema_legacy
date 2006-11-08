@@ -115,7 +115,7 @@ public class AbilityConfigurationPersister {
             if (subTraitElement == null) {
               return;
             }
-            loadSpecialties(subTraitElement, specialtyConfiguration, subTrait);
+            loadSpecialties(subTraitElement, specialtyConfiguration, new SubTraitReference(subTrait));
           }
 
         }
@@ -126,7 +126,7 @@ public class AbilityConfigurationPersister {
 
       public void visitDefaultTrait(IDefaultTrait visitedTrait) {
         try {
-          loadSpecialties(abilityElement, specialtyConfiguration, visitedTrait);
+          loadSpecialties(abilityElement, specialtyConfiguration, new DefaultTraitReference(visitedTrait));
         }
         catch (PersistenceException e) {
           throw new NestedRuntimeException(e);
@@ -138,11 +138,10 @@ public class AbilityConfigurationPersister {
   private void loadSpecialties(
       final Element abilityElement,
       final ISpecialtiesConfiguration specialtyConfiguration,
-      IDefaultTrait visitedTrait) throws PersistenceException {
+      ITraitReference reference) throws PersistenceException {
     List<Element> specialtyElements = ElementUtilities.elements(abilityElement, TAG_SPECIALTY);
     for (Element specialtyElement : specialtyElements) {
       String specialtyName = (specialtyElement).attributeValue(ATTRIB_NAME);
-      DefaultTraitReference reference = new DefaultTraitReference(visitedTrait);
       ISubTraitContainer specialtiesContainer = specialtyConfiguration.getSpecialtiesContainer(reference);
       ISubTrait specialty = specialtiesContainer.addSubTrait(specialtyName);
       persister.restoreTrait(specialtyElement, specialty);

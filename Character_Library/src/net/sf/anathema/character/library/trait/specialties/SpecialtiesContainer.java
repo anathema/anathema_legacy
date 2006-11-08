@@ -19,7 +19,7 @@ public class SpecialtiesContainer extends AbstractSubTraitContainer {
   @Override
   public void handleAdditionOfContainedEquivalent(ISubTrait subTrait) {
     int maxAddition = ALLOWED_SPECIALTY_COUNT - getCurrentDotTotal();
-    int addition = Math.min(subTrait.getCurrentValue(), maxAddition);
+    int addition = Math.min(1, maxAddition);
     subTrait.setCurrentValue(subTrait.getCurrentValue() + addition);
   }
 
@@ -31,5 +31,5 @@ public class SpecialtiesContainer extends AbstractSubTraitContainer {
   @Override
   public ISubTrait createSubTrait(String name) {
     return new Specialty(this, reference, name, traitContext);
-  }  
+  }
 }

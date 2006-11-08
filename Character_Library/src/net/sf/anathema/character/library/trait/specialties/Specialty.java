@@ -28,7 +28,6 @@ public class Specialty extends DefaultTrait implements ISpecialty {
     this.container = container;
     this.reference = reference;
     this.subTraitName = specialtyName;
-    this.setCurrentValue(1);
   }
 
   public String getName() {

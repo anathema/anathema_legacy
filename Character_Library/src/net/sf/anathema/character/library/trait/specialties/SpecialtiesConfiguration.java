@@ -131,7 +131,10 @@ public class SpecialtiesConfiguration implements ISpecialtiesConfiguration {
   }
 
   public void commitSelection() {
-    specialtiesByTrait.get(currentType).addSubTrait(currentName);
+    ISubTrait specialty = specialtiesByTrait.get(currentType).addSubTrait(currentName);
+    if (specialty != null && specialty.getCurrentValue() == 0) {
+      specialty.setCurrentValue(1);
+    }
   }
 
   public void clear() {
