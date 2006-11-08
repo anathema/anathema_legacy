@@ -20,8 +20,4 @@ public abstract class AbstractTraitFactory {
     //Statistics.getTraitConfiguration is not yet initialized.
     return new AdditionRulesTraitValueChangeChecker(traitType, traitContext.getLimitationContext(), additionalRules);
   }
-
-  protected final IAdditionalTraitRules getAdditionalRules() {
-    return additionalRules;
-  }
 }
