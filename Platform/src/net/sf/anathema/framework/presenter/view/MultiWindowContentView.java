@@ -3,13 +3,11 @@ package net.sf.anathema.framework.presenter.view;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import net.infonode.docking.RootWindow;
-import net.infonode.docking.SplitWindow;
 import net.infonode.docking.View;
 import net.infonode.docking.util.DockingUtil;
 import net.infonode.util.Direction;
@@ -37,14 +35,15 @@ public class MultiWindowContentView implements IMultiContentView {
     additionalComponentView.getWindowProperties().setRestoreEnabled(false);
     DockingUtil.addWindow(additionalComponentView, contentWindow);
     contentWindow.addKeyListener(new KeyAdapter() {
+      @Override
       public void keyTyped(KeyEvent event) {
         boolean overviewDemand = event.getKeyChar() == 'O'
-            && event.getModifiersEx() == Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();        
+            && event.getModifiersEx() == Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
         System.out.println(overviewDemand);
         if (overviewDemand) {
           additionalComponentView.makeVisible();
           event.consume();
-        }        
+        }
       }
     });
     additionalComponentView.minimize(Direction.RIGHT);
