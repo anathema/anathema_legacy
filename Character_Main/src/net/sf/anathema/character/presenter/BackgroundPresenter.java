@@ -14,7 +14,7 @@ import javax.swing.JList;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
-import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTemplate;
+import net.sf.anathema.character.generic.framework.resources.BackgroundInternationalizer;
 import net.sf.anathema.character.library.intvalue.IRemovableTraitView;
 import net.sf.anathema.character.library.trait.presenter.TraitPresenter;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
@@ -33,13 +33,13 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class BackgroundPresenter implements IPresenter {
 
-  private static final String BACKGROUND_TYPE_RESOURCE_KEY_PREFIX = "BackgroundType.Name."; //$NON-NLS-1$
   private final IBackgroundConfiguration configuration;
   private final IBasicAdvantageView configurationView;
   private final IResources resources;
   private final IdentityMapping<IDefaultTrait, IRemovableTraitView< ? >> viewsByBackground = new IdentityMapping<IDefaultTrait, IRemovableTraitView< ? >>();
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
   private final Map<String, IBackgroundTemplate> templatesByDisplayName = new HashMap<String, IBackgroundTemplate>();
+  private final BackgroundInternationalizer internationalizer;
 
   public BackgroundPresenter(
       IResources resources,
@@ -51,6 +51,7 @@ public class BackgroundPresenter implements IPresenter {
     this.configuration = configuration;
     this.configurationView = backgroundView;
     this.backgroundRegistry = backgroundRegistry;
+    this.internationalizer = new BackgroundInternationalizer(resources);
     this.configuration.addBackgroundListener(new IBackgroundListener() {
       public void backgroundAdded(IDefaultTrait background) {
         addBackgroundView(background);
@@ -73,16 +74,9 @@ public class BackgroundPresenter implements IPresenter {
       anObject = ((IDefaultTrait) anObject).getType();
     }
     if (anObject instanceof IBackgroundTemplate) {
-      return getDisplayName((IBackgroundTemplate) anObject);
+      return internationalizer.getDisplayName((IBackgroundTemplate) anObject);
     }
     return anObject;
-  }
-
-  private String getDisplayName(IBackgroundTemplate template) {
-    if (template instanceof CustomizedBackgroundTemplate) {
-      return template.getId();
-    }
-    return resources.getString(BACKGROUND_TYPE_RESOURCE_KEY_PREFIX + template.getId());
   }
 
   public void initPresentation() {
@@ -120,7 +114,7 @@ public class BackgroundPresenter implements IPresenter {
       }
     });
     for (IBackgroundTemplate template : configuration.getAllAvailableBackgroundTemplates()) {
-      templatesByDisplayName.put(getDisplayName(template), template);
+      templatesByDisplayName.put(internationalizer.getDisplayName(template), template);
     }
     for (IDefaultTrait background : configuration.getBackgrounds()) {
       addBackgroundView(background);
@@ -129,7 +123,7 @@ public class BackgroundPresenter implements IPresenter {
 
   private IBackgroundTemplate[] getSortedBackgrounds() {
     IBackgroundTemplate[] backgroundTemplates = configuration.getAllAvailableBackgroundTemplates();
-    Arrays.sort(backgroundTemplates, new I18nComparator(resources, BACKGROUND_TYPE_RESOURCE_KEY_PREFIX));
+    Arrays.sort(backgroundTemplates, new I18nComparator(resources, internationalizer.getPrefix()));
     return backgroundTemplates;
   }
 

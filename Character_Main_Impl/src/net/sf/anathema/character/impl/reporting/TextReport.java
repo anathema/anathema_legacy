@@ -6,6 +6,7 @@ import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.text.AbilityTextEncoder;
 import net.sf.anathema.character.reporting.text.AttributeTextEncoder;
+import net.sf.anathema.character.reporting.text.BackgroundsTextEncoder;
 import net.sf.anathema.character.reporting.text.CharacterDescriptionTextEncoder;
 import net.sf.anathema.character.reporting.text.ConceptTextEncoder;
 import net.sf.anathema.character.reporting.text.VirtueTextEncoder;
@@ -48,7 +49,7 @@ public class TextReport implements IITextReport {
         new AttributeTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
         new VirtueTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
         new AbilityTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
-        //        new BackgroundsTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
+        new BackgroundsTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
         //        new CharmTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
       }
       writeColumnText(document, columnText);
