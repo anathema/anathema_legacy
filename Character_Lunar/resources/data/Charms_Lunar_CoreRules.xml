@@ -2486,8 +2486,7 @@
   <charm id="Lunar.UnspeakingAuraDread" exalt="Lunar" group="InteractionKnowledge">
     <prerequisite>
       <essence id="Essence" value="1"/>
-      <trait id="Charisma" value="3"/>
-      <charmReference id="Lunar.Sense-SharpeningChange"/>
+      <trait id="Charisma" value="2"/>
     </prerequisite>
     <cost>
       <temporary>
