@@ -23,6 +23,6 @@ public class AbilityTextEncoder extends AbstractTraitTextEncoder<AbilityType> {
 
   @Override
   protected String getLabelKey() {
-    return "Sheet.Label.Abilities"; //$NON-NLS-1$
+    return "TextDescription.Label.Abilities"; //$NON-NLS-1$
   }
 }

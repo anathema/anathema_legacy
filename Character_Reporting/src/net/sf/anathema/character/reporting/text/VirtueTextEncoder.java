@@ -18,7 +18,7 @@ public class VirtueTextEncoder extends AbstractTraitTextEncoder<VirtueType> {
 
   @Override
   protected String getLabelKey() {
-    return "Sheet.Label.Virtues"; //$NON-NLS-1$
+    return "TextDescription.Label.Virtues"; //$NON-NLS-1$
   }
 
   @Override
