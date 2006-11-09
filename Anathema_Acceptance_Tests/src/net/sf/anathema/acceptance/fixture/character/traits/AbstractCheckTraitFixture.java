@@ -33,11 +33,11 @@ public abstract class AbstractCheckTraitFixture extends AbstractCharacterColumnF
     ITrait trait = getTrait();
     final IDefaultTrait[] defaultTrait = new IDefaultTrait[1];
     trait.accept(new ITraitVisitor() {
-    
+
       public void visitDefaultTrait(IDefaultTrait visitedTrait) {
         defaultTrait[0] = visitedTrait;
       }
-    
+
       public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
         defaultTrait[0] = visitedTrait.getFallbackTrait();
       }
@@ -45,7 +45,7 @@ public abstract class AbstractCheckTraitFixture extends AbstractCharacterColumnF
     return defaultTrait[0];
   }
 
-  protected final ITrait getTrait() {
+  protected ITrait getTrait() {
     ICharacter character = new CharacterSummary(summary).getCharacter();
     ICharacterStatistics statistics = character.getStatistics();
     return statistics.getTraitConfiguration().getTrait(getTraitType());

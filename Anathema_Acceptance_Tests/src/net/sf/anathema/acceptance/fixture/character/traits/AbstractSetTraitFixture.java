@@ -13,6 +13,7 @@ import fitnesse.fixtures.RowEntryFixture;
 public abstract class AbstractSetTraitFixture extends RowEntryFixture {
 
   public String traitType;
+  public String subTrait;
   public int value;
 
   @Override
@@ -27,13 +28,17 @@ public abstract class AbstractSetTraitFixture extends RowEntryFixture {
     ITrait trait = statistics.getTraitConfiguration().getTrait(getTraitType());
     final IDefaultTrait[] defaultTrait = new IDefaultTrait[1];
     trait.accept(new ITraitVisitor() {
-    
+
       public void visitDefaultTrait(IDefaultTrait visitedTrait) {
         defaultTrait[0] = visitedTrait;
       }
-    
+
       public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
-        defaultTrait[0] = visitedTrait.getFallbackTrait();
+        if (subTrait == null) {
+          defaultTrait[0] = visitedTrait.getFallbackTrait();
+          return;
+        }
+        defaultTrait[0] = visitedTrait.getSubTraits().getSubTrait(subTrait);
       }
     });
     return defaultTrait[0];
