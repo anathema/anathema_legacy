@@ -8,12 +8,16 @@ http://anathema.sf.net
 ===------------------------------------------------------------------------------===
 
 -- Usability --
-+ Toolbar with transparent icons (As seen in Firefox, proposed by Democritus)
++ Toolbar with transparent icons (Proposed by Democritus)
 * Some twiddling with the series view
 * Fixed layout issues in music view
+* Added intelligent enforcement of 1-dot-minimum for Craft subtraits.
 
 -- Bugs Fixed --
-* [1E] Weapon speeds can be negative
+* [1E] Weapon speeds can be negative (Found by uteck)
+* Characters with Craft specialties now can be loaded (Discovered by ArsGlacialis)
+* Crafts now register as a favored ability (Reported by ArsGlacialis & Peter Blake)
+* Experienced specialty values are displayed correctly after loading
 
 ===------------------------------------------------------------------------------===
 			Release 1.0 "Lap" (22/10/06)
