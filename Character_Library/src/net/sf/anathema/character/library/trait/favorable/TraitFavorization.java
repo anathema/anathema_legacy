@@ -52,19 +52,28 @@ public class TraitFavorization implements ITraitFavorization {
       state = FavorableState.Favored;
     }
     this.state = state;
-    if (this.state == FavorableState.Favored && trait.getCurrentValue() < 1) {
+    ensureMinimalValue();
+    fireFavorableStateChangedEvent();
+  }
+
+  public void ensureMinimalValue() {
+    final int minimalValue = getMinimalValue();
+    if (trait.getCurrentValue() < minimalValue) {
       trait.accept(new ITraitVisitor() {
 
         public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
-          visitedTrait.getFallbackTrait().setCurrentValue(1);
+          visitedTrait.getFallbackTrait().setCurrentValue(minimalValue);
         }
 
         public void visitDefaultTrait(IDefaultTrait visitedTrait) {
-          visitedTrait.setCurrentValue(1);
+          visitedTrait.setCurrentValue(minimalValue);
         }
       });
     }
-    fireFavorableStateChangedEvent(state);
+  }
+
+  public int getMinimalValue() {
+    return this.state == FavorableState.Favored ? 1 : 0;
   }
 
   public void setFavored(boolean favored) {
@@ -89,10 +98,10 @@ public class TraitFavorization implements ITraitFavorization {
     favorableStateControl.addListener(listener);
   }
 
-  private final void fireFavorableStateChangedEvent(final FavorableState newState) {
+  private final void fireFavorableStateChangedEvent() {
     favorableStateControl.forAllDo(new IClosure<IFavorableStateChangedListener>() {
       public void execute(IFavorableStateChangedListener input) {
-        input.favorableStateChanged(newState);
+        input.favorableStateChanged(state);
       }
     });
   }
@@ -112,7 +121,7 @@ public class TraitFavorization implements ITraitFavorization {
   public ICasteType< ? extends ICasteTypeVisitor> getCaste() {
     return caste;
   }
-  
+
   public void updateFavorableStateToCaste() {
     ICasteType< ? extends ICasteTypeVisitor> casteType = basicData.getCasteType();
     if (isCaste() != isSupportedCasteType(casteType)) {
@@ -120,8 +129,8 @@ public class TraitFavorization implements ITraitFavorization {
     }
   }
 
-  private boolean isSupportedCasteType(ICasteType<? extends ICasteTypeVisitor>  casteType) {
-    ICasteType<? extends ICasteTypeVisitor>  favorizationCaste = getCaste();
+  private boolean isSupportedCasteType(ICasteType< ? extends ICasteTypeVisitor> casteType) {
+    ICasteType< ? extends ICasteTypeVisitor> favorizationCaste = getCaste();
     return favorizationCaste != null && favorizationCaste == casteType;
   }
 }

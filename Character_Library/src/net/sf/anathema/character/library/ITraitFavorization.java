@@ -24,4 +24,8 @@ public interface ITraitFavorization {
   public void setFavored(boolean favored);
 
   public void updateFavorableStateToCaste();
+
+  public int getMinimalValue();
+
+  public void ensureMinimalValue();
 }

@@ -18,11 +18,15 @@ public class AggregatedSubTrait extends DefaultTrait implements ISubTrait {
       ITraitContext traitContext,
       IValueChangeChecker checker,
       ITraitType type,
-      ITraitFavorization traitFavorization,
       String name) {
-    super(traitRules, traitContext, checker, traitFavorization);
+    super(traitRules, traitContext, checker);
     this.basicType = type;
     this.name = name;
+  }
+
+  @Override
+  public void setTraitFavorization(ITraitFavorization favorization) {
+    super.setTraitFavorization(favorization);
   }
 
   public ITraitType getBasicTraitType() {

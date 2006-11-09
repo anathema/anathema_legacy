@@ -41,4 +41,12 @@ public class NullTraitFavorization implements ITraitFavorization {
   public void updateFavorableStateToCaste() {
     // nothing to do
   }
+
+  public int getMinimalValue() {
+    return 0;
+  }
+
+  public void ensureMinimalValue() {
+    //nothing to do
+  }
 }

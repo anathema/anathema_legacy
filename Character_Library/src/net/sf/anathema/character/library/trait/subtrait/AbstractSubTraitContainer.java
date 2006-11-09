@@ -87,10 +87,10 @@ public abstract class AbstractSubTraitContainer implements ISubTraitContainer {
     return count;
   }
 
-  public final void removeSubTrait(ISubTrait specialty) {
-    subtraits.remove(specialty);
-    specialty.removeCreationPointListener(subTraitCreationPointListener);
-    fireSubTraitRemovedEvent(specialty);
+  public void removeSubTrait(ISubTrait subtrait) {
+    subtraits.remove(subtrait);
+    subtrait.removeCreationPointListener(subTraitCreationPointListener);
+    fireSubTraitRemovedEvent(subtrait);
   }
 
   public final int getExperienceDotTotal() {

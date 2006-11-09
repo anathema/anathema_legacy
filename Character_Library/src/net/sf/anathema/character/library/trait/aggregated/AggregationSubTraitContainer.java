@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITra
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.IValueChangeChecker;
+import net.sf.anathema.character.library.trait.favorable.AggregatedTraitFavorization;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.subtrait.AbstractSubTraitContainer;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
@@ -39,12 +40,27 @@ public class AggregationSubTraitContainer extends AbstractSubTraitContainer {
   protected ISubTrait createSubTrait(String name) {
     int startValue = getSubTraits().length == 0 ? traitRules.getStartValue() : 0;
     ITraitRules aggregatedTraitRules = traitRules.deriveAggregatedRules(name, startValue);
-    return new AggregatedSubTrait(aggregatedTraitRules, traitContext, valueChangeChecker, type, traitFavorization, name);
+    AggregatedSubTrait subTrait = new AggregatedSubTrait(
+        aggregatedTraitRules,
+        traitContext,
+        valueChangeChecker,
+        type,
+        name);
+    subTrait.setTraitFavorization(new AggregatedTraitFavorization(traitFavorization, subTrait, this));
+    return subTrait;
   }
 
   @Override
   protected void handleAdditionOfContainedEquivalent(ISubTrait subTrait) {
     Toolkit.getDefaultToolkit().beep();
+  }
+
+  @Override
+  public void removeSubTrait(ISubTrait subtrait) {
+    super.removeSubTrait(subtrait);
+    if (traitFavorization.isFavored()) {
+      traitFavorization.ensureMinimalValue();
+    }
   }
 
   @Override

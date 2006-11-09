@@ -42,29 +42,25 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
       IValueChangeChecker valueChangeChecker,
       IIncrementChecker favoredIncrementChecker) {
     this(traitRules, traitContext, valueChangeChecker);
-    traitFavorization = new TraitFavorization(
+    setTraitFavorization(new TraitFavorization(
         basicData,
         caste,
         favoredIncrementChecker,
         this,
-        traitRules.isRequiredFavored());
+        traitRules.isRequiredFavored()));
     listening.addChangeListener(changeListener);
     getFavorization().updateFavorableStateToCaste();
   }
 
   public DefaultTrait(ITraitRules traitRules, ITraitContext traitContext, IValueChangeChecker checker) {
-    this(traitRules, traitContext, checker, new NullTraitFavorization());
+    super(traitRules, traitContext);
+    setTraitFavorization(new NullTraitFavorization());
+    this.checker = checker;
+    this.creationValue = traitRules.getStartValue();
   }
 
-  protected DefaultTrait(
-      ITraitRules traitRules,
-      ITraitContext traitContext,
-      IValueChangeChecker checker,
-      ITraitFavorization traitFavorization) {
-    super(traitRules, traitContext);
-    this.checker = checker;
-    this.traitFavorization = traitFavorization;
-    this.creationValue = traitRules.getStartValue();
+  protected void setTraitFavorization(ITraitFavorization favorization) {
+    this.traitFavorization = favorization;
   }
 
   public final int getCreationValue() {
@@ -77,7 +73,7 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
 
   public final void setCreationValue(int value) {
     if (getFavorization().isFavored()) {
-      value = Math.max(value, 1);
+      value = Math.max(value, getFavorization().getMinimalValue());
     }
     int correctedValue = getTraitRules().getCreationValue(value);
     if (this.creationValue == correctedValue) {
