@@ -26,16 +26,19 @@ public class ConceptTextEncoder extends AbstractTextEncoder {
       castePhrase.add(createTextChunk(casteId));
       columnText.addElement(castePhrase);
     }
-    String motivationLabel = getString(character.getRules().getEdition() == ExaltedEdition.SecondEdition
-        ? "Sheet.Label.Motivation" : "Sheet.Label.Nature"); //$NON-NLS-1$ //$NON-NLS-2$
-    Phrase willpowerRegainPhrase = createTextParagraph(createBoldTitle(motivationLabel + " ")); //$NON-NLS-1$
-    willpowerRegainPhrase.add(createTextChunk(character.getConcept().getWillpowerRegainingConceptName()));
-    columnText.addElement(willpowerRegainPhrase);
-
-    Phrase conceptPhrase = createTextParagraph(createBoldTitle(getString("Sheet.Label.Concept") + " ")); //$NON-NLS-1$ //$NON-NLS-2$
-    if (!StringUtilities.isNullOrEmpty(character.getConcept().getConceptText())) {
-      conceptPhrase.add(createTextChunk(character.getConcept().getConceptText()));
+    String willpowerRegainingConceptName = character.getConcept().getWillpowerRegainingConceptName();
+    if (!StringUtilities.isNullOrTrimEmpty(willpowerRegainingConceptName)) {
+      String motivationLabel = getString(character.getRules().getEdition() == ExaltedEdition.SecondEdition
+          ? "Sheet.Label.Motivation" : "Sheet.Label.Nature"); //$NON-NLS-1$ //$NON-NLS-2$
+      Phrase willpowerRegainPhrase = createTextParagraph(createBoldTitle(motivationLabel + " ")); //$NON-NLS-1$
+      willpowerRegainPhrase.add(createTextChunk(willpowerRegainingConceptName));
+      columnText.addElement(willpowerRegainPhrase);
     }
-    columnText.addElement(conceptPhrase);
+    String conceptText = character.getConcept().getConceptText();
+    if (!StringUtilities.isNullOrEmpty(conceptText)) {
+      Phrase conceptPhrase = createTextParagraph(createBoldTitle(getString("Sheet.Label.Concept") + " ")); //$NON-NLS-1$ //$NON-NLS-2$
+      conceptPhrase.add(createTextChunk(conceptText));
+      columnText.addElement(conceptPhrase);
+    }
   }
 }
