@@ -17,7 +17,7 @@ public class AbyssalBrawlWeaponConfiguration extends BrawlWeaponConfiguration {
 
   @Override
   protected void buildSecondEditionBrawlWeaponList(List<IWeaponType> weapons) {
-    throw new UnsupportedOperationException("2nd Edition Abyssals not yet available."); //$NON-NLS-1$
+    throw new UnsupportedOperationException("Use second edition sheet"); //$NON-NLS-1$
   }
 
   @Override
