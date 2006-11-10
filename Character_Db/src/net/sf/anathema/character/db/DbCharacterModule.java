@@ -7,7 +7,6 @@ import net.sf.anathema.character.db.additional.AdditionalSequesteredTabernacleDb
 import net.sf.anathema.character.db.additional.BasicAdditionalLookshyDbRules;
 import net.sf.anathema.character.db.additional.NativeLookshyDbRules;
 import net.sf.anathema.character.db.aspect.DBAspect;
-import net.sf.anathema.character.db.reporting.DbVoidStateReportTemplate;
 import net.sf.anathema.character.db.reporting.FirstEditionDbPartEncoder;
 import net.sf.anathema.character.db.template.IDbSpecialCharms;
 import net.sf.anathema.character.db.template.cult.KetherRockDbTemplate;
@@ -173,7 +172,6 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    generics.getReportTemplateRegistry().add(new DbVoidStateReportTemplate(resources));
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
         CharacterReportingModule.class);
     PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();

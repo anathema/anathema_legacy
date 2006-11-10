@@ -3,9 +3,7 @@ package net.sf.anathema.character.reporting.sheet.page;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfEssenceEncoder;
-import net.sf.anathema.character.reporting.sheet.common.anima.PdfAnimaEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFirstEditionPartEncoder {
@@ -16,17 +14,6 @@ public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFi
     super(resources, registry.getBaseFont(), registry.getSymbolBaseFont());
     this.essenceMax = essenceMax;
   }
-
-  public IPdfContentBoxEncoder getAnimaEncoder() {
-    return new PdfAnimaEncoder(
-        getResources(),
-        getBaseFont(),
-        getSymbolBaseFont(),
-        getFontSize(),
-        getAnimaTableEncoder());
-  }
-
-  protected abstract IPdfTableEncoder getAnimaTableEncoder();
 
   public IPdfContentBoxEncoder getEssenceEncoder() {
     return new PdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);

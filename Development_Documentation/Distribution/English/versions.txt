@@ -7,8 +7,12 @@ http://anathema.sf.net
 			Release x "Meru" (Upcoming)
 ===------------------------------------------------------------------------------===
 
+-- Features --
++ [1E] Dragon-Blooded now use 2E-Style sheets, allowing them to make full use of equipment and so on
+
 -- Usability --
 + Toolbar with transparent icons (Proposed by Democritus)
++ The program now makes an informed guess at the standard printing error, namely the file being in use. (Requested by Peter Blake)
 * Some twiddling with the series view
 * Fixed layout issues in music view
 * Added intelligent enforcement of 1-dot-minimum for Craft subtraits.

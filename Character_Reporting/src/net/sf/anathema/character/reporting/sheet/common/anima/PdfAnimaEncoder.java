@@ -69,7 +69,13 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
   private void encodeLines(PdfContentByte directContent, Bounds bounds, Position lineStartPosition) {
     float minX = bounds.getMinX();
     float maxX = bounds.getMaxX();
-    PdfLineEncodingUtilities.encodeHorizontalLines(directContent, lineStartPosition, minX, maxX, lineHeight, 3);
+    PdfLineEncodingUtilities.encodeHorizontalLines(
+        directContent,
+        lineStartPosition,
+        minX,
+        maxX,
+        lineHeight,
+        6 - getResourceIds().length);
   }
 
   private Position encodeAnimaPowers(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
@@ -92,9 +98,13 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
   private void addAnimaPowerText(IGenericCharacter character, Phrase phrase) {
     CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     String resourceBase = "Sheet.AnimaPower." + characterType.getId() + "."; //$NON-NLS-1$ //$NON-NLS-2$
-    for (String resourceId : new String[] { "First", "Second", "Third" }) { //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    for (String resourceId : getResourceIds()) {
       phrase.add(symbolChunk);
       phrase.add(resources.getString(resourceBase + resourceId) + "\n"); //$NON-NLS-1$
     }
+  }
+
+  protected String[] getResourceIds() {
+    return new String[] { "First", "Second", "Third" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
   }
 }
