@@ -12,14 +12,14 @@ public class TotalArmour implements IArmourStats {
 
   private int fatigue;
   private int mobilityPenalty;
-  private Map<HealthType, Integer> soakByHealthType = new HashMap<HealthType, Integer>() {
+  private final Map<HealthType, Integer> soakByHealthType = new HashMap<HealthType, Integer>() {
     {
       for (HealthType healthType : HealthType.values()) {
         put(healthType, new Integer(0));
       }
     }
   };
-  private Map<HealthType, Integer> hardnessByHealthType = new HashMap<HealthType, Integer>() {
+  private final Map<HealthType, Integer> hardnessByHealthType = new HashMap<HealthType, Integer>() {
     {
       for (HealthType healthType : HealthType.values()) {
         put(healthType, new Integer(0));

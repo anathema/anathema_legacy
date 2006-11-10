@@ -63,13 +63,13 @@ public class RightClickMagnifyInteractor extends InteractorAdapter {
     AffineTransform at = AffineTransform.getTranslateInstance(xCenter, yCenter);
     int movement = event.getY() - yStart;
     if (movement < 0) {
-      movement = (movement > -5) ? 15 : movement - 10;
+      movement = movement > -5 ? 15 : movement - 10;
     }
     else {
-      movement = (movement < 5) ? 15 : movement + 10;
+      movement = movement < 5 ? 15 : movement + 10;
     }
     double scale = movement / 15.0;
-    scale = (scale > 0) ? scale : -1 / scale;
+    scale = scale > 0 ? scale : -1 / scale;
 
     at.scale(scale, scale);
     at.translate(-xCenter, -yCenter);

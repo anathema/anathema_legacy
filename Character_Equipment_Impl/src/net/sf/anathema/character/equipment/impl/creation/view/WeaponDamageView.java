@@ -26,7 +26,7 @@ public class WeaponDamageView implements IWeaponDamageView {
     boxData.setHorizontalSpan(columnCount - 2);
     panel.add(typeBox.getComponent(), boxData);
   }
-  
+
   public void setEnabled(boolean enabled) {
     throw new NotYetImplementedException();
   }

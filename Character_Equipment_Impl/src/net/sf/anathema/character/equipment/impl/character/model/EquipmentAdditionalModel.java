@@ -88,7 +88,7 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
   }
 
   private <K> boolean doPrint(IEquipmentItem item, IEquipmentStats stats, Class<K> printedClass) {
-    return (printedClass.isInstance(stats) && item.isPrintEnabled(stats));
+    return printedClass.isInstance(stats) && item.isPrintEnabled(stats);
   }
 
   public String[] getAvailableTemplateIds() {

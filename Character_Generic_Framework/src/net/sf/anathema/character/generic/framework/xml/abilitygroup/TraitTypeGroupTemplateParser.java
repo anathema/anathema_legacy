@@ -19,7 +19,9 @@ public class TraitTypeGroupTemplateParser extends AbstractXmlTemplateParser<Gene
   private static final String TAG_TRAIT = "trait"; //$NON-NLS-1$
   private final ITraitTypeGroup traitTypeGroup;
 
-  public TraitTypeGroupTemplateParser(IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> templateRegistry, ITraitTypeGroup traitTypeGroup) {
+  public TraitTypeGroupTemplateParser(
+      IXmlTemplateRegistry<GenericGroupedTraitTypeProvider> templateRegistry,
+      ITraitTypeGroup traitTypeGroup) {
     super(templateRegistry);
     this.traitTypeGroup = traitTypeGroup;
   }

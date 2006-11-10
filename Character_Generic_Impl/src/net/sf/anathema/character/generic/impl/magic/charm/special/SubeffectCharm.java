@@ -15,7 +15,7 @@ public class SubeffectCharm extends MultipleEffectCharm implements ISubeffectCha
   public double getPointCost() {
     return pointCost;
   }
-  
+
   @Override
   public void accept(ISpecialCharmVisitor visitor) {
     visitor.visitSubeffectCharm(this);

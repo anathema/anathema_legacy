@@ -16,7 +16,6 @@ public class ExperiencePointsPersister {
 
   private final TextPersister textPersister = new TextPersister();
 
-  
   public void load(Element parentElement, IExperiencePointConfiguration experiencePoints) throws PersistenceException {
     Element experienceElement = parentElement.element(TAG_EXPERIENCE);
     if (experienceElement == null) {
@@ -31,7 +30,10 @@ public class ExperiencePointsPersister {
   private void saveEntry(Element parent, IExperiencePointEntry entry) {
     Element entryElement = parent.addElement(TAG_ENTRY);
     ElementUtilities.addAttribute(entryElement, ATTRIB_POINTS, entry.getExperiencePoints());
-    textPersister. saveTextualDescription(entryElement, ICharacterXmlConstants.TAG_DESCRIPTION, entry.getTextualDescription());
+    textPersister.saveTextualDescription(
+        entryElement,
+        ICharacterXmlConstants.TAG_DESCRIPTION,
+        entry.getTextualDescription());
   }
 
   public void save(Element parentElement, IExperiencePointConfiguration experiencePoints) {
@@ -43,6 +45,9 @@ public class ExperiencePointsPersister {
 
   private void restoreEntry(Element element, IExperiencePointEntry entry) throws PersistenceException {
     entry.setExperiencePoints(ElementUtilities.getIntAttrib(element, ATTRIB_POINTS, 0));
-    textPersister.  restoreTextualDescription(element, ICharacterXmlConstants.TAG_DESCRIPTION, entry.getTextualDescription());
+    textPersister.restoreTextualDescription(
+        element,
+        ICharacterXmlConstants.TAG_DESCRIPTION,
+        entry.getTextualDescription());
   }
 }

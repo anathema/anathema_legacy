@@ -12,7 +12,7 @@ public class EssencePanelView {
 
   private final IGridDialogPanel essencePanel = new DefaultGridDialogPanel(false);
   private final IIntValueDisplayFactory guiConfiguration;
-  
+
   public EssencePanelView(IIntValueDisplayFactory guiConfiguration) {
     this.guiConfiguration = guiConfiguration;
   }

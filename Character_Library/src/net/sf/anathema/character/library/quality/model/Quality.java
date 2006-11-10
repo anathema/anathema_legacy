@@ -31,7 +31,7 @@ public abstract class Quality extends Identificate implements IQuality {
     prerequisites.add(prerequisite);
   }
 
-  public boolean prerequisitesFulfilled(IQualitySelection<? extends IQuality>[] selectedQualities) {
+  public boolean prerequisitesFulfilled(IQualitySelection< ? extends IQuality>[] selectedQualities) {
     for (IQualityPredicate prerequisite : prerequisites) {
       if (!prerequisite.isFulfilled(selectedQualities)) {
         return false;

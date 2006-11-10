@@ -32,7 +32,7 @@ public class BeastformViewFactory implements IAdditionalViewFactory {
         return resources.getString("Lunar.DeadlyBeastmanTransformation.Overview.Label"); //$NON-NLS-1$
       }
     });
-    new BeastformPresenter(resources, view, ((IBeastformModel) model)).initPresentation();
+    new BeastformPresenter(resources, view, (IBeastformModel) model).initPresentation();
     return view;
   }
 }

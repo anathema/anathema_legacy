@@ -1,6 +1,5 @@
 package net.sf.anathema.campaign.music.presenter.selection.player;
 
-
 public enum MusicPlayerStatus {
 
   PLAYING {

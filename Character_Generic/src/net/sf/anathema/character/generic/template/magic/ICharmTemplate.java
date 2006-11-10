@@ -21,5 +21,5 @@ public interface ICharmTemplate {
       IGenericCharmConfiguration charmConfiguration,
       boolean isExperienced);
 
-  public boolean isAllowedAlienCharms(ICasteType<? extends ICasteTypeVisitor> caste);
+  public boolean isAllowedAlienCharms(ICasteType< ? extends ICasteTypeVisitor> caste);
 }

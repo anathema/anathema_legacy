@@ -16,6 +16,6 @@ public interface ITraitTypeVisitor {
   public void visitWillpower(OtherTraitType type);
 
   public void visitBackground(IBackgroundTemplate template);
-  
+
   public void visitCustomTraitType(ITraitType visitedType);
 }

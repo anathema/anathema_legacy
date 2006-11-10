@@ -13,7 +13,7 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 public class PrerequisiteSetBuilder {
 
   private final Set<ITraitType> prerequisiteSet = new HashSet<ITraitType>();
-  
+
   public PrerequisiteSetBuilder() {
     prerequisiteSet.add(OtherTraitType.Essence);
   }
@@ -29,7 +29,7 @@ public class PrerequisiteSetBuilder {
       prerequisiteSet.add(prerequisite.getType());
     }
   }
-  
+
   public Collection<ITraitType> getAllPrerequisites() {
     return Collections.unmodifiableCollection(prerequisiteSet);
   }

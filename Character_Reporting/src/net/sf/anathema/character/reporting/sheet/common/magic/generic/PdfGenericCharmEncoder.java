@@ -10,7 +10,7 @@ import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
 public class PdfGenericCharmEncoder implements IPdfContentBoxEncoder {
-  
+
   private final IResources resources;
   private final BaseFont baseFont;
 
@@ -18,11 +18,11 @@ public class PdfGenericCharmEncoder implements IPdfContentBoxEncoder {
     this.resources = resources;
     this.baseFont = baseFont;
   }
-  
+
   public String getHeaderKey() {
     return "GenericCharms"; //$NON-NLS-1$
   }
-  
+
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     new PdfGenericCharmTableEncoder(resources, baseFont).encodeTable(directContent, character, bounds);
   }

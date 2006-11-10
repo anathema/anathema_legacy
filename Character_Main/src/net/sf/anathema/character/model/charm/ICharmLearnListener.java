@@ -11,6 +11,6 @@ public interface ICharmLearnListener {
   public void charmNotLearnable(ICharm charm);
 
   public void charmNotUnlearnable(ICharm charm);
-  
+
   public void recalculateRequested();
 }

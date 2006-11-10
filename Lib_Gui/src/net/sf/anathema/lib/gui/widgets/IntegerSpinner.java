@@ -50,7 +50,7 @@ public class IntegerSpinner implements IView {
   }
 
   private SpinnerNumberModel getSpinnerModel() {
-    return ((SpinnerNumberModel) spinner.getModel());
+    return (SpinnerNumberModel) spinner.getModel();
   }
 
   public JComponent getComponent() {

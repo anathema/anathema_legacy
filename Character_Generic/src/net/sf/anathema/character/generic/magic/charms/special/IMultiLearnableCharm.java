@@ -6,5 +6,5 @@ public interface IMultiLearnableCharm extends ISpecialCharm {
 
   public int getAbsoluteLearnLimit();
 
-  public int getMaximumLearnCount(IGenericTraitCollection traitCollection);  
+  public int getMaximumLearnCount(IGenericTraitCollection traitCollection);
 }

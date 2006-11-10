@@ -86,9 +86,7 @@ public class MultiColumnSeriesReport implements IITextReport {
         addTextAndChildren(columnText, story, storyOutline, new int[] { storyNumber++ });
         writeColumnText(document, columnText);
       }
-      contentTable.performPrint(
-          seriesTitle,
-          resources.getString("SeriesReport.Header.TableOfContents"), //$NON-NLS-1$
+      contentTable.performPrint(seriesTitle, resources.getString("SeriesReport.Header.TableOfContents"), //$NON-NLS-1$
           document,
           writer);
     }

@@ -7,7 +7,6 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class CascadesUI extends AbstractUI {
 
-  
   public CascadesUI(IResources resources) {
     super(resources);
   }

@@ -19,7 +19,6 @@ public class SecondEditionHealthAndMovementEncoder extends AbstractHealthAndMove
     return new SecondEditionHealthAndMovemenTableEncoder(getResources(), getBaseFont());
   }
 
-
   @Override
   protected final IExaltedEdition getEdition() {
     return ExaltedEdition.SecondEdition;

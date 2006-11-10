@@ -93,7 +93,7 @@ public class CharacterGenerics implements ICharacterGenerics {
   public CharacterModuleObjectMap getModuleObjectMap() {
     return moduleObjectMap;
   }
-  
+
   public IDataFileProvider getDataFileProvider() {
     return dataFileProvider;
   }

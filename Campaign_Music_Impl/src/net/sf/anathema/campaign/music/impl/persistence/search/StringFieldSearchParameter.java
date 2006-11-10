@@ -16,7 +16,7 @@ public class StringFieldSearchParameter implements IExtendedSearchParameter {
   }
 
   public Constraint configure(Query query) {
-    return query.descend(fieldName).constrain(new Evaluation(){
+    return query.descend(fieldName).constrain(new Evaluation() {
       public void evaluate(Candidate candidate) {
         String value = (String) candidate.getObject();
         if (value == null) {

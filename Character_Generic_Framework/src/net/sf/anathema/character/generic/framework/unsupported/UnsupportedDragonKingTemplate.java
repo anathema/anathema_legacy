@@ -22,7 +22,7 @@ import net.sf.anathema.lib.exception.PersistenceException;
 
 public class UnsupportedDragonKingTemplate extends AbstractUnsupportedExaltTemplate {
 
-  private ICharmTemplate charmTemplate;
+  private final ICharmTemplate charmTemplate;
   private DragonKingPresentationProperties presentationProperties;
 
   public UnsupportedDragonKingTemplate(ICharmCache charmProvider) throws PersistenceException {

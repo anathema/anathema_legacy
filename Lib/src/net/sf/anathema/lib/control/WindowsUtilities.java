@@ -11,9 +11,7 @@ public class WindowsUtilities {
 
   public static boolean isWindowsNt() {
     String os = getOsProperty();
-    return (os.indexOf("nt") > -1) //$NON-NLS-1$
-        || (os.indexOf("windows 2000") > -1) //$NON-NLS-1$
-        || (os.indexOf("windows xp") > -1); //$NON-NLS-1$
+    return os.indexOf("nt") > -1 || os.indexOf("windows 2000") > -1 || os.indexOf("windows xp") > -1; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
   }
 
   private static String getOsProperty() {

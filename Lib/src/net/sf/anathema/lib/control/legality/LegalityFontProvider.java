@@ -2,7 +2,6 @@ package net.sf.anathema.lib.control.legality;
 
 import java.awt.Font;
 
-
 public class LegalityFontProvider {
 
   public static final int NO_BONUS = Font.PLAIN;

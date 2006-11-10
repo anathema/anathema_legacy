@@ -26,14 +26,14 @@ public class MusicLibraryCellEditor extends AbstractDelegatingCellEditor {
       @Override
       public void setValue(Object value) {
         this.library = (ILibrary) value;
-        textField.setText((value != null) ? value.toString() : ""); //$NON-NLS-1$
+        textField.setText(value != null ? value.toString() : ""); //$NON-NLS-1$
         textField.selectAll();
       }
 
       @Override
       public Object getCellEditorValue() {
         String name = textField.getText().trim();
-        boolean changeName = !(StringUtilities.isNullOrEmpty(name)) || !(control.containsLibraryName(name));
+        boolean changeName = !StringUtilities.isNullOrEmpty(name) || !control.containsLibraryName(name);
         if (changeName) {
           control.updateLibrary(library, name);
         }

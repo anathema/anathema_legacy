@@ -19,13 +19,11 @@ public class MultiWindowContentView implements IMultiContentView {
   private final RootWindow contentWindow = new RootWindow(null);
   private final View additionalComponentView = new View("Overview", null, null);
   private final View controlComponentView = new View("Control", null, new JPanel());
-  private final RootWindow mainRootWindow;
 
   public MultiWindowContentView() {
     controlComponentView.getWindowProperties().setCloseEnabled(false);
     contentWindow.getWindowBar(Direction.UP).setEnabled(true);
     contentWindow.getWindowBar(Direction.RIGHT).setEnabled(true);
-    this.mainRootWindow = new RootWindow(null);
     // SplitWindow controlSplitWindow = new SplitWindow(false, controlComponentView, additionalComponentView);
     // controlSplitWindow.setDividerLocation(0.3f);
     // SplitWindow mainSplitWindow = new SplitWindow(true, controlSplitWindow, contentWindow);

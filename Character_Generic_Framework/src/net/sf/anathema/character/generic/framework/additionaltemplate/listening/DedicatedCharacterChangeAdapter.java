@@ -15,7 +15,7 @@ public class DedicatedCharacterChangeAdapter implements ICharacterChangeListener
   public void experiencedChanged(boolean experienced) {
     // Nothing to do
   }
-  
+
   public void casteChanged() {
     //Nothing to do
   }

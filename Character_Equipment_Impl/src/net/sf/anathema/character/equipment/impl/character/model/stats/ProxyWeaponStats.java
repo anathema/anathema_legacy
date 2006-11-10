@@ -113,7 +113,7 @@ public class ProxyWeaponStats implements IWeaponStats {
   public IIdentificate getName() {
     return delegate.getName();
   }
-  
+
   public boolean isRangedCombat() {
     return isRangedCombat();
   }

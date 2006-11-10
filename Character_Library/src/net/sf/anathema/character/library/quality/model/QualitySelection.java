@@ -26,7 +26,7 @@ public class QualitySelection<Q extends IQuality> implements IQualitySelection<Q
     if (!(obj instanceof QualitySelection)) {
       return false;
     }
-    QualitySelection<?> other = (QualitySelection) obj;
+    QualitySelection< ? > other = (QualitySelection) obj;
     return other.quality == quality
         && other.pointValue == pointValue
         && other.creationActive == creationActive

@@ -22,13 +22,18 @@ public class PdfTextEncodingUtilities {
   public static Font createFont(BaseFont baseFont, float size) {
     return new Font(baseFont, size, Font.NORMAL, Color.black);
   }
-  
+
   public static ColumnText encodeText(PdfContentByte directContent, Phrase phrase, Bounds bounds, float lineHeight)
       throws DocumentException {
     return encodeText(directContent, phrase, bounds, lineHeight, Element.ALIGN_LEFT);
   }
 
-  public static ColumnText encodeText(PdfContentByte directContent, Phrase phrase, Bounds bounds, float lineHeight, int alignment) throws DocumentException {
+  public static ColumnText encodeText(
+      PdfContentByte directContent,
+      Phrase phrase,
+      Bounds bounds,
+      float lineHeight,
+      int alignment) throws DocumentException {
     ColumnText columnText = new ColumnText(directContent);
     float minX = bounds.getMinX();
     float minY = bounds.getMinY();
@@ -37,6 +42,6 @@ public class PdfTextEncodingUtilities {
     columnText.setSimpleColumn(phrase, minX, minY, maxX, maxY, lineHeight, alignment);
     columnText.go();
     return columnText;
-    
+
   }
 }

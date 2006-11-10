@@ -23,7 +23,7 @@ import net.sf.anathema.lib.util.Identificate;
 
 public class SelectableTraitView implements ISelectableTraitView {
 
-  private IChangeableJComboBox<IIdentificate> traitSelectionBox = new ChangeableJComboBox<IIdentificate>(
+  private final IChangeableJComboBox<IIdentificate> traitSelectionBox = new ChangeableJComboBox<IIdentificate>(
       new IIdentificate[] { new Identificate("Select") },
       false);
 

@@ -8,8 +8,7 @@ public class ThemeProvider extends AbstractProvider<IMusicTheme> {
 
   // Friedship, Authority, Family, Tradition, Innovation, Responsibilty, Faith, Power, Duty, Personality
   public static IMusicTheme[] createDefaultThemes() {
-    return new IMusicTheme[] {
-        new MusicTheme("Action"), //$NON-NLS-1$
+    return new IMusicTheme[] { new MusicTheme("Action"), //$NON-NLS-1$
         new MusicTheme("Adventure"),//$NON-NLS-1$
         new MusicTheme("Battle"),//$NON-NLS-1$
         new MusicTheme("Combat"),//$NON-NLS-1$
@@ -27,7 +26,7 @@ public class ThemeProvider extends AbstractProvider<IMusicTheme> {
         new MusicTheme("Romance"),//$NON-NLS-1$
         new MusicTheme("Society"),//$NON-NLS-1$
         new MusicTheme("War"), //$NON-NLS-1$
-        new MusicTheme("Wisdom")};//$NON-NLS-1$
+        new MusicTheme("Wisdom") };//$NON-NLS-1$
   }
 
   public ThemeProvider(MusicDatabasePersister dataBasePersister) {

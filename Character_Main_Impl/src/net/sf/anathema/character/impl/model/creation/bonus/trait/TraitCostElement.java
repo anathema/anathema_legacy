@@ -4,7 +4,7 @@ import net.sf.anathema.character.impl.model.creation.bonus.basic.ICostElement;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 
 public class TraitCostElement implements ICostElement {
-  
+
   private final IDefaultTrait trait;
 
   public TraitCostElement(IDefaultTrait trait) {

@@ -6,7 +6,7 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public class I18nComparator implements Comparator<IIdentificate> {
-  
+
   private final String resourceKeyPrefix;
   private final IResources resources;
 

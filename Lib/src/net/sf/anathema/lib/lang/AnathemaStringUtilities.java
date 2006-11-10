@@ -66,7 +66,7 @@ public class AnathemaStringUtilities extends StringUtilities {
     int currentBreakPoint = 0;
     for (int searchedBreakPoint = 0; searchedBreakPoint < lines - 1; searchedBreakPoint++) {
       int lastAllowedBreakPointIndex = breakList.size() - (lines - 1 - searchedBreakPoint);
-      int niceTextStartPosition = (textLength / lines) * (searchedBreakPoint + 1);
+      int niceTextStartPosition = textLength / lines * (searchedBreakPoint + 1);
       while (currentBreakPoint < lastAllowedBreakPointIndex) {
         if (breakList.get(currentBreakPoint) >= niceTextStartPosition) {
           break;

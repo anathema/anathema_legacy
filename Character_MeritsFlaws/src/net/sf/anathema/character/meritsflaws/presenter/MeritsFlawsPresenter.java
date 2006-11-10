@@ -18,7 +18,7 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 
-public class MeritsFlawsPresenter implements IPresenter{
+public class MeritsFlawsPresenter implements IPresenter {
 
   private final IMeritsFlawsTabView view;
   private final IMeritsFlawsModel model;
@@ -119,7 +119,7 @@ public class MeritsFlawsPresenter implements IPresenter{
   }
 
   private IQualitySelection<IPerk> createMultiValuePerkSelection(MultiValuePerk perk, IPerkDetailsView detailsView) {
-    return new QualitySelection<IPerk>(perk, detailsView.getSelectedValue(), !(model.isCharacterExperienced()));
+    return new QualitySelection<IPerk>(perk, detailsView.getSelectedValue(), !model.isCharacterExperienced());
   }
 
   private void createDetailsView(final IPerkView meritsView, IPerk perk) {

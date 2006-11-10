@@ -10,7 +10,7 @@ public class CharacterChangeManagement {
 
   private final ChangeControl control = new ChangeControl();
   private boolean dirty = false;
-  private ICharacterChangeListener listener = new ICharacterChangeListener() {
+  private final ICharacterChangeListener listener = new ICharacterChangeListener() {
     public void casteChanged() {
       setDirty();
     }
@@ -27,7 +27,7 @@ public class CharacterChangeManagement {
       setDirty();
     }
   };
-  private IObjectValueChangedListener<String> textListener = new IObjectValueChangedListener<String>() {
+  private final IObjectValueChangedListener<String> textListener = new IObjectValueChangedListener<String>() {
     public void valueChanged(String newValue) {
       setDirty();
     }

@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 
 public class SiderealTraitTemplateCollection extends ExaltTraitTemplateFactory {
 
-  private SiderealAbilityTemplateCreationVisitor visitor = new SiderealAbilityTemplateCreationVisitor();
+  private final SiderealAbilityTemplateCreationVisitor visitor = new SiderealAbilityTemplateCreationVisitor();
 
   @Override
   public ITraitTemplate createAbilityTemplate(AbilityType type) {

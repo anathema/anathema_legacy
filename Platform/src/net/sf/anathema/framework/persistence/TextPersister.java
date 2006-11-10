@@ -34,14 +34,14 @@ public class TextPersister {
       return;
     }
     Element textRoot = parent.addElement(tagName);
-    for (int index = 0; index < text.length; index++) {
+    for (ITextPart element : text) {
       Element partElement = textRoot.addElement(TAG_PART);
       Element formatElement = partElement.addElement(TAG_FORMAT);
-      ITextFormat textFormat = text[index].getFormat();
+      ITextFormat textFormat = element.getFormat();
       ElementUtilities.addAttribute(formatElement, ATTRIB_IS_UNDERLINE, textFormat.isUnderline());
       formatElement.addAttribute(ATTRIB_FONT_STYLE, textFormat.getFontStyle().getName());
       Element textElement = partElement.addElement(TAG_TEXT);
-      textElement.addCDATA(text[index].getText());
+      textElement.addCDATA(element.getText());
     }
   }
 

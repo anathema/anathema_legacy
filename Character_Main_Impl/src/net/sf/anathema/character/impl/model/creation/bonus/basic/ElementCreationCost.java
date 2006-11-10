@@ -19,7 +19,7 @@ public class ElementCreationCost extends ReflectionEqualsObject {
   public int getDotsSpent() {
     return dotsSpent;
   }
-  
+
   @Override
   public String toString() {
     return getClass().getName() + "{" + dotsSpent + "," + bonusPointsSpent + "}"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$

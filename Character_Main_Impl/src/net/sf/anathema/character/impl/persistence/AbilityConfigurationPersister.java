@@ -5,7 +5,6 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_ABILITIES;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_SPECIALTY;
 
-import java.util.Iterator;
 import java.util.List;
 
 import net.sf.anathema.character.generic.framework.ITraitReference;
@@ -94,8 +93,8 @@ public class AbilityConfigurationPersister {
   public void load(Element parent, ICoreTraitConfiguration configuration) throws PersistenceException {
     Element abilitiesElement = ElementUtilities.getRequiredElement(parent, TAG_ABILITIES);
     List<Element> abilityElements = ElementUtilities.elements(abilitiesElement);
-    for (Iterator<Element> allElementsIterator = abilityElements.iterator(); allElementsIterator.hasNext();) {
-      loadAbility(allElementsIterator.next(), configuration);
+    for (Element element : abilityElements) {
+      loadAbility(element, configuration);
     }
   }
 
@@ -141,7 +140,7 @@ public class AbilityConfigurationPersister {
       ITraitReference reference) throws PersistenceException {
     List<Element> specialtyElements = ElementUtilities.elements(abilityElement, TAG_SPECIALTY);
     for (Element specialtyElement : specialtyElements) {
-      String specialtyName = (specialtyElement).attributeValue(ATTRIB_NAME);
+      String specialtyName = specialtyElement.attributeValue(ATTRIB_NAME);
       ISubTraitContainer specialtiesContainer = specialtyConfiguration.getSpecialtiesContainer(reference);
       ISubTrait specialty = specialtiesContainer.addSubTrait(specialtyName);
       persister.restoreTrait(specialtyElement, specialty);

@@ -12,7 +12,7 @@ import net.sf.anathema.lib.lang.clone.ICloneable;
 public class GenericTraitTemplatePool implements ICloneable<GenericTraitTemplatePool> {
 
   private GenericTraitTemplate defaultTraitTemplate;
-  private Map<ITraitType, IClonableTraitTemplate> specialTraitTemplates = new HashMap<ITraitType, IClonableTraitTemplate>();
+  private final Map<ITraitType, IClonableTraitTemplate> specialTraitTemplates = new HashMap<ITraitType, IClonableTraitTemplate>();
 
   public ITraitTemplate getTemplate(ITraitType traitType) {
     ITraitTemplate template = specialTraitTemplates.get(traitType);

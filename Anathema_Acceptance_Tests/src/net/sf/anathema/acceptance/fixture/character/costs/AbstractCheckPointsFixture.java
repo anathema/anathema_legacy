@@ -4,7 +4,7 @@ import net.sf.anathema.acceptance.fixture.character.util.AbstractCharacterColumn
 import net.sf.anathema.character.impl.model.creation.bonus.BonusPointManagement;
 import net.sf.anathema.character.model.creation.IBonusPointManagement;
 
-public class AbstractCheckPointsFixture extends AbstractCharacterColumnFixture{
+public class AbstractCheckPointsFixture extends AbstractCharacterColumnFixture {
 
   protected IBonusPointManagement createManagement() {
     IBonusPointManagement management = new BonusPointManagement(getCharacterStatistics());

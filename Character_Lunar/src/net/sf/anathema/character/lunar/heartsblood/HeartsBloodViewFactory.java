@@ -12,7 +12,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class HeartsBloodViewFactory implements IAdditionalViewFactory {
 
   public IView createView(IAdditionalModel model, IResources resources, CharacterType type) {
-    HeartsBloodView view  = new HeartsBloodView();
+    HeartsBloodView view = new HeartsBloodView();
     new HeartsBloodPresenter((IHeartsBloodModel) model, view, resources).initPresentation();
     return view;
   }

@@ -12,11 +12,11 @@ public class CharacterListenerMapping {
 
   private final Map<ITraitType, TraitListener> traitListeners = new HashMap<ITraitType, TraitListener>();
   private final GenericControl<ICharacterChangeListener> control;
-  
+
   public CharacterListenerMapping(GenericControl<ICharacterChangeListener> control) {
     this.control = control;
   }
-  
+
   public void addTraitListening(ITrait trait) {
     ITraitType traitType = trait.getType();
     if (traitListeners.containsKey(traitType)) {

@@ -16,16 +16,17 @@ public class ItemManagmentModelListener implements IItemManagementModelListener 
   private final IRegistry<IItemType, IItemViewFactory> viewFactoryRegistry;
   private final IAnathemaView anathemaView;
   private final IItemActionFactory actionFactory;
-  
+
   public ItemManagmentModelListener(
       IRegistry<IItemType, IItemViewFactory> viewFactoryRegistry,
       IAnathemaView anathemaView,
-      IModelViewMapping mappping, IItemActionFactory actionFactory) {
+      IModelViewMapping mappping,
+      IItemActionFactory actionFactory) {
     this.anathemaView = anathemaView;
     this.mapping = mappping;
     this.viewFactoryRegistry = viewFactoryRegistry;
     this.actionFactory = actionFactory;
-    
+
   }
 
   public void itemAdded(final IItem item) throws AnathemaException {

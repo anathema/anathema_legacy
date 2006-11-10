@@ -29,7 +29,8 @@ import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-public class BasicAdvantageView extends AbstractInitializableContentView<IAdvantageViewProperties> implements IBasicAdvantageView {
+public class BasicAdvantageView extends AbstractInitializableContentView<IAdvantageViewProperties> implements
+    IBasicAdvantageView {
 
   private final IGridDialogPanel virtuePanel = new DefaultGridDialogPanel(false);
   private final IGridDialogPanel willpowerPanel = new DefaultGridDialogPanel(false);

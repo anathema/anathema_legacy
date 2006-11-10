@@ -28,7 +28,9 @@ public class SpecialtyCalculator {
   private List<IGenericSpecialty> getFavoredSpecialties(List<IGenericSpecialty> specialties) {
     List<IGenericSpecialty> favoredSpecialties = new ArrayList<IGenericSpecialty>();
     for (IGenericSpecialty specialty : specialties) {
-      if (traitConfiguration.getFavorableTrait(specialty.getBasicTrait().getType()).getFavorization().isCasteOrFavored()) {
+      if (traitConfiguration.getFavorableTrait(specialty.getBasicTrait().getType())
+          .getFavorization()
+          .isCasteOrFavored()) {
         favoredSpecialties.add(specialty);
       }
     }

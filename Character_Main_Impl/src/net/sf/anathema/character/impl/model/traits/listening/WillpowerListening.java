@@ -18,7 +18,7 @@ public class WillpowerListening {
     }
     updateWillpowerCreationRange(willpower, virtues);
   }
-  
+
   private void updateWillpowerCreationRange(final IDefaultTrait willpower, final IDefaultTrait[] virtues) {
     int newInitialValue = Math.min(calculateAbsoluteMinimalValue(virtues), willpower.getMaximalValue());
     int newUpperValue = Math.min(calculateUpperValue(virtues), willpower.getMaximalValue());

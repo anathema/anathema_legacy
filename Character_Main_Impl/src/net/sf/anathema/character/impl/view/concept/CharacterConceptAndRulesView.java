@@ -28,8 +28,8 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LabelTextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
-public class CharacterConceptAndRulesView extends AbstractInitializableContentView<ICharacterConceptAndRulesViewProperties> implements
-    ICharacterConceptAndRulesView {
+public class CharacterConceptAndRulesView extends
+    AbstractInitializableContentView<ICharacterConceptAndRulesViewProperties> implements ICharacterConceptAndRulesView {
 
   private final JPanel conceptPanel = new JPanel(new GridDialogLayout(3, false));
   private final List<JPanel> buttonPanels = new ArrayList<JPanel>();

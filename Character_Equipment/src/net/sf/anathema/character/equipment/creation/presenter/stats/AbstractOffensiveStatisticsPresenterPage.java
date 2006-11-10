@@ -36,13 +36,13 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
         initIntegerSpinner(getPageModel().getAccuracyModel()).getComponent(),
         initIntegerSpinner(getPageModel().getRateModel()).getComponent() });
   }
-  
+
   private void initWeaponDamageRow(final IWeaponDamageModel damageModel) {
     final IWeaponDamageView damageView = getViewFactory().createWeaponDamageView();
     new WeaponDamagePresenter(getResources(), damageModel, damageView).initPresentation();
     getPageContent().addDialogComponent(damageView);
   }
-  
+
   @Override
   protected final boolean isTagsSupported() {
     return true;

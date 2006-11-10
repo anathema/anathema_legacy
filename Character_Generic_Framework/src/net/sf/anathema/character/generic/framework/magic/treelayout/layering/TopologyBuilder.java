@@ -22,7 +22,7 @@ public class TopologyBuilder {
     for (ISimpleNode child : node.getChildren()) {
       sortIntoSetRecursively(child, topologicalSort);
     }
-    if (!(topologicalSort.contains(node))) {
+    if (!topologicalSort.contains(node)) {
       topologicalSort.add(0, node);
     }
   }

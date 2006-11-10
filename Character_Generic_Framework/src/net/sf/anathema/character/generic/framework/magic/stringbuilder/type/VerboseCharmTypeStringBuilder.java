@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.magic.charms.type.ISimpleSpecialsModel;
 import net.sf.anathema.character.generic.magic.charms.type.TurnType;
 import net.sf.anathema.lib.resources.IResources;
 
-public class VerboseCharmTypeStringBuilder extends AbstractCharmTypeStringBuilder  {
+public class VerboseCharmTypeStringBuilder extends AbstractCharmTypeStringBuilder {
 
   public VerboseCharmTypeStringBuilder(IResources resources) {
     super(resources, false);

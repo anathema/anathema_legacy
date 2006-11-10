@@ -11,7 +11,7 @@ public class NumberCellEditor extends AbstractFormattedCellEditor {
 
   private NumberFormatter formatter;
 
-  public NumberCellEditor(NumberFormat format, Class<?> valueClass, NullValueStrategy nullValueStrategy) {
+  public NumberCellEditor(NumberFormat format, Class< ? > valueClass, NullValueStrategy nullValueStrategy) {
     super(format, nullValueStrategy);
     formatter.setValueClass(valueClass);
   }

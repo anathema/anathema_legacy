@@ -6,7 +6,7 @@ import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 
 public class SimpleRepositoryWriteAccess implements IRepositoryWriteAccess {
-  
+
   private final OutputStream outputStream;
 
   public SimpleRepositoryWriteAccess(OutputStream outputStream) {

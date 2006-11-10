@@ -25,7 +25,7 @@ public class AggregatedTrait extends AbstractFavorableTrait implements IAggregat
 
   private final ITraitFavorization traitFavorization;
   private final ISubTraitContainer subTraits;
-  private ICharacterChangeListener changeListener = new DedicatedCharacterChangeAdapter() {
+  private final ICharacterChangeListener changeListener = new DedicatedCharacterChangeAdapter() {
     @Override
     public void casteChanged() {
       getFallbackTrait().resetCurrentValue();

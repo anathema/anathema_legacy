@@ -8,11 +8,11 @@ public class MusicPlayerProperties extends AbstractMusicProperties implements IM
     super(resources);
   }
 
-  public String getPlayerBorderString() {    
+  public String getPlayerBorderString() {
     return getString("Music.Borders.Player"); //$NON-NLS-1$
   }
 
-  public String getTimeString() {    
+  public String getTimeString() {
     return getString("Music.Labels.Player.Time"); //$NON-NLS-1$
   }
 }

@@ -7,7 +7,7 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 public interface ITrackDetailModel extends IMusicCategorizationModel {
 
   public void updateGivenName(String givenName);
-  
+
   public void addChangeDetailListener(IChangeListener changeListener);
 
   public void addTrackChangeListener(IChangeListener tracklistener);

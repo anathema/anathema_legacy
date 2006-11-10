@@ -18,7 +18,7 @@ public class IdentifiedAttributeTypeGroup extends TraitTypeGroup implements IIde
     return groupType;
   }
 
-  public ICasteType<? extends ICasteTypeVisitor>  getCasteType() {
+  public ICasteType< ? extends ICasteTypeVisitor> getCasteType() {
     return null;
   }
 }

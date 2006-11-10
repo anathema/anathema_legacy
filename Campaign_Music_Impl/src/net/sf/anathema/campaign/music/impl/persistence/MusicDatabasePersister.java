@@ -16,7 +16,7 @@ public class MusicDatabasePersister {
   private final SelectionPersister selectionPersister = new SelectionPersister();
   private final SearchPersister searchPersister = new SearchPersister();
   private final ObjectContainer db;
-  private List<ITrackDeletionListener> listeners = new ArrayList<ITrackDeletionListener>();
+  private final List<ITrackDeletionListener> listeners = new ArrayList<ITrackDeletionListener>();
 
   public MusicDatabasePersister(final ObjectContainer container) {
     db = container;

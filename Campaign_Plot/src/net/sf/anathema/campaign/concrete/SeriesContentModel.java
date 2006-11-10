@@ -81,7 +81,7 @@ public class SeriesContentModel implements ISeriesContentModel {
     if (!items.remove(file)) {
       return;
     }
-    firePrintNameFileRemoved(file);    
+    firePrintNameFileRemoved(file);
   }
 
   private void firePrintNameFileRemoved(PrintNameFile item) {

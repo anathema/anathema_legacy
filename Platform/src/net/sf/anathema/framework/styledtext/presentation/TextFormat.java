@@ -46,7 +46,7 @@ public class TextFormat implements ITextFormat {
   }
 
   public boolean isStyled() {
-    return (isUnderline() || !fontStyle.isPlain() || getFontSize() != null || fontName != null || textColor != null);
+    return isUnderline() || !fontStyle.isPlain() || getFontSize() != null || fontName != null || textColor != null;
   }
 
   public boolean isUnderline() {

@@ -14,8 +14,7 @@ public abstract class AbstractFormattedCellEditor extends AbstractDelegatingCell
   public AbstractFormattedCellEditor(Format format, NullValueStrategy nullValueStrategy) {
     AbstractFormatter formatter = createFormatter(format);
     formatter = nullValueStrategy.decorateFormatter(formatter);
-    ((JFormattedTextField) getEditorComponent()).setFormatterFactory(new DefaultFormatterFactory(
-        formatter));
+    ((JFormattedTextField) getEditorComponent()).setFormatterFactory(new DefaultFormatterFactory(formatter));
   }
 
   protected abstract AbstractFormatter createFormatter(Format format);

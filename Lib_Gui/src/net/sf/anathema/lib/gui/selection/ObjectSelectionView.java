@@ -41,7 +41,7 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V>, IGridDia
   public void setCellRenderer(ListCellRenderer renderer) {
     comboBox.setRenderer(renderer);
   }
-  
+
   public void setLabelText(String text) {
     this.label.setText(text);
   }
@@ -49,7 +49,7 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V>, IGridDia
   public void addComponents(IGridDialogPanel dialogPanel) {
     addComponents(dialogPanel, new GridDialogLayoutData());
   }
-  
+
   public void addComponents(IGridDialogPanel panel, final IGridDialogLayoutData selectionData) {
     panel.add(new IDialogComponent() {
       public int getColumnCount() {
@@ -93,12 +93,12 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V>, IGridDia
   public V getSelectedObject() {
     return comboBox.getSelectedObject();
   }
-  
+
   public boolean isObjectSelected() {
     return getSelectedObject() != null;
   }
 
   public void setDisabledLabelColor(Color color) {
-    this.disabledLabelColor = color;        
+    this.disabledLabelColor = color;
   }
 }

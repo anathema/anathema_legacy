@@ -77,14 +77,14 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
         spellTemplateElement,
         ATTRIB_MAXIMUM_SORCERY_CIRCLE);
     CircleType maximumSorceryCircle = null;
-    if (!(maximumSorceryCircleId.equals(VALUE_NONE))) {
+    if (!maximumSorceryCircleId.equals(VALUE_NONE)) {
       maximumSorceryCircle = CircleType.valueOf(maximumSorceryCircleId);
     }
     String maximumNecromancyCircleId = ElementUtilities.getRequiredAttrib(
         spellTemplateElement,
         ATTRIB_MAXIMUM_NECROMANCY_CIRCLE);
     CircleType maximumNecromancyCircle = null;
-    if (!(maximumNecromancyCircleId.equals(VALUE_NONE))) {
+    if (!maximumNecromancyCircleId.equals(VALUE_NONE)) {
       maximumNecromancyCircle = CircleType.valueOf(maximumNecromancyCircleId);
     }
     basicTemplate.setSpellTemplate(new SpellMagicTemplate(

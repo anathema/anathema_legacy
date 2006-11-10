@@ -10,7 +10,7 @@ public class CloseCombatStatisticsProperties extends OffensiveStatisticsProperti
 
   public CloseCombatStatisticsProperties(IResources resources) {
     super(resources);
-    this.defaultMessage= new BasicMessage(getString("Equipment.Creation.CloseCombat.DefaultMessage")); //$NON-NLS-1$
+    this.defaultMessage = new BasicMessage(getString("Equipment.Creation.CloseCombat.DefaultMessage")); //$NON-NLS-1$
   }
 
   @Override

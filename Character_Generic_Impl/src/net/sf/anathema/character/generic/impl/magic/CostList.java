@@ -17,14 +17,14 @@ public class CostList implements ICostList {
   }
 
   public ICost getEssenceCost() {
-    return (essence != null ? essence : Cost.NULL_COST);
+    return essence != null ? essence : Cost.NULL_COST;
   }
 
   public IHealthCost getHealthCost() {
-    return (health != null ? health : HealthCost.NULL_HEALTH_COST);
+    return health != null ? health : HealthCost.NULL_HEALTH_COST;
   }
 
   public ICost getWillpowerCost() {
-    return (willpower != null ? willpower : Cost.NULL_COST);
+    return willpower != null ? willpower : Cost.NULL_COST;
   }
 }

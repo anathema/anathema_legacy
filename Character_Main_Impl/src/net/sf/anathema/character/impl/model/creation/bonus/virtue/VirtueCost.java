@@ -1,6 +1,5 @@
 package net.sf.anathema.character.impl.model.creation.bonus.virtue;
 
-
 public class VirtueCost implements IVirtueCost {
 
   private final int dotsSpent;

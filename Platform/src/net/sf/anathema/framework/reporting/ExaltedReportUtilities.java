@@ -6,8 +6,9 @@ import java.util.Map;
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
 
 public class ExaltedReportUtilities {
-  
+
   public static final String EXALTED_LOGO_URL = "ExaltedLogoUrl"; //$NON-NLS-1$
+
   private ExaltedReportUtilities() {
     throw new UnreachableCodeReachedException();
   }

@@ -1,13 +1,11 @@
 package net.sf.anathema.framework.itemdata.model;
 
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
-import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class BasicItemData implements IItemData, IBasicItemData {
 
   private final IItemDescription description = new ItemDescription();
-  
 
   public void setPrintNameAdjuster(PrintNameAdjuster adjuster) {
     description.getName().addTextChangedListener(adjuster);
@@ -24,7 +22,7 @@ public class BasicItemData implements IItemData, IBasicItemData {
   public boolean isDirty() {
     return true;
   }
-  
+
   public void setClean() {
     // TODO Auto-generated method stub    
   }

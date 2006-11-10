@@ -61,7 +61,7 @@ public class FavorableTraitFactory extends AbstractTraitFactory {
         traitContext.getLimitationContext());
     IValueChangeChecker valueChecker = createValueIncrementChecker(traitType);
     if (traitType == AbilityType.Craft) {
-      final String[][] crafts = new String[1][]; 
+      final String[][] crafts = new String[1][];
       basicCharacterData.getRuleSet().getEdition().accept(new IEditionVisitor() {
         public void visitFirstEdition(IExaltedEdition visitedEdition) {
           crafts[0] = new String[] { "Generic" };//$NON-NLS-1$
@@ -69,8 +69,8 @@ public class FavorableTraitFactory extends AbstractTraitFactory {
 
         public void visitSecondEdition(IExaltedEdition visitedEdition) {
           crafts[0] = new String[] { "Air", "Earth", "Fire", "Water", "Wood" };//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$          
-        }        
-      });      
+        }
+      });
       return new AggregatedTrait(
           favorableTraitRules,
           basicCharacterData,

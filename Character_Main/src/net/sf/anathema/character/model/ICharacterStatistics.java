@@ -12,14 +12,14 @@ import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.model.traits.essence.IEssencePoolConfiguration;
 
 public interface ICharacterStatistics {
-  
+
   public ICoreTraitConfiguration getTraitConfiguration();
 
   public ICharacterConcept getCharacterConcept();
 
   public ICharacterTemplate getCharacterTemplate();
 
-public IEssencePoolConfiguration getEssencePool();
+  public IEssencePoolConfiguration getEssencePool();
 
   public IExperiencePointConfiguration getExperiencePoints();
 
@@ -41,4 +41,4 @@ public IEssencePoolConfiguration getEssencePool();
   public ISpellConfiguration getSpells();
 
   public ICharacterModelContext getCharacterContext();
-  }
+}

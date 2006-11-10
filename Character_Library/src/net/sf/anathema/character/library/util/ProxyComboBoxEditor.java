@@ -10,7 +10,7 @@ import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 
 public class ProxyComboBoxEditor implements ITextFieldComboBoxEditor {
 
-  private ComboBoxEditor editor = new BasicComboBoxEditor();
+  private final ComboBoxEditor editor = new BasicComboBoxEditor();
 
   public JTextField getEditorComponent() {
     return (JTextField) editor.getEditorComponent();

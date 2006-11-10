@@ -33,7 +33,7 @@ public class TraitTypeAdapter implements ITraitTypeVisitor {
   public void visitBackground(IBackgroundTemplate template) {
     // Nothing to do
   }
-  
+
   public void visitCustomTraitType(ITraitType visitedType) {
     // Nothing to do
   }

@@ -9,7 +9,7 @@ public interface ISiderealCollegeView {
 
   public void startGroup(String groupLabel);
 
-  public IToggleButtonTraitView<?> addIntValueView(
+  public IToggleButtonTraitView< ? > addIntValueView(
       String label,
       IIntValueDisplayFactory factory,
       IIconToggleButtonProperties properties,

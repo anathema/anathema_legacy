@@ -9,7 +9,7 @@ public abstract class AbstractBackgroundTemplate extends Identificate implements
   public AbstractBackgroundTemplate(String id) {
     super(id);
   }
-  
+
   public final void accept(ITraitTypeVisitor visitor) {
     visitor.visitBackground(this);
   }

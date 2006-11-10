@@ -21,7 +21,10 @@ public interface IMagicViewFactory {
 
   public SVGMultiLearnableCharmView createMultiLearnableCharmView(ISpecialCharm charm, double width, Color color);
 
-  public SVGSubeffectCharmView createSubeffectCharmView(IMultipleEffectCharm visited, double charmWidth, Color characterColor);
+  public SVGSubeffectCharmView createSubeffectCharmView(
+      IMultipleEffectCharm visited,
+      double charmWidth,
+      Color characterColor);
 
   public ISVGSpecialCharmView createViewControlButton(ISVGSpecialCharmView view, double width, String label);
 }

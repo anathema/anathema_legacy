@@ -25,8 +25,8 @@ public abstract class WeightedObjectSorter<V> {
   public List<V> sortAscending(V[] values, int[] weights) {
     WeightedObject<V>[] weightedArray = getAscendingArray(values, weights);
     List<V> sortedList = new ArrayList<V>();
-    for (int index = 0; index < weightedArray.length; index++) {
-      sortedList.add(weightedArray[index].getValue());
+    for (WeightedObject<V> element : weightedArray) {
+      sortedList.add(element.getValue());
     }
     return sortedList;
   }

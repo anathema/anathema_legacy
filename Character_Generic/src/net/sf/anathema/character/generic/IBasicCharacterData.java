@@ -7,11 +7,11 @@ import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
 
 public interface IBasicCharacterData {
-  
-  public ICasteType<? extends ICasteTypeVisitor> getCasteType();
+
+  public ICasteType< ? extends ICasteTypeVisitor> getCasteType();
 
   public CharacterType getCharacterType();
-  
+
   public ITemplateType getTemplateType();
 
   public boolean isExperienced();

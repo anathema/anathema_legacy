@@ -123,7 +123,7 @@ public final class ComboViewProperties extends AbstractMagicLearnProperties impl
   }
 
   public Icon getCancelEditButtonIcon() {
-    return new CharacterUI(getResources()).getCancelComboEditIcon();  
+    return new CharacterUI(getResources()).getCancelComboEditIcon();
   }
 
   public String getFinalizeButtonEditToolTip() {

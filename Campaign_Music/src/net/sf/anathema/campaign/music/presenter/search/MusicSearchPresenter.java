@@ -21,7 +21,7 @@ public class MusicSearchPresenter implements IPresenter {
   private final ILibraryControlView controlView;
   private final IResources resources;
   private IMusicSearchControl searchControl;
-  private Map<ISearchComponent, ISearchParameter> parametersByView = new HashMap<ISearchComponent, ISearchParameter>();
+  private final Map<ISearchComponent, ISearchParameter> parametersByView = new HashMap<ISearchComponent, ISearchParameter>();
 
   public MusicSearchPresenter(ILibraryControlView controlView, IMusicDatabase dataBase, IResources resources) {
     this.controlView = controlView;

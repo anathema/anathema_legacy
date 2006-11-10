@@ -32,6 +32,10 @@ public interface ISpecialCharmManager {
       ILearningCharmGroup group,
       ICharmLearnableArbitrator arbitrator);
 
-  public void registerEffectMultilearnableCharm(IMultipleEffectCharm visited, ICharm charm, ILearningCharmGroup group, CharmConfiguration arbitrator);
+  public void registerEffectMultilearnableCharm(
+      IMultipleEffectCharm visited,
+      ICharm charm,
+      ILearningCharmGroup group,
+      CharmConfiguration arbitrator);
 
 }

@@ -25,11 +25,11 @@ import net.sf.anathema.lib.logging.Logger;
 public class BrowserControl {
 
   private static final Logger logger = Logger.getLogger(BrowserControl.class);
-  
+
   public static void displayUrl(URL url) {
     displayUrl(url.toExternalForm());
   }
-  
+
   /**
    * Display a file in the system browser. If you want to display a file, you
    * must include the absolute path name.

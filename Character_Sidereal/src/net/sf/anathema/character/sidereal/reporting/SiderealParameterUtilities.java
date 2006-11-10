@@ -12,9 +12,7 @@ public class SiderealParameterUtilities {
       Map<Object, Object> parameters,
       IGenericCharacter character,
       IResources resources) {
-    parameters.put(
-        ExaltVoidstateReportTemplate.RESPLENDENT_DESTINY_DATA_SOURCE,
-        new ResplendentDestinyDataSource());
+    parameters.put(ExaltVoidstateReportTemplate.RESPLENDENT_DESTINY_DATA_SOURCE, new ResplendentDestinyDataSource());
     parameters.put(ExaltVoidstateReportTemplate.COLLEGES_DATA_SOURCE, new SiderealCollegesDataSource(
         character,
         resources));

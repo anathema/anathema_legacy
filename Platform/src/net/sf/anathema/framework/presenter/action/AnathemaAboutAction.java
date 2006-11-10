@@ -18,7 +18,7 @@ public class AnathemaAboutAction extends SmartAction {
     action.setName(resources.getString("Help.AboutDialog.Title")); //$NON-NLS-1$
     return action;
   }
-  
+
   private AnathemaAboutAction(IResources resources) {
     this.resources = resources;
   }

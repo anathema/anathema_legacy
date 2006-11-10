@@ -2,7 +2,7 @@ package net.sf.anathema.character.library.trait.view;
 
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
-public abstract class AbstractTraitViewWrapper<K extends ITraitView<?>> implements ITraitView<K> {
+public abstract class AbstractTraitViewWrapper<K extends ITraitView< ? >> implements ITraitView<K> {
 
   private final K view;
 

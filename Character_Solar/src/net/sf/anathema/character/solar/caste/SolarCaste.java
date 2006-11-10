@@ -33,7 +33,7 @@ public enum SolarCaste implements ICasteType<ISolarCasteVisitor> {
   public String getId() {
     return name();
   }
-  
+
   @Override
   public String toString() {
     return getId();

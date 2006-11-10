@@ -13,7 +13,7 @@ import net.disy.commons.core.util.ISimpleBlock;
 // NOT_PUBLISHED
 public class VetoableListSelectionModel extends DefaultListSelectionModel {
 
-  private List<IVetor> vetors = new ArrayList<IVetor>();
+  private final List<IVetor> vetors = new ArrayList<IVetor>();
   private boolean alreadyAsked;
 
   public VetoableListSelectionModel() {

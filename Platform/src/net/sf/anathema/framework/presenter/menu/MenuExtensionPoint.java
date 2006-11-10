@@ -10,11 +10,11 @@ import net.sf.anathema.lib.resources.IResources;
 public class MenuExtensionPoint implements IAnathemaExtension, IMenuExtensionPoint {
 
   private final List<IMenuItem> menuItems = new ArrayList<IMenuItem>();
-  
+
   public void initialize(IResources resources, IDataFileProvider dataFileProvider) {
     // nothing to do
   }
-  
+
   public IMenuItem[] getMenuItems() {
     return menuItems.toArray(new IMenuItem[0]);
   }

@@ -6,6 +6,6 @@ import net.sf.anathema.character.generic.template.magic.IGenericCharmConfigurati
 public interface ICharmContext extends IGenericCharmConfiguration {
 
   public boolean isLearned(ICharm charm);
-  
+
   public ICharmLearnStrategy getCharmLearnStrategy();
 }

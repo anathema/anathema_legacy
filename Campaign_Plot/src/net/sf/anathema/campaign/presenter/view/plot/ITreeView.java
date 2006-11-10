@@ -9,9 +9,9 @@ public interface ITreeView {
   public TreePath getPathForLocation(int x, int y);
 
   public TreePath[] getSelectionPaths();
-  
+
   public DefaultMutableTreeNode getSelectedNode();
-  
+
   public void setSelectionPath(TreePath path);
 
   public JTree getTreeComponent();

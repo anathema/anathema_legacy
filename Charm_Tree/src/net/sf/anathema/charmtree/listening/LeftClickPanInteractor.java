@@ -66,7 +66,7 @@ public class LeftClickPanInteractor extends InteractorAdapter {
       return false;
     }
     int mods = ie.getModifiers();
-    return (ie.getID() == MouseEvent.MOUSE_PRESSED) && ((mods & InputEvent.BUTTON1_MASK) != 0);
+    return ie.getID() == MouseEvent.MOUSE_PRESSED && (mods & InputEvent.BUTTON1_MASK) != 0;
   }
 
   @Override

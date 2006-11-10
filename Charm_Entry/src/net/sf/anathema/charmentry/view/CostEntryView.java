@@ -27,7 +27,7 @@ public class CostEntryView implements ICostEntryView {
     return textField;
   }
 
-  public void addTo(JComponent component) {    
+  public void addTo(JComponent component) {
     component.add(new JLabel(valueString));
     component.add(valueField.getComponent());
     component.add(new JLabel(additionalTextString));

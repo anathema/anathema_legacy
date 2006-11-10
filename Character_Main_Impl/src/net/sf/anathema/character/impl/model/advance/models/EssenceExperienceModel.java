@@ -15,6 +15,6 @@ public class EssenceExperienceModel extends AbstractIntegerValueModel {
   }
 
   public Integer getValue() {
-    return calculator.getEssenceCosts(TraitCollectionUtilities.getEssence(traitCollection) );
+    return calculator.getEssenceCosts(TraitCollectionUtilities.getEssence(traitCollection));
   }
 }

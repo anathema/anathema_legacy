@@ -85,7 +85,7 @@ public class CharmBuilder implements ICharmBuilder {
     IExaltedSourceBook[] sources = sourceBuilder.buildSourceList(charmElement);
     CharmPrerequisiteList prerequisiteList = getPrerequisites(charmElement, id);
     IGenericTrait[] prerequisites = prerequisiteList.getPrerequisites();
-    final IGenericTrait primaryPrerequisite = (prerequisites.length != 0) ? prerequisites[0] : null;
+    final IGenericTrait primaryPrerequisite = prerequisites.length != 0 ? prerequisites[0] : null;
     String group = groupBuilder.build(charmElement, primaryPrerequisite);
     Charm charm = new Charm(
         characterType,

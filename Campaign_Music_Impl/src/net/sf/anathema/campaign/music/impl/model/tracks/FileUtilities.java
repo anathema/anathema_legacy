@@ -7,7 +7,7 @@ import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.lib.collection.Predicate;
 
 public class FileUtilities {
-  
+
   private FileUtilities() {
     throw new UnreachableCodeReachedException();
   }

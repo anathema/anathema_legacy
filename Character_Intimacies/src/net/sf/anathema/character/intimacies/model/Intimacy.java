@@ -17,7 +17,7 @@ public class Intimacy implements IIntimacy {
 
   private final String name;
   private final IDefaultTrait trait;
-  private TraitRules traitRules;
+  private final TraitRules traitRules;
   private final IGenericTrait maxValueTrait;
   private boolean complete;
   private final BooleanValueControl control = new BooleanValueControl();

@@ -18,8 +18,9 @@ public class DbMusicCategorizationModel implements IMusicCategorizationModel {
   private final ISelectionContainerModel<IMusicEvent> moodsModel;
 
   public DbMusicCategorizationModel(MusicDatabasePersister databasePersister) {
-    this.feelingsModel = SelectionContainerModel.createDefault(IMusicMood.class, new MoodProvider(
-        databasePersister).getAvailableValues());
+    this.feelingsModel = SelectionContainerModel.createDefault(
+        IMusicMood.class,
+        new MoodProvider(databasePersister).getAvailableValues());
     this.themesModel = SelectionContainerModel.createDefault(
         IMusicTheme.class,
         new ThemeProvider(databasePersister).getAvailableValues());

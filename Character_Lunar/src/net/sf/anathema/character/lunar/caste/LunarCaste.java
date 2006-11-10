@@ -9,11 +9,12 @@ public enum LunarCaste implements ICasteType<ILunarCasteVisitor> {
       visitor.visitFullMoon(this);
     }
   },
-  ChangingMoon{
+  ChangingMoon {
     public void accept(ILunarCasteVisitor visitor) {
       visitor.visitChangingMoon(this);
     }
-  }, NoMoon{
+  },
+  NoMoon {
     public void accept(ILunarCasteVisitor visitor) {
       visitor.visitNoMoon(this);
     }

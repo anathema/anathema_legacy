@@ -35,8 +35,8 @@ public class PdfVirtueEncoder extends AbstractPdfEncoder {
     float leftVirtueX = bounds.x + virtuePadding / 2;
     float width = (bounds.width - 2 * virtuePadding) / 2;
     float rightVirtueX = (int) (bounds.x + width + virtuePadding * 1.5);
-    float upperY = (int) (bounds.getMaxY());
-    float centerY = (int) (bounds.getCenterY());
+    float upperY = (int) bounds.getMaxY();
+    float centerY = (int) bounds.getCenterY();
     encodeVirtue(directContent, collection.getTrait(VirtueType.Compassion), new Position(leftVirtueX, upperY), width);
     encodeVirtue(directContent, collection.getTrait(VirtueType.Temperance), new Position(rightVirtueX, upperY), width);
     encodeVirtue(directContent, collection.getTrait(VirtueType.Conviction), new Position(leftVirtueX, centerY), width);

@@ -26,7 +26,7 @@ public class AccuracyModification implements IStatsModification {
       return input + 1;
     }
     if (material == MagicalMaterial.Moonsilver) {
-      return type.isRanged() ? input + 1 : input+ 2;
+      return type.isRanged() ? input + 1 : input + 2;
     }
     if (material == MagicalMaterial.Starmetal && isSecondEdition) {
       return input + 1;

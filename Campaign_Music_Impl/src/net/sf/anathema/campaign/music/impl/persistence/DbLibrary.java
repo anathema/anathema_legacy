@@ -15,7 +15,7 @@ public final class DbLibrary implements ILibrary {
   public DbLibrary(String name, ObjectContainer db) {
     Ensure.ensureNotNull(name);
     this.name = name;
-    this.content =  db.ext().collections().newLinkedList();
+    this.content = db.ext().collections().newLinkedList();
     this.content.deleteRemoved(false);
   }
 

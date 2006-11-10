@@ -19,7 +19,7 @@ public class CharmLearnAdapter implements ICharmLearnListener {
   public void charmNotUnlearnable(ICharm charm) {
     // Nothing to do
   }
-  
+
   public void recalculateRequested() {
     // Nothing to do    
   }

@@ -18,8 +18,7 @@ public abstract class AbstractTreeVisualizer extends AbstractCharmCascadeVisuali
 
   private void createVisualizableNodes(int layerIndex) {
     ISimpleNode[] layerNodes = getGraph().getNodesByLayer(layerIndex + 1);
-    for (int nodeIndex = 0; nodeIndex < layerNodes.length; nodeIndex++) {
-      ISimpleNode currentNode = layerNodes[nodeIndex];
+    for (ISimpleNode currentNode : layerNodes) {
       getNodeFactory().registerVisualizableNode(currentNode);
     }
   }

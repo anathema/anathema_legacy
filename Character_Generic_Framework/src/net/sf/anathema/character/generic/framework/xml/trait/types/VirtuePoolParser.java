@@ -11,7 +11,8 @@ public class VirtuePoolParser extends AbstractPoolTemplateParser {
   private static final String TAG_VIRTUES = "virtues"; //$NON-NLS-1$
 
   public VirtuePoolParser(
-      IXmlTemplateRegistry<GenericTraitTemplatePool> poolTemplateRegistry, GenericTraitTemplateFactory templateFactory) {
+      IXmlTemplateRegistry<GenericTraitTemplatePool> poolTemplateRegistry,
+      GenericTraitTemplateFactory templateFactory) {
     super(poolTemplateRegistry, templateFactory);
   }
 

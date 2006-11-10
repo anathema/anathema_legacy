@@ -25,17 +25,17 @@ public class MeritsFlawsProvider {
     MultiValuePerk mute = createMute();
     MultiValuePerk destiny = createDestiny();
     MultiValuePerk lucky = createLucky();
-    MultiValuePerk sunSeared = new MultiValuePerk(PerkType.Flaw, PerkCategory.Physical, "Sun-Seared", (new int[] { //$NON-NLS-1$
-        2, 3, 6 }));
+    MultiValuePerk sunSeared = new MultiValuePerk(PerkType.Flaw, PerkCategory.Physical, "Sun-Seared", new int[] { //$NON-NLS-1$
+        2, 3, 6 });
     MultiValuePerk amputee = createAmputee();
     MultiValuePerk tacticalInstincts = createTacticalInstincts();
     MultiValuePerk addiction = createAddiction();
     MultiValuePerk priest = createPriest();
     MultiValuePerk swornBrotherhood = createSwornBrotherHood();
     IPerk[] perks = new IPerk[] { new MultiValuePerk(PerkType.Merit, PerkCategory.Physical, "SelectiveConception", 1), //$NON-NLS-1$
-        new MultiValuePerk(PerkType.Merit, PerkCategory.Physical, "Ambidextrous", (new int[] { 1, 2 })), //$NON-NLS-1$
-        new MultiValuePerk(PerkType.Merit, PerkCategory.Physical, "Double-Jointed", (new int[] { 1, 3 })), //$NON-NLS-1$
-        new MultiValuePerk(PerkType.Merit, PerkCategory.Physical, "PainTolerance", (new int[] { 3, 5, 7 })), //$NON-NLS-1$
+        new MultiValuePerk(PerkType.Merit, PerkCategory.Physical, "Ambidextrous", new int[] { 1, 2 }), //$NON-NLS-1$
+        new MultiValuePerk(PerkType.Merit, PerkCategory.Physical, "Double-Jointed", new int[] { 1, 3 }), //$NON-NLS-1$
+        new MultiValuePerk(PerkType.Merit, PerkCategory.Physical, "PainTolerance", new int[] { 3, 5, 7 }), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Merit, PerkCategory.Physical, "LargeSize", new int[] { 4, 6 }), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Merit, PerkCategory.Physical, "SpecialResistanceLimited", 1), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Merit, PerkCategory.Mental, "CommonSense", 1), //$NON-NLS-1$
@@ -50,7 +50,7 @@ public class MeritsFlawsProvider {
         new MultiValuePerk(PerkType.Merit, PerkCategory.Social, "CelestialFavorMerit", new int[] { 2, 4, 6 }), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Merit, PerkCategory.Property, "Heirloom", 1), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Merit, PerkCategory.Property, "LegendaryArtifact", 10), //$NON-NLS-1$
-        new MultiValuePerk(PerkType.Merit, PerkCategory.Property, "HeirApparent", (new int[] { 1, 2, 3, 4, 5 })), //$NON-NLS-1$
+        new MultiValuePerk(PerkType.Merit, PerkCategory.Property, "HeirApparent", new int[] { 1, 2, 3, 4, 5 }), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Merit, PerkCategory.Supernatural, "Innocuous", 4), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Merit, PerkCategory.Supernatural, "TerrestrialBloodline", 1), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Merit, PerkCategory.Supernatural, "TaintsWarning", //$NON-NLS-1$
@@ -74,28 +74,28 @@ public class MeritsFlawsProvider {
         new MultiValuePerk(PerkType.Flaw, PerkCategory.Physical, "OneEye", 2), //$NON-NLS-1$
         sunSeared,
         amputee,
-        new MultiValuePerk(PerkType.Flaw, PerkCategory.Physical, "Dying", (new int[] { 2, 3, 4, 5, 6, 7, 8, 9, 10 })), //$NON-NLS-1$
+        new MultiValuePerk(PerkType.Flaw, PerkCategory.Physical, "Dying", new int[] { 2, 3, 4, 5, 6, 7, 8, 9, 10 }), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Flaw, PerkCategory.Physical, "Small", 3), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Flaw, PerkCategory.Physical, "SlowHealing", 4), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Flaw, PerkCategory.Physical, "UnusualAppearance", new int[] { 1, 2 }), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Flaw, PerkCategory.Physical, "ClimateSensitive", new int[] { 2, 3, 4 }), //$NON-NLS-1$
         weakImmuneSystem,
-        new MultiValuePerk(PerkType.Flaw, PerkCategory.Supernatural, "Unlucky", (new int[] { 1, 2, 3, 4, 5 })), //$NON-NLS-1$
-        new MultiValuePerk(PerkType.Flaw, PerkCategory.Supernatural, "DarkFate", (new int[] { 1, 2, 3, 4, 5 })), //$NON-NLS-1$
+        new MultiValuePerk(PerkType.Flaw, PerkCategory.Supernatural, "Unlucky", new int[] { 1, 2, 3, 4, 5 }), //$NON-NLS-1$
+        new MultiValuePerk(PerkType.Flaw, PerkCategory.Supernatural, "DarkFate", new int[] { 1, 2, 3, 4, 5 }), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Flaw, PerkCategory.Supernatural, "UnbiddenOracle", 1), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Flaw, PerkCategory.Supernatural, "EternalVowFlaw", //$NON-NLS-1$
             new int[] { 1 },
             new CharacterType[] { CharacterType.ABYSSAL, CharacterType.LUNAR }),
         createPermanentCastemark(),
         new MultiValuePerk(PerkType.Flaw, PerkCategory.Social, "Child", 3), //$NON-NLS-1$
-        new MultiValuePerk(PerkType.Flaw, PerkCategory.Social, "Disturbing", (new int[] { 2, 3 })), //$NON-NLS-1$
+        new MultiValuePerk(PerkType.Flaw, PerkCategory.Social, "Disturbing", new int[] { 2, 3 }), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Flaw, PerkCategory.Social, "Barbarian", 1), //$NON-NLS-1$
-        new MultiValuePerk(PerkType.Flaw, PerkCategory.Social, "Disciple", (new int[] { 1, 2, 3, 4, 5 })), //$NON-NLS-1$
-        new MultiValuePerk(PerkType.Flaw, PerkCategory.Social, "EnemyRival", (new int[] { 1, 2, 3, 4, 5 })), //$NON-NLS-1$
+        new MultiValuePerk(PerkType.Flaw, PerkCategory.Social, "Disciple", new int[] { 1, 2, 3, 4, 5 }), //$NON-NLS-1$
+        new MultiValuePerk(PerkType.Flaw, PerkCategory.Social, "EnemyRival", new int[] { 1, 2, 3, 4, 5 }), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Flaw, PerkCategory.Social, "FavorFlaw", new int[] { 1, 2, 3 }), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Flaw, PerkCategory.Social, "CelestialFavorFlaw", new int[] { 2, 4, 6 }), //$NON-NLS-1$
-        new MultiValuePerk(PerkType.Flaw, PerkCategory.Social, "Secrets", (new int[] { 1, 2, 3 })), //$NON-NLS-1$
-        new MultiValuePerk(PerkType.Flaw, PerkCategory.Social, "Wanted", (new int[] { 1, 2, 3, 4, 5 })), //$NON-NLS-1$
+        new MultiValuePerk(PerkType.Flaw, PerkCategory.Social, "Secrets", new int[] { 1, 2, 3 }), //$NON-NLS-1$
+        new MultiValuePerk(PerkType.Flaw, PerkCategory.Social, "Wanted", new int[] { 1, 2, 3, 4, 5 }), //$NON-NLS-1$
 
         new MultiValuePerk(PerkType.Flaw, PerkCategory.Mental, "Pacifist", 1), //$NON-NLS-1$
         new MultiValuePerk(PerkType.Flaw, PerkCategory.Mental, "Nightmares", 3), //$NON-NLS-1$
@@ -133,8 +133,8 @@ public class MeritsFlawsProvider {
   }
 
   private static MultiValuePerk createAddiction() {
-    MultiValuePerk addiction = new MultiValuePerk(PerkType.Flaw, PerkCategory.Mental, "Addiction", (new int[] { //$NON-NLS-1$
-        1, 2, 3, 4, 5 }));
+    MultiValuePerk addiction = new MultiValuePerk(PerkType.Flaw, PerkCategory.Mental, "Addiction", new int[] { //$NON-NLS-1$
+        1, 2, 3, 4, 5 });
     setMultiCharacterTypeSpecialCost(addiction, CharacterType.getAllExaltTypes(), new int[] { 1, 2, 3, 4 });
     return addiction;
   }
@@ -147,28 +147,28 @@ public class MeritsFlawsProvider {
   }
 
   private static MultiValuePerk createAmputee() {
-    MultiValuePerk amputee = new MultiValuePerk(PerkType.Flaw, PerkCategory.Physical, "Amputee", (new int[] { //$NON-NLS-1$
-        2, 3, 4, 5, 6, 7, 8 }));
+    MultiValuePerk amputee = new MultiValuePerk(PerkType.Flaw, PerkCategory.Physical, "Amputee", new int[] { //$NON-NLS-1$
+        2, 3, 4, 5, 6, 7, 8 });
     setMultiCharacterTypeSpecialCost(amputee, CharacterType.getAllExaltTypes(), new int[] { 1, 2, 3, 4, 5, 6 });
     return amputee;
   }
 
   private static MultiValuePerk createLucky() {
-    MultiValuePerk lucky = new MultiValuePerk(PerkType.Merit, PerkCategory.Supernatural, "Lucky", (new int[] { //$NON-NLS-1$
-        1, 2, 3, 4, 5 }));
+    MultiValuePerk lucky = new MultiValuePerk(PerkType.Merit, PerkCategory.Supernatural, "Lucky", new int[] { //$NON-NLS-1$
+        1, 2, 3, 4, 5 });
     addOneCharacterTypeSpecialCost(lucky, CharacterType.SIDEREAL, new int[] { 2 });
     return lucky;
   }
 
   private static MultiValuePerk createDestiny() {
-    MultiValuePerk destiny = new MultiValuePerk(PerkType.Merit, PerkCategory.Supernatural, "Destiny", (new int[] { //$NON-NLS-1$
-        1, 2, 3, 4, 5 }));
+    MultiValuePerk destiny = new MultiValuePerk(PerkType.Merit, PerkCategory.Supernatural, "Destiny", new int[] { //$NON-NLS-1$
+        1, 2, 3, 4, 5 });
     setMultiCharacterTypeSpecialCost(destiny, CharacterType.getCelestialExaltTypes(), new int[] { 1, 2 });
     return destiny;
   }
 
   private static MultiValuePerk createMute() {
-    MultiValuePerk mute = new MultiValuePerk(PerkType.Flaw, PerkCategory.Physical, "Mute", (new int[] { 1, 3, 4 })); //$NON-NLS-1$
+    MultiValuePerk mute = new MultiValuePerk(PerkType.Flaw, PerkCategory.Physical, "Mute", new int[] { 1, 3, 4 }); //$NON-NLS-1$
     setMultiCharacterTypeSpecialCost(mute, CharacterType.getAllExaltTypes(), new int[] { 2, 3 });
     return mute;
   }

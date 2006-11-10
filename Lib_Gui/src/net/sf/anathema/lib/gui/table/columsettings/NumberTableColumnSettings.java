@@ -19,31 +19,21 @@ public class NumberTableColumnSettings extends AbstractTableColumnSettings {
 
   private final NumberFormat format;
   private final NullValueStrategy nullValueStrategy;
-  private final Class<?> valueClass;
+  private final Class< ? > valueClass;
 
-  public static NumberTableColumnSettings getDoubleInstance(
-      String format,
-      NullValueStrategy nullValueStrategy) {
+  public static NumberTableColumnSettings getDoubleInstance(String format, NullValueStrategy nullValueStrategy) {
     return new NumberTableColumnSettings(new DecimalFormat(format), Double.class, nullValueStrategy);
   }
 
-  public static NumberTableColumnSettings getIntegerInstance(
-      String format,
-      NullValueStrategy nullValueStrategy) {
-    return new NumberTableColumnSettings(
-        new DecimalFormat(format),
-        Integer.class,
-        nullValueStrategy);
+  public static NumberTableColumnSettings getIntegerInstance(String format, NullValueStrategy nullValueStrategy) {
+    return new NumberTableColumnSettings(new DecimalFormat(format), Integer.class, nullValueStrategy);
   }
 
-  public NumberTableColumnSettings(NumberFormat format, Class<?> valueClass) {
+  public NumberTableColumnSettings(NumberFormat format, Class< ? > valueClass) {
     this(format, valueClass, NullValueStrategy.DISALLOW);
   }
 
-  public NumberTableColumnSettings(
-      NumberFormat format,
-      Class<?> valueClass,
-      NullValueStrategy nullValueStrategy) {
+  public NumberTableColumnSettings(NumberFormat format, Class< ? > valueClass, NullValueStrategy nullValueStrategy) {
     super(format.getMinimumIntegerDigits() + format.getMinimumFractionDigits() + 2);
     Ensure.ensureNotNull(format);
     Ensure.ensureNotNull(valueClass);
@@ -70,9 +60,7 @@ public class NumberTableColumnSettings extends AbstractTableColumnSettings {
           boolean hasFocus,
           int row,
           int column) {
-        return super.getTableCellRendererComponent(
-            table,
-            value == null ? "" : format.format(value), //$NON-NLS-1$
+        return super.getTableCellRendererComponent(table, value == null ? "" : format.format(value), //$NON-NLS-1$
             isSelected,
             hasFocus,
             row,

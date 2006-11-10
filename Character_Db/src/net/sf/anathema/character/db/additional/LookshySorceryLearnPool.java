@@ -4,7 +4,6 @@ import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.magic.ISpell;
 
-
 public class LookshySorceryLearnPool extends AbstractSorceryLearnPool {
 
   String[] allowedSpellIds = new String[] { "Terrestrial.DeathObsidianButterflies",//$NON-NLS-1$

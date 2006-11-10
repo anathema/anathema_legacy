@@ -14,7 +14,7 @@ public class LunarVirtueFlawViewFactory implements IAdditionalViewFactory {
 
   public IView createView(IAdditionalModel model, IResources resources, CharacterType type) {
     IVirtueFlawView virtueFlawView = new VirtueFlawView();
-    new LunarVirtueFlawPresenter(resources, virtueFlawView, ((IVirtueFlawModel) model)).initPresentation();
+    new LunarVirtueFlawPresenter(resources, virtueFlawView, (IVirtueFlawModel) model).initPresentation();
     return virtueFlawView;
   }
 }

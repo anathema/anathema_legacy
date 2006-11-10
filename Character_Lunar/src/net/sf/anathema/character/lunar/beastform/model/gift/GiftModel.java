@@ -18,7 +18,7 @@ public class GiftModel extends AbstractQualityModel<IGift> implements IGiftModel
     this.allGifts = GiftProvider.getAllGifts();
     model.addCharmLearnCountChangedListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
-        GiftModel.this.picks = newValue == 0 ? 0 : 2 + (newValue - 1);
+        GiftModel.this.picks = newValue == 0 ? 0 : 2 + newValue - 1;
         fireModelChangedEvent();
       }
     });

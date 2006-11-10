@@ -41,11 +41,11 @@ public class TraitGroup {
     final int[] creationValueSum = new int[1];
     trait.accept(new ITraitVisitor() {
       public void visitDefaultTrait(IDefaultTrait visitedTrait) {
-        creationValueSum[0] = visitedTrait.getCreationValue(); 
+        creationValueSum[0] = visitedTrait.getCreationValue();
       }
-    
+
       public void visitAggregatedTrait(IAggregatedTrait visitedTrait) {
-        creationValueSum[0] = visitedTrait.getSubTraits().getCreationDotTotal(); 
+        creationValueSum[0] = visitedTrait.getSubTraits().getCreationDotTotal();
       }
     });
     return creationValueSum[0];

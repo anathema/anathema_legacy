@@ -24,9 +24,9 @@ public class TraitTypeGroup implements ITraitTypeGroup {
   }
 
   public final ITraitType getById(String typeId) {
-    for (int index = 0; index < traitTypes.length; index++) {
-      if (traitTypes[index].getId().equals(typeId)) {
-        return traitTypes[index];
+    for (ITraitType element : traitTypes) {
+      if (element.getId().equals(typeId)) {
+        return element;
       }
     }
     throw new IllegalArgumentException("No trait type with found in group with id " + typeId); //$NON-NLS-1$

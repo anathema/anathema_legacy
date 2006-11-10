@@ -14,9 +14,7 @@ public class PersistAppendSelectionAction extends AbstractPersistSelectionAction
       IActionAddableListView<IMusicSelection> selectionListView,
       IMusicSelectionModel selectionModel,
       IResources resources) {
-    super(
-        new BasicUi(resources).getLeftArrowIcon(),
-        resources.getString("Music.Actions.AppendSelection.Tooltip"), //$NON-NLS-1$
+    super(new BasicUi(resources).getLeftArrowIcon(), resources.getString("Music.Actions.AppendSelection.Tooltip"), //$NON-NLS-1$
         selectionListView,
         selectionModel);
   }

@@ -73,7 +73,7 @@ public class MultiValuePerk extends Quality implements IPerk {
     if (!(obj instanceof MultiValuePerk)) {
       return false;
     }
-    MultiValuePerk multiValuePerk = ((MultiValuePerk) obj);
+    MultiValuePerk multiValuePerk = (MultiValuePerk) obj;
     return super.equals(obj) && multiValuePerk.category == this.category;
   }
 

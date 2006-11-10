@@ -8,7 +8,7 @@ public interface IComboRestrictions {
   public abstract boolean combosAllAbilities();
 
   public abstract boolean isComboAllowed(boolean isAllowedByDefault);
-  
+
   public boolean isRestrictedCharm(ICharm charm);
 
   public abstract ITraitType[] getRestrictedTraitTypes();

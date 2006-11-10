@@ -43,8 +43,8 @@ public class VoidstateCategorizedTokenRegistry implements ICategorizedTokenConfi
   public static final TokenCategory IN = new TokenCategory("Tokens.In"); //$NON-NLS-1$
   public static final TokenCategory THE = new TokenCategory("Tokens.The"); //$NON-NLS-1$
 
-  private Map<TokenCategory, String[]> tokensByCategory = new HashMap<TokenCategory, String[]>();
-  private TokenCategory[] rootTokenCategories = new TokenCategory[] {
+  private final Map<TokenCategory, String[]> tokensByCategory = new HashMap<TokenCategory, String[]>();
+  private final TokenCategory[] rootTokenCategories = new TokenCategory[] {
       new AggregatedTokenCategory("Tokens.Adjectives", new TokenCategory[] { //$NON-NLS-1$
           COLOR, CONDITION, EMOTION_NEGATIVE, EMOTION_POSITIVE, HEROIC, MOVEMENT, NUMBER }),
       new AggregatedTokenCategory("Tokens.Nouns", new TokenCategory[] { //$NON-NLS-1$

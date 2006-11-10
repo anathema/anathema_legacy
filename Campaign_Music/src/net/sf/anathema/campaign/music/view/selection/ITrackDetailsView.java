@@ -14,7 +14,7 @@ public interface ITrackDetailsView {
   public void setArtistName(String artist);
 
   public void setOriginalTitle(String title);
-  
+
   public void setTrackNumber(String track);
 
   public void showTrackInfo(boolean show);

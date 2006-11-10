@@ -79,9 +79,9 @@ public enum ValueLegalityState implements IIdentificate {
       return Okay;
     }
     else if (value < debit) {
-      return (value < lowerLimit) ? Low : Lowered;
+      return value < lowerLimit ? Low : Lowered;
     }
-    return (value > higherLimit) ? High : Increased;
+    return value > higherLimit ? High : Increased;
   }
 
   @Override

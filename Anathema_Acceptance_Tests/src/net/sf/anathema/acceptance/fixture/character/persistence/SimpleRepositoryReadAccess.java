@@ -6,7 +6,7 @@ import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 
 public class SimpleRepositoryReadAccess implements IRepositoryReadAccess {
-  
+
   private final InputStream mainInputStream;
 
   public SimpleRepositoryReadAccess(InputStream mainInputStream) {

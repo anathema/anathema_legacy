@@ -14,7 +14,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public final class EquipmentStatsUi implements IObjectUi {
 
-  private EquipmentUI equipmentUI;
+  private final EquipmentUI equipmentUI;
 
   public EquipmentStatsUi(IResources resources) {
     equipmentUI = new EquipmentUI(resources);

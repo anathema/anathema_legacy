@@ -5,8 +5,6 @@ import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPo
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.magic.ISpell;
 
-
-
 public class CultSorceryLearnPool extends AbstractSorceryLearnPool implements IAdditionalMagicLearnPool {
 
   String[] allowedSpellIds = new String[] { "Terrestrial.DeathObsidianButterflies",//$NON-NLS-1$

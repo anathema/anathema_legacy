@@ -48,7 +48,7 @@ public class TraitRules implements ITraitRules {
   public int getStartValue() {
     return template.getStartValue();
   }
-  
+
   public ITraitRules deriveAggregatedRules(String subname, int startValue) {
     return derive(traitType, new AggregatedTraitTemplate(template, traitType, subname, startValue));
   }

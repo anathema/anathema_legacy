@@ -8,4 +8,5 @@ public interface INatureProvider {
 
   public INatureType[] getNatures();
 
-  public void init() throws PersistenceException;  }
+  public void init() throws PersistenceException;
+}

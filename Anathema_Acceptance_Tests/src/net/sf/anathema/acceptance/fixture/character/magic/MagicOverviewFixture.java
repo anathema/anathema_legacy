@@ -15,7 +15,7 @@ public class MagicOverviewFixture extends AbstractCharacterColumnFixture {
   public int comboCount() {
     return getCharacterStatistics().getCombos().getCurrentCombos().length;
   }
-  
+
   public boolean isCelestialMartialArtsTreeCompleted() {
     return getCharacterStatistics().getCharms().isCelestialMartialArtsGroupCompleted();
   }

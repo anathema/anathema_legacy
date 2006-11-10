@@ -30,7 +30,7 @@ public class AnathemaDialogProperties implements IDialogProperties {
   public String getFoldInButtonText() {
     return resources.getString("FoldoutDialog.Foldin.Button.Text"); //$NON-NLS-1$
   }
-  
+
   protected final IResources getResources() {
     return resources;
   }

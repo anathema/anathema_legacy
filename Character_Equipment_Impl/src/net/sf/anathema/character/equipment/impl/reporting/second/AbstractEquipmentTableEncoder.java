@@ -8,7 +8,8 @@ import net.sf.anathema.character.reporting.sheet.util.statstable.AbstractFixedLi
 
 import com.lowagie.text.pdf.BaseFont;
 
-public abstract class AbstractEquipmentTableEncoder<T extends IEquipmentStats> extends AbstractFixedLineStatsTableEncoder<T> {
+public abstract class AbstractEquipmentTableEncoder<T extends IEquipmentStats> extends
+    AbstractFixedLineStatsTableEncoder<T> {
 
   public AbstractEquipmentTableEncoder(BaseFont baseFont) {
     super(baseFont);

@@ -13,7 +13,7 @@ public class NullAsEmptyFormatterDecorator extends AbstractFormatter {
   public NullAsEmptyFormatterDecorator(AbstractFormatter delegate) {
     this.delegate = delegate;
   }
-  
+
   @Override
   public Object stringToValue(String text) throws ParseException {
     return text.trim().length() == 0 ? null : delegate.stringToValue(text);

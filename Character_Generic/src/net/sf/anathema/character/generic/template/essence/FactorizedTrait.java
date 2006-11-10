@@ -13,7 +13,7 @@ public class FactorizedTrait {
   }
 
   public FactorizedTrait(IGenericTrait trait, int factor) {
-    this(new IGenericTrait[] {trait}, factor);
+    this(new IGenericTrait[] { trait }, factor);
   }
 
   public int getCalculateTotal() {

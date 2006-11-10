@@ -14,6 +14,6 @@ public class BarycenterCalculator {
     if (numberOfTrues == 0) {
       return null;
     }
-    return ((double) truePositionSum) / numberOfTrues;
+    return (double) truePositionSum / numberOfTrues;
   }
 }

@@ -3,8 +3,7 @@ package net.sf.anathema.lib.workflow.labelledvalue.view;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-public abstract class AbstractLabelledIntegerValueView extends AbstractLabelledValueView implements
-    IValueView<Integer> {
+public abstract class AbstractLabelledIntegerValueView extends AbstractLabelledValueView implements IValueView<Integer> {
 
   protected static String createLengthString(int length) {
     String lengthString = "0"; //$NON-NLS-1$

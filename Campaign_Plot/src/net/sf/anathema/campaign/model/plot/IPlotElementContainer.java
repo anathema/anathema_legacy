@@ -3,7 +3,7 @@ package net.sf.anathema.campaign.model.plot;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.lib.util.IIdentificate;
 
-public interface IPlotElementContainer extends IIdentificate{
+public interface IPlotElementContainer extends IIdentificate {
 
   public IPlotElement addChild(IItemDescription description, String repositoryId);
 
@@ -16,7 +16,7 @@ public interface IPlotElementContainer extends IIdentificate{
   public IPlotElement[] getChildren();
 
   public IPlotTimeUnit getTimeUnit();
-  
+
   public void moveChildTo(IPlotElement element, int newIndex);
 
   public void removeChild(IPlotElement element);

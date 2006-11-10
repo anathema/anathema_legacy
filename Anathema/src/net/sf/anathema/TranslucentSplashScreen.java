@@ -97,8 +97,8 @@ public class TranslucentSplashScreen extends JWindow {
   private void centerOnScreen() {
     Rectangle rectangle = new Rectangle(getGraphicsConfiguration().getBounds());
     Dimension size = getSize();
-    int x1 = ((rectangle.x * 2 + rectangle.width) / 2) - size.width / 2;
-    int y1 = ((rectangle.y * 2 + rectangle.height) / 2) - size.height / 2;
+    int x1 = (rectangle.x * 2 + rectangle.width) / 2 - size.width / 2;
+    int y1 = (rectangle.y * 2 + rectangle.height) / 2 - size.height / 2;
     x1 = x1 < 0 ? 0 : x1;
     y1 = y1 < 0 ? 0 : y1;
     setLocation(x1, y1);

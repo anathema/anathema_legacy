@@ -5,7 +5,7 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 
 public class RepositoryLocation implements IItemRepositoryLocation {
-  
+
   private final IItem item;
   private String id;
 

@@ -17,10 +17,10 @@ public class Table<K1, K2, V> {
   private final Set<K1> primaryKeys = new ListOrderedSet<K1>();
   private final ArrayFactory<V> factory;
 
-  public Table(Class<V> valueClass){
+  public Table(Class<V> valueClass) {
     factory = new ArrayFactory<V>(valueClass);
   }
-  
+
   public void add(K1 key1, K2 key2, V value) {
     rowMap.add(key1, value);
     columnMap.add(key2, value);

@@ -13,7 +13,7 @@ public class AreaTextView extends TextView {
   public AreaTextView(int rows, int columns) {
     super(new JTextArea(rows, columns));
     this.scrollPane = new RevalidatingScrollPane(super.getComponent());
-    JTextArea textArea = ((JTextArea) getTextComponent());
+    JTextArea textArea = (JTextArea) getTextComponent();
     textArea.setLineWrap(true);
     textArea.setWrapStyleWord(true);
   }

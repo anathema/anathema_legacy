@@ -40,7 +40,7 @@ public class SVGIntValueDisplay implements IIntValueView {
   private final EventListener rectangleChangeListener = new EventListener() {
     public void handleEvent(Event evt) {
       if (evt instanceof MouseEvent && selectionRectangle != null) {
-        MouseEvent mouseEvent = ((MouseEvent) evt);
+        MouseEvent mouseEvent = (MouseEvent) evt;
         int clientX = mouseEvent.getClientX();
         setSelectionRectangleWidth(clientX);
         selectCircles(clientX);
@@ -100,7 +100,7 @@ public class SVGIntValueDisplay implements IIntValueView {
     this.value = initialValue;
     this.radius = diameter / 2;
     this.gap = diameter / 10;
-    this.maximumWidth = EssenceTemplate.SYSTEM_ESSENCE_MAX * ((diameter) + gap);
+    this.maximumWidth = EssenceTemplate.SYSTEM_ESSENCE_MAX * (diameter + gap);
     this.circles = new SVGCircleElement[dotCount];
     this.fillColorString = "rgb(" + fillColor.getRed() + "," //$NON-NLS-1$ //$NON-NLS-2$
         + fillColor.getGreen()
@@ -137,7 +137,7 @@ public class SVGIntValueDisplay implements IIntValueView {
     for (int index = 0; index < circles.length; index++) {
       bounds[index] = boundsCalculator.getBounds(circles[index]);
     }
-    if ((xPosition - bounds[0].x) <= circles[0].getScreenCTM().getA() * radius) {
+    if (xPosition - bounds[0].x <= circles[0].getScreenCTM().getA() * radius) {
       fireValueChangedEvent(0);
       return;
     }
@@ -174,7 +174,7 @@ public class SVGIntValueDisplay implements IIntValueView {
 
   private void createCircles() {
     for (int index = 0; index < dotCount; index++) {
-      double xCoordinate = radius + gap + index * ((2 * radius) + gap);
+      double xCoordinate = radius + gap + index * (2 * radius + gap);
       circles[index] = createCircleElement(document, xCoordinate);
     }
   }

@@ -39,7 +39,7 @@ import net.sf.anathema.lib.util.IIdentificate;
 public class PerkView implements IPerkView, IView {
 
   private JPanel content;
-  private JPanel detailsPanel = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel detailsPanel = new JPanel(new GridDialogLayout(2, false));
   private final SmartJList<IPerk> perkList = new SmartJList<IPerk>(IPerk.class);
   private ObjectSelectionView<IIdentificate> typeFilterView;
   private ObjectSelectionView<IIdentificate> categoryFilterView;
@@ -174,8 +174,9 @@ public class PerkView implements IPerkView, IView {
             if (selectedItems.length > 0) {
               input.selectionSelected(selectedItems[0]);
             }
-            else
+            else {
               input.selectionSelected(null);
+            }
           }
         });
       }

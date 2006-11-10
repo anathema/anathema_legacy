@@ -19,7 +19,7 @@ public class PresentedCategorizedNameGenerator {
     return factory.createName(new CategorizedTokenNameTemplate(relevantTokens));
   }
 
-  private ICategorizedNameGeneratorView view = new CategorizedNameGeneratorView();
+  private final ICategorizedNameGeneratorView view = new CategorizedNameGeneratorView();
   private final ICategorizedTokenConfiguration tokenRegistry;
 
   public PresentedCategorizedNameGenerator(ICategorizedTokenConfiguration tokenRegistry) {

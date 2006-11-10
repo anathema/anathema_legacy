@@ -6,12 +6,12 @@ import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 
 public class Mp3Utilities {
-  
+
   private Mp3Utilities() {
     throw new UnreachableCodeReachedException();
   }
 
-  public static final File getPreferredFile(IMp3Track track)  {
+  public static final File getPreferredFile(IMp3Track track) {
     for (String fileReference : track.getFileReferences()) {
       File file = new File(fileReference);
       if (file.exists()) {
@@ -21,7 +21,7 @@ public class Mp3Utilities {
     return null;
   }
 
-  public static final String getPreferredFileReference(IMp3Track track)  {
+  public static final String getPreferredFileReference(IMp3Track track) {
     for (String fileReference : track.getFileReferences()) {
       File file = new File(fileReference);
       if (file.exists()) {

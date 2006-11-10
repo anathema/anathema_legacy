@@ -1,6 +1,5 @@
 package net.sf.anathema.character.view.magic;
 
-
 public interface IComboView {
 
   public void initGui(String name, String description);

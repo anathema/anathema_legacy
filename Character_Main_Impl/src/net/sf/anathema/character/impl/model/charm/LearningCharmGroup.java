@@ -255,7 +255,7 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   }
 
   public boolean isUnlearnable(ICharm charm) {
-    return !(learnArbitrator.isCompulsiveCharm(charm)) && learnStrategy.isUnlearnable(this, charm);
+    return !learnArbitrator.isCompulsiveCharm(charm) && learnStrategy.isUnlearnable(this, charm);
   }
 
   public void forgetAll() {

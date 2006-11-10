@@ -3,7 +3,8 @@ package net.sf.anathema.character.generic.impl.template.points;
 import net.sf.anathema.character.generic.template.points.IFavorableTraitCreationPoints;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
-public class FavorableTraitCreationPoints extends ReflectionCloneableObject<IFavorableTraitCreationPoints> implements IFavorableTraitCreationPoints {
+public class FavorableTraitCreationPoints extends ReflectionCloneableObject<IFavorableTraitCreationPoints> implements
+    IFavorableTraitCreationPoints {
 
   private final int defaultDotCount;
   private final int favoredCount;
@@ -30,11 +31,14 @@ public class FavorableTraitCreationPoints extends ReflectionCloneableObject<IFav
   @Override
   public String toString() {
     return "[favored:" //$NON-NLS-1$
-        + getFavorableTraitCount() + ",favoredDots:" //$NON-NLS-1$
-        + getFavoredDotCount() + ",defaultDots:" //$NON-NLS-1$
-        + getDefaultDotCount() + "]"; //$NON-NLS-1$
+        + getFavorableTraitCount()
+        + ",favoredDots:" //$NON-NLS-1$
+        + getFavoredDotCount()
+        + ",defaultDots:" //$NON-NLS-1$
+        + getDefaultDotCount()
+        + "]"; //$NON-NLS-1$
   }
-  
+
   @Override
   public FavorableTraitCreationPoints clone() {
     return (FavorableTraitCreationPoints) super.clone();

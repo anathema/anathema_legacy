@@ -16,9 +16,9 @@ import net.sf.anathema.lib.exception.PersistenceException;
 
 public class DefaultTerrestrialCharmTemplate extends CharmTemplate {
 
-  private ICharmAttributeRequirement celestialAttributeRequirement = new CharmAttributeRequirement(new CharmAttribute(
-      ICharmData.ALLOWS_CELESTIAL_ATTRIBUTE.getId(),
-      false), 1);
+  private final ICharmAttributeRequirement celestialAttributeRequirement = new CharmAttributeRequirement(
+      new CharmAttribute(ICharmData.ALLOWS_CELESTIAL_ATTRIBUTE.getId(), false),
+      1);
 
   public DefaultTerrestrialCharmTemplate(ICharmCache charmProvider) throws PersistenceException {
     super(MartialArtsLevel.Terrestrial, charmProvider, CharacterType.DB, ExaltedEdition.FirstEdition);

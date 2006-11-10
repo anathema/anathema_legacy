@@ -21,27 +21,27 @@ public class CasteAcceptanceUtilties {
       final String caste) {
     final List<ICasteType< ? extends ICasteTypeVisitor>> casteType = new ArrayList<ICasteType< ? extends ICasteTypeVisitor>>();
     template.getTemplateType().getCharacterType().accept(new AbstractSupportedCharacterTypeVisitor() {
-  
+
       public void visitAbyssal(CharacterType visitedType) {
         casteType.add(AbyssalCaste.valueOf(caste));
       }
-  
+
       public void visitDB(CharacterType visitedType) {
         casteType.add(DBAspect.valueOf(caste));
       }
-  
+
       public void visitLunar(CharacterType type) {
         casteType.add(LunarCaste.valueOf(caste));
       }
-  
+
       public void visitSidereal(CharacterType visitedType) {
         casteType.add(SiderealCaste.valueOf(caste));
       }
-  
+
       public void visitMortal(CharacterType visitedType) {
         throw new IllegalArgumentException("Mortals have no caste"); //$NON-NLS-1$
       }
-  
+
       public void visitSolar(CharacterType visitedType) {
         casteType.add(SolarCaste.valueOf(caste));
       }

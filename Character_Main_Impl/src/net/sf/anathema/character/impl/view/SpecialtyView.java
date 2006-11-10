@@ -20,9 +20,9 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 public class SpecialtyView extends AbstractTraitView implements ISpecialtyView {
 
   private final ChangeControl control = new ChangeControl();
-  private Component abilityLabel;
-  private Component separatorLabel = new JLabel("-"); //$NON-NLS-1$
-  private Component specialtyLabel;
+  private final Component abilityLabel;
+  private final Component separatorLabel = new JLabel("-"); //$NON-NLS-1$
+  private final Component specialtyLabel;
   private JButton deleteButton;
   private JPanel traitPanel;
   private final Icon deleteIcon;

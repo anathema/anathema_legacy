@@ -14,7 +14,7 @@ import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.ISimpl
 import net.sf.anathema.character.generic.framework.magic.treelayout.util.IncidentMatrixUtilities;
 
 public class ProperHierarchicalGraph implements IProperHierarchicalGraph {
-  private Map<Integer, List<ISimpleNode>> nodesByLayer = new HashMap<Integer, List<ISimpleNode>>();
+  private final Map<Integer, List<ISimpleNode>> nodesByLayer = new HashMap<Integer, List<ISimpleNode>>();
   private final int deepestLayer;
   private final ISimpleNode[] allNodes;
   private final IGraphType type;
@@ -99,7 +99,7 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph {
   public void setNewLayerOrder(int layer, ISimpleNode[] orderedNodes) {
     List<ISimpleNode> layerNodes = nodesByLayer.get(layer);
     boolean equalSize = layerNodes.size() == orderedNodes.length;
-    boolean newNodes = !(layerNodes.containsAll(Arrays.asList(orderedNodes)));
+    boolean newNodes = !layerNodes.containsAll(Arrays.asList(orderedNodes));
     if (!equalSize || newNodes) {
       throw new IllegalArgumentException("Layer content must not be changed"); //$NON-NLS-1$
     }

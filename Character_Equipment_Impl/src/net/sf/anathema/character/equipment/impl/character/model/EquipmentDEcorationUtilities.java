@@ -74,7 +74,7 @@ public class EquipmentDEcorationUtilities {
       public IIdentificate getName() {
         return new Identificate(name);
       }
-      
+
       public boolean isRangedCombat() {
         return stats.isRangedCombat();
       }

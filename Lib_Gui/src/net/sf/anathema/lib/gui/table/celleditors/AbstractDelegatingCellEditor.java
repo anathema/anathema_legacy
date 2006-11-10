@@ -13,21 +13,20 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.tree.TreeCellEditor;
 
 // NOT_PUBLISHED
-public abstract class AbstractDelegatingCellEditor extends AbstractCellEditor
-    implements
+public abstract class AbstractDelegatingCellEditor extends AbstractCellEditor implements
     TableCellEditor,
     TreeCellEditor {
 
-  private JComponent editorComponent;
-  private EditorDelegate delegate;
+  private final JComponent editorComponent;
+  private final EditorDelegate delegate;
 
   public AbstractDelegatingCellEditor() {
     editorComponent = createEditorComponent();
     delegate = createDelegate(editorComponent);
     try {
       Method addActionListener = editorComponent.getClass().getMethod(
-          "addActionListener", new Class[]{ ActionListener.class }); //$NON-NLS-1$
-      addActionListener.invoke(editorComponent, new Object[]{ delegate });
+          "addActionListener", new Class[] { ActionListener.class }); //$NON-NLS-1$
+      addActionListener.invoke(editorComponent, new Object[] { delegate });
     }
     catch (Exception exception) {
       // ignore problems - we don't know wether an action listener can be registered at all
@@ -70,12 +69,7 @@ public abstract class AbstractDelegatingCellEditor extends AbstractCellEditor
     return editorComponent;
   }
 
-  public final Component getTableCellEditorComponent(
-      JTable table,
-      Object value,
-      boolean isSelected,
-      int row,
-      int column) {
+  public final Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
     delegate.setValue(value);
     return editorComponent;
   }
@@ -83,7 +77,7 @@ public abstract class AbstractDelegatingCellEditor extends AbstractCellEditor
   protected JComponent getEditorComponent() {
     return editorComponent;
   }
-  
+
   protected abstract EditorDelegate createDelegate(JComponent editor);
 
   protected abstract JComponent createEditorComponent();

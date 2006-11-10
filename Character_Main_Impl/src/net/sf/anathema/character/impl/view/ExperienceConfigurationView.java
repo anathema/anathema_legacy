@@ -24,8 +24,8 @@ import net.sf.anathema.lib.gui.table.SmartTable;
 import net.sf.anathema.lib.gui.table.actions.ITableActionFactory;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;
 
-public class ExperienceConfigurationView extends AbstractInitializableContentView<IExperienceConfigurationViewProperties> implements
-    IExperienceConfigurationView {
+public class ExperienceConfigurationView extends
+    AbstractInitializableContentView<IExperienceConfigurationViewProperties> implements IExperienceConfigurationView {
 
   private final List<IExperienceConfigurationViewListener> listeners = new ArrayList<IExperienceConfigurationViewListener>();
   private SmartTable smartTable;

@@ -267,7 +267,7 @@ public abstract class AbstractHealthAndMovemenTableEncoder implements IPdfTableE
       return;
     }
     for (int index = 0; index < additionalCount; index++) {
-      int value = naturalCount + (row * additionalCount) + index + 1;
+      int value = naturalCount + row * additionalCount + index + 1;
       if (value <= character.getHealthLevelTypeCount(level)) {
         table.addCell(createHealthCell(activeImage));
       }
@@ -278,7 +278,7 @@ public abstract class AbstractHealthAndMovemenTableEncoder implements IPdfTableE
   }
 
   private int getNaturalHealthLevels(HealthLevelType level) {
-    return (level == HealthLevelType.ONE || level == HealthLevelType.TWO) ? 2 : 1;
+    return level == HealthLevelType.ONE || level == HealthLevelType.TWO ? 2 : 1;
   }
 
   private PdfPCell createHealthCell(Image image) {

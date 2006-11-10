@@ -31,7 +31,7 @@ public class LibraryControlView implements ILibraryControlView, IView {
 
   private final JPanel content = new JPanel();
   private final SimpleTabViewFactory factory = new SimpleTabViewFactory();
-  private EditableActionAddableListView<ILibrary> libraryListView;
+  private final EditableActionAddableListView<ILibrary> libraryListView;
   private final ActionAddableListView<IMp3Track> mp3ListView;
   private final JButton searchButton = new JButton();
   private final MusicCategorizationView searchMusicCategorizationView = new MusicCategorizationView();
@@ -99,10 +99,13 @@ public class LibraryControlView implements ILibraryControlView, IView {
     content.setLayout(new GridDialogLayout(3, true));
     TabbedView leftTabbedView = new TabbedView(TabDirection.Up);
     if (libraryPanel != null) {
-      leftTabbedView.addView(factory.createTabView(libraryPanel), new ContentProperties(viewProperties.getLibrariesString()));
+      leftTabbedView.addView(factory.createTabView(libraryPanel), new ContentProperties(
+          viewProperties.getLibrariesString()));
     }
     if (searchPanel != null) {
-      leftTabbedView.addView(factory.createTabView(searchPanel), new ContentProperties(viewProperties.getSearchString()));
+      leftTabbedView.addView(
+          factory.createTabView(searchPanel),
+          new ContentProperties(viewProperties.getSearchString()));
     }
     GridDialogLayoutData tabbedPanelData = new GridDialogLayoutData(GridDialogLayoutData.FILL_BOTH);
     tabbedPanelData.setHorizontalSpan(2);

@@ -13,7 +13,6 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.virtueflaw.model.VirtueFlawModel;
 
-
 public class LunarVirtueFlawModel extends VirtueFlawModel {
 
   private final IGenericTrait[] virtues;

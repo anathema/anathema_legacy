@@ -16,8 +16,7 @@ public class LoyalAbyssalTemplate extends AbstractAbyssalTemplate {
   private final ICreationPoints creationPoints = new LoyalAbyssalCreationPoints();
   private final AbyssalPresentationProperties presentationProperties;
 
-  public LoyalAbyssalTemplate(ICharmCache charmProvider, IAdditionalRules additionalRules)
-      throws PersistenceException {
+  public LoyalAbyssalTemplate(ICharmCache charmProvider, IAdditionalRules additionalRules) throws PersistenceException {
     super(charmProvider, additionalRules);
     presentationProperties = new AbyssalPresentationProperties("CharacterGenerator.NewCharacter.Abyssal.Loyal.Name"); //$NON-NLS-1$;
   }

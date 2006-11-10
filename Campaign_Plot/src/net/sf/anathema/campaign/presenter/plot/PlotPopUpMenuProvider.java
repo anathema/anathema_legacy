@@ -59,7 +59,7 @@ public class PlotPopUpMenuProvider {
     final IPlotElement parentElement = plotModel.getParentElement(element);
     JPopupMenu menu = new JPopupMenu();
     SmartAction addAction = new SmartAction(resources.getString("SeriesPlot.PopUp.AddAction"), basicUi.getAddIcon()) { //$NON-NLS-1$
-      @Override 
+      @Override
       protected void execute(Component parentComponent) {
         String childUnitId = element.getTimeUnit().getSuccessor().getId();
         element.addChild(childUnitId + " " + (element.getChildren().length + 1)); //$NON-NLS-1$
@@ -67,8 +67,10 @@ public class PlotPopUpMenuProvider {
     };
     addAction.setEnabled(element.getTimeUnit().hasSuccessor());
     menu.add(addAction);
-    SmartAction removeAction = new SmartAction(resources.getString("SeriesPlot.PopUp.RemoveAction"), basicUi.getRemoveIcon()) { //$NON-NLS-1$
-      @Override protected void execute(Component parentComponent) {
+    SmartAction removeAction = new SmartAction(
+        resources.getString("SeriesPlot.PopUp.RemoveAction"), basicUi.getRemoveIcon()) { //$NON-NLS-1$
+      @Override
+      protected void execute(Component parentComponent) {
         if (parentElement != null) {
           parentElement.removeChild(element);
         }
@@ -80,8 +82,8 @@ public class PlotPopUpMenuProvider {
   }
 
   private boolean contains(TreePath[] paths, TreePath path) {
-    for (int i = 0; i < paths.length; i++) {
-      if (path.equals(paths[i])) {
+    for (TreePath element : paths) {
+      if (path.equals(element)) {
         return true;
       }
     }

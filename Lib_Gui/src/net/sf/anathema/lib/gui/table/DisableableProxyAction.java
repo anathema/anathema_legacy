@@ -38,7 +38,8 @@ public class DisableableProxyAction extends AbstractAction {
     }
     this.enabled = enabled;
     firePropertyChange("enabled", //$NON-NLS-1$
-        Boolean.valueOf(!isEnabled()), Boolean.valueOf(isEnabled()));
+        Boolean.valueOf(!isEnabled()),
+        Boolean.valueOf(isEnabled()));
   }
 
   public void actionPerformed(ActionEvent e) {

@@ -13,9 +13,10 @@ public class SiderealVoidStateReportTemplate extends ExaltVoidstateReportTemplat
   public SiderealVoidStateReportTemplate(IResources resources) {
     super(CharacterType.SIDEREAL, resources, new SiderealVoidStateSubreports());
   }
-  
+
   @Override
-  protected void fillInCharacterTypeSpecificParameters(Map<Object, Object> parameters, IGenericCharacter character) throws ReportException {
+  protected void fillInCharacterTypeSpecificParameters(Map<Object, Object> parameters, IGenericCharacter character)
+      throws ReportException {
     super.fillInCharacterTypeSpecificParameters(parameters, character);
     SiderealParameterUtilities.fillInSiderealParameters(parameters, character, getResources());
   }

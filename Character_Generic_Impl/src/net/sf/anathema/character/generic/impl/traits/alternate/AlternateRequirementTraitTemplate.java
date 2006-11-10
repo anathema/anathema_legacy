@@ -37,7 +37,7 @@ public class AlternateRequirementTraitTemplate extends AlternateRequirementTrait
   public ITraitLimitation getLimitation() {
     return limitation;
   }
-  
+
   public boolean isRequiredFavored() {
     return false;
   }

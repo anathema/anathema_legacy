@@ -34,7 +34,7 @@ public class LabelledValueEncoder extends AbstractPdfEncoder {
   }
 
   private float getRightColumnX(int index) {
-    return position.x + (width / columnCount) * (index + 1);
+    return position.x + width / columnCount * (index + 1);
   }
 
   @Override

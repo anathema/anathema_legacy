@@ -10,9 +10,9 @@ public interface IExperienceConfigurationViewProperties {
   public TableModel getTableModel();
 
   public ITableColumnViewSettings[] getColumnSettings();
-  
+
   public Icon getDeleteIcon();
-  
+
   public Icon getAddIcon();
 
   public String getTotalString();

@@ -8,7 +8,8 @@ import net.sf.anathema.framework.presenter.view.IInitializableContentView;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
-public interface ICharacterConceptAndRulesView extends IInitializableContentView<ICharacterConceptAndRulesViewProperties> {
+public interface ICharacterConceptAndRulesView extends
+    IInitializableContentView<ICharacterConceptAndRulesViewProperties> {
 
   public <V> IObjectSelectionView<V> addObjectSelectionView(
       String labelText,

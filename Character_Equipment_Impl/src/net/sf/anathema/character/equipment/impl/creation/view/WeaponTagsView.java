@@ -9,7 +9,7 @@ import net.sf.anathema.character.equipment.creation.view.IWeaponTagsView;
 
 public class WeaponTagsView implements IWeaponTagsView {
 
-  private JPanel content = new JPanel(new GridDialogLayout(3, true));
+  private final JPanel content = new JPanel(new GridDialogLayout(3, true));
 
   public JComponent getContent() {
     return content;

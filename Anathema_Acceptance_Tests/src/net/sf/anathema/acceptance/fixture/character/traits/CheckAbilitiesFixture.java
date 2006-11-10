@@ -9,11 +9,11 @@ public class CheckAbilitiesFixture extends AbstractCheckTraitFixture {
   public boolean isFavored() {
     return ((IFavorableTrait) getTrait()).getFavorization().isFavored();
   }
-  
+
   public boolean isCaste() {
     return ((IFavorableTrait) getTrait()).getFavorization().isCaste();
   }
-  
+
   @Override
   protected ITraitType getTraitType() {
     return AbilityType.valueOf(traitType);

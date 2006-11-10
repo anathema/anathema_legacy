@@ -27,7 +27,7 @@ public class SubTraitReference implements ITraitReference {
     if (!(obj instanceof SubTraitReference)) {
       return false;
     }
-    SubTraitReference subTraitReference = ((SubTraitReference) obj);
+    SubTraitReference subTraitReference = (SubTraitReference) obj;
     return basicTraitType == subTraitReference.basicTraitType && name.equals(subTraitReference.name);
   }
 

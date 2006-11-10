@@ -11,7 +11,7 @@ public enum TabDirection {
   private TabDirection(Direction direction) {
     this.direction = direction;
   }
-  
+
   public Direction getDirection() {
     return direction;
   }

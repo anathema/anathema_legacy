@@ -5,8 +5,6 @@ import java.util.Arrays;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 
-
-
 public class CasteEvaluator implements ICharacterEvaluator {
 
   private final String[] casteNames;

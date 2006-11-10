@@ -24,7 +24,8 @@ public class TableOfContentsPrinter {
     entryList.add(new ContentEntry(entry, page));
   }
 
-  public void performPrint(String seriesTitle, String tableTitle, Document document, PdfWriter writer) throws DocumentException {
+  public void performPrint(String seriesTitle, String tableTitle, Document document, PdfWriter writer)
+      throws DocumentException {
     final int lastContentPage = writer.getPageNumber();
     writer.setPageEvent(null);
     writer.setPageEvent(new PdfPageEventHelper() {
@@ -76,6 +77,6 @@ public class TableOfContentsPrinter {
   }
 
   public void reset() {
-    entryList.clear();    
+    entryList.clear();
   }
 }

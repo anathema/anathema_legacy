@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.magic.charms.duration.QualifiedAmountDu
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.lib.resources.IResources;
 
-public class InfiniteMastery extends AbstractGenericCharm{
+public class InfiniteMastery extends AbstractGenericCharm {
 
   @Override
   protected String getId() {
@@ -27,8 +27,8 @@ public class InfiniteMastery extends AbstractGenericCharm{
   }
 
   public String getType(IResources resources) {
-      CharmTypeModel model = new CharmTypeModel();
-      model.setCharmType(CharmType.Simple);
-      return new ShortCharmTypeStringBuilder(resources).createTypeString(model);
+    CharmTypeModel model = new CharmTypeModel();
+    model.setCharmType(CharmType.Simple);
+    return new ShortCharmTypeStringBuilder(resources).createTypeString(model);
   }
 }

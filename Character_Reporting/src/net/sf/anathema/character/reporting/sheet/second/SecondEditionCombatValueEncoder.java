@@ -34,7 +34,10 @@ public class SecondEditionCombatValueEncoder implements IPdfContentEncoder {
     int joinBattle = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Wits, AbilityType.Awareness);
     CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     int dodgeDV = CharacterUtilties.getDodgeDv(characterType, traitCollection);
-    int knockdownThreshold = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Stamina, AbilityType.Resistance);
+    int knockdownThreshold = CharacterUtilties.getTotalValue(
+        traitCollection,
+        AttributeType.Stamina,
+        AbilityType.Resistance);
     int knockdownPool = CharacterUtilties.getKnockdownPool(character);
     int stunningThreshold = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Stamina);
     int stunningPool = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Stamina, AbilityType.Resistance);

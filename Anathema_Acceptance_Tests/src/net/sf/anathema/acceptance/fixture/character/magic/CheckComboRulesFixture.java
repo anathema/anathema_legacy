@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 
 public class CheckComboRulesFixture extends AbstractCheckCharmFisture {
-  
+
   public boolean isAllAbilities() {
     return getComboRules().combosAllAbilities();
   }

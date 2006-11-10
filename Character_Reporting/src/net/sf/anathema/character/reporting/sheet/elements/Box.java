@@ -13,7 +13,7 @@ public class Box {
   public Box(Bounds bounds) {
     this.bounds = bounds;
   }
-  
+
   public void encode(PdfContentByte directContent, float lineWidth) {
     directContent.setColorStroke(Color.BLACK);
     directContent.setLineWidth(lineWidth);

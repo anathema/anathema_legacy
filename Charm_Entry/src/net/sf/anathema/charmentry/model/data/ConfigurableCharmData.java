@@ -35,10 +35,10 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
   private IGenericTrait essence = new ValuedTraitType(OtherTraitType.Essence, 1);
   private Map<ITraitType, IGenericTrait> prerequisitesByType = new LinkedHashMap<ITraitType, IGenericTrait>();
   private String groupId;
-  private Set<ICharm> parentCharms = new ListOrderedSet<ICharm>();
-  private ITextualDescription name = new SimpleTextualDescription(""); //$NON-NLS-1$
-  private IConfigurableCostList temporaryCost = new ConfigurableCostList();
-  private IConfigurablePermanentCostList permanentCost = new ConfigurablePermanentCostList();
+  private final Set<ICharm> parentCharms = new ListOrderedSet<ICharm>();
+  private final ITextualDescription name = new SimpleTextualDescription(""); //$NON-NLS-1$
+  private final IConfigurableCostList temporaryCost = new ConfigurableCostList();
+  private final IConfigurablePermanentCostList permanentCost = new ConfigurablePermanentCostList();
   private IExaltedSourceBook source = null;
   private ITraitType primaryType;
   private IExaltedEdition edition;
@@ -70,7 +70,7 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
   public IExaltedSourceBook getSource() {
     return source;
   }
-  
+
   public void setSource(IExaltedSourceBook source) {
     this.source = source;
   }
@@ -202,12 +202,12 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
     return new ICharmAttributeRequirement[] { new CharmAttributeRequirement(new CharmAttribute("Excellency" //$NON-NLS-1$
         + primaryType.getId(), false), 1) };
   }
-  
+
   public int getPage() {
     return page;
   }
-  
+
   public void setPage(int page) {
-    this.page = page;    
+    this.page = page;
   }
 }

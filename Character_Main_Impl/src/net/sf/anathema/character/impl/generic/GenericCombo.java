@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.magic.IGenericCombo;
 import net.sf.anathema.character.model.charm.ICombo;
 
 public class GenericCombo implements IGenericCombo {
-  
+
   private final ICombo combo;
 
   public GenericCombo(ICombo combo) {

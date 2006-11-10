@@ -19,11 +19,11 @@ public class WeaponDamageModel extends RangedIntValueModel implements IWeaponDam
   public HealthType getHealthType() {
     return healthType;
   }
-  
+
   public void addHealthTypeChangeListener(IChangeListener listener) {
     changeControl.addChangeListener(listener);
   }
-  
+
   public void setHealthType(HealthType healthType) {
     if (this.healthType == healthType) {
       return;

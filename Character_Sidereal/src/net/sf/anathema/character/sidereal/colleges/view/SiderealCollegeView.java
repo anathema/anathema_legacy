@@ -19,9 +19,9 @@ import net.sf.anathema.lib.gui.dialogcomponent.grouped.GroupedGridDialogPanel;
 
 public class SiderealCollegeView implements IView, ISiderealCollegeView {
 
-  private GroupedGridDialogPanel collegeGroupPanel = new GroupedGridDialogPanel(3);
+  private final GroupedGridDialogPanel collegeGroupPanel = new GroupedGridDialogPanel(3);
   private JPanel content;
-  private JPanel overviewPanel = new JPanel();
+  private final JPanel overviewPanel = new JPanel();
   private final ISiderealCollegeViewProperties properties;
 
   public SiderealCollegeView(ISiderealCollegeViewProperties properties) {
@@ -56,7 +56,10 @@ public class SiderealCollegeView implements IView, ISiderealCollegeView {
       int maxValue,
       boolean selected) {
     SimpleTraitView view = new SimpleTraitView(factory, label, value, maxValue);
-    FrontToggleButtonTraitViewWrapper<SimpleTraitView> traitView = new FrontToggleButtonTraitViewWrapper<SimpleTraitView>(view, viewProperties, selected);
+    FrontToggleButtonTraitViewWrapper<SimpleTraitView> traitView = new FrontToggleButtonTraitViewWrapper<SimpleTraitView>(
+        view,
+        viewProperties,
+        selected);
     collegeGroupPanel.addEntry(traitView);
     return traitView;
   }

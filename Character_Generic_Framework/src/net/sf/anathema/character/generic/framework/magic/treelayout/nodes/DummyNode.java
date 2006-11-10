@@ -3,12 +3,11 @@ package net.sf.anathema.character.generic.framework.magic.treelayout.nodes;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.Ensure;
 
-
 public class DummyNode implements ISimpleNode {
 
   private final int layer;
   private final ISimpleNode[] child = new ISimpleNode[1];
-  private ISimpleNode[] parent = new ISimpleNode[1];
+  private final ISimpleNode[] parent = new ISimpleNode[1];
 
   public DummyNode(ISimpleNode child, int layer) {
     this.child[0] = child;

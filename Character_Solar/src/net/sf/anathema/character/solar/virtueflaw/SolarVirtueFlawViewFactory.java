@@ -14,7 +14,7 @@ public class SolarVirtueFlawViewFactory implements IAdditionalViewFactory {
 
   public IView createView(IAdditionalModel model, IResources resources, CharacterType type) {
     ISolarVirtueFlawView virtueFlawView = new SolarVirtueFlawView();
-    new SolarVirtueFlawPresenter(resources, virtueFlawView, ((ISolarVirtueFlawModel) model)).initPresentation();
+    new SolarVirtueFlawPresenter(resources, virtueFlawView, (ISolarVirtueFlawModel) model).initPresentation();
     return virtueFlawView;
   }
 }

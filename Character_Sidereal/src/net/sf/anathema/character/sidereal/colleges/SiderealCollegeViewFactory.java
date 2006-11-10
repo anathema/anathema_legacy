@@ -16,7 +16,7 @@ public class SiderealCollegeViewFactory implements IAdditionalViewFactory {
   public IView createView(IAdditionalModel model, IResources resources, CharacterType type) {
     ISiderealCollegeViewProperties properties = new SiderealCollegeViewProperties(resources);
     SiderealCollegeView view = new SiderealCollegeView(properties);
-    new SiderealCollegePresenter(resources, view, ((ISiderealCollegeModel) model)).initPresentation();
+    new SiderealCollegePresenter(resources, view, (ISiderealCollegeModel) model).initPresentation();
     return view;
   }
 }

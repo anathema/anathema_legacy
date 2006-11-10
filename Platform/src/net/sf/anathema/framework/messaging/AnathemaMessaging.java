@@ -36,7 +36,7 @@ public class AnathemaMessaging implements IAnathemaMessaging, IAnathemaMessageCo
       messages.remove(messages.size() - 1);
     }
   }
-  
+
   public void addChangeListener(IChangeListener listener) {
     changeControl.addChangeListener(listener);
   }
@@ -44,7 +44,7 @@ public class AnathemaMessaging implements IAnathemaMessaging, IAnathemaMessageCo
   public synchronized IBasicMessage[] getAllMessages() {
     return messages.toArray(new IBasicMessage[messages.size()]);
   }
-  
+
   private int getMessageLimit() {
     return 100;
   }

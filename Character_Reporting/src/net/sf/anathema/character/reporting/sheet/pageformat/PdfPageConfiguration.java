@@ -12,7 +12,7 @@ public class PdfPageConfiguration {
     return new PdfPageConfiguration(new Dimension((int) pageSize.width(), (int) pageSize.height()), 15, 40);
   }
 
-  private int columnSpacing = 10;
+  private final int columnSpacing = 10;
   private int pageWidth;
   private int pageHeight;
   private int marginLeft;
@@ -32,7 +32,7 @@ public class PdfPageConfiguration {
   }
 
   private Bounds getColumnRectangle(float spaceFromTop, float height, int columnCount, float leftColumnX) {
-    return new Bounds(leftColumnX, (getUpperContentY() - spaceFromTop) - height, getColumnWidth(columnCount), height);
+    return new Bounds(leftColumnX, getUpperContentY() - spaceFromTop - height, getColumnWidth(columnCount), height);
   }
 
   public float getColumnWidth() {
@@ -41,7 +41,7 @@ public class PdfPageConfiguration {
 
   public float getColumnWidth(int columnCount) {
     float oneColumnWidth = (getContentWidth() - 2 * columnSpacing) / 3;
-    return (oneColumnWidth * columnCount) + (columnSpacing * (columnCount - 1));
+    return oneColumnWidth * columnCount + columnSpacing * (columnCount - 1);
   }
 
   public float getContentHeight() {

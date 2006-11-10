@@ -20,7 +20,7 @@ public class CharacterListening implements ICharacterListening {
   public void removeTraitListening(IDefaultTrait trait) {
     listenerMapping.removeTraitListening(trait);
   }
-    
+
   public void addTraitListening(ITrait trait) {
     listenerMapping.addTraitListening(trait);
   }

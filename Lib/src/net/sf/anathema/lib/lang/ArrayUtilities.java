@@ -65,8 +65,8 @@ public class ArrayUtilities {
       return;
     }
     Map<Integer, T> nodesByOriginalIndex = new HashMap<Integer, T>();
-    for (int indexIndex = 0; indexIndex < originalIndices.length; indexIndex++) {
-      nodesByOriginalIndex.put(originalIndices[indexIndex], objects[originalIndices[indexIndex]]);
+    for (int element : originalIndices) {
+      nodesByOriginalIndex.put(element, objects[element]);
     }
     for (int indexIndex = 0; indexIndex < originalIndices.length; indexIndex++) {
       int originalIndex = originalIndices[indexIndex];

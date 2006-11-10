@@ -9,7 +9,7 @@ public class IntegerUtilities {
   }
 
   public static boolean isEven(int number) {
-    return (number % 2) == 0;
+    return number % 2 == 0;
   }
 
   public static boolean isOdd(int number) {
@@ -19,7 +19,7 @@ public class IntegerUtilities {
   public static int[] revert(int[] numberArray) {
     int[] revertedArray = new int[numberArray.length];
     for (int index = 0; index < numberArray.length; index++) {
-      revertedArray[index] = numberArray[(numberArray.length - 1) - index];
+      revertedArray[index] = numberArray[numberArray.length - 1 - index];
     }
     return revertedArray;
   }
@@ -29,8 +29,8 @@ public class IntegerUtilities {
       int[] permutatedIndices = new int[numberArray.length];
       int indexMiddle = numberArray.length / 2;
       for (int index = 0; index < indexMiddle; index++) {
-        permutatedIndices[2 * index] = numberArray[(indexMiddle - 1) - index];
-        permutatedIndices[2 * index + 1] = numberArray[(numberArray.length - 1) - index];
+        permutatedIndices[2 * index] = numberArray[indexMiddle - 1 - index];
+        permutatedIndices[2 * index + 1] = numberArray[numberArray.length - 1 - index];
       }
       return permutatedIndices;
     }

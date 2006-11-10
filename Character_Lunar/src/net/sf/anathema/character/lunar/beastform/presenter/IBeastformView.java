@@ -9,8 +9,7 @@ import net.sf.anathema.lib.gui.IView;
 
 public interface IBeastformView extends IView {
 
-  public IBeastformOverviewView addOverviewView(
-      IBeastformOverviewViewProperties properties);
+  public IBeastformOverviewView addOverviewView(IBeastformOverviewViewProperties properties);
 
   public IIntValueView addAttributeValueView(String string, int currentValue, int maximalValue);
 

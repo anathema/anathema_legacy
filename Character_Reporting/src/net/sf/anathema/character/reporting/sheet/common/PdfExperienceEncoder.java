@@ -24,7 +24,7 @@ public class PdfExperienceEncoder implements IPdfContentBoxEncoder {
     this.resources = resources;
     this.font = PdfTextEncodingUtilities.createFont(baseFont, FONT_SIZE);
   }
-  
+
   public String getHeaderKey() {
     return "Experience"; //$NON-NLS-1$
   }
@@ -38,6 +38,6 @@ public class PdfExperienceEncoder implements IPdfContentBoxEncoder {
         new Integer(spentPoints),
         new Integer(totalPoints - spentPoints) });
     Phrase phrase = new Phrase(experienceText, font);
-    PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, FONT_SIZE  + 6);
+    PdfTextEncodingUtilities.encodeText(directContent, phrase, bounds, FONT_SIZE + 6);
   }
 }

@@ -59,7 +59,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   private final Map<CharacterType, ICharmTree> alienTreesByType = new HashMap<CharacterType, ICharmTree>();
   private final Map<CharacterType, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new HashMap<CharacterType, ILearningCharmGroup[]>();
   private final Map<CharacterType, ICharmTemplate> templatesByType = new HashMap<CharacterType, ICharmTemplate>();
-  private CharacterType[] types;
+  private final CharacterType[] types;
   private final ILearningCharmGroupContainer learningCharmGroupContainer = new ILearningCharmGroupContainer() {
     public ILearningCharmGroup getLearningCharmGroup(ICharm charm) {
       return getGroup(charm);

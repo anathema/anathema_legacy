@@ -160,7 +160,7 @@ public class MusicPlayerModel implements IMusicPlayerModel {
         byteslength = ((Integer) properties.get(PROP_LENGTH)).intValue();
       }
       if (properties.containsKey("duration")) { //$NON-NLS-1$
-        milliseconds = (int) (((Long) properties.get("duration")).longValue()) / 1000; //$NON-NLS-1$
+        milliseconds = (int) ((Long) properties.get("duration")).longValue() / 1000; //$NON-NLS-1$
       }
       else {
         // Try to compute duration
@@ -181,7 +181,7 @@ public class MusicPlayerModel implements IMusicPlayerModel {
           framesize = ((Integer) properties.get("audio.framesize.bytes")).intValue(); //$NON-NLS-1$
         }
         if (bitspersample > 0) {
-          milliseconds = (int) (1000.0f * byteslength / (samplerate * channels * (bitspersample / 8)));
+          milliseconds = (int) (1000.0f * byteslength / (samplerate * channels * bitspersample / 8));
         }
         else {
           milliseconds = (int) (1000.0f * byteslength / (samplerate * framesize));

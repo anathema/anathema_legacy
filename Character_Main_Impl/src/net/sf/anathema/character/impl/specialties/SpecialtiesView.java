@@ -19,8 +19,8 @@ import net.sf.anathema.lib.gui.IView;
 public class SpecialtiesView implements ISpecialtiesConfigurationView, IView {
 
   private final IIntValueDisplayFactory factory;
-  private JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
-  private JPanel specialtyPanel = new JPanel(new GridDialogLayout(5, false));
+  private final JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel specialtyPanel = new JPanel(new GridDialogLayout(5, false));
 
   public SpecialtiesView(IIntValueDisplayFactory factory) {
     this.factory = factory;

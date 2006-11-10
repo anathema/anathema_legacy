@@ -25,7 +25,7 @@ public class MusicSelectionCellEditor extends AbstractDelegatingCellEditor {
       @Override
       public void setValue(Object value) {
         this.musicSelection = (IMusicSelection) value;
-        textField.setText((value != null) ? value.toString() : ""); //$NON-NLS-1$
+        textField.setText(value != null ? value.toString() : ""); //$NON-NLS-1$
         textField.selectAll();
       }
 

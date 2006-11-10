@@ -33,7 +33,7 @@ public class PlotPresenter implements IPresenter {
   private ITextView itemNameView;
   private IStyledTextManager itemSummaryViewManager;
   private IStyledTextView itemSummaryView;
-  private IPlotElementContainerListener modelListener = new IPlotElementContainerListener() {
+  private final IPlotElementContainerListener modelListener = new IPlotElementContainerListener() {
     public void childAdded(IPlotElementContainer container, IPlotElement newChild) {
       DefaultMutableTreeNode parentNode = nodesByContainer.get(container);
       boolean childrenAllowed = newChild.getTimeUnit().hasSuccessor();

@@ -6,7 +6,6 @@ import net.sf.anathema.lib.resources.IResources;
 import com.lowagie.text.Font;
 import com.lowagie.text.pdf.PdfPTable;
 
-
 public class DeceptionStatsGroup extends AbstractSocialCombatsValueStatsGroup {
 
   public DeceptionStatsGroup(IResources resources) {

@@ -11,7 +11,7 @@ import org.java.plugin.registry.Extension.Parameter;
 public class AnathemaExtensionCollection extends AbstractInitializationCollection<IAnathemaExtension> {
 
   private static final String PARAM_ID = "id"; //$NON-NLS-1$
-  private Map<String, IAnathemaExtension> extensionsById = new LinkedHashMap<String, IAnathemaExtension>();
+  private final Map<String, IAnathemaExtension> extensionsById = new LinkedHashMap<String, IAnathemaExtension>();
 
   public AnathemaExtensionCollection(IAnathemaPluginManager pluginManager) throws InitializationException {
     collectContent(pluginManager);
@@ -23,7 +23,7 @@ public class AnathemaExtensionCollection extends AbstractInitializationCollectio
     String id = subParameter.valueAsString();
     extensionsById.put(id, item);
   }
-  
+
   public Map<String, IAnathemaExtension> getExtensionsById() {
     return extensionsById;
   }

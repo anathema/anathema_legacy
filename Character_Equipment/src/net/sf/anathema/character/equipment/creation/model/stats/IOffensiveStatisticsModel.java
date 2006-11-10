@@ -9,6 +9,6 @@ public interface IOffensiveStatisticsModel extends IEquipmentStatisticsModel {
   public IIntValueModel getAccuracyModel();
 
   public IIntValueModel getRateModel();
-  
+
   public IWeaponDamageModel getWeaponDamageModel();
 }

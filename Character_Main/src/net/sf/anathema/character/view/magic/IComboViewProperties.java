@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.framework.magic.view.IMagicLearnPropert
 public interface IComboViewProperties extends IMagicLearnProperties {
 
   public Icon getFinalizeButtonIcon();
-  
+
   public String getFinalizeButtonToolTip();
 
   public String getAvailableComboCharmsLabel();
@@ -15,7 +15,7 @@ public interface IComboViewProperties extends IMagicLearnProperties {
   public String getComboedCharmsLabel();
 
   public Icon getClearButtonIcon();
-  
+
   public String getClearButtonToolTip();
 
   public Icon getCancelEditButtonIcon();

@@ -29,7 +29,7 @@ public class PlotViewListenerControl {
     }
   }
 
-    public void fireMoveToRequested(DefaultMutableTreeNode dragTarget, DefaultMutableTreeNode node, int index) {
+  public void fireMoveToRequested(DefaultMutableTreeNode dragTarget, DefaultMutableTreeNode node, int index) {
     for (IPlotViewListener listener : new ArrayList<IPlotViewListener>(plotViewListeners)) {
       listener.moveToRequested(dragTarget, node, index);
     }

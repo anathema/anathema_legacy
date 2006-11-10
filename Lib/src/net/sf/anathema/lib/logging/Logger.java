@@ -11,10 +11,10 @@ public class Logger {
   private static final String DEBUG_PREFIX = "[DEBUG] "; //$NON-NLS-1$
   private static final String ERROR_PREFIX = "[ERROR] "; //$NON-NLS-1$
   private static final String INFO_PREFIX = "[INFO] "; //$NON-NLS-1$
-  private static final Map<Class<?>, Logger> loggers = new HashMap<Class<?>, Logger>();
+  private static final Map<Class< ? >, Logger> loggers = new HashMap<Class< ? >, Logger>();
   private static final String WARN_PREFIX = "[WARN] "; //$NON-NLS-1$
 
-  public synchronized static Logger getLogger(Class<?> logClass) {
+  public synchronized static Logger getLogger(Class< ? > logClass) {
     if (loggers.containsKey(logClass)) {
       return loggers.get(logClass);
     }
@@ -23,7 +23,7 @@ public class Logger {
     return logger;
   }
 
-  private PrintStream printStream = System.err;
+  private final PrintStream printStream = System.err;
 
   private Logger() {
     // nothing to do

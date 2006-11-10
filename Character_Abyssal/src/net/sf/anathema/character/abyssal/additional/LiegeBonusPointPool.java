@@ -22,7 +22,7 @@ public class LiegeBonusPointPool implements IAdditionalBonusPointPool {
     this.liegeTemplate = liegeTemplate;
   }
 
-  private List<String> allowedBackgroundIds = new ArrayList<String>() {
+  private final List<String> allowedBackgroundIds = new ArrayList<String>() {
     {
       add(AbyssalCharacterModule.BACKGROUND_ID_ABYSSAL_COMMAND);
       add(BasicExaltCharacterModule.BACKGROUND_ID_ARTIFACT);
@@ -45,7 +45,7 @@ public class LiegeBonusPointPool implements IAdditionalBonusPointPool {
     if (currentValue < 4) {
       return currentValue * 2;
     }
-    return (currentValue) * 3 - 3;
+    return currentValue * 3 - 3;
   }
 
   public boolean isAllowedForTrait(final IGenericTraitCollection traitCollection, final IGenericTrait trait) {

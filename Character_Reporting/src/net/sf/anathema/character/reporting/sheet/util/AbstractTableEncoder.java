@@ -10,7 +10,8 @@ import com.lowagie.text.pdf.PdfPTable;
 
 public abstract class AbstractTableEncoder implements IPdfTableEncoder {
 
-  protected abstract PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException;
+  protected abstract PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
+      throws DocumentException;
 
   public float encodeTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
       throws DocumentException {

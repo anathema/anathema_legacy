@@ -56,7 +56,7 @@ public class PolylineSVGArrow {
     Double lastPoint = pointList.get(size - 1);
     arrowElement.addAttribute(SVGCreationUtils.createXLinkQName(), ISVGCascadeXMLConstants.VALUE_ARROWHEAD_REFERENCE);
     arrowElement.addAttribute(SVGConstants.SVG_TRANSFORM_ATTRIBUTE, SVGConstants.SVG_TRANSLATE_VALUE + "(" //$NON-NLS-1$
-        + (lastPoint.x - (PolylineSVGArrow.HeadWidth / 2.0))
+        + (lastPoint.x - PolylineSVGArrow.HeadWidth / 2.0)
         + ISVGCascadeXMLConstants.SPACE
         + (lastPoint.y - PolylineSVGArrow.HeadHeight)
         + ") rotate(" //$NON-NLS-1$
@@ -92,18 +92,18 @@ public class PolylineSVGArrow {
     double halfArrowWidth = PolylineSVGArrow.ShaftWidth / 2.0;
     if (endPoint.x > startPoint.x) {
       if (ratio > 1) {
-        pointString = addPoint(pointString, endPoint.x - halfArrowWidth, endPoint.y - (ratio / halfArrowWidth));
+        pointString = addPoint(pointString, endPoint.x - halfArrowWidth, endPoint.y - ratio / halfArrowWidth);
       }
       else {
-        pointString = addPoint(pointString, endPoint.x - (ratio / halfArrowWidth), endPoint.y - halfArrowWidth);
+        pointString = addPoint(pointString, endPoint.x - ratio / halfArrowWidth, endPoint.y - halfArrowWidth);
       }
     }
     else if (startPoint.x > endPoint.x) {
       if (ratio > 1) {
-        pointString = addPoint(pointString, endPoint.x + halfArrowWidth, endPoint.y - (ratio / halfArrowWidth));
+        pointString = addPoint(pointString, endPoint.x + halfArrowWidth, endPoint.y - ratio / halfArrowWidth);
       }
       else {
-        pointString = addPoint(pointString, endPoint.x + (ratio / halfArrowWidth), endPoint.y - halfArrowWidth);
+        pointString = addPoint(pointString, endPoint.x + ratio / halfArrowWidth, endPoint.y - halfArrowWidth);
       }
     }
     else {

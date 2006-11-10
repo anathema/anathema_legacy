@@ -7,7 +7,7 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfContentByte;
 
 public interface IPdfContentBoxEncoder {
-  
+
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException;
 
   public String getHeaderKey();

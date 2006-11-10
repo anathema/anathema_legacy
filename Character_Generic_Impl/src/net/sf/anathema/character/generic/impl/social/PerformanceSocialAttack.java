@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 
 public class PerformanceSocialAttack extends AbstractSocialAttack {
-  
+
   public PerformanceSocialAttack(IGenericTraitCollection collection) {
     super(collection);
   }

@@ -8,7 +8,7 @@ import javax.swing.SpinnerNumberModel;
 // NOT_PUBLISHED
 public class IntegerCellEditor extends AbstractDelegatingCellEditor {
 
-  private SpinnerNumberModel spinnerNumberModel;
+  private final SpinnerNumberModel spinnerNumberModel;
 
   public IntegerCellEditor(int minimum, int maximum, int stepsize) {
     spinnerNumberModel = new SpinnerNumberModel(minimum, minimum, maximum, stepsize);

@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
 
 public class GenericCharmConfiguration implements IGenericCharmConfiguration {
-  
+
   private final IGenericCharacter character;
 
   public GenericCharmConfiguration(IGenericCharacter character) {

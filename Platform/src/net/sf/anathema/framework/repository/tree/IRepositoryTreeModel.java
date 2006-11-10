@@ -7,6 +7,6 @@ public interface IRepositoryTreeModel {
   public IItemType[] getAllItemTypes();
 
   public PrintNameFile[] getPrintNameFiles(IItemType itemType);
-  
+
   public void addRepositoryTreeModelListener(IRepositoryTreeModelListener listener);
 }

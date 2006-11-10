@@ -16,7 +16,7 @@ import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
-public class ExperiencedOverviewPresenter implements IPresenter{
+public class ExperiencedOverviewPresenter implements IPresenter {
 
   private final IExperiencePointManagement management;
   private final IOverviewView view;

@@ -9,7 +9,7 @@ import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public interface ICoreTraitConfiguration extends ITraitCollection {
-  
+
   public ISpecialtiesConfiguration getSpecialtyConfiguration();
 
   public IBackgroundConfiguration getBackgrounds();

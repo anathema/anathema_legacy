@@ -20,8 +20,8 @@ public class ExaltedNameGeneratorModel implements INameGeneratorModel {
   private final IIdentificate[] nameGeneratorTypes = new IIdentificate[] { new Identificate("Realm"), THRESHOLD_ID }; //$NON-NLS-1$
   private final Map<IIdentificate, IGeneratorTypeModel> typeModelsByType = new HashMap<IIdentificate, IGeneratorTypeModel>();
   private IIdentificate selectedGeneratorType = nameGeneratorTypes[1];
-  private ChangeControl selectedGeneratorTypeListeners = new ChangeControl();
-  private Map<IIdentificate, INameGenerator> generatorsByIdentificate = new HashMap<IIdentificate, INameGenerator>();
+  private final ChangeControl selectedGeneratorTypeListeners = new ChangeControl();
+  private final Map<IIdentificate, INameGenerator> generatorsByIdentificate = new HashMap<IIdentificate, INameGenerator>();
 
   public ExaltedNameGeneratorModel() {
     generatorsByIdentificate.put(nameGeneratorTypes[0], new RealmNameGenerator());

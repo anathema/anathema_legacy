@@ -1,6 +1,5 @@
 package net.sf.anathema.acceptance.fixture;
 
-
 import fit.ActionFixture;
 
 public class CoreActionFixture extends ActionFixture {

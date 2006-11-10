@@ -8,5 +8,5 @@ public class CheckExperiencePointsFixture extends AbstractCharacterColumnFixture
   public int getExperiencePointsSpent() {
     return new ExperiencePointManagement(getCharacterStatistics()).getTotalCosts();
   }
-  
+
 }

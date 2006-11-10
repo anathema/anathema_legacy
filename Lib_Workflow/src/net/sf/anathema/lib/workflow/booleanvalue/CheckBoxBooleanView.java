@@ -11,7 +11,7 @@ import net.sf.anathema.lib.gui.IView;
 
 public class CheckBoxBooleanView implements IBooleanValueView, IView {
 
-  private JCheckBox checkBox;
+  private final JCheckBox checkBox;
 
   public CheckBoxBooleanView(String label) {
     checkBox = new JCheckBox(label);

@@ -73,7 +73,7 @@ public class AstrologicalHouse extends Identificate implements IAstrologicalHous
     return new AstrologicalHouse(caste.getId(), collegeyTypes, caste, context);
   }
 
-  private IFavorableDefaultTrait[] colleges;
+  private final IFavorableDefaultTrait[] colleges;
   private final ChangeControl collegeValueChangeControl = new ChangeControl();
   private final IIntValueChangedListener collegeValueChangeListener = new IIntValueChangedListener() {
     public void valueChanged(int newValue) {

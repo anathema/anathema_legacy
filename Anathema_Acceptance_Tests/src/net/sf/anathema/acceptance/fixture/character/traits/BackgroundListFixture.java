@@ -22,7 +22,7 @@ public class BackgroundListFixture extends RowFixture {
   }
 
   @Override
-  public Class<?> getTargetClass() {
+  public Class< ? > getTargetClass() {
     return AcceptanceBackground.class;
   }
 }

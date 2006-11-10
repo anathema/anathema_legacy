@@ -19,7 +19,7 @@ public interface ITraitRules {
   public Range getModifiedRange(Range unmodifiedRange);
 
   public int getStartValue();
-  
+
   public int getZeroCalculationCost();
 
   public boolean isLowerable();

@@ -76,7 +76,7 @@ public class LearningCharmGroupArbitrator implements ILearningCharmGroupArbitrat
   }
 
   private boolean isCelestialStyle(ICharm martialArtsCharm) {
-    return (!martialArtsCharm.hasAttribute(ICharmData.NO_STYLE_ATTRIBUTE))
+    return !martialArtsCharm.hasAttribute(ICharmData.NO_STYLE_ATTRIBUTE)
         && MartialArtsUtilities.hasLevel(MartialArtsLevel.Celestial, martialArtsCharm);
   }
 

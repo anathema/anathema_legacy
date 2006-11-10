@@ -10,7 +10,7 @@ public class AttributeTextEncoder extends AbstractTraitTextEncoder<AttributeType
   public AttributeTextEncoder(ITextReportUtils utils, IResources resources) {
     super(utils, resources);
   }
-  
+
   @Override
   protected boolean addSeparator(AttributeType type) {
     return type.ordinal() > 0;

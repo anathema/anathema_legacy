@@ -37,8 +37,8 @@ public class ProxyShieldStats implements IShieldStats {
     }
     ProxyShieldStats other = (ProxyShieldStats) obj;
     return ObjectUtilities.equals(delegate, other.delegate)
-    && ObjectUtilities.equals(material, other.material)
-    && ObjectUtilities.equals(ruleSet, other.ruleSet);
+        && ObjectUtilities.equals(material, other.material)
+        && ObjectUtilities.equals(ruleSet, other.ruleSet);
   }
 
   @Override

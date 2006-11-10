@@ -19,7 +19,10 @@ public class MarkerLessIntValueDisplayFactory implements IIntValueDisplayFactory
   }
 
   public IIntValueDisplay createIntValueDisplay(int maxValue, int value) {
-    IIntValueDisplay intValueDisplay = IntValueDisplay.createMarkerLessDisplay(passiveBallIcon, activeBallIcon, maxValue);
+    IIntValueDisplay intValueDisplay = IntValueDisplay.createMarkerLessDisplay(
+        passiveBallIcon,
+        activeBallIcon,
+        maxValue);
     intValueDisplay.setValue(value);
     return intValueDisplay;
   }

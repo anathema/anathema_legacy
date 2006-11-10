@@ -18,9 +18,9 @@ import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 
 public class ReflexiveCharmSpecialsView implements IDialogComponent, IReflexiveCharmSpecialsView {
   private final ObjectSelectionIntValueView stepView;
-  private JCheckBox splitBox;
-  private ObjectSelectionIntValueView defenderView;
-  private JLabel mainLabel;
+  private final JCheckBox splitBox;
+  private final ObjectSelectionIntValueView defenderView;
+  private final JLabel mainLabel;
 
   public ReflexiveCharmSpecialsView(String headerLabel, String defaultLabel, String defenderLabel, String splitLabel) {
     mainLabel = new JLabel(headerLabel);

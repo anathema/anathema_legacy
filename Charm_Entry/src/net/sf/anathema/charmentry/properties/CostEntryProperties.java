@@ -7,7 +7,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class CostEntryProperties {
 
   private final IResources resources;
-  private IBasicMessage defaultMessage = new BasicMessage("Enter the Charm's cost, if any.");
+  private final IBasicMessage defaultMessage = new BasicMessage("Enter the Charm's cost, if any.");
 
   public CostEntryProperties(IResources resources) {
     this.resources = resources;

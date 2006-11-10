@@ -17,13 +17,13 @@ public class PdfWillpowerEncoder implements IPdfContentBoxEncoder {
   public PdfWillpowerEncoder(BaseFont baseFont) {
     this.traitEncoder = PdfTraitEncoder.createMediumTraitEncoder(baseFont);
   }
-  
+
   public String getHeaderKey() {
     return "Willpower"; //$NON-NLS-1$
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds) {
-    float padding = IVoidStateFormatConstants.PADDING /2f;
+    float padding = IVoidStateFormatConstants.PADDING / 2f;
     float width = contentBounds.width - 2 * padding;
     float leftX = contentBounds.x + padding;
     int value = character.getTraitCollection().getTrait(OtherTraitType.Willpower).getCurrentValue();

@@ -27,7 +27,7 @@ public class CharmCache implements ICharmCache {
 
   public static final Identificate MARTIAL_ARTS_TYPE = new Identificate("MartialArts"); //$NON-NLS-1$
 
-  private static CharmCache instance = new CharmCache();
+  private static final CharmCache instance = new CharmCache();
   private final Map<IExaltedRuleSet, MultiEntryMap<IIdentificate, ICharm>> charmSetsByRuleSet = new HashMap<IExaltedRuleSet, MultiEntryMap<IIdentificate, ICharm>>();
   private final CharmIO charmIo = new CharmIO();
   private final ICharmSetBuilder builder = new CharmSetBuilder();

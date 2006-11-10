@@ -78,7 +78,10 @@ public class SpecialCharmManager implements ISpecialCharmManager {
       ICharm charm,
       ILearningCharmGroup group,
       CharmConfiguration arbitrator) {
-    addSpecialCharmConfiguration(charm, group, new MultipleEffectCharmConfiguration(context, charm, visited, arbitrator));
+    addSpecialCharmConfiguration(
+        charm,
+        group,
+        new MultipleEffectCharmConfiguration(context, charm, visited, arbitrator));
   }
 
   private void addSpecialCharmConfiguration(

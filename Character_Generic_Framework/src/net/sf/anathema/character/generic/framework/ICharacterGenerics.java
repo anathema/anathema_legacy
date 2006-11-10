@@ -40,7 +40,7 @@ public interface ICharacterGenerics {
   public IRegistry<String, IAdditionalTemplateParser> getAdditionalTemplateParserRegistry();
 
   public ICharmProvider getCharmProvider();
-  
+
   public ICharacterModuleObjectMap getModuleObjectMap();
 
   public IDataFileProvider getDataFileProvider();

@@ -20,11 +20,11 @@ public abstract class AbstractCharacterColumnFixture extends ColumnFixture {
   protected final ICharacterStatistics getCharacterStatistics() {
     return getCharacter().getStatistics();
   }
-  
+
   protected final ICharacterGenerics getCharacterGenerics() {
     return getCharacterSummary().getCharacterGenerics();
   }
-  
+
   protected final ICharacterTemplate getTemplate() {
     return getCharacterSummary().getTemplate();
   }

@@ -8,7 +8,8 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
 
-public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IClonableTraitTemplate> implements IClonableTraitTemplate {
+public class GenericRestrictedTraitTemplate extends ReflectionCloneableObject<IClonableTraitTemplate> implements
+    IClonableTraitTemplate {
 
   private final IMinimumRestriction restriction;
   private final ITraitType traitType;

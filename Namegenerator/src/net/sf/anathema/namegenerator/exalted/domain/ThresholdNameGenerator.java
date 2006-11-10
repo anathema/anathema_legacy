@@ -10,8 +10,8 @@ import net.sf.anathema.namegenerator.domain.category.TokenCategory;
 
 public class ThresholdNameGenerator implements INameGenerator {
 
-  private ICategorizedTokenNameTemplate[] templates = new ICategorizedTokenNameTemplate[] {
-      // VoidState a)
+  private final ICategorizedTokenNameTemplate[] templates = new ICategorizedTokenNameTemplate[] {
+  // VoidState a)
       new CategorizedTokenNameTemplate(new TokenCategory[] {
           VoidstateCategorizedTokenRegistry.METAL_STONE,
           VoidstateCategorizedTokenRegistry.ANIMAL }),

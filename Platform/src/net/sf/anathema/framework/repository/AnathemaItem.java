@@ -8,7 +8,6 @@ import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
-import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.util.IIdentificate;
 

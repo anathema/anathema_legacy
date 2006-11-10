@@ -12,7 +12,7 @@ final class ComboSelectionListCellRenderer extends LegalityCheckListCellRenderer
     super(resources);
     this.comboConfiguration = comboConfiguration;
   }
-  
+
   @Override
   protected boolean isLegal(Object object) {
     return comboConfiguration.isComboLegal((ICharm) object);

@@ -6,7 +6,6 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 
 import net.sf.anathema.framework.repository.RepositoryException;
-import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 
 public class MultiFileWriteAccess implements IRepositoryWriteAccess {
 

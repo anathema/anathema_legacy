@@ -21,7 +21,7 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
 public class EquipmentItem implements IEquipmentItem {
 
-  private List<IEquipmentStats> printedStats = new ArrayList<IEquipmentStats>();
+  private final List<IEquipmentStats> printedStats = new ArrayList<IEquipmentStats>();
   private final IEquipmentTemplate template;
   private final IExaltedRuleSet ruleSet;
   private final MagicalMaterial material;

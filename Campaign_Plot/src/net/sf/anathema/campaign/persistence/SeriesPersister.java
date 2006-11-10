@@ -12,7 +12,6 @@ import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.T
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Iterator;
 import java.util.List;
 
 import net.disy.commons.core.io.IOUtilities;
@@ -105,7 +104,7 @@ public class SeriesPersister implements IRepositoryItemPersister {
       Element plotItemElement = parent.addElement(successorId);
       plotItemElement.addAttribute(ATTRIB_REPOSITORY_ID, subElement.getId());
       IItemDescription description = subElement.getDescription();
-      if ((description.getName().isDirty()) || (description.getContent().isDirty())) {
+      if (description.getName().isDirty() || description.getContent().isDirty()) {
         savePlotFile(subElement, writeAccess);
       }
       saveSubElements(subElement, plotItemElement, writeAccess);
@@ -221,8 +220,7 @@ public class SeriesPersister implements IRepositoryItemPersister {
       return;
     }
     List<Element> elementList = ElementUtilities.elements(contentElement, TAG_CONTENT_ITEM);
-    for (Iterator<Element> contentItemElements = elementList.iterator(); contentItemElements.hasNext();) {
-      Element contentItemElement = contentItemElements.next();
+    for (Element contentItemElement : elementList) {
       String repositoryId = contentItemElement.attributeValue(ATTRIB_REPOSITORY_ID);
       IItemType itemType = registry.getById(contentItemElement.attributeValue(ATTRIB_ITEM_TYPE));
       PrintNameFile printNameFile = printNameFileAccess.getPrintNameFile(itemType, repositoryId);

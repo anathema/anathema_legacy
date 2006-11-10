@@ -9,7 +9,7 @@ import net.sf.anathema.framework.itemdata.view.IBasicItemDescriptionView;
 import net.sf.anathema.lib.gui.IView;
 
 public interface IPlotView extends IView {
-  
+
   public void initGui(IPlotViewProperties properties);
 
   public void addPlotViewListener(IPlotViewListener listener);

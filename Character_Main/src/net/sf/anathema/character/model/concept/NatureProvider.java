@@ -18,7 +18,7 @@ import org.dom4j.io.SAXReader;
 public class NatureProvider implements INatureProvider {
 
   private final List<INatureType> natures = new ArrayList<INatureType>();
-  private static INatureProvider instance = new NatureProvider();
+  private static final INatureProvider instance = new NatureProvider();
   private static final String TAG_NATURE = "nature"; //$NON-NLS-1$
   private static final String ATTRIB_NAME = "name"; //$NON-NLS-1$
   protected static final String ATTRIB_TEXT = "text"; //$NON-NLS-1$

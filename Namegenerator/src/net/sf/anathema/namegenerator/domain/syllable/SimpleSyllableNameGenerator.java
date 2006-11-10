@@ -12,18 +12,19 @@ public class SimpleSyllableNameGenerator implements INameGenerator {
     this.wordCalculator = wordCalculator;
   }
 
-public String[] createNames(int count) {
+  public String[] createNames(int count) {
     String[] names = new String[count];
     for (int nameIndex = 0; nameIndex < names.length; nameIndex++) {
       StringBuffer name = new StringBuffer();
       int wordCount = wordCalculator.calculateNamePartCount();
       for (int wordIndex = 0; wordIndex < wordCount; wordIndex++) {
-        if (wordIndex != 0)  {
-        name.append(" "); //$NON-NLS-1$
+        if (wordIndex != 0) {
+          name.append(" "); //$NON-NLS-1$
         }
         name.append(wordFactory.createWord(wordIndex));
       }
       names[nameIndex] = name.toString();
     }
     return names;
-  }}
+  }
+}

@@ -7,7 +7,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class PrerequisiteCharmsPageProperties implements IPrerequisiteCharmsPageProperties {
 
   private final IResources resources;
-  private IBasicMessage defaultMessage = new BasicMessage("Please select the prerequisite Charms, if any.");
+  private final IBasicMessage defaultMessage = new BasicMessage("Please select the prerequisite Charms, if any.");
 
   public PrerequisiteCharmsPageProperties(IResources resources) {
     this.resources = resources;

@@ -9,8 +9,8 @@ public interface IConcept {
   public String getConceptText();
 
   public String getWillpowerRegainingConceptName();
-  
+
   public String getWillpowerRegainingComment(IResources resources);
-  
-  public ICasteType<? extends ICasteTypeVisitor>  getCasteType();
+
+  public ICasteType< ? extends ICasteTypeVisitor> getCasteType();
 }

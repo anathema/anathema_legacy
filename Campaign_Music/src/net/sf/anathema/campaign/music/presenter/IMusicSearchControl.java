@@ -16,6 +16,6 @@ public interface IMusicSearchControl {
   public void addSearchResultChangedListener(IChangeListener listener);
 
   public IMp3Track[] getSearchResult();
-  
+
   public IMusicCategorizationModel getMusicCategorizationModel();
 }

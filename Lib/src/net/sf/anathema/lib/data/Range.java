@@ -16,7 +16,7 @@ public class Range implements IOverline {
   }
 
   public boolean contains(int value) {
-    return ((low <= value) && (high >= value));
+    return low <= value && high >= value;
   }
 
   public boolean contains(Range range) {

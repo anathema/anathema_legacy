@@ -34,7 +34,7 @@ public abstract class AbstractPdfEncoder {
   protected final int getDefaultTextWidth(String text) {
     return (int) getBaseFont().getWidthPoint(text, IVoidStateFormatConstants.FONT_SIZE);
   }
-  
+
   protected final int getCommentTextWidth(String text) {
     return (int) getBaseFont().getWidthPoint(text, IVoidStateFormatConstants.COMMENT_FONT_SIZE);
   }

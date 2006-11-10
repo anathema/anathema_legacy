@@ -4,7 +4,7 @@ import java.io.File;
 
 import javax.swing.filechooser.FileFilter;
 
-public abstract class AbstractFileTypeFilter extends FileFilter implements java.io.FileFilter{
+public abstract class AbstractFileTypeFilter extends FileFilter implements java.io.FileFilter {
 
   private String getExtension(File file) {
     String fileName = file.getName();

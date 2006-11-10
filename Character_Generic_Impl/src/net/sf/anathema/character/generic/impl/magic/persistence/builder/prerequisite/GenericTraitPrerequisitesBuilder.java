@@ -14,7 +14,7 @@ import org.dom4j.Element;
 
 public class GenericTraitPrerequisitesBuilder implements ITraitPrerequisitesBuilder {
 
-  private GenericTraitPrerequisiteBuilder genericBuilder = new GenericTraitPrerequisiteBuilder();
+  private final GenericTraitPrerequisiteBuilder genericBuilder = new GenericTraitPrerequisiteBuilder();
 
   public IGenericTrait[] buildTraitPrerequisites(Element prerequisiteListElement) throws PersistenceException {
     List<IGenericTrait> allPrerequisites = new ArrayList<IGenericTrait>();

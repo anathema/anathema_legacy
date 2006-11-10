@@ -2,7 +2,6 @@ package net.sf.anathema.lib.control.legality;
 
 import java.awt.Color;
 
-
 public class LegalityColorProvider {
 
   public static final Color COLOR_HIGH = Color.RED;

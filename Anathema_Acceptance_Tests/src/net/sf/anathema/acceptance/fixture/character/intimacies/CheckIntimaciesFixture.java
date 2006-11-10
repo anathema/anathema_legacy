@@ -19,7 +19,7 @@ public class CheckIntimaciesFixture extends AbstractCharacterColumnFixture {
   private IIntimaciesAdditionalModel getAdditionalModel() {
     for (IAdditionalModel model : getCharacterStatistics().getExtendedConfiguration().getAdditionalModels()) {
       if (model instanceof IIntimaciesAdditionalModel) {
-        return ((IIntimaciesAdditionalModel) model);
+        return (IIntimaciesAdditionalModel) model;
       }
     }
     return null;
@@ -35,11 +35,11 @@ public class CheckIntimaciesFixture extends AbstractCharacterColumnFixture {
     bonusPointCalculator.recalculate();
     return bonusPointCalculator;
   }
-  
+
   public int getFreeIntimacies() {
     return getModel().getFreeIntimacies();
   }
-  
+
   public int getMaximumIntimacies() {
     return getModel().getIntimaciesLimit();
   }

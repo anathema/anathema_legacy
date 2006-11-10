@@ -8,7 +8,7 @@ public abstract class AbstractRenownRowEntryFixture extends AbstractCharacterRow
   protected IRenownModel getModel() {
     for (IAdditionalModel model : getCharacterStatistics().getExtendedConfiguration().getAdditionalModels()) {
       if (model instanceof IRenownModel) {
-        return ((IRenownModel) model);
+        return (IRenownModel) model;
       }
     }
     return null;

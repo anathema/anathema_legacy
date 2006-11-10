@@ -35,7 +35,9 @@ public class MusicDatabaseView extends AbstractItemView implements IMusicDatabas
       ITableColumnViewSettings columnSettings,
       boolean playerView,
       IMusicCategorizationProperties categoryProperties,
-      IMusicPlayerProperties playerProperties, IMusicSelectionProperties selectionProperties, ITrackDetailsProperties detailsProperties) {
+      IMusicPlayerProperties playerProperties,
+      IMusicSelectionProperties selectionProperties,
+      ITrackDetailsProperties detailsProperties) {
     MusicSelectionView selectionView = new MusicSelectionView();
     selectionView.initGui(
         columnSettings,

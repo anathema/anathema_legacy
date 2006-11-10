@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 
 public class TraitTemplateCollection implements ITraitTemplateCollection {
-  
+
   private final ITraitTemplateFactory templateFactory;
 
   public TraitTemplateCollection(ITraitTemplateFactory templateFactory) {
@@ -44,7 +44,7 @@ public class TraitTemplateCollection implements ITraitTemplateCollection {
       public void visitAbility(AbilityType type) {
         traitTemplate[0] = templateFactory.createAbilityTemplate(type);
       }
-      
+
       public void visitCustomTraitType(ITraitType visitedType) {
         throw new UnsupportedOperationException("Trait Template Collection can't handle custom trait types"); //$NON-NLS-1$
       }

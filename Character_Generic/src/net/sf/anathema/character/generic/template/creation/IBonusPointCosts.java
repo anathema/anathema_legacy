@@ -20,7 +20,7 @@ public interface IBonusPointCosts extends IAbilityPointCosts, IBackgroundCreatio
   public int getSpellCosts(ICostAnalyzer costMapping);
 
   public int getEssenceCost();
-  
+
   public int getMagicCosts(IMagic magic, ICostAnalyzer analyzer);
 
   public int getMaximumFreeVirtueRank();

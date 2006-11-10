@@ -23,7 +23,7 @@ public class EssenceFlow extends AbstractGenericCharm {
   }
 
   public String getDurationString(IResources resources) {
-     return SimpleDuration.PERMANENT_DURATION.getText(resources);
+    return SimpleDuration.PERMANENT_DURATION.getText(resources);
   }
 
   public String getType(IResources resources) {

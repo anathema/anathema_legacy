@@ -161,11 +161,11 @@ public class SpellConfiguration implements ISpellConfiguration {
   public void addChangeListener(IChangeListener listener) {
     changeControl.addChangeListener(listener);
   }
-  
+
   public void addMagicLearnListener(IMagicLearnListener<ISpell> listener) {
     magicLearnControl.addListener(listener);
   }
-  
+
   public ISpell[] getAllSpells() {
     List<ISpell> allSpells = new ArrayList<ISpell>();
     for (List<ISpell> circleSpells : spellsByCircle.values()) {

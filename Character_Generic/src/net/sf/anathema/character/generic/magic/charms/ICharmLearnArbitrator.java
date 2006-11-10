@@ -4,5 +4,5 @@ import net.sf.anathema.character.generic.magic.ICharm;
 
 public interface ICharmLearnArbitrator {
 
-  public boolean isLearned(ICharm charm);  
+  public boolean isLearned(ICharm charm);
 }

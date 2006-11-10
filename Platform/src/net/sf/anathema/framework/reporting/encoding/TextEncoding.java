@@ -49,7 +49,8 @@ public class TextEncoding {
         }
         if (format.getColor() != null) {
           unquotedCData = unquotedCData.concat(" forecolor=\\\"" //$NON-NLS-1$
-              + ColorUtilities.convertColorToHexString(format.getColor()) + JAVA_DOUBLE_QUOTE);
+              + ColorUtilities.convertColorToHexString(format.getColor())
+              + JAVA_DOUBLE_QUOTE);
         }
         unquotedCData = unquotedCData.concat(">"); //$NON-NLS-1$
       }
@@ -91,7 +92,8 @@ public class TextEncoding {
         }
         if (format.getColor() != null) {
           unquotedCData = unquotedCData.concat(" forecolor=\"" //$NON-NLS-1$
-              + ColorUtilities.convertColorToHexString(format.getColor()) + SIMPLE_QUOTE);
+              + ColorUtilities.convertColorToHexString(format.getColor())
+              + SIMPLE_QUOTE);
         }
         unquotedCData = unquotedCData.concat(">"); //$NON-NLS-1$
       }

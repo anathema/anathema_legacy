@@ -13,7 +13,7 @@ public class StringCellEditor extends AbstractDelegatingCellEditor {
     return new EditorDelegate(this) {
       @Override
       public void setValue(Object value) {
-        textField.setText((value != null) ? value.toString() : ""); //$NON-NLS-1$
+        textField.setText(value != null ? value.toString() : ""); //$NON-NLS-1$
         textField.selectAll();
       }
 

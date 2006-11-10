@@ -11,11 +11,11 @@ public class GlobalCharacterChangeAdapter implements ICharacterChangeListener {
   public void traitChanged(ITraitType type) {
     characterChanged();
   }
-  
+
   public void experiencedChanged(boolean experienced) {
     characterChanged();
   }
-  
+
   public void casteChanged() {
     characterChanged();
   }

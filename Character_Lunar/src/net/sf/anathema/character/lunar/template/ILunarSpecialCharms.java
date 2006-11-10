@@ -21,11 +21,10 @@ public interface ILunarSpecialCharms {
               "Category.-2x4", new HealthLevelType[] { HealthLevelType.TWO, HealthLevelType.TWO, HealthLevelType.TWO, HealthLevelType.TWO }); //$NON-NLS-1$
         }
       });
-  
+
   public static final IMultiLearnableCharm DEADLY_BEASTMAN_TRANSFORMATION = new TraitDependentMultiLearnableCharm(
       "Lunar.DeadlyBeastmanTransformation", //$NON-NLS-1$
       7,
       OtherTraitType.Essence);
-  
-  
+
 }

@@ -128,8 +128,8 @@ public class CharacterStatistics implements ICharacterStatistics {
     });
     characterConcept.getConcept().addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
-        context.getCharacterListening().fireCharacterChanged();       
-      }      
+        context.getCharacterListening().fireCharacterChanged();
+      }
     });
     return characterConcept;
   }

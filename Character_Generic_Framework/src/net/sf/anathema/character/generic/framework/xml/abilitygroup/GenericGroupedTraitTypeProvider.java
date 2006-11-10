@@ -13,7 +13,7 @@ public class GenericGroupedTraitTypeProvider implements ICloneable<GenericGroupe
 
   private final List<IGroupedTraitType> groupedTraitTypes = new ArrayList<IGroupedTraitType>();
   private final ITraitTypeGroup traitTypeGroup;
-  
+
   public GenericGroupedTraitTypeProvider(ITraitTypeGroup traitTypeGroup) {
     this.traitTypeGroup = traitTypeGroup;
   }

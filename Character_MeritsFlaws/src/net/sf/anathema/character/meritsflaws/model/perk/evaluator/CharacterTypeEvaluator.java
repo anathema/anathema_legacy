@@ -6,7 +6,6 @@ import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.type.CharacterType;
 
-
 public class CharacterTypeEvaluator implements ICharacterEvaluator {
 
   private final CharacterType[] types;

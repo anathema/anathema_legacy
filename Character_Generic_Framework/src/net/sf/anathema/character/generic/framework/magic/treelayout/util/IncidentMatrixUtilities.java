@@ -3,7 +3,6 @@ package net.sf.anathema.character.generic.framework.magic.treelayout.util;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.ISimpleNode;
 
-
 public class IncidentMatrixUtilities {
 
   public static boolean[][] buildMatrix(ISimpleNode[] upperLayer, ISimpleNode[] lowerLayer) {

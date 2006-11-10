@@ -15,7 +15,7 @@ import net.sf.anathema.lib.collection.ListOrderedSet;
 public class SelectiveCharmGroup {
 
   private final SelectiveCharmGroupTemplate template;
-  private List<Charm> charms = new ArrayList<Charm>();
+  private final List<Charm> charms = new ArrayList<Charm>();
 
   public SelectiveCharmGroup(SelectiveCharmGroupTemplate template) {
     Ensure.ensureNotNull(template);

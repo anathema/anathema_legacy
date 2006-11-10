@@ -179,10 +179,11 @@ public class RenownModel implements IRenownModel {
   }
 
   private boolean hasAttributeBelow(int minimalValue) {
-    for (ITraitType type : AttributeType.values())
+    for (ITraitType type : AttributeType.values()) {
       if (context.getTraitCollection().getTrait(type).getCurrentValue() < minimalValue) {
         return true;
       }
+    }
     return false;
   }
 

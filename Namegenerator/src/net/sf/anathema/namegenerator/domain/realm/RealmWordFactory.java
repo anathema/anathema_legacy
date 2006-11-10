@@ -6,8 +6,7 @@ import net.sf.anathema.namegenerator.domain.syllable.SimpleWordFactory;
 
 public class RealmWordFactory implements IWordFactory {
 
-  private String[] commonFamilyNames = new String[] {
-      "Cathak", //$NON-NLS-1$
+  private final String[] commonFamilyNames = new String[] { "Cathak", //$NON-NLS-1$
       "Cynis", //$NON-NLS-1$
       "Iselsi", //$NON-NLS-1$
       "Ledaal", //$NON-NLS-1$
@@ -19,19 +18,19 @@ public class RealmWordFactory implements IWordFactory {
       "Tepet", //$NON-NLS-1$
       "V'Neef" }; //$NON-NLS-1$
 
-  private SimpleWordFactory wordFactory = new SimpleWordFactory(
+  private final SimpleWordFactory wordFactory = new SimpleWordFactory(
       new RealmSyllableFactory(),
       new RealmSyllableCalculator());
 
   private final int commonFamilyPercent;
-  
+
   public RealmWordFactory(int commonFamilyPercent) {
     this.commonFamilyPercent = commonFamilyPercent;
   }
 
   public String createWord(int wordIndex) {
     if (wordIndex == 0 && RandomUtilities.nextPercent() < commonFamilyPercent) {
-      return RandomUtilities.choose(commonFamilyNames); 
+      return RandomUtilities.choose(commonFamilyNames);
     }
     return wordFactory.createWord(wordIndex);
   }

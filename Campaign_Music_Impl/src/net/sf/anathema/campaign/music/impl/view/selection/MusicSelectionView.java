@@ -73,9 +73,9 @@ public class MusicSelectionView implements IMusicSelectionView, IView {
     TabbedView selectionActionsView = new TabbedView(TabDirection.Down);
     selectionActionsView.addView(factory.createTabView(selectionsView.getComponent()), new ContentProperties(
         selectionProperties.getSelectionsString()));
-    selectionActionsView.addView(
-        factory.createTabView(trackDetailsView.getContent(categoryProperties, detailsProperties)),
-        new ContentProperties(selectionProperties.getTrackDetailsString()));
+    selectionActionsView.addView(factory.createTabView(trackDetailsView.getContent(
+        categoryProperties,
+        detailsProperties)), new ContentProperties(selectionProperties.getTrackDetailsString()));
     if (includePlayerView) {
       playerView = new MusicPlayerView();
       trackDetailsView.setPlayerComponent(playerView.getContent(playerProperties));

@@ -19,7 +19,8 @@ import net.sf.anathema.framework.styledtext.TextEditor;
 import net.sf.anathema.lib.workflow.container.factory.StandardPanelBuilder;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
-public class BasicItemDescriptionView extends AbstractInitializableContentView<Object> implements IBasicItemDescriptionView {
+public class BasicItemDescriptionView extends AbstractInitializableContentView<Object> implements
+    IBasicItemDescriptionView {
 
   private final StandardPanelBuilder standardPanelBuilder = new StandardPanelBuilder();
 

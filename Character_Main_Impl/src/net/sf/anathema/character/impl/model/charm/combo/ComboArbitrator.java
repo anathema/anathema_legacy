@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.character.model.charm.ICombo;
 
-
 public abstract class ComboArbitrator implements IComboArbitrator {
 
   private final IComboRules simpleCharmRules = new SimpleCharmComboRules();

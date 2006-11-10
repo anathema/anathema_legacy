@@ -10,7 +10,7 @@ import net.disy.commons.swing.message.MessageTypeUi;
 
 public class AnathemaStatusBar implements IAnathemaStatusBar {
 
-  private JLabel label = new JLabel();
+  private final JLabel label = new JLabel();
 
   public AnathemaStatusBar() {
     label.setPreferredSize(new Dimension(350, 25));

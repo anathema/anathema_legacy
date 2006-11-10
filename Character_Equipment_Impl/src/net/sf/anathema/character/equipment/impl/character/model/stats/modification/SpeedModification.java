@@ -4,7 +4,7 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 
-public class SpeedModification implements IStatsModification{
+public class SpeedModification implements IStatsModification {
 
   private final MagicalMaterial material;
   private final IExaltedRuleSet ruleSet;

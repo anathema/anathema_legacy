@@ -11,18 +11,19 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 
 public class DefaultAbilityAlternative {
 
-  protected static final int TRAIT_MAX = 5;
-  private ITraitRequirement defaultThrown = new TraitRequirement(0, 1, AbilityType.Thrown);
-  private ITraitRequirement defaultMelee = new TraitRequirement(0, 1, AbilityType.Melee);
-  private ITraitRequirement defaultArchery = new TraitRequirement(0, 1, AbilityType.Archery);
-  private List<ITraitRequirement> defaultAlternate = new ArrayList<ITraitRequirement>() {
+  private final ITraitRequirement defaultThrown = new TraitRequirement(0, 1, AbilityType.Thrown);
+  private final ITraitRequirement defaultMelee = new TraitRequirement(0, 1, AbilityType.Melee);
+  private final ITraitRequirement defaultArchery = new TraitRequirement(0, 1, AbilityType.Archery);
+  private final List<ITraitRequirement> defaultAlternate = new ArrayList<ITraitRequirement>() {
     {
       add(defaultThrown);
       add(defaultMelee);
       add(defaultArchery);
     }
   };
-  private TraitRequirementCollection defaultRequirementCollection = new TraitRequirementCollection(defaultAlternate, 1);
+  private final TraitRequirementCollection defaultRequirementCollection = new TraitRequirementCollection(
+      defaultAlternate,
+      1);
 
   public AlternateRequirementTraitTemplate createMeleeTemplate() {
     return new AlternateRequirementTraitTemplate(defaultMelee, defaultRequirementCollection, 0, 0);

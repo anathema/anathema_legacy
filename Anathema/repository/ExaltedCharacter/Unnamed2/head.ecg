@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ExaltedCharacter repositoryId="Unnamed2" repositoryPrintName="Unnamed">
+  <Description/>
+  <Statistics experienced="false">
+    <Rules>
+      <RuleSet name="CoreRules"/>
+    </Rules>
+    <CharacterType subtype="TemplateType.Default">Dragon-Blooded</CharacterType>
+    <CharacterConcept>
+      <Caste type="Air"/>
+      <Nature/>
+    </CharacterConcept>
+    <Essence creationValue="2"/>
+    <Willpower creationValue="5"/>
+    <Virtues>
+      <Compassion creationValue="1"/>
+      <Conviction creationValue="1"/>
+      <Temperance creationValue="4"/>
+      <Valor creationValue="1"/>
+    </Virtues>
+    <Attributes>
+      <Physical>
+        <Strength creationValue="1"/>
+        <Dexterity creationValue="1"/>
+        <Stamina creationValue="1"/>
+      </Physical>
+      <Social>
+        <Charisma creationValue="1"/>
+        <Manipulation creationValue="1"/>
+        <Appearance creationValue="1"/>
+      </Social>
+      <Mental>
+        <Perception creationValue="1"/>
+        <Intelligence creationValue="1"/>
+        <Wits creationValue="1"/>
+      </Mental>
+    </Attributes>
+    <Abilities>
+      <Linguistics creationValue="0"/>
+      <Lore creationValue="2"/>
+      <Occult creationValue="0"/>
+      <Stealth creationValue="0"/>
+      <Thrown creationValue="0"/>
+      <Awareness creationValue="0"/>
+      <Craft>
+        <subTrait creationValue="0">
+          <traitName><![CDATA[Generic]]></traitName>
+        </subTrait>
+      </Craft>
+      <Endurance creationValue="0"/>
+      <MartialArts creationValue="1"/>
+      <Resistance creationValue="0"/>
+      <Athletics creationValue="0"/>
+      <Dodge creationValue="0"/>
+      <Melee creationValue="1"/>
+      <Presence creationValue="1"/>
+      <Socialize creationValue="2"/>
+      <Brawl creationValue="0"/>
+      <Bureaucracy creationValue="0"/>
+      <Investigation creationValue="0"/>
+      <Larceny creationValue="0"/>
+      <Sail creationValue="0"/>
+      <Archery creationValue="1"/>
+      <Medicine creationValue="0"/>
+      <Performance creationValue="1"/>
+      <Ride creationValue="1"/>
+      <Survival creationValue="0"/>
+    </Abilities>
+    <Backgrounds/>
+    <Charms>
+      <Combos/>
+    </Charms>
+    <Spells/>
+    <Experience/>
+    <AdditionalModels>
+      <Model templateId="Equipment">
+        <Content>
+          <item>
+            <templateId><![CDATA[Natural]]></templateId>
+            <templateId><![CDATA[Natural]]></templateId>
+            <printedStats><![CDATA[Punch]]></printedStats>
+            <printedStats><![CDATA[Kick]]></printedStats>
+            <printedStats><![CDATA[Clinch]]></printedStats>
+            <printedStats><![CDATA[Hold]]></printedStats>
+          </item>
+        </Content>
+      </Model>
+      <Model templateId="MeritsAndFlaws">
+        <Content>
+          <meritsFlaws/>
+        </Content>
+      </Model>
+      <Model templateId="Specialties">
+        <Content/>
+      </Model>
+      <Model templateId="Craft">
+        <Content/>
+      </Model>
+      <Model templateId="Linguistics">
+        <Content>
+          <linguistics/>
+        </Content>
+      </Model>
+    </AdditionalModels>
+  </Statistics>
+</ExaltedCharacter>

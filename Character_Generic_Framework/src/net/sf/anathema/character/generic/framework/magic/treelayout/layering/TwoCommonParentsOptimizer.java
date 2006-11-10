@@ -11,7 +11,6 @@ import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IRegularNode;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 
-
 public class TwoCommonParentsOptimizer {
 
   public static boolean moveDownOvercrossingTwoTupels(

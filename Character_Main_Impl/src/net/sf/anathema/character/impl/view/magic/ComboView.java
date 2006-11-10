@@ -12,7 +12,7 @@ import com.l2fprod.common.swing.JTaskPaneGroup;
 
 public class ComboView implements IComboView {
 
-  private JTaskPaneGroup taskPaneGroup = new JTaskPaneGroup();
+  private final JTaskPaneGroup taskPaneGroup = new JTaskPaneGroup();
   private JLabel label;
   private final Action deleteAction;
   private final Action editAction;

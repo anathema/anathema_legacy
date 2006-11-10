@@ -8,7 +8,7 @@ import net.sf.anathema.namegenerator.domain.syllable.ISyllabalFactory;
 
 public class RealmSyllableFactory implements ISyllabalFactory {
 
-  private INameTokenFactory uncleanFactory = new RandomChoosingTokenFactory(new String[] { "a", //$NON-NLS-1$
+  private final INameTokenFactory uncleanFactory = new RandomChoosingTokenFactory(new String[] { "a", //$NON-NLS-1$
       "ba", //$NON-NLS-1$
       "be", //$NON-NLS-1$
       "bi", //$NON-NLS-1$

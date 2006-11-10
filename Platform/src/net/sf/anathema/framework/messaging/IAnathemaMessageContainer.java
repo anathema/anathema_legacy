@@ -6,8 +6,8 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 public interface IAnathemaMessageContainer {
 
   public void addChangeListener(IChangeListener listener);
-  
+
   public IBasicMessage getLatestMessage();
-  
+
   public IBasicMessage[] getAllMessages();
 }

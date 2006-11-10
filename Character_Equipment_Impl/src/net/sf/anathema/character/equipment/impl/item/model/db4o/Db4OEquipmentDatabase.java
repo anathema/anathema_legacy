@@ -20,7 +20,7 @@ public class Db4OEquipmentDatabase extends NonPersistableItemData implements IEq
 
   public static final String DATABASE_FILE = "Equipment.yap"; //$NON-NLS-1$
   public static final String DATABASE_FOLDER = "equipment"; //$NON-NLS-1$
-  private ICollectionFactory collectionFactory;
+  private final ICollectionFactory collectionFactory;
   private final ChangeControl availableTemplatesChangeControl = new ChangeControl();
   private final ObjectContainer container;
 

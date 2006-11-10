@@ -27,7 +27,7 @@ public class SeriesReportUtils {
         pageNumber,
         reportUtils.createDefaultFont(8, Font.NORMAL)), document.getPageSize().width() / 2, document.bottom() - 20, 0);
   }
-  
+
   public void textLine(
       PdfContentByte cb,
       float y,
@@ -49,8 +49,9 @@ public class SeriesReportUtils {
       int rep = (int) (widthRemaining / cw);
       if (rep > 0) {
         StringBuffer sb = new StringBuffer();
-        for (int k = 0; k < rep; ++k)
+        for (int k = 0; k < rep; ++k) {
           sb.append(connect);
+        }
         ColumnText.showTextAligned(
             cb,
             Element.ALIGN_RIGHT,
@@ -61,7 +62,8 @@ public class SeriesReportUtils {
       }
     }
     ColumnText.showTextAligned(cb, Element.ALIGN_RIGHT, phraseRight, right, y, 0);
-    if (link != null)
+    if (link != null) {
       cb.setAction(link, left, y, right, y + 12);
+    }
   }
 }

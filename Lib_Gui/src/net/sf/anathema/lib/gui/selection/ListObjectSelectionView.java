@@ -23,9 +23,9 @@ public class ListObjectSelectionView<V> implements IListObjectSelectionView<V> {
     this.selectionModel = new VetoableListSelectionModel();
     this.smartList.setSelectionModel(selectionModel);
   }
-  
+
   public void setEnabled(boolean enabled) {
-    smartList.setEnabled(enabled);        
+    smartList.setEnabled(enabled);
   }
 
   public void setCellRenderer(ListCellRenderer renderer) {

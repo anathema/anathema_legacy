@@ -78,7 +78,7 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
     for (int dot = 0; dot < dotCount; dot++) {
       float currentGroupingSpace = dot < 5 ? groupSpacing : 0;
       float rightEdgeX = position.x + width;
-      float spaceNeededRight = currentGroupingSpace + ((dotCount - dot) * (dotSize + dotSpacing));
+      float spaceNeededRight = currentGroupingSpace + (dotCount - dot) * (dotSize + dotSpacing);
       Position lowerLeft = new Position(rightEdgeX - spaceNeededRight, position.y);
       new Dot().encode(directContent, lowerLeft, dot, value);
     }

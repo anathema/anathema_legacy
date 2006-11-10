@@ -70,7 +70,7 @@ public class GenericTraitTemplateFactory implements ITraitTemplateFactory, IClon
   public GenericTraitTemplateFactory clone() {
     GenericTraitTemplateFactory clone = new GenericTraitTemplateFactory();
     clone.abilitiesPool = abilitiesPool == null ? null : abilitiesPool.clone();
-    clone.attributesPool = attributesPool == null ? null  : attributesPool.clone();
+    clone.attributesPool = attributesPool == null ? null : attributesPool.clone();
     clone.backgroundPool = backgroundPool == null ? null : backgroundPool.clone();
     clone.virtuesPool = virtuesPool == null ? null : virtuesPool.clone();
     clone.essenceTemplate = essenceTemplate == null ? null : essenceTemplate.clone();

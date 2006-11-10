@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 import net.sf.anathema.framework.repository.RepositoryException;
-import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 
 public class SingleFileReadAccess implements IRepositoryReadAccess {
 

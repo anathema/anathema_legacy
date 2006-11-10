@@ -8,8 +8,8 @@ import net.sf.anathema.lib.collection.ListOrderedSet;
 
 public class Registry<I, V> implements IRegistry<I, V> {
 
-  private Map<I, V> objects = new HashMap<I, V>();
-  private Set<I> keySet = new ListOrderedSet<I>();
+  private final Map<I, V> objects = new HashMap<I, V>();
+  private final Set<I> keySet = new ListOrderedSet<I>();
   private V defaultValue;
 
   public Registry() {
@@ -35,11 +35,11 @@ public class Registry<I, V> implements IRegistry<I, V> {
   public I[] getIds(I[] array) {
     return keySet.toArray(array);
   }
-  
+
   public void setDefaultValue(V defaultValue) {
     this.defaultValue = defaultValue;
   }
-  
+
   protected Set<I> getKeys() {
     return keySet;
   }

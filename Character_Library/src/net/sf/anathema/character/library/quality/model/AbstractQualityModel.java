@@ -119,7 +119,7 @@ public abstract class AbstractQualityModel<Q extends IQuality> implements IQuali
   }
 
   private void checkForReplacement(IQualitySelection<Q> selection, IQualitySelection<Q> existingSelection) {
-    if ((existingSelection.isCreationActive()) || !selection.isCreationActive()) {
+    if (existingSelection.isCreationActive() || !selection.isCreationActive()) {
       return;
     }
     removeQualityCompletely(existingSelection);

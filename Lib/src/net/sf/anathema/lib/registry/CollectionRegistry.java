@@ -7,7 +7,7 @@ import net.sf.anathema.lib.collection.ListOrderedSet;
 
 public class CollectionRegistry<E> implements ICollectionRegistry<E> {
 
-  private Set<E> elements = new ListOrderedSet<E>();
+  private final Set<E> elements = new ListOrderedSet<E>();
 
   public void add(E... newElements) {
     for (E element : newElements) {

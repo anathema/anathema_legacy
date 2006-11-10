@@ -12,8 +12,8 @@ public class QualityExclusion implements IQualityPredicate {
     this.prerequisite = prerequisite;
   }
 
-  public boolean isFulfilled(IQualitySelection<? extends IQuality>[] selectedQualities) {
-    for (IQualitySelection<? extends IQuality> selection : selectedQualities) {
+  public boolean isFulfilled(IQualitySelection< ? extends IQuality>[] selectedQualities) {
+    for (IQualitySelection< ? extends IQuality> selection : selectedQualities) {
       if (selection.getQuality() == prerequisite) {
         return false;
       }

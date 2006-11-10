@@ -7,8 +7,8 @@ import net.sf.anathema.lib.resources.IResources;
 public class PrerequisitePageProperties {
 
   private final IResources resources;
-  private IBasicMessage defaultMessage = new BasicMessage("Please enter the Charm's trait minima.");
-  private IBasicMessage primaryMissingMessage = new BasicMessage("Please select the primary trait.");
+  private final IBasicMessage defaultMessage = new BasicMessage("Please enter the Charm's trait minima.");
+  private final IBasicMessage primaryMissingMessage = new BasicMessage("Please select the primary trait.");
 
   public PrerequisitePageProperties(IResources resources) {
     this.resources = resources;

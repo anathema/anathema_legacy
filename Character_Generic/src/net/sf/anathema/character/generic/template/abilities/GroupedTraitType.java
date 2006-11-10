@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public class GroupedTraitType implements IGroupedTraitType {
-  
+
   private final ITraitType type;
   private final String groupId;
   private final String casteId;

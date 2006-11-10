@@ -76,7 +76,7 @@ public class CharmTreeView implements ICharmTreeView {
 
   public void setCharmBackgroundColor(String charmId, Color color) {
     Ensure.ensureNotNull("Color must not be null.", color); //$NON-NLS-1$
-    SVGElement charmGroup = ((SVGElement) canvas.getSVGDocument().getElementById(charmId));
+    SVGElement charmGroup = (SVGElement) canvas.getSVGDocument().getElementById(charmId);
     if (charmGroup == null) {
       return;
     }
@@ -97,11 +97,13 @@ public class CharmTreeView implements ICharmTreeView {
   }
 
   public void setCharmAlpha(String charmId, int alpha) {
-    if (alpha > 255)
+    if (alpha > 255) {
       alpha = 255;
-    if (alpha < 0)
+    }
+    if (alpha < 0) {
       alpha = 0;
-    SVGElement charmGroup = ((SVGElement) canvas.getSVGDocument().getElementById(charmId));
+    }
+    SVGElement charmGroup = (SVGElement) canvas.getSVGDocument().getElementById(charmId);
     if (charmGroup == null) {
       return;
     }

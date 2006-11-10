@@ -36,7 +36,7 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
     if (additionalRules.getAdditionalEssencePools().length == 0) {
       return String.valueOf(poolStrategy.getStandardPersonalPool());
     }
-    return (poolStrategy.getStandardPersonalPool() + " (" + poolStrategy.getExtendedPersonalPool() + ")"); //$NON-NLS-1$//$NON-NLS-2$
+    return poolStrategy.getStandardPersonalPool() + " (" + poolStrategy.getExtendedPersonalPool() + ")"; //$NON-NLS-1$//$NON-NLS-2$
   }
 
   public String getPeripheralPool() {
@@ -44,7 +44,7 @@ public class EssencePoolConfiguration implements IEssencePoolConfiguration {
     if (additionalRules.getAdditionalEssencePools().length == 0) {
       return String.valueOf(poolStrategy.getStandardPeripheralPool());
     }
-    return (poolStrategy.getStandardPeripheralPool() + " (" + poolStrategy.getExtendedPeripheralPool() + ")"); //$NON-NLS-1$//$NON-NLS-2$
+    return poolStrategy.getStandardPeripheralPool() + " (" + poolStrategy.getExtendedPeripheralPool() + ")"; //$NON-NLS-1$//$NON-NLS-2$
   }
 
   public boolean isEssenceUser() {

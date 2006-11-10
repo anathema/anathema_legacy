@@ -22,7 +22,11 @@ public class ComboBoxPainter {
   private final JList listBox;
   private final CellRendererPane currentValuePane;
 
-  public ComboBoxPainter(Color disabledForegroundColor, JComboBox comboBox, JList listBox, CellRendererPane currentValuePane) {
+  public ComboBoxPainter(
+      Color disabledForegroundColor,
+      JComboBox comboBox,
+      JList listBox,
+      CellRendererPane currentValuePane) {
     this.disabledForegroundColor = disabledForegroundColor;
     this.comboBox = comboBox;
     this.listBox = listBox;
