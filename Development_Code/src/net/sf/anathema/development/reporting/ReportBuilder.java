@@ -18,10 +18,8 @@ import net.sf.anathema.development.reporting.encoder.voidstate.subreports.abilit
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateTenAbilityGroupSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateThreeGroupAbilitySetSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.anima.VoidstateAbyssalAnimaSubreportEncoder;
-import net.sf.anathema.development.reporting.encoder.voidstate.subreports.anima.VoidstateDbAnimaSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.anima.VoidstateLunarAnimaSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.anima.VoidstateSiderealAnimaSubreportEncoder;
-import net.sf.anathema.development.reporting.encoder.voidstate.subreports.anima.VoidstateSolarAnimaSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.attribute.VoidstateBeastformAttributeSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.attribute.VoidstateDefaultAttributeSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.attribute.VoidstateLunarAttributeSubreportEncoder;
@@ -33,10 +31,8 @@ import net.sf.anathema.development.reporting.encoder.voidstate.subreports.health
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middlecolumn.BeastformMiddleColumnSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middlecolumn.DefaultMiddleColumnSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middlecolumn.flaw.VoidstateAbyssalFlawSubreportEncoder;
-import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middlecolumn.flaw.VoidstateDbFlawSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middlecolumn.flaw.VoidstateLunarFlawSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middlecolumn.flaw.VoidstateSiderealFlawSubreportEncoder;
-import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middlecolumn.flaw.VoidstateSolarFlawSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middlecolumn.gifts.VoidstateBeastformGiftsSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middlecolumn.virtues.VoidstateVirtuesSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middlecolumn.willpower.VoidstateBeastformWillpowerSubreportEncoder;
@@ -117,9 +113,6 @@ public class ReportBuilder {
   }
 
   private static void createAnimaSubreports() throws InitializationException {
-    buildReportDesign(new File("VoidStateSolarAnimaSubreport.xml"), new VoidstateSolarAnimaSubreportEncoder(
-        basicsEncoder));
-    buildReportDesign(new File("VoidStateDbAnimaSubreport.xml"), new VoidstateDbAnimaSubreportEncoder(basicsEncoder));
     buildReportDesign(new File("VoidStateLunarAnimaSubreport.xml"), new VoidstateLunarAnimaSubreportEncoder(
         basicsEncoder));
     buildReportDesign(new File("VoidStateAbyssalAnimaSubreport.xml"), new VoidstateAbyssalAnimaSubreportEncoder(
@@ -141,10 +134,6 @@ public class ReportBuilder {
   }
 
   private static void createFlawSubreports() throws InitializationException {
-    buildReportDesign(
-        new File("VoidStateSolarFlawSubreport.xml"),
-        new VoidstateSolarFlawSubreportEncoder(basicsEncoder));
-    buildReportDesign(new File("VoidStateDbFlawSubreport.xml"), new VoidstateDbFlawSubreportEncoder(basicsEncoder));
     buildReportDesign(
         new File("VoidStateLunarFlawSubreport.xml"),
         new VoidstateLunarFlawSubreportEncoder(basicsEncoder));
