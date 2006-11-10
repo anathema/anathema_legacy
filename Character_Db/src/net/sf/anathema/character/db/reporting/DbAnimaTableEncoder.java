@@ -3,40 +3,15 @@ package net.sf.anathema.character.db.reporting;
 import net.sf.anathema.character.db.DbCharacterModule;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.reporting.sheet.common.anima.AbstractAnimaTableEncoder;
+import net.sf.anathema.character.reporting.sheet.common.anima.AnimaTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
 
-public class DbAnimaTableEncoder extends AbstractAnimaTableEncoder {
+public class DbAnimaTableEncoder extends AnimaTableEncoder {
 
   public DbAnimaTableEncoder(IResources resources, BaseFont baseFont, float fontSize) {
     super(resources, baseFont, fontSize);
-  }
-
-  @Override
-  protected String getFifthLevelKey() {
-    return "Sheet.AnimaTable.TotemicAuraDB"; //$NON-NLS-1$
-  }
-
-  @Override
-  protected String getFourthLevelKey() {
-    return "Sheet.AnimaTable.BrilliantAura"; //$NON-NLS-1$
-  }
-
-  @Override
-  protected String getThirdLevelKey() {
-    return "Sheet.AnimaTable.ShiningAura"; //$NON-NLS-1$
-  }
-
-  @Override
-  protected String getSecondLevelKey() {
-    return "Sheet.AnimaTable.SkinGlowsBrightly"; //$NON-NLS-1$
-  }
-
-  @Override
-  protected String getFirstLevelKey() {
-    return "Sheet.AnimaTable.SkinGlowsWeakly"; //$NON-NLS-1$
   }
 
   @Override

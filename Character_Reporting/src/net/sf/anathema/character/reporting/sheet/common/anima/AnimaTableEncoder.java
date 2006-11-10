@@ -3,6 +3,7 @@ package net.sf.anathema.character.reporting.sheet.common.anima;
 import java.awt.Color;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.sheet.util.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
@@ -15,13 +16,13 @@ import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 
-public abstract class AbstractAnimaTableEncoder extends AbstractTableEncoder {
+public class AnimaTableEncoder extends AbstractTableEncoder {
 
   private final IResources resources;
   private final Font headerFont;
   private final Font font;
 
-  public AbstractAnimaTableEncoder(IResources resources, BaseFont baseFont, float fontSize) {
+  public AnimaTableEncoder(IResources resources, BaseFont baseFont, float fontSize) {
     this.resources = resources;
     this.headerFont = new Font(baseFont, fontSize, Font.ITALIC, Color.BLACK);
     this.font = new Font(baseFont, fontSize, Font.NORMAL, Color.BLACK);
@@ -31,29 +32,31 @@ public abstract class AbstractAnimaTableEncoder extends AbstractTableEncoder {
   protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
     PdfPTable table = new PdfPTable(new float[] { 0.15f, 0.6f, 0.25f });
     table.setWidthPercentage(100);
+    CharacterType type = character.getTemplate().getTemplateType().getCharacterType();
+    String descriptionPrefix = "Sheet.AnimaTable.Description." + type; //$NON-NLS-1$
     table.addCell(createHeaderCell(resources.getString("Sheet.AnimaTable.Header.Motes"))); //$NON-NLS-1$
     table.addCell(createHeaderCell(resources.getString("Sheet.AnimaTable.Header.BannerFlare"))); //$NON-NLS-1$
     table.addCell(createHeaderCell(resources.getString("Sheet.AnimaTable.Header.Stealth"))); //$NON-NLS-1$
 
     table.addCell(createContentCell(getFirstLevelRange(character)));
-    table.addCell(createContentCell(resources.getString(getFirstLevelKey())));
+    table.addCell(createContentCell(resources.getString(descriptionPrefix + ".First"))); //$NON-NLS-1$
     table.addCell(createContentCell(resources.getString("Sheet.AnimaTable.StealthNormal"))); //$NON-NLS-1$
 
     table.addCell(createContentCell(getSecondLevelRange(character)));
-    table.addCell(createContentCell(resources.getString(getSecondLevelKey())));
+    table.addCell(createContentCell(resources.getString(descriptionPrefix + ".Second"))); //$NON-NLS-1$
     table.addCell(createContentCell(getSecondLevelStealth()));
 
     table.addCell(createContentCell(getThirdLevelRange(character)));
-    table.addCell(createContentCell(resources.getString(getThirdLevelKey())));
+    table.addCell(createContentCell(resources.getString(descriptionPrefix + ".Third"))); //$NON-NLS-1$
     String stealthImpossible = resources.getString("Sheet.AnimaTable.StealthImpossible"); //$NON-NLS-1$
     table.addCell(createContentCell(stealthImpossible));
 
     table.addCell(createContentCell(getFourthLevelRange(character)));
-    table.addCell(createContentCell(resources.getString(getFourthLevelKey())));
+    table.addCell(createContentCell(resources.getString(descriptionPrefix + ".Fourth"))); //$NON-NLS-1$
     table.addCell(createContentCell(stealthImpossible));
 
     table.addCell(createContentCell(getFifthLevelRange(character)));
-    table.addCell(createContentCell(resources.getString(getFifthLevelKey())));
+    table.addCell(createContentCell(resources.getString(descriptionPrefix + ".Fifth"))); //$NON-NLS-1$
     table.addCell(createContentCell(stealthImpossible));
     return table;
   }
@@ -81,16 +84,6 @@ public abstract class AbstractAnimaTableEncoder extends AbstractTableEncoder {
   protected String getFirstLevelRange(IGenericCharacter character) {
     return "1-3"; //$NON-NLS-1$
   }
-
-  protected abstract String getFifthLevelKey();
-
-  protected abstract String getFourthLevelKey();
-
-  protected abstract String getThirdLevelKey();
-
-  protected abstract String getSecondLevelKey();
-
-  protected abstract String getFirstLevelKey();
 
   private PdfPCell createContentCell(String text) {
     PdfPCell cell = new PdfPCell(new Phrase(text, font));
