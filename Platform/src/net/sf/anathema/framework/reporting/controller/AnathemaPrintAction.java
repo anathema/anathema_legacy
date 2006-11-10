@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -126,7 +127,13 @@ public class AnathemaPrintAction extends SmartAction {
       }
     }
     catch (InvocationTargetException e) {
-      String errorMessage = resources.getString("Anathema.Reporting.Message.PrintError"); //$NON-NLS-1$
+      String errorMessage;
+      if (e.getTargetException() instanceof FileNotFoundException) {
+        errorMessage = resources.getString("Anathema.Reporting.Message.PrintError.FileOpen"); //$NON-NLS-1$
+      }
+      else {
+        errorMessage = resources.getString("Anathema.Reporting.Message.PrintError"); //$NON-NLS-1$
+      }
       MessageUtilities.indicateMessage(getClass(), parentComponent, new Message(errorMessage, e.getCause()));
     }
     catch (Exception e) {
