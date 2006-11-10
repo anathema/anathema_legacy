@@ -8,6 +8,7 @@ import net.sf.anathema.character.db.additional.BasicAdditionalLookshyDbRules;
 import net.sf.anathema.character.db.additional.NativeLookshyDbRules;
 import net.sf.anathema.character.db.aspect.DBAspect;
 import net.sf.anathema.character.db.reporting.DbVoidStateReportTemplate;
+import net.sf.anathema.character.db.reporting.FirstEditionDbPartEncoder;
 import net.sf.anathema.character.db.template.IDbSpecialCharms;
 import net.sf.anathema.character.db.template.cult.KetherRockDbTemplate;
 import net.sf.anathema.character.db.template.cult.SequesteredTabernacleDbTemplate;
@@ -29,11 +30,16 @@ import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackground
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.reporting.CharacterReportingModule;
+import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
+import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
@@ -42,6 +48,7 @@ import net.sf.anathema.lib.resources.IResources;
 public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
 
   private final Logger logger = Logger.getLogger(DbCharacterModule.class);
+  private static final int ESSENCE_MAX = EssenceTemplate.DB_ESSENCE_MAX;
   public static final String BACKGROUND_ID_ARSENAL = "Arsenal"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_BREEDING = "Breeding"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_FAMILY = "Family"; //$NON-NLS-1$
@@ -64,9 +71,7 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   public void registerCommonData(ICharacterGenerics characterGenerics) {
     ISpecialCharm[] specialCharms = new ISpecialCharm[] { IDbSpecialCharms.OX_BODY_TECHNIQUE };
     characterGenerics.getCharmProvider().setSpecialCharms(CharacterType.DB, ExaltedEdition.FirstEdition, specialCharms);
-    characterGenerics.getCasteCollectionRegistry().register(
-        CharacterType.DB,
-        new CasteCollection(DBAspect.values()));
+    characterGenerics.getCasteCollectionRegistry().register(CharacterType.DB, new CasteCollection(DBAspect.values()));
   }
 
   @Override
@@ -169,5 +174,10 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     generics.getReportTemplateRegistry().add(new DbVoidStateReportTemplate(resources));
+    CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
+        CharacterReportingModule.class);
+    PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
+    IPdfPartEncoder firstEditionDbPartEncoder = new FirstEditionDbPartEncoder(resources, registry, ESSENCE_MAX);
+    registry.setPartEncoder(CharacterType.DB, ExaltedEdition.FirstEdition, firstEditionDbPartEncoder);
   }
 }
