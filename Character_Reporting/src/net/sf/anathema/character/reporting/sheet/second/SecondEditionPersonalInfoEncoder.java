@@ -31,7 +31,6 @@ public class SecondEditionPersonalInfoEncoder extends AbstractPdfEncoder {
       IGenericCharacter character,
       IGenericDescription description,
       Bounds infoBounds) {
-    CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     float lineHeight = (infoBounds.height - TEXT_PADDING) / 3;
     float entryWidth = (infoBounds.width - TEXT_PADDING) / 2;
     float firstColumnX = infoBounds.x;
@@ -51,11 +50,12 @@ public class SecondEditionPersonalInfoEncoder extends AbstractPdfEncoder {
     String conceptContent = character.getConcept().getConceptText();
     String conceptLabel = getLabel("Concept"); //$NON-NLS-1$
     drawLabelledContent(directContent, conceptLabel, conceptContent, new Position(firstColumnX, secondRowY), entryWidth);
+    CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     if (characterType != CharacterType.MORTAL) {
       String casteContent = getCasteString(character.getConcept().getCasteType());
       drawLabelledContent(
           directContent,
-          getLabel("Caste"), casteContent, new Position(secondColumnX, secondRowY), entryWidth); //$NON-NLS-1$
+          getLabel("Caste." + characterType.getId()), casteContent, new Position(secondColumnX, secondRowY), entryWidth); //$NON-NLS-1$
     }
 
     float thirdRowY = secondRowY - lineHeight;
@@ -79,6 +79,6 @@ public class SecondEditionPersonalInfoEncoder extends AbstractPdfEncoder {
   }
 
   protected final String getLabel(String key) {
-    return resources.getString("Sheet.Label." + key); //$NON-NLS-1$
+    return resources.getString("Sheet.Label." + key) + ":"; //$NON-NLS-1$ //$NON-NLS-2$
   }
 }
