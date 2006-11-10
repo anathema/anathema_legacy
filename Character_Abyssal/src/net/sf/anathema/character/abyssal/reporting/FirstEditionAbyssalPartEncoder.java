@@ -13,8 +13,7 @@ public class FirstEditionAbyssalPartEncoder extends AbstractFirstEditionExaltPdf
   }
 
   public IPdfContentBoxEncoder getGreatCurseEncoder() {
-    // TODO Auto-generated method stub
-    return null;
+    return new AbyssalResonanceEncoder(getBaseFont(), getSymbolBaseFont(), getResources());
   }
 
   @Override
