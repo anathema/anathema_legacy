@@ -59,6 +59,6 @@ public class DamageWeaponStatsGroup extends AbstractValueEquipmentStatsGroup<IWe
   }
 
   private String getDamageTypeLabel(HealthType damageType) {
-    return getResources().getString("Weapons.Damage." + damageType.getId() + ".Short"); //$NON-NLS-1$ //$NON-NLS-2$
+    return getResources().getString("HealthType." + damageType.getId() + ".Short"); //$NON-NLS-1$ //$NON-NLS-2$
   }
 }

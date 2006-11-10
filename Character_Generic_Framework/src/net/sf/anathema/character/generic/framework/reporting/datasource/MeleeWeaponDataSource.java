@@ -50,15 +50,15 @@ public class MeleeWeaponDataSource implements IReportDataSource {
       final String[] damageString = new String[1];
       weapon.getDamageType().accept(new IHealthTypeVisitor() {
         public void visitBashing(HealthType type) {
-          damageString[0] = damageValue.concat(resources.getString("Weapons.Damage.Bashing.Short")); //$NON-NLS-1$
+          damageString[0] = damageValue.concat(resources.getString("HealthType.Bashing.Short")); //$NON-NLS-1$
         }
 
         public void visitLethal(HealthType type) {
-          damageString[0] = damageValue.concat(resources.getString("Weapons.Damage.Lethal.Short")); //$NON-NLS-1$
+          damageString[0] = damageValue.concat(resources.getString("HealthType.Lethal.Short")); //$NON-NLS-1$
         }
 
         public void visitAggravated(HealthType type) {
-          damageString[0] = damageValue.concat(resources.getString("Weapons.Damage.Aggravated.Short")); //$NON-NLS-1$
+          damageString[0] = damageValue.concat(resources.getString("HealthType.Aggravated.Short")); //$NON-NLS-1$
         }
       });
       return damageString[0];
