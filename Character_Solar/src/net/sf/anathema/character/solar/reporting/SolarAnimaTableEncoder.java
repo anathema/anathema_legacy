@@ -1,73 +1,64 @@
 package net.sf.anathema.character.solar.reporting;
 
-import java.awt.Color;
-
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.reporting.sheet.util.AbstractTableEncoder;
-import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.sheet.common.anima.AbstractAnimaTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
-import com.lowagie.text.Font;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
-import com.lowagie.text.pdf.PdfPCell;
-import com.lowagie.text.pdf.PdfPTable;
 
-public class SolarAnimaTableEncoder extends AbstractTableEncoder {
-
-  private final IResources resources;
-  private Font headerFont;
-  private Font font;
+public class SolarAnimaTableEncoder extends AbstractAnimaTableEncoder {
 
   public SolarAnimaTableEncoder(IResources resources, BaseFont baseFont, float fontSize) {
-    this.resources = resources;
-    this.headerFont = new Font(baseFont, fontSize, Font.ITALIC, Color.BLACK);
-    this.font = new Font(baseFont, fontSize, Font.NORMAL, Color.BLACK);
+    super(resources, baseFont, fontSize);
   }
 
   @Override
-  protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
-    PdfPTable table = new PdfPTable(new float[] { 0.15f, 0.6f, 0.25f });
-    table.setWidthPercentage(100);
-    table.addCell(createHeaderCell(resources.getString("Sheet.AnimaTable.Header.Motes"))); //$NON-NLS-1$
-    table.addCell(createHeaderCell(resources.getString("Sheet.AnimaTable.Header.BannerFlare"))); //$NON-NLS-1$
-    table.addCell(createHeaderCell(resources.getString("Sheet.AnimaTable.Header.Stealth"))); //$NON-NLS-1$
-
-    table.addCell(createContentCell("1-3")); //$NON-NLS-1$
-    table.addCell(createContentCell(resources.getString("Sheet.AnimaTable.CasteMarkGlitters"))); //$NON-NLS-1$
-    table.addCell(createContentCell(resources.getString("Sheet.AnimaTable.StealthNormal"))); //$NON-NLS-1$
-
-    table.addCell(createContentCell("4-7")); //$NON-NLS-1$
-    table.addCell(createContentCell(resources.getString("Sheet.AnimaTable.CasteMarkBurns"))); //$NON-NLS-1$
-    table.addCell(createContentCell("+2")); //$NON-NLS-1$
-
-    table.addCell(createContentCell("8-10")); //$NON-NLS-1$
-    table.addCell(createContentCell(resources.getString("Sheet.AnimaTable.CoruscantAura"))); //$NON-NLS-1$
-    String stealthImpossible = resources.getString("Sheet.AnimaTable.StealthImpossible"); //$NON-NLS-1$
-    table.addCell(createContentCell(stealthImpossible));
-
-    table.addCell(createContentCell("11-15")); //$NON-NLS-1$
-    table.addCell(createContentCell(resources.getString("Sheet.AnimaTable.BrilliantBonfire"))); //$NON-NLS-1$
-    table.addCell(createContentCell(stealthImpossible));
-
-    table.addCell(createContentCell("16+")); //$NON-NLS-1$
-    table.addCell(createContentCell(resources.getString("Sheet.AnimaTable.TotemicAura"))); //$NON-NLS-1$
-    table.addCell(createContentCell(stealthImpossible));
-    return table;
+  protected String getFifthLevelRange(IGenericCharacter character) {
+    return "16+"; //$NON-NLS-1$
   }
 
-  private PdfPCell createContentCell(String text) {
-    PdfPCell cell = new PdfPCell(new Phrase(text, font));
-    cell.setPaddingTop(1);
-    cell.setPaddingBottom(2);
-    return cell;
+  @Override
+  protected String getFourthLevelRange(IGenericCharacter character) {
+    return "11-15"; //$NON-NLS-1$
   }
 
-  private PdfPCell createHeaderCell(String text) {
-    PdfPCell cell = new PdfPCell(new Phrase(text, headerFont));
-    cell.setBorder(Rectangle.BOTTOM);
-    return cell;
+  @Override
+  protected String getThirdLevelRange(IGenericCharacter character) {
+    return "8-10"; //$NON-NLS-1$
+  }
+
+  @Override
+  protected String getSecondLevelRange(IGenericCharacter character) {
+    return "4-7"; //$NON-NLS-1$
+  }
+
+  @Override
+  protected String getFirstLevelRange(IGenericCharacter character) {
+    return "1-3"; //$NON-NLS-1$
+  }
+
+  @Override
+  protected String getFifthLevelKey() {
+    return "Sheet.AnimaTable.TotemicAura"; //$NON-NLS-1$
+  }
+
+  @Override
+  protected String getFourthLevelKey() {
+    return "Sheet.AnimaTable.BrilliantBonfire"; //$NON-NLS-1$
+  }
+
+  @Override
+  protected String getThirdLevelKey() {
+    return "Sheet.AnimaTable.CoruscantAura"; //$NON-NLS-1$
+  }
+
+  @Override
+  protected String getSecondLevelKey() {
+    return "Sheet.AnimaTable.CasteMarkBurns"; //$NON-NLS-1$
+  }
+
+  @Override
+  protected String getFirstLevelKey() {
+    return "Sheet.AnimaTable.CasteMarkGlitters"; //$NON-NLS-1$
   }
 }

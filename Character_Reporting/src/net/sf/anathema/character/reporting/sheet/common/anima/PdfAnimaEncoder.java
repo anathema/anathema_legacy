@@ -1,9 +1,11 @@
-package net.sf.anathema.character.reporting.sheet.common;
+package net.sf.anathema.character.reporting.sheet.common.anima;
 
 import java.awt.Color;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.common.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfLineEncodingUtilities;

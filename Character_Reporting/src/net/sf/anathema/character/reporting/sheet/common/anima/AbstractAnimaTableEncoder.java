@@ -1,0 +1,93 @@
+package net.sf.anathema.character.reporting.sheet.common.anima;
+
+import java.awt.Color;
+
+import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.reporting.sheet.util.AbstractTableEncoder;
+import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.lib.resources.IResources;
+
+import com.lowagie.text.Font;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.Rectangle;
+import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfContentByte;
+import com.lowagie.text.pdf.PdfPCell;
+import com.lowagie.text.pdf.PdfPTable;
+
+public abstract class AbstractAnimaTableEncoder extends AbstractTableEncoder {
+
+  private final IResources resources;
+  private final Font headerFont;
+  private final Font font;
+
+  public AbstractAnimaTableEncoder(IResources resources, BaseFont baseFont, float fontSize) {
+    this.resources = resources;
+    this.headerFont = new Font(baseFont, fontSize, Font.ITALIC, Color.BLACK);
+    this.font = new Font(baseFont, fontSize, Font.NORMAL, Color.BLACK);
+  }
+
+  @Override
+  protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
+    PdfPTable table = new PdfPTable(new float[] { 0.15f, 0.6f, 0.25f });
+    table.setWidthPercentage(100);
+    table.addCell(createHeaderCell(resources.getString("Sheet.AnimaTable.Header.Motes"))); //$NON-NLS-1$
+    table.addCell(createHeaderCell(resources.getString("Sheet.AnimaTable.Header.BannerFlare"))); //$NON-NLS-1$
+    table.addCell(createHeaderCell(resources.getString("Sheet.AnimaTable.Header.Stealth"))); //$NON-NLS-1$
+
+    table.addCell(createContentCell(getFirstLevelRange(character)));
+    table.addCell(createContentCell(resources.getString(getFirstLevelKey())));
+    table.addCell(createContentCell(resources.getString("Sheet.AnimaTable.StealthNormal"))); //$NON-NLS-1$
+
+    table.addCell(createContentCell(getSecondLevelRange(character)));
+    table.addCell(createContentCell(resources.getString(getSecondLevelKey())));
+    table.addCell(createContentCell("+2")); //$NON-NLS-1$
+
+    table.addCell(createContentCell(getThirdLevelRange(character)));
+    table.addCell(createContentCell(resources.getString(getThirdLevelKey())));
+    String stealthImpossible = resources.getString("Sheet.AnimaTable.StealthImpossible"); //$NON-NLS-1$
+    table.addCell(createContentCell(stealthImpossible));
+
+    table.addCell(createContentCell(getFourthLevelRange(character)));
+    table.addCell(createContentCell(resources.getString(getFourthLevelKey())));
+    table.addCell(createContentCell(stealthImpossible));
+
+    table.addCell(createContentCell(getFifthLevelRange(character)));
+    table.addCell(createContentCell(resources.getString(getFifthLevelKey())));
+    table.addCell(createContentCell(stealthImpossible));
+    return table;
+  }
+
+  protected abstract String getFifthLevelRange(IGenericCharacter character);
+
+  protected abstract String getFourthLevelRange(IGenericCharacter character);
+
+  protected abstract String getThirdLevelRange(IGenericCharacter character);
+
+  protected abstract String getSecondLevelRange(IGenericCharacter character);
+
+  protected abstract String getFirstLevelRange(IGenericCharacter character);
+
+  protected abstract String getFifthLevelKey();
+
+  protected abstract String getFourthLevelKey();
+
+  protected abstract String getThirdLevelKey();
+
+  protected abstract String getSecondLevelKey();
+
+  protected abstract String getFirstLevelKey();
+
+  private PdfPCell createContentCell(String text) {
+    PdfPCell cell = new PdfPCell(new Phrase(text, font));
+    cell.setPaddingTop(1);
+    cell.setPaddingBottom(2);
+    return cell;
+  }
+
+  private PdfPCell createHeaderCell(String text) {
+    PdfPCell cell = new PdfPCell(new Phrase(text, headerFont));
+    cell.setBorder(Rectangle.BOTTOM);
+    return cell;
+  }
+}
