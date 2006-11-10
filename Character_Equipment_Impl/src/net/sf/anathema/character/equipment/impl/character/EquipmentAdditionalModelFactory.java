@@ -23,6 +23,7 @@ public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory 
     this.equipmentTemplateProvider = equipmentTemplateProvider;
   }
 
+  // TODO: Allow for character templates to add additional natural weapons, i.e. Abyssal "Fangs"
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     IBasicCharacterData basicCharacterContext = context.getBasicCharacterContext();
     IArmourStats naturalArmour = new NaturalSoak(
@@ -32,9 +33,9 @@ public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory 
     return new EquipmentAdditionalModel(
         getDefaultMaterial(context.getBasicCharacterContext().getCharacterType()),
         naturalArmour,
-        new NaturalWeaponTemplate(),
         equipmentTemplateProvider,
-        ruleSet);
+        ruleSet,
+        new NaturalWeaponTemplate());
   }
 
   private MagicalMaterial getDefaultMaterial(CharacterType characterType) {

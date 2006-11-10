@@ -21,26 +21,26 @@ import com.db4o.query.Predicate;
 public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
   private final IArmourStats naturalArmour;
   private final IEquipmentTemplateProvider equipmentTemplateProvider;
-  private IEquipmentItem naturalWeaponsItem;
   private final MagicalMaterial defaultMaterial;
+  private final List<IEquipmentItem> naturalWeaponItems = new ArrayList<IEquipmentItem>();
 
   public EquipmentAdditionalModel(
       MagicalMaterial defaultMaterial,
       IArmourStats naturalArmour,
-      IEquipmentTemplate naturalWeapons,
       IEquipmentTemplateProvider equipmentTemplateProvider,
-      IExaltedRuleSet ruleSet) {
+      IExaltedRuleSet ruleSet,
+      IEquipmentTemplate... naturalWeapons) {
     super(ruleSet);
     this.defaultMaterial = defaultMaterial;
     this.naturalArmour = naturalArmour;
     this.equipmentTemplateProvider = equipmentTemplateProvider;
-    if (naturalWeapons != null) {
-      naturalWeaponsItem = addEquipmentObjectFor(naturalWeapons, null);
+    for (IEquipmentTemplate template : naturalWeapons) {
+      naturalWeaponItems.add(addEquipmentObjectFor(template, null));
     }
   }
 
   public boolean canBeRemoved(IEquipmentItem item) {
-    return item != naturalWeaponsItem;
+    return !naturalWeaponItems.contains(item);
   }
 
   public IArmourStats[] getPrintArmours() {
@@ -65,9 +65,9 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
   @SuppressWarnings("unchecked")
   private <K extends IEquipmentStats> void fillPrintEquipmentList(List<K> printStats, Class<K> printedClass) {
     for (IEquipmentItem item : getEquipmentItems()) {
-      if (item == naturalWeaponsItem) {
-        for (IEquipmentStats stats : naturalWeaponsItem.getStats()) {
-          if (doPrint(naturalWeaponsItem, stats, printedClass)) {
+      if (naturalWeaponItems.contains(item)) {
+        for (IEquipmentStats stats : item.getStats()) {
+          if (doPrint(item, stats, printedClass)) {
             printStats.add((K) stats);
           }
         }
@@ -120,8 +120,10 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
 
   @Override
   protected IEquipmentItem getSpecialManagedItem(String templateId) {
-    if (templateId.equals(naturalWeaponsItem.getTemplateId())) {
-      return naturalWeaponsItem;
+    for (IEquipmentItem item : naturalWeaponItems) {
+      if (templateId.equals(item.getTemplateId())) {
+        return item;
+      }
     }
     return null;
   }
