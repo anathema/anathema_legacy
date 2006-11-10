@@ -23,6 +23,7 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
 
+  private final static String[] resourceIds = new String[] { "First", "Second", "Third", "Fourth" };//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
   private final int fontSize;
   private final float lineHeight;
   private final BaseFont baseFont;
@@ -30,17 +31,20 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
   private final BaseFont symbolBaseFont;
   private final Chunk symbolChunk;
   private final IPdfTableEncoder tableEncoder;
+  private final int animaPowerCount;
 
   public PdfAnimaEncoder(
       IResources resources,
       BaseFont baseFont,
       BaseFont symbolBaseFont,
       int fontSize,
+      int animaPowerCount,
       IPdfTableEncoder encoder) {
     this.resources = resources;
     this.baseFont = baseFont;
     this.symbolBaseFont = symbolBaseFont;
     this.fontSize = fontSize;
+    this.animaPowerCount = animaPowerCount;
     this.lineHeight = fontSize * 1.5f;
     this.tableEncoder = encoder;
     this.symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
@@ -75,7 +79,7 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
         minX,
         maxX,
         lineHeight,
-        6 - getResourceIds().length);
+        6 - animaPowerCount);
   }
 
   private Position encodeAnimaPowers(PdfContentByte directContent, IGenericCharacter character, Bounds bounds)
@@ -98,13 +102,9 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
   private void addAnimaPowerText(IGenericCharacter character, Phrase phrase) {
     CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     String resourceBase = "Sheet.AnimaPower." + characterType.getId() + "."; //$NON-NLS-1$ //$NON-NLS-2$
-    for (String resourceId : getResourceIds()) {
+    for (int power = 0; power < animaPowerCount; power++) {
       phrase.add(symbolChunk);
-      phrase.add(resources.getString(resourceBase + resourceId) + "\n"); //$NON-NLS-1$
+      phrase.add(resources.getString(resourceBase + resourceIds[power]) + "\n"); //$NON-NLS-1$
     }
-  }
-
-  protected String[] getResourceIds() {
-    return new String[] { "First", "Second", "Third" }; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
   }
 }

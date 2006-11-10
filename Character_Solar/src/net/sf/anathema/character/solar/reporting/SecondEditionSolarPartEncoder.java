@@ -23,10 +23,10 @@ public class SecondEditionSolarPartEncoder extends AbstractSecondEditionExaltPdf
   }
 
   public IPdfContentBoxEncoder getAnimaEncoder() {
-    return new PdfAnimaEncoder(getResources(), getBaseFont(), symbolBaseFont, getFontSize(), getAnimaTableEncoder());
+    return new PdfAnimaEncoder(getResources(), getBaseFont(), symbolBaseFont, getFontSize(), 3, getAnimaTableEncoder());
   }
 
-  protected IPdfTableEncoder getAnimaTableEncoder() {
+  private IPdfTableEncoder getAnimaTableEncoder() {
     return new SolarAnimaTableEncoder(getResources(), getBaseFont(), getFontSize());
   }
 }

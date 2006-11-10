@@ -41,7 +41,7 @@ public abstract class AbstractAnimaTableEncoder extends AbstractTableEncoder {
 
     table.addCell(createContentCell(getSecondLevelRange(character)));
     table.addCell(createContentCell(resources.getString(getSecondLevelKey())));
-    table.addCell(createContentCell("+2")); //$NON-NLS-1$
+    table.addCell(createContentCell(getSecondLevelStealth()));
 
     table.addCell(createContentCell(getThirdLevelRange(character)));
     table.addCell(createContentCell(resources.getString(getThirdLevelKey())));
@@ -58,15 +58,29 @@ public abstract class AbstractAnimaTableEncoder extends AbstractTableEncoder {
     return table;
   }
 
-  protected abstract String getFifthLevelRange(IGenericCharacter character);
+  protected String getSecondLevelStealth() {
+    return "+2"; //$NON-NLS-1$
+  }
 
-  protected abstract String getFourthLevelRange(IGenericCharacter character);
+  protected String getFifthLevelRange(IGenericCharacter character) {
+    return "16+"; //$NON-NLS-1$
+  }
 
-  protected abstract String getThirdLevelRange(IGenericCharacter character);
+  protected String getFourthLevelRange(IGenericCharacter character) {
+    return "11-15"; //$NON-NLS-1$
+  }
 
-  protected abstract String getSecondLevelRange(IGenericCharacter character);
+  protected String getThirdLevelRange(IGenericCharacter character) {
+    return "8-10"; //$NON-NLS-1$
+  }
 
-  protected abstract String getFirstLevelRange(IGenericCharacter character);
+  protected String getSecondLevelRange(IGenericCharacter character) {
+    return "4-7"; //$NON-NLS-1$
+  }
+
+  protected String getFirstLevelRange(IGenericCharacter character) {
+    return "1-3"; //$NON-NLS-1$
+  }
 
   protected abstract String getFifthLevelKey();
 
@@ -89,5 +103,9 @@ public abstract class AbstractAnimaTableEncoder extends AbstractTableEncoder {
     PdfPCell cell = new PdfPCell(new Phrase(text, headerFont));
     cell.setBorder(Rectangle.BOTTOM);
     return cell;
+  }
+
+  protected IResources getResources() {
+    return resources;
   }
 }
