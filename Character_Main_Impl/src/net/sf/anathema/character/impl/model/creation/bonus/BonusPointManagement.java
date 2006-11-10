@@ -28,7 +28,7 @@ import net.sf.anathema.character.impl.model.creation.bonus.magic.MagicCostCalcul
 import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.virtue.VirtueCostCalculator;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
-import net.sf.anathema.character.library.trait.TraitCollectionUtitlies;
+import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.charm.ICombo;
@@ -86,7 +86,7 @@ public class BonusPointManagement implements IBonusPointManagement {
         cost,
         creationPoints.getBackgroundPointCount(),
         characterTemplate.getAdditionalRules());
-    IDefaultTrait[] virtues = TraitCollectionUtitlies.getVirtues(traitConfiguration);
+    IDefaultTrait[] virtues = TraitCollectionUtilities.getVirtues(traitConfiguration);
     this.virtueCalculator = new VirtueCostCalculator(virtues, creationPoints.getVirtueCreationPoints(), cost);
     magicAdditionalPools = new AdditionalMagicLearnPointManagement(characterTemplate.getAdditionalRules()
         .getAdditionalMagicLearnPools(), characterAbstraction);
@@ -102,8 +102,8 @@ public class BonusPointManagement implements IBonusPointManagement {
         statistics.getCharacterContext().getBasicCharacterContext(),
         statistics.getCharacterContext().getTraitCollection());
     this.combos = statistics.getCombos();
-    this.willpower = TraitCollectionUtitlies.getWillpower(traitConfiguration);
-    this.essence = TraitCollectionUtitlies.getEssence(traitConfiguration);
+    this.willpower = TraitCollectionUtilities.getWillpower(traitConfiguration);
+    this.essence = TraitCollectionUtilities.getEssence(traitConfiguration);
   }
 
   public void recalculate() {

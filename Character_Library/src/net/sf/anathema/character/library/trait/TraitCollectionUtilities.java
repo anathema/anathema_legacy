@@ -6,9 +6,9 @@ import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 
-public class TraitCollectionUtitlies {
+public class TraitCollectionUtilities {
 
-  private TraitCollectionUtitlies() {
+  private TraitCollectionUtilities() {
     // nothing to do
   }
 

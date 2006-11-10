@@ -1,7 +1,7 @@
 package net.sf.anathema.character.impl.model.advance.models;
 
 import net.sf.anathema.character.impl.model.advance.IPointCostCalculator;
-import net.sf.anathema.character.library.trait.TraitCollectionUtitlies;
+import net.sf.anathema.character.library.trait.TraitCollectionUtilities;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
@@ -22,7 +22,7 @@ public class VirtueExperienceModel extends AbstractIntegerValueModel {
 
   private int getVirtueCosts() {
     int experienceCosts = 0;
-    for (IDefaultTrait virtue : TraitCollectionUtitlies.getVirtues(traitConfiguration)) {
+    for (IDefaultTrait virtue : TraitCollectionUtilities.getVirtues(traitConfiguration)) {
       experienceCosts += calculator.getVirtueCosts(virtue);
     }
     return experienceCosts;
