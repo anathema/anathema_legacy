@@ -22,4 +22,6 @@ public interface IPdfPartEncoder {
   public boolean hasSecondPage();
 
   public float getWeaponryHeight();
+
+  public IPdfPageEncoder[] getAdditionalPages();
 }

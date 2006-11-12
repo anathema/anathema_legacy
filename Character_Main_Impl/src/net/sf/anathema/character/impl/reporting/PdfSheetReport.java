@@ -1,5 +1,9 @@
 package net.sf.anathema.character.impl.reporting;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
@@ -14,6 +18,7 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfFirstPageEncoder;
 import net.sf.anathema.character.reporting.sheet.page.PdfSecondPageEncoder;
@@ -55,25 +60,24 @@ public class PdfSheetReport implements IITextReport {
     try {
       int traitMax = Math.max(5, getEssenceMax(stattedCharacter));
       IPdfPartEncoder partEncoder = getPartEncoder(stattedCharacter);
-      PdfFirstPageEncoder firstPageEncoder = new PdfFirstPageEncoder(
-          partEncoder,
-          encodingRegistry,
-          resources,
-          traitMax,
-          configuration);
       IGenericCharacter character = GenericCharacterUtilities.createGenericCharacter(stattedCharacter.getStatistics());
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
-      firstPageEncoder.encode(document, directContent, character, description);
-      if (!partEncoder.hasSecondPage()) {
-        return;
+      List<IPdfPageEncoder> encoderList = new ArrayList<IPdfPageEncoder>();
+      encoderList.add(new PdfFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
+      Collections.addAll(encoderList, partEncoder.getAdditionalPages());
+      if (partEncoder.hasSecondPage()) {
+        encoderList.add(new PdfSecondPageEncoder(resources, encodingRegistry, configuration));
       }
-      document.newPage();
-      new PdfSecondPageEncoder(resources, encodingRegistry, configuration).encode(
-          document,
-          directContent,
-          character,
-          description);
-
+      boolean isFirstPrinted = false;
+      for (IPdfPageEncoder encoder : encoderList) {
+        if (isFirstPrinted) {
+          document.newPage();
+        }
+        else {
+          isFirstPrinted = true;
+        }
+        encoder.encode(document, directContent, character, description);
+      }
     }
     catch (Exception e) {
       throw new ReportException(e);

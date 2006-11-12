@@ -58,4 +58,8 @@ public abstract class AbstractFirstEditionPartEncoder implements IPdfPartEncoder
   public float getWeaponryHeight() {
     return 129;
   }
+
+  public IPdfPageEncoder[] getAdditionalPages() {
+    return new IPdfPageEncoder[0];
+  }
 }
