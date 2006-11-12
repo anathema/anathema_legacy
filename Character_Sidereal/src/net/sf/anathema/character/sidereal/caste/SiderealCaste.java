@@ -36,6 +36,6 @@ public enum SiderealCaste implements ICasteType<ISiderealCasteVisitor> {
 
   @Override
   public String toString() {
-    return getId();
+    return name();
   }
 }

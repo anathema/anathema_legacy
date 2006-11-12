@@ -36,6 +36,6 @@ public enum SolarCaste implements ICasteType<ISolarCasteVisitor> {
 
   @Override
   public String toString() {
-    return getId();
+    return name();
   }
 }

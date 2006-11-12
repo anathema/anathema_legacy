@@ -26,6 +26,6 @@ public enum LunarCaste implements ICasteType<ILunarCasteVisitor> {
 
   @Override
   public String toString() {
-    return getId();
+    return name();
   }
 }

@@ -38,6 +38,6 @@ public enum AbyssalCaste implements ICasteType<IAbyssalCasteVisitor> {
 
   @Override
   public String toString() {
-    return getId();
+    return name();
   }
 }
