@@ -17,19 +17,22 @@
 	<classpathentry kind="src" path="/Platform"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
-	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-core-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-core.jar" sourcepath="/Thirdparty/disy/disy-commons-core-src.zip"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Sidereal"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Framework"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Library"/>
-	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar" sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip"/>
 	<classpathentry kind="src" path="/Character_MeritsFlaws"/>
-	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/Testing/junit.jar" sourcepath="/Thirdparty/Testing/junit_src.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Lunar"/>
 	<classpathentry kind="src" path="/Character_Main_Impl"/>
 	<classpathentry kind="lib" path="/Thirdparty/Testing/fitnesse.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Reporting/itext-1.4-src.zip" kind="lib" path="/Thirdparty/Reporting/itext-1.4.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/Reporting/itext-1.4.jar" sourcepath="/Thirdparty/Reporting/itext-1.4-src.zip"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Development_Test_Character"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Development_Test_Platform"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Intimacies"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment_Impl"/>
+	<classpathentry kind="lib" path="/Thirdparty/Database/db4o-5.5-java5.jar" sourcepath="/Thirdparty/Database/db4o-5.5-src.zip"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

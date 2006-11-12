@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.template.presentation.IPresentationProp
 import net.sf.anathema.framework.view.renderer.AbstractSelectObjectUi;
 import net.sf.anathema.lib.resources.IResources;
 
-public class CasteSelectObjectUi extends AbstractSelectObjectUi<ICasteType< ? >> {
+public class CasteSelectObjectUi extends AbstractSelectObjectUi<ICasteType> {
 
   private CasteUI casteUI;
 
@@ -18,12 +18,12 @@ public class CasteSelectObjectUi extends AbstractSelectObjectUi<ICasteType< ? >>
   }
 
   @Override
-  protected String getNonNullLabel(ICasteType< ? > value) {
+  protected String getNonNullLabel(ICasteType value) {
     return getResources().getString("Caste." + value.getId()); //$NON-NLS-1$
   }
 
   @Override
-  protected Icon getNonNullIcon(ICasteType< ? > value) {
+  protected Icon getNonNullIcon(ICasteType value) {
     return casteUI.getSmallCasteIcon(value);
   }
 }

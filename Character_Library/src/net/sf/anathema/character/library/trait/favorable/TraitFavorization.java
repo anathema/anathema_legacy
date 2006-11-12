@@ -2,7 +2,6 @@ package net.sf.anathema.character.library.trait.favorable;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.library.trait.visitor.IAggregatedTrait;
@@ -17,13 +16,13 @@ public class TraitFavorization implements ITraitFavorization {
   private final GenericControl<IFavorableStateChangedListener> favorableStateControl = new GenericControl<IFavorableStateChangedListener>();
   private final IIncrementChecker favoredIncrementChecker;
   private final ITrait trait;
-  private final ICasteType< ? extends ICasteTypeVisitor> caste;
+  private final ICasteType caste;
   private final boolean isRequiredFavored;
   private final IBasicCharacterData basicData;
 
   public TraitFavorization(
       IBasicCharacterData basicData,
-      ICasteType< ? extends ICasteTypeVisitor> caste,
+      ICasteType caste,
       IIncrementChecker favoredIncrementChecker,
       ITrait trait,
       boolean isRequiredFavored) {
@@ -118,19 +117,19 @@ public class TraitFavorization implements ITraitFavorization {
     return isCaste() || isFavored();
   }
 
-  public ICasteType< ? extends ICasteTypeVisitor> getCaste() {
+  public ICasteType getCaste() {
     return caste;
   }
 
   public void updateFavorableStateToCaste() {
-    ICasteType< ? extends ICasteTypeVisitor> casteType = basicData.getCasteType();
+    ICasteType casteType = basicData.getCasteType();
     if (isCaste() != isSupportedCasteType(casteType)) {
       setCaste(isSupportedCasteType(casteType));
     }
   }
 
-  private boolean isSupportedCasteType(ICasteType< ? extends ICasteTypeVisitor> casteType) {
-    ICasteType< ? extends ICasteTypeVisitor> favorizationCaste = getCaste();
+  private boolean isSupportedCasteType(ICasteType casteType) {
+    ICasteType favorizationCaste = getCaste();
     return favorizationCaste != null && favorizationCaste == casteType;
   }
 }

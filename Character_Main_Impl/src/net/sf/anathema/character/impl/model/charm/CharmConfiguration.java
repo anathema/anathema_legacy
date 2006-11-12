@@ -10,7 +10,6 @@ import java.util.Map;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ConfigurableCharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharmLearnStrategy;
@@ -372,7 +371,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   public final boolean isLearnable(ICharm charm) {
     if (isAlienCharm(charm)) {
-      ICasteType< ? extends ICasteTypeVisitor> casteType = context.getBasicCharacterContext().getCasteType();
+      ICasteType casteType = context.getBasicCharacterContext().getCasteType();
       if (!getCharmTemplate(getNativeCharacterType()).isAllowedAlienCharms(casteType)) {
         return false;
       }

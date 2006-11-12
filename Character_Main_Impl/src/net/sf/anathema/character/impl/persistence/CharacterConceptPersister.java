@@ -8,7 +8,6 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_NATURE;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.concept.ICharacterConcept;
 import net.sf.anathema.character.model.concept.IMotivation;
@@ -41,8 +40,8 @@ public class CharacterConceptPersister {
     textPersister.saveTextualDescription(characterConceptElement, TAG_CONCEPT, characterConcept.getConcept());
   }
 
-  private void saveCaste(Element parent, ITypedDescription<ICasteType< ? extends ICasteTypeVisitor>> caste) {
-    ICasteType< ? extends ICasteTypeVisitor> casteType = caste.getType();
+  private void saveCaste(Element parent, ITypedDescription<ICasteType> caste) {
+    ICasteType casteType = caste.getType();
     if (casteType.getId() != null) {
       Element casteElement = parent.addElement(TAG_CASTE);
       casteElement.addAttribute(ATTRIB_TYPE, casteType.getId());

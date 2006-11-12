@@ -21,8 +21,8 @@ public class SiderealCollegeModel implements ISiderealCollegeModel {
   private static IAstrologicalHouse[] createAstrologicalHouses(ICharacterModelContext context) {
     SiderealCaste[] siderealCastes = SiderealCaste.values();
     IAstrologicalHouse[] houses = new IAstrologicalHouse[siderealCastes.length];
-    for (int index = 0; index < siderealCastes.length; index++) {
-      houses[index] = AstrologicalHouse.createAstrologicalHouse(siderealCastes[index], context);
+    for (SiderealCaste caste : siderealCastes) {
+      houses[caste.ordinal()] = AstrologicalHouse.createAstrologicalHouse(caste, context);
     }
     return houses;
   }

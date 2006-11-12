@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.impl.traits.alternate.ITraitRequirement;
 import net.sf.anathema.character.generic.impl.traits.alternate.TraitRequirement;
 import net.sf.anathema.character.generic.impl.traits.alternate.TraitRequirementCollection;
@@ -38,5 +37,5 @@ public abstract class AbstractCasteTraitAlternative {
 
   protected abstract int getLowerStrictBound();
 
-  protected abstract ICasteType< ? extends ICasteTypeVisitor> getCaste();
+  protected abstract ICasteType getCaste();
 }

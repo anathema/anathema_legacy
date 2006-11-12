@@ -6,7 +6,6 @@ import java.util.List;
 import net.sf.anathema.character.abyssal.caste.AbyssalCaste;
 import net.sf.anathema.character.db.aspect.DBAspect;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.type.AbstractSupportedCharacterTypeVisitor;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -16,10 +15,8 @@ import net.sf.anathema.character.solar.caste.SolarCaste;
 
 public class CasteAcceptanceUtilties {
 
-  public static ICasteType< ? extends ICasteTypeVisitor> getNonEmptyCaste(
-      ICharacterTemplate template,
-      final String caste) {
-    final List<ICasteType< ? extends ICasteTypeVisitor>> casteType = new ArrayList<ICasteType< ? extends ICasteTypeVisitor>>();
+  public static ICasteType getNonEmptyCaste(ICharacterTemplate template, final String caste) {
+    final List<ICasteType> casteType = new ArrayList<ICasteType>();
     template.getTemplateType().getCharacterType().accept(new AbstractSupportedCharacterTypeVisitor() {
 
       public void visitAbyssal(CharacterType visitedType) {

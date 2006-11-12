@@ -8,7 +8,6 @@ import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.ui.IObjectUi;
 import net.disy.commons.swing.ui.ObjectUiListCellRenderer;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
@@ -249,17 +248,16 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     }
     String casteLabelResourceKey = template.getPresentationProperties().getCasteLabelResource();
     IObjectUi casteUi = new CasteSelectObjectUi(resources, template.getPresentationProperties(), template.getEdition());
-    ICasteType< ? extends ICasteTypeVisitor>[] allCasteTypes = template.getCasteCollection().getAllCasteTypes();
-    final IObjectSelectionView<ICasteType< ? extends ICasteTypeVisitor>> casteView = view.addObjectSelectionView(
+    ICasteType[] allCasteTypes = template.getCasteCollection().getAllCasteTypes();
+    final IObjectSelectionView<ICasteType> casteView = view.addObjectSelectionView(
         resources.getString(casteLabelResourceKey),
         allCasteTypes,
         new ObjectUiListCellRenderer(casteUi),
         false);
-    final ITypedDescription<ICasteType< ? extends ICasteTypeVisitor>> caste = statistics.getCharacterConcept()
-        .getCaste();
+    final ITypedDescription<ICasteType> caste = statistics.getCharacterConcept().getCaste();
     casteView.setSelectedObject(caste.getType());
-    casteView.addObjectSelectionChangedListener(new IObjectValueChangedListener<ICasteType< ? extends ICasteTypeVisitor>>() {
-      public void valueChanged(ICasteType< ? extends ICasteTypeVisitor> newValue) {
+    casteView.addObjectSelectionChangedListener(new IObjectValueChangedListener<ICasteType>() {
+      public void valueChanged(ICasteType newValue) {
         caste.setType(newValue);
       }
     });

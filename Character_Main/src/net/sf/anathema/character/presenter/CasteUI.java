@@ -22,7 +22,7 @@ public class CasteUI extends AbstractUI {
     this.properties = properties;
   }
 
-  public Icon getSmallCasteIcon(ICasteType< ? > type) {
+  public Icon getSmallCasteIcon(ICasteType type) {
     return getIcon(properties.getSmallCasteIconResource(type.getId(), edition.getId()));
   }
 

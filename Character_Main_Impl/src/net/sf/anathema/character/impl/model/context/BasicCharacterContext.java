@@ -2,7 +2,6 @@ package net.sf.anathema.character.impl.model.context;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ITemplateType;
@@ -16,7 +15,7 @@ public class BasicCharacterContext implements IBasicCharacterData {
     this.character = character;
   }
 
-  public ICasteType< ? extends ICasteTypeVisitor> getCasteType() {
+  public ICasteType getCasteType() {
     return character.getCasteType();
   }
 

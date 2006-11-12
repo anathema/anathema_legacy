@@ -7,7 +7,6 @@ import java.util.Map;
 
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedCasteTraitTypeGroup;
@@ -47,9 +46,7 @@ public abstract class AbstractTraitTypeGroupFactory {
       String groupId,
       String casteId,
       List<ITraitType> traitTypes) {
-    ICasteType< ? extends ICasteTypeVisitor> casteType = casteCollection.containsCasteType(casteId)
-        ? casteCollection.getById(casteId)
-        : null;
+    ICasteType casteType = casteCollection.containsCasteType(casteId) ? casteCollection.getById(casteId) : null;
     IIdentificate groupIdentifier = getGroupIdentifier(casteCollection, groupId);
     return new IdentifiedCasteTraitTypeGroup(
         traitTypes.toArray(new ITraitType[traitTypes.size()]),

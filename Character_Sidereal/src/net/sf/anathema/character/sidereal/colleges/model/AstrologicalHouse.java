@@ -26,51 +26,51 @@ import net.sf.anathema.lib.util.Identificate;
 public class AstrologicalHouse extends Identificate implements IAstrologicalHouse {
 
   public static IAstrologicalHouse createAstrologicalHouse(SiderealCaste caste, ICharacterModelContext context) {
-    final List<CollegeType> collegeTypes = new ArrayList<CollegeType>();
+    final List<CollegeType> collegeTypeList = new ArrayList<CollegeType>();
     caste.accept(new ISiderealCasteVisitor() {
 
       public void visitJourneys(SiderealCaste visitedCaste) {
-        collegeTypes.add(CollegeType.Captain);
-        collegeTypes.add(CollegeType.Gull);
-        collegeTypes.add(CollegeType.Mast);
-        collegeTypes.add(CollegeType.Messenger);
-        collegeTypes.add(CollegeType.ShipsWheel);
+        collegeTypeList.add(CollegeType.Captain);
+        collegeTypeList.add(CollegeType.Gull);
+        collegeTypeList.add(CollegeType.Mast);
+        collegeTypeList.add(CollegeType.Messenger);
+        collegeTypeList.add(CollegeType.ShipsWheel);
       }
 
       public void visitSerenity(SiderealCaste visitedCaste) {
-        collegeTypes.add(CollegeType.Ewer);
-        collegeTypes.add(CollegeType.Lovers);
-        collegeTypes.add(CollegeType.Musician);
-        collegeTypes.add(CollegeType.Peacock);
-        collegeTypes.add(CollegeType.Pillar);
+        collegeTypeList.add(CollegeType.Ewer);
+        collegeTypeList.add(CollegeType.Lovers);
+        collegeTypeList.add(CollegeType.Musician);
+        collegeTypeList.add(CollegeType.Peacock);
+        collegeTypeList.add(CollegeType.Pillar);
       }
 
       public void visitBattles(SiderealCaste visitedCaste) {
-        collegeTypes.add(CollegeType.Banner);
-        collegeTypes.add(CollegeType.Gauntlet);
-        collegeTypes.add(CollegeType.Quiver);
-        collegeTypes.add(CollegeType.Shield);
-        collegeTypes.add(CollegeType.Spear);
+        collegeTypeList.add(CollegeType.Banner);
+        collegeTypeList.add(CollegeType.Gauntlet);
+        collegeTypeList.add(CollegeType.Quiver);
+        collegeTypeList.add(CollegeType.Shield);
+        collegeTypeList.add(CollegeType.Spear);
       }
 
       public void visitSecrets(SiderealCaste visitedCaste) {
-        collegeTypes.add(CollegeType.Guardians);
-        collegeTypes.add(CollegeType.Key);
-        collegeTypes.add(CollegeType.Mask);
-        collegeTypes.add(CollegeType.Sorcerer);
-        collegeTypes.add(CollegeType.TreasureTrove);
+        collegeTypeList.add(CollegeType.Guardians);
+        collegeTypeList.add(CollegeType.Key);
+        collegeTypeList.add(CollegeType.Mask);
+        collegeTypeList.add(CollegeType.Sorcerer);
+        collegeTypeList.add(CollegeType.TreasureTrove);
       }
 
       public void visitEndings(SiderealCaste visitedCaste) {
-        collegeTypes.add(CollegeType.Corpse);
-        collegeTypes.add(CollegeType.Crow);
-        collegeTypes.add(CollegeType.Haywain);
-        collegeTypes.add(CollegeType.RisingSmoke);
-        collegeTypes.add(CollegeType.Sword);
+        collegeTypeList.add(CollegeType.Corpse);
+        collegeTypeList.add(CollegeType.Crow);
+        collegeTypeList.add(CollegeType.Haywain);
+        collegeTypeList.add(CollegeType.RisingSmoke);
+        collegeTypeList.add(CollegeType.Sword);
       }
     });
-    CollegeType[] collegeyTypes = collegeTypes.toArray(new CollegeType[collegeTypes.size()]);
-    return new AstrologicalHouse(caste.getId(), collegeyTypes, caste, context);
+    CollegeType[] collegeTypes = collegeTypeList.toArray(new CollegeType[collegeTypeList.size()]);
+    return new AstrologicalHouse(caste.getId(), collegeTypes, caste, context);
   }
 
   private final IFavorableDefaultTrait[] colleges;
@@ -86,11 +86,7 @@ public class AstrologicalHouse extends Identificate implements IAstrologicalHous
     }
   };
 
-  private AstrologicalHouse(
-      String id,
-      CollegeType[] collegeTypes,
-      ICasteType<ISiderealCasteVisitor> casteType,
-      ICharacterModelContext context) {
+  private AstrologicalHouse(String id, CollegeType[] collegeTypes, ICasteType casteType, ICharacterModelContext context) {
     super(id);
     colleges = new IFavorableDefaultTrait[collegeTypes.length];
     for (int index = 0; index < collegeTypes.length; index++) {

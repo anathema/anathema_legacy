@@ -20,7 +20,7 @@ public class DummyLimitationContext implements ILimitationContext {
     return new StaticTraitLimitation(7);
   }
 
-  public ICasteType<IDummyCasteTypeVisitor> getCasteType() {
+  public ICasteType getCasteType() {
     return null;
   }
 

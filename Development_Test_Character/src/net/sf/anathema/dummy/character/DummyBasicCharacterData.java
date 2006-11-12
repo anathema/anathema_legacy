@@ -2,7 +2,6 @@ package net.sf.anathema.dummy.character;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -10,11 +9,11 @@ import net.sf.anathema.character.generic.type.CharacterType;
 public class DummyBasicCharacterData implements IBasicCharacterData {
 
   private boolean isExperienced = false;
-  private ICasteType<ICasteTypeVisitor> casteType;
+  private ICasteType casteType;
   private CharacterType characterType;
   private IExaltedRuleSet ruleSet;
 
-  public ICasteType<ICasteTypeVisitor> getCasteType() {
+  public ICasteType getCasteType() {
     return casteType;
   }
 
@@ -30,7 +29,7 @@ public class DummyBasicCharacterData implements IBasicCharacterData {
     return ruleSet;
   }
 
-  public void setCasteType(ICasteType<ICasteTypeVisitor> casteType) {
+  public void setCasteType(ICasteType casteType) {
     this.casteType = casteType;
   }
 

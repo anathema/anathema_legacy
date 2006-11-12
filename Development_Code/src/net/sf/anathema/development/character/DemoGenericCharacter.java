@@ -8,7 +8,6 @@ import java.util.Map;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditonalModelTemplate;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.character.ICharacterPoints;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
@@ -183,7 +182,7 @@ public class DemoGenericCharacter implements IGenericCharacter {
     return false;
   }
 
-  public ICasteType< ? extends ICasteTypeVisitor> getCasteType() {
+  public ICasteType getCasteType() {
     return ICasteType.NULL_CASTE_TYPE;
   }
 

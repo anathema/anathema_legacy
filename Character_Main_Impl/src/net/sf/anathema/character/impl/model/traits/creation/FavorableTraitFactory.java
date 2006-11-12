@@ -3,7 +3,6 @@ package net.sf.anathema.character.impl.model.traits.creation;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalTraitRules;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.rules.IEditionVisitor;
@@ -41,7 +40,7 @@ public class FavorableTraitFactory extends AbstractTraitFactory {
 
   public IFavorableTrait[] createTraits(
       ITraitType[] traitTypes,
-      ICasteType< ? extends ICasteTypeVisitor> casteType,
+      ICasteType casteType,
       IIncrementChecker favoredIncrementChecker) {
     IFavorableTrait[] newTraits = new IFavorableTrait[traitTypes.length];
     for (int index = 0; index < newTraits.length; index++) {
@@ -52,7 +51,7 @@ public class FavorableTraitFactory extends AbstractTraitFactory {
 
   public IFavorableTrait createTrait(
       ITraitType traitType,
-      ICasteType< ? extends ICasteTypeVisitor> casteType,
+      ICasteType casteType,
       IIncrementChecker favoredIncrementChecker) {
     ITraitTemplate traitTemplate = templateCollection.getTraitTemplate(traitType);
     FavorableTraitRules favorableTraitRules = new FavorableTraitRules(

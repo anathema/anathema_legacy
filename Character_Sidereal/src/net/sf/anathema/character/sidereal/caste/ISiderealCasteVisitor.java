@@ -1,8 +1,6 @@
 package net.sf.anathema.character.sidereal.caste;
 
-import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
-
-public interface ISiderealCasteVisitor extends ICasteTypeVisitor {
+public interface ISiderealCasteVisitor {
 
   public void visitJourneys(SiderealCaste visitedCaste);
 

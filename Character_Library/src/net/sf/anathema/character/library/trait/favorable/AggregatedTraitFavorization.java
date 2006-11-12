@@ -1,7 +1,6 @@
 package net.sf.anathema.character.library.trait.favorable;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.library.ITraitFavorization;
 import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.character.library.trait.subtrait.ISubTraitContainer;
@@ -40,7 +39,7 @@ public class AggregatedTraitFavorization implements ITraitFavorization {
     favorization.addFavorableStateChangedListener(listener);
   }
 
-  public ICasteType< ? extends ICasteTypeVisitor> getCaste() {
+  public ICasteType getCaste() {
     return favorization.getCaste();
   }
 
@@ -61,18 +60,18 @@ public class AggregatedTraitFavorization implements ITraitFavorization {
   }
 
   public void setFavorableState(FavorableState state) {
-    //  nothing to do
+    // nothing to do
   }
 
   public void setFavored(boolean favored) {
-    //  nothing to do
+    // nothing to do
   }
 
   public void updateFavorableStateToCaste() {
-    //  nothing to do
+    // nothing to do
   }
 
   public void ensureMinimalValue() {
-    //  nothing to do 
+    // nothing to do
   }
 }

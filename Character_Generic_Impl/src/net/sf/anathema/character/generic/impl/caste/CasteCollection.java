@@ -2,7 +2,6 @@ package net.sf.anathema.character.generic.impl.caste;
 
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 
 public class CasteCollection implements ICasteCollection {
 
@@ -12,8 +11,8 @@ public class CasteCollection implements ICasteCollection {
     this.allTypes = allTypes;
   }
 
-  public ICasteType< ? extends ICasteTypeVisitor> getById(String casteTypeId) {
-    for (ICasteType< ? extends ICasteTypeVisitor> type : allTypes) {
+  public ICasteType getById(String casteTypeId) {
+    for (ICasteType type : allTypes) {
       if (type.getId().equals(casteTypeId)) {
         return type;
       }
@@ -22,7 +21,7 @@ public class CasteCollection implements ICasteCollection {
   }
 
   public boolean containsCasteType(String casteTypeId) {
-    for (ICasteType< ? extends ICasteTypeVisitor> type : allTypes) {
+    for (ICasteType type : allTypes) {
       if (type.getId().equals(casteTypeId)) {
         return true;
       }
@@ -34,7 +33,7 @@ public class CasteCollection implements ICasteCollection {
     return allTypes.length <= 0;
   }
 
-  public ICasteType< ? >[] getAllCasteTypes() {
+  public ICasteType[] getAllCasteTypes() {
     return allTypes;
   }
 }

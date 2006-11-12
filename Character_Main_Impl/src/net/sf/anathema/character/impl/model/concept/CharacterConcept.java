@@ -1,7 +1,6 @@
 package net.sf.anathema.character.impl.model.concept;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.impl.model.TypedDescription;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.concept.ICharacterConcept;
@@ -11,12 +10,11 @@ import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescri
 
 public class CharacterConcept implements ICharacterConcept {
 
-  private final ITypedDescription<ICasteType< ? extends ICasteTypeVisitor>> caste = new TypedDescription<ICasteType< ? extends ICasteTypeVisitor>>(
-      ICasteType.NULL_CASTE_TYPE);
+  private final ITypedDescription<ICasteType> caste = new TypedDescription<ICasteType>(ICasteType.NULL_CASTE_TYPE);
   private final ITextualDescription concept = new SimpleTextualDescription();
   private IWillpowerRegainingConcept willpowerRegaining;
 
-  public ITypedDescription<ICasteType< ? extends ICasteTypeVisitor>> getCaste() {
+  public ITypedDescription<ICasteType> getCaste() {
     return caste;
   }
 

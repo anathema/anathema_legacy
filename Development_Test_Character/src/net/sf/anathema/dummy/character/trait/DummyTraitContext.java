@@ -12,7 +12,6 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.impl.model.context.trait.CreationTraitValueStrategy;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
-import net.sf.anathema.dummy.character.IDummyCasteTypeVisitor;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 public class DummyTraitContext implements ITraitContext {
@@ -23,7 +22,7 @@ public class DummyTraitContext implements ITraitContext {
       return new StaticTraitLimitation(7);
     }
 
-    public ICasteType<IDummyCasteTypeVisitor> getCasteType() {
+    public ICasteType getCasteType() {
       return null;
     }
 

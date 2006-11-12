@@ -2,7 +2,6 @@ package net.sf.anathema.character.library.trait;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterListening;
@@ -35,7 +34,7 @@ public class DefaultTrait extends AbstractFavorableTrait implements IFavorableDe
 
   public DefaultTrait(
       IFavorableTraitRules traitRules,
-      ICasteType< ? extends ICasteTypeVisitor> caste,
+      ICasteType caste,
       ITraitContext traitContext,
       IBasicCharacterData basicData,
       ICharacterListening listening,

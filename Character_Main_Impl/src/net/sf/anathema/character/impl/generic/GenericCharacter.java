@@ -6,7 +6,6 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.character.ICharacterPoints;
 import net.sf.anathema.character.generic.character.IConcept;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
@@ -112,7 +111,7 @@ public class GenericCharacter implements IGenericCharacter {
     return collectVisitor.subtraits;
   }
 
-  public ICasteType< ? extends ICasteTypeVisitor> getCasteType() {
+  public ICasteType getCasteType() {
     return statistics.getCharacterConcept().getCaste().getType();
   }
 

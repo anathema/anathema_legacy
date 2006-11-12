@@ -2,33 +2,9 @@ package net.sf.anathema.character.solar.caste;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
 
-public enum SolarCaste implements ICasteType<ISolarCasteVisitor> {
+public enum SolarCaste implements ICasteType {
 
-  Dawn {
-    public void accept(ISolarCasteVisitor visitor) {
-      visitor.visitDawn(this);
-    }
-  },
-  Zenith {
-    public void accept(ISolarCasteVisitor visitor) {
-      visitor.visitZenith(this);
-    }
-  },
-  Twilight {
-    public void accept(ISolarCasteVisitor visitor) {
-      visitor.visitTwilight(this);
-    }
-  },
-  Night {
-    public void accept(ISolarCasteVisitor visitor) {
-      visitor.visitNight(this);
-    }
-  },
-  Eclipse {
-    public void accept(ISolarCasteVisitor visitor) {
-      visitor.visitEclipse(this);
-    }
-  };
+  Dawn, Zenith, Twilight, Night, Eclipse;
 
   public String getId() {
     return name();

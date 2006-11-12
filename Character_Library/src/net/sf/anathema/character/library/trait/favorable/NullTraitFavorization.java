@@ -1,7 +1,6 @@
 package net.sf.anathema.character.library.trait.favorable;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.library.ITraitFavorization;
 
 public class NullTraitFavorization implements ITraitFavorization {
@@ -10,7 +9,7 @@ public class NullTraitFavorization implements ITraitFavorization {
     // nothing to do
   }
 
-  public ICasteType< ? extends ICasteTypeVisitor> getCaste() {
+  public ICasteType getCaste() {
     return ICasteType.NULL_CASTE_TYPE;
   }
 
@@ -47,6 +46,6 @@ public class NullTraitFavorization implements ITraitFavorization {
   }
 
   public void ensureMinimalValue() {
-    //nothing to do
+    // nothing to do
   }
 }

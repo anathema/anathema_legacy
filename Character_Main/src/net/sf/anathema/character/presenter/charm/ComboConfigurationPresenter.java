@@ -11,7 +11,6 @@ import java.util.Map;
 import net.disy.commons.core.util.StringUtilities;
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.model.ICharacterStatistics;
@@ -86,7 +85,7 @@ public class ComboConfigurationPresenter implements IContentPresenter {
   }
 
   private void enableCrossPrerequisiteTypeCombos() {
-    ICasteType< ? extends ICasteTypeVisitor> caste = statistics.getCharacterConcept().getCaste().getType();
+    ICasteType caste = statistics.getCharacterConcept().getCaste().getType();
     boolean alienCharms = statistics.getCharacterTemplate().getMagicTemplate().getCharmTemplate().isAllowedAlienCharms(
         caste);
     comboConfiguration.setCrossPrerequisiteTypeComboAllowed(alienCharms);

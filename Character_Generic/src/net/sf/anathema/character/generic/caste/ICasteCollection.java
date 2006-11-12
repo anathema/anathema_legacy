@@ -4,9 +4,9 @@ public interface ICasteCollection {
 
   public boolean containsCasteType(String casteTypeId);
 
-  public ICasteType< ? extends ICasteTypeVisitor>[] getAllCasteTypes();
+  public ICasteType[] getAllCasteTypes();
 
-  public ICasteType< ? extends ICasteTypeVisitor> getById(String casteTypeId);
+  public ICasteType getById(String casteTypeId);
 
   public boolean isEmpty();
 }

@@ -1,36 +1,10 @@
 package net.sf.anathema.character.abyssal.caste;
 
-import net.sf.anathema.character.abyssal.template.IAbyssalCasteVisitor;
 import net.sf.anathema.character.generic.caste.ICasteType;
 
-public enum AbyssalCaste implements ICasteType<IAbyssalCasteVisitor> {
+public enum AbyssalCaste implements ICasteType {
 
-  Dusk {
-    public void accept(IAbyssalCasteVisitor visitor) {
-      visitor.visitDusk(this);
-    }
-  },
-  Midnight {
-    public void accept(IAbyssalCasteVisitor visitor) {
-      visitor.visitMidnight(this);
-    }
-  },
-  Daybreak {
-    public void accept(IAbyssalCasteVisitor visitor) {
-      visitor.visitDaybreak(this);
-    }
-  },
-
-  Day {
-    public void accept(IAbyssalCasteVisitor visitor) {
-      visitor.visitDay(this);
-    }
-  },
-  Moonshadow {
-    public void accept(IAbyssalCasteVisitor visitor) {
-      visitor.visitMoonshadow(this);
-    }
-  };
+  Dusk, Midnight, Daybreak, Day, Moonshadow;
 
   public String getId() {
     return name();

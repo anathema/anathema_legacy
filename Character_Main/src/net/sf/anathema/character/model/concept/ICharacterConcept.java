@@ -1,7 +1,6 @@
 package net.sf.anathema.character.model.concept;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
-import net.sf.anathema.character.generic.caste.ICasteTypeVisitor;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
@@ -9,7 +8,7 @@ public interface ICharacterConcept {
 
   public IWillpowerRegainingConcept getWillpowerRegainingConcept();
 
-  public ITypedDescription<ICasteType< ? extends ICasteTypeVisitor>> getCaste();
+  public ITypedDescription<ICasteType> getCaste();
 
   public ITextualDescription getConcept();
 }
