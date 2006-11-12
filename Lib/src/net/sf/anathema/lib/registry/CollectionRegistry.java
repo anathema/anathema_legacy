@@ -18,8 +18,4 @@ public class CollectionRegistry<E> implements ICollectionRegistry<E> {
   public final Collection<E> getAll() {
     return elements;
   }
-
-  public E[] getAllElements(E[] array) {
-    return elements.toArray(array);
-  }
 }
