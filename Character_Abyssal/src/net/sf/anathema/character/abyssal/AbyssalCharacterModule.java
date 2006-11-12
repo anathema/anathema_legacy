@@ -4,10 +4,11 @@ import net.sf.anathema.character.abyssal.additional.AdditionalAbyssalRules;
 import net.sf.anathema.character.abyssal.additional.AdditionalLoyalAbyssalRules;
 import net.sf.anathema.character.abyssal.caste.AbyssalCaste;
 import net.sf.anathema.character.abyssal.caste.IAbyssalSpecialCharms;
-import net.sf.anathema.character.abyssal.reporting.AbyssalVoidstateReportTemplate;
+import net.sf.anathema.character.abyssal.equipment.FangTemplate;
 import net.sf.anathema.character.abyssal.reporting.FirstEditionAbyssalPartEncoder;
 import net.sf.anathema.character.abyssal.template.LoyalAbyssalTemplate;
 import net.sf.anathema.character.abyssal.template.RenegadeAbyssalTemplate;
+import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
@@ -57,6 +58,9 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getCasteCollectionRegistry().register(
         CharacterType.ABYSSAL,
         new CasteCollection(AbyssalCaste.values()));
+    IEquipmentAdditionalModelTemplate equipmentTemplate = (IEquipmentAdditionalModelTemplate) characterGenerics.getGlobalAdditionalTemplateRegistry()
+        .getById(IEquipmentAdditionalModelTemplate.ID);
+    equipmentTemplate.addNaturalWeaponTemplate(CharacterType.ABYSSAL, new FangTemplate());
   }
 
   @Override
@@ -110,7 +114,6 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    generics.getReportTemplateRegistry().add(new AbyssalVoidstateReportTemplate(resources));
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
         CharacterReportingModule.class);
     PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
