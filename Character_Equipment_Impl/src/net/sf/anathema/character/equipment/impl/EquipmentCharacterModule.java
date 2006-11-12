@@ -2,6 +2,7 @@ package net.sf.anathema.character.equipment.impl;
 
 import java.io.File;
 
+import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalModelFactory;
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalPersisterFactory;
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalViewFactory;
@@ -37,13 +38,13 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
       throw new InitializationException("Equipment database locked.\nAnathema may already be running.", e); //$NON-NLS-1$
     }
     characterGenerics.getAdditionalModelFactoryRegistry().register(
-        EquipmentAdditonalModelTemplate.ID,
+        IEquipmentAdditionalModelTemplate.ID,
         new EquipmentAdditionalModelFactory(equipmentDatabase));
     characterGenerics.getAdditonalPersisterFactoryRegistry().register(
-        EquipmentAdditonalModelTemplate.ID,
+        IEquipmentAdditionalModelTemplate.ID,
         new EquipmentAdditionalPersisterFactory());
     characterGenerics.getAdditionalViewFactoryRegistry().register(
-        EquipmentAdditonalModelTemplate.ID,
+        IEquipmentAdditionalModelTemplate.ID,
         new EquipmentAdditionalViewFactory());
     characterGenerics.getGlobalAdditionalTemplateRegistry().add(new EquipmentAdditonalModelTemplate());
   }

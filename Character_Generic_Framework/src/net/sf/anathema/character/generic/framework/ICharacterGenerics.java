@@ -29,7 +29,7 @@ public interface ICharacterGenerics {
 
   public IRegistry<String, IAdditionalPersisterFactory> getAdditonalPersisterFactoryRegistry();
 
-  public ICollectionRegistry<IGlobalAdditionalTemplate> getGlobalAdditionalTemplateRegistry();
+  public IIdentificateRegistry<IGlobalAdditionalTemplate> getGlobalAdditionalTemplateRegistry();
 
   public ICollectionRegistry<ICharacterReportTemplate> getReportTemplateRegistry();
 

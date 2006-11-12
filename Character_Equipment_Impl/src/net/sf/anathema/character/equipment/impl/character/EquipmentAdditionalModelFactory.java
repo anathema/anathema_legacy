@@ -1,5 +1,6 @@
 package net.sf.anathema.character.equipment.impl.character;
 
+import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.impl.character.model.natural.NaturalSoak;
@@ -23,19 +24,21 @@ public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory 
     this.equipmentTemplateProvider = equipmentTemplateProvider;
   }
 
-  // TODO: Allow for character templates to add additional natural weapons, i.e. Abyssal "Fangs"
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
+    IEquipmentAdditionalModelTemplate template = (IEquipmentAdditionalModelTemplate) additionalTemplate;
     IBasicCharacterData basicCharacterContext = context.getBasicCharacterContext();
+    CharacterType characterType = basicCharacterContext.getCharacterType();
     IArmourStats naturalArmour = new NaturalSoak(
         context.getTraitCollection().getTrait(AttributeType.Stamina),
-        basicCharacterContext.getCharacterType());
-    IExaltedRuleSet ruleSet = context.getBasicCharacterContext().getRuleSet();
+        characterType);
+    IExaltedRuleSet ruleSet = basicCharacterContext.getRuleSet();
     return new EquipmentAdditionalModel(
-        getDefaultMaterial(context.getBasicCharacterContext().getCharacterType()),
+        getDefaultMaterial(characterType),
         naturalArmour,
         equipmentTemplateProvider,
         ruleSet,
-        new NaturalWeaponTemplate());
+        new NaturalWeaponTemplate(),
+        template.getNaturalWeaponTemplate(characterType));
   }
 
   private MagicalMaterial getDefaultMaterial(CharacterType characterType) {

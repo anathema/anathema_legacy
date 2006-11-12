@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.impl.character.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
@@ -33,7 +34,7 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
   }
 
   public final String getTemplateId() {
-    return EquipmentAdditonalModelTemplate.ID;
+    return IEquipmentAdditionalModelTemplate.ID;
   }
 
   public final IArmourStats getTotalPrintArmour(int lineCount) {

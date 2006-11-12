@@ -22,6 +22,7 @@ import net.sf.anathema.lib.registry.CollectionRegistry;
 import net.sf.anathema.lib.registry.ICollectionRegistry;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
+import net.sf.anathema.lib.registry.IdentificateRegistry;
 import net.sf.anathema.lib.registry.Registry;
 
 public class CharacterGenerics implements ICharacterGenerics {
@@ -31,7 +32,7 @@ public class CharacterGenerics implements ICharacterGenerics {
   private final IRegistry<String, IAdditionalModelFactory> additionalModelRegistry = new Registry<String, IAdditionalModelFactory>();
   private final IRegistry<String, IAdditionalViewFactory> additionalViewRegistry = new Registry<String, IAdditionalViewFactory>();
   private final IRegistry<String, IAdditionalPersisterFactory> additionalPersisterRegistry;
-  private final ICollectionRegistry<IGlobalAdditionalTemplate> additionalTemplateRegistry = new CollectionRegistry<IGlobalAdditionalTemplate>();
+  private final IIdentificateRegistry<IGlobalAdditionalTemplate> additionalTemplateRegistry = new IdentificateRegistry<IGlobalAdditionalTemplate>();
   private final ICollectionRegistry<ICharacterReportTemplate> reportTemplateRegistry = new CollectionRegistry<ICharacterReportTemplate>();
   private final ICharacterTemplateRegistryCollection templateRegistries = new CharacterTemplateRegistryCollection();
   private final IRegistry<CharacterType, ICasteCollection> casteCollectionRegistry = new Registry<CharacterType, ICasteCollection>();
@@ -70,7 +71,7 @@ public class CharacterGenerics implements ICharacterGenerics {
     return reportTemplateRegistry;
   }
 
-  public ICollectionRegistry<IGlobalAdditionalTemplate> getGlobalAdditionalTemplateRegistry() {
+  public IIdentificateRegistry<IGlobalAdditionalTemplate> getGlobalAdditionalTemplateRegistry() {
     return additionalTemplateRegistry;
   }
 

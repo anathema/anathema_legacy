@@ -35,6 +35,9 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
     this.naturalArmour = naturalArmour;
     this.equipmentTemplateProvider = equipmentTemplateProvider;
     for (IEquipmentTemplate template : naturalWeapons) {
+      if (template == null) {
+        continue;
+      }
       naturalWeaponItems.add(addEquipmentObjectFor(template, null));
     }
   }

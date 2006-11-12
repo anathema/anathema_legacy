@@ -36,7 +36,6 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
       if (item.getMaterialComposition() == MaterialComposition.Variable) {
         itemElement.addElement(TAG_MATERIAL).addCDATA(item.getMaterial().name());
       }
-      itemElement.addElement(TAG_TEMPLATE_ID).addCDATA(item.getTemplateId());
       for (IEquipmentStats stats : item.getStats()) {
         if (item.isPrintEnabled(stats)) {
           itemElement.addElement(TAG_PRINT_STATS).addCDATA(stats.getName().getId());
