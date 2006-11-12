@@ -48,17 +48,21 @@ public class AnimaTableEncoder extends AbstractTableEncoder {
 
     table.addCell(createContentCell(getThirdLevelRange(character)));
     table.addCell(createContentCell(resources.getString(descriptionPrefix + ".Third"))); //$NON-NLS-1$
-    String stealthImpossible = resources.getString("Sheet.AnimaTable.StealthImpossible"); //$NON-NLS-1$
-    table.addCell(createContentCell(stealthImpossible));
+    table.addCell(createContentCell(getThirdLevelStealth()));
 
     table.addCell(createContentCell(getFourthLevelRange(character)));
     table.addCell(createContentCell(resources.getString(descriptionPrefix + ".Fourth"))); //$NON-NLS-1$
+    String stealthImpossible = resources.getString("Sheet.AnimaTable.StealthImpossible"); //$NON-NLS-1$
     table.addCell(createContentCell(stealthImpossible));
 
     table.addCell(createContentCell(getFifthLevelRange(character)));
     table.addCell(createContentCell(resources.getString(descriptionPrefix + ".Fifth"))); //$NON-NLS-1$
     table.addCell(createContentCell(stealthImpossible));
     return table;
+  }
+
+  protected String getThirdLevelStealth() {
+    return resources.getString("Sheet.AnimaTable.StealthImpossible"); //$NON-NLS-1$
   }
 
   protected String getSecondLevelStealth() {
