@@ -15,7 +15,6 @@ import net.sf.anathema.character.library.trait.favorable.FavorableState;
 import net.sf.anathema.character.library.trait.favorable.GrumpyIncrementChecker;
 import net.sf.anathema.character.library.trait.favorable.IFavorableStateChangedListener;
 import net.sf.anathema.character.library.trait.rules.FavorableTraitRules;
-import net.sf.anathema.character.sidereal.caste.ISiderealCasteVisitor;
 import net.sf.anathema.character.sidereal.caste.SiderealCaste;
 import net.sf.anathema.character.sidereal.colleges.presenter.IAstrologicalHouse;
 import net.sf.anathema.lib.control.change.ChangeControl;
@@ -25,51 +24,53 @@ import net.sf.anathema.lib.util.Identificate;
 
 public class AstrologicalHouse extends Identificate implements IAstrologicalHouse {
 
-  public static IAstrologicalHouse createAstrologicalHouse(SiderealCaste caste, ICharacterModelContext context) {
-    final List<CollegeType> collegeTypeList = new ArrayList<CollegeType>();
-    caste.accept(new ISiderealCasteVisitor() {
+  private static final int collegesPerHouse = 5;
 
-      public void visitJourneys(SiderealCaste visitedCaste) {
+  public static IAstrologicalHouse createAstrologicalHouse(SiderealCaste caste, ICharacterModelContext context) {
+    final List<CollegeType> collegeTypeList = new ArrayList<CollegeType>(collegesPerHouse);
+    switch (caste) {
+      case Journeys: {
         collegeTypeList.add(CollegeType.Captain);
         collegeTypeList.add(CollegeType.Gull);
         collegeTypeList.add(CollegeType.Mast);
         collegeTypeList.add(CollegeType.Messenger);
         collegeTypeList.add(CollegeType.ShipsWheel);
+        break;
       }
-
-      public void visitSerenity(SiderealCaste visitedCaste) {
+      case Serenity: {
         collegeTypeList.add(CollegeType.Ewer);
         collegeTypeList.add(CollegeType.Lovers);
         collegeTypeList.add(CollegeType.Musician);
         collegeTypeList.add(CollegeType.Peacock);
         collegeTypeList.add(CollegeType.Pillar);
+        break;
       }
-
-      public void visitBattles(SiderealCaste visitedCaste) {
+      case Battles: {
         collegeTypeList.add(CollegeType.Banner);
         collegeTypeList.add(CollegeType.Gauntlet);
         collegeTypeList.add(CollegeType.Quiver);
         collegeTypeList.add(CollegeType.Shield);
         collegeTypeList.add(CollegeType.Spear);
+        break;
       }
-
-      public void visitSecrets(SiderealCaste visitedCaste) {
+      case Secrets: {
         collegeTypeList.add(CollegeType.Guardians);
         collegeTypeList.add(CollegeType.Key);
         collegeTypeList.add(CollegeType.Mask);
         collegeTypeList.add(CollegeType.Sorcerer);
         collegeTypeList.add(CollegeType.TreasureTrove);
+        break;
       }
-
-      public void visitEndings(SiderealCaste visitedCaste) {
+      case Endings: {
         collegeTypeList.add(CollegeType.Corpse);
         collegeTypeList.add(CollegeType.Crow);
         collegeTypeList.add(CollegeType.Haywain);
         collegeTypeList.add(CollegeType.RisingSmoke);
         collegeTypeList.add(CollegeType.Sword);
+        break;
       }
-    });
-    CollegeType[] collegeTypes = collegeTypeList.toArray(new CollegeType[collegeTypeList.size()]);
+    }
+    CollegeType[] collegeTypes = collegeTypeList.toArray(new CollegeType[collegesPerHouse]);
     return new AstrologicalHouse(caste.getId(), collegeTypes, caste, context);
   }
 
