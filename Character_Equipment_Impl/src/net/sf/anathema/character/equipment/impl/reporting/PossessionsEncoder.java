@@ -1,8 +1,8 @@
 package net.sf.anathema.character.equipment.impl.reporting;
 
+import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditonalModelTemplate;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.sheet.util.AbstractLineTextEncoder;
 
@@ -23,7 +23,7 @@ public class PossessionsEncoder extends AbstractLineTextEncoder {
 
   @Override
   protected void addToPhrase(IGenericCharacter character, Font font, Phrase phrase) {
-    IEquipmentAdditionalModel model = (IEquipmentAdditionalModel) character.getAdditionalModel(EquipmentAdditonalModelTemplate.ID);
+    IEquipmentAdditionalModel model = (IEquipmentAdditionalModel) character.getAdditionalModel(IEquipmentAdditionalModelTemplate.ID);
     for (int index = 0; index < model.getEquipmentItems().length; index++) {
       IEquipmentItem item = model.getEquipmentItems()[index];
       if (item.getStats().length > 0) {
