@@ -23,7 +23,7 @@ public class CharmProvider implements ICharmProvider {
 
   public ISpecialCharm[] getAllSpecialCharms(IExaltedEdition edition) {
     List<ISpecialCharm> list = new ArrayList<ISpecialCharm>();
-    for (CharacterType type : CharacterType.values()) {
+    for (CharacterType type : CharacterType.getAllCharacterTypes()) {
       Collections.addAll(list, getSpecialCharms(type, edition));
     }
     return list.toArray(new ISpecialCharm[list.size()]);

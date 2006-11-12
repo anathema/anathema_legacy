@@ -224,7 +224,7 @@ public class MeritsFlawsProvider {
       int[] pointValues,
       CharacterType[] bannedTypes) {
     List<CharacterType> allowedTypes = new ArrayList<CharacterType>();
-    Collections.addAll(allowedTypes, CharacterType.values());
+    Collections.addAll(allowedTypes, CharacterType.getAllCharacterTypes());
     allowedTypes.removeAll(Arrays.asList(bannedTypes));
     return new MultiValuePerk(
         type,

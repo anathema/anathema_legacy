@@ -72,7 +72,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
   }
 
   private void initCharacterTypeCharms(List<IIdentificate> supportedCharmTypes, List<ICharmGroup> allCharmGroups) {
-    for (CharacterType type : CharacterType.values()) {
+    for (CharacterType type : CharacterType.getAllCharacterTypes()) {
       for (IExaltedEdition edition : ExaltedEdition.values()) {
         ICharacterTemplate defaultTemplate = getTemplateRegistry().getDefaultTemplate(type, edition);
         if (defaultTemplate == null) {

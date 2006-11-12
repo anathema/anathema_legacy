@@ -39,7 +39,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
 
   private CharacterType[] collectCharacterTypes(ITemplateRegistry registry) {
     List<CharacterType> availableTypes = new ArrayList<CharacterType>();
-    for (CharacterType type : CharacterType.values()) {
+    for (CharacterType type : CharacterType.getAllCharacterTypes()) {
       if (registry.getAllSupportedTemplates(type).length > 0) {
         availableTypes.add(type);
       }
@@ -49,7 +49,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
 
   private void aggregateTemplates() {
     TemplateTypeAggregator aggregator = new TemplateTypeAggregator(generics.getTemplateRegistry());
-    for (CharacterType type : CharacterType.values()) {
+    for (CharacterType type : CharacterType.getAllCharacterTypes()) {
       ITemplateTypeAggregation[] aggregations = aggregator.aggregateTemplates(type);
       if (aggregations.length == 0) {
         continue;

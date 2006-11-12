@@ -286,7 +286,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   }
 
   private void initAlienTypes(ITemplateRegistry registry, IExaltedRuleSet rules, List<CharacterType> characterTypes) {
-    for (CharacterType type : CharacterType.values()) {
+    for (CharacterType type : CharacterType.getAllCharacterTypes()) {
       if (characterTypes.contains(type)) {
         continue;
       }

@@ -85,6 +85,10 @@ public enum CharacterType implements IIdentificate {
     return types.toArray(new CharacterType[types.size()]);
   }
 
+  public static CharacterType[] getAllCharacterTypes() {
+    return values();
+  }
+
   public String getId() {
     return id;
   }
