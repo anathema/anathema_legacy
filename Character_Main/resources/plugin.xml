@@ -121,6 +121,7 @@
 		<parameter id="bundle" value="Lunar"/>
 		<parameter id="bundle" value="Linguistics"/>
 		<parameter id="bundle" value="MeritsFlaws"/>
+		<parameter id="bundle" value="Mortal"/>
 		<parameter id="bundle" value="Natures"/>
 		<parameter id="bundle" value="Overview"/>
 		<parameter id="bundle" value="Sidereal"/>
