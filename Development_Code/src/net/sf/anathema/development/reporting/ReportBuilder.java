@@ -17,7 +17,6 @@ import net.sf.anathema.development.reporting.encoder.voidstate.subreports.abilit
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateSingleAbilitySubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateTenAbilityGroupSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.ability.VoidstateThreeGroupAbilitySetSubreportEncoder;
-import net.sf.anathema.development.reporting.encoder.voidstate.subreports.anima.VoidstateAbyssalAnimaSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.anima.VoidstateLunarAnimaSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.anima.VoidstateSiderealAnimaSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.attribute.VoidstateBeastformAttributeSubreportEncoder;
@@ -30,7 +29,6 @@ import net.sf.anathema.development.reporting.encoder.voidstate.subreports.health
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.health.VoidstateLunarHealthSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middlecolumn.BeastformMiddleColumnSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middlecolumn.DefaultMiddleColumnSubreportEncoder;
-import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middlecolumn.flaw.VoidstateAbyssalFlawSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middlecolumn.flaw.VoidstateLunarFlawSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middlecolumn.flaw.VoidstateSiderealFlawSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middlecolumn.gifts.VoidstateBeastformGiftsSubreportEncoder;
@@ -115,8 +113,6 @@ public class ReportBuilder {
   private static void createAnimaSubreports() throws InitializationException {
     buildReportDesign(new File("VoidStateLunarAnimaSubreport.xml"), new VoidstateLunarAnimaSubreportEncoder(
         basicsEncoder));
-    buildReportDesign(new File("VoidStateAbyssalAnimaSubreport.xml"), new VoidstateAbyssalAnimaSubreportEncoder(
-        basicsEncoder));
     buildReportDesign(new File("VoidStateSiderealAnimaSubreport.xml"), new VoidstateSiderealAnimaSubreportEncoder(
         basicsEncoder));
   }
@@ -137,8 +133,6 @@ public class ReportBuilder {
     buildReportDesign(
         new File("VoidStateLunarFlawSubreport.xml"),
         new VoidstateLunarFlawSubreportEncoder(basicsEncoder));
-    buildReportDesign(new File("VoidStateAbyssalFlawSubreport.xml"), new VoidstateAbyssalFlawSubreportEncoder(
-        basicsEncoder));
     buildReportDesign(new File("VoidStateSiderealFlawSubreport.xml"), new VoidstateSiderealFlawSubreportEncoder(
         basicsEncoder));
   }
