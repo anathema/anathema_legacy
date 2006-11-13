@@ -5,7 +5,6 @@ import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
-import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfAbilitiesEncoder;
@@ -159,12 +158,12 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
     boxEncoder.encodeBox(directContent, encoder, character, boxBounds);
   }
 
-  private int encodeAttributes(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop) {
+  private int encodeAttributes(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
+      throws DocumentException {
     int attributeHeight = 128;
     Bounds attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 1);
-    Bounds attributesContentBounds = boxEncoder.encodeBox(directContent, attributeBounds, getHeaderLabel("Attributes")); //$NON-NLS-1$
-    IGroupedTraitType[] attributeGroups = character.getTemplate().getAttributeGroups();
-    encodeAttributes(directContent, attributesContentBounds, attributeGroups, character.getTraitCollection());
+    IPdfContentBoxEncoder encoder = new PdfAttributesEncoder(baseFont, resources, essenceMax);
+    boxEncoder.encodeBox(directContent, encoder, character, attributeBounds);
     return attributeHeight;
   }
 
@@ -288,14 +287,5 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
     IPdfContentBoxEncoder encoder = partEncoder.getIntimaciesEncoder(registry);
     boxEncoder.encodeBox(directContent, encoder, character, bounds);
     return height;
-  }
-
-  private final void encodeAttributes(
-      PdfContentByte directContent,
-      Bounds contentBounds,
-      IGroupedTraitType[] attributeGroups,
-      IGenericTraitCollection traitCollection) {
-    PdfAttributesEncoder encoder = new PdfAttributesEncoder(baseFont, resources, essenceMax);
-    encoder.encodeAttributes(directContent, contentBounds, attributeGroups, traitCollection);
   }
 }
