@@ -1,23 +1,17 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.framework.resources.TraitInternationalizer;
-import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.INamedGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
-import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.character.reporting.util.Position;
 import net.sf.anathema.lib.resources.IResources;
@@ -26,32 +20,18 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class PdfAbilitiesEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
-
-  private final Collection<ITraitType> markedAbilities = new ArrayList<ITraitType>() {
-    {
-      add(AbilityType.Athletics);
-      add(AbilityType.Dodge);
-      add(AbilityType.Larceny);
-      add(AbilityType.Ride);
-      add(AbilityType.Stealth);
-    }
-  };
-  private final BaseFont baseFont;
-  private final IResources resources;
-  private final PdfTraitEncoder traitEncoder;
-  private final int essenceMax;
+public class PdfAbilitiesEncoder extends FavorableTraitEncoder implements IPdfContentBoxEncoder {
 
   public PdfAbilitiesEncoder(BaseFont baseFont, IResources resources, int essenceMax) {
-    this.baseFont = baseFont;
-    this.resources = resources;
-    this.essenceMax = essenceMax;
-    this.traitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
-  }
-
-  @Override
-  protected BaseFont getBaseFont() {
-    return baseFont;
+    super(
+        baseFont,
+        resources,
+        essenceMax,
+        AbilityType.Athletics,
+        AbilityType.Dodge,
+        AbilityType.Larceny,
+        AbilityType.Ride,
+        AbilityType.Stealth);
   }
 
   public String getHeaderKey() {
@@ -59,17 +39,17 @@ public class PdfAbilitiesEncoder extends AbstractPdfEncoder implements IPdfConte
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    encodeAbilities(directContent, character, bounds);
+    encodeTraits(directContent, character, bounds);
   }
 
-  private void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds) {
+  private void encodeTraits(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds) {
     Position position = new Position(contentBounds.getMinX(), contentBounds.getMaxY());
     float width = contentBounds.width;
     IIdentifiedTraitTypeGroup[] groups = character.getAbilityTypeGroups();
     float yPosition = position.y;
     for (IIdentifiedTraitTypeGroup group : groups) {
       Position groupPosition = new Position(position.x, yPosition);
-      yPosition -= encodeAbilityGroup(directContent, character.getTraitCollection(), group, groupPosition, width);
+      yPosition -= encodeTraitGroup(directContent, character.getTraitCollection(), group, groupPosition, width);
       yPosition -= IVoidStateFormatConstants.TEXT_PADDING;
     }
     yPosition -= IVoidStateFormatConstants.LINE_HEIGHT;
@@ -80,7 +60,7 @@ public class PdfAbilitiesEncoder extends AbstractPdfEncoder implements IPdfConte
   }
 
   private int encodeCrafts(PdfContentByte directContent, IGenericCharacter character, Position position, float width) {
-    String title = resources.getString("Sheet.AbilitySubHeader.Crafts"); //$NON-NLS-1$
+    String title = getResources().getString("Sheet.AbilitySubHeader.Crafts"); //$NON-NLS-1$
     INamedGenericTrait[] traits = character.getSubTraits(AbilityType.Craft);
     if (!AnathemaCharacterPreferences.getDefaultPreferences().printZeroCrafts()) {
       List<INamedGenericTrait> nonZeroCrafts = new ArrayList<INamedGenericTrait>();
@@ -92,7 +72,7 @@ public class PdfAbilitiesEncoder extends AbstractPdfEncoder implements IPdfConte
       traits = nonZeroCrafts.toArray(new INamedGenericTrait[nonZeroCrafts.size()]);
     }
     IValuedTraitReference[] crafts = getTraitReferences(traits, AbilityType.Craft);
-    return drawNamedTraitSection(directContent, title, crafts, position, width, essenceMax);
+    return drawNamedTraitSection(directContent, title, crafts, position, width, getEssenceMax());
   }
 
   private IValuedTraitReference[] getTraitReferences(INamedGenericTrait[] traits, ITraitType type) {
@@ -108,7 +88,7 @@ public class PdfAbilitiesEncoder extends AbstractPdfEncoder implements IPdfConte
       IGenericCharacter character,
       Position position,
       float width) {
-    String title = resources.getString("Sheet.AbilitySubHeader.Specialties"); //$NON-NLS-1$
+    String title = getResources().getString("Sheet.AbilitySubHeader.Specialties"); //$NON-NLS-1$
     List<IValuedTraitReference> references = new ArrayList<IValuedTraitReference>();
     for (IIdentifiedTraitTypeGroup group : character.getAbilityTypeGroups()) {
       for (ITraitType traitType : group.getAllGroupTypes()) {
@@ -127,67 +107,28 @@ public class PdfAbilitiesEncoder extends AbstractPdfEncoder implements IPdfConte
       float width,
       int dotCount) {
     int height = drawSubsectionHeader(directContent, title, position, width);
-    TraitInternationalizer internationalizer = new TraitInternationalizer(resources);
+    TraitInternationalizer internationalizer = new TraitInternationalizer(getResources());
     for (IValuedTraitReference trait : traits) {
       String name = internationalizer.getSheetName(trait);
       Position traitPosition = new Position(position.x, position.y - height);
       int value = trait.getValue();
-      traitEncoder.encodeWithText(directContent, name, traitPosition, width, value, dotCount);
-      height += traitEncoder.getTraitHeight();
+      getTraitEncoder().encodeWithText(directContent, name, traitPosition, width, value, dotCount);
+      height += getTraitEncoder().getTraitHeight();
     }
     for (int index = traits.length; index < 9; index++) {
       Position traitPosition = new Position(position.x, position.y - height);
-      traitEncoder.encodeWithLine(directContent, traitPosition, width, 0, dotCount);
-      height += traitEncoder.getTraitHeight();
+      getTraitEncoder().encodeWithLine(directContent, traitPosition, width, 0, dotCount);
+      height += getTraitEncoder().getTraitHeight();
     }
     return height;
   }
 
   private float encodeMobilityPenaltyText(PdfContentByte directContent, Position position, float yPosition) {
     encodeCrossMarker(directContent, new Position(position.x, yPosition));
-    String mobilityPenaltyText = " : " + resources.getString("Sheet.Comment.AbilityMobility"); //$NON-NLS-1$ //$NON-NLS-2$
+    String mobilityPenaltyText = " : " + getResources().getString("Sheet.Comment.AbilityMobility"); //$NON-NLS-1$ //$NON-NLS-2$
     Position commentPosition = new Position(position.x + 5, yPosition);
     drawComment(directContent, mobilityPenaltyText, commentPosition, PdfContentByte.ALIGN_LEFT);
     return 10;
-  }
-
-  private float encodeAbilityGroup(
-      PdfContentByte directContent,
-      IGenericTraitCollection traitCollection,
-      IIdentifiedTraitTypeGroup group,
-      Position position,
-      float width) {
-    float height = 0;
-    float groupLabelWidth = IVoidStateFormatConstants.LINE_HEIGHT + IVoidStateFormatConstants.TEXT_PADDING;
-    float traitX = position.x + groupLabelWidth;
-    ITraitType[] traitTypes = group.getAllGroupTypes();
-    float groupLabelX = position.x + 4;
-    float markerX = groupLabelX + IVoidStateFormatConstants.TEXT_PADDING;
-    for (int index = 0; index < traitTypes.length; index++) {
-      ITraitType traitType = traitTypes[index];
-      float yPosition = position.y - (index + 1) * traitEncoder.getTraitHeight();
-      if (markedAbilities.contains(traitType)) {
-        encodeCrossMarker(directContent, new Position(markerX, yPosition + 1));
-      }
-      IFavorableGenericTrait trait = traitCollection.getFavorableTrait(traitType);
-      String label = resources.getString(traitType.getId());
-      height += encodeFavorableTrait(directContent, label, trait, new Position(traitX, yPosition), width
-          - groupLabelWidth);
-    }
-    Position groupLabelPosition = new Position(groupLabelX, position.y - height / 2);
-    addGroupLabel(directContent, group, groupLabelPosition);
-    return height;
-  }
-
-  private int encodeFavorableTrait(
-      PdfContentByte directContent,
-      String label,
-      IFavorableGenericTrait trait,
-      Position position,
-      float width) {
-    int value = trait.getCurrentValue();
-    boolean favored = trait.isCasteOrFavored();
-    return traitEncoder.encodeWithTextAndRectangle(directContent, label, position, width, value, favored, essenceMax);
   }
 
   private void encodeCrossMarker(PdfContentByte directContent, Position markerPosition) {
@@ -197,12 +138,5 @@ public class PdfAbilitiesEncoder extends AbstractPdfEncoder implements IPdfConte
     directContent.moveTo(markerPosition.x + 2, markerPosition.y);
     directContent.lineTo(markerPosition.x + 2, markerPosition.y + 4);
     directContent.stroke();
-  }
-
-  private void addGroupLabel(PdfContentByte directContent, IIdentifiedTraitTypeGroup group, Position position) {
-    String groupId = group.getGroupId().getId();
-    String resourceKey = group.getGroupId() instanceof ICasteType ? "Caste." + groupId : "AbilityGroup." + groupId; //$NON-NLS-1$//$NON-NLS-2$
-    String groupLabel = resources.getString(resourceKey);
-    drawVerticalText(directContent, groupLabel, position, PdfContentByte.ALIGN_CENTER);
   }
 }
