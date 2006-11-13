@@ -2,6 +2,7 @@ package net.sf.anathema.character.reporting.sheet.page;
 
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 
 public interface IPdfPartEncoder {
 
@@ -23,5 +24,5 @@ public interface IPdfPartEncoder {
 
   public float getWeaponryHeight();
 
-  public IPdfPageEncoder[] getAdditionalPages();
+  public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration);
 }

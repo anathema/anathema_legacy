@@ -35,6 +35,10 @@ public abstract class AbstractFirstEditionExaltPdfPartEncoder extends AbstractFi
     return new PdfEssenceEncoder(getBaseFont(), getResources(), essenceMax);
   }
 
+  protected int getEssenceMax() {
+    return essenceMax;
+  }
+
   public boolean hasSecondPage() {
     return true;
   }

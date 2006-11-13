@@ -4,6 +4,7 @@ import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.combat.PdfCombatStatsEncoder;
+import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionCombatRulesTableEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionCombatValueEncoder;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionHealthAndMovementEncoder;
@@ -59,7 +60,7 @@ public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncode
     return 102;
   }
 
-  public IPdfPageEncoder[] getAdditionalPages() {
+  public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
     return new IPdfPageEncoder[0];
   }
 }

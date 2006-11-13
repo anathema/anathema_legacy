@@ -39,6 +39,11 @@ public class PdfAbilitiesEncoder extends FavorableTraitEncoder implements IPdfCo
   }
 
   @Override
+  protected String getGroupNamePrefix() {
+    return "AbilityGroup."; //$NON-NLS-1$
+  }
+
+  @Override
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     Position position = new Position(bounds.getMinX(), bounds.getMaxY());
     float width = bounds.width;

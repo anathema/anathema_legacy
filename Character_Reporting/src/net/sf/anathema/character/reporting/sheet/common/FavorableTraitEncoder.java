@@ -66,13 +66,18 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
       Position position,
       float width) {
     IIdentifiedTraitTypeGroup[] groups = getIdentifiedTraitTypeGroups(character);
+    IGenericTraitCollection traitCollection = getTraitCollection(character);
     float yPosition = position.y;
     for (IIdentifiedTraitTypeGroup group : groups) {
       Position groupPosition = new Position(position.x, yPosition);
-      yPosition -= encodeTraitGroup(directContent, character.getTraitCollection(), group, groupPosition, width);
+      yPosition -= encodeTraitGroup(directContent, traitCollection, group, groupPosition, width);
       yPosition -= IVoidStateFormatConstants.TEXT_PADDING;
     }
     return yPosition;
+  }
+
+  protected IGenericTraitCollection getTraitCollection(IGenericCharacter character) {
+    return character.getTraitCollection();
   }
 
   protected abstract IIdentifiedTraitTypeGroup[] getIdentifiedTraitTypeGroups(IGenericCharacter character);
@@ -96,7 +101,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
         encodeCrossMarker(directContent, new Position(markerX, yPosition + 1));
       }
       IFavorableGenericTrait trait = traitCollection.getFavorableTrait(traitType);
-      String label = resources.getString(traitType.getId());
+      String label = resources.getString(getTraitTypePrefix() + traitType.getId());
       height += encodeFavorableTrait(directContent, label, trait, new Position(traitX, yPosition), width
           - groupLabelWidth);
     }
@@ -107,10 +112,15 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
 
   private void addGroupLabel(PdfContentByte directContent, IIdentifiedTraitTypeGroup group, Position position) {
     String groupId = group.getGroupId().getId();
-    String resourceKey = group.getGroupId() instanceof ICasteType ? "Caste." + groupId : "AbilityGroup." + groupId; //$NON-NLS-1$//$NON-NLS-2$
+    String resourceKey = group.getGroupId() instanceof ICasteType ? "Caste." + groupId : getGroupNamePrefix() + groupId; //$NON-NLS-1$
     String groupLabel = resources.getString(resourceKey);
     drawVerticalText(directContent, groupLabel, position, PdfContentByte.ALIGN_CENTER);
   }
+
+  protected abstract String getGroupNamePrefix();
+
+  protected String getTraitTypePrefix() {
+    return "";} //$NON-NLS-1$
 
   private int encodeFavorableTrait(
       PdfContentByte directContent,

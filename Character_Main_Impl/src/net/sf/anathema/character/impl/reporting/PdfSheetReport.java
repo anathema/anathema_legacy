@@ -64,7 +64,7 @@ public class PdfSheetReport implements IITextReport {
       IGenericDescription description = new GenericDescription(stattedCharacter.getDescription());
       List<IPdfPageEncoder> encoderList = new ArrayList<IPdfPageEncoder>();
       encoderList.add(new PdfFirstPageEncoder(partEncoder, encodingRegistry, resources, traitMax, configuration));
-      Collections.addAll(encoderList, partEncoder.getAdditionalPages());
+      Collections.addAll(encoderList, partEncoder.getAdditionalPages(configuration));
       if (partEncoder.hasSecondPage()) {
         encoderList.add(new PdfSecondPageEncoder(resources, encodingRegistry, configuration));
       }
