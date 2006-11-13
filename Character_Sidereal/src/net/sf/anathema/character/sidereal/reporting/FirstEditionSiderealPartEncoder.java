@@ -36,6 +36,7 @@ public class FirstEditionSiderealPartEncoder extends AbstractFirstEditionExaltPd
         getEssenceMax(),
         getBaseFont(),
         getSymbolBaseFont(),
+        getFontSize(),
         configuration) };
   }
 }
