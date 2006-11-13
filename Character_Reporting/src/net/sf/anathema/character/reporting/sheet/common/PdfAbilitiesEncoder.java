@@ -22,10 +22,11 @@ import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.character.reporting.util.Position;
 import net.sf.anathema.lib.resources.IResources;
 
+import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class PdfAbilitiesEncoder extends AbstractPdfEncoder {
+public class PdfAbilitiesEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
 
   private final Collection<ITraitType> markedAbilities = new ArrayList<ITraitType>() {
     {
@@ -53,7 +54,15 @@ public class PdfAbilitiesEncoder extends AbstractPdfEncoder {
     return baseFont;
   }
 
-  public void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds) {
+  public String getHeaderKey() {
+    return "Abilities"; //$NON-NLS-1$
+  }
+
+  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+    encodeAbilities(directContent, character, bounds);
+  }
+
+  private void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds) {
     Position position = new Position(contentBounds.getMinX(), contentBounds.getMaxY());
     float width = contentBounds.width;
     IIdentifiedTraitTypeGroup[] groups = character.getAbilityTypeGroups();

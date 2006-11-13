@@ -145,16 +145,18 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
     encodePersonalInfos(directContent, character, description, infoContentBounds);
   }
 
-  private void encodeFirstColumn(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop) {
+  private void encodeFirstColumn(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
+      throws DocumentException {
     int attributeHeight = encodeAttributes(directContent, character, distanceFromTop);
     encodeAbilities(directContent, character, distanceFromTop + attributeHeight + PADDING);
   }
 
-  private void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop) {
+  private void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
+      throws DocumentException {
     int abilitiesHeight = CONTENT_HEIGHT - distanceFromTop;
     Bounds boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
-    Bounds contentBounds = boxEncoder.encodeBox(directContent, boxBounds, getHeaderLabel("Abilities")); //$NON-NLS-1$
-    encodeAbilities(directContent, character, contentBounds);
+    IPdfContentBoxEncoder encoder = new PdfAbilitiesEncoder(baseFont, resources, essenceMax);
+    boxEncoder.encodeBox(directContent, encoder, character, boxBounds);
   }
 
   private int encodeAttributes(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop) {
@@ -286,11 +288,6 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
     IPdfContentBoxEncoder encoder = partEncoder.getIntimaciesEncoder(registry);
     boxEncoder.encodeBox(directContent, encoder, character, bounds);
     return height;
-  }
-
-  private void encodeAbilities(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds) {
-    PdfAbilitiesEncoder encoder = new PdfAbilitiesEncoder(baseFont, resources, essenceMax);
-    encoder.encodeAbilities(directContent, character, contentBounds);
   }
 
   private final void encodeAttributes(
