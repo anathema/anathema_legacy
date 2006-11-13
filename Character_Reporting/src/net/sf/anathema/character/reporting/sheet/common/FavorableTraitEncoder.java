@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.IFavorableGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -12,9 +13,11 @@ import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.character.reporting.util.Position;
 import net.sf.anathema.lib.resources.IResources;
 
+import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
@@ -51,7 +54,30 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     return essenceMax;
   }
 
-  protected float encodeTraitGroup(
+  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+    Position position = new Position(bounds.getMinX(), bounds.getMaxY());
+    float width = bounds.width;
+    encodeTraitGroups(directContent, character, position, width);
+  }
+
+  protected float encodeTraitGroups(
+      PdfContentByte directContent,
+      IGenericCharacter character,
+      Position position,
+      float width) {
+    IIdentifiedTraitTypeGroup[] groups = getIdentifiedTraitTypeGroups(character);
+    float yPosition = position.y;
+    for (IIdentifiedTraitTypeGroup group : groups) {
+      Position groupPosition = new Position(position.x, yPosition);
+      yPosition -= encodeTraitGroup(directContent, character.getTraitCollection(), group, groupPosition, width);
+      yPosition -= IVoidStateFormatConstants.TEXT_PADDING;
+    }
+    return yPosition;
+  }
+
+  protected abstract IIdentifiedTraitTypeGroup[] getIdentifiedTraitTypeGroups(IGenericCharacter character);
+
+  private float encodeTraitGroup(
       PdfContentByte directContent,
       IGenericTraitCollection traitCollection,
       IIdentifiedTraitTypeGroup group,

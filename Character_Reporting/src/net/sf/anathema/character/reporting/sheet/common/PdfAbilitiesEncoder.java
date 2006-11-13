@@ -38,25 +38,21 @@ public class PdfAbilitiesEncoder extends FavorableTraitEncoder implements IPdfCo
     return "Abilities"; //$NON-NLS-1$
   }
 
+  @Override
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    encodeTraits(directContent, character, bounds);
-  }
-
-  private void encodeTraits(PdfContentByte directContent, IGenericCharacter character, Bounds contentBounds) {
-    Position position = new Position(contentBounds.getMinX(), contentBounds.getMaxY());
-    float width = contentBounds.width;
-    IIdentifiedTraitTypeGroup[] groups = character.getAbilityTypeGroups();
-    float yPosition = position.y;
-    for (IIdentifiedTraitTypeGroup group : groups) {
-      Position groupPosition = new Position(position.x, yPosition);
-      yPosition -= encodeTraitGroup(directContent, character.getTraitCollection(), group, groupPosition, width);
-      yPosition -= IVoidStateFormatConstants.TEXT_PADDING;
-    }
+    Position position = new Position(bounds.getMinX(), bounds.getMaxY());
+    float width = bounds.width;
+    float yPosition = encodeTraitGroups(directContent, character, position, width);
     yPosition -= IVoidStateFormatConstants.LINE_HEIGHT;
     yPosition -= encodeCrafts(directContent, character, new Position(position.x, yPosition), width);
     yPosition -= IVoidStateFormatConstants.LINE_HEIGHT;
     yPosition -= encodeSpecialties(directContent, character, new Position(position.x, yPosition), width);
     encodeMobilityPenaltyText(directContent, position, yPosition + 4);
+  }
+
+  @Override
+  protected IIdentifiedTraitTypeGroup[] getIdentifiedTraitTypeGroups(IGenericCharacter character) {
+    return character.getAbilityTypeGroups();
   }
 
   private int encodeCrafts(PdfContentByte directContent, IGenericCharacter character, Position position, float width) {
