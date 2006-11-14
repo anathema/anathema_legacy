@@ -22,14 +22,14 @@ public class TextPersister {
   private static final String TAG_FORMAT = "Format"; //$NON-NLS-1$
   private static final String TAG_PART = "Part"; //$NON-NLS-1$
 
-  public final void saveNonEmptyText(Element parent, String tagName, String text) {
+  public void saveNonEmptyText(Element parent, String tagName, String text) {
     if (StringUtilities.isNullOrEmpty(text)) {
       return;
     }
     parent.addElement(tagName).addCDATA(text);
   }
 
-  protected final void saveNonEmptyText(Element parent, String tagName, ITextPart[] text) {
+  private void saveNonEmptyText(Element parent, String tagName, ITextPart[] text) {
     if (text.length == 0) {
       return;
     }
@@ -45,18 +45,15 @@ public class TextPersister {
     }
   }
 
-  public final void saveTextualDescription(Element parent, String tagName, ITextualDescription textualDescription) {
+  public void saveTextualDescription(Element parent, String tagName, ITextualDescription textualDescription) {
     saveNonEmptyText(parent, tagName, textualDescription.getText());
   }
 
-  protected final void saveTextualDescription(
-      Element parent,
-      String tagName,
-      IStyledTextualDescription textualDescription) {
+  public void saveTextualDescription(Element parent, String tagName, IStyledTextualDescription textualDescription) {
     saveNonEmptyText(parent, tagName, textualDescription.getTextParts());
   }
 
-  protected final void restoreTextualDescription(Element parent, String tagName, IStyledTextualDescription description) {
+  public void restoreTextualDescription(Element parent, String tagName, IStyledTextualDescription description) {
     Element textualElement = parent.element(tagName);
     if (textualElement == null) {
       description.setDirty(false);
@@ -86,7 +83,7 @@ public class TextPersister {
     return new TextFormat(fontStyle, isUnderline);
   }
 
-  public final void restoreTextualDescription(Element parent, String tagName, ITextualDescription description) {
+  public void restoreTextualDescription(Element parent, String tagName, ITextualDescription description) {
     Element textualElement = parent.element(tagName);
     if (textualElement != null) {
       description.setText(textualElement.getText());
