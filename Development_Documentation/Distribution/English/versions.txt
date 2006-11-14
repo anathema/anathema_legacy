@@ -4,11 +4,11 @@ Exalted (C) 2001-2006 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
 ===------------------------------------------------------------------------------===
-			Release x "Meru" (Upcoming)
+			Release 1.01 "" (Upcoming)
 ===------------------------------------------------------------------------------===
 
 -- Features --
-+ [1E] Dragon-Blooded now use 2E-Style sheets, allowing them to make full use of equipment and so on
++ [1E] Dragon-Blooded and Abyssals now use 2E-Style sheets, allowing them to use equipment and so on.
 
 -- Usability --
 + Toolbar with transparent icons (Proposed by Democritus)
@@ -18,15 +18,16 @@ http://anathema.sf.net
 * Added intelligent enforcement of 1-dot-minimum for Craft subtraits.
 
 -- Bugs Fixed --
+* Series should be loading once again (Thanks to Jontu Kontar)
+* Characters with Craft specialties now can be loaded (Discovered by ArsGlacialis)
 * [1E] Fixed two problems with Abyssal Appearance/Essence relation
 * [1E] Weapon speeds can be negative (Found by uteck)
-* Characters with Craft specialties now can be loaded (Discovered by ArsGlacialis)
 * Crafts now register as a favored ability (Reported by ArsGlacialis & Peter Blake)
 * Experienced specialty values are displayed correctly after loading
 * [1E] 'Unspeaking Aura of Dread' (Lunar) now has correct prerequisites.
 
 ===------------------------------------------------------------------------------===
-			Release 1.0 "Lap" (22/10/06)
+			Release 1.0x "Lap" (22/10/06)
 ===------------------------------------------------------------------------------===
 -- ATTENTION --
 Characters knowing 2e "Phoenix Renewal Tactic" or 1e "(Type) Exalt Ways" are in an illegal state
