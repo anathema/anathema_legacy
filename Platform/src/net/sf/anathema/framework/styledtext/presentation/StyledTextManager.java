@@ -17,11 +17,13 @@ import net.disy.commons.core.text.font.FontStyle;
 import net.sf.anathema.framework.styledtext.model.IStyledTextChangeListener;
 import net.sf.anathema.framework.styledtext.model.IStyledTextualDescription;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 
 public class StyledTextManager implements IStyledTextManager {
 
-  private final List<IStyledTextChangeListener> listeners = new ArrayList<IStyledTextChangeListener>();
+  private final GenericControl<IStyledTextChangeListener> listeners = new GenericControl<IStyledTextChangeListener>();
   private final DefaultStyledDocument document;
   private ITextPart[] actualTextParts = new ITextPart[0];
 
@@ -121,13 +123,15 @@ public class StyledTextManager implements IStyledTextManager {
     catch (BadLocationException e) {
       throw new IllegalStateException(e);
     }
-    for (IStyledTextChangeListener listener : listeners) {
-      listener.textChanged(actualTextParts);
-    }
+    listeners.forAllDo(new IClosure<IStyledTextChangeListener>() {
+      public void execute(IStyledTextChangeListener input) {
+        input.textChanged(actualTextParts);
+      }
+    });
   }
 
-  public synchronized void addStyledTextListener(IStyledTextChangeListener listener) {
-    listeners.add(listener);
+  public void addStyledTextListener(IStyledTextChangeListener listener) {
+    listeners.addListener(listener);
   }
 
   public static void initView(final IStyledTextManager manager, final IStyledTextualDescription textualDescription) {

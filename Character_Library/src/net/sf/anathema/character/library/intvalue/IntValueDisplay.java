@@ -136,7 +136,7 @@ public class IntValueDisplay implements IIntValueDisplay {
     panel.resizeMarkerRectangle(width);
   }
 
-  private synchronized void fireValueChangedEvent(int value) {
+  private void fireValueChangedEvent(int value) {
     valueControl.fireValueChangedEvent(value);
   }
 

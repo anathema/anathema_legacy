@@ -51,7 +51,7 @@ public class PlotView implements IPlotView {
     createContent(content, properties);
   }
 
-  public synchronized void addPlotViewListener(IPlotViewListener listener) {
+  public void addPlotViewListener(IPlotViewListener listener) {
     listenerControl.addPlotViewListener(listener);
   }
 

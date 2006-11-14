@@ -41,7 +41,7 @@ public class PlotViewListenerControl {
     }
   }
 
-  public synchronized void addPlotViewListener(IPlotViewListener listener) {
+  public void addPlotViewListener(IPlotViewListener listener) {
     plotViewListeners.add(listener);
   }
 }

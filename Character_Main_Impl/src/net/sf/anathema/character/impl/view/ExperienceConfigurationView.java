@@ -2,8 +2,6 @@ package net.sf.anathema.character.impl.view;
 
 import java.awt.Component;
 import java.awt.Dimension;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.Action;
 import javax.swing.JPanel;
@@ -18,6 +16,8 @@ import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewListener;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewProperties;
 import net.sf.anathema.framework.presenter.view.AbstractInitializableContentView;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.table.SmartTable;
@@ -27,7 +27,7 @@ import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;
 public class ExperienceConfigurationView extends
     AbstractInitializableContentView<IExperienceConfigurationViewProperties> implements IExperienceConfigurationView {
 
-  private final List<IExperienceConfigurationViewListener> listeners = new ArrayList<IExperienceConfigurationViewListener>();
+  private final GenericControl<IExperienceConfigurationViewListener> listeners = new GenericControl<IExperienceConfigurationViewListener>();
   private SmartTable smartTable;
   private Action deleteAction;
   private LabelledIntegerValueView labelledIntValueView;
@@ -79,29 +79,31 @@ public class ExperienceConfigurationView extends
   }
 
   protected void fireSelectionChanged() {
-    for (IExperienceConfigurationViewListener listener : cloneListeners()) {
-      listener.selectionChanged(smartTable.getSelectedRowIndex());
-    }
+    listeners.forAllDo(new IClosure<IExperienceConfigurationViewListener>() {
+      public void execute(IExperienceConfigurationViewListener input) {
+        input.selectionChanged(smartTable.getSelectedRowIndex());
+      }
+    });
   }
 
   private void fireRemoveRequested() {
-    for (IExperienceConfigurationViewListener listener : cloneListeners()) {
-      listener.removeRequested(smartTable.getSelectedRowIndex());
-    }
+    listeners.forAllDo(new IClosure<IExperienceConfigurationViewListener>() {
+      public void execute(IExperienceConfigurationViewListener input) {
+        input.removeRequested(smartTable.getSelectedRowIndex());
+      }
+    });
   }
 
   private void fireAddRequested() {
-    for (IExperienceConfigurationViewListener listener : cloneListeners()) {
-      listener.addRequested();
-    }
+    listeners.forAllDo(new IClosure<IExperienceConfigurationViewListener>() {
+      public void execute(IExperienceConfigurationViewListener input) {
+        input.addRequested();
+      }
+    });
   }
 
-  private synchronized List<IExperienceConfigurationViewListener> cloneListeners() {
-    return new ArrayList<IExperienceConfigurationViewListener>(listeners);
-  }
-
-  public synchronized void addExperienceConfigurationViewListener(IExperienceConfigurationViewListener listener) {
-    listeners.add(listener);
+  public void addExperienceConfigurationViewListener(IExperienceConfigurationViewListener listener) {
+    listeners.addListener(listener);
   }
 
   public void setRemoveButtonEnabled(boolean enabled) {

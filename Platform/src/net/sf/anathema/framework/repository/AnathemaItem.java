@@ -1,13 +1,12 @@
 package net.sf.anathema.framework.repository;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.disy.commons.core.util.ObjectUtilities;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.util.IIdentificate;
 
@@ -17,22 +16,23 @@ public class AnathemaItem implements IItem {
   protected final IItemType itemType;
   private final RepositoryLocation repositoryLocation;
   private final IIdentificate identificate;
-  private final List<IItemListener> repositoryItemListeners = new ArrayList<IItemListener>();
+  private final GenericControl<IItemListener> repositoryItemListeners = new GenericControl<IItemListener>();
   private IItemData itemData;
 
-  public synchronized void addItemListener(IItemListener listener) {
-    repositoryItemListeners.add(listener);
+  public void addItemListener(IItemListener listener) {
+    repositoryItemListeners.addListener(listener);
   }
 
-  public synchronized void removeItemListener(IItemListener listener) {
-    repositoryItemListeners.remove(listener);
+  public void removeItemListener(IItemListener listener) {
+    repositoryItemListeners.removeListener(listener);
   }
 
-  private synchronized void firePrintNameChanged(String name) {
-    List<IItemListener> clonedListeners = new ArrayList<IItemListener>(repositoryItemListeners);
-    for (IItemListener listener : clonedListeners) {
-      listener.printNameChanged(name);
-    }
+  private void firePrintNameChanged(final String name) {
+    repositoryItemListeners.forAllDo(new IClosure<IItemListener>() {
+      public void execute(IItemListener input) {
+        input.printNameChanged(name);
+      }
+    });
   }
 
   public AnathemaItem(IItemType type, IItemData itemData) {

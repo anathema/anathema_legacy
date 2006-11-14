@@ -9,6 +9,8 @@ import net.sf.anathema.framework.repository.RepositoryConfiguration;
 import net.sf.anathema.framework.repository.tree.IRepositoryTreeModel;
 import net.sf.anathema.framework.repository.tree.IRepositoryTreeModelListener;
 import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 
 public class DemoRepositoryTreeModel implements IRepositoryTreeModel {
 
@@ -17,7 +19,7 @@ public class DemoRepositoryTreeModel implements IRepositoryTreeModel {
       "ExaltedCharacter", new RepositoryConfiguration(".ecg", "ExaltedCharacter/")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
   private final List<IItemType> types = new ArrayList<IItemType>();
   private final List<PrintNameFile> printNameFiles = new ArrayList<PrintNameFile>();
-  private final List<IRepositoryTreeModelListener> listeners = new ArrayList<IRepositoryTreeModelListener>();
+  private final GenericControl<IRepositoryTreeModelListener> listeners = new GenericControl<IRepositoryTreeModelListener>();
 
   public DemoRepositoryTreeModel() {
     types.add(CHARACTER);
@@ -46,13 +48,15 @@ public class DemoRepositoryTreeModel implements IRepositoryTreeModel {
     firePrintNameFileAdded(file);
   }
 
-  private void firePrintNameFileAdded(PrintNameFile file) {
-    for (IRepositoryTreeModelListener listener : new ArrayList<IRepositoryTreeModelListener>(listeners)) {
-      listener.printNameFileAdded(file);
-    }
+  private void firePrintNameFileAdded(final PrintNameFile file) {
+    listeners.forAllDo(new IClosure<IRepositoryTreeModelListener>() {
+      public void execute(IRepositoryTreeModelListener input) {
+        input.printNameFileAdded(file);
+      }
+    });
   }
 
   public void addRepositoryTreeModelListener(IRepositoryTreeModelListener listener) {
-    listeners.add(listener);
+    listeners.addListener(listener);
   }
 }

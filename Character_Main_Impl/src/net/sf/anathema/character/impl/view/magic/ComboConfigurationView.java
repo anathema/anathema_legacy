@@ -2,8 +2,6 @@ package net.sf.anathema.character.impl.view.magic;
 
 import java.awt.Component;
 import java.awt.Dimension;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.Action;
 import javax.swing.Icon;
@@ -28,6 +26,8 @@ import net.sf.anathema.character.view.magic.IComboConfigurationView;
 import net.sf.anathema.character.view.magic.IComboView;
 import net.sf.anathema.character.view.magic.IComboViewListener;
 import net.sf.anathema.character.view.magic.IComboViewProperties;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.GuiUtilities;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -38,10 +38,11 @@ import com.l2fprod.common.swing.JTaskPane;
 
 public class ComboConfigurationView implements IComboConfigurationView {
 
+  // TODO Move listener management / button initialization to presenter
   private static final int TEXT_COLUMNS = 20;
   private final MagicLearnView magicLearnView = new MagicLearnView();
   private JComponent content;
-  private final List<IComboViewListener> comboViewListeners = new ArrayList<IComboViewListener>();
+  private final GenericControl<IComboViewListener> comboViewListeners = new GenericControl<IComboViewListener>();
   private final JPanel namePanel = new JPanel(new GridDialogLayout(1, false));
   private JButton clearButton;
   private JButton finalizeButton;
@@ -117,9 +118,11 @@ public class ComboConfigurationView implements IComboConfigurationView {
   }
 
   private void fireComboCleared() {
-    for (IComboViewListener listener : new ArrayList<IComboViewListener>(comboViewListeners)) {
-      listener.comboCleared();
-    }
+    comboViewListeners.forAllDo(new IClosure<IComboViewListener>() {
+      public void execute(IComboViewListener input) {
+        input.comboCleared();
+      }
+    });
   }
 
   private JButton createFinalizeComboButton(Icon icon) {
@@ -133,10 +136,12 @@ public class ComboConfigurationView implements IComboConfigurationView {
     return magicLearnView.addAdditionalAction(smartAction);
   }
 
-  private synchronized void fireComboFinalized() {
-    for (IComboViewListener listener : new ArrayList<IComboViewListener>(comboViewListeners)) {
-      listener.comboFinalized();
-    }
+  private void fireComboFinalized() {
+    comboViewListeners.forAllDo(new IClosure<IComboViewListener>() {
+      public void execute(IComboViewListener input) {
+        input.comboFinalized();
+      }
+    });
   }
 
   public void setAllCharms(Object[] charms) {
@@ -158,7 +163,7 @@ public class ComboConfigurationView implements IComboConfigurationView {
         listener.charmAdded(addedMagic[0]);
       }
     });
-    comboViewListeners.add(listener);
+    comboViewListeners.addListener(listener);
   }
 
   public void setComboCharms(Object[] charms) {

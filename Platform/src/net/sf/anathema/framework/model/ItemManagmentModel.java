@@ -8,11 +8,15 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
 import net.sf.anathema.framework.repository.IItem;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.exception.AnathemaException;
+
+import com.sun.org.apache.xml.internal.utils.WrappedRuntimeException;
 
 public class ItemManagmentModel implements IItemMangementModel {
 
-  private final List<IItemManagementModelListener> listeners = new ArrayList<IItemManagementModelListener>();
+  private final GenericControl<IItemManagementModelListener> listeners = new GenericControl<IItemManagementModelListener>();
   private final List<IItem> allItems = new ArrayList<IItem>();
   private IItem selectedItem;
 
@@ -38,30 +42,46 @@ public class ItemManagmentModel implements IItemMangementModel {
     setSelectedItem(itemIndex < 0 ? null : allItems.get(itemIndex));
   }
 
-  public synchronized void addListener(IItemManagementModelListener listener) {
-    listeners.add(listener);
+  public void addListener(IItemManagementModelListener listener) {
+    listeners.addListener(listener);
   }
 
-  private synchronized void fireItemRemovedEvent(final IItem item) {
-    for (IItemManagementModelListener listener : new ArrayList<IItemManagementModelListener>(listeners)) {
-      listener.itemRemoved(item);
+  private void fireItemRemovedEvent(final IItem item) {
+    listeners.forAllDo(new IClosure<IItemManagementModelListener>() {
+      public void execute(IItemManagementModelListener input) {
+        input.itemRemoved(item);
+      }
+    });
+  }
+
+  private void fireItemAddedEvent(final IItem item) throws AnathemaException {
+    try {
+      listeners.forAllDo(new IClosure<IItemManagementModelListener>() {
+        public void execute(IItemManagementModelListener input) {
+          try {
+            input.itemAdded(item);
+          }
+          catch (AnathemaException e) {
+            throw new WrappedRuntimeException(e);
+          }
+        }
+      });
     }
-  }
-
-  private synchronized void fireItemAddedEvent(final IItem item) throws AnathemaException {
-    for (IItemManagementModelListener input : new ArrayList<IItemManagementModelListener>(listeners)) {
-      input.itemAdded(item);
+    catch (WrappedRuntimeException e) {
+      throw (AnathemaException) e.getException();
     }
   }
 
   private void fireCharacterSelectionChangedEvent(final IItem item) {
-    for (IItemManagementModelListener listener : new ArrayList<IItemManagementModelListener>(listeners)) {
-      listener.itemSelected(item);
-    }
+    listeners.forAllDo(new IClosure<IItemManagementModelListener>() {
+      public void execute(IItemManagementModelListener input) {
+        input.itemSelected(item);
+      }
+    });
   }
 
-  public synchronized void removeListener(IItemManagementModelListener listener) {
-    listeners.remove(listener);
+  public void removeListener(IItemManagementModelListener listener) {
+    listeners.removeListener(listener);
   }
 
   public void setSelectedItem(IItem item) {

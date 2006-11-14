@@ -20,12 +20,14 @@ import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.background.IBackgroundConfiguration;
 import net.sf.anathema.character.model.background.IBackgroundListener;
 import net.sf.anathema.lib.collection.Predicate;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 
 public class BackgroundConfiguration implements IBackgroundConfiguration {
 
   private final List<IDefaultTrait> backgrounds = new ArrayList<IDefaultTrait>();
-  private final List<IBackgroundListener> listeners = new ArrayList<IBackgroundListener>();
+  private final GenericControl<IBackgroundListener> listeners = new GenericControl<IBackgroundListener>();
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
   private final IAdditionalRules additionalRules;
   private final ITraitTemplateCollection traitTemplates;
@@ -85,15 +87,16 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
     return backgrounds.toArray(new IDefaultTrait[backgrounds.size()]);
   }
 
-  public synchronized void addBackgroundListener(IBackgroundListener listener) {
-    listeners.add(listener);
+  public void addBackgroundListener(IBackgroundListener listener) {
+    listeners.addListener(listener);
   }
 
-  private synchronized void fireBackgroundAddedEvent(IDefaultTrait background) {
-    List<IBackgroundListener> cloneListeners = new ArrayList<IBackgroundListener>(listeners);
-    for (IBackgroundListener listener : cloneListeners) {
-      listener.backgroundAdded(background);
-    }
+  private void fireBackgroundAddedEvent(final IDefaultTrait background) {
+    listeners.forAllDo(new IClosure<IBackgroundListener>() {
+      public void execute(IBackgroundListener input) {
+        input.backgroundAdded(background);
+      }
+    });
   }
 
   public void removeBackground(IDefaultTrait background) {
@@ -101,11 +104,12 @@ public class BackgroundConfiguration implements IBackgroundConfiguration {
     fireBackgroundRemovedEvent(background);
   }
 
-  private synchronized void fireBackgroundRemovedEvent(IDefaultTrait background) {
-    List<IBackgroundListener> cloneListeners = new ArrayList<IBackgroundListener>(listeners);
-    for (IBackgroundListener listener : cloneListeners) {
-      listener.backgroundRemoved(background);
-    }
+  private void fireBackgroundRemovedEvent(final IDefaultTrait background) {
+    listeners.forAllDo(new IClosure<IBackgroundListener>() {
+      public void execute(IBackgroundListener input) {
+        input.backgroundRemoved(background);
+      }
+    });
   }
 
   public IDefaultTrait getBackgroundByTemplate(IBackgroundTemplate type) {

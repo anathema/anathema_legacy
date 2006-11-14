@@ -121,11 +121,11 @@ public class ItemViewManagement implements IComponentItemViewManagement {
     return itemViewsByComponent.get(tabbedPane.getSelectedTab().getContentComponent());
   }
 
-  public synchronized void addViewSelectionListener(IViewSelectionListener listener) {
+  public void addViewSelectionListener(IViewSelectionListener listener) {
     control.addListener(listener);
   }
 
-  private synchronized void fireItemViewChanged(final IItemView view) {
+  private void fireItemViewChanged(final IItemView view) {
     control.forAllDo(new IClosure<IViewSelectionListener>() {
       public void execute(IViewSelectionListener input) {
         input.viewSelectionChangedTo(view);

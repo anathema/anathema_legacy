@@ -1,12 +1,13 @@
 package net.sf.anathema.campaign.music.impl.persistence;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.model.track.Md5Checksum;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
@@ -14,7 +15,7 @@ import com.db4o.query.Predicate;
 
 public class LibraryPersister {
 
-  private final List<ITrackDeletionListener> listeners = new ArrayList<ITrackDeletionListener>();
+  private final GenericControl<ITrackDeletionListener> listeners = new GenericControl<ITrackDeletionListener>();
 
   public final void addLibrary(final ObjectContainer db, String libraryName) {
     Ensure.ensureArgumentFalse("Library name must be unique.", isRegisteredLibrary(db, libraryName)); //$NON-NLS-1$
@@ -110,14 +111,15 @@ public class LibraryPersister {
     }
   }
 
-  private synchronized void fireTrackDeleted(DbMp3Track track) {
-    List<ITrackDeletionListener> cloneList = new ArrayList<ITrackDeletionListener>(listeners);
-    for (ITrackDeletionListener listener : cloneList) {
-      listener.trackRemoved(track);
-    }
+  private void fireTrackDeleted(final DbMp3Track track) {
+    listeners.forAllDo(new IClosure<ITrackDeletionListener>() {
+      public void execute(ITrackDeletionListener input) {
+        input.trackRemoved(track);
+      }
+    });
   }
 
-  public synchronized void addTrackDeletionListener(ITrackDeletionListener listener) {
-    listeners.add(listener);
+  public void addTrackDeletionListener(ITrackDeletionListener listener) {
+    listeners.addListener(listener);
   }
 }

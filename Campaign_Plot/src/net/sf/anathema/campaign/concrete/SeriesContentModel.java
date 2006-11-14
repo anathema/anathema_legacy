@@ -14,6 +14,8 @@ import net.sf.anathema.framework.repository.tree.IRepositoryTreeModelListener;
 import net.sf.anathema.framework.repository.tree.RepositoryTreeModel;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.collection.ListOrderedSet;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 
 public class SeriesContentModel implements ISeriesContentModel {
 
@@ -23,7 +25,7 @@ public class SeriesContentModel implements ISeriesContentModel {
 
   private final Set<IItemType> types = new HashSet<IItemType>();
   private final Set<PrintNameFile> items = new ListOrderedSet<PrintNameFile>();
-  private final List<IRepositoryTreeModelListener> listeners = new ArrayList<IRepositoryTreeModelListener>();
+  private final GenericControl<IRepositoryTreeModelListener> listeners = new GenericControl<IRepositoryTreeModelListener>();
 
   public SeriesContentModel(IItemType[] contentTypes) {
     for (IItemType itemType : contentTypes) {
@@ -61,20 +63,24 @@ public class SeriesContentModel implements ISeriesContentModel {
     }
   }
 
-  private void fireTypeAdded(IItemType type) {
-    for (IRepositoryTreeModelListener listener : new ArrayList<IRepositoryTreeModelListener>(listeners)) {
-      listener.itemTypeAdded(type);
-    }
+  private void fireTypeAdded(final IItemType type) {
+    listeners.forAllDo(new IClosure<IRepositoryTreeModelListener>() {
+      public void execute(IRepositoryTreeModelListener input) {
+        input.itemTypeAdded(type);
+      }
+    });
   }
 
-  private void firePrintNameFileAdded(PrintNameFile file) {
-    for (IRepositoryTreeModelListener listener : new ArrayList<IRepositoryTreeModelListener>(listeners)) {
-      listener.printNameFileAdded(file);
-    }
+  private void firePrintNameFileAdded(final PrintNameFile file) {
+    listeners.forAllDo(new IClosure<IRepositoryTreeModelListener>() {
+      public void execute(IRepositoryTreeModelListener input) {
+        input.printNameFileAdded(file);
+      }
+    });
   }
 
   public void addRepositoryTreeModelListener(IRepositoryTreeModelListener listener) {
-    listeners.add(listener);
+    listeners.addListener(listener);
   }
 
   public void removeItem(PrintNameFile file) {
@@ -84,9 +90,11 @@ public class SeriesContentModel implements ISeriesContentModel {
     firePrintNameFileRemoved(file);
   }
 
-  private void firePrintNameFileRemoved(PrintNameFile item) {
-    for (IRepositoryTreeModelListener listener : new ArrayList<IRepositoryTreeModelListener>(listeners)) {
-      listener.printNameFileRemoved(item);
-    }
+  private void firePrintNameFileRemoved(final PrintNameFile item) {
+    listeners.forAllDo(new IClosure<IRepositoryTreeModelListener>() {
+      public void execute(IRepositoryTreeModelListener input) {
+        input.printNameFileRemoved(item);
+      }
+    });
   }
 }

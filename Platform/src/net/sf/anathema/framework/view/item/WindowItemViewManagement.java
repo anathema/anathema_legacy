@@ -1,9 +1,7 @@
 package net.sf.anathema.framework.view.item;
 
 import java.awt.Component;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.swing.Action;
@@ -18,6 +16,8 @@ import net.infonode.docking.util.DockingUtil;
 import net.infonode.util.Direction;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.framework.view.IViewSelectionListener;
+import net.sf.anathema.lib.control.GenericControl;
+import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
 public class WindowItemViewManagement implements IComponentItemViewManagement {
@@ -25,7 +25,7 @@ public class WindowItemViewManagement implements IComponentItemViewManagement {
   private final RootWindow window = new RootWindow(null);
   private final Map<Component, IItemView> itemViewsByComponent = new HashMap<Component, IItemView>();
   private final Map<IItemView, IObjectValueChangedListener<String>> nameListenersByView = new HashMap<IItemView, IObjectValueChangedListener<String>>();
-  private final List<IViewSelectionListener> viewSelectionListeners = new ArrayList<IViewSelectionListener>();
+  private final GenericControl<IViewSelectionListener> control = new GenericControl<IViewSelectionListener>();
 
   public void addItemView(final IItemView view, final Action closeAction) {
     BlueHighlightDockingTheme theme = new BlueHighlightDockingTheme();
@@ -41,6 +41,13 @@ public class WindowItemViewManagement implements IComponentItemViewManagement {
       public void windowClosed(DockingWindow dockingWindow) {
         if (dockingWindow == windowView) {
           closeAction.actionPerformed(null);
+        }
+      }
+
+      @Override
+      public void windowShown(DockingWindow dockingWindow) {
+        if (dockingWindow == windowView) {
+          fireItemViewChanged(view);
         }
       }
     });
@@ -69,16 +76,24 @@ public class WindowItemViewManagement implements IComponentItemViewManagement {
     return window;
   }
 
-  public synchronized void addViewSelectionListener(IViewSelectionListener listener) {
-    viewSelectionListeners.add(listener);
+  private void fireItemViewChanged(final IItemView view) {
+    control.forAllDo(new IClosure<IViewSelectionListener>() {
+      public void execute(IViewSelectionListener input) {
+        input.viewSelectionChangedTo(view);
+      }
+    });
   }
 
-  public synchronized void removeViewSelectionListener(IViewSelectionListener listener) {
-    viewSelectionListeners.remove(listener);
+  public void addViewSelectionListener(IViewSelectionListener listener) {
+    control.addListener(listener);
+  }
+
+  public void removeViewSelectionListener(IViewSelectionListener listener) {
+    control.removeListener(listener);
   }
 
   public void setSelectedItemView(IItemView view) {
-    //    getView(view).restoreFocus();
+    // getView(view).restoreFocus();
   }
 
   private View getView(IItemView view) {

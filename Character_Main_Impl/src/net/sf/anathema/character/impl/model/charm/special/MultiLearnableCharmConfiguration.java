@@ -68,7 +68,7 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
     control.addListener(listener);
   }
 
-  private synchronized void fireLearnCountChanged(final int learnCount) {
+  private void fireLearnCountChanged(final int learnCount) {
     control.forAllDo(new IClosure<ISpecialCharmLearnListener>() {
       public void execute(ISpecialCharmLearnListener input) {
         input.learnCountChanged(learnCount);
