@@ -60,7 +60,7 @@ public class AbyssalAdditionalTraitRules extends DefaultAdditionalTraitRules {
     if (essence.getCurrentValue() == 4 && appearance.getCurrentValue() == 2) {
       return false;
     }
-    if (essence.getCurrentValue() == 5 && new Range(1, 3).contains(appearance.getCurrentValue())) {
+    if (essence.getCurrentValue() >= 5 && new Range(1, 3).contains(appearance.getCurrentValue())) {
       return false;
     }
     return true;
