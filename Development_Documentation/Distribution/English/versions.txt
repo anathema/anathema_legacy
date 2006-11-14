@@ -18,6 +18,7 @@ http://anathema.sf.net
 * Added intelligent enforcement of 1-dot-minimum for Craft subtraits.
 
 -- Bugs Fixed --
+* [1E] Fixed two problems with Abyssal Appearance/Essence relation
 * [1E] Weapon speeds can be negative (Found by uteck)
 * Characters with Craft specialties now can be loaded (Discovered by ArsGlacialis)
 * Crafts now register as a favored ability (Reported by ArsGlacialis & Peter Blake)
