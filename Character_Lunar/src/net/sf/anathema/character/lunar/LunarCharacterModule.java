@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.framework.module.NullObjectCharacterMod
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
@@ -26,18 +27,24 @@ import net.sf.anathema.character.lunar.renown.RenownFactory;
 import net.sf.anathema.character.lunar.renown.RenownPersisterFactory;
 import net.sf.anathema.character.lunar.renown.RenownTemplate;
 import net.sf.anathema.character.lunar.renown.RenownViewFactory;
+import net.sf.anathema.character.lunar.reporting.FirstEditionLunarPartEncoder;
 import net.sf.anathema.character.lunar.reporting.LunarVoidstateReportTemplate;
 import net.sf.anathema.character.lunar.template.ILunarSpecialCharms;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawModelFactory;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawPersisterFactory;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawTemplate;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawViewFactory;
+import net.sf.anathema.character.reporting.CharacterReportingModule;
+import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
+import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
+import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
 public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
 
+  private static final int ESSENCE_MAX = EssenceTemplate.SYSTEM_ESSENCE_MAX;
   public static final String BACKGROUND_ID_HEARTS_BLOOD = "HeartsBlood"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_HEARTS_BLOOD_HUMAN = "HeartsBloodHuman"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_RENOWN = "Renown"; //$NON-NLS-1$
@@ -140,5 +147,10 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
     generics.getReportTemplateRegistry().add(new LunarVoidstateReportTemplate(resources));
+    CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
+        CharacterReportingModule.class);
+    PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
+    IPdfPartEncoder firstEditionEncoder = new FirstEditionLunarPartEncoder(resources, registry, ESSENCE_MAX);
+    registry.setPartEncoder(CharacterType.LUNAR, ExaltedEdition.FirstEdition, firstEditionEncoder);
   }
 }

@@ -18,7 +18,6 @@ import com.lowagie.text.pdf.PdfPTable;
 
 public class AnimaTableEncoder extends AbstractTableEncoder {
 
-  private final static String[] resourceIds = new String[] { "First", "Second", "Third", "Fourth", "Fifth" };//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
   private final IResources resources;
   private final Font headerFont;
   private final Font font;
@@ -69,11 +68,22 @@ public class AnimaTableEncoder extends AbstractTableEncoder {
     return table;
   }
 
-  private void addAnimaRow(PdfPTable table, int level, IGenericCharacter character, String descriptionPrefix) {
-    table.addCell(createContentCell(rangeProvider.getRange(level, character)));
-    table.addCell(createContentCell(getString(descriptionPrefix + "." + resourceIds[level]))); //$NON-NLS-1$
-    table.addCell(createContentCell(stealthProvider.getStealth(level)));
+  protected void addAnimaRow(PdfPTable table, int level, IGenericCharacter character, String descriptionPrefix) {
+    table.addCell(createRangeCell(level, character));
+    table.addCell(createDescriptionCell(level, descriptionPrefix));
+    table.addCell(createStealthCell(level));
+  }
 
+  protected PdfPCell createStealthCell(int level) {
+    return createContentCell(stealthProvider.getStealth(level));
+  }
+
+  protected PdfPCell createDescriptionCell(int level, String descriptionPrefix) {
+    return createContentCell(getString(descriptionPrefix + "." + AnimaUtils.resourceIds[level])); //$NON-NLS-1$
+  }
+
+  protected PdfPCell createRangeCell(int level, IGenericCharacter character) {
+    return createContentCell(rangeProvider.getRange(level, character));
   }
 
   private float[] getColumWidths(ColumnDescriptor[] columns) {
@@ -90,11 +100,15 @@ public class AnimaTableEncoder extends AbstractTableEncoder {
         new ColumnDescriptor(0.25f, "Sheet.AnimaTable.Header.Stealth") }; //$NON-NLS-1$
   }
 
-  private PdfPCell createContentCell(String text) {
+  protected final PdfPCell createContentCell(String text) {
     PdfPCell cell = new PdfPCell(new Phrase(text, font));
+    configureCell(cell);
+    return cell;
+  }
+
+  protected void configureCell(PdfPCell cell) {
     cell.setPaddingTop(1);
     cell.setPaddingBottom(2);
-    return cell;
   }
 
   private PdfPCell createHeaderCell(String text) {
@@ -105,5 +119,9 @@ public class AnimaTableEncoder extends AbstractTableEncoder {
 
   protected String getString(String key) {
     return resources.getString(key);
+  }
+
+  protected Font getFont() {
+    return font;
   }
 }

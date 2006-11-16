@@ -23,7 +23,6 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
 
-  private final static String[] resourceIds = new String[] { "First", "Second", "Third", "Fourth" };//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
   private final int fontSize;
   private final float lineHeight;
   private final BaseFont baseFont;
@@ -104,7 +103,7 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
     String resourceBase = "Sheet.AnimaPower." + characterType.getId() + "."; //$NON-NLS-1$ //$NON-NLS-2$
     for (int power = 0; power < animaPowerCount; power++) {
       phrase.add(symbolChunk);
-      phrase.add(resources.getString(resourceBase + resourceIds[power]) + "\n"); //$NON-NLS-1$
+      phrase.add(resources.getString(resourceBase + AnimaUtils.resourceIds[power]) + "\n"); //$NON-NLS-1$
     }
   }
 }
