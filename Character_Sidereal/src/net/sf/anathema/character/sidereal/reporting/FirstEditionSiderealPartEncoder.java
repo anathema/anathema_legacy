@@ -2,6 +2,7 @@ package net.sf.anathema.character.sidereal.reporting;
 
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.common.anima.AnimaTableEncoder;
 import net.sf.anathema.character.reporting.sheet.page.AbstractFirstEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPageEncoder;
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
@@ -22,7 +23,8 @@ public class FirstEditionSiderealPartEncoder extends AbstractFirstEditionExaltPd
 
   @Override
   protected IPdfTableEncoder getAnimaTableEncoder() {
-    return new SiderealAnimaTableEncoder(getResources(), getBaseFont(), getFontSize());
+    return new AnimaTableEncoder(getResources(), getBaseFont(), getFontSize(), new SiderealAnimaTableStealthProvider(
+        getResources()));
   }
 
   public IPdfContentBoxEncoder getGreatCurseEncoder() {

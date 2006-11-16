@@ -18,14 +18,39 @@ import com.lowagie.text.pdf.PdfPTable;
 
 public class AnimaTableEncoder extends AbstractTableEncoder {
 
+  private final static String[] resourceIds = new String[] { "First", "Second", "Third", "Fourth", "Fifth" };//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
   private final IResources resources;
   private final Font headerFont;
   private final Font font;
+  private final IAnimaTableRangeProvider rangeProvider;
+  private final IAnimaTableStealthProvider stealthProvider;
 
   public AnimaTableEncoder(IResources resources, BaseFont baseFont, float fontSize) {
+    this(resources, baseFont, fontSize, new AnimaTableRangeProvider());
+  }
+
+  public AnimaTableEncoder(
+      IResources resources,
+      BaseFont baseFont,
+      float fontSize,
+      IAnimaTableRangeProvider rangeProvider) {
     this.resources = resources;
     this.headerFont = new Font(baseFont, fontSize, Font.ITALIC, Color.BLACK);
     this.font = new Font(baseFont, fontSize, Font.NORMAL, Color.BLACK);
+    this.rangeProvider = rangeProvider;
+    this.stealthProvider = new AnimaTableStealthProvider(resources);
+  }
+
+  public AnimaTableEncoder(
+      IResources resources,
+      BaseFont baseFont,
+      float fontSize,
+      IAnimaTableStealthProvider stealthProvider) {
+    this.resources = resources;
+    this.headerFont = new Font(baseFont, fontSize, Font.ITALIC, Color.BLACK);
+    this.font = new Font(baseFont, fontSize, Font.NORMAL, Color.BLACK);
+    this.rangeProvider = new AnimaTableRangeProvider();
+    this.stealthProvider = stealthProvider;
   }
 
   @Override
@@ -36,31 +61,19 @@ public class AnimaTableEncoder extends AbstractTableEncoder {
     for (ColumnDescriptor column : columns) {
       table.addCell(createHeaderCell(getString(column.getHeaderKey())));
     }
-
     CharacterType type = character.getTemplate().getTemplateType().getCharacterType();
     String descriptionPrefix = "Sheet.AnimaTable.Description." + type; //$NON-NLS-1$
-
-    table.addCell(createContentCell(getFirstLevelRange(character)));
-    table.addCell(createContentCell(getString(descriptionPrefix + ".First"))); //$NON-NLS-1$
-    table.addCell(createContentCell(getString("Sheet.AnimaTable.StealthNormal"))); //$NON-NLS-1$
-
-    table.addCell(createContentCell(getSecondLevelRange(character)));
-    table.addCell(createContentCell(getString(descriptionPrefix + ".Second"))); //$NON-NLS-1$
-    table.addCell(createContentCell(getSecondLevelStealth()));
-
-    table.addCell(createContentCell(getThirdLevelRange(character)));
-    table.addCell(createContentCell(getString(descriptionPrefix + ".Third"))); //$NON-NLS-1$
-    table.addCell(createContentCell(getThirdLevelStealth()));
-
-    table.addCell(createContentCell(getFourthLevelRange(character)));
-    table.addCell(createContentCell(resources.getString(descriptionPrefix + ".Fourth"))); //$NON-NLS-1$
-    String stealthImpossible = getString("Sheet.AnimaTable.StealthImpossible"); //$NON-NLS-1$
-    table.addCell(createContentCell(stealthImpossible));
-
-    table.addCell(createContentCell(getFifthLevelRange(character)));
-    table.addCell(createContentCell(getString(descriptionPrefix + ".Fifth"))); //$NON-NLS-1$
-    table.addCell(createContentCell(stealthImpossible));
+    for (int index = 0; index < 5; index++) {
+      addAnimaRow(table, index, character, descriptionPrefix);
+    }
     return table;
+  }
+
+  private void addAnimaRow(PdfPTable table, int level, IGenericCharacter character, String descriptionPrefix) {
+    table.addCell(createContentCell(rangeProvider.getRange(level, character)));
+    table.addCell(createContentCell(getString(descriptionPrefix + "." + resourceIds[level]))); //$NON-NLS-1$
+    table.addCell(createContentCell(stealthProvider.getStealth(level)));
+
   }
 
   private float[] getColumWidths(ColumnDescriptor[] columns) {
@@ -75,34 +88,6 @@ public class AnimaTableEncoder extends AbstractTableEncoder {
     return new ColumnDescriptor[] { new ColumnDescriptor(0.15f, "Sheet.AnimaTable.Header.Motes"), //$NON-NLS-1$
         new ColumnDescriptor(0.6f, "Sheet.AnimaTable.Header.BannerFlare"), //$NON-NLS-1$
         new ColumnDescriptor(0.25f, "Sheet.AnimaTable.Header.Stealth") }; //$NON-NLS-1$
-  }
-
-  protected String getThirdLevelStealth() {
-    return getString("Sheet.AnimaTable.StealthImpossible"); //$NON-NLS-1$
-  }
-
-  protected String getSecondLevelStealth() {
-    return "+2"; //$NON-NLS-1$
-  }
-
-  protected String getFifthLevelRange(IGenericCharacter character) {
-    return "16+"; //$NON-NLS-1$
-  }
-
-  protected String getFourthLevelRange(IGenericCharacter character) {
-    return "11-15"; //$NON-NLS-1$
-  }
-
-  protected String getThirdLevelRange(IGenericCharacter character) {
-    return "8-10"; //$NON-NLS-1$
-  }
-
-  protected String getSecondLevelRange(IGenericCharacter character) {
-    return "4-7"; //$NON-NLS-1$
-  }
-
-  protected String getFirstLevelRange(IGenericCharacter character) {
-    return "1-3"; //$NON-NLS-1$
   }
 
   private PdfPCell createContentCell(String text) {

@@ -2,6 +2,7 @@ package net.sf.anathema.character.abyssal.reporting;
 
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.common.anima.AnimaTableEncoder;
 import net.sf.anathema.character.reporting.sheet.page.AbstractFirstEditionExaltPdfPartEncoder;
 import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
 import net.sf.anathema.lib.resources.IResources;
@@ -23,6 +24,7 @@ public class FirstEditionAbyssalPartEncoder extends AbstractFirstEditionExaltPdf
 
   @Override
   protected IPdfTableEncoder getAnimaTableEncoder() {
-    return new AbyssalAnimaTableEncoder(getResources(), getBaseFont(), getFontSize());
+    return new AnimaTableEncoder(getResources(), getBaseFont(), getFontSize(), new AbyssalAnimaTableStealthProvider(
+        getResources()));
   }
 }
