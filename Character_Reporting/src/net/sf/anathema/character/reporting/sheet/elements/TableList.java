@@ -15,8 +15,14 @@ public class TableList {
   private final Font font;
   private int index = 1;
   private final PdfPTable table;
+  private final CellPadding padding;
 
   public TableList(Font font) {
+    this(font, new CellPadding(0, 0, 1, 1));
+  }
+
+  public TableList(Font font, CellPadding padding) {
+    this.padding = padding;
     this.table = new PdfPTable(new float[] { 1, 9 });
     table.setWidthPercentage(100);
     this.font = font;
@@ -44,13 +50,19 @@ public class TableList {
     table.addCell(createCell(text, Element.ALIGN_LEFT));
   }
 
+  public void addSubItem(String text) {
+    table.addCell(createCell("", Element.ALIGN_RIGHT)); //$NON-NLS-1$
+    table.addCell(createCell(" " + text, Element.ALIGN_LEFT)); //$NON-NLS-1$
+  }
+
   private PdfPCell createCell(String content, int horizontalAlignment) {
     TableCell cell = new TableCell(new Phrase(content, font), Rectangle.NO_BORDER);
     return configureCell(cell, horizontalAlignment);
   }
 
   private PdfPCell configureCell(PdfPCell cell, int horizontalAlignment) {
-    cell.setPadding(0);
+    cell.setPaddingTop(padding.getTopPadding());
+    cell.setPaddingBottom(padding.getBottomPadding());
     cell.setPaddingLeft(1);
     cell.setPaddingRight(1);
     cell.setHorizontalAlignment(horizontalAlignment);
