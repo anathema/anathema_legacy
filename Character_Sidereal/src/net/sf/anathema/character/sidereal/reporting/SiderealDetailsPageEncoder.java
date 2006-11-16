@@ -17,6 +17,8 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class SiderealDetailsPageEncoder implements IPdfPageEncoder {
 
+  private final static int COLLEGE_HEIGHT = 312;
+  private final static int DESTINY_HEIGHT = (COLLEGE_HEIGHT - PADDING) / 2;
   private final int essenceMax;
   private final IResources resources;
   private final BaseFont baseFont;
@@ -52,15 +54,64 @@ public class SiderealDetailsPageEncoder implements IPdfPageEncoder {
     distanceFromTop += encodeParadox(directContent, character, distanceFromTop);
     distanceFromTop += PADDING;
     distanceFromTop += encodeArcaneFate(directContent, character, distanceFromTop);
-    // RESPLENDENT DESTINIES FILL-IN-BOX
+    distanceFromTop += PADDING;
+
+    int centerDistanceFromTop = 0;
+    centerDistanceFromTop += encodeResplendentDestiny(
+        directContent,
+        getCenterDestinyBounds(centerDistanceFromTop),
+        character);
+    centerDistanceFromTop += PADDING;
+    centerDistanceFromTop += encodeResplendentDestiny(
+        directContent,
+        getCenterDestinyBounds(centerDistanceFromTop),
+        character);
+    centerDistanceFromTop += PADDING;
+
+    int rightDistanceFromTop = 0;
+    rightDistanceFromTop += encodeResplendentDestiny(
+        directContent,
+        getRightDestinyBounds(rightDistanceFromTop),
+        character);
+    rightDistanceFromTop += PADDING;
+    rightDistanceFromTop += encodeResplendentDestiny(
+        directContent,
+        getRightDestinyBounds(rightDistanceFromTop),
+        character);
+    rightDistanceFromTop += PADDING;
+
+    centerDistanceFromTop += encodeAstrology(directContent, character, centerDistanceFromTop);
     // STANDING: ALLEGIANCE / CURRENT SALARY / CELESTIAL MANSE
-    // ACQUAINTANCES-FILL-IN
-    // SIFU-FILL-IN
-    // CONVENTION MEMBERSHIP-FILL-IN
+    // CONVENTION MEMBERSHIP-FILL-IN (3-5 lines)
+    // ACQUAINTANCES/FAMILIARS-FILL-IN
     // CONNECTIONS-FILL-IN
     // FAVORS OWED
-    // ASTROLOGY INFO BOX
+    // SIFU-FILL-IN
     // MAKING DESTINY INFO BOX
+  }
+
+  private int encodeAstrology(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
+      throws DocumentException {
+    int height = 170;
+    Bounds boxBounds = configuration.getSecondColumnRectangle(distanceFromTop, height, 1);
+    IPdfContentBoxEncoder encoder = new AstrologyInfoEncoder(baseFont, resources);
+    boxEncoder.encodeBox(directContent, encoder, character, boxBounds);
+    return height;
+  }
+
+  private int encodeResplendentDestiny(PdfContentByte directContent, Bounds boxBounds, IGenericCharacter character)
+      throws DocumentException {
+    IPdfContentBoxEncoder encoder = new ResplendentDestinyEncoder(baseFont, fontSize, resources);
+    boxEncoder.encodeBox(directContent, encoder, character, boxBounds);
+    return (int) boxBounds.height;
+  }
+
+  private Bounds getRightDestinyBounds(int distanceFromTop) {
+    return configuration.getThirdColumnRectangle(distanceFromTop, DESTINY_HEIGHT);
+  }
+
+  private Bounds getCenterDestinyBounds(int distanceFromTop) {
+    return configuration.getSecondColumnRectangle(distanceFromTop, DESTINY_HEIGHT, 1);
   }
 
   private int encodeParadox(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
@@ -83,7 +134,7 @@ public class SiderealDetailsPageEncoder implements IPdfPageEncoder {
 
   private int encodeColleges(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
       throws DocumentException {
-    int height = 312;
+    int height = COLLEGE_HEIGHT;
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 1);
     IPdfContentBoxEncoder encoder = new SiderealCollegeEncoder(baseFont, resources, essenceMax);
     boxEncoder.encodeBox(directContent, encoder, character, boxBounds);
