@@ -27,7 +27,6 @@ import net.sf.anathema.character.sidereal.colleges.SiderealCollegeTemplate;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeViewFactory;
 import net.sf.anathema.character.sidereal.colleges.persistence.SiderealCollegePersisterFactory;
 import net.sf.anathema.character.sidereal.reporting.FirstEditionSiderealPartEncoder;
-import net.sf.anathema.character.sidereal.reporting.SiderealVoidStateReportTemplate;
 import net.sf.anathema.character.sidereal.template.DefaultSiderealTemplate;
 import net.sf.anathema.character.sidereal.template.ISiderealSpecialCharms;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -105,7 +104,6 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    generics.getReportTemplateRegistry().add(new SiderealVoidStateReportTemplate(resources));
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
         CharacterReportingModule.class);
     PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();

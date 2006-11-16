@@ -8,7 +8,7 @@ http://anathema.sf.net
 ===------------------------------------------------------------------------------===
 
 -- Features --
-+ [1E] Dragon-Blooded and Abyssals now use 2E-Style sheets, allowing them to use equipment and so on.
++ [1E] Dragon-Blooded, Abyssals and Sidereals now use 2E-Style sheets, allowing them to use equipment and so on.
 
 -- Usability --
 + Toolbar with transparent icons (Proposed by Democritus)

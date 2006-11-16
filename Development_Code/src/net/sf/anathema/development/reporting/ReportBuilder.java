@@ -24,7 +24,6 @@ import net.sf.anathema.development.reporting.encoder.voidstate.subreports.attrib
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.attribute.VoidstateLunarAttributeSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.description.VoidstateDefaultDescriptionSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.description.VoidstateLunarDescriptionSubreportEncoder;
-import net.sf.anathema.development.reporting.encoder.voidstate.subreports.description.VoidstateSiderealDescriptionSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.health.VoidstateDefaultHealthSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.health.VoidstateLunarHealthSubreportEncoder;
 import net.sf.anathema.development.reporting.encoder.voidstate.subreports.middlecolumn.BeastformMiddleColumnSubreportEncoder;
@@ -55,22 +54,7 @@ public class ReportBuilder {
 
   public static void main(String[] args) throws InitializationException {
     buildReportDesign(new File("VoidStateCharacterSheet.xml"), new VoidstateSheetEncoder()); //$NON-NLS-1$
-    // buildReportDesign(new File("VoidstateNullPage.xml"), new VoidstateNullPageSubreportEncoder()); //$NON-NLS-1$
-    // buildReportDesign(new File("VoidstateBeastformPage.xml"), new VoidstateBeastformSubreportEncoder());
-    // //$NON-NLS-1$
-    // createAttributeSubreports();
     createAbilitySubreports();
-    // createDescriptionSubreports();
-    // createAnimaSubreports();
-    // createHealthSubreports();
-    // createMiddleColumnSubreports();
-    // buildReportDesign(new File("VoidstateCombatStatsSubreport.xml"), new VoidstateCombatStatsSubreportEncoder(
-    // basicsEncoder));
-    // buildReportDesign(new File("VoidStateBrawlSubreport.xml"), new VoidstateBrawlSubreportEncoder());
-    // buildReportDesign(new File("VoidStateSequenceSubreport.xml"), new
-    // VoidstateSequenceSubreportEncoder(basicsEncoder));
-    // buildReportDesign(new File("VoidstateCharmPageSubreport.xml"), new VoidstateCharmPageSubreportEncoder());
-    // createBasicSheets();
   }
 
   private static void createBasicSheets() throws InitializationException {
@@ -118,9 +102,6 @@ public class ReportBuilder {
   }
 
   private static void createDescriptionSubreports() throws InitializationException {
-    buildReportDesign(
-        new File("VoidstateSiderealDescriptionSubreport.xml"),
-        new VoidstateSiderealDescriptionSubreportEncoder(basicsEncoder, traitEncoder));
     buildReportDesign(
         new File("VoidstateLunarDescriptionSubreport.xml"),
         new VoidstateLunarDescriptionSubreportEncoder(basicsEncoder));
