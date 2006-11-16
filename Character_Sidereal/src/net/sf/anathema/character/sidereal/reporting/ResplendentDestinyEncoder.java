@@ -14,13 +14,11 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class ResplendentDestinyEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
 
-  private int fontSize;
   private IResources resources;
   private BaseFont basefont;
   private float lineHeight;
 
   public ResplendentDestinyEncoder(BaseFont baseFont, int fontSize, IResources resources) {
-    this.fontSize = fontSize;
     this.resources = resources;
     this.basefont = baseFont;
     this.lineHeight = fontSize * 1.5f;
@@ -42,19 +40,19 @@ public class ResplendentDestinyEncoder extends AbstractPdfEncoder implements IPd
     yPosition -= lineHeight;
     drawLabelledContent(directContent, getLabel("Label.Effects"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
     yPosition -= lineHeight;
-    encodeLines(directContent, bounds, new Position(bounds.x, yPosition));
+    encodeLines(directContent, bounds, new Position(bounds.x, yPosition), 4);
     yPosition -= 4 * lineHeight;
     drawLabelledContent(
         directContent,
         getLabel("Label.Trappings"), null, new Position(bounds.x, yPosition), bounds.width); //$NON-NLS-1$
     yPosition -= lineHeight;
-    encodeLines(directContent, bounds, new Position(bounds.x, yPosition));
+    encodeLines(directContent, bounds, new Position(bounds.x, yPosition), 5);
   }
 
-  private void encodeLines(PdfContentByte directContent, Bounds bounds, Position lineStartPosition) {
+  private void encodeLines(PdfContentByte directContent, Bounds bounds, Position lineStartPosition, int count) {
     float minX = bounds.getMinX();
     float maxX = bounds.getMaxX();
-    PdfLineEncodingUtilities.encodeHorizontalLines(directContent, lineStartPosition, minX, maxX, lineHeight, 4);
+    PdfLineEncodingUtilities.encodeHorizontalLines(directContent, lineStartPosition, minX, maxX, lineHeight, count);
   }
 
   public String getHeaderKey() {

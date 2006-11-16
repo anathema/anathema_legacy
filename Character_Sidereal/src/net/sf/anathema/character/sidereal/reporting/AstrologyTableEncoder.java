@@ -55,17 +55,15 @@ public class AstrologyTableEncoder extends AbstractTableEncoder {
     list.addSubItem(resources.getString("Sheet.Astrology.EffectRoll")); //$NON-NLS-1$
     list.addSubItem(resources.getString("Sheet.Astrology.ChooseEffect")); //$NON-NLS-1$
     list.addSubItem(resources.getString("Sheet.Astrology.ParadoxRoll")); //$NON-NLS-1$
-    list.addCell(spaceCell);
-    list.addCell(spaceCell);
-    list.addCell(spaceCell);
-    list.addCell(spaceCell);
-    list.addCell(spaceCell);
-    list.addCell(spaceCell);
-    list.addCell(spaceCell);
-    TableCell rulesCommentCell = new TableCell(
-        new Phrase(resources.getString("Sheet.Astrology.Rules"), commentFont), Rectangle.NO_BORDER); //$NON-NLS-1$
-    rulesCommentCell.setPadding(0);
-    list.addCell(rulesCommentCell);
+    // list.addCell(spaceCell);
+    // list.addCell(spaceCell);
+    // list.addCell(spaceCell);
+    // list.addCell(spaceCell);
+    // list.addCell(spaceCell);
+    // TableCell rulesCommentCell = new TableCell(
+    // new Phrase(resources.getString("Sheet.Astrology.Rules"), commentFont), Rectangle.NO_BORDER); //$NON-NLS-1$
+    // rulesCommentCell.setPadding(0);
+    // list.addCell(rulesCommentCell);
 
     return list.getTable();
   }
