@@ -13,6 +13,6 @@ public class AbyssalAnimaTableEncoder extends AnimaTableEncoder {
 
   @Override
   protected String getSecondLevelStealth() {
-    return getResources().getString("Sheet.AnimaTable.StealthNormal"); //$NON-NLS-1$
+    return getString("Sheet.AnimaTable.StealthNormal"); //$NON-NLS-1$
   }
 }

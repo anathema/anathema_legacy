@@ -34,31 +34,31 @@ public class AnimaTableEncoder extends AbstractTableEncoder {
     PdfPTable table = new PdfPTable(getColumWidths(columns));
     table.setWidthPercentage(100);
     for (ColumnDescriptor column : columns) {
-      table.addCell(createHeaderCell(resources.getString(column.getHeaderKey())));
+      table.addCell(createHeaderCell(getString(column.getHeaderKey())));
     }
 
     CharacterType type = character.getTemplate().getTemplateType().getCharacterType();
     String descriptionPrefix = "Sheet.AnimaTable.Description." + type; //$NON-NLS-1$
 
     table.addCell(createContentCell(getFirstLevelRange(character)));
-    table.addCell(createContentCell(resources.getString(descriptionPrefix + ".First"))); //$NON-NLS-1$
-    table.addCell(createContentCell(resources.getString("Sheet.AnimaTable.StealthNormal"))); //$NON-NLS-1$
+    table.addCell(createContentCell(getString(descriptionPrefix + ".First"))); //$NON-NLS-1$
+    table.addCell(createContentCell(getString("Sheet.AnimaTable.StealthNormal"))); //$NON-NLS-1$
 
     table.addCell(createContentCell(getSecondLevelRange(character)));
-    table.addCell(createContentCell(resources.getString(descriptionPrefix + ".Second"))); //$NON-NLS-1$
+    table.addCell(createContentCell(getString(descriptionPrefix + ".Second"))); //$NON-NLS-1$
     table.addCell(createContentCell(getSecondLevelStealth()));
 
     table.addCell(createContentCell(getThirdLevelRange(character)));
-    table.addCell(createContentCell(resources.getString(descriptionPrefix + ".Third"))); //$NON-NLS-1$
+    table.addCell(createContentCell(getString(descriptionPrefix + ".Third"))); //$NON-NLS-1$
     table.addCell(createContentCell(getThirdLevelStealth()));
 
     table.addCell(createContentCell(getFourthLevelRange(character)));
     table.addCell(createContentCell(resources.getString(descriptionPrefix + ".Fourth"))); //$NON-NLS-1$
-    String stealthImpossible = resources.getString("Sheet.AnimaTable.StealthImpossible"); //$NON-NLS-1$
+    String stealthImpossible = getString("Sheet.AnimaTable.StealthImpossible"); //$NON-NLS-1$
     table.addCell(createContentCell(stealthImpossible));
 
     table.addCell(createContentCell(getFifthLevelRange(character)));
-    table.addCell(createContentCell(resources.getString(descriptionPrefix + ".Fifth"))); //$NON-NLS-1$
+    table.addCell(createContentCell(getString(descriptionPrefix + ".Fifth"))); //$NON-NLS-1$
     table.addCell(createContentCell(stealthImpossible));
     return table;
   }
@@ -78,7 +78,7 @@ public class AnimaTableEncoder extends AbstractTableEncoder {
   }
 
   protected String getThirdLevelStealth() {
-    return resources.getString("Sheet.AnimaTable.StealthImpossible"); //$NON-NLS-1$
+    return getString("Sheet.AnimaTable.StealthImpossible"); //$NON-NLS-1$
   }
 
   protected String getSecondLevelStealth() {
@@ -118,7 +118,7 @@ public class AnimaTableEncoder extends AbstractTableEncoder {
     return cell;
   }
 
-  protected IResources getResources() {
-    return resources;
+  protected String getString(String key) {
+    return resources.getString(key);
   }
 }

@@ -12,12 +12,12 @@ public class SiderealAnimaTableEncoder extends AnimaTableEncoder {
 
   @Override
   protected String getSecondLevelStealth() {
-    return getResources().getString("Sheet.AnimaTable.StealthNormal"); //$NON-NLS-1$
+    return getString("Sheet.AnimaTable.StealthNormal"); //$NON-NLS-1$
   }
 
   @Override
   protected String getThirdLevelStealth() {
-    return getResources().getString("Sheet.AnimaTable.Stealth2InDark"); //$NON-NLS-1$
+    return getString("Sheet.AnimaTable.Stealth2InDark"); //$NON-NLS-1$
   }
 
 }
