@@ -58,7 +58,8 @@ public class SiderealDetailsPageEncoder implements IPdfPageEncoder {
     distanceFromTop += PADDING;
     distanceFromTop += encodeArcaneFate(directContent, character, distanceFromTop);
     distanceFromTop += PADDING;
-    distanceFromTop += encodeConnections(directContent, character, distanceFromTop);
+    float remainingHeight = configuration.getContentHeight() - distanceFromTop;
+    encodeConnections(directContent, character, remainingHeight, distanceFromTop);
 
     int centerDistanceFromTop = 0;
     centerDistanceFromTop += encodeResplendentDestiny(
@@ -98,13 +99,14 @@ public class SiderealDetailsPageEncoder implements IPdfPageEncoder {
 
   }
 
-  private int encodeConnections(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
-      throws DocumentException {
-    int height = 145;
+  private void encodeConnections(
+      PdfContentByte directContent,
+      IGenericCharacter character,
+      float height,
+      int distanceFromTop) throws DocumentException {
     Bounds boxBounds = configuration.getFirstColumnRectangle(distanceFromTop, height, 3);
     IPdfContentBoxEncoder encoder = new PdfHorizontalLineContentEncoder(4, "Sidereal.Connections"); //$NON-NLS-1$
     boxEncoder.encodeBox(directContent, encoder, character, boxBounds);
-    return height;
   }
 
   private int encodeAcquaintances(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
