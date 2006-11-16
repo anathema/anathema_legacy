@@ -30,13 +30,15 @@ public class AnimaTableEncoder extends AbstractTableEncoder {
 
   @Override
   protected PdfPTable createTable(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
-    PdfPTable table = new PdfPTable(new float[] { 0.15f, 0.6f, 0.25f });
+    ColumnDescriptor[] columns = getColumns();
+    PdfPTable table = new PdfPTable(getColumWidths(columns));
     table.setWidthPercentage(100);
+    for (ColumnDescriptor column : columns) {
+      table.addCell(createHeaderCell(resources.getString(column.getHeaderKey())));
+    }
+
     CharacterType type = character.getTemplate().getTemplateType().getCharacterType();
     String descriptionPrefix = "Sheet.AnimaTable.Description." + type; //$NON-NLS-1$
-    table.addCell(createHeaderCell(resources.getString("Sheet.AnimaTable.Header.Motes"))); //$NON-NLS-1$
-    table.addCell(createHeaderCell(resources.getString("Sheet.AnimaTable.Header.BannerFlare"))); //$NON-NLS-1$
-    table.addCell(createHeaderCell(resources.getString("Sheet.AnimaTable.Header.Stealth"))); //$NON-NLS-1$
 
     table.addCell(createContentCell(getFirstLevelRange(character)));
     table.addCell(createContentCell(resources.getString(descriptionPrefix + ".First"))); //$NON-NLS-1$
@@ -59,6 +61,20 @@ public class AnimaTableEncoder extends AbstractTableEncoder {
     table.addCell(createContentCell(resources.getString(descriptionPrefix + ".Fifth"))); //$NON-NLS-1$
     table.addCell(createContentCell(stealthImpossible));
     return table;
+  }
+
+  private float[] getColumWidths(ColumnDescriptor[] columns) {
+    float[] widths = new float[columns.length];
+    for (int index = 0; index < widths.length; index++) {
+      widths[index] = columns[index].getWidthPart();
+    }
+    return widths;
+  }
+
+  protected ColumnDescriptor[] getColumns() {
+    return new ColumnDescriptor[] { new ColumnDescriptor(0.15f, "Sheet.AnimaTable.Header.Motes"), //$NON-NLS-1$
+        new ColumnDescriptor(0.6f, "Sheet.AnimaTable.Header.BannerFlare"), //$NON-NLS-1$
+        new ColumnDescriptor(0.25f, "Sheet.AnimaTable.Header.Stealth") }; //$NON-NLS-1$
   }
 
   protected String getThirdLevelStealth() {
