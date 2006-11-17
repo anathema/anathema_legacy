@@ -62,7 +62,7 @@ public class BeastformBrawlEquipmentConfiguration extends AbstractBrawlWeaponCon
 
   @Override
   protected void buildSecondEditionBrawlWeaponList(List<IWeaponType> weapons) {
-    throw new UnsupportedOperationException("2nd Edition Lunars not yet available."); //$NON-NLS-1$    
+    throw new UnsupportedOperationException("Use 2E sheet!"); //$NON-NLS-1$    
   }
 
   private BrawlWeaponProvidingGift[] getActiveBrawlWeaponGift(IGiftModel giftmodel) {
