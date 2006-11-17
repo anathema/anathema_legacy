@@ -52,7 +52,7 @@ public class PdfAbilitiesEncoder extends FavorableTraitEncoder implements IPdfCo
     yPosition -= encodeCrafts(directContent, character, new Position(position.x, yPosition), width);
     yPosition -= IVoidStateFormatConstants.LINE_HEIGHT;
     yPosition -= encodeSpecialties(directContent, character, new Position(position.x, yPosition), width);
-    encodeMobilityPenaltyText(directContent, position, yPosition + 4);
+    encodeMobilityPenaltyText(directContent, position, bounds.getMinY() + 4);
   }
 
   @Override
