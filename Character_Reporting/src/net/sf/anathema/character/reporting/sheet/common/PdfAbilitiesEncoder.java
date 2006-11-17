@@ -20,7 +20,7 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class PdfAbilitiesEncoder extends FavorableTraitEncoder implements IPdfContentBoxEncoder {
+public class PdfAbilitiesEncoder extends FavorableTraitEncoder {
 
   public PdfAbilitiesEncoder(BaseFont baseFont, IResources resources, int essenceMax) {
     super(
