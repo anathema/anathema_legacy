@@ -23,6 +23,6 @@ public class FirstEditionLunarPartEncoder extends AbstractFirstEditionExaltPdfPa
   }
 
   public IPdfContentBoxEncoder getGreatCurseEncoder() {
-    return new LunarGreatCurseEncoder();
+    return new LunarGreatCurseEncoder(getBaseFont(), getSymbolBaseFont(), getResources());
   }
 }
