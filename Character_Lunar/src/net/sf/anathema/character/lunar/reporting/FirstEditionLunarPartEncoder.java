@@ -40,4 +40,9 @@ public class FirstEditionLunarPartEncoder extends AbstractFirstEditionExaltPdfPa
         getEssenceMax(),
         configuration) };
   }
+
+  @Override
+  public boolean isEncodeAttributeAsFavorable() {
+    return true;
+  }
 }

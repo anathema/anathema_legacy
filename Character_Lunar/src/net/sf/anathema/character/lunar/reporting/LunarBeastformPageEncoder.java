@@ -135,7 +135,7 @@ public class LunarBeastformPageEncoder implements IPdfPageEncoder {
       throws DocumentException {
     int attributeHeight = 128;
     Bounds attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 1);
-    IPdfContentBoxEncoder encoder = new PdfAttributesEncoder(baseFont, resources, essenceMax);
+    IPdfContentBoxEncoder encoder = new PdfAttributesEncoder(baseFont, resources, essenceMax, true);
     boxEncoder.encodeBox(directContent, encoder, character, attributeBounds);
     return attributeHeight;
   }

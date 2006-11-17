@@ -25,4 +25,6 @@ public interface IPdfPartEncoder {
   public float getWeaponryHeight();
 
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration);
+
+  public boolean isEncodeAttributeAsFavorable();
 }

@@ -63,4 +63,8 @@ public abstract class AbstractSecondEditionPartEncoder implements IPdfPartEncode
   public IPdfPageEncoder[] getAdditionalPages(PdfPageConfiguration configuration) {
     return new IPdfPageEncoder[0];
   }
+
+  public boolean isEncodeAttributeAsFavorable() {
+    return false;
+  }
 }

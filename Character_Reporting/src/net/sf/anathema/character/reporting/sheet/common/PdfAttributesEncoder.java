@@ -18,10 +18,12 @@ public class PdfAttributesEncoder implements IPdfContentBoxEncoder {
   private final IResources resources;
   private PdfTraitEncoder smallTraitEncoder;
   private final int essenceMax;
+  private final boolean encodeFavored;
 
-  public PdfAttributesEncoder(BaseFont baseFont, IResources resources, int essenceMax) {
+  public PdfAttributesEncoder(BaseFont baseFont, IResources resources, int essenceMax, boolean encodeFavored) {
     this.resources = resources;
     this.essenceMax = essenceMax;
+    this.encodeFavored = encodeFavored;
     this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
   }
 
@@ -52,7 +54,26 @@ public class PdfAttributesEncoder implements IPdfContentBoxEncoder {
       String traitLabel = resources.getString("AttributeType.Name." + traitType.getId()); //$NON-NLS-1$
       int value = traitCollection.getTrait(traitType).getCurrentValue();
       Position position = new Position(contentBounds.x, y);
-      y -= smallTraitEncoder.encodeWithText(directContent, traitLabel, position, contentBounds.width, value, essenceMax);
+      if (!encodeFavored) {
+        y -= smallTraitEncoder.encodeWithText(
+            directContent,
+            traitLabel,
+            position,
+            contentBounds.width,
+            value,
+            essenceMax);
+      }
+      else {
+        boolean favored = traitCollection.getFavorableTrait(traitType).isCasteOrFavored();
+        y -= smallTraitEncoder.encodeWithTextAndRectangle(
+            directContent,
+            traitLabel,
+            position,
+            contentBounds.width,
+            value,
+            favored,
+            essenceMax);
+      }
     }
   }
 }
