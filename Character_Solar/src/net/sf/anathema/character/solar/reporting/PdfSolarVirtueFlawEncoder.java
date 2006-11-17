@@ -6,7 +6,6 @@ import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.elements.Line;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
-import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
@@ -23,25 +22,20 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.ColumnText;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class PdfSolarVirtueFlawEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
+public class PdfSolarVirtueFlawEncoder implements IPdfContentBoxEncoder {
 
-  private final BaseFont baseFont;
   private final PdfTraitEncoder traitEncoder;
-  private final Font nameFont = createNameFont();
-  private final Font font = createFont();
+  private final Font nameFont;
+  private final Font font;
 
   public PdfSolarVirtueFlawEncoder(BaseFont baseFont) {
-    this.baseFont = baseFont;
+    this.font = createFont(baseFont);
+    this.nameFont = createNameFont(baseFont);
     this.traitEncoder = PdfTraitEncoder.createMediumTraitEncoder(baseFont);
   }
 
   public String getHeaderKey() {
     return "GreatCurse.Solar"; //$NON-NLS-1$
-  }
-
-  @Override
-  protected BaseFont getBaseFont() {
-    return baseFont;
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
@@ -93,13 +87,13 @@ public class PdfSolarVirtueFlawEncoder extends AbstractPdfEncoder implements IPd
     }
   }
 
-  private Font createNameFont() {
-    Font newFont = createFont();
+  private Font createNameFont(BaseFont baseFont) {
+    Font newFont = createFont(baseFont);
     newFont.setStyle(Font.BOLD);
     return newFont;
   }
 
-  private Font createFont() {
-    return TableEncodingUtilities.createFont(getBaseFont());
+  private Font createFont(BaseFont baseFont) {
+    return TableEncodingUtilities.createFont(baseFont);
   }
 }
