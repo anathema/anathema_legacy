@@ -14,6 +14,9 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfAbilitiesEncoder extends FavorableTraitEncoder {
 
+  private final CraftEncoder craftEncoder;
+  private final SpecialtiesEncoder specialtiesEncoder;
+
   public PdfAbilitiesEncoder(BaseFont baseFont, IResources resources, int essenceMax) {
     super(
         baseFont,
@@ -24,6 +27,8 @@ public class PdfAbilitiesEncoder extends FavorableTraitEncoder {
         AbilityType.Larceny,
         AbilityType.Ride,
         AbilityType.Stealth);
+    this.craftEncoder = new CraftEncoder(resources, baseFont, getTraitEncoder(), essenceMax);
+    this.specialtiesEncoder = new SpecialtiesEncoder(resources, baseFont, getTraitEncoder());
   }
 
   public String getHeaderKey() {
@@ -41,17 +46,9 @@ public class PdfAbilitiesEncoder extends FavorableTraitEncoder {
     float width = bounds.width;
     float yPosition = encodeTraitGroups(directContent, character, position, width);
     yPosition -= IVoidStateFormatConstants.LINE_HEIGHT;
-    yPosition -= new CraftEncoder(getResources(), getBaseFont(), getTraitEncoder(), getEssenceMax()).encode(
-        directContent,
-        character,
-        new Position(position.x, yPosition),
-        width);
+    yPosition -= craftEncoder.encode(directContent, character, new Position(position.x, yPosition), width);
     yPosition -= IVoidStateFormatConstants.LINE_HEIGHT;
-    yPosition -= new SpecialtiesEncoder(getResources(), getBaseFont(), getTraitEncoder()).encode(
-        directContent,
-        character,
-        new Position(position.x, yPosition),
-        width);
+    yPosition -= specialtiesEncoder.encode(directContent, character, new Position(position.x, yPosition), width);
     encodeMobilityPenaltyText(directContent, position, bounds.getMinY() + 4);
   }
 

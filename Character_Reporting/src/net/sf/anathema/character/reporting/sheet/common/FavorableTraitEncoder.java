@@ -50,10 +50,6 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     return traitEncoder;
   }
 
-  protected int getEssenceMax() {
-    return essenceMax;
-  }
-
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     Position position = new Position(bounds.getMinX(), bounds.getMaxY());
     float width = bounds.width;
@@ -120,7 +116,8 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
   protected abstract String getGroupNamePrefix();
 
   protected String getTraitTypePrefix() {
-    return "";} //$NON-NLS-1$
+    return ""; //$NON-NLS-1$
+  }
 
   private int encodeFavorableTrait(
       PdfContentByte directContent,
