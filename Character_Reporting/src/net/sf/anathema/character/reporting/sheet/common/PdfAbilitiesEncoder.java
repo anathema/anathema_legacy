@@ -3,13 +3,32 @@ package net.sf.anathema.character.reporting.sheet.common;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.groups.IIdentifiedTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
 
 public class PdfAbilitiesEncoder extends FavorableTraitEncoder {
 
-  public PdfAbilitiesEncoder(BaseFont baseFont, IResources resources, int essenceMax) {
+  public static PdfAbilitiesEncoder createWithSpecialtiesOnly(BaseFont baseFont, IResources resources, int essenceMax) {
+    PdfAbilitiesEncoder pdfAbilitiesEncoder = new PdfAbilitiesEncoder(baseFont, resources, essenceMax);
+    PdfTraitEncoder traitEncoder = pdfAbilitiesEncoder.getTraitEncoder();
+    pdfAbilitiesEncoder.addNamedTraitEncoder(new SpecialtiesEncoder(resources, baseFont, traitEncoder));
+    return pdfAbilitiesEncoder;
+  }
+
+  public static PdfAbilitiesEncoder createWithCraftsAndSpecialties(
+      BaseFont baseFont,
+      IResources resources,
+      int essenceMax) {
+    PdfAbilitiesEncoder pdfAbilitiesEncoder = new PdfAbilitiesEncoder(baseFont, resources, essenceMax);
+    PdfTraitEncoder traitEncoder = pdfAbilitiesEncoder.getTraitEncoder();
+    pdfAbilitiesEncoder.addNamedTraitEncoder(new CraftEncoder(resources, baseFont, traitEncoder, essenceMax));
+    pdfAbilitiesEncoder.addNamedTraitEncoder(new SpecialtiesEncoder(resources, baseFont, traitEncoder));
+    return pdfAbilitiesEncoder;
+  }
+
+  private PdfAbilitiesEncoder(BaseFont baseFont, IResources resources, int essenceMax) {
     super(
         baseFont,
         resources,
@@ -19,8 +38,7 @@ public class PdfAbilitiesEncoder extends FavorableTraitEncoder {
         AbilityType.Larceny,
         AbilityType.Ride,
         AbilityType.Stealth);
-    addNamedTraitEncoder(new CraftEncoder(resources, baseFont, getTraitEncoder(), essenceMax));
-    addNamedTraitEncoder(new SpecialtiesEncoder(resources, baseFont, getTraitEncoder()));
+
   }
 
   public String getHeaderKey() {

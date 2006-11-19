@@ -153,7 +153,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
       throws DocumentException {
     int abilitiesHeight = CONTENT_HEIGHT - distanceFromTop;
     Bounds boxBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, abilitiesHeight, 1);
-    IPdfContentBoxEncoder encoder = new PdfAbilitiesEncoder(baseFont, resources, essenceMax);
+    IPdfContentBoxEncoder encoder = PdfAbilitiesEncoder.createWithCraftsAndSpecialties(baseFont, resources, essenceMax);
     boxEncoder.encodeBox(directContent, encoder, character, boxBounds);
   }
 
