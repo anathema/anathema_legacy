@@ -133,7 +133,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     return traitEncoder.encodeWithTextAndRectangle(directContent, label, position, width, value, favored, essenceMax);
   }
 
-  private void encodeCrossMarker(PdfContentByte directContent, Position markerPosition) {
+  protected final void encodeCrossMarker(PdfContentByte directContent, Position markerPosition) {
     directContent.setLineWidth(1.0f);
     directContent.moveTo(markerPosition.x, markerPosition.y + 2);
     directContent.lineTo(markerPosition.x + 4, markerPosition.y + 2);
