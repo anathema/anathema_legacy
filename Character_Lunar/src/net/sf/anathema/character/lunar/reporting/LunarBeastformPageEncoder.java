@@ -139,19 +139,22 @@ public class LunarBeastformPageEncoder implements IPdfPageEncoder {
   private int encodeAttributes(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop) {
     int attributeHeight = 128;
     Bounds attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 2);
-    LunarBeastformAttributesEncoder encoder = new LunarBeastformAttributesEncoder(baseFont, resources);
+    float smallWidth = pageConfiguration.getColumnWidth();
+    BeastformAttributeBoxEncoder beastBoxEncoder = new BeastformAttributeBoxEncoder(baseFont);
+    LunarBeastformAttributesEncoder encoder = new LunarBeastformAttributesEncoder(
+        baseFont,
+        resources,
+        beastBoxEncoder.calculateInsettedWidth(smallWidth));
     new PdfHeaderBoxEncoder(baseFont).encodeHeaderBox(
         directContent,
         attributeBounds,
         resources.getString("Sheet.Header." + encoder.getHeaderKey())); //$NON-NLS-1$
-    BeastformAttributeBoxEncoder beastBoxEncoder = new BeastformAttributeBoxEncoder(baseFont);
-    float smallWidth = pageConfiguration.getColumnWidth();
     Bounds contentBounds = beastBoxEncoder.encodeContentBox(
         directContent,
         attributeBounds,
         smallWidth,
         getOverlapFreeSpaceHeight());
-    encoder.encode(directContent, character, contentBounds, beastBoxEncoder.calculateInsettedWidth(smallWidth));
+    encoder.encode(directContent, character, contentBounds);
     return attributeHeight;
   }
 

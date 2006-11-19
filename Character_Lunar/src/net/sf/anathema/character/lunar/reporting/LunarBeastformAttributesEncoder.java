@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.character.reporting.util.Position;
@@ -13,15 +14,17 @@ import net.sf.anathema.lib.resources.IResources;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class LunarBeastformAttributesEncoder {
+public class LunarBeastformAttributesEncoder implements IPdfContentBoxEncoder {
 
   private final static int PHYSICAL_MAX = 30;
   private final static int STANDARD_MAX = 10;
   private final IResources resources;
   private final PdfTraitEncoder smallTraitEncoder;
+  private final float smallWidth;
 
-  public LunarBeastformAttributesEncoder(BaseFont baseFont, IResources resources) {
+  public LunarBeastformAttributesEncoder(BaseFont baseFont, IResources resources, float smallWidth) {
     this.resources = resources;
+    this.smallWidth = smallWidth;
     this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
   }
 
@@ -29,16 +32,15 @@ public class LunarBeastformAttributesEncoder {
     return "Attributes"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds, float smallWidth) {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) {
     IGroupedTraitType[] attributeGroups = character.getTemplate().getAttributeGroups();
     IGenericTraitCollection traitCollection = character.getTraitCollection();
-    encodeAttributes(directContent, bounds, smallWidth, attributeGroups, traitCollection);
+    encodeAttributes(directContent, bounds, attributeGroups, traitCollection);
   }
 
   public final void encodeAttributes(
       PdfContentByte directContent,
       Bounds contentBounds,
-      float smallWidth,
       IGroupedTraitType[] attributeGroups,
       IGenericTraitCollection traitCollection) {
     float groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
