@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfAbilitiesEncoder;
-import net.sf.anathema.character.reporting.sheet.common.PdfAttributesEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfHorizontalLineContentEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfVirtueEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfWillpowerEncoder;
@@ -18,6 +17,7 @@ import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatCons
 import net.sf.anathema.character.reporting.sheet.pageformat.PdfPageConfiguration;
 import net.sf.anathema.character.reporting.sheet.second.SecondEditionPersonalInfoEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.util.PdfHeaderBoxEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -33,6 +33,7 @@ public class LunarBeastformPageEncoder implements IPdfPageEncoder {
   private final BaseFont baseFont;
 
   private static final int ANIMA_HEIGHT = 128;
+  private static final int VIRTUE_HEIGHT = 72;
   private final PdfPageConfiguration pageConfiguration;
   private final PdfBoxEncoder boxEncoder;
   private final PdfEncodingRegistry registry;
@@ -67,11 +68,11 @@ public class LunarBeastformPageEncoder implements IPdfPageEncoder {
 
     encodeFirstColumn(directContent, character, distanceFromTop);
     encodeAnima(directContent, character, distanceFromTop, ANIMA_HEIGHT);
-    float virtueHeight = 72;
-    float freeSpace = ANIMA_HEIGHT - virtueHeight;
+    float freeSpace = getOverlapFreeSpaceHeight();
     distanceFromTop += freeSpace;
-    encodeVirtues(directContent, distanceFromTop, virtueHeight, character.getTraitCollection());
-    distanceFromTop += calculateBoxIncrement(virtueHeight);
+    distanceFromTop += PADDING;
+    // encodeVirtues(directContent, distanceFromTop, VIRTUE_HEIGHT, character.getTraitCollection());
+    distanceFromTop += calculateBoxIncrement(VIRTUE_HEIGHT);
 
     float animalFormHeight = encodeAnimalForms(directContent, character, distanceFromTop, 115);
     float willpowerHeight = encodeWillpower(directContent, character, distanceFromTop, 43);
@@ -87,6 +88,10 @@ public class LunarBeastformPageEncoder implements IPdfPageEncoder {
     distanceFromTop += calculateBoxIncrement(healthHeight);
     float remainingHeight = LunarBeastformPageEncoder.CONTENT_HEIGHT - distanceFromTop;
     encodeCombatStats(directContent, character, distanceFromTop, remainingHeight);
+  }
+
+  private float getOverlapFreeSpaceHeight() {
+    return ANIMA_HEIGHT - VIRTUE_HEIGHT - PADDING;
   }
 
   private float encodeEssence(
@@ -134,9 +139,19 @@ public class LunarBeastformPageEncoder implements IPdfPageEncoder {
   private int encodeAttributes(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
       throws DocumentException {
     int attributeHeight = 128;
-    Bounds attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 1);
-    IPdfContentBoxEncoder encoder = new PdfAttributesEncoder(baseFont, resources, essenceMax, true);
-    boxEncoder.encodeBox(directContent, encoder, character, attributeBounds);
+    Bounds attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 2);
+    Bounds smallBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 1);
+    IPdfContentBoxEncoder encoder = new LunarBeastformAttributesEncoder(baseFont, resources);
+    new PdfHeaderBoxEncoder(baseFont).encodeHeaderBox(
+        directContent,
+        attributeBounds,
+        resources.getString("Sheet.Header." + encoder.getHeaderKey())); //$NON-NLS-1$
+    Bounds contentBounds = new BeastformAttributeBoxEncoder(baseFont).encodeContentBox(
+        directContent,
+        attributeBounds,
+        smallBounds,
+        getOverlapFreeSpaceHeight());
+    encoder.encode(directContent, character, contentBounds);
     return attributeHeight;
   }
 
@@ -246,7 +261,7 @@ public class LunarBeastformPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    IPdfContentBoxEncoder encoder = new PdfHorizontalLineContentEncoder(1, "Face"); //$NON-NLS-1$
+    IPdfContentBoxEncoder encoder = new LunarFaceEncoder();
     boxEncoder.encodeBox(directContent, encoder, character, bounds);
     return height;
   }

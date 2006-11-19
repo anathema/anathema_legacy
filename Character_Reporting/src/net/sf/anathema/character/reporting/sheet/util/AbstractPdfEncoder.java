@@ -39,10 +39,6 @@ public abstract class AbstractPdfEncoder {
     return (int) getBaseFont().getWidthPoint(text, IVoidStateFormatConstants.COMMENT_FONT_SIZE);
   }
 
-  protected final void setFillColorWhite(PdfContentByte directContent) {
-    directContent.setRGBColorFill(255, 255, 255);
-  }
-
   protected final void setFillColorBlack(PdfContentByte directContent) {
     directContent.setRGBColorFill(0, 0, 0);
   }

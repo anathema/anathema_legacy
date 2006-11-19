@@ -1,0 +1,75 @@
+package net.sf.anathema.character.lunar.reporting;
+
+import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
+import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
+import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
+import net.sf.anathema.character.reporting.util.Bounds;
+import net.sf.anathema.character.reporting.util.Position;
+import net.sf.anathema.lib.resources.IResources;
+
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfContentByte;
+
+public class LunarBeastformAttributesEncoder implements IPdfContentBoxEncoder {
+
+  private final static int PHYSICAL_MAX = 30;
+  private final static int STANDARD_MAX = 10;
+  private final IResources resources;
+  private final PdfTraitEncoder smallTraitEncoder;
+
+  public LunarBeastformAttributesEncoder(BaseFont baseFont, IResources resources) {
+    this.resources = resources;
+    this.smallTraitEncoder = PdfTraitEncoder.createSmallTraitEncoder(baseFont);
+  }
+
+  public String getHeaderKey() {
+    return "Attributes"; //$NON-NLS-1$
+  }
+
+  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+    IGroupedTraitType[] attributeGroups = character.getTemplate().getAttributeGroups();
+    IGenericTraitCollection traitCollection = character.getTraitCollection();
+    encodeAttributes(directContent, bounds, attributeGroups, traitCollection);
+  }
+
+  public final void encodeAttributes(
+      PdfContentByte directContent,
+      Bounds contentBounds,
+      IGroupedTraitType[] attributeGroups,
+      IGenericTraitCollection traitCollection) {
+    float groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
+    float y = contentBounds.getMaxY() - groupSpacing;
+    String groupId = null;
+    int maximum = 0;
+    for (IGroupedTraitType groupedTraitType : attributeGroups) {
+      if (!groupedTraitType.getGroupId().equals(groupId)) {
+        groupId = groupedTraitType.getGroupId();
+        y -= groupSpacing;
+        if (groupId.equals(AttributeGroupType.Physical.name())) {
+          maximum = PHYSICAL_MAX;
+        }
+        else {
+          maximum = STANDARD_MAX;
+        }
+      }
+      ITraitType traitType = groupedTraitType.getTraitType();
+      String traitLabel = resources.getString("AttributeType.Name." + traitType.getId()); //$NON-NLS-1$
+      int value = traitCollection.getTrait(traitType).getCurrentValue();
+      Position position = new Position(contentBounds.x, y);
+      boolean favored = traitCollection.getFavorableTrait(traitType).isCasteOrFavored();
+      y -= smallTraitEncoder.encodeWithTextAndRectangle(
+          directContent,
+          traitLabel,
+          position,
+          contentBounds.width,
+          value,
+          favored,
+          maximum);
+    }
+  }
+}
