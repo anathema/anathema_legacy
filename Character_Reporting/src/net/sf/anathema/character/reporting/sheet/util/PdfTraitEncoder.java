@@ -75,7 +75,7 @@ public class PdfTraitEncoder extends AbstractPdfEncoder {
       int dotCount,
       final int dotSpacing) {
     int groupSpacing = dotCount > 5 ? dotSize / 2 : 0;
-    int spacecount = (int) Math.floor((double) dotCount / 5);
+    int spacecount = (int) Math.ceil((double) dotCount / 5);
     for (int dot = 0; dot < dotCount; dot++) {
       if (dot % 5 == 0) {
         spacecount--;
