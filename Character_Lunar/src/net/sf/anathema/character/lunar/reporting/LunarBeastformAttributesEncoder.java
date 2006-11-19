@@ -29,16 +29,16 @@ public class LunarBeastformAttributesEncoder {
     return "Attributes"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds, Bounds smallBounds) {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds, float smallWidth) {
     IGroupedTraitType[] attributeGroups = character.getTemplate().getAttributeGroups();
     IGenericTraitCollection traitCollection = character.getTraitCollection();
-    encodeAttributes(directContent, bounds, smallBounds, attributeGroups, traitCollection);
+    encodeAttributes(directContent, bounds, smallWidth, attributeGroups, traitCollection);
   }
 
   public final void encodeAttributes(
       PdfContentByte directContent,
       Bounds contentBounds,
-      Bounds smallBounds,
+      float smallWidth,
       IGroupedTraitType[] attributeGroups,
       IGenericTraitCollection traitCollection) {
     float groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
@@ -56,7 +56,7 @@ public class LunarBeastformAttributesEncoder {
         }
         else {
           maximum = STANDARD_MAX;
-          width = smallBounds.width;
+          width = smallWidth;
         }
       }
       ITraitType traitType = groupedTraitType.getTraitType();

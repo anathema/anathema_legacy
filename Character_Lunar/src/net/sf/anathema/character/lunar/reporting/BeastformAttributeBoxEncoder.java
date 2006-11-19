@@ -26,28 +26,30 @@ public class BeastformAttributeBoxEncoder extends AbstractPdfEncoder {
   public Bounds encodeContentBox(
       PdfContentByte directContent,
       Bounds bounds,
-      Bounds smallBounds,
+      float smallWidth,
       float overlapFreeSpaceHeight) {
     Bounds contentBounds = calculateContentBoxBounds(bounds);
+    overlapFreeSpaceHeight -= getHeaderPadding();
+    float smallMaxX = contentBounds.x + smallWidth;
     setFillColorBlack(directContent);
     directContent.setLineWidth(0.5f);
     directContent.moveTo(contentBounds.x, contentBounds.y + ARCSPACE);
     add90DegreeArc(directContent, contentBounds.x, contentBounds.y, 180);
     directContent.moveTo(contentBounds.x + ARCSPACE, contentBounds.y);
-    directContent.lineTo(smallBounds.x + smallBounds.width - ARCSPACE, smallBounds.y);
-    add90DegreeArc(directContent, smallBounds.x + smallBounds.width - ARC_SIZE, smallBounds.y, 270);
-    directContent.moveTo(smallBounds.getMaxX(), smallBounds.y + ARCSPACE);
-    directContent.lineTo(smallBounds.getMaxX(), smallBounds.getMaxY() - ARCSPACE - overlapFreeSpaceHeight);
-    add90DegreeArc(directContent, smallBounds.getMaxX(), smallBounds.getMaxY() - overlapFreeSpaceHeight - ARC_SIZE, 90);
-    directContent.moveTo(smallBounds.getMaxX() + ARCSPACE, smallBounds.getMaxY() - overlapFreeSpaceHeight);
-    directContent.lineTo(contentBounds.getMaxX() - ARCSPACE, smallBounds.getMaxY() - overlapFreeSpaceHeight);
+    directContent.lineTo(smallMaxX - ARCSPACE, contentBounds.y);
+    add90DegreeArc(directContent, smallMaxX - ARC_SIZE, contentBounds.y, 270);
+    directContent.moveTo(smallMaxX, contentBounds.y + ARCSPACE);
+    directContent.lineTo(smallMaxX, contentBounds.getMaxY() - ARCSPACE - overlapFreeSpaceHeight);
+    add90DegreeArc(directContent, smallMaxX, contentBounds.getMaxY() - overlapFreeSpaceHeight - ARC_SIZE, 90);
+    directContent.moveTo(smallMaxX + ARCSPACE, contentBounds.getMaxY() - overlapFreeSpaceHeight);
+    directContent.lineTo(contentBounds.getMaxX() - ARCSPACE, contentBounds.getMaxY() - overlapFreeSpaceHeight);
     add90DegreeArc(
         directContent,
         contentBounds.getMaxX() - ARC_SIZE,
-        smallBounds.getMaxY() - overlapFreeSpaceHeight,
+        contentBounds.getMaxY() - overlapFreeSpaceHeight,
         270);
-    directContent.moveTo(contentBounds.getMaxX(), smallBounds.getMaxY() + ARCSPACE - overlapFreeSpaceHeight);
-    directContent.lineTo(contentBounds.getMaxX(), smallBounds.getMaxY() - ARC_SIZE);
+    directContent.moveTo(contentBounds.getMaxX(), contentBounds.getMaxY() + ARCSPACE - overlapFreeSpaceHeight);
+    directContent.lineTo(contentBounds.getMaxX(), contentBounds.getMaxY() - ARCSPACE);
     add90DegreeArc(directContent, contentBounds.getMaxX() - ARC_SIZE, contentBounds.getMaxY() - ARC_SIZE, 0);
     directContent.moveTo(contentBounds.getMinX() + ARCSPACE, contentBounds.getMaxY());
     add90DegreeArc(directContent, contentBounds.x, contentBounds.getMaxY() - ARC_SIZE, 90);
@@ -61,8 +63,12 @@ public class BeastformAttributeBoxEncoder extends AbstractPdfEncoder {
     return new Bounds(
         contentBounds.x + CONTENT_INSET,
         contentBounds.y,
-        contentBounds.width - 2 * CONTENT_INSET,
+        calculateInsettedWidth(contentBounds.width),
         contentBounds.height - ARCSPACE);
+  }
+
+  public float calculateInsettedWidth(float width) {
+    return width - 2 * CONTENT_INSET;
   }
 
   private void add90DegreeArc(PdfContentByte directContent, float minX, float minY, float startAngle) {
@@ -70,7 +76,12 @@ public class BeastformAttributeBoxEncoder extends AbstractPdfEncoder {
   }
 
   private Bounds calculateContentBoxBounds(Bounds bounds) {
-    int headerPadding = HEADER_HEIGHT / 2;
+    int headerPadding = getHeaderPadding();
     return new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - headerPadding);
+  }
+
+  private int getHeaderPadding() {
+    int headerPadding = HEADER_HEIGHT / 2;
+    return headerPadding;
   }
 }
