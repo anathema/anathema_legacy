@@ -60,7 +60,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
       yPosition -= encoder.encode(directContent, character, new Position(position.x, yPosition), width);
     }
     if (!markedTraitTypes.isEmpty()) {
-      encodeMobilityPenaltyText(directContent, position, bounds.getMinY() + 4);
+      encodeMarkerCommentText(directContent, position, bounds.getMinY() + 4);
     }
   }
 
@@ -102,7 +102,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
       ITraitType traitType = traitTypes[index];
       float yPosition = position.y - (index + 1) * traitEncoder.getTraitHeight();
       if (markedTraitTypes.contains(traitType)) {
-        encodeCrossMarker(directContent, new Position(markerX, yPosition + 1));
+        encodeMarker(directContent, new Position(markerX, yPosition + 1));
       }
       IFavorableGenericTrait trait = traitCollection.getFavorableTrait(traitType);
       String label = resources.getString(getTraitTypePrefix() + traitType.getId());
@@ -138,7 +138,7 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     return traitEncoder.encodeWithTextAndRectangle(directContent, label, position, width, value, favored, essenceMax);
   }
 
-  private final void encodeCrossMarker(PdfContentByte directContent, Position markerPosition) {
+  private final void encodeMarker(PdfContentByte directContent, Position markerPosition) {
     directContent.setLineWidth(1.0f);
     directContent.moveTo(markerPosition.x, markerPosition.y + 2);
     directContent.lineTo(markerPosition.x + 4, markerPosition.y + 2);
@@ -147,8 +147,8 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     directContent.stroke();
   }
 
-  private float encodeMobilityPenaltyText(PdfContentByte directContent, Position position, float yPosition) {
-    encodeCrossMarker(directContent, new Position(position.x, yPosition));
+  private float encodeMarkerCommentText(PdfContentByte directContent, Position position, float yPosition) {
+    encodeMarker(directContent, new Position(position.x, yPosition));
     String mobilityPenaltyText = " : " + resources.getString(getMarkerCommentKey()); //$NON-NLS-1$
     Position commentPosition = new Position(position.x + 5, yPosition);
     drawComment(directContent, mobilityPenaltyText, commentPosition, PdfContentByte.ALIGN_LEFT);
