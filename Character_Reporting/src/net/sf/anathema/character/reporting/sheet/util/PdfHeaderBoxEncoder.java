@@ -3,8 +3,8 @@ package net.sf.anathema.character.reporting.sheet.util;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.util.Bounds;
 
-import static net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder.HEADER_HEIGHT;
-import static net.sf.anathema.character.reporting.sheet.util.PdfBoxEncoder.ARCSPACE;
+import static net.sf.anathema.character.reporting.sheet.util.IPdfBoxEncoder.HEADER_HEIGHT;
+import static net.sf.anathema.character.reporting.sheet.util.IPdfBoxEncoder.ARCSPACE;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
