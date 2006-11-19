@@ -52,7 +52,7 @@ public class LunarBeastformAttributesEncoder {
         y -= groupSpacing;
         if (groupId.equals(AttributeGroupType.Physical.name())) {
           maximum = PHYSICAL_MAX;
-          width = contentBounds.width;
+          width = contentBounds.width - 3;
         }
         else {
           maximum = STANDARD_MAX;
