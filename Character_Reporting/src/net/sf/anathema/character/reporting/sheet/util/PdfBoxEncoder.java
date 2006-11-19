@@ -16,11 +16,13 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
   private BaseFont baseFont;
   private final IResources resources;
   private final PdfHeaderBoxEncoder headerBoxEncoder;
+  private final IPdfBoxEncoder standardBoxEncoder;
 
   public PdfBoxEncoder(IResources resources, BaseFont baseFont) {
     this.resources = resources;
     this.baseFont = baseFont;
     this.headerBoxEncoder = new PdfHeaderBoxEncoder(baseFont);
+    this.standardBoxEncoder = new StandardBoxEncoder(baseFont);
   }
 
   public Bounds calculateContentBounds(Bounds bounds) {
@@ -41,7 +43,7 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
   }
 
   public Bounds encodeBox(PdfContentByte directContent, Bounds bounds, String title) {
-    return encodeBox(directContent, bounds, title, new StandardBoxEncoder(baseFont));
+    return encodeBox(directContent, bounds, title, standardBoxEncoder);
   }
 
   public void encodeBox(
@@ -49,7 +51,7 @@ public class PdfBoxEncoder extends AbstractPdfEncoder {
       IPdfContentBoxEncoder encoder,
       IGenericCharacter character,
       Bounds bounds) throws DocumentException {
-    encodeBox(directContent, encoder, new StandardBoxEncoder(baseFont), character, bounds);
+    encodeBox(directContent, encoder, standardBoxEncoder, character, bounds);
   }
 
   public void encodeBox(
