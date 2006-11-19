@@ -1,5 +1,6 @@
 package net.sf.anathema.character.reporting.sheet.common;
 
+import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
@@ -10,10 +11,11 @@ import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.character.reporting.util.Position;
 import net.sf.anathema.lib.resources.IResources;
 
+import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class PdfVirtueEncoder extends AbstractPdfEncoder {
+public class PdfVirtueEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
 
   private final PdfTraitEncoder traitEncoder;
   private final BaseFont baseFont;
@@ -28,6 +30,14 @@ public class PdfVirtueEncoder extends AbstractPdfEncoder {
   @Override
   protected BaseFont getBaseFont() {
     return baseFont;
+  }
+
+  public String getHeaderKey() {
+    return "Virtues"; //$NON-NLS-1$
+  }
+
+  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+    encodeVirtues(directContent, bounds, character.getTraitCollection());
   }
 
   public void encodeVirtues(PdfContentByte directContent, Bounds bounds, IGenericTraitCollection collection) {

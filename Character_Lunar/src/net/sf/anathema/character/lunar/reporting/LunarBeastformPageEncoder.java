@@ -4,7 +4,6 @@ import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFor
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfAbilitiesEncoder;
@@ -71,7 +70,7 @@ public class LunarBeastformPageEncoder implements IPdfPageEncoder {
     float freeSpace = getOverlapFreeSpaceHeight();
     distanceFromTop += freeSpace;
     distanceFromTop += PADDING;
-    encodeVirtues(directContent, distanceFromTop, VIRTUE_HEIGHT, character.getTraitCollection());
+    encodeVirtues(directContent, distanceFromTop, VIRTUE_HEIGHT, character);
     distanceFromTop += calculateBoxIncrement(VIRTUE_HEIGHT);
 
     float animalFormHeight = encodeAnimalForms(directContent, character, distanceFromTop, 115);
@@ -229,11 +228,10 @@ public class LunarBeastformPageEncoder implements IPdfPageEncoder {
       PdfContentByte directContent,
       float distanceFromTop,
       float height,
-      IGenericTraitCollection collection) {
+      IGenericCharacter character) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    String header = resources.getString("Sheet.Header.Virtues"); //$NON-NLS-1$
-    Bounds contentBounds = boxEncoder.encodeBox(directContent, bounds, header);
-    new PdfVirtueEncoder(resources, baseFont).encodeVirtues(directContent, contentBounds, collection);
+    IPdfContentBoxEncoder encoder = new PdfVirtueEncoder(resources, baseFont);
+    boxEncoder.encodeBox(directContent, encoder, character, bounds);
     return height;
   }
 

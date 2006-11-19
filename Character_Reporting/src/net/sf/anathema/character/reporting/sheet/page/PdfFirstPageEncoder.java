@@ -4,7 +4,6 @@ import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFor
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfAbilitiesEncoder;
@@ -68,7 +67,7 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
 
     encodeFirstColumn(directContent, character, distanceFromTop);
     encodeAnima(directContent, character, distanceFromTop, ANIMA_HEIGHT);
-    float virtueHeight = encodeVirtues(directContent, distanceFromTop, 72, character.getTraitCollection());
+    float virtueHeight = encodeVirtues(directContent, distanceFromTop, 72, character);
     distanceFromTop += calculateBoxIncrement(virtueHeight);
     float greatCurseHeigth = ANIMA_HEIGHT - virtueHeight - IVoidStateFormatConstants.PADDING;
     encodeGreatCurse(directContent, character, distanceFromTop, greatCurseHeigth);
@@ -242,11 +241,10 @@ public class PdfFirstPageEncoder implements IPdfPageEncoder {
       PdfContentByte directContent,
       float distanceFromTop,
       float height,
-      IGenericTraitCollection collection) {
+      IGenericCharacter character) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    String header = resources.getString("Sheet.Header.Virtues"); //$NON-NLS-1$
-    Bounds contentBounds = boxEncoder.encodeBox(directContent, bounds, header);
-    new PdfVirtueEncoder(resources, baseFont).encodeVirtues(directContent, contentBounds, collection);
+    IPdfContentBoxEncoder encoder = new PdfVirtueEncoder(resources, baseFont);
+    boxEncoder.encodeBox(directContent, encoder, character, bounds);
     return height;
   }
 
