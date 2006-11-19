@@ -24,6 +24,7 @@ import com.lowagie.text.pdf.PdfContentByte;
 public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
 
   private final List<ITraitType> markedTraitTypes = new ArrayList<ITraitType>();
+  private final List<INamedTraitEncoder> namedTraitEncoders = new ArrayList<INamedTraitEncoder>();
   private final PdfTraitEncoder traitEncoder;
   private final IResources resources;
   private final int essenceMax;
@@ -37,13 +38,13 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     Collections.addAll(markedTraitTypes, markedTypes);
   }
 
+  protected final void addNamedTraitEncoder(INamedTraitEncoder encoder) {
+    namedTraitEncoders.add(encoder);
+  }
+
   @Override
   protected BaseFont getBaseFont() {
     return baseFont;
-  }
-
-  protected IResources getResources() {
-    return resources;
   }
 
   protected PdfTraitEncoder getTraitEncoder() {
@@ -53,10 +54,17 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
     Position position = new Position(bounds.getMinX(), bounds.getMaxY());
     float width = bounds.width;
-    encodeTraitGroups(directContent, character, position, width);
+    float yPosition = encodeTraitGroups(directContent, character, position, width);
+    for (INamedTraitEncoder encoder : namedTraitEncoders) {
+      yPosition -= IVoidStateFormatConstants.LINE_HEIGHT;
+      yPosition -= encoder.encode(directContent, character, new Position(position.x, yPosition), width);
+    }
+    if (!markedTraitTypes.isEmpty()) {
+      encodeMobilityPenaltyText(directContent, position, bounds.getMinY() + 4);
+    }
   }
 
-  protected float encodeTraitGroups(
+  private float encodeTraitGroups(
       PdfContentByte directContent,
       IGenericCharacter character,
       Position position,
@@ -130,12 +138,24 @@ public abstract class FavorableTraitEncoder extends AbstractPdfEncoder implement
     return traitEncoder.encodeWithTextAndRectangle(directContent, label, position, width, value, favored, essenceMax);
   }
 
-  protected final void encodeCrossMarker(PdfContentByte directContent, Position markerPosition) {
+  private final void encodeCrossMarker(PdfContentByte directContent, Position markerPosition) {
     directContent.setLineWidth(1.0f);
     directContent.moveTo(markerPosition.x, markerPosition.y + 2);
     directContent.lineTo(markerPosition.x + 4, markerPosition.y + 2);
     directContent.moveTo(markerPosition.x + 2, markerPosition.y);
     directContent.lineTo(markerPosition.x + 2, markerPosition.y + 4);
     directContent.stroke();
+  }
+
+  private float encodeMobilityPenaltyText(PdfContentByte directContent, Position position, float yPosition) {
+    encodeCrossMarker(directContent, new Position(position.x, yPosition));
+    String mobilityPenaltyText = " : " + resources.getString(getMarkerCommentKey()); //$NON-NLS-1$
+    Position commentPosition = new Position(position.x + 5, yPosition);
+    drawComment(directContent, mobilityPenaltyText, commentPosition, PdfContentByte.ALIGN_LEFT);
+    return 10;
+  }
+
+  protected String getMarkerCommentKey() {
+    return null;
   }
 }
