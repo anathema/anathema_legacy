@@ -71,7 +71,7 @@ public class LunarBeastformPageEncoder implements IPdfPageEncoder {
     float freeSpace = getOverlapFreeSpaceHeight();
     distanceFromTop += freeSpace;
     distanceFromTop += PADDING;
-    // encodeVirtues(directContent, distanceFromTop, VIRTUE_HEIGHT, character.getTraitCollection());
+    encodeVirtues(directContent, distanceFromTop, VIRTUE_HEIGHT, character.getTraitCollection());
     distanceFromTop += calculateBoxIncrement(VIRTUE_HEIGHT);
 
     float animalFormHeight = encodeAnimalForms(directContent, character, distanceFromTop, 115);
@@ -136,22 +136,22 @@ public class LunarBeastformPageEncoder implements IPdfPageEncoder {
     boxEncoder.encodeBox(directContent, encoder, character, boxBounds);
   }
 
-  private int encodeAttributes(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop)
-      throws DocumentException {
+  private int encodeAttributes(PdfContentByte directContent, IGenericCharacter character, int distanceFromTop) {
     int attributeHeight = 128;
     Bounds attributeBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 2);
     Bounds smallBounds = pageConfiguration.getFirstColumnRectangle(distanceFromTop, attributeHeight, 1);
-    IPdfContentBoxEncoder encoder = new LunarBeastformAttributesEncoder(baseFont, resources);
+    LunarBeastformAttributesEncoder encoder = new LunarBeastformAttributesEncoder(baseFont, resources);
     new PdfHeaderBoxEncoder(baseFont).encodeHeaderBox(
         directContent,
         attributeBounds,
         resources.getString("Sheet.Header." + encoder.getHeaderKey())); //$NON-NLS-1$
-    Bounds contentBounds = new BeastformAttributeBoxEncoder(baseFont).encodeContentBox(
+    BeastformAttributeBoxEncoder beastBoxEncoder = new BeastformAttributeBoxEncoder(baseFont);
+    Bounds contentBounds = beastBoxEncoder.encodeContentBox(
         directContent,
         attributeBounds,
         smallBounds,
         getOverlapFreeSpaceHeight());
-    encoder.encode(directContent, character, contentBounds);
+    encoder.encode(directContent, character, contentBounds, beastBoxEncoder.calculateInsettedBounds(smallBounds));
     return attributeHeight;
   }
 

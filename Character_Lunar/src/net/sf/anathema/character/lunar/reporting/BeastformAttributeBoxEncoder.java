@@ -57,7 +57,7 @@ public class BeastformAttributeBoxEncoder extends AbstractPdfEncoder {
     return calculateInsettedBounds(contentBounds);
   }
 
-  private Bounds calculateInsettedBounds(Bounds contentBounds) {
+  public Bounds calculateInsettedBounds(Bounds contentBounds) {
     return new Bounds(
         contentBounds.x + CONTENT_INSET,
         contentBounds.y,

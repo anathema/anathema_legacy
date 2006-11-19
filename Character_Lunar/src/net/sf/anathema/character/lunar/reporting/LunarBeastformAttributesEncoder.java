@@ -5,17 +5,15 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.abilities.IGroupedTraitType;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
-import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.character.reporting.util.Position;
 import net.sf.anathema.lib.resources.IResources;
 
-import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class LunarBeastformAttributesEncoder implements IPdfContentBoxEncoder {
+public class LunarBeastformAttributesEncoder {
 
   private final static int PHYSICAL_MAX = 30;
   private final static int STANDARD_MAX = 10;
@@ -31,30 +29,34 @@ public class LunarBeastformAttributesEncoder implements IPdfContentBoxEncoder {
     return "Attributes"; //$NON-NLS-1$
   }
 
-  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
+  public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds, Bounds smallBounds) {
     IGroupedTraitType[] attributeGroups = character.getTemplate().getAttributeGroups();
     IGenericTraitCollection traitCollection = character.getTraitCollection();
-    encodeAttributes(directContent, bounds, attributeGroups, traitCollection);
+    encodeAttributes(directContent, bounds, smallBounds, attributeGroups, traitCollection);
   }
 
   public final void encodeAttributes(
       PdfContentByte directContent,
       Bounds contentBounds,
+      Bounds smallBounds,
       IGroupedTraitType[] attributeGroups,
       IGenericTraitCollection traitCollection) {
     float groupSpacing = smallTraitEncoder.getTraitHeight() / 2;
     float y = contentBounds.getMaxY() - groupSpacing;
     String groupId = null;
     int maximum = 0;
+    float width = 0;
     for (IGroupedTraitType groupedTraitType : attributeGroups) {
       if (!groupedTraitType.getGroupId().equals(groupId)) {
         groupId = groupedTraitType.getGroupId();
         y -= groupSpacing;
         if (groupId.equals(AttributeGroupType.Physical.name())) {
           maximum = PHYSICAL_MAX;
+          width = contentBounds.width;
         }
         else {
           maximum = STANDARD_MAX;
+          width = smallBounds.width;
         }
       }
       ITraitType traitType = groupedTraitType.getTraitType();
@@ -66,7 +68,7 @@ public class LunarBeastformAttributesEncoder implements IPdfContentBoxEncoder {
           directContent,
           traitLabel,
           position,
-          contentBounds.width,
+          width,
           value,
           favored,
           maximum);
