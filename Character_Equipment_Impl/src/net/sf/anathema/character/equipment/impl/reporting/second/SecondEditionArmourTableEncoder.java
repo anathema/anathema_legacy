@@ -8,9 +8,7 @@ import net.sf.anathema.character.equipment.impl.reporting.second.armourstats.Soa
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.EquipmentNameStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.stats.IEquipmentStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -66,10 +64,5 @@ public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncod
   @Override
   protected IArmourStats[] getPrintStats(IGenericCharacter character) {
     return getEquipmentModel(character).getPrintArmours();
-  }
-
-  @Override
-  protected IGenericTrait getTrait(IGenericTraitCollection collection, IArmourStats equipment) {
-    return null;
   }
 }

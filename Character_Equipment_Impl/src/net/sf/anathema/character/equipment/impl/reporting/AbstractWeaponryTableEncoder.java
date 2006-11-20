@@ -9,7 +9,6 @@ import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.Tag
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
@@ -57,10 +56,5 @@ public abstract class AbstractWeaponryTableEncoder extends AbstractEquipmentTabl
   @Override
   protected IWeaponStats[] getPrintStats(IGenericCharacter character) {
     return getEquipmentModel(character).getPrintWeapons();
-  }
-
-  @Override
-  protected IGenericTrait getTrait(IGenericTraitCollection collection, IWeaponStats equipment) {
-    return collection.getTrait(equipment.getTraitType());
   }
 }
