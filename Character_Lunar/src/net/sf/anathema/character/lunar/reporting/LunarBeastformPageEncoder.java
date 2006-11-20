@@ -4,6 +4,8 @@ import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFor
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
+import net.sf.anathema.character.lunar.reporting.face.LunarFaceEncoder;
+import net.sf.anathema.character.lunar.reporting.heartsblood.LunarHeartsBloodEncoder;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfAbilitiesEncoder;
@@ -195,7 +197,7 @@ public class LunarBeastformPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getThirdColumnRectangle(distanceFromTop, height);
-    IPdfContentBoxEncoder encoder = new LunarHeartsBloodEncoder();
+    IPdfContentBoxEncoder encoder = new LunarHeartsBloodEncoder(baseFont, resources);
     boxEncoder.encodeBox(directContent, encoder, character, bounds);
     return height;
   }
@@ -269,7 +271,7 @@ public class LunarBeastformPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 1);
-    IPdfContentBoxEncoder encoder = new LunarFaceEncoder();
+    IPdfContentBoxEncoder encoder = new LunarFaceEncoder(baseFont, resources);
     boxEncoder.encodeBox(directContent, encoder, character, bounds);
     return height;
   }
