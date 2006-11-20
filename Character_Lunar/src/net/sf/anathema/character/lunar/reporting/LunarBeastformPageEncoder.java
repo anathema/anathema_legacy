@@ -4,7 +4,6 @@ import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFor
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
-import net.sf.anathema.character.lunar.reporting.face.LunarFaceEncoder;
 import net.sf.anathema.character.lunar.reporting.heartsblood.LunarHeartsBloodEncoder;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
