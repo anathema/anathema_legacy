@@ -6,14 +6,12 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditiona
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.object.ICharacterModuleObjectMap;
-import net.sf.anathema.character.generic.framework.reporting.template.ICharacterReportTemplate;
 import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTemplateParser;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
-import net.sf.anathema.lib.registry.ICollectionRegistry;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 
@@ -30,8 +28,6 @@ public interface ICharacterGenerics {
   public IRegistry<String, IAdditionalPersisterFactory> getAdditonalPersisterFactoryRegistry();
 
   public IIdentificateRegistry<IGlobalAdditionalTemplate> getGlobalAdditionalTemplateRegistry();
-
-  public ICollectionRegistry<ICharacterReportTemplate> getReportTemplateRegistry();
 
   public ICharacterTemplateRegistryCollection getCharacterTemplateRegistries();
 

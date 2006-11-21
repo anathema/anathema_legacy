@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.persistenc
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.NullAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.backgrounds.BackgroundRegistry;
 import net.sf.anathema.character.generic.framework.module.object.CharacterModuleObjectMap;
-import net.sf.anathema.character.generic.framework.reporting.template.ICharacterReportTemplate;
 import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.CharacterTemplateRegistryCollection;
 import net.sf.anathema.character.generic.impl.template.TemplateRegistry;
@@ -18,8 +17,6 @@ import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
-import net.sf.anathema.lib.registry.CollectionRegistry;
-import net.sf.anathema.lib.registry.ICollectionRegistry;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.registry.IdentificateRegistry;
@@ -33,7 +30,6 @@ public class CharacterGenerics implements ICharacterGenerics {
   private final IRegistry<String, IAdditionalViewFactory> additionalViewRegistry = new Registry<String, IAdditionalViewFactory>();
   private final IRegistry<String, IAdditionalPersisterFactory> additionalPersisterRegistry;
   private final IIdentificateRegistry<IGlobalAdditionalTemplate> additionalTemplateRegistry = new IdentificateRegistry<IGlobalAdditionalTemplate>();
-  private final ICollectionRegistry<ICharacterReportTemplate> reportTemplateRegistry = new CollectionRegistry<ICharacterReportTemplate>();
   private final ICharacterTemplateRegistryCollection templateRegistries = new CharacterTemplateRegistryCollection();
   private final IRegistry<CharacterType, ICasteCollection> casteCollectionRegistry = new Registry<CharacterType, ICasteCollection>();
   private final IRegistry<String, IAdditionalTemplateParser> additionalTemplateParserRegistry = new Registry<String, IAdditionalTemplateParser>();
@@ -65,10 +61,6 @@ public class CharacterGenerics implements ICharacterGenerics {
 
   public IRegistry<String, IAdditionalPersisterFactory> getAdditonalPersisterFactoryRegistry() {
     return additionalPersisterRegistry;
-  }
-
-  public ICollectionRegistry<ICharacterReportTemplate> getReportTemplateRegistry() {
-    return reportTemplateRegistry;
   }
 
   public IIdentificateRegistry<IGlobalAdditionalTemplate> getGlobalAdditionalTemplateRegistry() {
