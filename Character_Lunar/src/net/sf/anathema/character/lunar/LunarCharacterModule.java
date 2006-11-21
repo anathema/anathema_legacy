@@ -28,7 +28,6 @@ import net.sf.anathema.character.lunar.renown.RenownPersisterFactory;
 import net.sf.anathema.character.lunar.renown.RenownTemplate;
 import net.sf.anathema.character.lunar.renown.RenownViewFactory;
 import net.sf.anathema.character.lunar.reporting.FirstEditionLunarPartEncoder;
-import net.sf.anathema.character.lunar.reporting.LunarVoidstateReportTemplate;
 import net.sf.anathema.character.lunar.template.ILunarSpecialCharms;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawModelFactory;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawPersisterFactory;
@@ -146,7 +145,6 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void addReportTemplates(ICharacterGenerics generics, IResources resources) {
-    generics.getReportTemplateRegistry().add(new LunarVoidstateReportTemplate(resources));
     CharacterReportingModuleObject moduleObject = generics.getModuleObjectMap().getModuleObject(
         CharacterReportingModule.class);
     PdfEncodingRegistry registry = moduleObject.getPdfEncodingRegistry();
