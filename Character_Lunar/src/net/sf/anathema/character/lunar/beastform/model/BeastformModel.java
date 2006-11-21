@@ -13,8 +13,8 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
-import net.sf.anathema.character.generic.framework.util.HealthParameterUtilities;
 import net.sf.anathema.character.generic.health.HealthType;
+import net.sf.anathema.character.generic.health.IHealthTypeVisitor;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
@@ -147,6 +147,24 @@ public class BeastformModel implements IBeastformModel {
     return allTraitsCollection;
   }
 
+  private int getSoakValue(HealthType healthType, final int staminaValue) {
+    final int[] soak = new int[1];
+    healthType.accept(new IHealthTypeVisitor() {
+      public void visitBashing(HealthType type) {
+        soak[0] = staminaValue;
+      }
+
+      public void visitLethal(HealthType type) {
+        soak[0] = (int) Math.floor(staminaValue / 2);
+      }
+
+      public void visitAggravated(HealthType type) {
+        soak[0] = 0;
+      }
+    });
+    return soak[0];
+  }
+
   public int getUncappedSoakValue(HealthType type) {
     Ensure.ensureTrue("Aggravated Soak not supported", type != HealthType.Aggravated); //$NON-NLS-1$
     int staminaValue = allTraitsCollection.getTrait(AttributeType.Stamina).getCurrentValue();
@@ -160,7 +178,7 @@ public class BeastformModel implements IBeastformModel {
       });
     }
     if (giftList.size() == 0) {
-      return HealthParameterUtilities.getSoakValue(type, staminaValue);
+      return getSoakValue(type, staminaValue);
     }
     float soakStaminaModifier = 0;
     for (SoakProvidingGift gift : giftList) {
