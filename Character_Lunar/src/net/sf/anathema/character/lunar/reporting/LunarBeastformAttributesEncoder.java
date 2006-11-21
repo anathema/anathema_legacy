@@ -68,7 +68,7 @@ public class LunarBeastformAttributesEncoder implements IPdfContentBoxEncoder {
       String traitLabel = resources.getString("AttributeType.Name." + traitType.getId()); //$NON-NLS-1$
       int value = traitCollection.getTrait(traitType).getCurrentValue();
       Position position = new Position(contentBounds.x, y);
-      boolean favored = traitCollection.getFavorableTrait(traitType).isCasteOrFavored();
+      boolean favored = traitCollection.isFavoredOrCasteTrait(traitType);
       y -= smallTraitEncoder.encodeWithTextAndRectangle(
           directContent,
           traitLabel,

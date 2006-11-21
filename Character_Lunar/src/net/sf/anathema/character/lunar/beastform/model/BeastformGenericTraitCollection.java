@@ -51,7 +51,7 @@ public class BeastformGenericTraitCollection implements IGenericTraitCollection 
     return new ValuedTraitType(type, value[0]);
   }
 
-  public IFavorableGenericTrait getFavorableTrait(ITraitType type) {
+  public IFavorableGenericTrait getFavorableTrait(final ITraitType type) {
     throw new UnsupportedOperationException("Irrelevant for DBTGenericTraitCollection."); //$NON-NLS-1$
   }
 
@@ -60,6 +60,6 @@ public class BeastformGenericTraitCollection implements IGenericTraitCollection 
   }
 
   public boolean isFavoredOrCasteTrait(ITraitType type) {
-    return false;
+    return collection.isFavoredOrCasteTrait(type);
   }
 }
