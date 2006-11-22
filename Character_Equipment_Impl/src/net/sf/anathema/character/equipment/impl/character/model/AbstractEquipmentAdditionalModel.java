@@ -24,16 +24,16 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
   private final GenericControl<ICollectionListener<IEquipmentItem>> equipmentItemControl = new GenericControl<ICollectionListener<IEquipmentItem>>();
   private final List<IEquipmentItem> equipmentItems = new ArrayList<IEquipmentItem>();
   private final IExaltedRuleSet ruleSet;
+  private final IEquipmentPrintModel printModel;
 
-  public AbstractEquipmentAdditionalModel(IExaltedRuleSet ruleSet) {
+  public AbstractEquipmentAdditionalModel(IExaltedRuleSet ruleSet, IArmourStats naturalArmour) {
     this.ruleSet = ruleSet;
+    this.printModel = new EquipmentPrintModel(this, naturalArmour);
   }
 
   public IEquipmentPrintModel getPrintModel() {
-    return new EquipmentPrintModel(this, getNaturalArmour());
+    return printModel;
   }
-
-  protected abstract IArmourStats getNaturalArmour();
 
   public final AdditionalModelType getAdditionalModelType() {
     return AdditionalModelType.Miscellaneous;

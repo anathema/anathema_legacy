@@ -21,16 +21,11 @@ public class DemoEquipmentAdditionalModel extends AbstractEquipmentAdditionalMod
   private final Map<String, IEquipmentTemplate> availableTemplates = new HashMap<String, IEquipmentTemplate>();
 
   public DemoEquipmentAdditionalModel() {
-    super(ExaltedRuleSet.SecondEdition);
+    super(ExaltedRuleSet.SecondEdition, null);
   }
 
   public IEquipmentItem[] getNaturalWeapons() {
     return new IEquipmentItem[0];
-  }
-
-  @Override
-  protected IArmourStats getNaturalArmour() {
-    return null;
   }
 
   public void addPrintArmour(IArmourStats armour) {

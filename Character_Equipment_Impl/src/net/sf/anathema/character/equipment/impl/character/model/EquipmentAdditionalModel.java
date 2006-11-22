@@ -16,7 +16,6 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import com.db4o.query.Predicate;
 
 public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
-  private final IArmourStats naturalArmour;
   private final IEquipmentTemplateProvider equipmentTemplateProvider;
   private final MagicalMaterial defaultMaterial;
   private final List<IEquipmentItem> naturalWeaponItems = new ArrayList<IEquipmentItem>();
@@ -27,9 +26,8 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
       IEquipmentTemplateProvider equipmentTemplateProvider,
       IExaltedRuleSet ruleSet,
       IEquipmentTemplate... naturalWeapons) {
-    super(ruleSet);
+    super(ruleSet, naturalArmour);
     this.defaultMaterial = defaultMaterial;
-    this.naturalArmour = naturalArmour;
     this.equipmentTemplateProvider = equipmentTemplateProvider;
     for (IEquipmentTemplate template : naturalWeapons) {
       if (template == null) {
@@ -37,11 +35,6 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
       }
       naturalWeaponItems.add(addEquipmentObjectFor(template, null));
     }
-  }
-
-  @Override
-  protected IArmourStats getNaturalArmour() {
-    return naturalArmour;
   }
 
   public IEquipmentItem[] getNaturalWeapons() {
