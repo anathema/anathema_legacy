@@ -1,7 +1,8 @@
-package net.sf.anathema.character.equipment.impl.reporting.second;
+package net.sf.anathema.character.equipment.impl.reporting;
 
 import java.awt.Color;
 
+import net.sf.anathema.character.equipment.impl.reporting.second.ShieldTableEncoder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
@@ -11,12 +12,12 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 
-public class SecondEditionArmourEncoder implements IPdfContentBoxEncoder {
+public class ArmourEncoder implements IPdfContentBoxEncoder {
 
   private final BaseFont baseFont;
   private final IResources resources;
 
-  public SecondEditionArmourEncoder(IResources resources, BaseFont baseFont) {
+  public ArmourEncoder(IResources resources, BaseFont baseFont) {
     this.resources = resources;
     this.baseFont = baseFont;
   }
@@ -26,7 +27,7 @@ public class SecondEditionArmourEncoder implements IPdfContentBoxEncoder {
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    float tableHeight = new SecondEditionArmourTableEncoder(baseFont, resources).encodeTable(
+    float tableHeight = new ArmourTableEncoder(baseFont, resources).encodeTable(
         directContent,
         character,
         bounds);

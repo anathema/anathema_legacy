@@ -1,5 +1,6 @@
-package net.sf.anathema.character.equipment.impl.reporting.second;
+package net.sf.anathema.character.equipment.impl.reporting;
 
+import net.sf.anathema.character.equipment.impl.reporting.second.AbstractEquipmentTableEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.second.armourstats.FatigueStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.armourstats.HardnessStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.armourstats.IArmourStatsGroup;
@@ -16,11 +17,11 @@ import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfPTable;
 
-public class SecondEditionArmourTableEncoder extends AbstractEquipmentTableEncoder<IArmourStats> {
+public class ArmourTableEncoder extends AbstractEquipmentTableEncoder<IArmourStats> {
 
   private final IResources resources;
 
-  public SecondEditionArmourTableEncoder(BaseFont baseFont, IResources resources) {
+  public ArmourTableEncoder(BaseFont baseFont, IResources resources) {
     super(baseFont);
     this.resources = resources;
   }

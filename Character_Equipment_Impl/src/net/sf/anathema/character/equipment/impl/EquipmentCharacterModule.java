@@ -8,9 +8,9 @@ import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalPer
 import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalViewFactory;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditonalModelTemplate;
 import net.sf.anathema.character.equipment.impl.item.model.db4o.Db4OEquipmentDatabase;
+import net.sf.anathema.character.equipment.impl.reporting.ArmourEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.PossessionsEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.WeaponryEncoder;
-import net.sf.anathema.character.equipment.impl.reporting.second.SecondEditionArmourEncoder;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
@@ -59,7 +59,7 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
 
   private void fillEncodingRegistry(IResources resources, PdfEncodingRegistry registry) {
     BaseFont baseFont = registry.getBaseFont();
-    registry.setArmourContentEncoder(new SecondEditionArmourEncoder(resources, baseFont));
+    registry.setArmourContentEncoder(new ArmourEncoder(resources, baseFont));
     registry.setWeaponContentEncoder(new WeaponryEncoder(resources, baseFont));
     registry.setPossessionsEncoder(new PossessionsEncoder(baseFont));
   }
