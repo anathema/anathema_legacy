@@ -5,6 +5,7 @@ import java.awt.Color;
 import net.sf.anathema.character.equipment.impl.reporting.second.ShieldTableEncoder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
+import net.sf.anathema.character.reporting.sheet.util.IPdfTableEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -16,10 +17,12 @@ public class ArmourEncoder implements IPdfContentBoxEncoder {
 
   private final BaseFont baseFont;
   private final IResources resources;
+  private final IPdfTableEncoder encoder;
 
-  public ArmourEncoder(IResources resources, BaseFont baseFont) {
+  public ArmourEncoder(IResources resources, BaseFont baseFont, IPdfTableEncoder encoder) {
     this.resources = resources;
     this.baseFont = baseFont;
+    this.encoder = encoder;
   }
 
   public String getHeaderKey() {
@@ -27,7 +30,7 @@ public class ArmourEncoder implements IPdfContentBoxEncoder {
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    float tableHeight = new ArmourTableEncoder(baseFont, resources).encodeTable(directContent, character, bounds);
+    float tableHeight = encoder.encodeTable(directContent, character, bounds);
     float remainingHeight = bounds.getHeight() - tableHeight;
     float delimitingLineYPosition = bounds.getMinY() + remainingHeight - 1;
     drawDelimiter(directContent, bounds, delimitingLineYPosition);

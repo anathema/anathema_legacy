@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import net.sf.anathema.character.abyssal.caste.AbyssalCaste;
 import net.sf.anathema.character.equipment.impl.reporting.ArmourEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.ArmourTableEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.WeaponryEncoder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
@@ -35,6 +36,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.PageSize;
+import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfContentByte;
 import com.lowagie.text.pdf.PdfWriter;
 
@@ -76,9 +78,10 @@ public class PdfCharacterSheetDemo {
 
   private static PdfEncodingRegistry createEncodingRegistry(IResources resources) {
     PdfEncodingRegistry encodingRegistry = new PdfEncodingRegistry();
-    encodingRegistry.setArmourContentEncoder(new ArmourEncoder(resources, encodingRegistry.getBaseFont()));
-    encodingRegistry.setWeaponContentEncoder(new WeaponryEncoder(resources, encodingRegistry.getBaseFont()));
-    encodingRegistry.setIntimaciesEncoder(new IntimaciesEncoder(encodingRegistry.getBaseFont()));
+    BaseFont baseFont = encodingRegistry.getBaseFont();
+    encodingRegistry.setArmourContentEncoder(new ArmourEncoder(resources, baseFont, new ArmourTableEncoder(baseFont, resources)));
+    encodingRegistry.setWeaponContentEncoder(new WeaponryEncoder(resources, baseFont));
+    encodingRegistry.setIntimaciesEncoder(new IntimaciesEncoder(baseFont));
     return encodingRegistry;
   }
 

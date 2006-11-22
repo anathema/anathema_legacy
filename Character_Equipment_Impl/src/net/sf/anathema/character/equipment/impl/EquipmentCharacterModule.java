@@ -9,6 +9,7 @@ import net.sf.anathema.character.equipment.impl.character.EquipmentAdditionalVie
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditonalModelTemplate;
 import net.sf.anathema.character.equipment.impl.item.model.db4o.Db4OEquipmentDatabase;
 import net.sf.anathema.character.equipment.impl.reporting.ArmourEncoder;
+import net.sf.anathema.character.equipment.impl.reporting.ArmourTableEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.PossessionsEncoder;
 import net.sf.anathema.character.equipment.impl.reporting.WeaponryEncoder;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateProvider;
@@ -59,7 +60,7 @@ public class EquipmentCharacterModule extends NullObjectCharacterModuleAdapter {
 
   private void fillEncodingRegistry(IResources resources, PdfEncodingRegistry registry) {
     BaseFont baseFont = registry.getBaseFont();
-    registry.setArmourContentEncoder(new ArmourEncoder(resources, baseFont));
+    registry.setArmourContentEncoder(new ArmourEncoder(resources, baseFont, new ArmourTableEncoder(baseFont, resources)));
     registry.setWeaponContentEncoder(new WeaponryEncoder(resources, baseFont));
     registry.setPossessionsEncoder(new PossessionsEncoder(baseFont));
   }
