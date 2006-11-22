@@ -16,7 +16,7 @@ public abstract class AbstractEquipmentTableEncoder<T extends IEquipmentStats> e
     super(baseFont);
   }
 
-  protected final IEquipmentPrintModel getEquipmentModel(IGenericCharacter character) {
+  protected IEquipmentPrintModel getEquipmentModel(IGenericCharacter character) {
     return ((IEquipmentAdditionalModel) character.getAdditionalModel(IEquipmentAdditionalModelTemplate.ID)).getPrintModel();
   }
 }
