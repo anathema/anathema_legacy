@@ -19,11 +19,13 @@ public abstract class AbstractNamedTraitEncoder extends AbstractPdfEncoder imple
   private final IResources resources;
   private final PdfTraitEncoder traitEncoder;
   private final BaseFont baseFont;
+  private final int lineCount;
 
-  public AbstractNamedTraitEncoder(IResources resources, BaseFont baseFont, PdfTraitEncoder traitEncoder) {
+  public AbstractNamedTraitEncoder(IResources resources, BaseFont baseFont, PdfTraitEncoder traitEncoder, int lineCount) {
     this.resources = resources;
     this.baseFont = baseFont;
     this.traitEncoder = traitEncoder;
+    this.lineCount = lineCount;
   }
 
   protected IResources getResources() {
@@ -51,7 +53,7 @@ public abstract class AbstractNamedTraitEncoder extends AbstractPdfEncoder imple
       traitEncoder.encodeWithText(directContent, name, traitPosition, width, value, dotCount);
       height += traitEncoder.getTraitHeight();
     }
-    for (int index = traits.length; index < 9; index++) {
+    for (int index = traits.length; index < lineCount; index++) {
       Position traitPosition = new Position(position.x, position.y - height);
       traitEncoder.encodeWithLine(directContent, traitPosition, width, 0, dotCount);
       height += traitEncoder.getTraitHeight();

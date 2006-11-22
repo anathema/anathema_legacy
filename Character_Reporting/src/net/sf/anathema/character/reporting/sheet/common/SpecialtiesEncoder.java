@@ -16,8 +16,8 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class SpecialtiesEncoder extends AbstractNamedTraitEncoder {
 
-  public SpecialtiesEncoder(IResources resources, BaseFont baseFont, PdfTraitEncoder encoder) {
-    super(resources, baseFont, encoder);
+  public SpecialtiesEncoder(IResources resources, BaseFont baseFont, PdfTraitEncoder encoder, int specialtyCount) {
+    super(resources, baseFont, encoder, specialtyCount);
   }
 
   public int encode(PdfContentByte directContent, IGenericCharacter character, Position position, float width) {
