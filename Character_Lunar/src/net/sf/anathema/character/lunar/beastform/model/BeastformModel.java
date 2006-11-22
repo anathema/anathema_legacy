@@ -6,6 +6,7 @@ import java.util.List;
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
+import net.sf.anathema.character.equipment.impl.character.model.EquipmentPrintModel;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
@@ -46,7 +47,7 @@ public class BeastformModel implements IBeastformModel {
     createAttributes();
     this.allTraitsCollection = new BeastformGenericTraitCollection(context.getTraitCollection(), collection, giftModel);
     IEquipmentAdditionalModel equipment = (IEquipmentAdditionalModel) context.getAdditionalModel(IEquipmentAdditionalModelTemplate.ID);
-    this.equipmentModel = new BeastformEquipmentModel(equipment, allTraitsCollection, giftModel);
+    this.equipmentModel = new EquipmentPrintModel(equipment, new BeastformNaturalSoak(allTraitsCollection, giftModel));
     context.getCharacterListening().addChangeListener(new GlobalCharacterChangeAdapter() {
       @Override
       public void characterChanged() {
@@ -54,6 +55,10 @@ public class BeastformModel implements IBeastformModel {
       }
     });
     update();
+  }
+
+  public IEquipmentPrintModel getEquipmentModel() {
+    return equipmentModel;
   }
 
   private void createAttributes() {

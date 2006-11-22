@@ -2,6 +2,7 @@ package net.sf.anathema.character.lunar.reporting;
 
 import static net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants.PADDING;
 import net.disy.commons.core.util.StringUtilities;
+import net.sf.anathema.character.equipment.impl.reporting.ArmourEncoder;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.lunar.reporting.heartsblood.LunarHeartsBloodEncoder;
@@ -185,7 +186,9 @@ public class LunarBeastformPageEncoder implements IPdfPageEncoder {
       float distanceFromTop,
       float height) throws DocumentException {
     Bounds bounds = pageConfiguration.getSecondColumnRectangle(distanceFromTop, height, 2);
-    IPdfContentBoxEncoder contentEncoder = registry.getArmourContentEncoder();
+    IPdfContentBoxEncoder contentEncoder = new ArmourEncoder(resources, baseFont, new LunarArmourTableEncoder(
+        baseFont,
+        resources));
     boxEncoder.encodeBox(directContent, contentEncoder, character, bounds);
     return height;
   }

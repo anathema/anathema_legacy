@@ -5,9 +5,10 @@ import java.util.List;
 
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.disy.commons.core.util.Ensure;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
 import net.sf.anathema.character.lunar.beastform.model.gift.GiftVisitorAdapter;
 import net.sf.anathema.character.lunar.beastform.model.gift.IGift;
@@ -17,11 +18,11 @@ import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
 public class BeastformNaturalSoak implements IArmourStats {
-  private final IGenericTrait stamina;
   private final IGiftModel giftModel;
+  private final IGenericTraitCollection collection;
 
-  public BeastformNaturalSoak(IGenericTrait stamina, IGiftModel giftModel) {
-    this.stamina = stamina;
+  public BeastformNaturalSoak(IGenericTraitCollection traitCollection, IGiftModel giftModel) {
+    this.collection = traitCollection;
     this.giftModel = giftModel;
   }
 
@@ -33,16 +34,20 @@ public class BeastformNaturalSoak implements IArmourStats {
     return null;
   }
 
+  private int getStaminaValue() {
+    return collection.getTrait(AttributeType.Stamina).getCurrentValue();
+  }
+
   private int getNaturalSoak(HealthType healthType) {
     switch (healthType) {
       case Aggravated: {
         return 0;
       }
       case Lethal: {
-        return stamina.getCurrentValue() / 2;
+        return getStaminaValue() / 2;
       }
       case Bashing: {
-        return stamina.getCurrentValue();
+        return getStaminaValue();
       }
       default: {
         throw new UnreachableCodeReachedException("Illegal Health Type"); //$NON-NLS-1$
@@ -52,7 +57,7 @@ public class BeastformNaturalSoak implements IArmourStats {
 
   private int getUncappedSoak(HealthType type) {
     Ensure.ensureTrue("Aggravated Soak not supported", type != HealthType.Aggravated); //$NON-NLS-1$
-    int staminaValue = stamina.getCurrentValue();
+    int staminaValue = getStaminaValue();
     final List<SoakProvidingGift> giftList = new ArrayList<SoakProvidingGift>();
     for (IQualitySelection<IGift> selection : giftModel.getSelectedQualities()) {
       selection.getQuality().accept(new GiftVisitorAdapter() {
