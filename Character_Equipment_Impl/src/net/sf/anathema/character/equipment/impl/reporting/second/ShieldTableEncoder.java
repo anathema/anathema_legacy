@@ -1,7 +1,5 @@
 package net.sf.anathema.character.equipment.impl.reporting.second;
 
-import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
-import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.impl.reporting.second.armourstats.FatigueStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.armourstats.MobilityPenaltyStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.shieldstats.CloseCombatShieldStatsGroup;
@@ -55,7 +53,6 @@ public class ShieldTableEncoder extends AbstractEquipmentTableEncoder<IShieldSta
 
   @Override
   protected IShieldStats[] getPrintStats(IGenericCharacter character) {
-    IEquipmentAdditionalModel model = (IEquipmentAdditionalModel) character.getAdditionalModel(IEquipmentAdditionalModelTemplate.ID);
-    return model.getPrintShield();
+    return getEquipmentModel(character).getPrintShield();
   }
 }
