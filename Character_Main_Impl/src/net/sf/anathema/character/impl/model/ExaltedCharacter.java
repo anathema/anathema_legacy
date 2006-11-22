@@ -52,12 +52,12 @@ public class ExaltedCharacter implements ICharacter, IItemData {
     Ensure.ensureArgumentNotNull("Generics must not be null.", generics); //$NON-NLS-1$
     Ensure.ensureArgumentNotNull("RuleSet must not be null.", rules); //$NON-NLS-1$
     this.statistics = new CharacterStatistics(template, generics, rules);
-    addAdditionalModels(generics, template.getAdditionalTemplates());
     for (IGlobalAdditionalTemplate globalTemplate : generics.getGlobalAdditionalTemplateRegistry().getAll()) {
       if (globalTemplate.supportsEdition(rules.getEdition())) {
         addAdditionalModels(generics, new IAdditionalTemplate[] { globalTemplate });
       }
     }
+    addAdditionalModels(generics, template.getAdditionalTemplates());
     addCompulsiveCharms(template);
     statistics.getCharacterContext()
         .getCharacterListening()
