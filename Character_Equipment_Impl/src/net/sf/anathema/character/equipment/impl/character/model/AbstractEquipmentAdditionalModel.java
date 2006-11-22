@@ -12,6 +12,7 @@ import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
+import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
@@ -29,8 +30,10 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
   }
 
   public IEquipmentPrintModel getPrintModel() {
-    return new EquipmentPrintModel(this);
+    return new EquipmentPrintModel(this, getNaturalArmour());
   }
+
+  protected abstract IArmourStats getNaturalArmour();
 
   public final AdditionalModelType getAdditionalModelType() {
     return AdditionalModelType.Miscellaneous;

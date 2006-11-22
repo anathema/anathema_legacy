@@ -39,7 +39,8 @@ public class EquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
     }
   }
 
-  public IArmourStats getNaturalArmour() {
+  @Override
+  protected IArmourStats getNaturalArmour() {
     return naturalArmour;
   }
 

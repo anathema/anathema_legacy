@@ -28,7 +28,8 @@ public class DemoEquipmentAdditionalModel extends AbstractEquipmentAdditionalMod
     return new IEquipmentItem[0];
   }
 
-  public IArmourStats getNaturalArmour() {
+  @Override
+  protected IArmourStats getNaturalArmour() {
     return null;
   }
 

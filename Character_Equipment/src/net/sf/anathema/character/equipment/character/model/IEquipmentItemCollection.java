@@ -1,7 +1,6 @@
 package net.sf.anathema.character.equipment.character.model;
 
 import net.sf.anathema.character.equipment.MagicalMaterial;
-import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.lib.control.collection.ICollectionListener;
 
 public interface IEquipmentItemCollection {
@@ -17,8 +16,6 @@ public interface IEquipmentItemCollection {
   public IEquipmentItem[] getEquipmentItems();
 
   public void removeItem(IEquipmentItem item);
-
-  public IArmourStats getNaturalArmour();
 
   public IEquipmentItem[] getNaturalWeapons();
 }

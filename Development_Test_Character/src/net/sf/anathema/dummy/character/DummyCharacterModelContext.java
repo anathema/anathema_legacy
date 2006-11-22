@@ -2,6 +2,7 @@ package net.sf.anathema.dummy.character;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
+import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.character.ILimitationContext;
 import net.sf.anathema.character.generic.character.IMagicCollection;
@@ -38,11 +39,15 @@ public class DummyCharacterModelContext implements ICharacterModelContext {
     this(new CreationTraitValueStrategy());
   }
 
+  public IAdditionalModel getAdditionalModel(String id) {
+    return character.getAdditionalModel(id);
+  }
+
   public DummyCharacterModelContext(final ITraitValueStrategy valueStrategy) {
     this.valueStrategy = valueStrategy;
     ICharacterTemplate template = new DummyCharacterTemplate();
     this.character = new DummyGenericCharacter(template);
-    this.charmContext  = new DummyCharmContext(character, null);
+    this.charmContext = new DummyCharmContext(character, null);
   }
 
   public DummyGenericCharacter getCharacter() {
@@ -72,7 +77,7 @@ public class DummyCharacterModelContext implements ICharacterModelContext {
   public ICharacterListening getCharacterListening() {
     return characterListening;
   }
-  
+
   public IBasicCharacterData getBasicCharacterContext() {
     return new BasicCharacterContext(getCharacter());
   }

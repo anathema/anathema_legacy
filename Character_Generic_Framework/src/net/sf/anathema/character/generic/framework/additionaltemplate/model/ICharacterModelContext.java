@@ -2,6 +2,7 @@ package net.sf.anathema.character.generic.framework.additionaltemplate.model;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
+import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 
@@ -20,4 +21,6 @@ public interface ICharacterModelContext {
   public IGenericTraitCollection getTraitCollection();
 
   public ITraitContext getTraitContext();
+
+  public IAdditionalModel getAdditionalModel(String id);
 }

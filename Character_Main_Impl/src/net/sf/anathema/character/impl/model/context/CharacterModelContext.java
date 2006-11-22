@@ -2,6 +2,7 @@ package net.sf.anathema.character.impl.model.context;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
+import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.character.ILimitationContext;
@@ -49,6 +50,10 @@ public class CharacterModelContext extends GenericCharmConfiguration implements
     super(character);
     this.character = character;
     this.characterData = new BasicCharacterContext(character);
+  }
+
+  public IAdditionalModel getAdditionalModel(String id) {
+    return character.getAdditionalModel(id);
   }
 
   public ITraitValueStrategy getTraitValueStrategy() {

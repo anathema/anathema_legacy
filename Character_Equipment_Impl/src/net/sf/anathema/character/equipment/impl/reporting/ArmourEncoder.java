@@ -27,10 +27,7 @@ public class ArmourEncoder implements IPdfContentBoxEncoder {
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    float tableHeight = new ArmourTableEncoder(baseFont, resources).encodeTable(
-        directContent,
-        character,
-        bounds);
+    float tableHeight = new ArmourTableEncoder(baseFont, resources).encodeTable(directContent, character, bounds);
     float remainingHeight = bounds.getHeight() - tableHeight;
     float delimitingLineYPosition = bounds.getMinY() + remainingHeight - 1;
     drawDelimiter(directContent, bounds, delimitingLineYPosition);

@@ -16,20 +16,18 @@ import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 public class EquipmentPrintModel implements IEquipmentPrintModel {
 
   private final IEquipmentItemCollection collection;
+  private final IArmourStats naturalArmour;
 
-  public EquipmentPrintModel(IEquipmentItemCollection collection) {
+  public EquipmentPrintModel(IEquipmentItemCollection collection, IArmourStats naturalArmour) {
     this.collection = collection;
+    this.naturalArmour = naturalArmour;
   }
 
   public IArmourStats[] getPrintArmours() {
     List<IArmourStats> printStats = new ArrayList<IArmourStats>();
-    printStats.add(getNaturalArmour());
+    printStats.add(naturalArmour);
     fillPrintEquipmentList(printStats, IArmourStats.class);
     return printStats.toArray(new IArmourStats[printStats.size()]);
-  }
-
-  protected IArmourStats getNaturalArmour() {
-    return collection.getNaturalArmour();
   }
 
   public IWeaponStats[] getPrintWeapons() {
