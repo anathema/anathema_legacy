@@ -3,20 +3,11 @@ package net.sf.anathema.character.lunar.beastform.model.gift;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.library.quality.model.QualityExclusion;
 import net.sf.anathema.character.library.quality.model.QualityPrerequisite;
-import net.sf.anathema.character.lunar.beastform.model.gift.weapons.CoreRulesBeastClawsBite;
-import net.sf.anathema.character.lunar.beastform.model.gift.weapons.CoreRulesBeastClawsClaws;
-import net.sf.anathema.character.lunar.beastform.model.gift.weapons.CoreRulesTalonsBite;
-import net.sf.anathema.character.lunar.beastform.model.gift.weapons.CoreRulesTalonsClaws;
-import net.sf.anathema.character.lunar.beastform.model.gift.weapons.PowerCombatBeastClawsBite;
-import net.sf.anathema.character.lunar.beastform.model.gift.weapons.PowerCombatBeastClawsClaws;
-import net.sf.anathema.character.lunar.beastform.model.gift.weapons.PowerCombatTalonsClaws;
-import net.sf.anathema.character.lunar.beastform.model.gift.weapons.PowerCombatTalonsBite;
+import net.sf.anathema.character.lunar.beastform.model.gift.weapons.SavageMoonsilverTalonsTemplate;
+import net.sf.anathema.character.lunar.beastform.model.gift.weapons.TerribleBeastClawsTemplate;
 
 public class GiftProvider {
 
@@ -85,44 +76,12 @@ public class GiftProvider {
   }
 
   private static void createBrawlWeaponGifts(List<IGift> gifts) {
-    final BrawlWeaponProvidingGift beastClaws = new BrawlWeaponProvidingGift("TerribleBeastClaws"); //$NON-NLS-1$
-    for (IExaltedRuleSet rules : ExaltedRuleSet.values()) {
-      rules.accept(new IRuleSetVisitor() {
-        public void visitCoreRules(IExaltedRuleSet set) {
-          beastClaws.addHandWeapon(set, new CoreRulesBeastClawsClaws());
-          beastClaws.addBiteWeapon(set, new CoreRulesBeastClawsBite());
-        }
-
-        public void visitPowerCombat(IExaltedRuleSet set) {
-          beastClaws.addHandWeapon(set, new PowerCombatBeastClawsClaws());
-          beastClaws.addBiteWeapon(set, new PowerCombatBeastClawsBite());
-        }
-
-        public void visitSecondEdition(IExaltedRuleSet set) {
-          // Nothing to do yet
-        }
-      });
-    }
-    gifts.add(beastClaws);
-    final BrawlWeaponProvidingGift savageTalons = new BrawlWeaponProvidingGift("SavageMoonsilverTalons"); //$NON-NLS-1$
-    for (IExaltedRuleSet rules : ExaltedRuleSet.values()) {
-      rules.accept(new IRuleSetVisitor() {
-        public void visitCoreRules(IExaltedRuleSet set) {
-          savageTalons.addHandWeapon(set, new CoreRulesTalonsClaws());
-          savageTalons.addBiteWeapon(set, new CoreRulesTalonsBite());
-        }
-
-        public void visitPowerCombat(IExaltedRuleSet set) {
-          savageTalons.addHandWeapon(set, new PowerCombatTalonsClaws());
-          savageTalons.addBiteWeapon(set, new PowerCombatTalonsBite());
-        }
-
-        public void visitSecondEdition(IExaltedRuleSet set) {
-          // Nothing to do yet
-        }
-      });
-    }
+    final BrawlWeaponProvidingGift beastClaws = new BrawlWeaponProvidingGift(
+        "TerribleBeastClaws", new TerribleBeastClawsTemplate()); //$NON-NLS-1$
+    final BrawlWeaponProvidingGift savageTalons = new BrawlWeaponProvidingGift(
+        "SavageMoonsilverTalons", new SavageMoonsilverTalonsTemplate()); //$NON-NLS-1$
     savageTalons.addCondition(new QualityPrerequisite(beastClaws));
+    gifts.add(beastClaws);
     gifts.add(savageTalons);
   }
 }
