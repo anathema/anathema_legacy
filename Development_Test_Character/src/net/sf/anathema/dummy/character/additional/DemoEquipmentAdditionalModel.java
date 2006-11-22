@@ -16,13 +16,20 @@ import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 
 public class DemoEquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
-
   private final List<IArmourStats> printArmourStats = new ArrayList<IArmourStats>();
   private final List<IWeaponStats> printWeaponStats = new ArrayList<IWeaponStats>();
   private final Map<String, IEquipmentTemplate> availableTemplates = new HashMap<String, IEquipmentTemplate>();
 
   public DemoEquipmentAdditionalModel() {
     super(ExaltedRuleSet.SecondEdition);
+  }
+
+  public IEquipmentItem[] getNaturalWeapons() {
+    return new IEquipmentItem[0];
+  }
+
+  public IArmourStats getNaturalArmour() {
+    return null;
   }
 
   public void addPrintArmour(IArmourStats armour) {

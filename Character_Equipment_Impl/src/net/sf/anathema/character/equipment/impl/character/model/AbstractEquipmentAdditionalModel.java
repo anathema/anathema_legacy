@@ -8,11 +8,10 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
-import net.sf.anathema.character.equipment.impl.character.model.natural.TotalArmour;
+import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
-import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
@@ -29,21 +28,16 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
     this.ruleSet = ruleSet;
   }
 
+  public IEquipmentPrintModel getPrintModel() {
+    return new EquipmentPrintModel(this);
+  }
+
   public final AdditionalModelType getAdditionalModelType() {
     return AdditionalModelType.Miscellaneous;
   }
 
   public final String getTemplateId() {
     return IEquipmentAdditionalModelTemplate.ID;
-  }
-
-  public final IArmourStats getTotalPrintArmour(int lineCount) {
-    TotalArmour armour = new TotalArmour();
-    IArmourStats[] printArmours = getPrintArmours();
-    for (int index = 0; index < Math.min(lineCount, printArmours.length); index++) {
-      armour.addArmour(printArmours[index]);
-    }
-    return armour;
   }
 
   public final IEquipmentItem[] getEquipmentItems() {

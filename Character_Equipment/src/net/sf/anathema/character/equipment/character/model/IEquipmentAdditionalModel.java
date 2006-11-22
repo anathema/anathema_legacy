@@ -4,7 +4,7 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 
-public interface IEquipmentAdditionalModel extends IAdditionalModel, IEquipmentItemCollection, IEquipmentPrintModel {
+public interface IEquipmentAdditionalModel extends IAdditionalModel, IEquipmentItemCollection {
 
   public MagicalMaterial getDefaultMaterial();
 
@@ -12,4 +12,5 @@ public interface IEquipmentAdditionalModel extends IAdditionalModel, IEquipmentI
 
   public MagicalMaterial getMagicalMaterial(String templateId);
 
+  public IEquipmentPrintModel getPrintModel();
 }

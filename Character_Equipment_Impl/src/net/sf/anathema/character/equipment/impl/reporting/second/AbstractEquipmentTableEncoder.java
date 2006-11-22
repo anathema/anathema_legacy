@@ -1,6 +1,7 @@
 package net.sf.anathema.character.equipment.impl.reporting.second;
 
 import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
+import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
@@ -16,6 +17,6 @@ public abstract class AbstractEquipmentTableEncoder<T extends IEquipmentStats> e
   }
 
   protected final IEquipmentPrintModel getEquipmentModel(IGenericCharacter character) {
-    return (IEquipmentPrintModel) character.getAdditionalModel(IEquipmentAdditionalModelTemplate.ID);
+    return ((IEquipmentAdditionalModel) character.getAdditionalModel(IEquipmentAdditionalModelTemplate.ID)).getPrintModel();
   }
 }
