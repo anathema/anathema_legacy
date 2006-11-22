@@ -1,10 +1,9 @@
 package net.sf.anathema.character.generic.impl.equipment;
 
-import net.sf.anathema.character.generic.equipment.IWeaponType;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 
-public class MeleeWeaponType implements IWeaponType {
+public class MeleeWeaponType {
 
   private final String id;
   private final AbilityType[] abilities;
@@ -24,20 +23,8 @@ public class MeleeWeaponType implements IWeaponType {
       HealthType damageType,
       Integer defense,
       Integer rate) {
-    this(id, new AbilityType[] { ability }, speed, accuracy, damage, damageType, defense, rate);
-  }
-
-  public MeleeWeaponType(
-      String id,
-      AbilityType[] abilities,
-      int speed,
-      int accuracy,
-      int damage,
-      HealthType damageType,
-      Integer defense,
-      Integer rate) {
     this.id = id;
-    this.abilities = abilities;
+    this.abilities = (new AbilityType[] { ability });
     this.speed = speed;
     this.accuracy = accuracy;
     this.damage = damage;
