@@ -37,7 +37,11 @@ public class GiftProvider {
     Gift armArray = new Gift("Arm-Array"); //$NON-NLS-1$
     armArray.addCondition(new QualityPrerequisite(giftHands));
     gifts.add(armArray);
-    createBrawlWeaponGifts(gifts);
+    Gift beastClaws = new BrawlWeaponProvidingGift("TerribleBeastClaws", new TerribleBeastClawsTemplate()); //$NON-NLS-1$
+    gifts.add(beastClaws);
+    Gift savageTalons = new BrawlWeaponProvidingGift("SavageMoonsilverTalons", new SavageMoonsilverTalonsTemplate()); //$NON-NLS-1$
+    savageTalons.addCondition(new QualityPrerequisite(beastClaws));
+    gifts.add(savageTalons);
     Gift resilienceNature = new Gift("ResilienceNature"); //$NON-NLS-1$
     gifts.add(resilienceNature);
     Gift woundKnitting = new Gift("Wound-KnittingPower"); //$NON-NLS-1$
@@ -73,15 +77,5 @@ public class GiftProvider {
     soaringPinions.addCondition(new QualityPrerequisite(flutteringWings));
     gifts.add(soaringPinions);
     return gifts.toArray(new IGift[gifts.size()]);
-  }
-
-  private static void createBrawlWeaponGifts(List<IGift> gifts) {
-    final BrawlWeaponProvidingGift beastClaws = new BrawlWeaponProvidingGift(
-        "TerribleBeastClaws", new TerribleBeastClawsTemplate()); //$NON-NLS-1$
-    final BrawlWeaponProvidingGift savageTalons = new BrawlWeaponProvidingGift(
-        "SavageMoonsilverTalons", new SavageMoonsilverTalonsTemplate()); //$NON-NLS-1$
-    savageTalons.addCondition(new QualityPrerequisite(beastClaws));
-    gifts.add(beastClaws);
-    gifts.add(savageTalons);
   }
 }
