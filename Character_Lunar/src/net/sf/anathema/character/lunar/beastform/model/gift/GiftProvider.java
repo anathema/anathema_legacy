@@ -3,15 +3,20 @@ package net.sf.anathema.character.lunar.beastform.model.gift;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.character.generic.health.HealthType;
-import net.sf.anathema.character.generic.impl.equipment.MeleeWeaponType;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IRuleSetVisitor;
-import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.library.quality.model.QualityExclusion;
 import net.sf.anathema.character.library.quality.model.QualityPrerequisite;
+import net.sf.anathema.character.lunar.beastform.model.gift.weapons.CoreRulesBeastClawsBite;
+import net.sf.anathema.character.lunar.beastform.model.gift.weapons.CoreRulesBeastClawsClaws;
+import net.sf.anathema.character.lunar.beastform.model.gift.weapons.CoreRulesTalonsBite;
+import net.sf.anathema.character.lunar.beastform.model.gift.weapons.CoreRulesTalonsClaws;
+import net.sf.anathema.character.lunar.beastform.model.gift.weapons.PowerCombatBeastClawsBite;
+import net.sf.anathema.character.lunar.beastform.model.gift.weapons.PowerCombatBeastClawsClaws;
+import net.sf.anathema.character.lunar.beastform.model.gift.weapons.PowerCombatTalonsClaws;
+import net.sf.anathema.character.lunar.beastform.model.gift.weapons.PowerCombatTalonsBite;
 
 public class GiftProvider {
 
@@ -84,41 +89,13 @@ public class GiftProvider {
     for (IExaltedRuleSet rules : ExaltedRuleSet.values()) {
       rules.accept(new IRuleSetVisitor() {
         public void visitCoreRules(IExaltedRuleSet set) {
-          beastClaws.addHandWeapon(set, new MeleeWeaponType("DeadlyBeastmanTransformation.Weapon.Claws", //$NON-NLS-1$
-              AbilityType.Brawl,
-              3,
-              1,
-              3,
-              HealthType.Lethal,
-              1,
-              null));
-          beastClaws.addBiteWeapon(set, new MeleeWeaponType("DeadlyBeastmanTransformation.Weapon.Bite", //$NON-NLS-1$
-              AbilityType.Brawl,
-              0,
-              2,
-              5,
-              HealthType.Lethal,
-              0,
-              null));
+          beastClaws.addHandWeapon(set, new CoreRulesBeastClawsClaws());
+          beastClaws.addBiteWeapon(set, new CoreRulesBeastClawsBite());
         }
 
         public void visitPowerCombat(IExaltedRuleSet set) {
-          beastClaws.addHandWeapon(set, new MeleeWeaponType("DeadlyBeastmanTransformation.Weapon.Claws", //$NON-NLS-1$
-              AbilityType.Brawl,
-              2,
-              1,
-              5,
-              HealthType.Lethal,
-              1,
-              4));
-          beastClaws.addBiteWeapon(set, new MeleeWeaponType("DeadlyBeastmanTransformation.Weapon.Bite", //$NON-NLS-1$
-              AbilityType.Brawl,
-              -6,
-              -1,
-              8,
-              HealthType.Lethal,
-              -1,
-              2));
+          beastClaws.addHandWeapon(set, new PowerCombatBeastClawsClaws());
+          beastClaws.addBiteWeapon(set, new PowerCombatBeastClawsBite());
         }
 
         public void visitSecondEdition(IExaltedRuleSet set) {
@@ -131,41 +108,13 @@ public class GiftProvider {
     for (IExaltedRuleSet rules : ExaltedRuleSet.values()) {
       rules.accept(new IRuleSetVisitor() {
         public void visitCoreRules(IExaltedRuleSet set) {
-          savageTalons.addHandWeapon(set, new MeleeWeaponType("DeadlyBeastmanTransformation.Weapon.Claws", //$NON-NLS-1$
-              AbilityType.Brawl,
-              6,
-              4,
-              5,
-              HealthType.Lethal,
-              4,
-              null));
-          savageTalons.addBiteWeapon(set, new MeleeWeaponType("DeadlyBeastmanTransformation.Weapon.Bite", //$NON-NLS-1$
-              AbilityType.Brawl,
-              3,
-              2,
-              8,
-              HealthType.Lethal,
-              0,
-              null));
+          savageTalons.addHandWeapon(set, new CoreRulesTalonsClaws());
+          savageTalons.addBiteWeapon(set, new CoreRulesTalonsBite());
         }
 
         public void visitPowerCombat(IExaltedRuleSet set) {
-          savageTalons.addHandWeapon(set, new MeleeWeaponType("DeadlyBeastmanTransformation.Weapon.Claws", //$NON-NLS-1$
-              AbilityType.Brawl,
-              2,
-              3,
-              7,
-              HealthType.Lethal,
-              2,
-              7));
-          savageTalons.addBiteWeapon(set, new MeleeWeaponType("DeadlyBeastmanTransformation.Weapon.Bite", //$NON-NLS-1$
-              AbilityType.Brawl,
-              -4,
-              0,
-              10,
-              HealthType.Lethal,
-              0,
-              2));
+          savageTalons.addHandWeapon(set, new PowerCombatTalonsClaws());
+          savageTalons.addBiteWeapon(set, new PowerCombatTalonsBite());
         }
 
         public void visitSecondEdition(IExaltedRuleSet set) {
