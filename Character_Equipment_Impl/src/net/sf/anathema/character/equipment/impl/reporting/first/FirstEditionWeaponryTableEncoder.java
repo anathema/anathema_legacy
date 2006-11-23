@@ -18,15 +18,12 @@ import com.lowagie.text.pdf.BaseFont;
 
 public class FirstEditionWeaponryTableEncoder extends AbstractWeaponryTableEncoder {
 
-  private final IGenericTraitCollection collection;
-
-  public FirstEditionWeaponryTableEncoder(BaseFont baseFont, IResources resources, IGenericTraitCollection collection) {
+  public FirstEditionWeaponryTableEncoder(BaseFont baseFont, IResources resources) {
     super(baseFont, resources);
-    this.collection = collection;
   }
 
   @Override
-  protected AbstractSpeedWeaponStatsGroup createSpeedGroup() {
+  protected AbstractSpeedWeaponStatsGroup createSpeedGroup(IGenericTraitCollection collection) {
     return new FirstEditionSpeedWeaponStatsGroup(getResources(), collection);
   }
 

@@ -27,7 +27,7 @@ public abstract class AbstractWeaponryTableEncoder extends AbstractEquipmentTabl
     IGenericTraitCollection traitCollection = character.getTraitCollection();
     return new IEquipmentStatsGroup[] {
         new EquipmentNameStatsGroup(resources),
-        createSpeedGroup(),
+        createSpeedGroup(traitCollection),
         createAccuracyGroup(character),
         new DamageWeaponStatsGroup(resources, traitCollection),
         createDefenceGroup(character),
@@ -42,7 +42,7 @@ public abstract class AbstractWeaponryTableEncoder extends AbstractEquipmentTabl
 
   protected abstract AbstractDefenceWeaponStatsGroup createDefenceGroup(IGenericCharacter character);
 
-  protected abstract AbstractSpeedWeaponStatsGroup createSpeedGroup();
+  protected abstract AbstractSpeedWeaponStatsGroup createSpeedGroup(IGenericTraitCollection traitCollection);
 
   protected IResources getResources() {
     return resources;

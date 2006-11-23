@@ -7,6 +7,7 @@ import net.sf.anathema.character.equipment.impl.reporting.RateWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.SecondEditionDefenceWeaponStatsGroup;
 import net.sf.anathema.character.equipment.impl.reporting.second.weaponstats.SecondEditionSpeedWeaponStatsGroup;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.pdf.BaseFont;
@@ -18,7 +19,7 @@ public class SecondEditionWeaponryTableEncoder extends AbstractWeaponryTableEnco
   }
 
   @Override
-  protected SecondEditionSpeedWeaponStatsGroup createSpeedGroup() {
+  protected SecondEditionSpeedWeaponStatsGroup createSpeedGroup(IGenericTraitCollection collection) {
     return new SecondEditionSpeedWeaponStatsGroup(getResources());
   }
 

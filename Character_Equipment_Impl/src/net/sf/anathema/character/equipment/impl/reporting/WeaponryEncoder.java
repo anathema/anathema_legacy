@@ -32,7 +32,7 @@ public class WeaponryEncoder implements IPdfContentBoxEncoder {
     final AbstractWeaponryTableEncoder[] encoder = new AbstractWeaponryTableEncoder[1];
     character.getRules().getEdition().accept(new IEditionVisitor() {
       public void visitFirstEdition(IExaltedEdition visitedEdition) {
-        encoder[0] = new FirstEditionWeaponryTableEncoder(baseFont, resources, character.getTraitCollection());
+        encoder[0] = new FirstEditionWeaponryTableEncoder(baseFont, resources);
       }
 
       public void visitSecondEdition(IExaltedEdition visitedEdition) {
