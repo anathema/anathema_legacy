@@ -46,15 +46,15 @@ public class EquipmentPrintModel implements IEquipmentPrintModel {
   private <K extends IEquipmentStats> void fillPrintEquipmentList(List<K> printStats, Class<K> printedClass) {
     IEquipmentItem[] naturalWeapons = collection.getNaturalWeapons();
     for (IEquipmentItem item : collection.getEquipmentItems()) {
+      IEquipmentStats[] statsArray = item.getStats();
       if (ArrayUtilities.contains(naturalWeapons, item)) {
-        for (IEquipmentStats stats : item.getStats()) {
+        for (IEquipmentStats stats : statsArray) {
           if (doPrint(item, stats, printedClass)) {
             printStats.add((K) stats);
           }
         }
       }
       else {
-        IEquipmentStats[] statsArray = item.getStats();
         for (IEquipmentStats stats : statsArray) {
           if (doPrint(item, stats, printedClass)) {
             String itemName = item.getTemplateId();
