@@ -14,6 +14,7 @@ import net.sf.anathema.charmentry.presenter.view.IHeaderDataEntryView;
 import net.sf.anathema.charmentry.properties.CharmEntryProperties;
 import net.sf.anathema.charmentry.view.ISourceSelectionView;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
@@ -70,7 +71,7 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
     initNameView();
     final IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer("", resources); //$NON-NLS-1$
     initTypeView(renderer);
-    initEditionView(renderer);
+    initEditionView();
     initSourceView();
   }
 
@@ -83,7 +84,8 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
     });
   }
 
-  private void initEditionView(final IdentificateSelectCellRenderer renderer) {
+  private void initEditionView() {
+    final IdentificateSelectCellRenderer renderer = new IdentificateSelectCellRenderer("Edition.", resources); //$NON-NLS-1$
     IObjectSelectionView<IExaltedEdition> editionView = view.addComboBoxRow(
         properties.getEditionLabel(),
         renderer,
@@ -112,7 +114,7 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
     final ISourceSelectionView sourceView = view.addSourceView(
         properties.getBookLabel(),
         properties.getPageLabel(),
-        sourceModel.getPredefinedSources(),
+        sourceModel.getLegalSources(),
         new IdentificateSelectCellRenderer("ExaltedSourceBook.", resources));//$NON-NLS-1$
     sourceView.addSourceChangeListener(new IObjectValueChangedListener<IExaltedSourceBook>() {
       public void valueChanged(IExaltedSourceBook newValue) {
@@ -122,6 +124,11 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
     sourceView.addPageChangeListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
         sourceModel.setSourcePage(newValue);
+      }
+    });
+    getPageModel().addChangeListener(new IChangeListener() {
+      public void changeOccured() {
+        sourceView.setObjects(sourceModel.getLegalSources());
       }
     });
   }

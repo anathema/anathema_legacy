@@ -11,4 +11,6 @@ public interface ISourceSelectionView {
   public void setPageSelectionEnabled(boolean enabled);
 
   public void addPageChangeListener(IIntValueChangedListener listener);
+
+  public void setObjects(IExaltedSourceBook[] legalSources);
 }

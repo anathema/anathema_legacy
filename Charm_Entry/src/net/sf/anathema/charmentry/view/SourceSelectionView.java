@@ -58,4 +58,8 @@ public class SourceSelectionView implements ISourceSelectionView, IDialogCompone
   public void setRenderer(ListCellRenderer renderer) {
     bookBox.setRenderer(renderer);
   }
+
+  public void setObjects(IExaltedSourceBook[] legalSources) {
+    bookBox.setObjects(legalSources);
+  }
 }

@@ -30,7 +30,7 @@ public class ShowCharmEntryAction extends SmartAction {
     return action;
   }
 
-  public ShowCharmEntryAction(String string, IResources resources) {
+  private ShowCharmEntryAction(String string, IResources resources) {
     this.resources = resources;
     setName(string);
   }

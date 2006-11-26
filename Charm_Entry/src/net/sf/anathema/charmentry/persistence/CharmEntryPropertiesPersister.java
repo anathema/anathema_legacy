@@ -20,7 +20,7 @@ public class CharmEntryPropertiesPersister {
 
   public void writeCharmPageProperty(CharacterType type, String key, IExaltedSourceBook book, int page)
       throws IOException {
-    String fileName = "../Character_" + type.getId() + "/resources/language/Charms_" + type.getId() + "_Pages.properties";//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //;
+    String fileName = "../Character_" + type.name() + "/resources/language/Charms_" + type.getId() + "_Pages.properties";//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //;
     File file = new File(fileName);
     BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
     writer.newLine();
@@ -32,10 +32,10 @@ public class CharmEntryPropertiesPersister {
       throws IOException {
     String fileName = null;
     if (edition == ExaltedEdition.SecondEdition) {
-      fileName = "../Character_" + type.getId() + "/resources/language/Charms_" + type.getId() + "_" + edition.getId() + ".properties";//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$;
+      fileName = "../Character_" + type.name() + "/resources/language/Charms_" + type.getId() + "_" + edition.getId() + ".properties";//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$;
     }
     else {
-      fileName = "../Character_" + type.getId() + "/resources/language/Charms_" + type.getId() + ".properties";//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$;
+      fileName = "../Character_" + type.name() + "/resources/language/Charms_" + type.getId() + ".properties";//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$;
     }
     File file = new File(fileName);
     BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
@@ -51,24 +51,32 @@ public class CharmEntryPropertiesPersister {
     writer.newLine();
     String writeString;
     if (duration instanceof UntilEventDuration) {
-      writeString = createCamelCase("Charm.Event.", ((UntilEventDuration) duration).getEvent());
+      String event = ((UntilEventDuration) duration).getEvent();
+      writeString = createCamelCase("Charm.Event.", event) + "=" + event;
     }
     else if (duration instanceof SimpleDuration) {
-      writeString = createCamelCase("Charm.Duration.", ((SimpleDuration) duration).getText());
+      String text = ((SimpleDuration) duration).getText();
+      writeString = createCamelCase("Charm.Duration.", text) + "=" + text;
     }
     else if (duration instanceof QualifiedAmountDuration) {
       QualifiedAmountDuration amountDuration = (QualifiedAmountDuration) duration;
       String amount = amountDuration.getAmount();
-      writeString = createCamelCase("Charm.Unit.", (amountDuration).getUnit());
+      String unit = amountDuration.getUnit();
+      writeString = createCamelCase("Charm.Unit.", unit);
       try {
-        if (Integer.parseInt(amount) == 1) {
+        int intAmount = Integer.parseInt(amount);
+        String amountString = "Charm.Amount." + intAmount;
+        if (!resources.supportsKey(amountString)) {
+          writer.write(amountString + " = " + intAmount);
+        }
+        if (intAmount == 1) {
           writeString += ".Singular";
         }
       }
       catch (NumberFormatException e) {
-        // Nothing to do
+        writeString += ".Plural"; //$NON-NLS-2$
       }
-      writeString += ".Plural"; //$NON-NLS-2$
+      writeString += "=" + unit;
     }
     else {
       throw new UnreachableCodeReachedException("Unknown Duration Type");
