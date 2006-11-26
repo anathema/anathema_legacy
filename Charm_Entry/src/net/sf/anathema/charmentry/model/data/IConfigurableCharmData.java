@@ -4,7 +4,7 @@ import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IExtendedCharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttribute;
-import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
+import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
@@ -35,7 +35,7 @@ public interface IConfigurableCharmData extends IExtendedCharmData {
 
   public IGenericTrait getPrimaryPrerequiste();
 
-  public void setDuration(SimpleDuration duration);
+  public void setDuration(IDuration duration);
 
   public void setParentCharms(ICharm[] charms);
 

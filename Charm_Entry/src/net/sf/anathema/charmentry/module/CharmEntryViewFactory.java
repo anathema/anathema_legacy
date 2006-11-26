@@ -3,6 +3,7 @@ package net.sf.anathema.charmentry.module;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.MarkerIntValueDisplayFactory;
+import net.sf.anathema.charmentry.presenter.view.IAmountDurationEntryView;
 import net.sf.anathema.charmentry.presenter.view.ICharmTypeEntryView;
 import net.sf.anathema.charmentry.presenter.view.ICostEntryPageView;
 import net.sf.anathema.charmentry.presenter.view.IDurationEntryView;
@@ -19,6 +20,7 @@ import net.sf.anathema.charmentry.view.HeaderDataEntryView;
 import net.sf.anathema.charmentry.view.KeywordView;
 import net.sf.anathema.charmentry.view.PrerequisiteCharmsEntryView;
 import net.sf.anathema.charmentry.view.PrerequisiteEntryView;
+import net.sf.anathema.charmentry.view.QualifiedAmountDurationView;
 import net.sf.anathema.charmentry.view.ReflexiveSpecialsView;
 import net.sf.anathema.charmentry.view.SimpleSpecialsView;
 import net.sf.anathema.lib.resources.IResources;
@@ -53,6 +55,10 @@ public class CharmEntryViewFactory implements ICharmEntryViewFactory {
 
   public IDurationEntryView createDurationView() {
     return new DurationEntryView();
+  }
+
+  public IAmountDurationEntryView createQualifiedAmountDurationView() {
+    return new QualifiedAmountDurationView();
   }
 
   public ICostEntryPageView createCostEntryView() {

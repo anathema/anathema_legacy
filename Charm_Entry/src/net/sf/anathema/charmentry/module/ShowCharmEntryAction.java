@@ -64,6 +64,7 @@ public class ShowCharmEntryAction extends SmartAction {
           coreData.getId(),
           coreData.getSource(),
           entryData.getPage());
+      charmEntryPropertiesPersister.writeDurationProperty(resources, coreData.getDuration());
     }
     catch (Exception e) {
       Message message = new Message("Error occurred while entering charm.", e);

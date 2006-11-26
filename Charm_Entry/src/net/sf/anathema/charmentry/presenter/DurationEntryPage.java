@@ -1,20 +1,22 @@
 package net.sf.anathema.charmentry.presenter;
 
-import javax.swing.DefaultListCellRenderer;
+import javax.swing.JRadioButton;
 
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.core.IPageContent;
+import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.charmentry.module.ICharmEntryViewFactory;
 import net.sf.anathema.charmentry.presenter.model.ICharmEntryModel;
 import net.sf.anathema.charmentry.presenter.model.IDurationEntryModel;
 import net.sf.anathema.charmentry.presenter.view.IDurationEntryView;
 import net.sf.anathema.charmentry.properties.DurationPageProperties;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.wizard.AbstractAnathemaWizardPage;
 import net.sf.anathema.lib.gui.wizard.workflow.CheckInputListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 public class DurationEntryPage extends AbstractAnathemaWizardPage {
 
@@ -23,6 +25,7 @@ public class DurationEntryPage extends AbstractAnathemaWizardPage {
   private final ICharmEntryViewFactory viewFactory;
   private DurationPageProperties properties;
   private IDurationEntryView view;
+  private boolean qualifiedAmountDuration;
 
   public DurationEntryPage(IResources resources, ICharmEntryModel model, ICharmEntryViewFactory viewFactory) {
     this.resources = resources;
@@ -35,7 +38,12 @@ public class DurationEntryPage extends AbstractAnathemaWizardPage {
   protected void addFollowUpPages(CheckInputListener inputListener) {
     addFollowupPage(new PrerequisitesEntryPage(resources, model, viewFactory), inputListener, new ICondition() {
       public boolean isFullfilled() {
-        return getPageModel().getDuration() != null;
+        return getPageModel().isDurationComplete();
+      }
+    });
+    addFollowupPage(new QualifiedAmountDurationPage(resources, model, viewFactory), inputListener, new ICondition() {
+      public boolean isFullfilled() {
+        return qualifiedAmountDuration;
       }
     });
   }
@@ -48,16 +56,31 @@ public class DurationEntryPage extends AbstractAnathemaWizardPage {
   @Override
   protected void initPageContent() {
     this.view = viewFactory.createDurationView();
-    IObjectSelectionView<String> selectionView = view.addObjectSelectionView(
-        properties.getDurationLabel(),
-        new DefaultListCellRenderer(),
-        getPageModel().getDurations());
-    selectionView.addObjectSelectionChangedListener(new IObjectValueChangedListener<String>() {
+    final JRadioButton instantButton = view.addRadioButton("Instant");
+    final ITextView simpleDurationView = view.addRadioButtonTextField("Simple duration:");
+    simpleDurationView.addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
-        getPageModel().setDuration(newValue);
+        getPageModel().setSimpleDuration(newValue);
       }
     });
-    selectionView.setSelectedObject(getPageModel().getDurations()[0]);
+    final ITextView untilView = view.addRadioButtonTextField("Until");
+    untilView.addTextChangedListener(new IObjectValueChangedListener<String>() {
+      public void valueChanged(String newValue) {
+        getPageModel().setUntilDuration(newValue);
+      }
+    });
+    final JRadioButton amountButton = view.addRadioButton("Qualified amount duration");
+    view.addTypeChangeListener(new IChangeListener() {
+      public void changeOccured() {
+        qualifiedAmountDuration = amountButton.isSelected();
+        getPageModel().clearDuration();
+        simpleDurationView.setText(null);
+        untilView.setText(null);
+        if (instantButton.isSelected()) {
+          getPageModel().setSimpleDuration(SimpleDuration.INSTANT);
+        }
+      }
+    });
   }
 
   private IDurationEntryModel getPageModel() {

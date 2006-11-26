@@ -1,5 +1,6 @@
 package net.sf.anathema.charmentry.module;
 
+import net.sf.anathema.charmentry.presenter.view.IAmountDurationEntryView;
 import net.sf.anathema.charmentry.presenter.view.ICharmTypeEntryView;
 import net.sf.anathema.charmentry.presenter.view.ICostEntryPageView;
 import net.sf.anathema.charmentry.presenter.view.IDurationEntryView;
@@ -29,4 +30,6 @@ public interface ICharmEntryViewFactory {
   public IPrerequisiteCharmsEntryView createPrerequisiteCharmsView();
 
   public IKeywordView createKeywordEntryView();
+
+  public IAmountDurationEntryView createQualifiedAmountDurationView();
 }

@@ -1,14 +1,16 @@
 package net.sf.anathema.charmentry.presenter.view;
 
-import javax.swing.ListCellRenderer;
+import javax.swing.JRadioButton;
 
 import net.disy.commons.swing.dialog.core.IPageContent;
-import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
+import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 
 public interface IDurationEntryView extends IPageContent {
 
-  public IObjectSelectionView<String> addObjectSelectionView(
-      String durationLabel,
-      ListCellRenderer renderer,
-      String[] durations);
+  public ITextView addRadioButtonTextField(String string);
+
+  public JRadioButton addRadioButton(String string);
+
+  public void addTypeChangeListener(IChangeListener changeListener);
 }

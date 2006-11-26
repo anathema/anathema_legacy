@@ -1,25 +1,61 @@
 package net.sf.anathema.charmentry.view;
 
-import javax.swing.JComponent;
-import javax.swing.ListCellRenderer;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+
+import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
+import net.disy.commons.swing.util.ToggleComponentEnabler;
 import net.sf.anathema.charmentry.presenter.view.IDurationEntryView;
-import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
-import net.sf.anathema.lib.workflow.container.factory.StandardPanelBuilder;
+import net.sf.anathema.lib.control.change.ChangeControl;
+import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.workflow.textualdescription.ITextView;
+import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
 public class DurationEntryView implements IDurationEntryView {
 
-  private final StandardPanelBuilder builder = new StandardPanelBuilder();
+  private final ButtonGroup group = new ButtonGroup();
+  private final JPanel panel = new JPanel(new GridDialogLayout(2, false));
+  private final ChangeControl control = new ChangeControl();
 
-  public IObjectSelectionView<String> addObjectSelectionView(
-      String durationLabel,
-      ListCellRenderer renderer,
-      String[] durations) {
-    return builder.addEditableObjectSelectionView(durationLabel, renderer, durations);
+  public JRadioButton addRadioButton(String string) {
+    JRadioButton button = createRadioButton(string);
+    panel.add(new EndOfLineMarkerComponent());
+    return button;
+  }
+
+  public ITextView addRadioButtonTextField(String string) {
+    JRadioButton radioButton = createRadioButton(string);
+    LineTextView textField = new LineTextView(15);
+    ToggleComponentEnabler.connect(radioButton, textField.getComponent());
+    panel.add(textField.getComponent());
+    panel.add(new EndOfLineMarkerComponent());
+    return textField;
+  }
+
+  private JRadioButton createRadioButton(String string) {
+    JRadioButton radioButton = new JRadioButton(string);
+    group.add(radioButton);
+    panel.add(radioButton);
+    radioButton.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        control.fireChangedEvent();
+      }
+    });
+    return radioButton;
   }
 
   public JComponent getContent() {
-    return builder.getUntitledContent();
+    return panel;
+  }
+
+  public void addTypeChangeListener(IChangeListener changeListener) {
+    control.addChangeListener(changeListener);
   }
 
   public void requestFocus() {
