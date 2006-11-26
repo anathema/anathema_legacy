@@ -1,5 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic.persistence.writer;
 
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.ATTRIB_SOURCE;
+import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_SOURCE;
 import net.sf.anathema.character.generic.magic.ICharmData;
 
 import org.dom4j.Element;
@@ -7,6 +9,7 @@ import org.dom4j.Element;
 public class SourceWriter {
 
   public void write(ICharmData charm, Element charmElement) {
-    throw new UnsupportedOperationException("Use new source format (Rulebook)"); //$NON-NLS-1$
+    Element sourceElement = charmElement.addElement(TAG_SOURCE);
+    sourceElement.addAttribute(ATTRIB_SOURCE, charm.getSource().getId());
   }
 }
