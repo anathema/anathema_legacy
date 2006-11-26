@@ -33,7 +33,7 @@ public class CharmIO {
   public void writeCharmInternal(ICharmEntryData charmData) throws IOException, DocumentException {
     CharacterType type = charmData.getCoreData().getCharacterType();
     File file = new File("../Character_" //$NON-NLS-1$
-        + type.getId()
+        + type.name()
         + "/resources/" //$NON-NLS-1$
         + createFileName(type, charmData.getEdition().getDefaultRuleset()));
     Document document = new SAXReader().read(new FileInputStream(file));
