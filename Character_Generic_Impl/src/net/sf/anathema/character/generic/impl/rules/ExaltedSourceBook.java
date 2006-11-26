@@ -1,5 +1,8 @@
 package net.sf.anathema.character.generic.impl.rules;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 
@@ -29,5 +32,15 @@ public enum ExaltedSourceBook implements IExaltedSourceBook {
 
   public IExaltedEdition getEdition() {
     return edition;
+  }
+
+  public static IExaltedSourceBook[] getSourcesForEdition(IExaltedEdition requestedEdition) {
+    List<ExaltedSourceBook> books = new ArrayList<ExaltedSourceBook>();
+    for (ExaltedSourceBook book : values()) {
+      if (book.getEdition() == requestedEdition) {
+        books.add(book);
+      }
+    }
+    return books.toArray(new IExaltedSourceBook[books.size()]);
   }
 }
