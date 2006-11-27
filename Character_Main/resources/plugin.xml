@@ -101,6 +101,7 @@
 		<parameter id="bundle" value="Charms_Abyssal_Pages"/>
 		<parameter id="bundle" value="Charms_Dragon-Blooded"/>
 		<parameter id="bundle" value="Charms_Dragon-Blooded_Pages"/>
+		<parameter id="bundle" value="Charms_Dragon-Blooded_SecondEdition"/>
 		<parameter id="bundle" value="Charms_DragonKing"/>
 		<parameter id="bundle" value="Charms_Lunar"/>
 		<parameter id="bundle" value="Charms_Lunar_Pages"/>
