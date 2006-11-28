@@ -15,19 +15,19 @@ public class BasicItemData implements IBasicItemData {
     return description;
   }
 
-  public void addDirtyListener(IChangeListener changeListener) {
-    // nothing to do
-  }
-
   public boolean isDirty() {
-    return true;
+    return description.isDirty();
   }
 
   public void setClean() {
-    // TODO Auto-generated method stub
+    description.setClean();
+  }
+
+  public void addDirtyListener(IChangeListener changeListener) {
+    description.addDirtyListener(changeListener);
   }
 
   public void removeDirtyListener(IChangeListener changeListener) {
-    // nothing to do
+    description.removeDirtyListener(changeListener);
   }
 }
