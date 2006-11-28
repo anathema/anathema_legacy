@@ -29,6 +29,10 @@ public class SimpleTextualDescription extends AbstractTextualDescription impleme
     }
     this.text = text;
     setDirty(true);
+  }
+
+  @Override
+  protected void fireChangedEvent() {
     textControl.fireValueChangedEvent(text);
   }
 

@@ -23,17 +23,17 @@ public class StyledTextualDescription extends AbstractTextualDescription impleme
     }
     this.textParts = textParts;
     setDirty(true);
-    fireTextChangedEvent(textParts);
   }
 
   public ITextPart[] getTextParts() {
     return textParts;
   }
 
-  private void fireTextChangedEvent(final ITextPart[] parts) {
+  @Override
+  protected void fireChangedEvent() {
     textListeners.forAllDo(new IClosure<IStyledTextChangeListener>() {
       public void execute(IStyledTextChangeListener input) {
-        input.textChanged(parts);
+        input.textChanged(textParts);
       }
     });
   }

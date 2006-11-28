@@ -12,5 +12,8 @@ public abstract class AbstractTextualDescription implements ITextualDescription 
 
   public void setDirty(boolean isDirty) {
     this.dirty = isDirty;
+    fireChangedEvent();
   }
+
+  protected abstract void fireChangedEvent();
 }
