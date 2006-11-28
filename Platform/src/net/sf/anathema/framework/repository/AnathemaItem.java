@@ -1,5 +1,6 @@
 package net.sf.anathema.framework.repository;
 
+import net.disy.commons.core.util.Ensure;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.framework.item.IItemType;
@@ -13,11 +14,11 @@ import net.sf.anathema.lib.util.IIdentificate;
 public class AnathemaItem implements IItem {
 
   private String printName;
-  protected final IItemType itemType;
+  private final IItemType itemType;
   private final RepositoryLocation repositoryLocation;
   private final IIdentificate identificate;
   private final GenericControl<IItemListener> repositoryItemListeners = new GenericControl<IItemListener>();
-  private IItemData itemData;
+  private final IItemData itemData;
 
   public void addItemListener(IItemListener listener) {
     repositoryItemListeners.addListener(listener);
@@ -36,23 +37,25 @@ public class AnathemaItem implements IItem {
   }
 
   public AnathemaItem(IItemType type, IItemData itemData) {
+    Ensure.ensureArgumentTrue("Use second constructor for nonpersisted items.", type.supportsRepository()); //$NON-NLS-1$
     this.itemType = type;
-    this.repositoryLocation = type.supportsRepository() ? new RepositoryLocation(this) : null;
+    this.repositoryLocation = new RepositoryLocation(this);
     this.identificate = repositoryLocation;
-    initItemData(itemData);
+    this.itemData = itemData;
+    initItemData();
   }
 
   public AnathemaItem(IItemType type, IIdentificate identificate, IItemData itemData) {
     this.itemType = type;
     this.repositoryLocation = null;
     this.identificate = identificate;
-    initItemData(itemData);
+    this.itemData = itemData;
+    initItemData();
   }
 
-  private void initItemData(IItemData data) {
-    this.itemData = data;
-    if (data != null) {
-      data.setPrintNameAdjuster(new PrintNameAdjuster(this));
+  private void initItemData() {
+    if (itemData != null) {
+      itemData.setPrintNameAdjuster(new PrintNameAdjuster(this));
     }
   }
 
