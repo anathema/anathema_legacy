@@ -45,7 +45,7 @@ public class AnathemaSaveAllAction extends SmartAction {
         currentItem.removeDirtyListener(changeListener);
       }
       AnathemaSaveAllAction.this.currentItem = item;
-      if (item.getItemType().supportsRepository()) {
+      if (item != null && item.getItemType().supportsRepository()) {
         item.addDirtyListener(changeListener);
         setSaveAllEnabled();
       }
