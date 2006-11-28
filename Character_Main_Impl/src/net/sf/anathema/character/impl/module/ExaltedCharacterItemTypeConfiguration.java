@@ -38,12 +38,8 @@ import net.sf.anathema.lib.resources.IResources;
 public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersistableItemTypeConfiguration {
   public static final String CHARACTER_ITEM_TYPE_ID = "ExaltedCharacter"; //$NON-NLS-1$
 
-  public static ItemType createCharacterItemType() {
-    return new ItemType(CHARACTER_ITEM_TYPE_ID, new RepositoryConfiguration(".ecg", "ExaltedCharacter/", "head")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-  }
-
   public ExaltedCharacterItemTypeConfiguration() throws AnathemaException {
-    super(createCharacterItemType());
+    super(new ItemType(CHARACTER_ITEM_TYPE_ID, new RepositoryConfiguration(".ecg", "ExaltedCharacter/", "head"))); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     NatureProvider.getInstance().init();
   }
 
