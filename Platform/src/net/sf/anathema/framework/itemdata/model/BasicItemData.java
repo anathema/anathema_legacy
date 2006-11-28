@@ -3,7 +3,7 @@ package net.sf.anathema.framework.itemdata.model;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
-public class BasicItemData implements IItemData, IBasicItemData {
+public class BasicItemData implements IBasicItemData {
 
   private final IItemDescription description = new ItemDescription();
 
@@ -16,7 +16,7 @@ public class BasicItemData implements IItemData, IBasicItemData {
   }
 
   public void addDirtyListener(IChangeListener changeListener) {
-    //nothing to do
+    // nothing to do
   }
 
   public boolean isDirty() {
@@ -24,10 +24,10 @@ public class BasicItemData implements IItemData, IBasicItemData {
   }
 
   public void setClean() {
-    // TODO Auto-generated method stub    
+    // TODO Auto-generated method stub
   }
 
   public void removeDirtyListener(IChangeListener changeListener) {
-    //nothing to do
+    // nothing to do
   }
 }

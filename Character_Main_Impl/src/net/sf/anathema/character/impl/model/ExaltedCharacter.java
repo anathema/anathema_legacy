@@ -14,13 +14,12 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.character.model.ICharacterDescription;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
-import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
-public class ExaltedCharacter implements ICharacter, IItemData {
+public class ExaltedCharacter implements ICharacter {
 
   private CharacterStatistics statistics;
   private final ICharacterDescription description = new CharacterDescription();

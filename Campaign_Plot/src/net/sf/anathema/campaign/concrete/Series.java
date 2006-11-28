@@ -5,12 +5,11 @@ import net.sf.anathema.campaign.model.ISeries;
 import net.sf.anathema.campaign.model.ISeriesContentModel;
 import net.sf.anathema.campaign.model.plot.IPlotModel;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
-public class Series implements ISeries, IItemData {
+public class Series implements ISeries {
 
   private final ISeriesContentModel contentModel;
   private final IPlotModel plotModel = new PlotModel();
