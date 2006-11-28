@@ -10,9 +10,9 @@ import net.sf.anathema.character.reporting.text.BackgroundsTextEncoder;
 import net.sf.anathema.character.reporting.text.CharacterDescriptionTextEncoder;
 import net.sf.anathema.character.reporting.text.ConceptTextEncoder;
 import net.sf.anathema.character.reporting.text.VirtueTextEncoder;
+import net.sf.anathema.framework.reporting.IITextReport;
+import net.sf.anathema.framework.reporting.ITextReportUtils;
 import net.sf.anathema.framework.reporting.ReportException;
-import net.sf.anathema.framework.reporting.itext.IITextReport;
-import net.sf.anathema.framework.reporting.itext.ITextReportUtils;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.resources.IResources;
 

@@ -15,7 +15,7 @@ import net.sf.anathema.framework.presenter.menu.IAnathemaMenu;
 import net.sf.anathema.framework.presenter.menu.IMenuExtensionPoint;
 import net.sf.anathema.framework.presenter.menu.IMenuItem;
 import net.sf.anathema.framework.presenter.menu.MenuExtensionPoint;
-import net.sf.anathema.framework.reporting.controller.AnathemaPrintAction;
+import net.sf.anathema.framework.reporting.AnathemaPrintAction;
 import net.sf.anathema.framework.view.IMenuBar;
 import net.sf.anathema.framework.view.menu.IMenu;
 import net.sf.anathema.lib.registry.IRegistry;

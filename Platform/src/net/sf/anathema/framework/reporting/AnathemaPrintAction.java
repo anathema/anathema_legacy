@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.reporting.controller;
+package net.sf.anathema.framework.reporting;
 
 import java.awt.Component;
 import java.awt.Toolkit;
@@ -27,11 +27,6 @@ import net.sf.anathema.framework.module.DefaultObjectSelectionProperties;
 import net.sf.anathema.framework.module.preferences.OpenPdfPreferencesElement;
 import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
-import net.sf.anathema.framework.reporting.IReport;
-import net.sf.anathema.framework.reporting.IReportRegistry;
-import net.sf.anathema.framework.reporting.ReportException;
-import net.sf.anathema.framework.reporting.itext.IITextReport;
-import net.sf.anathema.framework.reporting.itext.ITextReportPrinter;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IObjectSelectionProperties;
 import net.sf.anathema.lib.control.BrowserControl;

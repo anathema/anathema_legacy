@@ -2,7 +2,7 @@ package net.sf.anathema.character.reporting.text;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.framework.reporting.itext.ITextReportUtils;
+import net.sf.anathema.framework.reporting.ITextReportUtils;
 import net.sf.anathema.lib.resources.IResources;
 
 public class AttributeTextEncoder extends AbstractTraitTextEncoder<AttributeType> {

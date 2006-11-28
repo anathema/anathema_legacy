@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.reporting.itext;
+package net.sf.anathema.framework.reporting;
 
 import java.awt.Color;
 

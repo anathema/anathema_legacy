@@ -1,6 +1,6 @@
 package net.sf.anathema.campaign.reporting;
 
-import net.sf.anathema.framework.reporting.itext.ITextReportUtils;
+import net.sf.anathema.framework.reporting.ITextReportUtils;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.Element;

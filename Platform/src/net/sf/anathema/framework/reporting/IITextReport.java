@@ -1,7 +1,5 @@
-package net.sf.anathema.framework.reporting.itext;
+package net.sf.anathema.framework.reporting;
 
-import net.sf.anathema.framework.reporting.IReport;
-import net.sf.anathema.framework.reporting.ReportException;
 import net.sf.anathema.framework.repository.IItem;
 
 import com.lowagie.text.Document;

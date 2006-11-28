@@ -3,7 +3,7 @@ package net.sf.anathema.campaign.reporting;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.framework.reporting.itext.ITextReportUtils;
+import net.sf.anathema.framework.reporting.ITextReportUtils;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;

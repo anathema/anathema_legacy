@@ -2,9 +2,9 @@ package net.sf.anathema.campaign.reporting;
 
 import net.sf.anathema.framework.itemdata.model.IBasicItemData;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
+import net.sf.anathema.framework.reporting.IITextReport;
+import net.sf.anathema.framework.reporting.ITextReportUtils;
 import net.sf.anathema.framework.reporting.ReportException;
-import net.sf.anathema.framework.reporting.itext.IITextReport;
-import net.sf.anathema.framework.reporting.itext.ITextReportUtils;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.styledtext.model.ITextPart;
 

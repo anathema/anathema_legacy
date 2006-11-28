@@ -8,7 +8,7 @@ import net.sf.anathema.framework.presenter.action.ItemTypeNewAction;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAction;
 import net.sf.anathema.framework.presenter.itemmanagement.AnathemaSaveAllAction;
 import net.sf.anathema.framework.presenter.toolbar.IAnathemaTool;
-import net.sf.anathema.framework.reporting.controller.AnathemaPrintAction;
+import net.sf.anathema.framework.reporting.AnathemaPrintAction;
 import net.sf.anathema.framework.view.toolbar.IAnathemaToolbar;
 import net.sf.anathema.lib.resources.IResources;
 
