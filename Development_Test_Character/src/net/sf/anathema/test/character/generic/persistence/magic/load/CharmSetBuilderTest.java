@@ -10,12 +10,14 @@ import net.sf.anathema.character.generic.impl.magic.charm.type.CharmTypeModel;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmSetBuilder;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.CharmPrerequisiteList;
 import net.sf.anathema.character.generic.impl.magic.persistence.prerequisite.SelectiveCharmGroupTemplate;
+import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.impl.rules.ExaltedSourceBook;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.duration.SimpleDuration;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
+import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
@@ -34,6 +36,7 @@ public class CharmSetBuilderTest extends BasicTestCase {
   private CharmSetBuilder builder;
   private Document document;
   private Element charmElement;
+  private final IExaltedRuleSet rules = ExaltedRuleSet.CoreRules;
 
   @Override
   protected void setUp() throws Exception {
@@ -45,14 +48,14 @@ public class CharmSetBuilderTest extends BasicTestCase {
   }
 
   public void testCharmIsRead() throws Exception {
-    ICharm[] charms = builder.buildCharms(document, new ArrayList<ICharm>());
+    ICharm[] charms = builder.buildCharms(document, new ArrayList<ICharm>(), rules);
     assertEquals(1, charms.length);
   }
 
   public void testCharmIsReplaced() throws Exception {
     List<ICharm> list = new ArrayList<ICharm>();
     list.add(getTestCharm("Dummy", CharmType.ExtraAction, null)); //$NON-NLS-1$
-    ICharm[] charms = builder.buildCharms(document, list);
+    ICharm[] charms = builder.buildCharms(document, list, rules);
     assertEquals(1, charms.length);
     assertEquals(CharmType.Simple, charms[0].getCharmTypeModel().getCharmType());
   }
@@ -63,7 +66,7 @@ public class CharmSetBuilderTest extends BasicTestCase {
     Charm parentDummy = getTestCharm(expectedParentId, CharmType.ExtraAction, null);
     list.add(parentDummy);
     addParentReference(charmElement, expectedParentId);
-    ICharm[] charms = builder.buildCharms(document, list);
+    ICharm[] charms = builder.buildCharms(document, list, rules);
     assertEquals(2, charms.length);
     assertTrue(connectionExists(charms[0], charms[1]));
   }
@@ -101,7 +104,7 @@ public class CharmSetBuilderTest extends BasicTestCase {
     addParentReference(charmElement, expectedParentId);
     final Element oldParentElement = CharmXmlTestUtils.createCharmElement(expectedParentId);
     document.getRootElement().add(oldParentElement);
-    ICharm[] oldCharms = builder.buildCharms(document, new ArrayList<ICharm>());
+    ICharm[] oldCharms = builder.buildCharms(document, new ArrayList<ICharm>(), rules);
     assertEquals(2, oldCharms.length);
     assertTrue(connectionExists(oldCharms[0], oldCharms[1]));
     List<ICharm> existingCharms = new ArrayList<ICharm>();
@@ -111,7 +114,7 @@ public class CharmSetBuilderTest extends BasicTestCase {
     Element newParentElement = CharmXmlTestUtils.createCharmElement(expectedParentId);
     document.getRootElement().add(newParentElement);
     assertEquals(1, document.getRootElement().elements().size());
-    ICharm[] newCharms = builder.buildCharms(document, existingCharms);
+    ICharm[] newCharms = builder.buildCharms(document, existingCharms, rules);
     assertEquals(2, newCharms.length);
     assertTrue(connectionExists(newCharms[0], newCharms[1]));
     assertTrue(connectionExists(oldCharms[0], oldCharms[1]));

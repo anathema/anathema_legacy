@@ -76,18 +76,18 @@ public class CharmCache implements ICharmCache {
     if (basicRules != null) {
       Collections.addAll(existingCharms, getCharms(type, basicRules));
     }
-    ICharm[] charmArray = builder.buildCharms(charmDocument, existingCharms);
+    ICharm[] charmArray = builder.buildCharms(charmDocument, existingCharms, set);
     for (ICharm charm : charmArray) {
       getRulesetCharms(set).add(type, charm);
     }
   }
 
   // Necessary for connections between Charms from different documents/types
-  public ICharm searchCharm(final String charmId) {
+  public ICharm searchCharm(final String charmId, IExaltedRuleSet rules) {
     try {
       String[] idParts = charmId.split("\\."); //$NON-NLS-1$
       CharacterType characterTypeId = CharacterType.getById(idParts[0]);
-      ICharm[] charms = getCharms(characterTypeId, ExaltedRuleSet.CoreRules);
+      ICharm[] charms = getCharms(characterTypeId, rules);
       ICharm charm = ArrayUtilities.find(new Predicate<ICharm>() {
         public boolean evaluate(ICharm candidate) {
           return candidate.getId().equals(charmId);

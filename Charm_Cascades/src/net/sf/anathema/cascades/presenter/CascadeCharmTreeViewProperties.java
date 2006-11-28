@@ -2,14 +2,17 @@ package net.sf.anathema.cascades.presenter;
 
 import java.awt.Cursor;
 
+import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
+import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.charmtree.presenter.view.AbstractCharmTreeViewProperties;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewProperties {
 
   private ICharmTree charmTree;
+  private IExaltedRuleSet selectedRuleset;
 
   public CascadeCharmTreeViewProperties(IResources resources) {
     super(resources);
@@ -33,7 +36,11 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
 
   @Override
   protected ICharm getCharmById(String id) {
-    return charmTree.getCharmByID(id);
+    ICharm charm = charmTree.getCharmByID(id);
+    if (charm == null) {
+      charm = CharmCache.getInstance().searchCharm(id, selectedRuleset);
+    }
+    return charm;
   }
 
   public void setCharmTree(ICharmTree newCharmTree) {
@@ -42,5 +49,9 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
 
   public boolean isCharmUnlearnable(String charmId) {
     return false;
+  }
+
+  public void setRules(IExaltedRuleSet selectedRuleset) {
+    this.selectedRuleset = selectedRuleset;
   }
 }

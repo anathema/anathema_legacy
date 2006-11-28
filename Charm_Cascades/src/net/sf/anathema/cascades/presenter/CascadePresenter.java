@@ -113,6 +113,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
         }
         selectedRuleset = newValue;
         viewProperties.setCharmTree(getCharmTree(selectedType));
+        viewProperties.setRules(selectedRuleset);
         if (selectedRuleset.getEdition() == currentEdition) {
           return;
         }
@@ -160,8 +161,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
       view.fillCharmGroupBox(new IIdentificate[0]);
       return;
     }
-    CharmTreeIdentificateMap charmTreeMap = getCharmTreeMap(selectedRuleset);
-    final ICharmTree charmTree = charmTreeMap.get(selectedType);
+    final ICharmTree charmTree = getCharmTree(selectedType);
     if (charmTree == null) {
       view.fillCharmGroupBox(new IIdentificate[0]);
       return;

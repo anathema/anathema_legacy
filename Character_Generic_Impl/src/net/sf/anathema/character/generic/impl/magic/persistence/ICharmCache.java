@@ -7,7 +7,7 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public interface ICharmCache {
 
-  public abstract ICharm[] getCharms(IIdentificate type, IExaltedRuleSet ruleset) throws PersistenceException;
+  public ICharm[] getCharms(IIdentificate type, IExaltedRuleSet ruleset) throws PersistenceException;
 
-  public ICharm searchCharm(String charmId);
+  public ICharm searchCharm(String charmId, IExaltedRuleSet rules);
 }

@@ -214,7 +214,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     if (charm != null) {
       return charm;
     }
-    charm = CharmCache.getInstance().searchCharm(charmId);
+    charm = CharmCache.getInstance().searchCharm(charmId, context.getBasicCharacterContext().getRuleSet());
     if (charm != null) {
       return charm;
     }
