@@ -27,7 +27,7 @@ import net.sf.anathema.framework.itemdata.model.ItemDescription;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
 import net.sf.anathema.framework.persistence.TextPersister;
-import net.sf.anathema.framework.repository.AnathemaItem;
+import net.sf.anathema.framework.repository.AnathemaDataItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
@@ -161,7 +161,7 @@ public class SeriesPersister implements IRepositoryItemPersister {
       throws PersistenceException,
       RepositoryException {
     ISeries seriesData = new Series(supportedTypes);
-    IItem item = new AnathemaItem(campaignType, seriesData);
+    IItem item = new AnathemaDataItem(campaignType, seriesData);
     Element documentRoot = xmlDocument.getRootElement();
     repositoryItemPerister.load(documentRoot, item);
     restoreItemDescription(documentRoot, seriesData.getPlot().getRootElement().getDescription());
@@ -233,6 +233,6 @@ public class SeriesPersister implements IRepositoryItemPersister {
 
   public IItem createNew(IAnathemaWizardModelTemplate template) {
     ISeries seriesData = new Series(supportedTypes);
-    return new AnathemaItem(campaignType, seriesData);
+    return new AnathemaDataItem(campaignType, seriesData);
   }
 }

@@ -17,7 +17,7 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.IItemManagementModelListener;
-import net.sf.anathema.framework.repository.AnathemaItem;
+import net.sf.anathema.framework.repository.AnathemaDataItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
@@ -87,7 +87,7 @@ public class StartDatabaseAction extends SmartAction {
             monitor.beginTask(properties.getProgressTaskTitle(), IProgressMonitor.UNKNOWN);
             IItemType itemType = anathemaModel.getItemTypeRegistry().getById(properties.getItemTypeId());
             IItemData database = properties.createItemData(anathemaModel.getRepository().getRepositoryFolder());
-            IItem anathemaItem = new AnathemaItem(itemType, new Identificate(properties.getItemId()), database);
+            IItem anathemaItem = new AnathemaDataItem(itemType, new Identificate(properties.getItemId()), database);
             anathemaModel.getItemManagement().addItem(anathemaItem);
           }
           catch (DatabaseFileLockedException e) {

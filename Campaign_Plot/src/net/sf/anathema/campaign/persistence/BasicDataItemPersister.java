@@ -8,7 +8,7 @@ import net.sf.anathema.framework.itemdata.model.BasicItemData;
 import net.sf.anathema.framework.itemdata.model.IBasicItemData;
 import net.sf.anathema.framework.persistence.AbstractSingleFileItemPersister;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
-import net.sf.anathema.framework.repository.AnathemaItem;
+import net.sf.anathema.framework.repository.AnathemaDataItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
@@ -43,13 +43,13 @@ public class BasicDataItemPersister extends AbstractSingleFileItemPersister {
   public IItem load(Document itemXml) throws PersistenceException {
     Element rootElement = itemXml.getRootElement();
     BasicItemData data = new BasicItemData();
-    AnathemaItem item = new AnathemaItem(type, data);
+    AnathemaDataItem item = new AnathemaDataItem(type, data);
     repositoryItemPerister.load(rootElement, item);
     basicItemDataPersister.load(rootElement, (IBasicItemData) item.getItemData());
     return item;
   }
 
   public IItem createNew(IAnathemaWizardModelTemplate template) {
-    return new AnathemaItem(type, new BasicItemData());
+    return new AnathemaDataItem(type, new BasicItemData());
   }
 }

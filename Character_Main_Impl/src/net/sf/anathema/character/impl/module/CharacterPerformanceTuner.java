@@ -19,7 +19,7 @@ import net.sf.anathema.character.view.ICharacterView;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
-import net.sf.anathema.framework.repository.AnathemaItem;
+import net.sf.anathema.framework.repository.AnathemaDataItem;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -67,7 +67,7 @@ public class CharacterPerformanceTuner {
       throws AnathemaException {
     IItemViewFactory factory = model.getViewFactoryRegistry().get(characterItemType);
     ExaltedCharacter characterData = createStattedCharacter(characterGenerics);
-    ICharacterView view = (ICharacterView) factory.createView(new AnathemaItem(characterItemType, characterData));
+    ICharacterView view = (ICharacterView) factory.createView(new AnathemaDataItem(characterItemType, characterData));
     IBonusPointManagement bonusPointManagement = new BonusPointManagement(characterData.getStatistics());
     IExperiencePointManagement experiencePointManagement = new ExperiencePointManagement(characterData.getStatistics());
     new CharacterPresenter(

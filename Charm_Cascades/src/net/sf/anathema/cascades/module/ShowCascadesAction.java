@@ -10,7 +10,8 @@ import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
-import net.sf.anathema.framework.repository.AnathemaItem;
+import net.sf.anathema.framework.repository.AnathemaNullDataItem;
+import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.Identificate;
@@ -44,7 +45,7 @@ public class ShowCascadesAction extends SmartAction {
     try {
       IItemType itemType = anathemaModel.getItemTypeRegistry().getById(
           CharmCascadeItemTypeConfiguration.CHARM_CASCADES_ITEM_TYPE_ID);
-      AnathemaItem cascadeItem = new AnathemaItem(itemType, new Identificate("CharmCascades"), null); //$NON-NLS-1$
+      IItem cascadeItem = new AnathemaNullDataItem(itemType, new Identificate("CharmCascades")); //$NON-NLS-1$
       cascadeItem.setPrintName(resources.getString("ItemType.CharmCascades.PrintName")); //$NON-NLS-1$
       anathemaModel.getItemManagement().addItem(cascadeItem);
     }

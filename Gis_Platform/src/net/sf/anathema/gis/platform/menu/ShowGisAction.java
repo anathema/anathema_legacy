@@ -10,7 +10,7 @@ import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
-import net.sf.anathema.framework.repository.AnathemaItem;
+import net.sf.anathema.framework.repository.AnathemaDataItem;
 import net.sf.anathema.gis.data.IGisDataDirectory;
 import net.sf.anathema.gis.main.impl.model.GisModel;
 import net.sf.anathema.gis.main.model.IGisModel;
@@ -52,7 +52,7 @@ public class ShowGisAction extends SmartAction {
     try {
       IItemType itemType = anathemaModel.getItemTypeRegistry().getById(GisItemTypeConfiguration.GIS_ITEM_TYPE_ID);
       IGisModel gisModel = new GisModel(gisDataDirectory);
-      AnathemaItem gisItem = new AnathemaItem(itemType, new Identificate("GisItem"), gisModel); //$NON-NLS-1$
+      AnathemaDataItem gisItem = new AnathemaDataItem(itemType, new Identificate("GisItem"), gisModel); //$NON-NLS-1$
       gisItem.setPrintName(resources.getString("ItemType.Gis.PrintName")); //$NON-NLS-1$
       anathemaModel.getItemManagement().addItem(gisItem);
     }

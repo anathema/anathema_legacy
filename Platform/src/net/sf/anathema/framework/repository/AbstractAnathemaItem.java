@@ -4,21 +4,30 @@ import net.disy.commons.core.util.Ensure;
 import net.disy.commons.core.util.ObjectUtilities;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.itemdata.model.IItemData;
-import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
-import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.util.IIdentificate;
 
-public class AnathemaItem implements IItem {
+public abstract class AbstractAnathemaItem implements IItem {
 
   private String printName;
   private final IItemType itemType;
   private final RepositoryLocation repositoryLocation;
   private final IIdentificate identificate;
   private final GenericControl<IItemListener> repositoryItemListeners = new GenericControl<IItemListener>();
-  private final IItemData itemData;
+
+  public AbstractAnathemaItem(IItemType type) {
+    Ensure.ensureArgumentTrue("Use second constructor for nonpersisted items.", type.supportsRepository()); //$NON-NLS-1$
+    this.itemType = type;
+    this.repositoryLocation = new RepositoryLocation(this);
+    this.identificate = repositoryLocation;
+  }
+
+  public AbstractAnathemaItem(IItemType type, IIdentificate identificate) {
+    this.itemType = type;
+    this.repositoryLocation = null;
+    this.identificate = identificate;
+  }
 
   public void addItemListener(IItemListener listener) {
     repositoryItemListeners.addListener(listener);
@@ -34,29 +43,6 @@ public class AnathemaItem implements IItem {
         input.printNameChanged(name);
       }
     });
-  }
-
-  public AnathemaItem(IItemType type, IItemData itemData) {
-    Ensure.ensureArgumentTrue("Use second constructor for nonpersisted items.", type.supportsRepository()); //$NON-NLS-1$
-    this.itemType = type;
-    this.repositoryLocation = new RepositoryLocation(this);
-    this.identificate = repositoryLocation;
-    this.itemData = itemData;
-    initItemData();
-  }
-
-  public AnathemaItem(IItemType type, IIdentificate identificate, IItemData itemData) {
-    this.itemType = type;
-    this.repositoryLocation = null;
-    this.identificate = identificate;
-    this.itemData = itemData;
-    initItemData();
-  }
-
-  private void initItemData() {
-    if (itemData != null) {
-      itemData.setPrintNameAdjuster(new PrintNameAdjuster(this));
-    }
   }
 
   public final IItemType getItemType() {
@@ -93,31 +79,5 @@ public class AnathemaItem implements IItem {
   @Override
   public String toString() {
     return getItemType() + ": " + getDisplayName(); //$NON-NLS-1$
-  }
-
-  public IItemData getItemData() {
-    return itemData;
-  }
-
-  public boolean isDirty() {
-    return itemData != null && itemData.isDirty();
-  }
-
-  public void setClean() {
-    if (itemData != null) {
-      itemData.setClean();
-    }
-  }
-
-  public void addDirtyListener(IChangeListener changeListener) {
-    if (itemData != null) {
-      itemData.addDirtyListener(changeListener);
-    }
-  }
-
-  public void removeDirtyListener(IChangeListener changeListener) {
-    if (itemData != null) {
-      itemData.removeDirtyListener(changeListener);
-    }
   }
 }

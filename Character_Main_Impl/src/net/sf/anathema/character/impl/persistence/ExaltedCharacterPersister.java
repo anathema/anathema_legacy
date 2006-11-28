@@ -15,7 +15,7 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 import net.sf.anathema.framework.persistence.AbstractSingleFileItemPersister;
 import net.sf.anathema.framework.persistence.RepositoryItemPersister;
-import net.sf.anathema.framework.repository.AnathemaItem;
+import net.sf.anathema.framework.repository.AnathemaDataItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
@@ -62,7 +62,7 @@ public class ExaltedCharacterPersister extends AbstractSingleFileItemPersister {
   public IItem load(Document characterXml) throws PersistenceException {
     Element documentRoot = characterXml.getRootElement();
     ICharacter character = new ExaltedCharacter();
-    IItem item = new AnathemaItem(characterType, character);
+    IItem item = new AnathemaDataItem(characterType, character);
     repositoryItemPerister.load(documentRoot, item);
     descriptionPersister.load(documentRoot, character.getDescription());
     statisticsPersister.load(documentRoot, character);
@@ -77,7 +77,7 @@ public class ExaltedCharacterPersister extends AbstractSingleFileItemPersister {
     ExaltedCharacter character = new ExaltedCharacter();
     try {
       character.createCharacterStatistics(configuration.getTemplate(), generics, configuration.getRuleSet());
-      return new AnathemaItem(characterType, character);
+      return new AnathemaDataItem(characterType, character);
     }
     catch (SpellException e) {
       throw new PersistenceException("A problem occured while creating a new character", e); //$NON-NLS-1$

@@ -10,7 +10,7 @@ import net.sf.anathema.character.model.ICharacter;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.AnathemaMessaging;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
-import net.sf.anathema.framework.repository.AnathemaItem;
+import net.sf.anathema.framework.repository.AnathemaDataItem;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
@@ -28,7 +28,7 @@ public class SaveAndLoadCharacterFixture extends Fixture {
   public void doTable(Parse table) {
     CharacterSummary characterSummary = new CharacterSummary(summary);
     ICharacter character = characterSummary.getCharacter();
-    AnathemaItem anathemaItem = new AnathemaItem(itemType, character);
+    AnathemaDataItem anathemaItem = new AnathemaDataItem(itemType, character);
     IRepositoryItemPersister persister = new ExaltedCharacterPersister(
         itemType,
         characterSummary.getCharacterGenerics(),
