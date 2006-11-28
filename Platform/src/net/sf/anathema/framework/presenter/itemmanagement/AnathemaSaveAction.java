@@ -15,7 +15,6 @@ import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
@@ -24,7 +23,6 @@ import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.logging.Logger;
-import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
 public class AnathemaSaveAction extends SmartAction {
@@ -38,11 +36,9 @@ public class AnathemaSaveAction extends SmartAction {
 
   private class SaveEnabledListener extends ItemManagementModelAdapter {
 
-    private final IRegistry<IItemType, IRepositoryItemPersister> persisterRegistry;
     private final Action action;
 
-    public SaveEnabledListener(IRegistry<IItemType, IRepositoryItemPersister> persisterRegistry, Action action) {
-      this.persisterRegistry = persisterRegistry;
+    public SaveEnabledListener(Action action) {
       this.action = action;
     }
 
@@ -56,9 +52,7 @@ public class AnathemaSaveAction extends SmartAction {
         action.setEnabled(false);
         return;
       }
-      IRepositoryItemPersister itemPersister = persisterRegistry.get(item.getItemType());
-      boolean persistable = itemPersister != null;
-      if (!persistable) {
+      if (!item.getItemType().supportsRepository()) {
         action.setEnabled(false);
         return;
       }
@@ -84,7 +78,7 @@ public class AnathemaSaveAction extends SmartAction {
   }
 
   private AnathemaSaveAction(IAnathemaModel model, IResources resources) {
-    SaveEnabledListener listener = new SaveEnabledListener(model.getPersisterRegistry(), this);
+    SaveEnabledListener listener = new SaveEnabledListener(this);
     setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_S, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
     model.getItemManagement().addListener(listener);
     listener.itemSelected(model.getItemManagement().getSelectedItem());
