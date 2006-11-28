@@ -15,6 +15,8 @@ public class NewItemCreator implements IItemCreator {
   }
 
   public IItem createItem(IItemType type, IAnathemaWizardModelTemplate template) throws PersistenceException {
-    return anathemaModel.getPersisterRegistry().get(type).createNew(template);
+    IItem item = anathemaModel.getPersisterRegistry().get(type).createNew(template);
+    item.setClean();
+    return item;
   }
 }
