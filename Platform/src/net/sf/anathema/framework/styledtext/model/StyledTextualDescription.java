@@ -22,8 +22,8 @@ public class StyledTextualDescription extends AbstractTextualDescription impleme
       return;
     }
     this.textParts = textParts;
-    fireTextChangedEvent(textParts);
     setDirty(true);
+    fireTextChangedEvent(textParts);
   }
 
   public ITextPart[] getTextParts() {

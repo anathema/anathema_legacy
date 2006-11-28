@@ -28,8 +28,8 @@ public class SimpleTextualDescription extends AbstractTextualDescription impleme
       return;
     }
     this.text = text;
-    textControl.fireValueChangedEvent(text);
     setDirty(true);
+    textControl.fireValueChangedEvent(text);
   }
 
   public void addTextChangedListener(IObjectValueChangedListener<String> listener) {
