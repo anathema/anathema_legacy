@@ -28,9 +28,6 @@
 		<library id="iText" path="${ANATHEMA_LIB}/itext-1.4.jar" type="code">
 			<export prefix="*"/>
 		</library>
-		<library id="JasperReports" path="${ANATHEMA_LIB}/jasperreports-0.6.2.jar" type="code">
-			<export prefix="*"/>
-		</library>
 		<library id="CommonsIO" path="${ANATHEMA_LIB}/commons-io.jar" type="code">
 			<export prefix="*"/>
 		</library>
