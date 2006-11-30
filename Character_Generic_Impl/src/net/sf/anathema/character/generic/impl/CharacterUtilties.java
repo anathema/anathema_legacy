@@ -39,15 +39,7 @@ public class CharacterUtilties {
     return sum / 2;
   }
 
-  public static int getDv(IGenericCharacter character, ITraitType... types) {
-    CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
-    if (characterType == CharacterType.MORTAL) {
-      return getRoundDownDv(character.getTraitCollection(), types);
-    }
-    return getRoundUpDv(character.getTraitCollection(), types);
-  }
-
-  public static int getDv(CharacterType characterType, IGenericTraitCollection traitCollection, ITraitType... types) {
+  private static int getDv(CharacterType characterType, IGenericTraitCollection traitCollection, ITraitType... types) {
     if (characterType == CharacterType.MORTAL) {
       return getRoundDownDv(traitCollection, types);
     }
