@@ -1,0 +1,16 @@
+<!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.7" "http://jpf.sourceforge.net/plugin_0_7.dtd">
+<plugin-fragment id="net.sf.anathema.character.lunar" version="1.00" plugin-id="net.sf.anathema.character" plugin-version="1.00">
+	<runtime>		
+		<library id="lunar" path="./" type="code">
+			<export prefix="*"/>
+		</library>
+		<library id="lunarresources" path="./" type="resources">
+			<export prefix="*"/>
+		</library>
+	</runtime>
+	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="LunarResources">
+		<parameter id="bundle" value="Lunar"/>
+		<parameter id="bundle" value="Charms_Lunar"/>
+		<parameter id="bundle" value="Charms_Lunar_Pages"/>
+	</extension>
+</plugin-fragment>

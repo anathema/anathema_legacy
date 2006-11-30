@@ -5,6 +5,12 @@
 		<ant antfile="build_core_plugin.xml" />
 		<ant antfile="build_namegenerator_plugin.xml" />
 		<ant antfile="build_character_plugin.xml" />
+		<ant antfile="build_character_mortal_plugin.xml" />
+		<ant antfile="build_character_solar_plugin.xml" />
+		<ant antfile="build_character_db_plugin.xml" />
+		<ant antfile="build_character_lunar_plugin.xml" />
+		<ant antfile="build_character_abyssal_plugin.xml" />
+		<ant antfile="build_character_sidereal_plugin.xml" />
 		<ant antfile="build_plot_plugin.xml" />
 		<ant antfile="build_music_plugin.xml" />
 		<ant antfile="build_charmcascades_plugin.xml" />

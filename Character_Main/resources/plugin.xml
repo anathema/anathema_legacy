@@ -1,5 +1,6 @@
 <!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.6" "http://jpf.sourceforge.net/plugin_0_6.dtd">
-<plugin id="net.sf.anathema.character" version="0.12">
+<plugin id="net.sf.anathema.character" version="1.00">
+	<!--class="net.sf.anathema.character.CharacterPlugin"-->
 	<requires>
 		<import plugin-id="net.sf.anathema.core" reverse-lookup="true"/>
 		<import plugin-id="net.sf.anathema.namegenerator"/>
@@ -57,6 +58,13 @@
 			<export prefix="*"/>
 		</library>
 	</runtime>
+	<!--<extension-point id="CharmList">
+		<parameter-def id="list" multiplicity="any">
+			<parameter-def id="type" multiplicity="one"/>
+			<parameter-def id="rules" multiplicity="one"/>
+			<parameter-def id="path" multiplicity="one"/>
+		</parameter-def>
+	</extension-point>-->	
 	<extension plugin-id="net.sf.anathema.core"	point-id="Menubar" id="Menubar">
 		<parameter id="class" value="net.sf.anathema.character.impl.module.CharacterMenu"/>
 	</extension>
@@ -88,7 +96,6 @@
 		<parameter id="class" value="net.sf.anathema.character.impl.module.reporting.TextReportFactory"/>
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
-		<parameter id="bundle" value="Abyssal"/>
 		<parameter id="bundle" value="Backgrounds"/>
 		<parameter id="bundle" value="Castes"/>
 		<parameter id="bundle" value="Character"/>
@@ -97,35 +104,18 @@
 		<parameter id="bundle" value="CharacterSheet"/>
 		<parameter id="bundle" value="CharmDuration"/>
 		<parameter id="bundle" value="Charmgroups"/>
-		<parameter id="bundle" value="Charms_Abyssal"/>
-		<parameter id="bundle" value="Charms_Abyssal_Pages"/>
-		<parameter id="bundle" value="Charms_Dragon-Blooded"/>
-		<parameter id="bundle" value="Charms_Dragon-Blooded_Pages"/>
-		<parameter id="bundle" value="Charms_Dragon-Blooded_SecondEdition"/>
 		<parameter id="bundle" value="Charms_DragonKing"/>
-		<parameter id="bundle" value="Charms_Lunar"/>
-		<parameter id="bundle" value="Charms_Lunar_Pages"/>
 		<parameter id="bundle" value="Charms_MartialArts_Pages"/>
-		<parameter id="bundle" value="Charms_Sidereal"/>
-		<parameter id="bundle" value="Charms_Sidereal_Pages"/>
-		<parameter id="bundle" value="Charms_Solar"/>
-		<parameter id="bundle" value="Charms_Solar_Pages"/>
-		<parameter id="bundle" value="Charms_Solar_SecondEdition"/>
 		<parameter id="bundle" value="CharmTreeView"/>
 		<parameter id="bundle" value="Craft"/>
-		<parameter id="bundle" value="Dragon-Blooded"/>
 		<parameter id="bundle" value="Equipment"/>
 		<parameter id="bundle" value="Equipment_Database"/>
 		<parameter id="bundle" value="Health"/>
 		<parameter id="bundle" value="Intimacies"/>
-		<parameter id="bundle" value="Lunar"/>
 		<parameter id="bundle" value="Linguistics"/>
 		<parameter id="bundle" value="MeritsFlaws"/>
-		<parameter id="bundle" value="Mortal"/>
 		<parameter id="bundle" value="Natures"/>
 		<parameter id="bundle" value="Overview"/>
-		<parameter id="bundle" value="Sidereal"/>
-		<parameter id="bundle" value="Solar"/>
 		<parameter id="bundle" value="Sourcebooks"/>
 		<parameter id="bundle" value="Spells_Necromancy"/>
 		<parameter id="bundle" value="Spells_Pages"/>
