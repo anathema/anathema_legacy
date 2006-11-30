@@ -41,11 +41,17 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
   }
 
   public final boolean isRootCharm(String charmId) {
-    ICharm charm = getCharmById(charmId);
-    if (charm == null) {
+    if (isRequirementNode(charmId)) {
       return false;
     }
+    ICharm charm = findNonNullCharm(charmId);
     return charm.isTreeRoot();
+  }
+
+  private ICharm findNonNullCharm(String charmId) {
+    ICharm charm = getCharmById(charmId);
+    Ensure.ensureNotNull("Charm with id '" + charmId + " not found.", charm); //$NON-NLS-1$ //$NON-NLS-2$
+    return charm;
   }
 
   protected abstract ICharm getCharmById(String id);
@@ -55,11 +61,10 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
   }
 
   public final String getToolTip(String charmId) {
-    ICharm charm = getCharmById(charmId);
-    if (charm == null && charmId.startsWith(REQUIREMENT)) {
+    if (isRequirementNode(charmId)) {
       return ""; //$NON-NLS-1$
     }
-    Ensure.ensureNotNull("Charm with id '" + charmId + " not found.", charm); //$NON-NLS-1$ //$NON-NLS-2$
+    ICharm charm = findNonNullCharm(charmId);
     return tooltipTextProvider.getInfoString(charm);
   }
 
