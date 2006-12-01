@@ -1,10 +1,7 @@
 package net.sf.anathema.character.library.virtueflaw.model;
 
+import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
-import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelBonusPointCalculator;
-import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.VirtueChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
@@ -14,7 +11,7 @@ import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.change.GlobalChangeAdapter;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
-public abstract class VirtueFlawModel implements IVirtueFlawModel {
+public abstract class VirtueFlawModel extends AbstractAdditionalModelAdapter implements IVirtueFlawModel {
 
   private final String templateId;
   private final IVirtueFlaw virtueFlaw = new VirtueFlaw();
@@ -41,17 +38,10 @@ public abstract class VirtueFlawModel implements IVirtueFlawModel {
     return AdditionalModelType.Advantages;
   }
 
+  @Override
   public void addChangeListener(IChangeListener listener) {
     virtueFlaw.addRootChangeListener(listener);
     virtueFlaw.getName().addTextChangedListener(new GlobalChangeAdapter<String>(listener));
-  }
-
-  public IAdditionalModelBonusPointCalculator getBonusPointCalculator() {
-    return new NullAdditionalModelBonusPointCalculator();
-  }
-
-  public IAdditionalModelExperienceCalculator getExperienceCalculator() {
-    return new NullAdditionalModelExperienceCalculator();
   }
 
   public void addVirtueChangeListener(VirtueChangeListener listener) {
