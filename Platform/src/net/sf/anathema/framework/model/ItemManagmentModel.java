@@ -26,14 +26,6 @@ public class ItemManagmentModel implements IItemMangementModel {
     setSelectedItem(item);
   }
 
-  public synchronized void removeItem() {
-    IItem item = getSelectedItem();
-    if (item == null) {
-      return;
-    }
-    removeItem(item);
-  }
-
   public void removeItem(IItem item) {
     int itemIndex = allItems.indexOf(item);
     allItems.remove(item);

@@ -8,8 +8,6 @@ public interface IItemMangementModel {
 
   public void addItem(IItem item) throws AnathemaException;
 
-  public void removeItem();
-
   public void setSelectedItem(IItem item);
 
   public void addListener(IItemManagementModelListener listener);
