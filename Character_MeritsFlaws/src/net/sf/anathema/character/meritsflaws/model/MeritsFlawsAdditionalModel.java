@@ -35,7 +35,7 @@ public class MeritsFlawsAdditionalModel implements IMeritsFlawsAdditionalModel {
     return new MeritsFlawsBonusPointCalculator(model);
   }
 
-  public void addBonusPointsChangeListener(IChangeListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     model.addModelChangeListener(listener);
   }
 

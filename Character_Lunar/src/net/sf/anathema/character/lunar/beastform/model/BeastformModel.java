@@ -127,7 +127,7 @@ public class BeastformModel implements IBeastformModel {
     return new NullAdditionalModelBonusPointCalculator();
   }
 
-  public void addBonusPointsChangeListener(IChangeListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     // Nothing to do
   }
 

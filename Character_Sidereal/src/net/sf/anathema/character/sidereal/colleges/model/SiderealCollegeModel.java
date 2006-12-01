@@ -69,7 +69,7 @@ public class SiderealCollegeModel implements ISiderealCollegeModel {
     return new CollegeModelBonusPointCalculator(allHouses, template.getBonusCosts(), template.getPoints());
   }
 
-  public void addBonusPointsChangeListener(IChangeListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     bonusControl.addChangeListener(listener);
   }
 

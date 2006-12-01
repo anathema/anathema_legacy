@@ -41,7 +41,7 @@ public class LinguisticsAdditionalModel implements ILinguisticsAdditionalModel {
     return template.getId();
   }
 
-  public void addBonusPointsChangeListener(IChangeListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     // nothing to do    
   }
 }

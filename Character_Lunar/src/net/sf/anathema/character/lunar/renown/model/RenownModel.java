@@ -119,7 +119,7 @@ public class RenownModel implements IRenownModel {
     return new NullAdditionalModelBonusPointCalculator();
   }
 
-  public void addBonusPointsChangeListener(IChangeListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     // Nothing to do
   }
 

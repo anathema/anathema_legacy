@@ -10,7 +10,7 @@ public interface IAdditionalModel {
 
   public IAdditionalModelBonusPointCalculator getBonusPointCalculator();
 
-  public void addBonusPointsChangeListener(IChangeListener listener);
+  public void addChangeListener(IChangeListener listener);
 
   public IAdditionalModelExperienceCalculator getExperienceCalculator();
 }

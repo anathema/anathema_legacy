@@ -97,7 +97,7 @@ public class CharacterStatistics implements ICharacterStatistics {
         context.getCharacterListening().fireCharacterChanged();
       }
     });
-    extendedConfiguration.addBonusPointsChangeListener(new IChangeListener() {
+    extendedConfiguration.addAdditionalModelChangeListener(new IChangeListener() {
       public void changeOccured() {
         context.getCharacterListening().fireCharacterChanged();
       }

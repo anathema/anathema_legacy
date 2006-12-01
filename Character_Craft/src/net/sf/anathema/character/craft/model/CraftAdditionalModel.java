@@ -25,7 +25,7 @@ public class CraftAdditionalModel implements ICraftAdditionalModel {
     return model;
   }
 
-  public void addBonusPointsChangeListener(IChangeListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     //nothing to do;
   }
 

@@ -23,7 +23,7 @@ public class SpecialtiesAdditionalModel implements ISpecialtiesAdditionalModel {
     this.model = ((ICoreTraitConfiguration) traitCollection).getSpecialtyConfiguration();
   }
 
-  public void addBonusPointsChangeListener(IChangeListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     // nothing to do
   }
 

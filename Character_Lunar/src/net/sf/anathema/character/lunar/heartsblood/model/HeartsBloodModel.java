@@ -40,7 +40,7 @@ public class HeartsBloodModel extends AbstractRemovableEntryModel<IAnimalForm> i
     return new NullAdditionalModelBonusPointCalculator();
   }
 
-  public void addBonusPointsChangeListener(IChangeListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     // Nothing to do
   }
 

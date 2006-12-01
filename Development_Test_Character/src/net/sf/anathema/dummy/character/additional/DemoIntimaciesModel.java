@@ -60,7 +60,7 @@ public class DemoIntimaciesModel implements IIntimaciesModel, IIntimaciesAdditio
     throw new UnsupportedOperationException();
   }
 
-  public void addBonusPointsChangeListener(IChangeListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     throw new UnsupportedOperationException();
   }
 

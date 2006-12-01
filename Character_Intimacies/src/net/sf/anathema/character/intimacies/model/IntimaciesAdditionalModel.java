@@ -35,7 +35,7 @@ public class IntimaciesAdditionalModel implements IIntimaciesAdditionalModel {
     });
   }
 
-  public void addBonusPointsChangeListener(IChangeListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     control.addChangeListener(listener);
   }
 

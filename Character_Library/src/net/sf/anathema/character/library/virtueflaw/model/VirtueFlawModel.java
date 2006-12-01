@@ -40,7 +40,7 @@ public abstract class VirtueFlawModel implements IVirtueFlawModel {
     return AdditionalModelType.Advantages;
   }
 
-  public void addBonusPointsChangeListener(IChangeListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     // Nothing to do
   }
 

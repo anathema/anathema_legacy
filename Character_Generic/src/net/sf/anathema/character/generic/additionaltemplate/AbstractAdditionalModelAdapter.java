@@ -4,7 +4,7 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 
 public abstract class AbstractAdditionalModelAdapter implements IAdditionalModel {
 
-  public void addBonusPointsChangeListener(IChangeListener listener) {
+  public void addChangeListener(IChangeListener listener) {
     // nothing to do
   }
 
