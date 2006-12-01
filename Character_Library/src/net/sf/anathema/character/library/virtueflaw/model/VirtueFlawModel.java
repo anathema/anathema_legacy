@@ -11,6 +11,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.change.GlobalChangeAdapter;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
 public abstract class VirtueFlawModel implements IVirtueFlawModel {
@@ -41,7 +42,8 @@ public abstract class VirtueFlawModel implements IVirtueFlawModel {
   }
 
   public void addChangeListener(IChangeListener listener) {
-    // Nothing to do
+    virtueFlaw.addRootChangeListener(listener);
+    virtueFlaw.getName().addTextChangedListener(new GlobalChangeAdapter<String>(listener));
   }
 
   public IAdditionalModelBonusPointCalculator getBonusPointCalculator() {

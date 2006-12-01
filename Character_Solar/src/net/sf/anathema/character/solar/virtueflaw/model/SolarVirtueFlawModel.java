@@ -11,6 +11,8 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.VirtueType;
 import net.sf.anathema.character.library.virtueflaw.model.VirtueFlawModel;
 import net.sf.anathema.character.solar.virtueflaw.presenter.ISolarVirtueFlawModel;
+import net.sf.anathema.lib.control.change.GlobalChangeAdapter;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class SolarVirtueFlawModel extends VirtueFlawModel implements ISolarVirtueFlawModel {
 
@@ -29,6 +31,14 @@ public class SolarVirtueFlawModel extends VirtueFlawModel implements ISolarVirtu
         }
       }
     });
+  }
+  
+  @Override
+  public void addChangeListener(IChangeListener listener) {
+    super.addChangeListener(listener);
+    GlobalChangeAdapter<String> changeAdapter = new GlobalChangeAdapter<String>(listener);
+    virtueFlaw.getDescription().addTextChangedListener(changeAdapter);
+    virtueFlaw.getLimitBreak().addTextChangedListener(changeAdapter);
   }
 
   @Override
