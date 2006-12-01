@@ -76,6 +76,7 @@ public class DemoEquipmentAdditionalModel extends AbstractEquipmentAdditionalMod
     return MagicalMaterial.Soulsteel;
   }
 
+  @Override
   public void addChangeListener(IChangeListener listener) {
     // nothing to do
   }
