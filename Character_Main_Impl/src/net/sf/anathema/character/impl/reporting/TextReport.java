@@ -1,5 +1,6 @@
 package net.sf.anathema.character.impl.reporting;
 
+import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.impl.generic.GenericDescription;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
@@ -9,6 +10,7 @@ import net.sf.anathema.character.reporting.text.AttributeTextEncoder;
 import net.sf.anathema.character.reporting.text.BackgroundsTextEncoder;
 import net.sf.anathema.character.reporting.text.CharacterDescriptionTextEncoder;
 import net.sf.anathema.character.reporting.text.ConceptTextEncoder;
+import net.sf.anathema.character.reporting.text.TextPartFactory;
 import net.sf.anathema.character.reporting.text.VirtueTextEncoder;
 import net.sf.anathema.framework.reporting.IITextReport;
 import net.sf.anathema.framework.reporting.ITextReportUtils;
@@ -18,6 +20,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.MultiColumnText;
 import com.lowagie.text.pdf.PdfWriter;
 
@@ -43,10 +46,14 @@ public class TextReport implements IITextReport {
     try {
       GenericDescription description = new GenericDescription(character.getDescription());
       new CharacterDescriptionTextEncoder(utils, resources).createParagraphs(columnText, description);
-      if (character.hasStatistics()) {
-        // TODO NOW Concept-Text auch ohne Statistics drucken
+      boolean hasStatistics = character.hasStatistics();
+      if (hasStatistics) {
         IGenericCharacter genericCharacter = GenericCharacterUtilities.createGenericCharacter(character.getStatistics());
-        new ConceptTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter, description);
+        new ConceptTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
+      }
+      createConceptParagraph(columnText, description);
+      if (hasStatistics) {
+        IGenericCharacter genericCharacter = GenericCharacterUtilities.createGenericCharacter(character.getStatistics());
         new AttributeTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
         new VirtueTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
         new AbilityTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
@@ -59,6 +66,17 @@ public class TextReport implements IITextReport {
       e.printStackTrace();
     }
   }
+
+  private void createConceptParagraph(MultiColumnText columnText, GenericDescription description) throws DocumentException {
+    TextPartFactory factory = new TextPartFactory(utils);
+    String conceptText = description.getConceptText();
+    if (!StringUtilities.isNullOrEmpty(conceptText)) {
+      Phrase conceptPhrase = factory.createTextParagraph(factory.createBoldTitle(resources.getString("Sheet.Label.Concept") + " ")); //$NON-NLS-1$ //$NON-NLS-2$
+      conceptPhrase.add(factory.createTextChunk(conceptText));
+      columnText.addElement(conceptPhrase);
+    }
+  }
+
 
   private void writeColumnText(Document document, MultiColumnText columnText) throws DocumentException {
     do {

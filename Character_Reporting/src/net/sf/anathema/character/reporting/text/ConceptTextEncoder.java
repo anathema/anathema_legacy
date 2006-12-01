@@ -18,7 +18,7 @@ public class ConceptTextEncoder extends AbstractTextEncoder {
     super(utils, resources);
   }
 
-  public void createParagraphs(MultiColumnText columnText, IGenericCharacter character, IGenericDescription description)
+  public void createParagraphs(MultiColumnText columnText, IGenericCharacter character)
       throws DocumentException {
     ICasteType casteType = character.getCasteType();
     if (casteType != ICasteType.NULL_CASTE_TYPE) {
@@ -34,12 +34,6 @@ public class ConceptTextEncoder extends AbstractTextEncoder {
       Phrase willpowerRegainPhrase = createTextParagraph(createBoldTitle(motivationLabel + " ")); //$NON-NLS-1$
       willpowerRegainPhrase.add(createTextChunk(willpowerRegainingConceptName));
       columnText.addElement(willpowerRegainPhrase);
-    }
-    String conceptText = description.getConceptText();
-    if (!StringUtilities.isNullOrEmpty(conceptText)) {
-      Phrase conceptPhrase = createTextParagraph(createBoldTitle(getString("Sheet.Label.Concept") + " ")); //$NON-NLS-1$ //$NON-NLS-2$
-      conceptPhrase.add(createTextChunk(conceptText));
-      columnText.addElement(conceptPhrase);
     }
   }
 }

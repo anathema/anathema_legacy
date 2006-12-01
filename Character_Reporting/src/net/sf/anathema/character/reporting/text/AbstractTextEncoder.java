@@ -4,31 +4,29 @@ import net.sf.anathema.framework.reporting.ITextReportUtils;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Chunk;
-import com.lowagie.text.Font;
 import com.lowagie.text.Paragraph;
 
 public class AbstractTextEncoder {
-  private static final int STANDARD_FONT_SIZE = 8;
   private final ITextReportUtils utils;
   private final IResources resources;
+  private final TextPartFactory factory;
 
   public AbstractTextEncoder(ITextReportUtils utils, IResources resources) {
     this.utils = utils;
     this.resources = resources;
+    this.factory = new TextPartFactory(utils);
   }
 
   protected final Paragraph createTextParagraph(Chunk chunk) {
-    Paragraph paragraph = new Paragraph(chunk);
-    paragraph.setLeading(STANDARD_FONT_SIZE * 1.2f);
-    return paragraph;
+    return factory.createTextParagraph(chunk);
   }
 
   protected final Chunk createTextChunk(String text) {
-    return new Chunk(text, utils.createDefaultFont(STANDARD_FONT_SIZE, Font.NORMAL));
+    return factory.createTextChunk(text);
   }
 
   protected final Chunk createBoldTitle(String title) {
-    return new Chunk(title, utils.createDefaultFont(STANDARD_FONT_SIZE, Font.BOLD));
+    return factory.createBoldTitle(title);
   }
 
   protected final ITextReportUtils getUtils() {
