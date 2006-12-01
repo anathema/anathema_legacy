@@ -1,17 +1,16 @@
 package net.sf.anathema.character.linguistics.model;
 
+import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
-import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelBonusPointCalculator;
-import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
+import net.sf.anathema.character.library.removableentry.presenter.RemovableEntryChangeAdapter;
 import net.sf.anathema.character.linguistics.ILinguisticsAdditionalModel;
 import net.sf.anathema.character.linguistics.presenter.ILinguisticsModel;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.util.IIdentificate;
 
-public class LinguisticsAdditionalModel implements ILinguisticsAdditionalModel {
+public class LinguisticsAdditionalModel extends AbstractAdditionalModelAdapter implements ILinguisticsAdditionalModel {
 
   private final IAdditionalTemplate template;
   private final ILinguisticsModel model;
@@ -29,19 +28,11 @@ public class LinguisticsAdditionalModel implements ILinguisticsAdditionalModel {
     return AdditionalModelType.Abilities;
   }
 
-  public IAdditionalModelBonusPointCalculator getBonusPointCalculator() {
-    return new NullAdditionalModelBonusPointCalculator();
-  }
-
-  public IAdditionalModelExperienceCalculator getExperienceCalculator() {
-    return new NullAdditionalModelExperienceCalculator();
-  }
-
   public String getTemplateId() {
     return template.getId();
   }
 
   public void addChangeListener(IChangeListener listener) {
-    // nothing to do    
+    model.addModelChangeListener(new RemovableEntryChangeAdapter<IIdentificate>(listener));
   }
 }
