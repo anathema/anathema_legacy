@@ -5,7 +5,7 @@ import net.sf.anathema.lib.resources.IResources;
 
 public class YesNoDialogButtonConfiguration extends AbstractDialogButtonConfiguration {
 
-  private final IResources resources ;
+  private final IResources resources;
 
   public YesNoDialogButtonConfiguration(IResources resources) {
     this.resources = resources;
@@ -13,11 +13,11 @@ public class YesNoDialogButtonConfiguration extends AbstractDialogButtonConfigur
 
   @Override
   public String getCancelButtonText() {
-    return resources.getString("AnathemaCore.Tools.Question.Cancel");
+    return resources.getString("AnathemaCore.Tools.Question.Cancel"); //$NON-NLS-1$
   }
 
   @Override
   public String getOkayButtonText() {
-    return resources.getString("AnathemaCore.Tools.Question.Okay");
+    return resources.getString("AnathemaCore.Tools.Question.Okay"); //$NON-NLS-1$
   }
 }
