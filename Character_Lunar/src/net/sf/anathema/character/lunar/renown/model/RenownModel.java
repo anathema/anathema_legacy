@@ -1,10 +1,7 @@
 package net.sf.anathema.character.lunar.renown.model;
 
+import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
-import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelBonusPointCalculator;
-import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ConfigurableCharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.DedicatedCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
@@ -26,11 +23,12 @@ import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.lunar.LunarCharacterModule;
 import net.sf.anathema.character.lunar.renown.RenownTemplate;
 import net.sf.anathema.character.lunar.renown.presenter.IRenownModel;
+import net.sf.anathema.lib.control.change.GlobalChangeAdapter;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
 
-public class RenownModel implements IRenownModel {
+public class RenownModel extends AbstractAdditionalModelAdapter implements IRenownModel {
 
   private final RenownTraitCollection collection = new RenownTraitCollection();
   private final ICharacterModelContext context;
@@ -115,16 +113,9 @@ public class RenownModel implements IRenownModel {
     return AdditionalModelType.Miscellaneous;
   }
 
-  public IAdditionalModelBonusPointCalculator getBonusPointCalculator() {
-    return new NullAdditionalModelBonusPointCalculator();
-  }
-
-  public void addChangeListener(IChangeListener listener) {
-    // Nothing to do
-  }
-
-  public IAdditionalModelExperienceCalculator getExperienceCalculator() {
-    return new NullAdditionalModelExperienceCalculator();
+  public void addChangeListener(final IChangeListener listener) {
+    face.addCurrentValueListener(new GlobalChangeAdapter(listener));
+    collection.addChangeListener(listener);
   }
 
   public ITrait getTrait(RenownType type) {

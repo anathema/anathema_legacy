@@ -1,8 +1,11 @@
 package net.sf.anathema.lib.control.change;
 
+import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
-public class GlobalChangeAdapter<T> implements IObjectValueChangedListener<T> {
+public class GlobalChangeAdapter<T> implements
+    IObjectValueChangedListener<T>,
+    IIntValueChangedListener {
 
   private final IChangeListener listener;
 
@@ -12,5 +15,9 @@ public class GlobalChangeAdapter<T> implements IObjectValueChangedListener<T> {
 
   public void valueChanged(T newValue) {
     listener.changeOccured();
+  }
+
+  public void valueChanged(int newValue) {
+    listener.changeOccured();    
   }
 }

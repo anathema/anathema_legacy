@@ -9,6 +9,8 @@ import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelB
 import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
+import net.sf.anathema.character.library.removableentry.presenter.RemovableEntryChangeAdapter;
+import net.sf.anathema.character.library.trait.subtrait.ISubTrait;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class CraftAdditionalModel implements ICraftAdditionalModel {
@@ -26,7 +28,7 @@ public class CraftAdditionalModel implements ICraftAdditionalModel {
   }
 
   public void addChangeListener(IChangeListener listener) {
-    //nothing to do;
+    model.addModelChangeListener(new RemovableEntryChangeAdapter<ISubTrait>(listener));
   }
 
   public AdditionalModelType getAdditionalModelType() {

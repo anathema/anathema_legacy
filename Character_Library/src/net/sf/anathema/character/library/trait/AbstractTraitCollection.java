@@ -1,5 +1,6 @@
 package net.sf.anathema.character.library.trait;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,6 +12,13 @@ public abstract class AbstractTraitCollection implements ITraitCollection {
 
   private final Map<ITraitType, ITrait> traitsByType = new HashMap<ITraitType, ITrait>();
 
+
+  protected final ITrait[] getAllTraits() {
+    Collection<ITrait> traits= traitsByType.values();
+    return traits.toArray(new ITrait[traits.size()]);
+  }
+
+  
   public ITrait getTrait(ITraitType traitType) {
     return traitsByType.get(traitType);
   }

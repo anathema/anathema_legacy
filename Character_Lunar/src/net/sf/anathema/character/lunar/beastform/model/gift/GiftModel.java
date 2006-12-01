@@ -6,11 +6,14 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.library.quality.model.AbstractQualityModel;
 import net.sf.anathema.character.library.quality.presenter.IQualitySelection;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
+import net.sf.anathema.lib.control.change.ChangeControl;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 
 public class GiftModel extends AbstractQualityModel<IGift> implements IGiftModel {
 
   private final IGift[] allGifts;
+  private final ChangeControl overviewControl = new ChangeControl();
   private int picks = 0;
 
   public GiftModel(ICharacterModelContext context, IBeastformModel model) {
@@ -19,7 +22,7 @@ public class GiftModel extends AbstractQualityModel<IGift> implements IGiftModel
     model.addCharmLearnCountChangedListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
         GiftModel.this.picks = newValue == 0 ? 0 : 2 + newValue - 1;
-        fireModelChangedEvent();
+        overviewControl.fireChangedEvent();
       }
     });
   }
@@ -64,5 +67,9 @@ public class GiftModel extends AbstractQualityModel<IGift> implements IGiftModel
     throw new IllegalArgumentException("No gift found for id \"" //$NON-NLS-1$
         + giftId
         + "\"."); //$NON-NLS-1$
+  }
+  
+  public void addOverviewChangedListener(IChangeListener listener) {
+    overviewControl.addChangeListener(listener);
   }
 }

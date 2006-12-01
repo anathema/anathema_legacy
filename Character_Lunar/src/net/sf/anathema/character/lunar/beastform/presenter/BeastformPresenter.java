@@ -76,19 +76,31 @@ public class BeastformPresenter implements IPresenter {
         updateGiftViews(giftModel, giftView);
       }
     });
+    giftModel.addOverviewChangedListener(new IChangeListener() {
+      public void changeOccured() {
+        updateGiftViews(giftModel, giftView);
+        updateOverview(giftModel);         
+      }
+    });
     updateGiftViews(giftModel, giftView);
+    updateOverview(giftModel);
   }
 
-  private void updateGiftViews(final IQualityModel<IGift> giftModel, final IMagicLearnView giftView) {
-    setAvailableGifts(giftModel, giftView);
-    IQualitySelection<IGift>[] selectedGifts = giftModel.getSelectedQualities();
-    giftView.setLearnedMagic(selectedGifts);
+
+  private void updateOverview(IGiftModel giftModel) {
     ILabelledAlotmentView giftOverview = overView.getGiftOverview();
     int giftSpent = model.getGiftModel().getSelectedQualities().length;
     giftOverview.setValue(giftSpent);
     int giftTotal = model.getGiftModel().getAllowedPicks();
     giftOverview.setAlotment(giftTotal);
-    setOverviewColor(giftTotal, giftSpent, giftOverview);
+    setOverviewColor(giftTotal, giftSpent, giftOverview);    
+  }      
+
+  
+  private void updateGiftViews(final IQualityModel<IGift> giftModel, final IMagicLearnView giftView) {
+    setAvailableGifts(giftModel, giftView);
+    IQualitySelection<IGift>[] selectedGifts = giftModel.getSelectedQualities();
+    giftView.setLearnedMagic(selectedGifts);
   }
 
   private void setAvailableGifts(final IQualityModel<IGift> giftModel, final IMagicLearnView giftView) {

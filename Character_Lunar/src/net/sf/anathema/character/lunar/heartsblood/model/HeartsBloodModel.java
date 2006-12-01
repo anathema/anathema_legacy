@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelE
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.library.removableentry.model.AbstractRemovableEntryModel;
+import net.sf.anathema.character.library.removableentry.presenter.RemovableEntryChangeAdapter;
 import net.sf.anathema.character.lunar.heartsblood.HeartsBloodTemplate;
 import net.sf.anathema.character.lunar.heartsblood.presenter.IAnimalForm;
 import net.sf.anathema.character.lunar.heartsblood.presenter.IHeartsBloodModel;
@@ -40,8 +41,8 @@ public class HeartsBloodModel extends AbstractRemovableEntryModel<IAnimalForm> i
     return new NullAdditionalModelBonusPointCalculator();
   }
 
-  public void addChangeListener(IChangeListener listener) {
-    // Nothing to do
+  public void addChangeListener(final IChangeListener listener) {
+    addModelChangeListener(new RemovableEntryChangeAdapter<IAnimalForm>(listener));
   }
 
   public IAdditionalModelExperienceCalculator getExperienceCalculator() {

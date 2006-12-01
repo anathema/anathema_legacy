@@ -7,11 +7,8 @@ import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.equipment.character.model.IEquipmentAdditionalModel;
 import net.sf.anathema.character.equipment.character.model.IEquipmentPrintModel;
 import net.sf.anathema.character.equipment.impl.character.model.EquipmentPrintModel;
+import net.sf.anathema.character.generic.additionaltemplate.AbstractAdditionalModelAdapter;
 import net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType;
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelExperienceCalculator;
-import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelBonusPointCalculator;
-import net.sf.anathema.character.generic.additionaltemplate.NullAdditionalModelExperienceCalculator;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.GlobalCharacterChangeAdapter;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
@@ -24,11 +21,12 @@ import net.sf.anathema.character.lunar.beastform.model.gift.IGiftModel;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformAttribute;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformModel;
 import net.sf.anathema.character.lunar.template.ILunarSpecialCharms;
+import net.sf.anathema.lib.control.change.GlobalChangeAdapter;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
 
-public class BeastformModel implements IBeastformModel {
+public class BeastformModel extends AbstractAdditionalModelAdapter implements IBeastformModel {
   private final ICharacterModelContext context;
   private final IntValueControl charmLearnControl = new IntValueControl();
   private final IBeastformGroupCost cost;
@@ -85,7 +83,7 @@ public class BeastformModel implements IBeastformModel {
   }
 
   private void update() {
-    fireCharmLearnCountChanged();
+    charmLearnControl.fireValueChangedEvent(getCharmValue());
     for (IBeastformAttribute attribute : getAttributes()) {
       attribute.recalculate();
     }
@@ -97,10 +95,6 @@ public class BeastformModel implements IBeastformModel {
       traits.add(collection.getDeadlyBeastmanAttribute(type));
     }
     return traits.toArray(new IBeastformAttribute[traits.size()]);
-  }
-
-  private void fireCharmLearnCountChanged() {
-    charmLearnControl.fireValueChangedEvent(getCharmValue());
   }
 
   public void setCharmLearnCount(int newValue) {
@@ -123,16 +117,12 @@ public class BeastformModel implements IBeastformModel {
     return AdditionalModelType.Magic;
   }
 
-  public IAdditionalModelBonusPointCalculator getBonusPointCalculator() {
-    return new NullAdditionalModelBonusPointCalculator();
-  }
-
+  @Override
   public void addChangeListener(IChangeListener listener) {
-    // Nothing to do
-  }
-
-  public IAdditionalModelExperienceCalculator getExperienceCalculator() {
-    return new NullAdditionalModelExperienceCalculator();
+    giftModel.addModelChangeListener(listener);
+    for (IBeastformAttribute trait : getAttributes()) {
+      trait.getTrait().addCurrentValueListener(new GlobalChangeAdapter(listener));
+    }
   }
 
   public IGiftModel getGiftModel() {
