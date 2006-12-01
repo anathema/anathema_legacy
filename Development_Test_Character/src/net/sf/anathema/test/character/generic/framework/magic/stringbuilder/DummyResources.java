@@ -13,7 +13,7 @@ public class DummyResources implements IResources {
   private final Map<String, String> stringMap = new HashMap<String, String>();
 
   public boolean supportsKey(String key) {
-    throw new NotYetImplementedException();
+    return stringMap.containsKey(key);
   }
 
   public void putString(String key, String value) {
