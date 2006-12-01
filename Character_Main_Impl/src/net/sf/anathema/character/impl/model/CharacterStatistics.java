@@ -126,11 +126,6 @@ public class CharacterStatistics implements ICharacterStatistics {
         motivation.getDescription().addTextChangedListener(motivationChangeListener);
       }
     });
-    characterConcept.getConcept().addTextChangedListener(new IObjectValueChangedListener<String>() {
-      public void valueChanged(String newValue) {
-        context.getCharacterListening().fireCharacterChanged();
-      }
-    });
     return characterConcept;
   }
 

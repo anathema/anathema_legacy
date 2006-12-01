@@ -94,7 +94,11 @@ public class CharacterStatisticPersister {
       ICharacterTemplate template = generics.getTemplateRegistry().getTemplate(templateType, rules.getEdition());
       ICharacterStatistics statistics = character.createCharacterStatistics(template, generics, rules);
       ICasteCollection casteCollection = template.getCasteCollection();
-      characterConceptPersister.load(statisticsElement, statistics.getCharacterConcept(), casteCollection);
+      characterConceptPersister.load(
+          statisticsElement,
+          statistics.getCharacterConcept(),
+          character.getDescription(),
+          casteCollection);
       statistics.setExperienced(experienced);
       essencePersister.load(statisticsElement, statistics.getTraitConfiguration());
       IAdditionalModel virtueFlawModel = statistics.getExtendedConfiguration().getAdditionalModel(

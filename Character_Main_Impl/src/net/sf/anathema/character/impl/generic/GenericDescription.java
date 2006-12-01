@@ -34,4 +34,8 @@ public class GenericDescription implements IGenericDescription {
   public String getNotes() {
     return description.getNotes().getText();
   }
+
+  public String getConceptText() {
+    return description.getConcept().getText();
+  }
 }

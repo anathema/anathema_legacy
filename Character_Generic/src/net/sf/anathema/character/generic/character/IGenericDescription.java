@@ -13,4 +13,6 @@ public interface IGenericDescription {
   public String getPlayer();
 
   public String getNotes();
+
+  public String getConceptText();
 }

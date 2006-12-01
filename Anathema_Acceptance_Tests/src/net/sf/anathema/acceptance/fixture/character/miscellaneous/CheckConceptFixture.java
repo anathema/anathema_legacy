@@ -9,7 +9,7 @@ import net.sf.anathema.lib.util.IIdentificate;
 public class CheckConceptFixture extends AbstractCharacterColumnFixture {
 
   public String concept() {
-    return getCharacterConcept().getConcept().getText();
+    return getCharacter().getDescription().getConcept().getText();
   }
 
   public String nature() {

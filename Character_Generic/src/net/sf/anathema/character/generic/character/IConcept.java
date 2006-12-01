@@ -5,8 +5,6 @@ import net.sf.anathema.lib.resources.IResources;
 
 public interface IConcept {
 
-  public String getConceptText();
-
   public String getWillpowerRegainingConceptName();
 
   public String getWillpowerRegainingComment(IResources resources);

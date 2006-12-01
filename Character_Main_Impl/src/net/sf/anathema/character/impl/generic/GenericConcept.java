@@ -17,10 +17,6 @@ public class GenericConcept implements IConcept {
     this.characterConcept = characterConcept;
   }
 
-  public String getConceptText() {
-    return characterConcept.getConcept().getText();
-  }
-
   public String getWillpowerRegainingConceptName() {
     final String[] conceptName = new String[1];
     characterConcept.getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {

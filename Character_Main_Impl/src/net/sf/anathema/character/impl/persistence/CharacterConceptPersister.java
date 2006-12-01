@@ -8,6 +8,7 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_NATURE;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.model.ICharacterDescription;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.concept.ICharacterConcept;
 import net.sf.anathema.character.model.concept.IMotivation;
@@ -37,7 +38,6 @@ public class CharacterConceptPersister {
         textPersister.saveTextualDescription(characterConceptElement, TAG_MOTIVATION, motivation.getDescription());
       }
     });
-    textPersister.saveTextualDescription(characterConceptElement, TAG_CONCEPT, characterConcept.getConcept());
   }
 
   private void saveCaste(Element parent, ITypedDescription<ICasteType> caste) {
@@ -56,8 +56,11 @@ public class CharacterConceptPersister {
     }
   }
 
-  public void load(Element parent, ICharacterConcept characterConcept, ICasteCollection casteCollection)
-      throws PersistenceException {
+  public void load(
+      Element parent,
+      ICharacterConcept characterConcept,
+      ICharacterDescription description,
+      ICasteCollection casteCollection) throws PersistenceException {
     final Element conceptElement = parent.element(TAG_CHARACTER_CONCEPT);
     loadCaste(conceptElement, characterConcept, casteCollection);
     characterConcept.getWillpowerRegainingConcept().accept(new IWillpowerRegainingConceptVisitor() {
@@ -69,7 +72,7 @@ public class CharacterConceptPersister {
         textPersister.restoreTextualDescription(conceptElement, TAG_MOTIVATION, motivation.getDescription());
       }
     });
-    textPersister.restoreTextualDescription(conceptElement, TAG_CONCEPT, characterConcept.getConcept());
+    textPersister.restoreTextualDescription(conceptElement, TAG_CONCEPT, description.getConcept());
   }
 
   private void loadNature(Element parent, INature nature) {

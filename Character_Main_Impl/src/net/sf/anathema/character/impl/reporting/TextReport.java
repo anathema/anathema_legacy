@@ -41,16 +41,17 @@ public class TextReport implements IITextReport {
     columnText.addRegularColumns(document.left(), document.right(), 20, 2);
     ICharacter character = (ICharacter) item.getItemData();
     try {
-      new CharacterDescriptionTextEncoder(utils, resources).createParagraphs(columnText, new GenericDescription(
-          character.getDescription()));
+      GenericDescription description = new GenericDescription(character.getDescription());
+      new CharacterDescriptionTextEncoder(utils, resources).createParagraphs(columnText, description);
       if (character.hasStatistics()) {
+        // TODO NOW Concept-Text auch ohne Statistics drucken
         IGenericCharacter genericCharacter = GenericCharacterUtilities.createGenericCharacter(character.getStatistics());
-        new ConceptTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
+        new ConceptTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter, description);
         new AttributeTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
         new VirtueTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
         new AbilityTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
         new BackgroundsTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
-        //        new CharmTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
+        // new CharmTextEncoder(utils, resources).createParagraphs(columnText, genericCharacter);
       }
       writeColumnText(document, columnText);
     }

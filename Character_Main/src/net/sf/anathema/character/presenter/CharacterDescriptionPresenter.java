@@ -34,6 +34,7 @@ public class CharacterDescriptionPresenter implements IContentPresenter {
     TextualPresentation presentation = new TextualPresentation();
     initNameLineView(0, presentation);
     initLineView("CharacterDescription.Label.Player", description.getPlayer(), presentation); //$NON-NLS-1$
+    initLineView("Label.Concept", description.getConcept(), presentation); //$NON-NLS-1$
     initAreaView("CharacterDescription.Label.Periphrasis", 2, description.getPeriphrase(), presentation); //$NON-NLS-1$
     initAreaView("CharacterDescription.Label.Characterization", 7, description.getCharacterization(), presentation); //$NON-NLS-1$
     initAreaView(

@@ -17,7 +17,6 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.framework.presenter.itemmanagement.PrintNameAdjuster;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.registry.IRegistry;
-import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public class ExaltedCharacter implements ICharacter {
 
@@ -26,9 +25,7 @@ public class ExaltedCharacter implements ICharacter {
   private final CharacterChangeManagement management = new CharacterChangeManagement();
 
   public ExaltedCharacter() {
-    for (ITextualDescription currentDescription : description.getAllDescriptions()) {
-      currentDescription.addTextChangedListener(management.getDescriptionChangeListener());
-    }
+    description.addOverallChangeListener(management.getDescriptionChangeListener());
   }
 
   public ICharacterStatistics getStatistics() {

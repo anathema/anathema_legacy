@@ -3,6 +3,7 @@ package net.sf.anathema.character.reporting.text;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
+import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.framework.reporting.ITextReportUtils;
 import net.sf.anathema.lib.resources.IResources;
@@ -17,7 +18,8 @@ public class ConceptTextEncoder extends AbstractTextEncoder {
     super(utils, resources);
   }
 
-  public void createParagraphs(MultiColumnText columnText, IGenericCharacter character) throws DocumentException {
+  public void createParagraphs(MultiColumnText columnText, IGenericCharacter character, IGenericDescription description)
+      throws DocumentException {
     ICasteType casteType = character.getCasteType();
     if (casteType != ICasteType.NULL_CASTE_TYPE) {
       Phrase castePhrase = createTextParagraph(createBoldTitle(getString("Sheet.Label.Caste") + " ")); //$NON-NLS-1$ //$NON-NLS-2$
@@ -33,7 +35,7 @@ public class ConceptTextEncoder extends AbstractTextEncoder {
       willpowerRegainPhrase.add(createTextChunk(willpowerRegainingConceptName));
       columnText.addElement(willpowerRegainPhrase);
     }
-    String conceptText = character.getConcept().getConceptText();
+    String conceptText = description.getConceptText();
     if (!StringUtilities.isNullOrEmpty(conceptText)) {
       Phrase conceptPhrase = createTextParagraph(createBoldTitle(getString("Sheet.Label.Concept") + " ")); //$NON-NLS-1$ //$NON-NLS-2$
       conceptPhrase.add(createTextChunk(conceptText));

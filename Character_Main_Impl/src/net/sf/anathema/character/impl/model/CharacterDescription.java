@@ -1,6 +1,7 @@
 package net.sf.anathema.character.impl.model;
 
 import net.sf.anathema.character.model.ICharacterDescription;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescription;
 
@@ -12,6 +13,7 @@ public class CharacterDescription implements ICharacterDescription {
   private final ITextualDescription physicalDescription = new SimpleTextualDescription();
   private final ITextualDescription notes = new SimpleTextualDescription();
   private final ITextualDescription player = new SimpleTextualDescription();
+  private final ITextualDescription concept = new SimpleTextualDescription();
 
   public ITextualDescription getName() {
     return nameDescription;
@@ -37,13 +39,24 @@ public class CharacterDescription implements ICharacterDescription {
     return notes;
   }
 
-  public ITextualDescription[] getAllDescriptions() {
+  private ITextualDescription[] getAllDescriptions() {
     return new ITextualDescription[] {
         nameDescription,
         periphraseDescription,
         characterization,
         physicalDescription,
         notes,
-        player };
+        player,
+        concept };
+  }
+
+  public ITextualDescription getConcept() {
+    return concept;
+  }
+
+  public void addOverallChangeListener(IObjectValueChangedListener<String> listener) {
+    for (ITextualDescription description : getAllDescriptions()) {
+      description.addTextChangedListener(listener);
+    }
   }
 }

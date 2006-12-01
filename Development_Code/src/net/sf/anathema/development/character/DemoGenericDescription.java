@@ -10,6 +10,7 @@ public class DemoGenericDescription implements IGenericDescription {
   private String periphrase;
   private String appearance;
   private String player;
+  private String concept;
 
   public String getAppearance() {
     return appearance;
@@ -55,7 +56,15 @@ public class DemoGenericDescription implements IGenericDescription {
     this.player = player;
   }
 
+  public void setConcept(String concept) {
+    this.concept = concept;
+  }
+
   public String getNotes() {
     throw new NotYetImplementedException();
+  }
+
+  public String getConceptText() {
+    return concept;
   }
 }

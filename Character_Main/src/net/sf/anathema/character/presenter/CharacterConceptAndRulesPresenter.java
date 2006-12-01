@@ -36,6 +36,7 @@ import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
+import net.sf.anathema.lib.workflow.textualdescription.TextualPresentation;
 
 public class CharacterConceptAndRulesPresenter implements IContentPresenter {
 
@@ -64,7 +65,6 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
         initMotivationPresentation(motivation, casteRow);
       }
     });
-    initConceptPresentation();
     initGui();
   }
 
@@ -141,23 +141,9 @@ public class CharacterConceptAndRulesPresenter implements IContentPresenter {
     });
   }
 
-  private void initConceptPresentation() {
-    initTextualDescriptionPresentation(statistics.getCharacterConcept().getConcept(), "Label.Concept"); //$NON-NLS-1$
-  }
-
   private ITextView initTextualDescriptionPresentation(final ITextualDescription description, String resourceKey) {
     final ITextView textView = view.addLabelTextView(resources.getString(resourceKey));
-    textView.addTextChangedListener(new IObjectValueChangedListener<String>() {
-      public void valueChanged(String newValue) {
-        description.setText(newValue);
-      }
-    });
-    description.addTextChangedListener(new IObjectValueChangedListener<String>() {
-      public void valueChanged(String newValue) {
-        textView.setText(newValue);
-      }
-    });
-    textView.setText(description.getText());
+    new TextualPresentation().initView(textView, description);
     statistics.getCharacterContext().getCharacterListening().addChangeListener(new DedicatedCharacterChangeAdapter() {
       @Override
       public void experiencedChanged(boolean experienced) {

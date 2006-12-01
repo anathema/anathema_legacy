@@ -2,6 +2,7 @@ package net.sf.anathema.character.impl.persistence;
 
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CHARACTERIZATION;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CHARACTER_NAME;
+import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CONCEPT;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_DESCRIPTION;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_NOTES;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_PERIPHRASE;
@@ -29,17 +30,20 @@ public class CharacterDescriptionPersister {
         description.getPhysicalDescription());
     textPersister.restoreTextualDescription(descriptionElement, TAG_PERIPHRASE, description.getPeriphrase());
     textPersister.restoreTextualDescription(descriptionElement, TAG_NOTES, description.getNotes());
+    textPersister.restoreTextualDescription(descriptionElement, TAG_CONCEPT, description.getConcept());
   }
 
   public void save(Element parent, ICharacterDescription description) {
     Element descriptionElement = parent.addElement(TAG_DESCRIPTION);
-    textPersister.saveNonEmptyText(descriptionElement, TAG_CHARACTER_NAME, description.getName().getText());
-    textPersister.saveNonEmptyText(descriptionElement, TAG_PLAYER, description.getPlayer().getText());
-    textPersister.saveNonEmptyText(descriptionElement, TAG_CHARACTERIZATION, description.getCharacterization()
-        .getText());
-    textPersister.saveNonEmptyText(descriptionElement, TAG_PHYSICAL_DESCRIPTION, description.getPhysicalDescription()
-        .getText());
-    textPersister.saveNonEmptyText(descriptionElement, TAG_PERIPHRASE, description.getPeriphrase().getText());
-    textPersister.saveNonEmptyText(descriptionElement, TAG_NOTES, description.getNotes().getText());
+    textPersister.saveTextualDescription(descriptionElement, TAG_CHARACTER_NAME, description.getName());
+    textPersister.saveTextualDescription(descriptionElement, TAG_PLAYER, description.getPlayer());
+    textPersister.saveTextualDescription(descriptionElement, TAG_CHARACTERIZATION, description.getCharacterization());
+    textPersister.saveTextualDescription(
+        descriptionElement,
+        TAG_PHYSICAL_DESCRIPTION,
+        description.getPhysicalDescription());
+    textPersister.saveTextualDescription(descriptionElement, TAG_PERIPHRASE, description.getPeriphrase());
+    textPersister.saveTextualDescription(descriptionElement, TAG_NOTES, description.getNotes());
+    textPersister.saveTextualDescription(descriptionElement, TAG_CONCEPT, description.getConcept());
   }
 }
