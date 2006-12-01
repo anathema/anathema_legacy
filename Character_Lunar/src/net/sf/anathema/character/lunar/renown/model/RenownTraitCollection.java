@@ -14,7 +14,7 @@ public class RenownTraitCollection extends AbstractTraitCollection {
 
   public void addChangeListener(IChangeListener listener) {
     for (ITrait trait : getAllTraits()) {
-      trait.addCurrentValueListener(new GlobalChangeAdapter(listener));
+      trait.addCurrentValueListener(new GlobalChangeAdapter<Object>(listener));
     }
   }
 }

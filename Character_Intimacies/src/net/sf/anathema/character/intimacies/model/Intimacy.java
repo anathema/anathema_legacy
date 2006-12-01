@@ -75,8 +75,8 @@ public class Intimacy implements IIntimacy {
   }
 
   public void addChangeListener(IChangeListener listener) {
-    GlobalChangeAdapter adapter = new GlobalChangeAdapter(listener);
+    GlobalChangeAdapter< ? > adapter = new GlobalChangeAdapter<Object>(listener);
     control.addValueChangeListener(adapter);
-    trait.addCurrentValueListener(adapter);    
+    trait.addCurrentValueListener(adapter);
   }
 }

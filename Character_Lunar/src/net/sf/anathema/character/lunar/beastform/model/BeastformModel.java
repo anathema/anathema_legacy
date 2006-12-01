@@ -120,7 +120,7 @@ public class BeastformModel extends AbstractAdditionalModelAdapter implements IB
   public void addChangeListener(IChangeListener listener) {
     giftModel.addModelChangeListener(listener);
     for (IBeastformAttribute trait : getAttributes()) {
-      trait.getTrait().addCurrentValueListener(new GlobalChangeAdapter(listener));
+      trait.getTrait().addCurrentValueListener(new GlobalChangeAdapter<Object>(listener));
     }
   }
 
