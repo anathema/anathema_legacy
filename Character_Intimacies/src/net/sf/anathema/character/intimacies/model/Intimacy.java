@@ -12,6 +12,8 @@ import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.lib.control.booleanvalue.BooleanValueControl;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
+import net.sf.anathema.lib.control.change.GlobalChangeAdapter;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class Intimacy implements IIntimacy {
 
@@ -70,5 +72,11 @@ public class Intimacy implements IIntimacy {
 
   public boolean isComplete() {
     return complete;
+  }
+
+  public void addChangeListener(IChangeListener listener) {
+    GlobalChangeAdapter adapter = new GlobalChangeAdapter(listener);
+    control.addValueChangeListener(adapter);
+    trait.addCurrentValueListener(adapter);    
   }
 }

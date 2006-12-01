@@ -60,6 +60,11 @@ public class IntimaciesModel extends AbstractRemovableEntryModel<IIntimacy> impl
   protected IIntimacy createEntry() {
     Intimacy intimacy = new Intimacy(name, getIntialValue(), getConviction(), context.getTraitContext());
     intimacy.setComplete(!context.getBasicCharacterContext().isExperienced());
+    intimacy.addChangeListener(new IChangeListener() {
+      public void changeOccured() {
+        changeControl.fireChangedEvent();        
+      }      
+    });
     return intimacy;
   }
 

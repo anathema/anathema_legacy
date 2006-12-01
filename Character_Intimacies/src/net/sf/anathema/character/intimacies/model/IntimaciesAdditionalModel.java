@@ -8,35 +8,21 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.intimacies.IIntimaciesAdditionalModel;
 import net.sf.anathema.character.intimacies.presenter.IIntimaciesModel;
-import net.sf.anathema.character.library.removableentry.presenter.IRemovableEntryListener;
-import net.sf.anathema.lib.control.change.ChangeControl;
+import net.sf.anathema.character.library.removableentry.presenter.RemovableEntryChangeAdapter;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class IntimaciesAdditionalModel implements IIntimaciesAdditionalModel {
   private final IIntimaciesModel model;
   private final IAdditionalTemplate additionalTemplate;
-  private final ChangeControl control = new ChangeControl();
 
   public IntimaciesAdditionalModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     this.additionalTemplate = additionalTemplate;
     this.model = new IntimaciesModel(context);
-    model.addModelChangeListener(new IRemovableEntryListener<IIntimacy>() {
-      public void entryAdded(IIntimacy entry) {
-        control.fireChangedEvent();
-      }
-
-      public void entryAllowed(boolean complete) {
-        // Nothing to do
-      }
-
-      public void entryRemoved(IIntimacy entry) {
-        control.fireChangedEvent();
-      }
-    });
   }
 
   public void addChangeListener(IChangeListener listener) {
-    control.addChangeListener(listener);
+    model.addModelChangeListener(new RemovableEntryChangeAdapter<IIntimacy>(listener));
+    model.addModelChangeListener(listener);
   }
 
   public AdditionalModelType getAdditionalModelType() {
