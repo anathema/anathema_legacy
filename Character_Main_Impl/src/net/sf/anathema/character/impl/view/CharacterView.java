@@ -19,7 +19,6 @@ import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.overview.IOverviewView;
 import net.sf.anathema.framework.presenter.view.IMultiContentView;
-import net.sf.anathema.framework.presenter.view.MultiWindowContentView;
 import net.sf.anathema.framework.view.item.AbstractItemView;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.framework.view.util.MultiTabContentView;
@@ -34,7 +33,7 @@ public class CharacterView extends AbstractItemView implements ICharacterView {
   private OverviewView overviewView;
   private final List<IDisposable> disposables = new ArrayList<IDisposable>();
   private final IIntValueDisplayFactory intValueDisplayFactoryWithoutMarker;
-  private final IMultiContentView contentView = new MultiWindowContentView();
+  private final IMultiContentView contentView = new MultiTabContentView();
 
   private JComponent content;
 
