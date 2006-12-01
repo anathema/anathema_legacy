@@ -7,6 +7,7 @@ import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.equipment.character.model.IEquipmentItem;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class DummyEquipmentObject implements IEquipmentItem {
 
@@ -57,5 +58,13 @@ public class DummyEquipmentObject implements IEquipmentItem {
 
   public MaterialComposition getMaterialComposition() {
     return MaterialComposition.None;
+  }
+
+  public void addChangeListener(IChangeListener listener) {
+    // nothing to do
+  }
+
+  public void removeChangeListener(IChangeListener listener) {
+    // nothing to do
   }
 }

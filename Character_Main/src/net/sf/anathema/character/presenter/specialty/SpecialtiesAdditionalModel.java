@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.library.trait.specialties.ISpecialtiesConfiguration;
 import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class SpecialtiesAdditionalModel extends AbstractAdditionalModelAdapter implements ISpecialtiesAdditionalModel {
 
@@ -18,8 +19,6 @@ public class SpecialtiesAdditionalModel extends AbstractAdditionalModelAdapter i
     IGenericTraitCollection traitCollection = context.getTraitCollection();
     this.model = ((ICoreTraitConfiguration) traitCollection).getSpecialtyConfiguration();
   }
-  
-  //Dirty/Changed-state handled via abilities.
 
   public AdditionalModelType getAdditionalModelType() {
     return AdditionalModelType.Abilities;
@@ -31,5 +30,9 @@ public class SpecialtiesAdditionalModel extends AbstractAdditionalModelAdapter i
 
   public ISpecialtiesConfiguration getSpecialtiesModel() {
     return model;
+  }
+
+  public void addChangeListener(IChangeListener listener) {
+    // Dirty/Changed-state handled via abilities.
   }
 }

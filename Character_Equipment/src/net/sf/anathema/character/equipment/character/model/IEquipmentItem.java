@@ -3,6 +3,7 @@ package net.sf.anathema.character.equipment.character.model;
 import net.sf.anathema.character.equipment.MagicalMaterial;
 import net.sf.anathema.character.equipment.MaterialComposition;
 import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public interface IEquipmentItem {
 
@@ -23,4 +24,8 @@ public interface IEquipmentItem {
   public MagicalMaterial getMaterial();
 
   public MaterialComposition getMaterialComposition();
+
+  public void addChangeListener(IChangeListener listener);
+
+  public void removeChangeListener(IChangeListener listener);
 }

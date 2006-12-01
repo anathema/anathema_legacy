@@ -16,15 +16,23 @@ import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
+import net.sf.anathema.lib.control.change.ChangeControl;
+import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.collection.ICollectionListener;
 
 public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditionalModelAdapter implements
     IEquipmentAdditionalModel {
 
   private final GenericControl<ICollectionListener<IEquipmentItem>> equipmentItemControl = new GenericControl<ICollectionListener<IEquipmentItem>>();
+  private final ChangeControl modelChangeControl = new ChangeControl();
   private final List<IEquipmentItem> equipmentItems = new ArrayList<IEquipmentItem>();
   private final IExaltedRuleSet ruleSet;
   private final IEquipmentPrintModel printModel;
+  private final IChangeListener itemChangePropagator = new IChangeListener() {
+    public void changeOccured() {
+      modelChangeControl.fireChangedEvent();
+    }
+  };
 
   public AbstractEquipmentAdditionalModel(IExaltedRuleSet ruleSet, IArmourStats naturalArmour) {
     this.ruleSet = ruleSet;
@@ -67,6 +75,8 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
         input.itemAdded(item);
       }
     });
+    modelChangeControl.fireChangedEvent();
+    item.addChangeListener(itemChangePropagator);
     return item;
   }
 
@@ -77,6 +87,8 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
         input.itemRemoved(item);
       }
     });
+    item.removeChangeListener(itemChangePropagator);
+    modelChangeControl.fireChangedEvent();
   }
 
   public final void addEquipmentObjectListener(ICollectionListener<IEquipmentItem> listener) {
@@ -95,5 +107,9 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
   public MagicalMaterial getMagicalMaterial(String templateId) {
     IEquipmentTemplate template = loadEquipmentTemplate(templateId);
     return template.getMaterial();
+  }
+
+  public void addChangeListener(IChangeListener listener) {
+    modelChangeControl.addChangeListener(listener);
   }
 }

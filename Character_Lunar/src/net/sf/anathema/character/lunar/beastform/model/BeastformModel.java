@@ -117,7 +117,6 @@ public class BeastformModel extends AbstractAdditionalModelAdapter implements IB
     return AdditionalModelType.Magic;
   }
 
-  @Override
   public void addChangeListener(IChangeListener listener) {
     giftModel.addModelChangeListener(listener);
     for (IBeastformAttribute trait : getAttributes()) {

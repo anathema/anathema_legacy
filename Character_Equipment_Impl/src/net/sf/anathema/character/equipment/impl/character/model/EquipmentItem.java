@@ -18,10 +18,13 @@ import net.sf.anathema.character.generic.equipment.weapon.IEquipmentStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
+import net.sf.anathema.lib.control.change.ChangeControl;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class EquipmentItem implements IEquipmentItem {
 
   private final List<IEquipmentStats> printedStats = new ArrayList<IEquipmentStats>();
+  private final ChangeControl changeControl = new ChangeControl();
   private final IEquipmentTemplate template;
   private final IExaltedRuleSet ruleSet;
   private final MagicalMaterial material;
@@ -83,10 +86,12 @@ public class EquipmentItem implements IEquipmentItem {
     else {
       printedStats.remove(stats);
     }
+    changeControl.fireChangedEvent();
   }
 
   public void setUnprinted() {
     printedStats.clear();
+    changeControl.fireChangedEvent();
   }
 
   public void setPrinted(String printedStatId) {
@@ -95,5 +100,14 @@ public class EquipmentItem implements IEquipmentItem {
         printedStats.add(stats);
       }
     }
+    changeControl.fireChangedEvent();
+  }
+
+  public void addChangeListener(IChangeListener listener) {
+    changeControl.addChangeListener(listener);
+  }
+
+  public void removeChangeListener(IChangeListener listener) {
+    changeControl.removeChangeListener(listener);
   }
 }

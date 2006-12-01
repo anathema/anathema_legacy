@@ -38,7 +38,6 @@ public abstract class VirtueFlawModel extends AbstractAdditionalModelAdapter imp
     return AdditionalModelType.Advantages;
   }
 
-  @Override
   public void addChangeListener(IChangeListener listener) {
     virtueFlaw.addRootChangeListener(listener);
     virtueFlaw.getName().addTextChangedListener(new GlobalChangeAdapter<String>(listener));

@@ -14,6 +14,7 @@ import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.equipment.weapon.IShieldStats;
 import net.sf.anathema.character.generic.equipment.weapon.IWeaponStats;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class DemoEquipmentAdditionalModel extends AbstractEquipmentAdditionalModel {
   private final List<IArmourStats> printArmourStats = new ArrayList<IArmourStats>();
@@ -73,5 +74,9 @@ public class DemoEquipmentAdditionalModel extends AbstractEquipmentAdditionalMod
 
   public MagicalMaterial getDefaultMaterial() {
     return MagicalMaterial.Soulsteel;
+  }
+
+  public void addChangeListener(IChangeListener listener) {
+    // nothing to do
   }
 }
