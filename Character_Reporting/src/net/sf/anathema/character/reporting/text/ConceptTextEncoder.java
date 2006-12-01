@@ -3,7 +3,6 @@ package net.sf.anathema.character.reporting.text;
 import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.framework.reporting.ITextReportUtils;
 import net.sf.anathema.lib.resources.IResources;
@@ -18,8 +17,7 @@ public class ConceptTextEncoder extends AbstractTextEncoder {
     super(utils, resources);
   }
 
-  public void createParagraphs(MultiColumnText columnText, IGenericCharacter character)
-      throws DocumentException {
+  public void createParagraphs(MultiColumnText columnText, IGenericCharacter character) throws DocumentException {
     ICasteType casteType = character.getCasteType();
     if (casteType != ICasteType.NULL_CASTE_TYPE) {
       Phrase castePhrase = createTextParagraph(createBoldTitle(getString("Sheet.Label.Caste") + " ")); //$NON-NLS-1$ //$NON-NLS-2$
