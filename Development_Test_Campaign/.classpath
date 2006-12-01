@@ -2,18 +2,18 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Campaign_Music"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Campaign_Music_Impl"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Campaign_Plot"/>
-	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-core-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-core.jar" sourcepath="/Thirdparty/disy/disy-commons-core-src.zip"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Gui"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Thirdparty"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Platform"/>
 	<classpathentry kind="lib" path="/Thirdparty/Testing/jdemo_core.jar"/>
-	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar" sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Development_Test_Platform"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

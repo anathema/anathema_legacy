@@ -5,10 +5,9 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Platform"/>
-	<classpathentry sourcepath="/Thirdparty/Testing/junit_src.jar" kind="lib" path="/Thirdparty/Testing/junit.jar"/>
-	<classpathentry sourcepath="/Thirdparty/Testing/easymock-src.zip" kind="lib" path="/Thirdparty/Testing/easymock.jar"/>
-	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
-	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-core-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/Testing/easymock.jar" sourcepath="/Thirdparty/Testing/easymock-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar" sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-core.jar" sourcepath="/Thirdparty/disy/disy-commons-core-src.zip"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Anathema"/>
 	<classpathentry kind="lib" path="/Thirdparty/Testing/jdemo_core.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
