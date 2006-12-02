@@ -2,7 +2,6 @@ package net.sf.anathema.campaign.module;
 
 import javax.swing.Icon;
 
-import net.sf.anathema.campaign.concrete.SeriesContentModel;
 import net.sf.anathema.campaign.model.ISeries;
 import net.sf.anathema.campaign.persistence.SeriesPersister;
 import net.sf.anathema.campaign.presenter.CampaignPresenter;
@@ -45,12 +44,7 @@ public final class SeriesTypeConfiguration extends AbstractPersistableItemTypeCo
 
   @Override
   protected IRepositoryItemPersister createPersister(IAnathemaModel model) {
-    ItemType[] supportedItemTypes = SeriesContentModel.createSupportedItemTypes(model.getItemTypeRegistry());
-    return new SeriesPersister(
-        model.getRepository().getPrintNameFileAccess(),
-        getItemType(),
-        supportedItemTypes,
-        model.getItemTypeRegistry());
+    return new SeriesPersister(getItemType());
   }
 
   @Override

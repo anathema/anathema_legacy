@@ -5,7 +5,5 @@ import net.sf.anathema.framework.itemdata.model.IItemData;
 
 public interface ISeries extends IItemData {
 
-  public ISeriesContentModel getContentModel();
-
   public IPlotModel getPlot();
 }

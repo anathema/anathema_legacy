@@ -8,8 +8,6 @@ public interface ISeriesPersistenceConstants {
   public static final String TAG_NAME = "Name"; //$NON-NLS-1$
   public static final String TAG_PLOT = "Plot"; //$NON-NLS-1$
   public static final String TAG_SERIES_ROOT = "Series"; //$NON-NLS-1$
-  public static final String TAG_CONTENT = "Content"; //$NON-NLS-1$
-  public static final String TAG_CONTENT_ITEM = "ContentItem"; //$NON-NLS-1$
   public static final String TAG_NOTE_ROOT = "Note"; //$NON-NLS-1$
 
   public static final String ATTRIB_REPOSITORY_ID = IAnathemaXmlConstants.ATTRIB_REPOSITORY_ID;

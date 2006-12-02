@@ -1,10 +1,7 @@
 package net.sf.anathema.campaign.persistence;
 
-import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.ATTRIB_ITEM_TYPE;
 import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.ATTRIB_REPOSITORY_ID;
 import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.ATTRIB_REPOSITORY_PRINT_NAME;
-import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.TAG_CONTENT;
-import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.TAG_CONTENT_ITEM;
 import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.TAG_NAME;
 import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.TAG_PLOT;
 import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.TAG_SERIES_ROOT;
@@ -17,11 +14,9 @@ import java.util.List;
 import net.disy.commons.core.io.IOUtilities;
 import net.sf.anathema.campaign.concrete.Series;
 import net.sf.anathema.campaign.model.ISeries;
-import net.sf.anathema.campaign.model.ISeriesContentModel;
 import net.sf.anathema.campaign.model.plot.IPlotElement;
 import net.sf.anathema.campaign.model.plot.IPlotModel;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.itemdata.model.IItemDescription;
 import net.sf.anathema.framework.itemdata.model.ItemDescription;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
@@ -32,8 +27,6 @@ import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
-import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
-import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.workflow.wizard.selection.IAnathemaWizardModelTemplate;
 import net.sf.anathema.lib.xml.DocumentUtilities;
@@ -50,20 +43,10 @@ public class SeriesPersister implements IRepositoryItemPersister {
   private final RepositoryItemPersister repositoryItemPerister = new RepositoryItemPersister();
 
   private final IItemType campaignType;
-  private final IItemType[] supportedTypes;
-  private final IItemTypeRegistry registry;
-  private final IPrintNameFileAccess printNameFileAccess;
   private final TextPersister textPersister = new TextPersister();
 
-  public SeriesPersister(
-      IPrintNameFileAccess printNameFileAccess,
-      IItemType campaignType,
-      IItemType[] supportedTypes,
-      IItemTypeRegistry registry) {
-    this.printNameFileAccess = printNameFileAccess;
+  public SeriesPersister(IItemType campaignType) {
     this.campaignType = campaignType;
-    this.supportedTypes = supportedTypes;
-    this.registry = registry;
   }
 
   public void save(IRepositoryWriteAccess writeAccess, IItem item) throws RepositoryException, IOException {
@@ -78,7 +61,6 @@ public class SeriesPersister implements IRepositoryItemPersister {
       throws RepositoryException,
       IOException {
     saveItemDescription(rootElement, series.getPlot().getRootElement().getDescription());
-    saveContents(series.getContentModel(), rootElement);
     savePlot(series.getPlot(), rootElement, writeAccess);
   }
 
@@ -122,17 +104,6 @@ public class SeriesPersister implements IRepositoryItemPersister {
     DocumentUtilities.save(document, writeAccess.createSubOutputStream(subElement.getId()));
   }
 
-  private void saveContents(ISeriesContentModel contentModel, Element parent) {
-    Element contentElement = parent.addElement(TAG_CONTENT);
-    for (IItemType type : contentModel.getAllItemTypes()) {
-      for (PrintNameFile file : contentModel.getPrintNameFiles(type)) {
-        Element contentItemElement = contentElement.addElement(TAG_CONTENT_ITEM);
-        contentItemElement.addAttribute(ATTRIB_ITEM_TYPE, file.getItemType().getId());
-        contentItemElement.addAttribute(ATTRIB_REPOSITORY_ID, file.getRepositoryId());
-      }
-    }
-  }
-
   protected final void restoreItemDescription(Element documentRoot, IItemDescription description) {
     textPersister.restoreTextualDescription(documentRoot, TAG_NAME, description.getName());
     textPersister.restoreTextualDescription(documentRoot, TAG_SUMMARY, description.getContent());
@@ -160,12 +131,11 @@ public class SeriesPersister implements IRepositoryItemPersister {
   private IItem load(Document xmlDocument, IRepositoryReadAccess readAccess)
       throws PersistenceException,
       RepositoryException {
-    ISeries seriesData = new Series(supportedTypes);
+    ISeries seriesData = new Series();
     IItem item = new AnathemaDataItem(campaignType, seriesData);
     Element documentRoot = xmlDocument.getRootElement();
     repositoryItemPerister.load(documentRoot, item);
     restoreItemDescription(documentRoot, seriesData.getPlot().getRootElement().getDescription());
-    loadContents(seriesData.getContentModel(), xmlDocument.getRootElement());
     loadPlot(seriesData.getPlot(), xmlDocument.getRootElement(), readAccess);
     return item;
   }
@@ -214,25 +184,7 @@ public class SeriesPersister implements IRepositoryItemPersister {
     }
   }
 
-  private void loadContents(ISeriesContentModel contentModel, Element parent) {
-    Element contentElement = parent.element(TAG_CONTENT);
-    if (contentElement == null) {
-      return;
-    }
-    List<Element> elementList = ElementUtilities.elements(contentElement, TAG_CONTENT_ITEM);
-    for (Element contentItemElement : elementList) {
-      String repositoryId = contentItemElement.attributeValue(ATTRIB_REPOSITORY_ID);
-      IItemType itemType = registry.getById(contentItemElement.attributeValue(ATTRIB_ITEM_TYPE));
-      PrintNameFile printNameFile = printNameFileAccess.getPrintNameFile(itemType, repositoryId);
-      // todo : printNameFile == null
-      if (printNameFile != null) {
-        contentModel.addItem(printNameFile);
-      }
-    }
-  }
-
   public IItem createNew(IAnathemaWizardModelTemplate template) {
-    ISeries seriesData = new Series(supportedTypes);
-    return new AnathemaDataItem(campaignType, seriesData);
+    return new AnathemaDataItem(campaignType, new Series());
   }
 }
