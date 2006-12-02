@@ -87,7 +87,7 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   public void addDirtyListener(IChangeListener changeListener) {
-    management.addChangeListener(changeListener);
+    management.addDirtyListener(changeListener);
   }
 
   public boolean isDirty() {
@@ -95,7 +95,7 @@ public class ExaltedCharacter implements ICharacter {
   }
 
   public void removeDirtyListener(IChangeListener changeListener) {
-    management.removeChangeListener(changeListener);
+    management.removeDirtyListener(changeListener);
   }
 
   public void setClean() {

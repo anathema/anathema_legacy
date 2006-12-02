@@ -2,11 +2,12 @@ package net.sf.anathema.character.impl.model;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.listening.ICharacterChangeListener;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.framework.repository.IChangeManagement;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 
-public class CharacterChangeManagement {
+public class CharacterChangeManagement implements IChangeManagement {
 
   private final ChangeControl control = new ChangeControl();
   private boolean dirty = false;
@@ -45,7 +46,7 @@ public class CharacterChangeManagement {
     return dirty;
   }
 
-  public void addChangeListener(IChangeListener changeListener) {
+  public void addDirtyListener(IChangeListener changeListener) {
     control.addChangeListener(changeListener);
   }
 
@@ -59,7 +60,7 @@ public class CharacterChangeManagement {
     control.fireChangedEvent();
   }
 
-  public void removeChangeListener(IChangeListener changeListener) {
+  public void removeDirtyListener(IChangeListener changeListener) {
     control.removeChangeListener(changeListener);
   }
 }
