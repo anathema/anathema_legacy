@@ -9,7 +9,7 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public class Series implements ISeries {
 
-  private final IPlotModel plotModel = new PlotModel();
+  private final PlotModel plotModel = new PlotModel();
 
   public IPlotModel getPlot() {
     return plotModel;
@@ -21,18 +21,18 @@ public class Series implements ISeries {
   }
 
   public void addDirtyListener(IChangeListener changeListener) {
-    // nothing to do
+    plotModel.addDirtyListener(changeListener);
   }
 
   public boolean isDirty() {
-    return true;
+    return plotModel.isDirty();
   }
 
   public void setClean() {
-    // nothing to do
+    plotModel.setClean();
   }
 
   public void removeDirtyListener(IChangeListener changeListener) {
-    // nothing to do
+    plotModel.removeDirtyListener(changeListener);
   }
 }

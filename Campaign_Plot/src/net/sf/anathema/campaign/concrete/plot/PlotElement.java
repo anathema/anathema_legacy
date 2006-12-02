@@ -27,4 +27,12 @@ public class PlotElement extends PlotElementContainer implements IPlotElement {
   public String toString() {
     return getDescription().getName().getText();
   }
+
+  public boolean isDirty() {
+    return itemDescription.isDirty();
+  }
+
+  public void setClean() {
+    itemDescription.setClean();
+  }
 }
