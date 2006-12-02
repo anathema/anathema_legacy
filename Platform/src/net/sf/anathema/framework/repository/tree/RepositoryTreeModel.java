@@ -15,7 +15,7 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   private final IItemType[] repositoryItemTypes;
   private final IPrintNameFileAccess printNameFileAccess;
 
-  public static ItemType[] createPersistableItemTypes(IItemTypeRegistry itemTypes, IFilter<IItemType> typeFilter) {
+  private ItemType[] createPersistableItemTypes(IItemTypeRegistry itemTypes, IFilter<IItemType> typeFilter) {
     List<IItemType> persistableItemTypes = new ArrayList<IItemType>();
     for (IItemType itemType : itemTypes.getAllItemTypes()) {
       if (itemType.supportsRepository() && typeFilter.accept(itemType)) {
