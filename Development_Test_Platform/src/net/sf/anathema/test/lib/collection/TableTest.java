@@ -118,4 +118,16 @@ public class TableTest {
     table.add(firstKey, thirdKey, secondValue);
     Assert.assertEquals(secondValue, table.get(firstKey, thirdKey));
   }
+
+  @Test
+  public void testGetUnregisteredValue() throws Exception {
+    String firstKey = "1"; //$NON-NLS-1$
+    String secondKey = "2"; //$NON-NLS-1$
+    String thirdKey = "3"; //$NON-NLS-1$
+    String firstValue = "First"; //$NON-NLS-1$
+    String secondValue = "Second"; //$NON-NLS-1$
+    table.add(firstKey, secondKey, firstValue);
+    table.add(secondKey, thirdKey, secondValue);
+    Assert.assertEquals(null, table.get(firstKey, thirdKey));
+  }
 }
