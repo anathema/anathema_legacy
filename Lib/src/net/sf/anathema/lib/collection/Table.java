@@ -7,25 +7,25 @@ import java.util.Set;
 
 public class Table<K1, K2, V> {
 
-  private final List<K1> primaryKeys = new ArrayList<K1>();
-  private final List<K2> secondaryKeys = new ArrayList<K2>();
+  private final List<K1> rowKeys = new ArrayList<K1>();
+  private final List<K2> columnKeys = new ArrayList<K2>();
   private final List<List<V>> rowMap = new ArrayList<List<V>>();
   private final List<List<V>> columnMap = new ArrayList<List<V>>();
 
-  public void add(K1 key1, K2 key2, V value) {
-    if (!primaryKeys.contains(key1)) {
-      primaryKeys.add(key1);
+  public void add(K1 rowKey, K2 columnKey, V value) {
+    if (!rowKeys.contains(rowKey)) {
+      rowKeys.add(rowKey);
       rowMap.add(new ArrayList<V>());
 
     }
-    if (!secondaryKeys.contains(key2)) {
-      secondaryKeys.add(key2);
+    if (!columnKeys.contains(columnKey)) {
+      columnKeys.add(columnKey);
       columnMap.add(new ArrayList<V>());
     }
-    int primaryIndex = primaryKeys.indexOf(key1);
-    int secondaryIndex = secondaryKeys.indexOf(key2);
-    addToList(rowMap.get(primaryIndex), value, secondaryIndex);
-    addToList(columnMap.get(secondaryIndex), value, primaryIndex);
+    int rowIndex = rowKeys.indexOf(rowKey);
+    int columnIndex = columnKeys.indexOf(columnKey);
+    addToList(rowMap.get(rowIndex), value, columnIndex);
+    addToList(columnMap.get(columnIndex), value, rowIndex);
   }
 
   private void addToList(List<V> list, V value, int index) {
@@ -40,17 +40,14 @@ public class Table<K1, K2, V> {
     list.add(value);
   }
 
-  public V get(K1 key1, K2 key2) {
-    if (key1 == null || key2 == null) {
+  public V get(K1 rowKey, K2 columnKey) {
+    int rowIndex = rowKeys.indexOf(rowKey);
+    int columnIndex = columnKeys.indexOf(columnKey);
+    if (rowIndex == -1 || columnIndex == -1) {
       return null;
     }
-    int primaryIndex = primaryKeys.indexOf(key1);
-    int secondaryIndex = secondaryKeys.indexOf(key2);
-    if (primaryIndex == -1 || secondaryIndex == -1) {
-      return null;
-    }
-    V rowValue = getFromListList(rowMap, primaryIndex, secondaryIndex);
-    V columnValue = getFromListList(columnMap, secondaryIndex, primaryIndex);
+    V rowValue = getFromListList(rowMap, rowIndex, columnIndex);
+    V columnValue = getFromListList(columnMap, columnIndex, rowIndex);
     if (rowValue == null || columnValue == null || !rowValue.equals(columnValue)) {
       return null;
     }
@@ -66,14 +63,14 @@ public class Table<K1, K2, V> {
   }
 
   public Set<K1> getPrimaryKeys() {
-    return new HashSet<K1>(primaryKeys);
+    return new HashSet<K1>(rowKeys);
   }
 
-  public boolean contains(K1 primaryKey, K2 secondaryKey) {
-    return get(primaryKey, secondaryKey) != null;
+  public boolean contains(K1 rowKey, K2 columnKey) {
+    return get(rowKey, columnKey) != null;
   }
 
   public int getSize() {
-    return primaryKeys.size() * secondaryKeys.size();
+    return rowKeys.size() * columnKeys.size();
   }
 }
