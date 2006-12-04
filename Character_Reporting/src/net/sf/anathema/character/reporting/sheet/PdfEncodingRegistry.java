@@ -13,8 +13,7 @@ import com.lowagie.text.pdf.BaseFont;
 
 public class PdfEncodingRegistry {
 
-  private final Table<CharacterType, IExaltedEdition, IPdfPartEncoder> partEncoderTable = new Table<CharacterType, IExaltedEdition, IPdfPartEncoder>(
-      IPdfPartEncoder.class);
+  private final Table<CharacterType, IExaltedEdition, IPdfPartEncoder> partEncoderTable = new Table<CharacterType, IExaltedEdition, IPdfPartEncoder>();
   private final BaseFont baseFont;
   private final BaseFont symbolBaseFont;
   private IPdfContentBoxEncoder weaponContentEncoder;

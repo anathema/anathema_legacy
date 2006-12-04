@@ -16,8 +16,7 @@ import net.sf.anathema.lib.collection.Table;
 
 public class TemplateRegistry implements ITemplateRegistry {
 
-  private final Table<ITemplateType, IExaltedEdition, ICharacterTemplate> table = new Table<ITemplateType, IExaltedEdition, ICharacterTemplate>(
-      ICharacterTemplate.class);
+  private final Table<ITemplateType, IExaltedEdition, ICharacterTemplate> table = new Table<ITemplateType, IExaltedEdition, ICharacterTemplate>();
 
   public ICharacterExternalsTemplate[] getAllSupportedTemplates(CharacterType type) {
     List<ICharacterTemplate> typeTemplates = new ArrayList<ICharacterTemplate>();

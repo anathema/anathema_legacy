@@ -18,8 +18,7 @@ import org.dom4j.io.SAXReader;
 
 public class CharmIO {
 
-  private final Table<IIdentificate, IExaltedRuleSet, URL> table = new Table<IIdentificate, IExaltedRuleSet, URL>(
-      URL.class);
+  private final Table<IIdentificate, IExaltedRuleSet, URL> table = new Table<IIdentificate, IExaltedRuleSet, URL>();
 
   public void registerCharmFile(IIdentificate type, IExaltedRuleSet ruleSet, URL resource) {
     table.add(type, ruleSet, resource);

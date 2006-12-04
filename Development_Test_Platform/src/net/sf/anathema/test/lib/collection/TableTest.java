@@ -12,7 +12,7 @@ public class TableTest {
 
   @Before
   public void createTable() {
-    this.table = new Table<String, String, String>(String.class);
+    this.table = new Table<String, String, String>();
   }
 
   @Test
@@ -91,7 +91,7 @@ public class TableTest {
   }
 
   @Test
-  public void testOverlappingRowsAndColums() throws Exception {
+  public void testOverlappingRowsAndColumsWithSimiliarValues() throws Exception {
     String firstKey = "1"; //$NON-NLS-1$
     String secondKey = "2"; //$NON-NLS-1$
     String thirdKey = "3"; //$NON-NLS-1$
@@ -102,5 +102,20 @@ public class TableTest {
     table.add(secondKey, secondKey, firstValue);
     table.add(secondKey, thirdKey, secondValue);
     table.get(firstKey, secondKey);
+  }
+
+  @Test
+  public void testNullInbetweenValues() throws Exception {
+    String firstKey = "1"; //$NON-NLS-1$
+    String secondKey = "2"; //$NON-NLS-1$
+    String thirdKey = "3"; //$NON-NLS-1$
+    String firstValue = "First"; //$NON-NLS-1$
+    String secondValue = "Second"; //$NON-NLS-1$
+    table.add(firstKey, firstKey, firstValue);
+    table.add(secondKey, firstKey, firstValue);
+    table.add(secondKey, secondKey, firstValue);
+    table.add(secondKey, thirdKey, firstValue);
+    table.add(firstKey, thirdKey, secondValue);
+    Assert.assertEquals(secondValue, table.get(firstKey, thirdKey));
   }
 }

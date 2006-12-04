@@ -1,51 +1,64 @@
 package net.sf.anathema.lib.collection;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.lib.lang.ArrayFactory;
-
 public class Table<K1, K2, V> {
 
-  private final MultiEntryMap<K1, V> rowMap = new MultiEntryMap<K1, V>();
-  private final MultiEntryMap<K2, V> columnMap = new MultiEntryMap<K2, V>();
-  private final Set<K1> primaryKeys = new ListOrderedSet<K1>();
-  private final ArrayFactory<V> factory;
-
-  public Table(Class<V> valueClass) {
-    factory = new ArrayFactory<V>(valueClass);
-  }
+  private final List<K1> primaryKeys = new ArrayList<K1>();
+  private final List<K2> secondaryKeys = new ArrayList<K2>();
+  private final List<List<V>> rowMap = new ArrayList<List<V>>();
+  private final List<List<V>> columnMap = new ArrayList<List<V>>();
 
   public void add(K1 key1, K2 key2, V value) {
-    V oldValue = get(key1, key2);
-    if (oldValue != null) {
-      rowMap.replace(key1, oldValue, value);
-      columnMap.replace(key2, oldValue, value);
+    if (!primaryKeys.contains(key1)) {
+      primaryKeys.add(key1);
+      rowMap.add(new ArrayList<V>());
+
     }
-    else {
-      rowMap.add(key1, value);
-      columnMap.add(key2, value);
+    if (!secondaryKeys.contains(key2)) {
+      secondaryKeys.add(key2);
+      columnMap.add(new ArrayList<V>());
     }
-    primaryKeys.add(key1);
+    int primaryIndex = primaryKeys.indexOf(key1);
+    int secondaryIndex = secondaryKeys.indexOf(key2);
+    addToList(rowMap.get(primaryIndex), value, secondaryIndex);
+    addToList(columnMap.get(secondaryIndex), value, primaryIndex);
+  }
+
+  private void addToList(List<V> list, V value, int index) {
+    if (index != -1 && index < list.size()) {
+      list.remove(index);
+      list.add(index, value);
+      return;
+    }
+    for (int fillIndex = list.size(); fillIndex < index; fillIndex++) {
+      list.add(null);
+    }
+    list.add(value);
   }
 
   public V get(K1 key1, K2 key2) {
-    Set<V> rowEntries = new HashSet<V>(rowMap.get(key1));
-    Set<V> columnEntries = new HashSet<V>(columnMap.get(key2));
-    rowEntries.retainAll(columnEntries);
-    if (rowEntries.size() == 0) {
+    if (key1 == null || key2 == null) {
       return null;
     }
-    Ensure.ensureArgumentEquals(1, rowEntries.size());
-    V[] intersection = factory.createArray(1);
-    return rowEntries.toArray(intersection)[0];
+    int primaryIndex = primaryKeys.indexOf(key1);
+    int secondaryIndex = secondaryKeys.indexOf(key2);
+    if (primaryIndex == -1 || secondaryIndex == -1) {
+      return null;
+    }
+    V rowValue = rowMap.get(primaryIndex).get(secondaryIndex);
+    V columnValue = columnMap.get(secondaryIndex).get(primaryIndex);
+    if (rowValue == null || columnValue == null || !rowValue.equals(columnValue)) {
+      return null;
+    }
+    return rowValue;
   }
 
   public Set<K1> getPrimaryKeys() {
-    return Collections.unmodifiableSet(primaryKeys);
+    return new HashSet<K1>(primaryKeys);
   }
 
   public boolean contains(K1 primaryKey, K2 secondaryKey) {
@@ -53,6 +66,6 @@ public class Table<K1, K2, V> {
   }
 
   public int getSize() {
-    return rowMap.keySet().size() * columnMap.keySet().size();
+    return primaryKeys.size() * secondaryKeys.size();
   }
 }
