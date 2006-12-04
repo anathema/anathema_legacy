@@ -12,6 +12,7 @@ import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.IUnsupportedTemplate;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.lib.collection.Table;
 
 public class TemplateRegistry implements ITemplateRegistry {
 

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.generic.impl.template;
+package net.sf.anathema.lib.collection;
 
 import java.util.Collections;
 import java.util.HashSet;
