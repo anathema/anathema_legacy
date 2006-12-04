@@ -4,12 +4,11 @@ import java.net.URL;
 import java.util.Collection;
 
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
+import net.sf.anathema.initialization.plugin.AnathemaPluginManager;
 import net.sf.anathema.initialization.plugin.PluginUtilities;
 
 import org.java.plugin.Plugin;
-import org.java.plugin.PluginManager;
 import org.java.plugin.registry.Extension;
-import org.java.plugin.registry.ExtensionPoint;
 import org.java.plugin.registry.Extension.Parameter;
 
 public class CharacterPlugin extends Plugin {
@@ -24,9 +23,8 @@ public class CharacterPlugin extends Plugin {
   @SuppressWarnings("unchecked")
   @Override
   protected void doStart() throws Exception {
-    PluginManager manager = getManager();
-    ExtensionPoint point = manager.getRegistry().getExtensionPoint(CHARACTER_PLUGIN_ID, EXTENSION_POINT_CHARM_LIST);
-    Collection<Extension> connectedExtensions = point.getConnectedExtensions();
+    AnathemaPluginManager manager = new AnathemaPluginManager(getManager());
+    Collection<Extension> connectedExtensions = manager.getExtension(CHARACTER_PLUGIN_ID, EXTENSION_POINT_CHARM_LIST);
     for (Extension extension : connectedExtensions) {
       for (Parameter listParameter : PluginUtilities.getParameters(extension, PARAM_LIST)) {
         Parameter typeParameter = listParameter.getSubParameter(PARAM_TYPE);
