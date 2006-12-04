@@ -1,16 +1,34 @@
 <!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.7" "http://jpf.sourceforge.net/plugin_0_7.dtd">
-<plugin-fragment id="net.sf.anathema.character.sidereal" version="1.00" plugin-id="net.sf.anathema.character" plugin-version="1.00">
+<plugin-fragment id="net.sf.anathema.character.db" version="1.03" plugin-id="net.sf.anathema.character" plugin-version="1.03">
 	<runtime>		
-		<library id="sidereal" path="./" type="code">
+		<library id="db" path="./" type="code">
 			<export prefix="*"/>
 		</library>
-		<library id="siderealresources" path="./" type="resources">
+		<library id="dbresources" path="./" type="resources">
 			<export prefix="*"/>
 		</library>
 	</runtime>
-	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="SiderealResources">
-		<parameter id="bundle" value="Sidereal"/>
-		<parameter id="bundle" value="Charms_Sidereal"/>
-		<parameter id="bundle" value="Charms_Sidereal_Pages"/>
+	<extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="DbCharms">
+	  <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="CoreRules"/>
+		<parameter id="path" value="data/Charms_Dragon-Blooded_CoreRules.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="PowerCombat"/>
+		<parameter id="path" value="data/Charms_Dragon-Blooded_PowerCombat.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Dragon-Blooded"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_Dragon-Blooded_SecondEdition.xml"/>
+	  </parameter>
+	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="DBResources">
+		<parameter id="bundle" value="Dragon-Blooded"/>
+		<parameter id="bundle" value="Charms_Dragon-Blooded"/>
+		<parameter id="bundle" value="Charms_Dragon-Blooded_Pages"/>
+		<parameter id="bundle" value="Charms_Dragon-Blooded_SecondEdition"/>
 	</extension>
 </plugin-fragment>

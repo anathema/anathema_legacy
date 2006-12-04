@@ -1,6 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -104,5 +105,17 @@ public class CharmCache implements ICharmCache {
     ICharm charm = new Charm(charmData.getCoreData());
     getRulesetCharms(charmData.getEdition().getDefaultRuleset()).add(charm.getCharacterType(), charm);
     charmIo.writeCharmInternal(charmData);
+  }
+
+  public void registerCharmFile(String typeString, String ruleString, URL resource) {
+    IIdentificate type;
+    if (typeString.equals(MARTIAL_ARTS_TYPE.getId())) {
+      type = MARTIAL_ARTS_TYPE;
+    }
+    else {
+      type = CharacterType.getById(typeString);
+    }
+    ExaltedRuleSet ruleSet = ExaltedRuleSet.valueOf(ruleString);
+    charmIo.registerCharmFile(type, ruleSet, resource);
   }
 }

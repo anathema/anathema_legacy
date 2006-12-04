@@ -1,5 +1,5 @@
 <!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 0.6" "http://jpf.sourceforge.net/plugin_0_6.dtd">
-<plugin id="net.sf.anathema.character" version="1.00">
+<plugin id="net.sf.anathema.character" version="1.03" class="net.sf.anathema.character.CharacterPlugin">
 	<requires>
 		<import plugin-id="net.sf.anathema.core" reverse-lookup="true"/>
 		<import plugin-id="net.sf.anathema.namegenerator"/>
@@ -57,13 +57,13 @@
 			<export prefix="*"/>
 		</library>
 	</runtime>
-	<!--<extension-point id="CharmList">
+	<extension-point id="CharmList">
 		<parameter-def id="list" multiplicity="any">
 			<parameter-def id="type" multiplicity="one"/>
 			<parameter-def id="rules" multiplicity="one"/>
 			<parameter-def id="path" multiplicity="one"/>
 		</parameter-def>
-	</extension-point>-->	
+	</extension-point>	
 	<extension plugin-id="net.sf.anathema.core"	point-id="Menubar" id="Menubar">
 		<parameter id="class" value="net.sf.anathema.character.impl.module.CharacterMenu"/>
 	</extension>
@@ -122,5 +122,32 @@
 		<parameter id="bundle" value="TextSheet"/>
 		<parameter id="bundle" value="Traits"/>
 		<parameter id="bundle" value="Weapons"/>
+	</extension>
+	<extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="UntypedCharms">
+	  <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="CoreRules"/>
+		<parameter id="path" value="data/Charms_MartialArts_CoreRules.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="PowerCombat"/>
+		<parameter id="path" value="data/Charms_MartialArts_PowerCombat.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="MartialArts"/>
+		<parameter id="rules" value="SecondEdition"/>
+		<parameter id="path" value="data/Charms_MartialArts_SecondEdition.xml"/>
+	  </parameter>
+	   <parameter id="list">
+		<parameter id="type" value="DragonKing"/>
+		<parameter id="rules" value="CoreRules"/>
+		<parameter id="path" value="data/Charms_DragonKing_CoreRules.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="DragonKing"/>
+		<parameter id="rules" value="PowerCombat"/>
+		<parameter id="path" value="data/Charms_DragonKing_PowerCombat.xml"/>
+	  </parameter>
 	</extension>
 </plugin>

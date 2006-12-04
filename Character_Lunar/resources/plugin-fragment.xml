@@ -1,5 +1,5 @@
 <!DOCTYPE plugin-fragment PUBLIC "-//JPF//Java Plug-in Manifest 0.7" "http://jpf.sourceforge.net/plugin_0_7.dtd">
-<plugin-fragment id="net.sf.anathema.character.lunar" version="1.00" plugin-id="net.sf.anathema.character" plugin-version="1.00">
+<plugin-fragment id="net.sf.anathema.character.lunar" version="1.03" plugin-id="net.sf.anathema.character" plugin-version="1.03">
 	<runtime>		
 		<library id="lunar" path="./" type="code">
 			<export prefix="*"/>
@@ -8,6 +8,18 @@
 			<export prefix="*"/>
 		</library>
 	</runtime>
+	<extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="LunarCharms">
+	  <parameter id="list">
+		<parameter id="type" value="Lunar"/>
+		<parameter id="rules" value="CoreRules"/>
+		<parameter id="path" value="data/Charms_Lunar_CoreRules.xml"/>
+	  </parameter>
+	  <parameter id="list">
+		<parameter id="type" value="Lunar"/>
+		<parameter id="rules" value="PowerCombat"/>
+		<parameter id="path" value="data/Charms_Lunar_PowerCombat.xml"/>
+	  </parameter>
+	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="LunarResources">
 		<parameter id="bundle" value="Lunar"/>
 		<parameter id="bundle" value="Charms_Lunar"/>

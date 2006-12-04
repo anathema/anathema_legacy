@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 
+import net.sf.anathema.character.generic.impl.template.Table;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
@@ -17,13 +18,15 @@ import org.dom4j.io.SAXReader;
 
 public class CharmIO {
 
+  private final Table<IIdentificate, IExaltedRuleSet, URL> table = new Table<IIdentificate, IExaltedRuleSet, URL>(
+      URL.class);
+
+  public void registerCharmFile(IIdentificate type, IExaltedRuleSet ruleSet, URL resource) {
+    table.add(type, ruleSet, resource);
+  }
+
   public Document readCharms(IIdentificate type, IExaltedRuleSet rules) throws DocumentException {
-    String urlString = createFileName(type, rules);
-    final URL charmURL = getClass().getClassLoader().getResource(urlString);
-    if (charmURL == null) {
-      throw new NullPointerException("Resource not found in classpath: " + urlString); //$NON-NLS-1$
-    }
-    return new SAXReader().read(charmURL);
+    return new SAXReader().read(table.get(type, rules));
   }
 
   private String createFileName(IIdentificate type, IExaltedRuleSet rules) {
