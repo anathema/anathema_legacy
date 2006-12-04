@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<project name="Build Character Solar Plugin" default="Build Solar">
+<project name="Build Character Sidereal Plugin" default="Build Sidereal">
 
 	<import file="common_plugin_targets.xml" />
 
-	<property name="projectset" value="Character_Solar" />
-	<property name="module.name" value="character_solar" />
+	<property name="projectset" value="Character_Sidereal" />
+	<property name="module.name" value="character_sidereal" />
 
 	<property file="plugin.directories.properties" />
 	
-	<target name="Build Solar" depends="Compile, Build JAR"/>
+	<target name="Build Sidereal" depends="Compile, Build JAR"/>
 </project>
