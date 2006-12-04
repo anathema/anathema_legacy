@@ -29,16 +29,9 @@ public class CharmIO {
     return new SAXReader().read(table.get(type, rules));
   }
 
-  private String createFileName(IIdentificate type, IExaltedRuleSet rules) {
-    return "data/Charms_" + type.getId() + "_" + rules.getId() + ".xml";//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$;
-  }
-
   public void writeCharmInternal(ICharmEntryData charmData) throws IOException, DocumentException {
     CharacterType type = charmData.getCoreData().getCharacterType();
-    File file = new File("../Character_" //$NON-NLS-1$
-        + type.name()
-        + "/resources/" //$NON-NLS-1$
-        + createFileName(type, charmData.getEdition().getDefaultRuleset()));
+    File file = new File(createFileName(charmData, type));
     Document document = new SAXReader().read(new FileInputStream(file));
     try {
       new CharmWriter().writeCharm(charmData.getCoreData(), document.getRootElement());
@@ -48,5 +41,16 @@ public class CharmIO {
     }
     DocumentUtilities.save(document, file);
     System.err.println("Charm written in development file."); //$NON-NLS-1$
+  }
+
+  private String createFileName(ICharmEntryData charmData, CharacterType type) {
+    return "../Character_" //$NON-NLS-1$
+        + type.name()
+        + "/resources/" //$NON-NLS-1$
+        + "data/Charms_" //$NON-NLS-1$
+        + type.getId()
+        + "_" //$NON-NLS-1$
+        + charmData.getEdition().getDefaultRuleset().getId()
+        + ".xml"; //$NON-NLS-1$
   }
 }
