@@ -9,10 +9,9 @@ import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.sheet.util.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Chunk;
@@ -24,17 +23,17 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class LunarGreatCurseEncoder implements IPdfContentBoxEncoder {
 
-  private final PdfTraitEncoder traitEncoder;
+  private final VirtueFlawBoxEncoder traitEncoder;
   private final Chunk symbolChunk;
-  private Font font;
-  private Font nameFont;
+  private final Font font;
+  private final Font nameFont;
   private final IResources resources;
 
   public LunarGreatCurseEncoder(BaseFont baseFont, BaseFont symbolBaseFont, IResources resources) {
     this.resources = resources;
     this.font = createFont(baseFont);
     this.nameFont = createNameFont(baseFont);
-    this.traitEncoder = PdfTraitEncoder.createMediumTraitEncoder(baseFont);
+    this.traitEncoder = new VirtueFlawBoxEncoder(baseFont);
     this.symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
   }
 
@@ -49,14 +48,9 @@ public class LunarGreatCurseEncoder implements IPdfContentBoxEncoder {
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    float traitBaseLine = bounds.getMaxY() - traitEncoder.getTraitHeight();
-    float padding = IVoidStateFormatConstants.PADDING / 2.0f;
-    Position traitPosition = new Position(bounds.x + padding, traitBaseLine);
-    traitEncoder.encodeSquaresCenteredAndUngrouped(directContent, traitPosition, bounds.width - 2 * padding, 0, 10);
-    IVirtueFlawModel flawModel = (IVirtueFlawModel) character.getAdditionalModel(LunarVirtueFlawTemplate.TEMPLATE_ID);
-    IVirtueFlaw virtueFlaw = flawModel.getVirtueFlaw();
+    Bounds textBounds = traitEncoder.encode(directContent, bounds);
+    IVirtueFlaw virtueFlaw = ((IVirtueFlawModel) character.getAdditionalModel(LunarVirtueFlawTemplate.TEMPLATE_ID)).getVirtueFlaw();
     int leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
-    Bounds textBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - traitEncoder.getTraitHeight());
     Phrase phrase = new Phrase();
     String virtue;
     ITraitType rootVirtue = virtueFlaw.getRoot();

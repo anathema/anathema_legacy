@@ -11,10 +11,9 @@ import net.sf.anathema.character.reporting.sheet.common.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.sheet.util.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
-import net.sf.anathema.character.reporting.util.Position;
 import net.sf.anathema.lib.resources.IResources;
 
 import com.lowagie.text.Chunk;
@@ -26,14 +25,14 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class AbyssalResonanceEncoder extends AbstractPdfEncoder implements IPdfContentBoxEncoder {
   private final BaseFont baseFont;
-  private final PdfTraitEncoder traitEncoder;
+  private final VirtueFlawBoxEncoder traitEncoder;
   private final IResources resources;
   private final Chunk symbolChunk;
 
   public AbyssalResonanceEncoder(BaseFont baseFont, BaseFont symbolBaseFont, IResources resources) {
     this.baseFont = baseFont;
     this.resources = resources;
-    this.traitEncoder = PdfTraitEncoder.createMediumTraitEncoder(baseFont);
+    this.traitEncoder = new VirtueFlawBoxEncoder(baseFont);
     this.symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
   }
 
@@ -47,11 +46,7 @@ public class AbyssalResonanceEncoder extends AbstractPdfEncoder implements IPdfC
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    float traitBaseLine = bounds.getMaxY() - traitEncoder.getTraitHeight();
-    float padding = IVoidStateFormatConstants.PADDING / 2.0f;
-    Position traitPosition = new Position(bounds.x + padding, traitBaseLine);
-    traitEncoder.encodeSquaresCenteredAndUngrouped(directContent, traitPosition, bounds.width - 2 * padding, 0, 10);
-    Bounds textBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - traitEncoder.getTraitHeight());
+    Bounds textBounds = traitEncoder.encode(directContent, bounds);
     Font font = TableEncodingUtilities.createFont(getBaseFont());
     Phrase phrase = new Phrase("", font); //$NON-NLS-1$
     phrase.add(symbolChunk);

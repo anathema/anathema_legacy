@@ -7,8 +7,8 @@ import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.elements.Line;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.sheet.util.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.character.reporting.util.Position;
 import net.sf.anathema.character.solar.virtueflaw.model.ISolarVirtueFlaw;
@@ -24,14 +24,14 @@ import com.lowagie.text.pdf.PdfContentByte;
 
 public class PdfSolarVirtueFlawEncoder implements IPdfContentBoxEncoder {
 
-  private final PdfTraitEncoder traitEncoder;
+  private final VirtueFlawBoxEncoder traitEncoder;
   private final Font nameFont;
   private final Font font;
 
   public PdfSolarVirtueFlawEncoder(BaseFont baseFont) {
     this.font = createFont(baseFont);
     this.nameFont = createNameFont(baseFont);
-    this.traitEncoder = PdfTraitEncoder.createMediumTraitEncoder(baseFont);
+    this.traitEncoder = new VirtueFlawBoxEncoder(baseFont);
   }
 
   public String getHeaderKey() {
@@ -39,18 +39,13 @@ public class PdfSolarVirtueFlawEncoder implements IPdfContentBoxEncoder {
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    float traitBaseLine = bounds.getMaxY() - traitEncoder.getTraitHeight();
-    float padding = IVoidStateFormatConstants.PADDING / 2.0f;
-    Position traitPosition = new Position(bounds.x + padding, traitBaseLine);
-    traitEncoder.encodeSquaresCenteredAndUngrouped(directContent, traitPosition, bounds.width - 2 * padding, 0, 10);
-    ISolarVirtueFlawModel flawModel = (ISolarVirtueFlawModel) character.getAdditionalModel(IAdditionalTemplate.SOLAR_VIRTUE_FLAW_ID);
-    ISolarVirtueFlaw virtueFlaw = flawModel.getVirtueFlaw();
+    Bounds textBounds = traitEncoder.encode(directContent, bounds);
+    int leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
+    ISolarVirtueFlaw virtueFlaw = ((ISolarVirtueFlawModel) character.getAdditionalModel(IAdditionalTemplate.SOLAR_VIRTUE_FLAW_ID)).getVirtueFlaw();
     String name = virtueFlaw.getName().getText();
     String condition = virtueFlaw.getLimitBreak().getText();
     boolean nameDefined = !StringUtilities.isNullOrTrimEmpty(name);
     boolean conditionDefined = !StringUtilities.isNullOrEmpty(condition);
-    int leading = IVoidStateFormatConstants.LINE_HEIGHT - 2;
-    Bounds textBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - traitEncoder.getTraitHeight());
     if (!nameDefined && !conditionDefined) {
       encodeLines(directContent, bounds, leading, textBounds.getMaxY());
     }

@@ -7,8 +7,8 @@ import net.sf.anathema.character.reporting.sheet.common.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.pageformat.IVoidStateFormatConstants;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.sheet.util.PdfTextEncodingUtilities;
-import net.sf.anathema.character.reporting.sheet.util.PdfTraitEncoder;
 import net.sf.anathema.character.reporting.sheet.util.TableEncodingUtilities;
+import net.sf.anathema.character.reporting.sheet.util.VirtueFlawBoxEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.character.reporting.util.Position;
 import net.sf.anathema.lib.resources.IResources;
@@ -24,13 +24,13 @@ public class SiderealParadoxEncoder extends AbstractPdfEncoder implements IPdfCo
 
   private final BaseFont baseFont;
   private final IResources resources;
-  private final PdfTraitEncoder traitEncoder;
+  private final VirtueFlawBoxEncoder traitEncoder;
   private final Chunk symbolChunk;
 
   public SiderealParadoxEncoder(BaseFont baseFont, BaseFont symbolBaseFont, IResources resources) {
     this.baseFont = baseFont;
     this.resources = resources;
-    this.traitEncoder = PdfTraitEncoder.createMediumTraitEncoder(baseFont);
+    this.traitEncoder = new VirtueFlawBoxEncoder(baseFont);
     this.symbolChunk = PdfEncodingUtilities.createCaretSymbolChunk(symbolBaseFont);
   }
 
@@ -40,11 +40,7 @@ public class SiderealParadoxEncoder extends AbstractPdfEncoder implements IPdfCo
   }
 
   public void encode(PdfContentByte directContent, IGenericCharacter character, Bounds bounds) throws DocumentException {
-    float traitBaseLine = bounds.getMaxY() - traitEncoder.getTraitHeight();
-    float padding = IVoidStateFormatConstants.PADDING / 2.0f;
-    Position traitPosition = new Position(bounds.x + padding, traitBaseLine);
-    traitEncoder.encodeSquaresCenteredAndUngrouped(directContent, traitPosition, bounds.width - 2 * padding, 0, 10);
-    Bounds textBounds = new Bounds(bounds.x, bounds.y, bounds.width, bounds.height - traitEncoder.getTraitHeight());
+    Bounds textBounds = traitEncoder.encode(directContent, bounds);
     float lineHeight = (textBounds.height - TEXT_PADDING) / 2;
     String effects = resources.getString("Sheet.GreatCurse.Sidereal.CurrentEffects") + ":"; //$NON-NLS-1$ //$NON-NLS-2$
     drawLabelledContent(
