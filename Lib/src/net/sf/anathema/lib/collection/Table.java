@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Set;
 
 import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.lib.collection.ListOrderedSet;
-import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.lang.ArrayFactory;
 
 public class Table<K1, K2, V> {
@@ -47,5 +45,9 @@ public class Table<K1, K2, V> {
 
   public boolean contains(K1 primaryKey, K2 secondaryKey) {
     return get(primaryKey, secondaryKey) != null;
+  }
+
+  public int getSize() {
+    return 0;
   }
 }
