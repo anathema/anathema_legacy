@@ -33,10 +33,8 @@ public class Table<K1, K2, V> {
   }
 
   public V get(K1 key1, K2 key2) {
-    List<V> rowList = rowMap.get(key1);
-    Set<V> rowEntries = new HashSet<V>(rowList);
-    List<V> columnList = columnMap.get(key2);
-    Set<V> columnEntries = new HashSet<V>(columnList);
+    Set<V> rowEntries = new HashSet<V>(rowMap.get(key1));
+    Set<V> columnEntries = new HashSet<V>(columnMap.get(key2));
     rowEntries.retainAll(columnEntries);
     if (rowEntries.size() == 0) {
       return null;

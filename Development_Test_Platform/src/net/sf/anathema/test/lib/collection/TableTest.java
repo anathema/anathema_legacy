@@ -89,4 +89,18 @@ public class TableTest {
     Assert.assertTrue(table.getPrimaryKeys().contains(string1));
     Assert.assertTrue(table.getPrimaryKeys().contains(string2));
   }
+
+  @Test
+  public void testOverlappingRowsAndColums() throws Exception {
+    String firstKey = "1"; //$NON-NLS-1$
+    String secondKey = "2"; //$NON-NLS-1$
+    String thirdKey = "3"; //$NON-NLS-1$
+    String firstValue = "First"; //$NON-NLS-1$
+    String secondValue = "Second"; //$NON-NLS-1$
+    table.add(firstKey, firstKey, firstValue);
+    table.add(firstKey, secondKey, secondValue);
+    table.add(secondKey, secondKey, firstValue);
+    table.add(secondKey, thirdKey, secondValue);
+    table.get(firstKey, secondKey);
+  }
 }
