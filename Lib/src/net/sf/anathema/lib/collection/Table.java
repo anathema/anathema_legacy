@@ -49,12 +49,20 @@ public class Table<K1, K2, V> {
     if (primaryIndex == -1 || secondaryIndex == -1) {
       return null;
     }
-    V rowValue = rowMap.get(primaryIndex).get(secondaryIndex);
-    V columnValue = columnMap.get(secondaryIndex).get(primaryIndex);
+    V rowValue = getFromListList(rowMap, primaryIndex, secondaryIndex);
+    V columnValue = getFromListList(columnMap, secondaryIndex, primaryIndex);
     if (rowValue == null || columnValue == null || !rowValue.equals(columnValue)) {
       return null;
     }
     return rowValue;
+  }
+
+  private V getFromListList(List<List<V>> list, int primaryIndex, int secondaryIndex) {
+    List<V> innerList = list.get(primaryIndex);
+    if (secondaryIndex >= innerList.size()) {
+      return null;
+    }
+    return innerList.get(secondaryIndex);
   }
 
   public Set<K1> getPrimaryKeys() {
