@@ -48,6 +48,6 @@ public class Table<K1, K2, V> {
   }
 
   public int getSize() {
-    return 0;
+    return rowMap.keySet().size() * columnMap.keySet().size();
   }
 }
