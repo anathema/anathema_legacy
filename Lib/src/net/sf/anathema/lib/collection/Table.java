@@ -20,8 +20,15 @@ public class Table<K1, K2, V> {
   }
 
   public void add(K1 key1, K2 key2, V value) {
-    rowMap.add(key1, value);
-    columnMap.add(key2, value);
+    V oldValue = get(key1, key2);
+    if (oldValue != null) {
+      rowMap.replace(key1, oldValue, value);
+      columnMap.replace(key2, oldValue, value);
+    }
+    else {
+      rowMap.add(key1, value);
+      columnMap.add(key2, value);
+    }
     primaryKeys.add(key1);
   }
 
