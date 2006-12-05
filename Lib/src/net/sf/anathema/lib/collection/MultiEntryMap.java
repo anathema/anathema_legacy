@@ -43,16 +43,6 @@ public class MultiEntryMap<K, V> {
     return map.containsKey(key);
   }
 
-  public boolean containsValue(V value) {
-    for (K key : keySet()) {
-      List<V> list = getList(key);
-      if (list.contains(value)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   public List<V> get(K key) {
     if (!containsKey(key)) {
       return Collections.emptyList();
@@ -66,13 +56,6 @@ public class MultiEntryMap<K, V> {
 
   public Set<K> keySet() {
     return Collections.unmodifiableSet(map.keySet());
-  }
-
-  public int size(K key) {
-    if (!containsKey(key)) {
-      return 0;
-    }
-    return getList(key).size();
   }
 
   public void removeValue(K key, V value) {
