@@ -10,7 +10,6 @@ public class Table<K1, K2, V> {
   private final List<K1> rowKeys = new ArrayList<K1>();
   private final List<K2> columnKeys = new ArrayList<K2>();
   private final List<List<V>> rowMap = new ArrayList<List<V>>();
-  private final List<List<V>> columnMap = new ArrayList<List<V>>();
 
   public void add(K1 rowKey, K2 columnKey, V value) {
     if (!rowKeys.contains(rowKey)) {
@@ -20,12 +19,10 @@ public class Table<K1, K2, V> {
     }
     if (!columnKeys.contains(columnKey)) {
       columnKeys.add(columnKey);
-      columnMap.add(new ArrayList<V>());
     }
     int rowIndex = rowKeys.indexOf(rowKey);
     int columnIndex = columnKeys.indexOf(columnKey);
     addToList(rowMap.get(rowIndex), value, columnIndex);
-    addToList(columnMap.get(columnIndex), value, rowIndex);
   }
 
   private void addToList(List<V> list, V value, int index) {
@@ -46,20 +43,11 @@ public class Table<K1, K2, V> {
     if (rowIndex == -1 || columnIndex == -1) {
       return null;
     }
-    V rowValue = getFromListList(rowMap, rowIndex, columnIndex);
-    V columnValue = getFromListList(columnMap, columnIndex, rowIndex);
-    if (rowValue == null || columnValue == null || !rowValue.equals(columnValue)) {
+    List<V> innerList = rowMap.get(rowIndex);
+    if (columnIndex >= innerList.size()) {
       return null;
     }
-    return rowValue;
-  }
-
-  private V getFromListList(List<List<V>> list, int primaryIndex, int secondaryIndex) {
-    List<V> innerList = list.get(primaryIndex);
-    if (secondaryIndex >= innerList.size()) {
-      return null;
-    }
-    return innerList.get(secondaryIndex);
+    return innerList.get(columnIndex);
   }
 
   public Set<K1> getPrimaryKeys() {
