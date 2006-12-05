@@ -7,6 +7,6 @@ MainFile=Anathema.tex
 UseBibTeX=0
 UseMakeIndex=0
 ActiveProfile=LaTeX => PDF
-ProjectLanguage=
-ProjectDialect=
+ProjectLanguage=en
+ProjectDialect=US
 
