@@ -55,9 +55,6 @@ public class AboutDialogPage extends AbstractDialogPage {
     panel.add(new JLabel("voidstate"), GridDialogLayoutData.RIGHT); //$NON-NLS-1$
     panel.add(new JLabel(getString("Help.AboutDialog.NameTokenDatabase")), IGridDialogLayoutData.DEFAULT); //$NON-NLS-1$
     panel.add(new JLabel("voidstate"), GridDialogLayoutData.RIGHT); //$NON-NLS-1$
-    // panel.add(new JLabel(getString("Help.AboutDialog.Translation.Portuguese")), IGridDialogLayoutData.DEFAULT);
-    // //$NON-NLS-1$
-    // panel.add(new JLabel("Francisco M. Neto"), GridDialogLayoutData.RIGHT); //$NON-NLS-1$
     return panel;
   }
 
