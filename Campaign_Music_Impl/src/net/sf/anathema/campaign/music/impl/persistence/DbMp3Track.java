@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import net.disy.commons.core.util.StringUtilities;
 import net.sf.anathema.campaign.music.model.track.IMp3Track;
 import net.sf.anathema.campaign.music.model.track.Md5Checksum;
 import net.sf.anathema.campaign.music.presenter.IMusicEvent;
 import net.sf.anathema.campaign.music.presenter.IMusicMood;
 import net.sf.anathema.campaign.music.presenter.IMusicTheme;
-import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 
 import com.db4o.ObjectContainer;
 import com.db4o.types.Db4oList;
@@ -75,7 +75,7 @@ public final class DbMp3Track implements IMp3Track {
 
   @Override
   public String toString() {
-    return AnathemaStringUtilities.isNullOrEmptyTrimmed(getGivenName()) ? "Unknown" : getGivenName(); //$NON-NLS-1$
+    return StringUtilities.isNullOrTrimEmpty(getGivenName()) ? "Unknown" : getGivenName(); //$NON-NLS-1$
   }
 
   @Override
