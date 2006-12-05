@@ -1,5 +1,9 @@
 \chapter{Character Management}
 
+Character Management supports you in creating and maintaining your character. Among it's features are automatic calculation for point expenditures and generation of character sheets. 
+
+Players use character management to plan and plot their character's advance, while for storytellers it provides the means to be informed of the capabilities of player characters as well as non-player characters.
+
 \section{Character Types and Character Templates}
 Anathema distiguishes between character types and character templates. "`Character type"' denotes the general disposition of your character, her "`race"' if you will - whether she is a Lunar Exalt, a Solar, or a common mortal. The character template, on the other hand, describes the rules used for character creation and advancement (point costs, points granted and so on) and gives a general idea of her background.
 
@@ -7,8 +11,8 @@ Templates are tied to the character types. For many types, there is only a singl
 
 Since they deal with rules used for your character, the availability of a certain template also depends on the rules you want to use.
 
-\section{Character Creation}
-From the "`New"' dialog select "`Character"' to reach the template selection screen, shown in \ref{fig:TemplateSelection}
+\section{Creating a New Character}
+From the "`New"' dialog select "`Character"' to reach the template selection screen, depicted in figure \ref{fig:TemplateSelection}
 
 \begin{figure}
 	\centering
@@ -17,7 +21,7 @@ From the "`New"' dialog select "`Character"' to reach the template selection scr
 	\label{fig:TemplateSelection}
 \end{figure}
 
-There, select the character type you want to create and the ruleset used. The field on the right hand side will now show a list of character templates available for your selection. Choose one, and confirm your selection by clicking the "`Finish"' button below. Don't worry about further details for now, everything else is controlled in the window that is now opening.
+There, select the character type you want to create and the ruleset used. The field on the right hand side will now show a list of character templates available for your selection. Choose one, and confirm your selection by clicking the "`Finish"' button below. These are the only settings that cannot be changed at a later point. Everything else is controlled in the character tab that is now opening.
 
 \section{Common Controls}
 Some controls are shared by different screens. They are collectively explained here.
@@ -61,31 +65,34 @@ The top row allows for an entry to be specified and added by clicking the add-bu
 
 Most screens using this control will add some spice - Backgrounds, for example, allow for the value of the background to be changed, whereas a Lunar's animal form will ask you to not only specify a name, but also to give values for the form's strength and stamina.
 
-\subsection{Overview}
+\section{Overview}
 The Overview on the bottom left will keep track of choices made and points spent, automatically adjusting if you change things. 
 
-The overview knows two separate states, one for character creation and another for experienced characters. They will be covered in their relevant sections.
+The overview knows two separate states, one for character creation and another for experienced characters.
 
-\section{Navigating the character}
-Cascaded tabs are used for navigating the different aspects of your character. The left of the screen shows the general areas, each of which may contain sub-areas. Magic, for example is split in Charms, Combos and Sorcery, while Attributes are just that.
-
-We'll cover the different areas in the next few sections, for now, all you need to know is that you can navigate through both sets of tabs by left-clicking them.
-
-\section{Character Creation}
-
-\subsection{Overview during Character Creation}
+\subsection{Overview during character creation}
 While your character is being created, the overview shows the free dots and bonus points spent.
 
 There are entries for the common elements shared by every character type and an additional tracker for miscellaneous spendings and those unique to the template chosen.
 
 Colors and font show the state of the item displayed: Purple indicates that you still have free dots remaining, 
-while black means that everything allotted is spent. Items on which you spent bonus points are shown bold. 
+while black means that everything allotted is spent. Aspects on which you spent bonus points are shown bold. 
 
 All point spendings are calculated automatically using a best-build calculator, so you need to worry neither about the attribute group priorization nor about bonus point choices.
 
 The total bonus points spent are shown in the overview's last line and updated for every choice you make. If the total becomes red, you have overextended the allowed amount.
 
 Number in parentheses indicate that the characters absolute maximum has somehow been raised above the maximum.(eg. additional bonus points granted through flaws), while a second number delimited by a "+" notifies you of additional points to spend. Common examples are backgrounds like "`Sorcery"' and "`Necromancy"', which allow for additional spells to be learned.
+
+\subsection{Overview for experienced characters}
+For experienced characters, the overview is far simpler. Instead of several sections, it is now broken down into separate lines, each listing the amount of experience points spent on that aspect. As before, the miscelleneous entry covers for items specific to this template and experience points manually deducted. 
+
+The last line shows the XP total as well as the points already spent. 
+
+\section{Navigating the character}
+Cascaded tabs are used for navigating the different aspects of your character. The left of the screen shows the general areas, each of which may contain sub-areas. Magic, for example is split in Charms, Combos and Sorcery, while Attributes are just that.
+
+We'll cover the different areas in the next few sections, for now, all you need to know is that you can navigate through both sets of tabs by left-clicking them.
 
 \subsection{Abilities}
 \subsubsection{Craft}
@@ -94,7 +101,6 @@ While listed in its appropriate group on the main "`Abilities"' screen, handling
 Crafts are handled on a separate tabinside the Abilities window (shown in figure \ref{fig:crafts}), where you can specify which crafts your character knows, choosing from a range of pre-specified entries or adding your own. As such, the Craft skill in the main tab is locked from change. Its shown value is the maximum of all the subskills' values.
 
 The only setting allowed there is changing favored state of the ability. Setting the ability to "`favored"' might change the values of the crafts on the specialized tab: If your overall Craft trait is at 0 dots, the first craft specified will have it's value set to 1.
-
 
 \begin{figure}
 	\centering
@@ -115,7 +121,6 @@ You can choose from the pre-defined language families or enter barbarian languag
 
 \subsection{Magic}
 The Magic section allows you to choose Charms and Spells, and create Combos, each on a separate page. Some views, like Necromancy and the Lunars-only "`Beastform"' screen may not be available, depending on your character and ruleset.
-
 
 \subsubsection{Charms}The Charms screen is largely identical to the separate Cascade function described earlier. Obviously, there is no option to select the ruleset (it's pre-set to the one you chose at character creation) and not all charm types are available. Most characters are limited to their own type and Martial Arts, only Eclipse caste solars and Abyssal Moonshadows will see all the types. 
 
@@ -160,8 +165,7 @@ The Spell screen shows two lists of spells. The left-hand list contains the avai
 
 Spells can be learned by selecting them in the left list and clicking the green arrow. To unlearn a spell, select it, then click the red "-". 
 
-The filtering options above the lists only applies to the left-hand one.
-
+The filtering options above the lists only applies to the left-hand side.
 
 \subsubsection{Combos}
 Combo creation is similar to spell selection: Simply select one charm at a time from the box on the left, and click the green arrows to add it to the current combo, displayed on the right. 
@@ -194,7 +198,7 @@ The inventory will show items with all of their stats listed. The checkbox in fr
 \section{Experience}
 Once character creation is finished, the character can be further advanced within the program. To do so, you have to convert it to "`experienced mode"' using the "`Character"' menu.
  
-After converting, you'll notice a change in the Overview window - instead of listing details of character creation, it now shows your current XP breakdown - as well as a new Experience tab.
+After converting, you'll notice a change in the Overview window as well as a new Experience tab.
 
 Within, you'll find a table in which to enter the experience awards for your character.  To do so, add an entry by clicking the '+' button and adjust the number. You can also add a comment for later reference.
 
