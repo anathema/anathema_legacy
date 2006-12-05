@@ -46,7 +46,8 @@ public abstract class AbstractNamedTraitEncoder extends AbstractPdfEncoder imple
       int dotCount) {
     int height = drawSubsectionHeader(directContent, title, position, width);
     TraitInternationalizer internationalizer = new TraitInternationalizer(getResources());
-    for (IValuedTraitReference trait : traits) {
+    for (int index = 0; index < lineCount && index < traits.length; index++) {
+      IValuedTraitReference trait = traits[index];
       String name = internationalizer.getSheetName(trait);
       Position traitPosition = new Position(position.x, position.y - height);
       int value = trait.getValue();
