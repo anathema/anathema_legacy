@@ -19,7 +19,6 @@ public class AnathemaViewProperties {
     return resources.getString("MainFrame.Title"); //$NON-NLS-1$;
   }
 
-  @SuppressWarnings("deprecation")
   public Image getFrameIcon() {
     return resources.getImage(this.getClass(), "AnathemaIcon.png"); //$NON-NLS-1$
   }
@@ -35,5 +34,4 @@ public class AnathemaViewProperties {
   public String getHelpMenuName() {
     return resources.getString("AnathemaCore.HelpMenu.Name"); //$NON-NLS-1$;
   }
-
 }
