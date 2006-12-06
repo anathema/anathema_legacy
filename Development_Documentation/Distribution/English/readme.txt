@@ -40,7 +40,7 @@ Anathema is available free at http://sourceforge.net/projects/anathema
 
 Though the .zip-download covers all, we recommend using the OS-specific downloads, if available.
 
-A guide covering download, installation and launching is available from the project page.
+Guides covering installation and general use are available from the project page.
 
 ===------------------------------------------------------------------------------===
 		III - Launching
