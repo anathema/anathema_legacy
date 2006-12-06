@@ -284,7 +284,7 @@
         <condition>if (WinRegistry.keyExists(RegistryRoot.HKEY_CURRENT_USER, "Software\\Adobe\\Acrobat Reader")){
     return false;
 } 
-if (WinRegistry.getValue(RegistryRoot.HKEY_CLASSES_ROOT, ".pdf", "(Default)") != null){
+if (WinRegistry.getValue(RegistryRoot.HKEY_CLASSES_ROOT, ".pdf", "") != null){
     return false;
 }
 String[] openWithKeys  = WinRegistry.getSubKeyNames(RegistryRoot.HKEY_CLASSES_ROOT, ".pdf\\OpenWithList");
