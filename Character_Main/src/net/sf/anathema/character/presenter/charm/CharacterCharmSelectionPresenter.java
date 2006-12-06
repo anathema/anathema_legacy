@@ -11,6 +11,7 @@ import java.util.List;
 import javax.swing.ToolTipManager;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
+import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
@@ -167,7 +168,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   private IIdentificate[] getCurrentCharmTypes(boolean alienCharms) {
     List<IIdentificate> types = new ArrayList<IIdentificate>();
     Collections.addAll(types, getCharmConfiguration().getCharacterTypes(alienCharms));
-    types.add(MARTIAL_ARTS);
+    types.add(MartialArtsUtilities.MARTIAL_ARTS);
     IIdentificate[] currentCharmTypes = types.toArray(new IIdentificate[types.size()]);
     return currentCharmTypes;
   }

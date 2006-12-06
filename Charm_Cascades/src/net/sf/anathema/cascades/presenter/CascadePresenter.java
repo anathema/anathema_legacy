@@ -10,6 +10,7 @@ import java.util.Map;
 import net.sf.anathema.cascades.module.ICascadeViewFactory;
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
+import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.charm.CharmTree;
 import net.sf.anathema.character.generic.impl.magic.charm.MartialArtsCharmTree;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
@@ -56,7 +57,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     initCharacterTypeCharms(supportedCharmTypes, allCharmGroups);
     initMartialArts(allCharmGroups, CharacterType.SIDEREAL, ExaltedEdition.FirstEdition);
     initMartialArts(allCharmGroups, CharacterType.SOLAR, ExaltedEdition.SecondEdition);
-    supportedCharmTypes.add(MARTIAL_ARTS);
+    supportedCharmTypes.add(MartialArtsUtilities.MARTIAL_ARTS);
     createCharmTypeSelector(
         supportedCharmTypes.toArray(new IIdentificate[supportedCharmTypes.size()]),
         view,
@@ -94,7 +95,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     ICharacterTemplate template = getTemplateRegistry().getDefaultTemplate(type, rules);
     for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(rules)) {
       ICharmTree martialArtsTree = new MartialArtsCharmTree(template.getMagicTemplate().getCharmTemplate(), ruleSet);
-      getCharmTreeMap(ruleSet).put(MARTIAL_ARTS, martialArtsTree);
+      getCharmTreeMap(ruleSet).put(MartialArtsUtilities.MARTIAL_ARTS, martialArtsTree);
       allCharmGroups.addAll(Arrays.asList(martialArtsTree.getAllCharmGroups()));
     }
   }

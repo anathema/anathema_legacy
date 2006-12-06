@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.impl.template.magic;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
+import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -25,7 +25,7 @@ public class CharmSet implements ICharmSet {
     Map<IExaltedRuleSet, ICharm[]> charmMap = createCharmTreeMap(charmProvider, characterType, edition);
     Map<IExaltedRuleSet, ICharm[]> martialArtsCharmMap = createCharmTreeMap(
         charmProvider,
-        CharmCache.MARTIAL_ARTS_TYPE,
+        MartialArtsUtilities.MARTIAL_ARTS,
         edition);
     return new CharmSet(charmMap, martialArtsCharmMap);
   }

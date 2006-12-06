@@ -2,7 +2,6 @@ package net.sf.anathema.charmtree.presenter;
 
 import java.awt.Dimension;
 
-import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.charmtree.presenter.view.ICascadeSelectionView;
@@ -15,7 +14,6 @@ import net.sf.anathema.lib.util.IIdentificate;
 
 public class AbstractCascadeSelectionPresenter implements ICascadeSelectionPresenter {
 
-  public static final IIdentificate MARTIAL_ARTS = CharmCache.MARTIAL_ARTS_TYPE;
   private final ITemplateRegistry registry;
   private final IResources resources;
 
