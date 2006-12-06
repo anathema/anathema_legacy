@@ -1,5 +1,7 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
+import static net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities.MARTIAL_ARTS;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,14 +21,11 @@ import net.sf.anathema.lib.collection.Predicate;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.util.IIdentificate;
-import net.sf.anathema.lib.util.Identificate;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 
 public class CharmCache implements ICharmCache {
-
-  public static final Identificate MARTIAL_ARTS_TYPE = new Identificate("MartialArts"); //$NON-NLS-1$
 
   private static final CharmCache instance = new CharmCache();
   private final Map<IExaltedRuleSet, MultiEntryMap<IIdentificate, ICharm>> charmSetsByRuleSet = new HashMap<IExaltedRuleSet, MultiEntryMap<IIdentificate, ICharm>>();
@@ -109,8 +108,8 @@ public class CharmCache implements ICharmCache {
 
   public void registerCharmFile(String typeString, String ruleString, URL resource) {
     IIdentificate type;
-    if (typeString.equals(MARTIAL_ARTS_TYPE.getId())) {
-      type = MARTIAL_ARTS_TYPE;
+    if (typeString.equals(MARTIAL_ARTS.getId())) {
+      type = MARTIAL_ARTS;
     }
     else {
       type = CharacterType.getById(typeString);

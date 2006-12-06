@@ -8,7 +8,7 @@ import net.sf.anathema.lib.util.Identificate;
 
 public class MartialArtsUtilities {
 
-  private static final Identificate MARTIAL_ARTS = new Identificate(AbilityType.MartialArts.getId());
+  public static final Identificate MARTIAL_ARTS = new Identificate(AbilityType.MartialArts.name());
 
   // private static final Identificate MORTAL_LEVEL = new Identificate(MartialArtsLevel.Mortal.getId());
   // private static final Identificate TERRESTRIAL_LEVEL = new Identificate(MartialArtsLevel.Terrestrial.getId());
