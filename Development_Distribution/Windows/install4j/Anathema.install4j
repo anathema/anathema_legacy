@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<install4j version="4.0" transformSequenceNumber="1">
-  <directoryPresets config="../../build/anathema.exe" />
+<install4j version="4.0.3" transformSequenceNumber="1">
+  <directoryPresets config="../../build/files/anathema.exe" />
   <application name="Anathema" distributionSourceDir="" applicationId="1767-2668-0185-7732" mediaDir="." mediaFilePattern="${compiler:sys.shortName}_v${compiler:sys.version}_${compiler:sys.platform}" compression="6" lzmaCompression="false" pack200Compression="true" keepModificationTimes="false" shortName="Anathema" publisher="" publisherWeb="http://anathema.sf.net" version="1.0" allPathsRelative="true" backupOnSave="false" autoSave="true" convertDotsToUnderscores="false" macSignature="????" javaMinVersion="1.5" javaMaxVersion="" allowBetaVM="true">
     <languages skipLanguageSelection="false">
-      <principalLanguage id="en" customLocalizationFile="F:/Anathema/trunk/Development_Distribution/Windows/install4j/Installer.properties" />
+      <principalLanguage id="en" customLocalizationFile="./Installer.properties" />
       <additionalLanguages>
-        <language id="es" customLocalizationFile="F:/Anathema/trunk/Development_Distribution/Windows/install4j/Installer_es.properties" />
+        <language id="es" customLocalizationFile="./Installer_es.properties" />
       </additionalLanguages>
     </languages>
     <searchSequence>
@@ -34,7 +34,7 @@
       <fileEntry mountPoint="35" file="../../build/files/doc/spanish/FAQ_es.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="35" file="../../build/files/doc/spanish/readme_es.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="25" file="../../build/anathema.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="25" file="../../build/anathema.exe" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="25" file="../../build/files/anathema.exe" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="25" file="../../build/files/FAQ.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="25" file="../../build/files/license.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="25" file="../../build/files/readme.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
@@ -46,6 +46,7 @@
         <include all="false">
           <entry location="lib" launcher="false" />
           <entry location="plugins/core.jar" launcher="false" />
+          <entry location="doc" launcher="false" />
           <entry location="anathema.jar" launcher="false" />
           <entry location="anathema.exe" launcher="false" />
           <entry location="FAQ.txt" launcher="false" />
@@ -59,10 +60,16 @@
         <description>${i18n:Modules.CharacterManagement.Description}</description>
         <include all="false">
           <entry location="plugins/character.jar" launcher="false" />
+          <entry location="plugins/character_abyssal.jar" launcher="false" />
+          <entry location="plugins/character_db.jar" launcher="false" />
+          <entry location="plugins/character_lunar.jar" launcher="false" />
+          <entry location="plugins/character_mortal.jar" launcher="false" />
+          <entry location="plugins/character_sidereal.jar" launcher="false" />
+          <entry location="plugins/character_solar.jar" launcher="false" />
           <entry location="plugins/namegenerator.jar" launcher="false" />
         </include>
         <dependencies>
-          <component id="27" />
+          <component id="26" />
         </dependencies>
       </component>
       <component name="${i18n:Modules.CharmCascades.Name}" id="29" displayDescription="false" selected="true" mandatory="false" downloadable="false">
@@ -167,6 +174,73 @@
             </serializedBean>
             <condition />
           </action>
+          <action name="Move FAQ" id="568" beanClass="com.install4j.runtime.beans.actions.files.MoveFileAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.files.MoveFileAction">
+                  <void property="destinationFile">
+                    <object class="java.io.File">
+                      <string>FAQ.txt</string>
+                    </object>
+                  </void>
+                  <void property="overwriteMode">
+                    <object class="com.install4j.api.context.OverwriteMode" field="ALWAYS" />
+                  </void>
+                  <void property="sourceFile">
+                    <object class="java.io.File">
+                      <string>doc/spanish/FAQ_es.txt</string>
+                    </object>
+                  </void>
+                  <void property="uninstallMode">
+                    <object class="com.install4j.api.context.UninstallMode" field="ALWAYS" />
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition>context.getLanguageId().equalsIgnoreCase("es")</condition>
+          </action>
+          <action name="Move ReadMe" id="804" beanClass="com.install4j.runtime.beans.actions.files.MoveFileAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.files.MoveFileAction">
+                  <void property="destinationFile">
+                    <object class="java.io.File">
+                      <string>readme.txt</string>
+                    </object>
+                  </void>
+                  <void property="overwriteMode">
+                    <object class="com.install4j.api.context.OverwriteMode" field="ALWAYS" />
+                  </void>
+                  <void property="sourceFile">
+                    <object class="java.io.File">
+                      <string>doc/spanish/readme_es.txt</string>
+                    </object>
+                  </void>
+                  <void property="uninstallMode">
+                    <object class="com.install4j.api.context.UninstallMode" field="ALWAYS" />
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition>context.getLanguageId().equalsIgnoreCase("es")</condition>
+          </action>
+          <action name="Delete Documentation" id="805" beanClass="com.install4j.runtime.beans.actions.files.DeleteFileAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.files.DeleteFileAction">
+                  <void property="file">
+                    <object class="java.io.File">
+                      <string>doc</string>
+                    </object>
+                  </void>
+                  <void property="recurse">
+                    <boolean>true</boolean>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
           <action name="" id="8" beanClass="com.install4j.runtime.beans.actions.desktop.RegisterAddRemoveAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
@@ -191,56 +265,6 @@
             </serializedBean>
             <condition />
           </action>
-          <action name="" id="141" beanClass="com.install4j.runtime.beans.actions.files.CopyFileAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
-            <serializedBean>
-              <java class="java.beans.XMLDecoder">
-                <object class="com.install4j.runtime.beans.actions.files.CopyFileAction">
-                  <void property="destinationFile">
-                    <object class="java.io.File">
-                      <string>readme.txt</string>
-                    </object>
-                  </void>
-                  <void property="overwriteMode">
-                    <object class="com.install4j.api.context.OverwriteMode" field="ALWAYS" />
-                  </void>
-                  <void property="sourceFile">
-                    <object class="java.io.File">
-                      <string>doc/spanish/readme_es.txt</string>
-                    </object>
-                  </void>
-                  <void property="uninstallMode">
-                    <object class="com.install4j.api.context.UninstallMode" field="ALWAYS" />
-                  </void>
-                </object>
-              </java>
-            </serializedBean>
-            <condition>context.getLanguageId().equals("es")</condition>
-          </action>
-          <action name="" id="143" beanClass="com.install4j.runtime.beans.actions.files.CopyFileAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
-            <serializedBean>
-              <java class="java.beans.XMLDecoder">
-                <object class="com.install4j.runtime.beans.actions.files.CopyFileAction">
-                  <void property="destinationFile">
-                    <object class="java.io.File">
-                      <string>FAQ.txt</string>
-                    </object>
-                  </void>
-                  <void property="overwriteMode">
-                    <object class="com.install4j.api.context.OverwriteMode" field="ALWAYS" />
-                  </void>
-                  <void property="sourceFile">
-                    <object class="java.io.File">
-                      <string>doc/spanish/FAQ_es.txt</string>
-                    </object>
-                  </void>
-                  <void property="uninstallMode">
-                    <object class="com.install4j.api.context.UninstallMode" field="ALWAYS" />
-                  </void>
-                </object>
-              </java>
-            </serializedBean>
-            <condition>context.getLanguageId().equals("es")</condition>
-          </action>
         </actions>
         <formComponents />
       </screen>
@@ -257,7 +281,7 @@
             </object>
           </java>
         </serializedBean>
-        <condition>/*if (WinRegistry.keyExists(RegistryRoot.HKEY_CURRENT_USER, "Software\\Adobe\\Acrobat Reader")){
+        <condition>if (WinRegistry.keyExists(RegistryRoot.HKEY_CURRENT_USER, "Software\\Adobe\\Acrobat Reader")){
     return false;
 } 
 if (WinRegistry.getValue(RegistryRoot.HKEY_CLASSES_ROOT, ".pdf", "(Default)") != null){
@@ -266,7 +290,7 @@ if (WinRegistry.getValue(RegistryRoot.HKEY_CLASSES_ROOT, ".pdf", "(Default)") !=
 String[] openWithKeys  = WinRegistry.getSubKeyNames(RegistryRoot.HKEY_CLASSES_ROOT, ".pdf\\OpenWithList");
 if (openWithKeys != null &amp;&amp; openWithKeys.length &gt; 0){
     return false;
-}*/
+}
 return true;</condition>
         <validation />
         <actions />
@@ -307,61 +331,23 @@ return true;</condition>
             </serializedBean>
             <initScript />
           </formComponent>
-          <formComponent name="" id="384" beanClass="com.install4j.runtime.beans.formcomponents.LabelComponent" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
+          <formComponent name="" id="629" beanClass="com.install4j.runtime.beans.formcomponents.CheckboxComponent" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
             <serializedBean>
               <java class="java.beans.XMLDecoder">
-                <object class="com.install4j.runtime.beans.formcomponents.LabelComponent">
-                  <void property="labelColor">
-                    <object class="java.awt.Color">
-                      <int>0</int>
-                      <int>0</int>
-                      <int>255</int>
-                      <int>255</int>
-                    </object>
+                <object class="com.install4j.runtime.beans.formcomponents.CheckboxComponent">
+                  <void property="checkboxText">
+                    <string>${i18n:PDFCheck.Checkbox.Text}</string>
                   </void>
-                  <void property="labelText">
-                    <string>${i18n:PDFCheck.Label.Link}</string>
+                  <void property="initiallySelected">
+                    <boolean>true</boolean>
+                  </void>
+                  <void property="variableName">
+                    <string>PDFCheck.Download</string>
                   </void>
                 </object>
               </java>
             </serializedBean>
-            <initScript>configurationObject.addMouseListener(new java.awt.event.MouseAdapter(){
-    public void MouseClicked(){
-        try{
-       java.lang.Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler http://www.adobe.com/products/acrobat/readstep2.html");
-       } catch (IOException e){
-           //nothing to do
-       }
-    }
- });</initScript>
-          </formComponent>
-          <formComponent name="" id="443" beanClass="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
-            <serializedBean>
-              <java class="java.beans.XMLDecoder">
-                <object class="com.install4j.runtime.beans.formcomponents.MultilineLabelComponent">
-                  <void property="labelColor">
-                    <object class="java.awt.Color">
-                      <int>0</int>
-                      <int>0</int>
-                      <int>255</int>
-                      <int>255</int>
-                    </object>
-                  </void>
-                  <void property="labelText">
-                    <string>${i18n:PDFCheck.Label.Link}</string>
-                  </void>
-                </object>
-              </java>
-            </serializedBean>
-            <initScript>configurationObject.addMouseListener(new java.awt.event.MouseAdapter(){
-    public void MouseClicked(){
-        try{
-       java.lang.Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler http://www.adobe.com/products/acrobat/readstep2.html");
-       } catch (IOException e){
-           //nothing to do
-       }
-    }
- });</initScript>
+            <initScript />
           </formComponent>
         </formComponents>
       </screen>
@@ -379,7 +365,20 @@ return true;</condition>
         </serializedBean>
         <condition />
         <validation />
-        <actions />
+        <actions>
+          <action name="" id="628" beanClass="com.install4j.runtime.beans.actions.finish.ShowURLAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.finish.ShowURLAction">
+                  <void property="urlSpec">
+                    <string>http://www.adobe.com/products/acrobat/readstep2.html</string>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition>context.getBooleanVariable("PDFCheck.Download")</condition>
+          </action>
+        </actions>
         <formComponents />
       </screen>
     </installerScreens>
@@ -387,7 +386,13 @@ return true;</condition>
       <screen name="" id="10" beanClass="com.install4j.runtime.beans.screens.UninstallWelcomeScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
         <serializedBean>
           <java class="java.beans.XMLDecoder">
-            <object class="com.install4j.runtime.beans.screens.UninstallWelcomeScreen" />
+            <object class="com.install4j.runtime.beans.screens.UninstallWelcomeScreen">
+              <void property="bannerImageFile">
+                <object class="com.install4j.api.beans.ExternalFile">
+                  <string>./Anathema_Install.png</string>
+                </object>
+              </void>
+            </object>
           </java>
         </serializedBean>
         <condition />
@@ -429,7 +434,13 @@ return true;</condition>
       <screen name="" id="13" beanClass="com.install4j.runtime.beans.screens.UninstallSuccessScreen" rollbackBarrier="false" backButton="2" finishScreen="true">
         <serializedBean>
           <java class="java.beans.XMLDecoder">
-            <object class="com.install4j.runtime.beans.screens.UninstallSuccessScreen" />
+            <object class="com.install4j.runtime.beans.screens.UninstallSuccessScreen">
+              <void property="bannerImageFile">
+                <object class="com.install4j.api.beans.ExternalFile">
+                  <string>./Anathema_Install.png</string>
+                </object>
+              </void>
+            </object>
           </java>
         </serializedBean>
         <condition />
