@@ -16,11 +16,6 @@ public class BasicItemView extends AbstractItemView implements IBasicItemView {
     super(name, icon);
   }
 
-  @Override
-  public void dispose() {
-    // Nothing to do
-  }
-
   public IBasicItemDescriptionView addDescriptionView() {
     Ensure.ensureNull("Only one description view allowed.", descriptionView); //$NON-NLS-1$
     descriptionView = new BasicItemDescriptionView();
