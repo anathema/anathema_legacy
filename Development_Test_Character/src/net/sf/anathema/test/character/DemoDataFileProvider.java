@@ -9,7 +9,7 @@ public class DemoDataFileProvider implements IDataFileProvider {
   private final File folder;
 
   public DemoDataFileProvider() {
-   this.folder = new File(".");
+    this.folder = new File("."); //$NON-NLS-1$
   }
 
   public File getDataBaseDirectory(String subfolder) {

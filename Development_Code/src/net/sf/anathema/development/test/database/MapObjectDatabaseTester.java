@@ -27,6 +27,7 @@ public class MapObjectDatabaseTester {
     db.close();
   }
 
+  @SuppressWarnings("unused")
   private static void fillDatabase() {
     ObjectContainer db = Db4o.openFile("TestMapObject.yap");
     GenderMap map = new GenderMap();

@@ -37,7 +37,7 @@ public class CraftViewDemo extends SwingDemoCase {
   }
 
   private AggregatedTrait createCraft(DummyCharacterModelContext context) {
-    String[] unremovableTraits = new String[] { "Fire", "Ice" };
+    String[] unremovableTraits = new String[] { "Fire", "Ice" }; //$NON-NLS-1$ //$NON-NLS-2$
     ITraitTemplate template = SimpleTraitTemplate.createStaticLimitedTemplate(0, 7);
     ILimitationContext limitiation = context.getTraitContext().getLimitationContext();
     IFavorableTraitRules traitRules = new FavorableTraitRules(AbilityType.Craft, template, limitiation);

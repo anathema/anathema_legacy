@@ -27,6 +27,7 @@ public class ListObjectDatabaseTester {
     db.close();
   }
 
+  @SuppressWarnings("unused")
   private static void fillDatabase() {
     ObjectContainer db = Db4o.openFile("TestListObject.yap");
     GenderList list = new GenderList();

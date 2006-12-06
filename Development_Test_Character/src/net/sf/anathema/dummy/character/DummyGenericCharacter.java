@@ -136,10 +136,6 @@ public class DummyGenericCharacter implements IGenericCharacter {
         return null;
       }
 
-      public String getConceptText() {
-        return null;
-      }
-
       public ICasteType getCasteType() {
         return ICasteType.NULL_CASTE_TYPE;
       }

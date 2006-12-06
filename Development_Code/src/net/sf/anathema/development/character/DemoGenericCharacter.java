@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.sf.anathema.character.equipment.impl.character.model.EquipmentAdditonalModelTemplate;
+import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.ICharacterPoints;
@@ -79,7 +79,7 @@ public class DemoGenericCharacter implements IGenericCharacter {
   }
 
   public IAdditionalModel getAdditionalModel(String templateId) {
-    if (templateId.equals(EquipmentAdditonalModelTemplate.ID)) {
+    if (templateId.equals(IEquipmentAdditionalModelTemplate.ID)) {
       return equipmentModel;
     }
     if (templateId.equals(IntimaciesTemplate.ID)) {
