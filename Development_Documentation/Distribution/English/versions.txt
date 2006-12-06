@@ -13,9 +13,11 @@ http://anathema.sf.net
 -- Usability --
 + Toolbar with transparent icons (Proposed by Democritus)
 + The program now makes an informed guess at the standard printing error, namely the file being in use. (Requested by Peter Blake)
++ Windows Installer finally online
 * Some twiddling with the series view
 * Fixed layout issues in music view
 * Added intelligent enforcement of 1-dot-minimum for Craft subtraits.
+* "Character concept" moved to "Description" screen.
 
 -- Bugs Fixed --
 * Series should be loading once again (Thanks to Jontu Kontar)
@@ -27,7 +29,7 @@ http://anathema.sf.net
 * [1E] 'Unspeaking Aura of Dread' (Lunar) now has correct prerequisites.
 
 ===------------------------------------------------------------------------------===
-			Release 1.0x "Lap" (22/10/06)
+			Release 1.00 "Lap" (22/10/06)
 ===------------------------------------------------------------------------------===
 -- ATTENTION --
 Characters knowing 2e "Phoenix Renewal Tactic" or 1e "(Type) Exalt Ways" are in an illegal state
