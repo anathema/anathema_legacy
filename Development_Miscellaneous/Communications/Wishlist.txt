@@ -5,7 +5,6 @@ Step through the character creation process.
 Allow trivial input and saving of descriptions of Charms, etc. so people can put them in on their own (as White Wolf will surely not allow them to be distributed with the program).
 Include a toolkit like EdExalted did that allows you to add / modify just about anything with a database entry: items, Charms, Sorcery / Necromancy spells, Abilities, Merits & Flaws, etc.
 
-Power Combat / PG Updates / Corerules-only toggle. Preferably this would be a series of toggles, such as "use PG solar charms?" and "allow merits & flaws?", "use Power Combat weapon stats?", etc. so people can pick and choose.
 Allow any enforced rules options and caps to be toggled off if necessary. For example: allowing multiple specialties beyond 3 with a warning / toggle, etc.
 
 Possible GM Tools... quick NPC creations - maybe allowing GMs to create some basic templates for quick gen customization 
@@ -29,8 +28,4 @@ The Character Creation engine is presented with a number of options by the under
 
 Tree structure organisation for characters - Whilst I doubt that this feature would be all that useful to people playing a game, it would be useful for the GM to be able to create characters and group them. This way the character sheets can be organized into regions, circles, whatever. And why stop at just character sheets? Makes sense to me to include the option of images and text documents as well (hell, even sound files if you really want to be crazy). This'll make the program a lot more than just a character generator; it'll be an incredibly useful tool for the GM to record details of his game.
 
-Something that bugs me about EdExalted is that Artifacts with buffs don't get included when calculating totals. So it'd be groovy if the new one did. 
-
-On the topic of what we actually want to see in the generator, I think a lifepath thing like nargun mentioned in that thread a few days ago would be a cool option. You could set it up as a series of lists and menus, each with a random button. Even if people didn't use it for their PCs (I doubt I would) it would be fun for NPCs. It also wouldn't be hard for anyone who doesn't like lifepaths to just ignore the option, too. 
-
-That said, I imagine we could have Crafts, Linguistics and Specialties done on the fly (ie, a part of the character sheet because of a flag in the Skill's Subtype) - but some of my players are new to Exalted and don't know what all of the languages are, for instance, so I see a merit in doing it the 'slower' way. 
+On the topic of what we actually want to see in the generator, I think a lifepath thing like nargun mentioned in that thread a few days ago would be a cool option. You could set it up as a series of lists and menus, each with a random button. Even if people didn't use it for their PCs (I doubt I would) it would be fun for NPCs. It also wouldn't be hard for anyone who doesn't like lifepaths to just ignore the option, too.  
