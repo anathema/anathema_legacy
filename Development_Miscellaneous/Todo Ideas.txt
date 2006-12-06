@@ -15,13 +15,10 @@ Code
 	-Unique Charmgroups
 	
 Usability/L&F/UI
-	-Java Version Check
 	-Speichern der Session
 	-Leerer / Grauer / Colorierter Kreis vor der Charmbaumauswahl zur Anzeige des Status
 	-Menu Icons
-	-Alphabetische Ordnung für SpellView
 	-Doppelklick für Charaktererschaffung
-	-Change/Save-Before-Close-Überwachung
 
 Preferences
   	-Shortcut settings
@@ -67,5 +64,4 @@ Charms
 
 PRIO 3:
 - Concepts and Campaigns may have CharacterSettings
-- Change-Delta-Log 
-- Kapselung der Erzeugung von Cardview und Overview in eine Methode
+- Change-Delta-Log
