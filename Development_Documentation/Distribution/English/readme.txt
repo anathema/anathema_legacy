@@ -94,7 +94,6 @@ Thanks for helping us improve!
 Known Issues:
 ---------------------
 The "Merits and Flaws" tab changes size when items are selected.
-The "Music Database" layout is broken.
 
 A problem has been reported with saving equipment to the database,
 but it appears to be quite elusive. Please contact us should you encounter this bug.
