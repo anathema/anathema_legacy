@@ -1,11 +1,11 @@
-package net.sf.anathema.test.campaign.concrete.plot;
+package net.sf.anathema.test.campaign.dirty;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses( { PlotElementContainerTest.class })
+@SuiteClasses( { SeriesDirtyTest.class })
 public class AllTests {
   // nothing to do
 }
