@@ -13,4 +13,6 @@ public interface IEquipmentAdditionalModel extends IAdditionalModel, IEquipmentI
   public MagicalMaterial getMagicalMaterial(String templateId);
 
   public IEquipmentPrintModel getPrintModel();
+
+  public void refreshItems();
 }

@@ -91,6 +91,21 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
     modelChangeControl.fireChangedEvent();
   }
 
+  public void refreshItems() {
+    for (IEquipmentItem item : equipmentItems) {
+      if (canBeRemoved(item)) {
+        refreshItem(item);
+      }
+    }
+  }
+
+  private void refreshItem(IEquipmentItem item) {
+    String templateId = item.getTemplateId();
+    MagicalMaterial material = item.getMaterial();
+    removeItem(item);
+    addEquipmentObjectFor(templateId, material);
+  }
+
   public final void addEquipmentObjectListener(ICollectionListener<IEquipmentItem> listener) {
     equipmentItemControl.addListener(listener);
   }

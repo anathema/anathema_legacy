@@ -1,8 +1,8 @@
 package net.sf.anathema.character.equipment.impl.character.model;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ITransformer;
@@ -23,7 +23,7 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class EquipmentItem implements IEquipmentItem {
 
-  private final List<IEquipmentStats> printedStats = new ArrayList<IEquipmentStats>();
+  private final Set<IEquipmentStats> printedStats = new HashSet<IEquipmentStats>();
   private final ChangeControl changeControl = new ChangeControl();
   private final IEquipmentTemplate template;
   private final IExaltedRuleSet ruleSet;
@@ -80,6 +80,9 @@ public class EquipmentItem implements IEquipmentItem {
   }
 
   public void setPrintEnabled(IEquipmentStats stats, boolean enabled) {
+    if (isPrintEnabled(stats) == enabled) {
+      return;
+    }
     if (enabled) {
       printedStats.add(stats);
     }
@@ -97,10 +100,10 @@ public class EquipmentItem implements IEquipmentItem {
   public void setPrinted(String printedStatId) {
     for (IEquipmentStats stats : getStats()) {
       if (stats.getName().getId().equals(printedStatId)) {
-        printedStats.add(stats);
+        setPrintEnabled(stats, true);
+        return;
       }
     }
-    changeControl.fireChangedEvent();
   }
 
   public void addChangeListener(IChangeListener listener) {

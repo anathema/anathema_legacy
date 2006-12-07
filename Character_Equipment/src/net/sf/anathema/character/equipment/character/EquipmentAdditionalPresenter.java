@@ -50,8 +50,7 @@ public class EquipmentAdditionalPresenter implements IPresenter {
       }
 
       public void itemRemoved(IEquipmentItem item) {
-        IEquipmentObjectView objectView = viewsByItem.remove(item);
-        view.removeEquipmentObjectView(objectView);
+        removeItemView(item);
       }
     });
     IMagicalMaterialView magicMaterialView = view.getMagicMaterialView();
@@ -59,7 +58,7 @@ public class EquipmentAdditionalPresenter implements IPresenter {
     equipmentTemplatePickList.setCellRenderer(new EquipmentObjectCellRenderer());
     setObjects(equipmentTemplatePickList);
     view.setSelectButtonAction(createTemplateAddAction(equipmentTemplatePickList, magicMaterialView));
-    //    view.setRefreshButtonAction(createRefreshAction(equipmentTemplatePickList));
+    view.setRefreshButtonAction(createRefreshAction(equipmentTemplatePickList));
     equipmentTemplatePickList.addObjectSelectionChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String templateId) {
         MaterialComposition composition = templateId == null
@@ -88,6 +87,7 @@ public class EquipmentAdditionalPresenter implements IPresenter {
       @Override
       protected void execute(Component parentComponent) {
         setObjects(equipmentTemplatePickList);
+        model.refreshItems();
       }
     };
     refreshAction.setToolTipText(resources.getString("AdditionalTemplateView.RefreshDatabase.Action.Tooltip")); //$NON-NLS-1$
@@ -115,6 +115,11 @@ public class EquipmentAdditionalPresenter implements IPresenter {
     });
     addAction.setEnabled(equipmentTemplatePickList.isObjectSelected());
     return addAction;
+  }
+
+  private void removeItemView(IEquipmentItem item) {
+    IEquipmentObjectView objectView = viewsByItem.remove(item);
+    view.removeEquipmentObjectView(objectView);
   }
 
   private void initEquipmentObjectPresentation(final IEquipmentItem selectedObject) {

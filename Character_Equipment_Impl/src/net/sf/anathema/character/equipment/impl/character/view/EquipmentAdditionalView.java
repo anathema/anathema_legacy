@@ -37,7 +37,7 @@ public class EquipmentAdditionalView implements IEquipmentAdditionalView {
     JScrollPane itemScrollpane = new JScrollPane(equipmentPickList.getComponent());
     itemScrollpane.setPreferredSize(new Dimension(150, 250));
     buttonPanel.add(selectButton);
-    //    buttonPanel.add(refreshButton);
+    buttonPanel.add(refreshButton);
     taskPaneView.getComponent().setPreferredSize(new Dimension(150, 250));
 
     JPanel selectionPanel = new JPanel(new GridDialogLayout(1, false));
