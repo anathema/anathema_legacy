@@ -4,8 +4,8 @@ Version=2
 
 [SessionInfo]
 ActiveTab=0
-FrameCount=5
-ActiveFrame=4
+FrameCount=6
+ActiveFrame=2
 
 [Frame0]
 Columns=1
@@ -33,8 +33,8 @@ cxMin=10
 
 [Frame0_View0,0]
 Cursor.row=28
-Cursor.column=21
-TopSubLine=14
+Cursor.column=20
+TopSubLine=29
 
 [Frame1]
 Columns=1
@@ -68,8 +68,8 @@ TopSubLine=0
 [Frame2]
 Columns=1
 Rows=1
-Flags=0
-ShowCmd=1
+Flags=2
+ShowCmd=3
 MinPos.x=-1
 MinPos.y=-1
 MaxPos.x=-4
@@ -82,17 +82,17 @@ Class=CLatexEdit
 Document=CharmCascades.tex
 
 [Frame2_Row0]
-cyCur=304
+cyCur=512
 cyMin=10
 
 [Frame2_Col0]
-cxCur=935
+cxCur=1053
 cxMin=10
 
 [Frame2_View0,0]
-Cursor.row=18
-Cursor.column=0
-TopSubLine=15
+Cursor.row=32
+Cursor.column=139
+TopSubLine=19
 
 [Frame3]
 Columns=1
@@ -121,34 +121,63 @@ cxMin=10
 [Frame3_View0,0]
 Cursor.row=0
 Cursor.column=0
-TopSubLine=6
+TopSubLine=0
 
 [Frame4]
 Columns=1
 Rows=1
-Flags=2
-ShowCmd=3
+Flags=0
+ShowCmd=1
 MinPos.x=-1
 MinPos.y=-1
 MaxPos.x=-4
 MaxPos.y=-30
-NormalPos.left=88
-NormalPos.top=116
-NormalPos.right=1026
-NormalPos.bottom=471
+NormalPos.left=132
+NormalPos.top=174
+NormalPos.right=1074
+NormalPos.bottom=533
 Class=CLatexEdit
-Document=AnimaEffects.tex
+Document=Customizing.tex
 
 [Frame4_Row0]
-cyCur=512
+cyCur=304
 cyMin=10
 
 [Frame4_Col0]
-cxCur=1053
+cxCur=913
 cxMin=10
 
 [Frame4_View0,0]
-Cursor.row=9
-Cursor.column=45
+Cursor.row=0
+Cursor.column=0
 TopSubLine=0
+
+[Frame5]
+Columns=1
+Rows=1
+Flags=0
+ShowCmd=1
+MinPos.x=-1
+MinPos.y=-1
+MaxPos.x=-4
+MaxPos.y=-30
+NormalPos.left=0
+NormalPos.top=0
+NormalPos.right=942
+NormalPos.bottom=359
+Class=CLatexEdit
+Document=Character.tex
+
+[Frame5_Row0]
+cyCur=304
+cyMin=10
+
+[Frame5_Col0]
+cxCur=913
+cxMin=10
+
+[Frame5_View0,0]
+Cursor.row=125
+Cursor.column=93
+TopSubLine=160
 
