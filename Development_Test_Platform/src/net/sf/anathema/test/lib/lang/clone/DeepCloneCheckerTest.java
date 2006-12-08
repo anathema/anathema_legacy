@@ -1,9 +1,11 @@
 package net.sf.anathema.test.lib.lang.clone;
 
 import junit.framework.AssertionFailedError;
-import net.sf.anathema.lib.testing.BasicTestCase;
 
-public class DeepCloneCheckerTest extends BasicTestCase {
+import org.junit.Before;
+import org.junit.Test;
+
+public class DeepCloneCheckerTest {
 
   private DeepCloneChecker cloneChecker;
 
@@ -17,7 +19,7 @@ public class DeepCloneCheckerTest extends BasicTestCase {
     public TransientPrimitiveField(int value) {
       this.transientField = value;
     }
-    
+
     public int getTransientField() {
       return transientField;
     }
@@ -29,7 +31,7 @@ public class DeepCloneCheckerTest extends BasicTestCase {
     public PrimitiveIntegerField(int value) {
       this.field = value;
     }
-    
+
     public int getField() {
       return field;
     }
@@ -41,7 +43,7 @@ public class DeepCloneCheckerTest extends BasicTestCase {
     public ForeignReferenceField(Object field) {
       this.field = field;
     }
-    
+
     public Object getField() {
       return field;
     }
@@ -53,54 +55,36 @@ public class DeepCloneCheckerTest extends BasicTestCase {
     }
   }
 
-  @Override
-  protected void setUp() throws Exception {
-    super.setUp();
+  @Before
+  public void setUp() throws Exception {
     this.cloneChecker = new DeepCloneChecker();
   }
 
+  @Test
   public void testTransientField() throws Exception {
     cloneChecker.assertDeepClonedIgnoringTransientField(new TransientPrimitiveField(1), new TransientPrimitiveField(2));
   }
 
+  @Test
   public void testStaticField() throws Exception {
     cloneChecker.assertDeepClonedIgnoringTransientField(new StaticPrimitiveField(), new StaticPrimitiveField());
   }
 
+  @Test(expected = AssertionFailedError.class)
   public void testExceptionUnmatchedPrimitveFields() throws Exception {
-    try {
-      cloneChecker.assertDeepClonedIgnoringTransientField(new PrimitiveIntegerField(1), new PrimitiveIntegerField(2));
-      fail();
-    }
-    catch (AssertionFailedError ignored) {
-      //Nothing to do
-    }
+    cloneChecker.assertDeepClonedIgnoringTransientField(new PrimitiveIntegerField(1), new PrimitiveIntegerField(2));
   }
 
+  @Test(expected = AssertionFailedError.class)
   public void testExceptionUnmatchedUnclonedReferenceFields() throws Exception {
     PrimitiveIntegerField referenceField = new PrimitiveIntegerField(1);
-    boolean deepCloneCheckFailed = true;
-    try {
-      cloneChecker.assertDeepClonedIgnoringTransientField(
-          new ForeignReferenceField(referenceField),
-          new ForeignReferenceField(referenceField));
-      deepCloneCheckFailed = false;
-    }
-    catch (AssertionFailedError ignored) {
-      //Nothing to do
-    }
-    assertTrue(deepCloneCheckFailed);
+    cloneChecker.assertDeepClonedIgnoringTransientField(
+        new ForeignReferenceField(referenceField),
+        new ForeignReferenceField(referenceField));
   }
 
+  @Test(expected = AssertionFailedError.class)
   public void testExceptionOnUnmatchedSuperclassField() throws Exception {
-    boolean deepCloneCheckFailed = true;
-    try {
-      cloneChecker.assertDeepClonedIgnoringTransientField(new ExtendedClass(0), new ExtendedClass(1));
-      deepCloneCheckFailed = false;
-    }
-    catch (AssertionFailedError ignored) {
-      //Nothing to do
-    }
-    assertTrue(deepCloneCheckFailed);
+    cloneChecker.assertDeepClonedIgnoringTransientField(new ExtendedClass(0), new ExtendedClass(1));
   }
 }
