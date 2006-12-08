@@ -9,7 +9,5 @@ public interface IGridDialogPanel extends IView {
 
   public void add(IDialogComponent component);
 
-  public void addVerticalSpacing(int verticalSpacing);
-
   public JPanel getComponent();
 }
