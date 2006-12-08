@@ -10,11 +10,13 @@ import net.sf.anathema.lib.resources.IResources;
 public class CharmTypeEntryPageProperties {
 
   private final IResources resources;
-  private final IBasicMessage reflexiveMessage = new BasicMessage("Enter the Charm's step data.");
-  private final IBasicMessage simpleMessage = new BasicMessage("Enter the Charm's speed data.");
+  private final IBasicMessage reflexiveMessage;
+  private final IBasicMessage simpleMessage;
 
   public CharmTypeEntryPageProperties(IResources resources) {
     this.resources = resources;
+    reflexiveMessage = new BasicMessage("CharmEntry.CharmType.Message.Reflexive"); //$NON-NLS-1$
+    simpleMessage = new BasicMessage(resources.getString("CharmEntry.CharmType.Message.SimpleData")); //$NON-NLS-1$
   }
 
   public String getCharmTypeMessage() {
@@ -62,11 +64,11 @@ public class CharmTypeEntryPageProperties {
   }
 
   public ListCellRenderer getDefaultIdentificateRenderer() {
-    return new IdentificateSelectCellRenderer("", resources);
+    return new IdentificateSelectCellRenderer("", resources); //$NON-NLS-1$
   }
 
   public String getReflexiveSpecialsTitle() {
-    return "Step Data";
+    return resources.getString("CharmEntry.CharmType.ReflexiveSpecialsTitle"); //$NON-NLS-1$
   }
 
   public IBasicMessage getReflexiveSpecialsMessage() {
@@ -74,7 +76,7 @@ public class CharmTypeEntryPageProperties {
   }
 
   public String getSimpleSpecialsTitle() {
-    return "Speed Data";
+    return resources.getString("CharmEntry.CharmType.SimpleSpecialsTitle"); //$NON-NLS-1$
   }
 
   public IBasicMessage getSimpleSpecialsMessage() {
@@ -82,7 +84,7 @@ public class CharmTypeEntryPageProperties {
   }
 
   public String getTurnTypeLabel() {
-    return "Speed is measured in";
+    return resources.getString("CharmEntry.CharmType.TurnType"); //$NON-NLS-1$
   }
 
 }
