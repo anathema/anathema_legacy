@@ -1,17 +1,11 @@
-//Copyright (c) 2004 by disy Informationssysteme GmbH
 package net.sf.anathema.test.lib.gui.list.veto;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
 
-// NOT_PUBLISHED
+@RunWith(Suite.class)
+@SuiteClasses(VetoableListSelectionModelTest.class)
 public class AllTests {
-
-  public static Test suite() {
-    TestSuite suite = new TestSuite("Test for de.disy.lib.gui.list.test"); //$NON-NLS-1$
-    //$JUnit-BEGIN$
-    suite.addTestSuite(VetoableListSelectionModelTest.class);
-    //$JUnit-END$
-    return suite;
-  }
+  // nothing to do
 }

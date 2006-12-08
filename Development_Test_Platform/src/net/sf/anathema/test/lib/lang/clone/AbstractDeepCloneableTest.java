@@ -1,16 +1,19 @@
 package net.sf.anathema.test.lib.lang.clone;
 
 import net.sf.anathema.lib.lang.clone.ICloneable;
-import net.sf.anathema.lib.testing.BasicTestCase;
 
-public abstract class AbstractDeepCloneableTest extends BasicTestCase {
+import org.junit.Assert;
+import org.junit.Test;
 
-  protected abstract ICloneable<?> createObjectUnderTest();
+public abstract class AbstractDeepCloneableTest {
 
+  protected abstract ICloneable< ? > createObjectUnderTest();
+
+  @Test
   public final void testDeepClone() throws Exception {
-    ICloneable<?> cloneable = createObjectUnderTest();
+    ICloneable< ? > cloneable = createObjectUnderTest();
     Object clone = cloneable.clone();
     new DeepCloneChecker().assertDeepClonedIgnoringTransientField(cloneable, clone);
-    assertEquals(cloneable, clone);
+    Assert.assertEquals(cloneable, clone);
   }
 }

@@ -1,18 +1,21 @@
 package net.sf.anathema.test.lib;
 
-import org.easymock.EasyMock;
-
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
-import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.workflow.booleanvalue.BooleanValueModel;
 
-public class BooleanValueModelTest extends BasicTestCase {
+import org.easymock.EasyMock;
+import org.junit.Assert;
+import org.junit.Test;
 
+public class BooleanValueModelTest {
+
+  @Test
   public void testCreation() throws Exception {
     BooleanValueModel model = new BooleanValueModel(false);
-    assertFalse(model.getValue());
+    Assert.assertFalse(model.getValue());
   }
 
+  @Test
   public void testEventFired() throws Exception {
     BooleanValueModel model = new BooleanValueModel(false);
     IBooleanValueChangedListener listener = EasyMock.createMock(IBooleanValueChangedListener.class);

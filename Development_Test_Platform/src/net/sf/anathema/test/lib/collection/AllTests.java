@@ -1,16 +1,11 @@
 package net.sf.anathema.test.lib.collection;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
 
+@RunWith(Suite.class)
+@SuiteClasses( { ListOrderedSetTest.class, TableTest.class })
 public class AllTests {
-
-  public static Test suite() {
-    TestSuite suite = new TestSuite("Test for net.sf.anathema.lib.collection.test"); //$NON-NLS-1$
-    // $JUnit-BEGIN$
-    suite.addTestSuite(ListOrderedSetTest.class);
-    // $JUnit-END$
-    return suite;
-  }
-
+  // nothing to do
 }
