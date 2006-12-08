@@ -7,61 +7,69 @@ import javax.swing.UIManager;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 
 import net.sf.anathema.framework.environment.AnathemaEnvironment;
-import net.sf.anathema.lib.testing.BasicTestCase;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 
-public class AnathemaEnvironmentTest extends BasicTestCase {
+public class AnathemaEnvironmentTest {
 
   private DummyAnathemaPreferences preferences;
 
-  @Override
-  protected void setUp() throws Exception {
-    super.setUp();
+  @Before
+  public void setUp() throws Exception {
     System.setProperty("development", "true"); //$NON-NLS-1$//$NON-NLS-2$
     preferences = new DummyAnathemaPreferences();
   }
 
+  @Test
   public void testNotDevelopment() throws Exception {
     System.clearProperty("development"); //$NON-NLS-1$
-    assertFalse(AnathemaEnvironment.isDevelopment());
+    Assert.assertFalse(AnathemaEnvironment.isDevelopment());
   }
 
+  @Test
   public void testDevelopment() throws Exception {
-    assertTrue(AnathemaEnvironment.isDevelopment());
+    Assert.assertTrue(AnathemaEnvironment.isDevelopment());
   }
 
+  @Test
   public void testSetDefaultLocale() throws Exception {
     preferences.setLocale(Locale.GERMAN);
     AnathemaEnvironment.initLocale(preferences);
-    assertEquals(Locale.GERMAN, Locale.getDefault());
+    Assert.assertEquals(Locale.GERMAN, Locale.getDefault());
   }
 
+  @Test
   public void testTooltipTime() throws Exception {
     int preferedTimeInSeconds = 5;
     preferences.setToolTipTime(preferedTimeInSeconds);
     AnathemaEnvironment.initTooltipManager(preferences);
-    assertEquals(0, ToolTipManager.sharedInstance().getInitialDelay());
-    assertEquals(0, ToolTipManager.sharedInstance().getReshowDelay());
+    Assert.assertEquals(0, ToolTipManager.sharedInstance().getInitialDelay());
+    Assert.assertEquals(0, ToolTipManager.sharedInstance().getReshowDelay());
     int expectedTimeInMiliseconds = 5000;
-    assertEquals(expectedTimeInMiliseconds, ToolTipManager.sharedInstance().getDismissDelay());
+    Assert.assertEquals(expectedTimeInMiliseconds, ToolTipManager.sharedInstance().getDismissDelay());
   }
 
+  @Test
   public void testWindowsLookAndFeel() throws Exception {
     preferences.setForceMetalLookAndFeel(false);
     AnathemaEnvironment.initLookAndFeel(preferences);
-    assertEquals(WindowsLookAndFeel.class, UIManager.getLookAndFeel().getClass());
+    Assert.assertEquals(WindowsLookAndFeel.class, UIManager.getLookAndFeel().getClass());
   }
 
+  @Test
   public void testForceMetalLookAndFeel() throws Exception {
     preferences.setForceMetalLookAndFeel(true);
     AnathemaEnvironment.initLookAndFeel(preferences);
-    assertEquals(MetalLookAndFeel.class, UIManager.getLookAndFeel().getClass());
+    Assert.assertEquals(MetalLookAndFeel.class, UIManager.getLookAndFeel().getClass());
   }
 
-  @Override
-  protected void tearDown() throws Exception {
-    super.tearDown();
+  @After
+  public void tearDown() throws Exception {
     System.clearProperty("development"); //$NON-NLS-1$    
   }
 
