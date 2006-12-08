@@ -12,55 +12,45 @@ public class CharmTypeEntryPageProperties {
   private final IResources resources;
   private final IBasicMessage reflexiveMessage;
   private final IBasicMessage simpleMessage;
+  private final BasicMessage defaultMessage;
 
   public CharmTypeEntryPageProperties(IResources resources) {
     this.resources = resources;
     reflexiveMessage = new BasicMessage("CharmEntry.CharmType.Message.Reflexive"); //$NON-NLS-1$
     simpleMessage = new BasicMessage(resources.getString("CharmEntry.CharmType.Message.SimpleData")); //$NON-NLS-1$
-  }
-
-  public String getCharmTypeMessage() {
-    return "Select the Charm's Type";
+    defaultMessage = new BasicMessage(resources.getString("CharmEntry.CharmType.Message.Default")); //$NON-NLS-1$
   }
 
   public String getPageHeader() {
-    return "Charm Type";
+    return resources.getString("CharmEntry.CharmType.Title"); //$NON-NLS-1$
   }
 
   public String getSpecialModelLabel() {
-    return "Charm type is annotated";
+    return resources.getString("CharmEntry.CharmType.Annotated"); //$NON-NLS-1$
   }
 
   public String getTypeLabel() {
-    return "Charm Type";
+    return resources.getString("CharmEntry.CharmType.Type"); //$NON-NLS-1$
   }
 
   public String getDefaultStepLabel() {
-    return "Default/Offensive";
+    return resources.getString("CharmEntry.CharmType.ReflexiveDefaultStep"); //$NON-NLS-1$
   }
 
   public String getDefensiveStepLabel() {
-    return "Defensive";
-  }
-
-  public String getReflexiveStepLabel() {
-    return "Step (Reflexive)";
+    return resources.getString("CharmEntry.CharmType.ReflexiveDefenseStep"); //$NON-NLS-1$
   }
 
   public String getSplitStepLabel() {
-    return "Split Offense/Defense";
+    return resources.getString("CharmEntry.CharmType.ReflexiveSplitStep"); //$NON-NLS-1$
   }
 
   public String getDefenseLabel() {
-    return "DV";
-  }
-
-  public String getModifiersLabel() {
-    return "Modifiers (Simple)";
+    return resources.getString("CharmEntry.CharmType.SimpleDV"); //$NON-NLS-1$
   }
 
   public String getSpeedLabel() {
-    return "Speed";
+    return resources.getString("CharmEntry.CharmType.SimpleSpeed"); //$NON-NLS-1$;
   }
 
   public ListCellRenderer getDefaultIdentificateRenderer() {
@@ -87,4 +77,7 @@ public class CharmTypeEntryPageProperties {
     return resources.getString("CharmEntry.CharmType.TurnType"); //$NON-NLS-1$
   }
 
+  public IBasicMessage getCharmTypeDefaultMessage() {
+    return defaultMessage;
+  }
 }

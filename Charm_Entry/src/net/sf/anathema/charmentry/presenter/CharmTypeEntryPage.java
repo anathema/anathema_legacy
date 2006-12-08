@@ -1,6 +1,5 @@
 package net.sf.anathema.charmentry.presenter;
 
-import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
 import net.sf.anathema.character.generic.magic.charms.type.CharmType;
 import net.sf.anathema.charmentry.module.ICharmEntryViewFactory;
@@ -20,13 +19,11 @@ public class CharmTypeEntryPage extends AbstractAnathemaWizardPage {
   private final ICharmEntryModel model;
   private final ICharmEntryViewFactory viewFactory;
   private final CharmTypeEntryPageProperties properties;
-  private final IBasicMessage defaultMessage;
   private ICharmTypeEntryView view;
 
   public CharmTypeEntryPage(IResources resources, ICharmEntryModel model, ICharmEntryViewFactory viewFactory) {
     this.resources = resources;
     this.properties = new CharmTypeEntryPageProperties(resources);
-    this.defaultMessage = new BasicMessage(properties.getCharmTypeMessage());
     this.model = model;
     this.viewFactory = viewFactory;
   }
@@ -86,7 +83,7 @@ public class CharmTypeEntryPage extends AbstractAnathemaWizardPage {
   }
 
   public IBasicMessage getMessage() {
-    return defaultMessage;
+    return properties.getCharmTypeDefaultMessage();
   }
 
   public ICharmTypeEntryView getPageContent() {
