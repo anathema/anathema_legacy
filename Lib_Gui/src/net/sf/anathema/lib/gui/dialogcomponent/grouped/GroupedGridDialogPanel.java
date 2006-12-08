@@ -18,7 +18,7 @@ public class GroupedGridDialogPanel {
   public GroupedGridDialogPanel(int columnCount) {
     columns = new DefaultGridDialogPanel[columnCount];
     for (int i = 0; i < columns.length; i++) {
-      columns[i] = new DefaultGridDialogPanel(false);
+      columns[i] = new DefaultGridDialogPanel();
     }
   }
 

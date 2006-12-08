@@ -33,7 +33,7 @@ public class CharacterConceptAndRulesView extends
 
   private final JPanel conceptPanel = new JPanel(new GridDialogLayout(3, false));
   private final List<JPanel> buttonPanels = new ArrayList<JPanel>();
-  private final IGridDialogPanel rulesPanel = new DefaultGridDialogPanel(false);
+  private final IGridDialogPanel rulesPanel = new DefaultGridDialogPanel();
 
   @Override
   protected void createContent(JPanel panel, ICharacterConceptAndRulesViewProperties properties) {

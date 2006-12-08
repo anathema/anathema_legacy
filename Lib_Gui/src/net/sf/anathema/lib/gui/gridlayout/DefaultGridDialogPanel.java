@@ -13,10 +13,6 @@ public class DefaultGridDialogPanel implements IGridDialogPanel {
     panel = new GridDialogPanel();
   }
 
-  public DefaultGridDialogPanel(boolean equalWidthColumns) {
-    panel = new GridDialogPanel(equalWidthColumns);
-  }
-
   public void add(IDialogComponent component) {
     panel.add(component);
   }

@@ -26,7 +26,7 @@ import net.sf.anathema.lib.workflow.textualdescription.ITextView;
 import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
 public class VirtueFlawView implements IVirtueFlawView {
-  private final IGridDialogPanel virtueFlawPanel = new DefaultGridDialogPanel(false);
+  private final IGridDialogPanel virtueFlawPanel = new DefaultGridDialogPanel();
   private final List<ITextView> textViews = new ArrayList<ITextView>();
 
   public ITextView addTextView(final String labelText, int columns) {

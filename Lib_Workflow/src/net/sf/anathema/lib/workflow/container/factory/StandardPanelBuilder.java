@@ -25,7 +25,7 @@ import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
 public class StandardPanelBuilder {
 
-  private final IGridDialogPanel dialogPanel = new DefaultGridDialogPanel(false);
+  private final IGridDialogPanel dialogPanel = new DefaultGridDialogPanel();
 
   public void addDialogComponent(IDialogComponent component) {
     dialogPanel.add(component);

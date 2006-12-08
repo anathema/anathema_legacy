@@ -10,7 +10,7 @@ import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 public class EssencePanelView {
 
-  private final IGridDialogPanel essencePanel = new DefaultGridDialogPanel(false);
+  private final IGridDialogPanel essencePanel = new DefaultGridDialogPanel();
   private final IIntValueDisplayFactory guiConfiguration;
 
   public EssencePanelView(IIntValueDisplayFactory guiConfiguration) {

@@ -32,9 +32,9 @@ import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 public class BasicAdvantageView extends AbstractInitializableContentView<IAdvantageViewProperties> implements
     IBasicAdvantageView {
 
-  private final IGridDialogPanel virtuePanel = new DefaultGridDialogPanel(false);
-  private final IGridDialogPanel willpowerPanel = new DefaultGridDialogPanel(false);
-  private final IGridDialogPanel backgroundSelectionPanel = new DefaultGridDialogPanel(false);
+  private final IGridDialogPanel virtuePanel = new DefaultGridDialogPanel();
+  private final IGridDialogPanel willpowerPanel = new DefaultGridDialogPanel();
+  private final IGridDialogPanel backgroundSelectionPanel = new DefaultGridDialogPanel();
   private final JPanel backgroundDisplayPanel = new JPanel(new GridDialogLayout(2, false));
   private final EssencePanelView essencePanelView;
   private final IIntValueDisplayFactory guiConfiguration;
