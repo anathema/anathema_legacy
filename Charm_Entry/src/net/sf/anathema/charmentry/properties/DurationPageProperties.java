@@ -7,10 +7,11 @@ import net.sf.anathema.lib.resources.IResources;
 public class DurationPageProperties {
 
   private final IResources resources;
-  private final IBasicMessage defaultMessage = new BasicMessage("Enter the Charm's Duration.");
+  private final IBasicMessage defaultMessage;
 
   public DurationPageProperties(IResources resources) {
     this.resources = resources;
+    defaultMessage = new BasicMessage(resources.getString("CharmEntry.Duration.Message.Default")); //$NON-NLS-1$
   }
 
   public IBasicMessage getBasicMessage() {
@@ -18,42 +19,42 @@ public class DurationPageProperties {
   }
 
   public String getDurationPageTitle() {
-    return "Duration";
+    return resources.getString("CharmEntry.Duration.Title"); //$NON-NLS-1$
   }
 
   public String getDurationLabel() {
-    return "Duration";
+    return resources.getString("CharmEntry.Duration.Duration"); //$NON-NLS-1$
   }
 
   public String getInstantString() {
-    return "Instant";
+    return resources.getString("CharmEntry.Duration.Instant"); //$NON-NLS-1$
   }
 
   public String getSimpleDurationString() {
-    return "Simple duration:";
+    return resources.getString("CharmEntry.Duration.Simple"); //$NON-NLS-1$
   }
 
   public String getUntilString() {
-    return "Until";
+    return resources.getString("CharmEntry.Duration.Until"); //$NON-NLS-1$
   }
 
   public String getQualifiedAmountDurationString() {
-    return "Qualified amount duration";
+    return resources.getString("CharmEntry.Duration.QualifiedAmount"); //$NON-NLS-1$;
   }
 
   public String getAbilityString() {
-    return "Ability";
+    return resources.getString("CharmEntry.Duration.Ability"); //$NON-NLS-1$
   }
 
   public String getAttributeString() {
-    return "Attribute";
+    return resources.getString("CharmEntry.Duration.Attribute"); //$NON-NLS-1$
   }
 
   public String getVirtueString() {
-    return "Virtue";
+    return resources.getString("CharmEntry.Duration.Virtue"); //$NON-NLS-1$
   }
 
   public String getOtherString() {
-    return "Other";
+    return resources.getString("CharmEntry.Duration.Other"); //$NON-NLS-1$
   }
 }

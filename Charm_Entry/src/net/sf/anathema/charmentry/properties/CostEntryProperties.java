@@ -7,10 +7,11 @@ import net.sf.anathema.lib.resources.IResources;
 public class CostEntryProperties {
 
   private final IResources resources;
-  private final IBasicMessage defaultMessage = new BasicMessage("Enter the Charm's cost, if any.");
+  private final IBasicMessage defaultMessage;
 
   public CostEntryProperties(IResources resources) {
     this.resources = resources;
+    defaultMessage = new BasicMessage(resources.getString("CharmEntry.Cost.Message.Default")); //$NON-NLS-1$
   }
 
   public IBasicMessage getCostMessage() {
@@ -18,30 +19,30 @@ public class CostEntryProperties {
   }
 
   public String getCostTitle() {
-    return "Cost";
+    return resources.getString("CharmEntry.Cost.Title"); //$NON-NLS-1$
   }
 
   public String getCostLabel() {
-    return "Cost";
+    return resources.getString("CharmEntry.Cost.Cost"); //$NON-NLS-1$
   }
 
   public String getTextLabel() {
-    return "Additional Text";
+    return resources.getString("CharmEntry.Cost.AdditionalText"); //$NON-NLS-1$
   }
 
   public String getEssenceLabel() {
-    return "Essence";
+    return resources.getString("CharmEntry.Cost.Essence"); //$NON-NLS-1$;
   }
 
   public String getExperienceLabel() {
-    return "Experience Points";
+    return resources.getString("CharmEntry.Cost.XP"); //$NON-NLS-1$
   }
 
   public String getHealthLabel() {
-    return "Health Levels";
+    return resources.getString("CharmEntry.Cost.HL"); //$NON-NLS-1$
   }
 
   public String getWillpowerLabel() {
-    return "Willpower";
+    return resources.getString("CharmEntry.Cost.WP"); //$NON-NLS-1$
   }
 }
