@@ -7,10 +7,11 @@ import net.sf.anathema.lib.resources.IResources;
 public class PrerequisiteCharmsPageProperties implements IPrerequisiteCharmsPageProperties {
 
   private final IResources resources;
-  private final IBasicMessage defaultMessage = new BasicMessage("Please select the prerequisite Charms, if any.");
+  private final IBasicMessage defaultMessage;
 
   public PrerequisiteCharmsPageProperties(IResources resources) {
     this.resources = resources;
+    defaultMessage = new BasicMessage(resources.getString("CharmEntry.PrerequisiteCharms.Message.Default")); //$NON-NLS-1$
   }
 
   public IBasicMessage getDefaultMessage() {
@@ -18,10 +19,10 @@ public class PrerequisiteCharmsPageProperties implements IPrerequisiteCharmsPage
   }
 
   public String getPageTitle() {
-    return "Prerequisite Charms";
+    return resources.getString("CharmEntry.PrerequisiteCharms.Title"); //$NON-NLS-1$
   }
 
   public String getExcellencyString() {
-    return "Requires \"Any Excellency\"";
+    return resources.getString("CharmEntry.PrerequisiteCharms.AnyExcellency"); //$NON-NLS-1$ 
   }
 }
