@@ -1,16 +1,11 @@
 package net.sf.anathema.test.platform;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
 
+@RunWith(Suite.class)
+@SuiteClasses( { net.sf.anathema.test.platform.itemdata.AllTests.class })
 public class AllPlatformTests {
-
-  public static Test suite() {
-    TestSuite suite = new TestSuite("Test for net.sf.anathema.character.abyssal.suite"); //$NON-NLS-1$
-    suite.addTest(net.sf.anathema.test.platform.itemdata.AllTests.suite());
-    //$JUnit-BEGIN$
-
-    //$JUnit-END$
-    return suite;
-  }
+  // nothing to do
 }
