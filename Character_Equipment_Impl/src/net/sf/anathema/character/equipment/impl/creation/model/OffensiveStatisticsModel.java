@@ -6,7 +6,7 @@ import net.sf.anathema.lib.data.Range;
 import net.sf.anathema.lib.workflow.intvalue.IIntValueModel;
 import net.sf.anathema.lib.workflow.intvalue.RangedIntValueModel;
 
-public class OffensiveStatisticsModel extends EquipmentStatisticsModel implements IOffensiveStatisticsModel {
+public abstract class OffensiveStatisticsModel extends EquipmentStatisticsModel implements IOffensiveStatisticsModel {
 
   private final IIntValueModel speedModel;
   private final IIntValueModel accuracyModel = new RangedIntValueModel(0);

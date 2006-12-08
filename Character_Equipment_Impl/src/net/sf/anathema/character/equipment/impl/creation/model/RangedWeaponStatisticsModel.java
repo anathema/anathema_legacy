@@ -16,4 +16,8 @@ public class RangedWeaponStatisticsModel extends OffensiveStatisticsModel implem
   public IIntValueModel getRangeModel() {
     return rangeModel;
   }
+
+  public boolean supportsRate() {
+    return true;
+  }
 }

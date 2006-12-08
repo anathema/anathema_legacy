@@ -29,7 +29,7 @@ public class EquipmentStatisticsCreationModel implements IEquipmentStatisticsCre
 
   public EquipmentStatisticsCreationModel(String[] existingNames, IExaltedRuleSet ruleset) {
     this.existingNames = existingNames;
-    this.closeCombatStatisticsModel = new CloseCombatStatsticsModel(createOffensiveSpeedModel(ruleset));
+    this.closeCombatStatisticsModel = new CloseCombatStatsticsModel(createOffensiveSpeedModel(ruleset), ruleset);
     this.rangedWeaponStatisticsModel = new RangedWeaponStatisticsModel(createOffensiveSpeedModel(ruleset));
   }
 

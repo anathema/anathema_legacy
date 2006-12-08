@@ -184,7 +184,7 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
     stats.setAccuracy(model.getAccuracyModel().getValue());
     stats.setDamage(model.getWeaponDamageModel().getValue());
     stats.setDamageType(model.getWeaponDamageModel().getHealthType());
-    stats.setRate(model.getRateModel().getValue());
+    stats.setRate(model.supportsRate() ? model.getRateModel().getValue() : null);
     stats.setSpeed(model.getSpeedModel().getValue());
     for (IWeaponTag tag : tagsModel.getSelectedTags()) {
       stats.addTag(tag);

@@ -2,6 +2,8 @@ package net.sf.anathema.character.equipment.creation.presenter.stats;
 
 import java.awt.Component;
 
+import javax.swing.JPanel;
+
 import net.sf.anathema.character.equipment.creation.model.stats.IEquipmentStatisticsCreationModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IOffensiveStatisticsModel;
 import net.sf.anathema.character.equipment.creation.model.stats.IWeaponDamageModel;
@@ -24,17 +26,26 @@ public abstract class AbstractOffensiveStatisticsPresenterPage<O extends IOffens
   @Override
   protected final void addAdditionalContent() {
     addIndividualRows();
-    initAccuracyAndRateRow();
+    initAccuracyAndRateRow(getPageModel().supportsRate());
     initWeaponDamageRow(getPageModel().getWeaponDamageModel());
   }
 
   protected abstract void addIndividualRows();
 
-  private void initAccuracyAndRateRow() {
-    String[] labels = new String[] { getProperties().getAccuracyLabel(), getProperties().getRateLabel() };
+  protected void initAccuracyAndRateRow(boolean showRate) {
+    Component secondComponent;
+    String[] labels;
+    if (showRate) {
+      secondComponent = initIntegerSpinner(getPageModel().getRateModel()).getComponent();
+      labels = new String[] { getProperties().getAccuracyLabel(), getProperties().getRateLabel() };
+    }
+    else {
+      secondComponent = new JPanel();
+      labels = new String[] { getProperties().getAccuracyLabel(), "" }; //$NON-NLS-1$
+    }
     addLabelledComponentRow(labels, new Component[] {
         initIntegerSpinner(getPageModel().getAccuracyModel()).getComponent(),
-        initIntegerSpinner(getPageModel().getRateModel()).getComponent() });
+        secondComponent });
   }
 
   private void initWeaponDamageRow(final IWeaponDamageModel damageModel) {
