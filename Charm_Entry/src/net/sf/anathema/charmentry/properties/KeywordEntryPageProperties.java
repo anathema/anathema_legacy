@@ -12,12 +12,13 @@ import net.sf.anathema.lib.resources.IResources;
 public class KeywordEntryPageProperties implements IKeywordEntryPageProperties {
 
   private final IResources resources;
-  private final IBasicMessage defaultMessage = new BasicMessage("Select Keywords, if any.");
+  private final IBasicMessage defaultMessage;
   private final BasicUi ui;
 
   public KeywordEntryPageProperties(IResources resources) {
     this.resources = resources;
     this.ui = new BasicUi(resources);
+    defaultMessage = new BasicMessage(resources.getString("CharmEntry.Keywords.Message.Default")); //$NON-NLS-1$
   }
 
   public IBasicMessage getDefaultMessage() {
@@ -25,7 +26,7 @@ public class KeywordEntryPageProperties implements IKeywordEntryPageProperties {
   }
 
   public String getPageTitle() {
-    return "Keywords";
+    return resources.getString("CharmEntry.Keywords.Title"); //$NON-NLS-1$
   }
 
   public Icon getAddIcon() {
@@ -33,7 +34,7 @@ public class KeywordEntryPageProperties implements IKeywordEntryPageProperties {
   }
 
   public String getKeywordLabel() {
-    return "Keyword";
+    return resources.getString("CharmEntry.Keywords.Keyword"); //$NON-NLS-1$
   }
 
   public Icon getRemoveIcon() {
