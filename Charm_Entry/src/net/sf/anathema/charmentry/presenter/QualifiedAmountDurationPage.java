@@ -66,22 +66,22 @@ public class QualifiedAmountDurationPage extends AbstractAnathemaWizardPage {
       }
     });
     final ObjectSelectionView<ITraitType> abilityBox = view.addRadioButtonComboBox(
-        "Ability",
+        properties.getAbilityString(),
         new IdentificateListCellRenderer(resources),
         AbilityType.values());
     initComboBoxListening(abilityBox);
     final ObjectSelectionView<ITraitType> attributeBox = view.addRadioButtonComboBox(
-        "Attribute",
+        properties.getAttributeString(),
         new IdentificateListCellRenderer(resources),
         AttributeType.values());
     initComboBoxListening(attributeBox);
     final ObjectSelectionView<ITraitType> virtueBox = view.addRadioButtonComboBox(
-        "Virtue",
+        properties.getVirtueString(),
         new IdentificateListCellRenderer(resources),
         VirtueType.values());
     initComboBoxListening(virtueBox);
     final ObjectSelectionView<ITraitType> otherBox = view.addRadioButtonComboBox(
-        "Other",
+        properties.getOtherString(),
         new IdentificateListCellRenderer(resources),
         OtherTraitType.values());
     initComboBoxListening(otherBox);

@@ -26,8 +26,7 @@ public class ShowCharmEntryAction extends SmartAction {
   private final IResources resources;
 
   public static Action createMenuAction(IResources resources) {
-    SmartAction action = new ShowCharmEntryAction(resources.getString("CharmEntry.Show.Name"), resources); //$NON-NLS-1$
-    return action;
+    return new ShowCharmEntryAction(resources.getString("CharmEntry.Show.Name"), resources); //$NON-NLS-1$
   }
 
   private ShowCharmEntryAction(String string, IResources resources) {
@@ -67,7 +66,7 @@ public class ShowCharmEntryAction extends SmartAction {
       charmEntryPropertiesPersister.writeDurationProperty(resources, coreData.getDuration());
     }
     catch (Exception e) {
-      Message message = new Message("Error occurred while entering charm.", e);
+      Message message = new Message("Error occurred while entering charm.", e); //$NON-NLS-1$
       MessageUtilities.indicateMessage(ShowCharmEntryAction.class, parentComponent, message);
     }
     finally {

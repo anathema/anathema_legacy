@@ -24,4 +24,36 @@ public class DurationPageProperties {
   public String getDurationLabel() {
     return "Duration";
   }
+
+  public String getInstantString() {
+    return "Instant";
+  }
+
+  public String getSimpleDurationString() {
+    return "Simple duration:";
+  }
+
+  public String getUntilString() {
+    return "Until";
+  }
+
+  public String getQualifiedAmountDurationString() {
+    return "Qualified amount duration";
+  }
+
+  public String getAbilityString() {
+    return "Ability";
+  }
+
+  public String getAttributeString() {
+    return "Attribute";
+  }
+
+  public String getVirtueString() {
+    return "Virtue";
+  }
+
+  public String getOtherString() {
+    return "Other";
+  }
 }

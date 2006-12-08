@@ -7,29 +7,33 @@ import net.sf.anathema.lib.resources.IResources;
 public class CharmEntryProperties {
 
   private final IResources resources;
-  private final BasicMessage nameUndefinedMessage = new BasicMessage("Please enter the Charm's name.");
-  private final BasicMessage editionUndefinedMessage = new BasicMessage("Please select the target Edition.");
-  private final BasicMessage typeUndefinedMessage = new BasicMessage("Please select the target character type.");
-  private final IBasicMessage basicDataMessage = new BasicMessage("Enter basic data");
+  private final BasicMessage nameUndefinedMessage;
+  private final BasicMessage editionUndefinedMessage;
+  private final BasicMessage typeUndefinedMessage;
+  private final IBasicMessage basicDataMessage;
 
   public CharmEntryProperties(IResources resources) {
     this.resources = resources;
+    nameUndefinedMessage = new BasicMessage(resources.getString("CharmEntry.HeaderData.Message.UndefinedName")); //$NON-NLS-1$
+    editionUndefinedMessage = new BasicMessage(resources.getString("CharmEntry.HeaderData.Message.UndefinedEdition")); //$NON-NLS-1$
+    typeUndefinedMessage = new BasicMessage(resources.getString("CharmEntry.HeaderData.Message.UndefinedType")); //$NON-NLS-1$
+    basicDataMessage = new BasicMessage(resources.getString("CharmEntry.HeaderData.Message.EnterData")); //$NON-NLS-1$
   }
 
   public String getHeaderDataTitle() {
-    return "Header Data";
+    return resources.getString("CharmEntry.HeaderData.Title"); //$NON-NLS-1$
   }
 
   public String getCharacterTypeLabel() {
-    return "Character Type";
+    return resources.getString("CharmEntry.HeaderData.CharacterType"); //$NON-NLS-1$
   }
 
   public String getCharmNameLabel() {
-    return "Charm Name";
+    return resources.getString("CharmEntry.HeaderData.CharmName"); //$NON-NLS-1$
   }
 
   public String getEditionLabel() {
-    return "Edition";
+    return resources.getString("CharmEntry.HeaderData.Edition"); //$NON-NLS-1$
   }
 
   public IBasicMessage getHeaderDataMessage() {
@@ -37,11 +41,11 @@ public class CharmEntryProperties {
   }
 
   public String getBookLabel() {
-    return "Book";
+    return resources.getString("CharmEntry.HeaderData.Book"); //$NON-NLS-1$
   }
 
   public String getPageLabel() {
-    return "Page";
+    return resources.getString("CharmEntry.HeaderData.Page"); //$NON-NLS-1$
   }
 
   public IBasicMessage getUndefinedEditionMessage() {

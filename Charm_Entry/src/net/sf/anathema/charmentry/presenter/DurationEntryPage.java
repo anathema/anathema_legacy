@@ -56,20 +56,20 @@ public class DurationEntryPage extends AbstractAnathemaWizardPage {
   @Override
   protected void initPageContent() {
     this.view = viewFactory.createDurationView();
-    final JRadioButton instantButton = view.addRadioButton("Instant");
-    final ITextView simpleDurationView = view.addRadioButtonTextField("Simple duration:");
+    final JRadioButton instantButton = view.addRadioButton(properties.getInstantString());
+    final ITextView simpleDurationView = view.addRadioButtonTextField(properties.getSimpleDurationString());
     simpleDurationView.addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         getPageModel().setSimpleDuration(newValue);
       }
     });
-    final ITextView untilView = view.addRadioButtonTextField("Until");
+    final ITextView untilView = view.addRadioButtonTextField(properties.getUntilString());
     untilView.addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
         getPageModel().setUntilDuration(newValue);
       }
     });
-    final JRadioButton amountButton = view.addRadioButton("Qualified amount duration");
+    final JRadioButton amountButton = view.addRadioButton(properties.getQualifiedAmountDurationString());
     view.addTypeChangeListener(new IChangeListener() {
       public void changeOccured() {
         qualifiedAmountDuration = amountButton.isSelected();

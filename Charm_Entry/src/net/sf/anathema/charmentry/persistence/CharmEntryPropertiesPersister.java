@@ -45,41 +45,41 @@ public class CharmEntryPropertiesPersister {
   }
 
   public void writeDurationProperty(IResources resources, IDuration duration) throws IOException {
-    String fileName = "../Character_Main/resources/language/CharmDuration.properties";
+    String fileName = "../Character_Main/resources/language/CharmDuration.properties"; //$NON-NLS-1$
     File file = new File(fileName);
     BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
     writer.newLine();
     String writeString;
     if (duration instanceof UntilEventDuration) {
       String event = ((UntilEventDuration) duration).getEvent();
-      writeString = createCamelCase("Charm.Event.", event) + "=" + event;
+      writeString = createCamelCase("Charm.Event.", event) + "=" + event; //$NON-NLS-1$ //$NON-NLS-2$
     }
     else if (duration instanceof SimpleDuration) {
       String text = ((SimpleDuration) duration).getText();
-      writeString = createCamelCase("Charm.Duration.", text) + "=" + text;
+      writeString = createCamelCase("Charm.Duration.", text) + "=" + text; //$NON-NLS-1$ //$NON-NLS-2$
     }
     else if (duration instanceof QualifiedAmountDuration) {
       QualifiedAmountDuration amountDuration = (QualifiedAmountDuration) duration;
       String amount = amountDuration.getAmount();
       String unit = amountDuration.getUnit();
-      writeString = createCamelCase("Charm.Unit.", unit);
+      writeString = createCamelCase("Charm.Unit.", unit); //$NON-NLS-1$
       try {
         int intAmount = Integer.parseInt(amount);
-        String amountString = "Charm.Amount." + intAmount;
+        String amountString = "Charm.Amount." + intAmount; //$NON-NLS-1$
         if (!resources.supportsKey(amountString)) {
-          writer.write(amountString + " = " + intAmount);
+          writer.write(amountString + " = " + intAmount); //$NON-NLS-1$
         }
         if (intAmount == 1) {
-          writeString += ".Singular";
+          writeString += ".Singular"; //$NON-NLS-1$
         }
       }
       catch (NumberFormatException e) {
-        writeString += ".Plural"; //$NON-NLS-2$
+        writeString += ".Plural"; //$NON-NLS-1$
       }
-      writeString += "=" + unit;
+      writeString += "=" + unit; //$NON-NLS-1$
     }
     else {
-      throw new UnreachableCodeReachedException("Unknown Duration Type");
+      throw new UnreachableCodeReachedException("Unknown Duration Type"); //$NON-NLS-1$
     }
     if (resources.supportsKey(writeString)) {
       return;
@@ -91,7 +91,7 @@ public class CharmEntryPropertiesPersister {
 
   private String createCamelCase(String prefix, String string) {
     StringBuilder writeString = new StringBuilder(prefix);
-    String[] split = string.split(" ");
+    String[] split = string.split(" "); //$NON-NLS-1$
     for (String splitPart : split) {
       writeString.append(String.valueOf(splitPart.charAt(0)).toUpperCase());
       writeString.append(splitPart.substring(1));

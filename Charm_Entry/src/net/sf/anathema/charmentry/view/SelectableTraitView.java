@@ -19,12 +19,11 @@ import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import net.sf.anathema.lib.util.IIdentificate;
-import net.sf.anathema.lib.util.Identificate;
 
 public class SelectableTraitView implements ISelectableTraitView {
 
   private final IChangeableJComboBox<IIdentificate> traitSelectionBox = new ChangeableJComboBox<IIdentificate>(
-      new IIdentificate[] { new Identificate("Select") },
+      new IIdentificate[0],
       false);
 
   private final IIntValueDisplay valueDisplay;

@@ -31,7 +31,7 @@ public class QualifiedAmountDurationView implements IAmountDurationEntryView {
   private final ChangeControl control = new ChangeControl();
 
   public IntegerSpinner addRadioButtonSpinner() {
-    JRadioButton button = createRadioButton("");
+    JRadioButton button = createRadioButton(""); //$NON-NLS-1$
     IntegerSpinner integerSpinner = new IntegerSpinner(1);
     panel.add(integerSpinner.getComponent());
     panel.add(new EndOfLineMarkerComponent());
@@ -49,7 +49,7 @@ public class QualifiedAmountDurationView implements IAmountDurationEntryView {
       String label,
       ListCellRenderer renderer,
       ITraitType[] types) {
-    JRadioButton radioButton = createRadioButton("");
+    JRadioButton radioButton = createRadioButton(""); //$NON-NLS-1$
     ObjectSelectionView<ITraitType> view = new ObjectSelectionView<ITraitType>(label, renderer, false, types);
     view.addTo(panel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
     JComboBox comboBox = view.getComboBox();
