@@ -32,7 +32,7 @@ public class StandardPanelBuilder {
   }
 
   public ITextView addLineTextView(final String labelName, int columnCount) {
-    return addLabelledTextView(labelName, new LineTextView(columnCount), false);
+    return addLabelledTextView(labelName, new LineTextView(columnCount));
   }
 
   public ICheckableTextView addCheckableLineTextView(String labelName, int textFieldColumns) {
@@ -68,11 +68,20 @@ public class StandardPanelBuilder {
   }
 
   public ITextView addAreaTextView(final String labelName, int rowCount, int columnCount) {
-    return addLabelledTextView(labelName, new AreaTextView(rowCount, columnCount), true);
+    return addLabelledTextView(labelName, new AreaTextView(rowCount, columnCount));
   }
 
-  private ITextView addLabelledTextView(final String labelText, final ITextView textView, boolean scroll) {
-    new LabelTextView(labelText, textView, scroll).addTo(dialogPanel);
+  private ITextView addLabelledTextView(final String labelText, final ITextView textView) {
+    final LabelTextView labelTextView = new LabelTextView(labelText, textView);
+    dialogPanel.add(new IDialogComponent() {
+      public int getColumnCount() {
+        return 2;
+      }
+
+      public void fillInto(JPanel panel, int columnCount) {
+        labelTextView.addToStandardPanel(panel, columnCount - 1);
+      }
+    });
     return textView;
   }
 
