@@ -33,8 +33,8 @@ import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 public class BasicAdvantageView extends AbstractInitializableContentView<IAdvantageViewProperties> implements
     IBasicAdvantageView {
 
-  private final IGridDialogPanel virtuePanel = new DefaultGridDialogPanel();
-  private final IGridDialogPanel willpowerPanel = new DefaultGridDialogPanel();
+  private final JPanel virtuePanel = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel willpowerPanel = new JPanel(new GridDialogLayout(2, false));
   private final IGridDialogPanel backgroundSelectionPanel = new DefaultGridDialogPanel();
   private final JPanel backgroundDisplayPanel = new JPanel(new GridDialogLayout(2, false));
   private final EssencePanelView essencePanelView;
@@ -54,12 +54,12 @@ public class BasicAdvantageView extends AbstractInitializableContentView<IAdvant
     GridDialogLayoutData virtueData = new GridDialogLayoutData();
     virtueData.setVerticalSpan(2);
     virtueData.setVerticalAlignment(GridAlignment.FILL);
-    addTitledPanel(properties.getVirtueTitle(), innerPanel, virtuePanel.getComponent(), virtueData);
+    addTitledPanel(properties.getVirtueTitle(), innerPanel, virtuePanel, virtueData);
     GridDialogLayoutData willpowerData = new GridDialogLayoutData();
     willpowerData.setHorizontalAlignment(GridAlignment.FILL);
     willpowerData.setGrabExcessHorizontalSpace(true);
     willpowerData.setVerticalAlignment(GridAlignment.BEGINNING);
-    addTitledPanel(properties.getWillpowerTitle(), innerPanel, willpowerPanel.getComponent(), willpowerData);
+    addTitledPanel(properties.getWillpowerTitle(), innerPanel, willpowerPanel, willpowerData);
     GridDialogLayoutData essenceData = new GridDialogLayoutData();
     essenceData.setHorizontalAlignment(GridAlignment.FILL);
     essenceData.setGrabExcessHorizontalSpace(true);
