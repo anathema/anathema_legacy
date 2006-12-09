@@ -34,10 +34,7 @@ public class LabelledOverviewStringValueView extends AbstractLabelledValueView i
         beginData.setHorizontalAlignment(GridAlignment.BEGINNING);
         beginData.setGrabExcessHorizontalSpace(true);
         panel.add(titleLabel, beginData);
-
-        GridDialogLayoutData endData = GridDialogLayoutDataUtilities.createHorizontalFillNoGrab();
-        // endData.setHorizontalSpan(columnCount - 1);
-        panel.add(valueLabel, endData);
+        panel.add(valueLabel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
       }
     });
   }
