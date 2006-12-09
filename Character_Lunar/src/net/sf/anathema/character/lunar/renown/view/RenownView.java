@@ -12,8 +12,6 @@ import net.sf.anathema.character.library.overview.OverviewCategory;
 import net.sf.anathema.framework.presenter.view.ObjectSelectionIntValueView;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;
@@ -24,13 +22,13 @@ public class RenownView implements IView {
   private final JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
   private final JPanel overviewPanel = new JPanel(new GridDialogLayout(1, false));
   private final JPanel facePanel = new JPanel(new GridDialogLayout(2, false));
-  private final IGridDialogPanel renownPanel = new DefaultGridDialogPanel();
-  private final IGridDialogPanel totalPanel = new DefaultGridDialogPanel();
+  private final JPanel renownPanel = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel totalPanel = new JPanel(new GridDialogLayout(2, false));
 
   public JComponent getComponent() {
-    mainPanel.add(renownPanel.getComponent());
+    mainPanel.add(renownPanel);
     mainPanel.add(new HorizontalLine(), GridDialogLayoutData.FILL_HORIZONTAL);
-    mainPanel.add(totalPanel.getComponent());
+    mainPanel.add(totalPanel);
     mainPanel.add(facePanel);
     content.add(mainPanel);
     GridDialogLayoutData data = new GridDialogLayoutData();

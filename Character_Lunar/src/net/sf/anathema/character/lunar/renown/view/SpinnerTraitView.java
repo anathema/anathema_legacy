@@ -27,10 +27,15 @@ public class SpinnerTraitView implements IIntValueView {
       }
 
       public void fillInto(JPanel panel, int columnCount) {
-        panel.add(new JLabel(label));
-        panel.add(spinner.getComponent());
+        addTo(panel);
       }
     });
+  }
+
+  /** 2 columns */
+  public void addTo(JPanel panel) {
+    panel.add(new JLabel(label));
+    panel.add(spinner.getComponent());
   }
 
   public void setValue(int newValue) {
