@@ -50,10 +50,6 @@ public abstract class AbstractLabelledValueView {
   protected final JLabel titleLabel;
   protected final JLabel valueLabel;
 
-  protected AbstractLabelledValueView(String labelText, int value, boolean adjustFontSize) {
-    this(labelText, String.valueOf(value), "20", adjustFontSize); //$NON-NLS-1$
-  }
-
   protected AbstractLabelledValueView(String labelText, String value, String valueLabelSizeText, boolean adjustFontSize) {
     this.titleLabel = createLabel(labelText, labelText, SwingConstants.LEFT, adjustFontSize);
     this.valueLabel = createLabel(value, valueLabelSizeText, SwingConstants.RIGHT, adjustFontSize);

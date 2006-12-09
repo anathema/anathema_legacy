@@ -13,10 +13,6 @@ public abstract class AbstractLabelledIntegerValueView extends AbstractLabelledV
     return lengthString;
   }
 
-  public AbstractLabelledIntegerValueView(String labelText, int value, boolean adjustFontSize) {
-    super(labelText, value, adjustFontSize);
-  }
-
   public AbstractLabelledIntegerValueView(String labelText, String sizeText, int value, boolean adjustFontSize) {
     super(labelText, String.valueOf(value), sizeText, adjustFontSize);
   }
