@@ -12,7 +12,6 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.lib.gui.dialogcomponent.grouped.IGridDialogPanelContent;
 import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
-import net.sf.anathema.lib.gui.layout.AnathemaLayoutUtilities;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 
 public class LabelledAlotmentView extends AbstractLabelledIntegerValueView implements
@@ -42,8 +41,10 @@ public class LabelledAlotmentView extends AbstractLabelledIntegerValueView imple
       public void fillInto(JPanel panel, int columnCount) {
         panel.add(titleLabel, GridDialogLayoutData.FILL_HORIZONTAL);
         panel.add(valueLabel, GridDialogLayoutData.FILL_HORIZONTAL);
-        panel.add(seperatorLabel, AnathemaLayoutUtilities.createAlignedGridDialogData(GridAlignment.END));
-        panel.add(maxPointLabel, AnathemaLayoutUtilities.createAlignedGridDialogData(GridAlignment.END));
+        GridDialogLayoutData dialogData = new GridDialogLayoutData();
+        dialogData.setHorizontalAlignment(GridAlignment.END);
+        panel.add(seperatorLabel, dialogData);
+        panel.add(maxPointLabel, dialogData);
       }
     });
   }

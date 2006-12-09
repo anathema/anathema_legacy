@@ -5,9 +5,8 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import net.disy.commons.swing.layout.grid.GridAlignment;
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.sf.anathema.lib.gui.layout.AnathemaLayoutUtilities;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 public class LabelledStringValueView implements IValueView<String> {
@@ -17,7 +16,7 @@ public class LabelledStringValueView implements IValueView<String> {
   private final GridDialogLayoutData textData;
 
   public LabelledStringValueView(String labelText) {
-    this(labelText, AnathemaLayoutUtilities.createAlignedGridDialogData(GridAlignment.FILL));
+    this(labelText, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
   }
 
   public LabelledStringValueView(String labelText, GridDialogLayoutData textData) {
