@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
 import javax.swing.Icon;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 import javax.swing.border.TitledBorder;
@@ -53,17 +54,17 @@ public class BasicAdvantageView extends AbstractInitializableContentView<IAdvant
     GridDialogLayoutData virtueData = new GridDialogLayoutData();
     virtueData.setVerticalSpan(2);
     virtueData.setVerticalAlignment(GridAlignment.FILL);
-    addTitledPanel(properties.getVirtueTitle(), innerPanel, virtuePanel, virtueData);
+    addTitledPanel(properties.getVirtueTitle(), innerPanel, virtuePanel.getComponent(), virtueData);
     GridDialogLayoutData willpowerData = new GridDialogLayoutData();
     willpowerData.setHorizontalAlignment(GridAlignment.FILL);
     willpowerData.setGrabExcessHorizontalSpace(true);
     willpowerData.setVerticalAlignment(GridAlignment.BEGINNING);
-    addTitledPanel(properties.getWillpowerTitle(), innerPanel, willpowerPanel, willpowerData);
+    addTitledPanel(properties.getWillpowerTitle(), innerPanel, willpowerPanel.getComponent(), willpowerData);
     GridDialogLayoutData essenceData = new GridDialogLayoutData();
     essenceData.setHorizontalAlignment(GridAlignment.FILL);
     essenceData.setGrabExcessHorizontalSpace(true);
     essenceData.setVerticalAlignment(GridAlignment.END);
-    addTitledPanel(properties.getEssenceTitle(), innerPanel, essencePanelView.getPanel(), essenceData);
+    addTitledPanel(properties.getEssenceTitle(), innerPanel, essencePanelView.getComponent(), essenceData);
     GridDialogLayoutData fullSpanData = new GridDialogLayoutData();
     fullSpanData.setHorizontalSpan(2);
     fullSpanData.setGrabExcessHorizontalSpace(true);
@@ -131,14 +132,13 @@ public class BasicAdvantageView extends AbstractInitializableContentView<IAdvant
     GuiUtilities.setEnabled(backgroundPanel, enabled);
   }
 
-  private final JPanel addTitledPanel(
+  private final JComponent addTitledPanel(
       String title,
       JPanel container,
-      IGridDialogPanel contentPanel,
+      JComponent component,
       IGridDialogLayoutData constraint) {
-    JPanel newPanel = contentPanel.getComponent();
-    newPanel.setBorder(new TitledBorder(title));
-    container.add(newPanel, constraint);
-    return newPanel;
+    component.setBorder(new TitledBorder(title));
+    container.add(component, constraint);
+    return component;
   }
 }
