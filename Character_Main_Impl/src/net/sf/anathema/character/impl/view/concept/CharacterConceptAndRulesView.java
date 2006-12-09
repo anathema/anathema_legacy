@@ -14,14 +14,11 @@ import javax.swing.border.TitledBorder;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
-import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.disy.commons.swing.toolbar.ToolBarUtilities;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesView;
 import net.sf.anathema.character.view.concept.ICharacterConceptAndRulesViewProperties;
 import net.sf.anathema.character.view.concept.IWillpowerConditionView;
 import net.sf.anathema.framework.presenter.view.AbstractInitializableContentView;
-import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.selection.IObjectSelectionView;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.workflow.textualdescription.ITextView;
@@ -32,16 +29,16 @@ public class CharacterConceptAndRulesView extends
     AbstractInitializableContentView<ICharacterConceptAndRulesViewProperties> implements ICharacterConceptAndRulesView {
 
   private final JPanel conceptPanel = new JPanel(new GridDialogLayout(3, false));
+  private final JPanel rulesPanel = new JPanel(new GridDialogLayout(1, false));
   private final List<JPanel> buttonPanels = new ArrayList<JPanel>();
-  private final IGridDialogPanel rulesPanel = new DefaultGridDialogPanel();
 
   @Override
   protected void createContent(JPanel panel, ICharacterConceptAndRulesViewProperties properties) {
     conceptPanel.setBorder(new TitledBorder(properties.getConceptTitle()));
-    rulesPanel.getComponent().setBorder(new TitledBorder(properties.getRulesTitle()));
+    rulesPanel.setBorder(new TitledBorder(properties.getRulesTitle()));
     panel.setLayout(new GridDialogLayout(1, false));
     panel.add(conceptPanel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
-    panel.add(rulesPanel.getComponent(), GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
+    panel.add(rulesPanel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
   }
 
   public <V> IObjectSelectionView<V> addObjectSelectionView(
@@ -74,15 +71,7 @@ public class CharacterConceptAndRulesView extends
   }
 
   public void addRulesLabel(final String labelText) {
-    rulesPanel.add(new IDialogComponent() {
-      public int getColumnCount() {
-        return 1;
-      }
-
-      public void fillInto(JPanel panel, int columnCount) {
-        panel.add(new JLabel(labelText));
-      }
-    });
+    rulesPanel.add(new JLabel(labelText));
   }
 
   public IWillpowerConditionView addWillpowerConditionView(final String headerLabelText) {
