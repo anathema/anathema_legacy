@@ -26,8 +26,6 @@ import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelection
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.GuiUtilities;
-import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 public class BasicAdvantageView extends AbstractInitializableContentView<IAdvantageViewProperties> implements
@@ -35,7 +33,7 @@ public class BasicAdvantageView extends AbstractInitializableContentView<IAdvant
 
   private final JPanel virtuePanel = new JPanel(new GridDialogLayout(2, false));
   private final JPanel willpowerPanel = new JPanel(new GridDialogLayout(2, false));
-  private final IGridDialogPanel backgroundSelectionPanel = new DefaultGridDialogPanel();
+  private final JPanel backgroundSelectionPanel = new JPanel(new GridDialogLayout(3, false));
   private final JPanel backgroundDisplayPanel = new JPanel(new GridDialogLayout(2, false));
   private final EssencePanelView essencePanelView;
   private final IIntValueDisplayFactory guiConfiguration;
@@ -76,7 +74,7 @@ public class BasicAdvantageView extends AbstractInitializableContentView<IAdvant
   private JPanel createBackgroundPanel(String title) {
     JPanel panel = new JPanel(new BorderLayout());
     panel.setBorder(new TitledBorder(title));
-    panel.add(backgroundSelectionPanel.getComponent(), BorderLayout.CENTER);
+    panel.add(backgroundSelectionPanel, BorderLayout.CENTER);
     panel.add(backgroundDisplayPanel, BorderLayout.SOUTH);
     return panel;
   }

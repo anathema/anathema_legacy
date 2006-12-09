@@ -72,15 +72,20 @@ public class ButtonControlledObjectSelectionView<V> implements
   public void addComponents(IGridDialogPanel panel) {
     panel.add(new IDialogComponent() {
       public void fillInto(JPanel layoutPanel, int columnCount) {
-        layoutPanel.add(label);
-        layoutPanel.add(comboBox, GridDialogLayoutData.FILL_HORIZONTAL);
-        layoutPanel.add(addButton);
+        addComponents(layoutPanel);
       }
 
       public int getColumnCount() {
         return 3;
       }
     });
+  }
+
+  /** GridDialogLayout, 3 columns */
+  public void addComponents(JPanel panel) {
+    panel.add(label);
+    panel.add(comboBox, GridDialogLayoutData.FILL_HORIZONTAL);
+    panel.add(addButton);
   }
 
   public void addObjectSelectionChangedListener(final IObjectValueChangedListener<V> listener) {

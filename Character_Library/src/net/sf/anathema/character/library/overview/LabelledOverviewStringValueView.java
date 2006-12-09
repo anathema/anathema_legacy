@@ -35,7 +35,7 @@ public class LabelledOverviewStringValueView extends AbstractLabelledValueView i
     });
   }
 
-  /* GridDialogLayout, 2 columns */
+  /** GridDialogLayout, 2 columns */
   public void addComponents(JPanel panel) {
     GridDialogLayoutData beginData = new GridDialogLayoutData();
     beginData.setHorizontalAlignment(GridAlignment.BEGINNING);
