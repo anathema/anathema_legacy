@@ -23,19 +23,18 @@ public class LabelledIntegerValueView extends AbstractLabelledIntegerValueView i
       }
 
       public void fillInto(JPanel panel, int columnCount) {
-        panel.add(titleLabel, GridDialogLayoutData.FILL_HORIZONTAL);
-        GridDialogLayoutData data = GridDialogLayoutDataUtilities.createHorizontalFillNoGrab();
-        data.setHorizontalSpan(columnCount - 1);
-        panel.add(valueLabel, data);
+        addComponents(panel);
       }
     });
   }
 
-  public JLabel getValueLabel() {
-    return valueLabel;
+  /** 2 Columns */
+  public void addComponents(JPanel panel) {
+    panel.add(titleLabel, GridDialogLayoutData.FILL_HORIZONTAL);
+    panel.add(valueLabel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
   }
 
-  public JLabel getTitleLabel() {
-    return titleLabel;
+  public JLabel getValueLabel() {
+    return valueLabel;
   }
 }
