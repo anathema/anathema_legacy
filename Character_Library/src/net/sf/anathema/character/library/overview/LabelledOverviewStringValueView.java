@@ -30,13 +30,18 @@ public class LabelledOverviewStringValueView extends AbstractLabelledValueView i
       }
 
       public void fillInto(JPanel panel, int columnCount) {
-        GridDialogLayoutData beginData = new GridDialogLayoutData();
-        beginData.setHorizontalAlignment(GridAlignment.BEGINNING);
-        beginData.setGrabExcessHorizontalSpace(true);
-        panel.add(titleLabel, beginData);
-        panel.add(valueLabel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
+        addComponents(panel);
       }
     });
+  }
+
+  /* GridDialogLayout, 2 columns */
+  public void addComponents(JPanel panel) {
+    GridDialogLayoutData beginData = new GridDialogLayoutData();
+    beginData.setHorizontalAlignment(GridAlignment.BEGINNING);
+    beginData.setGrabExcessHorizontalSpace(true);
+    panel.add(titleLabel, beginData);
+    panel.add(valueLabel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
   }
 
   public void setValue(String value) {
