@@ -13,8 +13,6 @@ import net.sf.anathema.charmentry.presenter.view.IReflexiveCharmSpecialsView;
 import net.sf.anathema.framework.presenter.view.ObjectSelectionIntValueView;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
-import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 
 public class ReflexiveCharmSpecialsView implements IDialogComponent, IReflexiveCharmSpecialsView {
   private final ObjectSelectionIntValueView stepView;
@@ -40,15 +38,9 @@ public class ReflexiveCharmSpecialsView implements IDialogComponent, IReflexiveC
   /** Adds 4 columns */
   public void addTo(JPanel panel) {
     panel.add(mainLabel);
-    addView(panel, stepView);
-    addView(panel, defenderView);
+    panel.add(stepView.getComponent());
+    panel.add(defenderView.getComponent());
     panel.add(splitBox);
-  }
-
-  private void addView(JPanel panel, ObjectSelectionIntValueView view) {
-    IGridDialogPanel gridPanel = new DefaultGridDialogPanel();
-    view.addComponents(gridPanel);
-    panel.add(gridPanel.getComponent());
   }
 
   public void setEnabled(boolean enabled) {

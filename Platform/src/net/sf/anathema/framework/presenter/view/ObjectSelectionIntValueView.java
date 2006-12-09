@@ -13,12 +13,10 @@ import net.sf.anathema.framework.value.IIntValueDisplay;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
-import net.sf.anathema.lib.gui.dialogcomponent.grouped.IGridDialogPanelContent;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.selection.ObjectSelectionView;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 
-public class ObjectSelectionIntValueView implements IIntValueDisplay, IGridDialogPanelContent {
+public class ObjectSelectionIntValueView implements IIntValueDisplay {
 
   private final ObjectSelectionView<Integer> view;
   private final Map<IIntValueChangedListener, IObjectValueChangedListener<Integer>> listenerMap = new HashMap<IIntValueChangedListener, IObjectValueChangedListener<Integer>>();
@@ -52,10 +50,6 @@ public class ObjectSelectionIntValueView implements IIntValueDisplay, IGridDialo
 
   public void setMaximum(int maximalValue) {
     throw new NotYetImplementedException();
-  }
-
-  public void addComponents(IGridDialogPanel gridPanel) {
-    view.addComponents(gridPanel);
   }
 
   public void setEnabled(boolean enabled) {

@@ -11,8 +11,6 @@ import net.sf.anathema.character.library.removableentry.view.RemovableStringView
 import net.sf.anathema.charmentry.presenter.view.IKeywordView;
 import net.sf.anathema.framework.presenter.view.ButtonControlledObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
-import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public class KeywordView implements IKeywordView {
@@ -29,9 +27,9 @@ public class KeywordView implements IKeywordView {
         renderer,
         icon,
         label);
-    IGridDialogPanel panel = new DefaultGridDialogPanel();
+    JPanel panel = new JPanel(new GridDialogLayout(3, false));
     view.addComponents(panel);
-    dataPanel.add(panel.getComponent());
+    dataPanel.add(panel);
     return view;
   }
 

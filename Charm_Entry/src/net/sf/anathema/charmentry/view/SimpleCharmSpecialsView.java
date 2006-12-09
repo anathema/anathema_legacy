@@ -8,8 +8,6 @@ import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.charmentry.presenter.view.ISimpleCharmSpecialsView;
 import net.sf.anathema.framework.presenter.view.ObjectSelectionIntValueView;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
-import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 
 public class SimpleCharmSpecialsView implements IDialogComponent, ISimpleCharmSpecialsView {
   private final ObjectSelectionIntValueView speedView;
@@ -33,14 +31,8 @@ public class SimpleCharmSpecialsView implements IDialogComponent, ISimpleCharmSp
   /** Adds 3 columns */
   public void addTo(JPanel panel) {
     panel.add(mainLabel);
-    addView(panel, speedView);
-    addView(panel, dvView);
-  }
-
-  private void addView(JPanel panel, ObjectSelectionIntValueView view) {
-    IGridDialogPanel gridPanel = new DefaultGridDialogPanel();
-    view.addComponents(gridPanel);
-    panel.add(gridPanel.getComponent());
+    panel.add(speedView.getComponent());
+    panel.add(dvView.getComponent());
   }
 
   public void setEnabled(boolean enabled) {

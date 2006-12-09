@@ -23,15 +23,15 @@ public class RenownView implements IView {
   private final JPanel content = new JPanel(new GridDialogLayout(2, false));
   private final JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
   private final JPanel overviewPanel = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel facePanel = new JPanel(new GridDialogLayout(2, false));
   private final IGridDialogPanel renownPanel = new DefaultGridDialogPanel();
   private final IGridDialogPanel totalPanel = new DefaultGridDialogPanel();
-  private final IGridDialogPanel facePanel = new DefaultGridDialogPanel();
 
   public JComponent getComponent() {
     mainPanel.add(renownPanel.getComponent());
     mainPanel.add(new HorizontalLine(), GridDialogLayoutData.FILL_HORIZONTAL);
     mainPanel.add(totalPanel.getComponent());
-    mainPanel.add(facePanel.getComponent());
+    mainPanel.add(facePanel);
     content.add(mainPanel);
     GridDialogLayoutData data = new GridDialogLayoutData();
     data.setVerticalAlignment(GridAlignment.BEGINNING);
@@ -53,7 +53,7 @@ public class RenownView implements IView {
 
   public IIntValueView addFaceSelectionView(String label, ListCellRenderer renderer, int maximum) {
     ObjectSelectionIntValueView view = new ObjectSelectionIntValueView(label, renderer, maximum);
-    view.addComponents(facePanel);
+    facePanel.add(view.getComponent());
     return view;
   }
 
