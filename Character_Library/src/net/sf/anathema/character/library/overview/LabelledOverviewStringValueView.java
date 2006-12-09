@@ -16,15 +16,11 @@ public class LabelledOverviewStringValueView extends AbstractLabelledValueView i
     IGridDialogPanelContent {
 
   public LabelledOverviewStringValueView(String titleText, String valueText) {
-    this(titleText, valueText, "Moonshadow"); //$NON-NLS-1$
+    super(titleText, valueText, "Moonshadow", true); //$NON-NLS-1$
   }
 
   public LabelledOverviewStringValueView(String titleText, String valueText, boolean adjustFontSize) {
     super(titleText, valueText, "Moonshadow", adjustFontSize); //$NON-NLS-1$
-  }
-
-  public LabelledOverviewStringValueView(String titleText, String valueText, String lengthText) {
-    super(titleText, valueText, lengthText, true);
   }
 
   public void addComponents(IGridDialogPanel dialogPanel) {
@@ -40,7 +36,7 @@ public class LabelledOverviewStringValueView extends AbstractLabelledValueView i
         panel.add(titleLabel, beginData);
 
         GridDialogLayoutData endData = GridDialogLayoutDataUtilities.createHorizontalFillNoGrab();
-        endData.setHorizontalSpan(columnCount - 1);
+        // endData.setHorizontalSpan(columnCount - 1);
         panel.add(valueLabel, endData);
       }
     });
