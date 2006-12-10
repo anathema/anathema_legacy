@@ -27,10 +27,6 @@ public class BeastformViewFactory implements IAdditionalViewFactory {
       public String getGiftsString() {
         return resources.getString("Lunar.DeadlyBeastmanTransformation.Gifts.Label"); //$NON-NLS-1$
       }
-
-      public String getOverviewString() {
-        return resources.getString("Lunar.DeadlyBeastmanTransformation.Overview.Label"); //$NON-NLS-1$
-      }
     });
     new BeastformPresenter(resources, view, (IBeastformModel) model).initPresentation();
     return view;

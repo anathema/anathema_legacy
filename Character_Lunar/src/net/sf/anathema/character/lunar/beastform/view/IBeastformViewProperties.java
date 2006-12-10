@@ -7,6 +7,4 @@ public interface IBeastformViewProperties {
   public String getAttributesString();
 
   public String getGiftsString();
-
-  public String getOverviewString();
 }

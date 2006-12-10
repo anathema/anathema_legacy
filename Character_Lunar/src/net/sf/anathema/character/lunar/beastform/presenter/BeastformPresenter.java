@@ -52,6 +52,10 @@ public class BeastformPresenter implements IPresenter {
       public String getAttributeDotsString() {
         return resources.getString("Lunar.DeadlyBeastmanTransformation.Attributes.Label"); //$NON-NLS-1$
       }
+
+      public String getOverviewBorderString() {
+        return resources.getString("Lunar.DeadlyBeastmanTransformation.Overview.Label"); //$NON-NLS-1$
+      }
     });
   }
 

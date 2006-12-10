@@ -6,4 +6,6 @@ public interface IBeastformOverviewViewProperties {
 
   public String getAttributeDotsString();
 
+  public String getOverviewBorderString();
+
 }
