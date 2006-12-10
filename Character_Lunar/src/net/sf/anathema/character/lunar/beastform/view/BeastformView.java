@@ -17,13 +17,11 @@ import net.sf.anathema.character.library.intvalue.MarkerIntValueDisplayFactory;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.lunar.beastform.presenter.IBeastformView;
 import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 
 public class BeastformView implements IBeastformView {
 
   private final JPanel baseContentPanel = new JPanel(new GridDialogLayout(2, false));
-  private final IGridDialogPanel attributePanel = new DefaultGridDialogPanel();
+  private final JPanel attributePanel = new JPanel(new GridDialogLayout(2, false));
   private final JPanel giftPanel = new JPanel(new GridDialogLayout(4, false));
   private final MarkerIntValueDisplayFactory intValueDisplayFactory;
   private final JPanel content = new JPanel(new GridDialogLayout(2, false));
@@ -39,12 +37,11 @@ public class BeastformView implements IBeastformView {
     baseContentPanel.setBorder(new TitledBorder(properties.getCharmString()));
     content.add(baseContentPanel);
     content.add(new EndOfLineMarkerComponent());
-    JPanel panel = attributePanel.getComponent();
-    panel.setBorder(new TitledBorder(properties.getAttributesString()));
+    attributePanel.setBorder(new TitledBorder(properties.getAttributesString()));
     GridDialogLayoutData data = new GridDialogLayoutData();
     data.setHorizontalSpan(2);
     data.setHorizontalAlignment(GridAlignment.FILL);
-    content.add(panel, data);
+    content.add(attributePanel, data);
     content.add(new EndOfLineMarkerComponent());
     giftPanel.setBorder(new TitledBorder(properties.getGiftsString()));
     content.add(giftPanel);
