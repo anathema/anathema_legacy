@@ -2,8 +2,6 @@ package net.sf.anathema.character.library.virtueflaw.view;
 
 import java.awt.Component;
 import java.awt.Container;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -27,7 +25,6 @@ import net.sf.anathema.lib.workflow.textualdescription.view.LineTextView;
 
 public class VirtueFlawView implements IVirtueFlawView {
   private final IGridDialogPanel virtueFlawPanel = new DefaultGridDialogPanel();
-  private final List<ITextView> textViews = new ArrayList<ITextView>();
 
   public ITextView addTextView(final String labelText, int columns) {
     final ITextView textView = new LineTextView(columns);
@@ -36,7 +33,7 @@ public class VirtueFlawView implements IVirtueFlawView {
   }
 
   protected void fillIntoVirtueFlawPanel(final String labelText, final ITextView textView) {
-    getVirtueFlawPanel().add(new IDialogComponent() {
+    virtueFlawPanel.add(new IDialogComponent() {
       public int getColumnCount() {
         return 2;
       }
@@ -53,9 +50,6 @@ public class VirtueFlawView implements IVirtueFlawView {
   public void setEnabled(boolean enabled) {
     GuiUtilities.setEnabled(getComponent(), enabled);
     handleSpecialComponents(getComponent(), enabled);
-    for (ITextView textView : textViews) {
-      textView.setEnabled(enabled);
-    }
   }
 
   private void handleSpecialComponents(Container container, boolean enabled) {
@@ -71,14 +65,6 @@ public class VirtueFlawView implements IVirtueFlawView {
     return virtueFlawPanel.getComponent();
   }
 
-  protected IGridDialogPanel getVirtueFlawPanel() {
-    return virtueFlawPanel;
-  }
-
-  protected List<ITextView> getTextViews() {
-    return textViews;
-  }
-
   public IObjectSelectionView<ITraitType> addVirtueFlawRootSelectionView(
       final String labelText,
       ListCellRenderer renderer) {
@@ -86,7 +72,7 @@ public class VirtueFlawView implements IVirtueFlawView {
         labelText,
         renderer,
         new ITraitType[0]);
-    rootSelectionView.addComponents(getVirtueFlawPanel(), GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
+    rootSelectionView.addComponents(virtueFlawPanel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
     return rootSelectionView;
   }
 }
