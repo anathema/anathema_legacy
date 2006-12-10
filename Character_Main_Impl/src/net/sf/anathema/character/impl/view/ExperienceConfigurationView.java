@@ -11,6 +11,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableColumn;
 
 import net.disy.commons.swing.action.SmartAction;
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationView;
 import net.sf.anathema.character.view.advance.IExperienceConfigurationViewListener;
@@ -18,8 +19,6 @@ import net.sf.anathema.character.view.advance.IExperienceConfigurationViewProper
 import net.sf.anathema.framework.presenter.view.AbstractInitializableContentView;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
-import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.table.SmartTable;
 import net.sf.anathema.lib.gui.table.actions.ITableActionFactory;
 import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;
@@ -69,12 +68,12 @@ public class ExperienceConfigurationView extends
     descriptionColumn.setPreferredWidth(500);
     descriptionColumn.setWidth(descriptionColumn.getPreferredWidth());
     setRemoveButtonEnabled(false);
-    IGridDialogPanel totalPanel = new DefaultGridDialogPanel();
+    JPanel totalPanel = new JPanel(new GridDialogLayout(2, false));
     labelledIntValueView = new LabelledIntegerValueView(properties.getTotalString(), 0, false, 7);
     labelledIntValueView.addComponents(totalPanel);
     labelledIntValueView.getValueLabel().setHorizontalAlignment(SwingConstants.RIGHT);
     // todo vom (02.07.2005) (sieroux): Hier muss eine besser Lösung her im Zusammenspiel mit der SmartTable
-    smartTablePanel.add(totalPanel.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
+    smartTablePanel.add(totalPanel, GridDialogLayoutData.FILL_HORIZONTAL);
     panel.add(smartTablePanel);
   }
 
