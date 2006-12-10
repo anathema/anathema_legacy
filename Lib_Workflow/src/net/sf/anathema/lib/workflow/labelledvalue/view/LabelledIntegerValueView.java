@@ -5,27 +5,11 @@ import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.IDialogComponent;
-import net.sf.anathema.lib.gui.dialogcomponent.grouped.IGridDialogPanelContent;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 
-public class LabelledIntegerValueView extends AbstractLabelledIntegerValueView implements IGridDialogPanelContent {
+public class LabelledIntegerValueView extends AbstractLabelledIntegerValueView {
 
   public LabelledIntegerValueView(String labelText, int value, boolean adjustFontSize, int maxValueLength) {
     super(labelText, createLengthString(maxValueLength), value, adjustFontSize);
-  }
-
-  @Override
-  public void addComponents(IGridDialogPanel dialogPanel) {
-    dialogPanel.add(new IDialogComponent() {
-      public int getColumnCount() {
-        return 2;
-      }
-
-      public void fillInto(JPanel panel, int columnCount) {
-        addComponents(panel);
-      }
-    });
   }
 
   /** 2 Columns */
@@ -36,5 +20,12 @@ public class LabelledIntegerValueView extends AbstractLabelledIntegerValueView i
 
   public JLabel getValueLabel() {
     return valueLabel;
+  }
+
+  public void addComponents(JPanel panel, int columnCount) {
+    panel.add(titleLabel, GridDialogLayoutData.FILL_HORIZONTAL);
+    GridDialogLayoutData data = GridDialogLayoutDataUtilities.createHorizontalFillNoGrab();
+    data.setHorizontalSpan(columnCount - 1);
+    panel.add(valueLabel, data);
   }
 }

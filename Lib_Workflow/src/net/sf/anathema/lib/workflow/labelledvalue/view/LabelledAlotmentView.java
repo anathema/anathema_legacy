@@ -9,14 +9,9 @@ import javax.swing.SwingConstants;
 
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.IDialogComponent;
-import net.sf.anathema.lib.gui.dialogcomponent.grouped.IGridDialogPanelContent;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 
-public class LabelledAlotmentView extends AbstractLabelledIntegerValueView implements
-    ILabelledAlotmentView,
-    IGridDialogPanelContent {
+public class LabelledAlotmentView extends AbstractLabelledIntegerValueView implements ILabelledAlotmentView {
 
   private final JLabel seperatorLabel;
   protected final JLabel maxPointLabel;
@@ -29,19 +24,6 @@ public class LabelledAlotmentView extends AbstractLabelledIntegerValueView imple
         SwingConstants.RIGHT,
         true);
     this.seperatorLabel = createLabel("/", "/", SwingConstants.CENTER, true); //$NON-NLS-1$//$NON-NLS-2$
-  }
-
-  @Override
-  public void addComponents(IGridDialogPanel dialogPanel) {
-    dialogPanel.add(new IDialogComponent() {
-      public int getColumnCount() {
-        return 4;
-      }
-
-      public void fillInto(JPanel panel, int columnCount) {
-        addTo(panel);
-      }
-    });
   }
 
   /** 4 columns */

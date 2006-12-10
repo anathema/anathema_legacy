@@ -1,6 +1,5 @@
 package net.sf.anathema.lib.workflow.labelledvalue.view;
 
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 
 public abstract class AbstractLabelledIntegerValueView extends AbstractLabelledValueView implements IValueView<Integer> {
@@ -16,8 +15,6 @@ public abstract class AbstractLabelledIntegerValueView extends AbstractLabelledV
   public AbstractLabelledIntegerValueView(String labelText, String sizeText, int value, boolean adjustFontSize) {
     super(labelText, String.valueOf(value), sizeText, adjustFontSize);
   }
-
-  public abstract void addComponents(IGridDialogPanel dialogPanel);
 
   public void setValue(Integer value) {
     setText(String.valueOf(value));

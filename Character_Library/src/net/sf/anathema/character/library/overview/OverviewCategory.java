@@ -4,9 +4,8 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
+import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.workflow.labelledvalue.ILabelledAlotmentView;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.AbstractLabelledValueView;
@@ -15,8 +14,7 @@ import net.sf.anathema.lib.workflow.labelledvalue.view.LabelledIntegerValueView;
 
 public class OverviewCategory implements IOverviewCategory, IView {
 
-  private final IGridDialogPanel panel = new DefaultGridDialogPanel();
-  private JPanel content;
+  private final JPanel panel = new JPanel(new GridDialogLayout(4, false));
   private final String borderTitle;
   private final boolean useSmallFont;
 
@@ -26,38 +24,35 @@ public class OverviewCategory implements IOverviewCategory, IView {
   }
 
   public JComponent getComponent() {
-    if (content == null) {
-      content = panel.getComponent();
-      TitledBorder titledBorder = new TitledBorder(borderTitle);
-      if (useSmallFont) {
-        titledBorder.setTitleFont(AbstractLabelledValueView.deriveSmallerFont(titledBorder.getTitleFont()));
-      }
-      content.setBorder(titledBorder);
+    TitledBorder titledBorder = new TitledBorder(borderTitle);
+    if (useSmallFont) {
+      titledBorder.setTitleFont(AbstractLabelledValueView.deriveSmallerFont(titledBorder.getTitleFont()));
     }
-    return content;
+    panel.setBorder(titledBorder);
+    return panel;
   }
 
   public ILabelledAlotmentView addAlotmentView(String labelText, int maxValueLength) {
     LabelledAlotmentView view = new LabelledAlotmentView(labelText, 0, 0, maxValueLength);
-    view.addComponents(panel);
+    view.addTo(panel);
     return view;
   }
 
   public IAdditionalAlotmentView addAdditionalAlotmentView(String labelText, int maxValueLength) {
     LabelledAdditionalAlotmentView view = new LabelledAdditionalAlotmentView(labelText, maxValueLength);
-    view.addComponents(panel);
+    view.addTo(panel);
     return view;
   }
 
   public IValueView<Integer> addIntegerValueView(String labelText, int maxValueLength) {
     LabelledIntegerValueView view = new LabelledIntegerValueView(labelText, 0, true, maxValueLength);
-    view.addComponents(panel);
+    view.addComponents(panel, 4);
     return view;
   }
 
   public IValueView<String> addStringValueView(String labelText) {
     LabelledOverviewStringValueView view = new LabelledOverviewStringValueView(labelText, ""); //$NON-NLS-1$
-    view.addComponents(panel);
+    view.addComponents(panel, 4);
     return view;
   }
 }
