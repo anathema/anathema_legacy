@@ -49,6 +49,12 @@ public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryV
     return view;
   }
 
+  @Override
+  public void removeEntryView(IRemovableEntryView removableView) {
+    super.removeEntryView(removableView);
+    entryPanel.repaint();
+  }
+
   public IButtonControlledObjectSelectionView<Object> addSelectionView(
       String labelText,
       ITextFieldComboBoxEditor editor,
