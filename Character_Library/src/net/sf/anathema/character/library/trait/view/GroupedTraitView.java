@@ -5,14 +5,14 @@ import javax.swing.JPanel;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
-import net.sf.anathema.lib.gui.dialogcomponent.grouped.GroupedGridDialogPanel;
+import net.sf.anathema.lib.gui.dialogcomponent.grouped.GroupedColumnPanel;
 
 public class GroupedTraitView {
 
-  private final GroupedGridDialogPanel panel;
+  private final GroupedColumnPanel panel;
 
   public GroupedTraitView(int columnCount) {
-    panel = new GroupedGridDialogPanel(columnCount);
+    panel = new GroupedColumnPanel(columnCount);
   }
 
   public IToggleButtonTraitView<SimpleTraitView> addTraitView(
@@ -27,7 +27,7 @@ public class GroupedTraitView {
         view,
         properties,
         selected);
-    panel.addEntry(traitView);
+    traitView.addComponents(panel.getCurrentColumn());
     return traitView;
   }
 
