@@ -8,16 +8,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
-import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.disy.commons.swing.layout.grid.IGridDialogLayoutData;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.gui.dialogcomponent.grouped.IGridDialogPanelContent;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 
-public class ObjectSelectionView<V> implements IObjectSelectionView<V>, IGridDialogPanelContent {
+public class ObjectSelectionView<V> implements IObjectSelectionView<V> {
 
   private final IChangeableJComboBox<V> comboBox;
   private final JLabel label;
@@ -44,18 +40,6 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V>, IGridDia
 
   public void setLabelText(String text) {
     this.label.setText(text);
-  }
-
-  public void addComponents(IGridDialogPanel dialogPanel) {
-    dialogPanel.add(new IDialogComponent() {
-      public int getColumnCount() {
-        return 2;
-      }
-    
-      public void fillInto(JPanel layoutPanel, int columnCount) {
-        addTo(layoutPanel, new GridDialogLayoutData());
-      }
-    });
   }
 
   /** Requires two colums */

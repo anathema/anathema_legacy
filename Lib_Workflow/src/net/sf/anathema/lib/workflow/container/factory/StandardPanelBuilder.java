@@ -39,7 +39,7 @@ public class StandardPanelBuilder {
     final CheckBoxBooleanView checkBoxView = new CheckBoxBooleanView(labelName);
     final ITextView textView = new LineTextView(textFieldColumns);
     ToggleComponentEnabler.connect(checkBoxView.getComponent(), textView.getComponent());
-    dialogPanel.add(new IDialogComponent() {
+    addDialogComponent(new IDialogComponent() {
       public int getColumnCount() {
         return 2;
       }
@@ -73,7 +73,7 @@ public class StandardPanelBuilder {
 
   private ITextView addLabelledTextView(final String labelText, final ITextView textView) {
     final LabelTextView labelTextView = new LabelTextView(labelText, textView);
-    dialogPanel.add(new IDialogComponent() {
+    addDialogComponent(new IDialogComponent() {
       public int getColumnCount() {
         return 2;
       }
@@ -95,7 +95,7 @@ public class StandardPanelBuilder {
 
   public IntegerSpinner addIntegerSpinner(final String labelString, int startValue) {
     final IntegerSpinner spinner = new IntegerSpinner(startValue);
-    dialogPanel.add(new IDialogComponent() {
+    addDialogComponent(new IDialogComponent() {
       public int getColumnCount() {
         return 2;
       }
@@ -109,14 +109,28 @@ public class StandardPanelBuilder {
   }
 
   public <V> IObjectSelectionView<V> addObjectSelectionView(String label, ListCellRenderer renderer, V[] objects) {
-    ObjectSelectionView<V> view = new ObjectSelectionView<V>(label, renderer, objects);
-    view.addComponents(dialogPanel);
-    return view;
+    return createObjectSelectionView(label, renderer, objects, false);
   }
 
   public <V> IObjectSelectionView<V> addEditableObjectSelectionView(String label, ListCellRenderer renderer, V[] objects) {
-    ObjectSelectionView<V> view = new ObjectSelectionView<V>(label, renderer, true, objects);
-    view.addComponents(dialogPanel);
+    return createObjectSelectionView(label, renderer, objects, true);
+  }
+
+  private <V> IObjectSelectionView<V> createObjectSelectionView(
+      String label,
+      ListCellRenderer renderer,
+      V[] objects,
+      boolean editable) {
+    final ObjectSelectionView<V> view = new ObjectSelectionView<V>(label, renderer, editable, objects);
+    addDialogComponent(new IDialogComponent() {
+      public int getColumnCount() {
+        return 2;
+      }
+
+      public void fillInto(JPanel layoutPanel, int columnCount) {
+        view.addTo(layoutPanel, new GridDialogLayoutData());
+      }
+    });
     return view;
   }
 }

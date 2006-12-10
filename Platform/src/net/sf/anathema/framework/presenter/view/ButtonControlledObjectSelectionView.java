@@ -18,15 +18,10 @@ import javax.swing.ListCellRenderer;
 import net.disy.commons.core.util.StringUtilities;
 import net.disy.commons.swing.events.AbstractDocumentChangeListener;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.gui.dialogcomponent.grouped.IGridDialogPanelContent;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.widgets.ColoredJComboBox;
 
-public class ButtonControlledObjectSelectionView<V> implements
-    IButtonControlledObjectSelectionView<V>,
-    IGridDialogPanelContent {
+public class ButtonControlledObjectSelectionView<V> implements IButtonControlledObjectSelectionView<V> {
 
   private final JComboBox comboBox;
   private final JButton addButton;
@@ -65,18 +60,6 @@ public class ButtonControlledObjectSelectionView<V> implements
       @SuppressWarnings("unchecked")
       public void actionPerformed(ActionEvent e) {
         listener.valueChanged((V) comboBox.getSelectedItem());
-      }
-    });
-  }
-
-  public void addComponents(IGridDialogPanel panel) {
-    panel.add(new IDialogComponent() {
-      public void fillInto(JPanel layoutPanel, int columnCount) {
-        addComponents(layoutPanel);
-      }
-
-      public int getColumnCount() {
-        return 3;
       }
     });
   }
