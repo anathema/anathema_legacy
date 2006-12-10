@@ -10,16 +10,15 @@ import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
 import net.sf.anathema.character.library.overview.IOverviewCategory;
 import net.sf.anathema.character.library.overview.OverviewCategory;
-import net.sf.anathema.character.library.trait.view.FrontToggleButtonTraitViewWrapper;
+import net.sf.anathema.character.library.trait.view.GroupedTraitView;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeView;
 import net.sf.anathema.character.sidereal.colleges.presenter.ISiderealCollegeViewProperties;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.gui.dialogcomponent.grouped.GroupedGridDialogPanel;
 
 public class SiderealCollegeView implements IView, ISiderealCollegeView {
 
-  private final GroupedGridDialogPanel collegeGroupPanel = new GroupedGridDialogPanel(3);
+  private final GroupedTraitView groupedTraitView = new GroupedTraitView(3);
   private JPanel content;
   private final JPanel overviewPanel = new JPanel();
   private final ISiderealCollegeViewProperties properties;
@@ -29,7 +28,7 @@ public class SiderealCollegeView implements IView, ISiderealCollegeView {
   }
 
   public void startGroup(String groupLabel) {
-    collegeGroupPanel.startNewGroup(groupLabel);
+    groupedTraitView.startNewGroup(groupLabel);
   }
 
   public JComponent getComponent() {
@@ -44,7 +43,7 @@ public class SiderealCollegeView implements IView, ISiderealCollegeView {
   private void addCollegePanel() {
     JPanel collegePanel = new JPanel();
     collegePanel.setBorder(new TitledBorder(properties.getCollegeString()));
-    collegeGroupPanel.addOverallView(collegePanel);
+    groupedTraitView.addOverallView(collegePanel);
     content.add(collegePanel);
   }
 
@@ -55,13 +54,7 @@ public class SiderealCollegeView implements IView, ISiderealCollegeView {
       int value,
       int maxValue,
       boolean selected) {
-    SimpleTraitView view = new SimpleTraitView(factory, label, value, maxValue);
-    FrontToggleButtonTraitViewWrapper<SimpleTraitView> traitView = new FrontToggleButtonTraitViewWrapper<SimpleTraitView>(
-        view,
-        viewProperties,
-        selected);
-    collegeGroupPanel.addEntry(traitView);
-    return traitView;
+    return groupedTraitView.addTraitView(label, value, maxValue, selected, viewProperties, factory);
   }
 
   public IOverviewCategory createOverview(String borderLabel) {

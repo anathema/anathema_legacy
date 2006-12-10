@@ -5,16 +5,15 @@ import javax.swing.JPanel;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
-import net.sf.anathema.character.library.trait.view.FrontToggleButtonTraitViewWrapper;
+import net.sf.anathema.character.library.trait.view.GroupedTraitView;
 import net.sf.anathema.character.library.trait.view.SimpleTraitView;
 import net.sf.anathema.character.view.IGroupedFavorableTraitConfigurationView;
 import net.sf.anathema.framework.presenter.view.AbstractInitializableContentView;
-import net.sf.anathema.lib.gui.dialogcomponent.grouped.GroupedGridDialogPanel;
 
 public class GroupedFavorableTraitConfigurationView extends AbstractInitializableContentView<Object> implements
     IGroupedFavorableTraitConfigurationView {
 
-  private final GroupedGridDialogPanel groupedTraitView;
+  private final GroupedTraitView groupedTraitView;
   private final IIntValueDisplayFactory markerIntValueDisplayFactory;
   private final IIntValueDisplayFactory markerLessIntValueDisplayFactory;
 
@@ -22,7 +21,7 @@ public class GroupedFavorableTraitConfigurationView extends AbstractInitializabl
       int columnCount,
       IIntValueDisplayFactory factoryWithMarker,
       IIntValueDisplayFactory factoryWithoutMarker) {
-    this.groupedTraitView = new GroupedGridDialogPanel(columnCount);
+    this.groupedTraitView = new GroupedTraitView(columnCount);
     this.markerIntValueDisplayFactory = factoryWithMarker;
     this.markerLessIntValueDisplayFactory = factoryWithoutMarker;
   }
@@ -33,7 +32,7 @@ public class GroupedFavorableTraitConfigurationView extends AbstractInitializabl
       int maxValue,
       boolean selected,
       IIconToggleButtonProperties properties) {
-    return createTraitView(labelText, value, maxValue, selected, properties, markerIntValueDisplayFactory);
+    return groupedTraitView.addTraitView(labelText, value, maxValue, selected, properties, markerIntValueDisplayFactory);
   }
 
   public IToggleButtonTraitView< ? > addMarkerLessTraitView(
@@ -42,23 +41,13 @@ public class GroupedFavorableTraitConfigurationView extends AbstractInitializabl
       int maxValue,
       boolean selected,
       IIconToggleButtonProperties properties) {
-    return createTraitView(labelText, value, maxValue, selected, properties, markerLessIntValueDisplayFactory);
-  }
-
-  private IToggleButtonTraitView<SimpleTraitView> createTraitView(
-      String labelText,
-      int value,
-      int maxValue,
-      boolean selected,
-      IIconToggleButtonProperties properties,
-      IIntValueDisplayFactory factory) {
-    SimpleTraitView view = new SimpleTraitView(factory, labelText, value, maxValue);
-    FrontToggleButtonTraitViewWrapper<SimpleTraitView> abilityView = new FrontToggleButtonTraitViewWrapper<SimpleTraitView>(
-        view,
+    return groupedTraitView.addTraitView(
+        labelText,
+        value,
+        maxValue,
+        selected,
         properties,
-        selected);
-    groupedTraitView.addEntry(abilityView);
-    return abilityView;
+        markerLessIntValueDisplayFactory);
   }
 
   @Override
