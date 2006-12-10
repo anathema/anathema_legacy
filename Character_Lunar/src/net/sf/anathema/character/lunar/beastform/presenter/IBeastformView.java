@@ -13,7 +13,7 @@ public interface IBeastformView extends IView {
 
   public IIntValueView addAttributeValueView(String string, int currentValue, int maximalValue);
 
-  public IIntValueView addIntValueView(String string, int currentValue, int maximalValue);
+  public IIntValueView addCharmValueView(String string, int currentValue, int maximalValue);
 
   public IMagicLearnView addGiftsView(IGiftLearnViewProperties giftViewProperties);
 }

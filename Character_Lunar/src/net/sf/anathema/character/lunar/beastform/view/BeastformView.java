@@ -20,7 +20,7 @@ import net.sf.anathema.framework.value.IIntValueView;
 
 public class BeastformView implements IBeastformView {
 
-  private final JPanel baseContentPanel = new JPanel(new GridDialogLayout(2, false));
+  private final JPanel charmValuePanel = new JPanel(new GridDialogLayout(2, false));
   private final JPanel attributePanel = new JPanel(new GridDialogLayout(2, false));
   private final JPanel giftPanel = new JPanel(new GridDialogLayout(4, false));
   private final MarkerIntValueDisplayFactory intValueDisplayFactory;
@@ -34,8 +34,8 @@ public class BeastformView implements IBeastformView {
   }
 
   public JComponent getComponent() {
-    baseContentPanel.setBorder(new TitledBorder(properties.getCharmString()));
-    content.add(baseContentPanel);
+    charmValuePanel.setBorder(new TitledBorder(properties.getCharmString()));
+    content.add(charmValuePanel);
     content.add(new EndOfLineMarkerComponent());
     attributePanel.setBorder(new TitledBorder(properties.getAttributesString()));
     GridDialogLayoutData data = new GridDialogLayoutData();
@@ -51,9 +51,9 @@ public class BeastformView implements IBeastformView {
     return content;
   }
 
-  public IIntValueView addIntValueView(String label, int value, int maxValue) {
+  public IIntValueView addCharmValueView(String label, int value, int maxValue) {
     SimpleTraitView traitView = new SimpleTraitView(intValueDisplayFactory, label, value, maxValue);
-    traitView.addComponents(baseContentPanel);
+    traitView.addComponents(charmValuePanel);
     return traitView;
   }
 

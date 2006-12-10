@@ -153,7 +153,7 @@ public class BeastformPresenter implements IPresenter {
   }
 
   private void initCharmValuePresentation() {
-    final IIntValueView charmView = view.addIntValueView(
+    final IIntValueView charmView = view.addCharmValueView(
         resources.getString("Lunar.DeadlyBeastmanTransformation.Value"), model.getCharmValue(), 7); //$NON-NLS-1$
     charmView.addIntValueChangedListener(new IIntValueChangedListener() {
       public void valueChanged(int newValue) {
