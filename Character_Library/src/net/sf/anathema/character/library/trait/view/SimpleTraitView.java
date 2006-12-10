@@ -7,12 +7,9 @@ import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
-import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
-import net.sf.anathema.lib.gui.dialogcomponent.grouped.IGridDialogPanelContent;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 
-public class SimpleTraitView extends AbstractTraitView implements IGridDialogPanelContent, ITraitView<SimpleTraitView> {
+public class SimpleTraitView extends AbstractTraitView implements ITraitView<SimpleTraitView> {
 
   private final JLabel label;
   private final Component displayComponent;
@@ -33,18 +30,6 @@ public class SimpleTraitView extends AbstractTraitView implements IGridDialogPan
     this.label = new JLabel(getLabelText());
     this.displayComponent = getValueDisplay().getComponent();
     this.dotAlignment = dotAlignment;
-  }
-
-  public void addComponents(IGridDialogPanel dialogPanel) {
-    dialogPanel.add(new IDialogComponent() {
-      public int getColumnCount() {
-        return 2;
-      }
-
-      public void fillInto(JPanel panel, int columnCount) {
-        addComponents(panel);
-      }
-    });
   }
 
   public void addComponents(JPanel panel) {
