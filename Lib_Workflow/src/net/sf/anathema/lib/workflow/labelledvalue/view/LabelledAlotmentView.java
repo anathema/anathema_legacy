@@ -39,14 +39,19 @@ public class LabelledAlotmentView extends AbstractLabelledIntegerValueView imple
       }
 
       public void fillInto(JPanel panel, int columnCount) {
-        panel.add(titleLabel, GridDialogLayoutData.FILL_HORIZONTAL);
-        panel.add(valueLabel, GridDialogLayoutData.FILL_HORIZONTAL);
-        GridDialogLayoutData dialogData = new GridDialogLayoutData();
-        dialogData.setHorizontalAlignment(GridAlignment.END);
-        panel.add(seperatorLabel, dialogData);
-        panel.add(maxPointLabel, dialogData);
+        addTo(panel);
       }
     });
+  }
+
+  /** 4 columns */
+  public void addTo(JPanel panel) {
+    panel.add(titleLabel, GridDialogLayoutData.FILL_HORIZONTAL);
+    panel.add(valueLabel, GridDialogLayoutData.FILL_HORIZONTAL);
+    GridDialogLayoutData dialogData = new GridDialogLayoutData();
+    dialogData.setHorizontalAlignment(GridAlignment.END);
+    panel.add(seperatorLabel, dialogData);
+    panel.add(maxPointLabel, dialogData);
   }
 
   @Override
