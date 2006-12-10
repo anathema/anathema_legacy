@@ -20,19 +20,17 @@ import net.sf.anathema.framework.presenter.view.ButtonControlledObjectSelectionV
 import net.sf.anathema.framework.presenter.view.IButtonControlledObjectSelectionView;
 import net.sf.anathema.framework.presenter.view.ITextFieldComboBoxEditor;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 
 public class LinguisticsView extends AbstractRemovableEntryView<IRemovableEntryView> implements IView, ILinguisticsView {
 
-  private final IGridDialogPanel selectionPanel = new DefaultGridDialogPanel();
+  private final JPanel selectionPanel = new JPanel(new GridDialogLayout(3, false));
   private final JPanel entryPanel = new JPanel(new GridDialogLayout(2, false));
   private final JPanel mainPanel = new JPanel(new GridDialogLayout(1, false));
   private final JPanel panel = new JPanel(new GridDialogLayout(2, false));
   private IOverviewCategory category;
 
   public JComponent getComponent() {
-    mainPanel.add(selectionPanel.getComponent());
+    mainPanel.add(selectionPanel);
     GridDialogLayoutData entryData = GridDialogLayoutDataUtilities.createHorizontalFillNoGrab();
     entryData.setVerticalAlignment(GridAlignment.FILL);
     entryData.setGrabExcessVerticalSpace(true);

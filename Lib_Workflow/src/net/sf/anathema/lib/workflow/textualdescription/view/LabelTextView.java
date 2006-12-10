@@ -33,10 +33,6 @@ public class LabelTextView implements ITextView {
   }
 
   public JComponent getComponent() {
-    return getInitializedContent();
-  }
-
-  private JComponent getInitializedContent() {
     if (content == null) {
       content = textView.getComponent();
     }
@@ -65,6 +61,11 @@ public class LabelTextView implements ITextView {
   public void addToStandardPanel(JPanel panel) {
     panel.add(label, GridDialogLayoutDataUtilities.createTopData());
     panel.add(textView.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
+  }
+
+  public void addToStandardPanel(JPanel panel, GridDialogLayoutData textFieldData) {
+    panel.add(label, GridDialogLayoutDataUtilities.createTopData());
+    panel.add(textView.getComponent(), textFieldData);
   }
 
   public void addToStandardPanel(JPanel panel, int columnCount) {
