@@ -28,8 +28,6 @@ import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.lib.gui.gridlayout.DefaultGridDialogPanel;
-import net.sf.anathema.lib.gui.gridlayout.IGridDialogPanel;
 import net.sf.anathema.lib.gui.list.SmartJList;
 import net.sf.anathema.lib.gui.list.actionview.ActionAddableListView;
 import net.sf.anathema.lib.gui.list.actionview.SingleSelectionActionAddableListView;
@@ -64,8 +62,8 @@ public class PerkView implements IPerkView, IView {
     return content;
   }
 
-  private IGridDialogPanel createFilterPanel() {
-    IGridDialogPanel panel = new DefaultGridDialogPanel();
+  private JComponent createFilterPanel() {
+    JPanel panel = new JPanel(new GridDialogLayout(2, false));
     typeFilterView = new ObjectSelectionView<IIdentificate>(
         properties.getTypeString(),
         properties.getTypeFilterListRenderer(),
@@ -74,8 +72,8 @@ public class PerkView implements IPerkView, IView {
         properties.getCategoryString(),
         properties.getCategoryFilterListRenderer(),
         properties.getCategoryFilters());
-    typeFilterView.addComponents(panel, GridDialogLayoutData.FILL_HORIZONTAL);
-    categoryFilterView.addComponents(panel, GridDialogLayoutData.FILL_HORIZONTAL);
+    typeFilterView.addTo(panel, GridDialogLayoutData.FILL_HORIZONTAL);
+    categoryFilterView.addTo(panel, GridDialogLayoutData.FILL_HORIZONTAL);
     return panel;
   }
 
@@ -98,7 +96,7 @@ public class PerkView implements IPerkView, IView {
     perkList.setCellRenderer(properties.getAvailableListRenderer());
     JPanel availablePanel = new JPanel(new GridDialogLayout(1, false));
     availablePanel.setBorder(new TitledBorder(properties.getSelectionString()));
-    availablePanel.add(createFilterPanel().getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
+    availablePanel.add(createFilterPanel(), GridDialogLayoutData.FILL_HORIZONTAL);
     availablePanel.add(new JScrollPane(perkList), GridDialogLayoutData.FILL_BOTH);
     return availablePanel;
   }

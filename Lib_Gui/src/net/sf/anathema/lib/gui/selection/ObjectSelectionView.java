@@ -47,17 +47,13 @@ public class ObjectSelectionView<V> implements IObjectSelectionView<V>, IGridDia
   }
 
   public void addComponents(IGridDialogPanel dialogPanel) {
-    addComponents(dialogPanel, new GridDialogLayoutData());
-  }
-
-  public void addComponents(IGridDialogPanel panel, final IGridDialogLayoutData selectionData) {
-    panel.add(new IDialogComponent() {
+    dialogPanel.add(new IDialogComponent() {
       public int getColumnCount() {
         return 2;
       }
-
+    
       public void fillInto(JPanel layoutPanel, int columnCount) {
-        addTo(layoutPanel, selectionData);
+        addTo(layoutPanel, new GridDialogLayoutData());
       }
     });
   }
