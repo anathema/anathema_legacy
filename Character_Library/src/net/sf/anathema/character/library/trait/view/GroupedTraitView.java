@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 import net.sf.anathema.character.library.intvalue.IIconToggleButtonProperties;
 import net.sf.anathema.character.library.intvalue.IIntValueDisplayFactory;
 import net.sf.anathema.character.library.intvalue.IToggleButtonTraitView;
-import net.sf.anathema.lib.gui.dialogcomponent.grouped.GroupedColumnPanel;
+import net.sf.anathema.lib.gui.layout.GroupedColumnPanel;
 
 public class GroupedTraitView {
 
