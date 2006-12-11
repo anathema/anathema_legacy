@@ -4,6 +4,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.equipment.creation.view.IWeaponDamageView;
 import net.sf.anathema.character.generic.health.HealthType;
@@ -22,9 +23,9 @@ public class WeaponDamageView implements IWeaponDamageView {
   public void fillInto(JPanel panel, int columnCount) {
     panel.add(label);
     panel.add(valueSpinner.getComponent(), GridDialogLayoutData.FILL_HORIZONTAL);
-    GridDialogLayoutData boxData = new GridDialogLayoutData(GridDialogLayoutData.FILL_HORIZONTAL);
-    boxData.setHorizontalSpan(columnCount - 2);
-    panel.add(typeBox.getComponent(), boxData);
+    panel.add(typeBox.getComponent(), GridDialogLayoutDataUtilities.createHorizontalSpanData(
+        columnCount - 2,
+        GridDialogLayoutData.FILL_HORIZONTAL));
   }
 
   public void setEnabled(boolean enabled) {

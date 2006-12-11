@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
 
-import net.disy.commons.swing.layout.grid.GridAlignment;
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.generic.framework.ITraitReference;
@@ -50,9 +50,7 @@ public class SpecialtiesView implements ISpecialtiesConfigurationView, IView {
   }
 
   public JComponent getComponent() {
-    GridDialogLayoutData data = new GridDialogLayoutData();
-    data.setHorizontalAlignment(GridAlignment.FILL);
-    data.setVerticalAlignment(GridAlignment.FILL);
+    GridDialogLayoutData data = GridDialogLayoutDataUtilities.createFillNoGrab();
     data.setGrabExcessVerticalSpace(true);
     mainPanel.add(new JScrollPane(specialtyPanel), data);
     return mainPanel;

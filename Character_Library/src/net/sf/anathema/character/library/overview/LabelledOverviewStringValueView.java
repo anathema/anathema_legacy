@@ -3,7 +3,6 @@ package net.sf.anathema.character.library.overview;
 import javax.swing.JPanel;
 
 import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
-import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.lib.workflow.labelledvalue.IValueView;
 import net.sf.anathema.lib.workflow.labelledvalue.view.AbstractLabelledValueView;
@@ -20,11 +19,14 @@ public class LabelledOverviewStringValueView extends AbstractLabelledValueView i
 
   /** GridDialogLayout, 2 columns */
   public void addComponents(JPanel panel) {
-    GridDialogLayoutData beginData = new GridDialogLayoutData();
-    beginData.setHorizontalAlignment(GridAlignment.BEGINNING);
-    beginData.setGrabExcessHorizontalSpace(true);
-    panel.add(titleLabel, beginData);
+    panel.add(titleLabel, createGrabData());
     panel.add(valueLabel, GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
+  }
+
+  private GridDialogLayoutData createGrabData() {
+    GridDialogLayoutData beginData = new GridDialogLayoutData();
+    beginData.setGrabExcessHorizontalSpace(true);
+    return beginData;
   }
 
   public void setValue(String value) {
@@ -32,10 +34,7 @@ public class LabelledOverviewStringValueView extends AbstractLabelledValueView i
   }
 
   public void addComponents(JPanel panel, int columnCount) {
-    GridDialogLayoutData beginData = new GridDialogLayoutData();
-    beginData.setHorizontalAlignment(GridAlignment.BEGINNING);
-    beginData.setGrabExcessHorizontalSpace(true);
-    panel.add(titleLabel, beginData);
+    panel.add(titleLabel, createGrabData());
     GridDialogLayoutData data = GridDialogLayoutDataUtilities.createHorizontalFillNoGrab();
     data.setHorizontalSpan(columnCount - 1);
     panel.add(valueLabel, data);

@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionListener;
 
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
@@ -38,16 +39,13 @@ public class BeastformView implements IBeastformView {
     content.add(charmValuePanel);
     content.add(new EndOfLineMarkerComponent());
     attributePanel.setBorder(new TitledBorder(properties.getAttributesString()));
-    GridDialogLayoutData data = new GridDialogLayoutData();
-    data.setHorizontalSpan(2);
+    GridDialogLayoutData data = GridDialogLayoutDataUtilities.createHorizontalSpanData(2);
     data.setHorizontalAlignment(GridAlignment.FILL);
     content.add(attributePanel, data);
     content.add(new EndOfLineMarkerComponent());
     giftPanel.setBorder(new TitledBorder(properties.getGiftsString()));
     content.add(giftPanel);
-    GridDialogLayoutData overviewData = new GridDialogLayoutData();
-    overviewData.setVerticalAlignment(GridAlignment.BEGINNING);
-    content.add(overviewPanel, overviewData);
+    content.add(overviewPanel, GridDialogLayoutDataUtilities.createTopData());
     return content;
   }
 

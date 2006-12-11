@@ -7,7 +7,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import net.disy.commons.swing.layout.grid.GridAlignment;
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.framework.presenter.action.preferences.IPreferencesElement;
@@ -26,13 +26,10 @@ public abstract class AbstractCheckBoxPreferencesElement implements IPreferences
   private IDialogComponent getComponent(IResources resources) {
     final JComponent component = createCheckBox(resources);
     return new IDialogComponent() {
-
       public void fillInto(JPanel panel, int columnCount) {
-        GridDialogLayoutData singleElementData = new GridDialogLayoutData();
-        singleElementData.setHorizontalSpan(2);
-        singleElementData.setHorizontalAlignment(GridAlignment.FILL);
-        singleElementData.setGrabExcessHorizontalSpace(true);
-        panel.add(component, singleElementData);
+        panel.add(component, GridDialogLayoutDataUtilities.createHorizontalSpanData(
+            2,
+            GridDialogLayoutData.FILL_HORIZONTAL));
       }
 
       public int getColumnCount() {

@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
 import net.disy.commons.swing.border.TitledPanel;
-import net.disy.commons.swing.layout.grid.GridAlignment;
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.disy.commons.swing.util.ToggleComponentEnabler;
@@ -45,14 +45,11 @@ public class StandardPanelBuilder {
       }
 
       public void fillInto(JPanel panel, int columnCount) {
-        GridDialogLayoutData labelLayoutData = new GridDialogLayoutData();
-        labelLayoutData.setHorizontalAlignment(GridAlignment.BEGINNING);
-        labelLayoutData.setVerticalAlignment(GridAlignment.BEGINNING);
-        panel.add(checkBoxView.getComponent(), labelLayoutData);
+        panel.add(checkBoxView.getComponent(), GridDialogLayoutDataUtilities.createTopData());
         JComponent textContent = textView.getComponent();
-        GridDialogLayoutData contentData = new GridDialogLayoutData(GridDialogLayoutData.FILL_HORIZONTAL);
-        contentData.setHorizontalSpan(columnCount - 1);
-        panel.add(textContent, contentData);
+        panel.add(textContent, GridDialogLayoutDataUtilities.createHorizontalSpanData(
+            columnCount - 1,
+            GridDialogLayoutData.FILL_HORIZONTAL));
       }
     });
     return new ICheckableTextView() {

@@ -17,7 +17,7 @@ import javax.swing.event.ListDataListener;
 
 import net.disy.commons.core.util.Ensure;
 import net.disy.commons.swing.action.SmartAction;
-import net.disy.commons.swing.layout.grid.GridAlignment;
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
@@ -93,16 +93,15 @@ public class ComboConfigurationView implements IComboConfigurationView {
     viewPort.add(new JLabel(viewProperties.getComboedCharmsLabel()));
     viewPort.add(new JLabel());
 
-    GridDialogLayoutData nameData = new GridDialogLayoutData();
-    nameData.setVerticalAlignment(GridAlignment.BEGINNING);
+    GridDialogLayoutData nameData = GridDialogLayoutDataUtilities.createTopData();
     nameData.setVerticalSpan(2);
     viewPort.add(namePanel, nameData);
     magicLearnView.addTo(viewPort);
-    GridDialogLayoutData taskPaneData = new GridDialogLayoutData(GridDialogLayoutData.FILL_BOTH);
-    taskPaneData.setHorizontalSpan(5);
     comboPane.setBackground(viewPort.getBackground());
     comboScrollPane = new JScrollPane(comboPane);
-    viewPort.add(comboScrollPane, taskPaneData);
+    viewPort.add(comboScrollPane, GridDialogLayoutDataUtilities.createHorizontalSpanData(
+        5,
+        GridDialogLayoutData.FILL_BOTH));
     content = new JScrollPane(viewPort);
   }
 

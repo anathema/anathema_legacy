@@ -19,8 +19,8 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableModel;
 
 import net.disy.commons.core.util.Ensure;
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.EndOfLineMarkerComponent;
-import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.util.ButtonPanelBuilder;
@@ -143,9 +143,7 @@ public class SmartTable implements IView {
       panel.add(new EndOfLineMarkerComponent());
     }
     else {
-      GridDialogLayoutData buttonPanelData = new GridDialogLayoutData();
-      buttonPanelData.setVerticalAlignment(GridAlignment.BEGINNING);
-      panel.add(createButtonPanel(actions), buttonPanelData);
+      panel.add(createButtonPanel(actions), GridDialogLayoutDataUtilities.createTopData());
     }
     return panel;
   }
@@ -176,11 +174,9 @@ public class SmartTable implements IView {
   }
 
   private JPanel createToolbarStyleButtons(Action[] additionalActions) {
-    GridDialogLayoutData layoutData = new GridDialogLayoutData();
-    layoutData.setHorizontalAlignment(GridAlignment.FILL);
     JPanel buttonPanel = new JPanel(new GridDialogLayout(1, false));
     for (Action action : additionalActions) {
-      buttonPanel.add(new JButton(action), layoutData);
+      buttonPanel.add(new JButton(action), GridDialogLayoutDataUtilities.createHorizontalFillNoGrab());
     }
     return buttonPanel;
   }

@@ -7,6 +7,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
 import net.disy.commons.swing.border.TitledPanel;
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.campaign.music.impl.view.SimpleTabViewFactory;
@@ -84,9 +85,9 @@ public class MusicSelectionView implements IMusicSelectionView, IView {
       JLabel label = new JLabel(selectionProperties.getNoDecoderString() + ".", SwingConstants.CENTER); //$NON-NLS-1$
       trackDetailsView.setPlayerComponent(new TitledPanel(playerProperties.getPlayerBorderString(), label));
     }
-    GridDialogLayoutData tabbedPaneData = new GridDialogLayoutData(GridDialogLayoutData.FILL_BOTH);
-    tabbedPaneData.setHorizontalSpan(2);
-    panel.add(selectionActionsView.getComponent(), tabbedPaneData);
+    panel.add(selectionActionsView.getComponent(), GridDialogLayoutDataUtilities.createHorizontalSpanData(
+        2,
+        GridDialogLayoutData.FILL_BOTH));
     TabbedView tracksView = new TabbedView(TabDirection.Down);
     trackListView = new ActionAddableListView<IMp3Track>(
         selectionProperties.getCurrentlySelectedTracksString() + ":", IMp3Track.class); //$NON-NLS-1$    

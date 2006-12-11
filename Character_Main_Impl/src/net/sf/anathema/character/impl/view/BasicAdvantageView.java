@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 import javax.swing.border.TitledBorder;
 
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
@@ -53,22 +54,16 @@ public class BasicAdvantageView extends AbstractInitializableContentView<IAdvant
     virtueData.setVerticalSpan(2);
     virtueData.setVerticalAlignment(GridAlignment.FILL);
     addTitledPanel(properties.getVirtueTitle(), innerPanel, virtuePanel, virtueData);
-    GridDialogLayoutData willpowerData = new GridDialogLayoutData();
-    willpowerData.setHorizontalAlignment(GridAlignment.FILL);
-    willpowerData.setGrabExcessHorizontalSpace(true);
+    GridDialogLayoutData willpowerData = new GridDialogLayoutData(GridDialogLayoutData.FILL_HORIZONTAL);
     willpowerData.setVerticalAlignment(GridAlignment.BEGINNING);
     addTitledPanel(properties.getWillpowerTitle(), innerPanel, willpowerPanel, willpowerData);
-    GridDialogLayoutData essenceData = new GridDialogLayoutData();
-    essenceData.setHorizontalAlignment(GridAlignment.FILL);
-    essenceData.setGrabExcessHorizontalSpace(true);
+    GridDialogLayoutData essenceData = new GridDialogLayoutData(GridDialogLayoutData.FILL_HORIZONTAL);
     essenceData.setVerticalAlignment(GridAlignment.END);
     addTitledPanel(properties.getEssenceTitle(), innerPanel, essencePanelView.getComponent(), essenceData);
-    GridDialogLayoutData fullSpanData = new GridDialogLayoutData();
-    fullSpanData.setHorizontalSpan(2);
-    fullSpanData.setGrabExcessHorizontalSpace(true);
-    fullSpanData.setHorizontalAlignment(GridAlignment.FILL);
     backgroundPanel = createBackgroundPanel(properties.getBackgroundTitle());
-    innerPanel.add(backgroundPanel, fullSpanData);
+    innerPanel.add(backgroundPanel, GridDialogLayoutDataUtilities.createHorizontalSpanData(
+        2,
+        GridDialogLayoutData.FILL_HORIZONTAL));
   }
 
   private JPanel createBackgroundPanel(String title) {

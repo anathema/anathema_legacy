@@ -4,6 +4,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
@@ -31,9 +32,7 @@ public class RenownView implements IView {
     mainPanel.add(totalPanel);
     mainPanel.add(facePanel);
     content.add(mainPanel);
-    GridDialogLayoutData data = new GridDialogLayoutData();
-    data.setVerticalAlignment(GridAlignment.BEGINNING);
-    content.add(overviewPanel, data);
+    content.add(overviewPanel, GridDialogLayoutDataUtilities.createTopData());
     return content;
   }
 

@@ -15,7 +15,7 @@ import javax.swing.ListCellRenderer;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionListener;
 
-import net.disy.commons.swing.layout.grid.GridAlignment;
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.generic.framework.magic.view.IMagicViewListener;
@@ -62,16 +62,13 @@ public class SpellView implements ISpellView {
   public JLabel addDetailTitleView() {
     JLabel label = new JLabel();
     label.setFont(label.getFont().deriveFont(Font.BOLD));
-    GridDialogLayoutData data = new GridDialogLayoutData();
-    data.setHorizontalSpan(2);
-    detailPanel.add(label, data);
+    detailPanel.add(label, GridDialogLayoutDataUtilities.createHorizontalSpanData(2));
     return label;
   }
 
   public void initGui(IIdentificate[] circles) {
     JComponent selectionPanel = createSelectionPanel(circles);
-    GridDialogLayoutData data = new GridDialogLayoutData();
-    data.setHorizontalAlignment(GridAlignment.FILL);
+    GridDialogLayoutData data = GridDialogLayoutDataUtilities.createHorizontalFillNoGrab();
     content.add(selectionPanel, data);
     detailPanel.setBorder(new TitledBorder(properties.getDetailTitle()));
     content.add(detailPanel, data);

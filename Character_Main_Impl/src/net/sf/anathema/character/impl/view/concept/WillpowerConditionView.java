@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.character.view.concept.IWillpowerConditionView;
@@ -28,14 +29,8 @@ public class WillpowerConditionView implements IWillpowerConditionView {
   }
 
   public void addToStandardPanel(JPanel panel) {
-    GridDialogLayoutData labelLayoutData = new GridDialogLayoutData();
-    labelLayoutData.setHorizontalAlignment(GridAlignment.BEGINNING);
-    labelLayoutData.setVerticalAlignment(GridAlignment.BEGINNING);
-    panel.add(headerLabel, labelLayoutData);
-    GridDialogLayoutData contentData = new GridDialogLayoutData();
-    contentData.setHorizontalAlignment(GridAlignment.FILL);
-    contentData.setVerticalAlignment(GridAlignment.FILL);
-    panel.add(conditionLabel, contentData);
+    panel.add(headerLabel, GridDialogLayoutDataUtilities.createTopData());
+    panel.add(conditionLabel, GridDialogLayoutDataUtilities.createFillNoGrab());
   }
 
   public void setEnabled(boolean enabled) {

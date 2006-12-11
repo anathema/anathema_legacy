@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.text.StyledDocument;
 
-import net.disy.commons.swing.layout.grid.GridAlignment;
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
@@ -42,12 +42,8 @@ public class BasicItemDescriptionView extends AbstractInitializableContentView<O
       }
 
       public void fillInto(JPanel panel, int columnCount) {
-        GridDialogLayoutData labelLayoutData = new GridDialogLayoutData();
-        labelLayoutData.setHorizontalAlignment(GridAlignment.BEGINNING);
-        labelLayoutData.setVerticalAlignment(GridAlignment.BEGINNING);
-        panel.add(new JLabel(labelName), labelLayoutData);
-        JComponent component = textEditor.getComponent();
-        panel.add(component, GridDialogLayoutData.FILL_BOTH);
+        panel.add(new JLabel(labelName), GridDialogLayoutDataUtilities.createTopData());
+        panel.add(textEditor.getComponent(), GridDialogLayoutData.FILL_BOTH);
       }
     });
     return textEditor;
@@ -56,7 +52,6 @@ public class BasicItemDescriptionView extends AbstractInitializableContentView<O
   @Override
   protected void createContent(JPanel panel, Object properties) {
     panel.setLayout(new GridDialogLayout(1, false));
-    JPanel descriptionContent = standardPanelBuilder.getUntitledContent();
-    panel.add(descriptionContent, GridDialogLayoutData.FILL_BOTH);
+    panel.add(standardPanelBuilder.getUntitledContent(), GridDialogLayoutData.FILL_BOTH);
   }
 }

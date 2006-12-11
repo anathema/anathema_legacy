@@ -70,8 +70,8 @@ public class LabelTextView implements ITextView {
 
   public void addToStandardPanel(JPanel panel, int columnCount) {
     panel.add(label, GridDialogLayoutDataUtilities.createTopData());
-    GridDialogLayoutData data = new GridDialogLayoutData(GridDialogLayoutData.FILL_HORIZONTAL);
-    data.setHorizontalSpan(columnCount);
-    panel.add(textView.getComponent(), data);
+    panel.add(textView.getComponent(), GridDialogLayoutDataUtilities.createHorizontalSpanData(
+        columnCount,
+        GridDialogLayoutData.FILL_HORIZONTAL));
   }
 }

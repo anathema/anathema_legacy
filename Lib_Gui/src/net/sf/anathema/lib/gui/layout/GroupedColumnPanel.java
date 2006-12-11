@@ -3,7 +3,7 @@ package net.sf.anathema.lib.gui.layout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import net.disy.commons.swing.layout.grid.GridAlignment;
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 
@@ -41,8 +41,7 @@ public class GroupedColumnPanel {
     GridDialogLayout layout = new GridDialogLayout(columns.length, false);
     layout.setHorizontalSpacing(15);
     container.setLayout(layout);
-    GridDialogLayoutData data = new GridDialogLayoutData();
-    data.setVerticalAlignment(GridAlignment.BEGINNING);
+    GridDialogLayoutData data = GridDialogLayoutDataUtilities.createTopData();
     for (JPanel column : columns) {
       container.add(column, data);
     }

@@ -4,6 +4,7 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
@@ -39,13 +40,10 @@ public class IntimaciesView extends AbstractRemovableEntryView<IRemovableTraitVi
   }
 
   public JComponent getComponent() {
-    GridDialogLayoutData data = new GridDialogLayoutData();
+    GridDialogLayoutData data = GridDialogLayoutDataUtilities.createTopData();
     data.setHorizontalAlignment(GridAlignment.FILL);
-    data.setVerticalAlignment(GridAlignment.BEGINNING);
     mainPanel.add(entryPanel, data);
-    GridDialogLayoutData mainData = new GridDialogLayoutData();
-    mainData.setVerticalAlignment(GridAlignment.BEGINNING);
-    content.add(mainPanel, mainData);
+    content.add(mainPanel, GridDialogLayoutDataUtilities.createTopData());
     content.add(overviewPanel, data);
     return content;
   }

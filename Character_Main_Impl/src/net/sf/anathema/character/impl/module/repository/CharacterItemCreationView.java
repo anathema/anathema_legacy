@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
 
-import net.disy.commons.swing.layout.grid.GridAlignment;
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.util.LayoutUtilities;
@@ -29,8 +29,8 @@ public class CharacterItemCreationView implements ICharacterItemCreationView {
 
   public IToggleButtonPanel addToggleButtonPanel() {
     ToggleButtonPanel panel = new ToggleButtonPanel();
-    GridDialogLayoutData data = new GridDialogLayoutData(GridDialogLayoutData.FILL_VERTICAL);
-    data.setHorizontalAlignment(GridAlignment.FILL);
+    GridDialogLayoutData data = GridDialogLayoutDataUtilities.createFillNoGrab();
+    data.setGrabExcessVerticalSpace(true);
     data.setVerticalSpan(2);
     JComponent content = panel.getComponent();
     component.add(content, data);
@@ -42,19 +42,18 @@ public class CharacterItemCreationView implements ICharacterItemCreationView {
   }
 
   public void requestFocus() {
-    //nothing to do
+    // nothing to do
   }
 
   public void dispose() {
-    //nothing to do
+    // nothing to do
   }
 
   public IListObjectSelectionView<ITemplateTypeAggregation> addObjectSelectionList() {
     ListObjectSelectionView<ITemplateTypeAggregation> view = new ListObjectSelectionView<ITemplateTypeAggregation>(
         ITemplateTypeAggregation.class);
-    GridDialogLayoutData data = new GridDialogLayoutData(GridDialogLayoutData.FILL_BOTH);
     JScrollPane scrollPane = new JScrollPane(view.getComponent());
-    component.add(scrollPane, data);
+    component.add(scrollPane, GridDialogLayoutData.FILL_BOTH);
     return view;
   }
 

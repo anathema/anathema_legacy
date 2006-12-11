@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.layout.grid.IDialogComponent;
 import net.sf.anathema.framework.presenter.DirectoryFileChooser;
@@ -51,12 +52,10 @@ public class RepositoryPreferencesElement implements IPreferencesElement {
     return new IDialogComponent() {
       public void fillInto(JPanel panel, int columnCount) {
         panel.add(repositoryLabel);
-        GridDialogLayoutData data = new GridDialogLayoutData();
-        data.setHorizontalSpan(columnCount - 1);
-        panel.add(browseButton, data);
-        GridDialogLayoutData singleElementData = new GridDialogLayoutData(GridDialogLayoutData.FILL_HORIZONTAL);
-        singleElementData.setHorizontalSpan(columnCount);
-        panel.add(repositoryTextField, singleElementData);
+        panel.add(browseButton, GridDialogLayoutDataUtilities.createHorizontalSpanData(columnCount - 1));
+        panel.add(repositoryTextField, GridDialogLayoutDataUtilities.createHorizontalSpanData(
+            columnCount,
+            GridDialogLayoutData.FILL_HORIZONTAL));
       }
 
       public int getColumnCount() {

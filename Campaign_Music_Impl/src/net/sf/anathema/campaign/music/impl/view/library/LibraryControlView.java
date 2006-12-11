@@ -7,6 +7,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionListener;
 
 import net.disy.commons.swing.action.SmartAction;
+import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.campaign.music.impl.view.SimpleTabViewFactory;
@@ -107,9 +108,9 @@ public class LibraryControlView implements ILibraryControlView, IView {
           factory.createTabView(searchPanel),
           new ContentProperties(viewProperties.getSearchString()));
     }
-    GridDialogLayoutData tabbedPanelData = new GridDialogLayoutData(GridDialogLayoutData.FILL_BOTH);
-    tabbedPanelData.setHorizontalSpan(2);
-    content.add(leftTabbedView.getComponent(), tabbedPanelData);
+    content.add(leftTabbedView.getComponent(), GridDialogLayoutDataUtilities.createHorizontalSpanData(
+        2,
+        GridDialogLayoutData.FILL_BOTH));
     TabbedView rightTabbedView = new TabbedView(TabDirection.Up);
     rightTabbedView.addView(factory.createTabView(createMp3ListPanel()), new ContentProperties(
         viewProperties.getTracksString()));
@@ -131,8 +132,8 @@ public class LibraryControlView implements ILibraryControlView, IView {
     searchPanel = new JPanel(new GridDialogLayout(2, false));
     searchPanel.add(searchParameterPanel);
     searchPanel.add(searchButton);
-    GridDialogLayoutData categorizationData = new GridDialogLayoutData(GridDialogLayoutData.FILL_BOTH);
-    categorizationData.setHorizontalSpan(2);
-    searchPanel.add(searchMusicCategorizationView.getContent(properties), categorizationData);
+    searchPanel.add(
+        searchMusicCategorizationView.getContent(properties),
+        GridDialogLayoutDataUtilities.createHorizontalSpanData(2, GridDialogLayoutData.FILL_BOTH));
   }
 }
