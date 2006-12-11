@@ -10,9 +10,10 @@ import java.awt.image.BufferedImage;
 import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 
-public class ToolBarButton extends JButton {
+import net.sf.anathema.framework.value.NoFocusButton;
+
+public class ToolBarButton extends NoFocusButton {
 
   @Override
   public void setAction(Action action) {
