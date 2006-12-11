@@ -10,11 +10,12 @@
 			<manifest>
 				<attribute name="Built-By" value="${user.name}" />
 				<attribute name="Main-Class" value="net.sf.anathema.AnathemaBootLoader" />
+				<attribute name="SplashScreen-Image" value="icons/core/AnathemaSplashNew.png" />
 				<attribute name="Class-Path" value="${library.dir}/jpf.jar ${library.dir}/jpf-boot.jar ${library.dir}/commons-logging-api.jar" />
 				<section name="net/sf/anathema/AnathemaBootLoader.class" />
 			</manifest>
 			<fileset dir="${boot.dir}" includes="**/*" />
-			<fileset dir="../Anathema/resources" includes="**/*" />
+			<fileset dir="../Anathema/resources" includes="**/*" excludes="**/Thumbs.db"/>
 		</jar>
 	</target>
 
@@ -27,10 +28,9 @@
 
 	<target name="Compile Bootloader" depends="Prepare">
 		<getEclipseClasspath property="classpath" workspace="${workspace.dir}" projectName="Anathema" relative="false" initialiseWorkspace="true" />
-		<javac classpath="${classpath}" srcdir="../Anathema/src" destdir="${boot.dir}" target="1.5" debug="true">
+		<javac classpath="${classpath}" srcdir="../Anathema/src" destdir="${boot.dir}" target="1.6" debug="true">
 			<include name="**/AnathemaBootLoader.java" />
 			<include name="**/AnathemaPathResolver.java" />
-			<include name="**/SplashWindow.java" />
 		</javac>
 	</target>
 
