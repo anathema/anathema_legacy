@@ -24,7 +24,7 @@ public class AnathemaPathResolver extends StandardPathResolver {
     }
     String libraryFile = libraryPath.replace(THIRDPARTY_FOLDER, "lib"); //$NON-NLS-1$
     try {
-      return new File("./" + libraryFile).toURL(); //$NON-NLS-1$
+      return new File("./" + libraryFile).toURI().toURL(); //$NON-NLS-1$
     }
     catch (MalformedURLException e) {
       throw new IllegalArgumentException("Couldn't resolve URL: " + libraryFile, e); //$NON-NLS-1$

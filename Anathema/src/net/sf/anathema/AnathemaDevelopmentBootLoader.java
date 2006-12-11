@@ -61,14 +61,18 @@ public class AnathemaDevelopmentBootLoader {
 
   private static String getPluginRepositories() throws IOException, MalformedURLException {
     StringBuilder builder = new StringBuilder();
-    builder.append(new File(".").toURL().getPath()); //$NON-NLS-1$
+    builder.append(getFilePath(".")); //$NON-NLS-1$
     builder.append(","); //$NON-NLS-1$
-    builder.append(new File("./plugins").toURL().getPath()); //$NON-NLS-1$   
+    builder.append(getFilePath("./plugins")); //$NON-NLS-1$   
     Enumeration<URL> systemResources = ClassLoader.getSystemResources("."); //$NON-NLS-1$
     while (systemResources.hasMoreElements()) {
       builder.append(","); //$NON-NLS-1$
       builder.append(systemResources.nextElement().getPath());
     }
     return builder.toString();
+  }
+
+  private static String getFilePath(String string) throws MalformedURLException {
+    return new File(string).toURI().toURL().getPath();
   }
 }

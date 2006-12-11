@@ -115,7 +115,7 @@ public class AnathemaPrintAction extends SmartAction {
             }
           });
       if (OpenPdfPreferencesElement.openDocumentAfterPrint()) {
-        BrowserControl.displayUrl(selectedFile.toURL());
+        BrowserControl.displayUrl(selectedFile.toURI().toURL());
       }
     }
     catch (InvocationTargetException e) {

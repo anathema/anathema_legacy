@@ -66,7 +66,7 @@ public class PdfCharacterSheetDemo {
           directContent,
           character,
           description);
-      BrowserControl.displayUrl(outputStream.toURL());
+      BrowserControl.displayUrl(outputStream.toURI().toURL());
     }
     catch (Exception de) {
       de.printStackTrace();
@@ -79,7 +79,9 @@ public class PdfCharacterSheetDemo {
   private static PdfEncodingRegistry createEncodingRegistry(IResources resources) {
     PdfEncodingRegistry encodingRegistry = new PdfEncodingRegistry();
     BaseFont baseFont = encodingRegistry.getBaseFont();
-    encodingRegistry.setArmourContentEncoder(new ArmourEncoder(resources, baseFont, new ArmourTableEncoder(baseFont, resources)));
+    encodingRegistry.setArmourContentEncoder(new ArmourEncoder(resources, baseFont, new ArmourTableEncoder(
+        baseFont,
+        resources)));
     encodingRegistry.setWeaponContentEncoder(new WeaponryEncoder(resources, baseFont));
     encodingRegistry.setIntimaciesEncoder(new IntimaciesEncoder(baseFont));
     return encodingRegistry;
