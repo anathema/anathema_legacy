@@ -5,7 +5,6 @@ import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
 import net.disy.commons.swing.layout.GridDialogLayoutDataUtilities;
-import net.disy.commons.swing.layout.grid.GridAlignment;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.disy.commons.swing.widgets.HorizontalLine;

@@ -2,7 +2,6 @@ package net.sf.anathema.campaign.view;
 
 import java.awt.Dimension;
 
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.text.StyledDocument;
