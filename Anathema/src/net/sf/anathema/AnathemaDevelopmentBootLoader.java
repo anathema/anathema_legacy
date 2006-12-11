@@ -1,8 +1,5 @@
 package net.sf.anathema;
 
-import java.awt.Toolkit;
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -22,24 +19,10 @@ import org.java.plugin.util.ExtendedProperties;
 public class AnathemaDevelopmentBootLoader {
 
   public static void main(String[] arguments) throws Exception {
-    showSplashScreen();
     ObjectFactory factory = ObjectFactory.newInstance();
     PluginManager manager = factory.createManager(factory.createRegistry(), new AnathemaPathResolver());
     collectPlugins(manager);
     new Anathema(manager).startApplication();
-    SplashWindow.disposeSplash();
-  }
-
-  private static void showSplashScreen() throws IOException, InterruptedException {
-    BufferedInputStream inputStream = new BufferedInputStream(
-        AnathemaBootLoader.class.getResourceAsStream("/icons/core/AnathemaSplashNew.png")); //$NON-NLS-1$
-    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-    byte[] buffer = new byte[4096];
-    int numChars;
-    while ((numChars = inputStream.read(buffer)) > 0) {
-      outputStream.write(buffer, 0, numChars);
-    }
-    SplashWindow.splash(Toolkit.getDefaultToolkit().createImage(outputStream.toByteArray()));
   }
 
   @SuppressWarnings("unchecked")
