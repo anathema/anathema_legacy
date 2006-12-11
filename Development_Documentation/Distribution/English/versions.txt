@@ -15,13 +15,14 @@ http://anathema.sf.net
 + The program now makes an informed guess at the standard printing error, namely the file being in use. (Requested by Peter Blake)
 + Windows Installer finally online
 * Some twiddling with the series view
-* Fixed layout issues in music view
+* Fixed layout issues in music, hearts blood, linguistics views
 * Added intelligent enforcement of 1-dot-minimum for Craft subtraits.
 * "Character concept" moved to "Description" screen.
 
 -- Bugs Fixed --
 * Series should be loading once again (Thanks to Jontu Kontar)
 * Characters with Craft specialties now can be loaded (Discovered by ArsGlacialis)
+* [1E/Core Rules] Rate no longer shows when dealing with close combat weapons. (Thanks ipsi)
 * [1E] Fixed two problems with Abyssal Appearance/Essence relation
 * [1E] Weapon speeds can be negative (Found by uteck)
 * Crafts now register as a favored ability (Reported by ArsGlacialis & Peter Blake)
