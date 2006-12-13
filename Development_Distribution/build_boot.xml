@@ -31,6 +31,7 @@
 		<javac classpath="${classpath}" srcdir="../Anathema/src" destdir="${boot.dir}" target="1.6" debug="true">
 			<include name="**/AnathemaBootLoader.java" />
 			<include name="**/AnathemaPathResolver.java" />
+			<include name="**/AnathemaPrebootSplashscreen.java" />
 		</javac>
 	</target>
 
