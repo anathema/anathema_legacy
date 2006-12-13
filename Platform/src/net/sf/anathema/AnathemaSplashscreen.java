@@ -6,13 +6,17 @@ import java.awt.GradientPaint;
 import java.awt.Graphics2D;
 import java.awt.Paint;
 import java.awt.SplashScreen;
+import java.awt.font.FontRenderContext;
+import java.awt.font.TextLayout;
 import java.awt.geom.Rectangle2D;
 
 public class AnathemaSplashscreen {
   private final static Rectangle2D.Double textAreaRectangle = new Rectangle2D.Double(93, 318, 454, 19);
   private final static AnathemaSplashscreen instance = new AnathemaSplashscreen();
   private final Graphics2D graphics = SplashScreen.getSplashScreen().createGraphics();
+  private final FontRenderContext renderContext = new FontRenderContext(null, true, false);
   private final Paint textAreaGradient;
+  private final Font font;
 
   private AnathemaSplashscreen() {
     Color startColor = new Color(12, 28, 59);
@@ -25,7 +29,7 @@ public class AnathemaSplashscreen {
         (int) bounds.getMaxX(),
         (int) bounds.getMaxY(),
         endColor);
-    graphics.setFont(graphics.getFont().deriveFont(Font.BOLD));
+    this.font = graphics.getFont().deriveFont(Font.BOLD);
   }
 
   public static AnathemaSplashscreen getInstance() {
@@ -38,7 +42,8 @@ public class AnathemaSplashscreen {
       return;
     }
     resetTextArea();
-    graphics.drawString(message, 105, 333);
+    TextLayout layout = new TextLayout(message, font, renderContext);
+    layout.draw(graphics, 105, 333);
     splashScreen.update();
   }
 
@@ -54,7 +59,8 @@ public class AnathemaSplashscreen {
     if (splashScreen == null || !splashScreen.isVisible()) {
       return;
     }
-    graphics.drawString(string, 445, 90);
+    TextLayout layout = new TextLayout(string, font.deriveFont(font.getSize2D() + 2), renderContext);
+    layout.draw(graphics, 445, 91);
     splashScreen.update();
   }
 }

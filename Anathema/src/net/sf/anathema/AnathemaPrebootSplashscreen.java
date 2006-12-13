@@ -3,25 +3,22 @@ package net.sf.anathema;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.SplashScreen;
+import java.awt.font.FontRenderContext;
+import java.awt.font.TextLayout;
 
 public class AnathemaPrebootSplashscreen {
-  private final static AnathemaPrebootSplashscreen instance = new AnathemaPrebootSplashscreen();
-  private final Graphics2D graphics = SplashScreen.getSplashScreen().createGraphics();
-
-  private AnathemaPrebootSplashscreen() {
-    graphics.setFont(graphics.getFont().deriveFont(Font.BOLD));
-  }
-
-  public static AnathemaPrebootSplashscreen getInstance() {
-    return instance;
-  }
 
   public void displayStatusMessage(String message) {
     SplashScreen splashScreen = SplashScreen.getSplashScreen();
     if (splashScreen == null || !splashScreen.isVisible()) {
       return;
     }
-    graphics.drawString(message, 105, 333);
+    Graphics2D graphics = SplashScreen.getSplashScreen().createGraphics();
+    TextLayout layout = new TextLayout(message, graphics.getFont().deriveFont(Font.BOLD), new FontRenderContext(
+        null,
+        true,
+        false));
+    layout.draw(graphics, 105, 333);
     splashScreen.update();
   }
 }
