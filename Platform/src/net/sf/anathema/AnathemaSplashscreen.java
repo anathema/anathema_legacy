@@ -75,6 +75,6 @@ public class AnathemaSplashscreen {
   }
 
   private boolean isSplashScreenSupported() {
-    return System.getProperty("java.version").startsWith("1.5"); //$NON-NLS-1$ //$NON-NLS-2$
+    return !System.getProperty("java.version").startsWith("1.5"); //$NON-NLS-1$ //$NON-NLS-2$
   }
 }
