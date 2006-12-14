@@ -7,6 +7,11 @@ http://anathema.sf.net
 			Release 1.01 "" (Upcoming)
 ===------------------------------------------------------------------------------===
 
+-- ATTENTION --
+Corrected the type of various [1E]-Charms, which might lead to illegal combos.
+Charms changed: 
+*Lunar.Sense-BorrowingMethod: Now Simple.
+
 -- Features --
 + [1E] All character types now use 2E-Style sheets, allowing them to use equipment and so on.
 

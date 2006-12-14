@@ -23,7 +23,7 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="1"/>
+        <essence cost="3"/>
         <willpower cost="1"/>
       </temporary>
     </cost>
@@ -83,7 +83,7 @@
   <charm id="Lunar.BlossomingGiftOfLuna" exalt="Lunar" group="Shapechanging">
     <prerequisite>
       <trait id="Charisma" value="4"/>
-      <essence value="2"/>
+      <essence value="3"/>
       <charmReference id="Lunar.CallingLunasFavor"/>
     </prerequisite>
     <cost>
@@ -272,7 +272,7 @@
   <charm id="Lunar.Ox-BodyTechnique" exalt="Lunar" group="BodyEnhancement">
     <prerequisite>
       <trait id="Stamina" value="1"/>
-      <essence value="2"/>
+      <essence value="1"/>
     </prerequisite>
     <cost>
       <temporary/>
@@ -645,7 +645,8 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="2"/>
+        <essence cost="8"/>
+        <willpower cost="1"/>
       </temporary>
     </cost>
     <duration duration="Instant"/>
@@ -820,7 +821,7 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="2"/>
+        <essence cost="2" text="per die"/>
       </temporary>
     </cost>
     <duration duration="Instant"/>
@@ -853,7 +854,7 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="3"/>
+        <essence cost="6"/>
       </temporary>
     </cost>
     <duration duration="Indefinite"/>
@@ -895,7 +896,7 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="3"/>
+        <essence cost="2"/>
       </temporary>
     </cost>
     <duration duration="Instant"/>
@@ -1260,7 +1261,7 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="2"/>
+        <essence cost="3" text="per die"/>
       </temporary>
     </cost>
     <duration duration="Instant"/>
@@ -1426,7 +1427,7 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="1"/>
+        <essence cost="2" text="per die"/>
       </temporary>
     </cost>
     <duration duration="Instant"/>
@@ -1991,7 +1992,7 @@
       </temporary>
     </cost>
     <duration amount="1" unit="turn"/>
-    <charmtype type="Simple"/>
+    <charmtype type="Reflexive"/>
     <source source="Lunars1st" page="167"/>
   </charm>
   <charm id="Lunar.ShadowlandsCircleNecromancy" exalt="Lunar" group="Sorcery">
@@ -2033,9 +2034,12 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="Varies"/>
-        <willpower cost="1"/>
+        <essence cost="5"/>
+        <willpower cost="1"/>        
       </temporary>
+      <permanent>
+      	<experience cost="3"/>
+      </permanent>
     </cost>
     <combo comboable="false"/>
     <duration duration="Instant"/>
@@ -2050,9 +2054,12 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="Varies"/>
+        <essence cost="3"/>
         <willpower cost="1"/>
       </temporary>
+      <permanent>
+      	<experience cost="1"/>
+      </permanent>
     </cost>
     <combo comboable="false"/>
     <duration duration="Instant"/>
@@ -2068,7 +2075,6 @@
     <cost>
       <temporary>
         <essence cost="Varies"/>
-        <willpower cost="1"/>
       </temporary>
     </cost>
     <combo comboable="false"/>
@@ -2086,7 +2092,7 @@
     <cost>
       <temporary>
         <essence cost="Varies"/>
-        <willpower cost="1"/>
+        <willpower cost="2"/>
       </temporary>
     </cost>
     <combo comboable="false"/>
@@ -2230,7 +2236,7 @@
   </charm>
   <charm id="Lunar.WolfEnduranceMethod" exalt="Lunar" group="SurvivalHealing">
     <prerequisite>
-      <essence id="Essence" value="1"/>
+      <essence id="Essence" value="2"/>
       <trait id="Stamina" value="4"/>
       <charmReference id="Lunar.Water-ProvidingTechnique"/>
       <charmReference id="Lunar.Food-ScentingMethod"/>
@@ -2571,7 +2577,7 @@
       </temporary>
     </cost>
     <duration duration="Sustained"/>
-    <charmtype type="Supplemental"/>
+    <charmtype type="Simple"/>
     <source source="Lunars1st" page="175"/>
   </charm>
   <charm id="Lunar.Ever-WaryFoxTechnique" exalt="Lunar" group="Perception">
