@@ -2083,7 +2083,7 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="Spell's" text="essence cost"/>
+        <essence cost="Varies"/>
         <willpower cost="1"/>
       </temporary>
     </cost>
@@ -2099,7 +2099,7 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="Spell's" text="essence cost"/>
+        <essence cost="Varies"/>
         <willpower cost="1"/>
       </temporary>
     </cost>
@@ -2116,7 +2116,7 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="Spell's" text="essence cost"/>
+        <essence cost="Varies"/>
         <willpower cost="2"/>
       </temporary>
     </cost>
@@ -2147,7 +2147,7 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="Spell's" text="essence cost"/>
+        <essence cost="Varies"/>
         <willpower cost="1"/>
       </temporary>
     </cost>
@@ -2164,7 +2164,7 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="Spell's" text="essence cost"/>
+        <essence cost="Varies"/>
         <willpower cost="3"/>
       </temporary>
     </cost>
