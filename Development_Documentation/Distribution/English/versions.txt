@@ -8,7 +8,7 @@ http://anathema.sf.net
 ===------------------------------------------------------------------------------===
 
 -- ATTENTION --
-Corrected the type of various [1E]-Charms, which might lead to illegal combos.
+Corrected the type of several [1E] Lunar and Sidereal Charms, which might lead to illegal combos.
 Charms changed: 
 *Lunar.Sense-BorrowingMethod: Now Simple.
 
@@ -23,6 +23,7 @@ Charms changed:
 * Fixed layout issues in music, hearts blood, linguistics views
 * Added intelligent enforcement of 1-dot-minimum for Craft subtraits.
 * "Character concept" moved to "Description" screen.
+* Cost for sorcery-type Charms now is "Varies" throughout the database.  
 
 -- Bugs Fixed --
 * Series should be loading once again (Thanks to Jontu Kontar)
@@ -32,7 +33,22 @@ Charms changed:
 * [1E] Weapon speeds can be negative (Found by uteck)
 * Crafts now register as a favored ability (Reported by ArsGlacialis & Peter Blake)
 * Experienced specialty values are displayed correctly after loading
-* [1E] 'Unspeaking Aura of Dread' (Lunar) now has correct prerequisites.
+
+-- [1E] Charms Corrected (Kudos to Ricardo) --
+  Lunars 
+* Correct name for Weapon-Shaping Prana, Form-Fixing Method
+* Correct prerequisites for Unspeaking Aura of Dread, Blossoming Gift of Luna, Ox-Body Technique, Wolf Endurance Method  
+* Correct type for Invulnerable Moonsilver Carapace, Sense-Borrowing Method 
+* Correct cost for Masking the Brilliant Form, Deadly Viper Strike, Mighty Bear Crush, Hyena Jaw Technique,
+     Ossific Shard Shot, Tiger Claw Swat, Eagle Eye Advantage, Form-Fixing Method, Tattoo-Cutting Wisdom, 
+     Moonsilver-Shaping Rite, Celestial Circle Sorcery
+          
+  Sidereals
+* Correct type for Smiling at the Damned, Marvelous Inclusion of Details, Systematic Understanding of Everything, Hungry Touch
+* Correct duration for Prior Warning  
+* Correct cost for One Direction Invocation, Neighborhood Relocation Scheme, Conning Chaos Technique, End Debate
+* Correct prerequisites for Destiny-Knitting Entanglement, Cash and Murder Games, Of the Shape of the World, 
+	Inevitable Pursuit, Slick Essence Replenishment
 
 ===------------------------------------------------------------------------------===
 			Release 1.00 "Lap" (22/10/06)

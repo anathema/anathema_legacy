@@ -99,6 +99,7 @@
       <temporary>
         <essence cost="16"/>
         <willpower cost="1"/>
+        <health cost="1"/>
       </temporary>
     </cost>
     <duration duration="Indefinite"/>
@@ -507,7 +508,7 @@
   <charm id="Sidereal.Destiny-KnittingEntanglement" exalt="Sidereal" group="Craft">
     <prerequisite>
       <trait id="Craft" value="3"/>
-      <essence value="3"/>
+      <essence value="2"/>
       <charmReference id="Sidereal.World-ShapingArtisticVision"/>
     </prerequisite>
     <cost>
@@ -634,7 +635,7 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="1"/>
+        <essence cost="15"/>
         <willpower cost="1"/>
         <health cost="1"/>
       </temporary>
@@ -846,7 +847,7 @@
   <charm id="Sidereal.CashandMurderGames" exalt="Sidereal" group="Socialize">
     <prerequisite>
       <trait id="Socialize" value="3"/>
-      <essence value="1"/>
+      <essence value="2"/>
       <charmReference id="Sidereal.ShunTheSmilingLady"/>
     </prerequisite>
     <cost>
@@ -1181,7 +1182,7 @@
       </temporary>
     </cost>
     <duration duration="Instant"/>
-    <charmtype type="Simple"/>
+    <charmtype type="Supplemental"/>
     <source source="Sidereals1st" page="158"/>
   </charm>
   <charm id="Sidereal.PerfectionVisionaryWarrior" exalt="Sidereal" group="Melee">
@@ -1501,7 +1502,7 @@
       </temporary>
     </cost>
     <duration duration="Instant"/>
-    <charmtype type="Simple"/>
+    <charmtype type="Supplemental"/>
     <source source="Sidereals1st" page="163"/>
   </charm>
   <charm id="Sidereal.EfficientSecretaryTechnique" exalt="Sidereal" group="Investigation">
@@ -1637,7 +1638,7 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="1"/>
+        <essence cost="10"/>
         <willpower cost="1"/>
       </temporary>
     </cost>
@@ -1657,7 +1658,7 @@
       </temporary>
     </cost>
     <duration event="Sleep"/>
-    <charmtype type="Simple"/>
+    <charmtype type="Reflexive"/>
     <source source="Sidereals1st" page="166"/>
   </charm>
   <charm id="Sidereal.TheMethodologySecrets" exalt="Sidereal" group="Lore">
@@ -1707,7 +1708,7 @@
   </charm>
   <charm id="Sidereal.OfTheShapeWorld" exalt="Sidereal" group="Lore">
     <prerequisite>
-      <trait id="Lore" value="3"/>
+      <trait id="Lore" value="4"/>
       <essence value="3"/>
       <charmReference id="Sidereal.SystematicUnderstandingEverything"/>
     </prerequisite>
@@ -2005,7 +2006,7 @@
       </temporary>
     </cost>
     <duration duration="Instant"/>
-    <charmtype type="Simple"/>
+    <charmtype type="Supplemental"/>
     <source source="Sidereals1st" page="174"/>
   </charm>
   <charm id="Sidereal.ForgottenEarth" exalt="Sidereal" group="Athletics">
@@ -2066,7 +2067,7 @@
         <essence cost="6"/>
       </temporary>
     </cost>
-    <duration amount="5" unit="minute"/>
+    <duration amount="5" unit="hour"/>
     <charmtype type="Simple"/>
     <source source="Sidereals1st" page="175"/>
   </charm>
@@ -2116,7 +2117,7 @@
   </charm>
   <charm id="Sidereal.InevitablePursuit" exalt="Sidereal" group="Awareness">
     <prerequisite>
-      <trait id="Awareness" value="3"/>
+      <trait id="Awareness" value="5"/>
       <essence value="2"/>
     </prerequisite>
     <cost>
@@ -2151,7 +2152,7 @@
   </charm>
   <charm id="Sidereal.SlickEssenceReplenishment" exalt="Sidereal" group="Bureaucracy">
     <prerequisite>
-      <trait id="Bureaucracy" value="3"/>
+      <trait id="Bureaucracy" value="1"/>
       <essence value="2"/>
     </prerequisite>
     <cost>
@@ -2214,7 +2215,7 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="1"/>
+        <essence cost="10"/>
         <willpower cost="1"/>
         <health cost="1"/>
       </temporary>
