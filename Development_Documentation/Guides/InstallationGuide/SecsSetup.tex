@@ -3,23 +3,23 @@ Anathema is rather tame when it comes to the hardware involved. It has successfu
 
 While the program does not demand anything special in terms of hardware, there is some software that is required to run the program or at least necessary to make the most out of it.
 
-First of all, Java. Anathema is written in the Java programming language and thus needs a working installation of the Java Runtime Environment to run. The minimum Java version required is version 5.0.
+First of all, Java. Anathema is written in the Java programming language and thus needs a working installation of the Java Runtime Environment to run. The minimum Java version required is version 6.0.
 
 If you are already using Java, you can find out what version you are running by opening a console window and typing \texttt{java --version} followed by the \textsc{Enter} key. The resulting output should look something like this:
 \medskip
 
 \small
-\texttt{java version "1.5.0\_06"
+\texttt{java version "1.6.0"
 \newline
-Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0\_06-b05)
+Java(TM) SE Runtime Environment (build 1.6.0-b105)
 \newline
-Java HotSpot(TM) Client VM (build 1.5.0\_06-b05, mixed mode)}
+Java HotSpot(TM) Client VM (build 1.5.0-b105, mixed mode, sharing)}
 \medskip
 
 \normalsize
-The version in this case, repeated in each line, is ``1.5.0\_06''. The relevant digit in our case is the second one: If it is 5 or greater, you're fine.
+The version in this case, repeated in each line, is ``1.6.0''. The relevant digit in our case is the second one: If it is 6 or greater, you're fine.
 
-If it reads lower than 5 or if you do not yet have a copy of the Java Runtime Environment installed, point your web browser to the Java website\footnote{http://java.com/en/download/manual.jsp}, where you can always download the latest version for free.
+If it reads lower than 6 or if you do not yet have a copy of the Java Runtime Environment installed, point your web browser to the Java website\footnote{http://java.com/en/download/manual.jsp}, where you can always download the latest version for free.
 \medskip
 
 In addition to Java, you might want a copy of Adobe Reader to view the documents produced. You can get it free of charge from Adobe\footnote{http://www.adobe.com/products/acrobat/readstep2.html}. Of course, any other program capable of displaying PDF files will suffice.
@@ -55,11 +55,11 @@ There are several ways of starting the program, again depending on your operatin
 
 On most systems you can launch Anathema by opening a console window, changing to the Anathema directory and typing \texttt{java --jar anathema.jar}, followed by a stroke of \textsc{Enter}.
 
-\paragraph{Windows} users may opt to use the executable file anathema.exe that comes with the archive or type \texttt{javaw --jar anathema.jar} instead, but this will swallow any error reports that might come up during launch. Also, a freshly installed Java is configured to launch .jar files when they are double clicked in Windows.
+\paragraph{Windows} users may opt to use the start menu entry created by the automated installer. Launch it as you would any program.
 
 \paragraph{Linux} systems are provided with a shell script, anathema.sh. This configures Anathema to save data in a hidden directory within your home folder and override any settings within the program. See ``Command Line Options'' below for more info on how to customize this script.
 
-\paragraph{Mac OS X} integrates Anathema into it's launcher via the .dmg file provided. Launch it by clicking the icon.
+\paragraph{Mac OS X} integrates Anathema into its launcher via the .dmg file provided. Launch it by clicking the icon.
   
 \subsection{Command Line Options}
 To submit any optional command line parameter to the launcher, you can put \linebreak
