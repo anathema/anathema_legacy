@@ -8,9 +8,8 @@ http://anathema.sf.net
 ===------------------------------------------------------------------------------===
 
 -- ATTENTION --
-Corrected the type of several [1E] Lunar and Sidereal Charms, which might lead to illegal combos.
-Charms changed: 
-*Lunar.Sense-BorrowingMethod: Now Simple.
+Corrected the type of [1E] Lunar Sense-Borrowing Method to Simple, which might make combos illegal.
+Please contact us if you encounter any problems.
 
 -- Features --
 + [1E] All character types now use 2E-Style sheets, allowing them to use equipment and so on.
