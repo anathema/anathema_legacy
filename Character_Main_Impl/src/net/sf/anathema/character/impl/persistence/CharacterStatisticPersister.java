@@ -28,9 +28,6 @@ import org.dom4j.Element;
 
 public class CharacterStatisticPersister {
 
-  // Abwärtskompatibilität
-  private static final IIdentificate OLD_HEROIC_MORTAL_TYPE_ID = new Identificate("HeroicMortal"); //$NON-NLS-1$
-
   private final AttributeConfigurationPersister attributePersister = new AttributeConfigurationPersister();
   private final AbilityConfigurationPersister abilityPersister = new AbilityConfigurationPersister();
   private final CharacterConceptPersister characterConceptPersister = new CharacterConceptPersister();
@@ -114,16 +111,8 @@ public class CharacterStatisticPersister {
 
   private ITemplateType loadTemplateType(Element parent) throws PersistenceException {
     String typeId = ElementUtilities.getRequiredText(parent, TAG_CHARACTER_TYPE);
-    CharacterType characterType;
-    String subTypeValue;
-    if (typeId.equals(OLD_HEROIC_MORTAL_TYPE_ID.getId())) {
-      characterType = CharacterType.MORTAL;
-      subTypeValue = OLD_HEROIC_MORTAL_TYPE_ID.getId();
-    }
-    else {
-      characterType = CharacterType.getById(typeId);
-      subTypeValue = parent.element(TAG_CHARACTER_TYPE).attributeValue(ATTRIB_SUB_TYPE);
-    }
+    CharacterType characterType = CharacterType.getById(typeId);
+    String subTypeValue = parent.element(TAG_CHARACTER_TYPE).attributeValue(ATTRIB_SUB_TYPE);
     IIdentificate subtype = subTypeValue == null ? TemplateType.DEFAULT_SUB_TYPE : new Identificate(subTypeValue);
     return new TemplateType(characterType, subtype);
   }

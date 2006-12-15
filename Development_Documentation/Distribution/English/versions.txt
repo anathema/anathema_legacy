@@ -11,6 +11,9 @@ http://anathema.sf.net
 Corrected the type of [1E] Lunar Sense-Borrowing Method to Simple, which might make combos illegal.
 Please contact us if you encounter any problems.
 
+This version will no longer load Solars and Heroic Mortals created with with early 0.x versions. 
+Load and re-save them with v1.0 to make them work.
+
 -- Features --
 + [1E] All character types now use 2E-Style sheets, allowing them to use equipment and so on.
 
