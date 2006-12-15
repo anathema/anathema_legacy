@@ -52,14 +52,7 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
       String[] definedNames,
       IExaltedRuleSet ruleset) {
     IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames, ruleset);
-    IEquipmentStatisticsCreationViewFactory viewFactory = new EquipmentStatisticsCreationViewFactory();
-    EquipmentTypeChoicePresenterPage startPage = new EquipmentTypeChoicePresenterPage(resources, model, viewFactory);
-    WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
-    dialog.show();
-    if (dialog.isCanceled()) {
-      return null;
-    }
-    return createStats(model);
+    return runDialog(parentComponent, resources, model);
   }
 
   public IEquipmentStats editStats(
@@ -70,6 +63,13 @@ public class EquipmentStatsCreationFactory implements IEquipmentStatsCreationFac
       IExaltedRuleSet ruleset) {
     IEquipmentStatisticsCreationModel model = new EquipmentStatisticsCreationModel(definedNames, ruleset);
     createModel(model, stats);
+    return runDialog(parentComponent, resources, model);
+  }
+
+  private IEquipmentStats runDialog(
+      Component parentComponent,
+      IResources resources,
+      IEquipmentStatisticsCreationModel model) {
     IEquipmentStatisticsCreationViewFactory viewFactory = new EquipmentStatisticsCreationViewFactory();
     EquipmentTypeChoicePresenterPage startPage = new EquipmentTypeChoicePresenterPage(resources, model, viewFactory);
     WizardDialog dialog = new AnathemaWizardDialog(parentComponent, startPage);
