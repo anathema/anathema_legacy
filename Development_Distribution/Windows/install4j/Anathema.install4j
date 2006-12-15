@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="4.0.3" transformSequenceNumber="1">
   <directoryPresets config="../../build/files/anathema.exe" />
-  <application name="Anathema" distributionSourceDir="" applicationId="1767-2668-0185-7732" mediaDir="." mediaFilePattern="${compiler:sys.shortName}_v${compiler:sys.version}_${compiler:sys.platform}" compression="6" lzmaCompression="false" pack200Compression="true" keepModificationTimes="false" shortName="Anathema" publisher="" publisherWeb="http://anathema.sf.net" version="1.0" allPathsRelative="true" backupOnSave="false" autoSave="true" convertDotsToUnderscores="false" macSignature="????" javaMinVersion="1.5" javaMaxVersion="1.5" allowBetaVM="true">
+  <application name="Anathema" distributionSourceDir="" applicationId="1767-2668-0185-7732" mediaDir="." mediaFilePattern="${compiler:sys.shortName}_v${compiler:sys.version}_${compiler:sys.platform}" compression="6" lzmaCompression="false" pack200Compression="true" keepModificationTimes="false" shortName="Anathema" publisher="" publisherWeb="http://anathema.sf.net" version="1.0" allPathsRelative="true" backupOnSave="false" autoSave="true" convertDotsToUnderscores="false" macSignature="????" javaMinVersion="1.5" javaMaxVersion="" allowBetaVM="true">
     <languages skipLanguageSelection="true">
       <principalLanguage id="en" customLocalizationFile="./Installer.properties" />
       <additionalLanguages>
