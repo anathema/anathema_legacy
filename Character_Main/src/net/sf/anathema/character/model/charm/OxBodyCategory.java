@@ -3,8 +3,8 @@ package net.sf.anathema.character.model.charm;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ITraitContext;
 import net.sf.anathema.character.generic.health.HealthLevelType;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.library.trait.LimitedTrait;
+import net.sf.anathema.character.library.trait.TraitType;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 
 public class OxBodyCategory extends LimitedTrait {
@@ -17,8 +17,7 @@ public class OxBodyCategory extends LimitedTrait {
       HealthLevelType[] healthLevelTypes,
       String id,
       IIncrementChecker incrementChecker) {
-    super(
-        OtherTraitType.OxBodyTechnique,
+    super(new TraitType("OxBodyTechnique"), //$NON-NLS-1$
         SimpleTraitTemplate.createEssenceLimitedTemplate(0),
         incrementChecker,
         context);

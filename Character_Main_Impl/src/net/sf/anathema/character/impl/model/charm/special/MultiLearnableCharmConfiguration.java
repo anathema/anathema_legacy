@@ -5,8 +5,8 @@ import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
-import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.library.trait.LimitedTrait;
+import net.sf.anathema.character.library.trait.TraitType;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
@@ -29,7 +29,7 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
       final IMultiLearnableCharm specialCharm,
       final ICharmLearnableArbitrator arbitrator) {
     this.charm = charm;
-    this.trait = new LimitedTrait(OtherTraitType.SpecialCharm, SimpleTraitTemplate.createStaticLimitedTemplate(
+    this.trait = new LimitedTrait(new TraitType("SpecialCharm"), SimpleTraitTemplate.createStaticLimitedTemplate( //$NON-NLS-1$
         0,
         specialCharm.getAbsoluteLearnLimit()), new IIncrementChecker() {
       public boolean isValidIncrement(int increment) {

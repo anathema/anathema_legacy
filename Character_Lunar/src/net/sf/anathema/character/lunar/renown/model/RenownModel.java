@@ -13,10 +13,10 @@ import net.sf.anathema.character.generic.traits.ITraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.generic.traits.types.ITraitTypeVisitor;
 import net.sf.anathema.character.library.trait.DefaultTrait;
 import net.sf.anathema.character.library.trait.FriendlyValueChangeChecker;
 import net.sf.anathema.character.library.trait.ITrait;
+import net.sf.anathema.character.library.trait.TraitType;
 import net.sf.anathema.character.library.trait.rules.ITraitRules;
 import net.sf.anathema.character.library.trait.rules.TraitRules;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
@@ -56,15 +56,7 @@ public class RenownModel extends AbstractAdditionalModelAdapter implements IReno
   private void createFaceTrait() {
     ITraitContext traitContext = context.getTraitContext();
     ITraitTemplate renownTemplate = SimpleTraitTemplate.createStaticLimitedTemplate(0, 10, LowerableState.LowerableLoss);
-    ITraitType faceType = new ITraitType() {
-      public void accept(ITraitTypeVisitor visitor) {
-        visitor.visitCustomTraitType(this);
-      }
-
-      public String getId() {
-        return "Face"; //$NON-NLS-1$
-      }
-    };
+    ITraitType faceType = new TraitType("Face"); //$NON-NLS-1$
     ITraitRules rules = new TraitRules(faceType, renownTemplate, traitContext.getLimitationContext());
     this.face = new DefaultTrait(rules, traitContext, new FaceValueChangeChecker(this));
     ConfigurableCharacterChangeListener attributeChangeListener = new ConfigurableCharacterChangeListener() {
@@ -114,7 +106,7 @@ public class RenownModel extends AbstractAdditionalModelAdapter implements IReno
   }
 
   public void addChangeListener(final IChangeListener listener) {
-    face.addCurrentValueListener(new GlobalChangeAdapter(listener));
+    face.addCurrentValueListener(new GlobalChangeAdapter<Object>(listener));
     collection.addChangeListener(listener);
   }
 
