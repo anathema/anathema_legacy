@@ -5,17 +5,14 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_CHARACTER_TYPE;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_STATISTICS;
 import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
-import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersister;
 import net.sf.anathema.character.generic.impl.magic.SpellException;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
-import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.persistence.charm.CharmConfigurationPersister;
@@ -36,9 +33,9 @@ public class CharacterStatisticPersister {
 
   private final AttributeConfigurationPersister attributePersister = new AttributeConfigurationPersister();
   private final AbilityConfigurationPersister abilityPersister = new AbilityConfigurationPersister();
-  private final CharacterConceptPersister characterConceptPersister;
+  private final CharacterConceptPersister characterConceptPersister = new CharacterConceptPersister();
   private final EssenceConfigurationPersister essencePersister = new EssenceConfigurationPersister();
-  private final VirtueConfigurationPersister virtuePersister;
+  private final VirtueConfigurationPersister virtuePersister = new VirtueConfigurationPersister();
   private final BackgroundConfigurationPersister backgroundPersister;
   private final WillpowerConfigurationPersister willpowerPersister = new WillpowerConfigurationPersister();
   private final CharmConfigurationPersister charmPersister = new CharmConfigurationPersister();
@@ -49,11 +46,7 @@ public class CharacterStatisticPersister {
   private final AdditionalModelPersister additonalModelPersister;
 
   public CharacterStatisticPersister(ICharacterGenerics generics, IAnathemaMessaging messaging) {
-    IAdditionalPersister virtueFlawPersister = generics.getAdditonalPersisterFactoryRegistry().get(
-        IAdditionalTemplate.SOLAR_VIRTUE_FLAW_ID).createPersister(messaging);
-    this.virtuePersister = new VirtueConfigurationPersister(virtueFlawPersister);
     this.generics = generics;
-    this.characterConceptPersister = new CharacterConceptPersister();
     this.backgroundPersister = new BackgroundConfigurationPersister(generics.getBackgroundRegistry());
     this.additonalModelPersister = new AdditionalModelPersister(
         generics.getAdditonalPersisterFactoryRegistry(),
@@ -101,9 +94,7 @@ public class CharacterStatisticPersister {
           casteCollection);
       statistics.setExperienced(experienced);
       essencePersister.load(statisticsElement, statistics.getTraitConfiguration());
-      IAdditionalModel virtueFlawModel = statistics.getExtendedConfiguration().getAdditionalModel(
-          IAdditionalTemplate.SOLAR_VIRTUE_FLAW_ID);
-      virtuePersister.load(statisticsElement, statistics.getTraitConfiguration(), virtueFlawModel);
+      virtuePersister.load(statisticsElement, statistics.getTraitConfiguration());
       attributePersister.load(statisticsElement, statistics.getTraitConfiguration());
       abilityPersister.load(statisticsElement, statistics.getTraitConfiguration());
       backgroundPersister.load(statisticsElement, statistics.getTraitConfiguration().getBackgrounds());
