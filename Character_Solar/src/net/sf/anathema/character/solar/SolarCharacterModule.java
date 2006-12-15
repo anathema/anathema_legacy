@@ -34,7 +34,9 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
     characterGenerics.getCharmProvider().setSpecialCharms(
         CharacterType.SOLAR,
         ExaltedEdition.FirstEdition,
-        new ISpecialCharm[] { ISolarSpecialCharms.OX_BODY_TECHNIQUE });
+        new ISpecialCharm[] {
+            ISolarSpecialCharms.OX_BODY_TECHNIQUE,
+            ISolarSpecialCharms.ENVIRONMENTAL_HAZARD_RESISTING_MEDITATION });
     characterGenerics.getCharmProvider().setSpecialCharms(
         CharacterType.SOLAR,
         ExaltedEdition.SecondEdition,

@@ -69,4 +69,7 @@ public interface ISolarSpecialCharms {
 
   public static final IMultipleEffectCharm PHOENIX_RENEWAL_TACTIC = new MultipleEffectCharm(
       "Solar.PhoenixRenewalTactic", new String[] { "Compassion", "Conviction", "Temperance", "Valor" }); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
+
+  public static final IMultipleEffectCharm ENVIRONMENTAL_HAZARD_RESISTING_MEDITATION = new MultipleEffectCharm(
+      "Solar.EnvironmentalHazard-ResistingMeditation", new String[] { "Wind", "Cold", "Heat", "Acid" }); //$NON-NLS-1$//$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
 }

@@ -11,6 +11,10 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_DESCRIPTION;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_NAME;
 import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.TAG_SPECIAL;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
@@ -20,6 +24,8 @@ import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
+import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
+import net.sf.anathema.character.model.charm.special.ISubeffect;
 import net.sf.anathema.framework.persistence.TextPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -28,6 +34,8 @@ import org.dom4j.Element;
 
 public class CharmConfigurationPersister {
 
+  private static final String HAZARD_RESISTANCE = "Solar.EnvironmentalHazard-ResistingMeditation"; //$NON-NLS-1$
+  private static final Pattern HAZARD_RESISTANCE_PATTERN = Pattern.compile(HAZARD_RESISTANCE + "(Acid|Cold|Heat|Wind)"); //$NON-NLS-1$
   private final TextPersister textPersister = new TextPersister();
 
   public void save(Element parent, ICharacterStatistics statistics) {
@@ -155,14 +163,48 @@ public class CharmConfigurationPersister {
     for (Object charmObjectElement : groupElement.elements()) {
       Element charmElement = (Element) charmObjectElement;
       String charmId = charmElement.attributeValue(ATTRIB_NAME);
-      boolean experienceLearned = ElementUtilities.getBooleanAttribute(charmElement, ATTRIB_EXPERIENCE_LEARNED, false);
+      Element specialElement;
+      boolean isOldSolarHazardResistanceCharm = isSolarHazardResistanceCharm(charmId);
+      if (isOldSolarHazardResistanceCharm) {
+        if (charmConfiguration.isLearned(HAZARD_RESISTANCE)) {
+          continue;
+        }
+        charmId = HAZARD_RESISTANCE;
+      }
+      boolean experienceLearned = isExperienceLearned(charmElement);
       group.learnCharmNoParents(charmConfiguration.getCharmById(charmId), experienceLearned);
-      Element specialElement = charmElement.element(TAG_SPECIAL);
+      if (isOldSolarHazardResistanceCharm) {
+        createHazardSpecialconfiguration(groupElement, charmConfiguration);
+      }
+      specialElement = charmElement.element(TAG_SPECIAL);
       if (specialElement != null) {
         ISpecialCharmConfiguration specialConfiguration = charmConfiguration.getSpecialCharmConfiguration(charmId);
         specialPersister.loadConfiguration(specialElement, specialConfiguration);
       }
     }
+  }
+
+  private boolean isExperienceLearned(Element charmElement) {
+    return ElementUtilities.getBooleanAttribute(charmElement, ATTRIB_EXPERIENCE_LEARNED, false);
+  }
+
+  private void createHazardSpecialconfiguration(Element groupElement, ICharmConfiguration charmConfiguration) {
+    IMultipleEffectCharmConfiguration configuration = (IMultipleEffectCharmConfiguration) charmConfiguration.getSpecialCharmConfiguration(HAZARD_RESISTANCE);
+    for (Element charmElement : ElementUtilities.elements(groupElement, TAG_CHARM)) {
+      String name = charmElement.attributeValue(ATTRIB_NAME);
+      Matcher matcher = HAZARD_RESISTANCE_PATTERN.matcher(name);
+      if (matcher.matches()) {
+        String effectName = matcher.group(1);
+        ISubeffect effect = configuration.getEffectById(effectName);
+        boolean experienceLearned = isExperienceLearned(charmElement);
+        effect.setCreationLearned(!experienceLearned);
+        effect.setExperienceLearned(experienceLearned);
+      }
+    }
+  }
+
+  private boolean isSolarHazardResistanceCharm(String charmId) {
+    return HAZARD_RESISTANCE_PATTERN.matcher(charmId).matches();
   }
 
   private void loadCombos(Element parent, IComboConfiguration comboConfiguration, ICharmConfiguration charms) {
@@ -173,7 +215,7 @@ public class CharmConfigurationPersister {
     for (Object comboElementObject : combosElement.elements(TAG_COMBO)) {
       Element comboElement = (Element) comboElementObject;
       ICombo combo = comboConfiguration.getEditCombo();
-      boolean experienceLearned = ElementUtilities.getBooleanAttribute(comboElement, ATTRIB_EXPERIENCE_LEARNED, false);
+      boolean experienceLearned = isExperienceLearned(comboElement);
       textPersister.restoreTextualDescription(comboElement, TAG_NAME, combo.getName());
       textPersister.restoreTextualDescription(comboElement, TAG_DESCRIPTION, combo.getDescription());
       for (Object charmElementObject : comboElement.elements(TAG_CHARM)) {

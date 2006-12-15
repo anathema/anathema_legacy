@@ -3680,7 +3680,7 @@
     <charmtype type="Permanent"/>
     <source source="CBZenith" page="72"/>
   </charm>
-  <charm id="Solar.EnvironmentalHazard-ResistingMeditationWind" exalt="Solar" group="Resistance">
+   <charm id="Solar.EnvironmentalHazard-ResistingMeditation" exalt="Solar" group="Resistance">
     <prerequisite>
       <trait id="Resistance" value="5"/>
       <essence value="2"/>
@@ -3691,43 +3691,7 @@
     <duration duration="Permanent"/>
     <charmtype type="Permanent"/>
     <source source="CBZenith" page="72"/>
-  </charm>
-  <charm id="Solar.EnvironmentalHazard-ResistingMeditationCold" exalt="Solar" group="Resistance">
-    <prerequisite>
-      <trait id="Resistance" value="5"/>
-      <essence value="2"/>
-    </prerequisite>
-    <cost>
-      <temporary/>
-    </cost>
-    <duration duration="Permanent"/>
-    <charmtype type="Permanent"/>
-    <source source="CBZenith" page="72"/>
-  </charm>
-  <charm id="Solar.EnvironmentalHazard-ResistingMeditationHeat" exalt="Solar" group="Resistance">
-    <prerequisite>
-      <trait id="Resistance" value="5"/>
-      <essence value="2"/>
-    </prerequisite>
-    <cost>
-      <temporary/>
-    </cost>
-    <duration duration="Permanent"/>
-    <charmtype type="Permanent"/>
-    <source source="CBZenith" page="72"/>
-  </charm>
-  <charm id="Solar.EnvironmentalHazard-ResistingMeditationAcid" exalt="Solar" group="Resistance">
-    <prerequisite>
-      <trait id="Resistance" value="5"/>
-      <essence value="2"/>
-    </prerequisite>
-    <cost>
-      <temporary/>
-    </cost>
-    <duration duration="Permanent"/>
-    <charmtype type="Permanent"/>
-    <source source="CBZenith" page="72"/>
-  </charm>
+  </charm>  
   <charm id="Solar.Alcohol-ResistingPrana" exalt="Solar" group="Resistance">
     <prerequisite>
       <trait id="Resistance" value="1"/>
