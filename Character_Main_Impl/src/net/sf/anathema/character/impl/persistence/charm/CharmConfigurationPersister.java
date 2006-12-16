@@ -129,9 +129,6 @@ public class CharmConfigurationPersister {
     for (Object groupObjectElement : charmsElement.elements(TAG_CHARMGROUP)) {
       Element groupElement = (Element) groupObjectElement;
       CharacterType characterType = getCharacterTypeFromElement(groupElement, defaultCharacterType);
-      if (characterType == null) {
-        characterType = statistics.getCharacterTemplate().getTemplateType().getCharacterType();
-      }
       ISpecialCharmPersister specialPersister;
       specialPersister = new SpecialCharmPersister(charmConfiguration.getCharmProvider().getSpecialCharms(
           characterType,
