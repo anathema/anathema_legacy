@@ -24,8 +24,15 @@ import net.sf.anathema.lib.workflow.wizard.selection.ObjectSelectionWizardPage;
 
 public abstract class AbstractAnathemaItemAction extends AbstractItemAction {
 
+  private final IItemOperator itemOperator;
+
   public AbstractAnathemaItemAction(IAnathemaModel anathemaModel, IResources resources, IItemCreator creator) {
-    super(anathemaModel, resources, creator);
+    this(anathemaModel, resources, new ItemCreationOperator(creator, resources, anathemaModel.getItemManagement()));
+  }
+
+  public AbstractAnathemaItemAction(IAnathemaModel anathemaModel, IResources resources, IItemOperator operator) {
+    super(anathemaModel, resources);
+    this.itemOperator = operator;
   }
 
   @Override
@@ -47,7 +54,7 @@ public abstract class AbstractAnathemaItemAction extends AbstractItemAction {
         return;
       }
       IItemType type = model.getSelectedObject();
-      createItem(parentComponent, type, registry.get(type));
+      itemOperator.operate(parentComponent, type, registry.get(type));
     }
     catch (Exception e) {
       Message message = new Message(getResources().getString("AnathemaPersistence.NewWizard.Message.Error"), e); //$NON-NLS-1$
@@ -55,10 +62,10 @@ public abstract class AbstractAnathemaItemAction extends AbstractItemAction {
     }
   }
 
-  private ItemTypeSelectionProperties createSelectionProperties() {
+  protected ItemTypeSelectionProperties createSelectionProperties() {
     final ItemTypeCreationViewPropertiesExtensionPoint extension = (ItemTypeCreationViewPropertiesExtensionPoint) getAnathemaModel().getExtensionPointRegistry()
         .get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
-    return new ItemTypeSelectionProperties(getResources(), getLegalityProvider(), new IObjectUi() {
+    IObjectUi objectUi = new IObjectUi() {
       public Icon getIcon(Object value) {
         return extension.get((IItemType) value).getIcon();
       }
@@ -66,7 +73,8 @@ public abstract class AbstractAnathemaItemAction extends AbstractItemAction {
       public String getLabel(Object value) {
         return getResources().getString(extension.get((IItemType) value).getLabelKey());
       }
-    });
+    };
+    return new ItemTypeSelectionProperties(getResources(), getLegalityProvider(), objectUi);
   }
 
   private Registry<IItemType, IAnathemaWizardModelTemplate> createModelTemplateRegistry(

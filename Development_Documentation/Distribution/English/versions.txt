@@ -19,9 +19,10 @@ Load and re-save them with v1.0 to make them work.
 
 -- Usability --
 + Toolbar with transparent icons (Proposed by Democritus)
++ Added an option to delete items from the repository
 + The program now makes an informed guess at the standard printing error, namely the file being in use. (Requested by Peter Blake)
 + Windows Installer finally online
-+ Solar "Elemental Hazard-Resisting Meditation" now uses the sub-effect interface.
++ [1E] Solar "Elemental Hazard-Resisting Meditation" now uses the sub-effect interface.
 * Some twiddling with the series view
 * Fixed layout issues in music, hearts blood, linguistics views
 * Added intelligent enforcement of 1-dot-minimum for Craft subtraits.

@@ -22,6 +22,7 @@ import net.sf.anathema.lib.workflow.wizard.selection.IWizardFactory;
 public class ItemTypeNewAction extends AbstractItemAction {
 
   private final IItemType type;
+  private final ItemCreationOperator itemCreationOperator;
 
   public static Action[] createToolActions(IAnathemaModel model, IResources resources) {
     List<Action> actions = new ArrayList<Action>();
@@ -42,7 +43,11 @@ public class ItemTypeNewAction extends AbstractItemAction {
   }
 
   public ItemTypeNewAction(IItemType type, IAnathemaModel model, IResources resources) {
-    super(model, resources, new NewItemCreator(model));
+    super(model, resources);
+    this.itemCreationOperator = new ItemCreationOperator(
+        new NewItemCreator(model),
+        resources,
+        model.getItemManagement());
     this.type = type;
   }
 
@@ -60,7 +65,7 @@ public class ItemTypeNewAction extends AbstractItemAction {
       }
     }
     try {
-      createItem(parentComponent, type, template);
+      itemCreationOperator.operate(parentComponent, type, template);
     }
     catch (PersistenceException e) {
       Message message = new Message(getResources().getString("AnathemaPersistence.NewMenu.Message.Error"), e); //$NON-NLS-1$
