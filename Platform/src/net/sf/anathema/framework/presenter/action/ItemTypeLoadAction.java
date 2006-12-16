@@ -15,6 +15,7 @@ import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
+import net.sf.anathema.framework.presenter.view.IItemTypeCreationViewProperties;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
@@ -73,13 +74,13 @@ public final class ItemTypeLoadAction extends AbstractItemAction {
   protected void execute(Component parentComponent) {
     ItemTypeCreationViewPropertiesExtensionPoint extension = (ItemTypeCreationViewPropertiesExtensionPoint) getAnathemaModel().getExtensionPointRegistry()
         .get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
+    IItemTypeCreationViewProperties properties = extension.get(itemType);
     ItemSelectionWizardPageFactory factory = new ItemSelectionWizardPageFactory(
         itemType,
         getAnathemaModel().getRepository().getPrintNameFileAccess(),
         getAnathemaModel().getItemManagement(),
-        getResources(),
-        extension.get(itemType),
-        new LoadWizardPropertiesFactory());
+        properties,
+        new LoadItemWizardProperties(getResources(), properties.getItemTypeUI()));
     IAnathemaWizardModelTemplate template = factory.createTemplate();
     IAnathemaWizardPage startPage = factory.createPage(template);
     boolean canceled = showDialog(parentComponent, startPage);

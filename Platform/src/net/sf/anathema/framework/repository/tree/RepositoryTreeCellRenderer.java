@@ -4,16 +4,18 @@ import java.awt.Component;
 
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeCellRenderer;
 
+import net.disy.commons.swing.ui.IObjectUi;
+import net.sf.anathema.development.ObjectUiTreeCellRenderer;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.lib.resources.IResources;
 
-public class RepositoryTreeCellRenderer extends DefaultTreeCellRenderer {
+public class RepositoryTreeCellRenderer extends ObjectUiTreeCellRenderer {
 
   private final IResources resources;
 
-  public RepositoryTreeCellRenderer(IResources resources) {
+  public RepositoryTreeCellRenderer(IObjectUi ui, IResources resources) {
+    super(ui);
     this.resources = resources;
   }
 

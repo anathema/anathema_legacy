@@ -9,7 +9,7 @@ import javax.swing.JScrollPane;
 
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.IAnathemaModel;
-import net.sf.anathema.framework.repository.tree.RepositoryTreeCellRenderer;
+import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.framework.repository.tree.RepositoryTreeModel;
 import net.sf.anathema.framework.repository.tree.RepositoryTreePresenter;
 import net.sf.anathema.framework.repository.tree.RepositoryTreeView;
@@ -37,9 +37,12 @@ public final class RepositoryViewAction extends SmartAction {
 
   private JComponent createRepositoryTreeComponent() {
     RepositoryTreeView treeView = new RepositoryTreeView();
+    ItemTypeCreationViewPropertiesExtensionPoint extension = (ItemTypeCreationViewPropertiesExtensionPoint) model.getExtensionPointRegistry()
+        .get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
+    ObjectUiTreeCellRenderer renderer = new ObjectUiTreeCellRenderer(new ItemTypeTreeUi(resources, extension));
     new RepositoryTreePresenter(resources, new RepositoryTreeModel(
         model.getRepository().getPrintNameFileAccess(),
-        model.getItemTypeRegistry()), treeView, new RepositoryTreeCellRenderer(resources), "Repository").initPresentation(); //$NON-NLS-1$
+        model.getItemTypeRegistry()), treeView, renderer, "Repository").initPresentation(); //$NON-NLS-1$
     return treeView.getComponent();
   }
 }

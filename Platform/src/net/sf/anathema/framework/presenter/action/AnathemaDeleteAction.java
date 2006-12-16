@@ -6,6 +6,7 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
+import net.sf.anathema.framework.presenter.view.IItemTypeCreationViewProperties;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -39,13 +40,13 @@ public class AnathemaDeleteAction extends AbstractAnathemaItemAction {
     for (IItemType type : types) {
       ItemTypeCreationViewPropertiesExtensionPoint extension = (ItemTypeCreationViewPropertiesExtensionPoint) getAnathemaModel().getExtensionPointRegistry()
           .get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
+      IItemTypeCreationViewProperties properties = extension.get(type);
       registry.register(type, new ItemSelectionWizardPageFactory(
           type,
           printNameFileAccess,
           itemManagement,
-          getResources(),
-          extension.get(type),
-          new DeleteWizardPropertiesFactory()));
+          properties,
+          new DeleteItemWizardProperties(getResources(), properties.getItemTypeUI())));
     }
     return registry;
   }

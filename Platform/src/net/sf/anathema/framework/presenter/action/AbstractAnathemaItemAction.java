@@ -2,8 +2,6 @@ package net.sf.anathema.framework.presenter.action;
 
 import java.awt.Component;
 
-import javax.swing.Icon;
-
 import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.ui.IObjectUi;
 import net.sf.anathema.framework.IAnathemaModel;
@@ -65,15 +63,7 @@ public abstract class AbstractAnathemaItemAction extends AbstractItemAction {
   protected ItemTypeSelectionProperties createSelectionProperties() {
     final ItemTypeCreationViewPropertiesExtensionPoint extension = (ItemTypeCreationViewPropertiesExtensionPoint) getAnathemaModel().getExtensionPointRegistry()
         .get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
-    IObjectUi objectUi = new IObjectUi() {
-      public Icon getIcon(Object value) {
-        return extension.get((IItemType) value).getIcon();
-      }
-
-      public String getLabel(Object value) {
-        return getResources().getString(extension.get((IItemType) value).getLabelKey());
-      }
-    };
+    IObjectUi objectUi = new ItemTypeUi(getResources(), extension);
     return new ItemTypeSelectionProperties(getResources(), getLegalityProvider(), objectUi);
   }
 
