@@ -5,7 +5,7 @@ import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
-import net.sf.anathema.framework.presenter.view.IItemTypeCreationViewProperties;
+import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
 import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -29,7 +29,7 @@ public abstract class AbstractPersistableItemTypeConfiguration extends AbstractI
     model.getPersisterRegistry().register(getItemType(), createPersister(model));
   }
 
-  protected abstract IItemTypeCreationViewProperties createItemTypeCreationProperties(
+  protected abstract IItemTypeViewProperties createItemTypeCreationProperties(
       IAnathemaModel anathemaModel,
       IResources resources);
 

@@ -12,8 +12,8 @@ import net.sf.anathema.framework.itemdata.view.IBasicItemView;
 import net.sf.anathema.framework.module.AbstractPersistableItemTypeConfiguration;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
-import net.sf.anathema.framework.presenter.view.IItemTypeCreationViewProperties;
-import net.sf.anathema.framework.presenter.view.SimpleItemTypeCreationViewProperties;
+import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
+import net.sf.anathema.framework.presenter.view.SimpleItemTypeViewProperties;
 import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
@@ -47,9 +47,9 @@ public final class NoteTypeConfiguration extends AbstractPersistableItemTypeConf
   }
 
   @Override
-  protected IItemTypeCreationViewProperties createItemTypeCreationProperties(
+  protected IItemTypeViewProperties createItemTypeCreationProperties(
       IAnathemaModel anathemaModel,
       IResources resources) {
-    return new SimpleItemTypeCreationViewProperties(getItemType(), new PlotUI(resources).getNoteTabIcon());
+    return new SimpleItemTypeViewProperties(getItemType(), new PlotUI(resources).getNoteTabIcon());
   }
 }
