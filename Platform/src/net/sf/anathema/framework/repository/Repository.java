@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.MessageFormat;
 
 import net.disy.commons.core.util.Ensure;
+import net.disy.commons.core.util.FileUtilities;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IRepositoryConfiguration;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
@@ -17,6 +18,7 @@ import net.sf.anathema.framework.repository.access.SingleFileReadAccess;
 import net.sf.anathema.framework.repository.access.SingleFileWriteAccess;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess;
+import net.sf.anathema.framework.view.PrintNameFile;
 
 public class Repository implements IRepository {
 
@@ -142,5 +144,14 @@ public class Repository implements IRepository {
       return defaultDataFolder;
     }
     return createDataFolder(getRepositoryFolder(), subfolder);
+  }
+
+  public void deleteAssociatedItem(PrintNameFile file) throws RepositoryException {
+    try {
+      FileUtilities.deleteFileOrDirectory(file.getFile());
+    }
+    catch (IOException e) {
+      throw new RepositoryException("Deletion failed.", e); //$NON-NLS-1$
+    }
   }
 }

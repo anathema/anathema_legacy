@@ -4,7 +4,6 @@ import net.sf.anathema.development.RepositoryViewAction;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.presenter.action.AnathemaAboutAction;
-import net.sf.anathema.framework.presenter.action.AnathemaDeleteAction;
 import net.sf.anathema.framework.presenter.action.AnathemaExitAction;
 import net.sf.anathema.framework.presenter.action.AnathemaLoadAction;
 import net.sf.anathema.framework.presenter.action.AnathemaNewAction;
@@ -33,8 +32,6 @@ public class AnathemaCoreMenu implements IAnathemaMenu {
     mainMenu.addSeparator();
     mainMenu.addMenuItem(AnathemaSaveAction.createMenuAction(model, resources));
     mainMenu.addMenuItem(AnathemaSaveAllAction.createMenuAction(model, resources));
-    mainMenu.addSeparator();
-    mainMenu.addMenuItem(AnathemaDeleteAction.createMenuAction(model, resources));
     mainMenu.addSeparator();
     mainMenu.addMenuItem(AnathemaPrintAction.createMenuAction(model, resources));
     mainMenu.addSeparator();

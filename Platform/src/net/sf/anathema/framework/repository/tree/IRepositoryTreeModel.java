@@ -1,6 +1,7 @@
 package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.view.PrintNameFile;
 
 public interface IRepositoryTreeModel {
@@ -10,7 +11,7 @@ public interface IRepositoryTreeModel {
 
   public void addRepositoryTreeModelListener(IRepositoryTreeModelListener listener);
 
-  public void deleteItem(Object currentlySelectedObject);
+  public void deleteItem(Object currentlySelectedObject) throws RepositoryException;
 
   public boolean canBeDeleted(Object userObject);
 }
