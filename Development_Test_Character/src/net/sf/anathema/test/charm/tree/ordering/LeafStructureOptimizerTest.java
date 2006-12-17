@@ -22,11 +22,11 @@ public class LeafStructureOptimizerTest {
     public boolean isLeafNode() {
       return isLeaf;
     }
-    
+
     public boolean hasMultipleParents() {
       return false;
     }
-  };
+  }
 
   private void assertNodeStructure(IStructureNode[] inputArray, IStructureNode[] expectedNodes) {
     assertEquals(Arrays.asList(expectedNodes), new LeafStructureOptimizer<IStructureNode>().optimize(inputArray));
