@@ -6,11 +6,14 @@ import java.util.List;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
+import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.tree.IRepositoryTreeModel;
 import net.sf.anathema.framework.repository.tree.IRepositoryTreeModelListener;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
+import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 public class DemoRepositoryTreeModel implements IRepositoryTreeModel {
 
@@ -20,6 +23,7 @@ public class DemoRepositoryTreeModel implements IRepositoryTreeModel {
   private final List<IItemType> types = new ArrayList<IItemType>();
   private final List<PrintNameFile> printNameFiles = new ArrayList<PrintNameFile>();
   private final GenericControl<IRepositoryTreeModelListener> listeners = new GenericControl<IRepositoryTreeModelListener>();
+  private Object object;
 
   public DemoRepositoryTreeModel() {
     types.add(CHARACTER);
@@ -60,15 +64,23 @@ public class DemoRepositoryTreeModel implements IRepositoryTreeModel {
     listeners.addListener(listener);
   }
 
-  public boolean canBeDeleted(Object userObject) {
+  public void addTreeSelectionChangeListener(IChangeListener changeListener) {
+    throw new NotYetImplementedException();
+  }
+
+  public boolean canSelectionBeDeleted() {
     return false;
   }
 
-  public void deleteItem(Object currentlySelectedObject) {
-    // TODO Auto-generated method stub
+  public void deleteItem() throws RepositoryException {
+    throw new NotYetImplementedException();
   }
 
   public String getRepositoryPath() {
     return "DEMO"; //$NON-NLS-1$
+  }
+
+  public void setSelectedObject(Object object) {
+    this.object = object;
   }
 }

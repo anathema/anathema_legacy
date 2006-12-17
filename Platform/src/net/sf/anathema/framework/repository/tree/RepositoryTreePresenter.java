@@ -1,22 +1,13 @@
 package net.sf.anathema.framework.repository.tree;
 
-import java.awt.Component;
-
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreeCellRenderer;
 
-import net.disy.commons.core.message.Message;
-import net.disy.commons.swing.action.SmartAction;
-import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.presenter.resources.BasicUi;
-import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.gui.IPresenter;
-import net.sf.anathema.lib.gui.dialog.ConfigurableVetor;
-import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 
 public class RepositoryTreePresenter implements IPresenter {
@@ -26,8 +17,6 @@ public class RepositoryTreePresenter implements IPresenter {
   private final IRepositoryTreeModel repositoryModel;
   private final IRepositoryTreeView treeView;
   private final TreeCellRenderer renderer;
-  private final IResources resources;
-  private Object currentlySelectedObject;
 
   public RepositoryTreePresenter(
       IResources resources,
@@ -35,7 +24,6 @@ public class RepositoryTreePresenter implements IPresenter {
       IRepositoryTreeView treeView,
       TreeCellRenderer renderer,
       String rootKey) {
-    this.resources = resources;
     this.repositoryModel = repositoryModel;
     this.treeView = treeView;
     this.renderer = renderer;
@@ -56,42 +44,6 @@ public class RepositoryTreePresenter implements IPresenter {
 
   public void initPresentation() {
     initTree();
-    initDeleteAction();
-  }
-
-  private void initDeleteAction() {
-    final SmartAction action = new SmartAction(new BasicUi(resources).getRemoveIcon()) {
-      @Override
-      protected void execute(Component parentComponent) {
-        String message = resources.getString("AnathemaCore.Tools.RepositoryView.DeleteMessage"); //$NON-NLS-1$
-        String okButton = resources.getString("AnathemaCore.Tools.RepositoryView.DeleteOk"); //$NON-NLS-1$
-        ConfigurableVetor vetor = new ConfigurableVetor(parentComponent, message, okButton);
-        if (vetor.vetos()) {
-          return;
-        }
-        try {
-          repositoryModel.deleteItem(currentlySelectedObject);
-        }
-        catch (RepositoryException e) {
-          MessageDialogFactory.showMessageDialog(parentComponent, new Message(
-              resources.getString("AnathemaCore.Tools.RepositoryView.DeleteError"), e)); //$NON-NLS-1$
-          Logger.getLogger(getClass()).error(e);
-        }
-      }
-    };
-    treeView.addActionButton(action);
-    treeView.addRepositoryTreeListener(new IRepositoryTreeListener() {
-      public void nodeSelected(DefaultMutableTreeNode node) {
-        if (node == null) {
-          currentlySelectedObject = null;
-          action.setEnabled(false);
-          return;
-        }
-        currentlySelectedObject = node.getUserObject();
-        action.setEnabled(repositoryModel.canBeDeleted(currentlySelectedObject));
-      }
-    });
-    action.setEnabled(false);
   }
 
   private void initTree() {
@@ -105,6 +57,16 @@ public class RepositoryTreePresenter implements IPresenter {
       }
     }
     treeView.initTree(treeModel, renderer);
+    treeView.addRepositoryTreeListener(new IRepositoryTreeListener() {
+      public void nodeSelected(DefaultMutableTreeNode node) {
+        if (node == null) {
+          repositoryModel.setSelectedObject(null);
+        }
+        else {
+          repositoryModel.setSelectedObject(node.getUserObject());
+        }
+      }
+    });
   }
 
   private void addPrintNameFileToTree(PrintNameFile file) {

@@ -12,13 +12,17 @@ import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
+import net.sf.anathema.lib.control.change.ChangeControl;
+import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class RepositoryTreeModel implements IRepositoryTreeModel {
 
   private final IItemType[] repositoryItemTypes;
   private final GenericControl<IRepositoryTreeModelListener> control = new GenericControl<IRepositoryTreeModelListener>();
+  private final ChangeControl changeControl = new ChangeControl();
   private final IItemMangementModel itemMangementModel;
   private final IRepository repository;
+  private Object currentlySelectedUserObject;
 
   public RepositoryTreeModel(IRepository repository, IItemMangementModel itemMangementModel, IItemTypeRegistry itemTypes) {
     this.repository = repository;
@@ -48,19 +52,19 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
     control.addListener(listener);
   }
 
-  public boolean canBeDeleted(Object userObject) {
-    if (!(userObject instanceof PrintNameFile)) {
+  public boolean canSelectionBeDeleted() {
+    if (!(currentlySelectedUserObject instanceof PrintNameFile)) {
       return false;
     }
-    PrintNameFile file = (PrintNameFile) userObject;
+    PrintNameFile file = (PrintNameFile) currentlySelectedUserObject;
     return !itemMangementModel.isOpen(file.getRepositoryId(), file.getItemType());
   }
 
-  public void deleteItem(Object userObject) throws RepositoryException {
-    if (!canBeDeleted(userObject)) {
+  public void deleteItem() throws RepositoryException {
+    if (!canSelectionBeDeleted()) {
       return;
     }
-    final PrintNameFile file = (PrintNameFile) userObject;
+    final PrintNameFile file = (PrintNameFile) currentlySelectedUserObject;
     repository.deleteAssociatedItem(file);
     control.forAllDo(new IClosure<IRepositoryTreeModelListener>() {
       public void execute(IRepositoryTreeModelListener input) {
@@ -71,5 +75,14 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
 
   public String getRepositoryPath() {
     return repository.getRepositoryFolder().toString();
+  }
+
+  public void setSelectedObject(Object object) {
+    this.currentlySelectedUserObject = object;
+    changeControl.fireChangedEvent();
+  }
+
+  public void addTreeSelectionChangeListener(IChangeListener changeListener) {
+    changeControl.addChangeListener(changeListener);
   }
 }

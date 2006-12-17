@@ -28,10 +28,17 @@ public class RepositoryBrowserDialogPage extends AbstractDialogPage {
     ItemTypeCreationViewPropertiesExtensionPoint extension = (ItemTypeCreationViewPropertiesExtensionPoint) model.getExtensionPointRegistry()
         .get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
     ObjectUiTreeCellRenderer renderer = new ObjectUiTreeCellRenderer(new ItemTypeTreeUi(resources, extension));
-    new RepositoryTreePresenter(resources, new RepositoryTreeModel(
+    RepositoryTreeModel repositoryTreeModel = new RepositoryTreeModel(
         model.getRepository(),
         model.getItemManagement(),
-        model.getItemTypeRegistry()), treeView, renderer, "AnathemaCore.Tools.RepositoryView.TreeRoot").initPresentation(); //$NON-NLS-1$
+        model.getItemTypeRegistry());
+    new RepositoryTreePresenter(
+        resources,
+        repositoryTreeModel,
+        treeView,
+        renderer,
+        "AnathemaCore.Tools.RepositoryView.TreeRoot").initPresentation(); //$NON-NLS-1$
+    new RepositoryItemDeletionPresenter(resources, repositoryTreeModel, treeView).initPresentation();
     return treeView.getComponent();
   }
 
