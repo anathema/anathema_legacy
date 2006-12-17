@@ -29,6 +29,7 @@ public final class RepositoryViewAction extends SmartAction {
     RepositoryBrowserDialogPage page = new RepositoryBrowserDialogPage(resources, model);
     UserDialog userDialog = new UserDialog(parentComponent, page);
     userDialog.getDialog().setModal(true);
+    userDialog.getDialog().setResizable(false);
     userDialog.show();
   }
 }
