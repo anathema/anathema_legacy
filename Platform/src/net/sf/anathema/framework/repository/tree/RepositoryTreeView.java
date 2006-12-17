@@ -13,6 +13,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 public class RepositoryTreeView implements IRepositoryTreeView {
 
   private final JPanel panel = new JPanel(new GridDialogLayout(1, false));
+  private final JPanel buttonPanel = new JPanel();
 
   public JTree addTree() {
     final JTree tree = new JTree();
@@ -21,10 +22,11 @@ public class RepositoryTreeView implements IRepositoryTreeView {
   }
 
   public void addActionButton(Action action) {
-    panel.add(new JButton(action));
+    buttonPanel.add(new JButton(action));
   }
 
   public JComponent getComponent() {
+    panel.add(buttonPanel);
     return panel;
   }
 }
