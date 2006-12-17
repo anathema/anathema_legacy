@@ -21,7 +21,6 @@ public class RepositoryBrowserDialogPage extends AbstractDialogPage {
     super(new BasicMessage(resources.getString("AnathemaCore.Tools.RepositoryView.DialogMessage"))); //$NON-NLS-1$
     this.resources = resources;
     this.model = model;
-
   }
 
   public JComponent createContent() {
