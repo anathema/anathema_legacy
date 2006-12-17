@@ -35,5 +35,4 @@ public class DeleteItemsVetor {
     userDialog.show();
     return userDialog.isCanceled();
   }
-
 }
