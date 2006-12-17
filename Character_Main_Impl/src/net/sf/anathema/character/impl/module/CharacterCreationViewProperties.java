@@ -16,7 +16,7 @@ public class CharacterCreationViewProperties extends AbstractItemTypeCreationVie
 
   private final CharacterCreationWizardPageFactory factory;
   private final CharacterPrintNameFileScanner scanner;
-  private final IResources resources;
+  private final IObjectUi ui;
 
   public CharacterCreationViewProperties(
       IItemType type,
@@ -25,8 +25,8 @@ public class CharacterCreationViewProperties extends AbstractItemTypeCreationVie
       IRegistry<CharacterType, ICasteCollection> registry) {
     super(type, new CharacterUI(resources).getCharacterDescriptionTabIcon());
     this.scanner = new CharacterPrintNameFileScanner(registry);
-    this.resources = resources;
     this.factory = factory;
+    this.ui = new CharacterTypeUi(resources, scanner);
   }
 
   public IWizardFactory getNewItemWizardFactory() {
@@ -34,7 +34,7 @@ public class CharacterCreationViewProperties extends AbstractItemTypeCreationVie
   }
 
   public IObjectUi getItemTypeUI() {
-    return new CharacterTypeUi(resources, scanner);
+    return ui;
   }
 
   public IPrintNameFileScanner getScanner() {
