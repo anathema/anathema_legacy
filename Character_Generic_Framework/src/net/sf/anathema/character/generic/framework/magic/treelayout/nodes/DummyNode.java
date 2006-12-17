@@ -46,4 +46,17 @@ public class DummyNode implements ISimpleNode {
   public void removeParent(ISimpleNode node) {
     // Nothing to do
   }
+
+  public boolean hasMultipleParents() {
+    return false;
+  }
+  
+  public ISimpleNode[] getChildren(ISimpleNode[] childrenLayer) {
+    return getChildren();
+  }
+  
+  @Override
+  public String toString() {
+    return "DummyNode on layer " + getLayer();
+  }
 }

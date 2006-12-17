@@ -120,6 +120,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
         }
         selectionListener.setEdition(selectedRuleset.getEdition());
         final IIdentificate[] cascadeTypes = getCharmTreeMap(selectedRuleset).keySet().toArray(new IIdentificate[0]);
+        //TODO: Mach mich schön.
         Arrays.sort(cascadeTypes, new Comparator<IIdentificate>() {
           public int compare(IIdentificate o1, IIdentificate o2) {
             final boolean firstCharacterType = o1 instanceof CharacterType;

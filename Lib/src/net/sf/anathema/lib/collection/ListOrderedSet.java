@@ -52,7 +52,7 @@ public class ListOrderedSet<E> implements Set<E> {
   public boolean addAll(Collection< ? extends E> collection) {
     boolean changed = false;
     for (E e : collection) {
-      changed = changed || add(e);
+      changed = add(e) || changed;
     }
     return changed;
   }

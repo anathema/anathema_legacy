@@ -1,6 +1,8 @@
 package net.sf.anathema.character.generic.framework.magic.treelayout.nodes;
 
-public interface ISimpleNode {
+import net.sf.anathema.character.generic.framework.magic.treelayout.ordering.leaf.IStructureNode;
+
+public interface ISimpleNode extends IStructureNode {
 
   public ISimpleNode[] getChildren();
 
@@ -15,4 +17,6 @@ public interface ISimpleNode {
   public void removeParent(ISimpleNode node);
 
   public void addParent(ISimpleNode newNode);
+
+  public ISimpleNode[] getChildren(ISimpleNode[] childrenLayer);
 }

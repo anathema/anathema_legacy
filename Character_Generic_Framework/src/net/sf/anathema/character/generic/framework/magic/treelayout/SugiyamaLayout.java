@@ -1,7 +1,9 @@
 package net.sf.anathema.character.generic.framework.magic.treelayout;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import net.sf.anathema.character.generic.framework.magic.treelayout.graph.IProperHierarchicalGraph;
 import net.sf.anathema.character.generic.framework.magic.treelayout.graph.type.IGraphType;
@@ -17,6 +19,7 @@ import net.sf.anathema.character.generic.framework.magic.treelayout.ordering.IVe
 import net.sf.anathema.character.generic.framework.magic.treelayout.ordering.SandraVertexOrderer;
 import net.sf.anathema.character.generic.framework.magic.treelayout.ordering.SugiyamaVertexOrderer;
 import net.sf.anathema.character.generic.framework.magic.treelayout.ordering.UrsVertexOrderer;
+import net.sf.anathema.character.generic.framework.magic.treelayout.ordering.leaf.LeafStructureOptimizer;
 
 public class SugiyamaLayout {
   private final HierarchyBuilder hierarchyBuilder = new HierarchyBuilder();
@@ -48,7 +51,28 @@ public class SugiyamaLayout {
         }
       });
     }
+    optimizeLeavePositioning(orderedGraphs);
     return orderedGraphs.toArray(new IProperHierarchicalGraph[orderedGraphs.size()]);
+  }
+
+  private void optimizeLeavePositioning(final List<IProperHierarchicalGraph> orderedGraphs) {
+    LeafStructureOptimizer<ISimpleNode> leafStructureOptimizer = new LeafStructureOptimizer<ISimpleNode>();
+    for (IProperHierarchicalGraph graph : orderedGraphs) {
+      for (int layerIndex = 1; layerIndex < graph.getDeepestLayer(); layerIndex++) {
+        if (graph.containsRoot(layerIndex + 1)) {
+          return;
+        }
+        ISimpleNode[] childrenLayer = graph.getNodesByLayer(layerIndex + 1);
+        Set<ISimpleNode> newChildrenOrder = new LinkedHashSet<ISimpleNode>();
+        for (ISimpleNode parentNode : graph.getNodesByLayer(layerIndex)) {
+          ISimpleNode[] nodeChildren = parentNode.getChildren(childrenLayer);
+          List<ISimpleNode> optimizedNodes = leafStructureOptimizer.optimize(nodeChildren);
+          newChildrenOrder.addAll(optimizedNodes);
+        }
+        ISimpleNode[] newOrder = newChildrenOrder.toArray(new ISimpleNode[newChildrenOrder.size()]);
+        graph.setNewLayerOrder(layerIndex + 1, newOrder);
+      }
+    }
   }
 
   private IProperHierarchicalGraph createOrderedGraph(IProperHierarchicalGraph graph) {

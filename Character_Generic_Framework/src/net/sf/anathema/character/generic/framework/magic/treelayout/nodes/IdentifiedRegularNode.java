@@ -1,9 +1,12 @@
 package net.sf.anathema.character.generic.framework.magic.treelayout.nodes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
+import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.util.Identificate;
 
 public class IdentifiedRegularNode extends Identificate implements IIdentifiedRegularNode {
@@ -64,6 +67,20 @@ public class IdentifiedRegularNode extends Identificate implements IIdentifiedRe
 
   public boolean isLeafNode() {
     return childList.isEmpty();
+  }
+
+  public boolean hasMultipleParents() {
+    return parentList.size() > 1;
+  }
+
+  public ISimpleNode[] getChildren(final ISimpleNode[] childrenLayer) {
+    ISimpleNode[] unsortedChildren = getChildren();
+    Arrays.sort(unsortedChildren, new Comparator<ISimpleNode>() {
+      public int compare(ISimpleNode o1, ISimpleNode o2) {
+        return ArrayUtilities.indexOf(childrenLayer, o1) - ArrayUtilities.indexOf(childrenLayer, o2);
+      }
+    });
+    return unsortedChildren;
   }
 
   @Override

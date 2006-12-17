@@ -50,6 +50,7 @@ public class CharmSetBuilder implements ICharmSetBuilder {
   public ICharm[] buildCharms(Document charmDoc, List<ICharm> existingCharms, IExaltedRuleSet rules)
       throws PersistenceException {
     // TODO : Hier kann man die Reihenfolge richtig drehen
+//    Set<Charm> allCharms = new TreeSet<Charm>(new IdentificateComparator());
     Set<Charm> allCharms = new HashSet<Charm>();
     Map<String, Charm> charmsById = new HashMap<String, Charm>();
     for (ICharm charm : existingCharms) {

@@ -43,4 +43,8 @@ public class SingleNodeGraph implements IProperHierarchicalGraph {
   public int calculateNumberOfCrossings(int upperLayerIndex) {
     return 0;
   }
+
+  public boolean containsRoot(int layer) {
+    return true;
+  }
 }

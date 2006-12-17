@@ -101,7 +101,7 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph {
     boolean equalSize = layerNodes.size() == orderedNodes.length;
     boolean newNodes = !layerNodes.containsAll(Arrays.asList(orderedNodes));
     if (!equalSize || newNodes) {
-      throw new IllegalArgumentException("Layer content must not be changed"); //$NON-NLS-1$
+      throw new IllegalArgumentException("Layer content must not be changed " + Arrays.deepToString(orderedNodes)); //$NON-NLS-1$
     }
     layerNodes.clear();
     Collections.addAll(layerNodes, orderedNodes);
@@ -139,5 +139,14 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph {
   @Override
   public ProperHierarchicalGraph clone() {
     return new ProperHierarchicalGraph(allNodes, deepestLayer, type);
+  }
+
+  public boolean containsRoot(int layer) {
+    for (ISimpleNode node : getNodesByLayer(layer)) {
+      if (node.isRootNode()) {
+        return true;
+      }
+    }
+    return false;
   }
 }

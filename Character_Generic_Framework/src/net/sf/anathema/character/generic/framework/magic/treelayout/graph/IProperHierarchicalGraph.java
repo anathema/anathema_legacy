@@ -18,4 +18,6 @@ public interface IProperHierarchicalGraph {
   public IGraphType getType();
 
   public IProperHierarchicalGraph clone();
+
+  public boolean containsRoot(int layer);
 }
