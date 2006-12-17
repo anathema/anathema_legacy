@@ -1,13 +1,19 @@
 package net.sf.anathema.character.impl.module;
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.Icon;
 
 import net.disy.commons.swing.ui.IObjectUi;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
+
+import org.apache.commons.io.FileUtils;
 
 public class CharacterTypeUi implements IObjectUi {
 
@@ -23,7 +29,7 @@ public class CharacterTypeUi implements IObjectUi {
     PrintNameFile file = (PrintNameFile) value;
     String id = file.getRepositoryId();
     String printName = file.getPrintName();
-    CharacterType characterType = scanner.getCharacterType(id);
+    CharacterType characterType = getCharacterType(file);
     String characterString = resources.getString("CharacterGenerator.NewCharacter." + characterType.getId() + ".Name"); //$NON-NLS-1$//$NON-NLS-2$
     IIdentificate casteType = scanner.getCasteType(id);
     if (casteType == null) {
@@ -38,7 +44,24 @@ public class CharacterTypeUi implements IObjectUi {
 
   public Icon getIcon(Object value) {
     PrintNameFile file = (PrintNameFile) value;
-    return new CharacterUI(resources).getSmallTypeIcon(scanner.getCharacterType(file.getRepositoryId()));
+    CharacterType characterType = getCharacterType(file);
+    return new CharacterUI(resources).getSmallTypeIcon(characterType);
 
+  }
+
+  private CharacterType getCharacterType(PrintNameFile file) {
+    try {
+      String id = file.getRepositoryId();
+      CharacterType characterType = scanner.getCharacterType(id);
+      if (characterType == null) {
+        String string = FileUtils.readFileToString(new File(file.getFile(), "head.ecg"), PrintNameFileAccess.ENCODING);
+        scanner.scan(string, id);
+        characterType = scanner.getCharacterType(id);
+      }
+      return characterType;
+    }
+    catch (IOException e) {
+      return null;
+    }
   }
 }

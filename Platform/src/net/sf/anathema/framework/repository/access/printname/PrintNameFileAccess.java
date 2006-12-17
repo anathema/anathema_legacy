@@ -18,7 +18,7 @@ import org.apache.commons.io.FileUtils;
 public class PrintNameFileAccess implements IPrintNameFileAccess {
 
   private static final Logger logger = Logger.getLogger(PrintNameFileAccess.class);
-  private static final String ENCODING = "ISO-8859-1"; //$NON-NLS-1$
+  public static final String ENCODING = "ISO-8859-1"; //$NON-NLS-1$
   private static final Pattern PRINT_NAME_PATTERN = Pattern.compile("repositoryPrintName=\"(.*?)\""); //$NON-NLS-1$
   private static final Pattern ID_PATTERN = Pattern.compile("repositoryId=\"(.*?)\""); //$NON-NLS-1$
   private final File repositoryFile;

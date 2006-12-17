@@ -24,7 +24,7 @@ public class ItemTypeTreeUi implements IObjectUi {
       return itemtypeUi.getIcon(value);
     }
     if (value instanceof PrintNameFile) {
-      extension.get(((PrintNameFile) value).getItemType()).getItemTypeUI().getIcon(value);
+      return extension.get(((PrintNameFile) value).getItemType()).getItemTypeUI().getIcon(value);
     }
     return null;
   }
@@ -34,7 +34,7 @@ public class ItemTypeTreeUi implements IObjectUi {
       return itemtypeUi.getLabel(value);
     }
     if (value instanceof PrintNameFile) {
-      extension.get(((PrintNameFile) value).getItemType()).getItemTypeUI().getLabel(value);
+      return extension.get(((PrintNameFile) value).getItemType()).getItemTypeUI().getLabel(value);
     }
     return value.toString();
   }
