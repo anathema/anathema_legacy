@@ -66,6 +66,9 @@ public class DemoRepositoryTreeModel implements IRepositoryTreeModel {
 
   public void deleteItem(Object currentlySelectedObject) {
     // TODO Auto-generated method stub
+  }
 
+  public String getRepositoryPath() {
+    return "DEMO"; //$NON-NLS-1$
   }
 }

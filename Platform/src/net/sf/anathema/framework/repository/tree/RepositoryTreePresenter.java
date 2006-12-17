@@ -39,7 +39,9 @@ public class RepositoryTreePresenter implements IPresenter {
     this.repositoryModel = repositoryModel;
     this.treeView = treeView;
     this.renderer = renderer;
-    this.root = new DefaultMutableTreeNode(resources.getString(rootKey), true);
+    this.root = new DefaultMutableTreeNode(resources.getString(rootKey) + " [" //$NON-NLS-1$
+        + repositoryModel.getRepositoryPath()
+        + "]", true); //$NON-NLS-1$
     this.treeModel = new DefaultTreeModel(root);
     repositoryModel.addRepositoryTreeModelListener(new IRepositoryTreeModelListener() {
       public void printNameFileAdded(PrintNameFile file) {

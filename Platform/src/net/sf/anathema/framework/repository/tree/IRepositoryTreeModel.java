@@ -14,4 +14,7 @@ public interface IRepositoryTreeModel {
   public void deleteItem(Object currentlySelectedObject) throws RepositoryException;
 
   public boolean canBeDeleted(Object userObject);
+
+  public String getRepositoryPath();
+
 }
