@@ -1,14 +1,19 @@
 package net.sf.anathema.framework.repository.tree;
 
+import javax.swing.JTree;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreeCellRenderer;
+import javax.swing.tree.TreeSelectionModel;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.util.TreeUtilities;
 
 public class RepositoryTreePresenter implements IPresenter {
 
@@ -43,10 +48,6 @@ public class RepositoryTreePresenter implements IPresenter {
   }
 
   public void initPresentation() {
-    initTree();
-  }
-
-  private void initTree() {
     for (IItemType type : repositoryModel.getAllItemTypes()) {
       if (type.supportsRepository()) {
         DefaultMutableTreeNode node = new DefaultMutableTreeNode(type);
@@ -56,11 +57,16 @@ public class RepositoryTreePresenter implements IPresenter {
         }
       }
     }
-    treeView.initTree(treeModel, renderer);
-    treeView.addRepositoryTreeListener(new IRepositoryTreeListener() {
-      public void nodeSelected(DefaultMutableTreeNode node) {
+    final JTree tree = treeView.addTree();
+    tree.setModel(treeModel);
+    tree.setCellRenderer(renderer);
+    tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+    tree.setCellRenderer(renderer);
+    tree.addTreeSelectionListener(new TreeSelectionListener() {
+      public void valueChanged(TreeSelectionEvent e) {
+        DefaultMutableTreeNode node = TreeUtilities.getSelectedHierachyNode(tree);
         if (node == null) {
-          repositoryModel.setSelectedObject(null);
+          repositoryModel.setSelectedObject(root);
         }
         else {
           repositoryModel.setSelectedObject(node.getUserObject());

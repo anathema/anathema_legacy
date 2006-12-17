@@ -21,4 +21,6 @@ public interface IRepositoryTreeModel {
   public void setSelectedObject(Object object);
 
   public void addTreeSelectionChangeListener(IChangeListener changeListener);
+
+  public Object getSelectedObject();
 }

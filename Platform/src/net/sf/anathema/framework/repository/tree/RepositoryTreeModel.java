@@ -85,4 +85,8 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   public void addTreeSelectionChangeListener(IChangeListener changeListener) {
     changeControl.addChangeListener(changeListener);
   }
+
+  public Object getSelectedObject() {
+    return currentlySelectedUserObject;
+  }
 }

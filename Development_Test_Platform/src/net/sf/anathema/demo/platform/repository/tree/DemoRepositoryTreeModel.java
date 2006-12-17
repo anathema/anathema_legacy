@@ -83,4 +83,8 @@ public class DemoRepositoryTreeModel implements IRepositoryTreeModel {
   public void setSelectedObject(Object object) {
     this.object = object;
   }
+
+  public Object getSelectedObject() {
+    return object;
+  }
 }
