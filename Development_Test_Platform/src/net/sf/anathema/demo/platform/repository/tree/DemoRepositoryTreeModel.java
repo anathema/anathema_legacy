@@ -64,7 +64,8 @@ public class DemoRepositoryTreeModel implements IRepositoryTreeModel {
     return false;
   }
 
-  public void deleteItem() {
+  public void deleteItem(Object currentlySelectedObject) {
     // TODO Auto-generated method stub
+
   }
 }

@@ -1,4 +1,4 @@
-package net.sf.anathema.character.equipment.item;
+package net.sf.anathema.lib.gui.dialog;
 
 import java.awt.Component;
 
@@ -8,27 +8,27 @@ import net.disy.commons.core.message.MessageType;
 import net.disy.commons.swing.dialog.message.MessageUserDialogConfiguration;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
 import net.disy.commons.swing.dialog.userdialog.buttons.AbstractDialogButtonConfiguration;
-import net.sf.anathema.lib.resources.IResources;
 
-public class DeleteItemsVetor {
+public class ConfigurableVetor {
 
   private final Component parentComponent;
-  private final IResources resources;
+  private final String messageText;
+  private final String okButtonText;
 
-  public DeleteItemsVetor(Component parentComponent, IResources resources) {
+  public ConfigurableVetor(Component parentComponent, String messageText, String okButtonText) {
     this.parentComponent = parentComponent;
-    this.resources = resources;
+    this.messageText = messageText;
+    this.okButtonText = okButtonText;
   }
 
   public boolean vetos() {
-    String messageText = resources.getString("Equipment.Creation.DeleteMessage.Text"); //$NON-NLS-1$
     IMessage message = new Message(messageText, MessageType.WARNING);
     MessageUserDialogConfiguration configuration = new MessageUserDialogConfiguration(
         message,
         new AbstractDialogButtonConfiguration() {
           @Override
           public String getOkayButtonText() {
-            return resources.getString("Equipment.Creation.DeleteMessage.OKButton"); //$NON-NLS-1$
+            return okButtonText;
           }
         });
     UserDialog userDialog = new UserDialog(parentComponent, configuration);

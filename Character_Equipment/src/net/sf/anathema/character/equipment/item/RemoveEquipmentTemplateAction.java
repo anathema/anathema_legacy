@@ -7,6 +7,7 @@ import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManageme
 import net.sf.anathema.character.equipment.item.view.IEquipmentDatabaseView;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.gui.dialog.ConfigurableVetor;
 import net.sf.anathema.lib.resources.IResources;
 
 public class RemoveEquipmentTemplateAction extends SmartAction {
@@ -36,7 +37,9 @@ public class RemoveEquipmentTemplateAction extends SmartAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    DeleteItemsVetor vetor = new DeleteItemsVetor(parentComponent, resources);
+    String messageText = resources.getString("Equipment.Creation.DeleteMessage.Text"); //$NON-NLS-1$
+    String okText = resources.getString("Equipment.Creation.DeleteMessage.OKButton"); //$NON-NLS-1$
+    ConfigurableVetor vetor = new ConfigurableVetor(parentComponent, messageText, okText);
     if (vetor.vetos()) {
       return;
     }

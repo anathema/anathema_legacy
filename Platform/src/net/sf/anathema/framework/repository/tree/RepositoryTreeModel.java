@@ -57,7 +57,10 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
     return !printNameFileAccess.isFileOpen(file, itemMangementModel);
   }
 
-  public void deleteItem() {
-    // TODO Auto-generated method stub
+  public void deleteItem(Object userObject) {
+    if (!canBeDeleted(userObject)) {
+      return;
+    }
+
   }
 }

@@ -10,7 +10,7 @@ public interface IRepositoryTreeModel {
 
   public void addRepositoryTreeModelListener(IRepositoryTreeModelListener listener);
 
-  public void deleteItem();
+  public void deleteItem(Object currentlySelectedObject);
 
   public boolean canBeDeleted(Object userObject);
 }

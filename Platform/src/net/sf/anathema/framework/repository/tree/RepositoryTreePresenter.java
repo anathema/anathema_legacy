@@ -12,6 +12,7 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.gui.IPresenter;
+import net.sf.anathema.lib.gui.dialog.ConfigurableVetor;
 import net.sf.anathema.lib.resources.IResources;
 
 public class RepositoryTreePresenter implements IPresenter {
@@ -22,6 +23,7 @@ public class RepositoryTreePresenter implements IPresenter {
   private final IRepositoryTreeView treeView;
   private final TreeCellRenderer renderer;
   private final IResources resources;
+  private Object currentlySelectedObject;
 
   public RepositoryTreePresenter(
       IResources resources,
@@ -51,13 +53,20 @@ public class RepositoryTreePresenter implements IPresenter {
     final SmartAction action = new SmartAction(new BasicUi(resources).getRemoveIcon()) {
       @Override
       protected void execute(Component parentComponent) {
-        repositoryModel.deleteItem();
+        String message = resources.getString("AnathemaCore.Tools.RepositoryView.DeleteMessage"); //$NON-NLS-1$
+        String okButton = resources.getString("AnathemaCore.Tools.RepositoryView.DeleteOk"); //$NON-NLS-1$
+        ConfigurableVetor vetor = new ConfigurableVetor(parentComponent, message, okButton);
+        if (vetor.vetos()) {
+          return;
+        }
+        repositoryModel.deleteItem(currentlySelectedObject);
       }
     };
     treeView.addActionButton(action);
     treeView.addRepositoryTreeListener(new IRepositoryTreeListener() {
       public void nodeSelected(DefaultMutableTreeNode node) {
-        action.setEnabled(repositoryModel.canBeDeleted(node.getUserObject()));
+        currentlySelectedObject = node.getUserObject();
+        action.setEnabled(repositoryModel.canBeDeleted(currentlySelectedObject));
       }
     });
     action.setEnabled(false);
