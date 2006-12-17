@@ -45,7 +45,6 @@ public class AnathemaDeleteAction extends AbstractAnathemaItemAction {
           type,
           printNameFileAccess,
           itemManagement,
-          properties,
           new DeleteItemWizardProperties(getResources(), properties.getItemTypeUI())));
     }
     return registry;

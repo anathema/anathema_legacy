@@ -78,7 +78,6 @@ public class AnathemaLoadAction extends AbstractAnathemaItemAction {
           type,
           printNameFileAccess,
           itemManagement,
-          properties,
           new LoadItemWizardProperties(getResources(), properties.getItemTypeUI())));
     }
     return registry;

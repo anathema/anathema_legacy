@@ -79,7 +79,6 @@ public final class ItemTypeLoadAction extends AbstractItemAction {
         itemType,
         getAnathemaModel().getRepository().getPrintNameFileAccess(),
         getAnathemaModel().getItemManagement(),
-        properties,
         new LoadItemWizardProperties(getResources(), properties.getItemTypeUI()));
     IAnathemaWizardModelTemplate template = factory.createTemplate();
     IAnathemaWizardPage startPage = factory.createPage(template);

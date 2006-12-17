@@ -2,7 +2,6 @@ package net.sf.anathema.framework.presenter.action;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
-import net.sf.anathema.framework.presenter.view.IItemTypeCreationViewProperties;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -23,19 +22,16 @@ public class ItemSelectionWizardPageFactory implements IWizardFactory {
   private final IItemType type;
   private final IItemMangementModel itemManagement;
   private final IPrintNameFileAccess access;
-  private final IItemTypeCreationViewProperties properties;
   private final IObjectSelectionProperties selectionProperties;
 
   public ItemSelectionWizardPageFactory(
       IItemType type,
       IPrintNameFileAccess access,
       IItemMangementModel itemManagement,
-      IItemTypeCreationViewProperties properties,
       IObjectSelectionProperties selectionProperties) {
     this.type = type;
     this.access = access;
     this.itemManagement = itemManagement;
-    this.properties = properties;
     this.selectionProperties = selectionProperties;
   }
 
@@ -43,7 +39,7 @@ public class ItemSelectionWizardPageFactory implements IWizardFactory {
     if (!(template instanceof ConfigurableFileProvider)) {
       throw new IllegalArgumentException("Bad template type."); //$NON-NLS-1$
     }
-    PrintNameFile[] printNameFiles = access.collectPrintNameFiles(type, itemManagement, properties.getScanner());
+    PrintNameFile[] printNameFiles = access.collectPrintNameFiles(type, itemManagement);
     final IObjectSelectionWizardModel<PrintNameFile> model = new ObjectSelectionWizardModel<PrintNameFile>(
         printNameFiles,
         new LenientLegalityProvider<PrintNameFile>());
