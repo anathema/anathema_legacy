@@ -50,6 +50,7 @@ public final class RepositoryViewAction extends SmartAction {
     ObjectUiTreeCellRenderer renderer = new ObjectUiTreeCellRenderer(new ItemTypeTreeUi(resources, extension));
     new RepositoryTreePresenter(resources, new RepositoryTreeModel(
         model.getRepository().getPrintNameFileAccess(),
+        model.getItemManagement(),
         model.getItemTypeRegistry()), treeView, renderer, "AnathemaCore.Tools.RepositoryView.TreeRoot").initPresentation(); //$NON-NLS-1$
     return treeView.getComponent();
   }

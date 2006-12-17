@@ -5,17 +5,25 @@ import java.util.List;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
+import net.sf.anathema.framework.presenter.IItemMangementModel;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
+import net.sf.anathema.lib.control.GenericControl;
 
 public class RepositoryTreeModel implements IRepositoryTreeModel {
 
   private final IItemType[] repositoryItemTypes;
   private final IPrintNameFileAccess printNameFileAccess;
+  private final GenericControl<IRepositoryTreeModelListener> control = new GenericControl<IRepositoryTreeModelListener>();
+  private final IItemMangementModel itemMangementModel;
 
-  public RepositoryTreeModel(IPrintNameFileAccess printNameFileAccess, IItemTypeRegistry itemTypes) {
-    this.printNameFileAccess = printNameFileAccess;
+  public RepositoryTreeModel(
+      IPrintNameFileAccess access,
+      IItemMangementModel itemMangementModel,
+      IItemTypeRegistry itemTypes) {
+    this.printNameFileAccess = access;
+    this.itemMangementModel = itemMangementModel;
     this.repositoryItemTypes = createPersistableItemTypes(itemTypes);
   }
 
@@ -38,6 +46,18 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   }
 
   public void addRepositoryTreeModelListener(IRepositoryTreeModelListener listener) {
-    // todo: reagieren auf gespeicherte items
+    control.addListener(listener);
+  }
+
+  public boolean canBeDeleted(Object userObject) {
+    if (!(userObject instanceof PrintNameFile)) {
+      return false;
+    }
+    PrintNameFile file = (PrintNameFile) userObject;
+    return !printNameFileAccess.isFileOpen(file, itemMangementModel);
+  }
+
+  public void deleteItem() {
+    // TODO Auto-generated method stub
   }
 }

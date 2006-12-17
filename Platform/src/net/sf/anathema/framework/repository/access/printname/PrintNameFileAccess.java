@@ -94,11 +94,15 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
   public PrintNameFile[] collectPrintNameFiles(IItemType type, IItemMangementModel itemManagement) {
     List<PrintNameFile> closedFiles = new ArrayList<PrintNameFile>();
     for (PrintNameFile file : collectPrintNameFiles(type)) {
-      if (!itemManagement.isOpen(file.getRepositoryId(), type)) {
+      if (!isFileOpen(file, itemManagement)) {
         closedFiles.add(file);
       }
     }
     return closedFiles.toArray(new PrintNameFile[closedFiles.size()]);
+  }
+
+  public boolean isFileOpen(PrintNameFile file, IItemMangementModel management) {
+    return management.isOpen(file.getRepositoryId(), file.getItemType());
   }
 
   public PrintNameFile getPrintNameFile(IItemType itemType, String repositoryId) {

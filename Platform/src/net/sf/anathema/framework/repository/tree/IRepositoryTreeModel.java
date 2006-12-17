@@ -9,4 +9,8 @@ public interface IRepositoryTreeModel {
   public PrintNameFile[] getPrintNameFiles(IItemType itemType);
 
   public void addRepositoryTreeModelListener(IRepositoryTreeModelListener listener);
+
+  public void deleteItem();
+
+  public boolean canBeDeleted(Object userObject);
 }

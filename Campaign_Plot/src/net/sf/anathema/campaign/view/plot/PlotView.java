@@ -32,6 +32,7 @@ import net.sf.anathema.campaign.view.BasicItemDescriptionView;
 import net.sf.anathema.campaign.view.util.DefaultTreeView;
 import net.sf.anathema.framework.itemdata.view.IBasicItemDescriptionView;
 import net.sf.anathema.lib.gui.layout.AnathemaLayoutUtilities;
+import net.sf.anathema.lib.util.TreeUtilities;
 
 public class PlotView implements IPlotView {
 
@@ -73,14 +74,6 @@ public class PlotView implements IPlotView {
     tree.expandPath(new TreePath(node.getPath()));
   }
 
-  private DefaultMutableTreeNode getSelectedHierachyNode() {
-    TreePath selectionPath = tree.getSelectionPath();
-    if (selectionPath == null) {
-      return null;
-    }
-    return (DefaultMutableTreeNode) selectionPath.getLastPathComponent();
-  }
-
   public void setSelectedHierarchyNode(DefaultMutableTreeNode node) {
     tree.setSelectionPath(new TreePath(node.getPath()));
   }
@@ -94,7 +87,7 @@ public class PlotView implements IPlotView {
     SmartAction addAction = new SmartAction() {
       @Override
       protected void execute(Component parentComponent) {
-        listenerControl.fireAddRequested(getSelectedHierachyNode());
+        listenerControl.fireAddRequested(TreeUtilities.getSelectedHierachyNode(tree));
       }
     };
     properties.initHierarchyAddAction(addAction);
@@ -103,7 +96,7 @@ public class PlotView implements IPlotView {
     SmartAction removeAction = new SmartAction() {
       @Override
       protected void execute(Component parentComponent) {
-        listenerControl.fireRemoveRequested(getSelectedHierachyNode());
+        listenerControl.fireRemoveRequested(TreeUtilities.getSelectedHierachyNode(tree));
       }
     };
     properties.initHierarchyRemoveAction(removeAction);
@@ -112,7 +105,7 @@ public class PlotView implements IPlotView {
     SmartAction upAction = new SmartAction() {
       @Override
       protected void execute(Component parentComponent) {
-        DefaultMutableTreeNode node = getSelectedHierachyNode();
+        DefaultMutableTreeNode node = TreeUtilities.getSelectedHierachyNode(tree);
         DefaultMutableTreeNode parentNode = (DefaultMutableTreeNode) node.getParent();
         int originalIndex = parentNode.getIndex(node);
         listenerControl.fireMoveToRequested(node, originalIndex - 1);
@@ -124,7 +117,7 @@ public class PlotView implements IPlotView {
     SmartAction downAction = new SmartAction() {
       @Override
       protected void execute(Component parentComponent) {
-        DefaultMutableTreeNode node = getSelectedHierachyNode();
+        DefaultMutableTreeNode node = TreeUtilities.getSelectedHierachyNode(tree);
         DefaultMutableTreeNode parentNode = (DefaultMutableTreeNode) node.getParent();
         int originalIndex = parentNode.getIndex(node);
         listenerControl.fireMoveToRequested(node, originalIndex + 1);
@@ -140,11 +133,12 @@ public class PlotView implements IPlotView {
     new PlotDnD(createHierarchyTreeView(), listenerControl).initDragAndDrop();
     tree.addTreeSelectionListener(new TreeSelectionListener() {
       public void valueChanged(TreeSelectionEvent e) {
-        if (selectedNode == getSelectedHierachyNode()) {
+        DefaultMutableTreeNode currentSelection = TreeUtilities.getSelectedHierachyNode(tree);
+        if (selectedNode == currentSelection) {
           return;
         }
-        selectedNode = getSelectedHierachyNode();
-        listenerControl.fireSelectionChangedTo(getSelectedHierachyNode());
+        selectedNode = currentSelection;
+        listenerControl.fireSelectionChangedTo(currentSelection);
       }
     });
     tree.addMouseMotionListener(new MouseMotionAdapter() {

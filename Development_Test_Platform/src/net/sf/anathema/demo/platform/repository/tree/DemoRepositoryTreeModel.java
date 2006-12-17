@@ -59,4 +59,12 @@ public class DemoRepositoryTreeModel implements IRepositoryTreeModel {
   public void addRepositoryTreeModelListener(IRepositoryTreeModelListener listener) {
     listeners.addListener(listener);
   }
+
+  public boolean canBeDeleted(Object userObject) {
+    return false;
+  }
+
+  public void deleteItem() {
+    // TODO Auto-generated method stub
+  }
 }

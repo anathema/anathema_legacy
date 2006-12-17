@@ -11,4 +11,6 @@ public interface IPrintNameFileAccess {
   public PrintNameFile[] collectPrintNameFiles(IItemType type, IItemMangementModel itemManagement);
 
   public PrintNameFile getPrintNameFile(IItemType itemType, String repositoryId);
+
+  boolean isFileOpen(PrintNameFile file, IItemMangementModel management);
 }
