@@ -56,6 +56,10 @@ public class RepositoryTreePresenter implements IPresenter {
 
   public void initPresentation() {
     initTree();
+    initDeleteAction();
+  }
+
+  private void initDeleteAction() {
     final SmartAction action = new SmartAction(new BasicUi(resources).getRemoveIcon()) {
       @Override
       protected void execute(Component parentComponent) {
