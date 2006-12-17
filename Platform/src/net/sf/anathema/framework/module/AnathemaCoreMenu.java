@@ -1,5 +1,6 @@
 package net.sf.anathema.framework.module;
 
+import net.sf.anathema.development.RepositoryViewAction;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.extension.IAnathemaExtension;
 import net.sf.anathema.framework.presenter.action.AnathemaAboutAction;
@@ -47,6 +48,7 @@ public class AnathemaCoreMenu implements IAnathemaMenu {
     IMenu menu = menubar.addMenu(resources.getString("AnathemaCore.Tools.Extra.Name")); //$NON-NLS-1$
     createMenuFromExtensionPoint(anathemaModel, menu);
     menu.setMnemonic('E');
+    menu.addMenuItem(RepositoryViewAction.createMenuAction(resources, anathemaModel));
     menu.addMenuItem(AnathemaPreferencesAction.createMenuAction(resources, createSystemPreferences(anathemaModel)));
   }
 

@@ -3,6 +3,7 @@ package net.sf.anathema.development;
 import java.awt.Component;
 import java.awt.Dimension;
 
+import javax.swing.Action;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JScrollPane;
@@ -20,15 +21,22 @@ public final class RepositoryViewAction extends SmartAction {
   private final IAnathemaModel model;
   private final IResources resources;
 
-  public RepositoryViewAction(String name, IAnathemaModel model, IResources resources) {
-    super(name);
+  public static Action createMenuAction(IResources resources, IAnathemaModel anathemaModel) {
+    SmartAction action = new RepositoryViewAction(anathemaModel, resources);
+    action.setName(resources.getString("AnathemaCore.Tools.RepositoryView.ActionTitle") + "\u2026"); //$NON-NLS-1$ //$NON-NLS-2$
+    return action;
+  }
+
+  public RepositoryViewAction(IAnathemaModel model, IResources resources) {
     this.model = model;
     this.resources = resources;
   }
 
   @Override
   protected void execute(Component parentComponent) {
-    JDialog dialog = GuiUtilities.createDialog(parentComponent, "RepositoryView", true); //$NON-NLS-1$
+    JDialog dialog = GuiUtilities.createDialog(
+        parentComponent,
+        resources.getString("AnathemaCore.Tools.RepositoryView.DialogTitle"), true); //$NON-NLS-1$
     JScrollPane scrollPane = new JScrollPane(createRepositoryTreeComponent());
     scrollPane.setPreferredSize(new Dimension(500, 700));
     dialog.getContentPane().add(scrollPane);
@@ -42,7 +50,7 @@ public final class RepositoryViewAction extends SmartAction {
     ObjectUiTreeCellRenderer renderer = new ObjectUiTreeCellRenderer(new ItemTypeTreeUi(resources, extension));
     new RepositoryTreePresenter(resources, new RepositoryTreeModel(
         model.getRepository().getPrintNameFileAccess(),
-        model.getItemTypeRegistry()), treeView, renderer, "Repository").initPresentation(); //$NON-NLS-1$
+        model.getItemTypeRegistry()), treeView, renderer, "AnathemaCore.Tools.RepositoryView.TreeRoot").initPresentation(); //$NON-NLS-1$
     return treeView.getComponent();
   }
 }
