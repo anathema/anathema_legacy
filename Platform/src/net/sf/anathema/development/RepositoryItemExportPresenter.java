@@ -28,6 +28,7 @@ public class RepositoryItemExportPresenter implements IPresenter {
   private final IResources resources;
   private final IRepositoryTreeModel model;
   private final RepositoryTreeView view;
+  private final RepositoryZipPathCreator creator;
 
   public RepositoryItemExportPresenter(
       IResources resources,
@@ -36,6 +37,7 @@ public class RepositoryItemExportPresenter implements IPresenter {
     this.resources = resources;
     this.model = repositoryTreeModel;
     this.view = treeView;
+    this.creator = new RepositoryZipPathCreator(model.getRepositoryPath());
   }
 
   public void initPresentation() {
@@ -84,13 +86,8 @@ public class RepositoryItemExportPresenter implements IPresenter {
   }
 
   private ZipEntry createZipEntry(File file, PrintNameFile printNameFile) {
-    ZipEntry entry = new ZipEntry(createZipPath(file));
-    entry.setComment(resources.getString("Anathema.Version.Numeric" + "#" + printNameFile.getItemType() + "#" + printNameFile.getRepositoryId())); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    ZipEntry entry = new ZipEntry(creator.createZipPath(file));
+    entry.setComment(resources.getString("Anathema.Version.Numeric") + "#" + printNameFile.getItemType() + "#" + printNameFile.getRepositoryId()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     return entry;
-  }
-
-  private String createZipPath(File file) {
-    String repositoryPath = model.getRepositoryPath();
-    return file.getPath().replace(repositoryPath, "").replace(File.separatorChar, '/'); //$NON-NLS-1$
   }
 }

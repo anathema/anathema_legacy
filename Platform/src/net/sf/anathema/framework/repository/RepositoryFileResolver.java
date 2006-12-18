@@ -23,22 +23,20 @@ public class RepositoryFileResolver implements IRepositoryFileResolver {
     return typeFolder;
   }
 
-  private File getItemFolder(IItem item) {
-    IItemType type = item.getItemType();
-    String id = item.getRepositoryLocation().getId();
-    return getItemFolder(type, id);
-  }
-
   private File getItemFolder(IItemType type, String id) {
     File typeFolder = getExistingItemTypeFolder(type);
     File itemFolder = new File(typeFolder, id);
     return itemFolder;
   }
 
-  public File getExistingItemFolder(IItem item) {
-    File itemFolder = getItemFolder(item);
+  public File getExistingItemFolder(IItemType type, String id) {
+    File itemFolder = getItemFolder(type, id);
     createNonExistentFolder(itemFolder);
     return itemFolder;
+  }
+
+  public File getExistingItemFolder(IItem item) {
+    return getExistingItemFolder(item.getItemType(), item.getId());
   }
 
   public File getExistingDataFolder(String folderName) {

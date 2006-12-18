@@ -12,6 +12,8 @@ public interface IRepository extends IDataFileProvider {
 
   public IRepositoryWriteAccess createWriteAccess(IItem item) throws RepositoryException;
 
+  public IRepositoryWriteAccess createWriteAccess(IItemType type, String id) throws RepositoryException;
+
   public IRepositoryReadAccess openReadAccess(IItemType type, IFileProvider provider);
 
   public IPrintNameFileAccess getPrintNameFileAccess();

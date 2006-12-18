@@ -63,14 +63,49 @@ public class Repository implements IRepository {
     }
   }
 
+  public synchronized IRepositoryWriteAccess createWriteAccess(IItemType type, String id) throws RepositoryException {
+    try {
+      // TODO: Handle non-unique ID
+      // if (item.getId() == null) {
+      // item.getRepositoryLocation().setId(createUniqueRepositoryId(item.getRepositoryLocation()));
+      // }
+      if (type.getRepositoryConfiguration().isItemSavedToSingleFile()) {
+        return createSingleFileWriteAccess(type, id);
+      }
+      return createMultiFileWriteAccess(type, id);
+    }
+    catch (RepositoryException e) {
+      String pattern = "Could not create RepositoryItem for {0}, {1}."; //$NON-NLS-1$
+      throw new RepositoryException(MessageFormat.format(pattern, new Object[] { type, id }), e);
+    }
+  }
+
+  private IRepositoryWriteAccess createMultiFileWriteAccess(IItemType type, String id) {
+    File itemFolder = resolver.getExistingItemFolder(type, id);
+    return createMultiFileWriteAccess(type, itemFolder);
+  }
+
   private IRepositoryWriteAccess createMultiFileWriteAccess(IItem item) {
     File itemFolder = resolver.getExistingItemFolder(item);
-    IRepositoryConfiguration configuration = item.getItemType().getRepositoryConfiguration();
+    return createMultiFileWriteAccess(item.getItemType(), itemFolder);
+  }
+
+  private IRepositoryWriteAccess createMultiFileWriteAccess(IItemType type, File itemFolder) {
+    IRepositoryConfiguration configuration = type.getRepositoryConfiguration();
     return new MultiFileWriteAccess(itemFolder, configuration.getMainFileName(), configuration.getFileExtension());
+  }
+
+  private IRepositoryWriteAccess createSingleFileWriteAccess(IItemType type, String id) throws RepositoryException {
+    File file = resolver.getMainFile(type, id);
+    return createSingleFileWriteAccess(file);
   }
 
   private IRepositoryWriteAccess createSingleFileWriteAccess(IItem item) throws RepositoryException {
     File file = resolver.getItemFile(item);
+    return createSingleFileWriteAccess(file);
+  }
+
+  private IRepositoryWriteAccess createSingleFileWriteAccess(File file) throws RepositoryException {
     if (!file.exists()) {
       try {
         file.createNewFile();

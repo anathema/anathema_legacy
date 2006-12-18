@@ -12,6 +12,7 @@ import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
+import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
@@ -95,13 +96,6 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
     return currentlySelectedUserObject;
   }
 
-  public IRepositoryReadAccess getReadAccess() {
-    PrintNameFile printNameFile = ((PrintNameFile) currentlySelectedUserObject);
-    ConfigurableFileProvider provider = new ConfigurableFileProvider();
-    provider.setFile(printNameFile.getFile());
-    return repository.openReadAccess(printNameFile.getItemType(), provider);
-  }
-
   public String createUniqueId(final IItemType type, final String id) {
     return repository.createUniqueRepositoryId(new IBasicRepositoryIdData() {
       public String getIdProposal() {
@@ -119,9 +113,17 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   }
 
   public String getMainFilePath(IItemType type, String id) {
-    StringBuilder builder = new StringBuilder("./"); //$NON-NLS-1$
-    builder.append(type.getRepositoryConfiguration().getFolderName());
+    return repository.getRepositoryFileResolver().getMainFile(type, id).getPath();
+  }
 
-    return builder.toString();
+  public IRepositoryReadAccess getReadAccess() {
+    PrintNameFile printNameFile = ((PrintNameFile) currentlySelectedUserObject);
+    ConfigurableFileProvider provider = new ConfigurableFileProvider();
+    provider.setFile(printNameFile.getFile());
+    return repository.openReadAccess(printNameFile.getItemType(), provider);
+  }
+
+  public IRepositoryWriteAccess getWriteAccess(IItemType type, String id) throws RepositoryException {
+    return repository.createWriteAccess(type, id);
   }
 }

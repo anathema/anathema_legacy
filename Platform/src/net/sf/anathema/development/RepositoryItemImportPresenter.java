@@ -1,8 +1,11 @@
 package net.sf.anathema.development;
 
 import java.awt.Component;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -11,6 +14,8 @@ import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.framework.repository.RepositoryException;
+import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.repository.tree.RepositoryTreeModel;
 import net.sf.anathema.framework.repository.tree.RepositoryTreeView;
 import net.sf.anathema.lib.gui.IPresenter;
@@ -23,6 +28,7 @@ public class RepositoryItemImportPresenter implements IPresenter {
   private final IResources resources;
   private final RepositoryTreeModel model;
   private final RepositoryTreeView view;
+  private final RepositoryZipPathCreator creator;
 
   public RepositoryItemImportPresenter(
       IResources resources,
@@ -31,6 +37,7 @@ public class RepositoryItemImportPresenter implements IPresenter {
     this.resources = resources;
     this.model = repositoryTreeModel;
     this.view = treeView;
+    this.creator = new RepositoryZipPathCreator(model.getRepositoryPath());
   }
 
   public void initPresentation() {
@@ -49,18 +56,42 @@ public class RepositoryItemImportPresenter implements IPresenter {
             }
             IItemType type = model.getItemTypeForId(splitComment[1]);
             String id = splitComment[2];
-            String uniqueId = model.createUniqueId(type, id);
-            model.getMainFilePath(type, id);
+            // String uniqueId = model.createUniqueId(type, id);
+            // creator.createZipPath(model.getPathGroup(type, id));
+            // String mainFilePath = model.getMainFilePath(type, id);
+            IRepositoryWriteAccess access = model.getWriteAccess(type, id);
+            OutputStream outputStream = access.createMainOutputStream();
+            InputStream inputStream = importZipFile.getInputStream(entry);
+            writeFileToRepository(inputStream, outputStream);
           }
+          importZipFile.close();
         }
         catch (IOException e) {
           MessageDialogFactory.showMessageDialog(parentComponent, new Message(
-              resources.getString("AnathemaCore.Tools.RepositoryView.ImportError"), e)); //$NON-NLS-1$
+              resources.getString("AnathemaCore.Tools.RepositoryView.ImportError"),
+              e));
+          Logger.getLogger(getClass()).error(e);
+        }
+        catch (RepositoryException e) {
+          MessageDialogFactory.showMessageDialog(parentComponent, new Message(
+              resources.getString("AnathemaCore.Tools.RepositoryView.ImportError"),
+              e));
           Logger.getLogger(getClass()).error(e);
         }
       }
 
     };
     view.addActionButton(action);
+  }
+
+  private void writeFileToRepository(InputStream importStream, OutputStream repositoryStream) throws IOException {
+    byte buffer[] = new byte[512];
+    int lengthRead = 0;
+    BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(repositoryStream, 512);
+    while ((lengthRead = importStream.read(buffer)) != -1) {
+      bufferedOutputStream.write(buffer, 0, lengthRead);
+    }
+    bufferedOutputStream.close();
+    importStream.close();
   }
 }
