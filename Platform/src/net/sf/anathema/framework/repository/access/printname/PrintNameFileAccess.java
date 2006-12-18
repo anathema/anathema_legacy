@@ -23,12 +23,14 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
   private static final Pattern PRINT_NAME_PATTERN = Pattern.compile("repositoryPrintName=\"(.*?)\""); //$NON-NLS-1$
   private static final Pattern ID_PATTERN = Pattern.compile("repositoryId=\"(.*?)\""); //$NON-NLS-1$
   private final RepositoryFileResolver resolver;
+  private final IItemMangementModel itemManagement;
 
-  public PrintNameFileAccess(RepositoryFileResolver resolver) {
+  public PrintNameFileAccess(RepositoryFileResolver resolver, IItemMangementModel itemManagement) {
     this.resolver = resolver;
+    this.itemManagement = itemManagement;
   }
 
-  public PrintNameFile[] collectPrintNameFiles(IItemType type) {
+  public PrintNameFile[] collectAllPrintNameFiles(IItemType type) {
     File repositoryFolder = resolver.getItemTypeFolder(type);
     File[] subfiles = repositoryFolder.listFiles();
     List<PrintNameFile> printNameFiles = new ArrayList<PrintNameFile>();
@@ -88,9 +90,9 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
     }
   }
 
-  public PrintNameFile[] collectPrintNameFiles(IItemType type, IItemMangementModel itemManagement) {
+  public PrintNameFile[] collectClosedPrintNameFiles(IItemType type) {
     List<PrintNameFile> closedFiles = new ArrayList<PrintNameFile>();
-    for (PrintNameFile file : collectPrintNameFiles(type)) {
+    for (PrintNameFile file : collectAllPrintNameFiles(type)) {
       if (!itemManagement.isOpen(file.getRepositoryId(), type)) {
         closedFiles.add(file);
       }
@@ -99,7 +101,7 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
   }
 
   public PrintNameFile getPrintNameFile(IItemType itemType, String repositoryId) {
-    for (PrintNameFile printNameFile : collectPrintNameFiles(itemType)) {
+    for (PrintNameFile printNameFile : collectAllPrintNameFiles(itemType)) {
       if (printNameFile.getRepositoryId().equals(repositoryId)) {
         return printNameFile;
       }

@@ -50,7 +50,7 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   }
 
   public PrintNameFile[] getPrintNameFiles(IItemType itemType) {
-    return repository.getPrintNameFileAccess().collectPrintNameFiles(itemType);
+    return repository.getPrintNameFileAccess().collectAllPrintNameFiles(itemType);
   }
 
   public void addRepositoryTreeModelListener(IRepositoryTreeModelListener listener) {

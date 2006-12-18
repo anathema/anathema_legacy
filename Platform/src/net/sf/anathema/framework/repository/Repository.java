@@ -22,7 +22,6 @@ import net.sf.anathema.framework.view.PrintNameFile;
 
 public class Repository implements IRepository {
 
-  private final IItemMangementModel itemManagement;
   private final PrintNameFileAccess printNameFileAccess;
   private final File repositoryFolder;
   private final File defaultDataFolder;
@@ -33,8 +32,7 @@ public class Repository implements IRepository {
     this.resolver = new RepositoryFileResolver(repositoryFolder);
     this.defaultDataFolder = resolver.getExistingDataFolder("data"); //$NON-NLS-1$
     this.repositoryFolder = repositoryFolder;
-    this.itemManagement = itemManagement;
-    this.printNameFileAccess = new PrintNameFileAccess(resolver);
+    this.printNameFileAccess = new PrintNameFileAccess(resolver, itemManagement);
   }
 
   public File getRepositoryFolder() {
@@ -112,7 +110,7 @@ public class Repository implements IRepository {
   public boolean containsClosed(IItemType... types) {
     int closedObjects = 0;
     for (IItemType type : types) {
-      closedObjects += printNameFileAccess.collectPrintNameFiles(type, itemManagement).length;
+      closedObjects += printNameFileAccess.collectClosedPrintNameFiles(type).length;
     }
     return closedObjects > 0;
   }

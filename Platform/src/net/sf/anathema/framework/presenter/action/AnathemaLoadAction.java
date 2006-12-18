@@ -9,7 +9,6 @@ import javax.swing.KeyStroke;
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.presenter.IItemMangementModel;
 import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
@@ -69,7 +68,6 @@ public class AnathemaLoadAction extends AbstractAnathemaItemAction {
     Registry<IItemType, IWizardFactory> registry = new Registry<IItemType, IWizardFactory>();
     IItemType[] types = collectItemTypes(getAnathemaModel());
     IPrintNameFileAccess printNameFileAccess = getRepository().getPrintNameFileAccess();
-    IItemMangementModel itemManagement = getAnathemaModel().getItemManagement();
     for (IItemType type : types) {
       ItemTypeCreationViewPropertiesExtensionPoint extension = (ItemTypeCreationViewPropertiesExtensionPoint) getAnathemaModel().getExtensionPointRegistry()
           .get(ItemTypeCreationViewPropertiesExtensionPoint.ID);
@@ -77,7 +75,6 @@ public class AnathemaLoadAction extends AbstractAnathemaItemAction {
       registry.register(type, new ItemSelectionWizardPageFactory(
           type,
           printNameFileAccess,
-          itemManagement,
           new LoadItemWizardProperties(getResources(), properties.getItemTypeUI())));
     }
     return registry;
