@@ -86,7 +86,7 @@ public class StartDatabaseAction extends SmartAction {
           try {
             monitor.beginTask(properties.getProgressTaskTitle(), IProgressMonitor.UNKNOWN);
             IItemType itemType = anathemaModel.getItemTypeRegistry().getById(properties.getItemTypeId());
-            IItemData database = properties.createItemData(anathemaModel.getRepository().getRepositoryFolder());
+            IItemData database = properties.createItemData(anathemaModel.getRepository());
             IItem anathemaItem = new AnathemaDataItem(itemType, new Identificate(properties.getItemId()), database);
             anathemaModel.getItemManagement().addItem(anathemaItem);
           }

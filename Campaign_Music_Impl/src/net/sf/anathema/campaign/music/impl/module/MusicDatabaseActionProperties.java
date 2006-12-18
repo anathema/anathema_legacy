@@ -8,10 +8,11 @@ import javax.swing.Icon;
 import net.sf.anathema.campaign.music.impl.model.MusicDatabase;
 import net.sf.anathema.campaign.music.presenter.MusicUI;
 import net.sf.anathema.framework.itemdata.model.IItemData;
-import net.sf.anathema.framework.module.AbstractDatabaseActionProperties;
+import net.sf.anathema.framework.module.IDatabaseActionProperties;
+import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.resources.IResources;
 
-public class MusicDatabaseActionProperties extends AbstractDatabaseActionProperties {
+public class MusicDatabaseActionProperties implements IDatabaseActionProperties {
   private static final String MUSIC_DATABASE_ITEM_ID = "MusicDatabase.Item"; //$NON-NLS-1$
   private final IResources resources;
 
@@ -43,17 +44,12 @@ public class MusicDatabaseActionProperties extends AbstractDatabaseActionPropert
     return resources.getString("Music.DatabaseStart.Progress.Presentation"); //$NON-NLS-1$
   }
 
-  @Override
-  protected String getFolderName() {
-    return "music"; //$NON-NLS-1$
-  }
-
   public String getItemId() {
     return MUSIC_DATABASE_ITEM_ID;
   }
 
-  public IItemData createItemData(File repositoryFolder) throws IOException {
-    File parentFolder = getParentFolder(repositoryFolder);
+  public IItemData createItemData(IDataFileProvider provider) throws IOException {
+    File parentFolder = provider.getDataBaseDirectory("music"); //$NON-NLS-1$
     return new MusicDatabase(new File(parentFolder, "musicdatabase.yap")); //$NON-NLS-1$
   }
 }

@@ -9,10 +9,11 @@ import net.sf.anathema.character.equipment.creation.presenter.stats.properties.E
 import net.sf.anathema.character.equipment.impl.item.model.db4o.Db4OEquipmentDatabase;
 import net.sf.anathema.character.equipment.item.model.EquipmentStatisticsType;
 import net.sf.anathema.framework.itemdata.model.IItemData;
-import net.sf.anathema.framework.module.AbstractDatabaseActionProperties;
+import net.sf.anathema.framework.module.IDatabaseActionProperties;
+import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.resources.IResources;
 
-public class EquipmentDatabaseActionProperties extends AbstractDatabaseActionProperties {
+public class EquipmentDatabaseActionProperties implements IDatabaseActionProperties {
 
   private static final String EQUIPMENT_DATABASE_ITEM_ID = "EquipmentDatabase.Item"; //$NON-NLS-1$
 
@@ -46,17 +47,12 @@ public class EquipmentDatabaseActionProperties extends AbstractDatabaseActionPro
     return resources.getString("EquipmentDatabase.Start.Progress.Presentation"); //$NON-NLS-1$
   }
 
-  @Override
-  protected String getFolderName() {
-    return Db4OEquipmentDatabase.DATABASE_FOLDER;
-  }
-
   public String getItemId() {
     return EQUIPMENT_DATABASE_ITEM_ID;
   }
 
-  public IItemData createItemData(File repositoryFolder) throws IOException {
-    File parentFolder = getParentFolder(repositoryFolder);
+  public IItemData createItemData(IDataFileProvider provider) throws IOException {
+    File parentFolder = provider.getDataBaseDirectory(Db4OEquipmentDatabase.DATABASE_FOLDER);
     return new Db4OEquipmentDatabase(new File(parentFolder, Db4OEquipmentDatabase.DATABASE_FILE));
   }
 }
