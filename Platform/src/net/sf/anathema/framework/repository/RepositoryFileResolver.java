@@ -3,8 +3,9 @@ package net.sf.anathema.framework.repository;
 import java.io.File;
 
 import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.framework.item.IRepositoryConfiguration;
 
-public class RepositoryFileResolver {
+public class RepositoryFileResolver implements IRepositoryFileResolver {
 
   private final File repositoryFile;
 
@@ -22,9 +23,20 @@ public class RepositoryFileResolver {
     return typeFolder;
   }
 
+  private File getItemFolder(IItem item) {
+    IItemType type = item.getItemType();
+    String id = item.getRepositoryLocation().getId();
+    return getItemFolder(type, id);
+  }
+
+  private File getItemFolder(IItemType type, String id) {
+    File typeFolder = getExistingItemTypeFolder(type);
+    File itemFolder = new File(typeFolder, id);
+    return itemFolder;
+  }
+
   public File getExistingItemFolder(IItem item) {
-    File typeFolder = getExistingItemTypeFolder(item.getItemType());
-    File itemFolder = new File(typeFolder, item.getRepositoryLocation().getId());
+    File itemFolder = getItemFolder(item);
     createNonExistentFolder(itemFolder);
     return itemFolder;
   }
@@ -41,7 +53,7 @@ public class RepositoryFileResolver {
     }
   }
 
-  public File getItemFile(IItemType type, String id) {
+  private File getItemFile(IItemType type, String id) {
     String extension = type.getRepositoryConfiguration().getFileExtension();
     return new File(getExistingItemTypeFolder(type), id + extension);
   }
@@ -50,5 +62,17 @@ public class RepositoryFileResolver {
     IItemType type = item.getItemType();
     String id = item.getId();
     return getItemFile(type, id);
+  }
+
+  public File getMainFile(IItemType type, String id) {
+    if (type.getRepositoryConfiguration().isItemSavedToSingleFile()) {
+      return getItemFile(type, id);
+    }
+    return getMainFile(getItemFolder(type, id), type);
+  }
+
+  public File getMainFile(File folder, IItemType type) {
+    IRepositoryConfiguration repositoryConfiguration = type.getRepositoryConfiguration();
+    return new File(folder, repositoryConfiguration.getMainFileName() + repositoryConfiguration.getFileExtension());
   }
 }

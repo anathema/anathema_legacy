@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.framework.item.IRepositoryConfiguration;
+import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -24,23 +24,17 @@ public class CharacterPrintNameFileScanner {
   private final Map<PrintNameFile, CharacterType> typesByFile = new HashMap<PrintNameFile, CharacterType>();
   private final Map<PrintNameFile, IIdentificate> castesByFile = new HashMap<PrintNameFile, IIdentificate>();
   private final IRegistry<CharacterType, ICasteCollection> registry;
-  private final String mainFileName;
+  private final IRepositoryFileResolver resolver;
 
   public CharacterPrintNameFileScanner(
       IRegistry<CharacterType, ICasteCollection> registry,
-      IRepositoryConfiguration repositoryConfiguration) {
+      IRepositoryFileResolver repositoryFileResolver) {
     this.registry = registry;
-    this.mainFileName = repositoryConfiguration.getMainFileName();
+    this.resolver = repositoryFileResolver;
   }
 
   private void scan(PrintNameFile file) throws IOException {
-    File scanFile;
-    if (mainFileName == null) {
-      scanFile = file.getFile();
-    }
-    else {
-      scanFile = new File(file.getFile(), mainFileName);
-    }
+    File scanFile = resolver.getMainFile(file.getItemType(), file.getRepositoryId());
     String content = FileUtils.readFileToString(scanFile, PrintNameFileAccess.ENCODING);
     Matcher typeMatcher = typePattern.matcher(content);
     CharacterType characterType;

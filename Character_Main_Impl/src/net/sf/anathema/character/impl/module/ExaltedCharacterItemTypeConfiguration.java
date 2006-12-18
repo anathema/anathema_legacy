@@ -106,7 +106,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
         resources);
     CharacterPrintNameFileScanner scanner = new CharacterPrintNameFileScanner(
         generics.getCasteCollectionRegistry(),
-        getItemType().getRepositoryConfiguration());
+        anathemaModel.getRepository().getRepositoryFileResolver());
     return new CharacterViewProperties(getItemType(), resources, factory, scanner);
   }
 }

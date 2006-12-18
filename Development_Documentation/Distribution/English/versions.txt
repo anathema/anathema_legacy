@@ -31,6 +31,7 @@ Load and re-save them with v1.0 to make them work.
 
 -- Bugs Fixed --
 * Series should be loading once again (Thanks to Jontu Kontar)
+* Fixed a potential problem with series overwriting one another
 * Characters with Craft specialties now can be loaded (Discovered by ArsGlacialis)
 * [1E/Core Rules] Rate no longer shows when dealing with close combat weapons. (Thanks ipsi)
 * [1E] Fixed two problems with Abyssal Appearance/Essence relation

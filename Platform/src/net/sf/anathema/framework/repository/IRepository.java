@@ -1,7 +1,5 @@
 package net.sf.anathema.framework.repository;
 
-import java.io.File;
-
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.presenter.action.IFileProvider;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
@@ -18,11 +16,13 @@ public interface IRepository extends IDataFileProvider {
 
   public IPrintNameFileAccess getPrintNameFileAccess();
 
-  public File getRepositoryFolder();
+  public String getRepositoryPath();
 
   public boolean containsClosed(IItemType... type);
 
   public void deleteAssociatedItem(PrintNameFile userObject) throws RepositoryException;
 
   public String createUniqueRepositoryId(IBasicRepositoryIdData repositoryLocation);
+
+  public IRepositoryFileResolver getRepositoryFileResolver();
 }

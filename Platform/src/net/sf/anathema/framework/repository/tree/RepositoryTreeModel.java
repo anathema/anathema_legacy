@@ -79,7 +79,7 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   }
 
   public String getRepositoryPath() {
-    return repository.getRepositoryFolder().toString();
+    return repository.getRepositoryPath();
   }
 
   public void setSelectedObject(Object object) {

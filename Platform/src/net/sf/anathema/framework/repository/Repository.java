@@ -35,12 +35,16 @@ public class Repository implements IRepository {
     this.printNameFileAccess = new PrintNameFileAccess(resolver, itemManagement);
   }
 
-  public File getRepositoryFolder() {
-    return repositoryFolder;
+  public String getRepositoryPath() {
+    return repositoryFolder.toString();
   }
 
   public IPrintNameFileAccess getPrintNameFileAccess() {
     return printNameFileAccess;
+  }
+
+  public IRepositoryFileResolver getRepositoryFileResolver() {
+    return resolver;
   }
 
   public synchronized IRepositoryWriteAccess createWriteAccess(IItem item) throws RepositoryException {
@@ -90,7 +94,7 @@ public class Repository implements IRepository {
   }
 
   private boolean idExists(IItemType type, String id) {
-    return resolver.getItemFile(type, id).exists();
+    return resolver.getMainFile(type, id).exists();
   }
 
   public IRepositoryReadAccess openReadAccess(IItemType type, IFileProvider provider) {

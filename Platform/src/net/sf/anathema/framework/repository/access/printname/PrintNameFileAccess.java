@@ -8,9 +8,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.item.IRepositoryConfiguration;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
-import net.sf.anathema.framework.repository.RepositoryFileResolver;
+import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.logging.Logger;
 
@@ -22,10 +21,10 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
   private static final Logger logger = Logger.getLogger(PrintNameFileAccess.class);
   private static final Pattern PRINT_NAME_PATTERN = Pattern.compile("repositoryPrintName=\"(.*?)\""); //$NON-NLS-1$
   private static final Pattern ID_PATTERN = Pattern.compile("repositoryId=\"(.*?)\""); //$NON-NLS-1$
-  private final RepositoryFileResolver resolver;
+  private final IRepositoryFileResolver resolver;
   private final IItemMangementModel itemManagement;
 
-  public PrintNameFileAccess(RepositoryFileResolver resolver, IItemMangementModel itemManagement) {
+  public PrintNameFileAccess(IRepositoryFileResolver resolver, IItemMangementModel itemManagement) {
     this.resolver = resolver;
     this.itemManagement = itemManagement;
   }
@@ -46,16 +45,18 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
     return printNameFiles.toArray(new PrintNameFile[printNameFiles.size()]);
   }
 
-  private static PrintNameFile createPrintNameFile(File file, IItemType itemType) {
-    IRepositoryConfiguration repositoryConfiguration = itemType.getRepositoryConfiguration();
-    if (repositoryConfiguration.isItemSavedToSingleFile()) {
+  private PrintNameFile createPrintNameFile(File file, IItemType itemType) {
+    if (itemType.getRepositoryConfiguration().isItemSavedToSingleFile()) {
       return createSingleFilePrintNameFile(file, itemType);
     }
-    if (!file.isDirectory() || !file.exists()) {
+    return createMultiFilePrintNameFile(file, itemType);
+  }
+
+  private PrintNameFile createMultiFilePrintNameFile(File folder, IItemType itemType) {
+    if (!folder.isDirectory() || !folder.exists()) {
       return null;
     }
-    File mainFile = new File(file, repositoryConfiguration.getMainFileName()
-        + repositoryConfiguration.getFileExtension());
+    File mainFile = resolver.getMainFile(folder, itemType);
     if (!mainFile.exists()) {
       return null;
     }
@@ -67,7 +68,7 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
         mainPrintNameFile.getItemType());
   }
 
-  private static PrintNameFile createSingleFilePrintNameFile(File file, IItemType itemType) {
+  private PrintNameFile createSingleFilePrintNameFile(File file, IItemType itemType) {
     if (file.isDirectory() || !file.exists()) {
       return null;
     }
