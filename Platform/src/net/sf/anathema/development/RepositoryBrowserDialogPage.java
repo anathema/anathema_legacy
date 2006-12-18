@@ -40,6 +40,7 @@ public class RepositoryBrowserDialogPage extends AbstractDialogPage {
         "AnathemaCore.Tools.RepositoryView.TreeRoot").initPresentation(); //$NON-NLS-1$
     new RepositoryItemDeletionPresenter(resources, repositoryTreeModel, treeView).initPresentation();
     new RepositoryItemExportPresenter(resources, repositoryTreeModel, treeView).initPresentation();
+    new RepositoryItemImportPresenter(resources, repositoryTreeModel, treeView).initPresentation();
     return treeView.getComponent();
   }
 

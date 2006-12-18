@@ -7,6 +7,7 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
 import net.sf.anathema.framework.presenter.action.ConfigurableFileProvider;
+import net.sf.anathema.framework.repository.IBasicRepositoryIdData;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryException;
@@ -25,10 +26,12 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   private final IItemMangementModel itemMangementModel;
   private final IRepository repository;
   private Object currentlySelectedUserObject;
+  private final IItemTypeRegistry itemTypes;
 
   public RepositoryTreeModel(IRepository repository, IItemMangementModel itemMangementModel, IItemTypeRegistry itemTypes) {
     this.repository = repository;
     this.itemMangementModel = itemMangementModel;
+    this.itemTypes = itemTypes;
     this.repositoryItemTypes = createPersistableItemTypes(itemTypes);
   }
 
@@ -97,5 +100,28 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
     ConfigurableFileProvider provider = new ConfigurableFileProvider();
     provider.setFile(printNameFile.getFile());
     return repository.openReadAccess(printNameFile.getItemType(), provider);
+  }
+
+  public String createUniqueId(final IItemType type, final String id) {
+    return repository.createUniqueRepositoryId(new IBasicRepositoryIdData() {
+      public String getIdProposal() {
+        return id;
+      }
+
+      public IItemType getItemType() {
+        return type;
+      }
+    });
+  }
+
+  public IItemType getItemTypeForId(String id) {
+    return itemTypes.getById(id);
+  }
+
+  public String getMainFilePath(IItemType type, String id) {
+    StringBuilder builder = new StringBuilder("./"); //$NON-NLS-1$
+    builder.append(type.getRepositoryConfiguration().getFolderName());
+
+    return builder.toString();
   }
 }

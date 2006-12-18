@@ -65,7 +65,7 @@ public class Repository implements IRepository {
     String repositoryId = item.getId();
     try {
       if (repositoryId == null) {
-        item.getRepositoryLocation().setId(createRepositoryId(item));
+        item.getRepositoryLocation().setId(createUniqueRepositoryId(item.getRepositoryLocation()));
       }
       IRepositoryConfiguration repositoryConfiguration = type.getRepositoryConfiguration();
       if (repositoryConfiguration.isItemSavedToSingleFile()) {
@@ -103,12 +103,13 @@ public class Repository implements IRepository {
     return new SingleFileWriteAccess(file);
   }
 
-  private String createRepositoryId(IItem item) {
+  public String createUniqueRepositoryId(IBasicRepositoryIdData repositoryLocation) {
     int count = 0;
-    String repositoryId = item.getRepositoryLocation().getIdProposal();
-    while (idExists(item.getItemType(), repositoryId)) {
+    String repositoryId = repositoryLocation.getIdProposal();
+    IItemType itemType = repositoryLocation.getItemType();
+    while (idExists(itemType, repositoryId)) {
       count++;
-      repositoryId = item.getRepositoryLocation().getIdProposal() + count;
+      repositoryId = repositoryLocation.getIdProposal() + count;
     }
     return repositoryId;
   }

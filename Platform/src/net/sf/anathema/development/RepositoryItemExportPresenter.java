@@ -16,6 +16,7 @@ import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.tree.IRepositoryTreeModel;
 import net.sf.anathema.framework.repository.tree.RepositoryTreeModel;
 import net.sf.anathema.framework.repository.tree.RepositoryTreeView;
+import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
@@ -46,8 +47,9 @@ public class RepositoryItemExportPresenter implements IPresenter {
           ZipOutputStream zipOutputStream = new ZipOutputStream(new FileOutputStream(saveFile));
           zipOutputStream.setComment(resources.getString("Anathema.Version.Numeric")); //$NON-NLS-1$
           IRepositoryReadAccess access = model.getReadAccess();
+          PrintNameFile printNameFile = (PrintNameFile) model.getSelectedObject();
           for (File file : access.getAllFiles()) {
-            ZipEntry entry = createZipEntry(file);
+            ZipEntry entry = createZipEntry(file, printNameFile);
             zipOutputStream.putNextEntry(entry);
             writeFileToZip(zipOutputStream, file);
             zipOutputStream.closeEntry();
@@ -81,8 +83,9 @@ public class RepositoryItemExportPresenter implements IPresenter {
     inputStream.close();
   }
 
-  private ZipEntry createZipEntry(File file) {
+  private ZipEntry createZipEntry(File file, PrintNameFile printNameFile) {
     ZipEntry entry = new ZipEntry(createZipPath(file));
+    entry.setComment(resources.getString("Anathema.Version.Numeric" + "#" + printNameFile.getItemType() + "#" + printNameFile.getRepositoryId())); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     return entry;
   }
 

@@ -23,4 +23,6 @@ public interface IRepository extends IDataFileProvider {
   public boolean containsClosed(IItemType... type);
 
   public void deleteAssociatedItem(PrintNameFile userObject) throws RepositoryException;
+
+  public String createUniqueRepositoryId(IBasicRepositoryIdData repositoryLocation);
 }
