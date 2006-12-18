@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IRepositoryConfiguration;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
+import net.sf.anathema.framework.repository.RepositoryFileResolver;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.logging.Logger;
 
@@ -17,18 +18,18 @@ import org.apache.commons.io.FileUtils;
 
 public class PrintNameFileAccess implements IPrintNameFileAccess {
 
-  private static final Logger logger = Logger.getLogger(PrintNameFileAccess.class);
   public static final String ENCODING = "ISO-8859-1"; //$NON-NLS-1$
+  private static final Logger logger = Logger.getLogger(PrintNameFileAccess.class);
   private static final Pattern PRINT_NAME_PATTERN = Pattern.compile("repositoryPrintName=\"(.*?)\""); //$NON-NLS-1$
   private static final Pattern ID_PATTERN = Pattern.compile("repositoryId=\"(.*?)\""); //$NON-NLS-1$
-  private final File repositoryFile;
+  private final RepositoryFileResolver resolver;
 
-  public PrintNameFileAccess(File repositoryFile) {
-    this.repositoryFile = repositoryFile;
+  public PrintNameFileAccess(RepositoryFileResolver resolver) {
+    this.resolver = resolver;
   }
 
   public PrintNameFile[] collectPrintNameFiles(IItemType type) {
-    File repositoryFolder = getRepositoryFolder(type.getRepositoryConfiguration());
+    File repositoryFolder = resolver.getItemTypeFolder(type);
     File[] subfiles = repositoryFolder.listFiles();
     List<PrintNameFile> printNameFiles = new ArrayList<PrintNameFile>();
     if (subfiles == null) {
@@ -41,10 +42,6 @@ public class PrintNameFileAccess implements IPrintNameFileAccess {
       }
     }
     return printNameFiles.toArray(new PrintNameFile[printNameFiles.size()]);
-  }
-
-  public File getRepositoryFolder(IRepositoryConfiguration configuration) {
-    return new File(repositoryFile, configuration.getFolderName());
   }
 
   private static PrintNameFile createPrintNameFile(File file, IItemType itemType) {

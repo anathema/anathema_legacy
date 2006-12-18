@@ -22,25 +22,19 @@ import net.sf.anathema.framework.view.PrintNameFile;
 
 public class Repository implements IRepository {
 
-  private static File createDataFolder(File repositoryFolder, String folderName) {
-    File folder = new File(repositoryFolder, folderName);
-    if (!folder.exists()) {
-      folder.mkdir();
-    }
-    return folder;
-  }
-
   private final IItemMangementModel itemManagement;
   private final PrintNameFileAccess printNameFileAccess;
   private final File repositoryFolder;
   private final File defaultDataFolder;
+  private final RepositoryFileResolver resolver;
 
   public Repository(File repositoryFolder, IItemMangementModel itemManagement) {
     Ensure.ensureArgumentTrue("Repositoryfolder must exist.", repositoryFolder.exists()); //$NON-NLS-1$
-    this.defaultDataFolder = createDataFolder(repositoryFolder, "data"); //$NON-NLS-1$
+    this.resolver = new RepositoryFileResolver(repositoryFolder);
+    this.defaultDataFolder = resolver.getExistingDataFolder("data"); //$NON-NLS-1$
     this.repositoryFolder = repositoryFolder;
     this.itemManagement = itemManagement;
-    this.printNameFileAccess = new PrintNameFileAccess(repositoryFolder);
+    this.printNameFileAccess = new PrintNameFileAccess(resolver);
   }
 
   public File getRepositoryFolder() {
@@ -51,47 +45,30 @@ public class Repository implements IRepository {
     return printNameFileAccess;
   }
 
-  private File getFile(IItemType type, String itemId) {
-    File folder = printNameFileAccess.getRepositoryFolder(type.getRepositoryConfiguration());
-    if (!folder.exists()) {
-      folder.mkdir();
-    }
-    return new File(folder, itemId + type.getRepositoryConfiguration().getFileExtension());
-  }
-
   public synchronized IRepositoryWriteAccess createWriteAccess(IItem item) throws RepositoryException {
-    Ensure.ensureNotNull("RepositoryItem must not be null.", item); //$NON-NLS-1$
-    IItemType type = item.getItemType();
-    String repositoryId = item.getId();
     try {
-      if (repositoryId == null) {
+      if (item.getId() == null) {
         item.getRepositoryLocation().setId(createUniqueRepositoryId(item.getRepositoryLocation()));
       }
-      IRepositoryConfiguration repositoryConfiguration = type.getRepositoryConfiguration();
-      if (repositoryConfiguration.isItemSavedToSingleFile()) {
-        return createSingleFileWriteAccess(item, type);
+      if (item.getItemType().getRepositoryConfiguration().isItemSavedToSingleFile()) {
+        return createSingleFileWriteAccess(item);
       }
-      File typeFolder = printNameFileAccess.getRepositoryFolder(repositoryConfiguration);
-      if (!typeFolder.exists()) {
-        typeFolder.mkdir();
-      }
-      File itemFolder = new File(typeFolder, item.getRepositoryLocation().getId());
-      if (!itemFolder.exists()) {
-        itemFolder.mkdir();
-      }
-      return new MultiFileWriteAccess(
-          itemFolder,
-          repositoryConfiguration.getMainFileName(),
-          repositoryConfiguration.getFileExtension());
+      return createMultiFileWriteAccess(item);
     }
     catch (RepositoryException e) {
       String pattern = "Could not create RepositoryItem for {0}, {1}."; //$NON-NLS-1$
-      throw new RepositoryException(MessageFormat.format(pattern, new Object[] { type, item.getId() }), e);
+      throw new RepositoryException(MessageFormat.format(pattern, new Object[] { item.getItemType(), item.getId() }), e);
     }
   }
 
-  private IRepositoryWriteAccess createSingleFileWriteAccess(IItem item, IItemType type) throws RepositoryException {
-    File file = getFile(type, item.getId());
+  private IRepositoryWriteAccess createMultiFileWriteAccess(IItem item) {
+    File itemFolder = resolver.getExistingItemFolder(item);
+    IRepositoryConfiguration configuration = item.getItemType().getRepositoryConfiguration();
+    return new MultiFileWriteAccess(itemFolder, configuration.getMainFileName(), configuration.getFileExtension());
+  }
+
+  private IRepositoryWriteAccess createSingleFileWriteAccess(IItem item) throws RepositoryException {
+    File file = resolver.getItemFile(item);
     if (!file.exists()) {
       try {
         file.createNewFile();
@@ -115,7 +92,7 @@ public class Repository implements IRepository {
   }
 
   private boolean idExists(IItemType type, String id) {
-    return getFile(type, id).exists();
+    return resolver.getItemFile(type, id).exists();
   }
 
   public IRepositoryReadAccess openReadAccess(IItemType type, IFileProvider provider) {
@@ -144,7 +121,7 @@ public class Repository implements IRepository {
     if (subfolder == null) {
       return defaultDataFolder;
     }
-    return createDataFolder(getRepositoryFolder(), subfolder);
+    return resolver.getExistingDataFolder(subfolder);
   }
 
   public void deleteAssociatedItem(PrintNameFile file) throws RepositoryException {
