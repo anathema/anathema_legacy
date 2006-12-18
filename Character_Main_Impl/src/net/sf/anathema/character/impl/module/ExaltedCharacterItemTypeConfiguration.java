@@ -39,7 +39,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
   public static final String CHARACTER_ITEM_TYPE_ID = "ExaltedCharacter"; //$NON-NLS-1$
 
   public ExaltedCharacterItemTypeConfiguration() throws AnathemaException {
-    super(new ItemType(CHARACTER_ITEM_TYPE_ID, new RepositoryConfiguration(".ecg", "ExaltedCharacter/", "head"))); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    super(new ItemType(CHARACTER_ITEM_TYPE_ID, new RepositoryConfiguration(".ecg", "ExaltedCharacter/"))); //$NON-NLS-1$ //$NON-NLS-2$
     NatureProvider.getInstance().init();
   }
 
@@ -97,9 +97,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
   }
 
   @Override
-  protected IItemTypeViewProperties createItemTypeCreationProperties(
-      IAnathemaModel anathemaModel,
-      IResources resources) {
+  protected IItemTypeViewProperties createItemTypeCreationProperties(IAnathemaModel anathemaModel, IResources resources) {
     IExaltedRuleSet preferredRuleset = AnathemaCharacterPreferences.getDefaultPreferences().getPreferredRuleset();
     ICharacterGenerics generics = getGenerics(anathemaModel);
     CharacterCreationWizardPageFactory factory = new CharacterCreationWizardPageFactory(
