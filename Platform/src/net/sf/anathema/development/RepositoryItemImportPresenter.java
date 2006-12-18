@@ -56,6 +56,8 @@ public class RepositoryItemImportPresenter implements IPresenter {
             }
             IItemType type = model.getItemTypeForId(splitComment[1]);
             String id = splitComment[2];
+            // TODO: Unique IDs
+            // TODO: MultiFileItems
             // String uniqueId = model.createUniqueId(type, id);
             // creator.createZipPath(model.getPathGroup(type, id));
             // String mainFilePath = model.getMainFilePath(type, id);

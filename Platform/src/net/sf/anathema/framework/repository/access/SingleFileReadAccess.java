@@ -17,7 +17,7 @@ public class SingleFileReadAccess implements IRepositoryReadAccess {
 
   public InputStream openMainInputStream() throws RepositoryException {
     try {
-      return new FileInputStream(repositoryFile);
+      return openInputStream(repositoryFile);
     }
     catch (FileNotFoundException e) {
       throw new RepositoryException(e);
@@ -30,5 +30,9 @@ public class SingleFileReadAccess implements IRepositoryReadAccess {
 
   public File[] getAllFiles() {
     return new File[] { repositoryFile };
+  }
+
+  public InputStream openInputStream(File file) throws FileNotFoundException {
+    return new FileInputStream(file);
   }
 }

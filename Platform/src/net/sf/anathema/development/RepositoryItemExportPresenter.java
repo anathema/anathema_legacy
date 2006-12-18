@@ -2,7 +2,6 @@ package net.sf.anathema.development;
 
 import java.awt.Component;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -53,7 +52,7 @@ public class RepositoryItemExportPresenter implements IPresenter {
           for (File file : access.getAllFiles()) {
             ZipEntry entry = createZipEntry(file, printNameFile);
             zipOutputStream.putNextEntry(entry);
-            writeFileToZip(zipOutputStream, file);
+            writeFileToZip(zipOutputStream, access.openInputStream(file));
             zipOutputStream.closeEntry();
           }
           zipOutputStream.close();
@@ -75,14 +74,13 @@ public class RepositoryItemExportPresenter implements IPresenter {
     action.setEnabled(false);
   }
 
-  private void writeFileToZip(ZipOutputStream zipOutputStream, File file) throws IOException {
+  private void writeFileToZip(ZipOutputStream zipOutputStream, InputStream repositoryStream) throws IOException {
     byte buffer[] = new byte[512];
-    InputStream inputStream = new FileInputStream(file);
     int lengthRead = 0;
-    while ((lengthRead = inputStream.read(buffer)) != -1) {
+    while ((lengthRead = repositoryStream.read(buffer)) != -1) {
       zipOutputStream.write(buffer, 0, lengthRead);
     }
-    inputStream.close();
+    repositoryStream.close();
   }
 
   private ZipEntry createZipEntry(File file, PrintNameFile printNameFile) {

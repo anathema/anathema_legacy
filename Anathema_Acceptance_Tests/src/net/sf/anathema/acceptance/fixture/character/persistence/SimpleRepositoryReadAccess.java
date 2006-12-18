@@ -25,4 +25,8 @@ public class SimpleRepositoryReadAccess implements IRepositoryReadAccess {
   public File[] getAllFiles() {
     throw new UnsupportedOperationException("Stream operations only"); //$NON-NLS-1$
   }
+
+  public InputStream openInputStream(File file) {
+    throw new UnsupportedOperationException("Stream operations only"); //$NON-NLS-1$
+  }
 }

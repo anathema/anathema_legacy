@@ -23,7 +23,7 @@ public class MultiFileReadAccess implements IRepositoryReadAccess {
 
   public InputStream openMainInputStream() throws RepositoryException {
     try {
-      return new FileInputStream(new File(itemFolder, mainFileName + extension));
+      return openInputStream(mainFileName);
     }
     catch (FileNotFoundException e) {
       throw new RepositoryException(e);
@@ -32,11 +32,19 @@ public class MultiFileReadAccess implements IRepositoryReadAccess {
 
   public InputStream openSubInputStream(String streamID) throws RepositoryException {
     try {
-      return new FileInputStream(new File(itemFolder, streamID + extension));
+      return openInputStream(streamID);
     }
     catch (FileNotFoundException e) {
       throw new RepositoryException(e);
     }
+  }
+
+  private InputStream openInputStream(String id) throws FileNotFoundException {
+    return new FileInputStream(new File(itemFolder, id + extension));
+  }
+
+  public InputStream openInputStream(File file) throws FileNotFoundException {
+    return new FileInputStream(file);
   }
 
   public File[] getAllFiles() {
