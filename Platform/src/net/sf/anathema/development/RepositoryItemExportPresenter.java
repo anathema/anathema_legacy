@@ -2,13 +2,17 @@ package net.sf.anathema.development;
 
 import java.awt.Component;
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
+import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.tree.IRepositoryTreeModel;
 import net.sf.anathema.framework.repository.tree.RepositoryTreeModel;
 import net.sf.anathema.framework.repository.tree.RepositoryTreeView;
@@ -38,16 +42,25 @@ public class RepositoryItemExportPresenter implements IPresenter {
       @Override
       protected void execute(Component parentComponent) {
         try {
-          File saveFile = FileChoosingUtilities.selectSaveFile(parentComponent, "Export.zip");
+          File saveFile = FileChoosingUtilities.selectSaveFile(parentComponent, "Export.zip"); //$NON-NLS-1$
           ZipOutputStream zipOutputStream = new ZipOutputStream(new FileOutputStream(saveFile));
-          // TODO: CREATE ZIPFILE AND WRITE SOMEWHERE
+          zipOutputStream.setComment(resources.getString("Anathema.Version.Numeric")); //$NON-NLS-1$
+          IRepositoryReadAccess access = model.getReadAccess();
+          for (File file : access.getAllFiles()) {
+            ZipEntry entry = createZipEntry(file);
+            zipOutputStream.putNextEntry(entry);
+            writeFileToZip(zipOutputStream, file);
+            zipOutputStream.closeEntry();
+          }
+          zipOutputStream.close();
         }
-        catch (FileNotFoundException e) {
+        catch (IOException e) {
           MessageDialogFactory.showMessageDialog(parentComponent, new Message(
-              resources.getString("AnathemaCore.Tools.RepositoryView.DeleteError"), e)); //$NON-NLS-1$
+              resources.getString("AnathemaCore.Tools.RepositoryView.ExportError"), e)); //$NON-NLS-1$
           Logger.getLogger(getClass()).error(e);
         }
       }
+
     };
     view.addActionButton(action);
     model.addTreeSelectionChangeListener(new IChangeListener() {
@@ -56,6 +69,25 @@ public class RepositoryItemExportPresenter implements IPresenter {
       }
     });
     action.setEnabled(false);
+  }
 
+  private void writeFileToZip(ZipOutputStream zipOutputStream, File file) throws IOException {
+    byte buffer[] = new byte[512];
+    InputStream inputStream = new FileInputStream(file);
+    int lengthRead = 0;
+    while ((lengthRead = inputStream.read(buffer)) != -1) {
+      zipOutputStream.write(buffer, 0, lengthRead);
+    }
+    inputStream.close();
+  }
+
+  private ZipEntry createZipEntry(File file) {
+    ZipEntry entry = new ZipEntry(createZipPath(file));
+    return entry;
+  }
+
+  private String createZipPath(File file) {
+    String repositoryPath = model.getRepositoryPath();
+    return file.getPath().replace(repositoryPath, "").replace(File.separatorChar, '/'); //$NON-NLS-1$
   }
 }

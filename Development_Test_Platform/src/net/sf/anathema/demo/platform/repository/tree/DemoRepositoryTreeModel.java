@@ -7,6 +7,7 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
 import net.sf.anathema.framework.repository.RepositoryException;
+import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.repository.tree.IRepositoryTreeModel;
 import net.sf.anathema.framework.repository.tree.IRepositoryTreeModelListener;
 import net.sf.anathema.framework.view.PrintNameFile;
@@ -86,5 +87,9 @@ public class DemoRepositoryTreeModel implements IRepositoryTreeModel {
 
   public Object getSelectedObject() {
     return object;
+  }
+
+  public IRepositoryReadAccess getReadAccess() {
+    throw new NotYetImplementedException();
   }
 }

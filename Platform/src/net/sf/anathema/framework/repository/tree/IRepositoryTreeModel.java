@@ -2,6 +2,7 @@ package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.RepositoryException;
+import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
@@ -23,4 +24,6 @@ public interface IRepositoryTreeModel {
   public void addTreeSelectionChangeListener(IChangeListener changeListener);
 
   public Object getSelectedObject();
+
+  public IRepositoryReadAccess getReadAccess();
 }

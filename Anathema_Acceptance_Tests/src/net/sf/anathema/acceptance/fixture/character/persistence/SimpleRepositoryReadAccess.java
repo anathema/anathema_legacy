@@ -1,5 +1,6 @@
 package net.sf.anathema.acceptance.fixture.character.persistence;
 
+import java.io.File;
 import java.io.InputStream;
 
 import net.sf.anathema.framework.repository.RepositoryException;
@@ -19,5 +20,9 @@ public class SimpleRepositoryReadAccess implements IRepositoryReadAccess {
 
   public InputStream openSubInputStream(String streamID) throws RepositoryException {
     throw new UnsupportedOperationException("No sub stream supported"); //$NON-NLS-1$
+  }
+
+  public File[] getAllFiles() {
+    throw new UnsupportedOperationException("Stream operations only"); //$NON-NLS-1$
   }
 }

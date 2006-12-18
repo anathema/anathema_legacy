@@ -38,4 +38,8 @@ public class MultiFileReadAccess implements IRepositoryReadAccess {
       throw new RepositoryException(e);
     }
   }
+
+  public File[] getAllFiles() {
+    return itemFolder.listFiles();
+  }
 }

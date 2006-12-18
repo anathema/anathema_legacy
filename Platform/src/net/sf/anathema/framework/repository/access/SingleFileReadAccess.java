@@ -27,4 +27,8 @@ public class SingleFileReadAccess implements IRepositoryReadAccess {
   public InputStream openSubInputStream(String streamID) throws RepositoryException {
     throw new UnsupportedOperationException();
   }
+
+  public File[] getAllFiles() {
+    return new File[] { repositoryFile };
+  }
 }

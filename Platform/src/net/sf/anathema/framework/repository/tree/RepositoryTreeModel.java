@@ -6,9 +6,11 @@ import java.util.List;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.item.IItemTypeRegistry;
 import net.sf.anathema.framework.presenter.IItemMangementModel;
+import net.sf.anathema.framework.presenter.action.ConfigurableFileProvider;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryException;
+import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
@@ -88,5 +90,12 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
 
   public Object getSelectedObject() {
     return currentlySelectedUserObject;
+  }
+
+  public IRepositoryReadAccess getReadAccess() {
+    PrintNameFile printNameFile = ((PrintNameFile) currentlySelectedUserObject);
+    ConfigurableFileProvider provider = new ConfigurableFileProvider();
+    provider.setFile(printNameFile.getFile());
+    return repository.openReadAccess(printNameFile.getItemType(), provider);
   }
 }
