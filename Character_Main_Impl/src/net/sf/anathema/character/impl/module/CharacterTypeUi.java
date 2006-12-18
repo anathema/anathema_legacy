@@ -3,11 +3,9 @@ package net.sf.anathema.character.impl.module;
 import javax.swing.Icon;
 
 import net.disy.commons.swing.ui.IObjectUi;
-import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.framework.view.PrintNameFile;
-import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 
@@ -16,9 +14,9 @@ public class CharacterTypeUi implements IObjectUi {
   private final IResources resources;
   private final CharacterPrintNameFileScanner scanner;
 
-  public CharacterTypeUi(IResources resources, IRegistry<CharacterType, ICasteCollection> registry) {
+  public CharacterTypeUi(IResources resources, CharacterPrintNameFileScanner scanner) {
     this.resources = resources;
-    this.scanner = new CharacterPrintNameFileScanner(registry);
+    this.scanner = scanner;
   }
 
   public String getLabel(Object value) {

@@ -104,6 +104,9 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
         generics,
         preferredRuleset,
         resources);
-    return new CharacterViewProperties(getItemType(), resources, factory, generics.getCasteCollectionRegistry());
+    CharacterPrintNameFileScanner scanner = new CharacterPrintNameFileScanner(
+        generics.getCasteCollectionRegistry(),
+        getItemType().getRepositoryConfiguration());
+    return new CharacterViewProperties(getItemType(), resources, factory, scanner);
   }
 }
