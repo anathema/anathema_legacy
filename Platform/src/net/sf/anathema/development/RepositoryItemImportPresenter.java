@@ -6,9 +6,12 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
+
+import org.apache.commons.io.IOUtils;
 
 import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
@@ -56,15 +59,14 @@ public class RepositoryItemImportPresenter implements IPresenter {
             }
             IItemType type = model.getItemTypeForId(splitComment[1]);
             String id = splitComment[2];
-            // TODO: Unique ID
-            // String uniqueId = model.createUniqueId(type, id);
-            IRepositoryWriteAccess access = model.getWriteAccess(type, id);
+            String uniqueId = model.createUniqueId(type, id);
+            IRepositoryWriteAccess access = model.getWriteAccess(type, uniqueId);
             String mainFilePath = creator.createZipPath(model.getMainFilePath(type, id));
             for (ZipEntry entry : entriesByItem.get(comment)) {
               InputStream inputStream = importZipFile.getInputStream(entry);
               String entryName = entry.getName();
               if (entryName.equals(mainFilePath)) {
-                writeMainFile(access, inputStream);
+                writeMainFile(access, inputStream, id, uniqueId);
               }
               else {
                 writeSubFile(access, inputStream, entryName);
@@ -95,11 +97,16 @@ public class RepositoryItemImportPresenter implements IPresenter {
         writeFileToRepository(inputStream, outputStream);
       }
 
-      private void writeMainFile(IRepositoryWriteAccess access, InputStream inputStream)
+      private void writeMainFile(IRepositoryWriteAccess access, InputStream inputStream, String oldId, String newId)
           throws RepositoryException,
           IOException {
+        String string = IOUtils.toString(inputStream);
+        inputStream.close();
+        string.replaceFirst("repositoryId=\"" + oldId + "\"", "repositoryId=\"" + newId + "\""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
         OutputStream outputStream = access.createMainOutputStream();
-        writeFileToRepository(inputStream, outputStream);
+        PrintWriter writer = new PrintWriter(outputStream);
+        writer.write(string);
+        writer.close();
       }
 
       private MultiEntryMap<String, ZipEntry> groupEntriesByItems(ZipFile importZipFile) {
