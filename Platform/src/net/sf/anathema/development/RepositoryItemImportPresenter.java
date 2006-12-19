@@ -18,6 +18,7 @@ import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.repository.tree.RepositoryTreeModel;
 import net.sf.anathema.framework.repository.tree.RepositoryTreeView;
+import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
 import net.sf.anathema.lib.logging.Logger;
@@ -48,23 +49,30 @@ public class RepositoryItemImportPresenter implements IPresenter {
           File loadFile = FileChoosingUtilities.chooseFile("Import", parentComponent, new ZipFileFilter());
           ZipFile importZipFile = new ZipFile(loadFile);
           Enumeration< ? extends ZipEntry> entries = importZipFile.entries();
+          MultiEntryMap<String, ZipEntry> entriesByComment = new MultiEntryMap<String, ZipEntry>();
           for (; entries.hasMoreElements();) {
             ZipEntry entry = entries.nextElement();
-            String[] splitComment = entry.getComment().split("#"); //$NON-NLS-1$
+            entriesByComment.add(entry.getComment(), entry);
+          }
+          for (String comment : entriesByComment.keySet()) {
+            String[] splitComment = comment.split("#"); //$NON-NLS-1$
             if (!splitComment[0].equals(resources.getString("Anathema.Version.Numeric"))) { //$NON-NLS-1$
               continue;
             }
             IItemType type = model.getItemTypeForId(splitComment[1]);
             String id = splitComment[2];
-            // TODO: Unique IDs
-            // TODO: MultiFileItems
-            // String uniqueId = model.createUniqueId(type, id);
-            // creator.createZipPath(model.getPathGroup(type, id));
-            // String mainFilePath = model.getMainFilePath(type, id);
             IRepositoryWriteAccess access = model.getWriteAccess(type, id);
-            OutputStream outputStream = access.createMainOutputStream();
-            InputStream inputStream = importZipFile.getInputStream(entry);
-            writeFileToRepository(inputStream, outputStream);
+            String mainFilePath = creator.createZipPath(model.getMainFilePath(type, id));
+            for (ZipEntry entry : entriesByComment.get(comment)) {
+              if (entry.getName().equals(mainFilePath)) {
+                InputStream inputStream = importZipFile.getInputStream(entry);
+                OutputStream outputStream = access.createMainOutputStream();
+                writeFileToRepository(inputStream, outputStream);
+              }
+              // TODO: MultiFileItems
+              // TODO: Unique IDs
+              // String uniqueId = model.createUniqueId(type, id);
+            }
           }
           importZipFile.close();
         }
