@@ -1,4 +1,4 @@
-package net.sf.anathema.development;
+package net.sf.anathema.framework.repository.tree;
 
 import javax.swing.JComponent;
 
@@ -7,9 +7,6 @@ import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.userdialog.AbstractDialogPage;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
-import net.sf.anathema.framework.repository.tree.RepositoryTreeModel;
-import net.sf.anathema.framework.repository.tree.RepositoryTreePresenter;
-import net.sf.anathema.framework.repository.tree.RepositoryTreeView;
 import net.sf.anathema.lib.resources.IResources;
 
 public class RepositoryBrowserDialogPage extends AbstractDialogPage {

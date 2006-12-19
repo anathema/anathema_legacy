@@ -1,4 +1,4 @@
-package net.sf.anathema.development;
+package net.sf.anathema.framework.repository.tree;
 
 import java.awt.Component;
 
@@ -7,9 +7,6 @@ import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.sf.anathema.framework.presenter.resources.BasicUi;
 import net.sf.anathema.framework.repository.RepositoryException;
-import net.sf.anathema.framework.repository.tree.IRepositoryTreeModel;
-import net.sf.anathema.framework.repository.tree.RepositoryTreeModel;
-import net.sf.anathema.framework.repository.tree.RepositoryTreeView;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.gui.dialog.ConfigurableVetor;

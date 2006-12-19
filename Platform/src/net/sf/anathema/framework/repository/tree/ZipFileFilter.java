@@ -1,4 +1,4 @@
-package net.sf.anathema.development;
+package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.lib.io.file.AbstractFileTypeFilter;
 

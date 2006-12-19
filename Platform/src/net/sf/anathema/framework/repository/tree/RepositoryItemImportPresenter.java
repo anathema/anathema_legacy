@@ -1,4 +1,4 @@
-package net.sf.anathema.development;
+package net.sf.anathema.framework.repository.tree;
 
 import java.awt.Component;
 import java.io.BufferedOutputStream;
@@ -17,8 +17,6 @@ import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
-import net.sf.anathema.framework.repository.tree.IRepositoryTreeModel;
-import net.sf.anathema.framework.repository.tree.IRepositoryTreeView;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.gui.file.FileChoosingUtilities;

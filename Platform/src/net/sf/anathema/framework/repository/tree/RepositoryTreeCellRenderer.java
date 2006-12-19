@@ -6,7 +6,6 @@ import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import net.disy.commons.swing.ui.IObjectUi;
-import net.sf.anathema.development.ObjectUiTreeCellRenderer;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.lib.resources.IResources;
 
