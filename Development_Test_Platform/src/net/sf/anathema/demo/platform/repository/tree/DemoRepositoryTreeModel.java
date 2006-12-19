@@ -8,6 +8,7 @@ import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
+import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.repository.tree.IRepositoryTreeModel;
 import net.sf.anathema.framework.repository.tree.IRepositoryTreeModelListener;
 import net.sf.anathema.framework.view.PrintNameFile;
@@ -90,6 +91,22 @@ public class DemoRepositoryTreeModel implements IRepositoryTreeModel {
   }
 
   public IRepositoryReadAccess getReadAccess() {
+    throw new NotYetImplementedException();
+  }
+
+  public String createUniqueId(IItemType type, String id) {
+    throw new NotYetImplementedException();
+  }
+
+  public IItemType getItemTypeForId(String id) {
+    throw new NotYetImplementedException();
+  }
+
+  public String getMainFilePath(IItemType type, String id) {
+    throw new NotYetImplementedException();
+  }
+
+  public IRepositoryWriteAccess getWriteAccess(IItemType type, String id) throws RepositoryException {
     throw new NotYetImplementedException();
   }
 }

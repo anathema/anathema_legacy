@@ -33,10 +33,10 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
     this.repository = repository;
     this.itemMangementModel = itemMangementModel;
     this.itemTypes = itemTypes;
-    this.repositoryItemTypes = createPersistableItemTypes(itemTypes);
+    this.repositoryItemTypes = createPersistableItemTypes();
   }
 
-  private ItemType[] createPersistableItemTypes(IItemTypeRegistry itemTypes) {
+  private ItemType[] createPersistableItemTypes() {
     List<IItemType> persistableItemTypes = new ArrayList<IItemType>();
     for (IItemType itemType : itemTypes.getAllItemTypes()) {
       if (itemType.supportsRepository()) {

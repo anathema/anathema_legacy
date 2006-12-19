@@ -11,33 +11,33 @@ import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import org.apache.commons.io.IOUtils;
-
 import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
-import net.sf.anathema.framework.repository.tree.RepositoryTreeModel;
-import net.sf.anathema.framework.repository.tree.RepositoryTreeView;
+import net.sf.anathema.framework.repository.tree.IRepositoryTreeModel;
+import net.sf.anathema.framework.repository.tree.IRepositoryTreeView;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.gui.file.FileChoosingUtilities;
 import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.resources.IResources;
 
+import org.apache.commons.io.IOUtils;
+
 public class RepositoryItemImportPresenter implements IPresenter {
 
   private final IResources resources;
-  private final RepositoryTreeModel model;
-  private final RepositoryTreeView view;
+  private final IRepositoryTreeModel model;
+  private final IRepositoryTreeView view;
   private final RepositoryZipPathCreator creator;
 
   public RepositoryItemImportPresenter(
       IResources resources,
-      RepositoryTreeModel repositoryTreeModel,
-      RepositoryTreeView treeView) {
+      IRepositoryTreeModel repositoryTreeModel,
+      IRepositoryTreeView treeView) {
     this.resources = resources;
     this.model = repositoryTreeModel;
     this.view = treeView;
