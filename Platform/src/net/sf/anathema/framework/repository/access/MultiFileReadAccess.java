@@ -43,11 +43,7 @@ public class MultiFileReadAccess implements IRepositoryReadAccess {
     return new FileInputStream(new File(itemFolder, id + extension));
   }
 
-  public InputStream openInputStream(File file) throws FileNotFoundException {
-    return new FileInputStream(file);
-  }
-
-  public File[] getAllFiles() {
+  public File[] getFiles() {
     return itemFolder.listFiles();
   }
 }

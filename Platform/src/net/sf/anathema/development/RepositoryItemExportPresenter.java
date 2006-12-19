@@ -12,7 +12,7 @@ import java.util.zip.ZipOutputStream;
 import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
-import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
+import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
 import net.sf.anathema.framework.repository.tree.IRepositoryTreeModel;
 import net.sf.anathema.framework.repository.tree.RepositoryTreeModel;
 import net.sf.anathema.framework.repository.tree.RepositoryTreeView;
@@ -48,13 +48,15 @@ public class RepositoryItemExportPresenter implements IPresenter {
           File saveFile = FileChoosingUtilities.selectSaveFile(parentComponent, "Export.zip"); //$NON-NLS-1$
           ZipOutputStream zipOutputStream = new ZipOutputStream(new FileOutputStream(saveFile));
           zipOutputStream.setComment(resources.getString("Anathema.Version.Numeric")); //$NON-NLS-1$
-          IRepositoryReadAccess access = model.getReadAccess();
-          PrintNameFile printNameFile = (PrintNameFile) model.getSelectedObject();
-          for (File file : access.getAllFiles()) {
-            ZipEntry entry = createZipEntry(file, printNameFile);
-            zipOutputStream.putNextEntry(entry);
-            exportStreamFromRepository(zipOutputStream, access.openInputStream(file));
-            zipOutputStream.closeEntry();
+          PrintNameFile[] printNameFiles = model.getPrintNameFilesInSelection();
+          for (PrintNameFile printNameFile : printNameFiles) {
+            IRepositoryFileAccess access = model.getFileAccess(printNameFile);
+            for (File file : access.getFiles()) {
+              ZipEntry entry = createZipEntry(file, printNameFile);
+              zipOutputStream.putNextEntry(entry);
+              exportStreamFromRepository(zipOutputStream, access.openInputStream(file));
+              zipOutputStream.closeEntry();
+            }
           }
           zipOutputStream.close();
         }
@@ -75,7 +77,8 @@ public class RepositoryItemExportPresenter implements IPresenter {
     action.setEnabled(false);
   }
 
-  private void exportStreamFromRepository(OutputStream zipOutputStream, InputStream repositoryStream) throws IOException {
+  private void exportStreamFromRepository(OutputStream zipOutputStream, InputStream repositoryStream)
+      throws IOException {
     byte buffer[] = new byte[512];
     int lengthRead = 0;
     while ((lengthRead = repositoryStream.read(buffer)) != -1) {

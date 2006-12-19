@@ -9,6 +9,8 @@ import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreeCellRenderer;
 import javax.swing.tree.TreeSelectionModel;
 
+import net.disy.commons.core.util.ArrayUtilities;
+import net.disy.commons.core.util.ITransformer;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.gui.IPresenter;
@@ -60,16 +62,23 @@ public class RepositoryTreePresenter implements IPresenter {
     final JTree tree = treeView.addTree();
     tree.setModel(treeModel);
     tree.setCellRenderer(renderer);
-    tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+    tree.getSelectionModel().setSelectionMode(TreeSelectionModel.DISCONTIGUOUS_TREE_SELECTION);
     tree.setCellRenderer(renderer);
     tree.addTreeSelectionListener(new TreeSelectionListener() {
       public void valueChanged(TreeSelectionEvent e) {
-        DefaultMutableTreeNode node = TreeUtilities.getSelectedHierachyNode(tree);
-        if (node == null) {
-          repositoryModel.setSelectedObject(root);
+        DefaultMutableTreeNode[] nodes = TreeUtilities.getSelectedHierachyNodes(tree);
+        if (nodes.length == 0) {
+          repositoryModel.setSelectedObject(new Object[0]);
         }
         else {
-          repositoryModel.setSelectedObject(node.getUserObject());
+          repositoryModel.setSelectedObject(ArrayUtilities.transform(
+              nodes,
+              Object.class,
+              new ITransformer<DefaultMutableTreeNode, Object>() {
+                public Object transform(DefaultMutableTreeNode input) {
+                  return input.getUserObject();
+                }
+              }));
         }
       }
     });

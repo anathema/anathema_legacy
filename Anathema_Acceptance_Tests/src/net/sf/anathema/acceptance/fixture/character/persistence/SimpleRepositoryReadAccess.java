@@ -22,11 +22,7 @@ public class SimpleRepositoryReadAccess implements IRepositoryReadAccess {
     throw new UnsupportedOperationException("No sub stream supported"); //$NON-NLS-1$
   }
 
-  public File[] getAllFiles() {
-    throw new UnsupportedOperationException("Stream operations only"); //$NON-NLS-1$
-  }
-
-  public InputStream openInputStream(File file) {
+  public File[] getFiles() {
     throw new UnsupportedOperationException("Stream operations only"); //$NON-NLS-1$
   }
 }

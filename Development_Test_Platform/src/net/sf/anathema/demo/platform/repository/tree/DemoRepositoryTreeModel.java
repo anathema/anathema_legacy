@@ -7,7 +7,7 @@ import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.ItemType;
 import net.sf.anathema.framework.repository.RepositoryConfiguration;
 import net.sf.anathema.framework.repository.RepositoryException;
-import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
+import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.repository.tree.IRepositoryTreeModel;
 import net.sf.anathema.framework.repository.tree.IRepositoryTreeModelListener;
@@ -25,7 +25,7 @@ public class DemoRepositoryTreeModel implements IRepositoryTreeModel {
   private final List<IItemType> types = new ArrayList<IItemType>();
   private final List<PrintNameFile> printNameFiles = new ArrayList<PrintNameFile>();
   private final GenericControl<IRepositoryTreeModelListener> listeners = new GenericControl<IRepositoryTreeModelListener>();
-  private Object object;
+  private Object[] objects;
 
   public DemoRepositoryTreeModel() {
     types.add(CHARACTER);
@@ -82,15 +82,21 @@ public class DemoRepositoryTreeModel implements IRepositoryTreeModel {
     return "DEMO"; //$NON-NLS-1$
   }
 
-  public void setSelectedObject(Object object) {
-    this.object = object;
+  public void setSelectedObject(Object[] objects) {
+    this.objects = objects;
   }
 
-  public Object getSelectedObject() {
-    return object;
+  public PrintNameFile[] getPrintNameFilesInSelection() {
+    List<PrintNameFile> files = new ArrayList<PrintNameFile>();
+    for (Object object : objects) {
+      if (object instanceof PrintNameFile) {
+        files.add((PrintNameFile) object);
+      }
+    }
+    return files.toArray(new PrintNameFile[files.size()]);
   }
 
-  public IRepositoryReadAccess getReadAccess() {
+  public IRepositoryFileAccess getFileAccess(PrintNameFile file) {
     throw new NotYetImplementedException();
   }
 

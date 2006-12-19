@@ -2,7 +2,7 @@ package net.sf.anathema.framework.repository.tree;
 
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.repository.RepositoryException;
-import net.sf.anathema.framework.repository.access.IRepositoryReadAccess;
+import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
 import net.sf.anathema.framework.repository.access.IRepositoryWriteAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -22,15 +22,15 @@ public interface IRepositoryTreeModel {
 
   public String getRepositoryPath();
 
-  public void setSelectedObject(Object object);
+  public void setSelectedObject(Object[] object);
 
-  public Object getSelectedObject();
+  public PrintNameFile[] getPrintNameFilesInSelection();
 
   public void addTreeSelectionChangeListener(IChangeListener changeListener);
 
   public String createUniqueId(IItemType type, String id);
 
-  public IRepositoryReadAccess getReadAccess();
+  public IRepositoryFileAccess getFileAccess(PrintNameFile printNameFile);
 
   public IRepositoryWriteAccess getWriteAccess(IItemType type, String id) throws RepositoryException;
 
