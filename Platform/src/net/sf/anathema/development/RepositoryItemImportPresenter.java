@@ -48,30 +48,27 @@ public class RepositoryItemImportPresenter implements IPresenter {
         try {
           File loadFile = FileChoosingUtilities.chooseFile("Import", parentComponent, new ZipFileFilter());
           ZipFile importZipFile = new ZipFile(loadFile);
-          Enumeration< ? extends ZipEntry> entries = importZipFile.entries();
-          MultiEntryMap<String, ZipEntry> entriesByComment = new MultiEntryMap<String, ZipEntry>();
-          for (; entries.hasMoreElements();) {
-            ZipEntry entry = entries.nextElement();
-            entriesByComment.add(entry.getComment(), entry);
-          }
-          for (String comment : entriesByComment.keySet()) {
-            String[] splitComment = comment.split("#"); //$NON-NLS-1$
+          MultiEntryMap<String, ZipEntry> entriesByItem = groupEntriesByItems(importZipFile);
+          for (String comment : entriesByItem.keySet()) {
+            String[] splitComment = comment.split("#", 3); //$NON-NLS-1$
             if (!splitComment[0].equals(resources.getString("Anathema.Version.Numeric"))) { //$NON-NLS-1$
               continue;
             }
             IItemType type = model.getItemTypeForId(splitComment[1]);
             String id = splitComment[2];
+            // TODO: Unique ID
+            // String uniqueId = model.createUniqueId(type, id);
             IRepositoryWriteAccess access = model.getWriteAccess(type, id);
             String mainFilePath = creator.createZipPath(model.getMainFilePath(type, id));
-            for (ZipEntry entry : entriesByComment.get(comment)) {
-              if (entry.getName().equals(mainFilePath)) {
-                InputStream inputStream = importZipFile.getInputStream(entry);
-                OutputStream outputStream = access.createMainOutputStream();
-                writeFileToRepository(inputStream, outputStream);
+            for (ZipEntry entry : entriesByItem.get(comment)) {
+              InputStream inputStream = importZipFile.getInputStream(entry);
+              String entryName = entry.getName();
+              if (entryName.equals(mainFilePath)) {
+                writeMainFile(access, inputStream);
               }
-              // TODO: MultiFileItems
-              // TODO: Unique IDs
-              // String uniqueId = model.createUniqueId(type, id);
+              else {
+                writeSubFile(access, inputStream, entryName);
+              }
             }
           }
           importZipFile.close();
@@ -88,6 +85,31 @@ public class RepositoryItemImportPresenter implements IPresenter {
               e));
           Logger.getLogger(getClass()).error(e);
         }
+      }
+
+      private void writeSubFile(IRepositoryWriteAccess access, InputStream inputStream, String entryName)
+          throws RepositoryException,
+          IOException {
+        String unextendedFileName = entryName.substring(entryName.lastIndexOf("/") + 1, entryName.lastIndexOf(".")); //$NON-NLS-1$ //$NON-NLS-2$
+        OutputStream outputStream = access.createSubOutputStream(unextendedFileName);
+        writeFileToRepository(inputStream, outputStream);
+      }
+
+      private void writeMainFile(IRepositoryWriteAccess access, InputStream inputStream)
+          throws RepositoryException,
+          IOException {
+        OutputStream outputStream = access.createMainOutputStream();
+        writeFileToRepository(inputStream, outputStream);
+      }
+
+      private MultiEntryMap<String, ZipEntry> groupEntriesByItems(ZipFile importZipFile) {
+        Enumeration< ? extends ZipEntry> entries = importZipFile.entries();
+        MultiEntryMap<String, ZipEntry> entriesByComment = new MultiEntryMap<String, ZipEntry>();
+        for (; entries.hasMoreElements();) {
+          ZipEntry entry = entries.nextElement();
+          entriesByComment.add(entry.getComment(), entry);
+        }
+        return entriesByComment;
       }
 
     };
