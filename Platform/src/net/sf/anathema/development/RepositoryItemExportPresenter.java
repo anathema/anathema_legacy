@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -52,7 +53,7 @@ public class RepositoryItemExportPresenter implements IPresenter {
           for (File file : access.getAllFiles()) {
             ZipEntry entry = createZipEntry(file, printNameFile);
             zipOutputStream.putNextEntry(entry);
-            writeFileToZip(zipOutputStream, access.openInputStream(file));
+            exportStreamFromRepository(zipOutputStream, access.openInputStream(file));
             zipOutputStream.closeEntry();
           }
           zipOutputStream.close();
@@ -74,7 +75,7 @@ public class RepositoryItemExportPresenter implements IPresenter {
     action.setEnabled(false);
   }
 
-  private void writeFileToZip(ZipOutputStream zipOutputStream, InputStream repositoryStream) throws IOException {
+  private void exportStreamFromRepository(OutputStream zipOutputStream, InputStream repositoryStream) throws IOException {
     byte buffer[] = new byte[512];
     int lengthRead = 0;
     while ((lengthRead = repositoryStream.read(buffer)) != -1) {

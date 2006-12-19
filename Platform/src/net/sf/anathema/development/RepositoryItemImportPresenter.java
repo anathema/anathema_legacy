@@ -49,7 +49,8 @@ public class RepositoryItemImportPresenter implements IPresenter {
       @Override
       protected void execute(Component parentComponent) {
         try {
-          File loadFile = FileChoosingUtilities.chooseFile("Import", parentComponent, new ZipFileFilter());
+          File loadFile = FileChoosingUtilities.chooseFile(
+              resources.getString("AnathemaCore.Tools.RepositoryView.ImportOk"), parentComponent, new ZipFileFilter()); //$NON-NLS-1$
           ZipFile importZipFile = new ZipFile(loadFile);
           MultiEntryMap<String, ZipEntry> entriesByItem = groupEntriesByItems(importZipFile);
           for (String comment : entriesByItem.keySet()) {
@@ -78,13 +79,13 @@ public class RepositoryItemImportPresenter implements IPresenter {
         }
         catch (IOException e) {
           MessageDialogFactory.showMessageDialog(parentComponent, new Message(
-              resources.getString("AnathemaCore.Tools.RepositoryView.ImportError"),
+              resources.getString("AnathemaCore.Tools.RepositoryView.ImportFileError"), //$NON-NLS-1$
               e));
           Logger.getLogger(getClass()).error(e);
         }
         catch (RepositoryException e) {
           MessageDialogFactory.showMessageDialog(parentComponent, new Message(
-              resources.getString("AnathemaCore.Tools.RepositoryView.ImportError"),
+              resources.getString("AnathemaCore.Tools.RepositoryView.ImportRepositoryError"), //$NON-NLS-1$
               e));
           Logger.getLogger(getClass()).error(e);
         }
@@ -95,7 +96,7 @@ public class RepositoryItemImportPresenter implements IPresenter {
           IOException {
         String unextendedFileName = entryName.substring(entryName.lastIndexOf("/") + 1, entryName.lastIndexOf(".")); //$NON-NLS-1$ //$NON-NLS-2$
         OutputStream outputStream = access.createSubOutputStream(unextendedFileName);
-        writeFileToRepository(inputStream, outputStream);
+        importStreamToRepository(inputStream, outputStream);
       }
 
       private void writeMainFile(IRepositoryWriteAccess access, InputStream inputStream, String oldId, String newId)
@@ -124,7 +125,7 @@ public class RepositoryItemImportPresenter implements IPresenter {
     view.addActionButton(action);
   }
 
-  private void writeFileToRepository(InputStream importStream, OutputStream repositoryStream) throws IOException {
+  private void importStreamToRepository(InputStream importStream, OutputStream repositoryStream) throws IOException {
     byte buffer[] = new byte[512];
     int lengthRead = 0;
     BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(repositoryStream, 512);
