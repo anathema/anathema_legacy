@@ -72,6 +72,7 @@ public class RepositoryItemImportPresenter implements IPresenter {
                 writeSubFile(access, inputStream, entryName);
               }
             }
+            model.refreshItem(type, uniqueId);
           }
           importZipFile.close();
         }
@@ -102,7 +103,7 @@ public class RepositoryItemImportPresenter implements IPresenter {
           IOException {
         String string = IOUtils.toString(inputStream);
         inputStream.close();
-        string.replaceFirst("repositoryId=\"" + oldId + "\"", "repositoryId=\"" + newId + "\""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+        string = string.replaceFirst("repositoryId=\"" + oldId + "\"", "repositoryId=\"" + newId + "\""); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
         OutputStream outputStream = access.createMainOutputStream();
         PrintWriter writer = new PrintWriter(outputStream);
         writer.write(string);

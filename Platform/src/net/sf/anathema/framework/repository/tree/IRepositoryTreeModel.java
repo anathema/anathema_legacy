@@ -35,4 +35,6 @@ public interface IRepositoryTreeModel {
   public IRepositoryWriteAccess getWriteAccess(IItemType type, String id) throws RepositoryException;
 
   public String getMainFilePath(IItemType type, String id);
+
+  public void refreshItem(IItemType type, String id);
 }

@@ -109,4 +109,8 @@ public class DemoRepositoryTreeModel implements IRepositoryTreeModel {
   public IRepositoryWriteAccess getWriteAccess(IItemType type, String id) throws RepositoryException {
     throw new NotYetImplementedException();
   }
+
+  public void refreshItem(IItemType type, String id) {
+    throw new NotYetImplementedException();
+  }
 }

@@ -126,4 +126,12 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   public IRepositoryWriteAccess getWriteAccess(IItemType type, String id) throws RepositoryException {
     return repository.createWriteAccess(type, id);
   }
+
+  public void refreshItem(final IItemType type, final String id) {
+    control.forAllDo(new IClosure<IRepositoryTreeModelListener>() {
+      public void execute(IRepositoryTreeModelListener input) {
+        input.printNameFileAdded(repository.getPrintNameFileAccess().getPrintNameFile(type, id));
+      }
+    });
+  }
 }
