@@ -10,6 +10,7 @@ import java.util.zip.ZipOutputStream;
 import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
+import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -36,7 +37,7 @@ public class RepositoryItemExportPresenter implements IPresenter {
   }
 
   public void initPresentation() {
-    final SmartAction action = new SmartAction("Export") {
+    final SmartAction action = new SmartAction(new PlatformUI(resources).getExportIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         try {

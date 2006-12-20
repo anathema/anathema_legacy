@@ -11,6 +11,7 @@ import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.gui.IPresenter;
@@ -36,7 +37,7 @@ public class RepositoryItemImportPresenter implements IPresenter {
   }
 
   public void initPresentation() {
-    final SmartAction action = new SmartAction("Import") {
+    final SmartAction action = new SmartAction(new PlatformUI(resources).getImportIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         try {

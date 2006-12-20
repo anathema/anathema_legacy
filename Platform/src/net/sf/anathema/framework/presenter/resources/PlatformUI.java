@@ -38,4 +38,12 @@ public class PlatformUI extends AbstractUI {
   public Icon getLoadToolBarIcon() {
     return getIcon("TaskBarOpenArrow24.png"); //$NON-NLS-1$;
   }
+
+  public Icon getImportIcon() {
+    return getIcon("ButtonImport16.png"); //$NON-NLS-1$
+  }
+
+  public Icon getExportIcon() {
+    return getIcon("ButtonExport16.png"); //$NON-NLS-1$
+  }
 }
