@@ -18,8 +18,8 @@ Load and re-save them with v1.0 to make them work.
 + [1E] All character types now use 2E-Style sheets, allowing them to use equipment and so on.
 
 -- Usability --
++ "Repository Browser" to delete, copy, im- and export items from the repository
 + Toolbar with transparent icons (Proposed by Democritus)
-+ Added an option to delete items from the repository
 + The program now makes an informed guess at the standard printing error, namely the file being in use. (Requested by Peter Blake)
 + Windows Installer finally online
 + [1E] Solar "Elemental Hazard-Resisting Meditation" now uses the sub-effect interface.
