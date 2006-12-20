@@ -38,6 +38,7 @@ public class RepositoryBrowserDialogPage extends AbstractDialogPage {
     new RepositoryItemDeletionPresenter(resources, repositoryTreeModel, treeView).initPresentation();
     new RepositoryItemExportPresenter(resources, repositoryTreeModel, treeView).initPresentation();
     new RepositoryItemImportPresenter(resources, repositoryTreeModel, treeView).initPresentation();
+    new RepositoryItemDuplicationPresenter(resources, repositoryTreeModel, treeView).initPresentation();
     return treeView.getComponent();
   }
 

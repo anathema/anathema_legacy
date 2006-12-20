@@ -43,7 +43,7 @@ public class RepositoryItemDeletionPresenter implements IPresenter {
         }
         catch (RepositoryException e) {
           MessageDialogFactory.showMessageDialog(parentComponent, new Message(
-              resources.getString("AnathemaCore.Tools.RepositoryView.DeleteError"), e)); //$NON-NLS-1$
+              resources.getString("AnathemaCore.Tools.RepositoryView.RepositoryError"), e)); //$NON-NLS-1$
           Logger.getLogger(getClass()).error(e);
         }
       }
