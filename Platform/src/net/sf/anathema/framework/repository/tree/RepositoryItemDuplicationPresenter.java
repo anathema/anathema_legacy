@@ -62,7 +62,6 @@ public class RepositoryItemDuplicationPresenter implements IPresenter {
           Logger.getLogger(getClass()).error(e);
         }
       }
-
     };
     view.addActionButton(action);
     model.addTreeSelectionChangeListener(new IChangeListener() {
@@ -72,5 +71,4 @@ public class RepositoryItemDuplicationPresenter implements IPresenter {
     });
     action.setEnabled(false);
   }
-
 }
