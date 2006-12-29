@@ -82,7 +82,7 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="2"/>
+        <essence cost="3" text="+1 per die"/>
       </temporary>
     </cost>
     <duration duration="Instant"/>
@@ -363,7 +363,7 @@
       </temporary>
     </cost>
     <duration duration="Instant"/>
-    <charmtype type="Simple"/>
+    <charmtype type="Supplemental"/>
     <source source="Abyssals1st" page="165"/>
   </charm>
   <charm id="Abyssal.SavageShadeStyle" exalt="Abyssal" group="Melee">
@@ -423,7 +423,7 @@
       </temporary>
     </cost>
     <duration duration="Instant"/>
-    <charmtype type="Simple"/>
+    <charmtype type="Supplemental"/>
     <source source="Abyssals1st" page="167"/>
   </charm>
   <charm id="Abyssal.Soul-SearingBlow" exalt="Abyssal" group="Melee">
@@ -438,7 +438,7 @@
       </temporary>
     </cost>
     <duration duration="Instant"/>
-    <charmtype type="Simple"/>
+    <charmtype type="Supplemental"/>
     <source source="Abyssals1st" page="167"/>
   </charm>
   <charm id="Abyssal.CrimsonBanquetMethod" exalt="Abyssal" group="Melee">
@@ -700,7 +700,7 @@
       </temporary>
     </cost>
     <duration duration="Instant"/>
-    <charmtype type="Simple"/>
+    <charmtype type="Reflexive"/>
     <source source="Abyssals1st" page="171"/>
   </charm>
   <charm id="Abyssal.EyeTempest" exalt="Abyssal" group="Melee">
@@ -780,6 +780,7 @@
   <charm id="Abyssal.IvorySpineAttack" exalt="Abyssal" group="Thrown">
     <prerequisite>
       <trait id="Thrown" value="4"/>
+      <trait id="Medicine" value="1"/>
       <essence value="2"/>
       <charmReference id="Abyssal.AidIllWind"/>
     </prerequisite>
@@ -1247,6 +1248,7 @@
   <charm id="Abyssal.BoneArsenalMethod" exalt="Abyssal" group="Resistance">
     <prerequisite>
       <trait id="Resistance" value="4"/>
+      <trait id="Brawl" value="2"/>
       <essence value="2"/>
       <charmReference id="Abyssal.IvoryBlossomCarapace"/>
     </prerequisite>
@@ -1416,6 +1418,9 @@
         <essence cost="10"/>
         <willpower cost="1"/>
       </temporary>
+      <permanent>
+      	<experience cost="1"/>
+      </permanent>
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -1623,6 +1628,7 @@
   </charm>
   <charm id="Abyssal.BoneCraftTechnique" exalt="Abyssal" group="Craft">
     <prerequisite>
+      <trait id="Craft" value="4"/>
       <trait id="Medicine" value="2"/>
       <essence value="2"/>
       <charmReference id="Abyssal.Flesh-MendingDiscipline"/>
@@ -1849,6 +1855,9 @@
         <willpower cost="1"/>
         <health cost="1"/>
       </temporary>
+      <permanent>
+      	<experience cost="3"/>
+      </permanent>
     </cost>
     <duration duration="Instant"/>
     <charmtype type="Simple"/>
@@ -1946,6 +1955,9 @@
         <essence cost="20"/>
         <willpower cost="1"/>
       </temporary>
+      <permanent>
+      	<experience cost="3"/>
+      </permanent>
     </cost>
     <duration duration="Indefinite"/>
     <charmtype type="Simple"/>
@@ -1962,7 +1974,7 @@
     <cost>
       <temporary>
         <essence cost="15"/>
-        <health cost="1"/>
+        <health cost="1" type="Aggravated"/>
       </temporary>
     </cost>
     <duration duration="Instant"/>
@@ -2148,7 +2160,7 @@
     <cost>
       <temporary>
         <essence cost="Varies"/>
-        <willpower cost="1"/>
+        <willpower cost="2"/>
       </temporary>
     </cost>
     <combo comboable="false"/>
@@ -2236,7 +2248,7 @@
   </charm>
   <charm id="Abyssal.SpiderPounceTechnique" exalt="Abyssal" group="Athletics">
     <prerequisite>
-      <trait id="Athletics" value="2"/>
+      <trait id="Athletics" value="1"/>
       <essence value="1"/>
       <charmReference id="Abyssal.Raiton'sNimblePerch"/>
     </prerequisite>
@@ -2324,7 +2336,7 @@
         <essence cost="2+"/>
       </temporary>
     </cost>
-    <duration amount="1" unit="scene"/>
+    <duration amount="1" unit="turn"/>
     <charmtype type="Reflexive"/>
     <source source="Abyssals1st" page="202"/>
   </charm>
@@ -2432,7 +2444,7 @@
       </temporary>
     </cost>
     <duration duration="Instant"/>
-    <charmtype type="Simple"/>
+    <charmtype type="Supplemental"/>
     <source source="Abyssals1st" page="204"/>
   </charm>
   <charm id="Abyssal.FivefoldSensoryExercise" exalt="Abyssal" group="Awareness">
@@ -2958,7 +2970,7 @@
       </temporary>
     </cost>
     <duration duration="Instant"/>
-    <charmtype type="Reflexive"/>
+    <charmtype type="Simple"/>
     <source source="Abyssals1st" page="212"/>
   </charm>
   <charm id="Abyssal.AlluringEloquenceMethod" exalt="Abyssal" group="Bureaucracy">
@@ -3118,7 +3130,8 @@
   </charm>
   <charm id="Abyssal.Ghost-WardingGlyph" exalt="Abyssal" group="Linguistics">
     <prerequisite>
-      <trait id="Linguistics" value="4"/>
+      <trait id="Linguistics" value="2"/>
+      <trait id="Occult" value="4"/>
       <essence value="2"/>
       <charmReference id="Abyssal.Corpus-RendingBlow"/>
       <charmReference id="Abyssal.BloodInscriptionTechnique"/>
@@ -3415,7 +3428,7 @@
   </charm>
   <charm id="Abyssal.ExquisiteEtiquetteStyle" exalt="Abyssal" group="Socialize">
     <prerequisite>
-      <trait id="Socialize" value="3"/>
+      <trait id="Socialize" value="2"/>
       <essence value="1"/>
     </prerequisite>
     <cost>
@@ -3474,7 +3487,7 @@
   </charm>
   <charm id="Abyssal.Sin-SensingMeditation" exalt="Abyssal" group="Socialize">
     <prerequisite>
-      <trait id="Socialize" value="3"/>
+      <trait id="Socialize" value="5"/>
       <essence value="2"/>
       <charmReference id="Abyssal.Heart-HardeningMethod"/>
     </prerequisite>

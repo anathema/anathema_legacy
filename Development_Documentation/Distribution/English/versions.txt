@@ -8,8 +8,9 @@ http://anathema.sf.net
 ===------------------------------------------------------------------------------===
 
 -- ATTENTION --
-Corrected the type of [1E] Lunar Sense-Borrowing Method to Simple, which might make combos illegal.
-Please contact us if you encounter any problems.
+Corrected the type of [1E] Lunar Sense-Borrowing Method and Abyssal Corruption-Sensing Scrutiny to Simple, 
+which might make combos illegal. Moreover, corrected prerequisites for several [1E] Lunar, Abyssal and 
+Sidereal charms. Characters knowing these charms might not load. Please contact us if you encounter any problems.
 
 This version will no longer load Solars and Heroic Mortals created with with early 0.x versions. 
 Load and re-save them with v1.0 to make them work.
@@ -47,6 +48,16 @@ Load and re-save them with v1.0 to make them work.
 * Correct cost for Masking the Brilliant Form, Deadly Viper Strike, Mighty Bear Crush, Hyena Jaw Technique,
      Ossific Shard Shot, Tiger Claw Swat, Eagle Eye Advantage, Form-Fixing Method, Tattoo-Cutting Wisdom, 
      Moonsilver-Shaping Rite, Celestial Circle Sorcery
+          
+  Abyssals
+* Correct name for Bone Graft Technique, Attunement-Shattering Block
+* Correct duration for Shadow Races the Light
+* Correct type for Furious Blade, Soul-Searing Blow, Five Shadow Feint, Attunement-Shattering Block, Strength Stealing Technique,
+	Corruption-Sensing Scrutiny
+* Correct cost for Pulse of the Prey, Fetter the Beast, Wyld-Slaying Burst, Rampant Pestilence Method, Unsurpassed Plague Kiss,
+	Labyrinth Circle Necromancy
+* Correct prerequisites for Ivory Spine Attack, Bone Arsenal Method, Bone Graft Technique, Spider Pounce Technique,
+	Ghost-Warding Glyph, Exquisite Etiquette Style, Sin-Sensing Meditation
           
   Sidereals
 * Correct type for Smiling at the Damned, Marvelous Inclusion of Details, Systematic Understanding of Everything, Hungry Touch
