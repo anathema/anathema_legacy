@@ -160,7 +160,6 @@ public class CharmConfigurationPersister {
     for (Object charmObjectElement : groupElement.elements()) {
       Element charmElement = (Element) charmObjectElement;
       String charmId = charmElement.attributeValue(ATTRIB_NAME);
-      Element specialElement;
       boolean isOldSolarHazardResistanceCharm = isSolarHazardResistanceCharm(charmId);
       if (isOldSolarHazardResistanceCharm) {
         if (charmConfiguration.isLearned(HAZARD_RESISTANCE)) {
@@ -173,7 +172,7 @@ public class CharmConfigurationPersister {
       if (isOldSolarHazardResistanceCharm) {
         createHazardSpecialconfiguration(groupElement, charmConfiguration);
       }
-      specialElement = charmElement.element(TAG_SPECIAL);
+      Element specialElement = charmElement.element(TAG_SPECIAL);
       if (specialElement != null) {
         ISpecialCharmConfiguration specialConfiguration = charmConfiguration.getSpecialCharmConfiguration(charmId);
         specialPersister.loadConfiguration(specialElement, specialConfiguration);
