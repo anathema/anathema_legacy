@@ -6,8 +6,9 @@ http://anathema.sf.net
 ===------------------------------------------------------------------------------===
 			Release 1.01 "" (Upcoming)
 ===------------------------------------------------------------------------------===
-
 -- ATTENTION --
+From this version onward, Anathema requires Java 6 or later.
+
 Corrected the type of [1E] Lunar Sense-Borrowing Method and Abyssal Corruption-Sensing Scrutiny to Simple, 
 which might make combos illegal. Moreover, corrected prerequisites for several [1E] Lunar, Abyssal and 
 Sidereal charms. Characters knowing these charms might not load. Please contact us if you encounter any problems.
