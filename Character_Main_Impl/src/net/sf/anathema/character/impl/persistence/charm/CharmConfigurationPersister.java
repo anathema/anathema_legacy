@@ -167,8 +167,7 @@ public class CharmConfigurationPersister {
         }
         charmId = HAZARD_RESISTANCE;
       }
-      boolean experienceLearned = isExperienceLearned(charmElement);
-      group.learnCharmNoParents(charmConfiguration.getCharmById(charmId), experienceLearned);
+      group.learnCharmNoParents(charmConfiguration.getCharmById(charmId), isExperienceLearned(charmElement));
       if (isOldSolarHazardResistanceCharm) {
         createHazardSpecialconfiguration(groupElement, charmConfiguration);
       }
