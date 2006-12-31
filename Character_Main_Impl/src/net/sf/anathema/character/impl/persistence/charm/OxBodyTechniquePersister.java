@@ -10,7 +10,7 @@ import net.sf.anathema.lib.exception.PersistenceException;
 import org.dom4j.Element;
 
 public class OxBodyTechniquePersister implements ISpecialCharmPersister {
-  private final TraitPersister traitPersister = new TraitPersister();
+  private final TraitPersister traitPersister = new ExperiencedRestoringTraitPersister();
 
   public void saveConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration) {
     IOxBodyTechniqueConfiguration configuration = (IOxBodyTechniqueConfiguration) specialCharmConfiguration;

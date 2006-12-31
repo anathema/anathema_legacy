@@ -105,7 +105,7 @@ public class TraitPersister {
     }
   }
 
-  private void restoreDefaultTrait(Element traitElement, IDefaultTrait trait) throws PersistenceException {
+  protected void restoreDefaultTrait(Element traitElement, IDefaultTrait trait) throws PersistenceException {
     trait.setCreationValue(ElementUtilities.getRequiredIntAttrib(traitElement, ATTRIB_CREATION_VALUE));
     int experiencedValue = ElementUtilities.getIntAttrib(
         traitElement,
