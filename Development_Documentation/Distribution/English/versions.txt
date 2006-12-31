@@ -38,6 +38,7 @@ be invalid in future releases. Use this version to convert them by loading them 
 * Series should be loading once again (Thanks to Jontu Kontar)
 * Fixed a potential problem with series overwriting one another
 * Characters with Craft specialties now can be loaded (Discovered by ArsGlacialis)
+* Ox-Body Technique is now correctly restored for experienced characters (Report 1619249, discovered by Ash)
 * [1E/Core Rules] Rate no longer shows when dealing with close combat weapons. (Thanks ipsi)
 * [1E] Fixed two problems with Abyssal Appearance/Essence relation
 * [1E] Weapon speeds can be negative (Found by uteck)
