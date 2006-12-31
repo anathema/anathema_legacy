@@ -11,9 +11,11 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
+import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ICharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
+import net.sf.anathema.character.model.charm.OxBodyCategory;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
 import net.sf.anathema.lib.control.GenericControl;
@@ -100,30 +102,14 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   public void learnCharmNoParents(ICharm charm, boolean experienced) {
     ISpecialCharmConfiguration specialCharmConfiguration = getSpecialCharmConfiguration(charm);
     if (specialCharmConfiguration instanceof IMultiLearnableCharmConfiguration) {
-      IMultiLearnableCharmConfiguration multiLearnable = (IMultiLearnableCharmConfiguration) specialCharmConfiguration;
-      if (experienced) {
-        if (multiLearnable.getCategory().getExperiencedValue() < 1) {
-          multiLearnable.getCategory().setExperiencedValue(1);
-        }
-      }
-      else {
-        if (multiLearnable.getCategory().getCreationValue() < 1) {
-          multiLearnable.getCategory().setCreationValue(1);
-        }
-      }
+      IMultiLearnableCharmConfiguration configuration = (IMultiLearnableCharmConfiguration) specialCharmConfiguration;
+      IDefaultTrait category = configuration.getCategory();
+      ensureMinimumValue(experienced, configuration, category);
     }
     if (specialCharmConfiguration instanceof IOxBodyTechniqueConfiguration) {
-      IOxBodyTechniqueConfiguration oxBody = (IOxBodyTechniqueConfiguration) specialCharmConfiguration;
-      if (experienced) {
-        if (oxBody.getCurrentLearnCount() < 1) {
-          oxBody.getCategories()[0].setExperiencedValue(1);
-        }
-      }
-      else {
-        if (oxBody.getCreationLearnCount() < 1) {
-          oxBody.getCategories()[0].setCreationValue(1);
-        }
-      }
+      IOxBodyTechniqueConfiguration configuration = (IOxBodyTechniqueConfiguration) specialCharmConfiguration;
+      OxBodyCategory category = configuration.getCategories()[0];
+      ensureMinimumValue(experienced, configuration, category);
     }
     if (experienced) {
       charmsLearnedWithExperience.add(charm);
@@ -132,6 +118,19 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
       charmsLearnedOnCreation.add(charm);
     }
     fireCharmLearned(charm);
+  }
+
+  private void ensureMinimumValue(boolean experienced, ISpecialCharmConfiguration configuration, IDefaultTrait category) {
+    if (experienced) {
+      if (configuration.getCurrentLearnCount() < 1) {
+        category.setExperiencedValue(1);
+      }
+    }
+    else {
+      if (configuration.getCreationLearnCount() < 1) {
+        category.setCreationValue(1);
+      }
+    }
   }
 
   private void forgetChildren(ICharm charm, boolean experienced) {
