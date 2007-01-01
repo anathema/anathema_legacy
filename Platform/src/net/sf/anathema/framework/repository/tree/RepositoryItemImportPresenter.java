@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 
 import net.disy.commons.core.message.Message;
@@ -65,6 +66,12 @@ public class RepositoryItemImportPresenter implements IPresenter {
           importZipFile.close();
           messaging.addMessage("AnathemaCore.Tools.RepositoryView.ImportDoneMessage", entriesByItem.keySet().size()); //$NON-NLS-1$
         }
+        catch (ZipException e) {
+          MessageDialogFactory.showMessageDialog(parentComponent, new Message(
+              resources.getString("AnathemaCore.Tools.RepositoryView.NoZipFileError"), //$NON-NLS-1$
+              e));
+          Logger.getLogger(getClass()).error(e);
+        }
         catch (IOException e) {
           MessageDialogFactory.showMessageDialog(parentComponent, new Message(
               resources.getString("AnathemaCore.Tools.RepositoryView.FileError"), //$NON-NLS-1$
@@ -88,9 +95,12 @@ public class RepositoryItemImportPresenter implements IPresenter {
     MultiEntryMap<String, ZipEntry> entriesByComment = new MultiEntryMap<String, ZipEntry>();
     for (; entries.hasMoreElements();) {
       ZipEntry entry = entries.nextElement();
-      entriesByComment.add(entry.getComment(), entry);
+      String comment = entry.getComment();
+      if (comment == null) {
+        continue;
+      }
+      entriesByComment.add(comment, entry);
     }
     return entriesByComment;
   }
-
 }
