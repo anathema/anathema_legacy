@@ -25,14 +25,17 @@ public class RepositoryItemImportPresenter implements IPresenter {
   private final IRepositoryTreeModel model;
   private final IRepositoryTreeView view;
   private final RepositoryZipPathCreator creator;
+  private final AmountMessaging messaging;
 
   public RepositoryItemImportPresenter(
       IResources resources,
       IRepositoryTreeModel repositoryTreeModel,
-      IRepositoryTreeView treeView) {
+      IRepositoryTreeView treeView,
+      AmountMessaging fileCountMessaging) {
     this.resources = resources;
     this.model = repositoryTreeModel;
     this.view = treeView;
+    this.messaging = fileCountMessaging;
     this.creator = new RepositoryZipPathCreator(model.getRepositoryPath());
   }
 
@@ -60,6 +63,7 @@ public class RepositoryItemImportPresenter implements IPresenter {
             model.refreshItem(type, handler.getNewId());
           }
           importZipFile.close();
+          messaging.addMessage("AnathemaCore.Tools.RepositoryView.ImportDoneMessage", entriesByItem.keySet().size()); //$NON-NLS-1$
         }
         catch (IOException e) {
           MessageDialogFactory.showMessageDialog(parentComponent, new Message(

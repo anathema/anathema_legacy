@@ -18,14 +18,17 @@ public class RepositoryItemDeletionPresenter implements IPresenter {
   private final IResources resources;
   private final IRepositoryTreeModel repositoryModel;
   private final RepositoryTreeView treeView;
+  private final AmountMessaging messaging;
 
   public RepositoryItemDeletionPresenter(
       IResources resources,
       RepositoryTreeModel repositoryTreeModel,
-      RepositoryTreeView treeView) {
+      RepositoryTreeView treeView,
+      AmountMessaging fileCountMessaging) {
     this.resources = resources;
     this.repositoryModel = repositoryTreeModel;
     this.treeView = treeView;
+    this.messaging = fileCountMessaging;
   }
 
   public void initPresentation() {
@@ -39,7 +42,9 @@ public class RepositoryItemDeletionPresenter implements IPresenter {
           return;
         }
         try {
-          repositoryModel.deleteItem();
+          int itemCount = repositoryModel.getPrintNameFilesInSelection().length;
+          repositoryModel.deleteSelection();
+          messaging.addMessage("AnathemaCore.Tools.RepositoryView.DeleteDoneMessage", itemCount); //$NON-NLS-1$
         }
         catch (RepositoryException e) {
           MessageDialogFactory.showMessageDialog(parentComponent, new Message(

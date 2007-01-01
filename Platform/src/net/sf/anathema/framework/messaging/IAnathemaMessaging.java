@@ -5,9 +5,7 @@ import net.disy.commons.core.message.MessageType;
 
 public interface IAnathemaMessaging {
 
-  public void addMessage(String messagePattern, Object[] arguments, MessageType messageType);
-
-  public void addMessage(String messageText, MessageType messageType);
+  public void addMessage(String messagePattern, MessageType messageType, Object... arguments);
 
   public void addMessage(IBasicMessage message);
 }

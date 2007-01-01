@@ -59,14 +59,14 @@ public class EquipmentAdditionalModelPersister implements IAdditionalPersister {
       }
       catch (MissingMaterialException e) {
         messageIndicator.addMessage("EquipmentPersistence.NoMaterialFound", //$NON-NLS-1$
-            new Object[] { templateId },
-            MessageType.WARNING);
+            MessageType.WARNING,
+            templateId);
         continue;
       }
       if (item == null) {
         messageIndicator.addMessage("EquipmentPersistence.NoTemplateFound", //$NON-NLS-1$
-            new Object[] { templateId },
-            MessageType.WARNING);
+            MessageType.WARNING,
+            new Object[] { templateId });
         continue;
       }
       item.setUnprinted();

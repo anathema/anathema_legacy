@@ -25,14 +25,17 @@ public class RepositoryItemExportPresenter implements IPresenter {
   private final IRepositoryTreeModel model;
   private final RepositoryTreeView view;
   private final RepositoryZipPathCreator creator;
+  private final AmountMessaging messaging;
 
   public RepositoryItemExportPresenter(
       IResources resources,
       RepositoryTreeModel repositoryTreeModel,
-      RepositoryTreeView treeView) {
+      RepositoryTreeView treeView,
+      AmountMessaging fileCountMessaging) {
     this.resources = resources;
     this.model = repositoryTreeModel;
     this.view = treeView;
+    this.messaging = fileCountMessaging;
     this.creator = new RepositoryZipPathCreator(model.getRepositoryPath());
   }
 
@@ -55,6 +58,7 @@ public class RepositoryItemExportPresenter implements IPresenter {
             }
           }
           zipOutputStream.close();
+          messaging.addMessage("AnathemaCore.Tools.RepositoryView.ExportDoneMessage", printNameFiles.length); //$NON-NLS-1$
         }
         catch (IOException e) {
           MessageDialogFactory.showMessageDialog(parentComponent, new Message(

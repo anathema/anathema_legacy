@@ -16,7 +16,7 @@ public interface IRepositoryTreeModel {
 
   public void addRepositoryTreeModelListener(IRepositoryTreeModelListener listener);
 
-  public void deleteItem() throws RepositoryException;
+  public void deleteSelection() throws RepositoryException;
 
   public boolean canSelectionBeDeleted();
 

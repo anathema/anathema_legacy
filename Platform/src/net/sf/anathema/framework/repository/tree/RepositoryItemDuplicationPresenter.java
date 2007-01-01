@@ -5,9 +5,11 @@ import java.io.File;
 import java.io.IOException;
 
 import net.disy.commons.core.message.Message;
+import net.disy.commons.core.message.MessageType;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.sf.anathema.framework.item.IItemType;
+import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
@@ -21,14 +23,17 @@ public class RepositoryItemDuplicationPresenter implements IPresenter {
   private final IResources resources;
   private final RepositoryTreeModel model;
   private final RepositoryTreeView view;
+  private final IAnathemaMessaging messaging;
 
   public RepositoryItemDuplicationPresenter(
       IResources resources,
       RepositoryTreeModel repositoryTreeModel,
-      RepositoryTreeView treeView) {
+      RepositoryTreeView treeView,
+      IAnathemaMessaging messaging) {
     this.resources = resources;
     this.model = repositoryTreeModel;
     this.view = treeView;
+    this.messaging = messaging;
   }
 
   public void initPresentation() {
@@ -47,6 +52,7 @@ public class RepositoryItemDuplicationPresenter implements IPresenter {
               handler.importStream(mainFilePath, readAccess.openInputStream(file), file.getPath());
             }
             model.refreshItem(type, handler.getNewId());
+            messaging.addMessage("AnathemaCore.Tools.RepositoryView.DuplicateDoneMessage", MessageType.INFORMATION); //$NON-NLS-1$
           }
         }
         catch (RepositoryException e) {

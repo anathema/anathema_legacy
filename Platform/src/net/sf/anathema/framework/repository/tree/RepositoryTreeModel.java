@@ -77,7 +77,7 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
     return true;
   }
 
-  public void deleteItem() throws RepositoryException {
+  public void deleteSelection() throws RepositoryException {
     if (!canSelectionBeDeleted()) {
       return;
     }

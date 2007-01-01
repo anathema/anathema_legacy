@@ -20,12 +20,8 @@ public class AnathemaMessaging implements IAnathemaMessaging, IAnathemaMessageCo
     this.resources = resources;
   }
 
-  public void addMessage(String pattern, Object[] arguments, MessageType messageType) {
+  public void addMessage(String pattern, MessageType messageType, Object... arguments) {
     String messageText = resources.getString(pattern, arguments);
-    addMessage(messageText, messageType);
-  }
-
-  public void addMessage(String messageText, MessageType messageType) {
     addMessage(new BasicMessage(messageText, messageType));
   }
 

@@ -6,6 +6,7 @@ import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.dialog.userdialog.AbstractDialogPage;
 import net.sf.anathema.framework.IAnathemaModel;
+import net.sf.anathema.framework.messaging.IAnathemaMessaging;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -35,10 +36,13 @@ public class RepositoryBrowserDialogPage extends AbstractDialogPage {
         treeView,
         renderer,
         "AnathemaCore.Tools.RepositoryView.TreeRoot").initPresentation(); //$NON-NLS-1$
-    new RepositoryItemDeletionPresenter(resources, repositoryTreeModel, treeView).initPresentation();
-    new RepositoryItemExportPresenter(resources, repositoryTreeModel, treeView).initPresentation();
-    new RepositoryItemImportPresenter(resources, repositoryTreeModel, treeView).initPresentation();
-    new RepositoryItemDuplicationPresenter(resources, repositoryTreeModel, treeView).initPresentation();
+    IAnathemaMessaging messaging = model.getMessaging();
+    AmountMessaging fileCountMessaging = new AmountMessaging(messaging, resources);
+    new RepositoryItemDeletionPresenter(resources, repositoryTreeModel, treeView, fileCountMessaging).initPresentation();
+    new RepositoryItemExportPresenter(resources, repositoryTreeModel, treeView, fileCountMessaging).initPresentation();
+    new RepositoryItemImportPresenter(resources, repositoryTreeModel, treeView, fileCountMessaging).initPresentation();
+    new RepositoryItemDuplicationPresenter(resources, repositoryTreeModel, treeView, messaging).initPresentation();
+    new RepositoryMessagingPresenter(repositoryTreeModel, messaging).initPresentation();
     return treeView.getComponent();
   }
 

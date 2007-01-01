@@ -74,7 +74,7 @@ public class DemoRepositoryTreeModel implements IRepositoryTreeModel {
     return false;
   }
 
-  public void deleteItem() throws RepositoryException {
+  public void deleteSelection() throws RepositoryException {
     throw new NotYetImplementedException();
   }
 
