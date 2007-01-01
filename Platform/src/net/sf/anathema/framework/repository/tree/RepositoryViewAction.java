@@ -19,7 +19,7 @@ public final class RepositoryViewAction extends SmartAction {
     return action;
   }
 
-  public RepositoryViewAction(IAnathemaModel model, IResources resources) {
+  private RepositoryViewAction(IAnathemaModel model, IResources resources) {
     this.model = model;
     this.resources = resources;
   }
