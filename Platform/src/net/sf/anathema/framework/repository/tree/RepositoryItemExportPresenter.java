@@ -65,6 +65,7 @@ public class RepositoryItemExportPresenter implements IPresenter {
       }
 
     };
+    action.setToolTipText(resources.getString("AnathemaCore.Tools.RepositoryView.ExportToolTip")); //$NON-NLS-1$
     view.addActionButton(action);
     model.addTreeSelectionChangeListener(new IChangeListener() {
       public void changeOccured() {

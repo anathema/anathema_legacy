@@ -74,18 +74,19 @@ public class RepositoryItemImportPresenter implements IPresenter {
           Logger.getLogger(getClass()).error(e);
         }
       }
-
-      private MultiEntryMap<String, ZipEntry> groupEntriesByItems(ZipFile importZipFile) {
-        Enumeration< ? extends ZipEntry> entries = importZipFile.entries();
-        MultiEntryMap<String, ZipEntry> entriesByComment = new MultiEntryMap<String, ZipEntry>();
-        for (; entries.hasMoreElements();) {
-          ZipEntry entry = entries.nextElement();
-          entriesByComment.add(entry.getComment(), entry);
-        }
-        return entriesByComment;
-      }
-
     };
+    action.setToolTipText(resources.getString("AnathemaCore.Tools.RepositoryView.ImportToolTip")); //$NON-NLS-1$
     view.addActionButton(action);
   }
+
+  private MultiEntryMap<String, ZipEntry> groupEntriesByItems(ZipFile importZipFile) {
+    Enumeration< ? extends ZipEntry> entries = importZipFile.entries();
+    MultiEntryMap<String, ZipEntry> entriesByComment = new MultiEntryMap<String, ZipEntry>();
+    for (; entries.hasMoreElements();) {
+      ZipEntry entry = entries.nextElement();
+      entriesByComment.add(entry.getComment(), entry);
+    }
+    return entriesByComment;
+  }
+
 }
