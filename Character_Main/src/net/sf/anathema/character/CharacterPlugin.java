@@ -34,6 +34,7 @@ public class CharacterPlugin extends Plugin {
         CharmCache.getInstance().registerCharmFile(typeParameter.valueAsString(), rules.valueAsString(), resource);
       }
     }
+    // TODO: Build charms here, instead of lazy building in cache
   }
 
   @Override
