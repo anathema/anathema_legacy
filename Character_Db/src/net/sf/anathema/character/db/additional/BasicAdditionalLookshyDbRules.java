@@ -1,7 +1,5 @@
 package net.sf.anathema.character.db.additional;
 
-import java.util.ArrayList;
-
 import net.sf.anathema.character.db.DbCharacterModule;
 import net.sf.anathema.character.generic.additionalrules.ITraitCostModifier;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
@@ -13,14 +11,11 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 public class BasicAdditionalLookshyDbRules extends DefaultAdditionalRules {
 
   public BasicAdditionalLookshyDbRules() {
-    super(new ArrayList<String>() {
-      {
-        add(IBackgroundIds.BACKGROUND_ID_CONTACTS);
-        add(IBackgroundIds.BACKGROUND_ID_INFLUENCE);
-        add(IBackgroundIds.BACKGROUND_ID_FOLLOWERS);
-        add(DbCharacterModule.BACKGROUND_ID_HENCHMEN);
-      }
-    });
+    super(
+        IBackgroundIds.BACKGROUND_ID_CONTACTS,
+        IBackgroundIds.BACKGROUND_ID_INFLUENCE,
+        IBackgroundIds.BACKGROUND_ID_FOLLOWERS,
+        DbCharacterModule.BACKGROUND_ID_HENCHMEN);
   }
 
   public void addSorceryRules(IBackgroundTemplate sorceryTemplate) {

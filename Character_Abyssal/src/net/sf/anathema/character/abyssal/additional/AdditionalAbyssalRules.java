@@ -1,8 +1,5 @@
 package net.sf.anathema.character.abyssal.additional;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.additional.DefaultAdditionalRules;
 import net.sf.anathema.character.generic.impl.additional.MultiLearnablePool;
@@ -10,12 +7,8 @@ import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCha
 
 public class AdditionalAbyssalRules extends DefaultAdditionalRules {
 
-  public AdditionalAbyssalRules() {
-    this(new ArrayList<String>());
-  }
-
-  public AdditionalAbyssalRules(List<String> rejectedBackgrounds) {
-    super(rejectedBackgrounds, new AbyssalAdditionalTraitRules());
+  public AdditionalAbyssalRules(String... rejectedBackgrounds) {
+    super(new AbyssalAdditionalTraitRules(), rejectedBackgrounds);
   }
 
   public void addNecromancyRules(IBackgroundTemplate necromancyTemplate) {

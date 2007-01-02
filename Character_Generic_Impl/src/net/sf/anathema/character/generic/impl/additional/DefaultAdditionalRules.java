@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.impl.additional;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalBonusPointPool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
@@ -14,17 +15,17 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 
 public class DefaultAdditionalRules implements IAdditionalRules {
 
-  private final List<String> rejectedBackgrounds;
+  private final String[] rejectedBackgrounds;
   private final List<IAdditionalBonusPointPool> additonalBonusPointPools = new ArrayList<IAdditionalBonusPointPool>();
   private final List<IAdditionalMagicLearnPool> additonalMagicLearnPools = new ArrayList<IAdditionalMagicLearnPool>();
   private final List<IAdditionalEssencePool> additonalEssencePools = new ArrayList<IAdditionalEssencePool>();
   private final IAdditionalTraitRules traitRules;
 
-  protected DefaultAdditionalRules(List<String> rejectedBackgroundIds) {
-    this(rejectedBackgroundIds, new DefaultAdditionalTraitRules());
+  protected DefaultAdditionalRules(String... rejectedBackgroundIds) {
+    this(new DefaultAdditionalTraitRules(), rejectedBackgroundIds);
   }
 
-  protected DefaultAdditionalRules(List<String> rejectedBackgroundIds, IAdditionalTraitRules traitRules) {
+  protected DefaultAdditionalRules(IAdditionalTraitRules traitRules, String... rejectedBackgroundIds) {
     this.rejectedBackgrounds = rejectedBackgroundIds;
     this.traitRules = traitRules;
   }
@@ -34,7 +35,7 @@ public class DefaultAdditionalRules implements IAdditionalRules {
   }
 
   public final boolean isRejected(IBackgroundTemplate backgroundTemplate) {
-    return rejectedBackgrounds.contains(backgroundTemplate.getId());
+    return ArrayUtilities.contains(rejectedBackgrounds, backgroundTemplate.getId());
   }
 
   public IAdditionalMagicLearnPool[] getAdditionalMagicLearnPools() {
