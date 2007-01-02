@@ -46,7 +46,7 @@ public class CharmCache implements ICharmCache {
     return charmSetsByRuleSet.get(ruleset);
   }
 
-  public ICharm[] getCharms(IIdentificate type, IExaltedRuleSet ruleset) throws PersistenceException {
+  public synchronized ICharm[] getCharms(IIdentificate type, IExaltedRuleSet ruleset) throws PersistenceException {
     if (getRulesetCharms(ruleset).containsKey(type)) {
       return getCharmArray(type, ruleset);
     }
