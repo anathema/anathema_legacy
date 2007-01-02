@@ -42,6 +42,7 @@ be invalid in future releases. Use this version to convert them by loading them 
 * [1E/Core Rules] Rate no longer shows when dealing with close combat weapons. (Thanks ipsi)
 * [1E] Fixed two problems with Abyssal Appearance/Essence relation
 * [1E] Weapon speeds can be negative (Found by uteck)
+* [1E] Outcaste Dragon-Bloodeds' Breeding is no longer lowerable when experienced.
 * Crafts now register as a favored ability (Reported by ArsGlacialis & Peter Blake)
 * Experienced specialty values are displayed correctly after loading
 
