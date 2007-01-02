@@ -18,16 +18,19 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.collection.Predicate;
+import net.sf.anathema.lib.collection.Table;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.util.IIdentificate;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
+import org.dom4j.io.SAXReader;
 
 public class CharmCache implements ICharmCache {
 
   private static final CharmCache instance = new CharmCache();
+  private final Table<IIdentificate, IExaltedRuleSet, URL> charmFileTable = new Table<IIdentificate, IExaltedRuleSet, URL>();
   private final Map<IExaltedRuleSet, MultiEntryMap<IIdentificate, ICharm>> charmSetsByRuleSet = new HashMap<IExaltedRuleSet, MultiEntryMap<IIdentificate, ICharm>>();
   private final CharmIO charmIo = new CharmIO();
   private final ICharmSetBuilder builder = new CharmSetBuilder();
@@ -46,64 +49,22 @@ public class CharmCache implements ICharmCache {
     return charmSetsByRuleSet.get(ruleset);
   }
 
-  public synchronized ICharm[] getCharms(IIdentificate type, IExaltedRuleSet ruleset) throws PersistenceException {
-    if (getRulesetCharms(ruleset).containsKey(type)) {
-      return getCharmArray(type, ruleset);
-    }
-    buildOfficialCharms(type, ruleset);
-    return getCharmArray(type, ruleset);
-  }
-
-  private ICharm[] getCharmArray(IIdentificate type, IExaltedRuleSet ruleset) {
-    List<ICharm> charmList = getRulesetCharms(ruleset).get(type);
+  public ICharm[] getCharms(IIdentificate type, IExaltedRuleSet ruleset) {
+    List<ICharm> charmList = charmSetsByRuleSet.get(ruleset).get(type);
     return charmList.toArray(new ICharm[charmList.size()]);
-  }
-
-  private void buildOfficialCharms(final IIdentificate type, IExaltedRuleSet ruleset) throws PersistenceException {
-    try {
-      Document charmDocument = charmIo.readCharms(type, ruleset);
-      buildRulesetCharms(type, ruleset, charmDocument);
-    }
-    catch (DocumentException e) {
-      throw new CharmException(e);
-    }
-  }
-
-  private void buildRulesetCharms(final IIdentificate type, IExaltedRuleSet set, Document charmDocument)
-      throws PersistenceException {
-    List<ICharm> existingCharms = new ArrayList<ICharm>();
-    final IExaltedRuleSet basicRules = set.getBasicRuleset();
-    if (basicRules != null) {
-      Collections.addAll(existingCharms, getCharms(type, basicRules));
-    }
-    ICharm[] charmArray = builder.buildCharms(charmDocument, existingCharms, set);
-    for (ICharm charm : charmArray) {
-      getRulesetCharms(set).add(type, charm);
-    }
   }
 
   // Necessary for connections between Charms from different documents/types
   public ICharm searchCharm(final String charmId, IExaltedRuleSet rules) {
-    try {
-      String[] idParts = charmId.split("\\."); //$NON-NLS-1$
-      CharacterType characterTypeId = CharacterType.getById(idParts[0]);
-      ICharm[] charms = getCharms(characterTypeId, rules);
-      ICharm charm = ArrayUtilities.find(new Predicate<ICharm>() {
-        public boolean evaluate(ICharm candidate) {
-          return candidate.getId().equals(charmId);
-        }
-      }, charms);
-      return charm;
-    }
-    catch (PersistenceException e) {
-      return null;
-    }
-  }
-
-  public void addCharm(ICharmEntryData charmData) throws IOException, DocumentException {
-    ICharm charm = new Charm(charmData.getCoreData());
-    getRulesetCharms(charmData.getEdition().getDefaultRuleset()).add(charm.getCharacterType(), charm);
-    charmIo.writeCharmInternal(charmData);
+    String[] idParts = charmId.split("\\."); //$NON-NLS-1$
+    CharacterType characterTypeId = CharacterType.getById(idParts[0]);
+    ICharm[] charms = getCharms(characterTypeId, rules);
+    ICharm charm = ArrayUtilities.find(new Predicate<ICharm>() {
+      public boolean evaluate(ICharm candidate) {
+        return candidate.getId().equals(charmId);
+      }
+    }, charms);
+    return charm;
   }
 
   public void registerCharmFile(String typeString, String ruleString, URL resource) {
@@ -115,6 +76,54 @@ public class CharmCache implements ICharmCache {
       type = CharacterType.getById(typeString);
     }
     ExaltedRuleSet ruleSet = ExaltedRuleSet.valueOf(ruleString);
-    charmIo.registerCharmFile(type, ruleSet, resource);
+    charmFileTable.add(type, ruleSet, resource);
+  }
+
+  public void buildCharms() throws PersistenceException {
+    for (ExaltedRuleSet rules : ExaltedRuleSet.values()) {
+      for (CharacterType type : CharacterType.values()) {
+        buildCharms(type, rules);
+      }
+      buildCharms(MARTIAL_ARTS, rules);
+    }
+  }
+
+  private void buildCharms(IIdentificate type, IExaltedRuleSet rules) throws PersistenceException {
+    if (charmFileTable.contains(type, rules)) {
+      buildOfficialCharms(type, rules);
+    }
+  }
+
+  private void buildOfficialCharms(final IIdentificate type, IExaltedRuleSet rules) throws PersistenceException {
+    try {
+      Document charmDocument = new SAXReader().read(charmFileTable.get(type, rules));
+      buildRulesetCharms(type, rules, charmDocument);
+    }
+    catch (DocumentException e) {
+      throw new CharmException(e);
+    }
+  }
+
+  private void buildRulesetCharms(final IIdentificate type, IExaltedRuleSet rules, Document charmDocument)
+      throws PersistenceException {
+    List<ICharm> existingCharms = new ArrayList<ICharm>();
+    final IExaltedRuleSet basicRules = rules.getBasicRuleset();
+    if (basicRules != null) {
+      Collections.addAll(existingCharms, getCharms(type, basicRules));
+    }
+    ICharm[] charmArray = builder.buildCharms(charmDocument, existingCharms, rules);
+    for (ICharm charm : charmArray) {
+      addCharm(type, rules, charm);
+    }
+  }
+
+  private void addCharm(IIdentificate type, IExaltedRuleSet rules, ICharm charm) {
+    getRulesetCharms(rules).add(type, charm);
+  }
+
+  public void addCharm(ICharmEntryData charmData) throws IOException, DocumentException {
+    ICharm charm = new Charm(charmData.getCoreData());
+    addCharm(charm.getCharacterType(), charmData.getEdition().getDefaultRuleset(), charm);
+    charmIo.writeCharmInternal(charmData);
   }
 }

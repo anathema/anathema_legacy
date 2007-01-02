@@ -57,6 +57,7 @@ public class SetupCharacterPlatformFixture extends Fixture {
     registerCharmFile(new File("../Character_Sidereal/resources/plugin-fragment.xml")); //$NON-NLS-1$
     registerCharmFile(new File("../Character_Solar/resources/plugin-fragment.xml")); //$NON-NLS-1$
     registerCharmFile(new File("../Character_Db/resources/plugin-fragment.xml")); //$NON-NLS-1$
+    CharmCache.getInstance().buildCharms();
   }
 
   private void registerCharmFile(File xmlFile) throws FileNotFoundException, AnathemaException {

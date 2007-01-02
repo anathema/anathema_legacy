@@ -17,7 +17,6 @@ import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.lib.exception.PersistenceException;
 
 public class MagicComparator implements Comparator<IMagic> {
 
@@ -97,15 +96,8 @@ public class MagicComparator implements Comparator<IMagic> {
             }
           }
           else {
-            ICharm[] charms;
-            // todo vom (31.10.2005) (sieroux): ErrorHandling
-            try {
-              charms = CharmCache.getInstance().getCharms(otherCharacterType, set);
-              compareValue[0] = sortEqualTypeCharms(charm, otherCharm, charms);
-            }
-            catch (PersistenceException e) {
-              e.printStackTrace();
-            }
+            ICharm[] charms = CharmCache.getInstance().getCharms(otherCharacterType, set);
+            compareValue[0] = sortEqualTypeCharms(charm, otherCharm, charms);
           }
         }
       }
@@ -146,12 +138,7 @@ public class MagicComparator implements Comparator<IMagic> {
     magic2.accept(new IMagicVisitor() {
       public void visitCharm(ICharm otherCharm) {
         if (MartialArtsUtilities.isMartialArtsCharm(otherCharm)) {
-          try {
-            handleMartialArtsCharm(charm, otherCharm);
-          }
-          catch (PersistenceException e) {
-            e.printStackTrace();
-          }
+          handleMartialArtsCharm(charm, otherCharm);
         }
         else {
           if (otherCharm.getCharacterType() == characterType) {
@@ -170,7 +157,7 @@ public class MagicComparator implements Comparator<IMagic> {
     return compareValue[0];
   }
 
-  private int handleMartialArtsCharm(ICharm charm, ICharm otherCharm) throws PersistenceException {
+  private int handleMartialArtsCharm(ICharm charm, ICharm otherCharm) {
     ICharm[] martialArtsCharms = CharmCache.getInstance().getCharms(
         MartialArtsUtilities.MARTIAL_ARTS,
         ExaltedRuleSet.CoreRules);
