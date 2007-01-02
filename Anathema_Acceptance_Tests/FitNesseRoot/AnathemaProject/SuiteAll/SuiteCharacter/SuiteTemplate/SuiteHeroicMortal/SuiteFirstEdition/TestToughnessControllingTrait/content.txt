@@ -1,3 +1,1 @@
-!|Check Health Template|
-|getToughnessControllingTrait?|
-|Endurance|
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTemplate.SnippetEnduranceToughnessTrait

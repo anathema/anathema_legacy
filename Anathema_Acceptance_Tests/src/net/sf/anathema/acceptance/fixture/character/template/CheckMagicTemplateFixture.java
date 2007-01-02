@@ -13,10 +13,17 @@ public class CheckMagicTemplateFixture extends AbstractTemplateColumnFixture {
   }
 
   public String getMaximumNecromancyCircle() {
-    return getMaximumCircle(getTemplate().getMagicTemplate().getSpellMagic().getNecromancyCircles()).getId();
+    CircleType maximumCircle = getMaximumCircle(getTemplate().getMagicTemplate().getSpellMagic().getNecromancyCircles());
+    if (maximumCircle == null) {
+      return null;
+    }
+    return maximumCircle.getId();
   }
 
   private CircleType getMaximumCircle(CircleType[] circles) {
+    if (circles.length == 0) {
+      return null;
+    }
     CircleType highestCircle = circles[0];
     for (CircleType circle : circles) {
       highestCircle = circle.compareTo(highestCircle) > 0 ? circle : highestCircle;

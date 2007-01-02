@@ -1,0 +1,6 @@
+!3 Calculate the DB-Template's Essence Pools for some random values.
+
+!|CheckEssenceTemplate|
+|willpower|compassion|conviction|essence|peripheralPool?|personalPool?|
+|6|5|0|2|19|8|
+|6|5|1|2|20|8|

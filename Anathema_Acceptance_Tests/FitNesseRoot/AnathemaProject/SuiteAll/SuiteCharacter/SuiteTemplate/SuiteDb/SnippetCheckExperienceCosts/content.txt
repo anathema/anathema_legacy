@@ -39,9 +39,9 @@
 !|CheckTemplateTraitExperiencePoints|
 |creationValue|experiencedValue|essenceCost?|
 |1|1|0|
-|1|2|20|
-|2|3|40|
-|1|3|60|
+|1|2|10|
+|2|3|20|
+|1|3|30|
 
 
 !3 Virtue costs
