@@ -13,7 +13,6 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.lib.exception.PersistenceException;
 
 public class CharmTemplate implements ICharmTemplate {
 
@@ -26,7 +25,7 @@ public class CharmTemplate implements ICharmTemplate {
       MartialArtsLevel martialArtsLevel,
       ICharmCache charmProvider,
       CharacterType characterType,
-      IExaltedEdition edition) throws PersistenceException {
+      IExaltedEdition edition) {
     this(martialArtsLevel, false, CharmSet.createRegularCharmSet(charmProvider, characterType, edition));
   }
 

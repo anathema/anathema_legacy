@@ -10,7 +10,6 @@ import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
@@ -22,12 +21,12 @@ public class SequesteredTabernacleDbTemplate extends AbstractDbTemplate {
     return TEMPLATE_TYPE;
   }
 
-  public SequesteredTabernacleDbTemplate(CharmCache charmProvider, IAdditionalRules rules) throws PersistenceException {
+  public SequesteredTabernacleDbTemplate(CharmCache charmProvider, IAdditionalRules rules) {
     super(charmProvider, rules, new SequesteredTabernacleDbTraitTemplateFactory());
   }
 
   @Override
-  protected ICharmTemplate createCharmTemplate(ICharmCache charmProvider) throws PersistenceException {
+  protected ICharmTemplate createCharmTemplate(ICharmCache charmProvider) {
     return new TerrestrialMartialArtistCharmTemplate(charmProvider);
   }
 

@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.impl.backgrounds.EssenceUserBackgroundT
 import net.sf.anathema.character.generic.impl.backgrounds.SimpleBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
-import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 
 public class BasicExaltCharacterModule extends NullObjectCharacterModuleAdapter {
@@ -36,12 +35,6 @@ public class BasicExaltCharacterModule extends NullObjectCharacterModuleAdapter 
 
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
-    CharmCache charmProvider = CharmCache.getInstance();
-    try {
-      characterGenerics.getTemplateRegistry().register(new UnsupportedDragonKingTemplate(charmProvider));
-    }
-    catch (PersistenceException e) {
-      e.printStackTrace();
-    }
+    characterGenerics.getTemplateRegistry().register(new UnsupportedDragonKingTemplate(CharmCache.getInstance()));
   }
 }

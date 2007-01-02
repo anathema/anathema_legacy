@@ -22,7 +22,6 @@ import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
-import net.sf.anathema.lib.exception.PersistenceException;
 
 public abstract class AbstractDbTemplate extends AbstractCharacterTemplate {
   private final IBonusPointCosts bonusCosts = new DbBonusPointCosts();
@@ -87,8 +86,7 @@ public abstract class AbstractDbTemplate extends AbstractCharacterTemplate {
     return new DbExperienceCosts();
   }
 
-  public AbstractDbTemplate(ICharmCache charmProvider, IAdditionalRules rules, ITraitTemplateFactory templateFactory)
-      throws PersistenceException {
+  public AbstractDbTemplate(ICharmCache charmProvider, IAdditionalRules rules, ITraitTemplateFactory templateFactory) {
     traitTemplateCollection = new TraitTemplateCollection(templateFactory);
     ICharmTemplate charmTemplate = createCharmTemplate(charmProvider);
     ISpellMagicTemplate spellMagic = new SpellMagicTemplate(
@@ -99,7 +97,7 @@ public abstract class AbstractDbTemplate extends AbstractCharacterTemplate {
     presentationProperties = new DbPresentationProperties(getTemplateType());
   }
 
-  protected ICharmTemplate createCharmTemplate(ICharmCache charmProvider) throws PersistenceException {
+  protected ICharmTemplate createCharmTemplate(ICharmCache charmProvider) {
     return new DefaultTerrestrialCharmTemplate(charmProvider);
   }
 

@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.lib.exception.PersistenceException;
 
 public class LoyalAbyssalTemplate extends AbstractAbyssalTemplate {
 
@@ -16,7 +15,7 @@ public class LoyalAbyssalTemplate extends AbstractAbyssalTemplate {
   private final ICreationPoints creationPoints = new LoyalAbyssalCreationPoints();
   private final AbyssalPresentationProperties presentationProperties;
 
-  public LoyalAbyssalTemplate(ICharmCache charmProvider, IAdditionalRules additionalRules) throws PersistenceException {
+  public LoyalAbyssalTemplate(ICharmCache charmProvider, IAdditionalRules additionalRules) {
     super(charmProvider, additionalRules);
     presentationProperties = new AbyssalPresentationProperties("CharacterGenerator.NewCharacter.Abyssal.Loyal.Name"); //$NON-NLS-1$;
   }

@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
@@ -19,8 +18,7 @@ public class RenegadeAbyssalTemplate extends AbstractAbyssalTemplate {
   private final ICreationPoints creationPoints = new RenegadeAbyssalCreationPoints();
   private final AbyssalPresentationProperties abyssalPresentationProperties;
 
-  public RenegadeAbyssalTemplate(ICharmCache charmProvider, IAdditionalRules additionalRules)
-      throws PersistenceException {
+  public RenegadeAbyssalTemplate(ICharmCache charmProvider, IAdditionalRules additionalRules) {
     super(charmProvider, additionalRules);
     abyssalPresentationProperties = new AbyssalPresentationProperties(
         "CharacterGenerator.NewCharacter.Abyssal.Renegade.Name"); //$NON-NLS-1$

@@ -29,8 +29,6 @@ import net.sf.anathema.character.sidereal.colleges.persistence.SiderealCollegePe
 import net.sf.anathema.character.sidereal.reporting.FirstEditionSiderealPartEncoder;
 import net.sf.anathema.character.sidereal.template.DefaultSiderealTemplate;
 import net.sf.anathema.character.sidereal.template.ISiderealSpecialCharms;
-import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.resources.IResources;
@@ -45,8 +43,6 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
   public static final String BACKGROUND_ID_SALARY = "Salary"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_SAVANT = "Savant"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_SIFU = "Sifu"; //$NON-NLS-1$
-
-  private final Logger logger = Logger.getLogger(SiderealCharacterModule.class);
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
@@ -83,12 +79,7 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
   }
 
   private void registerSiderealTemplate(ITemplateRegistry templateRegistry, CharmCache charmProvider) {
-    try {
-      templateRegistry.register(new DefaultSiderealTemplate(charmProvider, new AdditionalSiderealRules()));
-    }
-    catch (PersistenceException exception) {
-      logger.error("Sidereal Charms not found", exception); //$NON-NLS-1$
-    }
+    templateRegistry.register(new DefaultSiderealTemplate(charmProvider, new AdditionalSiderealRules()));
   }
 
   @Override

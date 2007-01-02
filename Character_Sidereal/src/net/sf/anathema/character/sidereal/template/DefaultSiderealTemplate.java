@@ -31,7 +31,6 @@ import net.sf.anathema.character.sidereal.caste.SiderealCaste;
 import net.sf.anathema.character.sidereal.colleges.SiderealCollegeTemplate;
 import net.sf.anathema.character.sidereal.presentation.SiderealPresentationProperties;
 import net.sf.anathema.character.sidereal.template.trait.SiderealTraitTemplateCollection;
-import net.sf.anathema.lib.exception.PersistenceException;
 
 public class DefaultSiderealTemplate extends AbstractCharacterTemplate {
 
@@ -44,8 +43,7 @@ public class DefaultSiderealTemplate extends AbstractCharacterTemplate {
   private final IAdditionalRules additionalRules;
   private DefaultMagicTemplate magicTemplate;
 
-  public DefaultSiderealTemplate(ICharmCache charmProvider, IAdditionalRules additionalRules)
-      throws PersistenceException {
+  public DefaultSiderealTemplate(ICharmCache charmProvider, IAdditionalRules additionalRules) {
     this.additionalRules = additionalRules;
     ICharmTemplate charmTemplate = new CharmTemplate(
         MartialArtsLevel.Sidereal,

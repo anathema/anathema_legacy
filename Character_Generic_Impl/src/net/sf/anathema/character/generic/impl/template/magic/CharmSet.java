@@ -10,7 +10,6 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public class CharmSet implements ICharmSet {
@@ -21,7 +20,7 @@ public class CharmSet implements ICharmSet {
   public static ICharmSet createRegularCharmSet(
       ICharmCache charmProvider,
       CharacterType characterType,
-      IExaltedEdition edition) throws PersistenceException {
+      IExaltedEdition edition) {
     Map<IExaltedRuleSet, ICharm[]> charmMap = createCharmTreeMap(charmProvider, characterType, edition);
     Map<IExaltedRuleSet, ICharm[]> martialArtsCharmMap = createCharmTreeMap(
         charmProvider,
@@ -33,7 +32,7 @@ public class CharmSet implements ICharmSet {
   private static Map<IExaltedRuleSet, ICharm[]> createCharmTreeMap(
       ICharmCache charmProvider,
       IIdentificate characterType,
-      IExaltedEdition edition) throws PersistenceException {
+      IExaltedEdition edition) {
     Map<IExaltedRuleSet, ICharm[]> charmMap = new HashMap<IExaltedRuleSet, ICharm[]>();
     for (IExaltedRuleSet set : ExaltedRuleSet.getRuleSetsByEdition(edition)) {
       charmMap.put(set, charmProvider.getCharms(characterType, set));

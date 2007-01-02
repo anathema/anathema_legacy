@@ -39,14 +39,11 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
-import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
 public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
 
-  private final Logger logger = Logger.getLogger(DbCharacterModule.class);
   private static final int ESSENCE_MAX = EssenceTemplate.DB_ESSENCE_MAX;
   public static final String BACKGROUND_ID_ARSENAL = "Arsenal"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_BREEDING = "Breeding"; //$NON-NLS-1$
@@ -151,23 +148,18 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   }
 
   private void registerDbTemplate(ITemplateRegistry templateRegistry, CharmCache charmProvider) {
-    try {
-      templateRegistry.register(new DynasticDbTemplate(charmProvider, additionalDbRules));
-      templateRegistry.register(new ImmaculateDbTemplate(charmProvider, immaculateDbRules));
-      templateRegistry.register(new PatricianOutcasteDBTemplate(charmProvider, outcasteDbRules));
-      templateRegistry.register(new LowerClassOutcasteDbTemplate(charmProvider, outcasteDbRules));
-      templateRegistry.register(new ThresholdOutcasteDbTemplate(charmProvider, new NullAdditionalRules()));
-      templateRegistry.register(new LookshyDbTemplate(charmProvider, nativeLookshyDbRules));
-      templateRegistry.register(new LookshyOutcasteDbTemplate(charmProvider, nativeLookshyDbRules));
-      templateRegistry.register(new LookshyRealmDbTemplate(charmProvider, realmLookshyDbRules));
-      templateRegistry.register(new PirateOutcasteDbTemplate(charmProvider, outcasteDbRules));
-      templateRegistry.register(new PirateRealmDbTemplate(charmProvider, additionalDbRules));
-      templateRegistry.register(new KetherRockDbTemplate(charmProvider, cultRules));
-      templateRegistry.register(new SequesteredTabernacleDbTemplate(charmProvider, sequesteredTabernacleRules));
-    }
-    catch (PersistenceException exception) {
-      logger.error("Dragon-Blooded Charms not found", exception); //$NON-NLS-1$
-    }
+    templateRegistry.register(new DynasticDbTemplate(charmProvider, additionalDbRules));
+    templateRegistry.register(new ImmaculateDbTemplate(charmProvider, immaculateDbRules));
+    templateRegistry.register(new PatricianOutcasteDBTemplate(charmProvider, outcasteDbRules));
+    templateRegistry.register(new LowerClassOutcasteDbTemplate(charmProvider, outcasteDbRules));
+    templateRegistry.register(new ThresholdOutcasteDbTemplate(charmProvider, new NullAdditionalRules()));
+    templateRegistry.register(new LookshyDbTemplate(charmProvider, nativeLookshyDbRules));
+    templateRegistry.register(new LookshyOutcasteDbTemplate(charmProvider, nativeLookshyDbRules));
+    templateRegistry.register(new LookshyRealmDbTemplate(charmProvider, realmLookshyDbRules));
+    templateRegistry.register(new PirateOutcasteDbTemplate(charmProvider, outcasteDbRules));
+    templateRegistry.register(new PirateRealmDbTemplate(charmProvider, additionalDbRules));
+    templateRegistry.register(new KetherRockDbTemplate(charmProvider, cultRules));
+    templateRegistry.register(new SequesteredTabernacleDbTemplate(charmProvider, sequesteredTabernacleRules));
   }
 
   @Override

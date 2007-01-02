@@ -26,7 +26,6 @@ import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.lib.exception.PersistenceException;
 
 public abstract class AbstractAbyssalTemplate extends AbstractCharacterTemplate {
 
@@ -36,8 +35,7 @@ public abstract class AbstractAbyssalTemplate extends AbstractCharacterTemplate 
       new AbyssalTraitTemplateFactory());
   private DefaultMagicTemplate magicTemplate;
 
-  public AbstractAbyssalTemplate(ICharmCache charmProvider, IAdditionalRules additionalRules)
-      throws PersistenceException {
+  public AbstractAbyssalTemplate(ICharmCache charmProvider, IAdditionalRules additionalRules) {
     CharmTemplate charmTemplate = new CharmTemplate(
         MartialArtsLevel.Celestial,
         charmProvider,

@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.Identificate;
 
 public class PirateRealmDbTemplate extends AbstractDbTemplate {
@@ -19,7 +18,7 @@ public class PirateRealmDbTemplate extends AbstractDbTemplate {
     return TEMPLATE_TYPE;
   }
 
-  public PirateRealmDbTemplate(CharmCache charmProvider, IAdditionalRules rules) throws PersistenceException {
+  public PirateRealmDbTemplate(CharmCache charmProvider, IAdditionalRules rules) {
     super(charmProvider, rules, new PirateRealmDbTraitTemplateFactory());
   }
 

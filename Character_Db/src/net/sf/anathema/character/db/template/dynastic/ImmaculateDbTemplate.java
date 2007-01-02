@@ -12,7 +12,6 @@ import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
@@ -25,7 +24,7 @@ public class ImmaculateDbTemplate extends DynasticDbTemplate {
     return IMMACULATE_TEMPLATE_TYPE;
   }
 
-  public ImmaculateDbTemplate(CharmCache charmProvider, IAdditionalRules rules) throws PersistenceException {
+  public ImmaculateDbTemplate(CharmCache charmProvider, IAdditionalRules rules) {
     super(charmProvider, rules);
   }
 
@@ -35,7 +34,7 @@ public class ImmaculateDbTemplate extends DynasticDbTemplate {
   }
 
   @Override
-  protected ICharmTemplate createCharmTemplate(ICharmCache charmProvider) throws PersistenceException {
+  protected ICharmTemplate createCharmTemplate(ICharmCache charmProvider) {
     return new TerrestrialMartialArtistCharmTemplate(charmProvider);
   }
 

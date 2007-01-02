@@ -8,12 +8,11 @@ import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.Identificate;
 
 public class ThresholdOutcasteDbTemplate extends AbstractDbTemplate {
 
-  public ThresholdOutcasteDbTemplate(CharmCache charmProvider, IAdditionalRules rules) throws PersistenceException {
+  public ThresholdOutcasteDbTemplate(CharmCache charmProvider, IAdditionalRules rules) {
     super(charmProvider, rules, new ExaltTraitTemplateFactory());
   }
 

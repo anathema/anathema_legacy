@@ -28,14 +28,11 @@ import net.sf.anathema.character.reporting.CharacterReportingModule;
 import net.sf.anathema.character.reporting.CharacterReportingModuleObject;
 import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
-import net.sf.anathema.lib.exception.PersistenceException;
-import net.sf.anathema.lib.logging.Logger;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.resources.IResources;
 
 public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
   private static final int ESSENCE_MAX = EssenceTemplate.SYSTEM_ESSENCE_MAX;
-  private static final Logger logger = Logger.getLogger(AbyssalCharacterModule.class);
   public static final String BACKGROUND_ID_ABYSSAL_COMMAND = "AbyssalCommand"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_LIEGE = "Liege"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_NECROMANCY = "Necromancy"; //$NON-NLS-1$
@@ -65,18 +62,13 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
 
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
-    try {
-      ICharmCache charmProvider = CharmCache.getInstance();
-      initTemplate(characterGenerics.getTemplateRegistry(), new LoyalAbyssalTemplate(
-          charmProvider,
-          additionalLoyalAbyssalRules), additionalLoyalAbyssalRules);
-      initTemplate(characterGenerics.getTemplateRegistry(), new RenegadeAbyssalTemplate(
-          charmProvider,
-          additionalRenegadeAbyssalRules), additionalRenegadeAbyssalRules);
-    }
-    catch (PersistenceException exception) {
-      logger.error("Abyssal Charms not found", exception); //$NON-NLS-1$
-    }
+    ICharmCache charmProvider = CharmCache.getInstance();
+    initTemplate(characterGenerics.getTemplateRegistry(), new LoyalAbyssalTemplate(
+        charmProvider,
+        additionalLoyalAbyssalRules), additionalLoyalAbyssalRules);
+    initTemplate(characterGenerics.getTemplateRegistry(), new RenegadeAbyssalTemplate(
+        charmProvider,
+        additionalRenegadeAbyssalRules), additionalRenegadeAbyssalRules);
   }
 
   private void initTemplate(

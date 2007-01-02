@@ -18,14 +18,13 @@ import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.lib.exception.PersistenceException;
 
 public class UnsupportedDragonKingTemplate extends AbstractUnsupportedExaltTemplate {
 
   private final ICharmTemplate charmTemplate;
   private DragonKingPresentationProperties presentationProperties;
 
-  public UnsupportedDragonKingTemplate(ICharmCache charmProvider) throws PersistenceException {
+  public UnsupportedDragonKingTemplate(ICharmCache charmProvider) {
     ICharmSet charmSet = CharmSet.createRegularCharmSet(
         charmProvider,
         CharacterType.DRAGON_KING,
