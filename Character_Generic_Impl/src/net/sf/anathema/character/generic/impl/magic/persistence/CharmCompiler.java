@@ -65,12 +65,13 @@ public class CharmCompiler {
       throws PersistenceException {
     List<ICharm> existingCharms = new ArrayList<ICharm>();
     final IExaltedRuleSet basicRules = rules.getBasicRuleset();
+    CharmCache cache = CharmCache.getInstance();
     if (basicRules != null) {
-      Collections.addAll(existingCharms, CharmCache.getInstance().getCharms(type, basicRules));
+      Collections.addAll(existingCharms, cache.getCharms(type, basicRules));
     }
     ICharm[] charmArray = builder.buildCharms(charmDocument, existingCharms, rules);
     for (ICharm charm : charmArray) {
-      CharmCache.getInstance().addCharm(type, rules, charm);
+      cache.addCharm(type, rules, charm);
     }
   }
 }
