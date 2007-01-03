@@ -3,32 +3,29 @@ package net.sf.anathema.character.db.template;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
-import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
-import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
-import net.sf.anathema.character.generic.impl.template.magic.CharmSet;
-import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.magic.IGenericCharmConfiguration;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.template.magic.IMartialArtsRules;
 
-public class DefaultTerrestrialCharmTemplate extends CharmTemplate {
-
+public class TerrestrialMartialArtsRules implements IMartialArtsRules {
   private final ICharmAttributeRequirement celestialAttributeRequirement = new CharmAttributeRequirement(
       new CharmAttribute(ICharmData.ALLOWS_CELESTIAL_ATTRIBUTE.getId(), false),
       1);
 
-  public DefaultTerrestrialCharmTemplate(ICharmCache charmProvider, boolean highLevelAtCreation) {
-    super(MartialArtsLevel.Terrestrial, highLevelAtCreation, CharmSet.createRegularCharmSet(
-        charmProvider,
-        CharacterType.DB,
-        ExaltedEdition.FirstEdition));
+  private final boolean highLevelAtCreation;
+
+  public TerrestrialMartialArtsRules(boolean highLevelAtCreation) {
+    this.highLevelAtCreation = highLevelAtCreation;
   }
 
-  @Override
-  public boolean isMartialArtsCharmAllowed(
+  public MartialArtsLevel getStandardLevel() {
+    return MartialArtsLevel.Terrestrial;
+  }
+
+  public boolean isCharmAllowed(
       ICharm martialArtsCharm,
       IGenericCharmConfiguration charmConfiguration,
       boolean isExperienced) {
@@ -37,7 +34,7 @@ public class DefaultTerrestrialCharmTemplate extends CharmTemplate {
       return true;
     }
     if (level == MartialArtsLevel.Celestial) {
-      if (!mayLearnHighLevelAtCreation() && !isExperienced) {
+      if (!highLevelAtCreation && !isExperienced) {
         return false;
       }
       if (martialArtsCharm.hasAttribute(ICharmData.UNRESTRICTED_ATTRIBUTE)) {

@@ -12,7 +12,7 @@ public class MartialArtsCharmTree extends CharmTree {
 
   public MartialArtsCharmTree(ICharmTemplate charmTemplate, IExaltedRuleSet rules) {
     super(charmTemplate.getMartialArtsCharms(rules));
-    this.standardLevel = charmTemplate.getMartialArtsLevel();
+    this.standardLevel = charmTemplate.getMartialArtsRules().getStandardLevel();
   }
 
   @Override

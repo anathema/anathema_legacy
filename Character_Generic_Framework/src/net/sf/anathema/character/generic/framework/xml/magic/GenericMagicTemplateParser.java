@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.template.magic.CharmSet;
 import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
 import net.sf.anathema.character.generic.impl.template.magic.DefaultFreePicksPredicate;
+import net.sf.anathema.character.generic.impl.template.magic.DefaultMartialArtsRules;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmSet;
 import net.sf.anathema.character.generic.impl.template.magic.NullCharmSet;
 import net.sf.anathema.character.generic.impl.template.magic.SpellMagicTemplate;
@@ -111,7 +112,7 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
     else {
       charmSet = CharmSet.createRegularCharmSet(CharmCache.getInstance(), CharacterType.getById(charmType), edition);
     }
-    CharmTemplate charmTemplate = new CharmTemplate(level, highLevelAtCreation, charmSet);
+    CharmTemplate charmTemplate = new CharmTemplate(new DefaultMartialArtsRules(level, highLevelAtCreation), charmSet);
     setAlienAllowedCastes(charmTemplate, charmTemplateElement);
     basicTemplate.setCharmTemplate(charmTemplate);
   }

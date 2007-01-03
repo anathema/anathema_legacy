@@ -32,7 +32,7 @@ public class CheckMagicTemplateFixture extends AbstractTemplateColumnFixture {
   }
 
   public String getMartialArtsLevel() {
-    return getTemplate().getMagicTemplate().getCharmTemplate().getMartialArtsLevel().getId();
+    return getTemplate().getMagicTemplate().getCharmTemplate().getMartialArtsRules().getStandardLevel().getId();
   }
 
   public String getCharmType() {

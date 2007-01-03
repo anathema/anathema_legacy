@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.template.magic.CharmSet;
 import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
+import net.sf.anathema.character.generic.impl.template.magic.DefaultMartialArtsRules;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmSet;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
@@ -29,7 +30,7 @@ public class UnsupportedDragonKingTemplate extends AbstractUnsupportedExaltTempl
         charmProvider,
         CharacterType.DRAGON_KING,
         ExaltedEdition.FirstEdition);
-    charmTemplate = new CharmTemplate(MartialArtsLevel.Mortal, false, charmSet);
+    charmTemplate = new CharmTemplate(new DefaultMartialArtsRules(MartialArtsLevel.Mortal, false), charmSet);
     this.presentationProperties = new DragonKingPresentationProperties(getTemplateType());
   }
 

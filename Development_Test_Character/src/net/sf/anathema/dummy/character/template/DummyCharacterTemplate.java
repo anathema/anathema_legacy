@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.impl.template.essence.NullEssenceTemplate;
 import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
+import net.sf.anathema.character.generic.impl.template.magic.DefaultMartialArtsRules;
 import net.sf.anathema.character.generic.impl.template.magic.NullCharmSet;
 import net.sf.anathema.character.generic.impl.traits.ExaltTraitTemplateFactory;
 import net.sf.anathema.character.generic.impl.traits.TraitTemplateCollection;
@@ -126,7 +127,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
   }
 
   public ICasteCollection getCasteCollection() {
-    return new CasteCollection (new ICasteType[0]);
+    return new CasteCollection(new ICasteType[0]);
   }
 
   public IMagicTemplate getMagicTemplate() {
@@ -140,7 +141,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
       }
 
       public ICharmTemplate getCharmTemplate() {
-        return new CharmTemplate(MartialArtsLevel.Mortal, false, new NullCharmSet());
+        return new CharmTemplate(new DefaultMartialArtsRules(MartialArtsLevel.Mortal, false), new NullCharmSet());
       }
 
       public FavoringTraitType getFavoringTraitType() {

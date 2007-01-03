@@ -44,7 +44,7 @@ public class MagicTemplateParserTest extends BasicTestCase {
     Element templateElement = DocumentUtilities.read(xml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
     ICharmTemplate charmTemplate = template.getCharmTemplate();
-    assertEquals(MartialArtsLevel.Mortal, charmTemplate.getMartialArtsLevel());
+    assertEquals(MartialArtsLevel.Mortal, charmTemplate.getMartialArtsRules().getStandardLevel());
     assertFalse(charmTemplate.knowsCharms(ExaltedRuleSet.CoreRules));
   }
 
@@ -77,7 +77,7 @@ public class MagicTemplateParserTest extends BasicTestCase {
         return attribute.getId().equals("MartialArts") || attribute.getId().equals("Celestial"); //$NON-NLS-1$ //$NON-NLS-2$
       }
     };
-    assertFalse(template.getCharmTemplate().isMartialArtsCharmAllowed(dummyMartialArtsCharm, null, false));
+    assertFalse(template.getCharmTemplate().getMartialArtsRules().isCharmAllowed(dummyMartialArtsCharm, null, false));
   }
 
   public void testHighLevelSettingModified() throws Exception {
@@ -92,7 +92,7 @@ public class MagicTemplateParserTest extends BasicTestCase {
         return attribute.getId().equals("MartialArts") || attribute.getId().equals("Celestial"); //$NON-NLS-1$ //$NON-NLS-2$
       }
     };
-    assertTrue(template.getCharmTemplate().isMartialArtsCharmAllowed(dummyMartialArtsCharm, null, false));
+    assertTrue(template.getCharmTemplate().getMartialArtsRules().isCharmAllowed(dummyMartialArtsCharm, null, false));
   }
 
   public void testFavoringTraitTypeUnmodified() throws Exception {

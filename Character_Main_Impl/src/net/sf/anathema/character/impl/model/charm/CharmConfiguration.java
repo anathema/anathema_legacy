@@ -388,7 +388,7 @@ public class CharmConfiguration implements ICharmConfiguration {
       if (isSiderealFormCharm && !isCelestialMartialArtsGroupCompleted()) {
         return false;
       }
-      if (!getCharmTemplate(getNativeCharacterType()).isMartialArtsCharmAllowed(
+      if (!getCharmTemplate(getNativeCharacterType()).getMartialArtsRules().isCharmAllowed(
           charm,
           context.getCharmContext(),
           context.getBasicCharacterContext().isExperienced())) {

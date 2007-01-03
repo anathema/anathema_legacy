@@ -1,9 +1,7 @@
 package net.sf.anathema.character.db.template.dynastic;
 
-import net.sf.anathema.character.db.template.DefaultTerrestrialCharmTemplate;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
-import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.template.magic.CustomizableMagicTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
@@ -34,8 +32,8 @@ public class ImmaculateDbTemplate extends DynasticDbTemplate {
   }
 
   @Override
-  protected ICharmTemplate createCharmTemplate(ICharmCache charmProvider) {
-    return new DefaultTerrestrialCharmTemplate(charmProvider, true);
+  protected boolean getHighLevelMartialArtsAtCreation() {
+    return true;
   }
 
   @Override

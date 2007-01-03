@@ -4,8 +4,11 @@ import net.sf.anathema.character.db.aspect.DBAspect;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
+import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.template.AbstractCharacterTemplate;
 import net.sf.anathema.character.generic.impl.template.essence.DbEssenceTemplate;
+import net.sf.anathema.character.generic.impl.template.magic.CharmSet;
+import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
 import net.sf.anathema.character.generic.impl.template.magic.DefaultMagicTemplate;
 import net.sf.anathema.character.generic.impl.template.magic.SpellMagicTemplate;
 import net.sf.anathema.character.generic.impl.traits.ITraitTemplateFactory;
@@ -22,6 +25,7 @@ import net.sf.anathema.character.generic.template.magic.IMagicTemplate;
 import net.sf.anathema.character.generic.template.magic.ISpellMagicTemplate;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
+import net.sf.anathema.character.generic.type.CharacterType;
 
 public abstract class AbstractDbTemplate extends AbstractCharacterTemplate {
   private final IBonusPointCosts bonusCosts = new DbBonusPointCosts();
@@ -97,8 +101,14 @@ public abstract class AbstractDbTemplate extends AbstractCharacterTemplate {
     presentationProperties = new DbPresentationProperties(getTemplateType());
   }
 
-  protected ICharmTemplate createCharmTemplate(ICharmCache charmProvider) {
-    return new DefaultTerrestrialCharmTemplate(charmProvider, false);
+  private ICharmTemplate createCharmTemplate(ICharmCache charmProvider) {
+    return new CharmTemplate(
+        new TerrestrialMartialArtsRules(getHighLevelMartialArtsAtCreation()),
+        CharmSet.createRegularCharmSet(charmProvider, CharacterType.DB, ExaltedEdition.FirstEdition));
+  }
+
+  protected boolean getHighLevelMartialArtsAtCreation() {
+    return false;
   }
 
   protected IMagicTemplate createMagicTemplate(ICharmTemplate charmTemplate, ISpellMagicTemplate spellMagic) {
