@@ -4,7 +4,7 @@ import java.net.URL;
 import java.util.Collection;
 
 import net.sf.anathema.AnathemaSplashscreen;
-import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
+import net.sf.anathema.character.generic.impl.magic.persistence.CharmCompiler;
 import net.sf.anathema.initialization.plugin.AnathemaPluginManager;
 import net.sf.anathema.initialization.plugin.PluginUtilities;
 
@@ -27,16 +27,17 @@ public class CharacterPlugin extends Plugin {
     AnathemaSplashscreen.getInstance().displayStatusMessage("Compiling Charm Sets..."); //$NON-NLS-1$
     AnathemaPluginManager manager = new AnathemaPluginManager(getManager());
     Collection<Extension> connectedExtensions = manager.getExtension(CHARACTER_PLUGIN_ID, EXTENSION_POINT_CHARM_LIST);
+    CharmCompiler charmCompiler = new CharmCompiler();
     for (Extension extension : connectedExtensions) {
       for (Parameter listParameter : PluginUtilities.getParameters(extension, PARAM_LIST)) {
         Parameter typeParameter = listParameter.getSubParameter(PARAM_TYPE);
         Parameter rules = listParameter.getSubParameter(PARAM_RULES);
         Parameter path = listParameter.getSubParameter(PARAM_PATH);
         URL resource = getClass().getClassLoader().getResource(path.valueAsString());
-        CharmCache.getInstance().registerCharmFile(typeParameter.valueAsString(), rules.valueAsString(), resource);
+        charmCompiler.registerCharmFile(typeParameter.valueAsString(), rules.valueAsString(), resource);
       }
     }
-    CharmCache.getInstance().buildCharms();
+    charmCompiler.buildCharms();
   }
 
   @Override
