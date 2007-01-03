@@ -1,11 +1,10 @@
 package net.sf.anathema.character.db.additional;
 
 import net.disy.commons.core.util.ArrayUtilities;
-import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.magic.ISpell;
 
-public class CultSorceryLearnPool extends AbstractSorceryLearnPool implements IAdditionalMagicLearnPool {
+public class CultSorceryLearnPool extends AbstractSorceryLearnPool {
 
   String[] allowedSpellIds = new String[] { "Terrestrial.DeathObsidianButterflies",//$NON-NLS-1$
       "Terrestrial.EmeraldCountermagic",//$NON-NLS-1$
