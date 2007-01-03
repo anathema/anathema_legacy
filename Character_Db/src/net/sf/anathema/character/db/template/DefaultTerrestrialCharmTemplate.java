@@ -5,6 +5,7 @@ import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
+import net.sf.anathema.character.generic.impl.template.magic.CharmSet;
 import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.ICharmData;
@@ -18,11 +19,12 @@ public class DefaultTerrestrialCharmTemplate extends CharmTemplate {
   private final ICharmAttributeRequirement celestialAttributeRequirement = new CharmAttributeRequirement(
       new CharmAttribute(ICharmData.ALLOWS_CELESTIAL_ATTRIBUTE.getId(), false),
       1);
-  private final boolean highLevelAtCreation;
 
   public DefaultTerrestrialCharmTemplate(ICharmCache charmProvider, boolean highLevelAtCreation) {
-    super(MartialArtsLevel.Terrestrial, charmProvider, CharacterType.DB, ExaltedEdition.FirstEdition);
-    this.highLevelAtCreation = highLevelAtCreation;
+    super(MartialArtsLevel.Terrestrial, highLevelAtCreation, CharmSet.createRegularCharmSet(
+        charmProvider,
+        CharacterType.DB,
+        ExaltedEdition.FirstEdition));
   }
 
   @Override
@@ -53,10 +55,5 @@ public class DefaultTerrestrialCharmTemplate extends CharmTemplate {
       }
     }
     return false;
-  }
-
-  @Override
-  protected boolean mayLearnHighLevelAtCreation() {
-    return highLevelAtCreation;
   }
 }
