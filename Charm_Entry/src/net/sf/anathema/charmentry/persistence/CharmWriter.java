@@ -1,4 +1,4 @@
-package net.sf.anathema.character.generic.impl.magic.persistence;
+package net.sf.anathema.charmentry.persistence;
 
 import static net.sf.anathema.character.generic.impl.magic.ICharmXMLConstants.TAG_CHARM;
 

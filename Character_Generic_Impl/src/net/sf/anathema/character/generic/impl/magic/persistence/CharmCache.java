@@ -1,6 +1,5 @@
 package net.sf.anathema.character.generic.impl.magic.persistence;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,13 +14,10 @@ import net.sf.anathema.lib.collection.Predicate;
 import net.sf.anathema.lib.lang.ArrayUtilities;
 import net.sf.anathema.lib.util.IIdentificate;
 
-import org.dom4j.DocumentException;
-
 public class CharmCache implements ICharmCache {
 
   private static final CharmCache instance = new CharmCache();
   private final Map<IExaltedRuleSet, MultiEntryMap<IIdentificate, ICharm>> charmSetsByRuleSet = new HashMap<IExaltedRuleSet, MultiEntryMap<IIdentificate, ICharm>>();
-  private final CharmIO charmIo = new CharmIO();
 
   private CharmCache() {
     for (IExaltedRuleSet ruleset : ExaltedRuleSet.values()) {
@@ -55,9 +51,8 @@ public class CharmCache implements ICharmCache {
     charmSetsByRuleSet.get(rules).add(type, charm);
   }
 
-  public void addCharm(ICharmEntryData charmData) throws IOException, DocumentException {
+  public void addCharm(ICharmEntryData charmData) {
     ICharm charm = new Charm(charmData.getCoreData());
     addCharm(charm.getCharacterType(), charmData.getEdition().getDefaultRuleset(), charm);
-    charmIo.writeCharmInternal(charmData);
   }
 }

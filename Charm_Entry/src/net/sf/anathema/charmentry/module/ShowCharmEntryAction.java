@@ -15,6 +15,7 @@ import net.sf.anathema.character.generic.impl.magic.persistence.ICharmEntryData;
 import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.charmentry.model.WizardCharmEntryModel;
 import net.sf.anathema.charmentry.persistence.CharmEntryPropertiesPersister;
+import net.sf.anathema.charmentry.persistence.CharmIO;
 import net.sf.anathema.charmentry.presenter.HeaderDataEntryPage;
 import net.sf.anathema.charmentry.presenter.model.ICharmEntryModel;
 import net.sf.anathema.framework.message.MessageUtilities;
@@ -51,6 +52,7 @@ public class ShowCharmEntryAction extends SmartAction {
       }
       final ICharmEntryData entryData = model.getCharmData();
       CharmCache.getInstance().addCharm(entryData);
+      new CharmIO().writeCharmInternal(entryData);
       final ICharmData coreData = entryData.getCoreData();
       CharmEntryPropertiesPersister charmEntryPropertiesPersister = new CharmEntryPropertiesPersister();
       charmEntryPropertiesPersister.writeCharmNameProperty(

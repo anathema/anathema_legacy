@@ -1,9 +1,10 @@
-package net.sf.anathema.character.generic.impl.magic.persistence;
+package net.sf.anathema.charmentry.persistence;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import net.sf.anathema.character.generic.impl.magic.persistence.ICharmEntryData;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
