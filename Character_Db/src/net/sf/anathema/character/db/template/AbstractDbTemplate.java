@@ -98,7 +98,7 @@ public abstract class AbstractDbTemplate extends AbstractCharacterTemplate {
   }
 
   protected ICharmTemplate createCharmTemplate(ICharmCache charmProvider) {
-    return new DefaultTerrestrialCharmTemplate(charmProvider);
+    return new DefaultTerrestrialCharmTemplate(charmProvider, false);
   }
 
   protected IMagicTemplate createMagicTemplate(ICharmTemplate charmTemplate, ISpellMagicTemplate spellMagic) {

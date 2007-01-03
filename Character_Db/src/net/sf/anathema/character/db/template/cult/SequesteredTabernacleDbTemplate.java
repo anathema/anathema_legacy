@@ -1,7 +1,7 @@
 package net.sf.anathema.character.db.template.cult;
 
 import net.sf.anathema.character.db.template.AbstractDbTemplate;
-import net.sf.anathema.character.db.template.TerrestrialMartialArtistCharmTemplate;
+import net.sf.anathema.character.db.template.DefaultTerrestrialCharmTemplate;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmCache;
@@ -27,7 +27,7 @@ public class SequesteredTabernacleDbTemplate extends AbstractDbTemplate {
 
   @Override
   protected ICharmTemplate createCharmTemplate(ICharmCache charmProvider) {
-    return new TerrestrialMartialArtistCharmTemplate(charmProvider);
+    return new DefaultTerrestrialCharmTemplate(charmProvider, true);
   }
 
   public ICreationPoints getCreationPoints() {

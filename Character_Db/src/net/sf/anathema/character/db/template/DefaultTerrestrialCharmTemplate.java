@@ -18,9 +18,11 @@ public class DefaultTerrestrialCharmTemplate extends CharmTemplate {
   private final ICharmAttributeRequirement celestialAttributeRequirement = new CharmAttributeRequirement(
       new CharmAttribute(ICharmData.ALLOWS_CELESTIAL_ATTRIBUTE.getId(), false),
       1);
+  private final boolean highLevelAtCreation;
 
-  public DefaultTerrestrialCharmTemplate(ICharmCache charmProvider) {
+  public DefaultTerrestrialCharmTemplate(ICharmCache charmProvider, boolean highLevelAtCreation) {
     super(MartialArtsLevel.Terrestrial, charmProvider, CharacterType.DB, ExaltedEdition.FirstEdition);
+    this.highLevelAtCreation = highLevelAtCreation;
   }
 
   @Override
@@ -55,6 +57,6 @@ public class DefaultTerrestrialCharmTemplate extends CharmTemplate {
 
   @Override
   protected boolean mayLearnHighLevelAtCreation() {
-    return false;
+    return highLevelAtCreation;
   }
 }
