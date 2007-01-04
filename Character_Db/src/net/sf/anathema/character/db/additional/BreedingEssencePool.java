@@ -14,7 +14,7 @@ public class BreedingEssencePool implements IAdditionalEssencePool {
     this.breedingTemplate = breedingTemplate;
   }
 
-  public int getAdditionaPeripheralPool(IGenericTraitCollection traitCollection, IMagicCollection magicCollection) {
+  public int getAdditionalPeripheralPool(IGenericTraitCollection traitCollection, IMagicCollection magicCollection) {
     IGenericTrait breeding = traitCollection.getTrait(breedingTemplate);
     if (breeding == null) {
       return 0;
@@ -26,7 +26,7 @@ public class BreedingEssencePool implements IAdditionalEssencePool {
     return Math.max(0, currentValue * 2 - 1);
   }
 
-  public int getAdditionaPersonalPool(IGenericTraitCollection traitCollection, IMagicCollection magicCollection) {
+  public int getAdditionalPersonalPool(IGenericTraitCollection traitCollection, IMagicCollection magicCollection) {
     IGenericTrait breeding = traitCollection.getTrait(breedingTemplate);
     return breeding == null ? 0 : breeding.getCurrentValue();
   }

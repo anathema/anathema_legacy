@@ -53,7 +53,7 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
   public int getExtendedPersonalPool() {
     int additionalPool = 0;
     for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
-      additionalPool += pool.getAdditionaPersonalPool(traitCollection, magicCollection);
+      additionalPool += pool.getAdditionalPersonalPool(traitCollection, magicCollection);
     }
     return getStandardPersonalPool() + additionalPool;
   }
@@ -85,7 +85,7 @@ public class EssencePoolStrategy implements IEssencePoolStrategy {
   public int getExtendedPeripheralPool() {
     int additionalPool = 0;
     for (IAdditionalEssencePool pool : additionalRules.getAdditionalEssencePools()) {
-      additionalPool += pool.getAdditionaPeripheralPool(traitCollection, magicCollection);
+      additionalPool += pool.getAdditionalPeripheralPool(traitCollection, magicCollection);
     }
     return getStandardPeripheralPool() + additionalPool;
   }

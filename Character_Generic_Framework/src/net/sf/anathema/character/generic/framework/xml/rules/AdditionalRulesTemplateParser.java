@@ -29,7 +29,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   private static final String TAG_PERSONAL_POOL = "personalPool"; //$NON-NLS-1$
   private static final String TAG_PERIPHERAL_POOL = "peripheralPool"; //$NON-NLS-1$
   private static final String ATTRIB_MULTIPLIER = "multiplier"; //$NON-NLS-1$
-  private static final String TAG_BACKGROUND = "background"; //$NON-NLS-1$
+  private static final String TAG_BACKGROUND = "backgroundReference"; //$NON-NLS-1$
   private static final String TAG_FORBIDDEN_BACKGROUNDS = "forbiddenBackgrounds"; //$NON-NLS-1$
   private final ISpecialCharm[] charms;
 

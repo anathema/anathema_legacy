@@ -59,7 +59,8 @@ public class AdditionalRulesTemplateParserTest extends BasicTestCase {
     assertEquals(0, template.getAdditionalEssencePools().length);
   }
 
-  public void testAdditionalMultiLearnablePool() throws Exception {
+  @Test
+  public void testCharmMultiLearnableEssencePool() throws Exception {
     final StaticMultiLearnableCharm charm = new StaticMultiLearnableCharm("Charm", 3); //$NON-NLS-1$
     AdditionalRulesTemplateParser parser = new AdditionalRulesTemplateParser(registry, new ISpecialCharm[] { charm });
     String xml = "<rules><additionalPools><multilearnablePool><charmReference id=\"Charm\"/><personalPool multiplier=\"5\"/><peripheralPool multiplier=\"10\"/></multilearnablePool></additionalPools> </rules>"; //$NON-NLS-1$
@@ -69,14 +70,14 @@ public class AdditionalRulesTemplateParserTest extends BasicTestCase {
     DummyMagicCollection collection = new DummyMagicCollection();
     collection.setLearnCount(charm, 2);
     IAdditionalEssencePool pool = template.getAdditionalEssencePools()[0];
-    assertEquals(10, pool.getAdditionaPersonalPool(null, collection));
-    assertEquals(20, pool.getAdditionaPeripheralPool(null, collection));
+    assertEquals(10, pool.getAdditionalPersonalPool(null, collection));
+    assertEquals(20, pool.getAdditionalPeripheralPool(null, collection));
   }
 
   @Test
   public void testForbiddenBackgrounds() throws Exception {
     AdditionalRulesTemplateParser parser = new AdditionalRulesTemplateParser(registry, new ISpecialCharm[0]);
-    String xml = "<rules><forbiddenBackgrounds><background id=\"forbidden\" /></forbiddenBackgrounds> </rules>"; //$NON-NLS-1$
+    String xml = "<rules><forbiddenBackgrounds><backgroundReference id=\"forbidden\" /></forbiddenBackgrounds> </rules>"; //$NON-NLS-1$
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAdditionalRules template = parser.parseTemplate(rootElement);
     assertTrue(template.isRejected(getDummyBackgroundTemplate()));

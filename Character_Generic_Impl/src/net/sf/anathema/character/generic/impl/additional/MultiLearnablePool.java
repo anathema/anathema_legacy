@@ -17,11 +17,11 @@ public class MultiLearnablePool implements IAdditionalEssencePool {
     this.peripheralMultiplier = peripheralMultiplier;
   }
 
-  public int getAdditionaPeripheralPool(IGenericTraitCollection traitCollection, IMagicCollection magicCollection) {
+  public int getAdditionalPeripheralPool(IGenericTraitCollection traitCollection, IMagicCollection magicCollection) {
     return magicCollection.getLearnCount(charm) * peripheralMultiplier;
   }
 
-  public int getAdditionaPersonalPool(IGenericTraitCollection traitCollection, IMagicCollection magicCollection) {
+  public int getAdditionalPersonalPool(IGenericTraitCollection traitCollection, IMagicCollection magicCollection) {
     return magicCollection.getLearnCount(charm) * personalMultiplier;
   }
 }
