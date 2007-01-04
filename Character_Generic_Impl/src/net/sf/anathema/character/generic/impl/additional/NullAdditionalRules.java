@@ -13,10 +13,6 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 
 public class NullAdditionalRules implements IAdditionalRules, IAdditionalTraitRules {
 
-  public NullAdditionalRules() {
-    // Nothing to do
-  }
-
   public IAdditionalBonusPointPool[] getAdditionalBonusPointPools() {
     return new IAdditionalBonusPointPool[0];
   }
