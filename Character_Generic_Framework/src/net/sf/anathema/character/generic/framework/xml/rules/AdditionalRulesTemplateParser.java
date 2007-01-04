@@ -29,6 +29,8 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   private static final String TAG_PERSONAL_POOL = "personalPool"; //$NON-NLS-1$
   private static final String TAG_PERIPHERAL_POOL = "peripheralPool"; //$NON-NLS-1$
   private static final String ATTRIB_MULTIPLIER = "multiplier"; //$NON-NLS-1$
+  private static final String TAG_BACKGROUND = "background"; //$NON-NLS-1$
+  private static final String TAG_FORBIDDEN_BACKGROUNDS = "forbiddenBackgrounds"; //$NON-NLS-1$
   private final ISpecialCharm[] charms;
 
   public AdditionalRulesTemplateParser(IXmlTemplateRegistry<GenericAdditionalRules> registry, ISpecialCharm[] charms) {
@@ -45,7 +47,20 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
     GenericAdditionalRules basicTemplate = getBasicTemplate(element);
     setCompulsiveCharms(element, basicTemplate);
     setAdditionalEssencePools(element, basicTemplate);
+    setForbiddenBackgrounds(element, basicTemplate);
     return basicTemplate;
+  }
+
+  private void setForbiddenBackgrounds(Element element, GenericAdditionalRules basicTemplate) {
+    Element backgroundsElement = element.element(TAG_FORBIDDEN_BACKGROUNDS);
+    if (backgroundsElement == null) {
+      return;
+    }
+    List<String> ids = new ArrayList<String>();
+    for (Element background : ElementUtilities.elements(backgroundsElement, TAG_BACKGROUND)) {
+      ids.add(background.attributeValue(ATTRIB_ID));
+    }
+    basicTemplate.setRejectedBackgrounds(ids.toArray(new String[ids.size()]));
   }
 
   private void setAdditionalEssencePools(Element element, GenericAdditionalRules basicTemplate)
