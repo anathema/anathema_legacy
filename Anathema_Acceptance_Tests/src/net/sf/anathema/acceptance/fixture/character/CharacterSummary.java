@@ -1,11 +1,14 @@
 package net.sf.anathema.acceptance.fixture.character;
 
+import java.io.FileNotFoundException;
 import java.util.Map;
 
 import net.sf.anathema.character.generic.impl.magic.SpellException;
+import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.impl.model.ExaltedCharacter;
 import net.sf.anathema.character.model.ICharacter;
+import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharacterSummary extends CharacterGenericsSummary {
@@ -38,5 +41,13 @@ public class CharacterSummary extends CharacterGenericsSummary {
 
   public void setResources(IResources resources) {
     summary.put(KEY_RESOURCES, resources);
+  }
+
+  public void registerCharmFiles() throws FileNotFoundException, AnathemaException {
+    if (!CharmCache.getInstance().isEmpty()) {
+      return;
+    }
+    AcceptanceCharmCompiling charmCompiling = new AcceptanceCharmCompiling();
+    charmCompiling.registerCharmFiles();
   }
 }
