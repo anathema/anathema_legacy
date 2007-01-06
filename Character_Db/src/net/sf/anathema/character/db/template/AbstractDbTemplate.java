@@ -102,9 +102,12 @@ public abstract class AbstractDbTemplate extends AbstractCharacterTemplate {
   }
 
   private ICharmTemplate createCharmTemplate(ICharmCache charmProvider) {
-    return new CharmTemplate(
-        new TerrestrialMartialArtsRules(getHighLevelMartialArtsAtCreation()),
-        CharmSet.createRegularCharmSet(charmProvider, CharacterType.DB, ExaltedEdition.FirstEdition));
+    TerrestrialMartialArtsRules martialArtsRules = new TerrestrialMartialArtsRules();
+    martialArtsRules.setHighLevelAtCreation(getHighLevelMartialArtsAtCreation());
+    return new CharmTemplate(martialArtsRules, CharmSet.createRegularCharmSet(
+        charmProvider,
+        CharacterType.DB,
+        ExaltedEdition.FirstEdition));
   }
 
   protected boolean getHighLevelMartialArtsAtCreation() {

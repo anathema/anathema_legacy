@@ -30,7 +30,7 @@ public class UnsupportedDragonKingTemplate extends AbstractUnsupportedExaltTempl
         charmProvider,
         CharacterType.DRAGON_KING,
         ExaltedEdition.FirstEdition);
-    charmTemplate = new CharmTemplate(new DefaultMartialArtsRules(MartialArtsLevel.Mortal, false), charmSet);
+    charmTemplate = new CharmTemplate(new DefaultMartialArtsRules(MartialArtsLevel.Mortal), charmSet);
     this.presentationProperties = new DragonKingPresentationProperties(getTemplateType());
   }
 

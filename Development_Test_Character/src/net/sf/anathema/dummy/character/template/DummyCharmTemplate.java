@@ -23,7 +23,9 @@ public class DummyCharmTemplate implements ICharmTemplate {
   }
 
   public IMartialArtsRules getMartialArtsRules() {
-    return new DefaultMartialArtsRules(MartialArtsLevel.Mortal, true);
+    DefaultMartialArtsRules defaultMartialArtsRules = new DefaultMartialArtsRules(MartialArtsLevel.Mortal);
+    defaultMartialArtsRules.setHighLevelAtCreation(true);
+    return defaultMartialArtsRules;
   }
 
   public boolean isAllowedAlienCharms(ICasteType caste) {

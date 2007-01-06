@@ -1,6 +1,7 @@
 <magicTemplate>
 	<freePicksPredicate type="Default"/>
-	<charmTemplate martialArtsLevel="Celestial" highLevelMartialArts="false" charmType="Solar">
+	<charmTemplate charmType="Solar">
+		<martialArts level="Celestial" highLevel="false"/>
 		<alienCharms>
 			<caste type="Eclipse"/>
 		</alienCharms>

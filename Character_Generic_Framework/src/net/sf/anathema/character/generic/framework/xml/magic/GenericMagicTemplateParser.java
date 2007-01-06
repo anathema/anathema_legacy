@@ -16,6 +16,7 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
+import net.sf.anathema.character.generic.template.magic.IMartialArtsRules;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -28,8 +29,8 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
   private static final String ATTRIB_TYPE = "type"; //$NON-NLS-1$
   private static final Object VALUE_DEFAULT = "Default"; //$NON-NLS-1$
   private static final String TAG_CHARM_TEMPLATE = "charmTemplate"; //$NON-NLS-1$
-  private static final String ATTRIB_MARTIAL_ARTS_LEVEL = "martialArtsLevel"; //$NON-NLS-1$
-  private static final String ATTRIB_HIGH_LEVEL_MARTIAL_ARTS = "highLevelMartialArts"; //$NON-NLS-1$
+  private static final String ATTRIB_MARTIAL_ARTS_LEVEL = "level"; //$NON-NLS-1$
+  private static final String ATTRIB_HIGH_LEVEL_MARTIAL_ARTS = "highLevel"; //$NON-NLS-1$
   private static final String ATTRIB_CHARM_TYPE = "charmType"; //$NON-NLS-1$
   private static final Object VALUE_NONE = "None"; //$NON-NLS-1$
   private static final String TAG_SPELL_TEMPLATE = "spellTemplate"; //$NON-NLS-1$
@@ -38,6 +39,8 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
   private static final String ATTRIB_MAXIMUM_NECROMANCY_CIRCLE = "maximumNecromancyCircle"; //$NON-NLS-1$
   private static final String TAG_CASTE = "caste"; //$NON-NLS-1$
   private static final String TAG_ALIEN_CHARMS = "alienCharms"; //$NON-NLS-1$
+  private static final String TAG_MARTIAL_ARTS = "martialArts"; //$NON-NLS-1$
+  private static final String ATTRIB_RULES_CLASS = "rulesClass"; //$NON-NLS-1$
   private final IExaltedEdition edition;
 
   public GenericMagicTemplateParser(IXmlTemplateRegistry<GenericMagicTemplate> templateRegistry, IExaltedEdition edition) {
@@ -98,12 +101,6 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
     if (charmTemplateElement == null) {
       return;
     }
-    String martialArtsLevelId = ElementUtilities.getRequiredAttrib(charmTemplateElement, ATTRIB_MARTIAL_ARTS_LEVEL);
-    boolean highLevelAtCreation = ElementUtilities.getBooleanAttribute(
-        charmTemplateElement,
-        ATTRIB_HIGH_LEVEL_MARTIAL_ARTS,
-        false);
-    MartialArtsLevel level = MartialArtsLevel.valueOf(martialArtsLevelId);
     String charmType = ElementUtilities.getRequiredAttrib(charmTemplateElement, ATTRIB_CHARM_TYPE);
     ICharmSet charmSet;
     if (charmType.equals(VALUE_NONE)) {
@@ -112,9 +109,38 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
     else {
       charmSet = CharmSet.createRegularCharmSet(CharmCache.getInstance(), CharacterType.getById(charmType), edition);
     }
-    CharmTemplate charmTemplate = new CharmTemplate(new DefaultMartialArtsRules(level, highLevelAtCreation), charmSet);
+    CharmTemplate charmTemplate = new CharmTemplate(createMartialArtsRules(charmTemplateElement), charmSet);
     setAlienAllowedCastes(charmTemplate, charmTemplateElement);
     basicTemplate.setCharmTemplate(charmTemplate);
+  }
+
+  private IMartialArtsRules createMartialArtsRules(Element parent) throws PersistenceException {
+    Element martialArtsElement = ElementUtilities.getRequiredElement(parent, TAG_MARTIAL_ARTS);
+    MartialArtsLevel level = getMartialArtsLevel(martialArtsElement);
+    String rulesClassName = martialArtsElement.attributeValue(ATTRIB_RULES_CLASS);
+    IMartialArtsRules rules;
+    if (rulesClassName == null) {
+      rules = new DefaultMartialArtsRules(level);
+    }
+    else {
+      try {
+        rules = (IMartialArtsRules) Class.forName(rulesClassName).newInstance();
+      }
+      catch (Exception e) {
+        throw new PersistenceException(e);
+      }
+    }
+    boolean highLevelAtCreation = ElementUtilities.getBooleanAttribute(
+        martialArtsElement,
+        ATTRIB_HIGH_LEVEL_MARTIAL_ARTS,
+        false);
+    rules.setHighLevelAtCreation(highLevelAtCreation);
+    return rules;
+  }
+
+  private MartialArtsLevel getMartialArtsLevel(Element martialArtsElement) throws PersistenceException {
+    String martialArtsLevelId = ElementUtilities.getRequiredAttrib(martialArtsElement, ATTRIB_MARTIAL_ARTS_LEVEL);
+    return MartialArtsLevel.valueOf(martialArtsLevelId);
   }
 
   private void setAlienAllowedCastes(CharmTemplate charmTemplate, Element charmTemplateElement)

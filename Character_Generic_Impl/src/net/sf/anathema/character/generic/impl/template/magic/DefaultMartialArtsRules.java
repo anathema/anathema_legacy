@@ -8,11 +8,14 @@ import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 
 public class DefaultMartialArtsRules implements IMartialArtsRules {
 
-  private final boolean highLevelAtCreation;
+  private boolean highLevelAtCreation = false;
   private final MartialArtsLevel level;
 
-  public DefaultMartialArtsRules(MartialArtsLevel level, boolean highLevelAtCreation) {
+  public DefaultMartialArtsRules(MartialArtsLevel level) {
     this.level = level;
+  }
+
+  public void setHighLevelAtCreation(boolean highLevelAtCreation) {
     this.highLevelAtCreation = highLevelAtCreation;
   }
 

@@ -15,9 +15,9 @@ public class TerrestrialMartialArtsRules implements IMartialArtsRules {
       new CharmAttribute(ICharmData.ALLOWS_CELESTIAL_ATTRIBUTE.getId(), false),
       1);
 
-  private final boolean highLevelAtCreation;
+  private boolean highLevelAtCreation;
 
-  public TerrestrialMartialArtsRules(boolean highLevelAtCreation) {
+  public void setHighLevelAtCreation(boolean highLevelAtCreation) {
     this.highLevelAtCreation = highLevelAtCreation;
   }
 

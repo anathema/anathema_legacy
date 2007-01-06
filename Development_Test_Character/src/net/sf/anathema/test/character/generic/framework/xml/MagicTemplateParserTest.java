@@ -1,10 +1,12 @@
 package net.sf.anathema.test.character.generic.framework.xml;
 
 import net.disy.commons.core.util.ArrayUtilities;
+import net.sf.anathema.character.db.template.TerrestrialMartialArtsRules;
 import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplate;
 import net.sf.anathema.character.generic.framework.xml.magic.GenericMagicTemplateParser;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
+import net.sf.anathema.character.generic.impl.template.magic.DefaultMartialArtsRules;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
@@ -17,11 +19,14 @@ import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 
 import org.dom4j.Element;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class MagicTemplateParserTest extends BasicTestCase {
   String xml = "<magicTemplate>" //$NON-NLS-1$
       + "<freePicksPredicate type=\"Default\"/>"//$NON-NLS-1$
-      + "<charmTemplate martialArtsLevel=\"Mortal\" charmType=\"None\"/>" //$NON-NLS-1$
+      + "<charmTemplate charmType=\"None\">" //$NON-NLS-1$
+      + "<martialArts level=\"Mortal\"/></charmTemplate>" //$NON-NLS-1$
       + "<spellTemplate maximumSorceryCircle=\"None\" maximumNecromancyCircle=\"None\"/>" //$NON-NLS-1$
       + "</magicTemplate>"; //$NON-NLS-1$
 
@@ -67,7 +72,7 @@ public class MagicTemplateParserTest extends BasicTestCase {
 
   public void testHighLevelSettingUnmodified() throws Exception {
     String celestialXml = "<magicTemplate>" + //$NON-NLS-1$
-        "<charmTemplate martialArtsLevel=\"Terrestrial\" charmType=\"None\"/>" //$NON-NLS-1$
+        "<charmTemplate charmType=\"None\"><martialArts level=\"Terrestrial\"/></charmTemplate>" //$NON-NLS-1$
         + "</magicTemplate>"; //$NON-NLS-1$
     Element templateElement = DocumentUtilities.read(celestialXml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
@@ -82,7 +87,7 @@ public class MagicTemplateParserTest extends BasicTestCase {
 
   public void testHighLevelSettingModified() throws Exception {
     String celestialXml = "<magicTemplate>" + //$NON-NLS-1$
-        "<charmTemplate martialArtsLevel=\"Terrestrial\" charmType=\"None\" highLevelMartialArts=\"true\"/>" //$NON-NLS-1$
+        "<charmTemplate charmType=\"None\" ><martialArts level=\"Terrestrial\" highLevel=\"true\"/></charmTemplate>" //$NON-NLS-1$
         + "</magicTemplate>"; //$NON-NLS-1$
     Element templateElement = DocumentUtilities.read(celestialXml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
@@ -93,6 +98,26 @@ public class MagicTemplateParserTest extends BasicTestCase {
       }
     };
     assertTrue(template.getCharmTemplate().getMartialArtsRules().isCharmAllowed(dummyMartialArtsCharm, null, false));
+  }
+
+  @Test
+  public void testDefaultRulesSetting() throws Exception {
+    String celestialXml = "<magicTemplate>" + //$NON-NLS-1$
+        "<charmTemplate charmType=\"None\" ><martialArts level=\"Terrestrial\" /></charmTemplate>" //$NON-NLS-1$
+        + "</magicTemplate>"; //$NON-NLS-1$
+    Element templateElement = DocumentUtilities.read(celestialXml).getRootElement();
+    GenericMagicTemplate template = parser.parseTemplate(templateElement);
+    Assert.assertTrue(template.getCharmTemplate().getMartialArtsRules() instanceof DefaultMartialArtsRules);
+  }
+
+  @Test
+  public void testTerrestrialRulesSetting() throws Exception {
+    String celestialXml = "<magicTemplate>" + //$NON-NLS-1$
+        "<charmTemplate charmType=\"None\" ><martialArts rulesClass=\"net.sf.anathema.character.db.template.TerrestrialMartialArtsRules\" level=\"Terrestrial\" /></charmTemplate>" //$NON-NLS-1$
+        + "</magicTemplate>"; //$NON-NLS-1$
+    Element templateElement = DocumentUtilities.read(celestialXml).getRootElement();
+    GenericMagicTemplate template = parser.parseTemplate(templateElement);
+    Assert.assertTrue(template.getCharmTemplate().getMartialArtsRules() instanceof TerrestrialMartialArtsRules);
   }
 
   public void testFavoringTraitTypeUnmodified() throws Exception {
@@ -113,8 +138,9 @@ public class MagicTemplateParserTest extends BasicTestCase {
 
   public void testAlienCharmsAllowed() throws Exception {
     String typeXml = "<magicTemplate>" //$NON-NLS-1$
-        + "<charmTemplate martialArtsLevel=\"Celestial\" highLevelMartialArts=\"false\" charmType=\"None\">" //$NON-NLS-1$
+        + "<charmTemplate charmType=\"None\">" //$NON-NLS-1$
         + " <alienCharms> <caste type=\"DummyCaste\"/></alienCharms>" //$NON-NLS-1$
+        + "<martialArts level=\"Celestial\" highLevel=\"false\" />" //$NON-NLS-1$
         + "</charmTemplate>" //$NON-NLS-1$
         + "</magicTemplate>"; //$NON-NLS-1$
     Element templateElement = DocumentUtilities.read(typeXml).getRootElement();

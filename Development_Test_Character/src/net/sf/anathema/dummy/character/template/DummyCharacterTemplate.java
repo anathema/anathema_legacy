@@ -141,7 +141,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
       }
 
       public ICharmTemplate getCharmTemplate() {
-        return new CharmTemplate(new DefaultMartialArtsRules(MartialArtsLevel.Mortal, false), new NullCharmSet());
+        return new CharmTemplate(new DefaultMartialArtsRules(MartialArtsLevel.Mortal), new NullCharmSet());
       }
 
       public FavoringTraitType getFavoringTraitType() {

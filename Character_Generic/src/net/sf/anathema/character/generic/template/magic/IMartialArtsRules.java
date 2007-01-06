@@ -11,4 +11,6 @@ public interface IMartialArtsRules {
       boolean isExperienced);
 
   public MartialArtsLevel getStandardLevel();
+
+  public void setHighLevelAtCreation(boolean highLevelAtCreation);
 }

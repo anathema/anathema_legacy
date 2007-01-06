@@ -24,7 +24,7 @@ public class CharmTemplate implements ICharmTemplate {
       ICharmCache charmProvider,
       CharacterType characterType,
       IExaltedEdition edition) {
-    this(new DefaultMartialArtsRules(martialArtsLevel, false), CharmSet.createRegularCharmSet(
+    this(new DefaultMartialArtsRules(martialArtsLevel), CharmSet.createRegularCharmSet(
         charmProvider,
         characterType,
         edition));
