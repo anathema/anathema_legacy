@@ -4,6 +4,8 @@ import net.sf.anathema.character.db.DbCharacterModule;
 import net.sf.anathema.character.generic.additionalrules.ITraitCostModifier;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.module.IBackgroundIds;
+import net.sf.anathema.character.generic.impl.additional.AdditionalEssencePool;
+import net.sf.anathema.character.generic.impl.additional.BackgroundPool;
 import net.sf.anathema.character.generic.impl.additional.DefaultAdditionalRules;
 import net.sf.anathema.character.generic.impl.additional.DefaultTraitCostModifier;
 import net.sf.anathema.character.generic.traits.ITraitType;
@@ -22,7 +24,15 @@ public class AdditionalDbRules extends DefaultAdditionalRules {
   }
 
   public void addBreedingRules(IBackgroundTemplate breedingTemplate) {
-    addEssencePool(new BreedingEssencePool(breedingTemplate));
+    AdditionalEssencePool peripheralPool = new AdditionalEssencePool(0);
+    peripheralPool.setFixedValue(0, 0);
+    peripheralPool.setFixedValue(1, 2);
+    peripheralPool.setFixedValue(2, 3);
+    peripheralPool.setFixedValue(3, 5);
+    peripheralPool.setFixedValue(4, 7);
+    peripheralPool.setFixedValue(5, 9);
+    peripheralPool.setFixedValue(6, 11);
+    addEssencePool(new BackgroundPool(breedingTemplate, new AdditionalEssencePool(1), peripheralPool));
   }
 
   @Override

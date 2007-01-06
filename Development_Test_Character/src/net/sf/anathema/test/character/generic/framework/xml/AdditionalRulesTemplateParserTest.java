@@ -8,11 +8,13 @@ import net.sf.anathema.character.generic.framework.xml.rules.GenericAdditionalRu
 import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.magic.charm.special.StaticMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.types.ITraitTypeVisitor;
 import net.sf.anathema.dummy.character.magic.DummyMagicCollection;
+import net.sf.anathema.dummy.character.magic.DummySpell;
 import net.sf.anathema.dummy.character.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.dummy.character.trait.DummyGenericTraitCollection;
 import net.sf.anathema.lib.exception.AnathemaException;
@@ -104,6 +106,36 @@ public class AdditionalRulesTemplateParserTest extends BasicTestCase {
     collection.setValue(type, 2);
     assertEquals(2, pool.getAdditionalPersonalPool(collection, null));
     assertEquals(3, pool.getAdditionalPeripheralPool(collection, null));
+  }
+
+  @Test
+  public void testNoAdditionalMagicPools() throws Exception {
+    GenericAdditionalRules template = parseEmptyRuleset();
+    assertEquals(0, template.getAdditionalMagicLearnPools().length);
+  }
+
+  @Test
+  public void testAdditionalMagicPool() throws Exception {
+    IBackgroundTemplate type = new CustomizedBackgroundTemplate("Background"); //$NON-NLS-1$
+    BackgroundRegistry backgroundRegistry = new BackgroundRegistry();
+    backgroundRegistry.add(type);
+    AdditionalRulesTemplateParser ownParser = new AdditionalRulesTemplateParser(
+        registry,
+        new ISpecialCharm[0],
+        backgroundRegistry);
+    String xml = "<rules><additionalMagic><magicPool><backgroundReference id=\"Background\"/></magicPool></additionalMagic> </rules>"; //$NON-NLS-1$
+    Element rootElement = DocumentUtilities.read(xml).getRootElement();
+    GenericAdditionalRules template = ownParser.parseTemplate(rootElement);
+    DummyGenericTraitCollection collection = new DummyGenericTraitCollection();
+    collection.setValue(type, 0);
+    assertEquals(0, template.getAdditionalMagicLearnPools()[0].getAdditionalMagicCount(collection));
+    assertTrue(template.getAdditionalMagicLearnPools()[0].isAllowedFor(collection, new DummySpell(
+        CircleType.Terrestrial)));
+    collection.setValue(type, 2);
+    assertEquals(2, template.getAdditionalMagicLearnPools()[0].getAdditionalMagicCount(collection));
+    assertTrue(template.getAdditionalMagicLearnPools()[0].isAllowedFor(collection, new DummySpell(
+        CircleType.Terrestrial)));
+
   }
 
   @Test

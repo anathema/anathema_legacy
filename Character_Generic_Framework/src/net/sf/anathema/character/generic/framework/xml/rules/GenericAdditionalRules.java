@@ -2,6 +2,7 @@ package net.sf.anathema.character.generic.framework.xml.rules;
 
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
+import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.lib.lang.clone.ICloneable;
@@ -10,7 +11,8 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
 
   private String[] compulsiveCharmIds = new String[0];
   private String[] rejectedBackgroundIds = new String[0];
-  private IAdditionalEssencePool[] pools = new IAdditionalEssencePool[0];
+  private IAdditionalEssencePool[] essencePools = new IAdditionalEssencePool[0];
+  private IAdditionalMagicLearnPool[] magicPools = new IAdditionalMagicLearnPool[0];
 
   public void setCompulsiveCharmIds(String[] compulsiveCharmIds) {
     this.compulsiveCharmIds = compulsiveCharmIds;
@@ -22,12 +24,21 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
   }
 
   public void setAdditionalEssencePools(IAdditionalEssencePool[] pools) {
-    this.pools = pools;
+    this.essencePools = pools;
   }
 
   @Override
   public IAdditionalEssencePool[] getAdditionalEssencePools() {
-    return pools;
+    return essencePools;
+  }
+
+  @Override
+  public IAdditionalMagicLearnPool[] getAdditionalMagicLearnPools() {
+    return magicPools;
+  }
+
+  public void setMagicPools(IAdditionalMagicLearnPool[] magicPools) {
+    this.magicPools = magicPools;
   }
 
   @Override

@@ -7,11 +7,13 @@ import net.disy.commons.core.predicate.IPredicate;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ContractFailedException;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
+import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.impl.additional.AdditionalEssencePool;
 import net.sf.anathema.character.generic.impl.additional.BackgroundPool;
+import net.sf.anathema.character.generic.impl.additional.GenericMagicLearnPool;
 import net.sf.anathema.character.generic.impl.additional.MultiLearnableCharmPool;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
@@ -39,6 +41,8 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   private static final String TAG_FIXED_VALUE = "fixedValue"; //$NON-NLS-1$
   private static final String ATTRIB_VALUE = "value"; //$NON-NLS-1$
   private static final String ATTRIB_POOL = "pool"; //$NON-NLS-1$
+  private static final String TAG_ADDITIONAL_MAGIC = "additionalMagic"; //$NON-NLS-1$
+  private static final String TAG_MAGIC_POOL = "magicPool"; //$NON-NLS-1$
   private final ISpecialCharm[] charms;
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
 
@@ -60,6 +64,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
     GenericAdditionalRules basicTemplate = getBasicTemplate(element);
     setCompulsiveCharms(element, basicTemplate);
     setAdditionalEssencePools(element, basicTemplate);
+    setAdditionalMagicPools(element, basicTemplate);
     setForbiddenBackgrounds(element, basicTemplate);
     return basicTemplate;
   }
@@ -74,6 +79,20 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
       ids.add(background.attributeValue(ATTRIB_ID));
     }
     basicTemplate.setRejectedBackgrounds(ids.toArray(new String[ids.size()]));
+  }
+
+  private void setAdditionalMagicPools(Element element, GenericAdditionalRules basicTemplate)
+      throws PersistenceException {
+    Element additionalMagicElement = element.element(TAG_ADDITIONAL_MAGIC);
+    if (additionalMagicElement == null) {
+      return;
+    }
+    List<IAdditionalMagicLearnPool> pools = new ArrayList<IAdditionalMagicLearnPool>();
+    for (Element magicPool : ElementUtilities.elements(additionalMagicElement, TAG_MAGIC_POOL)) {
+      IBackgroundTemplate backgroundTemplate = getBackgroundTemplate(magicPool);
+      pools.add(new GenericMagicLearnPool(backgroundTemplate));
+    }
+    basicTemplate.setMagicPools(pools.toArray(new IAdditionalMagicLearnPool[pools.size()]));
   }
 
   private void setAdditionalEssencePools(Element element, GenericAdditionalRules basicTemplate)
@@ -96,17 +115,19 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
         pools.add(new MultiLearnableCharmPool((IMultiLearnableCharm) charm, personalPool, peripheralPool));
       }
       else if (multiPool.element(TAG_BACKGROUND_REFERENCE) != null) {
-        final String backgroundId = ElementUtilities.getRequiredAttrib(
-            multiPool.element(TAG_BACKGROUND_REFERENCE),
-            ATTRIB_ID);
-        IBackgroundTemplate background = backgroundRegistry.getById(backgroundId);
-        pools.add(new BackgroundPool(background, personalPool, peripheralPool));
+        pools.add(new BackgroundPool(getBackgroundTemplate(multiPool), personalPool, peripheralPool));
       }
       else {
         throw new ContractFailedException("Either CharmReference or BackgroundReference required."); //$NON-NLS-1$
       }
     }
     basicTemplate.setAdditionalEssencePools(pools.toArray(new IAdditionalEssencePool[pools.size()]));
+  }
+
+  private IBackgroundTemplate getBackgroundTemplate(Element parent) throws PersistenceException {
+    final String backgroundId = ElementUtilities.getRequiredAttrib(parent.element(TAG_BACKGROUND_REFERENCE), ATTRIB_ID);
+    IBackgroundTemplate background = backgroundRegistry.getById(backgroundId);
+    return background;
   }
 
   private AdditionalEssencePool parsePool(Element parent, String elementName) throws PersistenceException {

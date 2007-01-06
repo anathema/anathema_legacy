@@ -16,8 +16,18 @@ import net.sf.anathema.lib.exception.NotYetImplementedException;
 
 public class DummySpell implements ISpell {
 
+  private CircleType circleType = null;
+
+  public DummySpell() {
+    // nothing to do
+  }
+
+  public DummySpell(CircleType type) {
+    this.circleType = type;
+  }
+
   public CircleType getCircleType() {
-    throw new NotYetImplementedException();
+    return circleType;
   }
 
   public String getId() {
