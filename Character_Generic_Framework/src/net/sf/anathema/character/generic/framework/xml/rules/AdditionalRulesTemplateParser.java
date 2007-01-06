@@ -47,7 +47,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   private static final String TAG_ADDITIONAL_COST = "additionalCost"; //$NON-NLS-1$
   private static final String TAG_COST_MODIFIER = "costModifier"; //$NON-NLS-1$
   private static final String TAG_BONUS_MODIFICATION = "bonusModification"; //$NON-NLS-1$
-  private static final String ATTRIB_MINIMUM_VALUE = "minimumValue"; //$NON-NLS-1$
+  private static final String ATTRIB_MINIMUM_VALUE = "thresholdLevel"; //$NON-NLS-1$
   private final ISpecialCharm[] charms;
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
 

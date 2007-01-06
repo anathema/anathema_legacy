@@ -146,7 +146,7 @@ public class AdditionalRulesTemplateParserTest extends BasicTestCase {
         registry,
         new ISpecialCharm[0],
         backgroundRegistry);
-    String xml = "<rules><additionalCost><costModifier><backgroundReference id=\"Background\"/><bonusModification minimumValue=\"1\" multiplier=\"2\"/></costModifier></additionalCost> </rules>"; //$NON-NLS-1$
+    String xml = "<rules><additionalCost><costModifier><backgroundReference id=\"Background\"/><bonusModification thresholdLevel=\"1\" multiplier=\"2\"/></costModifier></additionalCost> </rules>"; //$NON-NLS-1$
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAdditionalRules template = ownParser.parseTemplate(rootElement);
     assertEquals(0, template.getCostModifier(type).getAdditionalDotsToSpend(5));
