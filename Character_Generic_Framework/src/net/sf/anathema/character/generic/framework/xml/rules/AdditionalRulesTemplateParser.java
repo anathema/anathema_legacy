@@ -5,13 +5,18 @@ import java.util.List;
 
 import net.disy.commons.core.predicate.IPredicate;
 import net.disy.commons.core.util.ArrayUtilities;
+import net.disy.commons.core.util.ContractFailedException;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
+import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
-import net.sf.anathema.character.generic.impl.additional.MultiLearnablePool;
+import net.sf.anathema.character.generic.impl.additional.AdditionalEssencePool;
+import net.sf.anathema.character.generic.impl.additional.BackgroundPool;
+import net.sf.anathema.character.generic.impl.additional.MultiLearnableCharmPool;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
@@ -29,13 +34,21 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   private static final String TAG_PERSONAL_POOL = "personalPool"; //$NON-NLS-1$
   private static final String TAG_PERIPHERAL_POOL = "peripheralPool"; //$NON-NLS-1$
   private static final String ATTRIB_MULTIPLIER = "multiplier"; //$NON-NLS-1$
-  private static final String TAG_BACKGROUND = "backgroundReference"; //$NON-NLS-1$
+  private static final String TAG_BACKGROUND_REFERENCE = "backgroundReference"; //$NON-NLS-1$
   private static final String TAG_FORBIDDEN_BACKGROUNDS = "forbiddenBackgrounds"; //$NON-NLS-1$
+  private static final String TAG_FIXED_VALUE = "fixedValue"; //$NON-NLS-1$
+  private static final String ATTRIB_VALUE = "value"; //$NON-NLS-1$
+  private static final String ATTRIB_POOL = "pool"; //$NON-NLS-1$
   private final ISpecialCharm[] charms;
+  private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
 
-  public AdditionalRulesTemplateParser(IXmlTemplateRegistry<GenericAdditionalRules> registry, ISpecialCharm[] charms) {
+  public AdditionalRulesTemplateParser(
+      IXmlTemplateRegistry<GenericAdditionalRules> registry,
+      ISpecialCharm[] charms,
+      IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
     super(registry);
     this.charms = charms;
+    this.backgroundRegistry = backgroundRegistry;
   }
 
   @Override
@@ -57,7 +70,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
       return;
     }
     List<String> ids = new ArrayList<String>();
-    for (Element background : ElementUtilities.elements(backgroundsElement, TAG_BACKGROUND)) {
+    for (Element background : ElementUtilities.elements(backgroundsElement, TAG_BACKGROUND_REFERENCE)) {
       ids.add(background.attributeValue(ATTRIB_ID));
     }
     basicTemplate.setRejectedBackgrounds(ids.toArray(new String[ids.size()]));
@@ -71,25 +84,44 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
     }
     List<IAdditionalEssencePool> pools = new ArrayList<IAdditionalEssencePool>();
     for (Element multiPool : ElementUtilities.elements(additionalPoolsElement, TAG_MULTI_LEARNABLE_POOL)) {
-      final String charmId = ElementUtilities.getRequiredAttrib(multiPool.element(TAG_CHARM_REFERENCE), ATTRIB_ID);
-      int personalMultiplier = parseMultiplier(multiPool, TAG_PERSONAL_POOL);
-      int peripheralMultiplier = parseMultiplier(multiPool, TAG_PERIPHERAL_POOL);
-      ISpecialCharm charm = ArrayUtilities.getFirst(charms, new IPredicate<ISpecialCharm>() {
-        public boolean evaluate(ISpecialCharm value) {
-          return value.getCharmId().equals(charmId);
-        }
-      });
-      pools.add(new MultiLearnablePool((IMultiLearnableCharm) charm, personalMultiplier, peripheralMultiplier));
+      AdditionalEssencePool personalPool = parsePool(multiPool, TAG_PERSONAL_POOL);
+      AdditionalEssencePool peripheralPool = parsePool(multiPool, TAG_PERIPHERAL_POOL);
+      if (multiPool.element(TAG_CHARM_REFERENCE) != null) {
+        final String charmId = ElementUtilities.getRequiredAttrib(multiPool.element(TAG_CHARM_REFERENCE), ATTRIB_ID);
+        ISpecialCharm charm = ArrayUtilities.getFirst(charms, new IPredicate<ISpecialCharm>() {
+          public boolean evaluate(ISpecialCharm value) {
+            return value.getCharmId().equals(charmId);
+          }
+        });
+        pools.add(new MultiLearnableCharmPool((IMultiLearnableCharm) charm, personalPool, peripheralPool));
+      }
+      else if (multiPool.element(TAG_BACKGROUND_REFERENCE) != null) {
+        final String backgroundId = ElementUtilities.getRequiredAttrib(
+            multiPool.element(TAG_BACKGROUND_REFERENCE),
+            ATTRIB_ID);
+        IBackgroundTemplate background = backgroundRegistry.getById(backgroundId);
+        pools.add(new BackgroundPool(background, personalPool, peripheralPool));
+      }
+      else {
+        throw new ContractFailedException("Either CharmReference or BackgroundReference required."); //$NON-NLS-1$
+      }
     }
     basicTemplate.setAdditionalEssencePools(pools.toArray(new IAdditionalEssencePool[pools.size()]));
   }
 
-  private int parseMultiplier(Element element, String elementName) throws PersistenceException {
-    Element poolElement = element.element(elementName);
+  private AdditionalEssencePool parsePool(Element parent, String elementName) throws PersistenceException {
+    Element poolElement = parent.element(elementName);
     if (poolElement == null) {
-      return 0;
+      return new AdditionalEssencePool(0);
     }
-    return ElementUtilities.getRequiredIntAttrib(poolElement, ATTRIB_MULTIPLIER);
+    int multiplier = ElementUtilities.getIntAttrib(poolElement, ATTRIB_MULTIPLIER, 0);
+    AdditionalEssencePool pool = new AdditionalEssencePool(multiplier);
+    for (Element overrideElement : ElementUtilities.elements(poolElement, TAG_FIXED_VALUE)) {
+      int traitValue = ElementUtilities.getRequiredIntAttrib(overrideElement, ATTRIB_VALUE);
+      int poolValue = ElementUtilities.getRequiredIntAttrib(overrideElement, ATTRIB_POOL);
+      pool.setFixedValue(traitValue, poolValue);
+    }
+    return pool;
   }
 
   private void setCompulsiveCharms(Element element, GenericAdditionalRules basicTemplate) throws PersistenceException {

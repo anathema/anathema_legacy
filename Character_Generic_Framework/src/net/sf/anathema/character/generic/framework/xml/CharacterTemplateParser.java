@@ -2,6 +2,7 @@ package net.sf.anathema.character.generic.framework.xml;
 
 import java.util.List;
 
+import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.framework.ICharacterTemplateRegistryCollection;
 import net.sf.anathema.character.generic.framework.xml.abilitygroup.GenericGroupedTraitTypeProvider;
@@ -35,6 +36,7 @@ import net.sf.anathema.character.generic.traits.groups.AllAbilityTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.AllAttributeTraitTypeGroup;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
@@ -65,16 +67,19 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   private final IRegistry<CharacterType, ICasteCollection> casteCollectionRegistry;
   private final IRegistry<String, IAdditionalTemplateParser> additionModelTemplateParserRegistry;
   private final ICharmProvider provider;
+  private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
 
   public CharacterTemplateParser(
       ICharacterTemplateRegistryCollection registryCollection,
       IRegistry<CharacterType, ICasteCollection> casteCollectionRegistry,
       ICharmProvider provider,
+      IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry,
       IRegistry<String, IAdditionalTemplateParser> additionModelTemplateParser) {
     super(registryCollection.getCharacterTemplateRegistry());
     this.registryCollection = registryCollection;
     this.casteCollectionRegistry = casteCollectionRegistry;
     this.provider = provider;
+    this.backgroundRegistry = backgroundRegistry;
     this.additionModelTemplateParserRegistry = additionModelTemplateParser;
   }
 
@@ -233,7 +238,8 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
         registryCollection.getAdditionalRulesRegistry(),
         provider.getSpecialCharms(
             characterTemplate.getTemplateType().getCharacterType(),
-            characterTemplate.getEdition()));
+            characterTemplate.getEdition()),
+        backgroundRegistry);
     GenericAdditionalRules rules = parser.parseTemplate(element);
     characterTemplate.setAdditionalRules(rules);
   }

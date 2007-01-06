@@ -2,8 +2,10 @@ package net.sf.anathema.test.character.generic.framework.xml;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
+import net.sf.anathema.character.generic.framework.backgrounds.BackgroundRegistry;
 import net.sf.anathema.character.generic.framework.xml.rules.AdditionalRulesTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.rules.GenericAdditionalRules;
+import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.magic.charm.special.StaticMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
@@ -12,6 +14,7 @@ import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.types.ITraitTypeVisitor;
 import net.sf.anathema.dummy.character.magic.DummyMagicCollection;
 import net.sf.anathema.dummy.character.template.DummyXmlTemplateRegistry;
+import net.sf.anathema.dummy.character.trait.DummyGenericTraitCollection;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.testing.BasicTestCase;
@@ -24,6 +27,7 @@ public class AdditionalRulesTemplateParserTest extends BasicTestCase {
   private static final String ORIGINAL_TEMPLATE_ID = "original"; //$NON-NLS-1$
   private DummyXmlTemplateRegistry<GenericAdditionalRules> registry;
   private GenericAdditionalRules originalTemplate;
+  private AdditionalRulesTemplateParser parser;
 
   @Override
   protected void setUp() throws Exception {
@@ -31,6 +35,7 @@ public class AdditionalRulesTemplateParserTest extends BasicTestCase {
     this.registry = new DummyXmlTemplateRegistry<GenericAdditionalRules>();
     originalTemplate = new GenericAdditionalRules();
     registry.register(ORIGINAL_TEMPLATE_ID, originalTemplate);
+    parser = new AdditionalRulesTemplateParser(registry, new ISpecialCharm[0], new BackgroundRegistry());
   }
 
   public void testNoCompulsiveMagic() throws Exception {
@@ -39,7 +44,6 @@ public class AdditionalRulesTemplateParserTest extends BasicTestCase {
   }
 
   private GenericAdditionalRules parseEmptyRuleset() throws AnathemaException, PersistenceException {
-    AdditionalRulesTemplateParser parser = new AdditionalRulesTemplateParser(registry, new ISpecialCharm[0]);
     String xml = "<rules/>"; //$NON-NLS-1$
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAdditionalRules template = parser.parseTemplate(rootElement);
@@ -47,7 +51,6 @@ public class AdditionalRulesTemplateParserTest extends BasicTestCase {
   }
 
   public void testRequiredCharm() throws Exception {
-    AdditionalRulesTemplateParser parser = new AdditionalRulesTemplateParser(registry, new ISpecialCharm[0]);
     String xml = "<rules><requiredMagic><magic type=\"charm\" id=\"Charm\" /></requiredMagic> </rules>"; //$NON-NLS-1$
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAdditionalRules template = parser.parseTemplate(rootElement);
@@ -62,10 +65,13 @@ public class AdditionalRulesTemplateParserTest extends BasicTestCase {
   @Test
   public void testCharmMultiLearnableEssencePool() throws Exception {
     final StaticMultiLearnableCharm charm = new StaticMultiLearnableCharm("Charm", 3); //$NON-NLS-1$
-    AdditionalRulesTemplateParser parser = new AdditionalRulesTemplateParser(registry, new ISpecialCharm[] { charm });
+    AdditionalRulesTemplateParser ownParser = new AdditionalRulesTemplateParser(
+        registry,
+        new ISpecialCharm[] { charm },
+        new BackgroundRegistry());
     String xml = "<rules><additionalPools><multilearnablePool><charmReference id=\"Charm\"/><personalPool multiplier=\"5\"/><peripheralPool multiplier=\"10\"/></multilearnablePool></additionalPools> </rules>"; //$NON-NLS-1$
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
-    GenericAdditionalRules template = parser.parseTemplate(rootElement);
+    GenericAdditionalRules template = ownParser.parseTemplate(rootElement);
     assertEquals(1, template.getAdditionalEssencePools().length);
     DummyMagicCollection collection = new DummyMagicCollection();
     collection.setLearnCount(charm, 2);
@@ -75,8 +81,33 @@ public class AdditionalRulesTemplateParserTest extends BasicTestCase {
   }
 
   @Test
+  public void testBackgroundMultiLearnableEssencePool() throws Exception {
+    IBackgroundTemplate type = new CustomizedBackgroundTemplate("Background"); //$NON-NLS-1$
+    BackgroundRegistry backgroundRegistry = new BackgroundRegistry();
+    backgroundRegistry.add(type);
+    AdditionalRulesTemplateParser ownParser = new AdditionalRulesTemplateParser(
+        registry,
+        new ISpecialCharm[0],
+        backgroundRegistry);
+    String xml = "<rules><additionalPools><multilearnablePool><backgroundReference id=\"Background\"/><personalPool multiplier=\"1\"/><peripheralPool><fixedValue value=\"0\" pool=\"0\"/><fixedValue value=\"1\" pool=\"2\"/><fixedValue value=\"2\" pool=\"3\"/></peripheralPool></multilearnablePool></additionalPools> </rules>"; //$NON-NLS-1$
+    Element rootElement = DocumentUtilities.read(xml).getRootElement();
+    GenericAdditionalRules template = ownParser.parseTemplate(rootElement);
+    assertEquals(1, template.getAdditionalEssencePools().length);
+    DummyGenericTraitCollection collection = new DummyGenericTraitCollection();
+    IAdditionalEssencePool pool = template.getAdditionalEssencePools()[0];
+    collection.setValue(type, 0);
+    assertEquals(0, pool.getAdditionalPersonalPool(collection, null));
+    assertEquals(0, pool.getAdditionalPeripheralPool(collection, null));
+    collection.setValue(type, 1);
+    assertEquals(1, pool.getAdditionalPersonalPool(collection, null));
+    assertEquals(2, pool.getAdditionalPeripheralPool(collection, null));
+    collection.setValue(type, 2);
+    assertEquals(2, pool.getAdditionalPersonalPool(collection, null));
+    assertEquals(3, pool.getAdditionalPeripheralPool(collection, null));
+  }
+
+  @Test
   public void testForbiddenBackgrounds() throws Exception {
-    AdditionalRulesTemplateParser parser = new AdditionalRulesTemplateParser(registry, new ISpecialCharm[0]);
     String xml = "<rules><forbiddenBackgrounds><backgroundReference id=\"forbidden\" /></forbiddenBackgrounds> </rules>"; //$NON-NLS-1$
     Element rootElement = DocumentUtilities.read(xml).getRootElement();
     GenericAdditionalRules template = parser.parseTemplate(rootElement);

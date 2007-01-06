@@ -40,6 +40,7 @@ public abstract class CharacterModuleAdapter<M extends ICharacterModuleObject> i
         characterTemplateRegistries,
         generics.getCasteCollectionRegistry(),
         generics.getCharmProvider(),
+        generics.getBackgroundRegistry(),
         additionalTemplateParserRegistry);
     try {
       generics.getTemplateRegistry().register(

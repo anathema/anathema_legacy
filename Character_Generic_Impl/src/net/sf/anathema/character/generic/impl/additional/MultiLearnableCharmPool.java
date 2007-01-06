@@ -5,23 +5,26 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.character.IMagicCollection;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 
-public class MultiLearnablePool implements IAdditionalEssencePool {
+public class MultiLearnableCharmPool implements IAdditionalEssencePool {
 
   private final IMultiLearnableCharm charm;
-  private final int peripheralMultiplier;
-  private final int personalMultiplier;
+  private final AdditionalEssencePool personalPool;
+  private final AdditionalEssencePool peripheralPool;
 
-  public MultiLearnablePool(IMultiLearnableCharm charm, int personalMultiplier, int peripheralMultiplier) {
+  public MultiLearnableCharmPool(
+      IMultiLearnableCharm charm,
+      AdditionalEssencePool personalPool,
+      AdditionalEssencePool peripheralPool) {
     this.charm = charm;
-    this.personalMultiplier = personalMultiplier;
-    this.peripheralMultiplier = peripheralMultiplier;
+    this.personalPool = personalPool;
+    this.peripheralPool = peripheralPool;
   }
 
   public int getAdditionalPeripheralPool(IGenericTraitCollection traitCollection, IMagicCollection magicCollection) {
-    return magicCollection.getLearnCount(charm) * peripheralMultiplier;
+    return peripheralPool.getPool(magicCollection.getLearnCount(charm));
   }
 
   public int getAdditionalPersonalPool(IGenericTraitCollection traitCollection, IMagicCollection magicCollection) {
-    return magicCollection.getLearnCount(charm) * personalMultiplier;
+    return personalPool.getPool(magicCollection.getLearnCount(charm));
   }
 }
