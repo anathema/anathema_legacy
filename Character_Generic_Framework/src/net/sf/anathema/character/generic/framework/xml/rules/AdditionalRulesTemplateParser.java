@@ -13,6 +13,7 @@ import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateP
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.impl.additional.AdditionalEssencePool;
 import net.sf.anathema.character.generic.impl.additional.BackgroundPool;
+import net.sf.anathema.character.generic.impl.additional.DefaultTraitCostModifier;
 import net.sf.anathema.character.generic.impl.additional.GenericMagicLearnPool;
 import net.sf.anathema.character.generic.impl.additional.MultiLearnableCharmPool;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
@@ -43,6 +44,10 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   private static final String ATTRIB_POOL = "pool"; //$NON-NLS-1$
   private static final String TAG_ADDITIONAL_MAGIC = "additionalMagic"; //$NON-NLS-1$
   private static final String TAG_MAGIC_POOL = "magicPool"; //$NON-NLS-1$
+  private static final String TAG_ADDITIONAL_COST = "additionalCost"; //$NON-NLS-1$
+  private static final String TAG_COST_MODIFIER = "costModifier"; //$NON-NLS-1$
+  private static final String TAG_BONUS_MODIFICATION = "bonusModification"; //$NON-NLS-1$
+  private static final String ATTRIB_MINIMUM_VALUE = "minimumValue"; //$NON-NLS-1$
   private final ISpecialCharm[] charms;
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
 
@@ -65,8 +70,29 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
     setCompulsiveCharms(element, basicTemplate);
     setAdditionalEssencePools(element, basicTemplate);
     setAdditionalMagicPools(element, basicTemplate);
+    setAdditionalTraitCosts(element, basicTemplate);
     setForbiddenBackgrounds(element, basicTemplate);
     return basicTemplate;
+  }
+
+  private void setAdditionalTraitCosts(Element element, GenericAdditionalRules basicTemplate)
+      throws PersistenceException {
+    Element additionalCostElement = element.element(TAG_ADDITIONAL_COST);
+    if (additionalCostElement == null) {
+      return;
+    }
+    for (Element costModifierElement : ElementUtilities.elements(additionalCostElement, TAG_COST_MODIFIER)) {
+      IBackgroundTemplate backgroundTemplate = getBackgroundTemplate(costModifierElement);
+      Element modification = costModifierElement.element(TAG_BONUS_MODIFICATION);
+      final int minimumValue = ElementUtilities.getRequiredIntAttrib(modification, ATTRIB_MINIMUM_VALUE);
+      final int multiplier = ElementUtilities.getRequiredIntAttrib(modification, ATTRIB_MULTIPLIER);
+      basicTemplate.addBackgroundCostModifier(backgroundTemplate.getId(), new DefaultTraitCostModifier() {
+        @Override
+        public int getAdditionalBonusPointsToSpend(int traitValue) {
+          return Math.max(0, (traitValue - minimumValue) * multiplier);
+        }
+      });
+    }
   }
 
   private void setForbiddenBackgrounds(Element element, GenericAdditionalRules basicTemplate) {

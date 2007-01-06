@@ -135,7 +135,30 @@ public class AdditionalRulesTemplateParserTest extends BasicTestCase {
     assertEquals(2, template.getAdditionalMagicLearnPools()[0].getAdditionalMagicCount(collection));
     assertTrue(template.getAdditionalMagicLearnPools()[0].isAllowedFor(collection, new DummySpell(
         CircleType.Terrestrial)));
+  }
 
+  @Test
+  public void testAdditionalCostForBackground() throws Exception {
+    IBackgroundTemplate type = new CustomizedBackgroundTemplate("Background"); //$NON-NLS-1$
+    BackgroundRegistry backgroundRegistry = new BackgroundRegistry();
+    backgroundRegistry.add(type);
+    AdditionalRulesTemplateParser ownParser = new AdditionalRulesTemplateParser(
+        registry,
+        new ISpecialCharm[0],
+        backgroundRegistry);
+    String xml = "<rules><additionalCost><costModifier><backgroundReference id=\"Background\"/><bonusModification minimumValue=\"1\" multiplier=\"2\"/></costModifier></additionalCost> </rules>"; //$NON-NLS-1$
+    Element rootElement = DocumentUtilities.read(xml).getRootElement();
+    GenericAdditionalRules template = ownParser.parseTemplate(rootElement);
+    assertEquals(0, template.getCostModifier(type).getAdditionalDotsToSpend(5));
+    assertEquals(8, template.getCostModifier(type).getAdditionalBonusPointsToSpend(5));
+  }
+
+  @Test
+  public void testStandardCostForBackground() throws Exception {
+    IBackgroundTemplate type = new CustomizedBackgroundTemplate("Background"); //$NON-NLS-1$
+    GenericAdditionalRules template = parseEmptyRuleset();
+    assertEquals(0, template.getCostModifier(type).getAdditionalDotsToSpend(5));
+    assertEquals(0, template.getCostModifier(type).getAdditionalBonusPointsToSpend(5));
   }
 
   @Test
