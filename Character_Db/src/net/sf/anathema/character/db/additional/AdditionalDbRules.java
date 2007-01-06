@@ -4,6 +4,7 @@ import net.sf.anathema.character.db.DbCharacterModule;
 import net.sf.anathema.character.generic.additionalrules.ITraitCostModifier;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.module.IBackgroundIds;
+import net.sf.anathema.character.generic.framework.xml.rules.TraitTypeAdapter;
 import net.sf.anathema.character.generic.impl.additional.AdditionalEssencePool;
 import net.sf.anathema.character.generic.impl.additional.BackgroundPool;
 import net.sf.anathema.character.generic.impl.additional.DefaultAdditionalRules;

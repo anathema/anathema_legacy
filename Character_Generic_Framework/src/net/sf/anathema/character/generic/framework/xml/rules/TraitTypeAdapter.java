@@ -1,4 +1,4 @@
-package net.sf.anathema.character.db.additional;
+package net.sf.anathema.character.generic.framework.xml.rules;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.traits.ITraitType;

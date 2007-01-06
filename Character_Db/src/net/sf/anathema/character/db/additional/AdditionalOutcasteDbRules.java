@@ -3,6 +3,7 @@ package net.sf.anathema.character.db.additional;
 import net.sf.anathema.character.db.DbCharacterModule;
 import net.sf.anathema.character.generic.additionalrules.ITraitCostModifier;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
+import net.sf.anathema.character.generic.framework.xml.rules.TraitTypeAdapter;
 import net.sf.anathema.character.generic.impl.additional.DefaultTraitCostModifier;
 import net.sf.anathema.character.generic.traits.ITraitType;
 
