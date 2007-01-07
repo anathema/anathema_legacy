@@ -30,7 +30,6 @@ public class PresentationPropertiesParser extends AbstractXmlTemplateParser<Gene
   public GenericPresentationTemplate parseTemplate(Element element) throws PersistenceException {
     GenericPresentationTemplate basicTemplate = getBasicTemplate(element);
     updateColor(element, basicTemplate);
-    updateNewResources(element, basicTemplate);
     updateCharmPresentation(element, basicTemplate);
     return basicTemplate;
   }
@@ -43,17 +42,6 @@ public class PresentationPropertiesParser extends AbstractXmlTemplateParser<Gene
     }
     GenericCharmPresentationProperties properties = charmPresentationParser.parseTemplate(charmPresentationElement);
     basicTemplate.setCharmPresentationProperties(properties);
-  }
-
-  private void updateNewResources(Element parent, GenericPresentationTemplate basicTemplate) {
-    Element newResourcesElement = parent.element("newResources"); //$NON-NLS-1$
-    if (newResourcesElement == null) {
-      return;
-    }
-    Element newActionElement = newResourcesElement.element("newAction"); //$NON-NLS-1$
-    if (newActionElement != null) {
-      basicTemplate.setNewActionResource(newActionElement.getText());
-    }
   }
 
   private void updateColor(Element parent, GenericPresentationTemplate basicTemplate) throws PersistenceException {

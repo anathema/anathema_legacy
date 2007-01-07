@@ -59,18 +59,6 @@ public class PresentationPropertiesParserTest extends BasicTestCase {
         "SolarButtonLifeFirstEdition16.png", presentationProperties.getSmallCasteIconResource(AbilityGroupType.Life.getId(), ExaltedEdition.FirstEdition.getId())); //$NON-NLS-1$
   }
 
-  public void testParseXmlWithoutNewActionResource() throws Exception {
-    String xml = "<presentation />"; //$NON-NLS-1$
-    IPresentationProperties presentationProperties = parseXml(xml);
-    assertNull(presentationProperties.getNewActionResource());
-  }
-
-  public void testUpdateNewActionResourceWithParsing() throws Exception {
-    String xml = "<presentation><newResources><newAction>NewActionResource</newAction></newResources></presentation>"; //$NON-NLS-1$
-    IPresentationProperties presentationProperties = parseXml(xml);
-    assertEquals("NewActionResource", presentationProperties.getNewActionResource()); //$NON-NLS-1$
-  }
-
   public void testParseXmlWithoutCharmPresentationProperties() throws Exception {
     String xml = "<presentation/>"; //$NON-NLS-1$
     IPresentationProperties presentationProperties = parseXml(xml);

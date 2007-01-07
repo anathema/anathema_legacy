@@ -37,9 +37,8 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeGroupType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.lib.data.Range;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
+import net.sf.anathema.character.generic.type.CharacterType;
 
 public class DummyCharacterTemplate implements ICharacterTemplate {
 
@@ -47,6 +46,7 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
   private final ITraitTemplateCollection traitTemplateCollection = new TraitTemplateCollection(
       new ExaltTraitTemplateFactory());
   private IExperiencePointCosts experienceCosts;
+  private ITemplateType type = new TemplateType(CharacterType.MORTAL);
 
   public IBonusPointCosts getBonusPointCosts() {
     throw new NotYetImplementedException();
@@ -62,19 +62,15 @@ public class DummyCharacterTemplate implements ICharacterTemplate {
   }
 
   public ITemplateType getTemplateType() {
-    return new TemplateType(CharacterType.MORTAL);
+    return type;
   }
 
-  public Range getEssenceRange() {
-    return new Range(1, 1);
+  public void setTemplateType(ITemplateType type) {
+    this.type = type;
   }
 
   public IExperiencePointCosts getExperienceCost() {
     return experienceCosts;
-  }
-
-  public MartialArtsLevel getMartialArtsLevel() {
-    throw new NotYetImplementedException();
   }
 
   public IPresentationProperties getPresentationProperties() {
