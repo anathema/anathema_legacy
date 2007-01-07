@@ -31,7 +31,7 @@ public class CharacterCreationPageProperties {
   }
 
   public IBasicMessage getConfirmMessage() {
-    return new BasicMessage(resources.getString("CharacterDialog.Message.Confirm"), MessageType.INFORMATION); //$NON-NLS-1$
+    return new BasicMessage(resources.getString("CharacterDialog.Message.Confirm"), MessageType.NORMAL); //$NON-NLS-1$
   }
 
   public IBasicMessage getSelectCharacterTypeMessage() {
