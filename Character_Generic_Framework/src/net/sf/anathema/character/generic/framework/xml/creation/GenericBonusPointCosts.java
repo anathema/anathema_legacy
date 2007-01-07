@@ -19,7 +19,10 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
   private int generalAbilityCost = 0;
   private int favoredAbilityCost = 0;
   private int generalCharmCost = 0;
+  private int generalHighLevelMartialArtsCharmCost = 0;
   private int favoredCharmCost = 0;
+  private int favoredHighLevelMartialArtsCharmCost = 0;
+  private MartialArtsLevel standardLevel;
   private int essenceCost = 0;
   private int willpowerCost = 0;
   private int virtueCost = 0;
@@ -69,13 +72,10 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
   }
 
   private int getCharmCosts(boolean favored, MartialArtsLevel martialArtsLevel) {
-    if (martialArtsLevel == null) {
-      return favored ? favoredCharmCost : generalCharmCost;
+    if (martialArtsLevel != null && standardLevel.compareTo(martialArtsLevel) < 0) {
+      return favored ? favoredHighLevelMartialArtsCharmCost : generalHighLevelMartialArtsCharmCost;
     }
-    if (martialArtsLevel.compareTo(MartialArtsLevel.Sidereal) < 0) {
-      return favored ? favoredCharmCost : generalCharmCost;
-    }
-    throw new IllegalArgumentException("Sidereal Martial Arts shan't be learned at Character Creation!"); //$NON-NLS-1$
+    return favored ? favoredCharmCost : generalCharmCost;
   }
 
   public int getEssenceCost() {
@@ -142,9 +142,15 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
     this.essenceCost = essenceCost;
   }
 
-  public void setCharmCosts(int generalCharmCost, int favoredCharmCost) {
+  public void setCharmCosts(
+      int generalCharmCost,
+      int favoredCharmCost,
+      int generalHighLevelMartialArtsCost,
+      int favoredHighLevelMartialArtsCost) {
     this.generalCharmCost = generalCharmCost;
+    this.generalHighLevelMartialArtsCharmCost = generalHighLevelMartialArtsCost;
     this.favoredCharmCost = favoredCharmCost;
+    this.favoredHighLevelMartialArtsCharmCost = favoredHighLevelMartialArtsCost;
   }
 
   public void setAbilityCosts(int generalCost, int favoredCost) {
@@ -154,5 +160,9 @@ public class GenericBonusPointCosts extends ReflectionCloneableObject<GenericBon
 
   public void setMaximumFreeVirtueRank(int rank) {
     this.maximumFreeVirtueRank = rank;
+  }
+
+  public void setStandardMartialArtsLevel(MartialArtsLevel standardMartialArtsLevel) {
+    this.standardLevel = standardMartialArtsLevel;
   }
 }

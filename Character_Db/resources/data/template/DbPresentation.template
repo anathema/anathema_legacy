@@ -1,0 +1,7 @@
+<presentation>
+  <color red="139" green="0" blue="0" />
+  <newResources>
+    <newAction>CharacterGenerator.Templates.Dragon-Blooded.Default</newAction>
+  </newResources>
+  <charmPresentation uses="template/DbCharmPresentation.template"/>
+</presentation>

@@ -3,6 +3,7 @@ package net.sf.anathema.character.generic.framework.xml.creation;
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.util.CostParser;
+import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
@@ -35,9 +36,13 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
   private static final String TAG_MAXIMUM_FREE_RANK = "maximumFreeRank"; //$NON-NLS-1$
 
   private final CostParser costParser = new CostParser();
+  private final MartialArtsLevel standardMartialArtsLevel;
 
-  public BonusPointCostTemplateParser(IXmlTemplateRegistry<GenericBonusPointCosts> registry) {
+  public BonusPointCostTemplateParser(
+      IXmlTemplateRegistry<GenericBonusPointCosts> registry,
+      MartialArtsLevel martialArtsLevel) {
     super(registry);
+    this.standardMartialArtsLevel = martialArtsLevel;
   }
 
   public GenericBonusPointCosts parseTemplate(Element element) throws PersistenceException {
@@ -57,7 +62,20 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
     }
     int generalCharmCost = costParser.getFixedCostFromRequiredElement(charmElement, TAG_GENERAL_CHARMS);
     int favoredCharmCost = costParser.getFixedCostFromRequiredElement(charmElement, TAG_FAVORED_CHARMS);
-    costs.setCharmCosts(generalCharmCost, favoredCharmCost);
+    int generalHighLevelMartialArtsCharmCost = costParser.getFixedCostFromOptionalElement(
+        charmElement,
+        TAG_FAVORED_CHARMS,
+        generalCharmCost);
+    int favoredHighLevelMartialArtsCharmCost = costParser.getFixedCostFromOptionalElement(
+        charmElement,
+        TAG_FAVORED_CHARMS,
+        favoredCharmCost);
+    costs.setCharmCosts(
+        generalCharmCost,
+        favoredCharmCost,
+        generalHighLevelMartialArtsCharmCost,
+        favoredHighLevelMartialArtsCharmCost);
+    costs.setStandardMartialArtsLevel(standardMartialArtsLevel);
   }
 
   private void setAdvantageCosts(Element element, GenericBonusPointCosts costs) throws PersistenceException {

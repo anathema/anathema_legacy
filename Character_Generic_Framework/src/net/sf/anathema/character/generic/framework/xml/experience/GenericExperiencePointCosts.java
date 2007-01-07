@@ -24,6 +24,9 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
   private ICurrentRatingCosts essenceCosts;
   private int generalCharmCost;
   private int favoredCharmCost;
+  private int generalHighLevelCharmCost;
+  private int favoredHighLevelCharmCost;
+  private MartialArtsLevel standardMartialArtsLevel;
 
   public ICurrentRatingCosts getAbilityCosts(boolean favored) {
     return favored ? favoredAbilityCost : generalAbilityCost;
@@ -56,8 +59,8 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
   }
 
   private int getCharmCosts(boolean favored, MartialArtsLevel level) {
-    if (level == MartialArtsLevel.Sidereal) {
-      return favored ? 13 : 15;
+    if (level != null && standardMartialArtsLevel.compareTo(level) < 0) {
+      return favored ? favoredHighLevelCharmCost : generalHighLevelCharmCost;
     }
     return favored ? favoredCharmCost : generalCharmCost;
   }
@@ -109,5 +112,14 @@ public class GenericExperiencePointCosts extends ReflectionCloneableObject<Gener
   public void setCharmCosts(int favoredCharmCost, int generalCharmCost) {
     this.favoredCharmCost = favoredCharmCost;
     this.generalCharmCost = generalCharmCost;
+  }
+
+  public void setMartialArtsCosts(int favoredMartialArtsCost, int generalMartialArtsCost) {
+    this.favoredHighLevelCharmCost = favoredMartialArtsCost;
+    this.generalHighLevelCharmCost = generalMartialArtsCost;
+  }
+
+  public void setStandardMartialArtsLevel(MartialArtsLevel standardLevel) {
+    this.standardMartialArtsLevel = standardLevel;
   }
 }

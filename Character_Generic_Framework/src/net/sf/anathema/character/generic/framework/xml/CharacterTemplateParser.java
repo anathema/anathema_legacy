@@ -159,7 +159,8 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
       return;
     }
     BonusPointCostTemplateParser parser = new BonusPointCostTemplateParser(
-        registryCollection.getBonusPointTemplateRegistry());
+        registryCollection.getBonusPointTemplateRegistry(),
+        characterTemplate.getMagicTemplate().getCharmTemplate().getMartialArtsRules().getStandardLevel());
     GenericBonusPointCosts bonusPoints = parser.parseTemplate(bonusPointsElement);
     characterTemplate.setBonusPointCosts(bonusPoints);
   }
@@ -196,7 +197,9 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     if (experiencePointsElement == null) {
       return;
     }
-    ExperienceTemplateParser parser = new ExperienceTemplateParser(registryCollection.getExperienceTemplateRegistry());
+    ExperienceTemplateParser parser = new ExperienceTemplateParser(
+        registryCollection.getExperienceTemplateRegistry(),
+        characterTemplate.getMagicTemplate().getCharmTemplate().getMartialArtsRules().getStandardLevel());
     GenericExperiencePointCosts essenceTemplate = parser.parseTemplate(experiencePointsElement);
     characterTemplate.setExperiencePointCosts(essenceTemplate);
   }
@@ -303,7 +306,8 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
     }
     GenericTraitTemplateFactoryParser parser = new GenericTraitTemplateFactoryParser(
         registryCollection.getTraitFactoryRegistry(),
-        registryCollection.getTraitTemplatePoolRegistry());
+        registryCollection.getTraitTemplatePoolRegistry(),
+        backgroundRegistry);
     GenericTraitTemplateFactory factory = parser.parseTemplate(traitCollectionElement);
     characterTemplate.setTraitFactory(factory);
   }

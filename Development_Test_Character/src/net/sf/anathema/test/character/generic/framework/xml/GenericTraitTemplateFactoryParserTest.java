@@ -1,6 +1,7 @@
 package net.sf.anathema.test.character.generic.framework.xml;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
+import net.sf.anathema.character.generic.framework.backgrounds.BackgroundRegistry;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactory;
 import net.sf.anathema.character.generic.framework.xml.trait.GenericTraitTemplateFactoryParser;
 import net.sf.anathema.character.generic.framework.xml.trait.pool.GenericTraitTemplatePool;
@@ -58,7 +59,10 @@ public class GenericTraitTemplateFactoryParserTest extends BasicTestCase {
   protected void setUp() throws Exception {
     templateFactoryRegistry = new DummyXmlTemplateRegistry<GenericTraitTemplateFactory>();
     templatePoolRegistry = new DummyXmlTemplateRegistry<GenericTraitTemplatePool>();
-    parser = new GenericTraitTemplateFactoryParser(templateFactoryRegistry, templatePoolRegistry);
+    parser = new GenericTraitTemplateFactoryParser(
+        templateFactoryRegistry,
+        templatePoolRegistry,
+        new BackgroundRegistry());
   }
 
   public void testParseAbility() throws Exception {

@@ -1,11 +1,11 @@
 <experiencePointCost uses="experience/DefaultExperienceCost.template">
   <advantages>
     <essence>
-      <currentRating multiplier="9" />
+      <currentRating multiplier="10" />
     </essence>
   </advantages>
   <magic>
-    <charms favored="12" general="15">
+    <charms favored="10" general="12">
     	<highLevelMartialArts favored="12" general="15"/>
     </charms>
   </magic>

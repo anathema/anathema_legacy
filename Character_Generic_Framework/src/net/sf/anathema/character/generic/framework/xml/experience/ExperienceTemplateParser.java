@@ -4,6 +4,7 @@ import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateP
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.framework.xml.util.CostParser;
 import net.sf.anathema.character.generic.impl.template.points.MultiplyRatingCosts;
+import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.template.experience.ICurrentRatingCosts;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -30,10 +31,15 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
   private static final String TAG_ESSENCE = "essence"; //$NON-NLS-1$
   private static final String TAG_MAGIC = "magic"; //$NON-NLS-1$
   private static final String TAG_CHARMS = "charms"; //$NON-NLS-1$
+  private static final String TAG_MARTIAL_ARTS = "highLevelMartialArts"; //$NON-NLS-1$
   private final CostParser costParser = new CostParser();
+  private final MartialArtsLevel standardLevel;
 
-  public ExperienceTemplateParser(IXmlTemplateRegistry<GenericExperiencePointCosts> templateRegistry) {
+  public ExperienceTemplateParser(
+      IXmlTemplateRegistry<GenericExperiencePointCosts> templateRegistry,
+      MartialArtsLevel standardLevel) {
     super(templateRegistry);
+    this.standardLevel = standardLevel;
   }
 
   @Override
@@ -59,6 +65,11 @@ public class ExperienceTemplateParser extends AbstractXmlTemplateParser<GenericE
     int favoredCost = ElementUtilities.getRequiredIntAttrib(charms, ATTRIB_FAVORED);
     int generalCost = ElementUtilities.getRequiredIntAttrib(charms, ATTRIB_GENERAL);
     costs.setCharmCosts(favoredCost, generalCost);
+    Element martialArts = charms.element(TAG_MARTIAL_ARTS);
+    int favoredMartialArtsCost = ElementUtilities.getRequiredIntAttrib(martialArts, ATTRIB_FAVORED);
+    int generalMartialArtsCost = ElementUtilities.getRequiredIntAttrib(martialArts, ATTRIB_GENERAL);
+    costs.setMartialArtsCosts(favoredMartialArtsCost, generalMartialArtsCost);
+    costs.setStandardMartialArtsLevel(standardLevel);
   }
 
   private void setAdvantageCosts(Element element, GenericExperiencePointCosts costs) throws PersistenceException {

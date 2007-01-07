@@ -11,7 +11,6 @@ import net.sf.anathema.character.db.reporting.FirstEditionDbPartEncoder;
 import net.sf.anathema.character.db.template.IDbSpecialCharms;
 import net.sf.anathema.character.db.template.cult.KetherRockDbTemplate;
 import net.sf.anathema.character.db.template.cult.SequesteredTabernacleDbTemplate;
-import net.sf.anathema.character.db.template.dynastic.DynasticDbTemplate;
 import net.sf.anathema.character.db.template.dynastic.ImmaculateDbTemplate;
 import net.sf.anathema.character.db.template.lookshy.LookshyDbTemplate;
 import net.sf.anathema.character.db.template.lookshy.LookshyOutcasteDbTemplate;
@@ -33,6 +32,7 @@ import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.ITemplateType;
+import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
@@ -55,6 +55,7 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   public static final String BACKGROUND_ID_REPUTATION = "Reputation"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_RETAINERS = "Retainers"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_SORCERY = "Sorcery"; //$NON-NLS-1$
+  private static final TemplateType dynastTemplateType = new TemplateType(CharacterType.DB);
   private final AdditionalDbRules additionalDbRules = new AdditionalDbRules();
   private final AdditionalDbRules immaculateDbRules = new AdditionalDbRules();
   private final NativeLookshyDbRules nativeLookshyDbRules = new NativeLookshyDbRules();
@@ -73,6 +74,7 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
     CharmCache charmProvider = CharmCache.getInstance();
+    registerParsedTemplate(characterGenerics, "template/DynasticDb.template"); //$NON-NLS-1$
     registerDbTemplate(characterGenerics.getTemplateRegistry(), charmProvider);
   }
 
@@ -80,7 +82,7 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addBackgroundTemplates(ICharacterGenerics generics) {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
     ITemplateType[] allDbTemplateType = new ITemplateType[] {
-        DynasticDbTemplate.TEMPLATE_TYPE,
+        dynastTemplateType,
         PatricianOutcasteDBTemplate.TEMPLATE_TYPE,
         LowerClassOutcasteDbTemplate.TEMPLATE_TYPE,
         LookshyDbTemplate.TEMPLATE_TYPE,
@@ -102,7 +104,7 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_COMMAND, allDbTemplateType));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_CONNECTIONS, allDbTemplateType));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_FAMILY, new ITemplateType[] {
-        DynasticDbTemplate.TEMPLATE_TYPE,
+        dynastTemplateType,
         LookshyDbTemplate.TEMPLATE_TYPE,
         LookshyRealmDbTemplate.TEMPLATE_TYPE }));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_HENCHMEN, allDbTemplateType));
@@ -123,7 +125,7 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     TemplateTypeBackgroundTemplate sorceryBackground = new TemplateTypeBackgroundTemplate(
         BACKGROUND_ID_SORCERY,
         new ITemplateType[] {
-            DynasticDbTemplate.TEMPLATE_TYPE,
+            dynastTemplateType,
             LookshyDbTemplate.TEMPLATE_TYPE,
             LookshyOutcasteDbTemplate.TEMPLATE_TYPE,
             LookshyRealmDbTemplate.TEMPLATE_TYPE,
@@ -148,7 +150,6 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   }
 
   private void registerDbTemplate(ITemplateRegistry templateRegistry, CharmCache charmProvider) {
-    templateRegistry.register(new DynasticDbTemplate(charmProvider, additionalDbRules));
     templateRegistry.register(new ImmaculateDbTemplate(charmProvider, immaculateDbRules));
     templateRegistry.register(new PatricianOutcasteDBTemplate(charmProvider, outcasteDbRules));
     templateRegistry.register(new LowerClassOutcasteDbTemplate(charmProvider, outcasteDbRules));

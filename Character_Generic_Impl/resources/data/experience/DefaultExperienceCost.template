@@ -27,6 +27,8 @@
     </essence>
   </advantages>
   <magic>
-    <charms favored="8" general="10" />
+    <charms favored="8" general="10">
+    	<highLevelMartialArts favored="13" general="15"/>
+    </charms>
   </magic>
 </experiencePointCost>

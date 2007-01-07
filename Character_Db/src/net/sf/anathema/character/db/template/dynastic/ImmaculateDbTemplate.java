@@ -1,5 +1,6 @@
 package net.sf.anathema.character.db.template.dynastic;
 
+import net.sf.anathema.character.db.template.AbstractDbTemplate;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.template.magic.CustomizableMagicTemplate;
@@ -13,7 +14,7 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
-public class ImmaculateDbTemplate extends DynasticDbTemplate {
+public class ImmaculateDbTemplate extends AbstractDbTemplate {
   public static final IIdentificate IMMACULATE_SUBTYPE = new Identificate("ImmaculateSubtype"); //$NON-NLS-1$
   public static final ITemplateType IMMACULATE_TEMPLATE_TYPE = new TemplateType(CharacterType.DB, IMMACULATE_SUBTYPE);
 
@@ -23,7 +24,7 @@ public class ImmaculateDbTemplate extends DynasticDbTemplate {
   }
 
   public ImmaculateDbTemplate(CharmCache charmProvider, IAdditionalRules rules) {
-    super(charmProvider, rules);
+    super(charmProvider, rules, new DynasticDbTraitTemplateFactory());
   }
 
   @Override

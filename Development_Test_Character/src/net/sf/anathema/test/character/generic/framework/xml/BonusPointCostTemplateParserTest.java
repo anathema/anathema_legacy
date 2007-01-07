@@ -2,6 +2,7 @@ package net.sf.anathema.test.character.generic.framework.xml;
 
 import net.sf.anathema.character.generic.framework.xml.creation.BonusPointCostTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.creation.GenericBonusPointCosts;
+import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.dummy.character.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.dummy.character.trait.DummyFavorableGenericTrait;
@@ -20,7 +21,7 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
   protected void setUp() throws Exception {
     super.setUp();
     this.registry = new DummyXmlTemplateRegistry<GenericBonusPointCosts>();
-    this.parser = new BonusPointCostTemplateParser(registry);
+    this.parser = new BonusPointCostTemplateParser(registry, MartialArtsLevel.Celestial);
     originalTemplate = new GenericBonusPointCosts();
     registry.register(ORIGINAL_TEMPLATE_ID, originalTemplate);
   }

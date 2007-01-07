@@ -14,6 +14,7 @@ import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 
 import org.dom4j.Element;
+import org.junit.Test;
 
 public class ExperienceTemplateParserTest extends BasicTestCase {
 
@@ -49,7 +50,9 @@ public class ExperienceTemplateParserTest extends BasicTestCase {
       + "</advantages>" //$NON-NLS-1$
 
       + "<magic>" //$NON-NLS-1$
-      + " <charms favored=\"8\" general=\"10\" />" //$NON-NLS-1$
+      + " <charms favored=\"8\" general=\"10\">" //$NON-NLS-1$
+      + "<highLevelMartialArts favored=\"13\" general=\"15\"/>" //$NON-NLS-1$
+      + "</charms>" //$NON-NLS-1$
       + "</magic>" //$NON-NLS-1$
       + "</dummyExperienceTemplate>"; //$NON-NLS-1$
   private DummyXmlTemplateRegistry<GenericExperiencePointCosts> templateRegistry;
@@ -58,7 +61,7 @@ public class ExperienceTemplateParserTest extends BasicTestCase {
   @Override
   protected void setUp() throws Exception {
     templateRegistry = new DummyXmlTemplateRegistry<GenericExperiencePointCosts>();
-    parser = new ExperienceTemplateParser(templateRegistry);
+    parser = new ExperienceTemplateParser(templateRegistry, MartialArtsLevel.Celestial);
   }
 
   private Element createElement() throws AnathemaException {
@@ -143,4 +146,60 @@ public class ExperienceTemplateParserTest extends BasicTestCase {
         }));
   }
 
+  @Test
+  public void testCelestialMartialArtsCost() throws Exception {
+    Element element = createElement();
+    GenericExperiencePointCosts costs = parser.parseTemplate(element);
+    assertEquals(10, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() { //$NON-NLS-1$
+          public boolean isOccultFavored() {
+            return true;
+          }
+
+          public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+            return MartialArtsLevel.Celestial;
+          }
+
+          public boolean isMagicFavored(IMagic magic) {
+            return false;
+          }
+        }));
+  }
+
+  @Test
+  public void testUnfavoredHighLevelMartialArtsCost() throws Exception {
+    Element element = createElement();
+    GenericExperiencePointCosts costs = parser.parseTemplate(element);
+    assertEquals(15, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() { //$NON-NLS-1$
+          public boolean isOccultFavored() {
+            return true;
+          }
+
+          public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+            return MartialArtsLevel.Sidereal;
+          }
+
+          public boolean isMagicFavored(IMagic magic) {
+            return false;
+          }
+        }));
+  }
+
+  @Test
+  public void testFavoredHighLevelMartialArtsCost() throws Exception {
+    Element element = createElement();
+    GenericExperiencePointCosts costs = parser.parseTemplate(element);
+    assertEquals(13, costs.getCharmCosts(new DummyCharm("Charm"), new ICostAnalyzer() { //$NON-NLS-1$
+          public boolean isOccultFavored() {
+            return true;
+          }
+
+          public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+            return MartialArtsLevel.Sidereal;
+          }
+
+          public boolean isMagicFavored(IMagic magic) {
+            return true;
+          }
+        }));
+  }
 }

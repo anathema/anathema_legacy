@@ -1,0 +1,21 @@
+<bonusPointCost uses="DefaultBonusPointCost.template">
+  <advantages>    
+    <essence>
+      <fixedCost cost="10" />
+    </essence>
+  </advantages>
+  <charms>
+    <generalCharms>
+      <fixedCost cost="7" />
+    </generalCharms>
+    <favoredCharms>
+      <fixedCost cost="5" />
+    </favoredCharms>
+    <generalHighLevelMartiaArtsCharms>
+      <fixedCost cost="10"/>
+    </generalHighLevelMartiaArtsCharms>
+    <favoredHighLevelMartialArtsCharms>
+      <fixedCost cost="7"/>
+    </favoredHighLevelMartialArtsCharms>
+  </charms>  
+</bonusPointCost>

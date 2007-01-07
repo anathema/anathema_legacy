@@ -19,6 +19,11 @@ public final class DbPresentationProperties extends AbstractPresentationProperti
   }
 
   @Override
+  public String getSmallCasteIconResource(String casteId, String editionId) {
+    return getCharacterTypeId() + "Button" + casteId + editionId + "16.png"; //$NON-NLS-1$//$NON-NLS-2$
+  }
+
+  @Override
   public String getCasteLabelResource() {
     return getCharacterTypeId() + ".Caste.Label"; //$NON-NLS-1$;
   }

@@ -1,13 +1,16 @@
 package net.sf.anathema.character.generic.framework.xml.trait;
 
+import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
+import net.sf.anathema.character.generic.framework.xml.trait.pool.BackgroundTraitGroup;
 import net.sf.anathema.character.generic.framework.xml.trait.pool.GenericTraitTemplatePool;
 import net.sf.anathema.character.generic.framework.xml.trait.pool.GenericTraitTemplatePoolParser;
 import net.sf.anathema.character.generic.framework.xml.trait.types.AbilityPoolParser;
 import net.sf.anathema.character.generic.framework.xml.trait.types.AttributePoolParser;
 import net.sf.anathema.character.generic.framework.xml.trait.types.VirtuePoolParser;
 import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.registry.IIdentificateRegistry;
 
 import org.dom4j.Element;
 
@@ -17,12 +20,15 @@ public class GenericTraitTemplateFactoryParser extends AbstractXmlTemplateParser
   private static final String TAG_ESSENCE = "essence"; //$NON-NLS-1$
   private static final String TAG_WILLPOWER = "willpower"; //$NON-NLS-1$
   private final IXmlTemplateRegistry<GenericTraitTemplatePool> poolTemplateRegistry;
+  private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
 
   public GenericTraitTemplateFactoryParser(
       IXmlTemplateRegistry<GenericTraitTemplateFactory> templateRegistry,
-      IXmlTemplateRegistry<GenericTraitTemplatePool> poolTemplateRegistry) {
+      IXmlTemplateRegistry<GenericTraitTemplatePool> poolTemplateRegistry,
+      IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
     super(templateRegistry);
     this.poolTemplateRegistry = poolTemplateRegistry;
+    this.backgroundRegistry = backgroundRegistry;
   }
 
   @Override
@@ -49,7 +55,7 @@ public class GenericTraitTemplateFactoryParser extends AbstractXmlTemplateParser
     }
     GenericTraitTemplatePoolParser traitTemplatePoolParser = new GenericTraitTemplatePoolParser(
         poolTemplateRegistry,
-        null);
+        new BackgroundTraitGroup(backgroundRegistry));
     GenericTraitTemplatePool backgroundPool = traitTemplatePoolParser.parseTemplate(backgroundsElement);
     templateFactory.setBackgroundPool(backgroundPool);
   }

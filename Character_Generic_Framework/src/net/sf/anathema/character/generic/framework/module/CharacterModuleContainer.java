@@ -23,8 +23,8 @@ public class CharacterModuleContainer {
       throws InitializationException {
     module.initModuleObject();
     module.registerCommonData(characterGenerics);
-    module.addCharacterTemplates(characterGenerics);
     module.addBackgroundTemplates(characterGenerics);
+    module.addCharacterTemplates(characterGenerics);
     module.addAdditionalTemplateData(characterGenerics);
     module.addReportTemplates(characterGenerics, resources);
     characterGenerics.getModuleObjectMap().addModule(module);

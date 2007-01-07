@@ -1,0 +1,37 @@
+<abilityGroups>
+  <group id="Air">
+    <trait type="Linguistics" />
+    <trait type="Lore" />
+    <trait type="Occult" />
+    <trait type="Stealth" />
+    <trait type="Thrown" />
+  </group>
+  <group id="Earth">
+    <trait type="Awareness" />
+    <trait type="Craft" />
+    <trait type="Endurance" />
+    <trait type="MartialArts" />
+    <trait type="Resistance" />
+  </group>
+  <group id="Water">
+    <trait type="Brawl" />
+    <trait type="Bureaucracy" />
+    <trait type="Investigation" />
+    <trait type="Larceny" />
+    <trait type="Sail" />
+  </group>
+  <group id="Fire">
+    <trait type="Athletics" />
+    <trait type="Dodge" />
+    <trait type="Melee" />
+    <trait type="Presence" />
+    <trait type="Socialize" />
+  </group>
+  <group id="Wood">
+    <trait type="Archery" />
+    <trait type="Medicine" />
+    <trait type="Performance" />
+    <trait type="Ride" />
+    <trait type="Survival" />
+  </group>
+</abilityGroups>
