@@ -15,7 +15,7 @@ import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
 public class ImmaculateDbTemplate extends AbstractDbTemplate {
-  public static final IIdentificate IMMACULATE_SUBTYPE = new Identificate("ImmaculateSubtype"); //$NON-NLS-1$
+  private static final IIdentificate IMMACULATE_SUBTYPE = new Identificate("ImmaculateSubtype"); //$NON-NLS-1$
   public static final ITemplateType IMMACULATE_TEMPLATE_TYPE = new TemplateType(CharacterType.DB, IMMACULATE_SUBTYPE);
 
   @Override
