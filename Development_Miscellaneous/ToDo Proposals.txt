@@ -23,8 +23,6 @@ liege, Appearence and Essence for Abyssals, etc.
 are shown, whith the "Don't check prerequisites", "fulfill all
 prerequisites", "Don't check prerequisites", and "Enforce
 prerequisites" that you mentioned.
-* Anima effects in Concept and Rules, and that user can change the
-description like in natures.
 * Links in the Help menu.
 
 
@@ -38,7 +36,6 @@ show up in the program, with that character.
 * Put the User and maybe Instalation Guides in the zip file, so when
 you download the program you have that guides along with the readme,
 versions, and faq files.
-*Remove Sorcery BG for Immaculates
 *Change min Traits for Immaculate MArtist to MA3 / Ess 3 (for spirit walk / sight)
 
 Maybe put that in the user guide, or

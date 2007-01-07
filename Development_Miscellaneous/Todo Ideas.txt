@@ -17,7 +17,6 @@ Code
 Usability/L&F/UI
 	-Speichern der Session
 	-Leerer / Grauer / Colorierter Kreis vor der Charmbaumauswahl zur Anzeige des Status
-	-Menu Icons
 	-Doppelklick für Charaktererschaffung
 
 Preferences
@@ -27,10 +26,6 @@ Preferences
 Daten / Tippkram
 	-Concept-Liste
 
-Persistenz
-	- Löschen eines Charakters aus dem Repository
-	- Klonen eines Charakters
-	
 ===
 Associations zwischen Items
 
