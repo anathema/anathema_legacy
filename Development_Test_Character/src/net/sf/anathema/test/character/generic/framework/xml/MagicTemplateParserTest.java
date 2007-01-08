@@ -24,7 +24,7 @@ import org.junit.Test;
 
 public class MagicTemplateParserTest extends BasicTestCase {
   String xml = "<magicTemplate>" //$NON-NLS-1$
-      + "<freePicksPredicate type=\"Default\"/>"//$NON-NLS-1$
+      + "<freePicksPredicate defaultResponse=\"true\"/>" //$NON-NLS-1$
       + "<charmTemplate charmType=\"None\">" //$NON-NLS-1$
       + "<martialArts level=\"Mortal\"/></charmTemplate>" //$NON-NLS-1$
       + "<spellTemplate maximumSorceryCircle=\"None\" maximumNecromancyCircle=\"None\"/>" //$NON-NLS-1$
@@ -43,6 +43,18 @@ public class MagicTemplateParserTest extends BasicTestCase {
     Element templateElement = DocumentUtilities.read(xml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
     assertTrue(template.canBuyFromFreePicks(new DummyCharm("TestCharm"))); //$NON-NLS-1$
+  }
+
+  public void testFalseFreePicksPredicate() throws Exception {
+    String customXml = "<magicTemplate>" //$NON-NLS-1$
+        + "<freePicksPredicate defaultResponse=\"false\"/>" //$NON-NLS-1$
+        + "<charmTemplate charmType=\"None\">" //$NON-NLS-1$
+        + "<martialArts level=\"Mortal\"/></charmTemplate>" //$NON-NLS-1$
+        + "<spellTemplate maximumSorceryCircle=\"None\" maximumNecromancyCircle=\"None\"/>" //$NON-NLS-1$
+        + "</magicTemplate>"; //$NON-NLS-1$
+    Element templateElement = DocumentUtilities.read(customXml).getRootElement();
+    GenericMagicTemplate template = parser.parseTemplate(templateElement);
+    assertFalse(template.canBuyFromFreePicks(new DummyCharm("TestCharm"))); //$NON-NLS-1$
   }
 
   public void testMortalCharmTemplate() throws Exception {

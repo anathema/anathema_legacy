@@ -7,7 +7,7 @@ import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegi
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.template.magic.CharmSet;
 import net.sf.anathema.character.generic.impl.template.magic.CharmTemplate;
-import net.sf.anathema.character.generic.impl.template.magic.DefaultFreePicksPredicate;
+import net.sf.anathema.character.generic.impl.template.magic.CustomizableFreePicksPredicate;
 import net.sf.anathema.character.generic.impl.template.magic.DefaultMartialArtsRules;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmSet;
 import net.sf.anathema.character.generic.impl.template.magic.NullCharmSet;
@@ -27,7 +27,6 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
 
   private static final String TAG_FREE_PICKS_PREDICATE = "freePicksPredicate"; //$NON-NLS-1$
   private static final String ATTRIB_TYPE = "type"; //$NON-NLS-1$
-  private static final Object VALUE_DEFAULT = "Default"; //$NON-NLS-1$
   private static final String TAG_CHARM_TEMPLATE = "charmTemplate"; //$NON-NLS-1$
   private static final String ATTRIB_MARTIAL_ARTS_LEVEL = "level"; //$NON-NLS-1$
   private static final String ATTRIB_HIGH_LEVEL_MARTIAL_ARTS = "highLevel"; //$NON-NLS-1$
@@ -41,6 +40,7 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
   private static final String TAG_ALIEN_CHARMS = "alienCharms"; //$NON-NLS-1$
   private static final String TAG_MARTIAL_ARTS = "martialArts"; //$NON-NLS-1$
   private static final String ATTRIB_RULES_CLASS = "rulesClass"; //$NON-NLS-1$
+  private static final String ATTRIB_DEFAULT_RESPONSE = "defaultResponse"; //$NON-NLS-1$
   private final IExaltedEdition edition;
 
   public GenericMagicTemplateParser(IXmlTemplateRegistry<GenericMagicTemplate> templateRegistry, IExaltedEdition edition) {
@@ -155,17 +155,12 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
     }
   }
 
-  private void setFreePicksPredicate(GenericMagicTemplate basicTemplate, Element element) throws PersistenceException {
+  private void setFreePicksPredicate(GenericMagicTemplate basicTemplate, Element element) {
     Element freePicksElement = element.element(TAG_FREE_PICKS_PREDICATE);
     if (freePicksElement == null) {
       return;
     }
-    String type = ElementUtilities.getRequiredAttrib(freePicksElement, ATTRIB_TYPE);
-    if (type.equals(VALUE_DEFAULT)) {
-      basicTemplate.setFreePicksPredicate(new DefaultFreePicksPredicate());
-    }
-    else {
-      throw new UnsupportedOperationException("VALUE NOT YET SUPPORTED"); //$NON-NLS-1$
-    }
+    boolean response = ElementUtilities.getBooleanAttribute(freePicksElement, ATTRIB_DEFAULT_RESPONSE, true);
+    basicTemplate.setFreePicksPredicate(new CustomizableFreePicksPredicate(response));
   }
 }

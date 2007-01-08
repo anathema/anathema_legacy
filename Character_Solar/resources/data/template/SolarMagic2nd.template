@@ -1,5 +1,5 @@
 <magicTemplate>
-	<freePicksPredicate type="Default"/>
+	<freePicksPredicate defaultResponse="true"/>
 	<charmTemplate charmType="Solar">
 		<martialArts level="Celestial" highLevel="false"/>
 		<alienCharms>

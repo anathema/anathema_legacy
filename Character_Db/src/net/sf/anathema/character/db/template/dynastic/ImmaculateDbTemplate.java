@@ -3,6 +3,7 @@ package net.sf.anathema.character.db.template.dynastic;
 import net.sf.anathema.character.db.template.AbstractDbTemplate;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
+import net.sf.anathema.character.generic.impl.template.magic.CustomizableFreePicksPredicate;
 import net.sf.anathema.character.generic.impl.template.magic.CustomizableMagicTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
@@ -29,7 +30,16 @@ public class ImmaculateDbTemplate extends AbstractDbTemplate {
 
   @Override
   protected IMagicTemplate createMagicTemplate(ICharmTemplate charmTemplate, ISpellMagicTemplate spellMagic) {
-    return new CustomizableMagicTemplate(new ImmaculateFreePicksPredicate(), charmTemplate, spellMagic);
+    CustomizableFreePicksPredicate predicate = new CustomizableFreePicksPredicate(false);
+    predicate.addIdException("Dragon-Blooded.Ox-BodyTechnique"); //$NON-NLS-1$
+    predicate.addIdException("Dragon-Blooded.SpiritSight"); //$NON-NLS-1$
+    predicate.addIdException("Dragon-Blooded.SpiritWalking"); //$NON-NLS-1$
+    predicate.addCharmGroupException("AirDragonStyle"); //$NON-NLS-1$
+    predicate.addCharmGroupException("EarthDragonStyle"); //$NON-NLS-1$
+    predicate.addCharmGroupException("FireDragonStyle"); //$NON-NLS-1$
+    predicate.addCharmGroupException("WaterDragonStyle"); //$NON-NLS-1$
+    predicate.addCharmGroupException("WoodDragonStyle"); //$NON-NLS-1$
+    return new CustomizableMagicTemplate(predicate, charmTemplate, spellMagic);
   }
 
   @Override

@@ -17,6 +17,7 @@ import net.sf.anathema.lib.exception.NotYetImplementedException;
 public class DummySpell implements ISpell {
 
   private CircleType circleType = null;
+  private String id;
 
   public DummySpell() {
     // nothing to do
@@ -31,7 +32,7 @@ public class DummySpell implements ISpell {
   }
 
   public String getId() {
-    throw new NotYetImplementedException();
+    return id;
   }
 
   public String getPage() {

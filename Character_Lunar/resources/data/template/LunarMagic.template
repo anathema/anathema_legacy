@@ -1,5 +1,5 @@
 <magicTemplate>
-	<freePicksPredicate type="Default"/>
+	<freePicksPredicate defaultResponse="true"/>
 	<favoringTraitType type="AttributeType"/>
 	<charmTemplate charmType="Lunar">
 		<martialArts level="Terrestrial" highLevel="true" /> 
