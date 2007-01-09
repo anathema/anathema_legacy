@@ -8,6 +8,11 @@
     <magicTemplate uses="template/DbMagic.template"/>
     <presentation uses="template/DbPresentation.template"/>
      <additionalRules>
+     	<forbiddenBackgrounds>
+     		<backgroundReference id="Contacts" />
+     		<backgroundReference id="Followers" />
+     		<backgroundReference id="Influence" />
+     	</forbiddenBackgrounds>
     	<additionalPools>
     		<multilearnablePool>
     			<backgroundReference id="Breeding"/>    			
