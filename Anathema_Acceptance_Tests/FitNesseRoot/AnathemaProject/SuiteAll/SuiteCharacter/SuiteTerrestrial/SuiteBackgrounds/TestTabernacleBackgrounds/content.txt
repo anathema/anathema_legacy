@@ -1,0 +1,17 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreateTabernacleDb
+
+!|Check Background|
+|Background Type|isAvailable?|
+|Allies|true|
+|Artifact|true|
+|Contacts|true|
+|Familiar|true|
+|Contacts|true|
+|Followers|true|
+|Influence|true|
+|Illumination|true|
+|Manse|true|
+|Mentor|true|
+|Resources|true|
+|Sorcery|true|
+|Breeding|false|
