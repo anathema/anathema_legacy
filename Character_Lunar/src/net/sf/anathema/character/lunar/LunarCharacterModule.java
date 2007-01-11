@@ -6,13 +6,11 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditiona
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
-import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
+import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
-import net.sf.anathema.character.generic.template.ITemplateType;
-import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.lunar.beastform.BeastformModelFactory;
 import net.sf.anathema.character.lunar.beastform.BeastformPersisterFactory;
@@ -47,10 +45,9 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
   public static final String BACKGROUND_ID_HEARTS_BLOOD = "HeartsBlood"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_HEARTS_BLOOD_HUMAN = "HeartsBloodHuman"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_RENOWN = "Renown"; //$NON-NLS-1$
-  private static final ITemplateType[] lunarTemplateType = new ITemplateType[] { new TemplateType(CharacterType.LUNAR) };
-  public static final IBackgroundTemplate RENOWN_BACKGROUND_TYPE = new TemplateTypeBackgroundTemplate(
+  public static final IBackgroundTemplate RENOWN_BACKGROUND_TYPE = new CharacterTypeBackgroundTemplate(
       BACKGROUND_ID_RENOWN,
-      lunarTemplateType);
+      CharacterType.LUNAR);
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
@@ -81,8 +78,8 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addBackgroundTemplates(ICharacterGenerics generics) {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_HEARTS_BLOOD, lunarTemplateType));
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_HEARTS_BLOOD_HUMAN, lunarTemplateType));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_HEARTS_BLOOD, CharacterType.LUNAR));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_HEARTS_BLOOD_HUMAN, CharacterType.LUNAR));
     backgroundRegistry.add(RENOWN_BACKGROUND_TYPE);
   }
 
