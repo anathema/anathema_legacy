@@ -6,6 +6,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.IAdditiona
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.IAdditionalModelFactory;
 import net.sf.anathema.character.generic.framework.additionaltemplate.persistence.IAdditionalPersisterFactory;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
+import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
@@ -65,8 +66,8 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addBackgroundTemplates(ICharacterGenerics generics) {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
     ITemplateType[] defaultTemplateType = new ITemplateType[] { DefaultSiderealTemplate.TEMPLATE_TYPE };
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_ACQUAINTANCES, defaultTemplateType));
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_CONNECTIONS, defaultTemplateType));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_ACQUAINTANCES, CharacterType.SIDEREAL));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_CONNECTIONS, CharacterType.SIDEREAL));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_CELESTIAL_MANSE, defaultTemplateType));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_FAVOR, defaultTemplateType));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_HEAVENLY_FAVOR, defaultTemplateType));
