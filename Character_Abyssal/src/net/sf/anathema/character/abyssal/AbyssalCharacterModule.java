@@ -22,7 +22,6 @@ import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
-import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
@@ -83,11 +82,10 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addBackgroundTemplates(ICharacterGenerics generics) {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
-    ITemplateType[] loyalAbyssalTemplateType = new ITemplateType[] { LoyalAbyssalTemplate.TEMPLATE_TYPE };
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_ABYSSAL_COMMAND, CharacterType.ABYSSAL));
     IBackgroundTemplate backgroundTemplate = new TemplateTypeBackgroundTemplate(
         BACKGROUND_ID_LIEGE,
-        loyalAbyssalTemplateType);
+        LoyalAbyssalTemplate.TEMPLATE_TYPE);
     backgroundRegistry.add(backgroundTemplate);
     additionalLoyalAbyssalRules.addLiegeRules(backgroundTemplate);
     IBackgroundTemplate necromancyBackground = new CharacterTypeBackgroundTemplate(
