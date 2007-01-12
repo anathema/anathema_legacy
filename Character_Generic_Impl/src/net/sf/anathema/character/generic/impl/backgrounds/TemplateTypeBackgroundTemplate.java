@@ -14,7 +14,7 @@ public class TemplateTypeBackgroundTemplate extends AbstractBackgroundTemplate {
   private final List<ITemplateType> types = new ArrayList<ITemplateType>();
   private final LowerableState experiencedState;
 
-  public TemplateTypeBackgroundTemplate(String id, ITemplateType[] types) {
+  public TemplateTypeBackgroundTemplate(String id, ITemplateType... types) {
     this(id, types, LowerableState.LowerableRegain);
   }
 
