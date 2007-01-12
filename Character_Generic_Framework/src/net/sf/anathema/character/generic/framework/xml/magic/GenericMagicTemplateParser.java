@@ -41,6 +41,9 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
   private static final String TAG_MARTIAL_ARTS = "martialArts"; //$NON-NLS-1$
   private static final String ATTRIB_RULES_CLASS = "rulesClass"; //$NON-NLS-1$
   private static final String ATTRIB_DEFAULT_RESPONSE = "defaultResponse"; //$NON-NLS-1$
+  private static final String TAG_ID_EXCEPTION = "idException"; //$NON-NLS-1$
+  private static final String ATTRIB_ID = "id"; //$NON-NLS-1$
+  private static final String TAG_GROUP_EXCEPTION = "groupException"; //$NON-NLS-1$
   private final IExaltedEdition edition;
 
   public GenericMagicTemplateParser(IXmlTemplateRegistry<GenericMagicTemplate> templateRegistry, IExaltedEdition edition) {
@@ -161,6 +164,13 @@ public class GenericMagicTemplateParser extends AbstractXmlTemplateParser<Generi
       return;
     }
     boolean response = ElementUtilities.getBooleanAttribute(freePicksElement, ATTRIB_DEFAULT_RESPONSE, true);
-    basicTemplate.setFreePicksPredicate(new CustomizableFreePicksPredicate(response));
+    CustomizableFreePicksPredicate predicate = new CustomizableFreePicksPredicate(response);
+    for (Element idException : ElementUtilities.elements(freePicksElement, TAG_ID_EXCEPTION)) {
+      predicate.addIdException(idException.attributeValue(ATTRIB_ID));
+    }
+    for (Element idException : ElementUtilities.elements(freePicksElement, TAG_GROUP_EXCEPTION)) {
+      predicate.addCharmGroupException(idException.attributeValue(ATTRIB_ID));
+    }
+    basicTemplate.setFreePicksPredicate(predicate);
   }
 }

@@ -33,4 +33,10 @@ public class DummyCharmUtilities {
       IGenericTrait prerequisite) {
     return new DummyCharm("Instant", charmType, restrictions, new IGenericTrait[] { prerequisite }); //$NON-NLS-1$
   }
+
+  public final static ICharm createCharm(String id, String groupId) {
+    DummyCharm dummyCharm = new DummyCharm(id);
+    dummyCharm.setGroupId(groupId);
+    return dummyCharm;
+  }
 }

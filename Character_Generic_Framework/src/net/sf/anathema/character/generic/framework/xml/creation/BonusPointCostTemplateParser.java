@@ -34,6 +34,8 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
   private static final String TAG_GENERAL_CHARMS = "generalCharms"; //$NON-NLS-1$
   private static final String TAG_FAVORED_CHARMS = "favoredCharms"; //$NON-NLS-1$
   private static final String TAG_MAXIMUM_FREE_RANK = "maximumFreeRank"; //$NON-NLS-1$
+  private static final String TAG_GENERAL_MARTIAL_ARTS_CHARMS = "generalHighLevelMartialArtsCharms"; //$NON-NLS-1$
+  private static final String TAG_FAVORED_MARTIAL_ARTS_CHARMS = "favoredHighLevelMartialArtsCharms"; //$NON-NLS-1$
 
   private final CostParser costParser = new CostParser();
   private final MartialArtsLevel standardMartialArtsLevel;
@@ -64,11 +66,11 @@ public class BonusPointCostTemplateParser extends AbstractXmlTemplateParser<Gene
     int favoredCharmCost = costParser.getFixedCostFromRequiredElement(charmElement, TAG_FAVORED_CHARMS);
     int generalHighLevelMartialArtsCharmCost = costParser.getFixedCostFromOptionalElement(
         charmElement,
-        TAG_FAVORED_CHARMS,
+        TAG_GENERAL_MARTIAL_ARTS_CHARMS,
         generalCharmCost);
     int favoredHighLevelMartialArtsCharmCost = costParser.getFixedCostFromOptionalElement(
         charmElement,
-        TAG_FAVORED_CHARMS,
+        TAG_FAVORED_MARTIAL_ARTS_CHARMS,
         favoredCharmCost);
     costs.setCharmCosts(
         generalCharmCost,

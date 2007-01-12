@@ -13,6 +13,7 @@ import net.sf.anathema.character.generic.template.magic.FavoringTraitType;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.dummy.character.DummyCasteType;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
+import net.sf.anathema.dummy.character.magic.DummyCharmUtilities;
 import net.sf.anathema.dummy.character.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.lib.testing.BasicTestCase;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -42,7 +43,7 @@ public class MagicTemplateParserTest extends BasicTestCase {
   public void testDefaultFreePicksPredicate() throws Exception {
     Element templateElement = DocumentUtilities.read(xml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    assertTrue(template.canBuyFromFreePicks(new DummyCharm("TestCharm"))); //$NON-NLS-1$
+    assertTrue(template.canBuyFromFreePicks(DummyCharmUtilities.createCharm("TestCharm", "Group"))); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   public void testFalseFreePicksPredicate() throws Exception {
@@ -54,7 +55,33 @@ public class MagicTemplateParserTest extends BasicTestCase {
         + "</magicTemplate>"; //$NON-NLS-1$
     Element templateElement = DocumentUtilities.read(customXml).getRootElement();
     GenericMagicTemplate template = parser.parseTemplate(templateElement);
-    assertFalse(template.canBuyFromFreePicks(new DummyCharm("TestCharm"))); //$NON-NLS-1$
+    assertFalse(template.canBuyFromFreePicks(DummyCharmUtilities.createCharm("TestCharm", "Group"))); //$NON-NLS-1$ //$NON-NLS-2$
+  }
+
+  public void testIdExceptionInFreePicksPredicate() throws Exception {
+    String customXml = "<magicTemplate>" //$NON-NLS-1$
+        + "<freePicksPredicate defaultResponse=\"false\"><idException id=\"ExpectedId\"/></freePicksPredicate>" //$NON-NLS-1$
+        + "<charmTemplate charmType=\"None\">" //$NON-NLS-1$
+        + "<martialArts level=\"Mortal\"/></charmTemplate>" //$NON-NLS-1$
+        + "<spellTemplate maximumSorceryCircle=\"None\" maximumNecromancyCircle=\"None\"/>" //$NON-NLS-1$
+        + "</magicTemplate>"; //$NON-NLS-1$
+    Element templateElement = DocumentUtilities.read(customXml).getRootElement();
+    GenericMagicTemplate template = parser.parseTemplate(templateElement);
+    assertFalse(template.canBuyFromFreePicks(DummyCharmUtilities.createCharm("BadId", "Group"))); //$NON-NLS-1$ //$NON-NLS-2$
+    assertTrue(template.canBuyFromFreePicks(DummyCharmUtilities.createCharm("ExpectedId", "Group"))); //$NON-NLS-1$ //$NON-NLS-2$
+  }
+
+  public void testGroupExceptionInFreePicksPredicate() throws Exception {
+    String customXml = "<magicTemplate>" //$NON-NLS-1$
+        + "<freePicksPredicate defaultResponse=\"false\"><groupException id=\"ExpectedGroup\"/></freePicksPredicate>" //$NON-NLS-1$
+        + "<charmTemplate charmType=\"None\">" //$NON-NLS-1$
+        + "<martialArts level=\"Mortal\"/></charmTemplate>" //$NON-NLS-1$
+        + "<spellTemplate maximumSorceryCircle=\"None\" maximumNecromancyCircle=\"None\"/>" //$NON-NLS-1$
+        + "</magicTemplate>"; //$NON-NLS-1$
+    Element templateElement = DocumentUtilities.read(customXml).getRootElement();
+    GenericMagicTemplate template = parser.parseTemplate(templateElement);
+    assertFalse(template.canBuyFromFreePicks(DummyCharmUtilities.createCharm("ExpectedId", "UnexpectedGroup"))); //$NON-NLS-1$ //$NON-NLS-2$
+    assertTrue(template.canBuyFromFreePicks(DummyCharmUtilities.createCharm("ExpectedId", "ExpectedGroup"))); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   public void testMortalCharmTemplate() throws Exception {

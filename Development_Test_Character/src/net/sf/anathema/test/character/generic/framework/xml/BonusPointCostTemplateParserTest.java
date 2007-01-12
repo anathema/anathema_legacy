@@ -2,13 +2,18 @@ package net.sf.anathema.test.character.generic.framework.xml;
 
 import net.sf.anathema.character.generic.framework.xml.creation.BonusPointCostTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.creation.GenericBonusPointCosts;
+import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
+import net.sf.anathema.character.generic.template.experience.ICostAnalyzer;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
+import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.dummy.character.template.DummyXmlTemplateRegistry;
 import net.sf.anathema.dummy.character.trait.DummyFavorableGenericTrait;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 
 import org.dom4j.Element;
+import org.junit.Test;
 
 public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCase {
 
@@ -76,5 +81,178 @@ public class BonusPointCostTemplateParserTest extends BasicTemplateParsingTestCa
     GenericBonusPointCosts costs = parser.parseTemplate(element);
     assertEquals(3, costs.getVirtueCosts().getRatingCosts(1));
     assertEquals(4, costs.getMaximumFreeVirtueRank());
+  }
+
+  @Test
+  public void testBasicCharmCostIsSetAndMartialArtsCostEquals() throws Exception {
+    String xml = "<root><charms><generalCharms><fixedCost cost=\"7\" /></generalCharms><favoredCharms><fixedCost cost=\"5\" /></favoredCharms></charms></root>"; //$NON-NLS-1$
+    Element element = DocumentUtilities.read(xml).getRootElement();
+    GenericBonusPointCosts costs = parser.parseTemplate(element);
+    DummyCharm testCharm = new DummyCharm("test"); //$NON-NLS-1$
+    assertEquals(7, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+        return null;
+      }
+
+      public boolean isMagicFavored(IMagic magic) {
+        return false;
+      }
+
+      public boolean isOccultFavored() {
+        return false;
+      }
+    }));
+    assertEquals(5, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+        return null;
+      }
+
+      public boolean isMagicFavored(IMagic magic) {
+        return true;
+      }
+
+      public boolean isOccultFavored() {
+        return false;
+      }
+    }));
+    assertEquals(7, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+        return MartialArtsLevel.Celestial;
+      }
+
+      public boolean isMagicFavored(IMagic magic) {
+        return false;
+      }
+
+      public boolean isOccultFavored() {
+        return false;
+      }
+    }));
+    assertEquals(5, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+        return MartialArtsLevel.Celestial;
+      }
+
+      public boolean isMagicFavored(IMagic magic) {
+        return true;
+      }
+
+      public boolean isOccultFavored() {
+        return false;
+      }
+    }));
+    assertEquals(7, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+        return MartialArtsLevel.Sidereal;
+      }
+
+      public boolean isMagicFavored(IMagic magic) {
+        return false;
+      }
+
+      public boolean isOccultFavored() {
+        return false;
+      }
+    }));
+    assertEquals(5, costs.getMagicCosts(testCharm, new ICostAnalyzer() {
+      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+        return MartialArtsLevel.Sidereal;
+      }
+
+      public boolean isMagicFavored(IMagic magic) {
+        return true;
+      }
+
+      public boolean isOccultFavored() {
+        return false;
+      }
+    }));
+  }
+
+  @Test
+  public void testBasicCharmCostIsSetAndMartialArtsCostOverrides() throws Exception {
+    String xml = "<root><charms><generalCharms><fixedCost cost=\"7\" /></generalCharms><favoredCharms><fixedCost cost=\"5\" /></favoredCharms><generalHighLevelMartialArtsCharms><fixedCost cost=\"10\"/></generalHighLevelMartialArtsCharms>" //$NON-NLS-1$
+        + "<favoredHighLevelMartialArtsCharms><fixedCost cost=\"7\"/></favoredHighLevelMartialArtsCharms></charms></root>"; //$NON-NLS-1$
+    Element element = DocumentUtilities.read(xml).getRootElement();
+    GenericBonusPointCosts costs = parser.parseTemplate(element);
+    DummyCharm dummyCharm = new DummyCharm("test"); //$NON-NLS-1$
+    assertEquals(7, costs.getMagicCosts(dummyCharm, new ICostAnalyzer() {
+      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+        return null;
+      }
+
+      public boolean isMagicFavored(IMagic magic) {
+        return false;
+      }
+
+      public boolean isOccultFavored() {
+        return false;
+      }
+    }));
+    assertEquals(5, costs.getMagicCosts(dummyCharm, new ICostAnalyzer() {
+      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+        return null;
+      }
+
+      public boolean isMagicFavored(IMagic magic) {
+        return true;
+      }
+
+      public boolean isOccultFavored() {
+        return false;
+      }
+    }));
+    assertEquals(7, costs.getMagicCosts(dummyCharm, new ICostAnalyzer() {
+      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+        return MartialArtsLevel.Celestial;
+      }
+
+      public boolean isMagicFavored(IMagic magic) {
+        return false;
+      }
+
+      public boolean isOccultFavored() {
+        return false;
+      }
+    }));
+    assertEquals(5, costs.getMagicCosts(dummyCharm, new ICostAnalyzer() {
+      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+        return MartialArtsLevel.Celestial;
+      }
+
+      public boolean isMagicFavored(IMagic magic) {
+        return true;
+      }
+
+      public boolean isOccultFavored() {
+        return false;
+      }
+    }));
+    assertEquals(10, costs.getMagicCosts(dummyCharm, new ICostAnalyzer() {
+      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+        return MartialArtsLevel.Sidereal;
+      }
+
+      public boolean isMagicFavored(IMagic magic) {
+        return false;
+      }
+
+      public boolean isOccultFavored() {
+        return false;
+      }
+    }));
+    assertEquals(7, costs.getMagicCosts(dummyCharm, new ICostAnalyzer() {
+      public MartialArtsLevel getMartialArtsLevel(ICharm charm) {
+        return MartialArtsLevel.Sidereal;
+      }
+
+      public boolean isMagicFavored(IMagic magic) {
+        return true;
+      }
+
+      public boolean isOccultFavored() {
+        return false;
+      }
+    }));
   }
 }
