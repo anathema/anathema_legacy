@@ -1,0 +1,26 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreateLookshyNative
+
+!|Check Background|
+|Background Type|isAvailable?|
+|Allies|true|
+|Arsenal|true|
+|Artifact|true|
+|Backing|true|
+|Breeding|true|
+|Command|true|
+|Connections|true|
+|Contacts|false|
+|Familiar|true|
+|Henchmen|false|
+|Followers|false|
+|Influence|false|
+|Illumination|false|
+|Manse|true|
+|Mentor|true|
+|Reputation|true|
+|Resources|true|
+|Retainers|true|
+|Sorcery|true|
+
+
+

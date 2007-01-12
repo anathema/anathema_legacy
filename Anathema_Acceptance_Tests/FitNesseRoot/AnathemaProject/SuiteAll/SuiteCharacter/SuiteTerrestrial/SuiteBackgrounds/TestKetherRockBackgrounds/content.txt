@@ -15,3 +15,7 @@
 |Resources|true|
 |Sorcery|true|
 |Breeding|false|
+|Command|false|
+|Connections|false|
+|Henchmen|false|
+|Reputation|false|

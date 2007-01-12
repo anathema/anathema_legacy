@@ -21,7 +21,7 @@ public class DefaultAdditionalRules implements IAdditionalRules {
   private final List<IAdditionalEssencePool> additonalEssencePools = new ArrayList<IAdditionalEssencePool>();
   private final IAdditionalTraitRules traitRules;
 
-  protected DefaultAdditionalRules(String... rejectedBackgroundIds) {
+  public DefaultAdditionalRules(String... rejectedBackgroundIds) {
     this(new DefaultAdditionalTraitRules(), rejectedBackgroundIds);
   }
 

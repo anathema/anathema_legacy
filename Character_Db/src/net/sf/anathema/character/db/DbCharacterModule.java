@@ -82,16 +82,6 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addBackgroundTemplates(ICharacterGenerics generics) {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
-    ITemplateType[] allDbTemplateType = new ITemplateType[] {
-        dynastTemplateType,
-        PatricianOutcasteDBTemplate.TEMPLATE_TYPE,
-        LowerClassOutcasteDbTemplate.TEMPLATE_TYPE,
-        LookshyDbTemplate.TEMPLATE_TYPE,
-        LookshyOutcasteDbTemplate.TEMPLATE_TYPE,
-        LookshyRealmDbTemplate.TEMPLATE_TYPE,
-        ImmaculateDbTemplate.IMMACULATE_TEMPLATE_TYPE,
-        PirateOutcasteDbTemplate.TEMPLATE_TYPE,
-        PirateRealmDbTemplate.TEMPLATE_TYPE };
     IBackgroundTemplate breedingTemplate = new CharacterTypeBackgroundTemplate(
         BACKGROUND_ID_BREEDING,
         CharacterType.DB,
@@ -102,14 +92,14 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     outcasteDbRules.addBreedingRules(breedingTemplate);
     nativeLookshyDbRules.addBreedingRules(breedingTemplate);
     realmLookshyDbRules.addBreedingRules(breedingTemplate);
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_COMMAND, allDbTemplateType));
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_CONNECTIONS, allDbTemplateType));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_COMMAND, CharacterType.DB));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_CONNECTIONS, CharacterType.DB));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_FAMILY, new ITemplateType[] {
         dynastTemplateType,
         LookshyDbTemplate.TEMPLATE_TYPE,
         LookshyRealmDbTemplate.TEMPLATE_TYPE }));
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_HENCHMEN, allDbTemplateType));
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_REPUTATION, allDbTemplateType));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_HENCHMEN, CharacterType.DB));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_REPUTATION, CharacterType.DB));
     addLookshyBackgrounds(backgroundRegistry);
     addCultBackgrounds(backgroundRegistry);
     addSorcery(backgroundRegistry);
@@ -155,7 +145,11 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     templateRegistry.register(new PatricianOutcasteDBTemplate(charmProvider, outcasteDbRules));
     templateRegistry.register(new LowerClassOutcasteDbTemplate(charmProvider, outcasteDbRules));
     templateRegistry.register(new ThresholdOutcasteDbTemplate(charmProvider, new DefaultAdditionalRules(
-        BACKGROUND_ID_BREEDING)));
+        BACKGROUND_ID_BREEDING,
+        BACKGROUND_ID_COMMAND,
+        BACKGROUND_ID_CONNECTIONS,
+        BACKGROUND_ID_HENCHMEN,
+        BACKGROUND_ID_REPUTATION)));
     templateRegistry.register(new LookshyDbTemplate(charmProvider, nativeLookshyDbRules));
     templateRegistry.register(new LookshyOutcasteDbTemplate(charmProvider, nativeLookshyDbRules));
     templateRegistry.register(new LookshyRealmDbTemplate(charmProvider, realmLookshyDbRules));
