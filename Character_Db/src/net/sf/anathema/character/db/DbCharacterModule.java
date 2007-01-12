@@ -11,7 +11,6 @@ import net.sf.anathema.character.db.reporting.FirstEditionDbPartEncoder;
 import net.sf.anathema.character.db.template.IDbSpecialCharms;
 import net.sf.anathema.character.db.template.cult.KetherRockDbTemplate;
 import net.sf.anathema.character.db.template.cult.SequesteredTabernacleDbTemplate;
-import net.sf.anathema.character.db.template.dynastic.ImmaculateDbTemplate;
 import net.sf.anathema.character.db.template.lookshy.LookshyDbTemplate;
 import net.sf.anathema.character.db.template.lookshy.LookshyOutcasteDbTemplate;
 import net.sf.anathema.character.db.template.lookshy.LookshyRealmDbTemplate;
@@ -76,6 +75,7 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
     CharmCache charmProvider = CharmCache.getInstance();
     registerParsedTemplate(characterGenerics, "template/DynasticDb.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/ImmaculateMonkDb.template"); //$NON-NLS-1$
     registerDbTemplate(characterGenerics.getTemplateRegistry(), charmProvider);
   }
 
@@ -141,7 +141,6 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   }
 
   private void registerDbTemplate(ITemplateRegistry templateRegistry, CharmCache charmProvider) {
-    templateRegistry.register(new ImmaculateDbTemplate(charmProvider, immaculateDbRules));
     templateRegistry.register(new PatricianOutcasteDBTemplate(charmProvider, outcasteDbRules));
     templateRegistry.register(new LowerClassOutcasteDbTemplate(charmProvider, outcasteDbRules));
     templateRegistry.register(new ThresholdOutcasteDbTemplate(charmProvider, new DefaultAdditionalRules(

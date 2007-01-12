@@ -11,9 +11,9 @@
     <favoredCharms>
       <fixedCost cost="5" />
     </favoredCharms>
-    <generalHighLevelMartiaArtsCharms>
+    <generalHighLevelMartialArtsCharms>
       <fixedCost cost="10"/>
-    </generalHighLevelMartiaArtsCharms>
+    </generalHighLevelMartialArtsCharms>
     <favoredHighLevelMartialArtsCharms>
       <fixedCost cost="7"/>
     </favoredHighLevelMartialArtsCharms>
