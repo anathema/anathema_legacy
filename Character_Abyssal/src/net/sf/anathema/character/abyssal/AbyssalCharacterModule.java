@@ -12,6 +12,7 @@ import net.sf.anathema.character.equipment.IEquipmentAdditionalModelTemplate;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
+import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
@@ -83,25 +84,22 @@ public class AbyssalCharacterModule extends NullObjectCharacterModuleAdapter {
   public void addBackgroundTemplates(ICharacterGenerics generics) {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
     ITemplateType[] loyalAbyssalTemplateType = new ITemplateType[] { LoyalAbyssalTemplate.TEMPLATE_TYPE };
-    ITemplateType[] allAbyssalTemplateType = new ITemplateType[] {
-        LoyalAbyssalTemplate.TEMPLATE_TYPE,
-        RenegadeAbyssalTemplate.TEMPLATE_TYPE };
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_ABYSSAL_COMMAND, allAbyssalTemplateType));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_ABYSSAL_COMMAND, CharacterType.ABYSSAL));
     IBackgroundTemplate backgroundTemplate = new TemplateTypeBackgroundTemplate(
         BACKGROUND_ID_LIEGE,
         loyalAbyssalTemplateType);
     backgroundRegistry.add(backgroundTemplate);
     additionalLoyalAbyssalRules.addLiegeRules(backgroundTemplate);
-    TemplateTypeBackgroundTemplate necromancyBackground = new TemplateTypeBackgroundTemplate(
+    IBackgroundTemplate necromancyBackground = new CharacterTypeBackgroundTemplate(
         BACKGROUND_ID_NECROMANCY,
-        allAbyssalTemplateType,
+        CharacterType.ABYSSAL,
         LowerableState.Immutable);
     backgroundRegistry.add(necromancyBackground);
     additionalLoyalAbyssalRules.addNecromancyRules(necromancyBackground);
     additionalRenegadeAbyssalRules.addNecromancyRules(necromancyBackground);
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_SPIES, allAbyssalTemplateType));
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_UNDERWORLD_MANSE, allAbyssalTemplateType));
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_WHISPERS, allAbyssalTemplateType));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_SPIES, CharacterType.ABYSSAL));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_UNDERWORLD_MANSE, CharacterType.ABYSSAL));
+    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_WHISPERS, CharacterType.ABYSSAL));
   }
 
   @Override
