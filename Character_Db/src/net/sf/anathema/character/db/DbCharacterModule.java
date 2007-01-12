@@ -23,7 +23,8 @@ import net.sf.anathema.character.db.template.pirates.PirateRealmDbTemplate;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
-import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
+import net.sf.anathema.character.generic.impl.additional.DefaultAdditionalRules;
+import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
@@ -91,9 +92,9 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
         ImmaculateDbTemplate.IMMACULATE_TEMPLATE_TYPE,
         PirateOutcasteDbTemplate.TEMPLATE_TYPE,
         PirateRealmDbTemplate.TEMPLATE_TYPE };
-    TemplateTypeBackgroundTemplate breedingTemplate = new TemplateTypeBackgroundTemplate(
+    IBackgroundTemplate breedingTemplate = new CharacterTypeBackgroundTemplate(
         BACKGROUND_ID_BREEDING,
-        allDbTemplateType,
+        CharacterType.DB,
         LowerableState.Immutable);
     backgroundRegistry.add(breedingTemplate);
     additionalDbRules.addBreedingRules(breedingTemplate);
@@ -153,7 +154,8 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     templateRegistry.register(new ImmaculateDbTemplate(charmProvider, immaculateDbRules));
     templateRegistry.register(new PatricianOutcasteDBTemplate(charmProvider, outcasteDbRules));
     templateRegistry.register(new LowerClassOutcasteDbTemplate(charmProvider, outcasteDbRules));
-    templateRegistry.register(new ThresholdOutcasteDbTemplate(charmProvider, new NullAdditionalRules()));
+    templateRegistry.register(new ThresholdOutcasteDbTemplate(charmProvider, new DefaultAdditionalRules(
+        BACKGROUND_ID_BREEDING)));
     templateRegistry.register(new LookshyDbTemplate(charmProvider, nativeLookshyDbRules));
     templateRegistry.register(new LookshyOutcasteDbTemplate(charmProvider, nativeLookshyDbRules));
     templateRegistry.register(new LookshyRealmDbTemplate(charmProvider, realmLookshyDbRules));
