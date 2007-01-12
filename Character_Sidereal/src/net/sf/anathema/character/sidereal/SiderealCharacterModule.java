@@ -67,7 +67,8 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
     IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry = generics.getBackgroundRegistry();
     ITemplateType[] defaultTemplateType = new ITemplateType[] { DefaultSiderealTemplate.TEMPLATE_TYPE };
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_ACQUAINTANCES, CharacterType.SIDEREAL));
-    backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_CONNECTIONS, CharacterType.SIDEREAL));
+    // TODO: Replace with CharacterTypeBGTemplate
+    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_CONNECTIONS, defaultTemplateType));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_CELESTIAL_MANSE, defaultTemplateType));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_FAVOR, defaultTemplateType));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_HEAVENLY_FAVOR, defaultTemplateType));
