@@ -23,7 +23,15 @@ public class DummySpell implements ISpell {
     // nothing to do
   }
 
+  public DummySpell(String id) {
+    this.id = id;
+  }
+
   public DummySpell(CircleType type) {
+    this.circleType = type;
+  }
+
+  public void setCircleType(CircleType type) {
     this.circleType = type;
   }
 
