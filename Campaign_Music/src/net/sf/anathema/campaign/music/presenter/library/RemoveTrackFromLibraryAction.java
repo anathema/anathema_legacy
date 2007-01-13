@@ -4,9 +4,9 @@ import java.awt.Component;
 
 import net.sf.anathema.campaign.music.model.libary.ILibrary;
 import net.sf.anathema.campaign.music.model.libary.ILibraryControl;
-import net.sf.anathema.campaign.music.presenter.MusicUI;
 import net.sf.anathema.campaign.music.presenter.util.AbstractTrackSelectionAction;
 import net.sf.anathema.campaign.music.view.library.ILibraryControlView;
+import net.sf.anathema.framework.presenter.resources.FileUi;
 import net.sf.anathema.lib.resources.IResources;
 
 public class RemoveTrackFromLibraryAction extends AbstractTrackSelectionAction {
@@ -18,7 +18,7 @@ public class RemoveTrackFromLibraryAction extends AbstractTrackSelectionAction {
       IResources resources,
       ILibraryControlView controlView,
       ILibraryControl libraryModel) {
-    super(controlView.getTrackListView(), new MusicUI(resources).getRemoveTrackIcon());
+    super(controlView.getTrackListView(), new FileUi(resources).getRemoveFileIcon());
     this.controlView = controlView;
     this.libraryModel = libraryModel;
     setToolTipText(resources.getString("Music.Actions.RemoveTrack.Tooltip")); //$NON-NLS-1$

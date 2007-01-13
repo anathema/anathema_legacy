@@ -10,6 +10,7 @@ import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.messaging.IAnathemaMessaging;
+import net.sf.anathema.framework.presenter.resources.FileUi;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.framework.repository.access.IRepositoryFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
@@ -37,7 +38,7 @@ public class RepositoryItemDuplicationPresenter implements IPresenter {
   }
 
   public void initPresentation() {
-    final SmartAction action = new SmartAction("Copy") {
+    final SmartAction action = new SmartAction(new FileUi(resources).getDuplicateFileIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         try {

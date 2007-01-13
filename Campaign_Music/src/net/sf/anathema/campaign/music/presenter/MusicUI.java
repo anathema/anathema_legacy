@@ -23,10 +23,6 @@ public class MusicUI extends AbstractUI {
     return getIcon("TaskBarMusic24.png");//$NON-NLS-1$
   }
 
-  public Icon getAddFileIcon() {
-    return getIcon("ButtonAddFile16.png"); //$NON-NLS-1$
-  }
-
   public Icon getAddFolderIcon() {
     return getIcon("ButtonAddFolder16.png"); //$NON-NLS-1$
   }
@@ -49,9 +45,5 @@ public class MusicUI extends AbstractUI {
 
   public Icon getStopButtonIcon() {
     return getIcon("ButtonStop16.png"); //$NON-NLS-1$
-  }
-
-  public Icon getRemoveTrackIcon() {
-    return getIcon("ButtonRemoveFile16.png"); //$NON-NLS-1$
   }
 }

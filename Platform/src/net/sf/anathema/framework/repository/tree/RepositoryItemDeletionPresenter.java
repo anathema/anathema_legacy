@@ -5,7 +5,7 @@ import java.awt.Component;
 import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.message.MessageDialogFactory;
-import net.sf.anathema.framework.presenter.resources.BasicUi;
+import net.sf.anathema.framework.presenter.resources.FileUi;
 import net.sf.anathema.framework.repository.RepositoryException;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.gui.IPresenter;
@@ -32,7 +32,7 @@ public class RepositoryItemDeletionPresenter implements IPresenter {
   }
 
   public void initPresentation() {
-    final SmartAction action = new SmartAction(new BasicUi(resources).getRemoveIcon()) {
+    final SmartAction action = new SmartAction(new FileUi(resources).getRemoveFileIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         String message = resources.getString("AnathemaCore.Tools.RepositoryView.DeleteMessage"); //$NON-NLS-1$
