@@ -11,11 +11,17 @@ On the other hand, they only get 5 picks for general charms.
 |getFavoredPicksGranted?|getGeneralPicksGranted?|
 |0|5|
 
-They are not allowed to purchase the Sorcery background - learning the higher mysteries is quite taxing.
+Though learning the higher mysteries is quite taxing, they are allowed Sorcery.
 
 !|Check Background|
 |backgroundType|isAvailable?|
 |Sorcery|true|
+
+Finally, their Essence starts at 3.
+
+!|CheckOtherTraitsFixture|
+|traitType|value?|
+|Essence|3|
 
 When chosing Charms, their picks are restricted to Ox-Body-Technique and the specified Styles.
 The introductory Charms are mandatory.

@@ -19,3 +19,15 @@
 |Connections|false|
 |Henchmen|false|
 |Reputation|false|
+
+All set as they should be. Fine. Now, let's make sure that Illumination is capped at 3, and that a randomly chosen background is not.
+
+!|Set Background|
+|traitType|value|
+|Illumination|4|
+|Singer's Mercy|5|
+
+!|Check Background|
+|Background Type|value?|
+|Illumination|3|
+|Singer's Mercy|5|
