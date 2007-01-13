@@ -38,7 +38,8 @@ public class RepositoryItemDuplicationPresenter implements IPresenter {
   }
 
   public void initPresentation() {
-    final SmartAction action = new SmartAction(new FileUi(resources).getDuplicateFileIcon()) {
+    final SmartAction action = new SmartAction(resources.getString("AnathemaCore.Tools.RepositoryView.DuplicateName"), //$NON-NLS-1$
+        new FileUi(resources).getDuplicateFileIcon()) {
       @Override
       protected void execute(Component parentComponent) {
         try {

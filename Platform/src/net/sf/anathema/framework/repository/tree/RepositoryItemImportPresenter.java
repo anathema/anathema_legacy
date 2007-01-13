@@ -41,7 +41,8 @@ public class RepositoryItemImportPresenter implements IPresenter {
   }
 
   public void initPresentation() {
-    final SmartAction action = new SmartAction(new FileUi(resources).getImportFileIcon()) {
+    final SmartAction action = new SmartAction(
+        resources.getString("AnathemaCore.Tools.RepositoryView.ImportName"), new FileUi(resources).getImportFileIcon()) { //$NON-NLS-1$
       @Override
       protected void execute(Component parentComponent) {
         try {
