@@ -1,12 +1,12 @@
-package net.sf.anathema.framework.presenter.action;
+package net.sf.anathema.framework.presenter.action.menu.help;
 
 import java.awt.Component;
 
 import javax.swing.Action;
 
 import net.disy.commons.swing.action.SmartAction;
+import net.disy.commons.swing.dialog.userdialog.IDialogPage;
 import net.disy.commons.swing.dialog.userdialog.UserDialog;
-import net.sf.anathema.framework.AboutDialogPage;
 import net.sf.anathema.lib.resources.IResources;
 
 public class AnathemaAboutAction extends SmartAction {
@@ -25,8 +25,8 @@ public class AnathemaAboutAction extends SmartAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    AboutDialogPage page = new AboutDialogPage(resources);
-    // todo NOW vom (08.04.2006) (sieroux): Hier war nur ein Okay-Button 
+    IDialogPage page = new AboutDialogPage(resources);
+    // todo NOW vom (08.04.2006) (sieroux): Hier war nur ein Okay-Button
     UserDialog dialog = new UserDialog(parentComponent, page);
     dialog.show();
   }

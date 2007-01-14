@@ -14,7 +14,7 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 public class RepositoryTreeView implements IRepositoryTreeView {
 
   private final JPanel panel = new JPanel(new GridDialogLayout(1, false));
-  private final JPanel buttonPanel = new JPanel();
+  private final JPanel buttonPanel = new JPanel(new GridDialogLayout(4, true));
 
   public JTree addTree() {
     final JTree tree = new JTree();
@@ -26,7 +26,7 @@ public class RepositoryTreeView implements IRepositoryTreeView {
   }
 
   public void addActionButton(Action action) {
-    buttonPanel.add(new JButton(action));
+    buttonPanel.add(new JButton(action), GridDialogLayoutData.FILL_HORIZONTAL);
   }
 
   public JComponent getComponent() {

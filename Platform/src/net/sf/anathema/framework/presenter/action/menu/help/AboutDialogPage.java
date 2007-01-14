@@ -1,4 +1,4 @@
-package net.sf.anathema.framework;
+package net.sf.anathema.framework.presenter.action.menu.help;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
