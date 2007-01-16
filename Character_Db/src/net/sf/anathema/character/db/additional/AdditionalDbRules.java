@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.impl.additional.AdditionalEssencePool;
 import net.sf.anathema.character.generic.impl.additional.BackgroundPool;
 import net.sf.anathema.character.generic.impl.additional.DefaultAdditionalRules;
 import net.sf.anathema.character.generic.impl.additional.DefaultTraitCostModifier;
+import net.sf.anathema.character.generic.impl.additional.GenericMagicLearnPool;
 import net.sf.anathema.character.generic.traits.ITraitType;
 
 public class AdditionalDbRules extends DefaultAdditionalRules {
@@ -21,7 +22,7 @@ public class AdditionalDbRules extends DefaultAdditionalRules {
   }
 
   public void addSorceryRules(IBackgroundTemplate sorceryTemplate) {
-    addMagicLearnPool(new DefaultSorceryLearnPool(sorceryTemplate));
+    addMagicLearnPool(new GenericMagicLearnPool(sorceryTemplate, true));
   }
 
   public void addBreedingRules(IBackgroundTemplate breedingTemplate) {
