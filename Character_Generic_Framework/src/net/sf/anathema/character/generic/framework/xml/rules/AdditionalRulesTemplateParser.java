@@ -48,6 +48,8 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   private static final String TAG_COST_MODIFIER = "costModifier"; //$NON-NLS-1$
   private static final String TAG_BONUS_MODIFICATION = "bonusModification"; //$NON-NLS-1$
   private static final String ATTRIB_MINIMUM_VALUE = "thresholdLevel"; //$NON-NLS-1$
+  private static final String ATTRIB_DEFAULT_RESPONSE = "defaultResponse"; //$NON-NLS-1$
+  private static final String TAG_SPELL_REFERENCE = "spellReference"; //$NON-NLS-1$
   private final ISpecialCharm[] charms;
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
 
@@ -114,9 +116,14 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
       return;
     }
     List<IAdditionalMagicLearnPool> pools = new ArrayList<IAdditionalMagicLearnPool>();
-    for (Element magicPool : ElementUtilities.elements(additionalMagicElement, TAG_MAGIC_POOL)) {
-      IBackgroundTemplate backgroundTemplate = getBackgroundTemplate(magicPool);
-      pools.add(new GenericMagicLearnPool(backgroundTemplate));
+    for (Element magicPoolElement : ElementUtilities.elements(additionalMagicElement, TAG_MAGIC_POOL)) {
+      IBackgroundTemplate backgroundTemplate = getBackgroundTemplate(magicPoolElement);
+      boolean defaultAnswer = ElementUtilities.getBooleanAttribute(magicPoolElement, ATTRIB_DEFAULT_RESPONSE, true);
+      GenericMagicLearnPool pool = new GenericMagicLearnPool(backgroundTemplate, defaultAnswer);
+      for (Element spellReference : ElementUtilities.elements(magicPoolElement, TAG_SPELL_REFERENCE)) {
+        pool.addIdException(spellReference.attributeValue(ATTRIB_ID));
+      }
+      pools.add(pool);
     }
     basicTemplate.setMagicPools(pools.toArray(new IAdditionalMagicLearnPool[pools.size()]));
   }

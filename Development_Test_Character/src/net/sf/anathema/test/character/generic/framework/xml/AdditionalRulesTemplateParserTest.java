@@ -138,6 +138,30 @@ public class AdditionalRulesTemplateParserTest extends BasicTestCase {
   }
 
   @Test
+  public void testDenyingAdditionalMagicPool() throws Exception {
+    IBackgroundTemplate type = new CustomizedBackgroundTemplate("Background"); //$NON-NLS-1$
+    BackgroundRegistry backgroundRegistry = new BackgroundRegistry();
+    backgroundRegistry.add(type);
+    AdditionalRulesTemplateParser ownParser = new AdditionalRulesTemplateParser(
+        registry,
+        new ISpecialCharm[0],
+        backgroundRegistry);
+    String xml = "<rules><additionalMagic><magicPool defaultResponse=\"false\"><backgroundReference id=\"Background\"/><spellReference id=\"Expected\"/></magicPool></additionalMagic> </rules>"; //$NON-NLS-1$
+    Element rootElement = DocumentUtilities.read(xml).getRootElement();
+    GenericAdditionalRules template = ownParser.parseTemplate(rootElement);
+    DummyGenericTraitCollection collection = new DummyGenericTraitCollection();
+    DummySpell dummySpell = new DummySpell("id"); //$NON-NLS-1$
+    dummySpell.setCircleType(CircleType.Terrestrial);
+    assertFalse(template.getAdditionalMagicLearnPools()[0].isAllowedFor(collection, dummySpell));
+    DummySpell expectedSpell = new DummySpell("Expected"); //$NON-NLS-1$
+    expectedSpell.setCircleType(CircleType.Terrestrial);
+    assertFalse(template.getAdditionalMagicLearnPools()[0].isAllowedFor(
+        collection,
+        new DummySpell(CircleType.Celestial)));
+    assertTrue(template.getAdditionalMagicLearnPools()[0].isAllowedFor(collection, expectedSpell));
+  }
+
+  @Test
   public void testAdditionalCostForBackground() throws Exception {
     IBackgroundTemplate type = new CustomizedBackgroundTemplate("Background"); //$NON-NLS-1$
     BackgroundRegistry backgroundRegistry = new BackgroundRegistry();

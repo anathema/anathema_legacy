@@ -1,5 +1,8 @@
 package net.sf.anathema.character.generic.impl.additional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
@@ -13,9 +16,12 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
 
   private final IBackgroundTemplate template;
+  private final boolean defaultResponse;
+  private final List<String> exceptionIds = new ArrayList<String>();
 
-  public GenericMagicLearnPool(IBackgroundTemplate template) {
+  public GenericMagicLearnPool(IBackgroundTemplate template, boolean defaultResponse) {
     this.template = template;
+    this.defaultResponse = defaultResponse;
   }
 
   public int getAdditionalMagicCount(IGenericTraitCollection traitCollection) {
@@ -31,7 +37,12 @@ public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
     magic.accept(new IMagicVisitor() {
       public void visitSpell(ISpell spell) {
         if (spell.getCircleType() == CircleType.Terrestrial) {
-          isAllowed[0] = true;
+          if (exceptionIds.contains(spell.getId())) {
+            isAllowed[0] = !defaultResponse;
+          }
+          else {
+            isAllowed[0] = defaultResponse;
+          }
         }
         else {
           isAllowed[0] = false;
@@ -43,5 +54,9 @@ public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
       }
     });
     return isAllowed[0];
+  }
+
+  public void addIdException(String attributeValue) {
+    exceptionIds.add(attributeValue);
   }
 }
