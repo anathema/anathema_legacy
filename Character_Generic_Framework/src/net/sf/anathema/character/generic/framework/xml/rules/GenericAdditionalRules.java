@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.additional.DefaultTraitCostModifier;
 import net.sf.anathema.character.generic.impl.additional.NullAdditionalRules;
 import net.sf.anathema.character.generic.traits.ITraitType;
+import net.sf.anathema.lib.collection.DefaultValueHashMap;
 import net.sf.anathema.lib.lang.clone.ICloneable;
 
 public class GenericAdditionalRules extends NullAdditionalRules implements ICloneable<GenericAdditionalRules> {

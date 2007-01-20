@@ -1,4 +1,4 @@
-package net.sf.anathema.character.generic.framework.xml.rules;
+package net.sf.anathema.lib.collection;
 
 import java.util.Collection;
 import java.util.HashMap;
