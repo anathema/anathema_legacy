@@ -2,11 +2,10 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry sourcepath="JDEMO_HOME/jdemo_src.zip" kind="var" path="JDEMO_HOME/jdemo_core.jar"/>
-	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-core-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-core.jar"/>
-	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar"/>
-	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-layout_src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar"/>
-	<classpathentry sourcepath="/Thirdparty/disy/disy-commons-swing-smarttable-src.zip" kind="lib" path="/Thirdparty/disy/disy-commons-swing-smarttable.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-core.jar" sourcepath="/Thirdparty/disy/disy-commons-core-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-swing.jar" sourcepath="/Thirdparty/disy/disy-commons-swing-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-swing-layout.jar" sourcepath="/Thirdparty/disy/disy-commons-swing-layout_src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/disy/disy-commons-swing-smarttable.jar" sourcepath="/Thirdparty/disy/disy-commons-swing-smarttable-src.zip"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/disy-commons-fontchooser.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/disy-commons-swing-filechooser.jar"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/disy-commons-swing-mousecursor.jar"/>
@@ -23,5 +22,6 @@
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/gisterm-shapeexport.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Platform"/>
 	<classpathentry kind="lib" path="/Thirdparty/GISterm/gisterm-visualizer.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/Testing/jdemo_core.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
