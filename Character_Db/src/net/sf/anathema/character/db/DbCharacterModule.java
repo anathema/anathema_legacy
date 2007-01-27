@@ -3,14 +3,12 @@ package net.sf.anathema.character.db;
 import net.sf.anathema.character.db.additional.AdditionalCultDbRules;
 import net.sf.anathema.character.db.additional.AdditionalDbRules;
 import net.sf.anathema.character.db.additional.AdditionalOutcasteDbRules;
-import net.sf.anathema.character.db.additional.AdditionalSequesteredTabernacleDbRules;
 import net.sf.anathema.character.db.additional.BasicAdditionalLookshyDbRules;
 import net.sf.anathema.character.db.additional.NativeLookshyDbRules;
 import net.sf.anathema.character.db.aspect.DBAspect;
 import net.sf.anathema.character.db.reporting.FirstEditionDbPartEncoder;
 import net.sf.anathema.character.db.template.IDbSpecialCharms;
 import net.sf.anathema.character.db.template.cult.KetherRockDbTemplate;
-import net.sf.anathema.character.db.template.cult.SequesteredTabernacleDbTemplate;
 import net.sf.anathema.character.db.template.lookshy.LookshyDbTemplate;
 import net.sf.anathema.character.db.template.lookshy.LookshyOutcasteDbTemplate;
 import net.sf.anathema.character.db.template.lookshy.LookshyRealmDbTemplate;
@@ -41,6 +39,7 @@ import net.sf.anathema.character.reporting.sheet.PdfEncodingRegistry;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.lib.util.Identificate;
 
 public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
 
@@ -56,13 +55,14 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   public static final String BACKGROUND_ID_RETAINERS = "Retainers"; //$NON-NLS-1$
   public static final String BACKGROUND_ID_SORCERY = "Sorcery"; //$NON-NLS-1$
   private static final TemplateType dynastTemplateType = new TemplateType(CharacterType.DB);
+  private static final TemplateType tabernacleTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+      "SequesteredTabernacleSubtype")); //$NON-NLS-1$
   private final AdditionalDbRules additionalDbRules = new AdditionalDbRules();
   private final AdditionalDbRules immaculateDbRules = new AdditionalDbRules();
   private final NativeLookshyDbRules nativeLookshyDbRules = new NativeLookshyDbRules();
   private final BasicAdditionalLookshyDbRules realmLookshyDbRules = new BasicAdditionalLookshyDbRules();
   private final AdditionalOutcasteDbRules outcasteDbRules = new AdditionalOutcasteDbRules();
   private final AdditionalCultDbRules cultRules = new AdditionalCultDbRules();
-  private final AdditionalSequesteredTabernacleDbRules sequesteredTabernacleRules = new AdditionalSequesteredTabernacleDbRules();
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
@@ -76,6 +76,7 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     CharmCache charmProvider = CharmCache.getInstance();
     registerParsedTemplate(characterGenerics, "template/DynasticDb.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/ImmaculateMonkDb.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/SequesteredTabernacleDb.template"); //$NON-NLS-1$
     registerDbTemplate(characterGenerics.getTemplateRegistry(), charmProvider);
   }
 
@@ -106,9 +107,7 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   }
 
   private void addCultBackgrounds(IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
-    ITemplateType[] cultTemplates = new ITemplateType[] {
-        KetherRockDbTemplate.TEMPLATE_TYPE,
-        SequesteredTabernacleDbTemplate.TEMPLATE_TYPE };
+    ITemplateType[] cultTemplates = new ITemplateType[] { KetherRockDbTemplate.TEMPLATE_TYPE, tabernacleTemplateType };
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_ILLUMINATION, cultTemplates));
   }
 
@@ -121,14 +120,13 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
             LookshyOutcasteDbTemplate.TEMPLATE_TYPE,
             LookshyRealmDbTemplate.TEMPLATE_TYPE,
             KetherRockDbTemplate.TEMPLATE_TYPE,
-            SequesteredTabernacleDbTemplate.TEMPLATE_TYPE },
+            tabernacleTemplateType },
         LowerableState.Immutable);
     backgroundRegistry.add(sorceryBackground);
     nativeLookshyDbRules.addSorceryRules(sorceryBackground);
     realmLookshyDbRules.addSorceryRules(sorceryBackground);
     additionalDbRules.addSorceryRules(sorceryBackground);
     cultRules.addSorceryRules(sorceryBackground);
-    sequesteredTabernacleRules.addSorceryRules(sorceryBackground);
   }
 
   private void addLookshyBackgrounds(IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry) {
@@ -155,7 +153,6 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     templateRegistry.register(new PirateOutcasteDbTemplate(charmProvider, outcasteDbRules));
     templateRegistry.register(new PirateRealmDbTemplate(charmProvider, additionalDbRules));
     templateRegistry.register(new KetherRockDbTemplate(charmProvider, cultRules));
-    templateRegistry.register(new SequesteredTabernacleDbTemplate(charmProvider, sequesteredTabernacleRules));
   }
 
   @Override

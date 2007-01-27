@@ -1,12 +1,16 @@
 package net.sf.anathema.character.db.template.cult;
 
+import net.sf.anathema.character.db.DbCharacterModule;
+import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.traits.AlternateMinimumsTraitTemplate;
+import net.sf.anathema.character.generic.impl.traits.ExaltTraitTemplateFactory;
 import net.sf.anathema.character.generic.impl.traits.SimpleTraitTemplate;
 import net.sf.anathema.character.generic.traits.ITraitTemplate;
+import net.sf.anathema.character.generic.traits.LowerableState;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 
-public class KetherRockDbTraitTemplateFactory extends AbstractCultDbTraitTemplateFactory {
+public class KetherRockDbTraitTemplateFactory extends ExaltTraitTemplateFactory {
 
   @Override
   public ITraitTemplate createAbilityTemplate(AbilityType type) {
@@ -37,5 +41,13 @@ public class KetherRockDbTraitTemplateFactory extends AbstractCultDbTraitTemplat
       return SimpleTraitTemplate.createEssenceLimitedTemplate(3);
     }
     return super.createAbilityTemplate(type);
+  }
+
+  @Override
+  public ITraitTemplate createBackgroundTemplate(IBackgroundTemplate template) {
+    if (template.getId().equals(DbCharacterModule.BACKGROUND_ID_ILLUMINATION)) {
+      return SimpleTraitTemplate.createStaticLimitedTemplate(0, 3, LowerableState.LowerableRegain);
+    }
+    return super.createBackgroundTemplate(template);
   }
 }

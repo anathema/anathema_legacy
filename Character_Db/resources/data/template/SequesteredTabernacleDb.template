@@ -1,0 +1,78 @@
+<exaltedCharacterTemplate characterType="Dragon-Blooded" subtemplate="SequesteredTabernacleSubtype">
+  <general>
+    <edition edition="FirstEdition"/>
+    <abilityGroups uses="template/DbAbilityGroup.template" />
+    <attributeGroups uses="trait/DefaultAttributeGroup.template"/>
+    <essence uses="template/DbEssence.template" />
+    <traitCollection uses="template/SequesteredTabernacleDbTraitCollection.template"/>
+    <magicTemplate uses="template/SequesteredTabernacleMagic.template"/>
+    <presentation uses="template/DbPresentation.template"/>
+     <additionalRules>
+      	<requiredMagic>
+        	<magic type="charm" id="Dragon-Blooded.Walker-Among-IrisesPerception" />
+        	<magic type="charm" id="Dragon-Blooded.Iris-BulbDiscourse" />
+      	</requiredMagic>
+     	<forbiddenBackgrounds>
+     		<backgroundReference id="Breeding" />
+     		<backgroundReference id="Command" />
+     		<backgroundReference id="Connections" />
+     		<backgroundReference id="Henchmen" />
+     		<backgroundReference id="Reputation" />
+     	</forbiddenBackgrounds>
+    	<additionalMagic>
+    		<magicPool defaultResponse="false">
+    			<backgroundReference id="Sorcery"/>
+   				<spellReference id="Terrestrial.DeathObsidianButterflies"/>
+   				<spellReference id="Terrestrial.EmeraldCountermagic"/>
+   				<spellReference id="Terrestrial.InfallibleMessenger"/>
+   				<spellReference id="Terrestrial.InvulnerableSkinBronze"/>
+  				<spellReference id="Terrestrial.StormwindRider"/>
+   				<spellReference id="Terrestrial.BurningEyesOffender"/>
+   				<spellReference id="Terrestrial.CallingWind'sKiss"/>
+   				<spellReference id="Terrestrial.CommandingBeasts"/>
+   				<spellReference id="Terrestrial.ConjuringAzureChariot"/>
+   				<spellReference id="Terrestrial.EmeraldCircleBanishment"/>
+   				<spellReference id="Terrestrial.FlightSeparation"/>
+   				<spellReference id="Terrestrial.FlightBrilliantRaptor"/>
+   				<spellReference id="Terrestrial.FlyingGuillotine"/>
+   				<spellReference id="Terrestrial.FoodfromAerialTable"/>
+   				<spellReference id="Terrestrial.InternalFlame"/>
+   				<spellReference id="Terrestrial.MistsEventide"/>
+   				<spellReference id="Terrestrial.ParalyzingContradiction"/>
+   				<spellReference id="Terrestrial.PlagueBronzeSnakes"/>
+   				<spellReference id="Terrestrial.RavenousFire"/>
+   				<spellReference id="Terrestrial.RitualElementalEmpowerment"/>
+   				<spellReference id="Terrestrial.RiverBlood"/>
+   				<spellReference id="Terrestrial.SacredTongue"/>
+   				<spellReference id="Terrestrial.SilentWordsDreamsNightmares"/>
+   				<spellReference id="Terrestrial.SpiritMight"/>
+   				<spellReference id="Terrestrial.SpiritSword"/>
+   				<spellReference id="Terrestrial.StingIceHornet"/>
+   				<spellReference id="Terrestrial.UnbreakableBonesStone"/>
+   				<spellReference id="Terrestrial.UnconquerableSelf"/>
+   				<spellReference id="Terrestrial.UnstoppableFountainsDepths"/>
+   				<spellReference id="Terrestrial.VirtuousGuardianFlame"/>
+   				<spellReference id="Terrestrial.OpenSpiritDoor"/>
+   				<spellReference id="Terrestrial.SummonElemental"/>
+    		</magicPool>
+    	</additionalMagic>
+    </additionalRules>
+    <healthTemplate>
+      <toughnessControllingTrait type="Endurance"/>
+    </healthTemplate>
+  </general>
+  <creation>
+    <bonusPointCosts uses="template/DbBonusPointCosts.template" />
+    <creationPoints>
+      <attributeDots primary="7" secondary="6" tertiary="4" />
+      <abilityDots general="20" favored="10" favoredPicks="3" />
+      <backgroundDots count="7" />
+      <virtueDots count="5" />
+      <bonusPoints count="15" />
+      <charmPicks favored="0" general="5" />
+    </creationPoints>
+  </creation>
+  <experience>
+    <experiencePointCost uses="template/DbExperiencePoints.template" />
+  </experience>
+</exaltedCharacterTemplate>
