@@ -32,6 +32,16 @@ public class GenericMagicLearnPoolTest {
   }
 
   @Test
+  public void exceptionChangesResponse() throws Exception {
+    this.pool = new GenericMagicLearnPool(background, false);
+    String string = "Test"; //$NON-NLS-1$
+    DummySpell dummySpell = new DummySpell(string);
+    dummySpell.setCircleType(CircleType.Terrestrial);
+    pool.addIdException(string);
+    Assert.assertTrue(pool.isAllowedFor(collection, dummySpell));
+  }
+
+  @Test
   public void setMaximumCircle() throws Exception {
     pool.setMaximumCircle(CircleType.Celestial);
     Assert.assertTrue(pool.isAllowedFor(collection, new DummySpell(CircleType.Terrestrial)));

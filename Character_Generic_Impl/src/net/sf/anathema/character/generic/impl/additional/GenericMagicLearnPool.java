@@ -29,6 +29,10 @@ public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
   }
 
   public int getAdditionalMagicCount(IGenericTraitCollection traitCollection) {
+    return getBackgroundValue(traitCollection);
+  }
+
+  private int getBackgroundValue(IGenericTraitCollection traitCollection) {
     IGenericTrait background = traitCollection.getTrait(template);
     if (background == null) {
       return 0;
@@ -45,8 +49,8 @@ public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
           isAllowed[0] = false;
           return;
         }
-        IGenericTrait trait = traitCollection.getTrait(template);
-        if (trait == null || typesByMinimumValue.get(type) > trait.getCurrentValue()) {
+        int value = getBackgroundValue(traitCollection);
+        if (typesByMinimumValue.get(type) > value) {
           isAllowed[0] = false;
           return;
         }
