@@ -27,4 +27,3 @@
 !|Check Template Creation Points|
 |getGeneralBonusPoints?|
 |15|
-
