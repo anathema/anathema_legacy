@@ -7,7 +7,12 @@
     <traitCollection uses="template/SequesteredTabernacleDbTraitCollection.template"/>
     <magicTemplate uses="template/SequesteredTabernacleMagic.template"/>
     <presentation uses="template/DbPresentation.template"/>
-    <additionalRules uses="template/SequesteredTabernacleAdditionalRules.template"/>   	
+    <additionalRules uses="template/CultDbAdditionalRules.template">
+        <requiredMagic>
+        	<magic type="charm" id="Dragon-Blooded.Walker-Among-IrisesPerception" />
+        	<magic type="charm" id="Dragon-Blooded.Iris-BulbDiscourse" />
+      	</requiredMagic>
+	</additionalRules>   	
     <healthTemplate>
       <toughnessControllingTrait type="Endurance"/>
     </healthTemplate>
