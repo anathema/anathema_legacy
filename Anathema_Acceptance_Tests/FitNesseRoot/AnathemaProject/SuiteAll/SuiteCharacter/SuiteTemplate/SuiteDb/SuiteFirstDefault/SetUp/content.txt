@@ -2,4 +2,4 @@
 
 !|Set Template|
 |characterType|subtemplate|edition|
-|Dragon-Blooded|SequesteredTabernacleSubtype|FirstEdition|
+|Dragon-Blooded||FirstEdition|
