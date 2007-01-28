@@ -1,4 +1,4 @@
-<exaltedCharacterTemplate characterType="Dragon-Blooded" subtemplate="SequesteredTabernacleSubtype">
+<exaltedCharacterTemplate characterType="Dragon-Blooded" subtemplate="KetherRockSubtype">
   <general>
     <edition edition="FirstEdition"/>
     <abilityGroups uses="template/DbAbilityGroup.template" />
