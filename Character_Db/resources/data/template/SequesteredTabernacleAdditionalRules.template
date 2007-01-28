@@ -1,0 +1,6 @@
+<additionalRules uses="template/CultDbAdditionalRules.template">
+        <requiredMagic>
+        	<magic type="charm" id="Dragon-Blooded.Walker-Among-IrisesPerception" />
+        	<magic type="charm" id="Dragon-Blooded.Iris-BulbDiscourse" />
+      	</requiredMagic>
+</additionalRules>   
