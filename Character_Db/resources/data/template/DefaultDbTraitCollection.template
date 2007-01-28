@@ -38,13 +38,13 @@
 			<limitation type="Essence"/>
 			<minimum value="1"/>
 		</specialTrait>
-		<specialTrait id="Lore" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+		<specialTrait id="Lore" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
 			<limitation type="Essence"/>
-			<minimum value="1"/>
+			<minimum value="2"/>
 		</specialTrait>
-		<specialTrait id="Socialize" startValue="1" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
+		<specialTrait id="Socialize" startValue="2" lowerableState="Default" zeroLevel="0" isRequiredFavored="false">
 			<limitation type="Essence"/>
-			<minimum value="1"/>
+			<minimum value="2"/>
 		</specialTrait>
 		<alternateMinimumTraits count="1" value="1">
  	  		<trait id="Brawl" startValue="1" lowerableState="Default" zeroLevel="0">
