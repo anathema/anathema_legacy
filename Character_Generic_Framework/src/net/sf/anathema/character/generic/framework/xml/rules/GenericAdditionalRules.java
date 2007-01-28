@@ -2,6 +2,7 @@ package net.sf.anathema.character.generic.framework.xml.rules;
 
 import java.util.Map;
 
+import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
@@ -76,7 +77,14 @@ public class GenericAdditionalRules extends NullAdditionalRules implements IClon
 
   @Override
   public GenericAdditionalRules clone() {
-    return new GenericAdditionalRules();
+    try {
+      GenericAdditionalRules clonedRules;
+      clonedRules = (GenericAdditionalRules) super.clone();
+      clonedRules.backgroundCostModifiers.putAll(backgroundCostModifiers);
+      return clonedRules;
+    }
+    catch (CloneNotSupportedException e) {
+      throw new UnreachableCodeReachedException();
+    }
   }
-
 }
