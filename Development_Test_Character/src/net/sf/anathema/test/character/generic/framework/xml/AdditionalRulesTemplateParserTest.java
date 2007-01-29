@@ -162,7 +162,7 @@ public class AdditionalRulesTemplateParserTest extends BasicTestCase {
   }
 
   @Test
-  public void testAdditionalCostForBackground() throws Exception {
+  public void testAdditionalBonusCostForBackground() throws Exception {
     IBackgroundTemplate type = new CustomizedBackgroundTemplate("Background"); //$NON-NLS-1$
     BackgroundRegistry backgroundRegistry = new BackgroundRegistry();
     backgroundRegistry.add(type);
@@ -175,6 +175,22 @@ public class AdditionalRulesTemplateParserTest extends BasicTestCase {
     GenericAdditionalRules template = ownParser.parseTemplate(rootElement);
     assertEquals(0, template.getCostModifier(type).getAdditionalDotsToSpend(5));
     assertEquals(8, template.getCostModifier(type).getAdditionalBonusPointsToSpend(5));
+  }
+  
+  @Test
+  public void testAdditionalDotsForBackground() throws Exception {
+    IBackgroundTemplate type = new CustomizedBackgroundTemplate("Background"); //$NON-NLS-1$
+    BackgroundRegistry backgroundRegistry = new BackgroundRegistry();
+    backgroundRegistry.add(type);
+    AdditionalRulesTemplateParser ownParser = new AdditionalRulesTemplateParser(
+        registry,
+        new ISpecialCharm[0],
+        backgroundRegistry);
+    String xml = "<rules><additionalCost><costModifier><backgroundReference id=\"Background\"/><dotCostModification thresholdLevel=\"1\" multiplier=\"1\"/></costModifier></additionalCost> </rules>"; //$NON-NLS-1$
+    Element rootElement = DocumentUtilities.read(xml).getRootElement();
+    GenericAdditionalRules template = ownParser.parseTemplate(rootElement);
+    assertEquals(2, template.getCostModifier(type).getAdditionalDotsToSpend(3));
+    assertEquals(0, template.getCostModifier(type).getAdditionalBonusPointsToSpend(5));
   }
 
   @Test

@@ -8,12 +8,12 @@ import net.disy.commons.core.util.ArrayUtilities;
 import net.disy.commons.core.util.ContractFailedException;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalEssencePool;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
+import net.sf.anathema.character.generic.additionalrules.ITraitCostModifier;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.xml.core.AbstractXmlTemplateParser;
 import net.sf.anathema.character.generic.framework.xml.registry.IXmlTemplateRegistry;
 import net.sf.anathema.character.generic.impl.additional.AdditionalEssencePool;
 import net.sf.anathema.character.generic.impl.additional.BackgroundPool;
-import net.sf.anathema.character.generic.impl.additional.DefaultTraitCostModifier;
 import net.sf.anathema.character.generic.impl.additional.GenericMagicLearnPool;
 import net.sf.anathema.character.generic.impl.additional.MultiLearnableCharmPool;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
@@ -50,6 +50,7 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
   private static final String ATTRIB_MINIMUM_VALUE = "thresholdLevel"; //$NON-NLS-1$
   private static final String ATTRIB_DEFAULT_RESPONSE = "defaultResponse"; //$NON-NLS-1$
   private static final String TAG_SPELL_REFERENCE = "spellReference"; //$NON-NLS-1$
+  private static final String TAG_DOT_COST_MODIFICATION = "dotCostModification"; //$NON-NLS-1$
   private final ISpecialCharm[] charms;
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
 
@@ -85,16 +86,31 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
     }
     for (Element costModifierElement : ElementUtilities.elements(additionalCostElement, TAG_COST_MODIFIER)) {
       IBackgroundTemplate backgroundTemplate = getBackgroundTemplate(costModifierElement);
-      Element modification = costModifierElement.element(TAG_BONUS_MODIFICATION);
-      final int minimumValue = ElementUtilities.getRequiredIntAttrib(modification, ATTRIB_MINIMUM_VALUE);
-      final int multiplier = ElementUtilities.getRequiredIntAttrib(modification, ATTRIB_MULTIPLIER);
-      basicTemplate.addBackgroundCostModifier(backgroundTemplate.getId(), new DefaultTraitCostModifier() {
-        @Override
+      final ITraitCostModification bonusModification = createPointCostModification(costModifierElement.element(TAG_BONUS_MODIFICATION));
+      final ITraitCostModification dotCostModification = createPointCostModification(costModifierElement.element(TAG_DOT_COST_MODIFICATION));
+      basicTemplate.addBackgroundCostModifier(backgroundTemplate.getId(), new ITraitCostModifier() {
         public int getAdditionalBonusPointsToSpend(int traitValue) {
-          return Math.max(0, (traitValue - minimumValue) * multiplier);
+          return bonusModification.getAdditionalPointsToSpend(traitValue);
+        }
+
+        public int getAdditionalDotsToSpend(int traitValue) {
+          return dotCostModification.getAdditionalPointsToSpend(traitValue);
         }
       });
     }
+  }
+
+  private ITraitCostModification createPointCostModification(Element bonusModification) throws PersistenceException {
+    if (bonusModification == null) {
+      return new DefaultTraitCostModification();
+    }
+    final int minimumValue = ElementUtilities.getRequiredIntAttrib(bonusModification, ATTRIB_MINIMUM_VALUE);
+    final int multiplier = ElementUtilities.getRequiredIntAttrib(bonusModification, ATTRIB_MULTIPLIER);
+    return new ITraitCostModification() {
+      public int getAdditionalPointsToSpend(int traitValue) {
+        return Math.max(0, (traitValue - minimumValue) * multiplier);
+      }
+    };
   }
 
   private void setForbiddenBackgrounds(Element element, GenericAdditionalRules basicTemplate) {
