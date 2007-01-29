@@ -1,4 +1,4 @@
-#Sat Jan 27 10:28:41 CET 2007
+#Mon Jan 29 20:47:25 CET 2007
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.comment.indent_parameter_description=true
 @org.eclipse.ui.editors=3.3.0.v20061101-0800
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_after_at_in_annotation_type_declaration=do not insert
@@ -17,7 +17,7 @@
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_annotation_type_declaration=insert
 /instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8"?><templates/>
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_after_opening_bracket_in_array_allocation_expression=do not insert
-/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.compliance=1.5
+/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.compliance=1.6
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.indent_switchstatements_compare_to_cases=true
 /instance/org.eclipse.jdt.ui/cleanup.use_this_for_non_static_method_access=false
 /instance/org.eclipse.ui.editors/lineNumberRuler=true
@@ -39,8 +39,9 @@
 /instance/org.eclipse.team.ui/org.eclipse.team.ui.sychronizing_default_perspective_to_show=never
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.comment.format_header=true
 /instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.PackageExplorer.LibraryFilter=true
-/instance/org.eclipse.core.resources/version=1
+/instance/org.eclipse.team.ui/org.eclipse.team.ui.default_layout=org.eclipse.team.ui.tree_layout
 /instance/org.eclipse.jdt.ui/smart_semicolon=true
+/instance/org.eclipse.core.resources/version=1
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_opening_angle_bracket_in_parameterized_type_reference=do not insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_between_empty_parens_in_enum_constant=do not insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.comment.insert_new_line_before_root_tags=insert
@@ -50,15 +51,15 @@
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_new_line_before_else_in_if_statement=insert
 /instance/org.eclipse.jdt.ui/cleanup.qualify_static_method_accesses_with_declaring_class=false
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_opening_bracket_in_array_reference=do not insert
-/instance/org.eclipse.team.ui/org.eclipse.team.ui.sychronizing_default_participant_sec_id=1149495680541
+/instance/org.eclipse.team.ui/org.eclipse.team.ui.sychronizing_default_participant_sec_id=1169982197978
 /instance/org.eclipse.jdt.ui/cleanup.format_javadoc=true
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_after_closing_paren_in_cast=insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_comma_in_explicitconstructorcall_arguments=do not insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.brace_position_for_annotation_type_declaration=end_of_line
 /instance/org.eclipse.jdt.ui/cleanup.make_variable_declarations_final=true
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_constructor_declaration=insert
-/instance/org.eclipse.ui.workbench/RUN_IN_BACKGROUND=true
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_closing_bracket_in_array_allocation_expression=do not insert
+/instance/org.eclipse.ui.workbench/RUN_IN_BACKGROUND=true
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_colon_in_for=insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_after_comma_in_array_initializer=insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_colon_in_conditional=insert
@@ -73,8 +74,8 @@
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_between_empty_braces_in_array_initializer=do not insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_catch=insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_new_line_in_empty_enum_declaration=insert
-/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.indent_switchstatements_compare_to_switch=true
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.blank_lines_before_package=0
+/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.indent_switchstatements_compare_to_switch=true
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.problem.syntheticAccessEmulation=ignore
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_comma_in_method_declaration_parameters=do not insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_after_at_in_annotation=do not insert
@@ -105,6 +106,7 @@
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_after_comma_in_annotation=insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.blank_lines_before_field=0
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_between_empty_parens_in_annotation_type_member_declaration=do not insert
+/instance/org.tigris.subversion.subclipse.ui/pref_menu_icon_set=2
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.keep_imple_if_on_one_line=false
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_closing_angle_bracket_in_type_parameters=do not insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.brace_position_for_block=end_of_line
@@ -116,7 +118,7 @@
 /instance/org.eclipse.jdt.ui/cleanup.format_single_line_comment=true
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.problem.enumIdentifier=error
 @org.eclipse.team.cvs.ui=3.3.0.I200610232323
-/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.source=1.5
+/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.source=1.6
 /instance/org.eclipse.update.core/org.eclipse.update.core.updateVersions=compatible
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.blank_lines_before_imports=1
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.alignment_for_selector_in_method_invocation=80
@@ -137,8 +139,8 @@
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_after_semicolon_in_for=insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_enum_constant=do not insert
 /instance/org.eclipse.jdt.ui/cleanup.add_serial_version_id=false
-@org.eclipse.jdt.junit=3.3.0.v20061101-0800
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.alignment_for_arguments_in_enum_constant=16
+@org.eclipse.jdt.junit=3.3.0.v20061101-0800
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_comma_in_constructor_declaration_parameters=do not insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.brace_position_for_type_declaration=end_of_line
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_for=do not insert
@@ -152,9 +154,10 @@
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_new_line_at_end_of_file_if_missing=do not insert
 @org.eclipse.jdt.core=3.3.0.v_721
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_parenthesized_expression=do not insert
-/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_opening_bracket_in_array_allocation_expression=do not insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_cast=do not insert
+/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_opening_bracket_in_array_allocation_expression=do not insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_annotation=do not insert
+@org.eclipse.pde.core=3.3.0.v20061102-1200
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_after_and_in_type_parameter=insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_after_question_in_wildcard=insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_comma_in_annotation=do not insert
@@ -191,6 +194,7 @@
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.problem.rawTypeReference=warning
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_opening_paren_in_synchronized=insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.blank_lines_after_package=1
+/instance/org.eclipse.team.ui/org.eclipse.team.ui.syncview_default_perspective=org.eclipse.team.ui.sync_view_perspective_none
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_opening_angle_bracket_in_type_arguments=do not insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.alignment_for_arguments_in_allocation_expression=48
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_after_closing_angle_bracket_in_type_arguments=insert
@@ -258,6 +262,7 @@
 /instance/org.eclipse.jdt.ui/cleanup.make_parameters_final=false
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.comment.insert_new_line_for_parameter=do not insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.alignment_for_superinterfaces_in_type_declaration=80
+/instance/org.eclipse.pde.core/platform_path=A\:\\Eclipse\\Eclipse 3.3 M3
 /instance/org.eclipse.jdt.ui/cleanup.qualify_static_member_accesses_with_declaring_class=true
 /instance/org.eclipse.jdt.ui/cleanup.make_private_fields_final=true
 /instance/org.eclipse.jdt.ui/cleanup.remove_unused_private_types=true
@@ -286,7 +291,7 @@
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_after_comma_in_multiple_local_declarations=insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_question_in_wildcard=insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_catch=do not insert
-/instance/org.eclipse.jdt.ui/content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8"?><history maxLHS\="100" maxRHS\="10"><lhs name\="java.awt.Paint"><rhs name\="java.awt.Color"/></lhs><lhs name\="java.awt.Transparency"><rhs name\="java.awt.Color"/></lhs><lhs name\="java.awt.Color"><rhs name\="java.awt.Color"/></lhs><lhs name\="java.util.Collection"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.lang.Iterable"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.util.List"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="net.sf.anathema.lib.util.IIdentificate"><rhs name\="net.sf.anathema.character.generic.magic.charms.type.CharmType"/><rhs name\="net.sf.anathema.lib.util.Identificate"/><rhs name\="net.sf.anathema.character.generic.impl.rules.ExaltedEdition"/><rhs name\="net.sf.anathema.character.generic.type.CharacterType"/></lhs><lhs name\="java.lang.Enum"><rhs name\="net.sf.anathema.character.generic.magic.charms.type.CharmType"/><rhs name\="net.sf.anathema.character.generic.type.CharacterType"/><rhs name\="net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType"/></lhs><lhs name\="net.sf.anathema.character.generic.magic.charms.type.CharmType"><rhs name\="net.sf.anathema.character.generic.magic.charms.type.CharmType"/></lhs><lhs name\="net.sf.anathema.character.generic.magic.charms.type.ITypeSpecialsModel"><rhs name\="net.sf.anathema.character.generic.impl.magic.charm.type.ReflexiveSpecialsModel"/></lhs><lhs name\="net.sf.anathema.character.generic.util.IStats"><rhs name\="net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.FirstExcellency"/><rhs name\="net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.SecondExcellency"/><rhs name\="net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.EssenceFlow"/></lhs><lhs name\="net.sf.anathema.character.reporting.sheet.common.magic.stats.IMagicStats"><rhs name\="net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.FirstExcellency"/><rhs name\="net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.SecondExcellency"/><rhs name\="net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.EssenceFlow"/></lhs><lhs name\="net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder"><rhs name\="net.sf.anathema.character.reporting.sheet.common.magic.generic.PdfGenericCharmEncoder"/><rhs name\="net.sf.anathema.character.reporting.sheet.common.PdfBackgroundEncoder"/><rhs name\="net.sf.anathema.character.reporting.sheet.common.anima.PdfAnimaEncoder"/></lhs><lhs name\="com.lowagie.text.Element"><rhs name\="com.lowagie.text.pdf.PdfPTable"/><rhs name\="net.sf.anathema.character.reporting.sheet.util.TableCell"/></lhs><lhs name\="com.lowagie.text.pdf.PdfPTable"><rhs name\="com.lowagie.text.pdf.PdfPTable"/></lhs><lhs name\="com.lowagie.text.Rectangle"><rhs name\="net.sf.anathema.character.reporting.sheet.util.TableCell"/></lhs><lhs name\="com.lowagie.text.MarkupAttributes"><rhs name\="net.sf.anathema.character.reporting.sheet.util.TableCell"/></lhs><lhs name\="com.lowagie.text.pdf.PdfPCell"><rhs name\="net.sf.anathema.character.reporting.sheet.util.TableCell"/></lhs><lhs name\="net.sf.anathema.character.generic.caste.ITypedDescriptionType"><rhs name\="net.sf.anathema.character.generic.impl.rules.ExaltedEdition"/></lhs><lhs name\="net.sf.anathema.character.generic.rules.IExaltedEdition"><rhs name\="net.sf.anathema.character.generic.impl.rules.ExaltedEdition"/></lhs><lhs name\="net.sf.anathema.character.generic.type.CharacterType"><rhs name\="net.sf.anathema.character.generic.type.CharacterType"/></lhs><lhs name\="net.sf.anathema.character.generic.impl.magic.persistence.builder.ComboRulesBuilder"><rhs name\="net.sf.anathema.character.generic.impl.magic.persistence.builder.ComboRulesBuilder"/><rhs name\="net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericComboRulesBuilder"/></lhs><lhs name\="net.sf.anathema.character.generic.impl.magic.persistence.builder.IComboRulesBuilder"><rhs name\="net.sf.anathema.character.generic.impl.magic.persistence.builder.ComboRulesBuilder"/><rhs name\="net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericComboRulesBuilder"/></lhs><lhs name\="net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericComboRulesBuilder"><rhs name\="net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericComboRulesBuilder"/></lhs><lhs name\="net.sf.anathema.lib.control.change.ChangeControl"><rhs name\="net.sf.anathema.lib.control.change.ChangeControl"/></lhs><lhs name\="net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType"><rhs name\="net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType"/></lhs><lhs name\="net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator"><rhs name\="net.sf.anathema.character.intimacies.model.IntimaciesBonusPointCalculator"/></lhs><lhs name\="net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel"><rhs name\="net.sf.anathema.character.intimacies.model.IntimaciesAdditionalModel"/></lhs></history>
+/instance/org.eclipse.jdt.ui/content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="java.awt.Paint"><rhs name\="java.awt.Color"/></lhs><lhs name\="java.awt.Transparency"><rhs name\="java.awt.Color"/></lhs><lhs name\="java.awt.Color"><rhs name\="java.awt.Color"/></lhs><lhs name\="java.util.Collection"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.lang.Iterable"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.util.List"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="net.sf.anathema.lib.util.IIdentificate"><rhs name\="net.sf.anathema.character.generic.magic.charms.type.CharmType"/><rhs name\="net.sf.anathema.lib.util.Identificate"/><rhs name\="net.sf.anathema.character.generic.impl.rules.ExaltedEdition"/><rhs name\="net.sf.anathema.character.generic.type.CharacterType"/><rhs name\="net.sf.anathema.character.generic.magic.spells.CircleType"/></lhs><lhs name\="java.lang.Enum"><rhs name\="net.sf.anathema.character.generic.magic.charms.type.CharmType"/><rhs name\="net.sf.anathema.character.generic.type.CharacterType"/><rhs name\="net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType"/><rhs name\="net.sf.anathema.character.generic.magic.spells.CircleType"/></lhs><lhs name\="net.sf.anathema.character.generic.magic.charms.type.CharmType"><rhs name\="net.sf.anathema.character.generic.magic.charms.type.CharmType"/></lhs><lhs name\="net.sf.anathema.character.generic.magic.charms.type.ITypeSpecialsModel"><rhs name\="net.sf.anathema.character.generic.impl.magic.charm.type.ReflexiveSpecialsModel"/></lhs><lhs name\="net.sf.anathema.character.generic.util.IStats"><rhs name\="net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.FirstExcellency"/><rhs name\="net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.SecondExcellency"/><rhs name\="net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.EssenceFlow"/></lhs><lhs name\="net.sf.anathema.character.reporting.sheet.common.magic.stats.IMagicStats"><rhs name\="net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.FirstExcellency"/><rhs name\="net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.SecondExcellency"/><rhs name\="net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.EssenceFlow"/></lhs><lhs name\="net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder"><rhs name\="net.sf.anathema.character.reporting.sheet.common.magic.generic.PdfGenericCharmEncoder"/><rhs name\="net.sf.anathema.character.reporting.sheet.common.PdfBackgroundEncoder"/><rhs name\="net.sf.anathema.character.reporting.sheet.common.anima.PdfAnimaEncoder"/></lhs><lhs name\="com.lowagie.text.Element"><rhs name\="com.lowagie.text.pdf.PdfPTable"/><rhs name\="net.sf.anathema.character.reporting.sheet.util.TableCell"/></lhs><lhs name\="com.lowagie.text.pdf.PdfPTable"><rhs name\="com.lowagie.text.pdf.PdfPTable"/></lhs><lhs name\="com.lowagie.text.Rectangle"><rhs name\="net.sf.anathema.character.reporting.sheet.util.TableCell"/></lhs><lhs name\="com.lowagie.text.MarkupAttributes"><rhs name\="net.sf.anathema.character.reporting.sheet.util.TableCell"/></lhs><lhs name\="com.lowagie.text.pdf.PdfPCell"><rhs name\="net.sf.anathema.character.reporting.sheet.util.TableCell"/></lhs><lhs name\="net.sf.anathema.character.generic.caste.ITypedDescriptionType"><rhs name\="net.sf.anathema.character.generic.impl.rules.ExaltedEdition"/></lhs><lhs name\="net.sf.anathema.character.generic.rules.IExaltedEdition"><rhs name\="net.sf.anathema.character.generic.impl.rules.ExaltedEdition"/></lhs><lhs name\="net.sf.anathema.character.generic.type.CharacterType"><rhs name\="net.sf.anathema.character.generic.type.CharacterType"/></lhs><lhs name\="net.sf.anathema.character.generic.impl.magic.persistence.builder.ComboRulesBuilder"><rhs name\="net.sf.anathema.character.generic.impl.magic.persistence.builder.ComboRulesBuilder"/><rhs name\="net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericComboRulesBuilder"/></lhs><lhs name\="net.sf.anathema.character.generic.impl.magic.persistence.builder.IComboRulesBuilder"><rhs name\="net.sf.anathema.character.generic.impl.magic.persistence.builder.ComboRulesBuilder"/><rhs name\="net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericComboRulesBuilder"/></lhs><lhs name\="net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericComboRulesBuilder"><rhs name\="net.sf.anathema.character.generic.impl.magic.persistence.builder.GenericComboRulesBuilder"/></lhs><lhs name\="net.sf.anathema.lib.control.change.ChangeControl"><rhs name\="net.sf.anathema.lib.control.change.ChangeControl"/></lhs><lhs name\="net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType"><rhs name\="net.sf.anathema.character.generic.additionaltemplate.AdditionalModelType"/></lhs><lhs name\="net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator"><rhs name\="net.sf.anathema.character.intimacies.model.IntimaciesBonusPointCalculator"/></lhs><lhs name\="net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel"><rhs name\="net.sf.anathema.character.intimacies.model.IntimaciesAdditionalModel"/></lhs><lhs name\="net.sf.anathema.character.generic.magic.spells.CircleType"><rhs name\="net.sf.anathema.character.generic.magic.spells.CircleType"/></lhs></history>
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.alignment_for_binary_expression=48
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.indent_statements_compare_to_block=true
 @org.eclipse.ui.workbench=3.3.0.I20061031-2000
@@ -309,6 +314,7 @@
 /instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.text.code_templates_migrated=true
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_comma_in_for_inits=do not insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_after_assignment_operator=insert
+/instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.packages.linktoeditor=true
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.alignment_for_expressions_in_array_initializer=48
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.indent_breaks_compare_to_cases=true
 /instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.PackageExplorer_patternFilterId_.*=true
@@ -326,6 +332,7 @@
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.indent_statements_compare_to_body=true
 /instance/org.eclipse.jdt.ui/useAnnotationsPrefPage=true
 /instance/org.eclipse.team.ui/org.eclipse.team.ui.first_time=false
+/instance/org.eclipse.search/org.eclipse.search.defaultPerspective=org.eclipse.search.defaultPerspective.none
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.comment.format_comments=true
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_if=do not insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_between_brackets_in_array_type_reference=do not insert
@@ -362,21 +369,22 @@ file_export_version=3.0
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_while=do not insert
 /instance/org.eclipse.ui.ide/tipsAndTricks=true
 /instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.cleanupprofiles.version=2
-/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_and_in_type_parameter=insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.alignment_for_superinterfaces_in_enum_declaration=16
+/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_and_in_type_parameter=insert
 /instance/org.tigris.subversion.subclipse.ui/pref_svninterface=svnkit
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.brace_position_for_enum_declaration=end_of_line
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.comment.format_html=true
 /instance/org.eclipse.jdt.ui/cleanup.remove_unnecessary_casts=true
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_comma_in_superinterfaces=do not insert
-/instance/org.eclipse.jdt.ui/cleanup.remove_private_constructors=true
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_after_comma_in_method_declaration_throws=insert
+/instance/org.eclipse.jdt.ui/cleanup.remove_private_constructors=true
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.problem.possibleAccidentalBooleanAssignment=ignore
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_after_comma_in_explicitconstructorcall_arguments=insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.number_of_empty_lines_to_preserve=1
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_between_empty_parens_in_constructor_declaration=do not insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_colon_in_assert=insert
 /instance/org.eclipse.jdt.ui/org.eclipse.jdt.ui.staticondemandthreshold=99
+@org.eclipse.search=3.3.0.v20061101-0800
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_between_empty_parens_in_method_invocation=do not insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_comma_in_method_invocation_arguments=do not insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_opening_brace_in_enum_declaration=insert
@@ -391,10 +399,10 @@ file_export_version=3.0
 @org.eclipse.update.core=3.2.100.v20102006-1507
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_before_closing_paren_in_method_declaration=do not insert
 /instance/org.eclipse.jdt.ui/cleanup.never_use_parentheses_in_expressions=true
-/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_new_line_in_empty_type_declaration=insert
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.alignment_for_arguments_in_qualified_allocation_expression=48
+/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_new_line_in_empty_type_declaration=insert
 /instance/org.eclipse.jdt.ui/cleanup_settings_version=2
-/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.5
+/instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.6
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.alignment_for_multiple_fields=16
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.formatter.insert_space_after_comma_in_for_inits=insert
 /instance/org.eclipse.jdt.ui/cleanup.add_generated_serial_version_id=false
