@@ -5,7 +5,6 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
 import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModel;
-import net.sf.anathema.character.generic.additionaltemplate.IAdditionalModelBonusPointCalculator;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.creation.IBonusPointCosts;
 import net.sf.anathema.character.generic.template.creation.ICreationPoints;
@@ -18,7 +17,6 @@ import net.sf.anathema.character.impl.model.creation.bonus.ability.FavoredAbilit
 import net.sf.anathema.character.impl.model.creation.bonus.ability.FavoredAbilityPickModel;
 import net.sf.anathema.character.impl.model.creation.bonus.ability.IAbilityCostCalculator;
 import net.sf.anathema.character.impl.model.creation.bonus.additional.AdditionalBonusPointPoolManagement;
-import net.sf.anathema.character.impl.model.creation.bonus.additional.MiscBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.attribute.AttributeBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.attribute.AttributeCostCalculator;
 import net.sf.anathema.character.impl.model.creation.bonus.backgrounds.BackgroundBonusModel;
@@ -39,7 +37,6 @@ import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 import net.sf.anathema.character.presenter.overview.IAdditionalSpendingModel;
 import net.sf.anathema.character.presenter.overview.IOverviewModel;
 import net.sf.anathema.character.presenter.overview.ISpendingModel;
-import net.sf.anathema.character.presenter.overview.IValueModel;
 
 public class BonusPointManagement implements IBonusPointManagement {
 
@@ -54,22 +51,22 @@ public class BonusPointManagement implements IBonusPointManagement {
   private final IBonusPointCosts cost;
   private final IComboConfiguration combos;
   private final IDefaultTrait essence;
-  private final List<IAdditionalModelBonusPointCalculator> additionalCalculators = new ArrayList<IAdditionalModelBonusPointCalculator>();
   private final ICreationPoints creationPoints;
   private final ICharacterStatistics statistics;
   private int essenceBonusPoints;
   private int willpowerBonusPoints;
   private int comboBonusPoints;
+  private final BonusPointCalculator bonusPointCalculator = new BonusPointCalculator();
 
   public BonusPointManagement(ICharacterStatistics statistics) {
     this.statistics = statistics;
     this.creationPoints = statistics.getCharacterTemplate().getCreationPoints();
     for (IAdditionalModel model : statistics.getExtendedConfiguration().getAdditionalModels()) {
-      additionalCalculators.add(model.getBonusPointCalculator());
+      bonusPointCalculator.addAdditionalBonusPointCalculator(model.getBonusPointCalculator());
     }
-    bonusAdditionalPools = new AdditionalBonusPointPoolManagement(statistics.getTraitConfiguration(), statistics.getCharacterTemplate()
-            .getAdditionalRules()
-            .getAdditionalBonusPointPools());
+    bonusAdditionalPools = new AdditionalBonusPointPoolManagement(
+        statistics.getTraitConfiguration(),
+        statistics.getCharacterTemplate().getAdditionalRules().getAdditionalBonusPointPools());
     this.cost = statistics.getCharacterTemplate().getBonusPointCosts();
     ICharacterTemplate characterTemplate = statistics.getCharacterTemplate();
     GenericCharacter characterAbstraction = GenericCharacterUtilities.createGenericCharacter(statistics);
@@ -119,9 +116,7 @@ public class BonusPointManagement implements IBonusPointManagement {
     comboBonusPoints = calculateComboPoints();
     willpowerBonusPoints = calculateWillpowerPoints();
     essenceBonusPoints = calculateEssencePoints();
-    for (IAdditionalModelBonusPointCalculator calculator : additionalCalculators) {
-      calculator.recalculate();
-    }
+    bonusPointCalculator.recalculate();
   }
 
   private int calculateEssencePoints() {
@@ -162,15 +157,7 @@ public class BonusPointManagement implements IBonusPointManagement {
         + getVirtueModel().getSpentBonusPoints()
         + willpowerBonusPoints
         + essenceBonusPoints
-        + getAdditionalModelModel().getValue();
-  }
-
-  private int getAdditionalGeneralBonusPoints() {
-    int additionalGranted = 0;
-    for (IAdditionalModelBonusPointCalculator calculator : additionalCalculators) {
-      additionalGranted += calculator.getBonusPointsGranted();
-    }
-    return additionalGranted;
+        + bonusPointCalculator.getAdditionalModelModel().getValue();
   }
 
   private ISpendingModel getVirtueModel() {
@@ -206,10 +193,6 @@ public class BonusPointManagement implements IBonusPointManagement {
     return new DefaultCharmModel(magicCalculator, magicAdditionalPools, creationPoints, additionalRules);
   }
 
-  private IValueModel<Integer> getAdditionalModelModel() {
-    return new MiscBonusModel(additionalCalculators);
-  }
-
   public IAdditionalSpendingModel getTotalModel() {
     return new AbstractAdditionalSpendingModel("Bonus", "Total") { //$NON-NLS-1$ //$NON-NLS-2$
       public int getAdditionalRestrictedAlotment() {
@@ -229,7 +212,7 @@ public class BonusPointManagement implements IBonusPointManagement {
       }
 
       public int getAlotment() {
-        return creationPoints.getBonusPointCount() + getAdditionalGeneralBonusPoints();
+        return creationPoints.getBonusPointCount() + bonusPointCalculator.getAdditionalGeneralBonusPoints();
       }
 
       public boolean isExtensionRequired() {
@@ -254,15 +237,9 @@ public class BonusPointManagement implements IBonusPointManagement {
     addCharmModels(models);
     models.add(getVirtueModel());
     models.add(getBackgroundModel());
-    addMiscModel(models);
+    bonusPointCalculator.addMiscModel(models);
     models.add(getTotalModel());
     return models.toArray(new IOverviewModel[models.size()]);
-  }
-
-  private void addMiscModel(List<IOverviewModel> models) {
-    if (statistics.getExtendedConfiguration().getAdditionalModels().length > 0) {
-      models.add(getAdditionalModelModel());
-    }
   }
 
   private void addCharmModels(List<IOverviewModel> models) {
