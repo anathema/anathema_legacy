@@ -16,6 +16,7 @@ import net.sf.anathema.character.impl.model.creation.bonus.ability.AbilityCostCa
 import net.sf.anathema.character.impl.model.creation.bonus.ability.DefaultAbilityBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.ability.FavoredAbilityBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.ability.FavoredAbilityPickModel;
+import net.sf.anathema.character.impl.model.creation.bonus.ability.IAbilityCostCalculator;
 import net.sf.anathema.character.impl.model.creation.bonus.additional.AdditionalBonusPointPoolManagement;
 import net.sf.anathema.character.impl.model.creation.bonus.additional.MiscBonusModel;
 import net.sf.anathema.character.impl.model.creation.bonus.attribute.AttributeBonusModel;
@@ -44,7 +45,7 @@ public class BonusPointManagement implements IBonusPointManagement {
 
   private final IAdditionalMagicLearnPointManagement magicAdditionalPools;
   private final AdditionalBonusPointPoolManagement bonusAdditionalPools;
-  private final AbilityCostCalculator abilityCalculator;
+  private final IAbilityCostCalculator abilityCalculator;
   private final AttributeCostCalculator attributeCalculator;
   private final VirtueCostCalculator virtueCalculator;
   private final BackgroundBonusPointCostCalculator backgroundCalculator;
