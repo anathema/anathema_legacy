@@ -5,27 +5,21 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.sf.anathema.character.generic.additionalrules.IAdditionalBonusPointPool;
-import net.sf.anathema.character.generic.additionalrules.IAdditionalRules;
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.generic.template.experience.IAbilityPointCosts;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.character.model.ICharacterStatistics;
 
 public class AdditionalBonusPointPoolManagement implements IAdditionalBonusPointManagment {
 
   private final AdditionalBonusPointPoolCalculator[] additionalPoolCalculators;
 
-  public AdditionalBonusPointPoolManagement(ICharacterStatistics statistics) {
-    IAdditionalRules additionalRules = statistics.getCharacterTemplate().getAdditionalRules();
-    IAdditionalBonusPointPool[] pools = additionalRules.getAdditionalBonusPointPools();
+  public AdditionalBonusPointPoolManagement(IGenericTraitCollection traitCollection, IAdditionalBonusPointPool[] pools) {
     additionalPoolCalculators = new AdditionalBonusPointPoolCalculator[pools.length];
     for (int index = 0; index < pools.length; index++) {
-      additionalPoolCalculators[index] = new AdditionalBonusPointPoolCalculator(
-          pools[index],
-          statistics.getTraitConfiguration(),
-          statistics.getTraitConfiguration());
+      additionalPoolCalculators[index] = new AdditionalBonusPointPoolCalculator(pools[index], traitCollection);
     }
   }
 

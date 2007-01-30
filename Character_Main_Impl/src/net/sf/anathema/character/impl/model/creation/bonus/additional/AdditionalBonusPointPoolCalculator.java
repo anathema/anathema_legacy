@@ -12,7 +12,6 @@ import net.sf.anathema.character.generic.template.experience.IAbilityPointCosts;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.impl.model.creation.bonus.ability.SpecialtyCalculator;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
-import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 public class AdditionalBonusPointPoolCalculator {
 
@@ -21,13 +20,10 @@ public class AdditionalBonusPointPoolCalculator {
   private final SpecialtyCalculator specialtyCalculator;
   private final IGenericTraitCollection collection;
 
-  public AdditionalBonusPointPoolCalculator(
-      IAdditionalBonusPointPool poolTemplate,
-      ICoreTraitConfiguration traitConfiguration,
-      IGenericTraitCollection collection) {
+  public AdditionalBonusPointPoolCalculator(IAdditionalBonusPointPool poolTemplate, IGenericTraitCollection collection) {
     this.poolTemplate = poolTemplate;
     this.collection = collection;
-    this.specialtyCalculator = new SpecialtyCalculator(traitConfiguration);
+    this.specialtyCalculator = new SpecialtyCalculator(collection);
   }
 
   public void spendPoints(int pointsToSpent) {

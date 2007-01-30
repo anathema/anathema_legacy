@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.template.creation.IGenericSpecialty;
 import net.sf.anathema.character.generic.template.experience.IAbilityPointCosts;
-import net.sf.anathema.character.model.traits.ICoreTraitConfiguration;
 
 public class SpecialtyCalculator {
 
-  private final ICoreTraitConfiguration traitConfiguration;
+  private final IGenericTraitCollection traitConfiguration;
 
-  public SpecialtyCalculator(ICoreTraitConfiguration traitConfiguration) {
+  public SpecialtyCalculator(IGenericTraitCollection traitConfiguration) {
     this.traitConfiguration = traitConfiguration;
   }
 
@@ -28,9 +28,7 @@ public class SpecialtyCalculator {
   private List<IGenericSpecialty> getFavoredSpecialties(List<IGenericSpecialty> specialties) {
     List<IGenericSpecialty> favoredSpecialties = new ArrayList<IGenericSpecialty>();
     for (IGenericSpecialty specialty : specialties) {
-      if (traitConfiguration.getFavorableTrait(specialty.getBasicTrait().getType())
-          .getFavorization()
-          .isCasteOrFavored()) {
+      if (traitConfiguration.getFavorableTrait(specialty.getBasicTrait().getType()).isCasteOrFavored()) {
         favoredSpecialties.add(specialty);
       }
     }
