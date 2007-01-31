@@ -12,11 +12,9 @@ import net.sf.anathema.character.db.template.lookshy.LookshyOutcasteDbTemplate;
 import net.sf.anathema.character.db.template.lookshy.LookshyRealmDbTemplate;
 import net.sf.anathema.character.db.template.outcaste.LowerClassOutcasteDbTemplate;
 import net.sf.anathema.character.db.template.outcaste.PatricianOutcasteDBTemplate;
-import net.sf.anathema.character.db.template.outcaste.ThresholdOutcasteDbTemplate;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
-import net.sf.anathema.character.generic.impl.additional.DefaultAdditionalRules;
 import net.sf.anathema.character.generic.impl.backgrounds.CharacterTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.TemplateTypeBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.caste.CasteCollection;
@@ -74,6 +72,7 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     registerParsedTemplate(characterGenerics, "template/ImmaculateMonkDb.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/SequesteredTabernacleDb.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/KetherRockDb.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/ThresholdOutcasteDb.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/PirateRealmDb.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/PirateOutcasteDb.template"); //$NON-NLS-1$
     registerDbTemplate(characterGenerics.getTemplateRegistry(), charmProvider);
@@ -137,12 +136,6 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
   private void registerDbTemplate(ITemplateRegistry templateRegistry, CharmCache charmProvider) {
     templateRegistry.register(new PatricianOutcasteDBTemplate(charmProvider, outcasteDbRules));
     templateRegistry.register(new LowerClassOutcasteDbTemplate(charmProvider, outcasteDbRules));
-    templateRegistry.register(new ThresholdOutcasteDbTemplate(charmProvider, new DefaultAdditionalRules(
-        BACKGROUND_ID_BREEDING,
-        BACKGROUND_ID_COMMAND,
-        BACKGROUND_ID_CONNECTIONS,
-        BACKGROUND_ID_HENCHMEN,
-        BACKGROUND_ID_REPUTATION)));
     templateRegistry.register(new LookshyDbTemplate(charmProvider, nativeLookshyDbRules));
     templateRegistry.register(new LookshyOutcasteDbTemplate(charmProvider, nativeLookshyDbRules));
     templateRegistry.register(new LookshyRealmDbTemplate(charmProvider, realmLookshyDbRules));

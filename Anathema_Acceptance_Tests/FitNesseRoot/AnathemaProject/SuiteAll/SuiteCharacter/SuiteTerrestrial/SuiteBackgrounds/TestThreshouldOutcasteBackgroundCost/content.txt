@@ -1,0 +1,62 @@
+!include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreateThresholdOutcaste
+
+!3 Outcastes pay extra for Background points. Which is ridiculous, but that's not for this test to determine.
+
+!3 First, let's spend all of our 7 background points.
+
+!|Set Background|
+|traitType|value|
+|Mentor|3|
+|Artifact|3|
+|Resources|1|
+
+!|CheckBackgroundPointsFixture|
+|getBackgroundDotsSpent?|
+|7|
+
+!3 Now I will purchase additional backgrounds and see my BP spendings rise 2 per background, 3 if it's over 3.
+
+!|Check Bonus Points|
+|regularSpent?|
+|0|
+
+!|Set Background|
+|traitType|value|
+|Familiar|1|
+
+
+!|Check Bonus Points|
+|regularSpent?|
+|2|
+
+!|Set Background|
+|traitType|value|
+|Familiar|2|
+
+!|Check Bonus Points|
+|regularSpent?|
+|4|
+
+!|Set Background|
+|traitType|value|
+|Familiar|3|
+
+!|Check Bonus Points|
+|regularSpent?|
+|6|
+
+!|Set Background|
+|traitType|value|
+|Familiar|4|
+
+!|Check Bonus Points|
+|regularSpent?|
+|9|
+
+!|Set Background|
+|traitType|value|
+|Familiar|5|
+
+!|Check Bonus Points|
+|regularSpent?|
+|12|
