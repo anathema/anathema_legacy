@@ -53,6 +53,10 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
       "SequesteredTabernacleSubtype")); //$NON-NLS-1$
   private static final TemplateType ketherRockTemplateType = new TemplateType(CharacterType.DB, new Identificate(
       "KetherRockSubtype")); //$NON-NLS-1$
+  private static final TemplateType pirateRealmTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+      "PirateRealmSubtype")); //$NON-NLS-1$
+  private static final TemplateType pirateOutcasteTemplateType = new TemplateType(CharacterType.DB, new Identificate(
+      "PirateOutcasteSubtype")); //$NON-NLS-1$
   private final AdditionalDbRules immaculateDbRules = new AdditionalDbRules();
   private final NativeLookshyDbRules nativeLookshyDbRules = new NativeLookshyDbRules();
   private final BasicAdditionalLookshyDbRules realmLookshyDbRules = new BasicAdditionalLookshyDbRules();
@@ -129,8 +133,16 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
         LookshyDbTemplate.TEMPLATE_TYPE,
         LookshyOutcasteDbTemplate.TEMPLATE_TYPE,
         LookshyRealmDbTemplate.TEMPLATE_TYPE };
+    ITemplateType[] retainerTemplateTypes = new ITemplateType[] {
+        LookshyDbTemplate.TEMPLATE_TYPE,
+        LookshyOutcasteDbTemplate.TEMPLATE_TYPE,
+        LookshyRealmDbTemplate.TEMPLATE_TYPE,
+        pirateOutcasteTemplateType,
+        pirateRealmTemplateType,
+        PatricianOutcasteDBTemplate.TEMPLATE_TYPE,
+        LowerClassOutcasteDbTemplate.TEMPLATE_TYPE };
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_ARSENAL, lookshyTemplateTypes));
-    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_RETAINERS, lookshyTemplateTypes));
+    backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_RETAINERS, retainerTemplateTypes));
   }
 
   private void registerDbTemplate(ITemplateRegistry templateRegistry, CharmCache charmProvider) {

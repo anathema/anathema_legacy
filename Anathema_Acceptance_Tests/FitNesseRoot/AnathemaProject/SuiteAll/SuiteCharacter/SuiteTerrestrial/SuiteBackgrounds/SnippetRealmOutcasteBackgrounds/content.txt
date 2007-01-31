@@ -1,0 +1,19 @@
+!|Check Background|
+|Background Type|isAvailable?|
+|Allies|true|
+|Artifact|true|
+|Backing|true|
+|Familiar|true|
+|Contacts|false|
+|Followers|false|
+|Influence|false|
+|Manse|true|
+|Mentor|true|
+|Resources|true|
+|Sorcery|false|
+|Breeding|true|
+|Command|true|
+|Connections|true|
+|Henchmen|true|
+|Reputation|true|
+|Retainers|true|
