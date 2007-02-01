@@ -1,7 +1,5 @@
 package net.sf.anathema.character.db;
 
-import net.sf.anathema.character.db.additional.AdditionalDbRules;
-import net.sf.anathema.character.db.additional.AdditionalOutcasteDbRules;
 import net.sf.anathema.character.db.additional.BasicAdditionalLookshyDbRules;
 import net.sf.anathema.character.db.additional.NativeLookshyDbRules;
 import net.sf.anathema.character.db.aspect.DBAspect;
@@ -10,8 +8,6 @@ import net.sf.anathema.character.db.template.IDbSpecialCharms;
 import net.sf.anathema.character.db.template.lookshy.LookshyDbTemplate;
 import net.sf.anathema.character.db.template.lookshy.LookshyOutcasteDbTemplate;
 import net.sf.anathema.character.db.template.lookshy.LookshyRealmDbTemplate;
-import net.sf.anathema.character.db.template.outcaste.LowerClassOutcasteDbTemplate;
-import net.sf.anathema.character.db.template.outcaste.PatricianOutcasteDBTemplate;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
 import net.sf.anathema.character.generic.framework.module.NullObjectCharacterModuleAdapter;
@@ -57,10 +53,14 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
       "PirateRealmSubtype")); //$NON-NLS-1$
   private static final TemplateType pirateOutcasteTemplateType = new TemplateType(CharacterType.DB, new Identificate(
       "PirateOutcasteSubtype")); //$NON-NLS-1$
-  private final AdditionalDbRules immaculateDbRules = new AdditionalDbRules();
+  private static final TemplateType patricianOutcasteTemplateType = new TemplateType(
+      CharacterType.DB,
+      new Identificate("PatricianOutcasteSubtype")); //$NON-NLS-1$
+  private static final TemplateType lowerCasteOutcasteTemplateType = new TemplateType(
+      CharacterType.DB,
+      new Identificate("LowerCasteOutcasteSubtype")); //$NON-NLS-1$
   private final NativeLookshyDbRules nativeLookshyDbRules = new NativeLookshyDbRules();
   private final BasicAdditionalLookshyDbRules realmLookshyDbRules = new BasicAdditionalLookshyDbRules();
-  private final AdditionalOutcasteDbRules outcasteDbRules = new AdditionalOutcasteDbRules();
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
@@ -75,7 +75,9 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
     registerParsedTemplate(characterGenerics, "template/DynasticDb.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/ImmaculateMonkDb.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/SequesteredTabernacleDb.template"); //$NON-NLS-1$
-    registerParsedTemplate(characterGenerics, "template/KetherRockDb.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/KetherRockDb.template"); //$NON-NLS-1$  
+    registerParsedTemplate(characterGenerics, "template/PatricianOutcasteDb.template"); //$NON-NLS-1$
+    registerParsedTemplate(characterGenerics, "template/LowerClassOutcasteDb.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/ThresholdOutcasteDb.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/PirateRealmDb.template"); //$NON-NLS-1$
     registerParsedTemplate(characterGenerics, "template/PirateOutcasteDb.template"); //$NON-NLS-1$
@@ -90,8 +92,6 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
         CharacterType.DB,
         LowerableState.Immutable);
     backgroundRegistry.add(breedingTemplate);
-    immaculateDbRules.addBreedingRules(breedingTemplate);
-    outcasteDbRules.addBreedingRules(breedingTemplate);
     nativeLookshyDbRules.addBreedingRules(breedingTemplate);
     realmLookshyDbRules.addBreedingRules(breedingTemplate);
     backgroundRegistry.add(new CharacterTypeBackgroundTemplate(BACKGROUND_ID_COMMAND, CharacterType.DB));
@@ -139,15 +139,13 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
         LookshyRealmDbTemplate.TEMPLATE_TYPE,
         pirateOutcasteTemplateType,
         pirateRealmTemplateType,
-        PatricianOutcasteDBTemplate.TEMPLATE_TYPE,
-        LowerClassOutcasteDbTemplate.TEMPLATE_TYPE };
+        patricianOutcasteTemplateType,
+        lowerCasteOutcasteTemplateType };
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_ARSENAL, lookshyTemplateTypes));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_RETAINERS, retainerTemplateTypes));
   }
 
   private void registerDbTemplate(ITemplateRegistry templateRegistry, CharmCache charmProvider) {
-    templateRegistry.register(new PatricianOutcasteDBTemplate(charmProvider, outcasteDbRules));
-    templateRegistry.register(new LowerClassOutcasteDbTemplate(charmProvider, outcasteDbRules));
     templateRegistry.register(new LookshyDbTemplate(charmProvider, nativeLookshyDbRules));
     templateRegistry.register(new LookshyOutcasteDbTemplate(charmProvider, nativeLookshyDbRules));
     templateRegistry.register(new LookshyRealmDbTemplate(charmProvider, realmLookshyDbRules));

@@ -1,0 +1,12 @@
+<traitTemplates uses="trait/DefaultTraitCollection.template">
+	<backgrounds>
+		<defaultTrait startValue="0" lowerableState="LowerableRegain">
+			<limitation type="Static" value="5"/>
+			<minimum value="0"/>
+		</defaultTrait>
+		<specialTrait id="Breeding" startValue="0" lowerableState="Immutable"  zeroLevel="0" isRequiredFavored="false">
+			<limitation type="Static" value="3"/>
+			<minimum value="0"/>
+		</specialTrait>
+	</backgrounds>
+</traitTemplates>
