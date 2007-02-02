@@ -43,6 +43,8 @@ be invalid in future releases. Use this version to convert them by loading them 
 * [1E] Fixed two problems with Abyssal Appearance/Essence relation
 * [1E] Weapon speeds can be negative (Found by uteck)
 * [1E] Outcaste Dragon-Bloodeds' Breeding is no longer lowerable when experienced.
+* [1E] DBs exiled to Lookshy now truly purchase BGs as if they were born there.
+* [1E] DBs actually born in Lookshy have minimum Stealth 1, not 2.
 * [1E] Martial Artists from the Sequestered Tabernacle are now limited to the styles named in the book.
 * Crafts now register as a favored ability (Reported by ArsGlacialis & Peter Blake)
 * Experienced specialty values are displayed correctly after loading
