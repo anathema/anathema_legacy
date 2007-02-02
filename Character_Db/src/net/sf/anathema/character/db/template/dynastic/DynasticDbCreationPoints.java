@@ -6,7 +6,7 @@ import net.sf.anathema.character.generic.template.points.IFavorableTraitCreation
 
 public class DynasticDbCreationPoints extends AbstractDbCreationPoints {
   public int getBackgroundPointCount() {
-    return 12;
+    return 13;
   }
 
   public IFavorableTraitCreationPoints getAbilityCreationPoints() {
