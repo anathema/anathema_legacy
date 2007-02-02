@@ -18,5 +18,7 @@ public interface ISimpleNode extends IStructureNode {
 
   public void addParent(ISimpleNode newNode);
 
-  public ISimpleNode[] getChildren(ISimpleNode[] childrenLayer);
+  public void reorderChildren(ISimpleNode[] orderedNodes);
+
+  ISimpleNode[] getChildren(ISimpleNode[] childrenLayer);
 }

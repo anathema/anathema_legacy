@@ -11,6 +11,18 @@ import net.sf.anathema.lib.util.Identificate;
 
 public class IdentifiedRegularNode extends Identificate implements IIdentifiedRegularNode {
 
+  private final class NodeIndexComparator implements Comparator<ISimpleNode> {
+    private final ISimpleNode[] orderedNodes;
+
+    private NodeIndexComparator(ISimpleNode[] orderedNodes) {
+      this.orderedNodes = orderedNodes;
+    }
+
+    public int compare(ISimpleNode o1, ISimpleNode o2) {
+      return ArrayUtilities.indexOf(orderedNodes, o1) - ArrayUtilities.indexOf(orderedNodes, o2);
+    }
+  }
+
   private final List<ISimpleNode> childList = new ArrayList<ISimpleNode>();
   private final List<ISimpleNode> parentList = new ArrayList<ISimpleNode>();
   private int layer = 0;
@@ -73,18 +85,18 @@ public class IdentifiedRegularNode extends Identificate implements IIdentifiedRe
     return parentList.size() > 1;
   }
 
+  public void reorderChildren(final ISimpleNode[] childrenLayer) {
+    Collections.sort(childList, new NodeIndexComparator(childrenLayer));
+  }
+
   public ISimpleNode[] getChildren(final ISimpleNode[] childrenLayer) {
     ISimpleNode[] unsortedChildren = getChildren();
-    Arrays.sort(unsortedChildren, new Comparator<ISimpleNode>() {
-      public int compare(ISimpleNode o1, ISimpleNode o2) {
-        return ArrayUtilities.indexOf(childrenLayer, o1) - ArrayUtilities.indexOf(childrenLayer, o2);
-      }
-    });
+    Arrays.sort(unsortedChildren, new NodeIndexComparator(childrenLayer));
     return unsortedChildren;
   }
 
   @Override
   public String toString() {
-    return getId() + "(Layer:" + getLayer() + ")"; //$NON-NLS-1$//$NON-NLS-2$
+    return getId() + " (Layer:" + getLayer() + ")"; //$NON-NLS-1$//$NON-NLS-2$
   }
 }

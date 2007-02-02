@@ -2,7 +2,6 @@ package net.sf.anathema.character.generic.framework.magic.treelayout.graph;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -99,12 +98,18 @@ public class ProperHierarchicalGraph implements IProperHierarchicalGraph {
   public void setNewLayerOrder(int layer, ISimpleNode[] orderedNodes) {
     List<ISimpleNode> layerNodes = nodesByLayer.get(layer);
     boolean equalSize = layerNodes.size() == orderedNodes.length;
-    boolean newNodes = !layerNodes.containsAll(Arrays.asList(orderedNodes));
+    List<ISimpleNode> orderedNodeList = Arrays.asList(orderedNodes);
+    boolean newNodes = !layerNodes.containsAll(orderedNodeList);
     if (!equalSize || newNodes) {
       throw new IllegalArgumentException("Layer content must not be changed " + Arrays.deepToString(orderedNodes)); //$NON-NLS-1$
     }
-    layerNodes.clear();
-    Collections.addAll(layerNodes, orderedNodes);
+    nodesByLayer.put(layer, orderedNodeList);
+    if (layer == 1) {
+      return;
+    }
+    for (ISimpleNode node : nodesByLayer.get(layer - 1)) {
+      node.reorderChildren(orderedNodes);
+    }
   }
 
   public int calculateNumberOfCrossings(int upperLayerIndex) {

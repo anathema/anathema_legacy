@@ -97,11 +97,34 @@ public class BottomUpGraphVisualizer extends AbstractCharmCascadeVisualizer {
     createSlimWaistSymmetrie(layers);
     centerSingleParents(layers);
     centerOnlyChildren(layers);
+    rectifySingleParentRoots(layers);
     straightenLines(layers);
     straightenLines(layers);
     separateOverlappingNodes(layers);
     removeWhiteSpace(layers);
     return new VisualizedGraph(createXml(layers), getTreeDimension(layers));
+  }
+
+  private void rectifySingleParentRoots(ILayer[] layers) {
+    ILayer rootLayer = layers[0];
+    for (IVisualizableNode node : rootLayer.getNodes()) {
+      IVisualizableNode[] children = node.getChildren();
+      if (children.length != 1) {
+        continue;
+      }
+      IVisualizableNode[] peers = children[0].getParents();
+      if (peers.length != 2) {
+        continue;
+      }
+      for (IVisualizableNode peer : peers) {
+        if (peer == node) {
+          continue;
+        }
+        if (peer.getChildren().length != 1) {
+          rootLayer.setNodePosition(node, children[0].getPosition());
+        }
+      }
+    }
   }
 
   private void createSlimWaistSymmetrie(ILayer[] layers) {
@@ -169,21 +192,19 @@ public class BottomUpGraphVisualizer extends AbstractCharmCascadeVisualizer {
   private void centerSingleParents(ILayer[] layers) {
     for (ILayer layer : layers) {
       for (IVisualizableNode node : layer.getNodes()) {
-        if (node.isRootNode()) {
-          centerSingleParent(layer, node);
+        if (node.isRootNode() && isSingleParent(node)) {
+          layer.positionNode(node);
         }
       }
     }
   }
 
-  private void centerSingleParent(ILayer layer, IVisualizableNode node) {
+  private boolean isSingleParent(IVisualizableNode node) {
+    boolean singleParent = true;
     for (IVisualizableNode child : node.getChildren()) {
-      if (child.getParents().length != 1) {
-        // Straighten Line To Parent And Child?
-        return;
-      }
+      singleParent = singleParent && child.getParents().length == 1;
     }
-    layer.positionNode(node);
+    return singleParent;
   }
 
   private void straightenLines(ILayer[] layers) {

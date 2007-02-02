@@ -50,13 +50,17 @@ public class DummyNode implements ISimpleNode {
   public boolean hasMultipleParents() {
     return false;
   }
-  
+
   public ISimpleNode[] getChildren(ISimpleNode[] childrenLayer) {
     return getChildren();
   }
-  
+
+  public void reorderChildren(ISimpleNode[] orderedNodes) {
+    // Nothing to do
+  }
+
   @Override
   public String toString() {
-    return "DummyNode on layer " + getLayer();
+    return "Dummynode (Layer:" + getLayer() + ")"; //$NON-NLS-1$ //$NON-NLS-2$
   }
 }
