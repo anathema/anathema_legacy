@@ -58,7 +58,7 @@ public class DbCharacterModule extends NullObjectCharacterModuleAdapter {
       new Identificate("PatricianOutcasteSubtype")); //$NON-NLS-1$
   private static final TemplateType lowerCasteOutcasteTemplateType = new TemplateType(
       CharacterType.DB,
-      new Identificate("LowerCasteOutcasteSubtype")); //$NON-NLS-1$
+      new Identificate("LowerClassOutcasteSubtype")); //$NON-NLS-1$
   private final NativeLookshyDbRules nativeLookshyDbRules = new NativeLookshyDbRules();
   private final BasicAdditionalLookshyDbRules realmLookshyDbRules = new BasicAdditionalLookshyDbRules();
 
