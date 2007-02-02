@@ -29,7 +29,7 @@ public class LookshyDbTraitTemplateFactory extends DynasticDbTraitTemplateFactor
       return SimpleTraitTemplate.createEssenceLimitedTemplate(0);
     }
     if (type == AbilityType.Stealth) {
-      return SimpleTraitTemplate.createEssenceLimitedTemplate(2);
+      return SimpleTraitTemplate.createEssenceLimitedTemplate(1);
     }
     if (type == AbilityType.Linguistics) {
       return SimpleTraitTemplate.createEssenceLimitedTemplate(3);
