@@ -1,22 +1,3 @@
 !include .AnathemaProject.SuiteAll.SuiteCharacter.SuiteTerrestrial.SnippetCreateLookshyNative
 
-Compulsive Charms for Lookshy DBs are Wind-Carried Words Technique (Linguistics) and Elemental Bolt Attack (Lore).
-
-!3 Check Compulsives are Learned
-
-!|Check Charm|
-|id|isLearnedOnCreation?|
-|Dragon-Blooded.Wind-CarriedWordsTechnique|true|
-|Dragon-Blooded.ElementalBoltAttack|true|
-
-!3 Ensure Compulsives are not Unlearnable
-
-!|Toggle Charm Learned|
-|id|
-|Dragon-Blooded.Wind-CarriedWordsTechnique|
-|Dragon-Blooded.ElementalBoltAttack|
-
-!|Check Charm|
-|id|isLearnedOnCreation?|
-|Dragon-Blooded.Wind-CarriedWordsTechnique|true|
-|Dragon-Blooded.ElementalBoltAttack|true|
+!include SnippetCheckLookshyCompulsives
