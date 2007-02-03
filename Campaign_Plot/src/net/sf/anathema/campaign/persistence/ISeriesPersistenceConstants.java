@@ -1,11 +1,10 @@
 package net.sf.anathema.campaign.persistence;
 
+import net.sf.anathema.framework.itemdata.persistence.IBasicItemPersistenceConstants;
 import net.sf.anathema.framework.persistence.IAnathemaXmlConstants;
 
-public interface ISeriesPersistenceConstants {
+public interface ISeriesPersistenceConstants extends IBasicItemPersistenceConstants {
 
-  public static final String TAG_SUMMARY = "Summary"; //$NON-NLS-1$
-  public static final String TAG_NAME = "Name"; //$NON-NLS-1$
   public static final String TAG_PLOT = "Plot"; //$NON-NLS-1$
   public static final String TAG_SERIES_ROOT = "Series"; //$NON-NLS-1$
   public static final String TAG_NOTE_ROOT = "Note"; //$NON-NLS-1$

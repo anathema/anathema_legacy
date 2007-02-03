@@ -11,7 +11,6 @@ import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.module.AbstractNonPersistableItemTypeConfiguration;
-import net.sf.anathema.framework.module.StartDatabaseAction;
 import net.sf.anathema.framework.presenter.IItemViewFactory;
 import net.sf.anathema.framework.presenter.action.ActionMenuItem;
 import net.sf.anathema.framework.presenter.menu.IMenuItem;
@@ -21,6 +20,7 @@ import net.sf.anathema.framework.view.IAnathemaView;
 import net.sf.anathema.framework.view.IItemView;
 import net.sf.anathema.lib.exception.AnathemaException;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.platform.database.StartDatabaseAction;
 
 public final class EquipmentDatabaseItemTypeConfiguration extends AbstractNonPersistableItemTypeConfiguration {
 

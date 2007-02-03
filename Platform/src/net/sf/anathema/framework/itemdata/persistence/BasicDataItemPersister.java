@@ -1,4 +1,4 @@
-package net.sf.anathema.campaign.persistence;
+package net.sf.anathema.framework.itemdata.persistence;
 
 import java.io.IOException;
 import java.io.OutputStream;

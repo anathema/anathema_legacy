@@ -1,7 +1,7 @@
-package net.sf.anathema.campaign.persistence;
+package net.sf.anathema.framework.itemdata.persistence;
 
-import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.TAG_NAME;
-import static net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants.TAG_SUMMARY;
+import static net.sf.anathema.framework.itemdata.persistence.IBasicItemPersistenceConstants.TAG_NAME;
+import static net.sf.anathema.framework.itemdata.persistence.IBasicItemPersistenceConstants.TAG_SUMMARY;
 import net.sf.anathema.framework.itemdata.model.IBasicItemData;
 import net.sf.anathema.framework.persistence.TextPersister;
 

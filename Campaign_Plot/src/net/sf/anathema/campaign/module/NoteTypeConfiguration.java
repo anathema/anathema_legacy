@@ -2,12 +2,12 @@ package net.sf.anathema.campaign.module;
 
 import javax.swing.Icon;
 
-import net.sf.anathema.campaign.persistence.BasicDataItemPersister;
 import net.sf.anathema.campaign.persistence.ISeriesPersistenceConstants;
 import net.sf.anathema.campaign.presenter.NotePresenter;
 import net.sf.anathema.campaign.view.BasicItemView;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.itemdata.model.IBasicItemData;
+import net.sf.anathema.framework.itemdata.persistence.BasicDataItemPersister;
 import net.sf.anathema.framework.itemdata.view.IBasicItemView;
 import net.sf.anathema.framework.module.AbstractPersistableItemTypeConfiguration;
 import net.sf.anathema.framework.persistence.IRepositoryItemPersister;

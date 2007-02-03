@@ -1,4 +1,4 @@
-package net.sf.anathema.framework.module;
+package net.sf.anathema.platform.database;
 
 import java.awt.Component;
 import java.io.IOException;
@@ -16,6 +16,7 @@ import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.itemdata.model.IItemData;
 import net.sf.anathema.framework.message.MessageUtilities;
+import net.sf.anathema.framework.module.IDatabaseActionProperties;
 import net.sf.anathema.framework.presenter.IItemManagementModelListener;
 import net.sf.anathema.framework.repository.AnathemaDataItem;
 import net.sf.anathema.framework.repository.IItem;
