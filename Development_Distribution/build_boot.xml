@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <project name="Build Anathema Bootloader" default="Build">
 
-	<taskdef resource="net/sf/ant4eclipse/antlib.xml" classpath="../Thirdparty/Ant/ant4eclipse-0.4.0.jar" />
 	<property file="directories.properties" />
 
 	<target name="Build" depends="Prepare, Compile Bootloader, Create Properties, Build JAR" />
