@@ -4,5 +4,5 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Platform"/>
 	<classpathentry exported="true" kind="lib" path="/Thirdparty/Database/db4o-5.5-java5.jar" sourcepath="/Thirdparty/Database/db4o-5.5-src.zip"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="output" path="build/classes"/>
 </classpath>
