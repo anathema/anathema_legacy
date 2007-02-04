@@ -3,7 +3,7 @@
 
 	<import file="common_plugin_targets.xml" />
 
-	<property name="projectset" value="Lib_Thirdparty,Lib,Lib_Gui,Lib_Workflow,Platform, Platform_Database" />
+	<property name="projectset" value="Lib_Thirdparty,Lib,Lib_Gui,Lib_Workflow,Platform,Platform_Database" />
 	<property name="module.name" value="core" />
 
 	<property file="plugin.directories.properties" />
