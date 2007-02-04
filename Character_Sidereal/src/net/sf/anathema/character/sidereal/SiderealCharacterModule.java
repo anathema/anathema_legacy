@@ -59,7 +59,8 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
     CharmCache charmProvider = CharmCache.getInstance();
-    registerSiderealTemplate(characterGenerics.getTemplateRegistry(), charmProvider);
+    characterGenerics.getTemplateRegistry().register(
+        new DefaultSiderealTemplate(charmProvider, new AdditionalSiderealRules()));
   }
 
   @Override
@@ -77,10 +78,6 @@ public class SiderealCharacterModule extends NullObjectCharacterModuleAdapter {
         defaultTemplateType,
         LowerableState.Default));
     backgroundRegistry.add(new TemplateTypeBackgroundTemplate(BACKGROUND_ID_SIFU, defaultTemplateType));
-  }
-
-  private void registerSiderealTemplate(ITemplateRegistry templateRegistry, CharmCache charmProvider) {
-    templateRegistry.register(new DefaultSiderealTemplate(charmProvider, new AdditionalSiderealRules()));
   }
 
   @Override
