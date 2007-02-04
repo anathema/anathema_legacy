@@ -10,9 +10,9 @@
 |Awareness|0|
 |Craft|0|
 |Endurance|0|
-|MartialArts|1|
+|MartialArts|0|
 |Resistance|0|
-|Brawl|0|
+|Brawl|1|
 |Bureaucracy|0|
 |Investigation|0|
 |Larceny|0|
@@ -51,9 +51,9 @@
 |Awareness|0|
 |Craft|0|
 |Endurance|0|
-|MartialArts|1|
+|MartialArts|0|
 |Resistance|0|
-|Brawl|0|
+|Brawl|1|
 |Bureaucracy|0|
 |Investigation|0|
 |Larceny|0|
