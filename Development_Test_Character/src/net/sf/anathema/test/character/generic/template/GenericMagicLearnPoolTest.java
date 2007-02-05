@@ -3,6 +3,7 @@ package net.sf.anathema.test.character.generic.template;
 import net.sf.anathema.character.generic.impl.additional.GenericMagicLearnPool;
 import net.sf.anathema.character.generic.impl.backgrounds.CustomizedBackgroundTemplate;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
+import net.sf.anathema.character.generic.util.IPointModification;
 import net.sf.anathema.dummy.character.magic.DummySpell;
 import net.sf.anathema.dummy.character.trait.DummyGenericTraitCollection;
 
@@ -93,5 +94,39 @@ public class GenericMagicLearnPoolTest {
     Assert.assertFalse(pool.isAllowedFor(collection, new DummySpell(CircleType.Terrestrial)));
     Assert.assertFalse(pool.isAllowedFor(collection, new DummySpell(CircleType.Celestial)));
     Assert.assertFalse(pool.isAllowedFor(collection, new DummySpell(CircleType.Solar)));
+  }
+
+  @Test
+  public void testUnmodifiedPointAllowance() {
+    assertValueEqualsCount(0);
+    assertValueEqualsCount(1);
+    assertValueEqualsCount(2);
+    assertValueEqualsCount(3);
+    assertValueEqualsCount(4);
+    assertValueEqualsCount(5);
+  }
+
+  private void assertValueEqualsCount(int count) {
+    assertDotsForValue(count, count);
+  }
+
+  private void assertDotsForValue(int value, int count) {
+    collection.setValue(background, value);
+    Assert.assertEquals(count, pool.getAdditionalMagicCount(collection));
+  }
+
+  @Test
+  public void testModifiedValue() {
+    pool.setCostModification(new IPointModification() {
+      public int getAdditionalPoints(int value) {
+        return Math.max(0, value - 3);
+      }
+    });
+    assertDotsForValue(0,0);
+    assertDotsForValue(1,1);
+    assertDotsForValue(2,2);
+    assertDotsForValue(3,3);
+    assertDotsForValue(4,5);
+    assertDotsForValue(5,7);
   }
 }

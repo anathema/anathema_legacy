@@ -16,8 +16,10 @@ import net.sf.anathema.character.generic.impl.additional.AdditionalEssencePool;
 import net.sf.anathema.character.generic.impl.additional.BackgroundPool;
 import net.sf.anathema.character.generic.impl.additional.GenericMagicLearnPool;
 import net.sf.anathema.character.generic.impl.additional.MultiLearnableCharmPool;
+import net.sf.anathema.character.generic.impl.util.DefaultPointModification;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
+import net.sf.anathema.character.generic.util.IPointModification;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.xml.ElementUtilities;
@@ -86,28 +88,28 @@ public class AdditionalRulesTemplateParser extends AbstractXmlTemplateParser<Gen
     }
     for (Element costModifierElement : ElementUtilities.elements(additionalCostElement, TAG_COST_MODIFIER)) {
       IBackgroundTemplate backgroundTemplate = getBackgroundTemplate(costModifierElement);
-      final ITraitCostModification bonusModification = createPointCostModification(costModifierElement.element(TAG_BONUS_MODIFICATION));
-      final ITraitCostModification dotCostModification = createPointCostModification(costModifierElement.element(TAG_DOT_COST_MODIFICATION));
+      final IPointModification bonusModification = createPointCostModification(costModifierElement.element(TAG_BONUS_MODIFICATION));
+      final IPointModification dotCostModification = createPointCostModification(costModifierElement.element(TAG_DOT_COST_MODIFICATION));
       basicTemplate.addBackgroundCostModifier(backgroundTemplate.getId(), new ITraitCostModifier() {
         public int getAdditionalBonusPointsToSpend(int traitValue) {
-          return bonusModification.getAdditionalPointsToSpend(traitValue);
+          return bonusModification.getAdditionalPoints(traitValue);
         }
 
         public int getAdditionalDotsToSpend(int traitValue) {
-          return dotCostModification.getAdditionalPointsToSpend(traitValue);
+          return dotCostModification.getAdditionalPoints(traitValue);
         }
       });
     }
   }
 
-  private ITraitCostModification createPointCostModification(Element bonusModification) throws PersistenceException {
+  private IPointModification createPointCostModification(Element bonusModification) throws PersistenceException {
     if (bonusModification == null) {
-      return new DefaultTraitCostModification();
+      return new DefaultPointModification();
     }
     final int minimumValue = ElementUtilities.getRequiredIntAttrib(bonusModification, ATTRIB_MINIMUM_VALUE);
     final int multiplier = ElementUtilities.getRequiredIntAttrib(bonusModification, ATTRIB_MULTIPLIER);
-    return new ITraitCostModification() {
-      public int getAdditionalPointsToSpend(int traitValue) {
+    return new IPointModification() {
+      public int getAdditionalPoints(int traitValue) {
         return Math.max(0, (traitValue - minimumValue) * multiplier);
       }
     };

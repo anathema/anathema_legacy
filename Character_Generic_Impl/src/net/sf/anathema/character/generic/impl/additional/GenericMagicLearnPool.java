@@ -7,12 +7,14 @@ import java.util.Map;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
+import net.sf.anathema.character.generic.impl.util.DefaultPointModification;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.magic.spells.CircleType;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
+import net.sf.anathema.character.generic.util.IPointModification;
 import net.sf.anathema.lib.collection.DefaultValueHashMap;
 
 public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
@@ -22,6 +24,7 @@ public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
   private final List<String> exceptionIds = new ArrayList<String>();
   private final Map<CircleType, Integer> typesByMinimumValue = new DefaultValueHashMap<CircleType, Integer>(0);
   private CircleType maximumCircle = CircleType.Terrestrial;
+  private IPointModification pointModification = new DefaultPointModification();
 
   public GenericMagicLearnPool(IBackgroundTemplate template, boolean defaultResponse) {
     this.template = template;
@@ -29,7 +32,8 @@ public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
   }
 
   public int getAdditionalMagicCount(IGenericTraitCollection traitCollection) {
-    return getBackgroundValue(traitCollection);
+    int value = getBackgroundValue(traitCollection);    
+    return value + pointModification.getAdditionalPoints(value);
   }
 
   private int getBackgroundValue(IGenericTraitCollection traitCollection) {
@@ -83,5 +87,9 @@ public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
         typesByMinimumValue.put(type, minimumBackgroundValue);
       }
     }
+  }
+
+  public void setCostModification(IPointModification pointModification) {
+    this.pointModification = pointModification;
   }
 }
