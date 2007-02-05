@@ -32,7 +32,7 @@ public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
   }
 
   public int getAdditionalMagicCount(IGenericTraitCollection traitCollection) {
-    int value = getBackgroundValue(traitCollection);    
+    int value = getBackgroundValue(traitCollection);
     return value + pointModification.getAdditionalPoints(value);
   }
 
@@ -49,12 +49,8 @@ public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
     magic.accept(new IMagicVisitor() {
       public void visitSpell(ISpell spell) {
         CircleType type = spell.getCircleType();
-        if (maximumCircle.compareTo(type) < 0) {
-          isAllowed[0] = false;
-          return;
-        }
-        int value = getBackgroundValue(traitCollection);
-        if (typesByMinimumValue.get(type) > value) {
+        if (isSpellCircleGreaterThanMaximumCircle(type)
+            || isBackgroundValueLessThanMinimumValueForCircle(traitCollection, type)) {
           isAllowed[0] = false;
           return;
         }
@@ -91,5 +87,15 @@ public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
 
   public void setCostModification(IPointModification pointModification) {
     this.pointModification = pointModification;
+  }
+
+  private boolean isBackgroundValueLessThanMinimumValueForCircle(
+      final IGenericTraitCollection traitCollection,
+      CircleType type) {
+    return typesByMinimumValue.get(type) > getBackgroundValue(traitCollection);
+  }
+
+  private boolean isSpellCircleGreaterThanMaximumCircle(CircleType type) {
+    return (maximumCircle.compareTo(type) < 0);
   }
 }
