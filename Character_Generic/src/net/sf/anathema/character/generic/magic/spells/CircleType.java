@@ -54,6 +54,10 @@ public enum CircleType implements IIdentificate {
     return new CircleType[] { Terrestrial, Celestial, Solar };
   }
 
+  public static CircleType[] getNecromancyCircles() {
+    return new CircleType[] { Shadowlands, Labyrinth, Void };
+  }
+
   public static CircleType[] getSorceryCirclesUpTo(CircleType maximumCircle) {
     CircleType[] sorceryCircles = getSorceryCircles();
     return getCirclesUpTo(maximumCircle, sorceryCircles);
@@ -76,14 +80,4 @@ public enum CircleType implements IIdentificate {
     }
     return circleList.toArray(new CircleType[circleList.size()]);
   }
-
-  public static CircleType[] getNecromancyCircles() {
-    return new CircleType[] { Shadowlands, Labyrinth, Void };
-  }
-
-  @Override
-  public String toString() {
-    return getId();
-  }
-
 }
