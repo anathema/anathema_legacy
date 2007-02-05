@@ -1,0 +1,30 @@
+Two tests shall cover this:
+First, Necro 3 - Shadowlands are fine, but Labyrinth or Terrestrial are out of line.
+Second, Necro 4 - Shadowlands, Labyrinth OK, but Terrestrial's still a No-No.
+
+
+!3 Check Necromancy 3
+
+!|Set Background|
+|traitType|value|
+|Necromancy|3|
+
+!|Check Necromancy Background|
+|circle|isCircleAllowed?|
+|Terrestrial|false|
+|Shadowlands|true|
+|Labyrinth|false|
+|Void|false|
+
+!3 Check Necromancy 4
+
+!|Set Background|
+|traitType|value|
+|Necromancy|4|
+
+!|Check Necromancy Background|
+|circle|isCircleAllowed?|
+|Terrestrial|false|
+|Shadowlands|true|
+|Labyrinth|true|
+|Void|false|
