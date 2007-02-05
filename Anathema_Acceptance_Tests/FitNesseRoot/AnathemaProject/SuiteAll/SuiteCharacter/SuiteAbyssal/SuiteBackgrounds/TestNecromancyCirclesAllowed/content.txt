@@ -1,6 +1,47 @@
-Two tests shall cover this:
-First, Necro 3 - Shadowlands are fine, but Labyrinth or Terrestrial are out of line.
-Second, Necro 4 - Shadowlands, Labyrinth OK, but Terrestrial's still a No-No.
+!3 Check Necromancy 0: Shadowlands is allowed, as long as the number of spells is 0.
+
+!|Set Background|
+|traitType|value|
+|Necromancy|0|
+
+!|Check Necromancy Background|
+|circle|isCircleAllowed?|
+|Terrestrial|false|
+|Celestial|false|
+|Solar|false|
+|Shadowlands|true|
+|Labyrinth|false|
+|Void|false|
+
+!3 Check Necromancy 1 
+
+!|Set Background|
+|traitType|value|
+|Necromancy|1|
+
+!|Check Necromancy Background|
+|circle|isCircleAllowed?|
+|Terrestrial|false|
+|Celestial|false|
+|Solar|false|
+|Shadowlands|true|
+|Labyrinth|false|
+|Void|false|
+
+!3 Check Necromancy 2 
+
+!|Set Background|
+|traitType|value|
+|Necromancy|2|
+
+!|Check Necromancy Background|
+|circle|isCircleAllowed?|
+|Terrestrial|false|
+|Celestial|false|
+|Solar|false|
+|Shadowlands|true|
+|Labyrinth|false|
+|Void|false|
 
 
 !3 Check Necromancy 3
@@ -12,6 +53,8 @@ Second, Necro 4 - Shadowlands, Labyrinth OK, but Terrestrial's still a No-No.
 !|Check Necromancy Background|
 |circle|isCircleAllowed?|
 |Terrestrial|false|
+|Celestial|false|
+|Solar|false|
 |Shadowlands|true|
 |Labyrinth|false|
 |Void|false|
@@ -25,6 +68,24 @@ Second, Necro 4 - Shadowlands, Labyrinth OK, but Terrestrial's still a No-No.
 !|Check Necromancy Background|
 |circle|isCircleAllowed?|
 |Terrestrial|false|
+|Celestial|false|
+|Solar|false|
+|Shadowlands|true|
+|Labyrinth|true|
+|Void|false|
+
+
+!3 Check Necromancy 5
+
+!|Set Background|
+|traitType|value|
+|Necromancy|5|
+
+!|Check Necromancy Background|
+|circle|isCircleAllowed?|
+|Terrestrial|false|
+|Celestial|false|
+|Solar|false|
 |Shadowlands|true|
 |Labyrinth|true|
 |Void|false|
