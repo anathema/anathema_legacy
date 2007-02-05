@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.sf.anathema.lib.util.IIdentificate;
 
+//TODO: Find a way to operate with circletypes without breaking compareTo
 public enum CircleType implements IIdentificate {
 
   Terrestrial {
