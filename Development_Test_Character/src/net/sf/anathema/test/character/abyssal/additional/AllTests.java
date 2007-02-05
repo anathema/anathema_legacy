@@ -9,7 +9,6 @@ public class AllTests {
     TestSuite suite = new TestSuite("Test for net.sf.anathema.character.abyssal.additional.test"); //$NON-NLS-1$
     //$JUnit-BEGIN$
     suite.addTestSuite(LiegeBonusPointPoolTest.class);
-    suite.addTestSuite(NecromancyLearnPoolTest.class);
     //$JUnit-END$
     return suite;
   }
