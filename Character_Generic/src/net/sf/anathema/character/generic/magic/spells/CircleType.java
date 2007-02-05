@@ -12,11 +12,21 @@ public enum CircleType implements IIdentificate {
     public void accept(ICircleTypeVisitor visitor) {
       visitor.visitTerrestrial(this);
     }
+
+    @Override
+    public CircleType[] getComparableCircles() {
+      return getSorceryCircles();
+    }
   },
   Celestial {
     @Override
     public void accept(ICircleTypeVisitor visitor) {
       visitor.visitCelestial(this);
+    }
+
+    @Override
+    public CircleType[] getComparableCircles() {
+      return getSorceryCircles();
     }
   },
   Solar {
@@ -24,11 +34,21 @@ public enum CircleType implements IIdentificate {
     public void accept(ICircleTypeVisitor visitor) {
       visitor.visitSolar(this);
     }
+
+    @Override
+    public CircleType[] getComparableCircles() {
+      return getSorceryCircles();
+    }
   },
   Shadowlands {
     @Override
     public void accept(ICircleTypeVisitor visitor) {
       visitor.visitShadowland(this);
+    }
+
+    @Override
+    public CircleType[] getComparableCircles() {
+      return getNecromancyCircles();
     }
   },
   Labyrinth {
@@ -36,11 +56,21 @@ public enum CircleType implements IIdentificate {
     public void accept(ICircleTypeVisitor visitor) {
       visitor.visitLabyrinth(this);
     }
+
+    @Override
+    public CircleType[] getComparableCircles() {
+      return getNecromancyCircles();
+    }
   },
   Void {
     @Override
     public void accept(ICircleTypeVisitor visitor) {
       visitor.visitVoid(this);
+    }
+
+    @Override
+    public CircleType[] getComparableCircles() {
+      return getNecromancyCircles();
     }
   };
 
@@ -49,6 +79,8 @@ public enum CircleType implements IIdentificate {
   }
 
   public abstract void accept(ICircleTypeVisitor visitor);
+
+  public abstract CircleType[] getComparableCircles();
 
   public static CircleType[] getSorceryCircles() {
     return new CircleType[] { Terrestrial, Celestial, Solar };

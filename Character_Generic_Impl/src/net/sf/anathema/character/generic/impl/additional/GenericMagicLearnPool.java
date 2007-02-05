@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.additionalrules.IAdditionalMagicLearnPool;
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.character.IGenericTraitCollection;
@@ -96,6 +97,6 @@ public class GenericMagicLearnPool implements IAdditionalMagicLearnPool {
   }
 
   private boolean isSpellCircleGreaterThanMaximumCircle(CircleType type) {
-    return (maximumCircle.compareTo(type) < 0);
+    return !ArrayUtilities.contains(type.getComparableCircles(), maximumCircle) || (maximumCircle.compareTo(type) < 0);
   }
 }
