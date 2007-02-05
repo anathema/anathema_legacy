@@ -8,10 +8,6 @@ public class SpellMagicTemplate implements ISpellMagicTemplate {
   private final CircleType[] sorceryCircles;
   private final CircleType[] necromancyCircles;
 
-  public SpellMagicTemplate() {
-    this(new CircleType[0], new CircleType[0]);
-  }
-
   public SpellMagicTemplate(CircleType[] sorceryCircles, CircleType[] necromancyCircles) {
     this.sorceryCircles = sorceryCircles;
     this.necromancyCircles = necromancyCircles;
