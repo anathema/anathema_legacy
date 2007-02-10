@@ -10,7 +10,7 @@ import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VAL
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_VIEWBOX_SIZE;
 import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_XMID_YMIN_MEET;
 
-import net.sf.anathema.character.generic.template.presentation.ICharmPresentationProperties;
+import net.sf.anathema.character.generic.template.presentation.ITreePresentationProperties;
 
 import org.apache.batik.util.SVGConstants;
 import org.dom4j.Document;
@@ -22,7 +22,7 @@ import org.dom4j.tree.DefaultElement;
 
 public class SVGDocumentFrameFactory {
 
-  public Document createFrame(ICharmPresentationProperties properties) {
+  public Document createFrame(ITreePresentationProperties properties) {
     QName svg = SVGCreationUtils.createSVGQName(SVGConstants.SVG_SVG_TAG);
     Element rootElement = new DefaultElement(svg);
     defineRootAttributes(rootElement);
@@ -49,7 +49,7 @@ public class SVGDocumentFrameFactory {
     polygonElement.addAttribute(SVGConstants.SVG_STROKE_WIDTH_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
   }
 
-  private void addCharmFrameSymbol(ICharmPresentationProperties properties, Element defsElement) {
+  private void addCharmFrameSymbol(ITreePresentationProperties properties, Element defsElement) {
     QName frameSymbol = SVGCreationUtils.createSVGQName(SVGConstants.SVG_SYMBOL_TAG);
     Element frameSymbolElement = defsElement.addElement(frameSymbol);
     frameSymbolElement.addAttribute(SVGConstants.SVG_ID_ATTRIBUTE, VALUE_FRAME_ID);
@@ -58,12 +58,12 @@ public class SVGDocumentFrameFactory {
     QName polygon = SVGCreationUtils.createSVGQName(SVGConstants.SVG_POLYGON_TAG);
     Element innerPolygonElement = frameGroupElement.addElement(polygon);
     innerPolygonElement.addAttribute(SVGConstants.SVG_STROKE_WIDTH_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
-    innerPolygonElement.addAttribute(SVGConstants.SVG_POINTS_ATTRIBUTE, properties.getCharmFramePolygonString());
+    innerPolygonElement.addAttribute(SVGConstants.SVG_POINTS_ATTRIBUTE, properties.getNodeFramePolygonString());
     Element outerPolygonElement = frameGroupElement.addElement(polygon);
     outerPolygonElement.addAttribute(SVGConstants.SVG_FILL_ATTRIBUTE, SVGConstants.SVG_NONE_VALUE);
     outerPolygonElement.addAttribute(SVGConstants.SVG_STROKE_WIDTH_ATTRIBUTE, VALUE_3);
     outerPolygonElement.addAttribute(SVGConstants.SVG_STROKE_ATTRIBUTE, VALUE_COLOR_SVG_GRAY);
-    outerPolygonElement.addAttribute(SVGConstants.SVG_POINTS_ATTRIBUTE, properties.getCharmFramePolygonString());
+    outerPolygonElement.addAttribute(SVGConstants.SVG_POINTS_ATTRIBUTE, properties.getNodeFramePolygonString());
   }
 
   private void defineRootAttributes(Element rootElement) {

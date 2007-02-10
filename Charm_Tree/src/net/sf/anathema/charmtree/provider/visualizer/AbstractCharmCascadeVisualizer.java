@@ -5,7 +5,7 @@ import java.util.Map;
 
 import net.sf.anathema.character.generic.framework.magic.treelayout.graph.IProperHierarchicalGraph;
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.ISimpleNode;
-import net.sf.anathema.character.generic.template.presentation.ICharmPresentationProperties;
+import net.sf.anathema.character.generic.template.presentation.ITreePresentationProperties;
 import net.sf.anathema.charmtree.provider.components.ILayer;
 import net.sf.anathema.charmtree.provider.components.Layer;
 import net.sf.anathema.charmtree.provider.components.nodes.IVisualizableNode;
@@ -20,23 +20,23 @@ import org.dom4j.tree.DefaultElement;
 
 public abstract class AbstractCharmCascadeVisualizer implements ICharmCascadeVisualizer {
 
-  private final ICharmPresentationProperties properties;
+  private final ITreePresentationProperties properties;
   private final Map<ISimpleNode, IVisualizableNode> visualizableNodesByContent = new HashMap<ISimpleNode, IVisualizableNode>();
   private final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors = new MultiEntryMap<ISimpleNode, ISimpleNode>();
   private final VisualizableNodeFactory nodeFactory;
   private final IProperHierarchicalGraph graph;
 
-  public AbstractCharmCascadeVisualizer(ICharmPresentationProperties properties, IProperHierarchicalGraph graph) {
+  public AbstractCharmCascadeVisualizer(ITreePresentationProperties properties, IProperHierarchicalGraph graph) {
     this.properties = properties;
     this.graph = graph;
     this.nodeFactory = new VisualizableNodeFactory(
-        properties.getCharmDimension(),
+        properties.getNodeDimension(),
         properties.getGapDimension(),
         visualizableNodesByContent,
         leafNodesByAncestors);
   }
 
-  protected ICharmPresentationProperties getProperties() {
+  protected ITreePresentationProperties getProperties() {
     return properties;
   }
 
@@ -79,7 +79,7 @@ public abstract class AbstractCharmCascadeVisualizer implements ICharmCascadeVis
 
   private void initLayers(ILayer[] layers) {
     for (int layerIndex = 0; layerIndex < layers.length; layerIndex++) {
-      int yPosition = layerIndex * (properties.getCharmDimension().height + properties.getGapDimension().height);
+      int yPosition = layerIndex * (properties.getNodeDimension().height + properties.getGapDimension().height);
       layers[layerIndex] = new Layer(properties.getGapDimension(), yPosition);
     }
     for (int layerIndex = 1; layerIndex < layers.length; layerIndex++) {
@@ -104,7 +104,7 @@ public abstract class AbstractCharmCascadeVisualizer implements ICharmCascadeVis
 
   protected int getTreeHeight(ILayer[] layers) {
     int treeHeight = layers.length
-        * getProperties().getCharmDimension().height
+        * getProperties().getNodeDimension().height
         + (layers.length - 1)
         * getProperties().getGapDimension().height;
     return treeHeight;

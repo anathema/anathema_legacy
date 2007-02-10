@@ -4,7 +4,7 @@ import java.awt.Dimension;
 
 import net.sf.anathema.character.generic.framework.magic.treelayout.graph.IProperHierarchicalGraph;
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.ISimpleNode;
-import net.sf.anathema.character.generic.template.presentation.ICharmPresentationProperties;
+import net.sf.anathema.character.generic.template.presentation.ITreePresentationProperties;
 import net.sf.anathema.charmtree.provider.IVisualizedGraph;
 import net.sf.anathema.charmtree.provider.VisualizedGraph;
 import net.sf.anathema.charmtree.provider.components.ILayer;
@@ -12,7 +12,7 @@ import net.sf.anathema.charmtree.provider.components.nodes.IVisualizableNode;
 
 public abstract class AbstractTreeVisualizer extends AbstractCharmCascadeVisualizer {
 
-  public AbstractTreeVisualizer(ICharmPresentationProperties properties, IProperHierarchicalGraph graph) {
+  public AbstractTreeVisualizer(ITreePresentationProperties properties, IProperHierarchicalGraph graph) {
     super(properties, graph);
   }
 

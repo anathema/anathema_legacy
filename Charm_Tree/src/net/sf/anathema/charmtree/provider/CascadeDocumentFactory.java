@@ -12,7 +12,7 @@ import net.sf.anathema.character.generic.framework.magic.treelayout.graph.type.I
 import net.sf.anathema.character.generic.framework.magic.treelayout.graph.type.IGraphTypeVisitor;
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IRegularNode;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.template.presentation.ICharmPresentationProperties;
+import net.sf.anathema.character.generic.template.presentation.ITreePresentationProperties;
 import net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants;
 import net.sf.anathema.charmtree.provider.svg.SVGCreationUtils;
 import net.sf.anathema.charmtree.provider.svg.SVGDocumentFrameFactory;
@@ -25,18 +25,19 @@ import org.apache.batik.util.SVGConstants;
 import org.dom4j.Document;
 import org.dom4j.Element;
 
-public class CharmTreeProvider {
+public class CascadeDocumentFactory {
+  
   private final static Dimension MAXIMUM_DIMENSION = new Dimension(1400, 625);
   private final SugiyamaLayout layout = new SugiyamaLayout();
   private final SVGDocumentFrameFactory factory = new SVGDocumentFrameFactory();
 
-  public Document createCascadeDocument(ICharm[] charms, final ICharmPresentationProperties properties) {
-    final List<IVisualizedGraph> visualizedGraphs = visualizeGraphs(charms, properties);
+  public Document createCascadeDocument(IRegularNode[] nodes, final ITreePresentationProperties properties) {
+    final List<IVisualizedGraph> visualizedGraphs = visualizeGraphs(nodes, properties);
     return placeOnCanvas(properties, visualizedGraphs);
   }
 
   private Document placeOnCanvas(
-      final ICharmPresentationProperties properties,
+      final ITreePresentationProperties properties,
       final List<IVisualizedGraph> visualizedGraphs) {
     Document cascadeDocument = factory.createFrame(properties);
     Element root = cascadeDocument.getRootElement();
@@ -47,7 +48,7 @@ public class CharmTreeProvider {
       for (IVisualizedGraph graph : visualizedGraphs) {
         if (graph.isSingleNode()) {
           firstRowWidth = properties.getGapDimension().width;
-          firstRowHeight = properties.getCharmDimension().height + properties.getGapDimension().height;
+          firstRowHeight = properties.getNodeDimension().height + properties.getGapDimension().height;
           break;
         }
       }
@@ -90,8 +91,7 @@ public class CharmTreeProvider {
     }
   }
 
-  private List<IVisualizedGraph> visualizeGraphs(ICharm[] charms, final ICharmPresentationProperties properties) {
-    IRegularNode[] nodes = CharmGraphNodeBuilder.createNodesFromCharms(Arrays.asList(charms));
+  private List<IVisualizedGraph> visualizeGraphs(IRegularNode[] nodes, final ITreePresentationProperties properties) {
     final IProperHierarchicalGraph[] graphs = layout.createProperHierarchicalGraphs(nodes);
     final List<IVisualizedGraph> visualizedGraphs = new ArrayList<IVisualizedGraph>(graphs.length);
     for (final IProperHierarchicalGraph graph : graphs) {

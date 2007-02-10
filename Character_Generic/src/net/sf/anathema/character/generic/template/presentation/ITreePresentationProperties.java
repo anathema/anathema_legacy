@@ -2,10 +2,11 @@ package net.sf.anathema.character.generic.template.presentation;
 
 import java.awt.Dimension;
 
-public interface ICharmPresentationProperties {
-  public String getCharmFramePolygonString();
+public interface ITreePresentationProperties {
+  
+  public String getNodeFramePolygonString();
 
-  public Dimension getCharmDimension();
+  public Dimension getNodeDimension();
 
   public Dimension getGapDimension();
 

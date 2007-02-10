@@ -9,7 +9,7 @@ import java.util.Set;
 
 import net.sf.anathema.character.generic.framework.magic.treelayout.graph.IProperHierarchicalGraph;
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.ISimpleNode;
-import net.sf.anathema.character.generic.template.presentation.ICharmPresentationProperties;
+import net.sf.anathema.character.generic.template.presentation.ITreePresentationProperties;
 import net.sf.anathema.charmtree.provider.IVisualizedGraph;
 import net.sf.anathema.charmtree.provider.VisualizedGraph;
 import net.sf.anathema.charmtree.provider.components.ILayer;
@@ -76,7 +76,7 @@ public class BottomUpGraphVisualizer extends AbstractCharmCascadeVisualizer {
 
   private final VisualizableNodePositionComparator nodePositionComparator = new VisualizableNodePositionComparator();
 
-  public BottomUpGraphVisualizer(IProperHierarchicalGraph graph, ICharmPresentationProperties properties) {
+  public BottomUpGraphVisualizer(IProperHierarchicalGraph graph, ITreePresentationProperties properties) {
     super(properties, graph);
   }
 

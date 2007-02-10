@@ -76,7 +76,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     this.viewProperties = new CharacterCharmTreeViewProperties(
         resources,
         statistics.getCharms(),
-        presentationProperties.getCharmPresentationProperties().getCharmDimension());
+        presentationProperties.getCharmPresentationProperties().getNodeDimension());
     this.characterColor = presentationProperties.getColor();
     this.statistics = statistics;
     this.view = factory.createCharmSelectionView(viewProperties);
@@ -339,7 +339,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     return statistics.getCharacterTemplate()
         .getPresentationProperties()
         .getCharmPresentationProperties()
-        .getCharmDimension()
+        .getNodeDimension()
         .getWidth();
   }
 

@@ -10,5 +10,5 @@ public interface IPresentationProperties extends ICommonPresentationProperties {
 
   public String getCasteLabelResource();
 
-  public ICharmPresentationProperties getCharmPresentationProperties();
+  public ITreePresentationProperties getCharmPresentationProperties();
 }

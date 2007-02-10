@@ -2,7 +2,7 @@ package net.sf.anathema.charmtree.provider.visualizer;
 
 import net.sf.anathema.character.generic.framework.magic.treelayout.graph.IProperHierarchicalGraph;
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.ISimpleNode;
-import net.sf.anathema.character.generic.template.presentation.ICharmPresentationProperties;
+import net.sf.anathema.character.generic.template.presentation.ITreePresentationProperties;
 import net.sf.anathema.charmtree.provider.IVisualizedGraph;
 import net.sf.anathema.charmtree.provider.SingleNodeVisualizedGraph;
 import net.sf.anathema.charmtree.provider.components.ILayer;
@@ -17,7 +17,7 @@ import org.dom4j.tree.DefaultElement;
 
 public class SingleNodeVisualizer extends AbstractCharmCascadeVisualizer {
 
-  public SingleNodeVisualizer(ICharmPresentationProperties properties, IProperHierarchicalGraph graph) {
+  public SingleNodeVisualizer(ITreePresentationProperties properties, IProperHierarchicalGraph graph) {
     super(properties, graph);
   }
 
@@ -30,6 +30,6 @@ public class SingleNodeVisualizer extends AbstractCharmCascadeVisualizer {
     QName group = SVGCreationUtils.createSVGQName(SVGConstants.SVG_G_TAG);
     Element cascadeElement = new DefaultElement(group);
     visualizableNode.toXML(cascadeElement);
-    return new SingleNodeVisualizedGraph(cascadeElement, getProperties().getCharmDimension());
+    return new SingleNodeVisualizedGraph(cascadeElement, getProperties().getNodeDimension());
   }
 }

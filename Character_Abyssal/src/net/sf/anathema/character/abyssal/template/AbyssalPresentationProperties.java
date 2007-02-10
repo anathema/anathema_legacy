@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import net.sf.anathema.character.generic.impl.template.presentation.AbstractPresentationProperties;
 import net.sf.anathema.character.generic.template.TemplateType;
-import net.sf.anathema.character.generic.template.presentation.ICharmPresentationProperties;
+import net.sf.anathema.character.generic.template.presentation.ITreePresentationProperties;
 import net.sf.anathema.character.generic.type.CharacterType;
 
 public class AbyssalPresentationProperties extends AbstractPresentationProperties {
@@ -26,7 +26,7 @@ public class AbyssalPresentationProperties extends AbstractPresentationPropertie
     return new Color(169, 169, 169);
   }
 
-  public ICharmPresentationProperties getCharmPresentationProperties() {
+  public ITreePresentationProperties getCharmPresentationProperties() {
     return abyssalCharmPresentationProperties;
   }
 }

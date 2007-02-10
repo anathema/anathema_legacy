@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import net.sf.anathema.character.generic.impl.template.presentation.AbstractPresentationProperties;
 import net.sf.anathema.character.generic.template.ITemplateType;
-import net.sf.anathema.character.generic.template.presentation.ICharmPresentationProperties;
+import net.sf.anathema.character.generic.template.presentation.ITreePresentationProperties;
 
 public class DragonKingPresentationProperties extends AbstractPresentationProperties {
 
@@ -21,7 +21,7 @@ public class DragonKingPresentationProperties extends AbstractPresentationProper
     return new Color(250, 250, 210);
   }
 
-  public ICharmPresentationProperties getCharmPresentationProperties() {
+  public ITreePresentationProperties getCharmPresentationProperties() {
     return new DefaultCharmPresentationProperties();
   }
 }

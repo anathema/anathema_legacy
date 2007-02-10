@@ -2,15 +2,18 @@ package net.sf.anathema.charmtree.presenter.view;
 
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.util.Arrays;
 import java.util.Set;
 
 import net.disy.commons.core.util.Ensure;
+import net.sf.anathema.character.generic.framework.magic.CharmGraphNodeBuilder;
+import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IRegularNode;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
-import net.sf.anathema.character.generic.template.presentation.ICharmPresentationProperties;
-import net.sf.anathema.charmtree.provider.CharmTreeProvider;
+import net.sf.anathema.character.generic.template.presentation.ITreePresentationProperties;
+import net.sf.anathema.charmtree.provider.CascadeDocumentFactory;
 import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.util.IIdentificate;
 
@@ -23,7 +26,7 @@ import org.w3c.dom.svg.SVGDocument;
 
 public abstract class AbstractCharmGroupChangeListener implements ICharmGroupChangeListener {
 
-  private final CharmTreeProvider provider = new CharmTreeProvider();
+  private final CascadeDocumentFactory provider = new CascadeDocumentFactory();
   private final ICharmTreeViewProperties viewProperties;
   private final ITemplateRegistry templateRegistry;
   private final ICharmTreeView charmTreeView;
@@ -80,14 +83,15 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     }
     else {
       Set<ICharm> displayCharms = getDisplayCharms(charmGroup);
-      ICharmPresentationProperties presentationProperties = templateRegistry.getDefaultTemplate(
+      ITreePresentationProperties presentationProperties = templateRegistry.getDefaultTemplate(
           charmGroup.getCharacterType(),
           getEdition()).getPresentationProperties().getCharmPresentationProperties();
-      Dimension dimension = presentationProperties.getCharmDimension();
+      Dimension dimension = presentationProperties.getNodeDimension();
       viewProperties.setDimension(dimension);
       charmTreeView.setProperties(viewProperties);
       ICharm[] charms = displayCharms.toArray(new ICharm[displayCharms.size()]);
-      Document dom4jDocument = provider.createCascadeDocument(charms, presentationProperties);
+      IRegularNode[] nodes = CharmGraphNodeBuilder.createNodesFromCharms(Arrays.asList(charms));
+      Document dom4jDocument = provider.createCascadeDocument(nodes, presentationProperties);
       DOMImplementation implementation = SVG12DOMImplementation.getDOMImplementation();
       SVGDocument svgDocument = (SVGDocument) new DOMWriter().write(dom4jDocument, implementation);
       charmTreeView.loadCascade(svgDocument);

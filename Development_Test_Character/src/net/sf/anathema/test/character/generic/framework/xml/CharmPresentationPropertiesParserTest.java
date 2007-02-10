@@ -36,17 +36,17 @@ public class CharmPresentationPropertiesParserTest extends BasicTestCase {
 
   public void testParsePolygonString() throws Exception {
     GenericCharmPresentationProperties presentationProperties = parseXml(xml);
-    assertEquals("157.07742,9.777771", presentationProperties.getCharmFramePolygonString()); //$NON-NLS-1$
+    assertEquals("157.07742,9.777771", presentationProperties.getNodeFramePolygonString()); //$NON-NLS-1$
   }
 
   public void testNoPolygon() throws Exception {
     GenericCharmPresentationProperties properties = parseXml("<charmPresentation/>"); //$NON-NLS-1$
-    assertNull(properties.getCharmFramePolygonString());
+    assertNull(properties.getNodeFramePolygonString());
   }
 
   public void testParseCharmDimension() throws Exception {
     GenericCharmPresentationProperties presentationProperties = parseXml(xml);
-    assertEquals(new Dimension(150, 75), presentationProperties.getCharmDimension());
+    assertEquals(new Dimension(150, 75), presentationProperties.getNodeDimension());
   }
 
   public void testNoCharmDimension() throws Exception {
@@ -55,7 +55,7 @@ public class CharmPresentationPropertiesParserTest extends BasicTestCase {
         + "<gapDimension width=\"25\" height=\"50\"/>" //$NON-NLS-1$
         + "</charmPresentation>"; //$NON-NLS-1$
     GenericCharmPresentationProperties properties = parseXml(challengedXml);
-    assertNull(properties.getCharmDimension());
+    assertNull(properties.getNodeDimension());
   }
 
   public void testParseGapDimension() throws Exception {
