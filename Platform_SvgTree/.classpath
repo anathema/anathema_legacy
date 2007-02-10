@@ -2,10 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Lib"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Gui"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Thirdparty"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Lib_Workflow"/>
 	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-awt-util.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
 	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-bridge.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
 	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-css.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
@@ -20,6 +16,6 @@
 	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-util.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
 	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-xml.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
 	<classpathentry kind="lib" path="/Thirdparty/XML/xml-apis-dom3.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Platform"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Platform"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
