@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.svgtree.graph.ordering.leaf;
+package net.sf.anathema.platform.svgtree.graph.ordering;
 
 public interface IStructureNode {
 

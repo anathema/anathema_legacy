@@ -1,13 +1,13 @@
-package net.sf.anathema.platform.svgtree.graph;
+package net.sf.anathema.platform.svgtree.document;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import net.sf.anathema.platform.svgtree.graph.graph.IGraphType;
+import net.sf.anathema.platform.svgtree.graph.graph.IGraphTypeVisitor;
 import net.sf.anathema.platform.svgtree.graph.graph.IProperHierarchicalGraph;
-import net.sf.anathema.platform.svgtree.graph.graph.type.IGraphType;
-import net.sf.anathema.platform.svgtree.graph.graph.type.IGraphTypeVisitor;
 import net.sf.anathema.platform.svgtree.graph.hierarchy.HierarchyBuilder;
 import net.sf.anathema.platform.svgtree.graph.hierarchy.SubtreeSeparator;
 import net.sf.anathema.platform.svgtree.graph.layering.ILayerer;
@@ -16,10 +16,10 @@ import net.sf.anathema.platform.svgtree.graph.nodes.IRegularNode;
 import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
 import net.sf.anathema.platform.svgtree.graph.ordering.IVertexOrderer;
 import net.sf.anathema.platform.svgtree.graph.ordering.IVertexOrdererFactory;
+import net.sf.anathema.platform.svgtree.graph.ordering.LeafStructureOptimizer;
 import net.sf.anathema.platform.svgtree.graph.ordering.SandraVertexOrderer;
 import net.sf.anathema.platform.svgtree.graph.ordering.SugiyamaVertexOrderer;
 import net.sf.anathema.platform.svgtree.graph.ordering.UrsVertexOrderer;
-import net.sf.anathema.platform.svgtree.graph.ordering.leaf.LeafStructureOptimizer;
 
 public class SugiyamaLayout {
   private final HierarchyBuilder hierarchyBuilder = new HierarchyBuilder();

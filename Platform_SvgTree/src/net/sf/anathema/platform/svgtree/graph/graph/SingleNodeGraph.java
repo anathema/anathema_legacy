@@ -1,7 +1,5 @@
 package net.sf.anathema.platform.svgtree.graph.graph;
 
-import net.sf.anathema.platform.svgtree.graph.graph.type.GraphType;
-import net.sf.anathema.platform.svgtree.graph.graph.type.IGraphType;
 import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
 
 public class SingleNodeGraph implements IProperHierarchicalGraph {

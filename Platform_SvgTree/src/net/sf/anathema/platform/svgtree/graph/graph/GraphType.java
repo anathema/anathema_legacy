@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.svgtree.graph.graph.type;
+package net.sf.anathema.platform.svgtree.graph.graph;
 
 public enum GraphType implements IGraphType {
   DirectedGraph {

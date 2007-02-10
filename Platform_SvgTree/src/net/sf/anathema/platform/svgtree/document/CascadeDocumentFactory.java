@@ -12,10 +12,9 @@ import net.sf.anathema.platform.svgtree.document.visualizer.BottomUpGraphVisuali
 import net.sf.anathema.platform.svgtree.document.visualizer.InvertedTreeVisualizer;
 import net.sf.anathema.platform.svgtree.document.visualizer.SingleNodeVisualizer;
 import net.sf.anathema.platform.svgtree.document.visualizer.TreeVisualizer;
-import net.sf.anathema.platform.svgtree.graph.SugiyamaLayout;
+import net.sf.anathema.platform.svgtree.graph.graph.IGraphType;
+import net.sf.anathema.platform.svgtree.graph.graph.IGraphTypeVisitor;
 import net.sf.anathema.platform.svgtree.graph.graph.IProperHierarchicalGraph;
-import net.sf.anathema.platform.svgtree.graph.graph.type.IGraphType;
-import net.sf.anathema.platform.svgtree.graph.graph.type.IGraphTypeVisitor;
 import net.sf.anathema.platform.svgtree.graph.nodes.IRegularNode;
 
 import org.apache.batik.util.SVGConstants;

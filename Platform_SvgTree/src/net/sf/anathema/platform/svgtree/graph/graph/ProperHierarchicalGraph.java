@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.platform.svgtree.graph.graph.type.GraphType;
-import net.sf.anathema.platform.svgtree.graph.graph.type.IGraphType;
 import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
 import net.sf.anathema.platform.svgtree.graph.util.IncidentMatrixUtilities;
 
