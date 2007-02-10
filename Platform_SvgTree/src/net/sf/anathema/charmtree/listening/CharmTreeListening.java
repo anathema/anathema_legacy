@@ -11,9 +11,9 @@ import net.sf.anathema.charmtree.batik.IBoundsCalculator;
 import net.sf.anathema.charmtree.presenter.view.IAnathemaCanvas;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionListener;
 import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
-import net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
+import net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants;
 
 import org.apache.batik.swing.gvt.Interactor;
 import org.apache.batik.util.SVGConstants;

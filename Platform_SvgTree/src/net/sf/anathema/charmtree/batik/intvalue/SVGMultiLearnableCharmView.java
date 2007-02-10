@@ -1,6 +1,6 @@
 package net.sf.anathema.charmtree.batik.intvalue;
 
-import static net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants.VALUE_COLOR_SVG_BLACK;
+import static net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants.VALUE_COLOR_SVG_BLACK;
 
 import java.awt.Color;
 import java.util.ArrayList;
