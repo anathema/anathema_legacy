@@ -1,4 +1,4 @@
-package net.sf.anathema.charmtree;
+package net.sf.anathema.platform.svgtree.view;
 
 import java.awt.Color;
 import java.awt.Rectangle;
@@ -10,15 +10,15 @@ import java.util.List;
 import javax.swing.JComponent;
 
 import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.charmtree.batik.AnathemaCanvas;
-import net.sf.anathema.charmtree.batik.IBoundsCalculator;
-import net.sf.anathema.charmtree.listening.CharmTreeListening;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
 import net.sf.anathema.platform.svgtree.presenter.view.ICharmSelectionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
+import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
+import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
+import net.sf.anathema.platform.svgtree.view.listening.CharmTreeListening;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.swing.svg.SVGLoadEventDispatcherAdapter;

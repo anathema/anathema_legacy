@@ -1,4 +1,4 @@
-package net.sf.anathema.charmtree.batik.intvalue;
+package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 
 import static net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants.VALUE_COLOR_LIGHT_MEDIUM_GRAY;
 import static net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants.VALUE_COLOR_SVG_BLACK;
@@ -6,10 +6,10 @@ import static net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConsta
 import java.awt.Color;
 import java.awt.Rectangle;
 
-import net.sf.anathema.charmtree.batik.IBoundsCalculator;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
 import net.sf.anathema.lib.control.intvalue.IntValueControl;
+import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;

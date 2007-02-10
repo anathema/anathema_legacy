@@ -1,4 +1,4 @@
-package net.sf.anathema.charmtree.batik.intvalue;
+package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 
 import net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants;
 

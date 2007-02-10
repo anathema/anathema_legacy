@@ -1,4 +1,4 @@
-package net.sf.anathema.charmtree.batik.intvalue;
+package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 
 import static net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants.VALUE_COLOR_SVG_BLACK;
 
@@ -6,9 +6,9 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.charmtree.batik.IBoundsCalculator;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGMultiLearnableCharmView;
+import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;

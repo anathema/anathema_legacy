@@ -1,4 +1,4 @@
-package net.sf.anathema.charmtree.batik.intvalue;
+package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 
 import org.w3c.dom.Element;
 

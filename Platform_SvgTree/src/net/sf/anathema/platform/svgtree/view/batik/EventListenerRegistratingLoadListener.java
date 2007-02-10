@@ -1,4 +1,4 @@
-package net.sf.anathema.charmtree.batik;
+package net.sf.anathema.platform.svgtree.view.batik;
 
 import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
 import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;

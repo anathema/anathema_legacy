@@ -1,12 +1,12 @@
-package net.sf.anathema.charmtree.batik.intvalue;
+package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.charmtree.batik.IBoundsCalculator;
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialCharmView;
+import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;

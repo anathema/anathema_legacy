@@ -1,19 +1,19 @@
-package net.sf.anathema.charmtree.listening;
+package net.sf.anathema.platform.svgtree.view.listening;
 
 import java.awt.Cursor;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.List;
 
-import net.sf.anathema.charmtree.batik.AnathemaCanvas;
-import net.sf.anathema.charmtree.batik.BoundsCalculator;
-import net.sf.anathema.charmtree.batik.IBoundsCalculator;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants;
 import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
 import net.sf.anathema.platform.svgtree.presenter.view.ICharmSelectionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
+import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
+import net.sf.anathema.platform.svgtree.view.batik.BoundsCalculator;
+import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
 import org.apache.batik.swing.gvt.Interactor;
 import org.apache.batik.util.SVGConstants;

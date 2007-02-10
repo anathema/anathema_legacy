@@ -1,4 +1,4 @@
-package net.sf.anathema.charmtree.batik;
+package net.sf.anathema.platform.svgtree.view.batik;
 
 import java.awt.Rectangle;
 

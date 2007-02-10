@@ -1,9 +1,9 @@
-package net.sf.anathema.charmtree.listening;
+package net.sf.anathema.platform.svgtree.view.listening;
 
 import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 
-import net.sf.anathema.charmtree.batik.BoundsCalculator;
+import net.sf.anathema.platform.svgtree.view.batik.BoundsCalculator;
 
 import org.apache.batik.swing.gvt.AbstractResetTransformInteractor;
 
