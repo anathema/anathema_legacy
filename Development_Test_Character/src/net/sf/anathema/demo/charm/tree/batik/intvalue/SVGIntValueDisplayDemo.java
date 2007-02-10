@@ -20,14 +20,16 @@ import org.w3c.dom.Element;
 import de.jdemo.extensions.SwingDemoCase;
 
 public class SVGIntValueDisplayDemo extends SwingDemoCase {
+  private static final int MAX_DOTS = 7;
+
   public void demoSVGIntValueDisplay() throws Exception {
     DOMImplementation impl = SVGDOMImplementation.getDOMImplementation();
     Document document = impl.createDocument(SVGDOMImplementation.SVG_NAMESPACE_URI, "svg", null); //$NON-NLS-1$
     AnathemaCanvas canvas = new AnathemaCanvas();
     canvas.setDocument(document);
-    SVGIntValueDisplay display = new SVGIntValueDisplay(7, Color.GREEN, 3, 10);
+    SVGIntValueDisplay display = new SVGIntValueDisplay(7, 7, Color.GREEN, 3, 10);
     display.addIntValueChangedListener(new IIntValueChangedListener() {
-      public void valueChanged(int newValue) {
+      public void valueChanged(final int newValue) {
         System.out.println(newValue);
       }
     });
@@ -41,9 +43,9 @@ public class SVGIntValueDisplayDemo extends SwingDemoCase {
     Document document = impl.createDocument(SVGDOMImplementation.SVG_NAMESPACE_URI, "svg", null); //$NON-NLS-1$
     AnathemaCanvas canvas = new AnathemaCanvas();
     canvas.setDocument(document);
-    SVGDefaultTraitView display = new SVGDefaultTraitView(7, 130, Color.GREEN, "Testtext", 4); //$NON-NLS-1$
+    SVGDefaultTraitView display = new SVGDefaultTraitView(7, 7, 130, Color.GREEN, "Testtext", 4); //$NON-NLS-1$
     display.addIntValueChangedListener(new IIntValueChangedListener() {
-      public void valueChanged(int newValue) {
+      public void valueChanged(final int newValue) {
         System.out.println(newValue);
       }
     });
@@ -57,7 +59,7 @@ public class SVGIntValueDisplayDemo extends SwingDemoCase {
     Document document = impl.createDocument(SVGDOMImplementation.SVG_NAMESPACE_URI, "svg", null); //$NON-NLS-1$
     AnathemaCanvas canvas = new AnathemaCanvas();
     canvas.setDocument(document);
-    SVGMultiLearnableCharmView display = new SVGMultiLearnableCharmView("MyCharm", 190, Color.GREEN); //$NON-NLS-1$
+    SVGMultiLearnableCharmView display = new SVGMultiLearnableCharmView("MyCharm", 190, Color.GREEN, MAX_DOTS); //$NON-NLS-1$
     display.addCategory("First", 7, 2); //$NON-NLS-1$
     display.addCategory("Second", 4, 4); //$NON-NLS-1$
     display.addCategory("Third", 6, 3); //$NON-NLS-1$
@@ -71,7 +73,7 @@ public class SVGIntValueDisplayDemo extends SwingDemoCase {
     Document document = impl.createDocument(SVGDOMImplementation.SVG_NAMESPACE_URI, "svg", null); //$NON-NLS-1$
     AnathemaCanvas canvas = new AnathemaCanvas();
     canvas.setDocument(document);
-    SVGMultiLearnableCharmView display = new SVGMultiLearnableCharmView("MyCharm", 190, Color.GREEN); //$NON-NLS-1$
+    SVGMultiLearnableCharmView display = new SVGMultiLearnableCharmView("MyCharm", 190, Color.GREEN, MAX_DOTS); //$NON-NLS-1$
     display.addCategory("First", 7, 2); //$NON-NLS-1$
     display.addCategory("Second", 4, 4); //$NON-NLS-1$
     display.addCategory("Third", 6, 3); //$NON-NLS-1$
@@ -87,7 +89,7 @@ public class SVGIntValueDisplayDemo extends SwingDemoCase {
     Document document = impl.createDocument(SVGDOMImplementation.SVG_NAMESPACE_URI, "svg", null); //$NON-NLS-1$
     AnathemaCanvas canvas = new AnathemaCanvas();
     canvas.setDocument(document);
-    SVGMultiLearnableCharmView display = new SVGMultiLearnableCharmView("MyCharm", 190, Color.GREEN); //$NON-NLS-1$
+    SVGMultiLearnableCharmView display = new SVGMultiLearnableCharmView("MyCharm", 190, Color.GREEN, MAX_DOTS); //$NON-NLS-1$
     display.addCategory("First", 7, 2); //$NON-NLS-1$
     final BoundsCalculator boundsCalculator = new BoundsCalculator();
     final SVGViewControlButton buttonView = new SVGViewControlButton(display, 190, "Categories"); //$NON-NLS-1$

@@ -2,6 +2,7 @@ package net.sf.anathema.character.impl.view.magic;
 
 import java.awt.Color;
 
+import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.presenter.charm.SpellViewProperties;
@@ -17,7 +18,7 @@ import net.sf.anathema.charmtree.presenter.view.ISVGSpecialCharmView;
 
 public class MagicViewFactory implements IMagicViewFactory {
 
-  public ICharmSelectionView createCharmSelectionView(ICharmTreeViewProperties properties) {
+  public ICharmSelectionView createCharmSelectionView(final ICharmTreeViewProperties properties) {
     return new CharmSelectionView(properties);
   }
 
@@ -25,19 +26,28 @@ public class MagicViewFactory implements IMagicViewFactory {
     return new ComboConfigurationView();
   }
 
-  public ISpellView createSpellView(SpellViewProperties properties) {
+  public ISpellView createSpellView(final SpellViewProperties properties) {
     return new SpellView(properties);
   }
 
-  public SVGMultiLearnableCharmView createMultiLearnableCharmView(ISpecialCharm charm, double width, Color color) {
-    return new SVGMultiLearnableCharmView(charm.getCharmId(), width, color);
+  public SVGMultiLearnableCharmView createMultiLearnableCharmView(
+      final ISpecialCharm charm,
+      final double width,
+      final Color color) {
+    return new SVGMultiLearnableCharmView(charm.getCharmId(), width, color, EssenceTemplate.SYSTEM_ESSENCE_MAX);
   }
 
-  public SVGSubeffectCharmView createSubeffectCharmView(IMultipleEffectCharm charm, double width, Color color) {
+  public SVGSubeffectCharmView createSubeffectCharmView(
+      final IMultipleEffectCharm charm,
+      final double width,
+      final Color color) {
     return new SVGSubeffectCharmView(charm.getCharmId(), width, color);
   }
 
-  public ISVGSpecialCharmView createViewControlButton(ISVGSpecialCharmView view, double width, String label) {
+  public ISVGSpecialCharmView createViewControlButton(
+      final ISVGSpecialCharmView view,
+      final double width,
+      final String label) {
     return new SVGViewControlButton(view, width, label);
   }
 }

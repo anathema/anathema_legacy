@@ -2,7 +2,6 @@ package net.sf.anathema.charmtree.batik.intvalue;
 
 import java.awt.Color;
 
-import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.charmtree.batik.IBoundsCalculator;
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
@@ -18,18 +17,27 @@ public class SVGDefaultTraitView implements IIntValueView {
   private final SVGIntValueDisplay valueDisplay;
   private final String labelString;
   private final double maxWidth;
+  private final int widthInDots;
 
-  public SVGDefaultTraitView(int maxValue, double maxWidth, Color fillColor, String labelString, int initialValue) {
+  public SVGDefaultTraitView(
+      final int maxValue,
+      final int widthInDots,
+      final double maxWidth,
+      final Color fillColor,
+      final String labelString,
+      final int initialValue) {
+    this.widthInDots = widthInDots;
     this.maxWidth = maxWidth;
     this.labelString = labelString;
     this.valueDisplay = new SVGIntValueDisplay(
         maxValue,
+        widthInDots,
         fillColor,
         initialValue,
         SVGIntValueDisplay.getDiameter(maxWidth));
   }
 
-  public Element initGui(SVGOMDocument svgDocument, IBoundsCalculator boundsCalculator) {
+  public Element initGui(final SVGOMDocument svgDocument, final IBoundsCalculator boundsCalculator) {
     Element groupElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_G_TAG);
     Element textElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_TEXT_TAG);
     setAttribute(
@@ -41,37 +49,34 @@ public class SVGDefaultTraitView implements IIntValueView {
     groupElement.appendChild(textElement);
     Element valueGroupElement = valueDisplay.initGui(svgDocument, boundsCalculator);
     setAttribute(valueGroupElement, SVGConstants.SVG_TRANSFORM_ATTRIBUTE, "translate(" //$NON-NLS-1$
-        + String.valueOf(maxWidth
-            - EssenceTemplate.SYSTEM_ESSENCE_MAX
-            * SVGIntValueDisplay.getDiameter(maxWidth)
-            * 1.11)
+        + String.valueOf(maxWidth - widthInDots * SVGIntValueDisplay.getDiameter(maxWidth) * 1.11)
         + ",0)"); //$NON-NLS-1$
     groupElement.appendChild(valueGroupElement);
     return groupElement;
   }
 
-  private void setAttribute(org.w3c.dom.Element element, String attributeName, String attributeValue) {
+  private void setAttribute(final org.w3c.dom.Element element, final String attributeName, final String attributeValue) {
     element.setAttributeNS(null, attributeName, attributeValue);
   }
 
-  public void setValue(int newValue) {
+  public void setValue(final int newValue) {
     valueDisplay.setValue(newValue);
   }
 
-  public void addIntValueChangedListener(IIntValueChangedListener listener) {
+  public void addIntValueChangedListener(final IIntValueChangedListener listener) {
     valueDisplay.addIntValueChangedListener(listener);
 
   }
 
-  public void removeIntValueChangedListener(IIntValueChangedListener listener) {
+  public void removeIntValueChangedListener(final IIntValueChangedListener listener) {
     valueDisplay.removeIntValueChangedListener(listener);
   }
 
-  public void setMaximum(int maximalValue) {
+  public void setMaximum(final int maximalValue) {
     valueDisplay.setMaximum(maximalValue);
   }
 
-  public void setVisible(boolean visible) {
+  public void setVisible(final boolean visible) {
     valueDisplay.setVisible(visible);
   }
 }

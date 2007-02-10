@@ -22,24 +22,30 @@ public class SVGMultiLearnableCharmView implements ISVGMultiLearnableCharmView {
   private final double charmWidth;
   private final Color charmColor;
   private final List<SVGDefaultTraitView> categories = new ArrayList<SVGDefaultTraitView>();
+  private final int widthInDots;
 
-  public SVGMultiLearnableCharmView(String charmId, double charmWidth, Color charmColor) {
+  public SVGMultiLearnableCharmView(
+      final String charmId,
+      final double charmWidth,
+      final Color charmColor,
+      final int widthInDots) {
     this.charmId = charmId;
     this.charmWidth = charmWidth;
     this.charmColor = charmColor;
+    this.widthInDots = widthInDots;
   }
 
   public String getCharmId() {
     return charmId;
   }
 
-  public void setVisible(boolean visible) {
+  public void setVisible(final boolean visible) {
     for (SVGDefaultTraitView view : categories) {
       view.setVisible(visible);
     }
   }
 
-  public Element initGui(SVGOMDocument document, IBoundsCalculator boundsCalculator) {
+  public Element initGui(final SVGOMDocument document, final IBoundsCalculator boundsCalculator) {
     Element groupElement = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_G_TAG);
     groupElement.appendChild(createBorder(document));
     for (int index = 0; index < categories.size(); index++) {
@@ -53,11 +59,11 @@ public class SVGMultiLearnableCharmView implements ISVGMultiLearnableCharmView {
     return groupElement;
   }
 
-  private void setAttribute(org.w3c.dom.Element element, String attributeName, String attributeValue) {
+  private void setAttribute(final org.w3c.dom.Element element, final String attributeName, final String attributeValue) {
     element.setAttributeNS(null, attributeName, attributeValue);
   }
 
-  private Element createBorder(SVGDocument document) {
+  private Element createBorder(final SVGDocument document) {
     Element rectangle = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_RECT_TAG);
     setAttribute(rectangle, SVGConstants.SVG_X_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
     setAttribute(rectangle, SVGConstants.SVG_Y_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
@@ -71,8 +77,8 @@ public class SVGMultiLearnableCharmView implements ISVGMultiLearnableCharmView {
     return rectangle;
   }
 
-  public IIntValueView addCategory(String labelText, int maxValue, int value) {
-    SVGDefaultTraitView view = new SVGDefaultTraitView(maxValue, charmWidth, charmColor, labelText, value);
+  public IIntValueView addCategory(final String labelText, final int maxValue, final int value) {
+    SVGDefaultTraitView view = new SVGDefaultTraitView(maxValue, widthInDots, charmWidth, charmColor, labelText, value);
     categories.add(view);
     return view;
   }
