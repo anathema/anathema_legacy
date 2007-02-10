@@ -3,8 +3,8 @@ package net.sf.anathema.test.character.util;
 import java.util.Arrays;
 import java.util.List;
 
-import net.sf.anathema.charmtree.util.BackwardsIterable;
 import net.sf.anathema.lib.testing.BasicTestCase;
+import net.sf.anathema.platform.svgtree.document.util.BackwardsIterable;
 
 public class BackwardsIterableTest extends BasicTestCase {
 

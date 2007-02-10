@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import net.sf.anathema.character.generic.impl.template.presentation.AbstractPresentationProperties;
 import net.sf.anathema.character.generic.template.ITemplateType;
-import net.sf.anathema.character.generic.template.presentation.ITreePresentationProperties;
+import net.sf.anathema.platform.svgtree.document.ITreePresentationProperties;
 
 public class DragonKingPresentationProperties extends AbstractPresentationProperties {
 

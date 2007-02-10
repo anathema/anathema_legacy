@@ -10,7 +10,7 @@ import static net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConsta
 import static net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants.VALUE_VIEWBOX_SIZE;
 import static net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants.VALUE_XMID_YMIN_MEET;
 
-import net.sf.anathema.character.generic.template.presentation.ITreePresentationProperties;
+import net.sf.anathema.platform.svgtree.document.ITreePresentationProperties;
 
 import org.apache.batik.util.SVGConstants;
 import org.dom4j.Document;

@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.character.generic.template.presentation.ITreePresentationProperties;
 import net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants;
 import net.sf.anathema.platform.svgtree.document.svg.SVGCreationUtils;
 import net.sf.anathema.platform.svgtree.document.svg.SVGDocumentFrameFactory;

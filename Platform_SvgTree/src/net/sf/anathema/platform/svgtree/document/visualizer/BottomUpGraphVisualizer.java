@@ -7,14 +7,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-import net.sf.anathema.character.generic.template.presentation.ITreePresentationProperties;
-import net.sf.anathema.charmtree.util.BackwardsIterable;
 import net.sf.anathema.lib.collection.ListOrderedSet;
+import net.sf.anathema.platform.svgtree.document.ITreePresentationProperties;
 import net.sf.anathema.platform.svgtree.document.IVisualizedGraph;
 import net.sf.anathema.platform.svgtree.document.VisualizedGraph;
 import net.sf.anathema.platform.svgtree.document.components.ILayer;
 import net.sf.anathema.platform.svgtree.document.components.VisualizableNodePositionComparator;
 import net.sf.anathema.platform.svgtree.document.components.nodes.IVisualizableNode;
+import net.sf.anathema.platform.svgtree.document.util.BackwardsIterable;
 import net.sf.anathema.platform.svgtree.graph.graph.IProperHierarchicalGraph;
 import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
 

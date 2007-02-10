@@ -2,7 +2,7 @@ package net.sf.anathema.character.sidereal.presentation;
 
 import java.awt.Dimension;
 
-import net.sf.anathema.character.generic.template.presentation.ITreePresentationProperties;
+import net.sf.anathema.platform.svgtree.document.ITreePresentationProperties;
 
 public class SiderealCharmPresentationProperties implements ITreePresentationProperties {
 

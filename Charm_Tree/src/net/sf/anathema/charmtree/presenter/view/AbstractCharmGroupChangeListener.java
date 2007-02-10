@@ -11,10 +11,10 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
-import net.sf.anathema.character.generic.template.presentation.ITreePresentationProperties;
 import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.document.CascadeDocumentFactory;
+import net.sf.anathema.platform.svgtree.document.ITreePresentationProperties;
 import net.sf.anathema.platform.svgtree.graph.nodes.IRegularNode;
 
 import org.apache.batik.dom.svg12.SVG12DOMImplementation;

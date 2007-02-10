@@ -1,4 +1,4 @@
-package net.sf.anathema.charmtree.util;
+package net.sf.anathema.platform.svgtree.document.util;
 
 import java.util.Arrays;
 import java.util.Iterator;

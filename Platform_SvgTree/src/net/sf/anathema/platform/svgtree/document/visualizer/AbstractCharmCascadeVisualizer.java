@@ -3,8 +3,8 @@ package net.sf.anathema.platform.svgtree.document.visualizer;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.sf.anathema.character.generic.template.presentation.ITreePresentationProperties;
 import net.sf.anathema.lib.collection.MultiEntryMap;
+import net.sf.anathema.platform.svgtree.document.ITreePresentationProperties;
 import net.sf.anathema.platform.svgtree.document.components.ILayer;
 import net.sf.anathema.platform.svgtree.document.components.Layer;
 import net.sf.anathema.platform.svgtree.document.components.nodes.IVisualizableNode;

@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.svgtree.document.visualizer;
 
-import net.sf.anathema.character.generic.template.presentation.ITreePresentationProperties;
+import net.sf.anathema.platform.svgtree.document.ITreePresentationProperties;
 import net.sf.anathema.platform.svgtree.document.IVisualizedGraph;
 import net.sf.anathema.platform.svgtree.document.SingleNodeVisualizedGraph;
 import net.sf.anathema.platform.svgtree.document.components.ILayer;

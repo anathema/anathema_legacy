@@ -1,4 +1,4 @@
-package net.sf.anathema.character.generic.template.presentation;
+package net.sf.anathema.platform.svgtree.document;
 
 import java.awt.Dimension;
 
