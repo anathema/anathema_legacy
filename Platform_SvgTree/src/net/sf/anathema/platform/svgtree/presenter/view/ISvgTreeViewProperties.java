@@ -4,7 +4,6 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 
 public interface ISvgTreeViewProperties {
-  public static final String REQUIREMENT = "Requirement"; //$NON-NLS-1$
 
   public String getNodeName(String nodeId);
 
@@ -27,8 +26,4 @@ public interface ISvgTreeViewProperties {
   public Dimension getDimension();
 
   public void setDimension(Dimension dimension);
-
-  // TODO Löschen?
-  @Deprecated
-  public boolean isRequirementNode(String nodeId);
 }

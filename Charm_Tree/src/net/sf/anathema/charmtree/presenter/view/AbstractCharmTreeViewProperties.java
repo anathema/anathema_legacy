@@ -9,20 +9,20 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.CharmInfo
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmInfoStringBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 
-public abstract class AbstractCharmTreeViewProperties implements ISvgTreeViewProperties {
+public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewProperties {
 
+  private static final String REQUIREMENT = "Requirement"; //$NON-NLS-1$
   private Dimension dimension = new Dimension(0, 0);
   private final ICharmInfoStringBuilder tooltipTextProvider;
   private final IResources resources;
 
-  public AbstractCharmTreeViewProperties(IResources resources) {
+  public AbstractCharmTreeViewProperties(final IResources resources) {
     this.resources = resources;
     tooltipTextProvider = new CharmInfoStringBuilder(resources);
   }
 
-  public final String getNodeName(String nodeId) {
+  public final String getNodeName(final String nodeId) {
     if (resources.supportsKey(nodeId)) {
       return resources.getString(nodeId);
     }
@@ -37,11 +37,11 @@ public abstract class AbstractCharmTreeViewProperties implements ISvgTreeViewPro
     throw new UnreachableCodeReachedException("Node " + nodeId + " must be requirement or charm."); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
-  public final boolean isRequirementNode(String nodeId) {
+  public final boolean isRequirementNode(final String nodeId) {
     return nodeId.startsWith(REQUIREMENT);
   }
 
-  public final boolean isRootNode(String charmId) {
+  public final boolean isRootNode(final String charmId) {
     if (isRequirementNode(charmId)) {
       return false;
     }
@@ -49,7 +49,7 @@ public abstract class AbstractCharmTreeViewProperties implements ISvgTreeViewPro
     return charm.isTreeRoot();
   }
 
-  private ICharm findNonNullCharm(String charmId) {
+  private ICharm findNonNullCharm(final String charmId) {
     ICharm charm = getCharmById(charmId);
     Ensure.ensureNotNull("Charm with id '" + charmId + " not found.", charm); //$NON-NLS-1$ //$NON-NLS-2$
     return charm;
@@ -61,7 +61,7 @@ public abstract class AbstractCharmTreeViewProperties implements ISvgTreeViewPro
     return Cursor.getDefaultCursor();
   }
 
-  public final String getToolTip(String charmId) {
+  public final String getToolTip(final String charmId) {
     if (isRequirementNode(charmId)) {
       return ""; //$NON-NLS-1$
     }
@@ -73,7 +73,7 @@ public abstract class AbstractCharmTreeViewProperties implements ISvgTreeViewPro
     return dimension;
   }
 
-  public void setDimension(Dimension dimension) {
+  public void setDimension(final Dimension dimension) {
     this.dimension = dimension;
   }
 }
