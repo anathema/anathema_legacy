@@ -4,8 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 
-import net.sf.anathema.character.generic.framework.magic.treelayout.ordering.leaf.IStructureNode;
-import net.sf.anathema.character.generic.framework.magic.treelayout.ordering.leaf.LeafStructureOptimizer;
+import net.sf.anathema.platform.svgtree.graph.ordering.leaf.IStructureNode;
+import net.sf.anathema.platform.svgtree.graph.ordering.leaf.LeafStructureOptimizer;
 
 import org.junit.Test;
 

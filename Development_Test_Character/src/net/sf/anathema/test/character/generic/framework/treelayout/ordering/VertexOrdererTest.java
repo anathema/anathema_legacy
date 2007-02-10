@@ -2,12 +2,12 @@ package net.sf.anathema.test.character.generic.framework.treelayout.ordering;
 
 import java.util.Arrays;
 
-import net.sf.anathema.character.generic.framework.magic.treelayout.graph.IProperHierarchicalGraph;
-import net.sf.anathema.character.generic.framework.magic.treelayout.graph.ProperHierarchicalGraph;
-import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.ISimpleNode;
-import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.NodeFactory;
-import net.sf.anathema.character.generic.framework.magic.treelayout.ordering.UrsVertexOrderer;
 import net.sf.anathema.lib.testing.BasicTestCase;
+import net.sf.anathema.platform.svgtree.graph.graph.IProperHierarchicalGraph;
+import net.sf.anathema.platform.svgtree.graph.graph.ProperHierarchicalGraph;
+import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
+import net.sf.anathema.platform.svgtree.graph.nodes.NodeFactory;
+import net.sf.anathema.platform.svgtree.graph.ordering.UrsVertexOrderer;
 
 public class VertexOrdererTest extends BasicTestCase {
 

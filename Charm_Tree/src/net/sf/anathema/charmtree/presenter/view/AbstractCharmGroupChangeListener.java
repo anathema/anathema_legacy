@@ -7,7 +7,6 @@ import java.util.Set;
 
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.magic.CharmGraphNodeBuilder;
-import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IRegularNode;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
@@ -16,6 +15,7 @@ import net.sf.anathema.character.generic.template.presentation.ITreePresentation
 import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.document.CascadeDocumentFactory;
+import net.sf.anathema.platform.svgtree.graph.nodes.IRegularNode;
 
 import org.apache.batik.dom.svg12.SVG12DOMImplementation;
 import org.dom4j.Document;

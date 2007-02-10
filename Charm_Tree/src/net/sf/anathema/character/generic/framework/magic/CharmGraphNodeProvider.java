@@ -4,9 +4,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.lib.collection.MultiEntryMap;
+import net.sf.anathema.platform.svgtree.graph.nodes.IIdentifiedRegularNode;
 
 public class CharmGraphNodeProvider {
 

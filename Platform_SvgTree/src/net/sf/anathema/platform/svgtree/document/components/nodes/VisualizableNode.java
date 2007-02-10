@@ -3,11 +3,11 @@ package net.sf.anathema.platform.svgtree.document.components.nodes;
 import java.awt.Dimension;
 import java.util.Map;
 
-import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IIdentifiedRegularNode;
-import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.ISimpleNode;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants;
 import net.sf.anathema.platform.svgtree.document.svg.SVGCreationUtils;
+import net.sf.anathema.platform.svgtree.graph.nodes.IIdentifiedRegularNode;
+import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
 
 import org.apache.batik.util.SVG12Constants;
 import org.apache.batik.util.SVGConstants;

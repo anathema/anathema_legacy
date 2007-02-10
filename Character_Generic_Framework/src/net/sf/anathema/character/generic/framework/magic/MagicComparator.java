@@ -4,9 +4,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.sf.anathema.character.generic.framework.magic.treelayout.layering.TopologyBuilder;
-import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IIdentifiedRegularNode;
-import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IRegularNode;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
@@ -16,6 +13,9 @@ import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.platform.svgtree.graph.layering.TopologyBuilder;
+import net.sf.anathema.platform.svgtree.graph.nodes.IIdentifiedRegularNode;
+import net.sf.anathema.platform.svgtree.graph.nodes.IRegularNode;
 
 public class MagicComparator implements Comparator<IMagic> {
 

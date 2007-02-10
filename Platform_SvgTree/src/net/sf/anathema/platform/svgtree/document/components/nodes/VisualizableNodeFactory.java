@@ -4,9 +4,9 @@ import java.awt.Dimension;
 import java.util.Map;
 import java.util.Set;
 
-import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IIdentifiedRegularNode;
-import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.ISimpleNode;
 import net.sf.anathema.lib.collection.MultiEntryMap;
+import net.sf.anathema.platform.svgtree.graph.nodes.IIdentifiedRegularNode;
+import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
 
 public class VisualizableNodeFactory {
 

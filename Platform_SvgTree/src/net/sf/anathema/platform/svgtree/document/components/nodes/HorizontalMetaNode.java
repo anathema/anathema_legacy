@@ -9,9 +9,9 @@ import java.util.Set;
 
 import org.dom4j.Element;
 
-import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.ISimpleNode;
 import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.platform.svgtree.document.components.ILayer;
+import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
 
 public class HorizontalMetaNode extends AbstractVisualizableNode {
 

@@ -4,11 +4,6 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.character.generic.framework.magic.treelayout.SugiyamaLayout;
-import net.sf.anathema.character.generic.framework.magic.treelayout.graph.IProperHierarchicalGraph;
-import net.sf.anathema.character.generic.framework.magic.treelayout.graph.type.IGraphType;
-import net.sf.anathema.character.generic.framework.magic.treelayout.graph.type.IGraphTypeVisitor;
-import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IRegularNode;
 import net.sf.anathema.character.generic.template.presentation.ITreePresentationProperties;
 import net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants;
 import net.sf.anathema.platform.svgtree.document.svg.SVGCreationUtils;
@@ -17,6 +12,11 @@ import net.sf.anathema.platform.svgtree.document.visualizer.BottomUpGraphVisuali
 import net.sf.anathema.platform.svgtree.document.visualizer.InvertedTreeVisualizer;
 import net.sf.anathema.platform.svgtree.document.visualizer.SingleNodeVisualizer;
 import net.sf.anathema.platform.svgtree.document.visualizer.TreeVisualizer;
+import net.sf.anathema.platform.svgtree.graph.SugiyamaLayout;
+import net.sf.anathema.platform.svgtree.graph.graph.IProperHierarchicalGraph;
+import net.sf.anathema.platform.svgtree.graph.graph.type.IGraphType;
+import net.sf.anathema.platform.svgtree.graph.graph.type.IGraphTypeVisitor;
+import net.sf.anathema.platform.svgtree.graph.nodes.IRegularNode;
 
 import org.apache.batik.util.SVGConstants;
 import org.dom4j.Document;
@@ -74,13 +74,13 @@ public class CascadeDocumentFactory {
     return cascadeDocument;
   }
 
-  private Element createCascadeElement(Element root) {
+  private Element createCascadeElement(final Element root) {
     Element cascadeElement = root.addElement(SVGCreationUtils.createSVGQName(SVGConstants.SVG_G_TAG));
     cascadeElement.addAttribute(SVGConstants.SVG_ID_ATTRIBUTE, ISVGCascadeXMLConstants.VALUE_CASCADE_ID);
     return cascadeElement;
   }
 
-  private void setViewBox(double width, double height, Element root) {
+  private void setViewBox(final double width, final double height, final Element root) {
     if (height > MAXIMUM_DIMENSION.height || width > MAXIMUM_DIMENSION.width) {
       double viewBoxHeight = Math.max(height, width / 2.24);
       double viewBoxWidth = Math.max(width, height * 2.24) + 10;
@@ -88,24 +88,26 @@ public class CascadeDocumentFactory {
     }
   }
 
-  private List<IVisualizedGraph> visualizeGraphs(IRegularNode[] nodes, final ITreePresentationProperties properties) {
+  private List<IVisualizedGraph> visualizeGraphs(
+      final IRegularNode[] nodes,
+      final ITreePresentationProperties properties) {
     final IProperHierarchicalGraph[] graphs = layout.createProperHierarchicalGraphs(nodes);
     final List<IVisualizedGraph> visualizedGraphs = new ArrayList<IVisualizedGraph>(graphs.length);
     for (final IProperHierarchicalGraph graph : graphs) {
       graph.getType().accept(new IGraphTypeVisitor() {
-        public void visitDirectedGraph(IGraphType visitedType) {
+        public void visitDirectedGraph(final IGraphType visitedType) {
           visualizedGraphs.add(new BottomUpGraphVisualizer(graph, properties).buildCharmTree());
         }
 
-        public void visitInvertedTree(IGraphType visitedType) {
+        public void visitInvertedTree(final IGraphType visitedType) {
           visualizedGraphs.add(new InvertedTreeVisualizer(graph, properties).buildCharmTree());
         }
 
-        public void visitTree(IGraphType visitedType) {
+        public void visitTree(final IGraphType visitedType) {
           visualizedGraphs.add(new TreeVisualizer(graph, properties).buildCharmTree());
         }
 
-        public void visitSingle(IGraphType visitedType) {
+        public void visitSingle(final IGraphType visitedType) {
           visualizedGraphs.add(new SingleNodeVisualizer(properties, graph).buildCharmTree());
         }
       });

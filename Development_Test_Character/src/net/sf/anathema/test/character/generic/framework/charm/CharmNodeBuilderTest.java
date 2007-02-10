@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 import net.sf.anathema.character.generic.framework.magic.CharmNodeBuilder;
-import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.character.generic.impl.magic.CharmAttribute;
 import net.sf.anathema.character.generic.impl.magic.CharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.lib.testing.BasicTestCase;
+import net.sf.anathema.platform.svgtree.graph.nodes.IIdentifiedRegularNode;
 
 public class CharmNodeBuilderTest extends BasicTestCase {
 
