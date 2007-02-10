@@ -2,16 +2,13 @@ package net.sf.anathema.charmtree.provider;
 
 import java.awt.Dimension;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import net.sf.anathema.character.generic.framework.magic.CharmGraphNodeBuilder;
 import net.sf.anathema.character.generic.framework.magic.treelayout.SugiyamaLayout;
 import net.sf.anathema.character.generic.framework.magic.treelayout.graph.IProperHierarchicalGraph;
 import net.sf.anathema.character.generic.framework.magic.treelayout.graph.type.IGraphType;
 import net.sf.anathema.character.generic.framework.magic.treelayout.graph.type.IGraphTypeVisitor;
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IRegularNode;
-import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.template.presentation.ITreePresentationProperties;
 import net.sf.anathema.charmtree.provider.svg.ISVGCascadeXMLConstants;
 import net.sf.anathema.charmtree.provider.svg.SVGCreationUtils;
@@ -26,12 +23,12 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 
 public class CascadeDocumentFactory {
-  
+
   private final static Dimension MAXIMUM_DIMENSION = new Dimension(1400, 625);
   private final SugiyamaLayout layout = new SugiyamaLayout();
   private final SVGDocumentFrameFactory factory = new SVGDocumentFrameFactory();
 
-  public Document createCascadeDocument(IRegularNode[] nodes, final ITreePresentationProperties properties) {
+  public Document createCascadeDocument(final IRegularNode[] nodes, final ITreePresentationProperties properties) {
     final List<IVisualizedGraph> visualizedGraphs = visualizeGraphs(nodes, properties);
     return placeOnCanvas(properties, visualizedGraphs);
   }
