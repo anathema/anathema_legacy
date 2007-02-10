@@ -19,12 +19,15 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
   private final Dimension gapDimension;
   private final Map<ISimpleNode, IVisualizableNode> innerVisualizableNodesByContent = new HashMap<ISimpleNode, IVisualizableNode>();
 
-  public HorizontalMetaNode(Map<ISimpleNode, IVisualizableNode> map, Dimension charmDimension, Dimension gapDimension) {
-    super(map, charmDimension);
+  public HorizontalMetaNode(
+      final Map<ISimpleNode, IVisualizableNode> map,
+      final Dimension nodeDimension,
+      final Dimension gapDimension) {
+    super(map, nodeDimension);
     this.gapDimension = gapDimension;
   }
 
-  public void addInnerNode(ISimpleNode node, IVisualizableNode visualizableNode) {
+  public void addInnerNode(final ISimpleNode node, final IVisualizableNode visualizableNode) {
     contentNodes.add(node);
     innerVisualizableNodesByContent.put(node, visualizableNode);
   }
@@ -69,7 +72,7 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
     }
   }
 
-  public boolean isOfSameLeafGroup(IVisualizableNode node) {
+  public boolean isOfSameLeafGroup(final IVisualizableNode node) {
     for (IVisualizableNode visualizableNode : getInnerNodes()) {
       if (visualizableNode.isOfSameLeafGroup(node)) {
         return true;
@@ -78,7 +81,7 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
     return false;
   }
 
-  public void accept(IVisualizableNodeVisitor visitor) {
+  public void accept(final IVisualizableNodeVisitor visitor) {
     visitor.visitHorizontalMetaNode(this);
   }
 
@@ -91,7 +94,7 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
   }
 
   @Override
-  public void setLayer(ILayer layer) {
+  public void setLayer(final ILayer layer) {
     for (IVisualizableNode node : getInnerNodes()) {
       node.setLayer(layer);
     }
@@ -109,7 +112,7 @@ public class HorizontalMetaNode extends AbstractVisualizableNode {
     return false;
   }
 
-  public final void toXML(Element element) {
+  public final void toXML(final Element element) {
     throw new UnsupportedOperationException("Metanodes should be unrolled before creating XML."); //$NON-NLS-1$
   }
 

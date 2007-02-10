@@ -12,14 +12,14 @@ import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
 import net.sf.anathema.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.lib.gui.IView;
-import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 
 public class CascadeView extends AbstractCascadeSelectionView implements ICascadeView, IView {
 
   private JPanel content;
   private final JPanel rulesPanel = new JPanel();
 
-  public CascadeView(ICharmTreeViewProperties treeProperties) {
+  public CascadeView(ISvgTreeViewProperties treeProperties) {
     super(treeProperties);
   }
 
@@ -48,7 +48,7 @@ public class CascadeView extends AbstractCascadeSelectionView implements ICascad
   }
 
   public void setCharmVisuals(String id, Color color) {
-    getCharmTreeView().setCharmBackgroundColor(id, color);
+    getCharmTreeView().setNodeBackgroundColor(id, color);
   }
 
   public void setBackgroundColor(Color color) {

@@ -5,12 +5,12 @@ import java.awt.Dimension;
 import javax.swing.ListCellRenderer;
 
 import net.sf.anathema.lib.util.IIdentificate;
-import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeView;
+import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
 import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
 
 public interface ICascadeSelectionView {
 
-  public ICharmTreeView getCharmTreeView();
+  public ISvgTreeView getCharmTreeView();
 
   public void addDocumentLoadedListener(IDocumentLoadedListener listener);
 

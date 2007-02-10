@@ -18,7 +18,7 @@ import net.sf.anathema.platform.svgtree.document.util.BackwardsIterable;
 import net.sf.anathema.platform.svgtree.graph.graph.IProperHierarchicalGraph;
 import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
 
-public class BottomUpGraphVisualizer extends AbstractCharmCascadeVisualizer {
+public class BottomUpGraphVisualizer extends AbstractCascadeVisualizer {
 
   // BASIC:
   // 1. Build Sugiyama layout
@@ -80,7 +80,7 @@ public class BottomUpGraphVisualizer extends AbstractCharmCascadeVisualizer {
     super(properties, graph);
   }
 
-  public IVisualizedGraph buildCharmTree() {
+  public IVisualizedGraph buildTree() {
     int layerCount = getGraph().getDeepestLayer();
     for (int layerIndex = layerCount - 1; layerIndex >= 0; layerIndex--) {
       createLeafGroups(layerIndex);

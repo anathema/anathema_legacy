@@ -9,8 +9,8 @@ import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants;
 import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
-import net.sf.anathema.platform.svgtree.presenter.view.ICharmSelectionListener;
-import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.INodeSelectionListener;
+import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
 import net.sf.anathema.platform.svgtree.view.batik.BoundsCalculator;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
@@ -24,12 +24,12 @@ import org.w3c.dom.events.MouseEvent;
 import org.w3c.dom.svg.SVGDocument;
 import org.w3c.dom.svg.SVGGElement;
 
-public class CharmTreeListening {
+public class SvgTreeListening {
 
-  private ICharmTreeViewProperties properties;
+  private ISvgTreeViewProperties properties;
   private final IAnathemaCanvas canvas;
   private final BoundsCalculator boundsCalculator = new BoundsCalculator();
-  private final GenericControl<ICharmSelectionListener> control = new GenericControl<ICharmSelectionListener>();
+  private final GenericControl<INodeSelectionListener> control = new GenericControl<INodeSelectionListener>();
 
   private final EventListener canvasResettingListener = new EventListener() {
     public void handleEvent(Event evt) {
@@ -42,9 +42,9 @@ public class CharmTreeListening {
     public void handleEvent(Event evt) {
       if (evt instanceof MouseEvent) {
         SVGGElement group = (SVGGElement) evt.getCurrentTarget();
-        String charmId = group.getId();
-        setCursor(charmId);
-        setCanvasTooltip(charmId);
+        String nodeId = group.getId();
+        setCursor(nodeId);
+        setCanvasTooltip(nodeId);
       }
     }
   };
@@ -53,18 +53,18 @@ public class CharmTreeListening {
     public void handleEvent(Event evt) {
       if (evt instanceof MouseEvent && ((MouseEvent) evt).getButton() == 0 && ((MouseEvent) evt).getDetail() == 1) {
         SVGGElement group = (SVGGElement) evt.getCurrentTarget();
-        String charmId = group.getId();
-        fireCharmSelectionEvent(charmId);
-        setCursor(charmId);
+        String nodeId = group.getId();
+        fireNodeSelectionEvent(nodeId);
+        setCursor(nodeId);
       }
     }
   };
 
-  public CharmTreeListening(final AnathemaCanvas canvas) {
+  public SvgTreeListening(final AnathemaCanvas canvas) {
     this.canvas = canvas;
     canvas.addKeyListener(new KeyAdapter() {
       @Override
-      public void keyPressed(KeyEvent e) {
+      public void keyPressed(final KeyEvent e) {
         int key = e.getKeyCode();
         if (key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_LEFT || key == KeyEvent.VK_UP || key == KeyEvent.VK_DOWN) {
           boundsCalculator.reset();
@@ -78,7 +78,7 @@ public class CharmTreeListening {
     interactors.add(new DoubleRightClickResetTransformInteractor(boundsCalculator));
   }
 
-  public void addCharmSelectionListener(ICharmSelectionListener listener) {
+  public void addNodeSelectionListener(final INodeSelectionListener listener) {
     control.addListener(listener);
   }
 
@@ -99,15 +99,15 @@ public class CharmTreeListening {
     }
   }
 
-  private void fireCharmSelectionEvent(final String charmId) {
-    control.forAllDo(new IClosure<ICharmSelectionListener>() {
-      public void execute(ICharmSelectionListener input) {
-        input.charmSelected(charmId);
+  private void fireNodeSelectionEvent(final String nodeId) {
+    control.forAllDo(new IClosure<INodeSelectionListener>() {
+      public void execute(final INodeSelectionListener input) {
+        input.nodeSelected(nodeId);
       }
     });
   }
 
-  public void initDocumentListening(SVGDocument document) {
+  public void initDocumentListening(final SVGDocument document) {
     if (document == null) {
       return;
     }
@@ -123,11 +123,11 @@ public class CharmTreeListening {
     }
   }
 
-  private void setCanvasTooltip(String charmId) {
-    canvas.setToolTipText(properties.getToolTip(charmId));
+  private void setCanvasTooltip(final String node) {
+    canvas.setToolTipText(properties.getToolTip(node));
   }
 
-  public void setProperties(ICharmTreeViewProperties viewProperties) {
+  public void setProperties(final ISvgTreeViewProperties viewProperties) {
     this.properties = viewProperties;
   }
 
@@ -135,21 +135,21 @@ public class CharmTreeListening {
     return boundsCalculator;
   }
 
-  private void setCursor(String charmId) {
-    boolean isCharmSelected = properties.isCharmSelected(charmId);
-    boolean isCharmUnlearnable = properties.isCharmUnlearnable(charmId);
-    boolean isCharmLearnable = properties.isCharmLearnable(charmId);
-    setCursorForCharm(isCharmSelected, isCharmLearnable, isCharmUnlearnable);
-    setCanvasTooltip(charmId);
+  private void setCursor(final String nodeId) {
+    boolean isSelected = properties.isNodeSelected(nodeId);
+    boolean isDeselectable = properties.isNodeDeselectable(nodeId);
+    boolean isSelectable = properties.isNodeSelectable(nodeId);
+    setCursorForNode(isSelected, isSelectable, isDeselectable);
+    setCanvasTooltip(nodeId);
   }
 
-  private void setCursorForCharm(boolean isCharmSelected, boolean isCharmLearnable, boolean isCharmUnlearnable) {
+  private void setCursorForNode(boolean isSelected, boolean isSelectable, boolean isDeselectable) {
     Cursor currentCursor;
-    if (!isCharmSelected) {
-      currentCursor = !isCharmLearnable ? properties.getDefaultCursor() : properties.getAddCursor();
+    if (!isSelected) {
+      currentCursor = !isSelectable ? properties.getDefaultCursor() : properties.getAddCursor();
     }
     else {
-      currentCursor = !isCharmUnlearnable ? properties.getDefaultCursor() : properties.getRemoveCursor();
+      currentCursor = !isDeselectable ? properties.getDefaultCursor() : properties.getRemoveCursor();
     }
     canvas.setCursorInternal(currentCursor);
   }

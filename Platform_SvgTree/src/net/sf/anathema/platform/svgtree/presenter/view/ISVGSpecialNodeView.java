@@ -5,9 +5,9 @@ import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 import org.apache.batik.dom.svg.SVGOMDocument;
 import org.w3c.dom.Element;
 
-public interface ISVGSpecialCharmView {
+public interface ISVGSpecialNodeView {
 
-  public String getCharmId();
+  public String getNodeId();
 
   public Element initGui(SVGOMDocument document, IBoundsCalculator boundsCalculator);
 

@@ -6,25 +6,25 @@ import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCha
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.presenter.charm.SpellViewProperties;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionView;
-import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
-import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialCharmView;
-import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGMultiLearnableCharmView;
-import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGSubeffectCharmView;
+import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
+import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGCategorizedSpecialNodeView;
+import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGToggleButtonSpecialNodeView;
 
 public interface IMagicViewFactory {
 
-  public ICharmSelectionView createCharmSelectionView(ICharmTreeViewProperties viewProperties);
+  public ICharmSelectionView createCharmSelectionView(ISvgTreeViewProperties viewProperties);
 
   public IComboConfigurationView createCharmComboView();
 
   public ISpellView createSpellView(SpellViewProperties properties);
 
-  public SVGMultiLearnableCharmView createMultiLearnableCharmView(ISpecialCharm charm, double width, Color color);
+  public SVGCategorizedSpecialNodeView createMultiLearnableCharmView(ISpecialCharm charm, double width, Color color);
 
-  public SVGSubeffectCharmView createSubeffectCharmView(
+  public SVGToggleButtonSpecialNodeView createSubeffectCharmView(
       IMultipleEffectCharm visited,
       double charmWidth,
       Color characterColor);
 
-  public ISVGSpecialCharmView createViewControlButton(ISVGSpecialCharmView view, double width, String label);
+  public ISVGSpecialNodeView createViewControlButton(ISVGSpecialNodeView view, double width, String label);
 }

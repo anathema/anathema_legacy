@@ -12,13 +12,13 @@ import javax.swing.JComponent;
 import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
 import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
-import net.sf.anathema.platform.svgtree.presenter.view.ICharmSelectionListener;
-import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeView;
-import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
+import net.sf.anathema.platform.svgtree.presenter.view.INodeSelectionListener;
+import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
+import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
-import net.sf.anathema.platform.svgtree.view.listening.CharmTreeListening;
+import net.sf.anathema.platform.svgtree.view.listening.SvgTreeListening;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.swing.svg.SVGLoadEventDispatcherAdapter;
@@ -33,22 +33,22 @@ import org.w3c.dom.svg.SVGElement;
 import org.w3c.dom.svg.SVGTextElement;
 import org.w3c.dom.svg.SVGUseElement;
 
-public class CharmTreeView implements ICharmTreeView {
+public class SvgTreeView implements ISvgTreeView {
 
   private AnathemaCanvas canvas = new AnathemaCanvas();
-  private ICharmTreeViewProperties properties;
-  private final CharmTreeListening listening = new CharmTreeListening(canvas);
+  private ISvgTreeViewProperties properties;
+  private final SvgTreeListening listening = new SvgTreeListening(canvas);
 
-  public CharmTreeView(ICharmTreeViewProperties properties) {
+  public SvgTreeView(final ISvgTreeViewProperties properties) {
     setProperties(properties);
     addDocumentLoadedListener(new IDocumentLoadedListener() {
       public void documentLoaded() {
-        initCharmNames(canvas.getSVGDocument());
+        initNodeNames(canvas.getSVGDocument());
       }
     });
     canvas.addMouseMotionListener(new MouseMotionAdapter() {
       @Override
-      public void mouseDragged(MouseEvent evt) {
+      public void mouseDragged(final MouseEvent evt) {
         canvas.scrollRectToVisible(new Rectangle(evt.getX(), evt.getY(), 1, 1));
       }
     });
@@ -62,7 +62,7 @@ public class CharmTreeView implements ICharmTreeView {
     return canvas;
   }
 
-  public void loadCascade(SVGDocument document) {
+  public void loadCascade(final SVGDocument document) {
     listening.destructDocumentListening(canvas.getSVGDocument());
     if (document != null) {
       listening.initDocumentListening(document);
@@ -70,17 +70,17 @@ public class CharmTreeView implements ICharmTreeView {
     canvas.setDocument(document);
   }
 
-  public synchronized void addCharmSelectionListener(ICharmSelectionListener listener) {
-    listening.addCharmSelectionListener(listener);
+  public void addNodeSelectionListener(final INodeSelectionListener listener) {
+    listening.addNodeSelectionListener(listener);
   }
 
-  public void setCharmBackgroundColor(String charmId, Color color) {
+  public void setNodeBackgroundColor(final String nodeId, final Color color) {
     Ensure.ensureNotNull("Color must not be null.", color); //$NON-NLS-1$
-    SVGElement charmGroup = (SVGElement) canvas.getSVGDocument().getElementById(charmId);
-    if (charmGroup == null) {
+    SVGElement nodeGroup = (SVGElement) canvas.getSVGDocument().getElementById(nodeId);
+    if (nodeGroup == null) {
       return;
     }
-    NodeList list = charmGroup.getChildNodes();
+    NodeList list = nodeGroup.getChildNodes();
     for (int i = 0; i < list.getLength(); i++) {
       if (list.item(i) instanceof SVGUseElement) {
         SVGElement element = (SVGElement) list.item(i);
@@ -96,37 +96,30 @@ public class CharmTreeView implements ICharmTreeView {
     }
   }
 
-  public void setCharmAlpha(String charmId, int alpha) {
+  public void setNodeAlpha(final String nodeId, int alpha) {
     if (alpha > 255) {
       alpha = 255;
     }
     if (alpha < 0) {
       alpha = 0;
     }
-    SVGElement charmGroup = (SVGElement) canvas.getSVGDocument().getElementById(charmId);
-    if (charmGroup == null) {
+    SVGElement nodeGroup = (SVGElement) canvas.getSVGDocument().getElementById(nodeId);
+    if (nodeGroup == null) {
       return;
     }
-    charmGroup.setAttribute(SVGConstants.SVG_OPACITY_ATTRIBUTE, String.valueOf((float) alpha / 255));
+    nodeGroup.setAttribute(SVGConstants.SVG_OPACITY_ATTRIBUTE, String.valueOf((float) alpha / 255));
   }
 
   public void addDocumentLoadedListener(final IDocumentLoadedListener listener) {
     canvas.addSVGLoadEventDispatcherListener(new SVGLoadEventDispatcherAdapter() {
       @Override
-      public void svgLoadEventDispatchCompleted(SVGLoadEventDispatcherEvent arg0) {
+      public void svgLoadEventDispatchCompleted(final SVGLoadEventDispatcherEvent arg0) {
         listener.documentLoaded();
       }
     });
   }
 
-  // private void initCharmNames(SVGDocument svgDoc) {
-  // NodeList textNodes = svgDoc.getElementsByTagName(SVG12Constants.SVG_FLOW_PARA_TAG);
-  // for (int i = 0; i < textNodes.getLength(); i++) {
-  // internationalize((SVGTextContentElement) textNodes.item(i));
-  // }
-  // }
-
-  private void initCharmNames(SVGDocument svgDoc) {
+  private void initNodeNames(final SVGDocument svgDoc) {
     NodeList textNodes = svgDoc.getElementsByTagName(SVGConstants.SVG_TEXT_TAG);
     for (int i = 0; i < textNodes.getLength(); i++) {
       SVGTextElement currentNode = (SVGTextElement) textNodes.item(i);
@@ -135,18 +128,7 @@ public class CharmTreeView implements ICharmTreeView {
     }
   }
 
-  // private void internationalize(SVGTextContentElement currentNode) {
-  // String id = ((Text) currentNode.getFirstChild()).getData();
-  // String charmName = properties.getNodeName(id);
-  // if (properties.isRootCharm(id)) {
-  // currentNode.getFirstChild().setNodeValue(charmName.toUpperCase());
-  // }
-  // else {
-  // currentNode.getFirstChild().setNodeValue(charmName);
-  // }
-  // }
-
-  public void setCanvasBackground(Color color) {
+  public void setCanvasBackground(final Color color) {
     canvas.setBackground(color);
   }
 
@@ -160,7 +142,7 @@ public class CharmTreeView implements ICharmTreeView {
     canvas = null;
   }
 
-  public void setProperties(ICharmTreeViewProperties viewProperties) {
+  public void setProperties(final ISvgTreeViewProperties viewProperties) {
     this.properties = viewProperties;
     this.listening.setProperties(viewProperties);
   }
@@ -169,7 +151,7 @@ public class CharmTreeView implements ICharmTreeView {
     return listening.getBoundsCalculator();
   }
 
-  private void breakText(SVGTextElement text) {
+  private void breakText(final SVGTextElement text) {
     float textLength = text.getComputedTextLength();
     int lines = Math.min(3, (int) Math.ceil(textLength / 95));
     Document document = text.getOwnerDocument();
@@ -198,7 +180,12 @@ public class CharmTreeView implements ICharmTreeView {
     }
   }
 
-  private Element createTSpanElement(Document document, Text textNode, String xPosition, float varY, int dy) {
+  private Element createTSpanElement(
+      final Document document,
+      final Text textNode,
+      final String xPosition,
+      final float varY,
+      final int dy) {
     Element tSpanElement = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_TSPAN_TAG);
     tSpanElement.setAttribute(SVGConstants.SVG_X_ATTRIBUTE, xPosition);
     tSpanElement.setAttribute(SVGConstants.SVG_Y_ATTRIBUTE, String.valueOf(varY));
@@ -208,14 +195,14 @@ public class CharmTreeView implements ICharmTreeView {
     return tSpanElement;
   }
 
-  private void internationalize(SVGTextElement text) {
+  private void internationalize(final SVGTextElement text) {
     String id = ((Text) text.getFirstChild()).getData();
-    String charmName = properties.getNodeName(id);
-    if (properties.isRootCharm(id)) {
-      text.getFirstChild().setNodeValue(charmName.toUpperCase());
+    String nodeName = properties.getNodeName(id);
+    if (properties.isRootNode(id)) {
+      text.getFirstChild().setNodeValue(nodeName.toUpperCase());
     }
     else {
-      text.getFirstChild().setNodeValue(charmName);
+      text.getFirstChild().setNodeValue(nodeName);
     }
   }
 }

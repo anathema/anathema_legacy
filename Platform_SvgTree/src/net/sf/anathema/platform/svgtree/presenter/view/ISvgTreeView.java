@@ -8,21 +8,21 @@ import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
 import org.w3c.dom.svg.SVGDocument;
 
-public interface ICharmTreeView extends IView, IDisposable {
+public interface ISvgTreeView extends IView, IDisposable {
 
   public IAnathemaCanvas getCanvas();
 
-  public void addCharmSelectionListener(ICharmSelectionListener listener);
+  public void addNodeSelectionListener(INodeSelectionListener listener);
 
-  public void setCharmBackgroundColor(String charmId, Color color);
+  public void setNodeBackgroundColor(String nodeId, Color color);
 
-  public void setCharmAlpha(String charmId, int alpha);
+  public void setNodeAlpha(String nodeId, int alpha);
 
   public void addDocumentLoadedListener(IDocumentLoadedListener listener);
 
   public void setCanvasBackground(Color color);
 
-  public void setProperties(ICharmTreeViewProperties viewProperties);
+  public void setProperties(ISvgTreeViewProperties viewProperties);
 
   public void loadCascade(SVGDocument document);
 

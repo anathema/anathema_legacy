@@ -11,40 +11,40 @@ import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
 public class VisualizableNodeFactory {
 
   private final Map<ISimpleNode, IVisualizableNode> map;
-  private final Dimension charmDimension;
+  private final Dimension nodeDimension;
   private final Dimension gapDimension;
   private final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors;
 
   public VisualizableNodeFactory(
-      Dimension charmDimension,
-      Dimension gapDimension,
-      Map<ISimpleNode, IVisualizableNode> visualizableNodesByContent,
-      MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
-    this.charmDimension = charmDimension;
+      final Dimension nodeDimension,
+      final Dimension gapDimension,
+      final Map<ISimpleNode, IVisualizableNode> visualizableNodesByContent,
+      final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
+    this.nodeDimension = nodeDimension;
     this.gapDimension = gapDimension;
     this.map = visualizableNodesByContent;
     this.leafNodesByAncestors = leafNodesByAncestors;
   }
 
-  private IVisualizableNode createVisualizableNode(ISimpleNode contentNode) {
+  private IVisualizableNode createVisualizableNode(final ISimpleNode contentNode) {
     IVisualizableNode node;
     if (contentNode instanceof IIdentifiedRegularNode) {
-      node = new VisualizableNode((IIdentifiedRegularNode) contentNode, map, charmDimension, leafNodesByAncestors);
+      node = new VisualizableNode((IIdentifiedRegularNode) contentNode, map, nodeDimension, leafNodesByAncestors);
     }
     else {
-      node = new VisualizableDummyNode(contentNode, map, charmDimension, leafNodesByAncestors);
+      node = new VisualizableDummyNode(contentNode, map, nodeDimension, leafNodesByAncestors);
     }
     return node;
   }
 
-  public IVisualizableNode registerVisualizableNode(ISimpleNode contentNode) {
+  public IVisualizableNode registerVisualizableNode(final ISimpleNode contentNode) {
     IVisualizableNode node = createVisualizableNode(contentNode);
     map.put(contentNode, node);
     return node;
   }
 
-  public void registerHorizontalMetaNode(Set<ISimpleNode> contentNodes) {
-    HorizontalMetaNode metanode = new HorizontalMetaNode(map, charmDimension, gapDimension);
+  public void registerHorizontalMetaNode(final Set<ISimpleNode> contentNodes) {
+    HorizontalMetaNode metanode = new HorizontalMetaNode(map, nodeDimension, gapDimension);
     for (ISimpleNode node : contentNodes) {
       map.put(node, metanode);
       IVisualizableNode visualizableNode = createVisualizableNode(node);

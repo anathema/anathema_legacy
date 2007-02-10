@@ -9,9 +9,9 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.CharmInfo
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmInfoStringBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 
-public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewProperties {
+public abstract class AbstractCharmTreeViewProperties implements ISvgTreeViewProperties {
 
   private Dimension dimension = new Dimension(0, 0);
   private final ICharmInfoStringBuilder tooltipTextProvider;
@@ -41,7 +41,7 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
     return nodeId.startsWith(REQUIREMENT);
   }
 
-  public final boolean isRootCharm(String charmId) {
+  public final boolean isRootNode(String charmId) {
     if (isRequirementNode(charmId)) {
       return false;
     }

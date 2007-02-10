@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
-import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialCharmView;
+import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
@@ -13,14 +13,14 @@ import org.apache.batik.dom.svg.SVGOMDocument;
 import org.apache.batik.util.SVGConstants;
 import org.w3c.dom.Element;
 
-public class SVGSubeffectCharmView implements ISVGSpecialCharmView {
+public class SVGToggleButtonSpecialNodeView implements ISVGSpecialNodeView {
 
   private final String id;
   private final double width;
   private final Color color;
   private final List<SVGBooleanValueDisplay> effects = new ArrayList<SVGBooleanValueDisplay>();
 
-  public SVGSubeffectCharmView(String id, double width, Color color) {
+  public SVGToggleButtonSpecialNodeView(String id, double width, Color color) {
     this.id = id;
     this.width = width;
     this.color = color;
@@ -49,7 +49,7 @@ public class SVGSubeffectCharmView implements ISVGSpecialCharmView {
     }
   }
 
-  public String getCharmId() {
+  public String getNodeId() {
     return id;
   }
 

@@ -3,9 +3,9 @@ package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 import java.awt.Rectangle;
 
 import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
-import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeView;
-import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialCharmView;
-import net.sf.anathema.platform.svgtree.presenter.view.ISpecialCharmViewManager;
+import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
+import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
+import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeViewManager;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
 import org.apache.batik.dom.svg.SVGOMDocument;
@@ -14,25 +14,25 @@ import org.w3c.dom.Element;
 import org.w3c.dom.svg.SVGGElement;
 import org.w3c.dom.svg.SVGSVGElement;
 
-public class SVGSpecialCharmViewManager implements ISpecialCharmViewManager<ISVGSpecialCharmView> {
+public class SVGSpecialNodeViewManager implements ISpecialNodeViewManager<ISVGSpecialNodeView> {
 
   private final IAnathemaCanvas canvas;
   private final IBoundsCalculator boundsCalculator;
 
-  public SVGSpecialCharmViewManager(ICharmTreeView view) {
+  public SVGSpecialNodeViewManager(final ISvgTreeView view) {
     this.canvas = view.getCanvas();
     this.boundsCalculator = view.getBoundsCalculator();
   }
 
-  public void setSpecialCharmViewVisible(ICharmTreeView view, ISVGSpecialCharmView charmView, boolean visible) {
+  public void setSpecialNodeViewVisible(final ISvgTreeView view, final ISVGSpecialNodeView specialView, boolean visible) {
     SVGOMDocument document = (SVGOMDocument) canvas.getSVGDocument();
     if (!visible) {
-      charmView.setVisible(false);
+      specialView.setVisible(false);
     }
     else {
       SVGSVGElement rootElement = document.getRootElement();
-      Element viewElement = charmView.initGui(document, boundsCalculator);
-      Rectangle bounds = getGroupBounds(charmView.getCharmId());
+      Element viewElement = specialView.initGui(document, boundsCalculator);
+      Rectangle bounds = getGroupBounds(specialView.getNodeId());
       float xPosition = bounds.x / rootElement.getScreenCTM().getA();
       float yPosition = (bounds.y + bounds.height + 5) / rootElement.getScreenCTM().getD();
       setAttribute(viewElement, SVGConstants.SVG_TRANSFORM_ATTRIBUTE, "translate(" + xPosition + "," + yPosition + ")"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -40,12 +40,12 @@ public class SVGSpecialCharmViewManager implements ISpecialCharmViewManager<ISVG
     }
   }
 
-  private Rectangle getGroupBounds(String charmId) {
-    SVGGElement svgElement = (SVGGElement) canvas.getElementById(charmId);
+  private Rectangle getGroupBounds(final String nodeId) {
+    SVGGElement svgElement = (SVGGElement) canvas.getElementById(nodeId);
     return boundsCalculator.getBounds(svgElement);
   }
 
-  private void setAttribute(Element element, String attributeName, String attributeValue) {
+  private void setAttribute(final Element element, final String attributeName, final String attributeValue) {
     element.setAttributeNS(null, attributeName, attributeValue);
   }
 }

@@ -29,7 +29,7 @@ public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewPrope
     setDimension(dimension);
   }
 
-  public boolean isCharmSelected(String charmId) {
+  public boolean isNodeSelected(String charmId) {
     if (isRequirementNode(charmId)) {
       return false;
     }
@@ -44,11 +44,11 @@ public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewPrope
     return removeCursor;
   }
 
-  public boolean isCharmLearnable(String charmId) {
+  public boolean isNodeSelectable(String charmId) {
     return !StringUtilities.isNullOrEmpty(charmId) && !isRequirementNode(charmId) && configuration.isLearnable(charmId);
   }
 
-  public boolean isCharmUnlearnable(String charmId) {
+  public boolean isNodeDeselectable(String charmId) {
     return !StringUtilities.isNullOrEmpty(charmId)
         && !isRequirementNode(charmId)
         && configuration.isUnlearnable(charmId);

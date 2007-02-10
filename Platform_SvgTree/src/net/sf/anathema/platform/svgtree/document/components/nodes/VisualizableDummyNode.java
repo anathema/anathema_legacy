@@ -10,19 +10,19 @@ import org.dom4j.Element;
 
 public class VisualizableDummyNode extends AbstractSingleVisualizableNode {
 
-  public void accept(IVisualizableNodeVisitor visitor) {
+  public void accept(final IVisualizableNodeVisitor visitor) {
     visitor.visitDummyNode(this);
   }
 
   public VisualizableDummyNode(
-      ISimpleNode contentNode,
-      Map<ISimpleNode, IVisualizableNode> map,
-      Dimension charmDimension,
-      MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
-    super(contentNode, map, charmDimension, leafNodesByAncestors);
+      final ISimpleNode contentNode,
+      final Map<ISimpleNode, IVisualizableNode> map,
+      final Dimension nodeDimension,
+      final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
+    super(contentNode, map, nodeDimension, leafNodesByAncestors);
   }
 
-  public void toXML(Element element) {
+  public void toXML(final Element element) {
     // Nothing to do
   }
 }

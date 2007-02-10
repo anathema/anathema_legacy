@@ -12,14 +12,14 @@ import org.apache.batik.util.SVGConstants;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 
-public class SVGDefaultTraitView implements IIntValueView {
+public class SVGIntValueView implements IIntValueView {
 
   private final SVGIntValueDisplay valueDisplay;
   private final String labelString;
   private final double maxWidth;
   private final int widthInDots;
 
-  public SVGDefaultTraitView(
+  public SVGIntValueView(
       final int maxValue,
       final int widthInDots,
       final double maxWidth,

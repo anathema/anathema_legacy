@@ -7,17 +7,17 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.workflow.booleanvalue.IBooleanValueView;
-import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGSubeffectCharmView;
+import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGToggleButtonSpecialNodeView;
 
 public class MultipleEffectCharmPresenter implements IPresenter {
 
   private final IResources resources;
-  private final SVGSubeffectCharmView view;
+  private final SVGToggleButtonSpecialNodeView view;
   private final IMultipleEffectCharmConfiguration model;
 
   public MultipleEffectCharmPresenter(
       IResources resources,
-      SVGSubeffectCharmView subeffectView,
+      SVGToggleButtonSpecialNodeView subeffectView,
       IMultipleEffectCharmConfiguration model) {
     this.resources = resources;
     this.view = subeffectView;

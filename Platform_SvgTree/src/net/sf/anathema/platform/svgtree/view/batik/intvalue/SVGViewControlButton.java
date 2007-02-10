@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 
-import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialCharmView;
+import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
@@ -15,27 +15,27 @@ import org.w3c.dom.svg.SVGGElement;
 import org.w3c.dom.svg.SVGLocatable;
 import org.w3c.dom.svg.SVGSVGElement;
 
-public class SVGViewControlButton implements ISVGSpecialCharmView {
+public class SVGViewControlButton implements ISVGSpecialNodeView {
 
-  private final ISVGSpecialCharmView display;
-  private final double charmWidth;
+  private final ISVGSpecialNodeView display;
+  private final double nodeWidth;
   private boolean enabled = false;
   private Element displayElement;
   private Element outerGroupElement;
   private SVGSVGElement rootElement;
   private SVGButton button;
 
-  public SVGViewControlButton(ISVGSpecialCharmView display, double charmWidth, String label) {
+  public SVGViewControlButton(final ISVGSpecialNodeView display, final double nodeWidth, final String label) {
     this.display = display;
-    this.charmWidth = charmWidth;
-    this.button = new SVGButton(charmWidth, label);
+    this.nodeWidth = nodeWidth;
+    this.button = new SVGButton(nodeWidth, label);
   }
 
-  public String getCharmId() {
-    return display.getCharmId();
+  public String getNodeId() {
+    return display.getNodeId();
   }
 
-  public Element initGui(SVGOMDocument svgDocument, IBoundsCalculator boundsCalculator) {
+  public Element initGui(final SVGOMDocument svgDocument, final IBoundsCalculator boundsCalculator) {
     this.outerGroupElement = svgDocument.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_G_TAG);
     final SVGGElement buttonGroup = button.initGui(svgDocument);
     outerGroupElement.appendChild(buttonGroup);
@@ -43,7 +43,7 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
     setAttribute(
         displayElement,
         SVGConstants.SVG_TRANSFORM_ATTRIBUTE,
-        "translate(0," + SVGIntValueDisplay.getDiameter(charmWidth) * 1.15 + SVGButton.SHADOW_OFFSET + ")"); //$NON-NLS-1$ //$NON-NLS-2$
+        "translate(0," + SVGIntValueDisplay.getDiameter(nodeWidth) * 1.15 + SVGButton.SHADOW_OFFSET + ")"); //$NON-NLS-1$ //$NON-NLS-2$
     this.rootElement = svgDocument.getRootElement();
     buttonGroup.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, createDisplayListener(), false);
     svgDocument.addEventListener(SVGConstants.SVG_MOUSEUP_EVENT_TYPE, createRemoveListener(boundsCalculator), true);
@@ -53,7 +53,7 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
 
   private EventListener createRemoveListener(final IBoundsCalculator boundsCalculator) {
     return new EventListener() {
-      public void handleEvent(Event evt) {
+      public void handleEvent(final Event evt) {
         if (evt.getEventPhase() != Event.CAPTURING_PHASE) {
           return;
         }
@@ -74,7 +74,7 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
 
   private EventListener createDisplayListener() {
     return new EventListener() {
-      public void handleEvent(Event evt) {
+      public void handleEvent(final Event evt) {
         if (!(evt instanceof MouseEvent && ((MouseEvent) evt).getButton() == 0)) {
           return;
         }
@@ -101,7 +101,7 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
     setEnabled(true);
   }
 
-  private void setEnabled(boolean enabled) {
+  private void setEnabled(final boolean enabled) {
     this.enabled = enabled;
     button.setSelected(enabled);
   }
@@ -121,7 +121,7 @@ public class SVGViewControlButton implements ISVGSpecialCharmView {
     setEnabled(false);
   }
 
-  private void setAttribute(org.w3c.dom.Element element, String attributeName, String attributeValue) {
+  private void setAttribute(final org.w3c.dom.Element element, final String attributeName, final String attributeValue) {
     element.setAttributeNS(null, attributeName, attributeValue);
   }
 

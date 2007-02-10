@@ -28,7 +28,7 @@ public class SVGDocumentFrameFactory {
     defineRootAttributes(rootElement);
     QName defs = SVGCreationUtils.createSVGQName(SVGConstants.SVG_DEFS_TAG);
     Element defsElement = rootElement.addElement(defs);
-    addCharmFrameSymbol(properties, defsElement);
+    addNodeFrameSymbol(properties, defsElement);
     addArrowHeadSymbol(defsElement);
     Document frameDocument = DocumentFactory.getInstance().createDocument(rootElement);
     frameDocument.setDocType(new DefaultDocumentType(
@@ -49,7 +49,7 @@ public class SVGDocumentFrameFactory {
     polygonElement.addAttribute(SVGConstants.SVG_STROKE_WIDTH_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
   }
 
-  private void addCharmFrameSymbol(ITreePresentationProperties properties, Element defsElement) {
+  private void addNodeFrameSymbol(ITreePresentationProperties properties, Element defsElement) {
     QName frameSymbol = SVGCreationUtils.createSVGQName(SVGConstants.SVG_SYMBOL_TAG);
     Element frameSymbolElement = defsElement.addElement(frameSymbol);
     frameSymbolElement.addAttribute(SVGConstants.SVG_ID_ATTRIBUTE, VALUE_FRAME_ID);

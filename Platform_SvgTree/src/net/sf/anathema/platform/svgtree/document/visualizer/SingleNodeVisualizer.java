@@ -15,13 +15,13 @@ import org.dom4j.Element;
 import org.dom4j.QName;
 import org.dom4j.tree.DefaultElement;
 
-public class SingleNodeVisualizer extends AbstractCharmCascadeVisualizer {
+public class SingleNodeVisualizer extends AbstractCascadeVisualizer {
 
   public SingleNodeVisualizer(ITreePresentationProperties properties, IProperHierarchicalGraph graph) {
     super(properties, graph);
   }
 
-  public IVisualizedGraph buildCharmTree() {
+  public IVisualizedGraph buildTree() {
     ISimpleNode node = getGraph().getNodesByLayer(1)[0];
     IVisualizableNode visualizableNode = getNodeFactory().registerVisualizableNode(node);
     ILayer layer = new Layer(getProperties().getGapDimension(), 0);

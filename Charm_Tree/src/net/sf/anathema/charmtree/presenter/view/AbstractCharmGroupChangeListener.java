@@ -16,8 +16,8 @@ import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.document.CascadeDocumentFactory;
 import net.sf.anathema.platform.svgtree.document.ITreePresentationProperties;
 import net.sf.anathema.platform.svgtree.graph.nodes.IRegularNode;
-import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeView;
-import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
+import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 
 import org.apache.batik.dom.svg12.SVG12DOMImplementation;
 import org.dom4j.Document;
@@ -29,15 +29,15 @@ import org.w3c.dom.svg.SVGDocument;
 public abstract class AbstractCharmGroupChangeListener implements ICharmGroupChangeListener {
 
   private final CascadeDocumentFactory provider = new CascadeDocumentFactory();
-  private final ICharmTreeViewProperties viewProperties;
+  private final ISvgTreeViewProperties viewProperties;
   private final ITemplateRegistry templateRegistry;
-  private final ICharmTreeView charmTreeView;
+  private final ISvgTreeView charmTreeView;
   private final ICharmGroupArbitrator arbitrator;
   private ICharmGroup currentGroup;
 
   public AbstractCharmGroupChangeListener(
-      ICharmTreeView charmTreeView,
-      ICharmTreeViewProperties viewProperties,
+      ISvgTreeView charmTreeView,
+      ISvgTreeViewProperties viewProperties,
       ITemplateRegistry templateRegistry,
       ICharmGroupArbitrator arbitrator) {
     this.charmTreeView = charmTreeView;

@@ -15,11 +15,11 @@ public abstract class AbstractSingleVisualizableNode extends AbstractVisualizabl
   private final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors;
 
   public AbstractSingleVisualizableNode(
-      ISimpleNode content,
-      Map<ISimpleNode, IVisualizableNode> map,
-      Dimension charmDimension,
-      MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
-    super(map, charmDimension);
+      final ISimpleNode content,
+      final Map<ISimpleNode, IVisualizableNode> map,
+      final Dimension nodeDimension,
+      final MultiEntryMap<ISimpleNode, ISimpleNode> leafNodesByAncestors) {
+    super(map, nodeDimension);
     this.content = content;
     this.leafNodesByAncestors = leafNodesByAncestors;
   }
@@ -49,29 +49,29 @@ public abstract class AbstractSingleVisualizableNode extends AbstractVisualizabl
   }
 
   public int getWidth() {
-    return getCharmDimension().width;
+    return getNodeDimension().width;
   }
 
-  public boolean isOfSameLeafGroup(IVisualizableNode node) {
+  public boolean isOfSameLeafGroup(final IVisualizableNode node) {
     final boolean[] result = new boolean[1];
     node.accept(new IVisualizableNodeVisitor() {
 
-      public void visitSingleNode(VisualizableNode visitedNode) {
+      public void visitSingleNode(final VisualizableNode visitedNode) {
         result[0] = visitAbstractSingleNode(visitedNode);
       }
 
-      public void visitHorizontalMetaNode(HorizontalMetaNode visitedNode) {
+      public void visitHorizontalMetaNode(final HorizontalMetaNode visitedNode) {
         result[0] = visitedNode.isOfSameLeafGroup(AbstractSingleVisualizableNode.this);
       }
 
-      public void visitDummyNode(VisualizableDummyNode visitedNode) {
+      public void visitDummyNode(final VisualizableDummyNode visitedNode) {
         result[0] = visitAbstractSingleNode(visitedNode);
       }
     });
     return result[0];
   }
 
-  private boolean visitAbstractSingleNode(AbstractSingleVisualizableNode visitedNode) {
+  private boolean visitAbstractSingleNode(final AbstractSingleVisualizableNode visitedNode) {
     ISimpleNode otherContent = visitedNode.getContentNode();
     List<ISimpleNode> otherLeaves = leafNodesByAncestors.get(otherContent);
     List<ISimpleNode> thisLeaves = leafNodesByAncestors.get(content);

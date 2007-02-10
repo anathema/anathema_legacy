@@ -16,21 +16,21 @@ import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import net.sf.anathema.lib.util.IIdentificate;
-import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeView;
-import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
+import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
-import net.sf.anathema.platform.svgtree.view.CharmTreeView;
+import net.sf.anathema.platform.svgtree.view.SvgTreeView;
 
 public abstract class AbstractCascadeSelectionView implements ICascadeSelectionView {
 
   private IChangeableJComboBox<IIdentificate> groupComboBox;
   private IChangeableJComboBox<IIdentificate> typeComboBox;
   private final JPanel selectionPanel;
-  private final ICharmTreeView charmTreeView;
+  private final ISvgTreeView charmTreeView;
 
-  public AbstractCascadeSelectionView(ICharmTreeViewProperties treeProperties) {
+  public AbstractCascadeSelectionView(ISvgTreeViewProperties treeProperties) {
     this.selectionPanel = new JPanel(new GridDialogLayout(2, false));
-    this.charmTreeView = new CharmTreeView(treeProperties);
+    this.charmTreeView = new SvgTreeView(treeProperties);
   }
 
   public void addCharmTypeSelector(String title, IIdentificate[] types, ListCellRenderer renderer) {
@@ -83,7 +83,7 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
     return selectionPanel;
   }
 
-  public final ICharmTreeView getCharmTreeView() {
+  public final ISvgTreeView getCharmTreeView() {
     return charmTreeView;
   }
 

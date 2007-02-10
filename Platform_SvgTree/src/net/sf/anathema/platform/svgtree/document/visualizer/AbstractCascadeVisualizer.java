@@ -18,7 +18,7 @@ import org.dom4j.Element;
 import org.dom4j.QName;
 import org.dom4j.tree.DefaultElement;
 
-public abstract class AbstractCharmCascadeVisualizer implements ICharmCascadeVisualizer {
+public abstract class AbstractCascadeVisualizer implements ICascadeVisualizer {
 
   private final ITreePresentationProperties properties;
   private final Map<ISimpleNode, IVisualizableNode> visualizableNodesByContent = new HashMap<ISimpleNode, IVisualizableNode>();
@@ -26,7 +26,7 @@ public abstract class AbstractCharmCascadeVisualizer implements ICharmCascadeVis
   private final VisualizableNodeFactory nodeFactory;
   private final IProperHierarchicalGraph graph;
 
-  public AbstractCharmCascadeVisualizer(ITreePresentationProperties properties, IProperHierarchicalGraph graph) {
+  public AbstractCascadeVisualizer(ITreePresentationProperties properties, IProperHierarchicalGraph graph) {
     this.properties = properties;
     this.graph = graph;
     this.nodeFactory = new VisualizableNodeFactory(

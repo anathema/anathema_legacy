@@ -94,19 +94,19 @@ public class CascadeDocumentFactory {
     for (final IProperHierarchicalGraph graph : graphs) {
       graph.getType().accept(new IGraphTypeVisitor() {
         public void visitDirectedGraph(final IGraphType visitedType) {
-          visualizedGraphs.add(new BottomUpGraphVisualizer(graph, properties).buildCharmTree());
+          visualizedGraphs.add(new BottomUpGraphVisualizer(graph, properties).buildTree());
         }
 
         public void visitInvertedTree(final IGraphType visitedType) {
-          visualizedGraphs.add(new InvertedTreeVisualizer(graph, properties).buildCharmTree());
+          visualizedGraphs.add(new InvertedTreeVisualizer(graph, properties).buildTree());
         }
 
         public void visitTree(final IGraphType visitedType) {
-          visualizedGraphs.add(new TreeVisualizer(graph, properties).buildCharmTree());
+          visualizedGraphs.add(new TreeVisualizer(graph, properties).buildTree());
         }
 
         public void visitSingle(final IGraphType visitedType) {
-          visualizedGraphs.add(new SingleNodeVisualizer(properties, graph).buildCharmTree());
+          visualizedGraphs.add(new SingleNodeVisualizer(properties, graph).buildTree());
         }
       });
     }

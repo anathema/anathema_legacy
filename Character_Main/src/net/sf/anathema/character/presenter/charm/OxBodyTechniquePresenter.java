@@ -6,17 +6,17 @@ import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfigurati
 import net.sf.anathema.framework.value.IIntValueView;
 import net.sf.anathema.lib.gui.IPresenter;
 import net.sf.anathema.lib.resources.IResources;
-import net.sf.anathema.platform.svgtree.presenter.view.ISVGMultiLearnableCharmView;
+import net.sf.anathema.platform.svgtree.presenter.view.ISVGCategorizedSpecialNodeView;
 
 public class OxBodyTechniquePresenter implements IPresenter {
 
-  private final ISVGMultiLearnableCharmView view;
+  private final ISVGCategorizedSpecialNodeView view;
   private final IOxBodyTechniqueConfiguration model;
   private final IResources resources;
 
   public OxBodyTechniquePresenter(
       IResources resources,
-      ISVGMultiLearnableCharmView view,
+      ISVGCategorizedSpecialNodeView view,
       IOxBodyTechniqueConfiguration model) {
     this.resources = resources;
     this.view = view;

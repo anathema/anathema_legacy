@@ -18,7 +18,7 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
     super(resources);
   }
 
-  public boolean isCharmSelected(String charmId) {
+  public boolean isNodeSelected(String charmId) {
     return true;
   }
 
@@ -30,7 +30,7 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
     return Cursor.getDefaultCursor();
   }
 
-  public boolean isCharmLearnable(String charmId) {
+  public boolean isNodeSelectable(String charmId) {
     return true;
   }
 
@@ -47,7 +47,7 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
     this.charmTree = newCharmTree;
   }
 
-  public boolean isCharmUnlearnable(String charmId) {
+  public boolean isNodeDeselectable(String charmId) {
     return false;
   }
 

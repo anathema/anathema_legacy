@@ -3,14 +3,14 @@ package net.sf.anathema.platform.svgtree.presenter.view;
 import java.awt.Cursor;
 import java.awt.Dimension;
 
-public interface ICharmTreeViewProperties {
+public interface ISvgTreeViewProperties {
   public static final String REQUIREMENT = "Requirement"; //$NON-NLS-1$
 
-  public String getNodeName(String charmId);
+  public String getNodeName(String nodeId);
 
-  public boolean isRootCharm(String charmId);
+  public boolean isRootNode(String nodeId);
 
-  public boolean isCharmSelected(String charmId);
+  public boolean isNodeSelected(String nodeId);
 
   public Cursor getAddCursor();
 
@@ -18,15 +18,17 @@ public interface ICharmTreeViewProperties {
 
   public Cursor getDefaultCursor();
 
-  public boolean isCharmLearnable(String charmId);
+  public boolean isNodeSelectable(String nodeId);
 
-  public boolean isCharmUnlearnable(String charmId);
+  public boolean isNodeDeselectable(String nodeId);
 
-  public String getToolTip(String charmId);
+  public String getToolTip(String nodeId);
 
   public Dimension getDimension();
 
   public void setDimension(Dimension dimension);
 
+  // TODO Löschen?
+  @Deprecated
   public boolean isRequirementNode(String nodeId);
 }

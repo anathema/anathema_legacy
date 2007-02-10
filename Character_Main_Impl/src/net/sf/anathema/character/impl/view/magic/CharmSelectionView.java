@@ -9,19 +9,19 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionView;
-import net.sf.anathema.platform.svgtree.presenter.view.ICharmSelectionListener;
-import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
-import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialCharmView;
-import net.sf.anathema.platform.svgtree.presenter.view.ISpecialCharmViewManager;
-import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGSpecialCharmViewManager;
+import net.sf.anathema.platform.svgtree.presenter.view.INodeSelectionListener;
+import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialNodeView;
+import net.sf.anathema.platform.svgtree.presenter.view.ISpecialNodeViewManager;
+import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGSpecialNodeViewManager;
 
 public class CharmSelectionView extends AbstractCascadeSelectionView implements ICharmSelectionView {
 
   private final JPanel content = new JPanel(new GridDialogLayout(1, false));
-  private final ISpecialCharmViewManager<ISVGSpecialCharmView> svgManager = new SVGSpecialCharmViewManager(
+  private final ISpecialNodeViewManager<ISVGSpecialNodeView> svgManager = new SVGSpecialNodeViewManager(
       getCharmTreeView());
 
-  public CharmSelectionView(ICharmTreeViewProperties treeProperties) {
+  public CharmSelectionView(ISvgTreeViewProperties treeProperties) {
     super(treeProperties);
   }
 
@@ -30,20 +30,20 @@ public class CharmSelectionView extends AbstractCascadeSelectionView implements 
     content.add(getCharmTreeView().getComponent(), GridDialogLayoutData.FILL_BOTH);
   }
 
-  public void addCharmSelectionListener(ICharmSelectionListener listener) {
-    getCharmTreeView().addCharmSelectionListener(listener);
+  public void addCharmSelectionListener(INodeSelectionListener listener) {
+    getCharmTreeView().addNodeSelectionListener(listener);
   }
 
   public void setCharmVisuals(String charmId, Color fillColor, int opacity) {
-    getCharmTreeView().setCharmBackgroundColor(charmId, fillColor);
-    getCharmTreeView().setCharmAlpha(charmId, opacity);
+    getCharmTreeView().setNodeBackgroundColor(charmId, fillColor);
+    getCharmTreeView().setNodeAlpha(charmId, opacity);
   }
 
   public JComponent getComponent() {
     return content;
   }
 
-  public void setSpecialCharmViewVisible(ISVGSpecialCharmView charmView, boolean visible) {
-    svgManager.setSpecialCharmViewVisible(getCharmTreeView(), charmView, visible);
+  public void setSpecialCharmViewVisible(ISVGSpecialNodeView charmView, boolean visible) {
+    svgManager.setSpecialNodeViewVisible(getCharmTreeView(), charmView, visible);
   }
 }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.framework.value.IIntValueView;
-import net.sf.anathema.platform.svgtree.presenter.view.ISVGMultiLearnableCharmView;
+import net.sf.anathema.platform.svgtree.presenter.view.ISVGCategorizedSpecialNodeView;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
@@ -16,31 +16,31 @@ import org.apache.batik.util.SVGConstants;
 import org.w3c.dom.Element;
 import org.w3c.dom.svg.SVGDocument;
 
-public class SVGMultiLearnableCharmView implements ISVGMultiLearnableCharmView {
+public class SVGCategorizedSpecialNodeView implements ISVGCategorizedSpecialNodeView {
 
-  private final String charmId;
-  private final double charmWidth;
-  private final Color charmColor;
-  private final List<SVGDefaultTraitView> categories = new ArrayList<SVGDefaultTraitView>();
+  private final String nodeId;
+  private final double nodeWidth;
+  private final Color nodeColor;
+  private final List<SVGIntValueView> categories = new ArrayList<SVGIntValueView>();
   private final int widthInDots;
 
-  public SVGMultiLearnableCharmView(
-      final String charmId,
-      final double charmWidth,
-      final Color charmColor,
+  public SVGCategorizedSpecialNodeView(
+      final String nodeId,
+      final double nodeWidth,
+      final Color nodeColor,
       final int widthInDots) {
-    this.charmId = charmId;
-    this.charmWidth = charmWidth;
-    this.charmColor = charmColor;
+    this.nodeId = nodeId;
+    this.nodeWidth = nodeWidth;
+    this.nodeColor = nodeColor;
     this.widthInDots = widthInDots;
   }
 
-  public String getCharmId() {
-    return charmId;
+  public String getNodeId() {
+    return nodeId;
   }
 
   public void setVisible(final boolean visible) {
-    for (SVGDefaultTraitView view : categories) {
+    for (SVGIntValueView view : categories) {
       view.setVisible(visible);
     }
   }
@@ -53,7 +53,7 @@ public class SVGMultiLearnableCharmView implements ISVGMultiLearnableCharmView {
       setAttribute(
           displayElement,
           SVGConstants.SVG_TRANSFORM_ATTRIBUTE,
-          "translate(0," + index * SVGIntValueDisplay.getDiameter(charmWidth) * 1.1 + ")"); //$NON-NLS-1$ //$NON-NLS-2$
+          "translate(0," + index * SVGIntValueDisplay.getDiameter(nodeWidth) * 1.1 + ")"); //$NON-NLS-1$ //$NON-NLS-2$
       groupElement.appendChild(displayElement);
     }
     return groupElement;
@@ -67,9 +67,9 @@ public class SVGMultiLearnableCharmView implements ISVGMultiLearnableCharmView {
     Element rectangle = document.createElementNS(SVGDOMImplementation.SVG_NAMESPACE_URI, SVGConstants.SVG_RECT_TAG);
     setAttribute(rectangle, SVGConstants.SVG_X_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
     setAttribute(rectangle, SVGConstants.SVG_Y_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
-    setAttribute(rectangle, SVGConstants.SVG_WIDTH_ATTRIBUTE, String.valueOf(charmWidth));
+    setAttribute(rectangle, SVGConstants.SVG_WIDTH_ATTRIBUTE, String.valueOf(nodeWidth));
     setAttribute(rectangle, SVGConstants.SVG_HEIGHT_ATTRIBUTE, String.valueOf(categories.size()
-        * SVGIntValueDisplay.getDiameter(charmWidth)
+        * SVGIntValueDisplay.getDiameter(nodeWidth)
         * 1.15));
     setAttribute(rectangle, SVGConstants.SVG_STROKE_ATTRIBUTE, VALUE_COLOR_SVG_BLACK);
     setAttribute(rectangle, SVGConstants.SVG_FILL_ATTRIBUTE, VALUE_COLOR_SVG_BLACK);
@@ -78,7 +78,7 @@ public class SVGMultiLearnableCharmView implements ISVGMultiLearnableCharmView {
   }
 
   public IIntValueView addCategory(final String labelText, final int maxValue, final int value) {
-    SVGDefaultTraitView view = new SVGDefaultTraitView(maxValue, widthInDots, charmWidth, charmColor, labelText, value);
+    SVGIntValueView view = new SVGIntValueView(maxValue, widthInDots, nodeWidth, nodeColor, labelText, value);
     categories.add(view);
     return view;
   }

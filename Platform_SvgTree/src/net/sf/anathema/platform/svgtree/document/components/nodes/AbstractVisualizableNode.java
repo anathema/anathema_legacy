@@ -15,15 +15,15 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
 
   private ILayer layer;
   private final Map<ISimpleNode, IVisualizableNode> map;
-  private final Dimension charmDimension;
+  private final Dimension nodeDimension;
   private Integer xPosition;
 
-  public AbstractVisualizableNode(Map<ISimpleNode, IVisualizableNode> map, Dimension charmDimension) {
+  public AbstractVisualizableNode(final Map<ISimpleNode, IVisualizableNode> map, final Dimension nodeDimension) {
     this.map = map;
-    this.charmDimension = charmDimension;
+    this.nodeDimension = nodeDimension;
   }
 
-  public void setLayer(ILayer layer) {
+  public void setLayer(final ILayer layer) {
     Ensure.ensureNull(this.layer);
     this.layer = layer;
   }
@@ -32,7 +32,7 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
     return layer;
   }
 
-  public void shiftRightWithChildren(int requiredShift, IVisualizableNode[] excludedNodes) {
+  public void shiftRightWithChildren(final int requiredShift, final IVisualizableNode[] excludedNodes) {
     // Note: Better implementation: Traverse the tree down to the children
     // Set children's new position
     // Recalculate all other positions using the given algorithms.
@@ -48,7 +48,7 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
     }
   }
 
-  public void shiftRight(int shift) {
+  public void shiftRight(final int shift) {
     setPosition(Math.max(getPosition() + shift, layer.getOverlapFreePosition(this)));
   }
 
@@ -56,8 +56,8 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
     return map;
   }
 
-  protected final Dimension getCharmDimension() {
-    return charmDimension;
+  protected final Dimension getNodeDimension() {
+    return nodeDimension;
   }
 
   public Integer getLeftExtreme() {
@@ -79,10 +79,10 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
   }
 
   public int getHeight() {
-    return charmDimension.height;
+    return nodeDimension.height;
   }
 
-  public void setPosition(int position) {
+  public void setPosition(final int position) {
     xPosition = position;
   }
 
@@ -90,7 +90,7 @@ public abstract class AbstractVisualizableNode implements IVisualizableNode {
     return xPosition;
   }
 
-  public IVisualizableNode[] getSharedChildren(IVisualizableNode otherNode) {
+  public IVisualizableNode[] getSharedChildren(final IVisualizableNode otherNode) {
     List<IVisualizableNode> ownChildren = new ArrayList<IVisualizableNode>(Arrays.asList(getChildren()));
     List<IVisualizableNode> otherChildren = new ArrayList<IVisualizableNode>(Arrays.asList(otherNode.getChildren()));
     ownChildren.retainAll(otherChildren);

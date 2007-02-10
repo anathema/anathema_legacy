@@ -10,7 +10,7 @@ import net.sf.anathema.platform.svgtree.document.components.nodes.IVisualizableN
 import net.sf.anathema.platform.svgtree.graph.graph.IProperHierarchicalGraph;
 import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
 
-public abstract class AbstractTreeVisualizer extends AbstractCharmCascadeVisualizer {
+public abstract class AbstractTreeVisualizer extends AbstractCascadeVisualizer {
 
   public AbstractTreeVisualizer(ITreePresentationProperties properties, IProperHierarchicalGraph graph) {
     super(properties, graph);
@@ -23,7 +23,7 @@ public abstract class AbstractTreeVisualizer extends AbstractCharmCascadeVisuali
     }
   }
 
-  public IVisualizedGraph buildCharmTree() {
+  public IVisualizedGraph buildTree() {
     int layerCount = getGraph().getDeepestLayer();
     for (int layerIndex = layerCount - 1; layerIndex >= 0; layerIndex--) {
       createVisualizableNodes(layerIndex);
