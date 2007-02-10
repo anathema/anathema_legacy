@@ -8,9 +8,6 @@ import java.util.List;
 import java.util.Set;
 
 import net.sf.anathema.lib.collection.ListOrderedSet;
-import net.sf.anathema.platform.svgtree.document.ITreePresentationProperties;
-import net.sf.anathema.platform.svgtree.document.IVisualizedGraph;
-import net.sf.anathema.platform.svgtree.document.VisualizedGraph;
 import net.sf.anathema.platform.svgtree.document.components.ILayer;
 import net.sf.anathema.platform.svgtree.document.components.IVisualizableNode;
 import net.sf.anathema.platform.svgtree.document.components.VisualizableNodePositionComparator;

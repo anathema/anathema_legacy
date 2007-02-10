@@ -1,7 +1,6 @@
 package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 
-import static net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants.VALUE_COLOR_LIGHT_MEDIUM_GRAY;
-import static net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants.VALUE_COLOR_SVG_BLACK;
+import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.*;
 
 import java.awt.Color;
 import java.awt.Rectangle;

@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.template.presentation;
 
 import java.awt.Color;
 
-import net.sf.anathema.platform.svgtree.document.ITreePresentationProperties;
+import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 
 public interface IPresentationProperties extends ICommonPresentationProperties {
 

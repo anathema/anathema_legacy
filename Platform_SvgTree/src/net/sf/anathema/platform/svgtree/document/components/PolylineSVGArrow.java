@@ -1,9 +1,11 @@
-package net.sf.anathema.platform.svgtree.document.svg;
+package net.sf.anathema.platform.svgtree.document.components;
 
 import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Double;
 import java.util.ArrayList;
 import java.util.List;
+
+import net.sf.anathema.platform.svgtree.document.util.SVGCreationUtils;
 
 import org.apache.batik.util.SVGConstants;
 import org.dom4j.Element;

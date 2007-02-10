@@ -1,16 +1,8 @@
-package net.sf.anathema.platform.svgtree.document.svg;
+package net.sf.anathema.platform.svgtree.document;
 
-import static net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants.VALUE_3;
-import static net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants.VALUE_ARROWHEAD_ID;
-import static net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants.VALUE_ARROWHEAD_POINTS;
-import static net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants.VALUE_COLOR_SVG_BLACK;
-import static net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants.VALUE_COLOR_SVG_GRAY;
-import static net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants.VALUE_FRAME_ID;
-import static net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants.VALUE_SVG_VERSION;
-import static net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants.VALUE_VIEWBOX_SIZE;
-import static net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants.VALUE_XMID_YMIN_MEET;
-
-import net.sf.anathema.platform.svgtree.document.ITreePresentationProperties;
+import static net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants.*;
+import net.sf.anathema.platform.svgtree.document.util.SVGCreationUtils;
+import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 
 import org.apache.batik.util.SVGConstants;
 import org.dom4j.Document;
@@ -22,7 +14,7 @@ import org.dom4j.tree.DefaultElement;
 
 public class SVGDocumentFrameFactory {
 
-  public Document createFrame(ITreePresentationProperties properties) {
+  public Document createFrame(final ITreePresentationProperties properties) {
     QName svg = SVGCreationUtils.createSVGQName(SVGConstants.SVG_SVG_TAG);
     Element rootElement = new DefaultElement(svg);
     defineRootAttributes(rootElement);
@@ -38,7 +30,7 @@ public class SVGDocumentFrameFactory {
     return frameDocument;
   }
 
-  private void addArrowHeadSymbol(Element defsElement) {
+  private void addArrowHeadSymbol(final Element defsElement) {
     QName arrowHeadSymbol = SVGCreationUtils.createSVGQName(SVGConstants.SVG_SYMBOL_TAG);
     Element arrowHeadSymbolElement = defsElement.addElement(arrowHeadSymbol);
     arrowHeadSymbolElement.addAttribute(SVGConstants.SVG_ID_ATTRIBUTE, VALUE_ARROWHEAD_ID);
@@ -49,7 +41,7 @@ public class SVGDocumentFrameFactory {
     polygonElement.addAttribute(SVGConstants.SVG_STROKE_WIDTH_ATTRIBUTE, SVGConstants.SVG_ZERO_VALUE);
   }
 
-  private void addNodeFrameSymbol(ITreePresentationProperties properties, Element defsElement) {
+  private void addNodeFrameSymbol(final ITreePresentationProperties properties, final Element defsElement) {
     QName frameSymbol = SVGCreationUtils.createSVGQName(SVGConstants.SVG_SYMBOL_TAG);
     Element frameSymbolElement = defsElement.addElement(frameSymbol);
     frameSymbolElement.addAttribute(SVGConstants.SVG_ID_ATTRIBUTE, VALUE_FRAME_ID);
@@ -66,7 +58,7 @@ public class SVGDocumentFrameFactory {
     outerPolygonElement.addAttribute(SVGConstants.SVG_POINTS_ATTRIBUTE, properties.getNodeFramePolygonString());
   }
 
-  private void defineRootAttributes(Element rootElement) {
+  private void defineRootAttributes(final Element rootElement) {
     rootElement.addAttribute(SVGConstants.SVG_WIDTH_ATTRIBUTE, SVGConstants.SVG_HUNDRED_PERCENT_VALUE);
     rootElement.addAttribute(SVGConstants.SVG_HEIGHT_ATTRIBUTE, SVGConstants.SVG_HUNDRED_PERCENT_VALUE);
     rootElement.addAttribute(SVGConstants.SVG_VIEW_BOX_ATTRIBUTE, VALUE_VIEWBOX_SIZE);

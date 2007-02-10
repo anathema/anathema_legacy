@@ -4,8 +4,7 @@ import java.awt.Dimension;
 import java.util.Map;
 
 import net.sf.anathema.lib.collection.MultiEntryMap;
-import net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants;
-import net.sf.anathema.platform.svgtree.document.svg.SVGCreationUtils;
+import net.sf.anathema.platform.svgtree.document.util.SVGCreationUtils;
 import net.sf.anathema.platform.svgtree.graph.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
 

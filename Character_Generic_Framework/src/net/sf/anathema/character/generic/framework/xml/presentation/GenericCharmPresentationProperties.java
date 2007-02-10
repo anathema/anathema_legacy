@@ -3,7 +3,7 @@ package net.sf.anathema.character.generic.framework.xml.presentation;
 import java.awt.Dimension;
 
 import net.sf.anathema.lib.lang.clone.ReflectionCloneableObject;
-import net.sf.anathema.platform.svgtree.document.ITreePresentationProperties;
+import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 
 public class GenericCharmPresentationProperties extends ReflectionCloneableObject<GenericCharmPresentationProperties> implements
     ITreePresentationProperties {

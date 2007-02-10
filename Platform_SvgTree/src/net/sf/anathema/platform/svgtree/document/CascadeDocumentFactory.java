@@ -4,10 +4,11 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants;
-import net.sf.anathema.platform.svgtree.document.svg.SVGCreationUtils;
-import net.sf.anathema.platform.svgtree.document.svg.SVGDocumentFrameFactory;
+import net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants;
+import net.sf.anathema.platform.svgtree.document.util.SVGCreationUtils;
 import net.sf.anathema.platform.svgtree.document.visualizer.BottomUpGraphVisualizer;
+import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
+import net.sf.anathema.platform.svgtree.document.visualizer.IVisualizedGraph;
 import net.sf.anathema.platform.svgtree.document.visualizer.InvertedTreeVisualizer;
 import net.sf.anathema.platform.svgtree.document.visualizer.SingleNodeVisualizer;
 import net.sf.anathema.platform.svgtree.document.visualizer.TreeVisualizer;

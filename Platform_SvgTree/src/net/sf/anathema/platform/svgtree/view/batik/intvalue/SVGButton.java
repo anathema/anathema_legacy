@@ -1,6 +1,6 @@
 package net.sf.anathema.platform.svgtree.view.batik.intvalue;
 
-import net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants;
+import net.sf.anathema.platform.svgtree.document.components.ISVGCascadeXMLConstants;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.util.SVGConstants;

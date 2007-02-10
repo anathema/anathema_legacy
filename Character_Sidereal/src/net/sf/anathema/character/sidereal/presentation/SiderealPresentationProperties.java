@@ -5,7 +5,7 @@ import java.awt.Color;
 import net.sf.anathema.character.generic.impl.template.presentation.AbstractPresentationProperties;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.platform.svgtree.document.ITreePresentationProperties;
+import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 
 public class SiderealPresentationProperties extends AbstractPresentationProperties {
 

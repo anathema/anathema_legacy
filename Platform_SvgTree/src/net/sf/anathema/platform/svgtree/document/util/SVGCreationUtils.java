@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.svgtree.document.svg;
+package net.sf.anathema.platform.svgtree.document.util;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.util.SVGConstants;

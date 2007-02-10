@@ -2,7 +2,7 @@ package net.sf.anathema.character.abyssal.template;
 
 import java.awt.Dimension;
 
-import net.sf.anathema.platform.svgtree.document.ITreePresentationProperties;
+import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 
 public class AbyssalCharmPresentationProperties implements ITreePresentationProperties {
 

@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.svgtree.document;
+package net.sf.anathema.platform.svgtree.document.visualizer;
 
 import java.awt.Dimension;
 
