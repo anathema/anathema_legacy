@@ -6,11 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.disy.commons.core.util.Ensure;
-import net.sf.anathema.platform.svgtree.document.components.nodes.HorizontalMetaNode;
-import net.sf.anathema.platform.svgtree.document.components.nodes.IVisualizableNode;
-import net.sf.anathema.platform.svgtree.document.components.nodes.IVisualizableNodeVisitor;
-import net.sf.anathema.platform.svgtree.document.components.nodes.VisualizableDummyNode;
-import net.sf.anathema.platform.svgtree.document.components.nodes.VisualizableNode;
 import net.sf.anathema.platform.svgtree.document.svg.PolylineSVGArrow;
 import net.sf.anathema.platform.svgtree.document.util.BackwardsIterable;
 

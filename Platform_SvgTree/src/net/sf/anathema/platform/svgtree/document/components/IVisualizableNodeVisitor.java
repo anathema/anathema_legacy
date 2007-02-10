@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.svgtree.document.components.nodes;
+package net.sf.anathema.platform.svgtree.document.components;
 
 public interface IVisualizableNodeVisitor {
 

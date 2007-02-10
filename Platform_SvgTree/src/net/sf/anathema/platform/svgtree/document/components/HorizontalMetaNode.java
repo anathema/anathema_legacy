@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.svgtree.document.components.nodes;
+package net.sf.anathema.platform.svgtree.document.components;
 
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -10,7 +10,6 @@ import java.util.Set;
 import org.dom4j.Element;
 
 import net.sf.anathema.lib.collection.ListOrderedSet;
-import net.sf.anathema.platform.svgtree.document.components.ILayer;
 import net.sf.anathema.platform.svgtree.graph.nodes.ISimpleNode;
 
 public class HorizontalMetaNode extends AbstractVisualizableNode {

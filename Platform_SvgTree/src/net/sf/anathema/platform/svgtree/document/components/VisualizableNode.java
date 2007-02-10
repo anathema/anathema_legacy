@@ -1,4 +1,4 @@
-package net.sf.anathema.platform.svgtree.document.components.nodes;
+package net.sf.anathema.platform.svgtree.document.components;
 
 import java.awt.Dimension;
 import java.util.Map;
