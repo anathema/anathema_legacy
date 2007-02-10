@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-ext.jar"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-gvt.jar"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-util.jar"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-bridge.jar"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-dom.jar"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-svg-dom.jar"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-xml.jar"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-awt-util.jar"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-parser.jar"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-swing.jar"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-gui-util.jar"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-css.jar"/>
-	<classpathentry sourcepath="/Thirdparty/SVG/Batik-240506-src.zip" kind="lib" path="/Thirdparty/SVG/batik-script.jar"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-ext.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-gvt.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-util.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-bridge.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-dom.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-svg-dom.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-xml.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-awt-util.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-parser.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-swing.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-gui-util.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-css.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-script.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
 	<classpathentry kind="lib" path="/Thirdparty/XML/xml-apis-dom3.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Character_Generic_Framework"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Platform_SvgTree"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

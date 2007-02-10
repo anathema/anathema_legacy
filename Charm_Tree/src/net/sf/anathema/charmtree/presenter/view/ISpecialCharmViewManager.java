@@ -1,8 +1,6 @@
 package net.sf.anathema.charmtree.presenter.view;
 
-import net.sf.anathema.character.generic.framework.magic.view.ISpecialCharmView;
-
-public interface ISpecialCharmViewManager<T extends ISpecialCharmView> {
+public interface ISpecialCharmViewManager<T extends ISVGSpecialCharmView> {
 
   void setSpecialCharmViewVisible(ICharmTreeView view, T charmView, boolean visible);
 }
