@@ -1,10 +1,9 @@
-package net.sf.anathema.character.generic.framework.magic.compare;
+package net.sf.anathema.character.generic.framework.magic;
 
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.sf.anathema.character.generic.framework.magic.CharmGraphNodeProvider;
 import net.sf.anathema.character.generic.framework.magic.treelayout.layering.TopologyBuilder;
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.character.generic.framework.magic.treelayout.nodes.IRegularNode;
