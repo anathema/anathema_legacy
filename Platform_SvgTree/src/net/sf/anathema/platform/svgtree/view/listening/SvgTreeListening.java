@@ -91,7 +91,7 @@ public class SvgTreeListening {
         .getElementsByTagName(SVGConstants.SVG_G_TAG);
     for (int index = 0; index < groupElementsList.getLength(); index++) {
       SVGGElement groupElement = (SVGGElement) groupElementsList.item(index);
-      if (groupElement.hasAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_CHARM)) {
+      if (groupElement.hasAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_LISTENER_REQUIRED)) {
         groupElement.removeEventListener("click", selectionInvokingListener, false); //$NON-NLS-1$
         groupElement.removeEventListener("mousemove", cursorTooltipInitListener, false); //$NON-NLS-1$
         groupElement.removeEventListener("mouseout", canvasResettingListener, false); //$NON-NLS-1$
@@ -115,7 +115,7 @@ public class SvgTreeListening {
         .getElementsByTagName(SVGConstants.SVG_G_TAG);
     for (int index = 0; index < groupElementsList.getLength(); index++) {
       SVGGElement groupElement = (SVGGElement) groupElementsList.item(index);
-      if (groupElement.hasAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_CHARM)) {
+      if (groupElement.hasAttribute(ISVGCascadeXMLConstants.ATTRIB_IS_LISTENER_REQUIRED)) {
         groupElement.addEventListener("click", selectionInvokingListener, false); //$NON-NLS-1$
         groupElement.addEventListener("mousemove", cursorTooltipInitListener, false); //$NON-NLS-1$
         groupElement.addEventListener("mouseout", canvasResettingListener, false); //$NON-NLS-1$
