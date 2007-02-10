@@ -6,7 +6,8 @@ import net.sf.anathema.lib.gui.IDisposable;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 
-import org.w3c.dom.svg.SVGDocument;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
 
 public interface ISvgTreeView extends IView, IDisposable {
 
@@ -24,7 +25,7 @@ public interface ISvgTreeView extends IView, IDisposable {
 
   public void setProperties(ISvgTreeViewProperties viewProperties);
 
-  public void loadCascade(SVGDocument document);
+  public void loadCascade(Document document) throws DocumentException;
 
   public IBoundsCalculator getBoundsCalculator();
 }

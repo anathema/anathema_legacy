@@ -21,9 +21,13 @@ import net.sf.anathema.platform.svgtree.view.batik.IBoundsCalculator;
 import net.sf.anathema.platform.svgtree.view.listening.SvgTreeListening;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
+import org.apache.batik.dom.svg12.SVG12DOMImplementation;
 import org.apache.batik.swing.svg.SVGLoadEventDispatcherAdapter;
 import org.apache.batik.swing.svg.SVGLoadEventDispatcherEvent;
 import org.apache.batik.util.SVGConstants;
+import org.dom4j.DocumentException;
+import org.dom4j.io.DOMWriter;
+import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -62,7 +66,9 @@ public class SvgTreeView implements ISvgTreeView {
     return canvas;
   }
 
-  public void loadCascade(final SVGDocument document) {
+  public void loadCascade(final org.dom4j.Document dom4jDocument) throws DocumentException {
+    DOMImplementation implementation = SVG12DOMImplementation.getDOMImplementation();
+    SVGDocument document = (SVGDocument) new DOMWriter().write(dom4jDocument, implementation);
     listening.destructDocumentListening(canvas.getSVGDocument());
     if (document != null) {
       listening.initDocumentListening(document);

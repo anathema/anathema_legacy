@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-ext.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-gvt.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-util.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-bridge.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-dom.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-svg-dom.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-xml.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-awt-util.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-parser.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-swing.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-gui-util.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-css.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
-	<classpathentry kind="lib" path="/Thirdparty/SVG/batik-script.jar" sourcepath="/Thirdparty/SVG/Batik-240506-src.zip"/>
-	<classpathentry kind="lib" path="/Thirdparty/XML/xml-apis-dom3.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Platform_SvgTree"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Platform"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Generic_Impl"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

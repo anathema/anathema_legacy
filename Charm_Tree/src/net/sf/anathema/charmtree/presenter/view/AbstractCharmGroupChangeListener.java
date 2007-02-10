@@ -19,12 +19,8 @@ import net.sf.anathema.platform.svgtree.graph.nodes.IRegularNode;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 
-import org.apache.batik.dom.svg12.SVG12DOMImplementation;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
-import org.dom4j.io.DOMWriter;
-import org.w3c.dom.DOMImplementation;
-import org.w3c.dom.svg.SVGDocument;
 
 public abstract class AbstractCharmGroupChangeListener implements ICharmGroupChangeListener {
 
@@ -36,10 +32,10 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
   private ICharmGroup currentGroup;
 
   public AbstractCharmGroupChangeListener(
-      ISvgTreeView charmTreeView,
-      ISvgTreeViewProperties viewProperties,
-      ITemplateRegistry templateRegistry,
-      ICharmGroupArbitrator arbitrator) {
+      final ISvgTreeView charmTreeView,
+      final ISvgTreeViewProperties viewProperties,
+      final ITemplateRegistry templateRegistry,
+      final ICharmGroupArbitrator arbitrator) {
     this.charmTreeView = charmTreeView;
     Ensure.ensureNotNull("View Properties must not be null", viewProperties); //$NON-NLS-1$
     this.viewProperties = viewProperties;
@@ -47,7 +43,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     this.arbitrator = arbitrator;
   }
 
-  public final void valueChanged(Object cascade, Object type) {
+  public final void valueChanged(final Object cascade, final Object type) {
     charmTreeView.getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
     try {
       loadCharmTree((ICharmGroup) cascade, (IIdentificate) type);
@@ -61,7 +57,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
     }
   }
 
-  private Set<ICharm> getDisplayCharms(ICharmGroup charmGroup) {
+  private Set<ICharm> getDisplayCharms(final ICharmGroup charmGroup) {
     ICharm[] allCharms = arbitrator.getCharms(charmGroup);
     Set<ICharm> charmsToDisplay = new ListOrderedSet<ICharm>();
     for (ICharm charm : allCharms) {
@@ -77,7 +73,7 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
 
   protected abstract IExaltedEdition getEdition();
 
-  private void loadCharmTree(ICharmGroup charmGroup, IIdentificate type) throws DocumentException {
+  private void loadCharmTree(final ICharmGroup charmGroup, final IIdentificate type) throws DocumentException {
     currentGroup = charmGroup;
     modifyCharmVisuals(type);
     if (charmGroup == null) {
@@ -93,10 +89,8 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
       charmTreeView.setProperties(viewProperties);
       ICharm[] charms = displayCharms.toArray(new ICharm[displayCharms.size()]);
       IRegularNode[] nodes = CharmGraphNodeBuilder.createNodesFromCharms(Arrays.asList(charms));
-      Document dom4jDocument = provider.createCascadeDocument(nodes, presentationProperties);
-      DOMImplementation implementation = SVG12DOMImplementation.getDOMImplementation();
-      SVGDocument svgDocument = (SVGDocument) new DOMWriter().write(dom4jDocument, implementation);
-      charmTreeView.loadCascade(svgDocument);
+      Document document = provider.createCascadeDocument(nodes, presentationProperties);
+      charmTreeView.loadCascade(document);
     }
   }
 
