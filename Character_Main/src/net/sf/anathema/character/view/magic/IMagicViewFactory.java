@@ -8,8 +8,8 @@ import net.sf.anathema.character.presenter.charm.SpellViewProperties;
 import net.sf.anathema.charmtree.batik.intvalue.SVGMultiLearnableCharmView;
 import net.sf.anathema.charmtree.batik.intvalue.SVGSubeffectCharmView;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionView;
-import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
-import net.sf.anathema.charmtree.presenter.view.ISVGSpecialCharmView;
+import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialCharmView;
 
 public interface IMagicViewFactory {
 

@@ -23,7 +23,6 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.charmtree.presenter.AbstractCascadeSelectionPresenter;
-import net.sf.anathema.charmtree.presenter.view.IDocumentLoadedListener;
 import net.sf.anathema.charmtree.presenter.view.IExaltTypeChangedListener;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
@@ -31,6 +30,7 @@ import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
 
 public class CascadePresenter extends AbstractCascadeSelectionPresenter implements ICascadePresenter {
 

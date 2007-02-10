@@ -3,10 +3,10 @@ package net.sf.anathema.charmtree.batik.intvalue;
 import java.awt.Rectangle;
 
 import net.sf.anathema.charmtree.batik.IBoundsCalculator;
-import net.sf.anathema.charmtree.presenter.view.IAnathemaCanvas;
-import net.sf.anathema.charmtree.presenter.view.ICharmTreeView;
-import net.sf.anathema.charmtree.presenter.view.ISVGSpecialCharmView;
-import net.sf.anathema.charmtree.presenter.view.ISpecialCharmViewManager;
+import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
+import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeView;
+import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialCharmView;
+import net.sf.anathema.platform.svgtree.presenter.view.ISpecialCharmViewManager;
 
 import org.apache.batik.dom.svg.SVGOMDocument;
 import org.apache.batik.util.SVGConstants;

@@ -6,7 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.AffineTransform;
 
 import net.sf.anathema.charmtree.batik.BoundsCalculator;
-import net.sf.anathema.charmtree.presenter.view.IAnathemaCanvas;
+import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
 
 import org.apache.batik.swing.gvt.InteractorAdapter;
 import org.apache.batik.swing.gvt.JGVTComponent;

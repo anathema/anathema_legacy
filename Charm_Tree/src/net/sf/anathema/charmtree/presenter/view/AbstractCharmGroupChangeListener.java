@@ -16,6 +16,8 @@ import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.document.CascadeDocumentFactory;
 import net.sf.anathema.platform.svgtree.document.ITreePresentationProperties;
 import net.sf.anathema.platform.svgtree.graph.nodes.IRegularNode;
+import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeView;
+import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
 
 import org.apache.batik.dom.svg12.SVG12DOMImplementation;
 import org.dom4j.Document;

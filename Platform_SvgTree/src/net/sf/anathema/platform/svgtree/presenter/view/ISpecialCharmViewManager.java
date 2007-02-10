@@ -1,4 +1,4 @@
-package net.sf.anathema.charmtree.presenter.view;
+package net.sf.anathema.platform.svgtree.presenter.view;
 
 public interface ISpecialCharmViewManager<T extends ISVGSpecialCharmView> {
 

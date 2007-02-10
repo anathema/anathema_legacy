@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.anathema.charmtree.batik.IBoundsCalculator;
-import net.sf.anathema.charmtree.presenter.view.ISVGMultiLearnableCharmView;
 import net.sf.anathema.framework.value.IIntValueView;
+import net.sf.anathema.platform.svgtree.presenter.view.ISVGMultiLearnableCharmView;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;

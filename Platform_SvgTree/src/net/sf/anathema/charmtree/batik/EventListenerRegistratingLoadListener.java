@@ -1,7 +1,7 @@
 package net.sf.anathema.charmtree.batik;
 
-import net.sf.anathema.charmtree.presenter.view.IAnathemaCanvas;
-import net.sf.anathema.charmtree.presenter.view.IDocumentLoadedListener;
+import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
+import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
 
 import org.w3c.dom.events.EventListener;
 

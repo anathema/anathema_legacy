@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.framework.magic.stringbuilder.CharmInfo
 import net.sf.anathema.character.generic.framework.magic.stringbuilder.ICharmInfoStringBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.lib.resources.IResources;
+import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
 
 public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewProperties {
 

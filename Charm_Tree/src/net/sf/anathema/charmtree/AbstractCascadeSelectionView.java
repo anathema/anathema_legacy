@@ -11,14 +11,14 @@ import javax.swing.border.TitledBorder;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.charmtree.presenter.view.ICascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmGroupChangeListener;
-import net.sf.anathema.charmtree.presenter.view.ICharmTreeView;
-import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
-import net.sf.anathema.charmtree.presenter.view.IDocumentLoadedListener;
 import net.sf.anathema.charmtree.presenter.view.IExaltTypeChangedListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeView;
+import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
 
 public abstract class AbstractCascadeSelectionView implements ICascadeSelectionView {
 

@@ -37,18 +37,18 @@ import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.charmtree.batik.intvalue.SVGMultiLearnableCharmView;
 import net.sf.anathema.charmtree.batik.intvalue.SVGSubeffectCharmView;
 import net.sf.anathema.charmtree.presenter.AbstractCascadeSelectionPresenter;
-import net.sf.anathema.charmtree.presenter.view.ICharmSelectionListener;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionView;
-import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
-import net.sf.anathema.charmtree.presenter.view.IDocumentLoadedListener;
 import net.sf.anathema.charmtree.presenter.view.IExaltTypeChangedListener;
-import net.sf.anathema.charmtree.presenter.view.ISVGSpecialCharmView;
 import net.sf.anathema.framework.presenter.view.IViewContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewContent;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.platform.svgtree.presenter.view.ICharmSelectionListener;
+import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
+import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialCharmView;
 
 public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPresenter implements
     ICharacterCharmSelectionPresenter,

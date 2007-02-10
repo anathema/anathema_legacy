@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.util.List;
 
-import net.sf.anathema.charmtree.presenter.view.IAnathemaCanvas;
+import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
 
 import org.apache.batik.dom.svg.SVGOMDocument;
 import org.apache.batik.swing.JSVGCanvas;

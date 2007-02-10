@@ -6,8 +6,8 @@ import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.charmtree.presenter.view.AbstractCharmGroupChangeListener;
 import net.sf.anathema.charmtree.presenter.view.ICharmGroupArbitrator;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionView;
-import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
 
 public class CharacterCharmGroupChangeListener extends AbstractCharmGroupChangeListener {
 

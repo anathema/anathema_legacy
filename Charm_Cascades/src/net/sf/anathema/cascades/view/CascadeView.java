@@ -11,8 +11,8 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.cascades.presenter.view.ICascadeView;
 import net.sf.anathema.charmtree.AbstractCascadeSelectionView;
-import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.lib.gui.IView;
+import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
 
 public class CascadeView extends AbstractCascadeSelectionView implements ICascadeView, IView {
 

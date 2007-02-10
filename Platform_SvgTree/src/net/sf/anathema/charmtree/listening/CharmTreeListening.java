@@ -8,12 +8,12 @@ import java.util.List;
 import net.sf.anathema.charmtree.batik.AnathemaCanvas;
 import net.sf.anathema.charmtree.batik.BoundsCalculator;
 import net.sf.anathema.charmtree.batik.IBoundsCalculator;
-import net.sf.anathema.charmtree.presenter.view.IAnathemaCanvas;
-import net.sf.anathema.charmtree.presenter.view.ICharmSelectionListener;
-import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.platform.svgtree.document.svg.ISVGCascadeXMLConstants;
+import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
+import net.sf.anathema.platform.svgtree.presenter.view.ICharmSelectionListener;
+import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
 
 import org.apache.batik.swing.gvt.Interactor;
 import org.apache.batik.util.SVGConstants;

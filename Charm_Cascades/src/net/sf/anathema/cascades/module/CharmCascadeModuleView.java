@@ -7,8 +7,8 @@ import javax.swing.JPanel;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.cascades.view.CascadeView;
-import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.framework.view.item.AbstractItemView;
+import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
 
 public class CharmCascadeModuleView extends AbstractItemView implements ICascadeViewFactory {
   private final JPanel panel = new JPanel(new GridDialogLayout(1, false));

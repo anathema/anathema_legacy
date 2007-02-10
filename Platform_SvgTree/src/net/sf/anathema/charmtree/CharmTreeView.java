@@ -13,12 +13,12 @@ import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.charmtree.batik.AnathemaCanvas;
 import net.sf.anathema.charmtree.batik.IBoundsCalculator;
 import net.sf.anathema.charmtree.listening.CharmTreeListening;
-import net.sf.anathema.charmtree.presenter.view.IAnathemaCanvas;
-import net.sf.anathema.charmtree.presenter.view.ICharmSelectionListener;
-import net.sf.anathema.charmtree.presenter.view.ICharmTreeView;
-import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
-import net.sf.anathema.charmtree.presenter.view.IDocumentLoadedListener;
 import net.sf.anathema.lib.lang.AnathemaStringUtilities;
+import net.sf.anathema.platform.svgtree.presenter.view.IAnathemaCanvas;
+import net.sf.anathema.platform.svgtree.presenter.view.ICharmSelectionListener;
+import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeView;
+import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.swing.svg.SVGLoadEventDispatcherAdapter;

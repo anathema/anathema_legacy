@@ -9,11 +9,11 @@ import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.disy.commons.swing.layout.grid.GridDialogLayoutData;
 import net.sf.anathema.charmtree.AbstractCascadeSelectionView;
 import net.sf.anathema.charmtree.batik.intvalue.SVGSpecialCharmViewManager;
-import net.sf.anathema.charmtree.presenter.view.ICharmSelectionListener;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionView;
-import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
-import net.sf.anathema.charmtree.presenter.view.ISVGSpecialCharmView;
-import net.sf.anathema.charmtree.presenter.view.ISpecialCharmViewManager;
+import net.sf.anathema.platform.svgtree.presenter.view.ICharmSelectionListener;
+import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
+import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialCharmView;
+import net.sf.anathema.platform.svgtree.presenter.view.ISpecialCharmViewManager;
 
 public class CharmSelectionView extends AbstractCascadeSelectionView implements ICharmSelectionView {
 
