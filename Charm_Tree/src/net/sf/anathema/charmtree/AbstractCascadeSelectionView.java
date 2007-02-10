@@ -19,6 +19,7 @@ import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
+import net.sf.anathema.platform.svgtree.view.CharmTreeView;
 
 public abstract class AbstractCascadeSelectionView implements ICascadeSelectionView {
 

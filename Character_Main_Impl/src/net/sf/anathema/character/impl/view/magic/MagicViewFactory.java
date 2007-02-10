@@ -9,12 +9,12 @@ import net.sf.anathema.character.presenter.charm.SpellViewProperties;
 import net.sf.anathema.character.view.magic.IComboConfigurationView;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.character.view.magic.ISpellView;
-import net.sf.anathema.charmtree.batik.intvalue.SVGMultiLearnableCharmView;
-import net.sf.anathema.charmtree.batik.intvalue.SVGSubeffectCharmView;
-import net.sf.anathema.charmtree.batik.intvalue.SVGViewControlButton;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionView;
 import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialCharmView;
+import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGMultiLearnableCharmView;
+import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGSubeffectCharmView;
+import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGViewControlButton;
 
 public class MagicViewFactory implements IMagicViewFactory {
 

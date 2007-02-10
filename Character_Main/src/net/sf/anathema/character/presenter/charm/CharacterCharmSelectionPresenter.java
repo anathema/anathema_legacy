@@ -34,8 +34,6 @@ import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfigu
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.IOxBodyTechniqueConfiguration;
 import net.sf.anathema.character.view.magic.IMagicViewFactory;
-import net.sf.anathema.charmtree.batik.intvalue.SVGMultiLearnableCharmView;
-import net.sf.anathema.charmtree.batik.intvalue.SVGSubeffectCharmView;
 import net.sf.anathema.charmtree.presenter.AbstractCascadeSelectionPresenter;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionView;
 import net.sf.anathema.charmtree.presenter.view.IExaltTypeChangedListener;
@@ -49,6 +47,8 @@ import net.sf.anathema.platform.svgtree.presenter.view.ICharmSelectionListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ICharmTreeViewProperties;
 import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISVGSpecialCharmView;
+import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGMultiLearnableCharmView;
+import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGSubeffectCharmView;
 
 public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPresenter implements
     ICharacterCharmSelectionPresenter,

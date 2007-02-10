@@ -2,13 +2,13 @@ package net.sf.anathema.demo.charm.tree.batik.intvalue;
 
 import java.awt.Color;
 
-import net.sf.anathema.charmtree.batik.AnathemaCanvas;
-import net.sf.anathema.charmtree.batik.BoundsCalculator;
-import net.sf.anathema.charmtree.batik.intvalue.SVGDefaultTraitView;
-import net.sf.anathema.charmtree.batik.intvalue.SVGIntValueDisplay;
-import net.sf.anathema.charmtree.batik.intvalue.SVGMultiLearnableCharmView;
-import net.sf.anathema.charmtree.batik.intvalue.SVGViewControlButton;
 import net.sf.anathema.lib.control.intvalue.IIntValueChangedListener;
+import net.sf.anathema.platform.svgtree.view.batik.AnathemaCanvas;
+import net.sf.anathema.platform.svgtree.view.batik.BoundsCalculator;
+import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGDefaultTraitView;
+import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGIntValueDisplay;
+import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGMultiLearnableCharmView;
+import net.sf.anathema.platform.svgtree.view.batik.intvalue.SVGViewControlButton;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;
