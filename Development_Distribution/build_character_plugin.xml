@@ -3,7 +3,7 @@
 
 	<import file="common_plugin_targets.xml" />
 
-	<property name="projectset" value="Character_Generic,Character_Generic_Impl,Character_Generic_Framework,Character_Reporting,Character_Library,Character_Craft,Character_Linguistics,Charm_Tree,Character_Intimacies,Character_Equipment,Character_Equipment_Impl,Character_MeritsFlaws,Character_Main,Character_Main_Impl,Charm_Entry" />
+	<property name="projectset" value="Character_Generic,Character_Generic_Impl,Character_Generic_Framework,Character_Reporting,Character_Library,Character_Craft,Character_Linguistics,Charm_Tree,Character_Intimacies,Character_Equipment,Character_Equipment_Impl,Character_MeritsFlaws,Character_Main,Character_Main_Impl" />
 	<property name="module.name" value="character" />
 
 	<property file="plugin.directories.properties" />
