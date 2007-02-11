@@ -66,7 +66,7 @@ public class LunarGreatCurseEncoder implements IPdfContentBoxEncoder {
     phrase.add(new Chunk(resources.getString("Sheet.GreatCurse.Lunar.GainMessage", virtue) + "\n", font)); //$NON-NLS-1$//$NON-NLS-2$
     if (rootVirtue == null) {
       phrase.add(symbolChunk);
-      phrase.add(new Chunk("See pages 109 and 110 for full rules.", font)); //$NON-NLS-1$      
+      phrase.add(new Chunk(resources.getString("Sheet.GreatCurse.Lunar.Rules"), font)); //$NON-NLS-1$      
     }
     PdfTextEncodingUtilities.encodeText(directContent, phrase, textBounds, leading);
   }

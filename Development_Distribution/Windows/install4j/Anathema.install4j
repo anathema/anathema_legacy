@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<install4j version="4.0.3" transformSequenceNumber="1">
+<install4j version="4.0.4" transformSequenceNumber="1">
   <directoryPresets config="../../build/files/anathema.exe" />
-  <application name="Anathema" distributionSourceDir="" applicationId="1767-2668-0185-7732" mediaDir="." mediaFilePattern="${compiler:sys.shortName}_v${compiler:sys.version}_${compiler:sys.platform}" compression="6" lzmaCompression="false" pack200Compression="true" keepModificationTimes="false" shortName="Anathema" publisher="" publisherWeb="http://anathema.sf.net" version="1.0" allPathsRelative="true" backupOnSave="false" autoSave="true" convertDotsToUnderscores="false" macSignature="????" javaMinVersion="1.5" javaMaxVersion="" allowBetaVM="true">
+  <application name="Anathema" distributionSourceDir="" applicationId="1767-2668-0185-7732" mediaDir="." mediaFilePattern="${compiler:sys.shortName}_v${compiler:sys.version}_${compiler:sys.platform}" compression="6" lzmaCompression="false" pack200Compression="true" keepModificationTimes="false" shortName="Anathema" publisher="Anathema Team" publisherWeb="http://anathema.sf.net" version="1.1" allPathsRelative="true" backupOnSave="false" autoSave="true" convertDotsToUnderscores="false" macSignature="????" javaMinVersion="1.6" javaMaxVersion="" allowBetaVM="true">
     <languages skipLanguageSelection="true">
       <principalLanguage id="en" customLocalizationFile="./Installer.properties" />
       <additionalLanguages>
@@ -104,7 +104,7 @@
   <launchers>
     <launcher name="Anathema" id="364" external="true" excludeFromMenu="false" menuName="" externalFile="anathema.exe" />
   </launchers>
-  <installerGui installerType="1" suggestPreviousProgramGroup="true" addOnAppId="" suggestPreviousLocations="true" allowUnattended="false" allowConsole="false" useCustomInstallerHeaderImage="true" customInstallerHeaderImage="./Anathema_Install_small.png" useCustomUninstallerHeaderImage="true" customUninstallerHeaderImage="./Anathema_Install_small.png" customSize="false" customWidth="500" customHeight="390" useCustomIcon="true" customIcnsFile="" customPngIcon16File="F:/Anathema/trunk/Development_Distribution/Windows/install4j/Anathema_Install_Icon_48.png" customPngIcon32File="F:/Anathema/trunk/Development_Distribution/Windows/install4j/Anathema_Install_Icon_48.png" customIcoFile="F:/Anathema/trunk/Development_Distribution/Windows/install4j/sungearInstall.ico" vmParameters="" watermark="false" resizable="false">
+  <installerGui installerType="1" suggestPreviousProgramGroup="true" addOnAppId="" suggestPreviousLocations="true" allowUnattended="false" allowConsole="false" useCustomInstallerHeaderImage="true" customInstallerHeaderImage="./Anathema_Install_small.png" useCustomUninstallerHeaderImage="true" customUninstallerHeaderImage="./Anathema_Install_small.png" customSize="false" customWidth="500" customHeight="390" useCustomIcon="true" customIcnsFile="" customPngIcon16File="./Anathema_Install_Icon_48.png" customPngIcon32File="./Anathema_Install_Icon_48.png" customIcoFile="./sungearInstall.ico" vmParameters="" watermark="false" resizable="false">
     <customCode useInstalledFiles="false" />
     <installerScreens>
       <screen name="" id="1" beanClass="com.install4j.runtime.beans.screens.WelcomeScreen" rollbackBarrier="false" backButton="2" finishScreen="false">

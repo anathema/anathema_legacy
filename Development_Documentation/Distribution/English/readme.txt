@@ -1,10 +1,10 @@
 ===------------------------------------------------------------------------------===
-	    ANATHEMA v1.0 "LAP"
+	    ANATHEMA v1.1 "MERU"
 ===------------------------------------------------------------------------------===
 
 Anathema Read Me
-(C) 2004-2006 by Sandra Sieroux and Urs Reupke
-Exalted (C) 2001-2006 by White Wolf Publishing, Inc.
+(C) 2004-2007 by Sandra Sieroux and Urs Reupke
+Exalted (C) 2001-2007 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
 ===------------------------------------------------------------------------------===
@@ -93,10 +93,14 @@ Thanks for helping us improve!
 
 Known Issues:
 ---------------------
-The "Merits and Flaws" tab changes size when items are selected.
+-The "Merits and Flaws" tab changes size when items are selected.
 
-A problem has been reported with saving equipment to the database,
+-A problem has been reported with saving equipment to the database,
 but it appears to be quite elusive. Please contact us should you encounter this bug.
+
+-"Start Maximized" doesn't work on some Linux systems.
+
+-"Open PDF after printing" doesn't work on Windows Vista with Adobe Reader 8.
 
 See versions.txt for a history of bugs fixed.
 

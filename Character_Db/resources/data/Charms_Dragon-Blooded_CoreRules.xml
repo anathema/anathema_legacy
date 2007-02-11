@@ -887,7 +887,7 @@
     <cost>
       <temporary>
         <essence cost="3"/>
-        <willpower cost="1"/>
+        <willpower cost="1" text="per Person"/>
       </temporary>
     </cost>
     <duration event="Satisfied"/>
@@ -904,8 +904,8 @@
         <essence cost="2" text="per person"/>
       </temporary>
     </cost>
-    <duration amount="Essence" unit="turn"/>
-    <charmtype type="Reflexive"/>
+    <duration amount="One" unit="scene"/>
+    <charmtype type="Simple"/>
     <source source="DragonBlooded1st" page="200"/>
   </charm>
   <charm id="Dragon-Blooded.ImperviousSkinStoneMeditation" exalt="Dragon-Blooded" group="Resistance">
@@ -1480,6 +1480,7 @@
     <cost>
       <temporary>
         <essence cost="8"/>
+        <willpower cost="1"/>
       </temporary>
     </cost>
     <duration amount="1" unit="scene"/>
@@ -1670,7 +1671,7 @@
   <charm id="Dragon-Blooded.PoundingSurfStyle" exalt="Dragon-Blooded" group="Brawl">
     <prerequisite>
       <trait id="Brawl" value="2"/>
-      <essence value="2"/>
+      <essence value="1"/>
       <charmReference id="Dragon-Blooded.DrowningEmbrace"/>
     </prerequisite>
     <cost>
@@ -1882,7 +1883,7 @@
   <charm id="Dragon-Blooded.Scent-of-CrimeMethod" exalt="Dragon-Blooded" group="Investigation">
     <prerequisite>
       <trait id="Investigation" value="3"/>
-      <essence value="2"/>
+      <essence value="1"/>
     </prerequisite>
     <cost>
       <temporary>
@@ -2261,7 +2262,7 @@
   <charm id="Dragon-Blooded.SwallowDefendNest" exalt="Dragon-Blooded" group="Archery">
     <prerequisite>
       <trait id="Archery" value="3"/>
-      <essence value="1"/>
+      <essence value="2"/>
       <charmReference id="Dragon-Blooded.SpringFollowsWinter"/>
     </prerequisite>
     <cost>
@@ -2296,7 +2297,7 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="5"/>
+        <essence cost="3"/>
       </temporary>
     </cost>
     <duration duration="Instant"/>
@@ -2497,7 +2498,7 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="2" text="+1 mote per extr aenemy"/>
+        <essence cost="2" text="+1 mote per extra enemy"/>
         <willpower cost="1"/>
       </temporary>
     </cost>
@@ -3262,17 +3263,17 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="1"/>
+        <essence cost="2"/>
       </temporary>
     </cost>
-    <duration amount="1" unit="hour"/>
+    <duration event="Broken"/>
     <charmtype type="Simple"/>
     <source source="ABEarth" page="74"/>
   </charm>
   <charm id="Dragon-Blooded.PurifyingBloodAscendancy" exalt="Dragon-Blooded" group="Endurance">
     <prerequisite>
       <trait id="Endurance" value="4"/>
-      <essence value="3"/>
+      <essence value="2"/>
       <charmReference id="Dragon-Blooded.UneatingEarthMeditation"/>
     </prerequisite>
     <cost>
@@ -3336,7 +3337,7 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="5"/>
+        <essence cost="2"/>
       </temporary>
     </cost>
     <duration amount="1" unit="scene"/>
@@ -3764,7 +3765,7 @@
     <cost>
       <temporary>
         <essence cost="2"/>
-        <willpoer cost="1"/>
+        <willpower cost="1"/>
       </temporary>
     </cost>
     <duration amount="1" unit="scene"/>
@@ -3779,7 +3780,7 @@
     </prerequisite>
     <cost>
       <temporary>
-        <essence cost="2"/>
+        <essence cost="4"/>
       </temporary>
     </cost>
     <duration amount="1" unit="scene"/>

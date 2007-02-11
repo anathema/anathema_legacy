@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <project name="Common Distribution Targets">
+	<taskdef resource="net/sf/ant4eclipse/antlib.xml" classpath="../Thirdparty/Ant/ant4eclipse-0.4.0.jar" />
+	<taskdef resource="net/sf/antcontrib/antlib.xml" classpath="../Thirdparty/Ant/ant-contrib-1.0b1.jar" />
 
 	<target name="Build Plugins">
 		<ant antfile="build_core_plugin.xml" />

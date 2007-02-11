@@ -1,10 +1,10 @@
 ===------------------------------------------------------------------------------===
-	    ANATHEMA v1.0 "LAP"
+	    ANATHEMA v1.1 "MERU"
 ===------------------------------------------------------------------------------===
 
 Anathema Leeme
-(C) 2004-2006 por Sandra Sieroux y Urs Reupke
-Exalted (C) 2001-2006 by White Wolf Publishing, Inc.
+(C) 2004-2007 por Sandra Sieroux y Urs Reupke
+Exalted (C) 2001-2007 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
 ===------------------------------------------------------------------------------===
@@ -54,7 +54,7 @@ que el apropiado esta especificado al arranque, usando el parámetro '-Drepositor
   java -Drepository="C:\AnathemaRepository" -jar anathema.jar
 para guardar archivos en la carpeta AnathemaRepository en el disco C.
 
-Anathema necesita por lo menos Java Runtime Environment 5.0 para correr.
+Anathema necesita por lo menos Java Runtime Environment 6.0 para correr.
 Para determinar tu versión escribe "java -version". 
 Puedes siempre tener la versión mas actualizada en "http//java.sun.com".
 

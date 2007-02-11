@@ -1,5 +1,7 @@
 Q: I'm trying to run Anathema on a Mac, but it won't work.
-A: (Thanks to Nadine, Four Willows Weeping and wordman)
+A: Java 6 is not yet available for Mac OS X computers.
+	You can use Anathema 1.0 on Java 5. Here's how:
+	(Thanks to Nadine, Four Willows Weeping and wordman)
    Macs do support Java 5 on Tiger (Mac OS 10.4).  
    However, it's an additional package available at:
    http://www.apple.com/support/downloads/java2se50release1.html   
@@ -11,23 +13,18 @@ A: (Thanks to Nadine, Four Willows Weeping and wordman)
 Q: I get a popup window "Could not find the main class. Program will exit."
 Q: Running Anathema from the console yields "Exception in thread "main" java.lang.UnsupportedClassVersionError: net/sf/anathema/Anathema (Unsupported major.minor version 49.0)"
 A: Most probably, you are running an old version of Java which does not support the 
-	advanced features introduced in Java 5. Please go to http://java.sun.com and download
+	advanced features introduced in Java 6. Please go to http://java.sun.com and download
 	the most recent Java Runtime Environment (JRE).
 
 Q: How do I determine what version of java I am running or even where my java executable is?
 A: Please refer to the Anathema Installation Guide available on the project page.
 	
-Q: Alright, so I need Java 5. How to get it?
+Q: Alright, so I need Java 6. How to get it?
 A: Just follow these instructions:
 	-Go to http://java.sun.com 
-	-Click "J2SE 5.0" in the "Popular Downloads"-box in the top right corner. 
-	-On the next page, there should be an entry "J2SE 5.0 JRE". Click "Download JRE". 
-	-You need to accept the usual legalese. Click "Accept", then "Continue". 
-	-Next, chose the distribution for your OS. On a Windows System, 
-		you have the choice between "Online Installation" (Download a small installer which will d/l only the needed files) 
-		and "Offline Installation" (Download everything, if you need to install on an offline-PC). 
-		If you can stay online, chose the online version. 
-	-Open the downloaded executable and follow the onscreen instructions.
+	-Click "Java SE" in the "Popular Downloads"-box in the top right corner. 
+	-On the next page, there should be an entry "Java Runtime Environment (JRE) 6". Click "Download". 
+	-Follow the on-screen instructions to the end. 
 	
 Q: Are saved characters and the like going to be compatible between versions?
 A: Well, yes. At least, that's what we aim for. If some file happens not to be compatible and you

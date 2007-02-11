@@ -64,6 +64,9 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
   }
 
   public boolean canSelectionBeDeleted() {
+    if (currentlySelectedUserObjects.length == 0) {
+      return false;
+    }
     for (Object object : currentlySelectedUserObjects) {
       if (!isPrintNameFile(object)) {
         return false;

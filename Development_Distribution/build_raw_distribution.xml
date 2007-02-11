@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <project name="Build raw distribution" default="Distribute">
-	<taskdef resource="net/sf/ant4eclipse/antlib.xml" classpath="../Thirdparty/Ant/ant4eclipse-0.4.0.jar" />
-	<taskdef resource="net/sf/antcontrib/antlib.xml" classpath="../Thirdparty/Ant/ant-contrib-1.0b1.jar" />
 
 	<import file="common_distribution_targets.xml" />
 

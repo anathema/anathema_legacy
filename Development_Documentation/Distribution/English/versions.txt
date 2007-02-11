@@ -1,17 +1,19 @@
 Anathema Version History
-(C) 2004 - 2006 by Sandra Sieroux and Urs Reupke
-Exalted (C) 2001-2006 by White Wolf Publishing, Inc.
+(C) 2004 - 2007 by Sandra Sieroux and Urs Reupke
+Exalted (C) 2001-2007 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
 ===------------------------------------------------------------------------------===
-			Release 1.01 "" (Upcoming)
+			Release 1.1 "Meru" (11/02/07)
 ===------------------------------------------------------------------------------===
 -- ATTENTION --
 From this version onward, Anathema requires Java 6 or later.
 
-Corrected the type of [1E] Lunar Sense-Borrowing Method and Abyssal Corruption-Sensing Scrutiny to Simple, 
-which might make combos illegal. Moreover, corrected prerequisites for several [1E] Lunar, Abyssal and 
-Sidereal charms. Characters knowing these charms might not load. Please contact us if you encounter any problems.
+Corrected the type of [1E] Lunar Sense-Borrowing Method and Abyssal Corruption-Sensing Scrutiny as well as 
+Dragon-Blooded Strenght of Stone Technique to Simple, which might make combos illegal. 
+Moreover, corrected prerequisites for several [1E] Lunar, Abyssal and Sidereal charms. 
+Characters knowing these charms might not load. 
+Please contact us if you encounter any problems.
 
 This version will no longer load Solars and Heroic Mortals created with with early 0.x versions. 
 Load and re-save them with v1.0 to make them work.
@@ -50,6 +52,16 @@ be invalid in future releases. Use this version to convert them by loading them 
 * Experienced specialty values are displayed correctly after loading
 
 -- [1E] Charms Corrected (Kudos to Ricardo) --
+  Dragon-Blooded
+* Correct name for Swallows Defend the Nest
+* Correct type for Strenght of Stone Technique
+* Correct duration for Breath of Earth Trance, Strength of Stone Technique
+* Correct prerequisites for Purifying Blood Ascendancy, Pounding Surf Style, Scent-of-Crime Method,
+	Swallows Defend the Nest
+* Correct cost for Unflagging Vengeance Meditation, Breath of Earth Trance, Warlord's Convocation,
+	Auspicious First Meeting Attitude, Naked Thief Style, Instant Disguise Prana, Life-Swelling Sap Strike,
+	Dance of Flashing Swords
+
   Lunars 
 * Correct name for Weapon-Shaping Prana, Form-Fixing Method
 * Correct prerequisites for Unspeaking Aura of Dread, Blossoming Gift of Luna, Ox-Body Technique, Wolf Endurance Method  

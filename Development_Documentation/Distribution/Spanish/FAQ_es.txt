@@ -1,43 +1,53 @@
 P: Estoy trantado de correr Anathema en una Mac, pero no funciona.
-R: (Gracias a Nadine)
-  Macs suportan Java 5 en Tiger (OS X 10.4).
-  Sin embargo, es un paquete adicional disponible en:
-  http://www.apple.com/support/downloads/java2se50release1.html
+R: Java 6 no esta disponible todavia para computadoras con Mac OS X.
+	Puedes usar Anathema 1.0 en Java 5. Aqui es como:
+	(Gracias a Nadine, Four Willows Weeping and wordman)
+   Macs suportan Java 5 en Tiger (Mac OS 10.4).
+   Sin embargo, es un paquete adicional disponible en:
+   http://www.apple.com/support/downloads/java2se50release1.html
+   Para correr exitosamente Anathema, necesitas poner la version de Java por defecto.
+   Una herramienta para esto esta disponible en la actualizacion de J2SE 5.0 en: 
+   /Applications/Utilities/Java/J2SE 5.0/
+   Despues de eso, bajalo y corre el .dmg disponible en el sitio web.
 
 P: Me aparece una ventana que dice "Could not find the main class. Program will exit."
 P: Corriendo Anathema desde la consola produce "Exception in thread "main" java.lang.UnsupportedClassVersionError: net/sf/anathema/Anathema (Unsupported major.minor version 49.0)"
-R: Lo mas seguro es que estas corriendo una version vieja de Java que no soporta las opciones 
-	avanzadas introducidas en Java 5. Favor de ir a http://java.sun.com y bajar la
-	version mas reciente de Java Runtime Environment (JRE).
+R: Lo mas seguro es que estas corriendo una version vieja de Java que no soporta las opciones
+       avanzadas introducidas en Java 6. Favor de ir a http://java.sun.com y baja la
+       version mas reciente de Java Runtime Environment (JRE).
 
 P: ¿Como determino que version de Java estoy corriendo o inclusive donde esta el ejecutable de java?
 R: Favor de ir a la Guia de Instalacion de Anathema disponible en la pagina del proyecto.
-	
-P: Esta bien, así es que necesito Java 5. ¿Como lo obtengo?
+
+P: Esta bien, así es que necesito Java 6. ¿Como lo obtengo?
 R: Solo sigue estas instrucciones:
-	-Ve a http://java.sun.com 
-	-Hazle Click en "J2SE 5.0" en la caja de "Popular Downloads" en la esquina derecha. 
-	-En la siguiente pagina, debe de haber una que dice "J2SE 5.0 JRE". Hazle Click en "Download JRE". 
-	-Necesitas aceptar el acuerdo legal usual. Hazle Click en "Accept", y en "Continue". 
-	-A continuación, escoge la distribución de tu Sistema Operativo. En un sistema de Windows, 
-		tienes la opción de escoger la opción de "Online Installation" (Baja un pequeño instalador que bajara solo los archivos necesarios) 
-		y "Offline Installation" (Baja todo, si necesitas instalarlo en una computadora offline-PC). 
-		Si puedes estar en linea, escoge la opción de "Online Installation". 
-	-Abre el ejecutable que bajastes y sigue las instrucciones de la pantalla.
-	
+       -Ve a http://java.sun.com
+       -Hazle Click en "Java SE" en la caja de "Popular Downloads" en la esquina derecha.
+       -En la siguiente pagina, debe de haber una que dice "Java Runtime Environment (JRE) 6". Dale Click en "Download".
+       -Sigue las instrucciones de la pagina hasta el final.
+
 P: ¿Serán los personajes grabados y lo demas compatibles entre las versiones?
 R: Pues, si. Al menos, eso es lo que nos dirigimos. Si algún archivo no es compatible y no encuentras
-	algún comentario en el leeme, asume con amabilidad que nos equivocamos en algo y contactanos inmediatamente.
-	
+       algún comentario en el leeme, asume con amabilidad que nos equivocamos en algo y contactanos inmediatamente.
+
 P: ¿Como le doy los permisos necesarios a Anathema para correrlo en Linux?
 R: (Gracias a Shattercrack)
-	Cambia los permisos al escribir 
-		chmod 755
-	y dándole tu directorio de deposito como otro parámetro.
-	Si quieres usar el deposito por defecto, el directorio a especificar para el comando chmod
-	es el directorio principal de Anathema.
-	Nota que, dependiendo de tu sistema, necesitas entrar como "root" o "super user" para cambiar los
-	permisos.
-	Esto debe hacerse al escribir 
-		su
-	antes de crear el directorio.
+       Cambia los permisos al escribir
+               chmod 755
+       y dándole tu directorio de deposito como otro parámetro.
+       Si quieres usar el deposito por defecto, el directorio a especificar para el comando chmod
+       es el directorio principal de Anathema.
+       Nota que, dependiendo de tu sistema, necesitas entrar como "root" o "super user" para cambiar los
+       permisos.
+       Esto debe hacerse al escribir
+               su
+       antes de crear el directorio.
+
+P: Anathema no corre adecuadamente en mi Linux con Compiz-3D-Desktop.
+R: (Gracias a pippo_jedi, usando el bash)
+		$export AWT_TOOLKIT=MToolkit
+	Asi es que ahora agrego
+		AWT_TOOLKIT=MToolkit
+		export AWT_TOOLKIT
+	a mi ~/.bash_profile en mi directorio principal.
+	Ahora anathema funciona bien.
