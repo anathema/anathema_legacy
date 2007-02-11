@@ -2554,6 +2554,7 @@
         <essence cost="1"/>
       </temporary>
     </cost>
+    <combo allAbilities="true"/>
     <duration duration="Instant"/>
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
