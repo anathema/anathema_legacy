@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<charmlist>
+  <!-- Terrestrial Hero Style -->
+  <charm id="Terrestrial.CurrentsSweepSea" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="3"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Terrestrial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Knockdown" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  <charm id="Terrestrial.PoundingSurfStyle" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="3"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Terrestrial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Stackable" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  <charm id="Terrestrial.FlowRocks" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Terrestrial.PoundingSurfStyle"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration event="NextAction"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Terrestrial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Stackable" visualize="true"/>
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  <charm id="Terrestrial.TerrestrialHeroForm" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Terrestrial.CurrentsSweepSea"/>
+      <charmReference id="Terrestrial.FlowRocks"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration amount="1" unit="scene"/>
+    <charmtype type="Simple">
+    	<special speed="5" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Terrestrial"/>
+    <charmAttribute attribute="Form" visualize="true"/>    
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  <charm id="Terrestrial.RiptideMethod" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Terrestrial.TerrestrialHeroForm"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per attack"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="ExtraAction"/>
+    <charmAttribute attribute="Terrestrial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>    
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  <charm id="Terrestrial.DrowningEmbrace" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Terrestrial.TerrestrialHeroForm"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+        <essence willpower="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Varies"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Terrestrial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>    
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  <charm id="Terrestrial.TriremeStrikesRocks" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Terrestrial.DrowningEmbrace"/>
+      <charmReference id="Terrestrial.RiptideMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Terrestrial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>    
+    <charmAttribute attribute="Crippling" visualize="true"/>    
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  <charm id="Terrestrial.Blade-DeflectingPalm" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="3"/>
+      <essence value="1"/>
+      <charmAttributeRequirement attribute="MartialArts" count="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+    	<special primaryStep="5"/>
+    </charmtype>
+    <charmAttribute attribute="Terrestrial"/>
+    <charmAttribute attribute="Exclusive"/>    
+    <charmAttribute attribute="Combo-OK" visualize="true"/>    
+    <charmAttribute attribute="Obvious" visualize="true"/>    
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  <charm id="Terrestrial.BecomeHammer" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Terrestrial.Blade-DeflectingPalm"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Terrestrial"/>
+    <charmAttribute attribute="Exclusive"/>    
+    <charmAttribute attribute="Combo-OK" visualize="true"/>    
+    <charmAttribute attribute="Obvious" visualize="true"/>    
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  <charm id="Terrestrial.DisarmingStrikePrana" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Terrestrial.BecomeHammer"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Terrestrial"/>
+    <charmAttribute attribute="Exclusive"/>    
+    <charmAttribute attribute="Combo-OK" visualize="true"/>    
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  <charm id="Terrestrial.Dragon-ClawElementalStrike" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Terrestrial.BecomeHammer"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Terrestrial"/>
+    <charmAttribute attribute="Exclusive"/>    
+    <charmAttribute attribute="Combo-OK" visualize="true"/>    
+    <charmAttribute attribute="Elemental" visualize="true"/>    
+    <charmAttribute attribute="Obvious" visualize="true"/>    
+    <source source="DragonBlooded2nd"/>
+  </charm>
+  <charm id="Terrestrial.DisarmingStrikePranaSOTM" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Terrestrial.BecomeHammer"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Terrestrial"/>
+    <charmAttribute attribute="Exclusive"/>    
+    <charmAttribute attribute="Combo-OK" visualize="true"/>    
+    <source source="ScrollMonk"/>
+  </charm>
+  <charm id="Terrestrial.BondsUnbreakableIceTechnique" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Terrestrial.RiptideMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration amount="Essence" unit="action"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Terrestrial"/>
+    <charmAttribute attribute="Exclusive"/>    
+    <charmAttribute attribute="Combo-OK" visualize="true"/>    
+    <charmAttribute attribute="Obvious" visualize="true"/>    
+    <charmAttribute attribute="Touch" visualize="true"/>    
+    <source source="ScrollMonk"/>
+  </charm>
+  <charm id="Terrestrial.CrushingGlacierPrana" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="4"/>
+      <charmReference id="Terrestrial.BondsUnbreakableIceTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration amount="Essence" unit="action"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Terrestrial"/>
+    <charmAttribute attribute="Exclusive"/>    
+    <charmAttribute attribute="Combo-OK" visualize="true"/>    
+    <charmAttribute attribute="Obvious" visualize="true"/>    
+    <charmAttribute attribute="Touch" visualize="true"/>    
+    <source source="ScrollMonk"/>
+  </charm>
+  <charm id="Terrestrial.SmashingTidalWaveTechnique" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="4"/>
+      <charmReference id="Terrestrial.CrushingGlacierPrana"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3" text="+3 per additional target"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration amount="MartialArts" unit="action"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Terrestrial"/>
+    <charmAttribute attribute="Exclusive"/>    
+    <charmAttribute attribute="Obvious" visualize="true"/>    
+    <source source="ScrollMonk"/>
+  </charm>
+  <charm id="Terrestrial.SlipperyEscapeMethod" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Terrestrial.DrowningEmbrace"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per 2 dice"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Terrestrial"/>
+    <charmAttribute attribute="Exclusive"/>    
+    <charmAttribute attribute="Combo-OK" visualize="true"/>    
+    <charmAttribute attribute="Obvious" visualize="true"/>    
+    <source source="ScrollMonk"/>
+  </charm>
+  <charm id="Terrestrial.SwiftStreamPrana" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Terrestrial.SlipperyEscapeMethod"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+    	<special primaryStep="2"/>
+    </charmtype>
+    <charmAttribute attribute="Terrestrial"/>
+    <charmAttribute attribute="Exclusive"/>    
+    <charmAttribute attribute="Combo-OK" visualize="true"/>    
+    <charmAttribute attribute="Obvious" visualize="true"/>    
+    <source source="ScrollMonk"/>
+  </charm>
+</charmlist>

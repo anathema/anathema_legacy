@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<charmlist>
+  <!-- Second Edition Snake Style -->
+  <charm id="Solar.StrikingCobraTechnique" exalt="Solar" group="SnakeStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK"/>
+    <source source="SecondEdition" page="240"/>
+  </charm>
+  <charm id="Solar.SerpentineEvasion" exalt="Solar" group="SnakeStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="3"/>
+      <essence value="1"/>
+      <charmReference id="Solar.StrikingCobraTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+   	  <special primaryStep="2"/>
+   	</charmtype>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK"/>
+    <source source="SecondEdition" page="240"/>
+  </charm>
+  <charm id="Solar.SnakeForm" exalt="Solar" group="SnakeStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Solar.SerpentineEvasion"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="5"/>
+      </temporary>
+    </cost>
+    <duration amount="1" unit="scene"/>
+    <charmtype type="Simple">
+   	  <special speed="3" defense="-1"/>
+   	</charmtype>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Form" visualize="true"/>    
+    <charmAttribute attribute="Obvious" visualize="true"/>    
+    <source source="SecondEdition" page="240"/>
+  </charm>
+  <charm id="Solar.EssenceFangsandScalesTechnique" exalt="Solar" group="SnakeStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Solar.SnakeForm"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+      </temporary>
+    </cost>
+    <duration amount="1" unit="scene"/>
+    <charmtype type="Simple">
+   	  <special speed="5" defense="-1"/>
+   	</charmtype>
+    <charmAttribute attribute="Celestial"/>
+    <source source="SecondEdition" page="240"/>
+  </charm>
+  <charm id="Solar.Armor-PenetratingFangStrike" exalt="Solar" group="SnakeStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Solar.EssenceFangsandScalesTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/> 
+    <source source="SecondEdition" page="240"/>
+  </charm>
+  <charm id="Solar.SnakeStrikesHeel" exalt="Solar" group="SnakeStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Solar.SnakeForm"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+   	  <special primaryStep="9"/>
+   	</charmtype>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Counterattack" visualize="true"/> 
+    <source source="SecondEdition" page="241"/>
+  </charm>
+  <charm id="Solar.UncoilingSerpentPrana" exalt="Solar" group="SnakeStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Solar.SnakeStrikesHeel"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/> 
+    <source source="SecondEdition" page="241"/>
+  </charm>
+  <charm id="Solar.StrikingSerpentSpeed" exalt="Solar" group="SnakeStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Solar.UncoilingSerpentPrana"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="ExtraAction"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="242"/>
+  </charm>
+  <charm id="Solar.EssenceVenomStrike" exalt="Solar" group="SnakeStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Solar.StrikingSerpentSpeed"/>
+      <charmReference id="Solar.Armor-PenetratingFangStrike"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="7"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+      <special speed="4" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition" page="242"/>
+  </charm>
+  
+  <!-- SecondEdition Solar Hero Style -->
+ <charm id="Solar.FistsIronTechnique" exalt="Solar" group="SolarHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="2"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental" />
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="242"/>
+  </charm>
+  <charm id="Solar.SledgehammerFistPunch" exalt="Solar" group="SolarHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Solar.FistsIronTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="242"/>
+  </charm>
+  <charm id="Solar.DragonCoilTechnique" exalt="Solar" group="SolarHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Solar.FistsIronTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration event="NextAction"/>
+    <charmtype type="Reflexive">
+    	<special primaryStep="1"/>
+    </charmtype>
+    <combo comboable="true">
+      <restrictions>
+        <charmtype type="ExtraAction"/>
+      </restrictions>
+    </combo>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="242"/>
+  </charm>
+  <charm id="Solar.SolarHeroForm" exalt="Solar" group="SolarHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Solar.DragonCoilTechnique"/>
+      <charmReference id="Solar.SledgehammerFistPunch"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+      </temporary>
+    </cost>
+    <duration amount="1" unit="scene"/>
+    <charmtype type="Simple">
+    	<special speed="6" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <charmAttribute attribute="Form" visualize="true"/>
+    <source source="SecondEdition" page="242"/>
+  </charm>
+  <charm id="Solar.HeavenThunderHammer" exalt="Solar" group="SolarHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Solar.SolarHeroForm"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="242"/>
+  </charm>
+  <charm id="Solar.CrashingWaveThrow" exalt="Solar" group="SolarHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Solar.HeavenThunderHammer"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="243"/>
+  </charm>
+  <charm id="Solar.Ox-StunningBlow" exalt="Solar" group="SolarHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Solar.SolarHeroForm"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per die"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+    	<special speed="6" defense="-1"/>
+    </charmtype>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Crippling" visualize="true"/>
+    <source source="SecondEdition" page="243"/>
+  </charm>
+  <charm id="Solar.HammeronIronTechnique" exalt="Solar" group="SolarHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Solar.SolarHeroForm"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3" />
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="ExtraAction"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="243"/>
+  </charm>
+  <charm id="Solar.ShockwaveTechnique" exalt="Solar" group="SolarHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Solar.CrashingWaveThrow"/>
+      <charmReference id="Solar.Ox-StunningBlow"/>
+      <charmReference id="Solar.HammeronIronTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3" />
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Counterattack" visualize="true"/>
+    <charmAttribute attribute="Knockback" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition" page="244"/>
+  </charm>
+  
+  <!-- SecondEdition Solar Specials -->
+  <charm id="Solar.ThunderclapRushAttack" exalt="Solar" group="SolarHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Solar.FistsIronTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" />
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple">
+    	<special speed="3" defense="-0"/>
+    </charmtype>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Exclusive"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="SecondEdition" page="190"/>
+  </charm>
+  <charm id="Solar.KnockoutBlow" exalt="Solar" group="SolarHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Solar.SolarHeroForm"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4" />
+        <willpower cost="1" />
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Exclusive"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Crippling" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="SecondEdition" page="190"/>
+  </charm>
+  <charm id="Solar.PoundingHammerDevastationTechnique" exalt="Solar" group="SolarHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="5"/>
+      <charmReference id="Solar.HeavenThunderHammer"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="7" />
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Exclusive"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="ScrollMonk" page="83"/>
+  </charm>
+  <charm id="Solar.AdamantineFistsBattle" exalt="Solar" group="SolarHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="6"/>
+      <charmReference id="Solar.HeavenThunderHammer"/>
+      <charmReference id="Solar.HammeronIronTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="7" />
+        <willpower cost="1" />
+      </temporary>
+    </cost>
+    <duration amount="1" unit="scene"/>
+    <charmtype type="Supplemental"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Exclusive"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="ScrollMonk" page="83"/>
+  </charm>
+  <charm id="Solar.InevitableVictoryMeditation" exalt="Solar" group="SolarHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="1"/>
+      <charmReference id="Solar.FistsIronTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3" />
+        <willpower cost="1" />
+      </temporary>
+    </cost>
+    <duration event="Used"/>
+    <charmtype type="Simple">
+   	  <special speed="6" defense="-2"/>
+   	</charmtype>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Exclusive"/>
+    <charmAttribute attribute="Combo-Basic" visualize="true"/>
+    <source source="ScrollMonk" page="84"/>
+  </charm>
+  <charm id="Solar.IrrepressibleBraveryTactic" exalt="Solar" group="SolarHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="3"/>
+      <essence value="2"/>
+      <charmReference id="Solar.ThunderclapRushAttack"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3" text="per success" />
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+   	  <special primaryStep="1"/>
+   	</charmtype>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Exclusive"/>
+    <source source="ScrollMonk" page="84"/>
+  </charm>
+  <charm id="Solar.DancingwithStrifeTechnique" exalt="Solar" group="SolarHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="3"/>
+      <essence value="3"/>
+      <charmReference id="Solar.IrrepressibleBraveryTactic"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3" />
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+   	  <special primaryStep="5"/>
+   	</charmtype>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Exclusive"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <source source="ScrollMonk" page="84"/>
+  </charm>  
+  <charm id="Solar.SupremacyWarMethod" exalt="Solar" group="SolarHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Solar.InevitableVictoryMeditation"/>
+      <charmReference id="Solar.DancingwithStrifeTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per die" />
+      </temporary>
+    </cost>
+    <duration duration="OneSceneOrUsed"/>
+    <charmtype type="Reflexive">
+   	  <special primaryStep="5"/>
+   	</charmtype>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Exclusive"/>
+    <charmAttribute attribute="Stackable" visualize="true"/>
+    <source source="ScrollMonk" page="84"/>
+  </charm>
+  <charm id="Solar.AscendantBattleVisage" exalt="Solar" group="SolarHeroStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <trait id="Resistance" value="5"/>
+      <essence value="4"/>
+      <charmReference id="Solar.SupremacyWarMethod"/>
+      <charmReference id="Solar.BloodthirstySword-DancerSpirit"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration amount="1" unit="action"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Celestial"/>
+    <charmAttribute attribute="Exclusive"/>
+    <charmAttribute attribute="Obvious" visualize="true"/>
+    <source source="ScrollMonk" page="85"/>
+  </charm>
+  
+  <!-- SecondEdition Solar Generics -->
+  <charm id="Solar.1stExcellency.MartialArts" exalt="Solar" group="Generics">
+    <prerequisite>
+      <trait id="MartialArts" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="1" text="per die"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="1" secondaryStep="2"/>
+    </charmtype>
+    <combo>
+    	<restrictions>
+    		<charm id="Solar.3rdExcellency.MartialArts"/>
+    	</restrictions>
+    </combo>
+    <charmAttribute attribute="Mortal"/>
+    <charmAttribute attribute="NoStyle"/>
+    <charmAttribute attribute="Exclusive"/>
+    <charmAttribute attribute="Excellency"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="ExcellencyMartialArts"/>
+    <source source="SecondEdition" page="183"/>
+  </charm>
+  <charm id="Solar.2ndExcellency.MartialArts" exalt="Solar" group="Generics">
+    <prerequisite>
+      <trait id="MartialArts" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2" text="per success"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="1" secondaryStep="2"/>
+    </charmtype>
+    <combo>
+    	<restrictions>
+    		<charm id="Solar.3rdExcellency.MartialArts"/>
+    	</restrictions>
+    </combo>
+    <charmAttribute attribute="Mortal"/>
+    <charmAttribute attribute="NoStyle"/>
+    <charmAttribute attribute="Exclusive"/>
+    <charmAttribute attribute="Excellency"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="ExcellencyMartialArts"/>
+    <source source="SecondEdition" page="184"/>
+  </charm>
+  <charm id="Solar.3rdExcellency.MartialArts" exalt="Solar" group="Generics">
+    <prerequisite>
+      <trait id="MartialArts" value="1"/>
+      <essence value="1"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Reflexive">
+      <special primaryStep="4" secondaryStep="6"/>
+    </charmtype>
+    <charmAttribute attribute="Mortal"/>
+    <charmAttribute attribute="NoStyle"/>
+    <charmAttribute attribute="Exclusive"/>
+    <charmAttribute attribute="Excellency"/>
+    <charmAttribute attribute="Combo-OK" visualize="true"/>
+    <charmAttribute attribute="ExcellencyMartialArts"/>
+    <source source="SecondEdition" page="185"/>
+  </charm>
+  <charm id="Solar.InfiniteMastery.MartialArts" exalt="Solar" group="Generics">
+    <prerequisite>
+      <trait id="MartialArts" value="4"/>
+      <essence value="3"/>
+      <charmAttributeRequirement attribute="ExcellencyMartialArts"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="2" text="or more"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration amount="1" unit="scene"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Mortal"/>
+    <charmAttribute attribute="NoStyle"/>
+    <charmAttribute attribute="Exclusive"/>
+    <source source="SecondEdition" page="185"/>
+  </charm>
+  <charm id="Solar.EssenceFlow.MartialArts" exalt="Solar" group="Generics">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="4"/>
+      <charmAttributeRequirement attribute="ExcellencyMartialArts"/>
+    </prerequisite>
+    <cost>
+      <temporary/>
+    </cost>
+    <duration duration="Permanent"/>
+    <charmtype type="Permanent"/>
+    <charmAttribute attribute="Mortal"/>
+    <charmAttribute attribute="NoStyle"/>
+    <charmAttribute attribute="Exclusive"/>
+    <source source="SecondEdition" page="187"/>
+  </charm>
+</charmlist>

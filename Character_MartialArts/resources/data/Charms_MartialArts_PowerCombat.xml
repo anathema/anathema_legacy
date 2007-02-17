@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<charmlist>
+  <charm id="Dragon-Blooded.PerfectionEarthBody" group="EarthDragonStyle" exalt="Dragon-Blooded">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="5"/>
+      <charmReference id="Dragon-Blooded.Ghost-GroundingBlow"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <charmAttribute attribute="Celestial"/>
+    <duration amount="1" unit="scene"/>
+    <charmtype type="Simple"/>
+    <source source="PlayersGuide" page="208"/>
+  </charm>
+  <charm id="Dragon-Blooded.BottomlessDepthsDefense" group="WaterDragonStyle" exalt="Dragon-Blooded">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Dragon-Blooded.Ghost-RestrainingWhirlpoolStance"/>
+      <charmReference id="Dragon-Blooded.CrashingWaveStyle"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <charmAttribute attribute="Celestial"/>
+    <duration amount="1" unit="turn"/>
+    <charmtype type="Reflexive"/>
+    <source source="PlayersGuide" page="208"/>
+  </charm>
+  <charm id="Abyssal.Soul-FlayingStrike" exalt="Abyssal" group="HungryGhostStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="4"/>
+      <charmReference id="Abyssal.LungingPhantomMethod"/>
+      <charmReference id="Abyssal.BloodFreezingTechnique"/>
+      <charmReference id="Abyssal.CharmSmotheringTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="10"/>
+        <willpower cost="1"/>
+        <health cost="1"/>
+      </temporary>
+    </cost>
+    <charmAttribute attribute="Celestial"/>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+    <source source="PlayersGuide" page="208"/>
+  </charm>
+  <charm id="Solar.MantisForm" exalt="Solar" group="MantisStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Solar.Iron-ArmBlock"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+      </temporary>
+    </cost>
+    <duration amount="1" unit="scene"/>
+    <charmtype type="Simple"/>
+    <charmAttribute attribute="Form"/>
+  	<charmAttribute attribute="Celestial"/>
+    <source source="PlayersGuide" page="208"/>
+  </charm>
+  <charm id="Solar.Joint-LockingTechnique" exalt="Solar" group="MantisStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="4"/>
+      <essence value="3"/>
+      <charmReference id="Solar.MantisForm"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3"/>
+      </temporary>
+    </cost>
+    <duration duration="OneTurnOrOneHold"/>
+    <charmtype type="Reflexive"/>
+   	<charmAttribute attribute="Celestial"/>
+    <source source="PlayersGuide" page="208"/>
+  </charm>
+  <charm id="Solar.CrushingClawTechnique" exalt="Solar" group="MantisStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Solar.FlyingMantisKick"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="3" text="per turn"/>
+      </temporary>
+    </cost>
+    <duration duration="Varies"/>
+    <charmtype type="Simple"/>
+   	<charmAttribute attribute="Celestial"/>
+    <source source="PlayersGuide" page="208"/>
+  </charm>
+  <charm id="Solar.EssenceFangsandScalesTechnique" exalt="Solar" group="SnakeStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="4"/>
+      <essence value="2"/>
+      <charmReference id="Solar.SnakeForm"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+      </temporary>
+    </cost>
+    <duration amount="1" unit="scene"/>
+    <charmtype type="Simple"/>
+	<charmAttribute attribute="Celestial"/>
+    <source source="PlayersGuide" page="208"/>
+  </charm>
+  <charm id="Solar.Armor-PenetratingFangStrike" exalt="Solar" group="SnakeStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="2"/>
+      <charmReference id="Solar.EssenceFangsandScalesTechnique"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="4"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Supplemental"/>
+	<charmAttribute attribute="Celestial"/>
+    <source source="PlayersGuide" page="207"/>
+  </charm>  
+  <charm id="Solar.EssenceVenomStrike" exalt="Solar" group="SnakeStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Solar.Armor-PenetratingFangStrike"/>
+      <charmReference id="Solar.StrikingSerpentSpeed"/>
+      <charmReference id="Solar.CripplingPressure-PointStrike"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="7"/>
+        <willpower cost="1"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="Simple"/>
+	<charmAttribute attribute="Celestial"/>
+    <source source="PlayersGuide" page="208"/>
+  </charm>
+  <charm id="Solar.StrikingSerpentSpeed" exalt="Solar" group="SnakeStyle">
+    <prerequisite>
+      <trait id="MartialArts" value="5"/>
+      <essence value="3"/>
+      <charmReference id="Solar.UncoilingSerpentPrana"/>
+    </prerequisite>
+    <cost>
+      <temporary>
+        <essence cost="6"/>
+      </temporary>
+    </cost>
+    <duration duration="Instant"/>
+    <charmtype type="ExtraAction"/>
+	<charmAttribute attribute="Celestial"/>
+    <source source="PlayersGuide" page="208"/>
+  </charm>
+</charmlist>
