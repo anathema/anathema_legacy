@@ -32,6 +32,7 @@
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="MartialArtsResources">
 		<!--<parameter id="bundle" value="Charms_MartialArts"/>-->
+		<parameter id="bundle" value="MartialArts"/>
 		<parameter id="bundle" value="Charms_MartialArts_Pages"/>
 		<parameter id="bundle" value="Charms_MartialArts_SecondEdition"/>
 	</extension>
