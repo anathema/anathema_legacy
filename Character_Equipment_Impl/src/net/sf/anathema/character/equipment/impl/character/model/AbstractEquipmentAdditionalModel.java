@@ -34,7 +34,7 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
     }
   };
 
-  public AbstractEquipmentAdditionalModel(IExaltedRuleSet ruleSet, IArmourStats naturalArmour) {
+  public AbstractEquipmentAdditionalModel(final IExaltedRuleSet ruleSet, final IArmourStats naturalArmour) {
     this.ruleSet = ruleSet;
     this.printModel = new EquipmentPrintModel(this, naturalArmour);
   }
@@ -55,7 +55,7 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
     return equipmentItems.toArray(new IEquipmentItem[equipmentItems.size()]);
   }
 
-  public IEquipmentItem addEquipmentObjectFor(String templateId, MagicalMaterial material) {
+  public IEquipmentItem addEquipmentObjectFor(final String templateId, final MagicalMaterial material) {
     final IEquipmentTemplate template = loadEquipmentTemplate(templateId);
     if (template == null) {
       return getSpecialManagedItem(templateId);
@@ -67,11 +67,11 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
 
   protected abstract IEquipmentTemplate loadEquipmentTemplate(String templateId);
 
-  protected final IEquipmentItem addEquipmentObjectFor(final IEquipmentTemplate template, MagicalMaterial material) {
+  protected final IEquipmentItem addEquipmentObjectFor(final IEquipmentTemplate template, final MagicalMaterial material) {
     final IEquipmentItem item = new EquipmentItem(template, ruleSet, material);
     equipmentItems.add(item);
     equipmentItemControl.forAllDo(new IClosure<ICollectionListener<IEquipmentItem>>() {
-      public void execute(ICollectionListener<IEquipmentItem> input) {
+      public void execute(final ICollectionListener<IEquipmentItem> input) {
         input.itemAdded(item);
       }
     });
@@ -83,7 +83,7 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
   public void removeItem(final IEquipmentItem item) {
     equipmentItems.remove(item);
     equipmentItemControl.forAllDo(new IClosure<ICollectionListener<IEquipmentItem>>() {
-      public void execute(ICollectionListener<IEquipmentItem> input) {
+      public void execute(final ICollectionListener<IEquipmentItem> input) {
         input.itemRemoved(item);
       }
     });
@@ -92,21 +92,21 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
   }
 
   public void refreshItems() {
-    for (IEquipmentItem item : equipmentItems) {
+    for (IEquipmentItem item : new ArrayList<IEquipmentItem>(equipmentItems)) {
       if (canBeRemoved(item)) {
         refreshItem(item);
       }
     }
   }
 
-  private void refreshItem(IEquipmentItem item) {
+  private void refreshItem(final IEquipmentItem item) {
     String templateId = item.getTemplateId();
     MagicalMaterial material = item.getMaterial();
     removeItem(item);
     addEquipmentObjectFor(templateId, material);
   }
 
-  public final void addEquipmentObjectListener(ICollectionListener<IEquipmentItem> listener) {
+  public final void addEquipmentObjectListener(final ICollectionListener<IEquipmentItem> listener) {
     equipmentItemControl.addListener(listener);
   }
 
@@ -114,17 +114,17 @@ public abstract class AbstractEquipmentAdditionalModel extends AbstractAdditiona
     return ruleSet;
   }
 
-  public MaterialComposition getMaterialComposition(String templateId) {
+  public MaterialComposition getMaterialComposition(final String templateId) {
     IEquipmentTemplate template = loadEquipmentTemplate(templateId);
     return template.getComposition();
   }
 
-  public MagicalMaterial getMagicalMaterial(String templateId) {
+  public MagicalMaterial getMagicalMaterial(final String templateId) {
     IEquipmentTemplate template = loadEquipmentTemplate(templateId);
     return template.getMaterial();
   }
 
-  public void addChangeListener(IChangeListener listener) {
+  public void addChangeListener(final IChangeListener listener) {
     modelChangeControl.addChangeListener(listener);
   }
 }
