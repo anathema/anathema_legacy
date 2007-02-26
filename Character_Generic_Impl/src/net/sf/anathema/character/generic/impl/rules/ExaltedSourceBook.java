@@ -18,7 +18,8 @@ public enum ExaltedSourceBook implements IExaltedSourceBook {
   CBTwilight(ExaltedEdition.FirstEdition), CBNight(ExaltedEdition.FirstEdition),
   CBEclipse(ExaltedEdition.FirstEdition), PlayersGuide(ExaltedEdition.FirstEdition), SecondEdition(
       ExaltedEdition.SecondEdition), DragonBlooded2nd(ExaltedEdition.SecondEdition), WondersLostAge(
-      ExaltedEdition.SecondEdition), ScrollMonk(ExaltedEdition.SecondEdition), Comic0(ExaltedEdition.FirstEdition);
+      ExaltedEdition.SecondEdition), ScrollMonk(ExaltedEdition.SecondEdition), WhiteTreatise(
+      ExaltedEdition.SecondEdition), BlackTreatise(ExaltedEdition.SecondEdition), Comic0(ExaltedEdition.FirstEdition);
 
   private final IExaltedEdition edition;
 

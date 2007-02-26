@@ -9,10 +9,8 @@ import javax.swing.KeyStroke;
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
-import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
-import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.framework.repository.IRepository;
 import net.sf.anathema.framework.repository.access.printname.IPrintNameFileAccess;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -32,18 +30,7 @@ public class AnathemaLoadAction extends AbstractAnathemaItemAction {
   public AnathemaLoadAction(IAnathemaModel model, IResources resources) {
     super(model, resources, new LoadItemCreator(model));
     setAcceleratorKey(KeyStroke.getKeyStroke(KeyEvent.VK_L, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-    adjustEnabled();
-    model.getItemManagement().addListener(new ItemManagementModelAdapter() {
-      @Override
-      public void itemRemoved(IItem item) {
-        adjustEnabled();
-      }
-
-      @Override
-      public void itemAdded(IItem item) {
-        adjustEnabled();
-      }
-    });
+    new LoadActionEnabler(model.getRepository(), model.getItemManagement(), this, collectItemTypes(model)).init();
   }
 
   @Override
@@ -53,10 +40,6 @@ public class AnathemaLoadAction extends AbstractAnathemaItemAction {
         return getRepository().containsClosed(value);
       }
     };
-  }
-
-  private void adjustEnabled() {
-    setEnabled(getRepository().containsClosed(collectItemTypes(getAnathemaModel())));
   }
 
   private IRepository getRepository() {

@@ -1,33 +1,33 @@
 <abilityGroups>
-  <group id="Air">
+  <group id="Air" casteId="Air">
     <trait type="Linguistics" />
     <trait type="Lore" />
     <trait type="Occult" />
     <trait type="Stealth" />
     <trait type="Thrown" />
   </group>
-  <group id="Earth">
+  <group id="Earth" casteId="Earth">
     <trait type="Awareness" />
     <trait type="Craft" />
     <trait type="Endurance" />
     <trait type="MartialArts" />
     <trait type="Resistance" />
-  </group>
-  <group id="Water">
-    <trait type="Brawl" />
-    <trait type="Bureaucracy" />
-    <trait type="Investigation" />
-    <trait type="Larceny" />
-    <trait type="Sail" />
-  </group>
-  <group id="Fire">
+  </group>  
+  <group id="Fire" casteId="Fire">
     <trait type="Athletics" />
     <trait type="Dodge" />
     <trait type="Melee" />
     <trait type="Presence" />
     <trait type="Socialize" />
   </group>
-  <group id="Wood">
+  <group id="Water" casteId="Water">
+    <trait type="Brawl" />
+    <trait type="Bureaucracy" />
+    <trait type="Investigation" />
+    <trait type="Larceny" />
+    <trait type="Sail" />
+  </group>
+  <group id="Wood" casteId="Wood">
     <trait type="Archery" />
     <trait type="Medicine" />
     <trait type="Performance" />

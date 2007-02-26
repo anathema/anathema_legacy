@@ -9,9 +9,6 @@ import java.awt.font.TextLayout;
 public class AnathemaPrebootSplashscreen {
 
   public void displayStatusMessage(String message) {
-    if (System.getProperty("java.version").startsWith("1.5")) { //$NON-NLS-1$ //$NON-NLS-2$
-      return;
-    }
     SplashScreen splashScreen = SplashScreen.getSplashScreen();
     if (splashScreen == null || !splashScreen.isVisible()) {
       return;

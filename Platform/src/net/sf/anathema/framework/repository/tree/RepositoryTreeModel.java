@@ -167,5 +167,6 @@ public class RepositoryTreeModel implements IRepositoryTreeModel {
         input.printNameFileAdded(repository.getPrintNameFileAccess().getPrintNameFile(type, id));
       }
     });
+    repository.refresh();
   }
 }

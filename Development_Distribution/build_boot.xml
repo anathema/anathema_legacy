@@ -28,7 +28,7 @@
 
 	<target name="Compile Bootloader" depends="Prepare">
 		<getEclipseClasspath property="classpath" workspace="${workspace.dir}" projectName="Anathema" relative="false" initialiseWorkspace="true" />
-		<javac classpath="${classpath}" srcdir="../Anathema/src" destdir="${boot.dir}" target="1.6" debug="true">
+		<javac classpath="${classpath}" srcdir="../Anathema/src" destdir="${boot.dir}" target="1.5" debug="true">
 			<include name="**/AnathemaBootLoader.java" />
 			<include name="**/AnathemaPathResolver.java" />
 			<include name="**/AnathemaPrebootSplashscreen.java" />

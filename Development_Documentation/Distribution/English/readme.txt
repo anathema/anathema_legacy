@@ -100,8 +100,6 @@ but it appears to be quite elusive. Please contact us should you encounter this 
 
 -"Start Maximized" doesn't work on some Linux systems.
 
--"Open PDF after printing" doesn't work on Windows Vista with Adobe Reader 8.
-
 See versions.txt for a history of bugs fixed.
 
 ===------------------------------------------------------------------------------===
@@ -111,8 +109,7 @@ See versions.txt for a history of bugs fixed.
 Anathema is developed by Sandra Sieroux and Urs Reupke.
 Contact us at urskr@users.sourceforge.net with questions, comments or suggestions.
 
-For bug reports and feature requests, you should use the 
-SourceForge.net Tracking System at
+For bug reports you should use the SourceForge.net Tracking System at
 http://sourceforge.net/projects/anathema
 
 Visit the Anathema website at http://anathema.sf.net

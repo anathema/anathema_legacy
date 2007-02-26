@@ -29,7 +29,7 @@
 !path ../Lib/build/classes
 !path ../Lib_Gui/build/classes
 !path ../Lib_Workflow/build/classes
-!path ../Thirdparty/Database/db4o-5.5-java5.jar
+!path ../Thirdparty/Database/db4o-6.0-java5.jar
 !path ../Thirdparty/XML/dom4j-1.5.jar
 !path ../Thirdparty/Reporting/jasperreports-0.6.2.jar
 !path ../Thirdparty/Reporting/itext-1.4.jar

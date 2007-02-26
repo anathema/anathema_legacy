@@ -259,7 +259,9 @@
         <essence cost="14"/>
       </temporary>
     </cost>
-    <source source="SavantSorcerer" page="101"/>
+    <target target="Caster"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="101"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="38"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.BloodLash">
     <cost>
@@ -268,7 +270,9 @@
         <health cost="1"/>
       </temporary>
     </cost>
-    <source source="SavantSorcerer" page="102"/>
+    <target target="Caster"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="102"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="38"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.BurningEyesOffender">
     <cost>
@@ -276,7 +280,9 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <source source="SavantSorcerer" page="102"/>
+    <target target="Caster"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="102"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="39"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.CallingWind'sKiss">
     <cost>
@@ -284,7 +290,9 @@
         <essence cost="10" text="+2 motes per additional hour (Maximum: +20)"/>
       </temporary>
     </cost>
-    <source source="SavantSorcerer" page="102"/>
+    <target target="SailingVessel"/>
+    <source edition="FirstEdition" source="SavantSorcerer" page="102"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="39"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.CommandingBeasts">
     <cost>
@@ -1164,7 +1172,9 @@
         <essence cost="20"/>
       </temporary>
     </cost>
-    <source source="Bo3C" page="31"/>
+    <target target="TouchedCreature"/>
+    <source edition="FirstEdition" source="Bo3C" page="31"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="37"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.CallingStalwartServitor">
     <cost>
@@ -1172,7 +1182,9 @@
         <essence cost="10"/>
       </temporary>
     </cost>
-    <source source="Bo3C" page="32"/>
+    <target target="SummonedServitor"/>   
+    <source edition="FirstEdition" source="Bo3C" page="32"/>
+    <source edition="SecondEdition" source="WhiteTreatise" page="39"/>
   </spell>
   <spell circle="Terrestrial" id="Terrestrial.CirrusSkiff">
     <cost>

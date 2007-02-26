@@ -1,4 +1,4 @@
-package net.sf.anathema.character.impl.model.charm.prerequisite;
+package net.sf.anathema.character.impl.model.charm;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -18,13 +18,13 @@ public class PrerequisiteSetBuilder {
     prerequisiteSet.add(OtherTraitType.Essence);
   }
 
-  public void addCharms(ICharm[] charms) {
+  public void addCharms(ICharm... charms) {
     for (ICharm charm : charms) {
       addCharm(charm);
     }
   }
 
-  public void addCharm(ICharm charm) {
+  private void addCharm(ICharm charm) {
     for (IGenericTrait prerequisite : charm.getPrerequisites()) {
       prerequisiteSet.add(prerequisite.getType());
     }

@@ -16,7 +16,6 @@
     <charmtype type="Supplemental"/>
     <charmAttribute attribute="Terrestrial"/>
     <charmAttribute attribute="Combo-OK" visualize="true"/>
-    <charmAttribute attribute="Knockdown" visualize="true"/>
     <source source="DragonBlooded2nd"/>
   </charm>
   <charm id="Terrestrial.PoundingSurfStyle" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
@@ -167,26 +166,7 @@
     <charmAttribute attribute="Combo-OK" visualize="true"/>    
     <charmAttribute attribute="Obvious" visualize="true"/>    
     <source source="DragonBlooded2nd"/>
-  </charm>
-  <charm id="Terrestrial.DisarmingStrikePrana" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
-    <prerequisite>
-      <trait id="MartialArts" value="4"/>
-      <essence value="3"/>
-      <charmReference id="Terrestrial.BecomeHammer"/>
-    </prerequisite>
-    <cost>
-      <temporary>
-        <essence cost="3"/>
-        <willpower cost="1"/>
-      </temporary>
-    </cost>
-    <duration duration="Instant"/>
-    <charmtype type="Simple"/>
-    <charmAttribute attribute="Terrestrial"/>
-    <charmAttribute attribute="Exclusive"/>    
-    <charmAttribute attribute="Combo-OK" visualize="true"/>    
-    <source source="DragonBlooded2nd"/>
-  </charm>
+  </charm>  
   <charm id="Terrestrial.Dragon-ClawElementalStrike" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
     <prerequisite>
       <trait id="MartialArts" value="4"/>
@@ -207,7 +187,7 @@
     <charmAttribute attribute="Obvious" visualize="true"/>    
     <source source="DragonBlooded2nd"/>
   </charm>
-  <charm id="Terrestrial.DisarmingStrikePranaSOTM" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
+  <charm id="Terrestrial.DisarmingStrikePrana" exalt="Dragon-Blooded" group="TerrestrialHeroStyle">
     <prerequisite>
       <trait id="MartialArts" value="4"/>
       <essence value="3"/>

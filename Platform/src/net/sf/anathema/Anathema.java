@@ -22,16 +22,16 @@ public class Anathema implements Application {
   }
 
   public void startApplication() throws Exception {
-    AnathemaSplashscreen.getInstance().displayStatusMessage("Retrieving Preferences..."); //$NON-NLS-1$
+    ProxySplashscreen.getInstance().displayStatusMessage("Retrieving Preferences..."); //$NON-NLS-1$
     IAnathemaPreferences anathemaPreferences = AnathemaPreferences.getDefaultPreferences();
-    AnathemaSplashscreen.getInstance().displayStatusMessage("Preparing Environment..."); //$NON-NLS-1$
+    ProxySplashscreen.getInstance().displayStatusMessage("Preparing Environment..."); //$NON-NLS-1$
     AnathemaEnvironment.initLogging();
     AnathemaEnvironment.initLocale(anathemaPreferences);
     AnathemaEnvironment.initLookAndFeel(anathemaPreferences);
     AnathemaEnvironment.initTooltipManager(anathemaPreferences);
     IAnathemaView anathemaView;
     try {
-      AnathemaSplashscreen.getInstance().displayStatusMessage("Starting Platform..."); //$NON-NLS-1$
+      ProxySplashscreen.getInstance().displayStatusMessage("Starting Platform..."); //$NON-NLS-1$
       anathemaView = new AnathemaInitializer(manager, anathemaPreferences).initialize();
     }
     catch (InitializationException e) {
@@ -39,7 +39,7 @@ public class Anathema implements Application {
       dialog.show();
       return;
     }
-    AnathemaSplashscreen.getInstance().displayStatusMessage("Done."); //$NON-NLS-1$
+    ProxySplashscreen.getInstance().displayStatusMessage("Done."); //$NON-NLS-1$
     anathemaView.showFrame();
   }
 }

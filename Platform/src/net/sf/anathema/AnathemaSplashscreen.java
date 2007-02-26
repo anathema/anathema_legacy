@@ -10,15 +10,14 @@ import java.awt.font.FontRenderContext;
 import java.awt.font.TextLayout;
 import java.awt.geom.Rectangle2D;
 
-public class AnathemaSplashscreen {
+public class AnathemaSplashscreen implements ISplashscreen {
   private final static Rectangle2D.Double textAreaRectangle = new Rectangle2D.Double(93, 318, 454, 19);
-  private final static AnathemaSplashscreen instance = new AnathemaSplashscreen();
   private final FontRenderContext renderContext = new FontRenderContext(null, true, false);
   private Graphics2D graphics;
   private Paint textAreaGradient;
   private Font font;
 
-  private AnathemaSplashscreen() {
+  public AnathemaSplashscreen() {
     if (!isSplashScreenSupported()) {
       return;
     }
@@ -34,10 +33,6 @@ public class AnathemaSplashscreen {
         endColor);
     this.graphics = SplashScreen.getSplashScreen().createGraphics();
     this.font = graphics.getFont().deriveFont(Font.BOLD);
-  }
-
-  public static AnathemaSplashscreen getInstance() {
-    return instance;
   }
 
   public void displayStatusMessage(String message) {

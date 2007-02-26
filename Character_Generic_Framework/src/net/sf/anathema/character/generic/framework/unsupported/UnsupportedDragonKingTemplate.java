@@ -23,14 +23,14 @@ import net.sf.anathema.character.generic.type.CharacterType;
 public class UnsupportedDragonKingTemplate extends AbstractUnsupportedExaltTemplate {
 
   private final ICharmTemplate charmTemplate;
-  private DragonKingPresentationProperties presentationProperties;
+  private final IPresentationProperties presentationProperties;
 
   public UnsupportedDragonKingTemplate(ICharmCache charmProvider) {
     ICharmSet charmSet = CharmSet.createRegularCharmSet(
         charmProvider,
         CharacterType.DRAGON_KING,
         ExaltedEdition.FirstEdition);
-    charmTemplate = new CharmTemplate(new DefaultMartialArtsRules(MartialArtsLevel.Mortal), charmSet);
+    this.charmTemplate = new CharmTemplate(new DefaultMartialArtsRules(MartialArtsLevel.Mortal), charmSet);
     this.presentationProperties = new DragonKingPresentationProperties(getTemplateType());
   }
 

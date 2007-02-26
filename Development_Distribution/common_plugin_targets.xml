@@ -79,7 +79,7 @@
 
 	<target name="javabuilder">
 		<getSourcepath property="path" workspace="${workspace.dir}" projectName="${project.name}" allowMultipleFolders="true" />
-		<javac classpath="${classpath}" srcdir="${path}" destdir="${class.dir}" target="1.6" debug="true" />
+		<javac classpath="${classpath}" srcdir="${path}" destdir="${class.dir}" target="1.5" debug="true" />
 	</target>
 
 	<target name="default-builder" />

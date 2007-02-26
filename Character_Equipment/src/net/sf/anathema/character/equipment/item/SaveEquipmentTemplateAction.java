@@ -2,16 +2,13 @@ package net.sf.anathema.character.equipment.item;
 
 import java.awt.Component;
 
-import net.disy.commons.core.message.Message;
 import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabaseManagement;
 import net.sf.anathema.character.equipment.item.model.IEquipmentTemplateEditModel;
 import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
-import net.sf.anathema.framework.message.MessageUtilities;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
-import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.resources.IResources;
 
 public final class SaveEquipmentTemplateAction extends SmartAction {
@@ -47,30 +44,24 @@ public final class SaveEquipmentTemplateAction extends SmartAction {
 
   @Override
   protected void execute(Component parentComponent) {
-    try {
-      IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
-      IEquipmentTemplate saveTemplate = editModel.createTemplate();
-      String editTemplateId = editModel.getEditTemplateId();
-      if (!saveTemplate.getName().equals(editTemplateId)) {
-        IEquipmentTemplate existingTemplate = model.getDatabase().loadTemplate(saveTemplate.getName());
-        if (existingTemplate != null) {
-          if (new OverwriteItemsVetor(parentComponent, resources).vetos()) {
-            return;
-          }
-          model.getDatabase().deleteTemplate(existingTemplate.getName());
+    IEquipmentTemplateEditModel editModel = model.getTemplateEditModel();
+    IEquipmentTemplate saveTemplate = editModel.createTemplate();
+    String editTemplateId = editModel.getEditTemplateId();
+    if (!saveTemplate.getName().equals(editTemplateId)) {
+      IEquipmentTemplate existingTemplate = model.getDatabase().loadTemplate(saveTemplate.getName());
+      if (existingTemplate != null) {
+        if (new OverwriteItemsVetor(parentComponent, resources).vetos()) {
+          return;
         }
+        model.getDatabase().deleteTemplate(existingTemplate.getName());
       }
-      if (editTemplateId != null) {
-        model.getDatabase().updateTemplate(editTemplateId, saveTemplate);
-      }
-      else {
-        model.getDatabase().saveTemplate(saveTemplate);
-      }
-      editModel.setEditTemplate(saveTemplate.getName());
     }
-    catch (PersistenceException e) {
-      Message message = new Message(resources.getString("Errors.EquipmentDatabase.PersistTemplate"), e); //$NON-NLS-1$
-      MessageUtilities.indicateMessage(SaveEquipmentTemplateAction.class, parentComponent, message);
+    if (editTemplateId != null) {
+      model.getDatabase().updateTemplate(editTemplateId, saveTemplate);
     }
+    else {
+      model.getDatabase().saveTemplate(saveTemplate);
+    }
+    editModel.setEditTemplate(saveTemplate.getName());
   }
 }

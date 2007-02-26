@@ -58,6 +58,10 @@ public interface ISolarSpecialCharms {
   public static final IMultiLearnableCharm RIGHTEOUS_LION_DEFENSE = new StaticMultiLearnableCharm(
       "Solar.RighteousLionDefense", //$NON-NLS-1$
       2);
+  
+  public static final IMultiLearnableCharm WONDER_FORGING_GENIUS = new StaticMultiLearnableCharm(
+      "Solar.Wonder-ForgingGenius", //$NON-NLS-1$
+      2);
 
   public static final ISubeffectCharm ESSENCE_ARROW_ATTACK = new SubeffectCharm("Solar.EssenceArrowAttack", //$NON-NLS-1$
       new String[] { "FieryArrowAttack", "DazzlingFlare", "RighteousJudgementArrow" }, 0.5); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$

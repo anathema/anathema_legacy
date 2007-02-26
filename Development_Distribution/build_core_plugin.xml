@@ -13,7 +13,7 @@
 	<target name="Add version data" depends="Compile">
 		<property file="version.properties" />
 		<propertyfile file="${resource.dir}/language/About.properties">
-			<entry key="Anathema.Version.Numeric" value="${version.major}.${version.minor}${version.revision}" />
+			<entry key="Anathema.Version.Numeric" value="${version.major}.${version.minor}.${version.revision}" />
 			<entry key="Anathema.Version.Title" value="${version.name}" />
 			<entry key="Anathema.Version.Built" type="date" value="now" pattern="MM/dd/yy" />
 		</propertyfile>

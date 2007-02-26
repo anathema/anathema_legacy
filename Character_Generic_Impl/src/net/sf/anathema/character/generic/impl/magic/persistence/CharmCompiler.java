@@ -21,7 +21,7 @@ import org.dom4j.DocumentException;
 import org.dom4j.io.SAXReader;
 
 public class CharmCompiler {
-  private final Table<IIdentificate, IExaltedRuleSet, URL> charmFileTable = new Table<IIdentificate, IExaltedRuleSet, URL>();
+  private final Table<IIdentificate, IExaltedRuleSet, List<URL>> charmFileTable = new Table<IIdentificate, IExaltedRuleSet, List<URL>>();
   private final ICharmSetBuilder builder = new CharmSetBuilder();
 
   public void registerCharmFile(String typeString, String ruleString, URL resource) {
@@ -33,7 +33,12 @@ public class CharmCompiler {
       type = CharacterType.getById(typeString);
     }
     ExaltedRuleSet ruleSet = ExaltedRuleSet.valueOf(ruleString);
-    charmFileTable.add(type, ruleSet, resource);
+    List<URL> list = charmFileTable.get(type, ruleSet);
+    if (list == null) {
+      list = new ArrayList<URL>();
+      charmFileTable.add(type, ruleSet, list);
+    }
+    list.add(resource);
   }
 
   public void buildCharms() throws PersistenceException {
@@ -52,12 +57,14 @@ public class CharmCompiler {
   }
 
   private void buildOfficialCharms(final IIdentificate type, IExaltedRuleSet rules) throws PersistenceException {
-    try {
-      Document charmDocument = new SAXReader().read(charmFileTable.get(type, rules));
-      buildRulesetCharms(type, rules, charmDocument);
-    }
-    catch (DocumentException e) {
-      throw new CharmException(e);
+    for (URL url : charmFileTable.get(type, rules)) {
+      try {
+        Document charmDocument = new SAXReader().read(url);
+        buildRulesetCharms(type, rules, charmDocument);
+      }
+      catch (DocumentException e) {
+        throw new CharmException(e);
+      }
     }
   }
 

@@ -4,10 +4,22 @@ Exalted (C) 2001-2007 by White Wolf Publishing, Inc.
 http://anathema.sf.net
 
 ===------------------------------------------------------------------------------===
-			Release 1.1 / Update 1
+			Release 1.1.1 "Patch 1" (25/02/07)
 ===------------------------------------------------------------------------------===
-
+* Tagged equipment from version 1.0 no longer breaks the program (Bug 1657429, found by Xanatos and uteck)
+* Terrestrial aspect abilities back online (Bug 1667686)
+* Martial Arts charm cascades update when MA Ability changes
+* [1E/Core] Close combat weapons are editable
+* Prevented a possible problem with the "update view" function in equipment
+* Load buttons are now sensitive to actions taken in the repository browser (Bug 1657791, found by bartkusa)
+* Anathema starts from paths containing umlauts (Bug 1662453)
+* Changing a character's XP makes him saveable now (Found by ECR's Fragg) 
 * Spirit-Cutting Attack now combos with all abilities (Bug 1657432, found by Xanatos)
+* Wonder-Forging Genius is multi-learnable. (Found by Ashtear Hinoarashi)
+* "Open after print" now works in Windows Vista
++ Added Terrestrial Hero Style
++ Updated the first three pages of spells from White Treatise
+
 
 ===------------------------------------------------------------------------------===
 			Release 1.1 "Meru" (11/02/07)

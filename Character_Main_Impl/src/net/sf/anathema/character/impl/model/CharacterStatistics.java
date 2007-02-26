@@ -25,6 +25,8 @@ import net.sf.anathema.character.library.trait.ITrait;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.ISpellConfiguration;
 import net.sf.anathema.character.model.advance.IExperiencePointConfiguration;
+import net.sf.anathema.character.model.advance.IExperiencePointConfigurationListener;
+import net.sf.anathema.character.model.advance.IExperiencePointEntry;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.IComboConfiguration;
 import net.sf.anathema.character.model.concept.ICharacterConcept;
@@ -97,8 +99,29 @@ public class CharacterStatistics implements ICharacterStatistics {
         context.getCharacterListening().fireCharacterChanged();
       }
     });
+    initExperienceListening();
     extendedConfiguration.addAdditionalModelChangeListener(new IChangeListener() {
       public void changeOccured() {
+        context.getCharacterListening().fireCharacterChanged();
+      }
+    });
+  }
+
+  private void initExperienceListening() {
+    experiencePoints.addExperiencePointConfigurationListener(new IExperiencePointConfigurationListener() {
+
+      @Override
+      public void entryAdded(IExperiencePointEntry entry) {
+        context.getCharacterListening().fireCharacterChanged();
+      }
+
+      @Override
+      public void entryChanged(IExperiencePointEntry entry) {
+        context.getCharacterListening().fireCharacterChanged();
+      }
+
+      @Override
+      public void entryRemoved(IExperiencePointEntry entry) {
         context.getCharacterListening().fireCharacterChanged();
       }
     });

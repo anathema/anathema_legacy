@@ -11,6 +11,10 @@ public class RangedWeaponStats extends AbstractWeaponStats {
     super(collectionFactory);
   }
 
+  public RangedWeaponStats(ICollectionFactory collectionFactory, RangedWeaponStats stats) {
+    super(collectionFactory, stats);
+  }
+
   @Override
   protected AbilityType getCombatTrait() {
     return hasTag(WeaponTag.Thrown) ? AbilityType.Thrown : AbilityType.Archery;

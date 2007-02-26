@@ -3,7 +3,7 @@ package net.sf.anathema.character;
 import java.net.URL;
 import java.util.Collection;
 
-import net.sf.anathema.AnathemaSplashscreen;
+import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCompiler;
 import net.sf.anathema.initialization.plugin.AnathemaPluginManager;
 import net.sf.anathema.initialization.plugin.PluginUtilities;
@@ -24,7 +24,7 @@ public class CharacterPlugin extends Plugin {
   @SuppressWarnings("unchecked")
   @Override
   protected void doStart() throws Exception {
-    AnathemaSplashscreen.getInstance().displayStatusMessage("Compiling Charm Sets..."); //$NON-NLS-1$
+    ProxySplashscreen.getInstance().displayStatusMessage("Compiling Charm Sets..."); //$NON-NLS-1$
     AnathemaPluginManager manager = new AnathemaPluginManager(getManager());
     Collection<Extension> connectedExtensions = manager.getExtension(CHARACTER_PLUGIN_ID, EXTENSION_POINT_CHARM_LIST);
     CharmCompiler charmCompiler = new CharmCompiler();

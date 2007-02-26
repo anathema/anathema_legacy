@@ -81,6 +81,9 @@
 	<extension plugin-id="net.sf.anathema.core"	point-id="Bootjobs" id="Bootjob">
 		<parameter id="class" value="net.sf.anathema.character.impl.module.CharacterPerformanceBootJob"/>
 	</extension>
+	<extension plugin-id="net.sf.anathema.core"	point-id="Bootjobs" id="DatabaseJob">
+		<parameter id="class" value="net.sf.anathema.character.equipment.impl.module.DatabaseConversionBootJob"/>
+	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="ItemTypes" id="ItemType">
 		<parameter id="type">
 			<parameter id="class" value="net.sf.anathema.character.impl.module.ExaltedCharacterItemTypeConfiguration"/>
@@ -96,7 +99,6 @@
 	</extension>
 	<extension plugin-id="net.sf.anathema.core"	point-id="AnathemaResources" id="Resources">
 		<parameter id="bundle" value="Backgrounds"/>
-		<parameter id="bundle" value="Castes"/>
 		<parameter id="bundle" value="Character"/>
 		<parameter id="bundle" value="CharacterControl"/>
 		<parameter id="bundle" value="CharacterModule"/>
@@ -104,7 +106,6 @@
 		<parameter id="bundle" value="CharmDuration"/>
 		<parameter id="bundle" value="Charmgroups"/>
 		<parameter id="bundle" value="Charms_DragonKing"/>
-		<parameter id="bundle" value="Charms_MartialArts_Pages"/>
 		<parameter id="bundle" value="CharmTreeView"/>
 		<parameter id="bundle" value="Craft"/>
 		<parameter id="bundle" value="Equipment"/>
@@ -124,21 +125,6 @@
 		<parameter id="bundle" value="Weapons"/>
 	</extension>
 	<extension plugin-id="net.sf.anathema.character" point-id="CharmList" id="UntypedCharms">
-	  <parameter id="list">
-		<parameter id="type" value="MartialArts"/>
-		<parameter id="rules" value="CoreRules"/>
-		<parameter id="path" value="data/Charms_MartialArts_CoreRules.xml"/>
-	  </parameter>
-	  <parameter id="list">
-		<parameter id="type" value="MartialArts"/>
-		<parameter id="rules" value="PowerCombat"/>
-		<parameter id="path" value="data/Charms_MartialArts_PowerCombat.xml"/>
-	  </parameter>
-	  <parameter id="list">
-		<parameter id="type" value="MartialArts"/>
-		<parameter id="rules" value="SecondEdition"/>
-		<parameter id="path" value="data/Charms_MartialArts_SecondEdition.xml"/>
-	  </parameter>
 	   <parameter id="list">
 		<parameter id="type" value="DragonKing"/>
 		<parameter id="rules" value="CoreRules"/>

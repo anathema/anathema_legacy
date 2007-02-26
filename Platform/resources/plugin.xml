@@ -31,7 +31,7 @@
 		<library id="CommonsIO" path="${ANATHEMA_LIB}/commons-io.jar" type="code">
 			<export prefix="*"/>
 		</library>
-		<library id="db4o" path="${ANATHEMA_LIB}/db4o-5.5-java5.jar" type="code">
+		<library id="db4o" path="${ANATHEMA_LIB}/db4o-6.0-java5.jar" type="code">
 			<export prefix="*"/>
 		</library>
 	</runtime>

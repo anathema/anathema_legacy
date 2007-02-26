@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import com.db4o.query.Predicate;
-
 import net.sf.anathema.character.equipment.impl.character.model.natural.NaturalWeaponTemplate;
 import net.sf.anathema.character.equipment.item.model.ICollectionFactory;
 import net.sf.anathema.character.equipment.item.model.IEquipmentDatabase;
@@ -13,7 +11,8 @@ import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.demo.character.equipment.DemoCollectionFactory;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.exception.PersistenceException;
+
+import com.db4o.query.Predicate;
 
 public class DemoEquipmentDatabase implements IEquipmentDatabase {
 
@@ -40,9 +39,9 @@ public class DemoEquipmentDatabase implements IEquipmentDatabase {
     Set<String> idSet = templatesById.keySet();
     return idSet.toArray(new String[idSet.size()]);
   }
-  
+
   public void queryContainer(Predicate<IEquipmentTemplate> predicate) {
-    // nothing to do    
+    // nothing to do
   }
 
   public IEquipmentTemplate loadTemplate(String templateId) {
@@ -53,7 +52,7 @@ public class DemoEquipmentDatabase implements IEquipmentDatabase {
     return collectionFactory;
   }
 
-  public void saveTemplate(IEquipmentTemplate template) throws PersistenceException {
+  public void saveTemplate(IEquipmentTemplate template) {
     addTemplate(template);
   }
 

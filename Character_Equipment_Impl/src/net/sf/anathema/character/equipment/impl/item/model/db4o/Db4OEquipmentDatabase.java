@@ -10,7 +10,6 @@ import net.sf.anathema.character.equipment.template.IEquipmentTemplate;
 import net.sf.anathema.framework.itemdata.model.NonPersistableItemData;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.exception.PersistenceException;
 
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
@@ -25,7 +24,12 @@ public class Db4OEquipmentDatabase extends NonPersistableItemData implements IEq
   private final ObjectContainer container;
 
   public Db4OEquipmentDatabase(File databaseFile) {
-    container = EquipmentDatabaseConnectionManager.createConnection(databaseFile);
+    this(EquipmentDatabaseConnectionManager.createConnection(databaseFile));
+  }
+
+  /** Required for DB conversion from 1.0 */
+  public Db4OEquipmentDatabase(ObjectContainer container) {
+    this.container = container;
     collectionFactory = new Db4OCollectionFactory(container);
   }
 
@@ -62,7 +66,7 @@ public class Db4OEquipmentDatabase extends NonPersistableItemData implements IEq
     return collectionFactory;
   }
 
-  public void saveTemplate(IEquipmentTemplate template) throws PersistenceException {
+  public void saveTemplate(IEquipmentTemplate template) {
     container.set(template);
     container.commit();
     availableTemplatesChangeControl.fireChangedEvent();
@@ -73,18 +77,18 @@ public class Db4OEquipmentDatabase extends NonPersistableItemData implements IEq
   }
 
   public void deleteTemplate(String editTemplateId) {
-    IEquipmentTemplate oldTemplate = loadTemplate(editTemplateId);
-    container.delete(oldTemplate);
-    container.commit();
+    delete(editTemplateId);
     availableTemplatesChangeControl.fireChangedEvent();
   }
 
-  public void updateTemplate(String editTemplateId, IEquipmentTemplate saveTemplate) {
+  private void delete(String editTemplateId) {
     IEquipmentTemplate oldTemplate = loadTemplate(editTemplateId);
     container.delete(oldTemplate);
     container.commit();
-    container.set(saveTemplate);
-    container.commit();
-    availableTemplatesChangeControl.fireChangedEvent();
+  }
+
+  public void updateTemplate(String editTemplateId, IEquipmentTemplate saveTemplate) {
+    delete(editTemplateId);
+    saveTemplate(saveTemplate);
   }
 }

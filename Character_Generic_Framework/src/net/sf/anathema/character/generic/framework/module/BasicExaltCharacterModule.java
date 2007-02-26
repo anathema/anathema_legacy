@@ -2,6 +2,7 @@ package net.sf.anathema.character.generic.framework.module;
 
 import net.sf.anathema.character.generic.backgrounds.IBackgroundTemplate;
 import net.sf.anathema.character.generic.framework.ICharacterGenerics;
+import net.sf.anathema.character.generic.framework.unsupported.UnsupportedDragonBloodedSecondTemplate;
 import net.sf.anathema.character.generic.framework.unsupported.UnsupportedDragonKingTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.EssenceUserBackgroundTemplate;
 import net.sf.anathema.character.generic.impl.backgrounds.SimpleBackgroundTemplate;
@@ -36,5 +37,6 @@ public class BasicExaltCharacterModule extends NullObjectCharacterModuleAdapter 
   @Override
   public void addCharacterTemplates(ICharacterGenerics characterGenerics) {
     characterGenerics.getTemplateRegistry().register(new UnsupportedDragonKingTemplate(CharmCache.getInstance()));
+    characterGenerics.getTemplateRegistry().register(new UnsupportedDragonBloodedSecondTemplate(CharmCache.getInstance()));
   }
 }

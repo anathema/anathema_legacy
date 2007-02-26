@@ -1,7 +1,7 @@
 package net.sf.anathema.initialization;
 
 import net.disy.commons.core.exception.CentralExceptionHandling;
-import net.sf.anathema.AnathemaSplashscreen;
+import net.sf.anathema.ProxySplashscreen;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.configuration.IAnathemaPreferences;
 import net.sf.anathema.framework.environment.AnathemaEnvironment;
@@ -39,7 +39,7 @@ public class AnathemaInitializer {
 
   public IAnathemaView initialize() throws InitializationException {
     IResources resources = initResources();
-    AnathemaSplashscreen.getInstance().displayVersion("v" + resources.getString("Anathema.Version.Numeric")); //$NON-NLS-1$//$NON-NLS-2$
+    ProxySplashscreen.getInstance().displayVersion("v" + resources.getString("Anathema.Version.Numeric")); //$NON-NLS-1$//$NON-NLS-2$
     CentralExceptionHandling.setHandler(new CentralExceptionHandler(resources));
     IAnathemaModel anathemaModel = initModel(resources);
     IAnathemaView view = initView(resources);
@@ -49,7 +49,7 @@ public class AnathemaInitializer {
   }
 
   private IAnathemaModel initModel(IResources resources) throws InitializationException {
-    AnathemaSplashscreen.getInstance().displayStatusMessage("Creating Model..."); //$NON-NLS-1$
+    ProxySplashscreen.getInstance().displayStatusMessage("Creating Model..."); //$NON-NLS-1$
     return new AnathemaModelInitializer(
         anathemaPreferences,
         itemTypeCollection.getItemTypes(),
@@ -57,13 +57,13 @@ public class AnathemaInitializer {
   }
 
   private IAnathemaView initView(IResources resources) {
-    AnathemaSplashscreen.getInstance().displayStatusMessage("Building View..."); //$NON-NLS-1$
+    ProxySplashscreen.getInstance().displayStatusMessage("Building View..."); //$NON-NLS-1$
     AnathemaViewProperties viewProperties = new AnathemaViewProperties(resources, anathemaPreferences.initMaximized());
     return new AnathemaView(viewProperties);
   }
 
   private IResources initResources() {
-    AnathemaSplashscreen.getInstance().displayStatusMessage("Loading Resources..."); //$NON-NLS-1$
+    ProxySplashscreen.getInstance().displayStatusMessage("Loading Resources..."); //$NON-NLS-1$
     AnathemaResources resources = new AnathemaResources();
     for (Extension extension : pluginManager.getExtension(IPluginConstants.PLUGIN_CORE, EXTENSION_POINT_RESOURCES)) {
       for (Parameter param : PluginUtilities.getParameters(extension, PARAM_BUNDLE)) {

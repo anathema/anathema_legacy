@@ -108,8 +108,7 @@ Vea el archivo versions.txt para la historia completa de los errores de software
 Anathema es desarrollado por Sandra Sieroux y Urs Reupke.
 Contactanos en urskr@users.sourceforge.net con preguntas, comentarios o sugerencias.
 
-Para reportar errores de software y peticiones de alguna característica, también puedes usar 
-el Tracking System de SourceForge.net en
+Para reportar errores de software también puedes usar el Tracking System de SourceForge.net en
 http://sourceforge.net/projects/anathema
 
 Visita el sitio web de Anathema en http://anathema.sf.net

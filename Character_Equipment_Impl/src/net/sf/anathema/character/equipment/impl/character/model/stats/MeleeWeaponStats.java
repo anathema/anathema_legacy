@@ -10,6 +10,10 @@ public class MeleeWeaponStats extends AbstractWeaponStats {
     super(collectionFactory);
   }
 
+  public MeleeWeaponStats(ICollectionFactory collectionFactory, MeleeWeaponStats stats) {
+    super(collectionFactory, stats);
+  }
+
   @Override
   protected AbilityType getCombatTrait() {
     return hasTag(WeaponTag.Natural) || hasTag(WeaponTag.ClinchEnhancer) ? AbilityType.MartialArts : AbilityType.Melee;

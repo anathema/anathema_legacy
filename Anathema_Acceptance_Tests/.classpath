@@ -33,9 +33,9 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Intimacies"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Equipment_Impl"/>
-	<classpathentry kind="lib" path="/Thirdparty/Database/db4o-5.5-java5.jar" sourcepath="/Thirdparty/Database/db4o-5.5-src.zip"/>
 	<classpathentry kind="lib" path="/Thirdparty/Plugin/jpf.jar" sourcepath="/JPF/source"/>
 	<classpathentry kind="lib" path="/Thirdparty/Plugin/jpf-boot.jar" sourcepath="/JPF/source-boot"/>
 	<classpathentry kind="lib" path="/Thirdparty/XML/dom4j-1.5.jar" sourcepath="/Thirdparty/XML/dom4j-src.zip"/>
+	<classpathentry kind="lib" path="/Thirdparty/Database/db4o-6.0-java5.jar" sourcepath="/Thirdparty/Database/db4o-6.0-src.zip"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

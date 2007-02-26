@@ -46,6 +46,7 @@ public class SolarCharacterModule extends NullObjectCharacterModuleAdapter {
             ISolarSpecialCharms.CITY_MOVING_SECRETS,
             ISolarSpecialCharms.IMMANENT_SOLAR_GLORY,
             ISolarSpecialCharms.RIGHTEOUS_LION_DEFENSE,
+            ISolarSpecialCharms.WONDER_FORGING_GENIUS,
             ISolarSpecialCharms.ESSENCE_ARROW_ATTACK,
             ISolarSpecialCharms.MASTER_HORSEMANS_TECHNIQUES,
             ISolarSpecialCharms.PHOENIX_RENEWAL_TACTIC });

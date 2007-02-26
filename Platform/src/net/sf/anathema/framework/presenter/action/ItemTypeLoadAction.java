@@ -12,11 +12,10 @@ import net.disy.commons.swing.action.SmartAction;
 import net.sf.anathema.framework.IAnathemaModel;
 import net.sf.anathema.framework.item.IItemType;
 import net.sf.anathema.framework.message.MessageUtilities;
-import net.sf.anathema.framework.presenter.ItemManagementModelAdapter;
+import net.sf.anathema.framework.presenter.IItemMangementModel;
 import net.sf.anathema.framework.presenter.item.ItemTypeCreationViewPropertiesExtensionPoint;
 import net.sf.anathema.framework.presenter.resources.PlatformUI;
 import net.sf.anathema.framework.presenter.view.IItemTypeViewProperties;
-import net.sf.anathema.framework.repository.IItem;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.gui.wizard.IAnathemaWizardPage;
 import net.sf.anathema.lib.resources.IResources;
@@ -47,27 +46,13 @@ public final class ItemTypeLoadAction extends AbstractItemAction {
 
   private ItemTypeLoadAction(IAnathemaModel anathemaModel, IItemType itemType, IResources resources) {
     super(anathemaModel, resources);
+    IItemMangementModel itemManagementModel = anathemaModel.getItemManagement();
     this.itemCreationOperator = new ItemCreationOperator(
         new LoadItemCreator(anathemaModel),
         resources,
-        anathemaModel.getItemManagement());
+        itemManagementModel);
     this.itemType = itemType;
-    adjustEnabled();
-    anathemaModel.getItemManagement().addListener(new ItemManagementModelAdapter() {
-      @Override
-      public void itemRemoved(IItem item) {
-        adjustEnabled();
-      }
-
-      @Override
-      public void itemAdded(IItem item) {
-        adjustEnabled();
-      }
-    });
-  }
-
-  private void adjustEnabled() {
-    setEnabled(getAnathemaModel().getRepository().containsClosed(itemType));
+    new LoadActionEnabler(anathemaModel.getRepository(), itemManagementModel, this, itemType).init();
   }
 
   @Override

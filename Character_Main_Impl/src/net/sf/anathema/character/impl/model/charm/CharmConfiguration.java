@@ -41,13 +41,13 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
-import net.sf.anathema.character.impl.model.charm.prerequisite.PrerequisiteSetBuilder;
 import net.sf.anathema.character.impl.model.charm.special.SpecialCharmManager;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
+import net.sf.anathema.lib.collection.DefaultValueHashMap;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
@@ -56,7 +56,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   private final ISpecialCharmManager manager;
   private final ICharmTree martialArtsCharmTree;
   private final Map<CharacterType, ICharmTree> alienTreesByType = new HashMap<CharacterType, ICharmTree>();
-  private final Map<CharacterType, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new HashMap<CharacterType, ILearningCharmGroup[]>();
+  private final Map<CharacterType, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new DefaultValueHashMap<CharacterType, ILearningCharmGroup[]>(new ILearningCharmGroup[0]);
   private final Map<CharacterType, ICharmTemplate> templatesByType = new HashMap<CharacterType, ICharmTemplate>();
   private final CharacterType[] types;
   private final ILearningCharmGroupContainer learningCharmGroupContainer = new ILearningCharmGroupContainer() {
@@ -341,6 +341,7 @@ public class CharmConfiguration implements ICharmConfiguration {
   private ITraitType[] createPrerequisiteSet() {
     PrerequisiteSetBuilder prerequisiteSetBuilder = new PrerequisiteSetBuilder();
     prerequisiteSetBuilder.addCharms(getAllCharms());
+    prerequisiteSetBuilder.addCharms(martialArtsCharmTree.getAllCharms());
     return prerequisiteSetBuilder.getAllPrerequisites().toArray(new ITraitType[0]);
   }
 
