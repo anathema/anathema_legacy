@@ -5,5 +5,6 @@
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Character_Generic_Framework"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Character_Reporting"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Character_Library"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
