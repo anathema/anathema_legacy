@@ -1,4 +1,4 @@
-package net.sf.anathema.character.lunar.virtueflaw.presenter;
+package net.sf.anathema.character.lunar.virtueflaw;
 
 import net.sf.anathema.character.library.virtueflaw.model.IVirtueFlaw;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;

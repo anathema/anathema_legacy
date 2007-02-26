@@ -12,6 +12,7 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.impl.traits.EssenceTemplate;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.library.virtueflaw.persistence.DefaultVirtueFlawPersisterFactory;
 import net.sf.anathema.character.lunar.beastform.BeastformModelFactory;
 import net.sf.anathema.character.lunar.beastform.BeastformPersisterFactory;
 import net.sf.anathema.character.lunar.beastform.BeastformTemplate;
@@ -28,7 +29,6 @@ import net.sf.anathema.character.lunar.renown.RenownViewFactory;
 import net.sf.anathema.character.lunar.reporting.FirstEditionLunarPartEncoder;
 import net.sf.anathema.character.lunar.template.ILunarSpecialCharms;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawModelFactory;
-import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawPersisterFactory;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawTemplate;
 import net.sf.anathema.character.lunar.virtueflaw.LunarVirtueFlawViewFactory;
 import net.sf.anathema.character.reporting.CharacterReportingModule;
@@ -106,7 +106,7 @@ public class LunarCharacterModule extends NullObjectCharacterModuleAdapter {
     String templateId = LunarVirtueFlawTemplate.TEMPLATE_ID;
     additionalModelFactoryRegistry.register(templateId, new LunarVirtueFlawModelFactory());
     additionalViewFactoryRegistry.register(templateId, new LunarVirtueFlawViewFactory());
-    persisterFactory.register(templateId, new LunarVirtueFlawPersisterFactory());
+    persisterFactory.register(templateId, new DefaultVirtueFlawPersisterFactory());
 
   }
 

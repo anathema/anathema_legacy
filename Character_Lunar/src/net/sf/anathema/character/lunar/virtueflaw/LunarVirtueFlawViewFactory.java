@@ -6,7 +6,6 @@ import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawModel;
 import net.sf.anathema.character.library.virtueflaw.presenter.IVirtueFlawView;
 import net.sf.anathema.character.library.virtueflaw.view.VirtueFlawView;
-import net.sf.anathema.character.lunar.virtueflaw.presenter.LunarVirtueFlawPresenter;
 import net.sf.anathema.lib.gui.IView;
 import net.sf.anathema.lib.resources.IResources;
 
