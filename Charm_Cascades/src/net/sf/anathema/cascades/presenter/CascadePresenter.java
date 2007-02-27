@@ -22,6 +22,7 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmtree.presenter.AbstractCascadeSelectionPresenter;
 import net.sf.anathema.charmtree.presenter.view.IExaltTypeChangedListener;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
@@ -73,7 +74,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
   }
 
   private void initCharacterTypeCharms(List<IIdentificate> supportedCharmTypes, List<ICharmGroup> allCharmGroups) {
-    for (CharacterType type : CharacterType.getAllCharacterTypes()) {
+    for (ICharacterType type : CharacterType.values()) {
       for (IExaltedEdition edition : ExaltedEdition.values()) {
         ICharacterTemplate defaultTemplate = getTemplateRegistry().getDefaultTemplate(type, edition);
         if (defaultTemplate == null) {
@@ -91,7 +92,7 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
     }
   }
 
-  private void initMartialArts(List<ICharmGroup> allCharmGroups, CharacterType type, ExaltedEdition rules) {
+  private void initMartialArts(List<ICharmGroup> allCharmGroups, ICharacterType type, ExaltedEdition rules) {
     ICharacterTemplate template = getTemplateRegistry().getDefaultTemplate(type, rules);
     for (IExaltedRuleSet ruleSet : ExaltedRuleSet.getRuleSetsByEdition(rules)) {
       ICharmTree martialArtsTree = new MartialArtsCharmTree(template.getMagicTemplate().getCharmTemplate(), ruleSet);
@@ -123,11 +124,11 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
         //TODO: Mach mich schön.
         Arrays.sort(cascadeTypes, new Comparator<IIdentificate>() {
           public int compare(IIdentificate o1, IIdentificate o2) {
-            final boolean firstCharacterType = o1 instanceof CharacterType;
+            final boolean firstCharacterType = o1 instanceof ICharacterType;
             final boolean secondCharacterType = o2 instanceof CharacterType;
             if (firstCharacterType) {
               if (secondCharacterType) {
-                return ((CharacterType) o1).compareTo((CharacterType) o2);
+                return ((ICharacterType) o1).compareTo((CharacterType) o2);
               }
               return -1;
             }
