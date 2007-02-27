@@ -13,7 +13,6 @@ import net.sf.anathema.lib.resources.IResources;
 public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewProperties {
 
   private static final String REQUIREMENT = "Requirement"; //$NON-NLS-1$
-  private Dimension dimension = new Dimension(0, 0);
   private final ICharmInfoStringBuilder tooltipTextProvider;
   private final IResources resources;
 
@@ -67,13 +66,5 @@ public abstract class AbstractCharmTreeViewProperties implements ICharmTreeViewP
     }
     ICharm charm = findNonNullCharm(charmId);
     return tooltipTextProvider.getInfoString(charm);
-  }
-
-  public Dimension getDimension() {
-    return dimension;
-  }
-
-  public void setDimension(final Dimension dimension) {
-    this.dimension = dimension;
   }
 }
