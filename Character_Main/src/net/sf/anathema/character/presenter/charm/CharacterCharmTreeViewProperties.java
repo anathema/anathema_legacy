@@ -17,7 +17,7 @@ public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewPrope
   private final Cursor removeCursor;
   private final ICharmConfiguration configuration;
 
-  public CharacterCharmTreeViewProperties(IResources resources, ICharmConfiguration configuration, Dimension dimension) {
+  public CharacterCharmTreeViewProperties(IResources resources, ICharmConfiguration configuration) {
     super(resources);
     this.configuration = configuration;
     addCursor = Toolkit.getDefaultToolkit()
@@ -26,7 +26,6 @@ public class CharacterCharmTreeViewProperties extends AbstractCharmTreeViewPrope
     removeCursor = Toolkit.getDefaultToolkit()
         .createCustomCursor(
             resources.getImage(this.getClass(), "CursorMinus.png"), new Point(0, 0), resources.getString("CharmTreeView.GUI.RemoveCursor")); //$NON-NLS-1$ //$NON-NLS-2$
-    setDimension(dimension);
   }
 
   public boolean isNodeSelected(String charmId) {

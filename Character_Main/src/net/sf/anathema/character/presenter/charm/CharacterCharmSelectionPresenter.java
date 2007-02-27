@@ -73,10 +73,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     this.provider = provider;
     this.viewFactory = factory;
     IPresentationProperties presentationProperties = statistics.getCharacterTemplate().getPresentationProperties();
-    this.viewProperties = new CharacterCharmTreeViewProperties(
-        resources,
-        statistics.getCharms(),
-        presentationProperties.getCharmPresentationProperties().getNodeDimension());
+    this.viewProperties = new CharacterCharmTreeViewProperties(resources, statistics.getCharms());
     this.characterColor = presentationProperties.getColor();
     this.statistics = statistics;
     this.view = factory.createCharmSelectionView(viewProperties);
