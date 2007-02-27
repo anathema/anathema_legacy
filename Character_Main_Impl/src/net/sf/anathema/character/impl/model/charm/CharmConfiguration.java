@@ -56,7 +56,8 @@ public class CharmConfiguration implements ICharmConfiguration {
   private final ISpecialCharmManager manager;
   private final ICharmTree martialArtsCharmTree;
   private final Map<CharacterType, ICharmTree> alienTreesByType = new HashMap<CharacterType, ICharmTree>();
-  private final Map<CharacterType, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new DefaultValueHashMap<CharacterType, ILearningCharmGroup[]>(new ILearningCharmGroup[0]);
+  private final Map<CharacterType, ILearningCharmGroup[]> nonMartialArtsGroupsByType = new DefaultValueHashMap<CharacterType, ILearningCharmGroup[]>(
+      new ILearningCharmGroup[0]);
   private final Map<CharacterType, ICharmTemplate> templatesByType = new HashMap<CharacterType, ICharmTemplate>();
   private final CharacterType[] types;
   private final ILearningCharmGroupContainer learningCharmGroupContainer = new ILearningCharmGroupContainer() {
@@ -119,35 +120,27 @@ public class CharmConfiguration implements ICharmConfiguration {
     for (ISpecialCharm specialCharm : provider.getSpecialCharms(characterType, context.getBasicCharacterContext()
         .getRuleSet()
         .getEdition())) {
+      final ICharm charm = getCharmTree(characterType).getCharmByID(specialCharm.getCharmId());
+      final ILearningCharmGroup group = getGroupById(charm.getCharacterType(), charm.getGroupId());
       specialCharm.accept(new ISpecialCharmVisitor() {
-        public void visitOxBodyTechnique(IOxBodyTechniqueCharm visited) {
-          final ICharm charm = getCharmTree(characterType).getCharmByID(visited.getCharmId());
-          ILearningCharmGroup group = getGroupById(charm.getCharacterType(), charm.getGroupId());
-          IGenericTrait relevantTrait = context.getTraitCollection().getTrait(visited.getRelevantTrait());
-          manager.registerOxBodyTechnique(visited, charm, relevantTrait, group);
+        public void visitOxBodyTechnique(IOxBodyTechniqueCharm visitedCharm) {
+          IGenericTrait relevantTrait = context.getTraitCollection().getTrait(visitedCharm.getRelevantTrait());
+          manager.registerOxBodyTechnique(visitedCharm, charm, relevantTrait, group);
         }
 
         public void visitMultiLearnableCharm(IMultiLearnableCharm visitedCharm) {
-          final ICharm charm = getCharmTree(characterType).getCharmByID(visitedCharm.getCharmId());
-          ILearningCharmGroup group = getGroupById(charm.getCharacterType(), charm.getGroupId());
           manager.registerMultiLearnableCharm(visitedCharm, charm, group, CharmConfiguration.this);
         }
 
         public void visitPainToleranceCharm(IPainToleranceCharm visitedCharm) {
-          final ICharm charm = getCharmTree(characterType).getCharmByID(visitedCharm.getCharmId());
-          ILearningCharmGroup group = getGroupById(charm.getCharacterType(), charm.getGroupId());
           manager.registerPainToleranceCharm(visitedCharm, charm, group);
         }
 
         public void visitSubeffectCharm(ISubeffectCharm visitedCharm) {
-          final ICharm charm = getCharmTree(characterType).getCharmByID(visitedCharm.getCharmId());
-          ILearningCharmGroup group = getGroupById(charm.getCharacterType(), charm.getGroupId());
           manager.registerSubeffectCharm(visitedCharm, charm, group, CharmConfiguration.this);
         }
 
         public void visitMultipleEffectCharm(IMultipleEffectCharm visitedCharm) {
-          final ICharm charm = getCharmTree(characterType).getCharmByID(visitedCharm.getCharmId());
-          ILearningCharmGroup group = getGroupById(charm.getCharacterType(), charm.getGroupId());
           manager.registerEffectMultilearnableCharm(visitedCharm, charm, group, CharmConfiguration.this);
         }
       });
