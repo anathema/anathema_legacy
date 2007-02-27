@@ -7,7 +7,6 @@ import net.sf.anathema.charmtree.presenter.view.AbstractCharmGroupChangeListener
 import net.sf.anathema.charmtree.presenter.view.ICharmGroupArbitrator;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionView;
 import net.sf.anathema.lib.util.IIdentificate;
-import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 
 public class CharacterCharmGroupChangeListener extends AbstractCharmGroupChangeListener {
 
@@ -17,12 +16,11 @@ public class CharacterCharmGroupChangeListener extends AbstractCharmGroupChangeL
 
   public CharacterCharmGroupChangeListener(
       ICharmSelectionView selectionView,
-      ISvgTreeViewProperties viewProperties,
       ICharacterCharmSelectionPresenter presenter,
       ITemplateRegistry templateRegistry,
       ICharmGroupArbitrator arbitrator,
       IExaltedEdition edition) {
-    super(selectionView.getCharmTreeView(), viewProperties, templateRegistry, arbitrator);
+    super(selectionView.getCharmTreeView(), templateRegistry, arbitrator);
     this.selectionView = selectionView;
     this.presenter = presenter;
     this.edition = edition;

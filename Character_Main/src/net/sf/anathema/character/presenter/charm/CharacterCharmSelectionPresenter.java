@@ -60,7 +60,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   private final List<ISVGSpecialNodeView> specialCharmViews = new ArrayList<ISVGSpecialNodeView>();
   private final ICharacterStatistics statistics;
   private final ICharmProvider provider;
-  private ICharmSelectionView view;
+  private final ICharmSelectionView view;
   private final IMagicViewFactory viewFactory;
 
   public CharacterCharmSelectionPresenter(
@@ -86,7 +86,6 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     createCharmTypeSelector(getCurrentCharmTypes(alienCharms), view, "CharmTreeView.GUI.CharmType"); //$NON-NLS-1$
     this.charmSelectionChangeListener = new CharacterCharmGroupChangeListener(
         view,
-        viewProperties,
         this,
         getTemplateRegistry(),
         getCharmConfiguration(),

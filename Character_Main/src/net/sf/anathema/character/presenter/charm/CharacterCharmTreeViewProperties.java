@@ -1,7 +1,6 @@
 package net.sf.anathema.character.presenter.charm;
 
 import java.awt.Cursor;
-import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
 
