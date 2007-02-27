@@ -5,9 +5,8 @@ import java.util.Collections;
 import java.util.List;
 
 import net.disy.commons.core.util.ArrayUtilities;
-import net.sf.anathema.lib.util.IIdentificate;
 
-public enum CharacterType implements IIdentificate {
+public enum CharacterType implements ICharacterType {
 
   SOLAR("Solar") { //$NON-NLS-1$
     @Override
@@ -61,7 +60,7 @@ public enum CharacterType implements IIdentificate {
 
   public abstract void accept(ICharacterTypeVisitor visitor);
 
-  public static CharacterType getById(String id) {
+  public static ICharacterType getById(String id) {
     for (CharacterType type : values()) {
       if (type.getId().equals(id)) {
         return type;
@@ -70,23 +69,19 @@ public enum CharacterType implements IIdentificate {
     throw new IllegalArgumentException("No type defined for id:" + id); //$NON-NLS-1$
   }
 
-  public static CharacterType[] getAllExaltTypes() {
-    List<CharacterType> types = new ArrayList<CharacterType>();
+  public static ICharacterType[] getAllExaltTypes() {
+    List<ICharacterType> types = new ArrayList<ICharacterType>();
     Collections.addAll(types, values());
     types.remove(MORTAL);
     types.remove(DRAGON_KING);
     return types.toArray(new CharacterType[types.size()]);
   }
 
-  public static CharacterType[] getCelestialExaltTypes() {
-    List<CharacterType> types = new ArrayList<CharacterType>();
+  public static ICharacterType[] getCelestialExaltTypes() {
+    List<ICharacterType> types = new ArrayList<ICharacterType>();
     Collections.addAll(types, getAllExaltTypes());
     types.remove(DB);
     return types.toArray(new CharacterType[types.size()]);
-  }
-
-  public static CharacterType[] getAllCharacterTypes() {
-    return values();
   }
 
   public String getId() {
@@ -98,7 +93,7 @@ public enum CharacterType implements IIdentificate {
     return getId();
   }
 
-  public static boolean isExaltType(CharacterType characterType) {
-    return ArrayUtilities.contains(getAllExaltTypes(), characterType);
+  public boolean isExaltType() {
+    return ArrayUtilities.contains(getAllExaltTypes(), this);
   }
 }

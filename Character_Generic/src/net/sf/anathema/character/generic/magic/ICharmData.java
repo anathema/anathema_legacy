@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
@@ -19,7 +20,7 @@ public interface ICharmData extends IMagicData {
   public static final IIdentificate NO_STYLE_ATTRIBUTE = new Identificate("NoStyle"); //$NON-NLS-1$
   public static final IIdentificate NOT_ALIEN_LEARNABLE = new Identificate("NotAlienLearnable"); //$NON-NLS-1$
 
-  public CharacterType getCharacterType();
+  public ICharacterType getCharacterType();
 
   public IDuration getDuration();
 
