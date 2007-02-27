@@ -31,6 +31,7 @@ import net.sf.anathema.character.generic.magic.general.IPermanentCostList;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
@@ -62,7 +63,7 @@ public class CharmBuilder implements ICharmBuilder {
 
   public Charm buildCharm(Element charmElement) throws PersistenceException {
     String id = idBuilder.build(charmElement);
-    CharacterType characterType = getCharacterType(charmElement, id);
+    ICharacterType characterType = getCharacterType(charmElement, id);
     ICostList temporaryCost;
     IPermanentCostList permanentCost;
     try {
@@ -117,9 +118,9 @@ public class CharmBuilder implements ICharmBuilder {
     return prerequisiteList;
   }
 
-  private CharacterType getCharacterType(Element charmElement, String id) throws CharmException {
+  private ICharacterType getCharacterType(Element charmElement, String id) throws CharmException {
     String typeAttribute = charmElement.attributeValue(ATTRIB_EXALT);
-    CharacterType characterType;
+    ICharacterType characterType;
     try {
       characterType = CharacterType.getById(typeAttribute);
     }

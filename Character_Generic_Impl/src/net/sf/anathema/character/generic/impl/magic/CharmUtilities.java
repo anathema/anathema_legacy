@@ -2,6 +2,7 @@ package net.sf.anathema.character.generic.impl.magic;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public class CharmUtilities {
@@ -18,11 +19,11 @@ public class CharmUtilities {
       CharacterType.SOLAR.getId() + INFINITE_MASTERY,
       CharacterType.SOLAR.getId() + ESSENCE_FLOW };
 
-  public static boolean isGenericCharmFor(ICharm charm, CharacterType type, IIdentificate groupId) {
+  public static boolean isGenericCharmFor(ICharm charm, ICharacterType type, IIdentificate groupId) {
     return isGenericCharmFor(charm, type) && charm.getId().endsWith(groupId.getId());
   }
 
-  public static boolean isGenericCharmFor(ICharm charm, CharacterType type) {
+  public static boolean isGenericCharmFor(ICharm charm, ICharacterType type) {
     String charmId = charm.getId();
     return charmId.startsWith(type.getId() + FIRST_EXCELLENCY)
         || charmId.startsWith(type.getId() + SECOND_EXCELLENCY)
@@ -31,7 +32,7 @@ public class CharmUtilities {
         || charmId.startsWith(type.getId() + ESSENCE_FLOW);
   }
 
-  public static String createIDFromName(CharacterType type, String charmName) {
+  public static String createIDFromName(ICharacterType type, String charmName) {
     charmName = createIdFromName(charmName);
     return type + "." + charmName; //$NON-NLS-1$
   }

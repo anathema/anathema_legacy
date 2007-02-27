@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 
 public class CharacterUtilties {
 
@@ -39,7 +40,7 @@ public class CharacterUtilties {
     return sum / 2;
   }
 
-  private static int getDv(CharacterType characterType, IGenericTraitCollection traitCollection, ITraitType... types) {
+  private static int getDv(ICharacterType characterType, IGenericTraitCollection traitCollection, ITraitType... types) {
     if (characterType == CharacterType.MORTAL) {
       return getRoundDownDv(traitCollection, types);
     }
@@ -62,7 +63,7 @@ public class CharacterUtilties {
     return sum;
   }
 
-  public static int getDodgeDv(CharacterType characterType, IGenericTraitCollection traitCollection) {
+  public static int getDodgeDv(ICharacterType characterType, IGenericTraitCollection traitCollection) {
     int essenceValue = traitCollection.getTrait(OtherTraitType.Essence).getCurrentValue();
     if (essenceValue > 1) {
       return getDv(characterType, traitCollection, AttributeType.Dexterity, AbilityType.Dodge, OtherTraitType.Essence);
@@ -71,12 +72,12 @@ public class CharacterUtilties {
   }
 
   public static int getUntrainedActionModifier(IGenericCharacter character, ITraitType traitType) {
-    CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
+    ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     boolean isExaltPunished = character.getRules() == ExaltedRuleSet.CoreRules;
     if (character.getTraitCollection().getTrait(traitType).getCurrentValue() > 0) {
       return 0;
     }
-    if (isExaltPunished || !CharacterType.isExaltType(characterType)) {
+    if (isExaltPunished || !characterType.isExaltType()) {
       return 2;
     }
     return 0;

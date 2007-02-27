@@ -11,14 +11,14 @@ import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.IUnsupportedTemplate;
 import net.sf.anathema.character.generic.template.TemplateType;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.collection.Table;
 
 public class TemplateRegistry implements ITemplateRegistry {
 
   private final Table<ITemplateType, IExaltedEdition, ICharacterTemplate> table = new Table<ITemplateType, IExaltedEdition, ICharacterTemplate>();
 
-  public ICharacterExternalsTemplate[] getAllSupportedTemplates(CharacterType type) {
+  public ICharacterExternalsTemplate[] getAllSupportedTemplates(ICharacterType type) {
     List<ICharacterTemplate> typeTemplates = new ArrayList<ICharacterTemplate>();
     for (ITemplateType templateType : table.getPrimaryKeys()) {
       if (templateType.getCharacterType().equals(type)) {
@@ -33,7 +33,7 @@ public class TemplateRegistry implements ITemplateRegistry {
     return typeTemplates.toArray(new ICharacterTemplate[typeTemplates.size()]);
   }
 
-  public ICharacterTemplate getDefaultTemplate(CharacterType type, IExaltedEdition edition) {
+  public ICharacterTemplate getDefaultTemplate(ICharacterType type, IExaltedEdition edition) {
     ITemplateType templateType = new TemplateType(type);
     return getTemplate(templateType, edition);
   }

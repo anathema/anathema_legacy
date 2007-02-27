@@ -40,6 +40,7 @@ import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
@@ -47,7 +48,7 @@ public class Charm extends Identificate implements ICharm {
 
   private final CharmPrerequisiteList prerequisisteList;
 
-  private final CharacterType characterType;
+  private final ICharacterType characterType;
   private final IComboRestrictions comboRules;
   private final IDuration duration;
   private final String group;
@@ -66,7 +67,7 @@ public class Charm extends Identificate implements ICharm {
   private final ICharmTypeModel typeModel;
 
   public Charm(
-      CharacterType characterType,
+      ICharacterType characterType,
       String id,
       String group,
       CharmPrerequisiteList prerequisiteList,
@@ -128,7 +129,7 @@ public class Charm extends Identificate implements ICharm {
     return typeModel;
   }
 
-  public CharacterType getCharacterType() {
+  public ICharacterType getCharacterType() {
     return characterType;
   }
 

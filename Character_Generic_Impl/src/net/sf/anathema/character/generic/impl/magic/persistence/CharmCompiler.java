@@ -12,6 +12,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.CharmException;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.collection.Table;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -43,7 +44,7 @@ public class CharmCompiler {
 
   public void buildCharms() throws PersistenceException {
     for (ExaltedRuleSet rules : ExaltedRuleSet.values()) {
-      for (CharacterType type : CharacterType.values()) {
+      for (ICharacterType type : CharacterType.values()) {
         buildCharms(type, rules);
       }
       buildCharms(MARTIAL_ARTS, rules);

@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
 import net.sf.anathema.character.generic.template.magic.IMartialArtsRules;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 
 public class CharmTemplate implements ICharmTemplate {
 
@@ -22,7 +22,7 @@ public class CharmTemplate implements ICharmTemplate {
   public CharmTemplate(
       MartialArtsLevel martialArtsLevel,
       ICharmCache charmProvider,
-      CharacterType characterType,
+      ICharacterType characterType,
       IExaltedEdition edition) {
     this(new DefaultMartialArtsRules(martialArtsLevel), CharmSet.createRegularCharmSet(
         charmProvider,

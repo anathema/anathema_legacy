@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.IIdentificate;
 
 public class CharmSet implements ICharmSet {
@@ -19,7 +19,7 @@ public class CharmSet implements ICharmSet {
 
   public static ICharmSet createRegularCharmSet(
       ICharmCache charmProvider,
-      CharacterType characterType,
+      ICharacterType characterType,
       IExaltedEdition edition) {
     Map<IExaltedRuleSet, ICharm[]> charmMap = createCharmTreeMap(charmProvider, characterType, edition);
     Map<IExaltedRuleSet, ICharm[]> martialArtsCharmMap = createCharmTreeMap(

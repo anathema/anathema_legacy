@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.impl.rules.ExaltedRuleSet;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.collection.MultiEntryMap;
 import net.sf.anathema.lib.collection.Predicate;
 import net.sf.anathema.lib.lang.ArrayUtilities;
@@ -38,7 +39,7 @@ public class CharmCache implements ICharmCache {
   // Necessary for connections between Charms from different documents/types
   public ICharm searchCharm(final String charmId, IExaltedRuleSet rules) {
     String[] idParts = charmId.split("\\."); //$NON-NLS-1$
-    CharacterType characterTypeId = CharacterType.getById(idParts[0]);
+    ICharacterType characterTypeId = CharacterType.getById(idParts[0]);
     ICharm[] charms = getCharms(characterTypeId, rules);
     ICharm charm = ArrayUtilities.find(new Predicate<ICharm>() {
       public boolean evaluate(ICharm candidate) {

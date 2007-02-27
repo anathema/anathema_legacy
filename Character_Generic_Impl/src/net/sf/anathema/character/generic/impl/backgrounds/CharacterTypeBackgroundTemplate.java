@@ -7,20 +7,20 @@ import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.traits.LowerableState;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 
 public class CharacterTypeBackgroundTemplate extends AbstractBackgroundTemplate {
 
-  private final List<CharacterType> types = new ArrayList<CharacterType>();
+  private final List<ICharacterType> types = new ArrayList<ICharacterType>();
   private final LowerableState state;
 
-  public CharacterTypeBackgroundTemplate(String id, CharacterType type, LowerableState state) {
+  public CharacterTypeBackgroundTemplate(String id, ICharacterType type, LowerableState state) {
     super(id);
     types.add(type);
     this.state = state;
   }
 
-  public CharacterTypeBackgroundTemplate(String id, CharacterType type) {
+  public CharacterTypeBackgroundTemplate(String id, ICharacterType type) {
     this(id, type, LowerableState.LowerableRegain);
   }
 
