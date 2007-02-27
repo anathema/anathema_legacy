@@ -13,6 +13,7 @@ import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.traits.creation.DefaultTraitFactory;
 import net.sf.anathema.character.impl.model.traits.creation.FavorableTraitFactory;
 import net.sf.anathema.character.library.trait.favorable.FriendlyIncrementChecker;
@@ -39,7 +40,7 @@ public abstract class AbstractBonusPointTestCase extends BasicCharacterTestCase 
             return new DummyCasteType();
           }
 
-          public CharacterType getCharacterType() {
+          public ICharacterType getCharacterType() {
             return getTemplateType().getCharacterType();
           }
 

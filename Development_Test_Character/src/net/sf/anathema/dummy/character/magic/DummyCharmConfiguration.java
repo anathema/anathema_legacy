@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
@@ -49,7 +50,7 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
     throw new NotYetImplementedException();
   }
 
-  public ILearningCharmGroup[] getNonMartialArtsGroups(CharacterType characterType) {
+  public ILearningCharmGroup[] getNonMartialArtsGroups(ICharacterType characterType) {
     throw new NotYetImplementedException();
   }
 
@@ -77,7 +78,7 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
     throw new NotYetImplementedException();
   }
 
-  public CharacterType getCharacterType() {
+  public ICharacterType getCharacterType() {
     throw new NotYetImplementedException();
   }
 
@@ -97,7 +98,7 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
     return new String[0];
   }
 
-  public CharacterType[] getCharacterTypes() {
+  public ICharacterType[] getCharacterTypes() {
     throw new NotYetImplementedException();
   }
 
@@ -105,7 +106,7 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
     throw new NotYetImplementedException();
   }
 
-  public ICharmTree getCharmTree(CharacterType type) {
+  public ICharmTree getCharmTree(ICharacterType type) {
     throw new NotYetImplementedException();
   }
 
