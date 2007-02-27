@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.character.IGenericTraitCollection;
 import net.sf.anathema.character.generic.impl.CharacterUtilties;
 import net.sf.anathema.character.generic.traits.types.AbilityType;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentEncoder;
 import net.sf.anathema.character.reporting.sheet.util.LabelledValueEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
@@ -32,7 +32,7 @@ public class SecondEditionCombatValueEncoder implements IPdfContentEncoder {
     String stunningLabel = resources.getString("Sheet.Combat.Stunning"); //$NON-NLS-1$
     IGenericTraitCollection traitCollection = character.getTraitCollection();
     int joinBattle = CharacterUtilties.getTotalValue(traitCollection, AttributeType.Wits, AbilityType.Awareness);
-    CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
+    ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     int dodgeDV = CharacterUtilties.getDodgeDv(characterType, traitCollection);
     int knockdownThreshold = CharacterUtilties.getTotalValue(
         traitCollection,

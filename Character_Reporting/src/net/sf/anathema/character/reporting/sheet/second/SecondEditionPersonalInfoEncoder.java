@@ -7,6 +7,7 @@ import net.sf.anathema.character.generic.character.IGenericDescription;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.character.reporting.util.Position;
@@ -49,7 +50,7 @@ public class SecondEditionPersonalInfoEncoder extends AbstractPdfEncoder {
     String conceptContent = description.getConceptText();
     String conceptLabel = getLabel("Concept"); //$NON-NLS-1$
     drawLabelledContent(directContent, conceptLabel, conceptContent, new Position(firstColumnX, secondRowY), entryWidth);
-    CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
+    ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     if (characterType != CharacterType.MORTAL) {
       String casteContent = getCasteString(character.getConcept().getCasteType());
       drawLabelledContent(

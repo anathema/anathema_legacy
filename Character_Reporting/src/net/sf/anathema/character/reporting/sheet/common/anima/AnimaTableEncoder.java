@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.sheet.common.anima;
 import java.awt.Color;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.sheet.util.AbstractTableEncoder;
 import net.sf.anathema.character.reporting.util.Bounds;
 import net.sf.anathema.lib.resources.IResources;
@@ -60,7 +60,7 @@ public class AnimaTableEncoder extends AbstractTableEncoder {
     for (ColumnDescriptor column : columns) {
       table.addCell(createHeaderCell(getString(column.getHeaderKey())));
     }
-    CharacterType type = character.getTemplate().getTemplateType().getCharacterType();
+    ICharacterType type = character.getTemplate().getTemplateType().getCharacterType();
     String descriptionPrefix = "Sheet.AnimaTable.Description." + type; //$NON-NLS-1$
     for (int index = 0; index < 5; index++) {
       addAnimaRow(table, index, character, descriptionPrefix);

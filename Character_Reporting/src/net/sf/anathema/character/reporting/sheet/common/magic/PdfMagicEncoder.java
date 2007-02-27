@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.magic.IMagic;
 import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.EssenceFlow;
 import net.sf.anathema.character.reporting.sheet.common.magic.generic.solar.FirstExcellency;
@@ -33,7 +33,7 @@ public class PdfMagicEncoder implements IPdfContentBoxEncoder {
 
   public static List<IMagicStats> collectPrintMagic(final IGenericCharacter character) {
     final IExaltedEdition edition = character.getRules().getEdition();
-    final CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
+    final ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     final List<IMagicStats> printStats = new ArrayList<IMagicStats>();
     if (edition == ExaltedEdition.SecondEdition) {
       printStats.add(new FirstExcellency());

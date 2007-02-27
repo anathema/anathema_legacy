@@ -3,7 +3,7 @@ package net.sf.anathema.character.reporting.sheet.common.anima;
 import java.awt.Color;
 
 import net.sf.anathema.character.generic.character.IGenericCharacter;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.common.PdfEncodingUtilities;
 import net.sf.anathema.character.reporting.sheet.util.AbstractPdfEncoder;
@@ -99,7 +99,7 @@ public class PdfAnimaEncoder extends AbstractPdfEncoder implements IPdfContentBo
   }
 
   private void addAnimaPowerText(IGenericCharacter character, Phrase phrase) {
-    CharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
+    ICharacterType characterType = character.getTemplate().getTemplateType().getCharacterType();
     String resourceBase = "Sheet.AnimaPower." + characterType.getId() + "."; //$NON-NLS-1$ //$NON-NLS-2$
     for (int power = 0; power < animaPowerCount; power++) {
       phrase.add(symbolChunk);

@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;
 import net.sf.anathema.lib.collection.Table;
@@ -13,7 +14,7 @@ import com.lowagie.text.pdf.BaseFont;
 
 public class PdfEncodingRegistry {
 
-  private final Table<CharacterType, IExaltedEdition, IPdfPartEncoder> partEncoderTable = new Table<CharacterType, IExaltedEdition, IPdfPartEncoder>();
+  private final Table<ICharacterType, IExaltedEdition, IPdfPartEncoder> partEncoderTable = new Table<ICharacterType, IExaltedEdition, IPdfPartEncoder>();
   private final BaseFont baseFont;
   private final BaseFont symbolBaseFont;
   private IPdfContentBoxEncoder weaponContentEncoder;
@@ -67,15 +68,15 @@ public class PdfEncodingRegistry {
     return linguisticsEncoder;
   }
 
-  public void setPartEncoder(CharacterType type, IExaltedEdition edition, IPdfPartEncoder partEncoder) {
+  public void setPartEncoder(ICharacterType type, IExaltedEdition edition, IPdfPartEncoder partEncoder) {
     partEncoderTable.add(type, edition, partEncoder);
   }
 
-  public IPdfPartEncoder getPartEncoder(CharacterType type, IExaltedEdition edition) {
+  public IPdfPartEncoder getPartEncoder(ICharacterType type, IExaltedEdition edition) {
     return partEncoderTable.get(type, edition);
   }
 
-  public boolean hasPartEncoder(CharacterType type, IExaltedEdition edition) {
+  public boolean hasPartEncoder(ICharacterType type, IExaltedEdition edition) {
     return partEncoderTable.contains(type, edition);
   }
 
