@@ -1,6 +1,6 @@
 package net.sf.anathema.character.equipment;
 
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.generic.type.ICharacterTypeVisitor;
 import net.sf.anathema.lib.util.IIdentificate;
 
@@ -11,36 +11,36 @@ public enum MagicalMaterial implements IIdentificate {
     return name();
   }
 
-  public static MagicalMaterial getDefault(CharacterType characterType) {
+  public static MagicalMaterial getDefault(ICharacterType characterType) {
     final MagicalMaterial[] material = new MagicalMaterial[1];
 
     characterType.accept(new ICharacterTypeVisitor() {
 
-      public void visitSolar(CharacterType visitedType) {
+      public void visitSolar(ICharacterType visitedType) {
         material[0] = Orichalcum;
       }
 
-      public void visitSidereal(CharacterType visitedType) {
+      public void visitSidereal(ICharacterType visitedType) {
         material[0] = Starmetal;
       }
 
-      public void visitMortal(CharacterType visitedType) {
+      public void visitMortal(ICharacterType visitedType) {
         // nothing to do
       }
 
-      public void visitLunar(CharacterType type) {
+      public void visitLunar(ICharacterType type) {
         material[0] = Moonsilver;
       }
 
-      public void visitDragonKing(CharacterType type) {
+      public void visitDragonKing(ICharacterType type) {
         material[0] = Orichalcum;
       }
 
-      public void visitDB(CharacterType visitedType) {
+      public void visitDB(ICharacterType visitedType) {
         material[0] = Jade;
       }
 
-      public void visitAbyssal(CharacterType visitedType) {
+      public void visitAbyssal(ICharacterType visitedType) {
         material[0] = Soulsteel;
       }
     });
