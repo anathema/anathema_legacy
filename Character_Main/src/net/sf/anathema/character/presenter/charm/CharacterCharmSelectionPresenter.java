@@ -24,7 +24,7 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisit
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -182,8 +182,8 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
       final ICharmSelectionView selectionView,
       final Object cascadeType) {
     ICharmGroup[] allCharmGroups;
-    if (cascadeType instanceof CharacterType) {
-      CharacterType characterType = (CharacterType) cascadeType;
+    if (cascadeType instanceof ICharacterType) {
+      ICharacterType characterType = (ICharacterType) cascadeType;
       allCharmGroups = charms.getNonMartialArtsGroups(characterType);
     }
     else {

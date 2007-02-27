@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmtree.presenter.view.ICharmGroupArbitrator;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
@@ -15,17 +15,17 @@ public interface ICharmConfiguration extends ICharmLearnableArbitrator, ICharmGr
 
   public ILearningCharmGroup[] getAllGroups();
 
-  public CharacterType[] getCharacterTypes(boolean includeAlienTypes);
+  public ICharacterType[] getCharacterTypes(boolean includeAlienTypes);
 
   public ICharm getCharmById(String charmId);
 
-  public ICharmTree getCharmTree(CharacterType type);
+  public ICharmTree getCharmTree(ICharacterType type);
 
   public ICharm[] getCreationLearnedCharms();
 
   public ICharm[] getExperienceLearnedCharms();
 
-  public ILearningCharmGroup[] getNonMartialArtsGroups(CharacterType characterType);
+  public ILearningCharmGroup[] getNonMartialArtsGroups(ICharacterType characterType);
 
   /**
    * @param experienced If false, only charms learned at creation are returned. If true, the method returns the entirety
