@@ -14,7 +14,7 @@ import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICha
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.traits.types.AttributeType;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 
 public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory {
 
@@ -27,7 +27,7 @@ public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory 
   public IAdditionalModel createModel(IAdditionalTemplate additionalTemplate, ICharacterModelContext context) {
     IEquipmentAdditionalModelTemplate template = (IEquipmentAdditionalModelTemplate) additionalTemplate;
     IBasicCharacterData basicCharacterContext = context.getBasicCharacterContext();
-    CharacterType characterType = basicCharacterContext.getCharacterType();
+    ICharacterType characterType = basicCharacterContext.getCharacterType();
     IArmourStats naturalArmour = new NaturalSoak(
         context.getTraitCollection().getTrait(AttributeType.Stamina),
         characterType);
@@ -41,7 +41,7 @@ public class EquipmentAdditionalModelFactory implements IAdditionalModelFactory 
         template.getNaturalWeaponTemplate(characterType));
   }
 
-  private MagicalMaterial getDefaultMaterial(CharacterType characterType) {
+  private MagicalMaterial getDefaultMaterial(ICharacterType characterType) {
     MagicalMaterial defaultMaterial = MagicalMaterial.getDefault(characterType);
     if (defaultMaterial == null) {
       return MagicalMaterial.Orichalcum;

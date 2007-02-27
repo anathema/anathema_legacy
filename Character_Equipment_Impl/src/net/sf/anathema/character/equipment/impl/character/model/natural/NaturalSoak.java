@@ -4,15 +4,16 @@ import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
 public class NaturalSoak implements IArmourStats {
 
   private final IGenericTrait stamina;
-  private final CharacterType characterType;
+  private final ICharacterType characterType;
 
-  public NaturalSoak(IGenericTrait stamina, CharacterType characterType) {
+  public NaturalSoak(IGenericTrait stamina, ICharacterType characterType) {
     this.stamina = stamina;
     this.characterType = characterType;
   }
