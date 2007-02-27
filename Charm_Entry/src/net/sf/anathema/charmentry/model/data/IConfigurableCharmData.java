@@ -8,7 +8,7 @@ import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
 
 public interface IConfigurableCharmData extends IExtendedCharmData {
@@ -25,7 +25,7 @@ public interface IConfigurableCharmData extends IExtendedCharmData {
 
   public CharmTypeModel getCharmTypeModel();
 
-  public void setCharacterType(CharacterType type);
+  public void setCharacterType(ICharacterType type);
 
   public void setEdition(IExaltedEdition edition);
 

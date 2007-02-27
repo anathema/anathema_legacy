@@ -5,7 +5,7 @@ import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmentry.model.IHeaderDataModel;
 import net.sf.anathema.charmentry.module.ICharmEntryViewFactory;
 import net.sf.anathema.charmentry.presenter.model.ICharmEntryModel;
@@ -98,12 +98,12 @@ public class HeaderDataEntryPage extends AbstractAnathemaWizardPage {
   }
 
   private void initTypeView(final IdentificateSelectCellRenderer renderer) {
-    IObjectSelectionView<CharacterType> typeView = view.addComboBoxRow(
+    IObjectSelectionView<ICharacterType> typeView = view.addComboBoxRow(
         properties.getCharacterTypeLabel(),
         renderer,
         getPageModel().getCharacterTypes());
-    typeView.addObjectSelectionChangedListener(new IObjectValueChangedListener<CharacterType>() {
-      public void valueChanged(CharacterType newValue) {
+    typeView.addObjectSelectionChangedListener(new IObjectValueChangedListener<ICharacterType>() {
+      public void valueChanged(ICharacterType newValue) {
         getPageModel().setCharacterType(newValue);
       }
     });

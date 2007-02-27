@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.impl.magic.CharmUtilities;
 import net.sf.anathema.character.generic.impl.rules.ExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmentry.model.data.IConfigurableCharmData;
 import net.sf.anathema.charmentry.presenter.model.ISourceEntryModel;
 import net.sf.anathema.lib.control.change.ChangeControl;
@@ -26,7 +27,7 @@ public class HeaderDataModel implements IHeaderDataModel {
     this.sourceModel = new SourceEntryModel(charmData);
     charmData.getName().addTextChangedListener(new IObjectValueChangedListener<String>() {
       public void valueChanged(String newValue) {
-        final CharacterType type = charmData.getCharacterType();
+        final ICharacterType type = charmData.getCharacterType();
         if (type != null) {
           charmData.setId(CharmUtilities.createIDFromName(type, newValue));
         }
@@ -34,11 +35,11 @@ public class HeaderDataModel implements IHeaderDataModel {
     });
   }
 
-  public CharacterType[] getCharacterTypes() {
-    List<CharacterType> legalTypes = new ArrayList<CharacterType>();
+  public ICharacterType[] getCharacterTypes() {
+    List<ICharacterType> legalTypes = new ArrayList<ICharacterType>();
     Collections.addAll(legalTypes, CharacterType.getAllExaltTypes());
     legalTypes.remove(CharacterType.SIDEREAL);
-    return legalTypes.toArray(new CharacterType[legalTypes.size()]);
+    return legalTypes.toArray(new ICharacterType[legalTypes.size()]);
   }
 
   public IExaltedEdition[] getEditions() {
@@ -49,7 +50,7 @@ public class HeaderDataModel implements IHeaderDataModel {
     return sourceModel;
   }
 
-  public CharacterType getCharacterType() {
+  public ICharacterType getCharacterType() {
     return charmData.getCharacterType();
   }
 
@@ -61,7 +62,7 @@ public class HeaderDataModel implements IHeaderDataModel {
     return charmData.getName();
   }
 
-  public void setCharacterType(CharacterType type) {
+  public void setCharacterType(ICharacterType type) {
     charmData.setCharacterType(type);
     final String text = charmData.getName().getText();
     if (text != null) {

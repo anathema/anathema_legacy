@@ -14,12 +14,14 @@ import net.sf.anathema.character.generic.magic.charms.duration.UntilEventDuratio
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.rules.IExaltedSourceBook;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CharmEntryPropertiesPersister {
 
-  public void writeCharmPageProperty(CharacterType type, String key, IExaltedSourceBook book, int page)
+  public void writeCharmPageProperty(ICharacterType itype, String key, IExaltedSourceBook book, int page)
       throws IOException {
+    CharacterType type = (CharacterType) itype;
     String fileName = "../Character_" + type.name() + "/resources/language/Charms_" + type.getId() + "_Pages.properties";//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //;
     File file = new File(fileName);
     BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
@@ -28,8 +30,9 @@ public class CharmEntryPropertiesPersister {
     writer.close();
   }
 
-  public void writeCharmNameProperty(CharacterType type, IExaltedEdition edition, String key, String value)
+  public void writeCharmNameProperty(ICharacterType itype, IExaltedEdition edition, String key, String value)
       throws IOException {
+    CharacterType type = (CharacterType) itype;
     String fileName = null;
     if (edition == ExaltedEdition.SecondEdition) {
       fileName = "../Character_" + type.name() + "/resources/language/Charms_" + type.getId() + "_" + edition.getId() + ".properties";//$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$;

@@ -21,7 +21,7 @@ import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.generic.traits.ITraitType;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
 import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.collection.ListOrderedSet;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
 import net.sf.anathema.lib.workflow.textualdescription.ITextualDescription;
@@ -29,7 +29,7 @@ import net.sf.anathema.lib.workflow.textualdescription.model.SimpleTextualDescri
 
 public class ConfigurableCharmData implements IConfigurableCharmData {
 
-  private CharacterType characterType;
+  private ICharacterType characterType;
   private String id;
   private IDuration duration;
   private IGenericTrait essence = new ValuedTraitType(OtherTraitType.Essence, 1);
@@ -47,11 +47,11 @@ public class ConfigurableCharmData implements IConfigurableCharmData {
   private boolean excellencyRequired;
   private int page;
 
-  public void setCharacterType(CharacterType type) {
+  public void setCharacterType(ICharacterType type) {
     this.characterType = type;
   }
 
-  public CharacterType getCharacterType() {
+  public ICharacterType getCharacterType() {
     return characterType;
   }
 

@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import net.sf.anathema.character.generic.impl.magic.persistence.ICharmEntryData;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.xml.DocumentUtilities;
 
@@ -16,7 +17,7 @@ import org.dom4j.io.SAXReader;
 public class CharmIO {
 
   public void writeCharmInternal(ICharmEntryData charmData) throws IOException, DocumentException {
-    CharacterType type = charmData.getCoreData().getCharacterType();
+    ICharacterType type = charmData.getCoreData().getCharacterType();
     File file = new File(createFileName(charmData, type));
     Document document = new SAXReader().read(new FileInputStream(file));
     try {
@@ -29,7 +30,8 @@ public class CharmIO {
     System.err.println("Charm written in development file."); //$NON-NLS-1$
   }
 
-  private String createFileName(ICharmEntryData charmData, CharacterType type) {
+  private String createFileName(ICharmEntryData charmData, ICharacterType itype) {
+    CharacterType type = (CharacterType) itype;
     return "../Character_" //$NON-NLS-1$
         + type.name()
         + "/resources/" //$NON-NLS-1$
