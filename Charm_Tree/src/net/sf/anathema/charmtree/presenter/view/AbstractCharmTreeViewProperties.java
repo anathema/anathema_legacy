@@ -1,7 +1,6 @@
 package net.sf.anathema.charmtree.presenter.view;
 
 import java.awt.Cursor;
-import java.awt.Dimension;
 
 import net.disy.commons.core.exception.UnreachableCodeReachedException;
 import net.disy.commons.core.util.Ensure;

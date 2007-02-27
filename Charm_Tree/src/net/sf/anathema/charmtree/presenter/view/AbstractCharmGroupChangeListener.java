@@ -1,11 +1,9 @@
 package net.sf.anathema.charmtree.presenter.view;
 
 import java.awt.Cursor;
-import java.awt.Dimension;
 import java.util.Arrays;
 import java.util.Set;
 
-import net.disy.commons.core.util.Ensure;
 import net.sf.anathema.character.generic.framework.magic.CharmGraphNodeBuilder;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
@@ -17,7 +15,6 @@ import net.sf.anathema.platform.svgtree.document.CascadeDocumentFactory;
 import net.sf.anathema.platform.svgtree.document.visualizer.ITreePresentationProperties;
 import net.sf.anathema.platform.svgtree.graph.nodes.IRegularNode;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
-import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -25,7 +22,6 @@ import org.dom4j.DocumentException;
 public abstract class AbstractCharmGroupChangeListener implements ICharmGroupChangeListener {
 
   private final CascadeDocumentFactory provider = new CascadeDocumentFactory();
-  private final ISvgTreeViewProperties viewProperties;
   private final ITemplateRegistry templateRegistry;
   private final ISvgTreeView charmTreeView;
   private final ICharmGroupArbitrator arbitrator;
@@ -33,12 +29,9 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
 
   public AbstractCharmGroupChangeListener(
       final ISvgTreeView charmTreeView,
-      final ISvgTreeViewProperties viewProperties,
       final ITemplateRegistry templateRegistry,
       final ICharmGroupArbitrator arbitrator) {
     this.charmTreeView = charmTreeView;
-    Ensure.ensureNotNull("View Properties must not be null", viewProperties); //$NON-NLS-1$
-    this.viewProperties = viewProperties;
     this.templateRegistry = templateRegistry;
     this.arbitrator = arbitrator;
   }
