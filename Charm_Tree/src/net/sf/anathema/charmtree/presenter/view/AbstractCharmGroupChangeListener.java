@@ -86,7 +86,6 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
           getEdition()).getPresentationProperties().getCharmPresentationProperties();
       Dimension dimension = presentationProperties.getNodeDimension();
       viewProperties.setDimension(dimension);
-      charmTreeView.setProperties(viewProperties);
       ICharm[] charms = displayCharms.toArray(new ICharm[displayCharms.size()]);
       IRegularNode[] nodes = CharmGraphNodeBuilder.createNodesFromCharms(Arrays.asList(charms));
       Document document = provider.createCascadeDocument(nodes, presentationProperties);
