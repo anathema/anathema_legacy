@@ -19,6 +19,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
@@ -45,7 +46,7 @@ public class CharmConfigurationPersister {
     }
     Element charmsElement = parent.addElement(TAG_CHARMS);
     ICharmConfiguration charmConfiguration = statistics.getCharms();
-    for (CharacterType type : charmConfiguration.getCharacterTypes(true)) {
+    for (ICharacterType type : charmConfiguration.getCharacterTypes(true)) {
       ISpecialCharmPersister specialPersister = new SpecialCharmPersister(charmConfiguration.getCharmProvider()
           .getSpecialCharms(type, statistics.getRules().getEdition()), charmConfiguration.getCharmTree(type));
       saveNonMartialArtsCharmsForConfiguration(specialPersister, charmConfiguration, type, charmsElement);
@@ -57,7 +58,7 @@ public class CharmConfigurationPersister {
   private void saveNonMartialArtsCharmsForConfiguration(
       ISpecialCharmPersister specialPersister,
       ICharmConfiguration charmConfiguration,
-      CharacterType characterType,
+      ICharacterType characterType,
       Element charmsElement) {
     for (ILearningCharmGroup group : charmConfiguration.getNonMartialArtsGroups(characterType)) {
       saveCharmGroup(charmsElement, group, specialPersister);
@@ -125,10 +126,10 @@ public class CharmConfigurationPersister {
       return;
     }
     ICharmConfiguration charmConfiguration = statistics.getCharms();
-    CharacterType defaultCharacterType = statistics.getCharacterTemplate().getTemplateType().getCharacterType();
+    ICharacterType defaultCharacterType = statistics.getCharacterTemplate().getTemplateType().getCharacterType();
     for (Object groupObjectElement : charmsElement.elements(TAG_CHARMGROUP)) {
       Element groupElement = (Element) groupObjectElement;
-      CharacterType characterType = getCharacterTypeFromElement(groupElement, defaultCharacterType);
+      ICharacterType characterType = getCharacterTypeFromElement(groupElement, defaultCharacterType);
       ISpecialCharmPersister specialPersister;
       specialPersister = new SpecialCharmPersister(charmConfiguration.getCharmProvider().getSpecialCharms(
           characterType,
@@ -138,9 +139,9 @@ public class CharmConfigurationPersister {
     loadCombos(charmsElement, statistics.getCombos(), charmConfiguration);
   }
 
-  private CharacterType getCharacterTypeFromElement(Element element, CharacterType defaultType) {
+  private ICharacterType getCharacterTypeFromElement(Element element, ICharacterType defaultType) {
     String typeString = element.attributeValue(ATTRIB_TYPE);
-    CharacterType characterType;
+    ICharacterType characterType;
     if (typeString == null) {
       characterType = defaultType;
     }

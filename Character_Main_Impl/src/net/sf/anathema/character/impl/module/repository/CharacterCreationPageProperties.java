@@ -11,7 +11,7 @@ import net.disy.commons.core.message.BasicMessage;
 import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.core.message.MessageType;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.resources.IResources;
@@ -42,13 +42,13 @@ public class CharacterCreationPageProperties {
     return new BasicMessage(resources.getString("CharacterDialog.Message.NoTemplates"), MessageType.ERROR); //$NON-NLS-1$
   }
 
-  public String getTypeString(CharacterType type) {
+  public String getTypeString(ICharacterType type) {
     return resources.getString("CharacterGenerator.NewCharacter." //$NON-NLS-1$
         + type.getId()
         + ".Name"); //$NON-NLS-1$
   }
 
-  public Icon getTypeIcon(CharacterType type) {
+  public Icon getTypeIcon(ICharacterType type) {
     return iconProvider.getSmallTypeIcon(type);
   }
 

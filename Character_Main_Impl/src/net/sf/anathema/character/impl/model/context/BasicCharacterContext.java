@@ -5,7 +5,7 @@ import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.character.IGenericCharacter;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ITemplateType;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 
 public class BasicCharacterContext implements IBasicCharacterData {
 
@@ -19,7 +19,7 @@ public class BasicCharacterContext implements IBasicCharacterData {
     return character.getCasteType();
   }
 
-  public CharacterType getCharacterType() {
+  public ICharacterType getCharacterType() {
     return getTemplateType().getCharacterType();
   }
 

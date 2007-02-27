@@ -9,6 +9,7 @@ import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.CharacterStatisticsConfiguration;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.collection.MultiEntryMap;
@@ -17,13 +18,13 @@ import net.sf.anathema.lib.control.change.IChangeListener;
 
 public class CharacterItemCreationModel implements ICharacterItemCreationModel {
 
-  private CharacterType selectedType;
+  private ICharacterType selectedType;
   private final ChangeControl control = new ChangeControl();
   private ITemplateTypeAggregation selectedTemplate;
-  private final MultiEntryMap<CharacterType, ITemplateTypeAggregation> aggregationsByType = new MultiEntryMap<CharacterType, ITemplateTypeAggregation>();
+  private final MultiEntryMap<ICharacterType, ITemplateTypeAggregation> aggregationsByType = new MultiEntryMap<ICharacterType, ITemplateTypeAggregation>();
   private final CharacterStatisticsConfiguration configuration;
   private final ICharacterGenerics generics;
-  private final CharacterType[] types;
+  private final ICharacterType[] types;
 
   public CharacterItemCreationModel(
       ICharacterGenerics generics,
@@ -37,9 +38,9 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
     setCharacterType(CharacterType.SOLAR);
   }
 
-  private CharacterType[] collectCharacterTypes(ITemplateRegistry registry) {
-    List<CharacterType> availableTypes = new ArrayList<CharacterType>();
-    for (CharacterType type : CharacterType.getAllCharacterTypes()) {
+  private ICharacterType[] collectCharacterTypes(ITemplateRegistry registry) {
+    List<ICharacterType> availableTypes = new ArrayList<ICharacterType>();
+    for (ICharacterType type : CharacterType.values()) {
       if (registry.getAllSupportedTemplates(type).length > 0) {
         availableTypes.add(type);
       }
@@ -49,7 +50,7 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
 
   private void aggregateTemplates() {
     TemplateTypeAggregator aggregator = new TemplateTypeAggregator(generics.getTemplateRegistry());
-    for (CharacterType type : CharacterType.getAllCharacterTypes()) {
+    for (ICharacterType type : CharacterType.values()) {
       ITemplateTypeAggregation[] aggregations = aggregator.aggregateTemplates(type);
       if (aggregations.length == 0) {
         continue;
@@ -66,11 +67,11 @@ public class CharacterItemCreationModel implements ICharacterItemCreationModel {
     return selectedType != null;
   }
 
-  public CharacterType[] getAvailableCharacterTypes() {
+  public ICharacterType[] getAvailableCharacterTypes() {
     return types;
   }
 
-  public void setCharacterType(CharacterType type) {
+  public void setCharacterType(ICharacterType type) {
     if (selectedType == type) {
       return;
     }

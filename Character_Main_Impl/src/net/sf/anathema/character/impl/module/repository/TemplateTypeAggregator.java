@@ -6,7 +6,7 @@ import java.util.Map;
 import net.sf.anathema.character.generic.template.ICharacterExternalsTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.ITemplateType;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
 
 public class TemplateTypeAggregator {
@@ -17,7 +17,7 @@ public class TemplateTypeAggregator {
     this.characterTemplateRegistry = characterTemplateRegistry;
   }
 
-  public ITemplateTypeAggregation[] aggregateTemplates(CharacterType type) {
+  public ITemplateTypeAggregation[] aggregateTemplates(ICharacterType type) {
     ICharacterExternalsTemplate[] templates = characterTemplateRegistry.getAllSupportedTemplates(type);
     Map<ITemplateType, TemplateTypeAggregation> aggregations = new LinkedHashMap<ITemplateType, TemplateTypeAggregation>();
     for (ICharacterExternalsTemplate template : templates) {

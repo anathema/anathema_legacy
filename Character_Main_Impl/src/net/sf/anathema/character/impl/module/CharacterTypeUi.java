@@ -4,7 +4,7 @@ import javax.swing.Icon;
 
 import net.disy.commons.swing.ui.IObjectUi;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.framework.view.PrintNameFile;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
@@ -22,7 +22,7 @@ public class CharacterTypeUi implements IObjectUi {
   public String getLabel(Object value) {
     PrintNameFile file = (PrintNameFile) value;
     String printName = file.getPrintName();
-    CharacterType characterType = scanner.getCharacterType(file);
+    ICharacterType characterType = scanner.getCharacterType(file);
     String characterString = resources.getString("CharacterGenerator.NewCharacter." + characterType.getId() + ".Name"); //$NON-NLS-1$//$NON-NLS-2$
     IIdentificate casteType = scanner.getCasteType(file);
     if (casteType == null) {
@@ -37,7 +37,7 @@ public class CharacterTypeUi implements IObjectUi {
 
   public Icon getIcon(Object value) {
     PrintNameFile file = (PrintNameFile) value;
-    CharacterType characterType = scanner.getCharacterType(file);
+    ICharacterType characterType = scanner.getCharacterType(file);
     return new CharacterUI(resources).getSmallTypeIcon(characterType);
 
   }

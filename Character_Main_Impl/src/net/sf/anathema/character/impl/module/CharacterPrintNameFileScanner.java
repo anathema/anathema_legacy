@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 
 import net.sf.anathema.character.generic.caste.ICasteCollection;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.framework.repository.IRepositoryFileResolver;
 import net.sf.anathema.framework.repository.access.printname.PrintNameFileAccess;
 import net.sf.anathema.framework.view.PrintNameFile;
@@ -21,13 +22,13 @@ public class CharacterPrintNameFileScanner {
 
   private static final Pattern typePattern = Pattern.compile("<CharacterType.*>(.*?)</CharacterType>"); //$NON-NLS-1$
   private static final Pattern castePattern = Pattern.compile("<Caste type=\"(.*?)\"/>"); //$NON-NLS-1$
-  private final Map<PrintNameFile, CharacterType> typesByFile = new HashMap<PrintNameFile, CharacterType>();
+  private final Map<PrintNameFile, ICharacterType> typesByFile = new HashMap<PrintNameFile, ICharacterType>();
   private final Map<PrintNameFile, IIdentificate> castesByFile = new HashMap<PrintNameFile, IIdentificate>();
-  private final IRegistry<CharacterType, ICasteCollection> registry;
+  private final IRegistry<ICharacterType, ICasteCollection> registry;
   private final IRepositoryFileResolver resolver;
 
   public CharacterPrintNameFileScanner(
-      IRegistry<CharacterType, ICasteCollection> registry,
+      IRegistry<ICharacterType, ICasteCollection> registry,
       IRepositoryFileResolver repositoryFileResolver) {
     this.registry = registry;
     this.resolver = repositoryFileResolver;
@@ -37,7 +38,7 @@ public class CharacterPrintNameFileScanner {
     File scanFile = resolver.getMainFile(file.getItemType(), file.getRepositoryId());
     String content = FileUtils.readFileToString(scanFile, PrintNameFileAccess.ENCODING);
     Matcher typeMatcher = typePattern.matcher(content);
-    CharacterType characterType;
+    ICharacterType characterType;
     typeMatcher.find();
     characterType = CharacterType.getById(typeMatcher.group(1));
     typesByFile.put(file, characterType);
@@ -50,8 +51,8 @@ public class CharacterPrintNameFileScanner {
     castesByFile.put(file, casteType);
   }
 
-  public CharacterType getCharacterType(PrintNameFile file) {
-    CharacterType characterType = typesByFile.get(file);
+  public ICharacterType getCharacterType(PrintNameFile file) {
+    ICharacterType characterType = typesByFile.get(file);
     if (characterType != null) {
       return characterType;
     }

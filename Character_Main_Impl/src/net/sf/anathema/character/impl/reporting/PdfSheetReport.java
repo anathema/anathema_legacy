@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.framework.module.object.ICharacterModul
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.traits.types.OtherTraitType;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.generic.GenericDescription;
 import net.sf.anathema.character.impl.util.GenericCharacterUtilities;
 import net.sf.anathema.character.model.ICharacter;
@@ -91,7 +91,7 @@ public class PdfSheetReport implements IITextReport {
   private IPdfPartEncoder getPartEncoder(ICharacter character) {
     PdfEncodingRegistry encodingRegistry = getEncodingRegistry();
     ICharacterTemplate characterTemplate = character.getStatistics().getCharacterTemplate();
-    CharacterType characterType = characterTemplate.getTemplateType().getCharacterType();
+    ICharacterType characterType = characterTemplate.getTemplateType().getCharacterType();
     IExaltedEdition edition = characterTemplate.getEdition();
     return encodingRegistry.getPartEncoder(characterType, edition);
   }

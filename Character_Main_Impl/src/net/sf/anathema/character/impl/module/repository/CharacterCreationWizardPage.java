@@ -8,7 +8,7 @@ import net.disy.commons.core.message.IBasicMessage;
 import net.disy.commons.swing.action.SmartAction;
 import net.disy.commons.swing.dialog.core.IPageContent;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.module.IToggleButtonPanel;
 import net.sf.anathema.character.view.repository.ITemplateTypeAggregation;
 import net.sf.anathema.lib.control.change.IChangeListener;
@@ -47,7 +47,7 @@ public class CharacterCreationWizardPage extends AbstractAnathemaWizardPage {
   @Override
   protected void initPageContent() {
     IToggleButtonPanel panel = view.addToggleButtonPanel();
-    for (final CharacterType type : model.getAvailableCharacterTypes()) {
+    for (final ICharacterType type : model.getAvailableCharacterTypes()) {
       JToggleButton button = panel.addButton(new SmartAction(properties.getTypeIcon(type)) {
         @Override
         protected void execute(Component parentComponent) {

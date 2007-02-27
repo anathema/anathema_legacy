@@ -8,6 +8,7 @@ import net.sf.anathema.character.generic.framework.configuration.AnathemaCharact
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.impl.model.creation.bonus.BonusPointManagement;
 import net.sf.anathema.character.impl.module.repository.CharacterCreationWizardPageFactory;
@@ -62,7 +63,7 @@ public final class ExaltedCharacterItemTypeConfiguration extends AbstractPersist
           new CharacterPresenter(character, characterView, resources, getGenerics(anathemaModel), null, null).initPresentation();
           return characterView;
         }
-        CharacterType characterType = character.getStatistics()
+        ICharacterType characterType = character.getStatistics()
             .getCharacterTemplate()
             .getTemplateType()
             .getCharacterType();
