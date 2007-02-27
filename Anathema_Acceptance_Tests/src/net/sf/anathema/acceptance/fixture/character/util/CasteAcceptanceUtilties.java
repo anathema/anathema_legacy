@@ -8,7 +8,7 @@ import net.sf.anathema.character.db.aspect.DBAspect;
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.type.AbstractSupportedCharacterTypeVisitor;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.lunar.caste.LunarCaste;
 import net.sf.anathema.character.sidereal.caste.SiderealCaste;
 import net.sf.anathema.character.solar.caste.SolarCaste;
@@ -19,27 +19,27 @@ public class CasteAcceptanceUtilties {
     final List<ICasteType> casteType = new ArrayList<ICasteType>();
     template.getTemplateType().getCharacterType().accept(new AbstractSupportedCharacterTypeVisitor() {
 
-      public void visitAbyssal(CharacterType visitedType) {
+      public void visitAbyssal(ICharacterType visitedType) {
         casteType.add(AbyssalCaste.valueOf(caste));
       }
 
-      public void visitDB(CharacterType visitedType) {
+      public void visitDB(ICharacterType visitedType) {
         casteType.add(DBAspect.valueOf(caste));
       }
 
-      public void visitLunar(CharacterType type) {
+      public void visitLunar(ICharacterType type) {
         casteType.add(LunarCaste.valueOf(caste));
       }
 
-      public void visitSidereal(CharacterType visitedType) {
+      public void visitSidereal(ICharacterType visitedType) {
         casteType.add(SiderealCaste.valueOf(caste));
       }
 
-      public void visitMortal(CharacterType visitedType) {
+      public void visitMortal(ICharacterType visitedType) {
         throw new IllegalArgumentException("Mortals have no caste"); //$NON-NLS-1$
       }
 
-      public void visitSolar(CharacterType visitedType) {
+      public void visitSolar(ICharacterType visitedType) {
         casteType.add(SolarCaste.valueOf(caste));
       }
     });

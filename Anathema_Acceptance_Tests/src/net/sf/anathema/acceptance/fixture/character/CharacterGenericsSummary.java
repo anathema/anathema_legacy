@@ -10,6 +10,7 @@ import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.TemplateType;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
 
@@ -37,7 +38,7 @@ public class CharacterGenericsSummary {
   }
 
   public ICharacterTemplate createTemplate(String characterType, String subtemplate, String edition) {
-    CharacterType characterTypeObject = CharacterType.getById(characterType);
+    ICharacterType characterTypeObject = CharacterType.getById(characterType);
     ExaltedEdition editionType = ExaltedEdition.valueOf(edition);
     if (StringUtilities.isNullOrEmpty(subtemplate)) {
       return getCharacterGenerics().getTemplateRegistry().getDefaultTemplate(characterTypeObject, editionType);
