@@ -4,13 +4,13 @@ import java.util.Arrays;
 
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.IBasicCharacterData;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 
 public class CharacterTypeEvaluator implements ICharacterEvaluator {
 
-  private final CharacterType[] types;
+  private final ICharacterType[] types;
 
-  public CharacterTypeEvaluator(CharacterType[] types) {
+  public CharacterTypeEvaluator(ICharacterType[] types) {
     this.types = types;
   }
 

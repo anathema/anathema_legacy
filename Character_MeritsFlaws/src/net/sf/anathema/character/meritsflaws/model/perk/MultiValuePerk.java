@@ -6,6 +6,7 @@ import java.util.List;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.IBasicCharacterData;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.library.quality.model.Quality;
 import net.sf.anathema.character.meritsflaws.model.perk.cost.IFixedPerkCost;
 import net.sf.anathema.character.meritsflaws.model.perk.cost.IPerkCostModifier;
@@ -15,15 +16,15 @@ public class MultiValuePerk extends Quality implements IPerk {
 
   private final int[] pointValues;
   private final PerkCategory category;
-  private final CharacterType[] legalTypes;
+  private final ICharacterType[] legalTypes;
   private final List<IPerkCostModifier> modifiers = new ArrayList<IPerkCostModifier>();
   private final List<IFixedPerkCost> fixedCosts = new ArrayList<IFixedPerkCost>();
 
-  public MultiValuePerk(PerkType type, PerkCategory category, String id, int[] pointValues, CharacterType[] legalTypes) {
+  public MultiValuePerk(PerkType type, PerkCategory category, String id, int[] pointValues, ICharacterType[] legalTypes) {
     super(id, type);
     this.category = category;
     this.pointValues = pointValues;
-    this.legalTypes = legalTypes;
+    this.legalTypes = legalTypes;    
   }
 
   public MultiValuePerk(PerkType type, PerkCategory category, String id, int[] pointValues) {
@@ -60,7 +61,7 @@ public class MultiValuePerk extends Quality implements IPerk {
     visitor.visitMultiValuePerk(this);
   }
 
-  public boolean isLegalFor(CharacterType characterType) {
+  public boolean isLegalFor(ICharacterType characterType) {
     return ArrayUtilities.contains(legalTypes, characterType);
   }
 

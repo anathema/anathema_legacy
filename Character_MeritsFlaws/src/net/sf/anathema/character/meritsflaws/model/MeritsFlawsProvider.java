@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.meritsflaws.model.perk.IPerk;
 import net.sf.anathema.character.meritsflaws.model.perk.MultiValuePerk;
 import net.sf.anathema.character.meritsflaws.model.perk.PerkCategory;
@@ -201,7 +202,7 @@ public class MeritsFlawsProvider {
     perk.setSpecialFixedCost(new FixedPerkCost(new CharacterTypeEvaluator(new CharacterType[] { type }), cost));
   }
 
-  private static void setMultiCharacterTypeSpecialCost(IPerk perk, CharacterType[] types, int[] cost) {
+  private static void setMultiCharacterTypeSpecialCost(IPerk perk, ICharacterType[] types, int[] cost) {
     perk.setSpecialFixedCost(new FixedPerkCost(new CharacterTypeEvaluator(types), cost));
   }
 
@@ -224,7 +225,7 @@ public class MeritsFlawsProvider {
       int[] pointValues,
       CharacterType[] bannedTypes) {
     List<CharacterType> allowedTypes = new ArrayList<CharacterType>();
-    Collections.addAll(allowedTypes, CharacterType.getAllCharacterTypes());
+    Collections.addAll(allowedTypes, CharacterType.values());
     allowedTypes.removeAll(Arrays.asList(bannedTypes));
     return new MultiValuePerk(
         type,
