@@ -8,7 +8,11 @@ public interface ICharmProvider {
 
   public ISpecialCharm[] getSpecialCharms(CharacterType characterType, IExaltedEdition edition);
 
-  public void setSpecialCharms(CharacterType type, IExaltedEdition edition, ISpecialCharm[] charms);
+  public ISpecialCharm[] getGlobalSpecialCharms(IExaltedEdition edition);
 
   public ISpecialCharm[] getAllSpecialCharms(IExaltedEdition edition);
+
+  public void addGlobalSpecialCharm(IExaltedEdition edition, ISpecialCharm charm);
+
+  public void setSpecialCharms(CharacterType type, IExaltedEdition edition, ISpecialCharm[] charms);
 }
