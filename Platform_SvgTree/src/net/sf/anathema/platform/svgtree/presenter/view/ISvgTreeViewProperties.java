@@ -1,7 +1,6 @@
 package net.sf.anathema.platform.svgtree.presenter.view;
 
 import java.awt.Cursor;
-import java.awt.Dimension;
 
 public interface ISvgTreeViewProperties {
 
@@ -22,8 +21,4 @@ public interface ISvgTreeViewProperties {
   public boolean isNodeDeselectable(String nodeId);
 
   public String getToolTip(String nodeId);
-
-  public Dimension getDimension();
-
-  public void setDimension(Dimension dimension);
 }

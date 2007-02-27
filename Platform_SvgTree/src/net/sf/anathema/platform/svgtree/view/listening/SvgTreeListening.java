@@ -26,7 +26,7 @@ import org.w3c.dom.svg.SVGGElement;
 
 public class SvgTreeListening {
 
-  private ISvgTreeViewProperties properties;
+  private final ISvgTreeViewProperties properties;
   private final IAnathemaCanvas canvas;
   private final BoundsCalculator boundsCalculator = new BoundsCalculator();
   private final GenericControl<INodeSelectionListener> control = new GenericControl<INodeSelectionListener>();
@@ -60,8 +60,9 @@ public class SvgTreeListening {
     }
   };
 
-  public SvgTreeListening(final AnathemaCanvas canvas) {
+  public SvgTreeListening(final AnathemaCanvas canvas, ISvgTreeViewProperties viewProperties) {
     this.canvas = canvas;
+    this.properties = viewProperties;
     canvas.addKeyListener(new KeyAdapter() {
       @Override
       public void keyPressed(final KeyEvent e) {
@@ -125,10 +126,6 @@ public class SvgTreeListening {
 
   private void setCanvasTooltip(final String node) {
     canvas.setToolTipText(properties.getToolTip(node));
-  }
-
-  public void setProperties(final ISvgTreeViewProperties viewProperties) {
-    this.properties = viewProperties;
   }
 
   public IBoundsCalculator getBoundsCalculator() {

@@ -23,8 +23,6 @@ public interface ISvgTreeView extends IView, IDisposable {
 
   public void setCanvasBackground(Color color);
 
-  public void setProperties(ISvgTreeViewProperties viewProperties);
-
   public void loadCascade(Document document) throws DocumentException;
 
   public IBoundsCalculator getBoundsCalculator();
