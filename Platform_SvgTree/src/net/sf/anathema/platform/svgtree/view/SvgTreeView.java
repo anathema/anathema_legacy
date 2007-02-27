@@ -67,10 +67,11 @@ public class SvgTreeView implements ISvgTreeView {
   }
 
   public void loadCascade(final org.dom4j.Document dom4jDocument) throws DocumentException {
-    DOMImplementation implementation = SVG12DOMImplementation.getDOMImplementation();
-    SVGDocument document = (SVGDocument) new DOMWriter().write(dom4jDocument, implementation);
     listening.destructDocumentListening(canvas.getSVGDocument());
-    if (document != null) {
+    SVGDocument document = null;
+    if (dom4jDocument != null) {
+      DOMImplementation implementation = SVG12DOMImplementation.getDOMImplementation();
+      document = (SVGDocument) new DOMWriter().write(dom4jDocument, implementation);
       listening.initDocumentListening(document);
     }
     canvas.setDocument(document);
