@@ -13,17 +13,18 @@ import net.sf.anathema.character.generic.magic.IMagicVisitor;
 import net.sf.anathema.character.generic.magic.ISpell;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.platform.svgtree.graph.layering.TopologyBuilder;
 import net.sf.anathema.platform.svgtree.graph.nodes.IIdentifiedRegularNode;
 import net.sf.anathema.platform.svgtree.graph.nodes.IRegularNode;
 
 public class MagicComparator implements Comparator<IMagic> {
 
-  private final CharacterType characterType;
+  private final ICharacterType characterType;
   private final Map<String, Map<String, Integer>> charmOrderByGroupId = new HashMap<String, Map<String, Integer>>();
   private IExaltedRuleSet set;
 
-  public MagicComparator(CharacterType type, IExaltedRuleSet set) {
+  public MagicComparator(ICharacterType type, IExaltedRuleSet set) {
     this.characterType = type;
     this.set = set;
   }
@@ -81,8 +82,8 @@ public class MagicComparator implements Comparator<IMagic> {
           compareValue[0] = -1;
         }
         else {
-          CharacterType charmCharacterType = charm.getCharacterType();
-          CharacterType otherCharacterType = otherCharm.getCharacterType();
+          ICharacterType charmCharacterType = charm.getCharacterType();
+          ICharacterType otherCharacterType = otherCharm.getCharacterType();
           if (charmCharacterType != otherCharacterType) {
             if (charmCharacterType == characterType) {
               compareValue[0] = -1;
@@ -91,7 +92,7 @@ public class MagicComparator implements Comparator<IMagic> {
               compareValue[0] = 1;
             }
             else {
-              compareValue[0] = charmCharacterType.compareTo(otherCharacterType);
+              compareValue[0] = charmCharacterType.compareTo((CharacterType) otherCharacterType);
             }
           }
           else {

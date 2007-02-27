@@ -2,7 +2,7 @@ package net.sf.anathema.character.generic.framework.resources;
 
 import javax.swing.Icon;
 
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.resources.AbstractUI;
 import net.sf.anathema.lib.resources.IResources;
 
@@ -39,11 +39,11 @@ public class CharacterUI extends AbstractUI {
     return getIcon("ButtonCheckXP16.png"); //$NON-NLS-1$
   }
 
-  public Icon getSmallTypeIcon(CharacterType characterType) {
+  public Icon getSmallTypeIcon(ICharacterType characterType) {
     return getIcon(characterType.getId() + "Icon16.png"); //$NON-NLS-1$
   }
 
-  public Icon getMediumBallResource(CharacterType characterType) {
+  public Icon getMediumBallResource(ICharacterType characterType) {
     return getIcon("Border" + characterType.getId() + "Button16.png"); //$NON-NLS-1$ //$NON-NLS-2$
   }
 

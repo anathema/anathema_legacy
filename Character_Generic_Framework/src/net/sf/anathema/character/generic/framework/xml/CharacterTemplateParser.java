@@ -34,7 +34,7 @@ import net.sf.anathema.character.generic.template.ITemplateType;
 import net.sf.anathema.character.generic.template.additional.IAdditionalTemplate;
 import net.sf.anathema.character.generic.traits.groups.AllAbilityTraitTypeGroup;
 import net.sf.anathema.character.generic.traits.groups.AllAttributeTraitTypeGroup;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.exception.PersistenceException;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -64,14 +64,14 @@ public class CharacterTemplateParser extends AbstractXmlTemplateParser<GenericCh
   private static final String ATTRIB_EDITION = "edition"; //$NON-NLS-1$
 
   private final ICharacterTemplateRegistryCollection registryCollection;
-  private final IRegistry<CharacterType, ICasteCollection> casteCollectionRegistry;
+  private final IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry;
   private final IRegistry<String, IAdditionalTemplateParser> additionModelTemplateParserRegistry;
   private final ICharmProvider provider;
   private final IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry;
 
   public CharacterTemplateParser(
       ICharacterTemplateRegistryCollection registryCollection,
-      IRegistry<CharacterType, ICasteCollection> casteCollectionRegistry,
+      IRegistry<ICharacterType, ICasteCollection> casteCollectionRegistry,
       ICharmProvider provider,
       IIdentificateRegistry<IBackgroundTemplate> backgroundRegistry,
       IRegistry<String, IAdditionalTemplateParser> additionModelTemplateParser) {
