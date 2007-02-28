@@ -3,7 +3,6 @@ package net.sf.anathema.character.equipment.impl.character.model.natural;
 import net.sf.anathema.character.generic.equipment.weapon.IArmourStats;
 import net.sf.anathema.character.generic.health.HealthType;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;
@@ -34,7 +33,7 @@ public class NaturalSoak implements IArmourStats {
     if (type == HealthType.Aggravated) {
       return null;
     }
-    if (characterType == CharacterType.MORTAL && type == HealthType.Lethal) {
+    if (!characterType.isExaltType() && type == HealthType.Lethal) {
       return 0;
     }
     return getExaltedSoak(type);
