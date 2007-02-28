@@ -321,7 +321,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
         visited,
         getCharmWidth(),
         characterColor);
-    ICharm originalCharm = statistics.getCharms().getCharmById(visited.getCharmId());
+    ICharm originalCharm = getCharmConfiguration().getCharmById(visited.getCharmId());
     IMultipleEffectCharmConfiguration model = (IMultipleEffectCharmConfiguration) getCharmConfiguration().getSpecialCharmConfiguration(
         visited.getCharmId());
     new MultipleEffectCharmPresenter(getResources(), subeffectView, model).initPresentation();
