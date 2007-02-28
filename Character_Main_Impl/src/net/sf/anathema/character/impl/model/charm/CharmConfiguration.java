@@ -123,6 +123,9 @@ public class CharmConfiguration implements ICharmConfiguration {
         .getRuleSet()
         .getEdition())) {
       final ICharm charm = martialArtsCharmTree.getCharmByID(specialCharm.getCharmId());
+      if (charm==null) {
+        continue;
+      }
       initSpecialCharmConfiguration(specialCharm, charm);
     }
   }
