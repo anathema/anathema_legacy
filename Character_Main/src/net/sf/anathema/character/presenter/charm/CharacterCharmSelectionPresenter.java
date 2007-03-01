@@ -23,7 +23,6 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmVisit
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
-import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.ITypedDescription;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -36,11 +35,11 @@ import net.sf.anathema.character.view.magic.IMagicViewFactory;
 import net.sf.anathema.charmtree.presenter.AbstractCascadeSelectionPresenter;
 import net.sf.anathema.charmtree.presenter.view.ICharmSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmTreeViewProperties;
-import net.sf.anathema.charmtree.presenter.view.IExaltTypeChangedListener;
 import net.sf.anathema.framework.presenter.view.IViewContent;
 import net.sf.anathema.framework.presenter.view.SimpleViewContent;
 import net.sf.anathema.framework.view.util.ContentProperties;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.resources.IResources;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
@@ -165,8 +164,8 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   }
 
   private void initCharmTypeSelectionListening(final ICharmConfiguration charms, final ICharmSelectionView selectionView) {
-    selectionView.addCharmTypeSelectionListener(new IExaltTypeChangedListener() {
-      public void valueChanged(final Object cascadeType) {
+    selectionView.addCharmTypeSelectionListener(new IObjectValueChangedListener<IIdentificate>() {
+      public void valueChanged(final IIdentificate cascadeType) {
         handleTypeSelectionChange(charms, selectionView, cascadeType);
       }
     });
@@ -175,15 +174,8 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   private void handleTypeSelectionChange(
       final ICharmConfiguration charms,
       final ICharmSelectionView selectionView,
-      final Object cascadeType) {
-    ICharmGroup[] allCharmGroups;
-    if (cascadeType instanceof ICharacterType) {
-      ICharacterType characterType = (ICharacterType) cascadeType;
-      allCharmGroups = charms.getNonMartialArtsGroups(characterType);
-    }
-    else {
-      allCharmGroups = charms.getMartialArtsGroups();
-    }
+      final IIdentificate cascadeType) {
+    ICharmGroup[] allCharmGroups= charms.getCharmGroups(cascadeType);
     selectionView.fillCharmGroupBox(sortCharmGroups(allCharmGroups));
     showSpecialViews(selectionView, null);
   }

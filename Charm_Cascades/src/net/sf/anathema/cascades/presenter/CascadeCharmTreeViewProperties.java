@@ -4,14 +4,14 @@ import java.awt.Cursor;
 
 import net.sf.anathema.character.generic.impl.magic.persistence.CharmCache;
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmTree;
+import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
 import net.sf.anathema.charmtree.presenter.view.AbstractCharmTreeViewProperties;
 import net.sf.anathema.lib.resources.IResources;
 
 public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewProperties {
 
-  private ICharmTree charmTree;
+  private ICharmIdMap idMap;
   private IExaltedRuleSet selectedRuleset;
 
   public CascadeCharmTreeViewProperties(IResources resources) {
@@ -36,15 +36,15 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
 
   @Override
   protected ICharm getCharmById(String id) {
-    ICharm charm = charmTree.getCharmById(id);
+    ICharm charm = idMap.getCharmById(id);
     if (charm == null) {
       charm = CharmCache.getInstance().searchCharm(id, selectedRuleset);
     }
     return charm;
   }
 
-  public void setCharmTree(ICharmTree newCharmTree) {
-    this.charmTree = newCharmTree;
+  public void setCharmTree(ICharmIdMap map) {
+    this.idMap = map;
   }
 
   public boolean isNodeDeselectable(String charmId) {

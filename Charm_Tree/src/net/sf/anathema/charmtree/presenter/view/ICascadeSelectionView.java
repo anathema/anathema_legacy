@@ -4,6 +4,7 @@ import java.awt.Dimension;
 
 import javax.swing.ListCellRenderer;
 
+import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
 import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
@@ -16,7 +17,7 @@ public interface ICascadeSelectionView {
 
   public void addCharmTypeSelector(String title, IIdentificate[] types, ListCellRenderer renderer);
 
-  public void addCharmTypeSelectionListener(IExaltTypeChangedListener selectionListener);
+  public void addCharmTypeSelectionListener(IObjectValueChangedListener<IIdentificate> selectionListener);
 
   public void fillCharmGroupBox(IIdentificate[] charmGroups);
 

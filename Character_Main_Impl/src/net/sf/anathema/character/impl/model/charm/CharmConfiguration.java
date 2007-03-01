@@ -52,6 +52,7 @@ import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.lib.collection.DefaultValueHashMap;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
+import net.sf.anathema.lib.util.IIdentificate;
 
 public class CharmConfiguration implements ICharmConfiguration {
 
@@ -127,7 +128,6 @@ public class CharmConfiguration implements ICharmConfiguration {
     return new GroupedCharmIdMap(treeArray);
   }
 
-  
   @Override
   public ISpecialCharm[] getSpecialCharms() {
     return provider.getSpecialCharms(
@@ -260,8 +260,16 @@ public class CharmConfiguration implements ICharmConfiguration {
     return allLearnedCharms.toArray(new ICharm[0]);
   }
 
-  public ILearningCharmGroup[] getNonMartialArtsGroups(ICharacterType characterType) {
-    return nonMartialArtsGroupsByType.get(characterType);
+  @Override
+  public ILearningCharmGroup[] getCharmGroups(IIdentificate type) {
+    if (MartialArtsUtilities.MARTIAL_ARTS.equals(type)) {
+      return martialArtsGroups;
+    }
+    return nonMartialArtsGroupsByType.get(type);
+  }
+
+  private ILearningCharmGroup[] getMartialArtsGroups() {
+    return getCharmGroups(MartialArtsUtilities.MARTIAL_ARTS);
   }
 
   public ICharm[] getLearnedCharms(boolean experienced) {
@@ -273,10 +281,6 @@ public class CharmConfiguration implements ICharmConfiguration {
       }
     }
     return allLearnedCharms.toArray(new ICharm[0]);
-  }
-
-  public ILearningCharmGroup[] getMartialArtsGroups() {
-    return martialArtsGroups;
   }
 
   public ISpecialCharmConfiguration getSpecialCharmConfiguration(ICharm charm) {
@@ -486,7 +490,7 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   private final ILearningCharmGroup getGroupById(ICharacterType characterType, String groupId) {
     List<ILearningCharmGroup> candidateGroups = new ArrayList<ILearningCharmGroup>();
-    Collections.addAll(candidateGroups, getNonMartialArtsGroups(characterType));
+    Collections.addAll(candidateGroups, getCharmGroups(characterType));
     Collections.addAll(candidateGroups, getMartialArtsGroups());
     for (ILearningCharmGroup group : candidateGroups) {
       if (group.getId().equals(groupId)) {
@@ -498,10 +502,6 @@ public class CharmConfiguration implements ICharmConfiguration {
 
   public final ILearningCharmGroup getGroup(ICharm charm) {
     return getGroupById(charm.getCharacterType(), charm.getGroupId());
-  }
-
-  public ICharmProvider getCharmProvider() {
-    return provider;
   }
 
   public ICharm[] getCharms(ICharmGroup charmGroup) {

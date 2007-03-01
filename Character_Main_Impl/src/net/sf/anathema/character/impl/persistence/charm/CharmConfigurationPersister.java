@@ -15,11 +15,11 @@ import static net.sf.anathema.character.impl.persistence.ICharacterXmlConstants.
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
 import net.sf.anathema.character.model.charm.ICombo;
@@ -29,6 +29,7 @@ import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfigu
 import net.sf.anathema.character.model.charm.special.ISubeffect;
 import net.sf.anathema.framework.persistence.TextPersister;
 import net.sf.anathema.lib.exception.PersistenceException;
+import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.xml.ElementUtilities;
 
 import org.dom4j.Element;
@@ -49,28 +50,19 @@ public class CharmConfigurationPersister {
     ISpecialCharmPersister specialPersister = new SpecialCharmPersister(
         charmConfiguration.getSpecialCharms(),
         charmConfiguration.getCharmIdMap());
-    for (ICharacterType type : charmConfiguration.getCharacterTypes(true)) {
-      saveCharacterTypeCharms(specialPersister, charmConfiguration, type, charmsElement);
+    for (IIdentificate type : charmConfiguration.getCharacterTypes(true)) {
+      saveTypeCharms(specialPersister, charmConfiguration, type, charmsElement);
     }
-    saveMartialArtsCharms(specialPersister, charmConfiguration, charmsElement);
+    saveTypeCharms(specialPersister, charmConfiguration, MartialArtsUtilities.MARTIAL_ARTS, charmsElement);
     saveCombos(charmsElement, statistics.getCombos());
   }
 
-  private void saveCharacterTypeCharms(
+  private void saveTypeCharms(
       ISpecialCharmPersister specialPersister,
       ICharmConfiguration charmConfiguration,
-      ICharacterType characterType,
+      IIdentificate type,
       Element charmsElement) {
-    for (ILearningCharmGroup group : charmConfiguration.getNonMartialArtsGroups(characterType)) {
-      saveCharmGroup(charmsElement, group, specialPersister);
-    }
-  }
-
-  private void saveMartialArtsCharms(
-      ISpecialCharmPersister specialPersister,
-      ICharmConfiguration charmConfiguration,
-      Element charmsElement) {
-    for (ILearningCharmGroup group : charmConfiguration.getMartialArtsGroups()) {
+    for (ILearningCharmGroup group : charmConfiguration.getCharmGroups(type)) {
       saveCharmGroup(charmsElement, group, specialPersister);
     }
   }

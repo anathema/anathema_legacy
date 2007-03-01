@@ -24,7 +24,6 @@ import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmtree.presenter.AbstractCascadeSelectionPresenter;
-import net.sf.anathema.charmtree.presenter.view.IExaltTypeChangedListener;
 import net.sf.anathema.framework.view.IdentificateSelectCellRenderer;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
@@ -151,15 +150,15 @@ public class CascadePresenter extends AbstractCascadeSelectionPresenter implemen
   }
 
   private void initCharmTypeSelectionListening() {
-    view.addCharmTypeSelectionListener(new IExaltTypeChangedListener() {
-      public void valueChanged(Object cascadeType) {
+    view.addCharmTypeSelectionListener(new IObjectValueChangedListener<IIdentificate>() {
+      public void valueChanged(IIdentificate cascadeType) {
         handleTypeSelectionChange(cascadeType);
       }
     });
   }
 
-  private void handleTypeSelectionChange(Object cascadeType) {
-    this.selectedType = (IIdentificate) cascadeType;
+  private void handleTypeSelectionChange(IIdentificate cascadeType) {
+    this.selectedType = cascadeType;
     if (cascadeType == null) {
       view.fillCharmGroupBox(new IIdentificate[0]);
       return;

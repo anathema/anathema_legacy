@@ -11,14 +11,13 @@ import javax.swing.border.TitledBorder;
 import net.disy.commons.swing.layout.grid.GridDialogLayout;
 import net.sf.anathema.charmtree.presenter.view.ICascadeSelectionView;
 import net.sf.anathema.charmtree.presenter.view.ICharmGroupChangeListener;
-import net.sf.anathema.charmtree.presenter.view.IExaltTypeChangedListener;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
 import net.sf.anathema.lib.gui.widgets.ChangeableJComboBox;
 import net.sf.anathema.lib.gui.widgets.IChangeableJComboBox;
 import net.sf.anathema.lib.util.IIdentificate;
+import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeView;
 import net.sf.anathema.platform.svgtree.presenter.view.ISvgTreeViewProperties;
-import net.sf.anathema.platform.svgtree.presenter.view.IDocumentLoadedListener;
 import net.sf.anathema.platform.svgtree.view.SvgTreeView;
 
 public abstract class AbstractCascadeSelectionView implements ICascadeSelectionView {
@@ -51,12 +50,8 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
     typeComboBox.setObjects(charmGroups);
   }
 
-  public void addCharmTypeSelectionListener(final IExaltTypeChangedListener selectionListener) {
-    typeComboBox.addObjectSelectionChangedListener(new IObjectValueChangedListener<IIdentificate>() {
-      public void valueChanged(IIdentificate newValue) {
-        selectionListener.valueChanged(newValue);
-      }
-    });
+  public void addCharmTypeSelectionListener(final IObjectValueChangedListener<IIdentificate> selectionListener) {
+    typeComboBox.addObjectSelectionChangedListener(selectionListener);
   }
 
   public void addCharmGroupSelector(

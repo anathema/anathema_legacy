@@ -14,6 +14,7 @@ import net.sf.anathema.character.model.charm.ICharmLearnListener;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.exception.NotYetImplementedException;
+import net.sf.anathema.lib.util.IIdentificate;
 
 public class DummyCharmConfiguration implements ICharmConfiguration {
 
@@ -51,11 +52,8 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
     throw new NotYetImplementedException();
   }
 
-  public ILearningCharmGroup[] getNonMartialArtsGroups(ICharacterType characterType) {
-    throw new NotYetImplementedException();
-  }
-
-  public ILearningCharmGroup[] getMartialArtsGroups() {
+  @Override
+  public ILearningCharmGroup[] getCharmGroups(IIdentificate type) {
     throw new NotYetImplementedException();
   }
 
