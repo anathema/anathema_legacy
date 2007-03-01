@@ -146,7 +146,7 @@ public class CharmConfigurationPersister {
     return ElementUtilities.getBooleanAttribute(charmElement, ATTRIB_EXPERIENCE_LEARNED, false);
   }
 
-  private void loadCombos(Element parent, IComboConfiguration comboConfiguration, ICharmConfiguration charms) {
+  private void loadCombos(Element parent, IComboConfiguration comboConfiguration, ICharmIdMap charms) {
     Element combosElement = parent.element(TAG_COMBOS);
     if (combosElement == null) {
       return;
