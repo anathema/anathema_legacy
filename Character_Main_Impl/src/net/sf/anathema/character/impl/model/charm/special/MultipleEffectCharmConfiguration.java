@@ -7,9 +7,9 @@ import net.disy.commons.core.predicate.IPredicate;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
-import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
 import net.sf.anathema.character.model.charm.special.ISubeffect;
 import net.sf.anathema.lib.control.GenericControl;
@@ -26,7 +26,7 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
       ICharacterModelContext context,
       final ICharm charm,
       IMultipleEffectCharm visited,
-      final IExtendedCharmLearnableArbitrator arbitrator) {
+      final ICharmLearnableArbitrator arbitrator) {
     this.charm = charm;
     List<ISubeffect> effectList = new ArrayList<ISubeffect>();
     ICondition condition = new ICondition() {
