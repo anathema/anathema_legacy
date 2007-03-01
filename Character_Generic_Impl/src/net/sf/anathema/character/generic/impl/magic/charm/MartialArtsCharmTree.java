@@ -16,7 +16,7 @@ public class MartialArtsCharmTree extends CharmTree {
   }
 
   @Override
-  protected boolean isLearnableCharm(ICharm charm) {
+  public boolean isLearnableCharm(ICharm charm) {
     return MartialArtsUtilities.getLevel(charm).compareTo(standardLevel) <= 1;
   }
 }

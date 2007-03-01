@@ -165,8 +165,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
     List<IIdentificate> types = new ArrayList<IIdentificate>();
     Collections.addAll(types, getCharmConfiguration().getCharacterTypes(alienCharms));
     types.add(MartialArtsUtilities.MARTIAL_ARTS);
-    IIdentificate[] currentCharmTypes = types.toArray(new IIdentificate[types.size()]);
-    return currentCharmTypes;
+    return types.toArray(new IIdentificate[types.size()]);
   }
 
   private void initCharmTypeSelectionListening(final ICharmConfiguration charms, final ICharmSelectionView selectionView) {
@@ -263,7 +262,10 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   }
 
   private void initSpecialCharmViews() {
-    ISpecialCharm[] specialCharms = provider.getAllSpecialCharms(statistics.getRules().getEdition());
+    ISpecialCharm[] specialCharms = provider.getSpecialCharms(
+        statistics.getRules().getEdition(),
+        getCharmConfiguration().getArbitrator(),
+        getCharmConfiguration().getCharmIdMap());
     for (ISpecialCharm charm : specialCharms) {
       addSpecialCharmControl(charm);
     }

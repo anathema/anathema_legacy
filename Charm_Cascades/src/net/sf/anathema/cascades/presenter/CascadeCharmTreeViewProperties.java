@@ -36,7 +36,7 @@ public class CascadeCharmTreeViewProperties extends AbstractCharmTreeViewPropert
 
   @Override
   protected ICharm getCharmById(String id) {
-    ICharm charm = charmTree.getCharmByID(id);
+    ICharm charm = charmTree.getCharmById(id);
     if (charm == null) {
       charm = CharmCache.getInstance().searchCharm(id, selectedRuleset);
     }

@@ -16,9 +16,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.model.ICharacterStatistics;
 import net.sf.anathema.character.model.charm.ICharmConfiguration;
@@ -46,16 +47,20 @@ public class CharmConfigurationPersister {
     }
     Element charmsElement = parent.addElement(TAG_CHARMS);
     ICharmConfiguration charmConfiguration = statistics.getCharms();
+    ICharmIdMap idMap = charmConfiguration.getCharmIdMap();
+    ISpecialCharm[] specialCharms = charmConfiguration.getCharmProvider().getSpecialCharms(
+        statistics.getRules().getEdition(),
+        charmConfiguration.getArbitrator(),
+        idMap);
+    ISpecialCharmPersister specialPersister = new SpecialCharmPersister(specialCharms, idMap);
     for (ICharacterType type : charmConfiguration.getCharacterTypes(true)) {
-      ISpecialCharmPersister specialPersister = new SpecialCharmPersister(charmConfiguration.getCharmProvider()
-          .getSpecialCharms(type, statistics.getRules().getEdition()), charmConfiguration.getCharmTree(type));
-      saveNonMartialArtsCharmsForConfiguration(specialPersister, charmConfiguration, type, charmsElement);
+      saveCharacterTypeCharms(specialPersister, charmConfiguration, type, charmsElement);
     }
-    saveMartialArtsCharms(charmConfiguration, charmsElement);
+    saveMartialArtsCharms(specialPersister, charmConfiguration, charmsElement);
     saveCombos(charmsElement, statistics.getCombos());
   }
 
-  private void saveNonMartialArtsCharmsForConfiguration(
+  private void saveCharacterTypeCharms(
       ISpecialCharmPersister specialPersister,
       ICharmConfiguration charmConfiguration,
       ICharacterType characterType,
@@ -65,9 +70,12 @@ public class CharmConfigurationPersister {
     }
   }
 
-  private void saveMartialArtsCharms(ICharmConfiguration charmConfiguration, Element charmsElement) {
+  private void saveMartialArtsCharms(
+      ISpecialCharmPersister specialPersister,
+      ICharmConfiguration charmConfiguration,
+      Element charmsElement) {
     for (ILearningCharmGroup group : charmConfiguration.getMartialArtsGroups()) {
-      saveCharmGroup(charmsElement, group, null);
+      saveCharmGroup(charmsElement, group, specialPersister);
     }
   }
 
@@ -126,29 +134,17 @@ public class CharmConfigurationPersister {
       return;
     }
     ICharmConfiguration charmConfiguration = statistics.getCharms();
-    ICharacterType defaultCharacterType = statistics.getCharacterTemplate().getTemplateType().getCharacterType();
+    ICharmIdMap idMap = charmConfiguration.getCharmIdMap();
+    ISpecialCharm[] specialCharms = charmConfiguration.getCharmProvider().getSpecialCharms(
+        statistics.getRules().getEdition(),
+        charmConfiguration.getArbitrator(),
+        idMap);
+    ISpecialCharmPersister specialPersister = new SpecialCharmPersister(specialCharms, idMap);
     for (Object groupObjectElement : charmsElement.elements(TAG_CHARMGROUP)) {
       Element groupElement = (Element) groupObjectElement;
-      ICharacterType characterType = getCharacterTypeFromElement(groupElement, defaultCharacterType);
-      ISpecialCharmPersister specialPersister;
-      specialPersister = new SpecialCharmPersister(charmConfiguration.getCharmProvider().getSpecialCharms(
-          characterType,
-          statistics.getRules().getEdition()), charmConfiguration.getCharmTree(characterType));
       loadCharmFromConfiguration(charmConfiguration, groupElement, specialPersister);
     }
     loadCombos(charmsElement, statistics.getCombos(), charmConfiguration);
-  }
-
-  private ICharacterType getCharacterTypeFromElement(Element element, ICharacterType defaultType) {
-    String typeString = element.attributeValue(ATTRIB_TYPE);
-    ICharacterType characterType;
-    if (typeString == null) {
-      characterType = defaultType;
-    }
-    else {
-      characterType = CharacterType.getById(typeString);
-    }
-    return characterType;
   }
 
   private void loadCharmFromConfiguration(

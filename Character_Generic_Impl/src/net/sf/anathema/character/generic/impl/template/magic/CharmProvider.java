@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
+import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -14,15 +17,19 @@ import net.sf.anathema.lib.collection.Table;
 public class CharmProvider implements ICharmProvider {
 
   private final Table<IExaltedEdition, ICharacterType, ISpecialCharm[]> charmsByTypeByRuleSet = new Table<IExaltedEdition, ICharacterType, ISpecialCharm[]>();
-  private final MultiEntryMap<IExaltedEdition, ISpecialCharm> globalSpecialCharms = new MultiEntryMap<IExaltedEdition, ISpecialCharm>();
+  private final MultiEntryMap<IExaltedEdition, ISpecialCharm> martialArtsSpecialCharms = new MultiEntryMap<IExaltedEdition, ISpecialCharm>();
 
-  public ISpecialCharm[] getAllSpecialCharms(IExaltedEdition edition) {
-    List<ISpecialCharm> list = new ArrayList<ISpecialCharm>();
-    for (ICharacterType type : CharacterType.values()) {
-      Collections.addAll(list, getSpecialCharms(type, edition));
+  @Override
+  public ISpecialCharm[] getSpecialCharms(IExaltedEdition edition, ICharmLearnableArbitrator arbitrator, ICharmIdMap map) {
+    List<ISpecialCharm> relevantCharms = new ArrayList<ISpecialCharm>();
+    ISpecialCharm[] allSpecialCharms = getAllSpecialCharms(edition);
+    for (ISpecialCharm specialCharm : allSpecialCharms) {
+      ICharm charm = map.getCharmById(specialCharm.getCharmId());
+      if (charm != null && arbitrator.isLearnable(charm)) {
+        relevantCharms.add(specialCharm);
+      }
     }
-    list.addAll(globalSpecialCharms.get(edition));
-    return list.toArray(new ISpecialCharm[list.size()]);
+    return relevantCharms.toArray(new ISpecialCharm[relevantCharms.size()]);
   }
 
   public ISpecialCharm[] getSpecialCharms(ICharacterType characterType, IExaltedEdition edition) {
@@ -33,9 +40,12 @@ public class CharmProvider implements ICharmProvider {
     return specialCharms;
   }
 
-  @Override
-  public ISpecialCharm[] getGlobalSpecialCharms(IExaltedEdition edition) {
-    List<ISpecialCharm> list = globalSpecialCharms.get(edition);
+  private ISpecialCharm[] getAllSpecialCharms(IExaltedEdition edition) {
+    List<ISpecialCharm> list = new ArrayList<ISpecialCharm>();
+    for (ICharacterType type : CharacterType.values()) {
+      Collections.addAll(list, getSpecialCharms(type, edition));
+    }
+    list.addAll(martialArtsSpecialCharms.get(edition));
     return list.toArray(new ISpecialCharm[list.size()]);
   }
 
@@ -43,7 +53,7 @@ public class CharmProvider implements ICharmProvider {
     charmsByTypeByRuleSet.add(edition, type, charms);
   }
 
-  public void addGlobalSpecialCharm(IExaltedEdition edition, ISpecialCharm charm) {
-    globalSpecialCharms.add(edition, charm);
+  public void addMartialArtsSpecialCharm(IExaltedEdition edition, ISpecialCharm charm) {
+    martialArtsSpecialCharms.add(edition, charm);
   }
 }

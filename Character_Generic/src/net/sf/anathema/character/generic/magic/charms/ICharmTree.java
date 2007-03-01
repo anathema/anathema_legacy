@@ -4,7 +4,7 @@ import java.util.List;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 
-public interface ICharmTree {
+public interface ICharmTree extends ICharmIdMap {
 
   public ICharmGroup[] getAllCharmGroups();
 
@@ -12,5 +12,5 @@ public interface ICharmTree {
 
   public List<ICharm> getAllCharmsForGroup(String id);
 
-  public ICharm getCharmByID(String id);
+  public boolean isLearnableCharm(ICharm charm);
 }

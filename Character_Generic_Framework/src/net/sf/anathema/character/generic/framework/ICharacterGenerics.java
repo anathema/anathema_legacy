@@ -10,7 +10,7 @@ import net.sf.anathema.character.generic.framework.xml.additional.IAdditionalTem
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.additional.IGlobalAdditionalTemplate;
-import net.sf.anathema.character.generic.type.CharacterType;
+import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.initialization.repository.IDataFileProvider;
 import net.sf.anathema.lib.registry.IIdentificateRegistry;
 import net.sf.anathema.lib.registry.IRegistry;
@@ -31,7 +31,7 @@ public interface ICharacterGenerics {
 
   public ICharacterTemplateRegistryCollection getCharacterTemplateRegistries();
 
-  public IRegistry<CharacterType, ICasteCollection> getCasteCollectionRegistry();
+  public IRegistry<ICharacterType, ICasteCollection> getCasteCollectionRegistry();
 
   public IRegistry<String, IAdditionalTemplateParser> getAdditionalTemplateParserRegistry();
 

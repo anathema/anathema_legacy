@@ -11,7 +11,7 @@ import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
 import net.sf.anathema.character.impl.model.charm.CharmConfiguration;
 import net.sf.anathema.character.impl.model.charm.ISpecialCharmManager;
-import net.sf.anathema.character.model.charm.ICharmLearnableArbitrator;
+import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.health.IHealthConfiguration;
 import net.sf.anathema.character.model.health.IPainToleranceProvider;
@@ -30,7 +30,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
       IMultiLearnableCharm visitedCharm,
       final ICharm charm,
       ILearningCharmGroup group,
-      ICharmLearnableArbitrator arbitrator) {
+      IExtendedCharmLearnableArbitrator arbitrator) {
     addSpecialCharmConfiguration(charm, group, new MultiLearnableCharmConfiguration(
         context,
         charm,
@@ -69,7 +69,7 @@ public class SpecialCharmManager implements ISpecialCharmManager {
       ISubeffectCharm visited,
       ICharm charm,
       ILearningCharmGroup group,
-      ICharmLearnableArbitrator arbitrator) {
+      IExtendedCharmLearnableArbitrator arbitrator) {
     addSpecialCharmConfiguration(charm, group, new SubeffectCharmConfiguration(context, charm, visited, arbitrator));
   }
 

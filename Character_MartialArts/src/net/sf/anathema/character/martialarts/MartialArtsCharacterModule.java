@@ -8,6 +8,6 @@ public class MartialArtsCharacterModule extends NullObjectCharacterModuleAdapter
 
   @Override
   public void registerCommonData(ICharacterGenerics characterGenerics) {
-    characterGenerics.getCharmProvider().addGlobalSpecialCharm(ExaltedEdition.FirstEdition, IMartialArtsSpecialCharms.TYPE_EXALT_WAYS);
+    characterGenerics.getCharmProvider().addMartialArtsSpecialCharm(ExaltedEdition.FirstEdition, IMartialArtsSpecialCharms.TYPE_EXALT_WAYS);
   }
 }

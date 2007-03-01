@@ -7,7 +7,6 @@ import net.sf.anathema.character.generic.framework.ICharacterGenericsExtension;
 import net.sf.anathema.character.generic.framework.configuration.AnathemaCharacterPreferences;
 import net.sf.anathema.character.generic.framework.resources.CharacterUI;
 import net.sf.anathema.character.generic.rules.IExaltedRuleSet;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.impl.model.advance.ExperiencePointManagement;
 import net.sf.anathema.character.impl.model.creation.bonus.BonusPointManagement;

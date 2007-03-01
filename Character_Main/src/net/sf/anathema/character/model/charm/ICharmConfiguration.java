@@ -3,13 +3,14 @@ package net.sf.anathema.character.model.charm;
 import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
-import net.sf.anathema.character.generic.magic.charms.ICharmTree;
+import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
+import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmtree.presenter.view.ICharmGroupArbitrator;
 import net.sf.anathema.lib.control.change.IChangeListener;
 
-public interface ICharmConfiguration extends ICharmLearnableArbitrator, ICharmGroupArbitrator {
+public interface ICharmConfiguration extends IExtendedCharmLearnableArbitrator, ICharmGroupArbitrator, ICharmIdMap {
 
   public void addLearnableListener(IChangeListener listener);
 
@@ -17,9 +18,13 @@ public interface ICharmConfiguration extends ICharmLearnableArbitrator, ICharmGr
 
   public ICharacterType[] getCharacterTypes(boolean includeAlienTypes);
 
-  public ICharm getCharmById(String charmId);
+  public ICharmIdMap getCharmTree(ICharacterType type);
 
-  public ICharmTree getCharmTree(ICharacterType type);
+  public ICharmIdMap getMartialArtsCharmTree();
+
+  public ICharmIdMap getCharmIdMap();
+
+  public ICharmLearnableArbitrator getArbitrator();
 
   public ICharm[] getCreationLearnedCharms();
 
@@ -29,7 +34,7 @@ public interface ICharmConfiguration extends ICharmLearnableArbitrator, ICharmGr
 
   /**
    * @param experienced If false, only charms learned at creation are returned. If true, the method returns the entirety
-   *          of charms learned.
+   *            of charms learned.
    */
   public ICharm[] getLearnedCharms(boolean experienced);
 

@@ -9,7 +9,6 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.presentation.IPresentationProperties;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.charmtree.presenter.view.AbstractCharmGroupChangeListener;
 import net.sf.anathema.lib.util.IIdentificate;

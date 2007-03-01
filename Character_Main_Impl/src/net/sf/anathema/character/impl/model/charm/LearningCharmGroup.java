@@ -13,7 +13,7 @@ import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfi
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
-import net.sf.anathema.character.model.charm.ICharmLearnableArbitrator;
+import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.character.model.charm.OxBodyCategory;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
@@ -27,14 +27,14 @@ public class LearningCharmGroup extends CharmGroup implements ILearningCharmGrou
   private final Set<ICharm> charmsLearnedWithExperience = new HashSet<ICharm>();
   private final GenericControl<ICharmLearnListener> control = new GenericControl<ICharmLearnListener>();
   private final Map<ICharm, ISpecialCharmConfiguration> specialConfigurationsByCharm = new HashMap<ICharm, ISpecialCharmConfiguration>();
-  private final ICharmLearnableArbitrator learnArbitrator;
+  private final IExtendedCharmLearnableArbitrator learnArbitrator;
   private final ICharmLearnStrategy learnStrategy;
   private final ILearningCharmGroupContainer charmGroupContainer;
 
   public LearningCharmGroup(
       ICharmLearnStrategy learnStrategy,
       ICharmGroup simpleCharmGroup,
-      ICharmLearnableArbitrator arbitrator,
+      IExtendedCharmLearnableArbitrator arbitrator,
       ILearningCharmGroupContainer charmGroupContainer) {
     super(
         simpleCharmGroup.getCharacterType(),

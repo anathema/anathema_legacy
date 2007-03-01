@@ -31,7 +31,7 @@ public class CharmTree implements ICharmTree {
     }
   }
 
-  public ICharm getCharmByID(String charmID) {
+  public ICharm getCharmById(String charmID) {
     return charmById.get(charmID);
   }
 
@@ -71,8 +71,7 @@ public class CharmTree implements ICharmTree {
     return groupCharms;
   }
 
-  @SuppressWarnings("unused")
-  protected boolean isLearnableCharm(ICharm charm) {
+  public boolean isLearnableCharm(ICharm charm) {
     return true;
   }
 }

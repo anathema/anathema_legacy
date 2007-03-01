@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.sf.anathema.character.generic.magic.ICharm;
-import net.sf.anathema.character.generic.magic.charms.ICharmTree;
-import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
+import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
+import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IOxBodyTechniqueCharm;
 import net.sf.anathema.character.generic.magic.charms.special.IPainToleranceCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
@@ -21,7 +21,7 @@ public class SpecialCharmPersister implements ISpecialCharmPersister {
 
   private final Map<ICharm, ISpecialCharmPersister> persisterByCharm = new HashMap<ICharm, ISpecialCharmPersister>();
 
-  public SpecialCharmPersister(ISpecialCharm[] charms, final ICharmTree charmTree) {
+  public SpecialCharmPersister(ISpecialCharm[] charms, final ICharmIdMap charmTree) {
     for (ISpecialCharm specialCharm : charms) {
       specialCharm.accept(new ISpecialCharmVisitor() {
         public void visitMultiLearnableCharm(IMultiLearnableCharm charm) {
@@ -47,8 +47,8 @@ public class SpecialCharmPersister implements ISpecialCharmPersister {
     }
   }
 
-  private ICharm getCharm(String charmId, ICharmTree charmTree) {
-    return charmTree.getCharmByID(charmId);
+  private ICharm getCharm(String charmId, ICharmIdMap charmTree) {
+    return charmTree.getCharmById(charmId);
   }
 
   public void saveConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration) {

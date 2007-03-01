@@ -3,7 +3,6 @@ package net.sf.anathema.character.reporting.sheet;
 import java.awt.Color;
 
 import net.sf.anathema.character.generic.rules.IExaltedEdition;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.character.reporting.sheet.common.IPdfContentBoxEncoder;
 import net.sf.anathema.character.reporting.sheet.page.IPdfPartEncoder;

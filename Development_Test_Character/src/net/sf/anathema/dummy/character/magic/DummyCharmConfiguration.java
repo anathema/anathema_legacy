@@ -4,6 +4,8 @@ import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
+import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
+import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.type.CharacterType;
@@ -68,6 +70,11 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
 
   public ICharm[] getLearnedCharms(boolean experienced) {
     return charms;
+  }
+
+  @Override
+  public ICharmTree getMartialArtsCharmTree() {
+    throw new NotYetImplementedException();
   }
 
   public boolean isLearnable(ICharm charm) {
@@ -148,5 +155,15 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
 
   public ICharm[] getCharms(ICharmGroup charmGroup) {
     return charmGroup.getAllCharms();
+  }
+
+  @Override
+  public ICharmLearnableArbitrator getArbitrator() {
+    throw new NotYetImplementedException();
+  }
+
+  @Override
+  public ICharmIdMap getCharmIdMap() {
+    throw new NotYetImplementedException();
   }
 }

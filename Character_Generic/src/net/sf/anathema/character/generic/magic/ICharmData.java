@@ -8,7 +8,6 @@ import net.sf.anathema.character.generic.magic.charms.IComboRestrictions;
 import net.sf.anathema.character.generic.magic.charms.duration.IDuration;
 import net.sf.anathema.character.generic.magic.charms.type.ICharmTypeModel;
 import net.sf.anathema.character.generic.traits.IGenericTrait;
-import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
 import net.sf.anathema.lib.util.IIdentificate;
 import net.sf.anathema.lib.util.Identificate;

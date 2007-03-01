@@ -9,7 +9,7 @@ import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 
 public class NullCharmTree implements ICharmTree {
 
-  public ICharm getCharmByID(String id) {
+  public ICharm getCharmById(String id) {
     return null;
   }
 
@@ -23,5 +23,10 @@ public class NullCharmTree implements ICharmTree {
 
   public ICharmGroup[] getAllCharmGroups() {
     return new ICharmGroup[0];
+  }
+
+  @Override
+  public boolean isLearnableCharm(ICharm charm) {
+    return false;
   }
 }

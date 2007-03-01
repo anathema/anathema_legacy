@@ -3,7 +3,7 @@ package net.sf.anathema.character.impl.model.charm.special;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
-import net.sf.anathema.character.model.charm.ICharmLearnableArbitrator;
+import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.special.ISubeffect;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
 
@@ -16,7 +16,7 @@ public class SubeffectCharmConfiguration extends MultipleEffectCharmConfiguratio
       ICharacterModelContext context,
       final ICharm charm,
       ISubeffectCharm visited,
-      final ICharmLearnableArbitrator arbitrator) {
+      final IExtendedCharmLearnableArbitrator arbitrator) {
     super(context, charm, visited, arbitrator);
     this.pointCost = visited.getPointCost();
   }

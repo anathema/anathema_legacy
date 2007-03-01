@@ -12,7 +12,7 @@ import net.sf.anathema.character.generic.traits.types.ValuedTraitType;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.impl.model.charm.LearningCharmGroup;
 import net.sf.anathema.character.impl.model.context.magic.CreationCharmLearnStrategy;
-import net.sf.anathema.character.model.charm.ICharmLearnableArbitrator;
+import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.ILearningCharmGroup;
 import net.sf.anathema.dummy.character.magic.DummyCharm;
 import net.sf.anathema.dummy.character.magic.DummyLearnableArbitrator;
@@ -24,11 +24,11 @@ public class LearningCharmGroupTest extends BasicTestCase {
 
   private DummyLearningCharmGroupContainer container = new DummyLearningCharmGroupContainer();
 
-  private LearningCharmGroup createSolarMeleeGroup(ICharmLearnableArbitrator learnableArbitrator) {
+  private LearningCharmGroup createSolarMeleeGroup(IExtendedCharmLearnableArbitrator learnableArbitrator) {
     return createSolarGroup(learnableArbitrator, AbilityType.Melee.getId());
   }
 
-  private LearningCharmGroup createSolarGroup(ICharmLearnableArbitrator learnableArbitrator, String groupId) {
+  private LearningCharmGroup createSolarGroup(IExtendedCharmLearnableArbitrator learnableArbitrator, String groupId) {
     ICharmLearnStrategy learnSrategy = new CreationCharmLearnStrategy();
     CharmTree charmTree = new CharmTree(new DummyCharmTemplate(), ExaltedRuleSet.CoreRules);
     CharmGroup group = new CharmGroup(CharacterType.SOLAR, groupId, charmTree.getAllCharmsForGroup(groupId).toArray(new ICharm[0]), false);
@@ -36,7 +36,7 @@ public class LearningCharmGroupTest extends BasicTestCase {
   }
 
   private LearningCharmGroup createSolarGroup(
-      ICharmLearnableArbitrator learnableArbitrator,
+      IExtendedCharmLearnableArbitrator learnableArbitrator,
       ICharmTree charmTree,
       String groupId) {
     ICharmLearnStrategy learnSrategy = new CreationCharmLearnStrategy();
@@ -46,7 +46,7 @@ public class LearningCharmGroupTest extends BasicTestCase {
 
   public void testIsLearnedCreationCharmOnCreation() throws Exception {
     ICharm learnableCharm = new DummyCharm("learnableDummyCharm"); //$NON-NLS-1$
-    ICharmLearnableArbitrator learnableArbitrator = new DummyLearnableArbitrator(
+    IExtendedCharmLearnableArbitrator learnableArbitrator = new DummyLearnableArbitrator(
         new String[] { learnableCharm.getId() });
     LearningCharmGroup learningCharmGroup = createSolarMeleeGroup(learnableArbitrator);
     container.setLearningCharmGroup(learningCharmGroup);
@@ -57,7 +57,7 @@ public class LearningCharmGroupTest extends BasicTestCase {
 
   public void testLearnedCreationCharmsUnlearnableOnCreation() throws Exception {
     ICharm learnableCharm = new DummyCharm("learnableDummyCharm"); //$NON-NLS-1$
-    ICharmLearnableArbitrator learnableArbitrator = new DummyLearnableArbitrator(
+    IExtendedCharmLearnableArbitrator learnableArbitrator = new DummyLearnableArbitrator(
         new String[] { learnableCharm.getId() });
     LearningCharmGroup learningCharmGroup = createSolarMeleeGroup(learnableArbitrator);
     container.setLearningCharmGroup(learningCharmGroup);
@@ -84,7 +84,7 @@ public class LearningCharmGroupTest extends BasicTestCase {
         new IGenericTrait[] { new ValuedTraitType(AbilityType.Melee, 1) });
     ICharmTree charmTree = new CharmTree(new ICharm[] { internalPrerequisite, externalPrerequisite, learnCharm });
     externalPrerequisite.addLearnFollowUpCharm(learnCharm);
-    ICharmLearnableArbitrator learnableArbitrator = new DummyLearnableArbitrator(new String[] {
+    IExtendedCharmLearnableArbitrator learnableArbitrator = new DummyLearnableArbitrator(new String[] {
         externalPrerequisiteId,
         internalPrerequisiteId,
         learCharmID });

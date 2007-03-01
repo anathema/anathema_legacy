@@ -10,7 +10,7 @@ import net.sf.anathema.character.library.trait.TraitType;
 import net.sf.anathema.character.library.trait.favorable.IIncrementChecker;
 import net.sf.anathema.character.library.trait.visitor.IDefaultTrait;
 import net.sf.anathema.character.model.charm.CharmLearnAdapter;
-import net.sf.anathema.character.model.charm.ICharmLearnableArbitrator;
+import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 import net.sf.anathema.character.model.charm.special.IMultiLearnableCharmConfiguration;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
@@ -27,7 +27,7 @@ public class MultiLearnableCharmConfiguration implements IMultiLearnableCharmCon
       final ICharacterModelContext context,
       ICharm charm,
       final IMultiLearnableCharm specialCharm,
-      final ICharmLearnableArbitrator arbitrator) {
+      final IExtendedCharmLearnableArbitrator arbitrator) {
     this.charm = charm;
     this.trait = new LimitedTrait(new TraitType("SpecialCharm"), SimpleTraitTemplate.createStaticLimitedTemplate( //$NON-NLS-1$
         0,

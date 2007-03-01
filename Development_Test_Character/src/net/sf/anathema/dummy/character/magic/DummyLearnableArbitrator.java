@@ -3,9 +3,9 @@ package net.sf.anathema.dummy.character.magic;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.model.charm.ICharmLearnListener;
-import net.sf.anathema.character.model.charm.ICharmLearnableArbitrator;
+import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
 
-public class DummyLearnableArbitrator implements ICharmLearnableArbitrator {
+public class DummyLearnableArbitrator implements IExtendedCharmLearnableArbitrator {
 
   private final String[] learnableCharmIds;
 
