@@ -26,7 +26,7 @@ public class NullCharmTree implements ICharmTree {
   }
 
   @Override
-  public boolean isLearnableCharm(ICharm charm) {
+  public boolean isLearnable(ICharm charm) {
     return false;
   }
 }

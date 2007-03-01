@@ -18,6 +18,6 @@ public class MartialArtsLearnableArbitrator implements ICharmLearnableArbitrator
     if (!MartialArtsUtilities.isMartialArtsCharm(charm)) {
       return true;
     }
-    return martialArtsTree.isLearnableCharm(charm);
+    return martialArtsTree.isLearnable(charm);
   }
 }

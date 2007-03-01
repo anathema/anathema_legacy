@@ -42,7 +42,7 @@ public class CharmTree implements ICharmTree {
   private final void addCharmGroupsFor(Collection<String> groupIds, List<ICharmGroup> charmGroups, ICharm[] charms) {
     for (ICharm charm : charms) {
       String groupId = charm.getGroupId();
-      if (!groupIds.contains(groupId) && isLearnableCharm(charm)) {
+      if (!groupIds.contains(groupId) && isLearnable(charm)) {
         groupIds.add(groupId);
         List<ICharm> groupCharms = getAllCharmsForGroup(groupId);
         charmGroups.add(new CharmGroup(
@@ -71,7 +71,7 @@ public class CharmTree implements ICharmTree {
     return groupCharms;
   }
 
-  public boolean isLearnableCharm(ICharm charm) {
+  public boolean isLearnable(ICharm charm) {
     return true;
   }
 }
