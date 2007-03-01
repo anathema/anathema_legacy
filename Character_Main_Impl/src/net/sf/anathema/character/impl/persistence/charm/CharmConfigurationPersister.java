@@ -17,7 +17,6 @@ import java.util.regex.Pattern;
 
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
-import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -47,12 +46,9 @@ public class CharmConfigurationPersister {
     }
     Element charmsElement = parent.addElement(TAG_CHARMS);
     ICharmConfiguration charmConfiguration = statistics.getCharms();
-    ICharmIdMap idMap = charmConfiguration.getCharmIdMap();
-    ISpecialCharm[] specialCharms = charmConfiguration.getCharmProvider().getSpecialCharms(
-        statistics.getRules().getEdition(),
-        charmConfiguration.getArbitrator(),
-        idMap);
-    ISpecialCharmPersister specialPersister = new SpecialCharmPersister(specialCharms, idMap);
+    ISpecialCharmPersister specialPersister = new SpecialCharmPersister(
+        charmConfiguration.getSpecialCharms(),
+        charmConfiguration.getCharmIdMap());
     for (ICharacterType type : charmConfiguration.getCharacterTypes(true)) {
       saveCharacterTypeCharms(specialPersister, charmConfiguration, type, charmsElement);
     }
@@ -135,11 +131,7 @@ public class CharmConfigurationPersister {
     }
     ICharmConfiguration charmConfiguration = statistics.getCharms();
     ICharmIdMap idMap = charmConfiguration.getCharmIdMap();
-    ISpecialCharm[] specialCharms = charmConfiguration.getCharmProvider().getSpecialCharms(
-        statistics.getRules().getEdition(),
-        charmConfiguration.getArbitrator(),
-        idMap);
-    ISpecialCharmPersister specialPersister = new SpecialCharmPersister(specialCharms, idMap);
+    ISpecialCharmPersister specialPersister = new SpecialCharmPersister(charmConfiguration.getSpecialCharms(), idMap);
     for (Object groupObjectElement : charmsElement.elements(TAG_CHARMGROUP)) {
       Element groupElement = (Element) groupObjectElement;
       loadCharmFromConfiguration(charmConfiguration, groupElement, specialPersister);

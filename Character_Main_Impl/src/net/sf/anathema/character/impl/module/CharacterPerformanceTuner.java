@@ -54,13 +54,7 @@ public class CharacterPerformanceTuner {
     ExaltedCharacter character = createStattedCharacter(generics);
     ICharacterStatistics statistics = character.getStatistics();
     MagicViewFactory magicView = new MagicViewFactory();
-    new MagicPresenter(statistics, magicView, resources, generics.getTemplateRegistry(), generics.getCharmProvider()).initPresentation();
-    //    
-    //    for (ITabContent content : contents) {
-    //      if (content.getDisposable() instanceof CharmSelectionView) {
-    //        ((CharmSelectionView) content.getDisposable()).fillCharmComboBoxes(CharacterType.SOLAR, AbilityType.Melee);
-    //      }
-    //    }
+    new MagicPresenter(statistics, magicView, resources, generics.getTemplateRegistry()).initPresentation();
   }
 
   private ICharacterView initCharacterView(ICharacterGenerics characterGenerics, IItemType characterItemType)

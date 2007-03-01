@@ -5,8 +5,7 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
-import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
-import net.sf.anathema.character.generic.magic.charms.ICharmTree;
+import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmConfiguration;
 import net.sf.anathema.character.generic.type.CharacterType;
 import net.sf.anathema.character.generic.type.ICharacterType;
@@ -72,11 +71,6 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
     return charms;
   }
 
-  @Override
-  public ICharmTree getMartialArtsCharmTree() {
-    throw new NotYetImplementedException();
-  }
-
   public boolean isLearnable(ICharm charm) {
     throw new NotYetImplementedException();
   }
@@ -105,15 +99,7 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
     return new String[0];
   }
 
-  public ICharacterType[] getCharacterTypes() {
-    throw new NotYetImplementedException();
-  }
-
   public ILearningCharmGroup[] getAllGroups() {
-    throw new NotYetImplementedException();
-  }
-
-  public ICharmTree getCharmTree(ICharacterType type) {
     throw new NotYetImplementedException();
   }
 
@@ -158,12 +144,12 @@ public class DummyCharmConfiguration implements ICharmConfiguration {
   }
 
   @Override
-  public ICharmLearnableArbitrator getArbitrator() {
+  public ICharmIdMap getCharmIdMap() {
     throw new NotYetImplementedException();
   }
 
   @Override
-  public ICharmIdMap getCharmIdMap() {
+  public ISpecialCharm[] getSpecialCharms() {
     throw new NotYetImplementedException();
   }
 }

@@ -3,7 +3,6 @@ package net.sf.anathema.character.presenter.charm;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.template.ICharacterTemplate;
 import net.sf.anathema.character.generic.template.ITemplateRegistry;
 import net.sf.anathema.character.generic.template.magic.ICharmTemplate;
@@ -23,12 +22,11 @@ public class MagicPresenter implements IContentPresenter {
       ICharacterStatistics statistics,
       IMagicViewFactory factory,
       IResources resources,
-      ITemplateRegistry templateRegistry,
-      ICharmProvider provider) {
+      ITemplateRegistry templateRegistry) {
     ICharacterTemplate characterTemplate = statistics.getCharacterTemplate();
     ICharmTemplate charmTemplate = characterTemplate.getMagicTemplate().getCharmTemplate();
     if (charmTemplate.knowsCharms(statistics.getRules())) {
-      subPresenters.add(new CharacterCharmSelectionPresenter(statistics, resources, templateRegistry, provider, factory));
+      subPresenters.add(new CharacterCharmSelectionPresenter(statistics, resources, templateRegistry, factory));
       subPresenters.add(new ComboConfigurationPresenter(resources, statistics, factory));
     }
     ISpellMagicTemplate spellMagic = statistics.getCharacterTemplate().getMagicTemplate().getSpellMagic();

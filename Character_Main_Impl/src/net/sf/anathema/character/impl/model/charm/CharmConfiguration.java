@@ -23,7 +23,6 @@ import net.sf.anathema.character.generic.magic.ICharmData;
 import net.sf.anathema.character.generic.magic.charms.ICharmAttributeRequirement;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.ICharmIdMap;
-import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.ICharmTree;
 import net.sf.anathema.character.generic.magic.charms.MartialArtsLevel;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
@@ -128,18 +127,19 @@ public class CharmConfiguration implements ICharmConfiguration {
     return new GroupedCharmIdMap(treeArray);
   }
 
+  
   @Override
-  public ICharmLearnableArbitrator getArbitrator() {
-    return new MartialArtsLearnableArbitrator(martialArtsCharmTree);
+  public ISpecialCharm[] getSpecialCharms() {
+    return provider.getSpecialCharms(
+        context.getBasicCharacterContext().getRuleSet().getEdition(),
+        new MartialArtsLearnableArbitrator(martialArtsCharmTree),
+        getCharmIdMap());
   }
 
   private void initSpecialCharmConfigurations() {
-    ICharmIdMap idMap = getCharmIdMap();
-    ISpecialCharm[] specialCharms = provider.getSpecialCharms(context.getBasicCharacterContext()
-        .getRuleSet()
-        .getEdition(), getArbitrator(), idMap);
-    for (ISpecialCharm specialCharm : specialCharms) {
-      ICharm charm = idMap.getCharmById(specialCharm.getCharmId());
+    ICharmIdMap charmIdMap = getCharmIdMap();
+    for (ISpecialCharm specialCharm : getSpecialCharms()) {
+      ICharm charm = charmIdMap.getCharmById(specialCharm.getCharmId());
       if (charm == null) {
         continue;
       }
@@ -240,13 +240,8 @@ public class CharmConfiguration implements ICharmConfiguration {
     throw new IllegalArgumentException("No charm for id \"" + charmId + "\""); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
-  public ICharmIdMap getCharmTree(ICharacterType type) {
+  private ICharmIdMap getCharmTree(ICharacterType type) {
     return alienTreesByType.get(type);
-  }
-
-  @Override
-  public ICharmTree getMartialArtsCharmTree() {
-    return martialArtsCharmTree;
   }
 
   public ICharm[] getCreationLearnedCharms() {

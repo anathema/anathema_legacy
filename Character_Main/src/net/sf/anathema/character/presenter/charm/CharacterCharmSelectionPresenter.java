@@ -12,7 +12,6 @@ import javax.swing.ToolTipManager;
 
 import net.sf.anathema.character.generic.caste.ICasteType;
 import net.sf.anathema.character.generic.impl.magic.MartialArtsUtilities;
-import net.sf.anathema.character.generic.impl.template.magic.ICharmProvider;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmGroup;
 import net.sf.anathema.character.generic.magic.charms.special.IMultiLearnableCharm;
@@ -59,7 +58,6 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   private final Color characterColor;
   private final List<ISVGSpecialNodeView> specialCharmViews = new ArrayList<ISVGSpecialNodeView>();
   private final ICharacterStatistics statistics;
-  private final ICharmProvider provider;
   private final ICharmSelectionView view;
   private final IMagicViewFactory viewFactory;
 
@@ -67,10 +65,8 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
       final ICharacterStatistics statistics,
       final IResources resources,
       final ITemplateRegistry templateRegistry,
-      final ICharmProvider provider,
       final IMagicViewFactory factory) {
     super(resources, templateRegistry);
-    this.provider = provider;
     this.viewFactory = factory;
     IPresentationProperties presentationProperties = statistics.getCharacterTemplate().getPresentationProperties();
     this.viewProperties = new CharacterCharmTreeViewProperties(resources, statistics.getCharms());
@@ -262,11 +258,7 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
   }
 
   private void initSpecialCharmViews() {
-    ISpecialCharm[] specialCharms = provider.getSpecialCharms(
-        statistics.getRules().getEdition(),
-        getCharmConfiguration().getArbitrator(),
-        getCharmConfiguration().getCharmIdMap());
-    for (ISpecialCharm charm : specialCharms) {
+    for (ISpecialCharm charm : getCharmConfiguration().getSpecialCharms()) {
       addSpecialCharmControl(charm);
     }
   }

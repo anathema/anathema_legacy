@@ -125,8 +125,7 @@ public class CharacterPresenter implements IPresenter {
         getStatistics(),
         characterView.createMagicViewFactory(),
         resources,
-        generics.getTemplateRegistry(),
-        generics.getCharmProvider());
+        generics.getTemplateRegistry());
     presenter.initPresentation();
     IViewContent content = presenter.getTabContent();
     IDisposable disposable = content.getDisposable();
