@@ -1,7 +1,6 @@
 package net.sf.anathema.charmtree.presenter.view;
 
 import java.awt.Cursor;
-import java.util.Arrays;
 import java.util.Set;
 
 import net.sf.anathema.character.generic.framework.magic.CharmGraphNodeBuilder;
@@ -73,12 +72,10 @@ public abstract class AbstractCharmGroupChangeListener implements ICharmGroupCha
       charmTreeView.loadCascade(null);
     }
     else {
-      Set<ICharm> displayCharms = getDisplayCharms(charmGroup);
       ITreePresentationProperties presentationProperties = templateRegistry.getDefaultTemplate(
           charmGroup.getCharacterType(),
           getEdition()).getPresentationProperties().getCharmPresentationProperties();
-      ICharm[] charms = displayCharms.toArray(new ICharm[displayCharms.size()]);
-      IRegularNode[] nodes = CharmGraphNodeBuilder.createNodesFromCharms(Arrays.asList(charms));
+      IRegularNode[] nodes = CharmGraphNodeBuilder.createNodesFromCharms(getDisplayCharms(charmGroup));
       Document document = provider.createCascadeDocument(nodes, presentationProperties);
       charmTreeView.loadCascade(document);
     }

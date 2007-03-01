@@ -1,6 +1,6 @@
 package net.sf.anathema.character.generic.framework.magic;
 
-import java.util.List;
+import java.util.Collection;
 import java.util.Map;
 
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -10,7 +10,7 @@ import net.sf.anathema.platform.svgtree.graph.nodes.NodeFactory;
 
 public class CharmNodeBuilder {
 
-  public static void buildNodes(List<ICharm> groupCharms, Map<String, IIdentifiedRegularNode> charmNodesById) {
+  public static void buildNodes(Collection<ICharm> groupCharms, Map<String, IIdentifiedRegularNode> charmNodesById) {
     for (ICharm charm : groupCharms) {
       IIdentifiedRegularNode node = NodeFactory.createChildlessNode(charm.getId());
       charmNodesById.put(charm.getId(), node);
