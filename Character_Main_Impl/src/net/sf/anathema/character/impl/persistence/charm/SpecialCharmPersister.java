@@ -19,17 +19,17 @@ import org.dom4j.Element;
 
 public class SpecialCharmPersister implements ISpecialCharmPersister {
 
-  private final Map<ICharm, ISpecialCharmPersister> persisterByCharmId = new HashMap<ICharm, ISpecialCharmPersister>();
+  private final Map<ICharm, ISpecialCharmPersister> persisterByCharm = new HashMap<ICharm, ISpecialCharmPersister>();
 
   public SpecialCharmPersister(ISpecialCharm[] charms, final ICharmTree charmTree) {
     for (ISpecialCharm specialCharm : charms) {
       specialCharm.accept(new ISpecialCharmVisitor() {
         public void visitMultiLearnableCharm(IMultiLearnableCharm charm) {
-          persisterByCharmId.put(getCharm(charm.getCharmId(), charmTree), new MultiLearnCharmPersister());
+          persisterByCharm.put(getCharm(charm.getCharmId(), charmTree), new MultiLearnCharmPersister());
         }
 
         public void visitOxBodyTechnique(IOxBodyTechniqueCharm charm) {
-          persisterByCharmId.put(getCharm(charm.getCharmId(), charmTree), new OxBodyTechniquePersister());
+          persisterByCharm.put(getCharm(charm.getCharmId(), charmTree), new OxBodyTechniquePersister());
         }
 
         public void visitPainToleranceCharm(IPainToleranceCharm charm) {
@@ -37,11 +37,11 @@ public class SpecialCharmPersister implements ISpecialCharmPersister {
         }
 
         public void visitSubeffectCharm(ISubeffectCharm charm) {
-          persisterByCharmId.put(getCharm(charm.getCharmId(), charmTree), new MultipleEffectCharmPersister());
+          persisterByCharm.put(getCharm(charm.getCharmId(), charmTree), new MultipleEffectCharmPersister());
         }
 
         public void visitMultipleEffectCharm(IMultipleEffectCharm charm) {
-          persisterByCharmId.put(getCharm(charm.getCharmId(), charmTree), new MultipleEffectCharmPersister());
+          persisterByCharm.put(getCharm(charm.getCharmId(), charmTree), new MultipleEffectCharmPersister());
         }
       });
     }
@@ -52,13 +52,13 @@ public class SpecialCharmPersister implements ISpecialCharmPersister {
   }
 
   public void saveConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration) {
-    ISpecialCharmPersister persister = persisterByCharmId.get(specialCharmConfiguration.getCharm());
+    ISpecialCharmPersister persister = persisterByCharm.get(specialCharmConfiguration.getCharm());
     persister.saveConfiguration(specialElement, specialCharmConfiguration);
   }
 
   public void loadConfiguration(Element specialElement, ISpecialCharmConfiguration specialCharmConfiguration)
       throws PersistenceException {
-    ISpecialCharmPersister persister = persisterByCharmId.get(specialCharmConfiguration.getCharm());
+    ISpecialCharmPersister persister = persisterByCharm.get(specialCharmConfiguration.getCharm());
     persister.loadConfiguration(specialElement, specialCharmConfiguration);
   }
 }
