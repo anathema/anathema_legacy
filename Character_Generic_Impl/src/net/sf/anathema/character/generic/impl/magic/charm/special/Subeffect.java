@@ -1,7 +1,7 @@
-package net.sf.anathema.character.impl.model.charm.special;
+package net.sf.anathema.character.generic.impl.magic.charm.special;
 
 import net.sf.anathema.character.generic.IBasicCharacterData;
-import net.sf.anathema.character.model.charm.special.ISubeffect;
+import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.lib.control.change.ChangeControl;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.gui.wizard.workflow.ICondition;

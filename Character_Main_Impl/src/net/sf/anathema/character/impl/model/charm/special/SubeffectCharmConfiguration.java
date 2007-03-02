@@ -2,9 +2,9 @@ package net.sf.anathema.character.impl.model.charm.special;
 
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
 import net.sf.anathema.character.generic.magic.ICharm;
+import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.generic.magic.charms.special.ISubeffectCharm;
 import net.sf.anathema.character.model.charm.IExtendedCharmLearnableArbitrator;
-import net.sf.anathema.character.model.charm.special.ISubeffect;
 import net.sf.anathema.character.model.charm.special.ISubeffectCharmConfiguration;
 
 public class SubeffectCharmConfiguration extends MultipleEffectCharmConfiguration implements

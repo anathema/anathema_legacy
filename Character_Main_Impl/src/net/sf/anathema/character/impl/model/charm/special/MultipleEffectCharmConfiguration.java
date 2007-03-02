@@ -1,8 +1,5 @@
 package net.sf.anathema.character.impl.model.charm.special;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.disy.commons.core.predicate.IPredicate;
 import net.disy.commons.core.util.ArrayUtilities;
 import net.sf.anathema.character.generic.framework.additionaltemplate.model.ICharacterModelContext;
@@ -10,12 +7,11 @@ import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
 import net.sf.anathema.character.generic.magic.charms.special.ISpecialCharmLearnListener;
+import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
-import net.sf.anathema.character.model.charm.special.ISubeffect;
 import net.sf.anathema.lib.control.GenericControl;
 import net.sf.anathema.lib.control.IClosure;
 import net.sf.anathema.lib.control.change.IChangeListener;
-import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 
 public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmConfiguration {
   private final ICharm charm;
@@ -28,23 +24,14 @@ public class MultipleEffectCharmConfiguration implements IMultipleEffectCharmCon
       IMultipleEffectCharm visited,
       final ICharmLearnableArbitrator arbitrator) {
     this.charm = charm;
-    List<ISubeffect> effectList = new ArrayList<ISubeffect>();
-    ICondition condition = new ICondition() {
-      public boolean isFullfilled() {
-        return arbitrator.isLearnable(charm);
-      }
-    };
-    for (String subeffectId : visited.getSubeffectIds()) {
-      effectList.add(new Subeffect(subeffectId, context.getBasicCharacterContext(), condition));
-    }
-    for (ISubeffect subeffect : effectList) {
+    this.subeffects = visited.buildSubeffects(context.getBasicCharacterContext(), arbitrator, charm);
+    for (ISubeffect subeffect : subeffects) {
       subeffect.addChangeListener(new IChangeListener() {
         public void changeOccured() {
           fireLearnCountChanged();
         }
       });
     }
-    this.subeffects = effectList.toArray(new ISubeffect[effectList.size()]);
   }
 
   private void fireLearnCountChanged() {

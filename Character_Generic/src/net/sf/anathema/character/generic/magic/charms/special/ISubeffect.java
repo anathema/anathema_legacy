@@ -1,4 +1,4 @@
-package net.sf.anathema.character.model.charm.special;
+package net.sf.anathema.character.generic.magic.charms.special;
 
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.util.IIdentificate;

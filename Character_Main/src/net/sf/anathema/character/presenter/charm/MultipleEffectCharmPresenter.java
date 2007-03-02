@@ -1,7 +1,7 @@
 package net.sf.anathema.character.presenter.charm;
 
+import net.sf.anathema.character.generic.magic.charms.special.ISubeffect;
 import net.sf.anathema.character.model.charm.special.IMultipleEffectCharmConfiguration;
-import net.sf.anathema.character.model.charm.special.ISubeffect;
 import net.sf.anathema.lib.control.booleanvalue.IBooleanValueChangedListener;
 import net.sf.anathema.lib.control.change.IChangeListener;
 import net.sf.anathema.lib.gui.IPresenter;
