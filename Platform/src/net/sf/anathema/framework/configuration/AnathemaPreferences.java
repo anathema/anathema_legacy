@@ -7,7 +7,7 @@ import static net.sf.anathema.framework.presenter.action.preferences.IAnathemaPr
 import java.util.Locale;
 import java.util.prefs.Preferences;
 
-import net.sf.anathema.framework.presenter.action.NamedLocale;
+import net.sf.anathema.framework.presenter.action.SupportedLocale;
 import net.sf.anathema.framework.presenter.action.preferences.IAnathemaPreferencesConstants;
 
 public class AnathemaPreferences implements IAnathemaPreferences {
@@ -34,7 +34,7 @@ public class AnathemaPreferences implements IAnathemaPreferences {
   }
 
   public Locale getPreferredLocale() {
-    return NamedLocale.valueOf(
+    return SupportedLocale.valueOf(
         systemPreferences.get(
             IAnathemaPreferencesConstants.LOCALE_PREFERENCE,
             IAnathemaPreferencesConstants.DEFAULT_LOCALE)).getLocale();

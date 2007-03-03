@@ -16,16 +16,16 @@ import java.util.Properties;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-import net.sf.anathema.framework.presenter.action.NamedLocale;
+import net.sf.anathema.framework.presenter.action.SupportedLocale;
 
 import com.l2fprod.common.swing.JDirectoryChooser;
 
 public class PropertiesMatcher {
 
   public static void main(String[] args) throws IOException {
-    NamedLocale locale = (NamedLocale) JOptionPane.showInputDialog(
+    SupportedLocale locale = (SupportedLocale) JOptionPane.showInputDialog(
         null,
-        "Choose Locale:", "Locale", JOptionPane.QUESTION_MESSAGE, null, NamedLocale.values(), null); //$NON-NLS-1$ //$NON-NLS-2$
+        "Choose Locale:", "Locale", JOptionPane.QUESTION_MESSAGE, null, SupportedLocale.values(), null); //$NON-NLS-1$ //$NON-NLS-2$
     JDirectoryChooser chooser = new JDirectoryChooser();
     int choice = chooser.showOpenDialog(null);
     if (choice != JFileChooser.APPROVE_OPTION) {
