@@ -151,7 +151,6 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
         }
         IIdentificate[] currentCharmTypes = getCurrentCharmTypes(alienCharms);
         selectionView.fillCharmTypeBox(currentCharmTypes);
-        handleTypeSelectionChange(charmConfiguration, selectionView, null);
       }
     });
   }
