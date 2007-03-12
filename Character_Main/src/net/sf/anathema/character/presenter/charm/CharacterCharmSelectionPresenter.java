@@ -175,8 +175,11 @@ public class CharacterCharmSelectionPresenter extends AbstractCascadeSelectionPr
       final ICharmConfiguration charms,
       final ICharmSelectionView selectionView,
       final IIdentificate cascadeType) {
-    ICharmGroup[] allCharmGroups= charms.getCharmGroups(cascadeType);
-    selectionView.fillCharmGroupBox(sortCharmGroups(allCharmGroups));
+    ICharmGroup[] allCharmGroups = new ICharmGroup[0];
+    if (cascadeType != null) {
+      allCharmGroups = sortCharmGroups(charms.getCharmGroups(cascadeType));
+    }
+    selectionView.fillCharmGroupBox(allCharmGroups);
     showSpecialViews(selectionView, null);
   }
 
