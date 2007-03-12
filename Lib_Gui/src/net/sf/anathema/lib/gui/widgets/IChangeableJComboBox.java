@@ -27,6 +27,4 @@ public interface IChangeableJComboBox<V> extends IView {
   public void setPreferredSize(Dimension preferredSize);
 
   public Dimension getPreferredSize();
-
-  public void clearObjects();
 }

@@ -90,12 +90,8 @@ public abstract class AbstractCascadeSelectionView implements ICascadeSelectionV
     charmTreeView.dispose();
   }
 
-  protected IChangeableJComboBox<IIdentificate> getTypeComboBox() {
-    return typeComboBox;
-  }
-
-  public void fillCharmComboBoxes(IIdentificate charmType, IIdentificate charmGroup) {
-    typeComboBox.setSelectedObject(charmType);
-    groupComboBox.setSelectedObject(charmGroup);
+  protected void unselect() {
+    typeComboBox.setSelectedObject(null);
+    groupComboBox.setSelectedObject(null);
   }
 }

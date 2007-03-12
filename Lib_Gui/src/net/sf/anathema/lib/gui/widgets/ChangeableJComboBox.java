@@ -3,19 +3,18 @@ package net.sf.anathema.lib.gui.widgets;
 import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.swing.JComboBox;
 import javax.swing.ListCellRenderer;
 
 import net.sf.anathema.lib.UnselectingComboBoxModel;
 import net.sf.anathema.lib.control.objectvalue.IObjectValueChangedListener;
+import net.sf.anathema.lib.control.objectvalue.ObjectValueControl;
 
 public class ChangeableJComboBox<V> implements IChangeableJComboBox<V> {
 
-  private JComboBox comboBox;
-  private final Map<IObjectValueChangedListener<V>, ItemListener> listenersByListener = new HashMap<IObjectValueChangedListener<V>, ItemListener>();
+  private final JComboBox comboBox;
+  private final ObjectValueControl<V> control = new ObjectValueControl<V>();
 
   public ChangeableJComboBox(boolean editable) {
     this(new UnselectingComboBoxModel(), editable);
@@ -29,6 +28,12 @@ public class ChangeableJComboBox<V> implements IChangeableJComboBox<V> {
     this.comboBox = new ColoredJComboBox(model);
     this.comboBox.setEditable(editable);
     setSelectedObject(null);
+    comboBox.addItemListener(new ItemListener() {
+      @SuppressWarnings("unchecked")
+      public void itemStateChanged(ItemEvent e) {
+        control.fireValueChangedEvent((V) e.getItem());
+      }
+    });
   }
 
   public JComboBox getComponent() {
@@ -46,23 +51,18 @@ public class ChangeableJComboBox<V> implements IChangeableJComboBox<V> {
     for (Object object : objects) {
       model.addElement(object);
     }
-    comboBox.setSelectedItem(selectedItem);
-  }
-
-  public void clearObjects() {
-    UnselectingComboBoxModel model = (UnselectingComboBoxModel) comboBox.getModel();
-    model.removeAllElements();
+    setSelectedObject(selectedItem);
+    if (comboBox.getSelectedItem() == null) {
+      control.fireValueChangedEvent(null);
+    }
   }
 
   public void addObjectSelectionChangedListener(final IObjectValueChangedListener<V> listener) {
-    ItemListener itemListener = new ItemListener() {
-      @SuppressWarnings("unchecked")
-      public void itemStateChanged(ItemEvent e) {
-        listener.valueChanged((V) e.getItem());
-      }
-    };
-    comboBox.addItemListener(itemListener);
-    listenersByListener.put(listener, itemListener);
+    control.addObjectValueChangeListener(listener);
+  }
+
+  public void removeObjectSelectionChangeListener(IObjectValueChangedListener<V> listener) {
+    control.addObjectValueChangeListener(listener);
   }
 
   @SuppressWarnings("unchecked")
@@ -72,10 +72,6 @@ public class ChangeableJComboBox<V> implements IChangeableJComboBox<V> {
 
   public void setRenderer(ListCellRenderer renderer) {
     comboBox.setRenderer(renderer);
-  }
-
-  public void removeObjectSelectionChangeListener(IObjectValueChangedListener<V> listener) {
-    comboBox.removeItemListener(listenersByListener.get(listener));
   }
 
   public Dimension getPreferredSize() {
