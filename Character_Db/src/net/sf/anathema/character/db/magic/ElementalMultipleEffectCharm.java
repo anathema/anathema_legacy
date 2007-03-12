@@ -50,11 +50,23 @@ public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
     return new ICondition() {
       public boolean isFullfilled() {
         boolean learnable = arbitrator.isLearnable(charm);
-        if (data.getCharacterType().equals(CharacterType.DB)) {
-          learnable &= effectId.equals(data.getCasteType().getId());
+        if (!data.getCharacterType().equals(CharacterType.DB)) {
+          return learnable;
         }
-        return learnable;
+        if (isMatchingElement(data, effectId)) {
+          return learnable;
+        }
+        for (ISubeffect effect : effectList) {
+          if (effect.isLearned() && isMatchingElement(data, effect.getId())) {
+            return learnable;
+          }
+        }
+        return false;
       }
     };
+  }
+
+  private boolean isMatchingElement(final IBasicCharacterData data, String effectId) {
+    return effectId.equals(data.getCasteType().getId());
   }
 }
