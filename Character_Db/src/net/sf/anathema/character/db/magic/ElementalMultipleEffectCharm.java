@@ -3,8 +3,8 @@ package net.sf.anathema.character.db.magic;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.anathema.character.db.aspect.DBAspect;
 import net.sf.anathema.character.generic.IBasicCharacterData;
-import net.sf.anathema.character.generic.impl.magic.charm.special.Subeffect;
 import net.sf.anathema.character.generic.magic.ICharm;
 import net.sf.anathema.character.generic.magic.charms.ICharmLearnableArbitrator;
 import net.sf.anathema.character.generic.magic.charms.special.IMultipleEffectCharm;
@@ -15,13 +15,11 @@ import net.sf.anathema.lib.gui.wizard.workflow.ICondition;
 
 public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
 
-  private final String[] effectIds;
   private final String charmId;
-  private final List<ISubeffect> effectList = new ArrayList<ISubeffect>();
+  private final List<IElementalSubeffect> effectList = new ArrayList<IElementalSubeffect>();
 
-  public ElementalMultipleEffectCharm(String charmId, String[] effectIds) {
+  public ElementalMultipleEffectCharm(String charmId) {
     this.charmId = charmId;
-    this.effectIds = effectIds;
   }
 
   public void accept(ISpecialCharmVisitor visitor) {
@@ -35,15 +33,15 @@ public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
   @Override
   public ISubeffect[] buildSubeffects(IBasicCharacterData data, ICharmLearnableArbitrator arbitrator, ICharm charm) {
     if (effectList.isEmpty()) {
-      for (String id : effectIds) {
-        effectList.add(new Subeffect(id, data, buildLearnCondition(id, data, arbitrator, charm)));
+      for (DBAspect aspect : DBAspect.values()) {
+        effectList.add(new ElementalSubeffect(aspect, data, buildLearnCondition(aspect, data, arbitrator, charm)));
       }
     }
     return effectList.toArray(new ISubeffect[effectList.size()]);
   }
 
   private ICondition buildLearnCondition(
-      final String effectId,
+      final DBAspect aspect,
       final IBasicCharacterData data,
       final ICharmLearnableArbitrator arbitrator,
       final ICharm charm) {
@@ -53,20 +51,16 @@ public class ElementalMultipleEffectCharm implements IMultipleEffectCharm {
         if (!data.getCharacterType().equals(CharacterType.DB)) {
           return learnable;
         }
-        if (isMatchingElement(data, effectId)) {
+        if (aspect.equals(data.getCasteType())) {
           return learnable;
         }
-        for (ISubeffect effect : effectList) {
-          if (effect.isLearned() && isMatchingElement(data, effect.getId())) {
+        for (IElementalSubeffect effect : effectList) {
+          if (effect.isLearned() && effect.matches(data.getCasteType())) {
             return learnable;
           }
         }
         return false;
       }
     };
-  }
-
-  private boolean isMatchingElement(final IBasicCharacterData data, String effectId) {
-    return effectId.equals(data.getCasteType().getId());
   }
 }
