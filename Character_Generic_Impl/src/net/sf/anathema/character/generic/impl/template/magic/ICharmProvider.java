@@ -10,7 +10,11 @@ public interface ICharmProvider {
 
   public ISpecialCharm[] getSpecialCharms(ICharacterType characterType, IExaltedEdition edition);
 
-  public ISpecialCharm[] getSpecialCharms(IExaltedEdition edition, ICharmLearnableArbitrator arbitrator, ICharmIdMap map);
+  public ISpecialCharm[] getSpecialCharms(
+      IExaltedEdition edition,
+      ICharmLearnableArbitrator arbitrator,
+      ICharmIdMap map,
+      ICharacterType preferredCharacterType);
 
   public void addMartialArtsSpecialCharm(IExaltedEdition edition, ISpecialCharm charm);
 

@@ -1,7 +1,6 @@
 package net.sf.anathema.character.generic.impl.template.magic;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import net.sf.anathema.character.generic.magic.ICharm;
@@ -20,9 +19,13 @@ public class CharmProvider implements ICharmProvider {
   private final MultiEntryMap<IExaltedEdition, ISpecialCharm> martialArtsSpecialCharms = new MultiEntryMap<IExaltedEdition, ISpecialCharm>();
 
   @Override
-  public ISpecialCharm[] getSpecialCharms(IExaltedEdition edition, ICharmLearnableArbitrator arbitrator, ICharmIdMap map) {
+  public ISpecialCharm[] getSpecialCharms(
+      IExaltedEdition edition,
+      ICharmLearnableArbitrator arbitrator,
+      ICharmIdMap map,
+      ICharacterType preferredCharacterType) {
     List<ISpecialCharm> relevantCharms = new ArrayList<ISpecialCharm>();
-    ISpecialCharm[] allSpecialCharms = getAllSpecialCharms(edition);
+    ISpecialCharm[] allSpecialCharms = getAllSpecialCharms(edition, preferredCharacterType);
     for (ISpecialCharm specialCharm : allSpecialCharms) {
       ICharm charm = map.getCharmById(specialCharm.getCharmId());
       if (charm != null && arbitrator.isLearnable(charm)) {
@@ -40,13 +43,16 @@ public class CharmProvider implements ICharmProvider {
     return specialCharms;
   }
 
-  private ISpecialCharm[] getAllSpecialCharms(IExaltedEdition edition) {
-    List<ISpecialCharm> list = new ArrayList<ISpecialCharm>();
+  private ISpecialCharm[] getAllSpecialCharms(IExaltedEdition edition, ICharacterType preferredCharacterType) {
+    SpecialCharmSet set = new SpecialCharmSet();
     for (ICharacterType type : CharacterType.values()) {
-      Collections.addAll(list, getSpecialCharms(type, edition));
+      set.add(getSpecialCharms(type, edition));
     }
-    list.addAll(martialArtsSpecialCharms.get(edition));
-    return list.toArray(new ISpecialCharm[list.size()]);
+    set.addAll(martialArtsSpecialCharms.get(edition));
+    for (ISpecialCharm preferredCharm : getSpecialCharms(preferredCharacterType, edition)) {
+      set.add(preferredCharm);
+    }
+    return set.toArray(new ISpecialCharm[set.size()]);
   }
 
   public void setSpecialCharms(ICharacterType type, IExaltedEdition edition, ISpecialCharm[] charms) {

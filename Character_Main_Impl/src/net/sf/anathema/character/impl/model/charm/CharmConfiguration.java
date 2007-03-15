@@ -133,7 +133,7 @@ public class CharmConfiguration implements ICharmConfiguration {
     return provider.getSpecialCharms(
         context.getBasicCharacterContext().getRuleSet().getEdition(),
         new MartialArtsLearnableArbitrator(martialArtsCharmTree),
-        getCharmIdMap());
+        getCharmIdMap(), getNativeCharacterType());
   }
 
   private void initSpecialCharmConfigurations() {
