@@ -48,10 +48,9 @@ public class CharmConfigurationPersister {
   }
 
   private ISpecialCharmPersister createSpecialCharmPersister(ICharmConfiguration charmConfiguration) {
-    ISpecialCharmPersister specialPersister = new SpecialCharmPersister(
+    return new SpecialCharmPersister(
         charmConfiguration.getSpecialCharms(),
         charmConfiguration.getCharmIdMap());
-    return specialPersister;
   }
 
   private void saveTypeCharms(
