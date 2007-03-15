@@ -39,14 +39,19 @@ public class CharmConfigurationPersister {
     }
     Element charmsElement = parent.addElement(TAG_CHARMS);
     ICharmConfiguration charmConfiguration = statistics.getCharms();
-    ISpecialCharmPersister specialPersister = new SpecialCharmPersister(
-        charmConfiguration.getSpecialCharms(),
-        charmConfiguration.getCharmIdMap());
+    ISpecialCharmPersister specialPersister = createSpecialCharmPersister(charmConfiguration);
     for (IIdentificate type : charmConfiguration.getCharacterTypes(true)) {
       saveTypeCharms(specialPersister, charmConfiguration, type, charmsElement);
     }
     saveTypeCharms(specialPersister, charmConfiguration, MartialArtsUtilities.MARTIAL_ARTS, charmsElement);
     saveCombos(charmsElement, statistics.getCombos());
+  }
+
+  private ISpecialCharmPersister createSpecialCharmPersister(ICharmConfiguration charmConfiguration) {
+    ISpecialCharmPersister specialPersister = new SpecialCharmPersister(
+        charmConfiguration.getSpecialCharms(),
+        charmConfiguration.getCharmIdMap());
+    return specialPersister;
   }
 
   private void saveTypeCharms(
@@ -114,8 +119,7 @@ public class CharmConfigurationPersister {
       return;
     }
     ICharmConfiguration charmConfiguration = statistics.getCharms();
-    ICharmIdMap idMap = charmConfiguration.getCharmIdMap();
-    ISpecialCharmPersister specialPersister = new SpecialCharmPersister(charmConfiguration.getSpecialCharms(), idMap);
+    ISpecialCharmPersister specialPersister = createSpecialCharmPersister(charmConfiguration);
     for (Object groupObjectElement : charmsElement.elements(TAG_CHARMGROUP)) {
       Element groupElement = (Element) groupObjectElement;
       loadCharmFromConfiguration(charmConfiguration, groupElement, specialPersister);
