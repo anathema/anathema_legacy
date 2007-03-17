@@ -55,7 +55,7 @@ public class CharmProvider implements ICharmProvider {
     return set.toArray(new ISpecialCharm[set.size()]);
   }
 
-  public void setSpecialCharms(ICharacterType type, IExaltedEdition edition, ISpecialCharm[] charms) {
+  public void setSpecialCharms(ICharacterType type, IExaltedEdition edition, ISpecialCharm... charms) {
     charmsByTypeByRuleSet.add(edition, type, charms);
   }
 

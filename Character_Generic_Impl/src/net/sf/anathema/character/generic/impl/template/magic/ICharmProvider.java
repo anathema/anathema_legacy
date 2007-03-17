@@ -18,6 +18,6 @@ public interface ICharmProvider {
 
   public void addMartialArtsSpecialCharm(IExaltedEdition edition, ISpecialCharm charm);
 
-  public void setSpecialCharms(ICharacterType type, IExaltedEdition edition, ISpecialCharm[] charms);
+  public void setSpecialCharms(ICharacterType type, IExaltedEdition edition, ISpecialCharm... charms);
 
 }
